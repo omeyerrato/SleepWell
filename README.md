@@ -7,7 +7,7 @@ An original, open-source Android app for protecting bedtime and making mornings 
 ## Working capabilities
 
 - Multiple one-shot or weekday alarms using Android's exact `setAlarmClock` API, rescheduled on reboot, clock/time-zone changes, and updates.
-- Original Daybreak and Pulse alarm tones, Android's default alarm sound, or your own audio file; configurable alarm-stream volume, gradual ramp, and vibration.
+- Original Daybreak and Pulse alarm tones, Android's default alarm sound, or your own audio file; configurable alarm-stream volume, gradual ramp, vibration, and optional loud backup escalation.
 - Math, matching pairs, sequence, retyping, shaking, and enrolled NFC challenges. Configurable rounds, limited snoozes, optional screen pinning, and post-dismissal wake-up checks.
 - Optional accessibility-based return to the active alarm, plus a bedtime guard for explicitly selected distracting apps. Emergency dismissal, calls, and Android Settings remain available.
 - User-started overnight accelerometer and ambient-light tracking, with real movement/noise/light graphs and local session history.
