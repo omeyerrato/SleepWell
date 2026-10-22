@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-22",
+  "reviewed": "2026-10-23",
   "features": [
     {
       "feature": "Multiple alarms",
@@ -561,9 +561,7 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "MainActivity.java"
       ],
       "validation": "Not verified for this feature",
       "status": "implemented",
@@ -588,9 +586,7 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "MainActivity.java"
       ],
       "validation": "Not verified for this feature",
       "status": "implemented",
@@ -599,19 +595,19 @@
     },
     {
       "feature": "Manual sleep tracking",
-      "screens": "13–21,27–30",
+      "screens": "16,18,02",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
+        "TrackingActivity.java",
         "TrackingService.java",
-        "NoiseRecorder.java",
-        "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "TrackingClock.java",
+        "SessionTiming.java",
+        "Store.java",
+        "ReportScreen.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified.",
       "status": "implemented",
-      "notes": "Implemented: ongoing notification with stop action, 12-hour bounded run.",
+      "notes": "Native draft setup, actual sensor availability, Start, live status and saved Report. Back cancels setup drafts. Real movement-only journey verified; audio permission/denial and long-session checks still pending.",
       "id": "F043"
     },
     {
@@ -636,19 +632,19 @@
     },
     {
       "feature": "Accelerometer tracking",
-      "screens": "13–21,27–30",
+      "screens": "16,18,02,29",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
+        "TrackingActivity.java",
         "TrackingService.java",
-        "NoiseRecorder.java",
-        "BedtimeGuard.java",
-        "MainActivity.java",
+        "TrackingClock.java",
+        "Store.java",
         "RecordChart.java",
         "ChartSeries.java"
       ],
-      "validation": "Earlier 232-second movement-only capture; ChartSeriesTest 5 passing; labeled synthetic ChartVisualTest rendering pass; full-night/device coverage incomplete",
+      "validation": "TrackingFlowTest 2 passing on S23 2026-10-23 (movement only, live selection/focus, pause/recreate/resume/reopen); ChartSeriesTest 7 passing; full-night and broader-device coverage incomplete",
       "status": "implemented",
-      "notes": "Implemented: gravity filtering and one-minute RMS epochs. Placement strongly affects results.",
+      "notes": "Measured gravity-filtered RMS: real 1-second live previews, minute saved epochs and partial final windows. Explicit interval starts preserve pauses; unavailable samples stay null. No stage estimator or clinical validation. Narrow movement flow accepted; full screens remain partial.",
       "id": "F046"
     },
     {
@@ -689,9 +685,7 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "MainActivity.java"
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
@@ -706,9 +700,7 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "MainActivity.java"
       ],
       "validation": "Not verified for this feature",
       "status": "implemented",
@@ -733,9 +725,7 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "MainActivity.java"
       ],
       "validation": "SignalWindowTest + SleepMathTest",
       "status": "implemented",
@@ -747,16 +737,14 @@
       "screens": "13–21,27–30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
-        "TrackingService.java",
         "NoiseRecorder.java",
-        "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "ClipBudget.java",
+        "TrackingService.java",
+        "Store.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "ClipBudgetTest 2 local passes; microphone/clip lifecycle not exercised under user's sleep-time restriction",
       "status": "implemented",
-      "notes": "Implemented: optional 10-second WAV clips at energy threshold; at most 60/session with a 30-second cooldown. Pre-roll pending.",
+      "notes": "Code saves 10-second threshold-triggered WAV clips, shared maximum 60 and 30-second cooldown across pauses. Session clock anchors event timestamps. No classified labels; recording/restart hardware evidence still pending.",
       "id": "F054"
     },
     {
@@ -777,9 +765,7 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "MainActivity.java"
       ],
       "validation": "Not verified for this feature",
       "status": "implemented",
@@ -794,9 +780,7 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "MainActivity.java"
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
@@ -811,13 +795,11 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "MainActivity.java"
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
-      "notes": "Partial: seven-day deletion at next tracking start and WAV format. Favorites, manual audio export and other encodings pending.",
+      "notes": "Partial: seven-day pruning when a new clip-saving session starts, WAV only. Analysis-only and movement-only sessions do not delete clips. Favorites, manual audio export, configurable retention and other formats remain absent.",
       "id": "F058"
     },
     {
@@ -848,9 +830,7 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "MainActivity.java"
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
@@ -899,19 +879,19 @@
     },
     {
       "feature": "Tracking pause / standby / battery-adaptive sampling",
-      "screens": "13–21,27–30",
+      "screens": "16,18,02",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
+        "TrackingActivity.java",
         "TrackingService.java",
-        "NoiseRecorder.java",
-        "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "TrackingClock.java",
+        "SessionTiming.java",
+        "Store.java",
+        "ReportScreen.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified.",
       "status": "partial",
-      "notes": "Partial: end tracking and start a new session; explicit gap-preserving pause pending.",
+      "notes": "Partial: real same-session Pause/Resume stops sensors/audio and freezes active duration. Persisted pauses and interrupted recovery exist. Standby/battery-adaptive sampling absent; mic restart hardware evidence pending.",
       "id": "F066"
     },
     {
@@ -922,9 +902,7 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java",
-        "RecordChart.java",
-        "ChartSeries.java"
+        "MainActivity.java"
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
@@ -1196,12 +1174,13 @@
       "source": "https://sleep.urbandroid.org/docs/services/automation.html",
       "implementation": [
         "Backup.java",
-        "FileSafety.java",
+        "Store.java",
+        "SessionTiming.java",
         "MainActivity.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "StorageMigrationTest 4 isolated-device passes incl v1 migration, v1/v2 import, pause round trip, malformed pause rejection, interrupted recovery and atomic checkpoint rollback/retry; actual document-picker restore pending",
       "status": "partial",
-      "notes": "Partial: versioned JSON alarms/sessions/epochs and CSV export. JSON excludes preferences, NFC IDs and audio. Imported alarms start disabled.",
+      "notes": "Partial: format 2 includes active duration, exact epoch starts and pause intervals; format 1 stays readable. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted.",
       "id": "F089"
     },
     {
@@ -1460,12 +1439,19 @@
     },
     {
       "feature": "Pause/resume within one tracked session",
-      "screens": "18",
+      "screens": "16,18,02",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Must preserve explicit gaps; stopping/starting separate sessions is insufficient.",
+      "implementation": [
+        "TrackingActivity.java",
+        "TrackingService.java",
+        "TrackingClock.java",
+        "SessionTiming.java",
+        "Store.java",
+        "ReportScreen.java"
+      ],
+      "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified.",
+      "status": "partial",
+      "notes": "Movement-only setup/start/pause/recreation/resume/stop/reopened-report device flow passes. Same session, persisted pause gaps and monotonic active duration; microphone restart, overnight and broader device evidence remain unverified.",
       "id": "F115"
     },
     {

@@ -77,7 +77,7 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | Automatic sound labels | CNN recognizes snoring, speech, cough, laughter and baby cries | Pending: properly licensed local classifier and labeled validation corpus. Current clips are labeled only as loud sounds. |
 | Noise threshold | Control recording sensitivity | Implemented: relative amplitude threshold; independent per-class sensitivity pending. |
 | Noise library | Browse/play clips | Partial: playback within each night; favorites and global filtering pending. |
-| Retention / favorite album / alternate formats | Delete old clips; preserve favorites; choose encodings | Partial: seven-day deletion at next tracking start and WAV format. Favorites, manual audio export and other encodings pending. |
+| Retention / favorite album / alternate formats | Delete old clips; preserve favorites; choose encodings | Partial: seven-day deletion at the next clip-saving session start and WAV format. Favorites, manual audio export and other encodings pending. |
 | Anti-snoring cues | Trigger mild audio/haptic/light response after detected snoring | Pending: requires a validated snore classifier first. Generic loud sounds do not trigger snoring treatment. |
 | Pair tracking | Compare synchronized movement streams to reduce partner crossover | Pending: peer pairing, clock alignment, filtering evaluation. |
 | Sleep sounds / lullabies | Loop relaxing audio, fade/stop by timer or sleep detection | Partial: original rain/brown-noise loops, low player volume, fixed stop timer. Adaptive fade, guided tracks and playlists pending. |
@@ -85,7 +85,7 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | Lucid dreaming | Use subtle cues during an inferred dream window | Pending: no REM-trigger claims without a validated estimator. |
 | Jet-lag light intervention | Plan timed light exposure by destination/time zone | Pending: evidence-based scheduling, compatible light output, validation. |
 | DND / airplane / screen dimming | Adjust the night environment with user controls | Pending: no automatic global device-setting changes. |
-| Tracking pause / standby / battery-adaptive sampling | Temporarily suspend or reduce collection | Partial: end tracking and start a new session; explicit gap-preserving pause pending. |
+| Tracking pause / standby / battery-adaptive sampling | Temporarily suspend or reduce collection | Partial: same-session pause/resume now preserves explicit gaps and excludes paused duration. Standby and battery-adaptive sampling remain pending; see current device evidence in VERIFICATION.md. |
 | Sensor diagnostics | Check placement, availability and signal | Partial: movement sample count, latest amplitude, setup diagnostics; full live calibration pending. |
 
 ## Records, statistics and presentation
@@ -126,7 +126,7 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | Wearable connection test | Signal inspection and actuator test per adapter | Pending. |
 | Health Connect | User-selected sleep/vital read/write scopes, provenance and deduplication | Pending. |
 | Google Fit / Samsung Health | Platform-supported health data path | Pending; prefer current consent-based Health Connect where available. |
-| Local data backup | Export records/configuration and restore transactionally | Partial: versioned JSON alarms/sessions/epochs and CSV export. JSON excludes preferences, NFC IDs and audio. Imported alarms start disabled. |
+| Local data backup | Export records/configuration and restore transactionally | Partial: versioned JSON alarms/sessions/epochs/pause provenance (format 2, format 1 readable) and CSV export. JSON excludes preferences, NFC IDs and audio. Imported alarms start disabled. |
 | Cloud backup / SleepCloud | Authenticated storage, encryption and sync conflict handling | Pending for user-controlled storage. Vendor SleepCloud hosting is not reproduced or included. |
 | Calendar | Read consent, holiday/meeting rules, optionally write sessions | Pending. |
 | Tasker / Automate / Intent API | Explicit opt-in event/command contracts with sender controls | Pending; current components are private rather than accepting untrusted commands. |

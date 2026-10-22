@@ -59,3 +59,16 @@ values are never imported into production records. Actual phone screenshots
 remain local under ignored `captures/` because they may contain private records
 and system status metadata. They are not evidence of final acceptance until
 the separate behavior and strict visual gates both pass.
+
+## Tracking placement illustration
+
+`app/src/main/res/drawable-nodpi/tracking_placement.png` is an original standalone
+built-in image-tool illustration, visually inspected and copied unchanged. It
+shows an uncovered phone on a plum/lilac mattress beside a warm lamp and plant.
+Prompt direction: wide 2.8:1 flat vector editorial bedroom strip, simplified
+cel-shaded planes, phone clearly resting on the bed, lilac movement marks,
+plum negative space and amber lamp; no text, UI, border, logo or controls.
+No third-party application asset was extracted. The supplied tracking board
+provided composition/style guidance; its graph and UI were not imported.
+
+SHA-256: `4f36867bceb626d9099456a4594d70f52cb67c648eaa4f58a66e683ff5d481ac`.

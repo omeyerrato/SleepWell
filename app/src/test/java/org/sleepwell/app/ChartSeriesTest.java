@@ -5,6 +5,11 @@ import java.util.*;
 import static org.junit.Assert.*;
 
 public class ChartSeriesTest {
+    @Test public void explicitSecondPreviewBinsRetainActualCadence(){java.util.List<ChartSeries.Sample> samples=new java.util.ArrayList<>();for(int i=0;i<10;i++)samples.add(new ChartSeries.Sample((long)i*1000,(i+1)*1000,.1+i));assertEquals(10,ChartSeries.aggregate(samples,0,10000,50).size());}
+    @Test public void explicitEpochStartsPreserveShortPausesInsideOneDisplayColumn(){
+        List<ChartSeries.Bar> bars=ChartSeries.aggregate(Arrays.asList(new ChartSeries.Sample(0L,20000,0d),new ChartSeries.Sample(80000L,100000,1d)),0,120000,1);assertEquals(2,bars.size());assertEquals(20000,bars.get(0).to);assertEquals(80000,bars.get(1).from);assertEquals(0,bars.get(0).value,0);
+        bars=ChartSeries.aggregate(Arrays.asList(new ChartSeries.Sample(0L,20000,1d),new ChartSeries.Sample(20500L,22000,2d)),0,120000,1);assertEquals(2,bars.size());assertEquals(20500,bars.get(1).from);
+    }
     @Test public void finiteExtremeImportsDoNotOverflowTheDisplayMean(){
         List<ChartSeries.Bar> bars=ChartSeries.aggregate(Arrays.asList(new ChartSeries.Sample(60000,Double.MAX_VALUE),new ChartSeries.Sample(120000,Double.MAX_VALUE)),0,120000,1);
         assertEquals(1,bars.size());assertEquals(Double.MAX_VALUE,bars.get(0).value,0);assertTrue(Double.isFinite(bars.get(0).value));

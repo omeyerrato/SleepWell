@@ -22,7 +22,7 @@ public class RootVisualTest {
             assertTrue(device.wait(Until.hasObject(By.desc(tab).selected(true)),5000));device.waitForIdle();assertTrue(device.takeScreenshot(new File(folder,"root-"+tab.toLowerCase(java.util.Locale.ROOT)+".png")));
             if(tab.equals("Report")){
                 UiObject2 chart=device.findObject(By.descStartsWith("movement chart."));
-                if(chart!=null){chart.click();device.waitForIdle();assertTrue(device.hasObject(By.descStartsWith("movement at ")));assertTrue(device.takeScreenshot(new File(folder,"root-report-selected.png")));}
+                if(chart!=null){chart.click();device.waitForIdle();android.os.SystemClock.sleep(150);assertTrue(device.hasObject(By.descStartsWith("movement at ")));assertTrue(device.takeScreenshot(new File(folder,"root-report-selected.png")));}
             }
             assertFalse(device.hasObject(By.textContains("feature matrix")));assertFalse(device.hasObject(By.text("Export session CSV")));
         }

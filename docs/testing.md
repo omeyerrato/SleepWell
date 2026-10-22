@@ -15,7 +15,8 @@ and unique/stable math task choices. AppearancePolicyTest adds boundary and fixe
 theme cases, including midnight wrapping and bounded text scales. There are 18
 local test methods at that milestone. ChartSeriesTest adds five display-aggregation
 tests (dense average, explicit/implicit gaps, true zero/invalid values, short final
-epoch, finite extreme imports), bringing the current total to 23.
+epoch, finite extreme imports), bringing that milestone total to 23. TrackingClockTest (5), SessionTimingTest (3),
+ClipBudgetTest (2) and two more ChartSeriesTest cases bring the current total to 35.
 
 ## Personal phone: preserve installation and data
 
@@ -31,12 +32,14 @@ both APKs in place, and runs a hard-coded allowlist of silent tests:
 python scripts/device_verification.py --adb /path/to/adb --serial DEVICE
 python scripts/device_verification.py --adb /path/to/adb --serial DEVICE --flow appearance
 python scripts/device_verification.py --adb /path/to/adb --serial DEVICE --flow charts
+python scripts/device_verification.py --adb /path/to/adb --serial DEVICE --flow tracking
+python scripts/device_storage_verification.py --adb /path/to/adb --serial DEVICE
 ```
 
 Backups and output are under ignored `.device-backups/`; actual screenshots are
-under ignored `captures/roots/`. Do not commit these private files. The helper
-does not schedule alarms, start tracking or the microphone, change power state,
-or uninstall anything. It checks the instrumentation result rather than relying
+under ignored `captures/<flow>/`. Do not commit these private files. The helper
+does not schedule alarms, start the microphone, change power state or uninstall
+anything. Only the explicit tracking flow starts a movement-only session. It checks the instrumentation result rather than relying
 on the shell command's zero exit code.
 
 `RootVisualTest` exercises Tonight/Report/Settings navigation and selected state,
@@ -67,3 +70,23 @@ Screenshot capture is not a pixel-regression acceptance test. Compare actual
 images with each numbered design board, record defects in DESIGN-REVIEW.md,
 correct them and request the independent reviewer's fresh assessment. Responsive,
 large-font, contrast and remaining permission/error states still need coverage.
+
+## Tracking and storage checks
+
+`TrackingFlowTest` first asserts no ringing alarm, wake check, existing recording,
+or enabled stored alarm. It never disables an alarm to satisfy these conditions.
+Microphone, clips, lullaby and light are forced off and their exact original key
+presence/values restored. Only its captured new session ID is removed after
+verifying the report. Failure injection uses a separate UUID-named DB and restores
+the service's storage factory. No fake sensor values enter the production journey.
+The short recording is controlled verification, not an overnight accuracy result.
+
+`StorageMigrationTest` uses only isolated UUID-named databases and no AlarmManager
+or preference effects. The storage helper backs up the whole private tree and
+installed APK, runs these isolated tests before deliberately opening the new app,
+then compares original logical column values and SQLite integrity. It avoids an
+incompatible APK downgrade if schema migration has already happened. Format 2
+exports preserve pause/active/interval provenance; format 1 remains readable.
+Real document-picker export/import, microphone permission states and overnight
+reliability still need their own device evidence. Never use a destructive reset
+to work around a failed verification test.

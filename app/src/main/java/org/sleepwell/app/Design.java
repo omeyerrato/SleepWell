@@ -43,14 +43,18 @@ final class Design {
     static CharSequence timeText(String value){android.text.SpannableString span=new android.text.SpannableString(value);int suffix=value.lastIndexOf(' ');if(suffix>=0)span.setSpan(new android.text.style.RelativeSizeSpan(.55f),suffix,value.length(),0);return span;}
     static void pad(View v,int h,int vertical){v.setPadding(dp(v.getContext(),h),dp(v.getContext(),vertical),dp(v.getContext(),h),dp(v.getContext(),vertical));}
     static LinearLayout page(Activity a,boolean night,Integer destination,java.util.function.IntConsumer navigate){
-        Appearance.Palette palette=Appearance.palette(a);boolean dark=night&&palette.dark;
+        return page(a,night,destination,navigate,Appearance.palette(a));
+    }
+    static LinearLayout darkPage(Activity a){return page(a,true,null,n->{},new Appearance.Palette(0,Appearance.contrast(a)));}
+    private static LinearLayout page(Activity a,boolean night,Integer destination,java.util.function.IntConsumer navigate,Appearance.Palette palette){
+        boolean dark=night&&palette.dark;
         a.getWindow().setDecorFitsSystemWindows(false);
         a.getWindow().getDecorView(); // Create decor before querying the controller during onCreate.
         a.getWindow().setNavigationBarContrastEnforced(false);
         a.getWindow().setStatusBarContrastEnforced(false);
         a.getWindow().getInsetsController().setSystemBarsAppearance(dark?0:WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
             WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
-        LinearLayout root=col(a);root.setBackgroundColor(night?palette.bg:CREAM);root.setContentDescription(night?"Tonight · "+AppearancePolicy.THEMES[palette.phase]:null);
+        LinearLayout root=col(a);root.setBackgroundColor(night?palette.bg:CREAM);root.setContentDescription(night&&destination!=null?"Tonight · "+AppearancePolicy.THEMES[palette.phase]:null);
         root.setOnApplyWindowInsetsListener((v,i)->{Insets bars=i.getInsets(WindowInsets.Type.systemBars()|WindowInsets.Type.displayCutout()|WindowInsets.Type.ime());v.setPadding(bars.left,bars.top,bars.right,bars.bottom);return i;});
         ScrollView scroll=new ScrollView(a);scroll.setFillViewport(true);scroll.setClipToPadding(false);scroll.setVerticalScrollBarEnabled(false);root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         LinearLayout body=col(a);pad(body,24,16);scroll.addView(body,new ScrollView.LayoutParams(-1,-1));
@@ -111,6 +115,14 @@ final class Design {
                 case "contrast":c.drawCircle(12,12,10,paint);paint.setStyle(Paint.Style.FILL);c.drawArc(2,2,22,22,90,180,false,paint);paint.setStyle(Paint.Style.STROKE);break;
                 case "bulb":c.drawCircle(12,9,7,paint);c.drawLine(7,14,9,20,paint);c.drawLine(17,14,15,20,paint);c.drawLine(9,20,15,20,paint);c.drawLine(10,23,14,23,paint);break;
                 case "info":c.drawCircle(12,12,10,paint);c.drawLine(12,10,12,18,paint);c.drawCircle(12,6,0.7f,paint);break;
+                case "phone":c.drawRoundRect(7,2,17,22,2,2,paint);c.drawLine(11,19,13,19,paint);c.drawArc(1,5,8,19,120,120,false,paint);c.drawArc(16,5,23,19,-60,120,false,paint);break;
+                case "mic":c.drawRoundRect(9,1,15,16,3,3,paint);c.drawArc(5,6,19,21,0,180,false,paint);c.drawLine(12,20,12,23,paint);break;
+                case "pause":paint.setStrokeWidth(4);c.drawLine(7,4,7,20,paint);c.drawLine(17,4,17,20,paint);break;
+                case "play":p.moveTo(6,3);p.lineTo(21,12);p.lineTo(6,21);p.close();paint.setStyle(Paint.Style.FILL);c.drawPath(p,paint);paint.setStyle(Paint.Style.STROKE);break;
+                case "tracking":for(int i=0;i<10;i++){double angle=i*Math.PI/5;paint.setStyle(Paint.Style.FILL);c.drawCircle(12+(float)Math.cos(angle)*9,12+(float)Math.sin(angle)*9,i<3?1.4f:1,paint);}paint.setStyle(Paint.Style.STROKE);c.drawArc(3,3,21,21,100,48,false,paint);break;
+                case "sonar":c.drawCircle(4,12,1,paint);c.drawArc(0,6,12,18,-65,130,false,paint);c.drawArc(-3,2,20,22,-65,130,false,paint);c.drawArc(-6,-2,27,26,-65,130,false,paint);break;
+                case "stop":paint.setStyle(Paint.Style.FILL);c.drawRoundRect(4,4,20,20,2,2,paint);paint.setStyle(Paint.Style.STROKE);break;
+                case "check":c.drawLine(4,12,10,18,paint);c.drawLine(10,18,21,5,paint);break;
                 case "external":p.moveTo(10,4);p.lineTo(3,4);p.lineTo(3,21);p.lineTo(20,21);p.lineTo(20,14);c.drawPath(p,paint);c.drawLine(11,13,22,2,paint);c.drawLine(15,2,22,2,paint);c.drawLine(22,2,22,9,paint);break;
                 default:c.drawCircle(12,13,8,paint);c.drawLine(12,8,12,13,paint);c.drawLine(12,13,16,15,paint);c.drawLine(3,3,6,1,paint);c.drawLine(18,1,21,3,paint);
             }c.restore();

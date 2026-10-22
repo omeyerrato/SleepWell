@@ -16,9 +16,9 @@ Wearables and watch companions are excluded from this scope.
 - Original Daybreak and Pulse alarm tones, Android's default alarm sound, or your own audio file; configurable alarm-stream volume, gradual ramp, vibration, and optional loud backup escalation.
 - Math, matching pairs, sequence, retyping, shaking, and enrolled NFC challenges. Configurable rounds, limited snoozes, optional screen pinning, and post-dismissal wake-up checks.
 - Optional accessibility-based return to the active alarm, plus a bedtime guard for explicitly selected distracting apps. Emergency dismissal, calls, and Android Settings remain available.
-- User-started overnight accelerometer and ambient-light tracking, with real movement/noise/light graphs and local session history.
+- Native user-started tracking setup and live movement, same-session pause/resume, excluded paused duration and saved reports. Optional light/noise capture; real measured graphs and local history. Only short movement-only flows have current device verification.
 - An experimental early wake-up window based on sustained movement, with the fixed alarm scheduled independently. Movement is not a measured sleep stage.
-- Optional microphone amplitude analysis and up to 60 ten-second noise-triggered WAV recordings per night; seven-day clip retention and local playback. **No sound classification yet.**
+- Optional microphone amplitude analysis and up to 60 ten-second noise-triggered WAV recordings per session across pauses; seven-day pruning when a new clip-saving session starts and local playback. Microphone lifecycle still needs hardware verification. **No sound classification yet.**
 - Rain and brown-noise sound loops with a sleep timer; bedtime reminders; nap alarms; recorded-duration goals, notes, tags, subjective ratings, and a seven-day session average.
 - CSV export, versioned JSON data backup, validated transactional restore, and deletion of local history.
 - Saved Changing light colors for Tonight (automatic local-clock phases or fixed Midnight/Pre-dawn/Dawn), text-size options, high-contrast controls and reduced-motion press feedback. Smart-light connectivity remains absent.
@@ -43,7 +43,7 @@ On Windows use `gradlew.bat`. Set `ANDROID_HOME` or an untracked `local.properti
 2. Review battery restrictions. On Samsung, put SleepWell in **Never auto sleeping apps**.
 3. Create an alarm, choose its challenge and sound, and enable it. Use the ten-second quiet test first.
 4. Optionally choose distracting apps in **Bedtime guard**, then enable the guard in Android Accessibility settings. This is voluntary friction, not an unbreakable device lock.
-5. To track a night, choose whether to use the microphone, then tap **Start sleep tracking** on Tonight. Place the phone uncovered on the mattress; a bedside table does not transmit body movement reliably. Tap **End night & review** to review recorded data.
+5. To track a night, tap **Start sleep tracking** on Tonight, review the sensor and optional microphone settings, then **Start tracking**. Place the phone uncovered on the mattress; a bedside table does not transmit body movement reliably. Use **Pause tracking** / **Resume tracking** as needed, then **Stop tracking → End & review**.
 
 Report opens the latest real recording; its calendar opens history. Exports and
 restore are under **Settings → Data & privacy**. Inter's license and illustration

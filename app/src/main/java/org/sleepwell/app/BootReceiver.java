@@ -9,9 +9,9 @@ public class BootReceiver extends BroadcastReceiver {
         if(i.getAction()==null || !TRUSTED.contains(i.getAction())) return;
         try { Scheduler.all(c); } catch(SecurityException e) { Prefs.put(c,"lastError","Exact alarms need permission after restart."); }
         if(Intent.ACTION_BOOT_COMPLETED.equals(i.getAction())) {
-            Prefs.put(c,"ringing",false); Prefs.put(c,"tracking",false); Prefs.put(c,"session",0L);
+            Prefs.put(c,"ringing",false); Prefs.put(c,"tracking",false);Prefs.put(c,"trackingPaused",false); Prefs.put(c,"session",0L);
             try(Store s=new Store(c)) {
-                for(org.json.JSONObject row:s.rows("SELECT id FROM sessions WHERE end IS NULL")) s.end(row.optLong("id"),true);
+                s.recoverInterrupted();
             }
         }
     }

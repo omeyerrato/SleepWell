@@ -22,7 +22,7 @@ import java.util.*;
 public class MainActivity extends Activity {
     private Store store;private int tab=0;private Alarm pendingTone;private MediaPlayer preview;private NfcAdapter nfc;
     private static final String[] TABS={"Tonight","Alarms","History","Bedtime","Setup"};
-    private static final int MIC=20,NOTIFY=21,TONE=22,EXPORT_JSON=23,EXPORT_CSV=24,IMPORT=25;
+    private static final int NOTIFY=21,TONE=22,EXPORT_JSON=23,EXPORT_CSV=24,IMPORT=25;
     private final Handler appearanceClock=new Handler(Looper.getMainLooper());
     private final Runnable clockUpdate=new Runnable(){public void run(){if(tab==0&&Appearance.automatic(MainActivity.this)){int phase=Appearance.palette(MainActivity.this).phase;if(phase!=renderedPhase)render();}appearanceClock.postDelayed(this,30000);}};
     private int renderedPhase=-1;
@@ -30,17 +30,13 @@ public class MainActivity extends Activity {
         super.onCreate(state);store=new Store(this);Notifications.channels(this);
         if(getIntent().getBooleanExtra("visualReview",false))getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         if(state!=null)tab=state.getInt("tab");
+        if(getIntent().getBooleanExtra("showReport",false))tab=2;
         if(store.alarms().isEmpty())store.save(new Alarm(1));
         if(!TrackingService.running && Prefs.flag(this,"tracking")) {
-            for(JSONObject s:store.rows("SELECT id,start FROM sessions WHERE end IS NULL")) {
-                long id=s.optLong("id");List<JSONObject> last=store.rows("SELECT MAX(time) AS last FROM epochs WHERE session=?",""+id);
-                long end=last.isEmpty()?s.optLong("start"):last.get(0).optLong("last",s.optLong("start"));
-                android.content.ContentValues v=new android.content.ContentValues();v.put("end",end);v.put("interrupted",1);store.getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id});
-            }
-            Prefs.put(this,"tracking",false);Prefs.put(this,"session",0L);
+            store.recoverInterrupted();Prefs.put(this,"tracking",false);Prefs.put(this,"trackingPaused",false);Prefs.put(this,"session",0L);
         }
     }
-    @Override protected void onResume() {super.onResume();render();appearanceClock.removeCallbacks(clockUpdate);appearanceClock.postDelayed(clockUpdate,30000);}
+    @Override protected void onResume() {super.onResume();if(!TrackingService.running)try{store.recoverInterrupted();}catch(Exception e){Prefs.put(this,"trackingError","An interrupted record could not be finalized. Free storage and reopen the app.");}render();appearanceClock.removeCallbacks(clockUpdate);appearanceClock.postDelayed(clockUpdate,30000);}
     @Override protected void onPause(){appearanceClock.removeCallbacks(clockUpdate);super.onPause();}
     @Override public void onSaveInstanceState(Bundle b) {super.onSaveInstanceState(b);b.putInt("tab",tab);}
     private void navigate(int destination){tab=destination==0?0:destination==1?2:4;render();}
@@ -52,7 +48,7 @@ public class MainActivity extends Activity {
     }
     private void settingsHome(LinearLayout body){Design.header(body,"Settings",null);
         settingsRow(body,"bell","Alarms","Alarm time, sound and behavior",()->{tab=1;render();});
-        settingsRow(body,"moon","Sleep tracking","Phone movement and microphone",()->{tab=5;render();});
+        settingsRow(body,"moon","Sleep tracking","Phone movement and microphone",this::tracking);
         settingsRow(body,"wave","Sound analysis","Recording and sound sensitivity",()->{tab=5;render();});
         settingsRow(body,"shield","Bedtime guard","Reduce distractions at night",()->{tab=3;render();});
         settingsRow(body,"palette","Appearance","Light, dark and theme options",()->{startActivity(new Intent(this,AppearanceActivity.class).putExtra("visualReview",getIntent().getBooleanExtra("visualReview",false)));if(Appearance.reduced(this))overridePendingTransition(0,0);});
@@ -64,12 +60,12 @@ public class MainActivity extends Activity {
         LinearLayout row=Design.row(this);row.setMinimumHeight(Ui.dp(this,74));Design.Icon image=new Design.Icon(this,icon,Design.BROWN);image.setPadding(Ui.dp(this,8),Ui.dp(this,8),Ui.dp(this,8),Ui.dp(this,8));image.setBackground(Design.shape(this,Design.SOFT,15));LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48));ip.rightMargin=Ui.dp(this,20);row.addView(image,ip);
         LinearLayout labels=Design.col(this);Design.text(labels,title,17,600,Design.INK);Design.space(labels,5);Design.text(labels,subtitle,13,400,Design.MUTED);row.addView(labels,new LinearLayout.LayoutParams(0,-2,1));Design.Icon arrow=new Design.Icon(this,icon.equals("github")?"external":"chevron",Design.INK);row.addView(arrow,new LinearLayout.LayoutParams(Ui.dp(this,20),Ui.dp(this,20)));row.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,8));row.setOnClickListener(v->action.run());body.addView(row);Design.line(body);
     }
-    private void report(LinearLayout body){ReportScreen.render(this,body,store,new ReportScreen.Actions(){public void history(){tab=7;render();}public void tonight(){tab=0;render();}public void detail(long id){showNight(id);}});}
+    private void report(LinearLayout body){String failure=Prefs.text(this,"trackingError","");if(!failure.isEmpty()){Design.text(body,"Recording needs attention: "+failure,13,500,Design.BROWN);Design.space(body,12);}ReportScreen.render(this,body,store,new ReportScreen.Actions(){public void history(){tab=7;render();}public void tonight(){tab=0;render();}public void detail(long id){showNight(id);}});}
     private void privacy(LinearLayout body){Design.header(body,"Data & privacy",()->{tab=4;render();});Design.text(body,"Your sleep data stays on this phone.",16,400,Design.MUTED);Design.space(body,24);
         LinearLayout summary=Design.col(this);Design.pad(summary,20,20);summary.setBackground(Design.shape(this,Design.SOFT,18));Design.text(summary,"On this phone",22,600,Design.INK);Design.space(summary,14);long count=store.rows("SELECT COUNT(*) AS count FROM sessions").get(0).optLong("count");Design.text(summary,count+(count==1?" recorded session":" recorded sessions"),25,600,Design.INK);body.addView(summary);Design.space(body,24);
         Design.text(body,"Backup & export",20,600,Design.INK);Design.space(body,8);Design.text(body,"Backups include alarms, records, graphs and notes. Audio files and app preferences are excluded. Restored alarms start switched off.",14,400,Design.MUTED);
         LinearLayout exports=Design.row(this),exportColumn=Design.col(this),importColumn=Design.col(this);LinearLayout.LayoutParams exportParams=new LinearLayout.LayoutParams(0,-2,1);exportParams.rightMargin=Ui.dp(this,6);exports.addView(exportColumn,exportParams);LinearLayout.LayoutParams importParams=new LinearLayout.LayoutParams(0,-2,1);importParams.leftMargin=Ui.dp(this,6);exports.addView(importColumn,importParams);body.addView(exports);Design.button(exportColumn,"Export backup",true,()->export(EXPORT_JSON));Design.button(importColumn,"Import backup",false,()->startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).setType("application/json").addCategory(Intent.CATEGORY_OPENABLE),IMPORT));Design.item(body,"file","Export records as CSV","",()->export(EXPORT_CSV));Design.line(body);Design.space(body,20);
-        Design.text(body,"Recordings",20,600,Design.INK);Design.space(body,8);Design.text(body,"Sound clips stay in private storage. Clips older than 7 days are removed when a new recording starts. Microphone use is optional.",14,400,Design.MUTED);Design.space(body,20);
+        Design.text(body,"Recordings",20,600,Design.INK);Design.space(body,8);Design.text(body,"Sound clips stay in private storage. Clips older than 7 days are removed when a new session with audio-clip saving starts. Microphone use is optional.",14,400,Design.MUTED);Design.space(body,20);
         Design.button(body,"Delete all sleep history",false,()->new AlertDialog.Builder(this).setTitle("Delete recordings and nights?").setMessage("This removes local sleep sessions, graphs, notes and audio. Alarms remain.").setPositiveButton("Delete history",(d,w)->{if(TrackingService.running){Ui.toast(this,"End tracking before deleting history.");return;}stopPreview();for(JSONObject clip:store.rows("SELECT path FROM clips"))FileSafety.deleteClip(this,clip.optString("path"));store.eraseHistory();render();}).setNegativeButton("Keep",null).show());
     }
     private void tonight(LinearLayout body) {
@@ -78,12 +74,13 @@ public class MainActivity extends Activity {
             public void bedtime(){pickTime("bedtime",1350);}
             public void windDown(){tab=3;render();}
             public void settings(){tab=4;render();}
-            public void start(){if(TrackingService.running){stopTracking();tab=2;new Handler(Looper.getMainLooper()).postDelayed(MainActivity.this::render,400);}else startTracking();}
+            public void start(){tracking();}
             public void activeAlarm(){startActivity(new Intent(MainActivity.this,AlarmActivity.class));}
             public void confirmCheck(){int id=Prefs.number(MainActivity.this,"checkPending",0);Scheduler.cancel(MainActivity.this,id,Scheduler.CHECK);Prefs.put(MainActivity.this,"checkPending",0);render();}
             public void update(Alarm a){try{Prefs.put(MainActivity.this,"lastOccurrence_"+a.id,0L);Scheduler.schedule(MainActivity.this,a);store.save(a);}catch(SecurityException e){Ui.toast(MainActivity.this,e.getMessage());}render();}
         });
     }
+    private void tracking(){startActivityForResult(new Intent(this,TrackingActivity.class).putExtra("visualReview",getIntent().getBooleanExtra("visualReview",false)),30);}
     private void alarmList(LinearLayout body){
         LinearLayout head=Design.row(this);TextView title=Design.text(this,"Alarms",30,700,Design.INK);head.addView(title,new LinearLayout.LayoutParams(0,-2,1));head.addView(Design.iconButton(this,"plus","Add alarm",()->editAlarm(new Alarm(store.alarms().stream().mapToInt(a->a.id).max().orElse(0)+1))),new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48)));body.addView(head);Design.space(body,8);
         for(Alarm a:store.alarms()){
@@ -109,13 +106,13 @@ public class MainActivity extends Activity {
     private void history(LinearLayout body) {
         Design.header(body,"Sleep history",()->{tab=2;render();});Ui.text(body,"Recorded time is time tracked, not a clinical measure of time asleep.");
         List<JSONObject> rows=store.rows("SELECT s.*, (SELECT COUNT(*) FROM epochs e WHERE e.session=s.id) AS epochs FROM sessions s ORDER BY start DESC LIMIT 60");
-        List<JSONObject> week=store.rows("SELECT start,end FROM sessions WHERE end IS NOT NULL AND interrupted=0 AND start>=?",""+(System.currentTimeMillis()-7*86400000L));
-        if(!week.isEmpty()) {long total=0;for(JSONObject s:week)total+=s.optLong("end")-s.optLong("start");LinearLayout stats=Ui.card(body);Ui.label(stats,"LAST 7 DAYS",11,Ui.MINT);Ui.heading(stats,SleepMath.duration(total/week.size()),32);Ui.text(stats,"Average recorded session · "+week.size()+" complete sessions");}
+        List<JSONObject> week=store.rows("SELECT * FROM sessions WHERE end IS NOT NULL AND interrupted=0 AND start>=?",""+(System.currentTimeMillis()-7*86400000L));
+        if(!week.isEmpty()) {long total=0;for(JSONObject s:week)total+=store.recordedMillis(s);LinearLayout stats=Ui.card(body);Ui.label(stats,"LAST 7 DAYS",11,Ui.MINT);Ui.heading(stats,SleepMath.duration(total/week.size()),32);Ui.text(stats,"Average recorded session · "+week.size()+" complete sessions");}
         if(rows.isEmpty()){LinearLayout empty=Ui.card(body);Ui.heading(empty,"Your story starts tonight.",24);Ui.text(empty,"Start a night to record movement, light and optional room noise. Your real data will appear here.");}
         for(JSONObject s:rows) {
             LinearLayout card=Ui.card(body);long id=s.optLong("id"),start=s.optLong("start"),end=s.optLong("end",System.currentTimeMillis());
             Ui.label(card,Instant.ofEpochMilli(start).atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("EEE, dd MMM · HH:mm")),12,Ui.MINT);
-            Ui.heading(card,SleepMath.duration(end-start),32);Ui.text(card,s.isNull("end")?"Tracking in progress":s.optInt("interrupted")==1?"Interrupted session · sensor coverage may be incomplete":"Recorded time · "+s.optInt("epochs")+" samples");
+            Ui.heading(card,SleepMath.duration(store.recordedMillis(s)),32);Ui.text(card,s.isNull("end")?"Tracking in progress":s.optInt("interrupted")==1?"Interrupted session · sensor coverage may be incomplete":"Recorded time · "+s.optInt("epochs")+" samples");
             if(!s.optString("note","").isEmpty())Ui.text(card,s.optString("note"));
             Ui.button(card,"Explore night",()->showNight(id));
         }
@@ -128,7 +125,7 @@ public class MainActivity extends Activity {
         Ui.heading(content,"Movement",22);Ui.text(content,"Measured acceleration in one-minute epochs. Dense bars average contiguous readings; gaps remain blank.");content.addView(new GraphView(this,epochs,"movement",recordingStart,recordingEnd),new LinearLayout.LayoutParams(-1,Ui.dp(this,160)));
         Ui.heading(content,"Room noise",22);Ui.text(content,"Sample-weighted microphone amplitude, not calibrated decibels. Missing readings mean the microphone was off or unavailable.");content.addView(new GraphView(this,epochs,"noise",recordingStart,recordingEnd),new LinearLayout.LayoutParams(-1,Ui.dp(this,130)));
         Ui.heading(content,"Room light",22);content.addView(new GraphView(this,epochs,"light",recordingStart,recordingEnd),new LinearLayout.LayoutParams(-1,Ui.dp(this,110)));
-        int goal=Prefs.number(this,"goal",480);long duration=s.isNull("end")?0:s.optLong("end")-s.optLong("start");Ui.text(content,"Recorded duration / goal: "+SleepMath.duration(duration)+" / "+goal/60.0+"h. This is not a sleep-quality score.");
+        int goal=Prefs.number(this,"goal",480);long duration=store.recordedMillis(s);Ui.text(content,"Recorded duration / goal: "+SleepMath.duration(duration)+" / "+goal/60.0+"h. Paused time is excluded. This is not a sleep-quality score.");
         for(JSONObject clip:store.rows("SELECT * FROM clips WHERE session=? ORDER BY time",""+id)) {
             String title=Instant.ofEpochMilli(clip.optLong("time")).atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("HH:mm"));
             Ui.button(content,"▶ Loud sound · "+title+" · 10 sec",()->playClip(clip.optString("path")));
@@ -181,7 +178,7 @@ public class MainActivity extends Activity {
         Ui.text(reliable,"On Samsung, also add SleepWell to Never auto sleeping apps. Force stopping or powering off the phone prevents alarms. Keep an independent backup while testing this early release.");
         LinearLayout recording=Ui.card(body);Ui.heading(recording,"Choose what gets recorded",23);
         Ui.toggle(recording,"Night noise analysis","Microphone records amplitude while tracking. Sound labels are not classified in this release.",Prefs.flag(this,"noiseEnabled"),on->{Prefs.put(this,"noiseEnabled",on);if(on&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO},NOTIFY);});
-        Ui.toggle(recording,"Save loud sound clips","Optional 10-second local WAV clips. Maximum 60 per night; deleted automatically after 7 days.",Prefs.flag(this,"saveClips"),on->Prefs.put(this,"saveClips",on));
+        Ui.toggle(recording,"Save loud sound clips","Optional 10-second local WAV clips. Maximum 60 per session; clips older than 7 days are pruned when clip saving next starts.",Prefs.flag(this,"saveClips"),on->Prefs.put(this,"saveClips",on));
         Ui.range(recording,"Noise trigger sensitivity threshold",Prefs.number(this,"noiseThreshold",20),5,100,n->Prefs.put(this,"noiseThreshold",n));
         Ui.text(recording,"Lower values record quieter sounds. Threshold units are relative amplitude, not dB. Changes to recording mode apply next night.");
         Ui.toggle(recording,"Smart wake waits for duration goal","Early triggering is disabled until the current session reaches your goal. The fixed alarm still rings on time.",Prefs.flag(this,"smartNeedsGoal"),on->Prefs.put(this,"smartNeedsGoal",on));
@@ -195,26 +192,20 @@ public class MainActivity extends Activity {
     }
     private void status(LinearLayout p,String title,boolean granted,Runnable request) {Ui.button(p,(granted?"✓  ":"○  ")+title+(granted?" · ready":" · review"),request);}
     private void open(Intent i) {try{startActivity(i);}catch(ActivityNotFoundException e){Ui.toast(this,"This setting is unavailable on this device.");}}
-    private void startTracking() {
-        if(TrackingService.running)return;
-        if(Prefs.flag(this,"noiseEnabled")&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED) {requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO},MIC);return;}
-        try{startForegroundService(new Intent(this,TrackingService.class));new Handler(Looper.getMainLooper()).postDelayed(this::render,500);}catch(Exception e){Ui.toast(this,"Could not start tracking: "+e.getMessage());}
-    }
-    private void stopTracking() {startService(new Intent(this,TrackingService.class).setAction("STOP"));}
-    @Override public void onRequestPermissionsResult(int r,String[] p,int[] g) {super.onRequestPermissionsResult(r,p,g);if(r==MIC){if(g.length>0&&g[0]==PackageManager.PERMISSION_GRANTED)startTracking();else{Ui.toast(this,"Microphone denied. Turn noise analysis off to use movement-only tracking.");}}render();}
+    @Override public void onRequestPermissionsResult(int r,String[] p,int[] g) {super.onRequestPermissionsResult(r,p,g);render();}
     private void playClip(String filename) {
         stopPreview();try{preview=new MediaPlayer();preview.setDataSource(FileSafety.clip(this,filename).getAbsolutePath());preview.prepare();preview.setOnCompletionListener(p->stopPreview());preview.start();}catch(Exception e){stopPreview();Ui.toast(this,"Recording unavailable.");}
     }
     private void stopPreview() {if(preview!=null){preview.release();preview=null;}}
     private void export(int type) {Intent i=new Intent(Intent.ACTION_CREATE_DOCUMENT).addCategory(Intent.CATEGORY_OPENABLE).setType(type==EXPORT_JSON?"application/json":"text/csv").putExtra(Intent.EXTRA_TITLE,"sleepwell-"+LocalDate.now()+(type==EXPORT_JSON?".json":".csv"));startActivityForResult(i,type);}
     @Override public void onActivityResult(int request,int result,Intent data) {
-        super.onActivityResult(request,result,data);if(result!=RESULT_OK||data==null||data.getData()==null)return;Uri uri=data.getData();
+        super.onActivityResult(request,result,data);if(request==30){if(result==RESULT_OK)tab=2;render();return;}if(result!=RESULT_OK||data==null||data.getData()==null)return;Uri uri=data.getData();
         try {
             if(request==TONE) {if(pendingTone==null){Ui.toast(this,"Please choose the audio file again from Edit alarm.");return;}getContentResolver().takePersistableUriPermission(uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);pendingTone.tone=uri.toString();Prefs.put(this,"lastOccurrence_"+pendingTone.id,0L);store.save(pendingTone);try{Scheduler.schedule(this,pendingTone);}catch(SecurityException e){pendingTone.enabled=false;store.save(pendingTone);}Ui.toast(this,"Custom audio saved. Test it before relying on it.");}
             else if(request==EXPORT_JSON||request==EXPORT_CSV) {
                 String content;
                 if(request==EXPORT_JSON)content=store.backup().toString(2);
-                else {StringBuilder b=new StringBuilder("start_iso,end_iso,recorded_minutes,interrupted,rating,notes\r\n");for(JSONObject s:store.rows("SELECT * FROM sessions ORDER BY start")) {long start=s.optLong("start");boolean ended=!s.isNull("end");b.append(Instant.ofEpochMilli(start)).append(',').append(ended?Instant.ofEpochMilli(s.optLong("end")):"").append(',').append(ended?(s.optLong("end")-start)/60000:"").append(',').append(s.optInt("interrupted")).append(',').append(s.optInt("rating")).append(',').append(SleepMath.csv(s.optString("note"))).append("\r\n");}content=b.toString();}
+                else {StringBuilder b=new StringBuilder("start_iso,end_iso,recorded_minutes,interrupted,rating,notes\r\n");for(JSONObject s:store.rows("SELECT * FROM sessions ORDER BY start")) {long start=s.optLong("start");boolean ended=!s.isNull("end");b.append(Instant.ofEpochMilli(start)).append(',').append(ended?Instant.ofEpochMilli(s.optLong("end")):"").append(',').append(ended?store.recordedMillis(s)/60000:"").append(',').append(s.optInt("interrupted")).append(',').append(s.optInt("rating")).append(',').append(SleepMath.csv(s.optString("note"))).append("\r\n");}content=b.toString();}
                 try(OutputStream out=getContentResolver().openOutputStream(uri,"wt")){if(out==null)throw new IOException("No output stream");out.write(content.getBytes(StandardCharsets.UTF_8));}Ui.toast(this,"Export saved. Backups contain graphs and notes, but exclude audio files and settings.");
             } else if(request==IMPORT) {
                 if(TrackingService.running||Prefs.flag(this,"ringing")){Ui.toast(this,"End tracking and alarms before restoring.");return;}

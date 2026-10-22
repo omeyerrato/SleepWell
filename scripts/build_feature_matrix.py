@@ -33,7 +33,7 @@ EXTRA = [
     ("Laughter / instrument microphone task", "10", "alarms/captcha.html", "missing", "Requires microphone consent and detection evaluated beyond raw amplitude."),
     ("Tilt maze / jumping / flags / counting tasks", "10", "alarms/captcha.html", "missing", "Additional phone-only categories; original content needed."),
     ("Walking task", "10", "alarms/captcha.html", "missing", "Step sensor or measured motion required; shaking is not walking."),
-    ("Pause/resume within one tracked session", "18", "sleep/sleep_tracking.html", "missing", "Must preserve explicit gaps; stopping/starting separate sessions is insufficient."),
+    ("Pause/resume within one tracked session", "16,18,02", "sleep/sleep_tracking.html", "partial", "Movement-only setup/start/pause/recreation/resume/stop/reopened-report device flow passes. Same session, persisted pause gaps and monotonic active duration; microphone restart, overnight and broader device evidence remain unverified."),
     ("Charging condition / standby mode", "16,28", "sleep/automatic_sleep_tracking.html", "missing", "Needs real conditions and compatible background service start handling."),
     ("After-fall-asleep / false-start rejection", "28", "sleep/automatic_sleep_tracking.html", "missing", "Needs opt-in activity data and measured false-start behavior."),
     ("Missed-night estimate review / provenance", "28,24", "sleep/sleep_time_estimation.html", "missing", "Duration only; never fabricate sensor/audio graphs for untracked nights."),
@@ -100,15 +100,35 @@ for row in rows:
     elif row["feature"] == "Dashboard / tabs":
         row["notes"]="Partial: native Tonight/Report/Settings roots and real theme settings. User-arranged cards and other home configurations absent; no all-screen acceptance claim."
     elif row["feature"] == "Accelerometer tracking":
-        row["implementation"] += ["RecordChart.java", "ChartSeries.java"]
-        row["validation"]="Earlier 232-second movement-only capture; ChartSeriesTest 5 passing; labeled synthetic ChartVisualTest rendering pass; full-night/device coverage incomplete"
+        row["implementation"]=["TrackingActivity.java", "TrackingService.java", "TrackingClock.java", "Store.java", "RecordChart.java", "ChartSeries.java"]
+        row["screens"]="16,18,02,29"
+        row["validation"]="TrackingFlowTest 2 passing on S23 2026-10-23 (movement only, live selection/focus, pause/recreate/resume/reopen); ChartSeriesTest 7 passing; full-night and broader-device coverage incomplete"
+        row["notes"]="Measured gravity-filtered RMS: real 1-second live previews, minute saved epochs and partial final windows. Explicit interval starts preserve pauses; unavailable samples stay null. No stage estimator or clinical validation. Narrow movement flow accepted; full screens remain partial."
+    elif row["feature"] in ("Manual sleep tracking", "Pause/resume within one tracked session", "Tracking pause / standby / battery-adaptive sampling"):
+        row["implementation"]=["TrackingActivity.java", "TrackingService.java", "TrackingClock.java", "SessionTiming.java", "Store.java", "ReportScreen.java"]
+        row["screens"]="16,18,02"
+        row["validation"]="TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified."
+        if row["feature"] == "Manual sleep tracking":
+            row["notes"]="Native draft setup, actual sensor availability, Start, live status and saved Report. Back cancels setup drafts. Real movement-only journey verified; audio permission/denial and long-session checks still pending."
+        elif row["feature"] == "Tracking pause / standby / battery-adaptive sampling":
+            row["notes"]="Partial: real same-session Pause/Resume stops sensors/audio and freezes active duration. Persisted pauses and interrupted recovery exist. Standby/battery-adaptive sampling absent; mic restart hardware evidence pending."
+    elif row["feature"] == "Local data backup":
+        row["implementation"]=["Backup.java", "Store.java", "SessionTiming.java", "MainActivity.java"]
+        row["validation"]="StorageMigrationTest 4 isolated-device passes incl v1 migration, v1/v2 import, pause round trip, malformed pause rejection, interrupted recovery and atomic checkpoint rollback/retry; actual document-picker restore pending"
+        row["notes"]="Partial: format 2 includes active duration, exact epoch starts and pause intervals; format 1 stays readable. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted."
+    elif row["feature"] == "Retention / favorite album / alternate formats":
+        row["notes"]="Partial: seven-day pruning when a new clip-saving session starts, WAV only. Analysis-only and movement-only sessions do not delete clips. Favorites, manual audio export, configurable retention and other formats remain absent."
+    elif row["feature"] == "Triggered sound recordings":
+        row["implementation"]=["NoiseRecorder.java", "ClipBudget.java", "TrackingService.java", "Store.java"]
+        row["validation"]="ClipBudgetTest 2 local passes; microphone/clip lifecycle not exercised under user's sleep-time restriction"
+        row["notes"]="Code saves 10-second threshold-triggered WAV clips, shared maximum 60 and 30-second cooldown across pauses. Session clock anchors event timestamps. No classified labels; recording/restart hardware evidence still pending."
 
 for n, row in enumerate(rows, 1):
     row["id"] = f"F{n:03}"
 
 header = """# Phone feature matrix
 
-Reviewed 2026-10-22 against the supplied brief, all 12 visually inspected boards,
+Reviewed 2026-10-23 against the supplied brief, all 12 visually inspected boards,
 SCREEN-MAP.md, current code and official Sleep as Android manual. Screen numbers
 are intended reference destinations, not a claim of completed screens.
 
@@ -135,5 +155,5 @@ for row in rows:
     notes = row["notes"].replace("|", "/")
     header += f"| {row['id']} [{row['feature']}]({row['source']}) | {row['screens']} | {code} | {row['validation']} | **{row['status']}** — {notes} |\n"
 (ROOT / "docs/FEATURE-MATRIX.md").write_text(header, encoding="utf-8")
-(ROOT / "docs/feature-matrix.json").write_text(json.dumps(dict(reviewed="2026-10-22", features=rows), indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
+(ROOT / "docs/feature-matrix.json").write_text(json.dumps(dict(reviewed="2026-10-23", features=rows), indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
 print(f"Persisted {len(rows)} phone-capable feature entries")

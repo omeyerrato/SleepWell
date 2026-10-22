@@ -136,3 +136,38 @@ actual start/end so leading/trailing gaps and out-of-session filtering work.
 This is **not** a passing overnight recording, estimator or sound-analysis flow.
 Screen 02 and the full goal remain **FAIL/incomplete**. Extreme system-font
 tooltip layouts and the remaining report actions/features still need evidence.
+
+## Manual movement journey: 2026-10-23, final 01:03–01:04 captures
+
+The strict independent reviewer rechecked all seven actual Android tracking
+captures against board 06 and the saved/reopened Report against board 01.
+Its final verdict: **narrow manual movement flow passes**; full screen 16/18,
+Report 02 and the full app remain **partial/incomplete**.
+
+The accepted scope is native setup with genuine availability/draft controls,
+measured movement, same-session pause/recreation/resume, active time excluding
+pauses, saved gaps and reopened Report. Actual Collecting starts with an empty
+graph; measured one-second previews appear only when sensor data arrives. No
+sleep stage or classified sound is invented to imitate the example board.
+
+Corrections before acceptance: clipped graph labels and lower copy, missing
+Pause/Stop glyphs, incorrect sonar icon, setup overflow, moon replaced with the
+reference-style dotted signal indicator, clock/interval provenance, Off microphone
+remaining Off while paused, and compact disclosure of live preview versus saved
+minute averages. Live updates now retain the same chart View, selected time and
+focus. The device test checks keyboard focus/selection across a refresh; this is
+not a complete TalkBack or large-font certification. A redundant paused note that
+clipped against the fixed footer was replaced by the compact chart context line.
+
+The strict source review also required transactional epoch/progress writes,
+recovery using closed-pause endpoints, a session-wide clip budget/cooldown,
+calendar-time versus recording-axis separation and clock-change disclosure.
+Targeted unit/isolated database tests cover those corrections. Microphone hardware
+restart and real device clock changes were deliberately not tested during sleep.
+
+Setup states plainly that sonar and automatic starts are unavailable. Those are
+remaining implementation work, not an accepted substitute for screens 17/28.
+Missing stage/sound classification and integrations keep full Report and feature
+parity open. Overnight/reboot/Doze evidence and broader device/font/permission
+states are still required. The final root captures retain grouped icon-over-label
+navigation and a plum system navigation surface on Tonight.

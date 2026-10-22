@@ -17,6 +17,6 @@ Exact alarms schedule wake-up times. Notifications and full-screen intent access
 
 ## Storage, export, and deletion
 
-Data lives in the app's internal SQLite database, preferences, and private audio folder. Other ordinary apps cannot read it. Android automatic backup is disabled. CSV and JSON export use a document destination you choose; exported files may contain sensitive notes. JSON data backups exclude audio and preferences; they contain alarms, sessions, and sensor samples. Uninstalling deletes the app's private data. **Setup → Delete all sleep history** deletes nights, audio, graphs, and notes while preserving alarm configuration.
+Data lives in the app's internal SQLite database, preferences, and private audio folder. Other ordinary apps cannot read it. Android automatic backup is disabled. CSV and JSON export use a document destination you choose; exported files may contain sensitive notes. JSON data backups exclude audio and preferences; they contain alarms, sessions, sensor samples, pause intervals and recorded-duration provenance. Uninstalling deletes the app's private data. **Setup → Delete all sleep history** deletes nights, audio, graphs, and notes while preserving alarm configuration.
 
 No data is sent to the original reference apps or their vendors. External links open in your browser. Future network or wearable integrations require updating this policy and explicit in-app controls before collecting or transmitting data.

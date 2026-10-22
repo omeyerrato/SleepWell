@@ -1,5 +1,56 @@
 # Verification record
 
+## Manual movement recording milestone — 2026-10-23
+
+Native tracking setup → live movement → Pause → activity recreation → Resume →
+Stop → saved Report → reopened Report now has a passing, controlled S23 Ultra
+journey. This is a short movement-only recording, not an overnight/stage/audio
+validation. All existing alarms were already disabled; tests assert that
+precondition and never switch them off. Microphone, clip saving, light recording
+and sleep audio were off. No alarm, sound, vibration, screen-off or reboot test ran.
+
+- Local unit/lint/app/test APK builds passed: **35 unit tests, 0 failures;
+  lint 0 errors / 44 warnings**. Localization, deprecations and other warnings remain.
+- `TrackingFlowTest`: **2 passed in 34.672 seconds** on the final UI. Checks real
+  registered accelerometer samples, same session ID, frozen active duration and
+  unregistered sensors while paused, recreation, fresh samples after resume,
+  explicit gap boundaries, null unrequested noise/light signals, closed pauses,
+  backup validation and report persistence. It also retains chart selection and
+  keyboard focus through live data updates. Full TalkBack testing remains pending.
+- The second test injects an epoch write failure in a uniquely named test DB;
+  the service stops, clears running flags and retains an interrupted record/error.
+  No real disk-full state or personal DB corruption is induced.
+- `StorageMigrationTest`: **4 passed in 0.130 seconds**. Isolated temporary DBs
+  cover nondestructive schema 1→2 migration, format 1/2 import, exact epoch starts,
+  pause round trip, invalid-pause rejection, open/closed pause recovery and a
+  failure after epoch insert/before active-duration update. The latter rolls back
+  both writes and a retry leaves exactly one epoch.
+- Personal schema migration separately compared every original alarm/session/
+  epoch/clip column value and passed SQLite integrity. A fresh comparison after
+  the final tracking/chart/root runs confirmed every logical DB row, preference
+  key/value presence and clip hash matches the pre-tracking private backup.
+  Test sessions were inspected and then only their own rows removed in finally.
+- `ChartVisualTest`: 1 passed in 3.081 seconds; explicitly labeled synthetic
+  in-memory dense fixture only. `RootVisualTest`: 1 passed in 4.200 seconds.
+  Actual final images were inspected; Tonight's system navigation surface is plum.
+- Seven actual tracking screenshots under ignored `captures/tracking/` show setup,
+  genuine initial Collecting/empty state, real live bars, pause, resume, saved and
+  reopened reports. No graph values were copied from the boards. The setup art is
+  a standalone original asset; controls, text and charts remain native Views.
+
+The monotonic clock excludes pauses from active duration, bounds total lifetime
+and retains the original wall-time anchor for graph intervals. Calendar alarm
+comparisons still use actual wall time. A detected clock change is disclosed in
+Report. Clip timestamps share that session axis; clip count/cooldown survive
+pause/resume. Clock shifts have pure/source checks, not a real device time-change
+or audio test. Microphone restart/permission denial, 12-hour behavior, battery,
+Doze/reboot recovery and overnight signal quality remain unverified.
+
+Sonar, automatic starts, stage estimation, sound classification and the remaining
+phone features are still missing or partial. Screens 16/18 are not fully accepted;
+the strict visual/behavior gate covers only the stated manual movement flow.
+The full goal remains **FAIL/incomplete**. Earlier records below are historical.
+
 ## Changing light correction milestone — 2026-10-22
 
 - All 12 supplied PNG boards were visually inspected, and the 17 ZIP entries
