@@ -21,6 +21,7 @@ Wearables and watch companions are excluded from this scope.
 - Optional microphone amplitude analysis and up to 60 ten-second noise-triggered WAV recordings per night; seven-day clip retention and local playback. **No sound classification yet.**
 - Rain and brown-noise sound loops with a sleep timer; bedtime reminders; nap alarms; recorded-duration goals, notes, tags, subjective ratings, and a seven-day session average.
 - CSV export, versioned JSON data backup, validated transactional restore, and deletion of local history.
+- Saved Changing light colors for Tonight (automatic local-clock phases or fixed Midnight/Pre-dawn/Dawn), text-size options, high-contrast controls and reduced-motion press feedback. Smart-light connectivity remains absent.
 
 ## Privacy
 

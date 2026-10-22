@@ -57,7 +57,7 @@ EXTRA = [
     ("Health Connect sleep provenance / dedup / deletion", "32", "services/health_connect.html", "missing", "Sleep-only consent and read/write behavior; hardware vitals excluded."),
     ("User-controlled cloud / conflict / audio backup", "35", "services/backup_data.html", "missing", "No cloud transport; external user-owned storage/provider prerequisite."),
     ("Tasker events / webhook retries / MQTT transport", "33", "services/automation.html", "missing", "Needs opted-in transport, credentials, event schemas and actual failure tests."),
-    ("Appearance options alter behavior", "36", "ux/personalize.html", "missing", "Inter/plum/cream/dawn components exist; saved text-size, contrast and time-of-day controls absent."),
+    ("Appearance options alter behavior", "36", "ux/personalize.html", "implemented", "Saved local-clock/manual Midnight/Pre-dawn/Dawn themes affect Tonight, dock and system bars. Text size, high-contrast indicators and static press effects are real. This narrower entry excludes smart lights and other personalization features; full screen 36 remains partial."),
 ]
 
 rows = []
@@ -92,6 +92,13 @@ for line in (ROOT / "docs/FEATURES.md").read_text(encoding="utf-8").splitlines()
 
 for title, screens, source, status, notes in EXTRA:
     rows.append(dict(feature=title, screens=screens, source=SOURCE+source, implementation=[], validation="Not yet verified", status=status, notes=notes))
+
+for row in rows:
+    if row["feature"] == "Appearance options alter behavior":
+        row["implementation"]=["AppearanceActivity.java", "Appearance.java", "AppearancePolicy.java", "Design.java", "TonightScreen.java", "NightArc.java"]
+        row["validation"]="AppearancePolicyTest (3 passing); AppearanceFlowTest silent device pass 2026-10-22; narrow visual review in DESIGN-REVIEW.md"
+    elif row["feature"] == "Dashboard / tabs":
+        row["notes"]="Partial: native Tonight/Report/Settings roots and real theme settings. User-arranged cards and other home configurations absent; no all-screen acceptance claim."
 
 for n, row in enumerate(rows, 1):
     row["id"] = f"F{n:03}"

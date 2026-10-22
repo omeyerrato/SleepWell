@@ -11,7 +11,9 @@ is tested locally; OS delivery and native navigation require a device.
 
 Current local suites cover midnight/DST/repeating alarms, bedtime boundaries,
 smart-window guards, digital amplitude and missing/noise epochs, CSV quoting,
-and unique/stable math task choices. There are 15 local test methods.
+and unique/stable math task choices. AppearancePolicyTest adds boundary and fixed
+theme cases, including midnight wrapping and bounded text scales. There are 18
+local test methods.
 
 ## Personal phone: preserve installation and data
 
@@ -21,10 +23,11 @@ that teardown. Back up all private app files first, use `adb install -r`, and
 never use `pm clear` or uninstall as a troubleshooting step.
 
 After building, the following helper backs up private app files locally, installs
-both APKs in place, and runs **only the silent root navigation test**:
+both APKs in place, and runs a hard-coded allowlist of silent tests:
 
 ```sh
 python scripts/device_verification.py --adb /path/to/adb --serial DEVICE
+python scripts/device_verification.py --adb /path/to/adb --serial DEVICE --flow appearance
 ```
 
 Backups and output are under ignored `.device-backups/`; actual screenshots are
@@ -36,6 +39,14 @@ on the shell command's zero exit code.
 `RootVisualTest` exercises Tonight/Report/Settings navigation and selected state,
 captures the actual screens, rejects development prose/export controls on roots,
 and leaves Tonight visible with a window-scoped keep-awake flag.
+
+`AppearanceFlowTest` saves and reopens each manual palette, checks rendered root
+colors, verifies Back cancellation, recreates MainActivity to check persistence,
+and checks actual title scaling, static reduced-motion press drawables and
+contrast. It scrolls to the enlarged primary action without invoking tracking.
+It restores the exact original presence/values of its five preference keys in
+finally. It never writes alarms, sessions or microphone settings. The helper
+relaunches the review window even when the test reports a failure.
 
 `AlarmFlowTest` tests editor persistence and an actual quiet scheduled challenge.
 It is currently **not passed**: a prior run failed after selecting a wrong answer.

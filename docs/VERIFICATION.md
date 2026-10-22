@@ -67,3 +67,33 @@ The screen-off preview does not prove overnight, reboot or Doze reliability. Vol
 The device became locked during further testing. Additional device interaction is pending an unlocked test session. No recordings or personal sleep data are published in this repository.
 
 See [issue 1](https://github.com/omeyerrato/SleepWell/issues/1) for overnight/device validation and [FEATURES.md](FEATURES.md) for the complete implementation audit. GitHub Actions builds and uploads an APK independently of this local machine; a green run must be checked separately rather than inferred from local success. The independent [CI run for 569d7b6](https://github.com/omeyerrato/SleepWell/actions/runs/39739469746) passed; subsequent commits have their own runs.
+## Appearance preference milestone — 2026-10-22
+
+The new settings journey is functional: explicit Save, unsaved Back cancellation,
+automatic local-clock phases or fixed Midnight/Pre-dawn/Dawn, native text-size
+scaling, stronger high-contrast controls and static reduced-motion press feedback.
+Tonight's surface, system bars, panel, plan arc, weekdays, action and dock share
+the saved palette; changing a preference does not schedule an alarm.
+
+- `testDebugUnitTest lintDebug assembleDebug assembleDebugAndroidTest`: passed;
+  18 local test methods, no failures; lint 0 errors / 38 warnings. Existing
+  localization and deprecated-API work remains.
+- `AppearanceFlowTest`: passed on S23 Ultra (46.607 seconds; final thumbnail
+  correction rerun 45.556 seconds), after correcting
+  an initial stale-node harness failure during activity recreation. Each of
+  three themes was saved/reopened and checked against the actual root color;
+  MainActivity recreation retained size/contrast/motion; Back discarded changes;
+  enlarged primary action was reached by scrolling without starting tracking.
+- `RootVisualTest`: passed after the update (4.173 seconds). Fresh Tonight,
+  Report, selected epoch and Settings captures were visually inspected locally.
+- Original shared-preference values match the pre-test private backup; SQLite
+  database/WAL files are byte-identical. No alarm/tracking service was running
+  afterward. Whole-private-tree backups remain ignored and local.
+- Strict independent review accepted the **narrow appearance-preferences flow**;
+  full screen 36 remains partial (smart lights absent), and the full app remains
+  incomplete. See DESIGN-REVIEW.md for visual corrections and remaining gaps.
+
+No alarm, audio, vibration, microphone, screen-off or reboot test was run during
+this milestone. The earlier alarm/challenge failure remains unresolved until
+the user's restriction is lifted. Do not read these settings results as alarm
+or overnight-classification evidence.

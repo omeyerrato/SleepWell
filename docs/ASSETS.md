@@ -30,9 +30,24 @@ The app loads the selected generated PNG unchanged. A native gradient over the
 top edge blends it into the panel. Earlier variants remain outside the repo in
 Codex's generated-images folder.
 
+`bedside_predawn.png` and `bedside_dawn.png` beside that file are built-in
+image-tool edits of the original, inspected and copied unchanged into the
+project. They preserve the bedside composition instead of stretching a theme
+thumbnail into the wide panel. Both contain only standalone decorative art.
+
+Shared final prompt: preserve the exact wide composition and flat illustration
+style: plant left, lamp left-middle, wooden bedside table below, hand setting a
+black-screen phone down right-middle, sleeve/bed right. Preserve silhouettes,
+positions, framing and pose; clean flat shading; sparse upper background; no
+text, UI, symbols, logos, borders, realism or extra objects. Pre-dawn variant:
+muted violet/lilac room, soft violet-pink ambient light, mauve plant and lavender
+sleeves, upper background #5a467a. Dawn variant: cream/amber room, soft golden
+ambient light, olive plant, taupe/cream sleeves, upper background #ffe5bc.
+
 ## Icons and landscapes
 
-`Design.Icon`, `NightArc` and `DawnScene` contain original code-native paths.
+`Design.Icon`, `NightArc`, `DawnScene` and the three `ThemeScene` thumbnail color
+studies contain original code-native paths.
 They do not depend on emoji fonts or external icon CDNs. The plan arc displays
 stored bedtime/alarm values, not sensor measurements. Existing WAV assets were
 synthesized by `scripts/generate_audio.py`; no vendor sound packs are copied.

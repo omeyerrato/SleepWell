@@ -1064,7 +1064,7 @@
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
-      "notes": "Partial: three root destinations with supporting details, Changing light palette, large-text-friendly scrolling, wide-screen width cap. User-arranged cards and themes pending.",
+      "notes": "Partial: native Tonight/Report/Settings roots and real theme settings. User-arranged cards and other home configurations absent; no all-screen acceptance claim.",
       "id": "F081"
     },
     {
@@ -1653,10 +1653,17 @@
       "feature": "Appearance options alter behavior",
       "screens": "36",
       "source": "https://sleep.urbandroid.org/docs/ux/personalize.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Inter/plum/cream/dawn components exist; saved text-size, contrast and time-of-day controls absent.",
+      "implementation": [
+        "AppearanceActivity.java",
+        "Appearance.java",
+        "AppearancePolicy.java",
+        "Design.java",
+        "TonightScreen.java",
+        "NightArc.java"
+      ],
+      "validation": "AppearancePolicyTest (3 passing); AppearanceFlowTest silent device pass 2026-10-22; narrow visual review in DESIGN-REVIEW.md",
+      "status": "implemented",
+      "notes": "Saved local-clock/manual Midnight/Pre-dawn/Dawn themes affect Tonight, dock and system bars. Text size, high-contrast indicators and static press effects are real. This narrower entry excludes smart lights and other personalization features; full screen 36 remains partial.",
       "id": "F139"
     }
   ]

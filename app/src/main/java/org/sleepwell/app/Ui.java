@@ -31,7 +31,7 @@ final class Ui {
         return content;
     }
     static TextView label(LinearLayout parent,String value,int size,int color) {
-        TextView t=new TextView(parent.getContext());t.setText(value);t.setTypeface(Design.font(parent.getContext(),400));t.setTextSize(size);t.setTextColor(color);t.setPadding(0,dp(t.getContext(),6),0,dp(t.getContext(),6));t.setLineSpacing(dp(t.getContext(),3),1);
+        TextView t=new TextView(parent.getContext());t.setText(value);t.setTypeface(Design.font(parent.getContext(),400));t.setTextSize(size*Appearance.scale(parent.getContext()));t.setTextColor(Appearance.color(parent.getContext(),color));t.setPadding(0,dp(t.getContext(),6),0,dp(t.getContext(),6));t.setLineSpacing(dp(t.getContext(),3),1);
         parent.addView(t,new LinearLayout.LayoutParams(-1,-2));return t;
     }
     static TextView heading(LinearLayout p,String v,int size) { TextView t=label(p,v,size,TEXT);t.setTypeface(Design.font(p.getContext(),600));return t; }
@@ -42,18 +42,18 @@ final class Ui {
     }
     static Button button(LinearLayout p,String title,Runnable click) { return button(p,title,click,false); }
     static Button button(LinearLayout p,String title,Runnable click,boolean primary) {
-        Button b=new Button(p.getContext());b.setStateListAnimator(null);b.setElevation(0);b.setText(title);b.setTypeface(Design.font(p.getContext(),500));b.setAllCaps(false);b.setTextSize(15);b.setTextColor(primary?BG:TEXT);b.setMinHeight(dp(p.getContext(),52));
+        Button b=new Button(p.getContext());b.setStateListAnimator(null);b.setElevation(0);b.setText(title);b.setTypeface(Design.font(p.getContext(),500));b.setAllCaps(false);b.setTextSize(15*Appearance.scale(p.getContext()));b.setTextColor(primary?BG:TEXT);b.setMinHeight(dp(p.getContext(),52));
         b.setPadding(dp(p.getContext(),14),dp(p.getContext(),8),dp(p.getContext(),14),dp(p.getContext(),8));
         b.setBackground(shape(primary?MINT:0xffebdfd2,dp(p.getContext(),14)));b.setOnClickListener(v->click.run());
         LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,-2);lp.topMargin=dp(p.getContext(),10);p.addView(b,lp);return b;
     }
     static void toggle(LinearLayout p,String title,String help,boolean value,Consumer<Boolean> change) {
-        Switch s=new Switch(p.getContext());s.setText(title);s.setTextColor(TEXT);s.setTextSize(15);s.setChecked(value);s.setMinHeight(dp(p.getContext(),52));s.setPadding(0,dp(p.getContext(),8),0,dp(p.getContext(),8));
+        Switch s=new Switch(p.getContext());s.setText(title);s.setTextColor(TEXT);s.setTextSize(15*Appearance.scale(p.getContext()));s.setChecked(value);s.setMinHeight(dp(p.getContext(),52));s.setPadding(0,dp(p.getContext(),8),0,dp(p.getContext(),8));
         p.addView(s,new LinearLayout.LayoutParams(-1,-2));if(help!=null) label(p,help,12,MUTED);
-        s.setOnCheckedChangeListener((b,on)->change.accept(on));
+        s.setOnCheckedChangeListener((b,on)->{change.accept(on);if(Appearance.reduced(p.getContext()))s.jumpDrawablesToCurrentState();});
     }
     static EditText input(LinearLayout p,String title,String value,int inputType) {
-        label(p,title,12,MINT);EditText e=new EditText(p.getContext());e.setText(value);e.setTextColor(TEXT);e.setTextColor(TEXT);e.setInputType(inputType);e.setTextSize(17);e.setMinHeight(dp(p.getContext(),52));p.addView(e,new LinearLayout.LayoutParams(-1,-2));return e;
+        label(p,title,12,MINT);EditText e=new EditText(p.getContext());e.setText(value);e.setTextColor(TEXT);e.setTextColor(TEXT);e.setInputType(inputType);e.setTextSize(17*Appearance.scale(p.getContext()));e.setMinHeight(dp(p.getContext(),52));p.addView(e,new LinearLayout.LayoutParams(-1,-2));return e;
     }
     static void range(LinearLayout p,String title,int value,int min,int max,IntConsumer onChange) {
         TextView t=label(p,title+" · "+value,14,TEXT);SeekBar s=new SeekBar(p.getContext());s.setMax(max-min);s.setProgress(value-min);s.setMinHeight(dp(p.getContext(),48));p.addView(s,new LinearLayout.LayoutParams(-1,-2));

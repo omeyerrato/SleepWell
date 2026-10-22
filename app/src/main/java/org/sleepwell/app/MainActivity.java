@@ -23,6 +23,9 @@ public class MainActivity extends Activity {
     private Store store;private int tab=0;private Alarm pendingTone;private MediaPlayer preview;private NfcAdapter nfc;
     private static final String[] TABS={"Tonight","Alarms","History","Bedtime","Setup"};
     private static final int MIC=20,NOTIFY=21,TONE=22,EXPORT_JSON=23,EXPORT_CSV=24,IMPORT=25;
+    private final Handler appearanceClock=new Handler(Looper.getMainLooper());
+    private final Runnable clockUpdate=new Runnable(){public void run(){if(tab==0&&Appearance.automatic(MainActivity.this)){int phase=Appearance.palette(MainActivity.this).phase;if(phase!=renderedPhase)render();}appearanceClock.postDelayed(this,30000);}};
+    private int renderedPhase=-1;
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);store=new Store(this);Notifications.channels(this);
         if(getIntent().getBooleanExtra("visualReview",false))getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -37,10 +40,12 @@ public class MainActivity extends Activity {
             Prefs.put(this,"tracking",false);Prefs.put(this,"session",0L);
         }
     }
-    @Override protected void onResume() {super.onResume();render();}
+    @Override protected void onResume() {super.onResume();render();appearanceClock.removeCallbacks(clockUpdate);appearanceClock.postDelayed(clockUpdate,30000);}
+    @Override protected void onPause(){appearanceClock.removeCallbacks(clockUpdate);super.onPause();}
     @Override public void onSaveInstanceState(Bundle b) {super.onSaveInstanceState(b);b.putInt("tab",tab);}
     private void navigate(int destination){tab=destination==0?0:destination==1?2:4;render();}
     private void render() {
+        renderedPhase=Appearance.palette(this).phase;
         boolean root=tab==0||tab==1||tab==2||tab==4||tab==7;
         LinearLayout body=Design.page(this,tab==0,root?(tab==2||tab==7?1:tab==4?2:0):null,this::navigate);
         switch(tab){case 1:alarmList(body);break;case 2:report(body);break;case 3:Design.header(body,"Wind-down",()->{tab=0;render();});bedtime(body);break;case 4:settingsHome(body);break;case 5:Design.header(body,"Reliability & recording",()->{tab=4;render();});setup(body);break;case 6:privacy(body);break;case 7:history(body);break;default:tonight(body);}
@@ -50,6 +55,7 @@ public class MainActivity extends Activity {
         settingsRow(body,"moon","Sleep tracking","Phone movement and microphone",()->{tab=5;render();});
         settingsRow(body,"wave","Sound analysis","Recording and sound sensitivity",()->{tab=5;render();});
         settingsRow(body,"shield","Bedtime guard","Reduce distractions at night",()->{tab=3;render();});
+        settingsRow(body,"palette","Appearance","Light, dark and theme options",()->{startActivity(new Intent(this,AppearanceActivity.class).putExtra("visualReview",getIntent().getBooleanExtra("visualReview",false)));if(Appearance.reduced(this))overridePendingTransition(0,0);});
         settingsRow(body,"settings","Reliability","Battery, permissions and tips",()->{tab=5;render();});
         settingsRow(body,"lock","Data & privacy","Your data stays on your device",()->{tab=6;render();});
         settingsRow(body,"github","Free and open source","View source on GitHub",()->open(new Intent(Intent.ACTION_VIEW,Uri.parse("https://github.com/omeyerrato/SleepWell"))));

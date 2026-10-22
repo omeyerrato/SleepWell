@@ -41,4 +41,7 @@ observed runner uninstalled it and removed its private state. The pre-update
 SQLite backup was restored (1 session, 4 epochs, 1 disabled alarm). Preferences
 not backed up before that uninstallation could not be recovered. Subsequent
 tests must use direct instrumentation and a full private-app-data backup first.
-`scripts/device_verification.py` runs only the silent root test and retains data.
+`scripts/device_verification.py` allows only silent roots/appearance tests and
+retains data. Appearance draft/save, palette/text/contrast/motion behavior now has
+passing device evidence and a narrow independent visual pass; smart lights and
+the rest of screen 36 remain incomplete. Other priorities above remain active.

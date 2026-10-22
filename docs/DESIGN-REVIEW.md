@@ -83,3 +83,32 @@ The independent reviewer also inspected the 22:38 disabled-arc and selected-epoc
 captures: all three narrow corrections passed, with no new clipping/dock/system-bar
 regression. Full-goal verdict remains FAIL. Its remaining wording correction is
 implemented as “Recording started” rather than inferring sleep onset from capture start.
+
+## Appearance preferences: 23:17–23:22 device pass
+
+Board 12's Appearance detail is now a native cream page: separate Back affordance,
+Inter heading, flat rows, violet switches, equal illustrated theme choices with
+radio states, text-size value/chevron and a fixed brown Save action. The unavailable
+smart-light connection is stated plainly; no fake Connect callback was added.
+
+The first actual captures failed for wrapped Aa, washed-out switches, long helper
+copy and stretched alternate art. Corrective captures under local
+`captures/appearance/` show solid custom switch tracks, a single-line Aa, concise
+helper with schedule information, uniform thumbnail geometry and separately
+authored bedside variants preserving the composition in all three palettes.
+The last thumbnail polish uses a crescent path difference so its cutout cannot
+paint a dark blob outside the moon. No app screen is flattened into an image.
+
+AppearanceFlowTest passed the full silent settings journey: Back cancellation,
+each palette Save/reopen, actual rendered root colors, activity recreation,
+1.3× native title size, reduced-motion press state, selected contrast pairs and
+large-text scrolling to the primary action while the dock stays visible. The
+original preference key presence/values were restored in finally. The independent
+reviewer inspected all ten captures and source and **accepted the narrow
+appearance-preferences flow**, with the crescent polish above requested afterward.
+
+**Screen 36 remains partial** because the light adapter is missing. No whole-screen
+accessibility certification is claimed: numeric checks cover selected text/button
+pairs, not every pixel. Extreme system font settings, RTL and TalkBack still need
+verification. Theme policy uses local-clock phases, not astronomical sunrise.
+Full 36-screen/feature verdict remains **FAIL/incomplete**.
