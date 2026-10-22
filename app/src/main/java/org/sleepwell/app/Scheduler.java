@@ -5,7 +5,7 @@ import android.content.*;
 import java.time.*;
 
 public final class Scheduler {
-    static final String FIRE="org.sleepwell.FIRE", TEST="org.sleepwell.TEST", SNOOZE="org.sleepwell.SNOOZE", CHECK="org.sleepwell.CHECK", BED="org.sleepwell.BED";
+    static final String FIRE="org.sleepwell.FIRE", TEST="org.sleepwell.TEST", SNOOZE="org.sleepwell.SNOOZE", CHECK="org.sleepwell.CHECK", BED="org.sleepwell.BED", BACKUP="org.sleepwell.BACKUP";
     static boolean allowed(Context c) { return android.os.Build.VERSION.SDK_INT<31 || c.getSystemService(AlarmManager.class).canScheduleExactAlarms(); }
     static PendingIntent intent(Context c,int id,String action) {
         return PendingIntent.getBroadcast(c, id, new Intent(c,AlarmReceiver.class).setAction(action).putExtra("id",id),PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
@@ -16,7 +16,7 @@ public final class Scheduler {
     }
     static void schedule(Context c,Alarm a) {
         cancel(c,a.id,FIRE);
-        if(a.enabled) { long next=a.next(System.currentTimeMillis()); at(c,a.id,FIRE,next); Prefs.put(c,"deadline_"+a.id,next); }
+        if(a.enabled) { long next=a.next(Math.max(System.currentTimeMillis(),Prefs.of(c).getLong("lastOccurrence_"+a.id,0))); at(c,a.id,FIRE,next); Prefs.put(c,"deadline_"+a.id,next); }
         else Prefs.put(c,"deadline_"+a.id,0L);
     }
     static void cancel(Context c,int id,String action) { c.getSystemService(AlarmManager.class).cancel(intent(c,id,action)); }
@@ -32,14 +32,15 @@ public final class Scheduler {
         c.getSystemService(AlarmManager.class).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,next,intent(c,0,BED));
     }
     static void test(Context c,Alarm source) {
-        Alarm a=Alarm.read(source.json()); a.id=-1; a.volume=Math.min(25,a.volume); a.rampSeconds=0; a.awakeCheck=0; a.pin=false;
-        Prefs.put(c,"test_alarm",a.json().toString()); at(c,-1,TEST,System.currentTimeMillis()+10000);
+        Alarm a=Alarm.read(source.json()); a.id=-1; a.volume=Math.min(25,a.volume); a.rampSeconds=0; a.awakeCheck=0; a.pin=false;a.backupMinutes=0;
+        Prefs.put(c,"snoozes_-1",0);Prefs.put(c,"test_alarm",a.json().toString()); at(c,-1,TEST,System.currentTimeMillis()+10000);
     }
     static void fire(Context c,Alarm a,boolean mainAlarm) {
         // Reserving the current occurrence before starting audio prevents smart/deadline races.
         synchronized(Scheduler.class) {
-            if(Prefs.flag(c,"ringing")) return;
+            boolean alreadyRinging=Prefs.flag(c,"ringing");
             if(mainAlarm) {
+                long occurrence=Prefs.of(c).getLong("deadline_"+a.id,System.currentTimeMillis());Prefs.put(c,"lastOccurrence_"+a.id,Math.max(occurrence,System.currentTimeMillis()));
                 cancel(c,a.id,FIRE); cancel(c,a.id,SNOOZE); cancel(c,a.id,CHECK);
                 Prefs.put(c,"snoozes_"+a.id,0);
                 try(Store s=new Store(c)) {
@@ -47,7 +48,10 @@ public final class Scheduler {
                     if(stored!=null) { if(stored.days.isEmpty()) stored.enabled=false; s.save(stored); schedule(c,stored); }
                 }
             }
-            Prefs.put(c,"active_alarm",a.json().toString()); Prefs.put(c,"ringing",true);
+            // Overlapping scheduled alarms share the currently active challenge, but both schedules advance.
+            if(alreadyRinging)return;
+            Prefs.put(c,"forceBackup",false);Prefs.put(c,"active_alarm",a.json().toString()); Prefs.put(c,"ringing",true);
+            if(a.backupMinutes>0 && allowed(c))at(c,a.id,BACKUP,System.currentTimeMillis()+a.backupMinutes*60000L);
             c.startForegroundService(new Intent(c,AlarmService.class));
         }
     }

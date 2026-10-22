@@ -17,6 +17,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
     private SensorManager sensors;private TextView progress;private NfcAdapter nfc;
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);setShowWhenLocked(true);setTurnScreenOn(true);getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,()->Ui.toast(this,"Complete the challenge, snooze, or use emergency dismiss."));
         if(!Prefs.flag(this,"ringing")) { finish();return; }
         try { alarm=Alarm.read(new JSONObject(Prefs.text(this,"active_alarm","{}"))); } catch(JSONException e) { finish();return; }
         if(state!=null) { completed=state.getInt("completed");shakes=state.getInt("shakes"); }
@@ -26,7 +27,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
     @Override public void onNewIntent(Intent i) { super.onNewIntent(i); setIntent(i); if(!Prefs.flag(this,"ringing")) finish(); }
     @Override public void onSaveInstanceState(Bundle b) { super.onSaveInstanceState(b);b.putInt("completed",completed);b.putInt("shakes",shakes); }
     private void build() {
-        LinearLayout body=Ui.page(this,"A new day is here.",alarm.label);
+        handler.removeCallbacksAndMessages(null);LinearLayout body=Ui.page(this,"A new day is here.",alarm.label);
         Ui.heading(body,java.time.LocalTime.now().format(java.time.format.DateTimeFormatter.ofPattern("HH:mm")),64);
         LinearLayout card=Ui.card(body);Ui.label(card,"WAKE-UP CHALLENGE",11,Ui.MINT);
         progress=Ui.text(card,completed+" / "+alarm.difficulty+" complete");
@@ -97,5 +98,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
     }
     @Override public void onAccuracyChanged(Sensor sensor,int accuracy){}
     @Override protected void onDestroy() {handler.removeCallbacksAndMessages(null);if(sensors!=null)sensors.unregisterListener(this);if(nfc!=null)nfc.disableReaderMode(this);super.onDestroy();}
+    // Android 11/12 fallback only. Newer versions use the registered OnBackInvokedCallback.
+    @android.annotation.SuppressLint("GestureBackNavigation")
     @Override public void onBackPressed() { Ui.toast(this,"Complete the challenge, snooze, or use emergency dismiss."); }
 }

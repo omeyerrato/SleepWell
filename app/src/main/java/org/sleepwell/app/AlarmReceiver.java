@@ -7,6 +7,9 @@ import org.json.*;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override public void onReceive(Context c,Intent intent) {
         Notifications.channels(c); String action=intent.getAction(); int id=intent.getIntExtra("id",0);
+        if(Scheduler.BACKUP.equals(action)) {
+            if(Prefs.flag(c,"ringing")){Prefs.put(c,"forceBackup",true);c.startForegroundService(new Intent(c,AlarmService.class));}return;
+        }
         if(Scheduler.BED.equals(action)) {
             c.getSystemService(NotificationManager.class).notify(300,new Notification.Builder(c,Notifications.BED)
                 .setSmallIcon(R.drawable.ic_moon).setContentTitle("Tomorrow starts tonight")

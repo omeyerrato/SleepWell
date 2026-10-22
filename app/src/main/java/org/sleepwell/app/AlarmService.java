@@ -11,7 +11,7 @@ import org.json.*;
 public class AlarmService extends Service {
     private MediaPlayer player; private Vibrator vibrator; private AudioManager audio;
     private PowerManager.WakeLock wake; private final Handler handler=new Handler(Looper.getMainLooper());
-    private int originalVolume=-1, lastVolume=-1; private long started; private Alarm alarm;
+    private int originalVolume=-1, lastVolume=-1; private long started; private Alarm alarm;private boolean escalated=false;
     @Override public IBinder onBind(Intent intent) { return null; }
     @Override public void onCreate() { super.onCreate(); Notifications.channels(this); }
     @Override public int onStartCommand(Intent i,int flags,int startId) {
@@ -21,18 +21,19 @@ public class AlarmService extends Service {
         Intent screen=new Intent(this,AlarmActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent launch=PendingIntent.getActivity(this,1,screen,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
         Notification notification=new Notification.Builder(this,Notifications.ALARM).setSmallIcon(R.drawable.ic_moon)
-            .setContentTitle(alarm.label).setContentText("Complete your "+alarm.challenge.toLowerCase()+" challenge")
+            .setContentTitle(alarm.label).setContentText("Complete your "+alarm.challenge.toLowerCase(java.util.Locale.getDefault())+" challenge")
             .setCategory(Notification.CATEGORY_ALARM).setVisibility(Notification.VISIBILITY_PUBLIC).setOngoing(true)
             .setContentIntent(launch).setFullScreenIntent(launch,true).build();
-        if(Build.VERSION.SDK_INT>=29) startForeground(101,notification,ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK); else startForeground(101,notification);
+        startForeground(101,notification,ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
         wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:alarm"); wake.acquire(2*60*60*1000L);
         audio=getSystemService(AudioManager.class); originalVolume=audio.getStreamVolume(AudioManager.STREAM_ALARM);
-        started=SystemClock.elapsedRealtime(); updateVolume();
+        started=SystemClock.elapsedRealtime();
         try { player=makePlayer(alarm.tone); player.start(); }
         catch(Exception first) {
             try { player=makePlayer("daybreak"); player.start(); }
             catch(Exception fallback) { Prefs.put(this,"lastError","Alarm audio failed: "+fallback.getMessage()); }
         }
+        updateVolume();
         if(alarm.vibrate) {
             vibrator=(Vibrator)getSystemService(VIBRATOR_SERVICE);
             if(vibrator!=null && vibrator.hasVibrator()) vibrator.vibrate(VibrationEffect.createWaveform(new long[]{0,600,400,600,1400},0));
@@ -51,13 +52,20 @@ public class AlarmService extends Service {
     }
     private void updateVolume() {
         if(audio==null || alarm==null) return;
+        if(Prefs.flag(this,"forceBackup") && !escalated) {
+            escalated=true;alarm.volume=100;alarm.rampSeconds=0;
+            try{MediaPlayer backup=makePlayer("pulse");backup.start();if(player!=null)player.release();player=backup;}catch(Exception e){Prefs.put(this,"lastError","Backup tone unavailable; keeping primary sound.");}
+        }
         int max=audio.getStreamMaxVolume(AudioManager.STREAM_ALARM);
         double progress=alarm.rampSeconds==0?1:Math.min(1,(SystemClock.elapsedRealtime()-started)/(1000.0*alarm.rampSeconds));
         lastVolume=Math.max(1,(int)Math.round(max*Math.max(0.05,alarm.volume/100.0)*(0.20+0.80*progress)));
         try { audio.setStreamVolume(AudioManager.STREAM_ALARM,lastVolume,0); } catch(SecurityException e) { Prefs.put(this,"lastError","System denied alarm volume change."); }
         handler.postDelayed(this::updateVolume,1000);
     }
-    static void stop(Context c) { Prefs.put(c,"ringing",false); c.stopService(new Intent(c,AlarmService.class)); }
+    static void stop(Context c) {
+        try{Alarm a=Alarm.read(new JSONObject(Prefs.text(c,"active_alarm","{}")));Scheduler.cancel(c,a.id,Scheduler.BACKUP);}catch(JSONException ignored){}
+        Prefs.put(c,"ringing",false);Prefs.put(c,"forceBackup",false);c.stopService(new Intent(c,AlarmService.class));
+    }
     @Override public void onDestroy() {
         handler.removeCallbacksAndMessages(null);
         if(player!=null) { player.release(); player=null; } if(vibrator!=null) vibrator.cancel();

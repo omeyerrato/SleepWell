@@ -5,7 +5,7 @@ import java.time.*;
 import java.util.*;
 
 public class Alarm {
-    public int id, hour=7, minute=0, smartWindow=20, volume=85, rampSeconds=30, snoozeMinutes=5, snoozeLimit=1, difficulty=3, awakeCheck=0;
+    public int id, hour=7, minute=0, smartWindow=20, volume=85, rampSeconds=30, snoozeMinutes=5, snoozeLimit=1, difficulty=3, awakeCheck=0, backupMinutes=3;
     public boolean enabled=false, vibrate=true, pin=false;
     public String label="A fresh start", challenge="Math", tone="daybreak";
     public Set<Integer> days = new HashSet<>();
@@ -18,7 +18,7 @@ public class Alarm {
             j.put("id",id).put("hour",hour).put("minute",minute).put("enabled",enabled).put("label",label)
                 .put("smartWindow",smartWindow).put("volume",volume).put("rampSeconds",rampSeconds)
                 .put("snoozeMinutes",snoozeMinutes).put("snoozeLimit",snoozeLimit).put("difficulty",difficulty)
-                .put("awakeCheck",awakeCheck).put("vibrate",vibrate).put("pin",pin).put("challenge",challenge).put("tone",tone)
+                .put("awakeCheck",awakeCheck).put("backupMinutes",backupMinutes).put("vibrate",vibrate).put("pin",pin).put("challenge",challenge).put("tone",tone)
                 .put("days",new JSONArray(days));
         } catch(JSONException e) { throw new IllegalStateException(e); }
         return j;
@@ -28,7 +28,7 @@ public class Alarm {
         a.enabled=j.optBoolean("enabled"); a.label=j.optString("label","A fresh start"); a.smartWindow=j.optInt("smartWindow",20);
         a.volume=j.optInt("volume",85); a.rampSeconds=j.optInt("rampSeconds",30); a.snoozeMinutes=j.optInt("snoozeMinutes",5);
         a.snoozeLimit=j.optInt("snoozeLimit",1); a.difficulty=j.optInt("difficulty",3); a.awakeCheck=j.optInt("awakeCheck",0);
-        a.vibrate=j.optBoolean("vibrate",true); a.pin=j.optBoolean("pin"); a.challenge=j.optString("challenge","Math"); a.tone=j.optString("tone","daybreak");
+        a.backupMinutes=j.optInt("backupMinutes",3);a.vibrate=j.optBoolean("vibrate",true); a.pin=j.optBoolean("pin"); a.challenge=j.optString("challenge","Math"); a.tone=j.optString("tone","daybreak");
         JSONArray ds=j.optJSONArray("days"); if(ds!=null) for(int i=0;i<ds.length();i++) a.days.add(ds.optInt(i));
         return a;
     }

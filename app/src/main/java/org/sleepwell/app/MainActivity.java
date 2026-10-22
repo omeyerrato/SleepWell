@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
             LinearLayout card=Ui.card(body);Ui.heading(card,a.time(),42);Ui.text(card,a.label+" · "+days(a));
             Ui.toggle(card,a.enabled?"Alarm enabled":"Alarm off",null,a.enabled,on->{
                 if(on && !Scheduler.allowed(this)) {Ui.toast(this,"Allow Alarms & reminders in Setup first.");render();return;}
-                a.enabled=on;store.save(a);try{Scheduler.schedule(this,a);}catch(SecurityException e){a.enabled=false;store.save(a);Ui.toast(this,e.getMessage());}render();
+                a.enabled=on;if(on)Prefs.put(this,"lastOccurrence_"+a.id,0L);store.save(a);try{Scheduler.schedule(this,a);}catch(SecurityException e){a.enabled=false;store.save(a);Ui.toast(this,e.getMessage());}render();
             });
             Ui.text(card,a.challenge+" × "+a.difficulty+" · "+a.volume+"% volume · "+a.smartWindow+" min smart window");
             Ui.button(card,"Edit alarm",()->editAlarm(a));Ui.button(card,"Test in 10 seconds · quiet preview",()->{try{Scheduler.test(this,a);Ui.toast(this,"Test scheduled. Preview volume is capped at 25%.");}catch(SecurityException e){Ui.toast(this,e.getMessage());}});
@@ -98,6 +98,8 @@ public class MainActivity extends Activity {
         Ui.text(form,"Smart wake is experimental and requires active tracking. Your fixed alarm remains scheduled.");
         Ui.range(form,"Snooze minutes",a.snoozeMinutes,1,15,v->a.snoozeMinutes=v);Ui.range(form,"Snooze limit (0 = none)",a.snoozeLimit,0,5,v->a.snoozeLimit=v);
         Ui.range(form,"Wake-up check minutes (0 = off)",a.awakeCheck,0,15,v->a.awakeCheck=v);
+        Ui.range(form,"Loud backup after minutes (0 = off)",a.backupMinutes,0,15,v->a.backupMinutes=v);
+        Ui.text(form,"If you leave the alarm ringing, the backup switches to Pulse at 100% alarm volume. Quiet tests never escalate.");
         Ui.toggle(form,"Vibrate",null,a.vibrate,on->a.vibrate=on);
         Ui.toggle(form,"Offer screen pinning","Optional Android confirmation at alarm time; system unpin controls still work.",a.pin,on->a.pin=on);
         Ui.choice(form,"Alarm tone",a.tone.startsWith("content:")?"Custom audio":a.tone,new String[]{"daybreak","pulse","system"},s->a.tone=s);
@@ -108,7 +110,7 @@ public class MainActivity extends Activity {
         dialog.setOnShowListener(d->dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v->{
             if(a.challenge.equals("NFC") && Prefs.text(this,"nfcTag","").isEmpty()){Ui.toast(this,"Enroll an NFC tag in Bedtime first.");return;}
             a.label=label.getText().toString().trim();if(a.label.isEmpty())a.label="A fresh start";
-            store.save(a);try{Scheduler.schedule(this,a);}catch(SecurityException e){a.enabled=false;store.save(a);Ui.toast(this,e.getMessage());}dialog.dismiss();render();
+            Prefs.put(this,"lastOccurrence_"+a.id,0L);store.save(a);try{Scheduler.schedule(this,a);}catch(SecurityException e){a.enabled=false;store.save(a);Ui.toast(this,e.getMessage());}dialog.dismiss();render();
         }));dialog.show();
     }
     private void nap() {
@@ -222,7 +224,7 @@ public class MainActivity extends Activity {
     @Override public void onActivityResult(int request,int result,Intent data) {
         super.onActivityResult(request,result,data);if(result!=RESULT_OK||data==null||data.getData()==null)return;Uri uri=data.getData();
         try {
-            if(request==TONE) {if(pendingTone==null){Ui.toast(this,"Please choose the audio file again from Edit alarm.");return;}getContentResolver().takePersistableUriPermission(uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);pendingTone.tone=uri.toString();store.save(pendingTone);Ui.toast(this,"Custom audio saved. Test it before relying on it.");}
+            if(request==TONE) {if(pendingTone==null){Ui.toast(this,"Please choose the audio file again from Edit alarm.");return;}getContentResolver().takePersistableUriPermission(uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);pendingTone.tone=uri.toString();Prefs.put(this,"lastOccurrence_"+pendingTone.id,0L);store.save(pendingTone);try{Scheduler.schedule(this,pendingTone);}catch(SecurityException e){pendingTone.enabled=false;store.save(pendingTone);}Ui.toast(this,"Custom audio saved. Test it before relying on it.");}
             else if(request==EXPORT_JSON||request==EXPORT_CSV) {
                 String content;
                 if(request==EXPORT_JSON)content=store.backup().toString(2);
