@@ -18,7 +18,7 @@ SleepWell is a native Android Java application with a small AndroidX Core depend
 
 Movement is gravity-filtered accelerometer RMS. This is **phone movement**, not body movement in all placements and not EEG staging. The experimental early-wake predicate needs two consecutive active one-minute buckets, at least 20 sensor samples, and a time inside the configured window. It cannot promise improved alertness.
 
-Noise is normalized digital amplitude; the device microphone is uncalibrated, so the UI does not label it decibels. Current graphs take the latest microphone frame at each epoch; they are not minute-average noise exposure. Audio retention is time- and count-bounded. No speculative snore/cough/REM labels are stored.
+Noise is normalized digital amplitude; the device microphone is uncalibrated, so the UI does not label it decibels. Noise epochs use sample-weighted RMS across all captured frames. Missing microphone, light or movement samples are stored as nulls and graph gaps, rather than measured zeroes. Audio retention is time- and count-bounded. No speculative snore/cough/REM labels are stored.
 
 Alarms use one-shot OS scheduling even for repeating weekdays. Next occurrences are computed in the current time zone with `java.time`, including DST normalization. The main alarm and snooze/check intents have distinct actions and identities. A single active ringing session owns playback at a time.
 

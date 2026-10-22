@@ -67,7 +67,7 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | Breathing rate | Extract respiration periodicity from sonar/PIR/body sensors | Pending. Not inferred from low-rate phone movement. |
 | SpO₂ | Read a supported oximeter/wearable | Pending: hardware + consent-scoped adapter. A phone microphone cannot measure oxygen saturation. |
 | Heart rate / HRV | Receive pulse and inter-beat data from wearables | Pending: hardware/Health Connect adapters; no invented vital signs. |
-| Noise amplitude | Analyze microphone PCM volume | Implemented: local RMS amplitude, optional microphone foreground service. It is not calibrated dB. |
+| Noise amplitude | Analyze microphone PCM volume | Implemented: sample-weighted epoch RMS amplitude, missing-signal gaps, optional microphone foreground service. It is not calibrated dB. |
 | Triggered sound recordings | Save clips only around qualifying events | Implemented: optional 10-second WAV clips at energy threshold; at most 60/session with a 30-second cooldown. Pre-roll pending. |
 | Automatic sound labels | CNN recognizes snoring, speech, cough, laughter and baby cries | Pending: properly licensed local classifier and labeled validation corpus. Current clips are labeled only as loud sounds. |
 | Noise threshold | Control recording sensitivity | Implemented: relative amplitude threshold; independent per-class sensitivity pending. |

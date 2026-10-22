@@ -11,6 +11,6 @@ First public development build of an original Android bedtime guard, challenge a
 
 **Early alpha: not full feature parity with either reference app.** Sonar, sound classification, camera challenges and wearable/health/smart-home integrations remain pending. No clinical sleep-stage detection or guaranteed wake-up performance is claimed. Use an independent backup alarm while validating this build.
 
-Local build, lint and 11 unit tests pass. The APK installed and a quiet scheduled alarm fired with the S23 Ultra screen off. See docs/VERIFICATION.md for limits and pending hardware tests.
+Local build, lint and 13 unit tests pass. The APK installed, a quiet scheduled alarm fired with the S23 Ultra screen off, and a short background movement/light recording saved and closed correctly. See docs/VERIFICATION.md for limits and pending hardware tests.
 
 The attached APK is debug-signed for development. Android 11 or newer required. No Internet permission, account, ads or payment SDK.

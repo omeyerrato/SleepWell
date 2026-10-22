@@ -33,7 +33,7 @@ public final class Store extends SQLiteOpenHelper {
     }
     public void end(long id, boolean interrupted) { ContentValues v=new ContentValues(); v.put("end",System.currentTimeMillis()); v.put("interrupted",interrupted?1:0); getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id}); }
     public void annotate(long id,String note,int rating) { ContentValues v=new ContentValues(); v.put("note",note); v.put("rating",rating); getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id}); }
-    public void epoch(long session,long time,double movement,double noise,double light,int samples) {
+    public void epoch(long session,long time,Double movement,Double noise,Double light,int samples) {
         ContentValues v=new ContentValues(); v.put("session",session); v.put("time",time); v.put("movement",movement); v.put("noise",noise); v.put("light",light); v.put("samples",samples); getWritableDatabase().insertOrThrow("epochs",null,v);
     }
     public void clip(long session,String path,double level) { ContentValues v=new ContentValues(); v.put("session",session); v.put("time",System.currentTimeMillis()); v.put("path",path); v.put("level",level); getWritableDatabase().insertOrThrow("clips",null,v); }

@@ -6,7 +6,8 @@ import java.io.*;
 
 /** On-device energy detection, not a snore/speech classifier. Never transmits audio. */
 final class NoiseRecorder implements AutoCloseable {
-    private volatile boolean running=true; volatile double level=0; private final Thread thread;
+    private volatile boolean running=true; volatile double level=0; private final Thread thread;private final SignalWindow window=new SignalWindow();
+    Double takeEpoch(){return window.take();}
     NoiseRecorder(Context c,Store store,long session) {
         thread=new Thread(()->capture(c,store,session),"SleepWell-audio"); thread.start();
     }
@@ -23,7 +24,7 @@ final class NoiseRecorder implements AutoCloseable {
                 int n=recorder.read(frame,0,frame.length);
                 if(n<0) throw new IOException("Microphone read error "+n);
                 if(n==0) continue;
-                level=SleepMath.rms(frame,n);
+                level=SleepMath.rms(frame,n);window.add(level,n);
                 double threshold=Prefs.number(c,"noiseThreshold",20)/1000.0;
                 if(clip==null && cooldown<=0 && level>=threshold && countClips<60 && Prefs.flag(c,"saveClips")) { clip=new ByteArrayOutputStream(); peak=0; }
                 cooldown-=n;

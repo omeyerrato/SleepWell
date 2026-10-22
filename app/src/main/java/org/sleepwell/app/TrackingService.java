@@ -13,7 +13,7 @@ public class TrackingService extends Service implements SensorEventListener {
     static volatile boolean running=false;
     private SensorManager sensors; private PowerManager.WakeLock wake; private Store store; private NoiseRecorder audio; private MediaPlayer lullaby;
     private final Handler handler=new Handler(Looper.getMainLooper()); private long session,start;
-    private double sum=0,light=0; private int count=0,activeMinutes=0; private final float[] gravity=new float[3]; private boolean gravityReady=false,manualStop=false;
+    private double sum=0;private Double light=null; private int count=0,activeMinutes=0; private final float[] gravity=new float[3]; private boolean gravityReady=false,manualStop=false;
     @Override public IBinder onBind(Intent intent) { return null; }
     @Override public void onCreate() { super.onCreate(); Notifications.channels(this); }
     @Override public int onStartCommand(Intent intent,int flags,int startId) {
@@ -54,7 +54,7 @@ public class TrackingService extends Service implements SensorEventListener {
         }
     }
     @Override public void onSensorChanged(SensorEvent e) {
-        if(e.sensor.getType()==Sensor.TYPE_LIGHT) { light=e.values[0]; return; }
+        if(e.sensor.getType()==Sensor.TYPE_LIGHT) { light=(double)e.values[0]; return; }
         if(!gravityReady) { System.arraycopy(e.values,0,gravity,0,3); gravityReady=true; return; }
         double energy=0;
         for(int k=0;k<3;k++) { gravity[k]=.85f*gravity[k]+.15f*e.values[k]; double d=e.values[k]-gravity[k]; energy+=d*d; }
@@ -64,7 +64,7 @@ public class TrackingService extends Service implements SensorEventListener {
     private void minute() {
         if(!running) return;
         double movement=count==0?0:Math.sqrt(sum/count); long now=System.currentTimeMillis();
-        store.epoch(session,now,movement,audio==null?0:audio.level,light,count);
+        store.epoch(session,now,count==0?null:movement,audio==null?null:audio.takeEpoch(),light,count);
         activeMinutes=movement>=.12?Math.min(5,activeMinutes+1):0;
         Prefs.put(this,"movement",String.format(Locale.ROOT,"%.3f",movement)); Prefs.put(this,"epochCount",Prefs.number(this,"epochCount",0)+1);
         for(Alarm a:store.alarms()) {
@@ -83,7 +83,7 @@ public class TrackingService extends Service implements SensorEventListener {
     @Override public void onDestroy() {
         running=false; handler.removeCallbacksAndMessages(null);
         if(sensors!=null) sensors.unregisterListener(this); if(audio!=null) audio.close(); stopSound();
-        if(store!=null && session>0) { if(count>0) store.epoch(session,System.currentTimeMillis(),Math.sqrt(sum/count),audio==null?0:audio.level,light,count); store.end(session,!manualStop); store.close(); }
+        if(store!=null && session>0) { if(count>0) store.epoch(session,System.currentTimeMillis(),Math.sqrt(sum/count),audio==null?null:audio.takeEpoch(),light,count); store.end(session,!manualStop); store.close(); }
         if(wake!=null && wake.isHeld()) wake.release(); Prefs.put(this,"tracking",false); Prefs.put(this,"session",0L); super.onDestroy();
     }
 }
