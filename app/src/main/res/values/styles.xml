@@ -1,0 +1,12 @@
+<resources>
+    <style name="AppTheme" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#BEE8C6</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#101817</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+    <string name="guard_description">Optional bedtime and alarm guard. SleepWell sees only which app is foreground, never its text. It redirects selected distracting apps during your bedtime window, and can return you to an active wake-up challenge. Android Settings, calls and emergency access remain available. Enable this only if you want these controls; disable it here at any time.</string>
+</resources>
