@@ -90,3 +90,31 @@ exports preserve pause/active/interval provenance; format 1 remains readable.
 Real document-picker export/import, microphone permission states and overnight
 reliability still need their own device evidence. Never use a destructive reset
 to work around a failed verification test.
+
+## Record editing and calendar trends
+
+Use `device_verification.py --flow history` for the silent isolated native
+journey and `--flow recreation` for delayed save/recreate/Back checks. These
+never start alarms, audio, tracking or microphone capture. Record storage is
+injected through `Records.Factory` into UUID-named databases. The History fixture
+is explicitly labeled synthetic/user-reported; its screenshots are display
+evidence only. Draft cancellation, persisted trim/awake/tag/note edits, search,
+filters, calendar ranges, manual no-measurement states and selected deletion are
+exercised. Any synthetic WAV files contain silence and are never played.
+
+`device_storage_verification.py` runs StorageMigrationTest, RecordStorageTest,
+RecordReplayTest and RecordClockTest on isolated databases/in-memory views.
+It compares the personal database's original columns after install/migration.
+Tests include atomic rollback/retry, legacy format imports, reset revisions,
+manual provenance validation, create replay after reopen, deletion/ID reuse, and
+saved-zone labels using the phone's current clock format without changing it.
+Recreation tests delay new/existing saves and require exactly one committed row.
+Pure RecordModelTest covers interval unions, monotonic coverage, DST ambiguity,
+calendar boundaries, missing days, overlapping naps and cross-day ownership.
+
+Database schema is 4; portable backup format is 3 (1/2 remain readable). Do not
+install an older schema-2 APK over a migrated personal database. Test failures
+must retain a compatible APK and relaunch the scoped keep-awake window. Isolated
+fixture databases can survive a process crash and are never production history.
+Actual document-picker backup restoration, real overnight measurements and both
+clock-format settings remain separate verification work.

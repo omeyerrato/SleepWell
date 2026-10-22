@@ -135,3 +135,12 @@ All 129 linked HTML pages fetched successfully. Pages include features, integrat
 | [Personalization](https://sleep.urbandroid.org/docs/ux/personalize.html) | Key Settings Explained; Detailed Feature Breakdown; Home screen customizations; Morning Screen Customization; Color Palette (Graphs) |
 | [Search](https://sleep.urbandroid.org/docs/ux/search.html) | Overview |
 | [Widgets](https://sleep.urbandroid.org/docs/ux/widgets.html) | Standard Widgets; Tracking widget; Alarm widget; Bedtime widget; Hypnogram widget |
+
+## Record editing pass — 2026-10-23
+
+Revisited the official graph-edit, statistics and tags pages for the native
+History/editor/trends flow. SleepWell preserves raw captures in edit overlays,
+uses an explicit sleep-day cutoff, merges overlapping periods and treats a
+missing date as unknown. Tags here are local context; quantity-based impact
+analysis remains absent. These choices are independent implementations, with
+source/zone/manual provenance retained in reports and backups.

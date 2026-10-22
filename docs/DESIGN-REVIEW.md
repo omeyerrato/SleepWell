@@ -46,7 +46,7 @@ and select actual epochs. Do not manufacture an all-night dataset or a stage
 strip from four minutes of sensor data. A clear unavailable estimate state is
 required until its algorithm is real and evaluated.
 
-## Behavior gate remains open
+## Historical behavior gate at first rejection
 
 The alarm test demonstrated editor persistence and real quiet full-screen delivery
 over keyguard, but failed to locate Check answer after selection. It is **not a
@@ -54,9 +54,7 @@ passing alarm/challenge flow**. User prohibited further alarms while sleeping;
 do not rerun it until that restriction is lifted. No overnight recording or new
 microphone use was started during this visual correction.
 
-Missing core features remain explicit in FEATURE-MATRIX.md, including multi-task
-routines, QR/walking, pause/resume, sonar, classifier, mixer/favorites/export,
-manual record/awake edits, goals/rhythm, integrations and appearance behavior.
+At that first review, missing core features included multi-task routines, QR/walking, pause/resume, sonar, classifier, mixer/favorites/export, manual record/awake edits, goals/rhythm, integrations and appearance behavior. Later bounded milestones below supersede the pause, appearance and record-edit findings; the feature matrix tracks current gaps.
 
 ## Fresh root comparison: 22:31 and 22:38 device captures
 
@@ -171,3 +169,38 @@ Missing stage/sound classification and integrations keep full Report and feature
 parity open. Overnight/reboot/Doze evidence and broader device/font/permission
 states are still required. The final root captures retain grouped icon-over-label
 navigation and a plum system navigation surface on Tonight.
+
+## Native History → editor → Trends — 2026-10-23
+
+The strict reviewer independently reopened all 13 final actual Android captures
+under private `captures/history/` (02:35–02:36) and compared them with board 08,
+screens 22–24. **PASS for the bounded native records flow at the tested S23
+Ultra/default-size configuration. Full app goal remains FAIL.** This does not
+certify every subfeature/configuration or all 36 designs.
+
+Accepted compositions: cream history with compact date/coverage/duration rows,
+adjacent moon/start and sun/end pairs, selected filters and grouped Report dock;
+calendar Week/Month/Year trends with numeral/unit hierarchy, visible goal gap,
+lilac rounded bars/dashed goal, thin bedtime line and real unknown-date gaps;
+editor with adjustable bounds, duration, Start/End selectors, awake edits, lilac
+outlined vector tags, Notes, fixed Save and red Delete. Supporting empty, search,
+filtered and manual-no-measurement states are coherent. Extra awake rows scroll
+Notes above the fixed footer. Short intervals show seconds.
+
+Corrections required before acceptance: Notes clipping; missing tag/selector/
+trash glyphs; Trends double-parent crash; offscreen/wrapped goal gap; collided
+goal label; clipped bedtime axis; missing Year aggregation explanation; detached
+sun/time pair; and white status icons during dialog transitions. Focus restoration
+and stable post-dialog captures now assert the light status-bar appearance.
+
+Function evidence is separate: HistoryFlowTest passes 101.657 s, new/existing
+pending saves survive recreation and Back, and 17 isolated storage/replay/clock
+checks pass. Raw captured rows remain immutable under trims/awake/note edits.
+Manual records explicitly lack sensor graphs. Synthetic fixtures are labeled,
+isolated and removed; these captures are not an overnight measurement.
+
+Large-font, RTL, smaller-screen records layouts, real document-picker restoration,
+advanced statistics/correlations, stage/sound classification and full Report
+remain unverified or incomplete. Alarm/challenge still lacks a passing full flow;
+routine/QR/walking, sonar/automatic starts, audio mixer/library, rhythm/travel,
+integrations and smart lights remain open. No alarm/audio/microphone test ran.

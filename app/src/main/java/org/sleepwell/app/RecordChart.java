@@ -10,13 +10,16 @@ import java.util.*;
 /** Rounded measured-activity bars. Dense recordings use contiguous display averages, never interpolation. */
 class RecordChart extends View {
     private final List<ChartSeries.Sample> samples=new ArrayList<>();
-    private final String metric;private final long start;private long end;private final boolean night;private final Paint paint=new Paint(3);
+    private final java.time.ZoneId zone;private final String metric;private final long start;private long end;private final boolean night;private final Paint paint=new Paint(3);
     private List<ChartSeries.Bar> bars=Collections.emptyList();private int selected=-1;private double high=.001;
     RecordChart(Context c,List<JSONObject> epochs,String metric,long start,long end){
         this(c,epochs,metric,start,end,false);
     }
     RecordChart(Context c,List<JSONObject> epochs,String metric,long start,long end,boolean night){
-        super(c);this.metric=metric;this.start=start;this.night=night;setFocusable(true);updateData(epochs,end);
+        this(c,epochs,metric,start,end,night,java.time.ZoneId.systemDefault());
+    }
+    RecordChart(Context c,List<JSONObject> epochs,String metric,long start,long end,boolean night,java.time.ZoneId zone){
+        super(c);this.zone=zone;this.metric=metric;this.start=start;this.night=night;setFocusable(true);updateData(epochs,end);
     }
     /** Refresh measured samples in place so keyboard/TalkBack focus and time selection survive live ticks. */
     void updateData(List<JSONObject> epochs,long end){
@@ -25,7 +28,8 @@ class RecordChart extends View {
         setContentDescription(metric+" chart. "+measured+" actual readings. Missing intervals are blank. Dense bars average contiguous readings.");rebuild();invalidate();
     }
     static String clock(long time){return java.time.Instant.ofEpochMilli(time).atZone(java.time.ZoneId.systemDefault()).format(java.time.format.DateTimeFormatter.ofPattern("h:mm a",Locale.getDefault()));}
-    private String axisTime(long time){return end-start<120000?Math.max(0,(time-start)/1000)+" s":clock(time);}
+    private String label(long time){return RecordUi.clock(getContext(),time,zone);}
+    private String axisTime(long time){return end-start<120000?Math.max(0,(time-start)/1000)+" s":label(time);}
     private float density(){return getResources().getDisplayMetrics().density;}
     private float textSize(){return Design.sp(getContext(),10*Appearance.scale(getContext()));}
     private int ink(){return night?Design.LILAC:Appearance.color(getContext(),Design.MUTED);}
@@ -56,13 +60,13 @@ class RecordChart extends View {
         if(bars.isEmpty()){paint.setColor(ink());paint.setTextAlign(Paint.Align.CENTER);canvas.drawText("No readings for this signal",w/2,(top+bottom)/2,paint);}
         paint.setColor(ink());paint.setTextAlign(Paint.Align.LEFT);canvas.drawText(axisTime(start),left,h-7*d,paint);paint.setTextAlign(Paint.Align.RIGHT);canvas.drawText(axisTime(end),right,h-7*d,paint);
         // A time label is only useful when it has room to remain distinct.
-        if(end-start>=30*60000L){int divisions=(right-left)>paint.measureText(clock(start))*5?4:2;paint.setTextAlign(Paint.Align.CENTER);for(int n=1;n<divisions;n++)canvas.drawText(clock(start+(end-start)*n/divisions),left+(right-left)*n/divisions,h-7*d,paint);}
+        if(end-start>=30*60000L){int divisions=(right-left)>paint.measureText(label(start))*5?4:2;paint.setTextAlign(Paint.Align.CENTER);for(int n=1;n<divisions;n++)canvas.drawText(label(start+(end-start)*n/divisions),left+(right-left)*n/divisions,h-7*d,paint);}
     }
     @Override public boolean onTouchEvent(MotionEvent event){
         if(event.getAction()==MotionEvent.ACTION_UP){float ratio=Math.max(0,Math.min(1,(event.getX()-plotLeft())/(plotRight()-plotLeft())));long time=start+(long)((end-start)*ratio),distance=Long.MAX_VALUE;
             for(int n=0;n<bars.size();n++){ChartSeries.Bar bar=bars.get(n);long center=bar.from+(bar.to-bar.from)/2,delta=Math.abs(center-time);if(delta<distance){selected=n;distance=delta;}}performClick();invalidate();return true;}return true;
     }
-    private void describeSelection(){ChartSeries.Bar bar=bars.get(selected);setContentDescription(metric+" at "+clock(bar.to)+": "+String.format(Locale.getDefault(),"%.3f",bar.value)+(bar.readings>1?" average of "+bar.readings+" readings from "+clock(bar.from):" measured reading"));}
+    private void describeSelection(){ChartSeries.Bar bar=bars.get(selected);setContentDescription(metric+" at "+label(bar.to)+": "+String.format(Locale.getDefault(),"%.3f",bar.value)+(bar.readings>1?" average of "+bar.readings+" readings from "+label(bar.from):" measured reading"));}
     @Override public boolean performClick(){super.performClick();if(selected>=0)describeSelection();return true;}
     @Override public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info){super.onInitializeAccessibilityNodeInfo(info);info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_FORWARD);info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_BACKWARD);}
     @Override public boolean performAccessibilityAction(int action,android.os.Bundle args){int step=action==AccessibilityNodeInfo.ACTION_SCROLL_FORWARD?1:action==AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD?-1:0;if(step==0)return super.performAccessibilityAction(action,args);int next=selected<0?(step>0?0:bars.size()-1):selected+step;if(next<0||next>=bars.size())return false;selected=next;performClick();invalidate();return true;}

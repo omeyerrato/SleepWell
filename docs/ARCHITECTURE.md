@@ -10,7 +10,7 @@ SleepWell is a native Android Java application with a small AndroidX Core depend
 | Night capture | `TrackingActivity`, `TrackingService`, `TrackingClock` | Draft setup and same-session live/pause/resume. Measured 1-second live previews, atomic minute epochs and active duration, persisted gaps. Monotonic total lifetime and CPU wake lock bounded to 12 hours. |
 | Audio events | `NoiseRecorder`, `FileSafety` | PCM energy threshold, optional 10-second WAV clips, capped storage, private-file path validation. No ML classification. |
 | Behavior rules | `SleepMath` | Pure scheduling, bedtime windows, digital RMS, and smart-window predicates with unit tests. |
-| Storage | `Store`, `Backup` | SQLite schema 2 sessions/epochs/clips/alarms/pauses, private preferences, nondestructive migration, format 1/2 validation and atomic database replacement. |
+| Storage | `Store`, `Backup` | SQLite schema 4 sessions/epochs/clips/alarms/pauses/edit overlays/create tokens, private preferences, nondestructive migration, format 1/2/3 validation and atomic database replacement. |
 | Bedtime friction | `BedtimeGuard`, `FocusActivity` | Optional accessibility service receives window-state package names only. No window-content capability. Redirects chosen apps; Settings, calls and emergencies exempted. |
 | Screens | `MainActivity`, `Ui`, `GraphView` | Tonight, alarms, history, bedtime, setup. Width capped on large displays; system bar/IME insets handled. Empty graphs are empty rather than fabricated. |
 
@@ -41,3 +41,26 @@ Process recovery ends an unfinished session at the latest persisted epoch or pau
 endpoint and labels it interrupted, rather than pretending the app recorded until
 relaunch. Live graph updates preserve the View, selected time and accessibility
 focus; saved minute averages can have lower resolution than the live preview.
+
+## Effective records
+
+Captured session/epoch/pause rows remain immutable during editing. `Records`
+projects a separate `record_edits` overlay through one interval model shared by
+History, Report, CSV and Trends. Tracked edits stay inside original bounds;
+manual periods may change dates but carry no measurements. Awake intervals merge
+before subtraction, and monotonic active duration bounds available tracked
+coverage. An inconsistent legacy duration is disclosed rather than expanded.
+
+Daily totals assign periods by their ending local date and configurable cutoff,
+merge overlap (including naps), and exclude unknown dates from means. An overlap
+across assigned dates belongs to the earliest ending sleep day. The main bedtime
+plot uses the longest non-Nap period of at least three hours and a noon-based
+clock axis. Year bars are monthly means of observed daily totals. No stages,
+clinical score, SRI or chronotype are inferred by these charts.
+
+Editor saves use optimistic revisions, atomic SQLite writes, persistent create
+request tokens and Activity-independent operation ownership. Deleted tokens are
+tombstoned so SQLite ID reuse cannot replay another record. Reset-original also
+advances the edit revision. Format 3 backups carry edit/source/zone provenance;
+local operation tokens are not portable backup data. Restore validates before
+replacement, runs transactionally and disables imported alarms.

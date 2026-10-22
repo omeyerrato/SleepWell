@@ -40,7 +40,7 @@ passed=False
 try:
     run('install','-r',str(root/'app/build/outputs/apk/debug/app-debug.apk'))
     run('install','-r',str(root/'app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk'))
-    result=run('shell','am','instrument','-w','-r','-e','class','org.sleepwell.app.StorageMigrationTest','org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner',capture_output=True,text=True,encoding='utf-8',errors='replace')
+    result=run('shell','am','instrument','-w','-r','-e','class','org.sleepwell.app.StorageMigrationTest,org.sleepwell.app.RecordStorageTest,org.sleepwell.app.RecordReplayTest,org.sleepwell.app.RecordClockTest','org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner',capture_output=True,text=True,encoding='utf-8',errors='replace')
     (backup/'test-result.txt').write_text(result.stdout+result.stderr,encoding='utf-8')
     print(result.stdout)
     if 'OK (' not in result.stdout:raise RuntimeError('Isolated migration tests failed; personal database must not be opened deliberately')
@@ -56,7 +56,7 @@ if passed:
     # start -W above waits for the newly migrated Activity to launch.
     after=archive('private-after.tar')
     with database(after,'after-db') as connection:
-        assert connection.execute('PRAGMA user_version').fetchone()[0]==2
+        assert connection.execute('PRAGMA user_version').fetchone()[0]==4
         for table,(columns,rows) in original.items():
             assert rows==connection.execute('SELECT '+','.join(columns)+' FROM '+table+' ORDER BY id').fetchall(),table+' data changed'
         assert connection.execute('PRAGMA quick_check').fetchone()[0]=='ok'

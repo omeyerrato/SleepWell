@@ -47,9 +47,9 @@ EXTRA = [
     ("Sound mixing / gains / fade / local playlist", "19", "sleep/lullaby.html", "partial", "One selected loop with timer exists; concurrent mix/gain/fade absent."),
     ("Meditation / stereo binaural generator", "19", "sleep/lullaby.html", "missing", "Original/licensed audio and actual stereo output needed."),
     ("Dream and travel light cues", "27", "sleep/jetlag.html", "missing", "Needs real scheduling and light output, with estimate disclosures."),
-    ("Sleep-day cutoff / naps / date filtering", "22,23", "sleep/statistics.html", "missing", "Recent-session list and mean do not provide complete local-day aggregation."),
-    ("Tag quantities / rename / delete / impact", "22–25", "sleep/tags.html", "partial", "Free-form hashtags exist; structured quantities, edits and minimum-sample analysis absent."),
-    ("Awake edits / trim / manual record / provenance", "24", "sleep/graph_edit.html", "missing", "Original measurements must remain distinguishable from edited periods."),
+    ("Sleep-day cutoff / naps / date filtering", "22,23", "sleep/statistics.html", "implemented", "Configurable local sleep-day cutoff, date/search/context filters, merged overlapping periods and naps, calendar Week/Month/Year summaries. Missing days excluded; Year shows monthly averages of recorded days. Advanced statistics remain separate work."),
+    ("Tag quantities / rename / delete / impact", "22–25", "sleep/tags.html", "partial", "Native per-record add/remove tags and notes persist and feed search. Quantities, global rename/delete and impact analysis remain absent."),
+    ("Awake edits / trim / manual record / provenance", "24", "sleep/graph_edit.html", "implemented", "Native draft editor saves tracked trims, awake intervals, manual periods, tags/notes/rating and reset-original. Source, original bounds, zone and raw sensor rows remain distinct. Atomic version checks and persistent save tokens prevent stale saves and duplicate creates."),
     ("Dated goal bank", "15,23", "sleep/goals.html", "missing", "Goal currently affects early wake; no commitment periods or surplus/deficit bank."),
     ("SRI / circular midpoint clustering", "25", "sleep/chrono_jetlag.html", "missing", "Needs coverage thresholds and missing intervals, not treating unknown days as no sleep."),
     ("Own Intent and data-provider contracts", "33", "devs/intent_api.html", "missing", "Versioned contracts and explicit sender access controls required."),
@@ -112,10 +112,14 @@ for row in rows:
             row["notes"]="Native draft setup, actual sensor availability, Start, live status and saved Report. Back cancels setup drafts. Real movement-only journey verified; audio permission/denial and long-session checks still pending."
         elif row["feature"] == "Tracking pause / standby / battery-adaptive sampling":
             row["notes"]="Partial: real same-session Pause/Resume stops sensors/audio and freezes active duration. Persisted pauses and interrupted recovery exist. Standby/battery-adaptive sampling absent; mic restart hardware evidence pending."
+    elif row["feature"] in ("Graph editing / manual records", "Awake edits / trim / manual record / provenance", "Sleep-day cutoff / naps / date filtering", "Statistics", "Manual journal / tags / ratings", "Tag quantities / rename / delete / impact"):
+        row["implementation"]=["Records.java", "RecordEntry.java", "RecordDraft.java", "RecordIntervals.java", "RecordTrends.java", "HistoryActivity.java", "RecordEditorActivity.java", "RecordSaves.java", "PeriodTimeline.java", "TrendsChart.java", "RecordSignalsActivity.java"]
+        row["screens"]="22–24,02"
+        row["validation"]="RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md."
     elif row["feature"] == "Local data backup":
         row["implementation"]=["Backup.java", "Store.java", "SessionTiming.java", "MainActivity.java"]
-        row["validation"]="StorageMigrationTest 4 isolated-device passes incl v1 migration, v1/v2 import, pause round trip, malformed pause rejection, interrupted recovery and atomic checkpoint rollback/retry; actual document-picker restore pending"
-        row["notes"]="Partial: format 2 includes active duration, exact epoch starts and pause intervals; format 1 stays readable. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted."
+        row["validation"]="17 isolated device passes across migration/records/replay/clock suites, including formats 1/2/3, original-row preservation, malformed edit/manual rejection and atomic rollback. Actual document-picker restore pending"
+        row["notes"]="Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted."
     elif row["feature"] == "Retention / favorite album / alternate formats":
         row["notes"]="Partial: seven-day pruning when a new clip-saving session starts, WAV only. Analysis-only and movement-only sessions do not delete clips. Favorites, manual audio export, configurable retention and other formats remain absent."
     elif row["feature"] == "Triggered sound recordings":

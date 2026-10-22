@@ -178,3 +178,44 @@ maximum values and verify visible rendered bars, out-of-session filtering and a
 partial final epoch. Averaged selections now show their range visually as well
 as through accessibility. Preferences and database/WAL files remained unchanged
 after the silent chart/root tests. No new recording or alarm was started.
+
+## Native records milestone — 2026-10-23
+
+- Local unit suite: **52 passed**, including 17 RecordModelTest cases.
+- Unit/lint/debug app/debug instrumentation APK build passed; lint **0 errors,
+  57 warnings**. New warnings remain mostly localization/accessibility follow-up;
+  this is not a zero-warning claim.
+- Isolated StorageMigrationTest (4), RecordStorageTest (7), RecordReplayTest (5)
+  and RecordClockTest (1): **17 passed in 0.575 s** on S23 Ultra/API 36.
+- RecordRecreationTest: **1 passed in 10.802 s**, containing delayed new and
+  existing saves, Activity recreation and Back while a save is pending.
+- HistoryFlowTest: **1 passed in 101.657 s**. Actual native Add, draft cancel,
+  save/reopen, awake/tag/note edits, search/filter, Week/Month/Year, tracked trim,
+  second-level short edit, and deletion of only selected fixture/clip verified.
+  All 13 final captures compared by the strict reviewer against board 08.
+- RootVisualTest regression: **1 passed in 4.344 s**; ChartVisualTest:
+  **1 passed in 2.504 s**. Actual captures rechecked locally. Tonight keeps a
+  plum system-navigation surface, centered grouped dock and one alarm-off label.
+
+Earlier failures were fixed before acceptance: Android ICU rejected a JVM-valid
+regex flag; Trends attempted to parent one View twice; editor content needed
+scroll-aware lookup; charts clipped labels/summary; and post-dialog screenshots
+caught icon transitions. Migration/record tests were rerun after the fixes. No
+alarm, audio playback, microphone capture, screen-off or reboot was exercised.
+
+Private full-app backups and original APKs were retained before device updates.
+Comparison against the pre-record-test archive confirmed all original personal
+alarm/session/epoch/clip/pause/edit values, exact preference keys/values and clip
+bytes unchanged; schema 4 SQLite integrity passed. The Trends crash had left one
+test cutoff key; its original absence was proven in the private archive and
+restored by a one-time local instrumentation cleanup. The History test now avoids
+changing that preference at all. The cleanup source was removed afterward.
+
+Schema 4 adds edit metadata/provenance and persistent local creation tokens;
+backup format 3 preserves overlays and zones and accepts legacy formats 1/2.
+Original captures remain distinguishable from effective edited/manual periods.
+Portable backups exclude creation tokens, audio, preferences and URI grants.
+Missing dates stay unknown, overlapping duration is merged, and tagged naps do
+not become main bedtimes. These checks prove the stated short/isolate behaviors,
+not overnight tracking accuracy or full feature parity. See DESIGN-REVIEW.md for
+the bounded pass and remaining full-goal failure.

@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Store extends SQLiteOpenHelper {
     public Store(Context c) { this(c,"sleepwell.db"); }
-    Store(Context c,String name) { super(c,name,null,2); }
+    Store(Context c,String name) { super(c,name,null,4); }
     @Override public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE alarms(id INTEGER PRIMARY KEY, data TEXT NOT NULL)");
         db.execSQL("CREATE TABLE sessions(id INTEGER PRIMARY KEY, start INTEGER NOT NULL, end INTEGER, note TEXT DEFAULT '', rating INTEGER DEFAULT 0, interrupted INTEGER DEFAULT 0, active_ms INTEGER, clock_changed INTEGER DEFAULT 0)");
@@ -16,9 +16,13 @@ public class Store extends SQLiteOpenHelper {
         db.execSQL("CREATE INDEX epochs_session ON epochs(session,time)");
         db.execSQL("CREATE TABLE clips(id INTEGER PRIMARY KEY, session INTEGER NOT NULL, time INTEGER NOT NULL, path TEXT NOT NULL, level REAL)");
         createPauses(db);
+        createRecords(db);db.execSQL("ALTER TABLE sessions ADD COLUMN source TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN origin TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN zone TEXT NOT NULL DEFAULT ''");
+        createRequests(db);
     }
     private static void createPauses(SQLiteDatabase db){db.execSQL("CREATE TABLE tracking_pauses(id INTEGER PRIMARY KEY, session INTEGER NOT NULL, start INTEGER NOT NULL, end INTEGER)");db.execSQL("CREATE INDEX pauses_session ON tracking_pauses(session,start)");}
-    @Override public void onUpgrade(SQLiteDatabase db,int old,int next) {if(old<2){db.execSQL("ALTER TABLE sessions ADD COLUMN active_ms INTEGER");db.execSQL("ALTER TABLE sessions ADD COLUMN clock_changed INTEGER DEFAULT 0");db.execSQL("ALTER TABLE epochs ADD COLUMN start INTEGER");createPauses(db);}if(next>2)throw new IllegalStateException("Unknown database version");}
+    private static void createRequests(SQLiteDatabase db){db.execSQL("CREATE TABLE record_create_requests(token TEXT PRIMARY KEY,session INTEGER NOT NULL)");}
+    private static void createRecords(SQLiteDatabase db){db.execSQL("CREATE TABLE record_edits(session INTEGER PRIMARY KEY,start INTEGER NOT NULL,end INTEGER NOT NULL,note TEXT NOT NULL DEFAULT '',tags TEXT NOT NULL DEFAULT '[]',awake TEXT NOT NULL DEFAULT '[]',rating INTEGER NOT NULL DEFAULT 0,rated INTEGER NOT NULL DEFAULT 0,updated INTEGER NOT NULL,reverted INTEGER NOT NULL DEFAULT 0)");}
+    @Override public void onUpgrade(SQLiteDatabase db,int old,int next) {if(old<2){db.execSQL("ALTER TABLE sessions ADD COLUMN active_ms INTEGER");db.execSQL("ALTER TABLE sessions ADD COLUMN clock_changed INTEGER DEFAULT 0");db.execSQL("ALTER TABLE epochs ADD COLUMN start INTEGER");createPauses(db);}if(old<3){createRecords(db);db.execSQL("ALTER TABLE sessions ADD COLUMN source TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN origin TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN zone TEXT NOT NULL DEFAULT ''");}if(old<4)createRequests(db);if(next>4)throw new IllegalStateException("Unknown database version");}
     public synchronized List<Alarm> alarms() {
         List<Alarm> result=new ArrayList<>();
         try(Cursor c=getReadableDatabase().rawQuery("SELECT data FROM alarms ORDER BY id",null)) {
@@ -30,7 +34,7 @@ public class Store extends SQLiteOpenHelper {
     public void deleteAlarm(int id) { getWritableDatabase().delete("alarms","id=?",new String[]{""+id}); }
     public long begin() {
         SQLiteDatabase db=getWritableDatabase(); long now=System.currentTimeMillis();
-        recoverInterrupted();ContentValues v=new ContentValues(); v.put("start",now);v.put("active_ms",0);return db.insertOrThrow("sessions",null,v);
+        recoverInterrupted();ContentValues v=new ContentValues(); v.put("start",now);v.put("active_ms",0);v.put("source","tracked");v.put("origin","local");v.put("zone",java.time.ZoneId.systemDefault().getId());return db.insertOrThrow("sessions",null,v);
     }
     public void end(long id, boolean interrupted) { ContentValues v=new ContentValues(); v.put("end",System.currentTimeMillis()); v.put("interrupted",interrupted?1:0); getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id}); }
     void end(long id,boolean interrupted,long active,long now){resume(id,now);ContentValues v=new ContentValues();v.put("end",now);v.put("active_ms",active);v.put("interrupted",interrupted?1:0);getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id});}
@@ -54,8 +58,8 @@ public class Store extends SQLiteOpenHelper {
         } return rows;
     }
     public JSONObject backup() {
-        JSONObject root=new JSONObject(); JSONArray savedAlarms=new JSONArray();for(Alarm a:alarms())savedAlarms.put(a.json());try { root.put("format",2).put("alarms",savedAlarms)
-            .put("sessions",new JSONArray(rows("SELECT * FROM sessions"))).put("epochs",new JSONArray(rows("SELECT * FROM epochs"))).put("pauses",new JSONArray(rows("SELECT * FROM tracking_pauses"))); } catch(JSONException e) { throw new IllegalStateException(e); } return root;
+        SQLiteDatabase db=getReadableDatabase();db.beginTransactionNonExclusive();try{JSONObject root=new JSONObject(); JSONArray savedAlarms=new JSONArray();for(Alarm a:alarms())savedAlarms.put(a.json());try { root.put("format",3).put("alarms",savedAlarms)
+            .put("sessions",new JSONArray(rows("SELECT * FROM sessions"))).put("epochs",new JSONArray(rows("SELECT * FROM epochs"))).put("pauses",new JSONArray(rows("SELECT * FROM tracking_pauses"))).put("edits",new JSONArray(rows("SELECT * FROM record_edits"))); } catch(JSONException e) { throw new IllegalStateException(e); } db.setTransactionSuccessful();return root;}finally{db.endTransaction();}
     }
-    public void eraseHistory() { SQLiteDatabase db=getWritableDatabase(); db.beginTransaction(); try { db.delete("clips",null,null); db.delete("epochs",null,null);db.delete("tracking_pauses",null,null); db.delete("sessions",null,null); db.setTransactionSuccessful(); } finally { db.endTransaction(); } }
+    public void eraseHistory() { SQLiteDatabase db=getWritableDatabase(); db.beginTransaction(); try { db.execSQL("UPDATE record_create_requests SET session=0");db.delete("clips",null,null); db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null); db.delete("sessions",null,null); db.setTransactionSuccessful(); } finally { db.endTransaction(); } }
 }

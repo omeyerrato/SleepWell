@@ -93,6 +93,10 @@ final class Design {
         @Override protected void onDraw(Canvas original){super.onDraw(original);Canvas c=original;c.save();c.translate(getPaddingLeft(),getPaddingTop());c.scale((getWidth()-getPaddingLeft()-getPaddingRight())/24f,(getHeight()-getPaddingTop()-getPaddingBottom())/24f);Path p=new Path();
             switch(name){
                 case "back":c.drawLine(21,12,3,12,paint);c.drawLine(3,12,10,5,paint);c.drawLine(3,12,10,19,paint);break;
+                case "down":c.drawLine(5,9,12,16,paint);c.drawLine(12,16,19,9,paint);break;
+                case "meal":c.drawLine(5,2,5,10,paint);c.drawLine(2,2,2,7,paint);c.drawLine(8,2,8,7,paint);c.drawLine(2,7,8,7,paint);c.drawLine(5,10,5,22,paint);c.drawLine(18,2,18,22,paint);p.moveTo(18,2);p.quadTo(11,8,18,12);c.drawPath(p,paint);break;
+                case "exercise":c.drawCircle(16,3,2,paint);p.moveTo(4,13);p.lineTo(9,7);p.lineTo(14,10);p.lineTo(20,10);p.moveTo(13,9);p.lineTo(10,15);p.lineTo(15,21);p.moveTo(10,15);p.lineTo(5,22);c.drawPath(p,paint);break;
+                case "tag":p.moveTo(3,3);p.lineTo(12,3);p.lineTo(22,13);p.lineTo(13,22);p.lineTo(3,12);p.close();c.drawPath(p,paint);c.drawCircle(8,8,1.5f,paint);break;
                 case "chevron":c.drawLine(9,5,16,12,paint);c.drawLine(16,12,9,19,paint);break;
                 case "plus":c.drawLine(12,3,12,21,paint);c.drawLine(3,12,21,12,paint);break;
                 case "moon":p.moveTo(15,2);p.cubicTo(-3,0,-1,23,15,22);p.cubicTo(20,21,22,17,22,14);p.cubicTo(10,19,6,7,15,2);paint.setStyle(Paint.Style.FILL);c.drawPath(p,paint);paint.setStyle(Paint.Style.STROKE);break;
@@ -123,6 +127,10 @@ final class Design {
                 case "sonar":c.drawCircle(4,12,1,paint);c.drawArc(0,6,12,18,-65,130,false,paint);c.drawArc(-3,2,20,22,-65,130,false,paint);c.drawArc(-6,-2,27,26,-65,130,false,paint);break;
                 case "stop":paint.setStyle(Paint.Style.FILL);c.drawRoundRect(4,4,20,20,2,2,paint);paint.setStyle(Paint.Style.STROKE);break;
                 case "check":c.drawLine(4,12,10,18,paint);c.drawLine(10,18,21,5,paint);break;
+                case "search":c.drawCircle(10,10,7,paint);c.drawLine(15,15,22,22,paint);break;
+                case "close":c.drawLine(5,5,19,19,paint);c.drawLine(19,5,5,19,paint);break;
+                case "more":paint.setStyle(Paint.Style.FILL);for(int i=0;i<3;i++)c.drawCircle(12,5+i*7,1.8f,paint);paint.setStyle(Paint.Style.STROKE);break;
+                case "trash":c.drawLine(3,6,21,6,paint);c.drawRect(6,6,18,22,paint);c.drawRect(9,2,15,6,paint);c.drawLine(10,10,10,18,paint);c.drawLine(14,10,14,18,paint);break;
                 case "external":p.moveTo(10,4);p.lineTo(3,4);p.lineTo(3,21);p.lineTo(20,21);p.lineTo(20,14);c.drawPath(p,paint);c.drawLine(11,13,22,2,paint);c.drawLine(15,2,22,2,paint);c.drawLine(22,2,22,9,paint);break;
                 default:c.drawCircle(12,13,8,paint);c.drawLine(12,8,12,13,paint);c.drawLine(12,13,16,15,paint);c.drawLine(3,3,6,1,paint);c.drawLine(18,1,21,3,paint);
             }c.restore();

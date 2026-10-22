@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
         super.onCreate(state);store=new Store(this);Notifications.channels(this);
         if(getIntent().getBooleanExtra("visualReview",false))getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         if(state!=null)tab=state.getInt("tab");
-        if(getIntent().getBooleanExtra("showReport",false))tab=2;
+        if(getIntent().getBooleanExtra("showReport",false))tab=2;if(getIntent().hasExtra("destination")){int destination=getIntent().getIntExtra("destination",0);tab=destination==1?2:destination==2?4:0;}
         if(store.alarms().isEmpty())store.save(new Alarm(1));
         if(!TrackingService.running && Prefs.flag(this,"tracking")) {
             store.recoverInterrupted();Prefs.put(this,"tracking",false);Prefs.put(this,"trackingPaused",false);Prefs.put(this,"session",0L);
@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
         LinearLayout row=Design.row(this);row.setMinimumHeight(Ui.dp(this,74));Design.Icon image=new Design.Icon(this,icon,Design.BROWN);image.setPadding(Ui.dp(this,8),Ui.dp(this,8),Ui.dp(this,8),Ui.dp(this,8));image.setBackground(Design.shape(this,Design.SOFT,15));LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48));ip.rightMargin=Ui.dp(this,20);row.addView(image,ip);
         LinearLayout labels=Design.col(this);Design.text(labels,title,17,600,Design.INK);Design.space(labels,5);Design.text(labels,subtitle,13,400,Design.MUTED);row.addView(labels,new LinearLayout.LayoutParams(0,-2,1));Design.Icon arrow=new Design.Icon(this,icon.equals("github")?"external":"chevron",Design.INK);row.addView(arrow,new LinearLayout.LayoutParams(Ui.dp(this,20),Ui.dp(this,20)));row.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,8));row.setOnClickListener(v->action.run());body.addView(row);Design.line(body);
     }
-    private void report(LinearLayout body){String failure=Prefs.text(this,"trackingError","");if(!failure.isEmpty()){Design.text(body,"Recording needs attention: "+failure,13,500,Design.BROWN);Design.space(body,12);}ReportScreen.render(this,body,store,new ReportScreen.Actions(){public void history(){tab=7;render();}public void tonight(){tab=0;render();}public void detail(long id){showNight(id);}});}
+    private void report(LinearLayout body){String failure=Prefs.text(this,"trackingError","");if(!failure.isEmpty()){Design.text(body,"Recording needs attention: "+failure,13,500,Design.BROWN);Design.space(body,12);}ReportScreen.render(this,body,store,new ReportScreen.Actions(){public void history(){startActivity(RecordUi.intent(MainActivity.this,HistoryActivity.class));}public void tonight(){tab=0;render();}public void detail(long id){showNight(id);}});}
     private void privacy(LinearLayout body){Design.header(body,"Data & privacy",()->{tab=4;render();});Design.text(body,"Your sleep data stays on this phone.",16,400,Design.MUTED);Design.space(body,24);
         LinearLayout summary=Design.col(this);Design.pad(summary,20,20);summary.setBackground(Design.shape(this,Design.SOFT,18));Design.text(summary,"On this phone",22,600,Design.INK);Design.space(summary,14);long count=store.rows("SELECT COUNT(*) AS count FROM sessions").get(0).optLong("count");Design.text(summary,count+(count==1?" recorded session":" recorded sessions"),25,600,Design.INK);body.addView(summary);Design.space(body,24);
         Design.text(body,"Backup & export",20,600,Design.INK);Design.space(body,8);Design.text(body,"Backups include alarms, records, graphs and notes. Audio files and app preferences are excluded. Restored alarms start switched off.",14,400,Design.MUTED);
@@ -103,36 +103,8 @@ public class MainActivity extends Activity {
             Alarm a=new Alarm(store.alarms().stream().mapToInt(x->x.id).max().orElse(0)+1);ZonedDateTime t=ZonedDateTime.now().plusMinutes(minutes[0]);a.hour=t.getHour();a.minute=t.getMinute();a.label=minutes[0]+" minute nap";a.smartWindow=0;a.enabled=true;store.save(a);Scheduler.schedule(this,a);render();
         }).setNegativeButton("Cancel",null).show();
     }
-    private void history(LinearLayout body) {
-        Design.header(body,"Sleep history",()->{tab=2;render();});Ui.text(body,"Recorded time is time tracked, not a clinical measure of time asleep.");
-        List<JSONObject> rows=store.rows("SELECT s.*, (SELECT COUNT(*) FROM epochs e WHERE e.session=s.id) AS epochs FROM sessions s ORDER BY start DESC LIMIT 60");
-        List<JSONObject> week=store.rows("SELECT * FROM sessions WHERE end IS NOT NULL AND interrupted=0 AND start>=?",""+(System.currentTimeMillis()-7*86400000L));
-        if(!week.isEmpty()) {long total=0;for(JSONObject s:week)total+=store.recordedMillis(s);LinearLayout stats=Ui.card(body);Ui.label(stats,"LAST 7 DAYS",11,Ui.MINT);Ui.heading(stats,SleepMath.duration(total/week.size()),32);Ui.text(stats,"Average recorded session · "+week.size()+" complete sessions");}
-        if(rows.isEmpty()){LinearLayout empty=Ui.card(body);Ui.heading(empty,"Your story starts tonight.",24);Ui.text(empty,"Start a night to record movement, light and optional room noise. Your real data will appear here.");}
-        for(JSONObject s:rows) {
-            LinearLayout card=Ui.card(body);long id=s.optLong("id"),start=s.optLong("start"),end=s.optLong("end",System.currentTimeMillis());
-            Ui.label(card,Instant.ofEpochMilli(start).atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("EEE, dd MMM · HH:mm")),12,Ui.MINT);
-            Ui.heading(card,SleepMath.duration(store.recordedMillis(s)),32);Ui.text(card,s.isNull("end")?"Tracking in progress":s.optInt("interrupted")==1?"Interrupted session · sensor coverage may be incomplete":"Recorded time · "+s.optInt("epochs")+" samples");
-            if(!s.optString("note","").isEmpty())Ui.text(card,s.optString("note"));
-            Ui.button(card,"Explore night",()->showNight(id));
-        }
-
-    }
-    private void showNight(long id) {
-        List<JSONObject> sessions=store.rows("SELECT * FROM sessions WHERE id=?",""+id);if(sessions.isEmpty())return;JSONObject s=sessions.get(0);
-        List<JSONObject> epochs=store.rows("SELECT * FROM epochs WHERE session=? ORDER BY time",""+id);long recordingStart=s.optLong("start"),recordingEnd=s.isNull("end")?System.currentTimeMillis():s.optLong("end");
-        LinearLayout content=Ui.column(this);content.setPadding(24,12,24,24);ScrollView scroll=new ScrollView(this);scroll.addView(content);
-        Ui.heading(content,"Movement",22);Ui.text(content,"Measured acceleration in one-minute epochs. Dense bars average contiguous readings; gaps remain blank.");content.addView(new GraphView(this,epochs,"movement",recordingStart,recordingEnd),new LinearLayout.LayoutParams(-1,Ui.dp(this,160)));
-        Ui.heading(content,"Room noise",22);Ui.text(content,"Sample-weighted microphone amplitude, not calibrated decibels. Missing readings mean the microphone was off or unavailable.");content.addView(new GraphView(this,epochs,"noise",recordingStart,recordingEnd),new LinearLayout.LayoutParams(-1,Ui.dp(this,130)));
-        Ui.heading(content,"Room light",22);content.addView(new GraphView(this,epochs,"light",recordingStart,recordingEnd),new LinearLayout.LayoutParams(-1,Ui.dp(this,110)));
-        int goal=Prefs.number(this,"goal",480);long duration=store.recordedMillis(s);Ui.text(content,"Recorded duration / goal: "+SleepMath.duration(duration)+" / "+goal/60.0+"h. Paused time is excluded. This is not a sleep-quality score.");
-        for(JSONObject clip:store.rows("SELECT * FROM clips WHERE session=? ORDER BY time",""+id)) {
-            String title=Instant.ofEpochMilli(clip.optLong("time")).atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("HH:mm"));
-            Ui.button(content,"▶ Loud sound · "+title+" · 10 sec",()->playClip(clip.optString("path")));
-        }
-        EditText note=Ui.input(content,"Notes & #tags",s.optString("note",""),InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_MULTI_LINE);final int[] rating={s.optInt("rating",0)};Ui.range(content,"How rested did you feel? (0 = unrated)",rating[0],0,5,n->rating[0]=n);
-        new AlertDialog.Builder(this).setTitle("Your recorded night").setView(scroll).setPositiveButton("Save notes",(d,w)->{store.annotate(id,note.getText().toString(),rating[0]);stopPreview();render();}).setNegativeButton("Close",(d,w)->stopPreview()).setOnCancelListener(d->stopPreview()).show();
-    }
+    private void history(LinearLayout body){startActivity(RecordUi.intent(this,HistoryActivity.class));tab=2;}
+    private void showNight(long id){startActivity(RecordUi.intent(this,RecordEditorActivity.class).putExtra("record",id));}
     private void bedtime(LinearLayout body) {
         Ui.heading(body,"Protect your evening.",30);Ui.text(body,"Less scrolling tonight. More energy for the morning you want.");
         LinearLayout routine=Ui.card(body);Ui.label(routine,"YOUR WIND-DOWN",11,Ui.MINT);
@@ -205,7 +177,7 @@ public class MainActivity extends Activity {
             else if(request==EXPORT_JSON||request==EXPORT_CSV) {
                 String content;
                 if(request==EXPORT_JSON)content=store.backup().toString(2);
-                else {StringBuilder b=new StringBuilder("start_iso,end_iso,recorded_minutes,interrupted,rating,notes\r\n");for(JSONObject s:store.rows("SELECT * FROM sessions ORDER BY start")) {long start=s.optLong("start");boolean ended=!s.isNull("end");b.append(Instant.ofEpochMilli(start)).append(',').append(ended?Instant.ofEpochMilli(s.optLong("end")):"").append(',').append(ended?store.recordedMillis(s)/60000:"").append(',').append(s.optInt("interrupted")).append(',').append(s.optInt("rating")).append(',').append(SleepMath.csv(s.optString("note"))).append("\r\n");}content=b.toString();}
+                else content=Records.csv(store);
                 try(OutputStream out=getContentResolver().openOutputStream(uri,"wt")){if(out==null)throw new IOException("No output stream");out.write(content.getBytes(StandardCharsets.UTF_8));}Ui.toast(this,"Export saved. Backups contain graphs and notes, but exclude audio files and settings.");
             } else if(request==IMPORT) {
                 if(TrackingService.running||Prefs.flag(this,"ringing")){Ui.toast(this,"End tracking and alarms before restoring.");return;}

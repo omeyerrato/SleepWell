@@ -15,7 +15,7 @@ import sys
 parser = argparse.ArgumentParser()
 parser.add_argument("--adb", required=True)
 parser.add_argument("--serial", required=True)
-parser.add_argument("--flow", choices=("roots", "appearance", "charts", "tracking"), default="roots")
+parser.add_argument("--flow", choices=("roots", "appearance", "charts", "tracking", "history", "recreation"), default="roots")
 args = parser.parse_args()
 root = Path(__file__).resolve().parents[1]
 adb = [args.adb, "-s", args.serial]
@@ -34,6 +34,8 @@ flows = {
     "roots": ("RootVisualTest", "root", ("tonight", "report", "settings", "report-selected")),
     "appearance": ("AppearanceFlowTest", "appearance", ("automatic", "selected-0", "selected-1", "selected-2", "tonight-0", "tonight-1", "tonight-2", "large-contrast-tonight", "large-contrast-tonight-action", "large-contrast")),
     "charts": ("ChartVisualTest", "chart", ("dense", "selected", "empty")),
+    "recreation": ("RecordRecreationTest", "recreation", ()),
+    "history": ("HistoryFlowTest", "history", ("empty", "editor", "reopened", "manual-signals", "history", "search", "filter", "trends-week", "trends-month", "trends-year", "tracked-editor", "tracked-saved", "short-editor")),
     "tracking": ("TrackingFlowTest", "tracking", ("setup", "collecting", "live", "paused", "resumed", "report", "reopened")),
 }
 try:
@@ -44,7 +46,7 @@ try:
     capture.mkdir(parents=True, exist_ok=True)
     for name in names:
         (capture/f"{name}.png").unlink(missing_ok=True)
-    command("shell", "rm", "-f", *[f"/sdcard/Android/data/org.sleepwell.app/files/verification/{prefix}-{name}.png" for name in names])
+    if names: command("shell", "rm", "-f", *[f"/sdcard/Android/data/org.sleepwell.app/files/verification/{prefix}-{name}.png" for name in names])
     result = command("shell", "am", "instrument", "-w", "-r", "-e", "class",
                      "org.sleepwell.app."+test_class,
                      "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner",

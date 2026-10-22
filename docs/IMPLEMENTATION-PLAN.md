@@ -1,8 +1,7 @@
 # Persistent build plan
 
 The full BUILD-PROMPT remains the goal. There are 36 intended phone screens;
-wearables/watch companions and hardware vitals are excluded. No screen is final
-accepted yet. The first UI pass was rejected by the user for visual fidelity.
+wearables/watch companions and hardware vitals are excluded. No claim of all-screen final acceptance is made. The first UI pass was rejected by the user for visual fidelity.
 
 1. Repair the root compositions against the boards: Tonight, Report and Settings.
    Correct proportion, dock alignment, icon vocabulary and system-bar continuity.
@@ -48,3 +47,11 @@ passing device evidence and a narrow independent visual pass; smart lights and
 the rest of screen 36 remain incomplete. The narrow manual movement flow now passes device and visual review after source
 and screenshot corrections. Sonar, automatic tracking, microphone hardware
 lifecycle and overnight reliability remain pending. Other priorities stay active.
+
+
+The bounded board-08 records flow now passes default-size S23 behavior and strict
+visual review: manual records, effective tracked edits, search/filter, calendar
+trends, draft cancellation, same-save recreation and selected deletion. See
+VERIFICATION.md for exact evidence. Full screens/configurations, advanced stats,
+goals and rhythm remain open. Continue the remaining vertical flows; do not mark
+the overall goal complete from this milestone.

@@ -7,7 +7,7 @@ import java.util.*;
 
 final class Backup {
     static void validate(JSONObject root) throws JSONException {
-        int format=root.getInt("format");if(format!=1&&format!=2)throw new JSONException("Unsupported backup format");
+        int format=root.getInt("format");if(format<1||format>3)throw new JSONException("Unsupported backup format");
         JSONArray alarms=root.getJSONArray("alarms"),sessions=root.getJSONArray("sessions"),epochs=root.getJSONArray("epochs");
         Set<Long> ids=new HashSet<>(),alarmIds=new HashSet<>();Map<Long,JSONObject> byId=new HashMap<>();
         for(int i=0;i<alarms.length();i++){
@@ -17,38 +17,46 @@ final class Backup {
         for(int i=0;i<sessions.length();i++){
             JSONObject s=sessions.getJSONObject(i);long id=s.getLong("id"),start=s.getLong("start");
             if(id<=0||!ids.add(id)||start<=0||(!s.isNull("end")&&s.getLong("end")<start)||(!s.isNull("active_ms")&&s.getLong("active_ms")<0))throw new JSONException("Invalid session");byId.put(id,s);
+            if(format==3){if(!Set.of("tracked","manual","legacy").contains(s.getString("source"))||!Set.of("local","imported","legacy").contains(s.getString("origin")))throw new JSONException("Invalid record provenance");String zone=s.getString("zone");if(!zone.isEmpty())try{java.time.ZoneId.of(zone);}catch(java.time.DateTimeException e){throw new JSONException("Invalid record time zone");}}
+            if(format==3&&s.getString("source").equals("manual")&&(!s.isNull("active_ms")||s.isNull("end")||s.getLong("end")<=start||s.getLong("end")>System.currentTimeMillis()||s.getLong("end")-start>36*3600000L))throw new JSONException("Invalid manual record");
         }
         for(int i=0;i<epochs.length();i++){
             JSONObject e=epochs.getJSONObject(i);if(!ids.contains(e.getLong("session"))||e.getLong("time")<=0||(!e.isNull("start")&&(e.getLong("start")<=0||e.getLong("start")>e.getLong("time"))))throw new JSONException("Invalid sensor record");
+            if(format==3&&byId.get(e.getLong("session")).getString("source").equals("manual"))throw new JSONException("Manual records cannot contain sensor measurements");
             for(String k:new String[]{"movement","noise","light"})if(!e.isNull(k)&&(!Double.isFinite(e.getDouble(k))||e.getDouble(k)<0))throw new JSONException("Invalid sensor value");
         }
-        if(format==2){
+        if(format>=2){
             JSONArray pauses=root.getJSONArray("pauses");Set<Long> pauseIds=new HashSet<>();Map<Long,Long> previousEnd=new HashMap<>();List<JSONObject> sorted=new ArrayList<>();
             for(int i=0;i<pauses.length();i++)sorted.add(pauses.getJSONObject(i));sorted.sort(Comparator.comparingLong(p->p.optLong("start")));
             for(JSONObject p:sorted){long id=p.getLong("id"),session=p.getLong("session"),from=p.getLong("start"),to=p.isNull("end")?Long.MAX_VALUE:p.getLong("end");JSONObject s=byId.get(session);
                 if(id<=0||!pauseIds.add(id)||s==null||from<s.getLong("start")||to<from||(!s.isNull("end")&&(p.isNull("end")||to>s.getLong("end")))||from<previousEnd.getOrDefault(session,Long.MIN_VALUE))throw new JSONException("Invalid pause interval");previousEnd.put(session,to);
+                if(format==3&&s.getString("source").equals("manual"))throw new JSONException("Manual records cannot contain tracking pauses");
             }
         }
+        if(format==3){Set<Long> edits=new HashSet<>();JSONArray overlays=root.getJSONArray("edits");for(int i=0;i<overlays.length();i++){JSONObject e=overlays.getJSONObject(i);long id=e.getLong("session");JSONObject s=byId.get(id);if(!edits.add(id)||s==null||s.isNull("end")||e.getLong("updated")<=0||e.optInt("reverted",0)<0||e.optInt("reverted",0)>1)throw new JSONException("Invalid record edit");if(s.getString("source").equals("manual")&&e.optInt("reverted",0)!=0)throw new JSONException("Manual records cannot be reverted");try{Records.draft(e).validate(s.getLong("start"),s.getLong("end"),s.getString("source").equals("manual"),System.currentTimeMillis());}catch(IllegalArgumentException bad){throw new JSONException(bad.getMessage());}}for(JSONObject s:byId.values())if(s.getString("source").equals("manual")&&!edits.contains(s.getLong("id")))throw new JSONException("Manual record details are missing");}
     }
     static void restore(Context c,Store store,JSONObject root) throws JSONException {
+        if(TrackingService.running||Prefs.flag(c,"ringing"))throw new JSONException("End tracking and alarms before restoring.");
         List<Alarm> previous=store.alarms();List<JSONObject> clips=store.rows("SELECT path FROM clips");restoreData(store,root);
         for(Alarm a:previous){Scheduler.cancel(c,a.id,Scheduler.FIRE);Scheduler.cancel(c,a.id,Scheduler.SNOOZE);Scheduler.cancel(c,a.id,Scheduler.CHECK);Scheduler.cancel(c,a.id,Scheduler.BACKUP);}
         Scheduler.cancel(c,-1,Scheduler.TEST);Prefs.put(c,"checkPending",0);for(JSONObject clip:clips)FileSafety.deleteClip(c,clip.optString("path"));
     }
     static void restoreData(Store store,JSONObject root) throws JSONException {
         validate(root);SQLiteDatabase db=store.getWritableDatabase();
-        Map<Long,Long> endpoints=new HashMap<>();Set<Long> unfinished=new HashSet<>();JSONArray sessions=root.getJSONArray("sessions"),epochs=root.getJSONArray("epochs"),pauses=root.getInt("format")==2?root.getJSONArray("pauses"):null;
+        int format=root.getInt("format");Map<Long,Long> endpoints=new HashMap<>();Set<Long> unfinished=new HashSet<>();JSONArray sessions=root.getJSONArray("sessions"),epochs=root.getJSONArray("epochs"),pauses=format>=2?root.getJSONArray("pauses"):null;
         for(int i=0;i<sessions.length();i++){JSONObject s=sessions.getJSONObject(i);endpoints.put(s.getLong("id"),s.isNull("end")?s.getLong("start"):s.getLong("end"));if(s.isNull("end"))unfinished.add(s.getLong("id"));}
         for(int i=0;i<epochs.length();i++){JSONObject e=epochs.getJSONObject(i);long id=e.getLong("session");if(unfinished.contains(id))endpoints.put(id,Math.max(endpoints.get(id),e.getLong("time")));}
         if(pauses!=null)for(int i=0;i<pauses.length();i++){JSONObject p=pauses.getJSONObject(i);long id=p.getLong("session");endpoints.put(id,Math.max(endpoints.get(id),p.isNull("end")?p.getLong("start"):p.getLong("end")));}
         db.beginTransaction();try {
-            db.delete("alarms",null,null);db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("sessions",null,null);db.delete("clips",null,null);
+            db.delete("record_create_requests",null,null);db.delete("alarms",null,null);db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null);db.delete("sessions",null,null);db.delete("clips",null,null);
             JSONArray alarms=root.getJSONArray("alarms");for(int i=0;i<alarms.length();i++){Alarm a=Alarm.read(alarms.getJSONObject(i));a.enabled=false;if(a.tone.startsWith("content:"))a.tone="daybreak";store.save(a);}
             for(int i=0;i<sessions.length();i++){
                 JSONObject j=sessions.getJSONObject(i);ContentValues v=new ContentValues();long id=j.getLong("id");v.put("id",id);v.put("start",j.getLong("start"));v.put("end",endpoints.get(id));v.put("note",j.optString("note",""));v.put("rating",Math.max(0,Math.min(5,j.optInt("rating"))));v.put("interrupted",j.isNull("end")?1:j.optInt("interrupted"));v.put("clock_changed",j.optInt("clock_changed",0)==0?0:1);if(!j.isNull("active_ms"))v.put("active_ms",j.getLong("active_ms"));db.insertOrThrow("sessions",null,v);
+                ContentValues provenance=new ContentValues();provenance.put("source",format==3?j.getString("source"):"legacy");provenance.put("origin","imported");provenance.put("zone",format==3?j.getString("zone"):"");db.update("sessions",provenance,"id=?",new String[]{""+id});
             }
             for(int i=0;i<epochs.length();i++){JSONObject e=epochs.getJSONObject(i);store.epoch(e.getLong("session"),e.isNull("start")?null:e.getLong("start"),e.getLong("time"),e.isNull("movement")?null:e.getDouble("movement"),e.isNull("noise")?null:e.getDouble("noise"),e.isNull("light")?null:e.getDouble("light"),e.optInt("samples",0));}
             if(pauses!=null)for(int i=0;i<pauses.length();i++){JSONObject p=pauses.getJSONObject(i);ContentValues v=new ContentValues();v.put("id",p.getLong("id"));v.put("session",p.getLong("session"));v.put("start",p.getLong("start"));v.put("end",p.isNull("end")?endpoints.get(p.getLong("session")):p.getLong("end"));db.insertOrThrow("tracking_pauses",null,v);}
+            if(format==3){JSONArray edits=root.getJSONArray("edits");for(int i=0;i<edits.length();i++){JSONObject edit=edits.getJSONObject(i);ContentValues v=Records.values(edit.getLong("session"),Records.draft(edit),edit.getLong("updated"));v.put("reverted",edit.optInt("reverted",0));db.insertOrThrow("record_edits",null,v);}}
             db.setTransactionSuccessful();
         }finally {db.endTransaction();}
     }

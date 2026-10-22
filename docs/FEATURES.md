@@ -94,11 +94,11 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | --- | --- | --- |
 | Night graphs | Plot time-stamped sensor and derived metrics | Partial: real movement/noise/light plots; missing samples remain absent. No hypnogram or vital overlays. |
 | History | Browse individual nights | Implemented: recent 60 sessions, interrupted-state display, recorded time, detail screen. Pagination pending. |
-| Manual journal / tags / ratings | Add context and subjective quality | Implemented: free-form notes/hashtags and 0–5 rested rating. Tag taxonomy/quantities/automatic context pending. |
-| Graph editing / manual records | Correct start/end and missed nights | Pending; original samples should be preserved with edit provenance. |
+| Manual journal / tags / ratings | Add context and subjective quality | Implemented: saved notes, removable structured tags, and explicit unrated/0–5 rested rating in the native editor. Tag quantities, bulk taxonomy and automatic context pending. |
+| Graph editing / manual records | Correct start/end and missed nights | Implemented: manual periods, tracked trims, merged awake edits, tags, notes, ratings, restore-original and selected-record deletion. Original measurements are immutable; manual periods never receive sensor graphs. |
 | Duration goal | Choose target rest duration | Partial: recorded-duration goal, not an assertion of actual sleep duration. |
 | Multi-metric sleep score | Combine duration, continuity, stages, regularity and body measures | Pending: no composite score manufactured from unavailable sensors. |
-| Statistics | Aggregate nights across a time period | Partial: seven-day completed-session average; day-cutoff handling, filtering and long-term summaries pending. |
+| Statistics | Aggregate nights across a time period | Partial: calendar Week/Month/Year charts, date/search/context filters and configurable day cutoff. Daily coverage merges overlaps, missing dates stay unknown, and naps count toward duration. Advanced statistics and correlations remain pending. |
 | Duration/deficit/regularity charts | Aggregate nightly durations and timing differences | Pending; unknown nights must remain unknown rather than counted as zero sleep. |
 | Chronotype / social jetlag / SRI | Analyze timing over sufficient workday/free-day history | Pending: requires enough genuine observations, configurable week boundaries and circular-time calculations. |
 | Tag impact analysis | Compare groups of nights by habit | Pending: minimum sample counts and observational-language constraints. |
@@ -126,7 +126,7 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | Wearable connection test | Signal inspection and actuator test per adapter | Pending. |
 | Health Connect | User-selected sleep/vital read/write scopes, provenance and deduplication | Pending. |
 | Google Fit / Samsung Health | Platform-supported health data path | Pending; prefer current consent-based Health Connect where available. |
-| Local data backup | Export records/configuration and restore transactionally | Partial: versioned JSON alarms/sessions/epochs/pause provenance (format 2, format 1 readable) and CSV export. JSON excludes preferences, NFC IDs and audio. Imported alarms start disabled. |
+| Local data backup | Export records/configuration and restore transactionally | Partial: versioned JSON alarms/sessions/epochs/pause/edit provenance (format 3, formats 1/2 readable) and CSV export. JSON excludes preferences, NFC IDs and audio. Imported alarms start disabled. |
 | Cloud backup / SleepCloud | Authenticated storage, encryption and sync conflict handling | Pending for user-controlled storage. Vendor SleepCloud hosting is not reproduced or included. |
 | Calendar | Read consent, holiday/meeting rules, optionally write sessions | Pending. |
 | Tasker / Automate / Intent API | Explicit opt-in event/command contracts with sender controls | Pending; current components are private rather than accepting untrusted commands. |
