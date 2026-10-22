@@ -27,6 +27,8 @@
   measured bar charts are implemented changes, not evidence that every screen or
   phone feature is complete. Consult FEATURE-MATRIX.md and DESIGN-REVIEW.md.
 
+Independent CI for [034c345](https://github.com/omeyerrato/SleepWell/actions/runs/39842509047) completed successfully. That confirms its build checks, not full device/feature acceptance.
+
 The earlier alpha verification record below is historical.
 
 Date: 2026-10-22 (Asia/Riyadh).

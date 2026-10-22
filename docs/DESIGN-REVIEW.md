@@ -78,3 +78,8 @@ Overall verdict remains **FAIL**. Appearance/Integrations routes are absent;
 other screens/algorithms/integrations and persistence/accessibility evidence are
 incomplete. Full alarm/challenge behavior remains unpassed and cannot be retested
 under the user's current no-alarm instruction.
+
+The independent reviewer also inspected the 22:38 disabled-arc and selected-epoch
+captures: all three narrow corrections passed, with no new clipping/dock/system-bar
+regression. Full-goal verdict remains FAIL. Its remaining wording correction is
+implemented as “Recording started” rather than inferring sleep onset from capture start.
