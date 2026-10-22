@@ -10,7 +10,7 @@ SOURCE = "https://sleep.urbandroid.org/docs/"
 GROUPS = {
     "Alarms": ("04–12,26", "alarms/alarm_settings.html", ["Alarm.java", "Scheduler.java", "AlarmService.java", "AlarmActivity.java", "AlarmEditorActivity.java"]),
     "Bedtime": ("13–21,27–30", "sleep/sleep_tracking.html", ["TrackingService.java", "NoiseRecorder.java", "BedtimeGuard.java", "MainActivity.java"]),
-    "Records": ("02,22–25", "sleep/statistics.html", ["Store.java", "GraphView.java", "MainActivity.java"]),
+    "Records": ("02,22–25", "sleep/statistics.html", ["Store.java", "ReportScreen.java", "RecordChart.java", "ChartSeries.java", "GraphView.java", "MainActivity.java"]),
     "Devices": ("32,33,35,36", "services/automation.html", ["Backup.java", "FileSafety.java", "MainActivity.java"]),
 }
 EXCLUDED = ("Wear OS /", "Garmin", "Xiaomi /", "Pebble", "Legacy Tizen", "Bluetooth oximeters", "SpO₂", "Heart rate / HRV", "Wearable connection", "Sleep masks")
@@ -99,6 +99,9 @@ for row in rows:
         row["validation"]="AppearancePolicyTest (3 passing); AppearanceFlowTest silent device pass 2026-10-22; narrow visual review in DESIGN-REVIEW.md"
     elif row["feature"] == "Dashboard / tabs":
         row["notes"]="Partial: native Tonight/Report/Settings roots and real theme settings. User-arranged cards and other home configurations absent; no all-screen acceptance claim."
+    elif row["feature"] == "Accelerometer tracking":
+        row["implementation"] += ["RecordChart.java", "ChartSeries.java"]
+        row["validation"]="Earlier 232-second movement-only capture; ChartSeriesTest 5 passing; labeled synthetic ChartVisualTest rendering pass; full-night/device coverage incomplete"
 
 for n, row in enumerate(rows, 1):
     row["id"] = f"F{n:03}"

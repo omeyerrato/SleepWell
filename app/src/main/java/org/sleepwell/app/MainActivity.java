@@ -123,11 +123,11 @@ public class MainActivity extends Activity {
     }
     private void showNight(long id) {
         List<JSONObject> sessions=store.rows("SELECT * FROM sessions WHERE id=?",""+id);if(sessions.isEmpty())return;JSONObject s=sessions.get(0);
-        List<JSONObject> epochs=store.rows("SELECT * FROM epochs WHERE session=? ORDER BY time",""+id);
+        List<JSONObject> epochs=store.rows("SELECT * FROM epochs WHERE session=? ORDER BY time",""+id);long recordingStart=s.optLong("start"),recordingEnd=s.isNull("end")?System.currentTimeMillis():s.optLong("end");
         LinearLayout content=Ui.column(this);content.setPadding(24,12,24,24);ScrollView scroll=new ScrollView(this);scroll.addView(content);
-        Ui.heading(content,"Movement",22);Ui.text(content,"Measured acceleration in one-minute buckets. Higher peaks mean more phone movement.");content.addView(new GraphView(this,epochs,"movement"),new LinearLayout.LayoutParams(-1,Ui.dp(this,160)));
-        Ui.heading(content,"Room noise",22);Ui.text(content,"Sample-weighted microphone amplitude, not calibrated decibels. Missing readings mean the microphone was off or unavailable.");content.addView(new GraphView(this,epochs,"noise"),new LinearLayout.LayoutParams(-1,Ui.dp(this,130)));
-        Ui.heading(content,"Room light",22);content.addView(new GraphView(this,epochs,"light"),new LinearLayout.LayoutParams(-1,Ui.dp(this,110)));
+        Ui.heading(content,"Movement",22);Ui.text(content,"Measured acceleration in one-minute epochs. Dense bars average contiguous readings; gaps remain blank.");content.addView(new GraphView(this,epochs,"movement",recordingStart,recordingEnd),new LinearLayout.LayoutParams(-1,Ui.dp(this,160)));
+        Ui.heading(content,"Room noise",22);Ui.text(content,"Sample-weighted microphone amplitude, not calibrated decibels. Missing readings mean the microphone was off or unavailable.");content.addView(new GraphView(this,epochs,"noise",recordingStart,recordingEnd),new LinearLayout.LayoutParams(-1,Ui.dp(this,130)));
+        Ui.heading(content,"Room light",22);content.addView(new GraphView(this,epochs,"light",recordingStart,recordingEnd),new LinearLayout.LayoutParams(-1,Ui.dp(this,110)));
         int goal=Prefs.number(this,"goal",480);long duration=s.isNull("end")?0:s.optLong("end")-s.optLong("start");Ui.text(content,"Recorded duration / goal: "+SleepMath.duration(duration)+" / "+goal/60.0+"h. This is not a sleep-quality score.");
         for(JSONObject clip:store.rows("SELECT * FROM clips WHERE session=? ORDER BY time",""+id)) {
             String title=Instant.ofEpochMilli(clip.optLong("time")).atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("HH:mm"));

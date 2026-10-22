@@ -13,7 +13,9 @@ Current local suites cover midnight/DST/repeating alarms, bedtime boundaries,
 smart-window guards, digital amplitude and missing/noise epochs, CSV quoting,
 and unique/stable math task choices. AppearancePolicyTest adds boundary and fixed
 theme cases, including midnight wrapping and bounded text scales. There are 18
-local test methods.
+local test methods at that milestone. ChartSeriesTest adds five display-aggregation
+tests (dense average, explicit/implicit gaps, true zero/invalid values, short final
+epoch, finite extreme imports), bringing the current total to 23.
 
 ## Personal phone: preserve installation and data
 
@@ -28,6 +30,7 @@ both APKs in place, and runs a hard-coded allowlist of silent tests:
 ```sh
 python scripts/device_verification.py --adb /path/to/adb --serial DEVICE
 python scripts/device_verification.py --adb /path/to/adb --serial DEVICE --flow appearance
+python scripts/device_verification.py --adb /path/to/adb --serial DEVICE --flow charts
 ```
 
 Backups and output are under ignored `.device-backups/`; actual screenshots are
@@ -47,6 +50,13 @@ contrast. It scrolls to the enlarged primary action without invoking tracking.
 It restores the exact original presence/values of its five preference keys in
 finally. It never writes alarms, sessions or microphone settings. The helper
 relaunches the review window even when the test reports a failure.
+
+`ChartVisualTest` renders a clearly labeled synthetic eight-hour fixture in memory
+through the actual native Report renderer, including a sensor outage and true
+zeros. It selects an averaged bar and checks the announced range/count, then
+captures the no-readings state. It writes no database rows or preferences and
+recreates the real MainActivity afterward. Its screenshots are rendering evidence,
+not proof of an overnight measurement or completed Report feature set.
 
 `AlarmFlowTest` tests editor persistence and an actual quiet scheduled challenge.
 It is currently **not passed**: a prior run failed after selecting a wrong answer.

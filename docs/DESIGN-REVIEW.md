@@ -112,3 +112,27 @@ accessibility certification is claimed: numeric checks cover selected text/butto
 pairs, not every pixel. Extreme system font settings, RTL and TalkBack still need
 verification. Theme policy uses local-clock phases, not astronomical sunrise.
 Full 36-screen/feature verdict remains **FAIL/incomplete**.
+
+## Dense graph comparison: 23:36–23:45 device captures
+
+The independent reviewer compared actual Android `captures/charts/dense.png`,
+`selected.png` and `empty.png` against board 01's Report composition. These
+images are explicitly labeled synthetic rendering fixtures. They are created
+only in test memory through the native Report renderer and never enter the
+production SQLite records. The actual short recorded session stays unchanged.
+
+The narrow graph correction **passes**: spaced rounded lilac columns, clear
+relative/time axes, genuine gaps inside grouped data, visible measured zeros,
+and a warm selected column with its averaged time range. Display averages use
+only contiguous actual epochs in production; stored readings are untouched.
+High-contrast bars use a stronger solid color and labels respect text scaling.
+
+The reviewer found two correctness gaps before acceptance: finite imported
+extremes could overflow a sum/coordinate, and detail plots inferred bounds from
+their samples. Both were fixed and tested: incremental means and division before
+pixel scaling remain finite, and every detail plot now receives the session's
+actual start/end so leading/trailing gaps and out-of-session filtering work.
+
+This is **not** a passing overnight recording, estimator or sound-analysis flow.
+Screen 02 and the full goal remain **FAIL/incomplete**. Extreme system-font
+tooltip layouts and the remaining report actions/features still need evidence.

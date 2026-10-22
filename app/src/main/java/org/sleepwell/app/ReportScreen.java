@@ -8,15 +8,23 @@ import java.util.*;
 
 final class ReportScreen {
     interface Actions{void history();void tonight();void detail(long id);}
+    static final class Snapshot {
+        final JSONObject session;final List<JSONObject> epochs;final int clipCount;
+        Snapshot(JSONObject session,List<JSONObject> epochs,int clipCount){this.session=session;this.epochs=epochs;this.clipCount=clipCount;}
+    }
     static void render(Activity a,LinearLayout body,Store store,Actions actions){
+        List<JSONObject> rows=store.rows("SELECT * FROM sessions WHERE end IS NOT NULL ORDER BY start DESC LIMIT 1");Snapshot snapshot=null;
+        if(!rows.isEmpty()){JSONObject session=rows.get(0);String id=""+session.optLong("id");snapshot=new Snapshot(session,store.rows("SELECT * FROM epochs WHERE session=? ORDER BY time",id),store.rows("SELECT id FROM clips WHERE session=?",id).size());}
+        render(a,body,snapshot,actions);
+    }
+    static void render(Activity a,LinearLayout body,Snapshot snapshot,Actions actions){
         LinearLayout header=Design.row(a);TextView title=Design.text(a,"Sleep report",29,700,Design.INK);header.addView(title,new LinearLayout.LayoutParams(0,-2,1));header.addView(Design.iconButton(a,"calendar","Sleep history",actions::history),new LinearLayout.LayoutParams(Design.dp(a,48),Design.dp(a,48)));body.addView(header);Design.space(body,8);
-        List<JSONObject> rows=store.rows("SELECT * FROM sessions WHERE end IS NOT NULL ORDER BY start DESC LIMIT 1");
-        if(rows.isEmpty()){
+        if(snapshot==null){
             Design.text(body,"No nights recorded",16,400,Design.MUTED);Design.space(body,64);
             LinearLayout moon=Design.col(a);moon.setGravity(Gravity.CENTER);Design.Icon icon=new Design.Icon(a,"moon",Design.VIOLET);moon.addView(icon,new LinearLayout.LayoutParams(Design.dp(a,64),Design.dp(a,64)));body.addView(moon);Design.space(body,24);
             Design.text(body,"Your first night starts here",23,600,Design.INK).setGravity(Gravity.CENTER);Design.space(body,12);Design.text(body,"Track a night to see your movement, room light and optional sound recordings.",15,400,Design.MUTED).setGravity(Gravity.CENTER);Design.space(body,32);Design.button(body,"Go to Tonight",true,actions::tonight);return;
         }
-        JSONObject session=rows.get(0);long id=session.optLong("id"),start=session.optLong("start"),end=session.optLong("end");List<JSONObject> epochs=store.rows("SELECT * FROM epochs WHERE session=? ORDER BY time",""+id);
+        JSONObject session=snapshot.session;long id=session.optLong("id"),start=session.optLong("start"),end=session.optLong("end");List<JSONObject> epochs=snapshot.epochs;
         String date=java.time.Instant.ofEpochMilli(start).atZone(java.time.ZoneId.systemDefault()).format(java.time.format.DateTimeFormatter.ofPattern("EEE, d MMM",Locale.getDefault()));Design.text(body,date,16,500,Design.MUTED);Design.space(body,14);
         long seconds=Math.max(0,(end-start)/1000);String duration=seconds>=3600?seconds/3600+" h "+seconds/60%60+" min":seconds/60+" min "+seconds%60+" sec";
         TextView value=Design.text(body,duration,56,700,Design.INK);android.text.SpannableString durationText=new android.text.SpannableString(duration);java.util.regex.Matcher units=java.util.regex.Pattern.compile("h|min|sec").matcher(duration);while(units.find())durationText.setSpan(new android.text.style.RelativeSizeSpan(.45f),units.start(),units.end(),0);value.setText(durationText);Design.space(body,4);Design.text(body,"Recorded time",16,500,Design.MUTED);Design.space(body,22);
@@ -24,7 +32,7 @@ final class ReportScreen {
         int startHour=java.time.Instant.ofEpochMilli(start).atZone(java.time.ZoneId.systemDefault()).getHour();String movementTitle=end-start>=4*3600000L&&(startHour>=18||startHour<5)?"Overnight movement":"Recorded movement";
         Design.text(body,movementTitle,16,600,Design.INK);body.addView(new RecordChart(a,epochs,"movement",start,end),new LinearLayout.LayoutParams(-1,Design.dp(a,180)));Design.space(body,14);
         Design.text(body,"Sleep stages",16,600,Design.INK);Design.space(body,8);Design.text(body,"Unavailable · phone motion doesn't measure sleep stages. Recorded time includes time awake.",13,400,Design.MUTED);if(session.optInt("interrupted")==1){Design.space(body,8);Design.text(body,"This recording was interrupted. Some intervals may be missing.",13,500,Design.BROWN);}Design.space(body,24);
-        Design.text(body,"Sound events",16,600,Design.INK);List<JSONObject> clips=store.rows("SELECT id FROM clips WHERE session=?",""+id);Design.space(body,8);Design.text(body,clips.isEmpty()?"No sound clips saved for this night.":clips.size()+" saved sound clips",14,400,Design.MUTED);
+        Design.text(body,"Sound events",16,600,Design.INK);Design.space(body,8);Design.text(body,snapshot.clipCount==0?"No sound clips saved for this night.":snapshot.clipCount+" saved sound clips",14,400,Design.MUTED);
         Design.item(body,"wave","View recorded signals & notes","",()->actions.detail(id));
     }
 }

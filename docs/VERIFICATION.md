@@ -97,3 +97,33 @@ No alarm, audio, vibration, microphone, screen-off or reboot test was run during
 this milestone. The earlier alarm/challenge failure remains unresolved until
 the user's restriction is lifted. Do not read these settings results as alarm
 or overnight-classification evidence.
+
+## Dense graph rendering — 2026-10-22
+
+The display renderer now averages only contiguous recorded epochs into readable
+columns for long sessions. Explicit null epochs and absent minute intervals split
+those groups; a true zero has a small baseline mark. Raw stored epochs are not
+rewritten. Each chart still labels relative activity rather than clinical stages.
+Selected aggregates expose their time range, reading count and arithmetic mean.
+
+- Five ChartSeriesTest cases passed; current local total is 23 with no failures.
+  Unit/lint/debug app/test APK builds passed (lint 0 errors / 38 warnings).
+- ChartVisualTest passed silently on S23 Ultra in 3.063 seconds after review fixes. Three actual
+  Android captures under ignored `captures/charts/` were visually inspected:
+  dense eight-hour fixture, selected aggregate and empty signal. The first two
+  visibly say “VISUAL TEST · synthetic measurements.” They are held only in
+  test memory; no production/demo sessions or preferences are inserted.
+- The fixture has a deliberate outage and real zero-valued samples. This tests
+  display fidelity and honest missingness, not live sensor accuracy, an overnight
+  recording, stages or sound classification. Those gates remain incomplete.
+
+The Appearance commit's independent CI run passed:
+[22c399e](https://github.com/omeyerrato/SleepWell/actions/runs/39849186925).
+
+The strict reviewer caught finite-sum overflow and record-detail bounds derived
+from samples. These were fixed with an incremental mean, division before pixel
+scaling, and actual session bounds passed to all detail plots. Tests cover finite
+maximum values and verify visible rendered bars, out-of-session filtering and a
+partial final epoch. Averaged selections now show their range visually as well
+as through accessibility. Preferences and database/WAL files remained unchanged
+after the silent chart/root tests. No new recording or alarm was started.

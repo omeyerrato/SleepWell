@@ -561,7 +561,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "implemented",
@@ -586,7 +588,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "implemented",
@@ -601,7 +605,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "implemented",
@@ -636,9 +642,11 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "Earlier 232-second movement-only capture; ChartSeriesTest 5 passing; labeled synthetic ChartVisualTest rendering pass; full-night/device coverage incomplete",
       "status": "implemented",
       "notes": "Implemented: gravity filtering and one-minute RMS epochs. Placement strongly affects results.",
       "id": "F046"
@@ -681,7 +689,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
@@ -696,7 +706,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "implemented",
@@ -721,7 +733,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "SignalWindowTest + SleepMathTest",
       "status": "implemented",
@@ -736,7 +750,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "implemented",
@@ -761,7 +777,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "implemented",
@@ -776,7 +794,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
@@ -791,7 +811,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
@@ -826,7 +848,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
@@ -881,7 +905,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
@@ -896,7 +922,9 @@
         "TrackingService.java",
         "NoiseRecorder.java",
         "BedtimeGuard.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "RecordChart.java",
+        "ChartSeries.java"
       ],
       "validation": "Not verified for this feature",
       "status": "partial",
@@ -909,6 +937,9 @@
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
       "implementation": [
         "Store.java",
+        "ReportScreen.java",
+        "RecordChart.java",
+        "ChartSeries.java",
         "GraphView.java",
         "MainActivity.java"
       ],
@@ -923,6 +954,9 @@
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
       "implementation": [
         "Store.java",
+        "ReportScreen.java",
+        "RecordChart.java",
+        "ChartSeries.java",
         "GraphView.java",
         "MainActivity.java"
       ],
@@ -937,6 +971,9 @@
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
       "implementation": [
         "Store.java",
+        "ReportScreen.java",
+        "RecordChart.java",
+        "ChartSeries.java",
         "GraphView.java",
         "MainActivity.java"
       ],
@@ -961,6 +998,9 @@
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
       "implementation": [
         "Store.java",
+        "ReportScreen.java",
+        "RecordChart.java",
+        "ChartSeries.java",
         "GraphView.java",
         "MainActivity.java"
       ],
@@ -985,6 +1025,9 @@
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
       "implementation": [
         "Store.java",
+        "ReportScreen.java",
+        "RecordChart.java",
+        "ChartSeries.java",
         "GraphView.java",
         "MainActivity.java"
       ],
@@ -1059,6 +1102,9 @@
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
       "implementation": [
         "Store.java",
+        "ReportScreen.java",
+        "RecordChart.java",
+        "ChartSeries.java",
         "GraphView.java",
         "MainActivity.java"
       ],
@@ -1093,6 +1139,9 @@
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
       "implementation": [
         "Store.java",
+        "ReportScreen.java",
+        "RecordChart.java",
+        "ChartSeries.java",
         "GraphView.java",
         "MainActivity.java"
       ],
