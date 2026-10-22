@@ -1,0 +1,1663 @@
+{
+  "reviewed": "2026-10-22",
+  "features": [
+    {
+      "feature": "Multiple alarms",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: SQLite alarm configurations, distinct OS PendingIntents.",
+      "id": "F001"
+    },
+    {
+      "feature": "Repeating weekday alarms",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "SleepMathTest: midnight, repeat, DST cases",
+      "status": "implemented",
+      "notes": "Implemented: `SleepMath.nextOccurrence`, current time zone, DST normalization, rescheduled protected OS events.",
+      "id": "F002"
+    },
+    {
+      "feature": "Per-alarm configuration",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: each alarm persists its own settings. Global reusable defaults pending.",
+      "id": "F003"
+    },
+    {
+      "feature": "Smart wake-up",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial/experimental: two consecutive movement-active minutes, at least 20 samples, configured window; fixed OS alarm remains independent. No measured sleep stage.",
+      "id": "F004"
+    },
+    {
+      "feature": "Do not wake before duration goal",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented for recorded session duration; fixed alarm is unaffected.",
+      "id": "F005"
+    },
+    {
+      "feature": "Movement sensitivity",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: conservative fixed 0.12 m/s² threshold; user calibration pending.",
+      "id": "F006"
+    },
+    {
+      "feature": "Backup alarm",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: separately scheduled escalation to Pulse at maximum alarm-stream volume after a configurable delay. Quiet test alarms do not escalate.",
+      "id": "F007"
+    },
+    {
+      "feature": "Gentle volume ramp",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: configurable 0–120 seconds, bounded by device hardware.",
+      "id": "F008"
+    },
+    {
+      "feature": "Extra-loud mode",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: configurable 10–100% of hardware alarm volume, restoration after stop where applicable. No claim of exceeding hardware limits.",
+      "id": "F009"
+    },
+    {
+      "feature": "Vibration",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: repeating phone waveform; per-alarm toggle.",
+      "id": "F010"
+    },
+    {
+      "feature": "Built-in sounds",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: original synthesized Daybreak and Pulse, not copied commercial sound packs.",
+      "id": "F011"
+    },
+    {
+      "feature": "Device ringtone",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: Android default alarm URI. Full ringtone library picker pending.",
+      "id": "F012"
+    },
+    {
+      "feature": "Local songs",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: document-picker audio grant; original-tone fallback on failure.",
+      "id": "F013"
+    },
+    {
+      "feature": "Playlists / shuffle / silent alarm",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F014"
+    },
+    {
+      "feature": "Internet radio / Spotify",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: requires network controls/provider access; subscriptions to third-party music cannot be made free by this project.",
+      "id": "F015"
+    },
+    {
+      "feature": "Sunrise alarm",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F016"
+    },
+    {
+      "feature": "Snooze duration and count",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: 1–15 minutes, 0–5 snoozes; count persists per occurrence.",
+      "id": "F017"
+    },
+    {
+      "feature": "Decreasing snooze / total snooze cap",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending; current count×duration is bounded.",
+      "id": "F018"
+    },
+    {
+      "feature": "Post-dismiss wake check",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: optional 1–15 minute check; confirmation on Tonight screen.",
+      "id": "F019"
+    },
+    {
+      "feature": "Challenge difficulty / rounds",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: 1–6 rounds; shaking uses 5×rounds motion events.",
+      "id": "F020"
+    },
+    {
+      "feature": "Math",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "MathTaskTest; AlarmFlowTest device run pending",
+      "status": "implemented",
+      "notes": "Implemented: randomized addition, numeric answer validation. More operators/difficulties pending.",
+      "id": "F021"
+    },
+    {
+      "feature": "Retype",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: randomized morning code, exact trimmed comparison.",
+      "id": "F022"
+    },
+    {
+      "feature": "Memory pairs",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: randomized three-pair board, delayed mismatch concealment.",
+      "id": "F023"
+    },
+    {
+      "feature": "Sequence",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: randomized numeric sequence, length increases over rounds.",
+      "id": "F024"
+    },
+    {
+      "feature": "Shake",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: accelerometer magnitude plus debounce.",
+      "id": "F025"
+    },
+    {
+      "feature": "NFC",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: foreground NFC reader; only matching enrolled tag completes the task.",
+      "id": "F026"
+    },
+    {
+      "feature": "QR/barcode sequences",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: camera permission, scanner, and enrollment workflow.",
+      "id": "F027"
+    },
+    {
+      "feature": "Object/picture task",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: local model, object constraints, false-match evaluation.",
+      "id": "F028"
+    },
+    {
+      "feature": "Smile task",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: face model, probability threshold, temporal verification.",
+      "id": "F029"
+    },
+    {
+      "feature": "Pose task",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: pose model, confidence and accessibility fallback.",
+      "id": "F030"
+    },
+    {
+      "feature": "Other CAPTCHA pack tasks",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: independent implementations, not vendor add-on reuse.",
+      "id": "F031"
+    },
+    {
+      "feature": "Prevent leaving the alarm",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: voluntary accessibility return and optional Android screen pinning. Calls, Settings and emergencies remain accessible.",
+      "id": "F032"
+    },
+    {
+      "feature": "Prevent uninstall / shutdown",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "blocked",
+      "notes": "Out of scope as an absolute guarantee. Ordinary apps cannot defeat force-stop, hardware shutdown, recovery, or OS controls. No coercive uninstall trap is implemented.",
+      "id": "F033"
+    },
+    {
+      "feature": "Lock-screen/full-screen alarm",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented with permission readiness checks. Android may choose heads-up presentation when already unlocked.",
+      "id": "F034"
+    },
+    {
+      "feature": "Nap timer",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: duration converted to next wall-clock minute, not a second-accurate monotonic countdown.",
+      "id": "F035"
+    },
+    {
+      "feature": "Power nap",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F036"
+    },
+    {
+      "feature": "Polyphasic routine",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: multiple independent alarms; specialized goal/reminder profiles pending.",
+      "id": "F037"
+    },
+    {
+      "feature": "Voice time entry / alternate pickers",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "Scheduler.java",
+        "AlarmService.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: accessible Android time picker; speech and relative entry pending.",
+      "id": "F038"
+    },
+    {
+      "feature": "Alarm-only layout / skip occurrence / holiday skipping",
+      "screens": "04–12,26",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F039"
+    },
+    {
+      "feature": "Bedtime reminder",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: user-chosen local bedtime notification.",
+      "id": "F040"
+    },
+    {
+      "feature": "Smart bedtime",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending; current bedtime is explicit rather than silently inferred.",
+      "id": "F041"
+    },
+    {
+      "feature": "Anti-scrolling guard",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: selected packages, cross-midnight window, five-minute pause, optional accessibility grant. This extends the motivating use case.",
+      "id": "F042"
+    },
+    {
+      "feature": "Manual sleep tracking",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: ongoing notification with stop action, 12-hour bounded run.",
+      "id": "F043"
+    },
+    {
+      "feature": "Automatic tracking",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: separate activity-recognition/bedtime triggers and modern Android background-microphone handling. No microphone capture from boot.",
+      "id": "F044"
+    },
+    {
+      "feature": "Missing-night estimation",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending; missing nights are not fabricated.",
+      "id": "F045"
+    },
+    {
+      "feature": "Accelerometer tracking",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: gravity filtering and one-minute RMS epochs. Placement strongly affects results.",
+      "id": "F046"
+    },
+    {
+      "feature": "Contactless sonar",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: signal generation, echo analysis, device calibration and external validation. An accelerometer is not a substitute for bedside sonar.",
+      "id": "F047"
+    },
+    {
+      "feature": "PIR tracking",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: device-specific adapter and hardware tests.",
+      "id": "F048"
+    },
+    {
+      "feature": "Sleep-phase estimation",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: current UI intentionally shows measured movement rather than fabricated REM/deep/light stages. Clinical stages require independent validation.",
+      "id": "F049"
+    },
+    {
+      "feature": "Awake detection",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: movement and light recording only; a tested wake classifier is pending.",
+      "id": "F050"
+    },
+    {
+      "feature": "Light levels",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented when the phone has a light sensor. No sensor means no genuine measurement.",
+      "id": "F051"
+    },
+    {
+      "feature": "Breathing rate",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending. Not inferred from low-rate phone movement.",
+      "id": "F052"
+    },
+    {
+      "feature": "Noise amplitude",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "SignalWindowTest + SleepMathTest",
+      "status": "implemented",
+      "notes": "Implemented: sample-weighted epoch RMS amplitude, missing-signal gaps, optional microphone foreground service. It is not calibrated dB.",
+      "id": "F053"
+    },
+    {
+      "feature": "Triggered sound recordings",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: optional 10-second WAV clips at energy threshold; at most 60/session with a 30-second cooldown. Pre-roll pending.",
+      "id": "F054"
+    },
+    {
+      "feature": "Automatic sound labels",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: properly licensed local classifier and labeled validation corpus. Current clips are labeled only as loud sounds.",
+      "id": "F055"
+    },
+    {
+      "feature": "Noise threshold",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: relative amplitude threshold; independent per-class sensitivity pending.",
+      "id": "F056"
+    },
+    {
+      "feature": "Noise library",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: playback within each night; favorites and global filtering pending.",
+      "id": "F057"
+    },
+    {
+      "feature": "Retention / favorite album / alternate formats",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: seven-day deletion at next tracking start and WAV format. Favorites, manual audio export and other encodings pending.",
+      "id": "F058"
+    },
+    {
+      "feature": "Anti-snoring cues",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: requires a validated snore classifier first. Generic loud sounds do not trigger snoring treatment.",
+      "id": "F059"
+    },
+    {
+      "feature": "Pair tracking",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: peer pairing, clock alignment, filtering evaluation.",
+      "id": "F060"
+    },
+    {
+      "feature": "Sleep sounds / lullabies",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: original rain/brown-noise loops, low player volume, fixed stop timer. Adaptive fade, guided tracks and playlists pending.",
+      "id": "F061"
+    },
+    {
+      "feature": "Binaural beats / meditation",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F062"
+    },
+    {
+      "feature": "Lucid dreaming",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: no REM-trigger claims without a validated estimator.",
+      "id": "F063"
+    },
+    {
+      "feature": "Jet-lag light intervention",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: evidence-based scheduling, compatible light output, validation.",
+      "id": "F064"
+    },
+    {
+      "feature": "DND / airplane / screen dimming",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: no automatic global device-setting changes.",
+      "id": "F065"
+    },
+    {
+      "feature": "Tracking pause / standby / battery-adaptive sampling",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: end tracking and start a new session; explicit gap-preserving pause pending.",
+      "id": "F066"
+    },
+    {
+      "feature": "Sensor diagnostics",
+      "screens": "13–21,27–30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "TrackingService.java",
+        "NoiseRecorder.java",
+        "BedtimeGuard.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: movement sample count, latest amplitude, setup diagnostics; full live calibration pending.",
+      "id": "F067"
+    },
+    {
+      "feature": "Night graphs",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [
+        "Store.java",
+        "GraphView.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: real movement/noise/light plots; missing samples remain absent. No hypnogram or vital overlays.",
+      "id": "F068"
+    },
+    {
+      "feature": "History",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [
+        "Store.java",
+        "GraphView.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: recent 60 sessions, interrupted-state display, recorded time, detail screen. Pagination pending.",
+      "id": "F069"
+    },
+    {
+      "feature": "Manual journal / tags / ratings",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [
+        "Store.java",
+        "GraphView.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "implemented",
+      "notes": "Implemented: free-form notes/hashtags and 0–5 rested rating. Tag taxonomy/quantities/automatic context pending.",
+      "id": "F070"
+    },
+    {
+      "feature": "Graph editing / manual records",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending; original samples should be preserved with edit provenance.",
+      "id": "F071"
+    },
+    {
+      "feature": "Duration goal",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [
+        "Store.java",
+        "GraphView.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: recorded-duration goal, not an assertion of actual sleep duration.",
+      "id": "F072"
+    },
+    {
+      "feature": "Multi-metric sleep score",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: no composite score manufactured from unavailable sensors.",
+      "id": "F073"
+    },
+    {
+      "feature": "Statistics",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [
+        "Store.java",
+        "GraphView.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: seven-day completed-session average; day-cutoff handling, filtering and long-term summaries pending.",
+      "id": "F074"
+    },
+    {
+      "feature": "Duration/deficit/regularity charts",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending; unknown nights must remain unknown rather than counted as zero sleep.",
+      "id": "F075"
+    },
+    {
+      "feature": "Chronotype / social jetlag / SRI",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: requires enough genuine observations, configurable week boundaries and circular-time calculations.",
+      "id": "F076"
+    },
+    {
+      "feature": "Tag impact analysis",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: minimum sample counts and observational-language constraints.",
+      "id": "F077"
+    },
+    {
+      "feature": "Personalized advice",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: no medical advice generated from a single short session.",
+      "id": "F078"
+    },
+    {
+      "feature": "Achievements",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F079"
+    },
+    {
+      "feature": "Goal bank / wagers",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending for a free habit bank; financial wagering is not part of this app.",
+      "id": "F080"
+    },
+    {
+      "feature": "Dashboard / tabs",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [
+        "Store.java",
+        "GraphView.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: three root destinations with supporting details, Changing light palette, large-text-friendly scrolling, wide-screen width cap. User-arranged cards and themes pending.",
+      "id": "F081"
+    },
+    {
+      "feature": "Global search",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F082"
+    },
+    {
+      "feature": "Home widgets / shortcuts",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F083"
+    },
+    {
+      "feature": "Localization / accessibility",
+      "screens": "02,22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [
+        "Store.java",
+        "GraphView.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: semantic platform controls and content descriptions. Full localization, large-font/RTL/device testing pending.",
+      "id": "F084"
+    },
+    {
+      "feature": "Sleep Phaser PIR lamp",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending; hardware itself is not replicated by an app.",
+      "id": "F085"
+    },
+    {
+      "feature": "Hue / IKEA smart lights",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F086"
+    },
+    {
+      "feature": "Health Connect",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F087"
+    },
+    {
+      "feature": "Google Fit / Samsung Health",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending; prefer current consent-based Health Connect where available.",
+      "id": "F088"
+    },
+    {
+      "feature": "Local data backup",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [
+        "Backup.java",
+        "FileSafety.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: versioned JSON alarms/sessions/epochs and CSV export. JSON excludes preferences, NFC IDs and audio. Imported alarms start disabled.",
+      "id": "F089"
+    },
+    {
+      "feature": "Cloud backup / SleepCloud",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending for user-controlled storage. Vendor SleepCloud hosting is not reproduced or included.",
+      "id": "F090"
+    },
+    {
+      "feature": "Calendar",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F091"
+    },
+    {
+      "feature": "Tasker / Automate / Intent API",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending; current components are private rather than accepting untrusted commands.",
+      "id": "F092"
+    },
+    {
+      "feature": "Custom webhooks",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: network/privacy UI, retry limits, secure URL handling.",
+      "id": "F093"
+    },
+    {
+      "feature": "MQTT",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F094"
+    },
+    {
+      "feature": "IFTTT",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending; third-party platform costs cannot be waived by this app.",
+      "id": "F095"
+    },
+    {
+      "feature": "Assistant voice actions",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending.",
+      "id": "F096"
+    },
+    {
+      "feature": "Content provider / CSV compatibility",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [
+        "Backup.java",
+        "FileSafety.java",
+        "MainActivity.java"
+      ],
+      "validation": "Not verified for this feature",
+      "status": "partial",
+      "notes": "Partial: documented project JSON/CSV, no public provider. Vendor data-format import pending.",
+      "id": "F097"
+    },
+    {
+      "feature": "Community research sharing",
+      "screens": "32,33,35,36",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not verified for this feature",
+      "status": "missing",
+      "notes": "Pending: optional user-controlled research export; no vendor endpoint or automatic telemetry is reused.",
+      "id": "F098"
+    },
+    {
+      "feature": "Reusable alarm defaults",
+      "screens": "04,05,31",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Constructor defaults only; persisted global defaults absent.",
+      "id": "F099"
+    },
+    {
+      "feature": "Separate sound/vibration delay",
+      "screens": "08",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Independent start offsets absent.",
+      "id": "F100"
+    },
+    {
+      "feature": "Flip snooze / hardware-key controls",
+      "screens": "03",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Needs opt-in sensor/key behavior and accessibility alternatives.",
+      "id": "F101"
+    },
+    {
+      "feature": "Backup duration / repeat / timeout",
+      "screens": "09",
+      "source": "https://sleep.urbandroid.org/docs/alarms/backup.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "partial",
+      "notes": "Separate escalation exists; configurable duration, repeats and timeout do not.",
+      "id": "F102"
+    },
+    {
+      "feature": "Date / sunrise / goal-derived alarm",
+      "screens": "05",
+      "source": "https://sleep.urbandroid.org/docs/alarms/create_alarm.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Weekday/local time only; date, location-derived sunrise and goal time absent.",
+      "id": "F103"
+    },
+    {
+      "feature": "Skip and restore next occurrence",
+      "screens": "04",
+      "source": "https://sleep.urbandroid.org/docs/alarms/create_alarm.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Must persist skipped deadline across reboot and expose undo.",
+      "id": "F104"
+    },
+    {
+      "feature": "Dynamic snooze choices / until deadline",
+      "screens": "03,09",
+      "source": "https://sleep.urbandroid.org/docs/alarms/snooze.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Only fixed duration and count presently.",
+      "id": "F105"
+    },
+    {
+      "feature": "Wake-check prompt / confirmation deadline / retries",
+      "screens": "12",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "partial",
+      "notes": "Current delay rings unless confirmed earlier on Tonight; designed notification-then-deadline sequence absent.",
+      "id": "F106"
+    },
+    {
+      "feature": "Multi-task routine / reorder / per-task difficulty",
+      "screens": "10",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "One task type with rounds is not a heterogeneous routine.",
+      "id": "F107"
+    },
+    {
+      "feature": "Lost code fallback / travel bypass",
+      "screens": "11",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "partial",
+      "notes": "Emergency dismissal exists; configured fallback and travel inference absent.",
+      "id": "F108"
+    },
+    {
+      "feature": "Typed arithmetic / operators / complexity",
+      "screens": "03,10",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "partial",
+      "notes": "Stable multiple-choice addition exists; graded complexity and operators absent.",
+      "id": "F109"
+    },
+    {
+      "feature": "Sleeping-target visual search",
+      "screens": "10",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Original search task and accessible alternative needed.",
+      "id": "F110"
+    },
+    {
+      "feature": "Dream diary / mirror text task",
+      "screens": "10",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Needs minimum-length checks, journal persistence and mirrored rendering.",
+      "id": "F111"
+    },
+    {
+      "feature": "Laughter / instrument microphone task",
+      "screens": "10",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Requires microphone consent and detection evaluated beyond raw amplitude.",
+      "id": "F112"
+    },
+    {
+      "feature": "Tilt maze / jumping / flags / counting tasks",
+      "screens": "10",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Additional phone-only categories; original content needed.",
+      "id": "F113"
+    },
+    {
+      "feature": "Walking task",
+      "screens": "10",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Step sensor or measured motion required; shaking is not walking.",
+      "id": "F114"
+    },
+    {
+      "feature": "Pause/resume within one tracked session",
+      "screens": "18",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Must preserve explicit gaps; stopping/starting separate sessions is insufficient.",
+      "id": "F115"
+    },
+    {
+      "feature": "Charging condition / standby mode",
+      "screens": "16,28",
+      "source": "https://sleep.urbandroid.org/docs/sleep/automatic_sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Needs real conditions and compatible background service start handling.",
+      "id": "F116"
+    },
+    {
+      "feature": "After-fall-asleep / false-start rejection",
+      "screens": "28",
+      "source": "https://sleep.urbandroid.org/docs/sleep/automatic_sleep_tracking.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Needs opt-in activity data and measured false-start behavior.",
+      "id": "F117"
+    },
+    {
+      "feature": "Missed-night estimate review / provenance",
+      "screens": "28,24",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_time_estimation.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Duration only; never fabricate sensor/audio graphs for untracked nights.",
+      "id": "F118"
+    },
+    {
+      "feature": "Awake triggers from interaction/light/snooze",
+      "screens": "18,24,30",
+      "source": "https://sleep.urbandroid.org/docs/sleep/awake_detection.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Recorded signals exist; tested awake classification absent.",
+      "id": "F119"
+    },
+    {
+      "feature": "Flip pause / delayed tracking start",
+      "screens": "16,18",
+      "source": "https://sleep.urbandroid.org/docs/sleep/awake_detection.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Needs gap provenance and monotonic timers.",
+      "id": "F120"
+    },
+    {
+      "feature": "Phone breathing / disturbance estimates",
+      "screens": "17,02",
+      "source": "https://sleep.urbandroid.org/docs/sleep/breath_rate.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Requires functioning sonar and independent accuracy evidence; no diagnosis claim.",
+      "id": "F121"
+    },
+    {
+      "feature": "Sonar calibration / signal quality / fallback",
+      "screens": "17",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sensors.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Echo processing, speaker/mic compatibility, power budget and device evidence required.",
+      "id": "F122"
+    },
+    {
+      "feature": "Per-class sound sensitivity",
+      "screens": "20,21",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sound_recognition.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Snore/talk/cough/baby/laugh requires licensed on-device model and evaluated labels.",
+      "id": "F123"
+    },
+    {
+      "feature": "Correct sound labels / favorites / export",
+      "screens": "20,35",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sound_recognition.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Raw clips only; favorites and corrected labels absent.",
+      "id": "F124"
+    },
+    {
+      "feature": "Headphone-only cues / intensity / repeat",
+      "screens": "21",
+      "source": "https://sleep.urbandroid.org/docs/sleep/anti_snoring.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Cannot implement cues before snore detection; loud noise is not snoring.",
+      "id": "F125"
+    },
+    {
+      "feature": "Sound mixing / gains / fade / local playlist",
+      "screens": "19",
+      "source": "https://sleep.urbandroid.org/docs/sleep/lullaby.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "partial",
+      "notes": "One selected loop with timer exists; concurrent mix/gain/fade absent.",
+      "id": "F126"
+    },
+    {
+      "feature": "Meditation / stereo binaural generator",
+      "screens": "19",
+      "source": "https://sleep.urbandroid.org/docs/sleep/lullaby.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Original/licensed audio and actual stereo output needed.",
+      "id": "F127"
+    },
+    {
+      "feature": "Dream and travel light cues",
+      "screens": "27",
+      "source": "https://sleep.urbandroid.org/docs/sleep/jetlag.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Needs real scheduling and light output, with estimate disclosures.",
+      "id": "F128"
+    },
+    {
+      "feature": "Sleep-day cutoff / naps / date filtering",
+      "screens": "22,23",
+      "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Recent-session list and mean do not provide complete local-day aggregation.",
+      "id": "F129"
+    },
+    {
+      "feature": "Tag quantities / rename / delete / impact",
+      "screens": "22–25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/tags.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "partial",
+      "notes": "Free-form hashtags exist; structured quantities, edits and minimum-sample analysis absent.",
+      "id": "F130"
+    },
+    {
+      "feature": "Awake edits / trim / manual record / provenance",
+      "screens": "24",
+      "source": "https://sleep.urbandroid.org/docs/sleep/graph_edit.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Original measurements must remain distinguishable from edited periods.",
+      "id": "F131"
+    },
+    {
+      "feature": "Dated goal bank",
+      "screens": "15,23",
+      "source": "https://sleep.urbandroid.org/docs/sleep/goals.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Goal currently affects early wake; no commitment periods or surplus/deficit bank.",
+      "id": "F132"
+    },
+    {
+      "feature": "SRI / circular midpoint clustering",
+      "screens": "25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/chrono_jetlag.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Needs coverage thresholds and missing intervals, not treating unknown days as no sleep.",
+      "id": "F133"
+    },
+    {
+      "feature": "Own Intent and data-provider contracts",
+      "screens": "33",
+      "source": "https://sleep.urbandroid.org/docs/devs/intent_api.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Versioned contracts and explicit sender access controls required.",
+      "id": "F134"
+    },
+    {
+      "feature": "Calendar holiday skip / meeting shift / record write",
+      "screens": "33 + calendar setup",
+      "source": "https://sleep.urbandroid.org/docs/services/google_calendar.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Needs calendar consent, provider availability and deterministic conflicts.",
+      "id": "F135"
+    },
+    {
+      "feature": "Health Connect sleep provenance / dedup / deletion",
+      "screens": "32",
+      "source": "https://sleep.urbandroid.org/docs/services/health_connect.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Sleep-only consent and read/write behavior; hardware vitals excluded.",
+      "id": "F136"
+    },
+    {
+      "feature": "User-controlled cloud / conflict / audio backup",
+      "screens": "35",
+      "source": "https://sleep.urbandroid.org/docs/services/backup_data.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "No cloud transport; external user-owned storage/provider prerequisite.",
+      "id": "F137"
+    },
+    {
+      "feature": "Tasker events / webhook retries / MQTT transport",
+      "screens": "33",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Needs opted-in transport, credentials, event schemas and actual failure tests.",
+      "id": "F138"
+    },
+    {
+      "feature": "Appearance options alter behavior",
+      "screens": "36",
+      "source": "https://sleep.urbandroid.org/docs/ux/personalize.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Inter/plum/cream/dawn components exist; saved text-size, contrast and time-of-day controls absent.",
+      "id": "F139"
+    }
+  ]
+}

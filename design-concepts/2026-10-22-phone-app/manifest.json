@@ -1,0 +1,307 @@
+{
+  "created": "2026-10-22",
+  "tool": "built-in image_gen",
+  "scope": "phone-only; wearables excluded",
+  "kind": "static visual prototypes",
+  "boardCount": 12,
+  "screenCount": 36,
+  "boards": [
+    {
+      "board": 1,
+      "title": "Everyday",
+      "file": "01-everyday.png",
+      "screens": [
+        {
+          "id": 1,
+          "name": "Tonight"
+        },
+        {
+          "id": 2,
+          "name": "Sleep report"
+        },
+        {
+          "id": 3,
+          "name": "Wake-up challenge"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+        "https://sleep.urbandroid.org/docs/alarms/captcha.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-d2a5dd6b-2f9c-4698-bb5e-f3802cd7d1a1.png"
+    },
+    {
+      "board": 2,
+      "title": "Alarms",
+      "file": "02-alarms.png",
+      "screens": [
+        {
+          "id": 4,
+          "name": "Alarm list"
+        },
+        {
+          "id": 5,
+          "name": "Edit alarm"
+        },
+        {
+          "id": 6,
+          "name": "Smart wake-up"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+        "https://sleep.urbandroid.org/docs/sleep/smart_wake_up.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-52a902f4-fefc-47ca-9c1a-a3765e95f4e4.png"
+    },
+    {
+      "board": 3,
+      "title": "Alarm sound & backup",
+      "file": "03-sound-and-snooze.png",
+      "screens": [
+        {
+          "id": 7,
+          "name": "Choose alarm sound"
+        },
+        {
+          "id": 8,
+          "name": "Gentle wake-up"
+        },
+        {
+          "id": 9,
+          "name": "Snooze & backup"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/alarms/ringtone.html",
+        "https://sleep.urbandroid.org/docs/alarms/snooze.html",
+        "https://sleep.urbandroid.org/docs/alarms/backup.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-e91240ad-a2c7-40b7-90b9-041c9b346cb1.png"
+    },
+    {
+      "board": 4,
+      "title": "Wake-up challenges",
+      "file": "04-challenges.png",
+      "screens": [
+        {
+          "id": 10,
+          "name": "Challenge routine"
+        },
+        {
+          "id": 11,
+          "name": "QR / NFC enrollment"
+        },
+        {
+          "id": 12,
+          "name": "Wake-up check"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/alarms/captcha.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-b5aab808-ee22-4a04-a708-d9e212aacb1a.png"
+    },
+    {
+      "board": 5,
+      "title": "Wind-down & bedtime",
+      "file": "05-bedtime.png",
+      "screens": [
+        {
+          "id": 13,
+          "name": "Wind-down"
+        },
+        {
+          "id": 14,
+          "name": "Blocked apps"
+        },
+        {
+          "id": 15,
+          "name": "Sleep goals"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/alarms/bedtime_notification.html",
+        "https://sleep.urbandroid.org/docs/sleep/goals.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-73d7525e-b755-4617-89a5-74c0135f3946.png"
+    },
+    {
+      "board": 6,
+      "title": "Phone sleep tracking",
+      "file": "06-tracking.png",
+      "screens": [
+        {
+          "id": 16,
+          "name": "Tracking setup"
+        },
+        {
+          "id": 17,
+          "name": "Sonar calibration"
+        },
+        {
+          "id": 18,
+          "name": "Live tracking"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+        "https://sleep.urbandroid.org/docs/sleep/sensors.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-807cb84c-147c-426a-917d-ec4d940580af.png"
+    },
+    {
+      "board": 7,
+      "title": "Sleep sounds & recordings",
+      "file": "07-sleep-audio.png",
+      "screens": [
+        {
+          "id": 19,
+          "name": "Sleep sound mixer"
+        },
+        {
+          "id": 20,
+          "name": "Sound-event library / player"
+        },
+        {
+          "id": 21,
+          "name": "Anti-snoring cues"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/sleep/lullaby.html",
+        "https://sleep.urbandroid.org/docs/sleep/sleep_noise_recording.html",
+        "https://sleep.urbandroid.org/docs/sleep/anti_snoring.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-016ec5c7-3e14-4a10-87bb-0a3e1db608f9.png"
+    },
+    {
+      "board": 8,
+      "title": "History & editing",
+      "file": "08-history-and-trends.png",
+      "screens": [
+        {
+          "id": 22,
+          "name": "Sleep history"
+        },
+        {
+          "id": 23,
+          "name": "Weekly trends"
+        },
+        {
+          "id": 24,
+          "name": "Edit sleep record"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/sleep/statistics.html",
+        "https://sleep.urbandroid.org/docs/sleep/charts.html",
+        "https://sleep.urbandroid.org/docs/sleep/graph_edit.html",
+        "https://sleep.urbandroid.org/docs/sleep/tags.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-4f6c8691-9344-46c9-a32c-cfef2f41c7ef.png"
+    },
+    {
+      "board": 9,
+      "title": "Rhythm, naps & travel",
+      "file": "09-rhythm-and-naps.png",
+      "screens": [
+        {
+          "id": 25,
+          "name": "Sleep regularity"
+        },
+        {
+          "id": 26,
+          "name": "Nap timer"
+        },
+        {
+          "id": 27,
+          "name": "Travel / light-cue setup"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/sleep/chrono_jetlag.html",
+        "https://sleep.urbandroid.org/docs/alarms/naps.html",
+        "https://sleep.urbandroid.org/docs/sleep/jetlag.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-c0a350dd-2a02-4cff-901c-b3b520895d35.png"
+    },
+    {
+      "board": 10,
+      "title": "Automatic tracking & room signals",
+      "file": "10-phone-sensors.png",
+      "screens": [
+        {
+          "id": 28,
+          "name": "Automatic tracking"
+        },
+        {
+          "id": 29,
+          "name": "Phone motion test"
+        },
+        {
+          "id": 30,
+          "name": "Room conditions"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/sleep/automatic_sleep_tracking.html",
+        "https://sleep.urbandroid.org/docs/sleep/sensors.html",
+        "https://sleep.urbandroid.org/docs/sleep/light_level.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-e34c0997-da31-4fb0-9a1c-67c4b477e736.png"
+    },
+    {
+      "board": 11,
+      "title": "Settings & integrations",
+      "file": "11-settings-and-integrations.png",
+      "screens": [
+        {
+          "id": 31,
+          "name": "Settings home"
+        },
+        {
+          "id": 32,
+          "name": "Health Connect (sleep only)"
+        },
+        {
+          "id": 33,
+          "name": "Automation rules"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/services/health_connect.html",
+        "https://sleep.urbandroid.org/docs/services/automation.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-c3ed7d32-622d-4bf3-8ce1-ffa9c6e4d603.png"
+    },
+    {
+      "board": 12,
+      "title": "Reliability, privacy & appearance",
+      "file": "12-privacy-and-appearance.png",
+      "screens": [
+        {
+          "id": 34,
+          "name": "Alarm readiness"
+        },
+        {
+          "id": 35,
+          "name": "Backup & privacy"
+        },
+        {
+          "id": 36,
+          "name": "Appearance / smart-light setup"
+        }
+      ],
+      "sources": [
+        "https://sleep.urbandroid.org/docs/getting_started/permissions.html",
+        "https://sleep.urbandroid.org/docs/services/backup_data.html",
+        "https://sleep.urbandroid.org/docs/general/privacy.html",
+        "https://sleep.urbandroid.org/docs/ux/personalize.html",
+        "https://sleep.urbandroid.org/docs/devices/smart_light.html"
+      ],
+      "generatedSource": "C:\\Users\\omeye\\.codex\\generated_images\\01a16470-c3d7-71f2-9e03-bddb745ae384\\exec-2bab2e8f-e8d7-4860-a144-b7b8fe6d0447.png"
+    }
+  ]
+}
+

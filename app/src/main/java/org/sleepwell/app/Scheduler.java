@@ -32,7 +32,7 @@ public final class Scheduler {
         c.getSystemService(AlarmManager.class).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,next,intent(c,0,BED));
     }
     static void test(Context c,Alarm source) {
-        Alarm a=Alarm.read(source.json()); a.id=-1; a.volume=Math.min(25,a.volume); a.rampSeconds=0; a.awakeCheck=0; a.pin=false;a.backupMinutes=0;
+        Alarm a=Alarm.read(source.json()); a.id=-1; a.volume=Math.min(25,a.volume); a.rampSeconds=0; a.awakeCheck=0; a.pin=false;a.backupMinutes=0;a.vibrate=false;
         Prefs.put(c,"snoozes_-1",0);Prefs.put(c,"test_alarm",a.json().toString()); at(c,-1,TEST,System.currentTimeMillis()+10000);
     }
     static void fire(Context c,Alarm a,boolean mainAlarm) {
@@ -50,6 +50,7 @@ public final class Scheduler {
             }
             // Overlapping scheduled alarms share the currently active challenge, but both schedules advance.
             if(alreadyRinging)return;
+            Prefs.put(c,"challengeCompleted",0);Prefs.put(c,"mathTask","");Prefs.put(c,"retypeTask","");
             Prefs.put(c,"forceBackup",false);Prefs.put(c,"active_alarm",a.json().toString()); Prefs.put(c,"ringing",true);
             if(a.backupMinutes>0 && allowed(c))at(c,a.id,BACKUP,System.currentTimeMillis()+a.backupMinutes*60000L);
             c.startForegroundService(new Intent(c,AlarmService.class));

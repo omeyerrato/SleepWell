@@ -10,7 +10,7 @@ import android.widget.*;
 import java.util.function.*;
 
 final class Ui {
-    static final int BG=Color.rgb(16,24,23),CARD=Color.rgb(28,39,36),TEXT=Color.rgb(240,242,226),MUTED=Color.rgb(159,178,167),MINT=Color.rgb(190,232,198),GOLD=Color.rgb(234,191,138);
+    static final int BG=Design.CREAM,CARD=Design.SOFT,TEXT=Design.INK,MUTED=Design.MUTED,MINT=Design.BROWN,GOLD=0xff9b622b;
     static int dp(Context c,float n) { return (int)(n*c.getResources().getDisplayMetrics().density+.5f); }
     static GradientDrawable shape(int color,int radius) { GradientDrawable g=new GradientDrawable();g.setColor(color);g.setCornerRadius(radius);return g; }
     static LinearLayout column(Context c) { LinearLayout l=new LinearLayout(c);l.setOrientation(LinearLayout.VERTICAL);return l; }
@@ -31,10 +31,10 @@ final class Ui {
         return content;
     }
     static TextView label(LinearLayout parent,String value,int size,int color) {
-        TextView t=new TextView(parent.getContext());t.setText(value);t.setTextSize(size);t.setTextColor(color);t.setPadding(0,dp(t.getContext(),6),0,dp(t.getContext(),6));t.setLineSpacing(dp(t.getContext(),3),1);
+        TextView t=new TextView(parent.getContext());t.setText(value);t.setTypeface(Design.font(parent.getContext(),400));t.setTextSize(size);t.setTextColor(color);t.setPadding(0,dp(t.getContext(),6),0,dp(t.getContext(),6));t.setLineSpacing(dp(t.getContext(),3),1);
         parent.addView(t,new LinearLayout.LayoutParams(-1,-2));return t;
     }
-    static TextView heading(LinearLayout p,String v,int size) { TextView t=label(p,v,size,TEXT);t.setTypeface(Typeface.create("sans-serif-medium",Typeface.NORMAL));return t; }
+    static TextView heading(LinearLayout p,String v,int size) { TextView t=label(p,v,size,TEXT);t.setTypeface(Design.font(p.getContext(),600));return t; }
     static TextView text(LinearLayout p,String v) { return label(p,v,15,MUTED); }
     static LinearLayout card(LinearLayout p) {
         LinearLayout l=column(p.getContext());l.setBackground(shape(CARD,dp(p.getContext(),22)));l.setPadding(dp(p.getContext(),20),dp(p.getContext(),14),dp(p.getContext(),20),dp(p.getContext(),16));
@@ -42,9 +42,9 @@ final class Ui {
     }
     static Button button(LinearLayout p,String title,Runnable click) { return button(p,title,click,false); }
     static Button button(LinearLayout p,String title,Runnable click,boolean primary) {
-        Button b=new Button(p.getContext());b.setText(title);b.setAllCaps(false);b.setTextSize(15);b.setTextColor(primary?BG:TEXT);b.setMinHeight(dp(p.getContext(),52));
+        Button b=new Button(p.getContext());b.setStateListAnimator(null);b.setElevation(0);b.setText(title);b.setTypeface(Design.font(p.getContext(),500));b.setAllCaps(false);b.setTextSize(15);b.setTextColor(primary?BG:TEXT);b.setMinHeight(dp(p.getContext(),52));
         b.setPadding(dp(p.getContext(),14),dp(p.getContext(),8),dp(p.getContext(),14),dp(p.getContext(),8));
-        b.setBackground(shape(primary?MINT:Color.rgb(43,57,50),dp(p.getContext(),14)));b.setOnClickListener(v->click.run());
+        b.setBackground(shape(primary?MINT:0xffebdfd2,dp(p.getContext(),14)));b.setOnClickListener(v->click.run());
         LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,-2);lp.topMargin=dp(p.getContext(),10);p.addView(b,lp);return b;
     }
     static void toggle(LinearLayout p,String title,String help,boolean value,Consumer<Boolean> change) {

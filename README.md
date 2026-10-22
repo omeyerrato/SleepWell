@@ -4,6 +4,12 @@ An original, open-source Android app for protecting bedtime and making mornings 
 
 **Status: early development. This is not full feature parity with Sleep as Android or Challenges Alarm Clock.** The [feature audit](docs/FEATURES.md) records what exists, how it works, and what remains. Do not replace a dependable backup alarm until this app has been tested overnight on your device.
 
+The current phone-only build follows the supplied Changing light designs. See the
+[139-entry feature matrix](docs/FEATURE-MATRIX.md), [persistent plan](docs/IMPLEMENTATION-PLAN.md),
+and [strict visual review](docs/DESIGN-REVIEW.md). The first UI pass was rejected;
+the new root compositions are corrective work, not final acceptance of the 36 screens.
+Wearables and watch companions are excluded from this scope.
+
 ## Working capabilities
 
 - Multiple one-shot or weekday alarms using Android's exact `setAlarmClock` API, rescheduled on reboot, clock/time-zone changes, and updates.
@@ -32,11 +38,16 @@ On Windows use `gradlew.bat`. Set `ANDROID_HOME` or an untracked `local.properti
 
 ## First run
 
-1. Open **Setup**. Grant notifications, exact alarms, and full-screen alarm access.
+1. Open **Settings → Reliability**. Grant notifications, exact alarms, and full-screen alarm access.
 2. Review battery restrictions. On Samsung, put SleepWell in **Never auto sleeping apps**.
 3. Create an alarm, choose its challenge and sound, and enable it. Use the ten-second quiet test first.
-4. Optionally choose distracting apps in **Bedtime**, then enable the guard in Android Accessibility settings. This is voluntary friction, not an unbreakable device lock.
-5. To track a night, choose whether to use the microphone, then tap **Start my night**. Place the phone uncovered on the mattress; a bedside table does not transmit body movement reliably. Tap **End night** to review recorded data.
+4. Optionally choose distracting apps in **Bedtime guard**, then enable the guard in Android Accessibility settings. This is voluntary friction, not an unbreakable device lock.
+5. To track a night, choose whether to use the microphone, then tap **Start sleep tracking** on Tonight. Place the phone uncovered on the mattress; a bedside table does not transmit body movement reliably. Tap **End night & review** to review recorded data.
+
+Report opens the latest real recording; its calendar opens history. Exports and
+restore are under **Settings → Data & privacy**. Inter's license and illustration
+provenance are documented in [ASSETS.md](docs/ASSETS.md). Device testing instructions,
+including preserving the personal installation, are in [testing.md](docs/testing.md).
 
 The system may present a heads-up notification instead of launching the full-screen alarm when the phone is already in use. A powered-off or force-stopped app cannot ring. Speaker volume is bounded by the device hardware. No Android app can guarantee waking someone.
 

@@ -9,3 +9,4 @@ local.properties
 captures/
 *.hprof
 .android-local/
+.device-backups/

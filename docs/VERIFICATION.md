@@ -1,5 +1,34 @@
 # Verification record
 
+## Changing light correction milestone — 2026-10-22
+
+- All 12 supplied PNG boards were visually inspected, and the 17 ZIP entries
+  checked against their extracted counterparts. The brief and screen map were read.
+- Latest local `testDebugUnitTest lintDebug assembleDebug assembleDebugAndroidTest`
+  passed: 15 unit tests, zero test failures. Lint has zero errors and outstanding
+  warnings (including localization); this is not a claim of clean localization.
+- Direct `RootVisualTest` passed on the S23 Ultra, including real selected-chart
+  interaction and Tonight/Report/Settings selected navigation states. Actual
+  screenshots were captured and visually compared with the references. The strict
+  reviewer accepted specific corrections but **rejected full screen/goal completion**.
+- No new alarm, screen-off, reboot, microphone or overnight test ran after the
+  user said they were going to sleep. Those tests remain prohibited until renewed
+  authorization. The app was left on Tonight with a window-scoped review keep-awake
+  flag, without changing the global screen timeout or bypassing the keyguard.
+- Earlier alarm-flow attempts did not pass: an onCreate window-controller crash
+  was fixed; a later run verified editor persistence and quiet delivery over
+  keyguard but failed after answer selection. That is an open verification gap.
+- The Gradle device runner removed the development installation after its test.
+  The pre-update database was restored: one session, four epochs, one disabled
+  alarm. Preferences not included in the early database-only backup could not be
+  recovered. Direct instrumentation now backs up the whole private tree and retains
+  the installation. Never invoke that Gradle device runner on personal data.
+- The native alarm editor, math-state persistence, root compositions and shared
+  measured bar charts are implemented changes, not evidence that every screen or
+  phone feature is complete. Consult FEATURE-MATRIX.md and DESIGN-REVIEW.md.
+
+The earlier alpha verification record below is historical.
+
 Date: 2026-10-22 (Asia/Riyadh).
 
 ## Local build
@@ -26,7 +55,7 @@ Galaxy S23 Ultra (SM-S918B), Android API 36, connected through authorized USB de
 - Quiet preview scheduled for ten seconds; AlarmManager dump confirmed the pending wake-up alarm.
 - Device screen put to sleep. The preview fired and the Math challenge screen appeared over the lock screen.
 - No AndroidRuntime crash output observed during the launch/alarm smoke test.
-- A 232-second movement-only recording continued with the screen off, saved four epochs with 258�294 accelerometer samples per epoch and ambient light readings, and stopped via the notification action. SQLite integrity check returned `ok`; the session was closed with `interrupted=0`. No microphone audio was collected in this test.
+- A 232-second movement-only recording continued with the screen off, saved four epochs with 258–294 accelerometer samples per epoch and ambient light readings, and stopped via the notification action. SQLite integrity check returned `ok`; the session was closed with `interrupted=0`. No microphone audio was collected in this test.
 - The test alarm subsequently stopped and the device returned to keyguard; automated completion of its three challenge rounds was **not observed**, so it is not counted as a passing challenge-completion test.
 
 ## Not established by these checks

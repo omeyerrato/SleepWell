@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
     private static final int MIC=20,NOTIFY=21,TONE=22,EXPORT_JSON=23,EXPORT_CSV=24,IMPORT=25;
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);store=new Store(this);Notifications.channels(this);
+        if(getIntent().getBooleanExtra("visualReview",false))getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         if(state!=null)tab=state.getInt("tab");
         if(store.alarms().isEmpty())store.save(new Alarm(1));
         if(!TrackingService.running && Prefs.flag(this,"tracking")) {
@@ -38,81 +39,60 @@ public class MainActivity extends Activity {
     }
     @Override protected void onResume() {super.onResume();render();}
     @Override public void onSaveInstanceState(Bundle b) {super.onSaveInstanceState(b);b.putInt("tab",tab);}
+    private void navigate(int destination){tab=destination==0?0:destination==1?2:4;render();}
     private void render() {
-        LinearLayout body=Ui.page(this,null,null);
-        Ui.label(body,"◒   SLEEPWELL",18,Ui.MINT);
-        LinearLayout nav=new LinearLayout(this);body.addView(nav,new LinearLayout.LayoutParams(-1,-2));
-        for(int i=0;i<TABS.length;i++) { final int n=i;Button b=new Button(this);b.setText(TABS[i]);b.setAllCaps(false);b.setTextSize(11);b.setPadding(0,0,0,0);b.setMinWidth(0);b.setMinimumWidth(0);b.setTextColor(tab==i?Ui.BG:Ui.MUTED);b.setBackground(Ui.shape(tab==i?Ui.MINT:Ui.BG,Ui.dp(this,12)));nav.addView(b,new LinearLayout.LayoutParams(0,Ui.dp(this,48),1));b.setOnClickListener(v->{tab=n;render();}); }
-        switch(tab) {case 1: alarms(body);break;case 2: history(body);break;case 3: bedtime(body);break;case 4: setup(body);break;default: tonight(body);}
+        boolean root=tab==0||tab==1||tab==2||tab==4||tab==7;
+        LinearLayout body=Design.page(this,tab==0,root?(tab==2||tab==7?1:tab==4?2:0):null,this::navigate);
+        switch(tab){case 1:alarmList(body);break;case 2:report(body);break;case 3:Design.header(body,"Wind-down",()->{tab=0;render();});bedtime(body);break;case 4:settingsHome(body);break;case 5:Design.header(body,"Reliability & recording",()->{tab=4;render();});setup(body);break;case 6:privacy(body);break;case 7:history(body);break;default:tonight(body);}
+    }
+    private void settingsHome(LinearLayout body){Design.header(body,"Settings",null);
+        settingsRow(body,"bell","Alarms","Alarm time, sound and behavior",()->{tab=1;render();});
+        settingsRow(body,"moon","Sleep tracking","Phone movement and microphone",()->{tab=5;render();});
+        settingsRow(body,"wave","Sound analysis","Recording and sound sensitivity",()->{tab=5;render();});
+        settingsRow(body,"shield","Bedtime guard","Reduce distractions at night",()->{tab=3;render();});
+        settingsRow(body,"settings","Reliability","Battery, permissions and tips",()->{tab=5;render();});
+        settingsRow(body,"lock","Data & privacy","Your data stays on your device",()->{tab=6;render();});
+        settingsRow(body,"github","Free and open source","View source on GitHub",()->open(new Intent(Intent.ACTION_VIEW,Uri.parse("https://github.com/omeyerrato/SleepWell"))));
+    }
+    private void settingsRow(LinearLayout body,String icon,String title,String subtitle,Runnable action){
+        LinearLayout row=Design.row(this);row.setMinimumHeight(Ui.dp(this,74));Design.Icon image=new Design.Icon(this,icon,Design.BROWN);image.setPadding(Ui.dp(this,8),Ui.dp(this,8),Ui.dp(this,8),Ui.dp(this,8));image.setBackground(Design.shape(this,Design.SOFT,15));LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48));ip.rightMargin=Ui.dp(this,20);row.addView(image,ip);
+        LinearLayout labels=Design.col(this);Design.text(labels,title,17,600,Design.INK);Design.space(labels,5);Design.text(labels,subtitle,13,400,Design.MUTED);row.addView(labels,new LinearLayout.LayoutParams(0,-2,1));Design.Icon arrow=new Design.Icon(this,icon.equals("github")?"external":"chevron",Design.INK);row.addView(arrow,new LinearLayout.LayoutParams(Ui.dp(this,20),Ui.dp(this,20)));row.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,8));row.setOnClickListener(v->action.run());body.addView(row);Design.line(body);
+    }
+    private void report(LinearLayout body){ReportScreen.render(this,body,store,new ReportScreen.Actions(){public void history(){tab=7;render();}public void tonight(){tab=0;render();}public void detail(long id){showNight(id);}});}
+    private void privacy(LinearLayout body){Design.header(body,"Data & privacy",()->{tab=4;render();});Design.text(body,"Your sleep data stays on this phone.",16,400,Design.MUTED);Design.space(body,24);
+        LinearLayout summary=Design.col(this);Design.pad(summary,20,20);summary.setBackground(Design.shape(this,Design.SOFT,18));Design.text(summary,"On this phone",22,600,Design.INK);Design.space(summary,14);long count=store.rows("SELECT COUNT(*) AS count FROM sessions").get(0).optLong("count");Design.text(summary,count+(count==1?" recorded session":" recorded sessions"),25,600,Design.INK);body.addView(summary);Design.space(body,24);
+        Design.text(body,"Backup & export",20,600,Design.INK);Design.space(body,8);Design.text(body,"Backups include alarms, records, graphs and notes. Audio files and app preferences are excluded. Restored alarms start switched off.",14,400,Design.MUTED);
+        LinearLayout exports=Design.row(this),exportColumn=Design.col(this),importColumn=Design.col(this);LinearLayout.LayoutParams exportParams=new LinearLayout.LayoutParams(0,-2,1);exportParams.rightMargin=Ui.dp(this,6);exports.addView(exportColumn,exportParams);LinearLayout.LayoutParams importParams=new LinearLayout.LayoutParams(0,-2,1);importParams.leftMargin=Ui.dp(this,6);exports.addView(importColumn,importParams);body.addView(exports);Design.button(exportColumn,"Export backup",true,()->export(EXPORT_JSON));Design.button(importColumn,"Import backup",false,()->startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).setType("application/json").addCategory(Intent.CATEGORY_OPENABLE),IMPORT));Design.item(body,"file","Export records as CSV","",()->export(EXPORT_CSV));Design.line(body);Design.space(body,20);
+        Design.text(body,"Recordings",20,600,Design.INK);Design.space(body,8);Design.text(body,"Sound clips stay in private storage. Clips older than 7 days are removed when a new recording starts. Microphone use is optional.",14,400,Design.MUTED);Design.space(body,20);
+        Design.button(body,"Delete all sleep history",false,()->new AlertDialog.Builder(this).setTitle("Delete recordings and nights?").setMessage("This removes local sleep sessions, graphs, notes and audio. Alarms remain.").setPositiveButton("Delete history",(d,w)->{if(TrackingService.running){Ui.toast(this,"End tracking before deleting history.");return;}stopPreview();for(JSONObject clip:store.rows("SELECT path FROM clips"))FileSafety.deleteClip(this,clip.optString("path"));store.eraseHistory();render();}).setNegativeButton("Keep",null).show());
     }
     private void tonight(LinearLayout body) {
-        Ui.label(body,"REST WITH INTENTION",11,Ui.GOLD);Ui.heading(body,"A calmer night.\nA brighter morning.",34);
-        Ui.text(body,"Your night, on your terms. Private by default. Free by design.");
-        if(Prefs.flag(this,"ringing")) Ui.button(body,"Return to active alarm",()->startActivity(new Intent(this,AlarmActivity.class)),true);
-        int pending=Prefs.number(this,"checkPending",0);
-        if(pending!=0) { LinearLayout check=Ui.card(body);Ui.heading(check,"Are you still awake?",22);Ui.text(check,"Confirm before your wake-up check rings.");Ui.button(check,"I'm up",()->{Scheduler.cancel(this,pending,Scheduler.CHECK);Prefs.put(this,"checkPending",0);render();},true); }
-        Alarm next=null;long when=Long.MAX_VALUE;
-        for(Alarm a:store.alarms())if(a.enabled) {long t=Prefs.of(this).getLong("deadline_"+a.id,a.next(System.currentTimeMillis()));if(t<when){next=a;when=t;}}
-        LinearLayout alarm=Ui.card(body);Ui.label(alarm,"YOUR NEXT MORNING",11,Ui.MINT);
-        if(next==null){Ui.heading(alarm,"No alarm set",34);Ui.text(alarm,"Choose a wake-up time and a challenge that gets you moving.");}
-        else {Ui.heading(alarm,next.time(),56);Ui.text(alarm,next.label+" · "+next.challenge+" · in "+SleepMath.duration(when-System.currentTimeMillis()));Ui.text(alarm,next.smartWindow>0?"May ring up to "+next.smartWindow+" min early when tracking detects sustained movement.":"Fixed wake-up time.");}
-        Ui.button(alarm,"Plan my alarm",()->{tab=1;render();});
-        LinearLayout night=Ui.card(body);boolean tracking=TrackingService.running;
-        Ui.label(night,tracking?"YOUR NIGHT IS RECORDING":"TONIGHT'S PLAN",11,Ui.MINT);
-        Ui.heading(night,tracking?"Rest. We've got the record.":"Give tomorrow a head start.",24);
-        Ui.text(night,tracking?"Movement & room light are being saved. "+(Prefs.flag(this,"noiseEnabled")?"Noise capture is enabled.":"Microphone is off."):"Start tracking as you go to bed. Keep your phone on the mattress, uncovered and away from pillows.");
-        if(tracking) {Ui.text(night,"Latest movement: "+Prefs.text(this,"movement","waiting for first minute")+" m/s²");Ui.button(night,"End night & review",()->{stopTracking();tab=2;new Handler(Looper.getMainLooper()).postDelayed(this::render,400);},true);}
-        else Ui.button(night,"Start my night",this::startTracking,true);
-        Ui.text(night,"Goal "+Prefs.number(this,"goal",480)/60.0+" hours · Bedtime "+clock(Prefs.number(this,"bedtime",1350)));
-        if(!Scheduler.allowed(this) || !getSystemService(NotificationManager.class).areNotificationsEnabled())Ui.button(body,"Finish alarm setup",()->{tab=4;render();});
-        Ui.label(body,"EARLY ACCESS · 0.1.0",11,Ui.GOLD);Ui.text(body,"Movement is an activity estimate. SleepWell does not measure brainwave sleep stages, breathing disorders, or guarantee that you will wake up.");
+        TonightScreen.render(this,body,store,new TonightScreen.Actions(){
+            public void alarms(){tab=1;render();}
+            public void bedtime(){pickTime("bedtime",1350);}
+            public void windDown(){tab=3;render();}
+            public void settings(){tab=4;render();}
+            public void start(){if(TrackingService.running){stopTracking();tab=2;new Handler(Looper.getMainLooper()).postDelayed(MainActivity.this::render,400);}else startTracking();}
+            public void activeAlarm(){startActivity(new Intent(MainActivity.this,AlarmActivity.class));}
+            public void confirmCheck(){int id=Prefs.number(MainActivity.this,"checkPending",0);Scheduler.cancel(MainActivity.this,id,Scheduler.CHECK);Prefs.put(MainActivity.this,"checkPending",0);render();}
+            public void update(Alarm a){try{Prefs.put(MainActivity.this,"lastOccurrence_"+a.id,0L);Scheduler.schedule(MainActivity.this,a);store.save(a);}catch(SecurityException e){Ui.toast(MainActivity.this,e.getMessage());}render();}
+        });
     }
-    private void alarms(LinearLayout body) {
-        Ui.heading(body,"Make mornings happen.",30);Ui.text(body,"A fixed alarm at your chosen time, with an optional earlier movement-based wake window.");
-        Ui.button(body,"+ Add alarm",()->{int id=store.alarms().stream().mapToInt(a->a.id).max().orElse(0)+1;editAlarm(new Alarm(id));},true);
-        Ui.button(body,"Take a nap",this::nap);
-        for(Alarm a:store.alarms()) {
-            LinearLayout card=Ui.card(body);Ui.heading(card,a.time(),42);Ui.text(card,a.label+" · "+days(a));
-            Ui.toggle(card,a.enabled?"Alarm enabled":"Alarm off",null,a.enabled,on->{
-                if(on && !Scheduler.allowed(this)) {Ui.toast(this,"Allow Alarms & reminders in Setup first.");render();return;}
-                a.enabled=on;if(on)Prefs.put(this,"lastOccurrence_"+a.id,0L);store.save(a);try{Scheduler.schedule(this,a);}catch(SecurityException e){a.enabled=false;store.save(a);Ui.toast(this,e.getMessage());}render();
-            });
-            Ui.text(card,a.challenge+" × "+a.difficulty+" · "+a.volume+"% volume · "+a.smartWindow+" min smart window");
-            Ui.button(card,"Edit alarm",()->editAlarm(a));Ui.button(card,"Test in 10 seconds · quiet preview",()->{try{Scheduler.test(this,a);Ui.toast(this,"Test scheduled. Preview volume is capped at 25%.");}catch(SecurityException e){Ui.toast(this,e.getMessage());}});
+    private void alarmList(LinearLayout body){
+        LinearLayout head=Design.row(this);TextView title=Design.text(this,"Alarms",30,700,Design.INK);head.addView(title,new LinearLayout.LayoutParams(0,-2,1));head.addView(Design.iconButton(this,"plus","Add alarm",()->editAlarm(new Alarm(store.alarms().stream().mapToInt(a->a.id).max().orElse(0)+1))),new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48)));body.addView(head);Design.space(body,8);
+        for(Alarm a:store.alarms()){
+            LinearLayout top=Design.row(this);TextView time=Design.text(this,AlarmEditorActivity.displayTime(a),42,700,a.enabled?Design.INK:Design.MUTED);time.setMinimumHeight(Ui.dp(this,58));time.setContentDescription("Edit "+a.label);time.setOnClickListener(v->editAlarm(a));top.addView(time,new LinearLayout.LayoutParams(0,-2,1));
+            Switch enabled=new Switch(this);enabled.setContentDescription("Enable "+a.label);enabled.setChecked(a.enabled);enabled.setMinHeight(Ui.dp(this,48));enabled.setThumbTintList(android.content.res.ColorStateList.valueOf(android.graphics.Color.WHITE));enabled.setTrackTintList(new android.content.res.ColorStateList(new int[][]{new int[]{android.R.attr.state_checked},new int[]{}},new int[]{Design.BROWN,0xffbfb7b1}));top.addView(enabled);body.addView(top);
+            enabled.setOnCheckedChangeListener((v,on)->{if(on&&!Scheduler.allowed(this)){Ui.toast(this,"Allow exact alarms in Reliability first.");render();return;}a.enabled=on;try{if(on)Prefs.put(this,"lastOccurrence_"+a.id,0L);Scheduler.schedule(this,a);store.save(a);}catch(SecurityException e){Ui.toast(this,e.getMessage());}render();});
+            Design.text(body,a.label,18,600,Design.INK);Design.space(body,4);Design.text(body,days(a),14,400,Design.MUTED);Design.space(body,12);Design.line(body);
+            Design.item(body,"sun","Smart wake-up",a.smartWindow==0?"Off":a.smartWindow+" min",()->editAlarm(a));Design.line(body);
+            Design.item(body,"tasks","Challenges",a.challenge+" × "+a.difficulty,()->editAlarm(a));Design.line(body);
+            Design.item(body,"alarm","Test a quiet alarm","10 sec",()->{try{Scheduler.test(this,a);Ui.toast(this,"Quiet alarm in 10 seconds · capped at 25%");}catch(SecurityException e){Ui.toast(this,e.getMessage());}});Design.space(body,20);Design.line(body);Design.space(body,14);
         }
+        Design.button(body,"Take a nap",false,this::nap);Design.button(body,"Add alarm",true,()->editAlarm(new Alarm(store.alarms().stream().mapToInt(a->a.id).max().orElse(0)+1)));
     }
     private String days(Alarm a) {if(a.days.isEmpty())return "Next occurrence only";String[] d={"Mon","Tue","Wed","Thu","Fri","Sat","Sun"};List<String> v=new ArrayList<>();for(int i=1;i<=7;i++)if(a.days.contains(i))v.add(d[i-1]);return String.join(" ",v);}
-    private void editAlarm(Alarm source) {
-        Alarm a=Alarm.read(source.json());LinearLayout form=Ui.column(this);form.setPadding(Ui.dp(this,20),0,Ui.dp(this,20),Ui.dp(this,24));ScrollView scroll=new ScrollView(this);scroll.addView(form);
-        EditText label=Ui.input(form,"Alarm name",a.label,InputType.TYPE_CLASS_TEXT);
-        Button time=Ui.button(form,a.time(),()->{});time.setOnClickListener(v->new TimePickerDialog(this,(view,h,m)->{a.hour=h;a.minute=m;time.setText(a.time());},a.hour,a.minute,true).show());
-        Ui.button(form,"Repeat · "+days(a),()->{
-            String[] names={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};boolean[] checked=new boolean[7];for(int i=0;i<7;i++)checked[i]=a.days.contains(i+1);
-            new AlertDialog.Builder(this).setTitle("Repeat on").setMultiChoiceItems(names,checked,(d,w,on)->{if(on)a.days.add(w+1);else a.days.remove(w+1);}).setPositiveButton("Done",null).show();
-        });
-        Ui.choice(form,"Challenge",a.challenge,new String[]{"Math","Memory","Sequence","Retype","Shake","NFC"},s->a.challenge=s);
-        Ui.range(form,"Challenge rounds",a.difficulty,1,6,v->a.difficulty=v);
-        Ui.range(form,"Alarm volume %",a.volume,10,100,v->a.volume=v);
-        Ui.range(form,"Volume ramp seconds",a.rampSeconds,0,120,v->a.rampSeconds=v);
-        Ui.range(form,"Smart window minutes",a.smartWindow,0,45,v->a.smartWindow=v);
-        Ui.text(form,"Smart wake is experimental and requires active tracking. Your fixed alarm remains scheduled.");
-        Ui.range(form,"Snooze minutes",a.snoozeMinutes,1,15,v->a.snoozeMinutes=v);Ui.range(form,"Snooze limit (0 = none)",a.snoozeLimit,0,5,v->a.snoozeLimit=v);
-        Ui.range(form,"Wake-up check minutes (0 = off)",a.awakeCheck,0,15,v->a.awakeCheck=v);
-        Ui.range(form,"Loud backup after minutes (0 = off)",a.backupMinutes,0,15,v->a.backupMinutes=v);
-        Ui.text(form,"If you leave the alarm ringing, the backup switches to Pulse at 100% alarm volume. Quiet tests never escalate.");
-        Ui.toggle(form,"Vibrate",null,a.vibrate,on->a.vibrate=on);
-        Ui.toggle(form,"Offer screen pinning","Optional Android confirmation at alarm time; system unpin controls still work.",a.pin,on->a.pin=on);
-        Ui.choice(form,"Alarm tone",a.tone.startsWith("content:")?"Custom audio":a.tone,new String[]{"daybreak","pulse","system"},s->a.tone=s);
-        AlertDialog dialog=new AlertDialog.Builder(this).setTitle("Your morning").setView(scroll).setPositiveButton("Save",null).setNegativeButton("Cancel",null).setNeutralButton("Delete",(d,w)->{
-            new AlertDialog.Builder(this).setTitle("Delete this alarm?").setPositiveButton("Delete",(d2,w2)->{Scheduler.cancel(this,a.id,Scheduler.FIRE);Scheduler.cancel(this,a.id,Scheduler.SNOOZE);Scheduler.cancel(this,a.id,Scheduler.CHECK);store.deleteAlarm(a.id);render();}).setNegativeButton("Keep",null).show();
-        }).create();
-        Ui.button(form,"Choose my own audio file",()->{a.label=label.getText().toString().trim();store.save(a);pendingTone=a;Intent pick=new Intent(Intent.ACTION_OPEN_DOCUMENT).setType("audio/*").addCategory(Intent.CATEGORY_OPENABLE);startActivityForResult(pick,TONE);dialog.dismiss();});
-        dialog.setOnShowListener(d->dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v->{
-            if(a.challenge.equals("NFC") && Prefs.text(this,"nfcTag","").isEmpty()){Ui.toast(this,"Enroll an NFC tag in Bedtime first.");return;}
-            a.label=label.getText().toString().trim();if(a.label.isEmpty())a.label="A fresh start";
-            Prefs.put(this,"lastOccurrence_"+a.id,0L);store.save(a);try{Scheduler.schedule(this,a);}catch(SecurityException e){a.enabled=false;store.save(a);Ui.toast(this,e.getMessage());}dialog.dismiss();render();
-        }));dialog.show();
-    }
+    private void editAlarm(Alarm source) {startActivity(new Intent(this,AlarmEditorActivity.class).putExtra("alarm",source.json().toString()));}
     private void nap() {
         LinearLayout body=Ui.column(this);body.setPadding(24,8,24,8);final int[] minutes={20};Ui.range(body,"Nap duration minutes",20,1,180,n->minutes[0]=n);
         new AlertDialog.Builder(this).setTitle("A little reset").setView(body).setPositiveButton("Set nap",(d,w)->{
@@ -121,7 +101,7 @@ public class MainActivity extends Activity {
         }).setNegativeButton("Cancel",null).show();
     }
     private void history(LinearLayout body) {
-        Ui.heading(body,"Know your nights.",30);Ui.text(body,"Recorded time is time tracked, not a clinical measure of time asleep.");
+        Design.header(body,"Sleep history",()->{tab=2;render();});Ui.text(body,"Recorded time is time tracked, not a clinical measure of time asleep.");
         List<JSONObject> rows=store.rows("SELECT s.*, (SELECT COUNT(*) FROM epochs e WHERE e.session=s.id) AS epochs FROM sessions s ORDER BY start DESC LIMIT 60");
         List<JSONObject> week=store.rows("SELECT start,end FROM sessions WHERE end IS NOT NULL AND interrupted=0 AND start>=?",""+(System.currentTimeMillis()-7*86400000L));
         if(!week.isEmpty()) {long total=0;for(JSONObject s:week)total+=s.optLong("end")-s.optLong("start");LinearLayout stats=Ui.card(body);Ui.label(stats,"LAST 7 DAYS",11,Ui.MINT);Ui.heading(stats,SleepMath.duration(total/week.size()),32);Ui.text(stats,"Average recorded session · "+week.size()+" complete sessions");}
@@ -133,7 +113,7 @@ public class MainActivity extends Activity {
             if(!s.optString("note","").isEmpty())Ui.text(card,s.optString("note"));
             Ui.button(card,"Explore night",()->showNight(id));
         }
-        Ui.button(body,"Export session CSV",()->export(EXPORT_CSV));Ui.button(body,"Export data backup",()->export(EXPORT_JSON));Ui.button(body,"Restore data backup",()->startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).setType("application/json").addCategory(Intent.CATEGORY_OPENABLE),IMPORT));
+
     }
     private void showNight(long id) {
         List<JSONObject> sessions=store.rows("SELECT * FROM sessions WHERE id=?",""+id);if(sessions.isEmpty())return;JSONObject s=sessions.get(0);
@@ -199,7 +179,7 @@ public class MainActivity extends Activity {
         Ui.range(recording,"Noise trigger sensitivity threshold",Prefs.number(this,"noiseThreshold",20),5,100,n->Prefs.put(this,"noiseThreshold",n));
         Ui.text(recording,"Lower values record quieter sounds. Threshold units are relative amplitude, not dB. Changes to recording mode apply next night.");
         Ui.toggle(recording,"Smart wake waits for duration goal","Early triggering is disabled until the current session reaches your goal. The fixed alarm still rings on time.",Prefs.flag(this,"smartNeedsGoal"),on->Prefs.put(this,"smartNeedsGoal",on));
-        Ui.button(body,"Open source & feature roadmap",()->open(new Intent(Intent.ACTION_VIEW,Uri.parse("https://github.com/omeyerrato/SleepWell"))));
+        Ui.button(body,"View source on GitHub",()->open(new Intent(Intent.ACTION_VIEW,Uri.parse("https://github.com/omeyerrato/SleepWell"))));
         Ui.text(body,"No accounts. No ads. No subscriptions. No network permission. Audio, movement and notes stay in private app storage unless you export them. Android cloud backup is disabled.");
         String error=Prefs.text(this,"lastError","");String audioError=Prefs.text(this,"audioError","");if(!error.isEmpty()||!audioError.isEmpty()){LinearLayout errors=Ui.card(body);Ui.heading(errors,"Diagnostics",20);Ui.text(errors,error+"\n"+audioError);Ui.button(errors,"Clear diagnostics",()->{Prefs.put(this,"lastError","");Prefs.put(this,"audioError","");render();});}
         Ui.button(body,"Delete all sleep history",()->new AlertDialog.Builder(this).setTitle("Delete recordings and nights?").setMessage("This removes local sleep sessions, graphs, notes and audio. Alarms remain.").setPositiveButton("Delete history",(d,w)->{

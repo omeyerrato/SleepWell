@@ -1,5 +1,10 @@
 # Behavioral feature audit and implementation map
 
+For the current phone-only scope and screen/code/test links, use
+[FEATURE-MATRIX.md](FEATURE-MATRIX.md). The wearable roadmap below is historical
+and excluded from the current build. Existing implementation descriptions are
+narrow capability descriptions, not final design/behavior acceptance.
+
 Audit date: 2026-10-22. References: [Sleep as Android manual](https://sleep.urbandroid.org/docs/) and [Challenges Alarm Clock publisher listing](https://play.google.com/store/apps/details?id=com.garageapp.alarmchallenges). [REFERENCE_INDEX.md](REFERENCE_INDEX.md) inventories all 129 linked documentation pages, including device, API and troubleshooting guides.
 
 This is an independent implementation plan. **Implemented** means code exists, not that overnight reliability or medical validity has been established. **Partial** means the narrower behavior described here exists. **Pending** is absent, not a hidden premium feature. **Out of scope** means we will not copy a vendor's assets, hosted service, hardware, or impossible OS guarantees. Every capability we implement will be available without a paid tier.
