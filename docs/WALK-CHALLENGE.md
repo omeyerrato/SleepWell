@@ -16,6 +16,12 @@ Expected six PNGs: walk-permission, walk-ready, walk-settings, walk-error, walk-
 
 The follow-up also contains sensor discovery and unregister exceptions: discovery failure shows the same per-task math fallback; release failure invalidates the callback owner and prevents rearming it. An additional injected release-failure test verifies no crash, stale progress or completion. This does not substitute for a later permitted real hardware assessment.
 
+The configuration's later request-error copy is shorter and clears when a fresh
+access check is Allowed or Unsupported. A previous failed settings request must
+not describe the new sensor/permission state. The native configuration fixture
+now asserts that stale message disappears after the unsupported transition;
+new screenshots are still required to accept this visual correction.
+
 Liveness loss now closes the step port and revokes its callback generation, rather than only ignoring the current event. Restoring an old occurrence or task value cannot revive that listener; only explicit foreground resume creates a new registration. Two further pure tests cover occurrence loss and task replacement. The alarm activity also closes Walk immediately when its foreground occurrence poll observes an external stop, finishes the stale window, and checks liveness before resuming task inputs. No alarm window or hardware was opened for this change.
 
 If Android unregister throws, the adapter retains the exact owned listener for a later close retry. Its revoked generation still discards callbacks while closing. An injected unregister-failure/retry test verifies the retained handle, explicit successful release, and stale-callback rejection after a new registration.
