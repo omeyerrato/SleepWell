@@ -11,7 +11,7 @@ import java.util.concurrent.*;
 public final class SoundEventsActivity extends Activity {
     private final ExecutorService worker=Executors.newSingleThreadExecutor();
     private List<JSONObject> events=List.of();private RecordEntry record;private String category="all",error="";private boolean loaded;
-    @Override public void onCreate(Bundle saved){super.onCreate(saved);RecordUi.review(this);if(saved!=null)category=saved.getString("category","all");render();long id=getIntent().getLongExtra("record",0);worker.execute(()->{try(Store store=Records.open(this)){RecordEntry value=Records.get(store,id);List<JSONObject> sounds=store.rows("SELECT * FROM sound_events WHERE session=? AND time+duration_ms>CAST(? AS INTEGER) AND time<CAST(? AS INTEGER) ORDER BY time",""+id,""+value.edit.start,""+value.edit.end);runOnUiThread(()->{if(isDestroyed())return;record=value;events=sounds;loaded=true;render();});}catch(Exception failure){runOnUiThread(()->{if(isDestroyed())return;error="Sound events could not be loaded.";loaded=true;render();});}});}
+    @Override public void onCreate(Bundle saved){super.onCreate(saved);RecordUi.review(this);if(saved!=null)category=saved.getString("category","all");render();long id=getIntent().getLongExtra("record",0);Records.Factory source=Records.factory;worker.execute(()->{try(Store store=source.open(getApplicationContext())){RecordEntry value=Records.get(store,id);List<JSONObject> sounds=store.rows("SELECT * FROM sound_events WHERE session=? AND time+duration_ms>CAST(? AS INTEGER) AND time<CAST(? AS INTEGER) ORDER BY time",""+id,""+value.edit.start,""+value.edit.end);runOnUiThread(()->{if(isDestroyed())return;record=value;events=sounds;loaded=true;render();});}catch(Exception failure){runOnUiThread(()->{if(isDestroyed())return;error="Sound events could not be loaded.";loaded=true;render();});}});}
     @Override public void onSaveInstanceState(Bundle out){super.onSaveInstanceState(out);out.putString("category",category);}
     private void render(){
         LinearLayout body=Design.page(this,false,null,n->{});RecordUi.label(this,body);RecordUi.headerAction(RecordUi.header(body,"Sound events",this::finish),"settings","Snoring cues",()->startActivity(RecordUi.intent(this,SnoringCuesActivity.class)));
@@ -27,6 +27,7 @@ public final class SoundEventsActivity extends Activity {
         if(shown==0)Design.text(body,"No events in this category.",14,400,Design.MUTED);
         Design.space(body,12);Design.item(body,"wave","Saved recordings & signals",null,()->{startActivity(RecordUi.intent(this,RecordSignalsActivity.class).putExtra("record",record.id));finish();});
     }
+    boolean awaitReaders(long timeoutMs) throws InterruptedException{return worker.awaitTermination(timeoutMs,TimeUnit.MILLISECONDS);}
     @Override protected void onDestroy(){worker.shutdownNow();super.onDestroy();}
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
 }
