@@ -10,6 +10,8 @@ from pathlib import Path
 import argparse
 import atexit
 import json
+import hashlib
+import zipfile
 import os
 import re
 import subprocess
@@ -133,6 +135,35 @@ else:
             failures.append("Human fixtures did not persist both snoring and speech through the production policy")
     except (KeyError, ValueError, TypeError) as error:
         failures.append("Invalid human sound fixture evaluation: " + str(error))
+# Independent consumer check of actual native-exported bytes, never media playback.
+archive = output / "library-export-fixture.zip"
+try:
+    if not archive.is_file() or archive.stat().st_size > 1024 * 1024:
+        raise ValueError("Missing or oversized synthetic export fixture")
+    with zipfile.ZipFile(archive) as exported:
+        manifest_info = exported.getinfo("manifest.json")
+        if manifest_info.file_size > 64 * 1024:
+            raise ValueError("Oversized fixture manifest")
+        manifest = json.loads(exported.read("manifest.json"))
+        recordings = manifest["recordings"]
+        if (manifest.get("format") != "sleepwell-sound-archive" or manifest.get("version") != 1
+                or manifest.get("scope") != "complete_raw_clips" or len(recordings) != 1
+                or len(manifest["sound_events"]) != 2):
+            raise ValueError("Unexpected synthetic archive metadata")
+        names = ["manifest.json"] + [recording["file"] for recording in recordings]
+        if set(exported.namelist()) != set(names) or len(exported.namelist()) != len(names):
+            raise ValueError("Unexpected or duplicate ZIP entries")
+        for recording in recordings:
+            if not re.fullmatch(r"recordings/[0-9]{3}\.wav", recording["file"]):
+                raise ValueError("Unsafe recording name")
+            info = exported.getinfo(recording["file"])
+            if info.file_size > 512 * 1024 or info.file_size != recording["bytes"]:
+                raise ValueError("Unexpected fixture recording size")
+            pcm_wave = exported.read(recording["file"])
+            if hashlib.sha256(pcm_wave).hexdigest() != recording["sha256"]:
+                raise ValueError("Exported recording hash mismatch")
+except (OSError, ValueError, KeyError, TypeError, zipfile.BadZipFile) as error:
+    failures.append("Native audio export consumer check: " + str(error))
 required = ["sounds-settings-" + name + ".png" for name in ("rain", "ocean", "recreated", "reopened")]
 required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "audio-retention", "bedtime-guard", "travel", "privacy", "wind-down")]
 required += ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
