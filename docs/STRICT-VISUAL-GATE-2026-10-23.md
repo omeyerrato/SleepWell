@@ -253,3 +253,47 @@ same cream/Inter rounded input surface for exact seconds, while preserving its
 value, validation, accessibility name and DST offset decisions. Offset indicators
 use the app's brown tint. Fresh selected/recreated calendar captures must confirm
 this correction; no earlier PNG is represented as evidence of the new styling.
+## Re-review: CI 40033681541, exact source 64ae8d2
+
+Individually opened all 16 available assigned originals below. API36 emulator,
+1080×2316, density420, host audio disabled. The complete run has 148 PNGs and
+30/31 passing classes (44 passing methods). WalkConfigurationFlowTest passed
+13.954s, SnoreSoundRouteFlowTest passed 11.571s, HeadphoneCueOutputTest passed
+two fake-sink methods in 0.142s, and PrivacyHistoryFlowTest passed 26.046s.
+
+| Original PNG | Strict finding |
+| --- | --- |
+| walk-permission.png | Cream/Inter, footprints, target down-caret, explicit access state and full fixed Use Walk fit. Permission request is a fake fixture action. |
+| walk-ready.png | Allowed state is coherent; no misleading permission button remains. Target and complete Use action persist. |
+| walk-settings.png | Permanent-denial recovery has an explicit Open activity settings control; no unsolicited grant request. |
+| walk-error.png | Request failure remains visible with a usable retry and full Use action. P2: Math fallback is repeated in adjacent helper/error lines. |
+| walk-unavailable.png | Missing step sensor is explicit and full Use action remains usable with documented Math fallback. P2: the previous request-error message remains below the current unavailable state. |
+| walk-reopened.png | Saved 20-step target reopens correctly; no sensor listener/output is started by this configuration journey. |
+| snore-route-unavailable.png | Brown On switch and complete fixed Save fit; unavailable headphones truthfully skip sound. No real route verification is claimed by availability. |
+| snore-route-bluetooth-unsupported.png | Unsupported Bluetooth media is distinguished from supported headphones without requesting pairing/permission. |
+| snore-route-supported.png | Supported availability is explicit while actual cue-time routing remains separately qualified. |
+| snore-route-recreated.png | Genuine recreation retains unsaved On choice and coherent fake availability. |
+| snore-route-reopened.png | Saved On choice persists with full Save. P2 across five: Vibration Unchanged plus its paragraph duplicate the same point and can be more compact. |
+| privacy-history-ready.png | Correct record/audio counters and complete destructive action fit at the intentional bottom scroll position. |
+| privacy-history-error.png | Storage failure leaves the original record/audio visible and exposes a retryable history action. No false success. |
+| privacy-history-busy.png | Destructive action is visibly disabled with Deleting history status. Intentional scroll clips the top title; this image is not a full header acceptance. |
+| privacy-history-pending.png | Zero history plus pending audio cleanup is truthful. Retry explicitly targets queued audio only. |
+| privacy-history-done.png | Cleanup success preserves the newly created record and zero audio. P2 across recreated Privacy states: checked Keep favorites has a gray track, unlike the initial violet On appearance. |
+
+Privacy busy/pending/error/done intentionally capture the bottom of a scrollable
+page; their partially clipped title must not be represented as full-screen
+visual acceptance. The test also passed actual Back/reentry, new inspection and
+later pending-journal retry assertions, but there is no separate post-reentry
+PNG. The gray checked switch state remains a visible defect in this exact head.
+
+ChartClockFlowTest failed in 2.015s at its immediate `requestFocus()` assertion
+inside render, before any of the four required chart images. Its native/visual
+gate is therefore **FAIL, 0/4 originals**. No clock-axis screenshot acceptance is
+inferred from passing pure tests, compilation or the other journeys.
+
+Walk's six configuration frames, route settings' five and Privacy's five pass
+their narrow supporting-state gates with the P2 differences above. Real step
+recognition, physical headphone routing, cue/alarm delivery and the complete
+36-screen/feature scope remain unaccepted. Later style candidates 19f6340 and
+305ea8b are outside this evidence head and are not certified by these images.
+The overall app gate remains **FAIL / incomplete**.
