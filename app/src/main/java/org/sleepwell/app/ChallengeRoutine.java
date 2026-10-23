@@ -7,11 +7,12 @@ final class ChallengeRoutine {
     static final int LIMIT=8;
     static final List<String> TYPES=List.of("Math","Memory","Sequence","Retype","Shake","Walk","NFC");
     static final class Task {
-        final String type;final int rounds,targetSteps;
+        final String type;final int rounds,targetSteps;final MathSettings math;
         Task(String type,int rounds){this(type,rounds,type.equals("Walk")?10:0);}
-        Task(String type,int rounds,int steps){if(!TYPES.contains(type)||rounds<1||rounds>6||type.equals("Walk")&&(rounds!=1||steps<5||steps>100))throw new IllegalArgumentException("Unsupported challenge settings");this.type=type;this.rounds=rounds;targetSteps=type.equals("Walk")?steps:0;}
+        Task(String type,int rounds,int steps){this(type,rounds,steps,MathSettings.LEGACY);}
+        Task(String type,int rounds,int steps,MathSettings math){if(!TYPES.contains(type)||rounds<1||rounds>6||type.equals("Walk")&&(rounds!=1||steps<5||steps>100)||math==null||!type.equals("Math")&&!math.equals(MathSettings.LEGACY))throw new IllegalArgumentException("Unsupported challenge settings");this.type=type;this.rounds=rounds;targetSteps=type.equals("Walk")?steps:0;this.math=math;}
         int units(){return type.equals("Shake")||type.equals("NFC")||type.equals("Walk")?1:rounds;}
-        String detail(){return type.equals("Walk")?targetSteps+" steps":type.equals("Shake")?rounds*5+" shakes":type.equals("NFC")?"Enrolled morning tag":rounds+(rounds==1?" round":" rounds");}
+        String detail(){return type.equals("Math")?math.level.label+" · "+rounds+(rounds==1?" round":" rounds"):type.equals("Walk")?targetSteps+" steps":type.equals("Shake")?rounds*5+" shakes":type.equals("NFC")?"Enrolled morning tag":rounds+(rounds==1?" round":" rounds");}
     }
     static final class Position {
         final Task task;final int index,round;
