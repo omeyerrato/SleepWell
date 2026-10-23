@@ -246,7 +246,7 @@ for row in rows:
     feature = row["feature"]
     if feature == "Walking task":
         row.update(status="partial", implementation=["WalkSteps.java", "WalkSession.java", "WalkPlatform.java", "WalkPermission.java", "AlarmEditorActivity.java", "AlarmActivity.java", "ChallengeRoutineJson.java"],
-            validation="WalkSessionTest ten injected-port cases pass on its branch; initial nine-case Android branch build also passed. WalkConfigurationFlowTest one method/six permission/target/recreate/save/reopen originals is compiled but awaits CI. No personal-phone alarm, steps, sensor or permission dialog executed.",
+            validation="WalkSessionTest thirteen injected-port cases pass on its branch, including ownership-loss release and unregister retry; the initial Android branch build passed before those lifecycle additions. WalkConfigurationFlowTest one method/six permission/target/recreate/save/reopen originals is compiled but awaits CI. No personal-phone alarm, steps, sensor or permission dialog executed.",
             notes="Actual Android step detector/counter adapter; contextual editor permission, per-task5–100 steps, fresh counter baseline, stale occurrence/unit/listener fences and fallback for missing permission/sensor. Walk consumes one routine unit and never uses shake magnitude. Original Phosphor footprints icon bundled. Real hardware recognition and full alarm runtime remain unverified.")
     elif feature in ("Anti-snoring cues", "Headphone-only cues / intensity / repeat"):
         row["implementation"] += ["HeadphoneCue.java", "HeadphoneSound.java", "SnoreSoundRouteActivity.java"]

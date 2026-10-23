@@ -654,3 +654,12 @@ foreground screenshot did not show SleepWell, so this is installation/data
 verification only, not screenshot or physical UI acceptance. No further
 foreground interaction was attempted. New headphone, Walk and chart-axis
 changes are later candidates and are not in this installed APK.
+
+## Integrated candidate c8c1816 — Walk, headphone gates and clock axes
+
+Full local build passed in4m16s:358 pure tests across41 suites, zero failures,
+errors or skips; lint zero errors/79 warnings; debug app, Android test APK and
+release app. Includes reviewed Walk occurrence/listener cleanup and headphone
+fixture safety corrections. The fresh default native gate requires31 classes,
+45 methods and152 original PNGs, with no actual output playback enabled.
+Compilation and pure tests do not establish new native/UI/hardware acceptance.
