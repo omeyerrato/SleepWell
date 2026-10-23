@@ -29,3 +29,13 @@ Native execution and comparison of those actual captures are required before
 visual acceptance. Compilation and pure tests alone do not establish that gate.
 Sleep-stage classification, sound classification and broader app parity remain
 outside this change and incomplete.
+
+The first CI journey (39997627697) produced seven original screenshots and failed
+on a focus assertion while reopening the editor. Reviewing each image found the
+Trends detail action clipped beneath the dock and overly segmented history
+ribbons. The follow-up compacts both charts and their spacing, keeps measurement
+colours inside continuous coverage spans, and requires the complete detail touch
+target above the selected dock in all three trend periods. Capture now waits up
+to eight seconds for one resumed, attached, laid-out, focused decor to commit a
+hardware frame, and rechecks that same window before saving the screenshot.
+These corrections still require a fresh successful eight-screenshot native run.

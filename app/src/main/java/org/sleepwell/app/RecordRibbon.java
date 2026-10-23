@@ -14,6 +14,7 @@ final class RecordRibbon extends View {
     private final List<RecordIntervals.Span> coverage;
     private final double high;
     private final Paint paint=new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Path clip=new Path();
     RecordRibbon(Context context,RecordEntry record,List<JSONObject> epochs){
         super(context);this.record=record;
         List<ChartSeries.Sample> samples=new ArrayList<>();
@@ -27,10 +28,13 @@ final class RecordRibbon extends View {
         super.onDraw(canvas);float density=getResources().getDisplayMetrics().density,top=getHeight()*.19f,bottom=getHeight()*.81f,radius=3*density;
         paint.setColor(0xffeee5f5);canvas.drawRoundRect(0,top,getWidth(),bottom,radius,radius,paint);
         paint.setColor(record.manual()?0xffd0baf6:0xffc6a8f4);
-        for(RecordIntervals.Span span:coverage)canvas.drawRoundRect(at(span.start),top,at(span.end),bottom,radius,radius,paint);
-        for(ChartSeries.Bar bar:movement){
-            int alpha=45+(int)(145*(bar.value/high));paint.setColor((alpha<<24)|0x007542d2);
-            for(RecordIntervals.Span span:coverage){long start=Math.max(span.start,bar.from),end=Math.min(span.end,bar.to);if(end>start)canvas.drawRoundRect(at(start),top,at(end),bottom,radius,radius,paint);}
+        for(RecordIntervals.Span span:coverage){
+            paint.setColor(record.manual()?0xffd0baf6:0xffc6a8f4);canvas.drawRoundRect(at(span.start),top,at(span.end),bottom,radius,radius,paint);
+            // Round only the actual coverage ends, not every measurement bin.
+            // Adjacent readings form a continuous ribbon; true interval gaps stay blank.
+            int save=canvas.save();clip.reset();clip.addRoundRect(at(span.start),top,at(span.end),bottom,radius,radius,Path.Direction.CW);canvas.clipPath(clip);
+            for(ChartSeries.Bar bar:movement){long start=Math.max(span.start,bar.from),end=Math.min(span.end,bar.to);if(end<=start)continue;int alpha=25+(int)(110*(bar.value/high));paint.setColor((alpha<<24)|0x007542d2);canvas.drawRect(at(start),top,at(end),bottom,paint);}
+            canvas.restoreToCount(save);
         }
     }
 }

@@ -24,7 +24,26 @@ public final class ReportReferenceFlowTest {
     private void click(String text)throws Exception{UiObject2 found=device.wait(Until.findObject(By.text(text)),1800);if(found==null)found=device.findObject(By.desc(text));if(found==null){new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(text));found=device.findObject(By.text(text));}assertNotNull(text,found);found.click();device.waitForIdle();}
     private void title(String value){assertTrue(value,device.wait(Until.hasObject(By.text(value)),5000));}
     private void launch(Class<?> activity,long id){context.startActivity(new Intent(context,activity).putExtra("record",id).putExtra("visualReview",true).putExtra("verificationLabel","VISUAL TEST · seven isolated fixture nights").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));}
-    private void capture(String name)throws Exception{CountDownLatch frame=new CountDownLatch(1);instrumentation.runOnMainSync(()->{for(Activity activity:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED)){assertTrue(activity.hasWindowFocus());View root=activity.getWindow().getDecorView();root.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);root.invalidate();}});assertTrue(frame.await(5,TimeUnit.SECONDS));device.waitForIdle();File folder=new File(context.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"report-reference-"+name+".png")));}
+    private boolean ready(Activity activity,View decor){return !activity.isFinishing()&&!activity.isDestroyed()&&ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED).contains(activity)&&activity.getWindow().getDecorView()==decor&&activity.hasWindowFocus()&&decor.hasWindowFocus()&&decor.isAttachedToWindow()&&decor.isLaidOut()&&decor.getWidth()>0&&decor.getHeight()>0;}
+    private void capture(String name)throws Exception{
+        long until=SystemClock.elapsedRealtime()+8000;boolean committed=false;
+        while(!committed&&SystemClock.elapsedRealtime()<until){
+            CountDownLatch frame=new CountDownLatch(1);Activity[] owner={null};View[] decor={null};
+            instrumentation.runOnMainSync(()->{for(Activity activity:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED)){
+                View root=activity.getWindow().getDecorView();if(!ready(activity,root))continue;
+                assertTrue("Screenshots require a native hardware frame",root.isHardwareAccelerated());owner[0]=activity;decor[0]=root;
+                root.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);root.invalidate();break;
+            }});
+            if(owner[0]==null){SystemClock.sleep(50);continue;}
+            if(!frame.await(Math.min(1000,Math.max(1,until-SystemClock.elapsedRealtime())),TimeUnit.MILLISECONDS))continue;
+            device.waitForIdle();boolean[] stillReady={false};instrumentation.runOnMainSync(()->stillReady[0]=ready(owner[0],decor[0]));committed=stillReady[0];
+        }
+        assertTrue("A resumed, attached, laid-out, focused report window must commit its own frame: "+name,committed);
+        if(name.equals("week")||name.equals("month")||name.equals("year")){
+            UiObject2 action=device.findObject(By.desc("Read details")),dock=device.findObject(By.desc("Report").selected(true));assertNotNull("Read details on first trend frame",action);assertNotNull("Selected Report dock",dock);assertTrue("Read details must retain its complete touch target above the dock without scrolling",action.getVisibleBounds().height()>=Design.dp(context,48)&&action.getVisibleBounds().bottom<=dock.getVisibleBounds().top);
+        }
+        File folder=new File(context.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"report-reference-"+name+".png")));
+    }
     private void seed(Store store){ZoneId zone=ZoneId.systemDefault();LocalDate latest=LocalDate.now(zone).minusDays(1);int[] durations={462,455,485,430,475,450,483};android.database.sqlite.SQLiteDatabase db=store.getWritableDatabase();db.beginTransaction();try{for(int night=0;night<7;night++){
         long end=latest.minusDays(night).atTime(6,30).atZone(zone).toInstant().toEpochMilli(),start=end-(durations[night]+(night==3?10:0))*60000L;long id=2000+night;
         db.execSQL("INSERT INTO sessions(id,start,end,active_ms,note,source,origin,zone) VALUES(?,?,?,?,?,'tracked','local',?)",new Object[]{id,start,end,durations[night]*60000L,"Synthetic CI sensor fixture, never a personal recording",zone.getId()});
