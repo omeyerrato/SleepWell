@@ -237,3 +237,13 @@ physical cue/alarm delivery and remaining phone features are still unaccepted.
 The overall run also has a failing Privacy journey. Full feature and 36-screen
 visual acceptance remains **FAIL / incomplete**. These images do not certify
 later source changes such as headphones or the pending clock-axis correction.
+
+### Pending shared visual corrections after64ae8d2
+
+Source now uses board08's straight bedside-trend connections and lighter lilac
+point markers instead of cubic smoothing/heavy concentric rings. Missing dates
+still break the path. The snoring Preview triangle is inset inside its circle
+while its48dp action remains unchanged. Restyling an already-checked Switch
+explicitly synchronizes the new track's state. These are candidates awaiting
+fresh native originals; CI40033681541 runs the earlier64ae8d2 source and cannot
+validate these later changes.

@@ -25,7 +25,7 @@ final class Design {
     static void styleSwitch(Context c,Switch toggle,int active,int inactive){
         if(Appearance.contrast(c)){active=BROWN;inactive=0xff77706b;}
         toggle.setTrackTintList(null);toggle.setThumbTintList(null);StateListDrawable track=new StateListDrawable();GradientDrawable on=shape(c,active,30),off=shape(c,inactive,30);
-        on.setSize(dp(c,52),dp(c,28));off.setSize(dp(c,52),dp(c,28));track.addState(new int[]{android.R.attr.state_checked},on);track.addState(new int[]{},off);toggle.setTrackDrawable(track);
+        on.setSize(dp(c,52),dp(c,28));off.setSize(dp(c,52),dp(c,28));track.addState(new int[]{android.R.attr.state_checked},on);track.addState(new int[]{},off);toggle.setTrackDrawable(track);track.setState(toggle.getDrawableState());
         GradientDrawable thumb=shape(c,Color.WHITE,30);thumb.setSize(dp(c,24),dp(c,24));thumb.setStroke(dp(c,1),0x11808080);toggle.setThumbDrawable(thumb);toggle.setSplitTrack(false);toggle.setThumbTextPadding(dp(c,2));toggle.setSwitchMinWidth(dp(c,52));toggle.setMinHeight(dp(c,48));toggle.setShowText(false);
     }
     static LinearLayout col(Context c){return Ui.column(c);}
