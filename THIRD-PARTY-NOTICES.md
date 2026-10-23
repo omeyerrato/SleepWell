@@ -30,3 +30,7 @@ are bundled for offline CPU inference. [Source, exact hashes, tensor contract an
 The full license is retained in third_party/yamnet/LICENSE and packaged in
 app/src/main/assets/licenses/YAMNET-LICENSE.txt. No runtime download or network request occurs.
 The bundled LiteRT CPU runtime uses com.google.ai.edge.litert:litert:2.3.0.
+
+## Public CC0 classifier evaluation audio (test APK only)
+
+Two human-snoring recordings by SortsApostata and pencilgame1 and one conversation/crowd recording by ZyryTSounds were published under CC0 1.0. [Source pages, preview hashes, decoded PCM hashes and conversion details](third_party/audio-fixtures/manifest.json); [license/provenance](third_party/audio-fixtures/LICENSE.md). They are never bundled in the production APK and are never played by the tests.

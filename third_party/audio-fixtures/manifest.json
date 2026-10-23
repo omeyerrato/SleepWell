@@ -1,0 +1,42 @@
+{
+  "license": "CC0-1.0",
+  "derivation": "Public HQ MP3 previews decoded with FFmpeg8.1.1 to little-endian PCM16, mono16000Hz, entire preview, no gain normalization or trimming. TestAPK only.",
+  "fixtures": [
+    {
+      "name": "snoring-sorts",
+      "author": "SortsApostata",
+      "page": "https://freesound.org/people/SortsApostata/sounds/233600/",
+      "preview": "https://cdn.freesound.org/previews/233/233600_2057910-hq.mp3",
+      "license": "CC0-1.0",
+      "expected_broad_class": "snoring",
+      "samples": 552000,
+      "duration_ms": 34500,
+      "preview_sha256": "2401109723cdc0f5804edfd8c0cda0081743fde62265955d84d872070d135420",
+      "pcm_sha256": "c7e95aed4687352e5dbd27148f521584e7224f7df7f1dddbb5875332dadce5a1"
+    },
+    {
+      "name": "snoring-pencil",
+      "author": "pencilgame1",
+      "page": "https://freesound.org/people/pencilgame1/sounds/103522/",
+      "preview": "https://cdn.freesound.org/previews/103/103522_1733932-hq.mp3",
+      "license": "CC0-1.0",
+      "expected_broad_class": "snoring",
+      "samples": 565440,
+      "duration_ms": 35340,
+      "preview_sha256": "20cca0b91ff2b6c2027499e7d9ce911bef8e98f73749fac8d766c234867930c6",
+      "pcm_sha256": "d53e9312fe9abd9ec6174d864b660ac38dc0edc792698087a99b774084ca68a1"
+    },
+    {
+      "name": "speech-crowd",
+      "author": "ZyryTSounds",
+      "page": "https://freesound.org/people/ZyryTSounds/sounds/222993/",
+      "preview": "https://cdn.freesound.org/previews/222/222993_4082826-hq.mp3",
+      "license": "CC0-1.0",
+      "expected_broad_class": "speech",
+      "samples": 301117,
+      "duration_ms": 18819,
+      "preview_sha256": "e2a8286c68496c44e7d6164bb1a47ced6e781dff463b4a5078b8d57c4d103484",
+      "pcm_sha256": "ab425449b6f6b6af3986b992f3d14455461bcc63ad3a3eabf61554d4bf124d13"
+    }
+  ]
+}

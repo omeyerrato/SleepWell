@@ -22,3 +22,6 @@ third_party/phosphor/manifest.json text eol=lf
 # Retain the verified audio model, labels and Apache notice byte-for-byte.
 third_party/yamnet/** -text
 app/src/main/assets/yamnet.tflite binary
+
+# Raw PCM fixtures belong only to the instrumentation test APK.
+*.pcm binary
