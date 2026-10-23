@@ -13,8 +13,12 @@ final class SoundAnalysis {
         // Keep the margin against every unrelated label AND respiratory siblings.
         float snoreCompetitor=0;for(int n=0;n<scores.length;n++)if(n!=SNORING&&n!=BREATHING)snoreCompetitor=Math.max(snoreCompetitor,scores[n]);
         if(scores[SNORING]>=.6f&&scores[SNORING]-snoreCompetitor>=.15f)return new Result("snoring",scores[SNORING]);
-        float runner=0;for(int n=0;n<scores.length;n++)if(n!=top)runner=Math.max(runner,scores[n]);
-        if(top==SPEECH&&scores[top]>=.65f&&scores[top]-runner>=.15f)return new Result("speech",scores[top]);
+        // The exported class map contains Speech and five of its ontology children
+        // (Child speech, Conversation, Narration, Babbling, Speech synthesizer).
+        // Max aggregation supports the broad estimate without adding correlated scores.
+        // https://research.google.com/audioset/ontology/speech.html
+        float speech=0,speechCompetitor=0;for(int n=0;n<scores.length;n++)if(n<=5)speech=Math.max(speech,scores[n]);else speechCompetitor=Math.max(speechCompetitor,scores[n]);
+        if(speech>=.65f&&speech-speechCompetitor>=.15f)return new Result("speech",speech);
         if(scores[top]<.2f)return null;return new Result("noise",scores[top]);
     }
     /** Two consecutive windows, bounded event lengths; flush at pause/stop without inventing samples. */
