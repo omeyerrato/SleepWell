@@ -1082,7 +1082,7 @@
       ],
       "validation": "SoundAnalysisTest, SoundAnalysisStreamTest and CloseResourcesTest pure passes. SoundAnalysisNativeTest three methods and SoundEventsUiTest pass at e00ff55/CI40002966787. The real CC0 positive PCM-to-production-policy/group/store/reopen gate FAILED: high snoring scores but no saved positive events. Candidate ancestor/speech-family corrections keep thresholds/grouping and require a fresh four-fixture run; microphone capture unverified.",
       "status": "partial",
-      "notes": "Bundled Apache-2.0 offline YAMNet estimates snoring/speech. Candidate policy respects compatible label hierarchy while retaining unrelated-class margin gates; uncertain sounds stay Other. Analysis-only intervals persist without WAV. Cough/baby/laughter categories, user correction and broader validation remain missing. See SOUND-ANALYSIS.md.",
+      "notes": "Bundled Apache-2.0 offline YAMNet estimates snoring/speech. Policy respects compatible label hierarchy while retaining unrelated-class margin gates; uncertain sounds stay Other. Analysis-only intervals persist without WAV. Cough/baby/laughter categories, user correction and broader validation remain missing. See SOUND-ANALYSIS.md.",
       "id": "F055",
       "tests": [
         {
@@ -1137,7 +1137,7 @@
         "ClipSeekView.java",
         "Store.java"
       ],
-      "validation": "SoundEventsUiTest passes at e00ff55/CI40002966787 for the older category/recreation UI. New SoundLibraryStorageTest and SoundLibraryUiTest require fresh native acceptance: schema5 migration, per-event/shared-WAV favorites, actual PCM interval waveforms, seek, fake playback, deletion and retention. No physical playback/microphone hardware actions.",
+      "validation": "SoundEventsUiTest passes at e00ff55/CI40002966787 for the older category/recreation UI. SoundLibraryStorageTest three methods and the SoundLibraryUiTest playback/favorites/delete method pass at f471c4d/CI40016966655 with five actual PNGs. Retention flow fails on a transition lookup and requires a fresh pass. Schema5 migration, shared-WAV favorites, exact interval/seek and deletion verified only in isolated fixtures. No physical playback/microphone hardware actions.",
       "status": "partial",
       "notes": "New per-night inline PCM waveform/player, persisted per-event or legacy-recording favorites and explicit estimate-versus-shared-recording deletion are integrated candidates. Classification-only and missing audio never invent a player. Configurable retention preserves audio linked to any favorite. Actual native player output, global album, export and full board07 fidelity remain open.",
       "id": "F057",
@@ -1171,7 +1171,7 @@
         "HistoryEraseUi.java",
         "Store.java"
       ],
-      "validation": "SoundLibraryStorageTest three actual SQLite/file fixtures and SoundLibraryUiTest two native fake-output flows await execution. SoundRetentionLifecycleTest covers one retained immutable operation, recreation/error/retry and disabled controls; fresh native execution pending. PrivacyHistoryFlowTest covers retained background erase, real failed unlink and separate retry preserving newer nights; its source is not a passing-run claim.",
+      "validation": "SoundLibraryStorageTest three actual SQLite/file methods pass at f471c4d/CI40016966655. Retention UI/lifecycle methods fail during choice-dialog transition and remain open. SoundRetentionLifecycleTest covers one retained immutable operation, recreation/error/retry and disabled controls; fresh native execution pending. PrivacyHistoryFlowTest covers retained background erase, real failed unlink and separate retry preserving newer nights; its source is not a passing-run claim.",
       "status": "partial",
       "notes": "Additive schema6 preserves existing rows/WAVs and adds favorites plus identity-checked pending deletion journal. Retention can keep1/3/7/14/30days or all, with favorite protection. Background per-run cleanup and explicit policy apply replace hardcoded main-thread pruning. Global album, portable audio export and alternate formats remain incomplete.",
       "id": "F058",
@@ -1183,10 +1183,6 @@
         {
           "name": "SoundLibraryStorageTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/SoundLibraryStorageTest.java"
-        },
-        {
-          "name": "SoundLibraryUiTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/SoundLibraryUiTest.java"
         },
         {
           "name": "SoundRetentionLifecycleTest",
@@ -2665,7 +2661,7 @@
         "RhythmChart.java",
         "RhythmSettings.java"
       ],
-      "validation": "RhythmStatsTest fourteen pure passes in integrated build. SleepRhythmFlowTest source exercises seven actual fixture nights, workday edits/recreation/save/reopen/empty and five original screenshots; native execution and visual acceptance pending.",
+      "validation": "RhythmStatsTest fourteen pure passes in integrated build. SleepRhythmFlowTest passes at f471c4d/CI40016966655: seven actual fixture nights, workday edits/recreation/save/reopen/empty and five originals. Strict reference review remains separate; no overnight or clinical claim.",
       "status": "partial",
       "notes": "Actual recorded main-night bedtime range, circular workday/free-day midpoint difference and editable wake-day work schedule. Naps excluded, missing dates stay absent, longest main night per sleep day. Thirty-night history progress is descriptive; no clinical chronotype or prevention claim.",
       "id": "F141",

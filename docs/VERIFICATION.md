@@ -607,3 +607,12 @@ alarm, audio, microphone, vibration, torch, power-menu or screen-off tests ran.
 Terminal CI40002966787 at e00ff55 remains an overall failure: eleven of thirteen native classes pass, including automatic configuration and alarm menus. Real human sound fixtures produced no saved positives despite high model scores; report reopening failed and its screenshot assertion masked the original diagnostic. Integrated hierarchy-policy and lifecycle fixes require a new run. Full design acceptance remains FAIL/incomplete.
 
 Local integrated b8116f7: debug app, instrumentation APK, release app,299 pure tests (zero failures/errors/skips) and lint (zero errors/77warnings) pass together in1m44s. This includes recordings/favorites/retention, travel/privacy/rhythm, sleep-plan controls, independent vibration delay, automatic fixed footer and themed trend navigation. New native tests have compiled; they have not thereby passed. CI40016966655 at f471c4d now runs20 native classes and requires111 original PNGs with actual SQLite/PCM fixtures and fake output/scheduling. No personal-phone install or effects test occurred.
+
+
+## CI40016966655 terminal result at f471c4d
+
+Overall FAIL:13 of20 classes passed,87 original PNGs produced. Four human PCM fixtures now pass production CPU/framing/classification/grouping/reopened-SQLite validation: sorts9 and pencil3 saved snoring intervals, countdown1 speech interval; both speech fixtures have zero snoring. Crowd speech remained Other. This is compatibility evidence on four recordings, not bedroom accuracy or microphone capture.
+
+Schema migration4 and library storage3 methods pass. Library interval waveforms, seek, fake-player state, favorites/recreation, shared-WAV deletion with estimates retained pass (one of its two methods; five originals). SleepRhythmFlowTest passes actual seven-night fixture analytics, workday schedule, recreation/save/reopen and empty state (five originals). Automatic first-frame Save and activation now pass (five originals).
+
+Seven classes fail: AlarmWakeSettingsTest, ReportReferenceFlowTest, TravelPlanFlowTest, PrivacyHistoryFlowTest, PlanPickerFlowTest, SoundLibraryUiTest and SoundRetentionLifecycleTest. Diagnostics expose transition lookups, an offscreen Edit prerequisite, and stock privacy-confirmation styling. Fixes and stricter target-window waits are being integrated; these are unresolved until a fresh run. The partial23-image strict review accepts no full app or8-image report flow. No personal-phone install/effects executed.
