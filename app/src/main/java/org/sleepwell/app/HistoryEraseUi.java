@@ -1,6 +1,6 @@
 package org.sleepwell.app;
 
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.*;
 import android.view.View;
 import android.widget.*;
@@ -11,7 +11,7 @@ final class HistoryEraseUi {
     private static final class Binding implements View.OnAttachStateChangeListener,Runnable {
         private final LinearLayout body,row;private final TextView status;private final Records.Factory factory;
         private final Runnable stopPreview,refresh;private final Handler handler=new Handler(Looper.getMainLooper());
-        private boolean confirming,attached;private AlertDialog dialog;
+        private boolean confirming,attached;private Dialog dialog;
         Binding(LinearLayout body,Runnable stopPreview,Runnable refresh){this.body=body;this.stopPreview=stopPreview;this.refresh=refresh;factory=Records.factory;
             row=PlanActivity.detail(body,"trash","Delete sleep history","Permanently removes records, notes and audio.",null,this::confirm);((Design.Icon)row.getChildAt(0)).tint(0xffd22b20);LinearLayout copy=(LinearLayout)row.getChildAt(1);((TextView)copy.getChildAt(0)).setTextColor(0xffd22b20);row.setContentDescription("Delete sleep history");
             status=Design.text(body,"",12,400,Design.MUTED);status.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);status.setVisibility(View.GONE);row.addOnAttachStateChangeListener(this);if(row.isAttachedToWindow())onViewAttachedToWindow(row);
@@ -29,7 +29,7 @@ final class HistoryEraseUi {
             if(!job.done)handler.postDelayed(this,150);
         }
         private void confirm(){HistoryEraseJobs.Job job=HistoryErase.jobs.get(factory);if(confirming||job!=null&&!job.done)return;confirming=true;row.setEnabled(false);
-            boolean cleanup=job!=null&&job.pending>0;dialog=new AlertDialog.Builder(body.getContext()).setTitle(cleanup?"Finish audio cleanup?":"Delete recordings and nights?").setMessage(cleanup?"Retry removing audio left by the earlier deletion. New sleep records and alarms remain.":"This removes local sleep sessions, graphs, notes and audio. Alarms remain.").setPositiveButton(cleanup?"Retry audio cleanup":"Delete history",(d,w)->{stopPreview.run();HistoryErase.start(body.getContext(),factory,cleanup?HistoryEraseJobs.Kind.CLEAN:HistoryEraseJobs.Kind.ERASE);handler.removeCallbacks(this);handler.post(this);}).setNegativeButton("Keep",null).create();dialog.setOnDismissListener(d->{confirming=false;handler.post(this);});dialog.show();
+            boolean cleanup=job!=null&&job.pending>0;dialog=HistoryEraseConfirm.create(body.getContext(),cleanup,()->{stopPreview.run();HistoryErase.start(body.getContext(),factory,cleanup?HistoryEraseJobs.Kind.CLEAN:HistoryEraseJobs.Kind.ERASE);handler.removeCallbacks(this);handler.post(this);});dialog.setOnDismissListener(d->{confirming=false;handler.post(this);});dialog.show();
         }
     }
 }
