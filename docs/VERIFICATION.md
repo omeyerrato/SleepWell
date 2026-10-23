@@ -682,3 +682,15 @@ verification/2026-10-24-walk-headphone-privacy. Privacy's lower-scroll captures
 do not certify offscreen headers; gray checked favorites remains a later styling
 candidate. No physical alarm, audio, sensor, permission, microphone or power test
 ran. Full app/design acceptance remains incomplete.
+
+## Integrated a2e88e0 — missing nights and global favorite sounds
+
+Full local build passed in3m:368 pure tests across42 suites, zero failures,
+errors or skips; lint zero errors/79 warnings; debug app, Android test APK and
+release app. Includes actual phone-idle evidence review/manual-save source,
+legacy-empty-night and revoked-query guards, global starred recordings/estimates
+with real filters/paging, chart-fixture focus repair, lighter trend markers,
+inset preview icon and cream exact-seconds controls. Data schema is unchanged
+by these two new flows. No native screenshots or hardware acceptance is inferred
+from this build. Next default gate:34 classes,51 methods,177 required originals;
+no native playback option or personal-phone actions enabled.
