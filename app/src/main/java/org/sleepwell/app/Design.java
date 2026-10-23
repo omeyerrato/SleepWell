@@ -69,7 +69,7 @@ final class Design {
             GradientDrawable dockSurface=shape(a,night?palette.dock:SOFT,40);if(night)dockSurface.setStroke(dp(a,1),palette.line);dock.setBackground(dockSurface);
             LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,dp(a,12+62*Math.max(1,fontScale(a))));lp.setMargins(dp(a,12),dp(a,8),dp(a,12),dp(a,8));root.addView(dock,lp);
         }
-        a.setContentView(root);root.requestApplyInsets();root.post(()->systemBars(a,dark));return body;
+        a.setContentView(root);root.requestApplyInsets();root.post(()->{ViewGroup content=a.findViewById(android.R.id.content);if(!a.isDestroyed()&&root.isAttachedToWindow()&&content.getChildCount()>0&&content.getChildAt(0)==root)systemBars(a,dark);});return body;
     }
     static void header(LinearLayout p,String title,Runnable back){LinearLayout r=row(p.getContext());if(back!=null)r.addView(iconButton(p.getContext(),"back","Back",back),new LinearLayout.LayoutParams(dp(p.getContext(),48),dp(p.getContext(),48)));
         TextView t=text(p.getContext(),title,back==null?30:24,700,INK);r.addView(t,new LinearLayout.LayoutParams(0,-2,1));p.addView(r,new LinearLayout.LayoutParams(-1,dp(p.getContext(),56)));space(p,12);}

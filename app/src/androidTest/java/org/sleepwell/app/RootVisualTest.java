@@ -1,8 +1,12 @@
 package org.sleepwell.app;
 
 import android.content.*;
+import android.app.Activity;
+import android.os.SystemClock;
+import android.view.WindowInsetsController;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.runner.lifecycle.*;
 import androidx.test.uiautomator.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +16,7 @@ import static org.junit.Assert.*;
 /** No alarm, microphone, tracking, power-button or stored-data mutations. */
 @RunWith(AndroidJUnit4.class)
 public class RootVisualTest {
+    private void stableDarkBars(){long end=SystemClock.elapsedRealtime()+5000;int stable=0;while(stable<4){boolean[] dark={false};InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{for(Activity a:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))if(a instanceof MainActivity&&a.hasWindowFocus()){int mask=WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;dark[0]=(a.getWindow().getInsetsController().getSystemBarsAppearance()&mask)==0;}});stable=dark[0]?stable+1:0;if(SystemClock.elapsedRealtime()>end)fail("Wind-down must keep light status icons and gesture handle on plum");SystemClock.sleep(100);}}
     @Test public void rootNavigationAndActualScreenshots(){
         Context c=InstrumentationRegistry.getInstrumentation().getTargetContext();UiDevice device=UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         assertFalse(Prefs.flag(c,"ringing"));assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"tracking"));assertFalse(Prefs.flag(c,"trackingPaused"));try(Store original=new Store(c)){assertTrue("Do not finalize an unfinished personal recording",original.rows("SELECT id FROM sessions WHERE end IS NULL").isEmpty());}
@@ -38,7 +43,7 @@ public class RootVisualTest {
             UiObject2 back=device.findObject(By.pkg("org.sleepwell.app").desc("Back"));assertNotNull(back);if(detail[2].equals("readiness"))device.pressBack();else back.click();device.waitForIdle();assertTrue(device.wait(Until.hasObject(By.desc("Settings").selected(true)),5000));
         }
         for(UiObject2 candidate:device.findObjects(By.desc("Tonight")))if(candidate.getVisibleBounds().centerY()>device.getDisplayHeight()*.7f){candidate.click();break;}
-        UiObject2 wind=device.findObject(By.text("Wind-down at"));assertNotNull(wind);wind.click();device.waitForIdle();assertTrue(device.wait(Until.hasObject(By.text("Wind-down")),5000));assertTrue(device.takeScreenshot(new File(folder,"root-wind-down.png")));device.findObject(By.pkg("org.sleepwell.app").desc("Back")).click();device.waitForIdle();
+        for(int transition=0;transition<3;transition++){UiObject2 wind=device.findObject(By.text("Wind-down at"));assertNotNull(wind);wind.click();device.waitForIdle();assertTrue(device.wait(Until.hasObject(By.text("Wind-down")),5000));stableDarkBars();if(transition==2)assertTrue(device.takeScreenshot(new File(folder,"root-wind-down.png")));device.findObject(By.pkg("org.sleepwell.app").desc("Back")).click();device.waitForIdle();assertTrue(device.wait(Until.hasObject(By.desc("Tonight").selected(true)),5000));}
         assertFalse(Prefs.flag(c,"ringing"));
     }
 }
