@@ -23,6 +23,10 @@ output = root / "captures/ci"
 output.mkdir(parents=True, exist_ok=True)
 adb = [str(Path(os.environ["ANDROID_HOME"]) / "platform-tools/adb"), "-s", args.serial]
 emulator = str(Path(os.environ["ANDROID_HOME"]) / "emulator/emulator")
+avds = subprocess.run([emulator, "-list-avds"], capture_output=True, text=True, timeout=20)
+(output / "avds.txt").write_text(avds.stdout + avds.stderr, encoding="utf-8")
+if "SleepWellSilent" not in avds.stdout.splitlines():
+    raise SystemExit("The configured isolated AVD is missing; see avds.txt")
 with (output / "acceleration.txt").open("w") as report:
     subprocess.run([emulator, "-accel-check"], stdout=report, stderr=subprocess.STDOUT, check=False, timeout=20)
 log = (output / "emulator.log").open("w")
