@@ -25,7 +25,11 @@ final class MathTask {
     }
     int answer(){return operator.answer(left,right);}
     boolean accepts(int option){return option==answer();}
-    boolean acceptsTyped(String text){if(text==null)return false;String clean=text.trim();if(!clean.matches("[0-9]{1,5}"))return false;return accepts(Integer.parseInt(clean));}
+    boolean acceptsTyped(String text){
+        if(text==null)return false;String clean=text.trim();if(clean.isEmpty())return false;int value=0,count=0;
+        for(int offset=0;offset<clean.length();){int point=clean.codePointAt(offset);offset+=Character.charCount(point);if(++count>5||Character.getType(point)!=Character.DECIMAL_DIGIT_NUMBER)return false;int digit=Character.digit(point,10);if(digit<0||digit>9||value>(Integer.MAX_VALUE-digit)/10)return false;value=value*10+digit;}
+        return accepts(value);
+    }
     boolean matches(MathSettings configuration){return settings.equals(configuration);}
     String question(){return left+" "+operator.symbol+" "+right+" = ?";}
     String spoken(){return "Math question "+left+" "+operator.spoken+" "+right;}
