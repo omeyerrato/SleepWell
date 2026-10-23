@@ -1,6 +1,6 @@
 {
   "license": "CC0-1.0",
-  "derivation": "Public HQ MP3 previews decoded with FFmpeg8.1.1 to little-endian PCM16, mono16000Hz, entire preview, no gain normalization or trimming. TestAPK only.",
+  "derivation": "Public HQ MP3 previews decoded with FFmpeg8.1.1 to little-endian PCM16, mono16000Hz, no gain normalization. First four fixtures use entire preview; later fixtures have explicit per-file first30seconds cap. TestAPK only.",
   "fixtures": [
     {
       "name": "snoring-sorts",
@@ -49,6 +49,58 @@
       "duration_ms": 5872,
       "preview_sha256": "825c059af893becb5b8cf73c31847b1747e63901e6f60fd3c30a5270cbef2f83",
       "pcm_sha256": "4a62ee7002290bce1555a3995c87fd6d0138343e54f767c418efd356e2765880"
+    },
+    {
+      "name": "cough-fabrizio",
+      "author": "Fabrizio84",
+      "page": "https://freesound.org/people/Fabrizio84/sounds/457972/",
+      "preview": "https://cdn.freesound.org/previews/457/457972_2841496-hq.mp3",
+      "license": "CC0-1.0",
+      "expected_broad_class": "cough",
+      "samples": 73748,
+      "duration_ms": 4609,
+      "derivation": "FFmpeg8.1.1 -t 30 -ac 1 -ar 16000 -f s16le; first30seconds cap selected before model evaluation; no gain, resynthesis, tiling or positive-window selection",
+      "preview_sha256": "db7fd08c5fca117b834eb2e715c7ba174523ce982eec5c3c82ba1599d0d5da87",
+      "pcm_sha256": "11874d436a1440c8aa09e8eb4f952dc75ccd92f92095c7561eb2da49abed084e"
+    },
+    {
+      "name": "cough-crowd",
+      "author": "freesound (Caixaforum audience recording)",
+      "page": "https://freesound.org/people/freesound/sounds/25301/",
+      "preview": "https://cdn.freesound.org/previews/25/25301_173513-hq.mp3",
+      "license": "CC0-1.0",
+      "expected_broad_class": "cough",
+      "samples": 436145,
+      "duration_ms": 27259,
+      "derivation": "FFmpeg8.1.1 -t 30 -ac 1 -ar 16000 -f s16le; first30seconds cap selected before model evaluation; no gain, resynthesis, tiling or positive-window selection",
+      "preview_sha256": "7d32f6b8cfedd3479e32cbd1a6030b77e86841a751c6acc9383a6fa2c9dd8b84",
+      "pcm_sha256": "e4babc47bc2435d773e633b2d64cc018a5ac064f1542c349a83bf4fd2268901c"
+    },
+    {
+      "name": "babycry-bonehead",
+      "author": "bonehead",
+      "page": "https://freesound.org/people/bonehead/sounds/66637/",
+      "preview": "https://cdn.freesound.org/previews/66/66637_96564-hq.mp3",
+      "license": "CC0-1.0",
+      "expected_broad_class": "baby_cry",
+      "samples": 480000,
+      "duration_ms": 30000,
+      "derivation": "FFmpeg8.1.1 -t 30 -ac 1 -ar 16000 -f s16le; first30seconds cap selected before model evaluation; no gain, resynthesis, tiling or positive-window selection",
+      "preview_sha256": "029525f67d61d889e1ae94f38bcfbabec20cdae0a98c1bade872f6af8295df8e",
+      "pcm_sha256": "c2b06fb8d0c6a5ee6fe22b6345b24b9eaf6da2b14cc4d7c480fa4294210bdfa7"
+    },
+    {
+      "name": "laughter-crowd",
+      "author": "freesound (Caixaforum audience recording)",
+      "page": "https://freesound.org/people/freesound/sounds/25296/",
+      "preview": "https://cdn.freesound.org/previews/25/25296_173513-hq.mp3",
+      "license": "CC0-1.0",
+      "expected_broad_class": "laughter",
+      "samples": 480000,
+      "duration_ms": 30000,
+      "derivation": "FFmpeg8.1.1 -t 30 -ac 1 -ar 16000 -f s16le; first30seconds cap selected before model evaluation; no gain, resynthesis, tiling or positive-window selection",
+      "preview_sha256": "c65a0068c5fecae0f38829d580e75ef41a3b911242c0e15fc3ed9e42e3206626",
+      "pcm_sha256": "d576958f08f40b4165934b639cadc3942000b6ee31ff0ba20d0106bb5595765c"
     }
   ]
 }

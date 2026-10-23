@@ -1,0 +1,15 @@
+package org.sleepwell.app;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class SoundCategoryPolicyTest {
+    private float[] score(int label,float score){float[] scores=new float[521];scores[label]=score;return scores;}
+    @Test public void laughterFamilyUsesMaximumAndRetainsUnrelatedMargin(){for(int label=13;label<=18;label++){float[] s=score(label,.9f);if(label!=13)s[13]=.8f;assertEquals("laughter",SoundAnalysis.classify(s).category);assertEquals(.9f,SoundAnalysis.classify(s).score,1e-6);s[0]=.8f;assertEquals("noise",SoundAnalysis.classify(s).category);}float[] weak=new float[521];for(int n=13;n<=18;n++)weak[n]=.2f;assertEquals("noise",SoundAnalysis.classify(weak).category);}
+    @Test public void infantCryingRequiresSpecificEvidenceNotParentOrWhimper(){float[] s=score(20,.85f);s[19]=.99f;assertEquals("baby_cry",SoundAnalysis.classify(s).category);assertEquals(.85f,SoundAnalysis.classify(s).score,1e-6);s[20]=.64f;assertEquals("noise",SoundAnalysis.classify(s).category);s[20]=0;assertEquals("noise",SoundAnalysis.classify(s).category);s[20]=.85f;s[21]=.75f;assertEquals("noise",SoundAnalysis.classify(s).category);}
+    @Test public void coughIncludesDeclaredThroatClearChildButNotRespiratorySiblings(){for(int label:new int[]{42,43}){float[] s=score(label,.9f);if(label!=42)s[42]=.8f;assertEquals("cough",SoundAnalysis.classify(s).category);for(int sibling:new int[]{36,37,38,39,40,41,44}){s[sibling]=.8f;assertEquals("noise",SoundAnalysis.classify(s).category);s[sibling]=0;}}}
+    @Test public void thresholdMarginAndSilenceRejectNewClassFalsePositives(){for(int label:new int[]{13,20,42}){assertEquals("noise",SoundAnalysis.classify(score(label,.64f)).category);float[] s=score(label,.8f);s[200]=.7f;assertEquals("noise",SoundAnalysis.classify(s).category);s[494]=.9f;assertNull(SoundAnalysis.classify(s));}}
+    @Test public void isolatedNewClassWindowsAreStillDiscarded(){for(String category:new String[]{"cough","baby_cry","laughter"}){int[] emitted={0};SoundAnalysis.Group group=new SoundAnalysis.Group((at,count,type,value)->emitted[0]++);group.add(1,new SoundAnalysis.Result(category,.99));group.add(976,null);group.flush();assertEquals(0,emitted[0]);}}
+    @Test public void onlySnoringCanAllocateACueEvenForConfidentNewClasses(){SnoreCuePolicy cues=new SnoreCuePolicy(new SnoreCuePolicy.Budget(),()->{fail("Non-snoring cue allocation");return null;},()->fail());for(String category:new String[]{"cough","baby_cry","laughter"})assertFalse(cues.event(category,1,0,new SnoreCuePolicy.Settings(true,SnoreCuePolicy.Mode.BOTH,3,3,2)));cues.close();}
+    @Test public void categoriesAreExplicitEstimatesAndUnknownInputsAreRejected(){for(String category:new String[]{"snoring","speech","cough","baby_cry","laughter","noise"})assertTrue(SoundCategories.valid(category));assertFalse(SoundCategories.valid(null));assertFalse(SoundCategories.valid("diagnosis"));assertEquals("Cough / throat clear estimate",SoundCategories.title("cough"));assertEquals("Other sound",SoundCategories.title("unknown"));}
+}

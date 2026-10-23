@@ -9,7 +9,7 @@ import java.util.*;
 final class SoundEventRows {
     static final class Row {
         final JSONObject event,clip;final String key,category,title;final long start,duration;final boolean favorite;ClipTarget target;float[] peaks;String audioError="";
-        Row(JSONObject event,JSONObject clip,long start,long duration){this.event=event;this.clip=clip;this.start=start;this.duration=duration;key=event==null?"clip:"+clip.optLong("id"):"event:"+event.optLong("id");category=event==null?"noise":event.optString("category","noise");title=event==null?"Saved recording":category.equals("snoring")?"Snoring estimate":category.equals("speech")?"Speech estimate":"Other sound";favorite=(event==null?clip:event).optInt("favorite")==1;}
+        Row(JSONObject event,JSONObject clip,long start,long duration){this.event=event;this.clip=clip;this.start=start;this.duration=duration;key=event==null?"clip:"+clip.optLong("id"):"event:"+event.optLong("id");category=event==null?"noise":event.optString("category","noise");title=event==null?"Saved recording":SoundCategories.title(category);favorite=(event==null?clip:event).optInt("favorite")==1;}
     }
     static List<Row> metadata(Context context,Store store,RecordEntry record){
         Map<Long,JSONObject> clips=new HashMap<>();for(JSONObject clip:store.rows("SELECT * FROM clips WHERE session=? ORDER BY time",""+record.id))clips.put(clip.optLong("id"),clip);

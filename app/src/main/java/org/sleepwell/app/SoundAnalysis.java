@@ -2,7 +2,7 @@ package org.sleepwell.app;
 
 /** Conservative score policy, not calibrated probabilities or a medical detector. */
 final class SoundAnalysis {
-    static final int SPEECH=0,BREATHING=36,SNORING=38,SILENCE=494,CLASSES=521;
+    static final int SPEECH=0,LAUGHTER=13,CRYING=19,BABY_CRY=20,BREATHING=36,SNORING=38,COUGH=42,SILENCE=494,CLASSES=521;
     static final class Result {final String category;final double score;Result(String category,double score){this.category=category;this.score=score;}}
     static Result classify(float[] scores){
         if(scores==null||scores.length!=CLASSES)throw new IllegalArgumentException("Expected 521 sound scores");
@@ -19,8 +19,16 @@ final class SoundAnalysis {
         // https://research.google.com/audioset/ontology/speech.html
         float speech=0,speechCompetitor=0;for(int n=0;n<scores.length;n++)if(n<=5)speech=Math.max(speech,scores[n]);else speechCompetitor=Math.max(speechCompetitor,scores[n]);
         if(speech>=.65f&&speech-speechCompetitor>=.15f)return new Result("speech",speech);
+        // Exported AudioSet ontology families, not a sum of correlated scores.
+        // Laughter13 includes Baby laughter/Giggle/Snicker/Belly laugh/Chuckle14–18.
+        Result laughter=family(scores,"laughter",13,18,-1);if(laughter!=null)return laughter;
+        // Crying19 is compatible with its Baby cry20 child, but cannot supply infant evidence.
+        Result baby=family(scores,"baby_cry",20,20,19);if(baby!=null)return baby;
+        // AudioSet Cough42 includes Throat clearing43: UI explicitly names both.
+        Result cough=family(scores,"cough",42,43,-1);if(cough!=null)return cough;
         if(scores[top]<.2f)return null;return new Result("noise",scores[top]);
     }
+    private static Result family(float[] scores,String name,int first,int last,int ancestor){float positive=0,competitor=0;for(int n=0;n<scores.length;n++)if(n>=first&&n<=last)positive=Math.max(positive,scores[n]);else if(n!=ancestor)competitor=Math.max(competitor,scores[n]);return positive>=.65f&&positive-competitor>=.15f?new Result(name,positive):null;}
     /** Two consecutive windows, bounded event lengths; flush at pause/stop without inventing samples. */
     static final class Group {
         interface Sink {void event(long start,int windows,String category,double score);}

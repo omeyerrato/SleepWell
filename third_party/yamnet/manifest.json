@@ -23,7 +23,17 @@
   },
   "labels": {
     "0": "Speech",
+    "13": "Laughter",
+    "14": "Baby laughter",
+    "15": "Giggle",
+    "16": "Snicker",
+    "17": "Belly laugh",
+    "18": "Chuckle, chortle",
+    "19": "Crying, sobbing",
+    "20": "Baby cry, infant cry",
     "38": "Snoring",
+    "42": "Cough",
+    "43": "Throat clearing",
     "494": "Silence"
   },
   "sha256": {

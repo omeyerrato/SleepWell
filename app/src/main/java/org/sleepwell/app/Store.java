@@ -34,7 +34,7 @@ public class Store extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE pending_clip_deletes(clip INTEGER PRIMARY KEY,session INTEGER NOT NULL,path TEXT NOT NULL,time INTEGER NOT NULL)");
     }
     long soundEvent(long session,long start,long duration,String category,double score,Long clip){
-        if(session<=0||start<=0||duration<=0||!java.util.Set.of("snoring","speech","noise").contains(category)||!Double.isFinite(score)||score<0||score>1)throw new IllegalArgumentException("Invalid sound event");
+        if(session<=0||start<=0||duration<=0||!SoundCategories.valid(category)||!Double.isFinite(score)||score<0||score>1)throw new IllegalArgumentException("Invalid sound event");
         if(clip==null){List<JSONObject> saved=rows("SELECT id FROM clips WHERE session=? AND time-duration_ms<=CAST(? AS INTEGER) AND time>=CAST(? AS INTEGER) ORDER BY time LIMIT 1",""+session,""+start,""+(start+duration));if(!saved.isEmpty())clip=saved.get(0).optLong("id");}
         ContentValues v=new ContentValues();v.put("session",session);v.put("time",start);v.put("duration_ms",duration);v.put("category",category);v.put("score",score);v.put("model",YamnetClassifier.MODEL_ID);if(clip!=null)v.put("clip",clip);return getWritableDatabase().insertOrThrow("sound_events",null,v);
     }
