@@ -42,10 +42,10 @@ public final class AutomaticTrackingActivity extends Activity {
         Design.space(body,16);Design.line(body);
         Design.item(body,"moon","Tonight only","Up to 4 h waiting",null);Design.line(body);
         if(mode!=AutomaticSleep.Mode.MANUAL){
-            Design.toggle(body,"Record sounds","Starts with recording; no audio collected while waiting.",recordSounds,on->{recordSounds=on;if(!on)keepClips=false;render();});
+            Design.toggle(body,"Record sounds","Microphone starts when tracking begins.",recordSounds,on->{recordSounds=on;if(!on)keepClips=false;render();});
             if(recordSounds){Design.space(body,8);Design.toggle(body,"Keep sound clips","Save short clips on this phone.",keepClips,on->keepClips=on);}
         }
-        Design.space(body,14);Design.text(body,"Arm before bed. Sleep sounds stay off during automatic starts.",13,400,Design.MUTED);
+        Design.space(body,8);
         error=Design.text(body,"",13,500,0xffa93919);error.setVisibility(View.GONE);
         String old=owner.preferences(this).getString("automaticResult","");if(!TrackingService.running&&owner.preferences(this).getBoolean("automaticArmed",false))old="The previous wait stopped. Arm again to resume automatic starts.";
         if(!old.isEmpty()){Design.space(body,12);Design.text(body,old,13,400,Design.MUTED);}
