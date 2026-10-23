@@ -18,7 +18,7 @@ final class YamnetClassifier implements SoundAnalysisStream.Model {
             inputs=model.createInputBuffers();outputs=model.createOutputBuffers();
             if(inputs.size()!=1||outputs.size()!=1)throw new IllegalStateException("Unsupported sound model contract");
             infer(new float[SAMPLES]);
-        }catch(Exception|LinkageError failure){close();throw new IllegalStateException("Sound model unavailable",failure);}
+        }catch(Exception|LinkageError failure){try{close();}catch(RuntimeException|LinkageError cleanup){failure.addSuppressed(cleanup);}throw new IllegalStateException("Sound model unavailable",failure);}
     }
     public float[] infer(float[] samples){
         owned();if(model==null||samples.length!=SAMPLES)throw new IllegalArgumentException("Expected 15600 mono samples");
@@ -26,5 +26,5 @@ final class YamnetClassifier implements SoundAnalysisStream.Model {
         if(scores.length!=CLASSES)throw new IllegalStateException("Expected 521 sound scores");return scores;}catch(LiteRtException failure){throw new IllegalStateException("Sound inference failed",failure);}
     }
     private void owned(){if(Thread.currentThread()!=owner)throw new IllegalStateException("Sound model used outside its worker");}
-    @Override public void close(){owned();for(TensorBuffer value:inputs)try{value.close();}catch(RuntimeException ignored){}inputs=List.of();for(TensorBuffer value:outputs)try{value.close();}catch(RuntimeException ignored){}outputs=List.of();if(model!=null){model.close();model=null;}if(environment!=null){environment.close();environment=null;}}
+    @Override public void close(){owned();List<AutoCloseable> handles=new ArrayList<>();handles.addAll(inputs);handles.addAll(outputs);handles.add(model);handles.add(environment);inputs=List.of();outputs=List.of();model=null;environment=null;CloseResources.close(handles);}
 }
