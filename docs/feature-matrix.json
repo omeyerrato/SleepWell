@@ -995,6 +995,8 @@
       "implementation": [
         "SoundMix.java",
         "SoundPreferences.java",
+        "AudioCopy.java",
+        "SoundImports.java",
         "SoundPlayback.java",
         "SoundOwnership.java",
         "SleepSoundService.java",
@@ -1002,14 +1004,26 @@
         "SoundSliders.java",
         "TrackingService.java"
       ],
-      "validation": "SoundPlaybackTest 24 local fake-clock/fake-sink passes; SoundSettingsFlowTest API36 CI pass in 18.746 s: choices/recreation/reopen and exact personal preference preservation; eight sound-state native captures reviewed against board07. NativeSoundFlowTest API36 CI pass in 26.323 s: media activity/background, notification PendingIntent actions, focus pause, offset completion and unreadable-file retry. All three CI tests green at ce7f64c; no phone/listening/file-picker/full-fade acceptance.",
+      "validation": "SoundPlaybackTest 24 local fake-clock/fake-sink passes; SoundSettingsFlowTest API36 CI pass in 18.746 s: choices/recreation/reopen and exact personal preference preservation; eight sound-state native captures reviewed against board07. NativeSoundFlowTest API36 CI pass in 26.323 s: media activity/background, notification PendingIntent actions, focus pause, offset completion and unreadable-file retry. All three CI tests green at ce7f64c; seven AudioCopyTest byte-bound/cancel/error local passes. SoundImportPickerTest and SoundImportReopenTest are compiled CI-only candidates; no import native acceptance yet. No phone/listening/full-fade acceptance.",
       "status": "partial",
-      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Physical phone, import layout/provider grants, actual tracking ownership and audible loop quality remain unverified. Timer completion uses only the last three seconds via a 57-second offset. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
+      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. New import source uses retained validation, actual 100 MiB bounds, visible cancel, revision fencing and neutral artwork; native picker/layout/grant/restart evidence is pending. Physical phone, actual tracking ownership and audible loop quality remain unverified. Timer completion uses only the last three seconds via a 57-second offset. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
       "id": "F061",
       "tests": [
         {
+          "name": "AudioCopyTest",
+          "path": "app/src/test/java/org/sleepwell/app/AudioCopyTest.java"
+        },
+        {
           "name": "NativeSoundFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/NativeSoundFlowTest.java"
+        },
+        {
+          "name": "SoundImportPickerTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SoundImportPickerTest.java"
+        },
+        {
+          "name": "SoundImportReopenTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SoundImportReopenTest.java"
         },
         {
           "name": "SoundPlaybackTest",
@@ -1936,6 +1950,8 @@
       "implementation": [
         "SoundMix.java",
         "SoundPreferences.java",
+        "AudioCopy.java",
+        "SoundImports.java",
         "SoundPlayback.java",
         "SoundOwnership.java",
         "SleepSoundService.java",
@@ -1943,14 +1959,26 @@
         "SoundSliders.java",
         "TrackingService.java"
       ],
-      "validation": "SoundPlaybackTest 24 local fake-clock/fake-sink passes; SoundSettingsFlowTest API36 CI pass in 18.746 s: choices/recreation/reopen and exact personal preference preservation; eight sound-state native captures reviewed against board07. NativeSoundFlowTest API36 CI pass in 26.323 s: media activity/background, notification PendingIntent actions, focus pause, offset completion and unreadable-file retry. All three CI tests green at ce7f64c; no phone/listening/file-picker/full-fade acceptance.",
+      "validation": "SoundPlaybackTest 24 local fake-clock/fake-sink passes; SoundSettingsFlowTest API36 CI pass in 18.746 s: choices/recreation/reopen and exact personal preference preservation; eight sound-state native captures reviewed against board07. NativeSoundFlowTest API36 CI pass in 26.323 s: media activity/background, notification PendingIntent actions, focus pause, offset completion and unreadable-file retry. All three CI tests green at ce7f64c; seven AudioCopyTest byte-bound/cancel/error local passes. SoundImportPickerTest and SoundImportReopenTest are compiled CI-only candidates; no import native acceptance yet. No phone/listening/full-fade acceptance.",
       "status": "partial",
-      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Physical phone, import layout/provider grants, actual tracking ownership and audible loop quality remain unverified. Timer completion uses only the last three seconds via a 57-second offset. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
+      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. New import source uses retained validation, actual 100 MiB bounds, visible cancel, revision fencing and neutral artwork; native picker/layout/grant/restart evidence is pending. Physical phone, actual tracking ownership and audible loop quality remain unverified. Timer completion uses only the last three seconds via a 57-second offset. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
       "id": "F126",
       "tests": [
         {
+          "name": "AudioCopyTest",
+          "path": "app/src/test/java/org/sleepwell/app/AudioCopyTest.java"
+        },
+        {
           "name": "NativeSoundFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/NativeSoundFlowTest.java"
+        },
+        {
+          "name": "SoundImportPickerTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SoundImportPickerTest.java"
+        },
+        {
+          "name": "SoundImportReopenTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SoundImportReopenTest.java"
         },
         {
           "name": "SoundPlaybackTest",

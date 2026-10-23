@@ -121,7 +121,7 @@ required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report",
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:
-    required += ["sounds-import-" + name + ".png" for name in ("checking", "rejected", "rotated", "unknown-size", "selected", "reopened", "playing", "removed")]
+    required += ["sounds-import-" + name + ".png" for name in ("checking", "controls", "rejected", "rotated", "unknown-size", "selected", "reopened", "playing", "removed")]
 failures += [name for name in required if not (output / name).is_file()]
 if failures:
     raise SystemExit("UI verification incomplete: " + ", ".join(failures))
