@@ -12,7 +12,7 @@ import org.json.*;
 import java.util.*;
 
 public class AlarmActivity extends Activity implements SensorEventListener {
-    private Alarm alarm;private ChallengeRoutine routine;private ChallengeRoutine.Position position;private int sensorExpected;private String sensorRun="";private long sensorArmedNanos; private final Random random=new Random();private final Handler handler=new Handler(Looper.getMainLooper());
+    private Alarm alarm;private ChallengeRoutine routine;private ChallengeRoutine.Position position;private WalkSession walk;private int sensorExpected;private String sensorRun="";private long sensorArmedNanos; private final Random random=new Random();private final Handler handler=new Handler(Looper.getMainLooper());
     private int completed=0,target=0,shakes=0;private String answer="";private long lastShake=0;
     private MathTask mathTask;private Integer selected;private TextView feedback;
     private SensorManager sensors;private TextView progress;private NfcAdapter nfc;
@@ -34,11 +34,11 @@ public class AlarmActivity extends Activity implements SensorEventListener {
     private void closeSunrise(){if(sunrise!=null)try{sunrise.close();}catch(RuntimeException error){Prefs.put(this,"lastError","The alarm window brightness could not be restored.");}}
     private long lightElapsed(){return Math.max(0,SystemClock.elapsedRealtime()-lightStarted);}
     private final Runnable lightTick=new Runnable(){public void run(){if(!resumed||sunrise==null)return;try{if(!AlarmService.current(AlarmActivity.this,occurrence)){sunrise.pause();return;}sunrise.resume(lightElapsed());lightHandler.postDelayed(this,250);}catch(RuntimeException error){closeSunrise();Prefs.put(AlarmActivity.this,"lastError","Screen sunrise is unavailable. Sound and the challenge continue.");}}};
-    @Override protected void onResume(){super.onResume();resumed=true;if(position!=null&&(position.task.type.equals("Shake")||position.task.type.equals("NFC")))build();lightTick.run();}
-    @Override protected void onPause(){resumed=false;if(sensors!=null)sensors.unregisterListener(this);if(nfc!=null)nfc.disableReaderMode(this);lightHandler.removeCallbacksAndMessages(null);if(sunrise!=null)try{sunrise.pause();}catch(RuntimeException error){closeSunrise();}super.onPause();}
+    @Override protected void onResume(){super.onResume();resumed=true;if(position!=null&&(position.task.type.equals("Shake")||position.task.type.equals("NFC")||position.task.type.equals("Walk")))build();lightTick.run();}
+    @Override protected void onPause(){resumed=false;closeWalk();if(sensors!=null)sensors.unregisterListener(this);if(nfc!=null)nfc.disableReaderMode(this);lightHandler.removeCallbacksAndMessages(null);if(sunrise!=null)try{sunrise.pause();}catch(RuntimeException error){closeSunrise();}super.onPause();}
     @Override public void onSaveInstanceState(Bundle b) { super.onSaveInstanceState(b);b.putInt("completed",completed);b.putInt("shakes",shakes);if(selected!=null)b.putInt("selected",selected); }
     private void build() {
-        handler.removeCallbacksAndMessages(null);if(sensors!=null)sensors.unregisterListener(this);if(nfc!=null){nfc.disableReaderMode(this);nfc=null;}position=routine.at(completed);if(position==null){dismiss();return;}final int expected=completed;final String expectedRun=occurrence;sensorExpected=expected;sensorRun=expectedRun;sensorArmedNanos=SystemClock.elapsedRealtimeNanos();
+        closeWalk();handler.removeCallbacksAndMessages(null);if(sensors!=null)sensors.unregisterListener(this);if(nfc!=null){nfc.disableReaderMode(this);nfc=null;}position=routine.at(completed);if(position==null){dismiss();return;}final int expected=completed;final String expectedRun=occurrence;sensorExpected=expected;sensorRun=expectedRun;sensorArmedNanos=SystemClock.elapsedRealtimeNanos();
         LinearLayout body=Design.page(this,false,null,null);body.setPadding(0,0,0,0);
         ((View)body.getParent().getParent()).setBackground(new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM,new int[]{0xffffc677,0xffffd893}));
         Design.space(body,32);TextView time=Design.text(body,java.time.LocalTime.now().format(java.time.format.DateTimeFormatter.ofPattern("h:mm a",Locale.getDefault())),38,700,Design.INK);time.setGravity(Gravity.CENTER);
@@ -50,6 +50,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
         progress=Design.text(card,"",14,500,Design.MUTED);progress.setVisibility(View.GONE);
         if(alarm.routineInvalid)Design.text(card,"Routine settings could not be read. Complete the saved fallback task.",13,500,Design.MUTED);
         switch(position.task.type) {
+            case "Walk": walk(card,expectedRun,expected);break;
             case "Shake":
                 target=position.task.rounds*5;Ui.heading(card,"Move into your morning",24);progress.setText(shakes+" / "+target+" deliberate shakes");progress.setVisibility(View.VISIBLE);
                 Ui.text(card,"Hold the phone securely. A gentle shake counts at most once every half second.");
@@ -83,6 +84,9 @@ public class AlarmActivity extends Activity implements SensorEventListener {
         feedback=Design.text(card,"Select an answer",13,400,Design.MUTED);feedback.setGravity(Gravity.CENTER);Design.space(card,6);
         Design.button(card,"Check answer",true,()->{if(selected==null){feedback.setText("Choose an answer first");return;}if(mathTask.accepts(selected)){advance(expectedRun,expected);}else{feedback.setText("Try again · alarm is still ringing");feedback.setTextColor(0xffb33120);feedback.announceForAccessibility("Try again");}});
     }
+    private void closeWalk(){if(walk!=null){walk.close();walk=null;}}
+    private void walk(LinearLayout card,String expectedRun,int expected){Design.text(card,"Walk into your morning",22,600,Design.INK);Design.space(card,12);int target=position.task.targetSteps;int earned=expectedRun.equals(Prefs.text(this,"walkRun",""))&&Prefs.number(this,"walkUnit",-1)==expected?Prefs.number(this,"walkEarned",0):0;TextView count=Design.text(card,Math.max(0,Math.min(target,earned))+" / "+target+" steps",30,700,Design.INK);Design.text(card,"Carry your phone. Walk in a safe, clear space.",13,400,Design.MUTED);if(!resumed)return;
+        walk=new WalkSession(WalkPlatform.factory.create(this),new WalkSession.Effects(){public boolean current(String run,int unit){return resumed&&run.equals(occurrence)&&unit==completed&&AlarmService.current(AlarmActivity.this,run);}public void progress(String run,int unit,int value){if(!current(run,unit))return;Prefs.of(AlarmActivity.this).edit().putString("walkRun",run).putInt("walkUnit",unit).putInt("walkEarned",value).apply();count.setText(value+" / "+target+" steps");}public void solved(String run,int unit){advance(run,unit);}},expectedRun,expected,target,earned);WalkSession session=walk;session.resume();if(walk!=session)return;String unavailable=switch(session.state()){case PERMISSION->"Physical activity access is off. Solve math instead.";case UNSUPPORTED->"This phone has no supported step sensor. Solve math instead.";case ERROR->"Step counting could not start. Solve math instead.";default->"";};if(!unavailable.isEmpty()){Design.space(card,12);Design.text(card,unavailable,14,500,Design.MUTED);math(card,expectedRun,expected);}}
     private boolean registerShake(Sensor accelerometer){try{return sensors.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_GAME);}catch(RuntimeException unavailable){return false;}}
     private void restoreShakes(){shakes=occurrence.equals(Prefs.text(this,"challengeShakeRun",""))&&completed==Prefs.number(this,"challengeShakeUnit",-1)?Prefs.number(this,"challengeShakeCount",0):0;}
     private void advance(String expectedRun,int expected) {synchronized(Scheduler.class){if(!expectedRun.equals(occurrence))return;if(!AlarmService.current(this,expectedRun)){finish();return;}int next=routine.advance(completed,expected);if(next==completed)return;completed=next;Prefs.of(this).edit().putInt("challengeCompleted",completed).putString("mathTask","").putString("retypeTask","").putInt("challengeShakeCount",0).putInt("challengeShakeUnit",completed).putString("challengeShakeRun",occurrence).apply();shakes=0;selected=null;if(routine.at(completed)==null)dismiss();else build();}}
@@ -132,7 +136,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
         if(mag>15 && now-lastShake>500) { lastShake=now;shakes++;progress.setVisibility(View.VISIBLE);progress.setText(shakes+" / "+target+" deliberate shakes");Prefs.of(this).edit().putString("challengeShakeRun",occurrence).putInt("challengeShakeUnit",completed).putInt("challengeShakeCount",shakes).apply();if(shakes>=target)advance(sensorRun,sensorExpected); }
     }
     @Override public void onAccuracyChanged(Sensor sensor,int accuracy){}
-    @Override protected void onDestroy() {lightHandler.removeCallbacksAndMessages(null);closeSunrise();handler.removeCallbacksAndMessages(null);if(sensors!=null)sensors.unregisterListener(this);if(nfc!=null)nfc.disableReaderMode(this);super.onDestroy();}
+    @Override protected void onDestroy() {lightHandler.removeCallbacksAndMessages(null);closeWalk();closeSunrise();handler.removeCallbacksAndMessages(null);if(sensors!=null)sensors.unregisterListener(this);if(nfc!=null)nfc.disableReaderMode(this);super.onDestroy();}
     // Android 11/12 fallback only. Newer versions use the registered OnBackInvokedCallback.
     @android.annotation.SuppressLint("GestureBackNavigation")
     @Override public void onBackPressed() { Ui.toast(this,"Complete the challenge or snooze."); }
