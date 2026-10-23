@@ -91,7 +91,7 @@ metadata["size"] = command("shell", "wm", "size").stdout.strip()
 metadata["density"] = command("shell", "wm", "density").stdout.strip()
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 failures = []
-tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest", "PlanPickerFlowTest", "SoundLibraryUiTest", "SoundRetentionLifecycleTest", "SleepRhythmFlowTest", "NightAudioArchiveTest", "SoundArchiveUiTest", "MotionConfigurationFlowTest", "AudioArchiveConcurrencyTest", "SoundArchiveJobTest"]
+tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest", "PlanPickerFlowTest", "SoundLibraryUiTest", "SoundRetentionLifecycleTest", "SleepRhythmFlowTest", "NightAudioArchiveTest", "SoundArchiveUiTest", "MotionConfigurationFlowTest", "AudioArchiveConcurrencyTest", "SoundArchiveJobTest", "RecordCalendarFlowTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
 if args.audio_imports:
@@ -182,6 +182,7 @@ required += ["library-retention-" + name + ".png" for name in ("busy-recreated",
 required += ["rhythm-" + name + ".png" for name in ("seven-nights", "workdays", "recreated", "reopened", "empty")]
 required += ["library-export-" + name + ".png" for name in ("ready", "complete", "recreated", "failed")]
 required += ["motion-settings-" + name + ".png" for name in ("ready", "changed", "recreated", "reopened", "conflict", "unavailable", "error")]
+required += ["calendar-" + name + ".png" for name in ("history", "history-recreated", "trend", "editor", "editor-recreated", "editor-selected", "reopened")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:

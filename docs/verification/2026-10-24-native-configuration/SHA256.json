@@ -1,0 +1,277 @@
+{
+  "run": "40021145034",
+  "commit": "7d02819f6fcd3bbbb3948ff371b47b8911652841",
+  "scope": "Disposable emulator synthetic fixtures only. No personal phone data or hardware output. Full native run failed four other classes.",
+  "files": [
+    {
+      "file": "AlarmWakeSettingsTest.txt",
+      "bytes": 792,
+      "sha256": "952dc983743afead34d9160f7e86955df94cb3f05d53de5dbd91b10fbea37c89"
+    },
+    {
+      "file": "analysis-human-fixture-evaluation.json",
+      "bytes": 43586,
+      "sha256": "5584c7ca5bfa65aa1fba60b3649c98e85bafdebe9a1cbcf980d111c58b3e5d45"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 484,
+      "sha256": "37d1a83d19dd19f3eebedc1ea012e4b6212f098320a3723a0346687764242e19"
+    },
+    {
+      "file": "library-export-complete.png",
+      "bytes": 100067,
+      "sha256": "387c0964542573f17e4e562426144d12f234a3faee2e2589143df2eec9b58c4b"
+    },
+    {
+      "file": "library-export-failed.png",
+      "bytes": 111813,
+      "sha256": "8421be81400a692ffa19a0aacd07cc3fd814c5a59a60228efa83f465259149b8"
+    },
+    {
+      "file": "library-export-fixture.zip",
+      "bytes": 1001,
+      "sha256": "1a75ff2b434250dac98b9855f0ebad960b923251f2b6c0c22d6ade444abf9b38"
+    },
+    {
+      "file": "library-export-ready.png",
+      "bytes": 95538,
+      "sha256": "8eb39e9ec4b22155ef074d4aa6be841994341d4d89a01c20cbe9b373ef847b05"
+    },
+    {
+      "file": "library-export-recreated.png",
+      "bytes": 100067,
+      "sha256": "387c0964542573f17e4e562426144d12f234a3faee2e2589143df2eec9b58c4b"
+    },
+    {
+      "file": "library-favorite-recreated.png",
+      "bytes": 169653,
+      "sha256": "afd08e441f26d119e3a27aae7bab1d6ef94a53f4b0e5b32e2646eab943fea7ef"
+    },
+    {
+      "file": "library-playback.png",
+      "bytes": 171663,
+      "sha256": "1b8ff22c3342d6d75b4feae7151bd64f5b2164709cd1a3f8b68eb3aeae999822"
+    },
+    {
+      "file": "library-recording-deleted.png",
+      "bytes": 165362,
+      "sha256": "a889a98d0a106a8541ff53d98e4bf36ff842810c6e60d3cf2a117b6e8446a529"
+    },
+    {
+      "file": "library-recordings.png",
+      "bytes": 176273,
+      "sha256": "395e58d05b49869787d92d13e326ee3fe6da6fedad96c087557e91b4c46d8eee"
+    },
+    {
+      "file": "library-retention-applied.png",
+      "bytes": 91713,
+      "sha256": "a3e30073008f2acbaa9b0b574a53ef8970dc3af5217b7f88fbef81f6d152d1db"
+    },
+    {
+      "file": "library-retention-busy-recreated.png",
+      "bytes": 83815,
+      "sha256": "d1428489a53b46b2293ba1d002bdd6716d44d61011f44d54082cbba0b93f0014"
+    },
+    {
+      "file": "library-retention-error-recreated.png",
+      "bytes": 103567,
+      "sha256": "59cd736537939acfff6ddc7a82b3d21c08432235713c9005bd8bfc0064edc75f"
+    },
+    {
+      "file": "library-retention-recreated.png",
+      "bytes": 91713,
+      "sha256": "a3e30073008f2acbaa9b0b574a53ef8970dc3af5217b7f88fbef81f6d152d1db"
+    },
+    {
+      "file": "library-retention-retry.png",
+      "bytes": 92960,
+      "sha256": "a98c324bf4829474d69cd9fdda151f846bdb9da39d0b89407d1a07514a27e3b5"
+    },
+    {
+      "file": "library-speech.png",
+      "bytes": 104285,
+      "sha256": "8f57fa9b663999befa8847cb5c99f7fbb681f5311a87665dea53df3cf665eea7"
+    },
+    {
+      "file": "motion-settings-changed.png",
+      "bytes": 129049,
+      "sha256": "20c9f4e9cf6509629d9f961e7928c72e8f498b355ea0b76516612962d825d7dc"
+    },
+    {
+      "file": "motion-settings-conflict.png",
+      "bytes": 124378,
+      "sha256": "9a02542d5794c8e18fbdbe92fe1db0fd38155c6b9bf5557dd6fc799faf512983"
+    },
+    {
+      "file": "motion-settings-error.png",
+      "bytes": 127870,
+      "sha256": "0fa37d8ed4c062b7751ce75f6e595fd383ec5fecf2cd9b9db75cb3af50b6a832"
+    },
+    {
+      "file": "motion-settings-ready.png",
+      "bytes": 130513,
+      "sha256": "623340c116acd3dbdc75c43d3b87ba68f41eda8d13d000438317d15876492ccc"
+    },
+    {
+      "file": "motion-settings-recreated.png",
+      "bytes": 121196,
+      "sha256": "c6451c3beac721244df0196163dab1bdd4855392ccb80c4d0980d8926dc0d942"
+    },
+    {
+      "file": "motion-settings-reopened.png",
+      "bytes": 121196,
+      "sha256": "c6451c3beac721244df0196163dab1bdd4855392ccb80c4d0980d8926dc0d942"
+    },
+    {
+      "file": "motion-settings-unavailable.png",
+      "bytes": 127307,
+      "sha256": "50127b84f02f1ed31dcd089cfcea0893fdca4de5d9f142510855dc30abd64b0b"
+    },
+    {
+      "file": "MotionConfigurationFlowTest.txt",
+      "bytes": 841,
+      "sha256": "e6dcb96477e2a75acd2312910628cf29e7ab95d879851f1c9e07f4027a5593a9"
+    },
+    {
+      "file": "NightAudioArchiveTest.txt",
+      "bytes": 2131,
+      "sha256": "77f81882df643baf2cb688a9ad3f9a6778f4d816efe81361c1cf14d2640f7e0e"
+    },
+    {
+      "file": "snore-settings-default.png",
+      "bytes": 155230,
+      "sha256": "cee64eaca8fffaf9cf38404362d4358f4b33111a7a9ddd0628cac3c9d7f9544b"
+    },
+    {
+      "file": "snore-settings-preview.png",
+      "bytes": 196125,
+      "sha256": "6044e26191344989222a6c4209fb2adb5a9125832c2b377fa164a9d0e685174a"
+    },
+    {
+      "file": "snore-settings-recreated.png",
+      "bytes": 156764,
+      "sha256": "a0fd9a0299a049143a51561582d7dd60a8ab834eee55b498e9c679cdccd8913d"
+    },
+    {
+      "file": "snore-settings-reopened.png",
+      "bytes": 156764,
+      "sha256": "a0fd9a0299a049143a51561582d7dd60a8ab834eee55b498e9c679cdccd8913d"
+    },
+    {
+      "file": "snore-settings-selected.png",
+      "bytes": 165084,
+      "sha256": "649c0ee6a66c781226c66aae9505739efa56985cd89cf65ae0bcc1f7dc66620a"
+    },
+    {
+      "file": "SnoreCueSettingsNativeTest.txt",
+      "bytes": 809,
+      "sha256": "2d12de11c27c72c0a50eef4569a42fcaf491661e5b77295a9d926edc3c4643ef"
+    },
+    {
+      "file": "SoundArchiveUiTest.txt",
+      "bytes": 822,
+      "sha256": "595e0097f6cdca90d298d37c63b41ee9315f68a0500d3e4a4113f63f2ded100a"
+    },
+    {
+      "file": "SoundLibraryUiTest.txt",
+      "bytes": 1467,
+      "sha256": "8b4c0993b6a0c78b4236ab4e4837e3c6ccf2b13b592e98ca8674b41c8a4932be"
+    },
+    {
+      "file": "SoundRetentionLifecycleTest.txt",
+      "bytes": 823,
+      "sha256": "2e1f87bc7f53e0351ef7e87f023c772ad4977c51aba292eeabb772332424dbbf"
+    },
+    {
+      "file": "travel-date.png",
+      "bytes": 76325,
+      "sha256": "1e5cc898c2b74286340f44ddb56785a7639b9f268274f2f75304a63f2ab298aa"
+    },
+    {
+      "file": "travel-disabled.png",
+      "bytes": 191726,
+      "sha256": "2fe8074c8c0244e009fc73da5f5f560d76d9c7c0206c2fab7635b120b8f2d1d3"
+    },
+    {
+      "file": "travel-error.png",
+      "bytes": 199522,
+      "sha256": "ac62b2934786ea5b9291108dd270e6d320ff2f0b13bd438d5bc0651b27532829"
+    },
+    {
+      "file": "travel-plan.png",
+      "bytes": 191502,
+      "sha256": "d45b228ec0d159f8e6acb05904a0f047a8eca8c787443444fe511a00f11b674a"
+    },
+    {
+      "file": "travel-reminders.png",
+      "bytes": 200348,
+      "sha256": "5eec7fca1b1e8bdc15797367307eeff71472dd7d2e86b6792afcfceb09db8650"
+    },
+    {
+      "file": "travel-reopened.png",
+      "bytes": 200348,
+      "sha256": "5eec7fca1b1e8bdc15797367307eeff71472dd7d2e86b6792afcfceb09db8650"
+    },
+    {
+      "file": "travel-zones.png",
+      "bytes": 39519,
+      "sha256": "bf32ef3d1b5b58522833a461f84cd89cce7cf791d45f6aa9a55f7327b72065d3"
+    },
+    {
+      "file": "TravelPlanFlowTest.txt",
+      "bytes": 823,
+      "sha256": "e16bbf1e9ca998d569691be64a786e9a77ac736d7c352238aa112e699c26769c"
+    },
+    {
+      "file": "wake-settings-delay-options.png",
+      "bytes": 93878,
+      "sha256": "e4e1ce5b8c007cf1e17cf122f737e39de08ec562ed7e7e0ac499d7ffecc98e7c"
+    },
+    {
+      "file": "wake-settings-edited-curve.png",
+      "bytes": 149789,
+      "sha256": "045690cb87503e36221681bfeb284629b4d86027cd6767e2c9b5af1d3e0f770f"
+    },
+    {
+      "file": "wake-settings-immediate.png",
+      "bytes": 134570,
+      "sha256": "b55e04abef43f8e2e0a48ff2257ab52099b7776aa2a0b52400be870a45a8a389"
+    },
+    {
+      "file": "wake-settings-lights.png",
+      "bytes": 145354,
+      "sha256": "8c076d94a8fc396a7819baeac6e73303aa4f1b58e8344d371a34871018e703c9"
+    },
+    {
+      "file": "wake-settings-loud-curve.png",
+      "bytes": 149496,
+      "sha256": "6d39cea7928a7aa711250f163b5e1365da874788c75afdc7a8a5aa6817c4bd9d"
+    },
+    {
+      "file": "wake-settings-normal-curve.png",
+      "bytes": 148716,
+      "sha256": "35ff2645bb08c051c1a2ba8f98d2d55a105be088a80fb1f12eb433d6ead68275"
+    },
+    {
+      "file": "wake-settings-recreated.png",
+      "bytes": 145354,
+      "sha256": "8c076d94a8fc396a7819baeac6e73303aa4f1b58e8344d371a34871018e703c9"
+    },
+    {
+      "file": "wake-settings-reopened.png",
+      "bytes": 149659,
+      "sha256": "1204142489452a394eb1030ca3754ddbc1842113bc660dfd08703cdd8a045d5b"
+    },
+    {
+      "file": "wake-settings-sound.png",
+      "bytes": 108466,
+      "sha256": "a968c31fd01c9b4999c24d916914b017964182eea2f92bb845409c5c1872bfa2"
+    },
+    {
+      "file": "wake-settings-vibration-options.png",
+      "bytes": 110949,
+      "sha256": "00683f4c64286c5c6613621e97f03e5765021d4899cdaccd8bc50e3f7d297701"
+    }
+  ]
+}
