@@ -186,3 +186,54 @@ not certify actual cue, alarm, vibration, sunrise or flashlight delivery. Report
 still FAILS at **5/8 required frames**, missing editor, tags-notes and reopened.
 No stage estimator or simulated replacement is accepted. Full feature and
 36-screen visual acceptance remains FAIL; unrelated failed journeys remain open.
+
+## Re-review: CI 40027277488, exact source d6389dc
+
+Opened all 30 originals below individually against boards 01, 03, 07 and 08.
+Environment: API 36 emulator, 1080×2316, density 420. Raw native results:
+ReportReferenceFlowTest 41.493s; RecordCalendarFlowTest 35.975s;
+AlarmWakeSettingsTest 33.556s; SnoreCueSettingsNativeTest 13.503s, all PASS.
+These are isolated fixtures and configuration/fake-output journeys. They do not
+certify physical audio, vibration, microphone, torch, alarm or power-menu effects.
+
+| Original PNG | Strict finding |
+| --- | --- |
+| report-reference-history.png | Seven rows, continuous coverage ribbons and selected four-tab dock fit. Narrow layout pass. |
+| report-reference-week.png | Values, goal line, bedtime curve and full Read details fit. P2: point rings remain heavier than reference. |
+| report-reference-month.png | Observed dates contain data; missing dates stay blank. Full action fits. |
+| report-reference-year.png | Single observed month is honest; missing months remain blank. Full action fits. |
+| report-reference-night.png | Measured fixture bars and 3 Snoring/1 Speech render. Analysis-only counts have no fake WAV/Play. P2: fractional clock labels remain unlike reference; stage estimator is still unavailable. |
+| report-reference-editor.png | Timeline, duration, time controls, awake action, tags, Notes, Save and Delete fit. |
+| report-reference-tags-notes.png | Lilac outlined tags and entered note match the intended hierarchy; actions fit. |
+| report-reference-reopened.png | Saved awake interval gives 7h32, with real timeline gap, tags and note retained. P2: Notes field bottom edge is below the scroll viewport; text remains readable and scrolling works. |
+| calendar-history.png | Rounded cream calendar, selected brown 22 October, current-day outline and complete Use date/Cancel/All dates fit. |
+| calendar-history-recreated.png | Pending date and month survive genuine recreation; same complete controls. |
+| calendar-trend.png | Anchor date selection uses the same consistent calendar with full actions. |
+| calendar-editor.png | Nested Start date calendar has a clear 25 October selection and full Use/Cancel. |
+| calendar-editor-recreated.png | Pending nested calendar selection survives recreation with no overlap. |
+| calendar-editor-selected.png | Outer time form retains 2:30 AM, Europe/Berlin and seconds 17. P2: seconds remains a plain underlined input; zone/seconds labels are cramped relative to the owned calendar. |
+| calendar-reopened.png | Saved 25 October start date is visible; no overlap or missing controls. |
+| wake-settings-sound.png | Radio/volume/Use layout fits. Full board03 remains incomplete: no actual tone waveform, preview controls or separate preview-volume panel. |
+| wake-settings-loud-curve.png | 100% endpoint, From start pill and full Save fit. |
+| wake-settings-vibration-options.png | Selected timing, bounded choices and Cancel fit in the owned dialog. |
+| wake-settings-delay-options.png | Off and bounded delay choices fit with coherent selected state. |
+| wake-settings-lights.png | Intentional lower scroll exposes 3-minute delay, disabled retained After 1 min, sunrise/flashlight On and complete fixed Save. |
+| wake-settings-recreated.png | Lower selections and fixed Save survive recreation. |
+| wake-settings-reopened.png | Saved delay/vibration timing and sunrise state render correctly. |
+| wake-settings-normal-curve.png | Extra loud Off truthfully returns the endpoint to 80%. |
+| wake-settings-edited-curve.png | One-minute 80% curve and After 2 min timing are coherent. |
+| wake-settings-immediate.png | Off ramp is an honest flat immediate 80% level; full Save fits. |
+| snore-settings-default.png | Former blank capture is fixed. Off master, Vibration card, Low/1/Medium and full Preview/Save render. |
+| snore-settings-preview.png | Explicit low-intensity fake request feedback appears while master stays Off. No physical delivery claim. |
+| snore-settings-selected.png | On/Both/Medium/3/High selected states are coherent; feedback fits. |
+| snore-settings-recreated.png | Genuine recreation retains all draft selections with complete actions. |
+| snore-settings-reopened.png | Saved selections survive reopening. P2 across the five: oversized Preview triangle and excess blank space above fixed Save. |
+
+Report's eight-frame journey and Calendar's seven-frame journey now pass their
+bounded visual/configuration gate; Wake's ten and Snore's five retain their
+bounded passes. This closes the prior missing eighth Report frame, not the full
+reporting feature scope. Real stage estimation, complete board03 sound design,
+physical cue/alarm delivery and remaining phone features are still unaccepted.
+The overall run also has a failing Privacy journey. Full feature and 36-screen
+visual acceptance remains **FAIL / incomplete**. These images do not certify
+later source changes such as headphones or the pending clock-axis correction.
