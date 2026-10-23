@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
     @Override public void onSaveInstanceState(Bundle b) {super.onSaveInstanceState(b);b.putInt("tab",tab);b.putIntArray("collapsedAlarms",collapsedAlarms.stream().mapToInt(Integer::intValue).toArray());}
     private void back(){if(tab==0){finish();return;}tab=tab==11?1:tab==3?0:tab==5||tab==6||tab==9?4:0;render();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){back();}
-    private void navigate(int destination){tab=destination==3?4:Math.max(0,Math.min(2,destination));render();}
+    private void navigate(int destination){if(destination==2){startActivity(RecordUi.intent(this,HistoryActivity.class));return;}tab=destination==3?4:Math.max(0,Math.min(2,destination));render();}
     private void render() {
         nightArc=null;
         renderedPhase=Appearance.palette(this).phase;
@@ -56,7 +56,6 @@ public class MainActivity extends Activity {
     private void settingsHome(LinearLayout body){Design.header(body,"Settings",null);
         settingsRow(body,"bell","Alarms","Alarm time, sound and behavior",()->{tab=1;render();});
         settingsRow(body,"moon","Sleep tracking","Phone movement and microphone",this::tracking);
-        settingsRow(body,"sound","Sleep sounds","Mix relaxing audio with a timer",this::sleepSound);
         settingsRow(body,"wave","Sound analysis","Snoring, speech and sound recordings",()->{tab=9;render();});
         settingsRow(body,"clock","Automatic tracking","Choose when to start tonight",()->startActivity(RecordUi.intent(this,AutomaticTrackingActivity.class)));
         settingsRow(body,"shield","Bedtime guard","Reduce distractions at night",()->startActivity(RecordUi.intent(this,GuardActivity.class)));
@@ -185,6 +184,7 @@ public class MainActivity extends Activity {
         TextView value=Design.text(body,"Relative amplitude · "+Prefs.number(this,"noiseThreshold",20),14,500,Design.BROWN);SeekBar threshold=new SeekBar(this);threshold.setContentDescription("Sound detection threshold");threshold.setMin(5);threshold.setMax(100);threshold.setProgress(Prefs.number(this,"noiseThreshold",20));AlarmSliders.style(threshold);body.addView(threshold,new LinearLayout.LayoutParams(-1,Ui.dp(this,56)));threshold.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar b,int n,boolean user){value.setText("Relative amplitude · "+n);if(user)Prefs.put(MainActivity.this,"noiseThreshold",n);}public void onStartTrackingTouch(SeekBar b){}public void onStopTrackingTouch(SeekBar b){}});
         Design.space(body,18);Design.line(body);PlanActivity.detail(body,"lock","Private recordings","Kept in this phone's app storage",null,null);Design.line(body);PlanActivity.detail(body,"calendar","Audio retention","Old clips are pruned when clip saving next starts.","7 days",null);Design.line(body);Design.space(body,18);
         RecordEntry latest=Records.latest(store);PlanActivity.detail(body,"wave","Sound events",latest==null?"Record a night first":"Review your latest night",null,latest==null?null:()->startActivity(RecordUi.intent(this,SoundEventsActivity.class).putExtra("record",latest.id)));Design.line(body);
+        Design.item(body,"wave","Snoring cues",null,()->startActivity(RecordUi.intent(this,SnoringCuesActivity.class)));Design.line(body);
         Design.item(body,"info","About sound analysis",null,()->SleepPicker.message(this,"Sound analysis","A bundled model estimates snoring and speech locally. Labels can be wrong and do not identify who made a sound. Microphone changes apply next recording; clip threshold affects saving, not class sensitivity. Relative sound levels are not calibrated decibels."));
         String analysisError=Prefs.text(this,"analysisError","");if(!analysisError.isEmpty())Design.text(body,analysisError,13,400,Design.MUTED);
         String error=Prefs.text(this,"audioError","");if(!error.isEmpty()){Design.space(body,18);Design.text(body,"Microphone needs attention",17,600,Design.INK);Design.space(body,6);Design.text(body,error,13,400,Design.MUTED);}

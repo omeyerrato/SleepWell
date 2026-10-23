@@ -21,15 +21,16 @@ final class SleepPicker {
         LinearLayout root=Design.col(a);Design.pad(root,20,20);root.setBackground(Design.shape(a,Design.CREAM,24));
         Design.text(root,title,22,600,Design.INK);Design.space(root,16);
         ScrollView scroll=new ScrollView(a);dialog.scroll=scroll;scroll.setContentDescription("Options for "+title);scroll.setVerticalScrollBarEnabled(false);LinearLayout options=Design.col(a);scroll.addView(options);
-        for(int index=0;index<labels.length;index++){
+        View[] selectedRow={null};for(int index=0;index<labels.length;index++){
             int n=index;LinearLayout row=Design.row(a);Design.pad(row,12,10);row.setMinimumHeight(Design.dp(a,52));
             row.setBackground(Design.touch(a,index==selected?Design.SOFT:Color.TRANSPARENT,12));
             row.addView(new Mark(a,index==selected),new LinearLayout.LayoutParams(Design.dp(a,24),Design.dp(a,24)));
             TextView label=Design.text(a,labels[index],16,index==selected?600:400,Design.INK);LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,-2,1);lp.leftMargin=Design.dp(a,14);row.addView(label,lp);
-            radio(row,index==selected);row.setFocusable(true);row.setContentDescription(labels[index]);
+            radio(row,index==selected);if(index==selected)selectedRow[0]=row;row.setFocusable(true);row.setContentDescription(labels[index]);
             row.setOnClickListener(v->{dialog.dismiss();choose.accept(n);});options.addView(row,new LinearLayout.LayoutParams(-1,-2));
         }
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));Design.button(root,"Cancel",false,dialog::dismiss);
+        scroll.getViewTreeObserver().addOnGlobalLayoutListener(new android.view.ViewTreeObserver.OnGlobalLayoutListener(){public void onGlobalLayout(){scroll.getViewTreeObserver().removeOnGlobalLayoutListener(this);scroll.scrollTo(0,dialog.restoredScroll!=null?dialog.restoredScroll:selectedRow[0]==null?0:selectedRow[0].getTop());}});
         dialog.setContentView(root);show(a,dialog,Math.min(620,150+labels.length*58));return dialog;
     }
     static Dialog time(Activity a,String title,int minuteOfDay,IntConsumer choose){
@@ -49,10 +50,10 @@ final class SleepPicker {
     private static void show(Activity a,Dialog dialog,int heightDp){dialog.show();Window window=dialog.getWindow();window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));int width=Math.min(a.getResources().getDisplayMetrics().widthPixels-Design.dp(a,32),Design.dp(a,440));int available=a.getWindow().getDecorView().getHeight();if(available<=0)available=a.getResources().getDisplayMetrics().heightPixels;window.setLayout(width,Math.min(Design.dp(a,heightDp*Math.max(1,Design.fontScale(a))),available-Design.dp(a,64)));}
     static void radio(View row,boolean checked){row.setSelected(checked);row.setAccessibilityDelegate(new View.AccessibilityDelegate(){@Override public void onInitializeAccessibilityNodeInfo(View host,android.view.accessibility.AccessibilityNodeInfo info){super.onInitializeAccessibilityNodeInfo(host,info);info.setClassName(RadioButton.class.getName());info.setCheckable(true);info.setChecked(checked);}});}
     static final class StateDialog extends Dialog {
-        final String kind,title;EditText hour,minute;int[] period;Runnable refresh;ScrollView scroll;
+        final String kind,title;EditText hour,minute;int[] period;Runnable refresh;ScrollView scroll;Integer restoredScroll;
         StateDialog(Activity a,String kind,String title){super(a);this.kind=kind;this.title=title;}
         @Override public Bundle onSaveInstanceState(){Bundle out=super.onSaveInstanceState();out.putString("sleepPickerKind",kind);out.putString("sleepPickerTitle",title);if(hour!=null){out.putString("hour",hour.getText().toString());out.putString("minute",minute.getText().toString());out.putInt("period",period[0]);}if(scroll!=null)out.putInt("scroll",scroll.getScrollY());return out;}
-        @Override public void onRestoreInstanceState(Bundle state){super.onRestoreInstanceState(state);if(hour!=null){hour.setText(state.getString("hour",""));minute.setText(state.getString("minute",""));period[0]=state.getInt("period");refresh.run();}if(scroll!=null)scroll.post(()->scroll.scrollTo(0,state.getInt("scroll")));}
+        @Override public void onRestoreInstanceState(Bundle state){super.onRestoreInstanceState(state);if(hour!=null){hour.setText(state.getString("hour",""));minute.setText(state.getString("minute",""));period[0]=state.getInt("period");refresh.run();}if(scroll!=null){restoredScroll=state.getInt("scroll");scroll.post(()->scroll.scrollTo(0,restoredScroll));}}
     }
     /** Radio semantics without inheriting a platform theme's color/geometry. */
     static final class Mark extends View {
