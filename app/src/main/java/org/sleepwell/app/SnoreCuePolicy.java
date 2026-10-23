@@ -4,8 +4,9 @@ package org.sleepwell.app;
 final class SnoreCuePolicy implements AutoCloseable {
     enum Mode {SOUND,VIBRATION,BOTH}
     static final class Settings {
-        final boolean enabled;final Mode mode;final int intensity,repeats,sensitivity;
-        Settings(boolean enabled,Mode mode,int intensity,int repeats,int sensitivity){this.enabled=enabled;this.mode=mode==null?Mode.VIBRATION:mode;this.intensity=Math.max(1,Math.min(3,intensity));this.repeats=Math.max(1,Math.min(3,repeats));this.sensitivity=Math.max(0,Math.min(2,sensitivity));}
+        final boolean enabled,headphoneSound;final Mode mode;final int intensity,repeats,sensitivity;
+        Settings(boolean enabled,Mode mode,int intensity,int repeats,int sensitivity){this(enabled,mode,intensity,repeats,sensitivity,false);}
+        Settings(boolean enabled,Mode mode,int intensity,int repeats,int sensitivity,boolean headphoneSound){this.enabled=enabled;this.mode=mode==null?Mode.VIBRATION:mode;this.intensity=Math.max(1,Math.min(3,intensity));this.repeats=Math.max(1,Math.min(3,repeats));this.sensitivity=Math.max(0,Math.min(2,sensitivity));this.headphoneSound=headphoneSound;}
         double threshold(){return sensitivity==0?.85:sensitivity==1?.75:.60;}
     }
     static final class Budget {
@@ -13,6 +14,7 @@ final class SnoreCuePolicy implements AutoCloseable {
         synchronized boolean claim(long elapsed){if(elapsed<0||count>=30||last>=0&&elapsed-last<120000)return false;last=elapsed;count++;return true;}
     }
     static Settings previewSettings(Mode mode,int sensitivity){return new Settings(true,mode,1,1,sensitivity);}
+    static Settings previewSettings(Mode mode,int sensitivity,boolean headphoneSound){return new Settings(true,mode,1,1,sensitivity,headphoneSound);}
     interface Device extends AutoCloseable {void play(Settings settings);void close();}
     interface Factory {Device create();}
     private final Budget budget;private final Factory factory;private final Runnable failure;private Device device;private boolean closed;
