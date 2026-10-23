@@ -11,6 +11,12 @@ final class ClipWave {
     static ClipWave read(File file)throws IOException{return read(file,0,Long.MAX_VALUE);}
     static ClipWave read(File file,long fromMs,long toMs)throws IOException{
         try(RandomAccessFile in=new RandomAccessFile(file,"r")){
+            return read(in,fromMs,toMs);
+        }
+    }
+    /** Caller owns the descriptor, so validation and subsequent hashing use the same file. */
+    static ClipWave read(RandomAccessFile in,long fromMs,long toMs)throws IOException{
+            in.seek(0);
             long length=in.length();if(length<44||length>16*1024*1024)throw new IOException("Unsupported recording size");
             if(in.readInt()!=0x52494646)throw new IOException("Not a WAV recording");long limit=u32(in)+8;
             if(limit>length||limit<44||in.readInt()!=0x57415645)throw new IOException("Truncated WAV recording");
@@ -30,6 +36,5 @@ final class ClipWave {
             float[] peaks=new float[64];in.seek(data+first*align);byte[] buffer=new byte[8192];long index=0,remaining=bytes;
             while(remaining>0){if(Thread.currentThread().isInterrupted())throw new InterruptedIOException();int count=(int)Math.min(remaining,buffer.length);in.readFully(buffer,0,count);for(int offset=0;offset<count;offset+=align){int bin=(int)Math.min(63,index*64/frames);for(int channel=0;channel<channels;channel++){int n=offset+channel*2;short sample=(short)((buffer[n]&255)|(buffer[n+1]<<8));peaks[bin]=Math.max(peaks[bin],Math.abs((int)sample)/32768f);}index++;}remaining-=count;}
             return new ClipWave(peaks,duration);
-        }
     }
 }
