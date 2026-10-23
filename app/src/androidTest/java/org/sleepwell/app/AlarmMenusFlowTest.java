@@ -1,0 +1,43 @@
+package org.sleepwell.app;
+
+import android.app.*;
+import android.content.*;
+import android.os.*;
+import android.view.*;
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.runner.lifecycle.*;
+import androidx.test.uiautomator.*;
+import java.io.File;
+import java.util.*;
+import java.util.concurrent.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/** CI emulator only: configuration/storage and interaction promises, never alarm execution. */
+public class AlarmMenusFlowTest {
+    final Instrumentation i=InstrumentationRegistry.getInstrumentation();final Context c=i.getTargetContext();final UiDevice device=UiDevice.getInstance(i);
+    UiObject2 object(String description)throws Exception{UiObject2 found=device.wait(Until.findObject(By.desc(description)),1500);if(found==null){new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().description(description));found=device.wait(Until.findObject(By.desc(description)),4000);}assertNotNull(description,found);return found;}
+    void click(String label)throws Exception{UiObject2 found=device.wait(Until.findObject(By.text(label)),1000);if(found==null)found=device.findObject(By.desc(label));if(found==null){new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(label));found=device.findObject(By.text(label));}assertNotNull(label,found);found.click();device.waitForIdle();}
+    void pick(String setting,String label)throws Exception{object(setting).click();assertTrue(device.wait(Until.hasObject(By.desc(label)),4000));object(label).click();device.waitForIdle();}
+    void capture(String name)throws Exception{CountDownLatch frame=new CountDownLatch(1);i.runOnMainSync(()->{for(Activity a:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED)){View v=a.getWindow().getDecorView();v.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);v.invalidate();}});assertTrue(frame.await(5,TimeUnit.SECONDS));device.waitForIdle();File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"menus-"+name+".png")));}
+    void launch(Alarm a){c.startActivity(new Intent(c,AlarmEditorActivity.class).putExtra("alarm",a.json().toString()).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));assertTrue(device.wait(Until.hasObject(By.text("Edit alarm")),5000));}
+    @Test public void arrowsOpenSettingsPickerCancelAndSavePersist()throws Exception{
+        assertEquals("true",InstrumentationRegistry.getArguments().getString("ciReview"));assertEquals("1",device.executeShellCommand("getprop ro.kernel.qemu").trim());assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"ringing"));
+        String database="sleepwell-menus-"+UUID.randomUUID()+".db";Map<String,?> personal=new HashMap<>(Prefs.of(c).getAll());Records.Factory previous=Records.factory;AlarmScheduling.Port previousScheduling=AlarmScheduling.port;List<Activity> owned=new CopyOnWriteArrayList<>();int[] scheduled={0};
+        Application app=(Application)c.getApplicationContext();Application.ActivityLifecycleCallbacks callbacks=new Application.ActivityLifecycleCallbacks(){public void onActivityCreated(Activity a,Bundle b){owned.add(a);assertFalse(a instanceof AlarmActivity);}public void onActivityStarted(Activity a){}public void onActivityResumed(Activity a){}public void onActivityPaused(Activity a){}public void onActivityStopped(Activity a){}public void onActivitySaveInstanceState(Activity a,Bundle b){}public void onActivityDestroyed(Activity a){}};app.registerActivityLifecycleCallbacks(callbacks);
+        try{
+            Records.factory=context->new Store(context,database);AlarmScheduling.port=new AlarmScheduling.Port(){public boolean allowed(Context context){return true;}public void schedule(Context context,Alarm alarm){assertFalse(alarm.enabled);scheduled[0]++;}};
+            Alarm alarm=new Alarm(1);alarm.hour=6;alarm.minute=30;alarm.volume=80;alarm.label="Morning";alarm.backupMinutes=5;try(Store store=new Store(c,database)){store.save(alarm);}launch(alarm);capture("editor");
+            object("Alarm time "+Design.clock(c,390)).click();assertTrue(device.wait(Until.hasObject(By.desc("Increase hour")),4000));capture("time");object("Increase hour").click();click("Cancel");assertNotNull(object("Alarm time "+Design.clock(c,390)));
+            object("Alarm time "+Design.clock(c,390)).click();object("Hour").setText("07");object("Minute").setText("45");object("PM").click();click("Use time");assertNotNull(object("Alarm time "+Design.clock(c,1185)));
+            click("Challenges");capture("tasks");object("Configure Memory").click();assertTrue(device.wait(Until.hasObject(By.text("Use Memory")),4000));capture("task-settings");pick("Rounds","5 rounds");device.pressBack();click("Use challenge");assertNotNull(device.findObject(By.text("Math × 3")));
+            click("Challenges");object("Configure Memory").click();pick("Rounds","2 rounds");click("Use Memory");capture("task-chosen");click("Use challenge");assertNotNull(device.findObject(By.text("Memory × 2")));
+            click("Snooze");capture("snooze");object("Snooze duration").click();assertTrue(device.wait(Until.hasObject(By.desc("1 min")),4000));capture("duration");object("1 min").click();pick("Maximum snoozes","3");object("Shorten each snooze").click();object("Backup alarm").click();assertNull(device.findObject(By.desc("Escalate after")));object("Backup alarm").click();pick("Escalate after","7 min");pick("Wake-up check","After 10 min");capture("snooze-changed");
+            final Activity[] current={null};i.runOnMainSync(()->{for(Activity a:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))current[0]=a;});Instrumentation.ActivityMonitor monitor=i.addMonitor(AlarmEditorActivity.class.getName(),null,false);try{i.runOnMainSync(current[0]::recreate);assertNotNull(monitor.waitForActivityWithTimeout(5000));}finally{i.removeMonitor(monitor);}assertTrue(object("Shorten each snooze").isChecked());capture("recreated");click("Save changes");click("Sound");capture("sound");object("Select Pulse").click();assertTrue(object("Select Pulse").isSelected());assertFalse(AlarmService.active);click("Use Pulse");click("Save alarm");
+            Alarm saved;try(Store store=new Store(c,database)){saved=store.alarm(1);}assertEquals(19,saved.hour);assertEquals(45,saved.minute);assertEquals("Memory",saved.challenge);assertEquals(2,saved.difficulty);assertEquals(1,saved.snoozeMinutes);assertEquals(3,saved.snoozeLimit);assertTrue(saved.shortenSnoozes);assertEquals(7,saved.backupMinutes);assertEquals(10,saved.awakeCheck);assertEquals("pulse",saved.tone);assertEquals(1,scheduled[0]);launch(saved);click("Snooze");assertTrue(object("Shorten each snooze").isChecked());capture("reopened");device.pressBack();device.pressBack();
+            assertEquals(personal,Prefs.of(c).getAll());assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"ringing"));
+        }catch(Exception|AssertionError failure){try{capture("failure");device.dumpWindowHierarchy(new File(c.getExternalFilesDir(null),"verification/menus-failure.xml"));}catch(Exception diagnostic){failure.addSuppressed(diagnostic);}throw failure;}finally{
+            try{i.runOnMainSync(()->{for(Activity a:owned)if(!a.isDestroyed())a.finish();});i.waitForIdleSync();long until=SystemClock.elapsedRealtime()+5000;while(owned.stream().anyMatch(a->!a.isDestroyed())&&SystemClock.elapsedRealtime()<until)SystemClock.sleep(50);assertTrue(owned.stream().allMatch(Activity::isDestroyed));}finally{app.unregisterActivityLifecycleCallbacks(callbacks);Records.factory=previous;AlarmScheduling.port=previousScheduling;if(owned.stream().allMatch(Activity::isDestroyed))c.deleteDatabase(database);}
+        }
+    }
+}

@@ -69,7 +69,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
         }
         Design.space(card,12);Design.text(card,"Alarm stays on until you finish.",13,400,Design.MUTED).setGravity(Gravity.CENTER);
         int used=Prefs.number(this,"snoozes_"+alarm.id,0);
-        if(used<alarm.snoozeLimit)Design.button(card,"Snooze "+alarm.snoozeMinutes+" min · "+(alarm.snoozeLimit-used)+" left",false,this::snooze);
+        if(used<alarm.snoozeLimit)Design.button(card,"Snooze "+SnoozePolicy.minutes(alarm.snoozeMinutes,alarm.shortenSnoozes,used)+" min · "+(alarm.snoozeLimit-used)+" left",false,this::snooze);
         if((getApplicationInfo().flags & android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE)!=0)Design.button(card,"Developer stop · debug build",false,()->new AlertDialog.Builder(this).setTitle("Stop this development alarm?")
             .setMessage("Developer control for this debug build. It is hidden in release builds.").setPositiveButton("Stop alarm",(d,w)->{alarm.awakeCheck=0;dismiss();}).setNegativeButton("Keep going",null).show());
     }
@@ -106,7 +106,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
     static String hex(byte[] value) {StringBuilder b=new StringBuilder();for(byte x:value)b.append(String.format(Locale.ROOT,"%02X",x));return b.toString();}
     private void snooze() {
         synchronized(Scheduler.class){if(!AlarmService.current(this,occurrence)){finish();return;}
-        try { Prefs.put(this,"snoozed_"+alarm.id,alarm.json().toString());Scheduler.at(this,alarm.id,Scheduler.SNOOZE,System.currentTimeMillis()+alarm.snoozeMinutes*60000L);
+        try { Prefs.put(this,"snoozed_"+alarm.id,alarm.json().toString());Scheduler.at(this,alarm.id,Scheduler.SNOOZE,System.currentTimeMillis()+SnoozePolicy.minutes(alarm.snoozeMinutes,alarm.shortenSnoozes,Prefs.number(this,"snoozes_"+alarm.id,0))*60000L);
             Prefs.put(this,"snoozes_"+alarm.id,Prefs.number(this,"snoozes_"+alarm.id,0)+1);AlarmService.stop(this,occurrence);finish(); }
         catch(SecurityException e) {Ui.toast(this,e.getMessage());}
         }

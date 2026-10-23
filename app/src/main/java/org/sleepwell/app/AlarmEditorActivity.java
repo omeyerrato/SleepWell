@@ -12,28 +12,28 @@ import java.util.*;
 
 /** A draft survives settings navigation and recreation; only Save alarm writes user data. */
 public class AlarmEditorActivity extends Activity {
-    private Alarm alarm;private String route="edit";private Store store;private Dialog settingsDialog;
+    private Alarm alarm;private String route="edit",inspectedTask="Math";private int taskRounds=3,soundTab;private Store store;private Dialog settingsDialog;
     @Override public void onCreate(Bundle state){super.onCreate(state);store=Records.open(this);RecordUi.review(this);
         try{alarm=Alarm.read(new JSONObject(state!=null?state.getString("draft"):getIntent().getStringExtra("alarm")));}
         catch(Exception e){finish();return;}
-        route=state!=null?state.getString("route","edit"):getIntent().getStringExtra("route");if(route==null)route="edit";
+        route=state!=null?state.getString("route","edit"):getIntent().getStringExtra("route");if(route==null)route="edit";inspectedTask=state==null?alarm.challenge:state.getString("inspectedTask",alarm.challenge);taskRounds=state==null?alarm.difficulty:state.getInt("taskRounds",alarm.difficulty);soundTab=state==null?(alarm.tone.startsWith("content:")?1:0):state.getInt("soundTab",0);
         if(android.os.Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);
         render();
     }
-    @Override public void onSaveInstanceState(Bundle out){super.onSaveInstanceState(out);out.putString("draft",alarm.json().toString());out.putString("route",route);}
-    private void back(){if(!route.equals("edit")){route=route.equals("gentle")?"sound":"edit";render();}else finish();}
+    @Override public void onSaveInstanceState(Bundle out){super.onSaveInstanceState(out);out.putString("draft",alarm.json().toString());out.putString("route",route);out.putString("inspectedTask",inspectedTask);out.putInt("taskRounds",taskRounds);out.putInt("soundTab",soundTab);}
+    private void back(){if(!route.equals("edit")){route=route.equals("gentle")?"sound":route.equals("task")?"challenge":"edit";render();}else finish();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){back();}
     private void go(String next){route=next;render();}
     private void render(){LinearLayout body=Design.page(this,false,null,null);
-        switch(route){case "smart":smart(body);break;case "sound":sound(body);break;case "gentle":gentle(body);break;case "snooze":snooze(body);break;case "challenge":challenges(body);break;default:editor(body);}
+        switch(route){case "smart":smart(body);break;case "sound":sound(body);break;case "gentle":gentle(body);break;case "snooze":snooze(body);break;case "challenge":challenges(body);break;case "task":task(body);break;default:editor(body);}
     }
-    private void editor(LinearLayout body){Design.header(body,"Edit alarm",this::back);Design.space(body,28);
-        Button time=Design.button(body,displayTime(this,alarm),false,()->new TimePickerDialog(this,(v,h,m)->{alarm.hour=h;alarm.minute=m;render();},alarm.hour,alarm.minute,android.text.format.DateFormat.is24HourFormat(this)).show());
-        time.setText(Design.timeText(displayTime(this,alarm)));time.setTextSize(60*Appearance.scale(this));time.setContentDescription("Alarm time "+displayTime(this,alarm));time.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));time.setMinHeight(Design.dp(this,88));
-        Design.space(body,24);LinearLayout days=Design.row(this);String[] labels={"M","T","W","T","F","S","S"},names={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+    private void editor(LinearLayout body){Design.header(body,"Edit alarm",this::back);Design.space(body,12);
+        Button time=Design.button(body,displayTime(this,alarm),false,()->openDialog(()->SleepPicker.time(this,"Alarm time",alarm.hour*60+alarm.minute,value->{alarm.hour=value/60;alarm.minute=value%60;render();})));
+        time.setText(Design.timeText(displayTime(this,alarm)));time.setTextSize(52*Appearance.scale(this));time.setContentDescription("Alarm time "+displayTime(this,alarm));time.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));time.setMinHeight(Design.dp(this,88));
+        Design.space(body,12);LinearLayout days=Design.row(this);String[] labels={"M","T","W","T","F","S","S"},names={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
         for(int n=1;n<=7;n++){final int day=n;Button b=new Button(this);b.setStateListAnimator(null);b.setElevation(0);b.setText(labels[n-1]);b.setAllCaps(false);b.setTextSize(16*Appearance.scale(this));b.setTypeface(Design.font(this,600));b.setPadding(0,0,0,0);b.setMinWidth(0);b.setMinimumWidth(0);b.setTextColor(alarm.days.contains(n)?Design.CREAM:Design.BROWN);b.setSelected(alarm.days.contains(n));b.setContentDescription(names[n-1]);b.setBackground(Design.touch(this,alarm.days.contains(n)?Design.BROWN:Design.SOFT,28));
             LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,Design.dp(this,48),1);lp.setMargins(Design.dp(this,2),0,Design.dp(this,2),0);days.addView(b,lp);b.setOnClickListener(v->{if(alarm.days.contains(day))alarm.days.remove(day);else alarm.days.add(day);render();});}
-        body.addView(days);Design.space(body,24);
+        body.addView(days);Design.space(body,16);
         LinearLayout name=Design.item(body,null,"Name",alarm.label,()->{EditText edit=new EditText(this);edit.setText(alarm.label);edit.setSingleLine(true);new AlertDialog.Builder(this).setTitle("Alarm name").setView(edit).setPositiveButton("Done",(d,w)->{alarm.label=edit.getText().toString().trim();if(alarm.label.isEmpty())alarm.label="A fresh start";render();}).setNegativeButton("Cancel",null).show();});Design.pad(name,14,0);name.setBackground(Design.shape(this,Design.SOFT,14));
         Design.space(body,14);Design.line(body);
         Design.item(body,"sun","Smart wake-up",alarm.smartWindow==0?"Off":alarm.smartWindow+" min",()->go("smart"));Design.line(body);
@@ -52,26 +52,41 @@ public class AlarmEditorActivity extends Activity {
         Design.space(body,24);Design.text(body,"The duration-goal setting is available in Settings → Reliability. Movement sensitivity is currently fixed.",14,400,Design.MUTED);
         Design.button(body,"Use settings",true,()->go("edit"));
     }
-    private void challenges(LinearLayout body){Design.header(body,"Challenges",this::back);Design.text(body,"Your task",18,600,Design.INK);Design.space(body,16);
-        String[] options={"Math","Memory","Sequence","Retype","Shake","NFC"};
-        for(String s:options){LinearLayout r=Design.item(body,"tasks",s,alarm.challenge.equals(s)?"Selected":"",()->{alarm.challenge=s;render();});r.setSelected(alarm.challenge.equals(s));Design.line(body);}
-        Design.space(body,16);range(body,"Rounds",alarm.difficulty,1,6,n->alarm.difficulty=n);
-        Design.text(body,"Choose a task for this alarm. NFC requires a tag enrolled in Alarms → Alarm options. Unavailable phone sensors fall back to a math challenge.",14,400,Design.MUTED);
-        Design.toggle(body,"Offer screen pinning","Uses Android's voluntary pinning controls",alarm.pin,on->alarm.pin=on);
-        Design.button(body,"Use challenge",true,()->go("edit"));
+    private void challenges(LinearLayout body){Design.header(body,"Challenges",this::back);Design.text(body,"Task for this alarm",18,600,Design.INK);Design.space(body,12);
+        for(String task:new String[]{"Math","Memory","Sequence","Retype","Shake","NFC"}){
+            LinearLayout row=PlanActivity.detail(body,taskIcon(task),task,null,alarm.challenge.equals(task)?"Current":"",()->{inspectedTask=task;taskRounds=alarm.difficulty;go("task");});row.setContentDescription("Configure "+task);Design.line(body);
+        }
+        Design.space(body,14);Design.toggle(body,"Offer screen pinning",null,alarm.pin,on->alarm.pin=on);
+        Design.fixedAction(body,"Use challenge",()->go("edit"));
     }
-    private void sound(LinearLayout body){Design.header(body,"Alarm sound",this::back);
-        String[] tones={"daybreak","pulse","system"};for(String t:tones){Design.item(body,"sound",toneName(t),alarm.tone.equals(t)?"Selected":"",()->{alarm.tone=t;render();});Design.line(body);}
-        Design.item(body,"sound","Import audio file",alarm.tone.startsWith("content:")?"Selected":"",()->startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).setType("audio/*").addCategory(Intent.CATEGORY_OPENABLE),1));
+    private static String taskIcon(String task){return switch(task){case "Shake"->"phone";case "Memory"->"file";case "Sequence"->"tasks";case "Retype"->"file";case "NFC"->"sonar";default->"tasks";};}
+    private void task(LinearLayout body){Design.header(body,inspectedTask,()->go("challenge"));Design.space(body,12);
+        String description=switch(inspectedTask){case "Memory"->"Match every pair of symbols.";case "Sequence"->"Watch the digits, then repeat them in order.";case "Retype"->"Type the morning phrase exactly as shown.";case "Shake"->"Shake your phone deliberately to dismiss.";case "NFC"->"Scan your enrolled morning tag.";default->"Solve addition questions to dismiss.";};
+        Design.text(body,description,15,400,Design.MUTED);Design.space(body,24);
+        if(inspectedTask.equals("NFC")){
+            Design.text(body,Prefs.text(this,"nfcTag","").isEmpty()?"No tag enrolled":"Morning tag enrolled",16,600,Design.INK);Design.space(body,8);Design.text(body,"Enroll your tag in Alarms → Alarm options.",13,400,Design.MUTED);
+        }else if(inspectedTask.equals("Shake")){
+            picker(body,"phone","Shakes",null,""+(taskRounds*5),taskRounds,new int[]{1,2,3,4,5,6},n->(n*5)+" shakes",n->taskRounds=n);
+        }else{
+            picker(body,"tasks","Rounds",null,""+taskRounds,taskRounds,new int[]{1,2,3,4,5,6},n->n+(n==1?" round":" rounds"),n->taskRounds=n);
+        }
+        Design.fixedAction(body,"Use "+inspectedTask,()->{alarm.challenge=inspectedTask;alarm.difficulty=taskRounds;go("challenge");});
+    }
+    private void sound(LinearLayout body){Design.header(body,"Alarm sound",this::back);RecordUi.segments(body,new String[]{"Built-in","My audio"},soundTab,n->{soundTab=n;render();});Design.space(body,12);
+        if(soundTab==0){String[] tones={"daybreak","pulse","system"};for(String tone:tones){toneChoice(body,tone);Design.line(body);}}
+        else {if(alarm.tone.startsWith("content:")){toneChoice(body,alarm.tone);Design.line(body);}else{Design.space(body,20);Design.text(body,"Choose an audio file from your phone.",14,400,Design.MUTED);Design.space(body,20);}Design.item(body,"file","Import audio file",null,()->startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).setType("audio/*").addCategory(Intent.CATEGORY_OPENABLE),1));Design.line(body);}
         Design.space(body,16);range(body,"Alarm volume %",alarm.volume,10,100,n->alarm.volume=n);
-        Design.toggle(body,"Extra loud","Use maximum device alarm volume. Keeps your normal volume choice.",alarm.extraLoud,on->alarm.extraLoud=on);Design.space(body,12);
+        Design.toggle(body,"Extra loud","Use maximum device alarm volume",alarm.extraLoud,on->alarm.extraLoud=on);Design.space(body,12);
         Design.item(body,"sun","Gentle wake-up",duration(alarm.rampSeconds),()->go("gentle"));Design.line(body);
-        Design.space(body,16);Design.text(body,"Quiet test rings in 10 seconds, capped at 25%, without vibration or loud backup. Your draft is not saved by the test.",14,400,Design.MUTED);
-        Design.button(body,"Test a quiet alarm",false,()->{try{Scheduler.test(this,alarm);Ui.toast(this,"Quiet test scheduled in 10 seconds");}catch(SecurityException e){Ui.toast(this,e.getMessage());}});
-        Design.button(body,"Use "+toneName(alarm.tone),true,()->go("edit"));
+        Design.fixedAction(body,"Use "+toneName(alarm.tone),()->go("edit"));
     }
+    private void toneChoice(LinearLayout body,String tone){LinearLayout row=Design.row(this);Design.pad(row,4,16);row.setMinimumHeight(Design.dp(this,78));row.addView(new SleepPicker.Mark(this,alarm.tone.equals(tone)),new LinearLayout.LayoutParams(Design.dp(this,24),Design.dp(this,24)));LinearLayout copy=Design.col(this);copy.setPadding(Design.dp(this,18),0,0,0);Design.text(copy,toneName(tone),16,600,Design.INK);Design.space(copy,6);Design.text(copy,tone.equals("daybreak")?"Gentle and natural":tone.equals("pulse")?"Steady and clear":tone.equals("system")?"Your phone’s default alarm":"Audio chosen from your phone",12,400,Design.MUTED);row.addView(copy,new LinearLayout.LayoutParams(0,-2,1));row.setSelected(alarm.tone.equals(tone));row.setContentDescription("Select "+toneName(tone));row.setFocusable(true);row.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));row.setOnClickListener(v->{alarm.tone=tone;render();});body.addView(row);}
     private static String duration(int seconds){return seconds==0?"Off":seconds<60?seconds+" sec":seconds%60==0?seconds/60+" min":seconds/60+" min "+seconds%60+" sec";}
-    private void choice(LinearLayout body,String icon,String title,String description,int value,int[] choices,java.util.function.IntConsumer change){PlanActivity.detail(body,icon,title,description,duration(value),()->{if(settingsDialog!=null&&settingsDialog.isShowing()||isFinishing())return;Dialog dialog=new Dialog(this);dialog.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);ScrollView scroll=new ScrollView(this);LinearLayout options=Design.col(this);Design.pad(options,20,20);options.setBackground(Design.shape(this,Design.CREAM,24));scroll.addView(options);dialog.setContentView(scroll);Design.text(options,title,22,600,Design.INK);for(int seconds:choices)Design.button(options,duration(seconds),seconds==value,()->{change.accept(seconds);dialog.dismiss();render();});Design.button(options,"Cancel",false,dialog::dismiss);settingsDialog=dialog;dialog.setOnDismissListener(ignored->{if(settingsDialog==dialog)settingsDialog=null;});dialog.show();dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));dialog.getWindow().setLayout(getResources().getDisplayMetrics().widthPixels-Design.dp(this,32),android.view.ViewGroup.LayoutParams.WRAP_CONTENT);});}
+    private void openDialog(java.util.function.Supplier<Dialog> create){if(settingsDialog!=null&&settingsDialog.isShowing()||isFinishing())return;settingsDialog=create.get();Dialog owned=settingsDialog;owned.setOnDismissListener(ignored->{if(settingsDialog==owned)settingsDialog=null;});}
+    private void picker(LinearLayout body,String icon,String title,String description,String value,int current,int[] values,java.util.function.IntFunction<String> format,java.util.function.IntConsumer change){
+        LinearLayout row=Design.row(this);Design.pad(row,0,10);row.setMinimumHeight(Design.dp(this,66));LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(Design.dp(this,25),Design.dp(this,25));ip.rightMargin=Design.dp(this,16);row.addView(new Design.Icon(this,icon,Design.BROWN),ip);LinearLayout copy=Design.col(this);Design.text(copy,title,15,600,Design.INK);if(description!=null){Design.space(copy,5);Design.text(copy,description,12,400,Design.MUTED);}row.addView(copy,new LinearLayout.LayoutParams(0,-2,1));LinearLayout pill=Design.row(this);Design.pad(pill,10,0);pill.setMinimumHeight(Design.dp(this,48));pill.setBackground(Design.shape(this,Design.SOFT,12));Design.text(pill,value,14,600,Design.BROWN);pill.addView(new Design.Icon(this,"down",Design.BROWN),new LinearLayout.LayoutParams(Design.dp(this,20),Design.dp(this,20)));row.addView(pill);row.setContentDescription(title);row.setFocusable(true);row.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));row.setOnClickListener(v->openDialog(()->{String[] labels=Arrays.stream(values).mapToObj(format).toArray(String[]::new);int selected=-1;for(int n=0;n<values.length;n++)if(values[n]==current)selected=n;return SleepPicker.choices(this,title,labels,selected,n->{change.accept(values[n]);render();});}));body.addView(row,new LinearLayout.LayoutParams(-1,-2));
+    }
+    private void choice(LinearLayout body,String icon,String title,String description,int value,int[] choices,java.util.function.IntConsumer change){picker(body,icon,title,description,duration(value),value,choices,AlarmEditorActivity::duration,change);}
     private void gentle(LinearLayout body){Design.header(body,"Gentle wake-up",()->go("sound"));Design.text(body,"Gradually increase the alarm volume to wake you up more comfortably.",15,400,Design.MUTED);Design.space(body,18);
         choice(body,"sound","Volume ramp","Ramp duration",alarm.rampSeconds,new int[]{0,30,60,120,300,600,1440},n->alarm.rampSeconds=n);
         body.addView(new AlarmRampChart(this,alarm),new LinearLayout.LayoutParams(-1,Design.dp(this,225*Math.max(1,Design.fontScale(this)))));Design.space(body,16);Design.line(body);
@@ -79,18 +94,21 @@ public class AlarmEditorActivity extends Activity {
         wakeToggle(body,"vibrate","Vibration","Vibrate from the start of the alarm",alarm.vibrate,on->alarm.vibrate=on);
         wakeToggle(body,"sun","Screen sunrise","Gradually brighten the alarm screen",alarm.sunrise,on->alarm.sunrise=on);
         wakeToggle(body,"flashlight","Flashlight wake-up","Keep the rear light on while the alarm rings",alarm.flashlight,on->alarm.flashlight=on);Design.space(body,12);
-        Design.text(body,"Sunrise follows the alarm's start time. The volume ramp follows the sound delay; late playback joins the curve already in progress. Add a delay for a quiet light lead-in. Flashlight availability depends on your phone.",12,400,Design.MUTED);Design.space(body,16);
+        Design.item(body,"info","About gentle wake-up",null,()->openDialog(()->new AlertDialog.Builder(this).setTitle("Gentle wake-up").setMessage("Sunrise begins when the alarm starts. Sound follows the delay, then gradually increases. A backup alarm starts immediately at maximum device alarm volume. Flashlight availability depends on your phone.").setPositiveButton("Got it",null).show()));Design.space(body,16);
         Design.fixedAction(body,"Save changes",()->go("sound"));
     }
     private void wakeToggle(LinearLayout body,String icon,String title,String description,boolean value,java.util.function.Consumer<Boolean> change){LinearLayout row=Design.row(this);Design.pad(row,0,12);row.setMinimumHeight(Design.dp(this,70));Design.Icon glyph=new Design.Icon(this,icon,icon.equals("sun")?0xffff8a00:Design.BROWN);LinearLayout.LayoutParams iconLayout=new LinearLayout.LayoutParams(Design.dp(this,26),Design.dp(this,26));iconLayout.rightMargin=Design.dp(this,16);row.addView(glyph,iconLayout);LinearLayout copy=Design.col(this);Design.text(copy,title,15,600,Design.INK);Design.space(copy,5);Design.text(copy,description,12,400,Design.MUTED);row.addView(copy,new LinearLayout.LayoutParams(0,-2,1));Switch toggle=new Switch(this);toggle.setContentDescription(title);Design.styleSwitch(this,toggle,Design.BROWN,0xffbcb5b0);toggle.setChecked(value);toggle.setOnCheckedChangeListener((view,checked)->change.accept(checked));row.addView(toggle);body.addView(row,new LinearLayout.LayoutParams(-1,-2));Design.line(body);}
-    private void snooze(LinearLayout body){Design.header(body,"Snooze & backup",this::back);Design.text(body,"Snooze settings",21,600,Design.INK);Design.space(body,16);
-        range(body,"Snooze duration (minutes)",alarm.snoozeMinutes,1,15,n->alarm.snoozeMinutes=n);range(body,"Maximum snoozes",alarm.snoozeLimit,0,5,n->alarm.snoozeLimit=n);
-        Design.space(body,20);Design.text(body,"Backup alarm",21,600,Design.INK);range(body,"Escalate after (minutes, 0 = off)",alarm.backupMinutes,0,15,n->alarm.backupMinutes=n);
-        Design.text(body,"If left ringing, a separate scheduled backup changes the sound to Pulse at 100% of device alarm volume. Quiet tests never escalate.",14,400,Design.MUTED);
-        Design.space(body,20);range(body,"Wake-up check (minutes, 0 = off)",alarm.awakeCheck,0,15,n->alarm.awakeCheck=n);
-        Design.text(body,"After dismissal, confirm on Tonight before this delay expires or the challenge rings again.",14,400,Design.MUTED);Design.button(body,"Use settings",true,()->go("edit"));
+    private static int[] numbers(int first,int last){return java.util.stream.IntStream.rangeClosed(first,last).toArray();}
+    private void snooze(LinearLayout body){Design.header(body,"Snooze & backup",this::back);Design.space(body,10);Design.text(body,"Snooze settings",21,600,Design.INK);Design.space(body,8);
+        picker(body,"alarm","Snooze duration",null,alarm.snoozeMinutes+" min",alarm.snoozeMinutes,numbers(1,15),n->n+" min",n->alarm.snoozeMinutes=n);Design.line(body);
+        picker(body,"clock","Maximum snoozes",null,alarm.snoozeLimit==0?"None":""+alarm.snoozeLimit,alarm.snoozeLimit,numbers(0,5),n->n==0?"None":""+n,n->alarm.snoozeLimit=n);Design.line(body);
+        wakeToggle(body,"fade","Shorten each snooze","One minute shorter each time",alarm.shortenSnoozes,on->alarm.shortenSnoozes=on);Design.space(body,20);
+        Design.text(body,"Backup alarm",21,600,Design.INK);Design.space(body,12);wakeToggle(body,"bell","Backup alarm","Escalate if the alarm keeps ringing",alarm.backupMinutes>0,on->{alarm.backupMinutes=on?5:0;render();});
+        if(alarm.backupMinutes>0){picker(body,"clock","Escalate after",null,alarm.backupMinutes+" min",alarm.backupMinutes,numbers(1,15),n->n+" min",n->alarm.backupMinutes=n);Design.line(body);PlanActivity.detail(body,"sound","Backup sound",null,"Pulse · 100%",null);Design.line(body);}
+        picker(body,"check","Wake-up check","Confirm you’re awake after dismissal",alarm.awakeCheck==0?"Off":"After "+alarm.awakeCheck+" min",alarm.awakeCheck,numbers(0,15),n->n==0?"Off":"After "+n+" min",n->alarm.awakeCheck=n);
+        Design.fixedAction(body,"Save changes",()->go("edit"));
     }
-    private void range(LinearLayout p,String title,int value,int min,int max,java.util.function.IntConsumer change){TextView label=Design.text(p,title+" · "+value,15,500,Design.INK);SeekBar seek=new SeekBar(this);seek.setContentDescription(title);seek.setProgressTintList(android.content.res.ColorStateList.valueOf(Design.BROWN));seek.setThumbTintList(android.content.res.ColorStateList.valueOf(Design.BROWN));seek.setMax(max-min);seek.setProgress(value-min);seek.setMinimumHeight(Design.dp(this,48));p.addView(seek,new LinearLayout.LayoutParams(-1,Design.dp(this,56)));seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar b,int n,boolean user){label.setText(title+" · "+(n+min));if(user)change.accept(n+min);}public void onStartTrackingTouch(SeekBar b){}public void onStopTrackingTouch(SeekBar b){}});}
+    private void range(LinearLayout p,String title,int value,int min,int max,java.util.function.IntConsumer change){TextView label=Design.text(p,title+" · "+value,15,500,Design.INK);SeekBar seek=new SeekBar(this);seek.setContentDescription(title);AlarmSliders.style(seek);seek.setMax(max-min);seek.setProgress(value-min);seek.setMinimumHeight(Design.dp(this,48));p.addView(seek,new LinearLayout.LayoutParams(-1,Design.dp(this,56)));seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar b,int n,boolean user){label.setText(title+" · "+(n+min));if(user)change.accept(n+min);}public void onStartTrackingTouch(SeekBar b){}public void onStopTrackingTouch(SeekBar b){}});}
     private void save(){if(alarm.enabled&&!AlarmScheduling.port.allowed(this)){new AlertDialog.Builder(this).setTitle("Allow exact alarms").setMessage("Android requires Alarms & reminders access to schedule this alarm. Your draft is preserved.").setPositiveButton("Open settings",(d,w)->startActivity(new Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,Uri.parse("package:"+getPackageName())))).setNegativeButton("Keep editing",null).show();return;}
         if(alarm.challenge.equals("NFC")&&Prefs.text(this,"nfcTag","").isEmpty()){Ui.toast(this,"Enroll an NFC tag in Alarms → Alarm options before using this challenge.");return;}
         // Schedule first so a denied OS request cannot silently enable an unscheduled alarm in storage.
@@ -98,7 +116,7 @@ public class AlarmEditorActivity extends Activity {
     }
     static String displayTime(android.content.Context c,Alarm a){return Design.clock(c,a.hour*60+a.minute);}
     static String toneName(String tone){return tone.startsWith("content:")?"My audio":tone.equals("pulse")?"Pulse":tone.equals("system")?"Device alarm":"Daybreak";}
-    @Override protected void onActivityResult(int r,int result,Intent data){super.onActivityResult(r,result,data);if(r==1&&result==RESULT_OK&&data!=null&&data.getData()!=null){try{getContentResolver().takePersistableUriPermission(data.getData(),Intent.FLAG_GRANT_READ_URI_PERMISSION);alarm.tone=data.getData().toString();render();}catch(SecurityException e){Ui.toast(this,"Could not retain access to this audio. Choose another file.");}}}
+    @Override protected void onActivityResult(int r,int result,Intent data){super.onActivityResult(r,result,data);if(r==1&&result==RESULT_OK&&data!=null&&data.getData()!=null){try{getContentResolver().takePersistableUriPermission(data.getData(),Intent.FLAG_GRANT_READ_URI_PERMISSION);alarm.tone=data.getData().toString();soundTab=1;render();}catch(SecurityException e){Ui.toast(this,"Could not retain access to this audio. Choose another file.");}}}
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
     @Override protected void onDestroy(){if(settingsDialog!=null)settingsDialog.dismiss();if(store!=null)store.close();super.onDestroy();}
 }
