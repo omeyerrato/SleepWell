@@ -90,64 +90,14 @@ final class Design {
     static Switch toggle(LinearLayout p,String title,String subtitle,boolean checked,Consumer<Boolean> change){Context c=p.getContext();LinearLayout r=row(c);pad(r,14,12);r.setBackground(shape(c,SOFT,16));LinearLayout copy=col(c);text(copy,title,16,600,INK);if(subtitle!=null){space(copy,5);text(copy,subtitle,12,400,MUTED);}r.addView(copy,new LinearLayout.LayoutParams(0,-2,1));
         Switch s=new Switch(c);s.setContentDescription(title);styleSwitch(c,s,BROWN,0xffbcb5b0);s.setChecked(checked);s.setOnCheckedChangeListener((b,on)->{change.accept(on);if(Appearance.reduced(c))s.jumpDrawablesToCurrentState();});r.addView(s);p.addView(r,new LinearLayout.LayoutParams(-1,-2));return s;
     }
-    /** Original, consistent 24-unit stroked vector icons. No emoji glyph dependency. */
+    /** Native vectors from the pinned Phosphor family; geometry and licenses are vendored. */
     static class Icon extends View {
-        private final String name;private final Paint paint=new Paint(3);
-        Icon(Context c,String name,int color){super(c);this.name=name;paint.setColor(color);paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(1.8f);paint.setStrokeCap(Paint.Cap.ROUND);paint.setStrokeJoin(Paint.Join.ROUND);setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);}
-        void tint(int color){paint.setColor(color);invalidate();}
-        @Override protected void onDraw(Canvas original){super.onDraw(original);Canvas c=original;c.save();c.translate(getPaddingLeft(),getPaddingTop());c.scale((getWidth()-getPaddingLeft()-getPaddingRight())/24f,(getHeight()-getPaddingTop()-getPaddingBottom())/24f);Path p=new Path();
-            switch(name){
-                case "back":c.drawLine(21,12,3,12,paint);c.drawLine(3,12,10,5,paint);c.drawLine(3,12,10,19,paint);break;
-                case "up":c.drawLine(5,15,12,8,paint);c.drawLine(12,8,19,15,paint);break;
-                case "down":c.drawLine(5,9,12,16,paint);c.drawLine(12,16,19,9,paint);break;
-                case "meal":c.drawLine(5,2,5,10,paint);c.drawLine(2,2,2,7,paint);c.drawLine(8,2,8,7,paint);c.drawLine(2,7,8,7,paint);c.drawLine(5,10,5,22,paint);c.drawLine(18,2,18,22,paint);p.moveTo(18,2);p.quadTo(11,8,18,12);c.drawPath(p,paint);break;
-                case "exercise":c.drawCircle(16,3,2,paint);p.moveTo(4,13);p.lineTo(9,7);p.lineTo(14,10);p.lineTo(20,10);p.moveTo(13,9);p.lineTo(10,15);p.lineTo(15,21);p.moveTo(10,15);p.lineTo(5,22);c.drawPath(p,paint);break;
-                case "tag":p.moveTo(3,3);p.lineTo(12,3);p.lineTo(22,13);p.lineTo(13,22);p.lineTo(3,12);p.close();c.drawPath(p,paint);c.drawCircle(8,8,1.5f,paint);break;
-                case "chevron":c.drawLine(9,5,16,12,paint);c.drawLine(16,12,9,19,paint);break;
-                case "minus":c.drawLine(4,12,20,12,paint);break;
-                case "attention":c.drawLine(12,3,12,14,paint);c.drawCircle(12,20,.8f,paint);break;
-                case "plus":c.drawLine(12,3,12,21,paint);c.drawLine(3,12,21,12,paint);break;
-                case "moon":p.moveTo(15,2);p.cubicTo(-3,0,-1,23,15,22);p.cubicTo(20,21,22,17,22,14);p.cubicTo(10,19,6,7,15,2);paint.setStyle(Paint.Style.FILL);c.drawPath(p,paint);paint.setStyle(Paint.Style.STROKE);break;
-                case "report":for(int i=0;i<3;i++){paint.setStrokeWidth(4);c.drawLine(5+i*7,20,5+i*7,10-(i%2)*7,paint);}break;
-                case "settings":for(int i=0;i<32;i++){double angle=i*Math.PI/16;float radius=(i%4==1||i%4==2)?11:8;float x=12+(float)Math.cos(angle)*radius,y=12+(float)Math.sin(angle)*radius;if(i==0)p.moveTo(x,y);else p.lineTo(x,y);}p.close();Path hole=new Path();hole.addCircle(12,12,3.6f,Path.Direction.CCW);p.addPath(hole);p.setFillType(Path.FillType.EVEN_ODD);paint.setStyle(Paint.Style.FILL);c.drawPath(p,paint);paint.setStyle(Paint.Style.STROKE);break;
-                case "sun":c.drawCircle(12,12,4,paint);for(int i=0;i<8;i++){c.save();c.rotate(i*45,12,12);c.drawLine(12,1,12,4,paint);c.restore();}break;
-                case "sound":p.moveTo(3,10);p.lineTo(7,10);p.lineTo(12,5);p.lineTo(12,19);p.lineTo(7,14);p.lineTo(3,14);p.close();c.drawPath(p,paint);c.drawArc(11,4,22,20,-55,110,false,paint);break;
-                case "tasks":for(int i=0;i<3;i++){c.drawCircle(3,5+i*7,1,paint);c.drawLine(8,5+i*7,21,5+i*7,paint);}break;
-                case "bed":c.drawLine(2,7,2,21,paint);c.drawLine(22,11,22,21,paint);c.drawRect(2,11,22,17,paint);c.drawRect(5,7,11,11,paint);break;
-                case "battery":c.drawRoundRect(6,4,18,23,2,2,paint);c.drawRect(10,1,14,4,paint);c.drawLine(9,8,15,8,paint);break;
-                case "bell":p.moveTo(5,17);p.lineTo(7,14);p.lineTo(7,9);p.cubicTo(7,2,17,2,17,9);p.lineTo(17,14);p.lineTo(19,17);p.close();c.drawPath(p,paint);c.drawArc(9,17,15,22,0,180,false,paint);c.drawLine(12,2,12,3,paint);break;
-                case "lock":c.drawRoundRect(5,10,19,22,2,2,paint);c.drawArc(8,1,16,15,180,180,false,paint);c.drawCircle(12,15,1,paint);c.drawLine(12,16,12,18,paint);break;
-                case "shield":p.moveTo(12,2);p.lineTo(21,6);p.lineTo(20,14);p.quadTo(18,20,12,23);p.quadTo(6,20,4,14);p.lineTo(3,6);p.close();c.drawPath(p,paint);c.drawLine(8,12,11,15,paint);c.drawLine(11,15,17,9,paint);break;
-                case "wave":for(int i=0;i<5;i++)c.drawLine(3+i*4,12-(i%2==0?4:8),3+i*4,12+(i%2==0?4:8),paint);break;
-                case "fade":paint.setStrokeWidth(3);for(int i=0;i<4;i++)c.drawLine(4+i*5,21,4+i*5,17-i*5,paint);break;
-                case "plug":c.drawLine(8,1,8,7,paint);c.drawLine(16,1,16,7,paint);c.drawRoundRect(5,7,19,15,3,3,paint);c.drawLine(12,15,12,23,paint);break;
-                case "calendar":c.drawRoundRect(3,5,21,22,2,2,paint);c.drawLine(3,10,21,10,paint);c.drawLine(8,2,8,7,paint);c.drawLine(16,2,16,7,paint);break;
-                case "github":p.moveTo(5,9);p.lineTo(4,3);p.lineTo(9,5);p.quadTo(12,4,15,5);p.lineTo(20,3);p.lineTo(19,9);p.cubicTo(24,16,17,19,14,18);p.lineTo(14,23);p.moveTo(10,23);p.lineTo(10,18);p.cubicTo(4,19,0,15,5,9);c.drawPath(p,paint);p.reset();p.moveTo(10,21);p.cubicTo(4,23,5,18,2,18);c.drawPath(p,paint);break;
-                case "cloud":p.moveTo(6,20);p.cubicTo(-2,20,0,10,6,10);p.cubicTo(5,0,21,0,20,11);p.cubicTo(27,14,23,20,20,20);p.close();c.drawPath(p,paint);break;
-                case "rain":p.moveTo(6,14);p.cubicTo(-2,14,0,6,6,6);p.cubicTo(7,-1,19,0,19,7);p.cubicTo(25,7,25,14,19,14);c.drawPath(p,paint);for(int i=0;i<3;i++){c.drawLine(7+i*5,16,6+i*5,19,paint);c.drawLine(7+i*5,22,6+i*5,24,paint);}break;
-                case "clock":c.drawCircle(12,12,10,paint);c.drawLine(12,5,12,12,paint);c.drawLine(12,12,17,14,paint);break;
-                case "upload":c.drawLine(12,17,12,2,paint);c.drawLine(6,8,12,2,paint);c.drawLine(12,2,18,8,paint);p.moveTo(3,14);p.lineTo(3,22);p.lineTo(21,22);p.lineTo(21,14);c.drawPath(p,paint);break;
-                case "file":p.moveTo(4,2);p.lineTo(14,2);p.lineTo(21,9);p.lineTo(21,22);p.lineTo(4,22);p.close();c.drawPath(p,paint);c.drawLine(14,2,14,9,paint);c.drawLine(14,9,21,9,paint);break;
-                case "palette":p.moveTo(20,15);p.cubicTo(27,2,4,-4,2,10);p.cubicTo(0,20,12,26,14,21);p.cubicTo(17,17,14,15,20,15);p.close();c.drawPath(p,paint);for(int i=0;i<3;i++)c.drawCircle(7+i*5,7+(i==1?-2:1),1,paint);break;
-                case "motion":p.moveTo(1,12);p.cubicTo(5,12,4,3,8,3);p.cubicTo(12,3,10,21,15,21);p.cubicTo(19,21,18,8,23,10);c.drawPath(p,paint);break;
-                case "contrast":c.drawCircle(12,12,10,paint);paint.setStyle(Paint.Style.FILL);c.drawArc(2,2,22,22,90,180,false,paint);paint.setStyle(Paint.Style.STROKE);break;
-                case "bulb":c.drawCircle(12,9,7,paint);c.drawLine(7,14,9,20,paint);c.drawLine(17,14,15,20,paint);c.drawLine(9,20,15,20,paint);c.drawLine(10,23,14,23,paint);break;
-                case "info":c.drawCircle(12,12,10,paint);c.drawLine(12,10,12,18,paint);c.drawCircle(12,6,0.7f,paint);break;
-                case "phone":c.drawRoundRect(7,2,17,22,2,2,paint);c.drawLine(11,19,13,19,paint);c.drawArc(1,5,8,19,120,120,false,paint);c.drawArc(16,5,23,19,-60,120,false,paint);break;
-                case "mic":c.drawRoundRect(9,1,15,16,3,3,paint);c.drawArc(5,6,19,21,0,180,false,paint);c.drawLine(12,20,12,23,paint);break;
-                case "pause":paint.setStrokeWidth(4);c.drawLine(7,4,7,20,paint);c.drawLine(17,4,17,20,paint);break;
-                case "play":p.moveTo(6,3);p.lineTo(21,12);p.lineTo(6,21);p.close();paint.setStyle(Paint.Style.FILL);c.drawPath(p,paint);paint.setStyle(Paint.Style.STROKE);break;
-                case "tracking":for(int i=0;i<10;i++){double angle=i*Math.PI/5;paint.setStyle(Paint.Style.FILL);c.drawCircle(12+(float)Math.cos(angle)*9,12+(float)Math.sin(angle)*9,i<3?1.4f:1,paint);}paint.setStyle(Paint.Style.STROKE);c.drawArc(3,3,21,21,100,48,false,paint);break;
-                case "sonar":c.drawCircle(4,12,1,paint);c.drawArc(0,6,12,18,-65,130,false,paint);c.drawArc(-3,2,20,22,-65,130,false,paint);c.drawArc(-6,-2,27,26,-65,130,false,paint);break;
-                case "stop":paint.setStyle(Paint.Style.FILL);c.drawRoundRect(4,4,20,20,2,2,paint);paint.setStyle(Paint.Style.STROKE);break;
-                case "check":c.drawLine(4,12,10,18,paint);c.drawLine(10,18,21,5,paint);break;
-                case "search":c.drawCircle(10,10,7,paint);c.drawLine(15,15,22,22,paint);break;
-                case "close":c.drawLine(5,5,19,19,paint);c.drawLine(19,5,5,19,paint);break;
-                case "more":paint.setStyle(Paint.Style.FILL);for(int i=0;i<3;i++)c.drawCircle(12,5+i*7,1.8f,paint);paint.setStyle(Paint.Style.STROKE);break;
-                case "trash":c.drawLine(3,6,21,6,paint);c.drawRect(6,6,18,22,paint);c.drawRect(9,2,15,6,paint);c.drawLine(10,10,10,18,paint);c.drawLine(14,10,14,18,paint);break;
-                case "external":p.moveTo(10,4);p.lineTo(3,4);p.lineTo(3,21);p.lineTo(20,21);p.lineTo(20,14);c.drawPath(p,paint);c.drawLine(11,13,22,2,paint);c.drawLine(15,2,22,2,paint);c.drawLine(22,2,22,9,paint);break;
-                default:c.drawCircle(12,13,8,paint);c.drawLine(12,8,12,13,paint);c.drawLine(12,13,16,15,paint);c.drawLine(3,3,6,1,paint);c.drawLine(18,1,21,3,paint);
-            }c.restore();
+        private final Drawable glyph;
+        Icon(Context c,String name,int color){super(c);glyph=c.getDrawable(Icons.resource(name)).mutate();glyph.setTint(color);setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);}
+        void tint(int color){glyph.setTint(color);invalidate();}
+        @Override protected void onDraw(Canvas canvas){
+            super.onDraw(canvas);int width=getWidth()-getPaddingLeft()-getPaddingRight(),height=getHeight()-getPaddingTop()-getPaddingBottom();int size=Math.min(width,height);if(size<=0)return;
+            int left=getPaddingLeft()+(width-size)/2,top=getPaddingTop()+(height-size)/2;glyph.setBounds(left,top,left+size,top+size);glyph.draw(canvas);
         }
     }
 }

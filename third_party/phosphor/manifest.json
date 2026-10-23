@@ -1,0 +1,264 @@
+{
+  "repository": "https://github.com/phosphor-icons/core",
+  "commit": "2b75f3ad12b420c9504ef05df8d2564a28f8500e",
+  "sha256": {
+    "LICENSE": "b5b1f1da112d18ea2147decfd48ddc1bf2b5aeb6c265381579340e95b15a2bb2",
+    "assets/fill/chart-bar-fill.svg": "a417cc075c304374043e7d47f7622606b15f14e4c65663fd7a8a9898d768362a",
+    "assets/fill/dots-three-vertical-fill.svg": "16ed29e032fff6d9744c64521cf793a68e15f00ceb72efd4286bf40bc87a2530",
+    "assets/fill/gear-six-fill.svg": "dc303bf88571d9aa8d56c30d2630303aa7aba4ca21c21010be3549d6c17666ce",
+    "assets/fill/github-logo-fill.svg": "35b2036490005bcb95a68d07d43d441ae585c6c6dde0e902bb3daf0ddbc615b9",
+    "assets/fill/moon-fill.svg": "099574dba1662cf9cdff50a1859ae8cc605a9b6a10bace00d89a0f52205e76df",
+    "assets/fill/pause-fill.svg": "156d3cdfa5cea803caec50b35f49bc635070c8bd84e7fe78df94b025017ccee1",
+    "assets/fill/play-fill.svg": "6d2a75bc5700a68dec50516ebae121c307807e4e6fcca5c863e5b4af006df880",
+    "assets/fill/stop-fill.svg": "7d9cb9f0bc3363ba8846cf915bc8a84e824804025defaba58eb9df8c21105bb1",
+    "assets/regular/alarm.svg": "71cf350cf81ef6e08377119c14d924f851191d9e828f9107a367d77fdd3f6cc9",
+    "assets/regular/arrow-left.svg": "3c2001cf957d182fc54927e4b286cc8cf66dd97830f441ca2650d42a63a9006a",
+    "assets/regular/arrow-square-out.svg": "8610e8f5c7d4952ae1ada34ef56fa7cbab1780bc85f25a5c9482b74144790fc8",
+    "assets/regular/battery-vertical-medium.svg": "01c42132dac3b408207189deecd468d15c0df6169fe1c91f19169a34b7648007",
+    "assets/regular/bed.svg": "b65defed2f5352ecd9f4583efba5108b646386c46f7a549d1c0cdbfd9d56372e",
+    "assets/regular/bell.svg": "439b02c746ff59945b6175c6d327113ca3f7a729a43d5bcafb278a0f11ee34b5",
+    "assets/regular/broadcast.svg": "e8377f3bf952fc637ca1ca31d5ea6f0917f9195d0bca9b2bfa3d6201b09c59e9",
+    "assets/regular/calendar-blank.svg": "6268583ae0ea04e93fd24f1e70d47a8e8d79c88fc304af397b95b318980215d6",
+    "assets/regular/caret-down.svg": "53f0cf2d0b144ac3cb07e353e0cd0853ffb3ed432d741460ce288edfcb0924b1",
+    "assets/regular/caret-right.svg": "e6dec01e074807965b7f3146b976a9b5e82c31d9c2c88aeb52e77cc2ab16c1d7",
+    "assets/regular/caret-up.svg": "bccc26004e73e5de783ac6dde607e3671e776261d81972ccdbd296b4aca21ca9",
+    "assets/regular/check.svg": "cbb89a8c42f283d4f846eb935e05d88c1be04462f16480e068c0f82b9ce40b12",
+    "assets/regular/circle-half.svg": "4e5376acc240190bf951be566c4649b69936c928f679eba6793412295bb90736",
+    "assets/regular/clock.svg": "b8c6c2899d2b9af48a55ba02ba6d7faf89b757915772dd24f5397f7b0d02aa5c",
+    "assets/regular/cloud-rain.svg": "87b26b17df248c1863be81a1798933ccb5ad42b41afd2ffdef4a38c987588c5f",
+    "assets/regular/cloud.svg": "a72f1f201500924d20a30d7190a3277e411ab526d5b71a6f6a91b0812a09c669",
+    "assets/regular/device-mobile.svg": "db1f74b205590c98d61f61dff7b1f702eddd5a9e15eec7d9681798054ccb757a",
+    "assets/regular/exclamation-mark.svg": "cf71cf4605b70245a4d203979e0f83085ac83826dc7b4901672383a1dcebdb14",
+    "assets/regular/faders-horizontal.svg": "9d821bb567dd1f1a467e054160b2fd390a6c7ec46961914127538d4e92540326",
+    "assets/regular/file-text.svg": "9a580a038cce9f6dd223597864abe1b5c5c03bf8176d2f7171574598468b16f7",
+    "assets/regular/fork-knife.svg": "24388d27ec51856a899b2ba8a1f68b1c31b385ed1f27eb275d5685ebf951b80f",
+    "assets/regular/info.svg": "438a1f319d53d86e840af73fb7b1d224c9224a437b9fa449a4e2cb45a82a3552",
+    "assets/regular/lightbulb.svg": "b61e4d9685a1d74e579a7dbbe0d5222bdf8dcdcaf5b67825a17ff45363e4fadd",
+    "assets/regular/list-checks.svg": "b2d11fc95de627d6abe9feeced5f7e0cdce3ccdf8d9f9d2334d596b8b5cc5cc4",
+    "assets/regular/lock-key.svg": "a8177687fb7b376afa1cf3bc0b16599c91b96a323687e2145f772b93ed0f2c95",
+    "assets/regular/magnifying-glass.svg": "f9fa2561978a9a3291e8ae0ebfcb651104f5069fade8f84871627bca68889cde",
+    "assets/regular/microphone.svg": "b49dabfaf603e82594cef0c5e5784c747f4c098b7723d2973c92965745ca93a9",
+    "assets/regular/minus.svg": "5a068d1cfd707fde5ddb0ce0623958123b6a5afba98401318983aeb0fdad6382",
+    "assets/regular/palette.svg": "f16925171ff434d8e8768da0d06867d77cd50d9e78932ab12af65bccac7a1375",
+    "assets/regular/person-simple-run.svg": "d76c07e6727db0dbcf3eb83a6b9a360940096ca8fcf396f11469c7053dac2bda",
+    "assets/regular/plug.svg": "513534dd9665042bfed73c669130a904a0ab17df06cc8c0e4a717721474839d9",
+    "assets/regular/plus.svg": "d688feb9dd2e41c1721d6906a05a2a42e18cd774762fe706d72b2bdfd91cddc4",
+    "assets/regular/question.svg": "fd9a87cfce2abaa9113058be90e5281da58f665e2185974b80c7425d5c7fe2d6",
+    "assets/regular/shield-check.svg": "bb04d552c0baaaabd90f7eb60760cb0c7ddb7e9f47e4b76e9599ddd7dfd8eaa7",
+    "assets/regular/speaker-high.svg": "caca5fc1ee8489ac19232301d2c96f6d4048802491d75d761bbb89d5c98e459d",
+    "assets/regular/spinner-gap.svg": "c6cd667951de0c9a64e1831e11866b51f8af9b2da56623f58634f3448fb450cd",
+    "assets/regular/sun.svg": "8df1c7b747774f8b2c1fe353b1b785c74aac35bfa50f2ed7d8d9a85a4191b2ac",
+    "assets/regular/tag.svg": "56633631b2e56436c33010c432f5da46533d2cfcae9773e694ee90ad43d96d69",
+    "assets/regular/trash.svg": "e6a830c0409f9e101e3695c981eef98427d39fd01f502b9cbd6900930b01f19c",
+    "assets/regular/upload-simple.svg": "d2b22b75affd718a4a24d71ee71586b277cf48ddb7d52b7d7d0a85b47f8b12d1",
+    "assets/regular/wave-sine.svg": "3be689afd9a500b9c522b5a8097ddec584dd1dd2d261cf1a7bfb9504c97c4bd3",
+    "assets/regular/waveform.svg": "8f6a47cff9b0fb3a8f25fe411b9cc1b24d063d6577c8d07cc53b0e9b080afaa0",
+    "assets/regular/x.svg": "7397b15e1fa66eaf6ff9b59fe91d483cb5c3bcf75b2fe052097ab6f0593b513a"
+  },
+  "aliases": {
+    "back": {
+      "name": "arrow-left",
+      "weight": "regular"
+    },
+    "up": {
+      "name": "caret-up",
+      "weight": "regular"
+    },
+    "down": {
+      "name": "caret-down",
+      "weight": "regular"
+    },
+    "meal": {
+      "name": "fork-knife",
+      "weight": "regular"
+    },
+    "exercise": {
+      "name": "person-simple-run",
+      "weight": "regular"
+    },
+    "tag": {
+      "name": "tag",
+      "weight": "regular"
+    },
+    "chevron": {
+      "name": "caret-right",
+      "weight": "regular"
+    },
+    "minus": {
+      "name": "minus",
+      "weight": "regular"
+    },
+    "attention": {
+      "name": "exclamation-mark",
+      "weight": "regular"
+    },
+    "plus": {
+      "name": "plus",
+      "weight": "regular"
+    },
+    "moon": {
+      "name": "moon",
+      "weight": "fill"
+    },
+    "report": {
+      "name": "chart-bar",
+      "weight": "fill"
+    },
+    "settings": {
+      "name": "gear-six",
+      "weight": "fill"
+    },
+    "sun": {
+      "name": "sun",
+      "weight": "regular"
+    },
+    "sound": {
+      "name": "speaker-high",
+      "weight": "regular"
+    },
+    "tasks": {
+      "name": "list-checks",
+      "weight": "regular"
+    },
+    "bed": {
+      "name": "bed",
+      "weight": "regular"
+    },
+    "battery": {
+      "name": "battery-vertical-medium",
+      "weight": "regular"
+    },
+    "bell": {
+      "name": "bell",
+      "weight": "regular"
+    },
+    "lock": {
+      "name": "lock-key",
+      "weight": "regular"
+    },
+    "shield": {
+      "name": "shield-check",
+      "weight": "regular"
+    },
+    "wave": {
+      "name": "waveform",
+      "weight": "regular"
+    },
+    "fade": {
+      "name": "faders-horizontal",
+      "weight": "regular"
+    },
+    "plug": {
+      "name": "plug",
+      "weight": "regular"
+    },
+    "calendar": {
+      "name": "calendar-blank",
+      "weight": "regular"
+    },
+    "github": {
+      "name": "github-logo",
+      "weight": "fill"
+    },
+    "cloud": {
+      "name": "cloud",
+      "weight": "regular"
+    },
+    "rain": {
+      "name": "cloud-rain",
+      "weight": "regular"
+    },
+    "clock": {
+      "name": "clock",
+      "weight": "regular"
+    },
+    "upload": {
+      "name": "upload-simple",
+      "weight": "regular"
+    },
+    "file": {
+      "name": "file-text",
+      "weight": "regular"
+    },
+    "palette": {
+      "name": "palette",
+      "weight": "regular"
+    },
+    "motion": {
+      "name": "wave-sine",
+      "weight": "regular"
+    },
+    "contrast": {
+      "name": "circle-half",
+      "weight": "regular"
+    },
+    "bulb": {
+      "name": "lightbulb",
+      "weight": "regular"
+    },
+    "info": {
+      "name": "info",
+      "weight": "regular"
+    },
+    "phone": {
+      "name": "device-mobile",
+      "weight": "regular"
+    },
+    "mic": {
+      "name": "microphone",
+      "weight": "regular"
+    },
+    "pause": {
+      "name": "pause",
+      "weight": "fill"
+    },
+    "play": {
+      "name": "play",
+      "weight": "fill"
+    },
+    "tracking": {
+      "name": "spinner-gap",
+      "weight": "regular"
+    },
+    "sonar": {
+      "name": "broadcast",
+      "weight": "regular"
+    },
+    "stop": {
+      "name": "stop",
+      "weight": "fill"
+    },
+    "check": {
+      "name": "check",
+      "weight": "regular"
+    },
+    "search": {
+      "name": "magnifying-glass",
+      "weight": "regular"
+    },
+    "close": {
+      "name": "x",
+      "weight": "regular"
+    },
+    "more": {
+      "name": "dots-three-vertical",
+      "weight": "fill"
+    },
+    "trash": {
+      "name": "trash",
+      "weight": "regular"
+    },
+    "external": {
+      "name": "arrow-square-out",
+      "weight": "regular"
+    },
+    "alarm": {
+      "name": "alarm",
+      "weight": "regular"
+    },
+    "help": {
+      "name": "question",
+      "weight": "regular"
+    }
+  }
+}
