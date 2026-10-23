@@ -17,6 +17,7 @@ public class AutomaticTrackingFlowTest {
     private final Instrumentation i=InstrumentationRegistry.getInstrumentation();
     private final Context c=i.getTargetContext();private final UiDevice device=UiDevice.getInstance(i);
     private AutomaticTrackingActivity activity;
+    private UiObject2 object(String description)throws Exception{UiObject2 value=device.findObject(By.desc(description));if(value==null){new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().description(description));value=device.wait(Until.findObject(By.desc(description)),5000);}assertNotNull(description,value);return value;}
     private void click(String text)throws Exception{UiObject2 object=device.findObject(By.text(text));if(object==null){new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(text));object=device.wait(Until.findObject(By.text(text)),5000);}assertNotNull(text,object);object.click();device.waitForIdle();}
     private void capture(String name)throws Exception{CountDownLatch frame=new CountDownLatch(1);i.runOnMainSync(()->{View decor=activity.getWindow().getDecorView();decor.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);decor.invalidate();});assertTrue(frame.await(5,TimeUnit.SECONDS));device.waitForIdle();File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"automatic-"+name+".png")));}
     private void launch(){activity=(AutomaticTrackingActivity)i.startActivitySync(new Intent(c,AutomaticTrackingActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));assertTrue(device.wait(Until.hasObject(By.text("Automatic tracking")),5000));}
@@ -29,10 +30,11 @@ public class AutomaticTrackingFlowTest {
                 public long schedule(Activity a,AutomaticSleep.Mode mode){assertEquals(AutomaticSleep.Mode.STILLNESS,mode);return System.currentTimeMillis();}
                 public boolean movementAvailable(Activity a){return true;}
                 public boolean notificationsAllowed(Activity a){return true;}
-                public void arm(Activity a,AutomaticSleep.Mode mode,long scheduled){armed[0]++;assertEquals(AutomaticSleep.Mode.STILLNESS,mode);}
+                public boolean microphoneAllowed(Activity a){return true;}
+                public void arm(Activity a,AutomaticSleep.Mode mode,long scheduled,boolean recordSounds,boolean keepClips){assertTrue(recordSounds);assertTrue(keepClips);armed[0]++;assertEquals(AutomaticSleep.Mode.STILLNESS,mode);}
             };
-            launch();capture("manual");UiObject2 choice=device.findObject(By.desc("After settling down"));assertNotNull(choice);choice.click();device.waitForIdle();capture("stillness");click("Save settings");assertEquals("STILLNESS",prefs.getString("automaticMode",""));
-            launch();assertTrue(device.findObject(By.desc("After settling down")).isSelected());capture("reopened");click("Arm tonight");assertEquals(1,armed[0]);
+            launch();capture("manual");object("After settling down").click();device.waitForIdle();capture("stillness");object("Record sounds").click();device.waitForIdle();object("Keep sound clips").click();capture("sounds");click("Save settings");assertEquals("STILLNESS",prefs.getString("automaticMode",""));
+            launch();assertTrue(object("After settling down").isSelected());assertTrue(object("Record sounds").isChecked());assertTrue(object("Keep sound clips").isChecked());capture("reopened");click("Arm tonight");assertEquals(1,armed[0]);
             // The same production decision model gates a fake recording effect on actual sampled evidence.
             int[] recordings={0};AutomaticTransition transition=new AutomaticTransition(new AutomaticSleep(AutomaticSleep.Mode.STILLNESS,0,0),()->recordings[0]++);
             for(long elapsed=0;elapsed<=AutomaticSleep.QUIET_REQUIRED;elapsed+=200)transition.sample(elapsed,.01,false);
