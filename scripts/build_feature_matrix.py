@@ -61,8 +61,8 @@ EXTRA = [
     ("Appearance options alter behavior", "36", "ux/personalize.html", "implemented", "Saved local-clock/manual Midnight/Pre-dawn/Dawn themes affect Tonight, dock and system bars. Text size, high-contrast indicators and static press effects are real. This narrower entry excludes smart lights and other personalization features; full screen 36 remains partial."),
     ("Phone flashlight wake-up", "08 + supporting flashlight setting", "alarms/alarm_settings.html", "partial", "Native optional torch source and fake ownership tests; hardware operation untested by request."),
     ("Recorded rhythm / social jetlag", "25", "sleep/chrono_jetlag.html", "partial", "Descriptive saved-night statistics; native execution pending."),
-    ("Motion sensitivity configuration", "16,29", "sleep/sensors.html", "partial", "Saved sensitivity affects next run heuristic inputs; native config verification pending."),
     ("Chronotype estimation", "25", "sleep/chrono_jetlag.html", "missing", "Recording progress is not a chronotype estimator. Alarm-free, recovery and sleep-onset evidence remain missing."),
+    ("Motion sensitivity configuration", "16,29", "sleep/sensors.html", "partial", "Saved sensitivity affects next run heuristic inputs; native config verification pending."),
 ]
 
 rows = []

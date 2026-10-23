@@ -2677,6 +2677,17 @@
       ]
     },
     {
+      "feature": "Chronotype estimation",
+      "screens": "25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/chrono_jetlag.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Recording progress is not a chronotype estimator. Alarm-free, recovery and sleep-onset evidence remain missing.",
+      "id": "F142",
+      "tests": []
+    },
+    {
       "feature": "Motion sensitivity configuration",
       "screens": "16,29",
       "source": "https://sleep.urbandroid.org/docs/sleep/sensors.html",
@@ -2694,7 +2705,7 @@
       "validation": "MotionConfigurationTest eight pure cases pass in integrated309-test build. MotionConfigurationFlowTest seven captured states with injected sensor, saved/reopened heuristic consumption and conflict/unavailable/errors await native execution.",
       "status": "partial",
       "notes": "Foreground-only real accelerometer preview, actual RMS bins with missing data blank, saved Low/Medium/High gain consumed by smart-wake/automatic-stillness heuristics on the next run. Raw epochs remain unchanged. Medium preserves default; gains are not clinically calibrated. Real sensor and overnight behavior unverified.",
-      "id": "F142",
+      "id": "F143",
       "tests": [
         {
           "name": "MotionConfigurationFlowTest",
@@ -2705,17 +2716,6 @@
           "path": "app/src/test/java/org/sleepwell/app/MotionConfigurationTest.java"
         }
       ]
-    },
-    {
-      "feature": "Chronotype estimation",
-      "screens": "25",
-      "source": "https://sleep.urbandroid.org/docs/sleep/chrono_jetlag.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Recording progress is not a chronotype estimator. Alarm-free, recovery and sleep-onset evidence remain missing.",
-      "id": "F143",
-      "tests": []
     }
   ]
 }
