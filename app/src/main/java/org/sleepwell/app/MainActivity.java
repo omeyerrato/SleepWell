@@ -23,7 +23,9 @@ public class MainActivity extends Activity {
     private Store store;private int tab=0;private Alarm pendingTone;private MediaPlayer preview;private NfcAdapter nfc;
     private static final int NOTIFY=21,TONE=22,EXPORT_JSON=23,EXPORT_CSV=24,IMPORT=25;
     private final Handler appearanceClock=new Handler(Looper.getMainLooper());
-    private final Runnable clockUpdate=new Runnable(){public void run(){if(tab==3)updateWindDown();if(tab==0&&Appearance.automatic(MainActivity.this)){int phase=Appearance.palette(MainActivity.this).phase;if(phase!=renderedPhase)render();}appearanceClock.postDelayed(this,30000);}};
+    private NightArc nightArc;private boolean clockReceiverRegistered;
+    private final BroadcastReceiver clockChanged=new BroadcastReceiver(){public void onReceive(Context c,Intent intent){if(tab==0||tab==3)renderKeepingScroll();}};
+    private final Runnable clockUpdate=new Runnable(){public void run(){if(tab==3)updateWindDown();refreshTonightClock();appearanceClock.postDelayed(this,30000);}};
     private int renderedPhase=-1;private TextView winddownValue,winddownCaption;
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);store=Records.open(this);Notifications.channels(this);if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);
@@ -34,19 +36,23 @@ public class MainActivity extends Activity {
             store.recoverInterrupted();Prefs.put(this,"tracking",false);Prefs.put(this,"trackingPaused",false);Prefs.put(this,"session",0L);
         }
     }
-    @Override protected void onResume() {super.onResume();if(!TrackingService.running)try{store.recoverInterrupted();}catch(Exception e){Prefs.put(this,"trackingError","An interrupted record could not be finalized. Free storage and reopen the app.");}render();appearanceClock.removeCallbacks(clockUpdate);appearanceClock.postDelayed(clockUpdate,30000);}
-    @Override protected void onPause(){appearanceClock.removeCallbacks(clockUpdate);super.onPause();}
+    @Override protected void onResume() {super.onResume();if(!TrackingService.running)try{store.recoverInterrupted();}catch(Exception e){Prefs.put(this,"trackingError","An interrupted record could not be finalized. Free storage and reopen the app.");}render();appearanceClock.removeCallbacks(clockUpdate);appearanceClock.postDelayed(clockUpdate,30000);if(!clockReceiverRegistered){IntentFilter filter=new IntentFilter(Intent.ACTION_TIME_CHANGED);filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);androidx.core.content.ContextCompat.registerReceiver(this,clockChanged,filter,androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED);clockReceiverRegistered=true;}}
+    @Override protected void onPause(){appearanceClock.removeCallbacks(clockUpdate);if(clockReceiverRegistered){unregisterReceiver(clockChanged);clockReceiverRegistered=false;}super.onPause();}
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){Runnable apply=()->{if(!isDestroyed()&&hasWindowFocus())Design.systemBars(this,tab==3||tab==0&&Appearance.palette(this).dark);};getWindow().getDecorView().post(apply);getWindow().getDecorView().postDelayed(apply,200);}}
     @Override public void onSaveInstanceState(Bundle b) {super.onSaveInstanceState(b);b.putInt("tab",tab);b.putIntArray("collapsedAlarms",collapsedAlarms.stream().mapToInt(Integer::intValue).toArray());}
     private void back(){if(tab==0){finish();return;}tab=tab==11?1:tab==3?0:tab==5||tab==6||tab==9?4:0;render();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){back();}
     private void navigate(int destination){tab=destination==3?4:Math.max(0,Math.min(2,destination));render();}
     private void render() {
+        nightArc=null;
         renderedPhase=Appearance.palette(this).phase;
         boolean root=tab==0||tab==1||tab==2||tab==4||tab==7;
         LinearLayout body=tab==3?Design.darkPage(this):Design.page(this,tab==0,root?(tab==2||tab==7?2:tab==4?3:tab==1?1:0):null,this::navigate);
         switch(tab){case 1:alarmList(body);break;case 2:report(body);break;case 3:bedtime(body);break;case 4:settingsHome(body);break;case 5:setup(body);break;case 9:soundAnalysis(body);break;case 11:alarmOptions(body);break;case 6:privacy(body);break;case 7:history(body);break;default:tonight(body);}
     }
+    private ScrollView scroll(View v){if(v instanceof ScrollView)return (ScrollView)v;if(v instanceof ViewGroup)for(int n=0;n<((ViewGroup)v).getChildCount();n++){ScrollView found=scroll(((ViewGroup)v).getChildAt(n));if(found!=null)return found;}return null;}
+    private void renderKeepingScroll(){ScrollView old=scroll(getWindow().getDecorView());int y=old==null?0:old.getScrollY();boolean arcFocused=nightArc!=null&&nightArc.hasFocus();render();ScrollView current=scroll(getWindow().getDecorView());if(current!=null)current.post(()->{current.scrollTo(0,y);if(arcFocused&&nightArc!=null)nightArc.requestFocus();});}
+    void refreshTonightClock(){if(tab!=0)return;long now=TonightScreen.clock.getAsLong();java.time.ZoneId zone=java.time.ZoneId.systemDefault();if((nightArc!=null&&nightArc.needsNewOccurrence(now,zone))||(Appearance.automatic(this)&&Appearance.palette(this).phase!=renderedPhase))renderKeepingScroll();else if(nightArc!=null)nightArc.update(now,zone);}
     private void settingsHome(LinearLayout body){Design.header(body,"Settings",null);
         settingsRow(body,"bell","Alarms","Alarm time, sound and behavior",()->{tab=1;render();});
         settingsRow(body,"moon","Sleep tracking","Phone movement and microphone",this::tracking);
@@ -78,7 +84,7 @@ public class MainActivity extends Activity {
     }
     private void hero(LinearLayout body,String title,String subtitle){body.addView(Design.iconButton(this,"back","Back",()->{tab=4;render();}),new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48)));Design.space(body,14);Design.text(body,title,30,700,Design.INK);Design.space(body,8);Design.text(body,subtitle,15,400,Design.MUTED);}
     private void tonight(LinearLayout body) {
-        TonightScreen.render(this,body,store,new TonightScreen.Actions(){
+        nightArc=TonightScreen.render(this,body,store,new TonightScreen.Actions(){
             public void alarms(){tab=1;render();}
             public void bedtime(){startActivity(RecordUi.intent(MainActivity.this,PlanActivity.class));}
             public void windDown(){tab=3;render();}
