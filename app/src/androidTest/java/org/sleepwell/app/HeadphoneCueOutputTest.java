@@ -3,6 +3,8 @@ package org.sleepwell.app;
 import android.content.*;
 import android.os.*;
 import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.uiautomator.UiDevice;
+import org.junit.Before;
 import org.junit.Test;
 import java.util.*;
 import java.util.concurrent.*;
@@ -12,8 +14,14 @@ import static org.junit.Assert.*;
 /** Native worker/route bridge with fake sink only. Never constructs AudioTrack or Vibrator. */
 public class HeadphoneCueOutputTest {
     private final Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();
+    @Before public void requireDisposableIdleCiEmulator()throws Exception{
+        assertEquals("Explicit disposable CI opt-in is required","true",InstrumentationRegistry.getArguments().getString("ciReview"));
+        assertTrue("Refusing physical hardware",Build.HARDWARE.contains("ranchu")||Build.HARDWARE.contains("goldfish"));
+        assertEquals("Refusing a non-qemu device","1",UiDevice.getInstance(InstrumentationRegistry.getInstrumentation()).executeShellCommand("getprop ro.kernel.qemu").trim());
+        assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(context,"ringing"));assertFalse(Prefs.flag(context,"tracking"));
+    }
     static final class Sink implements HeadphoneCue.Sink {volatile List<HeadphoneCue.Endpoint> route=List.of();final HeadphoneCue.Endpoint wired=new HeadphoneCue.Endpoint(101,HeadphoneCue.Kind.WIRED);final CountDownLatch started=new CountDownLatch(1),chunk=new CountDownLatch(1),closed=new CountDownLatch(1);final AtomicInteger frames=new AtomicInteger(),closes=new AtomicInteger(),mutes=new AtomicInteger();Handler handler;Runnable callback;public List<HeadphoneCue.Endpoint> available(){return List.of(wired);}public boolean prefer(HeadphoneCue.Endpoint endpoint){assertEquals(101,endpoint.id);return true;}public void startSilent(Runnable changed){callback=changed;started.countDown();}public List<HeadphoneCue.Endpoint> routed(){return route;}public int chunk(HeadphoneCue.Endpoint expected,int intensity,int frame,int count){if(!HeadphoneCue.matches(route,expected))return -1;assertEquals(1,intensity);frames.addAndGet(count);chunk.countDown();return count;}public void silence(){mutes.incrementAndGet();}public void close(){closes.incrementAndGet();closed.countDown();}void route(HeadphoneCue.Endpoint endpoint){handler.post(()->{route=List.of(endpoint);callback.run();});}}
-    private void restore(Map<String,?> before){SharedPreferences.Editor edit=Prefs.of(context).edit();for(String key:new String[]{"ringing","snoreCueRouteError"}){edit.remove(key);Object value=before.get(key);if(value instanceof Boolean)edit.putBoolean(key,(Boolean)value);else if(value instanceof String)edit.putString(key,(String)value);}assertTrue(edit.commit());}
+    private void restore(Map<String,?> before){SharedPreferences.Editor edit=Prefs.of(context).edit();for(String key:new String[]{"ringing","snoreCueRouteError","snoreCueError"}){edit.remove(key);Object value=before.get(key);if(value instanceof Boolean)edit.putBoolean(key,(Boolean)value);else if(value instanceof String)edit.putString(key,(String)value);}assertTrue(edit.commit());assertEquals("Every preference must match after the output worker joins",before,Prefs.of(context).getAll());assertFalse(AlarmService.active);assertFalse(TrackingService.running);}
     private SnoreCuePolicy.Settings settings(){return new SnoreCuePolicy.Settings(true,SnoreCuePolicy.Mode.SOUND,1,3,1,true);}
     @Test public void connectedHeadphonesWaitForActualRouteAndLossStopsNativeWorkerOutput()throws Exception{
         Map<String,?> before=Prefs.of(context).getAll();Sink sink=new Sink();SnoreCueOutput output=null;try{Prefs.put(context,"ringing",false);output=new SnoreCueOutput(context,()->true,(app,handler)->{assertFalse(app instanceof android.app.Activity);sink.handler=handler;return sink;});output.play(settings());assertTrue(sink.started.await(3,TimeUnit.SECONDS));assertEquals(0,sink.frames.get());sink.route(sink.wired);assertTrue(sink.chunk.await(3,TimeUnit.SECONDS));sink.route(new HeadphoneCue.Endpoint(1,HeadphoneCue.Kind.OTHER));assertTrue(sink.closed.await(3,TimeUnit.SECONDS));int stopped=sink.frames.get();assertTrue(stopped>0&&stopped<12000);assertEquals(1,sink.closes.get());assertTrue(Prefs.text(context,"snoreCueRouteError","").contains("lost"));output.close();assertTrue(output.awaitClosed(3000));assertEquals(stopped,sink.frames.get());}finally{if(output!=null){output.close();assertTrue(output.awaitClosed(3000));}restore(before);}}
