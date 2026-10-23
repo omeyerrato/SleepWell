@@ -1141,11 +1141,13 @@
         "NightAudioArchive.java",
         "SoundArchiveJob.java",
         "SoundArchiveActivity.java",
-        "AudioArchiveWorkspace.java"
+        "AudioArchiveWorkspace.java",
+        "FavoriteSoundRows.java",
+        "FavoriteSoundsActivity.java"
       ],
-      "validation": "Storage/library/retention/export pass at64ae8d2/CI40033681541, including AudioArchiveConcurrencyTest3 and SoundArchiveJobTest2 with actual SQLite/WAV/ZIP and fake provider. PrivacyHistoryFlowTest now passes26.046s, including late pending-journal reentry/new-night preservation. Five lower-scroll originals reviewed; checked gray favorites is a later style candidate.",
+      "validation": "Storage/library/retention/export pass at64ae8d2/CI40033681541, including AudioArchiveConcurrencyTest3 and SoundArchiveJobTest2 with actual SQLite/WAV/ZIP and fake provider. PrivacyHistoryFlowTest now passes26.046s, including late pending-journal reentry/new-night preservation. Five lower-scroll originals reviewed; checked gray favorites is a later style candidate. New FavoriteSoundsStorageTest3 and FavoriteSoundsFlowTest1/fourteen originals are compiled candidates awaiting native execution.",
       "status": "partial",
-      "notes": "Additive schema6 favorite-protected retention, identity-checked delete journal, retained background cleanup and explicit complete-raw-clip ZIP export with size/hash manifest. New nights survive audio-only Retry. Global album, alternate formats and real external provider remain open. Personal-phone update from schema4 to6 preserved all original rows and preference values; no erase action executed.",
+      "notes": "Additive schema6 favorite-protected retention, identity-checked delete journal, retained background cleanup and explicit complete-raw-clip ZIP with size/hash manifest. New nights survive audio-only Retry. New global favorite album uses existing stars with actual date/category filters,50-row pages, explicit waveform/interval playback and missing/edited states; unstar never deletes originals. Alternate formats, portable favorite backup and real player/provider remain open. Personal-phone schema4→6 update preserved original rows/preferences.",
       "id": "F058",
       "tests": [
         {

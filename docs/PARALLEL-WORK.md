@@ -10,13 +10,18 @@ main through cherry-picks. User files and private phone backups remain untouched
 | Strict visual reviewer | Original screenshot rejection, custom record calendars, measured clock chart axes; independent Walk/headphone source review |
 | Primary | Integration, original pinned icons, shared routes, full builds/tests/lint, CI and durable evidence |
 
-Latest terminal CI40027277488 at d6389dc:26/27 classes pass,138 originals.
+Latest terminal CI40033681541 at64ae8d2:30/31 classes pass,148 originals.
+Walk6, headphone-route5 and privacy5 originals individually reviewed and stored
+in verification/2026-10-24-walk-headphone-privacy with original-byte hashes.
+Privacy now passes late journal reentry; only the initial chart-fixture focus
+assertion fails before its four captures. A focused/laid-out-owner test fix is
+integrated; fresh native execution remains required. Earlier d6389dc evidence:
 Report8, calendar7 and routine6 actual originals pass their narrow journeys and
 were individually reviewed. They are preserved with original-byte hashes in
 verification/2026-10-24-report-calendar-routine. Earlier43 reviewed cue/wake/
 motion/travel/library/retention/export originals remain in native-configuration.
-The overall run fails late privacy pending-journal reentry. New synchronization
-and queued-audio copy corrections still need an exact-head native rerun.
+New library/retention/export behavior preserves every earlier narrow passing
+journey; no hardware-output acceptance is inferred from emulator checks.
 
 Integrated6015a12 passes324 pure tests, zero failures/errors/skips, lint zero
 errors/77 warnings and debug/test/release builds. At the user's explicit request,
@@ -25,8 +30,9 @@ and original rows/preferences preserved across additive schema4→6 migration.
 No alarm, audio, microphone, tracking, vibration, flashlight, power or lock action
 ran. This installation is not physical UI/output acceptance.
 
-The new source candidate contains optional headphone routing, Walk, and measured
-clock axes. Next inert gate:31 classes,45 methods,152 required original PNGs;
+The new source candidate adds reviewed phone-idle missing nights, a global
+favorite-sound album, chart-fixture focus repair and reference styling fixes.
+Next inert gate:34 classes,51 methods,177 required original PNGs;
 actual SQLite/WAV/ZIP bytes and fake output/provider/sensor/scheduler ports.
 No native playback option is enabled by default. Local Gradle work is serialized
 with one worker to fit memory; independent coding/review remains parallel.
