@@ -17,7 +17,7 @@ final class NoiseRecorder implements AutoCloseable {
     }
     private boolean savesClips(Context c){return saveOverride==null?Prefs.flag(c,"saveClips"):saveOverride;}
     private void capture(Context c,Store store,long session,ClipBudget budget,java.util.function.LongSupplier timeline) {
-        AudioRecord recorder=null;SoundAnalysisStream analysis=null;
+        AudioRecord recorder=null;SoundAnalysisStream analysis=null;SnoreCuePolicy cues=new SnoreCuePolicy(budget.snoreCues,()->new SnoreCueOutput(c),()->Prefs.put(c,"snoreCueError","A snoring cue could not play."));
         try {
             if(c.checkSelfPermission(android.Manifest.permission.RECORD_AUDIO)!=android.content.pm.PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is not granted");
             int size=Math.max(4096,AudioRecord.getMinBufferSize(16000,AudioFormat.CHANNEL_IN_MONO,AudioFormat.ENCODING_PCM_16BIT));
@@ -25,7 +25,7 @@ final class NoiseRecorder implements AutoCloseable {
             if(recorder.getState()!=AudioRecord.STATE_INITIALIZED) throw new IOException("Microphone unavailable");
             if(!running)return;
             Prefs.put(c,"analysisError","");
-            analysis=new SoundAnalysisStream(()->new YamnetClassifier(c),(at,count,category,score)->{if(budget.saveEvent())store.soundEvent(session,at,count*975L,category,score,null);},()->Prefs.put(c,"analysisError","Sound labels unavailable. Room sound levels and optional recordings continue."));
+            analysis=new SoundAnalysisStream(()->new YamnetClassifier(c),(at,count,category,score)->{if(budget.saveEvent())store.soundEvent(session,at,count*975L,category,score,null);if(running)cues.event(category,score,android.os.SystemClock.elapsedRealtime(),SnoreCueOutput.settings(c));},()->Prefs.put(c,"analysisError","Sound labels unavailable. Room sound levels and optional recordings continue."));
             activeRecorder=recorder;if(!running)return;recorder.startRecording();capturing=true;short[] frame=new short[1024]; ByteArrayOutputStream clip=null;
             double peak=0;
             while(running) {
@@ -50,7 +50,7 @@ final class NoiseRecorder implements AutoCloseable {
             }
         } catch(SecurityException e) { Prefs.put(c,"audioError","Microphone permission was denied or revoked."); }
         catch(Exception e) { Prefs.put(c,"audioError",e.getMessage()==null?e.toString():e.getMessage()); }
-        finally {try{if(analysis!=null)analysis.close();}catch(RuntimeException e){Prefs.put(c,"analysisError","Could not save the final sound event.");}capturing=false;activeRecorder=null;if(recorder!=null) { try { recorder.stop(); } catch(IllegalStateException ignored) {} recorder.release(); } }
+        finally {cues.close();try{if(analysis!=null)analysis.close();}catch(RuntimeException e){Prefs.put(c,"analysisError","Could not save the final sound event.");}capturing=false;activeRecorder=null;if(recorder!=null) { try { recorder.stop(); } catch(IllegalStateException ignored) {} recorder.release(); } }
     }
     private static void little(DataOutputStream out,int value,int bytes) throws IOException { for(int i=0;i<bytes;i++) out.writeByte(value>>(8*i)); }
     static void writeWave(File file,byte[] pcm) throws IOException {

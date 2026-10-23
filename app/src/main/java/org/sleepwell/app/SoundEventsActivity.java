@@ -14,7 +14,7 @@ public final class SoundEventsActivity extends Activity {
     @Override public void onCreate(Bundle saved){super.onCreate(saved);RecordUi.review(this);if(saved!=null)category=saved.getString("category","all");render();long id=getIntent().getLongExtra("record",0);worker.execute(()->{try(Store store=Records.open(this)){RecordEntry value=Records.get(store,id);List<JSONObject> sounds=store.rows("SELECT * FROM sound_events WHERE session=? AND time+duration_ms>? AND time<? ORDER BY time",""+id,""+value.edit.start,""+value.edit.end);runOnUiThread(()->{if(isDestroyed())return;record=value;events=sounds;loaded=true;render();});}catch(Exception failure){runOnUiThread(()->{if(isDestroyed())return;error="Sound events could not be loaded.";loaded=true;render();});}});}
     @Override public void onSaveInstanceState(Bundle out){super.onSaveInstanceState(out);out.putString("category",category);}
     private void render(){
-        LinearLayout body=Design.page(this,false,null,n->{});RecordUi.label(this,body);RecordUi.header(body,"Sound events",this::finish);
+        LinearLayout body=Design.page(this,false,null,n->{});RecordUi.label(this,body);RecordUi.headerAction(RecordUi.header(body,"Sound events",this::finish),"settings","Snoring cues",()->startActivity(RecordUi.intent(this,SnoringCuesActivity.class)));
         if(!loaded){Design.text(body,"Loading…",15,400,Design.MUTED);return;}if(!error.isEmpty()){Design.text(body,error,15,400,Design.MUTED);return;}
         Design.text(body,RecordUi.date(record.edit.end,record.zone()),14,400,Design.MUTED);Design.space(body,18);
         String[] keys={"all","snoring","speech","noise"},titles={"All","Snoring","Speech","Other"};LinearLayout tabs=Design.row(this);

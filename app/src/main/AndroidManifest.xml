@@ -33,6 +33,7 @@
         <activity android:name=".GoalBankActivity" android:exported="false" />
         <activity android:name=".HistoryActivity" android:exported="false" />
         <activity android:name=".RecordEditorActivity" android:exported="false" />
+        <activity android:name=".SnoringCuesActivity" android:exported="false" />
         <activity android:name=".SoundEventsActivity" android:exported="false" />
         <activity android:name=".RecordSignalsActivity" android:exported="false" />
         <activity android:name=".AlarmActivity" android:exported="false" android:showWhenLocked="true" android:turnScreenOn="true" android:launchMode="singleTask" />

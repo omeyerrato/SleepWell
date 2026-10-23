@@ -18,3 +18,7 @@ docs/verification/**/environment.json -text
 third_party/phosphor/** -text
 app/src/main/assets/licenses/* -text
 third_party/phosphor/manifest.json text eol=lf
+
+# Retain the verified audio model, labels and Apache notice byte-for-byte.
+third_party/yamnet/** -text
+app/src/main/assets/yamnet.tflite binary
