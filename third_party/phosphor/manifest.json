@@ -21,6 +21,7 @@
     "assets/regular/caret-down.svg": "53f0cf2d0b144ac3cb07e353e0cd0853ffb3ed432d741460ce288edfcb0924b1",
     "assets/regular/caret-right.svg": "e6dec01e074807965b7f3146b976a9b5e82c31d9c2c88aeb52e77cc2ab16c1d7",
     "assets/regular/caret-up.svg": "bccc26004e73e5de783ac6dde607e3671e776261d81972ccdbd296b4aca21ca9",
+    "assets/regular/chats.svg": "246d81e02c169c439a73d212bf28d4068cc727a6a527663e568f5c7da547aed3",
     "assets/regular/check.svg": "cbb89a8c42f283d4f846eb935e05d88c1be04462f16480e068c0f82b9ce40b12",
     "assets/regular/circle-half.svg": "4e5376acc240190bf951be566c4649b69936c928f679eba6793412295bb90736",
     "assets/regular/clock.svg": "b8c6c2899d2b9af48a55ba02ba6d7faf89b757915772dd24f5397f7b0d02aa5c",
@@ -208,6 +209,10 @@
     },
     "mic": {
       "name": "microphone",
+      "weight": "regular"
+    },
+    "speech": {
+      "name": "chats",
       "weight": "regular"
     },
     "pause": {

@@ -50,7 +50,7 @@ public class TrackingService extends Service implements SensorEventListener {
     private void beginRecording(){
             store=storeFactory.open(this);session=store.begin();start=store.rows("SELECT start FROM sessions WHERE id=?",""+session).get(0).optLong("start");windowStart=start;clock=new TrackingClock(SystemClock.elapsedRealtime());
             Prefs.of(this).edit().putLong("session",session).putBoolean("tracking",true).putBoolean("trackingPaused",false).putInt("epochCount",0).putString("audioError","").putString("trackingError","").apply();
-            phase=Phase.ACTIVE;if(automaticCapture!=null)automaticCapture.recordingBegan();collect();if(audio!=null&&(automaticRun?automaticCapture.keepClips():Prefs.flag(this,"saveClips")))pruneClips();handler.postDelayed(minuteTick,60000);handler.postDelayed(limitTick,12*60*60*1000L);
+            phase=Phase.ACTIVE;if(automaticCapture!=null)automaticCapture.recordingBegan();collect();handler.postDelayed(minuteTick,60000);handler.postDelayed(limitTick,12*60*60*1000L);
     }
     private void arm(Intent intent){
         automaticMode=AutomaticSleep.Mode.valueOf(intent.getStringExtra("mode"));
@@ -142,6 +142,5 @@ public class TrackingService extends Service implements SensorEventListener {
             try{if(store!=null)store.close();}catch(Exception e){Prefs.put(this,"trackingError","Could not close recording storage: "+e.getMessage());}finally{store=null;phase=Phase.CLOSED;if(current==this){running=false;current=null;Prefs.of(this).edit().putBoolean("tracking",false).putBoolean("trackingPaused",false).putLong("session",0).apply();}closer.shutdown();if(!destroyed){stopForeground(STOP_FOREGROUND_REMOVE);stopSelf();}}
         }});
     }
-    private void pruneClips(){long oldest=System.currentTimeMillis()-7*24*60*60*1000L;for(org.json.JSONObject clip:store.rows("SELECT id,path FROM clips WHERE time<?",""+oldest)){FileSafety.deleteClip(this,clip.optString("path"));store.getWritableDatabase().delete("clips","id=?",new String[]{""+clip.optLong("id")});}}
     @Override public void onDestroy(){destroyed=true;stop(true);super.onDestroy();}
 }

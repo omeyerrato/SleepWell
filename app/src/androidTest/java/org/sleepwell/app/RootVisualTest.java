@@ -46,8 +46,8 @@ public class RootVisualTest {
             assertFalse(device.hasObject(By.text("Emergency dismiss")));assertFalse(device.hasObject(By.text("Test a quiet alarm")));
             assertFalse(device.hasObject(By.textContains("feature matrix")));assertFalse(device.hasObject(By.text("Export session CSV")));
         }
-        for(String[] detail:new String[][]{{"Reliability","Alarm readiness","readiness"},{"Sound analysis","Sound analysis","sound-analysis"},{"Bedtime guard","Bedtime guard","bedtime-guard"},{"Data & privacy","Data & privacy","privacy"}}){
-            UiObject2 link=device.findObject(By.text(detail[0]));assertNotNull(link);link.click();device.waitForIdle();assertTrue(device.wait(Until.hasObject(By.text(detail[1])),5000));
+        for(String[] detail:new String[][]{{"Reliability","Alarm readiness","readiness"},{"Sound analysis","Sound analysis","sound-analysis"},{"Bedtime guard","Bedtime guard","bedtime-guard"},{"Travel mode","Travel mode","travel"},{"Data & privacy","Data & privacy","privacy"}}){
+            UiObject2 link=device.findObject(By.text(detail[0]));if(link==null){new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(detail[0]));link=device.findObject(By.text(detail[0]));}assertNotNull(link);link.click();device.waitForIdle();assertTrue(device.wait(Until.hasObject(By.text(detail[1])),5000));
             assertTrue("The Settings dock must leave the destination",device.wait(Until.gone(By.pkg(c.getPackageName()).desc("Settings").selected(true)),5000));
             if(detail[2].equals("privacy")){assertTrue(device.wait(Until.hasObject(By.text("Your sleep data stays on this phone.")),5000));assertTrue(device.wait(Until.hasObject(By.text("On this phone")),5000));}
             if(detail[2].equals("sound-analysis"))assertTrue(device.wait(Until.hasObject(By.text("Microphone analysis")),5000));
