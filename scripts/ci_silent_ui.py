@@ -118,7 +118,7 @@ for test in tests:
 command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", str(output), check=False)
 required = ["sounds-settings-" + name + ".png" for name in ("rain", "ocean", "recreated", "reopened")]
 required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "bedtime-guard", "privacy", "wind-down")]
-required += ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "weekly")]
+required += ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:
