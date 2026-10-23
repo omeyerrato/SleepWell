@@ -106,7 +106,7 @@ command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", s
 required = ["sounds-settings-" + name + ".png" for name in ("rain", "ocean", "recreated", "reopened")]
 required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "bedtime-guard", "privacy", "wind-down")]
 if args.native_sounds:
-    required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error")]
+    required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 failures += [name for name in required if not (output / name).is_file()]
 if failures:
     raise SystemExit("UI verification incomplete: " + ", ".join(failures))
