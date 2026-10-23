@@ -12,6 +12,7 @@ final class YamnetClassifier implements SoundAnalysisStream.Model {
     private Environment environment;private CompiledModel model;
     private List<TensorBuffer> inputs=List.of(),outputs=List.of();
     YamnetClassifier(Context context){
+        if(android.os.Looper.myLooper()==android.os.Looper.getMainLooper())throw new IllegalStateException("Sound model must load on a worker");
         try{
             environment=Environment.create();
             model=CompiledModel.create(context.getAssets(),"yamnet.tflite",new CompiledModel.Options(Accelerator.CPU),environment);

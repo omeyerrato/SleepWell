@@ -17,6 +17,7 @@ public class SoundAnalysisNativeTest {
     @Test public void bundledCpuModelSeparatesSilenceSineAndWhiteNoiseWithoutSpeechOrSnoring(){
         // AndroidJUnit invokes test methods off the app's UI thread; classifier owns this thread.
         assertNotEquals(android.os.Looper.getMainLooper(),android.os.Looper.myLooper());
+        InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{try{new YamnetClassifier(context());fail("UI-thread model creation must reject before native allocation");}catch(IllegalStateException expected){assertEquals("Sound model must load on a worker",expected.getMessage());}});
         try(YamnetClassifier classifier=new YamnetClassifier(context())){
             float[] silence=classifier.infer(new float[15600]);assertTrue(topTen(silence,494));SoundAnalysis.Result silent=SoundAnalysis.classify(silence);assertTrue(silent==null||silent.category.equals("noise"));
             float[] samples=new float[15600];for(int n=0;n<samples.length;n++)samples[n]=(float)Math.sin(2*Math.PI*440*n/16000);float[] sine=classifier.infer(samples);SoundAnalysis.Result tone=SoundAnalysis.classify(sine);assertTrue(tone==null||tone.category.equals("noise"));
