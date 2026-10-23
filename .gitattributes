@@ -25,3 +25,6 @@ app/src/main/assets/yamnet.tflite binary
 
 # Raw PCM fixtures belong only to the instrumentation test APK.
 *.pcm binary
+
+# Preserve actual classifier scores and fixture metadata as emitted by CI.
+docs/verification/**/analysis-human-fixture-evaluation.json -text
