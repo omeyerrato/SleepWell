@@ -7,6 +7,7 @@
     "assets/fill/gear-six-fill.svg": "dc303bf88571d9aa8d56c30d2630303aa7aba4ca21c21010be3549d6c17666ce",
     "assets/fill/github-logo-fill.svg": "35b2036490005bcb95a68d07d43d441ae585c6c6dde0e902bb3daf0ddbc615b9",
     "assets/fill/heart-fill.svg": "d90560d4f762f1b345bd2322cd1ef696926ffa74b0c1396933b6d926faf8341e",
+    "assets/fill/house-fill.svg": "4783cdf0ae5f5ec363df6f77167a41642aac42fe8d73251b9a61232ab43f355d",
     "assets/fill/moon-fill.svg": "099574dba1662cf9cdff50a1859ae8cc605a9b6a10bace00d89a0f52205e76df",
     "assets/fill/pause-fill.svg": "156d3cdfa5cea803caec50b35f49bc635070c8bd84e7fe78df94b025017ccee1",
     "assets/fill/play-fill.svg": "6d2a75bc5700a68dec50516ebae121c307807e4e6fcca5c863e5b4af006df880",
@@ -100,6 +101,10 @@
     "plus": {
       "name": "plus",
       "weight": "regular"
+    },
+    "home": {
+      "name": "house",
+      "weight": "fill"
     },
     "moon": {
       "name": "moon",
