@@ -9,3 +9,7 @@ gradlew text eol=lf
 gradlew.bat text eol=crlf
 *.wav binary
 *.jar binary
+# Preserve the original CI evidence bytes covered by the SHA256 manifests.
+docs/verification/**/*.png binary
+docs/verification/**/*.txt -text
+docs/verification/**/environment.json -text

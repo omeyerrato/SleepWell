@@ -16,7 +16,8 @@ theme cases, including midnight wrapping and bounded text scales. There are 18
 local test methods at that milestone. ChartSeriesTest adds five display-aggregation
 tests (dense average, explicit/implicit gaps, true zero/invalid values, short final
 epoch, finite extreme imports), bringing that milestone total to 23. TrackingClockTest (5), SessionTimingTest (3),
-ClipBudgetTest (2) and two more ChartSeriesTest cases bring the current total to 35.
+ClipBudgetTest (2) and two more ChartSeriesTest cases brought that milestone total to 35. The current local total is 98; see the dated
+VERIFICATION entry for the exact native evidence.
 
 ## Personal phone: preserve installation and data
 
@@ -130,16 +131,43 @@ rows/preferences unchanged and drains owned readers/writers before deletion.
 it does not grant accessibility access, open blocked apps or test alarms. Tests
 reject active/interrupted personal tracking before opening MainActivity.
 
-Final Privacy/Wind-down/system-Back device verification is pending after USB loss;
-see VERIFICATION.md. Do not interpret any allowlist entry or test source as a
-passing result. Alarm controls, including the debug-only Developer stop, remain
-outside the permitted sleep-time test set. Never run the whole connected suite.
+Final Privacy/Wind-down/system-Back rendering and navigation now have passing
+API36 CI emulator evidence. Final S23 installation remains pending after USB loss.
+See VERIFICATION.md and verification/2026-10-23-api36/README.md. Do not infer
+behavior from an allowlist or source file alone. Alarm controls, including the
+debug-only Developer stop, remain outside the permitted sleep-time test set.
+Never run the whole connected suite.
 
-`SoundPlaybackTest` has 24 local fake-sink cases and never instantiates Android
-audio classes. `SoundSettingsFlowTest` / `--flow sounds-settings` is configuration
-only and remains pending hardware execution. It does not press Play, start
-tracking or import a file. The manual `Silent Android visual review` workflow
-uses only it and RootVisualTest on an ephemeral no-audio emulator; artifacts are
-fixture data. Do not run either workflow as an unrestricted connected test suite.
-Native audio, focus, background, URI grant and listening checks need separate
-authorization and evidence. Existing no-alarm-testing instructions remain binding.
+SoundPlaybackTest has 24 local fake-sink cases and never instantiates Android
+audio classes. SoundSettingsFlowTest is configuration-only and now passes on the
+API36 CI emulator; its physical `--flow sounds-settings` has not run. It never
+presses Play, starts tracking or imports a file. The manual Silent Android visual
+review workflow defaults to it and RootVisualTest on an ephemeral no-audio emulator.
+
+Optional workflow input `native_sounds=true` adds only NativeSoundFlowTest on that
+same disposable emulator. The Python runner refuses non-GitHub execution or any
+serial other than emulator-5554, checks qemu and launches its own emulator with
+`-no-audio`. The test requires qemu plus explicit ciSilentPlayback=true. It is
+absent from the physical-phone runner. This branch grants only POST_NOTIFICATIONS
+in the fresh emulator, exercises actual MediaPlayer/FGS/background/notification/
+focus/error behavior, and never changes system stream volume. Preferences are
+UUID-isolated; cleanup restores the factory even when a barrier fails and retains
+files whose readers cannot quiesce. Completion uses a valid 57-second offset in a
+one-minute profile, not a full-minute fade test. All three allowlisted tests
+pass at ce7f64c; exact durations and native scope are in VERIFICATION.md. The root
+flow now repeats three Wind-down transitions and observes correct system-bar
+flags before capturing; each detail also requires unique destination content,
+absence of the Settings dock and a committed hardware frame before capture.
+The [frame-commit API](https://developer.android.com/reference/android/view/ViewTreeObserver#registerFrameCommitCallback(java.lang.Runnable))
+reports frame submission; UI idle and independent screenshot review remain
+required. Configuration assertions wait for actual selected state, a distinct
+resumed replacement after recreation and actual destruction after Back. SoundSettingsFlowTest
+in CI asserts idle values and adds only absent ringing/tracking/trackingPaused/
+session defaults before baseline, avoiding delayed first-boot writes. Every
+key/value remains in body/cleanup equality, and physical execution is unchanged.
+
+
+Native audio listening quality, long background sessions, real provider grants,
+route changes, process death and S23 verification remain separate gates. Existing
+no-alarm-testing instructions remain binding. All published CI data is fixture
+only; never copy personal phone captures/backups into public evidence folders.

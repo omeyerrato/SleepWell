@@ -1,6 +1,6 @@
 # Sleep sound art provenance
 
-Generated on 2026-10-23 using the built-in image-generation tool, following the imagegen skill. These are standalone original illustrations, not flattened controls or crops from the reference boards. The final four outputs were visually inspected and copied into the project. They are more textured than the reference; full screen acceptance requires actual Android captures and remains pending.
+Generated on 2026-10-23 using the built-in image-generation tool, following the imagegen skill. These are standalone original illustrations, not flattened controls or crops from the reference boards. The final four outputs were visually inspected and copied into the project. They are more textured than the reference. Actual Rain/Ocean configuration captures now have a bounded composition pass; the full screen and audio flow remain partial. See verification/2026-10-23-api36/README.md.
 
 The prompts below reproduce the requested subjects and palette. The original outputs are preserved under the session's `.codex/generated_images` directory; the application only references the project copies. No fallback CLI or API key was used.
 

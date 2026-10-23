@@ -60,14 +60,17 @@ the overall goal complete from this milestone.
 The bounded Sleep goals → free14/30-day commitment → progress → reopen/Stop flow
 now passes model, storage, native-device and strict visual review. Dark Guard
 configuration draft/save/cancel/reopen/pause also passes; actual enforcement and
-reminder delivery remain open. Next: reconnect-independent implementation can
-continue, but final Privacy/Wind-down/system-Back verification must resume when
-hardware becomes available. Do not ask the sleeping user to reconnect or run an
+reminder delivery remain open. API36 CI now verifies final Privacy/Wind-down rendering and system Back; final
+S23 installation and broader configurations remain pending. Do not ask the sleeping user to reconnect or run an
 alarm. Do not mark those screens or the overall goal complete from source fixes.
 Developer stop is debug-only in source; the user's no-alarm-test restriction
 continues. See the latest VERIFICATION entry for the USB/emulator limitation.
 
-Screen19 now has native mixer/service/UI source and 24 passing silent model tests;
-details and open gates are in SOUND-PLAYBACK.md. A manual CI emulator screenshot
-path is being added while the phone is absent. Actual Android rendering and native
-playback remain separate gates; do not mark screen19 or full parity complete.
+Screen 19 has native mixer/service/UI source, 24 passing silent model tests,
+API36 configuration persistence and actual Rain/Ocean visual evidence. Original
+PNGs/results are tracked in verification/2026-10-23-api36. The strict reviewer
+passes those bounded compositions and final Wind-down polish, while rejecting
+full app completion. The short real native sound journey passes at ce7f64c on the host-audio-disabled
+API36 emulator; exact scope and the 17 original captures are in VERIFICATION.md.
+Continue the remaining sound lifecycle/import/listening and other matrix flows.
+No alarm test or phone update is authorized by these emulator checks.

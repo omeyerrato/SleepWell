@@ -1,9 +1,10 @@
 # Sleep sounds — screen 19
 
-Status: **partial / native verification pending**. The source now provides a standalone
-local player and two-layer mixer; this is not certification of playback quality,
-Android background behavior or visual fidelity. No audio was played during this work.
-The phone is disconnected. The user's prohibition on alarm testing remains in force.
+Status: **partial**. The native configuration flow and a short real MediaPlayer/
+foreground-service integration journey pass on the disposable API36 CI emulator,
+with bounded board07 visual comparison. Listening quality, import and long phone
+background behavior remain unverified. No phone audio or alarm was run. The phone
+remains disconnected; the user's prohibition on alarm testing remains in force.
 
 ## Behavior in source
 
@@ -66,15 +67,43 @@ gain changes, normalization, fading/ducking, pause, completion, timeout, failed 
 stale decoders, replacement, legacy settings, offsets and tracking ownership.
 These tests do **not** instantiate Android MediaPlayer, audio focus or an FGS.
 
-`SoundSettingsFlowTest` and `--flow sounds-settings` are compiled but **not run**.
-They are configuration-only: isolated preferences, selection/timer/fade, recreation,
-reopen and four actual screenshots when hardware is available. They never tap Play,
-start a sound service or import a file. The existing movement-only test explicitly
-disables and restores the new automatic sound flag to remain silent.
+`SoundSettingsFlowTest`: **1 pass in 18.746 s** at `ce7f64c`. Rain → Ocean,
+45-minute timer, 10-minute fade, recreation and reopen preserve the exact choices.
+Both body and cleanup compare personal preference maps exactly. CI-only setup
+asserts idle values and adds only absent inactive defaults before the baseline;
+late BOOT_COMPLETED then writes the same values. Existing values are never
+replaced and the physical runner does not enable this initialization. No Play,
+import or tracking action occurs in this configuration test.
 
-Open: actual device visual comparison with board 07, file picker/failed grant
-behavior, service delivery races, focus loss and route changes, notification
-controls, lock-screen/background playback, real timer/fade and audible loop quality.
+`RootVisualTest`: **1 pass in 23.113 s**, four tabs/detail/system Back.
+`NativeSoundFlowTest`: **1 pass in 26.323 s** on the same commit. Explicit Play
+starts actual Android music activity; time advances after Home. Notification
+PendingIntent Pause/Play/Stop, frozen pause timing, live Ocean replacement,
+competing focus pause without auto-resume, timed completion, unreadable-provider
+failure and explicit Rain recovery pass. Stop/completion/failure remove native
+media activity, foreground service and notification. The test compares stream
+volume and personal preferences unchanged. It does not touch the notification
+shade. It requires explicit CI opt-in, qemu and the fixed disposable emulator
+launched with host audio disabled; it is absent from the phone allowlist.
+
+The timer check starts with a valid 57-second offset and exercises the final
+three seconds, not a full-minute fade. This is not a listening or loop-seam test.
+All 17 final images pass the independent bounded comparison; exact acceptance
+is recorded in DESIGN-REVIEW.md. The earlier Wind-down bar and Privacy wrong-page
+rejections were corrected in source/capture synchronization before this final run.
+Imported audio still reuses the Rain hero;
+a neutral illustration remains a visual follow-up.
+
+[Persistent evidence](verification/2026-10-23-api36/README.md) pins code,
+environment, all 17 original PNGs, hashes and the three result files. These are
+emulator fixtures, not S23 or overnight data. Physical `--flow sounds-settings`
+remains unrun. The changed movement-only test has not been rerun; its prior pass
+does not certify native tracking/audio ownership wiring.
+
+Open: S23 playback, file picker/persisted grants, long/background/screen-off and
+process-death behavior, service delivery races, route unplug/ducking, full native
+timer/fade, actual tracking ownership and listening/loop quality. Gain/fade
+arithmetic has fake-clock evidence; this cannot establish speaker output quality.
 Playlists, meditation, stereo binaural output, automatic sleep-detection fading,
 broader sound packs and external music services remain missing. No artificial
 waveforms, sleep stage graphs or classified sound events were added.

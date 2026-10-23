@@ -269,24 +269,68 @@ the test runner; no uninstall/clear-data runner is used.
 
 Full feature/screen parity remains incomplete. Remaining device constraints and
 implementation gaps are preserved in FEATURE-MATRIX and DESIGN-REVIEW.
-## Sleep sounds source/model milestone — 2026-10-23
+## Sleep sounds and final root rendering — 2026-10-23
 
-98 local unit tests pass, including 24 new fake-clock/fake-sink SoundPlaybackTest
-cases. Debug lint has 0 errors / 67 pre-existing warnings. Debug app, debug Android
-test APK and release builds pass. These checks do not verify Android audio focus,
-MediaPlayer, foreground-service delivery, provider access, audible quality or
-screen19 visual fidelity. No alarm, microphone, speaker, vibration, screen-off or
-developer-stop test was run. The phone remains absent from ADB.
+Verified code: `ce7f64c8abba3ddc57b92d1d33f06388976b7ea7`.
+[Native review run 39907851771](https://github.com/omeyerrato/SleepWell/actions/runs/39907851771)
+and [regular checks 39907849882](https://github.com/omeyerrato/SleepWell/actions/runs/39907849882)
+are successful. Original evidence is committed in
+[verification/2026-10-23-api36](verification/2026-10-23-api36/README.md): 17 unchanged
+PNG captures, environment, three instrumentation transcripts and SHA256 manifest.
+Only disposable emulator fixtures are public; no phone captures/backups were added.
 
-SoundSettingsFlowTest is a compiled, configuration-only future device check. It
-isolates preferences, checks selection/timer/fade/recreation/reopen and captures
-four native screens. It never taps Play, starts tracking or imports a document.
-TrackingFlowTest now also disables/restores the new automatic-mix flag so the old
-movement-only allowlist remains silent. Neither changed device test has a new
-connected-device result. Prior movement results do not certify this audio rewrite.
+- **98 local unit tests**, including 24 fake-clock/fake-sink SoundPlaybackTest
+  cases; 0 failures/errors/skips. These are separate from native integration.
+- **Lint: 0 errors / 68 warnings**. One new RtlHardcoded warning concerns the native
+  slider clip origin; RTL behavior remains unverified. Debug app/test APK and
+  release builds pass locally. The regular CI repeats unit/lint/debug checks.
+- **SoundSettingsFlowTest: 1 pass, 18.746 s**. Rain→Ocean, 45-minute timer, 10-minute
+  fade, recreation/reopen and exact preference equality in body/cleanup. It never
+  presses Play or imports a document. CI-only fixture setup asserts idle values
+  and initializes only absent inactive keys before baseline; the physical runner
+  does not enable this branch. No existing value is overwritten or excluded from
+  the equality comparison. Selection checks wait for the Ocean tile to become
+  selected; recreation waits for a distinct resumed instance with the original
+  destroyed; reopening waits for the actual Back action to destroy the screen.
+- **RootVisualTest: 1 pass, 23.113 s**. Four root tabs/details/platform Back and
+  three Tonight↔Wind-down transitions. The test observes light-glyph system-bar
+  flags for four successive observations before the final Wind-down capture;
+  it never sets appearance itself. Each detail requires unique destination
+  content and absence of the Settings dock, then a hardware frame commit and
+  UI idle before capture. This corrected a prior green test that saved Settings
+  under the Privacy filename. No screenshot pixels were edited.
+- **NativeSoundFlowTest: 1 pass, 26.323 s**. Explicit UI Play creates Android music
+  activity; playing time advances after Home. Notification PendingIntent actions
+  Pause/Play/Stop, frozen pause clock, live Ocean replacement, competing focus
+  pause/no-auto-resume, offset timer completion, unreadable-provider error and
+  explicit Rain retry pass. Native media activity, service and notification are
+  absent after Stop/completion/failure. Stream volume and preference values are
+  unchanged. No notification-shade/lock-screen touch test occurred.
 
-A manual GitHub emulator workflow limits instrumentation to SoundSettingsFlowTest
-and RootVisualTest, starts its isolated emulator with host audio disabled, and
-publishes only fixture captures plus environment metadata. It refuses physical
-devices and local execution. Its result is pending; source alone is not acceptance.
-See SOUND-PLAYBACK.md for source behavior, migration and remaining limitations.
+The one-minute timer check begins at a 57-second offset and covers the final
+three seconds. It is not full-minute fading, a long session or a listening test.
+Host audio output is disabled. Only this opt-in CI branch grants notification
+permission in its fresh emulator; root captures precede that grant. No physical
+phone audio, alarm, microphone, tracking, vibration, screen-off, reboot or
+Developer stop action ran. The S23 remains absent from ADB and has not received
+this APK. Changed TrackingFlowTest was compiled, not rerun; earlier movement
+results do not certify the new native sound ownership wiring.
+
+The strict screenshot gate caught black Wind-down status/gesture glyphs at
+cffc67b despite all three tests passing. Source now rejects posted appearance
+updates from detached/replaced roots and reapplies the current route on window
+focus. The new actual image shows white glyphs on plum and the Privacy image shows
+its actual summary rather than the Settings root; independent final review
+is recorded in DESIGN-REVIEW.md. Prior launch-helper and fresh-boot fixture
+failures were not called complete passes: task reuse was fixed by closing/draining
+owned Activities before reopening, and exact preservation exposed only the four
+missing idle defaults added by delayed BOOT_COMPLETED. The equality assertion
+was retained. Cleanup always restores the preferences factory and retains files
+whose readers cannot quiesce.
+
+Full 36-screen/feature parity remains incomplete. Native import/persisted grants,
+listening/loop quality, full timer/fade, long/background/process-death behavior,
+route changes/ducking, tracking ownership and S23 acceptance remain open. The
+imported-audio hero still uses Rain art and needs a neutral visual. No fabricated
+overnight chart, classified event or stage strip was substituted for missing data.
+See FEATURE-MATRIX.md and SOUND-PLAYBACK.md for exact scope and remaining work.

@@ -80,7 +80,7 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | Retention / favorite album / alternate formats | Delete old clips; preserve favorites; choose encodings | Partial: seven-day deletion at the next clip-saving session start and WAV format. Favorites, manual audio export and other encodings pending. |
 | Anti-snoring cues | Trigger mild audio/haptic/light response after detected snoring | Pending: requires a validated snore classifier first. Generic loud sounds do not trigger snoring treatment. |
 | Pair tracking | Compare synchronized movement streams to reduce partner crossover | Pending: peer pairing, clock alignment, filtering evaluation. |
-| Sleep sounds / lullabies | Loop relaxing audio, fade/stop by timer or sleep detection | Partial: native standalone primary/Brown mixer source, real gains, monotonic playing-time timer and fade, original ambience, local document import and notification controls. Silent model tests pass; native playback, provider access and screen19 visual evidence pending. Guided tracks, playlists and sleep-detected fade absent. |
+| Sleep sounds / lullabies | Loop relaxing audio, fade/stop by timer or sleep detection | Partial: native standalone primary/Brown mixer source, real gains, monotonic playing-time timer and fade, original ambience, local document import and notification controls. Silent model tests and API36 configuration/persistence pass, with a bounded screen19 composition comparison. Native integration verification is tracked separately in SOUND-PLAYBACK.md; provider access, listening quality and S23 verification remain open. Guided tracks, playlists and sleep-detected fade absent. |
 | Binaural beats / meditation | Generate stereo tones or play licensed narration | Pending. |
 | Lucid dreaming | Use subtle cues during an inferred dream window | Pending: no REM-trigger claims without a validated estimator. |
 | Jet-lag light intervention | Plan timed light exposure by destination/time zone | Pending: evidence-based scheduling, compatible light output, validation. |
@@ -105,7 +105,7 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | Personalized advice | Compare recent patterns with a longer baseline | Pending: no medical advice generated from a single short session. |
 | Achievements | Recognize personal routine milestones | Pending. |
 | Goal bank / wagers | Track target surplus over a commitment period | Pending for a free habit bank; financial wagering is not part of this app. |
-| Dashboard / tabs | Organize alarms, recordings and readiness | Partial: five original screens, dark palette, large-text-friendly scrolling, wide-screen width cap. User-arranged cards and themes pending. |
+| Dashboard / tabs | Organize alarms, recordings and readiness | Partial: four root destinations (Tonight/Alarms/Report/Settings), grouped dock, Changing light palettes and native detail routes. Bounded default-size visual evidence is in DESIGN-REVIEW.md; broad large-font/RTL/device coverage and user-arranged cards remain open. |
 | Global search | Search alarms, records, settings and help | Pending. |
 | Home widgets / shortcuts | Start a night or see the next alarm from launcher | Pending. |
 | Localization / accessibility | Localized strings, reader support, adaptive layouts | Partial: semantic platform controls and content descriptions. Full localization, large-font/RTL/device testing pending. |

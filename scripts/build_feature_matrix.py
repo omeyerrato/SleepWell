@@ -4,6 +4,7 @@ Statuses are implementation assessments; test source never implies a passing res
 """
 from pathlib import Path
 import json
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = "https://sleep.urbandroid.org/docs/"
@@ -140,7 +141,7 @@ for row in rows:
     elif title == "Alarm-only layout / skip occurrence / holiday skipping":
         row.update(status="partial", screens="04, root Alarms", implementation=["MainActivity.java", "Design.java"], validation="RootVisualTest: four selected dock destinations and read-only alarm list; no alarm behavior test", notes="Dedicated Alarms root with native compact expandable entries and configuration routes. Skip/restore occurrence and holiday rules remain missing.")
     elif title == "Dashboard / tabs":
-        row["validation"] = "RootVisualTest read-only four-tab selected-state pass12.274 s; final system-Back/recreation fix pending connected-device verification"
+        row["validation"] = "RootVisualTest read-only four-tab/detail/system-Back pass in 23.113 s on API36 CI emulator at ce7f64c; actual captures independently compared. Final S23 installation remains pending."
     elif title == "Bedtime reminder":
         row.update(status="partial", screens="13,15", implementation=PLAN_CODE+["Scheduler.java", "AlarmReceiver.java"], validation=PLAN_TESTS, notes="Native linked bedtime/wake/duration plan, wind-down and configurable advance; atomic revision-checked save, legacy minute precision, DST-aware reminder times, permission/error states. Actual OS notification delivery, reboot and denied-permission hardware flows remain unverified during the sleep-time restriction.")
     elif title == "Anti-scrolling guard":
@@ -151,17 +152,22 @@ for row in rows:
         row.update(status="partial", implementation=["AlarmActivity.java", "AlarmEditorActivity.java", "MainActivity.java"], validation="Source review and debug/release compilation only; user prohibited alarm testing", notes="Unavailable accelerometer or unavailable/unconfigured NFC falls back to Math. Developer stop is conditional on the debug flag and hidden in release. NFC enrollment remains reachable in Alarms → Alarm options. Configurable multi-task/QR fallback and travel bypass remain missing; new fallback/stop behavior deliberately untested.")
 
 # Native screen 19 source/model work, not a hardware playback or visual acceptance claim.
-SOUND_CODE = ["SoundMix.java", "SoundPreferences.java", "SoundPlayback.java", "SoundOwnership.java", "SleepSoundService.java", "SleepSoundsActivity.java", "TrackingService.java"]
+SOUND_CODE = ["SoundMix.java", "SoundPreferences.java", "SoundPlayback.java", "SoundOwnership.java", "SleepSoundService.java", "SleepSoundsActivity.java", "SoundSliders.java", "TrackingService.java"]
 for row in rows:
     if row["feature"] in ("Sleep sounds / lullabies", "Sound mixing / gains / fade / local playlist"):
         row.update(status="partial", screens="19,13 + import/error states", implementation=SOUND_CODE,
-            validation="SoundPlaybackTest 24 local fake-clock/fake-sink passes; SoundSettingsFlowTest compiled only. No Android playback, file-picker, background or new screenshot evidence.",
-            notes="Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Device visual/audio acceptance pending; provider metadata/grant and audible loop quality unverified. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.")
-    elif row["feature"] == "Dashboard / tabs":
-        row["validation"] += "; subsequent Sleep sounds Settings row changes root height and requires a new capture"
+            validation="SoundPlaybackTest 24 local fake-clock/fake-sink passes; SoundSettingsFlowTest API36 CI pass in 18.746 s: choices/recreation/reopen and exact personal preference preservation; eight sound-state native captures reviewed against board07. NativeSoundFlowTest API36 CI pass in 26.323 s: media activity/background, notification PendingIntent actions, focus pause, offset completion and unreadable-file retry. All three CI tests green at ce7f64c; no phone/listening/file-picker/full-fade acceptance.",
+            notes="Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Physical phone, import layout/provider grants, actual tracking ownership and audible loop quality remain unverified. Timer completion uses only the last three seconds via a 57-second offset. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.")
+
+test_paths = {path.stem: path.relative_to(ROOT).as_posix()
+              for source_set in ("test", "androidTest")
+              for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
 
 for n, row in enumerate(rows, 1):
     row["id"] = f"F{n:03}"
+    row["tests"] = [{"name": name, "path": test_paths[name]}
+                    for name in sorted(set(re.findall(r"\b\w+Test\b", row["validation"])))
+                    if name in test_paths]
 
 header = """# Phone feature matrix
 
@@ -182,7 +188,8 @@ This matrix supersedes the wearable roadmap in the older FEATURES.md.
 Baseline unit/lint/build passed before UI work. New device results and visual
 comparisons are recorded in DESIGN-REVIEW.md and VERIFICATION.md. Existing code links
 show the relevant group of implementation classes; exact narrower behavior and gaps
-are stated in the last column. Most features still need device-level verification.
+are stated in the last column. Named tests link to committed source; those links
+are not passing-run claims. Most features still need device-level verification.
 
 | ID / feature and manual | Screen(s) | Code | Validation | Status and remaining work |
 | --- | --- | --- | --- | --- |
@@ -190,7 +197,8 @@ are stated in the last column. Most features still need device-level verificatio
 for row in rows:
     code = ", ".join(f"[{name[:-5]}](../app/src/main/java/org/sleepwell/app/{name})" for name in row["implementation"]) or "—"
     notes = row["notes"].replace("|", "/")
-    header += f"| {row['id']} [{row['feature']}]({row['source']}) | {row['screens']} | {code} | {row['validation']} | **{row['status']}** — {notes} |\n"
+    validation = re.sub(r"\b\w+Test\b", lambda match: f"[{match[0]}](../{test_paths[match[0]]})" if match[0] in test_paths else match[0], row["validation"])
+    header += f"| {row['id']} [{row['feature']}]({row['source']}) | {row['screens']} | {code} | {validation} | **{row['status']}** — {notes} |\n"
 (ROOT / "docs/FEATURE-MATRIX.md").write_text(header, encoding="utf-8")
 (ROOT / "docs/feature-matrix.json").write_text(json.dumps(dict(reviewed="2026-10-23", features=rows), indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
 print(f"Persisted {len(rows)} phone-capable feature entries")

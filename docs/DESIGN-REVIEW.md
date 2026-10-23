@@ -210,7 +210,7 @@ integrations and smart lights remain open. No alarm/audio/microphone test ran.
 
 The user explicitly added **Alarms as a fourth root tab**, overriding the original
 three-tab dock. Fresh S23 images were reviewed independently against boards01,
-02,05,11 and12. The full36-screen/phone-feature gate remains **FAIL**.
+02,05,11 and12. The full 36-screen/phone-feature gate remains **FAIL**.
 
 Bounded visual passes at default S23 size: shared-path Tonight arc with no kink;
 centered icon/label/selected capsules for four roots; purple system-bar continuity;
@@ -240,20 +240,38 @@ to make it resemble the illustrative all-night board. Sonar, automatic starts,
 classification, routines/QR/walking, audio mixer/library, rhythm/travel,
 integrations/smart lights and other matrix gaps keep full acceptance open.
 
-## Screen 19 source revision — 2026-10-23
+## Screen 19 and final root comparison — 2026-10-23
 
-The native Sleep sounds detail now follows board07's hierarchy: dark plum detail
-header without the root dock, rain-window hero, title/description, round playback
-control and actual timer, primary/Brown gain rows, Timer/Fade and four illustrated
-library tiles. Supporting import and auto-tracking controls follow the library.
-Errors appear beside Play. Sliders have 48dp touch rows. All controls connect to
-the actual mixer/service or persisted choices; opening the screen remains silent.
+Actual code/captures: `ce7f64c`, [successful native CI](https://github.com/omeyerrato/SleepWell/actions/runs/39907851771).
+[Persistent originals and exact test scope](verification/2026-10-23-api36/README.md).
+Default API36 emulator at 1080×2316/density420, not the physical S23.
 
-The strict reviewer inspected all four new original images and the native source.
-Rain has the correct bedside/window/lamp composition and palette, but the assets
-are more textured than the flat references. This is **not a visual pass**: actual
-Android captures, default fold fit and supporting error states remain open.
-Adding the Sleep sounds row also changes Settings height and invalidates a final
-claim based solely on its older screenshot. The full36-screen/feature gate remains
-**FAIL**. A manual-only silent GitHub emulator workflow is being added to obtain
-actual Android captures without using the disconnected phone; it has no result yet.
+**Bounded PASS:** the independent strict reviewer inspected all 17 final same-head
+PNGs and the three raw transcripts/environment at ce7f64c. Rain/Ocean, playing,
+paused, file-error and recovered compositions pass. Header/hero hierarchy, thick rounded native tracks,
+white thumbs, timer/fade rows and selection outlines follow board07. Real values
+remain after recreation/reopen. Error appears once beside Play and the library
+remains usable. The recovery image clears the error and shows explicit playback.
+Artwork is original and more textured than the flat references; imported audio
+still reuses Rain art and needs a neutral visual. This remains a partial screen.
+
+Wind-down now uses a handless full-bleed phone/lamp scene, plum top blend, centered
+bars/pause glyphs and dividers only between rows. It shows the actual saved sound
+rather than tracking's legacy Off flag. The final cffc67b image failed because
+status icons and gesture handle were black on plum. That rejection was retained
+even though tests were green. 53f6748 rejects stale appearance callbacks from old
+roots and reapplies current route appearance on focus. Three repeated transitions
+and the fresh actual capture now show white glyphs on plum. The next image review
+also rejected Privacy when its filename held the Settings root: the test had
+matched shared row text. It now waits for unique destination content, no root
+dock and a committed frame before capture. The final image shows the actual
+Data & privacy summary. The independent final 17-image regression review accepts
+all 17 captured compositions. The earlier Wind-down bar and Privacy filename
+rejections are resolved by new actual captures, not edited pixels.
+
+The no-alarm constraint remains binding. These images and the short native test
+are not listening quality, import, S23 installation, long lifecycle, full fade,
+route/ducking or tracking-ownership certification. Large fonts/RTL and other
+configurations remain unverified. Empty Report is an honest supporting state,
+not an all-night measurement or classification result. Full 36-screen/feature
+completion remains **FAIL / rejected**.
