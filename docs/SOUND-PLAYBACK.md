@@ -51,10 +51,9 @@ No SQLite schema or recorded night is changed. Portable backup still excludes ap
 preferences, documents and their URI grants.
 
 Audio import uses Android's document picker and read-only `content://` access.
-Metadata validation and known file-size checks run off the UI thread. A provider
+A process-retained validation job reads a disposable private snapshot off the UI thread, bounded by actual bytes (100 MiB) even when a provider omits or misreports its size. Metadata parsing uses the local snapshot. A provider
 must support a persistable grant. Only successful validation changes the mix;
-failed or cancelled imports preserve the previous profile. The 100 MB size check
-uses provider metadata when supplied, not a bounded copy of an unknown-size stream.
+failed or cancelled imports preserve the previous profile. The visible screen exposes live bytes and a 48dp Cancel beside Play. Its 20-second deadline is polled while resumed; an uncooperative provider can retain a bounded worker/snapshot until it returns or the process dies. The next import removes abandoned private snapshots. Cancellation and late results never write preferences. A profile revision prevents importing over a newer mix edit. Rotation retains the job ID; process death asks for reselection and preserves the previous mix.
 Provider deletion, revoked access and unsupported decoding remain real playback
 errors. Source documents are never deleted. Old read grants are retained because
 the same document may be an existing alarm tone; grant cleanup with shared-reference
@@ -91,14 +90,15 @@ three seconds, not a full-minute fade. This is not a listening or loop-seam test
 All 17 final images pass the independent bounded comparison; exact acceptance
 is recorded in DESIGN-REVIEW.md. The earlier Wind-down bar and Privacy wrong-page
 rejections were corrected in source/capture synchronization before this final run.
-Imported audio still reuses the Rain hero;
-a neutral illustration remains a visual follow-up.
+The new imported-audio/Brown hero is a neutral record-player still life. Actual import-state captures await fresh native CI review.
 
 [Persistent evidence](verification/2026-10-23-api36/README.md) pins code,
 environment, all 17 original PNGs, hashes and the three result files. These are
 emulator fixtures, not S23 or overnight data. Physical `--flow sounds-settings`
 remains unrun. The changed movement-only test has not been rerun; its prior pass
 does not certify native tracking/audio ownership wiring.
+
+New picker/import verification is in progress; no native import pass is claimed until the dated evidence is recorded. Seven AudioCopyTest cases pass; source/security scope and exact diffs are in AUDIO-IMPORT-SECURITY.md.
 
 Open: S23 playback, file picker/persisted grants, long/background/screen-off and
 process-death behavior, service delivery races, route unplug/ducking, full native
