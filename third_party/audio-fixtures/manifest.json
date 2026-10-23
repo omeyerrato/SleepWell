@@ -37,6 +37,18 @@
       "duration_ms": 18819,
       "preview_sha256": "e2a8286c68496c44e7d6164bb1a47ced6e781dff463b4a5078b8d57c4d103484",
       "pcm_sha256": "ab425449b6f6b6af3986b992f3d14455461bcc63ad3a3eabf61554d4bf124d13"
+    },
+    {
+      "name": "speech-countdown",
+      "author": "toam (original voice recordings credited to cognito perceptu)",
+      "page": "https://freesound.org/people/toam/sounds/202750/",
+      "preview": "https://cdn.freesound.org/previews/202/202750_2214556-hq.mp3",
+      "license": "CC0-1.0",
+      "expected_broad_class": "speech",
+      "samples": 93962,
+      "duration_ms": 5872,
+      "preview_sha256": "825c059af893becb5b8cf73c31847b1747e63901e6f60fd3c30a5270cbef2f83",
+      "pcm_sha256": "4a62ee7002290bce1555a3995c87fd6d0138343e54f767c418efd356e2765880"
     }
   ]
 }

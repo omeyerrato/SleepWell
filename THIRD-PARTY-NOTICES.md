@@ -33,4 +33,4 @@ The bundled LiteRT CPU runtime uses com.google.ai.edge.litert:litert:2.3.0.
 
 ## Public CC0 classifier evaluation audio (test APK only)
 
-Two human-snoring recordings by SortsApostata and pencilgame1 and one conversation/crowd recording by ZyryTSounds were published under CC0 1.0. [Source pages, preview hashes, decoded PCM hashes and conversion details](third_party/audio-fixtures/manifest.json); [license/provenance](third_party/audio-fixtures/LICENSE.md). They are never bundled in the production APK and are never played by the tests.
+Two human-snoring recordings by SortsApostata and pencilgame1, a conversation/crowd recording by ZyryTSounds, and a solo count-down by toam (original voice credited to cognito perceptu) were published under CC0 1.0. [Source pages, preview hashes, decoded PCM hashes and conversion details](third_party/audio-fixtures/manifest.json); [license/provenance](third_party/audio-fixtures/LICENSE.md). They are never bundled in the production APK and are never played by the tests.
