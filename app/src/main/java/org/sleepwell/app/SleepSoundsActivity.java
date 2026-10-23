@@ -74,5 +74,5 @@ public final class SleepSoundsActivity extends Activity {
     @Override protected void onPause(){resumed=false;handler.removeCallbacks(refreshTick);super.onPause();}
     @Override protected void onDestroy(){handler.removeCallbacksAndMessages(null);reader.shutdown();if(audioImport!=null&&!isChangingConfigurations()){audioImport.cancel();audioImport.retire();audioImport=null;}super.onDestroy();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){finish();}
-    @Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus)getWindow().getDecorView().post(()->getWindow().getInsetsController().setSystemBarsAppearance(0,WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS));}
+    @Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus)Design.focusedSystemBars(this,true);}
 }

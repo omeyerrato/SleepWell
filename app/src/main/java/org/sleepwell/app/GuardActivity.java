@@ -47,6 +47,6 @@ public final class GuardActivity extends Activity {
     @Override public void finish(){if(token!=null){Ui.toast(this,"Please wait for this save to finish.");return;}super.finish();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){finish();}
     void awaitReaders(long timeoutMs)throws Exception{if(reader.isShutdown()){if(!reader.awaitTermination(timeoutMs,TimeUnit.MILLISECONDS))throw new TimeoutException("App list still loading");}else reader.submit(()->{}).get(timeoutMs,TimeUnit.MILLISECONDS);}
-    @Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus)getWindow().getDecorView().post(()->getWindow().getInsetsController().setSystemBarsAppearance(0,WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS));}
+    @Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus)Design.focusedSystemBars(this,true);}
     @Override protected void onDestroy(){handler.removeCallbacks(poll);handler.removeCallbacks(refreshPause);reader.shutdown();super.onDestroy();}
 }

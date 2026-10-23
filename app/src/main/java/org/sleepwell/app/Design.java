@@ -30,6 +30,7 @@ final class Design {
     }
     static LinearLayout col(Context c){return Ui.column(c);}
     static void systemBars(Activity a,boolean dark){androidx.core.view.WindowInsetsControllerCompat controller=androidx.core.view.WindowCompat.getInsetsController(a.getWindow(),a.getWindow().getDecorView());controller.setAppearanceLightStatusBars(!dark);controller.setAppearanceLightNavigationBars(!dark);}
+    static void focusedSystemBars(Activity a,boolean dark){View decor=a.getWindow().getDecorView();Runnable apply=()->{if(!a.isDestroyed()&&a.hasWindowFocus())systemBars(a,dark);};decor.post(apply);decor.postDelayed(apply,200);}
     static LinearLayout row(Context c){LinearLayout r=new LinearLayout(c);r.setGravity(Gravity.CENTER_VERTICAL);return r;}
     static void space(LinearLayout p,int height){p.addView(new View(p.getContext()),new LinearLayout.LayoutParams(1,dp(p.getContext(),height)));}
     static void line(LinearLayout p){View v=new View(p.getContext());v.setBackgroundColor(LINE);p.addView(v,new LinearLayout.LayoutParams(-1,dp(p.getContext(),1)));}
