@@ -1,5 +1,12 @@
 # Testing and device verification
 
+`AlarmProtectionFlowTest` is CI-emulator-only and requires explicit ciReview.
+It injects UUID-isolated preferences/database, never schedules its display-only
+alarm rows, and tests independent global settings, both links, disclosure Later
+and recreation. It checks Alarm on is visible above Save and preserves personal
+preferences/fixture rows. It never enables accessibility or runs an alarm/menu.
+See the dated [configuration evidence](verification/2026-10-23-alarm-protection/README.md).
+
 The app uses native Java Views, SQLiteOpenHelper, JUnit4, and AndroidX Test/UI
 Automator. No framework migration is required to preserve its working storage
 and services. The existing stack is retained. Pure scheduling/signal/task logic
@@ -16,7 +23,7 @@ theme cases, including midnight wrapping and bounded text scales. There are 18
 local test methods at that milestone. ChartSeriesTest adds five display-aggregation
 tests (dense average, explicit/implicit gaps, true zero/invalid values, short final
 epoch, finite extreme imports), bringing that milestone total to 23. TrackingClockTest (5), SessionTimingTest (3),
-ClipBudgetTest (2) and two more ChartSeriesTest cases brought that milestone total to 35. AudioCopyTest adds seven actual-byte limit, empty/short/stalled read, provider failure and cancellation cases. NightWindowTest adds ten clock-window, boundary, weekly and DST cases. The current local total is 115; see the dated
+ClipBudgetTest (2) and two more ChartSeriesTest cases brought that milestone total to 35. AudioCopyTest adds seven actual-byte limit, empty/short/stalled read, provider failure and cancellation cases. NightWindowTest adds ten clock-window, boundary, weekly and DST cases. PowerMenuGuardTest adds eleven metadata, unknown-window-ID, emergency exclusion, liveness, timing, cancellation and failed-action cases with fake callbacks. The current local total is 126; see the dated
 VERIFICATION entry for the exact native evidence.
 
 ## Personal phone: preserve installation and data
@@ -142,7 +149,7 @@ SoundPlaybackTest has 24 local fake-sink cases and never instantiates Android
 audio classes. SoundSettingsFlowTest is configuration-only and passes on the
 API36 CI emulator and physical S23; see dated VERIFICATION.md for exact heads. It never
 presses Play, starts tracking or imports a file. The manual Silent Android visual
-review workflow defaults to it, RootVisualTest and NightArcFlowTest on an ephemeral no-audio emulator.
+review workflow defaults to it, RootVisualTest, NightArcFlowTest and AlarmProtectionFlowTest on an ephemeral no-audio emulator.
 
 Optional workflow input `native_sounds=true` adds only NativeSoundFlowTest on that
 same disposable emulator. The Python runner refuses non-GitHub execution or any

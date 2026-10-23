@@ -55,9 +55,9 @@ See [Android lock task](https://developer.android.com/work/dpc/dedicated-devices
 [alarm lifecycle](https://developer.android.com/develop/background-work/services/alarms),
 and [interactive-window capability requirements](https://developer.android.com/reference/android/accessibilityservice/AccessibilityServiceInfo#FLAG_RETRIEVE_INTERACTIVE_WINDOWS).
 
-Validation pending: eleven pure policy tests exercise known/unknown/nested emergency
+Validation at `ab01ba59337e1e767b573a2e61ad40037eb6ed3c`: eleven pure policy tests pass for known/unknown/nested emergency
 classes, liveness, independent eligibility, delay/generation/focus cancellation,
 closure and failed BACK cooldown with fake callbacks. AlarmProtectionFlowTest
 uses isolated configuration and display-only alarm rows, saves no alarm and
 never launches AlarmActivity/Service, opens a power menu or changes access.
-Its native results/screenshots require actual execution before acceptance.
+Its native configuration/recreation test passes in 15.794 s on API36, including independent switches, reopening through both entry points, a visible 48dp Alarm-on control above Save, unchanged personal preferences and unchanged isolated alarm rows. The disclosure is a rounded cream/Inter dialog with explicit Later. All four silent configuration/navigation tests pass in [CI39954661465](https://github.com/omeyerrato/SleepWell/actions/runs/39954661465); [original images, raw logs and scope](verification/2026-10-23-alarm-protection/README.md) are retained. The physical S23 read-only root test passes in 19.215 s with exact personal preferences/database rows preserved. These tests do not certify accessibility enforcement, Samsung menu recognition or actual BACK delivery during an alarm.

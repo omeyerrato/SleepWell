@@ -1,5 +1,40 @@
 # Verification record
 
+## Global optional alarm protection — 2026-10-23
+
+Code `e8f4eb0` adds app-return/power-menu guards and the compact Alarms list;
+`bc034e4` fixes metadata-only unknown window IDs; `ab01ba5` themes the disclosure
+and keeps Alarm on above Save. [Final same-head native results and 30 original
+captures](verification/2026-10-23-alarm-protection/README.md) retain four raw
+passing transcripts/environment and hashes. CI39954661465 and normal Android
+CI39954614529 pass. Local: 126 tests, zero failures/errors/skips; lint zero
+errors/68 existing warnings; debug/test/release builds pass.
+
+AlarmProtectionFlowTest (15.794 s) exercises independent saved global switches,
+both entry points, disclosure Later, recreation, unchanged personal preferences
+and unchanged isolated display alarm rows. It asserts a checked 48dp Alarm-on
+control above Save. Other configuration regressions pass: roots 23.342 s, clock
+arc 38.697 s, stopped sound settings 21.255 s. Enabled fixture rows are never
+scheduled, saved through the editor or activated. No AlarmActivity/Service,
+power menu or accessibility enablement occurs. Eleven pure guard tests use
+fake callbacks. AOSP strips source IDs without content-retrieval capability;
+unknown IDs are therefore allowed with package/class/event-generation fencing.
+This reduces stale actions but cannot prove current input focus.
+
+The same source is installed on the S23. Read-only RootVisualTest passes in
+19.215 s with ten private actual captures. Immediate before/after archives
+prove exact personal preferences and every database row unchanged, integrity
+OK; only AndroidX profileInstalled changes among existing private files. Main
+remains open with scoped keep-awake. No global timeout/nav/power changes, phone
+alarm/audio/microphone/flashlight/vibration/tracking or screen-off test.
+
+The independent reviewer opened all 30 final emulator originals and passed only
+the bounded configuration/model/UI gate. Actual Samsung menu detection/BACK,
+alarm app-return and delivery remain unverified by the user's no-alarm request.
+Forced hardware restart, powered-off delivery and unknown OEM menus remain
+limitations. Full editor parity and 36-screen/feature completion are incomplete.
+
+
 ## Manual movement recording milestone — 2026-10-23
 
 Native tracking setup → live movement → Pause → activity recreation → Resume →

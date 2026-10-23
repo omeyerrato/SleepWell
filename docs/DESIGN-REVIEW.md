@@ -1,5 +1,29 @@
 # Strict design and behavior acceptance
 
+## Compact Alarms and protection configuration — 2026-10-23
+
+The independent strict reviewer opened all 30 actual `ab01ba5` emulator PNGs
+from CI39954661465 and checked all four passing logs/environment. The compact
+list and cream/brown supporting protection states receive a bounded PASS.
+The first square white/Roboto disclosure was rejected; the final owned dialog
+has rounded cream/Inter surfaces, readable copy and contained explicit choices.
+Moving Alarm on above Save makes its checked 48dp control fully visible. The
+editor scrolls to protection/delete and a partial Snooze row appears at the
+viewport edge; full board02 editor/reference acceptance is **not** granted.
+
+Off/on/recreated/global/power-only states show coherent independent settings.
+The other 22 captures show no new regression: white Rain/Ocean system bars,
+persisted selected mix/timer/fade, full-bleed Wind-down, actual Privacy and all
+nine legible clock-arc states. [Original evidence and scope](verification/2026-10-23-alarm-protection/README.md).
+Ten fresh private physical root images separately show continuous plum/white
+Samsung buttons, the compact stored alarm and correct selected dock states.
+
+Source and fake-callback policy review pass within metadata-only assumptions;
+actual accessibility enforcement, power menus, alarm/effects and Samsung
+delivery are unverified. The other requested features retain their own open
+gates. Full 36-screen and feature completion remains **FAIL / incomplete**.
+
+
 All 12 numbered boards in `design-concepts/2026-10-22-phone-app` were visually
 opened before implementation. ZIP entries were checked against the extracted
 files. BUILD-PROMPT.md and SCREEN-MAP.md were read in full. The user reconfirmed

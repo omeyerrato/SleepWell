@@ -512,11 +512,16 @@
         "AlarmProtectionActivity.java",
         "AlarmService.java"
       ],
-      "validation": "Current optional global source gate passes; isolated configuration/recreation screenshots pending. No active-alarm test authorized.",
+      "validation": "ab01ba5 source review and AlarmProtectionFlowTest 15.794 s pass: independent global switches, recreation, both entry points, exact personal preferences and unchanged fixture alarm rows. CI39954661465 actual captures retained. No active-alarm enforcement test authorized.",
       "status": "partial",
       "notes": "Global opt-in returns from other apps only while a real positive-id alarm service is active. Calls, Settings, emergency and system dialogs remain available; voluntary screen pinning stays separate. No uninstall trap.",
       "id": "F032",
-      "tests": []
+      "tests": [
+        {
+          "name": "AlarmProtectionFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmProtectionFlowTest.java"
+        }
+      ]
     },
     {
       "feature": "Prevent uninstall / shutdown",
@@ -529,11 +534,15 @@
         "AlarmProtectionActivity.java",
         "AlarmService.java"
       ],
-      "validation": "PowerMenuGuardTest 11 pure metadata/timing/liveness cases; source review bounded pass. Fresh native configuration evidence pending; Samsung menu operation deliberately untested.",
+      "validation": "PowerMenuGuardTest 11 pure metadata/timing/liveness passes, including unknown window IDs; ab01ba5 source review bounded pass. AlarmProtectionFlowTest 15.794 s configuration-only pass, CI39954661465 with eight actual captures. Samsung menu operation deliberately untested.",
       "status": "partial",
       "notes": "Best-effort global Prevent power off opt-in dismisses exact recognised AOSP/Samsung power-menu classes during a live real alarm. Delayed BACK is fenced by last observed window/focus events, not authoritative current input focus. Forced hardware restart, force-stop, powered-off delivery and unknown OEM menus remain possible; uninstall prevention is not implemented. No managed-device provisioning or screen-content retrieval.",
       "id": "F033",
       "tests": [
+        {
+          "name": "AlarmProtectionFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmProtectionFlowTest.java"
+        },
         {
           "name": "PowerMenuGuardTest",
           "path": "app/src/test/java/org/sleepwell/app/PowerMenuGuardTest.java"
@@ -625,12 +634,13 @@
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
         "MainActivity.java",
+        "AlarmEditorActivity.java",
         "Design.java",
         "Icons.java"
       ],
-      "validation": "RootVisualTest: four selected dock destinations and read-only alarm list at efa9cae, API36 CI 25.796 s and S23 19.187 s; no alarm behavior test",
+      "validation": "ab01ba5: RootVisualTest four selected dock destinations/API36 CI23.342 s and S23 19.215 s. AlarmProtectionFlowTest15.794 s opens fixture time/name editor, verifies checked48dp Alarm on above Save and both protection links. Actual images in verification/2026-10-23-alarm-protection; no scheduling/alarm behavior test.",
       "status": "partial",
-      "notes": "Dedicated Alarms root shows time, enable switch, name and days; per-alarm settings open inside the editor. Global optional protection is linked from each alarm. New compact list screenshots pending. Skip/restore occurrence and holiday rules remain missing.",
+      "notes": "Dedicated Alarms root shows time, enable switch, name and days; per-alarm settings open inside the editor. Global optional protection is linked from each alarm. Compact list and supporting configuration reviewed separately from full editor/reference parity. Skip/restore occurrence and holiday rules remain missing.",
       "id": "F039",
       "tests": [
         {
