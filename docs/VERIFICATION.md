@@ -724,3 +724,10 @@ skips, lint zero errors/80 warnings, debug/test/release builds in2m57s.
 New SoundCategoryFixtureEvaluationTest requires actual eight licensed PCM
 production positives and cross-class negatives before accepting any new labels.
 The scope remains partial; no personal phone actions or effects ran.
+
+Final integrated54b1395 adds regional decimal-digit typed answers and two
+regressions:387 pure tests across44 suites, zero failures/errors/skips, lint zero
+errors/80 warnings, debug/test/release builds all pass1m4s. Next default native
+gate is37 classes/54 methods/184 required original PNGs plus mandatory eight
+real-PCM category JSON results. The broader sound categories are candidates;
+passing seven pure policy tests does not establish actual recognizer positives.

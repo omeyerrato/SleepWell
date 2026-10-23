@@ -10,7 +10,13 @@ main through cherry-picks. User files and private phone backups remain untouched
 | Strict visual reviewer | Original screenshot rejection, custom record calendars, measured clock chart axes; independent Walk/headphone source review |
 | Primary | Integration, original pinned icons, shared routes, full builds/tests/lint, CI and durable evidence |
 
-Latest terminal CI40033681541 at64ae8d2:30/31 classes pass,148 originals.
+Latest terminal CI40037791812 atbb582cf:33/34 classes pass,175 originals.
+Global favorites4 native methods, missing-night2 and chart1 pass.41 originals
+were individually reviewed and preserved in favorites-missing-night-chart;
+chart focus slabs and denied-state focus body remain visually rejected. Only
+the calendar native journey fails after5/7 images; precise failure diagnostics
+were absent, so source now scopes/waits the owned dialogs and preserves errors.
+Prior terminal CI40033681541 at64ae8d2:30/31 classes pass,148 originals.
 Walk6, headphone-route5 and privacy5 originals individually reviewed and stored
 in verification/2026-10-24-walk-headphone-privacy with original-byte hashes.
 Privacy now passes late journal reentry; only the initial chart-fixture focus
@@ -32,7 +38,10 @@ ran. This installation is not physical UI/output acceptance.
 
 The new source candidate adds reviewed phone-idle missing nights, a global
 favorite-sound album, chart-fixture focus repair and reference styling fixes.
-Next inert gate:34 classes,51 methods,177 required original PNGs;
+Latest local54b1395 passes387 pure tests, zero failures/errors/skips,
+lint zero errors/80 warnings and debug/test/release builds1m4s. Graded math,
+regional typed digits, shared stale-trim checks and an eight-PCM sound-category
+candidate are integrated. Next inert gate:37 classes,54 methods,184 originals;
 actual SQLite/WAV/ZIP bytes and fake output/provider/sensor/scheduler ports.
 No native playback option is enabled by default. Local Gradle work is serialized
 with one worker to fit memory; independent coding/review remains parallel.
