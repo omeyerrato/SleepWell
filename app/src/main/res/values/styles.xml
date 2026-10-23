@@ -8,5 +8,5 @@
         <item name="android:windowBackground">#FCF7EF</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
-    <string name="guard_description">Optional bedtime and alarm guard. SleepWell sees only which app is foreground, never its text. It redirects selected distracting apps during your bedtime window, and can return you to an active wake-up challenge. Android Settings, calls and emergency access remain available. Enable this only if you want these controls; disable it here at any time.</string>
+    <string name="guard_description">Optional bedtime and alarm guard. SleepWell uses only window package and class names, not screen contents or typed text. It can redirect distracting apps during bedtime and return to a ringing challenge. Optional power-menu protection dismisses recognised shutdown menus only during a real alarm; forced hardware restart remains possible. Settings, calls and emergency screens remain accessible. Enable this only if you want these controls; disable the service here at any time.</string>
 </resources>

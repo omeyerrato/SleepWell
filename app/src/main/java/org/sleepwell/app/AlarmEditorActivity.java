@@ -40,6 +40,7 @@ public class AlarmEditorActivity extends Activity {
         Design.item(body,"tasks","Challenges",alarm.challenge+" × "+alarm.difficulty,()->go("challenge"));Design.line(body);
         Design.item(body,"sound","Sound",toneName(alarm.tone),()->go("sound"));Design.line(body);
         Design.item(body,"alarm","Snooze",alarm.snoozeMinutes+" min",()->go("snooze"));Design.line(body);
+        Design.item(body,"shield","Alarm protection","All alarms",()->startActivity(RecordUi.intent(this,AlarmProtectionActivity.class)));Design.line(body);
         Design.space(body,20);Design.toggle(body,"Alarm on","Rings at your chosen local time",alarm.enabled,on->alarm.enabled=on);
         Design.space(body,16);Design.fixedAction(body,"Save alarm",this::save);
         if(store.alarm(alarm.id)!=null){Design.button(body,"Delete alarm",false,()->new AlertDialog.Builder(this).setTitle("Delete this alarm?").setPositiveButton("Delete",(d,w)->{for(String action:new String[]{Scheduler.FIRE,Scheduler.SNOOZE,Scheduler.CHECK,Scheduler.BACKUP})Scheduler.cancel(this,alarm.id,action);store.deleteAlarm(alarm.id);finish();}).setNegativeButton("Keep",null).show());}

@@ -504,31 +504,41 @@
     },
     {
       "feature": "Prevent leaving the alarm",
-      "screens": "04–12,26",
+      "screens": "04–12, Alarm protection",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
-        "Alarm.java",
-        "Scheduler.java",
-        "AlarmService.java",
-        "AlarmActivity.java",
-        "AlarmEditorActivity.java"
+        "BedtimeGuard.java",
+        "AlarmProtections.java",
+        "AlarmProtectionActivity.java",
+        "AlarmService.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "Current optional global source gate passes; isolated configuration/recreation screenshots pending. No active-alarm test authorized.",
       "status": "partial",
-      "notes": "Partial: voluntary accessibility return and optional Android screen pinning. Calls, Settings and emergencies remain accessible.",
+      "notes": "Global opt-in returns from other apps only while a real positive-id alarm service is active. Calls, Settings, emergency and system dialogs remain available; voluntary screen pinning stays separate. No uninstall trap.",
       "id": "F032",
       "tests": []
     },
     {
       "feature": "Prevent uninstall / shutdown",
-      "screens": "04–12,26",
+      "screens": "Alarm protection",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "blocked",
-      "notes": "Out of scope as an absolute guarantee. Ordinary apps cannot defeat force-stop, hardware shutdown, recovery, or OS controls. No coercive uninstall trap is implemented.",
+      "implementation": [
+        "PowerMenuGuard.java",
+        "BedtimeGuard.java",
+        "AlarmProtections.java",
+        "AlarmProtectionActivity.java",
+        "AlarmService.java"
+      ],
+      "validation": "PowerMenuGuardTest 10 pure metadata/timing/liveness cases; source review bounded pass. Fresh native configuration evidence pending; Samsung menu operation deliberately untested.",
+      "status": "partial",
+      "notes": "Best-effort global Prevent power off opt-in dismisses exact recognised AOSP/Samsung power-menu classes during a live real alarm. Delayed BACK is fenced by last observed window/focus events, not authoritative current input focus. Forced hardware restart, force-stop, powered-off delivery and unknown OEM menus remain possible; uninstall prevention is not implemented. No managed-device provisioning or screen-content retrieval.",
       "id": "F033",
-      "tests": []
+      "tests": [
+        {
+          "name": "PowerMenuGuardTest",
+          "path": "app/src/test/java/org/sleepwell/app/PowerMenuGuardTest.java"
+        }
+      ]
     },
     {
       "feature": "Lock-screen/full-screen alarm",
@@ -620,7 +630,7 @@
       ],
       "validation": "RootVisualTest: four selected dock destinations and read-only alarm list at efa9cae, API36 CI 25.796 s and S23 19.187 s; no alarm behavior test",
       "status": "partial",
-      "notes": "Dedicated Alarms root with native compact expandable entries and configuration routes. Skip/restore occurrence and holiday rules remain missing.",
+      "notes": "Dedicated Alarms root shows time, enable switch, name and days; per-alarm settings open inside the editor. Global optional protection is linked from each alarm. New compact list screenshots pending. Skip/restore occurrence and holiday rules remain missing.",
       "id": "F039",
       "tests": [
         {

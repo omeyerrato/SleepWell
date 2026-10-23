@@ -9,6 +9,7 @@ import android.os.*;
 import org.json.*;
 
 public class AlarmService extends Service {
+    static volatile boolean active;
     private MediaPlayer player; private Vibrator vibrator; private AudioManager audio;
     private PowerManager.WakeLock wake; private final Handler handler=new Handler(Looper.getMainLooper());
     private int originalVolume=-1, lastVolume=-1; private long started; private Alarm alarm;private boolean escalated=false;
@@ -26,6 +27,7 @@ public class AlarmService extends Service {
             .setCategory(Notification.CATEGORY_ALARM).setVisibility(Notification.VISIBILITY_PUBLIC).setOngoing(true)
             .setContentIntent(launch).setFullScreenIntent(launch,true).build();
         startForeground(101,notification,ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
+        active=true;
         wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:alarm"); wake.acquire(2*60*60*1000L);
         audio=getSystemService(AudioManager.class); originalVolume=audio.getStreamVolume(AudioManager.STREAM_ALARM);
         started=SystemClock.elapsedRealtime();
@@ -68,6 +70,7 @@ public class AlarmService extends Service {
         Prefs.put(c,"ringing",false);Prefs.put(c,"forceBackup",false);c.stopService(new Intent(c,AlarmService.class));
     }
     @Override public void onDestroy() {
+        active=false;
         handler.removeCallbacksAndMessages(null);
         if(player!=null) { player.release(); player=null; } if(vibrator!=null) vibrator.cancel();
         if(audio!=null && originalVolume>=0 && audio.getStreamVolume(AudioManager.STREAM_ALARM)==lastVolume) audio.setStreamVolume(AudioManager.STREAM_ALARM,originalVolume,0);
