@@ -54,14 +54,14 @@ public class AlarmActivity extends Activity implements SensorEventListener {
                 target=position.task.rounds*5;Ui.heading(card,"Move into your morning",24);progress.setText(shakes+" / "+target+" deliberate shakes");progress.setVisibility(View.VISIBLE);
                 Ui.text(card,"Hold the phone securely. A gentle shake counts at most once every half second.");
                 sensors=getSystemService(SensorManager.class);Sensor accel=sensors.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-                if(accel==null || resumed&&!sensors.registerListener(this,accel,SensorManager.SENSOR_DELAY_GAME)) {Design.text(card,"Motion sensor unavailable. Solve this instead.",14,400,Design.MUTED);math(card,expectedRun,expected);}break;
+                if(accel==null || resumed&&!registerShake(accel)) {Design.text(card,"Motion sensor unavailable. Solve this instead.",14,400,Design.MUTED);math(card,expectedRun,expected);}break;
             case "Memory": memory(card,expectedRun,expected);break;
             case "Sequence": sequence(card,expectedRun,expected);break;
             case "NFC":
                 Ui.heading(card,"Get up. Tap your tag.",24);Ui.text(card,"Use the NFC tag you enrolled in Alarm options. Keep it across the room.");
                 nfc=NfcAdapter.getDefaultAdapter(this);
                 if(nfc==null || !nfc.isEnabled() || Prefs.text(this,"nfcTag","").isEmpty()) {Design.text(card,"NFC unavailable. Solve this instead.",14,400,Design.MUTED);math(card,expectedRun,expected);}
-                else if(resumed)nfc.enableReaderMode(this,tag->{String id=hex(tag.getId());if(id.equals(Prefs.text(this,"nfcTag",""))) runOnUiThread(()->advance(expectedRun,expected));else runOnUiThread(()->Ui.toast(this,"That is not your enrolled tag."));},NfcAdapter.FLAG_READER_NFC_A|NfcAdapter.FLAG_READER_NFC_B|NfcAdapter.FLAG_READER_NFC_F|NfcAdapter.FLAG_READER_NFC_V|NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK,null);break;
+                else if(resumed)try{nfc.enableReaderMode(this,tag->{String id=hex(tag.getId());if(id.equals(Prefs.text(this,"nfcTag",""))) runOnUiThread(()->advance(expectedRun,expected));else runOnUiThread(()->Ui.toast(this,"That is not your enrolled tag."));},NfcAdapter.FLAG_READER_NFC_A|NfcAdapter.FLAG_READER_NFC_B|NfcAdapter.FLAG_READER_NFC_F|NfcAdapter.FLAG_READER_NFC_V|NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK,null);}catch(RuntimeException unavailable){Design.text(card,"NFC reader could not start. Solve this instead.",14,400,Design.MUTED);math(card,expectedRun,expected);}break;
             default:
                 if(!position.task.type.equals("Retype")){math(card,expectedRun,expected);break;}
                 Design.text(card,"Retype to dismiss",22,600,Design.INK).setGravity(Gravity.CENTER);
@@ -83,6 +83,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
         feedback=Design.text(card,"Select an answer",13,400,Design.MUTED);feedback.setGravity(Gravity.CENTER);Design.space(card,6);
         Design.button(card,"Check answer",true,()->{if(selected==null){feedback.setText("Choose an answer first");return;}if(mathTask.accepts(selected)){advance(expectedRun,expected);}else{feedback.setText("Try again · alarm is still ringing");feedback.setTextColor(0xffb33120);feedback.announceForAccessibility("Try again");}});
     }
+    private boolean registerShake(Sensor accelerometer){try{return sensors.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_GAME);}catch(RuntimeException unavailable){return false;}}
     private void restoreShakes(){shakes=occurrence.equals(Prefs.text(this,"challengeShakeRun",""))&&completed==Prefs.number(this,"challengeShakeUnit",-1)?Prefs.number(this,"challengeShakeCount",0):0;}
     private void advance(String expectedRun,int expected) {synchronized(Scheduler.class){if(!expectedRun.equals(occurrence))return;if(!AlarmService.current(this,expectedRun)){finish();return;}int next=routine.advance(completed,expected);if(next==completed)return;completed=next;Prefs.of(this).edit().putInt("challengeCompleted",completed).putString("mathTask","").putString("retypeTask","").putInt("challengeShakeCount",0).putInt("challengeShakeUnit",completed).putString("challengeShakeRun",occurrence).apply();shakes=0;selected=null;if(routine.at(completed)==null)dismiss();else build();}}
     private void memory(LinearLayout card,String expectedRun,int expected) {
