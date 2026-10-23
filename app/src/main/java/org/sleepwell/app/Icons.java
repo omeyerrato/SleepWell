@@ -51,7 +51,7 @@ final class Icons {
             case "check" -> R.drawable.ic_phosphor_check_regular;
             case "search" -> R.drawable.ic_phosphor_magnifying_glass_regular;
             case "close" -> R.drawable.ic_phosphor_x_regular;
-            case "more" -> R.drawable.ic_phosphor_dots_three_vertical_fill;
+            case "more" -> R.drawable.ic_phosphor_dots_three_vertical_regular;
             case "trash" -> R.drawable.ic_phosphor_trash_regular;
             case "external" -> R.drawable.ic_phosphor_arrow_square_out_regular;
             case "alarm" -> R.drawable.ic_phosphor_alarm_regular;

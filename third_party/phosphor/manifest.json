@@ -4,7 +4,6 @@
   "sha256": {
     "LICENSE": "b5b1f1da112d18ea2147decfd48ddc1bf2b5aeb6c265381579340e95b15a2bb2",
     "assets/fill/chart-bar-fill.svg": "a417cc075c304374043e7d47f7622606b15f14e4c65663fd7a8a9898d768362a",
-    "assets/fill/dots-three-vertical-fill.svg": "16ed29e032fff6d9744c64521cf793a68e15f00ceb72efd4286bf40bc87a2530",
     "assets/fill/gear-six-fill.svg": "dc303bf88571d9aa8d56c30d2630303aa7aba4ca21c21010be3549d6c17666ce",
     "assets/fill/github-logo-fill.svg": "35b2036490005bcb95a68d07d43d441ae585c6c6dde0e902bb3daf0ddbc615b9",
     "assets/fill/moon-fill.svg": "099574dba1662cf9cdff50a1859ae8cc605a9b6a10bace00d89a0f52205e76df",
@@ -28,6 +27,7 @@
     "assets/regular/cloud-rain.svg": "87b26b17df248c1863be81a1798933ccb5ad42b41afd2ffdef4a38c987588c5f",
     "assets/regular/cloud.svg": "a72f1f201500924d20a30d7190a3277e411ab526d5b71a6f6a91b0812a09c669",
     "assets/regular/device-mobile.svg": "db1f74b205590c98d61f61dff7b1f702eddd5a9e15eec7d9681798054ccb757a",
+    "assets/regular/dots-three-vertical.svg": "85fdecd2193efcd7e80a83607b66d2680fef8f3d1e93380c26f9851b24edbd01",
     "assets/regular/exclamation-mark.svg": "cf71cf4605b70245a4d203979e0f83085ac83826dc7b4901672383a1dcebdb14",
     "assets/regular/faders-horizontal.svg": "9d821bb567dd1f1a467e054160b2fd390a6c7ec46961914127538d4e92540326",
     "assets/regular/file-text.svg": "9a580a038cce9f6dd223597864abe1b5c5c03bf8176d2f7171574598468b16f7",
@@ -242,7 +242,7 @@
     },
     "more": {
       "name": "dots-three-vertical",
-      "weight": "fill"
+      "weight": "regular"
     },
     "trash": {
       "name": "trash",

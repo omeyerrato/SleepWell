@@ -42,7 +42,7 @@ ICONS = {
     "tracking": ("spinner-gap", "regular"), "sonar": ("broadcast", "regular"),
     "stop": ("stop", "fill"), "check": ("check", "regular"),
     "search": ("magnifying-glass", "regular"), "close": ("x", "regular"),
-    "more": ("dots-three-vertical", "fill"), "trash": ("trash", "regular"),
+    "more": ("dots-three-vertical", "regular"), "trash": ("trash", "regular"),
     "external": ("arrow-square-out", "regular"), "alarm": ("alarm", "regular"),
     "help": ("question", "regular"),
 }
