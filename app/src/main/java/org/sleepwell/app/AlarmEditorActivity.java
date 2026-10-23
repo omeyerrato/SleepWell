@@ -12,7 +12,7 @@ import java.util.*;
 
 /** A draft survives settings navigation and recreation; only Save alarm writes user data. */
 public class AlarmEditorActivity extends Activity {
-    private Alarm alarm;private String route="edit";private Store store;
+    private Alarm alarm;private String route="edit";private Store store;private Dialog settingsDialog;
     @Override public void onCreate(Bundle state){super.onCreate(state);store=Records.open(this);RecordUi.review(this);
         try{alarm=Alarm.read(new JSONObject(state!=null?state.getString("draft"):getIntent().getStringExtra("alarm")));}
         catch(Exception e){finish();return;}
@@ -21,11 +21,11 @@ public class AlarmEditorActivity extends Activity {
         render();
     }
     @Override public void onSaveInstanceState(Bundle out){super.onSaveInstanceState(out);out.putString("draft",alarm.json().toString());out.putString("route",route);}
-    private void back(){if(!route.equals("edit")){route="edit";render();}else finish();}
+    private void back(){if(!route.equals("edit")){route=route.equals("gentle")?"sound":"edit";render();}else finish();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){back();}
     private void go(String next){route=next;render();}
     private void render(){LinearLayout body=Design.page(this,false,null,null);
-        switch(route){case "smart":smart(body);break;case "sound":sound(body);break;case "snooze":snooze(body);break;case "challenge":challenges(body);break;default:editor(body);}
+        switch(route){case "smart":smart(body);break;case "sound":sound(body);break;case "gentle":gentle(body);break;case "snooze":snooze(body);break;case "challenge":challenges(body);break;default:editor(body);}
     }
     private void editor(LinearLayout body){Design.header(body,"Edit alarm",this::back);Design.space(body,28);
         Button time=Design.button(body,displayTime(this,alarm),false,()->new TimePickerDialog(this,(v,h,m)->{alarm.hour=h;alarm.minute=m;render();},alarm.hour,alarm.minute,android.text.format.DateFormat.is24HourFormat(this)).show());
@@ -63,11 +63,24 @@ public class AlarmEditorActivity extends Activity {
     private void sound(LinearLayout body){Design.header(body,"Alarm sound",this::back);
         String[] tones={"daybreak","pulse","system"};for(String t:tones){Design.item(body,"sound",toneName(t),alarm.tone.equals(t)?"Selected":"",()->{alarm.tone=t;render();});Design.line(body);}
         Design.item(body,"sound","Import audio file",alarm.tone.startsWith("content:")?"Selected":"",()->startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).setType("audio/*").addCategory(Intent.CATEGORY_OPENABLE),1));
-        Design.space(body,16);range(body,"Alarm volume %",alarm.volume,10,100,n->alarm.volume=n);range(body,"Volume ramp (seconds)",alarm.rampSeconds,0,120,n->alarm.rampSeconds=n);
-        Design.toggle(body,"Vibration",null,alarm.vibrate,on->alarm.vibrate=on);
+        Design.space(body,16);range(body,"Alarm volume %",alarm.volume,10,100,n->alarm.volume=n);
+        Design.toggle(body,"Extra loud","Use maximum device alarm volume. Keeps your normal volume choice.",alarm.extraLoud,on->alarm.extraLoud=on);Design.space(body,12);
+        Design.item(body,"sun","Gentle wake-up",duration(alarm.rampSeconds),()->go("gentle"));Design.line(body);
         Design.space(body,16);Design.text(body,"Quiet test rings in 10 seconds, capped at 25%, without vibration or loud backup. Your draft is not saved by the test.",14,400,Design.MUTED);
         Design.button(body,"Test a quiet alarm",false,()->{try{Scheduler.test(this,alarm);Ui.toast(this,"Quiet test scheduled in 10 seconds");}catch(SecurityException e){Ui.toast(this,e.getMessage());}});
         Design.button(body,"Use "+toneName(alarm.tone),true,()->go("edit"));
+    }
+    private static String duration(int seconds){return seconds==0?"Off":seconds<60?seconds+" sec":seconds%60==0?seconds/60+" min":seconds/60+" min "+seconds%60+" sec";}
+    private void choice(LinearLayout body,String icon,String title,String description,int value,int[] choices,java.util.function.IntConsumer change){PlanActivity.detail(body,icon,title,description,duration(value),()->{if(settingsDialog!=null&&settingsDialog.isShowing()||isFinishing())return;Dialog dialog=new Dialog(this);dialog.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);ScrollView scroll=new ScrollView(this);LinearLayout options=Design.col(this);Design.pad(options,20,20);options.setBackground(Design.shape(this,Design.CREAM,24));scroll.addView(options);dialog.setContentView(scroll);Design.text(options,title,22,600,Design.INK);for(int seconds:choices)Design.button(options,duration(seconds),seconds==value,()->{change.accept(seconds);dialog.dismiss();render();});Design.button(options,"Cancel",false,dialog::dismiss);settingsDialog=dialog;dialog.setOnDismissListener(ignored->{if(settingsDialog==dialog)settingsDialog=null;});dialog.show();dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));dialog.getWindow().setLayout(getResources().getDisplayMetrics().widthPixels-Design.dp(this,32),android.view.ViewGroup.LayoutParams.WRAP_CONTENT);});}
+    private void gentle(LinearLayout body){Design.header(body,"Gentle wake-up",()->go("sound"));Design.text(body,"Gradually increase the alarm volume to wake you up more comfortably.",15,400,Design.MUTED);Design.space(body,18);
+        choice(body,"sound","Volume ramp","Ramp duration",alarm.rampSeconds,new int[]{0,30,60,120,300,600,1440},n->alarm.rampSeconds=n);
+        body.addView(new AlarmRampChart(this,alarm),new LinearLayout.LayoutParams(-1,Design.dp(this,225*Math.max(1,Design.fontScale(this)))));Design.space(body,16);Design.line(body);
+        choice(body,"clock","Sound delay","Wait before starting the alarm sound",alarm.soundDelaySeconds,new int[]{0,30,60,120,180,300,600,1440},n->alarm.soundDelaySeconds=n);Design.line(body);Design.space(body,12);
+        Design.toggle(body,"Vibration","Vibrate from the start of the alarm",alarm.vibrate,on->alarm.vibrate=on);Design.space(body,12);
+        Design.toggle(body,"Screen sunrise","Gradually brighten the alarm screen",alarm.sunrise,on->alarm.sunrise=on);Design.space(body,12);
+        Design.toggle(body,"Flashlight wake-up","Keep the rear light on while the alarm rings",alarm.flashlight,on->alarm.flashlight=on);Design.space(body,12);
+        Design.text(body,"Sunrise follows the alarm's start time. The volume ramp follows the sound delay; late playback joins the curve already in progress. Add a delay for a quiet light lead-in. Flashlight availability depends on your phone.",12,400,Design.MUTED);Design.space(body,16);
+        Design.fixedAction(body,"Save changes",()->go("sound"));
     }
     private void snooze(LinearLayout body){Design.header(body,"Snooze & backup",this::back);Design.text(body,"Snooze settings",21,600,Design.INK);Design.space(body,16);
         range(body,"Snooze duration (minutes)",alarm.snoozeMinutes,1,15,n->alarm.snoozeMinutes=n);range(body,"Maximum snoozes",alarm.snoozeLimit,0,5,n->alarm.snoozeLimit=n);
@@ -77,13 +90,14 @@ public class AlarmEditorActivity extends Activity {
         Design.text(body,"After dismissal, confirm on Tonight before this delay expires or the challenge rings again.",14,400,Design.MUTED);Design.button(body,"Use settings",true,()->go("edit"));
     }
     private void range(LinearLayout p,String title,int value,int min,int max,java.util.function.IntConsumer change){TextView label=Design.text(p,title+" · "+value,15,500,Design.INK);SeekBar seek=new SeekBar(this);seek.setContentDescription(title);seek.setProgressTintList(android.content.res.ColorStateList.valueOf(Design.BROWN));seek.setThumbTintList(android.content.res.ColorStateList.valueOf(Design.BROWN));seek.setMax(max-min);seek.setProgress(value-min);seek.setMinimumHeight(Design.dp(this,48));p.addView(seek,new LinearLayout.LayoutParams(-1,Design.dp(this,56)));seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar b,int n,boolean user){label.setText(title+" · "+(n+min));if(user)change.accept(n+min);}public void onStartTrackingTouch(SeekBar b){}public void onStopTrackingTouch(SeekBar b){}});}
-    private void save(){if(alarm.enabled&&!Scheduler.allowed(this)){new AlertDialog.Builder(this).setTitle("Allow exact alarms").setMessage("Android requires Alarms & reminders access to schedule this alarm. Your draft is preserved.").setPositiveButton("Open settings",(d,w)->startActivity(new Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,Uri.parse("package:"+getPackageName())))).setNegativeButton("Keep editing",null).show();return;}
+    private void save(){if(alarm.enabled&&!AlarmScheduling.port.allowed(this)){new AlertDialog.Builder(this).setTitle("Allow exact alarms").setMessage("Android requires Alarms & reminders access to schedule this alarm. Your draft is preserved.").setPositiveButton("Open settings",(d,w)->startActivity(new Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,Uri.parse("package:"+getPackageName())))).setNegativeButton("Keep editing",null).show();return;}
         if(alarm.challenge.equals("NFC")&&Prefs.text(this,"nfcTag","").isEmpty()){Ui.toast(this,"Enroll an NFC tag in Alarms → Alarm options before using this challenge.");return;}
         // Schedule first so a denied OS request cannot silently enable an unscheduled alarm in storage.
-        try{Prefs.put(this,"lastOccurrence_"+alarm.id,0L);Scheduler.schedule(this,alarm);store.save(alarm);finish();}catch(SecurityException e){Ui.toast(this,e.getMessage());}
+        try{AlarmScheduling.port.schedule(this,alarm);store.save(alarm);finish();}catch(SecurityException e){Ui.toast(this,e.getMessage());}
     }
     static String displayTime(android.content.Context c,Alarm a){return Design.clock(c,a.hour*60+a.minute);}
     static String toneName(String tone){return tone.startsWith("content:")?"My audio":tone.equals("pulse")?"Pulse":tone.equals("system")?"Device alarm":"Daybreak";}
     @Override protected void onActivityResult(int r,int result,Intent data){super.onActivityResult(r,result,data);if(r==1&&result==RESULT_OK&&data!=null&&data.getData()!=null){try{getContentResolver().takePersistableUriPermission(data.getData(),Intent.FLAG_GRANT_READ_URI_PERMISSION);alarm.tone=data.getData().toString();render();}catch(SecurityException e){Ui.toast(this,"Could not retain access to this audio. Choose another file.");}}}
-    @Override protected void onDestroy(){if(store!=null)store.close();super.onDestroy();}
+    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
+    @Override protected void onDestroy(){if(settingsDialog!=null)settingsDialog.dismiss();if(store!=null)store.close();super.onDestroy();}
 }

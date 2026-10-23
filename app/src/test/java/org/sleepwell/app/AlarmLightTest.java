@@ -1,0 +1,17 @@
+package org.sleepwell.app;
+
+import java.util.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class AlarmLightTest {
+    @Test public void sunriseRestoresOnPauseAndContinuesOccurrenceAcrossResume(){Alarm a=new Alarm(1);a.sunrise=true;a.soundDelaySeconds=120;List<Float> values=new ArrayList<>();int[] restores={0};AlarmSunrise s=new AlarmSunrise(new AlarmWakePolicy(a),new AlarmSunrise.Port(){public void brightness(float value){values.add(value);}public void restore(){restores[0]++;}});s.resume(0);assertEquals(.02,values.get(0),.00001);s.tick(60000);assertEquals(.51,values.get(1),.00001);s.pause();s.tick(90000);assertEquals(2,values.size());s.resume(120000);assertEquals(1,values.get(2),0);s.close();s.resume(0);assertEquals(2,restores[0]);assertEquals(3,values.size());}
+    @Test public void quietOrDisabledSunriseNeverTouchesWindow(){for(int id:new int[]{-1,1}){Alarm a=new Alarm(id);a.sunrise=id<0;AlarmSunrise s=new AlarmSunrise(new AlarmWakePolicy(a),new AlarmSunrise.Port(){public void brightness(float value){fail();}public void restore(){fail();}});s.resume(1);s.tick(1000);s.pause();s.close();}}
+    @Test public void alreadyLitTorchAndUnknownInitialStateRemainUntouched(){List<Boolean> output=new ArrayList<>();TorchLease t=new TorchLease(output::add);t.observed(true);t.observed(false);t.observed(true);t.close();assertTrue(output.isEmpty());TorchLease pending=new TorchLease(output::add);pending.close();pending.observed(false);assertTrue(output.isEmpty());}
+    @Test public void ownedTorchIsReleasedOnceAndStaleCallbacksCannotRelight(){List<Boolean> output=new ArrayList<>();TorchLease t=new TorchLease(output::add);t.observed(false);t.observed(true);t.close();t.close();t.observed(false);assertEquals(List.of(true,false),output);}
+    @Test public void externalOffAndUnavailableAreNeverFought(){for(boolean unavailable:new boolean[]{false,true}){List<Boolean> output=new ArrayList<>();TorchLease t=new TorchLease(output::add);t.observed(false);t.observed(true);if(unavailable)t.unavailable();else t.observed(false);t.observed(true);t.close();assertEquals(List.of(true),output);}}
+    @Test public void deniedTorchDoesNotClaimOwnershipOrRetry(){int[] calls={0};TorchLease t=new TorchLease(on->{calls[0]++;throw new SecurityException();});try{t.observed(false);fail();}catch(SecurityException expected){}t.observed(false);t.close();assertEquals(1,calls[0]);}
+    @Test public void duplicateOffBeforeOnAcknowledgementStillReleasesOwnedLight(){List<Boolean> output=new ArrayList<>();TorchLease t=new TorchLease(output::add);t.observed(false);t.observed(false);t.observed(true);t.close();assertEquals(List.of(true,false),output);}
+    @Test public void unavailableAbandonsPendingAcquisitionAndLaterExternalLight(){List<Boolean> output=new ArrayList<>();TorchLease t=new TorchLease(output::add);t.observed(false);t.unavailable();t.observed(true);t.close();assertEquals(List.of(true),output);}
+    @Test public void throwingWindowPortCannotReopenClosedSunrise(){Alarm a=new Alarm(1);a.sunrise=true;int[] calls={0};AlarmSunrise s=new AlarmSunrise(new AlarmWakePolicy(a),new AlarmSunrise.Port(){public void brightness(float value){calls[0]++;throw new IllegalStateException();}public void restore(){throw new IllegalStateException();}});try{s.resume(0);fail();}catch(IllegalStateException expected){}try{s.close();fail();}catch(IllegalStateException expected){}s.resume(1);s.tick(2);assertEquals(1,calls[0]);}
+}

@@ -8,8 +8,14 @@ public final class Scheduler {
     static final String FIRE="org.sleepwell.FIRE", TEST="org.sleepwell.TEST", SNOOZE="org.sleepwell.SNOOZE", CHECK="org.sleepwell.CHECK", BED="org.sleepwell.BED", BACKUP="org.sleepwell.BACKUP";
     static boolean allowed(Context c) { return android.os.Build.VERSION.SDK_INT<31 || c.getSystemService(AlarmManager.class).canScheduleExactAlarms(); }
     static PendingIntent intent(Context c,int id,String action) {
-        return PendingIntent.getBroadcast(c, id, new Intent(c,AlarmReceiver.class).setAction(action).putExtra("id",id),PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+        return intent(c,id,action,Prefs.text(c,"alarmRun",""));
     }
+    static PendingIntent intent(Context c,int id,String action,String run) {
+        Intent intent=new Intent(c,AlarmReceiver.class).setAction(action).putExtra("id",id);if(BACKUP.equals(action))intent.setIdentifier(backupIdentity(id,run)).putExtra("alarmRun",run);
+        return PendingIntent.getBroadcast(c,id,intent,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+    }
+    static String backupIdentity(int id,String run){return "sleepwell-backup:"+id+":"+run;}
+    static void cancelBackup(Context c,int id,String run){c.getSystemService(AlarmManager.class).cancel(intent(c,id,BACKUP,run));}
     static void at(Context c,int id,String action,long time) {
         if(!allowed(c)) throw new SecurityException("Enable Alarms & reminders in Setup first.");
         c.getSystemService(AlarmManager.class).setAlarmClock(new AlarmManager.AlarmClockInfo(time,Notifications.home(c)),intent(c,id,action));
@@ -33,7 +39,7 @@ public final class Scheduler {
         c.getSystemService(AlarmManager.class).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,next,intent(c,0,BED));Prefs.put(c,"bedReminderAt",next);
     }
     static void test(Context c,Alarm source) {
-        Alarm a=Alarm.read(source.json()); a.id=-1; a.volume=Math.min(25,a.volume); a.rampSeconds=0; a.awakeCheck=0; a.pin=false;a.backupMinutes=0;a.vibrate=false;
+        Alarm a=Alarm.read(source.json()); a.id=-1; a.volume=Math.min(25,a.volume); a.rampSeconds=0; a.awakeCheck=0; a.pin=false;a.backupMinutes=0;a.vibrate=false;a.extraLoud=false;a.sunrise=false;a.flashlight=false;a.soundDelaySeconds=0;
         Prefs.put(c,"snoozes_-1",0);Prefs.put(c,"test_alarm",a.json().toString()); at(c,-1,TEST,System.currentTimeMillis()+10000);
     }
     static void fire(Context c,Alarm a,boolean mainAlarm) {
@@ -52,7 +58,7 @@ public final class Scheduler {
             // Overlapping scheduled alarms share the currently active challenge, but both schedules advance.
             if(alreadyRinging)return;
             Prefs.put(c,"challengeCompleted",0);Prefs.put(c,"mathTask","");Prefs.put(c,"retypeTask","");
-            Prefs.put(c,"forceBackup",false);Prefs.put(c,"active_alarm",a.json().toString()); Prefs.put(c,"ringing",true);
+            Prefs.of(c).edit().putLong("alarmStartedElapsed",android.os.SystemClock.elapsedRealtime()).putString("alarmRun",java.util.UUID.randomUUID().toString()).putBoolean("forceBackup",false).putString("active_alarm",a.json().toString()).putBoolean("ringing",true).apply();
             if(a.backupMinutes>0 && allowed(c))at(c,a.id,BACKUP,System.currentTimeMillis()+a.backupMinutes*60000L);
             c.startForegroundService(new Intent(c,AlarmService.class));
         }

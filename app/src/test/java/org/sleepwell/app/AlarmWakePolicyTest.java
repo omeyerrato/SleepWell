@@ -1,0 +1,13 @@
+package org.sleepwell.app;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class AlarmWakePolicyTest {
+    @Test public void gentleRampIsContinuousAndBounded(){Alarm a=new Alarm(1);a.rampSeconds=120;AlarmWakePolicy p=new AlarmWakePolicy(a);assertEquals(0,p.gain(0,false),0);assertEquals(.25,p.gain(60000,false),0);assertEquals(1,p.gain(120000,false),0);assertEquals(1,p.gain(Long.MAX_VALUE,false),0);assertEquals(0,p.gain(-100,false),0);double previous=0;for(int n=0;n<=120000;n+=250){double gain=p.gain(n,false);assertTrue(gain>=previous&&gain<=1);previous=gain;}}
+    @Test public void extraLoudUsesActualDeviceMaximumAndKeepsSelectedVolume(){Alarm a=new Alarm(1);a.volume=40;AlarmWakePolicy normal=new AlarmWakePolicy(a);assertEquals(6,normal.streamLevel(15,false));a.extraLoud=true;AlarmWakePolicy loud=new AlarmWakePolicy(a);assertEquals(15,loud.streamLevel(15,false));assertEquals(40,a.volume);a.extraLoud=false;assertEquals(6,new AlarmWakePolicy(a).streamLevel(15,false));}
+    @Test public void soundDelayGivesTheScreenAHeadStart(){Alarm a=new Alarm(1);a.sunrise=true;a.soundDelaySeconds=180;a.rampSeconds=60;AlarmWakePolicy p=new AlarmWakePolicy(a);assertFalse(p.audible(179999,false));assertEquals(0,p.gain(179999,false),0);assertEquals(.5,p.light(90000),0);assertEquals(1,p.light(180000),0);assertTrue(p.audible(180000,false));assertEquals(0,p.gain(180000,false),0);assertEquals(.25,p.gain(210000,false),0);assertEquals(1,p.gain(240000,false),0);}
+    @Test public void immediateSoundAndBackupHaveNoDelay(){Alarm a=new Alarm(1);a.rampSeconds=0;AlarmWakePolicy p=new AlarmWakePolicy(a);assertEquals(1,p.gain(0,false),0);a.soundDelaySeconds=600;a.rampSeconds=120;p=new AlarmWakePolicy(a);assertTrue(p.audible(0,true));assertEquals(1,p.gain(0,true),0);assertEquals(15,p.streamLevel(15,true));}
+    @Test public void quietTestCannotInheritLoudLightOrDelay(){Alarm a=new Alarm(-1);a.extraLoud=true;a.sunrise=true;a.flashlight=true;a.soundDelaySeconds=600;a.rampSeconds=600;a.volume=100;AlarmWakePolicy p=new AlarmWakePolicy(a);assertEquals(25,p.targetPercent);assertFalse(p.sunrise);assertFalse(p.flashlight);assertEquals(0,p.delayMillis);assertEquals(0,p.rampMillis);for(int max:new int[]{0,1,3,7,15,100}){assertEquals(p.streamLevel(max,false),p.streamLevel(max,true));assertTrue(p.streamLevel(max,true)<=max*.25);}}
+    @Test public void corruptValuesAreBoundedWithoutChangingStoredData(){Alarm a=new Alarm(1);a.volume=Integer.MAX_VALUE;a.soundDelaySeconds=Integer.MAX_VALUE;a.rampSeconds=-1;AlarmWakePolicy p=new AlarmWakePolicy(a);assertEquals(100,p.targetPercent);assertEquals(1440000,p.delayMillis);assertEquals(0,p.rampMillis);assertEquals(Integer.MAX_VALUE,a.volume);assertEquals(0,p.streamLevel(0,false));}
+}

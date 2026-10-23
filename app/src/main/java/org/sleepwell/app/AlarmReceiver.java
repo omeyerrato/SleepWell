@@ -8,7 +8,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override public void onReceive(Context c,Intent intent) {
         Notifications.channels(c); String action=intent.getAction(); int id=intent.getIntExtra("id",0);
         if(Scheduler.BACKUP.equals(action)) {
-            if(Prefs.flag(c,"ringing")){Prefs.put(c,"forceBackup",true);c.startForegroundService(new Intent(c,AlarmService.class));}return;
+            try{Alarm current=Alarm.read(new JSONObject(Prefs.text(c,"active_alarm","{}")));String run=Prefs.text(c,"alarmRun","");if(backupMatches(Prefs.flag(c,"ringing"),id,current.id,run,intent.getStringExtra("alarmRun"))){Prefs.put(c,"forceBackup",true);c.startForegroundService(new Intent(c,AlarmService.class));}}catch(JSONException ignored){}return;
         }
         if(Scheduler.BED.equals(action)) {
             long deadline=Prefs.of(c).getLong("bedReminderAt",0);if(!SleepPlans.load(c).reminder||deadline<=0||System.currentTimeMillis()<deadline-1000)return;
@@ -30,4 +30,5 @@ public class AlarmReceiver extends BroadcastReceiver {
             Scheduler.fire(c,a,Scheduler.FIRE.equals(action));
         } catch(Exception e) { Prefs.put(c,"lastError","Alarm delivery: "+e.getMessage()); }
     }
+    static boolean backupMatches(boolean ringing,int incoming,int active,String run,String incomingRun){return ringing&&active>0&&incoming==active&&!run.isEmpty()&&run.equals(incomingRun);}
 }

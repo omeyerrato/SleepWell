@@ -16,6 +16,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
     private int completed=0,target=0,shakes=0;private String answer="";private long lastShake=0;
     private MathTask mathTask;private Integer selected;private TextView feedback;
     private SensorManager sensors;private TextView progress;private NfcAdapter nfc;
+    private final Handler lightHandler=new Handler(Looper.getMainLooper());private AlarmSunrise sunrise;private String occurrence="";private long lightStarted;private boolean resumed;
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);setShowWhenLocked(true);setTurnScreenOn(true);getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,()->Ui.toast(this,"Complete the challenge or snooze."));
@@ -24,10 +25,16 @@ public class AlarmActivity extends Activity implements SensorEventListener {
         if(state!=null) { completed=state.getInt("completed");shakes=state.getInt("shakes"); }
         completed=Prefs.number(this,"challengeCompleted",completed);
         if(state!=null && state.containsKey("selected"))selected=state.getInt("selected");
-        build();
+        build();configureSunrise();
         if(alarm.pin) new AlertDialog.Builder(this).setTitle("Keep the challenge on screen?").setMessage("Android screen pinning asks you to confirm. You can unpin using Android's navigation controls.").setPositiveButton("Pin",(d,w)->startLockTask()).setNegativeButton("Later",null).show();
     }
-    @Override public void onNewIntent(Intent i) { super.onNewIntent(i); setIntent(i); if(!Prefs.flag(this,"ringing")) finish(); }
+    @Override public void onNewIntent(Intent i) {super.onNewIntent(i);setIntent(i);if(!Prefs.flag(this,"ringing")){finish();return;}if(!occurrence.equals(Prefs.text(this,"alarmRun",""))){if(nfc!=null){nfc.disableReaderMode(this);nfc=null;}try{alarm=Alarm.read(new JSONObject(Prefs.text(this,"active_alarm","{}")));}catch(JSONException error){finish();return;}completed=Prefs.number(this,"challengeCompleted",0);shakes=0;selected=null;build();configureSunrise();if(resumed)lightTick.run();}}
+    private void configureSunrise(){lightHandler.removeCallbacksAndMessages(null);closeSunrise();occurrence=Prefs.text(this,"alarmRun","");lightStarted=Prefs.of(this).getLong("alarmStartedElapsed",SystemClock.elapsedRealtime());final float original=getWindow().getAttributes().screenBrightness;sunrise=new AlarmSunrise(new AlarmWakePolicy(alarm),new AlarmSunrise.Port(){public void brightness(float value){WindowManager.LayoutParams attrs=getWindow().getAttributes();attrs.screenBrightness=value;getWindow().setAttributes(attrs);}public void restore(){WindowManager.LayoutParams attrs=getWindow().getAttributes();attrs.screenBrightness=original;getWindow().setAttributes(attrs);}});}
+    private void closeSunrise(){if(sunrise!=null)try{sunrise.close();}catch(RuntimeException error){Prefs.put(this,"lastError","The alarm window brightness could not be restored.");}}
+    private long lightElapsed(){return Math.max(0,SystemClock.elapsedRealtime()-lightStarted);}
+    private final Runnable lightTick=new Runnable(){public void run(){if(!resumed||sunrise==null)return;try{if(!AlarmService.current(AlarmActivity.this,occurrence)){sunrise.pause();return;}sunrise.resume(lightElapsed());lightHandler.postDelayed(this,250);}catch(RuntimeException error){closeSunrise();Prefs.put(AlarmActivity.this,"lastError","Screen sunrise is unavailable. Sound and the challenge continue.");}}};
+    @Override protected void onResume(){super.onResume();resumed=true;lightTick.run();}
+    @Override protected void onPause(){resumed=false;lightHandler.removeCallbacksAndMessages(null);if(sunrise!=null)try{sunrise.pause();}catch(RuntimeException error){closeSunrise();}super.onPause();}
     @Override public void onSaveInstanceState(Bundle b) { super.onSaveInstanceState(b);b.putInt("completed",completed);b.putInt("shakes",shakes);if(selected!=null)b.putInt("selected",selected); }
     private void build() {
         handler.removeCallbacksAndMessages(null);if(sensors!=null)sensors.unregisterListener(this);
@@ -74,7 +81,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
         feedback=Design.text(card,"Select an answer",13,400,Design.MUTED);feedback.setGravity(Gravity.CENTER);Design.space(card,6);
         Design.button(card,"Check answer",true,()->{if(selected==null){feedback.setText("Choose an answer first");return;}if(mathTask.accepts(selected)){advance();}else{feedback.setText("Try again · alarm is still ringing");feedback.setTextColor(0xffb33120);feedback.announceForAccessibility("Try again");}});
     }
-    private void advance() {completed++;Prefs.put(this,"challengeCompleted",completed);Prefs.put(this,"mathTask","");Prefs.put(this,"retypeTask","");selected=null;if(completed>=alarm.difficulty)dismiss();else build();}
+    private void advance() {synchronized(Scheduler.class){if(!AlarmService.current(this,occurrence)){finish();return;}completed++;Prefs.put(this,"challengeCompleted",completed);Prefs.put(this,"mathTask","");Prefs.put(this,"retypeTask","");selected=null;if(completed>=alarm.difficulty)dismiss();else build();}}
     private void memory(LinearLayout card) {
         Ui.heading(card,"Find the matching pairs",24);List<String> values=new ArrayList<>(List.of("☀","☀","☽","☽","✿","✿"));Collections.shuffle(values,random);
         GridLayout grid=new GridLayout(this);grid.setColumnCount(3);card.addView(grid);final Button[] first={null};final String[] firstValue={null};final int[] pairs={0};final boolean[] waiting={false};
@@ -98,25 +105,29 @@ public class AlarmActivity extends Activity implements SensorEventListener {
     }
     static String hex(byte[] value) {StringBuilder b=new StringBuilder();for(byte x:value)b.append(String.format(Locale.ROOT,"%02X",x));return b.toString();}
     private void snooze() {
+        synchronized(Scheduler.class){if(!AlarmService.current(this,occurrence)){finish();return;}
         try { Prefs.put(this,"snoozed_"+alarm.id,alarm.json().toString());Scheduler.at(this,alarm.id,Scheduler.SNOOZE,System.currentTimeMillis()+alarm.snoozeMinutes*60000L);
-            Prefs.put(this,"snoozes_"+alarm.id,Prefs.number(this,"snoozes_"+alarm.id,0)+1);AlarmService.stop(this);finish(); }
+            Prefs.put(this,"snoozes_"+alarm.id,Prefs.number(this,"snoozes_"+alarm.id,0)+1);AlarmService.stop(this,occurrence);finish(); }
         catch(SecurityException e) {Ui.toast(this,e.getMessage());}
+        }
     }
     private void dismiss() {
+        synchronized(Scheduler.class){if(!AlarmService.current(this,occurrence)){finish();return;}
         if(alarm.awakeCheck>0 && alarm.id>0) {
             try { Scheduler.at(this,alarm.id,Scheduler.CHECK,System.currentTimeMillis()+alarm.awakeCheck*60000L);Prefs.put(this,"checkPending",alarm.id);Prefs.put(this,"check_alarm",alarm.json().toString()); }
             catch(SecurityException e) { Ui.toast(this,"Wake-up check could not be scheduled."); }
         }
-        AlarmService.stop(this);
+        AlarmService.stop(this,occurrence);
         try { stopLockTask(); } catch(IllegalStateException ignored) {}
         startActivity(new Intent(this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));finish();
+        }
     }
     @Override public void onSensorChanged(SensorEvent e) {
         double mag=Math.sqrt(e.values[0]*e.values[0]+e.values[1]*e.values[1]+e.values[2]*e.values[2]);long now=SystemClock.elapsedRealtime();
         if(mag>15 && now-lastShake>500) { lastShake=now;shakes++;progress.setVisibility(View.VISIBLE);progress.setText(shakes+" / "+target+" deliberate shakes");if(shakes>=target)dismiss(); }
     }
     @Override public void onAccuracyChanged(Sensor sensor,int accuracy){}
-    @Override protected void onDestroy() {handler.removeCallbacksAndMessages(null);if(sensors!=null)sensors.unregisterListener(this);if(nfc!=null)nfc.disableReaderMode(this);super.onDestroy();}
+    @Override protected void onDestroy() {lightHandler.removeCallbacksAndMessages(null);closeSunrise();handler.removeCallbacksAndMessages(null);if(sensors!=null)sensors.unregisterListener(this);if(nfc!=null)nfc.disableReaderMode(this);super.onDestroy();}
     // Android 11/12 fallback only. Newer versions use the registered OnBackInvokedCallback.
     @android.annotation.SuppressLint("GestureBackNavigation")
     @Override public void onBackPressed() { Ui.toast(this,"Complete the challenge or snooze."); }

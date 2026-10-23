@@ -6,7 +6,8 @@ import java.util.*;
 
 public class Alarm {
     public int id, hour=7, minute=0, smartWindow=20, volume=85, rampSeconds=30, snoozeMinutes=5, snoozeLimit=1, difficulty=3, awakeCheck=0, backupMinutes=3;
-    public boolean enabled=false, vibrate=true, pin=false;
+    public boolean enabled=false, vibrate=true, pin=false, extraLoud=false, sunrise=false, flashlight=false;
+    public int soundDelaySeconds=0;
     public String label="A fresh start", challenge="Math", tone="daybreak";
     public Set<Integer> days = new HashSet<>();
     public Alarm(int id) { this.id=id; }
@@ -19,6 +20,7 @@ public class Alarm {
                 .put("smartWindow",smartWindow).put("volume",volume).put("rampSeconds",rampSeconds)
                 .put("snoozeMinutes",snoozeMinutes).put("snoozeLimit",snoozeLimit).put("difficulty",difficulty)
                 .put("awakeCheck",awakeCheck).put("backupMinutes",backupMinutes).put("vibrate",vibrate).put("pin",pin).put("challenge",challenge).put("tone",tone)
+                .put("extraLoud",extraLoud).put("sunrise",sunrise).put("flashlight",flashlight).put("soundDelaySeconds",soundDelaySeconds)
                 .put("days",new JSONArray(days));
         } catch(JSONException e) { throw new IllegalStateException(e); }
         return j;
@@ -29,6 +31,7 @@ public class Alarm {
         a.volume=j.optInt("volume",85); a.rampSeconds=j.optInt("rampSeconds",30); a.snoozeMinutes=j.optInt("snoozeMinutes",5);
         a.snoozeLimit=j.optInt("snoozeLimit",1); a.difficulty=j.optInt("difficulty",3); a.awakeCheck=j.optInt("awakeCheck",0);
         a.backupMinutes=j.optInt("backupMinutes",3);a.vibrate=j.optBoolean("vibrate",true); a.pin=j.optBoolean("pin"); a.challenge=j.optString("challenge","Math"); a.tone=j.optString("tone","daybreak");
+        a.extraLoud=j.optBoolean("extraLoud",false);a.sunrise=j.optBoolean("sunrise",false);a.flashlight=j.optBoolean("flashlight",false);a.soundDelaySeconds=j.optInt("soundDelaySeconds",0);
         JSONArray ds=j.optJSONArray("days"); if(ds!=null) for(int i=0;i<ds.length();i++) a.days.add(ds.optInt(i));
         return a;
     }

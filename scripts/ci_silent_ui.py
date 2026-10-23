@@ -89,7 +89,7 @@ metadata["size"] = command("shell", "wm", "size").stdout.strip()
 metadata["density"] = command("shell", "wm", "density").stdout.strip()
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 failures = []
-tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest"]
+tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
 if args.audio_imports:
@@ -120,6 +120,7 @@ required = ["sounds-settings-" + name + ".png" for name in ("rain", "ocean", "re
 required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "bedtime-guard", "privacy", "wind-down")]
 required += ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 required += ["protection-" + name + ".png" for name in ("alarms", "editor", "off", "disclosure", "on", "recreated", "global", "power-only")]
+required += ["wake-settings-" + name + ".png" for name in ("sound", "loud-curve", "lights", "recreated", "reopened", "normal-curve", "edited-curve", "immediate")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:
