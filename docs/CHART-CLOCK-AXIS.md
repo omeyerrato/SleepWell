@@ -38,3 +38,11 @@ APK and lint completed successfully (0 errors, 77 warnings). Native execution
 and visual acceptance are pending fresh CI originals. These
 fixtures do not prove an overnight recording, sleep-stage estimation, a sensor
 pipeline or any other missing feature.
+
+The first native attempt (CI40033681541 at64ae8d2) failed before all four images:
+the new chart requested keyboard focus before its content tree was laid out.
+The test now waits for its focused/resumed Activity, the same attached decor,
+and positive chart layout before making the platform `requestFocusFromTouch`
+request. It retains actual keyboard-focus, same-view and selection assertions
+around refresh. This is a test ordering correction, not production rendering
+evidence; a fresh native run is still required.
