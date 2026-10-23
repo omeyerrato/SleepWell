@@ -12,21 +12,23 @@ import java.util.*;
 
 /** A draft survives settings navigation and recreation; only Save alarm writes user data. */
 public class AlarmEditorActivity extends Activity {
-    private Alarm alarm;private String route="edit",inspectedTask="Math";private int taskRounds=3,soundTab;private Store store;private Dialog settingsDialog;
+    private Alarm alarm;private String route="edit",inspectedTask="Math";private int taskRounds=3,soundTab;private Store store;private Dialog settingsDialog;private Bundle restoredPicker;
     @Override public void onCreate(Bundle state){super.onCreate(state);store=Records.open(this);RecordUi.review(this);
         try{alarm=Alarm.read(new JSONObject(state!=null?state.getString("draft"):getIntent().getStringExtra("alarm")));}
         catch(Exception e){finish();return;}
         route=state!=null?state.getString("route","edit"):getIntent().getStringExtra("route");if(route==null)route="edit";inspectedTask=state==null?alarm.challenge:state.getString("inspectedTask",alarm.challenge);taskRounds=state==null?alarm.difficulty:state.getInt("taskRounds",alarm.difficulty);soundTab=state==null?(alarm.tone.startsWith("content:")?1:0):state.getInt("soundTab",0);
         if(android.os.Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);
-        render();
+        restoredPicker=state==null?null:state.getBundle("picker");render();
     }
-    @Override public void onSaveInstanceState(Bundle out){super.onSaveInstanceState(out);out.putString("draft",alarm.json().toString());out.putString("route",route);out.putString("inspectedTask",inspectedTask);out.putInt("taskRounds",taskRounds);out.putInt("soundTab",soundTab);}
+    @Override public void onSaveInstanceState(Bundle out){super.onSaveInstanceState(out);out.putString("draft",alarm.json().toString());out.putString("route",route);out.putString("inspectedTask",inspectedTask);out.putInt("taskRounds",taskRounds);out.putInt("soundTab",soundTab);if(settingsDialog instanceof SleepPicker.StateDialog)out.putBundle("picker",settingsDialog.onSaveInstanceState());}
     private void back(){if(!route.equals("edit")){route=route.equals("gentle")?"sound":route.equals("task")?"challenge":"edit";render();}else finish();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){back();}
     private void go(String next){route=next;render();}
     private void render(){LinearLayout body=Design.page(this,false,null,null);
         switch(route){case "smart":smart(body);break;case "sound":sound(body);break;case "gentle":gentle(body);break;case "snooze":snooze(body);break;case "challenge":challenges(body);break;case "task":task(body);break;default:editor(body);}
+        if(restoredPicker!=null){Bundle saved=restoredPicker;restoredPicker=null;if("time".equals(saved.getString("sleepPickerKind")))openDialog(()->SleepPicker.time(this,"Alarm time",alarm.hour*60+alarm.minute,value->{alarm.hour=value/60;alarm.minute=value%60;render();}));else {android.view.View row=findSetting(body,saved.getString("sleepPickerTitle"));if(row!=null)row.performClick();}if(settingsDialog instanceof SleepPicker.StateDialog)settingsDialog.onRestoreInstanceState(saved);}
     }
+    private android.view.View findSetting(android.view.View view,String title){if(title!=null&&android.text.TextUtils.equals(title,view.getContentDescription()))return view;if(view instanceof android.view.ViewGroup group)for(int n=0;n<group.getChildCount();n++){android.view.View found=findSetting(group.getChildAt(n),title);if(found!=null)return found;}return null;}
     private void editor(LinearLayout body){Design.header(body,"Edit alarm",this::back);Design.space(body,12);
         Button time=Design.button(body,displayTime(this,alarm),false,()->openDialog(()->SleepPicker.time(this,"Alarm time",alarm.hour*60+alarm.minute,value->{alarm.hour=value/60;alarm.minute=value%60;render();})));
         time.setText(Design.timeText(displayTime(this,alarm)));time.setTextSize(52*Appearance.scale(this));time.setContentDescription("Alarm time "+displayTime(this,alarm));time.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));time.setMinHeight(Design.dp(this,88));
@@ -34,7 +36,7 @@ public class AlarmEditorActivity extends Activity {
         for(int n=1;n<=7;n++){final int day=n;Button b=new Button(this);b.setStateListAnimator(null);b.setElevation(0);b.setText(labels[n-1]);b.setAllCaps(false);b.setTextSize(16*Appearance.scale(this));b.setTypeface(Design.font(this,600));b.setPadding(0,0,0,0);b.setMinWidth(0);b.setMinimumWidth(0);b.setTextColor(alarm.days.contains(n)?Design.CREAM:Design.BROWN);b.setSelected(alarm.days.contains(n));b.setContentDescription(names[n-1]);b.setBackground(Design.touch(this,alarm.days.contains(n)?Design.BROWN:Design.SOFT,28));
             LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,Design.dp(this,48),1);lp.setMargins(Design.dp(this,2),0,Design.dp(this,2),0);days.addView(b,lp);b.setOnClickListener(v->{if(alarm.days.contains(day))alarm.days.remove(day);else alarm.days.add(day);render();});}
         body.addView(days);Design.space(body,16);
-        LinearLayout name=Design.item(body,null,"Name",alarm.label,()->{EditText edit=new EditText(this);edit.setText(alarm.label);edit.setSingleLine(true);new AlertDialog.Builder(this).setTitle("Alarm name").setView(edit).setPositiveButton("Done",(d,w)->{alarm.label=edit.getText().toString().trim();if(alarm.label.isEmpty())alarm.label="A fresh start";render();}).setNegativeButton("Cancel",null).show();});Design.pad(name,14,0);name.setBackground(Design.shape(this,Design.SOFT,14));
+        LinearLayout name=Design.item(body,null,"Name",alarm.label,()->openDialog(()->SleepPicker.name(this,alarm.label,value->{alarm.label=value;render();})));Design.pad(name,14,0);name.setBackground(Design.shape(this,Design.SOFT,14));
         Design.space(body,14);Design.line(body);
         Design.item(body,"sun","Smart wake-up",alarm.smartWindow==0?"Off":alarm.smartWindow+" min",()->go("smart"));Design.line(body);
         Design.item(body,"tasks","Challenges",alarm.challenge+" × "+alarm.difficulty,()->go("challenge"));Design.line(body);
@@ -45,12 +47,11 @@ public class AlarmEditorActivity extends Activity {
         LinearLayout footer=RecordUi.footer(body);Design.toggle(footer,"Alarm on","Rings at your chosen local time",alarm.enabled,on->alarm.enabled=on);Design.space(footer,12);Design.button(footer,"Save alarm",true,this::save);
     }
     private void smart(LinearLayout body){Design.header(body,"Smart wake-up",this::back);
-        Design.toggle(body,"Smart wake-up","Uses recorded movement; fixed deadline stays scheduled",alarm.smartWindow>0,on->{alarm.smartWindow=on?30:0;render();});Design.space(body,24);
-        Design.text(body,"Wake window",16,600,Design.INK);Design.space(body,8);Design.text(body,alarm.smartWindow+" min before "+displayTime(this,alarm),26,700,Design.INK);Design.space(body,24);
-        range(body,"Window length (minutes)",alarm.smartWindow,0,60,n->alarm.smartWindow=n);
-        Design.space(body,24);Design.text(body,"Requires active sleep tracking. Two consecutive minutes of sustained movement can trigger an earlier alarm. This is experimental, not a measurement of sleep stage.",15,400,Design.MUTED);
-        Design.space(body,24);Design.text(body,"The duration-goal setting is available in Settings → Reliability. Movement sensitivity is currently fixed.",14,400,Design.MUTED);
-        Design.button(body,"Use settings",true,()->go("edit"));
+        Design.toggle(body,"Smart wake-up","Use movement within your wake window",alarm.smartWindow>0,on->{alarm.smartWindow=on?30:0;render();});Design.space(body,24);
+        Design.text(body,"Wake window",16,600,Design.INK);Design.space(body,8);Design.text(body,alarm.smartWindow==0?"Off":Design.clock(this,alarm.hour*60+alarm.minute-alarm.smartWindow)+" – "+displayTime(this,alarm),27,700,Design.INK);Design.space(body,24);
+        picker(body,"clock","Window length",null,alarm.smartWindow==0?"Off":alarm.smartWindow+" min",alarm.smartWindow,new int[]{0,5,10,15,20,30,45,60},n->n==0?"Off":n+" min",n->alarm.smartWindow=n);Design.line(body);
+        Design.item(body,"info","About smart wake-up",null,()->openDialog(()->SleepPicker.message(this,"Smart wake-up","Requires active movement tracking. Sustained movement can start the alarm earlier within this window. Your fixed alarm time stays scheduled. Phone motion estimates rest; it does not measure sleep stages.")));
+        Design.fixedAction(body,"Save settings",()->go("edit"));
     }
     private void challenges(LinearLayout body){Design.header(body,"Challenges",this::back);Design.text(body,"Task for this alarm",18,600,Design.INK);Design.space(body,12);
         for(String task:new String[]{"Math","Memory","Sequence","Retype","Shake","NFC"}){
@@ -80,7 +81,7 @@ public class AlarmEditorActivity extends Activity {
         Design.item(body,"sun","Gentle wake-up",duration(alarm.rampSeconds),()->go("gentle"));Design.line(body);
         Design.fixedAction(body,"Use "+toneName(alarm.tone),()->go("edit"));
     }
-    private void toneChoice(LinearLayout body,String tone){LinearLayout row=Design.row(this);Design.pad(row,4,16);row.setMinimumHeight(Design.dp(this,78));row.addView(new SleepPicker.Mark(this,alarm.tone.equals(tone)),new LinearLayout.LayoutParams(Design.dp(this,24),Design.dp(this,24)));LinearLayout copy=Design.col(this);copy.setPadding(Design.dp(this,18),0,0,0);Design.text(copy,toneName(tone),16,600,Design.INK);Design.space(copy,6);Design.text(copy,tone.equals("daybreak")?"Gentle and natural":tone.equals("pulse")?"Steady and clear":tone.equals("system")?"Your phone’s default alarm":"Audio chosen from your phone",12,400,Design.MUTED);row.addView(copy,new LinearLayout.LayoutParams(0,-2,1));row.setSelected(alarm.tone.equals(tone));row.setContentDescription("Select "+toneName(tone));row.setFocusable(true);row.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));row.setOnClickListener(v->{alarm.tone=tone;render();});body.addView(row);}
+    private void toneChoice(LinearLayout body,String tone){LinearLayout row=Design.row(this);Design.pad(row,4,16);row.setMinimumHeight(Design.dp(this,78));row.addView(new SleepPicker.Mark(this,alarm.tone.equals(tone)),new LinearLayout.LayoutParams(Design.dp(this,24),Design.dp(this,24)));LinearLayout copy=Design.col(this);copy.setPadding(Design.dp(this,18),0,0,0);Design.text(copy,toneName(tone),16,600,Design.INK);Design.space(copy,6);Design.text(copy,tone.equals("daybreak")?"Gentle and natural":tone.equals("pulse")?"Steady and clear":tone.equals("system")?"Your phone’s default alarm":"Audio chosen from your phone",12,400,Design.MUTED);row.addView(copy,new LinearLayout.LayoutParams(0,-2,1));SleepPicker.radio(row,alarm.tone.equals(tone));row.setContentDescription("Select "+toneName(tone));row.setFocusable(true);row.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));row.setOnClickListener(v->{alarm.tone=tone;render();});body.addView(row);}
     private static String duration(int seconds){return seconds==0?"Off":seconds<60?seconds+" sec":seconds%60==0?seconds/60+" min":seconds/60+" min "+seconds%60+" sec";}
     private void openDialog(java.util.function.Supplier<Dialog> create){if(settingsDialog!=null&&settingsDialog.isShowing()||isFinishing())return;settingsDialog=create.get();Dialog owned=settingsDialog;owned.setOnDismissListener(ignored->{if(settingsDialog==owned)settingsDialog=null;});}
     private void picker(LinearLayout body,String icon,String title,String description,String value,int current,int[] values,java.util.function.IntFunction<String> format,java.util.function.IntConsumer change){
@@ -94,7 +95,7 @@ public class AlarmEditorActivity extends Activity {
         wakeToggle(body,"vibrate","Vibration","Vibrate from the start of the alarm",alarm.vibrate,on->alarm.vibrate=on);
         wakeToggle(body,"sun","Screen sunrise","Gradually brighten the alarm screen",alarm.sunrise,on->alarm.sunrise=on);
         wakeToggle(body,"flashlight","Flashlight wake-up","Keep the rear light on while the alarm rings",alarm.flashlight,on->alarm.flashlight=on);Design.space(body,12);
-        Design.item(body,"info","About gentle wake-up",null,()->openDialog(()->new AlertDialog.Builder(this).setTitle("Gentle wake-up").setMessage("Sunrise begins when the alarm starts. Sound follows the delay, then gradually increases. A backup alarm starts immediately at maximum device alarm volume. Flashlight availability depends on your phone.").setPositiveButton("Got it",null).show()));Design.space(body,16);
+        Design.item(body,"info","About gentle wake-up",null,()->openDialog(()->SleepPicker.message(this,"Gentle wake-up","Sunrise begins when the alarm starts. Sound follows the delay, then gradually increases. A backup alarm starts immediately at maximum device alarm volume. Flashlight availability depends on your phone.")));Design.space(body,16);
         Design.fixedAction(body,"Save changes",()->go("sound"));
     }
     private void wakeToggle(LinearLayout body,String icon,String title,String description,boolean value,java.util.function.Consumer<Boolean> change){LinearLayout row=Design.row(this);Design.pad(row,0,12);row.setMinimumHeight(Design.dp(this,70));Design.Icon glyph=new Design.Icon(this,icon,icon.equals("sun")?0xffff8a00:Design.BROWN);LinearLayout.LayoutParams iconLayout=new LinearLayout.LayoutParams(Design.dp(this,26),Design.dp(this,26));iconLayout.rightMargin=Design.dp(this,16);row.addView(glyph,iconLayout);LinearLayout copy=Design.col(this);Design.text(copy,title,15,600,Design.INK);Design.space(copy,5);Design.text(copy,description,12,400,Design.MUTED);row.addView(copy,new LinearLayout.LayoutParams(0,-2,1));Switch toggle=new Switch(this);toggle.setContentDescription(title);Design.styleSwitch(this,toggle,Design.BROWN,0xffbcb5b0);toggle.setChecked(value);toggle.setOnCheckedChangeListener((view,checked)->change.accept(checked));row.addView(toggle);body.addView(row,new LinearLayout.LayoutParams(-1,-2));Design.line(body);}

@@ -121,7 +121,7 @@ required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report",
 required += ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 required += ["protection-" + name + ".png" for name in ("alarms", "editor", "off", "disclosure", "on", "recreated", "global", "power-only")]
 required += ["wake-settings-" + name + ".png" for name in ("sound", "loud-curve", "delay-options", "lights", "recreated", "reopened", "normal-curve", "edited-curve", "immediate")]
-required += ["menus-" + name + ".png" for name in ("editor", "time", "tasks", "task-settings", "task-chosen", "snooze", "duration", "snooze-changed", "recreated", "sound", "reopened")]
+required += ["menus-" + name + ".png" for name in ("editor", "time", "time-recreated", "time-24", "time-invalid", "large-snooze", "duration-recreated", "tasks", "task-settings", "task-chosen", "snooze", "duration", "snooze-changed", "recreated", "sound", "reopened")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:
