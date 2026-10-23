@@ -20,7 +20,7 @@ final class SleepPicker {
         StateDialog dialog=new StateDialog(a,"choice",title);dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         LinearLayout root=Design.col(a);Design.pad(root,20,20);root.setBackground(Design.shape(a,Design.CREAM,24));
         Design.text(root,title,22,600,Design.INK);Design.space(root,16);
-        ScrollView scroll=new ScrollView(a);dialog.scroll=scroll;scroll.setContentDescription("Options for "+title);scroll.setVerticalScrollBarEnabled(false);LinearLayout options=Design.col(a);scroll.addView(options);
+        ScrollView scroll=new ScrollView(a);dialog.scroll=scroll;scroll.setContentDescription("Options for "+title);scroll.setVerticalScrollBarEnabled(true);scroll.setScrollbarFadingEnabled(false);scroll.setScrollBarSize(Design.dp(a,3));scroll.setVerticalScrollbarThumbDrawable(Design.shape(a,Design.LINE,2));LinearLayout options=Design.col(a);scroll.addView(options);
         View[] selectedRow={null};for(int index=0;index<labels.length;index++){
             int n=index;LinearLayout row=Design.row(a);Design.pad(row,12,10);row.setMinimumHeight(Design.dp(a,52));
             row.setBackground(Design.touch(a,index==selected?Design.SOFT:Color.TRANSPARENT,12));
@@ -30,7 +30,7 @@ final class SleepPicker {
             row.setOnClickListener(v->{dialog.dismiss();choose.accept(n);});options.addView(row,new LinearLayout.LayoutParams(-1,-2));
         }
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));Design.button(root,"Cancel",false,dialog::dismiss);
-        scroll.getViewTreeObserver().addOnGlobalLayoutListener(new android.view.ViewTreeObserver.OnGlobalLayoutListener(){public void onGlobalLayout(){scroll.getViewTreeObserver().removeOnGlobalLayoutListener(this);scroll.scrollTo(0,dialog.restoredScroll!=null?dialog.restoredScroll:selectedRow[0]==null?0:selectedRow[0].getTop());}});
+        scroll.getViewTreeObserver().addOnGlobalLayoutListener(new android.view.ViewTreeObserver.OnGlobalLayoutListener(){public void onGlobalLayout(){scroll.getViewTreeObserver().removeOnGlobalLayoutListener(this);int centered=selectedRow[0]==null?0:selectedRow[0].getTop()-(scroll.getHeight()-selectedRow[0].getHeight())/2;scroll.scrollTo(0,dialog.restoredScroll!=null?dialog.restoredScroll:Math.max(0,centered));}});
         dialog.setContentView(root);show(a,dialog,Math.min(620,150+labels.length*58));return dialog;
     }
     static Dialog time(Activity a,String title,int minuteOfDay,IntConsumer choose){
