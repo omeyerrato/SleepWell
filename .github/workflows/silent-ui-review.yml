@@ -1,6 +1,11 @@
 name: Silent Android visual review
 on:
   workflow_dispatch:
+    inputs:
+      native_sounds:
+        description: 'Also exercise real MediaPlayer/notification controls with host audio disabled (CI emulator only)'
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -33,8 +38,15 @@ jobs:
           echo "ANDROID_USER_HOME=$ANDROID_USER_HOME" >> "$GITHUB_ENV"
           mkdir -p "$ANDROID_AVD_HOME" "$ANDROID_USER_HOME"
           echo no | avdmanager create avd --name SleepWellSilent --path "$ANDROID_AVD_HOME/SleepWellSilent.avd" --package 'system-images;android-36;google_apis;x86_64' --device pixel_7 --force
-      - name: Configuration-only UI checks and real Android captures
-        run: python3 scripts/ci_silent_ui.py --serial emulator-5554
+      - name: Allowlisted UI checks and real Android captures
+        env:
+          NATIVE_SOUNDS: ${{ inputs.native_sounds }}
+        run: |
+          if [ "$NATIVE_SOUNDS" = "true" ]; then
+            python3 scripts/ci_silent_ui.py --serial emulator-5554 --native-sounds
+          else
+            python3 scripts/ci_silent_ui.py --serial emulator-5554
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:

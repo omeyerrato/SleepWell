@@ -5,6 +5,8 @@ import android.content.*;
 final class SoundPreferences {
     interface Factory {SharedPreferences open(Context c);}
     static Factory factory=Prefs::of;
+    static String error(Context c){return factory.open(c).getString("soundError","");}
+    static void error(Context c,String message){factory.open(c).edit().putString("soundError",message).apply();}
     static SoundMix load(Context c){return load(factory.open(c));}
     static SoundMix load(SharedPreferences p){
         if(!p.contains("mixVersion"))return SoundMix.legacy(p.getString("lullaby","Off"),p.getInt("lullabyMinutes",30));

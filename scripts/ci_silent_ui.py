@@ -1,6 +1,8 @@
-"""Ephemeral CI emulator only. No alarm, playback, tracking or permission-grant tests.
+"""Ephemeral CI emulator only. No alarm, microphone or tracking tests.
 
-The Android test runner is invoked directly with two explicit classes. Never use
+Default: configuration/rendering only. Optional --native-sounds exercises real
+MediaPlayer/notification controls with host audio disabled, never physical hardware.
+The Android test runner is invoked directly with explicit classes. Never use
 connectedCheck here, because the suite also contains non-allowlisted tests.
 Only isolated emulator fixtures/screenshots are published, never phone backups.
 """
@@ -15,6 +17,7 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--serial", required=True, choices=("emulator-5554",))
+parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
 args = parser.parse_args()
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
@@ -78,15 +81,22 @@ try:
     broadcast_idle = command("shell", "am", "wait-for-broadcast-idle", check=False, timeout=10).returncode == 0
 except subprocess.TimeoutExpired:
     broadcast_idle = False  # System queues can stay busy; the app's exact preservation assertion still applies.
-metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "audio": "host output disabled; no playback actions allowlisted", "serial": args.serial, "system_broadcast_idle": broadcast_idle}
+metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "audio": "host output disabled; native sound review allowlisted" if args.native_sounds else "host output disabled; no playback actions allowlisted", "serial": args.serial, "system_broadcast_idle": broadcast_idle}
 for prop in ("ro.build.version.sdk", "ro.product.model"):
     metadata[prop] = command("shell", "getprop", prop).stdout.strip()
 metadata["size"] = command("shell", "wm", "size").stdout.strip()
 metadata["density"] = command("shell", "wm", "density").stdout.strip()
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 failures = []
-for test in ("SoundSettingsFlowTest", "RootVisualTest"):
-    result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app." + test, "-e", "ciReview", "true", "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", check=False, timeout=180)
+tests = ["SoundSettingsFlowTest", "RootVisualTest"]
+if args.native_sounds:
+    tests.append("NativeSoundFlowTest")
+for test in tests:
+    extra = []
+    if test == "NativeSoundFlowTest":
+        command("shell", "pm", "grant", "org.sleepwell.app", "android.permission.POST_NOTIFICATIONS")
+        extra = ["-e", "ciSilentPlayback", "true"]
+    result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app." + test, "-e", "ciReview", "true", *extra, "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", check=False, timeout=180)
     (output / (test + ".txt")).write_text(result.stdout + result.stderr, encoding="utf-8")
     passed = bool(re.search(r"(?m)^OK \(1 test\)\s*$", result.stdout)) and "FAILURES!!!" not in result.stdout
     print(test + ": " + ("PASS" if passed else "FAIL"), flush=True)
@@ -95,6 +105,8 @@ for test in ("SoundSettingsFlowTest", "RootVisualTest"):
 command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", str(output), check=False)
 required = ["sounds-settings-" + name + ".png" for name in ("rain", "ocean", "recreated", "reopened")]
 required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "bedtime-guard", "privacy", "wind-down")]
+if args.native_sounds:
+    required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error")]
 failures += [name for name in required if not (output / name).is_file()]
 if failures:
     raise SystemExit("UI verification incomplete: " + ", ".join(failures))

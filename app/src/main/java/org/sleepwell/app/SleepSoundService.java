@@ -24,18 +24,18 @@ public final class SleepSoundService extends Service {
         Snapshot(SleepSoundService service){state=service.playback.state;elapsed=service.playback.elapsed();error=service.playback.error;}
     }
     static Snapshot snapshot(){SleepSoundService s=current;return s==null||s.playback.state==SoundPlayback.State.STOPPED?last:new Snapshot(s);}
-    static String error(Context c){return Prefs.text(c,"soundError","");}
+    static String error(Context c){return SoundPreferences.error(c);}
     static void command(Context c,String action){
         Intent intent=new Intent(c,SleepSoundService.class).setAction(action);
         try{if(PLAY.equals(action))c.startForegroundService(intent);else if(current!=null)c.startService(intent);}
-        catch(RuntimeException e){Prefs.put(c,"soundError","Playback could not start. Open Sleep sounds and try again.");}
+        catch(RuntimeException e){SoundPreferences.error(c,"Playback could not start. Open Sleep sounds and try again.");}
     }
     static void update(Context c){SleepSoundService s=current;if(s==null){last=null;return;}try{s.playback.update(SoundPreferences.load(c));s.publish();}catch(RuntimeException e){s.failure("Your sound settings could not be loaded.");}}
     static void trackingStart(Context c,long id,long elapsed){
         try{SoundMix mix=SoundPreferences.load(c);if(!mix.withTracking)return;
             SleepSoundService s=current;if(s!=null){s.ownership.claim(id,true);return;}
             c.startForegroundService(new Intent(c,SleepSoundService.class).setAction(PLAY).putExtra("trackingOwner",id).putExtra("offset",elapsed));
-        }catch(RuntimeException e){Prefs.put(c,"soundError","Sleep sound could not start. Tracking continues without playback.");}
+        }catch(RuntimeException e){SoundPreferences.error(c,"Sleep sound could not start. Tracking continues without playback.");}
     }
     static void trackingPause(long id){SleepSoundService s=current;if(s!=null&&s.ownership.pause(id)){s.playback.pause();s.publish();}}
     static void trackingResume(long id){SleepSoundService s=current;if(s!=null&&s.ownership.resume(id))s.resume();}
@@ -68,7 +68,7 @@ public final class SleepSoundService extends Service {
         if(occupied){if(playback.state==SoundPlayback.State.PAUSED)resume();return START_NOT_STICKY;}
         try{
             ensureForeground();if(!requestFocus()){failure("Another app is using audio. Tap Play when it is available.");return START_NOT_STICKY;}
-            Prefs.put(this,"soundError","");playback.play(SoundPreferences.load(this),intent.getLongExtra("offset",0));publish();
+            SoundPreferences.error(this,"");playback.play(SoundPreferences.load(this),intent.getLongExtra("offset",0));publish();
         }catch(RuntimeException e){failure("Sleep sound is unavailable. Check the selected file and try again.");}
         return START_NOT_STICKY;
     }
@@ -87,16 +87,16 @@ public final class SleepSoundService extends Service {
     private void resume(){
         if(playback.state!=SoundPlayback.State.PAUSED)return;
         if(Prefs.flag(this,"ringing")){failure("Finish your alarm before playing sleep sounds.");return;}
-        try{ensureForeground();if(requestFocus()){Prefs.put(this,"soundError","");playback.resume();publish();}else failure("Another app is using audio. Tap Play when it is available.");}
+        try{ensureForeground();if(requestFocus()){SoundPreferences.error(this,"");playback.resume();publish();}else failure("Another app is using audio. Tap Play when it is available.");}
         catch(RuntimeException e){failure("Playback could not resume. Tap Play to try again.");}
     }
     private void manualPause(){ownership.manual();playback.pause();publish();}
     private final BroadcastReceiver noisy=new BroadcastReceiver(){@Override public void onReceive(Context c,Intent i){manualPause();}};
-    private void failure(String text){playback.fail();Prefs.put(this,"soundError",text);publish();}
+    private void failure(String text){playback.fail();SoundPreferences.error(this,text);publish();}
     private void publish(){
         if(destroyed)return;main.removeCallbacks(tick);
         SoundPlayback.State state=playback.state;boolean active=state==SoundPlayback.State.PLAYING||state==SoundPlayback.State.LOADING;
-        if(state==SoundPlayback.State.ERROR){if(Prefs.text(this,"soundError","").isEmpty())Prefs.put(this,"soundError",playback.error);}
+        if(state==SoundPlayback.State.ERROR){if(SoundPreferences.error(this).isEmpty())SoundPreferences.error(this,playback.error);}
         if(!active){if(wake.isHeld())wake.release();abandonFocus();}
         else if(!wake.isHeld())wake.acquire(245*60000L);
         media.setPlaybackState(new PlaybackState.Builder().setActions(PlaybackState.ACTION_PLAY|PlaybackState.ACTION_PAUSE|PlaybackState.ACTION_STOP).setState(state==SoundPlayback.State.PLAYING?PlaybackState.STATE_PLAYING:state==SoundPlayback.State.LOADING?PlaybackState.STATE_BUFFERING:PlaybackState.STATE_PAUSED,playback.elapsed(),state==SoundPlayback.State.PLAYING?1:0).build());
