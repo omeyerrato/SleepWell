@@ -49,8 +49,9 @@ public final class AutomaticTrackingActivity extends Activity {
         error=Design.text(body,"",13,500,0xffa93919);error.setVisibility(View.GONE);
         String old=owner.preferences(this).getString("automaticResult","");if(!TrackingService.running&&owner.preferences(this).getBoolean("automaticArmed",false))old="The previous wait stopped. Arm again to resume automatic starts.";
         if(!old.isEmpty()){Design.space(body,12);Design.text(body,old,13,400,Design.MUTED);}
-        Design.button(body,"Save settings",false,()->{if(save()){setResult(RESULT_OK);finish();}});
-        if(mode!=AutomaticSleep.Mode.MANUAL)Design.fixedAction(body,"Arm tonight",this::arm);
+        LinearLayout footer=RecordUi.footer(body);
+        Design.button(footer,"Save settings",true,()->{if(save()){setResult(RESULT_OK);finish();}});
+        if(mode!=AutomaticSleep.Mode.MANUAL)Design.button(footer,"Arm tonight",false,this::arm);
     }
     private void option(LinearLayout body,AutomaticSleep.Mode choice,String title,String help){
         LinearLayout row=Design.row(this);Design.pad(row,12,15);row.setMinimumHeight(Design.dp(this,76));row.setBackground(Design.touch(this,mode==choice?Design.SOFT:android.graphics.Color.TRANSPARENT,17));
