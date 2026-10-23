@@ -334,3 +334,148 @@ route changes/ducking, tracking ownership and S23 acceptance remain open. The
 imported-audio hero still uses Rain art and needs a neutral visual. No fabricated
 overnight chart, classified event or stage strip was substituted for missing data.
 See FEATURE-MATRIX.md and SOUND-PLAYBACK.md for exact scope and remaining work.
+
+
+## 2026-10-23 — actual audio picker, persistent access and quiet S23 update
+
+Source/test commit114c25e2cf2e199da26347729f3d853e68567a0f.
+[Five-flow silent CI39919149440](https://github.com/omeyerrato/SleepWell/actions/runs/39919149440)
+and [normal CI39919099010](https://github.com/omeyerrato/SleepWell/actions/runs/39919099010) passed.
+[Persistent32 raw files,26 actual PNGs, scope and hashes](verification/2026-10-23-audio-import/README.md).
+
+- 105 local unit tests pass,0 failures/errors/skips. Seven new AudioCopyTest cases cover actual byte limits, partial/empty/stalled reads, cancellation-before-write and provider failure; no microphone or native sink.
+- Debug, AndroidTest and release APKs build; lint has0 errors/68 warnings. Test-only synthetic DocumentsProvider is absent from app debug/release dex.
+- SoundSettingsFlowTest16.203s, RootVisualTest22.135s, NativeSoundFlowTest24.718s, SoundImportPickerTest106.078s, SoundImportReopenTest14.385s; each1pass on the final API36 emulator head. Host audio disabled. Exact native scope is in the linked evidence README, not inferred from these counts.
+
+Actual DocumentsUI selection now has byte-bounded validation using a disposable
+private snapshot, retained job token, cancellation, newer-profile revision fence,
+read-only persisted grants, native playback after an actual separate-process
+restart and removal without deleting/modifying source bytes. Unknown-size valid
+WAV and actual100MiB+1 overflow, invalid audio, declared oversized and denied-read
+fixtures are exercised. No stopped mix starts merely because it was selected,
+imported, recreated or reopened. Delayed-pipe recreation is portrait Activity
+recreate(), not an orientation or landscape test. Interrupted pending-import
+process death, background timeout, unsupported persistent grants, disk-write
+failure and broad document/codec/cloud-provider compatibility are still open.
+
+The first f2a2029 run passed the three old flows but failed the picker on a stale
+shortcut obscured by the roots drawer. The drawer selector is now uniquely
+scoped. A subsequent review caught an inadvertently recursive snapshot wrapper;
+that candidate was cancelled and fixed before acceptance.1595432 passed all
+five tests/25 captures.863e206 passed all five tests but the new lower-controls
+image repeated the top view; the strict reviewer rejected that screenshot gate.
+114c25e now scrolls to the end, requires a real44dp visible row above navigation
+with the saved title, and waits for a committed hardware frame. The new actual
+image shows My audio, saved filename and the tracking-playback switch. Neither
+the old failed attempt nor the duplicate PNG is presented as final acceptance.
+Final independent visual verdict is recorded in DESIGN-REVIEW.md.
+
+### Physical phone: configuration/navigation only
+
+The user reconnected the Samsung S23 Ultra (SM-S918B), API36,1080×2316,
+override density420 (physical450), Samsung three-button navigation. A complete
+private run-as tar archive was saved before install-r. Existing preference
+values, every personal main-database table row and pre-existing private file
+hashes were retained locally as the preservation baseline. No uninstall,
+pm clear, lock bypass, screen-power action or global timeout/power change.
+
+Samsung Maximum power saving initially displayed “App paused by Maximum power
+saving” and blocked RootVisualTest before any root capture. Android CLI layout
+and a private actual screenshot identified that system prompt. Selecting only
+“Unpause temporarily” resumed SleepWell; global power saving remains unchanged.
+A separate fresh read-only RootVisualTest then passed in20.315s, producing ten
+private root/detail/real-report-selection captures. SoundSettingsFlowTest passed
+in9.055s with four private Rain/Ocean/recreated/reopened captures. It never taps
+Play/import or starts tracking. No ciReview bootstrap was passed on the phone.
+The visible app was left in its scoped visualReview keep-awake window.
+
+Post-run archive comparison proves exact personal preference values and exact
+rows in every personal main-database table. The older isolated history-test DB
+and journal also remain byte-identical and were deliberately retained. The only
+pre-existing private-file change is files/profileInstalled, AndroidX's24-byte
+compilation-verification cache. Its package-update timestamp matches the APK
+install; this is not a user recording or preference. See the official
+[ProfileVerifier source](https://android.googlesource.com/platform/frameworks/support/%2B/928fdc3d271dd4799ba085245c4d9c030e68b09e%5E%21/).
+There were no pre-existing user audio files in this archive, so no clip-byte
+preservation claim is inferred from an empty set. Baselines, private PNGs and
+raw phone transcripts stay under ignored .device-backups/ and captures/;
+no personal content was copied into public evidence.
+
+The observed Samsung pause is a genuine reliability prerequisite: temporary
+unpause is not a permanent vendor battery exemption. The readiness screen still
+shows Background battery needs attention. Alarm delivery, reboot, screen-off,
+physical playback/import, microphone, vibration, NFC, actual tracking/audio
+ownership and Developer stop were not tested. These remain separate gates.
+The user's no-alarm/no-emergency-stop-test instruction remains binding.
+Full36-screen/phone-feature completion remains rejected; F061/F126 remain partial.
+
+## 2026-10-23 — Phosphor icons and final silent phone review
+
+Icon implementation: `f7f88ce`; conventional overflow correction:
+[`efa9cae98afa9ceb9a13396a35e0012a25686484`](https://github.com/omeyerrato/SleepWell/commit/efa9cae98afa9ceb9a13396a35e0012a25686484).
+[Final two-flow visual CI](https://github.com/omeyerrato/SleepWell/actions/runs/39928589826)
+and [normal Android CI](https://github.com/omeyerrato/SleepWell/actions/runs/39928587756) passed.
+[Persistent final 13 images, two raw results, environment and hashes](verification/2026-10-23-phosphor-icons/README.md).
+
+The shared hand-drawn icon switch is replaced by 51 selected Phosphor SVGs,
+converted without changing their paths or winding to local Android vectors.
+Sources are pinned to upstream commit 2b75f3ad12b420c9504ef05df8d2564a28f8500e,
+SHA256-locked and bundled with the full MIT license. The icon View retains
+existing accessibility labels, click targets and tint behavior; it centers the
+vector in a square instead of stretching it. The source audit verified every
+alias, source hash, generated vector and license. The first filled overflow
+glyph looked like a remote control in actual captures and was rejected despite
+green tests. The final regular three-dot asset resolves that specific blocker.
+See [notices](../THIRD-PARTY-NOTICES.md) and DESIGN-REVIEW.md.
+
+Final local validation: 105 unit tests, zero failures/errors/skips; lint zero
+errors and 68 existing warnings; debug, test and release APK builds pass.
+API36 RootVisualTest passes in 25.796 s and SoundSettingsFlowTest in 23.383 s at
+efa9cae. The latter now proves an empty/default sound profile opens without
+persisting defaults or errors, before exercising choices/recreation/reopen.
+
+The preceding five-flow run at cdf17d5 also passed with the new icon family:
+settings 18.146 s, roots 21.685 s, native sound 25.664 s, picker 108.542 s,
+reopened import 13.883 s, each one test. Its overflow image failed the visual
+gate. Only the relevant roots/configuration flows were rerun after the More
+asset correction; the three native/import tests are not claimed at efa9cae.
+All native audio work occurred in the disposable emulator with host output
+disabled. No phone playback or alarm was run.
+
+### Physical S23 and preservation
+
+At efa9cae, RootVisualTest passes in 19.187 s with ten actual private captures,
+including the existing real sparse Report and selected measurement.
+SoundSettingsFlowTest passes in 9.079 s with four stopped Rain/Ocean/recreated/
+reopened images. No Play, import, alarm, emergency stop, microphone, vibration,
+tracking, power-button, reboot or screen-off test. MainActivity is restored
+outside instrumentation with scoped visualReview keep-awake; no global timeout,
+power saving or navigation setting is changed.
+
+Each install-r has an immediate private preinstall tar backup. The final archive
+comparison proves the complete personal preference map and every row of every
+personal main-database table unchanged; SQLite integrity passes. Every
+pre-existing private file is byte-identical except AndroidX files/profileInstalled
+compilation cache, which updates with package installation. The older isolated
+database/journal remains untouched. Archives and phone captures remain ignored
+and private.
+
+Between the first earlier inspection and the 0d38193 install, default Rain mix
+keys appeared before that second install; their cause was not established.
+Every original preference value remained. The immediate preinstall baseline,
+rather than an older map missing those keys, is used for each later full-map
+comparison. No keys were reset to make the check pass. Opening an empty profile
+now has its own passing no-write assertion.
+
+The prior 0d38193 Window-background correction also has private S23 root/config
+passes (19.814 s / 9.023 s). Actual white Samsung three-button glyphs replaced
+the dim dark buttons on plum. Android edge-to-edge uses Window-background
+luminance when deciding forced light navigation bars; the page and Window now
+share their real color. Public API only; see
+[Android Views edge-to-edge](https://developer.android.com/develop/ui/views/layout/edge-to-edge)
+and [AOSP DecorView](https://android.googlesource.com/platform/frameworks/base/+/master/core/java/com/android/internal/policy/DecorView.java).
+
+Samsung Maximum power saving remains a reliability prerequisite; temporary app
+unpause is not a permanent battery exemption. Full design/feature acceptance is
+still rejected. Icon improvement is not certification of missing sonar,
+classification, routines, integrations, long-night behavior or alarm delivery.

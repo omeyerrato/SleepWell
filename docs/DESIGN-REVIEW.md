@@ -275,3 +275,53 @@ route/ducking or tracking-ownership certification. Large fonts/RTL and other
 configurations remain unverified. Empty Report is an honest supporting state,
 not an all-night measurement or classification result. Full 36-screen/feature
 completion remains **FAIL / rejected**.
+
+## Phosphor icon milestone — 2026-10-23
+
+Sources: `f7f88ce`; corrected More: `efa9cae`. The independent reviewer audited
+all 51 pinned aliases/SVG hashes, unchanged generated paths and winding, and
+the byte-identical bundled MIT license. No unmapped literal icon alias found.
+
+The reviewer inspected all 14 fresh S23 navigation/configuration images and
+all 26 cdf17d5 emulator images. The first More glyph was a filled capsule with
+three cutouts and was rejected. After changing only that alias to Phosphor
+Regular, the ten refreshed physical roots and all 13 final efa9cae emulator
+images show the conventional separated dots. The four physical sound settings
+images were also refreshed at the corrected production head. Final bounded
+icon PASS: distinct gear/lock/GitHub identities, coherent controls, centered
+icon/label pairs and selected dock pills, legible dark-page system bars.
+
+[Final original images and exact two-test scope](verification/2026-10-23-phosphor-icons/README.md)
+separate efa9cae root/configuration results from the prior cdf17d5 five-flow
+native/import results. No alarm action or physical playback/import occurred.
+Remaining minor semantic polish: the Guard calls card still uses a phone-device
+glyph and Fade out uses mixer faders rather than the boards' handset/descending
+volume motifs. These were not blockers for this bounded icon replacement.
+Other screens, charts and missing features retain their separate gates. Full
+36-screen/feature completion remains **FAIL / rejected**.
+
+## Audio imports and Samsung navigation — 2026-10-23
+
+The independent reviewer inspected all 26 actual API36 images from `114c25e`
+and the five raw test results in [persistent evidence](verification/2026-10-23-audio-import/README.md).
+The imported-audio hero is now neutral; validation/cancel, rejected source,
+saved selection, native playing, restarted process and removed source states
+have a bounded visual PASS. The lower-controls image was initially a duplicate
+of the top despite green tests; it was rejected. The replacement shows the
+actual scrolled My audio row, filename and tracking-playback switch after a
+committed frame. Portrait Activity recreation is not landscape coverage.
+
+Actual S23 images exposed another failure missed by the gesture-navigation
+emulator: dark Samsung navigation buttons on plum in Wind-down, Guard and
+Sleep sounds. At `0d38193`, Design.page sets the Window background to the same
+color as the visible page. Android's edge-to-edge background-luminance handling
+then stops forcing dark navigation glyphs from the old cream Window background.
+No global navigation setting or hidden API changes. The root test requires both
+the correct Window background and system-bar appearance.
+
+The reviewer inspected all 14 fresh physical images after this correction:
+bounded PASS for legible white three-button navigation, uninterrupted plum,
+four-tab dock selection, unique detail destinations, real Report selection and
+silent Rain/Ocean configuration. Personal captures stay private. No physical
+audio/import/alarm/microphone/tracking test is implied. Feature and 36-screen
+completion remains **FAIL / rejected**.

@@ -2,9 +2,11 @@
 
 Status: **partial**. The native configuration flow and a short real MediaPlayer/
 foreground-service integration journey pass on the disposable API36 CI emulator,
-with bounded board07 visual comparison. Listening quality, import and long phone
-background behavior remain unverified. No phone audio or alarm was run. The phone
-remains disconnected; the user's prohibition on alarm testing remains in force.
+with bounded board07 visual comparison. Actual document selection, bounded
+validation and saved read access through a process restart also have disposable
+emulator evidence. Listening quality and long phone background behavior remain
+unverified. The reconnected S23 passed silent configuration/navigation checks;
+no phone audio, import or alarm was run. The prohibition on alarm testing remains.
 
 ## Behavior in source
 
@@ -90,15 +92,20 @@ three seconds, not a full-minute fade. This is not a listening or loop-seam test
 All 17 final images pass the independent bounded comparison; exact acceptance
 is recorded in DESIGN-REVIEW.md. The earlier Wind-down bar and Privacy wrong-page
 rejections were corrected in source/capture synchronization before this final run.
-The new imported-audio/Brown hero is a neutral record-player still life. Actual import-state captures await fresh native CI review.
+The imported-audio/Brown hero is a neutral record-player still life. Actual
+import-state captures have passed the independent bounded visual review.
 
 [Persistent evidence](verification/2026-10-23-api36/README.md) pins code,
 environment, all 17 original PNGs, hashes and the three result files. These are
 emulator fixtures, not S23 or overnight data. Physical `--flow sounds-settings`
-remains unrun. The changed movement-only test has not been rerun; its prior pass
+now passes without Play/import; its private evidence is described in VERIFICATION.md.
+The changed movement-only test has not been rerun; its prior pass
 does not certify native tracking/audio ownership wiring.
 
-New picker/import verification is in progress; no native import pass is claimed until the dated evidence is recorded. Seven AudioCopyTest cases pass; source/security scope and exact diffs are in AUDIO-IMPORT-SECURITY.md.
+The [dated picker evidence](verification/2026-10-23-audio-import/README.md) records
+the actual five-flow result and scope, including the process restart. Seven
+AudioCopyTest cases pass; source/security scope and exact diffs are in
+AUDIO-IMPORT-SECURITY.md.
 
 Open: S23 playback, file picker/persisted grants, long/background/screen-off and
 process-death behavior, service delivery races, route unplug/ducking, full native

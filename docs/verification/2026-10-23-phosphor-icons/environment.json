@@ -1,0 +1,13 @@
+{
+  "commit": "efa9cae98afa9ceb9a13396a35e0012a25686484",
+  "emulator": true,
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no playback actions allowlisted",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": false,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420"
+}

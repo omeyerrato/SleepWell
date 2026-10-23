@@ -1,0 +1,18 @@
+{
+  "environment.json": "654d2b09f69f10efd19961896a2e628d93d6595385a207091b5a7e9a84e00205",
+  "root-alarms.png": "e1884076d190e98539ddfc0571c58c6eab84bd987152aff8cb28ac143151d67c",
+  "root-bedtime-guard.png": "ac9ac610b01b296ece1af2f1703889a5484757b07380c48222a20b1494923e1a",
+  "root-privacy.png": "b8d9269ffda92640989d20062fcbdc66a90e313b34e8f08fc8bc3c8b51a7da8f",
+  "root-readiness.png": "7c73efcd32a6ee81dd2249262fbd00cf08c274cb9cbd02839359a7debc343f6a",
+  "root-report.png": "9193b28d0c5b020e260c7df592f9af0d7a2d471362bb082e4b725eedbba9bd20",
+  "root-settings.png": "bb1c750601dba40fc7da21eee4924da1398bbdefdc8baba0661f7b068f955217",
+  "root-sound-analysis.png": "e1a66bb939bcc3bffd0d68d481906f3ab5fd2f019ec003ca9941ef81cd83d05d",
+  "root-tonight.png": "e516f2e2e1769afc1ea1dabf798f44db51c7c447dd46baa005443e7c93fed656",
+  "root-wind-down.png": "f456664f2b655cb2c9124e2c57d890a6777f4240beb70ca7518f08c52bd39c4b",
+  "RootVisualTest.txt": "1eef93791e5173cc0bf271c1cb7e6a4a46086df0681cf76179eefe848ff06157",
+  "sounds-settings-ocean.png": "31ec208c5412ebb60280c3a57acdfd2bab2fbdf65dc5063dc092dadbfca08865",
+  "sounds-settings-rain.png": "70a33e095affa0b5aa600c439e0b4473f098d1c570a83356844240a482729781",
+  "sounds-settings-recreated.png": "31ec208c5412ebb60280c3a57acdfd2bab2fbdf65dc5063dc092dadbfca08865",
+  "sounds-settings-reopened.png": "31ec208c5412ebb60280c3a57acdfd2bab2fbdf65dc5063dc092dadbfca08865",
+  "SoundSettingsFlowTest.txt": "54110b3091516176aa11aa0c063c650382479a680cfd89725fa61850d59a923e"
+}

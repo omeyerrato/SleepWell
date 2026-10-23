@@ -172,8 +172,13 @@ route changes, process death and S23 verification remain separate gates. Existin
 no-alarm-testing instructions remain binding. All published CI data is fixture
 only; never copy personal phone captures/backups into public evidence folders.
 
-## Selected audio documents (CI-only, acceptance pending)
+## Selected audio documents (CI only)
 
 The manual silent-ui workflow has an `audio_imports` option, independent of `native_sounds`. Both run only in the fixed disposable qemu AVD with host output disabled. SoundImportPickerTest drives actual DocumentsUI against a read-only test-APK provider with fixed synthetic audio/invalid/oversize/denied/delayed fixtures. SoundImportReopenTest runs only after the first passes and the harness force-stops this disposable app, then explicitly plays a saved provider URI. The provider is absent from app debug/release APKs and advertises no roots on physical hardware. These tests are deliberately absent from the physical-phone script allowlist.
 
-The tests bind UUID preferences, compare personal preferences and stream volume exactly, observe playback on main, close/drain every owned Activity and import worker before removing isolated preferences, and retain diagnostic fixtures if readers cannot finish. No source document is deleted or modified. Only known synthetic provider grants are released during CI cleanup. Native results and actual PNGs are pending fresh CI; test source and a successful build are not a picker/playback pass.
+The tests bind UUID preferences, compare personal preferences and stream volume exactly, observe playback on main, close/drain every owned Activity and import worker before removing isolated preferences, and retain diagnostic fixtures if readers cannot finish. No source document is deleted or modified. Only known synthetic provider grants are released during CI cleanup. The five-flow run and actual PNGs are recorded in [dated evidence](verification/2026-10-23-audio-import/README.md); test source and a successful build alone are not a picker/playback pass.
+
+SoundSettingsFlowTest also starts with an empty isolated preference profile and
+asserts that merely opening the default/legacy mix writes neither defaults nor
+errors. It then exercises saved choices, Activity recreation and reopen without
+Play or import. The physical run compares the entire personal preference map.
