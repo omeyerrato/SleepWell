@@ -21,6 +21,7 @@ final class Icons {
             case "sequence" -> R.drawable.ic_phosphor_list_numbers_regular;
             case "keyboard" -> R.drawable.ic_phosphor_keyboard_regular;
             case "home" -> R.drawable.ic_phosphor_house_fill;
+            case "qr" -> R.drawable.ic_phosphor_qr_code_regular;
             case "moon" -> R.drawable.ic_phosphor_moon_fill;
             case "report" -> R.drawable.ic_phosphor_chart_bar_fill;
             case "settings" -> R.drawable.ic_phosphor_gear_six_fill;

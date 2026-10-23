@@ -53,6 +53,7 @@
     "assets/regular/person-simple-run.svg": "d76c07e6727db0dbcf3eb83a6b9a360940096ca8fcf396f11469c7053dac2bda",
     "assets/regular/plug.svg": "513534dd9665042bfed73c669130a904a0ab17df06cc8c0e4a717721474839d9",
     "assets/regular/plus.svg": "d688feb9dd2e41c1721d6906a05a2a42e18cd774762fe706d72b2bdfd91cddc4",
+    "assets/regular/qr-code.svg": "7c6b19eb844b25e39b343576dec7c38b1da24caa661f72392fbf1318db7f5330",
     "assets/regular/question.svg": "fd9a87cfce2abaa9113058be90e5281da58f665e2185974b80c7425d5c7fe2d6",
     "assets/regular/shield-check.svg": "bb04d552c0baaaabd90f7eb60760cb0c7ddb7e9f47e4b76e9599ddd7dfd8eaa7",
     "assets/regular/speaker-high.svg": "caca5fc1ee8489ac19232301d2c96f6d4048802491d75d761bbb89d5c98e459d",
@@ -130,6 +131,10 @@
     "home": {
       "name": "house",
       "weight": "fill"
+    },
+    "qr": {
+      "name": "qr-code",
+      "weight": "regular"
     },
     "moon": {
       "name": "moon",

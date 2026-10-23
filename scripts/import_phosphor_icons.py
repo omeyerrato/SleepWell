@@ -26,7 +26,7 @@ ICONS = {
     "attention": ("exclamation-mark", "regular"), "plus": ("plus", "regular"),
     "math": ("math-operations", "regular"), "memory": ("cards", "regular"),
     "sequence": ("list-numbers", "regular"), "keyboard": ("keyboard", "regular"),
-    "home": ("house", "fill"),
+    "home": ("house", "fill"), "qr": ("qr-code", "regular"),
     "moon": ("moon", "fill"), "report": ("chart-bar", "fill"),
     "settings": ("gear-six", "fill"), "sun": ("sun", "regular"),
     "sound": ("speaker-high", "regular"), "tasks": ("list-checks", "regular"),
