@@ -1,0 +1,16 @@
+package org.sleepwell.app;
+
+import org.junit.Test;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import static org.junit.Assert.*;
+
+public class HistoryEraseJobsTest {
+    @Test public void concurrentConfirmationsReuseExactlyOnePinnedTask(){List<Runnable> queue=new ArrayList<>();HistoryEraseJobs<Object> jobs=new HistoryEraseJobs<>(queue::add);Object scope=new Object();AtomicInteger count=new AtomicInteger();HistoryEraseJobs.Job first=jobs.start(scope,HistoryEraseJobs.Kind.ERASE,()->{count.incrementAndGet();return 2;});assertSame(first,jobs.start(scope,HistoryEraseJobs.Kind.ERASE,()->{fail("Duplicate must not run");return 0;}));assertEquals(1,queue.size());assertFalse(first.done);queue.remove(0).run();assertEquals(1,count.get());assertTrue(first.done);assertTrue(first.erased);assertEquals(2,first.pending);assertSame(first,jobs.get(scope));}
+    @Test public void cleanupResultRetainsCompletedHistoryDeletion(){HistoryEraseJobs<Object> jobs=new HistoryEraseJobs<>(Runnable::run);Object scope=new Object();jobs.start(scope,HistoryEraseJobs.Kind.ERASE,()->3);HistoryEraseJobs.Job clean=jobs.start(scope,HistoryEraseJobs.Kind.CLEAN,()->0);assertTrue(clean.done);assertTrue(clean.erased);assertEquals(0,clean.pending);}
+    @Test public void failedCleanupKeepsPendingFilesInsteadOfOfferingAnotherHistoryErase(){HistoryEraseJobs<Object> jobs=new HistoryEraseJobs<>(Runnable::run);Object scope=new Object();jobs.start(scope,HistoryEraseJobs.Kind.ERASE,()->3);HistoryEraseJobs.Job clean=jobs.start(scope,HistoryEraseJobs.Kind.CLEAN,()->{throw new IllegalStateException("Storage unavailable");});assertTrue(clean.done);assertTrue(clean.erased);assertEquals(3,clean.pending);assertEquals("Storage unavailable",clean.error);}
+    @Test public void storageFailureIsVisibleAndDoesNotPretendDeletionFinished(){HistoryEraseJobs<Object> jobs=new HistoryEraseJobs<>(Runnable::run);HistoryEraseJobs.Job job=jobs.start(new Object(),HistoryEraseJobs.Kind.ERASE,()->{throw new IllegalStateException("Database unavailable");});assertTrue(job.done);assertFalse(job.erased);assertEquals("Database unavailable",job.error);}
+    @Test public void storageScopesUseIdentityEvenWhenKeysCompareEqual(){HistoryEraseJobs<String> jobs=new HistoryEraseJobs<>(Runnable::run);String one=new String("scope"),two=new String("scope");HistoryEraseJobs.Job first=jobs.start(one,HistoryEraseJobs.Kind.ERASE,()->2);assertNull(jobs.get(two));HistoryEraseJobs.Job second=jobs.start(two,HistoryEraseJobs.Kind.INSPECT,()->0);assertNotSame(first,second);assertFalse(second.erased);}
+    @Test public void activeWorkCannotBeDiscardedByRecreationOrTestTeardown(){List<Runnable> queue=new ArrayList<>();HistoryEraseJobs<Object> jobs=new HistoryEraseJobs<>(queue::add);Object scope=new Object();jobs.start(scope,HistoryEraseJobs.Kind.ERASE,()->0);try{jobs.forget(scope);fail();}catch(IllegalStateException expected){}queue.get(0).run();jobs.forget(scope);assertNull(jobs.get(scope));}
+    @Test public void executorRejectionBecomesAnActionableTerminalFailure(){HistoryEraseJobs<Object> jobs=new HistoryEraseJobs<>(task->{throw new java.util.concurrent.RejectedExecutionException();});HistoryEraseJobs.Job job=jobs.start(new Object(),HistoryEraseJobs.Kind.ERASE,()->{fail();return 0;});assertTrue(job.done);assertFalse(job.error.isEmpty());assertFalse(job.erased);}
+}
