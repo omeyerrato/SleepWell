@@ -32,7 +32,7 @@ Validation: NightWindowTest has ten pure boundary, overnight/daytime, weekly,
 DST and invalid-window tests. CI-only NightArcFlowTest uses an isolated plan and
 database plus an injected clock. It never changes the OS clock or schedules an
 alarm. It observes the actual foreground Handler tick in manual theme and same
-View identity, then captures upcoming/help/start/middle/end/next/large/weekly
+View identity, then captures upcoming/help/start/middle/end/next/large/large-action/weekly
 states. Source/build success alone does not certify those native results;
 dated actual evidence and the independent verdict belong in VERIFICATION.md
 and DESIGN-REVIEW.md. This remains a bounded component flow, not full app parity.

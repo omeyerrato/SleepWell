@@ -276,6 +276,39 @@ configurations remain unverified. Empty Report is an honest supporting state,
 not an all-night measurement or classification result. Full 36-screen/feature
 completion remains **FAIL / rejected**.
 
+## Rest-window clock and dark detail bars — 2026-10-23
+
+Final code: `cfb5e68e24cdfcaa9f335107a2392987399d54fc`, silent run
+`39940420018`. The independent reviewer opened all 22 original images and read
+all three raw transcripts plus the environment at that exact head. Bounded
+**PASS** for this clock component and dark system-bar correction. See
+[original captures, results and hashes](verification/2026-10-23-rest-window/README.md).
+
+All nine arc states pass: neutral upcoming/next, actual 0/50/100 clock positions,
+preserved moon/sun endpoint identities, planned/remaining hierarchy and tick
+clearance, dated weekly eight-hour window, readable themed explanation, 1.3x
+app text and the actual scrolled primary action above the fixed dock. The
+explanation distinguishes clock progress from measured sleep. The first
+candidate failed a native button selector; a subsequent green run was rejected
+for endpoint rings overpainting the moon/sun. Those failures were corrected
+and recaptured before acceptance.
+
+A further green 22-image candidate was rejected for black Rain system glyphs
+on plum. Final Rain now has white status glyphs and a white gesture handle on
+plum; all four configuration states pass. Tests require stable requested
+appearance, a committed frame and actual original PNG light-glyph/plum pixels.
+The other nine root/detail images show no new regression. No older images were
+substituted into this final run. Raw passing times: settings 21.212 s, roots
+23.385 s, arc 38.907 s; host output disabled and no playback actions allowlisted.
+
+All 14 fresh private S23 root/configuration images separately pass, including
+white Samsung three-button navigation and first Rain. The physical root/config
+tests take 19.215 s / 10.929 s with matching production source. Personal
+preferences and every personal database row are unchanged. No physical
+active-window, scheduling, alarm, audio, microphone, vibration, tracking or
+screen-off certification is implied. Full 36-screen and feature acceptance
+remains **FAIL / incomplete**.
+
 ## Phosphor icon milestone — 2026-10-23
 
 Sources: `f7f88ce`; corrected More: `efa9cae`. The independent reviewer audited

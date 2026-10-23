@@ -479,3 +479,61 @@ Samsung Maximum power saving remains a reliability prerequisite; temporary app
 unpause is not a permanent battery exemption. Full design/feature acceptance is
 still rejected. Icon improvement is not certification of missing sonar,
 classification, routines, integrations, long-night behavior or alarm delivery.
+
+## 2026-10-23 — rest-window clock replaces the fixed arc
+
+Code [`cfb5e68e24cdfcaa9f335107a2392987399d54fc`](https://github.com/omeyerrato/SleepWell/commit/cfb5e68e24cdfcaa9f335107a2392987399d54fc).
+[Three-flow silent CI39940420018](https://github.com/omeyerrato/SleepWell/actions/runs/39940420018)
+and [normal CI39940417536](https://github.com/omeyerrato/SleepWell/actions/runs/39940417536) pass.
+[Persistent 22 original PNGs, three raw results, environment and hashes](verification/2026-10-23-rest-window/README.md).
+
+The old 80% accent segment was fixed decoration. It now represents elapsed
+clock time in the planned bedtime-to-wake window, with a Now marker, remaining
+time, neutral upcoming/next states and an actual themed explanation. Hero,
+endpoints, duration and fraction share the resolved instant/zone snapshot.
+It does not measure sleep or imply that tracking is running. Weekly alarms use
+one intended night and show their date; DST gaps cannot silently add a day.
+The existing foreground Handler updates the retained view every 30 seconds,
+including with manual appearance, without scheduling or saving preferences.
+
+NightWindowTest adds ten meaningful pure boundary/daytime/weekly/DST tests.
+Local total: 115 passes, no failures/errors/skips. Lint: zero errors, 68 existing
+warnings. Debug, test and release builds pass. Native CI results: settings
+21.212 s, roots 23.385 s, arc 38.907 s; each one passing test. The arc flow observes
+the real Handler tick with an injected display clock and isolated plan/database,
+retains the original View, opens/closes the real dialog and exercises 0/50/100%,
+next window, weekly date and app 1.3x text. The scrolled large-text action must
+be at least 48dp visible above the dock; it is not activated. No OS clock change,
+alarm scheduling, playback, microphone or tracking action occurs.
+
+The first native candidate failed at a case-sensitive platform dialog-button
+selector before progression. The next passed all three tests but was visually
+rejected because the marker ring overpainted the moon/sun endpoint glyphs.
+The corrected ring clearance preserves those identities while retaining Now and
+the ring on the free curve. Tick spacing/exclusion also avoids duration text.
+These corrections use new actual captures; no screenshot pixels are edited.
+Another 22-image candidate passed tests but was rejected for dark Rain system
+glyphs on plum. Focused dark detail windows now reapply their appearance on the
+next post and after 200 ms, guarded against focus loss/destruction. Sound
+configuration capture requires stable flags/background and a committed frame,
+then reads original PNG inset regions for actual light glyphs and predominantly
+plum pixels. It never changes appearance from the test. All 22 final images
+come from the same cfb5e68 run; no older Rain substitution.
+DESIGN-REVIEW.md records the independent bounded verdict.
+
+Matching production source is installed on the S23 (93ef122; cfb5e68 changes
+only test assertions). Read-only RootVisualTest passes in 19.215 s with ten
+private captures. SoundSettingsFlowTest passes in 10.929 s with four stopped
+captures, including actual light-on-plum system-bar pixel checks.
+Immediate preinstall and post-run
+archives prove exact full personal preference-map and every personal database
+row unchanged, SQLite integrity OK; all existing private files are identical
+except the AndroidX compilation cache marker. Main is left open outside the
+runner with scoped keep-awake. No global timeout/power/nav setting, phone audio,
+alarm, emergency stop, vibration, microphone, tracking or screen-off test.
+Active-window/weekly/large states were tested only on the disposable emulator.
+
+Real system time/zone broadcast delivery, broad OS font scales/RTL/landscape,
+an overnight recording and the remaining phone features are not certified.
+The dashboard feature row stays partial. Full 36-screen/feature completion
+remains rejected.

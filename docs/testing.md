@@ -16,7 +16,7 @@ theme cases, including midnight wrapping and bounded text scales. There are 18
 local test methods at that milestone. ChartSeriesTest adds five display-aggregation
 tests (dense average, explicit/implicit gaps, true zero/invalid values, short final
 epoch, finite extreme imports), bringing that milestone total to 23. TrackingClockTest (5), SessionTimingTest (3),
-ClipBudgetTest (2) and two more ChartSeriesTest cases brought that milestone total to 35. AudioCopyTest adds seven actual-byte limit, empty/short/stalled read, provider failure and cancellation cases. The current local total is 105; see the dated
+ClipBudgetTest (2) and two more ChartSeriesTest cases brought that milestone total to 35. AudioCopyTest adds seven actual-byte limit, empty/short/stalled read, provider failure and cancellation cases. NightWindowTest adds ten clock-window, boundary, weekly and DST cases. The current local total is 115; see the dated
 VERIFICATION entry for the exact native evidence.
 
 ## Personal phone: preserve installation and data
@@ -139,10 +139,10 @@ debug-only Developer stop, remain outside the permitted sleep-time test set.
 Never run the whole connected suite.
 
 SoundPlaybackTest has 24 local fake-sink cases and never instantiates Android
-audio classes. SoundSettingsFlowTest is configuration-only and now passes on the
-API36 CI emulator; its physical `--flow sounds-settings` has not run. It never
+audio classes. SoundSettingsFlowTest is configuration-only and passes on the
+API36 CI emulator and physical S23; see dated VERIFICATION.md for exact heads. It never
 presses Play, starts tracking or imports a file. The manual Silent Android visual
-review workflow defaults to it and RootVisualTest on an ephemeral no-audio emulator.
+review workflow defaults to it, RootVisualTest and NightArcFlowTest on an ephemeral no-audio emulator.
 
 Optional workflow input `native_sounds=true` adds only NativeSoundFlowTest on that
 same disposable emulator. The Python runner refuses non-GitHub execution or any
@@ -182,3 +182,29 @@ SoundSettingsFlowTest also starts with an empty isolated preference profile and
 asserts that merely opening the default/legacy mix writes neither defaults nor
 errors. It then exercises saved choices, Activity recreation and reopen without
 Play or import. The physical run compares the entire personal preference map.
+
+Every sound configuration capture now waits for focused decoded artwork, a plum
+Window background and light requested system bars across four observations,
+then a committed hardware frame. The unchanged PNG must contain light glyph
+pixels and at least 60% actual plum background within each status/navigation
+inset. Tests never set those flags to make the capture pass. This catches the
+observed first-Rain dark-glyph transition that idle/artwork checks alone missed.
+
+## Rest-window clock (CI only)
+
+NightArcFlowTest requires explicit ciReview plus qemu and is absent from the
+physical-phone allowlist. It injects a clock only for Tonight's display, an
+isolated database and an isolated saved plan. No OS clock, alarm scheduler,
+tracking or audio action is invoked. The weekly alarm is a database-only display
+fixture; it is never scheduled. The actual 30-second foreground Handler must
+advance the retained arc while appearance is manual. Other checkpoints call
+the same refresh method at constructed instants: 0/50/100 percent, after wake,
+weekly occurrence and app extra-large text (1.3x). A separate scrolled capture
+requires the large-text primary action to be at least 48dp visible above the
+dock without activating it. It opens/closes the real
+themed explanation. Every capture waits for a hardware frame.
+
+Finally all owned Activities close before factories/clock restore and isolated
+files are removed. Only the five modified appearance keys are restored; exact
+whole-personal-map equality remains required. Pending/failed runs do not certify
+the later states. See REST-WINDOW.md and dated VERIFICATION.md for actual scope.
