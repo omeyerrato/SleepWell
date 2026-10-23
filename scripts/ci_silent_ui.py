@@ -89,7 +89,7 @@ metadata["size"] = command("shell", "wm", "size").stdout.strip()
 metadata["density"] = command("shell", "wm", "density").stdout.strip()
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 failures = []
-tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest"]
+tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
 if args.audio_imports:
@@ -123,7 +123,13 @@ if not fixture_report.is_file():
 else:
     try:
         fixture_data = json.loads(fixture_report.read_text(encoding="utf-8"))["fixtures"]
-        if len(fixture_data) != 3 or sum(item["persisted_snoring_count"] for item in fixture_data[:2]) < 1 or fixture_data[2]["persisted_speech_count"] < 1:
+        fixtures = {item["fixture"]: item for item in fixture_data}
+        expected = {"snoring-sorts": "snoring", "snoring-pencil": "snoring", "speech-crowd": "speech", "speech-countdown": "speech"}
+        if len(fixture_data) != len(expected) or set(fixtures) != set(expected) or any(fixtures[name]["expected_broad_class"] != label for name, label in expected.items()):
+            failures.append("Real sound fixture identities or expected classes do not match the pinned set")
+        elif (sum(fixtures[name]["persisted_snoring_count"] for name in ("snoring-sorts", "snoring-pencil")) < 1
+              or fixtures["speech-countdown"]["persisted_speech_count"] < 1
+              or any(fixtures[name]["persisted_snoring_count"] != 0 for name in ("speech-crowd", "speech-countdown"))):
             failures.append("Human fixtures did not persist both snoring and speech through the production policy")
     except (KeyError, ValueError, TypeError) as error:
         failures.append("Invalid human sound fixture evaluation: " + str(error))
@@ -138,6 +144,7 @@ required += ["analysis-events-" + name + ".png" for name in ("all", "speech", "r
 required += ["snore-settings-" + name + ".png" for name in ("default", "selected", "recreated", "reopened")]
 required += ["report-reference-" + name + ".png" for name in ("history", "week", "month", "year", "night", "editor", "tags-notes", "reopened")]
 required += ["travel-" + name + ".png" for name in ("plan", "zones", "date", "reminders", "reopened", "error", "disabled")]
+required += ["privacy-history-" + name + ".png" for name in ("ready", "busy", "error", "pending", "done")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:
