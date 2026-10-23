@@ -374,14 +374,28 @@
     },
     {
       "feature": "Decreasing snooze / total snooze cap",
-      "screens": "04–12,26",
+      "screens": "09",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending; current count×duration is bounded.",
+      "implementation": [
+        "SnoozePolicy.java",
+        "Alarm.java",
+        "AlarmEditorActivity.java",
+        "AlarmActivity.java"
+      ],
+      "validation": "SnoozePolicyTest three pure passes; AlarmMenusFlowTest native configuration/recreation/save/reopen/cancel passed 45.169 s at b0d91d2/CI39992137063. No physical alarm/snooze execution.",
+      "status": "partial",
+      "notes": "Optional per-alarm decreasing delay shares display/schedule policy with a one-minute floor; legacy/import defaults preserve fixed snoozes. Separate total-minute cap remains missing.",
       "id": "F018",
-      "tests": []
+      "tests": [
+        {
+          "name": "AlarmMenusFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmMenusFlowTest.java"
+        },
+        {
+          "name": "SnoozePolicyTest",
+          "path": "app/src/test/java/org/sleepwell/app/SnoozePolicyTest.java"
+        }
+      ]
     },
     {
       "feature": "Post-dismiss wake check",
@@ -840,14 +854,43 @@
     },
     {
       "feature": "Automatic tracking",
-      "screens": "13–21,27–30",
+      "screens": "16,18,28",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: separate activity-recognition/bedtime triggers and modern Android background-microphone handling. No microphone capture from boot.",
+      "implementation": [
+        "AutomaticSleep.java",
+        "AutomaticStart.java",
+        "AutomaticTransition.java",
+        "AutomaticCapture.java",
+        "AutomaticTrackingActivity.java",
+        "TrackingService.java",
+        "TrackingActivity.java"
+      ],
+      "validation": "AutomaticSleepTest, AutomaticStartTest, AutomaticTransitionTest and AutomaticCaptureTest pure passes. First AutomaticTrackingFlowTest configuration/fake-arm pass at b0d91d2/CI39992137063; expanded audio/error controls require fresh native acceptance. Actual Service, sensors, deferred microphone and overnight lifecycle unverified.",
+      "status": "partial",
+      "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md.",
       "id": "F044",
-      "tests": []
+      "tests": [
+        {
+          "name": "AutomaticCaptureTest",
+          "path": "app/src/test/java/org/sleepwell/app/AutomaticCaptureTest.java"
+        },
+        {
+          "name": "AutomaticSleepTest",
+          "path": "app/src/test/java/org/sleepwell/app/AutomaticSleepTest.java"
+        },
+        {
+          "name": "AutomaticStartTest",
+          "path": "app/src/test/java/org/sleepwell/app/AutomaticStartTest.java"
+        },
+        {
+          "name": "AutomaticTrackingFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/AutomaticTrackingFlowTest.java"
+        },
+        {
+          "name": "AutomaticTransitionTest",
+          "path": "app/src/test/java/org/sleepwell/app/AutomaticTransitionTest.java"
+        }
+      ]
     },
     {
       "feature": "Missing-night estimation",
@@ -1011,14 +1054,47 @@
     },
     {
       "feature": "Automatic sound labels",
-      "screens": "13–21,27–30",
+      "screens": "18,20,30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: properly licensed local classifier and labeled validation corpus. Current clips are labeled only as loud sounds.",
+      "implementation": [
+        "YamnetClassifier.java",
+        "SoundAnalysis.java",
+        "SoundAnalysisStream.java",
+        "CloseResources.java",
+        "NoiseRecorder.java",
+        "Store.java",
+        "SoundEventsActivity.java"
+      ],
+      "validation": "SoundAnalysisTest, SoundAnalysisStreamTest and CloseResourcesTest pure passes. SoundAnalysisNativeTest three methods and SoundEventsUiTest pass at 8fd7dd9/CI39997627697 after the SQL expression-bound fix. Actual bundled CPU negative inference, interval links, analysis-only storage and event filter/recreation verified. SoundClassifierFixtureEvaluationTest real CC0 positive PCM-to-production-policy/group/store/reopen gate awaits execution; microphone capture unverified.",
+      "status": "partial",
+      "notes": "Bundled Apache-2.0 offline YAMNet estimates snoring/speech with all-class winner/margin gates. Uncertain sounds remain Other. Analysis-only intervals persist without WAV. Cough/baby/laughter categories, correction, wider validation and full board07 player remain missing. See SOUND-ANALYSIS.md.",
       "id": "F055",
-      "tests": []
+      "tests": [
+        {
+          "name": "CloseResourcesTest",
+          "path": "app/src/test/java/org/sleepwell/app/CloseResourcesTest.java"
+        },
+        {
+          "name": "SoundAnalysisNativeTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SoundAnalysisNativeTest.java"
+        },
+        {
+          "name": "SoundAnalysisStreamTest",
+          "path": "app/src/test/java/org/sleepwell/app/SoundAnalysisStreamTest.java"
+        },
+        {
+          "name": "SoundAnalysisTest",
+          "path": "app/src/test/java/org/sleepwell/app/SoundAnalysisTest.java"
+        },
+        {
+          "name": "SoundClassifierFixtureEvaluationTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SoundClassifierFixtureEvaluationTest.java"
+        },
+        {
+          "name": "SoundEventsUiTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SoundEventsUiTest.java"
+        }
+      ]
     },
     {
       "feature": "Noise threshold",
@@ -1038,19 +1114,23 @@
     },
     {
       "feature": "Noise library",
-      "screens": "13–21,27–30",
+      "screens": "20",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
-        "TrackingService.java",
-        "NoiseRecorder.java",
-        "BedtimeGuard.java",
-        "MainActivity.java"
+        "SoundEventsActivity.java",
+        "RecordSignalsActivity.java",
+        "Store.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "SoundEventsUiTest passes at 8fd7dd9/CI39997627697 after the arithmetic SQL bound fix: actual category filtering and recreation, three original screenshots. No playback/microphone hardware actions. Reader-scope teardown correction ab9bd36 requires the next run.",
       "status": "partial",
-      "notes": "Partial: playback within each night; favorites and global filtering pending.",
+      "notes": "Per-night estimate category counts/filters and analysis-only states; existing clip playback remains separately available. Favorites, global library, inline player and full board07 parity remain missing.",
       "id": "F057",
-      "tests": []
+      "tests": [
+        {
+          "name": "SoundEventsUiTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SoundEventsUiTest.java"
+        }
+      ]
     },
     {
       "feature": "Retention / favorite album / alternate formats",
@@ -1070,14 +1150,29 @@
     },
     {
       "feature": "Anti-snoring cues",
-      "screens": "13–21,27–30",
+      "screens": "21",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: requires a validated snore classifier first. Generic loud sounds do not trigger snoring treatment.",
+      "implementation": [
+        "SnoreCuePolicy.java",
+        "SnoreCueOutput.java",
+        "SnoringCuesActivity.java",
+        "NoiseRecorder.java",
+        "ClipBudget.java"
+      ],
+      "validation": "SnoreCuePolicyTest pure fake-output tests pass. SnoreCueSettingsNativeTest passes at 8fd7dd9/CI39997627697: saved options, recreation/reopen and four original screenshots with fake output. Real positive sound fixture gate, hardware cue operation and effectiveness unverified.",
+      "status": "partial",
+      "notes": "Default-off cues after confident snoring estimates, selectable sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes; alarm/disable/close guards. Headphone-only routing and preview remain missing. No medical effectiveness claim.",
       "id": "F059",
-      "tests": []
+      "tests": [
+        {
+          "name": "SnoreCuePolicyTest",
+          "path": "app/src/test/java/org/sleepwell/app/SnoreCuePolicyTest.java"
+        },
+        {
+          "name": "SnoreCueSettingsNativeTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SnoreCueSettingsNativeTest.java"
+        }
+      ]
     },
     {
       "feature": "Pair tracking",
@@ -1995,14 +2090,43 @@
     },
     {
       "feature": "After-fall-asleep / false-start rejection",
-      "screens": "28",
+      "screens": "16,18,28",
       "source": "https://sleep.urbandroid.org/docs/sleep/automatic_sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Needs opt-in activity data and measured false-start behavior.",
+      "implementation": [
+        "AutomaticSleep.java",
+        "AutomaticStart.java",
+        "AutomaticTransition.java",
+        "AutomaticCapture.java",
+        "AutomaticTrackingActivity.java",
+        "TrackingService.java",
+        "TrackingActivity.java"
+      ],
+      "validation": "AutomaticSleepTest, AutomaticStartTest, AutomaticTransitionTest and AutomaticCaptureTest pure passes. First AutomaticTrackingFlowTest configuration/fake-arm pass at b0d91d2/CI39992137063; expanded audio/error controls require fresh native acceptance. Actual Service, sensors, deferred microphone and overnight lifecycle unverified.",
+      "status": "partial",
+      "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md.",
       "id": "F117",
-      "tests": []
+      "tests": [
+        {
+          "name": "AutomaticCaptureTest",
+          "path": "app/src/test/java/org/sleepwell/app/AutomaticCaptureTest.java"
+        },
+        {
+          "name": "AutomaticSleepTest",
+          "path": "app/src/test/java/org/sleepwell/app/AutomaticSleepTest.java"
+        },
+        {
+          "name": "AutomaticStartTest",
+          "path": "app/src/test/java/org/sleepwell/app/AutomaticStartTest.java"
+        },
+        {
+          "name": "AutomaticTrackingFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/AutomaticTrackingFlowTest.java"
+        },
+        {
+          "name": "AutomaticTransitionTest",
+          "path": "app/src/test/java/org/sleepwell/app/AutomaticTransitionTest.java"
+        }
+      ]
     },
     {
       "feature": "Missed-night estimate review / provenance",
@@ -2085,12 +2209,27 @@
       "feature": "Headphone-only cues / intensity / repeat",
       "screens": "21",
       "source": "https://sleep.urbandroid.org/docs/sleep/anti_snoring.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Cannot implement cues before snore detection; loud noise is not snoring.",
+      "implementation": [
+        "SnoreCuePolicy.java",
+        "SnoreCueOutput.java",
+        "SnoringCuesActivity.java",
+        "NoiseRecorder.java",
+        "ClipBudget.java"
+      ],
+      "validation": "SnoreCuePolicyTest pure fake-output tests pass. SnoreCueSettingsNativeTest passes at 8fd7dd9/CI39997627697: saved options, recreation/reopen and four original screenshots with fake output. Real positive sound fixture gate, hardware cue operation and effectiveness unverified.",
+      "status": "partial",
+      "notes": "Default-off cues after confident snoring estimates, selectable sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes; alarm/disable/close guards. Headphone-only routing and preview remain missing. No medical effectiveness claim.",
       "id": "F125",
-      "tests": []
+      "tests": [
+        {
+          "name": "SnoreCuePolicyTest",
+          "path": "app/src/test/java/org/sleepwell/app/SnoreCuePolicyTest.java"
+        },
+        {
+          "name": "SnoreCueSettingsNativeTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SnoreCueSettingsNativeTest.java"
+        }
+      ]
     },
     {
       "feature": "Sound mixing / gains / fade / local playlist",

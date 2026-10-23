@@ -168,6 +168,35 @@ for row in rows:
             validation="SoundPlaybackTest 24 and AudioCopyTest 7 local passes. SoundSettingsFlowTest API36 CI18.146s and S23 9.079s: choices/recreation/reopen, no Play, exact personal preference preservation. NativeSoundFlowTest CI25.664s. SoundImportPickerTest CI108.542s: actual picker, invalid/known+unknown oversize/denied/cancel, stale choice and portrait Activity recreation; SoundImportReopenTest CI13.883s: saved read grant after actual process restart, explicit native Play/Pause/Stop/removal with original bytes unchanged. All five pass at cdf17d5 in no-host-audio CI39927399518;26 actual captures. The later More-only icon correction at efa9cae has fresh two-flow CI39928589826 and13 actual captures, not a same-head five-flow claim. No physical audio/import, listening/full-fade or full-screen parity acceptance.",
             notes="Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Import uses retained validation, actual100MiB bounds, visible cancel, revision fencing and neutral art; narrower picker/read-grant/restart/playback/removal flow now has native CI evidence. Physical configuration/navigation only verified; Samsung Maximum power saving initially paused app, temporarily unpaused without changing global settings. Physical audio/import, actual tracking ownership and audible loop quality remain unverified. Paused timeout, pending-import process death, missing persistable grants and disk-failure reporting remain open. Timer completion uses only the last three seconds via a 57-second offset. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.")
 
+# Current parallel feature work. Keep incomplete native/device gates explicit.
+for row in rows:
+    title = row["feature"]
+    if title in ("Automatic tracking", "After-fall-asleep / false-start rejection"):
+        row.update(status="partial", screens="16,18,28",
+            implementation=["AutomaticSleep.java", "AutomaticStart.java", "AutomaticTransition.java", "AutomaticCapture.java", "AutomaticTrackingActivity.java", "TrackingService.java", "TrackingActivity.java"],
+            validation="AutomaticSleepTest, AutomaticStartTest, AutomaticTransitionTest and AutomaticCaptureTest pure passes. First AutomaticTrackingFlowTest configuration/fake-arm pass at b0d91d2/CI39992137063; expanded audio/error controls require fresh native acceptance. Actual Service, sensors, deferred microphone and overnight lifecycle unverified.",
+            notes="Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md.")
+    elif title == "Automatic sound labels":
+        row.update(status="partial", screens="18,20,30",
+            implementation=["YamnetClassifier.java", "SoundAnalysis.java", "SoundAnalysisStream.java", "CloseResources.java", "NoiseRecorder.java", "Store.java", "SoundEventsActivity.java"],
+            validation="SoundAnalysisTest, SoundAnalysisStreamTest and CloseResourcesTest pure passes. SoundAnalysisNativeTest three methods and SoundEventsUiTest pass at 8fd7dd9/CI39997627697 after the SQL expression-bound fix. Actual bundled CPU negative inference, interval links, analysis-only storage and event filter/recreation verified. SoundClassifierFixtureEvaluationTest real CC0 positive PCM-to-production-policy/group/store/reopen gate awaits execution; microphone capture unverified.",
+            notes="Bundled Apache-2.0 offline YAMNet estimates snoring/speech with all-class winner/margin gates. Uncertain sounds remain Other. Analysis-only intervals persist without WAV. Cough/baby/laughter categories, correction, wider validation and full board07 player remain missing. See SOUND-ANALYSIS.md.")
+    elif title == "Decreasing snooze / total snooze cap":
+        row.update(status="partial", screens="09",
+            implementation=["SnoozePolicy.java", "Alarm.java", "AlarmEditorActivity.java", "AlarmActivity.java"],
+            validation="SnoozePolicyTest three pure passes; AlarmMenusFlowTest native configuration/recreation/save/reopen/cancel passed 45.169 s at b0d91d2/CI39992137063. No physical alarm/snooze execution.",
+            notes="Optional per-alarm decreasing delay shares display/schedule policy with a one-minute floor; legacy/import defaults preserve fixed snoozes. Separate total-minute cap remains missing.")
+    elif title == "Noise library":
+        row.update(status="partial", screens="20",
+            implementation=["SoundEventsActivity.java", "RecordSignalsActivity.java", "Store.java"],
+            validation="SoundEventsUiTest passes at 8fd7dd9/CI39997627697 after the arithmetic SQL bound fix: actual category filtering and recreation, three original screenshots. No playback/microphone hardware actions. Reader-scope teardown correction ab9bd36 requires the next run.",
+            notes="Per-night estimate category counts/filters and analysis-only states; existing clip playback remains separately available. Favorites, global library, inline player and full board07 parity remain missing.")
+    elif title in ("Anti-snoring cues", "Headphone-only cues / intensity / repeat"):
+        row.update(status="partial", screens="21",
+            implementation=["SnoreCuePolicy.java", "SnoreCueOutput.java", "SnoringCuesActivity.java", "NoiseRecorder.java", "ClipBudget.java"],
+            validation="SnoreCuePolicyTest pure fake-output tests pass. SnoreCueSettingsNativeTest passes at 8fd7dd9/CI39997627697: saved options, recreation/reopen and four original screenshots with fake output. Real positive sound fixture gate, hardware cue operation and effectiveness unverified.",
+            notes="Default-off cues after confident snoring estimates, selectable sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes; alarm/disable/close guards. Headphone-only routing and preview remain missing. No medical effectiveness claim.")
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

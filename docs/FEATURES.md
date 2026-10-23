@@ -20,17 +20,17 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | Do not wake before duration goal | Suppress early triggering until the goal has elapsed | Implemented for recorded session duration; fixed alarm is unaffected. |
 | Movement sensitivity | Tune activity threshold for early wake | Partial: conservative fixed 0.12 m/s² threshold; user calibration pending. |
 | Backup alarm | Escalate if the primary alarm is ignored | Implemented: separately scheduled escalation to Pulse at maximum alarm-stream volume after a configurable delay. Quiet test alarms do not escalate. |
-| Gentle volume ramp | Start quietly and increase over a chosen duration | Implemented: configurable 0–120 seconds, bounded by device hardware. |
-| Extra-loud mode | Override a low alarm-stream setting | Implemented: configurable 10–100% of hardware alarm volume, restoration after stop where applicable. No claim of exceeding hardware limits. |
+| Gentle volume ramp | Start quietly and increase over a chosen duration | Partial: occurrence-based continuous player gain, selectable ramp up to 24 minutes, sound delay and shared planned curve are connected in source. Fake lifecycle tests pass; native configuration acceptance and actual output remain unverified. |
+| Extra-loud mode | Override a low alarm-stream setting | Partial: distinct per-alarm maximum-volume toggle preserves the normal percentage; persistent volume ownership and quiet-test cap have fake tests. Native configuration and actual output acceptance remain pending. No hardware-limit bypass. |
 | Vibration | Haptic alarm pattern | Implemented: repeating phone waveform; per-alarm toggle. Wearable haptics pending. |
 | Built-in sounds | Bundled wake sounds | Partial: original synthesized Daybreak and Pulse, not copied commercial sound packs. |
 | Device ringtone | Use the system alarm sound | Implemented: Android default alarm URI. Full ringtone library picker pending. |
 | Local songs | Use chosen audio via persistent URI | Implemented: document-picker audio grant; original-tone fallback on failure. |
 | Playlists / shuffle / silent alarm | Multiple tracks or haptics only | Pending. |
 | Internet radio / Spotify | Stream audio with platform fallback | Pending: requires network controls/provider access; subscriptions to third-party music cannot be made free by this project. |
-| Sunrise alarm | Gradually brighten screen or connected lights | Pending. |
+| Sunrise alarm | Gradually brighten screen or connected lights | Partial: window-only screen sunrise and optional steady flashlight have native runtime source and fake lifecycle/ownership tests. Configuration acceptance and actual effects remain unverified. Connected lights remain missing. |
 | Snooze duration and count | Delay the active alarm within configured limits | Implemented: 1–15 minutes, 0–5 snoozes; count persists per occurrence. |
-| Decreasing snooze / total snooze cap | Shorten repeated delays or cap accumulated minutes | Pending; current count×duration is bounded. |
+| Decreasing snooze / total snooze cap | Shorten repeated delays or cap accumulated minutes | Partial: optional decreasing snooze persists per alarm and changes both displayed and scheduled delay, by one minute per use with a one-minute floor. Three pure tests pass; native save/reopen acceptance pending. Independent total-minute cap remains missing. |
 | Post-dismiss wake check | Ring again unless the user confirms being awake | Implemented: optional 1–15 minute check; confirmation on Tonight screen. |
 | Challenge difficulty / rounds | Require repeated successful tasks | Implemented: 1–6 rounds; shaking uses 5×rounds motion events. |
 | Math | Solve arithmetic before dismissal | Implemented: randomized addition, numeric answer validation. More operators/difficulties pending. |
@@ -61,7 +61,7 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | Smart bedtime | Derive reminder from next alarm, goal and accumulated deficit | Pending; current bedtime is explicit rather than silently inferred. |
 | Anti-scrolling guard | Redirect selected apps during a wind-down interval | Implemented: selected packages, cross-midnight window, five-minute pause, optional accessibility grant. This extends the motivating use case. |
 | Manual sleep tracking | User starts/stops a foreground recording session | Implemented: ongoing notification with stop action, 12-hour bounded run. |
-| Automatic tracking | Detect likely sleep or start before a wake window | Pending: separate activity-recognition/bedtime triggers and modern Android background-microphone handling. No microphone capture from boot. |
+| Automatic tracking | Detect likely sleep or start before a wake window | Partial: explicitly armed foreground wait supports bedtime, smart-window lead-in, or 15 minutes of screen-off low movement. Exactly-once transition rejects stale evidence. Optional sound/clip consent establishes microphone foreground access while visible and defers capture until recording starts. Pure tests pass; native Service/sensor/overnight acceptance pending. An idle phone is not proof of sleep. See AUTOMATIC-TRACKING.md. |
 | Missing-night estimation | Infer likely sleep from phone inactivity | Pending; missing nights are not fabricated. |
 | Accelerometer tracking | Read motion and aggregate into a night graph | Implemented: gravity filtering and one-minute RMS epochs. Placement strongly affects results. |
 | Contactless sonar | Emit an ultrasonic signal and process reflected microphone audio | Pending: signal generation, echo analysis, device calibration and external validation. An accelerometer is not a substitute for bedside sonar. |
@@ -74,9 +74,9 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | Heart rate / HRV | Receive pulse and inter-beat data from wearables | Pending: hardware/Health Connect adapters; no invented vital signs. |
 | Noise amplitude | Analyze microphone PCM volume | Implemented: sample-weighted epoch RMS amplitude, missing-signal gaps, optional microphone foreground service. It is not calibrated dB. |
 | Triggered sound recordings | Save clips only around qualifying events | Implemented: optional 10-second WAV clips at energy threshold; at most 60/session with a 30-second cooldown. Pre-roll pending. |
-| Automatic sound labels | CNN recognizes snoring, speech, cough, laughter and baby cries | Pending: properly licensed local classifier and labeled validation corpus. Current clips are labeled only as loud sounds. |
+| Automatic sound labels | CNN recognizes snoring, speech, cough, laughter and baby cries | Partial: bundled Apache-2.0 YAMNet CPU inference, conservative snoring/speech estimates, bounded grouped intervals and analysis-only storage are connected. Pure framing/confidence/failure tests pass. Native inference fixtures and labeled evaluation are pending; cough/laughter/baby-cry categories are not exposed. See SOUND-ANALYSIS.md. |
 | Noise threshold | Control recording sensitivity | Implemented: relative amplitude threshold; independent per-class sensitivity pending. |
-| Noise library | Browse/play clips | Partial: playback within each night; favorites and global filtering pending. |
+| Noise library | Browse/play clips | Partial: per-night classified-event filters and existing separate clip playback. Native filter/recreation acceptance pending. Global filtering, favorites, inline player and corrected labels remain missing. |
 | Retention / favorite album / alternate formats | Delete old clips; preserve favorites; choose encodings | Partial: seven-day deletion at the next clip-saving session start and WAV format. Favorites, manual audio export and other encodings pending. |
 | Anti-snoring cues | Trigger mild audio/haptic/light response after detected snoring | Pending: requires a validated snore classifier first. Generic loud sounds do not trigger snoring treatment. |
 | Pair tracking | Compare synchronized movement streams to reduce partner crossover | Pending: peer pairing, clock alignment, filtering evaluation. |

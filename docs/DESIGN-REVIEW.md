@@ -300,6 +300,17 @@ configurations remain unverified. Empty Report is an honest supporting state,
 not an all-night measurement or classification result. Full 36-screen/feature
 completion remains **FAIL / rejected**.
 
+## Parallel report reference review — 2026-10-23
+
+The report agent independently opened all seven original report images from
+CI39997627697 at `8fd7dd9`: history, week, month, year, night, editor and tags/notes.
+The eighth reopened image is missing because its capture focus check failed.
+Board08 comparison rejects the current Week/Month/Year Read details clipping
+behind navigation and the comb-like history ribbon texture. Editor tag wrapping,
+Save and Delete fit the captured phone; this narrower observation does not pass
+the complete flow. Corrected source requires a new eight-frame native run and
+another inspection. Full screen and app acceptance remains **FAIL / rejected**.
+
 ## Rest-window clock and dark detail bars — 2026-10-23
 
 Final code: `cfb5e68e24cdfcaa9f335107a2392987399d54fc`, silent run

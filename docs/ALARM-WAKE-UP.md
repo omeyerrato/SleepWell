@@ -4,8 +4,9 @@ The current candidate connects Extra loud, gentle volume, sound delay, screen
 sunrise and phone flashlight settings to native alarm output. Defaults preserve
 existing saved choices; new loud/light flags default off. Existing alarm rows
 are not rewritten by opening settings. Portable alarm JSON includes the new
-fields; legacy imports retain defaults. Native editor save/reopen and visual
-acceptance are pending; this is not a completed-device-effects claim.
+fields; legacy imports retain defaults. Native editor recreation/save/reopen/cancel and bounded visual review pass
+at 69298aa (CI 39967552077, five silent flows, 39 screenshots). This is not
+a completed-device-effects claim.
 
 Extra loud selects maximum device alarm volume while preserving the separate
 normal percentage. There is no hardware boost or speaker-limit bypass. The
@@ -56,6 +57,8 @@ clocks/ports; they do not prove native output delivery. Real alarm/audio,
 sunrise/torch, vibration, screen-off and power-menu tests remain prohibited on
 the personal phone. The native configuration-only test uses isolated data and
 a scheduling recorder; it never creates AlarmActivity or an alarm Service.
-Pending actual configuration/screenshots and strict source/visual review must
-be resolved before this candidate is accepted. Full feature/36-screen parity
-remains incomplete.
+The strict reviewer accepted the bounded configuration controls and curves
+after inspecting all 39 originals. Full Alarm sound board 03 still fails
+reference fidelity; vibration timing and low-volume preview are missing from
+the Gentle reference flow. Offscreen helper copy and large-text wake settings
+remain visually unverified. Full feature/36-screen parity remains incomplete.

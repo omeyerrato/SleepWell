@@ -572,3 +572,31 @@ Real system time/zone broadcast delivery, broad OS font scales/RTL/landscape,
 an overnight recording and the remaining phone features are not certified.
 The dashboard feature row stays partial. Full 36-screen/feature completion
 remains rejected.
+
+## Parallel features and integrated native checks — 2026-10-23
+
+[Silent run39997627697](https://github.com/omeyerrato/SleepWell/actions/runs/39997627697)
+at `8fd7dd9` is an overall **failure**, with nine of twelve allowlisted native
+classes passing. SoundAnalysisNativeTest passes all three methods: the bundled
+CPU model processes synthetic negative signals; real SQLite analysis-only
+events, interval linking and clip deletion are checked. SoundEventsUiTest and
+SnoreCueSettingsNativeTest pass filtering/configuration/recreation/reopen with
+fake effects. StorageMigrationTest passes all four methods. These are distinct
+from microphone capture, positive-class accuracy, cue delivery or overnight
+tracking, none of which is certified.
+
+AlarmMenusFlowTest fails because its first-option visibility assumption no
+longer matches the selected-option reveal. AutomaticTrackingFlowTest times out
+on its second Activity launch; the old Save oracle also did not distinguish Save
+from Arm. ReportReferenceFlowTest produces seven original report images but fails
+the immediate focus assertion on reopened capture. Each failure remains a gate;
+the following source fixes require a new native run. The report reviewer also
+rejects clipped Read details and repeated capsule history ribbons.
+
+Three agents work in isolated Git worktrees on reports, automatic/travel flows
+and sound analysis/library; the primary handles shared controls and integration.
+See [current assignments](PARALLEL-WORK.md). The real CC0 fixture gate now requires
+actual PCM through production framing, classification, grouping and reopened
+storage to yield both snoring and speech events. Its source and licensed bytes
+are committed; an upcoming run must establish actual results. No physical phone
+alarm, audio, microphone, vibration, torch, power-menu or screen-off tests ran.
