@@ -1,0 +1,44 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.RecordCalendarFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.RecordCalendarFlowTest:
+INSTRUMENTATION_STATUS: test=pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.RecordCalendarFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at org.sleepwell.app.RecordCalendarFlowTest.pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds(RecordCalendarFlowTest.java:37)
+
+INSTRUMENTATION_STATUS: stream=
+Error in pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds(org.sleepwell.app.RecordCalendarFlowTest):
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at org.sleepwell.app.RecordCalendarFlowTest.pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds(RecordCalendarFlowTest.java:37)
+
+INSTRUMENTATION_STATUS: test=pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 19.911
+There was 1 failure:
+1) pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds(org.sleepwell.app.RecordCalendarFlowTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at org.sleepwell.app.RecordCalendarFlowTest.pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds(RecordCalendarFlowTest.java:37)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

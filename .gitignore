@@ -10,3 +10,4 @@ captures/
 *.hprof
 .android-local/
 .device-backups/
+__pycache__/

@@ -1,0 +1,257 @@
+{
+  "run": "40037791812",
+  "commit": "bb582cf222f580d5b28e8fb446c963a9057f5c84",
+  "scope": "41 individually reviewed original isolated-emulator PNGs; native33/34 pass, calendarfails5/7, chartfocus+deniedvisualstatesrejected. No personal phone data or hardware output.",
+  "files": [
+    {
+      "file": "ChartClockFlowTest.txt",
+      "bytes": 800,
+      "sha256": "776614ad6fff0ebe89c480b3abf7ad4353ec70aee9efc7a5549b925946b96839"
+    },
+    {
+      "file": "FavoriteSoundsFlowTest.txt",
+      "bytes": 845,
+      "sha256": "0823575864db04b3bf0f8337f90fae2e01b19fb1ef1184e8684727f6aebbca7f"
+    },
+    {
+      "file": "FavoriteSoundsStorageTest.txt",
+      "bytes": 2266,
+      "sha256": "8e3abb9662ee48011559a2053ce96d2f25596c242df93794668f2c60c3ca7bda"
+    },
+    {
+      "file": "MissedNightFlowTest.txt",
+      "bytes": 1514,
+      "sha256": "804d2a6b34a727252a5259c45ad03cc2f89e2dc41b4ed3c8d828dfbd4bc77cca"
+    },
+    {
+      "file": "PrivacyHistoryFlowTest.txt",
+      "bytes": 843,
+      "sha256": "6999e78eb42a1b0797e0b5e7d0d8acd1761cc16eb4f9f6e218f1f8cd085b3086"
+    },
+    {
+      "file": "RecordCalendarFlowTest.txt",
+      "bytes": 2079,
+      "sha256": "0d767806d19278bd22c7b9eca550d8e05c4054e28215cbffd5e377a8c19775ba"
+    },
+    {
+      "file": "ReportReferenceFlowTest.txt",
+      "bytes": 812,
+      "sha256": "92bbeaceee1c8e925b8825285e6cdb718ef177539a903e1eff5673e99c7a601d"
+    },
+    {
+      "file": "SnoreCueSettingsNativeTest.txt",
+      "bytes": 809,
+      "sha256": "fec1aa1e8919949a2abe219de139291f30b5226222090f9ea54785be915b8d41"
+    },
+    {
+      "file": "calendar-editor-recreated.png",
+      "bytes": 120463,
+      "sha256": "65c20f3610d9886b7bed899afbacf2936443c9e9ebcd0af4d9066fd2df603d58"
+    },
+    {
+      "file": "calendar-editor.png",
+      "bytes": 120465,
+      "sha256": "1454675c46d9a092773b8839f639be31bbd40f940ff618b2f9eea57fe19100fd"
+    },
+    {
+      "file": "calendar-history-recreated.png",
+      "bytes": 138968,
+      "sha256": "2dfea48953866e3eaafd1c0ed469df35fffa0339ae322f66081cd88e0014e7da"
+    },
+    {
+      "file": "calendar-history.png",
+      "bytes": 138968,
+      "sha256": "2dfea48953866e3eaafd1c0ed469df35fffa0339ae322f66081cd88e0014e7da"
+    },
+    {
+      "file": "calendar-trend.png",
+      "bytes": 134867,
+      "sha256": "eacc0830c26e69e8bacb6acd92ea3600335094fa044de17393a802b31994eee7"
+    },
+    {
+      "file": "chart-clock-fold.png",
+      "bytes": 101107,
+      "sha256": "326c0e0fdd1e5b40a34f0871a798e5ef6028c3b42a22bbf3a38a8b79bb5f0979"
+    },
+    {
+      "file": "chart-clock-night.png",
+      "bytes": 95360,
+      "sha256": "c3b8ee42464fe1154e733efcb45d256b23765efff8bd42750f735e4f8fbab98d"
+    },
+    {
+      "file": "chart-clock-overnight.png",
+      "bytes": 102075,
+      "sha256": "126d8b0ccce364dd193c39413bd5b24d4cde36b819f25945f409c78b85958dab"
+    },
+    {
+      "file": "chart-clock-short.png",
+      "bytes": 77404,
+      "sha256": "d40019b9af45c7440e8fb4cd1e142f4766c0cd8f061e38c5c98e050534db802c"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 484,
+      "sha256": "aa9d916db00395a71cc3ef98c495262be9db010ff9cb9fdfc66104087466e597"
+    },
+    {
+      "file": "favorites-all.png",
+      "bytes": 182366,
+      "sha256": "3b66327f8869e28677d1388a0645af89da3e05d70379e6e47cd8b352423ba58f"
+    },
+    {
+      "file": "favorites-deleted-audio.png",
+      "bytes": 86573,
+      "sha256": "ffb58dfb063c92468063a663a838646d017b17ed21c8847b6239393e826a9296"
+    },
+    {
+      "file": "favorites-empty.png",
+      "bytes": 68583,
+      "sha256": "2c074f7a3d66abac7752579ea3202c32a51453ba21bbe99a4dece555fe5ea2ab"
+    },
+    {
+      "file": "favorites-error.png",
+      "bytes": 44980,
+      "sha256": "15158b25c9ca1227bc53e3001e5f6ca342d966a0da96fd65184251f82d48f476"
+    },
+    {
+      "file": "favorites-filter-empty.png",
+      "bytes": 78730,
+      "sha256": "4f1c41623ab86d898313720b80959e48d2448857673202662f5a9decd3beafef"
+    },
+    {
+      "file": "favorites-missing-audio.png",
+      "bytes": 145038,
+      "sha256": "f90dedf9cd5b1b24fd17aabcb19a604178092d917741dd1e46e84b494cfee8d7"
+    },
+    {
+      "file": "favorites-playback-error.png",
+      "bytes": 102716,
+      "sha256": "7a524a16a827e66c96af23d56560187c5642cd88ebc7f7d96b9f95e71e502396"
+    },
+    {
+      "file": "favorites-playback.png",
+      "bytes": 181631,
+      "sha256": "fe20f59d5ba8fd19c3a4a4544e691b8ef92d26461b6bd1beba348ee83ab27e16"
+    },
+    {
+      "file": "favorites-recreated.png",
+      "bytes": 179203,
+      "sha256": "2a3f910806a199c653f9faa686e2dfdd5bed607a5c206e9d2f749c4e753bea07"
+    },
+    {
+      "file": "favorites-reopened.png",
+      "bytes": 155336,
+      "sha256": "d0127401e84aeb35fb85186228fa98dcc268f9b804f634218bcb9ef3a3291a3c"
+    },
+    {
+      "file": "favorites-retry.png",
+      "bytes": 68583,
+      "sha256": "2c074f7a3d66abac7752579ea3202c32a51453ba21bbe99a4dece555fe5ea2ab"
+    },
+    {
+      "file": "favorites-speech.png",
+      "bytes": 97267,
+      "sha256": "3b506ce1db439bae7af5727bfdd677dbc54573130d637a120e3d1f2b2d66ff85"
+    },
+    {
+      "file": "favorites-unstarred.png",
+      "bytes": 166079,
+      "sha256": "625e7c2ff4de0fb991fa0df97deddc54081d058d1d2683f19e5437f5998bb875"
+    },
+    {
+      "file": "favorites-week.png",
+      "bytes": 151288,
+      "sha256": "7143fdc95bb62bfe66cc94feb3845a7a42140fcb56c5d033aee6fd9b26452035"
+    },
+    {
+      "file": "missed-night-busy.png",
+      "bytes": 134528,
+      "sha256": "3bdf9c59e13e3d91577ea51ddd711e2d248312a285e78ec657062bd4e32a6621"
+    },
+    {
+      "file": "missed-night-conflict.png",
+      "bytes": 144086,
+      "sha256": "fc1616298b41bfc48f894e432eb39027431d0be0a361673a6a2c362671e657fe"
+    },
+    {
+      "file": "missed-night-covered.png",
+      "bytes": 75779,
+      "sha256": "16ee442ff31aa50e22c0c85da150e4a6269f9c0073797fae0dcc7fa187ae8bff"
+    },
+    {
+      "file": "missed-night-denied.png",
+      "bytes": 82416,
+      "sha256": "4a69c3a59ef3d4e909f3f1f7ddcfe5780ed7f2335ef38759483b1b2c7608c81c"
+    },
+    {
+      "file": "missed-night-edited.png",
+      "bytes": 138168,
+      "sha256": "cbaba09727618c4f1f5b708075c68e1a7ab3b4cc580ce672e0af344c96f87910"
+    },
+    {
+      "file": "missed-night-empty.png",
+      "bytes": 73459,
+      "sha256": "646abe9c0a37134152e4d8750c061a6054476762eaaae9a7cd289fe3aaec4d2c"
+    },
+    {
+      "file": "missed-night-error.png",
+      "bytes": 75212,
+      "sha256": "bb4f8edeeb4db0099fee48f50ad38113a178efd54dfea06a5b0436c052ee54f8"
+    },
+    {
+      "file": "missed-night-incomplete.png",
+      "bytes": 73693,
+      "sha256": "83f148a032181bd3493f5fd7c39821f95cd11df2ea8b77b9bea9e6928e5724fe"
+    },
+    {
+      "file": "missed-night-recreated.png",
+      "bytes": 138168,
+      "sha256": "cbaba09727618c4f1f5b708075c68e1a7ab3b4cc580ce672e0af344c96f87910"
+    },
+    {
+      "file": "missed-night-review.png",
+      "bytes": 140002,
+      "sha256": "4103da47fa3708e7378f4aa1fb39b427a0c5a77549cb5436e7c31237ef16884d"
+    },
+    {
+      "file": "missed-night-saved.png",
+      "bytes": 124986,
+      "sha256": "45aa6c584e37e2393cd485ba6b984583c2efc3305f935c1a940b59721024e97a"
+    },
+    {
+      "file": "privacy-history-busy.png",
+      "bytes": 169291,
+      "sha256": "384285a3873f0cb9ca82e98508aec27aec90a49447c03bccb43d9e707e199710"
+    },
+    {
+      "file": "privacy-history-done.png",
+      "bytes": 215398,
+      "sha256": "8a3f3ef0bb25ab64d2125797b509dcadf656ea47bf495d370259856b2b15935d"
+    },
+    {
+      "file": "privacy-history-error.png",
+      "bytes": 218118,
+      "sha256": "2cac7a79cd50b83d046505d194d712f1829013efa8fcf5421651d31c56ea9615"
+    },
+    {
+      "file": "privacy-history-pending.png",
+      "bytes": 219313,
+      "sha256": "c12e3a4f86fe62343f53c434b952f7da1af6b2b96be79ddf12b042b0a1a9fc73"
+    },
+    {
+      "file": "privacy-history-ready.png",
+      "bytes": 209405,
+      "sha256": "7452724ba718f45d7fbf5f63e93d1c2b9f9ed04b6b8960526fe93b67e8a0a439"
+    },
+    {
+      "file": "report-reference-week.png",
+      "bytes": 196676,
+      "sha256": "6871758d6d570830a408b6446532ac999c9abcd7268518e5358246741ce0916c"
+    },
+    {
+      "file": "snore-settings-preview.png",
+      "bytes": 193269,
+      "sha256": "eecb4f53835bc70c399116415aa858b7b1b8438b4816742ec560e5f3a21e15da"
+    }
+  ]
+}

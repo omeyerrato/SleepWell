@@ -694,3 +694,33 @@ inset preview icon and cream exact-seconds controls. Data schema is unchanged
 by these two new flows. No native screenshots or hardware acceptance is inferred
 from this build. Next default gate:34 classes,51 methods,177 required originals;
 no native playback option or personal-phone actions enabled.
+
+## CI40037791812 atbb582cf — 33/34 classes pass
+
+Terminal overall FAIL:33 passing classes/50 passing methods and175 originals.
+ChartClockFlowTest now passes4.366s with all four frames and real retained
+selection/focus; strict review still rejects default-focus slabs/fixture title.
+FavoriteSoundsStorageTest3/FlowTest1 pass0.549s/20.487s with fourteen individually
+reviewed originals and real private SQLite/WAV, fake playback only. MissingNight
+two methods pass21.739s with eleven originals; denied's gray focus body is
+rejected. Week markers, preview glyph and five privacy switches pass their
+bounded styling checks. All41 reviewed originals/raw logs are permanently in
+verification/2026-10-24-favorites-missing-night-chart with original-byte hashes.
+
+Only RecordCalendarFlowTest fails19.911s on its long nested-date transition
+line, after five captures; selected/reopened and failure hierarchy are absent.
+The exact failed assertion is unproven. Follow-up scopes touch to the actual
+owned window, waits the focused outer date, preserves every cancellation/DST/
+millisecond assertion and captures original failure diagnostics before cleanup.
+No blanket test loosening or product-success claim replaces the missing proof.
+
+Later shared ClipReviewAccess source rechecks current saved trim at open and
+Play/Resume; its real private-DB/WAV regression has no output allocation.
+Walk obsolete-error cleanup, deliberate chart focus/input cleanup, graded math
+and additional category candidates need fresh exact-head native results.
+
+Integrated104d78c passes385 pure tests across44 suites, zero failures/errors/
+skips, lint zero errors/80 warnings, debug/test/release builds in2m57s.
+New SoundCategoryFixtureEvaluationTest requires actual eight licensed PCM
+production positives and cross-class negatives before accepting any new labels.
+The scope remains partial; no personal phone actions or effects ran.

@@ -274,6 +274,34 @@ for row in rows:
             validation="MissedNightTest ten pure cases, scoped debug/test APK and lint pass on agent branch. MissedNightFlowTest two private-DB/fake-Usage-Access methods and eleven review/save/recreate/error originals are compiled candidates; native execution and real Android usage query unverified.",
             notes="Explicit Usage Access; on-demand actual paired screen-off/on events for one of the last three nights. User reviews/edits before manual-record insertion; rechecks original evidence, grant, overlap/open records and idempotence. No background capture, inferred stages, movement or audio. Phone inactivity does not establish sleep. Primary hook in Automatic tracking; permission/empty/incomplete/error/conflict and saved states present.")
 
+# The latest real native evidence and newer, explicitly unaccepted source.
+for row in rows:
+    feature = row["feature"]
+    if feature in ("Typed arithmetic / operators / complexity", "Math"):
+        row.update(status="partial", screens="03,10", implementation=["MathSettings.java", "MathSettingsJson.java", "MathTask.java", "ChallengeRoutine.java", "ChallengeRoutineJson.java", "AlarmEditorActivity.java", "AlarmActivity.java", "Backup.java"],
+            validation="GradedMathTest ten focused cases plus all378 agent-branch pure tests pass, debug/test APK and lint pass. GradedMathConfigurationTest1/seven native originals await execution. Legacy seeded outputs/cache validated, no AlarmActivity or real challenge execution by request.",
+            notes="Per-task grade, chosen +/minus/multiply/divide operators, choices or typed whole-number answer, and independent rounds. Actual runtime consumes the settings; division is whole-number and subtraction nonnegative. Omitted default JSON preserves legacy Medium/addition/choice behavior. Strict cross-task/invalid JSON backup validation. Full runtime/device and new visual acceptance remain open.")
+    elif feature == "Automatic sound labels":
+        row["implementation"] += ["SoundCategories.java"]
+        row["validation"] += " The old four-fixture gate also passes atbb582cf/CI40037791812. New SoundCategoryPolicyTest7 and30 focused branch cases pass; SoundCategoryFixtureEvaluationTest1/eight licensed real PCM files require fresh Android CPU/group/reopened-Store evidence."
+        row["notes"] = "Bundled offline YAMNet snore/speech estimates remain. New conservative cough/throat-clear, baby-cry and laughter source is a candidate; existing thresholds/two-window grouping preserved. Named positive and cross-negative evidence is required before UI/filter integration or acceptance. No broader bedroom/clinical accuracy or microphone proof. User correction/per-class calibration remain missing."
+    elif feature == "Noise library":
+        row["implementation"] += ["FavoriteSoundRows.java", "FavoriteSoundsActivity.java", "ClipReviewAccess.java"]
+        row["validation"] += " FavoriteSoundsStorageTest3 and FavoriteSoundsFlowTest1 pass atbb582cf/CI40037791812 (0.549s/20.487s), fourteen individually reviewed originals. New ClipReviewAccessTest1 for stale saved trims awaits native execution; real player output remains unverified."
+        row["notes"] = "Real per-night events and global independent stars with date/category filters, bounded paging, PCM wave/seek, unstar/save/reopen and absent/outside-edited audio states. Fake playback only in native tests. New shared guard rechecks current saved period at open/Play/Resume; not atomic against later concurrent edits while already playing. Alternate formats and physical playback remain open."
+    elif feature == "Retention / favorite album / alternate formats":
+        row["validation"] = "Library/retention/export/privacy pass atbb582cf/CI40037791812; new FavoriteSoundsStorageTest3/FlowTest1 pass with real SQLite/WAV and fake playback,14 originals individually reviewed. ClipReviewAccessTest1 stale-trim regression is a later compiled-source candidate awaiting native execution."
+    elif feature == "Correct sound labels / favorites / export":
+        row.update(status="partial", implementation=["SoundClips.java", "FavoriteSoundRows.java", "FavoriteSoundsActivity.java", "NightAudioArchive.java", "SoundArchiveJob.java"],
+            validation="FavoriteSoundsStorageTest3/FlowTest1, SoundLibraryStorageTest3 and actual synthetic WAV/ZIP native tests pass atbb582cf/CI40037791812. Fake playback/provider only; real external output unverified.",
+            notes="Persisted independent event/whole-recording favorites, global filtered album, and explicit complete-raw-WAV ZIP with interval/hash metadata exist. User label correction and portable favorite restore remain missing; shared WAV export is explicitly disclosed.")
+    elif feature == "Missed-night estimate review / provenance":
+        row["validation"] = "MissedNightTest10 pure passes; MissedNightFlowTest2 passes21.739s atbb582cf/CI40037791812: reviewed/edited/recreated save, no-write-before-review, idempotence/tombstones/overlap/permission/evidence failures,11 originals. Ten supporting states pass narrowly; denied image rejected for a default focus slab. Later touch-mode/viewport focus fixes need new images. Actual Android Usage Access queries still unverified."
+    elif feature == "Retained record date calendars":
+        row["validation"] = "Prior seven-frame native journey passes atd6389dc. Latest RecordCalendarFlowTest FAILS19.911s atbb582cf/CI40037791812, five images only, after recreated nested date dialog; no exact failing-assertion diagnostic. New owned-window touch, outer-date/focus wait and diagnostic preservation await rerun; all DST/millisecond/save assertions retained."
+    elif feature == "Accelerometer tracking":
+        row["validation"] += " ChartClockFlowTest now passes4.366s atbb582cf/CI40037791812 with four actual images and retained selection/focus; visual review rejects default focus slabs and long fixture title. Deliberate focus/input-mode cleanup requires new captures."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

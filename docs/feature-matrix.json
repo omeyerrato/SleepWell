@@ -448,27 +448,26 @@
     },
     {
       "feature": "Math",
-      "screens": "04–12,26",
+      "screens": "03,10",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
-        "Alarm.java",
-        "Scheduler.java",
-        "AlarmService.java",
+        "MathSettings.java",
+        "MathSettingsJson.java",
+        "MathTask.java",
+        "ChallengeRoutine.java",
+        "ChallengeRoutineJson.java",
+        "AlarmEditorActivity.java",
         "AlarmActivity.java",
-        "AlarmEditorActivity.java"
+        "Backup.java"
       ],
-      "validation": "MathTaskTest; AlarmFlowTest device run pending",
-      "status": "implemented",
-      "notes": "Implemented: randomized addition, numeric answer validation. More operators/difficulties pending.",
+      "validation": "GradedMathTest ten focused cases plus all378 agent-branch pure tests pass, debug/test APK and lint pass. GradedMathConfigurationTest1/seven native originals await execution. Legacy seeded outputs/cache validated, no AlarmActivity or real challenge execution by request.",
+      "status": "partial",
+      "notes": "Per-task grade, chosen +/minus/multiply/divide operators, choices or typed whole-number answer, and independent rounds. Actual runtime consumes the settings; division is whole-number and subtraction nonnegative. Omitted default JSON preserves legacy Medium/addition/choice behavior. Strict cross-task/invalid JSON backup validation. Full runtime/device and new visual acceptance remain open.",
       "id": "F021",
       "tests": [
         {
-          "name": "AlarmFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmFlowTest.java"
-        },
-        {
-          "name": "MathTaskTest",
-          "path": "app/src/test/java/org/sleepwell/app/MathTaskTest.java"
+          "name": "GradedMathTest",
+          "path": "app/src/test/java/org/sleepwell/app/GradedMathTest.java"
         }
       ]
     },
@@ -915,7 +914,7 @@
         "ChartSeries.java",
         "ChartTicks.java"
       ],
-      "validation": "TrackingFlowTest 2 passing on S23 2026-10-23 (movement only, live selection/focus, pause/recreate/resume/reopen); ChartSeriesTest 7 passing; full-night and broader-device coverage incomplete; ChartTicksTest ten integrated passes for aligned clock/12–24h/DST/fractional seconds/no-overlap labels. ChartClockFlowTest FAILS initial fixture focus at64ae8d2/CI40033681541 before all four images; correction/new native originals required.",
+      "validation": "TrackingFlowTest 2 passing on S23 2026-10-23 (movement only, live selection/focus, pause/recreate/resume/reopen); ChartSeriesTest 7 passing; full-night and broader-device coverage incomplete; ChartTicksTest ten integrated passes for aligned clock/12–24h/DST/fractional seconds/no-overlap labels. ChartClockFlowTest FAILS initial fixture focus at64ae8d2/CI40033681541 before all four images; correction/new native originals required. ChartClockFlowTest now passes4.366s atbb582cf/CI40037791812 with four actual images and retained selection/focus; visual review rejects default focus slabs and long fixture title. Deliberate focus/input-mode cleanup requires new captures.",
       "status": "implemented",
       "notes": "Measured gravity-filtered RMS: real 1-second live previews, minute saved epochs and partial final windows. Explicit interval starts preserve pauses; unavailable samples stay null. No stage estimator or clinical validation. Narrow movement flow accepted; full screens remain partial.",
       "id": "F046",
@@ -1071,11 +1070,12 @@
         "CloseResources.java",
         "NoiseRecorder.java",
         "Store.java",
-        "SoundEventsActivity.java"
+        "SoundEventsActivity.java",
+        "SoundCategories.java"
       ],
-      "validation": "SoundAnalysisNativeTest3, SoundEventsUiTest and SoundClassifierFixtureEvaluationTest pass at7d02819/CI40021145034. Actual Android CPU plus production framing/policy/grouping/reopened SQLite: sorts9 and pencil3 saved snoring intervals, countdown1 speech; both speech fixtures0snoring, crowd remains Other. Four CC0 recordings establish compatibility only, not bedroom accuracy or microphone operation. Raw scores committed in verification/2026-10-24-native-configuration.",
+      "validation": "SoundAnalysisNativeTest3, SoundEventsUiTest and SoundClassifierFixtureEvaluationTest pass at7d02819/CI40021145034. Actual Android CPU plus production framing/policy/grouping/reopened SQLite: sorts9 and pencil3 saved snoring intervals, countdown1 speech; both speech fixtures0snoring, crowd remains Other. Four CC0 recordings establish compatibility only, not bedroom accuracy or microphone operation. Raw scores committed in verification/2026-10-24-native-configuration. The old four-fixture gate also passes atbb582cf/CI40037791812. New SoundCategoryPolicyTest7 and30 focused branch cases pass; SoundCategoryFixtureEvaluationTest1/eight licensed real PCM files require fresh Android CPU/group/reopened-Store evidence.",
       "status": "partial",
-      "notes": "Bundled Apache-2.0 offline YAMNet estimates snoring/speech. Policy respects compatible label hierarchy while retaining unrelated-class margin gates; uncertain sounds stay Other. Analysis-only intervals persist without WAV. Cough/baby/laughter categories, user correction and broader validation remain missing. See SOUND-ANALYSIS.md.",
+      "notes": "Bundled offline YAMNet snore/speech estimates remain. New conservative cough/throat-clear, baby-cry and laughter source is a candidate; existing thresholds/two-window grouping preserved. Named positive and cross-negative evidence is required before UI/filter integration or acceptance. No broader bedroom/clinical accuracy or microphone proof. User correction/per-class calibration remain missing.",
       "id": "F055",
       "tests": [
         {
@@ -1116,11 +1116,14 @@
         "ClipPlayback.java",
         "ClipWave.java",
         "ClipSeekView.java",
-        "Store.java"
+        "Store.java",
+        "FavoriteSoundRows.java",
+        "FavoriteSoundsActivity.java",
+        "ClipReviewAccess.java"
       ],
-      "validation": "SoundLibraryStorageTest3 and SoundLibraryUiTest2 pass at7d02819/CI40021145034. Actual PCM interval waveforms, seek with fake playback, favorites/recreation, shared-WAV deletion and real retention tested; five library and two policy originals. New accent/menu refinement requires fresh captures. No real playback/microphone output.",
+      "validation": "SoundLibraryStorageTest3 and SoundLibraryUiTest2 pass at7d02819/CI40021145034. Actual PCM interval waveforms, seek with fake playback, favorites/recreation, shared-WAV deletion and real retention tested; five library and two policy originals. New accent/menu refinement requires fresh captures. No real playback/microphone output. FavoriteSoundsStorageTest3 and FavoriteSoundsFlowTest1 pass atbb582cf/CI40037791812 (0.549s/20.487s), fourteen individually reviewed originals. New ClipReviewAccessTest1 for stale saved trims awaits native execution; real player output remains unverified.",
       "status": "partial",
-      "notes": "Actual saved WAV intervals and classified events with independent favorites, no-audio states, explicit estimate/shared-recording deletion and retained background retention. Per-night ZIP export separately verified with fake provider. Global favorite album, alternate formats and real player output remain incomplete. Full board07 acceptance remains partial.",
+      "notes": "Real per-night events and global independent stars with date/category filters, bounded paging, PCM wave/seek, unstar/save/reopen and absent/outside-edited audio states. Fake playback only in native tests. New shared guard rechecks current saved period at open/Play/Resume; not atomic against later concurrent edits while already playing. Alternate formats and physical playback remain open.",
       "id": "F057",
       "tests": []
     },
@@ -1145,16 +1148,11 @@
         "FavoriteSoundRows.java",
         "FavoriteSoundsActivity.java"
       ],
-      "validation": "Storage/library/retention/export pass at64ae8d2/CI40033681541, including AudioArchiveConcurrencyTest3 and SoundArchiveJobTest2 with actual SQLite/WAV/ZIP and fake provider. PrivacyHistoryFlowTest now passes26.046s, including late pending-journal reentry/new-night preservation. Five lower-scroll originals reviewed; checked gray favorites is a later style candidate. New FavoriteSoundsStorageTest3 and FavoriteSoundsFlowTest1/fourteen originals are compiled candidates awaiting native execution.",
+      "validation": "Library/retention/export/privacy pass atbb582cf/CI40037791812; new FavoriteSoundsStorageTest3/FlowTest1 pass with real SQLite/WAV and fake playback,14 originals individually reviewed. ClipReviewAccessTest1 stale-trim regression is a later compiled-source candidate awaiting native execution.",
       "status": "partial",
       "notes": "Additive schema6 favorite-protected retention, identity-checked delete journal, retained background cleanup and explicit complete-raw-clip ZIP with size/hash manifest. New nights survive audio-only Retry. New global favorite album uses existing stars with actual date/category filters,50-row pages, explicit waveform/interval playback and missing/edited states; unstar never deletes originals. Alternate formats, portable favorite backup and real player/provider remain open. Personal-phone schema4→6 update preserved original rows/preferences.",
       "id": "F058",
-      "tests": [
-        {
-          "name": "PrivacyHistoryFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/PrivacyHistoryFlowTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Anti-snoring cues",
@@ -2008,12 +2006,26 @@
       "feature": "Typed arithmetic / operators / complexity",
       "screens": "03,10",
       "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
-      "implementation": [],
-      "validation": "Not yet verified",
+      "implementation": [
+        "MathSettings.java",
+        "MathSettingsJson.java",
+        "MathTask.java",
+        "ChallengeRoutine.java",
+        "ChallengeRoutineJson.java",
+        "AlarmEditorActivity.java",
+        "AlarmActivity.java",
+        "Backup.java"
+      ],
+      "validation": "GradedMathTest ten focused cases plus all378 agent-branch pure tests pass, debug/test APK and lint pass. GradedMathConfigurationTest1/seven native originals await execution. Legacy seeded outputs/cache validated, no AlarmActivity or real challenge execution by request.",
       "status": "partial",
-      "notes": "Stable multiple-choice addition exists; graded complexity and operators absent.",
+      "notes": "Per-task grade, chosen +/minus/multiply/divide operators, choices or typed whole-number answer, and independent rounds. Actual runtime consumes the settings; division is whole-number and subtraction nonnegative. Omitted default JSON preserves legacy Medium/addition/choice behavior. Strict cross-task/invalid JSON backup validation. Full runtime/device and new visual acceptance remain open.",
       "id": "F109",
-      "tests": []
+      "tests": [
+        {
+          "name": "GradedMathTest",
+          "path": "app/src/test/java/org/sleepwell/app/GradedMathTest.java"
+        }
+      ]
     },
     {
       "feature": "Sleeping-target visual search",
@@ -2168,20 +2180,11 @@
         "MissedNightActivity.java",
         "MissedNightChart.java"
       ],
-      "validation": "MissedNightTest ten pure cases, scoped debug/test APK and lint pass on agent branch. MissedNightFlowTest two private-DB/fake-Usage-Access methods and eleven review/save/recreate/error originals are compiled candidates; native execution and real Android usage query unverified.",
+      "validation": "MissedNightTest10 pure passes; MissedNightFlowTest2 passes21.739s atbb582cf/CI40037791812: reviewed/edited/recreated save, no-write-before-review, idempotence/tombstones/overlap/permission/evidence failures,11 originals. Ten supporting states pass narrowly; denied image rejected for a default focus slab. Later touch-mode/viewport focus fixes need new images. Actual Android Usage Access queries still unverified.",
       "status": "partial",
       "notes": "Explicit Usage Access; on-demand actual paired screen-off/on events for one of the last three nights. User reviews/edits before manual-record insertion; rechecks original evidence, grant, overlap/open records and idempotence. No background capture, inferred stages, movement or audio. Phone inactivity does not establish sleep. Primary hook in Automatic tracking; permission/empty/incomplete/error/conflict and saved states present.",
       "id": "F118",
-      "tests": [
-        {
-          "name": "MissedNightFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/MissedNightFlowTest.java"
-        },
-        {
-          "name": "MissedNightTest",
-          "path": "app/src/test/java/org/sleepwell/app/MissedNightTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Awake triggers from interaction/light/snooze",
@@ -2242,10 +2245,16 @@
       "feature": "Correct sound labels / favorites / export",
       "screens": "20,35",
       "source": "https://sleep.urbandroid.org/docs/sleep/sound_recognition.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Raw clips only; favorites and corrected labels absent.",
+      "implementation": [
+        "SoundClips.java",
+        "FavoriteSoundRows.java",
+        "FavoriteSoundsActivity.java",
+        "NightAudioArchive.java",
+        "SoundArchiveJob.java"
+      ],
+      "validation": "FavoriteSoundsStorageTest3/FlowTest1, SoundLibraryStorageTest3 and actual synthetic WAV/ZIP native tests pass atbb582cf/CI40037791812. Fake playback/provider only; real external output unverified.",
+      "status": "partial",
+      "notes": "Persisted independent event/whole-recording favorites, global filtered album, and explicit complete-raw-WAV ZIP with interval/hash metadata exist. User label correction and portable favorite restore remain missing; shared WAV export is explicitly disclosed.",
       "id": "F124",
       "tests": []
     },
@@ -2715,7 +2724,7 @@
         "HistoryActivity.java",
         "RecordEditorActivity.java"
       ],
-      "validation": "RecordCalendarFlowTest passes at d6389dc/CI40027277488 with seven individually reviewed originals: pending date/recreate/cancel/filter/edit/save, actual DST choice and unchanged seconds/milliseconds. Supporting time form has remaining visual spacing/plain-seconds input differences.",
+      "validation": "Prior seven-frame native journey passes atd6389dc. Latest RecordCalendarFlowTest FAILS19.911s atbb582cf/CI40037791812, five images only, after recreated nested date dialog; no exact failing-assertion diagnostic. New owned-window touch, outer-date/focus wait and diagnostic preservation await rerun; all DST/millisecond/save assertions retained.",
       "status": "partial",
       "notes": "Cream/Inter date selection replaces stock History filter/trend and record-editor calendars. Pending date/month and surrounding time-form draft retained across recreation; Use/Cancel/All dates explicit. No premature persistence; RecordDraft.instant still rejects invalid DST gaps and ambiguous offsets. Native evidence and visual acceptance pending.",
       "id": "F144",
