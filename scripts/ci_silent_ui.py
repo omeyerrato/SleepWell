@@ -94,7 +94,7 @@ failures = []
 tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest", "PlanPickerFlowTest", "SoundLibraryUiTest", "SoundRetentionLifecycleTest", "SleepRhythmFlowTest", "NightAudioArchiveTest", "SoundArchiveUiTest", "MotionConfigurationFlowTest", "AudioArchiveConcurrencyTest", "SoundArchiveJobTest", "RecordCalendarFlowTest", "ChallengeRoutineFlowTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
-tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest"]
+tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest"]
 if args.audio_imports:
     tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
 for test in tests:
@@ -136,6 +136,32 @@ else:
             failures.append("Human fixtures did not persist both snoring and speech through the production policy")
     except (KeyError, ValueError, TypeError) as error:
         failures.append("Invalid human sound fixture evaluation: " + str(error))
+category_report = output / "analysis-category-fixture-evaluation.json"
+try:
+    category_rows = json.loads(category_report.read_text(encoding="utf-8"))["fixtures"]
+    expected_categories = {"cough-fabrizio": "cough", "cough-crowd": "cough", "babycry-bonehead": "baby_cry", "laughter-crowd": "laughter", "snoring-sorts": "snoring", "snoring-pencil": "snoring", "speech-countdown": "speech", "speech-crowd": "speech"}
+    by_fixture = {row["fixture"]: row for row in category_rows}
+    if len(category_rows) != 8 or set(by_fixture) != set(expected_categories):
+        raise ValueError("Category fixture identities do not match the pinned eight")
+    categories = {"snoring", "speech", "cough", "baby_cry", "laughter", "noise"}
+    for name, row in by_fixture.items():
+        if row["expected_broad_class"] != expected_categories[name] or row["frames"] <= 0 or row["frames"] != len(row["windows"]):
+            raise ValueError("Invalid category fixture framing: " + name)
+        counts = dict.fromkeys(categories, 0)
+        for event in row["persisted_events"]:
+            if event["category"] not in categories or event["duration_ms"] < 1950 or event.get("clip") is not None:
+                raise ValueError("Invalid analysis-only grouped event: " + name)
+            counts[event["category"]] += 1
+        if row["counts"] != counts:
+            raise ValueError("Stored category counts disagree with reopened events: " + name)
+    count = lambda name, category: by_fixture[name]["counts"][category]
+    if (count("cough-fabrizio", "cough") + count("cough-crowd", "cough") < 1 or count("babycry-bonehead", "baby_cry") < 1 or count("laughter-crowd", "laughter") < 1
+            or count("snoring-sorts", "snoring") + count("snoring-pencil", "snoring") < 1 or count("speech-countdown", "speech") < 1):
+        raise ValueError("Production category positives were not all persisted")
+    if any(count(name, category) != 0 for name in ("snoring-sorts", "snoring-pencil", "speech-countdown", "speech-crowd") for category in ("cough", "baby_cry", "laughter")) or any(count(name, "snoring") != 0 for name in ("cough-fabrizio", "cough-crowd", "babycry-bonehead", "laughter-crowd")):
+        raise ValueError("Category cross-class negative gate failed")
+except (OSError, KeyError, ValueError, TypeError) as error:
+    failures.append("Category PCM evidence incomplete: " + str(error))
 # Independent consumer check of actual native-exported bytes, never media playback.
 archive = output / "library-export-fixture.zip"
 try:
