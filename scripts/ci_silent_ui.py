@@ -74,8 +74,11 @@ command("install", "-r", str(root / "app/build/outputs/apk/debug/app-debug.apk")
 command("install", "-r", str(root / "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"))
 # Establish first-run Android/boot initialization before the strict preservation baseline.
 command("shell", "am", "start", "-W", "-n", "org.sleepwell.app/.MainActivity", "--ez", "visualReview", "true")
-command("shell", "am", "wait-for-broadcast-idle", check=False, timeout=30)
-metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "audio": "host output disabled; no playback actions allowlisted", "serial": args.serial}
+try:
+    broadcast_idle = command("shell", "am", "wait-for-broadcast-idle", check=False, timeout=10).returncode == 0
+except subprocess.TimeoutExpired:
+    broadcast_idle = False  # System queues can stay busy; the app's exact preservation assertion still applies.
+metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "audio": "host output disabled; no playback actions allowlisted", "serial": args.serial, "system_broadcast_idle": broadcast_idle}
 for prop in ("ro.build.version.sdk", "ro.product.model"):
     metadata[prop] = command("shell", "getprop", prop).stdout.strip()
 metadata["size"] = command("shell", "wm", "size").stdout.strip()
