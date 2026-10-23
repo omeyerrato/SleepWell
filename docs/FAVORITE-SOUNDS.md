@@ -10,6 +10,23 @@ Edited sleep bounds are respected. A star outside the edited period remains visi
 
 The new Activity is private, uses explicit internal navigation and registers the noisy-audio receiver through ContextCompat's non-exported contract. There are no new permissions, dependencies, network calls, external services or broad storage grants. Reader/playback factories are pinned per Activity. Destroyed owners fence UI callbacks and close their review port; test fixtures finish all owned Activities and drain workers before restoring factories or removing fixture files.
 
+### Playback after another screen edits a night
+
+Review identified a real stale-trim gap: clip identity and WAV duration do not
+change when the record's visible period is trimmed. The shared native review
+adapter now calls ClipReviewAccess before opening a player and again before
+Play/Resume. One database snapshot checks original clip/event identity, queued
+deletion, the selected absolute interval against the current saved record bounds,
+and the event's original interval. A changed period fails visibly and requires
+reopening; original WAV bytes remain intact. These are point-in-time checks,
+not a claim of atomic synchronization with a later concurrent edit while audio
+is already playing. No database transaction is held during native playback.
+
+ClipReviewAccessTest exercises unchanged clip/event identities across real
+SQLite start/end trims, refreshed selections, restore-original and exact WAV
+hash preservation using private fixtures. It allocates no player or hardware.
+Compilation/native execution of this follow-up remains pending.
+
 ## Verification status
 
 FavoriteSoundsStorageTest has3 real named-database/WAV methods: global independent stars and actual date/category counts with precise playback boundaries; shared deletion/missing PCM/edited-window metadata preservation; and51-item paging, active-night exclusion, unstar persistence and page clamping without data deletion. FavoriteSoundsFlowTest has1 disposable CI-emulator method. It injects fake playback only and exercises the real sound-events menu entry, whole-clip versus event playback offsets, accessible seek, recreation without autoplay, date/category filtering, unstar/reopen, shared deletion, missing WAV, empty album and database failure/retry. Both classes require ciReview/qemu and idle alarm/tracking guards before fixture work. They do not start MediaPlayer, AudioRecord, vibration, flashlight or alarms.

@@ -3,7 +3,6 @@ package org.sleepwell.app;
 import android.content.Context;
 import android.media.*;
 import android.os.*;
-import org.json.JSONObject;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,9 +26,7 @@ final class ClipPlayback implements ClipPlaybackPort {
         void prepare(){if(!live())return;try{
             if(occupied())throw new IOException("Pause tracking or sleep sounds before reviewing audio.");
             try(Store store=factory.open(context)){
-                JSONObject actual=SoundClips.get(store,target.clip.optLong("session"),target.clip.optLong("id"));SoundClips.identity(actual,target.clip);
-                if(SoundClips.pending(store,actual.optLong("id")))throw new IOException("Recording is pending deletion.");
-                if(target.event!=null){JSONObject event=SoundClips.event(store,target.event.optLong("session"),target.event.optLong("id"));SoundClips.eventIdentity(event,target.event);if(event.isNull("clip")||event.optLong("clip")!=actual.optLong("id"))throw new IOException("The event recording is no longer available.");}
+                ClipReviewAccess.check(store,target);
             }
             File file=FileSafety.clip(context,target.clip.optString("path"));ClipWave wave=ClipWave.read(file);if(wave.durationMs!=target.wholeDurationMs||target.fromMs<0||target.durationMs<=0||target.fromMs+target.durationMs>wave.durationMs)throw new IOException("The recording interval changed. Reopen this night.");
             if(!live())return;player=new MediaPlayer();MediaPlayer owned=player;owned.setAudioAttributes(attributes());
@@ -47,6 +44,7 @@ final class ClipPlayback implements ClipPlaybackPort {
         void seekNow(){if(!live()||!prepared||seeking)return;try{if(playing)player.pause();playing=false;worker.removeCallbacks(tick);seekTarget=desired;seeking=true;player.seekTo(target.fromMs+seekTarget,MediaPlayer.SEEK_CLOSEST);}catch(RuntimeException error){fail("The recording could not seek.");}}
         void begin(){if(!live()||!wanted||!prepared||playing)return;try{
             if(occupied())throw new IOException("Pause tracking or sleep sounds before reviewing audio.");
+            try(Store store=factory.open(context)){ClipReviewAccess.check(store,target);}
             if(focus==null){audio=context.getSystemService(AudioManager.class);int request=++focusGeneration;focus=new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT).setAudioAttributes(attributes()).setWillPauseWhenDucked(true).setOnAudioFocusChangeListener(change->{if(request==focusGeneration&&change!=AudioManager.AUDIOFOCUS_GAIN)pause();},worker).build();
             if(audio.requestAudioFocus(focus)!=AudioManager.AUDIOFOCUS_REQUEST_GRANTED)throw new IOException("Audio is busy. Try again later.");}
             if(!live()||!wanted){abandon();return;}player.start();playing=true;send(events::playing);worker.removeCallbacks(tick);worker.post(tick);
