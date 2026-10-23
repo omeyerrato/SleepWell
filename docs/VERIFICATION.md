@@ -619,3 +619,12 @@ Seven classes fail: AlarmWakeSettingsTest, ReportReferenceFlowTest, TravelPlanFl
 
 
 Integrated2c9db3b passes309 pure tests with zero failures/errors/skips, lint zero errors/77warnings, debug/test/release builds in2m32s. It includes all seven native-failure correction candidates plus motion configuration and reference-style snoring controls/forced-low fake-tested preview. Fresh native evidence is still required. Default next gate23classes/33methods and123 originals, including archive and motion; no physical outputs.
+
+
+## CI40021145034 at7d02819 — 24 October continuation
+
+Overall FAIL:19/23 native classes pass,107 original PNGs produced. Newly passing classes: AlarmWakeSettingsTest, TravelPlanFlowTest, MotionConfigurationFlowTest, SoundLibraryUiTest2, SoundRetentionLifecycleTest, NightAudioArchiveTest3 and SoundArchiveUiTest1. Positive human PCM gate, schema migration and automatic/rhythm flows also pass. Four open failures: AlarmMenusFlowTest34chooser/back timing, PlanPickerFlowTest22secondlaunch, PrivacyHistoryFlowTest39route/inspection observation and ReportReferenceFlowTest103missing action content-description. Actual diagnostics were inspected before changes; target-specific fixes are candidates until fresh rerun.
+
+Forty-three individually reviewed original cue/wake/motion/travel/library/retention/export PNGs, exact class logs, inference JSON and synthetic ZIP are permanently stored in verification/2026-10-24-native-configuration with original-byte SHA256 manifest. Independent Python ZIP integrity/length/SHA256 check passes on the actual native-exported fixture. Strict acceptance still rejects full app/screens: chart clipping, motion illustration/helper and travel hidden error were found despite narrow native passes. Follow-up source fixes and custom calendars/ordered challenge routines require new same-head execution.
+
+Current integration adds bounded immutable audio snapshots, duplicate/cancellation fences and five native concurrency/job methods, original Phosphor home icon, actual retention navigation, revised report action accessibility, real Tonight→sleep-plan reopening, retained custom calendars and ordered supported challenge routines. No personal-phone install or alarm/audio/microphone/sensor/vibration/torch/power/lock test occurred.

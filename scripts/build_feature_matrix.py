@@ -63,6 +63,7 @@ EXTRA = [
     ("Recorded rhythm / social jetlag", "25", "sleep/chrono_jetlag.html", "partial", "Descriptive saved-night statistics; native execution pending."),
     ("Chronotype estimation", "25", "sleep/chrono_jetlag.html", "missing", "Recording progress is not a chronotype estimator. Alarm-free, recovery and sleep-onset evidence remain missing."),
     ("Motion sensitivity configuration", "16,29", "sleep/sensors.html", "partial", "Saved sensitivity affects next run heuristic inputs; native config verification pending."),
+    ("Retained record date calendars", "23,24", "sleep/graph_edit.html", "partial", "Themed retained supporting controls; native evidence pending."),
 ]
 
 rows = []
@@ -214,6 +215,32 @@ for row in rows:
             validation="SnoreCuePolicyTest pure fake-output tests pass. SnoreCueSettingsNativeTest passes at 8fd7dd9/CI39997627697: saved options, recreation/reopen and four original screenshots with fake output. Positive fixture gate passes at f471c4d/CI40016966655, but this does not verify hardware cues. New preview8pure tests and native configuration compilation pass; five-image native flow pending. Hardware output/effectiveness unverified.",
             notes="Default-off cues after confident snoring estimates, selectable sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes; alarm/disable/close guards. Headphone-only routing and preview is an explicit low/single lifecycle-bound candidate with fake-output tests; headphone-only routing remains missing. No medical effectiveness claim.")
 
+# Latest bounded native evidence; later source candidates still need their own run.
+for row in rows:
+    feature = row["feature"]
+    if feature in ("Automatic tracking", "After-fall-asleep / false-start rejection"):
+        row["validation"] = "AutomaticTrackingFlowTest passes at7d02819/CI40021145034: five originals, Save versus fake Arm, consent, recreation/reopen/error. Strict per-file review accepts complete first-frame Save/Arm in all states. Actual Service, sensors, deferred microphone and overnight lifecycle unverified."
+    elif feature == "Automatic sound labels":
+        row["validation"] = "SoundAnalysisNativeTest3, SoundEventsUiTest and SoundClassifierFixtureEvaluationTest pass at7d02819/CI40021145034. Actual Android CPU plus production framing/policy/grouping/reopened SQLite: sorts9 and pencil3 saved snoring intervals, countdown1 speech; both speech fixtures0snoring, crowd remains Other. Four CC0 recordings establish compatibility only, not bedroom accuracy or microphone operation. Raw scores committed in verification/2026-10-24-native-configuration."
+    elif feature == "Noise library":
+        row["validation"] = "SoundLibraryStorageTest3 and SoundLibraryUiTest2 pass at7d02819/CI40021145034. Actual PCM interval waveforms, seek with fake playback, favorites/recreation, shared-WAV deletion and real retention tested; five library and two policy originals. New accent/menu refinement requires fresh captures. No real playback/microphone output."
+        row["notes"] = "Actual saved WAV intervals and classified events with independent favorites, no-audio states, explicit estimate/shared-recording deletion and retained background retention. Per-night ZIP export separately verified with fake provider. Global favorite album, alternate formats and real player output remain incomplete. Full board07 acceptance remains partial."
+    elif feature == "Retention / favorite album / alternate formats":
+        row["implementation"] += ["NightAudioArchive.java", "SoundArchiveJob.java", "SoundArchiveActivity.java", "AudioArchiveWorkspace.java"]
+        row["validation"] = "SoundLibraryStorageTest3, SoundLibraryUiTest2, SoundRetentionLifecycleTest1, NightAudioArchiveTest3 and SoundArchiveUiTest1 pass at7d02819/CI40021145034; fourteen originals reviewed. Actual DB/WAV cleanup, retained busy/error/retry and fake-provider ZIP with exact WAV/hash manifest. Hardened AudioArchiveConcurrencyTest3 and SoundArchiveJobTest2 source require new native run. PrivacyHistoryFlowTest remains failed on route/inspection timing."
+        row["notes"] = "Additive schema6 with favorites and identity-checked deletion journal; keep1/3/7/14/30days or all, optional favorite protection. Explicit per-night complete-WAV/estimate ZIP through Android Files (provider prerequisite), no restore/import claim. New bounded immutable snapshots and cancellation source await native verification. Global album, alternate formats and real provider behavior remain open."
+    elif feature == "Motion sensitivity configuration":
+        row["validation"] = "MotionConfigurationTest eight pure cases; MotionConfigurationFlowTest passes9.745s at7d02819/CI40021145034 with seven injected-sensor originals. Saved/reopened profile consumption, conflict/unsupported/error and listener cleanup verified. Tilted phone artwork differs; later helper/green-feedback changes require fresh capture. No hardware or overnight evidence."
+    elif feature == "Dream and travel light cues":
+        row["validation"] = "TravelPlanTest and TravelReminderPolicyTest eighteen pure passes. TravelPlanFlowTest passes23.825s at7d02819/CI40021145034: actual zones/date/DST Save/recreation/reopen plus fake scheduler/delivery/error/retry/disable, seven originals. Strict review rejects fallback home icon and hidden error/retry; later source fixes require fresh images. OS delivery/reboot unverified."
+    elif feature in ("Anti-snoring cues", "Headphone-only cues / intensity / repeat"):
+        row["validation"] = "SnoreCuePolicyTest eight pure passes; SnoreCueSettingsNativeTest passes at7d02819/CI40021145034, five focused drawn originals including fake low/single preview and saved/recreated/reopened settings. Blank initial screenshot fixed and individually verified. Real sound fixture gate also passes, but actual cue output/effectiveness unverified."
+        row["notes"] = "Default-off confident-estimate cues: sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes. Explicit preview is forced low/single with separate process budget and lifecycle/alarm guards. Headphone-only routing remains missing in this integrated source; no clinical effectiveness claim."
+    elif feature == "Multi-task routine / reorder / per-task difficulty":
+        row.update(status="partial", screens="10,03", implementation=["ChallengeRoutine.java", "ChallengeRoutineJson.java", "Alarm.java", "AlarmEditorActivity.java", "AlarmActivity.java", "Backup.java"], validation="ChallengeRoutineTest ten pure passes on agent branch. ChallengeRoutineFlowTest6captured states and updated AlarmMenusFlowTest are compiled candidates awaiting native execution. No actual alarm/challenge output executed by user request.", notes="Additive ordered1–8task routine, add/configure/reorder/remove and per-task rounds or shake target. Runtime cursor requires every task/round, fences stale occurrence/unit callbacks and preserves legacy scalar alarms. Supported Math/Memory/Sequence/Retype/Shake/NFC; QR/Walking/new task types and graded mathematical complexity remain missing. Screen beauty and actual runtime verification remain open.")
+    elif feature == "Retained record date calendars":
+        row.update(status="partial", screens="23,24", implementation=["CalendarMonth.java", "RecordCalendar.java", "HistoryActivity.java", "RecordEditorActivity.java"], validation="CalendarMonthTest4 and RecordModelTest17 pure passes plus native compilation. RecordCalendarFlowTest seven originals, pending/recreate/cancel/filter/edit/save with DST offset/seconds/milliseconds verification await execution.", notes="Cream/Inter date selection replaces stock History filter/trend and record-editor calendars. Pending date/month and surrounding time-form draft retained across recreation; Use/Cancel/All dates explicit. No premature persistence; RecordDraft.instant still rejects invalid DST gaps and ambiguous offsets. Native evidence and visual acceptance pending.")
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -226,7 +253,7 @@ for n, row in enumerate(rows, 1):
 
 header = """# Phone feature matrix
 
-Reviewed 2026-10-23 against the supplied brief, all 12 visually inspected boards,
+Reviewed 2026-10-24 against the supplied brief, all 12 visually inspected boards,
 SCREEN-MAP.md, current code and official Sleep as Android manual. Screen numbers
 are intended reference destinations, not a claim of completed screens.
 
@@ -255,5 +282,5 @@ for row in rows:
     validation = re.sub(r"\b\w+Test\b", lambda match: f"[{match[0]}](../{test_paths[match[0]]})" if match[0] in test_paths else match[0], row["validation"])
     header += f"| {row['id']} [{row['feature']}]({row['source']}) | {row['screens']} | {code} | {validation} | **{row['status']}** — {notes} |\n"
 (ROOT / "docs/FEATURE-MATRIX.md").write_text(header, encoding="utf-8")
-(ROOT / "docs/feature-matrix.json").write_text(json.dumps(dict(reviewed="2026-10-23", features=rows), indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
+(ROOT / "docs/feature-matrix.json").write_text(json.dumps(dict(reviewed="2026-10-24", features=rows), indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
 print(f"Persisted {len(rows)} phone-capable feature entries")

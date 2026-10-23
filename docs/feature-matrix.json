@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-23",
+  "reviewed": "2026-10-24",
   "features": [
     {
       "feature": "Multiple alarms",
@@ -880,30 +880,14 @@
         "TrackingService.java",
         "TrackingActivity.java"
       ],
-      "validation": "AutomaticSleepTest, AutomaticStartTest, AutomaticTransitionTest and AutomaticCaptureTest pure passes. AutomaticTrackingFlowTest passes at e00ff55/CI40002966787 (11.617 s), including separate Save versus fake Arm, optional sound consent, recreation/reopen/error. Its five screenshots still expose first-frame Save clipping; visual correction and fresh run required. Actual Service, sensors, deferred microphone and overnight lifecycle unverified.",
+      "validation": "AutomaticTrackingFlowTest passes at7d02819/CI40021145034: five originals, Save versus fake Arm, consent, recreation/reopen/error. Strict per-file review accepts complete first-frame Save/Arm in all states. Actual Service, sensors, deferred microphone and overnight lifecycle unverified.",
       "status": "partial",
       "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md.",
       "id": "F044",
       "tests": [
         {
-          "name": "AutomaticCaptureTest",
-          "path": "app/src/test/java/org/sleepwell/app/AutomaticCaptureTest.java"
-        },
-        {
-          "name": "AutomaticSleepTest",
-          "path": "app/src/test/java/org/sleepwell/app/AutomaticSleepTest.java"
-        },
-        {
-          "name": "AutomaticStartTest",
-          "path": "app/src/test/java/org/sleepwell/app/AutomaticStartTest.java"
-        },
-        {
           "name": "AutomaticTrackingFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/AutomaticTrackingFlowTest.java"
-        },
-        {
-          "name": "AutomaticTransitionTest",
-          "path": "app/src/test/java/org/sleepwell/app/AutomaticTransitionTest.java"
         }
       ]
     },
@@ -1080,26 +1064,14 @@
         "Store.java",
         "SoundEventsActivity.java"
       ],
-      "validation": "SoundAnalysisTest, SoundAnalysisStreamTest and CloseResourcesTest pure passes. SoundAnalysisNativeTest three methods and SoundEventsUiTest pass at e00ff55/CI40002966787. The real CC0 positive PCM-to-production-policy/group/store/reopen gate FAILED: high snoring scores but no saved positive events. Candidate ancestor/speech-family corrections keep thresholds/grouping and require a fresh four-fixture run; microphone capture unverified.",
+      "validation": "SoundAnalysisNativeTest3, SoundEventsUiTest and SoundClassifierFixtureEvaluationTest pass at7d02819/CI40021145034. Actual Android CPU plus production framing/policy/grouping/reopened SQLite: sorts9 and pencil3 saved snoring intervals, countdown1 speech; both speech fixtures0snoring, crowd remains Other. Four CC0 recordings establish compatibility only, not bedroom accuracy or microphone operation. Raw scores committed in verification/2026-10-24-native-configuration.",
       "status": "partial",
       "notes": "Bundled Apache-2.0 offline YAMNet estimates snoring/speech. Policy respects compatible label hierarchy while retaining unrelated-class margin gates; uncertain sounds stay Other. Analysis-only intervals persist without WAV. Cough/baby/laughter categories, user correction and broader validation remain missing. See SOUND-ANALYSIS.md.",
       "id": "F055",
       "tests": [
         {
-          "name": "CloseResourcesTest",
-          "path": "app/src/test/java/org/sleepwell/app/CloseResourcesTest.java"
-        },
-        {
-          "name": "SoundAnalysisNativeTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/SoundAnalysisNativeTest.java"
-        },
-        {
-          "name": "SoundAnalysisStreamTest",
-          "path": "app/src/test/java/org/sleepwell/app/SoundAnalysisStreamTest.java"
-        },
-        {
-          "name": "SoundAnalysisTest",
-          "path": "app/src/test/java/org/sleepwell/app/SoundAnalysisTest.java"
+          "name": "SoundClassifierFixtureEvaluationTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SoundClassifierFixtureEvaluationTest.java"
         },
         {
           "name": "SoundEventsUiTest",
@@ -1137,24 +1109,11 @@
         "ClipSeekView.java",
         "Store.java"
       ],
-      "validation": "SoundEventsUiTest passes at e00ff55/CI40002966787 for the older category/recreation UI. SoundLibraryStorageTest three methods and the SoundLibraryUiTest playback/favorites/delete method pass at f471c4d/CI40016966655 with five actual PNGs. Retention flow fails on a transition lookup and requires a fresh pass. Schema5 migration, shared-WAV favorites, exact interval/seek and deletion verified only in isolated fixtures. No physical playback/microphone hardware actions.",
+      "validation": "SoundLibraryStorageTest3 and SoundLibraryUiTest2 pass at7d02819/CI40021145034. Actual PCM interval waveforms, seek with fake playback, favorites/recreation, shared-WAV deletion and real retention tested; five library and two policy originals. New accent/menu refinement requires fresh captures. No real playback/microphone output.",
       "status": "partial",
-      "notes": "New per-night inline PCM waveform/player, persisted per-event or legacy-recording favorites and explicit estimate-versus-shared-recording deletion are integrated candidates. Classification-only and missing audio never invent a player. Configurable retention preserves audio linked to any favorite. Actual native player output, global album, export and full board07 fidelity remain open.",
+      "notes": "Actual saved WAV intervals and classified events with independent favorites, no-audio states, explicit estimate/shared-recording deletion and retained background retention. Per-night ZIP export separately verified with fake provider. Global favorite album, alternate formats and real player output remain incomplete. Full board07 acceptance remains partial.",
       "id": "F057",
-      "tests": [
-        {
-          "name": "SoundEventsUiTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/SoundEventsUiTest.java"
-        },
-        {
-          "name": "SoundLibraryStorageTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/SoundLibraryStorageTest.java"
-        },
-        {
-          "name": "SoundLibraryUiTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/SoundLibraryUiTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Retention / favorite album / alternate formats",
@@ -1169,24 +1128,20 @@
         "HistoryErase.java",
         "HistoryEraseJobs.java",
         "HistoryEraseUi.java",
-        "Store.java"
+        "Store.java",
+        "NightAudioArchive.java",
+        "SoundArchiveJob.java",
+        "SoundArchiveActivity.java",
+        "AudioArchiveWorkspace.java"
       ],
-      "validation": "SoundLibraryStorageTest three actual SQLite/file methods pass at f471c4d/CI40016966655. Retention UI/lifecycle methods fail during choice-dialog transition and remain open. SoundRetentionLifecycleTest covers one retained immutable operation, recreation/error/retry and disabled controls; fresh native execution pending. PrivacyHistoryFlowTest covers retained background erase, real failed unlink and separate retry preserving newer nights; its source is not a passing-run claim.",
+      "validation": "SoundLibraryStorageTest3, SoundLibraryUiTest2, SoundRetentionLifecycleTest1, NightAudioArchiveTest3 and SoundArchiveUiTest1 pass at7d02819/CI40021145034; fourteen originals reviewed. Actual DB/WAV cleanup, retained busy/error/retry and fake-provider ZIP with exact WAV/hash manifest. Hardened AudioArchiveConcurrencyTest3 and SoundArchiveJobTest2 source require new native run. PrivacyHistoryFlowTest remains failed on route/inspection timing.",
       "status": "partial",
-      "notes": "Additive schema6 preserves existing rows/WAVs and adds favorites plus identity-checked pending deletion journal. Retention can keep1/3/7/14/30days or all, with favorite protection. Background per-run cleanup and explicit policy apply replace hardcoded main-thread pruning. Global album, portable audio export and alternate formats remain incomplete.",
+      "notes": "Additive schema6 with favorites and identity-checked deletion journal; keep1/3/7/14/30days or all, optional favorite protection. Explicit per-night complete-WAV/estimate ZIP through Android Files (provider prerequisite), no restore/import claim. New bounded immutable snapshots and cancellation source await native verification. Global album, alternate formats and real provider behavior remain open.",
       "id": "F058",
       "tests": [
         {
           "name": "PrivacyHistoryFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/PrivacyHistoryFlowTest.java"
-        },
-        {
-          "name": "SoundLibraryStorageTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/SoundLibraryStorageTest.java"
-        },
-        {
-          "name": "SoundRetentionLifecycleTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/SoundRetentionLifecycleTest.java"
         }
       ]
     },
@@ -1201,9 +1156,9 @@
         "NoiseRecorder.java",
         "ClipBudget.java"
       ],
-      "validation": "SnoreCuePolicyTest pure fake-output tests pass. SnoreCueSettingsNativeTest passes at 8fd7dd9/CI39997627697: saved options, recreation/reopen and four original screenshots with fake output. Positive fixture gate passes at f471c4d/CI40016966655, but this does not verify hardware cues. New preview8pure tests and native configuration compilation pass; five-image native flow pending. Hardware output/effectiveness unverified.",
+      "validation": "SnoreCuePolicyTest eight pure passes; SnoreCueSettingsNativeTest passes at7d02819/CI40021145034, five focused drawn originals including fake low/single preview and saved/recreated/reopened settings. Blank initial screenshot fixed and individually verified. Real sound fixture gate also passes, but actual cue output/effectiveness unverified.",
       "status": "partial",
-      "notes": "Default-off cues after confident snoring estimates, selectable sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes; alarm/disable/close guards. Headphone-only routing and preview is an explicit low/single lifecycle-bound candidate with fake-output tests; headphone-only routing remains missing. No medical effectiveness claim.",
+      "notes": "Default-off confident-estimate cues: sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes. Explicit preview is forced low/single with separate process budget and lifecycle/alarm guards. Headphone-only routing remains missing in this integrated source; no clinical effectiveness claim.",
       "id": "F059",
       "tests": [
         {
@@ -1999,14 +1954,30 @@
     },
     {
       "feature": "Multi-task routine / reorder / per-task difficulty",
-      "screens": "10",
+      "screens": "10,03",
       "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "One task type with rounds is not a heterogeneous routine.",
+      "implementation": [
+        "ChallengeRoutine.java",
+        "ChallengeRoutineJson.java",
+        "Alarm.java",
+        "AlarmEditorActivity.java",
+        "AlarmActivity.java",
+        "Backup.java"
+      ],
+      "validation": "ChallengeRoutineTest ten pure passes on agent branch. ChallengeRoutineFlowTest6captured states and updated AlarmMenusFlowTest are compiled candidates awaiting native execution. No actual alarm/challenge output executed by user request.",
+      "status": "partial",
+      "notes": "Additive ordered1–8task routine, add/configure/reorder/remove and per-task rounds or shake target. Runtime cursor requires every task/round, fences stale occurrence/unit callbacks and preserves legacy scalar alarms. Supported Math/Memory/Sequence/Retype/Shake/NFC; QR/Walking/new task types and graded mathematical complexity remain missing. Screen beauty and actual runtime verification remain open.",
       "id": "F107",
-      "tests": []
+      "tests": [
+        {
+          "name": "AlarmMenusFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmMenusFlowTest.java"
+        },
+        {
+          "name": "ChallengeRoutineTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChallengeRoutineTest.java"
+        }
+      ]
     },
     {
       "feature": "Lost code fallback / travel bypass",
@@ -2148,30 +2119,14 @@
         "TrackingService.java",
         "TrackingActivity.java"
       ],
-      "validation": "AutomaticSleepTest, AutomaticStartTest, AutomaticTransitionTest and AutomaticCaptureTest pure passes. AutomaticTrackingFlowTest passes at e00ff55/CI40002966787 (11.617 s), including separate Save versus fake Arm, optional sound consent, recreation/reopen/error. Its five screenshots still expose first-frame Save clipping; visual correction and fresh run required. Actual Service, sensors, deferred microphone and overnight lifecycle unverified.",
+      "validation": "AutomaticTrackingFlowTest passes at7d02819/CI40021145034: five originals, Save versus fake Arm, consent, recreation/reopen/error. Strict per-file review accepts complete first-frame Save/Arm in all states. Actual Service, sensors, deferred microphone and overnight lifecycle unverified.",
       "status": "partial",
       "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md.",
       "id": "F117",
       "tests": [
         {
-          "name": "AutomaticCaptureTest",
-          "path": "app/src/test/java/org/sleepwell/app/AutomaticCaptureTest.java"
-        },
-        {
-          "name": "AutomaticSleepTest",
-          "path": "app/src/test/java/org/sleepwell/app/AutomaticSleepTest.java"
-        },
-        {
-          "name": "AutomaticStartTest",
-          "path": "app/src/test/java/org/sleepwell/app/AutomaticStartTest.java"
-        },
-        {
           "name": "AutomaticTrackingFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/AutomaticTrackingFlowTest.java"
-        },
-        {
-          "name": "AutomaticTransitionTest",
-          "path": "app/src/test/java/org/sleepwell/app/AutomaticTransitionTest.java"
         }
       ]
     },
@@ -2263,9 +2218,9 @@
         "NoiseRecorder.java",
         "ClipBudget.java"
       ],
-      "validation": "SnoreCuePolicyTest pure fake-output tests pass. SnoreCueSettingsNativeTest passes at 8fd7dd9/CI39997627697: saved options, recreation/reopen and four original screenshots with fake output. Positive fixture gate passes at f471c4d/CI40016966655, but this does not verify hardware cues. New preview8pure tests and native configuration compilation pass; five-image native flow pending. Hardware output/effectiveness unverified.",
+      "validation": "SnoreCuePolicyTest eight pure passes; SnoreCueSettingsNativeTest passes at7d02819/CI40021145034, five focused drawn originals including fake low/single preview and saved/recreated/reopened settings. Blank initial screenshot fixed and individually verified. Real sound fixture gate also passes, but actual cue output/effectiveness unverified.",
       "status": "partial",
-      "notes": "Default-off cues after confident snoring estimates, selectable sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes; alarm/disable/close guards. Headphone-only routing and preview is an explicit low/single lifecycle-bound candidate with fake-output tests; headphone-only routing remains missing. No medical effectiveness claim.",
+      "notes": "Default-off confident-estimate cues: sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes. Explicit preview is forced low/single with separate process budget and lifecycle/alarm guards. Headphone-only routing remains missing in this integrated source; no clinical effectiveness claim.",
       "id": "F125",
       "tests": [
         {
@@ -2350,7 +2305,7 @@
         "TravelReminderReceiver.java",
         "TravelBootReceiver.java"
       ],
-      "validation": "TravelPlanTest and TravelReminderPolicyTest eighteen pure passes. TravelPlanFlowTest source covers actual zone/date/time Save/recreation/reopen, fake scheduler/delivery, stale/duplicate/rollback/failure/retry/disable and seven native captures; execution and visual acceptance pending.",
+      "validation": "TravelPlanTest and TravelReminderPolicyTest eighteen pure passes. TravelPlanFlowTest passes23.825s at7d02819/CI40021145034: actual zones/date/DST Save/recreation/reopen plus fake scheduler/delivery/error/retry/disable, seven originals. Strict review rejects fallback home icon and hidden error/retry; later source fixes require fresh images. OS delivery/reboot unverified.",
       "status": "partial",
       "notes": "Saved actual IANA zones, DST-aware clocks/date differences and finite user-chosen destination-time silent daylight reminders. No clinical jet-lag prevention algorithm, experimental flashlight therapy, dream/REM cue output or smart-light integration. Real OS delivery/reboot/permission behavior unverified. See TRAVEL-PLAN.md.",
       "id": "F128",
@@ -2702,7 +2657,7 @@
         "TrackingService.java",
         "TrackingActivity.java"
       ],
-      "validation": "MotionConfigurationTest eight pure cases pass in integrated309-test build. MotionConfigurationFlowTest seven captured states with injected sensor, saved/reopened heuristic consumption and conflict/unavailable/errors await native execution.",
+      "validation": "MotionConfigurationTest eight pure cases; MotionConfigurationFlowTest passes9.745s at7d02819/CI40021145034 with seven injected-sensor originals. Saved/reopened profile consumption, conflict/unsupported/error and listener cleanup verified. Tilted phone artwork differs; later helper/green-feedback changes require fresh capture. No hardware or overnight evidence.",
       "status": "partial",
       "notes": "Foreground-only real accelerometer preview, actual RMS bins with missing data blank, saved Low/Medium/High gain consumed by smart-wake/automatic-stillness heuristics on the next run. Raw epochs remain unchanged. Medium preserves default; gains are not clinically calibrated. Real sensor and overnight behavior unverified.",
       "id": "F143",
@@ -2714,6 +2669,27 @@
         {
           "name": "MotionConfigurationTest",
           "path": "app/src/test/java/org/sleepwell/app/MotionConfigurationTest.java"
+        }
+      ]
+    },
+    {
+      "feature": "Retained record date calendars",
+      "screens": "23,24",
+      "source": "https://sleep.urbandroid.org/docs/sleep/graph_edit.html",
+      "implementation": [
+        "CalendarMonth.java",
+        "RecordCalendar.java",
+        "HistoryActivity.java",
+        "RecordEditorActivity.java"
+      ],
+      "validation": "CalendarMonthTest4 and RecordModelTest17 pure passes plus native compilation. RecordCalendarFlowTest seven originals, pending/recreate/cancel/filter/edit/save with DST offset/seconds/milliseconds verification await execution.",
+      "status": "partial",
+      "notes": "Cream/Inter date selection replaces stock History filter/trend and record-editor calendars. Pending date/month and surrounding time-form draft retained across recreation; Use/Cancel/All dates explicit. No premature persistence; RecordDraft.instant still rejects invalid DST gaps and ambiguous offsets. Native evidence and visual acceptance pending.",
+      "id": "F144",
+      "tests": [
+        {
+          "name": "RecordCalendarFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/RecordCalendarFlowTest.java"
         }
       ]
     }
