@@ -247,3 +247,9 @@ while its48dp action remains unchanged. Restyling an already-checked Switch
 explicitly synchronizes the new track's state. These are candidates awaiting
 fresh native originals; CI40033681541 runs the earlier64ae8d2 source and cannot
 validate these later changes.
+
+The nested record time form also gives its record-zone label room and uses the
+same cream/Inter rounded input surface for exact seconds, while preserving its
+value, validation, accessibility name and DST offset decisions. Offset indicators
+use the app's brown tint. Fresh selected/recreated calendar captures must confirm
+this correction; no earlier PNG is represented as evidence of the new styling.
