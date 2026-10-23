@@ -15,6 +15,13 @@ import java.util.concurrent.*;
 final class SoundImports {
     static final long MAX_BYTES=100*1024*1024L,TIMEOUT_MS=20000;
     private static final Map<String,Job> jobs=new ConcurrentHashMap<>();
+    private static boolean cacheCleaned;
+    private static synchronized void cleanAbandoned(Context app){
+        if(cacheCleaned)return;cacheCleaned=true;
+        // A killed process cannot run finally. Only this importer's disposable private snapshots qualify.
+        File[] files=app.getCacheDir().listFiles(f->f.isFile()&&f.getName().startsWith("sleepwell-audio-")&&f.getName().endsWith(".tmp"));
+        if(files!=null)for(File file:files)if(!file.delete())file.deleteOnExit();
+    }
     private static final ExecutorService workers=new ThreadPoolExecutor(0,2,30,TimeUnit.SECONDS,new SynchronousQueue<>(),r->{Thread t=new Thread(r,"audio-import");t.setDaemon(true);return t;});
     private static final ExecutorService closers=new ThreadPoolExecutor(0,2,30,TimeUnit.SECONDS,new SynchronousQueue<>(),r->{Thread t=new Thread(r,"audio-import-close");t.setDaemon(true);return t;});
     enum State { READING,READY,FAILED,CANCELLED,COMPLETED }
@@ -28,6 +35,7 @@ final class SoundImports {
         synchronized void fail(String message){if(state==State.READING||state==State.READY){error=message;state=State.FAILED;}}
         void check()throws IOException{if(state!=State.READING||Thread.currentThread().isInterrupted())throw new IOException("Cancelled");if(SystemClock.elapsedRealtime()-started>TIMEOUT_MS)throw new IOException("Timed out");}
         void read(){File temporary=null;try{
+            cleanAbandoned(app);
             check();try(Cursor cursor=app.getContentResolver().query(uri,new String[]{OpenableColumns.DISPLAY_NAME,OpenableColumns.SIZE},null,signal)){
                 if(cursor!=null&&cursor.moveToFirst()){
                     int size=cursor.getColumnIndex(OpenableColumns.SIZE),name=cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);

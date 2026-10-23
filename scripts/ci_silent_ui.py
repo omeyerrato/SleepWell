@@ -82,7 +82,7 @@ try:
     broadcast_idle = command("shell", "am", "wait-for-broadcast-idle", check=False, timeout=10).returncode == 0
 except subprocess.TimeoutExpired:
     broadcast_idle = False  # System queues can stay busy; the app's exact preservation assertion still applies.
-metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "audio_imports": args.audio_imports, "import_process_restart": args.audio_imports, "audio": "host output disabled; native sound review allowlisted" if args.native_sounds else "host output disabled; no playback actions allowlisted", "serial": args.serial, "system_broadcast_idle": broadcast_idle}
+metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "audio_imports": args.audio_imports, "import_process_restart": args.audio_imports, "audio": "host output disabled; native sound review allowlisted" if (args.native_sounds or args.audio_imports) else "host output disabled; no playback actions allowlisted", "serial": args.serial, "system_broadcast_idle": broadcast_idle}
 for prop in ("ro.build.version.sdk", "ro.product.model"):
     metadata[prop] = command("shell", "getprop", prop).stdout.strip()
 metadata["size"] = command("shell", "wm", "size").stdout.strip()
