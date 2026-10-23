@@ -29,13 +29,19 @@ liveness flag before cleanup. Back/return callbacks recheck eligibility.
 PowerMenuGuard recognises exact AOSP and Samsung global-actions class names,
 never generic android.app.Dialog or menu text. It waits 150 ms for a newly
 reported menu, limits repeated attempts, and cancels on a new window, a different
-observed focus window, interrupt, unbind or destruction. Package/class/window-ID
+observed focus package/window, interrupt, unbind or destruction. Package/class/window-ID
 metadata only: canRetrieveWindowContent remains false. No text, view-tree,
 password, key or screenshot retrieval; no root/device-owner provisioning.
 
 This does **not** verify the current input focus at callback time. Android's
 interactive-window APIs require screen-content capability, which this service
-does not request. Event-generation fencing reduces stale actions but cannot
+does not request. AOSP clears the source window ID when content retrieval is
+disabled, so an unknown ID must not disable otherwise recognised menu events.
+Window IDs add a fence only when present; package/class event-generation
+fencing remains the metadata-only basis. See the source delivery in
+[AbstractAccessibilityServiceConnection](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/main/services/accessibility/java/com/android/server/accessibility/AbstractAccessibilityServiceConnection.java)
+and [AccessibilityRecord.setSource](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/main/core/java/android/view/accessibility/AccessibilityRecord.java).
+Event-generation fencing reduces stale actions but cannot
 prove a menu is still present when no fresh event arrives. Fast taps, unknown
 OEM classes, delayed/missing events and system restrictions can defeat it.
 Actual Samsung menu detection/BACK delivery remain unverified because the user
@@ -49,7 +55,7 @@ See [Android lock task](https://developer.android.com/work/dpc/dedicated-devices
 [alarm lifecycle](https://developer.android.com/develop/background-work/services/alarms),
 and [interactive-window capability requirements](https://developer.android.com/reference/android/accessibilityservice/AccessibilityServiceInfo#FLAG_RETRIEVE_INTERACTIVE_WINDOWS).
 
-Validation pending: ten pure policy tests exercise known/unknown/nested emergency
+Validation pending: eleven pure policy tests exercise known/unknown/nested emergency
 classes, liveness, independent eligibility, delay/generation/focus cancellation,
 closure and failed BACK cooldown with fake callbacks. AlarmProtectionFlowTest
 uses isolated configuration and display-only alarm rows, saves no alarm and

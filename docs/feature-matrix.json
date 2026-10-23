@@ -529,7 +529,7 @@
         "AlarmProtectionActivity.java",
         "AlarmService.java"
       ],
-      "validation": "PowerMenuGuardTest 10 pure metadata/timing/liveness cases; source review bounded pass. Fresh native configuration evidence pending; Samsung menu operation deliberately untested.",
+      "validation": "PowerMenuGuardTest 11 pure metadata/timing/liveness cases; source review bounded pass. Fresh native configuration evidence pending; Samsung menu operation deliberately untested.",
       "status": "partial",
       "notes": "Best-effort global Prevent power off opt-in dismisses exact recognised AOSP/Samsung power-menu classes during a live real alarm. Delayed BACK is fenced by last observed window/focus events, not authoritative current input focus. Forced hardware restart, force-stop, powered-off delivery and unknown OEM menus remain possible; uninstall prevention is not implemented. No managed-device provisioning or screen-content retrieval.",
       "id": "F033",

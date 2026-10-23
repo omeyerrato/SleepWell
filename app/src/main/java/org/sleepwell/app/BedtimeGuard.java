@@ -14,7 +14,7 @@ public class BedtimeGuard extends AccessibilityService {
     @Override protected void onServiceConnected(){super.onServiceConnected();if(powerMenu!=null)powerMenu.close();main.removeCallbacksAndMessages(null);connected=true;powerMenu=new PowerMenuGuard((delay,callback)->main.postDelayed(callback,delay),()->connected&&AlarmProtections.realAlarm(this)&&AlarmProtections.enabled(this,AlarmProtections.POWER),()->performGlobalAction(GLOBAL_ACTION_BACK),this::returnToAlarm,android.os.SystemClock::elapsedRealtime);}
     private void returnToAlarm(){if(!connected||!AlarmProtections.realAlarm(this))return;try{startActivity(new Intent(this,AlarmActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));}catch(RuntimeException e){Prefs.put(this,"lastError","The system did not allow returning to the alarm screen.");}}
     @Override public void onAccessibilityEvent(AccessibilityEvent event) {
-        if(event.getEventType()==AccessibilityEvent.TYPE_VIEW_FOCUSED){if(powerMenu!=null)powerMenu.focus(event.getWindowId());return;}
+        if(event.getEventType()==AccessibilityEvent.TYPE_VIEW_FOCUSED){if(powerMenu!=null)powerMenu.focus(event.getPackageName()==null?null:event.getPackageName().toString(),event.getWindowId());return;}
         if(event.getEventType()!=AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED)return;
         if(powerMenu!=null)powerMenu.window(event.getPackageName()==null?null:event.getPackageName().toString(),event.getClassName()==null?null:event.getClassName().toString(),event.getWindowId());
         if(event.getPackageName()==null)return;
