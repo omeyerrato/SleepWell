@@ -31,7 +31,7 @@ public class NativeSoundFlowTest {
     private SleepSoundService.Snapshot snapshot(){SleepSoundService.Snapshot[] value={null};instrumentation.runOnMainSync(()->value[0]=SleepSoundService.snapshot());return value[0];}
     private boolean state(SoundPlayback.State value){SleepSoundService.Snapshot s=snapshot();return s!=null&&s.state==value;}
     private void click(String label){UiObject2 control=device.wait(Until.findObject(By.pkg(c.getPackageName()).desc(label)),5000);assertNotNull(label,control);control.click();device.waitForIdle();}
-    private SleepSoundsActivity launch(){Instrumentation.ActivityMonitor monitor=instrumentation.addMonitor(SleepSoundsActivity.class.getName(),null,false);try{c.startActivity(new Intent(c,SleepSoundsActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));Activity a=monitor.waitForActivityWithTimeout(5000);assertTrue(a instanceof SleepSoundsActivity);owned.add((SleepSoundsActivity)a);assertTrue(device.wait(Until.hasObject(By.desc("Ocean sound")),5000));return (SleepSoundsActivity)a;}finally{instrumentation.removeMonitor(monitor);}}
+    private SleepSoundsActivity launch(){Instrumentation.ActivityMonitor monitor=instrumentation.addMonitor(SleepSoundsActivity.class.getName(),null,false);try{c.startActivity(new Intent(c,SleepSoundsActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));Activity a=monitor.waitForActivityWithTimeout(5000);assertTrue("Sleep sounds Activity must launch",a instanceof SleepSoundsActivity);owned.add((SleepSoundsActivity)a);assertTrue("Sleep sounds header must be visible",device.wait(Until.hasObject(By.text("Sleep sounds")),5000));return (SleepSoundsActivity)a;}finally{instrumentation.removeMonitor(monitor);}}
     private Notification notification(){for(StatusBarNotification posted:c.getSystemService(NotificationManager.class).getActiveNotifications())if(posted.getId()==104)return posted.getNotification();return null;}
     private void action(String title)throws Exception{Notification n=notification();assertNotNull("A playback notification must exist",n);for(Notification.Action a:n.actions)if(title.contentEquals(a.title)){a.actionIntent.send();return;}fail("Missing notification action "+title);}
     private boolean stopped(){boolean[] result={false};instrumentation.runOnMainSync(()->result[0]=c.getSystemService(ActivityManager.class).getRunningServices(20).stream().noneMatch(s->s.service.getClassName().equals(SleepSoundService.class.getName())));return result[0]&&!audio.isMusicActive()&&notification()==null;}
@@ -60,11 +60,18 @@ public class NativeSoundFlowTest {
             until("Timed native playback must start",()->state(SoundPlayback.State.PLAYING)&&audio.isMusicActive());until("Native timer must finish and release resources",()->state(SoundPlayback.State.FINISHED)&&stopped());assertEquals(60000,snapshot().elapsed);
             mix.primary="My audio";mix.uri="content://org.sleepwell.missing-provider/missing.wav";SoundPreferences.save(fixture,mix);instrumentation.runOnMainSync(()->SleepSoundService.command(c,SleepSoundService.PLAY));until("Unreadable audio must fail and release resources",()->state(SoundPlayback.State.ERROR)&&stopped());assertFalse(SoundPreferences.error(c).isEmpty());launch();assertNotNull(device.wait(Until.findObject(By.text(SoundPreferences.error(c))),5000));capture("error");
             assertEquals("No system volume modification",mediaVolume,audio.getStreamVolume(AudioManager.STREAM_MUSIC));assertEquals("Personal preferences are unchanged",personal,Prefs.of(c).getAll());
+        }catch(AssertionError|Exception failure){
+            try{capture("failed");device.dumpWindowHierarchy(new File(c.getExternalFilesDir(null),"verification/sounds-native-failed.xml"));}catch(Exception|AssertionError diagnostic){failure.addSuppressed(diagnostic);}throw failure;
         }finally{
-            audio.abandonAudioFocusRequest(competitor);instrumentation.runOnMainSync(()->SleepSoundService.command(c,SleepSoundService.STOP));until("Cleanup must stop native playback",this::stopped);
-            until("Sound Activities must close before deleting the fixture",()->{boolean[] closed={true};instrumentation.runOnMainSync(()->{for(SleepSoundsActivity a:owned)if(!a.isDestroyed()){closed[0]=false;a.finish();}});return closed[0];});instrumentation.waitForIdleSync();for(SleepSoundsActivity a:owned)a.awaitReaders(10000);
-            SoundPreferences.factory=previous;c.deleteSharedPreferences(name);assertEquals("Personal preferences survive cleanup",personal,Prefs.of(c).getAll());assertEquals(mediaVolume,audio.getStreamVolume(AudioManager.STREAM_MUSIC));
-            c.startActivity(new Intent(c,MainActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            boolean closed=false;
+            try{
+                audio.abandonAudioFocusRequest(competitor);instrumentation.runOnMainSync(()->SleepSoundService.command(c,SleepSoundService.STOP));until("Cleanup must stop native playback",this::stopped);
+                until("Sound Activities must close before deleting the fixture",()->{boolean[] done={true};instrumentation.runOnMainSync(()->{for(SleepSoundsActivity a:owned)if(!a.isDestroyed()){done[0]=false;a.finish();}});return done[0];});instrumentation.waitForIdleSync();for(SleepSoundsActivity a:owned)a.awaitReaders(10000);closed=true;
+            }finally{
+                SoundPreferences.factory=previous;if(closed)c.deleteSharedPreferences(name); // Retain a fixture whose readers could not quiesce.
+                assertEquals("Personal preferences survive cleanup",personal,Prefs.of(c).getAll());assertEquals(mediaVolume,audio.getStreamVolume(AudioManager.STREAM_MUSIC));
+                c.startActivity(new Intent(c,MainActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            }
         }
     }
 }
