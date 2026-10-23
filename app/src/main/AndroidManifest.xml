@@ -27,6 +27,7 @@
         <activity android:name=".AppearanceActivity" android:exported="false" />
         <activity android:name=".AutomaticTrackingActivity" android:exported="false" />
         <activity android:name=".TrackingActivity" android:exported="false" />
+        <activity android:name=".MotionSensorActivity" android:exported="false" />
         <activity android:name=".PlanActivity" android:exported="false" />
         <activity android:name=".TravelActivity" android:exported="false" />
         <activity android:name=".SleepRhythmActivity" android:exported="false" />

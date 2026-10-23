@@ -19,9 +19,9 @@ public class TrackingService extends Service implements SensorEventListener {
     private Phase phase=Phase.STARTING;private boolean stopRequested,resumeRequested,interrupted,destroyed;
     private SensorManager sensors;private PowerManager.WakeLock wake;private Store store;private NoiseRecorder audio;private boolean soundAttempted,automaticRun;private AutomaticSleep automatic;private AutomaticCapture automaticCapture;private AutomaticTransition automaticTransition;private AutomaticSleep.Mode automaticMode;
     private final Handler handler=new Handler(Looper.getMainLooper());private final ExecutorService closer=Executors.newSingleThreadExecutor();
-    private boolean clockChanged;private TrackingClock clock;private long session,start,windowStart;private double sum;private Double light;private int count,activeMinutes;private boolean motionRegistered,lightRegistered,gravityReady;
+    private boolean clockChanged;private TrackingClock clock;private long session,start,windowStart;private double sum;private Double light;private int count,activeMinutes;private boolean motionRegistered,lightRegistered;
     private final ClipBudget clipBudget=new ClipBudget();
-    private final float[] gravity=new float[3];
+    private final MotionFilter motionFilter=new MotionFilter();private MotionProfile motionProfile=new MotionProfile(1);
     private final Runnable minuteTick=this::minute,limitTick=()->stop(false),liveTick=this::liveSample,automaticTick=this::automaticTick;
     private final List<org.json.JSONObject> liveReadings=new ArrayList<>();private int previewCount;private double previewSum;private long previewAt;
     static final class Snapshot {
@@ -40,7 +40,7 @@ public class TrackingService extends Service implements SensorEventListener {
         if(running){if(current!=this)stopSelf();return START_NOT_STICKY;}
         current=this;running=true;clock=new TrackingClock(SystemClock.elapsedRealtime());
         try{
-            automaticRun=ARM.equals(action);if(automaticRun){automaticCapture=new AutomaticCapture(intent.getBooleanExtra("recordSounds",false),intent.getBooleanExtra("keepClips",false));if(automaticCapture.requested()&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is unavailable. Arm again with sound recording off.");}foreground(false);
+            motionProfile=MotionSettings.load(this);automaticRun=ARM.equals(action);if(automaticRun){automaticCapture=new AutomaticCapture(intent.getBooleanExtra("recordSounds",false),intent.getBooleanExtra("keepClips",false));if(automaticCapture.requested()&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is unavailable. Arm again with sound recording off.");}foreground(false);
             sensors=getSystemService(SensorManager.class);wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:tracking");
             if(automaticRun){arm(intent);return START_NOT_STICKY;}
             beginRecording();
@@ -96,7 +96,7 @@ public class TrackingService extends Service implements SensorEventListener {
         if(!automaticRun){if(!soundAttempted){soundAttempted=true;SleepSoundService.trackingStart(this,session,clock.lifetime(SystemClock.elapsedRealtime()));}else SleepSoundService.trackingResume(session);}
     }
     private long timestamp(){return clock==null?System.currentTimeMillis():clock.timestamp(start,SystemClock.elapsedRealtime());}
-    private void resetWindow(){sum=0;count=0;light=null;gravityReady=false;Arrays.fill(gravity,0);activeMinutes=0;resetPreview(timestamp());}
+    private void resetWindow(){sum=0;count=0;light=null;motionFilter.reset();activeMinutes=0;resetPreview(timestamp());}
     private void resetPreview(long now){liveReadings.clear();previewSum=0;previewCount=0;previewAt=now;}
     private void liveSample(){if(phase!=Phase.ACTIVE)return;long now=timestamp();int measured=count-previewCount;if(measured>0)try{liveReadings.add(new org.json.JSONObject().put("start",previewAt).put("time",now).put("movement",Math.sqrt(Math.max(0,sum-previewSum)/measured)));}catch(org.json.JSONException ignored){}previewAt=now;previewCount=count;previewSum=sum;handler.postDelayed(liveTick,1000);}
     private void checkClock(long now){if(store!=null&&session>0&&!clockChanged&&Math.abs(System.currentTimeMillis()-now)>2000){store.clockChanged(session);clockChanged=true;}}
@@ -105,8 +105,8 @@ public class TrackingService extends Service implements SensorEventListener {
         if(phase!=Phase.ACTIVE&&phase!=Phase.ARMED)return;
         if(event.sensor.getType()==Sensor.TYPE_LIGHT){if(lightRegistered)light=(double)event.values[0];return;}
         if(!motionRegistered)return;
-        if(!gravityReady){System.arraycopy(event.values,0,gravity,0,3);gravityReady=true;return;}
-        double energy=0;for(int k=0;k<3;k++){gravity[k]=.85f*gravity[k]+.15f*event.values[k];double difference=event.values[k]-gravity[k];energy+=difference*difference;}if(phase==Phase.ARMED){automaticTransition.sample(SystemClock.elapsedRealtime(),Math.sqrt(energy),getSystemService(PowerManager.class).isInteractive());return;}sum+=energy;count++;
+        if(event.values.length<3)return;Double raw=motionFilter.sample(event.values[0],event.values[1],event.values[2]);if(raw==null)return;
+        if(phase==Phase.ARMED){automaticTransition.sample(SystemClock.elapsedRealtime(),motionProfile.inference(raw),getSystemService(PowerManager.class).isInteractive());return;}sum+=raw*raw;count++;
     }
     @Override public void onAccuracyChanged(Sensor sensor,int accuracy){}
     private void flush(long now,NoiseRecorder closingAudio,boolean recordEmpty){
@@ -116,10 +116,10 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void minute(){
         if(phase!=Phase.ACTIVE)return;try{long now=timestamp();double movement=count==0?0:Math.sqrt(sum/count);int measured=count;
-        activeMinutes=movement>=.12?Math.min(5,activeMinutes+1):0;flush(now,audio,true);Prefs.put(this,"movement",String.format(Locale.ROOT,"%.3f",movement));
+        activeMinutes=motionProfile.activeMinutes(movement,activeMinutes);flush(now,audio,true);Prefs.put(this,"movement",String.format(Locale.ROOT,"%.3f",movement));
         for(Alarm alarm:store.alarms()){
             long deadline=Prefs.of(this).getLong("deadline_"+alarm.id,0);boolean goalMet=!Prefs.flag(this,"smartNeedsGoal")||SleepPlans.load(this).goalMet(clock.active(SystemClock.elapsedRealtime()));
-            if(alarm.enabled&&goalMet&&SleepMath.smartWake(System.currentTimeMillis(),deadline,alarm.smartWindow,movement,activeMinutes,measured)){SleepSoundService.alarmStarting();Scheduler.fire(this,alarm,true);break;}
+            if(alarm.enabled&&goalMet&&motionProfile.smartWake(System.currentTimeMillis(),deadline,alarm.smartWindow,movement,activeMinutes,measured)){SleepSoundService.alarmStarting();Scheduler.fire(this,alarm,true);break;}
         }
         if(clock.lifetime(SystemClock.elapsedRealtime())>=12*60*60*1000L){stop(false);return;}handler.postDelayed(minuteTick,60000);}catch(Exception e){Prefs.put(this,"trackingError","Could not save sensor readings: "+e.getMessage());stop(true);}
     }
