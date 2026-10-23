@@ -41,7 +41,7 @@ public class NativeSoundFlowTest {
         assertEquals("This class requires the explicit CI-only host-audio-disabled runner","true",InstrumentationRegistry.getArguments().getString("ciSilentPlayback"));
         assertEquals("Refusing physical hardware","1",device.executeShellCommand("getprop ro.kernel.qemu").trim());
         assertEquals(PackageManager.PERMISSION_GRANTED,c.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS));
-        assertFalse(Prefs.flag(c,"ringing"));assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"tracking"));assertNull(snapshot());
+        assertFalse("Do not replace preferences while an audio import is active",SoundImports.pending());assertFalse(Prefs.flag(c,"ringing"));assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"tracking"));assertNull(snapshot());
         try(Store store=new Store(c)){assertTrue(store.alarms().stream().noneMatch(a->a.enabled));assertTrue(store.rows("SELECT id FROM sessions WHERE end IS NULL").isEmpty());}
         audio=c.getSystemService(AudioManager.class);assertFalse("The fresh emulator must have no other music",audio.isMusicActive());
         int mediaVolume=audio.getStreamVolume(AudioManager.STREAM_MUSIC);

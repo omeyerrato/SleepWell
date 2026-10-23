@@ -35,3 +35,13 @@ The built-in image tool edited the existing original `bedside_tonight.png` into 
 Prompt:
 
 Edit this original SleepWell bedside illustration into a wind-down scene. Preserve the existing broad flat geometric 2D illustration style, plum/lilac/golden palette, warm table lamp at left-center, leafy plant at far left, wooden bedside table and purple pillows at right, wide aspect ratio and calm negative space above. Remove the hand and the entire human arm/sleeve completely, replacing that area with uninterrupted dark plum wall and the edge of the purple bed. Keep the phone resting flat on the bedside table, no person touching it. Add three tiny warm golden light rays above the phone. No text, no controls, no borders, no UI frame. Keep all other composition and lighting unchanged. Soften the very top wall to a near-solid #241e30 so the standalone scene can blend with a plum screen.
+
+## Imported audio
+
+Path: `app/src/main/assets/sound-art/imported.png`
+
+Generated with the built-in image-generation tool and visually inspected before integration. This neutral physical record-player scene represents imported audio and Brown noise without falsely portraying either as Rain. Original retained in the session generated-images folder. No fallback CLI was used.
+
+Prompt:
+
+Original standalone illustration asset for SleepWell's imported-audio player, not an app screenshot. Wide 2:1 landscape, full bleed artwork only, no lettering, text, symbols, phone frame, borders, charts, equalizers, rain, controls or interface. Refined editorial 2D storybook illustration with broad flat geometric layered shapes, crisp silhouettes, restrained subtle soft shading and almost no texture. Deep midnight plum #241e30, pale lilac #d9c4fc, muted purple and warm amber. A quiet bedroom still life: a compact simple wooden record player with a single dark vinyl disc on a bedside table in the center, a softly glowing small amber table lamp at left and edge of a purple pillow at right. Calm neutral sound-listening mood, visually uncomplicated, no people. The turntable and disc are physical objects, not UI controls. Large clean shapes and low contrast background suitable for a small 172dp-high landscape hero.

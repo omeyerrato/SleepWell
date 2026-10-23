@@ -18,6 +18,7 @@ import time
 parser = argparse.ArgumentParser()
 parser.add_argument("--serial", required=True, choices=("emulator-5554",))
 parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
+parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
 args = parser.parse_args()
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
@@ -81,7 +82,7 @@ try:
     broadcast_idle = command("shell", "am", "wait-for-broadcast-idle", check=False, timeout=10).returncode == 0
 except subprocess.TimeoutExpired:
     broadcast_idle = False  # System queues can stay busy; the app's exact preservation assertion still applies.
-metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "audio": "host output disabled; native sound review allowlisted" if args.native_sounds else "host output disabled; no playback actions allowlisted", "serial": args.serial, "system_broadcast_idle": broadcast_idle}
+metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "audio_imports": args.audio_imports, "import_process_restart": args.audio_imports, "audio": "host output disabled; native sound review allowlisted" if args.native_sounds else "host output disabled; no playback actions allowlisted", "serial": args.serial, "system_broadcast_idle": broadcast_idle}
 for prop in ("ro.build.version.sdk", "ro.product.model"):
     metadata[prop] = command("shell", "getprop", prop).stdout.strip()
 metadata["size"] = command("shell", "wm", "size").stdout.strip()
@@ -91,8 +92,18 @@ failures = []
 tests = ["SoundSettingsFlowTest", "RootVisualTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
+if args.audio_imports:
+    tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
 for test in tests:
     extra = []
+    if test == "SoundImportReopenTest":
+        if "SoundImportPickerTest" in failures:
+            failures.append(test + " skipped: picker prerequisite failed")
+            continue
+        command("shell", "am", "force-stop", "org.sleepwell.app")  # This guarded disposable emulator only.
+    if test.startswith("SoundImport"):
+        extra += ["-e", "ciAudioImports", "true"]
+        command("shell", "pm", "grant", "org.sleepwell.app", "android.permission.POST_NOTIFICATIONS")
     if test == "NativeSoundFlowTest":
         command("shell", "pm", "grant", "org.sleepwell.app", "android.permission.POST_NOTIFICATIONS")
         extra = ["-e", "ciSilentPlayback", "true"]
@@ -107,6 +118,8 @@ required = ["sounds-settings-" + name + ".png" for name in ("rain", "ocean", "re
 required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "bedtime-guard", "privacy", "wind-down")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
+if args.audio_imports:
+    required += ["sounds-import-" + name + ".png" for name in ("checking", "rejected", "rotated", "unknown-size", "selected", "reopened", "playing", "removed")]
 failures += [name for name in required if not (output / name).is_file()]
 if failures:
     raise SystemExit("UI verification incomplete: " + ", ".join(failures))

@@ -6,6 +6,10 @@ on:
         description: 'Also exercise real MediaPlayer/notification controls with host audio disabled (CI emulator only)'
         type: boolean
         default: false
+      audio_imports:
+        description: 'Also verify the real document picker and imported playback with a process restart (CI emulator only)'
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -41,12 +45,12 @@ jobs:
       - name: Allowlisted UI checks and real Android captures
         env:
           NATIVE_SOUNDS: ${{ inputs.native_sounds }}
+          AUDIO_IMPORTS: ${{ inputs.audio_imports }}
         run: |
-          if [ "$NATIVE_SOUNDS" = "true" ]; then
-            python3 scripts/ci_silent_ui.py --serial emulator-5554 --native-sounds
-          else
-            python3 scripts/ci_silent_ui.py --serial emulator-5554
-          fi
+          options=()
+          if [ "$NATIVE_SOUNDS" = "true" ]; then options+=(--native-sounds); fi
+          if [ "$AUDIO_IMPORTS" = "true" ]; then options+=(--audio-imports); fi
+          python3 scripts/ci_silent_ui.py --serial emulator-5554 "${options[@]}"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
