@@ -34,9 +34,9 @@ public class AutomaticTrackingFlowTest {
             launch();capture("manual");UiObject2 choice=device.findObject(By.desc("After settling down"));assertNotNull(choice);choice.click();device.waitForIdle();capture("stillness");click("Save settings");assertEquals("STILLNESS",prefs.getString("automaticMode",""));
             launch();assertTrue(device.findObject(By.desc("After settling down")).isSelected());capture("reopened");click("Arm tonight");assertEquals(1,armed[0]);
             // The same production decision model gates a fake recording effect on actual sampled evidence.
-            AutomaticSleep model=new AutomaticSleep(AutomaticSleep.Mode.STILLNESS,0,0);int recordings=0;boolean delivered=false;
-            for(long elapsed=0;elapsed<=AutomaticSleep.QUIET_REQUIRED;elapsed+=200){AutomaticSleep.State state=model.sample(elapsed,.01,false);if(state==AutomaticSleep.State.START&&!delivered){delivered=true;recordings++;}}
-            assertEquals(1,recordings);assertEquals(AutomaticSleep.State.START,model.tick(AutomaticSleep.QUIET_REQUIRED+1000,false));
+            int[] recordings={0};AutomaticTransition transition=new AutomaticTransition(new AutomaticSleep(AutomaticSleep.Mode.STILLNESS,0,0),()->recordings[0]++);
+            for(long elapsed=0;elapsed<=AutomaticSleep.QUIET_REQUIRED;elapsed+=200)transition.sample(elapsed,.01,false);
+            assertEquals(0,recordings[0]);transition.tick(AutomaticSleep.QUIET_REQUIRED,false);transition.tick(AutomaticSleep.QUIET_REQUIRED+1000,false);assertEquals(1,recordings[0]);
             assertEquals(personal,Prefs.of(c).getAll());assertFalse(TrackingService.running);assertFalse(AlarmService.active);
         }finally{if(activity!=null)i.runOnMainSync(activity::finish);i.waitForIdleSync();AutomaticTrackingActivity.port=prior;c.deleteSharedPreferences(name);}
     }

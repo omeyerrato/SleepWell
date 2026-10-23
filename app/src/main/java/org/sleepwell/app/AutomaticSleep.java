@@ -16,7 +16,7 @@ final class AutomaticSleep {
         this.mode=mode;this.armed=armed;this.scheduled=scheduled;
     }
     State sample(long elapsed,double movement,boolean screenInUse){
-        if(terminal())return state;
+        if(terminal()&&!(state==State.START&&mode==Mode.STILLNESS))return state;
         if(elapsed<armed||elapsed<lastSample)throw new IllegalArgumentException("Sensor time moved backwards.");
         if(elapsed-armed>=MAX_WAIT)return state=State.EXPIRED;
         boolean gap=lastSample<0||elapsed-lastSample>2000;
@@ -33,6 +33,12 @@ final class AutomaticSleep {
         return state=State.QUIET;
     }
     State tick(long elapsed,boolean screenInUse){
+        // A qualifying sensor callback is only a proposal until the main-loop transition.
+        // Recheck the current screen/signal so a just-unlocked phone cannot start recording.
+        if(state==State.START&&mode==Mode.STILLNESS){
+            if(screenInUse){reset();state=State.SCREEN_IN_USE;}
+            else if(elapsed-lastSample>2000){reset();state=State.COLLECTING;}
+        }
         if(terminal())return state;
         if(elapsed-armed>=MAX_WAIT)return state=State.EXPIRED;
         if(mode!=Mode.STILLNESS)return state=elapsed>=scheduled?State.START:State.WAITING;
