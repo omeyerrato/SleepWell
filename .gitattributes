@@ -17,3 +17,4 @@ docs/verification/**/environment.json -text
 # Keep vendored upstream bytes identical to the pinned source hashes.
 third_party/phosphor/** -text
 app/src/main/assets/licenses/* -text
+third_party/phosphor/manifest.json text eol=lf
