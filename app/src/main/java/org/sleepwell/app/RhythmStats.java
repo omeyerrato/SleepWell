@@ -29,6 +29,10 @@ final class RhythmStats {
     static double minute(long time,ZoneId zone){ZonedDateTime local=Instant.ofEpochMilli(time).atZone(zone);return local.getHour()*60+local.getMinute()+local.getSecond()/60d;}
     static Double mean(List<Double> minutes){if(minutes.isEmpty())return null;double x=0,y=0;for(double value:minutes){double angle=value*Math.PI/720;x+=Math.cos(angle);y+=Math.sin(angle);}if(Math.hypot(x,y)<1e-9*minutes.size())return null;return (Math.atan2(y,x)*720/Math.PI+1440)%1440;}
     static double distance(double first,double second){double diff=Math.abs(first-second)%1440;return Math.min(diff,1440-diff);}
+    /** UI clocks and their difference use the same nearest-minute precision. Raw analytics stay unrounded. */
+    static int displayMinute(double minute){return Math.floorMod((int)Math.round(minute),1440);}
+    static long displayGapMillis(double first,double second){return Math.round(distance(displayMinute(first),displayMinute(second)))*60000L;}
+    static long displayDurationMillis(double minutes){return Math.round(minutes)*60000L;}
     /** Smallest containing circular arc, expressed as start clock minute and clockwise length. */
     static double[] arc(List<Double> values){if(values.isEmpty())return new double[]{0,0};List<Double> sorted=new ArrayList<>(values);Collections.sort(sorted);double gap=-1,start=sorted.get(0);for(int n=0;n<sorted.size();n++){double next=n+1<sorted.size()?sorted.get(n+1):sorted.get(0)+1440,space=next-sorted.get(n);if(space>gap){gap=space;start=next%1440;}}return new double[]{start,1440-gap};}
 }

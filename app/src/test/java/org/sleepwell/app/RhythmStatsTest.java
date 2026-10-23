@@ -9,6 +9,7 @@ public class RhythmStatsTest {
     private final long now=Instant.parse("2026-11-10T12:00:00Z").toEpochMilli();
     private RecordEntry night(long id,String start,String end,String zone,String source){long a=Instant.parse(start).toEpochMilli(),b=Instant.parse(end).toEpochMilli();return new RecordEntry(id,a,b,null,source,"local",zone,0,0,new RecordDraft(a,b),false,0,List.of());}
     private RecordEntry n(long id,String date,int hour){LocalDate d=LocalDate.parse(date);long start=d.atTime(hour,0).toInstant(ZoneOffset.UTC).toEpochMilli(),end=start+8*3600000L;return new RecordEntry(id,start,end,null,"tracked","local","UTC",0,0,new RecordDraft(start,end),false,0,List.of());}
+    @Test public void displayedGapMatchesRoundedClockEndpoints(){assertEquals(9*60000L,RhythmStats.displayGapMillis(174.4,182.9));assertEquals(0,RhythmStats.displayMinute(1439.6));assertEquals(2*60000L,RhythmStats.displayGapMillis(1439.6,2.4));assertEquals(2*60000L,RhythmStats.displayDurationMillis(1.5));}
     @Test public void midnightRangeUsesShortestArc(){assertEquals(10,RhythmStats.arc(List.of(1435d,5d))[1],.0001);assertEquals(0,RhythmStats.mean(List.of(1435d,5d)),.0001);}
     @Test public void antipodalMidpointsHaveNoRepresentativeMean(){assertNull(RhythmStats.mean(List.of(0d,720d)));assertNull(RhythmStats.mean(List.of()));}
     @Test public void circularDifferenceDoesNotTurnMidnightIntoTwentyThreeHours(){assertEquals(20,RhythmStats.distance(1430,10),.0001);}
