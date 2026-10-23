@@ -20,7 +20,7 @@ final class SleepPicker {
         StateDialog dialog=new StateDialog(a,"choice",title);dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         LinearLayout root=Design.col(a);Design.pad(root,20,20);root.setBackground(Design.shape(a,Design.CREAM,24));
         Design.text(root,title,22,600,Design.INK);Design.space(root,16);
-        ScrollView scroll=new ScrollView(a);dialog.scroll=scroll;scroll.setVerticalScrollBarEnabled(false);LinearLayout options=Design.col(a);scroll.addView(options);
+        ScrollView scroll=new ScrollView(a);dialog.scroll=scroll;scroll.setContentDescription("Options for "+title);scroll.setVerticalScrollBarEnabled(false);LinearLayout options=Design.col(a);scroll.addView(options);
         for(int index=0;index<labels.length;index++){
             int n=index;LinearLayout row=Design.row(a);Design.pad(row,12,10);row.setMinimumHeight(Design.dp(a,52));
             row.setBackground(Design.touch(a,index==selected?Design.SOFT:Color.TRANSPARENT,12));
