@@ -38,7 +38,7 @@ public class NightArcFlowTest {
         try{
             Records.factory=context->new Store(context,database);SleepPlans.factory=context->fixture;TonightScreen.clock=now::get;Appearance.save(c,false,0,0,true,false);
             launch();state("Bedtime in 30 min");capture("upcoming");
-            device.findObject(By.descStartsWith("Rest window from ")).click();assertTrue(device.wait(Until.hasObject(By.text("Your rest window")),5000));capture("help");device.findObject(By.text("Got it")).click();device.waitForIdle();
+            device.findObject(By.descStartsWith("Rest window from ")).click();assertTrue(device.wait(Until.hasObject(By.text("Your rest window")),5000));capture("help");UiObject2 close=device.wait(Until.findObject(By.desc("Close rest window explanation")),5000);assertNotNull(close);close.click();assertTrue(device.wait(Until.gone(By.text("Your rest window")),5000));device.waitForIdle();
             NightArc[] original={null};i.runOnMainSync(()->original[0]=arc(activity.getWindow().getDecorView()));assertNotNull(original[0]);now.set(local(22,22,30));
             // Observe the real foreground Handler tick, even with manual appearance.
             assertTrue("The existing arc must advance on the production 30-second tick",device.wait(Until.hasObject(By.descContains(". 0 percent of clock time elapsed.")),35000));i.runOnMainSync(()->assertSame(original[0],arc(activity.getWindow().getDecorView())));capture("start");

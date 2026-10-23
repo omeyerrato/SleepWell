@@ -4,11 +4,12 @@ import java.time.*;
 
 /** Clock time in a planned rest window. Never an observation of sleep. */
 final class NightWindow {
+    // Inclusive only for this clock display. Scheduler remains strictly future.
     static long nextAlarm(int hour,int minute,java.util.Set<Integer> days,long now,ZoneId zone){return SleepMath.nextOccurrence(hour,minute,days,now-1,zone);}
     final long start,end,now;final ZoneId zone;final boolean valid,active;final double fraction;
     private NightWindow(long start,long end,long now,ZoneId zone,boolean valid){this.start=start;this.end=end;this.now=now;this.zone=zone;this.valid=valid;active=valid&&now>=start&&now<=end;fraction=active?Math.max(0,Math.min(1,(double)(now-start)/(end-start))):0;}
     static NightWindow at(int bed,int wake,long alarmAt,long now,ZoneId zone){
-        if(bed<0||bed>=1440||wake<0||wake>=1440||bed==wake)return new NightWindow(0,0,now,zone,false);
+        if(bed<0||bed>=1440||wake<0||wake>=1440||bed==wake)return new NightWindow(0,Math.max(0,alarmAt),now,zone,false);
         LocalDate today=Instant.ofEpochMilli(now).atZone(zone).toLocalDate();
         long end=alarmAt;
         if(end<=0){end=resolve(today,wake,zone);if(end<now)end=resolve(today.plusDays(1),wake,zone);}
