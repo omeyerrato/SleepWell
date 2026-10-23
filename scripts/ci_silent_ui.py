@@ -72,6 +72,9 @@ for key in ("window_animation_scale", "transition_animation_scale", "animator_du
 command("shell", "input", "keyevent", "82")  # The fresh emulator has no credential lock.
 command("install", "-r", str(root / "app/build/outputs/apk/debug/app-debug.apk"))
 command("install", "-r", str(root / "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"))
+# Establish first-run Android/boot initialization before the strict preservation baseline.
+command("shell", "am", "start", "-W", "-n", "org.sleepwell.app/.MainActivity", "--ez", "visualReview", "true")
+command("shell", "am", "wait-for-broadcast-idle", check=False, timeout=30)
 metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "audio": "host output disabled; no playback actions allowlisted", "serial": args.serial}
 for prop in ("ro.build.version.sdk", "ro.product.model"):
     metadata[prop] = command("shell", "getprop", prop).stdout.strip()
@@ -80,7 +83,7 @@ metadata["density"] = command("shell", "wm", "density").stdout.strip()
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 failures = []
 for test in ("SoundSettingsFlowTest", "RootVisualTest"):
-    result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app." + test, "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", check=False, timeout=180)
+    result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app." + test, "-e", "ciReview", "true", "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", check=False, timeout=180)
     (output / (test + ".txt")).write_text(result.stdout + result.stderr, encoding="utf-8")
     passed = bool(re.search(r"(?m)^OK \(1 test\)\s*$", result.stdout)) and "FAILURES!!!" not in result.stdout
     print(test + ": " + ("PASS" if passed else "FAIL"), flush=True)

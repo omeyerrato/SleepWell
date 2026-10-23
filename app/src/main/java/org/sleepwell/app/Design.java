@@ -29,6 +29,7 @@ final class Design {
         GradientDrawable thumb=shape(c,Color.WHITE,30);thumb.setSize(dp(c,24),dp(c,24));thumb.setStroke(dp(c,1),0x11808080);toggle.setThumbDrawable(thumb);toggle.setSplitTrack(false);toggle.setThumbTextPadding(dp(c,2));toggle.setSwitchMinWidth(dp(c,52));toggle.setMinHeight(dp(c,48));toggle.setShowText(false);
     }
     static LinearLayout col(Context c){return Ui.column(c);}
+    static void systemBars(Activity a,boolean dark){androidx.core.view.WindowInsetsControllerCompat controller=androidx.core.view.WindowCompat.getInsetsController(a.getWindow(),a.getWindow().getDecorView());controller.setAppearanceLightStatusBars(!dark);controller.setAppearanceLightNavigationBars(!dark);}
     static LinearLayout row(Context c){LinearLayout r=new LinearLayout(c);r.setGravity(Gravity.CENTER_VERTICAL);return r;}
     static void space(LinearLayout p,int height){p.addView(new View(p.getContext()),new LinearLayout.LayoutParams(1,dp(p.getContext(),height)));}
     static void line(LinearLayout p){View v=new View(p.getContext());v.setBackgroundColor(LINE);p.addView(v,new LinearLayout.LayoutParams(-1,dp(p.getContext(),1)));}
@@ -38,6 +39,7 @@ final class Design {
         StateListDrawable states=new StateListDrawable();states.addState(new int[]{android.R.attr.state_pressed},shape(c,ColorUtilsOverlay(color),radius));states.addState(new int[]{},shape(c,color,radius));return states;
     }
     private static int ColorUtilsOverlay(int color){return androidx.core.graphics.ColorUtils.compositeColors(0x334a2615,color);}
+    static android.graphics.drawable.Drawable outline(Context c,int color,int line,int radius){GradientDrawable background=shape(c,color,radius);background.setStroke(dp(c,1),line);return Appearance.reduced(c)?background:new RippleDrawable(ColorStateList.valueOf(0x22d9c4fc),background,null);}
     static TextView text(Context c,String value,int sp,int weight,int color){TextView t=new TextView(c);t.setText(value);t.setTextSize(sp*Appearance.scale(c));t.setTypeface(font(c,weight));t.setTextColor(Appearance.color(c,color));t.setIncludeFontPadding(false);t.setFontFeatureSettings("tnum");return t;}
     static TextView text(LinearLayout p,String value,int sp,int weight,int color){TextView t=text(p.getContext(),value,sp,weight,color);p.addView(t,new LinearLayout.LayoutParams(-1,-2));return t;}
     static String clock(Context c,int minute){return java.time.LocalTime.of(Math.floorMod(minute,1440)/60,Math.floorMod(minute,1440)%60).format(java.time.format.DateTimeFormatter.ofPattern(android.text.format.DateFormat.is24HourFormat(c)?"HH:mm":"h:mm a",java.util.Locale.getDefault())).toUpperCase(java.util.Locale.getDefault());}
@@ -53,8 +55,7 @@ final class Design {
         a.getWindow().getDecorView(); // Create decor before querying the controller during onCreate.
         a.getWindow().setNavigationBarContrastEnforced(false);
         a.getWindow().setStatusBarContrastEnforced(false);
-        a.getWindow().getInsetsController().setSystemBarsAppearance(dark?0:WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
-            WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
+        systemBars(a,dark);
         LinearLayout root=col(a);root.setBackgroundColor(night?palette.bg:CREAM);root.setContentDescription(night&&destination!=null?"Tonight · "+AppearancePolicy.THEMES[palette.phase]:null);
         root.setOnApplyWindowInsetsListener((v,i)->{Insets bars=i.getInsets(WindowInsets.Type.systemBars()|WindowInsets.Type.displayCutout()|WindowInsets.Type.ime());v.setPadding(bars.left,bars.top,bars.right,bars.bottom);return i;});
         ScrollView scroll=new ScrollView(a);scroll.setFillViewport(true);scroll.setClipToPadding(false);scroll.setVerticalScrollBarEnabled(false);root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
@@ -68,7 +69,7 @@ final class Design {
             GradientDrawable dockSurface=shape(a,night?palette.dock:SOFT,40);if(night)dockSurface.setStroke(dp(a,1),palette.line);dock.setBackground(dockSurface);
             LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,dp(a,12+62*Math.max(1,fontScale(a))));lp.setMargins(dp(a,12),dp(a,8),dp(a,12),dp(a,8));root.addView(dock,lp);
         }
-        a.setContentView(root);root.requestApplyInsets();root.post(()->a.getWindow().getInsetsController().setSystemBarsAppearance(dark?0:WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS));return body;
+        a.setContentView(root);root.requestApplyInsets();root.post(()->systemBars(a,dark));return body;
     }
     static void header(LinearLayout p,String title,Runnable back){LinearLayout r=row(p.getContext());if(back!=null)r.addView(iconButton(p.getContext(),"back","Back",back),new LinearLayout.LayoutParams(dp(p.getContext(),48),dp(p.getContext(),48)));
         TextView t=text(p.getContext(),title,back==null?30:24,700,INK);r.addView(t,new LinearLayout.LayoutParams(0,-2,1));p.addView(r,new LinearLayout.LayoutParams(-1,dp(p.getContext(),56)));space(p,12);}
@@ -115,6 +116,7 @@ final class Design {
                 case "lock":c.drawRoundRect(5,10,19,22,2,2,paint);c.drawArc(8,1,16,15,180,180,false,paint);c.drawCircle(12,15,1,paint);c.drawLine(12,16,12,18,paint);break;
                 case "shield":p.moveTo(12,2);p.lineTo(21,6);p.lineTo(20,14);p.quadTo(18,20,12,23);p.quadTo(6,20,4,14);p.lineTo(3,6);p.close();c.drawPath(p,paint);c.drawLine(8,12,11,15,paint);c.drawLine(11,15,17,9,paint);break;
                 case "wave":for(int i=0;i<5;i++)c.drawLine(3+i*4,12-(i%2==0?4:8),3+i*4,12+(i%2==0?4:8),paint);break;
+                case "fade":paint.setStrokeWidth(3);for(int i=0;i<4;i++)c.drawLine(4+i*5,21,4+i*5,17-i*5,paint);break;
                 case "plug":c.drawLine(8,1,8,7,paint);c.drawLine(16,1,16,7,paint);c.drawRoundRect(5,7,19,15,3,3,paint);c.drawLine(12,15,12,23,paint);break;
                 case "calendar":c.drawRoundRect(3,5,21,22,2,2,paint);c.drawLine(3,10,21,10,paint);c.drawLine(8,2,8,7,paint);c.drawLine(16,2,16,7,paint);break;
                 case "github":p.moveTo(5,9);p.lineTo(4,3);p.lineTo(9,5);p.quadTo(12,4,15,5);p.lineTo(20,3);p.lineTo(19,9);p.cubicTo(24,16,17,19,14,18);p.lineTo(14,23);p.moveTo(10,23);p.lineTo(10,18);p.cubicTo(4,19,0,15,5,9);c.drawPath(p,paint);p.reset();p.moveTo(10,21);p.cubicTo(4,23,5,18,2,18);c.drawPath(p,paint);break;

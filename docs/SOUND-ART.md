@@ -27,3 +27,11 @@ Original standalone landscape illustration asset for SleepWell, not an app scree
 Path: `app/src/main/assets/sound-art/wind.png`
 
 Original standalone landscape illustration asset for SleepWell, not an app screenshot. Wide 2:1 composition, full bleed artwork only, no text, lettering, symbols, borders, phone frame or controls. Polished editorial 2D storybook illustration with broad layered flat shapes and subtle soft shading, crisp silhouettes, restrained detail, coordinated with a dark plum #241e30 and pale lilac #d9c4fc sleep app. A quiet green meadow and a rounded leafy tree at left in soft blue twilight, a handful of golden leaves floating gently across the scene. Calm simple rounded landscape.
+
+## Wind-down scene revision
+
+The built-in image tool edited the existing original `bedside_tonight.png` into the separate `app/src/main/res/drawable-nodpi/bedside_winddown.png`. The output was visually inspected. The original Tonight asset remains unchanged.
+
+Prompt:
+
+Edit this original SleepWell bedside illustration into a wind-down scene. Preserve the existing broad flat geometric 2D illustration style, plum/lilac/golden palette, warm table lamp at left-center, leafy plant at far left, wooden bedside table and purple pillows at right, wide aspect ratio and calm negative space above. Remove the hand and the entire human arm/sleeve completely, replacing that area with uninterrupted dark plum wall and the edge of the purple bed. Keep the phone resting flat on the bedside table, no person touching it. Add three tiny warm golden light rays above the phone. No text, no controls, no borders, no UI frame. Keep all other composition and lighting unchanged. Soften the very top wall to a near-solid #241e30 so the standalone scene can blend with a plum screen.
