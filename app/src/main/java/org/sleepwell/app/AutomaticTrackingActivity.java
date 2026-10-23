@@ -41,6 +41,7 @@ public final class AutomaticTrackingActivity extends Activity {
         option(body,AutomaticSleep.Mode.STILLNESS,"After settling down","15 min still, with the screen off. An estimate.");
         Design.space(body,16);Design.line(body);
         Design.item(body,"moon","Tonight only","Up to 4 h waiting",null);Design.line(body);
+        Design.item(body,"file","Missing-night estimate","Review phone activity",()->startActivity(RecordUi.intent(this,MissedNightActivity.class)));Design.line(body);
         if(mode!=AutomaticSleep.Mode.MANUAL){
             Design.toggle(body,"Record sounds","Microphone starts when tracking begins.",recordSounds,on->{recordSounds=on;if(!on)keepClips=false;render();});
             if(recordSounds){Design.space(body,8);Design.toggle(body,"Keep sound clips","Save short clips on this phone.",keepClips,on->keepClips=on);}

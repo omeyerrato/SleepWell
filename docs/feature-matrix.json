@@ -915,7 +915,7 @@
         "ChartSeries.java",
         "ChartTicks.java"
       ],
-      "validation": "TrackingFlowTest 2 passing on S23 2026-10-23 (movement only, live selection/focus, pause/recreate/resume/reopen); ChartSeriesTest 7 passing; full-night and broader-device coverage incomplete; ChartTicksTest ten branch passes for aligned clock/12–24h/DST/fractional seconds/no-overlap labels. ChartClockFlowTest one inert method/four originals awaits native execution.",
+      "validation": "TrackingFlowTest 2 passing on S23 2026-10-23 (movement only, live selection/focus, pause/recreate/resume/reopen); ChartSeriesTest 7 passing; full-night and broader-device coverage incomplete; ChartTicksTest ten integrated passes for aligned clock/12–24h/DST/fractional seconds/no-overlap labels. ChartClockFlowTest FAILS initial fixture focus at64ae8d2/CI40033681541 before all four images; correction/new native originals required.",
       "status": "implemented",
       "notes": "Measured gravity-filtered RMS: real 1-second live previews, minute saved epochs and partial final windows. Explicit interval starts preserve pauses; unavailable samples stay null. No stage estimator or clinical validation. Narrow movement flow accepted; full screens remain partial.",
       "id": "F046",
@@ -1143,7 +1143,7 @@
         "SoundArchiveActivity.java",
         "AudioArchiveWorkspace.java"
       ],
-      "validation": "Storage/library/retention/export pass at d6389dc/CI40027277488, including AudioArchiveConcurrencyTest3 and SoundArchiveJobTest2 with actual SQLite/WAV/ZIP bytes and fake provider. PrivacyHistoryFlowTest fails its late pending-journal reentry assertion after the five captured states; new route/inspection synchronization and queued-audio copy corrections need fresh execution.",
+      "validation": "Storage/library/retention/export pass at64ae8d2/CI40033681541, including AudioArchiveConcurrencyTest3 and SoundArchiveJobTest2 with actual SQLite/WAV/ZIP and fake provider. PrivacyHistoryFlowTest now passes26.046s, including late pending-journal reentry/new-night preservation. Five lower-scroll originals reviewed; checked gray favorites is a later style candidate.",
       "status": "partial",
       "notes": "Additive schema6 favorite-protected retention, identity-checked delete journal, retained background cleanup and explicit complete-raw-clip ZIP export with size/hash manifest. New nights survive audio-only Retry. Global album, alternate formats and real external provider remain open. Personal-phone update from schema4 to6 preserved all original rows and preference values; no erase action executed.",
       "id": "F058",
@@ -1168,7 +1168,7 @@
         "HeadphoneSound.java",
         "SnoreSoundRouteActivity.java"
       ],
-      "validation": "SnoreCueSettingsNativeTest passes at d6389dc/CI40027277488 with five individually reviewed originals. New HeadphoneCueTest eleven pure cases and branch Android builds pass; HeadphoneCueOutputTest2 and SnoreSoundRouteFlowTest1/five originals await fresh native execution. No actual AudioTrack/vibration/device route output tested.",
+      "validation": "HeadphoneCueTest eleven cases pass in integrated358-test build. At64ae8d2/CI40033681541, HeadphoneCueOutputTest2 passes0.142s and SnoreSoundRouteFlowTest1 passes11.571s with five individually reviewed originals. Fake worker/provider only, exact preference restoration; no AudioTrack/vibration/hardware route output tested. SnoreCueSettingsNativeTest also passes; its later Preview glyph styling needs new originals.",
       "status": "partial",
       "notes": "Default-off confident-estimate cues retain sound/vibration/both, intensity/repeats/sensitivity, budget/cooldown and low/single preview. Optional headphone sound requires an accepted wired/USB headset or BLE headset and checks actual single route during bounded chunks. Ambiguous A2DP/SCO routes visibly excluded. OS rerouting can still cause a transient speaker leak; vibration is independent. No medical effectiveness claim.",
       "id": "F059",
@@ -2070,7 +2070,7 @@
         "AlarmActivity.java",
         "ChallengeRoutineJson.java"
       ],
-      "validation": "WalkSessionTest thirteen injected-port cases pass on its branch, including ownership-loss release and unregister retry; the initial Android branch build passed before those lifecycle additions. WalkConfigurationFlowTest one method/six permission/target/recreate/save/reopen originals is compiled but awaits CI. No personal-phone alarm, steps, sensor or permission dialog executed.",
+      "validation": "WalkSessionTest thirteen cases pass in the integrated358-test build, including ownership-loss release and unregister retry. WalkConfigurationFlowTest passes13.954s at64ae8d2/CI40033681541 with six individually reviewed permission/target/recreate/save/reopen originals and real private SQLite/JSON. No actual alarm, steps, sensor or permission dialog executed.",
       "status": "partial",
       "notes": "Actual Android step detector/counter adapter; contextual editor permission, per-task5–100 steps, fresh counter baseline, stale occurrence/unit/listener fences and fallback for missing permission/sensor. Walk consumes one routine unit and never uses shake magnitude. Original Phosphor footprints icon bundled. Real hardware recognition and full alarm runtime remain unverified.",
       "id": "F114",
@@ -2157,14 +2157,29 @@
     },
     {
       "feature": "Missed-night estimate review / provenance",
-      "screens": "28,24",
+      "screens": "28 + supporting review",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_time_estimation.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Duration only; never fabricate sensor/audio graphs for untracked nights.",
+      "implementation": [
+        "MissedNight.java",
+        "MissedNightUsage.java",
+        "MissedNightRecords.java",
+        "MissedNightActivity.java",
+        "MissedNightChart.java"
+      ],
+      "validation": "MissedNightTest ten pure cases, scoped debug/test APK and lint pass on agent branch. MissedNightFlowTest two private-DB/fake-Usage-Access methods and eleven review/save/recreate/error originals are compiled candidates; native execution and real Android usage query unverified.",
+      "status": "partial",
+      "notes": "Explicit Usage Access; on-demand actual paired screen-off/on events for one of the last three nights. User reviews/edits before manual-record insertion; rechecks original evidence, grant, overlap/open records and idempotence. No background capture, inferred stages, movement or audio. Phone inactivity does not establish sleep. Primary hook in Automatic tracking; permission/empty/incomplete/error/conflict and saved states present.",
       "id": "F118",
-      "tests": []
+      "tests": [
+        {
+          "name": "MissedNightFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/MissedNightFlowTest.java"
+        },
+        {
+          "name": "MissedNightTest",
+          "path": "app/src/test/java/org/sleepwell/app/MissedNightTest.java"
+        }
+      ]
     },
     {
       "feature": "Awake triggers from interaction/light/snooze",
@@ -2246,7 +2261,7 @@
         "HeadphoneSound.java",
         "SnoreSoundRouteActivity.java"
       ],
-      "validation": "SnoreCueSettingsNativeTest passes at d6389dc/CI40027277488 with five individually reviewed originals. New HeadphoneCueTest eleven pure cases and branch Android builds pass; HeadphoneCueOutputTest2 and SnoreSoundRouteFlowTest1/five originals await fresh native execution. No actual AudioTrack/vibration/device route output tested.",
+      "validation": "HeadphoneCueTest eleven cases pass in integrated358-test build. At64ae8d2/CI40033681541, HeadphoneCueOutputTest2 passes0.142s and SnoreSoundRouteFlowTest1 passes11.571s with five individually reviewed originals. Fake worker/provider only, exact preference restoration; no AudioTrack/vibration/hardware route output tested. SnoreCueSettingsNativeTest also passes; its later Preview glyph styling needs new originals.",
       "status": "partial",
       "notes": "Default-off confident-estimate cues retain sound/vibration/both, intensity/repeats/sensitivity, budget/cooldown and low/single preview. Optional headphone sound requires an accepted wired/USB headset or BLE headset and checks actual single route during bounded chunks. Ambiguous A2DP/SCO routes visibly excluded. OS rerouting can still cause a transient speaker leak; vibration is independent. No medical effectiveness claim.",
       "id": "F125",

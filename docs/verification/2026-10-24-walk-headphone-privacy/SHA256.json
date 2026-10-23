@@ -1,0 +1,117 @@
+{
+  "run": "40033681541",
+  "commit": "64ae8d255b360af2e8a6799bcf38c8acb8f520a3",
+  "scope": "16 individually reviewed original synthetic emulator PNGs.30/31 classes pass; chart focus fixture fails before four requested screenshots. No physical device data or output.",
+  "files": [
+    {
+      "file": "ChartClockFlowTest.txt",
+      "bytes": 4166,
+      "sha256": "e8e2d551e9b94240cc2931fdc6a04ddbcba1a55e4bdcbdafab2442b96bfde09a"
+    },
+    {
+      "file": "HeadphoneCueOutputTest.txt",
+      "bytes": 1514,
+      "sha256": "47d4456f230d0d7948e50e946d0cc67860246d7ccf812e0ef704299deb5da8eb"
+    },
+    {
+      "file": "PrivacyHistoryFlowTest.txt",
+      "bytes": 843,
+      "sha256": "177136bcc88372cb486751910fc2025fc696d16690425f01ed18c80e105a933c"
+    },
+    {
+      "file": "SnoreSoundRouteFlowTest.txt",
+      "bytes": 842,
+      "sha256": "ac8c2b17c78a1ea93d24f55b931f38ef378e43491c7c0d74f8ad311b16861401"
+    },
+    {
+      "file": "WalkConfigurationFlowTest.txt",
+      "bytes": 826,
+      "sha256": "5736a6b474a50f3e44ecd7b06c44e3d744e6d6fbfed52218b967901764de6002"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 484,
+      "sha256": "c25d3096bf67db5ce9c0bd9eb824507ea3dc290df00cfe375f95a34e17f094a8"
+    },
+    {
+      "file": "privacy-history-busy.png",
+      "bytes": 169638,
+      "sha256": "fffe44199c9a0683f505637e65f50a3cd9cd760809886a4f01051cad444baa75"
+    },
+    {
+      "file": "privacy-history-done.png",
+      "bytes": 215721,
+      "sha256": "d67210bcec4c6935c5a4a77d5ea12be61064e502c9bf6d717325f76f1f25dbfe"
+    },
+    {
+      "file": "privacy-history-error.png",
+      "bytes": 218437,
+      "sha256": "64ab900a7965ae65a81caf8ed9d5ae431c4e2bada1cf1c550e4ded06cea96fc8"
+    },
+    {
+      "file": "privacy-history-pending.png",
+      "bytes": 219628,
+      "sha256": "3fafa2926a542d4b2257aa60840e0dd032226346fa9e392bf7b89c247693e77b"
+    },
+    {
+      "file": "privacy-history-ready.png",
+      "bytes": 209702,
+      "sha256": "93b3a7daabfe4b3724eeeb63d9c5f01908c7fd8389fe9e3a3b7bd7d5c2e8fef5"
+    },
+    {
+      "file": "snore-route-bluetooth-unsupported.png",
+      "bytes": 137927,
+      "sha256": "d905287a4fd03288116957e0f69e6bedcf1b525365dc8ed8a8eca7622cb96f9f"
+    },
+    {
+      "file": "snore-route-recreated.png",
+      "bytes": 135116,
+      "sha256": "12f8c95d3bd24110428cbb7ba124d67f2d89852d132f50de787a17202a2ab3d0"
+    },
+    {
+      "file": "snore-route-reopened.png",
+      "bytes": 135116,
+      "sha256": "12f8c95d3bd24110428cbb7ba124d67f2d89852d132f50de787a17202a2ab3d0"
+    },
+    {
+      "file": "snore-route-supported.png",
+      "bytes": 135116,
+      "sha256": "12f8c95d3bd24110428cbb7ba124d67f2d89852d132f50de787a17202a2ab3d0"
+    },
+    {
+      "file": "snore-route-unavailable.png",
+      "bytes": 136503,
+      "sha256": "1ad5439e5f380c156d158ebb4439993aec4d33c47320360d9b54ae7e80fb638e"
+    },
+    {
+      "file": "walk-error.png",
+      "bytes": 134643,
+      "sha256": "35691b62b54bea178062ba7be258db509618febd770da081bf6d689d85b87bcf"
+    },
+    {
+      "file": "walk-permission.png",
+      "bytes": 113411,
+      "sha256": "1e2d720720b153da015a3f930d05184bbeaa0bfdeefac2a008ea83e10270920e"
+    },
+    {
+      "file": "walk-ready.png",
+      "bytes": 100806,
+      "sha256": "f093ddaac3ab950cd74bd9f048e53781af5efb6a135e98bd3dc26816d7c1fc55"
+    },
+    {
+      "file": "walk-reopened.png",
+      "bytes": 100731,
+      "sha256": "704f321b6d3c274a14bfa2ff79a84eee7db5e1068dc39a97f4ccc55d130e43db"
+    },
+    {
+      "file": "walk-settings.png",
+      "bytes": 113879,
+      "sha256": "b1c64e82ab1605bf45499fb260a1a2821acac3a7b92271153ad61339a29d3e4d"
+    },
+    {
+      "file": "walk-unavailable.png",
+      "bytes": 122398,
+      "sha256": "f0975f078373407d224f81c147435779f59e0063cc0df2c63e9a1bb20f8ad520"
+    }
+  ]
+}

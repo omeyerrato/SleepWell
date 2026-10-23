@@ -94,7 +94,7 @@ failures = []
 tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest", "PlanPickerFlowTest", "SoundLibraryUiTest", "SoundRetentionLifecycleTest", "SleepRhythmFlowTest", "NightAudioArchiveTest", "SoundArchiveUiTest", "MotionConfigurationFlowTest", "AudioArchiveConcurrencyTest", "SoundArchiveJobTest", "RecordCalendarFlowTest", "ChallengeRoutineFlowTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
-tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest"]
+tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest"]
 if args.audio_imports:
     tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
 for test in tests:
@@ -114,7 +114,7 @@ for test in tests:
         extra = ["-e", "ciSilentPlayback", "true"]
     result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app." + test, "-e", "ciReview", "true", *extra, "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", check=False, timeout=180)
     (output / (test + ".txt")).write_text(result.stdout + result.stderr, encoding="utf-8")
-    expected_count = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2}.get(test, 1)
+    expected_count = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2}.get(test, 1)
     passed = bool(re.search(r"(?m)^OK \(" + str(expected_count) + r" tests?\)\s*$", result.stdout)) and "FAILURES!!!" not in result.stdout
     print(test + ": " + ("PASS" if passed else "FAIL"), flush=True)
     if result.returncode or not passed:
@@ -188,6 +188,7 @@ required += ["routine-" + name + ".png" for name in ("legacy", "ordered", "reord
 required += ["snore-route-" + name + ".png" for name in ("unavailable", "bluetooth-unsupported", "supported", "recreated", "reopened")]
 required += ["walk-" + name + ".png" for name in ("permission", "ready", "settings", "error", "unavailable", "reopened")]
 required += ["chart-clock-" + name + ".png" for name in ("overnight", "night", "short", "fold")]
+required += ["missed-night-" + name + ".png" for name in ("denied", "review", "edited", "recreated", "busy", "saved", "covered", "incomplete", "empty", "error", "conflict")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:

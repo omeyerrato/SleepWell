@@ -663,3 +663,22 @@ release app. Includes reviewed Walk occurrence/listener cleanup and headphone
 fixture safety corrections. The fresh default native gate requires31 classes,
 45 methods and152 original PNGs, with no actual output playback enabled.
 Compilation and pure tests do not establish new native/UI/hardware acceptance.
+
+## CI40033681541 at64ae8d2 — 30/31 classes pass
+
+Terminal overall FAIL:30 passing classes/44 passing methods and148 original
+PNGs. New Walk configuration passes13.954s with six images; headphone route
+configuration passes11.571s with five, and fake-worker output2 passes0.142s.
+PrivacyHistoryFlowTest now passes26.046s, including late journal reentry and
+audio-only Retry preserving a new night. All other previously passing classes
+remain passing. These methods use private fixtures and injected hardware ports.
+
+Only ChartClockFlowTest fails: initial requestFocus before a laid-out focused
+fixture, before any of its four required captures. This is not evidence of chart
+visual acceptance. The assertion is being fixed with a real lifecycle/focus gate.
+Sixteen assigned original Walk/route/privacy images were individually inspected
+and are preserved with raw logs and original-byte hashes in
+verification/2026-10-24-walk-headphone-privacy. Privacy's lower-scroll captures
+do not certify offscreen headers; gray checked favorites remains a later styling
+candidate. No physical alarm, audio, sensor, permission, microphone or power test
+ran. Full app/design acceptance remains incomplete.
