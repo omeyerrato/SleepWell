@@ -52,6 +52,9 @@ final class Design {
     private static LinearLayout page(Activity a,boolean night,Integer destination,java.util.function.IntConsumer navigate,Appearance.Palette palette){
         boolean dark=night&&palette.dark;
         a.getWindow().setDecorFitsSystemWindows(false);
+        // API35+ also derives three-button icon contrast from the Window background,
+        // independently of the content View and requested light/dark appearance.
+        a.getWindow().setBackgroundDrawable(new ColorDrawable(night?palette.bg:CREAM));
         a.getWindow().getDecorView(); // Create decor before querying the controller during onCreate.
         a.getWindow().setNavigationBarContrastEnforced(false);
         a.getWindow().setStatusBarContrastEnforced(false);
