@@ -1201,9 +1201,9 @@
         "NoiseRecorder.java",
         "ClipBudget.java"
       ],
-      "validation": "SnoreCuePolicyTest pure fake-output tests pass. SnoreCueSettingsNativeTest passes at 8fd7dd9/CI39997627697: saved options, recreation/reopen and four original screenshots with fake output. Real positive sound fixture gate, hardware cue operation and effectiveness unverified.",
+      "validation": "SnoreCuePolicyTest pure fake-output tests pass. SnoreCueSettingsNativeTest passes at 8fd7dd9/CI39997627697: saved options, recreation/reopen and four original screenshots with fake output. Positive fixture gate passes at f471c4d/CI40016966655, but this does not verify hardware cues. New preview8pure tests and native configuration compilation pass; five-image native flow pending. Hardware output/effectiveness unverified.",
       "status": "partial",
-      "notes": "Default-off cues after confident snoring estimates, selectable sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes; alarm/disable/close guards. Headphone-only routing and preview remain missing. No medical effectiveness claim.",
+      "notes": "Default-off cues after confident snoring estimates, selectable sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes; alarm/disable/close guards. Headphone-only routing and preview is an explicit low/single lifecycle-bound candidate with fake-output tests; headphone-only routing remains missing. No medical effectiveness claim.",
       "id": "F059",
       "tests": [
         {
@@ -2263,9 +2263,9 @@
         "NoiseRecorder.java",
         "ClipBudget.java"
       ],
-      "validation": "SnoreCuePolicyTest pure fake-output tests pass. SnoreCueSettingsNativeTest passes at 8fd7dd9/CI39997627697: saved options, recreation/reopen and four original screenshots with fake output. Real positive sound fixture gate, hardware cue operation and effectiveness unverified.",
+      "validation": "SnoreCuePolicyTest pure fake-output tests pass. SnoreCueSettingsNativeTest passes at 8fd7dd9/CI39997627697: saved options, recreation/reopen and four original screenshots with fake output. Positive fixture gate passes at f471c4d/CI40016966655, but this does not verify hardware cues. New preview8pure tests and native configuration compilation pass; five-image native flow pending. Hardware output/effectiveness unverified.",
       "status": "partial",
-      "notes": "Default-off cues after confident snoring estimates, selectable sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes; alarm/disable/close guards. Headphone-only routing and preview remain missing. No medical effectiveness claim.",
+      "notes": "Default-off cues after confident snoring estimates, selectable sound/vibration/both, intensity/repeats/sensitivity, two-minute cooldown and thirty-per-session cap. No global-volume writes; alarm/disable/close guards. Headphone-only routing and preview is an explicit low/single lifecycle-bound candidate with fake-output tests; headphone-only routing remains missing. No medical effectiveness claim.",
       "id": "F125",
       "tests": [
         {
@@ -2677,6 +2677,36 @@
       ]
     },
     {
+      "feature": "Motion sensitivity configuration",
+      "screens": "16,29",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sensors.html",
+      "implementation": [
+        "MotionSensorActivity.java",
+        "MotionProfile.java",
+        "MotionFilter.java",
+        "MotionPort.java",
+        "MotionPreview.java",
+        "MotionSettings.java",
+        "MotionSignalChart.java",
+        "TrackingService.java",
+        "TrackingActivity.java"
+      ],
+      "validation": "MotionConfigurationTest eight pure cases pass in integrated309-test build. MotionConfigurationFlowTest seven captured states with injected sensor, saved/reopened heuristic consumption and conflict/unavailable/errors await native execution.",
+      "status": "partial",
+      "notes": "Foreground-only real accelerometer preview, actual RMS bins with missing data blank, saved Low/Medium/High gain consumed by smart-wake/automatic-stillness heuristics on the next run. Raw epochs remain unchanged. Medium preserves default; gains are not clinically calibrated. Real sensor and overnight behavior unverified.",
+      "id": "F142",
+      "tests": [
+        {
+          "name": "MotionConfigurationFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/MotionConfigurationFlowTest.java"
+        },
+        {
+          "name": "MotionConfigurationTest",
+          "path": "app/src/test/java/org/sleepwell/app/MotionConfigurationTest.java"
+        }
+      ]
+    },
+    {
       "feature": "Chronotype estimation",
       "screens": "25",
       "source": "https://sleep.urbandroid.org/docs/sleep/chrono_jetlag.html",
@@ -2684,7 +2714,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Recording progress is not a chronotype estimator. Alarm-free, recovery and sleep-onset evidence remain missing.",
-      "id": "F142",
+      "id": "F143",
       "tests": []
     }
   ]
