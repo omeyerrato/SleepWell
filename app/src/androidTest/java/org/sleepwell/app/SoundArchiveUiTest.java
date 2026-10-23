@@ -1,0 +1,34 @@
+package org.sleepwell.app;
+
+import android.app.*;
+import android.content.*;
+import android.net.Uri;
+import android.os.Build;
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.runner.lifecycle.*;
+import androidx.test.uiautomator.*;
+import org.junit.Test;
+import java.io.*;
+import java.util.*;
+import java.util.concurrent.atomic.*;
+import static org.junit.Assert.*;
+
+/** Library → actual ZIP generation with a fake SAF result/sink. No media outputs or external writes. */
+public class SoundArchiveUiTest {
+    private IntentFilter documents()throws Exception{IntentFilter filter=new IntentFilter(Intent.ACTION_CREATE_DOCUMENT);filter.addCategory(Intent.CATEGORY_OPENABLE);filter.addDataType("application/zip");return filter;}
+    @Test public void libraryExportRequiresDestinationAndRetainsSuccessOrFailureAcrossRecreation()throws Exception{
+        Instrumentation i=InstrumentationRegistry.getInstrumentation();Context c=i.getTargetContext();org.junit.Assume.assumeTrue(Build.HARDWARE.contains("ranchu")||Build.HARDWARE.contains("goldfish"));org.junit.Assume.assumeTrue(InstrumentationRegistry.getArguments().getString("ciReview","").equals("true"));
+        UiDevice device=UiDevice.getInstance(i);String database="sleepwell-verification-"+UUID.randomUUID()+".db";Records.Factory records=Records.factory;SoundArchiveJob.Factory factory=SoundArchiveJob.factory;List<Activity> owned=new ArrayList<>();List<Instrumentation.ActivityMonitor> monitors=new ArrayList<>();AtomicInteger writes=new AtomicInteger();AtomicBoolean fail=new AtomicBoolean();AtomicReference<byte[]> archive=new AtomicReference<>();Uri destination=Uri.parse("content://org.sleepwell.verification/audio.zip");File dir=new File(c.getFilesDir(),"clips");assertTrue(dir.isDirectory()||dir.mkdirs());File wave=new File(dir,"verification-export-ui-"+UUID.randomUUID()+".wav");NoiseRecorder.writeWave(wave,new byte[32000]);File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());long id;
+        try{
+            try(Store store=new Store(c,database)){id=store.begin();long start=store.rows("SELECT start FROM sessions").get(0).getLong("start");store.clip(id,start+1000,wave.getName(),.2,1000);store.soundEvent(id,start+100,200,"snoring",.9,null);store.soundEvent(id,start+2000,200,"speech",.8,null);store.end(id,false,3000,start+3000);}
+            i.runOnMainSync(()->{Records.factory=context->new Store(context,database);SoundArchiveJob.factory=(context,source,night,updated)->new SoundArchiveJob.Work(){public NightAudioArchive.Plan prepare()throws Exception{assertFalse(context instanceof Activity);try(Store store=source.open(context)){return NightAudioArchive.prepare(context,store,night,updated);}}public void write(NightAudioArchive.Plan plan,Uri uri)throws Exception{assertEquals(destination,uri);writes.incrementAndGet();if(fail.get())throw new IOException("Fixture provider unavailable");try(Store store=source.open(context)){ByteArrayOutputStream bytes=new ByteArrayOutputStream();NightAudioArchive.write(context,store,plan,bytes);archive.set(bytes.toByteArray());}}};});long night=id;
+            i.runOnMainSync(()->c.startActivity(new Intent(c,SoundEventsActivity.class).putExtra("record",night).putExtra("visualReview",true).putExtra("verificationLabel","Synthetic ZIP fixture · no audio output").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)));
+            assertTrue(device.wait(Until.hasObject(By.desc("All (2)")),5000));device.findObject(By.desc("Sound event options")).click();assertTrue(device.wait(Until.hasObject(By.text("Export recordings")),3000));device.findObject(By.text("Export recordings")).click();assertTrue(device.wait(Until.hasObject(By.text("Choose save location").enabled(true)),5000));assertEquals(0,writes.get());device.waitForIdle();assertTrue(device.takeScreenshot(new File(folder,"library-export-ready.png")));
+            Instrumentation.ActivityMonitor cancel=new Instrumentation.ActivityMonitor(documents(),new Instrumentation.ActivityResult(Activity.RESULT_CANCELED,null),true);i.addMonitor(cancel);monitors.add(cancel);device.findObject(By.text("Choose save location")).click();assertTrue(device.wait(Until.hasObject(By.text("Choose save location").enabled(true)),5000));assertEquals(1,cancel.getHits());assertEquals(0,writes.get());i.removeMonitor(cancel);monitors.remove(cancel);
+            Instrumentation.ActivityMonitor success=new Instrumentation.ActivityMonitor(documents(),new Instrumentation.ActivityResult(Activity.RESULT_OK,new Intent().setData(destination)),true);i.addMonitor(success);monitors.add(success);device.findObject(By.text("Choose save location")).click();assertTrue(device.wait(Until.hasObject(By.text("Export complete.")),5000));assertEquals(1,writes.get());assertNotNull(archive.get());assertTrue(archive.get().length>100);java.nio.file.Files.write(new File(folder,"library-export-fixture.zip").toPath(),archive.get());device.waitForIdle();assertTrue(device.takeScreenshot(new File(folder,"library-export-complete.png")));
+            i.runOnMainSync(()->{for(Activity a:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))if(a instanceof SoundArchiveActivity){owned.add(a);a.recreate();}});assertTrue(device.wait(Until.hasObject(By.text("Export complete.")),5000));assertEquals(1,writes.get());assertEquals(1,success.getHits());device.waitForIdle();assertTrue(device.takeScreenshot(new File(folder,"library-export-recreated.png")));
+            fail.set(true);device.findObject(By.text("Choose save location")).click();assertTrue(device.wait(Until.hasObject(By.text("Export failed. The destination may contain a partial file. Choose a location to retry.")),5000));assertEquals(2,writes.get());assertTrue(wave.exists());device.waitForIdle();assertTrue(device.takeScreenshot(new File(folder,"library-export-failed.png")));
+        }catch(Throwable failure){try{device.takeScreenshot(new File(folder,"library-export-failure.png"));device.dumpWindowHierarchy(new File(folder,"library-export-failure.xml"));}catch(Throwable diagnostic){failure.addSuppressed(diagnostic);}throw failure;}
+        finally{for(Instrumentation.ActivityMonitor monitor:monitors)i.removeMonitor(monitor);i.runOnMainSync(()->{for(Stage stage:Stage.values())if(stage!=Stage.DESTROYED)for(Activity a:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(stage))if((a instanceof SoundArchiveActivity||a instanceof SoundEventsActivity)&&!owned.contains(a))owned.add(a);for(Activity a:owned)a.finish();});i.waitForIdleSync();boolean drained=false;try{for(Activity a:owned)assertTrue(a instanceof SoundArchiveActivity?((SoundArchiveActivity)a).awaitReaders(5000):((SoundEventsActivity)a).awaitReaders(5000));drained=true;}finally{i.runOnMainSync(()->{Records.factory=records;SoundArchiveJob.factory=factory;});if(drained){c.deleteDatabase(database);if(wave.exists())assertTrue(wave.delete());}}}
+    }
+}
