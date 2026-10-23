@@ -147,3 +147,42 @@ their incomplete image sets must be replaced by complete successful same-head
 evidence. Snoring cues needs five new actual images after its icon/preview
 change, with focused hardware-frame and visible-action checks that reject the
 white default. Overall 36-screen feature and design completion remains FAIL.
+
+## Subsequent exact-head review: CI 40021145034
+
+Source `7d02819f6fcd3bbbb3948ff371b47b8911652841`, same API 36 viewport.
+Opened each of the following 21 originals individually. Snore settings passed
+11.558 seconds, Wake settings passed 29.857 seconds, Report failed 17.162
+seconds at its `View sound events` accessibility selector. The environment
+disallows native playback; cue and library outputs in these tests are fakes.
+
+| Original PNG | Strict finding |
+| --- | --- |
+| snore-settings-default.png | The former blank frame is fixed: Off master, Vibration icon card, Low/1/Medium brown selections, analysis switch, Preview and full Save render. Narrow composition correction passes. |
+| snore-settings-preview.png | Same full layout plus low-intensity request feedback; overnight master remains Off. Fake-output request only, not physical delivery. |
+| snore-settings-selected.png | On/Both/Medium/3/High states use brown fills and readable cream text, matching board 07 hierarchy. Cooldown feedback fits. |
+| snore-settings-recreated.png | All draft selections are coherent after genuine recreation; complete Preview/Save stay visible. |
+| snore-settings-reopened.png | Saved selections survive reopening, with no new clipping. P2 across these five: Preview triangle is oversized inside its circle; more breathing room around the glyph is needed. Fixed-footer gap is also larger than the reference. |
+| wake-settings-sound.png | Existing radio/volume/Use layout fits, but actual tone previews/waveforms and preview-volume panel remain missing from full board 03. |
+| wake-settings-loud-curve.png | 100% endpoint and From start timing pill are correct; selected state and full Save fit. |
+| wake-settings-vibration-options.png | All bounded delay choices, selected From start and Cancel fit in the themed dialog. |
+| wake-settings-delay-options.png | Off plus real bounded sound-delay choices fit; consistent selected radio and Cancel. |
+| wake-settings-lights.png | Actual scrolled lower composition exposes 3-minute sound delay, disabled retained vibration delay, enabled screen sunrise and flashlight; full Save remains fixed. Top content is intentionally outside the scrolled viewport. |
+| wake-settings-recreated.png | Same lower states and Save survive recreation, no lower-control clipping. |
+| wake-settings-reopened.png | Saved 3-minute delay, disabled retained After 1 min and sunrise state are visible. No runtime output certification. |
+| wake-settings-normal-curve.png | Extra loud off restores the visible 80% endpoint rather than a copied 100% curve. |
+| wake-settings-edited-curve.png | One-minute axis, 80% endpoint and After 2 min vibration timing are visible; selectors are coherent. |
+| wake-settings-immediate.png | Off ramp truthfully shows an immediate horizontal 80% level, not a fake gradual curve. Full Save fits. |
+| report-reference-history.png | Seven fixture rows, continuous coverage ribbons and four-tab selected dock fit. No regression from prior bounded review. |
+| report-reference-week.png | Duration values/goal line and bedtime curve remain readable; complete Read details is above dock. P2 heavier point-ring treatment remains. |
+| report-reference-month.png | Only observed dates carry data; complete Read details remains visible. |
+| report-reference-year.png | Honest single observed month and complete action fit; missing months are blank. |
+| report-reference-night.png | Real fixture movement columns plus 3 Snoring/1 Speech counts render; analysis-only state has no fake waves/Play. No measured sleep stages exist. |
+| report-reference-failure.png | Scrolled diagnostic shows the visible View sound events entry and supporting edit/trend links. Accessibility selector failed; this is not a substitute for editor, tags/notes or reopened evidence. |
+
+Snore's five-image configuration/fake-preview gate and Wake's ten-image
+configuration gate pass narrowly with the P2 visual differences above. They do
+not certify actual cue, alarm, vibration, sunrise or flashlight delivery. Report
+still FAILS at **5/8 required frames**, missing editor, tags-notes and reopened.
+No stage estimator or simulated replacement is accepted. Full feature and
+36-screen visual acceptance remains FAIL; unrelated failed journeys remain open.
