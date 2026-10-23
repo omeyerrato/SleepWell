@@ -32,6 +32,7 @@
         <activity android:name=".SleepSoundsActivity" android:exported="false" />
         <activity android:name=".GoalBankActivity" android:exported="false" />
         <activity android:name=".HistoryActivity" android:exported="false" />
+        <activity android:name=".RecordReportActivity" android:exported="false" />
         <activity android:name=".RecordEditorActivity" android:exported="false" />
         <activity android:name=".SnoringCuesActivity" android:exported="false" />
         <activity android:name=".SoundEventsActivity" android:exported="false" />
