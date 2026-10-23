@@ -15,6 +15,10 @@ final class Icons {
             case "minus" -> R.drawable.ic_phosphor_minus_regular;
             case "attention" -> R.drawable.ic_phosphor_exclamation_mark_regular;
             case "plus" -> R.drawable.ic_phosphor_plus_regular;
+            case "math" -> R.drawable.ic_phosphor_math_operations_regular;
+            case "memory" -> R.drawable.ic_phosphor_cards_regular;
+            case "sequence" -> R.drawable.ic_phosphor_list_numbers_regular;
+            case "keyboard" -> R.drawable.ic_phosphor_keyboard_regular;
             case "home" -> R.drawable.ic_phosphor_house_fill;
             case "moon" -> R.drawable.ic_phosphor_moon_fill;
             case "report" -> R.drawable.ic_phosphor_chart_bar_fill;

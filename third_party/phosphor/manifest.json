@@ -20,6 +20,7 @@
     "assets/regular/bell.svg": "439b02c746ff59945b6175c6d327113ca3f7a729a43d5bcafb278a0f11ee34b5",
     "assets/regular/broadcast.svg": "e8377f3bf952fc637ca1ca31d5ea6f0917f9195d0bca9b2bfa3d6201b09c59e9",
     "assets/regular/calendar-blank.svg": "6268583ae0ea04e93fd24f1e70d47a8e8d79c88fc304af397b95b318980215d6",
+    "assets/regular/cards.svg": "de7215a56d6131de7ebded00390671efb03233830b77c41f7736a28baf2eb4da",
     "assets/regular/caret-down.svg": "53f0cf2d0b144ac3cb07e353e0cd0853ffb3ed432d741460ce288edfcb0924b1",
     "assets/regular/caret-right.svg": "e6dec01e074807965b7f3146b976a9b5e82c31d9c2c88aeb52e77cc2ab16c1d7",
     "assets/regular/caret-up.svg": "bccc26004e73e5de783ac6dde607e3671e776261d81972ccdbd296b4aca21ca9",
@@ -38,10 +39,13 @@
     "assets/regular/fork-knife.svg": "24388d27ec51856a899b2ba8a1f68b1c31b385ed1f27eb275d5685ebf951b80f",
     "assets/regular/heart.svg": "312dee73d1d969631d5498012f619ccf4edbdf31e1be3e65af4f4f1b3ac1b2dd",
     "assets/regular/info.svg": "438a1f319d53d86e840af73fb7b1d224c9224a437b9fa449a4e2cb45a82a3552",
+    "assets/regular/keyboard.svg": "96646775c552eb7944a88071ec3d7b93f28fd0e19ae995cfb52957403e38422e",
     "assets/regular/lightbulb.svg": "b61e4d9685a1d74e579a7dbbe0d5222bdf8dcdcaf5b67825a17ff45363e4fadd",
     "assets/regular/list-checks.svg": "b2d11fc95de627d6abe9feeced5f7e0cdce3ccdf8d9f9d2334d596b8b5cc5cc4",
+    "assets/regular/list-numbers.svg": "fe27bfeb346c8ffd2ca61805d800f60c58b2cd0512e7d58f1b8ccffdad777ccc",
     "assets/regular/lock-key.svg": "a8177687fb7b376afa1cf3bc0b16599c91b96a323687e2145f772b93ed0f2c95",
     "assets/regular/magnifying-glass.svg": "f9fa2561978a9a3291e8ae0ebfcb651104f5069fade8f84871627bca68889cde",
+    "assets/regular/math-operations.svg": "b2e38fb9deec3e0a0d422b8fd28ae15b97f8f2f387c2d8ec6ca5156deb4e6d89",
     "assets/regular/microphone.svg": "b49dabfaf603e82594cef0c5e5784c747f4c098b7723d2973c92965745ca93a9",
     "assets/regular/minus.svg": "5a068d1cfd707fde5ddb0ce0623958123b6a5afba98401318983aeb0fdad6382",
     "assets/regular/palette.svg": "f16925171ff434d8e8768da0d06867d77cd50d9e78932ab12af65bccac7a1375",
@@ -100,6 +104,22 @@
     },
     "plus": {
       "name": "plus",
+      "weight": "regular"
+    },
+    "math": {
+      "name": "math-operations",
+      "weight": "regular"
+    },
+    "memory": {
+      "name": "cards",
+      "weight": "regular"
+    },
+    "sequence": {
+      "name": "list-numbers",
+      "weight": "regular"
+    },
+    "keyboard": {
+      "name": "keyboard",
       "weight": "regular"
     },
     "home": {

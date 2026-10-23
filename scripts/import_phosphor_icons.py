@@ -24,6 +24,8 @@ ICONS = {
     "exercise": ("person-simple-run", "regular"), "tag": ("tag", "regular"),
     "chevron": ("caret-right", "regular"), "minus": ("minus", "regular"),
     "attention": ("exclamation-mark", "regular"), "plus": ("plus", "regular"),
+    "math": ("math-operations", "regular"), "memory": ("cards", "regular"),
+    "sequence": ("list-numbers", "regular"), "keyboard": ("keyboard", "regular"),
     "home": ("house", "fill"),
     "moon": ("moon", "fill"), "report": ("chart-bar", "fill"),
     "settings": ("gear-six", "fill"), "sun": ("sun", "regular"),
