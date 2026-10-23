@@ -62,7 +62,7 @@ final class Design {
         systemBars(a,dark);
         LinearLayout root=col(a);root.setBackgroundColor(night?palette.bg:CREAM);root.setContentDescription(night&&destination!=null?"Tonight · "+AppearancePolicy.THEMES[palette.phase]:null);
         root.setOnApplyWindowInsetsListener((v,i)->{Insets bars=i.getInsets(WindowInsets.Type.systemBars()|WindowInsets.Type.displayCutout()|WindowInsets.Type.ime());v.setPadding(bars.left,bars.top,bars.right,bars.bottom);return i;});
-        ScrollView scroll=new ScrollView(a);scroll.setFillViewport(true);scroll.setClipToPadding(false);scroll.setVerticalScrollBarEnabled(false);root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
+        ScrollView scroll=new ScrollView(a);scroll.setDefaultFocusHighlightEnabled(false);scroll.setFillViewport(true);scroll.setClipToPadding(false);scroll.setVerticalScrollBarEnabled(false);root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         LinearLayout body=col(a);pad(body,24,16);scroll.addView(body,new ScrollView.LayoutParams(-1,-1));
         if(destination!=null){LinearLayout dock=row(a);dock.setPadding(dp(a,8),dp(a,6),dp(a,8),dp(a,6));dock.setBackground(shape(a,night?palette.dock:SOFT,40));
             String[] names={"Tonight","Alarms","Report","Settings"},icons={"moon","alarm","report","settings"};

@@ -94,7 +94,7 @@ failures = []
 tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest", "PlanPickerFlowTest", "SoundLibraryUiTest", "SoundRetentionLifecycleTest", "SleepRhythmFlowTest", "NightAudioArchiveTest", "SoundArchiveUiTest", "MotionConfigurationFlowTest", "AudioArchiveConcurrencyTest", "SoundArchiveJobTest", "RecordCalendarFlowTest", "ChallengeRoutineFlowTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
-tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest"]
+tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest", "GradedMathConfigurationTest"]
 if args.audio_imports:
     tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
 for test in tests:
@@ -216,6 +216,7 @@ required += ["walk-" + name + ".png" for name in ("permission", "ready", "settin
 required += ["chart-clock-" + name + ".png" for name in ("overnight", "night", "short", "fold")]
 required += ["missed-night-" + name + ".png" for name in ("denied", "review", "edited", "recreated", "busy", "saved", "covered", "incomplete", "empty", "error", "conflict")]
 required += ["favorites-" + name + ".png" for name in ("all", "playback", "recreated", "week", "filter-empty", "speech", "playback-error", "unstarred", "reopened", "deleted-audio", "missing-audio", "empty", "error", "retry")]
+required += ["math-config-" + name + ".png" for name in ("default", "operators", "typed", "recreated", "ordered", "reopened", "error")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:
