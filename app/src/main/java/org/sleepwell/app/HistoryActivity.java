@@ -16,7 +16,7 @@ import java.util.concurrent.*;
 public final class HistoryActivity extends Activity {
     private final ExecutorService worker=Executors.newSingleThreadExecutor();
     private List<RecordEntry> records=List.of();private Map<Long,List<org.json.JSONObject>> measurements=Map.of();private boolean loaded,trends,searching,anchorChosen;private String query="",filter="All",failure="";private LocalDate day,anchor=LocalDate.now();private int period,generation;private long selected;
-    private LinearLayout list;private TextView helper;
+    private LinearLayout list;private TextView helper;private Dialog optionsDialog;
     @Override public void onCreate(Bundle state){super.onCreate(state);RecordUi.review(this);trends=getIntent().getBooleanExtra("trends",false);if(state!=null){anchorChosen=true;trends=state.getBoolean("trends");searching=state.getBoolean("searching");query=state.getString("query","");filter=state.getString("filter","All");period=state.getInt("period");selected=state.getLong("selected");anchor=LocalDate.parse(state.getString("anchor",LocalDate.now().toString()));String date=state.getString("day");if(date!=null)day=LocalDate.parse(date);}render();}
     @Override protected void onResume(){super.onResume();load();}
     @Override public void onSaveInstanceState(Bundle state){super.onSaveInstanceState(state);state.putBoolean("trends",trends);state.putBoolean("searching",searching);state.putString("query",query);state.putString("filter",filter);state.putInt("period",period);state.putLong("selected",selected);state.putString("anchor",anchor.toString());if(day!=null)state.putString("day",day.toString());}
@@ -58,7 +58,14 @@ public final class HistoryActivity extends Activity {
         TextView rangeButton=Design.text(body,period==0?"Week ending "+anchor.format(DateTimeFormatter.ofPattern("d MMM uuuu",Locale.getDefault())):anchor.format(DateTimeFormatter.ofPattern(period==1?"MMMM uuuu":"uuuu",Locale.getDefault())),12,400,Design.MUTED);rangeButton.setMinHeight(Design.dp(this,40));rangeButton.setGravity(Gravity.CENTER_VERTICAL);rangeButton.setContentDescription("Choose trend date");rangeButton.setOnClickListener(v->chooseAnchor());
     }
     private void trendHeading(LinearLayout body,String title){Design.space(body,12);Design.text(body,title,16,600,Design.INK);Design.space(body,6);}
-    private void trendOptions(){new AlertDialog.Builder(this).setTitle("Trend options").setItems(new String[]{"Choose dates","Day boundary","About these charts"},(dialog,index)->{if(index==0)chooseAnchor();else if(index==1)chooseCutoff();else new AlertDialog.Builder(this).setTitle("Your recorded history").setMessage("Duration merges overlapping records and excludes marked awake and paused time. Missing dates are left blank. Manual periods are user-reported. Bedtime uses the longest period of at least three hours; tagged naps are excluded. These are record times, not measured sleep stages.").setPositiveButton("Got it",null).show();}).show();}
+    private void trendOptions(){
+        if(optionsDialog!=null)optionsDialog.dismiss();
+        Dialog dialog=new Dialog(this);optionsDialog=dialog;dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        LinearLayout content=Design.col(this);Design.pad(content,20,20);content.setBackground(Design.shape(this,Design.CREAM,24));Design.text(content,"Trend options",22,600,Design.INK);Design.space(content,12);
+        String[] names={"Choose dates","Day boundary","Sleep rhythm","About these charts"};String[] icons={"calendar","moon","report","info"};
+        for(int i=0;i<names.length;i++){int action=i;PlanActivity.detail(content,icons[i],names[i],null,null,()->{dialog.dismiss();if(action==0)chooseAnchor();else if(action==1)chooseCutoff();else if(action==2)startActivity(RecordUi.intent(this,SleepRhythmActivity.class));else optionsDialog=SleepPicker.message(this,"Your recorded history","Duration excludes marked awake and paused time. Missing dates stay blank. Bedtime uses the longest main period of at least three hours. These are recorded times, not measured sleep stages.");});}
+        Design.button(content,"Cancel",false,dialog::dismiss);ScrollView scroll=new ScrollView(this);scroll.addView(content);dialog.setContentView(scroll);dialog.show();Window window=dialog.getWindow();window.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(Color.TRANSPARENT));window.setLayout(Math.min(getResources().getDisplayMetrics().widthPixels-Design.dp(this,32),Design.dp(this,440)),-2);
+    }
     private void chooseAnchor(){new DatePickerDialog(this,(v,y,m,d)->{anchorChosen=true;anchor=LocalDate.of(y,m+1,d);render();},anchor.getYear(),anchor.getMonthValue()-1,anchor.getDayOfMonth()).show();}
     private void chooseCutoff(){SleepPicker.time(this,"Day boundary",cutoff(),minutes->{Prefs.put(this,"statsCutoff",minutes);render();});}
     private final class CoverageStrip extends View {private final RecordEntry record;private final Paint p=new Paint(3);CoverageStrip(RecordEntry record){super(HistoryActivity.this);this.record=record;setContentDescription(record.manual()?"User-reported interval; no sensor measurements":"Recorded intervals; blank spaces are pauses or awake edits");}
@@ -66,5 +73,5 @@ public final class HistoryActivity extends Activity {
     }
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
     void awaitReaders(long timeoutMs) throws Exception {if(worker.isShutdown()){if(!worker.awaitTermination(timeoutMs,TimeUnit.MILLISECONDS))throw new java.util.concurrent.TimeoutException("History readers still active");}else worker.submit(()->{}).get(timeoutMs,TimeUnit.MILLISECONDS);}
-    @Override protected void onDestroy(){generation++;worker.shutdownNow();super.onDestroy();}
+    @Override protected void onDestroy(){generation++;if(optionsDialog!=null)optionsDialog.dismiss();worker.shutdownNow();super.onDestroy();}
 }
