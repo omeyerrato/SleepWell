@@ -19,7 +19,7 @@ class RecordChart extends View {
         this(c,epochs,metric,start,end,night,java.time.ZoneId.systemDefault());
     }
     RecordChart(Context c,List<JSONObject> epochs,String metric,long start,long end,boolean night,java.time.ZoneId zone){
-        super(c);this.zone=zone;this.metric=metric;this.start=start;this.night=night;setFocusable(true);updateData(epochs,end);
+        super(c);this.zone=zone;this.metric=metric;this.start=start;this.night=night;setFocusable(true);setDefaultFocusHighlightEnabled(false);updateData(epochs,end);
     }
     /** Refresh measured samples in place so keyboard/TalkBack focus and time selection survive live ticks. */
     void updateData(List<JSONObject> epochs,long end){
@@ -40,6 +40,7 @@ class RecordChart extends View {
     @Override protected void onSizeChanged(int w,int h,int oldw,int oldh){
         super.onSizeChanged(w,h,oldw,oldh);rebuild();
     }
+    @Override protected void onFocusChanged(boolean focused,int direction,Rect previous){super.onFocusChanged(focused,direction,previous);invalidate();}
     private void rebuild(){Long selection=selected>=0&&selected<bars.size()?bars.get(selected).from+(bars.get(selected).to-bars.get(selected).from)/2:null;bars=ChartSeries.aggregate(samples,start,end,Math.max(1,(int)((plotRight()-plotLeft())/(6*density()))));selected=-1;high=.001;for(int n=0;n<bars.size();n++){ChartSeries.Bar bar=bars.get(n);high=Math.max(high,bar.value);if(selection!=null&&selection>=bar.from&&selection<=bar.to)selected=n;}if(selected>=0)describeSelection();}
     @Override protected void onDraw(Canvas canvas){
         super.onDraw(canvas);float d=density(),w=getWidth(),h=getHeight(),left=plotLeft(),right=plotRight();
@@ -61,6 +62,7 @@ class RecordChart extends View {
         }
         if(bars.isEmpty()){paint.setColor(ink());paint.setTextAlign(Paint.Align.CENTER);canvas.drawText("No readings for this signal",w/2,(top+bottom)/2,paint);}
         paint.setColor(ink());paint.setTextAlign(Paint.Align.CENTER);for(ChartTicks.Placed tick:ticks){String[] labels=tick.tick.label.split("\n");for(int n=0;n<labels.length;n++)canvas.drawText(labels[n],(float)tick.center,h-7*d-(labels.length-1-n)*lineHeight,paint);}
+        if(hasFocus()){paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(1.5f*d);paint.setColor(night?Design.LILAC:0xff8952e4);canvas.drawRoundRect(left-2*d,top-2*d,right+2*d,bottom+2*d,5*d,5*d,paint);paint.setStyle(Paint.Style.FILL);}
     }
     @Override public boolean onTouchEvent(MotionEvent event){
         if(event.getAction()==MotionEvent.ACTION_UP){float ratio=Math.max(0,Math.min(1,(event.getX()-plotLeft())/(plotRight()-plotLeft())));long time=start+(long)((end-start)*ratio),distance=Long.MAX_VALUE;

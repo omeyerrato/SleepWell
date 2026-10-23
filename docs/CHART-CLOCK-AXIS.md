@@ -39,6 +39,14 @@ and visual acceptance are pending fresh CI originals. These
 fixtures do not prove an overnight recording, sleep-stage estimation, a sensor
 pipeline or any other missing feature.
 
+CI40037791812 atbb582cf passes the native four-frame journey and retains actual
+selection/focus across data refresh. Strict visual review still rejects the
+platform's gray default keyboard-focus slab and the overly long fixture title.
+The subsequent source disables only the default slab, draws a deliberate thin
+violet/lilac focus ring around the plot, and invalidates on focus changes. Actual
+keyboard/TalkBack selection semantics remain. The fixture's repeated-hour title
+is shorter. This visual correction requires fresh originals before acceptance.
+
 The first native attempt (CI40033681541 at64ae8d2) failed before all four images:
 the new chart requested keyboard focus before its content tree was laid out.
 The test now waits for its focused/resumed Activity, the same attached decor,
