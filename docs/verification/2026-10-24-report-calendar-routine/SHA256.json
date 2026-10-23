@@ -1,0 +1,132 @@
+{
+  "run": "40027277488",
+  "commit": "d6389dc31dabcc01c4e6894947df5bc46bf838e6",
+  "scope": "21 original synthetic disposable-emulator screenshots and raw class logs. These three classes pass; overall run fails late privacy cleanup. No personal phone data or output hardware.",
+  "files": [
+    {
+      "file": "ChallengeRoutineFlowTest.txt",
+      "bytes": 824,
+      "sha256": "e2675e78f384e2f85028c4aaa8c1e217ad655afbb55c2fba921fd02931aa54b4"
+    },
+    {
+      "file": "RecordCalendarFlowTest.txt",
+      "bytes": 827,
+      "sha256": "35f73bc322e66e6aaf8b38be2a0162ba778e82f0593389cb732eb32ced122869"
+    },
+    {
+      "file": "ReportReferenceFlowTest.txt",
+      "bytes": 812,
+      "sha256": "136f5a8ab436b57302bda91fa695ee13cdb043736e8748e7ddffd526908bbe20"
+    },
+    {
+      "file": "calendar-editor-recreated.png",
+      "bytes": 119910,
+      "sha256": "af0b291cbda621493568b8cc396cc40159db32867b29414af1d4d23dba355689"
+    },
+    {
+      "file": "calendar-editor-selected.png",
+      "bytes": 109650,
+      "sha256": "623d3be681c90786e2ceed30cbed7fe22815e6accf8d45e6549e9a85a0e074f6"
+    },
+    {
+      "file": "calendar-editor.png",
+      "bytes": 119903,
+      "sha256": "4f92d70d89c9ee6e1d4b0d68f5afe7556080f46ffd3ef6c2663b1309dbb00836"
+    },
+    {
+      "file": "calendar-history-recreated.png",
+      "bytes": 138393,
+      "sha256": "f21f0ea8cef611c067cfe47d023db6e667dd04a2fdb85586e00bbbd11bad17a6"
+    },
+    {
+      "file": "calendar-history.png",
+      "bytes": 138393,
+      "sha256": "f21f0ea8cef611c067cfe47d023db6e667dd04a2fdb85586e00bbbd11bad17a6"
+    },
+    {
+      "file": "calendar-reopened.png",
+      "bytes": 117890,
+      "sha256": "c45e29e0c7564ca334f4d5d2e31d461b97466886f7732711f89dbf6ba1bc8537"
+    },
+    {
+      "file": "calendar-trend.png",
+      "bytes": 134279,
+      "sha256": "62e8db22b5f92f690b38ae4d4625cbcee6fe032865fb6902b6877b749701432b"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 484,
+      "sha256": "cc3ddaf438e4533b9410071a71ab99adb01a762cefd57cc1b02858078047c263"
+    },
+    {
+      "file": "report-reference-editor.png",
+      "bytes": 133928,
+      "sha256": "f46eb135403f75daccbb2971e03b51e44f4d732ae54ae0d664cd32d157c2fa3c"
+    },
+    {
+      "file": "report-reference-history.png",
+      "bytes": 219090,
+      "sha256": "0018e9c7ab1e226bc329e60df71ee610fd8ee3ba94837f68b9a15263592a4123"
+    },
+    {
+      "file": "report-reference-month.png",
+      "bytes": 159636,
+      "sha256": "44afab493747709c7f2b3afe3dbe6684a59021f34fd20a1d55c9e596b6073177"
+    },
+    {
+      "file": "report-reference-night.png",
+      "bytes": 215604,
+      "sha256": "43c5aaeb5adfa5fd2f0074a7751c1afc742d503896ebdd901913957f2854f406"
+    },
+    {
+      "file": "report-reference-reopened.png",
+      "bytes": 139882,
+      "sha256": "0aafdbdf1c7f29c6928440afefb633552c906de6ecf6945e7daa7ed3c6c58239"
+    },
+    {
+      "file": "report-reference-tags-notes.png",
+      "bytes": 138367,
+      "sha256": "d4288522b5eff7ebe83a243da9a2c793e01805fa938c03d5300a6c66ee46893a"
+    },
+    {
+      "file": "report-reference-week.png",
+      "bytes": 199481,
+      "sha256": "ea33dd0edb718d5807952ec38b4c7a210aa3b32b5eede8579b783831b78a5370"
+    },
+    {
+      "file": "report-reference-year.png",
+      "bytes": 158436,
+      "sha256": "49a3a8fd4905dc80fbb96fc10eef47c4a266709f1ce90021af5b96456885a29b"
+    },
+    {
+      "file": "routine-legacy.png",
+      "bytes": 94241,
+      "sha256": "903421a646241724bcff6802affa5cba185c3ace9de253d3b41d4c5d6619393e"
+    },
+    {
+      "file": "routine-ordered.png",
+      "bytes": 100538,
+      "sha256": "c80543483fa0255eb9ad1180d0dd276654296e06eb15d26adfda23141fb77969"
+    },
+    {
+      "file": "routine-recreated.png",
+      "bytes": 53192,
+      "sha256": "48d148896bee4a219d88185fee7a46f4ff1ec063e8b672799ee0377d961fad42"
+    },
+    {
+      "file": "routine-removed.png",
+      "bytes": 95196,
+      "sha256": "3e429433d1a99bbe523f964d1da3d3df8bace0290df9bb09e14c7279c45b1833"
+    },
+    {
+      "file": "routine-reopened.png",
+      "bytes": 95196,
+      "sha256": "3e429433d1a99bbe523f964d1da3d3df8bace0290df9bb09e14c7279c45b1833"
+    },
+    {
+      "file": "routine-reordered.png",
+      "bytes": 100562,
+      "sha256": "7fca3fadfb83c6fbf8071ab91ab7534029b9486e866d84bba2e7818a73bc883e"
+    }
+  ]
+}

@@ -94,7 +94,7 @@ failures = []
 tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest", "PlanPickerFlowTest", "SoundLibraryUiTest", "SoundRetentionLifecycleTest", "SleepRhythmFlowTest", "NightAudioArchiveTest", "SoundArchiveUiTest", "MotionConfigurationFlowTest", "AudioArchiveConcurrencyTest", "SoundArchiveJobTest", "RecordCalendarFlowTest", "ChallengeRoutineFlowTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
-tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest"]
+tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest"]
 if args.audio_imports:
     tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
 for test in tests:
@@ -186,6 +186,8 @@ required += ["motion-settings-" + name + ".png" for name in ("ready", "changed",
 required += ["calendar-" + name + ".png" for name in ("history", "history-recreated", "trend", "editor", "editor-recreated", "editor-selected", "reopened")]
 required += ["routine-" + name + ".png" for name in ("legacy", "ordered", "reordered", "recreated", "removed", "reopened")]
 required += ["snore-route-" + name + ".png" for name in ("unavailable", "bluetooth-unsupported", "supported", "recreated", "reopened")]
+required += ["walk-" + name + ".png" for name in ("permission", "ready", "settings", "error", "unavailable", "reopened")]
+required += ["chart-clock-" + name + ".png" for name in ("overnight", "night", "short", "fold")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:

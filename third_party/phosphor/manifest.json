@@ -36,6 +36,7 @@
     "assets/regular/faders-horizontal.svg": "9d821bb567dd1f1a467e054160b2fd390a6c7ec46961914127538d4e92540326",
     "assets/regular/file-text.svg": "9a580a038cce9f6dd223597864abe1b5c5c03bf8176d2f7171574598468b16f7",
     "assets/regular/flashlight.svg": "57b4b07fc11f5df19951ee3ccad268f9067f31932586f773c685c739e66273c6",
+    "assets/regular/footprints.svg": "eed51ca4f2ddfc6dbf6a9adb6325424861ac8cf762dafebd5db5cc8153028893",
     "assets/regular/fork-knife.svg": "24388d27ec51856a899b2ba8a1f68b1c31b385ed1f27eb275d5685ebf951b80f",
     "assets/regular/heart.svg": "312dee73d1d969631d5498012f619ccf4edbdf31e1be3e65af4f4f1b3ac1b2dd",
     "assets/regular/info.svg": "438a1f319d53d86e840af73fb7b1d224c9224a437b9fa449a4e2cb45a82a3552",
@@ -84,6 +85,10 @@
     },
     "exercise": {
       "name": "person-simple-run",
+      "weight": "regular"
+    },
+    "walk": {
+      "name": "footprints",
       "weight": "regular"
     },
     "tag": {

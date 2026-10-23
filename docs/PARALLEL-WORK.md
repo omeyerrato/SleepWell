@@ -1,28 +1,33 @@
 # Parallel work and integration — 24 October 2026
 
-Every subagent works in isolated managed Git worktrees. Shared main receives reviewed
-feature commits through cherry-picks. No unmanaged checkout or user changes are reset.
+Each subagent owns isolated managed Git worktrees; reviewed feature commits enter
+main through cherry-picks. User files and private phone backups remain untouched.
 
-| Worker | Isolated worktrees | Current delivered scope / next checks |
-| --- | --- | --- |
-| Automatic sleep and alarms | tracking-configuration, challenge-routines, privacy-cleanup, travel-plan, sleep-rhythm | Real saved motion profile; ordered supported challenge tasks and fenced runtime progression; privacy route fix; visible travel errors and motion helper; await exact-head native originals |
-| Sleep analysis | sleep-analysis, sound-library, headphone-cues | Positive fixture policy, actual recordings/favorites/retention/export, immutable export snapshots and cancellation; next opt-in headphone-route work remains separate |
-| Strict visual reviewer | visual-gate, record-calendars | Per-file screenshot rejection, snoring controls and bounded fake preview, retained custom record date calendars; next exact-head review |
-| Primary | main, native-verification | Integration, shared routes/icons, native test synchronization, full tests/lint/debug/test/release builds, CI and permanent evidence |
+| Worker | Current isolated scope |
+| --- | --- |
+| Automatic sleep and alarms | Automatic arming, ordered challenge routines, privacy cleanup, travel/rhythm/motion; new genuine step-sensor Walk and lifecycle correction |
+| Sleep analysis | Offline snore/speech estimates, WAV library/favorites/retention/ZIP, headphone route gates; fake-output test hardening |
+| Strict visual reviewer | Original screenshot rejection, custom record calendars, measured clock chart axes; independent Walk/headphone source review |
+| Primary | Integration, original pinned icons, shared routes, full builds/tests/lint, CI and durable evidence |
 
-Terminal CI40021145034 at7d02819:19 of23classes pass,107 originals. The four failed
-classes are AlarmMenusFlowTest, PlanPickerFlowTest, PrivacyHistoryFlowTest and
-ReportReferenceFlowTest. Actual diagnostic windows were inspected before fixes;
-newer source is not considered passing evidence.43 reviewed originals and raw logs
-are preserved in verification/2026-10-24-native-configuration with SHA256 metadata.
+Latest terminal CI40027277488 at d6389dc:26/27 classes pass,138 originals.
+Report8, calendar7 and routine6 actual originals pass their narrow journeys and
+were individually reviewed. They are preserved with original-byte hashes in
+verification/2026-10-24-report-calendar-routine. Earlier43 reviewed cue/wake/
+motion/travel/library/retention/export originals remain in native-configuration.
+The overall run fails late privacy pending-journal reentry. New synchronization
+and queued-audio copy corrections still need an exact-head native rerun.
 
-Integrated a26f0de passes324pure tests with zero failures/errors/skips, lint zero
-errors/77warnings, debug/test/release builds. Subsequent final icon/fallback delta
-must also pass before push. Next gate27classes/40methods/137requiredPNG originals
-covers actual SQLite/WAV/ZIP bytes and injected output/provider/sensor/scheduler
-ports, including ordered routine configuration, retained calendars and concurrency.
+Integrated6015a12 passes324 pure tests, zero failures/errors/skips, lint zero
+errors/77 warnings and debug/test/release builds. At the user's explicit request,
+that verified APK was installed in-place on the phone with signing/hash checks
+and original rows/preferences preserved across additive schema4→6 migration.
+No alarm, audio, microphone, tracking, vibration, flashlight, power or lock action
+ran. This installation is not physical UI/output acceptance.
 
-No worker may run alarms, microphone capture, tracking, vibration, flashlight,
-power-menu, lock or screen-off tests on the personal phone. No physical install
-occurred in this integration. Default CI is a disposable no-host-audio emulator.
+The new source candidate contains optional headphone routing, Walk, and measured
+clock axes. Next inert gate:31 classes,45 methods,152 required original PNGs;
+actual SQLite/WAV/ZIP bytes and fake output/provider/sensor/scheduler ports.
+No native playback option is enabled by default. Local Gradle work is serialized
+with one worker to fit memory; independent coding/review remains parallel.
 Full36-screen design and phone-feature acceptance remain FAIL/incomplete.

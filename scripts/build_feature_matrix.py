@@ -241,6 +241,33 @@ for row in rows:
     elif feature == "Retained record date calendars":
         row.update(status="partial", screens="23,24", implementation=["CalendarMonth.java", "RecordCalendar.java", "HistoryActivity.java", "RecordEditorActivity.java"], validation="CalendarMonthTest4 and RecordModelTest17 pure passes plus native compilation. RecordCalendarFlowTest seven originals, pending/recreate/cancel/filter/edit/save with DST offset/seconds/milliseconds verification await execution.", notes="Cream/Inter date selection replaces stock History filter/trend and record-editor calendars. Pending date/month and surrounding time-form draft retained across recreation; Use/Cancel/All dates explicit. No premature persistence; RecordDraft.instant still rejects invalid DST gaps and ambiguous offsets. Native evidence and visual acceptance pending.")
 
+# Current source additions remain candidates until their exact-head native run.
+for row in rows:
+    feature = row["feature"]
+    if feature == "Walking task":
+        row.update(status="partial", implementation=["WalkSteps.java", "WalkSession.java", "WalkPlatform.java", "WalkPermission.java", "AlarmEditorActivity.java", "AlarmActivity.java", "ChallengeRoutineJson.java"],
+            validation="WalkSessionTest ten injected-port cases pass on its branch; initial nine-case Android branch build also passed. WalkConfigurationFlowTest one method/six permission/target/recreate/save/reopen originals is compiled but awaits CI. No personal-phone alarm, steps, sensor or permission dialog executed.",
+            notes="Actual Android step detector/counter adapter; contextual editor permission, per-task5–100 steps, fresh counter baseline, stale occurrence/unit/listener fences and fallback for missing permission/sensor. Walk consumes one routine unit and never uses shake magnitude. Original Phosphor footprints icon bundled. Real hardware recognition and full alarm runtime remain unverified.")
+    elif feature in ("Anti-snoring cues", "Headphone-only cues / intensity / repeat"):
+        row["implementation"] += ["HeadphoneCue.java", "HeadphoneSound.java", "SnoreSoundRouteActivity.java"]
+        row["validation"] = "SnoreCueSettingsNativeTest passes at d6389dc/CI40027277488 with five individually reviewed originals. New HeadphoneCueTest eleven pure cases and branch Android builds pass; HeadphoneCueOutputTest2 and SnoreSoundRouteFlowTest1/five originals await fresh native execution. No actual AudioTrack/vibration/device route output tested."
+        row["notes"] = "Default-off confident-estimate cues retain sound/vibration/both, intensity/repeats/sensitivity, budget/cooldown and low/single preview. Optional headphone sound requires an accepted wired/USB headset or BLE headset and checks actual single route during bounded chunks. Ambiguous A2DP/SCO routes visibly excluded. OS rerouting can still cause a transient speaker leak; vibration is independent. No medical effectiveness claim."
+    elif feature == "Multi-task routine / reorder / per-task difficulty":
+        row["validation"] = "ChallengeRoutineFlowTest passes at d6389dc/CI40027277488: six individually reviewed originals, real JSON/privateDB/reorder/cancel/recreate/save/reopen, malformed backup rejection. New Walk source extends this candidate; native configuration still needs fresh run. Actual ringing/challenge execution remains unverified."
+        row["notes"] = "Additive ordered1–8task routine and per-task rounds/targets, fenced runtime progression preserving legacy scalar alarms. Math/Memory/Sequence/Retype/Shake/NFC plus new step-sensor Walk candidate. QR, silent interactive routine preview and graded mathematical complexity remain missing."
+    elif feature == "Retained record date calendars":
+        row["validation"] = "RecordCalendarFlowTest passes at d6389dc/CI40027277488 with seven individually reviewed originals: pending date/recreate/cancel/filter/edit/save, actual DST choice and unchanged seconds/milliseconds. Supporting time form has remaining visual spacing/plain-seconds input differences."
+    elif feature == "Retention / favorite album / alternate formats":
+        row["validation"] = "Storage/library/retention/export pass at d6389dc/CI40027277488, including AudioArchiveConcurrencyTest3 and SoundArchiveJobTest2 with actual SQLite/WAV/ZIP bytes and fake provider. PrivacyHistoryFlowTest fails its late pending-journal reentry assertion after the five captured states; new route/inspection synchronization and queued-audio copy corrections need fresh execution."
+        row["notes"] = "Additive schema6 favorite-protected retention, identity-checked delete journal, retained background cleanup and explicit complete-raw-clip ZIP export with size/hash manifest. New nights survive audio-only Retry. Global album, alternate formats and real external provider remain open. Personal-phone update from schema4 to6 preserved all original rows and preference values; no erase action executed."
+    elif feature == "Motion sensitivity configuration":
+        row["validation"] = "MotionConfigurationFlowTest passes at d6389dc/CI40027277488 with seven individually reviewed originals; saved profile, conflict/unsupported/error and cleanup verified using fake sensors. Helper/error/footer visibility now passes scoped review. Flat phone glyph still differs from the reference illustration; real hardware/overnight evidence absent."
+    elif feature == "Dream and travel light cues":
+        row["validation"] = "TravelPlanFlowTest passes at d6389dc/CI40027277488 with seven individually reviewed originals: saved zones/DST/date and fake reminder delivery/error/retry/disable. Actual error/Retry and genuine house icon now visible. Real OS delivery/reboot and light output remain unverified."
+    elif feature == "Accelerometer tracking":
+        row["implementation"] += ["ChartTicks.java"]
+        row["validation"] += "; ChartTicksTest ten branch passes for aligned clock/12–24h/DST/fractional seconds/no-overlap labels. ChartClockFlowTest one inert method/four originals awaits native execution."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

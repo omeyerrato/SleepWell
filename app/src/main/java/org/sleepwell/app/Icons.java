@@ -10,6 +10,7 @@ final class Icons {
             case "down" -> R.drawable.ic_phosphor_caret_down_regular;
             case "meal" -> R.drawable.ic_phosphor_fork_knife_regular;
             case "exercise" -> R.drawable.ic_phosphor_person_simple_run_regular;
+            case "walk" -> R.drawable.ic_phosphor_footprints_regular;
             case "tag" -> R.drawable.ic_phosphor_tag_regular;
             case "chevron" -> R.drawable.ic_phosphor_caret_right_regular;
             case "minus" -> R.drawable.ic_phosphor_minus_regular;

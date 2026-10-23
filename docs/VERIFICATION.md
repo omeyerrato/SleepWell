@@ -637,3 +637,20 @@ Integrated a26f0de:324 pure tests, zero failures/errors/skips; lint zero errors/
 Overall FAIL from PrivacyHistoryFlowTest51; all other26 native classes pass and138 original PNGs were produced. ReportReferenceFlowTest passes real sound-event navigation, editing, awake-period save and note/tag reopening with all8 originals. RecordCalendarFlowTest passes its retained pending/nested time/date journey with seven originals, actual DST resolution and unchanged milliseconds. ChallengeRoutineFlowTest passes six configuration originals plus actual JSON/privateDB/reorder/cancel/recreation/save/reopen and six malformed backup rejection cases. No alarm/challenge service ran. AlarmMenusFlowTest and PlanPickerFlowTest also pass their full interactions.
 
 Actual immutable export checks pass AudioArchiveConcurrencyTest3 and SoundArchiveJobTest2; waveform/library/retention/export classes and four real human PCM fixtures pass. Public provider and native headphone/speaker output remain unverified. Strict reviewers are inspecting this exact source before accepting any new visual states. Privacy's later pending-journal reentry assertion remains unresolved and is not hidden by the other passes.
+
+## Requested personal-phone update — 24 October 2026
+
+Installed the locally verified debug APK from6015a12, which has identical app
+source to native-tested d6389dc, using an in-place update. The old and new
+signing certificates matched. The installed base APK matches SHA256
+`1a74c8ff4e1e4ab45ee0008a14c4a746679e3c39a1e3c0fe6be695315a30e557`.
+SQLite quick_check passed after additive schema4→6 migration. Every original
+table/column value and preference value was preserved. Private backups and
+the prior APK remain ignored locally and are not part of public evidence.
+
+No alarm, audio, microphone, tracking, vibration, torch, power or lock action
+ran. An app-open request was issued while the phone was already awake; a later
+foreground screenshot did not show SleepWell, so this is installation/data
+verification only, not screenshot or physical UI acceptance. No further
+foreground interaction was attempted. New headphone, Walk and chart-axis
+changes are later candidates and are not in this installed APK.

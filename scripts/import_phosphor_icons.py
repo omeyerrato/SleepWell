@@ -21,7 +21,7 @@ VENDOR = ROOT / "third_party/phosphor"
 ICONS = {
     "back": ("arrow-left", "regular"), "up": ("caret-up", "regular"),
     "down": ("caret-down", "regular"), "meal": ("fork-knife", "regular"),
-    "exercise": ("person-simple-run", "regular"), "tag": ("tag", "regular"),
+    "exercise": ("person-simple-run", "regular"), "walk": ("footprints", "regular"), "tag": ("tag", "regular"),
     "chevron": ("caret-right", "regular"), "minus": ("minus", "regular"),
     "attention": ("exclamation-mark", "regular"), "plus": ("plus", "regular"),
     "math": ("math-operations", "regular"), "memory": ("cards", "regular"),
