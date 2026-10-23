@@ -600,3 +600,10 @@ actual PCM through production framing, classification, grouping and reopened
 storage to yield both snoring and speech events. Its source and licensed bytes
 are committed; an upcoming run must establish actual results. No physical phone
 alarm, audio, microphone, vibration, torch, power-menu or screen-off tests ran.
+
+
+## Integrated candidate b8116f7 and CI40016966655 — 23 October 2026
+
+Terminal CI40002966787 at e00ff55 remains an overall failure: eleven of thirteen native classes pass, including automatic configuration and alarm menus. Real human sound fixtures produced no saved positives despite high model scores; report reopening failed and its screenshot assertion masked the original diagnostic. Integrated hierarchy-policy and lifecycle fixes require a new run. Full design acceptance remains FAIL/incomplete.
+
+Local integrated b8116f7: debug app, instrumentation APK, release app,299 pure tests (zero failures/errors/skips) and lint (zero errors/77warnings) pass together in1m44s. This includes recordings/favorites/retention, travel/privacy/rhythm, sleep-plan controls, independent vibration delay, automatic fixed footer and themed trend navigation. New native tests have compiled; they have not thereby passed. CI40016966655 at f471c4d now runs20 native classes and requires111 original PNGs with actual SQLite/PCM fixtures and fake output/scheduling. No personal-phone install or effects test occurred.

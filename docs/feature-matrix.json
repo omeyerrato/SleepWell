@@ -146,6 +146,7 @@
       "implementation": [
         "Alarm.java",
         "AlarmWakePolicy.java",
+        "AlarmVibration.java",
         "AlarmPlayback.java",
         "AlarmAudioSink.java",
         "AlarmVolumeLease.java",
@@ -158,9 +159,9 @@
         "AlarmRampChart.java",
         "Scheduler.java"
       ],
-      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Native configuration/screenshots and strict source review pending. No actual alarm/effects test authorized.",
+      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized.",
       "status": "partial",
-      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. No speaker boost, smart-light control or independent vibration delay. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
+      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. No speaker boost or smart-light control. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
       "id": "F008",
       "tests": [
         {
@@ -170,6 +171,10 @@
         {
           "name": "AlarmPlaybackTest",
           "path": "app/src/test/java/org/sleepwell/app/AlarmPlaybackTest.java"
+        },
+        {
+          "name": "AlarmVibrationTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmVibrationTest.java"
         },
         {
           "name": "AlarmVolumeLeaseTest",
@@ -188,6 +193,7 @@
       "implementation": [
         "Alarm.java",
         "AlarmWakePolicy.java",
+        "AlarmVibration.java",
         "AlarmPlayback.java",
         "AlarmAudioSink.java",
         "AlarmVolumeLease.java",
@@ -200,9 +206,9 @@
         "AlarmRampChart.java",
         "Scheduler.java"
       ],
-      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Native configuration/screenshots and strict source review pending. No actual alarm/effects test authorized.",
+      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized.",
       "status": "partial",
-      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. No speaker boost, smart-light control or independent vibration delay. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
+      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. No speaker boost or smart-light control. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
       "id": "F009",
       "tests": [
         {
@@ -212,6 +218,10 @@
         {
           "name": "AlarmPlaybackTest",
           "path": "app/src/test/java/org/sleepwell/app/AlarmPlaybackTest.java"
+        },
+        {
+          "name": "AlarmVibrationTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmVibrationTest.java"
         },
         {
           "name": "AlarmVolumeLeaseTest",
@@ -320,6 +330,7 @@
       "implementation": [
         "Alarm.java",
         "AlarmWakePolicy.java",
+        "AlarmVibration.java",
         "AlarmPlayback.java",
         "AlarmAudioSink.java",
         "AlarmVolumeLease.java",
@@ -332,9 +343,9 @@
         "AlarmRampChart.java",
         "Scheduler.java"
       ],
-      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Native configuration/screenshots and strict source review pending. No actual alarm/effects test authorized.",
+      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized.",
       "status": "partial",
-      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. No speaker boost, smart-light control or independent vibration delay. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
+      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. No speaker boost or smart-light control. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
       "id": "F016",
       "tests": [
         {
@@ -344,6 +355,10 @@
         {
           "name": "AlarmPlaybackTest",
           "path": "app/src/test/java/org/sleepwell/app/AlarmPlaybackTest.java"
+        },
+        {
+          "name": "AlarmVibrationTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmVibrationTest.java"
         },
         {
           "name": "AlarmVolumeLeaseTest",
@@ -1148,6 +1163,7 @@
       "implementation": [
         "SoundClips.java",
         "SoundLibrarySettingsActivity.java",
+        "SoundRetentionJob.java",
         "SoundEventsActivity.java",
         "NoiseRecorder.java",
         "HistoryErase.java",
@@ -1155,7 +1171,7 @@
         "HistoryEraseUi.java",
         "Store.java"
       ],
-      "validation": "SoundLibraryStorageTest three actual SQLite/file fixtures and SoundLibraryUiTest two native fake-output flows await execution. PrivacyHistoryFlowTest covers retained background erase, real failed unlink and separate retry preserving newer nights; its source is not a passing-run claim.",
+      "validation": "SoundLibraryStorageTest three actual SQLite/file fixtures and SoundLibraryUiTest two native fake-output flows await execution. SoundRetentionLifecycleTest covers one retained immutable operation, recreation/error/retry and disabled controls; fresh native execution pending. PrivacyHistoryFlowTest covers retained background erase, real failed unlink and separate retry preserving newer nights; its source is not a passing-run claim.",
       "status": "partial",
       "notes": "Additive schema6 preserves existing rows/WAVs and adds favorites plus identity-checked pending deletion journal. Retention can keep1/3/7/14/30days or all, with favorite protection. Background per-run cleanup and explicit policy apply replace hardcoded main-thread pruning. Global album, portable audio export and alternate formats remain incomplete.",
       "id": "F058",
@@ -1171,6 +1187,10 @@
         {
           "name": "SoundLibraryUiTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/SoundLibraryUiTest.java"
+        },
+        {
+          "name": "SoundRetentionLifecycleTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SoundRetentionLifecycleTest.java"
         }
       ]
     },
@@ -1875,6 +1895,7 @@
       "implementation": [
         "Alarm.java",
         "AlarmWakePolicy.java",
+        "AlarmVibration.java",
         "AlarmPlayback.java",
         "AlarmAudioSink.java",
         "AlarmVolumeLease.java",
@@ -1887,9 +1908,9 @@
         "AlarmRampChart.java",
         "Scheduler.java"
       ],
-      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Native configuration/screenshots and strict source review pending. No actual alarm/effects test authorized.",
+      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized.",
       "status": "partial",
-      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. No speaker boost, smart-light control or independent vibration delay. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
+      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. No speaker boost or smart-light control. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
       "id": "F100",
       "tests": [
         {
@@ -1899,6 +1920,10 @@
         {
           "name": "AlarmPlaybackTest",
           "path": "app/src/test/java/org/sleepwell/app/AlarmPlaybackTest.java"
+        },
+        {
+          "name": "AlarmVibrationTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmVibrationTest.java"
         },
         {
           "name": "AlarmVolumeLeaseTest",
@@ -2590,6 +2615,7 @@
       "implementation": [
         "Alarm.java",
         "AlarmWakePolicy.java",
+        "AlarmVibration.java",
         "AlarmPlayback.java",
         "AlarmAudioSink.java",
         "AlarmVolumeLease.java",
@@ -2602,9 +2628,9 @@
         "AlarmRampChart.java",
         "Scheduler.java"
       ],
-      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Native configuration/screenshots and strict source review pending. No actual alarm/effects test authorized.",
+      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized.",
       "status": "partial",
-      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. No speaker boost, smart-light control or independent vibration delay. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
+      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. No speaker boost or smart-light control. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
       "id": "F140",
       "tests": [
         {
@@ -2616,6 +2642,10 @@
           "path": "app/src/test/java/org/sleepwell/app/AlarmPlaybackTest.java"
         },
         {
+          "name": "AlarmVibrationTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmVibrationTest.java"
+        },
+        {
           "name": "AlarmVolumeLeaseTest",
           "path": "app/src/test/java/org/sleepwell/app/AlarmVolumeLeaseTest.java"
         },
@@ -2624,6 +2654,42 @@
           "path": "app/src/test/java/org/sleepwell/app/AlarmWakePolicyTest.java"
         }
       ]
+    },
+    {
+      "feature": "Recorded rhythm / social jetlag",
+      "screens": "25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/chrono_jetlag.html",
+      "implementation": [
+        "SleepRhythmActivity.java",
+        "RhythmStats.java",
+        "RhythmChart.java",
+        "RhythmSettings.java"
+      ],
+      "validation": "RhythmStatsTest fourteen pure passes in integrated build. SleepRhythmFlowTest source exercises seven actual fixture nights, workday edits/recreation/save/reopen/empty and five original screenshots; native execution and visual acceptance pending.",
+      "status": "partial",
+      "notes": "Actual recorded main-night bedtime range, circular workday/free-day midpoint difference and editable wake-day work schedule. Naps excluded, missing dates stay absent, longest main night per sleep day. Thirty-night history progress is descriptive; no clinical chronotype or prevention claim.",
+      "id": "F141",
+      "tests": [
+        {
+          "name": "RhythmStatsTest",
+          "path": "app/src/test/java/org/sleepwell/app/RhythmStatsTest.java"
+        },
+        {
+          "name": "SleepRhythmFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SleepRhythmFlowTest.java"
+        }
+      ]
+    },
+    {
+      "feature": "Chronotype estimation",
+      "screens": "25",
+      "source": "https://sleep.urbandroid.org/docs/sleep/chrono_jetlag.html",
+      "implementation": [],
+      "validation": "Not yet verified",
+      "status": "missing",
+      "notes": "Recording progress is not a chronotype estimator. Alarm-free, recovery and sleep-onset evidence remain missing.",
+      "id": "F142",
+      "tests": []
     }
   ]
 }
