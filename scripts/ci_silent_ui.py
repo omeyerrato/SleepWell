@@ -6,6 +6,7 @@ Only isolated emulator fixtures/screenshots are published, never phone backups.
 """
 from pathlib import Path
 import argparse
+import atexit
 import json
 import os
 import re
@@ -21,6 +22,25 @@ root = Path(__file__).resolve().parents[1]
 output = root / "captures/ci"
 output.mkdir(parents=True, exist_ok=True)
 adb = [str(Path(os.environ["ANDROID_HOME"]) / "platform-tools/adb"), "-s", args.serial]
+emulator = str(Path(os.environ["ANDROID_HOME"]) / "emulator/emulator")
+with (output / "acceleration.txt").open("w") as report:
+    subprocess.run([emulator, "-accel-check"], stdout=report, stderr=subprocess.STDOUT, check=False, timeout=20)
+log = (output / "emulator.log").open("w")
+process = subprocess.Popen([emulator, "-avd", "SleepWellSilent", "-port", "5554", "-no-window", "-no-audio", "-no-boot-anim", "-no-snapshot", "-gpu", "swiftshader", "-feature", "-Vulkan", "-accel", "on", "-memory", "2048", "-cores", "2", "-timezone", "Asia/Riyadh"], stdout=log, stderr=subprocess.STDOUT)
+
+
+def close_emulator():
+    if process.poll() is None:
+        process.terminate()
+        try:
+            process.wait(timeout=15)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.wait(timeout=5)
+    log.close()
+
+
+atexit.register(close_emulator)
 
 
 def command(*parts, check=True, timeout=120):
@@ -29,6 +49,8 @@ def command(*parts, check=True, timeout=120):
 
 deadline = time.monotonic() + 300
 while time.monotonic() < deadline:
+    if process.poll() is not None:
+        raise SystemExit("Android emulator exited before boot: " + str(process.returncode) + "; see emulator.log")
     status = command("shell", "getprop", "sys.boot_completed", check=False, timeout=15)
     if status.returncode == 0 and status.stdout.strip() == "1":
         break
