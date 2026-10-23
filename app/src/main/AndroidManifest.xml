@@ -25,6 +25,7 @@
         <activity android:name=".AlarmEditorActivity" android:exported="false" />
         <activity android:name=".AlarmProtectionActivity" android:exported="false" />
         <activity android:name=".AppearanceActivity" android:exported="false" />
+        <activity android:name=".AutomaticTrackingActivity" android:exported="false" />
         <activity android:name=".TrackingActivity" android:exported="false" />
         <activity android:name=".PlanActivity" android:exported="false" />
         <activity android:name=".GuardActivity" android:exported="false" />
@@ -38,7 +39,7 @@
         <service android:name=".AlarmService" android:exported="false" android:foregroundServiceType="mediaPlayback" />
         <service android:name=".SleepSoundService" android:exported="false" android:foregroundServiceType="mediaPlayback" />
         <service android:name=".TrackingService" android:exported="false" android:foregroundServiceType="specialUse|microphone">
-            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-started overnight accelerometer sleep movement tracking with an ongoing notification and optional microphone noise recording" />
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-armed bounded phone-idle detection and overnight accelerometer sleep movement tracking with an ongoing notification and optional microphone noise recording" />
         </service>
         <service android:name=".BedtimeGuard" android:exported="true" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter><action android:name="android.accessibilityservice.AccessibilityService" /></intent-filter>

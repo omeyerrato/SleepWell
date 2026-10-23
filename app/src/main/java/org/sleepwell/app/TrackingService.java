@@ -11,22 +11,22 @@ import java.util.*;
 import java.util.concurrent.*;
 
 public class TrackingService extends Service implements SensorEventListener {
-    static final String PAUSE="PAUSE",RESUME="RESUME",STOP="STOP";
+    static final String PAUSE="PAUSE",RESUME="RESUME",STOP="STOP",ARM="ARM";
     static volatile boolean running=false;private static volatile TrackingService current;
     interface StoreFactory{Store open(Context c);}
     static StoreFactory storeFactory=Store::new;
-    private enum Phase{STARTING,ACTIVE,PAUSING,PAUSED,STOPPING,CLOSED}
+    private enum Phase{STARTING,ARMED,ACTIVE,PAUSING,PAUSED,STOPPING,CLOSED}
     private Phase phase=Phase.STARTING;private boolean stopRequested,resumeRequested,interrupted,destroyed;
-    private SensorManager sensors;private PowerManager.WakeLock wake;private Store store;private NoiseRecorder audio;private boolean soundAttempted;
+    private SensorManager sensors;private PowerManager.WakeLock wake;private Store store;private NoiseRecorder audio;private boolean soundAttempted,automaticRun;private AutomaticSleep automatic;private AutomaticSleep.Mode automaticMode;
     private final Handler handler=new Handler(Looper.getMainLooper());private final ExecutorService closer=Executors.newSingleThreadExecutor();
     private boolean clockChanged;private TrackingClock clock;private long session,start,windowStart;private double sum;private Double light;private int count,activeMinutes;private boolean motionRegistered,lightRegistered,gravityReady;
     private final ClipBudget clipBudget=new ClipBudget();
     private final float[] gravity=new float[3];
-    private final Runnable minuteTick=this::minute,limitTick=()->stop(false),liveTick=this::liveSample;
+    private final Runnable minuteTick=this::minute,limitTick=()->stop(false),liveTick=this::liveSample,automaticTick=this::automaticTick;
     private final List<org.json.JSONObject> liveReadings=new ArrayList<>();private int previewCount;private double previewSum;private long previewAt;
     static final class Snapshot {
-        final long id,start,active,windowStart,now;final String phase;final boolean motion,light,mic;final int samples;final Double movement,lightLevel;final List<org.json.JSONObject> readings;
-        Snapshot(TrackingService s){id=s.session;start=s.start;now=s.timestamp();active=s.clock==null?0:s.clock.active(SystemClock.elapsedRealtime());windowStart=s.windowStart;phase=s.phase.name();motion=s.motionRegistered;light=s.lightRegistered;mic=s.audio!=null&&s.audio.capturing;samples=s.count;movement=s.count==0?null:Math.sqrt(s.sum/s.count);lightLevel=s.light;readings=new ArrayList<>(s.liveReadings);}
+        final long id,start,active,windowStart,now;final String phase,automaticState;final long quietMillis;final boolean motion,light,mic,automatic;final int samples;final Double movement,lightLevel;final List<org.json.JSONObject> readings;
+        Snapshot(TrackingService s){id=s.session;start=s.start;now=s.timestamp();active=s.clock==null?0:s.clock.active(SystemClock.elapsedRealtime());windowStart=s.windowStart;phase=s.phase.name();automaticState=s.automatic==null?"":s.automatic.state().name();quietMillis=s.automatic==null?0:s.automatic.quietMillis(SystemClock.elapsedRealtime());automatic=s.automaticRun;motion=s.motionRegistered;light=s.lightRegistered;mic=s.audio!=null&&s.audio.capturing;samples=s.count;movement=s.count==0?null:Math.sqrt(s.sum/s.count);lightLevel=s.light;readings=new ArrayList<>(s.liveReadings);}
         boolean paused(){return phase.equals("PAUSED");}
     }
     static Snapshot snapshot(){TrackingService s=current;return s==null?null:new Snapshot(s);}
@@ -40,29 +40,58 @@ public class TrackingService extends Service implements SensorEventListener {
         if(running){if(current!=this)stopSelf();return START_NOT_STICKY;}
         current=this;running=true;clock=new TrackingClock(SystemClock.elapsedRealtime());
         try{
-            foreground(false);store=storeFactory.open(this);session=store.begin();start=store.rows("SELECT start FROM sessions WHERE id=?",""+session).get(0).optLong("start");windowStart=start;clock=new TrackingClock(SystemClock.elapsedRealtime());
-            Prefs.of(this).edit().putLong("session",session).putBoolean("tracking",true).putBoolean("trackingPaused",false).putInt("epochCount",0).putString("audioError","").putString("trackingError","").apply();
+            automaticRun=ARM.equals(action);foreground(false);
             sensors=getSystemService(SensorManager.class);wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:tracking");
-            phase=Phase.ACTIVE;collect();if(audio!=null&&Prefs.flag(this,"saveClips"))pruneClips();handler.postDelayed(minuteTick,60000);handler.postDelayed(limitTick,12*60*60*1000L);
+            if(automaticRun){arm(intent);return START_NOT_STICKY;}
+            beginRecording();
         }catch(Exception e){Prefs.put(this,"trackingError","Tracking could not start: "+e.getMessage());stop(true);}
         return START_NOT_STICKY;
+    }
+    private void beginRecording(){
+            store=storeFactory.open(this);session=store.begin();start=store.rows("SELECT start FROM sessions WHERE id=?",""+session).get(0).optLong("start");windowStart=start;clock=new TrackingClock(SystemClock.elapsedRealtime());
+            Prefs.of(this).edit().putLong("session",session).putBoolean("tracking",true).putBoolean("trackingPaused",false).putInt("epochCount",0).putString("audioError","").putString("trackingError","").apply();
+            phase=Phase.ACTIVE;collect();if(audio!=null&&Prefs.flag(this,"saveClips"))pruneClips();handler.postDelayed(minuteTick,60000);handler.postDelayed(limitTick,12*60*60*1000L);
+    }
+    private void arm(Intent intent){
+        automaticMode=AutomaticSleep.Mode.valueOf(intent.getStringExtra("mode"));
+        long elapsed=SystemClock.elapsedRealtime(),delay=Math.max(0,intent.getLongExtra("scheduled",System.currentTimeMillis())-System.currentTimeMillis());
+        automatic=new AutomaticSleep(automaticMode,elapsed,elapsed+delay);start=System.currentTimeMillis();phase=Phase.ARMED;
+        Sensor sensor=sensors.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        motionRegistered=sensor!=null&&sensors.registerListener(this,sensor,200000);
+        if(!motionRegistered)throw new IllegalStateException("Movement sensor is unavailable.");
+        wake.acquire(AutomaticSleep.MAX_WAIT);
+        Prefs.of(this).edit().putBoolean("automaticArmed",true).putString("automaticResult","").putString("trackingError","").apply();
+        foreground(false);handler.post(automaticTick);
+    }
+    private void automaticTick(){
+        if(phase!=Phase.ARMED)return;
+        AutomaticSleep.State state=automatic.tick(SystemClock.elapsedRealtime(),getSystemService(PowerManager.class).isInteractive());
+        if(state==AutomaticSleep.State.EXPIRED){Prefs.put(this,"automaticResult","The four-hour waiting period ended. Arm again when you are ready for bed.");stop(false);return;}
+        if(state==AutomaticSleep.State.START){
+            handler.removeCallbacks(automaticTick);stopSensors();Prefs.put(this,"automaticArmed",false);
+            try{beginRecording();Prefs.put(this,"automaticResult",automaticMode==AutomaticSleep.Mode.STILLNESS?"Recording started after a still, screen-off period. This is a phone-idle estimate.":"Recording started at your selected time.");}
+            catch(Exception failure){Prefs.put(this,"trackingError","Automatic tracking could not start: "+failure.getMessage());stop(true);}return;
+        }
+        handler.postDelayed(automaticTick,1000);
     }
     private void foreground(boolean paused){
         Intent open=new Intent(this,TrackingActivity.class);PendingIntent content=PendingIntent.getActivity(this,41,open,PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);
         PendingIntent stop=PendingIntent.getService(this,5,new Intent(this,TrackingService.class).setAction(STOP),PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);
         PendingIntent toggle=paused?PendingIntent.getActivity(this,42,new Intent(this,TrackingActivity.class).setAction(RESUME),PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT):PendingIntent.getService(this,43,new Intent(this,TrackingService.class).setAction(PAUSE),PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification notification=new androidx.core.app.NotificationCompat.Builder(this,Notifications.TRACK).setSmallIcon(R.drawable.ic_moon).setContentTitle(paused?"SleepWell · tracking paused":"SleepWell · recording your night").setContentText(paused?"Sensors and microphone are stopped. Resume when ready.":"Phone tracking is active. Open to see sensor status.").setContentIntent(content).setOngoing(true).setSilent(true).setOnlyAlertOnce(true).addAction(new androidx.core.app.NotificationCompat.Action(0,paused?"Resume":"Pause",toggle)).addAction(new androidx.core.app.NotificationCompat.Action(0,"End night",stop)).build();
-        boolean mic=!paused&&Prefs.flag(this,"noiseEnabled")&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED;
+        androidx.core.app.NotificationCompat.Builder builder=new androidx.core.app.NotificationCompat.Builder(this,Notifications.TRACK).setSmallIcon(R.drawable.ic_moon).setContentTitle(phase==Phase.ARMED?"SleepWell · waiting to track":paused?"SleepWell · tracking paused":"SleepWell · recording your night").setContentText(phase==Phase.ARMED?"Automatic start is armed. Open to check progress or cancel.":paused?"Sensors and microphone are stopped. Resume when ready.":"Phone tracking is active. Open to see sensor status.").setContentIntent(content).setOngoing(true).setSilent(true).setOnlyAlertOnce(true).addAction(new androidx.core.app.NotificationCompat.Action(0,phase==Phase.ARMED?"Cancel automatic start":"End night",stop));
+        if(phase!=Phase.ARMED)builder.addAction(new androidx.core.app.NotificationCompat.Action(0,paused?"Resume":"Pause",toggle));
+        Notification notification=builder.build();
+        boolean mic=!automaticRun&&!paused&&Prefs.flag(this,"noiseEnabled")&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED;
         if(Build.VERSION.SDK_INT>=34)startForeground(102,notification,ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE|(mic?ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE:0));else startForeground(102,notification);
     }
     private void collect(){
-        resetWindow();handler.removeCallbacks(liveTick);handler.postDelayed(liveTick,1000);boolean mic=Prefs.flag(this,"noiseEnabled")&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED;foreground(false);
+        resetWindow();handler.removeCallbacks(liveTick);handler.postDelayed(liveTick,1000);boolean mic=!automaticRun&&Prefs.flag(this,"noiseEnabled")&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED;foreground(false);
         Sensor motion=sensors.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);motionRegistered=motion!=null&&sensors.registerListener(this,motion,200000);
         Sensor brightness=sensors.getDefaultSensor(Sensor.TYPE_LIGHT);lightRegistered=Prefs.of(this).getBoolean("recordLight",true)&&brightness!=null&&sensors.registerListener(this,brightness,SensorManager.SENSOR_DELAY_NORMAL);
         if(!motionRegistered)Prefs.put(this,"lastError","Movement sensor unavailable; motion and smart wake cannot be used.");
         long remaining=Math.max(1,12*60*60*1000L-clock.lifetime(SystemClock.elapsedRealtime()));wake.acquire(remaining);
-        if(mic)audio=new NoiseRecorder(this,store,session,clipBudget,this::timestamp);else if(Prefs.flag(this,"noiseEnabled"))Prefs.put(this,"audioError","Microphone permission is unavailable; sound is not being recorded.");
-        if(!soundAttempted){soundAttempted=true;SleepSoundService.trackingStart(this,session,clock.lifetime(SystemClock.elapsedRealtime()));}else SleepSoundService.trackingResume(session);
+        if(mic)audio=new NoiseRecorder(this,store,session,clipBudget,this::timestamp);else if(!automaticRun&&Prefs.flag(this,"noiseEnabled"))Prefs.put(this,"audioError","Microphone permission is unavailable; sound is not being recorded.");
+        if(!automaticRun){if(!soundAttempted){soundAttempted=true;SleepSoundService.trackingStart(this,session,clock.lifetime(SystemClock.elapsedRealtime()));}else SleepSoundService.trackingResume(session);}
     }
     private long timestamp(){return clock==null?System.currentTimeMillis():clock.timestamp(start,SystemClock.elapsedRealtime());}
     private void resetWindow(){sum=0;count=0;light=null;gravityReady=false;Arrays.fill(gravity,0);activeMinutes=0;resetPreview(timestamp());}
@@ -71,11 +100,11 @@ public class TrackingService extends Service implements SensorEventListener {
     private void checkClock(long now){if(store!=null&&session>0&&!clockChanged&&Math.abs(System.currentTimeMillis()-now)>2000){store.clockChanged(session);clockChanged=true;}}
     private void stopSensors(){if(sensors!=null)sensors.unregisterListener(this);motionRegistered=lightRegistered=false;if(wake!=null&&wake.isHeld())wake.release();}
     @Override public void onSensorChanged(SensorEvent event){
-        if(phase!=Phase.ACTIVE)return;
+        if(phase!=Phase.ACTIVE&&phase!=Phase.ARMED)return;
         if(event.sensor.getType()==Sensor.TYPE_LIGHT){if(lightRegistered)light=(double)event.values[0];return;}
         if(!motionRegistered)return;
         if(!gravityReady){System.arraycopy(event.values,0,gravity,0,3);gravityReady=true;return;}
-        double energy=0;for(int k=0;k<3;k++){gravity[k]=.85f*gravity[k]+.15f*event.values[k];double difference=event.values[k]-gravity[k];energy+=difference*difference;}sum+=energy;count++;
+        double energy=0;for(int k=0;k<3;k++){gravity[k]=.85f*gravity[k]+.15f*event.values[k];double difference=event.values[k]-gravity[k];energy+=difference*difference;}if(phase==Phase.ARMED){automatic.sample(SystemClock.elapsedRealtime(),Math.sqrt(energy),getSystemService(PowerManager.class).isInteractive());return;}sum+=energy;count++;
     }
     @Override public void onAccuracyChanged(Sensor sensor,int accuracy){}
     private void flush(long now,NoiseRecorder closingAudio,boolean recordEmpty){
@@ -96,7 +125,7 @@ public class TrackingService extends Service implements SensorEventListener {
         if(recorder==null){complete.run();return;}recorder.requestStop();closer.execute(()->{recorder.close();handler.post(complete);});
     }
     private void pause(){
-        if(phase!=Phase.ACTIVE)return;phase=Phase.PAUSING;long pausedAt=timestamp();clock.pause(SystemClock.elapsedRealtime());handler.removeCallbacks(minuteTick);handler.removeCallbacks(liveTick);stopSensors();SleepSoundService.trackingPause(session);NoiseRecorder recorder=audio;audio=null;
+        if(phase!=Phase.ACTIVE)return;phase=Phase.PAUSING;long pausedAt=timestamp();clock.pause(SystemClock.elapsedRealtime());handler.removeCallbacks(minuteTick);handler.removeCallbacks(liveTick);stopSensors();if(!automaticRun)SleepSoundService.trackingPause(session);NoiseRecorder recorder=audio;audio=null;
         closeAudio(recorder,()->{try{flush(pausedAt,recorder,false);store.pause(session,pausedAt);resetWindow();phase=Phase.PAUSED;Prefs.put(this,"trackingPaused",true);if(!destroyed)foreground(true);if(stopRequested)stop(interrupted);else if(resumeRequested)resume();}catch(Exception e){phase=Phase.PAUSED;Prefs.put(this,"trackingError","Could not save the pause: "+e.getMessage());stop(true);}});
     }
     private void resume(){
@@ -106,7 +135,7 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void stop(boolean wasInterrupted){
         interrupted|=wasInterrupted;if(phase==Phase.CLOSED||phase==Phase.STOPPING)return;if(phase==Phase.PAUSING){stopRequested=true;return;}
-        boolean wasPaused=phase==Phase.PAUSED;phase=Phase.STOPPING;long endedAt=timestamp();if(clock!=null)clock.pause(SystemClock.elapsedRealtime());handler.removeCallbacks(minuteTick);handler.removeCallbacks(liveTick);handler.removeCallbacks(limitTick);stopSensors();SleepSoundService.trackingStop(session);NoiseRecorder recorder=audio;audio=null;
+        boolean wasArmed=phase==Phase.ARMED;if(wasArmed&&automatic!=null){automatic.cancel();if(Prefs.text(this,"automaticResult","").isEmpty())Prefs.put(this,"automaticResult",wasInterrupted?"Automatic waiting was interrupted. Arm again before bed.":"Automatic start cancelled. No recording was created.");}handler.removeCallbacks(automaticTick);Prefs.put(this,"automaticArmed",false);boolean wasPaused=phase==Phase.PAUSED;phase=Phase.STOPPING;long endedAt=timestamp();if(clock!=null)clock.pause(SystemClock.elapsedRealtime());handler.removeCallbacks(minuteTick);handler.removeCallbacks(liveTick);handler.removeCallbacks(limitTick);stopSensors();if(!automaticRun)SleepSoundService.trackingStop(session);NoiseRecorder recorder=audio;audio=null;
         closeAudio(recorder,()->{try{if(store!=null&&session>0){checkClock(endedAt);if(!wasPaused)flush(endedAt,recorder,false);store.end(session,interrupted,clock.active(SystemClock.elapsedRealtime()),Math.max(start,endedAt));}}catch(Exception e){Prefs.put(this,"trackingError","Could not finalize the recording. Saved readings remain; review the interrupted record. "+e.getMessage());}finally{
             try{if(store!=null)store.close();}catch(Exception e){Prefs.put(this,"trackingError","Could not close recording storage: "+e.getMessage());}finally{store=null;phase=Phase.CLOSED;if(current==this){running=false;current=null;Prefs.of(this).edit().putBoolean("tracking",false).putBoolean("trackingPaused",false).putLong("session",0).apply();}closer.shutdown();if(!destroyed){stopForeground(STOP_FOREGROUND_REMOVE);stopSelf();}}
         }});
