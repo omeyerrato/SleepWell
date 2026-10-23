@@ -134,7 +134,7 @@ else:
     except (KeyError, ValueError, TypeError) as error:
         failures.append("Invalid human sound fixture evaluation: " + str(error))
 required = ["sounds-settings-" + name + ".png" for name in ("rain", "ocean", "recreated", "reopened")]
-required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "bedtime-guard", "travel", "privacy", "wind-down")]
+required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "audio-retention", "bedtime-guard", "travel", "privacy", "wind-down")]
 required += ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 required += ["protection-" + name + ".png" for name in ("alarms", "editor", "off", "disclosure", "on", "recreated", "global", "power-only")]
 required += ["wake-settings-" + name + ".png" for name in ("sound", "loud-curve", "delay-options", "vibration-options", "lights", "recreated", "reopened", "normal-curve", "edited-curve", "immediate")]

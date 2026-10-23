@@ -53,6 +53,10 @@ public class RootVisualTest {
             if(detail[2].equals("sound-analysis"))assertTrue(device.wait(Until.hasObject(By.text("Microphone analysis")),5000));
             if(detail[2].equals("bedtime-guard"))assertTrue(device.wait(Until.hasObject(By.desc("Choose other apps").enabled(true)),5000));
             capture(device,new File(folder,"root-"+detail[2]+".png"));
+            if(detail[2].equals("sound-analysis")){
+                UiObject2 retention=device.findObject(By.desc("Audio retention"));if(retention==null){new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().description("Audio retention"));retention=device.wait(Until.findObject(By.desc("Audio retention")),3000);}assertNotNull(retention);retention.click();assertTrue(device.wait(Until.hasObject(By.text("Keep recordings")),5000));assertTrue(device.hasObject(By.text("Save & apply retention")));capture(device,new File(folder,"root-audio-retention.png"));device.findObject(By.desc("Back")).click();assertTrue(device.wait(Until.hasObject(By.text("Microphone analysis")),5000));
+            }
+
             UiObject2 back=device.findObject(By.pkg("org.sleepwell.app").desc("Back"));assertNotNull(back);if(detail[2].equals("readiness"))device.pressBack();else back.click();device.waitForIdle();assertTrue(device.wait(Until.hasObject(By.desc("Settings").selected(true)),5000));
         }
         for(UiObject2 candidate:device.findObjects(By.desc("Tonight")))if(candidate.getVisibleBounds().centerY()>device.getDisplayHeight()*.7f){candidate.click();break;}
