@@ -26,7 +26,7 @@ public final class MissedNightActivity extends Activity {
         if(android.os.Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::finish);
         if(status.isEmpty()&&saveToken==null)check();else render();
     }
-    @Override protected void onResume(){super.onResume();resumed=true;if(saveToken!=null)observeSave();else if(!status.equals("saved"))try{if(!usage.allowed()&&!status.equals("denied")){status="denied";draft=null;choices=List.of();render();}else if(usage.allowed()&&status.equals("denied"))check();}catch(RuntimeException failure){failed(failure);}restoreDialog();}
+    @Override protected void onResume(){super.onResume();resumed=true;if(saveToken!=null)observeSave();else if(!status.equals("saved"))try{if(!usage.allowed()&&!status.equals("denied")){generation++;loading=false;status="denied";draft=null;evidence=null;choices=List.of();error="";render();}else if(usage.allowed()&&status.equals("denied"))check();}catch(RuntimeException failure){failed(failure);}restoreDialog();}
     @Override protected void onPause(){resumed=false;handler.removeCallbacks(poll);super.onPause();}
     private void check(){
         if(loading||saveToken!=null)return;try{MissedNight.Window window=new MissedNight.Window(date,zone,clock.getAsLong());begin=window.start;end=window.end;}catch(RuntimeException failure){failed(failure);return;}

@@ -8,7 +8,7 @@ import java.util.*;
 /** Checked manual creation; overlap and idempotence checks share the insertion transaction. */
 final class MissedNightRecords {
     static List<MissedNight.Interval> occupied(Store store){
-        List<MissedNight.Interval> out=new ArrayList<>();for(RecordEntry record:Records.all(store))out.add(new MissedNight.Interval(record.edit.start,record.edit.end));
+        List<MissedNight.Interval> out=new ArrayList<>();for(RecordEntry record:Records.all(store))if(record.edit.start>0&&record.edit.end>record.edit.start)out.add(new MissedNight.Interval(record.edit.start,record.edit.end));
         for(JSONObject row:store.rows("SELECT start FROM sessions WHERE end IS NULL")){long start=row.optLong("start");if(start>0)out.add(new MissedNight.Interval(start,Long.MAX_VALUE));}return out;
     }
     static long prior(Store store,String token){
