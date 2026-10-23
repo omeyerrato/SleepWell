@@ -1,0 +1,34 @@
+{
+  "name": "Google YAMNet mobile classifier",
+  "version": "classification-tflite/1",
+  "source": "https://storage.googleapis.com/download.tensorflow.org/models/tflite/task_library/audio_classification/android/lite-model_yamnet_classification_tflite_1.tflite",
+  "model_card": "https://www.kaggle.com/models/google/yamnet/tfLite/classification-tflite/1",
+  "license": "Apache-2.0",
+  "copyright": "Copyright 2019 The TensorFlow Authors",
+  "input": {
+    "dtype": "float32",
+    "shape": [
+      15600
+    ],
+    "rate_hz": 16000,
+    "channels": 1,
+    "normalization": "PCM16 / 32768.0"
+  },
+  "output": {
+    "dtype": "float32",
+    "shape": [
+      1,
+      521
+    ]
+  },
+  "labels": {
+    "0": "Speech",
+    "38": "Snoring",
+    "494": "Silence"
+  },
+  "sha256": {
+    "app/src/main/assets/yamnet.tflite": "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de",
+    "third_party/yamnet/labels.txt": "e1841217095e1920f2b71a1d2c233289114d6774443369f06d61cce77b52e09f",
+    "third_party/yamnet/LICENSE": "5b17814bf0de8cf65069bc6d7cc38cff19fcaa864d243423ad3ef3db01b52385"
+  }
+}

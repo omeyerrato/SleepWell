@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Store extends SQLiteOpenHelper {
     public Store(Context c) { this(c,"sleepwell.db"); }
-    Store(Context c,String name) { super(c,name,null,4); }
+    Store(Context c,String name) { super(c,name,null,5); }
     @Override public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE alarms(id INTEGER PRIMARY KEY, data TEXT NOT NULL)");
         db.execSQL("CREATE TABLE sessions(id INTEGER PRIMARY KEY, start INTEGER NOT NULL, end INTEGER, note TEXT DEFAULT '', rating INTEGER DEFAULT 0, interrupted INTEGER DEFAULT 0, active_ms INTEGER, clock_changed INTEGER DEFAULT 0)");
@@ -17,12 +17,23 @@ public class Store extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE clips(id INTEGER PRIMARY KEY, session INTEGER NOT NULL, time INTEGER NOT NULL, path TEXT NOT NULL, level REAL)");
         createPauses(db);
         createRecords(db);db.execSQL("ALTER TABLE sessions ADD COLUMN source TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN origin TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN zone TEXT NOT NULL DEFAULT ''");
-        createRequests(db);
+        createRequests(db);createSoundEvents(db);
+    }
+    private static void createSoundEvents(SQLiteDatabase db){
+        db.execSQL("ALTER TABLE clips ADD COLUMN category TEXT NOT NULL DEFAULT 'noise'");
+        db.execSQL("ALTER TABLE clips ADD COLUMN score REAL NOT NULL DEFAULT 0");
+        db.execSQL("ALTER TABLE clips ADD COLUMN duration_ms INTEGER NOT NULL DEFAULT 10000");
+        db.execSQL("CREATE TABLE sound_events(id INTEGER PRIMARY KEY,session INTEGER NOT NULL,time INTEGER NOT NULL,duration_ms INTEGER NOT NULL,category TEXT NOT NULL,score REAL NOT NULL,model TEXT NOT NULL,clip INTEGER)");
+        db.execSQL("CREATE INDEX sound_events_session ON sound_events(session,time)");
+    }
+    long soundEvent(long session,long start,long duration,String category,double score,Long clip){
+        if(session<=0||start<=0||duration<=0||!java.util.Set.of("snoring","speech","noise").contains(category)||!Double.isFinite(score)||score<0||score>1)throw new IllegalArgumentException("Invalid sound event");
+        ContentValues v=new ContentValues();v.put("session",session);v.put("time",start);v.put("duration_ms",duration);v.put("category",category);v.put("score",score);v.put("model",YamnetClassifier.MODEL_ID);if(clip!=null)v.put("clip",clip);return getWritableDatabase().insertOrThrow("sound_events",null,v);
     }
     private static void createPauses(SQLiteDatabase db){db.execSQL("CREATE TABLE tracking_pauses(id INTEGER PRIMARY KEY, session INTEGER NOT NULL, start INTEGER NOT NULL, end INTEGER)");db.execSQL("CREATE INDEX pauses_session ON tracking_pauses(session,start)");}
     private static void createRequests(SQLiteDatabase db){db.execSQL("CREATE TABLE record_create_requests(token TEXT PRIMARY KEY,session INTEGER NOT NULL)");}
     private static void createRecords(SQLiteDatabase db){db.execSQL("CREATE TABLE record_edits(session INTEGER PRIMARY KEY,start INTEGER NOT NULL,end INTEGER NOT NULL,note TEXT NOT NULL DEFAULT '',tags TEXT NOT NULL DEFAULT '[]',awake TEXT NOT NULL DEFAULT '[]',rating INTEGER NOT NULL DEFAULT 0,rated INTEGER NOT NULL DEFAULT 0,updated INTEGER NOT NULL,reverted INTEGER NOT NULL DEFAULT 0)");}
-    @Override public void onUpgrade(SQLiteDatabase db,int old,int next) {if(old<2){db.execSQL("ALTER TABLE sessions ADD COLUMN active_ms INTEGER");db.execSQL("ALTER TABLE sessions ADD COLUMN clock_changed INTEGER DEFAULT 0");db.execSQL("ALTER TABLE epochs ADD COLUMN start INTEGER");createPauses(db);}if(old<3){createRecords(db);db.execSQL("ALTER TABLE sessions ADD COLUMN source TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN origin TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN zone TEXT NOT NULL DEFAULT ''");}if(old<4)createRequests(db);if(next>4)throw new IllegalStateException("Unknown database version");}
+    @Override public void onUpgrade(SQLiteDatabase db,int old,int next) {if(old<2){db.execSQL("ALTER TABLE sessions ADD COLUMN active_ms INTEGER");db.execSQL("ALTER TABLE sessions ADD COLUMN clock_changed INTEGER DEFAULT 0");db.execSQL("ALTER TABLE epochs ADD COLUMN start INTEGER");createPauses(db);}if(old<3){createRecords(db);db.execSQL("ALTER TABLE sessions ADD COLUMN source TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN origin TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN zone TEXT NOT NULL DEFAULT ''");}if(old<4)createRequests(db);if(old<5)createSoundEvents(db);if(next>5)throw new IllegalStateException("Unknown database version");}
     public synchronized List<Alarm> alarms() {
         List<Alarm> result=new ArrayList<>();
         try(Cursor c=getReadableDatabase().rawQuery("SELECT data FROM alarms ORDER BY id",null)) {
@@ -61,5 +72,5 @@ public class Store extends SQLiteOpenHelper {
         SQLiteDatabase db=getReadableDatabase();db.beginTransactionNonExclusive();try{JSONObject root=new JSONObject(); JSONArray savedAlarms=new JSONArray();for(Alarm a:alarms())savedAlarms.put(a.json());try { root.put("format",3).put("alarms",savedAlarms)
             .put("sessions",new JSONArray(rows("SELECT * FROM sessions"))).put("epochs",new JSONArray(rows("SELECT * FROM epochs"))).put("pauses",new JSONArray(rows("SELECT * FROM tracking_pauses"))).put("edits",new JSONArray(rows("SELECT * FROM record_edits"))); } catch(JSONException e) { throw new IllegalStateException(e); } db.setTransactionSuccessful();return root;}finally{db.endTransaction();}
     }
-    public void eraseHistory() { SQLiteDatabase db=getWritableDatabase(); db.beginTransaction(); try { db.execSQL("UPDATE record_create_requests SET session=0");db.delete("clips",null,null); db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null); db.delete("sessions",null,null); db.setTransactionSuccessful(); } finally { db.endTransaction(); } }
+    public void eraseHistory() { SQLiteDatabase db=getWritableDatabase(); db.beginTransaction(); try { db.execSQL("UPDATE record_create_requests SET session=0");db.delete("sound_events",null,null);db.delete("clips",null,null); db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null); db.delete("sessions",null,null); db.setTransactionSuccessful(); } finally { db.endTransaction(); } }
 }

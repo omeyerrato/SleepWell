@@ -21,3 +21,12 @@ paths were removed from the shared Design.Icon renderer.
 Regenerate offline with `python scripts/import_phosphor_icons.py`;
 `--download` explicitly refetches only this pinned subset and license. No
 upstream scripts or package-manager installation run during conversion.
+
+## Google YAMNet mobile audio classifier
+
+Copyright 2019 The TensorFlow Authors. Apache License 2.0.
+The unchanged 4.13 MB mobile classification v1 model and its embedded 521 labels
+are bundled for offline CPU inference. [Source, exact hashes, tensor contract and model card](third_party/yamnet/manifest.json).
+The full license is retained in third_party/yamnet/LICENSE and packaged in
+app/src/main/assets/licenses/YAMNET-LICENSE.txt. No runtime download or network request occurs.
+The bundled LiteRT CPU runtime uses com.google.ai.edge.litert:litert:2.3.0.
