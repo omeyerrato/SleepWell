@@ -48,7 +48,23 @@ public class PrivacyHistoryFlowTest {
             assertTrue(child.delete());object("Retry audio cleanup").click();positive("Retry audio cleanup");await(fixture);recreate();assertTrue(device.wait(Until.hasObject(By.desc("Delete sleep history")),5000));capture("done");assertFalse(blocked.exists());try(Store store=new Store(c,name)){assertTrue(store.rows("SELECT clip FROM pending_clip_deletes").isEmpty());assertEquals(1,store.rows("SELECT id FROM sessions").size());assertEquals("Fixture alarm stays",store.alarm(730).label);}
             // Another record editor may add a pending journal row after this binding completed.
             try(Store store=new Store(c,name)){ContentValues pending=new ContentValues();pending.put("clip",990000);pending.put("session",1);pending.put("path",prefix+"-later.wav");pending.put("time",System.currentTimeMillis());store.getWritableDatabase().insertOrThrow("pending_clip_deletes",null,pending);}
-            object("Back").click();click("Data & privacy");await(fixture);assertTrue(device.wait(Until.hasObject(By.desc("Retry audio cleanup")),5000));assertEquals(1,HistoryErase.jobs.get(fixture).pending);object("Retry audio cleanup").click();positive("Retry audio cleanup");await(fixture);try(Store store=new Store(c,name)){assertTrue(store.rows("SELECT clip FROM pending_clip_deletes").isEmpty());assertEquals(1,store.rows("SELECT id FROM sessions").size());}
+            HistoryEraseJobs.Job beforeReentry=HistoryErase.jobs.get(fixture);
+            object("Back").click();
+            assertTrue("Back must leave the actual Privacy route",device.wait(Until.gone(By.text("Your sleep data stays on this phone.")),5000));
+            click("Data & privacy");
+            assertTrue("Reentry must show the actual Privacy route",device.wait(Until.hasObject(By.text("Your sleep data stays on this phone.")),5000));
+            long inspectionBy=SystemClock.elapsedRealtime()+5000;
+            while(HistoryErase.jobs.get(fixture)==beforeReentry&&SystemClock.elapsedRealtime()<inspectionBy)SystemClock.sleep(25);
+            HistoryEraseJobs.Job refreshed=HistoryErase.jobs.get(fixture);
+            assertNotSame("Reentry must request a new inspection, not reuse a completed count",beforeReentry,refreshed);
+            assertNotNull("Reentry inspection exists for the pinned fixture",refreshed);
+            assertEquals("Reentry uses inspection only",HistoryEraseJobs.Kind.INSPECT,refreshed.kind);
+            await(fixture);
+            assertEquals("Reentry discovers the later journal without deleting the new night",1,HistoryErase.jobs.get(fixture).pending);
+            UiObject2 retry=object("Retry audio cleanup");
+            assertTrue("The refreshed cleanup action is visible",retry.getVisibleBounds().height()>0);
+            retry.click();positive("Retry audio cleanup");await(fixture);
+            try(Store store=new Store(c,name)){assertTrue("Retry clears the later unlink journal",store.rows("SELECT clip FROM pending_clip_deletes").isEmpty());assertEquals("Retry preserves the new recorded night",1,store.rows("SELECT id FROM sessions").size());}
             assertEquals(prefs,Prefs.of(c).getAll());try(Store store=new Store(c)){assertEquals(original,store.backup().toString());}assertEquals(originalFiles,files(c.getFilesDir()));assertFalse(AlarmService.active);assertFalse(TrackingService.running);
         }catch(Exception|AssertionError failure){try{File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());device.takeScreenshot(new File(folder,"privacy-history-failure.png"));device.dumpWindowHierarchy(new File(folder,"privacy-history-failure.xml"));}catch(Exception diagnostic){failure.addSuppressed(diagnostic);}throw failure;}finally{CountDownLatch hold=gate.getAndSet(null);if(hold!=null)hold.countDown();try{HistoryErase.drain(15000);i.runOnMainSync(()->{for(Activity a:owned)if(!a.isDestroyed())a.finish();});i.waitForIdleSync();long until=SystemClock.elapsedRealtime()+5000;while(owned.stream().anyMatch(a->!a.isDestroyed())&&SystemClock.elapsedRealtime()<until)SystemClock.sleep(50);assertTrue(owned.stream().allMatch(Activity::isDestroyed));HistoryErase.jobs.forget(fixture);}finally{app.unregisterActivityLifecycleCallbacks(lifecycle);i.runOnMainSync(()->Records.factory=previous);if(owned.stream().allMatch(Activity::isDestroyed))c.deleteDatabase(name);Files.deleteIfExists(wav.toPath());Files.deleteIfExists(child.toPath());Files.deleteIfExists(blocked.toPath());}}
     }
