@@ -6,11 +6,16 @@ import java.io.*;
 
 /** Local PCM capture and bundled YAMNet estimates. Never transmits audio. */
 final class NoiseRecorder implements AutoCloseable {
-    private volatile boolean running=true;volatile boolean capturing=false;private volatile AudioRecord activeRecorder; volatile double level=0; private final Thread thread;private final SignalWindow window=new SignalWindow();
+    private volatile boolean running=true;volatile boolean capturing=false;private volatile AudioRecord activeRecorder; volatile double level=0; private final Thread thread;private final Boolean saveOverride;private final SignalWindow window=new SignalWindow();
     Double takeEpoch(){return window.take();}
     NoiseRecorder(Context c,Store store,long session,ClipBudget budget,java.util.function.LongSupplier timeline) {
-        thread=new Thread(()->capture(c,store,session,budget,timeline),"SleepWell-audio"); thread.start();
+        this(c,store,session,budget,timeline,(Boolean)null);
     }
+    NoiseRecorder(Context c,Store store,long session,ClipBudget budget,java.util.function.LongSupplier timeline,boolean saveClips){this(c,store,session,budget,timeline,Boolean.valueOf(saveClips));}
+    private NoiseRecorder(Context c,Store store,long session,ClipBudget budget,java.util.function.LongSupplier timeline,Boolean saveClips){
+        saveOverride=saveClips;thread=new Thread(()->capture(c,store,session,budget,timeline),"SleepWell-audio");thread.start();
+    }
+    private boolean savesClips(Context c){return saveOverride==null?Prefs.flag(c,"saveClips"):saveOverride;}
     private void capture(Context c,Store store,long session,ClipBudget budget,java.util.function.LongSupplier timeline) {
         AudioRecord recorder=null;SoundAnalysisStream analysis=null;
         try {
@@ -31,15 +36,15 @@ final class NoiseRecorder implements AutoCloseable {
                 level=SleepMath.rms(frame,n);window.add(level,n);
                 analysis.accept(frame,n,timeline.getAsLong());
                 double threshold=Prefs.number(c,"noiseThreshold",20)/1000.0;
-                if(!Prefs.flag(c,"saveClips"))clip=null;
-                if(clip==null && budget.canStart(android.os.SystemClock.elapsedRealtime()) && level>=threshold && Prefs.flag(c,"saveClips")) { clip=new ByteArrayOutputStream(); peak=0; }
+                if(!savesClips(c))clip=null;
+                if(clip==null && budget.canStart(android.os.SystemClock.elapsedRealtime()) && level>=threshold && savesClips(c)) { clip=new ByteArrayOutputStream(); peak=0; }
                 if(clip!=null) {
                     peak=Math.max(peak,level);
                     for(int i=0;i<n;i++) { clip.write(frame[i]&255); clip.write((frame[i]>>8)&255); }
                     if(clip.size()>=16000*2*10) {
                         File dir=new File(c.getFilesDir(),"clips"); if(!dir.exists() && !dir.mkdirs()) throw new IOException("Could not create clips directory");
                         long time=timeline.getAsLong();File file=new File(dir,session+"-"+time+".wav");
-                        try{writeWave(file,clip.toByteArray());store.clip(session,time,file.getName(),peak);}catch(Exception e){file.delete();throw e;}budget.saved(android.os.SystemClock.elapsedRealtime());clip=null;
+                        try{writeWave(file,clip.toByteArray());store.clip(session,time,file.getName(),peak,clip.size()*1000L/32000);}catch(Exception e){file.delete();throw e;}budget.saved(android.os.SystemClock.elapsedRealtime());clip=null;
                     }
                 }
             }

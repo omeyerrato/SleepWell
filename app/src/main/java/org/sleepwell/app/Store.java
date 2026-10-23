@@ -25,9 +25,11 @@ public class Store extends SQLiteOpenHelper {
         db.execSQL("ALTER TABLE clips ADD COLUMN duration_ms INTEGER NOT NULL DEFAULT 10000");
         db.execSQL("CREATE TABLE sound_events(id INTEGER PRIMARY KEY,session INTEGER NOT NULL,time INTEGER NOT NULL,duration_ms INTEGER NOT NULL,category TEXT NOT NULL,score REAL NOT NULL,model TEXT NOT NULL,clip INTEGER)");
         db.execSQL("CREATE INDEX sound_events_session ON sound_events(session,time)");
+        db.execSQL("CREATE TRIGGER unlink_sound_clip AFTER DELETE ON clips BEGIN UPDATE sound_events SET clip=NULL WHERE clip=OLD.id; END");
     }
     long soundEvent(long session,long start,long duration,String category,double score,Long clip){
         if(session<=0||start<=0||duration<=0||!java.util.Set.of("snoring","speech","noise").contains(category)||!Double.isFinite(score)||score<0||score>1)throw new IllegalArgumentException("Invalid sound event");
+        if(clip==null){List<JSONObject> saved=rows("SELECT id FROM clips WHERE session=? AND time-duration_ms<=? AND time>=? ORDER BY time LIMIT 1",""+session,""+start,""+(start+duration));if(!saved.isEmpty())clip=saved.get(0).optLong("id");}
         ContentValues v=new ContentValues();v.put("session",session);v.put("time",start);v.put("duration_ms",duration);v.put("category",category);v.put("score",score);v.put("model",YamnetClassifier.MODEL_ID);if(clip!=null)v.put("clip",clip);return getWritableDatabase().insertOrThrow("sound_events",null,v);
     }
     private static void createPauses(SQLiteDatabase db){db.execSQL("CREATE TABLE tracking_pauses(id INTEGER PRIMARY KEY, session INTEGER NOT NULL, start INTEGER NOT NULL, end INTEGER)");db.execSQL("CREATE INDEX pauses_session ON tracking_pauses(session,start)");}
@@ -61,7 +63,13 @@ public class Store extends SQLiteOpenHelper {
     }
     void epoch(long session,Long start,long time,Double movement,Double noise,Double light,int samples){ContentValues v=new ContentValues();v.put("session",session);v.put("start",start);v.put("time",time);v.put("movement",movement);v.put("noise",noise);v.put("light",light);v.put("samples",samples);getWritableDatabase().insertOrThrow("epochs",null,v);}
     void checkpoint(long session,Long start,long time,Double movement,Double noise,Double light,int samples,long elapsed,boolean measured){SQLiteDatabase db=getWritableDatabase();db.beginTransaction();try{if(measured)epoch(session,start,time,movement,noise,light,samples);active(session,elapsed);db.setTransactionSuccessful();}finally{db.endTransaction();}}
-    public void clip(long session,long time,String path,double level) { ContentValues v=new ContentValues(); v.put("session",session); v.put("time",time); v.put("path",path); v.put("level",level); getWritableDatabase().insertOrThrow("clips",null,v); }
+    public void clip(long session,long time,String path,double level) {clip(session,time,path,level,10000);}
+    void clip(long session,long end,String path,double level,long duration){
+        if(duration<=0)throw new IllegalArgumentException("Invalid recording duration");SQLiteDatabase db=getWritableDatabase();db.beginTransaction();try{
+            ContentValues v=new ContentValues();v.put("session",session);v.put("time",end);v.put("path",path);v.put("level",level);v.put("duration_ms",duration);long id=db.insertOrThrow("clips",null,v);
+            db.execSQL("UPDATE sound_events SET clip=? WHERE session=? AND clip IS NULL AND time>=? AND time+duration_ms<=?",new Object[]{id,session,end-duration,end});db.setTransactionSuccessful();
+        }finally{db.endTransaction();}
+    }
     public List<JSONObject> rows(String sql,String...args) {
         List<JSONObject> rows=new ArrayList<>();
         try(Cursor c=getReadableDatabase().rawQuery(sql,args)) {

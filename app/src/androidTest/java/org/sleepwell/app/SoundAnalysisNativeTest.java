@@ -31,4 +31,16 @@ public class SoundAnalysisNativeTest {
             try(Store store=new Store(c,name)){List<JSONObject> values=store.rows("SELECT * FROM sound_events WHERE session=? ORDER BY time",""+id);assertEquals(2,values.size());assertEquals("snoring",values.get(0).getString("category"));assertEquals(.8,values.get(0).getDouble("score"),0);assertTrue(values.get(0).isNull("clip"));Records.delete(store,id,0);assertTrue(store.rows("SELECT * FROM sound_events").isEmpty());}
         }finally{c.deleteDatabase(name);}
     }
+    @Test public void savedRecordingsLinkOnlyFullyContainedIntervalsBeforeOrAfterTheEvent() throws Exception {
+        Context c=context();String name="sleepwell-verification-"+UUID.randomUUID()+".db";try(Store store=new Store(c,name)){
+            long id=store.begin(),start=store.rows("SELECT start FROM sessions WHERE id=?",""+id).get(0).getLong("start");
+            store.soundEvent(id,start+1000,1950,"snoring",.8,null);store.soundEvent(id,start+9000,1950,"speech",.8,null);
+            store.clip(id,start+10000,"synthetic-unplayed.wav",.1,10000);
+            List<JSONObject> first=store.rows("SELECT clip FROM sound_events ORDER BY time");assertFalse(first.get(0).isNull("clip"));assertTrue(first.get(1).isNull("clip"));
+            store.soundEvent(id,start+3000,1950,"snoring",.8,null);assertFalse(store.rows("SELECT clip FROM sound_events ORDER BY id DESC LIMIT 1").get(0).isNull("clip"));
+            store.soundEvent(id,start-100,1950,"noise",.8,null);assertTrue(store.rows("SELECT clip FROM sound_events ORDER BY id DESC LIMIT 1").get(0).isNull("clip"));
+            store.getWritableDatabase().delete("clips",null,null);assertTrue(store.rows("SELECT id FROM sound_events WHERE clip IS NOT NULL").isEmpty());
+            store.clip(id,start+20000,"different-unplayed.wav",.1,1000);assertTrue(store.rows("SELECT id FROM sound_events WHERE clip IS NOT NULL").isEmpty());
+        }finally{c.deleteDatabase(name);}
+    }
 }
