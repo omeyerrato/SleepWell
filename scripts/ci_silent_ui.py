@@ -89,7 +89,7 @@ metadata["size"] = command("shell", "wm", "size").stdout.strip()
 metadata["density"] = command("shell", "wm", "density").stdout.strip()
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 failures = []
-tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest"]
+tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest", "PlanPickerFlowTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
 if args.audio_imports:
@@ -145,6 +145,7 @@ required += ["snore-settings-" + name + ".png" for name in ("default", "selected
 required += ["report-reference-" + name + ".png" for name in ("history", "week", "month", "year", "night", "editor", "tags-notes", "reopened")]
 required += ["travel-" + name + ".png" for name in ("plan", "zones", "date", "reminders", "reopened", "error", "disabled")]
 required += ["privacy-history-" + name + ".png" for name in ("ready", "busy", "error", "pending", "done")]
+required += ["plan-picker-" + name + ".png" for name in ("time", "time-recreated", "duration", "duration-invalid", "duration-recreated", "reminder", "reopened")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:
