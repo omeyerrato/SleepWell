@@ -12,6 +12,7 @@ final class SnoreCuePolicy implements AutoCloseable {
         private int count;private long last=-1;
         synchronized boolean claim(long elapsed){if(elapsed<0||count>=30||last>=0&&elapsed-last<120000)return false;last=elapsed;count++;return true;}
     }
+    static Settings previewSettings(Mode mode,int sensitivity){return new Settings(true,mode,1,1,sensitivity);}
     interface Device extends AutoCloseable {void play(Settings settings);void close();}
     interface Factory {Device create();}
     private final Budget budget;private final Factory factory;private final Runnable failure;private Device device;private boolean closed;
