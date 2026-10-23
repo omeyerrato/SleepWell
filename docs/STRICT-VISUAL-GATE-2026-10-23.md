@@ -96,3 +96,54 @@ images plus new travel, privacy, plan, library and vibration states. Do not mix
 old passing frames with new failed ones, and do not call later source fixed
 until its own actual captures and main-action/persistence checks support that.
 No personal phone interaction or output test was performed for this review.
+
+## Subsequent exact-head review: CI 40016966655
+
+Source `f471c4d0f8339973dc363c26a39997c1e7547ba9`, API 36 emulator,
+1080×2316 at density 420. This is a separate review of 32 originals opened
+individually; it does not upgrade later source or substitute old frames for
+missing new ones. The run failed. Its environment explicitly disallows playback
+actions; the library uses synthetic WAVs and fake playback output.
+
+| Original PNG | Strict finding |
+| --- | --- |
+| report-reference-history.png | All seven real fixture rows fit above the four-tab dock; continuous ribbons, aligned times and duration hierarchy are visible. No new clipping. |
+| report-reference-week.png | Both charts, duration/goal gap and complete Read details fit above the dock. Circular point markers are heavier than board 08; P2. |
+| report-reference-month.png | Missing dates stay blank; complete Read details remains visible. No invented full-month series. |
+| report-reference-year.png | One observed month is shown honestly. Complete Read details remains above the dock. |
+| report-reference-failure.png | Actual night report is visible with 3 Snoring/1 Speech estimates and truthful analysis-only disclosure. This is a diagnostic frame, not the required accepted night capture. Sleep stages remain unavailable. |
+| wake-settings-sound.png | Tone radios, volume and fixed Use button fit. P2/full-board gap: actual tone waveforms, preview controls and preview-volume panel from board 03 remain absent. |
+| wake-settings-loud-curve.png | 100% curve endpoint, grouped vibration timing pill and fixed Save are visible. Flashlight is below the first frame; no effect delivery has been tested. |
+| wake-settings-vibration-options.png | Rounded cream/Inter dialog; selected From start plus all offered delays and Cancel fit. |
+| wake-settings-failure.png | Timing pill actually displays After 1 min. Test failed during the unscoped dialog/underlying-value sequence; this frame does not prove Save/reopen/cancel. |
+| travel-plan.png | Core plan, both clocks and fixed Save fit. P2: Home time zone uses a clock rather than house; Light source value wraps to two lines. Correctly distinguishes current offset from departure-day offset. |
+| travel-zones.png | Search and a selected real zone row fit; supporting state coherent. |
+| travel-date.png | Calendar month/date and single helper fit. This frame shows 23 Oct selected; it is not evidence of final saved departure date. |
+| travel-failure.png | Rounded themed time dialog is visible. Failed journey means no Save/reopen acceptance. |
+| privacy-history-failure.png | P1 visual regression: destructive confirmation is stock white, square, system-font UI over cream/Inter. No successful deletion/recovery evidence in this frame. |
+| plan-picker-time.png | Themed bedtime dialog, PM state, fields and both buttons fit. |
+| plan-picker-time-recreated.png | Pending 09:15 PM survives in the visible dialog. No cropping. |
+| plan-picker-failure.png | Duration dialog is visible but hour/minute input surfaces touch with no gutter, P2. The frame-identity assertion failed; remaining required plan states are absent. Later parent gutter fix is not certified here. |
+| library-recordings.png | Much closer to board 07: three category chips, time/duration, real fixture waveforms, hearts/delete and truthful analysis-only row. P2: category accent strips absent. |
+| library-playback.png | Selected row expands with brown Pause and actual fake-sink position/seek. P2: bottom Recorded signals entry is half-clipped as continuation. No physical playback certification. |
+| library-favorite-recreated.png | Filled favorite and selected seek position survive visually. Same half-clipped bottom continuation. |
+| library-speech.png | Selected Speech chip and one lilac waveform match the category. Large empty remainder follows the one-row data. |
+| library-recording-deleted.png | Removed recording loses its waveform/Play while the estimate remains; no invented sound availability. |
+| library-retention-failure.png | Themed retention-choice dialog fits, selected 7 days visible. Full retention journey failed and remains unaccepted. |
+| automatic-manual.png | Narrow Save-clipping correction PASS: full brown Save is fixed above system bars. |
+| automatic-stillness.png | Full Save and secondary Arm are separately visible; no overlap. |
+| automatic-sounds.png | Both sound switches plus full Save/Arm fit without scrolling to hide the earlier defect. |
+| automatic-reopened.png | Same full controls and selected mode remain visible. |
+| automatic-error.png | Error stays visible above full Save/Arm. Narrow footer correction PASS; this does not certify actual automatic sensor capture or recurring scheduling. |
+| snore-settings-default.png | **P1 REJECT: completely white content frame, only the bottom handle visible, despite native class PASS.** A screenshot name and passing transcript do not prove a rendered screen. |
+| snore-settings-selected.png | Old text-only cream segments still differ from board 07 brown icon cards; Preview absent. |
+| snore-settings-recreated.png | Same old selected states are visible, no clipping; composition remains rejected. |
+| snore-settings-reopened.png | Same old controls remain visible. Does not accept later icon-card/preview source. |
+
+Report remains **FAIL: only 4/8 required named frames**, with native failure at
+line 79. Night/editor/tags-notes/reopened are missing from this head. No stage
+estimator exists. Travel, privacy, plan and retention journeys also failed;
+their incomplete image sets must be replaced by complete successful same-head
+evidence. Snoring cues needs five new actual images after its icon/preview
+change, with focused hardware-frame and visible-action checks that reject the
+white default. Overall 36-screen feature and design completion remains FAIL.
