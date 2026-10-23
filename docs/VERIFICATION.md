@@ -631,3 +631,9 @@ Current integration adds bounded immutable audio snapshots, duplicate/cancellati
 
 
 Integrated a26f0de:324 pure tests, zero failures/errors/skips; lint zero errors/77warnings; debug/test/release builds pass1m10s. All ordered-routine, calendar, immutable export, travel/motion visibility and four native-failure correction sources are compiled candidates. Final Phosphor task icons and sensor-registration fallback are being checked separately at6015a12. The next native gate requires27classes/40methods/137PNG originals; no personal device testing.
+
+## CI40027277488 at d6389dc — 26/27 classes pass
+
+Overall FAIL from PrivacyHistoryFlowTest51; all other26 native classes pass and138 original PNGs were produced. ReportReferenceFlowTest passes real sound-event navigation, editing, awake-period save and note/tag reopening with all8 originals. RecordCalendarFlowTest passes its retained pending/nested time/date journey with seven originals, actual DST resolution and unchanged milliseconds. ChallengeRoutineFlowTest passes six configuration originals plus actual JSON/privateDB/reorder/cancel/recreation/save/reopen and six malformed backup rejection cases. No alarm/challenge service ran. AlarmMenusFlowTest and PlanPickerFlowTest also pass their full interactions.
+
+Actual immutable export checks pass AudioArchiveConcurrencyTest3 and SoundArchiveJobTest2; waveform/library/retention/export classes and four real human PCM fixtures pass. Public provider and native headphone/speaker output remain unverified. Strict reviewers are inspecting this exact source before accepting any new visual states. Privacy's later pending-journal reentry assertion remains unresolved and is not hidden by the other passes.
