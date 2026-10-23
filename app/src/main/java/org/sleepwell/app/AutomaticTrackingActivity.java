@@ -70,7 +70,7 @@ public final class AutomaticTrackingActivity extends Activity {
             if(save())owner.arm(this,mode,scheduled,recordSounds,keepClips);
         }catch(Exception failure){show(failure.getMessage()==null?"Automatic tracking could not start.":failure.getMessage());}
     }
-    private void show(String copy){error.setText(copy);error.setVisibility(View.VISIBLE);}
+    private void show(String copy){error.setText(copy);error.setVisibility(View.VISIBLE);error.post(()->error.requestRectangleOnScreen(new android.graphics.Rect(0,0,error.getWidth(),error.getHeight()),true));}
     @Override public void onRequestPermissionsResult(int request,String[] permissions,int[] grants){
         super.onRequestPermissionsResult(request,permissions,grants);
         if((request==91||request==93)&&permissionPending){permissionPending=false;
