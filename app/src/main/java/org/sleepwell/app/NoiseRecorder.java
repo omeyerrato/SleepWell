@@ -20,6 +20,7 @@ final class NoiseRecorder implements AutoCloseable {
         AudioRecord recorder=null;SoundAnalysisStream analysis=null;SnoreCuePolicy cues=new SnoreCuePolicy(budget.snoreCues,()->new SnoreCueOutput(c),()->Prefs.put(c,"snoreCueError","A snoring cue could not play."));
         try {
             if(c.checkSelfPermission(android.Manifest.permission.RECORD_AUDIO)!=android.content.pm.PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is not granted");
+            if(savesClips(c))prune(c,store,budget);
             int size=Math.max(4096,AudioRecord.getMinBufferSize(16000,AudioFormat.CHANNEL_IN_MONO,AudioFormat.ENCODING_PCM_16BIT));
             recorder=new AudioRecord(MediaRecorder.AudioSource.MIC,16000,AudioFormat.CHANNEL_IN_MONO,AudioFormat.ENCODING_PCM_16BIT,size);
             if(recorder.getState()!=AudioRecord.STATE_INITIALIZED) throw new IOException("Microphone unavailable");
@@ -37,7 +38,7 @@ final class NoiseRecorder implements AutoCloseable {
                 analysis.accept(frame,n,timeline.getAsLong());
                 double threshold=Prefs.number(c,"noiseThreshold",20)/1000.0;
                 if(!savesClips(c))clip=null;
-                if(clip==null && budget.canStart(android.os.SystemClock.elapsedRealtime()) && level>=threshold && savesClips(c)) { clip=new ByteArrayOutputStream(); peak=0; }
+                if(clip==null && budget.canStart(android.os.SystemClock.elapsedRealtime()) && level>=threshold && savesClips(c)) { prune(c,store,budget);clip=new ByteArrayOutputStream(); peak=0; }
                 if(clip!=null) {
                     peak=Math.max(peak,level);
                     for(int i=0;i<n;i++) { clip.write(frame[i]&255); clip.write((frame[i]>>8)&255); }
@@ -52,6 +53,7 @@ final class NoiseRecorder implements AutoCloseable {
         catch(Exception e) { Prefs.put(c,"audioError",e.getMessage()==null?e.toString():e.getMessage()); }
         finally {cues.close();try{if(analysis!=null)analysis.close();}catch(RuntimeException e){Prefs.put(c,"analysisError","Could not save the final sound event.");}capturing=false;activeRecorder=null;if(recorder!=null) { try { recorder.stop(); } catch(IllegalStateException ignored) {} recorder.release(); } }
     }
+    private static void prune(Context c,Store store,ClipBudget budget){if(budget.pruneOnce())try{SoundClips.prune(c,store);}catch(RuntimeException error){Prefs.put(c,"audioRetentionError","Expired audio cleanup needs attention. New recording can continue.");}}
     private static void little(DataOutputStream out,int value,int bytes) throws IOException { for(int i=0;i<bytes;i++) out.writeByte(value>>(8*i)); }
     static void writeWave(File file,byte[] pcm) throws IOException {
         try(DataOutputStream out=new DataOutputStream(new FileOutputStream(file))) {

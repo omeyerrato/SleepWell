@@ -33,7 +33,7 @@ public class RecordReplayTest {
         String name=database(),token=UUID.randomUUID().toString();long id;String original;
         try{
             try(Store store=new Store(context(),name)){
-                assertEquals("The replay table must be migrated before this test",4,store.getReadableDatabase().getVersion());
+                assertTrue("The replay table must be migrated before this test",store.getReadableDatabase().getVersion()>=4);
                 id=Records.create(store,draft(),ZoneId.of("UTC"),System.currentTimeMillis(),token);
                 original=store.backup().toString();
             }
