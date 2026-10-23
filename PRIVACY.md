@@ -10,6 +10,7 @@ SleepWell 0.1.0 stores data on your phone. There is no account system, advertisi
 - Journal: notes, tags, and subjective ratings you enter.
 - App guard: package identifiers you select and the current foreground package name supplied by Android Accessibility. The service cannot retrieve window content. Package transitions are not saved as an app-usage history.
 - NFC: the identifier of a tag you intentionally enroll. This is not an authentication mechanism.
+- Sleep sounds: source choices, mixer gains, timer/fade and an optional read-only audio-document URI/title stay in app preferences. Imported documents remain with their provider. Old read grants are retained because an alarm tone may share them; SleepWell never deletes the source document. Provider network/storage behavior is controlled by the provider you choose.
 
 ## Permissions
 

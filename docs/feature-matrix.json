@@ -836,17 +836,20 @@
     },
     {
       "feature": "Sleep sounds / lullabies",
-      "screens": "13–21,27–30",
+      "screens": "19,13 + import/error states",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
-        "TrackingService.java",
-        "NoiseRecorder.java",
-        "BedtimeGuard.java",
-        "MainActivity.java"
+        "SoundMix.java",
+        "SoundPreferences.java",
+        "SoundPlayback.java",
+        "SoundOwnership.java",
+        "SleepSoundService.java",
+        "SleepSoundsActivity.java",
+        "TrackingService.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "SoundPlaybackTest 24 local fake-clock/fake-sink passes; SoundSettingsFlowTest compiled only. No Android playback, file-picker, background or new screenshot evidence.",
       "status": "partial",
-      "notes": "Partial: original rain/brown-noise loops, low player volume, fixed stop timer. Adaptive fade, guided tracks and playlists pending.",
+      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Device visual/audio acceptance pending; provider metadata/grant and audible loop quality unverified. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
       "id": "F061"
     },
     {
@@ -1130,7 +1133,7 @@
         "GraphView.java",
         "MainActivity.java"
       ],
-      "validation": "RootVisualTest read-only four-tab selected-state pass12.274 s; final system-Back/recreation fix pending connected-device verification",
+      "validation": "RootVisualTest read-only four-tab selected-state pass12.274 s; final system-Back/recreation fix pending connected-device verification; subsequent Sleep sounds Settings row changes root height and requires a new capture",
       "status": "partial",
       "notes": "Partial: native Tonight/Alarms/Report/Settings roots and real theme settings. User-arranged cards and other home configurations absent; no all-screen acceptance claim.",
       "id": "F081"
@@ -1604,12 +1607,20 @@
     },
     {
       "feature": "Sound mixing / gains / fade / local playlist",
-      "screens": "19",
+      "screens": "19,13 + import/error states",
       "source": "https://sleep.urbandroid.org/docs/sleep/lullaby.html",
-      "implementation": [],
-      "validation": "Not yet verified",
+      "implementation": [
+        "SoundMix.java",
+        "SoundPreferences.java",
+        "SoundPlayback.java",
+        "SoundOwnership.java",
+        "SleepSoundService.java",
+        "SleepSoundsActivity.java",
+        "TrackingService.java"
+      ],
+      "validation": "SoundPlaybackTest 24 local fake-clock/fake-sink passes; SoundSettingsFlowTest compiled only. No Android playback, file-picker, background or new screenshot evidence.",
       "status": "partial",
-      "notes": "One selected loop with timer exists; concurrent mix/gain/fade absent.",
+      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Device visual/audio acceptance pending; provider metadata/grant and audible loop quality unverified. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
       "id": "F126"
     },
     {

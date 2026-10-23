@@ -150,6 +150,16 @@ for row in rows:
     elif title == "Lost code fallback / travel bypass":
         row.update(status="partial", implementation=["AlarmActivity.java", "AlarmEditorActivity.java", "MainActivity.java"], validation="Source review and debug/release compilation only; user prohibited alarm testing", notes="Unavailable accelerometer or unavailable/unconfigured NFC falls back to Math. Developer stop is conditional on the debug flag and hidden in release. NFC enrollment remains reachable in Alarms → Alarm options. Configurable multi-task/QR fallback and travel bypass remain missing; new fallback/stop behavior deliberately untested.")
 
+# Native screen 19 source/model work, not a hardware playback or visual acceptance claim.
+SOUND_CODE = ["SoundMix.java", "SoundPreferences.java", "SoundPlayback.java", "SoundOwnership.java", "SleepSoundService.java", "SleepSoundsActivity.java", "TrackingService.java"]
+for row in rows:
+    if row["feature"] in ("Sleep sounds / lullabies", "Sound mixing / gains / fade / local playlist"):
+        row.update(status="partial", screens="19,13 + import/error states", implementation=SOUND_CODE,
+            validation="SoundPlaybackTest 24 local fake-clock/fake-sink passes; SoundSettingsFlowTest compiled only. No Android playback, file-picker, background or new screenshot evidence.",
+            notes="Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Device visual/audio acceptance pending; provider metadata/grant and audible loop quality unverified. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.")
+    elif row["feature"] == "Dashboard / tabs":
+        row["validation"] += "; subsequent Sleep sounds Settings row changes root height and requires a new capture"
+
 for n, row in enumerate(rows, 1):
     row["id"] = f"F{n:03}"
 

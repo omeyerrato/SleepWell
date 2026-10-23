@@ -134,3 +134,12 @@ Final Privacy/Wind-down/system-Back device verification is pending after USB los
 see VERIFICATION.md. Do not interpret any allowlist entry or test source as a
 passing result. Alarm controls, including the debug-only Developer stop, remain
 outside the permitted sleep-time test set. Never run the whole connected suite.
+
+`SoundPlaybackTest` has 24 local fake-sink cases and never instantiates Android
+audio classes. `SoundSettingsFlowTest` / `--flow sounds-settings` is configuration
+only and remains pending hardware execution. It does not press Play, start
+tracking or import a file. The manual `Silent Android visual review` workflow
+uses only it and RootVisualTest on an ephemeral no-audio emulator; artifacts are
+fixture data. Do not run either workflow as an unrestricted connected test suite.
+Native audio, focus, background, URI grant and listening checks need separate
+authorization and evidence. Existing no-alarm-testing instructions remain binding.

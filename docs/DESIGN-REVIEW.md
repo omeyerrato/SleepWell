@@ -239,3 +239,21 @@ No synthetic overnight curve, stage strip or sound classification was substitute
 to make it resemble the illustrative all-night board. Sonar, automatic starts,
 classification, routines/QR/walking, audio mixer/library, rhythm/travel,
 integrations/smart lights and other matrix gaps keep full acceptance open.
+
+## Screen 19 source revision — 2026-10-23
+
+The native Sleep sounds detail now follows board07's hierarchy: dark plum detail
+header without the root dock, rain-window hero, title/description, round playback
+control and actual timer, primary/Brown gain rows, Timer/Fade and four illustrated
+library tiles. Supporting import and auto-tracking controls follow the library.
+Errors appear beside Play. Sliders have 48dp touch rows. All controls connect to
+the actual mixer/service or persisted choices; opening the screen remains silent.
+
+The strict reviewer inspected all four new original images and the native source.
+Rain has the correct bedside/window/lamp composition and palette, but the assets
+are more textured than the flat references. This is **not a visual pass**: actual
+Android captures, default fold fit and supporting error states remain open.
+Adding the Sleep sounds row also changes Settings height and invalidates a final
+claim based solely on its older screenshot. The full36-screen/feature gate remains
+**FAIL**. A manual-only silent GitHub emulator workflow is being added to obtain
+actual Android captures without using the disconnected phone; it has no result yet.

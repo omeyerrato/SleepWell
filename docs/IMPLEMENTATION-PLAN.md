@@ -66,3 +66,8 @@ hardware becomes available. Do not ask the sleeping user to reconnect or run an
 alarm. Do not mark those screens or the overall goal complete from source fixes.
 Developer stop is debug-only in source; the user's no-alarm-test restriction
 continues. See the latest VERIFICATION entry for the USB/emulator limitation.
+
+Screen19 now has native mixer/service/UI source and 24 passing silent model tests;
+details and open gates are in SOUND-PLAYBACK.md. A manual CI emulator screenshot
+path is being added while the phone is absent. Actual Android rendering and native
+playback remain separate gates; do not mark screen19 or full parity complete.

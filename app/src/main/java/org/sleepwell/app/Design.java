@@ -119,6 +119,8 @@ final class Design {
                 case "calendar":c.drawRoundRect(3,5,21,22,2,2,paint);c.drawLine(3,10,21,10,paint);c.drawLine(8,2,8,7,paint);c.drawLine(16,2,16,7,paint);break;
                 case "github":p.moveTo(5,9);p.lineTo(4,3);p.lineTo(9,5);p.quadTo(12,4,15,5);p.lineTo(20,3);p.lineTo(19,9);p.cubicTo(24,16,17,19,14,18);p.lineTo(14,23);p.moveTo(10,23);p.lineTo(10,18);p.cubicTo(4,19,0,15,5,9);c.drawPath(p,paint);p.reset();p.moveTo(10,21);p.cubicTo(4,23,5,18,2,18);c.drawPath(p,paint);break;
                 case "cloud":p.moveTo(6,20);p.cubicTo(-2,20,0,10,6,10);p.cubicTo(5,0,21,0,20,11);p.cubicTo(27,14,23,20,20,20);p.close();c.drawPath(p,paint);break;
+                case "rain":p.moveTo(6,14);p.cubicTo(-2,14,0,6,6,6);p.cubicTo(7,-1,19,0,19,7);p.cubicTo(25,7,25,14,19,14);c.drawPath(p,paint);for(int i=0;i<3;i++){c.drawLine(7+i*5,16,6+i*5,19,paint);c.drawLine(7+i*5,22,6+i*5,24,paint);}break;
+                case "clock":c.drawCircle(12,12,10,paint);c.drawLine(12,5,12,12,paint);c.drawLine(12,12,17,14,paint);break;
                 case "upload":c.drawLine(12,17,12,2,paint);c.drawLine(6,8,12,2,paint);c.drawLine(12,2,18,8,paint);p.moveTo(3,14);p.lineTo(3,22);p.lineTo(21,22);p.lineTo(21,14);c.drawPath(p,paint);break;
                 case "file":p.moveTo(4,2);p.lineTo(14,2);p.lineTo(21,9);p.lineTo(21,22);p.lineTo(4,22);p.close();c.drawPath(p,paint);c.drawLine(14,2,14,9,paint);c.drawLine(14,9,21,9,paint);break;
                 case "palette":p.moveTo(20,15);p.cubicTo(27,2,4,-4,2,10);p.cubicTo(0,20,12,26,14,21);p.cubicTo(17,17,14,15,20,15);p.close();c.drawPath(p,paint);for(int i=0;i<3;i++)c.drawCircle(7+i*5,7+(i==1?-2:1),1,paint);break;

@@ -80,7 +80,7 @@ This is an independent implementation plan. **Implemented** means code exists, n
 | Retention / favorite album / alternate formats | Delete old clips; preserve favorites; choose encodings | Partial: seven-day deletion at the next clip-saving session start and WAV format. Favorites, manual audio export and other encodings pending. |
 | Anti-snoring cues | Trigger mild audio/haptic/light response after detected snoring | Pending: requires a validated snore classifier first. Generic loud sounds do not trigger snoring treatment. |
 | Pair tracking | Compare synchronized movement streams to reduce partner crossover | Pending: peer pairing, clock alignment, filtering evaluation. |
-| Sleep sounds / lullabies | Loop relaxing audio, fade/stop by timer or sleep detection | Partial: original rain/brown-noise loops, low player volume, fixed stop timer. Adaptive fade, guided tracks and playlists pending. |
+| Sleep sounds / lullabies | Loop relaxing audio, fade/stop by timer or sleep detection | Partial: native standalone primary/Brown mixer source, real gains, monotonic playing-time timer and fade, original ambience, local document import and notification controls. Silent model tests pass; native playback, provider access and screen19 visual evidence pending. Guided tracks, playlists and sleep-detected fade absent. |
 | Binaural beats / meditation | Generate stereo tones or play licensed narration | Pending. |
 | Lucid dreaming | Use subtle cues during an inferred dream window | Pending: no REM-trigger claims without a validated estimator. |
 | Jet-lag light intervention | Plan timed light exposure by destination/time zone | Pending: evidence-based scheduling, compatible light output, validation. |

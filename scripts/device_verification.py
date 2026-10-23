@@ -15,7 +15,7 @@ import sys
 parser = argparse.ArgumentParser()
 parser.add_argument("--adb", required=True)
 parser.add_argument("--serial", required=True)
-parser.add_argument("--flow", choices=("roots", "appearance", "charts", "tracking", "history", "recreation", "goals", "guard"), default="roots")
+parser.add_argument("--flow", choices=("roots", "appearance", "charts", "tracking", "history", "recreation", "goals", "guard", "sounds-settings"), default="roots")
 args = parser.parse_args()
 root = Path(__file__).resolve().parents[1]
 adb = [args.adb, "-s", args.serial]
@@ -34,6 +34,7 @@ flows = {
     "roots": ("RootVisualTest", "root", ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "bedtime-guard", "privacy", "wind-down", "report-selected")),
     "appearance": ("AppearanceFlowTest", "appearance", ("automatic", "selected-0", "selected-1", "selected-2", "tonight-0", "tonight-1", "tonight-2", "large-contrast-tonight", "large-contrast-tonight-action", "large-contrast")),
     "charts": ("ChartVisualTest", "chart", ("dense", "selected", "empty")),
+    "sounds-settings": ("SoundSettingsFlowTest", "sounds-settings", ("rain", "ocean", "recreated", "reopened")),
     "guard": ("GuardFlowTest", "guard", ("draft", "saved", "paused")),
     "goals": ("GoalFlowTest", "goal", ("plan", "tonight", "saved-plan", "empty-bank", "create", "bank", "reopened-bank", "bank-details", "stopped", "trends")),
     "recreation": ("RecordRecreationTest", "recreation", ()),

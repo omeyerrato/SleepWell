@@ -269,3 +269,24 @@ the test runner; no uninstall/clear-data runner is used.
 
 Full feature/screen parity remains incomplete. Remaining device constraints and
 implementation gaps are preserved in FEATURE-MATRIX and DESIGN-REVIEW.
+## Sleep sounds source/model milestone — 2026-10-23
+
+98 local unit tests pass, including 24 new fake-clock/fake-sink SoundPlaybackTest
+cases. Debug lint has 0 errors / 67 pre-existing warnings. Debug app, debug Android
+test APK and release builds pass. These checks do not verify Android audio focus,
+MediaPlayer, foreground-service delivery, provider access, audible quality or
+screen19 visual fidelity. No alarm, microphone, speaker, vibration, screen-off or
+developer-stop test was run. The phone remains absent from ADB.
+
+SoundSettingsFlowTest is a compiled, configuration-only future device check. It
+isolates preferences, checks selection/timer/fade/recreation/reopen and captures
+four native screens. It never taps Play, starts tracking or imports a document.
+TrackingFlowTest now also disables/restores the new automatic-mix flag so the old
+movement-only allowlist remains silent. Neither changed device test has a new
+connected-device result. Prior movement results do not certify this audio rewrite.
+
+A manual GitHub emulator workflow limits instrumentation to SoundSettingsFlowTest
+and RootVisualTest, starts its isolated emulator with host audio disabled, and
+publishes only fixture captures plus environment metadata. It refuses physical
+devices and local execution. Its result is pending; source alone is not acceptance.
+See SOUND-PLAYBACK.md for source behavior, migration and remaining limitations.

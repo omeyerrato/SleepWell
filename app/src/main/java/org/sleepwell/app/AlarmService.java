@@ -16,6 +16,7 @@ public class AlarmService extends Service {
     @Override public void onCreate() { super.onCreate(); Notifications.channels(this); }
     @Override public int onStartCommand(Intent i,int flags,int startId) {
         if(!Prefs.flag(this,"ringing")) { stopSelf(); return START_NOT_STICKY; }
+        SleepSoundService.alarmStarting();
         if(player!=null) return START_STICKY;
         try { alarm=Alarm.read(new JSONObject(Prefs.text(this,"active_alarm","{}"))); } catch(JSONException e) { stopSelf(); return START_NOT_STICKY; }
         Intent screen=new Intent(this,AlarmActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
