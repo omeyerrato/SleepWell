@@ -2,11 +2,12 @@ package org.sleepwell.app;
 
 /** Shared monotonic envelope for real alarm output and its settings chart. No Android hardware calls. */
 final class AlarmWakePolicy {
-    final int targetPercent;final long rampMillis,delayMillis,sunriseMillis;final boolean sunrise,flashlight,quiet;
+    final int targetPercent;final long rampMillis,delayMillis,sunriseMillis,vibrationDelayMillis;final boolean sunrise,flashlight,quiet,vibration;
     AlarmWakePolicy(Alarm alarm){
         quiet=alarm.id<=0;targetPercent=quiet?Math.min(25,Math.max(10,alarm.volume)):alarm.extraLoud?100:Math.max(10,Math.min(100,alarm.volume));
         rampMillis=quiet?0:Math.max(0,Math.min(24*60,alarm.rampSeconds))*1000L;
         delayMillis=quiet?0:Math.max(0,Math.min(24*60,alarm.soundDelaySeconds))*1000L;
+        vibration=!quiet&&alarm.vibrate;vibrationDelayMillis=quiet?0:Math.max(0,Math.min(24*60,alarm.vibrationDelaySeconds))*1000L;
         sunrise=!quiet&&alarm.sunrise;flashlight=!quiet&&alarm.flashlight;
         sunriseMillis=delayMillis>0?delayMillis:rampMillis>0?rampMillis:120000;
     }

@@ -9,12 +9,12 @@ import org.json.*;
 /** Foreground alarm lifetime. Output timing survives same-occurrence service restarts. */
 public class AlarmService extends Service {
     static volatile boolean active;
-    private Vibrator vibrator;private PowerManager.WakeLock wake;private AlarmPlayback playback;private AlarmTorch torch;
+    private AlarmVibration vibration;private PowerManager.WakeLock wake;private AlarmPlayback playback;private AlarmTorch torch;
     private final Handler handler=new Handler(Looper.getMainLooper());private Alarm alarm;private String occurrence;private long started;private volatile boolean destroyed;
     @Override public IBinder onBind(Intent intent){return null;}
     @Override public void onCreate(){super.onCreate();Notifications.channels(this);}
     @Override public int onStartCommand(Intent intent,int flags,int startId){
-        if(!Prefs.flag(this,"ringing")){stopSelf();return START_NOT_STICKY;}
+        if(!Prefs.flag(this,"ringing")){releaseOutputs();stopSelf();return START_NOT_STICKY;}
         if(playback!=null){if(occurrence.equals(Prefs.text(this,"alarmRun",""))){if(Prefs.flag(this,"forceBackup"))playback.backup();return START_STICKY;}releaseOutputs();}
         SleepSoundService.alarmStarting();
         try{alarm=Alarm.read(new JSONObject(Prefs.text(this,"active_alarm","{}")));}catch(JSONException error){stopSelf();return START_NOT_STICKY;}
@@ -28,11 +28,17 @@ public class AlarmService extends Service {
         try{wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:alarm");wake.acquire(2*60*60*1000L);}catch(RuntimeException error){Prefs.put(this,"lastError","Android did not allow the alarm wake lock.");}
         final String ownRun=occurrence;playback=new AlarmPlayback(alarm,new AlarmAudioSink(this,handler,occurrence,()->alive(ownRun)),()->Math.max(0,SystemClock.elapsedRealtime()-started),SystemClock::elapsedRealtime);playback.start();
         if(new AlarmWakePolicy(alarm).flashlight)torch=new AlarmTorch(this,()->alive(ownRun));
-        if(alarm.vibrate&&alarm.id>0)try{vibrator=getSystemService(Vibrator.class);if(vibrator!=null&&vibrator.hasVibrator())vibrator.vibrate(VibrationEffect.createWaveform(new long[]{0,600,400,600,1400},0));}catch(RuntimeException error){Prefs.put(this,"lastError","Alarm vibration is unavailable.");}
+        AlarmWakePolicy policy=new AlarmWakePolicy(alarm);
+        final long vibrationStarted=started;
+        if(policy.vibration)vibration=new AlarmVibration(policy.vibrationDelayMillis,()->Math.max(0,SystemClock.elapsedRealtime()-vibrationStarted),()->alive(ownRun),()->new AlarmVibration.Port(){
+            private final Vibrator nativeVibrator=getSystemService(Vibrator.class);
+            public boolean start(){if(nativeVibrator==null||!nativeVibrator.hasVibrator())return false;nativeVibrator.vibrate(VibrationEffect.createWaveform(new long[]{0,600,400,600,1400},0),new android.media.AudioAttributes.Builder().setUsage(android.media.AudioAttributes.USAGE_ALARM).setContentType(android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION).build());return true;}
+            public void cancel(){if(nativeVibrator!=null)nativeVibrator.cancel();}
+        },()->Prefs.put(this,"lastError","Alarm vibration is unavailable."));
         tick.run();return START_STICKY;
     }
     private boolean alive(String run){return !destroyed&&run.equals(occurrence)&&Prefs.flag(this,"ringing")&&run.equals(Prefs.text(this,"alarmRun",""));}
-    private final Runnable tick=new Runnable(){public void run(){if(!alive(occurrence)){stopSelf();return;}if(Prefs.flag(AlarmService.this,"forceBackup"))playback.backup();playback.tick();handler.postDelayed(this,100);}};
+    private final Runnable tick=new Runnable(){public void run(){if(!alive(occurrence)){releaseOutputs();stopSelf();return;}boolean backup=Prefs.flag(AlarmService.this,"forceBackup");if(backup)playback.backup();playback.tick();if(vibration!=null)vibration.tick(backup);handler.postDelayed(this,100);}};
     static void stop(Context context){
         stop(context,Prefs.text(context,"alarmRun",""));
     }
@@ -42,9 +48,9 @@ public class AlarmService extends Service {
         handler.removeCallbacksAndMessages(null);
         try{if(playback!=null)playback.stop();}catch(RuntimeException ignored){}
         try{if(torch!=null)torch.close();}catch(RuntimeException ignored){}
-        try{if(vibrator!=null)vibrator.cancel();}catch(RuntimeException ignored){}
+        try{if(vibration!=null)vibration.close();}catch(RuntimeException ignored){}
         try{if(wake!=null&&wake.isHeld())wake.release();}catch(RuntimeException ignored){}
-        playback=null;torch=null;vibrator=null;wake=null;
+        playback=null;torch=null;vibration=null;wake=null;
     }
     @Override public void onDestroy(){active=false;destroyed=true;releaseOutputs();super.onDestroy();}
 }
