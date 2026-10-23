@@ -297,3 +297,83 @@ recognition, physical headphone routing, cue/alarm delivery and the complete
 36-screen/feature scope remain unaccepted. Later style candidates 19f6340 and
 305ea8b are outside this evidence head and are not certified by these images.
 The overall app gate remains **FAIL / incomplete**.
+
+## Re-review: CI 40037791812, exact source bb582cf
+
+Individually opened all 29 new originals, the seven changed style-state images
+and all five available calendar originals below (41 files total). The exact
+source is bb582cf222f580d5b28e8fb446c963a9057f5c84; API36,1080×2316,density420,
+host audio disabled, fake library playback and fake phone-activity evidence.
+The complete run has 175 PNGs and 33/34 passing classes (50 passing methods).
+ChartClockFlowTest passed 4.366s; FavoriteSoundsFlowTest passed 20.487s;
+MissedNightFlowTest passed two methods in 21.739s. Passing those tests does not
+override visible defects or certify their physical production adapters.
+
+| Original PNG | Strict finding |
+| --- | --- |
+| chart-clock-overnight.png | Exact endpoints and readable 1/3/5 AM interiors, real gaps and actual aggregate tooltip render. REJECT visual treatment: default keyboard-focus gray slab covers the cream plot. |
+| chart-clock-night.png | Clock labels remain distinct in the narrower dark panel; omitted 5AM avoids collision. REJECT the default darker rectangular focus slab inside the rounded panel. |
+| chart-clock-short.png | 0/5/10/15/21.321-second labels and true zero/gap are correct. REJECT gray keyboard-focus slab. |
+| chart-clock-fold.png | Both real 2AM ticks have distinct offsets; selected aggregate crossing the clock fold is honest. REJECT gray focus slab and clipped two-line fixture title. |
+| favorites-all.png | Real decoded waveform rows, slim category accents, independent whole-recording/event stars and analysis-only metadata fit. No invented Play for absent PCM. |
+| favorites-playback.png | Brown active circle, selected soft card and expanded actual seek fit. Lower list content naturally continues below scroll viewport. |
+| favorites-recreated.png | Paused seek position survives recreation with no autoplay. P2: paused Play circle blends into the same soft card background. |
+| favorites-week.png | Real date-range counts and three relevant rows fit; no old Speech row is invented for this range. |
+| favorites-filter-empty.png | Selected Speech(0), real all-category counts and Show all favorites recovery are coherent. |
+| favorites-speech.png | Selected Speech and lilac measured waveform fit; fake playback state is clearly labelled as fixture evidence. |
+| favorites-playback-error.png | Error remains visible alongside the retained waveform and retryable Play. P2: paused Play circle blends into card background. |
+| favorites-unstarred.png | Event count decreases while its independently starred whole recording remains. Notice and rows fit. |
+| favorites-reopened.png | Removed event stays absent after reopening; whole recording and other stars remain. |
+| favorites-deleted-audio.png | Shared-deleted PCM leaves honest Audio not recorded metadata, with no fake Play or wave. |
+| favorites-missing-audio.png | Missing whole recording says Recording unavailable; analysis-only rows remain nonplayable. |
+| favorites-empty.png | Zero counts, clear empty title and source-of-favorites guidance fit. |
+| favorites-error.png | Generic database error and full Try again are visible; no stale list falsely presented. |
+| favorites-retry.png | Retry returns to the genuine empty state without fake content. |
+| missed-night-denied.png | Explicit Usage Access action and truthful consent copy fit, but REJECT huge gray focus rectangle over the complete scroll body. |
+| missed-night-empty.png | Missing screen-event evidence is honest and complete Check again remains fixed. |
+| missed-night-incomplete.png | Missing endpoints are explicit; no time interval is guessed. |
+| missed-night-covered.png | Existing-record overlap is explicit and history remains unchanged. |
+| missed-night-error.png | Query error and complete Check again fit; error is visible separately from the permission state. |
+| missed-night-review.png | Actual evidence/review bands, duration, editable dates/times and full Save/Check again fit. Manual/no-sensor provenance is explicit. |
+| missed-night-edited.png | Reviewed end changes independently of original evidence, yielding 8h45; no synthetic sensor graph. |
+| missed-night-recreated.png | Revised duration/times and actual bands survive recreation; both actions fit. |
+| missed-night-busy.png | Saving status and disabled actions remain visible; no duplicate-save affordance. |
+| missed-night-conflict.png | Real overlap conflict remains visible with usable recovery. P2: error-expanded fixed footer leaves the lower provenance row partially clipped in the scroll viewport. |
+| missed-night-saved.png | Saved-to-history and manual/no-sensor provenance remain explicit; revised end and duration persist, full Done fits. |
+| report-reference-week.png | Lighter straight bedtime line and smaller markers are closer to board08; values and full Read details remain above dock. Narrow style correction passes. |
+| snore-settings-preview.png | Inset Play glyph now has breathing room inside its circle; selected states and full Save fit. Narrow glyph correction passes, fake output only. |
+| privacy-history-ready.png | Initial checked Keep favorites is violet; counters and complete destructive action fit. |
+| privacy-history-busy.png | Checked switch stays violet after recreation; busy action is disabled. Narrow drawable-state correction passes. Header is intentionally partially outside bottom-scrolled viewport. |
+| privacy-history-pending.png | Checked switch remains violet, pending-only retry and truthful counters/status fit. |
+| privacy-history-error.png | Violet checked switch survives recreated error state; original history/audio remain visible. |
+| privacy-history-done.png | Violet checked switch survives completed/recreated state; new history remains and audio is zero. |
+| calendar-history.png | Cream/Inter owned calendar, selected22/current24, month navigation and complete Use/Cancel/All dates fit. |
+| calendar-history-recreated.png | Same pending22 selection and complete actions survive recreation. |
+| calendar-trend.png | Anchor calendar has coherent selected state and complete actions; no clipping. |
+| calendar-editor.png | Nested Start date calendar has clear selected25 October2025 and full Use/Cancel. |
+| calendar-editor-recreated.png | Same pending selection survives recreation; visible calendar itself has no new defect. Journey fails immediately afterward. |
+
+The calendar test failed in 19.911s on its compressed line37, after the fifth
+image and before editor-selected/reopened. That line contains multiple asserts
+after nested Cancel/Use date. There is **no failure XML, screenshot or original
+error diagnostic** in this artifact, so the exact sub-assert/root cause cannot
+be established. A plausible transition/selector race is an inference, not an
+observed diagnosis. Keep all cancellation, offset, seconds/milliseconds and
+persistence assertions; scope actions to the actual top owned dialog, add
+bounded outer-window/label waits and preserve original failure diagnostics.
+The newly rounded seconds input's visual gate remains pending because its
+required editor-selected frame is absent. Calendar gate remains **FAIL,5/7**.
+
+Favorites' 14-image configuration/fake-playback gate passes narrowly with the
+paused-circle P2. Missing Night's ten non-denied states pass narrowly, but its
+complete visual gate remains rejected for the denied-state gray body. Chart's
+time model and native selection assertions pass, but its four-image visual
+gate remains rejected for default focus shading/title clipping. The shared
+input touch mode should be restored by the chart fixture after its explicit
+keyboard-focus test; that restoration does not replace a deliberate production
+focus design. All these are original captures, not corrected pixels.
+
+Later playback guard8078854/Walk4208789 and subsequent focus/calendar fixes are outside
+bb582cf evidence. No hardware playback, sensor recognition, sleep-stage
+estimation, alarm/cue/torch/power behavior or full36-screen completion is proved
+by this run. Overall feature/design acceptance remains **FAIL / incomplete**.
