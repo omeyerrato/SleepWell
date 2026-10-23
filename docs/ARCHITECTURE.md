@@ -64,3 +64,39 @@ tombstoned so SQLite ID reuse cannot replay another record. Reset-original also
 advances the edit revision. Format 3 backups carry edit/source/zone provenance;
 local operation tokens are not portable backup data. Restore validates before
 replacement, runs transactionally and disables imported alarms.
+
+
+## Sleep plan and dated goals
+
+`SleepPlan` is the single linked duration/bedtime/wake/wind-down model. Loading
+keeps legacy minute precision and mismatched saved times; an explicit adjustment
+links the values. The editor discloses a legacy mismatch instead of silently
+rewriting it. `SleepPlans.Repository` captures one concrete preferences file,
+checks the plan revision, and commits all plan fields together. Reminder failures
+are stored separately for retry. `PlanOperations` owns pending writes across
+Activity recreation without retaining an Activity. Reminder time calculation
+resolves each local bedtime first, then subtracts the advance in elapsed minutes
+so DST gaps/folds have explicit, tested semantics.
+
+Commitments freeze metric, target, local dates, 14/30-day length, time zone and
+sleep-day cutoff. `SleepDay` resolves cutoff instants consistently through DST.
+`GoalProgress` derives closed-day balances from effective records in the frozen
+zone: merged duration includes naps; bedtime uses the longest non-nap period of
+at least three hours. Missing/current/future days remain unknown. Stopping keeps
+history and excludes open days; a future cancellation has an empty counted range.
+No financial wagering or clinical debt/onset inference is present. Plans and
+commitments are currently local preferences and excluded from portable backups.
+
+`GuardActivity` keeps app selections and schedule enabled state in a cancellable
+recreation-safe draft. Save binds preferences before queueing; pause/resume is a
+separate change to the active guard's deadline. Accessibility access remains a
+real prerequisite and is shown as missing on the test phone. Configuration
+persistence tests do not certify package-redirection behavior.
+
+Root navigation now has Tonight, Alarms, Report and Settings per the user's
+latest instruction. It supersedes the original three-tab boards. Detail routes
+return through both app and system Back callbacks; the newest system-Back fix
+still needs connected-device verification after USB loss. The Tonight plan band
+uses a single path and an exact trimmed segment, rather than two divergent curves.
+Developer stop is gated by the Android debuggable flag; release and debug build
+configuration differ, but the alarm control was deliberately not executed.

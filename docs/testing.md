@@ -42,7 +42,7 @@ does not schedule alarms, start the microphone, change power state or uninstall
 anything. Only the explicit tracking flow starts a movement-only session. It checks the instrumentation result rather than relying
 on the shell command's zero exit code.
 
-`RootVisualTest` exercises Tonight/Report/Settings navigation and selected state,
+`RootVisualTest` exercises Tonight/Alarms/Report/Settings navigation and selected state,
 captures the actual screens, rejects development prose/export controls on roots,
 and leaves Tonight visible with a window-scoped keep-awake flag.
 
@@ -118,3 +118,19 @@ must retain a compatible APK and relaunch the scoped keep-awake window. Isolated
 fixture databases can survive a process crash and are never production history.
 Actual document-picker backup restoration, real overnight measurements and both
 clock-format settings remain separate verification work.
+
+
+`GoalModelTest` covers plan linkage/legacy precision, reminders through DST,
+closed-day cutoffs, immutable commitments, missing days and frozen-zone balances.
+`GoalStorageTest` uses UUID preferences and never schedules delivery.
+`GoalFlowTest` uses isolated records/preferences plus a non-delivering reminder:
+draft/recreation/cancel/save/reopen/commitment/Stop/Trends. It checks all personal
+rows/preferences unchanged and drains owned readers/writers before deletion.
+`GuardFlowTest` similarly isolates app-selection drafts and active pause state;
+it does not grant accessibility access, open blocked apps or test alarms. Tests
+reject active/interrupted personal tracking before opening MainActivity.
+
+Final Privacy/Wind-down/system-Back device verification is pending after USB loss;
+see VERIFICATION.md. Do not interpret any allowlist entry or test source as a
+passing result. Alarm controls, including the debug-only Developer stop, remain
+outside the permitted sleep-time test set. Never run the whole connected suite.

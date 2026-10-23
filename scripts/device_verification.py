@@ -15,7 +15,7 @@ import sys
 parser = argparse.ArgumentParser()
 parser.add_argument("--adb", required=True)
 parser.add_argument("--serial", required=True)
-parser.add_argument("--flow", choices=("roots", "appearance", "charts", "tracking", "history", "recreation"), default="roots")
+parser.add_argument("--flow", choices=("roots", "appearance", "charts", "tracking", "history", "recreation", "goals", "guard"), default="roots")
 args = parser.parse_args()
 root = Path(__file__).resolve().parents[1]
 adb = [args.adb, "-s", args.serial]
@@ -31,9 +31,11 @@ with (backup / "private-app-data.tar").open("wb") as output:
     command("exec-out", "run-as", "org.sleepwell.app", "tar", "-cf", "-", ".", stdout=output)
 print("Private app data backed up locally; never add .device-backups to Git.")
 flows = {
-    "roots": ("RootVisualTest", "root", ("tonight", "report", "settings", "report-selected")),
+    "roots": ("RootVisualTest", "root", ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "bedtime-guard", "privacy", "wind-down", "report-selected")),
     "appearance": ("AppearanceFlowTest", "appearance", ("automatic", "selected-0", "selected-1", "selected-2", "tonight-0", "tonight-1", "tonight-2", "large-contrast-tonight", "large-contrast-tonight-action", "large-contrast")),
     "charts": ("ChartVisualTest", "chart", ("dense", "selected", "empty")),
+    "guard": ("GuardFlowTest", "guard", ("draft", "saved", "paused")),
+    "goals": ("GoalFlowTest", "goal", ("plan", "tonight", "saved-plan", "empty-bank", "create", "bank", "reopened-bank", "bank-details", "stopped", "trends")),
     "recreation": ("RecordRecreationTest", "recreation", ()),
     "history": ("HistoryFlowTest", "history", ("empty", "editor", "reopened", "manual-signals", "history", "search", "filter", "trends-week", "trends-month", "trends-year", "tracked-editor", "tracked-saved", "short-editor")),
     "tracking": ("TrackingFlowTest", "tracking", ("setup", "collecting", "live", "paused", "resumed", "report", "reopened")),
@@ -47,6 +49,8 @@ try:
     for name in names:
         (capture/f"{name}.png").unlink(missing_ok=True)
     if names: command("shell", "rm", "-f", *[f"/sdcard/Android/data/org.sleepwell.app/files/verification/{prefix}-{name}.png" for name in names])
+    # Yield the CLI helper's exclusive UiAutomation connection to this runner.
+    command("shell", "am", "force-stop", "com.android.cli.interact.instrumentation")
     result = command("shell", "am", "instrument", "-w", "-r", "-e", "class",
                      "org.sleepwell.app."+test_class,
                      "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner",

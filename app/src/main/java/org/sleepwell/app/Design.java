@@ -40,6 +40,7 @@ final class Design {
     private static int ColorUtilsOverlay(int color){return androidx.core.graphics.ColorUtils.compositeColors(0x334a2615,color);}
     static TextView text(Context c,String value,int sp,int weight,int color){TextView t=new TextView(c);t.setText(value);t.setTextSize(sp*Appearance.scale(c));t.setTypeface(font(c,weight));t.setTextColor(Appearance.color(c,color));t.setIncludeFontPadding(false);t.setFontFeatureSettings("tnum");return t;}
     static TextView text(LinearLayout p,String value,int sp,int weight,int color){TextView t=text(p.getContext(),value,sp,weight,color);p.addView(t,new LinearLayout.LayoutParams(-1,-2));return t;}
+    static String clock(Context c,int minute){return java.time.LocalTime.of(Math.floorMod(minute,1440)/60,Math.floorMod(minute,1440)%60).format(java.time.format.DateTimeFormatter.ofPattern(android.text.format.DateFormat.is24HourFormat(c)?"HH:mm":"h:mm a",java.util.Locale.getDefault())).toUpperCase(java.util.Locale.getDefault());}
     static CharSequence timeText(String value){android.text.SpannableString span=new android.text.SpannableString(value);int suffix=value.lastIndexOf(' ');if(suffix>=0)span.setSpan(new android.text.style.RelativeSizeSpan(.55f),suffix,value.length(),0);return span;}
     static void pad(View v,int h,int vertical){v.setPadding(dp(v.getContext(),h),dp(v.getContext(),vertical),dp(v.getContext(),h),dp(v.getContext(),vertical));}
     static LinearLayout page(Activity a,boolean night,Integer destination,java.util.function.IntConsumer navigate){
@@ -59,8 +60,8 @@ final class Design {
         ScrollView scroll=new ScrollView(a);scroll.setFillViewport(true);scroll.setClipToPadding(false);scroll.setVerticalScrollBarEnabled(false);root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         LinearLayout body=col(a);pad(body,24,16);scroll.addView(body,new ScrollView.LayoutParams(-1,-1));
         if(destination!=null){LinearLayout dock=row(a);dock.setPadding(dp(a,8),dp(a,6),dp(a,8),dp(a,6));dock.setBackground(shape(a,night?palette.dock:SOFT,40));
-            String[] names={"Tonight","Report","Settings"},icons={"moon","report","settings"};
-            for(int n=0;n<3;n++){final int index=n;LinearLayout item=col(a);item.setGravity(Gravity.CENTER);item.setBackground(touch(a,destination==n?(night?palette.selected:CREAM):Color.TRANSPARENT,32));
+            String[] names={"Tonight","Alarms","Report","Settings"},icons={"moon","alarm","report","settings"};
+            for(int n=0;n<names.length;n++){final int index=n;LinearLayout item=col(a);item.setGravity(Gravity.CENTER);item.setBackground(touch(a,destination==n?(night?palette.selected:CREAM):Color.TRANSPARENT,32));
                 int color=Appearance.color(a,night?palette.softInk:(destination==n?INK:MUTED));Icon icon=new Icon(a,icons[n],color);item.addView(icon,new LinearLayout.LayoutParams(dp(a,26),dp(a,26)));space(item,4);TextView label=text(a,names[n],13,destination==n?600:400,color);label.setGravity(Gravity.CENTER);item.addView(label);
                 if(Appearance.contrast(a)&&destination==n){GradientDrawable selection=shape(a,night?palette.selected:CREAM,32);selection.setStroke(dp(a,2),night?palette.softInk:BROWN);item.setBackground(selection);}
                 item.setContentDescription(names[n]);item.setSelected(destination==n);item.setOnClickListener(v->navigate.accept(index));dock.addView(item,new LinearLayout.LayoutParams(0,dp(a,62*Math.max(1,fontScale(a))),1));}
@@ -93,11 +94,14 @@ final class Design {
         @Override protected void onDraw(Canvas original){super.onDraw(original);Canvas c=original;c.save();c.translate(getPaddingLeft(),getPaddingTop());c.scale((getWidth()-getPaddingLeft()-getPaddingRight())/24f,(getHeight()-getPaddingTop()-getPaddingBottom())/24f);Path p=new Path();
             switch(name){
                 case "back":c.drawLine(21,12,3,12,paint);c.drawLine(3,12,10,5,paint);c.drawLine(3,12,10,19,paint);break;
+                case "up":c.drawLine(5,15,12,8,paint);c.drawLine(12,8,19,15,paint);break;
                 case "down":c.drawLine(5,9,12,16,paint);c.drawLine(12,16,19,9,paint);break;
                 case "meal":c.drawLine(5,2,5,10,paint);c.drawLine(2,2,2,7,paint);c.drawLine(8,2,8,7,paint);c.drawLine(2,7,8,7,paint);c.drawLine(5,10,5,22,paint);c.drawLine(18,2,18,22,paint);p.moveTo(18,2);p.quadTo(11,8,18,12);c.drawPath(p,paint);break;
                 case "exercise":c.drawCircle(16,3,2,paint);p.moveTo(4,13);p.lineTo(9,7);p.lineTo(14,10);p.lineTo(20,10);p.moveTo(13,9);p.lineTo(10,15);p.lineTo(15,21);p.moveTo(10,15);p.lineTo(5,22);c.drawPath(p,paint);break;
                 case "tag":p.moveTo(3,3);p.lineTo(12,3);p.lineTo(22,13);p.lineTo(13,22);p.lineTo(3,12);p.close();c.drawPath(p,paint);c.drawCircle(8,8,1.5f,paint);break;
                 case "chevron":c.drawLine(9,5,16,12,paint);c.drawLine(16,12,9,19,paint);break;
+                case "minus":c.drawLine(4,12,20,12,paint);break;
+                case "attention":c.drawLine(12,3,12,14,paint);c.drawCircle(12,20,.8f,paint);break;
                 case "plus":c.drawLine(12,3,12,21,paint);c.drawLine(3,12,21,12,paint);break;
                 case "moon":p.moveTo(15,2);p.cubicTo(-3,0,-1,23,15,22);p.cubicTo(20,21,22,17,22,14);p.cubicTo(10,19,6,7,15,2);paint.setStyle(Paint.Style.FILL);c.drawPath(p,paint);paint.setStyle(Paint.Style.STROKE);break;
                 case "report":for(int i=0;i<3;i++){paint.setStrokeWidth(4);c.drawLine(5+i*7,20,5+i*7,10-(i%2)*7,paint);}break;
@@ -106,6 +110,7 @@ final class Design {
                 case "sound":p.moveTo(3,10);p.lineTo(7,10);p.lineTo(12,5);p.lineTo(12,19);p.lineTo(7,14);p.lineTo(3,14);p.close();c.drawPath(p,paint);c.drawArc(11,4,22,20,-55,110,false,paint);break;
                 case "tasks":for(int i=0;i<3;i++){c.drawCircle(3,5+i*7,1,paint);c.drawLine(8,5+i*7,21,5+i*7,paint);}break;
                 case "bed":c.drawLine(2,7,2,21,paint);c.drawLine(22,11,22,21,paint);c.drawRect(2,11,22,17,paint);c.drawRect(5,7,11,11,paint);break;
+                case "battery":c.drawRoundRect(6,4,18,23,2,2,paint);c.drawRect(10,1,14,4,paint);c.drawLine(9,8,15,8,paint);break;
                 case "bell":p.moveTo(5,17);p.lineTo(7,14);p.lineTo(7,9);p.cubicTo(7,2,17,2,17,9);p.lineTo(17,14);p.lineTo(19,17);p.close();c.drawPath(p,paint);c.drawArc(9,17,15,22,0,180,false,paint);c.drawLine(12,2,12,3,paint);break;
                 case "lock":c.drawRoundRect(5,10,19,22,2,2,paint);c.drawArc(8,1,16,15,180,180,false,paint);c.drawCircle(12,15,1,paint);c.drawLine(12,16,12,18,paint);break;
                 case "shield":p.moveTo(12,2);p.lineTo(21,6);p.lineTo(20,14);p.quadTo(18,20,12,23);p.quadTo(6,20,4,14);p.lineTo(3,6);p.close();c.drawPath(p,paint);c.drawLine(8,12,11,15,paint);c.drawLine(11,15,17,9,paint);break;
@@ -113,6 +118,8 @@ final class Design {
                 case "plug":c.drawLine(8,1,8,7,paint);c.drawLine(16,1,16,7,paint);c.drawRoundRect(5,7,19,15,3,3,paint);c.drawLine(12,15,12,23,paint);break;
                 case "calendar":c.drawRoundRect(3,5,21,22,2,2,paint);c.drawLine(3,10,21,10,paint);c.drawLine(8,2,8,7,paint);c.drawLine(16,2,16,7,paint);break;
                 case "github":p.moveTo(5,9);p.lineTo(4,3);p.lineTo(9,5);p.quadTo(12,4,15,5);p.lineTo(20,3);p.lineTo(19,9);p.cubicTo(24,16,17,19,14,18);p.lineTo(14,23);p.moveTo(10,23);p.lineTo(10,18);p.cubicTo(4,19,0,15,5,9);c.drawPath(p,paint);p.reset();p.moveTo(10,21);p.cubicTo(4,23,5,18,2,18);c.drawPath(p,paint);break;
+                case "cloud":p.moveTo(6,20);p.cubicTo(-2,20,0,10,6,10);p.cubicTo(5,0,21,0,20,11);p.cubicTo(27,14,23,20,20,20);p.close();c.drawPath(p,paint);break;
+                case "upload":c.drawLine(12,17,12,2,paint);c.drawLine(6,8,12,2,paint);c.drawLine(12,2,18,8,paint);p.moveTo(3,14);p.lineTo(3,22);p.lineTo(21,22);p.lineTo(21,14);c.drawPath(p,paint);break;
                 case "file":p.moveTo(4,2);p.lineTo(14,2);p.lineTo(21,9);p.lineTo(21,22);p.lineTo(4,22);p.close();c.drawPath(p,paint);c.drawLine(14,2,14,9,paint);c.drawLine(14,9,21,9,paint);break;
                 case "palette":p.moveTo(20,15);p.cubicTo(27,2,4,-4,2,10);p.cubicTo(0,20,12,26,14,21);p.cubicTo(17,17,14,15,20,15);p.close();c.drawPath(p,paint);for(int i=0;i<3;i++)c.drawCircle(7+i*5,7+(i==1?-2:1),1,paint);break;
                 case "motion":p.moveTo(1,12);p.cubicTo(5,12,4,3,8,3);p.cubicTo(12,3,10,21,15,21);p.cubicTo(19,21,18,8,23,10);c.drawPath(p,paint);break;

@@ -18,7 +18,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
     private SensorManager sensors;private TextView progress;private NfcAdapter nfc;
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);setShowWhenLocked(true);setTurnScreenOn(true);getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,()->Ui.toast(this,"Complete the challenge, snooze, or use emergency dismiss."));
+        if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,()->Ui.toast(this,"Complete the challenge or snooze."));
         if(!Prefs.flag(this,"ringing")) { finish();return; }
         try { alarm=Alarm.read(new JSONObject(Prefs.text(this,"active_alarm","{}"))); } catch(JSONException e) { finish();return; }
         if(state!=null) { completed=state.getInt("completed");shakes=state.getInt("shakes"); }
@@ -45,13 +45,13 @@ public class AlarmActivity extends Activity implements SensorEventListener {
                 target=alarm.difficulty*5;Ui.heading(card,"Move into your morning",24);progress.setText(shakes+" / "+target+" deliberate shakes");
                 Ui.text(card,"Hold the phone securely. A gentle shake counts at most once every half second.");
                 sensors=getSystemService(SensorManager.class);Sensor accel=sensors.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-                if(accel!=null) sensors.registerListener(this,accel,SensorManager.SENSOR_DELAY_GAME);else Ui.text(card,"This phone has no accelerometer. Use emergency dismiss below.");break;
+                if(accel==null || !sensors.registerListener(this,accel,SensorManager.SENSOR_DELAY_GAME)) {Design.text(card,"Motion sensor unavailable. Solve this instead.",14,400,Design.MUTED);math(card);}break;
             case "Memory": memory(card);break;
             case "Sequence": sequence(card);break;
             case "NFC":
-                Ui.heading(card,"Get up. Tap your tag.",24);Ui.text(card,"Use the NFC tag you enrolled in Bedtime settings. Keep it across the room.");
+                Ui.heading(card,"Get up. Tap your tag.",24);Ui.text(card,"Use the NFC tag you enrolled in Alarm options. Keep it across the room.");
                 nfc=NfcAdapter.getDefaultAdapter(this);
-                if(nfc==null || !nfc.isEnabled()) Ui.text(card,"NFC unavailable or switched off. Emergency dismiss is available below.");
+                if(nfc==null || !nfc.isEnabled() || Prefs.text(this,"nfcTag","").isEmpty()) {Design.text(card,"NFC unavailable. Solve this instead.",14,400,Design.MUTED);math(card);}
                 else nfc.enableReaderMode(this,tag->{String id=hex(tag.getId());if(id.equals(Prefs.text(this,"nfcTag",""))) runOnUiThread(this::dismiss);else runOnUiThread(()->Ui.toast(this,"That is not your enrolled tag."));},NfcAdapter.FLAG_READER_NFC_A|NfcAdapter.FLAG_READER_NFC_B|NfcAdapter.FLAG_READER_NFC_F|NfcAdapter.FLAG_READER_NFC_V|NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK,null);break;
             default:
                 if(!alarm.challenge.equals("Retype")){math(card);break;}
@@ -63,8 +63,8 @@ public class AlarmActivity extends Activity implements SensorEventListener {
         Design.space(card,12);Design.text(card,"Alarm stays on until you finish.",13,400,Design.MUTED).setGravity(Gravity.CENTER);
         int used=Prefs.number(this,"snoozes_"+alarm.id,0);
         if(used<alarm.snoozeLimit)Design.button(card,"Snooze "+alarm.snoozeMinutes+" min · "+(alarm.snoozeLimit-used)+" left",false,this::snooze);
-        Design.button(card,"Emergency dismiss",false,()->new AlertDialog.Builder(this).setTitle("Stop this alarm?")
-            .setMessage("Use this if a challenge is inaccessible or something urgent needs your attention.").setPositiveButton("Stop alarm",(d,w)->{alarm.awakeCheck=0;dismiss();}).setNegativeButton("Keep going",null).show());
+        if((getApplicationInfo().flags & android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE)!=0)Design.button(card,"Developer stop · debug build",false,()->new AlertDialog.Builder(this).setTitle("Stop this development alarm?")
+            .setMessage("Developer control for this debug build. It is hidden in release builds.").setPositiveButton("Stop alarm",(d,w)->{alarm.awakeCheck=0;dismiss();}).setNegativeButton("Keep going",null).show());
     }
     private void math(LinearLayout card){
         try{mathTask=MathTask.decode(Prefs.text(this,"mathTask",""));}catch(RuntimeException e){mathTask=MathTask.create(random);Prefs.put(this,"mathTask",mathTask.encode());}
@@ -119,5 +119,5 @@ public class AlarmActivity extends Activity implements SensorEventListener {
     @Override protected void onDestroy() {handler.removeCallbacksAndMessages(null);if(sensors!=null)sensors.unregisterListener(this);if(nfc!=null)nfc.disableReaderMode(this);super.onDestroy();}
     // Android 11/12 fallback only. Newer versions use the registered OnBackInvokedCallback.
     @android.annotation.SuppressLint("GestureBackNavigation")
-    @Override public void onBackPressed() { Ui.toast(this,"Complete the challenge, snooze, or use emergency dismiss."); }
+    @Override public void onBackPressed() { Ui.toast(this,"Complete the challenge or snooze."); }
 }

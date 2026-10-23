@@ -73,7 +73,7 @@ for line in (ROOT / "docs/FEATURES.md").read_text(encoding="utf-8").splitlines()
     if len(parts) != 3:
         continue
     title, mechanics, notes = parts
-    notes = notes.replace(" Wearable haptics pending.", "").replace("five original screens, dark palette", "three root destinations with supporting details, Changing light palette")
+    notes = notes.replace(" Wearable haptics pending.", "").replace("five original screens, dark palette", "four root destinations with supporting details, Changing light palette")
     if title.startswith(EXCLUDED):
         continue
     if title == "Community research sharing":
@@ -98,7 +98,7 @@ for row in rows:
         row["implementation"]=["AppearanceActivity.java", "Appearance.java", "AppearancePolicy.java", "Design.java", "TonightScreen.java", "NightArc.java"]
         row["validation"]="AppearancePolicyTest (3 passing); AppearanceFlowTest silent device pass 2026-10-22; narrow visual review in DESIGN-REVIEW.md"
     elif row["feature"] == "Dashboard / tabs":
-        row["notes"]="Partial: native Tonight/Report/Settings roots and real theme settings. User-arranged cards and other home configurations absent; no all-screen acceptance claim."
+        row["notes"]="Partial: native Tonight/Alarms/Report/Settings roots and real theme settings. User-arranged cards and other home configurations absent; no all-screen acceptance claim."
     elif row["feature"] == "Accelerometer tracking":
         row["implementation"]=["TrackingActivity.java", "TrackingService.java", "TrackingClock.java", "Store.java", "RecordChart.java", "ChartSeries.java"]
         row["screens"]="16,18,02,29"
@@ -126,6 +126,29 @@ for row in rows:
         row["implementation"]=["NoiseRecorder.java", "ClipBudget.java", "TrackingService.java", "Store.java"]
         row["validation"]="ClipBudgetTest 2 local passes; microphone/clip lifecycle not exercised under user's sleep-time restriction"
         row["notes"]="Code saves 10-second threshold-triggered WAV clips, shared maximum 60 and 30-second cooldown across pauses. Session clock anchors event timestamps. No classified labels; recording/restart hardware evidence still pending."
+
+# Verified 2026-10-23 plan/bank and four-tab UI milestone. Device delivery remains separate.
+PLAN_CODE = ["SleepPlan.java", "SleepPlans.java", "PlanActivity.java", "PlanOperations.java", "SleepDay.java"]
+BANK_CODE = PLAN_CODE + ["GoalCommitment.java", "GoalProgress.java", "GoalChart.java", "GoalBankActivity.java"]
+PLAN_TESTS = "GoalModelTest 22 local passes; GoalStorageTest 10 isolated device passes; GoalFlowTest silent pass (34.526 s), fake reminder only; actual reminder delivery not tested"
+for row in rows:
+    title = row["feature"]
+    if title == "Do not wake before duration goal":
+        row["implementation"] = PLAN_CODE + ["TrackingService.java"]
+        row["validation"] = PLAN_TESTS
+        row["notes"] = "Saved native plan changes the recorded-duration threshold used for early smart waking. The independent fixed alarm is unaffected; no real alarm was exercised."
+    elif title == "Alarm-only layout / skip occurrence / holiday skipping":
+        row.update(status="partial", screens="04, root Alarms", implementation=["MainActivity.java", "Design.java"], validation="RootVisualTest: four selected dock destinations and read-only alarm list; no alarm behavior test", notes="Dedicated Alarms root with native compact expandable entries and configuration routes. Skip/restore occurrence and holiday rules remain missing.")
+    elif title == "Dashboard / tabs":
+        row["validation"] = "RootVisualTest read-only four-tab selected-state pass12.274 s; final system-Back/recreation fix pending connected-device verification"
+    elif title == "Bedtime reminder":
+        row.update(status="partial", screens="13,15", implementation=PLAN_CODE+["Scheduler.java", "AlarmReceiver.java"], validation=PLAN_TESTS, notes="Native linked bedtime/wake/duration plan, wind-down and configurable advance; atomic revision-checked save, legacy minute precision, DST-aware reminder times, permission/error states. Actual OS notification delivery, reboot and denied-permission hardware flows remain unverified during the sleep-time restriction.")
+    elif title == "Anti-scrolling guard":
+        row.update(status="partial", screens="13,14,15", implementation=PLAN_CODE+["GuardActivity.java", "BedtimeGuard.java", "FocusActivity.java", "MainActivity.java"], validation="GuardFlowTest: draft/recreation/cancel/save/reopen/pause persist with identical personal rows/preferences; GoalModelTest guard-window cases. Accessibility enforcement not exercised.", notes="Dark native per-app draft editor saves selected installed packages and schedule; persistent five-minute pause/Resume state. Existing service consumes saved choices and wind-down-to-wake plan. Device access is absent and clearly disclosed; real redirect/call-exclusion tests remain pending.")
+    elif title in ("Goal bank / wagers", "Dated goal bank"):
+        row.update(status="implemented", screens="15,23 + goal supporting states", implementation=BANK_CODE, validation=PLAN_TESTS, notes="Free 14/30-day duration or bedtime commitments, immutable targets/time zone/cutoff, dated observed surplus/deficit and cumulative chart, motivation, stop/reopen. Current/future/missing days remain unknown; merged edited/manual durations and non-nap main bedtimes drive results. Financial wagers are not offered. Current portable backups exclude plans/commitments; no clinical sleep-debt or measured-onset claim.")
+    elif title == "Lost code fallback / travel bypass":
+        row.update(status="partial", implementation=["AlarmActivity.java", "AlarmEditorActivity.java", "MainActivity.java"], validation="Source review and debug/release compilation only; user prohibited alarm testing", notes="Unavailable accelerometer or unavailable/unconfigured NFC falls back to Math. Developer stop is conditional on the debug flag and hidden in release. NFC enrollment remains reachable in Alarms → Alarm options. Configurable multi-task/QR fallback and travel bypass remain missing; new fallback/stop behavior deliberately untested.")
 
 for n, row in enumerate(rows, 1):
     row["id"] = f"F{n:03}"

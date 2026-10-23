@@ -19,7 +19,7 @@ public class BedtimeGuard extends AccessibilityService {
             lastRedirect=android.os.SystemClock.elapsedRealtime();
             startActivity(new Intent(this,AlarmActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)); return;
         }
-        LocalTime now=LocalTime.now(); boolean bedtime=SleepMath.inBedtime(now.getHour()*60+now.getMinute(),Prefs.number(this,"bedtime",1350),Prefs.number(this,"wakeTime",420));
+        SleepPlan plan=SleepPlans.load(this);LocalTime now=LocalTime.now(); boolean bedtime=plan.guardActive(now.getHour()*60+now.getMinute());
         if(Prefs.flag(this,"bedGuard") && bedtime && blocked.contains(pkg) && System.currentTimeMillis()>Prefs.of(this).getLong("focusPauseUntil",0)) {
             lastRedirect=android.os.SystemClock.elapsedRealtime();
             startActivity(new Intent(this,FocusActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));

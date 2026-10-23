@@ -70,15 +70,16 @@
       "screens": "04–12,26",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
-        "Alarm.java",
-        "Scheduler.java",
-        "AlarmService.java",
-        "AlarmActivity.java",
-        "AlarmEditorActivity.java"
+        "SleepPlan.java",
+        "SleepPlans.java",
+        "PlanActivity.java",
+        "PlanOperations.java",
+        "SleepDay.java",
+        "TrackingService.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "GoalModelTest 22 local passes; GoalStorageTest 10 isolated device passes; GoalFlowTest silent pass (34.526 s), fake reminder only; actual reminder delivery not tested",
       "status": "implemented",
-      "notes": "Implemented for recorded session duration; fixed alarm is unaffected.",
+      "notes": "Saved native plan changes the recorded-duration threshold used for early smart waking. The independent fixed alarm is unaffected; no real alarm was exercised.",
       "id": "F005"
     },
     {
@@ -545,27 +546,33 @@
     },
     {
       "feature": "Alarm-only layout / skip occurrence / holiday skipping",
-      "screens": "04–12,26",
+      "screens": "04, root Alarms",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending.",
+      "implementation": [
+        "MainActivity.java",
+        "Design.java"
+      ],
+      "validation": "RootVisualTest: four selected dock destinations and read-only alarm list; no alarm behavior test",
+      "status": "partial",
+      "notes": "Dedicated Alarms root with native compact expandable entries and configuration routes. Skip/restore occurrence and holiday rules remain missing.",
       "id": "F039"
     },
     {
       "feature": "Bedtime reminder",
-      "screens": "13–21,27–30",
+      "screens": "13,15",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
-        "TrackingService.java",
-        "NoiseRecorder.java",
-        "BedtimeGuard.java",
-        "MainActivity.java"
+        "SleepPlan.java",
+        "SleepPlans.java",
+        "PlanActivity.java",
+        "PlanOperations.java",
+        "SleepDay.java",
+        "Scheduler.java",
+        "AlarmReceiver.java"
       ],
-      "validation": "Not verified for this feature",
-      "status": "implemented",
-      "notes": "Implemented: user-chosen local bedtime notification.",
+      "validation": "GoalModelTest 22 local passes; GoalStorageTest 10 isolated device passes; GoalFlowTest silent pass (34.526 s), fake reminder only; actual reminder delivery not tested",
+      "status": "partial",
+      "notes": "Native linked bedtime/wake/duration plan, wind-down and configurable advance; atomic revision-checked save, legacy minute precision, DST-aware reminder times, permission/error states. Actual OS notification delivery, reboot and denied-permission hardware flows remain unverified during the sleep-time restriction.",
       "id": "F040"
     },
     {
@@ -580,17 +587,22 @@
     },
     {
       "feature": "Anti-scrolling guard",
-      "screens": "13–21,27–30",
+      "screens": "13,14,15",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
-        "TrackingService.java",
-        "NoiseRecorder.java",
+        "SleepPlan.java",
+        "SleepPlans.java",
+        "PlanActivity.java",
+        "PlanOperations.java",
+        "SleepDay.java",
+        "GuardActivity.java",
         "BedtimeGuard.java",
+        "FocusActivity.java",
         "MainActivity.java"
       ],
-      "validation": "Not verified for this feature",
-      "status": "implemented",
-      "notes": "Implemented: selected packages, cross-midnight window, five-minute pause, optional accessibility grant. This extends the motivating use case.",
+      "validation": "GuardFlowTest: draft/recreation/cancel/save/reopen/pause persist with identical personal rows/preferences; GoalModelTest guard-window cases. Accessibility enforcement not exercised.",
+      "status": "partial",
+      "notes": "Dark native per-app draft editor saves selected installed packages and schedule; persistent five-minute pause/Resume state. Existing service consumes saved choices and wind-down-to-wake plan. Device access is absent and clearly disclosed; real redirect/call-exclusion tests remain pending.",
       "id": "F042"
     },
     {
@@ -1088,12 +1100,22 @@
     },
     {
       "feature": "Goal bank / wagers",
-      "screens": "02,22–25",
+      "screens": "15,23 + goal supporting states",
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending for a free habit bank; financial wagering is not part of this app.",
+      "implementation": [
+        "SleepPlan.java",
+        "SleepPlans.java",
+        "PlanActivity.java",
+        "PlanOperations.java",
+        "SleepDay.java",
+        "GoalCommitment.java",
+        "GoalProgress.java",
+        "GoalChart.java",
+        "GoalBankActivity.java"
+      ],
+      "validation": "GoalModelTest 22 local passes; GoalStorageTest 10 isolated device passes; GoalFlowTest silent pass (34.526 s), fake reminder only; actual reminder delivery not tested",
+      "status": "implemented",
+      "notes": "Free 14/30-day duration or bedtime commitments, immutable targets/time zone/cutoff, dated observed surplus/deficit and cumulative chart, motivation, stop/reopen. Current/future/missing days remain unknown; merged edited/manual durations and non-nap main bedtimes drive results. Financial wagers are not offered. Current portable backups exclude plans/commitments; no clinical sleep-debt or measured-onset claim.",
       "id": "F080"
     },
     {
@@ -1108,9 +1130,9 @@
         "GraphView.java",
         "MainActivity.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "RootVisualTest read-only four-tab selected-state pass12.274 s; final system-Back/recreation fix pending connected-device verification",
       "status": "partial",
-      "notes": "Partial: native Tonight/Report/Settings roots and real theme settings. User-arranged cards and other home configurations absent; no all-screen acceptance claim.",
+      "notes": "Partial: native Tonight/Alarms/Report/Settings roots and real theme settings. User-arranged cards and other home configurations absent; no all-screen acceptance claim.",
       "id": "F081"
     },
     {
@@ -1393,10 +1415,14 @@
       "feature": "Lost code fallback / travel bypass",
       "screens": "11",
       "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
-      "implementation": [],
-      "validation": "Not yet verified",
+      "implementation": [
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java",
+        "MainActivity.java"
+      ],
+      "validation": "Source review and debug/release compilation only; user prohibited alarm testing",
       "status": "partial",
-      "notes": "Emergency dismissal exists; configured fallback and travel inference absent.",
+      "notes": "Unavailable accelerometer or unavailable/unconfigured NFC falls back to Math. Developer stop is conditional on the debug flag and hidden in release. NFC enrollment remains reachable in Alarms → Alarm options. Configurable multi-task/QR fallback and travel bypass remain missing; new fallback/stop behavior deliberately untested.",
       "id": "F108"
     },
     {
@@ -1674,12 +1700,22 @@
     },
     {
       "feature": "Dated goal bank",
-      "screens": "15,23",
+      "screens": "15,23 + goal supporting states",
       "source": "https://sleep.urbandroid.org/docs/sleep/goals.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Goal currently affects early wake; no commitment periods or surplus/deficit bank.",
+      "implementation": [
+        "SleepPlan.java",
+        "SleepPlans.java",
+        "PlanActivity.java",
+        "PlanOperations.java",
+        "SleepDay.java",
+        "GoalCommitment.java",
+        "GoalProgress.java",
+        "GoalChart.java",
+        "GoalBankActivity.java"
+      ],
+      "validation": "GoalModelTest 22 local passes; GoalStorageTest 10 isolated device passes; GoalFlowTest silent pass (34.526 s), fake reminder only; actual reminder delivery not tested",
+      "status": "implemented",
+      "notes": "Free 14/30-day duration or bedtime commitments, immutable targets/time zone/cutoff, dated observed surplus/deficit and cumulative chart, motivation, stop/reopen. Current/future/missing days remain unknown; merged edited/manual durations and non-nap main bedtimes drive results. Financial wagers are not offered. Current portable backups exclude plans/commitments; no clinical sleep-debt or measured-onset claim.",
       "id": "F132"
     },
     {

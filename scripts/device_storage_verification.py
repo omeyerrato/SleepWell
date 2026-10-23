@@ -40,7 +40,8 @@ passed=False
 try:
     run('install','-r',str(root/'app/build/outputs/apk/debug/app-debug.apk'))
     run('install','-r',str(root/'app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk'))
-    result=run('shell','am','instrument','-w','-r','-e','class','org.sleepwell.app.StorageMigrationTest,org.sleepwell.app.RecordStorageTest,org.sleepwell.app.RecordReplayTest,org.sleepwell.app.RecordClockTest','org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner',capture_output=True,text=True,encoding='utf-8',errors='replace')
+    run('shell','am','force-stop','com.android.cli.interact.instrumentation')
+    result=run('shell','am','instrument','-w','-r','-e','class','org.sleepwell.app.StorageMigrationTest,org.sleepwell.app.RecordStorageTest,org.sleepwell.app.RecordReplayTest,org.sleepwell.app.RecordClockTest,org.sleepwell.app.GoalStorageTest','org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner',capture_output=True,text=True,encoding='utf-8',errors='replace')
     (backup/'test-result.txt').write_text(result.stdout+result.stderr,encoding='utf-8')
     print(result.stdout)
     if 'OK (' not in result.stdout:raise RuntimeError('Isolated migration tests failed; personal database must not be opened deliberately')

@@ -15,12 +15,13 @@ Wearables and watch companions are excluded from this scope.
 - Multiple one-shot or weekday alarms using Android's exact `setAlarmClock` API, rescheduled on reboot, clock/time-zone changes, and updates.
 - Original Daybreak and Pulse alarm tones, Android's default alarm sound, or your own audio file; configurable alarm-stream volume, gradual ramp, vibration, and optional loud backup escalation.
 - Math, matching pairs, sequence, retyping, shaking, and enrolled NFC challenges. Configurable rounds, limited snoozes, optional screen pinning, and post-dismissal wake-up checks.
-- Optional accessibility-based return to the active alarm, plus a bedtime guard for explicitly selected distracting apps. Emergency dismissal, calls, and Android Settings remain available.
+- Optional accessibility-based return to the active alarm, plus a bedtime guard for explicitly selected distracting apps. Calls and Android Settings remain available. Developer stop is shown only in debug builds.
 - Native user-started tracking setup and live movement, same-session pause/resume, excluded paused duration and saved reports. Optional light/noise capture; real measured graphs and local history. Only short movement-only flows have current device verification.
 - An experimental early wake-up window based on sustained movement, with the fixed alarm scheduled independently. Movement is not a measured sleep stage.
 - Optional microphone amplitude analysis and up to 60 ten-second noise-triggered WAV recordings per session across pauses; seven-day pruning when a new clip-saving session starts and local playback. Microphone lifecycle still needs hardware verification. **No sound classification yet.**
 - Rain and brown-noise sound loops with a sleep timer; bedtime reminders; nap alarms; recorded-duration goals, notes, tags and subjective ratings.
 - Native history search/date/context filters; manual periods and measured-record trims, awake edits, notes/tags/ratings, restore-original and selected-record deletion. Calendar Week/Month/Year duration and bedtime charts merge overlaps and leave missing dates unknown.
+- Native linked sleep plan and free 14/30-day duration/bedtime goal bank with observed balances, motivation and preserved stopped history. Missing days remain unknown; these preferences are currently excluded from portable backups.
 - CSV export, versioned JSON data backup, validated transactional restore, and deletion of local history.
 - Saved Changing light colors for Tonight (automatic local-clock phases or fixed Midnight/Pre-dawn/Dawn), text-size options, high-contrast controls and reduced-motion press feedback. Smart-light connectivity remains absent.
 
@@ -42,7 +43,7 @@ On Windows use `gradlew.bat`. Set `ANDROID_HOME` or an untracked `local.properti
 
 1. Open **Settings → Reliability**. Grant notifications, exact alarms, and full-screen alarm access.
 2. Review battery restrictions. On Samsung, put SleepWell in **Never auto sleeping apps**.
-3. Create an alarm, choose its challenge and sound, and enable it. Use the ten-second quiet test first.
+3. Open the **Alarms** tab, create an alarm, choose its challenge and sound, and enable it. Use the ten-second quiet test first.
 4. Optionally choose distracting apps in **Bedtime guard**, then enable the guard in Android Accessibility settings. This is voluntary friction, not an unbreakable device lock.
 5. To track a night, tap **Start sleep tracking** on Tonight, review the sensor and optional microphone settings, then **Start tracking**. Place the phone uncovered on the mattress; a bedside table does not transmit body movement reliably. Use **Pause tracking** / **Resume tracking** as needed, then **Stop tracking → End & review**.
 

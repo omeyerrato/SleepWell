@@ -88,7 +88,7 @@ public class TrackingService extends Service implements SensorEventListener {
         if(phase!=Phase.ACTIVE)return;try{long now=timestamp();double movement=count==0?0:Math.sqrt(sum/count);int measured=count;
         activeMinutes=movement>=.12?Math.min(5,activeMinutes+1):0;flush(now,audio,true);Prefs.put(this,"movement",String.format(Locale.ROOT,"%.3f",movement));
         for(Alarm alarm:store.alarms()){
-            long deadline=Prefs.of(this).getLong("deadline_"+alarm.id,0);boolean goalMet=!Prefs.flag(this,"smartNeedsGoal")||clock.active(SystemClock.elapsedRealtime())>=Prefs.number(this,"goal",480)*60000L;
+            long deadline=Prefs.of(this).getLong("deadline_"+alarm.id,0);boolean goalMet=!Prefs.flag(this,"smartNeedsGoal")||SleepPlans.load(this).goalMet(clock.active(SystemClock.elapsedRealtime()));
             if(alarm.enabled&&goalMet&&SleepMath.smartWake(System.currentTimeMillis(),deadline,alarm.smartWindow,movement,activeMinutes,measured)){stopSound();Scheduler.fire(this,alarm,true);break;}
         }
         if(clock.lifetime(SystemClock.elapsedRealtime())>=12*60*60*1000L){stop(false);return;}handler.postDelayed(minuteTick,60000);}catch(Exception e){Prefs.put(this,"trackingError","Could not save sensor readings: "+e.getMessage());stop(true);}

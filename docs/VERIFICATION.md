@@ -219,3 +219,53 @@ Missing dates stay unknown, overlapping duration is merged, and tagged naps do
 not become main bedtimes. These checks prove the stated short/isolate behaviors,
 not overnight tracking accuracy or full feature parity. See DESIGN-REVIEW.md for
 the bounded pass and remaining full-goal failure.
+
+
+## Plan, free goal bank and visible UI revision — 2026-10-23
+
+- Local model suite: **74 tests, zero failures/errors**, including 22 new plan,
+  commitment, closed-day, missing-data, overlap, nap, frozen-zone and DST cases.
+- Unit/lint/debug app/debug instrumentation/release assembly pass. Current lint:
+  **0 errors, 67 warnings**; this is not a zero-warning claim.
+- Isolated storage/migration/replay/clock plus GoalStorageTest: **27 passed in
+  0.955 s** on the S23 Ultra/API36. Ten new preference tests cover atomic revision
+  rejection, legacy precision, commitment replay/overlap/cancellation, corruption
+  preservation and concrete repository binding.
+- GoalFlowTest: **1 passed in 34.526 s**. Native plan draft/recreation/cancel,
+  save/reopen/downstream values, free commitment draft/cancel/create/reopen,
+  derived balance, Stop/history preservation and Trends verified. The reminder
+  adapter is a non-delivering test double. Ten real Android screenshots use
+  declared isolated manual records and were visually compared with board05 and
+  related supporting-state conventions. They are not a measured overnight night.
+- Final GuardFlowTest: **1 passed in 9.583 s**. Actual installed-app selection,
+  recreation, Back cancellation, atomic save, reopen and persistent pause deadline
+  verified in an isolated preferences file. Personal table rows and preference
+  values are compared with fixed-message assertions. No accessibility service
+  was enabled, no selected app was launched, and enforcement remains unverified.
+- RootVisualTest passed **12.274 s** for four selected dock states and read-only
+  detail navigation before the last corrections. A subsequent run exposed the
+  settings system-Back path returning through the wrong MainActivity. Source now
+  registers platform Back handling and scopes test app buttons by package; final
+  recreation/destination behavior is compiled but **not yet device-verified**.
+- Debug/release compile only for developer-stop gating and unavailable-sensor/NFC
+  Math fallbacks. No alarm/challenge/stop, sound, microphone, NFC, screen-off,
+  reboot or actual reminder-delivery test ran.
+
+The USB device disappeared before final RootVisualTest backup/install at04:45.
+That attempt failed before installing or running anything. Final Privacy heading,
+Wind-down row/countdown and system-Back fixes therefore remain pending actual
+phone screenshots/behavior checks. Earlier images must not be labeled current
+acceptance for those fixes. An isolated software emulator was attempted without
+sound; its Windows process exited with access violation0xC0000005 before ADB
+became available. No host hypervisor/driver or reboot changes were made.
+
+All original personal table values, original preference keys/values and clip bytes
+were compared between the private pre-update03:50 archive and last connected
+pre-root04:37 archive: unchanged; SQLite integrity passed. Goal/Guard cleanup
+waits for owned writers, Activities and readers before deleting only their UUID
+fixtures. A failed barrier retains those private files instead of deleting under
+an active writer. UI automation hands the CLI helper's exclusive connection to
+the test runner; no uninstall/clear-data runner is used.
+
+Full feature/screen parity remains incomplete. Remaining device constraints and
+implementation gaps are preserved in FEATURE-MATRIX and DESIGN-REVIEW.

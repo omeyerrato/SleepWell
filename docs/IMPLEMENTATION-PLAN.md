@@ -3,7 +3,7 @@
 The full BUILD-PROMPT remains the goal. There are 36 intended phone screens;
 wearables/watch companions and hardware vitals are excluded. No claim of all-screen final acceptance is made. The first UI pass was rejected by the user for visual fidelity.
 
-1. Repair the root compositions against the boards: Tonight, Report and Settings.
+1. Repair the root compositions against the boards: Tonight, Alarms, Report and Settings (latest user override).
    Correct proportion, dock alignment, icon vocabulary and system-bar continuity.
    Use actual saved records; a short record is not an overnight fixture.
 2. Finish the alarm vertical flow and its supporting settings. Preserve SQLite
@@ -53,5 +53,16 @@ The bounded board-08 records flow now passes default-size S23 behavior and stric
 visual review: manual records, effective tracked edits, search/filter, calendar
 trends, draft cancellation, same-save recreation and selected deletion. See
 VERIFICATION.md for exact evidence. Full screens/configurations, advanced stats,
-goals and rhythm remain open. Continue the remaining vertical flows; do not mark
+rhythm and advanced statistics remain open. Continue the remaining vertical flows; do not mark
 the overall goal complete from this milestone.
+
+
+The bounded Sleep goals → free14/30-day commitment → progress → reopen/Stop flow
+now passes model, storage, native-device and strict visual review. Dark Guard
+configuration draft/save/cancel/reopen/pause also passes; actual enforcement and
+reminder delivery remain open. Next: reconnect-independent implementation can
+continue, but final Privacy/Wind-down/system-Back verification must resume when
+hardware becomes available. Do not ask the sleeping user to reconnect or run an
+alarm. Do not mark those screens or the overall goal complete from source fixes.
+Developer stop is debug-only in source; the user's no-alarm-test restriction
+continues. See the latest VERIFICATION entry for the USB/emulator limitation.

@@ -18,6 +18,7 @@ final class RecordUi {
     static String date(long time,ZoneId zone){return Instant.ofEpochMilli(time).atZone(zone).format(DateTimeFormatter.ofPattern("EEE d MMM uuuu",Locale.getDefault()));}
     static String duration(long ms){long minutes=Math.max(0,ms/60000);if(ms<60000)return Math.max(0,ms/1000)+" sec";return minutes>=60?minutes/60+" h "+minutes%60+" min":minutes+" min";}
     static CharSequence units(String value){android.text.SpannableString s=new android.text.SpannableString(value);java.util.regex.Matcher m=java.util.regex.Pattern.compile("h|min|sec").matcher(value);while(m.find())s.setSpan(new android.text.style.RelativeSizeSpan(.55f),m.start(),m.end(),0);return s;}
+    static void enabled(View view,boolean value){view.setEnabled(value);if(view instanceof android.view.ViewGroup){android.view.ViewGroup group=(android.view.ViewGroup)view;for(int n=0;n<group.getChildCount();n++)enabled(group.getChildAt(n),value);}}
     static Intent intent(Activity a,Class<?> destination){return new Intent(a,destination).putExtra("visualReview",a.getIntent().getBooleanExtra("visualReview",false)).putExtra("verificationLabel",a.getIntent().getStringExtra("verificationLabel"));}
     static void review(Activity a){if(a.getIntent().getBooleanExtra("visualReview",false))a.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);}
     static void label(Activity a,LinearLayout body){String label=a.getIntent().getStringExtra("verificationLabel");if(label!=null&&!label.isEmpty()){Design.text(body,label,11,600,Design.BROWN);Design.space(body,8);}}

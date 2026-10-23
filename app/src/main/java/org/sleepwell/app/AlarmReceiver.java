@@ -11,6 +11,8 @@ public class AlarmReceiver extends BroadcastReceiver {
             if(Prefs.flag(c,"ringing")){Prefs.put(c,"forceBackup",true);c.startForegroundService(new Intent(c,AlarmService.class));}return;
         }
         if(Scheduler.BED.equals(action)) {
+            long deadline=Prefs.of(c).getLong("bedReminderAt",0);if(!SleepPlans.load(c).reminder||deadline<=0||System.currentTimeMillis()<deadline-1000)return;
+            if(TrackingService.running){Scheduler.bedtime(c);return;}
             c.getSystemService(NotificationManager.class).notify(300,new Notification.Builder(c,Notifications.BED)
                 .setSmallIcon(R.drawable.ic_moon).setContentTitle("Tomorrow starts tonight")
                 .setContentText("Put your phone down. Start your SleepWell night.").setContentIntent(Notifications.home(c)).setAutoCancel(true).build());

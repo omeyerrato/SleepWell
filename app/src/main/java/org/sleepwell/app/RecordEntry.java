@@ -18,5 +18,5 @@ final class RecordEntry {
     boolean durationLimited(){return !manual()&&active!=null&&active>1000+RecordIntervals.length(RecordIntervals.subtract(List.of(new RecordIntervals.Span(rawStart,rawEnd)),pauses));}
     String provenance(){return (manual()?"User-reported":source.equals("legacy")?"Legacy recording":"Phone recording")+(edited&&!manual()?" · edited":"")+(origin.equals("imported")?" · imported":"");}
     RecordEntry draft(RecordDraft d){return new RecordEntry(id,rawStart,rawEnd,active,source,origin,zone,interrupted,clockChanged,d,true,updated,pauses);}
-    LocalDate day(int cutoff){ZonedDateTime end=Instant.ofEpochMilli(edit.end).atZone(zone());LocalDate day=end.toLocalDate();return end.getHour()*60+end.getMinute()<cutoff?day.minusDays(1):day;}
+    LocalDate day(int cutoff){return SleepDay.label(edit.end,zone(),cutoff);}
 }

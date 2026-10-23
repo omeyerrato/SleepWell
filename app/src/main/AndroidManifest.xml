@@ -24,6 +24,9 @@
         <activity android:name=".AlarmEditorActivity" android:exported="false" />
         <activity android:name=".AppearanceActivity" android:exported="false" />
         <activity android:name=".TrackingActivity" android:exported="false" />
+        <activity android:name=".PlanActivity" android:exported="false" />
+        <activity android:name=".GuardActivity" android:exported="false" />
+        <activity android:name=".GoalBankActivity" android:exported="false" />
         <activity android:name=".HistoryActivity" android:exported="false" />
         <activity android:name=".RecordEditorActivity" android:exported="false" />
         <activity android:name=".RecordSignalsActivity" android:exported="false" />

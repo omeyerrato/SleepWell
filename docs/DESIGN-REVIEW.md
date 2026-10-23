@@ -204,3 +204,38 @@ advanced statistics/correlations, stage/sound classification and full Report
 remain unverified or incomplete. Alarm/challenge still lacks a passing full flow;
 routine/QR/walking, sonar/automatic starts, audio mixer/library, rhythm/travel,
 integrations and smart lights remain open. No alarm/audio/microphone test ran.
+
+
+## User-requested visible revision and bounded goal/guard gate — 2026-10-23
+
+The user explicitly added **Alarms as a fourth root tab**, overriding the original
+three-tab dock. Fresh S23 images were reviewed independently against boards01,
+02,05,11 and12. The full36-screen/phone-feature gate remains **FAIL**.
+
+Bounded visual passes at default S23 size: shared-path Tonight arc with no kink;
+centered icon/label/selected capsules for four roots; purple system-bar continuity;
+compact expandable Alarms list with styled switches, scaled AM/PM and anchored
+Nap/Add actions; clearer Settings list with a smaller GitHub footer and external
+launch glyph; readiness hero and check/attention/minus states; Sleep goals with
+full Wind-down row above Save, linked time pair and real bedtime bars; all ten
+isolated goal/create/stopped/lower-chart states; dark Guard drafts, real app
+icons/switches, full Calls card, fixed actions and persistent Paused until/Resume.
+
+Goal save/reopen/stop and Guard configuration persistence have separate passing
+behavior evidence in VERIFICATION. Actual reminder notification delivery,
+accessibility enforcement, alarm/challenge/fallback/developer-stop behavior,
+large fonts, RTL and broader device configurations are not certified.
+
+**Pending final images** after USB disconnected: Privacy summary heading was
+missing in the last actual image and has an explicit width/weight source fix;
+Wind-down row weights/countdown/past-bedtime state were rebuilt in source but
+lack a final screenshot; final system-Back/destination recreation fixes lack a
+connected-device result. These are pending gates, not visual passes inferred from
+compilation. The last attempted final runner failed before installation because
+ADB had no phone. The silent software-emulator fallback crashed before boot.
+
+The phone's real Report remains a short captured period with sparse measurements.
+No synthetic overnight curve, stage strip or sound classification was substituted
+to make it resemble the illustrative all-night board. Sonar, automatic starts,
+classification, routines/QR/walking, audio mixer/library, rhythm/travel,
+integrations/smart lights and other matrix gaps keep full acceptance open.

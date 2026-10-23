@@ -26,10 +26,11 @@ public final class Scheduler {
     }
     static void bedtime(Context c) {
         cancel(c,0,BED);
-        if(!Prefs.flag(c,"bedReminder") || !allowed(c)) return;
-        int t=Prefs.number(c,"bedtime",22*60+30);
-        long next=SleepMath.nextOccurrence(t/60,t%60,java.util.Set.of(),System.currentTimeMillis(),ZoneId.systemDefault());
-        c.getSystemService(AlarmManager.class).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,next,intent(c,0,BED));
+        SleepPlan plan=SleepPlans.load(c);
+        if(!plan.reminder){Prefs.of(c).edit().remove("bedReminderAt").apply();return;}
+        if(!allowed(c)){Prefs.put(c,"bedReminderAt",0L);return;}
+        long next=plan.nextReminder(System.currentTimeMillis(),ZoneId.systemDefault());
+        c.getSystemService(AlarmManager.class).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,next,intent(c,0,BED));Prefs.put(c,"bedReminderAt",next);
     }
     static void test(Context c,Alarm source) {
         Alarm a=Alarm.read(source.json()); a.id=-1; a.volume=Math.min(25,a.volume); a.rampSeconds=0; a.awakeCheck=0; a.pin=false;a.backupMinutes=0;a.vibrate=false;
