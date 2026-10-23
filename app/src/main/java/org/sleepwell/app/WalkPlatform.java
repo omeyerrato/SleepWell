@@ -16,5 +16,5 @@ final class WalkPlatform implements WalkSession.Port {
     public boolean allowed(){return context.checkSelfPermission(Manifest.permission.ACTIVITY_RECOGNITION)==PackageManager.PERMISSION_GRANTED;}
     public long now(){return SystemClock.elapsedRealtimeNanos();}
     public boolean begin(WalkSession.Sink sink){close();if(sensor==null||!allowed())return false;listener=new SensorEventListener(){public void onSensorChanged(SensorEvent event){if(event.values.length>0)sink.sample(event.timestamp,event.values[0]);}public void onAccuracyChanged(Sensor sensor,int accuracy){}};boolean registered=manager.registerListener(listener,sensor,SensorManager.SENSOR_DELAY_NORMAL,new Handler(Looper.getMainLooper()));if(!registered)close();return registered;}
-    public void close(){if(listener!=null){manager.unregisterListener(listener);listener=null;}}
+    public void close(){SensorEventListener closing=listener;listener=null;if(closing!=null)manager.unregisterListener(closing);}
 }
