@@ -46,6 +46,7 @@ ICONS = {
     "more": ("dots-three-vertical", "regular"), "trash": ("trash", "regular"),
     "external": ("arrow-square-out", "regular"), "alarm": ("alarm", "regular"),
     "help": ("question", "regular"),
+    "heart": ("heart", "regular"), "heartFilled": ("heart", "fill"),
     "vibrate": ("vibrate", "regular"), "flashlight": ("flashlight", "regular"),
 }
 

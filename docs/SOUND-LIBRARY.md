@@ -1,6 +1,6 @@
-# Sound library: storage milestone
+# Sound library: storage and review flow
 
-This is backend preparation for board 07's real recording controls. Inline playback, export and the replacement library UI are not implemented by this milestone. Existing estimates without saved PCM must remain honest analysis-only rows. No physical audio or microphone tests were run.
+Schema 6 supplies durable storage; the next source milestone adds board 07's inline recording controls, favorites, explicit deletion and retention settings. Audio export remains incomplete. Existing estimates without saved PCM remain analysis-only rows. No physical audio or microphone tests were run, and real playback output is not verified by the fake-output UI tests.
 
 ## Additive schema 6
 
@@ -14,13 +14,23 @@ A deletion intent is stored before filesystem changes. Failed unlink operations 
 
 - Replace MainActivity privacy's file-first deletion loop with a background call to SoundClips.eraseHistory(context,store). It first commits the data/journal transition, then recovers file deletions. Its boolean result is false if files remain pending, which the UI must report. Do not call FileSafety.deleteClip before staging.
 - Remove TrackingService's old hardcoded 7-day pruneClips call/method. It would ignore favorites and run filesystem work on the service's main thread. NoiseRecorder now calls SoundClips.prune on its owned worker once per session when clip saving is enabled; the old service call must be removed at integration so it cannot bypass favorite retention.
-- SoundClips.prune(context,store) reads audioRetentionDays (default 7, 0 means keep) and keepAudioFavorites (default true). UI controls and explicit policy-save processing are still pending.
+- SoundClips.prune(context,store) reads audioRetentionDays (default 7, 0 means keep) and keepAudioFavorites (default true). SoundLibrarySettingsActivity now supplies owned choice controls and a Save & apply retention action: it persists the selected policy and prunes expired ended recordings on a worker, reporting pending deletions honestly.
 - RecordEditor can continue deleting the returned paths: Records.delete now returns only files with no remaining clip references and stages recovery first. The next library open can call recover to complete journal cleanup.
 
 ## Real intervals and waveform data
 
 RecordingSlice.contained computes an event's offset inside actual WAV duration and rejects partial coverage or overflowing times. ClipWave reads bounded PCM16 mono/stereo WAVs only, validates chunks/format, and extracts actual 64-bin peaks for the selected interval. Missing, empty, truncated or unsupported recordings fail rather than receive synthetic bars. There is no output playback in these classes.
 
+SoundEventRows resolves chronological estimates and legacy recordings on a worker, clamps the visible interval to the edited night, and decodes only the first 50 matching rows (Load more is explicit). Legacy timing comes from actual WAV duration. Analysis-only or missing-file rows have no waveform or active Play control. Other/favorite filters and supporting settings are available from Sound event options; primary All/Snoring/Speech controls show actual counts. Deleting an estimate explicitly differs from deleting its shared WAV. The latter leaves linked estimates and favorites as metadata.
+
+The inline view renders actual interval peaks, normalized relative to that recording's maximum for visibility; digital silence remains flat. The custom seek control has a 48dp hit area, keyboard navigation and Android range accessibility, with no inherited platform slider geometry. Two additional unmodified MIT Phosphor heart assets use the same pinned upstream commit as the existing family.
+
+ClipReviewPlayer generation-fences preparation and state callbacks, requires an explicit foreground Play action, preserves position/filter/favorite state through recreation, and never resumes after focus loss. ClipPlayback owns MediaPlayer/file descriptors/focus on one worker. It revalidates clip/event identity and interval coverage before preparation, times out after eight seconds, coalesces seeks, bounds playback to the selected interval, and stops on pause, headset/noisy notification, completion or destruction. Tracking, a ringing alarm or active sleep sounds block review. It uses the existing media-stream volume, never changes global volume, never loops, and performs no network access. This native adapter has compiled but has not been exercised for real output.
+
 ## Verification
 
-Pure tests cover silence, signed/stereo peaks, malformed/truncated WAVs, optional chunks, exact interval peaks and incomplete coverage. SoundLibraryStorageTest uses three uniquely named database fixtures and owned silent WAV files: real schema 5 migration, independent favorites/shared-WAV retention, and durable recovery with blocked deletions/reused IDs. These native tests still require CI execution. Local debug and instrumentation APK builds, 235 pure tests, and compatible lint 9.4.1 completed successfully (zero errors, 72 warnings). Native migration/storage tests still need CI; no UI or hardware acceptance is implied.
+Pure tests cover silence, signed/stereo peaks, malformed/truncated WAVs, optional chunks, exact interval peaks and incomplete coverage. Nine additional review-state tests cover preparation acknowledgement, switching/stale callbacks, hidden/destroyed sessions, explicit pause/focus loss, seek bounds/completion, preparation failure/retry and duplicate/synchronous preparation callbacks. SoundLibraryStorageTest uses three uniquely named database fixtures and owned silent WAV files: real schema 5 migration, independent favorites/shared-WAV retention, and durable recovery with blocked deletions/reused IDs. These native tests still require CI execution.
+
+SoundLibraryUiTest has two CI-emulator-only methods. Actual synthetic WAVs and isolated databases feed the UI; an injected fake playback port proves exact 1000/2000ms offsets, 1950ms durations, accessible seek, favorite persistence, no autoplay after recreation, and deleting shared WAVs while preserving estimates. Its retention flow saves one-day retention and proves that expired unstarred WAVs are removed while a favorite's shared recording remains, then checks recreation. Seven PNGs are requested for visual comparison; native execution and board comparison remain pending. Fixture scopes drain all owned readers/player workers before factory/preference restoration and file/database cleanup.
+
+Local debug and instrumentation APK builds, 244 pure tests, and compatible lint 9.4.1 completed successfully (zero errors, 73 warnings). Passing compilation/fake outputs is not real playback, real microphone, full-night battery or screenshot acceptance. Audio export and portable sound-event/WAV backups remain incomplete; current backup format3 excludes them.

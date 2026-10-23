@@ -57,6 +57,8 @@ final class Icons {
             case "external" -> R.drawable.ic_phosphor_arrow_square_out_regular;
             case "alarm" -> R.drawable.ic_phosphor_alarm_regular;
             case "help" -> R.drawable.ic_phosphor_question_regular;
+            case "heart" -> R.drawable.ic_phosphor_heart_regular;
+            case "heartFilled" -> R.drawable.ic_phosphor_heart_fill;
             case "vibrate" -> R.drawable.ic_phosphor_vibrate_regular;
             case "flashlight" -> R.drawable.ic_phosphor_flashlight_regular;
             default -> R.drawable.ic_phosphor_question_regular;

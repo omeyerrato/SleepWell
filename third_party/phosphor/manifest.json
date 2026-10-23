@@ -6,6 +6,7 @@
     "assets/fill/chart-bar-fill.svg": "a417cc075c304374043e7d47f7622606b15f14e4c65663fd7a8a9898d768362a",
     "assets/fill/gear-six-fill.svg": "dc303bf88571d9aa8d56c30d2630303aa7aba4ca21c21010be3549d6c17666ce",
     "assets/fill/github-logo-fill.svg": "35b2036490005bcb95a68d07d43d441ae585c6c6dde0e902bb3daf0ddbc615b9",
+    "assets/fill/heart-fill.svg": "d90560d4f762f1b345bd2322cd1ef696926ffa74b0c1396933b6d926faf8341e",
     "assets/fill/moon-fill.svg": "099574dba1662cf9cdff50a1859ae8cc605a9b6a10bace00d89a0f52205e76df",
     "assets/fill/pause-fill.svg": "156d3cdfa5cea803caec50b35f49bc635070c8bd84e7fe78df94b025017ccee1",
     "assets/fill/play-fill.svg": "6d2a75bc5700a68dec50516ebae121c307807e4e6fcca5c863e5b4af006df880",
@@ -34,6 +35,7 @@
     "assets/regular/file-text.svg": "9a580a038cce9f6dd223597864abe1b5c5c03bf8176d2f7171574598468b16f7",
     "assets/regular/flashlight.svg": "57b4b07fc11f5df19951ee3ccad268f9067f31932586f773c685c739e66273c6",
     "assets/regular/fork-knife.svg": "24388d27ec51856a899b2ba8a1f68b1c31b385ed1f27eb275d5685ebf951b80f",
+    "assets/regular/heart.svg": "312dee73d1d969631d5498012f619ccf4edbdf31e1be3e65af4f4f1b3ac1b2dd",
     "assets/regular/info.svg": "438a1f319d53d86e840af73fb7b1d224c9224a437b9fa449a4e2cb45a82a3552",
     "assets/regular/lightbulb.svg": "b61e4d9685a1d74e579a7dbbe0d5222bdf8dcdcaf5b67825a17ff45363e4fadd",
     "assets/regular/list-checks.svg": "b2d11fc95de627d6abe9feeced5f7e0cdce3ccdf8d9f9d2334d596b8b5cc5cc4",
@@ -266,6 +268,14 @@
     "help": {
       "name": "question",
       "weight": "regular"
+    },
+    "heart": {
+      "name": "heart",
+      "weight": "regular"
+    },
+    "heartFilled": {
+      "name": "heart",
+      "weight": "fill"
     },
     "vibrate": {
       "name": "vibrate",
