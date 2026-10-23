@@ -28,8 +28,9 @@ class RecordChart extends View {
         setContentDescription(metric+" chart. "+measured+" actual readings. Missing intervals are blank. Dense bars average contiguous readings.");rebuild();invalidate();
     }
     static String clock(long time){return java.time.Instant.ofEpochMilli(time).atZone(java.time.ZoneId.systemDefault()).format(java.time.format.DateTimeFormatter.ofPattern("h:mm a",Locale.getDefault()));}
-    private String label(long time){return RecordUi.clock(getContext(),time,zone);}
-    private String axisTime(long time){return end-start<120000?Math.max(0,(time-start)/1000)+" s":label(time);}
+    private boolean clock24(){return android.text.format.DateFormat.is24HourFormat(getContext());}
+    private String label(long time){return ChartTicks.tooltip(time,start,end,zone,clock24(),Locale.getDefault());}
+    private String axisTime(long time){return ChartTicks.tooltip(time,start,end,zone,clock24(),Locale.getDefault());}
     private float density(){return getResources().getDisplayMetrics().density;}
     private float textSize(){return Design.sp(getContext(),10*Appearance.scale(getContext()));}
     private int ink(){return night?Design.LILAC:Appearance.color(getContext(),Design.MUTED);}
@@ -43,9 +44,10 @@ class RecordChart extends View {
     @Override protected void onDraw(Canvas canvas){
         super.onDraw(canvas);float d=density(),w=getWidth(),h=getHeight(),left=plotLeft(),right=plotRight();
         paint.setTypeface(Design.font(getContext(),400));paint.setTextSize(textSize());paint.setStyle(Paint.Style.FILL);paint.setTextAlign(Paint.Align.LEFT);
-        Paint.FontMetrics font=paint.getFontMetrics();float capsule=Math.max(22*d,font.descent-font.ascent+8*d),top=capsule+4*d,bottom=h-Math.max(28*d,textSize()+12*d);
+        List<ChartTicks.Tick> candidates=ChartTicks.candidates(start,end,zone,clock24(),Locale.getDefault(),5);List<ChartTicks.Placed> ticks=ChartTicks.layout(candidates,start,end,left,right,8*d,paint::measureText);int lines=1;for(ChartTicks.Placed tick:ticks)lines=Math.max(lines,tick.tick.label.split("\n").length);
+        Paint.FontMetrics font=paint.getFontMetrics();float lineHeight=font.descent-font.ascent+2*d,capsule=Math.max(22*d,font.descent-font.ascent+8*d),top=capsule+4*d,bottom=h-Math.max(28*d,lineHeight*lines+10*d);
         paint.setColor(ink());canvas.drawText("High",0,top+5*d,paint);canvas.drawText("Low",0,bottom,paint);
-        paint.setColor(night?0xff62566d:Appearance.contrast(getContext())?0xffa29185:Design.LINE);paint.setStrokeWidth(d*.7f);canvas.drawLine(left,bottom,right,bottom,paint);for(int n=0;n<=4;n++){float grid=left+(right-left)*n/4;canvas.drawLine(grid,top,grid,bottom,paint);}
+        paint.setColor(night?0xff62566d:Appearance.contrast(getContext())?0xffa29185:Design.LINE);paint.setStrokeWidth(d*.7f);canvas.drawLine(left,bottom,right,bottom,paint);canvas.drawLine(left,top,left,bottom,paint);canvas.drawLine(right,top,right,bottom,paint);for(ChartTicks.Placed tick:ticks)if(tick.tick.endpoint==0){float grid=x(tick.tick.time);canvas.drawLine(grid,top,grid,bottom,paint);}
         for(int n=0;n<bars.size();n++){
             ChartSeries.Bar bar=bars.get(n);float center=x(bar.from+(bar.to-bar.from)/2),width=Math.max(d,Math.min(14*d,(x(bar.to)-x(bar.from))*.8f));center=Math.min(right-width/2,Math.max(left+width/2,center));
             float y=(float)(bottom-(bottom-top)*(bar.value/high));y=Math.min(y,bottom-2*d); // Divide before multiplying: even a finite extreme reading must stay drawable.
@@ -58,9 +60,7 @@ class RecordChart extends View {
             }
         }
         if(bars.isEmpty()){paint.setColor(ink());paint.setTextAlign(Paint.Align.CENTER);canvas.drawText("No readings for this signal",w/2,(top+bottom)/2,paint);}
-        paint.setColor(ink());paint.setTextAlign(Paint.Align.LEFT);canvas.drawText(axisTime(start),left,h-7*d,paint);paint.setTextAlign(Paint.Align.RIGHT);canvas.drawText(axisTime(end),right,h-7*d,paint);
-        // A time label is only useful when it has room to remain distinct.
-        if(end-start>=30*60000L){int divisions=(right-left)>paint.measureText(label(start))*5?4:2;paint.setTextAlign(Paint.Align.CENTER);for(int n=1;n<divisions;n++)canvas.drawText(label(start+(end-start)*n/divisions),left+(right-left)*n/divisions,h-7*d,paint);}
+        paint.setColor(ink());paint.setTextAlign(Paint.Align.CENTER);for(ChartTicks.Placed tick:ticks){String[] labels=tick.tick.label.split("\n");for(int n=0;n<labels.length;n++)canvas.drawText(labels[n],(float)tick.center,h-7*d-(labels.length-1-n)*lineHeight,paint);}
     }
     @Override public boolean onTouchEvent(MotionEvent event){
         if(event.getAction()==MotionEvent.ACTION_UP){float ratio=Math.max(0,Math.min(1,(event.getX()-plotLeft())/(plotRight()-plotLeft())));long time=start+(long)((end-start)*ratio),distance=Long.MAX_VALUE;
