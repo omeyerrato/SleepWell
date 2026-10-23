@@ -27,4 +27,3 @@ Original standalone landscape illustration asset for SleepWell, not an app scree
 Path: `app/src/main/assets/sound-art/wind.png`
 
 Original standalone landscape illustration asset for SleepWell, not an app screenshot. Wide 2:1 composition, full bleed artwork only, no text, lettering, symbols, borders, phone frame or controls. Polished editorial 2D storybook illustration with broad layered flat shapes and subtle soft shading, crisp silhouettes, restrained detail, coordinated with a dark plum #241e30 and pale lilac #d9c4fc sleep app. A quiet green meadow and a rounded leafy tree at left in soft blue twilight, a handful of golden leaves floating gently across the scene. Calm simple rounded landscape.
-

@@ -5,6 +5,7 @@ import android.content.*;
 import android.os.*;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.runner.lifecycle.*;
 import androidx.test.uiautomator.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,7 @@ public class SoundSettingsFlowTest {
     private void clickText(String text){UiObject2 view=device.wait(Until.findObject(By.text(text)),4000);assertNotNull(text,view);view.click();device.waitForIdle();}
     private void clickDesc(String text){UiObject2 view=device.wait(Until.findObject(By.pkg(c.getPackageName()).desc(text)),4000);assertNotNull(text,view);view.click();device.waitForIdle();}
     private SleepSoundsActivity launch(){Instrumentation.ActivityMonitor monitor=instrumentation.addMonitor(SleepSoundsActivity.class.getName(),null,false);try{c.startActivity(new Intent(c,SleepSoundsActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));Activity a=monitor.waitForActivityWithTimeout(5000);assertNotNull(a);assertTrue(device.wait(Until.hasObject(By.desc("Ocean sound")),5000));device.waitForIdle();return (SleepSoundsActivity)a;}finally{instrumentation.removeMonitor(monitor);}}
-    private void capture(String name){device.waitForIdle();SystemClock.sleep(500);File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"sounds-settings-"+name+".png")));}
+    private void capture(String name){boolean[] ready={false};long end=SystemClock.elapsedRealtime()+10000;while(!ready[0]&&SystemClock.elapsedRealtime()<end){instrumentation.runOnMainSync(()->{for(Activity a:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))if(a instanceof SleepSoundsActivity)ready[0]=((SleepSoundsActivity)a).artworkReady();});if(!ready[0])SystemClock.sleep(100);}assertTrue("All four sound illustrations must finish decoding",ready[0]);device.waitForIdle();File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"sounds-settings-"+name+".png")));}
     @Test public void silentChoicesRecreateAndReopenWithoutPlayback()throws Exception{
         assertFalse(Prefs.flag(c,"ringing"));assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"tracking"));assertNull("Do not disturb personal music",SleepSoundService.snapshot());
         try(Store store=new Store(c)){assertTrue("Do not finalize a personal unfinished night",store.rows("SELECT id FROM sessions WHERE end IS NULL").isEmpty());}

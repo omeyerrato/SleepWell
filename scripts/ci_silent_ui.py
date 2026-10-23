@@ -8,6 +8,7 @@ from pathlib import Path
 import argparse
 import json
 import os
+import re
 import subprocess
 import time
 
@@ -55,11 +56,13 @@ failures = []
 for test in ("SoundSettingsFlowTest", "RootVisualTest"):
     result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app." + test, "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", check=False, timeout=180)
     (output / (test + ".txt")).write_text(result.stdout + result.stderr, encoding="utf-8")
-    print(test + ": " + ("PASS" if "OK (" in result.stdout else "FAIL"), flush=True)
-    if result.returncode or "OK (" not in result.stdout:
+    passed = bool(re.search(r"(?m)^OK \(1 test\)\s*$", result.stdout)) and "FAILURES!!!" not in result.stdout
+    print(test + ": " + ("PASS" if passed else "FAIL"), flush=True)
+    if result.returncode or not passed:
         failures.append(test)
 command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", str(output), check=False)
 required = ["sounds-settings-" + name + ".png" for name in ("rain", "ocean", "recreated", "reopened")]
+required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "bedtime-guard", "privacy", "wind-down")]
 failures += [name for name in required if not (output / name).is_file()]
 if failures:
     raise SystemExit("UI verification incomplete: " + ", ".join(failures))
