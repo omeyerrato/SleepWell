@@ -6,24 +6,26 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.*;
 import org.json.*;
 import java.util.*;
 
 /** A draft survives settings navigation and recreation; only Save alarm writes user data. */
 public class AlarmEditorActivity extends Activity {
-    private Alarm alarm;private String route="edit",inspectedTask="Math";private int taskRounds=3,soundTab;private Store store;private Dialog settingsDialog;private Bundle restoredPicker;
+    private Alarm alarm;private String route="edit",inspectedTask="Math";private int taskRounds=3,soundTab,taskIndex=-1;private ChallengeRoutine routineDraft;private Store store;private Dialog settingsDialog;private Bundle restoredPicker;
     @Override public void onCreate(Bundle state){super.onCreate(state);store=Records.open(this);RecordUi.review(this);
         try{alarm=Alarm.read(new JSONObject(state!=null?state.getString("draft"):getIntent().getStringExtra("alarm")));}
         catch(Exception e){finish();return;}
         route=state!=null?state.getString("route","edit"):getIntent().getStringExtra("route");if(route==null)route="edit";inspectedTask=state==null?alarm.challenge:state.getString("inspectedTask",alarm.challenge);taskRounds=state==null?alarm.difficulty:state.getInt("taskRounds",alarm.difficulty);soundTab=state==null?(alarm.tone.startsWith("content:")?1:0):state.getInt("soundTab",0);
+        routineDraft=alarm.challenges();if(state!=null){taskIndex=state.getInt("taskIndex",-1);try{routineDraft=ChallengeRoutineJson.decode(new JSONArray(state.getString("routineDraft")));}catch(Exception ignored){routineDraft=alarm.challenges();taskIndex=-1;}}
         if(android.os.Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);
         restoredPicker=state==null?null:state.getBundle("picker");render();
     }
-    @Override public void onSaveInstanceState(Bundle out){super.onSaveInstanceState(out);out.putString("draft",alarm.json().toString());out.putString("route",route);out.putString("inspectedTask",inspectedTask);out.putInt("taskRounds",taskRounds);out.putInt("soundTab",soundTab);if(settingsDialog instanceof SleepPicker.StateDialog)out.putBundle("picker",settingsDialog.onSaveInstanceState());}
+    @Override public void onSaveInstanceState(Bundle out){super.onSaveInstanceState(out);out.putString("draft",alarm.json().toString());out.putString("route",route);out.putString("inspectedTask",inspectedTask);out.putInt("taskRounds",taskRounds);out.putInt("taskIndex",taskIndex);out.putString("routineDraft",ChallengeRoutineJson.encode(routineDraft).toString());out.putInt("soundTab",soundTab);if(settingsDialog instanceof SleepPicker.StateDialog)out.putBundle("picker",settingsDialog.onSaveInstanceState());}
     private void back(){if(!route.equals("edit")){route=route.equals("gentle")?"sound":route.equals("task")?"challenge":"edit";render();}else finish();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){back();}
-    private void go(String next){route=next;render();}
+    private void go(String next){if(next.equals("challenge")&&route.equals("edit"))routineDraft=alarm.challenges();route=next;render();}
     private void render(){LinearLayout body=Design.page(this,false,null,null);
         switch(route){case "smart":smart(body);break;case "sound":sound(body);break;case "gentle":gentle(body);break;case "snooze":snooze(body);break;case "challenge":challenges(body);break;case "task":task(body);break;default:editor(body);}
         if(restoredPicker!=null){Bundle saved=restoredPicker;restoredPicker=null;if("time".equals(saved.getString("sleepPickerKind")))openDialog(()->SleepPicker.time(this,"Alarm time",alarm.hour*60+alarm.minute,value->{alarm.hour=value/60;alarm.minute=value%60;render();}));else {android.view.View row=findSetting(body,saved.getString("sleepPickerTitle"));if(row!=null)row.performClick();}if(settingsDialog instanceof SleepPicker.StateDialog)settingsDialog.onRestoreInstanceState(saved);}
@@ -39,7 +41,7 @@ public class AlarmEditorActivity extends Activity {
         LinearLayout name=Design.item(body,null,"Name",alarm.label,()->openDialog(()->SleepPicker.name(this,alarm.label,value->{alarm.label=value;render();})));Design.pad(name,14,0);name.setBackground(Design.shape(this,Design.SOFT,14));
         Design.space(body,14);Design.line(body);
         Design.item(body,"sun","Smart wake-up",alarm.smartWindow==0?"Off":alarm.smartWindow+" min",()->go("smart"));Design.line(body);
-        Design.item(body,"tasks","Challenges",alarm.challenge+" × "+alarm.difficulty,()->go("challenge"));Design.line(body);
+        Design.item(body,"tasks","Challenges",alarm.challenges().summary(),()->go("challenge"));Design.line(body);
         Design.item(body,"sound","Sound",toneName(alarm.tone),()->go("sound"));Design.line(body);
         Design.item(body,"alarm","Snooze",alarm.snoozeMinutes+" min",()->go("snooze"));Design.line(body);
         Design.item(body,"shield","Alarm protection","All alarms",()->startActivity(RecordUi.intent(this,AlarmProtectionActivity.class)));Design.line(body);
@@ -53,16 +55,21 @@ public class AlarmEditorActivity extends Activity {
         Design.item(body,"info","About smart wake-up",null,()->openDialog(()->SleepPicker.message(this,"Smart wake-up","Requires active movement tracking. Sustained movement can start the alarm earlier within this window. Your fixed alarm time stays scheduled. Phone motion estimates rest; it does not measure sleep stages.")));
         Design.fixedAction(body,"Save settings",()->go("edit"));
     }
-    private void challenges(LinearLayout body){Design.header(body,"Challenges",this::back);Design.text(body,"Task for this alarm",18,600,Design.INK);Design.space(body,12);
-        for(String task:new String[]{"Math","Memory","Sequence","Retype","Shake","NFC"}){
-            LinearLayout row=PlanActivity.detail(body,taskIcon(task),task,null,alarm.challenge.equals(task)?"Current":"",()->{inspectedTask=task;taskRounds=alarm.difficulty;go("task");});row.setContentDescription("Configure "+task);Design.line(body);
-        }
-        Design.space(body,14);Design.toggle(body,"Offer screen pinning",null,alarm.pin,on->alarm.pin=on);
-        Design.fixedAction(body,"Use challenge",()->go("edit"));
+    private void challenges(LinearLayout body){Design.header(body,"Challenges",this::back);Design.text(body,"Your routine",18,600,Design.MUTED);Design.space(body,16);
+        if(alarm.routineInvalid)Design.text(body,"Saved task settings could not be read. Choose and save a routine.",13,500,0xffa93919);
+        for(int n=0;n<routineDraft.tasks.size();n++)routineRow(body,n);
+        Design.space(body,16);Design.text(body,"Available tasks",17,600,Design.INK);Design.space(body,6);
+        for(String type:ChallengeRoutine.TYPES){LinearLayout row=Design.row(this);row.setMinimumHeight(Design.dp(this,64));LinearLayout.LayoutParams glyph=new LinearLayout.LayoutParams(Design.dp(this,28),Design.dp(this,28));glyph.rightMargin=Design.dp(this,16);row.addView(new Design.Icon(this,taskIcon(type),Design.BROWN),glyph);LinearLayout copy=Design.col(this);Design.text(copy,type,16,600,Design.INK);row.addView(copy,new LinearLayout.LayoutParams(0,-2,1));row.addView(new Design.Icon(this,"plus",Design.BROWN),new LinearLayout.LayoutParams(Design.dp(this,24),Design.dp(this,24)));row.setContentDescription("Configure "+type);row.setFocusable(true);row.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));row.setOnClickListener(v->{if(routineDraft.tasks.size()>=ChallengeRoutine.LIMIT){openDialog(()->SleepPicker.message(this,"Routine is full","Use up to eight tasks. Remove a task before adding another."));return;}taskIndex=-1;inspectedTask=type;taskRounds=1;go("task");});body.addView(row);Design.line(body);}
+        Design.space(body,10);Design.toggle(body,"Offer screen pinning",null,alarm.pin,on->alarm.pin=on);
+        Design.fixedAction(body,"Save routine",()->{alarm.setRoutine(routineDraft);go("edit");});
     }
+    private void routineRow(LinearLayout body,int index){ChallengeRoutine.Task task=routineDraft.tasks.get(index);LinearLayout row=Design.row(this);Design.pad(row,10,8);row.setBackground(Design.shape(this,Design.SOFT,16));row.setMinimumHeight(Design.dp(this,76));TextView number=Design.text(this,""+(index+1),13,600,Design.CREAM);number.setGravity(Gravity.CENTER);number.setBackground(Design.shape(this,Design.BROWN,20));row.addView(number,new LinearLayout.LayoutParams(Design.dp(this,28),Design.dp(this,28)));
+        LinearLayout content=Design.row(this);Design.pad(content,12,0);LinearLayout.LayoutParams glyph=new LinearLayout.LayoutParams(Design.dp(this,30),Design.dp(this,30));glyph.rightMargin=Design.dp(this,14);content.addView(new Design.Icon(this,taskIcon(task.type),Design.BROWN),glyph);LinearLayout copy=Design.col(this);Design.text(copy,task.type,16,600,Design.INK);Design.space(copy,4);Design.text(copy,task.detail(),12,400,Design.MUTED);content.addView(copy,new LinearLayout.LayoutParams(0,-2,1));content.addView(new Design.Icon(this,"chevron",Design.BROWN),new LinearLayout.LayoutParams(Design.dp(this,18),Design.dp(this,18)));content.setContentDescription("Edit task "+(index+1)+" "+task.type);content.setFocusable(true);content.setOnClickListener(v->{taskIndex=index;inspectedTask=task.type;taskRounds=task.rounds;go("task");});row.addView(content,new LinearLayout.LayoutParams(0,-2,1));View more=Design.iconButton(this,"more","Order or remove task "+(index+1),()->routineMenu(index));row.addView(more,new LinearLayout.LayoutParams(Design.dp(this,44),Design.dp(this,48)));body.addView(row,new LinearLayout.LayoutParams(-1,-2));Design.space(body,8);
+    }
+    private void routineMenu(int index){List<String> options=new ArrayList<>();if(index>0)options.add("Move up");if(index<routineDraft.tasks.size()-1)options.add("Move down");if(routineDraft.tasks.size()>1)options.add("Remove task");if(options.isEmpty()){openDialog(()->SleepPicker.message(this,"Keep one task","Add another task before removing this one."));return;}openDialog(()->SleepPicker.choices(this,"Task "+(index+1),options.toArray(new String[0]),-1,selected->{String action=options.get(selected);routineDraft=action.equals("Move up")?routineDraft.move(index,index-1):action.equals("Move down")?routineDraft.move(index,index+1):routineDraft.remove(index);render();}));}
     private static String taskIcon(String task){return switch(task){case "Shake"->"phone";case "Memory"->"file";case "Sequence"->"tasks";case "Retype"->"file";case "NFC"->"sonar";default->"tasks";};}
     private void task(LinearLayout body){Design.header(body,inspectedTask,()->go("challenge"));Design.space(body,12);
-        String description=switch(inspectedTask){case "Memory"->"Match every pair of symbols.";case "Sequence"->"Watch the digits, then repeat them in order.";case "Retype"->"Type the morning phrase exactly as shown.";case "Shake"->"Shake your phone deliberately to dismiss.";case "NFC"->"Scan your enrolled morning tag.";default->"Solve addition questions to dismiss.";};
+        String description=switch(inspectedTask){case "Memory"->"Match every pair of symbols.";case "Sequence"->"Watch the digits, then repeat them in order.";case "Retype"->"Type the morning phrase exactly as shown.";case "Shake"->"Complete the chosen number of deliberate shakes.";case "NFC"->"Scan your enrolled morning tag.";default->"Solve every addition round in this task.";};
         Design.text(body,description,15,400,Design.MUTED);Design.space(body,24);
         if(inspectedTask.equals("NFC")){
             Design.text(body,Prefs.text(this,"nfcTag","").isEmpty()?"No tag enrolled":"Morning tag enrolled",16,600,Design.INK);Design.space(body,8);Design.text(body,"Enroll your tag in Alarms → Alarm options.",13,400,Design.MUTED);
@@ -71,7 +78,7 @@ public class AlarmEditorActivity extends Activity {
         }else{
             picker(body,"tasks","Rounds",null,""+taskRounds,taskRounds,new int[]{1,2,3,4,5,6},n->n+(n==1?" round":" rounds"),n->taskRounds=n);
         }
-        Design.fixedAction(body,"Use "+inspectedTask,()->{alarm.challenge=inspectedTask;alarm.difficulty=taskRounds;go("challenge");});
+        Design.fixedAction(body,"Use "+inspectedTask,()->{ChallengeRoutine.Task chosen=new ChallengeRoutine.Task(inspectedTask,taskRounds);routineDraft=taskIndex<0?routineDraft.add(chosen):routineDraft.replace(taskIndex,chosen);go("challenge");});
     }
     private void sound(LinearLayout body){Design.header(body,"Alarm sound",this::back);RecordUi.segments(body,new String[]{"Built-in","My audio"},soundTab,n->{soundTab=n;render();});Design.space(body,12);
         if(soundTab==0){String[] tones={"daybreak","pulse","system"};for(String tone:tones){toneChoice(body,tone);Design.line(body);}}
@@ -119,7 +126,8 @@ public class AlarmEditorActivity extends Activity {
     }
     private void range(LinearLayout p,String title,int value,int min,int max,java.util.function.IntConsumer change){TextView label=Design.text(p,title+" · "+value,15,500,Design.INK);SeekBar seek=new SeekBar(this);seek.setContentDescription(title);AlarmSliders.style(seek);seek.setMax(max-min);seek.setProgress(value-min);seek.setMinimumHeight(Design.dp(this,48));p.addView(seek,new LinearLayout.LayoutParams(-1,Design.dp(this,56)));seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar b,int n,boolean user){label.setText(title+" · "+(n+min));if(user)change.accept(n+min);}public void onStartTrackingTouch(SeekBar b){}public void onStopTrackingTouch(SeekBar b){}});}
     private void save(){if(alarm.enabled&&!AlarmScheduling.port.allowed(this)){new AlertDialog.Builder(this).setTitle("Allow exact alarms").setMessage("Android requires Alarms & reminders access to schedule this alarm. Your draft is preserved.").setPositiveButton("Open settings",(d,w)->startActivity(new Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,Uri.parse("package:"+getPackageName())))).setNegativeButton("Keep editing",null).show();return;}
-        if(alarm.challenge.equals("NFC")&&Prefs.text(this,"nfcTag","").isEmpty()){Ui.toast(this,"Enroll an NFC tag in Alarms → Alarm options before using this challenge.");return;}
+        if(alarm.challenges().tasks.stream().anyMatch(task->task.type.equals("NFC"))&&Prefs.text(this,"nfcTag","").isEmpty()){Ui.toast(this,"Enroll an NFC tag in Alarms → Alarm options before using this challenge.");return;}
+        if(alarm.routineInvalid){Ui.toast(this,"Choose and save a valid challenge routine first.");return;}
         // Schedule first so a denied OS request cannot silently enable an unscheduled alarm in storage.
         try{AlarmScheduling.port.schedule(this,alarm);store.save(alarm);finish();}catch(SecurityException e){Ui.toast(this,e.getMessage());}
     }
