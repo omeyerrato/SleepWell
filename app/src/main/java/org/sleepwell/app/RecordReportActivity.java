@@ -14,7 +14,7 @@ public final class RecordReportActivity extends Activity {
     private void load(){
         int request=++generation;LinearLayout body=Design.page(this,false,null,null);RecordUi.header(body,"Sleep report",this::finish);Design.text(body,"Opening your night…",15,400,Design.MUTED);
         Records.Factory factory=Records.factory;
-        worker.execute(()->{try(Store store=factory.open(getApplicationContext())){RecordEntry entry=Records.get(store,id);ReportScreen.Snapshot snapshot=ReportScreen.snapshot(store,entry);runOnUiThread(()->{if(isDestroyed()||request!=generation)return;render(snapshot);});}
+        worker.execute(()->{try(Store store=factory.open(getApplicationContext())){RecordEntry entry=Records.get(store,id);ReportScreen.Snapshot snapshot=ReportScreen.snapshot(getApplicationContext(),store,entry);runOnUiThread(()->{if(isDestroyed()||request!=generation)return;render(snapshot);});}
             catch(Exception error){runOnUiThread(()->{if(isDestroyed()||request!=generation)return;LinearLayout page=Design.page(this,false,null,null);RecordUi.header(page,"Sleep report",this::finish);Design.space(page,24);Design.text(page,"This sleep record is unavailable.",18,600,Design.INK);Design.space(page,12);Design.button(page,"Try again",true,this::load);});}});
     }
     private void render(ReportScreen.Snapshot snapshot){LinearLayout body=Design.page(this,false,null,null);RecordUi.label(this,body);ReportScreen.render(this,body,snapshot,new ReportScreen.Actions(){

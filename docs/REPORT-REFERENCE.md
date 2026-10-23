@@ -39,3 +39,21 @@ target above the selected dock in all three trend periods. Capture now waits up
 to eight seconds for one resumed, attached, laid-out, focused decor to commit a
 hardware frame, and rechecks that same window before saving the screenshot.
 These corrections still require a fresh successful eight-screenshot native run.
+
+Per-night reports now read saved `sound_events` in the edited interval and show
+Snoring estimates, Speech estimates and Other sounds with their real event
+counts. The direct View sound events action passes that record's ID to the
+classified-event library. Event timestamps are starts; WAV timestamps are ends.
+Both overlap queries use explicit numeric bound casts, excluding intervals that
+merely touch the visible start or end. Manual entries show no sensor analysis.
+Analysis-only events have no invented waveform or playback button. Saved-audio
+counts require a nonempty, existing, safely resolved private WAV file; this check
+does not certify decoding or playback. Missing audio is described as unavailable.
+
+The isolated report fixture adds explicitly synthetic category rows, including
+start-straddling, boundary-only and other-session cases. It asserts three snoring
+and one speech event, zero saved recordings, the analysis-only message and direct
+read-only library navigation without Play. Raw classification/clip rows must be
+unchanged by editing. These rows verify the report projection, not the accuracy
+of the production classifier, recording, or speaker output. The same eight PNG
+names remain required; fresh native execution and visual review remain pending.
