@@ -18,7 +18,6 @@ EXCLUDED = ("Wear OS /", "Garmin", "Xiaomi /", "Pebble", "Legacy Tizen", "Blueto
 
 # Additional phone-capable subfeatures from the manual, not just its chapter titles.
 EXTRA = [
-    ("Phone flashlight wake-up", "08 + supporting flashlight setting", "alarms/alarm_settings.html", "partial", "Native optional torch source and fake ownership tests; hardware operation untested by request."),
     ("Reusable alarm defaults", "04,05,31", "alarms/alarm_settings.html", "missing", "Constructor defaults only; persisted global defaults absent."),
     ("Separate sound/vibration delay", "08", "alarms/alarm_settings.html", "missing", "Independent start offsets absent."),
     ("Flip snooze / hardware-key controls", "03", "alarms/alarm_settings.html", "missing", "Needs opt-in sensor/key behavior and accessibility alternatives."),
@@ -60,6 +59,7 @@ EXTRA = [
     ("User-controlled cloud / conflict / audio backup", "35", "services/backup_data.html", "missing", "No cloud transport; external user-owned storage/provider prerequisite."),
     ("Tasker events / webhook retries / MQTT transport", "33", "services/automation.html", "missing", "Needs opted-in transport, credentials, event schemas and actual failure tests."),
     ("Appearance options alter behavior", "36", "ux/personalize.html", "implemented", "Saved local-clock/manual Midnight/Pre-dawn/Dawn themes affect Tonight, dock and system bars. Text size, high-contrast indicators and static press effects are real. This narrower entry excludes smart lights and other personalization features; full screen 36 remains partial."),
+    ("Phone flashlight wake-up", "08 + supporting flashlight setting", "alarms/alarm_settings.html", "partial", "Native optional torch source and fake ownership tests; hardware operation untested by request."),
 ]
 
 rows = []

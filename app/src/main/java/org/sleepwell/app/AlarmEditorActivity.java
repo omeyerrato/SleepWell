@@ -76,12 +76,13 @@ public class AlarmEditorActivity extends Activity {
         choice(body,"sound","Volume ramp","Ramp duration",alarm.rampSeconds,new int[]{0,30,60,120,300,600,1440},n->alarm.rampSeconds=n);
         body.addView(new AlarmRampChart(this,alarm),new LinearLayout.LayoutParams(-1,Design.dp(this,225*Math.max(1,Design.fontScale(this)))));Design.space(body,16);Design.line(body);
         choice(body,"clock","Sound delay","Wait before starting the alarm sound",alarm.soundDelaySeconds,new int[]{0,30,60,120,180,300,600,1440},n->alarm.soundDelaySeconds=n);Design.line(body);Design.space(body,12);
-        Design.toggle(body,"Vibration","Vibrate from the start of the alarm",alarm.vibrate,on->alarm.vibrate=on);Design.space(body,12);
-        Design.toggle(body,"Screen sunrise","Gradually brighten the alarm screen",alarm.sunrise,on->alarm.sunrise=on);Design.space(body,12);
-        Design.toggle(body,"Flashlight wake-up","Keep the rear light on while the alarm rings",alarm.flashlight,on->alarm.flashlight=on);Design.space(body,12);
+        wakeToggle(body,"vibrate","Vibration","Vibrate from the start of the alarm",alarm.vibrate,on->alarm.vibrate=on);
+        wakeToggle(body,"sun","Screen sunrise","Gradually brighten the alarm screen",alarm.sunrise,on->alarm.sunrise=on);
+        wakeToggle(body,"flashlight","Flashlight wake-up","Keep the rear light on while the alarm rings",alarm.flashlight,on->alarm.flashlight=on);Design.space(body,12);
         Design.text(body,"Sunrise follows the alarm's start time. The volume ramp follows the sound delay; late playback joins the curve already in progress. Add a delay for a quiet light lead-in. Flashlight availability depends on your phone.",12,400,Design.MUTED);Design.space(body,16);
         Design.fixedAction(body,"Save changes",()->go("sound"));
     }
+    private void wakeToggle(LinearLayout body,String icon,String title,String description,boolean value,java.util.function.Consumer<Boolean> change){LinearLayout row=Design.row(this);Design.pad(row,0,12);row.setMinimumHeight(Design.dp(this,70));Design.Icon glyph=new Design.Icon(this,icon,icon.equals("sun")?0xffff8a00:Design.BROWN);LinearLayout.LayoutParams iconLayout=new LinearLayout.LayoutParams(Design.dp(this,26),Design.dp(this,26));iconLayout.rightMargin=Design.dp(this,16);row.addView(glyph,iconLayout);LinearLayout copy=Design.col(this);Design.text(copy,title,15,600,Design.INK);Design.space(copy,5);Design.text(copy,description,12,400,Design.MUTED);row.addView(copy,new LinearLayout.LayoutParams(0,-2,1));Switch toggle=new Switch(this);toggle.setContentDescription(title);Design.styleSwitch(this,toggle,Design.BROWN,0xffbcb5b0);toggle.setChecked(value);toggle.setOnCheckedChangeListener((view,checked)->change.accept(checked));row.addView(toggle);body.addView(row,new LinearLayout.LayoutParams(-1,-2));Design.line(body);}
     private void snooze(LinearLayout body){Design.header(body,"Snooze & backup",this::back);Design.text(body,"Snooze settings",21,600,Design.INK);Design.space(body,16);
         range(body,"Snooze duration (minutes)",alarm.snoozeMinutes,1,15,n->alarm.snoozeMinutes=n);range(body,"Maximum snoozes",alarm.snoozeLimit,0,5,n->alarm.snoozeLimit=n);
         Design.space(body,20);Design.text(body,"Backup alarm",21,600,Design.INK);range(body,"Escalate after (minutes, 0 = off)",alarm.backupMinutes,0,15,n->alarm.backupMinutes=n);

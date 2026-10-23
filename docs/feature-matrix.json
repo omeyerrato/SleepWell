@@ -1737,48 +1737,6 @@
       "tests": []
     },
     {
-      "feature": "Phone flashlight wake-up",
-      "screens": "07–08 + supporting flashlight state",
-      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
-      "implementation": [
-        "Alarm.java",
-        "AlarmWakePolicy.java",
-        "AlarmPlayback.java",
-        "AlarmAudioSink.java",
-        "AlarmVolumeLease.java",
-        "AlarmService.java",
-        "AlarmSunrise.java",
-        "AlarmTorch.java",
-        "TorchLease.java",
-        "AlarmActivity.java",
-        "AlarmEditorActivity.java",
-        "AlarmRampChart.java",
-        "Scheduler.java"
-      ],
-      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Native configuration/screenshots and strict source review pending. No actual alarm/effects test authorized.",
-      "status": "partial",
-      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. No speaker boost, smart-light control or independent vibration delay. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
-      "id": "F099",
-      "tests": [
-        {
-          "name": "AlarmLightTest",
-          "path": "app/src/test/java/org/sleepwell/app/AlarmLightTest.java"
-        },
-        {
-          "name": "AlarmPlaybackTest",
-          "path": "app/src/test/java/org/sleepwell/app/AlarmPlaybackTest.java"
-        },
-        {
-          "name": "AlarmVolumeLeaseTest",
-          "path": "app/src/test/java/org/sleepwell/app/AlarmVolumeLeaseTest.java"
-        },
-        {
-          "name": "AlarmWakePolicyTest",
-          "path": "app/src/test/java/org/sleepwell/app/AlarmWakePolicyTest.java"
-        }
-      ]
-    },
-    {
       "feature": "Reusable alarm defaults",
       "screens": "04,05,31",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
@@ -1786,7 +1744,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Constructor defaults only; persisted global defaults absent.",
-      "id": "F100",
+      "id": "F099",
       "tests": []
     },
     {
@@ -1811,7 +1769,7 @@
       "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Native configuration/screenshots and strict source review pending. No actual alarm/effects test authorized.",
       "status": "partial",
       "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. No speaker boost, smart-light control or independent vibration delay. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
-      "id": "F101",
+      "id": "F100",
       "tests": [
         {
           "name": "AlarmLightTest",
@@ -1839,7 +1797,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Needs opt-in sensor/key behavior and accessibility alternatives.",
-      "id": "F102",
+      "id": "F101",
       "tests": []
     },
     {
@@ -1850,7 +1808,7 @@
       "validation": "Not yet verified",
       "status": "partial",
       "notes": "Separate escalation exists; configurable duration, repeats and timeout do not.",
-      "id": "F103",
+      "id": "F102",
       "tests": []
     },
     {
@@ -1861,7 +1819,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Weekday/local time only; date, location-derived sunrise and goal time absent.",
-      "id": "F104",
+      "id": "F103",
       "tests": []
     },
     {
@@ -1872,7 +1830,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Must persist skipped deadline across reboot and expose undo.",
-      "id": "F105",
+      "id": "F104",
       "tests": []
     },
     {
@@ -1883,7 +1841,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Only fixed duration and count presently.",
-      "id": "F106",
+      "id": "F105",
       "tests": []
     },
     {
@@ -1894,7 +1852,7 @@
       "validation": "Not yet verified",
       "status": "partial",
       "notes": "Current delay rings unless confirmed earlier on Tonight; designed notification-then-deadline sequence absent.",
-      "id": "F107",
+      "id": "F106",
       "tests": []
     },
     {
@@ -1905,7 +1863,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "One task type with rounds is not a heterogeneous routine.",
-      "id": "F108",
+      "id": "F107",
       "tests": []
     },
     {
@@ -1920,7 +1878,7 @@
       "validation": "Source review and debug/release compilation only; user prohibited alarm testing",
       "status": "partial",
       "notes": "Unavailable accelerometer or unavailable/unconfigured NFC falls back to Math. Developer stop is conditional on the debug flag and hidden in release. NFC enrollment remains reachable in Alarms → Alarm options. Configurable multi-task/QR fallback and travel bypass remain missing; new fallback/stop behavior deliberately untested.",
-      "id": "F109",
+      "id": "F108",
       "tests": []
     },
     {
@@ -1931,7 +1889,7 @@
       "validation": "Not yet verified",
       "status": "partial",
       "notes": "Stable multiple-choice addition exists; graded complexity and operators absent.",
-      "id": "F110",
+      "id": "F109",
       "tests": []
     },
     {
@@ -1942,7 +1900,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Original search task and accessible alternative needed.",
-      "id": "F111",
+      "id": "F110",
       "tests": []
     },
     {
@@ -1953,7 +1911,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Needs minimum-length checks, journal persistence and mirrored rendering.",
-      "id": "F112",
+      "id": "F111",
       "tests": []
     },
     {
@@ -1964,7 +1922,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Requires microphone consent and detection evaluated beyond raw amplitude.",
-      "id": "F113",
+      "id": "F112",
       "tests": []
     },
     {
@@ -1975,7 +1933,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Additional phone-only categories; original content needed.",
-      "id": "F114",
+      "id": "F113",
       "tests": []
     },
     {
@@ -1986,7 +1944,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Step sensor or measured motion required; shaking is not walking.",
-      "id": "F115",
+      "id": "F114",
       "tests": []
     },
     {
@@ -2004,7 +1962,7 @@
       "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified.",
       "status": "partial",
       "notes": "Movement-only setup/start/pause/recreation/resume/stop/reopened-report device flow passes. Same session, persisted pause gaps and monotonic active duration; microphone restart, overnight and broader device evidence remain unverified.",
-      "id": "F116",
+      "id": "F115",
       "tests": [
         {
           "name": "SessionTimingTest",
@@ -2032,7 +1990,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Needs real conditions and compatible background service start handling.",
-      "id": "F117",
+      "id": "F116",
       "tests": []
     },
     {
@@ -2043,7 +2001,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Needs opt-in activity data and measured false-start behavior.",
-      "id": "F118",
+      "id": "F117",
       "tests": []
     },
     {
@@ -2054,7 +2012,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Duration only; never fabricate sensor/audio graphs for untracked nights.",
-      "id": "F119",
+      "id": "F118",
       "tests": []
     },
     {
@@ -2065,7 +2023,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Recorded signals exist; tested awake classification absent.",
-      "id": "F120",
+      "id": "F119",
       "tests": []
     },
     {
@@ -2076,7 +2034,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Needs gap provenance and monotonic timers.",
-      "id": "F121",
+      "id": "F120",
       "tests": []
     },
     {
@@ -2087,7 +2045,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Requires functioning sonar and independent accuracy evidence; no diagnosis claim.",
-      "id": "F122",
+      "id": "F121",
       "tests": []
     },
     {
@@ -2098,7 +2056,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Echo processing, speaker/mic compatibility, power budget and device evidence required.",
-      "id": "F123",
+      "id": "F122",
       "tests": []
     },
     {
@@ -2109,7 +2067,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Snore/talk/cough/baby/laugh requires licensed on-device model and evaluated labels.",
-      "id": "F124",
+      "id": "F123",
       "tests": []
     },
     {
@@ -2120,7 +2078,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Raw clips only; favorites and corrected labels absent.",
-      "id": "F125",
+      "id": "F124",
       "tests": []
     },
     {
@@ -2131,7 +2089,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Cannot implement cues before snore detection; loud noise is not snoring.",
-      "id": "F126",
+      "id": "F125",
       "tests": []
     },
     {
@@ -2153,7 +2111,7 @@
       "validation": "SoundPlaybackTest 24 and AudioCopyTest 7 local passes. SoundSettingsFlowTest API36 CI18.146s and S23 9.079s: choices/recreation/reopen, no Play, exact personal preference preservation. NativeSoundFlowTest CI25.664s. SoundImportPickerTest CI108.542s: actual picker, invalid/known+unknown oversize/denied/cancel, stale choice and portrait Activity recreation; SoundImportReopenTest CI13.883s: saved read grant after actual process restart, explicit native Play/Pause/Stop/removal with original bytes unchanged. All five pass at cdf17d5 in no-host-audio CI39927399518;26 actual captures. The later More-only icon correction at efa9cae has fresh two-flow CI39928589826 and13 actual captures, not a same-head five-flow claim. No physical audio/import, listening/full-fade or full-screen parity acceptance.",
       "status": "partial",
       "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Import uses retained validation, actual100MiB bounds, visible cancel, revision fencing and neutral art; narrower picker/read-grant/restart/playback/removal flow now has native CI evidence. Physical configuration/navigation only verified; Samsung Maximum power saving initially paused app, temporarily unpaused without changing global settings. Physical audio/import, actual tracking ownership and audible loop quality remain unverified. Paused timeout, pending-import process death, missing persistable grants and disk-failure reporting remain open. Timer completion uses only the last three seconds via a 57-second offset. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
-      "id": "F127",
+      "id": "F126",
       "tests": [
         {
           "name": "AudioCopyTest",
@@ -2189,7 +2147,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Original/licensed audio and actual stereo output needed.",
-      "id": "F128",
+      "id": "F127",
       "tests": []
     },
     {
@@ -2200,7 +2158,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Needs real scheduling and light output, with estimate disclosures.",
-      "id": "F129",
+      "id": "F128",
       "tests": []
     },
     {
@@ -2223,7 +2181,7 @@
       "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md.",
       "status": "implemented",
       "notes": "Configurable local sleep-day cutoff, date/search/context filters, merged overlapping periods and naps, calendar Week/Month/Year summaries. Missing days excluded; Year shows monthly averages of recorded days. Advanced statistics remain separate work.",
-      "id": "F130",
+      "id": "F129",
       "tests": [
         {
           "name": "HistoryFlowTest",
@@ -2259,7 +2217,7 @@
       "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md.",
       "status": "partial",
       "notes": "Native per-record add/remove tags and notes persist and feed search. Quantities, global rename/delete and impact analysis remain absent.",
-      "id": "F131",
+      "id": "F130",
       "tests": [
         {
           "name": "HistoryFlowTest",
@@ -2295,7 +2253,7 @@
       "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md.",
       "status": "implemented",
       "notes": "Native draft editor saves tracked trims, awake intervals, manual periods, tags/notes/rating and reset-original. Source, original bounds, zone and raw sensor rows remain distinct. Atomic version checks and persistent save tokens prevent stale saves and duplicate creates.",
-      "id": "F132",
+      "id": "F131",
       "tests": [
         {
           "name": "HistoryFlowTest",
@@ -2329,7 +2287,7 @@
       "validation": "GoalModelTest 22 local passes; GoalStorageTest 10 isolated device passes; GoalFlowTest silent pass (34.526 s), fake reminder only; actual reminder delivery not tested",
       "status": "implemented",
       "notes": "Free 14/30-day duration or bedtime commitments, immutable targets/time zone/cutoff, dated observed surplus/deficit and cumulative chart, motivation, stop/reopen. Current/future/missing days remain unknown; merged edited/manual durations and non-nap main bedtimes drive results. Financial wagers are not offered. Current portable backups exclude plans/commitments; no clinical sleep-debt or measured-onset claim.",
-      "id": "F133",
+      "id": "F132",
       "tests": [
         {
           "name": "GoalFlowTest",
@@ -2353,7 +2311,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Needs coverage thresholds and missing intervals, not treating unknown days as no sleep.",
-      "id": "F134",
+      "id": "F133",
       "tests": []
     },
     {
@@ -2364,7 +2322,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Versioned contracts and explicit sender access controls required.",
-      "id": "F135",
+      "id": "F134",
       "tests": []
     },
     {
@@ -2375,7 +2333,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Needs calendar consent, provider availability and deterministic conflicts.",
-      "id": "F136",
+      "id": "F135",
       "tests": []
     },
     {
@@ -2386,7 +2344,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Sleep-only consent and read/write behavior; hardware vitals excluded.",
-      "id": "F137",
+      "id": "F136",
       "tests": []
     },
     {
@@ -2397,7 +2355,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "No cloud transport; external user-owned storage/provider prerequisite.",
-      "id": "F138",
+      "id": "F137",
       "tests": []
     },
     {
@@ -2408,7 +2366,7 @@
       "validation": "Not yet verified",
       "status": "missing",
       "notes": "Needs opted-in transport, credentials, event schemas and actual failure tests.",
-      "id": "F139",
+      "id": "F138",
       "tests": []
     },
     {
@@ -2426,7 +2384,7 @@
       "validation": "AppearancePolicyTest (3 passing); AppearanceFlowTest silent device pass 2026-10-22; narrow visual review in DESIGN-REVIEW.md",
       "status": "implemented",
       "notes": "Saved local-clock/manual Midnight/Pre-dawn/Dawn themes affect Tonight, dock and system bars. Text size, high-contrast indicators and static press effects are real. This narrower entry excludes smart lights and other personalization features; full screen 36 remains partial.",
-      "id": "F140",
+      "id": "F139",
       "tests": [
         {
           "name": "AppearanceFlowTest",
@@ -2435,6 +2393,48 @@
         {
           "name": "AppearancePolicyTest",
           "path": "app/src/test/java/org/sleepwell/app/AppearancePolicyTest.java"
+        }
+      ]
+    },
+    {
+      "feature": "Phone flashlight wake-up",
+      "screens": "07–08 + supporting flashlight state",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "Alarm.java",
+        "AlarmWakePolicy.java",
+        "AlarmPlayback.java",
+        "AlarmAudioSink.java",
+        "AlarmVolumeLease.java",
+        "AlarmService.java",
+        "AlarmSunrise.java",
+        "AlarmTorch.java",
+        "TorchLease.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java",
+        "AlarmRampChart.java",
+        "Scheduler.java"
+      ],
+      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Native configuration/screenshots and strict source review pending. No actual alarm/effects test authorized.",
+      "status": "partial",
+      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. No speaker boost, smart-light control or independent vibration delay. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
+      "id": "F140",
+      "tests": [
+        {
+          "name": "AlarmLightTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmLightTest.java"
+        },
+        {
+          "name": "AlarmPlaybackTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmPlaybackTest.java"
+        },
+        {
+          "name": "AlarmVolumeLeaseTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmVolumeLeaseTest.java"
+        },
+        {
+          "name": "AlarmWakePolicyTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmWakePolicyTest.java"
         }
       ]
     }

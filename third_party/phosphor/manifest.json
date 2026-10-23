@@ -31,6 +31,7 @@
     "assets/regular/exclamation-mark.svg": "cf71cf4605b70245a4d203979e0f83085ac83826dc7b4901672383a1dcebdb14",
     "assets/regular/faders-horizontal.svg": "9d821bb567dd1f1a467e054160b2fd390a6c7ec46961914127538d4e92540326",
     "assets/regular/file-text.svg": "9a580a038cce9f6dd223597864abe1b5c5c03bf8176d2f7171574598468b16f7",
+    "assets/regular/flashlight.svg": "57b4b07fc11f5df19951ee3ccad268f9067f31932586f773c685c739e66273c6",
     "assets/regular/fork-knife.svg": "24388d27ec51856a899b2ba8a1f68b1c31b385ed1f27eb275d5685ebf951b80f",
     "assets/regular/info.svg": "438a1f319d53d86e840af73fb7b1d224c9224a437b9fa449a4e2cb45a82a3552",
     "assets/regular/lightbulb.svg": "b61e4d9685a1d74e579a7dbbe0d5222bdf8dcdcaf5b67825a17ff45363e4fadd",
@@ -51,6 +52,7 @@
     "assets/regular/tag.svg": "56633631b2e56436c33010c432f5da46533d2cfcae9773e694ee90ad43d96d69",
     "assets/regular/trash.svg": "e6a830c0409f9e101e3695c981eef98427d39fd01f502b9cbd6900930b01f19c",
     "assets/regular/upload-simple.svg": "d2b22b75affd718a4a24d71ee71586b277cf48ddb7d52b7d7d0a85b47f8b12d1",
+    "assets/regular/vibrate.svg": "aded2db4f1dbb9fed27d0934a8562e6163ce68b3d9642527bc423804f7e9f596",
     "assets/regular/wave-sine.svg": "3be689afd9a500b9c522b5a8097ddec584dd1dd2d261cf1a7bfb9504c97c4bd3",
     "assets/regular/waveform.svg": "8f6a47cff9b0fb3a8f25fe411b9cc1b24d063d6577c8d07cc53b0e9b080afaa0",
     "assets/regular/x.svg": "7397b15e1fa66eaf6ff9b59fe91d483cb5c3bcf75b2fe052097ab6f0593b513a"
@@ -258,6 +260,14 @@
     },
     "help": {
       "name": "question",
+      "weight": "regular"
+    },
+    "vibrate": {
+      "name": "vibrate",
+      "weight": "regular"
+    },
+    "flashlight": {
+      "name": "flashlight",
       "weight": "regular"
     }
   }
