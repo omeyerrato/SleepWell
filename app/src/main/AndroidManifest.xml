@@ -49,6 +49,7 @@
         <activity android:name=".SoundEventsActivity" android:exported="false" />
         <activity android:name=".SoundLibrarySettingsActivity" android:exported="false" />
         <activity android:name=".SoundArchiveActivity" android:exported="false" />
+        <activity android:name=".FavoriteSoundsActivity" android:exported="false" />
         <activity android:name=".SnoreSoundRouteActivity" android:exported="false" />
         <activity android:name=".RecordSignalsActivity" android:exported="false" />
         <activity android:name=".AlarmActivity" android:exported="false" android:showWhenLocked="true" android:turnScreenOn="true" android:launchMode="singleTask" />
