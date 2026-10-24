@@ -64,3 +64,13 @@ backup/recreate/save/reopen boundaries pass. Supporting compositions are usable;
 full board04 fidelity and true CameraX/ringing transition remain unverified.
 Fallback operator switches also differ from the compact Math operator grid.
 No real camera, AlarmActivity, microphone or output was executed.
+
+Operator-control consistency follow-up14c4d5a replaces the four large fallback
+switches with the same accessible compact cards as a Math task. Both routes
+share MathOperatorGrid, preserving checked semantics and the56dp minimum target.
+The native QR journey additionally rejects removal of its last operator,
+retains the selected value through recreation/save/reopen, checks all card
+edges stay inside the rows and requires a fallback-error original. This is a
+13-frame source candidate; the current frozen9188e78 run still has12 frames.
+Scoped debug/native APK and lint pass1m23s. Fresh UI/visual proof is pending;
+no actual camera, alarm or output was run.

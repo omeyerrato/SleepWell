@@ -355,6 +355,12 @@ for row in rows:
     elif row["feature"] == "Automatic sound labels":
         row["validation"] += " New10-fixture source retains all8 prior recordings and adds whole62.621s solo laughter/72.906s independent infant PCM selected before inference; test-only3MiB/80s bounds, all hashes/counts and521 label indices verified. Mandatory new positives/cross-negatives await actual CPU execution; model/threshold/grouping unchanged."
 
+# Shared fallback controls are a later UI candidate, outside the frozen native run.
+for row in rows:
+    if row["feature"] in ("Typed arithmetic / operators / complexity", "Math", "QR/barcode sequences"):
+        row["implementation"] += ["MathOperatorGrid.java"]
+        row["validation"] += " Later14c4d5a shares the Math/QR operator cards; scoped debug/native APK and lint pass1m23s. QR last-operator error plus card geometry require13 original frames in a future run; current frozen9188e78 still requires12."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

@@ -473,9 +473,10 @@
         "ChallengeRoutineJson.java",
         "AlarmEditorActivity.java",
         "AlarmActivity.java",
-        "Backup.java"
+        "Backup.java",
+        "MathOperatorGrid.java"
       ],
-      "validation": "GradedMathTest12 and integrated387 pure tests pass. GradedMathConfigurationTest1 PASS23.318s ata8362a1/CI40047180910: all7 original settings/recreate/save/reopen/error frames, private SQLite/JSON and bad-import preservation. Actual card geometry assertions pass; strict review clears clipped borders in all6 detail frames. Actual ringing/keyboard execution remains unverified.",
+      "validation": "GradedMathTest12 and integrated387 pure tests pass. GradedMathConfigurationTest1 PASS23.318s ata8362a1/CI40047180910: all7 original settings/recreate/save/reopen/error frames, private SQLite/JSON and bad-import preservation. Actual card geometry assertions pass; strict review clears clipped borders in all6 detail frames. Actual ringing/keyboard execution remains unverified. Later14c4d5a shares the Math/QR operator cards; scoped debug/native APK and lint pass1m23s. QR last-operator error plus card geometry require13 original frames in a future run; current frozen9188e78 still requires12.",
       "status": "partial",
       "notes": "Per-task grade, chosen +/minus/multiply/divide operators, choices or typed whole-number answer, and independent rounds. Actual runtime consumes the settings; division is whole-number and subtraction nonnegative. Omitted default JSON preserves legacy Medium/addition/choice behavior. Strict cross-task/invalid JSON backup validation. Full runtime/device and new visual acceptance remain open.",
       "id": "F021",
@@ -582,9 +583,10 @@
         "QrCodeActivity.java",
         "ChallengeRoutine.java",
         "AlarmEditorActivity.java",
-        "AlarmActivity.java"
+        "AlarmActivity.java",
+        "MathOperatorGrid.java"
       ],
-      "validation": "MorningCodeTest, QrDecoderTest, QrLumaTest, QrProofTest and QrScanSessionTest:14 new pure passes on401-test branch, debug/native APK and lint pass. Actual generated UTF-8/rotated/inverted QR bytes decode. QrCodeConfigurationTest1 PASS24.619s ata8362a1/CI40047180910 with12 individually reviewed inert fake-camera/access originals. Draft/save/reopen/private backup invariants pass; actual camera/ringing transition and full reference-screen fidelity remain unverified.",
+      "validation": "MorningCodeTest, QrDecoderTest, QrLumaTest, QrProofTest and QrScanSessionTest:14 new pure passes on401-test branch, debug/native APK and lint pass. Actual generated UTF-8/rotated/inverted QR bytes decode. QrCodeConfigurationTest1 PASS24.619s ata8362a1/CI40047180910 with12 individually reviewed inert fake-camera/access originals. Draft/save/reopen/private backup invariants pass; actual camera/ringing transition and full reference-screen fidelity remain unverified. Later14c4d5a shares the Math/QR operator cards; scoped debug/native APK and lint pass1m23s. QR last-operator error plus card geometry require13 original frames in a future run; current frozen9188e78 still requires12.",
       "status": "partial",
       "notes": "Explicit camera enrollment stores only location label and SHA256, never raw QR text or URLs. Multiple ordered distinct QR tasks can each own1 routine unit; nonce/run/unit/hash and current occurrence fence completion. Saved one-question graded Math fallback; no permission dialog while ringing. Optional CameraX/ZXing offline dependencies, missing permission/camera/error/cancel states and strict backup JSON. General barcode formats, generated printable codes and actual CameraX compatibility remain missing or unverified.",
       "id": "F027",
@@ -2069,9 +2071,10 @@
         "ChallengeRoutineJson.java",
         "AlarmEditorActivity.java",
         "AlarmActivity.java",
-        "Backup.java"
+        "Backup.java",
+        "MathOperatorGrid.java"
       ],
-      "validation": "GradedMathTest12 and integrated387 pure tests pass. GradedMathConfigurationTest1 PASS23.318s ata8362a1/CI40047180910: all7 original settings/recreate/save/reopen/error frames, private SQLite/JSON and bad-import preservation. Actual card geometry assertions pass; strict review clears clipped borders in all6 detail frames. Actual ringing/keyboard execution remains unverified.",
+      "validation": "GradedMathTest12 and integrated387 pure tests pass. GradedMathConfigurationTest1 PASS23.318s ata8362a1/CI40047180910: all7 original settings/recreate/save/reopen/error frames, private SQLite/JSON and bad-import preservation. Actual card geometry assertions pass; strict review clears clipped borders in all6 detail frames. Actual ringing/keyboard execution remains unverified. Later14c4d5a shares the Math/QR operator cards; scoped debug/native APK and lint pass1m23s. QR last-operator error plus card geometry require13 original frames in a future run; current frozen9188e78 still requires12.",
       "status": "partial",
       "notes": "Per-task grade, chosen +/minus/multiply/divide operators, choices or typed whole-number answer, and independent rounds. Actual runtime consumes the settings; division is whole-number and subtraction nonnegative. Omitted default JSON preserves legacy Medium/addition/choice behavior. Strict cross-task/invalid JSON backup validation. Full runtime/device and new visual acceptance remain open.",
       "id": "F109",

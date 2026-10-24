@@ -860,3 +860,15 @@ A crash after durable expiry claim can prevent re-ring; old records lack the
 original nonce/due-time needed for complete migration. These are documented
 limitations, not claims of guaranteed wakefulness or complete reliability.
 All new screen/action/persistence acceptance still requires the fresh native run.
+
+## Shared operator cards14c4d5a — later source candidate
+
+Scoped debug and instrumentation APK builds plus lint pass1m23s. The Math and
+QR fallback routes now share accessible compact operator cards with the same
+checked semantics and row geometry; immutable question/settings logic is
+unchanged. Existing Math geometry assertions remain. QR adds actual last-
+operator rejection, retained selection and fallback-card geometry assertions,
+requiring one new fallback-error screenshot. The following source contract is
+42classes/60methods/225originals; liveCI40051144096 remains frozen at9188e78
+with224 originals. This later UI candidate is outside that run, and its original
+images/persistence assertions must be reviewed before acceptance.

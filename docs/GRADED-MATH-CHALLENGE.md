@@ -46,3 +46,11 @@ actual native operator-card bounds assertions. Strict review clears clipped top
 borders in all six detail frames. Cream routine icon wells/action separators
 also pass their six-frame visual correction. These supporting gates leave the
 actual ringing window and runtime keyboard unverified.
+
+The existing operator-card UI is now shared by MathOperatorGrid with QR's
+configurable fallback, preserving the same sizes, row alignment and checked
+accessibility semantics. Both use the existing immutable MathSettings toggle
+and last-operator validation. Debug/native APK builds and lint pass1m23s for
+14c4d5a; domain code is unchanged. A new QR fallback-error capture and geometry
+assertions require a future run; no new native appearance is inferred from this
+scoped build.
