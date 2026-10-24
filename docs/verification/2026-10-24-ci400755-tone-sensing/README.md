@@ -1,0 +1,13 @@
+# Integrated Tone and sensing configuration evidence
+
+Frozen source: d268994acc9d8d2ce7294b143f15878e805532ca.
+[Tone](https://github.com/omeyerrato/SleepWell/actions/runs/40075529966): PASS5classes/6methods/all39required images. Strict individually opens all16 Tone originals and reuses unchanged prior Wake review; do not claim all39 newly inspected. Filename survives actual fresh reopen/cancel, busy import row has no chevron, complete preview/error/save layout passes bounded configuration/fake-preview gate. Assets1.299s,Grant0.341s,Tone38.528s,WakeSettings43.406s,WakeCheck2/35.301s. Residual filename alignment/speaker rail glyph polish and actual physical output/provider behavior remain unverified.
+
+[Sensing focused](https://github.com/omeyerrato/SleepWell/actions/runs/40075522359): FAIL4classes/14methods,20of31required frames. Real private SonarSettings1 and TravelStorage8 pass. Setup1of3methods pass; two20s actual generated-PCM DSP runs exceed the generic8s native readiness wait while still Testing. No DSP/quality threshold is changed. Travel1of2passes: settings journey fails UI click acknowledgment after its time dialog. Later source uses exact owned-runtime completion then ready UI, and one fully measured floating-dialog input followed by exact detach/focus; actions are never retried.
+
+[Full](https://github.com/omeyerrato/SleepWell/actions/runs/40075536456): FAIL54of57wholeclasses,123of126methods,337of345required frames. Setup3methods/all15required originals pass on this run, demonstrating CPU-wait sensitivity; no hardware accuracy follows. Tone and recurring flows pass after synchronization corrections. Failure classes: known solo-laughter classification; AlarmMenus stale Pulse selected-state read after the click; Travel dialog acknowledgment. Diagnosis shows Pulse actually selected. All57class logs remain unchanged.
+
+Strict compares all20focused originals and Sonar diagnostic against boards06/09. Initial setup black icons/handle on plum is rejected; other focused states use light bars. Sonar icon-card/text/stock-slider composition remains rejected against board06. Disabled Travel Arm looks enabled despite no manual session. Subsequent source restores actual plum/light bar policy with original-pixel predicates, introduces a real bedside asset/larger contiguous measured graph/purple slider, and mutes disabled Arm. Those later changes are not represented by this frozen evidence. No physical microphone/speaker/torch tests ran. Overnight sonar remains in progress; full app acceptance is incomplete.
+
+
+Retained raw files: 162; original PNGs: 88. SHA256SUMS covers every raw retained file. Only isolated emulator fixtures are included; private phone artifacts are excluded.

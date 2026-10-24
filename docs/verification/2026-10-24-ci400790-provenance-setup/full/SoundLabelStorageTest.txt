@@ -1,0 +1,206 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.SoundLabelStorageTest:
+INSTRUMENTATION_STATUS: test=staleRevisionTrimDeletedEventAndInvalidChoiceRejectTransactionally
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=staleRevisionTrimDeletedEventAndInvalidChoiceRejectTransactionally
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=crashRecoveryUsesDurableSoundEndsWithAndWithoutAnEpochAndBacksUpExactly
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=crashRecoveryUsesDurableSoundEndsWithAndWithoutAnEpochAndBacksUpExactly
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=portableMetadataCountTypesAndEndedSessionReferencesAreStrictlyBounded
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=portableMetadataCountTypesAndEndedSessionReferencesAreStrictlyBounded
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=portableMetadataRoundTripsCorrectionsAndLegacyFormatsRemainReadable
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=portableMetadataRoundTripsCorrectionsAndLegacyFormatsRemainReadable
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=abaChangesAndCounterOverflowCannotAuthorizeStaleDrafts
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=abaChangesAndCounterOverflowCannotAuthorizeStaleDrafts
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=archiveKeepsOriginalAndUserProvenanceAndRejectsChangedLabelsBeforeOutput
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=archiveKeepsOriginalAndUserProvenanceAndRejectsChangedLabelsBeforeOutput
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=versionSixMigrationPreservesAllExistingColumnsAndRows
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stack=android.database.sqlite.SQLiteException: duplicate column name: sensor (code 1 SQLITE_ERROR): , while compiling: ALTER TABLE sessions ADD COLUMN sensor TEXT NOT NULL DEFAULT 'unspecified'
+	at android.database.sqlite.SQLiteConnection.nativePrepareStatement(Native Method)
+	at android.database.sqlite.SQLiteConnection.-$$Nest$smnativePrepareStatement(Unknown Source:0)
+	at android.database.sqlite.SQLiteConnection$PreparedStatementCache.createStatement(SQLiteConnection.java:1572)
+	at android.database.sqlite.SQLiteConnection.acquirePreparedStatementLI(SQLiteConnection.java:1109)
+	at android.database.sqlite.SQLiteConnection.acquirePreparedStatement(SQLiteConnection.java:1137)
+	at android.database.sqlite.SQLiteConnection.prepare(SQLiteConnection.java:697)
+	at android.database.sqlite.SQLiteSession.prepare(SQLiteSession.java:625)
+	at android.database.sqlite.SQLiteProgram.<init>(SQLiteProgram.java:62)
+	at android.database.sqlite.SQLiteStatement.<init>(SQLiteStatement.java:34)
+	at android.database.sqlite.SQLiteDatabase.executeSql(SQLiteDatabase.java:2234)
+	at android.database.sqlite.SQLiteDatabase.execSQL(SQLiteDatabase.java:2154)
+	at org.sleepwell.app.Store.createSensorProvenance(Store.java:37)
+	at org.sleepwell.app.Store.onUpgrade(Store.java:46)
+	at android.database.sqlite.SQLiteOpenHelper.getDatabaseLocked(SQLiteOpenHelper.java:437)
+	at android.database.sqlite.SQLiteOpenHelper.getReadableDatabase(SQLiteOpenHelper.java:360)
+	at org.sleepwell.app.SoundLabelStorageTest.versionSixMigrationPreservesAllExistingColumnsAndRows(SoundLabelStorageTest.java:63)
+
+INSTRUMENTATION_STATUS: stream=
+Error in versionSixMigrationPreservesAllExistingColumnsAndRows(org.sleepwell.app.SoundLabelStorageTest):
+android.database.sqlite.SQLiteException: duplicate column name: sensor (code 1 SQLITE_ERROR): , while compiling: ALTER TABLE sessions ADD COLUMN sensor TEXT NOT NULL DEFAULT 'unspecified'
+	at android.database.sqlite.SQLiteConnection.nativePrepareStatement(Native Method)
+	at android.database.sqlite.SQLiteConnection.-$$Nest$smnativePrepareStatement(Unknown Source:0)
+	at android.database.sqlite.SQLiteConnection$PreparedStatementCache.createStatement(SQLiteConnection.java:1572)
+	at android.database.sqlite.SQLiteConnection.acquirePreparedStatementLI(SQLiteConnection.java:1109)
+	at android.database.sqlite.SQLiteConnection.acquirePreparedStatement(SQLiteConnection.java:1137)
+	at android.database.sqlite.SQLiteConnection.prepare(SQLiteConnection.java:697)
+	at android.database.sqlite.SQLiteSession.prepare(SQLiteSession.java:625)
+	at android.database.sqlite.SQLiteProgram.<init>(SQLiteProgram.java:62)
+	at android.database.sqlite.SQLiteStatement.<init>(SQLiteStatement.java:34)
+	at android.database.sqlite.SQLiteDatabase.executeSql(SQLiteDatabase.java:2234)
+	at android.database.sqlite.SQLiteDatabase.execSQL(SQLiteDatabase.java:2154)
+	at org.sleepwell.app.Store.createSensorProvenance(Store.java:37)
+	at org.sleepwell.app.Store.onUpgrade(Store.java:46)
+	at android.database.sqlite.SQLiteOpenHelper.getDatabaseLocked(SQLiteOpenHelper.java:437)
+	at android.database.sqlite.SQLiteOpenHelper.getReadableDatabase(SQLiteOpenHelper.java:360)
+	at org.sleepwell.app.SoundLabelStorageTest.versionSixMigrationPreservesAllExistingColumnsAndRows(SoundLabelStorageTest.java:63)
+
+INSTRUMENTATION_STATUS: test=versionSixMigrationPreservesAllExistingColumnsAndRows
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=alreadyRecoveredInterruptedTailPreservesRawNightAndEstimateWithoutClamping
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=alreadyRecoveredInterruptedTailPreservesRawNightAndEstimateWithoutClamping
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=correctionResetAndEffectiveCountsPreserveOriginalsAndWaveBytes
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=correctionResetAndEffectiveCountsPreserveOriginalsAndWaveBytes
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=linkedClipSnapshotRoundTripAcceptsSameIdAndRejectsRemovedChangedAndNewLinks
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=10
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=linkedClipSnapshotRoundTripAcceptsSameIdAndRejectsRemovedChangedAndNewLinks
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 1.123
+There was 1 failure:
+1) versionSixMigrationPreservesAllExistingColumnsAndRows(org.sleepwell.app.SoundLabelStorageTest)
+android.database.sqlite.SQLiteException: duplicate column name: sensor (code 1 SQLITE_ERROR): , while compiling: ALTER TABLE sessions ADD COLUMN sensor TEXT NOT NULL DEFAULT 'unspecified'
+	at android.database.sqlite.SQLiteConnection.nativePrepareStatement(Native Method)
+	at android.database.sqlite.SQLiteConnection.-$$Nest$smnativePrepareStatement(Unknown Source:0)
+	at android.database.sqlite.SQLiteConnection$PreparedStatementCache.createStatement(SQLiteConnection.java:1572)
+	at android.database.sqlite.SQLiteConnection.acquirePreparedStatementLI(SQLiteConnection.java:1109)
+	at android.database.sqlite.SQLiteConnection.acquirePreparedStatement(SQLiteConnection.java:1137)
+	at android.database.sqlite.SQLiteConnection.prepare(SQLiteConnection.java:697)
+	at android.database.sqlite.SQLiteSession.prepare(SQLiteSession.java:625)
+	at android.database.sqlite.SQLiteProgram.<init>(SQLiteProgram.java:62)
+	at android.database.sqlite.SQLiteStatement.<init>(SQLiteStatement.java:34)
+	at android.database.sqlite.SQLiteDatabase.executeSql(SQLiteDatabase.java:2234)
+	at android.database.sqlite.SQLiteDatabase.execSQL(SQLiteDatabase.java:2154)
+	at org.sleepwell.app.Store.createSensorProvenance(Store.java:37)
+	at org.sleepwell.app.Store.onUpgrade(Store.java:46)
+	at android.database.sqlite.SQLiteOpenHelper.getDatabaseLocked(SQLiteOpenHelper.java:437)
+	at android.database.sqlite.SQLiteOpenHelper.getReadableDatabase(SQLiteOpenHelper.java:360)
+	at org.sleepwell.app.SoundLabelStorageTest.versionSixMigrationPreservesAllExistingColumnsAndRows(SoundLabelStorageTest.java:63)
+
+FAILURES!!!
+Tests run: 10,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

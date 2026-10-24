@@ -1,0 +1,81 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupDocumentFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.BackupDocumentFlowTest:
+INSTRUMENTATION_STATUS: test=deniedOversizedMalformedAndStaleImportsNeverReplaceData
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupDocumentFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=deniedOversizedMalformedAndStaleImportsNeverReplaceData
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupDocumentFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=realMainRouteProviderWaitCancelRecreateAndCsvStayResponsive
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupDocumentFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=org.junit.ComparisonFailure: expected:<...gs,awake_periods_utc[,sensor,sensor_config
+2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,0,0,,"Preserve me",tracked,local,false,"UTC",2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,"[]","[]","unspecified","]"
+> but was:<...gs,awake_periods_utc[
+2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,0,0,,"Preserve me",tracked,local,false,"UTC",2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,"[]","[]]"
+>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.BackupDocumentFlowTest.realMainRouteProviderWaitCancelRecreateAndCsvStayResponsive(BackupDocumentFlowTest.java:51)
+
+INSTRUMENTATION_STATUS: stream=
+Error in realMainRouteProviderWaitCancelRecreateAndCsvStayResponsive(org.sleepwell.app.BackupDocumentFlowTest):
+org.junit.ComparisonFailure: expected:<...gs,awake_periods_utc[,sensor,sensor_config
+2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,0,0,,"Preserve me",tracked,local,false,"UTC",2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,"[]","[]","unspecified","]"
+> but was:<...gs,awake_periods_utc[
+2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,0,0,,"Preserve me",tracked,local,false,"UTC",2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,"[]","[]]"
+>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.BackupDocumentFlowTest.realMainRouteProviderWaitCancelRecreateAndCsvStayResponsive(BackupDocumentFlowTest.java:51)
+
+INSTRUMENTATION_STATUS: test=realMainRouteProviderWaitCancelRecreateAndCsvStayResponsive
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupDocumentFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=explicitReviewedReplacementPersistsAcrossRotationAndReopen
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupDocumentFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=explicitReviewedReplacementPersistsAcrossRotationAndReopen
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 27.944
+There was 1 failure:
+1) realMainRouteProviderWaitCancelRecreateAndCsvStayResponsive(org.sleepwell.app.BackupDocumentFlowTest)
+org.junit.ComparisonFailure: expected:<...gs,awake_periods_utc[,sensor,sensor_config
+2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,0,0,,"Preserve me",tracked,local,false,"UTC",2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,"[]","[]","unspecified","]"
+> but was:<...gs,awake_periods_utc[
+2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,0,0,,"Preserve me",tracked,local,false,"UTC",2026-10-24T07:57:02.564Z,2026-10-24T07:57:12.564Z,"[]","[]]"
+>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.BackupDocumentFlowTest.realMainRouteProviderWaitCancelRecreateAndCsvStayResponsive(BackupDocumentFlowTest.java:51)
+
+FAILURES!!!
+Tests run: 3,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

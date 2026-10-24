@@ -509,6 +509,22 @@ for row in rows:
     elif row["feature"] in ("Jet-lag light intervention", "Dream and travel light cues"):
         row.update(status="partial",implementation=["TravelActivity.java","TravelCueReviewActivity.java","TravelCuePlan.java","TravelCueSession.java","TravelCueRuntime.java","TravelCueStore.java","TravelCues.java","PhoneTorchCoordinator.java","PhoneTorches.java","TrackingService.java"],validation="Sourcecd35c21 integrated as5d11405.47 focused pure tests pass; debug/native APKs and lint0errors87warnings pass; strict source-clear. TravelCueStorageTest8 and TravelCueFlowTest2/16 originals execution-pending. No hardware output or actual clinical effect verified.",notes="Saved zones/date/daylight reminders plus separate default-off experimental phone-light windows. Explicit Arm only during current manual active tracking; separate Stop/journal/error/interruption, requested2ms/15s finite session, no automatic/recurring/boot/replay arming. Serial app torch ownership gives real alarms priority; timing/dose not measured. No evidence-based phase scheduling, jet-lag prevention, dream/REM or smart-light claim. See TRAVEL-PHONE-LIGHT-CUES.md.")
 
+# Schema8 and the exact latest native gates: configuration is distinct from actual hardware.
+for row in rows:
+    if row["feature"] in ("Contactless sonar", "Sonar calibration / signal quality / fallback"):
+        row["implementation"] += ["SensorProvenance.java","SensorBackup.java","Store.java","Records.java"]
+        row["validation"] += " Main05cd205 local573pure/69suites0fail +debug/nativeAPKs/lint0errors89warnings PASS7m29. FocusedCI40079038257 all26methods/31originals PASS: SonarProvenanceStorageTest12 PASS1.861s,SonarSettingsNativeTest1/.333s,ContactlessSetupFlowTest3/52.64s. All15setup originals individually reviewed: initialplum/lightbars,largeractualchart,scene,slider,error/gain/save/reopen pass bounded supporting-state gate. Reference ready/status rows and recorded-night integration remain open."
+        row["notes"] += " Additive schema8 and portableformat5 preserve sensor/config,nullable5squality,rawepochs/edits and legacy unknown provenance. Real native migration/roundtrip/rollback/recovery tests pass. Shared microphone noise analysis is not connected to sonar; overnight source is in progress."
+    elif row["feature"] in ("Jet-lag light intervention", "Dream and travel light cues"):
+        row["validation"] += " Main05cd205/focusedCI40079038257 TravelCueStorageTest8 PASS.158s andTravelCueFlowTest2 PASS30.764s/all16originals. All16 individually inspected: disabledArm visiblymuted,windowCancel/recreate/save/reopen,active/interrupted/error gates pass bounded config/fake-light scope. Wholeboard09stillpartial: lower controls/continuation and supporting prose need polishing. Hardwaredose/OSdelivery/clinicalprevention are unproven."
+    elif row["feature"] == "Local data backup":
+        row["validation"] += " Main05cd205/fullCI40079043221 BackupStorage6/Document3 eachhas1CSVfailure: streamedbytes omit new sensor/config whileRecords.csv includes them. da3b11a fixes actual16-column header+closed/openrows,retains8MiB/cancellation,and adds exactstreamedbyte equality/config regression. Native rerun pending; no green claim."
+        row["notes"] += " Latestformat5 adds strict original sensor/config/quality evidence;formats1–4stayreadable. Newschema8metadata participates in existing fulltyped stale-restore fingerprint."
+    elif row["feature"] == "Correct sound labels / favorites / export":
+        row["validation"] += " FullCI40079043221 onelegacyv6fixture failsduplicate sensorcolumn because it copiedv8schema then claimedv6. da3b11a constructs truepre-label/pre-sensor SQL+columns witholdrowassertionsretained;productionmigration unchanged. Actualv7→8preservation already passesnew12-case suite."
+    if any(name in row["implementation"] for name in ("ReportScreen.java", "PeriodTimeline.java", "RecordRibbon.java", "TrendsChart.java", "HistoryActivity.java", "RecordEditorActivity.java")):
+        row["validation"] += " ba1ae61/0dcbb44 use exactpersistedSensorProvenance.SONAR for contactless graph/accessibility labels, preserve actualsamplegaps, and retain sensor/config throughgoalzonecopies. Newprivate saved-sonar navigation originals remain pending."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -544,10 +560,11 @@ are not passing-run claims. Most features still need device-level verification.
 Latest phone installation: source571018b, same application source asdc30736,
 schema7 retained, all original rows/preferences and installed APK hash verified.
 No alarm/sound/vibration/flashlight/tracking test ran on the phone.
-Latest full native run atdc30736 remains FAIL:50/53wholeclasses,109/112methods,
-300/314required images. Report40072560126 passes4/5/13 with strict bounded
-visual acceptance. New sonar/travel source is integrated; new native contract
-is57classes/126methods/345required originals and execution is pending.
+Latest full native run at05cd205 remains FAIL:54/58wholeclasses,134/138methods,
+344/345required images. Focused40079038257 passes5classes/26methods/all31originals
+with bounded setup/travel visual acceptance. Real acoustic/night/clinical behavior
+is not certified. The full failures are known category accuracy, a stale v6 fixture,
+and two actual CSV-export comparisons;da3b11a corrections require native rerun.
 
 
 | ID / feature and manual | Screen(s) | Code | Validation | Status and remaining work |

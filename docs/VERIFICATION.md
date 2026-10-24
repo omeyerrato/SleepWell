@@ -1215,3 +1215,33 @@ are present. Actual native failures are retained; compilation and pure DSP tests
 do not make these journeys accepted. Investigation is checking the finite real
 DSP completion wait and the floating-dialog click acknowledgment separately.
 No classifier threshold or missing-signal rule was relaxed.
+
+### Schema8 and native setup/travel correction gate
+
+Combined `05cd205` passes 573 pure tests across 69 suites (no failures, errors,
+or skips), debug/native APK builds, and lint: 0 errors, 89 warnings, in 7m29.
+The compatible older lint analyzer emits a LiteRT Kotlin-metadata diagnostic;
+successful Java checks do not certify analysis of third-party Kotlin bytecode.
+
+Focused `40079038257` passes all 5 classes / 26 native methods / 31 required
+originals. The strict reviewer individually opens all 15 Sonar and 16 Travel
+originals. Initial system bars, actual measured graph, scene, slider, errors,
+saving/reopening, muted disabled Arm, and window/configuration controls pass a
+bounded supporting-state review. Whole reference parity remains partial: ready
+and device-status rows, lower Travel continuation/copy, and recorded-night
+integration still need work. Fake PCM and torch ports do not prove physical
+acoustics, pulse dose, OS delivery, or clinical results.
+
+Full `40079043221` remains FAIL: 54/58 whole classes, 134/138 methods, and
+344/345 required originals. The old solo-laughter failure remains. Two CSV
+comparisons expose missing sensor/config fields in the actual background
+exporter; `da3b11a` fixes header, completed and unfinished rows and adds a
+complete-byte comparison with actual sonar configuration. One version6 migration
+fixture incorrectly clones version8 sensor columns before downgrading its
+version number; the same commit constructs actual old SQL/columns while
+retaining old-row preservation assertions. Fresh native execution is required.
+
+Exact raw focused/full evidence is retained in
+`verification/2026-10-24-ci400790-provenance-setup/`. The preceding Tone and
+sensing failures/pass split is preserved in
+`verification/2026-10-24-ci400755-tone-sensing/`. No physical output ran.

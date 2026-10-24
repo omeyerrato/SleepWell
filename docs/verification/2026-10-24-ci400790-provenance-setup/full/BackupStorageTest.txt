@@ -1,0 +1,123 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.BackupStorageTest:
+INSTRUMENTATION_STATUS: test=defaultExclusiveReplacementBlocksOtherReadersWhileWalRawReadsCanObserveOldData
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=defaultExclusiveReplacementBlocksOtherReadersWhileWalRawReadsCanObserveOldData
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=admissionDuringInsertionRollsBackThenAWaitingNewRecordIsPreserved
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=admissionDuringInsertionRollsBackThenAWaitingNewRecordIsPreserved
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=changedLabelsPendingJournalAndRuntimeAdmissionsRejectBeforeReplacement
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=changedLabelsPendingJournalAndRuntimeAdmissionsRejectBeforeReplacement
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=pendingCountAndCloseFailuresCannotHideACommittedReplacement
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=pendingCountAndCloseFailuresCannotHideACommittedReplacement
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=typedFingerprintCoversEveryAffectedTableAndExactIntegerIdentity
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=typedFingerprintCoversEveryAffectedTableAndExactIntegerIdentity
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=exportedBytesArePortableReviewedRestoreKeepsLabelsAndNapsInactive
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupStorageTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stack=org.junit.ComparisonFailure: expected:<...gs,awake_periods_utc[,sensor,sensor_config
+2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,0,0,,"Preserve me",tracked,imported,false,"UTC",2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,"[]","[]","unspecified","]"
+> but was:<...gs,awake_periods_utc[
+2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,0,0,,"Preserve me",tracked,imported,false,"UTC",2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,"[]","[]]"
+>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.BackupStorageTest.exportedBytesArePortableReviewedRestoreKeepsLabelsAndNapsInactive(BackupStorageTest.java:24)
+
+INSTRUMENTATION_STATUS: stream=
+Error in exportedBytesArePortableReviewedRestoreKeepsLabelsAndNapsInactive(org.sleepwell.app.BackupStorageTest):
+org.junit.ComparisonFailure: expected:<...gs,awake_periods_utc[,sensor,sensor_config
+2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,0,0,,"Preserve me",tracked,imported,false,"UTC",2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,"[]","[]","unspecified","]"
+> but was:<...gs,awake_periods_utc[
+2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,0,0,,"Preserve me",tracked,imported,false,"UTC",2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,"[]","[]]"
+>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.BackupStorageTest.exportedBytesArePortableReviewedRestoreKeepsLabelsAndNapsInactive(BackupStorageTest.java:24)
+
+INSTRUMENTATION_STATUS: test=exportedBytesArePortableReviewedRestoreKeepsLabelsAndNapsInactive
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.447
+There was 1 failure:
+1) exportedBytesArePortableReviewedRestoreKeepsLabelsAndNapsInactive(org.sleepwell.app.BackupStorageTest)
+org.junit.ComparisonFailure: expected:<...gs,awake_periods_utc[,sensor,sensor_config
+2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,0,0,,"Preserve me",tracked,imported,false,"UTC",2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,"[]","[]","unspecified","]"
+> but was:<...gs,awake_periods_utc[
+2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,0,0,,"Preserve me",tracked,imported,false,"UTC",2026-10-24T07:56:51.304Z,2026-10-24T07:57:01.304Z,"[]","[]]"
+>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.BackupStorageTest.exportedBytesArePortableReviewedRestoreKeepsLabelsAndNapsInactive(BackupStorageTest.java:24)
+
+FAILURES!!!
+Tests run: 6,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

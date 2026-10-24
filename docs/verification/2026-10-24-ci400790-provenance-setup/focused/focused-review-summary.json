@@ -1,0 +1,35 @@
+{
+  "scope": "sensing-travel",
+  "full_app_review": false,
+  "expected_classes": 5,
+  "expected_methods": 26,
+  "class_results": [
+    {
+      "class": "SonarProvenanceStorageTest",
+      "expected_methods": 12,
+      "passed": true
+    },
+    {
+      "class": "SonarSettingsNativeTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "ContactlessSetupFlowTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "TravelCueStorageTest",
+      "expected_methods": 8,
+      "passed": true
+    },
+    {
+      "class": "TravelCueFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    }
+  ],
+  "required_original_images": 31,
+  "failures": []
+}
