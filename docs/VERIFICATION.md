@@ -1,5 +1,42 @@
 # Verification record
 
+## Manual contactless night and saved report — 2026-10-24
+
+Source `04bdb4a` integrates the manual sonar coordinator (`c86ee00`) and saved
+signals/report flow (`c6f0b8b`). [Original native evidence](verification/2026-10-24-ci400862-sonar-night/README.md)
+retains 139 raw artifacts, including 64 unmodified PNGs and all 61 full-run
+class transcripts. Local combined debug/native APKs, 589 pure tests in 72 suites
+(zero failures/errors/skips), and lint passed in 9m27s.
+
+Focused CI40086236971 passes eight classes/31 methods/all 45 required originals.
+The actual private SQLite/coordinator/generated-PCM flow starts, pauses, recreates,
+resumes and stops a recording, preserving configuration and quality gaps. The
+saved report keeps a measured zero selectable, unknown intervals blank, exact
+quality-duration totals, and unchanged original data after navigation/reopening.
+It uses injected command/audio ports: real Service delivery, microphone hardware,
+acoustic accuracy and overnight power use are not verified.
+
+Full CI40086242348 passes 60 of 61 whole classes and 142 of 143 methods, with all
+359 required originals. Overall status remains **FAIL**: the existing solo-laughter
+positive does not pass the production category policy. The genuine v6 migration
+fixture and streamed CSV fixes now pass all ten SoundLabelStorage, six
+BackupStorage and three BackupDocument methods.
+
+The strict reviewer individually inspected all fourteen new Night/Report images.
+The four saved report frames pass their bounded visual/data gate. The Night
+visual gate is **rejected** at this source: first-launch dark system icons,
+charging error lost on recreation, and a measured capture preceding visible
+graph publication. `cb53221` retains errors, reapplies this Activity's own plum
+system appearance, shortens the title, mutes disabled controls, and requires
+actual rendered measured intervals plus saved-original system-bar pixels.
+Its debug/native APKs and lint pass in 3m09s (zero errors, 92 warnings); fresh
+CI40087733749 captures are pending. Placement-art fidelity and whole-app
+acceptance remain incomplete. Local lint 8.13.0 still reports incompatible
+third-party LiteRT Kotlin metadata; Java lint success is a narrower result.
+
+No physical alarm, playback, microphone, vibration, torch or tracking test ran,
+and no newer build was installed on the phone.
+
 ## Global optional alarm protection — 2026-10-23
 
 Code `e8f4eb0` adds app-return/power-menu guards and the compact Alarms list;

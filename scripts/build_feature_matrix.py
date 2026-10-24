@@ -530,6 +530,7 @@ for row in rows:
     if row["feature"] in ("Contactless sonar", "Sonar calibration / signal quality / fallback"):
         row["implementation"] += ["SonarEntry.java", "SonarNight.java", "SonarEpochs.java", "SonarNightStore.java", "TrackingService.java", "TrackingActivity.java", "RecordSignalsActivity.java"]
         row["validation"] += " Manual recording source2a68425 integrated asc86ee00;16 focused pure cases pass, production/native Java compilation and lint pass. Saved report480cc64 integrated asc6f0b8b. Strict source review clears both. SonarNightStorageTest2,SonarNightFlowTest2/10originals,andSonarReportFlowTest1/4originals await actual native execution."
+        row["validation"] += " Actual04bdb4a/focusedCI40086236971 passesall31methods/45originals:NightStorage2,NightFlow2,ReportFlow1. FullCI40086242348 confirms142/143methods/all359originals;onlycategoryPCMpositivefails. Strict individuallyreviews14neworiginals:Report4passboundedzero/gap/reopen;Night10rejectedfirstbars/losterror/stalemeasuring. cb53221fixesandstrengthensoriginalpixel/publishedmeasurement/recreationassertions;freshnativecapturespending. Combined589pure72suites0fail,debug/nativeAPKs/lintpass."
         row["notes"] = "Explicit setup and manual Start/Pause/Resume/Stop measure relative echo change through original18.5–20kHz FMCW. An ordered bounded worker persists schema8/format5 sensor/config and5snullablequality; validzero stays selectable and missing/invalid evidence stays absent. Saved report labels relativeechochange,qualityduration andunrecordedtime without fabricating stages. No automatic sonar, shared microphone noise analysis, raw sonar audio, breathing inference or medical claim. Real hardware accuracy, foreground-service delivery and overnight power budget remain unverified. See sonar-night-runtime.md and SONAR-REPORT-FLOW.md."
 
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
@@ -567,11 +568,14 @@ are not passing-run claims. Most features still need device-level verification.
 Latest phone installation: source571018b, same application source asdc30736,
 schema7 retained, all original rows/preferences and installed APK hash verified.
 No alarm/sound/vibration/flashlight/tracking test ran on the phone.
-Latest full native run at05cd205 remains FAIL:54/58wholeclasses,134/138methods,
-344/345required images. Focused40079038257 passes5classes/26methods/all31originals
-with bounded setup/travel visual acceptance. Real acoustic/night/clinical behavior
-is not certified. The full failures are known category accuracy, a stale v6 fixture,
-and two actual CSV-export comparisons;da3b11a corrections require native rerun.
+Latest full native run at04bdb4a remains FAIL:60/61wholeclasses,142/143methods,
+all359required images. Focused40086236971 passes8classes/31methods/all45originals.
+The v6 fixture and actual streamed CSV corrections now pass native regression.
+The remaining full failure is category accuracy. Saved sonar Report4images pass
+a bounded gate; Night10images are rejected for first-launch icons, lost error
+and premature measured capture. cb53221 fixes are source/build-clear; fresh
+CI40087733749 originals remain pending. Real acoustic/clinical behavior and
+whole-app design acceptance are not certified.
 
 
 | ID / feature and manual | Screen(s) | Code | Validation | Status and remaining work |

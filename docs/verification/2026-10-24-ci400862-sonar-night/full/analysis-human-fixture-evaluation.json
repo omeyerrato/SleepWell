@@ -1,0 +1,1544 @@
+{
+  "model": "yamnet-mobile-v1-10c95ea3",
+  "scope": "Four CC0 public previews, observational compatibility evidence; not calibrated bedroom or clinical accuracy",
+  "fixtures": [
+    {
+      "fixture": "snoring-sorts",
+      "expected_broad_class": "snoring",
+      "frames": 35,
+      "snoring_max": 0.99609375,
+      "speech_max": 0.19921875,
+      "windows": [
+        {
+          "start_ms": 0,
+          "top_index": 36,
+          "top_score": 0.98828125,
+          "snoring_score": 0.98828125,
+          "breathing_score": 0.98828125,
+          "snoring_competitor_score": 0.03125,
+          "speech_score": 0.00390625,
+          "silence_score": 0.03125,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 975,
+          "top_index": 36,
+          "top_score": 0.96875,
+          "snoring_score": 0.96875,
+          "breathing_score": 0.96875,
+          "snoring_competitor_score": 0.03125,
+          "speech_score": 0.01171875,
+          "silence_score": 0.01171875,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 1950,
+          "top_index": 38,
+          "top_score": 0.5859375,
+          "snoring_score": 0.5859375,
+          "breathing_score": 0.5,
+          "snoring_competitor_score": 0.26171875,
+          "speech_score": 0.05859375,
+          "silence_score": 0.26171875,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 2925,
+          "top_index": 38,
+          "top_score": 0.80078125,
+          "snoring_score": 0.80078125,
+          "breathing_score": 0.73828125,
+          "snoring_competitor_score": 0.1484375,
+          "speech_score": 0.04296875,
+          "silence_score": 0.1484375,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 3900,
+          "top_index": 36,
+          "top_score": 0.66796875,
+          "snoring_score": 0.66796875,
+          "breathing_score": 0.66796875,
+          "snoring_competitor_score": 0.19921875,
+          "speech_score": 0.05859375,
+          "silence_score": 0.00390625,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 4875,
+          "top_index": 36,
+          "top_score": 0.890625,
+          "snoring_score": 0.890625,
+          "breathing_score": 0.890625,
+          "snoring_competitor_score": 0.1484375,
+          "speech_score": 0.01953125,
+          "silence_score": 0.1484375,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 5850,
+          "top_index": 494,
+          "top_score": 0.26171875,
+          "snoring_score": 0.19921875,
+          "breathing_score": 0.19921875,
+          "snoring_competitor_score": 0.26171875,
+          "speech_score": 0.08203125,
+          "silence_score": 0.26171875,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 6825,
+          "top_index": 38,
+          "top_score": 0.95703125,
+          "snoring_score": 0.95703125,
+          "breathing_score": 0.94140625,
+          "snoring_competitor_score": 0.01953125,
+          "speech_score": 0.015625,
+          "silence_score": 0.0078125,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 7800,
+          "top_index": 36,
+          "top_score": 0.73828125,
+          "snoring_score": 0.66796875,
+          "breathing_score": 0.73828125,
+          "snoring_competitor_score": 0.19921875,
+          "speech_score": 0.03125,
+          "silence_score": 0.19921875,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 8775,
+          "top_index": 36,
+          "top_score": 0.66796875,
+          "snoring_score": 0.66796875,
+          "breathing_score": 0.66796875,
+          "snoring_competitor_score": 0.19921875,
+          "speech_score": 0.04296875,
+          "silence_score": 0.19921875,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 9750,
+          "top_index": 36,
+          "top_score": 0.9921875,
+          "snoring_score": 0.9921875,
+          "breathing_score": 0.9921875,
+          "snoring_competitor_score": 0.00390625,
+          "speech_score": 0.00390625,
+          "silence_score": 0.00390625,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 10725,
+          "top_index": 36,
+          "top_score": 0.5,
+          "snoring_score": 0.4140625,
+          "breathing_score": 0.5,
+          "snoring_competitor_score": 0.109375,
+          "speech_score": 0.109375,
+          "silence_score": 0.04296875,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 11700,
+          "top_index": 494,
+          "top_score": 0.33203125,
+          "snoring_score": 0.08203125,
+          "breathing_score": 0.05859375,
+          "snoring_competitor_score": 0.33203125,
+          "speech_score": 0.04296875,
+          "silence_score": 0.33203125,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 12675,
+          "top_index": 36,
+          "top_score": 0.99609375,
+          "snoring_score": 0.99609375,
+          "breathing_score": 0.99609375,
+          "snoring_competitor_score": 0.01171875,
+          "speech_score": 0,
+          "silence_score": 0.01171875,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 13650,
+          "top_index": 36,
+          "top_score": 0.98828125,
+          "snoring_score": 0.98828125,
+          "breathing_score": 0.98828125,
+          "snoring_competitor_score": 0.015625,
+          "speech_score": 0.0078125,
+          "silence_score": 0.015625,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 14625,
+          "top_index": 12,
+          "top_score": 0.26171875,
+          "snoring_score": 0.015625,
+          "breathing_score": 0.01953125,
+          "snoring_competitor_score": 0.26171875,
+          "speech_score": 0.19921875,
+          "silence_score": 0.19921875,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 15600,
+          "top_index": 36,
+          "top_score": 0.4140625,
+          "snoring_score": 0.4140625,
+          "breathing_score": 0.4140625,
+          "snoring_competitor_score": 0.1484375,
+          "speech_score": 0.08203125,
+          "silence_score": 0.1484375,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 16575,
+          "top_index": 38,
+          "top_score": 0.99609375,
+          "snoring_score": 0.99609375,
+          "breathing_score": 0.9921875,
+          "snoring_competitor_score": 0.00390625,
+          "speech_score": 0.00390625,
+          "silence_score": 0.00390625,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 17550,
+          "top_index": 36,
+          "top_score": 0.8515625,
+          "snoring_score": 0.8515625,
+          "breathing_score": 0.8515625,
+          "snoring_competitor_score": 0.1484375,
+          "speech_score": 0.01953125,
+          "silence_score": 0.1484375,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 18525,
+          "top_index": 494,
+          "top_score": 0.26171875,
+          "snoring_score": 0.015625,
+          "breathing_score": 0.01953125,
+          "snoring_competitor_score": 0.26171875,
+          "speech_score": 0.109375,
+          "silence_score": 0.26171875,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 19500,
+          "top_index": 38,
+          "top_score": 0.99609375,
+          "snoring_score": 0.99609375,
+          "breathing_score": 0.9921875,
+          "snoring_competitor_score": 0.0078125,
+          "speech_score": 0,
+          "silence_score": 0.0078125,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 20475,
+          "top_index": 36,
+          "top_score": 0.890625,
+          "snoring_score": 0.80078125,
+          "breathing_score": 0.890625,
+          "snoring_competitor_score": 0.19921875,
+          "speech_score": 0.01953125,
+          "silence_score": 0.05859375,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 21450,
+          "top_index": 494,
+          "top_score": 0.33203125,
+          "snoring_score": 0.1484375,
+          "breathing_score": 0.1484375,
+          "snoring_competitor_score": 0.33203125,
+          "speech_score": 0.04296875,
+          "silence_score": 0.33203125,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 22425,
+          "top_index": 36,
+          "top_score": 0.91796875,
+          "snoring_score": 0.91796875,
+          "breathing_score": 0.91796875,
+          "snoring_competitor_score": 0.08203125,
+          "speech_score": 0.03125,
+          "silence_score": 0.08203125,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 23400,
+          "top_index": 38,
+          "top_score": 0.80078125,
+          "snoring_score": 0.80078125,
+          "breathing_score": 0.73828125,
+          "snoring_competitor_score": 0.08203125,
+          "speech_score": 0.05859375,
+          "silence_score": 0.00390625,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 24375,
+          "top_index": 36,
+          "top_score": 0.73828125,
+          "snoring_score": 0.73828125,
+          "breathing_score": 0.73828125,
+          "snoring_competitor_score": 0.19921875,
+          "speech_score": 0.04296875,
+          "silence_score": 0.19921875,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 25350,
+          "top_index": 38,
+          "top_score": 0.80078125,
+          "snoring_score": 0.80078125,
+          "breathing_score": 0.73828125,
+          "snoring_competitor_score": 0.19921875,
+          "speech_score": 0.03125,
+          "silence_score": 0.19921875,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 26325,
+          "top_index": 38,
+          "top_score": 0.91796875,
+          "snoring_score": 0.91796875,
+          "breathing_score": 0.890625,
+          "snoring_competitor_score": 0.01953125,
+          "speech_score": 0.01953125,
+          "silence_score": 0,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 27300,
+          "top_index": 36,
+          "top_score": 0.8515625,
+          "snoring_score": 0.80078125,
+          "breathing_score": 0.8515625,
+          "snoring_competitor_score": 0.1484375,
+          "speech_score": 0.01953125,
+          "silence_score": 0.1484375,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 28275,
+          "top_index": 494,
+          "top_score": 0.19921875,
+          "snoring_score": 0.1484375,
+          "breathing_score": 0.1484375,
+          "snoring_competitor_score": 0.19921875,
+          "speech_score": 0.08203125,
+          "silence_score": 0.19921875,
+          "selected": "none"
+        },
+        {
+          "start_ms": 29250,
+          "top_index": 38,
+          "top_score": 0.98828125,
+          "snoring_score": 0.98828125,
+          "breathing_score": 0.984375,
+          "snoring_competitor_score": 0.01171875,
+          "speech_score": 0.00390625,
+          "silence_score": 0.01171875,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 30225,
+          "top_index": 38,
+          "top_score": 0.8515625,
+          "snoring_score": 0.8515625,
+          "breathing_score": 0.80078125,
+          "snoring_competitor_score": 0.1484375,
+          "speech_score": 0.05859375,
+          "silence_score": 0.015625,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 31200,
+          "top_index": 494,
+          "top_score": 0.19921875,
+          "snoring_score": 0.01953125,
+          "breathing_score": 0.01953125,
+          "snoring_competitor_score": 0.19921875,
+          "speech_score": 0.109375,
+          "silence_score": 0.19921875,
+          "selected": "none"
+        },
+        {
+          "start_ms": 32175,
+          "top_index": 36,
+          "top_score": 0.91796875,
+          "snoring_score": 0.91796875,
+          "breathing_score": 0.91796875,
+          "snoring_competitor_score": 0.05859375,
+          "speech_score": 0.01953125,
+          "silence_score": 0.05859375,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 33150,
+          "top_index": 38,
+          "top_score": 0.8515625,
+          "snoring_score": 0.8515625,
+          "breathing_score": 0.80078125,
+          "snoring_competitor_score": 0.04296875,
+          "speech_score": 0.04296875,
+          "silence_score": 0.01171875,
+          "selected": "snoring"
+        }
+      ],
+      "policy_events": [
+        {
+          "start_ms": 0,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.978515625
+        },
+        {
+          "start_ms": 2925,
+          "duration_ms": 2925,
+          "category": "snoring",
+          "score": 0.7864583333333334
+        },
+        {
+          "start_ms": 6825,
+          "duration_ms": 3900,
+          "category": "snoring",
+          "score": 0.8212890625
+        },
+        {
+          "start_ms": 10725,
+          "duration_ms": 1950,
+          "category": "noise",
+          "score": 0.416015625
+        },
+        {
+          "start_ms": 12675,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.9921875
+        },
+        {
+          "start_ms": 14625,
+          "duration_ms": 1950,
+          "category": "noise",
+          "score": 0.337890625
+        },
+        {
+          "start_ms": 16575,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.923828125
+        },
+        {
+          "start_ms": 19500,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.8984375
+        },
+        {
+          "start_ms": 22425,
+          "duration_ms": 5850,
+          "category": "snoring",
+          "score": 0.8294270833333334
+        },
+        {
+          "start_ms": 29250,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.919921875
+        },
+        {
+          "start_ms": 32175,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.884765625
+        }
+      ],
+      "persisted_events": [
+        {
+          "id": 1,
+          "session": 1,
+          "time": 1792838260246,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.978515625,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 2,
+          "session": 1,
+          "time": 1792838263171,
+          "duration_ms": 2925,
+          "category": "snoring",
+          "score": 0.7864583333333334,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 3,
+          "session": 1,
+          "time": 1792838267071,
+          "duration_ms": 3900,
+          "category": "snoring",
+          "score": 0.8212890625,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 4,
+          "session": 1,
+          "time": 1792838270971,
+          "duration_ms": 1950,
+          "category": "noise",
+          "score": 0.416015625,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 5,
+          "session": 1,
+          "time": 1792838272921,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.9921875,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 6,
+          "session": 1,
+          "time": 1792838274871,
+          "duration_ms": 1950,
+          "category": "noise",
+          "score": 0.337890625,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 7,
+          "session": 1,
+          "time": 1792838276821,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.923828125,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 8,
+          "session": 1,
+          "time": 1792838279746,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.8984375,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 9,
+          "session": 1,
+          "time": 1792838282671,
+          "duration_ms": 5850,
+          "category": "snoring",
+          "score": 0.8294270833333334,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 10,
+          "session": 1,
+          "time": 1792838289496,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.919921875,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 11,
+          "session": 1,
+          "time": 1792838292421,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.884765625,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        }
+      ],
+      "persisted_snoring_count": 9,
+      "persisted_speech_count": 0,
+      "persisted_other_count": 2
+    },
+    {
+      "fixture": "snoring-pencil",
+      "expected_broad_class": "snoring",
+      "frames": 36,
+      "snoring_max": 0.96875,
+      "speech_max": 0.109375,
+      "windows": [
+        {
+          "start_ms": 0,
+          "top_index": 494,
+          "top_score": 0.66796875,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.66796875,
+          "speech_score": 0.015625,
+          "silence_score": 0.66796875,
+          "selected": "none"
+        },
+        {
+          "start_ms": 975,
+          "top_index": 36,
+          "top_score": 0.91796875,
+          "snoring_score": 0.91796875,
+          "breathing_score": 0.91796875,
+          "snoring_competitor_score": 0.1484375,
+          "speech_score": 0.00390625,
+          "silence_score": 0.1484375,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 1950,
+          "top_index": 36,
+          "top_score": 0.8515625,
+          "snoring_score": 0.8515625,
+          "breathing_score": 0.8515625,
+          "snoring_competitor_score": 0.26171875,
+          "speech_score": 0.04296875,
+          "silence_score": 0.01953125,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 2925,
+          "top_index": 36,
+          "top_score": 0.94140625,
+          "snoring_score": 0.94140625,
+          "breathing_score": 0.94140625,
+          "snoring_competitor_score": 0.04296875,
+          "speech_score": 0.0078125,
+          "silence_score": 0.04296875,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 3900,
+          "top_index": 494,
+          "top_score": 0.66796875,
+          "snoring_score": 0.015625,
+          "breathing_score": 0.0078125,
+          "snoring_competitor_score": 0.66796875,
+          "speech_score": 0.01171875,
+          "silence_score": 0.66796875,
+          "selected": "none"
+        },
+        {
+          "start_ms": 4875,
+          "top_index": 494,
+          "top_score": 0.1484375,
+          "snoring_score": 0.00390625,
+          "breathing_score": 0.00390625,
+          "snoring_competitor_score": 0.1484375,
+          "speech_score": 0.109375,
+          "silence_score": 0.1484375,
+          "selected": "none"
+        },
+        {
+          "start_ms": 5850,
+          "top_index": 36,
+          "top_score": 0.8515625,
+          "snoring_score": 0.8515625,
+          "breathing_score": 0.8515625,
+          "snoring_competitor_score": 0.5,
+          "speech_score": 0.01171875,
+          "silence_score": 0.01953125,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 6825,
+          "top_index": 38,
+          "top_score": 0.73828125,
+          "snoring_score": 0.73828125,
+          "breathing_score": 0.5859375,
+          "snoring_competitor_score": 0.5,
+          "speech_score": 0,
+          "silence_score": 0.19921875,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 7800,
+          "top_index": 38,
+          "top_score": 0.4140625,
+          "snoring_score": 0.4140625,
+          "breathing_score": 0.33203125,
+          "snoring_competitor_score": 0.33203125,
+          "speech_score": 0.01171875,
+          "silence_score": 0.33203125,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 8775,
+          "top_index": 67,
+          "top_score": 0.19921875,
+          "snoring_score": 0.05859375,
+          "breathing_score": 0.03125,
+          "snoring_competitor_score": 0.19921875,
+          "speech_score": 0.0078125,
+          "silence_score": 0.1484375,
+          "selected": "none"
+        },
+        {
+          "start_ms": 9750,
+          "top_index": 38,
+          "top_score": 0.80078125,
+          "snoring_score": 0.80078125,
+          "breathing_score": 0.73828125,
+          "snoring_competitor_score": 0.33203125,
+          "speech_score": 0.01171875,
+          "silence_score": 0.33203125,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 10725,
+          "top_index": 88,
+          "top_score": 0.80078125,
+          "snoring_score": 0.05859375,
+          "breathing_score": 0.08203125,
+          "snoring_competitor_score": 0.80078125,
+          "speech_score": 0.03125,
+          "silence_score": 0.00390625,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 11700,
+          "top_index": 494,
+          "top_score": 0.33203125,
+          "snoring_score": 0.109375,
+          "breathing_score": 0.1484375,
+          "snoring_competitor_score": 0.33203125,
+          "speech_score": 0.109375,
+          "silence_score": 0.33203125,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 12675,
+          "top_index": 38,
+          "top_score": 0.80078125,
+          "snoring_score": 0.80078125,
+          "breathing_score": 0.66796875,
+          "snoring_competitor_score": 0.66796875,
+          "speech_score": 0.00390625,
+          "silence_score": 0.66796875,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 13650,
+          "top_index": 494,
+          "top_score": 0.4140625,
+          "snoring_score": 0.00390625,
+          "breathing_score": 0.00390625,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.03125,
+          "silence_score": 0.4140625,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 14625,
+          "top_index": 494,
+          "top_score": 0.5859375,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.5859375,
+          "speech_score": 0.03125,
+          "silence_score": 0.5859375,
+          "selected": "none"
+        },
+        {
+          "start_ms": 15600,
+          "top_index": 36,
+          "top_score": 0.96875,
+          "snoring_score": 0.96875,
+          "breathing_score": 0.96875,
+          "snoring_competitor_score": 0.19921875,
+          "speech_score": 0.00390625,
+          "silence_score": 0.19921875,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 16575,
+          "top_index": 38,
+          "top_score": 0.80078125,
+          "snoring_score": 0.80078125,
+          "breathing_score": 0.73828125,
+          "snoring_competitor_score": 0.109375,
+          "speech_score": 0.00390625,
+          "silence_score": 0.109375,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 17550,
+          "top_index": 494,
+          "top_score": 0.4140625,
+          "snoring_score": 0.00390625,
+          "breathing_score": 0.00390625,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.05859375,
+          "silence_score": 0.4140625,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 18525,
+          "top_index": 494,
+          "top_score": 0.4140625,
+          "snoring_score": 0.00390625,
+          "breathing_score": 0.00390625,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.05859375,
+          "silence_score": 0.4140625,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 19500,
+          "top_index": 494,
+          "top_score": 0.5,
+          "snoring_score": 0,
+          "breathing_score": 0.00390625,
+          "snoring_competitor_score": 0.5,
+          "speech_score": 0.0078125,
+          "silence_score": 0.5,
+          "selected": "none"
+        },
+        {
+          "start_ms": 20475,
+          "top_index": 36,
+          "top_score": 0.73828125,
+          "snoring_score": 0.66796875,
+          "breathing_score": 0.73828125,
+          "snoring_competitor_score": 0.109375,
+          "speech_score": 0.01171875,
+          "silence_score": 0.109375,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 21450,
+          "top_index": 77,
+          "top_score": 0.91796875,
+          "snoring_score": 0.04296875,
+          "breathing_score": 0.03125,
+          "snoring_competitor_score": 0.91796875,
+          "speech_score": 0,
+          "silence_score": 0.1484375,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 22425,
+          "top_index": 38,
+          "top_score": 0.94140625,
+          "snoring_score": 0.94140625,
+          "breathing_score": 0.890625,
+          "snoring_competitor_score": 0.66796875,
+          "speech_score": 0.00390625,
+          "silence_score": 0.66796875,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 23400,
+          "top_index": 494,
+          "top_score": 0.8515625,
+          "snoring_score": 0.015625,
+          "breathing_score": 0.0078125,
+          "snoring_competitor_score": 0.8515625,
+          "speech_score": 0.00390625,
+          "silence_score": 0.8515625,
+          "selected": "none"
+        },
+        {
+          "start_ms": 24375,
+          "top_index": 494,
+          "top_score": 0.4140625,
+          "snoring_score": 0.00390625,
+          "breathing_score": 0.00390625,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.05859375,
+          "silence_score": 0.4140625,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 25350,
+          "top_index": 38,
+          "top_score": 0.91796875,
+          "snoring_score": 0.91796875,
+          "breathing_score": 0.890625,
+          "snoring_competitor_score": 0.19921875,
+          "speech_score": 0.00390625,
+          "silence_score": 0.1484375,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 26325,
+          "top_index": 38,
+          "top_score": 0.5859375,
+          "snoring_score": 0.5859375,
+          "breathing_score": 0.4140625,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.00390625,
+          "silence_score": 0.4140625,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 27300,
+          "top_index": 494,
+          "top_score": 0.4140625,
+          "snoring_score": 0.0078125,
+          "breathing_score": 0.0078125,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.03125,
+          "silence_score": 0.4140625,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 28275,
+          "top_index": 494,
+          "top_score": 0.33203125,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.33203125,
+          "speech_score": 0.04296875,
+          "silence_score": 0.33203125,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 29250,
+          "top_index": 36,
+          "top_score": 0.890625,
+          "snoring_score": 0.8515625,
+          "breathing_score": 0.890625,
+          "snoring_competitor_score": 0.33203125,
+          "speech_score": 0.00390625,
+          "silence_score": 0.33203125,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 30225,
+          "top_index": 38,
+          "top_score": 0.33203125,
+          "snoring_score": 0.33203125,
+          "breathing_score": 0.26171875,
+          "snoring_competitor_score": 0.08203125,
+          "speech_score": 0,
+          "silence_score": 0.08203125,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 31200,
+          "top_index": 38,
+          "top_score": 0.94140625,
+          "snoring_score": 0.94140625,
+          "breathing_score": 0.91796875,
+          "snoring_competitor_score": 0.5,
+          "speech_score": 0.00390625,
+          "silence_score": 0.5,
+          "selected": "snoring"
+        },
+        {
+          "start_ms": 32175,
+          "top_index": 104,
+          "top_score": 0.4140625,
+          "snoring_score": 0.01953125,
+          "breathing_score": 0.01171875,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.01953125,
+          "silence_score": 0.1484375,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 33150,
+          "top_index": 494,
+          "top_score": 0.26171875,
+          "snoring_score": 0.00390625,
+          "breathing_score": 0.0078125,
+          "snoring_competitor_score": 0.26171875,
+          "speech_score": 0.05859375,
+          "silence_score": 0.26171875,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 34125,
+          "top_index": 494,
+          "top_score": 0.66796875,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.66796875,
+          "speech_score": 0.015625,
+          "silence_score": 0.66796875,
+          "selected": "none"
+        }
+      ],
+      "policy_events": [
+        {
+          "start_ms": 975,
+          "duration_ms": 2925,
+          "category": "snoring",
+          "score": 0.9036458333333334
+        },
+        {
+          "start_ms": 5850,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.794921875
+        },
+        {
+          "start_ms": 10725,
+          "duration_ms": 3900,
+          "category": "noise",
+          "score": 0.5869140625
+        },
+        {
+          "start_ms": 15600,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.884765625
+        },
+        {
+          "start_ms": 17550,
+          "duration_ms": 1950,
+          "category": "noise",
+          "score": 0.4140625
+        },
+        {
+          "start_ms": 26325,
+          "duration_ms": 2925,
+          "category": "noise",
+          "score": 0.4440104166666667
+        },
+        {
+          "start_ms": 32175,
+          "duration_ms": 1950,
+          "category": "noise",
+          "score": 0.337890625
+        }
+      ],
+      "persisted_events": [
+        {
+          "id": 1,
+          "session": 1,
+          "time": 1792838261457,
+          "duration_ms": 2925,
+          "category": "snoring",
+          "score": 0.9036458333333334,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 2,
+          "session": 1,
+          "time": 1792838266332,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.794921875,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 3,
+          "session": 1,
+          "time": 1792838271207,
+          "duration_ms": 3900,
+          "category": "noise",
+          "score": 0.5869140625,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 4,
+          "session": 1,
+          "time": 1792838276082,
+          "duration_ms": 1950,
+          "category": "snoring",
+          "score": 0.884765625,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 5,
+          "session": 1,
+          "time": 1792838278032,
+          "duration_ms": 1950,
+          "category": "noise",
+          "score": 0.4140625,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 6,
+          "session": 1,
+          "time": 1792838286807,
+          "duration_ms": 2925,
+          "category": "noise",
+          "score": 0.4440104166666667,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 7,
+          "session": 1,
+          "time": 1792838292657,
+          "duration_ms": 1950,
+          "category": "noise",
+          "score": 0.337890625,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        }
+      ],
+      "persisted_snoring_count": 3,
+      "persisted_speech_count": 0,
+      "persisted_other_count": 4
+    },
+    {
+      "fixture": "speech-crowd",
+      "expected_broad_class": "speech",
+      "frames": 19,
+      "snoring_max": 0.01953125,
+      "speech_max": 0.80078125,
+      "windows": [
+        {
+          "start_ms": 0,
+          "top_index": 0,
+          "top_score": 0.1484375,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.1484375,
+          "speech_score": 0.1484375,
+          "silence_score": 0,
+          "selected": "none"
+        },
+        {
+          "start_ms": 975,
+          "top_index": 24,
+          "top_score": 0.109375,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.109375,
+          "speech_score": 0.08203125,
+          "silence_score": 0,
+          "selected": "none"
+        },
+        {
+          "start_ms": 1950,
+          "top_index": 0,
+          "top_score": 0.4140625,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.4140625,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 2925,
+          "top_index": 0,
+          "top_score": 0.5859375,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.5859375,
+          "speech_score": 0.5859375,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 3900,
+          "top_index": 64,
+          "top_score": 0.109375,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.109375,
+          "speech_score": 0.04296875,
+          "silence_score": 0,
+          "selected": "none"
+        },
+        {
+          "start_ms": 4875,
+          "top_index": 0,
+          "top_score": 0.4140625,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.4140625,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 5850,
+          "top_index": 0,
+          "top_score": 0.33203125,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.33203125,
+          "speech_score": 0.33203125,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 6825,
+          "top_index": 0,
+          "top_score": 0.5859375,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.5859375,
+          "speech_score": 0.5859375,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 7800,
+          "top_index": 0,
+          "top_score": 0.4140625,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.4140625,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 8775,
+          "top_index": 0,
+          "top_score": 0.80078125,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.80078125,
+          "speech_score": 0.80078125,
+          "silence_score": 0,
+          "selected": "speech"
+        },
+        {
+          "start_ms": 9750,
+          "top_index": 0,
+          "top_score": 0.4140625,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.4140625,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 10725,
+          "top_index": 0,
+          "top_score": 0.33203125,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.33203125,
+          "speech_score": 0.33203125,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 11700,
+          "top_index": 0,
+          "top_score": 0.33203125,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.33203125,
+          "speech_score": 0.33203125,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 12675,
+          "top_index": 0,
+          "top_score": 0.4140625,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.4140625,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 13650,
+          "top_index": 0,
+          "top_score": 0.4140625,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.4140625,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 14625,
+          "top_index": 0,
+          "top_score": 0.4140625,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.4140625,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 15600,
+          "top_index": 56,
+          "top_score": 0.890625,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.890625,
+          "speech_score": 0.05859375,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 16575,
+          "top_index": 0,
+          "top_score": 0.4140625,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.4140625,
+          "speech_score": 0.4140625,
+          "silence_score": 0,
+          "selected": "noise"
+        },
+        {
+          "start_ms": 17550,
+          "top_index": 0,
+          "top_score": 0.109375,
+          "snoring_score": 0.01953125,
+          "breathing_score": 0.01171875,
+          "snoring_competitor_score": 0.109375,
+          "speech_score": 0.109375,
+          "silence_score": 0.03125,
+          "selected": "none"
+        }
+      ],
+      "policy_events": [
+        {
+          "start_ms": 1950,
+          "duration_ms": 1950,
+          "category": "noise",
+          "score": 0.5
+        },
+        {
+          "start_ms": 4875,
+          "duration_ms": 3900,
+          "category": "noise",
+          "score": 0.4365234375
+        },
+        {
+          "start_ms": 9750,
+          "duration_ms": 7800,
+          "category": "noise",
+          "score": 0.453125
+        }
+      ],
+      "persisted_events": [
+        {
+          "id": 1,
+          "session": 1,
+          "time": 1792838262602,
+          "duration_ms": 1950,
+          "category": "noise",
+          "score": 0.5,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 2,
+          "session": 1,
+          "time": 1792838265527,
+          "duration_ms": 3900,
+          "category": "noise",
+          "score": 0.4365234375,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        },
+        {
+          "id": 3,
+          "session": 1,
+          "time": 1792838270402,
+          "duration_ms": 7800,
+          "category": "noise",
+          "score": 0.453125,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        }
+      ],
+      "persisted_snoring_count": 0,
+      "persisted_speech_count": 0,
+      "persisted_other_count": 3
+    },
+    {
+      "fixture": "speech-countdown",
+      "expected_broad_class": "speech",
+      "frames": 6,
+      "snoring_max": 0,
+      "speech_max": 0.96875,
+      "windows": [
+        {
+          "start_ms": 0,
+          "top_index": 0,
+          "top_score": 0.95703125,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.95703125,
+          "speech_score": 0.95703125,
+          "silence_score": 0,
+          "selected": "speech"
+        },
+        {
+          "start_ms": 975,
+          "top_index": 0,
+          "top_score": 0.95703125,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.95703125,
+          "speech_score": 0.95703125,
+          "silence_score": 0,
+          "selected": "speech"
+        },
+        {
+          "start_ms": 1950,
+          "top_index": 0,
+          "top_score": 0.91796875,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.91796875,
+          "speech_score": 0.91796875,
+          "silence_score": 0,
+          "selected": "speech"
+        },
+        {
+          "start_ms": 2925,
+          "top_index": 0,
+          "top_score": 0.94140625,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.94140625,
+          "speech_score": 0.94140625,
+          "silence_score": 0,
+          "selected": "speech"
+        },
+        {
+          "start_ms": 3900,
+          "top_index": 0,
+          "top_score": 0.95703125,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.95703125,
+          "speech_score": 0.95703125,
+          "silence_score": 0,
+          "selected": "speech"
+        },
+        {
+          "start_ms": 4875,
+          "top_index": 0,
+          "top_score": 0.96875,
+          "snoring_score": 0,
+          "breathing_score": 0,
+          "snoring_competitor_score": 0.96875,
+          "speech_score": 0.96875,
+          "silence_score": 0,
+          "selected": "speech"
+        }
+      ],
+      "policy_events": [
+        {
+          "start_ms": 0,
+          "duration_ms": 5850,
+          "category": "speech",
+          "score": 0.9498697916666666
+        }
+      ],
+      "persisted_events": [
+        {
+          "id": 1,
+          "session": 1,
+          "time": 1792838260733,
+          "duration_ms": 5850,
+          "category": "speech",
+          "score": 0.9498697916666666,
+          "model": "yamnet-mobile-v1-10c95ea3",
+          "clip": null,
+          "favorite": 0,
+          "user_category": null,
+          "label_revision": 0
+        }
+      ],
+      "persisted_snoring_count": 0,
+      "persisted_speech_count": 1,
+      "persisted_other_count": 0
+    }
+  ]
+}
