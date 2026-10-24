@@ -19,7 +19,7 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--serial", required=True, choices=("emulator-5554",))
-parser.add_argument("--scope", choices=("full", "tone-wake", "report"), default="full", help="A named narrow scope is never a full app acceptance run")
+parser.add_argument("--scope", choices=("full", "tone-wake", "report", "sensing-travel"), default="full", help="A named narrow scope is never a full app acceptance run")
 parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
 parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
 args = parser.parse_args()
@@ -31,6 +31,9 @@ WAKE_CHECK_FRAMES = ["wake-check-" + name + ".png" for name in ("waiting", "prom
 FOCUSED_TESTS = ("AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "AlarmWakeSettingsTest", "WakeCheckFlowTest")
 REPORT_TESTS = ("RootVisualTest", "ChartClockFlowTest", "ReportRibbonNativeTest", "ReportReferenceFlowTest")
 REPORT_FRAMES = ["report-reference-" + name + ".png" for name in ("history", "week", "month", "year", "night", "editor", "tags-notes", "reopened")] + ["root-report.png"] + ["chart-clock-" + name + ".png" for name in ("overnight", "night", "short", "fold")]
+SENSING_TESTS = ("SonarSettingsNativeTest", "ContactlessSetupFlowTest", "TravelCueStorageTest", "TravelCueFlowTest")
+SENSING_FRAMES = ["sonar-setup-" + name + ".png" for name in ("initial", "ready", "gain-changed", "retested", "reopened", "recreated", "testing", "cancelled", "cancel-recreated", "charging-error", "unsupported", "permission", "saving", "saving-recreated", "save-error")]
+SENSING_FRAMES += ["travel-cues-" + name + ".png" for name in ("settings-off", "window", "date", "time", "window-recreated", "settings-enabled", "settings-reopened", "invalid-window", "no-manual", "ready", "active", "active-recreated", "stopped", "stopped-reopened", "output-error", "interrupted")]
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
 root = Path(__file__).resolve().parents[1]
@@ -104,15 +107,18 @@ tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmPr
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
 tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest", "GradedMathConfigurationTest", "QrCodeConfigurationTest", "AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "WakeCheckFlowTest", "SoundLabelStorageTest", "SoundLabelFlowTest", "NapFlowTest", "NapIntegrationFlowTest", "RecurringTrackingTest", "RecurringTrackingFlowTest", "BackupStorageTest", "BackupDocumentFlowTest", "ReportRibbonNativeTest", "AlarmSkipStorageTest", "AlarmSkipFlowTest"]
+tests += list(SENSING_TESTS)
 if args.audio_imports:
     tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
 if args.scope == "tone-wake":
     tests = list(FOCUSED_TESTS)
 elif args.scope == "report":
     tests = list(REPORT_TESTS)
+elif args.scope == "sensing-travel":
+    tests = list(SENSING_TESTS)
 metadata["test_classes"] = tests
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
-method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2, "BackupStorageTest": 6, "BackupDocumentFlowTest": 3, "ReportRibbonNativeTest": 2, "AlarmSkipStorageTest": 8, "AlarmSkipFlowTest": 2}
+method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2, "BackupStorageTest": 6, "BackupDocumentFlowTest": 3, "ReportRibbonNativeTest": 2, "AlarmSkipStorageTest": 8, "AlarmSkipFlowTest": 2, "ContactlessSetupFlowTest": 3, "TravelCueStorageTest": 8, "TravelCueFlowTest": 2}
 class_results = []
 for test in tests:
     extra = []
@@ -139,7 +145,7 @@ for test in tests:
         failures.append(test)
 command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", str(output), check=False)
 if args.scope != "full":
-    focused_frames = REPORT_FRAMES if args.scope == "report" else TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES
+    focused_frames = REPORT_FRAMES if args.scope == "report" else SENSING_FRAMES if args.scope == "sensing-travel" else TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES
     failures += [name for name in focused_frames if not (output / name).is_file()]
     summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "failures": failures}
     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
@@ -236,6 +242,7 @@ required = ["sounds-settings-" + name + ".png" for name in ("rain", "ocean", "re
 required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "audio-retention", "bedtime-guard", "travel", "privacy", "wind-down")]
 required += ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 required += ["protection-" + name + ".png" for name in ("alarms", "editor", "off", "disclosure", "on", "recreated", "global", "power-only")]
+required += SENSING_FRAMES
 required += WAKE_SETTING_FRAMES
 required += ["menus-" + name + ".png" for name in ("editor", "time", "time-recreated", "time-24", "time-invalid", "large-snooze", "duration-recreated", "tasks", "task-settings", "task-chosen", "snooze", "duration", "snooze-changed", "recreated", "sound", "reopened")]
 required += ["automatic-" + name + ".png" for name in ("manual", "stillness", "sounds", "reopened", "error")]

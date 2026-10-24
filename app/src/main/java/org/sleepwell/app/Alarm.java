@@ -54,5 +54,5 @@ public class Alarm {
         return a;
     }
     /** Cached document text is display-only; it grants no access and never chooses a tone. */
-    static String cleanToneName(Object name){if(!(name instanceof String))return "";String value=((String)name).replaceAll("[\\p{Cntrl}\\p{Cf}]"," ").strip();return value.codePointCount(0,value.length())>100?value.substring(0,value.offsetByCodePoints(0,100)):value;}
+    static String cleanToneName(Object name){if(!(name instanceof String))return "";String value=((String)name).replaceAll("[\\p{Cntrl}\\p{Cf}\\p{Zl}\\p{Zp}]"," ").strip();return value.codePointCount(0,value.length())>100?value.substring(0,value.offsetByCodePoints(0,100)):value;}
 }
