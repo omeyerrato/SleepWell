@@ -15,6 +15,7 @@ on:
           - sonar-night
           - sound-categories
           - sound-sensitivity
+          - phone-features
       native_sounds:
         description: 'Also exercise real MediaPlayer/notification controls with host audio disabled (CI emulator only)'
         type: boolean

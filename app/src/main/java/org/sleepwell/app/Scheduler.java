@@ -21,13 +21,13 @@ public final class Scheduler {
         PendingIntent operation=FIRE.equals(action)?PendingIntent.getBroadcast(c,id,new Intent(c,AlarmReceiver.class).setAction(action).putExtra("id",id).putExtra("occurrence",time),PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE):intent(c,id,action);
         c.getSystemService(AlarmManager.class).setAlarmClock(new AlarmManager.AlarmClockInfo(time,Notifications.home(c)),operation);
     }
-    static void schedule(Context c,Alarm a) {
+    static synchronized void schedule(Context c,Alarm a) {
         cancel(c,a.id,FIRE);
         if(a.nap!=null){Naps.reconcile(c,a.id);return;}
         if(a.napInvalid){Prefs.put(c,"lastError","This nap timer could not be read. Review it before starting.");return;}
         if(a.skipInvalid){Prefs.put(c,"deadline_"+a.id,0L);Prefs.put(c,"lastError","A skipped alarm occurrence needs review.");return;}
-        if(a.enabled) { long next=a.next(Math.max(System.currentTimeMillis(),Prefs.of(c).getLong("lastOccurrence_"+a.id,0))); at(c,a.id,FIRE,next); Prefs.put(c,"deadline_"+a.id,next); }
-        else Prefs.put(c,"deadline_"+a.id,0L);
+        if(a.enabled) { long now=System.currentTimeMillis(),next=a.next(Math.max(now,Prefs.of(c).getLong("lastOccurrence_"+a.id,0)));CalendarPolicy.Plan plan=CalendarAlarms.plan(c,a,next,now);CalendarAlarms.scheduled(c,a,plan);at(c,a.id,FIRE,plan.deadline);Prefs.put(c,"deadline_"+a.id,plan.deadline); }
+        else {CalendarAlarms.scheduled(c,a,CalendarPolicy.ordinary(0,""));Prefs.put(c,"deadline_"+a.id,0L);}
     }
     static void cancel(Context c,int id,String action) { if(CHECK.equals(action))WakeChecks.cancelForAlarm(c,id);c.getSystemService(AlarmManager.class).cancel(intent(c,id,action)); }
     static void all(Context c) {
@@ -53,8 +53,8 @@ public final class Scheduler {
             boolean alreadyRinging=Prefs.flag(c,"ringing");
             if(mainAlarm) {
                 // Re-read under the same lock as Skip/Undo: stale smart-wake snapshots cannot bypass a saved skip.
-                try(Store store=Records.open(c)){Alarm current=store.alarm(a.id);long deadline=Prefs.of(c).getLong("deadline_"+a.id,0),now=System.currentTimeMillis();if(!AlarmSkips.eligible(current,deadline,now,Prefs.of(c).getLong("lastOccurrence_"+a.id,0),ZoneId.systemDefault()))return;a=current;}
-                long occurrence=Prefs.of(c).getLong("deadline_"+a.id,System.currentTimeMillis());Prefs.put(c,"lastOccurrence_"+a.id,Math.max(occurrence,System.currentTimeMillis()));
+                try(Store store=Records.open(c)){Alarm current=store.alarm(a.id);long deadline=Prefs.of(c).getLong("deadline_"+a.id,0),now=System.currentTimeMillis();if(!CalendarAlarms.eligible(c,current,deadline,now,Prefs.of(c).getLong("lastOccurrence_"+a.id,0),ZoneId.systemDefault()))return;a=current;}
+                long occurrence=Prefs.of(c).getLong("deadline_"+a.id,System.currentTimeMillis());Prefs.put(c,"lastOccurrence_"+a.id,Math.max(CalendarAlarms.consumed(c,a,occurrence),System.currentTimeMillis()));
                 cancel(c,a.id,FIRE); cancel(c,a.id,SNOOZE); cancel(c,a.id,CHECK);
                 Prefs.put(c,"snoozes_"+a.id,0);
                 try(Store s=new Store(c)) {

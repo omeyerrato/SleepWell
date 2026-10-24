@@ -61,6 +61,7 @@ public class MainActivity extends Activity {
         settingsRow(body,"wave","Sound analysis","Snoring, speech and sound recordings",()->{tab=9;render();});
         settingsRow(body,"clock","Automatic tracking","Choose when to start tonight",()->startActivity(RecordUi.intent(this,AutomaticTrackingActivity.class)));
         settingsRow(body,"sun","Travel mode","Time zones and daylight reminders",()->startActivity(RecordUi.intent(this,TravelActivity.class)));
+        settingsRow(body,"calendar","Calendar rules","Skip selected dates or wake before meetings",()->startActivity(RecordUi.intent(this,CalendarRulesActivity.class)));
         settingsRow(body,"shield","Bedtime guard","Reduce distractions at night",()->startActivity(RecordUi.intent(this,GuardActivity.class)));
         settingsRow(body,"palette","Appearance","Light, dark and theme options",()->{startActivity(new Intent(this,AppearanceActivity.class).putExtra("visualReview",getIntent().getBooleanExtra("visualReview",false)));if(Appearance.reduced(this))overridePendingTransition(0,0);});
         settingsRow(body,"settings","Reliability","Battery, permissions and tips",()->{tab=5;render();});

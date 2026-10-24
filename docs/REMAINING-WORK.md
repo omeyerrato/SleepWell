@@ -5,10 +5,10 @@ Updated 24 October 2026. This is the remaining-work view of the build brief and
 have no code. Some need implementation; others have code but still need correction,
 visual comparison or functional evidence. No percentage is inferred from item counts.
 
-The design reviewer owns **visual design only**: inspect actual Android originals
-against the supplied boards, identify differences, and accept or reject appearance.
-It does not approve algorithms, feature completeness, code correctness or tests.
-Implementation and functional verification remain separate responsibilities.
+Current priority: **finish features first**. The dedicated design reviewer has been
+stopped and its slot reassigned to implementation at your request. Visual correction,
+broad bug review and security auditing are deferred. Essential build, data-preservation
+and functional checks continue; unchecked visual items below remain future work.
 
 ## Your highest-priority features
 
@@ -27,8 +27,9 @@ Implementation and functional verification remain separate responsibilities.
 - [ ] **Sleep noise analysis:** finish shared contactless/noise UI flow verification;
   preserve explicit off/unknown/complete/error states. Real-model fixture replay
   passes, but representative bedroom accuracy, sustained capture and battery do not.
-- [ ] **Detection controls:** implement and verify per-class sound-duration/sensitivity
-  settings while retaining exact existing default policy. Broader cough/cry/laughter
+- [x] **Detection controls:** per-class accepted-duration settings retain the existing
+  default policy; native save/reopen/error flow passed at3463834/CI40124391172.
+  Broader cough/cry/laughter
   recognition remains incomplete; the rejected laughter candidate stays rejected.
 - [ ] **Auto-detect sleeping:** validate real scheduled/inactivity/recurring starts,
   permission and charging changes, false starts and background restrictions. Phone

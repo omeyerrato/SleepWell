@@ -19,7 +19,7 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--serial", required=True, choices=("emulator-5554",))
-parser.add_argument("--scope", choices=("full", "tone-wake", "report", "sensing-travel", "sonar-night", "sound-categories", "sound-sensitivity"), default="full", help="A named narrow scope is never a full app acceptance run")
+parser.add_argument("--scope", choices=("full", "tone-wake", "report", "sensing-travel", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features"), default="full", help="A named narrow scope is never a full app acceptance run")
 parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
 parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
 args = parser.parse_args()
@@ -59,6 +59,9 @@ CATEGORY_FRAMES += ["library-" + name + ".png" for name in ("recordings", "playb
 SENSITIVITY_TESTS = ("SoundSensitivityStorageTest", "SoundSensitivityFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest")
 SENSITIVITY_NEW_FRAMES = ["sound-sensitivity-" + name + ".png" for name in ("default", "selector", "draft", "recreated", "saved", "reopened", "invalid", "saving", "saving-recreated", "save-error", "retry")]
 SENSITIVITY_FRAMES = SENSITIVITY_NEW_FRAMES + ["analysis-events-" + name + ".png" for name in ("all", "speech", "recreated")]
+PHONE_FEATURE_TESTS = ("CalendarRulesStorageTest", "CalendarRulesFlowTest", "AlarmDefaultsStorageTest", "AlarmDefaultsFlowTest", "AutomationStorageTest")
+PHONE_FEATURE_FRAMES = ["calendar-rules-" + name + ".png" for name in ("initial", "draft", "saved", "reopened")]
+PHONE_FEATURE_FRAMES += ["alarm-defaults-" + name + ".png" for name in ("initial", "recreated", "saved", "reopened", "reset", "saving", "saving-recreated", "save-error", "retry")]
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
 root = Path(__file__).resolve().parents[1]
@@ -135,6 +138,7 @@ tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfiguratio
 tests += list(SENSING_TESTS)
 tests += ["SoundCategoryStorageTest", "SoundCategoryFlowTest"]
 tests += ["SoundSensitivityStorageTest", "SoundSensitivityFlowTest", "GoalStorageTest", "GoalFlowTest", "DatedGoalBankFlowTest"]
+tests += list(PHONE_FEATURE_TESTS)
 if args.audio_imports:
     tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
 if args.scope == "tone-wake":
@@ -149,11 +153,14 @@ elif args.scope == "sound-categories":
     tests = list(CATEGORY_TESTS)
 elif args.scope == "sound-sensitivity":
     tests = list(SENSITIVITY_TESTS)
+elif args.scope == "phone-features":
+    tests = list(PHONE_FEATURE_TESTS)
 metadata["test_classes"] = tests
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2, "BackupStorageTest": 6, "BackupDocumentFlowTest": 3, "ReportRibbonNativeTest": 2, "AlarmSkipStorageTest": 8, "AlarmSkipFlowTest": 2, "ContactlessSetupFlowTest": 3, "TravelCueStorageTest": 8, "TravelCueFlowTest": 2, "SonarProvenanceStorageTest": 12}
 class_results = []
 method_counts.update({"SharedSoundProvenanceStorageTest": 12, "SonarNightStorageTest": 2, "SonarNightFlowTest": 2, "SonarSharedSoundFlowTest": 2, "WalkFallbackStorageTest": 2, "SoundCategoryStorageTest": 2, "SoundCategoryFlowTest": 2, "SoundSensitivityStorageTest": 3, "SoundSensitivityFlowTest": 2, "GoalStorageTest": 10, "DatedGoalBankFlowTest": 2})
+method_counts.update({"CalendarRulesStorageTest": 4, "AlarmDefaultsStorageTest": 3, "AlarmDefaultsFlowTest": 2, "AutomationStorageTest": 10})
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
@@ -203,7 +210,7 @@ if "SonarSharedClassifierStorageTest" in tests:
     except (OSError, KeyError, ValueError, TypeError) as error:
         failures.append("Shared PCM replay evidence incomplete: " + str(error))
 if args.scope != "full":
-    focused_frames = {"sound-categories": CATEGORY_FRAMES, "sound-sensitivity": SENSITIVITY_FRAMES, "sonar-night": NIGHT_FRAMES, "report": REPORT_FRAMES, "sensing-travel": SENSING_FRAMES, "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES}[args.scope]
+    focused_frames = {"phone-features": PHONE_FEATURE_FRAMES, "sound-categories": CATEGORY_FRAMES, "sound-sensitivity": SENSITIVITY_FRAMES, "sonar-night": NIGHT_FRAMES, "report": REPORT_FRAMES, "sensing-travel": SENSING_FRAMES, "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES}[args.scope]
     failures += [name for name in focused_frames if not (output / name).is_file()]
     summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "failures": failures}
     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
@@ -303,6 +310,7 @@ required += ["protection-" + name + ".png" for name in ("alarms", "editor", "off
 required += SENSING_FRAMES
 required += CATEGORY_NEW_FRAMES
 required += GOAL_FRAMES + DATED_GOAL_FRAMES + SENSITIVITY_NEW_FRAMES
+required += PHONE_FEATURE_FRAMES
 required += WAKE_SETTING_FRAMES
 required += ["menus-" + name + ".png" for name in ("editor", "time", "time-recreated", "time-24", "time-invalid", "large-snooze", "duration-recreated", "tasks", "task-settings", "task-chosen", "snooze", "duration", "snooze-changed", "recreated", "sound", "reopened")]
 required += ["automatic-" + name + ".png" for name in ("manual", "stillness", "sounds", "reopened", "error")]

@@ -8,6 +8,7 @@ public class BootReceiver extends BroadcastReceiver {
     @Override public void onReceive(Context c,Intent i) {
         if(i.getAction()==null || !TRUSTED.contains(i.getAction())) return;
         try { Scheduler.all(c); } catch(SecurityException e) { Prefs.put(c,"lastError","Exact alarms need permission after restart."); }
+        try{if(CalendarSettings.load(c).enabled){CalendarSync.observe(c);CalendarSync.request(c);}}catch(RuntimeException failure){CalendarSettings.prefs(c).edit().putString("error","Calendar refresh needs attention. Reopen Calendar rules.").commit();}
         if(Intent.ACTION_BOOT_COMPLETED.equals(i.getAction())) {
             Prefs.put(c,"ringing",false); Prefs.put(c,"tracking",false);Prefs.put(c,"trackingPaused",false); Prefs.put(c,"session",0L);
             try(Store s=new Store(c)) {
