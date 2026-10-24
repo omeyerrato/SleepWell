@@ -8,6 +8,8 @@ public final class ContactlessSetupActivity extends Activity {
  private final Runnable poll=this::observeSave;
  @Override public void onCreate(Bundle state){super.onCreate(state);RecordUi.review(this);settings=SonarSettings.factory;capabilities=SonarCapabilities.provider;pinnedPorts=ports;try{gain=Math.round(SonarSettings.read(settings.open(this)).gain*100);}catch(Exception e){error=e.getMessage();}if(state!=null){gain=state.getInt("gain",gain);error=state.getString("error",error);token=state.getString("token");permissionAsked=state.getBoolean("permissionAsked");if(token==null&&state.getBoolean("testOwned"))error="Test stopped on screen change. Test again before saving.";}render();}
  @Override protected void onResume(){super.onResume();resumed=true;readCapabilities();update();observeSave();}
+ /** Reassert after the platform restores the light app theme during resume; this screen is always plum. */
+ @Override protected void onPostResume(){super.onPostResume();Design.systemBars(this,true);getWindow().getDecorView().post(()->{if(!isDestroyed()&&hasWindowFocus())Design.systemBars(this,true);});}
  @Override protected void onPause(){resumed=false;main.removeCallbacks(poll);qualified=false;if(runtime!=null)runtime.cancel();super.onPause();}
  @Override protected void onDestroy(){if(runtime!=null)runtime.cancel();main.removeCallbacksAndMessages(null);super.onDestroy();}
  private void readCapabilities(){try{caps=capabilities.read(getApplicationContext());}catch(Exception e){caps=new SonarCapabilities(false,false,"Audio availability could not be checked.","Hardware support unverified");}}

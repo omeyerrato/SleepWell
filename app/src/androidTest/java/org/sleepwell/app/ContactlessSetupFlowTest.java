@@ -30,12 +30,39 @@ public final class ContactlessSetupFlowTest {
  private void launch()throws Exception{ActivityMonitorAction(()->c.startActivity(new Intent(c,ContactlessSetupActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)));ready();}
  private void recreate()throws Exception{ActivityMonitorAction(()->activity.recreate());ready();}
  private void ActivityMonitorAction(Runnable action)throws Exception{Instrumentation.ActivityMonitor monitor=i.addMonitor(ContactlessSetupActivity.class.getName(),null,false);try{i.runOnMainSync(action);activity=(ContactlessSetupActivity)monitor.waitForActivityWithTimeout(5000);assertNotNull(activity);}finally{i.removeMonitor(monitor);}}
- private void ready()throws Exception{waitFor(()->{boolean[] ready={false};i.runOnMainSync(()->ready[0]=activity.hasWindowFocus()&&!activity.isDestroyed()&&activity.getWindow().getDecorView().isLaidOut());return ready[0];});}
+ private void ready()throws Exception{waitFor(()->{boolean[] ready={false};i.runOnMainSync(()->ready[0]=activity.hasWindowFocus()&&!activity.isDestroyed()&&activity.getWindow().getDecorView().isLaidOut()&&(activity.getWindow().getInsetsController().getSystemBarsAppearance()&(WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS))==0);return ready[0];});}
  private View find(View root,String text){if(root instanceof TextView&&text.contentEquals(((TextView)root).getText())||text.equals(root.getContentDescription()))return root;if(root instanceof ViewGroup)for(int n=0;n<((ViewGroup)root).getChildCount();n++){View v=find(((ViewGroup)root).getChildAt(n),text);if(v!=null)return v;}return null;}
  private void click(String title)throws Exception{step="click "+title;ready();i.runOnMainSync(()->{View v=find(activity.getWindow().getDecorView(),title);assertNotNull(title,v);assertTrue(title+" enabled",v.isEnabled());android.graphics.Rect bounds=new android.graphics.Rect();assertTrue(v.getGlobalVisibleRect(bounds));assertEquals(v.getHeight(),bounds.height());assertTrue(bounds.height()>=Design.dp(c,48));assertTrue(v.performClick());});}
  private boolean enabled(String title){boolean[] value={false};i.runOnMainSync(()->{View v=find(activity.getWindow().getDecorView(),title);value[0]=v!=null&&v.isEnabled();});return value[0];}
  private File folder(){File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());return folder;}
- private void capture(String name)throws Exception{step="capture "+name;ready();CountDownLatch frame=new CountDownLatch(1);i.runOnMainSync(()->{View root=activity.getWindow().getDecorView();View use=find(root,"Use sonar");if(use!=null){android.graphics.Rect r=new android.graphics.Rect();assertTrue(use.getGlobalVisibleRect(r));assertEquals(use.getHeight(),r.height());}root.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);root.invalidate();});assertTrue(frame.await(5,TimeUnit.SECONDS));assertTrue(d.takeScreenshot(new File(folder(),"sonar-setup-"+name+".png")));}
+ private boolean brightRegion(android.graphics.Bitmap bitmap,int top,int bottom){int[] row=new int[bitmap.getWidth()];int bright=0;for(int y=top;y<bottom;y++){bitmap.getPixels(row,0,row.length,0,y,row.length,1);for(int rgb:row)if(android.graphics.Color.red(rgb)>180&&android.graphics.Color.green(rgb)>180&&android.graphics.Color.blue(rgb)>180&&++bright>=24)return true;}return false;}
+ private boolean brightBars(android.graphics.Bitmap bitmap,int status,int navigation){return bitmap!=null&&status>0&&navigation>0&&status+navigation<bitmap.getHeight()&&brightRegion(bitmap,0,status)&&brightRegion(bitmap,bitmap.getHeight()-navigation,bitmap.getHeight());}
+ private void capture(String name)throws Exception{
+  step="capture "+name;
+  ready();
+  CountDownLatch frame=new CountDownLatch(1);
+  int[] bars=new int[2];
+  i.runOnMainSync(()->{
+   View root=activity.getWindow().getDecorView();
+   View use=find(root,"Use sonar");
+   if(use!=null){android.graphics.Rect r=new android.graphics.Rect();assertTrue(use.getGlobalVisibleRect(r));assertEquals(use.getHeight(),r.height());}
+   WindowInsets insets=root.getRootWindowInsets();
+   assertNotNull("Current system bar insets",insets);
+   bars[0]=insets.getInsets(WindowInsets.Type.statusBars()).top;
+   bars[1]=insets.getInsets(WindowInsets.Type.navigationBars()).bottom;
+   root.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);
+   root.invalidate();
+  });
+  assertTrue(frame.await(5,TimeUnit.SECONDS));
+  // Check the compositor output, not only the requested appearance flags. No UI action is retried.
+  assertTrue("Light status icons and navigation handle rendered on plum",d.wait(new Condition<UiDevice,Boolean>(){
+   public Boolean apply(UiDevice ignored){android.graphics.Bitmap screen=i.getUiAutomation().takeScreenshot();if(screen==null)return false;android.graphics.Bitmap readable=screen;try{if(screen.getConfig()==android.graphics.Bitmap.Config.HARDWARE)readable=screen.copy(android.graphics.Bitmap.Config.ARGB_8888,false);return brightBars(readable,bars[0],bars[1]);}finally{if(readable!=null&&readable!=screen)readable.recycle();screen.recycle();}}
+  },5000));
+  File file=new File(folder(),"sonar-setup-"+name+".png");
+  assertTrue(d.takeScreenshot(file));
+  android.graphics.Bitmap actual=android.graphics.BitmapFactory.decodeFile(file.getAbsolutePath());
+  try{assertTrue("Saved original contains light system bars",brightBars(actual,bars[0],bars[1]));}finally{if(actual!=null)actual.recycle();}
+ }
  @Test public void explicitRealDspFakePcmQualificationSaveAndReopenNoAutostart()throws Exception{
   fixture(prefs->{
    launch();
