@@ -1,0 +1,14 @@
+package org.sleepwell.app;
+import java.time.*;import java.util.*;import org.junit.Test;import static org.junit.Assert.*;
+
+public final class AlarmDateTest {
+    final ZoneId utc=ZoneId.of("UTC");long at(String iso){return Instant.parse(iso).toEpochMilli();}
+    Alarm dated(){Alarm alarm=new Alarm(1);alarm.hour=6;alarm.minute=30;alarm.date=LocalDate.parse("2026-10-27");alarm.enabled=true;return alarm;}
+    @Test public void dateIsOneSpecificOccurrenceAndNeverRollsIntoTomorrow(){Alarm a=dated();long chosen=at("2026-10-27T06:30:00Z");assertEquals(chosen,a.next(at("2026-10-24T23:00:00Z"),utc));assertEquals(0,a.next(chosen,utc));assertEquals(0,a.next(chosen+86400000,utc));assertTrue(a.occurs(chosen,utc));assertFalse(a.occurs(chosen+86400000,utc));}
+    @Test public void zoneChangeKeepsChosenLocalDateAndClock(){Alarm a=dated();assertEquals(at("2026-10-27T03:30:00Z"),a.next(at("2026-10-24T00:00:00Z"),ZoneId.of("Asia/Riyadh")));assertEquals(LocalDate.parse("2026-10-27"),a.date);}
+    @Test public void daylightGapAndFoldMatchExistingLocalTimePolicy(){ZoneId berlin=ZoneId.of("Europe/Berlin");assertEquals(at("2026-03-29T01:30:00Z"),AlarmDate.at(LocalDate.parse("2026-03-29"),2,30,berlin));assertEquals(at("2026-10-25T00:30:00Z"),AlarmDate.at(LocalDate.parse("2026-10-25"),2,30,berlin));assertEquals(0,AlarmDate.next(LocalDate.parse("2026-10-25"),2,30,at("2026-10-25T01:00:00Z"),berlin));}
+    @Test public void strictDatesRejectInvalidTypesNonCanonicalAndUnboundedYears(){for(Object raw:Arrays.asList(null,20261027,true,"2026-2-7","2026-02-30","1969-12-31","+10000-01-01","2026-10-27T00:00:00"))assertThrows(IllegalArgumentException.class,()->AlarmDate.read(raw));assertEquals(LocalDate.parse("2026-10-27"),AlarmDate.read("2026-10-27"));}
+    @Test public void dateDeliveryRetainsOccurrenceSmartWindowAndClaimedFences(){Alarm a=dated();a.smartWindow=30;long chosen=at("2026-10-27T06:30:00Z");assertFalse(AlarmSkips.eligible(a,chosen,chosen-1800001,0,utc));assertTrue(AlarmSkips.eligible(a,chosen,chosen-1800000,0,utc));assertFalse(AlarmSkips.eligible(a,chosen,chosen,chosen,utc));assertFalse(AlarmSkips.eligible(a,chosen+86400000,chosen+86400000,0,utc));a.dateInvalid=true;assertEquals(0,a.next(chosen-1000,utc));assertFalse(AlarmSkips.eligible(a,chosen,chosen,0,utc));}
+    @Test public void skippingDateNeverCreatesAReplacementOccurrence(){Alarm a=dated();a.skip=new AlarmSkip("d679855a-69a3-4cc9-8a1f-e4906a00ea92",a.date,a.hour,a.minute,Set.of(),"UTC");long chosen=at("2026-10-27T06:30:00Z");assertEquals(0,a.next(chosen-60000,utc));assertFalse(AlarmSkips.eligible(a,chosen,chosen,0,utc));}
+    @Test public void absentDateRetainsLegacyNextDayAndWeekdaySchedules(){Alarm a=new Alarm(1);a.hour=6;a.minute=30;long now=at("2026-10-24T08:00:00Z");assertEquals(at("2026-10-25T06:30:00Z"),a.next(now,utc));a.days.add(1);assertEquals(at("2026-10-26T06:30:00Z"),a.next(now,utc));}
+}

@@ -25,13 +25,14 @@ public final class Scheduler {
         cancel(c,a.id,FIRE);
         if(a.nap!=null){Naps.reconcile(c,a.id);return;}
         if(a.napInvalid){Prefs.put(c,"lastError","This nap timer could not be read. Review it before starting.");return;}
+        if(a.dateInvalid){Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException("This alarm date needs review.");}
         if(a.skipInvalid){Prefs.put(c,"deadline_"+a.id,0L);Prefs.put(c,"lastError","A skipped alarm occurrence needs review.");return;}
-        if(a.enabled) { long now=System.currentTimeMillis(),next=a.next(Math.max(now,Prefs.of(c).getLong("lastOccurrence_"+a.id,0)));CalendarPolicy.Plan plan=CalendarAlarms.plan(c,a,next,now);CalendarAlarms.scheduled(c,a,plan);at(c,a.id,FIRE,plan.deadline);Prefs.put(c,"deadline_"+a.id,plan.deadline); }
+        if(a.enabled) { long now=System.currentTimeMillis(),next=a.next(Math.max(now,Prefs.of(c).getLong("lastOccurrence_"+a.id,0)));if(next<=0){CalendarAlarms.scheduled(c,a,CalendarPolicy.ordinary(0,""));Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException("That alarm date has passed. Choose a future date.");}CalendarPolicy.Plan plan=CalendarAlarms.plan(c,a,next,now);CalendarAlarms.scheduled(c,a,plan);at(c,a.id,FIRE,plan.deadline);Prefs.put(c,"deadline_"+a.id,plan.deadline); }
         else {CalendarAlarms.scheduled(c,a,CalendarPolicy.ordinary(0,""));Prefs.put(c,"deadline_"+a.id,0L);}
     }
     static void cancel(Context c,int id,String action) { if(CHECK.equals(action))WakeChecks.cancelForAlarm(c,id);c.getSystemService(AlarmManager.class).cancel(intent(c,id,action)); }
     static void all(Context c) {
-        try(Store s=new Store(c)) { for(Alarm a:s.alarms()) schedule(c,a); }
+        try(Store s=new Store(c)) { for(Alarm a:s.alarms())try{schedule(c,a);}catch(RuntimeException failed){Prefs.put(c,"lastError","Alarm "+a.id+" needs scheduling attention.");} }
         bedtime(c);
     }
     static void bedtime(Context c) {
