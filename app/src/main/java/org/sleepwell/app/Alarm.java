@@ -9,6 +9,7 @@ public class Alarm {
     public boolean enabled=false, vibrate=true, pin=false, extraLoud=false, sunrise=false, flashlight=false, shortenSnoozes=false;
     public int soundDelaySeconds=0,vibrationDelaySeconds=0;
     public String label="A fresh start", challenge="Math", tone="daybreak";
+    String toneDisplayName="";
     ChallengeRoutine routine;boolean routineInvalid;private Object invalidRoutine;
     NapPlan nap;boolean napInvalid;private Object invalidNap;
     AlarmSkip skip;boolean skipInvalid;Object invalidSkip;String scheduleError="";
@@ -28,6 +29,7 @@ public class Alarm {
                 .put("awakeCheck",awakeCheck).put("backupMinutes",backupMinutes).put("vibrate",vibrate).put("pin",pin).put("challenge",challenge).put("tone",tone)
                 .put("extraLoud",extraLoud).put("sunrise",sunrise).put("flashlight",flashlight).put("soundDelaySeconds",soundDelaySeconds).put("vibrationDelaySeconds",vibrationDelaySeconds)
                 .put("shortenSnoozes",shortenSnoozes).put("days",new JSONArray(days));
+            if(tone.startsWith("content:")&&!toneDisplayName.isEmpty())j.put("toneDisplayName",cleanToneName(toneDisplayName));
             if(routine!=null)j.put("routine",ChallengeRoutineJson.encode(routine));else if(routineInvalid)j.put("routine",invalidRoutine);
             if(nap!=null)j.put("nap",NapPlanJson.encode(nap));else if(napInvalid)j.put("nap",invalidNap);
             if(skip!=null)j.put("skip",AlarmSkipJson.encode(skip));else if(skipInvalid)j.put("skip",invalidSkip);
@@ -41,6 +43,7 @@ public class Alarm {
         a.volume=j.optInt("volume",85); a.rampSeconds=j.optInt("rampSeconds",30); a.snoozeMinutes=j.optInt("snoozeMinutes",5);
         a.snoozeLimit=j.optInt("snoozeLimit",1); a.difficulty=j.optInt("difficulty",3); a.awakeCheck=j.optInt("awakeCheck",0);
         a.backupMinutes=j.optInt("backupMinutes",3);a.vibrate=j.optBoolean("vibrate",true); a.pin=j.optBoolean("pin"); a.challenge=j.optString("challenge","Math"); a.tone=j.optString("tone","daybreak");
+        a.toneDisplayName=a.tone.startsWith("content:")?cleanToneName(j.opt("toneDisplayName")):"";
         a.extraLoud=j.optBoolean("extraLoud",false);a.sunrise=j.optBoolean("sunrise",false);a.flashlight=j.optBoolean("flashlight",false);a.soundDelaySeconds=j.optInt("soundDelaySeconds",0);a.vibrationDelaySeconds=j.optInt("vibrationDelaySeconds",0);
         a.shortenSnoozes=j.optBoolean("shortenSnoozes",false);
         if(j.has("routine"))try{a.routine=ChallengeRoutineJson.decode(j.getJSONArray("routine"));}catch(JSONException invalid){a.routineInvalid=true;a.invalidRoutine=j.opt("routine");}
@@ -50,4 +53,6 @@ public class Alarm {
         Object error=j.opt("scheduleError");if(error instanceof String&&((String)error).length()<=240)a.scheduleError=(String)error;
         return a;
     }
+    /** Cached document text is display-only; it grants no access and never chooses a tone. */
+    static String cleanToneName(Object name){if(!(name instanceof String))return "";String value=((String)name).replaceAll("[\\p{Cntrl}\\p{Cf}]"," ").strip();return value.codePointCount(0,value.length())>100?value.substring(0,value.offsetByCodePoints(0,100)):value;}
 }
