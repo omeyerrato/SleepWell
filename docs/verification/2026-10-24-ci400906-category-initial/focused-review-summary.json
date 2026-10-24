@@ -1,0 +1,50 @@
+{
+  "scope": "sound-categories",
+  "full_app_review": false,
+  "expected_classes": 8,
+  "expected_methods": 13,
+  "class_results": [
+    {
+      "class": "SoundCategoryStorageTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "SoundCategoryFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "SoundEventsUiTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "FavoriteSoundsFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "ReportReferenceFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SoundArchiveUiTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SoundLabelFlowTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "SoundLibraryUiTest",
+      "expected_methods": 2,
+      "passed": true
+    }
+  ],
+  "required_original_images": 68,
+  "failures": []
+}

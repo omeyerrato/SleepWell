@@ -1,0 +1,34 @@
+{
+  "scope": "sonar-night",
+  "full_app_review": false,
+  "expected_classes": 4,
+  "expected_methods": 17,
+  "class_results": [
+    {
+      "class": "SharedSoundProvenanceStorageTest",
+      "expected_methods": 12,
+      "passed": true
+    },
+    {
+      "class": "SonarNightStorageTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "SonarNightFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "SonarReportFlowTest",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 16,
+  "failures": [
+    "SonarReportFlowTest",
+    "sonar-report-legacy-unknown.png",
+    "sonar-report-analysis-error.png"
+  ]
+}

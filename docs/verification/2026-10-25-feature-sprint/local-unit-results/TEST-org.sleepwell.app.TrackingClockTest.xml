@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TrackingClockTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-24T23:13:19.175Z" hostname="DESKTOP-1UTDMNE" time="0.001">
+  <properties/>
+  <testcase name="timelineRetainsItsOriginalWallAnchorWhenThePhoneClockChanges" classname="org.sleepwell.app.TrackingClockTest" time="0.0"/>
+  <testcase name="twelveHourLimitUsesTotalMonotonicLifetime" classname="org.sleepwell.app.TrackingClockTest" time="0.001"/>
+  <testcase name="pauseFreezesActiveTimeButNeverExtendsLifetime" classname="org.sleepwell.app.TrackingClockTest" time="0.0"/>
+  <testcase name="repeatedCommandsAreIdempotentAcrossSeveralPauses" classname="org.sleepwell.app.TrackingClockTest" time="0.0"/>
+  <testcase name="alarmCalendarWindowUsesWallTimeRatherThanTheRecordingAxis" classname="org.sleepwell.app.TrackingClockTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

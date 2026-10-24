@@ -1,0 +1,71 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.SonarNightStorageTest:
+INSTRUMENTATION_STATUS: test=chargingFailurePersistsInterruptedNullTailAndClosesPorts
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: No measured interval: phase=CLOSED; message=Could not save contactless readings: Capture arrived after its interval was checkpointed.; error=Could not save contactless readings: Capture arrived after its interval was checkpointed.; active=2277; readings=3; CALIBRATING@64-104; CALIBRATING@104-144; CALIBRATING@144-184; capture written=9120 read=9120 closed=true
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.sleepwell.app.SonarNightStorageTest$Fixture.measured(SonarNightStorageTest.java:42)
+	at org.sleepwell.app.SonarNightStorageTest.chargingFailurePersistsInterruptedNullTailAndClosesPorts(SonarNightStorageTest.java:60)
+
+INSTRUMENTATION_STATUS: stream=
+Error in chargingFailurePersistsInterruptedNullTailAndClosesPorts(org.sleepwell.app.SonarNightStorageTest):
+java.lang.AssertionError: No measured interval: phase=CLOSED; message=Could not save contactless readings: Capture arrived after its interval was checkpointed.; error=Could not save contactless readings: Capture arrived after its interval was checkpointed.; active=2277; readings=3; CALIBRATING@64-104; CALIBRATING@104-144; CALIBRATING@144-184; capture written=9120 read=9120 closed=true
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.sleepwell.app.SonarNightStorageTest$Fixture.measured(SonarNightStorageTest.java:42)
+	at org.sleepwell.app.SonarNightStorageTest.chargingFailurePersistsInterruptedNullTailAndClosesPorts(SonarNightStorageTest.java:60)
+
+INSTRUMENTATION_STATUS: test=chargingFailurePersistsInterruptedNullTailAndClosesPorts
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=actualPcmToSqliteNightPausesResumesAndRetainsSignalGaps
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: No measured interval: phase=CLOSED; message=Could not save contactless readings: Capture arrived after its interval was checkpointed.; error=Could not save contactless readings: Capture arrived after its interval was checkpointed.; active=1585; readings=9; CALIBRATING@90-130; CALIBRATING@130-170; CALIBRATING@170-210; CALIBRATING@210-250; CALIBRATING@250-290; CALIBRATING@290-330; CALIBRATING@330-370; CALIBRATING@370-410; capture written=21120 read=21120 closed=true
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.sleepwell.app.SonarNightStorageTest$Fixture.measured(SonarNightStorageTest.java:42)
+	at org.sleepwell.app.SonarNightStorageTest.actualPcmToSqliteNightPausesResumesAndRetainsSignalGaps(SonarNightStorageTest.java:49)
+
+INSTRUMENTATION_STATUS: stream=
+Error in actualPcmToSqliteNightPausesResumesAndRetainsSignalGaps(org.sleepwell.app.SonarNightStorageTest):
+java.lang.AssertionError: No measured interval: phase=CLOSED; message=Could not save contactless readings: Capture arrived after its interval was checkpointed.; error=Could not save contactless readings: Capture arrived after its interval was checkpointed.; active=1585; readings=9; CALIBRATING@90-130; CALIBRATING@130-170; CALIBRATING@170-210; CALIBRATING@210-250; CALIBRATING@250-290; CALIBRATING@290-330; CALIBRATING@330-370; CALIBRATING@370-410; capture written=21120 read=21120 closed=true
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.sleepwell.app.SonarNightStorageTest$Fixture.measured(SonarNightStorageTest.java:42)
+	at org.sleepwell.app.SonarNightStorageTest.actualPcmToSqliteNightPausesResumesAndRetainsSignalGaps(SonarNightStorageTest.java:49)
+
+INSTRUMENTATION_STATUS: test=actualPcmToSqliteNightPausesResumesAndRetainsSignalGaps
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 4.771
+There were 2 failures:
+1) chargingFailurePersistsInterruptedNullTailAndClosesPorts(org.sleepwell.app.SonarNightStorageTest)
+java.lang.AssertionError: No measured interval: phase=CLOSED; message=Could not save contactless readings: Capture arrived after its interval was checkpointed.; error=Could not save contactless readings: Capture arrived after its interval was checkpointed.; active=2277; readings=3; CALIBRATING@64-104; CALIBRATING@104-144; CALIBRATING@144-184; capture written=9120 read=9120 closed=true
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.sleepwell.app.SonarNightStorageTest$Fixture.measured(SonarNightStorageTest.java:42)
+	at org.sleepwell.app.SonarNightStorageTest.chargingFailurePersistsInterruptedNullTailAndClosesPorts(SonarNightStorageTest.java:60)
+2) actualPcmToSqliteNightPausesResumesAndRetainsSignalGaps(org.sleepwell.app.SonarNightStorageTest)
+java.lang.AssertionError: No measured interval: phase=CLOSED; message=Could not save contactless readings: Capture arrived after its interval was checkpointed.; error=Could not save contactless readings: Capture arrived after its interval was checkpointed.; active=1585; readings=9; CALIBRATING@90-130; CALIBRATING@130-170; CALIBRATING@170-210; CALIBRATING@210-250; CALIBRATING@250-290; CALIBRATING@290-330; CALIBRATING@330-370; CALIBRATING@370-410; capture written=21120 read=21120 closed=true
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.sleepwell.app.SonarNightStorageTest$Fixture.measured(SonarNightStorageTest.java:42)
+	at org.sleepwell.app.SonarNightStorageTest.actualPcmToSqliteNightPausesResumesAndRetainsSignalGaps(SonarNightStorageTest.java:49)
+
+FAILURES!!!
+Tests run: 2,  Failures: 2
+
+
+INSTRUMENTATION_CODE: -1

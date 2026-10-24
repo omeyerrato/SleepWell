@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.CloudBackupCopyTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-24T23:12:53.506Z" hostname="DESKTOP-1UTDMNE" time="0.101">
+  <properties/>
+  <testcase name="providerMustReturnAnAndroidDocument" classname="org.sleepwell.app.CloudBackupCopyTest" time="0.018"/>
+  <testcase name="createsThenWritesAndReadBackVerifiesExactBytes" classname="org.sleepwell.app.CloudBackupCopyTest" time="0.043"/>
+  <testcase name="invalidOrOversizedSnapshotCannotCreateRemoteFile" classname="org.sleepwell.app.CloudBackupCopyTest" time="0.011"/>
+  <testcase name="mismatchedOrStalledReadBackIsRejected" classname="org.sleepwell.app.CloudBackupCopyTest" time="0.01"/>
+  <testcase name="cancellationAfterCreationKeepsVersionButNeverWrites" classname="org.sleepwell.app.CloudBackupCopyTest" time="0.002"/>
+  <testcase name="sourceFailureCannotCreateFile" classname="org.sleepwell.app.CloudBackupCopyTest" time="0.001"/>
+  <testcase name="writeDenialCannotProduceVerifiedReceipt" classname="org.sleepwell.app.CloudBackupCopyTest" time="0.002"/>
+  <testcase name="cancelledSnapshotNeverOpensProvider" classname="org.sleepwell.app.CloudBackupCopyTest" time="0.012"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

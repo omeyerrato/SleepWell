@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SonarDspTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-24T23:12:55.853Z" hostname="DESKTOP-1UTDMNE" time="12.746">
+  <properties/>
+  <testcase name="firstEchoAfterMissingSamplesDoesNotInventZeroMovement" classname="org.sleepwell.app.SonarDspTest" time="0.248"/>
+  <testcase name="stationaryDelayedEchoCannotPassRequiredMovementCheck" classname="org.sleepwell.app.SonarDspTest" time="0.199"/>
+  <testcase name="clippingAndTimingDiscontinuityProduceMissingEvidence" classname="org.sleepwell.app.SonarDspTest" time="0.057"/>
+  <testcase name="alignmentFindsKnownDirectPathInsteadOfUsingLoudness" classname="org.sleepwell.app.SonarDspTest" time="0.126"/>
+  <testcase name="directLeakageAloneNeverQualifiesAsAnEcho" classname="org.sleepwell.app.SonarDspTest" time="0.382"/>
+  <testcase name="audibleNoiseAndSilenceNeverBecomeValidMotion" classname="org.sleepwell.app.SonarDspTest" time="11.574"/>
+  <testcase name="movingEchoQualifiesAndLaterMeasuredStillnessIsZero" classname="org.sleepwell.app.SonarDspTest" time="0.158"/>
+  <testcase name="gainRejectsInvalidAndPhaseIsContinuousAcrossChirpPeriods" classname="org.sleepwell.app.SonarDspTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

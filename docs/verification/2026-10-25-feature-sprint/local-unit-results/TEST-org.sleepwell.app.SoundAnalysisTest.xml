@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SoundAnalysisTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-24T23:13:19.040Z" hostname="DESKTOP-1UTDMNE" time="0.006">
+  <properties/>
+  <testcase name="isolatedFalsePositiveNeverBecomesAnEvent" classname="org.sleepwell.app.SoundAnalysisTest" time="0.0"/>
+  <testcase name="respiratorySiblingsSilenceAndUnrelatedSoundsStillCompete" classname="org.sleepwell.app.SoundAnalysisTest" time="0.001"/>
+  <testcase name="breathingParentIsCompatibleButDoesNotSupplySnoringEvidence" classname="org.sleepwell.app.SoundAnalysisTest" time="0.0"/>
+  <testcase name="continuousSoundHasBoundedEventLength" classname="org.sleepwell.app.SoundAnalysisTest" time="0.0"/>
+  <testcase name="groupedEventRetainsStartDurationMeanAndFlushIsIdempotent" classname="org.sleepwell.app.SoundAnalysisTest" time="0.0"/>
+  <testcase name="speechParentAndExportedDescendantsAreCompatibleNotCompetitors" classname="org.sleepwell.app.SoundAnalysisTest" time="0.0"/>
+  <testcase name="snoringAndSpeechMustWinCompetingLabelsWithAMargin" classname="org.sleepwell.app.SoundAnalysisTest" time="0.0"/>
+  <testcase name="amplitudeDoesNotClassifyAndWeakOrAmbiguousPredictionsStayOther" classname="org.sleepwell.app.SoundAnalysisTest" time="0.001"/>
+  <testcase name="speechFamilyKeepsUnrelatedMarginAndDoesNotSumWeakLabels" classname="org.sleepwell.app.SoundAnalysisTest" time="0.001"/>
+  <testcase name="invalidScoresRejectBeforePersistence" classname="org.sleepwell.app.SoundAnalysisTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

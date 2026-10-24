@@ -1,0 +1,58 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.SonarNightStorageTest:
+INSTRUMENTATION_STATUS: test=chargingFailurePersistsInterruptedNullTailAndClosesPorts
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Actual asynchronous Night boundary
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SonarNightStorageTest.waitFor(SonarNightStorageTest.java:34)
+	at org.sleepwell.app.SonarNightStorageTest.chargingFailurePersistsInterruptedNullTailAndClosesPorts(SonarNightStorageTest.java:54)
+
+INSTRUMENTATION_STATUS: stream=
+Error in chargingFailurePersistsInterruptedNullTailAndClosesPorts(org.sleepwell.app.SonarNightStorageTest):
+java.lang.AssertionError: Actual asynchronous Night boundary
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SonarNightStorageTest.waitFor(SonarNightStorageTest.java:34)
+	at org.sleepwell.app.SonarNightStorageTest.chargingFailurePersistsInterruptedNullTailAndClosesPorts(SonarNightStorageTest.java:54)
+
+INSTRUMENTATION_STATUS: test=chargingFailurePersistsInterruptedNullTailAndClosesPorts
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=actualPcmToSqliteNightPausesResumesAndRetainsSignalGaps
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=actualPcmToSqliteNightPausesResumesAndRetainsSignalGaps
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 24.782
+There was 1 failure:
+1) chargingFailurePersistsInterruptedNullTailAndClosesPorts(org.sleepwell.app.SonarNightStorageTest)
+java.lang.AssertionError: Actual asynchronous Night boundary
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SonarNightStorageTest.waitFor(SonarNightStorageTest.java:34)
+	at org.sleepwell.app.SonarNightStorageTest.chargingFailurePersistsInterruptedNullTailAndClosesPorts(SonarNightStorageTest.java:54)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

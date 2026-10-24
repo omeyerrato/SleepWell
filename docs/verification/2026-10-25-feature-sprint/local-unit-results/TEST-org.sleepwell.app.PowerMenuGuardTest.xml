@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.PowerMenuGuardTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-24T23:12:54.717Z" hostname="DESKTOP-1UTDMNE" time="0.015">
+  <properties/>
+  <testcase name="genericDialogsSettingsCallsAndSpoofedPackagesNeverMatch" classname="org.sleepwell.app.PowerMenuGuardTest" time="0.004"/>
+  <testcase name="optionalWindowIdsAndUnknownIdPackageChangesFenceStaleBack" classname="org.sleepwell.app.PowerMenuGuardTest" time="0.008"/>
+  <testcase name="nestedEmergencyAndSosDialogsNeverMatch" classname="org.sleepwell.app.PowerMenuGuardTest" time="0.0"/>
+  <testcase name="newWindowCancelsStaleBackIncludingEmergencyTransition" classname="org.sleepwell.app.PowerMenuGuardTest" time="0.001"/>
+  <testcase name="knownAospAndSamsungMenusAreRecognisedWithoutScreenContents" classname="org.sleepwell.app.PowerMenuGuardTest" time="0.0"/>
+  <testcase name="failedBackDoesNotRepeatedlyPullOtherWindowsForward" classname="org.sleepwell.app.PowerMenuGuardTest" time="0.0"/>
+  <testcase name="recognisedMenuUsesDelayedBackThenReturnsToChallenge" classname="org.sleepwell.app.PowerMenuGuardTest" time="0.0"/>
+  <testcase name="dismissedAlarmOrDisabledToggleCancelsPendingAction" classname="org.sleepwell.app.PowerMenuGuardTest" time="0.0"/>
+  <testcase name="bothGuardsRequireLiveServiceAndRealRingingOccurrence" classname="org.sleepwell.app.PowerMenuGuardTest" time="0.0"/>
+  <testcase name="metadataOnlyUnknownWindowIdStillProtectsKnownMenu" classname="org.sleepwell.app.PowerMenuGuardTest" time="0.001"/>
+  <testcase name="serviceClosureAndInterruptionInvalidateCallbacks" classname="org.sleepwell.app.PowerMenuGuardTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

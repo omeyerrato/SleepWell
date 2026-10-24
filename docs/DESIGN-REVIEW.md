@@ -1,5 +1,23 @@
 # Strict design and behavior acceptance
 
+## Manual night and saved category correction gates — 24 October 2026
+
+`2477cbe`/CI40091982679 passes the bounded ten-frame manual Night and four-frame
+saved Report comparison. The independent reviewer opened all fourteen originals:
+actual violet marks, a real pause gap, blank missing intervals, zero selection,
+retained errors, complete Stop confirmation and white glyphs on plum are accepted.
+Full board06 is still partial: setup placement illustration and disabled-helper
+composition need work. No physical overnight/sonar accuracy claim follows.
+
+`01406b4`/CI40090631946 passes saved-category content and persistence but fails
+appearance: all fourteen new frames were opened; mixed white/dark system glyphs
+on cream and a weak stopped Play affordance were rejected. `68b5570`'s first
+correction fails native pixel checks; its white popup system glyphs remain visible
+in unchanged evidence. The declared per-window policy correction at `5549f0e`
+and loaded-state owned-input fix at `f823824` await fresh Android originals.
+These source changes do not constitute visual acceptance. Full36screen acceptance
+is still incomplete.
+
 ## Fresh report correction gate — 24 October 2026
 
 At `dc30736`, run `40072560126` passes all four classes / five methods and

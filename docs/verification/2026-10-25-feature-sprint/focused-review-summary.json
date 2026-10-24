@@ -1,0 +1,125 @@
+{
+  "scope": "phone-features",
+  "full_app_review": false,
+  "expected_classes": 23,
+  "expected_methods": 77,
+  "class_results": [
+    {
+      "class": "CalendarRulesStorageTest",
+      "expected_methods": 4,
+      "passed": true
+    },
+    {
+      "class": "CalendarRulesFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmDefaultsStorageTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "AlarmDefaultsFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "AutomationStorageTest",
+      "expected_methods": 10,
+      "passed": true
+    },
+    {
+      "class": "HealthSleepStorageTest",
+      "expected_methods": 12,
+      "passed": true
+    },
+    {
+      "class": "HealthConnectFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "AlarmDateStorageTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "AlarmDateFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "WalkConfigurationFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "DatedGoalBankFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "SmartLightStorageTest",
+      "expected_methods": 6,
+      "passed": true
+    },
+    {
+      "class": "HomeAssistantProtocolTest",
+      "expected_methods": 4,
+      "passed": true
+    },
+    {
+      "class": "AlarmInputsStorageTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "AlarmInputsFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "MoonSearchStorageTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "MoonSearchFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "TagStorageTest",
+      "expected_methods": 8,
+      "passed": true
+    },
+    {
+      "class": "TagManagementFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "CloudBackupStorageTest",
+      "expected_methods": 5,
+      "passed": true
+    },
+    {
+      "class": "CloudBackupFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AdvancedSnoozeStorageTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "AdvancedSnoozeFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 68,
+  "failures": []
+}

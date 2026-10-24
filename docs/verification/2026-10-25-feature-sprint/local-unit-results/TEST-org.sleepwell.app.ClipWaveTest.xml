@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.ClipWaveTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-24T23:12:53.261Z" hostname="DESKTOP-1UTDMNE" time="0.216">
+  <properties/>
+  <testcase name="unsupportedFormatAndInconsistentRatesReject" classname="org.sleepwell.app.ClipWaveTest" time="0.074"/>
+  <testcase name="invalidOrPartiallyCoveredIntervalsReject" classname="org.sleepwell.app.ClipWaveTest" time="0.018"/>
+  <testcase name="truncatedAndOverlargeChunkCannotReadPastFile" classname="org.sleepwell.app.ClipWaveTest" time="0.02"/>
+  <testcase name="intervalPeaksContainOnlyTheActualSelectedPcm" classname="org.sleepwell.app.ClipWaveTest" time="0.015"/>
+  <testcase name="emptyAndPartialFramesReject" classname="org.sleepwell.app.ClipWaveTest" time="0.028"/>
+  <testcase name="unknownEvenAndOddPaddedChunksAreSkipped" classname="org.sleepwell.app.ClipWaveTest" time="0.012"/>
+  <testcase name="silenceHasActualDurationAndNoInventedPeaks" classname="org.sleepwell.app.ClipWaveTest" time="0.02"/>
+  <testcase name="stereoPeaksUseBothChannelsAndSignedMinimum" classname="org.sleepwell.app.ClipWaveTest" time="0.026"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

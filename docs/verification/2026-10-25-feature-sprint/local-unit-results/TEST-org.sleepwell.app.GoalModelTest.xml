@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.GoalModelTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2026-10-24T23:12:53.710Z" hostname="DESKTOP-1UTDMNE" time="0.033">
+  <properties/>
+  <testcase name="positiveAndNegativeObservedDurationBalancesRetainTheirSign" classname="org.sleepwell.app.GoalModelTest" time="0.004"/>
+  <testcase name="autumnReminderUsesTheCorrectRepeatedClockOffset" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="cancellingBeforeStartNeverCountsAFutureStartDay" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="reminderAdvanceWrapsMidnightAndSkipsAlreadyPassedOccurrences" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="durationGoalChangesTheActualThresholdAndRejectsInvalidSettings" classname="org.sleepwell.app.GoalModelTest" time="0.0"/>
+  <testcase name="bedtimeBalanceHandlesBothMidnightAndNoonWithoutADayOfFalseCredit" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="frozenZoneControlsDayAssignmentAndBedtimeAfterTravel" classname="org.sleepwell.app.GoalModelTest" time="0.006"/>
+  <testcase name="thirtyDayCommitmentUsesCalendarDaysAcrossDST" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="missingAndCurrentDaysNeverBecomeInventedDeficits" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="completeRequiresEveryCommittedDayToBeClosedAndObserved" classname="org.sleepwell.app.GoalModelTest" time="0.004"/>
+  <testcase name="guardStartsAtWindDownAndEndsExactlyAtPlannedWakeAcrossMidnight" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="noonCutoffDoesNotCloseThePreviousLabelUntilNoon" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="crossDayOverlapIsNotCreditedAgainInsideACommitment" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="recordEditsRecomputeTheBankWithoutChangingOriginalData" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="legacyMismatchIsPreservedUntilAnExplicitLinkedAdjustment" classname="org.sleepwell.app.GoalModelTest" time="0.0"/>
+  <testcase name="napsCountTowardDurationButCannotStandInForBedtime" classname="org.sleepwell.app.GoalModelTest" time="0.003"/>
+  <testcase name="validLegacyMinutePrecisionSurvivesUnrelatedDraftChanges" classname="org.sleepwell.app.GoalModelTest" time="0.0"/>
+  <testcase name="missingCutoffHourUsesOneForwardResolvedBoundary" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="stoppedCommitmentCountsOnlyItsInclusiveFinalDay" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="laterPlanChangesCannotRewriteAFrozenCommitmentTarget" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <testcase name="springReminderIsThirtyElapsedMinutesBeforeTheResolvedBedtime" classname="org.sleepwell.app.GoalModelTest" time="0.0"/>
+  <testcase name="repeatedHourCannotReopenAnAlreadyClosedSleepDay" classname="org.sleepwell.app.GoalModelTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

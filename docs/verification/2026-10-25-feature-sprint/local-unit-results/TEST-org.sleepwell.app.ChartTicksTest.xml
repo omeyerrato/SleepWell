@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.ChartTicksTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-24T23:12:53.152Z" hostname="DESKTOP-1UTDMNE" time="0.075">
+  <properties/>
+  <testcase name="foldLabelsMeasureTheirWidestLineRatherThanJoiningOffsets" classname="org.sleepwell.app.ChartTicksTest" time="0.029"/>
+  <testcase name="repeatedHourHasTwoRealTickInstantsAndExplicitOffsets" classname="org.sleepwell.app.ChartTicksTest" time="0.011"/>
+  <testcase name="multiDayRangeAddsDateToPreventAmbiguousClockLabels" classname="org.sleepwell.app.ChartTicksTest" time="0.016"/>
+  <testcase name="layoutNeverOverlapsLabelsAndRetainsExactEndInNarrowWidth" classname="org.sleepwell.app.ChartTicksTest" time="0.004"/>
+  <testcase name="overnightInteriorTicksAreRealWholeHoursNotFractionalElapsedDivisions" classname="org.sleepwell.app.ChartTicksTest" time="0.003"/>
+  <testcase name="rangeEntirelyInsideFoldCanIncludeEarlierWallTimeAfterItsStartInstant" classname="org.sleepwell.app.ChartTicksTest" time="0.002"/>
+  <testcase name="labelsKeepActualInstantsAndFollowDeviceClockFormat" classname="org.sleepwell.app.ChartTicksTest" time="0.003"/>
+  <testcase name="nonPositiveWindowIsEmptyAndPreEpochClockAlignmentStillWorks" classname="org.sleepwell.app.ChartTicksTest" time="0.002"/>
+  <testcase name="springGapNeverProducesAnInventedTwoAmTick" classname="org.sleepwell.app.ChartTicksTest" time="0.002"/>
+  <testcase name="shortSignalUsesNiceElapsedSecondsAndExactEndpoint" classname="org.sleepwell.app.ChartTicksTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

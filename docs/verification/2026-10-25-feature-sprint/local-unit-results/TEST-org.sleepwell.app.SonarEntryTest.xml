@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SonarEntryTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-24T23:13:08.600Z" hostname="DESKTOP-1UTDMNE" time="0.003">
+  <properties/>
+  <testcase name="backwardElapsedAndCrossSessionResumeAreRejected" classname="org.sleepwell.app.SonarEntryTest" time="0.001"/>
+  <testcase name="ticketsAreOneUseAndCannotSurviveReplacementAba" classname="org.sleepwell.app.SonarEntryTest" time="0.0"/>
+  <testcase name="invisibleExpiredOrWrongSessionNeverAdmitsCapture" classname="org.sleepwell.app.SonarEntryTest" time="0.0"/>
+  <testcase name="defaultOffAndExplicitConsentCannotEscalateAnExistingRun" classname="org.sleepwell.app.SonarEntryTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

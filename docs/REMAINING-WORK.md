@@ -10,6 +10,30 @@ stopped and its slot reassigned to implementation at your request. Visual correc
 broad bug review and security auditing are deferred. Essential build, data-preservation
 and functional checks continue; unchecked visual items below remain future work.
 
+## Verified feature sprint — 25 October
+
+Integrated source `da0f571`: **778 pure tests, debug/native APK builds and lint pass**.
+[Focused CI40141612460](https://github.com/omeyerrato/SleepWell/actions/runs/40141612460)
+passes **23 classes /77 native methods /68 original captures**. This is functional
+fixture evidence, not design approval, real provider exchange or physical output.
+
+- [x] Saved alarm defaults, explicit one-time dates and longer bounded snooze choices.
+- [x] Persisted flip/volume-key settings and their pure admission rules.
+- [x] Original visual-search task, saved board/routine and silent shared preview.
+- [x] Calendar-rule settings, adjusted occurrence/skip receipts and native persistence.
+- [x] Health Connect fake-provider import/export/update/delete/conflict/source flows.
+- [x] Tasker/HTTPS/MQTT private queue and transport tests; Home Assistant light policy.
+- [x] Tag quantities, global rename/delete and descriptive comparison flows.
+- [x] Remembered SAF destination, verified unique backup and reviewed restore flow.
+- [x] Historical dated-goal target/calendar/save/error/reopen flows.
+- [ ] Live hardware/OS behavior and actual external provider/account exchange above.
+- [ ] Backup repeat/duration/timeout controls; mirror-text/dream diary; home widgets
+  and shortcuts — currently assigned in parallel implementation worktrees.
+- [ ] Remaining matrix subfeatures, full regression and later design/security review.
+
+Full originals and exact verification limits are in
+[the sprint evidence](verification/2026-10-25-feature-sprint/README.md).
+
 ## Your highest-priority features
 
 - [ ] **Prevent leaving/powering off during alarms:** finish best-effort behavior and

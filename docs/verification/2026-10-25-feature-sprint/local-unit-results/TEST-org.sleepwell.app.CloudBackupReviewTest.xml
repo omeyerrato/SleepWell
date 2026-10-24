@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.CloudBackupReviewTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-24T23:12:53.645Z" hostname="DESKTOP-1UTDMNE" time="0.005">
+  <properties/>
+  <testcase name="matchingCopyHashStillRequiresExplicitReviewAndConfirmation" classname="org.sleepwell.app.CloudBackupReviewTest" time="0.004"/>
+  <testcase name="changedOrInvalidCopyHashCannotReachReplacement" classname="org.sleepwell.app.CloudBackupReviewTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -8,16 +8,18 @@ Noise and light charts appear only when their visible intervals actually contain
 
 ## Native verification contract
 
-`SonarReportFlowTest.savedSonarQualityZeroAndMissingIntervalsSurviveRealReportNavigation`: **one method, four original Android screenshots**:
+`SonarReportFlowTest.savedSonarQualityZeroAndMissingIntervalsSurviveRealReportNavigation`: **one method, six original Android screenshots**:
 
 - `sonar-report-night.png`: actual saved-night report and its real Report options action.
 - `sonar-report-signals.png`: actual navigation through Recorded signals & notes, complete chart and quality-row bounds.
 - `sonar-report-zero.png`: the real chart accessibility action selects the stored zero; calibration and no-echo intervals cannot become selectable bars.
 - `sonar-report-reopened.png`: reopening the same record restores its data and sensor-specific semantics.
+- `sonar-report-legacy-unknown.png`: historical empty analysis metadata is not labelled off or completed.
+- `sonar-report-analysis-error.png`: a saved model error is shown separately from a completed zero-event analysis.
 
 The disposable emulator fixture uses the actual private `Store.begin(sensor, config)`, `sonarCheckpoint` and `end` APIs. Its clearly labelled synthetic intervals are calibration/null, valid/zero and no-echo/null, followed by a missing tail. A pre-existing isolated row and a typed fingerprint of every application table must remain identical. Raw timestamps, quality, config, clock-change flag and global preferences are checked after the native journey. The fixture does not run `TrackingService`, `AlarmActivity`, microphone capture, playback, torch, sensors or scheduling.
 
-Source compilation, pure tests and native configuration execution are separate evidence. At source preparation the four native frames have **not** been executed or visually accepted. A passing fixture cannot establish actual sonar hardware accuracy, sleep-stage detection or physical overnight reliability.
+Source compilation, pure tests and native configuration execution are separate evidence. At `2477cbe`/CI40091982679 the original four frames pass native execution and individual strict visual review against boards01/08. At `892ea74` two status fixtures expand the contract to six frames; fresh execution is pending. Requested/completed-zero, explicit off, unknown legacy and errors read immutable schema9 metadata, never current user preferences. No model is run by this report fixture. A passing fixture cannot establish actual sonar hardware accuracy, sleep-stage detection or physical overnight reliability.
 
 ## Local checks
 

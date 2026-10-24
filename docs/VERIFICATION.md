@@ -1,5 +1,61 @@
 # Verification record
 
+## Feature-first integrated milestone — 2026-10-25
+
+Source `da0f571` passes all778 pure tests/100 suites (zero failures/errors/skips),
+debug/native APK builds and lint0errors/98warnings in7m03. The compatible local
+lint analyzer still emits a third-party LiteRT Kotlin-metadata diagnostic; this
+does not certify that third-party Kotlin bytecode was analyzed.
+
+[CI40141612460](https://github.com/omeyerrato/SleepWell/actions/runs/40141612460)
+passes23classes/77native methods/all68 required originals. Coverage includes the
+actual settings/retained-save/reopen and private provider/transport flows listed in
+[the raw evidence archive](verification/2026-10-25-feature-sprint/README.md).
+This supersedes the earlier failed UUID/format7/owned-dialog tests without removing
+their assertions. Actual provider exchange, live alarm/hardware behavior, overnight
+quality and whole-app regression remain unverified; independent laughter recognition
+still fails in the last full run. The design reviewer is stopped by user request.
+
+The previous23h-era pending/rejected entries below are historical. They do not
+override the newer source-specific result above. No physical output was tested.
+
+## Latest inspected gates and pending integration — 2026-10-24
+
+At `2477cbe`, [CI40091982679](verification/2026-10-24-ci400919-night-accepted/README.md)
+passes all three classes/five methods and fourteen original Night/Report images.
+Each original was visually inspected against boards06/01/08. Real visible measured
+marks, exact zero/gaps, retained errors, pause/recreation/resume/stop and saved-data
+reopening pass this bounded gate. Generated PCM drives production DSP and private
+SQLite with paired capture time; real hardware/Service/overnight behavior is untested.
+Earlier rejected runs and the clock diagnostic remain preserved separately.
+
+Saved-category browsing at `01406b4` passes eight classes/thirteen methods and all
+68 required images. Content and persistence pass; appearance does not: mixed system
+glyphs and the stopped Play affordance were rejected. The first correction at
+`68b5570` fails its actual light-system-glyph checks. Separate Favorites test input
+also failed on a stale accessibility object in that focused run. `5549f0e` declares
+per-window appearance and `f823824` waits loaded native controls with one owned input;
+fresh execution remains pending. No screenshot pixels were edited.
+
+The later full run at `68b5570`, CI40093856492, is **FAIL**: 60/63 whole classes,
+143/147 methods, 360/373 required originals. Actual failures are the existing solo
+laughter positive, both category appearance methods, and one old label-storage
+expectation that Other includes cough. `2ea54c1` preserves the report's aggregate
+Other count but explicitly asserts exact cough1/noise0 navigation and both matches;
+all label-reset/raw/WAV/reopen checks remain. Native rerun is required.
+
+The frozen laughter correction is rejected by three independent positive sources;
+production remains unchanged. [Full results](SOUND-CLASSIFIER-HOLDOUT-RESULT.md)
+retain the misses and host/Android score difference; nine evidence-integrity tests
+pass, not classifier accuracy. New schema9/format6 and same-capture analysis worker
+foundations are committed at `97b7470`, `7d94a3a`, `444b0f8`. Runtime integration,
+new storage cases and expanded Report outcomes are not yet native accepted.
+
+Latest completed local combined build at `01406b4`: debug/native APKs, 593 pure
+tests in73suites, zero failures/errors/skips; lint zero errors/92warnings, 8m29s.
+Later foundation/runtime author builds are scoped results, not a combined pass.
+The phone remains at `571018b`; no phone effects or update occurred.
+
 ## Manual contactless night and saved report — 2026-10-24
 
 Source `04bdb4a` integrates the manual sonar coordinator (`c86ee00`) and saved

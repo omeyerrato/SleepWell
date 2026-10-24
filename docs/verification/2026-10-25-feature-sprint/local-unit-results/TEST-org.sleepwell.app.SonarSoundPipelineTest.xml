@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SonarSoundPipelineTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-24T23:13:18.539Z" hostname="DESKTOP-1UTDMNE" time="0.109">
+  <properties/>
+  <testcase name="separatedSingleWindowsCannotBecomeOneFalseTwoWindowEvent" classname="org.sleepwell.app.SonarSoundPipelineTest" time="0.016"/>
+  <testcase name="callerCannotMoveModelOwnershipBetweenThreads" classname="org.sleepwell.app.SonarSoundPipelineTest" time="0.001"/>
+  <testcase name="classifiedGroupsRetainOriginalCaptureClockAndActualWindows" classname="org.sleepwell.app.SonarSoundPipelineTest" time="0.012"/>
+  <testcase name="omittedInputIsARealGapRatherThanRepeatedOrInventedSamples" classname="org.sleepwell.app.SonarSoundPipelineTest" time="0.01"/>
+  <testcase name="invalidInputCannotBridgePartialFramesOrCreatePaddedEnd" classname="org.sleepwell.app.SonarSoundPipelineTest" time="0.013"/>
+  <testcase name="zeroEventsStillCountsActualSuccessfulInferences" classname="org.sleepwell.app.SonarSoundPipelineTest" time="0.009"/>
+  <testcase name="inferenceFailureIsExplicitAndCannotRetryOrInventSuccessfulCounts" classname="org.sleepwell.app.SonarSoundPipelineTest" time="0.006"/>
+  <testcase name="eventSinkFailureIsNotMisreportedAsAClassifierSuccess" classname="org.sleepwell.app.SonarSoundPipelineTest" time="0.017"/>
+  <testcase name="gapFlushFailureIsIsolatedAndReleasesTheSingleModel" classname="org.sleepwell.app.SonarSoundPipelineTest" time="0.025"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

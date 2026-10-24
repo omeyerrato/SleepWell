@@ -1,0 +1,101 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundCategoryFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.SoundCategoryFlowTest:
+INSTRUMENTATION_STATUS: test=albumCategoryAndDateSelectionsPersistWithManualProvenanceAndDirectQuickChips
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundCategoryFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Dark rendered system glyphs on the light page
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SoundCategoryFlowTest.frame(SoundCategoryFlowTest.java:35)
+	at org.sleepwell.app.SoundCategoryFlowTest.lambda$albumCategoryAndDateSelectionsPersistWithManualProvenanceAndDirectQuickChips$44(SoundCategoryFlowTest.java:51)
+	at org.sleepwell.app.SoundCategoryFlowTest.$r8$lambda$AMaLSEVgVlvhym514lE-qH3tfc4(Unknown Source:0)
+	at org.sleepwell.app.SoundCategoryFlowTest$$ExternalSyntheticLambda27.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.SoundCategoryFlowTest.fixture(SoundCategoryFlowTest.java:10)
+	at org.sleepwell.app.SoundCategoryFlowTest.albumCategoryAndDateSelectionsPersistWithManualProvenanceAndDirectQuickChips(SoundCategoryFlowTest.java:50)
+
+INSTRUMENTATION_STATUS: stream=
+Error in albumCategoryAndDateSelectionsPersistWithManualProvenanceAndDirectQuickChips(org.sleepwell.app.SoundCategoryFlowTest):
+java.lang.AssertionError: Dark rendered system glyphs on the light page
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SoundCategoryFlowTest.frame(SoundCategoryFlowTest.java:35)
+	at org.sleepwell.app.SoundCategoryFlowTest.lambda$albumCategoryAndDateSelectionsPersistWithManualProvenanceAndDirectQuickChips$44(SoundCategoryFlowTest.java:51)
+	at org.sleepwell.app.SoundCategoryFlowTest.$r8$lambda$AMaLSEVgVlvhym514lE-qH3tfc4(Unknown Source:0)
+	at org.sleepwell.app.SoundCategoryFlowTest$$ExternalSyntheticLambda27.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.SoundCategoryFlowTest.fixture(SoundCategoryFlowTest.java:10)
+	at org.sleepwell.app.SoundCategoryFlowTest.albumCategoryAndDateSelectionsPersistWithManualProvenanceAndDirectQuickChips(SoundCategoryFlowTest.java:50)
+
+INSTRUMENTATION_STATUS: test=albumCategoryAndDateSelectionsPersistWithManualProvenanceAndDirectQuickChips
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundCategoryFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=nightCategoryMenuCancelExactOtherAndReopenPreserveLabelsAndQuietPlayback
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundCategoryFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Dark rendered system glyphs on the light page
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SoundCategoryFlowTest.frame(SoundCategoryFlowTest.java:35)
+	at org.sleepwell.app.SoundCategoryFlowTest.lambda$nightCategoryMenuCancelExactOtherAndReopenPreserveLabelsAndQuietPlayback$37(SoundCategoryFlowTest.java:44)
+	at org.sleepwell.app.SoundCategoryFlowTest.$r8$lambda$wpMFgSE_VAYwziG9UQ0bJspK_bQ(Unknown Source:0)
+	at org.sleepwell.app.SoundCategoryFlowTest$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.SoundCategoryFlowTest.fixture(SoundCategoryFlowTest.java:10)
+	at org.sleepwell.app.SoundCategoryFlowTest.nightCategoryMenuCancelExactOtherAndReopenPreserveLabelsAndQuietPlayback(SoundCategoryFlowTest.java:42)
+
+INSTRUMENTATION_STATUS: stream=
+Error in nightCategoryMenuCancelExactOtherAndReopenPreserveLabelsAndQuietPlayback(org.sleepwell.app.SoundCategoryFlowTest):
+java.lang.AssertionError: Dark rendered system glyphs on the light page
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SoundCategoryFlowTest.frame(SoundCategoryFlowTest.java:35)
+	at org.sleepwell.app.SoundCategoryFlowTest.lambda$nightCategoryMenuCancelExactOtherAndReopenPreserveLabelsAndQuietPlayback$37(SoundCategoryFlowTest.java:44)
+	at org.sleepwell.app.SoundCategoryFlowTest.$r8$lambda$wpMFgSE_VAYwziG9UQ0bJspK_bQ(Unknown Source:0)
+	at org.sleepwell.app.SoundCategoryFlowTest$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.SoundCategoryFlowTest.fixture(SoundCategoryFlowTest.java:10)
+	at org.sleepwell.app.SoundCategoryFlowTest.nightCategoryMenuCancelExactOtherAndReopenPreserveLabelsAndQuietPlayback(SoundCategoryFlowTest.java:42)
+
+INSTRUMENTATION_STATUS: test=nightCategoryMenuCancelExactOtherAndReopenPreserveLabelsAndQuietPlayback
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 16.812
+There were 2 failures:
+1) albumCategoryAndDateSelectionsPersistWithManualProvenanceAndDirectQuickChips(org.sleepwell.app.SoundCategoryFlowTest)
+java.lang.AssertionError: Dark rendered system glyphs on the light page
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SoundCategoryFlowTest.frame(SoundCategoryFlowTest.java:35)
+	at org.sleepwell.app.SoundCategoryFlowTest.lambda$albumCategoryAndDateSelectionsPersistWithManualProvenanceAndDirectQuickChips$44(SoundCategoryFlowTest.java:51)
+	at org.sleepwell.app.SoundCategoryFlowTest.$r8$lambda$AMaLSEVgVlvhym514lE-qH3tfc4(Unknown Source:0)
+	at org.sleepwell.app.SoundCategoryFlowTest$$ExternalSyntheticLambda27.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.SoundCategoryFlowTest.fixture(SoundCategoryFlowTest.java:10)
+	at org.sleepwell.app.SoundCategoryFlowTest.albumCategoryAndDateSelectionsPersistWithManualProvenanceAndDirectQuickChips(SoundCategoryFlowTest.java:50)
+2) nightCategoryMenuCancelExactOtherAndReopenPreserveLabelsAndQuietPlayback(org.sleepwell.app.SoundCategoryFlowTest)
+java.lang.AssertionError: Dark rendered system glyphs on the light page
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SoundCategoryFlowTest.frame(SoundCategoryFlowTest.java:35)
+	at org.sleepwell.app.SoundCategoryFlowTest.lambda$nightCategoryMenuCancelExactOtherAndReopenPreserveLabelsAndQuietPlayback$37(SoundCategoryFlowTest.java:44)
+	at org.sleepwell.app.SoundCategoryFlowTest.$r8$lambda$wpMFgSE_VAYwziG9UQ0bJspK_bQ(Unknown Source:0)
+	at org.sleepwell.app.SoundCategoryFlowTest$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.SoundCategoryFlowTest.fixture(SoundCategoryFlowTest.java:10)
+	at org.sleepwell.app.SoundCategoryFlowTest.nightCategoryMenuCancelExactOtherAndReopenPreserveLabelsAndQuietPlayback(SoundCategoryFlowTest.java:42)
+
+FAILURES!!!
+Tests run: 2,  Failures: 2
+
+
+INSTRUMENTATION_CODE: -1

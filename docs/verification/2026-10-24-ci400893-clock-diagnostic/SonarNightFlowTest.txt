@@ -1,0 +1,70 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.SonarNightFlowTest:
+INSTRUMENTATION_STATUS: test=visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: actual valid PCM measurement
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SonarNightFlowTest.waitFor(SonarNightFlowTest.java:32)
+	at org.sleepwell.app.SonarNightFlowTest.lambda$visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight$29(SonarNightFlowTest.java:66)
+	at org.sleepwell.app.SonarNightFlowTest.$r8$lambda$hwU9oVIah5Gu09LX-nx3MKlTnEk(Unknown Source:0)
+	at org.sleepwell.app.SonarNightFlowTest$$ExternalSyntheticLambda21.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.SonarNightFlowTest.fixture(SonarNightFlowTest.java:24)
+	at org.sleepwell.app.SonarNightFlowTest.visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight(SonarNightFlowTest.java:64)
+
+INSTRUMENTATION_STATUS: stream=
+Error in visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight(org.sleepwell.app.SonarNightFlowTest):
+java.lang.AssertionError: actual valid PCM measurement
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SonarNightFlowTest.waitFor(SonarNightFlowTest.java:32)
+	at org.sleepwell.app.SonarNightFlowTest.lambda$visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight$29(SonarNightFlowTest.java:66)
+	at org.sleepwell.app.SonarNightFlowTest.$r8$lambda$hwU9oVIah5Gu09LX-nx3MKlTnEk(Unknown Source:0)
+	at org.sleepwell.app.SonarNightFlowTest$$ExternalSyntheticLambda21.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.SonarNightFlowTest.fixture(SonarNightFlowTest.java:24)
+	at org.sleepwell.app.SonarNightFlowTest.visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight(SonarNightFlowTest.java:64)
+
+INSTRUMENTATION_STATUS: test=visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=missingSetupAndUnavailableChargingRemainExplicitWithoutStartingAudio
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SonarNightFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=missingSetupAndUnavailableChargingRemainExplicitWithoutStartingAudio
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 31.688
+There was 1 failure:
+1) visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight(org.sleepwell.app.SonarNightFlowTest)
+java.lang.AssertionError: actual valid PCM measurement
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SonarNightFlowTest.waitFor(SonarNightFlowTest.java:32)
+	at org.sleepwell.app.SonarNightFlowTest.lambda$visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight$29(SonarNightFlowTest.java:66)
+	at org.sleepwell.app.SonarNightFlowTest.$r8$lambda$hwU9oVIah5Gu09LX-nx3MKlTnEk(Unknown Source:0)
+	at org.sleepwell.app.SonarNightFlowTest$$ExternalSyntheticLambda21.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.SonarNightFlowTest.fixture(SonarNightFlowTest.java:24)
+	at org.sleepwell.app.SonarNightFlowTest.visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight(SonarNightFlowTest.java:64)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
