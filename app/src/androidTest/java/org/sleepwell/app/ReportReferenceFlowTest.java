@@ -66,7 +66,7 @@ public final class ReportReferenceFlowTest {
         long end=latest.minusDays(night).atTime(6,30).atZone(zone).toInstant().toEpochMilli(),start=end-(durations[night]+(night==3?10:0))*60000L;long id=2000+night;
         db.execSQL("INSERT INTO sessions(id,start,end,active_ms,note,source,origin,zone) VALUES(?,?,?,?,?,'tracked','local',?)",new Object[]{id,start,end,durations[night]*60000L,"Synthetic CI sensor fixture, never a personal recording",zone.getId()});
         if(night==3){store.pause(id,start+120*60000L);store.resume(id,start+130*60000L);}
-        for(int minute=0;minute<(end-start)/60000;minute++){if(night==3&&minute>=120&&minute<130)continue;double movement=.015+.05*(1+Math.sin(minute*.11+night))+.12*(minute%91<5?1:0);store.epoch(id,start+minute*60000L,start+(minute+1)*60000L,movement,null,null,300);}
+        for(int minute=0;minute<(end-start)/60000;minute++){if(night==3&&minute>=120&&minute<130)continue;double movement=.014+.004*((minute*37+night*11)%13)/12;int[] bursts={19,61,146,214,293,359,426},widths={3,13,6,20,4,9,5};for(int burst=0;burst<bursts.length;burst++){int offset=minute-bursts[burst]-night*3;if(offset>=0&&offset<widths[burst])movement+=(.08+.025*(burst%4))*(1-Math.abs((offset+.5)/widths[burst]*2-1));}store.epoch(id,start+minute*60000L,start+(minute+1)*60000L,movement,null,null,300);}
     }long first=Records.get(store,2000).edit.start,last=Records.get(store,2000).edit.end;
         event(db,2000,first-5000,10000,"snoring");event(db,2000,first+3600000,9750,"snoring");event(db,2000,first+7200000,9750,"snoring");event(db,2000,first+10800000,3900,"speech");
         event(db,2000,first-20000,20000,"noise");event(db,2000,last,10000,"noise");event(db,2001,first+3600000,10000,"speech");
