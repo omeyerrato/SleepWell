@@ -1,5 +1,23 @@
 # Strict design and behavior acceptance
 
+## Fresh report correction gate — 24 October 2026
+
+At `dc30736`, run `40072560126` passes all four classes / five methods and
+contains all 13 required originals. The independent reviewer individually opened
+them and re-opened reference boards 01 and 08. Seven aligned history rows,
+separated filter chips, softer measured ribbons with exact gaps, Week/Month/Year
+charts, and complete editor Notes/Save/Delete pass this bounded correction.
+Stage estimation and full board/app parity remain incomplete. Originals and raw
+logs are preserved in `verification/2026-10-24-ci400725-report/`.
+
+Full run `40072555253` at the same head remains FAIL: 109/112 methods and
+300/314 required originals. The compact expired Skip card, Backup cream-window
+navigation handle, and visible recurring error clear the earlier blockers.
+Taller recurring states still cut the Exact timing glyph at the footer; the
+screen is not fully visually accepted. Tone and recurring journeys fail test
+synchronization, with incomplete later named frames. Exact raw evidence is in
+`verification/2026-10-24-ci40072555253-native-flows/`.
+
 ## Compact Alarms and protection configuration — 2026-10-23
 
 The independent strict reviewer opened all 30 actual `ab01ba5` emulator PNGs

@@ -490,6 +490,25 @@ for row in rows:
     if any(name in row["implementation"] for name in ("ReportScreen.java", "PeriodTimeline.java", "RecordRibbon.java", "TrendsChart.java", "HistoryActivity.java", "RecordEditorActivity.java")):
         row["validation"] += " Fresh d43f480/focusedCI40068186520 PASS4classes/5methods/13required originals: ReportRibbonNativeTest2 PASS1.212s,ReportReferenceFlowTest1 PASS33.744s. All13 originals individually inspected: report hierarchy/editor geometry pass, hard color-bin stripes and touching chips rejected. b4deeb3 blends only visual colors within contiguous measured spans (unchanged metrics/exact gaps), adds missing-signal Canvas assertions and4dp chip gutters; fresh raster/visual run required. Missing stage estimator remains explicit."
 
+# Latest verified milestones supersede earlier pending/rejected snapshots, which remain historical.
+for row in rows:
+    if row["feature"] == "Skip and restore next occurrence":
+        row["validation"] += " Fresh dc30736/fullCI40072555253: Storage8 PASS0.571s,UI2 PASS18.45s/all15 frames; strict expired compact-card/action gate now clears. Actual platform delivery remains unverified."
+    elif row["feature"] == "Automatic tracking":
+        row["validation"] += " Fresh dc30736/fullCI40072555253 runtime12 PASS0.312s; UI2 has1 Got it acknowledgment failure, diagnostic proves dismissal. Actual pinned error now visible; taller-state clock glyph still clipped (P2). b7e5233 injects once at owned dialog bounds then awaits exact detach/focus/error/preferences, fresh proof pending."
+    elif row["feature"] == "Local data backup":
+        row["validation"] += " Fresh dc30736/fullCI40072555253 Storage6 PASS0.412s,Document3 PASS26.612s/all19; strict stale-state cream/dark system-bar mismatch clears. External provider/physical restore remains unverified."
+    elif row["feature"] == "Nap timer":
+        row["validation"] += " Fresh dc30736/fullCI40072555253 NapFlow3 PASS20.604s +Integration1 PASS16.83s/all23 originals. Actual alarm delivery remains untested."
+    elif row["feature"] in ("Built-in sounds", "Device ringtone"):
+        row["validation"] += " Fresh dc30736/fullCI40072555253 Tone fails error-message synchronization after3 originals; diagnostic already shows full error/footer.29fdf58 awaits published native text, keeps exact error geometry and full JSON cancel invariance, and caches bounded imported filename for fresh reopen; native rerun pending."
+    if any(name in row["implementation"] for name in ("ReportScreen.java", "PeriodTimeline.java", "RecordRibbon.java", "TrendsChart.java", "HistoryActivity.java", "RecordEditorActivity.java")):
+        row["validation"] += " Fresh dc30736/focusedCI40072560126 PASS4classes/5methods/all13 required originals, individually reviewed against boards01/08. Ribbon color blending/exact gaps, filter gutters, seven-row history, Week/Month/Year and complete editor Notes/Save/Delete pass this bounded correction. Stage estimator/full app parity remain incomplete."
+    if row["feature"] in ("Contactless sonar", "Sonar calibration / signal quality / fallback"):
+        row.update(status="partial",implementation=["ContactlessSetupActivity.java","SonarRuntime.java","SonarAudio.java","SonarPump.java","SonarDsp.java","SonarAlignment.java","SonarSettings.java","SonarSignalChart.java"],validation="Original source24f815a integrated asaba7d5a. Author20 pure cases pass; debug/native APK/lint0errors87warnings pass. Strict source-clear;4 native methods/15 required originals execution-pending. Combined native contract now57classes/126methods/345required originals. No physical effects tested.",notes="Explicit foreground Test emits original18.5–20kHz FMCW and measures real echo change with dechirp/FFT/quality, route/timing/charging/focus checks and bounded cleanup. Save stores profile without audio output. Missing/invalid evidence stays absent. Overnight persistence/report integration is in progress; initial setup is not a completed night flow. Real hardware support, actual echo accuracy and power budget unverified; no breathing/stage/medical claim. See CONTACTLESS-SONAR-IMPLEMENTATION.md.")
+    elif row["feature"] in ("Jet-lag light intervention", "Dream and travel light cues"):
+        row.update(status="partial",implementation=["TravelActivity.java","TravelCueReviewActivity.java","TravelCuePlan.java","TravelCueSession.java","TravelCueRuntime.java","TravelCueStore.java","TravelCues.java","PhoneTorchCoordinator.java","PhoneTorches.java","TrackingService.java"],validation="Sourcecd35c21 integrated as5d11405.47 focused pure tests pass; debug/native APKs and lint0errors87warnings pass; strict source-clear. TravelCueStorageTest8 and TravelCueFlowTest2/16 originals execution-pending. No hardware output or actual clinical effect verified.",notes="Saved zones/date/daylight reminders plus separate default-off experimental phone-light windows. Explicit Arm only during current manual active tracking; separate Stop/journal/error/interruption, requested2ms/15s finite session, no automatic/recurring/boot/replay arming. Serial app torch ownership gives real alarms priority; timing/dose not measured. No evidence-based phase scheduling, jet-lag prevention, dream/REM or smart-light claim. See TRAVEL-PHONE-LIGHT-CUES.md.")
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -522,12 +541,14 @@ show the relevant group of implementation classes; exact narrower behavior and g
 are stated in the last column. Named tests link to committed source; those links
 are not passing-run claims. Most features still need device-level verification.
 
-Latest phone installation: source613e44b, schema6-to7 migration, unchanged original
-rows/preferences and matching installed APK hash verified by private read-only
-comparison. No alarm/sound/vibration/flashlight test was run on the phone.
-Latest full native run atd43f480 remains FAIL:47/53classes,104/112methods,
-293/314required original images. Focused Report4/5/13 and Tone5/6/39 pass narrowly;
-per-screen visual rejections and later source corrections are recorded below.
+Latest phone installation: source571018b, same application source asdc30736,
+schema7 retained, all original rows/preferences and installed APK hash verified.
+No alarm/sound/vibration/flashlight/tracking test ran on the phone.
+Latest full native run atdc30736 remains FAIL:50/53wholeclasses,109/112methods,
+300/314required images. Report40072560126 passes4/5/13 with strict bounded
+visual acceptance. New sonar/travel source is integrated; new native contract
+is57classes/126methods/345required originals and execution is pending.
+
 
 | ID / feature and manual | Screen(s) | Code | Validation | Status and remaining work |
 | --- | --- | --- | --- | --- |

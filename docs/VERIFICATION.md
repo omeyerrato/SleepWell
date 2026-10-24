@@ -1193,3 +1193,25 @@ five methods, with all 13 required originals accepted by the strict visual
 reviewer. Full run `40072555253` still fails three methods: category positivity,
 Tone error-message synchronization, and recurring-dialog click synchronization.
 Those failures remain open and do not constitute full feature acceptance.
+
+### Integrated contactless setup and travel cues
+
+Main integrates travel light cues as `5d11405` and contactless calibration as
+`aba7d5a`; their research notes and implementation limits are committed. Travel
+requires an explicit Arm within a current manual recording. Opening or saving
+settings does not start light output. Contactless setup contains original echo
+DSP and real duplex audio code; overnight integration remains in progress.
+
+Combined source `d268994` passes debug/native APK compilation, 69 focused unit
+tests, and lint (0 errors, 87 warnings), in 8m36. Focused native run
+`40075529966` passes all 5 classes / 6 methods / 39 required Tone/Wake originals.
+Fresh filename persistence, loading affordance, and complete error disclosure
+still require the independent visual gate before acceptance.
+
+Focused sensing/travel run `40075522359` fails: SonarSettingsNativeTest1 and
+TravelCueStorageTest8 pass, ContactlessSetupFlowTest has 2 failures in 3 methods,
+and TravelCueFlowTest has 1 failure in 2 methods. Twenty of 31 required originals
+are present. Actual native failures are retained; compilation and pure DSP tests
+do not make these journeys accepted. Investigation is checking the finite real
+DSP completion wait and the floating-dialog click acknowledgment separately.
+No classifier threshold or missing-signal rule was relaxed.

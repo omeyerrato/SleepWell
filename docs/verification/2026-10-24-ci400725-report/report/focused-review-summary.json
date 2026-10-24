@@ -1,0 +1,30 @@
+{
+  "scope": "report",
+  "full_app_review": false,
+  "expected_classes": 4,
+  "expected_methods": 5,
+  "class_results": [
+    {
+      "class": "RootVisualTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "ChartClockFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "ReportRibbonNativeTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "ReportReferenceFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 13,
+  "failures": []
+}
