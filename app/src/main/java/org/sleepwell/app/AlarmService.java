@@ -9,7 +9,7 @@ import org.json.*;
 /** Foreground alarm lifetime. Output timing survives same-occurrence service restarts. */
 public class AlarmService extends Service {
     static volatile boolean active;
-    private AlarmVibration vibration;private PowerManager.WakeLock wake;private AlarmPlayback playback;private AlarmTorch torch;
+    private AlarmVibration vibration;private PowerManager.WakeLock wake;private AlarmPlayback playback;private AlarmTorch torch;private SmartLightAlarm bedroomLight;
     private final Handler handler=new Handler(Looper.getMainLooper());private Alarm alarm;private String occurrence;private long started;private volatile boolean destroyed;
     @Override public IBinder onBind(Intent intent){return null;}
     @Override public void onCreate(){super.onCreate();Notifications.channels(this);}
@@ -28,6 +28,7 @@ public class AlarmService extends Service {
         TrackingService.stopTravel(null,"An alarm took priority.");
         try{wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:alarm");wake.acquire(2*60*60*1000L);}catch(RuntimeException error){Prefs.put(this,"lastError","Android did not allow the alarm wake lock.");}
         final String ownRun=occurrence;playback=new AlarmPlayback(alarm,new AlarmAudioSink(this,handler,occurrence,()->alive(ownRun)),()->Math.max(0,SystemClock.elapsedRealtime()-started),SystemClock::elapsedRealtime);playback.start();
+        try{bedroomLight=SmartLightAlarm.start(this,alarm,occurrence,started,()->alive(ownRun));}catch(RuntimeException failure){Prefs.put(this,"lastError","Bedroom light unavailable. Phone alarm continues.");}
         if(new AlarmWakePolicy(alarm).flashlight)torch=new AlarmTorch(this,()->alive(ownRun));
         AlarmWakePolicy policy=new AlarmWakePolicy(alarm);
         final long vibrationStarted=started;
@@ -39,7 +40,7 @@ public class AlarmService extends Service {
         tick.run();return START_STICKY;
     }
     private boolean alive(String run){return !destroyed&&run.equals(occurrence)&&Prefs.flag(this,"ringing")&&run.equals(Prefs.text(this,"alarmRun",""));}
-    private final Runnable tick=new Runnable(){public void run(){if(!alive(occurrence)){releaseOutputs();stopSelf();return;}boolean backup=Prefs.flag(AlarmService.this,"forceBackup");if(backup)playback.backup();playback.tick();if(vibration!=null)vibration.tick(backup);handler.postDelayed(this,100);}};
+    private final Runnable tick=new Runnable(){public void run(){if(!alive(occurrence)){releaseOutputs();stopSelf();return;}boolean backup=Prefs.flag(AlarmService.this,"forceBackup");if(backup)playback.backup();playback.tick();try{if(bedroomLight!=null)bedroomLight.tick();}catch(RuntimeException failure){Prefs.put(AlarmService.this,"lastError","Bedroom light unavailable. Phone alarm continues.");}if(vibration!=null)vibration.tick(backup);handler.postDelayed(this,100);}};
     static void stop(Context context){
         stop(context,Prefs.text(context,"alarmRun",""));
     }
@@ -48,10 +49,11 @@ public class AlarmService extends Service {
     private void releaseOutputs(){
         handler.removeCallbacksAndMessages(null);
         try{if(playback!=null)playback.stop();}catch(RuntimeException ignored){}
+        try{if(bedroomLight!=null)bedroomLight.close();}catch(RuntimeException ignored){}
         try{if(torch!=null)torch.close();}catch(RuntimeException ignored){}
         try{if(vibration!=null)vibration.close();}catch(RuntimeException ignored){}
         try{if(wake!=null&&wake.isHeld())wake.release();}catch(RuntimeException ignored){}
-        playback=null;torch=null;vibration=null;wake=null;
+        playback=null;bedroomLight=null;torch=null;vibration=null;wake=null;
     }
     @Override public void onDestroy(){active=false;destroyed=true;releaseOutputs();super.onDestroy();}
 }
