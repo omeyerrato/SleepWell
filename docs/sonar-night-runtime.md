@@ -34,3 +34,11 @@ New pure tests cover immutable capture clocks, missing-vs-zero evidence, five-se
 Local compilation and pure tests are distinct from native execution and visual acceptance. CI must execute the four native methods and inspect all ten actual originals before marking this flow accepted. Real microphone, emission, permissions, service delivery and overnight battery/device behavior remain untested here.
 
 Public API references: [AudioRecord timestamps](https://developer.android.com/reference/android/media/AudioRecord#getTimestamp(android.media.AudioTimestamp,%20int)), [AudioTimestamp timebases](https://developer.android.com/reference/android/media/AudioTimestamp), [AudioRouting](https://developer.android.com/reference/android/media/AudioRouting), [microphone foreground-service requirements](https://developer.android.com/develop/background-work/services/fgs/service-types#microphone).
+
+## Synthetic-clock correction
+
+CI run 40089335942 preserved the original failure evidence: the real-time paced fake closed after 2,277 ms with only three CALIBRATING intervals (64–184 ms), and another closed after 1,585 ms with capture through 410 ms. Both reported `Capture arrived after its interval was checkpointed.` The fake generated historical PCM after host CPU/JIT time had advanced; the production worker correctly refused to overwrite a missing interval with late evidence.
+
+The native fixtures now advance a paired wall/elapsed **synthetic signal clock** with the generated 48 kHz PCM. A forwarding sink still uses the unmodified real Store adapter and exact SQLite-created session start; it admits that returned clock pair once before capture. Explicit pause time is advanced in this same timeline. Real Start/Resume nonce validation and test wait bounds continue to use real SystemClock time.
+
+Both isolated storage cases inject a 1.5-second host-processing stall before the first emitted chirp frame. It must not age synthetic PCM or fabricate a gap. The same real DSP, SQLite writes, quality gates, NULL gaps, interrupted tail, close and backup checks remain. All actual graph/system-bar pixel checks are retained. This simulator verifies the functional signal/data/control flow; it does not establish real-time throughput or device reliability. No production clock, timeout, queue, quality threshold or late-evidence policy was changed.
