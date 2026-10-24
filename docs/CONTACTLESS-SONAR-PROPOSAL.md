@@ -1,4 +1,6 @@
-# Contactless sonar: proposed first vertical flow
+# Contactless sonar: approved implementation blueprint
+
+Historical proposal. Current implementation and remaining integration prerequisites are documented in [CONTACTLESS-SONAR-IMPLEMENTATION.md](CONTACTLESS-SONAR-IMPLEMENTATION.md).
 
 Research/source baseline: d43f480. Proposal only; no production implementation, build, speaker output, microphone capture or device actions have run. Board06 was visually inspected. Existing motion tracking, saved data and recurring preferences must remain unchanged.
 
