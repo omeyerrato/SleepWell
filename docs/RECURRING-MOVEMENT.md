@@ -35,3 +35,5 @@ RecurringTrackingFlowTest has two emulator-only methods and thirteen PNGs for sa
 - [FGS types: specialUse and microphone](https://developer.android.com/develop/background-work/services/fgs/service-types)
 - [Exact alarm scheduling and access changes](https://developer.android.com/develop/background-work/services/alarms)
 - [BatteryManager.isCharging](https://developer.android.com/reference/android/os/BatteryManager#isCharging())
+
+Native settings harness follow-up: CI40063157145 passed all 12 backend cases, but the first UI flow stopped on a stale accessibility node after cancel/reopen. The save-error screen also refreshes live permission summary rows while retaining draft, revision and error state; the error waits for its new layout before scrolling. The harness now resolves selectors at dispatch, checks each actual draft transition, and waits for owned focused frames and destroyed activities before replacements. This remains a two-method/thirteen-image inert settings gate; a new run is required. It does not prove Android OS delivery.
