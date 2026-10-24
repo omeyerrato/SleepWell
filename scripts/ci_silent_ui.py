@@ -29,13 +29,13 @@ TONE_FRAMES = ["alarm-tone-" + name + ".png" for name in ("builtins", "playing",
 WAKE_SETTING_FRAMES = ["wake-settings-" + name + ".png" for name in ("sound", "loud-curve", "delay-options", "vibration-options", "lights", "recreated", "reopened", "normal-curve", "edited-curve", "immediate")]
 WAKE_CHECK_FRAMES = ["wake-check-" + name + ".png" for name in ("waiting", "prompt", "countdown", "recreated", "confirmed", "reopened", "storage-error", "access-error", "delivery-error", "retry", "expired", "stale", "editor-save-error")]
 FOCUSED_TESTS = ("AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "AlarmWakeSettingsTest", "WakeCheckFlowTest")
-SONAR_REPORT_FRAMES = ["sonar-report-" + name + ".png" for name in ("night", "signals", "zero", "reopened")]
+SONAR_REPORT_FRAMES = ["sonar-report-" + name + ".png" for name in ("night", "signals", "zero", "reopened", "legacy-unknown", "analysis-error")]
 REPORT_TESTS = ("RootVisualTest", "ChartClockFlowTest", "ReportRibbonNativeTest", "ReportReferenceFlowTest", "SonarReportFlowTest")
 REPORT_FRAMES = ["report-reference-" + name + ".png" for name in ("history", "week", "month", "year", "night", "editor", "tags-notes", "reopened")] + ["root-report.png"] + ["chart-clock-" + name + ".png" for name in ("overnight", "night", "short", "fold")]
 REPORT_FRAMES += SONAR_REPORT_FRAMES
-NIGHT_TESTS = ("SonarNightStorageTest", "SonarNightFlowTest", "SonarReportFlowTest")
+NIGHT_TESTS = ("SharedSoundProvenanceStorageTest", "SonarNightStorageTest", "SonarNightFlowTest", "SonarReportFlowTest")
 NIGHT_FRAMES = ["sonar-night-" + name + ".png" for name in ("setup", "measuring", "paused", "paused-recreated", "resumed", "missing", "stop-confirmation", "needs-setup", "charging-error", "charging-recreated")] + SONAR_REPORT_FRAMES
-SENSING_TESTS = ("SonarProvenanceStorageTest", "SonarSettingsNativeTest", "ContactlessSetupFlowTest", "SonarNightStorageTest", "SonarNightFlowTest", "SonarReportFlowTest", "TravelCueStorageTest", "TravelCueFlowTest")
+SENSING_TESTS = ("SharedSoundProvenanceStorageTest", "SonarProvenanceStorageTest", "SonarSettingsNativeTest", "ContactlessSetupFlowTest", "SonarNightStorageTest", "SonarNightFlowTest", "SonarReportFlowTest", "TravelCueStorageTest", "TravelCueFlowTest")
 SENSING_FRAMES = ["sonar-setup-" + name + ".png" for name in ("initial", "ready", "gain-changed", "retested", "reopened", "recreated", "testing", "cancelled", "cancel-recreated", "charging-error", "unsupported", "permission", "saving", "saving-recreated", "save-error")]
 SENSING_FRAMES += ["travel-cues-" + name + ".png" for name in ("settings-off", "window", "date", "time", "window-recreated", "settings-enabled", "settings-reopened", "invalid-window", "no-manual", "ready", "active", "active-recreated", "stopped", "stopped-reopened", "output-error", "interrupted")]
 SENSING_FRAMES += ["sonar-night-" + name + ".png" for name in ("setup", "measuring", "paused", "paused-recreated", "resumed", "missing", "stop-confirmation", "needs-setup", "charging-error", "charging-recreated")]
@@ -139,7 +139,7 @@ metadata["test_classes"] = tests
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2, "BackupStorageTest": 6, "BackupDocumentFlowTest": 3, "ReportRibbonNativeTest": 2, "AlarmSkipStorageTest": 8, "AlarmSkipFlowTest": 2, "ContactlessSetupFlowTest": 3, "TravelCueStorageTest": 8, "TravelCueFlowTest": 2, "SonarProvenanceStorageTest": 12}
 class_results = []
-method_counts.update({"SonarNightStorageTest": 2, "SonarNightFlowTest": 2, "SoundCategoryStorageTest": 2, "SoundCategoryFlowTest": 2})
+method_counts.update({"SharedSoundProvenanceStorageTest": 12, "SonarNightStorageTest": 2, "SonarNightFlowTest": 2, "SoundCategoryStorageTest": 2, "SoundCategoryFlowTest": 2})
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
