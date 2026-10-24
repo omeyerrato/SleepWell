@@ -231,7 +231,7 @@ required += ["chart-clock-" + name + ".png" for name in ("overnight", "night", "
 required += ["missed-night-" + name + ".png" for name in ("denied", "review", "edited", "recreated", "busy", "saved", "covered", "incomplete", "empty", "error", "conflict")]
 required += ["favorites-" + name + ".png" for name in ("all", "playback", "recreated", "week", "filter-empty", "speech", "playback-error", "unstarred", "reopened", "deleted-audio", "missing-audio", "empty", "error", "retry")]
 required += ["math-config-" + name + ".png" for name in ("default", "operators", "typed", "recreated", "ordered", "reopened", "error")]
-required += ["qr-code-" + name + ".png" for name in ("permission", "invalid", "denied", "access-error", "scanning", "camera-error", "captured", "fallback", "recreated", "routine", "reopened", "unavailable")]
+required += ["qr-code-" + name + ".png" for name in ("permission", "invalid", "denied", "access-error", "scanning", "camera-error", "captured", "fallback", "fallback-error", "recreated", "routine", "reopened", "unavailable")]
 required += ["alarm-tone-" + name + ".png" for name in ("builtins", "playing", "paused", "preview-error", "options", "selected", "import-checking", "recreated", "import-cancelled", "decoder-busy", "decoder-recovered", "import-empty", "import-error", "imported", "reopened", "cancelled")]
 required += ["wake-check-" + name + ".png" for name in ("waiting", "prompt", "countdown", "recreated", "confirmed", "reopened", "storage-error", "access-error", "delivery-error", "retry", "expired", "stale")]
 if args.native_sounds:
