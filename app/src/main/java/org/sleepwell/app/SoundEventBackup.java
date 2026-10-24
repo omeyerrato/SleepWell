@@ -26,6 +26,7 @@ final class SoundEventBackup {
             if(!row.has("user_category")||!row.isNull("user_category")&&(!(row.get("user_category") instanceof String)||!SoundCategories.valid(row.getString("user_category"))||revision<=0))throw new JSONException("Invalid user label");
         }
     }
-    static void restore(Store store,JSONArray rows)throws JSONException{for(int n=0;n<rows.length();n++){JSONObject row=rows.getJSONObject(n);ContentValues values=new ContentValues();for(String key:new String[]{"id","session","time","duration_ms","favorite","label_revision"})values.put(key,row.getLong(key));for(String key:new String[]{"category","model"})values.put(key,row.getString(key));values.put("score",row.getDouble("score"));if(!row.isNull("user_category"))values.put("user_category",row.getString("user_category"));values.putNull("clip");store.getWritableDatabase().insertOrThrow("sound_events",null,values);}}
+    static void restore(Store store,JSONArray rows)throws JSONException{restore(store,rows,()->{});}
+    static void restore(Store store,JSONArray rows,Runnable guard)throws JSONException{for(int n=0;n<rows.length();n++){guard.run();JSONObject row=rows.getJSONObject(n);ContentValues values=new ContentValues();for(String key:new String[]{"id","session","time","duration_ms","favorite","label_revision"})values.put(key,row.getLong(key));for(String key:new String[]{"category","model"})values.put(key,row.getString(key));values.put("score",row.getDouble("score"));if(!row.isNull("user_category"))values.put("user_category",row.getString("user_category"));values.putNull("clip");store.getWritableDatabase().insertOrThrow("sound_events",null,values);}}
     private SoundEventBackup(){}
 }

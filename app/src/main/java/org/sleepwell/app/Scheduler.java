@@ -45,6 +45,7 @@ public final class Scheduler {
         Prefs.put(c,"snoozes_-1",0);Prefs.put(c,"test_alarm",a.json().toString()); at(c,-1,TEST,System.currentTimeMillis()+10000);
     }
     static void fire(Context c,Alarm a,boolean mainAlarm) {
+        BackupRuntime.admitted();
         // Reserving the current occurrence before starting audio prevents smart/deadline races.
         synchronized(Scheduler.class) {
             boolean alreadyRinging=Prefs.flag(c,"ringing");

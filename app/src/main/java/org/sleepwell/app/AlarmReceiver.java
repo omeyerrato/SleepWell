@@ -6,6 +6,8 @@ import org.json.*;
 
 public class AlarmReceiver extends BroadcastReceiver {
     @Override public void onReceive(Context c,Intent intent) {
+        if(intent==null)return;
+        if(BackupRuntime.alarmDelivery(intent.getAction(),intent.getIntExtra("id",0)))BackupRuntime.admitted();
         Notifications.channels(c); String action=intent.getAction(); int id=intent.getIntExtra("id",0);
         if(Scheduler.CHECK.equals(action)){WakeChecks.legacy(c,id);return;}
         if(Scheduler.BACKUP.equals(action)) {

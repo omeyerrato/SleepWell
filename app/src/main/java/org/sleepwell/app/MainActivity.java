@@ -79,9 +79,9 @@ public class MainActivity extends Activity {
         LinearLayout totals=Design.row(this),records=Design.col(this),audio=Design.col(this);Design.text(records,"Records",13,400,Design.MUTED);Design.space(records,5);Design.text(records,count+(count==1?" record":" records"),27,700,Design.INK);totals.addView(records,new LinearLayout.LayoutParams(0,-2,1));View divider=new View(this);divider.setBackgroundColor(Design.LINE);LinearLayout.LayoutParams dp=new LinearLayout.LayoutParams(Ui.dp(this,1),Ui.dp(this,50));dp.rightMargin=Ui.dp(this,20);totals.addView(divider,dp);Design.text(audio,"Audio",13,400,Design.MUTED);Design.space(audio,5);Design.text(audio,bytes==0?"0 MB":bytes<1024*1024?"<1 MB":(bytes/(1024*1024))+" MB",27,700,Design.INK);totals.addView(audio,new LinearLayout.LayoutParams(0,-2,1));summary.addView(totals);body.addView(summary);
         Design.space(body,8);PlanActivity.detail(body,"file","Audio retention","Automatically remove older recordings.",audioRetentionLabel(),()->startActivity(RecordUi.intent(this,SoundLibrarySettingsActivity.class)));Design.line(body);Design.space(body,10);
         Switch keepFavorites=Design.toggle(body,"Keep favorites","Retain starred recordings during cleanup",Prefs.of(this).getBoolean("keepAudioFavorites",true),keep->Prefs.put(this,"keepAudioFavorites",keep));Design.styleSwitch(this,keepFavorites,Design.VIOLET,0xffbcb5b0);Design.space(body,14);
-        PlanActivity.detail(body,"upload","Backup","Alarms, records, measured graphs and notes",null,null);Design.text(body,"Audio, app settings and goal commitments are excluded. Imported alarms start off.",12,400,Design.MUTED);
+        PlanActivity.detail(body,"upload","Backup","Alarms, records, notes and sound labels",null,null);Design.text(body,"Audio, app settings and goal commitments are excluded. Imported alarms start off.",12,400,Design.MUTED);
         LinearLayout exports=Design.row(this),exportColumn=Design.col(this),importColumn=Design.col(this);LinearLayout.LayoutParams ep=new LinearLayout.LayoutParams(0,-2,1);ep.rightMargin=Ui.dp(this,4);exports.addView(exportColumn,ep);LinearLayout.LayoutParams imp=new LinearLayout.LayoutParams(0,-2,1);imp.leftMargin=Ui.dp(this,4);exports.addView(importColumn,imp);body.addView(exports);
-        Button export=Design.button(exportColumn,"Export backup",true,()->export(EXPORT_JSON));export.setTextSize(14*Appearance.scale(this));Button restore=Design.button(importColumn,"Import backup",false,()->startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).setType("application/json").addCategory(Intent.CATEGORY_OPENABLE),IMPORT));restore.setTextSize(14*Appearance.scale(this));
+        Button export=Design.button(exportColumn,"Export backup",true,()->export(EXPORT_JSON));export.setTextSize(14*Appearance.scale(this));Button restore=Design.button(importColumn,"Import backup",false,()->backup(BackupJob.Kind.IMPORT));restore.setTextSize(14*Appearance.scale(this));
         Design.space(body,12);Design.item(body,"file","Export records as CSV",null,()->export(EXPORT_CSV));Design.line(body);PlanActivity.detail(body,"cloud","Cloud backup","Off · no connected cloud service",null,null);Design.line(body);Design.space(body,16);
         HistoryEraseUi.add(body,this::stopPreview,this::render);
     }
@@ -196,21 +196,16 @@ public class MainActivity extends Activity {
         stopPreview();try{preview=new MediaPlayer();preview.setDataSource(FileSafety.clip(this,filename).getAbsolutePath());preview.prepare();preview.setOnCompletionListener(p->stopPreview());preview.start();}catch(Exception e){stopPreview();Ui.toast(this,"Recording unavailable.");}
     }
     private void stopPreview() {if(preview!=null){preview.release();preview=null;}}
-    private void export(int type) {Intent i=new Intent(Intent.ACTION_CREATE_DOCUMENT).addCategory(Intent.CATEGORY_OPENABLE).setType(type==EXPORT_JSON?"application/json":"text/csv").putExtra(Intent.EXTRA_TITLE,"sleepwell-"+LocalDate.now()+(type==EXPORT_JSON?".json":".csv"));startActivityForResult(i,type);}
+    private void backup(BackupJob.Kind kind){startActivity(RecordUi.intent(this,BackupActivity.class).putExtra("action",kind.name()));}
+    private void export(int type) {backup(type==EXPORT_JSON?BackupJob.Kind.JSON:BackupJob.Kind.CSV);}
     @Override public void onActivityResult(int request,int result,Intent data) {
         super.onActivityResult(request,result,data);if(request==30){if(result==RESULT_OK)tab=2;render();return;}if(result!=RESULT_OK||data==null||data.getData()==null)return;Uri uri=data.getData();
         try {
             if(request==TONE) {if(pendingTone==null){Ui.toast(this,"Please choose the audio file again from Edit alarm.");return;}getContentResolver().takePersistableUriPermission(uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);pendingTone.tone=uri.toString();Prefs.put(this,"lastOccurrence_"+pendingTone.id,0L);store.save(pendingTone);try{Scheduler.schedule(this,pendingTone);}catch(SecurityException e){pendingTone.enabled=false;store.save(pendingTone);}Ui.toast(this,"Custom audio saved. Test it before relying on it.");}
-            else if(request==EXPORT_JSON||request==EXPORT_CSV) {
-                String content;boolean labels=false;
-                if(request==EXPORT_JSON){JSONObject exported=store.backup();labels=exported.optInt("format",1)>=4;content=exported.toString(2);}
-                else content=Records.csv(store);
-                try(OutputStream out=getContentResolver().openOutputStream(uri,"wt")){if(out==null)throw new IOException("No output stream");out.write(content.getBytes(StandardCharsets.UTF_8));}Ui.toast(this,request==EXPORT_CSV?"CSV saved with sleep records, notes and tags.":labels?"JSON saved: alarms, records, notes and sound labels. Audio files and app settings are excluded.":"JSON saved: alarms, records and notes. Audio files and app settings are excluded.");
-            } else if(request==IMPORT) {
-                if(TrackingService.running||Prefs.flag(this,"ringing")){Ui.toast(this,"End tracking and alarms before restoring.");return;}
-                String raw;try(InputStream in=getContentResolver().openInputStream(uri)){if(in==null)throw new IOException("No input stream");ByteArrayOutputStream buffer=new ByteArrayOutputStream();byte[] chunk=new byte[8192];int n;while((n=in.read(chunk))!=-1){buffer.write(chunk,0,n);if(buffer.size()>8*1024*1024)throw new IOException("Backup exceeds 8 MB");}raw=buffer.toString(StandardCharsets.UTF_8.name());}
-                JSONObject backup=new JSONObject(raw);Backup.validate(backup);
-                new AlertDialog.Builder(this).setTitle("Replace local data from backup?").setMessage("This replaces alarms, sleep records, graphs and notes"+(backup.optInt("format",1)>=4?", including sound labels":"")+". Existing audio is deleted. Imported alarms stay off for review.").setPositiveButton("Restore",(d,w)->{try{Backup.restore(this,store,backup);Ui.toast(this,"Data restored. Review and enable your alarms.");render();}catch(Exception e){Ui.toast(this,"Restore failed: "+e.getMessage());}}).setNegativeButton("Cancel",null).show();
+            else if(request==EXPORT_JSON||request==EXPORT_CSV||request==IMPORT) {
+                // An already-open legacy picker may return after an app update. The
+                // private flow owns the URI and asynchronous work; this Store stays UI-owned.
+                startActivity(RecordUi.intent(this,BackupActivity.class).putExtra("document",uri.toString()).putExtra("kind",request==IMPORT?BackupJob.Kind.IMPORT.name():request==EXPORT_JSON?BackupJob.Kind.JSON.name():BackupJob.Kind.CSV.name()));
             }
         }catch(Exception e){Ui.toast(this,"Could not complete this operation: "+e.getMessage());}render();
     }

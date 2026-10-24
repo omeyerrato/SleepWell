@@ -51,6 +51,7 @@ public class TrackingService extends Service implements SensorEventListener {
             if(owned==null)return rejectRecurring();
             recurringToken=owned.token;intent=owned.intent(this); // Ignore caller sound, clip, mode and schedule extras.
         }
+        BackupRuntime.admitted();
         current=this;running=true;clock=new TrackingClock(SystemClock.elapsedRealtime());
         try{
             motionProfile=MotionSettings.load(this);automaticRun=ARM.equals(action);if(automaticRun){automaticCapture=new AutomaticCapture(recurringToken==null&&intent.getBooleanExtra("recordSounds",false),recurringToken==null&&intent.getBooleanExtra("keepClips",false));if(automaticCapture.requested()&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is unavailable. Arm again with sound recording off.");}foreground(false);

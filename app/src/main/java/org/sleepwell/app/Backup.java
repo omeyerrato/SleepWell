@@ -43,22 +43,29 @@ final class Backup {
         Scheduler.cancel(c,-1,Scheduler.TEST);Prefs.put(c,"checkPending",0);for(JSONObject clip:clips)FileSafety.deleteClip(c,clip.optString("path"));
     }
     static void restoreData(Store store,JSONObject root) throws JSONException {
+        restoreData(store,root,()->{});
+    }
+    /** Guard is run under the replacement transaction, before mutation, between rows and before commit. */
+    static void restoreData(Store store,JSONObject root,Runnable guard) throws JSONException {
         validate(root);SQLiteDatabase db=store.getWritableDatabase();
         int format=root.getInt("format");Map<Long,Long> endpoints=new HashMap<>();Set<Long> unfinished=new HashSet<>();JSONArray sessions=root.getJSONArray("sessions"),epochs=root.getJSONArray("epochs"),pauses=format>=2?root.getJSONArray("pauses"):null;
         for(int i=0;i<sessions.length();i++){JSONObject s=sessions.getJSONObject(i);endpoints.put(s.getLong("id"),s.isNull("end")?s.getLong("start"):s.getLong("end"));if(s.isNull("end"))unfinished.add(s.getLong("id"));}
         for(int i=0;i<epochs.length();i++){JSONObject e=epochs.getJSONObject(i);long id=e.getLong("session");if(unfinished.contains(id))endpoints.put(id,Math.max(endpoints.get(id),e.getLong("time")));}
         if(pauses!=null)for(int i=0;i<pauses.length();i++){JSONObject p=pauses.getJSONObject(i);long id=p.getLong("session");endpoints.put(id,Math.max(endpoints.get(id),p.isNull("end")?p.getLong("start"):p.getLong("end")));}
         db.beginTransaction();try {
-            SoundClips.stageAll(store,null);db.delete("sound_events",null,null);db.delete("record_create_requests",null,null);db.delete("alarms",null,null);db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null);db.delete("sessions",null,null);db.delete("clips",null,null);
-            JSONArray alarms=root.getJSONArray("alarms");for(int i=0;i<alarms.length();i++){Alarm a=Alarm.read(alarms.getJSONObject(i));a.enabled=false;Naps.restored(a);if(a.tone.startsWith("content:"))a.tone="daybreak";store.save(a);}
+            guard.run();
+            for(JSONObject clip:store.rows("SELECT * FROM clips")){guard.run();SoundClips.stage(store,clip);}db.delete("sound_events",null,null);db.delete("record_create_requests",null,null);db.delete("alarms",null,null);db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null);db.delete("sessions",null,null);db.delete("clips",null,null);
+            JSONArray alarms=root.getJSONArray("alarms");for(int i=0;i<alarms.length();i++){guard.run();Alarm a=Alarm.read(alarms.getJSONObject(i));a.enabled=false;Naps.restored(a);if(a.tone.startsWith("content:"))a.tone="daybreak";store.save(a);}
             for(int i=0;i<sessions.length();i++){
+                guard.run();
                 JSONObject j=sessions.getJSONObject(i);ContentValues v=new ContentValues();long id=j.getLong("id");v.put("id",id);v.put("start",j.getLong("start"));v.put("end",endpoints.get(id));v.put("note",j.optString("note",""));v.put("rating",Math.max(0,Math.min(5,j.optInt("rating"))));v.put("interrupted",j.isNull("end")?1:j.optInt("interrupted"));v.put("clock_changed",j.optInt("clock_changed",0)==0?0:1);if(!j.isNull("active_ms"))v.put("active_ms",j.getLong("active_ms"));db.insertOrThrow("sessions",null,v);
                 ContentValues provenance=new ContentValues();provenance.put("source",format>=3?j.getString("source"):"legacy");provenance.put("origin","imported");provenance.put("zone",format>=3?j.getString("zone"):"");db.update("sessions",provenance,"id=?",new String[]{""+id});
             }
-            for(int i=0;i<epochs.length();i++){JSONObject e=epochs.getJSONObject(i);store.epoch(e.getLong("session"),e.isNull("start")?null:e.getLong("start"),e.getLong("time"),e.isNull("movement")?null:e.getDouble("movement"),e.isNull("noise")?null:e.getDouble("noise"),e.isNull("light")?null:e.getDouble("light"),e.optInt("samples",0));}
-            if(pauses!=null)for(int i=0;i<pauses.length();i++){JSONObject p=pauses.getJSONObject(i);ContentValues v=new ContentValues();v.put("id",p.getLong("id"));v.put("session",p.getLong("session"));v.put("start",p.getLong("start"));v.put("end",p.isNull("end")?endpoints.get(p.getLong("session")):p.getLong("end"));db.insertOrThrow("tracking_pauses",null,v);}
-            if(format>=3){JSONArray edits=root.getJSONArray("edits");for(int i=0;i<edits.length();i++){JSONObject edit=edits.getJSONObject(i);ContentValues v=Records.values(edit.getLong("session"),Records.draft(edit),edit.getLong("updated"));v.put("reverted",edit.optInt("reverted",0));db.insertOrThrow("record_edits",null,v);}}
-            if(format>=4)SoundEventBackup.restore(store,root.getJSONArray("sound_events"));
+            for(int i=0;i<epochs.length();i++){guard.run();JSONObject e=epochs.getJSONObject(i);store.epoch(e.getLong("session"),e.isNull("start")?null:e.getLong("start"),e.getLong("time"),e.isNull("movement")?null:e.getDouble("movement"),e.isNull("noise")?null:e.getDouble("noise"),e.isNull("light")?null:e.getDouble("light"),e.optInt("samples",0));}
+            if(pauses!=null)for(int i=0;i<pauses.length();i++){guard.run();JSONObject p=pauses.getJSONObject(i);ContentValues v=new ContentValues();v.put("id",p.getLong("id"));v.put("session",p.getLong("session"));v.put("start",p.getLong("start"));v.put("end",p.isNull("end")?endpoints.get(p.getLong("session")):p.getLong("end"));db.insertOrThrow("tracking_pauses",null,v);}
+            if(format>=3){JSONArray edits=root.getJSONArray("edits");for(int i=0;i<edits.length();i++){guard.run();JSONObject edit=edits.getJSONObject(i);ContentValues v=Records.values(edit.getLong("session"),Records.draft(edit),edit.getLong("updated"));v.put("reverted",edit.optInt("reverted",0));db.insertOrThrow("record_edits",null,v);}}
+            if(format>=4)SoundEventBackup.restore(store,root.getJSONArray("sound_events"),guard);
+            guard.run();
             db.setTransactionSuccessful();
         }finally {db.endTransaction();}
     }
