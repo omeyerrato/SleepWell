@@ -525,6 +525,13 @@ for row in rows:
     if any(name in row["implementation"] for name in ("ReportScreen.java", "PeriodTimeline.java", "RecordRibbon.java", "TrendsChart.java", "HistoryActivity.java", "RecordEditorActivity.java")):
         row["validation"] += " ba1ae61/0dcbb44 use exactpersistedSensorProvenance.SONAR for contactless graph/accessibility labels, preserve actualsamplegaps, and retain sensor/config throughgoalzonecopies. Newprivate saved-sonar navigation originals remain pending."
 
+# The manual contactless night and saved report are integrated; native execution is still pending.
+for row in rows:
+    if row["feature"] in ("Contactless sonar", "Sonar calibration / signal quality / fallback"):
+        row["implementation"] += ["SonarEntry.java", "SonarNight.java", "SonarEpochs.java", "SonarNightStore.java", "TrackingService.java", "TrackingActivity.java", "RecordSignalsActivity.java"]
+        row["validation"] += " Manual recording source2a68425 integrated asc86ee00;16 focused pure cases pass, production/native Java compilation and lint pass. Saved report480cc64 integrated asc6f0b8b. Strict source review clears both. SonarNightStorageTest2,SonarNightFlowTest2/10originals,andSonarReportFlowTest1/4originals await actual native execution."
+        row["notes"] = "Explicit setup and manual Start/Pause/Resume/Stop measure relative echo change through original18.5–20kHz FMCW. An ordered bounded worker persists schema8/format5 sensor/config and5snullablequality; validzero stays selectable and missing/invalid evidence stays absent. Saved report labels relativeechochange,qualityduration andunrecordedtime without fabricating stages. No automatic sonar, shared microphone noise analysis, raw sonar audio, breathing inference or medical claim. Real hardware accuracy, foreground-service delivery and overnight power budget remain unverified. See sonar-night-runtime.md and SONAR-REPORT-FLOW.md."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

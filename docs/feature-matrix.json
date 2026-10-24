@@ -1030,11 +1030,18 @@
         "SensorProvenance.java",
         "SensorBackup.java",
         "Store.java",
-        "Records.java"
+        "Records.java",
+        "SonarEntry.java",
+        "SonarNight.java",
+        "SonarEpochs.java",
+        "SonarNightStore.java",
+        "TrackingService.java",
+        "TrackingActivity.java",
+        "RecordSignalsActivity.java"
       ],
-      "validation": "Original source24f815a integrated asaba7d5a. Author20 pure cases pass; debug/native APK/lint0errors87warnings pass. Strict source-clear;4 native methods/15 required originals execution-pending. Combined native contract now57classes/126methods/345required originals. No physical effects tested. Main05cd205 local573pure/69suites0fail +debug/nativeAPKs/lint0errors89warnings PASS7m29. FocusedCI40079038257 all26methods/31originals PASS: SonarProvenanceStorageTest12 PASS1.861s,SonarSettingsNativeTest1/.333s,ContactlessSetupFlowTest3/52.64s. All15setup originals individually reviewed: initialplum/lightbars,largeractualchart,scene,slider,error/gain/save/reopen pass bounded supporting-state gate. Reference ready/status rows and recorded-night integration remain open.",
+      "validation": "Original source24f815a integrated asaba7d5a. Author20 pure cases pass; debug/native APK/lint0errors87warnings pass. Strict source-clear;4 native methods/15 required originals execution-pending. Combined native contract now57classes/126methods/345required originals. No physical effects tested. Main05cd205 local573pure/69suites0fail +debug/nativeAPKs/lint0errors89warnings PASS7m29. FocusedCI40079038257 all26methods/31originals PASS: SonarProvenanceStorageTest12 PASS1.861s,SonarSettingsNativeTest1/.333s,ContactlessSetupFlowTest3/52.64s. All15setup originals individually reviewed: initialplum/lightbars,largeractualchart,scene,slider,error/gain/save/reopen pass bounded supporting-state gate. Reference ready/status rows and recorded-night integration remain open. Manual recording source2a68425 integrated asc86ee00;16 focused pure cases pass, production/native Java compilation and lint pass. Saved report480cc64 integrated asc6f0b8b. Strict source review clears both. SonarNightStorageTest2,SonarNightFlowTest2/10originals,andSonarReportFlowTest1/4originals await actual native execution.",
       "status": "partial",
-      "notes": "Explicit foreground Test emits original18.5–20kHz FMCW and measures real echo change with dechirp/FFT/quality, route/timing/charging/focus checks and bounded cleanup. Save stores profile without audio output. Missing/invalid evidence stays absent. Overnight persistence/report integration is in progress; initial setup is not a completed night flow. Real hardware support, actual echo accuracy and power budget unverified; no breathing/stage/medical claim. See CONTACTLESS-SONAR-IMPLEMENTATION.md. Additive schema8 and portableformat5 preserve sensor/config,nullable5squality,rawepochs/edits and legacy unknown provenance. Real native migration/roundtrip/rollback/recovery tests pass. Shared microphone noise analysis is not connected to sonar; overnight source is in progress.",
+      "notes": "Explicit setup and manual Start/Pause/Resume/Stop measure relative echo change through original18.5–20kHz FMCW. An ordered bounded worker persists schema8/format5 sensor/config and5snullablequality; validzero stays selectable and missing/invalid evidence stays absent. Saved report labels relativeechochange,qualityduration andunrecordedtime without fabricating stages. No automatic sonar, shared microphone noise analysis, raw sonar audio, breathing inference or medical claim. Real hardware accuracy, foreground-service delivery and overnight power budget remain unverified. See sonar-night-runtime.md and SONAR-REPORT-FLOW.md.",
       "id": "F047",
       "tests": []
     },
@@ -2425,11 +2432,18 @@
         "SensorProvenance.java",
         "SensorBackup.java",
         "Store.java",
-        "Records.java"
+        "Records.java",
+        "SonarEntry.java",
+        "SonarNight.java",
+        "SonarEpochs.java",
+        "SonarNightStore.java",
+        "TrackingService.java",
+        "TrackingActivity.java",
+        "RecordSignalsActivity.java"
       ],
-      "validation": "Original source24f815a integrated asaba7d5a. Author20 pure cases pass; debug/native APK/lint0errors87warnings pass. Strict source-clear;4 native methods/15 required originals execution-pending. Combined native contract now57classes/126methods/345required originals. No physical effects tested. Main05cd205 local573pure/69suites0fail +debug/nativeAPKs/lint0errors89warnings PASS7m29. FocusedCI40079038257 all26methods/31originals PASS: SonarProvenanceStorageTest12 PASS1.861s,SonarSettingsNativeTest1/.333s,ContactlessSetupFlowTest3/52.64s. All15setup originals individually reviewed: initialplum/lightbars,largeractualchart,scene,slider,error/gain/save/reopen pass bounded supporting-state gate. Reference ready/status rows and recorded-night integration remain open.",
+      "validation": "Original source24f815a integrated asaba7d5a. Author20 pure cases pass; debug/native APK/lint0errors87warnings pass. Strict source-clear;4 native methods/15 required originals execution-pending. Combined native contract now57classes/126methods/345required originals. No physical effects tested. Main05cd205 local573pure/69suites0fail +debug/nativeAPKs/lint0errors89warnings PASS7m29. FocusedCI40079038257 all26methods/31originals PASS: SonarProvenanceStorageTest12 PASS1.861s,SonarSettingsNativeTest1/.333s,ContactlessSetupFlowTest3/52.64s. All15setup originals individually reviewed: initialplum/lightbars,largeractualchart,scene,slider,error/gain/save/reopen pass bounded supporting-state gate. Reference ready/status rows and recorded-night integration remain open. Manual recording source2a68425 integrated asc86ee00;16 focused pure cases pass, production/native Java compilation and lint pass. Saved report480cc64 integrated asc6f0b8b. Strict source review clears both. SonarNightStorageTest2,SonarNightFlowTest2/10originals,andSonarReportFlowTest1/4originals await actual native execution.",
       "status": "partial",
-      "notes": "Explicit foreground Test emits original18.5–20kHz FMCW and measures real echo change with dechirp/FFT/quality, route/timing/charging/focus checks and bounded cleanup. Save stores profile without audio output. Missing/invalid evidence stays absent. Overnight persistence/report integration is in progress; initial setup is not a completed night flow. Real hardware support, actual echo accuracy and power budget unverified; no breathing/stage/medical claim. See CONTACTLESS-SONAR-IMPLEMENTATION.md. Additive schema8 and portableformat5 preserve sensor/config,nullable5squality,rawepochs/edits and legacy unknown provenance. Real native migration/roundtrip/rollback/recovery tests pass. Shared microphone noise analysis is not connected to sonar; overnight source is in progress.",
+      "notes": "Explicit setup and manual Start/Pause/Resume/Stop measure relative echo change through original18.5–20kHz FMCW. An ordered bounded worker persists schema8/format5 sensor/config and5snullablequality; validzero stays selectable and missing/invalid evidence stays absent. Saved report labels relativeechochange,qualityduration andunrecordedtime without fabricating stages. No automatic sonar, shared microphone noise analysis, raw sonar audio, breathing inference or medical claim. Real hardware accuracy, foreground-service delivery and overnight power budget remain unverified. See sonar-night-runtime.md and SONAR-REPORT-FLOW.md.",
       "id": "F122",
       "tests": []
     },
