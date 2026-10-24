@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Store extends SQLiteOpenHelper {
     public Store(Context c) { this(c,"sleepwell.db"); }
-    Store(Context c,String name) { super(c,name,null,9); }
+    Store(Context c,String name) { super(c,name,null,10); }
     @Override public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE alarms(id INTEGER PRIMARY KEY, data TEXT NOT NULL)");
         db.execSQL("CREATE TABLE sessions(id INTEGER PRIMARY KEY, start INTEGER NOT NULL, end INTEGER, note TEXT DEFAULT '', rating INTEGER DEFAULT 0, interrupted INTEGER DEFAULT 0, active_ms INTEGER, clock_changed INTEGER DEFAULT 0)");
@@ -17,7 +17,7 @@ public class Store extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE clips(id INTEGER PRIMARY KEY, session INTEGER NOT NULL, time INTEGER NOT NULL, path TEXT NOT NULL, level REAL)");
         createPauses(db);
         createRecords(db);db.execSQL("ALTER TABLE sessions ADD COLUMN source TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN origin TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN zone TEXT NOT NULL DEFAULT ''");
-        createRequests(db);createSoundEvents(db);createSoundLibrary(db);createSoundLabels(db);createSensorProvenance(db);createSoundAnalysis(db);
+        createRequests(db);createSoundEvents(db);createSoundLibrary(db);createSoundLabels(db);createSensorProvenance(db);createSoundAnalysis(db);HealthSleepTables.create(db);
     }
     private static void createSoundEvents(SQLiteDatabase db){
         db.execSQL("ALTER TABLE clips ADD COLUMN category TEXT NOT NULL DEFAULT 'noise'");
@@ -44,7 +44,7 @@ public class Store extends SQLiteOpenHelper {
     private static void createPauses(SQLiteDatabase db){db.execSQL("CREATE TABLE tracking_pauses(id INTEGER PRIMARY KEY, session INTEGER NOT NULL, start INTEGER NOT NULL, end INTEGER)");db.execSQL("CREATE INDEX pauses_session ON tracking_pauses(session,start)");}
     private static void createRequests(SQLiteDatabase db){db.execSQL("CREATE TABLE record_create_requests(token TEXT PRIMARY KEY,session INTEGER NOT NULL)");}
     private static void createRecords(SQLiteDatabase db){db.execSQL("CREATE TABLE record_edits(session INTEGER PRIMARY KEY,start INTEGER NOT NULL,end INTEGER NOT NULL,note TEXT NOT NULL DEFAULT '',tags TEXT NOT NULL DEFAULT '[]',awake TEXT NOT NULL DEFAULT '[]',rating INTEGER NOT NULL DEFAULT 0,rated INTEGER NOT NULL DEFAULT 0,updated INTEGER NOT NULL,reverted INTEGER NOT NULL DEFAULT 0)");}
-    @Override public void onUpgrade(SQLiteDatabase db,int old,int next) {if(old<2){db.execSQL("ALTER TABLE sessions ADD COLUMN active_ms INTEGER");db.execSQL("ALTER TABLE sessions ADD COLUMN clock_changed INTEGER DEFAULT 0");db.execSQL("ALTER TABLE epochs ADD COLUMN start INTEGER");createPauses(db);}if(old<3){createRecords(db);db.execSQL("ALTER TABLE sessions ADD COLUMN source TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN origin TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN zone TEXT NOT NULL DEFAULT ''");}if(old<4)createRequests(db);if(old<5)createSoundEvents(db);if(old<6)createSoundLibrary(db);if(old<7)createSoundLabels(db);if(old<8)createSensorProvenance(db);if(old<9)createSoundAnalysis(db);if(next>9)throw new IllegalStateException("Unknown database version");}
+    @Override public void onUpgrade(SQLiteDatabase db,int old,int next) {if(old<2){db.execSQL("ALTER TABLE sessions ADD COLUMN active_ms INTEGER");db.execSQL("ALTER TABLE sessions ADD COLUMN clock_changed INTEGER DEFAULT 0");db.execSQL("ALTER TABLE epochs ADD COLUMN start INTEGER");createPauses(db);}if(old<3){createRecords(db);db.execSQL("ALTER TABLE sessions ADD COLUMN source TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN origin TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN zone TEXT NOT NULL DEFAULT ''");}if(old<4)createRequests(db);if(old<5)createSoundEvents(db);if(old<6)createSoundLibrary(db);if(old<7)createSoundLabels(db);if(old<8)createSensorProvenance(db);if(old<9)createSoundAnalysis(db);if(old<10)HealthSleepTables.create(db);if(next>10)throw new IllegalStateException("Unknown database version");}
     public synchronized List<Alarm> alarms() {
         List<Alarm> result=new ArrayList<>();
         try(Cursor c=getReadableDatabase().rawQuery("SELECT data FROM alarms ORDER BY id",null)) {
@@ -122,8 +122,8 @@ public class Store extends SQLiteOpenHelper {
         } return rows;
     }
     public JSONObject backup() {
-        SQLiteDatabase db=getReadableDatabase();db.beginTransactionNonExclusive();try{JSONObject root=new JSONObject(); JSONArray savedAlarms=new JSONArray();for(Alarm a:alarms())savedAlarms.put(a.json());try { root.put("format",6).put("alarms",savedAlarms)
-            .put("sessions",new JSONArray(rows("SELECT * FROM sessions"))).put("epochs",new JSONArray(rows("SELECT * FROM epochs"))).put("pauses",new JSONArray(rows("SELECT * FROM tracking_pauses"))).put("edits",new JSONArray(rows("SELECT * FROM record_edits"))).put("sound_events",SoundEventBackup.export(this));SoundEventBackup.checkPortableSize(root);SensorBackup.validateExport(root);SoundAnalysisProvenance.validateExport(root); } catch(JSONException e) { throw new IllegalStateException(e); } db.setTransactionSuccessful();return root;}finally{db.endTransaction();}
+        SQLiteDatabase db=getReadableDatabase();db.beginTransactionNonExclusive();try{JSONObject root=new JSONObject(); JSONArray savedAlarms=new JSONArray();for(Alarm a:alarms())savedAlarms.put(a.json());try { root.put("format",7).put("alarms",savedAlarms)
+            .put("sessions",new JSONArray(rows("SELECT * FROM sessions"))).put("epochs",new JSONArray(rows("SELECT * FROM epochs"))).put("pauses",new JSONArray(rows("SELECT * FROM tracking_pauses"))).put("edits",new JSONArray(rows("SELECT * FROM record_edits"))).put("sound_events",SoundEventBackup.export(this));SoundEventBackup.checkPortableSize(root);SensorBackup.validateExport(root);SoundAnalysisProvenance.validateExport(root);HealthSleepCodec.validate(root); } catch(JSONException e) { throw new IllegalStateException(e); } db.setTransactionSuccessful();return root;}finally{db.endTransaction();}
     }
-    public void eraseHistory() { SQLiteDatabase db=getWritableDatabase(); db.beginTransaction(); try { SoundClips.stageAll(this,null);db.execSQL("UPDATE record_create_requests SET session=0");db.delete("sound_events",null,null);db.delete("clips",null,null); db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null); db.delete("sessions",null,null); db.setTransactionSuccessful(); } finally { db.endTransaction(); } }
+    public void eraseHistory() { SQLiteDatabase db=getWritableDatabase(); db.beginTransaction(); try { HealthSleepTables.erased(db);SoundClips.stageAll(this,null);db.execSQL("UPDATE record_create_requests SET session=0");db.delete("sound_events",null,null);db.delete("clips",null,null); db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null); db.delete("sessions",null,null); db.setTransactionSuccessful(); } finally { db.endTransaction(); } }
 }

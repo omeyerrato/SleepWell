@@ -16,7 +16,7 @@ final class DatedGoalBank {
             List<RecordEntry> projected=new ArrayList<>(),original=new ArrayList<>();
             for(RecordEntry r:records){
                 if(r.edit.end<=r.edit.start)continue;
-                RecordEntry local=new RecordEntry(r.id,r.rawStart,r.rawEnd,r.active,r.source,r.origin,goal.zone,r.interrupted,r.clockChanged,r.edit,r.edited,r.updated,r.pauses,r.sensor,r.sensorConfig,r.soundAnalysis);
+                RecordEntry local=new RecordEntry(r.id,r.rawStart,r.rawEnd,r.active,r.source,r.origin,goal.zone,r.interrupted,r.clockChanged,r.edit,r.edited,r.updated,r.pauses,r.sensor,r.sensorConfig,r.soundAnalysis,r.healthConnect);
                 original.add(local);RecordDraft draft=local.edit.copy();draft.awake.addAll(claimed);projected.add(local.draft(draft));
             }
             RecordTrends.Range range=new RecordTrends.Range(goal.start,goal.through());

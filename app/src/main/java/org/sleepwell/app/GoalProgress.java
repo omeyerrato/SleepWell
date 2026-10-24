@@ -13,7 +13,7 @@ final class GoalProgress {
     final boolean ended,complete;final LocalDate closedThrough;
     private GoalProgress(List<Day> days,long balance,int observed,int unknown,boolean ended,boolean complete,LocalDate closedThrough){this.days=List.copyOf(days);this.balance=balance;this.observed=observed;this.unknown=unknown;this.ended=ended;this.complete=complete;this.closedThrough=closedThrough;}
     static GoalProgress calculate(GoalCommitment goal,List<RecordEntry> records,Instant now){
-        List<RecordEntry> inZone=new ArrayList<>();for(RecordEntry r:records)inZone.add(new RecordEntry(r.id,r.rawStart,r.rawEnd,r.active,r.source,r.origin,goal.zone,r.interrupted,r.clockChanged,r.edit,r.edited,r.updated,r.pauses,r.sensor,r.sensorConfig,r.soundAnalysis));
+        List<RecordEntry> inZone=new ArrayList<>();for(RecordEntry r:records)inZone.add(new RecordEntry(r.id,r.rawStart,r.rawEnd,r.active,r.source,r.origin,goal.zone,r.interrupted,r.clockChanged,r.edit,r.edited,r.updated,r.pauses,r.sensor,r.sensorConfig,r.soundAnalysis,r.healthConnect));
         SortedMap<LocalDate,RecordTrends.Day> actual=RecordTrends.days(inZone,new RecordTrends.Range(goal.start,goal.through()),goal.cutoff);
         return fromDays(goal,actual,now);
     }

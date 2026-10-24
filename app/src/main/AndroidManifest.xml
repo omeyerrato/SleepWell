@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.health.READ_SLEEP" />
+    <uses-permission android:name="android.permission.health.WRITE_SLEEP" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
@@ -30,7 +32,7 @@
     <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
     <uses-feature android:name="android.hardware.nfc" android:required="false" />
     <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
-    <queries><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent></queries>
+    <queries><package android:name="com.google.android.apps.healthdata" /><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent></queries>
     <application android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:label="SleepWell" android:theme="@style/AppTheme" android:icon="@drawable/ic_moon" android:supportsRtl="true">
         <!-- Foreground explicit contactless calibration only; never externally launchable. -->
         <activity android:name=".ContactlessSetupActivity" android:exported="false" />
@@ -39,6 +41,14 @@
         </activity>
         <activity android:name=".AutomationActivity" android:exported="false" />
         <service android:name=".AutomationJobService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <activity android:name=".HealthSleepSourceActivity" android:exported="false" />
+        <activity android:name=".HealthConnectActivity" android:exported="false" />
+        <activity android:name=".HealthSleepPrivacyActivity" android:exported="true">
+            <intent-filter><action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" /></intent-filter>
+        </activity>
+        <activity-alias android:name=".HealthSleepPermissionUsage" android:targetActivity=".HealthSleepPrivacyActivity" android:exported="true" android:permission="android.permission.START_VIEW_PERMISSION_USAGE">
+            <intent-filter><action android:name="android.intent.action.VIEW_PERMISSION_USAGE" /><category android:name="android.intent.category.HEALTH_PERMISSIONS" /></intent-filter>
+        </activity-alias>
         <activity android:name=".BackupActivity" android:exported="false" />
         <activity android:name=".AlarmEditorActivity" android:exported="false" />
         <activity android:name=".WakeCheckActivity" android:exported="false" />

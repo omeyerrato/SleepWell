@@ -7,7 +7,7 @@ import java.util.*;
 
 final class Backup {
     static void validate(JSONObject root) throws JSONException {
-        int format=root.getInt("format");if(format<1||format>6)throw new JSONException("Unsupported backup format");
+        int format=root.getInt("format");if(format<1||format>7)throw new JSONException("Unsupported backup format");
         JSONArray alarms=root.getJSONArray("alarms"),sessions=root.getJSONArray("sessions"),epochs=root.getJSONArray("epochs");
         Set<Long> ids=new HashSet<>(),alarmIds=new HashSet<>();Map<Long,JSONObject> byId=new HashMap<>();
         for(int i=0;i<alarms.length();i++){
@@ -37,6 +37,7 @@ final class Backup {
         if(format>=4)SoundEventBackup.validate(root,byId);
         if(format>=5)SensorBackup.validate(root,byId);
         if(format>=6)SoundAnalysisProvenance.validateExport(root);
+        if(format>=7)HealthSleepCodec.validate(root);
     }
     static void restore(Context c,Store store,JSONObject root) throws JSONException {
         if(TrackingService.running||Prefs.flag(c,"ringing"))throw new JSONException("End tracking and alarms before restoring.");
@@ -55,13 +56,13 @@ final class Backup {
         for(int i=0;i<epochs.length();i++){JSONObject e=epochs.getJSONObject(i);long id=e.getLong("session");if(unfinished.contains(id))endpoints.put(id,Math.max(endpoints.get(id),e.getLong("time")));}
         if(pauses!=null)for(int i=0;i<pauses.length();i++){JSONObject p=pauses.getJSONObject(i);long id=p.getLong("session");endpoints.put(id,Math.max(endpoints.get(id),p.isNull("end")?p.getLong("start"):p.getLong("end")));}
         db.beginTransaction();try {
-            guard.run();
+            guard.run();HealthSleepTables.restored(db);
             for(JSONObject clip:store.rows("SELECT * FROM clips")){guard.run();SoundClips.stage(store,clip);}db.delete("sound_events",null,null);db.delete("record_create_requests",null,null);db.delete("alarms",null,null);db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null);db.delete("sessions",null,null);db.delete("clips",null,null);
             JSONArray alarms=root.getJSONArray("alarms");for(int i=0;i<alarms.length();i++){guard.run();Alarm a=Alarm.read(alarms.getJSONObject(i));a.enabled=false;AlarmSkips.clear(a);Naps.restored(a);if(a.tone.startsWith("content:"))a.tone="daybreak";store.save(a);}
             for(int i=0;i<sessions.length();i++){
                 guard.run();
                 JSONObject j=sessions.getJSONObject(i);ContentValues v=new ContentValues();long id=j.getLong("id");v.put("id",id);v.put("start",j.getLong("start"));v.put("end",endpoints.get(id));v.put("note",j.optString("note",""));v.put("rating",Math.max(0,Math.min(5,j.optInt("rating"))));v.put("interrupted",j.isNull("end")?1:j.optInt("interrupted"));v.put("clock_changed",j.optInt("clock_changed",0)==0?0:1);if(!j.isNull("active_ms"))v.put("active_ms",j.getLong("active_ms"));db.insertOrThrow("sessions",null,v);
-                ContentValues provenance=new ContentValues();provenance.put("source",format>=3?j.getString("source"):"legacy");provenance.put("origin","imported");provenance.put("zone",format>=3?j.getString("zone"):"");provenance.put("sensor",format>=5?j.getString("sensor"):format>=3&&j.getString("source").equals("manual")?"none":"unspecified");provenance.put("sensor_config",format>=5?j.getString("sensor_config"):"");provenance.put("sound_analysis",format>=6?(j.isNull("end")?SoundAnalysisProvenance.recovered(j.getString("sound_analysis")):j.getString("sound_analysis")):"");db.update("sessions",provenance,"id=?",new String[]{""+id});
+                ContentValues provenance=new ContentValues();provenance.put("source",format>=3?j.getString("source"):"legacy");provenance.put("origin","imported");provenance.put("zone",format>=3?j.getString("zone"):"");provenance.put("sensor",format>=5?j.getString("sensor"):format>=3&&j.getString("source").equals("manual")?"none":"unspecified");provenance.put("sensor_config",format>=5?j.getString("sensor_config"):"");provenance.put("sound_analysis",format>=6?(j.isNull("end")?SoundAnalysisProvenance.recovered(j.getString("sound_analysis")):j.getString("sound_analysis")):"");provenance.put("health_connect",format>=7?j.getString("health_connect"):"");db.update("sessions",provenance,"id=?",new String[]{""+id});
             }
             for(int i=0;i<epochs.length();i++){guard.run();JSONObject e=epochs.getJSONObject(i);if(format>=5){SensorBackup.restoreEpoch(store,e);continue;}store.epoch(e.getLong("session"),e.isNull("start")?null:e.getLong("start"),e.getLong("time"),e.isNull("movement")?null:e.getDouble("movement"),e.isNull("noise")?null:e.getDouble("noise"),e.isNull("light")?null:e.getDouble("light"),e.optInt("samples",0));}
             if(pauses!=null)for(int i=0;i<pauses.length();i++){guard.run();JSONObject p=pauses.getJSONObject(i);ContentValues v=new ContentValues();v.put("id",p.getLong("id"));v.put("session",p.getLong("session"));v.put("start",p.getLong("start"));v.put("end",p.isNull("end")?endpoints.get(p.getLong("session")):p.getLong("end"));db.insertOrThrow("tracking_pauses",null,v);}

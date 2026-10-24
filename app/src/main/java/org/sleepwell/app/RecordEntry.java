@@ -5,21 +5,22 @@ import java.util.*;
 
 /** Shared effective projection used by history, reports, CSV, editor and trends. */
 final class RecordEntry {
-    final long id,rawStart,rawEnd,updated;final Long active;final String source,origin,zone,sensor,sensorConfig,soundAnalysis;
+    final long id,rawStart,rawEnd,updated;final Long active;final String source,origin,zone,sensor,sensorConfig,soundAnalysis,healthConnect;
     final boolean edited;final int interrupted,clockChanged;final RecordDraft edit;final List<RecordIntervals.Span> pauses;
     RecordEntry(long id,long rawStart,long rawEnd,Long active,String source,String origin,String zone,int interrupted,int clockChanged,RecordDraft edit,boolean edited,long updated,List<RecordIntervals.Span> pauses){this(id,rawStart,rawEnd,active,source,origin,zone,interrupted,clockChanged,edit,edited,updated,pauses,source.equals("manual")?"none":"unspecified","");}
     RecordEntry(long id,long rawStart,long rawEnd,Long active,String source,String origin,String zone,int interrupted,int clockChanged,RecordDraft edit,boolean edited,long updated,List<RecordIntervals.Span> pauses,String sensor,String sensorConfig){this(id,rawStart,rawEnd,active,source,origin,zone,interrupted,clockChanged,edit,edited,updated,pauses,sensor,sensorConfig,"");}
-    RecordEntry(long id,long rawStart,long rawEnd,Long active,String source,String origin,String zone,int interrupted,int clockChanged,RecordDraft edit,boolean edited,long updated,List<RecordIntervals.Span> pauses,String sensor,String sensorConfig,String soundAnalysis){this.soundAnalysis=soundAnalysis;this.sensor=sensor;this.sensorConfig=sensorConfig;this.id=id;this.rawStart=rawStart;this.rawEnd=rawEnd;this.active=active;this.source=source;this.origin=origin;this.zone=zone;this.interrupted=interrupted;this.clockChanged=clockChanged;this.edit=edit;this.edited=edited;this.updated=updated;this.pauses=pauses;}
+    RecordEntry(long id,long rawStart,long rawEnd,Long active,String source,String origin,String zone,int interrupted,int clockChanged,RecordDraft edit,boolean edited,long updated,List<RecordIntervals.Span> pauses,String sensor,String sensorConfig,String soundAnalysis){this(id,rawStart,rawEnd,active,source,origin,zone,interrupted,clockChanged,edit,edited,updated,pauses,sensor,sensorConfig,soundAnalysis,"");}
+    RecordEntry(long id,long rawStart,long rawEnd,Long active,String source,String origin,String zone,int interrupted,int clockChanged,RecordDraft edit,boolean edited,long updated,List<RecordIntervals.Span> pauses,String sensor,String sensorConfig,String soundAnalysis,String healthConnect){this.healthConnect=healthConnect;this.soundAnalysis=soundAnalysis;this.sensor=sensor;this.sensorConfig=sensorConfig;this.id=id;this.rawStart=rawStart;this.rawEnd=rawEnd;this.active=active;this.source=source;this.origin=origin;this.zone=zone;this.interrupted=interrupted;this.clockChanged=clockChanged;this.edit=edit;this.edited=edited;this.updated=updated;this.pauses=pauses;}
     boolean sonar(){return sensor.equals("sonar_fmcw_v1");}
     boolean manual(){return source.equals("manual");}
     ZoneId zone(){try{return zone.isEmpty()?ZoneId.systemDefault():ZoneId.of(zone);}catch(DateTimeException e){return ZoneId.systemDefault();}}
     List<RecordIntervals.Span> coverage(){
         List<RecordIntervals.Span> original=RecordIntervals.subtract(List.of(new RecordIntervals.Span(manual()?edit.start:rawStart,manual()?edit.end:rawEnd)),manual()?List.of():pauses);
-        original=RecordIntervals.limit(original,manual()?null:active);return RecordIntervals.subtract(RecordIntervals.intersect(original,edit.start,edit.end),edit.awake);
+        original=RecordIntervals.limit(original,manual()?null:active);List<RecordIntervals.Span> excluded=new ArrayList<>(edit.awake);if(!healthConnect.isEmpty()){HealthSleep provider=HealthSleepCodec.read(healthConnect);if(provider!=null)excluded.addAll(provider.awake());}return RecordIntervals.subtract(RecordIntervals.intersect(original,edit.start,edit.end),excluded);
     }
     long duration(){return RecordIntervals.length(coverage());}
     boolean durationLimited(){return !manual()&&active!=null&&active>1000+RecordIntervals.length(RecordIntervals.subtract(List.of(new RecordIntervals.Span(rawStart,rawEnd)),pauses));}
-    String provenance(){return (manual()?"User-reported":source.equals("legacy")?"Legacy recording":sonar()?"Contactless recording":"Phone recording")+(edited&&!manual()?" · edited":"")+(origin.equals("imported")?" · imported":"");}
-    RecordEntry draft(RecordDraft d){return new RecordEntry(id,rawStart,rawEnd,active,source,origin,zone,interrupted,clockChanged,d,true,updated,pauses,sensor,sensorConfig,soundAnalysis);}
+    String provenance(){return (!healthConnect.isEmpty()?"Health Connect import":manual()?"User-reported":source.equals("legacy")?"Legacy recording":sonar()?"Contactless recording":"Phone recording")+(edited&&!manual()?" · edited":"")+(origin.equals("imported")?" · imported":"");}
+    RecordEntry draft(RecordDraft d){return new RecordEntry(id,rawStart,rawEnd,active,source,origin,zone,interrupted,clockChanged,d,true,updated,pauses,sensor,sensorConfig,soundAnalysis,healthConnect);}
     LocalDate day(int cutoff){return SleepDay.label(edit.end,zone(),cutoff);}
 }
