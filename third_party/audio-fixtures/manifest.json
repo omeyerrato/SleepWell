@@ -134,7 +134,24 @@
       "duration_ms": 62621,
       "derivation": "Entire HQ MP3 preview decoded with FFmpeg8.1.1 -ac 1 -ar 16000 -f s16le. No gain, tiling, resynthesis or selected successful intervals.",
       "preview_sha256": "1b51b29d22fcd85fed8a836dd42675da2f523204320300f16e26851959d2cd08",
-      "pcm_sha256": "f180937513545059b6fea873b63ed061175a2b6adbec75e56f0a0542fe6a8214"
+      "pcm_sha256": "f180937513545059b6fea873b63ed061175a2b6adbec75e56f0a0542fe6a8214",
+      "whole_preview_evaluation": {
+        "ci_run": "40051144096",
+        "ci_url": "https://github.com/omeyerrato/SleepWell/actions/runs/40051144096",
+        "json_sha256": "ec6584ef746108fc143c57b31d82abf50d8e8d25fd406c6e4db5c3663961fa4e",
+        "frames": 64,
+        "counts": {
+          "cough": 0,
+          "noise": 8,
+          "laughter": 0,
+          "speech": 0,
+          "baby_cry": 0,
+          "snoring": 0
+        },
+        "maximum_laughter_family_score": 0.5859375,
+        "maximum_baby_cry_score": 0.08203125,
+        "note": "Entire independently selected preview. Unchanged production policy. Uploader description is not window-level ground truth; no clinical or bedroom accuracy claim."
+      }
     },
     {
       "name": "babycry-ciccarelli",
@@ -149,7 +166,24 @@
       "duration_ms": 72906,
       "derivation": "Entire HQ MP3 preview decoded with FFmpeg8.1.1 -ac 1 -ar 16000 -f s16le. No gain, tiling, resynthesis or selected successful intervals.",
       "preview_sha256": "86c6ce387d3780d5984dc43306475a698fb1ac52c8203ecf79bad11e0eaf72b9",
-      "pcm_sha256": "cc2fac3d0921e3248e6e0eb7ab491a33510fddfeae9c9135142b84713af98859"
+      "pcm_sha256": "cc2fac3d0921e3248e6e0eb7ab491a33510fddfeae9c9135142b84713af98859",
+      "whole_preview_evaluation": {
+        "ci_run": "40051144096",
+        "ci_url": "https://github.com/omeyerrato/SleepWell/actions/runs/40051144096",
+        "json_sha256": "ec6584ef746108fc143c57b31d82abf50d8e8d25fd406c6e4db5c3663961fa4e",
+        "frames": 74,
+        "counts": {
+          "cough": 0,
+          "noise": 11,
+          "laughter": 0,
+          "speech": 0,
+          "baby_cry": 5,
+          "snoring": 0
+        },
+        "maximum_laughter_family_score": 0.73828125,
+        "maximum_baby_cry_score": 0.91796875,
+        "note": "Entire independently selected preview. Unchanged production policy. Uploader description is not window-level ground truth; no clinical or bedroom accuracy claim."
+      }
     }
   ],
   "label_map_audit": {
