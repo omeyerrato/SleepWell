@@ -872,3 +872,35 @@ requiring one new fallback-error screenshot. The following source contract is
 42classes/60methods/225originals; liveCI40051144096 remains frozen at9188e78
 with224 originals. This later UI candidate is outside that run, and its original
 images/persistence assertions must be reviewed before acceptance.
+
+## CI40051144096 at9188e78 — failures preserved, privacy now verified
+
+Terminal overall FAIL:36 of42 classes pass,54 of60 methods pass,197 captured
+PNGs against224 required. All42 raw logs, actual classifier JSONs and reviewed
+originals are retained for the independent audit. No physical device output ran.
+PrivacyHistoryFlowTest1 PASS35.701s with all5 reviewed originals: the storage
+error is genuinely disclosed, Keep preserves data, confirmed ERASE alone is held,
+and pending-file/retry completion preserves a new record.
+WakeCheckFlowTest2 PASS21.435s with12 originals and fake effects; visual FAIL:
+countdown is left-aligned, button icon group displaced and early frames contain
+an injected-save-failure Toast. Later4d07378 corrects those without changing timing.
+
+Six failed classes: AlarmToneAssetsTest assumed all tones4s despite unchanged
+8s Daybreak/Pulse; AlarmToneFlowTest stops after3 frames with its preview controls
+clipped; AlarmWakeSettingsTest looks up a dialog switch before its transition
+settles; AutomaticTrackingFlowTest asserts footer before layout (diagnostic has
+full Save); QrCodeConfigurationTest retains a stale fallback control; classifier
+category test fails actual solo laughter positivity. Laterd4c08c7 compacts real
+Tone geometry with48dp controls, one Play/Stop row and revealed error, asserts
+complete preview/save targets, measures per-asset duration correctly and awaits
+laid-out/fresh UI controls. Shared QR card candidate14c4d5a remains outside918.
+All these later source fixes need new APK/lint and native originals; passing
+legacy tests or screenshots is not substituted for those required gates.
+
+Ten actual whole PCM fixtures retain the older eight. Independent solo laughter
+62.621s has0 grouped laughter, max0.5859375 below unchanged0.65 absolute gate.
+Independent infant72.906s has5 babycry and0 persisted laughter/cough/snore;
+two discarded laughter windows prevent any claim of perfect window specificity.
+Original crowd laughter remains0, and original babycry ambiguity2cry+2laugh
+remains. No classifier threshold/model/grouping changes. Recognition is partial.
+Full36-screen/all-feature acceptance remains incomplete.

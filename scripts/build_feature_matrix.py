@@ -361,6 +361,24 @@ for row in rows:
         row["implementation"] += ["MathOperatorGrid.java"]
         row["validation"] += " Later14c4d5a shares the Math/QR operator cards; scoped debug/native APK and lint pass1m23s. QR last-operator error plus card geometry require13 original frames in a future run; current frozen9188e78 still requires12."
 
+# CI40051144096 is terminal: retain its failures separately from later fixes.
+for row in rows:
+    feature = row["feature"]
+    if feature in ("Built-in sounds", "Device ringtone"):
+        row["validation"] = "Integrated431 pure tests/53 suites and debug/native/release/lint pass at cce7a60. At9188e78/CI40051144096 AlarmToneGrantTest1 PASS0.087s, but AlarmToneAssetsTest1 fails its incorrect blanket4s expectation (original Daybreak/Pulse8s, Chime4s) and AlarmToneFlowTest1 stops after3 of16 expected frames. Strict review rejects preview controls clipped behind footer. Later d4c08c7 compacts real controls, keeps48dp targets, reveals errors, checks complete geometry, and corrects exact per-asset duration without changing PCM. Fresh native proof required; actual MediaPlayer/SAF/OEM output remains unverified."
+    elif feature in ("Post-dismiss wake check", "Wake-check prompt / confirmation deadline / retries"):
+        row["validation"] = "WakeCheckEngineTest16 and integrated431-test build pass. WakeCheckFlowTest2 PASS21.435s at9188e78/CI40051144096 with12 originals: private durable states, fake scheduling/delivery/re-ring, and failed/successful Editor save preservation. Strict visual review FAILS left-aligned countdown and button glyph grouping plus stale fixture Toast. Later4d07378 centers actual timer/button and waits Toast dismissal; fresh capture required. Actual notification/alarm delivery remains unverified."
+    elif feature == "Automatic tracking":
+        row["validation"] += " Latest AutomaticTrackingFlowTest1 FAIL at9188e78/CI40051144096 on initial footer visibility; diagnostic original shows full Save, indicating assertion ran before layout. Later d4c08c7 waits actual current layout then retains complete bounds and persistence assertions; fresh native pass still required."
+    elif feature == "Gentle volume ramp":
+        row["validation"] += " Latest AlarmWakeSettingsTest1 FAIL at9188e78/CI40051144096 while finding Extra loud during options-dialog transition, before ramp assertions. Later d4c08c7 waits fresh dialog descendants. No actual effects test or new configuration pass claimed."
+    elif feature in ("QR/barcode sequences", "Lost code fallback / travel bypass"):
+        row["validation"] += " Later9188e78/CI40051144096 QR flow FAILS on stale native control during fallback rerender; prior a836 pass remains narrower evidence. d4c08c7 re-finds controls after each action and retries only pre-click StaleObjectException; shared14c4d5a grid and13-frame geometry/error contract remain pending."
+    elif feature == "Automatic sound labels":
+        row["validation"] += " Actual10-input CPU evaluation at9188e78/CI40051144096 FAILS independent solo laughter positivity: whole62.621s yields0 persisted laughter, max family0.5859375 below unchanged0.65 gate. Independent72.906s infant source persists5 babycry/0 laughter/cough/snore. Original crowd0, ambiguous bonehead2cry+2laugh, cough1 and snore9/3 observations retained. No model, threshold or grouping relaxation; laughter recognition remains unaccepted."
+    elif feature == "Retention / favorite album / alternate formats":
+        row["validation"] += " PrivacyHistoryFlowTest1 now PASS35.701s at9188e78/CI40051144096; all5 originals reviewed: actual storage error, busy erase, pending file cleanup, done and keep/retry preservation. This supersedes the earlier rejected inspection-race images only; other stated limitations remain."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
