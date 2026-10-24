@@ -1128,3 +1128,10 @@ then USB disconnected. Installation succeeded; actual app foreground and postupd
 schema/data comparison remain unverified. No suspension setting was changed.
 No alarm, challenge, playback, microphone, tracking, vibration, flashlight,
 power-menu or screen-lock test was performed. Private phone artifacts stay local.
+
+Later the same phone reconnected. Read-only postupdate archive/database comparison
+confirms schema7, all original columns/rows identical and every original preference
+identical; the installed APK SHA256 matches613e44b's candidate. The package now
+reports suspended=false. Its foreground was left alone, so no automatic app-open
+or interactive screen acceptance follows from this preservation check. No physical
+outputs were tested. The earlier disconnect/launch observation remains historical.
