@@ -1,0 +1,14 @@
+package org.sleepwell.app;
+
+import org.junit.Test;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import static org.junit.Assert.*;
+
+public class CloudBackupJobTest {
+    private static final CloudBackupCopy.Receipt RECEIPT=new CloudBackupCopy.Receipt(new CloudBackupCopy.Document("content://fixture/new","new.json"),2,"a".repeat(64));
+    @Test public void saveIsExplicitSingleAndRetainsReceipt(){Queue<Runnable> pending=new ArrayDeque<>();AtomicInteger calls=new AtomicInteger();CloudBackupJob job=new CloudBackupJob(new CloudBackupJob.Work(){public CloudBackupCopy.Receipt save(java.util.function.BooleanSupplier active){calls.incrementAndGet();return RECEIPT;}public void cancel(){}},pending::add,Runnable::run);assertEquals(CloudBackupJob.Phase.IDLE,job.state().phase);assertEquals(0,calls.get());job.save();job.save();assertEquals(1,pending.size());assertTrue(job.state().busy());pending.remove().run();assertEquals(1,calls.get());assertSame(RECEIPT,job.state().receipt);assertEquals(CloudBackupJob.Phase.DONE,job.state().phase);}
+    @Test public void cancellationWaitsForWorkerAndCannotClaimSuccess(){Queue<Runnable> pending=new ArrayDeque<>();AtomicInteger cancels=new AtomicInteger();CloudBackupJob job=new CloudBackupJob(new CloudBackupJob.Work(){public CloudBackupCopy.Receipt save(java.util.function.BooleanSupplier active){assertFalse(active.getAsBoolean());return RECEIPT;}public void cancel(){cancels.incrementAndGet();}},pending::add,Runnable::run);job.save();job.cancel();assertEquals(CloudBackupJob.Phase.CANCELLING,job.state().phase);assertEquals(1,cancels.get());pending.remove().run();assertEquals(CloudBackupJob.Phase.CANCELLED,job.state().phase);assertNull(job.state().receipt);}
+    @Test public void failureIsVisibleAndRetryRequiresAnotherExplicitSave(){AtomicInteger calls=new AtomicInteger();CloudBackupJob job=new CloudBackupJob(new CloudBackupJob.Work(){public CloudBackupCopy.Receipt save(java.util.function.BooleanSupplier active)throws Exception{if(calls.incrementAndGet()==1)throw new Exception("private provider token");return RECEIPT;}public void cancel(){}},Runnable::run,Runnable::run);job.save();assertEquals(CloudBackupJob.Phase.ERROR,job.state().phase);assertFalse(job.state().message.contains("private"));assertEquals(1,calls.get());job.save();assertEquals(CloudBackupJob.Phase.DONE,job.state().phase);assertEquals(2,calls.get());}
+    @Test public void rejectedWorkerLeavesRecoverableError(){CloudBackupJob job=new CloudBackupJob(new CloudBackupJob.Work(){public CloudBackupCopy.Receipt save(java.util.function.BooleanSupplier active){throw new AssertionError();}public void cancel(){}},r->{throw new IllegalStateException();},Runnable::run);job.save();assertEquals(CloudBackupJob.Phase.ERROR,job.state().phase);assertFalse(job.state().busy());}
+}

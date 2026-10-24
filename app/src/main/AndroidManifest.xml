@@ -51,6 +51,7 @@
         <activity-alias android:name=".HealthSleepPermissionUsage" android:targetActivity=".HealthSleepPrivacyActivity" android:exported="true" android:permission="android.permission.START_VIEW_PERMISSION_USAGE">
             <intent-filter><action android:name="android.intent.action.VIEW_PERMISSION_USAGE" /><category android:name="android.intent.category.HEALTH_PERMISSIONS" /></intent-filter>
         </activity-alias>
+        <activity android:name=".CloudBackupActivity" android:exported="false" />
         <activity android:name=".BackupActivity" android:exported="false" />
         <activity android:name=".AlarmEditorActivity" android:exported="false" />
         <activity android:name=".WakeCheckActivity" android:exported="false" />
