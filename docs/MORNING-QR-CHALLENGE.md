@@ -56,3 +56,11 @@ hardware validation and are not marked verified.
 The installed CameraX skill supplies lifecycle/frame-cleanup guidance. Its ML Kit
 Analyzer preference is not used because this flow explicitly needs a pinned offline
 ZXing-only decoder; the same single-frame ownership and lifecycle cleanup apply.
+
+Exact-head native configuration: QrCodeConfigurationTest1 passes24.619s at
+a8362a1/CI40047180910 with12 individually reviewed original images. Actual
+generated QR decoding, fake camera/access transitions and real private JSON/
+backup/recreate/save/reopen boundaries pass. Supporting compositions are usable;
+full board04 fidelity and true CameraX/ringing transition remain unverified.
+Fallback operator switches also differ from the compact Math operator grid.
+No real camera, AlarmActivity, microphone or output was executed.

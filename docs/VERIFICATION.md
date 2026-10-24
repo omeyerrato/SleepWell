@@ -803,3 +803,33 @@ Actual MediaPlayer/provider/OEM behavior and board03 appearance remain unverifie
 Next default inert gate:41 classes/58 methods/212 required original images,
 including actual tone-asset bytes, fake grant release with private SQLite and
 16 tone selector/import/preview/cancel states. Native playback remains disabled.
+
+## CI40047180910 ata8362a1 — 36/38 classes pass
+
+Terminal overall FAIL:53 passing methods,194 originals. New QR configuration1
+passes24.619s with12 individually reviewed originals and generated QR decoding,
+fake access/camera, strict private backup/draft/recreate/save/reopen invariants.
+Math1 passes23.318s with7 originals and actual parent-bound assertions; strict
+review clears all six formerly clipped detail cards. Six routine originals have
+aligned cream icon wells and separated menu areas. Two paused/retry favorite
+originals clear the Play contrast issue; its flow passes22.302s. Calendar passes
+33.989s; all other retained narrow regression classes remain passing. Thirty
+originals, all38 logs and both classifier JSONs are permanently preserved in
+verification/2026-10-24-qr-math-routine with exact-byte hashes.
+
+Privacy now reaches Keep and error/recreate, then fails20.799s before a second
+erase: its fixture hold is installed while recreated inspection may still be
+opening. XML proves a full168px disabled row and Checking audio cleanup, not
+the earlier sliver issue. The named error image also still shows Checking.
+Later source waits for actual retained error text and opens the confirmation
+before installing the storage gate, so it holds only confirmed ERASE. All
+cancel/retry/preservation assertions remain; no new deletion acceptance yet.
+
+The full54.61s laughter preview also fails production positivity: maximum
+laughter-family score0.26171875, zero grouped laughter. Both failed recordings
+and all scores remain evidence. Independent solo-source evaluation is separate;
+no thresholds or evidence claims are relaxed. Additional labels remain held.
+
+Tone8239b4e and415-test combined source are outside this native head. Actual
+CameraX/MediaPlayer/provider/ringing hardware behavior remains unverified; no
+physical phone/effects actions ran. Full app/36-screen acceptance is incomplete.

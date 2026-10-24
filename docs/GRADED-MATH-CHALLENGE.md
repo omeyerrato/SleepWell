@@ -40,3 +40,9 @@ cancel/recreation/private-DB/save/reopen/invalid-import invariants. These
 settings assertions do not execute AlarmActivity. Strict review finds clipped
 upper operator-card borders in six detail frames; later top-alignment and
 geometry assertions need fresh native captures before visual acceptance.
+
+Fresh a8362a1/CI40047180910 configuration passes23.318s with7 originals and
+actual native operator-card bounds assertions. Strict review clears clipped top
+borders in all six detail frames. Cream routine icon wells/action separators
+also pass their six-frame visual correction. These supporting gates leave the
+actual ringing window and runtime keyboard unverified.

@@ -72,3 +72,11 @@ classes/16frames, fake preview/provider/grant release only. Source peer review
 clears decoder and shared grant fixes; actual output/screens remain pending.
 Wake-check worker has15pure+2native/11frame source candidate and owns next local
 build slot. Root downloading terminalCI40047180910 once before assigning review.
+
+CI40047180910 terminalFAIL36/38classes53methods194PNGs. QR1/all12frames,
+Math1/all7geometry, routine6 and favoritescontrast2 narrowlypassstrictreview.
+Privacy nowfails at recreatedINSPECT storagehold; source337b37a waitsactualerror
+andopensconfirmation beforeinstallinggate. Full54.61s laughterstillfails,
+independentwhole-preview10fixturecandidate isbeingprepared withoutpolicychange.
+Tone41class58method212PNGgate remainsunrun untilnewcandidatepush. Root preserves
+all30reviewedoriginals/38logs/fullclassifierJSON with73exacthashes in verification.
