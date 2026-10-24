@@ -1,6 +1,6 @@
 # Experimental travel light cues: source audit and proposed next vertical flow
 
-Status: research/specification only, based on f356f6838620d11c1c008d7e13a6613c811da7d7. No production source, manifest, build or device behavior changed. No hardware/output actions or tests ran.
+Historical proposal status: research/specification only, based on f356f6838620d11c1c008d7e13a6613c811da7d7. See [the separately authorized implementation and evidence](TRAVEL-PHONE-LIGHT-CUES.md) for subsequent source changes. No production source, manifest, build or device behavior changed. No hardware/output actions or tests ran.
 
 ## Requirement and current gap
 
