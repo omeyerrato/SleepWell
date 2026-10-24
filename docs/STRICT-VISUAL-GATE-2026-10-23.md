@@ -459,3 +459,81 @@ corrections. Graded Math operator borders, remaining reference composition gaps,
 Privacy deletion/recovery and the laughter positive gate remain open. Real
 hardware challenge/alarm/output behavior and all 36 screens/features remain
 **FAIL / incomplete**. Later source fixes require their own exact-head evidence.
+
+## Exact-head follow-up: CI 40047180910
+
+Source **a8362a1868b88185be0ca825edbb7e69a15b30e3**, API 36 emulator,
+1080×2316 at density 420. Artifact:
+`captures/ci-40047180910/silent-android-review`. This run contains 194 PNGs,
+38 raw native class transcripts, **36 passing classes / 53 passing methods and
+two failed classes**. All 30 assigned originals below were individually opened.
+This review accepts only the stated narrow corrections at this head; later tone,
+wake-check or other source is outside this evidence. No personal phone, physical
+camera, alarm, audio, mic, vibration, torch or power test was performed.
+
+| Original PNG | Strict finding |
+| --- | --- |
+| qr-code-permission.png | Cream/Inter enrollment, location field, honest camera-off surface and full Save fit. Camera is explicitly off; no photo or decoded code is fabricated. |
+| qr-code-invalid.png | Missing location validation is readable above full Save; field still shows placeholder, not falsely saved Bathroom data. |
+| qr-code-denied.png | Permission-denial message fits above Save; fallback and retry remain reachable. |
+| qr-code-access-error.png | Settings-launch error fits above Save; no blank frame or overlapping controls. |
+| qr-code-scanning.png | Reticle fits the injected empty preview. This proves scan-state composition only; no camera hardware or photographed-code claim. |
+| qr-code-camera-error.png | Camera error and actual retry action fit; no false captured status. |
+| qr-code-captured.png | Green captured strip, named location and full Save are clear. Stopped camera is represented as off/ready rather than a fake persistent photograph. |
+| qr-code-fallback.png | Hard/Division/Type answer selected with full Use fallback. P2 consistency gap: four large switch cards differ from the compact operator grid used by Math; not an exact new reference screen. |
+| qr-code-recreated.png | Named location, captured status and Hard fallback survive visibly. No cropped action. |
+| qr-code-routine.png | QR is a real ordered row with Bathroom detail, cream icon well and separated menu. Full Save routine visible. |
+| qr-code-reopened.png | Saved location/captured status/Hard fallback reopen coherently. |
+| qr-code-unavailable.png | Disabled scan and no-camera explanation are honest; enrolled digest and fallback remain available, full Save visible. |
+| math-config-default.png | Previously chopped operator outlines now fully rounded and closed. Medium/Addition/Choices states and full Use Math fit. Narrow geometry PASS. |
+| math-config-operators.png | Full card borders across both rows; Hard/three selected operators clear. Narrow geometry PASS. |
+| math-config-typed.png | Full borders, typed method and two rounds remain clear; fixed action unobscured. |
+| math-config-ordered.png | Different Math task settings retain separate rows; icon wells and separator now match the board 04 component language more closely. |
+| math-config-recreated.png | Full borders and selected draft states survive recreation. |
+| math-config-reopened.png | Full borders and persisted states reopen correctly. |
+| math-config-error.png | Division remains selected; bounded last-operator error fits above Use. Corrected border geometry remains intact. |
+| routine-legacy.png | Real single-task legacy row has cream icon well and separate menu. Full fixed Save visible; next available QR row starts below the scroll viewport and requires scrolling. |
+| routine-ordered.png | Three aligned numbered rows, icon wells and separators improve board 04 fidelity. Fixed Save remains visible. Lower available tasks require scrolling. |
+| routine-recreated.png | Retype's pending three rounds and full Use action survive. Supporting screen is sparse but not clipped. |
+| routine-removed.png | Removed task is absent, remaining numbering/detail stay aligned; full Save visible. |
+| routine-reopened.png | Saved two-task routine reopens with retained rounds. |
+| routine-reordered.png | Real reordered row sequence is visible with stable component spacing and full Save. Menu dots truthfully open order/remove actions; they do not pretend to be an implemented drag handle. |
+| favorites-recreated.png | Paused Play circle now has cream fill and a visible warm outline on selected soft card; waveform, saved selection and seek remain legible. Narrow contrast correction PASS. |
+| favorites-playback-error.png | Retry Play boundary remains clear against selected row; actual fake-player error fits below seek. No physical output claim. |
+| privacy-history-ready.png | Full enabled destructive row is visible after the initial Keep cancellation; cream styling, counters and retention/backup controls render coherently. |
+| privacy-history-error.png | **Semantic screenshot rejection:** actually shows disabled Delete sleep history plus Checking audio cleanup, not the expected retained storage-error disclosure. Header is partially scrolled. Filename is not proof of an error state. |
+| privacy-history-failure.png | Full disabled destructive row plus Checking audio cleanup; test does not reach the held ERASE journey. No confirmation or completed deletion is proved. |
+
+Raw logs inspected: QrCodeConfigurationTest **24.619 s**, graded Math
+configuration **23.318 s**, ChallengeRoutineFlowTest **30.160 s**,
+FavoriteSoundsFlowTest **22.302 s**, RecordCalendarFlowTest **33.989 s**,
+each OK (1 test). Calendar's passing class here is a regression log only; its
+seven new originals were not assigned/reopened in this review, so the prior
+exact-head calendar review is not relabeled as these captures.
+
+QR acceptance is strictly enrollment/configuration with injected camera/access
+ports and generated offline decoder fixtures. The captured strip, persisted
+digest and routine integration are supported; actual CameraX frames, OEM focus,
+low-light detection and ringing QR/fallback completion remain unverified. Full
+board 04 parity is still open: there is no integrated QR/NFC segmented route or
+accepted runtime challenge/wake-check screen here, and Preview routine is absent.
+No fake camera photo or unimplemented drag interaction is required to close that
+gap; real behavior must accompany its reference controls.
+
+**Privacy independent diagnosis:** after 20.799 s, PrivacyHistoryFlowTest fails
+at `tapCleanup():35`, called by line 57. Unlike the earlier four-pixel failure,
+the raw XML now shows a complete 168-pixel row at [63,2004][1017,2172], but
+enabled=false, with Checking audio cleanup below it. The preceding `recreate()`
+starts a new INSPECT worker. The fixture installs its blocking gate before
+opening the next confirmation, so an INSPECT that has not yet opened the Store
+can take the gate intended for ERASE. The fully-visible/enabled assertion is
+correct and must remain. Open the actual confirmation first, after INSPECT/UI
+readiness, then install the hold before its positive ERASE action; assert the
+held job kind explicitly. Also wait for the actual retained error disclosure
+after inspection before capturing the error frame. Its present checking frame
+cannot certify error UX. Busy/pending/done frames remain missing at this head.
+
+The second failed class remains SoundCategoryFixtureEvaluationTest (actual
+laughter PCM positive gate), separate from passing QR/Math/routine classes.
+Later fixes require fresh exact-head evidence. Overall all-features/36-screen
+acceptance remains **FAIL / incomplete**.
