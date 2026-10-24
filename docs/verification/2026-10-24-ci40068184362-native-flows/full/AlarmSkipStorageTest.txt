@@ -1,0 +1,170 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.AlarmSkipStorageTest:
+INSTRUMENTATION_STATUS: test=explicitToggleClearsSkipWhileDeletionAndChangedOccurrenceRejectStaleCommands
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=explicitToggleClearsSkipWhileDeletionAndChangedOccurrenceRejectStaleCommands
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=strictPortableCodecRejectsBadMetadataAndRestoreClearsAllSkipAuthority
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=strictPortableCodecRejectsBadMetadataAndRestoreClearsAllSkipAuthority
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=staleCallbacksAndEditorsCannotOverwriteNewSkipOwnership
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=staleCallbacksAndEditorsCannotOverwriteNewSkipOwnership
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=chosenDatePersistsAndBootZoneResolutionSkipsExactlyOneOccurrence
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=chosenDatePersistsAndBootZoneResolutionSkipsExactlyOneOccurrence
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=replacementCannotInterleaveTheOwnershipReadAndIntentWrite
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: expected null, but was:<org.junit.ComparisonFailure: expected:<...:30:[1, 2, 3, 4, 5]:[tru]e> but was:<...:30:[1, 2, 3, 4, 5]:[fals]e>>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotNull(Assert.java:756)
+	at org.junit.Assert.assertNull(Assert.java:738)
+	at org.junit.Assert.assertNull(Assert.java:748)
+	at org.sleepwell.app.AlarmSkipStorageTest.replacementCannotInterleaveTheOwnershipReadAndIntentWrite(AlarmSkipStorageTest.java:19)
+
+INSTRUMENTATION_STATUS: stream=
+Error in replacementCannotInterleaveTheOwnershipReadAndIntentWrite(org.sleepwell.app.AlarmSkipStorageTest):
+java.lang.AssertionError: expected null, but was:<org.junit.ComparisonFailure: expected:<...:30:[1, 2, 3, 4, 5]:[tru]e> but was:<...:30:[1, 2, 3, 4, 5]:[fals]e>>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotNull(Assert.java:756)
+	at org.junit.Assert.assertNull(Assert.java:738)
+	at org.junit.Assert.assertNull(Assert.java:748)
+	at org.sleepwell.app.AlarmSkipStorageTest.replacementCannotInterleaveTheOwnershipReadAndIntentWrite(AlarmSkipStorageTest.java:19)
+
+INSTRUMENTATION_STATUS: test=replacementCannotInterleaveTheOwnershipReadAndIntentWrite
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=oneTimeIsOffAndExpiredUndoNeverRollsItIntoTomorrow
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=oneTimeIsOffAndExpiredUndoNeverRollsItIntoTomorrow
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=schedulingAndUndoFailurePersistWithoutClaimingDeliveryOrLosingIntent
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=schedulingAndUndoFailurePersistWithoutClaimingDeliveryOrLosingIntent
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=newEditorDraftUsesDurableIntentAndKeepsSchedulingFailureReviewable
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmSkipStorageTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stack=org.junit.ComparisonFailure: expected:<[7:0:[]]:true> but was:<[6:30:[1, 2, 3, 4, 5]]:true>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.AlarmSkipFixture$1.schedule(AlarmSkipFixture.java:9)
+	at org.sleepwell.app.AlarmSkips.scheduleSaved(AlarmSkips.java:25)
+	at org.sleepwell.app.AlarmSkips.edit(AlarmSkips.java:23)
+	at org.sleepwell.app.AlarmSkipStorageTest.newEditorDraftUsesDurableIntentAndKeepsSchedulingFailureReviewable(AlarmSkipStorageTest.java:22)
+
+INSTRUMENTATION_STATUS: stream=
+Error in newEditorDraftUsesDurableIntentAndKeepsSchedulingFailureReviewable(org.sleepwell.app.AlarmSkipStorageTest):
+org.junit.ComparisonFailure: expected:<[7:0:[]]:true> but was:<[6:30:[1, 2, 3, 4, 5]]:true>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.AlarmSkipFixture$1.schedule(AlarmSkipFixture.java:9)
+	at org.sleepwell.app.AlarmSkips.scheduleSaved(AlarmSkips.java:25)
+	at org.sleepwell.app.AlarmSkips.edit(AlarmSkips.java:23)
+	at org.sleepwell.app.AlarmSkipStorageTest.newEditorDraftUsesDurableIntentAndKeepsSchedulingFailureReviewable(AlarmSkipStorageTest.java:22)
+
+INSTRUMENTATION_STATUS: test=newEditorDraftUsesDurableIntentAndKeepsSchedulingFailureReviewable
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.603
+There were 2 failures:
+1) replacementCannotInterleaveTheOwnershipReadAndIntentWrite(org.sleepwell.app.AlarmSkipStorageTest)
+java.lang.AssertionError: expected null, but was:<org.junit.ComparisonFailure: expected:<...:30:[1, 2, 3, 4, 5]:[tru]e> but was:<...:30:[1, 2, 3, 4, 5]:[fals]e>>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotNull(Assert.java:756)
+	at org.junit.Assert.assertNull(Assert.java:738)
+	at org.junit.Assert.assertNull(Assert.java:748)
+	at org.sleepwell.app.AlarmSkipStorageTest.replacementCannotInterleaveTheOwnershipReadAndIntentWrite(AlarmSkipStorageTest.java:19)
+2) newEditorDraftUsesDurableIntentAndKeepsSchedulingFailureReviewable(org.sleepwell.app.AlarmSkipStorageTest)
+org.junit.ComparisonFailure: expected:<[7:0:[]]:true> but was:<[6:30:[1, 2, 3, 4, 5]]:true>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.AlarmSkipFixture$1.schedule(AlarmSkipFixture.java:9)
+	at org.sleepwell.app.AlarmSkips.scheduleSaved(AlarmSkips.java:25)
+	at org.sleepwell.app.AlarmSkips.edit(AlarmSkips.java:23)
+	at org.sleepwell.app.AlarmSkipStorageTest.newEditorDraftUsesDurableIntentAndKeepsSchedulingFailureReviewable(AlarmSkipStorageTest.java:22)
+
+FAILURES!!!
+Tests run: 8,  Failures: 2
+
+
+INSTRUMENTATION_CODE: -1

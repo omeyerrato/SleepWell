@@ -1,0 +1,61 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.RecurringTrackingFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.RecurringTrackingFlowTest:
+INSTRUMENTATION_STATUS: test=saveCancelRecreateReopenAndDisablePersistWithoutArmingTonight
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.RecurringTrackingFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=saveCancelRecreateReopenAndDisablePersistWithoutArmingTonight
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.RecurringTrackingFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=unavailablePermissionsAndSchedulingFailureRemainVisibleAfterRecreation
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.RecurringTrackingFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: tap Save nightly settings: BySelector [TEXT='\QAllow exact alarms to schedule nightly tracking.\E']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.RecurringTrackingFlowTest.require(RecurringTrackingFlowTest.java:20)
+	at org.sleepwell.app.RecurringTrackingFlowTest.errorVisible(RecurringTrackingFlowTest.java:37)
+	at org.sleepwell.app.RecurringTrackingFlowTest.unavailablePermissionsAndSchedulingFailureRemainVisibleAfterRecreation(RecurringTrackingFlowTest.java:130)
+
+INSTRUMENTATION_STATUS: stream=
+Error in unavailablePermissionsAndSchedulingFailureRemainVisibleAfterRecreation(org.sleepwell.app.RecurringTrackingFlowTest):
+java.lang.AssertionError: tap Save nightly settings: BySelector [TEXT='\QAllow exact alarms to schedule nightly tracking.\E']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.RecurringTrackingFlowTest.require(RecurringTrackingFlowTest.java:20)
+	at org.sleepwell.app.RecurringTrackingFlowTest.errorVisible(RecurringTrackingFlowTest.java:37)
+	at org.sleepwell.app.RecurringTrackingFlowTest.unavailablePermissionsAndSchedulingFailureRemainVisibleAfterRecreation(RecurringTrackingFlowTest.java:130)
+
+INSTRUMENTATION_STATUS: test=unavailablePermissionsAndSchedulingFailureRemainVisibleAfterRecreation
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 27.878
+There was 1 failure:
+1) unavailablePermissionsAndSchedulingFailureRemainVisibleAfterRecreation(org.sleepwell.app.RecurringTrackingFlowTest)
+java.lang.AssertionError: tap Save nightly settings: BySelector [TEXT='\QAllow exact alarms to schedule nightly tracking.\E']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.RecurringTrackingFlowTest.require(RecurringTrackingFlowTest.java:20)
+	at org.sleepwell.app.RecurringTrackingFlowTest.errorVisible(RecurringTrackingFlowTest.java:37)
+	at org.sleepwell.app.RecurringTrackingFlowTest.unavailablePermissionsAndSchedulingFailureRemainVisibleAfterRecreation(RecurringTrackingFlowTest.java:130)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

@@ -1,0 +1,35 @@
+{
+  "scope": "tone-wake",
+  "full_app_review": false,
+  "expected_classes": 5,
+  "expected_methods": 6,
+  "class_results": [
+    {
+      "class": "AlarmToneAssetsTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmToneGrantTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmToneFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmWakeSettingsTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "WakeCheckFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    }
+  ],
+  "required_original_images": 39,
+  "failures": []
+}

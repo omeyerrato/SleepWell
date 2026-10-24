@@ -1,0 +1,85 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NapFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NapFlowTest:
+INSTRUMENTATION_STATUS: test=strictPortableMetadataRestoreAndNonceCleanupPreserveUnrelatedData
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NapFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.util.NoSuchElementException: No value present
+	at java.util.Optional.get(Optional.java:143)
+	at org.sleepwell.app.NapFlowTest$Fixture.nap(NapFlowTest.java:29)
+	at org.sleepwell.app.NapFlowTest.strictPortableMetadataRestoreAndNonceCleanupPreserveUnrelatedData(NapFlowTest.java:43)
+
+INSTRUMENTATION_STATUS: stream=
+Error in strictPortableMetadataRestoreAndNonceCleanupPreserveUnrelatedData(org.sleepwell.app.NapFlowTest):
+java.util.NoSuchElementException: No value present
+	at java.util.Optional.get(Optional.java:143)
+	at org.sleepwell.app.NapFlowTest$Fixture.nap(NapFlowTest.java:29)
+	at org.sleepwell.app.NapFlowTest.strictPortableMetadataRestoreAndNonceCleanupPreserveUnrelatedData(NapFlowTest.java:43)
+
+INSTRUMENTATION_STATUS: test=strictPortableMetadataRestoreAndNonceCleanupPreserveUnrelatedData
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NapFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=presetsToneQuietPreviewStartRecreateReopenAndCancelPersist
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NapFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=presetsToneQuietPreviewStartRecreateReopenAndCancelPersist
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NapFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NapFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=org.junit.ComparisonFailure: expected:<[]> but was:<[Nap saved, but scheduling failed. Check alarm access and retry.]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.NapFlowTest.scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery(NapFlowTest.java:41)
+
+INSTRUMENTATION_STATUS: stream=
+Error in scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery(org.sleepwell.app.NapFlowTest):
+org.junit.ComparisonFailure: expected:<[]> but was:<[Nap saved, but scheduling failed. Check alarm access and retry.]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.NapFlowTest.scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery(NapFlowTest.java:41)
+
+INSTRUMENTATION_STATUS: test=scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 23.673
+There were 2 failures:
+1) strictPortableMetadataRestoreAndNonceCleanupPreserveUnrelatedData(org.sleepwell.app.NapFlowTest)
+java.util.NoSuchElementException: No value present
+	at java.util.Optional.get(Optional.java:143)
+	at org.sleepwell.app.NapFlowTest$Fixture.nap(NapFlowTest.java:29)
+	at org.sleepwell.app.NapFlowTest.strictPortableMetadataRestoreAndNonceCleanupPreserveUnrelatedData(NapFlowTest.java:43)
+2) scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery(org.sleepwell.app.NapFlowTest)
+org.junit.ComparisonFailure: expected:<[]> but was:<[Nap saved, but scheduling failed. Check alarm access and retry.]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at org.sleepwell.app.NapFlowTest.scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery(NapFlowTest.java:41)
+
+FAILURES!!!
+Tests run: 3,  Failures: 2
+
+
+INSTRUMENTATION_CODE: -1

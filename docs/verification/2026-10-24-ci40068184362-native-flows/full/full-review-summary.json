@@ -1,0 +1,305 @@
+{
+  "scope": "full",
+  "full_app_review": true,
+  "expected_classes": 53,
+  "expected_methods": 112,
+  "class_results": [
+    {
+      "class": "SoundSettingsFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "RootVisualTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "NightArcFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmProtectionFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmWakeSettingsTest",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "AlarmMenusFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AutomaticTrackingFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SoundAnalysisNativeTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "SoundClassifierFixtureEvaluationTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SoundEventsUiTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SnoreCueSettingsNativeTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "ReportReferenceFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "StorageMigrationTest",
+      "expected_methods": 4,
+      "passed": true
+    },
+    {
+      "class": "SoundLibraryStorageTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "TravelPlanFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "PrivacyHistoryFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "PlanPickerFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SoundLibraryUiTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "SoundRetentionLifecycleTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SleepRhythmFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "NightAudioArchiveTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "SoundArchiveUiTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "MotionConfigurationFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AudioArchiveConcurrencyTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "SoundArchiveJobTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "RecordCalendarFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "ChallengeRoutineFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "HeadphoneCueOutputTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "SnoreSoundRouteFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "WalkConfigurationFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "ChartClockFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "MissedNightFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "FavoriteSoundsStorageTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "FavoriteSoundsFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "ClipReviewAccessTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SoundCategoryFixtureEvaluationTest",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "GradedMathConfigurationTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "QrCodeConfigurationTest",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "AlarmToneAssetsTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmToneGrantTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmToneFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "WakeCheckFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "SoundLabelStorageTest",
+      "expected_methods": 10,
+      "passed": true
+    },
+    {
+      "class": "SoundLabelFlowTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "NapFlowTest",
+      "expected_methods": 3,
+      "passed": false
+    },
+    {
+      "class": "NapIntegrationFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "RecurringTrackingTest",
+      "expected_methods": 12,
+      "passed": true
+    },
+    {
+      "class": "RecurringTrackingFlowTest",
+      "expected_methods": 2,
+      "passed": false
+    },
+    {
+      "class": "BackupStorageTest",
+      "expected_methods": 6,
+      "passed": true
+    },
+    {
+      "class": "BackupDocumentFlowTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "ReportRibbonNativeTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "AlarmSkipStorageTest",
+      "expected_methods": 8,
+      "passed": false
+    },
+    {
+      "class": "AlarmSkipFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    }
+  ],
+  "required_original_images": 314,
+  "available_required_images": 293,
+  "failures": [
+    "AlarmWakeSettingsTest",
+    "SoundCategoryFixtureEvaluationTest",
+    "QrCodeConfigurationTest",
+    "NapFlowTest",
+    "RecurringTrackingFlowTest",
+    "AlarmSkipStorageTest",
+    "Category PCM evidence incomplete: Production category positives were not all persisted",
+    "wake-settings-reopened.png",
+    "wake-settings-normal-curve.png",
+    "wake-settings-edited-curve.png",
+    "wake-settings-immediate.png",
+    "qr-code-denied.png",
+    "qr-code-access-error.png",
+    "qr-code-scanning.png",
+    "qr-code-camera-error.png",
+    "qr-code-captured.png",
+    "qr-code-fallback.png",
+    "qr-code-fallback-error.png",
+    "qr-code-recreated.png",
+    "qr-code-routine.png",
+    "qr-code-reopened.png",
+    "qr-code-unavailable.png",
+    "nap-retry.png",
+    "recurring-permission-error.png",
+    "recurring-permission-recreated.png",
+    "recurring-notifications-error.png",
+    "recurring-limits.png",
+    "recurring-schedule-error.png"
+  ]
+}

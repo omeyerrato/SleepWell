@@ -475,6 +475,21 @@ for row in rows:
     elif row["feature"] == "Nap timer":
         row["validation"] += " Strict reviewer individually inspected21 latest Nap originals: icon/error-viewport/clock-projection corrections pass narrowly; removed/invalid integration frames remain absent and are not accepted."
 
+# Exact fresh native results remain separate from later source-only visual corrections.
+for row in rows:
+    if row["feature"] == "Skip and restore next occurrence":
+        row["validation"] += " Fresh d43f480/fullCI40068184362: AlarmSkipFlowTest2 PASS20.891s/all15 originals; Storage8 has2 fixture failures (fixed ID1 assumption for new ID3 and incorrect SQL/platform atomicity assumption). Strict review accepts14 supporting frames but rejects oversized expired status; bca0d81 gives its text explicit wrap width and adds compact/full-action geometry assertions. Source correction and transactional-vs-platform fixture fix require new native execution."
+    elif row["feature"] == "Automatic tracking":
+        row["validation"] += " Fresh d43f480/fullCI40068184362: backend12 PASS0.272s; first settings flow now passes, second fails because real error is below viewport. All8 named originals/diagnostic reviewed;3fda351 moves actual error into pinned footer above Save/Cancel. Same2methods/13states require rerun."
+    elif row["feature"] == "Local data backup":
+        row["validation"] += " Fresh d43f480/fullCI40068184362: BackupStorageTest6 PASS0.522s and BackupDocumentFlowTest3 PASS28.984s/all19 original states. Strict individually reviews all19: supporting operations/confirmation/current-error contents pass, stale-state white navigation handle rejected. bca0d81 corrects actual owned-dialog/render bar appearance and checks current window bits; fresh capture required. Actual external provider/destructive phone restore remain unverified."
+    elif row["feature"] == "Nap timer":
+        row["validation"] += " Fresh d43f480/fullCI40068184362 NapIntegrationFlowTest1 PASS17.369s/all8 original states individually reviewed and bounded visual pass. Main NapFlowTest3 has2 failures on immediate post-click new-row/retry reads;3fda351 waits actual private persisted state without retrying actions. Complete source/clock/quiet fake behavior does not prove actual delivery."
+    elif row["feature"] in ("Built-in sounds", "Device ringtone", "Gentle volume ramp", "Post-dismiss wake check", "Wake-check prompt / confirmation deadline / retries"):
+        row["validation"] += " Fresh d43f480/focusedCI40068188579 PASS5classes/6methods/all39 required originals, individually reviewed. Assets1.497s,Grant0.611s,ToneFlow40.346s,WakeSettings44.902s,WakeCheck2/39.15s. Native configuration/private persistence/fake preview pass narrowly; full run's WakeSettings reopen fails prior-editor lifecycle timing, addressed3fda351. Filename-on-reopen and loading chevron polish remain, and actual outputs/provider grants/OS delivery are not certified."
+    if any(name in row["implementation"] for name in ("ReportScreen.java", "PeriodTimeline.java", "RecordRibbon.java", "TrendsChart.java", "HistoryActivity.java", "RecordEditorActivity.java")):
+        row["validation"] += " Fresh d43f480/focusedCI40068186520 PASS4classes/5methods/13required originals: ReportRibbonNativeTest2 PASS1.212s,ReportReferenceFlowTest1 PASS33.744s. All13 originals individually inspected: report hierarchy/editor geometry pass, hard color-bin stripes and touching chips rejected. b4deeb3 blends only visual colors within contiguous measured spans (unchanged metrics/exact gaps), adds missing-signal Canvas assertions and4dp chip gutters; fresh raster/visual run required. Missing stage estimator remains explicit."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -506,6 +521,13 @@ comparisons are recorded in DESIGN-REVIEW.md and VERIFICATION.md. Existing code 
 show the relevant group of implementation classes; exact narrower behavior and gaps
 are stated in the last column. Named tests link to committed source; those links
 are not passing-run claims. Most features still need device-level verification.
+
+Latest phone installation: source613e44b, schema6-to7 migration, unchanged original
+rows/preferences and matching installed APK hash verified by private read-only
+comparison. No alarm/sound/vibration/flashlight test was run on the phone.
+Latest full native run atd43f480 remains FAIL:47/53classes,104/112methods,
+293/314required original images. Focused Report4/5/13 and Tone5/6/39 pass narrowly;
+per-screen visual rejections and later source corrections are recorded below.
 
 | ID / feature and manual | Screen(s) | Code | Validation | Status and remaining work |
 | --- | --- | --- | --- | --- |

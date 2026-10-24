@@ -1135,3 +1135,42 @@ identical; the installed APK SHA256 matches613e44b's candidate. The package now
 reports suspended=false. Its foreground was left alone, so no automatic app-open
 or interactive screen acceptance follows from this preservation check. No physical
 outputs were tested. The earlier disconnect/launch observation remains historical.
+
+## 2026-10-24: fresh native report/tone passes and remaining full-run defects
+
+Exact d43f480: focused Report40068186520 PASS4classes/5methods/13required
+originals; Tone/Wake40068188579 PASS5classes/6methods/39required originals.
+All52 required originals were independently opened individually. Report hierarchy,
+editor Notes/Save/Delete geometry and measured Canvas gap/manual invariants pass;
+hard ribbon stripes and touching chips remain rejected. Tone/Wake's actual native
+private configuration/fake-preview flow passes narrowly, with imported display-name
+and busy-chevron polish remaining. Actual effects/provider/OS delivery are unproven.
+All62 generated focused PNGs plus9class logs/metadata are retained byte-for-byte
+with hashes in verification/2026-10-24-ci400681-focused/.
+
+Full40068184362 at the same head FAILS:47/53whole classes pass;104/112methods
+pass,8 fail;293/314required named PNGs exist,295total. New BackupStorage6PASS,
+BackupDocument3PASS(all19),NapIntegration1PASS(all8),RecurringStorage12PASS and
+SkipFlow2PASS(all15) are actual native evidence. All53 logs plus66 available
+supporting originals are retained in verification/2026-10-24-ci40068184362-native-flows/.
+Individual strict comparison rejects expired Skip's giant panel, recurring's
+invisible inline error and Backup stale state's white gesture handle. Native class
+passes do not override those visible failures. NapIntegration8 supports a bounded
+visual/configuration pass; physical delivery remains untested.
+
+Remaining failed methods: WakeSettings1(reopen before Editor destruction), category
+positivity1(unchanged missed solo laughter), QR1(main callback not yet read), Nap2
+(new row/retry status read immediately after click), recurring1(hidden error) and
+SkipStorage2(fixture always reads alarm1 and conflates a SQLite transaction with
+the documented later platform-call race). Raw failures remain unchanged.
+
+Source b4deeb3 softens only ribbon colors within contiguous measured runs, retaining
+exact numeric bins and pause/awake/missing-signal gaps, and adds4dp chip gutters.
+Native Canvas assertions now include unshaded missing-signal areas.3fda351 pins
+recurring errors above Save/Cancel and waits exact lifecycle/main/store postconditions;
+it passes debug/native APKs and lint in3m22. bca0d81 fixes expired status wrap width
+with a compact/full remaining-action geometry gate, and applies cream bar appearance
+to Backup's actual owned Dialog/render path. Its first native compilation caught
+two test-helper List/ArrayList signature mismatches;571018b corrects those and
+passes debug/native APKs and lint0errors/87warnings in2m24. Fresh originals remain pending.
+No actions are retried to manufacture state. Full app/features remain incomplete.
