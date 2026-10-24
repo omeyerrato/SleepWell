@@ -5,14 +5,15 @@ import java.util.*;
 /** Ordered, bounded tasks. Completing a sensor task is one unit, never an early dismissal. */
 final class ChallengeRoutine {
     static final int LIMIT=8;
-    static final List<String> TYPES=List.of("Math","Memory","Sequence","Retype","Shake","Walk","NFC");
+    static final List<String> TYPES=List.of("Math","Memory","Sequence","Retype","Shake","Walk","NFC","QR code");
     static final class Task {
-        final String type;final int rounds,targetSteps;final MathSettings math;
+        final String type;final int rounds,targetSteps;final MathSettings math;final MorningCode code;
         Task(String type,int rounds){this(type,rounds,type.equals("Walk")?10:0);}
         Task(String type,int rounds,int steps){this(type,rounds,steps,MathSettings.LEGACY);}
-        Task(String type,int rounds,int steps,MathSettings math){if(!TYPES.contains(type)||rounds<1||rounds>6||type.equals("Walk")&&(rounds!=1||steps<5||steps>100)||math==null||!type.equals("Math")&&!math.equals(MathSettings.LEGACY))throw new IllegalArgumentException("Unsupported challenge settings");this.type=type;this.rounds=rounds;targetSteps=type.equals("Walk")?steps:0;this.math=math;}
-        int units(){return type.equals("Shake")||type.equals("NFC")||type.equals("Walk")?1:rounds;}
-        String detail(){return type.equals("Math")?math.level.label+" · "+rounds+(rounds==1?" round":" rounds"):type.equals("Walk")?targetSteps+" steps":type.equals("Shake")?rounds*5+" shakes":type.equals("NFC")?"Enrolled morning tag":rounds+(rounds==1?" round":" rounds");}
+        Task(String type,int rounds,int steps,MathSettings math){this(type,rounds,steps,math,null);}
+        Task(String type,int rounds,int steps,MathSettings math,MorningCode code){if(!TYPES.contains(type)||rounds<1||rounds>6||type.equals("Walk")&&(rounds!=1||steps<5||steps>100)||math==null||!type.equals("Math")&&!math.equals(MathSettings.LEGACY)||type.equals("QR code")&&(rounds!=1||code==null)||!type.equals("QR code")&&code!=null)throw new IllegalArgumentException("Unsupported challenge settings");this.type=type;this.rounds=rounds;targetSteps=type.equals("Walk")?steps:0;this.math=math;this.code=code;}
+        int units(){return type.equals("Shake")||type.equals("NFC")||type.equals("Walk")||type.equals("QR code")?1:rounds;}
+        String detail(){return type.equals("QR code")?code.label:type.equals("Math")?math.level.label+" · "+rounds+(rounds==1?" round":" rounds"):type.equals("Walk")?targetSteps+" steps":type.equals("Shake")?rounds*5+" shakes":type.equals("NFC")?"Enrolled morning tag":rounds+(rounds==1?" round":" rounds");}
     }
     static final class Position {
         final Task task;final int index,round;
@@ -20,7 +21,7 @@ final class ChallengeRoutine {
     }
     final List<Task> tasks;
     ChallengeRoutine(List<Task> tasks){if(tasks.isEmpty()||tasks.size()>LIMIT)throw new IllegalArgumentException("Choose 1–8 tasks");this.tasks=List.copyOf(tasks);}
-    static ChallengeRoutine legacy(String type,int rounds){return new ChallengeRoutine(List.of(new Task(TYPES.contains(type)&&!type.equals("Walk")?type:"Math",Math.max(1,Math.min(6,rounds)))));}
+    static ChallengeRoutine legacy(String type,int rounds){return new ChallengeRoutine(List.of(new Task(TYPES.contains(type)&&!type.equals("Walk")&&!type.equals("QR code")?type:"Math",Math.max(1,Math.min(6,rounds)))));}
     int units(){int total=0;for(Task task:tasks)total+=task.units();return total;}
     Position at(int completed){if(completed<0||completed>=units())return null;int offset=0;for(int n=0;n<tasks.size();n++){Task task=tasks.get(n);if(completed<offset+task.units())return new Position(task,n,completed-offset);offset+=task.units();}throw new AssertionError();}
     /** A stale/duplicate task callback must not skip the next task or round. */

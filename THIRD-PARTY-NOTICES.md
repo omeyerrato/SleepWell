@@ -34,3 +34,19 @@ The bundled LiteRT CPU runtime uses com.google.ai.edge.litert:litert:2.3.0.
 ## Public CC0 classifier evaluation audio (test APK only)
 
 Two human-snoring recordings by SortsApostata and pencilgame1, a conversation/crowd recording by ZyryTSounds, and a solo count-down by toam (original voice credited to cognito perceptu) were published under CC0 1.0. [Source pages, preview hashes, decoded PCM hashes and conversion details](third_party/audio-fixtures/manifest.json); [license/provenance](third_party/audio-fixtures/LICENSE.md). They are never bundled in the production APK and are never played by the tests.
+
+## ZXing offline QR decoder
+
+ZXing core `com.google.zxing:core:3.5.3` is bundled for QR-only decoding.
+Copyright ZXing authors; Apache License 2.0.
+The exact tagged [license](https://github.com/zxing/zxing/blob/zxing-3.5.3/LICENSE)
+is retained in third_party/zxing/LICENSE and packaged in
+app/src/main/assets/licenses/ZXING-LICENSE.txt. QR contents never leave the phone.
+
+## AndroidX CameraX and Activity
+
+CameraX core/camera2/lifecycle/view 1.5.3 and Activity 1.11.0 are Google Android
+Jetpack libraries, licensed under Apache License 2.0. They provide lifecycle-bound
+preview and frame analysis. Versions are pinned in app/build.gradle.
+[CameraX release provenance](https://developer.android.com/jetpack/androidx/releases/camera),
+[Activity release provenance](https://developer.android.com/jetpack/androidx/releases/activity).
