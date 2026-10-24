@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Store extends SQLiteOpenHelper {
     public Store(Context c) { this(c,"sleepwell.db"); }
-    Store(Context c,String name) { super(c,name,null,8); }
+    Store(Context c,String name) { super(c,name,null,9); }
     @Override public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE alarms(id INTEGER PRIMARY KEY, data TEXT NOT NULL)");
         db.execSQL("CREATE TABLE sessions(id INTEGER PRIMARY KEY, start INTEGER NOT NULL, end INTEGER, note TEXT DEFAULT '', rating INTEGER DEFAULT 0, interrupted INTEGER DEFAULT 0, active_ms INTEGER, clock_changed INTEGER DEFAULT 0)");
@@ -17,7 +17,7 @@ public class Store extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE clips(id INTEGER PRIMARY KEY, session INTEGER NOT NULL, time INTEGER NOT NULL, path TEXT NOT NULL, level REAL)");
         createPauses(db);
         createRecords(db);db.execSQL("ALTER TABLE sessions ADD COLUMN source TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN origin TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN zone TEXT NOT NULL DEFAULT ''");
-        createRequests(db);createSoundEvents(db);createSoundLibrary(db);createSoundLabels(db);createSensorProvenance(db);
+        createRequests(db);createSoundEvents(db);createSoundLibrary(db);createSoundLabels(db);createSensorProvenance(db);createSoundAnalysis(db);
     }
     private static void createSoundEvents(SQLiteDatabase db){
         db.execSQL("ALTER TABLE clips ADD COLUMN category TEXT NOT NULL DEFAULT 'noise'");
@@ -35,6 +35,7 @@ public class Store extends SQLiteOpenHelper {
     }
     private static void createSoundLabels(SQLiteDatabase db){db.execSQL("ALTER TABLE sound_events ADD COLUMN user_category TEXT");db.execSQL("ALTER TABLE sound_events ADD COLUMN label_revision INTEGER NOT NULL DEFAULT 0");}
     private static void createSensorProvenance(SQLiteDatabase db){db.execSQL("ALTER TABLE sessions ADD COLUMN sensor TEXT NOT NULL DEFAULT 'unspecified'");db.execSQL("ALTER TABLE sessions ADD COLUMN sensor_config TEXT NOT NULL DEFAULT ''");db.execSQL("ALTER TABLE epochs ADD COLUMN signal_quality TEXT");}
+    private static void createSoundAnalysis(SQLiteDatabase db){db.execSQL("ALTER TABLE sessions ADD COLUMN sound_analysis TEXT NOT NULL DEFAULT ''");}
     long soundEvent(long session,long start,long duration,String category,double score,Long clip){
         if(session<=0||start<=0||duration<=0||!SoundCategories.valid(category)||!Double.isFinite(score)||score<0||score>1)throw new IllegalArgumentException("Invalid sound event");
         if(clip==null){List<JSONObject> saved=rows("SELECT id FROM clips WHERE session=? AND time-duration_ms<=CAST(? AS INTEGER) AND time>=CAST(? AS INTEGER) ORDER BY time LIMIT 1",""+session,""+start,""+(start+duration));if(!saved.isEmpty())clip=saved.get(0).optLong("id");}
@@ -43,7 +44,7 @@ public class Store extends SQLiteOpenHelper {
     private static void createPauses(SQLiteDatabase db){db.execSQL("CREATE TABLE tracking_pauses(id INTEGER PRIMARY KEY, session INTEGER NOT NULL, start INTEGER NOT NULL, end INTEGER)");db.execSQL("CREATE INDEX pauses_session ON tracking_pauses(session,start)");}
     private static void createRequests(SQLiteDatabase db){db.execSQL("CREATE TABLE record_create_requests(token TEXT PRIMARY KEY,session INTEGER NOT NULL)");}
     private static void createRecords(SQLiteDatabase db){db.execSQL("CREATE TABLE record_edits(session INTEGER PRIMARY KEY,start INTEGER NOT NULL,end INTEGER NOT NULL,note TEXT NOT NULL DEFAULT '',tags TEXT NOT NULL DEFAULT '[]',awake TEXT NOT NULL DEFAULT '[]',rating INTEGER NOT NULL DEFAULT 0,rated INTEGER NOT NULL DEFAULT 0,updated INTEGER NOT NULL,reverted INTEGER NOT NULL DEFAULT 0)");}
-    @Override public void onUpgrade(SQLiteDatabase db,int old,int next) {if(old<2){db.execSQL("ALTER TABLE sessions ADD COLUMN active_ms INTEGER");db.execSQL("ALTER TABLE sessions ADD COLUMN clock_changed INTEGER DEFAULT 0");db.execSQL("ALTER TABLE epochs ADD COLUMN start INTEGER");createPauses(db);}if(old<3){createRecords(db);db.execSQL("ALTER TABLE sessions ADD COLUMN source TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN origin TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN zone TEXT NOT NULL DEFAULT ''");}if(old<4)createRequests(db);if(old<5)createSoundEvents(db);if(old<6)createSoundLibrary(db);if(old<7)createSoundLabels(db);if(old<8)createSensorProvenance(db);if(next>8)throw new IllegalStateException("Unknown database version");}
+    @Override public void onUpgrade(SQLiteDatabase db,int old,int next) {if(old<2){db.execSQL("ALTER TABLE sessions ADD COLUMN active_ms INTEGER");db.execSQL("ALTER TABLE sessions ADD COLUMN clock_changed INTEGER DEFAULT 0");db.execSQL("ALTER TABLE epochs ADD COLUMN start INTEGER");createPauses(db);}if(old<3){createRecords(db);db.execSQL("ALTER TABLE sessions ADD COLUMN source TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN origin TEXT NOT NULL DEFAULT 'legacy'");db.execSQL("ALTER TABLE sessions ADD COLUMN zone TEXT NOT NULL DEFAULT ''");}if(old<4)createRequests(db);if(old<5)createSoundEvents(db);if(old<6)createSoundLibrary(db);if(old<7)createSoundLabels(db);if(old<8)createSensorProvenance(db);if(old<9)createSoundAnalysis(db);if(next>9)throw new IllegalStateException("Unknown database version");}
     public synchronized List<Alarm> alarms() {
         List<Alarm> result=new ArrayList<>();
         try(Cursor c=getReadableDatabase().rawQuery("SELECT data FROM alarms ORDER BY id",null)) {
@@ -54,18 +55,41 @@ public class Store extends SQLiteOpenHelper {
     public void save(Alarm a) { ContentValues v=new ContentValues(); v.put("id",a.id); v.put("data",a.json().toString()); getWritableDatabase().insertWithOnConflict("alarms",null,v,SQLiteDatabase.CONFLICT_REPLACE); }
     public void deleteAlarm(int id) { getWritableDatabase().delete("alarms","id=?",new String[]{""+id}); }
     public long begin() {return begin(SensorProvenance.MOTION,"");}
-    public long begin(String sensor,String sensorConfig) {
+    public long begin(String sensor,String sensorConfig) {return begin(sensor,sensorConfig,SensorProvenance.SONAR.equals(sensor)?SoundAnalysisProvenance.encode(SoundAnalysisStatus.initial(false)):"");}
+    long begin(String sensor,String sensorConfig,String soundAnalysis) {
         SensorProvenance.validate(sensor,sensorConfig);if(!Set.of(SensorProvenance.MOTION,SensorProvenance.SONAR).contains(sensor))throw new IllegalArgumentException("A tracked recording needs an explicit sensor.");
+        SoundAnalysisStatus analysis=SoundAnalysisProvenance.read(soundAnalysis);if(SensorProvenance.SONAR.equals(sensor)&&analysis==null||analysis!=null&&(!SensorProvenance.SONAR.equals(sensor)||analysis.frames!=0||!Set.of("off","pending").contains(analysis.state)))throw new IllegalArgumentException("Invalid initial sound analysis evidence");
         SQLiteDatabase db=getWritableDatabase();long now=System.currentTimeMillis();
-        recoverInterrupted();ContentValues v=new ContentValues();v.put("start",now);v.put("active_ms",0);v.put("source","tracked");v.put("origin","local");v.put("zone",java.time.ZoneId.systemDefault().getId());v.put("sensor",sensor);v.put("sensor_config",sensorConfig);return db.insertOrThrow("sessions",null,v);
+        recoverInterrupted();ContentValues v=new ContentValues();v.put("start",now);v.put("active_ms",0);v.put("source","tracked");v.put("origin","local");v.put("zone",java.time.ZoneId.systemDefault().getId());v.put("sensor",sensor);v.put("sensor_config",sensorConfig);v.put("sound_analysis",soundAnalysis);return db.insertOrThrow("sessions",null,v);
     }
     public void end(long id, boolean interrupted) { ContentValues v=new ContentValues(); v.put("end",System.currentTimeMillis()); v.put("interrupted",interrupted?1:0); getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id}); }
     void end(long id,boolean interrupted,long active,long now){resume(id,now);ContentValues v=new ContentValues();v.put("end",now);v.put("active_ms",active);v.put("interrupted",interrupted?1:0);getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id});}
+    /** Ordered worker only. Counts cannot outrun the last durable capture checkpoint. */
+    void soundAnalysisCheckpoint(long id,String encoded){SQLiteDatabase db=getWritableDatabase();db.beginTransaction();try{soundAnalysisValues(id,encoded,null,null);ContentValues values=new ContentValues();values.put("sound_analysis",encoded);if(db.update("sessions",values,"id=? AND end IS NULL",new String[]{""+id})!=1)throw new IllegalStateException("Sound analysis recording changed");db.setTransactionSuccessful();}finally{db.endTransaction();}}
+    /** Final analysis evidence and the actual session end commit or roll back together. */
+    void end(long id,boolean interrupted,long active,long now,String encoded){SQLiteDatabase db=getWritableDatabase();db.beginTransaction();try{soundAnalysisValues(id,encoded,active,now);end(id,interrupted,active,now);ContentValues values=new ContentValues();values.put("sound_analysis",encoded);if(db.update("sessions",values,"id=?",new String[]{""+id})!=1)throw new IllegalStateException("Sound analysis recording changed");db.setTransactionSuccessful();}finally{db.endTransaction();}}
+    private void soundAnalysisValues(long id,String encoded,Long active,Long end){
+        List<JSONObject> found=rows("SELECT * FROM sessions WHERE id=?",""+id);if(found.size()!=1)throw new IllegalArgumentException("Sound analysis recording is missing");JSONObject row=found.get(0);SoundAnalysisStatus next=SoundAnalysisProvenance.read(encoded),previous=SoundAnalysisProvenance.read(row.optString("sound_analysis",""));
+        if(next==null||previous==null||!row.isNull("end")||!SensorProvenance.SONAR.equals(row.optString("sensor"))||!"tracked".equals(row.optString("source")))throw new IllegalArgumentException("Sound analysis recording changed");
+        next.follows(previous);long captured=active==null?row.optLong("active_ms"):active;
+        if(captured<row.optLong("active_ms")||captured<0||captured>SensorProvenance.MAX_SESSION||next.frames*975>captured||end==null&&Set.of("complete","insufficient").contains(next.state)||end!=null&&(end<row.optLong("start")||captured>end-row.optLong("start")||!next.terminal()))throw new IllegalArgumentException("Sound analysis exceeds captured time or remains unfinished");
+    }
     void clockChanged(long id){ContentValues v=new ContentValues();v.put("clock_changed",1);getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id});}
     void active(long id,long elapsed){ContentValues v=new ContentValues();v.put("active_ms",Math.max(0,elapsed));getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id});}
     void pause(long session,long now){if(!rows("SELECT id FROM tracking_pauses WHERE session=? AND end IS NULL",""+session).isEmpty())return;ContentValues v=new ContentValues();v.put("session",session);v.put("start",now);getWritableDatabase().insertOrThrow("tracking_pauses",null,v);}
     void resume(long session,long now){getWritableDatabase().execSQL("UPDATE tracking_pauses SET end=MAX(start,?) WHERE session=? AND end IS NULL",new Object[]{now,session});}
-    void recoverInterrupted(){for(JSONObject s:rows("SELECT * FROM sessions WHERE end IS NULL")){long id=s.optLong("id"),last=s.optLong("start");for(JSONObject e:rows("SELECT MAX(time) AS time FROM epochs WHERE session=?",""+id))last=Math.max(last,e.optLong("time"));for(JSONObject p:rows("SELECT MAX(COALESCE(end,start)) AS time FROM tracking_pauses WHERE session=?",""+id))last=Math.max(last,p.optLong("time"));long start=s.optLong("start"),limit=start>Long.MAX_VALUE-36*3600000L?Long.MAX_VALUE:start+36*3600000L;for(JSONObject e:rows("SELECT MAX(time+duration_ms) AS time FROM sound_events WHERE session=? AND time>=? AND duration_ms>0 AND duration_ms<=129600000 AND time+duration_ms<=CAST(? AS INTEGER) AND category IN ('snoring','speech','cough','baby_cry','laughter','noise') AND score>=0 AND score<=1 AND LENGTH(TRIM(model))>0 AND LENGTH(model)<=128",""+id,""+start,""+limit))last=Math.max(last,e.optLong("time"));resume(id,last);ContentValues v=new ContentValues();v.put("end",last);v.put("interrupted",1);getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id});}}
+    void recoverInterrupted(){for(JSONObject candidate:rows("SELECT id FROM sessions WHERE end IS NULL"))recoverInterrupted(candidate.optLong("id"));}
+    private void recoverInterrupted(long id){SQLiteDatabase db=getWritableDatabase();db.beginTransaction();try{
+        List<JSONObject> found=rows("SELECT * FROM sessions WHERE id=? AND end IS NULL",""+id);if(found.isEmpty()){db.setTransactionSuccessful();return;}JSONObject s=found.get(0);long last=s.optLong("start");
+        // Validate historical evidence before changing any pause or session field.
+        String analysis=SoundAnalysisProvenance.recovered(s.optString("sound_analysis",""));
+        for(JSONObject e:rows("SELECT MAX(time) AS time FROM epochs WHERE session=?",""+id))last=Math.max(last,e.optLong("time"));
+        for(JSONObject p:rows("SELECT MAX(COALESCE(end,start)) AS time FROM tracking_pauses WHERE session=?",""+id))last=Math.max(last,p.optLong("time"));
+        long start=s.optLong("start"),limit=start>Long.MAX_VALUE-36*3600000L?Long.MAX_VALUE:start+36*3600000L;
+        for(JSONObject e:rows("SELECT MAX(time+duration_ms) AS time FROM sound_events WHERE session=? AND time>=? AND duration_ms>0 AND duration_ms<=129600000 AND time+duration_ms<=CAST(? AS INTEGER) AND category IN ('snoring','speech','cough','baby_cry','laughter','noise') AND score>=0 AND score<=1 AND LENGTH(TRIM(model))>0 AND LENGTH(model)<=128",""+id,""+start,""+limit))last=Math.max(last,e.optLong("time"));
+        resume(id,last);ContentValues values=new ContentValues();values.put("end",last);values.put("interrupted",1);values.put("sound_analysis",analysis);if(db.update("sessions",values,"id=? AND end IS NULL",new String[]{""+id})!=1)throw new IllegalStateException("Recording changed during recovery");db.setTransactionSuccessful();
+    }finally{db.endTransaction();}}
+
     long recordedMillis(JSONObject s){List<long[]> pauses=new ArrayList<>();long end=s.isNull("end")?System.currentTimeMillis():s.optLong("end");for(JSONObject p:rows("SELECT start,end FROM tracking_pauses WHERE session=?",""+s.optLong("id")))pauses.add(new long[]{p.optLong("start"),p.isNull("end")?end:p.optLong("end")});return SessionTiming.recorded(s.optLong("start"),end,s.isNull("active_ms")?null:s.optLong("active_ms"),pauses);}
     public void annotate(long id,String note,int rating) { ContentValues v=new ContentValues(); v.put("note",note); v.put("rating",rating); getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id}); }
     public void epoch(long session,long time,Double movement,Double noise,Double light,int samples) {
@@ -98,8 +122,8 @@ public class Store extends SQLiteOpenHelper {
         } return rows;
     }
     public JSONObject backup() {
-        SQLiteDatabase db=getReadableDatabase();db.beginTransactionNonExclusive();try{JSONObject root=new JSONObject(); JSONArray savedAlarms=new JSONArray();for(Alarm a:alarms())savedAlarms.put(a.json());try { root.put("format",5).put("alarms",savedAlarms)
-            .put("sessions",new JSONArray(rows("SELECT * FROM sessions"))).put("epochs",new JSONArray(rows("SELECT * FROM epochs"))).put("pauses",new JSONArray(rows("SELECT * FROM tracking_pauses"))).put("edits",new JSONArray(rows("SELECT * FROM record_edits"))).put("sound_events",SoundEventBackup.export(this));SoundEventBackup.checkPortableSize(root);SensorBackup.validateExport(root); } catch(JSONException e) { throw new IllegalStateException(e); } db.setTransactionSuccessful();return root;}finally{db.endTransaction();}
+        SQLiteDatabase db=getReadableDatabase();db.beginTransactionNonExclusive();try{JSONObject root=new JSONObject(); JSONArray savedAlarms=new JSONArray();for(Alarm a:alarms())savedAlarms.put(a.json());try { root.put("format",6).put("alarms",savedAlarms)
+            .put("sessions",new JSONArray(rows("SELECT * FROM sessions"))).put("epochs",new JSONArray(rows("SELECT * FROM epochs"))).put("pauses",new JSONArray(rows("SELECT * FROM tracking_pauses"))).put("edits",new JSONArray(rows("SELECT * FROM record_edits"))).put("sound_events",SoundEventBackup.export(this));SoundEventBackup.checkPortableSize(root);SensorBackup.validateExport(root);SoundAnalysisProvenance.validateExport(root); } catch(JSONException e) { throw new IllegalStateException(e); } db.setTransactionSuccessful();return root;}finally{db.endTransaction();}
     }
     public void eraseHistory() { SQLiteDatabase db=getWritableDatabase(); db.beginTransaction(); try { SoundClips.stageAll(this,null);db.execSQL("UPDATE record_create_requests SET session=0");db.delete("sound_events",null,null);db.delete("clips",null,null); db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null); db.delete("sessions",null,null); db.setTransactionSuccessful(); } finally { db.endTransaction(); } }
 }

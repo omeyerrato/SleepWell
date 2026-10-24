@@ -14,7 +14,7 @@ final class GoalProgress {
     static GoalProgress calculate(GoalCommitment goal,List<RecordEntry> records,Instant now){
         ZoneId zone=ZoneId.of(goal.zone);LocalDate today=SleepDay.label(now.toEpochMilli(),zone,goal.cutoff);
         LocalDate last=today.minusDays(1);if(last.isAfter(goal.through()))last=goal.through();
-        List<RecordEntry> inZone=new ArrayList<>();for(RecordEntry r:records)inZone.add(new RecordEntry(r.id,r.rawStart,r.rawEnd,r.active,r.source,r.origin,goal.zone,r.interrupted,r.clockChanged,r.edit,r.edited,r.updated,r.pauses,r.sensor,r.sensorConfig));
+        List<RecordEntry> inZone=new ArrayList<>();for(RecordEntry r:records)inZone.add(new RecordEntry(r.id,r.rawStart,r.rawEnd,r.active,r.source,r.origin,goal.zone,r.interrupted,r.clockChanged,r.edit,r.edited,r.updated,r.pauses,r.sensor,r.sensorConfig,r.soundAnalysis));
         SortedMap<LocalDate,RecordTrends.Day> actual=RecordTrends.days(inZone,new RecordTrends.Range(goal.start,goal.through()),goal.cutoff);
         GoalProgress progress=new GoalProgress();progress.closedThrough=last;progress.ended=today.isAfter(goal.through());
         for(LocalDate day=goal.start;!day.isAfter(last);day=day.plusDays(1)){
