@@ -1,0 +1,217 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.SoundLabelStorageTest:
+INSTRUMENTATION_STATUS: test=staleRevisionTrimDeletedEventAndInvalidChoiceRejectTransactionally
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.staleRevisionTrimDeletedEventAndInvalidChoiceRejectTransactionally(SoundLabelStorageTest.java:22)
+
+INSTRUMENTATION_STATUS: stream=
+Error in staleRevisionTrimDeletedEventAndInvalidChoiceRejectTransactionally(org.sleepwell.app.SoundLabelStorageTest):
+java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.staleRevisionTrimDeletedEventAndInvalidChoiceRejectTransactionally(SoundLabelStorageTest.java:22)
+
+INSTRUMENTATION_STATUS: test=staleRevisionTrimDeletedEventAndInvalidChoiceRejectTransactionally
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=crashRecoveryUsesDurableSoundEndsWithAndWithoutAnEpochAndBacksUpExactly
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=crashRecoveryUsesDurableSoundEndsWithAndWithoutAnEpochAndBacksUpExactly
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=portableMetadataCountTypesAndEndedSessionReferencesAreStrictlyBounded
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=portableMetadataCountTypesAndEndedSessionReferencesAreStrictlyBounded
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=portableMetadataRoundTripsCorrectionsAndLegacyFormatsRemainReadable
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.portableMetadataRoundTripsCorrectionsAndLegacyFormatsRemainReadable(SoundLabelStorageTest.java:29)
+
+INSTRUMENTATION_STATUS: stream=
+Error in portableMetadataRoundTripsCorrectionsAndLegacyFormatsRemainReadable(org.sleepwell.app.SoundLabelStorageTest):
+java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.portableMetadataRoundTripsCorrectionsAndLegacyFormatsRemainReadable(SoundLabelStorageTest.java:29)
+
+INSTRUMENTATION_STATUS: test=portableMetadataRoundTripsCorrectionsAndLegacyFormatsRemainReadable
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=abaChangesAndCounterOverflowCannotAuthorizeStaleDrafts
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.abaChangesAndCounterOverflowCannotAuthorizeStaleDrafts(SoundLabelStorageTest.java:25)
+
+INSTRUMENTATION_STATUS: stream=
+Error in abaChangesAndCounterOverflowCannotAuthorizeStaleDrafts(org.sleepwell.app.SoundLabelStorageTest):
+java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.abaChangesAndCounterOverflowCannotAuthorizeStaleDrafts(SoundLabelStorageTest.java:25)
+
+INSTRUMENTATION_STATUS: test=abaChangesAndCounterOverflowCannotAuthorizeStaleDrafts
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=archiveKeepsOriginalAndUserProvenanceAndRejectsChangedLabelsBeforeOutput
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.archiveKeepsOriginalAndUserProvenanceAndRejectsChangedLabelsBeforeOutput(SoundLabelStorageTest.java:40)
+
+INSTRUMENTATION_STATUS: stream=
+Error in archiveKeepsOriginalAndUserProvenanceAndRejectsChangedLabelsBeforeOutput(org.sleepwell.app.SoundLabelStorageTest):
+java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.archiveKeepsOriginalAndUserProvenanceAndRejectsChangedLabelsBeforeOutput(SoundLabelStorageTest.java:40)
+
+INSTRUMENTATION_STATUS: test=archiveKeepsOriginalAndUserProvenanceAndRejectsChangedLabelsBeforeOutput
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=versionSixMigrationPreservesAllExistingColumnsAndRows
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=versionSixMigrationPreservesAllExistingColumnsAndRows
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=alreadyRecoveredInterruptedTailPreservesRawNightAndEstimateWithoutClamping
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=alreadyRecoveredInterruptedTailPreservesRawNightAndEstimateWithoutClamping
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=correctionResetAndEffectiveCountsPreserveOriginalsAndWaveBytes
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelStorageTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=9
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.correctionResetAndEffectiveCountsPreserveOriginalsAndWaveBytes(SoundLabelStorageTest.java:18)
+
+INSTRUMENTATION_STATUS: stream=
+Error in correctionResetAndEffectiveCountsPreserveOriginalsAndWaveBytes(org.sleepwell.app.SoundLabelStorageTest):
+java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.correctionResetAndEffectiveCountsPreserveOriginalsAndWaveBytes(SoundLabelStorageTest.java:18)
+
+INSTRUMENTATION_STATUS: test=correctionResetAndEffectiveCountsPreserveOriginalsAndWaveBytes
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 2.051
+There were 5 failures:
+1) staleRevisionTrimDeletedEventAndInvalidChoiceRejectTransactionally(org.sleepwell.app.SoundLabelStorageTest)
+java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.staleRevisionTrimDeletedEventAndInvalidChoiceRejectTransactionally(SoundLabelStorageTest.java:22)
+2) portableMetadataRoundTripsCorrectionsAndLegacyFormatsRemainReadable(org.sleepwell.app.SoundLabelStorageTest)
+java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.portableMetadataRoundTripsCorrectionsAndLegacyFormatsRemainReadable(SoundLabelStorageTest.java:29)
+3) abaChangesAndCounterOverflowCannotAuthorizeStaleDrafts(org.sleepwell.app.SoundLabelStorageTest)
+java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.abaChangesAndCounterOverflowCannotAuthorizeStaleDrafts(SoundLabelStorageTest.java:25)
+4) archiveKeepsOriginalAndUserProvenanceAndRejectsChangedLabelsBeforeOutput(org.sleepwell.app.SoundLabelStorageTest)
+java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.archiveKeepsOriginalAndUserProvenanceAndRejectsChangedLabelsBeforeOutput(SoundLabelStorageTest.java:40)
+5) correctionResetAndEffectiveCountsPreserveOriginalsAndWaveBytes(org.sleepwell.app.SoundLabelStorageTest)
+java.lang.IllegalArgumentException: This sound event changed. Reopen it.
+	at org.sleepwell.app.SoundLabels.check(SoundLabels.java:21)
+	at org.sleepwell.app.SoundLabels.save(SoundLabels.java:28)
+	at org.sleepwell.app.SoundLabelStorageTest.correctionResetAndEffectiveCountsPreserveOriginalsAndWaveBytes(SoundLabelStorageTest.java:18)
+
+FAILURES!!!
+Tests run: 9,  Failures: 5
+
+
+INSTRUMENTATION_CODE: -1

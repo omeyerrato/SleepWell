@@ -1,0 +1,119 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.SoundLabelFlowTest:
+INSTRUMENTATION_STATUS: test=selectCancelRecreateSaveResetAndAlbumReopenUseRealPersistedLabels
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: BySelector [DESC='\QLabel: Use original estimate\E', SELECTED='true']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.SoundLabelFlowTest.object(SoundLabelFlowTest.java:20)
+	at org.sleepwell.app.SoundLabelFlowTest.selectCancelRecreateSaveResetAndAlbumReopenUseRealPersistedLabels(SoundLabelFlowTest.java:33)
+
+INSTRUMENTATION_STATUS: stream=
+Error in selectCancelRecreateSaveResetAndAlbumReopenUseRealPersistedLabels(org.sleepwell.app.SoundLabelFlowTest):
+java.lang.AssertionError: BySelector [DESC='\QLabel: Use original estimate\E', SELECTED='true']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.SoundLabelFlowTest.object(SoundLabelFlowTest.java:20)
+	at org.sleepwell.app.SoundLabelFlowTest.selectCancelRecreateSaveResetAndAlbumReopenUseRealPersistedLabels(SoundLabelFlowTest.java:33)
+
+INSTRUMENTATION_STATUS: test=selectCancelRecreateSaveResetAndAlbumReopenUseRealPersistedLabels
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=busySaveIsRetainedAndFailureRetryUsesPinnedDatabaseFactory
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: BySelector [DESC='\QLabel: Speech\E']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.SoundLabelFlowTest.object(SoundLabelFlowTest.java:20)
+	at org.sleepwell.app.SoundLabelFlowTest.busySaveIsRetainedAndFailureRetryUsesPinnedDatabaseFactory(SoundLabelFlowTest.java:46)
+
+INSTRUMENTATION_STATUS: stream=
+Error in busySaveIsRetainedAndFailureRetryUsesPinnedDatabaseFactory(org.sleepwell.app.SoundLabelFlowTest):
+java.lang.AssertionError: BySelector [DESC='\QLabel: Speech\E']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.SoundLabelFlowTest.object(SoundLabelFlowTest.java:20)
+	at org.sleepwell.app.SoundLabelFlowTest.busySaveIsRetainedAndFailureRetryUsesPinnedDatabaseFactory(SoundLabelFlowTest.java:46)
+
+INSTRUMENTATION_STATUS: test=busySaveIsRetainedAndFailureRetryUsesPinnedDatabaseFactory
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=trimAndDeletedRowHaveVisibleErrorsWithoutChangingEvidence
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundLabelFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: BySelector [DESC='\QLabel: Speech\E']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.SoundLabelFlowTest.object(SoundLabelFlowTest.java:20)
+	at org.sleepwell.app.SoundLabelFlowTest.trimAndDeletedRowHaveVisibleErrorsWithoutChangingEvidence(SoundLabelFlowTest.java:39)
+
+INSTRUMENTATION_STATUS: stream=
+Error in trimAndDeletedRowHaveVisibleErrorsWithoutChangingEvidence(org.sleepwell.app.SoundLabelFlowTest):
+java.lang.AssertionError: BySelector [DESC='\QLabel: Speech\E']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.SoundLabelFlowTest.object(SoundLabelFlowTest.java:20)
+	at org.sleepwell.app.SoundLabelFlowTest.trimAndDeletedRowHaveVisibleErrorsWithoutChangingEvidence(SoundLabelFlowTest.java:39)
+
+INSTRUMENTATION_STATUS: test=trimAndDeletedRowHaveVisibleErrorsWithoutChangingEvidence
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 22.803
+There were 3 failures:
+1) selectCancelRecreateSaveResetAndAlbumReopenUseRealPersistedLabels(org.sleepwell.app.SoundLabelFlowTest)
+java.lang.AssertionError: BySelector [DESC='\QLabel: Use original estimate\E', SELECTED='true']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.SoundLabelFlowTest.object(SoundLabelFlowTest.java:20)
+	at org.sleepwell.app.SoundLabelFlowTest.selectCancelRecreateSaveResetAndAlbumReopenUseRealPersistedLabels(SoundLabelFlowTest.java:33)
+2) busySaveIsRetainedAndFailureRetryUsesPinnedDatabaseFactory(org.sleepwell.app.SoundLabelFlowTest)
+java.lang.AssertionError: BySelector [DESC='\QLabel: Speech\E']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.SoundLabelFlowTest.object(SoundLabelFlowTest.java:20)
+	at org.sleepwell.app.SoundLabelFlowTest.busySaveIsRetainedAndFailureRetryUsesPinnedDatabaseFactory(SoundLabelFlowTest.java:46)
+3) trimAndDeletedRowHaveVisibleErrorsWithoutChangingEvidence(org.sleepwell.app.SoundLabelFlowTest)
+java.lang.AssertionError: BySelector [DESC='\QLabel: Speech\E']
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.SoundLabelFlowTest.object(SoundLabelFlowTest.java:20)
+	at org.sleepwell.app.SoundLabelFlowTest.trimAndDeletedRowHaveVisibleErrorsWithoutChangingEvidence(SoundLabelFlowTest.java:39)
+
+FAILURES!!!
+Tests run: 3,  Failures: 3
+
+
+INSTRUMENTATION_CODE: -1

@@ -1,0 +1,61 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.MissedNightFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.MissedNightFlowTest:
+INSTRUMENTATION_STATUS: test=manualSaveIsIdempotentAndRechecksDeletedRequestsOpenRecordsAndChangedEvidence
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.MissedNightFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=manualSaveIsIdempotentAndRechecksDeletedRequestsOpenRecordsAndChangedEvidence
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.MissedNightFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=reviewEditSaveRecreateAndMissingEvidenceStatesUseOnlyPrivateData
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.MissedNightFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at org.sleepwell.app.MissedNightFlowTest.reviewEditSaveRecreateAndMissingEvidenceStatesUseOnlyPrivateData(MissedNightFlowTest.java:39)
+
+INSTRUMENTATION_STATUS: stream=
+Error in reviewEditSaveRecreateAndMissingEvidenceStatesUseOnlyPrivateData(org.sleepwell.app.MissedNightFlowTest):
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at org.sleepwell.app.MissedNightFlowTest.reviewEditSaveRecreateAndMissingEvidenceStatesUseOnlyPrivateData(MissedNightFlowTest.java:39)
+
+INSTRUMENTATION_STATUS: test=reviewEditSaveRecreateAndMissingEvidenceStatesUseOnlyPrivateData
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 3.515
+There was 1 failure:
+1) reviewEditSaveRecreateAndMissingEvidenceStatesUseOnlyPrivateData(org.sleepwell.app.MissedNightFlowTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at org.sleepwell.app.MissedNightFlowTest.reviewEditSaveRecreateAndMissingEvidenceStatesUseOnlyPrivateData(MissedNightFlowTest.java:39)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

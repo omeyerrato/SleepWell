@@ -1,0 +1,47 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmToneFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.AlarmToneFlowTest:
+INSTRUMENTATION_STATUS: test=toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmToneFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: A scrollable page must expose Import audio file
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.AlarmToneFlowTest.control(AlarmToneFlowTest.java:27)
+	at org.sleepwell.app.AlarmToneFlowTest.text(AlarmToneFlowTest.java:34)
+	at org.sleepwell.app.AlarmToneFlowTest.toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput(AlarmToneFlowTest.java:51)
+
+INSTRUMENTATION_STATUS: stream=
+Error in toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput(org.sleepwell.app.AlarmToneFlowTest):
+java.lang.AssertionError: A scrollable page must expose Import audio file
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.AlarmToneFlowTest.control(AlarmToneFlowTest.java:27)
+	at org.sleepwell.app.AlarmToneFlowTest.text(AlarmToneFlowTest.java:34)
+	at org.sleepwell.app.AlarmToneFlowTest.toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput(AlarmToneFlowTest.java:51)
+
+INSTRUMENTATION_STATUS: test=toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 17.565
+There was 1 failure:
+1) toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput(org.sleepwell.app.AlarmToneFlowTest)
+java.lang.AssertionError: A scrollable page must expose Import audio file
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.AlarmToneFlowTest.control(AlarmToneFlowTest.java:27)
+	at org.sleepwell.app.AlarmToneFlowTest.text(AlarmToneFlowTest.java:34)
+	at org.sleepwell.app.AlarmToneFlowTest.toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput(AlarmToneFlowTest.java:51)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
