@@ -11,7 +11,7 @@ import java.util.*;
 class RecordChart extends View {
     private final List<ChartSeries.Sample> samples=new ArrayList<>();
     private final java.time.ZoneId zone;private final String metric;private final long start;private long end;private final boolean night;private final Paint paint=new Paint(3);
-    private List<ChartSeries.Bar> bars=Collections.emptyList();private int selected=-1;private double high=.001;
+    private List<ChartSeries.Bar> bars=Collections.emptyList();private int selected=-1;private double high=.001;private String measurementLabel;private int actualReadings;
     RecordChart(Context c,List<JSONObject> epochs,String metric,long start,long end){
         this(c,epochs,metric,start,end,false);
     }
@@ -25,8 +25,11 @@ class RecordChart extends View {
     void updateData(List<JSONObject> epochs,long end){
         this.end=Math.max(start+1,end);samples.clear();int measured=0;
         for(JSONObject epoch:epochs){Double value=epoch.isNull(metric)?null:epoch.optDouble(metric);long time=epoch.optLong("time");samples.add(new ChartSeries.Sample(epoch.isNull("start")?null:epoch.optLong("start"),time,value));if(value!=null&&Double.isFinite(value)&&value>=0&&time>=start&&time<=end)measured++;}
-        setContentDescription(metric+" chart. "+measured+" actual readings. Missing intervals are blank. Dense bars average contiguous readings.");rebuild();invalidate();
+        actualReadings=measured;describeSeries();rebuild();invalidate();
     }
+    RecordChart measurement(String label){measurementLabel=label;describeSeries();return this;}
+    private String metricName(){return measurementLabel==null?metric:measurementLabel;}
+    private void describeSeries(){setContentDescription(metricName()+" chart. "+actualReadings+" actual readings. Missing intervals are blank. Dense bars average contiguous readings.");}
     static String clock(long time){return java.time.Instant.ofEpochMilli(time).atZone(java.time.ZoneId.systemDefault()).format(java.time.format.DateTimeFormatter.ofPattern("h:mm a",Locale.getDefault()));}
     private boolean clock24(){return android.text.format.DateFormat.is24HourFormat(getContext());}
     private String label(long time){return ChartTicks.tooltip(time,start,end,zone,clock24(),Locale.getDefault());}
@@ -68,7 +71,7 @@ class RecordChart extends View {
         if(event.getAction()==MotionEvent.ACTION_UP){float ratio=Math.max(0,Math.min(1,(event.getX()-plotLeft())/(plotRight()-plotLeft())));long time=start+(long)((end-start)*ratio),distance=Long.MAX_VALUE;
             for(int n=0;n<bars.size();n++){ChartSeries.Bar bar=bars.get(n);long center=bar.from+(bar.to-bar.from)/2,delta=Math.abs(center-time);if(delta<distance){selected=n;distance=delta;}}performClick();invalidate();return true;}return true;
     }
-    private void describeSelection(){ChartSeries.Bar bar=bars.get(selected);setContentDescription(metric+" at "+label(bar.to)+": "+String.format(Locale.getDefault(),"%.3f",bar.value)+(bar.readings>1?" average of "+bar.readings+" readings from "+label(bar.from):" measured reading"));}
+    private void describeSelection(){ChartSeries.Bar bar=bars.get(selected);setContentDescription(metricName()+" at "+label(bar.to)+": "+String.format(Locale.getDefault(),"%.3f",bar.value)+(bar.readings>1?" average of "+bar.readings+" readings from "+label(bar.from):" measured reading"));}
     @Override public boolean performClick(){super.performClick();if(selected>=0)describeSelection();return true;}
     @Override public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info){super.onInitializeAccessibilityNodeInfo(info);info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_FORWARD);info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_BACKWARD);}
     @Override public boolean performAccessibilityAction(int action,android.os.Bundle args){int step=action==AccessibilityNodeInfo.ACTION_SCROLL_FORWARD?1:action==AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD?-1:0;if(step==0)return super.performAccessibilityAction(action,args);int next=selected<0?(step>0?0:bars.size()-1):selected+step;if(next<0||next>=bars.size())return false;selected=next;performClick();invalidate();return true;}
