@@ -1,0 +1,16 @@
+# Walking challenge: explicit Math alternative
+
+Walking already uses Android's optional step detector, falling back to its cumulative step counter. Per-task targets remain 5–100 actual sensor steps, saved in the existing routine JSON; the row opens task settings. Counter activation takes a fresh baseline, paused/stale callbacks cannot count, and shaking is a separate challenge. Existing routine/backup fields remain unchanged.
+
+The walking screen now offers **Use Math fallback** even when a registered sensor never delivers steps. This explicitly changes the current task's method; it never completes or skips a task. The exact alarm occurrence and routine unit must still own the request before and after unregister. The listener's callbacks are revoked first, unregister must acknowledge success, then two private preference keys are committed together. Failed unregister/save leaves an inline error and allows an explicit retry. A successful choice survives Activity recreation and opens Math without constructing another step listener. Another occurrence or task ignores that saved choice. Math must still be solved while the alarm continues.
+
+Every incoming sensor callback now freshly checks physical-activity access. Denial, SecurityException or a failed check prevents counting/completion and releases the listener before notifying the UI. If unregister fails, the Activity retains that owner and presents a cleanup retry instead of allocating a replacement sensor port. The current screen can then show its existing Math alternative. No permission dialog appears during a ringing challenge; contextual consent remains in task settings.
+
+## Verification contract
+
+- Existing WalkSessionTest 13 cases remain, plus four permission/explicit-unregister regressions. WalkFallbackTest adds eight pure ordering/ownership/error cases.
+- Existing WalkConfigurationFlowTest remains one method/six actual originals: `walk-permission`, `walk-ready`, `walk-settings`, `walk-error`, `walk-unavailable`, `walk-reopened`. It also checks target-selector Cancel and the concise Math-alternative disclosure before save/reopen.
+- New WalkFallbackStorageTest has two private-preference native methods: exact saved task ownership/relookup with unchanged step/routine progress, plus malformed/stale rejection. It creates no Activity, sensor, permission request, alarm or playback.
+- Local final debug APK, native-test APK, 35 focused pure tests (17 WalkSession, 8 WalkFallback, 10 routine), and lint passed; lint reports 0 errors/94 warnings. The final incremental build took 1m30s. Strict source review cleared the retained-unregister/permission/fallback boundaries. Native execution and all fresh screenshots are pending CI. No ringing screen, Android step hardware, physical permission prompt or actual wake-up output was run for this work. Device-specific recognition/latency remains unverified.
+
+Android's step detector emits one event per detected step; the step counter can be delayed and reports a cumulative total. These are platform movement estimates, not a proof that someone is awake. Public references: [Android motion sensors](https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion#sensors-motion-stepcounter), [runtime permissions](https://developer.android.com/training/permissions/requesting).

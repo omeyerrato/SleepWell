@@ -1,0 +1,17 @@
+package org.sleepwell.app;
+import android.content.*;import androidx.test.platform.app.InstrumentationRegistry;import androidx.test.uiautomator.UiDevice;import org.junit.Test;import java.util.*;import static org.junit.Assert.*;
+/** Real private preference persistence; no Activity, alarm, sensor listener or permission request. */
+public final class WalkFallbackStorageTest {
+    final Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();
+    interface Checked {void run(SharedPreferences prefs,String name)throws Exception;}
+    void fixture(Checked task)throws Exception{
+        assertEquals("true",InstrumentationRegistry.getArguments().getString("ciReview"));assertEquals("1",UiDevice.getInstance(InstrumentationRegistry.getInstrumentation()).executeShellCommand("getprop ro.kernel.qemu").trim());assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(context,"ringing"));assertFalse(Prefs.flag(context,"tracking"));Map<String,?> before=new HashMap<>(Prefs.of(context).getAll());String name="walk-fallback-"+UUID.randomUUID();SharedPreferences prefs=context.getSharedPreferences(name,Context.MODE_PRIVATE);
+        try{task.run(prefs,name);}finally{try{assertTrue(prefs.edit().clear().commit());}finally{assertTrue(context.deleteSharedPreferences(name));assertEquals(before,Prefs.of(context).getAll());assertFalse(AlarmService.active);assertFalse(TrackingService.running);}}
+    }
+    @Test public void savedFallbackReopensForExactTaskWithoutChangingProgressOrRoutine()throws Exception{fixture((prefs,name)->{
+        assertTrue(prefs.edit().putString("walkRun","night").putInt("walkUnit",2).putInt("walkEarned",3).putInt("challengeCompleted",2).putString("unrelated","preserved").commit());List<String> order=new ArrayList<>();
+        assertEquals(WalkFallback.Result.CHOSEN,WalkFallback.choose("night",2,new WalkFallback.Effects(){public boolean current(String run,int unit){return run.equals("night")&&unit==2;}public boolean stop(){order.add("unregister");return true;}public boolean save(String run,int unit){order.add("save");return WalkFallbackSaved.save(prefs,run,unit);}}));
+        assertEquals(List.of("unregister","save"),order);SharedPreferences reopened=context.getSharedPreferences(name,Context.MODE_PRIVATE);assertTrue(WalkFallbackSaved.chosen(reopened,"night",2));assertEquals(3,prefs.getInt("walkEarned",-1));assertEquals(2,prefs.getInt("challengeCompleted",-1));assertEquals("preserved",prefs.getString("unrelated",""));assertFalse(WalkFallbackSaved.chosen(prefs,"next",2));assertFalse(WalkFallbackSaved.chosen(prefs,"night",3));
+    });}
+    @Test public void malformedSavedTypesAndStaleRequestsCannotChooseMath()throws Exception{fixture((prefs,name)->{assertTrue(prefs.edit().putInt("walkFallbackRun",1).putString("walkFallbackUnit","two").commit());assertFalse(WalkFallbackSaved.chosen(prefs,"night",2));Map<String,?> before=new HashMap<>(prefs.getAll());assertEquals(WalkFallback.Result.STALE,WalkFallback.choose("old",2,new WalkFallback.Effects(){public boolean current(String run,int unit){return false;}public boolean stop(){throw new AssertionError("Stale fallback cannot stop a listener");}public boolean save(String run,int unit){throw new AssertionError("Stale fallback cannot write preferences");}}));assertEquals(before,prefs.getAll());assertThrows(IllegalArgumentException.class,()->WalkFallbackSaved.save(prefs,"",2));});}
+}
