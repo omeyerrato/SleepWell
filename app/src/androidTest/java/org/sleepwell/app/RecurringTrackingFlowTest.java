@@ -33,6 +33,56 @@ public class RecurringTrackingFlowTest {
         assertTrue(step+": dispatched once",device.findObject(lazy).click());device.waitForIdle();
     }
     private void click(String text)throws Exception{tap(text,false);}
+    /** Dialog removal is a window transition, not necessarily UiObject.click's content-change acknowledgment. */
+    private void dismissExplanation(SharedPreferences preferences,String savedError)throws Exception{
+        step="dismiss owned nightly explanation once";
+        frame();
+        Activity settings=focused(null);
+        View activityRoot=settings.getWindow().getDecorView();
+        Map<String,?> savedPreferences=new HashMap<>(preferences.getAll());
+        View[] dialogRoot={null};
+        Rect buttonBounds=new Rect();
+        CountDownLatch detached=new CountDownLatch(1);
+        View.OnAttachStateChangeListener attachment=new View.OnAttachStateChangeListener(){
+            public void onViewAttachedToWindow(View view){}
+            public void onViewDetachedFromWindow(View view){detached.countDown();}
+        };
+        try{
+            i.runOnMainSync(()->{
+                View root=focusedRoot();
+                assertNotSame("Explanation owns a separate focused window",activityRoot,root);
+                assertNotNull("Exact explanation heading",match(root,"Nightly tracking",false));
+                View button=match(root,"Got it",false);
+                assertNotNull("Owned explanation dismissal control",button);
+                while(!button.isClickable()&&button.getParent() instanceof View)button=(View)button.getParent();
+                assertSame("Control belongs to explanation decor",root,button.getRootView());
+                assertTrue("Enabled actionable dismissal",button.isClickable()&&button.isEnabled());
+                Rect visible=new Rect();
+                assertTrue("Dismissal control is visible",button.getGlobalVisibleRect(visible));
+                assertEquals("Complete dismissal width",button.getWidth(),visible.width());
+                assertEquals("Complete dismissal height",button.getHeight(),visible.height());
+                assertTrue("Dismissal touch width >=48dp",visible.width()>=Design.dp(c,48));
+                assertTrue("Dismissal touch height >=48dp",visible.height()>=Design.dp(c,48));
+                // A floating Dialog decor has an offset: root-relative visible bounds are not screen input coordinates.
+                int[] screen=new int[2];
+                button.getLocationOnScreen(screen);
+                buttonBounds.set(screen[0],screen[1],screen[0]+button.getWidth(),screen[1]+button.getHeight());
+                dialogRoot[0]=root;
+                root.addOnAttachStateChangeListener(attachment);
+            });
+            // Exactly one input injection. A missing postcondition never causes a second click.
+            assertTrue("Owned dismissal input delivered once",device.click(buttonBounds.centerX(),buttonBounds.centerY()));
+            assertTrue("Exact explanation decor detached",detached.await(5,TimeUnit.SECONDS));
+            assertTrue("Dismissal restored the same settings window",device.wait(new Condition<UiDevice,Boolean>(){
+                public Boolean apply(UiDevice ignored){boolean[] restored={false};i.runOnMainSync(()->restored[0]=!dialogRoot[0].isAttachedToWindow()&&findFocusedRoot()==activityRoot&&activityRoot.isAttachedToWindow()&&activityRoot.isLaidOut()&&!settings.isFinishing()&&!settings.isDestroyed());return restored[0];}
+            },5000));
+            assertTrue("Explanation control disappeared",device.wait(Until.gone(By.text("Got it")),5000));
+            errorVisible(savedError);
+            assertEquals("Explanation did not mutate saved scheduling state",savedPreferences,preferences.getAll());
+        }finally{
+            if(dialogRoot[0]!=null)i.runOnMainSync(()->dialogRoot[0].removeOnAttachStateChangeListener(attachment));
+        }
+    }
     private void toggle(String description,boolean before,boolean after)throws Exception{require(By.desc(description).checked(before));tap(description,true);require(By.desc(description).checked(after));frame();}
     private void errorVisible(String message)throws Exception{require(By.text(message));frame();i.runOnMainSync(()->{View root=focusedRoot(),error=match(root,message,false),save=match(root,"Save nightly settings",false);assertNotNull(error);assertNotNull(save);Rect text=new Rect(),footer=new Rect();assertTrue(error.getGlobalVisibleRect(text));assertTrue(save.getGlobalVisibleRect(footer));assertEquals("Complete refreshed inline error",error.getHeight(),text.height());assertTrue("Error above Save footer",text.bottom<=footer.top);});}
     private void permissionRows(boolean notifications,boolean exact)throws Exception{frame();i.runOnMainSync(()->{View root=focusedRoot();View notification=match(root,"Notifications",false),timing=match(root,"Exact timing",false);assertNotNull(notification);assertNotNull(timing);ViewGroup n=(ViewGroup)notification.getParent(),t=(ViewGroup)timing.getParent();assertNotNull("Current notification availability",match(n,notifications?"Allowed":"Allow to keep Cancel visible",false));assertNotNull("Current exact-alarm availability",match(t,exact?"Allowed":"Allow exact alarms",false));assertNull("No stale notification summary",match(n,notifications?"Allow to keep Cancel visible":"Allowed",false));assertNull("No stale exact-alarm summary",match(t,exact?"Allow exact alarms":"Allowed",false));});}
@@ -155,8 +205,7 @@ public class RecurringTrackingFlowTest {
                 require(By.text("Nightly tracking"));
                 require(By.text("Got it"));
                 h.capture("limits");
-                click("Got it");
-                assertTrue("Explanation dismissed",device.wait(Until.gone(By.text("Got it")),5000));
+                dismissExplanation(h.fake.p,"Settings were saved, but the next start could not be scheduled. "+h.fake.p.getString("scheduleStatus",""));
                 require(By.textStartsWith("Settings were saved, but the next start could not be scheduled."));
                 h.capture("schedule-error");
                 assertEquals(0,h.fake.launches);
