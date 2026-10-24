@@ -379,6 +379,11 @@ for row in rows:
     elif feature == "Retention / favorite album / alternate formats":
         row["validation"] += " PrivacyHistoryFlowTest1 now PASS35.701s at9188e78/CI40051144096; all5 originals reviewed: actual storage error, busy erase, pending file cleanup, done and keep/retry preservation. This supersedes the earlier rejected inspection-race images only; other stated limitations remain."
 
+# Narrow local build for the latest geometry candidate does not imply native acceptance.
+for row in rows:
+    if row["feature"] in ("Built-in sounds", "Device ringtone", "Post-dismiss wake check", "Wake-check prompt / confirmation deadline / retries", "Automatic tracking", "Gentle volume ramp", "QR/barcode sequences", "Lost code fallback / travel bypass"):
+        row["validation"] += " Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

@@ -904,3 +904,14 @@ two discarded laughter windows prevent any claim of perfect window specificity.
 Original crowd laughter remains0, and original babycry ambiguity2cry+2laugh
 remains. No classifier threshold/model/grouping changes. Recognition is partial.
 Full36-screen/all-feature acceptance remains incomplete.
+
+## Combined geometry correction bed8aba — local build gate
+
+Scoped debug app and instrumentation APK plus lint PASS1m26s, lint0errors/
+86warnings. This includes compact Tone d4c08c7, shared QR cards14c4d5a and
+centered Wake countdown/button with semantic and prior-Toast checks. Domain
+policies are unchanged; the previously431 pure tests are not reported as rerun.
+The independent reviewer cleared the corrected mandatory SeekBar/button/footer
+bounds selectors. All75 exact staged Git blob hashes in the9188e78 evidence
+bundle were independently rechecked. Required follow-up is42classes/60methods/
+225 original PNGs, with model-category failure still honestly retained.
