@@ -1,0 +1,26 @@
+{
+  "scope": "tone-wake",
+  "full_app_review": false,
+  "expected_classes": 5,
+  "expected_methods": 6,
+  "required_original_images": 39,
+  "failures": [
+    "AlarmToneFlowTest",
+    "alarm-tone-builtins.png",
+    "alarm-tone-playing.png",
+    "alarm-tone-paused.png",
+    "alarm-tone-preview-error.png",
+    "alarm-tone-options.png",
+    "alarm-tone-selected.png",
+    "alarm-tone-import-checking.png",
+    "alarm-tone-recreated.png",
+    "alarm-tone-import-cancelled.png",
+    "alarm-tone-decoder-busy.png",
+    "alarm-tone-decoder-recovered.png",
+    "alarm-tone-import-empty.png",
+    "alarm-tone-import-error.png",
+    "alarm-tone-imported.png",
+    "alarm-tone-reopened.png",
+    "alarm-tone-cancelled.png"
+  ]
+}

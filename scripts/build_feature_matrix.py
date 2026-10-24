@@ -438,6 +438,15 @@ for row in rows:
         row["validation"] += " Backup49ad607 source passed independent review and author debug/native APK,26 focused tests (BackupIoTest11, BackupJobTest12, BackupRuntimeTest3) and lint0errors87warnings. Integratedce19d14 with admission hook after accepted recurring normalization. BackupStorageTest6 and BackupDocumentFlowTest3/19 originals are compiled but not executed. Source does not certify an actual document provider, destructive restore on a phone, or absence of all ANRs."
         row["notes"] += " Private Backup screen uses retained view-free background IO and explicit review/replace confirmation, pinned application-only factory,8MiB strict UTF8/depth bounds, off-main best-effort cancellation, typed full-table fingerprint and within-transaction runtime/data checks. Imported alarms/naps stay off, original/user sound evidence stays portable, no audio/settings. Postcommit cleanup/count/close failure explicitly says data was restored. No WAL change; other main DB users and final-check/commit/system-scheduling intervals remain documented limitations. See BACKUP-DOCUMENT-IO.md."
 
+# Latest focused output supersedes the configuration failure, not missing actual output proof.
+for row in rows:
+    if row["feature"] == "Gentle volume ramp":
+        row["validation"] += " Fresh focusedCI40062368995 at4bd5317 WakeSettings1 PASS43.522s and all10 originals individually reviewed. Exact full-chart loud/reopened100%@2min, normal80%@2min, edited80%@1min and Off80% horizontal states pass; real saved/reopened/cancelled settings preserved via fake scheduling. No speaker/brightness/torch behavior certification."
+    elif row["feature"] in ("Built-in sounds", "Device ringtone"):
+        row["validation"] += " Fresh focusedCI40062368995 Tone fails initial read-only StaleObjectException before any16 named originals. Later244e4bc gates initial measured waveform readiness and retries only stale selector/geometry reads max4, never caller actions. Fresh native proof still required."
+    elif row["feature"] == "Nap timer":
+        row["validation"] += " Source92c3f19 integrated6f1db41 fixes aliases, error viewport reveal with full geometry assertions and same-window projected start display, with focused32 domain tests/lint pass. Final observer cleanup and integrated app await combined build/native23 originals; no runtime engine semantics changed."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

@@ -1045,3 +1045,34 @@ new full-review-summary.json records the contract, class results, available
 required frames and failures. Focused tone-wake remains5/6/39 and cannot claim
 full review. The static contract was independently evaluated from the Python AST;
 all40 raw focused evidence files match both SHA256SUMS and committed Git blobs.
+
+
+## 2026-10-24: combined488 build and typed picker containment defect
+
+Exact integrated244e4bc debug/native/release APKs, full unit tests and lint
+PASS5m52. Raw JUnit XML confirms488 cases/59 suites, zero failures/errors/skips;
+final lint XML has0errors/0fatal/87warnings. This covers recurring tracking,
+background backup work, linked sound-label identity fix and final Nap observer/
+layout refresh source together. It does not establish any new native/OS behavior.
+
+FocusedCI40062368995 at4bd5317 is archived with all24 available originals and
+raw logs in verification/2026-10-24-ci40062368995-wake-settings/. Strict individual
+review accepts WakeSettings1 PASS43.522s and all10 actual reference/control/curve
+states. WakeCheck2 PASS32.707s and13 states remain bounded-pass. Tone fails before
+its first capture on a stale read;244e4bc read-only retry was source-reviewed.
+
+Fresh focusedCI40063164364 at244e4bc progresses through12 named Tone frames,
+then FAILS the import-cancel monitor. The later WakeSettings failure hierarchy
+shows com.google.android.documentsui: an action-only monitor filter missed the
+actual typed OPENABLE request. Subsequent editor launch failures are contaminated
+fixture foreground, not evidence proving a production settings regression. All
+failed logs stay exact. The next test matches audio/* and CATEGORY_OPENABLE,
+awaits one main-thread monitor interception and cancels only escaped DocumentsUI
+in guarded-emulator failure cleanup. Production picker/source is unchanged.
+The proper API matching semantics were checked in the official Android references
+linked in TONE-WAKE-CONTROL-GATE.md. Fresh native run remains required.
+
+FullCI40063157145 remains live at244e4bc with50classes/100methods/299required
+originals. It is not restarted on observation timeout. Focused40063164364 was
+downloaded once after terminal. Phone ADB remains absent; no installation or
+physical effects were performed.

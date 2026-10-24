@@ -16,3 +16,20 @@ before first lookup and retries only bounded selector/geometry reads (four
 attempts) on StaleObjectException. The caller's click/action is never retried,
 and complete48dp bounds, persistence and cancellation requirements remain.
 Fresh native execution is still required.
+
+
+FocusedCI40063164364 at244e4bc moves Tone past initial asset/geometry checks,
+through12 named originals, then fails at the import-cancel monitor. Its bare
+action-only IntentFilter cannot match the actual audio/* + CATEGORY_OPENABLE
+request. Actual failure hierarchy in the later WakeSettings test shows Google
+DocumentsUI, explaining subsequent editor launch failures as contaminated test
+foreground, not a proven production configuration regression. WakeCheck retains
+12 states but lacks the supporting Editor save-error image in this failed run.
+
+The monitor now matches both the MIME type and category and awaits its exact
+single interception on the main thread. Failure cleanup cancels only an escaped
+DocumentsUI in this explicitly guarded disposable emulator before owned activities
+are torn down. No files are selected or outputs started. Prior failed logs remain
+unaltered; fresh native validation is required. Production picker behavior is not
+changed. Primary API references: [IntentFilter matching](https://developer.android.com/reference/android/content/IntentFilter),
+[ActivityMonitor blocking](https://developer.android.com/reference/android/app/Instrumentation.ActivityMonitor).
