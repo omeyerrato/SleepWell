@@ -2,6 +2,13 @@ name: Silent Android visual review
 on:
   workflow_dispatch:
     inputs:
+      scope:
+        description: 'Full acceptance or a clearly labelled focused tone/wake correction run'
+        type: choice
+        default: full
+        options:
+          - full
+          - tone-wake
       native_sounds:
         description: 'Also exercise real MediaPlayer/notification controls with host audio disabled (CI emulator only)'
         type: boolean
@@ -44,13 +51,14 @@ jobs:
           echo no | avdmanager create avd --name SleepWellSilent --path "$ANDROID_AVD_HOME/SleepWellSilent.avd" --package 'system-images;android-36;google_apis;x86_64' --device pixel_7 --force
       - name: Allowlisted UI checks and real Android captures
         env:
+          REVIEW_SCOPE: ${{ inputs.scope }}
           NATIVE_SOUNDS: ${{ inputs.native_sounds }}
           AUDIO_IMPORTS: ${{ inputs.audio_imports }}
         run: |
           options=()
           if [ "$NATIVE_SOUNDS" = "true" ]; then options+=(--native-sounds); fi
           if [ "$AUDIO_IMPORTS" = "true" ]; then options+=(--audio-imports); fi
-          python3 scripts/ci_silent_ui.py --serial emulator-5554 "${options[@]}"
+          python3 scripts/ci_silent_ui.py --serial emulator-5554 --scope "${REVIEW_SCOPE:-full}" "${options[@]}"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

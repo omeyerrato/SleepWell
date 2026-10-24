@@ -19,9 +19,16 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--serial", required=True, choices=("emulator-5554",))
+parser.add_argument("--scope", choices=("full", "tone-wake"), default="full", help="A named narrow scope is never a full app acceptance run")
 parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
 parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
 args = parser.parse_args()
+if args.scope != "full" and (args.native_sounds or args.audio_imports):
+    raise SystemExit("Focused review does not allow optional native output/import tests.")
+TONE_FRAMES = ["alarm-tone-" + name + ".png" for name in ("builtins", "playing", "paused", "preview-error", "options", "selected", "import-checking", "recreated", "import-cancelled", "decoder-busy", "decoder-recovered", "import-empty", "import-error", "imported", "reopened", "cancelled")]
+WAKE_SETTING_FRAMES = ["wake-settings-" + name + ".png" for name in ("sound", "loud-curve", "delay-options", "vibration-options", "lights", "recreated", "reopened", "normal-curve", "edited-curve", "immediate")]
+WAKE_CHECK_FRAMES = ["wake-check-" + name + ".png" for name in ("waiting", "prompt", "countdown", "recreated", "confirmed", "reopened", "storage-error", "access-error", "delivery-error", "retry", "expired", "stale", "editor-save-error")]
+FOCUSED_TESTS = ("AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "AlarmWakeSettingsTest", "WakeCheckFlowTest")
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
 root = Path(__file__).resolve().parents[1]
@@ -84,7 +91,7 @@ try:
     broadcast_idle = command("shell", "am", "wait-for-broadcast-idle", check=False, timeout=10).returncode == 0
 except subprocess.TimeoutExpired:
     broadcast_idle = False  # System queues can stay busy; the app's exact preservation assertion still applies.
-metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "audio_imports": args.audio_imports, "import_process_restart": False, "audio": "host output disabled; native sound review allowlisted" if (args.native_sounds or args.audio_imports) else "host output disabled; no native playback output allowlisted; library uses fake playback", "serial": args.serial, "system_broadcast_idle": broadcast_idle}
+metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "scope": args.scope, "audio_imports": args.audio_imports, "import_process_restart": False, "audio": "host output disabled; native sound review allowlisted" if (args.native_sounds or args.audio_imports) else "host output disabled; no native playback output allowlisted; library uses fake playback", "serial": args.serial, "system_broadcast_idle": broadcast_idle}
 for prop in ("ro.build.version.sdk", "ro.product.model"):
     metadata[prop] = command("shell", "getprop", prop).stdout.strip()
 metadata["size"] = command("shell", "wm", "size").stdout.strip()
@@ -94,9 +101,13 @@ failures = []
 tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest", "PlanPickerFlowTest", "SoundLibraryUiTest", "SoundRetentionLifecycleTest", "SleepRhythmFlowTest", "NightAudioArchiveTest", "SoundArchiveUiTest", "MotionConfigurationFlowTest", "AudioArchiveConcurrencyTest", "SoundArchiveJobTest", "RecordCalendarFlowTest", "ChallengeRoutineFlowTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
-tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest", "GradedMathConfigurationTest", "QrCodeConfigurationTest", "AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "WakeCheckFlowTest"]
+tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest", "GradedMathConfigurationTest", "QrCodeConfigurationTest", "AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "WakeCheckFlowTest", "SoundLabelStorageTest", "SoundLabelFlowTest", "NapFlowTest", "NapIntegrationFlowTest"]
 if args.audio_imports:
     tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
+if args.scope == "tone-wake":
+    tests = list(FOCUSED_TESTS)
+metadata["test_classes"] = tests
+(output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
@@ -114,12 +125,21 @@ for test in tests:
         extra = ["-e", "ciSilentPlayback", "true"]
     result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app." + test, "-e", "ciReview", "true", *extra, "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", check=False, timeout=180)
     (output / (test + ".txt")).write_text(result.stdout + result.stderr, encoding="utf-8")
-    expected_count = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2}.get(test, 1)
+    expected_count = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 9, "SoundLabelFlowTest": 3, "NapFlowTest": 3}.get(test, 1)
     passed = bool(re.search(r"(?m)^OK \(" + str(expected_count) + r" tests?\)\s*$", result.stdout)) and "FAILURES!!!" not in result.stdout
     print(test + ": " + ("PASS" if passed else "FAIL"), flush=True)
     if result.returncode or not passed:
         failures.append(test)
 command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", str(output), check=False)
+if args.scope == "tone-wake":
+    focused_frames = TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES
+    failures += [name for name in focused_frames if not (output / name).is_file()]
+    summary = {"scope": args.scope, "full_app_review": False, "expected_classes": 5, "expected_methods": 6, "required_original_images": len(focused_frames), "failures": failures}
+    (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    if failures:
+        raise SystemExit("Focused tone/wake review incomplete (full review not run): " + ", ".join(failures))
+    print("Focused tone/wake review passed:5 classes/6 methods/39 images. Full app review NOT executed.", flush=True)
+    raise SystemExit(0)
 fixture_report = output / "analysis-human-fixture-evaluation.json"
 if not fixture_report.is_file():
     failures.append("Missing real human sound fixture evaluation")
@@ -209,7 +229,7 @@ required = ["sounds-settings-" + name + ".png" for name in ("rain", "ocean", "re
 required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report", "settings", "readiness", "sound-analysis", "audio-retention", "bedtime-guard", "travel", "privacy", "wind-down")]
 required += ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 required += ["protection-" + name + ".png" for name in ("alarms", "editor", "off", "disclosure", "on", "recreated", "global", "power-only")]
-required += ["wake-settings-" + name + ".png" for name in ("sound", "loud-curve", "delay-options", "vibration-options", "lights", "recreated", "reopened", "normal-curve", "edited-curve", "immediate")]
+required += WAKE_SETTING_FRAMES
 required += ["menus-" + name + ".png" for name in ("editor", "time", "time-recreated", "time-24", "time-invalid", "large-snooze", "duration-recreated", "tasks", "task-settings", "task-chosen", "snooze", "duration", "snooze-changed", "recreated", "sound", "reopened")]
 required += ["automatic-" + name + ".png" for name in ("manual", "stillness", "sounds", "reopened", "error")]
 required += ["analysis-events-" + name + ".png" for name in ("all", "speech", "recreated")]
@@ -232,8 +252,11 @@ required += ["missed-night-" + name + ".png" for name in ("denied", "review", "e
 required += ["favorites-" + name + ".png" for name in ("all", "playback", "recreated", "week", "filter-empty", "speech", "playback-error", "unstarred", "reopened", "deleted-audio", "missing-audio", "empty", "error", "retry")]
 required += ["math-config-" + name + ".png" for name in ("default", "operators", "typed", "recreated", "ordered", "reopened", "error")]
 required += ["qr-code-" + name + ".png" for name in ("permission", "invalid", "denied", "access-error", "scanning", "camera-error", "captured", "fallback", "fallback-error", "recreated", "routine", "reopened", "unavailable")]
-required += ["alarm-tone-" + name + ".png" for name in ("builtins", "playing", "paused", "preview-error", "options", "selected", "import-checking", "recreated", "import-cancelled", "decoder-busy", "decoder-recovered", "import-empty", "import-error", "imported", "reopened", "cancelled")]
-required += ["wake-check-" + name + ".png" for name in ("waiting", "prompt", "countdown", "recreated", "confirmed", "reopened", "storage-error", "access-error", "delivery-error", "retry", "expired", "stale")]
+required += TONE_FRAMES
+required += WAKE_CHECK_FRAMES
+required += ["sound-label-" + name + ".png" for name in ("source", "selector", "draft", "draft-recreated", "cancelled", "corrected", "reopened", "reset", "album", "busy", "busy-recreated", "error", "error-recreated", "retried", "trim-error", "trim-error-recreated", "deleted-error", "deleted-retry")]
+required += ["nap-" + name + ".png" for name in ("default", "preset", "tracking-required", "sound", "pending", "recreated", "reopened", "cancelled", "schedule", "schedule-error", "scheduled", "list", "permission-error", "scheduler-error", "retry")]
+required += ["nap-integration-" + name + ".png" for name in ("future", "clock-shift", "zone", "wind-down", "inactive", "started", "removed", "invalid")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:
