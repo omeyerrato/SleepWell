@@ -29,3 +29,9 @@ AlarmTonePreviewTest has8 pure methods for explicit allocation, bounded independ
 The flow requests16 native PNGs: alarm-tone-builtins, alarm-tone-playing, alarm-tone-paused, alarm-tone-preview-error, alarm-tone-options, alarm-tone-selected, alarm-tone-import-checking, alarm-tone-recreated, alarm-tone-import-cancelled, alarm-tone-decoder-busy, alarm-tone-decoder-recovered, alarm-tone-import-empty, alarm-tone-import-error, alarm-tone-imported, alarm-tone-reopened, alarm-tone-cancelled. Existing AlarmWakeSettingsTest retains its method/capture contract but explicitly opens the options menu at its two Extra loud entry points. Debug and instrumentation APK builds,14 focused pure tests (8preview/3waveform/3decoder ownership) and compatible lint9.4.1 passed in3m04 with zero errors/80warnings; no lint issue is located in the new tone classes. The3 new native methods and16actual screenshot comparisons remain pending CI. No physical phone, actual preview, alarm, microphone, vibration or flashlight is tested.
 
 Primary Android references: [audio focus](https://developer.android.com/media/optimize/audio-focus), [MediaPlayer attributes/volume](https://developer.android.com/reference/android/media/MediaPlayer), [SAF document grants and limitations](https://developer.android.com/training/data-storage/shared/documents-files).
+
+Integrated local95edda2 full validation passes3m22:415 pure tests across52
+suites, zero failures/errors/skips, debug/native-test/release APKs and lint zero
+errors/86 warnings. This combines QR's six dependency notices with the prior80.
+The3 new native classes and16 actual originals remain pending; no physical or
+real-output test is implied by compilation or injected preview tests.

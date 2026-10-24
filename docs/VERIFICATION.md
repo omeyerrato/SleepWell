@@ -783,3 +783,23 @@ privacy action readiness, real operator-card geometry and full laughter PCM.
 Cream icon wells and an action divider bring routine cards closer to board04;
 the ordering affordance remains a menu until real drag behavior exists.
 These source and compile results are not native/screenshot acceptance.
+
+## Integrated95edda2 — board03 alarm tone candidate
+
+Full local build passes3m22:415 pure tests across52 suites, zero failures,
+errors or skips; debug, instrumentation and release APKs; lint zero errors/
+86 warnings. The combined Editor merge preserves QR request343/nonce Bundle
+state and tone request410/import/preview lifecycle state. Daybreak/Pulse bytes
+match the earlier tested source exactly. Chime is original generated PCM and
+shares its asset mapping with the actual alarm sink. Fourteen new focused pure
+cases cover measured PCM peaks, independent quiet gain/playback and process-wide
+decoder cleanup. No native output is inferred from these results.
+
+Peer review corrected process-wide decoder ownership across recreation and
+new unaccepted document-grant discard, preserving saved alarm and pinned mix
+references. Accepted-but-unsaved imports retain access; this is not general
+orphan collection. Explicit quiet previews do not write global stream volume.
+Actual MediaPlayer/provider/OEM behavior and board03 appearance remain unverified.
+Next default inert gate:41 classes/58 methods/212 required original images,
+including actual tone-asset bytes, fake grant release with private SQLite and
+16 tone selector/import/preview/cancel states. Native playback remains disabled.

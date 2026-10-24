@@ -338,6 +338,14 @@ for row in rows:
         row["validation"] += " Later gradedMath1 native7frame configuration passes at12c8c0f; new QR task metadata/decoder/ownership14 pure cases pass but12frame inert gate is pending. Routine card cream icon wells/action divider are later source, requiring new originals."
         row["notes"] = "Additive ordered1–8task routine, per-task rounds/targets/graded Math and newly enrolled QR code, step-sensor Walk, Math/Memory/Sequence/Retype/Shake/NFC. Runtime callbacks fence occurrence/unit; legacy scalar behavior remains. QR actual camera/live challenge, silent interactive routine preview and full visual fidelity remain unverified or missing."
 
+# Board03 tone flow: integrated source, real asset data; output/UI acceptance is separate.
+for row in rows:
+    feature = row["feature"]
+    if feature in ("Built-in sounds", "Device ringtone"):
+        row.update(status="partial", screens="07", implementation=["AlarmTones.java", "ToneWaveform.java", "AlarmTonePreview.java", "ToneDecoderLease.java", "AlarmToneAudio.java", "AlarmToneImport.java", "AlarmToneScreen.java", "AlarmAudioSink.java", "AlarmEditorActivity.java"],
+            validation="AlarmTonePreviewTest8, ToneWaveformTest3 and ToneDecoderLeaseTest3 pass on agent branch; debug/native APK and lint pass. Original Daybreak/Pulse SHA256 bytes preserved. AlarmToneAssetsTest1/AlarmToneGrantTest1/AlarmToneFlowTest1 and16 original UI states await native execution. Peer decoder/grant lifecycle findings corrected; actual MediaPlayer/SAF/OEM behavior unverified.",
+            notes="Actual Daybreak/Pulse/original Chime PCM and32 measured peak bins; no manufactured external/default waves. Separate0–25 percent digital preview, explicit Play/Pause/Stop, process decoder lease,8s prepare and20s wall bounds, focus/noisy/lifecycle/alarm-occupancy guards without global volume writes. Validated explicit persisted content imports, source cancellation/rotation fencing and shared grant preservation. Device alarm remains under My audio. Full screen fidelity, actual output/provider compatibility and broad tone catalogue remain open.")
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

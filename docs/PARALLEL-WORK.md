@@ -64,3 +64,11 @@ and single artifact download. Tone author is fixing peer-reviewed process-wide
 decoder ownership and cancellation-time URI-grant lifecycle before integration.
 Automatic worker now owns designed wake-check prompt/countdown/confirmation
 with fake scheduling; no personal-phone or actual effects test authorized.
+
+Tone integrated8239b4e with combined QR hooks preserved;95edda2 full build
+415pure/52suites0failures/errors/skips, lint0errors86warnings, debug/native/
+releasePASS3m22. Next default41classes58methods212originals includes3new tone
+classes/16frames, fake preview/provider/grant release only. Source peer review
+clears decoder and shared grant fixes; actual output/screens remain pending.
+Wake-check worker has15pure+2native/11frame source candidate and owns next local
+build slot. Root downloading terminalCI40047180910 once before assigning review.
