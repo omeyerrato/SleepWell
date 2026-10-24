@@ -128,8 +128,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
     private void dismiss() {
         synchronized(Scheduler.class){if(!AlarmService.current(this,occurrence)){finish();return;}
         if(alarm.awakeCheck>0 && alarm.id>0) {
-            try { Scheduler.at(this,alarm.id,Scheduler.CHECK,System.currentTimeMillis()+alarm.awakeCheck*60000L);Prefs.put(this,"checkPending",alarm.id);Prefs.put(this,"check_alarm",alarm.json().toString()); }
-            catch(SecurityException e) { Ui.toast(this,"Wake-up check could not be scheduled."); }
+            if(!WakeChecks.arm(this,alarm,occurrence))Ui.toast(this,"Wake-up check needs attention. Open the check from Tonight.");
         }
         AlarmService.stop(this,occurrence);
         try { stopLockTask(); } catch(IllegalStateException ignored) {}

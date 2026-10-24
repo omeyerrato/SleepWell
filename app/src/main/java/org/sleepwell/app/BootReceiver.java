@@ -14,5 +14,6 @@ public class BootReceiver extends BroadcastReceiver {
                 s.recoverInterrupted();
             }
         }
+        WakeChecks.reconcile(c);
     }
 }

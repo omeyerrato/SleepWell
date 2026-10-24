@@ -21,11 +21,12 @@ public final class Scheduler {
         c.getSystemService(AlarmManager.class).setAlarmClock(new AlarmManager.AlarmClockInfo(time,Notifications.home(c)),intent(c,id,action));
     }
     static void schedule(Context c,Alarm a) {
+        WakeChecks.alarmEdited(c,a);
         cancel(c,a.id,FIRE);
         if(a.enabled) { long next=a.next(Math.max(System.currentTimeMillis(),Prefs.of(c).getLong("lastOccurrence_"+a.id,0))); at(c,a.id,FIRE,next); Prefs.put(c,"deadline_"+a.id,next); }
         else Prefs.put(c,"deadline_"+a.id,0L);
     }
-    static void cancel(Context c,int id,String action) { c.getSystemService(AlarmManager.class).cancel(intent(c,id,action)); }
+    static void cancel(Context c,int id,String action) { if(CHECK.equals(action))WakeChecks.cancelForAlarm(c,id);c.getSystemService(AlarmManager.class).cancel(intent(c,id,action)); }
     static void all(Context c) {
         try(Store s=new Store(c)) { for(Alarm a:s.alarms()) schedule(c,a); }
         bedtime(c);
@@ -57,6 +58,7 @@ public final class Scheduler {
             }
             // Overlapping scheduled alarms share the currently active challenge, but both schedules advance.
             if(alreadyRinging)return;
+            WakeChecks.supersede(c);
             Prefs.put(c,"challengeCompleted",0);Prefs.put(c,"mathTask","");Prefs.put(c,"retypeTask","");
             Prefs.of(c).edit().putLong("alarmStartedElapsed",android.os.SystemClock.elapsedRealtime()).putString("alarmRun",java.util.UUID.randomUUID().toString()).putBoolean("forceBackup",false).putString("active_alarm",a.json().toString()).putBoolean("ringing",true).apply();
             if(a.backupMinutes>0 && allowed(c))at(c,a.id,BACKUP,System.currentTimeMillis()+a.backupMinutes*60000L);

@@ -93,7 +93,7 @@ public class MainActivity extends Activity {
             public void settings(){tab=4;render();}
             public void start(){tracking();}
             public void activeAlarm(){startActivity(new Intent(MainActivity.this,AlarmActivity.class));}
-            public void confirmCheck(){int id=Prefs.number(MainActivity.this,"checkPending",0);Scheduler.cancel(MainActivity.this,id,Scheduler.CHECK);Prefs.put(MainActivity.this,"checkPending",0);render();}
+            public void confirmCheck(){WakeChecks.review(MainActivity.this);}
             public void update(Alarm a){try{Prefs.put(MainActivity.this,"lastOccurrence_"+a.id,0L);Scheduler.schedule(MainActivity.this,a);store.save(a);}catch(SecurityException e){Ui.toast(MainActivity.this,e.getMessage());}render();}
         });
     }
