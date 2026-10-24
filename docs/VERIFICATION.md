@@ -1106,3 +1106,25 @@ Fresh UI/canvas execution is required: full gate51classes/102methods/299images,
 new explicitly focused report profile4classes/5methods/13requiredimages, with
 full_app_review=false. Eight reference frames, root Report empty state and four
 clock/chart states are mandatory. No data is fabricated to fill missing periods.
+
+## 2026-10-24: combined build and requested phone update
+
+Exact source613e44b (includes Report1df91fe, recurring9a3ca04 and Skipf2cd55f)
+passes debug APK, native test APK, release APK, all500 pure tests/60 suites with
+zero failures/errors/skips, and lint0errors/87warnings in5m30. Independent source
+review confirms integrated runtime/Backup/Editor guards. Full native gate is now
+53classes/112methods/314required originals; fresh execution and visual review
+remain pending, and existing classifier positivity failure remains unresolved.
+
+On the user's reconnected S23 Ultra, a fresh private app-data backup and installed
+APK were saved locally before installation. Existing database was schema6 with
+one alarm, one completed night, four epochs and no clips; no ringing/tracking/
+automatic-armed flags or unfinished night were present. Both APK signer hashes
+match49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c.
+ADB install-r returned Success for source613e44b, APK SHA256
+babc2846798df9049be219cc00029f29964afa66d433d49861dc1e2e6a948f42.
+The launch request returned android/com.android.internal.app.SuspendedAppDcActivity,
+then USB disconnected. Installation succeeded; actual app foreground and postupdate
+schema/data comparison remain unverified. No suspension setting was changed.
+No alarm, challenge, playback, microphone, tracking, vibration, flashlight,
+power-menu or screen-lock test was performed. Private phone artifacts stay local.

@@ -462,6 +462,19 @@ for row in rows:
     if any(name in row["implementation"] for name in ("ReportScreen.java", "PeriodTimeline.java", "RecordRibbon.java", "TrendsChart.java", "HistoryActivity.java", "RecordEditorActivity.java")):
         row["validation"] += " Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred."
 
+# Saved occurrence exceptions have source coverage, not yet a fresh native acceptance result.
+for row in rows:
+    if row["feature"] == "Skip and restore next occurrence":
+        row.update(status="partial", screens="04, root Alarms, supporting Skip confirmation/Undo/retry", implementation=["AlarmSkip.java", "AlarmSkipJson.java", "AlarmSkips.java", "AlarmSkipUi.java", "Alarm.java", "Scheduler.java", "AlarmReceiver.java", "AlarmEditorActivity.java", "MainActivity.java"], validation="Author first build: AlarmSkipTest12 pass, debug/native APKs and lint0errors87warnings. Final guarded Editor/new-ID/atomic replacement and confirmation-clock refinements passed independent source review and integrate asf2cd55f. Exact combined613e44b build passes debug/native/release APK, all500 pure cases/60 suites, and lint0errors87warnings in5m30. Phone install-r returned Success after private backup; app launch was suspended and USB disconnected before postupdate verification. AlarmSkipStorageTest8 and AlarmSkipFlowTest2/15 original captures require fresh native execution; CI contract53classes/112methods/314images includes both classes.", notes="Durable local-calendar skip and visible Undo/retry preserve recurring enable state; one-time skip disables and Undo expires at its original local deadline. Strict metadata/ownership fences queued deliveries, stale editors and concurrent replacement; non-schedule edits preserve current skip. Restore clears skip authority and imports disabled. A saved unconfirmed scheduling marker survives interruption; platform scheduling/delivery remains unverified and the final-check/platform-call race is documented in SKIP-NEXT-ALARM.md. Holiday rules remain separate and missing.")
+    elif row["feature"] == "Alarm-only layout / skip occurrence / holiday skipping":
+        row["notes"] = row["notes"].replace("Skip/restore occurrence and holiday rules remain missing.", "Skip/restore occurrence is now source-integrated with pending native/visual verification; holiday rules remain missing.")
+    elif row["feature"] == "Automatic tracking":
+        row["validation"] += " Final recurring UI fix9a3ca04 refreshes permission summaries after failed Save without losing draft/revision/error state, and resolves fresh native actions once; independent source review clear. Same2 methods/13 originals require rerun."
+    elif row["feature"] == "Correct sound labels / favorites / export":
+        row["validation"] += " Strict reviewer individually inspected all18 latest label originals: bounded selector/provenance/error corrections pass. Broader automatic classification, alternate formats and actual capture/playback remain incomplete."
+    elif row["feature"] == "Nap timer":
+        row["validation"] += " Strict reviewer individually inspected21 latest Nap originals: icon/error-viewport/clock-projection corrections pass narrowly; removed/invalid integration frames remain absent and are not accepted."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
