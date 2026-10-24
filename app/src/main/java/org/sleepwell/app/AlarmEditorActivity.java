@@ -17,6 +17,7 @@ public class AlarmEditorActivity extends Activity {
     @Override public void onCreate(Bundle state){super.onCreate(state);store=Records.open(this);RecordUi.review(this);
         try{alarm=Alarm.read(new JSONObject(state!=null?state.getString("draft"):getIntent().getStringExtra("alarm")));}
         catch(Exception e){finish();return;}
+        if(alarm.nap!=null||alarm.napInvalid){startActivity(RecordUi.intent(this,NapActivity.class).putExtra("id",alarm.id));finish();return;}
         route=state!=null?state.getString("route","edit"):getIntent().getStringExtra("route");if(route==null)route="edit";inspectedTask=state==null?alarm.challenge:state.getString("inspectedTask",alarm.challenge);taskRounds=state==null?alarm.difficulty:state.getInt("taskRounds",alarm.difficulty);soundTab=state==null?(alarm.tone.startsWith("content:")?1:0):state.getInt("soundTab",0);
         if(state!=null){qrRequest=state.getString("qrRequest","");taskSteps=state.getInt("taskSteps",10);walkPermissionError=state.getString("walkPermissionError","");mathError=state.getString("mathError","");try{if(state.containsKey("taskMath"))taskMath=MathSettingsJson.decode(new JSONObject(state.getString("taskMath")));}catch(Exception ignored){taskMath=MathSettings.LEGACY;}}
         routineDraft=alarm.challenges();if(state!=null){taskIndex=state.getInt("taskIndex",-1);try{routineDraft=ChallengeRoutineJson.decode(new JSONArray(state.getString("routineDraft")));}catch(Exception ignored){routineDraft=alarm.challenges();taskIndex=-1;}}
@@ -46,7 +47,7 @@ public class AlarmEditorActivity extends Activity {
         Design.item(body,"sound","Sound",toneName(alarm.tone),()->go("sound"));Design.line(body);
         Design.item(body,"alarm","Snooze",alarm.snoozeMinutes+" min",()->go("snooze"));Design.line(body);
         Design.item(body,"shield","Alarm protection","All alarms",()->startActivity(RecordUi.intent(this,AlarmProtectionActivity.class)));Design.line(body);
-        if(store.alarm(alarm.id)!=null){Design.button(body,"Delete alarm",false,()->new AlertDialog.Builder(this).setTitle("Delete this alarm?").setPositiveButton("Delete",(d,w)->{for(String action:new String[]{Scheduler.FIRE,Scheduler.SNOOZE,Scheduler.CHECK,Scheduler.BACKUP})Scheduler.cancel(this,alarm.id,action);store.deleteAlarm(alarm.id);finish();}).setNegativeButton("Keep",null).show());}
+        if(store.alarm(alarm.id)!=null){Design.button(body,"Delete alarm",false,()->new AlertDialog.Builder(this).setTitle("Delete this alarm?").setPositiveButton("Delete",(d,w)->{for(String action:new String[]{Scheduler.FIRE,Scheduler.SNOOZE,Scheduler.CHECK,Scheduler.BACKUP})Scheduler.cancel(this,alarm.id,action);Naps.cancelJob(this,alarm);store.deleteAlarm(alarm.id);finish();}).setNegativeButton("Keep",null).show());}
         LinearLayout footer=RecordUi.footer(body);Design.toggle(footer,"Alarm on","Rings at your chosen local time",alarm.enabled,on->alarm.enabled=on);Design.space(footer,12);Design.button(footer,"Save alarm",true,this::save);
     }
     private void smart(LinearLayout body){Design.header(body,"Smart wake-up",this::back);

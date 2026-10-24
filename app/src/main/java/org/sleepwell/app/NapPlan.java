@@ -17,7 +17,7 @@ final class NapPlan {
  boolean sameBoot(Clock c){return boot==c.boot()&&device.equals(c.device());}
  long remaining(Clock c){return (sameBoot(c)?startElapsed+minutes*60000L-c.elapsed():deadlineWall()-c.wall());}
  long startsIn(Clock c){return sameBoot(c)?startElapsed-c.elapsed():startWall-c.wall();}
- long projectedDeadline(Clock c){return Math.addExact(c.wall(),Math.max(0,remaining(c)));}
+ long projectedDeadline(Clock c){return Math.addExact(c.wall(),remaining(c));}
  NapPlan state(Phase p,String issue){return new NapPlan(nonce,device,startWall,startElapsed,boot,minutes,deleteAfter,p,issue);}
  boolean smartReady(Clock c,int window,double movement,int active,int samples){return phase==Phase.PENDING&&startsIn(c)<=0&&window>0&&remaining(c)>0&&remaining(c)<=Math.min(window,minutes)*60000L&&Double.isFinite(movement)&&movement>=.12&&active>=2&&samples>=20;}
 }

@@ -20,20 +20,24 @@ On the same device and boot, remaining duration uses `elapsedRealtime`; wall-clo
 
 **Crash boundary:** a durable claim and an external foreground-service launch cannot be one atomic transaction. A crash after claim but before service launch, or an uncertain launch error, is not automatically retried because that could duplicate an alarm. An uncertain delivery remains disabled with review information. Starting another nap is explicit and remains blocked while an alarm is actually ringing. Overlapping alarms still share the existing single alarm runtime; a conflicting nap delivery reports an error rather than promising a second independent alarm. Failed cleanup may leave an ended record to remove manually.
 
-## Integration hooks (parent-owned MainActivity)
+## App integration
 
-1. `MainActivity.nap()`: `startActivity(RecordUi.intent(this, NapActivity.class));`.
-2. Opening a saved row with `alarm.nap != null` should open `NapActivity` with its `id`, rather than the recurring alarm editor. Invalid nap metadata should produce a review error, not be silently reinterpreted as an ordinary alarm.
-3. Disabling a pending nap: `Naps.cancel(context, alarm)` then refresh the alarm list. This performs durable cancellation before removing its matching job.
-4. Enabling an inactive/restored nap must open `NapActivity` with its `id` for an explicit **Start nap**. Do not set `enabled=true` and pass stale anchors to calendar scheduling. The screen starts a new duration and nonce. Ordinary alarm toggles retain their current path.
-5. Tonight/NightWindow must include enabled pending naps by `NapPlan.projectedDeadline(Naps.clock(context))`, rather than computing a recurring occurrence from `Alarm.hour/minute`. This is necessary for future scheduled dates as well as clock changes.
-6. When removing an alarm elsewhere, cancel its owned nap job via `Naps.cancelJob(context, alarm)` as well as the existing scheduling cleanup. An orphaned job is still fenced by the missing row, but explicit cleanup removes its system alarm-clock indicator.
+1. `MainActivity.nap()` opens the native `NapActivity`.
+2. Saved nap row editing opens `NapActivity` with its ID. A defensive ordinary-editor guard redirects nap metadata too. Invalid metadata opens a review error and has a disabled enable switch; it is never silently reinterpreted as a recurring alarm.
+3. Disabling a pending nap in Alarms or Tonight uses `Naps.cancel(context, alarm)` then refreshes the list. This performs durable cancellation before removing its matching job.
+4. Enabling an inactive/restored nap opens `NapActivity` for an explicit **Start nap**. It does not persist enabled=true or schedule stale anchors. Start creates a new duration and nonce. Ordinary alarm toggles retain their current path.
+5. Tonight and Wind-down select their next alarm through a shared actual-deadline selector. Enabled pending naps use `NapPlan.projectedDeadline(Naps.clock(context))`. A separate relative `NightArc` branch shows actual nap start/end and chosen duration, never a bedtime-to-nap night. Weekday controls are hidden for relative naps. Expired pending timers retain a full elapsed curve with “Nap ended”; this does not assert successful alarm delivery. Ordinary night-window construction remains unchanged.
+6. Nap removal and the defensive ordinary-editor delete path cancel matching jobs as well as deleting the row. Missing-row ownership still rejects an orphaned broadcast if platform cancellation fails. Predictive back preserves nested Nap routes.
 
 ## Verification and limits
 
 `NapEngineTest`: 16 pure tests cover exact seconds, one-shot claims, cancellation, replacement, wall shifts, boot/device fallback, overdue delivery, scheduled starts, permission/scheduler failures without deadline extension, failed persistence, uncertain delivery and the actual motion gate.
 
+`NapWindowTest`: six additional pure cases cover future starts, midpoint/end, wall shifts, DST folds, overdue elapsed display and time-zone changes. The existing ten ordinary `NightWindowTest` cases remain a regression gate.
+
 `NapFlowTest`: three inert emulator-only methods, private SQLite plus fake clock/scheduling/delivery/preview. They exercise actual preset, sound, explicit quiet-preview, recreation, save, reopen, cancellation, scheduled entry, list, permission/scheduling errors/retry, strict backup rejection, inactive restore, duplicate delivery, deferred matching deletion, and a user-enabled fake-motion configuration that drives the actual smart-window transition. The fixture preserves an unrelated alarm, all original preferences and the original app database; it never starts `AlarmActivity`, services, recording, real notifications or hardware outputs. Planned 15 actual PNGs: `nap-{default,preset,tracking-required,sound,pending,recreated,reopened,cancelled,schedule,schedule-error,scheduled,list,permission-error,scheduler-error,retry}.png`.
+
+`NapIntegrationFlowTest`: one additional inert method uses private records and plans, a fake scheduling/delivery boundary, a fake clock, and a temporary process-only Java time-zone default (restored afterward; no OS clock or zone change). It exercises competing regular-alarm selection, future scheduled dates, wall and zone changes, Tonight/Wind-down/Alarms routes, explicit inactive Start, cancellation, removal, and invalid metadata routing/preservation. Eight additional planned PNGs: `nap-integration-{future,clock-shift,zone,wind-down,inactive,started,removed,invalid}.png`. Across both classes: four methods and 23 screenshots, pending actual CI execution.
 
 Compilation and pure tests do not establish native test passage, visual parity, actual alarm delivery, Doze/reboot behavior, real smart wake effectiveness or hardware correctness. Those remain separately reported evidence gates.
 

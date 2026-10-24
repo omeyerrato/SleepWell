@@ -94,7 +94,8 @@ public class MainActivity extends Activity {
             public void start(){tracking();}
             public void activeAlarm(){startActivity(new Intent(MainActivity.this,AlarmActivity.class));}
             public void confirmCheck(){WakeChecks.review(MainActivity.this);}
-            public void update(Alarm a){try{Prefs.put(MainActivity.this,"lastOccurrence_"+a.id,0L);Scheduler.schedule(MainActivity.this,a);store.save(a);}catch(SecurityException e){Ui.toast(MainActivity.this,e.getMessage());}render();}
+            public void edit(Alarm a){editAlarm(a);}
+            public void update(Alarm a){if(a.nap!=null||a.napInvalid){if(a.enabled)editAlarm(a);else try{Naps.cancel(MainActivity.this,a);}catch(RuntimeException failure){Ui.toast(MainActivity.this,failure.getMessage());}render();return;}try{Prefs.put(MainActivity.this,"lastOccurrence_"+a.id,0L);Scheduler.schedule(MainActivity.this,a);store.save(a);}catch(SecurityException e){Ui.toast(MainActivity.this,e.getMessage());}render();}
         });
     }
     private void tracking(){startActivityForResult(new Intent(this,TrackingActivity.class).putExtra("visualReview",getIntent().getBooleanExtra("visualReview",false)),30);}
@@ -108,10 +109,10 @@ public class MainActivity extends Activity {
             Design.text(body,"Choose a time, a sound and a challenge for your first alarm.",15,400,Design.MUTED);Design.space(body,32);
         }
         for(Alarm a:alarms){
-            LinearLayout top=Design.row(this);TextView time=Design.text(this,AlarmEditorActivity.displayTime(this,a),54,700,a.enabled?Design.INK:0xff8a7e78);
-            time.setText(Design.timeText(AlarmEditorActivity.displayTime(this,a)));time.setMinimumHeight(Ui.dp(this,64));time.setGravity(Gravity.CENTER_VERTICAL);time.setContentDescription("Edit "+a.label);time.setOnClickListener(v->editAlarm(a));top.addView(time,new LinearLayout.LayoutParams(0,-2,1));
-            Switch enabled=new Switch(this);enabled.setContentDescription("Enable "+a.label);Design.styleSwitch(this,enabled,Design.BROWN,0xffbcb5b0);enabled.setChecked(a.enabled);top.addView(enabled);body.addView(top);
-            enabled.setOnCheckedChangeListener((v,on)->{if(on&&!Scheduler.allowed(this)){Ui.toast(this,"Allow exact alarms in Reliability first.");render();return;}a.enabled=on;try{if(on)Prefs.put(this,"lastOccurrence_"+a.id,0L);Scheduler.schedule(this,a);store.save(a);}catch(SecurityException e){Ui.toast(this,e.getMessage());}render();});
+            LinearLayout top=Design.row(this);TextView time=Design.text(this,Naps.display(this,a),54,700,a.enabled?Design.INK:0xff8a7e78);
+            time.setText(Design.timeText(Naps.display(this,a)));time.setMinimumHeight(Ui.dp(this,64));time.setGravity(Gravity.CENTER_VERTICAL);time.setContentDescription("Edit "+a.label);time.setOnClickListener(v->editAlarm(a));top.addView(time,new LinearLayout.LayoutParams(0,-2,1));
+            Switch enabled=new Switch(this);enabled.setContentDescription("Enable "+a.label);Design.styleSwitch(this,enabled,Design.BROWN,0xffbcb5b0);enabled.setChecked(a.enabled&&!a.napInvalid);enabled.setEnabled(!a.napInvalid);top.addView(enabled);body.addView(top);
+            enabled.setOnCheckedChangeListener((v,on)->{if(a.nap!=null||a.napInvalid){if(on)editAlarm(a);else try{Naps.cancel(this,a);}catch(RuntimeException failure){Ui.toast(this,failure.getMessage());}render();return;}if(on&&!Scheduler.allowed(this)){Ui.toast(this,"Allow exact alarms in Reliability first.");render();return;}a.enabled=on;try{if(on)Prefs.put(this,"lastOccurrence_"+a.id,0L);Scheduler.schedule(this,a);store.save(a);}catch(SecurityException e){Ui.toast(this,e.getMessage());}render();});
             LinearLayout identity=Design.row(this),copy=Design.col(this);Design.text(copy,a.label,17,600,Design.INK);Design.space(copy,4);Design.text(copy,days(a),13,400,Design.MUTED);identity.addView(copy,new LinearLayout.LayoutParams(0,-2,1));
             View edit=Design.iconButton(this,"chevron","Alarm settings for "+a.label,()->editAlarm(a));identity.addView(edit,new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48)));identity.setMinimumHeight(Ui.dp(this,48));identity.setOnClickListener(v->editAlarm(a));body.addView(identity);
             Design.space(body,16);Design.line(body);Design.space(body,12);
@@ -123,16 +124,10 @@ public class MainActivity extends Activity {
     private void alarmOptions(LinearLayout body){RecordUi.header(body,"Alarm options",()->{tab=1;render();});Design.space(body,14);Design.item(body,"shield","Alarm protection","All alarms",()->startActivity(RecordUi.intent(this,AlarmProtectionActivity.class)));Design.space(body,20);PlanActivity.detail(body,"phone","Bedside NFC tag",Prefs.text(this,"nfcTag","").isEmpty()?"No tag enrolled":"A tag is enrolled","Set up",this::enrollNfc);Design.line(body);Design.space(body,12);Design.text(body,"Place the tag across the room for an NFC challenge. Tag identifiers are a wake-up habit tool, not a security credential.",13,400,Design.MUTED);}
     private Alarm newAlarm(){return new Alarm(store.alarms().stream().mapToInt(a->a.id).max().orElse(0)+1);}
     private void alarmSetting(LinearLayout body,String icon,String title,String value,Runnable action){LinearLayout row=Design.item(body,icon,title,value,action);row.setMinimumHeight(Ui.dp(this,48));}
-    private String days(Alarm a) {if(a.days.isEmpty())return "One time";if(a.days.equals(Set.of(1,2,3,4,5)))return "Mon – Fri";if(a.days.equals(Set.of(6,7)))return "Sat – Sun";if(a.days.size()==7)return "Every day";String[] d={"Mon","Tue","Wed","Thu","Fri","Sat","Sun"};List<String> v=new ArrayList<>();for(int i=1;i<=7;i++)if(a.days.contains(i))v.add(d[i-1]);return String.join(" ",v);}
+    private String days(Alarm a) {if(a.nap!=null||a.napInvalid)return Naps.summary(this,a);if(a.days.isEmpty())return "One time";if(a.days.equals(Set.of(1,2,3,4,5)))return "Mon – Fri";if(a.days.equals(Set.of(6,7)))return "Sat – Sun";if(a.days.size()==7)return "Every day";String[] d={"Mon","Tue","Wed","Thu","Fri","Sat","Sun"};List<String> v=new ArrayList<>();for(int i=1;i<=7;i++)if(a.days.contains(i))v.add(d[i-1]);return String.join(" ",v);}
     private void editAlarm(Alarm source) {editAlarm(source,"edit");}
-    private void editAlarm(Alarm source,String route) {startActivity(RecordUi.intent(this,AlarmEditorActivity.class).putExtra("alarm",source.json().toString()).putExtra("route",route));}
-    private void nap() {
-        LinearLayout body=Ui.column(this);body.setPadding(24,8,24,8);final int[] minutes={20};Ui.range(body,"Nap duration minutes",20,1,180,n->minutes[0]=n);
-        new AlertDialog.Builder(this).setTitle("A little reset").setView(body).setPositiveButton("Set nap",(d,w)->{
-            if(!Scheduler.allowed(this)){Ui.toast(this,"Allow exact alarms in Setup first.");return;}
-            Alarm a=new Alarm(store.alarms().stream().mapToInt(x->x.id).max().orElse(0)+1);ZonedDateTime t=ZonedDateTime.now().plusMinutes(minutes[0]);a.hour=t.getHour();a.minute=t.getMinute();a.label=minutes[0]+" minute nap";a.smartWindow=0;a.enabled=true;store.save(a);Scheduler.schedule(this,a);render();
-        }).setNegativeButton("Cancel",null).show();
-    }
+    private void editAlarm(Alarm source,String route) {if(source.nap!=null||source.napInvalid){startActivity(RecordUi.intent(this,NapActivity.class).putExtra("id",source.id));return;}startActivity(RecordUi.intent(this,AlarmEditorActivity.class).putExtra("alarm",source.json().toString()).putExtra("route",route));}
+    private void nap() {startActivity(RecordUi.intent(this,NapActivity.class));}
     private void history(LinearLayout body){startActivity(RecordUi.intent(this,HistoryActivity.class));tab=2;}
     private void showNight(long id){startActivity(RecordUi.intent(this,RecordEditorActivity.class).putExtra("record",id));}
     private void bedtime(LinearLayout body) {
@@ -141,8 +136,8 @@ public class MainActivity extends Activity {
         SleepPlan plan=SleepPlans.load(this);winddownValue=Design.text(body,"",46,700,Design.LILAC);winddownValue.setGravity(Gravity.CENTER);Design.space(body,5);winddownCaption=Design.text(body,"",22,600,Design.LILAC);winddownCaption.setGravity(Gravity.CENTER);updateWindDown();Design.space(body,12);TextView bedtime=Design.text(body,"Target bedtime  "+Design.clock(this,plan.bedtime),16,500,Design.LILAC);bedtime.setGravity(Gravity.CENTER);bedtime.setOnClickListener(v->startActivity(RecordUi.intent(this,PlanActivity.class)));Design.space(body,16);
         FrameLayout scene=new FrameLayout(this);ImageView art=new ImageView(this);art.setImageResource(R.drawable.bedside_winddown);art.setScaleType(ImageView.ScaleType.CENTER_CROP);art.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);scene.addView(art,new FrameLayout.LayoutParams(-1,-1));View blend=new View(this);blend.setBackground(new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM,new int[]{Design.PLUM,0x00241e30}));scene.addView(blend,new FrameLayout.LayoutParams(-1,Ui.dp(this,40),Gravity.TOP));LinearLayout.LayoutParams sceneSize=new LinearLayout.LayoutParams(-1,Ui.dp(this,188));sceneSize.leftMargin=sceneSize.rightMargin=-Ui.dp(this,24);body.addView(scene,sceneSize);Design.space(body,12);
         LinearLayout panel=Design.col(this);Design.pad(panel,14,4);panel.setBackground(Design.shape(this,0xff342b40,20));body.addView(panel);
-        Alarm next=null;long nearest=Long.MAX_VALUE;for(Alarm alarm:store.alarms())if(alarm.enabled){long when=alarm.next(System.currentTimeMillis());if(when<nearest){nearest=when;next=alarm;}}
-        nightOption(panel,"alarm","Alarm",next==null?"No alarm enabled":"Set for "+AlarmEditorActivity.displayTime(this,next),next==null?"Off":AlarmEditorActivity.displayTime(this,next),()->{tab=1;render();});
+        Naps.Upcoming upcoming=Naps.next(this,store.alarms(),TonightScreen.clock.getAsLong(),ZoneId.systemDefault());Alarm next=upcoming.alarm;
+        nightOption(panel,"alarm",next!=null&&next.nap!=null?"Nap":"Alarm",next==null?"No alarm enabled":next.nap!=null?Naps.summary(this,next):"Set for "+AlarmEditorActivity.displayTime(this,next),next==null?"Off":Naps.display(this,next),()->{if(next!=null&&next.nap!=null)editAlarm(next);else{tab=1;render();}});
         nightOption(panel,"shield","App guard","Block distracting apps",Prefs.flag(this,"bedGuard")?(guardEnabled()?"On":"Access needed"):"Off",()->startActivity(RecordUi.intent(this,GuardActivity.class)));
         try{SoundMix sounds=SoundPreferences.load(this);nightOption(panel,sounds.primary.equals("Rain")?"rain":"wave","Sleep sound",sounds.label(),sounds.timerMinutes+" min",this::sleepSound);}catch(RuntimeException invalid){nightOption(panel,"wave","Sleep sound","Choose your sounds","",this::sleepSound);}
         Design.space(body,6);Button track=Design.button(body,"Start sleep tracking",true,this::tracking);track.setTextColor(Design.PLUM);track.setBackground(Design.touch(this,Design.LILAC,18));windDownIcon(track,"report",Design.PLUM);
@@ -206,15 +201,15 @@ public class MainActivity extends Activity {
         try {
             if(request==TONE) {if(pendingTone==null){Ui.toast(this,"Please choose the audio file again from Edit alarm.");return;}getContentResolver().takePersistableUriPermission(uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);pendingTone.tone=uri.toString();Prefs.put(this,"lastOccurrence_"+pendingTone.id,0L);store.save(pendingTone);try{Scheduler.schedule(this,pendingTone);}catch(SecurityException e){pendingTone.enabled=false;store.save(pendingTone);}Ui.toast(this,"Custom audio saved. Test it before relying on it.");}
             else if(request==EXPORT_JSON||request==EXPORT_CSV) {
-                String content;
-                if(request==EXPORT_JSON)content=store.backup().toString(2);
+                String content;boolean labels=false;
+                if(request==EXPORT_JSON){JSONObject exported=store.backup();labels=exported.optInt("format",1)>=4;content=exported.toString(2);}
                 else content=Records.csv(store);
-                try(OutputStream out=getContentResolver().openOutputStream(uri,"wt")){if(out==null)throw new IOException("No output stream");out.write(content.getBytes(StandardCharsets.UTF_8));}Ui.toast(this,"Export saved. Backups contain graphs and notes, but exclude audio files and settings.");
+                try(OutputStream out=getContentResolver().openOutputStream(uri,"wt")){if(out==null)throw new IOException("No output stream");out.write(content.getBytes(StandardCharsets.UTF_8));}Ui.toast(this,request==EXPORT_CSV?"CSV saved with sleep records, notes and tags.":labels?"JSON saved: alarms, records, notes and sound labels. Audio files and app settings are excluded.":"JSON saved: alarms, records and notes. Audio files and app settings are excluded.");
             } else if(request==IMPORT) {
                 if(TrackingService.running||Prefs.flag(this,"ringing")){Ui.toast(this,"End tracking and alarms before restoring.");return;}
                 String raw;try(InputStream in=getContentResolver().openInputStream(uri)){if(in==null)throw new IOException("No input stream");ByteArrayOutputStream buffer=new ByteArrayOutputStream();byte[] chunk=new byte[8192];int n;while((n=in.read(chunk))!=-1){buffer.write(chunk,0,n);if(buffer.size()>8*1024*1024)throw new IOException("Backup exceeds 8 MB");}raw=buffer.toString(StandardCharsets.UTF_8.name());}
                 JSONObject backup=new JSONObject(raw);Backup.validate(backup);
-                new AlertDialog.Builder(this).setTitle("Replace local data from backup?").setMessage("This replaces alarms, sessions, graphs and notes. Existing audio is deleted. Imported alarms start disabled so you can review them.").setPositiveButton("Restore",(d,w)->{try{Backup.restore(this,store,backup);Ui.toast(this,"Data restored. Review and enable your alarms.");render();}catch(Exception e){Ui.toast(this,"Restore failed: "+e.getMessage());}}).setNegativeButton("Cancel",null).show();
+                new AlertDialog.Builder(this).setTitle("Replace local data from backup?").setMessage("This replaces alarms, sleep records, graphs and notes"+(backup.optInt("format",1)>=4?", including sound labels":"")+". Existing audio is deleted. Imported alarms stay off for review.").setPositiveButton("Restore",(d,w)->{try{Backup.restore(this,store,backup);Ui.toast(this,"Data restored. Review and enable your alarms.");render();}catch(Exception e){Ui.toast(this,"Restore failed: "+e.getMessage());}}).setNegativeButton("Cancel",null).show();
             }
         }catch(Exception e){Ui.toast(this,"Could not complete this operation: "+e.getMessage());}render();
     }
