@@ -54,6 +54,14 @@ public final class ReportReferenceFlowTest {
         }
         File folder=new File(context.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"report-reference-"+name+".png")));
     }
+    private View named(View view,String description){if(android.text.TextUtils.equals(description,view.getContentDescription()))return view;if(view instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){View found=named(group.getChildAt(n),description);if(found!=null)return found;}return null;}
+    private View textView(View view,String value){if(view instanceof android.widget.TextView&&value.contentEquals(((android.widget.TextView)view).getText()))return view;if(view instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){View found=textView(group.getChildAt(n),value);if(found!=null)return found;}return null;}
+    private void completeNotes()throws Exception{
+        UiScrollable page=new UiScrollable(new UiSelector().scrollable(true));if(page.exists())assertTrue("Scroll exposes Notes",page.scrollIntoView(new UiSelector().description("Notes or dream")));
+        instrumentation.runOnMainSync(()->{int matched=0;for(Activity activity:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))if(activity instanceof RecordEditorActivity){matched++;View note=named(activity.getWindow().getDecorView(),"Notes or dream");assertNotNull(note);note.requestRectangleOnScreen(new android.graphics.Rect(0,0,note.getWidth(),note.getHeight()),true);}assertEquals("Exactly one editor owns the note geometry",1,matched);});device.waitForIdle();
+        instrumentation.runOnMainSync(()->{int matched=0;for(Activity activity:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))if(activity instanceof RecordEditorActivity){matched++;View root=activity.getWindow().getDecorView(),note=named(root,"Notes or dream"),save=textView(root,"Save changes");assertNotNull(note);assertNotNull(save);android.graphics.Rect field=new android.graphics.Rect(),footer=new android.graphics.Rect();assertTrue(note.getGlobalVisibleRect(field));assertTrue(save.getGlobalVisibleRect(footer));assertEquals("The complete note field can be exposed",note.getHeight(),field.height());assertEquals(note.getWidth(),field.width());assertTrue("Notes must stay fully above the fixed Save footer",field.bottom<=footer.top);}assertEquals("Exactly one editor owns the note geometry",1,matched);});
+    }
+    private void reportActionsFit()throws Exception{assertTrue("Loaded report actions",device.wait(Until.hasObject(By.desc("Report options")),5000));instrumentation.runOnMainSync(()->{int matched=0;for(Activity activity:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))if(activity instanceof RecordReportActivity){matched++;View root=activity.getWindow().getDecorView();for(String name:new String[]{"Edit sleep","Report options","View sound events"}){View action=named(root,name);assertNotNull(name,action);android.graphics.Rect visible=new android.graphics.Rect();assertTrue(name,action.getGlobalVisibleRect(visible));assertEquals(name+" complete touch target",action.getHeight(),visible.height());assertTrue(name+" 48dp target",visible.height()>=Design.dp(context,48));}}assertEquals("Exactly one report owns the action geometry",1,matched);});}
     private void seed(Store store){ZoneId zone=ZoneId.systemDefault();LocalDate latest=LocalDate.now(zone).minusDays(1);int[] durations={462,455,485,430,475,450,483};android.database.sqlite.SQLiteDatabase db=store.getWritableDatabase();db.beginTransaction();try{for(int night=0;night<7;night++){
         long end=latest.minusDays(night).atTime(6,30).atZone(zone).toInstant().toEpochMilli(),start=end-(durations[night]+(night==3?10:0))*60000L;long id=2000+night;
         db.execSQL("INSERT INTO sessions(id,start,end,active_ms,note,source,origin,zone) VALUES(?,?,?,?,?,'tracked','local',?)",new Object[]{id,start,end,durations[night]*60000L,"Synthetic CI sensor fixture, never a personal recording",zone.getId()});
@@ -99,7 +107,9 @@ public final class ReportReferenceFlowTest {
             assertTrue(device.hasObject(By.text("1 event")));
             assertTrue(device.hasObject(By.text("Analysis only · no recordings saved.")));
             assertFalse(device.hasObject(By.textStartsWith("Play")));
-            capture("night");
+            reportActionsFit();capture("night");
+            object("Report options").click();click("About this recording");title("About this recording");click("Got it");title("Sleep report");
+            object("Report options").click();click("View trends");title("Trends");device.pressBack();title("Sleep report");reportActionsFit();
             object("View sound events").click();
             title("Sound events");
             assertTrue(device.wait(Until.hasObject(By.desc("All (4)")),5000));
@@ -116,9 +126,9 @@ public final class ReportReferenceFlowTest {
             title("Sleep report");
             object("Edit sleep").click();
             title("Edit sleep");
-            object("Notes or dream");
+            object("Notes or dream");completeNotes();
             capture("editor");
-            click("Add tag");object("Tag name").setText("Late meal");click("Add");click("Add tag");object("Tag name").setText("Exercise");click("Add");object("Notes or dream").setText("Fixture note saved from the native editor");capture("tags-notes");
+            click("Add tag");object("Tag name").setText("Late meal");click("Add");click("Add tag");object("Tag name").setText("Exercise");click("Add");object("Notes or dream").setText("Fixture note saved from the native editor");completeNotes();capture("tags-notes");
             object("Add awake period").click();
             title("Awake starts");
             click("Use time");
@@ -135,7 +145,7 @@ public final class ReportReferenceFlowTest {
             focused(RecordEditorActivity.class);
             title("Edit sleep");
             assertEquals("Fixture note saved from the native editor",object("Notes or dream").getText());
-            capture("reopened");
+            completeNotes();capture("reopened");
             object("Notes or dream").setText("This change must be discarded");
             device.pressBack();
             focused(RecordReportActivity.class);

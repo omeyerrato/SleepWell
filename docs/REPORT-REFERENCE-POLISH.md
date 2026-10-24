@@ -1,0 +1,10 @@
+# Report reference refinement
+
+Source reference: boards 01 (report) and 08 (history, trends, edit). All eight ReportReferenceFlowTest originals and root-report from CI40058852109 were inspected before editing. Existing four-tab navigation is retained.
+
+- Report retains recorded/reported timing, unavailable stages and analysis-only/missing-audio disclosures. Edit is a compact date-row action. One centered sound-events action follows counts. Secondary signals, trends and explanation actions use a real header menu; the menu closes on parent pause/destroy. No Play control or waveform is fabricated for analysis-only events.
+- History uses a smaller duration column/type and sixteen measured aggregate patches instead of forty-two dense strips. PeriodTimeline shares the same painter using actual immutable epochs loaded with the record. Paused and marked-awake gaps remain unfilled; an awake underline is a user annotation. Manual coverage remains uniform, even if a malformed/imported manual record has attached epoch rows. No shading represents inferred sleep stages.
+- Editor content wraps its actual height and includes end spacing. Native acceptance explicitly scrolls the complete note field above the fixed Save footer, with persistence and cancel checks intact.
+- Trend headings/plot gutters are smaller; axes, goal line, date labels and blank missing dates remain. Calendar, overflow and details affordances use the existing warm soft discs.
+
+Local validation: debug and native test APKs compiled; ChartSeriesTest (7) and RecordModelTest (17) passed. Native execution and visual validation remain pending. ReportReferenceFlowTest retains one method/eight original PNG names and now checks complete first-frame report actions, full note bounds, and working About/trends menu navigation. ReportRibbonNativeTest adds two emulator-only private SQLite/native Canvas cases for real measured shading, paused/awake gaps, manual uniformity and immutable source rows. No physical device, alarm, microphone, media, sensor, vibration or flashlight effects are used. Compilation is not visual acceptance; fresh CI originals still require strict comparison with the boards.
