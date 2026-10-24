@@ -28,8 +28,129 @@ public final class NapIntegrationFlowTest {
  void launch()throws Exception{Instrumentation.ActivityMonitor m=i.addMonitor(MainActivity.class.getName(),null,false);try{c.startActivity(new Intent(c,MainActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));main=(MainActivity)m.waitForActivityWithTimeout(5000);assertNotNull(main);}finally{i.removeMonitor(m);}i.waitForIdleSync();}
  void text(String text){assertTrue(text,ui.wait(Until.hasObject(By.text(text)),5000));}
  void state(String text){assertTrue(text,ui.wait(Until.hasObject(By.descContains(text)),5000));}
- void clickText(String value)throws Exception{UiObject2 v=ui.wait(Until.findObject(By.text(value)),2000);if(v==null){UiScrollable scroll=new UiScrollable(new UiSelector().scrollable(true));assertTrue(value,scroll.exists());scroll.scrollIntoView(new UiSelector().text(value));v=ui.wait(Until.findObject(By.text(value)),2000);}assertNotNull(value,v);v.click();ui.waitForIdle();}
- void desc(String value)throws Exception{UiObject2 v=ui.wait(Until.findObject(By.desc(value)),2000);if(v==null){UiScrollable scroll=new UiScrollable(new UiSelector().scrollable(true));assertTrue(value,scroll.exists());scroll.scrollIntoView(new UiSelector().description(value));v=ui.wait(Until.findObject(By.desc(value)),2000);}assertNotNull(value,v);v.click();ui.waitForIdle();}
+ void clickText(String value)throws Exception{tap(By.text(value),new UiSelector().text(value),value);}
+ void desc(String value)throws Exception{tap(By.desc(value),new UiSelector().description(value),value);}
+ void tap(BySelector selector,UiSelector scrollTarget,String label)throws Exception{
+  long until=SystemClock.elapsedRealtime()+5000;
+  while(SystemClock.elapsedRealtime()<until){
+   boolean[] focused={false};i.runOnMainSync(()->focused[0]=current!=null&&!current.isDestroyed()&&current.hasWindowFocus());
+   UiObject2 found=ui.findObject(selector);
+   if(focused[0]&&found!=null)try{
+    UiObject2 hit=found;for(int parents=0;!hit.isClickable()&&parents<4;parents++){UiObject2 parent=hit.getParent();if(parent==null)break;hit=parent;}
+    if(hit.isClickable()&&hit.isEnabled()&&hit.getVisibleBounds().height()>=Design.dp(c,48)){hit.click();i.waitForIdleSync();return;}
+   }catch(StaleObjectException rebound){/* Window transition replaced the actual control. */}
+   if(found==null){UiScrollable scroll=new UiScrollable(new UiSelector().scrollable(true));if(scroll.exists())scroll.scrollIntoView(scrollTarget);}
+   SystemClock.sleep(40);
+  }
+  fail("Focused, enabled, complete control required before tapping: "+label);
+ }
+ void napState(Fixture fixture,int id,boolean enabled,NapPlan.Phase phase)throws Exception{
+  long until=SystemClock.elapsedRealtime()+5000;Alarm row;
+  do{row=fixture.nap(id);if(row!=null&&row.enabled==enabled&&row.nap!=null&&row.nap.phase==phase)return;SystemClock.sleep(40);}while(SystemClock.elapsedRealtime()<until);
+  fail("Expected saved nap "+id+" enabled="+enabled+" phase="+phase+"; actual "+(row==null?"missing":row.json().toString()));
+ }
+ void napCard(Fixture fixture,int id){NightWindow frame=NightWindow.nap(fixture.nap(id).nap,fixture.clock,ZoneId.systemDefault());UiObject2 value=ui.wait(Until.findObject(By.desc("Nap start time")),5000);assertNotNull("Live nap card value",value);assertEquals("Card and arc must use the same projected start",RecordUi.clock(c,frame.start,frame.zone),value.getText());}
  void capture(String name)throws Exception{CountDownLatch frame=new CountDownLatch(1);boolean[] ready={false};long end=SystemClock.elapsedRealtime()+5000;while(!ready[0]&&SystemClock.elapsedRealtime()<end){i.runOnMainSync(()->{if(current==null||current.isDestroyed()||!current.hasWindowFocus())return;View v=current.getWindow().getDecorView();if(v.isAttachedToWindow()&&v.isHardwareAccelerated()){v.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);v.invalidate();ready[0]=true;}});if(!ready[0])SystemClock.sleep(50);}assertTrue("Focused actual integration window",ready[0]);assertTrue(frame.await(5,TimeUnit.SECONDS));File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(ui.takeScreenshot(new File(folder,"nap-integration-"+name+".png")));}
- @Test public void futureNapUsesRelativeWindowAcrossClockAndZoneChangesAndRealMainRoutes()throws Exception{try(Fixture f=new Fixture()){Alarm draft=new Alarm(0);draft.smartWindow=0;Alarm saved=Naps.start(c,draft,20,f.clock.wall+49*3600000L,false);int id=saved.id;String nonce=saved.nap.nonce;try(Store store=new Store(c,f.database)){Alarm earlier=new Alarm(id+1);earlier.hour=7;earlier.minute=0;earlier.enabled=true;store.save(earlier);assertEquals(earlier.id,Naps.next(c,store.alarms(),f.clock.wall,ZoneId.systemDefault()).alarm.id);earlier.days.add(5);store.save(earlier);assertEquals(id,Naps.next(c,store.alarms(),f.clock.wall,ZoneId.systemDefault()).alarm.id);store.deleteAlarm(earlier.id);}launch();state("Nap starts ");state("20 min planned");state("Nap starts in 49 h");assertFalse(ui.hasObject(By.desc("Monday")));text("NAP ENDS · MON 26 OCT");capture("future");long deadline=saved.nap.projectedDeadline(f.clock);i.runOnMainSync(()->{f.clock.wall+=3*3600000L;main.refreshTonightClock();});state("Nap starts in 49 h");text("NAP ENDS · TUE 27 OCT");assertEquals(deadline+3*3600000L,f.nap(id).nap.projectedDeadline(f.clock));capture("clock-shift");i.runOnMainSync(()->{TimeZone.setDefault(TimeZone.getTimeZone("Asia/Riyadh"));main.refreshTonightClock();});text(Naps.display(c,f.nap(id)));state("20 min planned");capture("zone");clickText("Wind-down at");text("Wind-down");text("Nap");text(Naps.display(c,f.nap(id)));capture("wind-down");clickText("Nap");text("Cancel nap");assertTrue(current instanceof NapActivity);clickText("Cancel nap");assertFalse(f.nap(id).enabled);assertEquals(NapPlan.Phase.CANCELLED,f.nap(id).nap.phase);desc("Back");text("Wind-down");desc("Back");desc("Alarms");text("Alarms");desc("Enable 20 minute nap");text("Start nap");assertTrue(current instanceof NapActivity);assertFalse(f.nap(id).enabled);assertEquals(nonce,f.nap(id).nap.nonce);assertEquals(1,f.schedules);capture("inactive");clickText("Start nap");text("Cancel nap");assertTrue(f.nap(id).enabled);assertNotEquals(nonce,f.nap(id).nap.nonce);assertEquals(1200000,f.nap(id).nap.remaining(f.clock));capture("started");desc("Back");text("Alarms");desc("Enable 20 minute nap");assertFalse(f.nap(id).enabled);desc("Edit 20 minute nap");text("Start nap");clickText("Remove saved nap");text("Remove this nap?");clickText("Remove nap");text("Multiple naps");text("No saved naps");assertNull(f.nap(id));capture("removed");assertEquals(2,f.schedules);desc("Back");desc("Back");text("Alarms");org.json.JSONObject broken=saved.json();broken.getJSONObject("nap").put("minutes","twenty");Alarm malformed=Alarm.read(broken);assertTrue(malformed.napInvalid);try(Store store=new Store(c,f.database)){store.save(malformed);}i.runOnMainSync(main::recreate);text("Review");desc("Edit 20 minute nap");text("This nap could not be read.");capture("invalid");try(Store store=new Store(c,f.database)){assertTrue(store.alarm(id).napInvalid);assertEquals("twenty",store.alarm(id).json().getJSONObject("nap").getString("minutes"));store.deleteAlarm(id);}}}
+ @Test public void futureNapUsesRelativeWindowAcrossClockAndZoneChangesAndRealMainRoutes()throws Exception{try(Fixture f=new Fixture()){Alarm draft=new Alarm(0);
+  draft.smartWindow=0;
+  Alarm saved=Naps.start(c,draft,20,f.clock.wall+49*3600000L,false);
+  int id=saved.id;
+  String nonce=saved.nap.nonce;
+  try(Store store=new Store(c,f.database)){Alarm earlier=new Alarm(id+1);
+  earlier.hour=7;
+  earlier.minute=0;
+  earlier.enabled=true;
+  store.save(earlier);
+  assertEquals(earlier.id,Naps.next(c,store.alarms(),f.clock.wall,ZoneId.systemDefault()).alarm.id);
+  earlier.days.add(5);
+  store.save(earlier);
+  assertEquals(id,Naps.next(c,store.alarms(),f.clock.wall,ZoneId.systemDefault()).alarm.id);
+  store.deleteAlarm(earlier.id);
+  }launch();
+  state("Nap starts ");
+  state("20 min planned");
+  state("Nap starts in 49 h");
+  assertFalse(ui.hasObject(By.desc("Monday")));
+  text("NAP ENDS · MON 26 OCT");
+  napCard(f,id);
+  capture("future");
+  long deadline=saved.nap.projectedDeadline(f.clock);
+  i.runOnMainSync(()->{f.clock.wall+=3*3600000L;
+  main.refreshTonightClock();
+  });
+  state("Nap starts in 49 h");
+  text("NAP ENDS · TUE 27 OCT");
+  assertEquals(deadline+3*3600000L,f.nap(id).nap.projectedDeadline(f.clock));
+  napCard(f,id);
+  capture("clock-shift");
+  i.runOnMainSync(()->{TimeZone.setDefault(TimeZone.getTimeZone("Asia/Riyadh"));
+  main.refreshTonightClock();
+  });
+  text(Naps.display(c,f.nap(id)));
+  state("20 min planned");
+  napCard(f,id);
+  capture("zone");
+  clickText("Wind-down at");
+  text("Wind-down");
+  text("Nap");
+  text(Naps.display(c,f.nap(id)));
+  capture("wind-down");
+  clickText("Nap");
+  text("Cancel nap");
+  assertTrue(current instanceof NapActivity);
+  clickText("Cancel nap");
+  napState(f,id,false,NapPlan.Phase.CANCELLED);
+  assertFalse("Cancel from Wind-down must persist",f.nap(id).enabled);
+  assertEquals(NapPlan.Phase.CANCELLED,f.nap(id).nap.phase);
+  desc("Back");
+  text("Wind-down");
+  desc("Back");
+  desc("Alarms");
+  text("Alarms");
+  desc("Enable 20 minute nap");
+  text("Start nap");
+  assertTrue(current instanceof NapActivity);
+  assertFalse(f.nap(id).enabled);
+  assertEquals(nonce,f.nap(id).nap.nonce);
+  assertEquals(1,f.schedules);
+  capture("inactive");
+  clickText("Start nap");
+  napState(f,id,true,NapPlan.Phase.PENDING);
+  text("Cancel nap");
+  assertTrue(f.nap(id).enabled);
+  assertNotEquals(nonce,f.nap(id).nap.nonce);
+  assertEquals(1200000,f.nap(id).nap.remaining(f.clock));
+  capture("started");
+  desc("Back");
+  text("Alarms");
+  desc("Enable 20 minute nap");
+  napState(f,id,false,NapPlan.Phase.CANCELLED);
+  assertFalse("Alarms toggle must cancel owned relative nap",f.nap(id).enabled);
+  desc("Edit 20 minute nap");
+  text("Start nap");
+  clickText("Remove saved nap");
+  text("Remove this nap?");
+  clickText("Remove nap");
+  text("Multiple naps");
+  text("No saved naps");
+  assertNull(f.nap(id));
+  capture("removed");
+  assertEquals(2,f.schedules);
+  desc("Back");
+  desc("Back");
+  text("Alarms");
+  org.json.JSONObject broken=saved.json();
+  broken.getJSONObject("nap").put("minutes","twenty");
+  Alarm malformed=Alarm.read(broken);
+  assertTrue(malformed.napInvalid);
+  try(Store store=new Store(c,f.database)){store.save(malformed);
+  }i.runOnMainSync(main::recreate);
+  text("Review");
+  desc("Edit 20 minute nap");
+  text("This nap could not be read.");
+  capture("invalid");
+  try(Store store=new Store(c,f.database)){assertTrue(store.alarm(id).napInvalid);
+  assertEquals("twenty",store.alarm(id).json().getJSONObject("nap").getString("minutes"));
+  store.deleteAlarm(id);
+  }}}
 }
