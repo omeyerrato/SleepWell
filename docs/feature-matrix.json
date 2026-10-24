@@ -1796,11 +1796,18 @@
         "SessionTiming.java",
         "MainActivity.java",
         "SoundEventBackup.java",
-        "NapPlanJson.java"
+        "NapPlanJson.java",
+        "BackupActivity.java",
+        "BackupDocuments.java",
+        "BackupIo.java",
+        "BackupJob.java",
+        "BackupJobs.java",
+        "BackupFingerprint.java",
+        "BackupRuntime.java"
       ],
-      "validation": "17 isolated device passes across migration/records/replay/clock suites, including formats 1/2/3, original-row preservation, malformed edit/manual rejection and atomic rollback. Actual document-picker restore pending Format4/schema7 label metadata and inactive Nap JSON restore are integrated atfeb38ec; complete453-test build passes. New actual SQLite SoundLabelStorageTest9 and NapFlowTest3 portable roundtrips await native execution.",
+      "validation": "17 isolated device passes across migration/records/replay/clock suites, including formats 1/2/3, original-row preservation, malformed edit/manual rejection and atomic rollback. Actual document-picker restore pending Format4/schema7 label metadata and inactive Nap JSON restore are integrated atfeb38ec; complete453-test build passes. New actual SQLite SoundLabelStorageTest9 and NapFlowTest3 portable roundtrips await native execution. Backup49ad607 source passed independent review and author debug/native APK,26 focused tests (BackupIoTest11, BackupJobTest12, BackupRuntimeTest3) and lint0errors87warnings. Integratedce19d14 with admission hook after accepted recurring normalization. BackupStorageTest6 and BackupDocumentFlowTest3/19 originals are compiled but not executed. Source does not certify an actual document provider, destructive restore on a phone, or absence of all ANRs.",
       "status": "partial",
-      "notes": "Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted. New portable event metadata preserves manual corrections and original estimates without clip links;8MiB pretty-UTF8 export bound matches importer. Nap imports are inactive and need explicit fresh Start. Provider IO/lifecycle and broad backup completeness still need their own verification.",
+      "notes": "Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted. New portable event metadata preserves manual corrections and original estimates without clip links;8MiB pretty-UTF8 export bound matches importer. Nap imports are inactive and need explicit fresh Start. Provider IO/lifecycle and broad backup completeness still need their own verification. Private Backup screen uses retained view-free background IO and explicit review/replace confirmation, pinned application-only factory,8MiB strict UTF8/depth bounds, off-main best-effort cancellation, typed full-table fingerprint and within-transaction runtime/data checks. Imported alarms/naps stay off, original/user sound evidence stays portable, no audio/settings. Postcommit cleanup/count/close failure explicitly says data was restored. No WAL change; other main DB users and final-check/commit/system-scheduling intervals remain documented limitations. See BACKUP-DOCUMENT-IO.md.",
       "id": "F089",
       "tests": []
     },

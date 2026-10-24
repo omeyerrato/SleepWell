@@ -1018,3 +1018,30 @@ RecurringTrackingFlowTest2/13 originals, plus the tenth label storage case:
 48 classes/91 methods/280 required originals. Their source is unverified on native
 Android until a fresh run. No physical phone was available through ADB; no
 installation, microphone, playback, tracking, alarm, flashlight or lock test ran.
+
+
+## 2026-10-24: backup worker and control gates integrated, fresh combined checks pending
+
+Backup49ad607 is integrated as ce19d14. Its one-line tracking admission hook is
+resolved after the full recurring token/revision acceptance and forced movement-only
+normalization, immediately before current/running assignment. The already-running
+no-op and rejected recurring paths return earlier. Main's enabled-only future
+schedule recovery remains present alongside the new Backup routing.
+
+The author's final scoped build94187 passed3m24: debug/native APKs,26 focused
+pure tests (Io11, Job12, Runtime3), lint0errors87warnings. Independent source
+review cleared background provider ownership, stale database/runtime fences and
+truthful postcommit count/close errors. The six native SQLite cases and three
+native document flows/19 images are compiled, not executed. Actual providers,
+physical restore and a general no-ANR claim are not established.
+
+Tone/Wake06c26f4 is integrated as30633f5: actionable ancestor/full48dp geometry,
+scroll-before-offscreen lookup, exact real chart/page/draft/focus capture gates.
+Final scoped native APK/lint passed3m08 (0errors87warnings), earlier debug/native/
+lint passed2m44. No production behavior changed, no fresh native run is claimed.
+
+Default full CI now requires50 classes/100 methods/299 original named images;
+new full-review-summary.json records the contract, class results, available
+required frames and failures. Focused tone-wake remains5/6/39 and cannot claim
+full review. The static contract was independently evaluated from the Python AST;
+all40 raw focused evidence files match both SHA256SUMS and committed Git blobs.

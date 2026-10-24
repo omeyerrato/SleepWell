@@ -431,6 +431,13 @@ for row in rows:
     elif row["feature"] == "Nap timer":
         row["validation"] += " FullCI40058852109 NapFlowTest3 PASS27.884s, but NapIntegrationFlowTest1 fails after4 of8 originals. Strict review of all19 available originals rejects question-mark sound/delete icons, clipped Delete row under error footer and stale card start time after same-occurrence clock refresh. Full visual/integration gate remains failed."
 
+# Retained document workers preserve explicit review/confirmation and never imply provider acceptance.
+for row in rows:
+    if row["feature"] == "Local data backup":
+        row["implementation"] += ["BackupActivity.java", "BackupDocuments.java", "BackupIo.java", "BackupJob.java", "BackupJobs.java", "BackupFingerprint.java", "BackupRuntime.java"]
+        row["validation"] += " Backup49ad607 source passed independent review and author debug/native APK,26 focused tests (BackupIoTest11, BackupJobTest12, BackupRuntimeTest3) and lint0errors87warnings. Integratedce19d14 with admission hook after accepted recurring normalization. BackupStorageTest6 and BackupDocumentFlowTest3/19 originals are compiled but not executed. Source does not certify an actual document provider, destructive restore on a phone, or absence of all ANRs."
+        row["notes"] += " Private Backup screen uses retained view-free background IO and explicit review/replace confirmation, pinned application-only factory,8MiB strict UTF8/depth bounds, off-main best-effort cancellation, typed full-table fingerprint and within-transaction runtime/data checks. Imported alarms/naps stay off, original/user sound evidence stays portable, no audio/settings. Postcommit cleanup/count/close failure explicitly says data was restored. No WAL change; other main DB users and final-check/commit/system-scheduling intervals remain documented limitations. See BACKUP-DOCUMENT-IO.md."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

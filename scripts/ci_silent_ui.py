@@ -101,13 +101,15 @@ failures = []
 tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest", "PlanPickerFlowTest", "SoundLibraryUiTest", "SoundRetentionLifecycleTest", "SleepRhythmFlowTest", "NightAudioArchiveTest", "SoundArchiveUiTest", "MotionConfigurationFlowTest", "AudioArchiveConcurrencyTest", "SoundArchiveJobTest", "RecordCalendarFlowTest", "ChallengeRoutineFlowTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
-tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest", "GradedMathConfigurationTest", "QrCodeConfigurationTest", "AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "WakeCheckFlowTest", "SoundLabelStorageTest", "SoundLabelFlowTest", "NapFlowTest", "NapIntegrationFlowTest", "RecurringTrackingTest", "RecurringTrackingFlowTest"]
+tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest", "GradedMathConfigurationTest", "QrCodeConfigurationTest", "AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "WakeCheckFlowTest", "SoundLabelStorageTest", "SoundLabelFlowTest", "NapFlowTest", "NapIntegrationFlowTest", "RecurringTrackingTest", "RecurringTrackingFlowTest", "BackupStorageTest", "BackupDocumentFlowTest"]
 if args.audio_imports:
     tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
 if args.scope == "tone-wake":
     tests = list(FOCUSED_TESTS)
 metadata["test_classes"] = tests
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
+method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2, "BackupStorageTest": 6, "BackupDocumentFlowTest": 3}
+class_results = []
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
@@ -125,8 +127,9 @@ for test in tests:
         extra = ["-e", "ciSilentPlayback", "true"]
     result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app." + test, "-e", "ciReview", "true", *extra, "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", check=False, timeout=180)
     (output / (test + ".txt")).write_text(result.stdout + result.stderr, encoding="utf-8")
-    expected_count = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2}.get(test, 1)
+    expected_count = method_counts.get(test, 1)
     passed = bool(re.search(r"(?m)^OK \(" + str(expected_count) + r" tests?\)\s*$", result.stdout)) and "FAILURES!!!" not in result.stdout
+    class_results.append({"class": test, "expected_methods": expected_count, "passed": passed and not result.returncode})
     print(test + ": " + ("PASS" if passed else "FAIL"), flush=True)
     if result.returncode or not passed:
         failures.append(test)
@@ -258,10 +261,13 @@ required += ["sound-label-" + name + ".png" for name in ("source", "selector", "
 required += ["nap-" + name + ".png" for name in ("default", "preset", "tracking-required", "sound", "pending", "recreated", "reopened", "cancelled", "schedule", "schedule-error", "scheduled", "list", "permission-error", "scheduler-error", "retry")]
 required += ["nap-integration-" + name + ".png" for name in ("future", "clock-shift", "zone", "wind-down", "inactive", "started", "removed", "invalid")]
 required += ["recurring-" + name + ".png" for name in ("off", "draft", "draft-recreated", "time-recreated", "saved", "saved-recreated", "disabled", "permission", "permission-error", "permission-recreated", "notifications-error", "limits", "schedule-error")]
+required += ["backup-document-" + name + ".png" for name in ("chooser", "selection-cancelled", "writing", "writing-recreated", "cancelled", "csv-done", "review", "confirmation", "review-recreated", "review-reopened", "restoring", "restoring-recreated", "restored", "result-reopened", "denied", "oversized", "malformed", "stale", "runtime-admission")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:
     required += ["sounds-import-" + name + ".png" for name in ("checking", "controls", "rejected", "rotated", "unknown-size", "selected", "reopened", "playing", "removed")]
 failures += [name for name in required if not (output / name).is_file()]
+summary = {"scope": args.scope, "full_app_review": True, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(required), "available_required_images": sum((output / name).is_file() for name in required), "failures": failures}
+(output / "full-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
 if failures:
     raise SystemExit("UI verification incomplete: " + ", ".join(failures))
