@@ -1,0 +1,9 @@
+package org.sleepwell.app;
+import org.junit.Test;import static org.junit.Assert.*;
+
+public final class AlarmInputsTest {
+    @Test public void legacyDefaultsDoNotInterceptKeysOrEnableSensorInput(){assertFalse(AlarmInputs.DEFAULT.flip);assertFalse(AlarmInputs.DEFAULT.interceptKeys());assertFalse(AlarmInputs.DEFAULT.keySnooze(true,0,true,0,1));assertEquals(AlarmInputs.Keys.VOLUME,AlarmInputs.DEFAULT.keys);}
+    @Test public void snoozeRequiresFreshInitialPressCurrentOccurrenceAndRemainingBudget(){AlarmInputs settings=AlarmInputs.DEFAULT.keys(AlarmInputs.Keys.SNOOZE);assertTrue(settings.interceptKeys());assertTrue(settings.keySnooze(true,0,true,0,1));assertFalse(settings.keySnooze(false,0,true,0,1));assertFalse(settings.keySnooze(true,1,true,0,1));assertFalse(settings.keySnooze(true,0,false,0,1));assertFalse(settings.keySnooze(true,0,true,1,1));assertFalse(settings.keySnooze(true,0,true,-1,1));assertFalse(settings.keySnooze(true,0,true,0,0));assertFalse(settings.keySnooze(true,0,true,0,6));}
+    @Test public void noActionConsumesKeysWithoutSnoozeOrChallengeBypass(){AlarmInputs settings=new AlarmInputs(true,AlarmInputs.Keys.IGNORE);assertTrue(settings.flip);assertTrue(settings.interceptKeys());assertFalse(settings.keySnooze(true,0,true,0,5));assertEquals(AlarmInputs.DEFAULT,new AlarmInputs(false,AlarmInputs.Keys.VOLUME));assertThrows(IllegalArgumentException.class,()->new AlarmInputs(false,null));}
+    @Test public void inputChangesAreImmutableAndTemplatesTransferOnlyBehavior(){Alarm original=new Alarm(1);original.inputs=new AlarmInputs(true,AlarmInputs.Keys.SNOOZE);AlarmDefaults template=new AlarmDefaults(original);original.inputs=AlarmInputs.DEFAULT;Alarm created=template.create(2);assertTrue(created.inputs.flip);assertEquals(AlarmInputs.Keys.SNOOZE,created.inputs.keys);assertFalse(created.enabled);assertFalse(AlarmInputs.DEFAULT.flip);}
+}
