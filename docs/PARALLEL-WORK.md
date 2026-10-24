@@ -73,10 +73,11 @@ clears decoder and shared grant fixes; actual output/screens remain pending.
 Wake-check worker has15pure+2native/11frame source candidate and owns next local
 build slot. Root downloading terminalCI40047180910 once before assigning review.
 
-CI40047180910 terminalFAIL36/38classes53methods194PNGs. QR1/all12frames,
-Math1/all7geometry, routine6 and favoritescontrast2 narrowlypassstrictreview.
-Privacy nowfails at recreatedINSPECT storagehold; source337b37a waitsactualerror
-andopensconfirmation beforeinstallinggate. Full54.61s laughterstillfails,
-independentwhole-preview10fixturecandidate isbeingprepared withoutpolicychange.
-Tone41class58method212PNGgate remainsunrun untilnewcandidatepush. Root preserves
-all30reviewedoriginals/38logs/fullclassifierJSON with73exacthashes in verification.
+CI40047180910 terminal FAIL: 36/38 classes, 53 methods pass, 194 PNGs.
+QR1/all12 frames, Math1/all7 geometry, routine6 and favorites contrast2 pass
+strict review for their stated scope. Privacy fails at the recreated INSPECT
+storage hold; source337b37a waits for the actual error and opens confirmation
+before installing the gate. Full54.61s laughter still fails; an independent
+whole-preview10-fixture candidate is being prepared without policy changes.
+Tone41-class/58-method/212-PNG gate awaits candidate push. Thirty reviewed
+originals,38 logs and classifier JSON are preserved with73 hashes in verification.
