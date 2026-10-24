@@ -764,3 +764,22 @@ but ADB detected no phone. No installation or physical UI acceptance is
 claimed. Current phone still has the earlier6015a12 build. No physical alarm,
 audio, camera, microphone, sensor, vibration, flashlight, power or lock actions
 ran. QR scanning and board03 sound changes are separate unfinished workers.
+
+## Integrated f1e6a64 — offline QR candidate and follow-up gates
+
+Full local build passes5m25:401 pure tests across49 suites, zero failures,
+errors or skips; debug app, instrumentation APK and release app. Lint reports
+zero errors/86 warnings (six additional pinned dependency notices). Offline
+QR14 pure methods use generated encoded bytes/rotation/inversion and lifecycle/
+proof fakes. Peer source review finds no material new QR blocker. CameraX is
+optional and CAMERA consent is requested only by explicit enrollment; raw code
+payload is not persisted or launched. Actual CameraX and ringing transition
+remain unverified under the hardware restriction.
+
+The default native gate now requires38 classes/55 methods/196 original PNGs,
+including12 new inert QR enrollment/access/error/fallback/save/reopen states.
+No native playback option is enabled. It also reruns all retained journeys,
+privacy action readiness, real operator-card geometry and full laughter PCM.
+Cream icon wells and an action divider bring routine cards closer to board04;
+the ordering affordance remains a menu until real drag behavior exists.
+These source and compile results are not native/screenshot acceptance.

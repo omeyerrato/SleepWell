@@ -323,6 +323,21 @@ for row in rows:
     elif feature == "Walking task":
         row["validation"] = "WalkSessionTest13 pure cases pass. WalkConfigurationFlowTest1 PASS13.106s at12c8c0f/CI40042183746 with6 individually reviewed originals; obsolete permission error is cleared in ready/unavailable/reopened states. Actual private SQLite/JSON persists per-task targets. No actual alarm, step sensor or physical permission dialog execution."
 
+# Offline morning-code source is integrated; inert native acceptance is still pending.
+for row in rows:
+    feature = row["feature"]
+    if feature == "QR/barcode sequences":
+        row.update(status="partial", screens="10,11,03", implementation=["MorningCode.java", "MorningCodeJson.java", "QrDecoder.java", "QrLuma.java", "QrCamera.java", "QrCameraAccess.java", "QrScanSession.java", "QrProof.java", "QrCodeActivity.java", "ChallengeRoutine.java", "AlarmEditorActivity.java", "AlarmActivity.java"],
+            validation="MorningCodeTest, QrDecoderTest, QrLumaTest, QrProofTest and QrScanSessionTest:14 new pure passes on401-test branch, debug/native APK and lint pass. Actual generated UTF-8/rotated/inverted QR bytes decode. QrCodeConfigurationTest1/12 inert fake-camera/access originals await native execution. Peer source review finds no material blocker; hardware camera and protected ringing transition unverified.",
+            notes="Explicit camera enrollment stores only location label and SHA256, never raw QR text or URLs. Multiple ordered distinct QR tasks can each own1 routine unit; nonce/run/unit/hash and current occurrence fence completion. Saved one-question graded Math fallback; no permission dialog while ringing. Optional CameraX/ZXing offline dependencies, missing permission/camera/error/cancel states and strict backup JSON. General barcode formats, generated printable codes and actual CameraX compatibility remain missing or unverified.")
+    elif feature == "Lost code fallback / travel bypass":
+        row.update(status="partial", implementation=["MorningCode.java", "QrCodeActivity.java", "QrProof.java", "AlarmActivity.java", "AlarmEditorActivity.java"],
+            validation="QR14 pure tests and401-test branch build pass. Configured fallback JSON and one-unit ownership tested in pure source; QrCodeConfigurationTest1 inert enrollment/save/reopen harness awaits native execution. No actual alarm/ringing/camera test under user restriction.",
+            notes="Configured QR fallback selects grade/operators/typed or choices and consumes exactly1 question. Missing access avoids permission prompts while ringing. Existing unavailable step/NFC/sensor Math fallback retained; release hides debug developer stop. Travel inference/bypass and full live behavior remain unverified or missing.")
+    elif feature == "Multi-task routine / reorder / per-task difficulty":
+        row["validation"] += " Later gradedMath1 native7frame configuration passes at12c8c0f; new QR task metadata/decoder/ownership14 pure cases pass but12frame inert gate is pending. Routine card cream icon wells/action divider are later source, requiring new originals."
+        row["notes"] = "Additive ordered1–8task routine, per-task rounds/targets/graded Math and newly enrolled QR code, step-sensor Walk, Math/Memory/Sequence/Retype/Shake/NFC. Runtime callbacks fence occurrence/unit; legacy scalar behavior remains. QR actual camera/live challenge, silent interactive routine preview and full visual fidelity remain unverified or missing."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

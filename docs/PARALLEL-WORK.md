@@ -56,3 +56,11 @@ keeps unchanged production thresholds. QR scanning and alarm tone picker each
 have independent managed worktrees with inert native fixtures, still unmerged.
 No phone attached for the requested update; prepared signed46278cb APK is not
 an installation. Full feature/36-screen acceptance remains incomplete.
+
+QR integrated6b7c036; localf1e6a64 full build401tests/49suites, zero failures/
+errors/skips, lint0errors86warnings, debug/native/release allPASS5m25. Source
+peer review clear;38class/55method/196PNG default gate next. Root owns dispatch
+and single artifact download. Tone author is fixing peer-reviewed process-wide
+decoder ownership and cancellation-time URI-grant lifecycle before integration.
+Automatic worker now owns designed wake-check prompt/countdown/confirmation
+with fake scheduling; no personal-phone or actual effects test authorized.
