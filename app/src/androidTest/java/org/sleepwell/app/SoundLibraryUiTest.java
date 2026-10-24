@@ -14,6 +14,7 @@ import static org.junit.Assert.*;
 
 /** Actual WAV/storage/UI, injected review output only. Never creates MediaPlayer or AudioRecord. */
 public class SoundLibraryUiTest {
+    @org.junit.Rule public final SoundBrowseTestScope browseScope=new SoundBrowseTestScope();
     static final class FakePort implements ClipPlaybackPort {
         final List<FakeSession> sessions=new java.util.concurrent.CopyOnWriteArrayList<>();volatile boolean closed;
         public ClipReviewPlayer.Session open(ClipReviewPlayer.Target value,ClipReviewPlayer.Events events){FakeSession session=new FakeSession((ClipTarget)value,events);sessions.add(session);new Handler(Looper.getMainLooper()).post(events::ready);return session;}

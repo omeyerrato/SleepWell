@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 
 /** Library → actual ZIP generation with a fake SAF result/sink. No media outputs or external writes. */
 public class SoundArchiveUiTest {
+    @org.junit.Rule public final SoundBrowseTestScope browseScope=new SoundBrowseTestScope();
     private IntentFilter documents()throws Exception{IntentFilter filter=new IntentFilter(Intent.ACTION_CREATE_DOCUMENT);filter.addCategory(Intent.CATEGORY_OPENABLE);filter.addDataType("application/zip");return filter;}
     @Test public void libraryExportRequiresDestinationAndRetainsSuccessOrFailureAcrossRecreation()throws Exception{
         Instrumentation i=InstrumentationRegistry.getInstrumentation();Context c=i.getTargetContext();org.junit.Assume.assumeTrue(Build.HARDWARE.contains("ranchu")||Build.HARDWARE.contains("goldfish"));org.junit.Assume.assumeTrue(InstrumentationRegistry.getArguments().getString("ciReview","").equals("true"));

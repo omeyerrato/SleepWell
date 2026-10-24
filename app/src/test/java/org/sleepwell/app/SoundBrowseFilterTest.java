@@ -1,0 +1,8 @@
+package org.sleepwell.app;
+import org.junit.Test;import static org.junit.Assert.*;
+public final class SoundBrowseFilterTest {
+ @Test public void allSixCategoriesAreDistinctAndUnknownLegacyRowsRemainOther(){for(String key:SoundBrowseFilter.CATEGORIES){assertTrue(SoundBrowseFilter.matches(key,false,key));for(String other:SoundBrowseFilter.CATEGORIES)if(!key.equals(other))assertFalse(SoundBrowseFilter.matches(key,false,other));}assertTrue(SoundBrowseFilter.matches("legacy",false,"noise"));assertEquals("noise",SoundBrowseFilter.category(null));}
+ @Test public void invalidSavedFiltersFallBackWithoutInventingCategories(){for(String key:SoundBrowseFilter.ALL)assertEquals(key,SoundBrowseFilter.filter(key,false));assertEquals("all",SoundBrowseFilter.filter(null,true));assertEquals("all",SoundBrowseFilter.filter("../../",true));assertEquals("all",SoundBrowseFilter.filter("favorites",false));assertEquals("favorites",SoundBrowseFilter.filter("favorites",true));}
+ @Test public void favoritesFilterNeverLosesIndependentCategoryIdentity(){for(String key:SoundBrowseFilter.CATEGORIES){assertFalse(SoundBrowseFilter.matches(key,false,"favorites"));assertTrue(SoundBrowseFilter.matches(key,true,"favorites"));assertTrue(SoundBrowseFilter.matches(key,false,"all"));}}
+ @Test public void additionalCategoryIsAlwaysNamedAsSelected(){assertFalse(SoundBrowseFilter.extended("all"));assertFalse(SoundBrowseFilter.extended("snoring"));assertFalse(SoundBrowseFilter.extended("speech"));for(String key:new String[]{"cough","baby_cry","laughter","noise","favorites"}){assertTrue(SoundBrowseFilter.extended(key));assertFalse(SoundBrowseFilter.name(key).isEmpty());}}
+}

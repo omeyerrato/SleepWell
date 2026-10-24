@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
 
 /** Emulator-only real labels/SQLite/native UI, fake playback provider, no device effects. */
 public class SoundLabelFlowTest {
+    @org.junit.Rule public final SoundBrowseTestScope browseScope=new SoundBrowseTestScope();
     private final Instrumentation i=InstrumentationRegistry.getInstrumentation();private final Context c=i.getTargetContext();private final UiDevice device=UiDevice.getInstance(i);
     private UiObject2 object(BySelector selector){UiObject2 found=device.wait(Until.findObject(selector),5000);assertNotNull(selector.toString(),found);return found;}
     private Activity focused(Class<?> kind,Activity previous){long until=SystemClock.elapsedRealtime()+5000;Activity[] found={null};while(found[0]==null){i.runOnMainSync(()->{for(Activity a:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))if(kind.isInstance(a)&&a!=previous&&a.hasWindowFocus()&&a.getWindow().getDecorView().isAttachedToWindow())found[0]=a;});assertTrue("Focused selector frame",found[0]!=null||SystemClock.elapsedRealtime()<until);if(found[0]==null)SystemClock.sleep(25);}return found[0];}

@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 
 /** Category/navigation state only, no microphone or playback. Synthetic data labeled in every capture. */
 public class SoundEventsUiTest {
+    @org.junit.Rule public final SoundBrowseTestScope browseScope=new SoundBrowseTestScope();
     @Test public void filtersPersistThroughRecreationWithoutLaunchingAnyOutputs() throws Exception {
         android.app.Instrumentation i=InstrumentationRegistry.getInstrumentation();Context c=i.getTargetContext();
         org.junit.Assume.assumeTrue(android.os.Build.HARDWARE.contains("ranchu")||android.os.Build.HARDWARE.contains("goldfish"));

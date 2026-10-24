@@ -17,6 +17,7 @@ import static org.junit.Assert.*;
 
 /** Disposable, host-muted CI emulator only. Every graph is an explicitly labelled DB fixture. */
 public final class ReportReferenceFlowTest {
+    @org.junit.Rule public final SoundBrowseTestScope browseScope=new SoundBrowseTestScope();
     private final Instrumentation instrumentation=InstrumentationRegistry.getInstrumentation();
     private final Context context=instrumentation.getTargetContext();
     private final UiDevice device=UiDevice.getInstance(instrumentation);
