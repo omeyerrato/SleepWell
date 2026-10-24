@@ -81,3 +81,14 @@ before installing the gate. Full54.61s laughter still fails; an independent
 whole-preview10-fixture candidate is being prepared without policy changes.
 Tone41-class/58-method/212-PNG gate awaits candidate push. Thirty reviewed
 originals,38 logs and classifier JSON are preserved with73 hashes in verification.
+
+Current integrated app source cce7a60 passes the full431-test/53-suite build,
+zero failures/errors/skips, lint zero errors/86 warnings and debug/native/release
+builds in1m45. The next default review is42 classes/60 methods/224 originals,
+with ten actual PCM sources and no real output ports. Wake source peer review
+passes; post-save cancellation and expired-button follow-ups are integrated.
+Automatic worker now owns a separate designed Nap flow; sound worker owns a
+separate persisted manual-label correction flow, both starting from cce7a60 and
+reporting architecture before implementation. Primary owns integration/CI/data
+and single artifact download; strict reviewer owns original-image comparisons.
+Full36-screen and phone-capable feature acceptance remains incomplete.

@@ -833,3 +833,30 @@ no thresholds or evidence claims are relaxed. Additional labels remain held.
 Tone8239b4e and415-test combined source are outside this native head. Actual
 CameraX/MediaPlayer/provider/ringing hardware behavior remains unverified; no
 physical phone/effects actions ran. Full app/36-screen acceptance is incomplete.
+
+## Integrated cce7a60 — tone, wake checks and ten real-PCM inputs
+
+Full local build passes1m45:431 pure tests across53 suites, zero failures,
+errors or skips; debug app, instrumentation APK and release app; lint zero
+errors/86 warnings. It combines the QR/tone editor hooks, WakeCheck16 engine
+cases, saved-Off cancellation only after successful Store persistence, actual
+privacy error readiness/ERASE-only fixture hold, and ten real PCM fixtures.
+Source peer review clears the wake-check ownership/IPC/deadline design; actual
+Android notification/alarm delivery and screenshot appearance remain unverified.
+
+The default inert gate now requires42 classes/60 methods/224 original PNGs.
+WakeCheckFlowTest2 adds12 states with fake clock/scheduler/notification/re-ring;
+AlarmToneAssetsTest1/GrantTest1/FlowTest1 add16 states with actual PCM/private
+SQLite but fake preview/provider/grant effects. No AlarmActivity/output test is
+added. The category consumer independently checks all10 source hashes, sample
+counts,3MiB/80second bounds, exact framing, positives and cross-class negatives.
+Old eight-fixture evidence is rejected as incomplete for this expanded contract.
+The crowd failures remain documented even if independent new sources pass.
+
+Wake checks use silent notification and a persisted two-minute deadline; exact
+expiry is a user-facing AlarmClock alarm to avoid exact-idle throttling. Silent
+notifications may not peek, and full-screen visibility is controlled by Android.
+A crash after durable expiry claim can prevent re-ring; old records lack the
+original nonce/due-time needed for complete migration. These are documented
+limitations, not claims of guaranteed wakefulness or complete reliability.
+All new screen/action/persistence acceptance still requires the fresh native run.
