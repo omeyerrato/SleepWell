@@ -377,3 +377,85 @@ Later playback guard8078854/Walk4208789 and subsequent focus/calendar fixes are 
 bb582cf evidence. No hardware playback, sensor recognition, sleep-stage
 estimation, alarm/cue/torch/power behavior or full36-screen completion is proved
 by this run. Overall feature/design acceptance remains **FAIL / incomplete**.
+
+## Exact-head follow-up: CI 40042183746
+
+Source **12c8c0fe7d08666dacc11815790fd1d0eb3d7bdb**, API 36 emulator,
+1080×2316 at density 420. Artifact directory:
+`captures/ci-40042183746/silent-android-review`. All 26 originals below were
+opened individually. The entire artifact contains 180 PNGs and 37 raw native
+class transcripts: **35 passing classes / 52 passing methods; two failed
+classes**. This is not blanket certification of later 46278cb or other source.
+Host output was disabled; no native playback output was allowlisted, and library
+playback used a fake output. No phone interaction or effects tests were performed.
+
+| Original PNG | Strict finding |
+| --- | --- |
+| chart-clock-overnight.png | Cream plot background restored; deliberate violet keyboard-focus outline replaces the gray slab. Exact 10:48 PM/6:30 AM endpoints and aligned 1/3/5 AM ticks fit; selected aggregate capsule is legible. Narrow correction PASS. |
+| chart-clock-short.png | 0/5/10/15-second ticks plus exact 21.321-second endpoint fit. Actual missing span remains blank. No gray slab. Narrow correction PASS. |
+| chart-clock-fold.png | Short Repeated hour heading fits. Separate 2 AM +02:00/+01:00 labels and cross-fold aggregate capsule remain legible; no clipped title or gray background. Narrow correction PASS. |
+| chart-clock-night.png | Plot retains uniform plum with a deliberate pale focus outline; clock endpoints/interior ticks fit. This isolated fixture is not full board 06 live-screen acceptance. |
+| math-config-default.png | Clear Medium/Addition/Choices selection, readable example and full fixed Use Math. P2: upper horizontal outlines/corners of operator cards are visibly chopped. |
+| math-config-operators.png | Hard and three operators are independently selected; complete action fits. Same chopped card tops, P2. |
+| math-config-typed.png | Type answer, two rounds and example remain readable with complete action. Same card-top defect. This is configuration, not the actual ringing keyboard flow. |
+| math-config-ordered.png | Two different per-task Math configurations are visible in order, with full Save routine. Still differs from board 04 white icon wells and separated drag handle treatment. No runtime challenge acceptance. |
+| math-config-recreated.png | Hard/three operators/typed/two rounds survive visibly. Same operator-border P2 remains. |
+| math-config-reopened.png | Saved per-task states reopen consistently with complete Use action; same border defect. |
+| math-config-error.png | Last remaining Division stays selected; bounded error is readable above full Use Math. Same border defect; error does not conceal the retained valid selection. |
+| calendar-history.png | Owned cream/Inter calendar, brown selected day, outlined current day, month controls and all actions fit. No stock date-picker styling. |
+| calendar-history-recreated.png | Same pending selected day and calendar survive recreation; all actions fit. |
+| calendar-trend.png | Trend-date calendar uses the same hierarchy and controls; selected day is clear, actions fit. |
+| calendar-editor.png | Nested Start date calendar fits above the dimmed editor with selected day clearly marked. |
+| calendar-editor-recreated.png | Pending nested date calendar survives recreation without clipping or action loss. |
+| calendar-editor-selected.png | Returns to the owned Start dialog with Sat 25 Oct, 2:30 AM, Europe/Berlin and rounded Seconds 17 field; zone/seconds spacing is now clear. Both actions fit. |
+| calendar-reopened.png | Saved record reopens the same selected-date calendar. The previously missing seventh capture is present; narrow calendar gate now PASS. |
+| walk-permission.png | Contextual access request and fallback copy are honest, target picker and full Use Walk fit. No actual permission or step recognition proved. |
+| walk-ready.png | Allowed state has no obsolete access error; target and full action fit. Narrow ghost-error correction PASS. |
+| walk-settings.png | Denied access directs to actual settings action; no stale error shown. Full Use action remains visible with fallback disclosure. |
+| walk-error.png | Genuine settings-launch error remains visible with its retry action. No clipping; distinct from unavailable state. |
+| walk-unavailable.png | Unavailable sensor state replaces permission wording and removes obsolete launch error/button. Fallback remains explicit. Narrow correction PASS. |
+| walk-reopened.png | Allowed state and saved target reopen with no ghost error. Narrow configuration PASS. |
+| missed-night-denied.png | Cream background restored across the entire body; the prior gray focus slab is absent. Permission explanation and full fixed Open Usage Access fit. Narrow visual correction PASS. |
+| privacy-history-failure.png | No confirmation dialog exists. Delete history is below the viewport; XML exposes only a four-pixel disabled sliver. Failed journey, not accepted supporting-state evidence. |
+
+Raw transcript results inspected: ChartClockFlowTest **4.590 s**, graded Math
+configuration **22.360 s**, RecordCalendarFlowTest **33.085 s**,
+WalkConfigurationFlowTest **13.106 s**, each OK (1 test). ClipReviewAccessTest
+also passed **0.364 s**, exercising real isolated SQLite/WAV trim/reset identity
+checks without constructing a player. It does not certify playback hardware or
+atomic protection against a future edit during already-started playback.
+
+**Privacy diagnosis:** PrivacyHistoryFlowTest fails at `keep():24`, called by
+line 40 on the first confirmation-cancel sequence, after 8.323 s. The raw XML
+contains no Keep action or dialog. Delete sleep history is enabled=false and
+has bounds [63,2249][1017,2253], only four pixels tall at the bottom of the
+viewport. The test's `object()` accepts any found node and scrolls only when
+absent, so it does not establish a fully visible, enabled click target. Worker
+`drain()` completion also does not await the binding's next 150 ms enabled-state
+update. The evidence cannot distinguish an ignored disabled click from an
+offscreen click; both readiness defects must be eliminated before retesting.
+This is not a Keep-selector mismatch. First INSPECT does not set refreshNeeded,
+so the first failure is not an erase-result rerender dismissing the dialog.
+Required correction: freshly find an enabled full-height row, scroll fully into
+the viewport, click only after UI readiness, then assert the actual confirmation.
+Do not weaken Keep/cancel/data-preservation assertions.
+
+The other failed class is SoundCategoryFixtureEvaluationTest, **1.145 s**,
+line 34: Actual laughter PCM must persist production laughter. That positive
+category gate remains rejected, irrespective of passing UI/configuration classes.
+
+**Math source advisory (read-only):** `mathSettings()` builds horizontal operator
+rows and tiles through `Design.row()`, whose LinearLayout keeps Android's default
+baseline alignment. Each outer row wraps weighted child tiles with a bottom
+margin; symbol and label text sizes differ, while the tile contains nested text
+baselines. The observed uniformly chopped upper strokes are consistent with
+baseline-based child positioning/clipping. A targeted candidate is to disable
+baseline alignment on the operator row and tile, preserve wrap-content plus the
+56 dp minimum and all touch targets, then inspect fresh native frames. Do not
+disable clipping globally or accept source-only geometry as the visual fix.
+
+These passes accept only the stated axis/calendar/configuration and regression
+corrections. Graded Math operator borders, remaining reference composition gaps,
+Privacy deletion/recovery and the laughter positive gate remain open. Real
+hardware challenge/alarm/output behavior and all 36 screens/features remain
+**FAIL / incomplete**. Later source fixes require their own exact-head evidence.
