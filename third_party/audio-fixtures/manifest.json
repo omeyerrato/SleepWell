@@ -1,6 +1,6 @@
 {
   "license": "CC0-1.0",
-  "derivation": "Public HQ MP3 previews decoded with FFmpeg8.1.1 to little-endian PCM16, mono16000Hz, no gain normalization. First four fixtures and laughter-crowd use entire preview; cough/infant fixtures use explicit first30seconds maximum. TestAPK only.",
+  "derivation": "Public HQ MP3 previews decoded with FFmpeg8.1.1 to little-endian PCM16, mono16000Hz, no gain normalization. Whole previews except explicitly documented original cough/infant first30second caps. TestAPK only; each PCM <=3MiB and <=80s.",
   "fixtures": [
     {
       "name": "snoring-sorts",
@@ -107,7 +107,57 @@
         "persisted_laughter": 0,
         "maximum_laughter_family_score": 0.109375,
         "note": "First30s had weak laughter and strong Speech scores; later content was not evaluated. Keep failed observation. Full preview replaces cap, not a selected positive window; policy unchanged."
+      },
+      "full_preview_evaluation": {
+        "ci_run": "40047180910",
+        "pcm_sha256": "d98c2e0ee727447de1d4d571452d559b1ab096d3400263f95d7205a8a3518bf7",
+        "persisted_laughter": 0,
+        "maximum_laughter_family_score": 0.26171875,
+        "persisted_speech": 4,
+        "persisted_noise": 9,
+        "frames": 56,
+        "note": "Entire54.61s failed unchanged production laughter gate. Not a grouping or incomplete-tail issue: no laughter-family score reaches0.65. Retained as coverage limitation, not replaced or treated as a negative ground-truth annotation.",
+        "json_sha256": "60fb0c74443d678fe8fa663ead82c0daaad0b7ebce23553f56837eb33583e686",
+        "ci_url": "https://github.com/omeyerrato/SleepWell/actions/runs/40047180910"
       }
+    },
+    {
+      "name": "laughter-solo",
+      "author": "moxobna (formerly sagetyrtle)",
+      "page": "https://freesound.org/people/moxobna/sounds/33658/",
+      "preview": "https://cdn.freesound.org/previews/33/33658_43834-hq.mp3",
+      "license": "CC0-1.0",
+      "expected_broad_class": "laughter",
+      "source_context": "Uploader describes several laughs, chuckles and giggles; female/woman tags. Independently identified solo source, not window-level annotations.",
+      "selected_before_inference": "2026-10-24; whole preview selected from uploader description/license before any inference. No local inference or listening performed.",
+      "samples": 1001940,
+      "duration_ms": 62621,
+      "derivation": "Entire HQ MP3 preview decoded with FFmpeg8.1.1 -ac 1 -ar 16000 -f s16le. No gain, tiling, resynthesis or selected successful intervals.",
+      "preview_sha256": "1b51b29d22fcd85fed8a836dd42675da2f523204320300f16e26851959d2cd08",
+      "pcm_sha256": "f180937513545059b6fea873b63ed061175a2b6adbec75e56f0a0542fe6a8214"
+    },
+    {
+      "name": "babycry-ciccarelli",
+      "author": "ciccarelli",
+      "page": "https://freesound.org/people/ciccarelli/sounds/185575/",
+      "preview": "https://cdn.freesound.org/previews/185/185575_1672196-hq.mp3",
+      "license": "CC0-1.0",
+      "expected_broad_class": "baby_cry",
+      "source_context": "Uploader describes a tired baby crying. Independent source for comparison with original mixed-score infant source; not window-level annotations.",
+      "selected_before_inference": "2026-10-24; whole preview selected from uploader description/license before any inference. No local inference or listening performed.",
+      "samples": 1166500,
+      "duration_ms": 72906,
+      "derivation": "Entire HQ MP3 preview decoded with FFmpeg8.1.1 -ac 1 -ar 16000 -f s16le. No gain, tiling, resynthesis or selected successful intervals.",
+      "preview_sha256": "86c6ce387d3780d5984dc43306475a698fb1ac52c8203ecf79bad11e0eaf72b9",
+      "pcm_sha256": "cc2fac3d0921e3248e6e0eb7ab491a33510fddfeae9c9135142b84713af98859"
     }
-  ]
+  ],
+  "label_map_audit": {
+    "official_csv": "https://raw.githubusercontent.com/tensorflow/models/master/research/audioset/yamnet/yamnet_class_map.csv",
+    "official_csv_sha256": "cdf24d193e196d9e95912a2667051ae203e92a2ba09449218ccb40ef787c6df2",
+    "pinned_labels_sha256": "8e1267a120c1932b7273c0d0e0c5529edbb9a35512b437b1c8982baa59047051",
+    "all_521_names_and_indices_match": true,
+    "model_sha256": "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de",
+    "checked_on": "2026-10-24"
+  }
 }

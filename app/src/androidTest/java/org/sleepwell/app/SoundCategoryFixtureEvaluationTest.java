@@ -9,6 +9,7 @@ import org.junit.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.security.MessageDigest;
 import static org.junit.Assert.*;
 
 /** Licensed public PCM only: real CPU/framing/policy/group/SQLite; never captures or outputs sound. */
@@ -17,9 +18,11 @@ public class SoundCategoryFixtureEvaluationTest {
     @Test public void realPublicPcmMustPersistNewCategoryPositivesAndRejectCrossClassNegatives()throws Exception{
         Context target=InstrumentationRegistry.getInstrumentation().getTargetContext(),tests=InstrumentationRegistry.getInstrumentation().getContext();JSONArray reports=new JSONArray();Map<String,JSONObject> byName=new HashMap<>();
         try(YamnetClassifier model=new YamnetClassifier(target)){
-            for(String name:List.of("cough-fabrizio","cough-crowd","babycry-bonehead","laughter-crowd","snoring-sorts","snoring-pencil","speech-countdown","speech-crowd")){
-                byte[] pcm;try(InputStream in=tests.getAssets().open("classifier-fixtures/"+name+".pcm")){ByteArrayOutputStream out=new ByteArrayOutputStream();byte[] buffer=new byte[8192];for(int count;(count=in.read(buffer))!=-1;){assertTrue("Bounded PCM fixture",out.size()+count<=2*1024*1024);out.write(buffer,0,count);}pcm=out.toByteArray();}assertEquals(0,pcm.length%2);
-                String expected=name.startsWith("cough-")?"cough":name.startsWith("babycry-")?"baby_cry":name.startsWith("laughter-")?"laughter":name.startsWith("snoring-")?"snoring":"speech";JSONArray windows=new JSONArray();JSONObject report=new JSONObject().put("fixture",name).put("expected_broad_class",expected);String database="sleepwell-verification-"+UUID.randomUUID()+".db";
+            for(String name:List.of("cough-fabrizio","cough-crowd","babycry-bonehead","laughter-crowd","laughter-solo","babycry-ciccarelli","snoring-sorts","snoring-pencil","speech-countdown","speech-crowd")){
+                byte[] pcm;try(InputStream in=tests.getAssets().open("classifier-fixtures/"+name+".pcm")){ByteArrayOutputStream out=new ByteArrayOutputStream();byte[] buffer=new byte[8192];for(int count;(count=in.read(buffer))!=-1;){assertTrue("Bounded PCM fixture",out.size()+count<=3*1024*1024);out.write(buffer,0,count);}pcm=out.toByteArray();}assertEquals(0,pcm.length%2);assertTrue("Fixture <=80seconds",pcm.length<=80*32000);String pcmHash=sha256(pcm);
+                if(name.equals("laughter-solo")){assertEquals(2003880,pcm.length);assertEquals("f180937513545059b6fea873b63ed061175a2b6adbec75e56f0a0542fe6a8214",pcmHash);}
+                if(name.equals("babycry-ciccarelli")){assertEquals(2333000,pcm.length);assertEquals("cc2fac3d0921e3248e6e0eb7ab491a33510fddfeae9c9135142b84713af98859",pcmHash);}
+                String expected=name.startsWith("cough-")?"cough":name.startsWith("babycry-")?"baby_cry":name.startsWith("laughter-")?"laughter":name.startsWith("snoring-")?"snoring":"speech";JSONArray windows=new JSONArray();JSONObject report=new JSONObject().put("fixture",name).put("expected_broad_class",expected).put("pcm_sha256",pcmHash).put("samples",pcm.length/2).put("duration_ms",pcm.length*1000L/32000);String database="sleepwell-verification-"+UUID.randomUUID()+".db";
                 try{
                     long session;try(Store store=new Store(target,database)){
                         session=store.begin();long start=store.rows("SELECT start FROM sessions WHERE id=?",""+session).get(0).getLong("start");SoundAnalysisStream.Model observing=new SoundAnalysisStream.Model(){public float[] infer(float[] input){float[] scores=model.infer(input);SoundAnalysis.Result result=SoundAnalysis.classify(scores);int top=0;for(int n=1;n<scores.length;n++)if(scores[n]>scores[top])top=n;try{JSONArray ranking=new JSONArray();List<Integer> order=new ArrayList<>();for(int n=0;n<scores.length;n++)order.add(n);order.sort((a,b)->Float.compare(scores[b],scores[a]));for(int n=0;n<8;n++)ranking.put(new JSONObject().put("index",order.get(n)).put("score",scores[order.get(n)]));windows.put(new JSONObject().put("start_ms",windows.length()*975).put("top_index",top).put("top_score",scores[top]).put("laughter_family_score",Math.max(Math.max(Math.max(scores[13],scores[14]),Math.max(scores[15],scores[16])),Math.max(scores[17],scores[18]))).put("crying_parent_score",scores[19]).put("baby_cry_score",scores[20]).put("cough_score",scores[42]).put("throat_clearing_score",scores[43]).put("snoring_score",scores[38]).put("speech_score",scores[0]).put("selected",result==null?"none":result.category).put("top8",ranking));}catch(JSONException error){throw new IllegalStateException(error);}return scores;}public void close(){/* Outer owner reuses the real CPU model. */}};
@@ -31,10 +34,14 @@ public class SoundCategoryFixtureEvaluationTest {
             }
         }
         File folder=new File(target.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());try(Writer out=new OutputStreamWriter(new FileOutputStream(new File(folder,"analysis-category-fixture-evaluation.json")),StandardCharsets.UTF_8)){out.write(new JSONObject().put("model",YamnetClassifier.MODEL_ID).put("scope","CC0 public compatibility fixtures; uncalibrated scores, not bedroom/clinical accuracy").put("fixtures",reports).toString(2));}
-        assertTrue("Actual cough PCM must persist a production grouped cough event",count(byName,"cough-fabrizio","cough")+count(byName,"cough-crowd","cough")>0);assertTrue("Actual infant PCM must persist production baby cry",count(byName,"babycry-bonehead","baby_cry")>0);assertTrue("Actual laughter PCM must persist production laughter",count(byName,"laughter-crowd","laughter")>0);
+        assertTrue("Actual cough PCM must persist a production grouped cough event",count(byName,"cough-fabrizio","cough")+count(byName,"cough-crowd","cough")>0);assertTrue("Actual infant PCM must persist production baby cry",count(byName,"babycry-bonehead","baby_cry")>0);assertTrue("Independently identified solo laughter PCM must persist production laughter",count(byName,"laughter-solo","laughter")>0);
+        assertTrue("Independent infant source must persist production baby cry",count(byName,"babycry-ciccarelli","baby_cry")>0);
+        for(String category:List.of("baby_cry","cough"))assertEquals("Solo laughter cross-class rejection: "+category,0,count(byName,"laughter-solo",category));
+        for(String category:List.of("laughter","cough"))assertEquals("Independent cry cross-class rejection: "+category,0,count(byName,"babycry-ciccarelli",category));
         for(String name:List.of("snoring-sorts","snoring-pencil","speech-countdown","speech-crowd"))for(String category:List.of("cough","baby_cry","laughter"))assertEquals(name+" must not persist "+category,0,count(byName,name,category));
-        for(String name:List.of("cough-fabrizio","cough-crowd","babycry-bonehead","laughter-crowd"))assertEquals(name+" must not persist snoring",0,count(byName,name,"snoring"));
+        for(String name:List.of("cough-fabrizio","cough-crowd","babycry-bonehead","laughter-crowd","laughter-solo","babycry-ciccarelli"))assertEquals(name+" must not persist snoring",0,count(byName,name,"snoring"));
         assertTrue("Existing snore evidence remains",count(byName,"snoring-sorts","snoring")+count(byName,"snoring-pencil","snoring")>0);assertTrue("Existing speech evidence remains",count(byName,"speech-countdown","speech")>0);
     }
+    private static String sha256(byte[] bytes)throws Exception{byte[] digest=MessageDigest.getInstance("SHA-256").digest(bytes);StringBuilder hex=new StringBuilder();for(byte value:digest)hex.append(String.format(Locale.ROOT,"%02x",value&255));return hex.toString();}
     private int count(Map<String,JSONObject> reports,String name,String category)throws JSONException{return reports.get(name).getJSONObject("counts").getInt(category);}
 }
