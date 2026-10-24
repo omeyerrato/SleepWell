@@ -1,0 +1,9 @@
+package org.sleepwell.app;
+import org.junit.Test;import java.util.*;import static org.junit.Assert.*;
+public final class SearchIndexTest {
+    SearchIndex.Entry row(SearchIndex.Kind kind,long id,String title,String terms){return new SearchIndex.Entry(kind,id,title,"",terms);}
+    @Test public void termsAreCaseInsensitiveAndAllMustMatch(){List<SearchIndex.Entry> rows=List.of(row(SearchIndex.Kind.ALARM,1,"Workdays","Math morning"),row(SearchIndex.Kind.RECORD,2,"Thursday","Exercise morning"));assertEquals(1,SearchIndex.find(rows,"MORNING math").size());assertEquals(1,SearchIndex.find(rows,"math morning").get(0).id);assertTrue(SearchIndex.find(rows,"math exercise").isEmpty());assertTrue(SearchIndex.find(rows," ").isEmpty());}
+    @Test public void unicodeAccentsAndPunctuationPreserveUsefulSearch(){assertEquals("cafe 6 30",SearchIndex.normalize("CAFÉ 6:30"));assertEquals("نوم",SearchIndex.normalize("نَوْم"));List<SearchIndex.Entry> rows=List.of(row(SearchIndex.Kind.RECORD,3,"Café","١٢ mg نوم"));assertEquals(1,SearchIndex.find(rows,"cafe نوم").size());}
+    @Test public void exactThenPrefixThenRemainingMatchesHaveStableOrder(){List<SearchIndex.Entry> rows=List.of(row(SearchIndex.Kind.RECORD,1,"Night","travel"),row(SearchIndex.Kind.SETTING,2,"Travel mode",""),row(SearchIndex.Kind.ALARM,3,"Travel",""));List<SearchIndex.Entry> found=SearchIndex.find(rows,"travel");assertEquals(List.of(3L,2L,1L),found.stream().map(e->e.id).toList());}
+    @Test public void resultsAndQueriesAreBoundedAndImmutable(){List<SearchIndex.Entry> rows=new ArrayList<>();for(int n=0;n<140;n++)rows.add(row(SearchIndex.Kind.RECORD,n,"Night",""));List<SearchIndex.Entry> found=SearchIndex.find(rows,"night");assertEquals(100,found.size());assertThrows(UnsupportedOperationException.class,()->found.clear());assertThrows(IllegalArgumentException.class,()->SearchIndex.find(rows,"x".repeat(161)));assertEquals(140,rows.size());}
+}

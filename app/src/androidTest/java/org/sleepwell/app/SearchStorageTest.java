@@ -1,0 +1,9 @@
+package org.sleepwell.app;
+import android.content.*;import androidx.test.platform.app.InstrumentationRegistry;import org.junit.Test;import java.time.*;import java.util.*;import static org.junit.Assert.*;
+public final class SearchStorageTest {
+    @Test public void savedAlarmsEffectiveNotesTagsQuantitiesAndSettingsAreSearchableWithoutWrites()throws Exception{
+        assertEquals("true",InstrumentationRegistry.getArguments().getString("ciReview"));Context c=InstrumentationRegistry.getInstrumentation().getTargetContext();String name="search-storage-"+UUID.randomUUID()+".db";Records.Factory old=Records.factory;Map<String,?> prefs=new HashMap<>(Prefs.of(c).getAll());
+        try(Store store=new Store(c,name)){Records.factory=context->new Store(context,name);Alarm alarm=new Alarm(7);alarm.label="Early workdays";alarm.hour=6;alarm.minute=30;alarm.days.add(1);store.save(alarm);long now=System.currentTimeMillis();RecordDraft draft=new RecordDraft(now-86400000,now-57600000);draft.note="Quiet café after exercise";draft.addTag("Caffeine");draft.quantity("Caffeine",new TagQuantity(80,"mg"));long id=Records.create(store,draft,ZoneId.of("Asia/Riyadh"),now);String before=BackupFingerprint.read(store);List<SearchIndex.Entry> source=SearchData.read(c);assertEquals(7,SearchIndex.find(source,"early workdays").get(0).id);assertEquals(id,SearchIndex.find(source,"exercise caffeine 80 mg").get(0).id);assertEquals(SearchIndex.Kind.SETTING,SearchIndex.find(source,"Health Connect").get(0).kind);assertTrue(SearchIndex.find(source,"nothing-matches").isEmpty());assertEquals(before,BackupFingerprint.read(store));assertEquals(prefs,Prefs.of(c).getAll());
+        }finally{Records.factory=old;assertTrue(c.deleteDatabase(name));assertFalse(AlarmService.active);assertFalse(TrackingService.running);}
+    }
+}

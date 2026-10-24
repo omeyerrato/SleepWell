@@ -63,6 +63,7 @@ PHONE_FEATURE_TESTS = ("CalendarRulesStorageTest", "CalendarRulesFlowTest", "Ala
 PHONE_FEATURE_TESTS += ("HealthSleepStorageTest", "HealthConnectFlowTest", "AlarmDateStorageTest", "AlarmDateFlowTest", "WalkConfigurationFlowTest", "DatedGoalBankFlowTest")
 PHONE_FEATURE_TESTS += ("SmartLightStorageTest", "HomeAssistantProtocolTest", "AlarmInputsStorageTest", "AlarmInputsFlowTest", "MoonSearchStorageTest", "MoonSearchFlowTest", "TagStorageTest", "TagManagementFlowTest", "CloudBackupStorageTest", "CloudBackupFlowTest")
 PHONE_FEATURE_TESTS += ("AdvancedSnoozeStorageTest", "AdvancedSnoozeFlowTest")
+PHONE_FEATURE_TESTS += ("SearchStorageTest", "SearchFlowTest")
 PHONE_FEATURE_FRAMES = ["calendar-rules-" + name + ".png" for name in ("initial", "draft", "saved", "reopened")]
 PHONE_FEATURE_FRAMES += ["alarm-defaults-" + name + ".png" for name in ("initial", "recreated", "saved", "reopened", "reset", "saving", "saving-recreated", "save-error", "retry")]
 PHONE_FEATURE_FRAMES += ["health-connect-" + name + ".png" for name in ("default", "configured", "synced", "source", "conflict", "kept", "unavailable", "permissions")]
@@ -73,6 +74,7 @@ PHONE_FEATURE_FRAMES += ["moon-search-" + name + ".png" for name in ("initial", 
 PHONE_FEATURE_FRAMES += ["tags-" + name + ".png" for name in ("quantity-draft", "quantity-recreated", "editor", "comparison", "rename", "renamed", "delete-confirm", "deleted")]
 PHONE_FEATURE_FRAMES += ["cloud-backup-" + name + ".png" for name in ("destination", "saved", "reopened", "restore-review")]
 PHONE_FEATURE_FRAMES += ["advanced-snooze-" + name + ".png" for name in ("initial", "draft", "recreated", "reopened")]
+PHONE_FEATURE_FRAMES += ["search-" + name + ".png" for name in ("empty", "no-results", "record", "recreated")]
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
 root = Path(__file__).resolve().parents[1]

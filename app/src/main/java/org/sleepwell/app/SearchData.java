@@ -1,0 +1,13 @@
+package org.sleepwell.app;
+import android.content.Context;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+final class SearchData {
+    static final Class<?>[] SETTINGS={PlanActivity.class,AutomaticTrackingActivity.class,RecurringTrackingActivity.class,MotionSensorActivity.class,SoundSensitivityActivity.class,SnoringCuesActivity.class,GuardActivity.class,TravelActivity.class,HealthConnectActivity.class,AutomationActivity.class,CalendarRulesActivity.class,SmartLightActivity.class,CloudBackupActivity.class,AppearanceActivity.class,TagManagementActivity.class,SoundArchiveActivity.class};
+    static final String[] NAMES={"Sleep plan","Automatic tracking","Nightly tracking schedule","Motion sensor","Sound sensitivity","Snoring cues","Bedtime guard","Travel mode","Health Connect","Automations","Calendar rules","Bedroom light","Cloud backup","Appearance","Tags and quantities","Sound archive"};
+    static List<SearchIndex.Entry> read(Context context){List<SearchIndex.Entry> rows=new ArrayList<>();try(Store store=Records.open(context)){
+        for(Alarm a:store.alarms())rows.add(new SearchIndex.Entry(SearchIndex.Kind.ALARM,a.id,a.label.isBlank()?"Alarm":a.label,a.time()+" · "+(a.enabled?"On":"Off"),"alarm "+a.challenges().summary()+" "+a.days+" "+(a.date==null?"":a.date)+" "+a.tone));
+        for(RecordEntry r:Records.all(store)){String date=r.day(0).format(DateTimeFormatter.ofPattern("EEE d MMM uuuu",Locale.getDefault()));StringBuilder terms=new StringBuilder(r.edit.note).append(' ').append(r.provenance()).append(' ').append(r.day(0));for(String tag:r.edit.tags){terms.append(' ').append(tag);TagQuantity quantity=r.edit.quantities.get(tag);if(quantity!=null)terms.append(' ').append(quantity.display());}rows.add(new SearchIndex.Entry(SearchIndex.Kind.RECORD,r.id,date,RecordUi.duration(r.duration())+" · "+r.provenance(),terms.toString()));}
+    }for(int n=0;n<SETTINGS.length;n++)rows.add(new SearchIndex.Entry(SearchIndex.Kind.SETTING,n,NAMES[n],"Settings",NAMES[n]));return List.copyOf(rows);}
+    private SearchData(){}
+}
