@@ -159,7 +159,7 @@
         "AlarmRampChart.java",
         "Scheduler.java"
       ],
-      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized. Latest AlarmWakeSettingsTest1 FAIL at9188e78/CI40051144096 while finding Extra loud during options-dialog transition, before ramp assertions. Later d4c08c7 waits fresh dialog descendants. No actual effects test or new configuration pass claimed. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred.",
+      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized. Latest AlarmWakeSettingsTest1 FAIL at9188e78/CI40051144096 while finding Extra loud during options-dialog transition, before ramp assertions. Later d4c08c7 waits fresh dialog descendants. No actual effects test or new configuration pass claimed. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. c48fedd WakeSettings reaches7 named states then stale-node failure after reopen. Later1971b2b uses lazy native selectors and stronger48dp complete bounds; combined build passes, fresh full configuration proof required.",
       "status": "partial",
       "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. No speaker boost or smart-light control. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
       "id": "F008",
@@ -265,7 +265,7 @@
         "AlarmAudioSink.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Integrated431 pure tests/53 suites and debug/native/release/lint pass at cce7a60. At9188e78/CI40051144096 AlarmToneGrantTest1 PASS0.087s, but AlarmToneAssetsTest1 fails its incorrect blanket4s expectation (original Daybreak/Pulse8s, Chime4s) and AlarmToneFlowTest1 stops after3 of16 expected frames. Strict review rejects preview controls clipped behind footer. Later d4c08c7 compacts real controls, keeps48dp targets, reveals errors, checks complete geometry, and corrects exact per-asset duration without changing PCM. Fresh native proof required; actual MediaPlayer/SAF/OEM output remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred.",
+      "validation": "Integrated431 pure tests/53 suites and debug/native/release/lint pass at cce7a60. At9188e78/CI40051144096 AlarmToneGrantTest1 PASS0.087s, but AlarmToneAssetsTest1 fails its incorrect blanket4s expectation (original Daybreak/Pulse8s, Chime4s) and AlarmToneFlowTest1 stops after3 of16 expected frames. Strict review rejects preview controls clipped behind footer. Later d4c08c7 compacts real controls, keeps48dp targets, reveals errors, checks complete geometry, and corrects exact per-asset duration without changing PCM. Fresh native proof required; actual MediaPlayer/SAF/OEM output remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Atc48fedd/CI40054511743 assets1 PASS0.401s and grants1 PASS0.147s; ToneFlow fails new helper null-label lookup before named captures. Diagnostic shows complete preview/footer but full flow remains rejected. Later1971b2b null-safe helper andfeb38ec icon/gap polish compile; fresh native run required.",
       "status": "partial",
       "notes": "Actual Daybreak/Pulse/original Chime PCM and32 measured peak bins; no manufactured external/default waves. Separate0–25 percent digital preview, explicit Play/Pause/Stop, process decoder lease,8s prepare and20s wall bounds, focus/noisy/lifecycle/alarm-occupancy guards without global volume writes. Validated explicit persisted content imports, source cancellation/rotation fencing and shared grant preservation. Device alarm remains under My audio. Full screen fidelity, actual output/provider compatibility and broad tone catalogue remain open.",
       "id": "F011",
@@ -286,7 +286,7 @@
         "AlarmAudioSink.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Integrated431 pure tests/53 suites and debug/native/release/lint pass at cce7a60. At9188e78/CI40051144096 AlarmToneGrantTest1 PASS0.087s, but AlarmToneAssetsTest1 fails its incorrect blanket4s expectation (original Daybreak/Pulse8s, Chime4s) and AlarmToneFlowTest1 stops after3 of16 expected frames. Strict review rejects preview controls clipped behind footer. Later d4c08c7 compacts real controls, keeps48dp targets, reveals errors, checks complete geometry, and corrects exact per-asset duration without changing PCM. Fresh native proof required; actual MediaPlayer/SAF/OEM output remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred.",
+      "validation": "Integrated431 pure tests/53 suites and debug/native/release/lint pass at cce7a60. At9188e78/CI40051144096 AlarmToneGrantTest1 PASS0.087s, but AlarmToneAssetsTest1 fails its incorrect blanket4s expectation (original Daybreak/Pulse8s, Chime4s) and AlarmToneFlowTest1 stops after3 of16 expected frames. Strict review rejects preview controls clipped behind footer. Later d4c08c7 compacts real controls, keeps48dp targets, reveals errors, checks complete geometry, and corrects exact per-asset duration without changing PCM. Fresh native proof required; actual MediaPlayer/SAF/OEM output remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Atc48fedd/CI40054511743 assets1 PASS0.401s and grants1 PASS0.147s; ToneFlow fails new helper null-label lookup before named captures. Diagnostic shows complete preview/footer but full flow remains rejected. Later1971b2b null-safe helper andfeb38ec icon/gap polish compile; fresh native run required.",
       "status": "partial",
       "notes": "Actual Daybreak/Pulse/original Chime PCM and32 measured peak bins; no manufactured external/default waves. Separate0–25 percent digital preview, explicit Play/Pause/Stop, process decoder lease,8s prepare and20s wall bounds, focus/noisy/lifecycle/alarm-occupancy guards without global volume writes. Validated explicit persisted content imports, source cancellation/rotation fencing and shared grant preservation. Device alarm remains under My audio. Full screen fidelity, actual output/provider compatibility and broad tone catalogue remain open.",
       "id": "F012",
@@ -438,7 +438,7 @@
         "MainActivity.java",
         "TonightScreen.java"
       ],
-      "validation": "WakeCheckEngineTest16 and integrated431-test build pass. WakeCheckFlowTest2 PASS21.435s at9188e78/CI40051144096 with12 originals: private durable states, fake scheduling/delivery/re-ring, and failed/successful Editor save preservation. Strict visual review FAILS left-aligned countdown and button glyph grouping plus stale fixture Toast. Later4d07378 centers actual timer/button and waits Toast dismissal; fresh capture required. Actual notification/alarm delivery remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred.",
+      "validation": "WakeCheckEngineTest16 and integrated431-test build pass. WakeCheckFlowTest2 PASS21.435s at9188e78/CI40051144096 with12 originals: private durable states, fake scheduling/delivery/re-ring, and failed/successful Editor save preservation. Strict visual review FAILS left-aligned countdown and button glyph grouping plus stale fixture Toast. Later4d07378 centers actual timer/button and waits Toast dismissal; fresh capture required. Actual notification/alarm delivery remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Atc48fedd WakeCheckFlowTest2 passes again and12 originals were reviewed: centered timer/button and error-copy correction accepted narrowly; waiting/prompt remain rejected for stale injected-save Toast. Laterfeb38ec uses a persistent Editor inline save error and adds13th supporting error capture, with failed/successful save ownership preserved. Compiled, fresh original images required.",
       "status": "partial",
       "notes": "Saved check delay now leads to a silent prompt and one persisted2-minute confirmation deadline. Same-boot elapsed time, reboot wall reconciliation, nonce/stage immutable pending intents, stale/duplicate/Off/deletion/supersession guards, explicit confirm and durable at-most-once expiry claim. Miss restarts frozen saved alarm through existing runtime. Off cancellation occurs only after successful persisted edit. Notification/exact errors and retry preserve deadline; silent notifications may not peek, full-screen visibility is OS-controlled. Old checks lack original nonce/due time, and process death after expiry claim can prevent re-ring; these limitations remain documented. Real delivery and board04 fidelity remain unverified.",
       "id": "F019",
@@ -586,7 +586,7 @@
         "AlarmActivity.java",
         "MathOperatorGrid.java"
       ],
-      "validation": "MorningCodeTest, QrDecoderTest, QrLumaTest, QrProofTest and QrScanSessionTest:14 new pure passes on401-test branch, debug/native APK and lint pass. Actual generated UTF-8/rotated/inverted QR bytes decode. QrCodeConfigurationTest1 PASS24.619s ata8362a1/CI40047180910 with12 individually reviewed inert fake-camera/access originals. Draft/save/reopen/private backup invariants pass; actual camera/ringing transition and full reference-screen fidelity remain unverified. Later14c4d5a shares the Math/QR operator cards; scoped debug/native APK and lint pass1m23s. QR last-operator error plus card geometry require13 original frames in a future run; current frozen9188e78 still requires12. Later9188e78/CI40051144096 QR flow FAILS on stale native control during fallback rerender; prior a836 pass remains narrower evidence. d4c08c7 re-finds controls after each action and retries only pre-click StaleObjectException; shared14c4d5a grid and13-frame geometry/error contract remain pending. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred.",
+      "validation": "MorningCodeTest, QrDecoderTest, QrLumaTest, QrProofTest and QrScanSessionTest:14 new pure passes on401-test branch, debug/native APK and lint pass. Actual generated UTF-8/rotated/inverted QR bytes decode. QrCodeConfigurationTest1 PASS24.619s ata8362a1/CI40047180910 with12 individually reviewed inert fake-camera/access originals. Draft/save/reopen/private backup invariants pass; actual camera/ringing transition and full reference-screen fidelity remain unverified. Later14c4d5a shares the Math/QR operator cards; scoped debug/native APK and lint pass1m23s. QR last-operator error plus card geometry require13 original frames in a future run; current frozen9188e78 still requires12. Later9188e78/CI40051144096 QR flow FAILS on stale native control during fallback rerender; prior a836 pass remains narrower evidence. d4c08c7 re-finds controls after each action and retries only pre-click StaleObjectException; shared14c4d5a grid and13-frame geometry/error contract remain pending. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Latest QrCodeConfigurationTest1 PASS26.218s atc48fedd/CI40054511743: all13 originals individually reviewed, shared card geometry/last-operator error/save/reopen proven with fake camera/access. Actual scanner/ringing and full board04 segmented fidelity remain open.",
       "status": "partial",
       "notes": "Explicit camera enrollment stores only location label and SHA256, never raw QR text or URLs. Multiple ordered distinct QR tasks can each own1 routine unit; nonce/run/unit/hash and current occurrence fence completion. Saved one-question graded Math fallback; no permission dialog while ringing. Optional CameraX/ZXing offline dependencies, missing permission/camera/error/cancel states and strict backup JSON. General barcode formats, generated printable codes and actual CameraX compatibility remain missing or unverified.",
       "id": "F027",
@@ -723,18 +723,31 @@
     },
     {
       "feature": "Nap timer",
-      "screens": "04–12,26",
+      "screens": "26 (board09 middle) + Tonight/Alarms/Wind-down",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
+        "NapPlan.java",
+        "NapPlanJson.java",
+        "NapEngine.java",
+        "Naps.java",
+        "NapReceiver.java",
+        "NapActivity.java",
         "Alarm.java",
-        "Scheduler.java",
-        "AlarmService.java",
         "AlarmActivity.java",
-        "AlarmEditorActivity.java"
+        "Scheduler.java",
+        "AlarmReceiver.java",
+        "WakeChecks.java",
+        "TrackingService.java",
+        "NightWindow.java",
+        "NightArc.java",
+        "TonightScreen.java",
+        "MainActivity.java",
+        "AlarmEditorActivity.java",
+        "Backup.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "NapEngineTest16 and NapWindowTest6 plus existing NightWindowTest10 pass in the combined453-test build atfeb38ec. Debug/native/release APKs and lint pass (0errors/87warnings). NapFlowTest3 and NapIntegrationFlowTest1 require23 originals and private fake-port persistence/cancel/restart/smart/migration checks; compiled, not yet executed. No actual delivery/hardware proof.",
       "status": "partial",
-      "notes": "Partial: duration converted to next wall-clock minute, not a second-accurate monotonic countdown.",
+      "notes": "Saved exact relative timer and scheduled start,10/20/30/90 presets, owned cancel/restart/list, real shared sound settings and deferred delete after dismiss or matching wake confirmation. Main/Tonight/Wind-down use projected relative deadlines and a separately labelled nap arc; inactive restored timers require explicit fresh Start. Smart wake uses already-active phone movement, never starts sensors/microphone here and is not stage detection. Strict optional Alarm JSON, immutable nonce job, durable delivery claim and disabled portable restore. Crash after claim, overlapping alarm, force-stop/OEM and permission limits remain. Distinct minimum-rest Power Nap remains missing; see NAPS.md.",
       "id": "F035",
       "tests": []
     },
@@ -925,7 +938,7 @@
         "TrackingService.java",
         "TrackingActivity.java"
       ],
-      "validation": "AutomaticTrackingFlowTest passes at7d02819/CI40021145034: five originals, Save versus fake Arm, consent, recreation/reopen/error. Strict per-file review accepts complete first-frame Save/Arm in all states. Actual Service, sensors, deferred microphone and overnight lifecycle unverified. Latest AutomaticTrackingFlowTest1 FAIL at9188e78/CI40051144096 on initial footer visibility; diagnostic original shows full Save, indicating assertion ran before layout. Later d4c08c7 waits actual current layout then retains complete bounds and persistence assertions; fresh native pass still required. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred.",
+      "validation": "AutomaticTrackingFlowTest passes at7d02819/CI40021145034: five originals, Save versus fake Arm, consent, recreation/reopen/error. Strict per-file review accepts complete first-frame Save/Arm in all states. Actual Service, sensors, deferred microphone and overnight lifecycle unverified. Latest AutomaticTrackingFlowTest1 FAIL at9188e78/CI40051144096 on initial footer visibility; diagnostic original shows full Save, indicating assertion ran before layout. Later d4c08c7 waits actual current layout then retains complete bounds and persistence assertions; fresh native pass still required. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Latest AutomaticTrackingFlowTest1 PASS15.459s atc48fedd/CI40054511743: all5 named originals individually reviewed, complete Save/Arm/error geometry and private preferences/fake arming. This supersedes initial-layout failure only; recurring behavior and actual OS delivery are not covered.",
       "status": "partial",
       "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md.",
       "id": "F044",
@@ -1771,11 +1784,13 @@
         "Backup.java",
         "Store.java",
         "SessionTiming.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "SoundEventBackup.java",
+        "NapPlanJson.java"
       ],
-      "validation": "17 isolated device passes across migration/records/replay/clock suites, including formats 1/2/3, original-row preservation, malformed edit/manual rejection and atomic rollback. Actual document-picker restore pending",
+      "validation": "17 isolated device passes across migration/records/replay/clock suites, including formats 1/2/3, original-row preservation, malformed edit/manual rejection and atomic rollback. Actual document-picker restore pending Format4/schema7 label metadata and inactive Nap JSON restore are integrated atfeb38ec; complete453-test build passes. New actual SQLite SoundLabelStorageTest9 and NapFlowTest3 portable roundtrips await native execution.",
       "status": "partial",
-      "notes": "Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted.",
+      "notes": "Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted. New portable event metadata preserves manual corrections and original estimates without clip links;8MiB pretty-UTF8 export bound matches importer. Nap imports are inactive and need explicit fresh Start. Provider IO/lifecycle and broad backup completeness still need their own verification.",
       "id": "F089",
       "tests": []
     },
@@ -2013,7 +2028,7 @@
         "MainActivity.java",
         "TonightScreen.java"
       ],
-      "validation": "WakeCheckEngineTest16 and integrated431-test build pass. WakeCheckFlowTest2 PASS21.435s at9188e78/CI40051144096 with12 originals: private durable states, fake scheduling/delivery/re-ring, and failed/successful Editor save preservation. Strict visual review FAILS left-aligned countdown and button glyph grouping plus stale fixture Toast. Later4d07378 centers actual timer/button and waits Toast dismissal; fresh capture required. Actual notification/alarm delivery remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred.",
+      "validation": "WakeCheckEngineTest16 and integrated431-test build pass. WakeCheckFlowTest2 PASS21.435s at9188e78/CI40051144096 with12 originals: private durable states, fake scheduling/delivery/re-ring, and failed/successful Editor save preservation. Strict visual review FAILS left-aligned countdown and button glyph grouping plus stale fixture Toast. Later4d07378 centers actual timer/button and waits Toast dismissal; fresh capture required. Actual notification/alarm delivery remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Atc48fedd WakeCheckFlowTest2 passes again and12 originals were reviewed: centered timer/button and error-copy correction accepted narrowly; waiting/prompt remain rejected for stale injected-save Toast. Laterfeb38ec uses a persistent Editor inline save error and adds13th supporting error capture, with failed/successful save ownership preserved. Compiled, fresh original images required.",
       "status": "partial",
       "notes": "Saved check delay now leads to a silent prompt and one persisted2-minute confirmation deadline. Same-boot elapsed time, reboot wall reconciliation, nonce/stage immutable pending intents, stale/duplicate/Off/deletion/supersession guards, explicit confirm and durable at-most-once expiry claim. Miss restarts frozen saved alarm through existing runtime. Off cancellation occurs only after successful persisted edit. Notification/exact errors and retry preserve deadline; silent notifications may not peek, full-screen visibility is OS-controlled. Old checks lack original nonce/due time, and process death after expiry claim can prevent re-ring; these limitations remain documented. Real delivery and board04 fidelity remain unverified.",
       "id": "F106",
@@ -2053,7 +2068,7 @@
         "AlarmActivity.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "QR14 pure tests and401-test branch build pass. Configured fallback JSON and one-unit ownership tested in pure source; QrCodeConfigurationTest1 PASS24.619s ata8362a1 with12 inert enrollment/error/fallback/save/reopen originals. No actual alarm/ringing/camera test under user restriction. Later9188e78/CI40051144096 QR flow FAILS on stale native control during fallback rerender; prior a836 pass remains narrower evidence. d4c08c7 re-finds controls after each action and retries only pre-click StaleObjectException; shared14c4d5a grid and13-frame geometry/error contract remain pending. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred.",
+      "validation": "QR14 pure tests and401-test branch build pass. Configured fallback JSON and one-unit ownership tested in pure source; QrCodeConfigurationTest1 PASS24.619s ata8362a1 with12 inert enrollment/error/fallback/save/reopen originals. No actual alarm/ringing/camera test under user restriction. Later9188e78/CI40051144096 QR flow FAILS on stale native control during fallback rerender; prior a836 pass remains narrower evidence. d4c08c7 re-finds controls after each action and retries only pre-click StaleObjectException; shared14c4d5a grid and13-frame geometry/error contract remain pending. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Latest QrCodeConfigurationTest1 PASS26.218s atc48fedd/CI40054511743: all13 originals individually reviewed, shared card geometry/last-operator error/save/reopen proven with fake camera/access. Actual scanner/ringing and full board04 segmented fidelity remain open.",
       "status": "partial",
       "notes": "Configured QR fallback selects grade/operators/typed or choices and consumes exactly1 question. Missing access avoids permission prompts while ringing. Existing unavailable step/NFC/sensor Math fallback retained; release hides debug developer stop. Travel inference/bypass and full live behavior remain unverified or missing.",
       "id": "F108",
@@ -2287,18 +2302,24 @@
     },
     {
       "feature": "Correct sound labels / favorites / export",
-      "screens": "20,35",
+      "screens": "07 sound events/favorites + supporting label editor",
       "source": "https://sleep.urbandroid.org/docs/sleep/sound_recognition.html",
       "implementation": [
-        "SoundClips.java",
+        "SoundLabels.java",
+        "SoundLabelActivity.java",
+        "SoundLabelJob.java",
+        "SoundEventBackup.java",
+        "Store.java",
+        "Backup.java",
+        "SoundEventRows.java",
         "FavoriteSoundRows.java",
-        "FavoriteSoundsActivity.java",
-        "NightAudioArchive.java",
-        "SoundArchiveJob.java"
+        "ReportSounds.java",
+        "ReportScreen.java",
+        "NightAudioArchive.java"
       ],
-      "validation": "FavoriteSoundsStorageTest3/FlowTest1, SoundLibraryStorageTest3 and actual synthetic WAV/ZIP native tests pass atbb582cf/CI40037791812. Fake playback/provider only; real external output unverified.",
+      "validation": "Integrated935c773 source peer-reviewed including interrupted-night backup repair. Combined453 pure tests/55suites, debug/native/release APKs and lint pass atfeb38ec; SoundLabelStorageTest9 and SoundLabelFlowTest3/18 originals compiled but not yet executed. No real playback/microphone/phone actions.",
       "status": "partial",
-      "notes": "Persisted independent event/whole-recording favorites, global filtered album, and explicit complete-raw-WAV ZIP with interval/hash metadata exist. User label correction and portable favorite restore remain missing; shared WAV export is explicitly disclosed.",
+      "notes": "Schema7 nullable user_category and increment-only label_revision preserve original category/score/model/interval/clip/WAV; checked save/reset, retained worker/recreate/error/retry, stale/trim/deletion/ABA fences. Effective library/favorites/report counts clearly distinguish user choice from model estimates. Strict format4 analysis-only metadata and original/user provenance in ZIP; no portable WAV link. Old formats1–3 accepted. Recovery uses actual durable sound endpoints without invented active_ms; already recovered interrupted tails have explicit bounded provenance, preserving original times/end. Export self-validates and fits the existing8MiB pretty-UTF8 importer; portable legacy clip favorites and alternate formats remain incomplete. See SOUND-LABEL-CORRECTIONS.md.",
       "id": "F124",
       "tests": []
     },

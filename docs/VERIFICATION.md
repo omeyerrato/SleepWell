@@ -915,3 +915,51 @@ The independent reviewer cleared the corrected mandatory SeekBar/button/footer
 bounds selectors. All75 exact staged Git blob hashes in the9188e78 evidence
 bundle were independently rechecked. Required follow-up is42classes/60methods/
 225 original PNGs, with model-category failure still honestly retained.
+
+## CI40054511743 atc48fedd — 39/42 classes,57/60 methods
+
+Terminal overall FAIL,208 actual PNGs against225 required. QR configuration
+passes26.218s with all13 individually reviewed originals, including shared
+operator cards, last-operator rejection and persisted fallback/save/reopen.
+Automatic settings pass15.459s: all5 originals have complete Save/Arm/error
+controls, with private preferences and fake arming. Narrow configuration passes;
+actual camera, sensors, recurring timing and full reference fidelity remain open.
+Tone assets1 PASS0.401s and grants1 PASS0.147s. ToneFlow fails the new test
+helper's null-contentDescription lookup before named captures. Its diagnostic
+shows the compact preview/footer fit, but does not verify Play/import/persistence.
+WakeSettings reaches7 named states then fails a stale UiObject2 query after
+reopen. Later1971b2b uses null-safe text equality and lazy selectors while
+retaining full48dp targets. The actual solo-laughter gate still fails; no
+threshold or positive assertion changed.
+WakeCheck2 passes again; the12 originals show centered countdown/button and
+honest error/retry states. Waiting and prompt remain rejected because a prior
+injected save-failure Toast obscures the footer despite its accessibility wait.
+Laterfeb38ec replaces transient Editor save failures with persistent inline
+feedback, preserved across recreation and cleared on successful save. A13th
+supporting error image is now mandatory. No screenshot pixels are changed.
+
+## Integrated label and nap flows atfeb38ec — full local build
+
+453 pure tests across55 suites PASS, zero failures/errors/skips. Debug app,
+instrumentation APK and release app builds PASS; lint0errors/87warnings.
+Build duration4m11. Labels935c773 add schema7 preserving original estimates,
+manual overlays and strict portable format4. Nap chaina216304/b92f3bd/c94f626/
+28cecfa adds exact relative timers plus reachable Main/Tonight/Wind-down routes,
+clock/zone-aware nap window, inactive restore, owned cancel/restart and deferred
+delete. Source peer review corrected repeated Start ownership, missing parent
+hooks, predictive Back and interrupted sound-tail backup roundtrips.
+
+New actual-storage/UI execution is still pending: SoundLabelStorageTest9,
+SoundLabelFlowTest3/18images, NapFlowTest3/15images and NapIntegrationFlowTest1/
+8images. Full silent contract is46classes/76methods/267 original PNGs plus
+unchanged ten-PCM and ZIP consumer checks. Full app/36-screen acceptance remains
+incomplete. No physical phone, output, microphone, tracking or alarm test ran.
+
+The optional tone-wake profile is explicitly a focused correction check:
+5classes/6methods/39 images; metadata and summary say full_app_review=false.
+It retains the same image/action/assertion contract for those classes and cannot
+be combined with actual native-sound/import options. It does not execute the
+broader classifier/archive/storage suites and cannot establish full acceptance.
+Default scope remains full, including both new feature flows and all previous
+gates. Static contract audit confirms exact class/method/image counts and no
+duplicate image requirements; Python compilation passes.
