@@ -1,0 +1,5 @@
+# Dated goal picker native readiness follow-up
+
+Actual CI40124416810 failed after the duration target frame: the next assertion expected Set a goal after Cancel, while the original failure PNG and XML still showed the duration modal with the numeric IME visible. The geometry helper can sample coordinates while the resize/keyboard transition moves the buttons. The historical-target/link method passed independently.
+
+The configuration test now performs an explicit user Back action only while WindowInsets reports the numeric keyboard visible, waits for IME closure, and requires both complete modal actions plus the same dialog title before tapping. Cancel must restore the actual original 10 h target and leave persisted goals empty; the subsequent 7 h30 choice still must save/recreate/reopen exactly as before. All calendar, overlap failure, persisted original-data/reminder-zero assertions remain. No product behavior or goal math is changed. Fresh native execution is pending; source inspection of an old failure is not a passing result.
