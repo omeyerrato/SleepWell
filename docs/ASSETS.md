@@ -72,3 +72,7 @@ No third-party application asset was extracted. The supplied tracking board
 provided composition/style guidance; its graph and UI were not imported.
 
 SHA-256: `4f36867bceb626d9099456a4594d70f52cb67c648eaa4f58a66e683ff5d481ac`.
+
+## Wake-up check dawn landscape
+
+`drawable-nodpi/wake_dawn_landscape.png` is an original standalone built-in image-tool illustration, copied unchanged and used only as WakeCheck root background. It contains no UI or text. Full prompt, reference mapping, actual dimensions, SHA-256 and verification limits are recorded in [WAKE-DAWN-ART.md](WAKE-DAWN-ART.md). Native controls remain live over the illustration; the shared alarm `DawnScene` has not been replaced.
