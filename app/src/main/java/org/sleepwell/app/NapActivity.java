@@ -59,4 +59,3 @@ public final class NapActivity extends Activity {
  @Override protected void onSaveInstanceState(Bundle b){super.onSaveInstanceState(b);if(draft==null)return;if(dateInput!=null)date=dateInput.getText().toString();b.putString("draft",draft.json().toString());b.putString("route",route);b.putString("error",error);b.putString("date",date);b.putInt("minute",scheduledMinute);b.putInt("minutes",minutes);b.putBoolean("delete",deleteAfter);b.putLong("startAt",startAt);if(tone!=null)toneState=tone.save();b.putBundle("tone",toneState);if(dialog!=null&&dialog.isShowing()&&dialog instanceof SleepPicker.StateDialog)b.putBundle("picker",dialog.onSaveInstanceState());}
  @Override protected void onDestroy(){handler.removeCallbacksAndMessages(null);if(dialog!=null)dialog.dismiss();if(tone!=null)tone.close();if(preview!=null)preview.close();worker.shutdown();super.onDestroy();}
 }
-
