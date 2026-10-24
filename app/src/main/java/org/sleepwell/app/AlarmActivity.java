@@ -50,6 +50,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
         progress=Design.text(card,"",14,500,Design.MUTED);progress.setVisibility(View.GONE);
         if(alarm.routineInvalid)Design.text(card,"Routine settings could not be read. Complete the saved fallback task.",13,500,Design.MUTED);
         switch(position.task.type) {
+            case "Visual search": visualSearch(card,expectedRun,expected);break;
             case "Walk": walk(card,expectedRun,expected);break;
             case "QR code": morningCode(card,expectedRun,expected);break;
             case "Shake":
@@ -78,6 +79,13 @@ public class AlarmActivity extends Activity implements SensorEventListener {
             .setMessage("Developer control for this debug build. It is hidden in release builds.").setPositiveButton("Stop alarm",(d,w)->{alarm.awakeCheck=0;dismiss();}).setNegativeButton("Keep going",null).show());
     }
     private void math(LinearLayout card,String expectedRun,int expected){math(card,expectedRun,expected,position.task.type.equals("Math")?position.task.math:MathSettings.LEGACY);}
+    private void visualSearch(LinearLayout card,String expectedRun,int expected){
+        boolean fallback=expectedRun.equals(Prefs.text(this,"moonFallbackRun",""))&&Prefs.number(this,"moonFallbackUnit",-1)==expected;
+        if(fallback){Design.text(card,"Math fallback",16,600,Design.INK);math(card,expectedRun,expected);return;}
+        try{MoonSearch board=MoonSearchState.open(Prefs.of(this),expectedRun,expected,position.round,random);MoonSearchView.render(card,board,()->expectedRun.equals(occurrence)&&expected==completed&&AlarmService.current(this,expectedRun),()->advance(expectedRun,expected));
+            Design.button(card,"Use Math instead",false,()->{if(!expectedRun.equals(occurrence)||expected!=completed||!AlarmService.current(this,expectedRun))return;if(Prefs.of(this).edit().putString("moonFallbackRun",expectedRun).putInt("moonFallbackUnit",expected).commit())build();else Ui.toast(this,"Fallback could not be saved. Try again.");});
+        }catch(RuntimeException invalid){Design.text(card,"Search board unavailable · Math fallback",14,500,Design.MUTED);math(card,expectedRun,expected);}
+    }
     private void math(LinearLayout card,String expectedRun,int expected,MathSettings configuration){
         try{mathTask=MathTask.decode(Prefs.text(this,"mathTask",""));if(!mathTask.matches(configuration))throw new IllegalArgumentException("Arithmetic settings changed");}catch(RuntimeException e){mathTask=MathTask.create(random,configuration);selected=null;Prefs.put(this,"mathTask",mathTask.encode());}
         Design.text(card,"Solve to dismiss",22,600,Design.INK).setGravity(Gravity.CENTER);Design.space(card,12);
