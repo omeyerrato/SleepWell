@@ -1174,3 +1174,22 @@ to Backup's actual owned Dialog/render path. Its first native compilation caught
 two test-helper List/ArrayList signature mismatches;571018b corrects those and
 passes debug/native APKs and lint0errors/87warnings in2m24. Fresh originals remain pending.
 No actions are retried to manufacture state. Full app/features remain incomplete.
+
+### Phone update, 24 October 2026
+
+Installed the locally signed `571018b` debug APK over the existing app with
+`adb install -r`; Android returned Success. This has the same application source
+as `dc30736`. APK SHA-256:
+`45e89a0cedfa13232bd57140dcbb04778607d2382900ec591cbd0b51e3d89c13`.
+The signing certificate matches the prior installation. A fresh private backup
+was taken before replacing the package. Read-only comparison afterward verified
+the exact installed APK, unchanged schema 7, every original database row, and
+all preferences. Private backups remain excluded from Git.
+
+The update did not launch the app or exercise alarms, audio, microphone,
+tracking, vibration, torch, lock controls, or power controls. Foreground behavior
+has not been verified on the phone. Report-only run `40072560126` passes all
+five methods, with all 13 required originals accepted by the strict visual
+reviewer. Full run `40072555253` still fails three methods: category positivity,
+Tone error-message synchronization, and recurring-dialog click synchronization.
+Those failures remain open and do not constitute full feature acceptance.
