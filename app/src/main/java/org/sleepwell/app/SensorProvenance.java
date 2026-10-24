@@ -1,0 +1,18 @@
+package org.sleepwell.app;
+
+import org.json.*;
+import java.util.*;
+
+/** Historical sensor metadata only. Parsing can never admit capture or output. */
+final class SensorProvenance {
+ static final String UNSPECIFIED="unspecified",NONE="none",MOTION="accelerometer",SONAR="sonar_fmcw_v1";
+ static final int MAX_CONFIG=1024,MAX_SAMPLES=10000;static final long MAX_SESSION=36*3600000L;
+ static final Set<String> QUALITY=Set.of("CALIBRATING","NEEDS_MOVEMENT","VALID","NO_ECHO","CLIPPED","TIMING_LOST","ROUTE_LOST","SILENCED","CHARGING_LOST","UNAVAILABLE");
+ static String sonar(SonarConfig config,String capture){try{String encoded=new JSONObject().put("version",1).put("algorithm",SonarConfig.ALGORITHM).put("rate",SonarConfig.RATE).put("low",config.low).put("high",config.high).put("chirp",SonarConfig.CHIRP).put("gain",Double.parseDouble(Float.toString(config.gain))).put("capture",capture).toString();validate(SONAR,encoded);return encoded;}catch(JSONException impossible){throw new IllegalArgumentException("Invalid contactless sensor configuration",impossible);}}
+ static void validate(String sensor,String config){if(sensor==null||config==null||!Set.of(UNSPECIFIED,NONE,MOTION,SONAR).contains(sensor))throw new IllegalArgumentException("Unknown record sensor");if(!sensor.equals(SONAR)){if(!config.isEmpty())throw new IllegalArgumentException("Unexpected sensor configuration");return;}if(config.isEmpty()||config.length()>MAX_CONFIG)throw new IllegalArgumentException("Invalid contactless configuration size");try{JSONObject j=new JSONObject(config);Set<String> keys=Set.of("version","algorithm","rate","low","high","chirp","gain","capture");if(j.length()!=keys.size())throw new JSONException("Invalid configuration fields");for(Iterator<String> it=j.keys();it.hasNext();)if(!keys.contains(it.next()))throw new JSONException("Unknown configuration field");if(whole(j,"version")!=1||!SonarConfig.ALGORITHM.equals(text(j,"algorithm"))||whole(j,"rate")!=48000||whole(j,"low")!=18500||whole(j,"high")!=20000||whole(j,"chirp")!=1920||!Set.of("UNPROCESSED","VOICE_RECOGNITION").contains(text(j,"capture")))throw new JSONException("Unsupported contactless algorithm");double gain=number(j,"gain");if(gain<.01||gain>.10)throw new JSONException("Invalid contactless gain");}catch(JSONException failure){throw new IllegalArgumentException("Invalid contactless sensor configuration",failure);}}
+ static void evidence(Double movement,String quality,int samples){if(quality==null||!QUALITY.contains(quality)||samples<0||samples>MAX_SAMPLES||movement!=null&&(!Double.isFinite(movement)||movement<0||movement>4)||quality.equals("VALID")&&(movement==null||samples==0)||!quality.equals("VALID")&&movement!=null)throw new IllegalArgumentException("Invalid contactless signal evidence");}
+ static long whole(JSONObject value,String key)throws JSONException{Object raw=value.get(key);if(!(raw instanceof Number))throw new JSONException("Invalid sensor integer");double number=((Number)raw).doubleValue();long integer=((Number)raw).longValue();if(!Double.isFinite(number)||number!=integer||Math.abs(number)>9007199254740991d)throw new JSONException("Invalid sensor integer");return integer;}
+ static String text(JSONObject value,String key)throws JSONException{Object raw=value.get(key);if(!(raw instanceof String))throw new JSONException("Invalid sensor text");return (String)raw;}
+ static double number(JSONObject value,String key)throws JSONException{Object raw=value.get(key);if(!(raw instanceof Number)||!Double.isFinite(((Number)raw).doubleValue()))throw new JSONException("Invalid sensor number");return ((Number)raw).doubleValue();}
+ private SensorProvenance(){}
+}
