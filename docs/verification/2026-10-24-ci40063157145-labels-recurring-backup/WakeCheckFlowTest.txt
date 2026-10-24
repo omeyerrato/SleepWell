@@ -1,0 +1,67 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.WakeCheckFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.WakeCheckFlowTest:
+INSTRUMENTATION_STATUS: test=deniedAndDeliveryErrorRetryKeepDeadlineExpiryFiresOnlyFakeOwnedAlarm
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.WakeCheckFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.junit.Assert.assertNotNull(Assert.java:723)
+	at org.sleepwell.app.WakeCheckFlowTest.editor(WakeCheckFlowTest.java:40)
+	at org.sleepwell.app.WakeCheckFlowTest.verifyPostSaveOffCancellation(WakeCheckFlowTest.java:38)
+	at org.sleepwell.app.WakeCheckFlowTest.deniedAndDeliveryErrorRetryKeepDeadlineExpiryFiresOnlyFakeOwnedAlarm(WakeCheckFlowTest.java:37)
+
+INSTRUMENTATION_STATUS: stream=
+Error in deniedAndDeliveryErrorRetryKeepDeadlineExpiryFiresOnlyFakeOwnedAlarm(org.sleepwell.app.WakeCheckFlowTest):
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.junit.Assert.assertNotNull(Assert.java:723)
+	at org.sleepwell.app.WakeCheckFlowTest.editor(WakeCheckFlowTest.java:40)
+	at org.sleepwell.app.WakeCheckFlowTest.verifyPostSaveOffCancellation(WakeCheckFlowTest.java:38)
+	at org.sleepwell.app.WakeCheckFlowTest.deniedAndDeliveryErrorRetryKeepDeadlineExpiryFiresOnlyFakeOwnedAlarm(WakeCheckFlowTest.java:37)
+
+INSTRUMENTATION_STATUS: test=deniedAndDeliveryErrorRetryKeepDeadlineExpiryFiresOnlyFakeOwnedAlarm
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.WakeCheckFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=silentPromptCountsDownRecreatesConfirmsAndReopensDurably
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.WakeCheckFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=silentPromptCountsDownRecreatesConfirmsAndReopensDurably
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 24.007
+There was 1 failure:
+1) deniedAndDeliveryErrorRetryKeepDeadlineExpiryFiresOnlyFakeOwnedAlarm(org.sleepwell.app.WakeCheckFlowTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.junit.Assert.assertNotNull(Assert.java:723)
+	at org.sleepwell.app.WakeCheckFlowTest.editor(WakeCheckFlowTest.java:40)
+	at org.sleepwell.app.WakeCheckFlowTest.verifyPostSaveOffCancellation(WakeCheckFlowTest.java:38)
+	at org.sleepwell.app.WakeCheckFlowTest.deniedAndDeliveryErrorRetryKeepDeadlineExpiryFiresOnlyFakeOwnedAlarm(WakeCheckFlowTest.java:37)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

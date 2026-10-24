@@ -1,0 +1,44 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NapIntegrationFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NapIntegrationFlowTest:
+INSTRUMENTATION_STATUS: test=futureNapUsesRelativeWindowAcrossClockAndZoneChangesAndRealMainRoutes
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NapIntegrationFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Focused, enabled, complete control required before tapping: Remove nap
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.sleepwell.app.NapIntegrationFlowTest.tap(NapIntegrationFlowTest.java:45)
+	at org.sleepwell.app.NapIntegrationFlowTest.clickText(NapIntegrationFlowTest.java:31)
+	at org.sleepwell.app.NapIntegrationFlowTest.futureNapUsesRelativeWindowAcrossClockAndZoneChangesAndRealMainRoutes(NapIntegrationFlowTest.java:133)
+
+INSTRUMENTATION_STATUS: stream=
+Error in futureNapUsesRelativeWindowAcrossClockAndZoneChangesAndRealMainRoutes(org.sleepwell.app.NapIntegrationFlowTest):
+java.lang.AssertionError: Focused, enabled, complete control required before tapping: Remove nap
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.sleepwell.app.NapIntegrationFlowTest.tap(NapIntegrationFlowTest.java:45)
+	at org.sleepwell.app.NapIntegrationFlowTest.clickText(NapIntegrationFlowTest.java:31)
+	at org.sleepwell.app.NapIntegrationFlowTest.futureNapUsesRelativeWindowAcrossClockAndZoneChangesAndRealMainRoutes(NapIntegrationFlowTest.java:133)
+
+INSTRUMENTATION_STATUS: test=futureNapUsesRelativeWindowAcrossClockAndZoneChangesAndRealMainRoutes
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 18.248
+There was 1 failure:
+1) futureNapUsesRelativeWindowAcrossClockAndZoneChangesAndRealMainRoutes(org.sleepwell.app.NapIntegrationFlowTest)
+java.lang.AssertionError: Focused, enabled, complete control required before tapping: Remove nap
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.sleepwell.app.NapIntegrationFlowTest.tap(NapIntegrationFlowTest.java:45)
+	at org.sleepwell.app.NapIntegrationFlowTest.clickText(NapIntegrationFlowTest.java:31)
+	at org.sleepwell.app.NapIntegrationFlowTest.futureNapUsesRelativeWindowAcrossClockAndZoneChangesAndRealMainRoutes(NapIntegrationFlowTest.java:133)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

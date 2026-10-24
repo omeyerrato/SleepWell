@@ -1076,3 +1076,33 @@ FullCI40063157145 remains live at244e4bc with50classes/100methods/299required
 originals. It is not restarted on observation timeout. Focused40063164364 was
 downloaded once after terminal. Phone ADB remains absent; no installation or
 physical effects were performed.
+
+
+## 2026-10-24: first integrated native label/recurring/backup storage passes
+
+FullCI40063157145 at244e4bc is terminal FAIL:44/50 wholly passing classes,
+93/100 passing methods,7 failures;275/299 required named PNGs present,277total.
+Raw logs, full summary and all available label/nap/recurring/backup originals are
+preserved with hashes in verification/2026-10-24-ci40063157145-labels-recurring-backup/.
+
+SoundLabelStorageTest10 PASS1.106s and SoundLabelFlowTest3 PASS26.038s/all18
+originals prove the numeric identity repair and real private storage/UI flow.
+RecurringTrackingTest12 PASS0.258s and BackupStorageTest6 PASS0.433s give first
+native persistence/admission/restore-fence evidence. NapFlowTest3 PASS20.594s;
+Menu1 and MissedNight2 now pass. No hardware/delivery/provider claim follows.
+
+Remaining failures are retained exactly: classifier laughter; Tone typed monitor;
+WakeCheck supporting Editor launch after escaped DocumentsUI; Nap Remove dialog
+focus gate; recurring stale click after cancel/reopen; Backup posted picker callback
+and owned-confirmation focus. Root fixes the typed monitor and guaranteed cleanup,
+adds read-only owned-dialog capture hooks for Nap/Backup and current-render/
+chooser-state assertions. No persistence or complete48dp target assertion is dropped.
+Recurring author is fixing only proven selector/readiness issues in a worktree.
+
+Report8c9faca is integrated as1df91fe. Author debug/native APKs and24 focused
+ChartSeries/RecordModel cases pass; final native/lint PASS39s,0errors87warnings.
+Actual data shading preserves real awake/pause gaps and plain manual coverage.
+Fresh UI/canvas execution is required: full gate51classes/102methods/299images,
+new explicitly focused report profile4classes/5methods/13requiredimages, with
+full_app_review=false. Eight reference frames, root Report empty state and four
+clock/chart states are mandatory. No data is fabricated to fill missing periods.

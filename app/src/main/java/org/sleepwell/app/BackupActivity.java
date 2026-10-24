@@ -45,5 +45,7 @@ public final class BackupActivity extends Activity {
     private void back(){if(confirmation!=null){confirmation.dismiss();return;}if(job.state().phase==BackupJob.Phase.RESTORING)return;finish();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){back();}
     @Override protected void onSaveInstanceState(Bundle state){super.onSaveInstanceState(state);state.putString("job",job.id);state.putString("phase",job.state().phase.name());state.putBoolean("picker",pickerOutstanding);if(selected!=null)state.putString("kind",selected.name());}
+    View captureView(){return confirmation!=null&&confirmation.isShowing()?confirmation.getWindow().getDecorView():getWindow().getDecorView();}
+    boolean captureReady(){return drawn==job.state();}
     @Override protected void onDestroy(){main.removeCallbacksAndMessages(null);if(confirmation!=null)confirmation.dismiss();super.onDestroy();}
 }

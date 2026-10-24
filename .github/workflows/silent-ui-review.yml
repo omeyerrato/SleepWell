@@ -4,12 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       scope:
-        description: 'Full acceptance or a clearly labelled focused tone/wake correction run'
+        description: 'Full acceptance or a clearly labelled focused UI correction run'
         type: choice
         default: full
         options:
           - full
           - tone-wake
+          - report
       native_sounds:
         description: 'Also exercise real MediaPlayer/notification controls with host audio disabled (CI emulator only)'
         type: boolean

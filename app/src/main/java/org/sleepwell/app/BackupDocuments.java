@@ -38,7 +38,7 @@ final class BackupDocuments implements BackupJob.Work {
         background();long admission=BackupRuntime.generation();effects.idle(admission);String document;try(InputStream input=transport.input(uri)){document=BackupIo.read(input,active);}BackupIo.active(active);BackupIo.jsonDepth(document);JSONObject root;try{root=new JSONObject(document);Backup.validate(root);}catch(JSONException|IllegalArgumentException invalid){throw new IOException("This is not a valid SleepWell backup.",invalid);}effects.idle(admission);
         String fingerprint;try(Store store=records.open(app)){android.database.sqlite.SQLiteDatabase db=store.getReadableDatabase();db.beginTransactionNonExclusive();try{fingerprint=BackupFingerprint.read(store);db.setTransactionSuccessful();}finally{db.endTransaction();}}
         effects.idle(admission);BackupIo.active(active);int format=root.getInt("format"),labels=0;if(format>=4){JSONArray rows=root.getJSONArray("sound_events");for(int at=0;at<rows.length();at++)if(!rows.getJSONObject(at).isNull("user_category"))labels++;}
-        String summary=root.getJSONArray("alarms").length()+" alarms · "+root.getJSONArray("sessions").length()+" sleep records"+(format>=4?"\n"+root.getJSONArray("sound_events").length()+" sound estimates · "+labels+" user labels":"\nLegacy format "+format)+"\nImported alarms stay off. Audio and app settings are excluded.";
+        String summary=count(root.getJSONArray("alarms").length(),"alarm")+" · "+count(root.getJSONArray("sessions").length(),"sleep record")+(format>=4?"\n"+count(root.getJSONArray("sound_events").length(),"sound estimate")+" · "+count(labels,"user label"):"\nLegacy format "+format)+"\nImported alarms stay off. Audio and app settings are excluded.";
         return new BackupJob.Review(document,fingerprint,summary,admission);
     }
     @Override public void write(BackupJob.Kind kind,String uri,BooleanSupplier active)throws Exception {
@@ -69,6 +69,7 @@ final class BackupDocuments implements BackupJob.Work {
         if(!committed){if(failure!=null)throw failure;throw new IllegalStateException("Replacement did not start.");}
         return failure==null?message:"Data restored. Cleanup or storage verification needs attention. Review alarms and Data & privacy before importing again.";
     }
+    private static String count(int value,String noun){return value+" "+noun+(value==1?"":"s");}
     @Override public void cancel(){transport.cancel();}
     private static void background(){if(Looper.myLooper()==Looper.getMainLooper())throw new IllegalStateException("Document work must run in the background.");}
 }

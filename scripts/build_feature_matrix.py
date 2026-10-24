@@ -447,6 +447,21 @@ for row in rows:
     elif row["feature"] == "Nap timer":
         row["validation"] += " Source92c3f19 integrated6f1db41 fixes aliases, error viewport reveal with full geometry assertions and same-window projected start display, with focused32 domain tests/lint pass. Final observer cleanup and integrated app await combined build/native23 originals; no runtime engine semantics changed."
 
+# Native storage success is distinguished from still-failing UI or actual hardware delivery.
+for row in rows:
+    if row["feature"] == "Correct sound labels / favorites / export":
+        row["validation"] += " Latest244e4bc/fullCI40063157145: SoundLabelStorageTest10 PASS1.106s and SoundLabelFlowTest3 PASS26.038s with all18 originals. Typed clip comparison now proven on real Android SQLite/JSON, including migration/overlay/revision/WAV/backup invariants. Per-file visual review pending; automatic category accuracy and real capture/playback remain separate."
+    elif row["feature"] == "Automatic tracking":
+        row["validation"] += " Latest244e4bc/fullCI40063157145 RecurringTrackingTest12 PASS0.258s. SettingsFlow2 has1 failure on stale click after cancel/reopen,9 of13 named originals available, so complete UI acceptance remains rejected. Native preferences/fake admission are proven narrowly; actual OS/sensor delivery unverified."
+    elif row["feature"] == "Local data backup":
+        row["validation"] += " Latest244e4bc/fullCI40063157145 BackupStorageTest6 PASS0.433s. BackupDocumentFlowTest3 has2 failures (posted picker callback not awaited and confirmation capture checks unfocused Activity instead of owned Dialog),6/19 originals. Root adds exact chooser-state and owned-window/current-render gates; native full flow/provider acceptance remains pending."
+    elif row["feature"] == "Nap timer":
+        row["validation"] += " Latest244e4bc/fullCI40063157145 NapFlowTest3 PASS20.594s; integration reaches6/8 originals then rejects its Remove dialog because the helper checks Activity focus. A read-only owned-dialog capture hook corrects this harness scope; unchanged cancellation/delivery assertions stay required. Fresh complete UI/design proof pending."
+    elif row["feature"] in ("Built-in sounds", "Device ringtone"):
+        row["validation"] += " Focused40063164364 and full40063157145 at244e4bc reach12 named Tone states then fail an action-only monitor that cannot match audio/*+OPENABLE; DocumentsUI escape contaminates later Editor launches. Correct typed monitor/exact-one callback wait and guaranteed cleanup are added, without changing production picker. Fresh complete flow still required."
+    if any(name in row["implementation"] for name in ("ReportScreen.java", "PeriodTimeline.java", "RecordRibbon.java", "TrendsChart.java", "HistoryActivity.java", "RecordEditorActivity.java")):
+        row["validation"] += " Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

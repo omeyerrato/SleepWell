@@ -265,7 +265,7 @@
         "AlarmAudioSink.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Integrated431 pure tests/53 suites and debug/native/release/lint pass at cce7a60. At9188e78/CI40051144096 AlarmToneGrantTest1 PASS0.087s, but AlarmToneAssetsTest1 fails its incorrect blanket4s expectation (original Daybreak/Pulse8s, Chime4s) and AlarmToneFlowTest1 stops after3 of16 expected frames. Strict review rejects preview controls clipped behind footer. Later d4c08c7 compacts real controls, keeps48dp targets, reveals errors, checks complete geometry, and corrects exact per-asset duration without changing PCM. Fresh native proof required; actual MediaPlayer/SAF/OEM output remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Atc48fedd/CI40054511743 assets1 PASS0.401s and grants1 PASS0.147s; ToneFlow fails new helper null-label lookup before named captures. Diagnostic shows complete preview/footer but full flow remains rejected. Later1971b2b null-safe helper andfeb38ec icon/gap polish compile; fresh native run required. FocusedCI40058849301 at e0a78b4: assets1 PASS1.883s, grants1 PASS0.284s; ToneFlow fails because its helper checks a51px label instead of the126px tappable row. Strict review of12 named originals plus diagnostic accepts compact preview geometry narrowly; final4 import/reopen/cancel originals absent, full flow rejected. Fresh focusedCI40062368995 Tone fails initial read-only StaleObjectException before any16 named originals. Later244e4bc gates initial measured waveform readiness and retries only stale selector/geometry reads max4, never caller actions. Fresh native proof still required.",
+      "validation": "Integrated431 pure tests/53 suites and debug/native/release/lint pass at cce7a60. At9188e78/CI40051144096 AlarmToneGrantTest1 PASS0.087s, but AlarmToneAssetsTest1 fails its incorrect blanket4s expectation (original Daybreak/Pulse8s, Chime4s) and AlarmToneFlowTest1 stops after3 of16 expected frames. Strict review rejects preview controls clipped behind footer. Later d4c08c7 compacts real controls, keeps48dp targets, reveals errors, checks complete geometry, and corrects exact per-asset duration without changing PCM. Fresh native proof required; actual MediaPlayer/SAF/OEM output remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Atc48fedd/CI40054511743 assets1 PASS0.401s and grants1 PASS0.147s; ToneFlow fails new helper null-label lookup before named captures. Diagnostic shows complete preview/footer but full flow remains rejected. Later1971b2b null-safe helper andfeb38ec icon/gap polish compile; fresh native run required. FocusedCI40058849301 at e0a78b4: assets1 PASS1.883s, grants1 PASS0.284s; ToneFlow fails because its helper checks a51px label instead of the126px tappable row. Strict review of12 named originals plus diagnostic accepts compact preview geometry narrowly; final4 import/reopen/cancel originals absent, full flow rejected. Fresh focusedCI40062368995 Tone fails initial read-only StaleObjectException before any16 named originals. Later244e4bc gates initial measured waveform readiness and retries only stale selector/geometry reads max4, never caller actions. Fresh native proof still required. Focused40063164364 and full40063157145 at244e4bc reach12 named Tone states then fail an action-only monitor that cannot match audio/*+OPENABLE; DocumentsUI escape contaminates later Editor launches. Correct typed monitor/exact-one callback wait and guaranteed cleanup are added, without changing production picker. Fresh complete flow still required.",
       "status": "partial",
       "notes": "Actual Daybreak/Pulse/original Chime PCM and32 measured peak bins; no manufactured external/default waves. Separate0–25 percent digital preview, explicit Play/Pause/Stop, process decoder lease,8s prepare and20s wall bounds, focus/noisy/lifecycle/alarm-occupancy guards without global volume writes. Validated explicit persisted content imports, source cancellation/rotation fencing and shared grant preservation. Device alarm remains under My audio. Full screen fidelity, actual output/provider compatibility and broad tone catalogue remain open.",
       "id": "F011",
@@ -286,7 +286,7 @@
         "AlarmAudioSink.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Integrated431 pure tests/53 suites and debug/native/release/lint pass at cce7a60. At9188e78/CI40051144096 AlarmToneGrantTest1 PASS0.087s, but AlarmToneAssetsTest1 fails its incorrect blanket4s expectation (original Daybreak/Pulse8s, Chime4s) and AlarmToneFlowTest1 stops after3 of16 expected frames. Strict review rejects preview controls clipped behind footer. Later d4c08c7 compacts real controls, keeps48dp targets, reveals errors, checks complete geometry, and corrects exact per-asset duration without changing PCM. Fresh native proof required; actual MediaPlayer/SAF/OEM output remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Atc48fedd/CI40054511743 assets1 PASS0.401s and grants1 PASS0.147s; ToneFlow fails new helper null-label lookup before named captures. Diagnostic shows complete preview/footer but full flow remains rejected. Later1971b2b null-safe helper andfeb38ec icon/gap polish compile; fresh native run required. FocusedCI40058849301 at e0a78b4: assets1 PASS1.883s, grants1 PASS0.284s; ToneFlow fails because its helper checks a51px label instead of the126px tappable row. Strict review of12 named originals plus diagnostic accepts compact preview geometry narrowly; final4 import/reopen/cancel originals absent, full flow rejected. Fresh focusedCI40062368995 Tone fails initial read-only StaleObjectException before any16 named originals. Later244e4bc gates initial measured waveform readiness and retries only stale selector/geometry reads max4, never caller actions. Fresh native proof still required.",
+      "validation": "Integrated431 pure tests/53 suites and debug/native/release/lint pass at cce7a60. At9188e78/CI40051144096 AlarmToneGrantTest1 PASS0.087s, but AlarmToneAssetsTest1 fails its incorrect blanket4s expectation (original Daybreak/Pulse8s, Chime4s) and AlarmToneFlowTest1 stops after3 of16 expected frames. Strict review rejects preview controls clipped behind footer. Later d4c08c7 compacts real controls, keeps48dp targets, reveals errors, checks complete geometry, and corrects exact per-asset duration without changing PCM. Fresh native proof required; actual MediaPlayer/SAF/OEM output remains unverified. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Atc48fedd/CI40054511743 assets1 PASS0.401s and grants1 PASS0.147s; ToneFlow fails new helper null-label lookup before named captures. Diagnostic shows complete preview/footer but full flow remains rejected. Later1971b2b null-safe helper andfeb38ec icon/gap polish compile; fresh native run required. FocusedCI40058849301 at e0a78b4: assets1 PASS1.883s, grants1 PASS0.284s; ToneFlow fails because its helper checks a51px label instead of the126px tappable row. Strict review of12 named originals plus diagnostic accepts compact preview geometry narrowly; final4 import/reopen/cancel originals absent, full flow rejected. Fresh focusedCI40062368995 Tone fails initial read-only StaleObjectException before any16 named originals. Later244e4bc gates initial measured waveform readiness and retries only stale selector/geometry reads max4, never caller actions. Fresh native proof still required. Focused40063164364 and full40063157145 at244e4bc reach12 named Tone states then fail an action-only monitor that cannot match audio/*+OPENABLE; DocumentsUI escape contaminates later Editor launches. Correct typed monitor/exact-one callback wait and guaranteed cleanup are added, without changing production picker. Fresh complete flow still required.",
       "status": "partial",
       "notes": "Actual Daybreak/Pulse/original Chime PCM and32 measured peak bins; no manufactured external/default waves. Separate0–25 percent digital preview, explicit Play/Pause/Stop, process decoder lease,8s prepare and20s wall bounds, focus/noisy/lifecycle/alarm-occupancy guards without global volume writes. Validated explicit persisted content imports, source cancellation/rotation fencing and shared grant preservation. Device alarm remains under My audio. Full screen fidelity, actual output/provider compatibility and broad tone catalogue remain open.",
       "id": "F012",
@@ -745,7 +745,7 @@
         "AlarmEditorActivity.java",
         "Backup.java"
       ],
-      "validation": "NapEngineTest16 and NapWindowTest6 plus existing NightWindowTest10 pass in the combined453-test build atfeb38ec. Debug/native/release APKs and lint pass (0errors/87warnings). NapFlowTest3 and NapIntegrationFlowTest1 require23 originals and private fake-port persistence/cancel/restart/smart/migration checks; compiled, not yet executed. No actual delivery/hardware proof. FullCI40058852109 NapFlowTest3 PASS27.884s, but NapIntegrationFlowTest1 fails after4 of8 originals. Strict review of all19 available originals rejects question-mark sound/delete icons, clipped Delete row under error footer and stale card start time after same-occurrence clock refresh. Full visual/integration gate remains failed. Source92c3f19 integrated6f1db41 fixes aliases, error viewport reveal with full geometry assertions and same-window projected start display, with focused32 domain tests/lint pass. Final observer cleanup and integrated app await combined build/native23 originals; no runtime engine semantics changed.",
+      "validation": "NapEngineTest16 and NapWindowTest6 plus existing NightWindowTest10 pass in the combined453-test build atfeb38ec. Debug/native/release APKs and lint pass (0errors/87warnings). NapFlowTest3 and NapIntegrationFlowTest1 require23 originals and private fake-port persistence/cancel/restart/smart/migration checks; compiled, not yet executed. No actual delivery/hardware proof. FullCI40058852109 NapFlowTest3 PASS27.884s, but NapIntegrationFlowTest1 fails after4 of8 originals. Strict review of all19 available originals rejects question-mark sound/delete icons, clipped Delete row under error footer and stale card start time after same-occurrence clock refresh. Full visual/integration gate remains failed. Source92c3f19 integrated6f1db41 fixes aliases, error viewport reveal with full geometry assertions and same-window projected start display, with focused32 domain tests/lint pass. Final observer cleanup and integrated app await combined build/native23 originals; no runtime engine semantics changed. Latest244e4bc/fullCI40063157145 NapFlowTest3 PASS20.594s; integration reaches6/8 originals then rejects its Remove dialog because the helper checks Activity focus. A read-only owned-dialog capture hook corrects this harness scope; unchanged cancellation/delivery assertions stay required. Fresh complete UI/design proof pending.",
       "status": "partial",
       "notes": "Saved exact relative timer and scheduled start,10/20/30/90 presets, owned cancel/restart/list, real shared sound settings and deferred delete after dismiss or matching wake confirmation. Main/Tonight/Wind-down use projected relative deadlines and a separately labelled nap arc; inactive restored timers require explicit fresh Start. Smart wake uses already-active phone movement, never starts sensors/microphone here and is not stage detection. Strict optional Alarm JSON, immutable nonce job, durable delivery claim and disabled portable restore. Crash after claim, overlapping alarm, force-stop/OEM and permission limits remain. Distinct minimum-rest Power Nap remains missing; see NAPS.md.",
       "id": "F035",
@@ -902,11 +902,19 @@
         "Store.java",
         "ReportScreen.java"
       ],
-      "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified.",
+      "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "implemented",
       "notes": "Native draft setup, actual sensor availability, Start, live status and saved Report. Back cancels setup drafts. Real movement-only journey verified; audio permission/denial and long-session checks still pending.",
       "id": "F043",
       "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
+        {
+          "name": "RecordModelTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
+        },
         {
           "name": "SessionTimingTest",
           "path": "app/src/test/java/org/sleepwell/app/SessionTimingTest.java"
@@ -944,7 +952,7 @@
         "RecurringTrackingBootReceiver.java",
         "MainActivity.java"
       ],
-      "validation": "AutomaticTrackingFlowTest passes at7d02819/CI40021145034: five originals, Save versus fake Arm, consent, recreation/reopen/error. Strict per-file review accepts complete first-frame Save/Arm in all states. Actual Service, sensors, deferred microphone and overnight lifecycle unverified. Latest AutomaticTrackingFlowTest1 FAIL at9188e78/CI40051144096 on initial footer visibility; diagnostic original shows full Save, indicating assertion ran before layout. Later d4c08c7 waits actual current layout then retains complete bounds and persistence assertions; fresh native pass still required. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Latest AutomaticTrackingFlowTest1 PASS15.459s atc48fedd/CI40054511743: all5 named originals individually reviewed, complete Save/Arm/error geometry and private preferences/fake arming. This supersedes initial-layout failure only; recurring behavior and actual OS delivery are not covered. Recurring0150652 source passed independent ownership/security review and its scoped debug/native APK,9 RecurringNightTest cases and lint passed (0errors/86warnings). Integratedc9582a2; RecurringTrackingTest12 and RecurringTrackingFlowTest2/13 originals are compiled but not yet executed. Main app reopening now reconciles an enabled schedule, future-only. The full CI contract includes these isolated preference/fake-launch tests; actual AlarmManager/FGS delivery remains unverified.",
+      "validation": "AutomaticTrackingFlowTest passes at7d02819/CI40021145034: five originals, Save versus fake Arm, consent, recreation/reopen/error. Strict per-file review accepts complete first-frame Save/Arm in all states. Actual Service, sensors, deferred microphone and overnight lifecycle unverified. Latest AutomaticTrackingFlowTest1 FAIL at9188e78/CI40051144096 on initial footer visibility; diagnostic original shows full Save, indicating assertion ran before layout. Later d4c08c7 waits actual current layout then retains complete bounds and persistence assertions; fresh native pass still required. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Latest AutomaticTrackingFlowTest1 PASS15.459s atc48fedd/CI40054511743: all5 named originals individually reviewed, complete Save/Arm/error geometry and private preferences/fake arming. This supersedes initial-layout failure only; recurring behavior and actual OS delivery are not covered. Recurring0150652 source passed independent ownership/security review and its scoped debug/native APK,9 RecurringNightTest cases and lint passed (0errors/86warnings). Integratedc9582a2; RecurringTrackingTest12 and RecurringTrackingFlowTest2/13 originals are compiled but not yet executed. Main app reopening now reconciles an enabled schedule, future-only. The full CI contract includes these isolated preference/fake-launch tests; actual AlarmManager/FGS delivery remains unverified. Latest244e4bc/fullCI40063157145 RecurringTrackingTest12 PASS0.258s. SettingsFlow2 has1 failure on stale click after cancel/reopen,9 of13 named originals available, so complete UI acceptance remains rejected. Native preferences/fake admission are proven narrowly; actual OS/sensor delivery unverified.",
       "status": "partial",
       "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md. Separate Repeat nightly opt-in saves local calendar time, optional stillness and due-time charging condition; single-use persisted token/revision fences stale/duplicate/ABA starts. Disable affects only the owned run; enabled edits preserve admitted tonight capture. Recurring starts force microphone/clips/light/sleep sounds off, never open an Activity, never backfill missed starts, and retain4h/12h limits. Protected reconciliation and visible reopening schedule future occurrences only. Force-stop/OEM/permission restrictions and background specialUse distribution review remain; see RECURRING-MOVEMENT.md.",
       "id": "F044",
@@ -1362,11 +1370,19 @@
         "Store.java",
         "ReportScreen.java"
       ],
-      "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified.",
+      "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "partial",
       "notes": "Partial: real same-session Pause/Resume stops sensors/audio and freezes active duration. Persisted pauses and interrupted recovery exist. Standby/battery-adaptive sampling absent; mic restart hardware evidence pending.",
       "id": "F066",
       "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
+        {
+          "name": "RecordModelTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
+        },
         {
           "name": "SessionTimingTest",
           "path": "app/src/test/java/org/sleepwell/app/SessionTimingTest.java"
@@ -1413,11 +1429,20 @@
         "GraphView.java",
         "MainActivity.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "Not verified for this feature Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "partial",
       "notes": "Partial: real movement/noise/light plots; missing samples remain absent. No hypnogram or vital overlays.",
       "id": "F068",
-      "tests": []
+      "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
+        {
+          "name": "RecordModelTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
+        }
+      ]
     },
     {
       "feature": "History",
@@ -1431,11 +1456,20 @@
         "GraphView.java",
         "MainActivity.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "Not verified for this feature Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "implemented",
       "notes": "Implemented: recent 60 sessions, interrupted-state display, recorded time, detail screen. Pagination pending.",
       "id": "F069",
-      "tests": []
+      "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
+        {
+          "name": "RecordModelTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
+        }
+      ]
     },
     {
       "feature": "Manual journal / tags / ratings",
@@ -1454,11 +1488,15 @@
         "TrendsChart.java",
         "RecordSignalsActivity.java"
       ],
-      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md.",
+      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "implemented",
       "notes": "Implemented: saved notes, removable structured tags, and explicit unrated/0–5 rested rating in the native editor. Tag quantities, bulk taxonomy and automatic context pending.",
       "id": "F070",
       "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
         {
           "name": "HistoryFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/HistoryFlowTest.java"
@@ -1490,11 +1528,15 @@
         "TrendsChart.java",
         "RecordSignalsActivity.java"
       ],
-      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md.",
+      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "implemented",
       "notes": "Implemented: manual periods, tracked trims, merged awake edits, tags, notes, ratings, restore-original and selected-record deletion. Original measurements are immutable; manual periods never receive sensor graphs.",
       "id": "F071",
       "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
         {
           "name": "HistoryFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/HistoryFlowTest.java"
@@ -1521,11 +1563,20 @@
         "GraphView.java",
         "MainActivity.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "Not verified for this feature Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "partial",
       "notes": "Partial: recorded-duration goal, not an assertion of actual sleep duration.",
       "id": "F072",
-      "tests": []
+      "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
+        {
+          "name": "RecordModelTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
+        }
+      ]
     },
     {
       "feature": "Multi-metric sleep score",
@@ -1555,11 +1606,15 @@
         "TrendsChart.java",
         "RecordSignalsActivity.java"
       ],
-      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md.",
+      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "partial",
       "notes": "Partial: calendar Week/Month/Year charts, date/search/context filters and configurable day cutoff. Daily coverage merges overlaps, missing dates stay unknown, and naps count toward duration. Advanced statistics and correlations remain pending.",
       "id": "F074",
       "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
         {
           "name": "HistoryFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/HistoryFlowTest.java"
@@ -1679,11 +1734,15 @@
         "NightWindow.java",
         "Icons.java"
       ],
-      "validation": "NightWindowTest 10 pure clock/boundary/DST passes; NightArcFlowTest observes the real 30-second foreground tick in manual appearance, actual 0/50/100/next/help/weekly/app-large states and reachable large-text action. Final run and 22 actual captures: CI39940420018 at cfb5e68; exact scope in verification/2026-10-23-rest-window/README.md. Physical RootVisualTest 19.215 s, 10 private captures; SoundSettingsFlowTest 10.929 s, 4 stopped captures with actual light-on-plum system-bar pixel checks. Exact personal preferences/database rows preserved. Phosphor source/geometry/license audit and prior icon rendering pass remain separately recorded. No alarm/physical audio or all-screen acceptance.",
+      "validation": "NightWindowTest 10 pure clock/boundary/DST passes; NightArcFlowTest observes the real 30-second foreground tick in manual appearance, actual 0/50/100/next/help/weekly/app-large states and reachable large-text action. Final run and 22 actual captures: CI39940420018 at cfb5e68; exact scope in verification/2026-10-23-rest-window/README.md. Physical RootVisualTest 19.215 s, 10 private captures; SoundSettingsFlowTest 10.929 s, 4 stopped captures with actual light-on-plum system-bar pixel checks. Exact personal preferences/database rows preserved. Phosphor source/geometry/license audit and prior icon rendering pass remain separately recorded. No alarm/physical audio or all-screen acceptance. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "partial",
       "notes": "Partial: native Tonight/Alarms/Report/Settings roots and real theme settings. User-arranged cards and other home configurations absent; no all-screen acceptance claim. Tonight's prior fixed 80% decoration is replaced by a live clock-based rest window with a labeled Now marker, countdown, same-snapshot endpoints/hero, DST resolution, weekly date and themed explanation. It does not measure sleep; refresh neither schedules alarms nor writes preferences. Full screen parity remains partial.",
       "id": "F081",
       "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
         {
           "name": "NightArcFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/NightArcFlowTest.java"
@@ -1691,6 +1750,10 @@
         {
           "name": "NightWindowTest",
           "path": "app/src/test/java/org/sleepwell/app/NightWindowTest.java"
+        },
+        {
+          "name": "RecordModelTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
         },
         {
           "name": "RootVisualTest",
@@ -1736,11 +1799,20 @@
         "GraphView.java",
         "MainActivity.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "Not verified for this feature Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "partial",
       "notes": "Partial: semantic platform controls and content descriptions. Full localization, large-font/RTL/device testing pending.",
       "id": "F084",
-      "tests": []
+      "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
+        {
+          "name": "RecordModelTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
+        }
+      ]
     },
     {
       "feature": "Sleep Phaser PIR lamp",
@@ -1805,7 +1877,7 @@
         "BackupFingerprint.java",
         "BackupRuntime.java"
       ],
-      "validation": "17 isolated device passes across migration/records/replay/clock suites, including formats 1/2/3, original-row preservation, malformed edit/manual rejection and atomic rollback. Actual document-picker restore pending Format4/schema7 label metadata and inactive Nap JSON restore are integrated atfeb38ec; complete453-test build passes. New actual SQLite SoundLabelStorageTest9 and NapFlowTest3 portable roundtrips await native execution. Backup49ad607 source passed independent review and author debug/native APK,26 focused tests (BackupIoTest11, BackupJobTest12, BackupRuntimeTest3) and lint0errors87warnings. Integratedce19d14 with admission hook after accepted recurring normalization. BackupStorageTest6 and BackupDocumentFlowTest3/19 originals are compiled but not executed. Source does not certify an actual document provider, destructive restore on a phone, or absence of all ANRs.",
+      "validation": "17 isolated device passes across migration/records/replay/clock suites, including formats 1/2/3, original-row preservation, malformed edit/manual rejection and atomic rollback. Actual document-picker restore pending Format4/schema7 label metadata and inactive Nap JSON restore are integrated atfeb38ec; complete453-test build passes. New actual SQLite SoundLabelStorageTest9 and NapFlowTest3 portable roundtrips await native execution. Backup49ad607 source passed independent review and author debug/native APK,26 focused tests (BackupIoTest11, BackupJobTest12, BackupRuntimeTest3) and lint0errors87warnings. Integratedce19d14 with admission hook after accepted recurring normalization. BackupStorageTest6 and BackupDocumentFlowTest3/19 originals are compiled but not executed. Source does not certify an actual document provider, destructive restore on a phone, or absence of all ANRs. Latest244e4bc/fullCI40063157145 BackupStorageTest6 PASS0.433s. BackupDocumentFlowTest3 has2 failures (posted picker callback not awaited and confirmation capture checks unfocused Activity instead of owned Dialog),6/19 originals. Root adds exact chooser-state and owned-window/current-render gates; native full flow/provider acceptance remains pending.",
       "status": "partial",
       "notes": "Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted. New portable event metadata preserves manual corrections and original estimates without clip links;8MiB pretty-UTF8 export bound matches importer. Nap imports are inactive and need explicit fresh Start. Provider IO/lifecycle and broad backup completeness still need their own verification. Private Backup screen uses retained view-free background IO and explicit review/replace confirmation, pinned application-only factory,8MiB strict UTF8/depth bounds, off-main best-effort cancellation, typed full-table fingerprint and within-transaction runtime/data checks. Imported alarms/naps stay off, original/user sound evidence stays portable, no audio/settings. Postcommit cleanup/count/close failure explicitly says data was restored. No WAL change; other main DB users and final-check/commit/system-scheduling intervals remain documented limitations. See BACKUP-DOCUMENT-IO.md.",
       "id": "F089",
@@ -2187,11 +2259,19 @@
         "Store.java",
         "ReportScreen.java"
       ],
-      "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified.",
+      "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "partial",
       "notes": "Movement-only setup/start/pause/recreation/resume/stop/reopened-report device flow passes. Same session, persisted pause gaps and monotonic active duration; microphone restart, overnight and broader device evidence remain unverified.",
       "id": "F115",
       "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
+        {
+          "name": "RecordModelTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
+        },
         {
           "name": "SessionTimingTest",
           "path": "app/src/test/java/org/sleepwell/app/SessionTimingTest.java"
@@ -2334,11 +2414,20 @@
         "ReportScreen.java",
         "NightAudioArchive.java"
       ],
-      "validation": "Integrated935c773 source peer-reviewed including interrupted-night backup repair. Combined453 pure tests/55suites, debug/native/release APKs and lint pass atfeb38ec; SoundLabelStorageTest9 and SoundLabelFlowTest3/18 originals compiled but not yet executed. No real playback/microphone/phone actions. FullCI40058852109 at e0a78b4: Storage9 has5 failures and UI3 allfail because linked clip ID Double-versus-integer JSON comparison rejects unchanged evidence. A strict null-aware exact numeric comparison and tenth storage regression are added; fresh native proof required. Schema6-to7 migration and analysis-only cases pass narrowly; no general label flow acceptance.",
+      "validation": "Integrated935c773 source peer-reviewed including interrupted-night backup repair. Combined453 pure tests/55suites, debug/native/release APKs and lint pass atfeb38ec; SoundLabelStorageTest9 and SoundLabelFlowTest3/18 originals compiled but not yet executed. No real playback/microphone/phone actions. FullCI40058852109 at e0a78b4: Storage9 has5 failures and UI3 allfail because linked clip ID Double-versus-integer JSON comparison rejects unchanged evidence. A strict null-aware exact numeric comparison and tenth storage regression are added; fresh native proof required. Schema6-to7 migration and analysis-only cases pass narrowly; no general label flow acceptance. Latest244e4bc/fullCI40063157145: SoundLabelStorageTest10 PASS1.106s and SoundLabelFlowTest3 PASS26.038s with all18 originals. Typed clip comparison now proven on real Android SQLite/JSON, including migration/overlay/revision/WAV/backup invariants. Per-file visual review pending; automatic category accuracy and real capture/playback remain separate. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "partial",
       "notes": "Schema7 nullable user_category and increment-only label_revision preserve original category/score/model/interval/clip/WAV; checked save/reset, retained worker/recreate/error/retry, stale/trim/deletion/ABA fences. Effective library/favorites/report counts clearly distinguish user choice from model estimates. Strict format4 analysis-only metadata and original/user provenance in ZIP; no portable WAV link. Old formats1–3 accepted. Recovery uses actual durable sound endpoints without invented active_ms; already recovered interrupted tails have explicit bounded provenance, preserving original times/end. Export self-validates and fits the existing8MiB pretty-UTF8 importer; portable legacy clip favorites and alternate formats remain incomplete. See SOUND-LABEL-CORRECTIONS.md.",
       "id": "F124",
-      "tests": []
+      "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
+        {
+          "name": "RecordModelTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
+        }
+      ]
     },
     {
       "feature": "Headphone-only cues / intensity / repeat",
@@ -2469,11 +2558,15 @@
         "TrendsChart.java",
         "RecordSignalsActivity.java"
       ],
-      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md.",
+      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "implemented",
       "notes": "Configurable local sleep-day cutoff, date/search/context filters, merged overlapping periods and naps, calendar Week/Month/Year summaries. Missing days excluded; Year shows monthly averages of recorded days. Advanced statistics remain separate work.",
       "id": "F129",
       "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
         {
           "name": "HistoryFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/HistoryFlowTest.java"
@@ -2505,11 +2598,15 @@
         "TrendsChart.java",
         "RecordSignalsActivity.java"
       ],
-      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md.",
+      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "partial",
       "notes": "Native per-record add/remove tags and notes persist and feed search. Quantities, global rename/delete and impact analysis remain absent.",
       "id": "F130",
       "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
         {
           "name": "HistoryFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/HistoryFlowTest.java"
@@ -2541,11 +2638,15 @@
         "TrendsChart.java",
         "RecordSignalsActivity.java"
       ],
-      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md.",
+      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "implemented",
       "notes": "Native draft editor saves tracked trims, awake intervals, manual periods, tags/notes/rating and reset-original. Source, original bounds, zone and raw sensor rows remain distinct. Atomic version checks and persistent save tokens prevent stale saves and duplicate creates.",
       "id": "F131",
       "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
         {
           "name": "HistoryFlowTest",
           "path": "app/src/androidTest/java/org/sleepwell/app/HistoryFlowTest.java"
@@ -2806,11 +2907,20 @@
         "HistoryActivity.java",
         "RecordEditorActivity.java"
       ],
-      "validation": "RecordCalendarFlowTest1 PASS33.085s at12c8c0f/CI40042183746 with all7 individually reviewed original calendars: owned-dialog cancellation, recreation, DST/zone offsets, exact seconds/milliseconds and save/reopen preserved. Narrow calendar visual gate passes. No generic picker or full36-screen acceptance inferred.",
+      "validation": "RecordCalendarFlowTest1 PASS33.085s at12c8c0f/CI40042183746 with all7 individually reviewed original calendars: owned-dialog cancellation, recreation, DST/zone offsets, exact seconds/milliseconds and save/reopen preserved. Narrow calendar visual gate passes. No generic picker or full36-screen acceptance inferred. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest2 and stronger ReportReferenceFlowTest1/eight originals await fresh native/strict review; no visual completion inferred.",
       "status": "partial",
       "notes": "Cream/Inter date selection replaces stock History filter/trend and record-editor calendars. Pending date/month and surrounding time-form draft retained across recreation; Use/Cancel/All dates explicit. No premature persistence; RecordDraft.instant still rejects invalid DST gaps and ambiguous offsets. Native evidence and visual acceptance pending.",
       "id": "F144",
-      "tests": []
+      "tests": [
+        {
+          "name": "ChartSeriesTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+        },
+        {
+          "name": "RecordModelTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
+        }
+      ]
     }
   ]
 }

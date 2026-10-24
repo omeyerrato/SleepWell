@@ -33,7 +33,7 @@ public final class NapIntegrationFlowTest {
  void tap(BySelector selector,UiSelector scrollTarget,String label)throws Exception{
   long until=SystemClock.elapsedRealtime()+5000;
   while(SystemClock.elapsedRealtime()<until){
-   boolean[] focused={false};i.runOnMainSync(()->focused[0]=current!=null&&!current.isDestroyed()&&current.hasWindowFocus());
+   boolean[] focused={false};i.runOnMainSync(()->focused[0]=current!=null&&!current.isDestroyed()&&captureView().hasWindowFocus());
    UiObject2 found=ui.findObject(selector);
    if(focused[0]&&found!=null)try{
     UiObject2 hit=found;for(int parents=0;!hit.isClickable()&&parents<4;parents++){UiObject2 parent=hit.getParent();if(parent==null)break;hit=parent;}
@@ -50,7 +50,8 @@ public final class NapIntegrationFlowTest {
   fail("Expected saved nap "+id+" enabled="+enabled+" phase="+phase+"; actual "+(row==null?"missing":row.json().toString()));
  }
  void napCard(Fixture fixture,int id){NightWindow frame=NightWindow.nap(fixture.nap(id).nap,fixture.clock,ZoneId.systemDefault());UiObject2 value=ui.wait(Until.findObject(By.desc("Nap start time")),5000);assertNotNull("Live nap card value",value);assertEquals("Card and arc must use the same projected start",RecordUi.clock(c,frame.start,frame.zone),value.getText());}
- void capture(String name)throws Exception{CountDownLatch frame=new CountDownLatch(1);boolean[] ready={false};long end=SystemClock.elapsedRealtime()+5000;while(!ready[0]&&SystemClock.elapsedRealtime()<end){i.runOnMainSync(()->{if(current==null||current.isDestroyed()||!current.hasWindowFocus())return;View v=current.getWindow().getDecorView();if(v.isAttachedToWindow()&&v.isHardwareAccelerated()){v.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);v.invalidate();ready[0]=true;}});if(!ready[0])SystemClock.sleep(50);}assertTrue("Focused actual integration window",ready[0]);assertTrue(frame.await(5,TimeUnit.SECONDS));File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(ui.takeScreenshot(new File(folder,"nap-integration-"+name+".png")));}
+ View captureView(){return current instanceof NapActivity?((NapActivity)current).captureView():current.getWindow().getDecorView();}
+ void capture(String name)throws Exception{CountDownLatch frame=new CountDownLatch(1);boolean[] ready={false};long end=SystemClock.elapsedRealtime()+5000;while(!ready[0]&&SystemClock.elapsedRealtime()<end){i.runOnMainSync(()->{if(current==null||current.isDestroyed())return;View v=captureView();if(!v.hasWindowFocus())return;if(v.isAttachedToWindow()&&v.isHardwareAccelerated()){v.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);v.invalidate();ready[0]=true;}});if(!ready[0])SystemClock.sleep(50);}assertTrue("Focused actual integration window",ready[0]);assertTrue(frame.await(5,TimeUnit.SECONDS));File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(ui.takeScreenshot(new File(folder,"nap-integration-"+name+".png")));}
  @Test public void futureNapUsesRelativeWindowAcrossClockAndZoneChangesAndRealMainRoutes()throws Exception{try(Fixture f=new Fixture()){Alarm draft=new Alarm(0);
   draft.smartWindow=0;
   Alarm saved=Naps.start(c,draft,20,f.clock.wall+49*3600000L,false);
