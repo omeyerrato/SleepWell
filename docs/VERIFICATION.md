@@ -963,3 +963,15 @@ broader classifier/archive/storage suites and cannot establish full acceptance.
 Default scope remains full, including both new feature flows and all previous
 gates. Static contract audit confirms exact class/method/image counts and no
 duplicate image requirements; Python compilation passes.
+
+## Original dawn artwork f2af038 — scoped UI build
+
+Debug and instrumentation APKs plus lint PASS1m23s at eefbf89 (same app source
+as f2af038). The original887x1774 RGB PNG is unchanged; SHA256
+69e73f759b6bb0f2fe96fce996a4123de92934be436c608c3d1da8363827f6cc.
+Root and independent reviewer opened the actual saved asset against boards04/01:
+layered dunes/clouds/foliage and clear central sky are closer to the reference.
+The full-root native drawable preserves aspect ratio and covers insets; all
+live countdown/ring/buttons remain separate. AlarmActivity is unchanged and
+never launched. This is an art/source/build candidate, not acceptance of the
+composed screen; fresh13-state Wake originals remain mandatory.

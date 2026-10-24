@@ -1,4 +1,5 @@
 name: Silent Android visual review
+run-name: "Silent Android review (${{ inputs.scope || 'full' }})"
 on:
   workflow_dispatch:
     inputs:

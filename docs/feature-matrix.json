@@ -2302,7 +2302,7 @@
     },
     {
       "feature": "Correct sound labels / favorites / export",
-      "screens": "07 sound events/favorites + supporting label editor",
+      "screens": "20 (board07 middle), favorites album + supporting label editor",
       "source": "https://sleep.urbandroid.org/docs/sleep/sound_recognition.html",
       "implementation": [
         "SoundLabels.java",
