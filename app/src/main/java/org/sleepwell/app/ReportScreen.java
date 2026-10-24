@@ -37,7 +37,8 @@ final class ReportScreen {
         Design.text(body,"Sound events",16,600,Design.INK);Design.space(body,8);
         ReportSounds sounds=snapshot.sounds;
         if(sounds.total==0)Design.text(body,manual?"No sound analysis for a manual entry.":"No classified sound events in this period.",14,400,Design.MUTED);
-        else{soundCount(a,body,"wave","Snoring estimates",sounds.snoring);soundCount(a,body,"speech","Speech estimates",sounds.speech);soundCount(a,body,"wave","Other sounds",sounds.other);}
+        else{soundCount(a,body,"wave",sounds.userLabels>0?"Snoring events":"Snoring estimates",sounds.snoring);soundCount(a,body,"speech",sounds.userLabels>0?"Speech events":"Speech estimates",sounds.speech);soundCount(a,body,"wave","Other sounds",sounds.other);}
+        if(sounds.userLabels>0)Design.text(body,sounds.userLabels==sounds.total?sounds.userLabels+(sounds.userLabels==1?" user label":" user labels"):"Includes "+sounds.userLabels+(sounds.userLabels==1?" user label; other events are estimates.":" user labels; other events are estimates."),12,400,Design.MUTED);
         Design.space(body,4);String audio=snapshot.clipCount>0?snapshot.clipCount+(snapshot.clipCount==1?" saved audio clip":" saved audio clips"):sounds.total>0?(sounds.analysisOnly==sounds.total?"Analysis only · no recordings saved.":"Recordings unavailable."):"No sound clips saved for this night.";Design.text(body,audio,12,400,Design.MUTED);
         if(!manual)Design.item(body,"wave","View sound events",null,()->a.startActivity(RecordUi.intent(a,SoundEventsActivity.class).putExtra("record",id))).setContentDescription("View sound events");
         Design.item(body,"wave","View recorded signals & notes","",()->actions.detail(id));

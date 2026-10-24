@@ -9,7 +9,7 @@ import java.util.*;
 final class SoundEventRows {
     static final class Row {
         final JSONObject event,clip;final String key,category,title;final long start,duration;final boolean favorite;ClipTarget target;float[] peaks;String audioError="";
-        Row(JSONObject event,JSONObject clip,long start,long duration){this.event=event;this.clip=clip;this.start=start;this.duration=duration;key=event==null?"clip:"+clip.optLong("id"):"event:"+event.optLong("id");category=event==null?"noise":event.optString("category","noise");title=event==null?"Saved recording":SoundCategories.title(category);favorite=(event==null?clip:event).optInt("favorite")==1;}
+        Row(JSONObject event,JSONObject clip,long start,long duration){this.event=event;this.clip=clip;this.start=start;this.duration=duration;key=event==null?"clip:"+clip.optLong("id"):"event:"+event.optLong("id");category=event==null?"noise":SoundLabels.category(event);title=event==null?"Saved recording":SoundLabels.title(event);favorite=(event==null?clip:event).optInt("favorite")==1;}
     }
     static List<Row> metadata(Context context,Store store,RecordEntry record){
         Map<Long,JSONObject> clips=new HashMap<>();for(JSONObject clip:store.rows("SELECT * FROM clips WHERE session=? ORDER BY time",""+record.id))clips.put(clip.optLong("id"),clip);
@@ -21,6 +21,6 @@ final class SoundEventRows {
         for(JSONObject clip:clips.values())if(!linked.contains(clip.optLong("id"))){long duration=clip.optLong("duration_ms");try{duration=ClipWave.read(FileSafety.clip(context,clip.optString("path"))).durationMs;}catch(IOException|RuntimeException missing){/* Unknown legacy timing remains an unavailable recording. */}long end=Math.min(record.edit.end,clip.optLong("time")),start=Math.max(record.edit.start,clip.optLong("time")-duration);if(end>start)rows.add(new Row(null,clip,start,end-start));else if(duration<=0&&clip.optLong("time")>=record.edit.start&&clip.optLong("time")<=record.edit.end)rows.add(new Row(null,clip,clip.optLong("time"),0));}
         rows.sort(Comparator.comparingLong(row->row.start));return rows;
     }
-    static boolean matches(Row row,String filter){return filter.equals("all")||filter.equals("favorites")&&row.favorite||filter.equals(row.category);}
+    static boolean matches(Row row,String filter){return filter.equals("all")||filter.equals("favorites")&&row.favorite||filter.equals("noise")&&!Set.of("snoring","speech").contains(row.category)||filter.equals(row.category);}
     static List<Row> prepare(Context context,Store store,List<Row> metadata,String filter,int limit){List<Row> visible=new ArrayList<>();for(Row row:metadata){if(!matches(row,filter))continue;if(visible.size()>=limit)break;if(row.clip!=null){try{if(SoundClips.pending(store,row.clip.optLong("id")))throw new IOException("Deletion pending");File file=FileSafety.clip(context,row.clip.optString("path"));ClipWave full=ClipWave.read(file);RecordingSlice slice=RecordingSlice.contained(row.clip.optLong("time"),full.durationMs,row.start,row.duration);ClipWave part=ClipWave.read(file,slice.fromMs,slice.fromMs+slice.durationMs);row.target=new ClipTarget(row.clip,row.event,slice.fromMs,slice.durationMs,full.durationMs);row.peaks=part.peaks;}catch(IOException|RuntimeException unavailable){row.audioError="Recording unavailable";}}visible.add(row);}return visible;}
 }
