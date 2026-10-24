@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -35,6 +36,8 @@
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter>
         </activity>
+        <activity android:name=".AutomationActivity" android:exported="false" />
+        <service android:name=".AutomationJobService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
         <activity android:name=".BackupActivity" android:exported="false" />
         <activity android:name=".AlarmEditorActivity" android:exported="false" />
         <activity android:name=".WakeCheckActivity" android:exported="false" />

@@ -64,6 +64,7 @@ public class MainActivity extends Activity {
         settingsRow(body,"shield","Bedtime guard","Reduce distractions at night",()->startActivity(RecordUi.intent(this,GuardActivity.class)));
         settingsRow(body,"palette","Appearance","Light, dark and theme options",()->{startActivity(new Intent(this,AppearanceActivity.class).putExtra("visualReview",getIntent().getBooleanExtra("visualReview",false)));if(Appearance.reduced(this))overridePendingTransition(0,0);});
         settingsRow(body,"settings","Reliability","Battery, permissions and tips",()->{tab=5;render();});
+        settingsRow(body,"link","Automations","Tasker, webhooks and MQTT",()->startActivity(RecordUi.intent(this,AutomationActivity.class)));
         settingsRow(body,"lock","Data & privacy","Your data stays on your device",()->{tab=6;render();});
         Design.space(body,12);LinearLayout source=PlanActivity.detail(body,"github","Free and open source","View source on GitHub",null,()->open(new Intent(Intent.ACTION_VIEW,Uri.parse("https://github.com/omeyerrato/SleepWell"))));source.setMinimumHeight(Ui.dp(this,56));source.removeViewAt(source.getChildCount()-1);source.addView(new Design.Icon(this,"external",Design.INK),new LinearLayout.LayoutParams(Ui.dp(this,18),Ui.dp(this,18)));
     }
