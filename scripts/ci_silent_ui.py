@@ -19,7 +19,7 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--serial", required=True, choices=("emulator-5554",))
-parser.add_argument("--scope", choices=("full", "tone-wake", "report", "sensing-travel", "sonar-night"), default="full", help="A named narrow scope is never a full app acceptance run")
+parser.add_argument("--scope", choices=("full", "tone-wake", "report", "sensing-travel", "sonar-night", "sound-categories"), default="full", help="A named narrow scope is never a full app acceptance run")
 parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
 parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
 args = parser.parse_args()
@@ -40,6 +40,14 @@ SENSING_FRAMES = ["sonar-setup-" + name + ".png" for name in ("initial", "ready"
 SENSING_FRAMES += ["travel-cues-" + name + ".png" for name in ("settings-off", "window", "date", "time", "window-recreated", "settings-enabled", "settings-reopened", "invalid-window", "no-manual", "ready", "active", "active-recreated", "stopped", "stopped-reopened", "output-error", "interrupted")]
 SENSING_FRAMES += ["sonar-night-" + name + ".png" for name in ("setup", "measuring", "paused", "paused-recreated", "resumed", "missing", "stop-confirmation", "needs-setup", "charging-error", "charging-recreated")]
 SENSING_FRAMES += SONAR_REPORT_FRAMES
+CATEGORY_TESTS = ("SoundCategoryStorageTest", "SoundCategoryFlowTest", "SoundEventsUiTest", "FavoriteSoundsFlowTest", "ReportReferenceFlowTest", "SoundArchiveUiTest", "SoundLabelFlowTest", "SoundLibraryUiTest")
+CATEGORY_NEW_FRAMES = ["sound-category-" + name + ".png" for name in ("night-all", "night-selector", "night-cough", "night-playing", "night-recreated", "night-reopened", "night-other-empty", "night-baby", "album-selector", "album-laughter", "album-week", "album-recreated", "album-reopened", "album-speech")]
+CATEGORY_FRAMES = CATEGORY_NEW_FRAMES + ["analysis-events-" + name + ".png" for name in ("all", "speech", "recreated")]
+CATEGORY_FRAMES += ["favorites-" + name + ".png" for name in ("all", "playback", "recreated", "week", "filter-empty", "speech", "playback-error", "unstarred", "reopened", "deleted-audio", "missing-audio", "empty", "error", "retry")]
+CATEGORY_FRAMES += ["report-reference-" + name + ".png" for name in ("history", "week", "month", "year", "night", "editor", "tags-notes", "reopened")]
+CATEGORY_FRAMES += ["library-export-" + name + ".png" for name in ("ready", "complete", "recreated", "failed")]
+CATEGORY_FRAMES += ["sound-label-" + name + ".png" for name in ("source", "selector", "draft", "draft-recreated", "cancelled", "corrected", "reopened", "reset", "album", "busy", "busy-recreated", "error", "error-recreated", "retried", "trim-error", "trim-error-recreated", "deleted-error", "deleted-retry")]
+CATEGORY_FRAMES += ["library-" + name + ".png" for name in ("recordings", "playback", "favorite-recreated", "speech", "recording-deleted", "retention-applied", "retention-recreated")]
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
 root = Path(__file__).resolve().parents[1]
@@ -114,6 +122,7 @@ if args.native_sounds:
     tests.append("NativeSoundFlowTest")
 tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest", "GradedMathConfigurationTest", "QrCodeConfigurationTest", "AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "WakeCheckFlowTest", "SoundLabelStorageTest", "SoundLabelFlowTest", "NapFlowTest", "NapIntegrationFlowTest", "RecurringTrackingTest", "RecurringTrackingFlowTest", "BackupStorageTest", "BackupDocumentFlowTest", "ReportRibbonNativeTest", "AlarmSkipStorageTest", "AlarmSkipFlowTest"]
 tests += list(SENSING_TESTS)
+tests += ["SoundCategoryStorageTest", "SoundCategoryFlowTest"]
 if args.audio_imports:
     tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
 if args.scope == "tone-wake":
@@ -124,11 +133,13 @@ elif args.scope == "sensing-travel":
     tests = list(SENSING_TESTS)
 elif args.scope == "sonar-night":
     tests = list(NIGHT_TESTS)
+elif args.scope == "sound-categories":
+    tests = list(CATEGORY_TESTS)
 metadata["test_classes"] = tests
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2, "BackupStorageTest": 6, "BackupDocumentFlowTest": 3, "ReportRibbonNativeTest": 2, "AlarmSkipStorageTest": 8, "AlarmSkipFlowTest": 2, "ContactlessSetupFlowTest": 3, "TravelCueStorageTest": 8, "TravelCueFlowTest": 2, "SonarProvenanceStorageTest": 12}
 class_results = []
-method_counts.update({"SonarNightStorageTest": 2, "SonarNightFlowTest": 2})
+method_counts.update({"SonarNightStorageTest": 2, "SonarNightFlowTest": 2, "SoundCategoryStorageTest": 2, "SoundCategoryFlowTest": 2})
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
@@ -154,7 +165,7 @@ for test in tests:
         failures.append(test)
 command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", str(output), check=False)
 if args.scope != "full":
-    focused_frames = NIGHT_FRAMES if args.scope == "sonar-night" else REPORT_FRAMES if args.scope == "report" else SENSING_FRAMES if args.scope == "sensing-travel" else TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES
+    focused_frames = CATEGORY_FRAMES if args.scope == "sound-categories" else NIGHT_FRAMES if args.scope == "sonar-night" else REPORT_FRAMES if args.scope == "report" else SENSING_FRAMES if args.scope == "sensing-travel" else TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES
     failures += [name for name in focused_frames if not (output / name).is_file()]
     summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "failures": failures}
     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
@@ -252,6 +263,7 @@ required += ["root-" + name + ".png" for name in ("tonight", "alarms", "report",
 required += ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 required += ["protection-" + name + ".png" for name in ("alarms", "editor", "off", "disclosure", "on", "recreated", "global", "power-only")]
 required += SENSING_FRAMES
+required += CATEGORY_NEW_FRAMES
 required += WAKE_SETTING_FRAMES
 required += ["menus-" + name + ".png" for name in ("editor", "time", "time-recreated", "time-24", "time-invalid", "large-snooze", "duration-recreated", "tasks", "task-settings", "task-chosen", "snooze", "duration", "snooze-changed", "recreated", "sound", "reopened")]
 required += ["automatic-" + name + ".png" for name in ("manual", "stillness", "sounds", "reopened", "error")]
