@@ -18,7 +18,9 @@ unpredictable request identifiers, not a claim of cryptographic record signing.
 Every prompt/expiry PendingIntent is explicit, immutable and identified by nonce
 and stage. Reopen, retry, duplicate deliveries and Activity recreation never reset
 a prompt deadline. Confirmation consumes only its nonce before cancelling its
-prompt/expiry/notification. Matching check Off or alarm deletion cancels its owned
+prompt/expiry/notification. Check Off cancellation runs after successful Editor
+save and re-reads that owned Store, so failed persistence does not cancel a check.
+Matching check Off or alarm deletion cancels its owned
 check; editing unrelated alarms does not. A newly starting actual alarm occurrence
 intentionally supersedes the old single pending check. Editing a positive delay
 keeps the already dismissed occurrence's frozen delay and settings.
@@ -74,13 +76,17 @@ effect, settings cancellation, clock changes, reboot, missing prerequisites, ret
 deadline preservation, interrupted delivery recovery and ambiguous ring failure.
 WakeCheckFlowTest has two inert native methods and twelve intended screenshots:
 wake-check-{waiting,prompt,countdown,recreated,confirmed,reopened,storage-error,access-error,
-delivery-error,retry,expired,stale}. It launches only WakeCheckActivity, uses private
-preferences/database, fake notifications/scheduling/re-ring and asserts all original
-private fixture records/alarms and global preferences remain unchanged.
+delivery-error,retry,expired,stale}. It launches WakeCheckActivity and inert AlarmEditorActivity (never AlarmActivity), uses private
+preferences/database, fake notifications/scheduling/re-ring, verifies actual check-Off Save with failed persistence and unrelated-alarm
+Save, and asserts all original
+private fixture records/unrelated alarms and global preferences remain unchanged;
+only the explicitly saved check-Off setting changes.
 
 Local full debug/test-APK/pure/lint validation passed in 1m27: 416 pure tests,
 zero failures, lint zero errors / 86 warnings. Final legacy eligibility guard and
-all 16 focused engine tests/native Java compilation passed in 12s; no full
+all 16 focused engine tests/native Java compilation passed in 12s. The post-save
+cancellation and 0:00 disabled-state follow-up passed focused tests, native Java
+compilation and lint in 49s (zero lint errors / 86 warnings); no full
 post-guard suite is claimed. Native execution, original screenshot comparison and physical delivery/hardware
 behavior are pending. Compilation alone does not certify them. No physical phone,
 ADB, alarm, output, notification, clock-change or power tests are run by this task.

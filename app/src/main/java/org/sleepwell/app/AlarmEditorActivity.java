@@ -138,7 +138,7 @@ public class AlarmEditorActivity extends Activity {
         if(alarm.challenges().tasks.stream().anyMatch(task->task.type.equals("NFC"))&&Prefs.text(this,"nfcTag","").isEmpty()){Ui.toast(this,"Enroll an NFC tag in Alarms → Alarm options before using this challenge.");return;}
         if(alarm.routineInvalid){Ui.toast(this,"Choose and save a valid challenge routine first.");return;}
         // Schedule first so a denied OS request cannot silently enable an unscheduled alarm in storage.
-        try{AlarmScheduling.port.schedule(this,alarm);store.save(alarm);finish();}catch(SecurityException e){Ui.toast(this,e.getMessage());}
+        try{AlarmScheduling.port.schedule(this,alarm);store.save(alarm);WakeChecks.alarmEdited(this,store,alarm);finish();}catch(SecurityException e){Ui.toast(this,e.getMessage());}
     }
     static String displayTime(android.content.Context c,Alarm a){return Design.clock(c,a.hour*60+a.minute);}
     static String toneName(String tone){return AlarmTones.name(tone);}

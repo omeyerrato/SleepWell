@@ -21,7 +21,6 @@ public final class Scheduler {
         c.getSystemService(AlarmManager.class).setAlarmClock(new AlarmManager.AlarmClockInfo(time,Notifications.home(c)),intent(c,id,action));
     }
     static void schedule(Context c,Alarm a) {
-        WakeChecks.alarmEdited(c,a);
         cancel(c,a.id,FIRE);
         if(a.enabled) { long next=a.next(Math.max(System.currentTimeMillis(),Prefs.of(c).getLong("lastOccurrence_"+a.id,0))); at(c,a.id,FIRE,next); Prefs.put(c,"deadline_"+a.id,next); }
         else Prefs.put(c,"deadline_"+a.id,0L);
