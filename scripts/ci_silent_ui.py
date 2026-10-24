@@ -31,7 +31,7 @@ WAKE_CHECK_FRAMES = ["wake-check-" + name + ".png" for name in ("waiting", "prom
 FOCUSED_TESTS = ("AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "AlarmWakeSettingsTest", "WakeCheckFlowTest")
 REPORT_TESTS = ("RootVisualTest", "ChartClockFlowTest", "ReportRibbonNativeTest", "ReportReferenceFlowTest")
 REPORT_FRAMES = ["report-reference-" + name + ".png" for name in ("history", "week", "month", "year", "night", "editor", "tags-notes", "reopened")] + ["root-report.png"] + ["chart-clock-" + name + ".png" for name in ("overnight", "night", "short", "fold")]
-SENSING_TESTS = ("SonarSettingsNativeTest", "ContactlessSetupFlowTest", "TravelCueStorageTest", "TravelCueFlowTest")
+SENSING_TESTS = ("SonarProvenanceStorageTest", "SonarSettingsNativeTest", "ContactlessSetupFlowTest", "TravelCueStorageTest", "TravelCueFlowTest")
 SENSING_FRAMES = ["sonar-setup-" + name + ".png" for name in ("initial", "ready", "gain-changed", "retested", "reopened", "recreated", "testing", "cancelled", "cancel-recreated", "charging-error", "unsupported", "permission", "saving", "saving-recreated", "save-error")]
 SENSING_FRAMES += ["travel-cues-" + name + ".png" for name in ("settings-off", "window", "date", "time", "window-recreated", "settings-enabled", "settings-reopened", "invalid-window", "no-manual", "ready", "active", "active-recreated", "stopped", "stopped-reopened", "output-error", "interrupted")]
 if os.environ.get("GITHUB_ACTIONS") != "true":
@@ -118,7 +118,7 @@ elif args.scope == "sensing-travel":
     tests = list(SENSING_TESTS)
 metadata["test_classes"] = tests
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
-method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2, "BackupStorageTest": 6, "BackupDocumentFlowTest": 3, "ReportRibbonNativeTest": 2, "AlarmSkipStorageTest": 8, "AlarmSkipFlowTest": 2, "ContactlessSetupFlowTest": 3, "TravelCueStorageTest": 8, "TravelCueFlowTest": 2}
+method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2, "BackupStorageTest": 6, "BackupDocumentFlowTest": 3, "ReportRibbonNativeTest": 2, "AlarmSkipStorageTest": 8, "AlarmSkipFlowTest": 2, "ContactlessSetupFlowTest": 3, "TravelCueStorageTest": 8, "TravelCueFlowTest": 2, "SonarProvenanceStorageTest": 12}
 class_results = []
 for test in tests:
     extra = []
