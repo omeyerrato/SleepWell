@@ -59,6 +59,8 @@ final class SleepPicker {
     private static Integer read(EditText value){try{return Integer.valueOf(value.getText().toString());}catch(NumberFormatException invalid){return null;}}
     private static void show(Activity a,Dialog dialog,int heightDp){
         boolean dark=Design.darkSystemBarSurface(a);
+        // Floating dialogs do not inherit the Activity's system-background drawing flags.
+        Window owned=dialog.getWindow();owned.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);owned.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS|WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         dialog.show();Window window=dialog.getWindow();window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));int width=Math.min(a.getResources().getDisplayMetrics().widthPixels-Design.dp(a,32),Design.dp(a,440));int available=a.getWindow().getDecorView().getHeight();if(available<=0)available=a.getResources().getDisplayMetrics().heightPixels;window.setLayout(width,Math.min(Design.dp(a,heightDp*Math.max(1,Design.fontScale(a))),available-Design.dp(a,64)));
         View decor=window.getDecorView();Runnable bars=()->{if(dialog.isShowing()&&!a.isDestroyed()&&decor.isAttachedToWindow()){androidx.core.view.WindowInsetsControllerCompat controller=androidx.core.view.WindowCompat.getInsetsController(window,decor);controller.setAppearanceLightStatusBars(!dark);controller.setAppearanceLightNavigationBars(!dark);}};
         bars.run();decor.getViewTreeObserver().addOnWindowFocusChangeListener(focused->{if(focused)decor.post(bars);});
