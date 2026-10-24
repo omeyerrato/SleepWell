@@ -60,10 +60,24 @@ final class SleepPicker {
     private static void show(Activity a,Dialog dialog,int heightDp){
         boolean dark=Design.darkSystemBarSurface(a);
         // Floating dialogs do not inherit the Activity's system-background drawing flags.
-        Window owned=dialog.getWindow();owned.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);owned.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS|WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        dialog.show();Window window=dialog.getWindow();window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));int width=Math.min(a.getResources().getDisplayMetrics().widthPixels-Design.dp(a,32),Design.dp(a,440));int available=a.getWindow().getDecorView().getHeight();if(available<=0)available=a.getResources().getDisplayMetrics().heightPixels;window.setLayout(width,Math.min(Design.dp(a,heightDp*Math.max(1,Design.fontScale(a))),available-Design.dp(a,64)));
+        Window owned=dialog.getWindow();owned.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);owned.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS|WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION|WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        // Native floating-window dimming forces white system glyphs. A light, content-only
+        // backdrop preserves the owner's cream/plum bars and never intercepts input.
+        Backdrop backdrop=new Backdrop(a.getWindow().getDecorView(),owned.getDecorView());
+        try{dialog.show();owned.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));int width=Math.min(a.getResources().getDisplayMetrics().widthPixels-Design.dp(a,32),Design.dp(a,440));int available=a.getWindow().getDecorView().getHeight();if(available<=0)available=a.getResources().getDisplayMetrics().heightPixels;owned.setLayout(width,Math.min(Design.dp(a,heightDp*Math.max(1,Design.fontScale(a))),available-Design.dp(a,64)));backdrop.attach();}catch(RuntimeException|Error failure){backdrop.close();if(dialog.isShowing())dialog.dismiss();throw failure;}
+        Window window=owned;
         View decor=window.getDecorView();Runnable bars=()->{if(dialog.isShowing()&&!a.isDestroyed()&&decor.isAttachedToWindow()){androidx.core.view.WindowInsetsControllerCompat controller=androidx.core.view.WindowCompat.getInsetsController(window,decor);controller.setAppearanceLightStatusBars(!dark);controller.setAppearanceLightNavigationBars(!dark);}};
         bars.run();decor.getViewTreeObserver().addOnWindowFocusChangeListener(focused->{if(focused)decor.post(bars);});
+    }
+    private static final class Backdrop implements View.OnAttachStateChangeListener,View.OnLayoutChangeListener {
+        final View owner,dialog;final ColorDrawable shade=new ColorDrawable(0x26000000);boolean closed,attached;
+        Backdrop(View owner,View dialog){this.owner=owner;this.dialog=dialog;}
+        void attach(){owner.addOnAttachStateChangeListener(this);dialog.addOnAttachStateChangeListener(this);owner.addOnLayoutChangeListener(this);if(!owner.isAttachedToWindow()){close();return;}if(dialog.isAttachedToWindow())show();}
+        void show(){if(closed||attached)return;shade.setBounds(0,0,owner.getWidth(),owner.getHeight());owner.getOverlay().add(shade);attached=true;}
+        void close(){if(closed)return;closed=true;owner.getOverlay().remove(shade);owner.removeOnLayoutChangeListener(this);owner.removeOnAttachStateChangeListener(this);dialog.removeOnAttachStateChangeListener(this);}
+        public void onViewAttachedToWindow(View view){if(view==dialog&&owner.isAttachedToWindow())show();}
+        public void onViewDetachedFromWindow(View view){close();}
+        public void onLayoutChange(View view,int left,int top,int right,int bottom,int oldLeft,int oldTop,int oldRight,int oldBottom){if(!closed)shade.setBounds(0,0,owner.getWidth(),owner.getHeight());}
     }
     static void radio(View row,boolean checked){row.setSelected(checked);row.setAccessibilityDelegate(new View.AccessibilityDelegate(){@Override public void onInitializeAccessibilityNodeInfo(View host,android.view.accessibility.AccessibilityNodeInfo info){super.onInitializeAccessibilityNodeInfo(host,info);info.setClassName(RadioButton.class.getName());info.setCheckable(true);info.setChecked(checked);}});}
     static final class StateDialog extends Dialog {
