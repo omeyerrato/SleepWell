@@ -1,6 +1,6 @@
 {
   "license": "CC0-1.0",
-  "derivation": "Public HQ MP3 previews decoded with FFmpeg8.1.1 to little-endian PCM16, mono16000Hz, no gain normalization. First four fixtures use entire preview; later fixtures have explicit per-file first30seconds cap. TestAPK only.",
+  "derivation": "Public HQ MP3 previews decoded with FFmpeg8.1.1 to little-endian PCM16, mono16000Hz, no gain normalization. First four fixtures and laughter-crowd use entire preview; cough/infant fixtures use explicit first30seconds maximum. TestAPK only.",
   "fixtures": [
     {
       "name": "snoring-sorts",
@@ -96,11 +96,18 @@
       "preview": "https://cdn.freesound.org/previews/25/25296_173513-hq.mp3",
       "license": "CC0-1.0",
       "expected_broad_class": "laughter",
-      "samples": 480000,
-      "duration_ms": 30000,
-      "derivation": "FFmpeg8.1.1 -t 30 -ac 1 -ar 16000 -f s16le; first30seconds cap selected before model evaluation; no gain, resynthesis, tiling or positive-window selection",
+      "samples": 873760,
+      "duration_ms": 54610,
+      "derivation": "Entire HQ MP3 preview decoded with FFmpeg8.1.1 -ac 1 -ar 16000 -f s16le. No gain, resynthesis, tiling or selection of successful windows. Full54.6seconds stays within native2MiB fixture bound.",
       "preview_sha256": "c65a0068c5fecae0f38829d580e75ef41a3b911242c0e15fc3ed9e42e3206626",
-      "pcm_sha256": "d576958f08f40b4165934b639cadc3942000b6ee31ff0ba20d0106bb5595765c"
+      "pcm_sha256": "d98c2e0ee727447de1d4d571452d559b1ab096d3400263f95d7205a8a3518bf7",
+      "prior_first30s_evaluation": {
+        "ci_run": "40042183746",
+        "pcm_sha256": "d576958f08f40b4165934b639cadc3942000b6ee31ff0ba20d0106bb5595765c",
+        "persisted_laughter": 0,
+        "maximum_laughter_family_score": 0.109375,
+        "note": "First30s had weak laughter and strong Speech scores; later content was not evaluated. Keep failed observation. Full preview replaces cap, not a selected positive window; policy unchanged."
+      }
     }
   ]
 }
