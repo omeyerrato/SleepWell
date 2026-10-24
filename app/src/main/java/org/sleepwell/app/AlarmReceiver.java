@@ -23,7 +23,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             Alarm a;
             if(Scheduler.TEST.equals(action)) a=Alarm.read(new JSONObject(Prefs.text(c,"test_alarm","{}")));
             else if(Scheduler.SNOOZE.equals(action)) a=Alarm.read(new JSONObject(Prefs.text(c,"snoozed_"+id,"{}")));
-            else if(Scheduler.FIRE.equals(action)) { a=s.alarm(id); if(a==null || !a.enabled) return; }
+            else if(Scheduler.FIRE.equals(action)) { a=s.alarm(id); if(a==null || !a.enabled) return; if(a.nap!=null||a.napInvalid){if(a.nap!=null)Naps.reconcile(c,a.id);return;} }
             else return;
             Scheduler.fire(c,a,Scheduler.FIRE.equals(action));
         } catch(Exception e) { Prefs.put(c,"lastError","Alarm delivery: "+e.getMessage()); }

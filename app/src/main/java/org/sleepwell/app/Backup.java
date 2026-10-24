@@ -11,7 +11,7 @@ final class Backup {
         JSONArray alarms=root.getJSONArray("alarms"),sessions=root.getJSONArray("sessions"),epochs=root.getJSONArray("epochs");
         Set<Long> ids=new HashSet<>(),alarmIds=new HashSet<>();Map<Long,JSONObject> byId=new HashMap<>();
         for(int i=0;i<alarms.length();i++){
-            Alarm a=Alarm.read(alarms.getJSONObject(i));if(a.routineInvalid||a.id<=0||!alarmIds.add((long)a.id)||a.hour<0||a.hour>23||a.minute<0||a.minute>59||a.volume<10||a.volume>100||a.difficulty<1||a.difficulty>6||a.smartWindow<0||a.smartWindow>60||a.rampSeconds<0||a.rampSeconds>1440||a.soundDelaySeconds<0||a.soundDelaySeconds>1440||a.vibrationDelaySeconds<0||a.vibrationDelaySeconds>1440||a.snoozeMinutes<1||a.snoozeMinutes>15||a.snoozeLimit<0||a.snoozeLimit>5||a.awakeCheck<0||a.awakeCheck>15)throw new JSONException("Invalid alarm");
+            Alarm a=Alarm.read(alarms.getJSONObject(i));if(a.napInvalid||a.routineInvalid||a.id<=0||!alarmIds.add((long)a.id)||a.hour<0||a.hour>23||a.minute<0||a.minute>59||a.volume<10||a.volume>100||a.difficulty<1||a.difficulty>6||a.smartWindow<0||a.smartWindow>60||a.rampSeconds<0||a.rampSeconds>1440||a.soundDelaySeconds<0||a.soundDelaySeconds>1440||a.vibrationDelaySeconds<0||a.vibrationDelaySeconds>1440||a.snoozeMinutes<1||a.snoozeMinutes>15||a.snoozeLimit<0||a.snoozeLimit>5||a.awakeCheck<0||a.awakeCheck>15)throw new JSONException("Invalid alarm");
             for(int day:a.days)if(day<1||day>7)throw new JSONException("Invalid weekday");
         }
         for(int i=0;i<sessions.length();i++){
@@ -39,7 +39,7 @@ final class Backup {
     static void restore(Context c,Store store,JSONObject root) throws JSONException {
         if(TrackingService.running||Prefs.flag(c,"ringing"))throw new JSONException("End tracking and alarms before restoring.");
         List<Alarm> previous=store.alarms();List<JSONObject> clips=store.rows("SELECT path FROM clips");restoreData(store,root);
-        for(Alarm a:previous){Scheduler.cancel(c,a.id,Scheduler.FIRE);Scheduler.cancel(c,a.id,Scheduler.SNOOZE);Scheduler.cancel(c,a.id,Scheduler.CHECK);Scheduler.cancel(c,a.id,Scheduler.BACKUP);}
+        for(Alarm a:previous){Naps.cancelJob(c,a);Scheduler.cancel(c,a.id,Scheduler.FIRE);Scheduler.cancel(c,a.id,Scheduler.SNOOZE);Scheduler.cancel(c,a.id,Scheduler.CHECK);Scheduler.cancel(c,a.id,Scheduler.BACKUP);}
         Scheduler.cancel(c,-1,Scheduler.TEST);Prefs.put(c,"checkPending",0);for(JSONObject clip:clips)FileSafety.deleteClip(c,clip.optString("path"));
     }
     static void restoreData(Store store,JSONObject root) throws JSONException {
@@ -50,7 +50,7 @@ final class Backup {
         if(pauses!=null)for(int i=0;i<pauses.length();i++){JSONObject p=pauses.getJSONObject(i);long id=p.getLong("session");endpoints.put(id,Math.max(endpoints.get(id),p.isNull("end")?p.getLong("start"):p.getLong("end")));}
         db.beginTransaction();try {
             SoundClips.stageAll(store,null);db.delete("sound_events",null,null);db.delete("record_create_requests",null,null);db.delete("alarms",null,null);db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null);db.delete("sessions",null,null);db.delete("clips",null,null);
-            JSONArray alarms=root.getJSONArray("alarms");for(int i=0;i<alarms.length();i++){Alarm a=Alarm.read(alarms.getJSONObject(i));a.enabled=false;if(a.tone.startsWith("content:"))a.tone="daybreak";store.save(a);}
+            JSONArray alarms=root.getJSONArray("alarms");for(int i=0;i<alarms.length();i++){Alarm a=Alarm.read(alarms.getJSONObject(i));a.enabled=false;Naps.restored(a);if(a.tone.startsWith("content:"))a.tone="daybreak";store.save(a);}
             for(int i=0;i<sessions.length();i++){
                 JSONObject j=sessions.getJSONObject(i);ContentValues v=new ContentValues();long id=j.getLong("id");v.put("id",id);v.put("start",j.getLong("start"));v.put("end",endpoints.get(id));v.put("note",j.optString("note",""));v.put("rating",Math.max(0,Math.min(5,j.optInt("rating"))));v.put("interrupted",j.isNull("end")?1:j.optInt("interrupted"));v.put("clock_changed",j.optInt("clock_changed",0)==0?0:1);if(!j.isNull("active_ms"))v.put("active_ms",j.getLong("active_ms"));db.insertOrThrow("sessions",null,v);
                 ContentValues provenance=new ContentValues();provenance.put("source",format>=3?j.getString("source"):"legacy");provenance.put("origin","imported");provenance.put("zone",format>=3?j.getString("zone"):"");db.update("sessions",provenance,"id=?",new String[]{""+id});

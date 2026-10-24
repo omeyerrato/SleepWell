@@ -10,6 +10,7 @@ public class Alarm {
     public int soundDelaySeconds=0,vibrationDelaySeconds=0;
     public String label="A fresh start", challenge="Math", tone="daybreak";
     ChallengeRoutine routine;boolean routineInvalid;private Object invalidRoutine;
+    NapPlan nap;boolean napInvalid;private Object invalidNap;
     ChallengeRoutine challenges(){return routine==null?ChallengeRoutine.legacy(challenge,difficulty):routine;}
     void setRoutine(ChallengeRoutine value){routine=value;routineInvalid=false;invalidRoutine=null;challenge=value.tasks.get(0).type;difficulty=value.tasks.get(0).rounds;}
     public Set<Integer> days = new HashSet<>();
@@ -26,6 +27,7 @@ public class Alarm {
                 .put("extraLoud",extraLoud).put("sunrise",sunrise).put("flashlight",flashlight).put("soundDelaySeconds",soundDelaySeconds).put("vibrationDelaySeconds",vibrationDelaySeconds)
                 .put("shortenSnoozes",shortenSnoozes).put("days",new JSONArray(days));
             if(routine!=null)j.put("routine",ChallengeRoutineJson.encode(routine));else if(routineInvalid)j.put("routine",invalidRoutine);
+            if(nap!=null)j.put("nap",NapPlanJson.encode(nap));else if(napInvalid)j.put("nap",invalidNap);
         } catch(JSONException e) { throw new IllegalStateException(e); }
         return j;
     }
@@ -38,6 +40,7 @@ public class Alarm {
         a.extraLoud=j.optBoolean("extraLoud",false);a.sunrise=j.optBoolean("sunrise",false);a.flashlight=j.optBoolean("flashlight",false);a.soundDelaySeconds=j.optInt("soundDelaySeconds",0);a.vibrationDelaySeconds=j.optInt("vibrationDelaySeconds",0);
         a.shortenSnoozes=j.optBoolean("shortenSnoozes",false);
         if(j.has("routine"))try{a.routine=ChallengeRoutineJson.decode(j.getJSONArray("routine"));}catch(JSONException invalid){a.routineInvalid=true;a.invalidRoutine=j.opt("routine");}
+        if(j.has("nap"))try{a.nap=NapPlanJson.decode(j.getJSONObject("nap"));}catch(JSONException invalid){a.napInvalid=true;a.invalidNap=j.opt("nap");}
         JSONArray ds=j.optJSONArray("days"); if(ds!=null) for(int i=0;i<ds.length();i++) a.days.add(ds.optInt(i));
         return a;
     }

@@ -131,6 +131,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
             if(!WakeChecks.arm(this,alarm,occurrence))Ui.toast(this,"Wake-up check needs attention. Open the check from Tonight.");
         }
         AlarmService.stop(this,occurrence);
+        Naps.dismissed(this,alarm,alarm.awakeCheck>0);
         try { stopLockTask(); } catch(IllegalStateException ignored) {}
         startActivity(new Intent(this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));finish();
         }

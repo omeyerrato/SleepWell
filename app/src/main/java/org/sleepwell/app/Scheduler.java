@@ -22,6 +22,8 @@ public final class Scheduler {
     }
     static void schedule(Context c,Alarm a) {
         cancel(c,a.id,FIRE);
+        if(a.nap!=null){Naps.reconcile(c,a.id);return;}
+        if(a.napInvalid){Prefs.put(c,"lastError","This nap timer could not be read. Review it before starting.");return;}
         if(a.enabled) { long next=a.next(Math.max(System.currentTimeMillis(),Prefs.of(c).getLong("lastOccurrence_"+a.id,0))); at(c,a.id,FIRE,next); Prefs.put(c,"deadline_"+a.id,next); }
         else Prefs.put(c,"deadline_"+a.id,0L);
     }
