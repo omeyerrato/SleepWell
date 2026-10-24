@@ -302,6 +302,27 @@ for row in rows:
     elif feature == "Accelerometer tracking":
         row["validation"] += " ChartClockFlowTest now passes4.366s atbb582cf/CI40037791812 with four actual images and retained selection/focus; visual review rejects default focus slabs and long fixture title. Deliberate focus/input-mode cleanup requires new captures."
 
+# Exact-head native results supersede earlier candidate observations above.
+for row in rows:
+    feature = row["feature"]
+    if feature in ("Typed arithmetic / operators / complexity", "Math"):
+        row["validation"] = "GradedMathTest12 and integrated387 pure tests pass. GradedMathConfigurationTest1 PASS22.360s at12c8c0f/CI40042183746: all7 original settings/recreate/save/reopen/error frames, private SQLite/JSON and bad-import preservation. Supporting visual gate remains incomplete for clipped card borders; later top-aligned row fix and native geometry assertions await fresh images. Actual ringing/keyboard execution remains unverified."
+    elif feature == "Automatic sound labels":
+        row["validation"] = "SoundAnalysisNativeTest3 and old SoundClassifierFixtureEvaluationTest1 pass at12c8c0f/CI40042183746. New SoundCategoryPolicyTest7 passes pure rules, but SoundCategoryFixtureEvaluationTest1 FAILS actual laughter positive:0 events in initial30s. Cough1, baby-cry2 (also laughter2), retained snore9/3 and solo speech1; zero new classes on4 old fixtures. Full54.61s laughter preview now awaits native reevaluation with unchanged thresholds/grouping. Raw all-window CPU scores/events preserved in verification/2026-10-24-math-chart-calendar."
+        row["notes"] = "Offline snore/speech estimates exist. Additional cough/throat-clear, baby-cry and laughter remain unaccepted candidates; no broad category UI/filter integration until actual PCM positives/cross-negatives pass. Mixed infant classification and uploader descriptions cannot prove accuracy. User label correction, per-class calibration and bedroom recognition remain unverified or missing."
+    elif feature == "Noise library":
+        row["validation"] = "FavoriteSoundsStorageTest3 PASS0.604s and FavoriteSoundsFlowTest1 PASS21.562s at12c8c0f/CI40042183746; fourteen prior individually reviewed originals, fake playback only. ClipReviewAccessTest1 PASS0.364s with actual private SQLite/WAV before/after saved start/end trims, no player allocation. Paused-Play contrast source6912ed4 needs fresh originals; real player output remains unverified."
+    elif feature == "Retention / favorite album / alternate formats":
+        row["validation"] = "At12c8c0f/CI40042183746, library/favorite storage and UI, SoundRetentionLifecycleTest1, NightAudioArchiveTest3 and SoundArchiveJobTest2 PASS. PrivacyHistoryFlowTest FAILS8.323s before first Keep: delete row only4px visible and disabled, no confirmation. Later scroll/enabled tap readiness repair awaits native proof; no erase/retry acceptance from this run. ClipReviewAccessTest1 stale-trim guard PASS0.364s."
+    elif feature == "Missed-night estimate review / provenance":
+        row["validation"] = "MissedNightTest10 pure pass; MissedNightFlowTest2 PASS21.570s at12c8c0f/CI40042183746,11 originals, real private SQLite/fake Usage Access, reviewed save/idempotence/conflict/evidence/permission failures. Strict review clears denied-state gray focus body; prior ten supporting-state findings retained. Actual Android Usage Access queries remain unverified."
+    elif feature == "Retained record date calendars":
+        row["validation"] = "RecordCalendarFlowTest1 PASS33.085s at12c8c0f/CI40042183746 with all7 individually reviewed original calendars: owned-dialog cancellation, recreation, DST/zone offsets, exact seconds/milliseconds and save/reopen preserved. Narrow calendar visual gate passes. No generic picker or full36-screen acceptance inferred."
+    elif feature == "Accelerometer tracking":
+        row["validation"] += " Latest ChartClockFlowTest1 PASS4.590s at12c8c0f/CI40042183746 with4 originals; strict review clears gray focus slabs and fold-title clipping while retaining actual selection/clock/DST/short-second labels. This supersedes earlier rejected chart styling only; hardware tracking accuracy remains unverified."
+    elif feature == "Walking task":
+        row["validation"] = "WalkSessionTest13 pure cases pass. WalkConfigurationFlowTest1 PASS13.106s at12c8c0f/CI40042183746 with6 individually reviewed originals; obsolete permission error is cleared in ready/unavailable/reopened states. Actual private SQLite/JSON persists per-task targets. No actual alarm, step sensor or physical permission dialog execution."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

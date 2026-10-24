@@ -46,3 +46,13 @@ actual SQLite/WAV/ZIP bytes and fake output/provider/sensor/scheduler ports.
 No native playback option is enabled by default. Local Gradle work is serialized
 with one worker to fit memory; independent coding/review remains parallel.
 Full36-screen design and phone-feature acceptance remain FAIL/incomplete.
+
+Latest exact-head native CI40042183746 at12c8c0f:35/37 classes,52 methods pass,
+180 originals. Calendar7/Chart4/Math7/Walk6 and ClipReviewAccess now pass their
+bounded configuration/storage checks; strict audit and26 originals retained.
+Privacy first Keep fails after a sliver/disabled row tap; readiness repair awaits
+rerun. Additional laughter PCM positive fails; complete preview reevaluation
+keeps unchanged production thresholds. QR scanning and alarm tone picker each
+have independent managed worktrees with inert native fixtures, still unmerged.
+No phone attached for the requested update; prepared signed46278cb APK is not
+an installation. Full feature/36-screen acceptance remains incomplete.

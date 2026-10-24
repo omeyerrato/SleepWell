@@ -33,3 +33,10 @@ Local Android verification: full Gradle testDebugUnitTest (378 tests, zero failu
 Regional typed-answer correction: validation now consumes Unicode decimal-digit code points (Nd), normalizing Arabic-Indic, Eastern Arabic, Devanagari, Thai, fullwidth and other decimal scripts to a single integer before exact-answer comparison. Mixed decimal scripts and leading zeros remain valid. Signs, decimal separators, fractions, Roman/circled/superscript numeric glyphs, malformed surrogate input and values exceeding the five-digit input bound are rejected. The parser also guards integer overflow before accumulation. Two additional pure regressions cover those cases; question generation, private cache format and the native seven-frame configuration gate are unchanged. No ringing window or keyboard was opened.
 
 The regional-digit follow-up passed direct javac/JUnit: twelve GradedMath, two existing MathTask and ten existing ChallengeRoutine tests, 24 total with zero failures (0.430 seconds). No local Gradle or native execution was run while the primary integrated build held the slot.
+
+Latest native configuration evidence: GradedMathConfigurationTest1 passes
+22.360s at12c8c0f/CI40042183746 with all7 original frames and retained
+cancel/recreation/private-DB/save/reopen/invalid-import invariants. These
+settings assertions do not execute AlarmActivity. Strict review finds clipped
+upper operator-card borders in six detail frames; later top-alignment and
+geometry assertions need fresh native captures before visual acceptance.

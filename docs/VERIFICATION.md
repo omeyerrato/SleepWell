@@ -731,3 +731,36 @@ errors/80 warnings, debug/test/release builds all pass1m4s. Next default native
 gate is37 classes/54 methods/184 required original PNGs plus mandatory eight
 real-PCM category JSON results. The broader sound categories are candidates;
 passing seven pure policy tests does not establish actual recognizer positives.
+
+## CI40042183746 at12c8c0f — 35/37 classes pass
+
+Overall FAIL:52 methods pass,180 original PNGs. Calendar1 passes33.085s with
+all7 images; Chart1 passes4.590s with4; graded Math configuration1 passes22.360s
+with7; Walk1 passes13.106s with6; ClipReviewAccess1 passes0.364s with real
+private SQLite/WAV. Strict review clears chart focus/fold title, Walk stale
+errors and denied missing-night focus body. Math operator-card borders remain
+clipped. Twenty-six individually reviewed originals, all37 raw logs, both
+actual classifier JSONs and the privacy failure hierarchy are retained in
+verification/2026-10-24-math-chart-calendar with68 original/canonical hashes.
+
+Privacy fails8.323s before first Keep. Original hierarchy proves no dialog and
+a disabled delete row only4px visible. The worker drain does not wait for its
+150ms UI observer. New test-only scroll/enabled/minimum48dp tap readiness keeps
+all erase/cancel/retry/preservation assertions and needs fresh native proof.
+Operator rows now align to their top to avoid negative child placement from
+center gravity plus bottom margins; native geometry assertions and new images
+must prove complete borders. No new product deletion behavior is introduced.
+
+The additional category test fails actual laughter persistence, not grouping:
+first30s laughter family max0.109375, zero accepted laughter. Cough1, baby2
+(and mixed laughter2), snore9/3 and solo speech1 remain; old4 fixtures have zero
+new classes. The complete54.61s laughter preview now replaces its cap within
+the existing2MiB bound; production scores/margins/grouping are unchanged.
+Uploader descriptions are not annotated window truth. Broader labels remain
+unaccepted, and broad category UI remains on hold.
+
+Main46278cb debug/lint passes47s; its signed in-place update APK is ready,
+but ADB detected no phone. No installation or physical UI acceptance is
+claimed. Current phone still has the earlier6015a12 build. No physical alarm,
+audio, camera, microphone, sensor, vibration, flashlight, power or lock actions
+ran. QR scanning and board03 sound changes are separate unfinished workers.
