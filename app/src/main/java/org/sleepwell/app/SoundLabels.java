@@ -18,10 +18,12 @@ final class SoundLabels {
     static void revision(JSONObject actual,JSONObject expected){if(actual.optLong("label_revision")!=expected.optLong("label_revision")||!Objects.equals(actual.opt("user_category"),expected.opt("user_category")))throw new IllegalArgumentException("This label changed. Reopen the sound event.");}
     static JSONObject check(Store store,Snapshot expected){
         JSONObject actual=SoundClips.event(store,expected.event.optLong("session"),expected.event.optLong("id"));SoundClips.eventIdentity(actual,expected.event);revision(actual,expected.event);
-        if(Double.compare(actual.optDouble("score"),expected.event.optDouble("score"))!=0||!Objects.equals(actual.opt("clip"),expected.event.opt("clip")))throw new IllegalArgumentException("This sound event changed. Reopen it.");
+        if(Double.compare(actual.optDouble("score"),expected.event.optDouble("score"))!=0||!sameClip(actual,expected.event))throw new IllegalArgumentException("This sound event changed. Reopen it.");
         RecordEntry record=Records.get(store,actual.optLong("session"));long from=actual.optLong("time"),duration=actual.optLong("duration_ms");
         if(record.manual()||record.updated!=expected.updated||record.edit.start!=expected.start||record.edit.end!=expected.end||duration<=0||Math.addExact(from,duration)<=record.edit.start||from>=record.edit.end)throw new IllegalArgumentException("The sleep period changed. Reopen the sound event.");return actual;
     }
+    // Store.rows projects INTEGERs as doubles; JSON snapshots may parse the same ID as Integer/Long.
+    private static boolean sameClip(JSONObject actual,JSONObject expected){if(!actual.has("clip")||!expected.has("clip"))return false;if(actual.isNull("clip")||expected.isNull("clip"))return actual.isNull("clip")&&expected.isNull("clip");Object first=actual.opt("clip"),second=expected.opt("clip");if(!(first instanceof Number)||!(second instanceof Number))return false;double a=((Number)first).doubleValue(),b=((Number)second).doubleValue();return Double.isFinite(a)&&Double.isFinite(b)&&a>0&&b>0&&a<=9007199254740991L&&b<=9007199254740991L&&a==Math.rint(a)&&b==Math.rint(b)&&((Number)first).longValue()==((Number)second).longValue();}
     // Store.rows projects numbers through JSON doubles: keep the CAS counter exactly portable.
     static void save(Store store,Snapshot expected,String selected){
         if(selected!=null&&!SoundCategories.valid(selected))throw new IllegalArgumentException("Choose a sound label.");

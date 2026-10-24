@@ -410,6 +410,27 @@ for row in rows:
     elif feature in ("Post-dismiss wake check", "Wake-check prompt / confirmation deadline / retries"):
         row["validation"] += " Atc48fedd WakeCheckFlowTest2 passes again and12 originals were reviewed: centered timer/button and error-copy correction accepted narrowly; waiting/prompt remain rejected for stale injected-save Toast. Laterfeb38ec uses a persistent Editor inline save error and adds13th supporting error capture, with failed/successful save ownership preserved. Compiled, fresh original images required."
 
+# Recurring starts are opt-in and deliberately movement-only; native delivery is not inferred.
+for row in rows:
+    if row["feature"] == "Automatic tracking":
+        row["screens"] += ", supporting Repeat nightly settings"
+        row["implementation"] += ["RecurringNight.java", "RecurringTracking.java", "RecurringTrackingActivity.java", "RecurringTrackingReceiver.java", "RecurringTrackingBootReceiver.java", "MainActivity.java"]
+        row["validation"] += " Recurring0150652 source passed independent ownership/security review and its scoped debug/native APK,9 RecurringNightTest cases and lint passed (0errors/86warnings). Integratedc9582a2; RecurringTrackingTest12 and RecurringTrackingFlowTest2/13 originals are compiled but not yet executed. Main app reopening now reconciles an enabled schedule, future-only. The full CI contract includes these isolated preference/fake-launch tests; actual AlarmManager/FGS delivery remains unverified."
+        row["notes"] += " Separate Repeat nightly opt-in saves local calendar time, optional stillness and due-time charging condition; single-use persisted token/revision fences stale/duplicate/ABA starts. Disable affects only the owned run; enabled edits preserve admitted tonight capture. Recurring starts force microphone/clips/light/sleep sounds off, never open an Activity, never backfill missed starts, and retain4h/12h limits. Protected reconciliation and visible reopening schedule future occurrences only. Force-stop/OEM/permission restrictions and background specialUse distribution review remain; see RECURRING-MOVEMENT.md."
+    elif row["feature"] in ("Built-in sounds", "Device ringtone"):
+        row["validation"] += " FocusedCI40058849301 at e0a78b4: assets1 PASS1.883s, grants1 PASS0.284s; ToneFlow fails because its helper checks a51px label instead of the126px tappable row. Strict review of12 named originals plus diagnostic accepts compact preview geometry narrowly; final4 import/reopen/cancel originals absent, full flow rejected."
+    elif row["feature"] == "Gentle volume ramp":
+        row["validation"] += " FocusedCI40058849301 WakeSettings still fails: Flashlight node is below viewport but helper waits for existence before scrolling. Its loud-curve original is the wrong Alarm sound page; strict review rejects that named frame. Six later originals absent. Source fixes await a fresh native run; no effects claim."
+    elif row["feature"] in ("Post-dismiss wake check", "Wake-check prompt / confirmation deadline / retries"):
+        row["validation"] += " FocusedCI40058849301 at e0a78b4 WakeCheckFlowTest2 PASS42.064s. All13 originals individually reviewed: centered timer/glyph, original layered dawn background, clear terminal/error states and no stale Toast; bounded visual gate passes. Supporting failed-save Editor error persists inline. Actual notification/alarm delivery and other stated runtime limitations remain unverified."
+
+# First combined native run keeps newly discovered defects explicit.
+for row in rows:
+    if row["feature"] == "Correct sound labels / favorites / export":
+        row["validation"] += " FullCI40058852109 at e0a78b4: Storage9 has5 failures and UI3 allfail because linked clip ID Double-versus-integer JSON comparison rejects unchanged evidence. A strict null-aware exact numeric comparison and tenth storage regression are added; fresh native proof required. Schema6-to7 migration and analysis-only cases pass narrowly; no general label flow acceptance."
+    elif row["feature"] == "Nap timer":
+        row["validation"] += " FullCI40058852109 NapFlowTest3 PASS27.884s, but NapIntegrationFlowTest1 fails after4 of8 originals. Strict review of all19 available originals rejects question-mark sound/delete icons, clipped Delete row under error footer and stale card start time after same-occurrence clock refresh. Full visual/integration gate remains failed."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

@@ -975,3 +975,46 @@ The full-root native drawable preserves aspect ratio and covers insets; all
 live countdown/ring/buttons remain separate. AlarmActivity is unchanged and
 never launched. This is an art/source/build candidate, not acceptance of the
 composed screen; fresh13-state Wake originals remain mandatory.
+
+
+## 2026-10-24: focused dawn acceptance, full-run failures, recurring integration
+
+At e0a78b4, focused CI40058849301 is terminal FAIL: three of five classes,
+four of six methods pass. WakeCheckFlowTest2 PASS42.064s; all13 original frames
+were independently inspected by two reviewers and pass the bounded dawn/timer/
+inline-error visual gate. Assets1 PASS1.883s and grants1 PASS0.284s. Tone and
+WakeSettings remain rejected for their incomplete flow and ten missing originals;
+WakeSettings loud-curve shows the wrong page. Forty exact raw files, including
+all31 available original PNGs, are preserved with SHA256SUMS in
+`verification/2026-10-24-ci40058849301-focused/`. This is explicitly a focused
+run, not full-app acceptance or physical delivery proof.
+
+Full CI40058852109 at the same head is also terminal FAIL:46 classes executed,
+38 wholly passing;62 of76 methods pass,14 fail;227 original PNGs including
+failure diagnostics were downloaded once. Failed classes: AlarmMenusFlowTest,
+AlarmToneFlowTest, AlarmWakeSettingsTest, MissedNightFlowTest,
+NapIntegrationFlowTest, SoundCategoryFixtureEvaluationTest,
+SoundLabelStorageTest and SoundLabelFlowTest. NapFlowTest3 passes27.884s,
+but strict visual review of all15 Nap frames and four available parent-route
+frames rejects fallback sound/delete icons, a clipped setting under error footers,
+and a stale projected start time after wall-clock refresh. Four later integration
+frames are missing. Classifier solo-laughter failure remains unchanged.
+
+The first native label run exposes a genuine linked-clip identity bug: Store.rows
+returns numbers as Double, but JSON snapshot roundtrips may return integer types.
+SoundLabels now compares valid, null-aware exact numeric clip identity; score,
+revision, model, timestamps and record-bound guards remain. A tenth native
+storage test adds unchanged/removed/new/changed-link and WAV preservation checks.
+Fresh native execution is required; the failed run is not relabelled as passing.
+Menu and missing-night tests now await completed save lifecycle and the actual
+main-thread pinned Usage Access action before reading results.
+
+Recurring movement-only tracking source0150652 was independently reviewed and
+integrated as c9582a2. Its author verified debug/native APKs,9 RecurringNightTest
+cases and lint0errors86warnings; this is not an integrated build claim. Main
+reopening now reconciles an enabled schedule future-only, with no replay/start.
+The full native gate now includes RecurringTrackingTest12 and
+RecurringTrackingFlowTest2/13 originals, plus the tenth label storage case:
+48 classes/91 methods/280 required originals. Their source is unverified on native
+Android until a fresh run. No physical phone was available through ADB; no
+installation, microphone, playback, tracking, alarm, flashlight or lock test ran.

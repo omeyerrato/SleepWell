@@ -1,0 +1,21 @@
+{
+  "scope": "tone-wake",
+  "full_app_review": false,
+  "expected_classes": 5,
+  "expected_methods": 6,
+  "required_original_images": 39,
+  "failures": [
+    "AlarmToneFlowTest",
+    "AlarmWakeSettingsTest",
+    "alarm-tone-import-error.png",
+    "alarm-tone-imported.png",
+    "alarm-tone-reopened.png",
+    "alarm-tone-cancelled.png",
+    "wake-settings-lights.png",
+    "wake-settings-recreated.png",
+    "wake-settings-reopened.png",
+    "wake-settings-normal-curve.png",
+    "wake-settings-edited-curve.png",
+    "wake-settings-immediate.png"
+  ]
+}

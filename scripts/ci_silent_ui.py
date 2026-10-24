@@ -101,7 +101,7 @@ failures = []
 tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest", "PlanPickerFlowTest", "SoundLibraryUiTest", "SoundRetentionLifecycleTest", "SleepRhythmFlowTest", "NightAudioArchiveTest", "SoundArchiveUiTest", "MotionConfigurationFlowTest", "AudioArchiveConcurrencyTest", "SoundArchiveJobTest", "RecordCalendarFlowTest", "ChallengeRoutineFlowTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
-tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest", "GradedMathConfigurationTest", "QrCodeConfigurationTest", "AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "WakeCheckFlowTest", "SoundLabelStorageTest", "SoundLabelFlowTest", "NapFlowTest", "NapIntegrationFlowTest"]
+tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest", "GradedMathConfigurationTest", "QrCodeConfigurationTest", "AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "WakeCheckFlowTest", "SoundLabelStorageTest", "SoundLabelFlowTest", "NapFlowTest", "NapIntegrationFlowTest", "RecurringTrackingTest", "RecurringTrackingFlowTest"]
 if args.audio_imports:
     tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
 if args.scope == "tone-wake":
@@ -125,7 +125,7 @@ for test in tests:
         extra = ["-e", "ciSilentPlayback", "true"]
     result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app." + test, "-e", "ciReview", "true", *extra, "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", check=False, timeout=180)
     (output / (test + ".txt")).write_text(result.stdout + result.stderr, encoding="utf-8")
-    expected_count = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 9, "SoundLabelFlowTest": 3, "NapFlowTest": 3}.get(test, 1)
+    expected_count = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2}.get(test, 1)
     passed = bool(re.search(r"(?m)^OK \(" + str(expected_count) + r" tests?\)\s*$", result.stdout)) and "FAILURES!!!" not in result.stdout
     print(test + ": " + ("PASS" if passed else "FAIL"), flush=True)
     if result.returncode or not passed:
@@ -257,6 +257,7 @@ required += WAKE_CHECK_FRAMES
 required += ["sound-label-" + name + ".png" for name in ("source", "selector", "draft", "draft-recreated", "cancelled", "corrected", "reopened", "reset", "album", "busy", "busy-recreated", "error", "error-recreated", "retried", "trim-error", "trim-error-recreated", "deleted-error", "deleted-retry")]
 required += ["nap-" + name + ".png" for name in ("default", "preset", "tracking-required", "sound", "pending", "recreated", "reopened", "cancelled", "schedule", "schedule-error", "scheduled", "list", "permission-error", "scheduler-error", "retry")]
 required += ["nap-integration-" + name + ".png" for name in ("future", "clock-shift", "zone", "wind-down", "inactive", "started", "removed", "invalid")]
+required += ["recurring-" + name + ".png" for name in ("off", "draft", "draft-recreated", "time-recreated", "saved", "saved-recreated", "disabled", "permission", "permission-error", "permission-recreated", "notifications-error", "limits", "schedule-error")]
 if args.native_sounds:
     required += ["sounds-native-" + name + ".png" for name in ("playing", "paused", "error", "recovered")]
 if args.audio_imports:
