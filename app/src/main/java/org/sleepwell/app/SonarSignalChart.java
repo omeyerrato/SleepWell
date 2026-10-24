@@ -30,7 +30,8 @@ import java.util.*;
         for(SonarFrame frame:frames)samples.add(new ChartSeries.Sample(frame.from,frame.to,frame.movement));
         for(ChartSeries.Bar bar:ChartSeries.aggregate(samples,start,end,30)){
             float x=left+(right-left)*(bar.from-start)/15000f,x2=left+(right-left)*(bar.to-start)/15000f;
-            float width=Math.max(.25f,Math.min(dp(12),x2-x-dp(2))),center=(x+x2)/2;
+            // A short real interval still needs a visible marker at its actual time.
+            float width=Math.max(dp(2),Math.min(dp(12),x2-x-dp(2))),center=(x+x2)/2;
             float height=(float)((bottom-top)*Math.min(1,bar.value/2));
             paint.setColor(Design.VIOLET);
             canvas.drawRoundRect(center-width/2,bottom-Math.max(dp(1),height),center+width/2,bottom,dp(3),dp(3),paint);

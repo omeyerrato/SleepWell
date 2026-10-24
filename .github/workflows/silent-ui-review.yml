@@ -12,6 +12,7 @@ on:
           - tone-wake
           - report
           - sensing-travel
+          - sonar-night
       native_sounds:
         description: 'Also exercise real MediaPlayer/notification controls with host audio disabled (CI emulator only)'
         type: boolean

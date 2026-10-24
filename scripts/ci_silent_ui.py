@@ -19,7 +19,7 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--serial", required=True, choices=("emulator-5554",))
-parser.add_argument("--scope", choices=("full", "tone-wake", "report", "sensing-travel"), default="full", help="A named narrow scope is never a full app acceptance run")
+parser.add_argument("--scope", choices=("full", "tone-wake", "report", "sensing-travel", "sonar-night"), default="full", help="A named narrow scope is never a full app acceptance run")
 parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
 parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
 args = parser.parse_args()
@@ -33,6 +33,8 @@ SONAR_REPORT_FRAMES = ["sonar-report-" + name + ".png" for name in ("night", "si
 REPORT_TESTS = ("RootVisualTest", "ChartClockFlowTest", "ReportRibbonNativeTest", "ReportReferenceFlowTest", "SonarReportFlowTest")
 REPORT_FRAMES = ["report-reference-" + name + ".png" for name in ("history", "week", "month", "year", "night", "editor", "tags-notes", "reopened")] + ["root-report.png"] + ["chart-clock-" + name + ".png" for name in ("overnight", "night", "short", "fold")]
 REPORT_FRAMES += SONAR_REPORT_FRAMES
+NIGHT_TESTS = ("SonarNightStorageTest", "SonarNightFlowTest", "SonarReportFlowTest")
+NIGHT_FRAMES = ["sonar-night-" + name + ".png" for name in ("setup", "measuring", "paused", "paused-recreated", "resumed", "missing", "stop-confirmation", "needs-setup", "charging-error", "charging-recreated")] + SONAR_REPORT_FRAMES
 SENSING_TESTS = ("SonarProvenanceStorageTest", "SonarSettingsNativeTest", "ContactlessSetupFlowTest", "SonarNightStorageTest", "SonarNightFlowTest", "SonarReportFlowTest", "TravelCueStorageTest", "TravelCueFlowTest")
 SENSING_FRAMES = ["sonar-setup-" + name + ".png" for name in ("initial", "ready", "gain-changed", "retested", "reopened", "recreated", "testing", "cancelled", "cancel-recreated", "charging-error", "unsupported", "permission", "saving", "saving-recreated", "save-error")]
 SENSING_FRAMES += ["travel-cues-" + name + ".png" for name in ("settings-off", "window", "date", "time", "window-recreated", "settings-enabled", "settings-reopened", "invalid-window", "no-manual", "ready", "active", "active-recreated", "stopped", "stopped-reopened", "output-error", "interrupted")]
@@ -120,6 +122,8 @@ elif args.scope == "report":
     tests = list(REPORT_TESTS)
 elif args.scope == "sensing-travel":
     tests = list(SENSING_TESTS)
+elif args.scope == "sonar-night":
+    tests = list(NIGHT_TESTS)
 metadata["test_classes"] = tests
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2, "BackupStorageTest": 6, "BackupDocumentFlowTest": 3, "ReportRibbonNativeTest": 2, "AlarmSkipStorageTest": 8, "AlarmSkipFlowTest": 2, "ContactlessSetupFlowTest": 3, "TravelCueStorageTest": 8, "TravelCueFlowTest": 2, "SonarProvenanceStorageTest": 12}
@@ -150,7 +154,7 @@ for test in tests:
         failures.append(test)
 command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", str(output), check=False)
 if args.scope != "full":
-    focused_frames = REPORT_FRAMES if args.scope == "report" else SENSING_FRAMES if args.scope == "sensing-travel" else TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES
+    focused_frames = NIGHT_FRAMES if args.scope == "sonar-night" else REPORT_FRAMES if args.scope == "report" else SENSING_FRAMES if args.scope == "sensing-travel" else TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES
     failures += [name for name in focused_frames if not (output / name).is_file()]
     summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "failures": failures}
     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
