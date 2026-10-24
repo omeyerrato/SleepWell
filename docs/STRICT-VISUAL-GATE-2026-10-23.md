@@ -537,3 +537,11 @@ The second failed class remains SoundCategoryFixtureEvaluationTest (actual
 laughter PCM positive gate), separate from passing QR/Math/routine classes.
 Later fixes require fresh exact-head evidence. Overall all-features/36-screen
 acceptance remains **FAIL / incomplete**.
+
+## CI 40051144096: exact 9188e78 review (2026-10-24)
+
+Evidence is preserved in [the exact-run review bundle](verification/2026-10-24-ci40051144096-review/README.md): 24 individually opened original PNGs, all 42 raw Test logs, environment, both actual classifier JSON reports, and four failure hierarchies. Full artifact: 197 PNGs; 36/42 classes and 54/60 methods pass, six classes fail. No physical outputs were tested.
+
+Privacy cleanup now passes its full isolated five-state journey, including the correctly rendered retained error. WakeCheck passes its two native methods but remains visually rejected: countdown text is left-aligned over the ring, the awake glyph is disconnected, and three captures contain the injected-save Toast. Tone is rejected because lower preview controls are clipped beneath the fixed footer; only three of sixteen planned named originals exist. Tone asset duration, popup/initial-layout synchronization, and QR stale-node failures remain explicit in raw logs. The independent laughter PCM positive still fails.
+
+Later d4c08c7 Tone geometry/test fixes and 4d07378 Wake fixes require fresh native originals. This review does not promote compilation or fake ports to actual output/camera acceptance. Full phone feature/design scope remains **FAIL / incomplete**.

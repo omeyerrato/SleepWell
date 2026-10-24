@@ -1,0 +1,50 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmWakeSettingsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.AlarmWakeSettingsTest:
+INSTRUMENTATION_STATUS: test=actualDraftRecreationSaveReopenAndCancelWithoutOutputs
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmWakeSettingsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=androidx.test.uiautomator.UiObjectNotFoundException: UiSelector[SCROLLABLE=true]
+	at androidx.test.uiautomator.UiScrollable.scrollBackward(UiScrollable.java:427)
+	at androidx.test.uiautomator.UiScrollable.scrollToBeginning(UiScrollable.java:472)
+	at androidx.test.uiautomator.UiScrollable.scrollToBeginning(UiScrollable.java:489)
+	at androidx.test.uiautomator.UiScrollable.scrollIntoView(UiScrollable.java:255)
+	at org.sleepwell.app.AlarmWakeSettingsTest.object(AlarmWakeSettingsTest.java:19)
+	at org.sleepwell.app.AlarmWakeSettingsTest.actualDraftRecreationSaveReopenAndCancelWithoutOutputs(AlarmWakeSettingsTest.java:32)
+
+INSTRUMENTATION_STATUS: stream=
+Error in actualDraftRecreationSaveReopenAndCancelWithoutOutputs(org.sleepwell.app.AlarmWakeSettingsTest):
+androidx.test.uiautomator.UiObjectNotFoundException: UiSelector[SCROLLABLE=true]
+	at androidx.test.uiautomator.UiScrollable.scrollBackward(UiScrollable.java:427)
+	at androidx.test.uiautomator.UiScrollable.scrollToBeginning(UiScrollable.java:472)
+	at androidx.test.uiautomator.UiScrollable.scrollToBeginning(UiScrollable.java:489)
+	at androidx.test.uiautomator.UiScrollable.scrollIntoView(UiScrollable.java:255)
+	at org.sleepwell.app.AlarmWakeSettingsTest.object(AlarmWakeSettingsTest.java:19)
+	at org.sleepwell.app.AlarmWakeSettingsTest.actualDraftRecreationSaveReopenAndCancelWithoutOutputs(AlarmWakeSettingsTest.java:32)
+
+INSTRUMENTATION_STATUS: test=actualDraftRecreationSaveReopenAndCancelWithoutOutputs
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 15.396
+There was 1 failure:
+1) actualDraftRecreationSaveReopenAndCancelWithoutOutputs(org.sleepwell.app.AlarmWakeSettingsTest)
+androidx.test.uiautomator.UiObjectNotFoundException: UiSelector[SCROLLABLE=true]
+	at androidx.test.uiautomator.UiScrollable.scrollBackward(UiScrollable.java:427)
+	at androidx.test.uiautomator.UiScrollable.scrollToBeginning(UiScrollable.java:472)
+	at androidx.test.uiautomator.UiScrollable.scrollToBeginning(UiScrollable.java:489)
+	at androidx.test.uiautomator.UiScrollable.scrollIntoView(UiScrollable.java:255)
+	at org.sleepwell.app.AlarmWakeSettingsTest.object(AlarmWakeSettingsTest.java:19)
+	at org.sleepwell.app.AlarmWakeSettingsTest.actualDraftRecreationSaveReopenAndCancelWithoutOutputs(AlarmWakeSettingsTest.java:32)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
