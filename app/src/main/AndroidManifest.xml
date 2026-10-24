@@ -43,6 +43,7 @@
         <activity android:name=".AutomationActivity" android:exported="false" />
         <service android:name=".AutomationJobService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
         <activity android:name=".HealthSleepSourceActivity" android:exported="false" />
+        <activity android:name=".TagManagementActivity" android:exported="false" />
         <activity android:name=".HealthConnectActivity" android:exported="false" />
         <activity android:name=".HealthSleepPrivacyActivity" android:exported="true">
             <intent-filter><action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" /></intent-filter>

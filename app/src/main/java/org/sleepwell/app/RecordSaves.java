@@ -14,5 +14,7 @@ final class RecordSaves {
         Context app=context.getApplicationContext();Records.Factory factory=Records.factory;RecordDraft copy=draft.copy();
         worker.execute(()->{try(Store store=factory.open(app)){if(id==0)Records.create(store,copy,zone,System.currentTimeMillis(),createToken);else Records.save(store,id,copy,revision,System.currentTimeMillis());}catch(Exception e){operation.error=e.getMessage()==null?"Storage unavailable.":e.getMessage();}finally{operation.done=true;}});return operation;
     }
+    /** Instrumentation teardown barrier; never called by a UI lifecycle. */
+    static void drain(long timeout)throws Exception{worker.submit(()->{}).get(timeout,TimeUnit.MILLISECONDS);}
     static void forget(String token){operations.remove(token);}
 }

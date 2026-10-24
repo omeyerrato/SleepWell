@@ -6,11 +6,13 @@ import java.util.*;
 /** A user edit overlay, independent of the immutable recording and its measurements. */
 final class RecordDraft {
     long start,end;String note="";int rating;boolean rated;
-    final List<String> tags=new ArrayList<>();final List<RecordIntervals.Span> awake=new ArrayList<>();
+    final Map<String,TagQuantity> quantities=new LinkedHashMap<>();final List<String> tags=new ArrayList<>();final List<RecordIntervals.Span> awake=new ArrayList<>();
     RecordDraft(long start,long end){this.start=start;this.end=end;}
-    RecordDraft copy(){RecordDraft d=new RecordDraft(start,end);d.note=note;d.rating=rating;d.rated=rated;d.tags.addAll(tags);d.awake.addAll(awake);return d;}
+    RecordDraft copy(){RecordDraft d=new RecordDraft(start,end);d.note=note;d.rating=rating;d.rated=rated;d.tags.addAll(tags);d.quantities.putAll(quantities);d.awake.addAll(awake);return d;}
     static String tag(String text){String t=text.trim().replaceFirst("^#+","").replaceAll("\\s+"," ");if(t.isEmpty()||t.length()>40)throw new IllegalArgumentException("Use a tag of 1–40 characters.");return t;}
     void addTag(String value){String clean=tag(value);for(String t:tags)if(t.equalsIgnoreCase(clean))return;if(tags.size()>=24)throw new IllegalArgumentException("Use at most 24 tags per record.");tags.add(clean);}
+    void removeTag(String name){tags.remove(name);quantities.remove(name);}
+    void quantity(String name,TagQuantity value){if(!tags.contains(name))throw new IllegalArgumentException("Add the tag first.");if(value==null)quantities.remove(name);else quantities.put(name,value);}
     void validate(long rawStart,long rawEnd,boolean manual,long now){
         if(start<=0||end<=start)throw new IllegalArgumentException("End must be after start.");
         if(end-start>36*3600000L)throw new IllegalArgumentException("A record can cover at most 36 hours.");
@@ -20,6 +22,7 @@ final class RecordDraft {
         if(rating<0||rating>5)throw new IllegalArgumentException("Choose a rating from 0 to 5.");
         if(tags.size()>24)throw new IllegalArgumentException("Use at most 24 tags per record.");
         Set<String> unique=new HashSet<>();for(String value:tags)if(!tag(value).equals(value)||!unique.add(value.toLowerCase(Locale.ROOT)))throw new IllegalArgumentException("Tags must be unique.");
+        if(!tags.containsAll(quantities.keySet())||quantities.values().stream().anyMatch(Objects::isNull))throw new IllegalArgumentException("Quantity must belong to an existing tag.");
         if(awake.size()>100)throw new IllegalArgumentException("Use at most 100 awake periods.");
         for(RecordIntervals.Span s:awake)if(s.start<start||s.end>end||s.end<=s.start)throw new IllegalArgumentException("Awake periods must fit inside this record.");
     }
