@@ -24,7 +24,8 @@ final class SonarSoundWorker {
         if(queue.offer(block))return true;reject("queue");return false;
     }
     private void reject(String issue){failure.compareAndSet("",issue);stopping=true;queue.clear();}
-    long frames(){return frames;}String issue(){Result ended=result;return ended==null?failure.get():ended.issue;}
+    synchronized void disable(String issue){if(!SoundAnalysisStatus.ISSUES.contains(issue))throw new IllegalArgumentException("Invalid analysis failure");if(!done)reject(issue);}
+    long frames(){return frames;}boolean released(){return done;}String issue(){Result ended=result;return ended==null?failure.get():ended.issue;}
     /** A single immutable cut/completion is accepted; callers must wait asynchronously for acknowledged release. */
     synchronized void finish(long cutoffNanos,Consumer<Result> finished){
         if(cutoffNanos<0||finished==null)throw new IllegalArgumentException("Invalid analysis cutoff");

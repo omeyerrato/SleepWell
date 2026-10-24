@@ -25,7 +25,11 @@ public final class SonarNightStorageTest {
  /** The unmodified real adapter creates the real SQLite row; only its returned test-clock pair is admitted. */
  static final class PairedStore implements SonarNight.Sink {
   final SonarNightStore actual;final Clock clock;PairedStore(Context context,TrackingService.StoreFactory factory,Clock clock){this.clock=clock;actual=new SonarNightStore(context,factory,clock);}
-  public SonarNight.Session begin(SonarConfig config,String capture)throws Exception{SonarNight.Session session=actual.begin(config,capture);clock.admitted(session);return session;}
+  public SonarNight.Session begin(SonarConfig config,String capture)throws Exception{return begin(config,capture,false);}
+  public SonarNight.Session begin(SonarConfig config,String capture,boolean analysis)throws Exception{SonarNight.Session session=actual.begin(config,capture,analysis);clock.admitted(session);return session;}
+  public void soundEvent(long id,long at,long duration,String category,double score){actual.soundEvent(id,at,duration,category,score);}
+  public void soundStatus(long id,SoundAnalysisStatus status){actual.soundStatus(id,status);}
+  public void end(long id,long at,long active,boolean interrupted,SoundAnalysisStatus status){actual.end(id,at,active,interrupted,status);}
   public void checkpoint(long id,long from,long to,Double value,String quality,int samples,long active)throws Exception{actual.checkpoint(id,from,to,value,quality,samples,active);}
   public void pause(long id,long at){actual.pause(id,at);}public void resume(long id,long at){actual.resume(id,at);}public void end(long id,long at,long active,boolean interrupted){actual.end(id,at,active,interrupted);}public void close(){actual.close();}
  }
