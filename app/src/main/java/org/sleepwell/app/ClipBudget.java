@@ -2,6 +2,9 @@ package org.sleepwell.app;
 
 /** One instance per tracked session, shared by every microphone restart. */
 final class ClipBudget {
+    final SoundSensitivity sensitivity;
+    ClipBudget(){this(SoundSensitivity.DEFAULT);}
+    ClipBudget(SoundSensitivity sensitivity){if(sensitivity==null)throw new IllegalArgumentException("Missing sound policy");this.sensitivity=sensitivity;}
     final SnoreCuePolicy.Budget snoreCues=new SnoreCuePolicy.Budget();
     private int events;private int saved;private long lastSaved;private boolean pruned;
     synchronized boolean pruneOnce(){if(pruned)return false;pruned=true;return true;}

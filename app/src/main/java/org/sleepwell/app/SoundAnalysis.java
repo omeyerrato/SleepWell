@@ -29,12 +29,13 @@ final class SoundAnalysis {
         if(scores[top]<.2f)return null;return new Result("noise",scores[top]);
     }
     private static Result family(float[] scores,String name,int first,int last,int ancestor){float positive=0,competitor=0;for(int n=0;n<scores.length;n++)if(n>=first&&n<=last)positive=Math.max(positive,scores[n]);else if(n!=ancestor)competitor=Math.max(competitor,scores[n]);return positive>=.65f&&positive-competitor>=.15f?new Result(name,positive):null;}
-    /** Two consecutive windows, bounded event lengths; flush at pause/stop without inventing samples. */
+    /** Immutable per-class duration (default two windows); bounded events, no invented pause/stop samples. */
     static final class Group {
         interface Sink {void event(long start,int windows,String category,double score);}
-        private final Sink sink;private String category;private int windows;private long start;private double sum;
-        Group(Sink sink){this.sink=sink;}
+        private final Sink sink;private final SoundSensitivity sensitivity;private String category;private int windows;private long start;private double sum;
+        Group(Sink sink){this(sink,SoundSensitivity.DEFAULT);}
+        Group(Sink sink,SoundSensitivity sensitivity){if(sink==null||sensitivity==null)throw new IllegalArgumentException("Missing sound grouping policy");this.sink=sink;this.sensitivity=sensitivity;}
         void add(long at,Result value){if(value==null||!value.category.equals(category))flush();if(value==null)return;if(windows==0){start=at;category=value.category;}windows++;sum+=value.score;if(windows==10)flush();}
-        void flush(){int count=windows;long at=start;String type=category;double score=count==0?0:sum/count;category=null;windows=0;sum=0;if(count>=2)sink.event(at,count,type,score);}
+        void flush(){int count=windows;long at=start;String type=category;double score=count==0?0:sum/count;category=null;windows=0;sum=0;if(count>0&&count>=sensitivity.windows(type))sink.event(at,count,type,score);}
     }
 }

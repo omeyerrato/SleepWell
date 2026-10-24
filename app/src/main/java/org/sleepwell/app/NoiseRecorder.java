@@ -26,7 +26,7 @@ final class NoiseRecorder implements AutoCloseable {
             if(recorder.getState()!=AudioRecord.STATE_INITIALIZED) throw new IOException("Microphone unavailable");
             if(!running)return;
             Prefs.put(c,"analysisError","");
-            analysis=new SoundAnalysisStream(()->new YamnetClassifier(c),(at,count,category,score)->{if(budget.saveEvent())store.soundEvent(session,at,count*975L,category,score,null);if(running)cues.event(category,score,android.os.SystemClock.elapsedRealtime(),SnoreCueOutput.settings(c));},()->Prefs.put(c,"analysisError","Sound labels unavailable. Room sound levels and optional recordings continue."));
+            analysis=new SoundAnalysisStream(()->new YamnetClassifier(c),(at,count,category,score)->{if(budget.saveEvent())store.soundEvent(session,at,count*975L,category,score,null);if(running)cues.event(category,score,android.os.SystemClock.elapsedRealtime(),SnoreCueOutput.settings(c));},()->Prefs.put(c,"analysisError","Sound labels unavailable. Room sound levels and optional recordings continue."),budget.sensitivity);
             activeRecorder=recorder;if(!running)return;recorder.startRecording();capturing=true;short[] frame=new short[1024]; ByteArrayOutputStream clip=null;
             double peak=0;
             while(running) {

@@ -61,6 +61,7 @@
         <activity android:name=".SoundLabelActivity" android:exported="false" />
         <activity android:name=".SoundEventsActivity" android:exported="false" />
         <activity android:name=".SoundLibrarySettingsActivity" android:exported="false" />
+        <activity android:name=".SoundSensitivityActivity" android:exported="false" />
         <activity android:name=".SoundArchiveActivity" android:exported="false" />
         <activity android:name=".FavoriteSoundsActivity" android:exported="false" />
         <activity android:name=".SnoreSoundRouteActivity" android:exported="false" />

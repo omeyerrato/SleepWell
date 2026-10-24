@@ -1,0 +1,8 @@
+package org.sleepwell.app;
+import org.json.*;import java.util.*;
+/** Strict private settings codec; not a portable backup or model-accuracy claim. */
+final class SoundSensitivityJson {
+ static String encode(SoundSensitivity value){try{JSONObject row=new JSONObject().put("version",1);for(String key:SoundSensitivity.CATEGORIES)row.put(key,value.windows(key));return row.toString();}catch(JSONException impossible){throw new IllegalStateException(impossible);}}
+ static SoundSensitivity decode(String raw){if(raw==null||raw.length()>512)throw new IllegalArgumentException("Invalid sound duration settings");try{JSONObject row=new JSONObject(raw);Set<String> keys=new HashSet<>(SoundSensitivity.CATEGORIES);keys.add("version");if(row.length()!=keys.size())throw new JSONException("Missing sound duration");for(Iterator<String> it=row.keys();it.hasNext();)if(!keys.contains(it.next()))throw new JSONException("Unknown sound duration");if(whole(row.get("version"))!=1)throw new JSONException("Unknown settings version");Map<String,Integer> values=new LinkedHashMap<>();for(String key:SoundSensitivity.CATEGORIES)values.put(key,whole(row.get(key)));return new SoundSensitivity(values);}catch(JSONException bad){throw new IllegalArgumentException("Invalid sound duration settings",bad);}}
+ private static int whole(Object value){if(!(value instanceof Number))throw new IllegalArgumentException("Sound duration must be an integer");double n=((Number)value).doubleValue();if(!Double.isFinite(n)||n!=Math.rint(n)||n<0||n>Integer.MAX_VALUE)throw new IllegalArgumentException("Invalid sound duration");return (int)n;}
+}

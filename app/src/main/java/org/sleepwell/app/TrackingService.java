@@ -22,7 +22,7 @@ public class TrackingService extends Service implements SensorEventListener {
     private String recurringToken;private RecurringTracking.Port recurringOwner;
     private volatile boolean sonarMode;private volatile SonarNight sonarNight;private SonarConfig sonarConfig;private boolean sonarAnalysis;
     private boolean clockChanged;private TrackingClock clock;private volatile long session;private long start,windowStart;private double sum;private Double light;private int count,activeMinutes;private boolean motionRegistered,lightRegistered;
-    private final ClipBudget clipBudget=new ClipBudget();
+    private ClipBudget clipBudget=new ClipBudget();
     private final MotionFilter motionFilter=new MotionFilter();private MotionProfile motionProfile=new MotionProfile(1);
     private final Runnable minuteTick=this::minute,limitTick=()->stop(false),liveTick=this::liveSample,automaticTick=this::automaticTick;
     private final List<org.json.JSONObject> liveReadings=new ArrayList<>();private int previewCount;private double previewSum;private long previewAt;
@@ -66,6 +66,7 @@ public class TrackingService extends Service implements SensorEventListener {
             sonarConfig=admission.config;sonarAnalysis=admission.analysisRequested;sonarMode=true;session=0;start=System.currentTimeMillis();phase=Phase.STARTING;
         }
         BackupRuntime.admitted();
+        clipBudget=new ClipBudget(SoundSensitivitySettings.snapshot(getApplicationContext()));
         current=this;running=true;clock=new TrackingClock(SystemClock.elapsedRealtime());
         try{
             if(!sonarMode)motionProfile=MotionSettings.load(this);automaticRun=ARM.equals(action);if(automaticRun){automaticCapture=new AutomaticCapture(recurringToken==null&&intent.getBooleanExtra("recordSounds",false),recurringToken==null&&intent.getBooleanExtra("keepClips",false));if(automaticCapture.requested()&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is unavailable. Arm again with sound recording off.");}foreground(false);
@@ -93,7 +94,7 @@ public class TrackingService extends Service implements SensorEventListener {
                 if(travelCues!=null)travelCues.stop("The recording ended. Light cues stopped.");
                 handler.removeCallbacks(limitTick);stopSensors();running=false;current=null;Prefs.of(this).edit().putBoolean("tracking",false).putBoolean("trackingPaused",false).putLong("session",0).apply();closer.shutdown();if(!destroyed){stopForeground(STOP_FOREGROUND_REMOVE);stopSelf();}
             }else if(state.phase.equals("BLOCKED")){if(travelCues!=null)travelCues.stop("Audio cleanup needs attention. Light cues stopped.");if(!destroyed)getSystemService(NotificationManager.class).notify(102,trackingNotification(false));}
-        },sonarAnalysis,()->new YamnetClassifier(getApplicationContext()));
+        },sonarAnalysis,()->new YamnetClassifier(getApplicationContext()),clipBudget.sensitivity);
         owner[0]=night;sonarNight=night;wake.acquire(12*3600000L);night.start();handler.postDelayed(limitTick,12*3600000L);
     }
     private void beginRecording(){
