@@ -13,10 +13,12 @@
     "assets/fill/play-fill.svg": "6d2a75bc5700a68dec50516ebae121c307807e4e6fcca5c863e5b4af006df880",
     "assets/fill/stop-fill.svg": "7d9cb9f0bc3363ba8846cf915bc8a84e824804025defaba58eb9df8c21105bb1",
     "assets/regular/alarm.svg": "71cf350cf81ef6e08377119c14d924f851191d9e828f9107a367d77fdd3f6cc9",
+    "assets/regular/arrow-counter-clockwise.svg": "4eb160d5ae781107c674481ac081962e6bce6281a646129e6c3f960b9dd5dac6",
     "assets/regular/arrow-left.svg": "3c2001cf957d182fc54927e4b286cc8cf66dd97830f441ca2650d42a63a9006a",
     "assets/regular/arrow-square-out.svg": "8610e8f5c7d4952ae1ada34ef56fa7cbab1780bc85f25a5c9482b74144790fc8",
     "assets/regular/battery-vertical-medium.svg": "01c42132dac3b408207189deecd468d15c0df6169fe1c91f19169a34b7648007",
     "assets/regular/bed.svg": "b65defed2f5352ecd9f4583efba5108b646386c46f7a549d1c0cdbfd9d56372e",
+    "assets/regular/bell-slash.svg": "d5c7ee0acf3ea46fe7d821dd1816f3d9e2c4aecce6b040722e877b72c85a8d3e",
     "assets/regular/bell.svg": "439b02c746ff59945b6175c6d327113ca3f7a729a43d5bcafb278a0f11ee34b5",
     "assets/regular/broadcast.svg": "e8377f3bf952fc637ca1ca31d5ea6f0917f9195d0bca9b2bfa3d6201b09c59e9",
     "assets/regular/calendar-blank.svg": "6268583ae0ea04e93fd24f1e70d47a8e8d79c88fc304af397b95b318980215d6",
@@ -166,6 +168,14 @@
     },
     "battery": {
       "name": "battery-vertical-medium",
+      "weight": "regular"
+    },
+    "skip": {
+      "name": "bell-slash",
+      "weight": "regular"
+    },
+    "undo": {
+      "name": "arrow-counter-clockwise",
       "weight": "regular"
     },
     "bell": {

@@ -11,12 +11,14 @@ public class Alarm {
     public String label="A fresh start", challenge="Math", tone="daybreak";
     ChallengeRoutine routine;boolean routineInvalid;private Object invalidRoutine;
     NapPlan nap;boolean napInvalid;private Object invalidNap;
+    AlarmSkip skip;boolean skipInvalid;Object invalidSkip;String scheduleError="";
     ChallengeRoutine challenges(){return routine==null?ChallengeRoutine.legacy(challenge,difficulty):routine;}
     void setRoutine(ChallengeRoutine value){routine=value;routineInvalid=false;invalidRoutine=null;challenge=value.tasks.get(0).type;difficulty=value.tasks.get(0).rounds;}
     public Set<Integer> days = new HashSet<>();
     public Alarm(int id) { this.id=id; }
     public String time() { return String.format(Locale.getDefault(), "%02d:%02d", hour, minute); }
-    public long next(long now) { return SleepMath.nextOccurrence(hour,minute,days,now,ZoneId.systemDefault()); }
+    public long next(long now) { return next(now,ZoneId.systemDefault()); }
+    long next(long now,ZoneId zone) {return skipInvalid?0:AlarmSkip.next(hour,minute,days,now,zone,skip);}
     public JSONObject json() {
         JSONObject j=new JSONObject();
         try {
@@ -28,6 +30,8 @@ public class Alarm {
                 .put("shortenSnoozes",shortenSnoozes).put("days",new JSONArray(days));
             if(routine!=null)j.put("routine",ChallengeRoutineJson.encode(routine));else if(routineInvalid)j.put("routine",invalidRoutine);
             if(nap!=null)j.put("nap",NapPlanJson.encode(nap));else if(napInvalid)j.put("nap",invalidNap);
+            if(skip!=null)j.put("skip",AlarmSkipJson.encode(skip));else if(skipInvalid)j.put("skip",invalidSkip);
+            if(!scheduleError.isEmpty())j.put("scheduleError",scheduleError);
         } catch(JSONException e) { throw new IllegalStateException(e); }
         return j;
     }
@@ -42,6 +46,8 @@ public class Alarm {
         if(j.has("routine"))try{a.routine=ChallengeRoutineJson.decode(j.getJSONArray("routine"));}catch(JSONException invalid){a.routineInvalid=true;a.invalidRoutine=j.opt("routine");}
         if(j.has("nap"))try{a.nap=NapPlanJson.decode(j.getJSONObject("nap"));}catch(JSONException invalid){a.napInvalid=true;a.invalidNap=j.opt("nap");}
         JSONArray ds=j.optJSONArray("days"); if(ds!=null) for(int i=0;i<ds.length();i++) a.days.add(ds.optInt(i));
+        if(j.has("skip"))try{a.skip=AlarmSkipJson.decode(j.getJSONObject("skip"));if(a.nap!=null||a.napInvalid||a.days.isEmpty()&&a.enabled||!a.skip.matches(a.hour,a.minute,a.days))throw new JSONException("Skip does not match alarm");}catch(JSONException invalid){a.skip=null;a.skipInvalid=true;a.invalidSkip=j.opt("skip");}
+        Object error=j.opt("scheduleError");if(error instanceof String&&((String)error).length()<=240)a.scheduleError=(String)error;
         return a;
     }
 }

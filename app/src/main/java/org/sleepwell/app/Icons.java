@@ -30,6 +30,8 @@ final class Icons {
             case "tasks" -> R.drawable.ic_phosphor_list_checks_regular;
             case "bed" -> R.drawable.ic_phosphor_bed_regular;
             case "battery" -> R.drawable.ic_phosphor_battery_vertical_medium_regular;
+            case "skip" -> R.drawable.ic_phosphor_bell_slash_regular;
+            case "undo" -> R.drawable.ic_phosphor_arrow_counter_clockwise_regular;
             case "bell" -> R.drawable.ic_phosphor_bell_regular;
             case "lock" -> R.drawable.ic_phosphor_lock_key_regular;
             case "shield" -> R.drawable.ic_phosphor_shield_check_regular;

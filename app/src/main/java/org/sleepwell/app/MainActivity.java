@@ -24,8 +24,8 @@ public class MainActivity extends Activity {
     private static final int NOTIFY=21,TONE=22,EXPORT_JSON=23,EXPORT_CSV=24,IMPORT=25;
     private final Handler appearanceClock=new Handler(Looper.getMainLooper());
     private NightArc nightArc;private boolean clockReceiverRegistered;
-    private final BroadcastReceiver clockChanged=new BroadcastReceiver(){public void onReceive(Context c,Intent intent){if(tab==0||tab==3)renderKeepingScroll();}};
-    private final Runnable clockUpdate=new Runnable(){public void run(){if(tab==3)updateWindDown();refreshTonightClock();appearanceClock.postDelayed(this,30000);}};
+    private final BroadcastReceiver clockChanged=new BroadcastReceiver(){public void onReceive(Context c,Intent intent){if(tab==0||tab==1||tab==3)renderKeepingScroll();}};
+    private final Runnable clockUpdate=new Runnable(){public void run(){if(tab==3)updateWindDown();refreshAlarmListClock();refreshTonightClock();appearanceClock.postDelayed(this,30000);}};
     private int renderedPhase=-1;private TextView winddownValue,winddownCaption;
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);store=Records.open(this);Notifications.channels(this);if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);
@@ -53,6 +53,7 @@ public class MainActivity extends Activity {
     }
     private ScrollView scroll(View v){if(v instanceof ScrollView)return (ScrollView)v;if(v instanceof ViewGroup)for(int n=0;n<((ViewGroup)v).getChildCount();n++){ScrollView found=scroll(((ViewGroup)v).getChildAt(n));if(found!=null)return found;}return null;}
     private void renderKeepingScroll(){ScrollView old=scroll(getWindow().getDecorView());int y=old==null?0:old.getScrollY();boolean arcFocused=nightArc!=null&&nightArc.hasFocus();render();ScrollView current=scroll(getWindow().getDecorView());if(current!=null)current.post(()->{current.scrollTo(0,y);if(arcFocused&&nightArc!=null)nightArc.requestFocus();});}
+    void refreshAlarmListClock(){if(tab==1&&hasWindowFocus())renderKeepingScroll();}
     void refreshTonightClock(){if(tab!=0)return;long now=TonightScreen.clock.getAsLong();java.time.ZoneId zone=java.time.ZoneId.systemDefault();if((nightArc!=null&&nightArc.needsNewOccurrence(now,zone))||(Appearance.automatic(this)&&Appearance.palette(this).phase!=renderedPhase))renderKeepingScroll();else if(nightArc!=null)nightArc.update(now,zone);}
     private void settingsHome(LinearLayout body){Design.header(body,"Settings",null);
         settingsRow(body,"bell","Alarms","Alarm time, sound and behavior",()->{tab=1;render();});
@@ -96,7 +97,8 @@ public class MainActivity extends Activity {
             public void activeAlarm(){startActivity(new Intent(MainActivity.this,AlarmActivity.class));}
             public void confirmCheck(){WakeChecks.review(MainActivity.this);}
             public void edit(Alarm a){editAlarm(a);}
-            public void update(Alarm a){if(a.nap!=null||a.napInvalid){if(a.enabled)editAlarm(a);else try{Naps.cancel(MainActivity.this,a);}catch(RuntimeException failure){Ui.toast(MainActivity.this,failure.getMessage());}render();return;}try{Prefs.put(MainActivity.this,"lastOccurrence_"+a.id,0L);Scheduler.schedule(MainActivity.this,a);store.save(a);}catch(SecurityException e){Ui.toast(MainActivity.this,e.getMessage());}render();}
+            public void update(Alarm a){if(a.nap!=null||a.napInvalid){if(a.enabled)editAlarm(a);else try{Naps.cancel(MainActivity.this,a);}catch(RuntimeException failure){Ui.toast(MainActivity.this,failure.getMessage());}render();return;}try{Alarm expected=store.alarm(a.id);if(expected==null)throw new IllegalStateException("This alarm was deleted.");AlarmSkips.toggle(MainActivity.this,store,expected,a.enabled);}catch(RuntimeException e){Ui.toast(MainActivity.this,e.getMessage());}render();}
+            @Override public void update(Alarm changed,Alarm original){if(changed.nap!=null||changed.napInvalid){update(changed);return;}try{AlarmSkips.edit(MainActivity.this,store,changed,original);}catch(RuntimeException failure){Ui.toast(MainActivity.this,failure.getMessage());}render();}
         });
     }
     private void tracking(){startActivityForResult(new Intent(this,TrackingActivity.class).putExtra("visualReview",getIntent().getBooleanExtra("visualReview",false)),30);}
@@ -113,9 +115,10 @@ public class MainActivity extends Activity {
             LinearLayout top=Design.row(this);TextView time=Design.text(this,Naps.display(this,a),54,700,a.enabled?Design.INK:0xff8a7e78);
             time.setText(Design.timeText(Naps.display(this,a)));time.setMinimumHeight(Ui.dp(this,64));time.setGravity(Gravity.CENTER_VERTICAL);time.setContentDescription("Edit "+a.label);time.setOnClickListener(v->editAlarm(a));top.addView(time,new LinearLayout.LayoutParams(0,-2,1));
             Switch enabled=new Switch(this);enabled.setContentDescription("Enable "+a.label);Design.styleSwitch(this,enabled,Design.BROWN,0xffbcb5b0);enabled.setChecked(a.enabled&&!a.napInvalid);enabled.setEnabled(!a.napInvalid);top.addView(enabled);body.addView(top);
-            enabled.setOnCheckedChangeListener((v,on)->{if(a.nap!=null||a.napInvalid){if(on)editAlarm(a);else try{Naps.cancel(this,a);}catch(RuntimeException failure){Ui.toast(this,failure.getMessage());}render();return;}if(on&&!Scheduler.allowed(this)){Ui.toast(this,"Allow exact alarms in Reliability first.");render();return;}a.enabled=on;try{if(on)Prefs.put(this,"lastOccurrence_"+a.id,0L);Scheduler.schedule(this,a);store.save(a);}catch(SecurityException e){Ui.toast(this,e.getMessage());}render();});
+            enabled.setOnCheckedChangeListener((v,on)->{if(a.nap!=null||a.napInvalid){if(on)editAlarm(a);else try{Naps.cancel(this,a);}catch(RuntimeException failure){Ui.toast(this,failure.getMessage());}render();return;}if(on&&!Scheduler.allowed(this)){Ui.toast(this,"Allow exact alarms in Reliability first.");render();return;}try{AlarmSkips.toggle(this,store,a,on);}catch(RuntimeException e){Ui.toast(this,e.getMessage());}render();});
             LinearLayout identity=Design.row(this),copy=Design.col(this);Design.text(copy,a.label,17,600,Design.INK);Design.space(copy,4);Design.text(copy,days(a),13,400,Design.MUTED);identity.addView(copy,new LinearLayout.LayoutParams(0,-2,1));
             View edit=Design.iconButton(this,"chevron","Alarm settings for "+a.label,()->editAlarm(a));identity.addView(edit,new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48)));identity.setMinimumHeight(Ui.dp(this,48));identity.setOnClickListener(v->editAlarm(a));body.addView(identity);
+            AlarmSkipUi.add(body,a,this::render);
             Design.space(body,16);Design.line(body);Design.space(body,12);
         }
         body.addView(new View(this),new LinearLayout.LayoutParams(1,0,1));

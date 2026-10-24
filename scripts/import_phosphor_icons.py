@@ -31,6 +31,7 @@ ICONS = {
     "settings": ("gear-six", "fill"), "sun": ("sun", "regular"),
     "sound": ("speaker-high", "regular"), "tasks": ("list-checks", "regular"),
     "bed": ("bed", "regular"), "battery": ("battery-vertical-medium", "regular"),
+    "skip": ("bell-slash", "regular"), "undo": ("arrow-counter-clockwise", "regular"),
     "bell": ("bell", "regular"), "lock": ("lock-key", "regular"),
     "shield": ("shield-check", "regular"), "wave": ("waveform", "regular"),
     "fade": ("faders-horizontal", "regular"), "plug": ("plug", "regular"),

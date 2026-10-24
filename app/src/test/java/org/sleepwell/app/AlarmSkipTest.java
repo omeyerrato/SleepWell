@@ -1,0 +1,23 @@
+package org.sleepwell.app;
+import java.time.*;
+import java.util.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public final class AlarmSkipTest {
+ final ZoneId utc=ZoneId.of("UTC");final Set<Integer> weekdays=Set.of(1,2,3,4,5);
+ long at(String iso){return Instant.parse(iso).toEpochMilli();}
+ AlarmSkip skip(String date,int h,int m,Set<Integer> days){return new AlarmSkip("d679855a-69a3-4cc9-8a1f-e4906a00ea92",LocalDate.parse(date),h,m,days,"UTC");}
+ @Test public void fridaySkipAdvancesToMondayWithoutChangingWeekdays(){AlarmSkip s=skip("2026-10-23",6,30,weekdays);assertEquals(at("2026-10-26T06:30:00Z"),AlarmSkip.next(6,30,weekdays,at("2026-10-22T22:00:00Z"),utc,s));assertEquals(weekdays,s.days);}
+ @Test public void onlySelectedDateIsExcluded(){AlarmSkip s=skip("2026-10-23",6,30,weekdays);assertEquals(at("2026-10-22T06:30:00Z"),AlarmSkip.next(6,30,weekdays,at("2026-10-21T22:00:00Z"),utc,s));assertEquals(at("2026-10-26T06:30:00Z"),AlarmSkip.next(6,30,weekdays,at("2026-10-23T06:31:00Z"),utc,s));}
+ @Test public void midnightNextDayAndWeeklyOnlyDayDoNotBecomeRelativeDelays(){AlarmSkip s=skip("2026-10-24",0,0,Set.of(6));assertEquals(at("2026-10-31T00:00:00Z"),AlarmSkip.next(0,0,Set.of(6),at("2026-10-23T23:59:59Z"),utc,s));}
+ @Test public void chosenDateFollowsLocalTimeWhenTimeZoneChanges(){AlarmSkip s=skip("2026-10-24",6,30,Set.of());ZoneId riyadh=ZoneId.of("Asia/Riyadh");assertEquals(at("2026-10-24T03:30:00Z"),s.at(riyadh));assertEquals(at("2026-10-25T03:30:00Z"),AlarmSkip.next(6,30,Set.of(),at("2026-10-23T23:00:00Z"),riyadh,s));}
+ @Test public void daylightGapSkipsResolvedOccurrenceNotAnUnrelatedHour(){AlarmSkip s=skip("2026-03-29",2,30,Set.of(7));ZoneId berlin=ZoneId.of("Europe/Berlin");long gap=at("2026-03-29T01:30:00Z");assertTrue(s.excludes(gap,berlin));assertTrue(AlarmSkip.occurs(2,30,Set.of(7),gap,berlin));assertEquals(at("2026-04-05T00:30:00Z"),AlarmSkip.next(2,30,Set.of(7),at("2026-03-28T20:00:00Z"),berlin,s));}
+ @Test public void daylightFoldUsesSameEarlierOffsetAsCalendarScheduler(){AlarmSkip s=skip("2026-10-25",2,30,Set.of(7));ZoneId berlin=ZoneId.of("Europe/Berlin");assertEquals(at("2026-10-25T00:30:00Z"),s.at(berlin));assertEquals(at("2026-11-01T01:30:00Z"),AlarmSkip.next(2,30,Set.of(7),at("2026-10-24T20:00:00Z"),berlin,s));}
+ @Test public void clockRollbackCannotTurnChosenDateIntoAnotherSkip(){AlarmSkip s=skip("2026-10-23",6,30,weekdays);assertEquals(at("2026-10-22T06:30:00Z"),AlarmSkip.next(6,30,weekdays,at("2026-10-22T02:00:00Z"),utc,s));assertTrue(s.excludes(at("2026-10-23T06:30:00Z"),utc));}
+ @Test public void mismatchedTimeAndDaysDoNotSilentlyApply(){AlarmSkip s=skip("2026-10-23",6,30,weekdays);assertFalse(s.matches(7,30,weekdays));assertFalse(s.matches(6,30,Set.of(5)));assertEquals(at("2026-10-23T07:30:00Z"),AlarmSkip.next(7,30,weekdays,at("2026-10-22T22:00:00Z"),utc,s));}
+ @Test public void invalidDateWeekdayAndIdentityFailClosed(){assertThrows(IllegalArgumentException.class,()->new AlarmSkip("bad",LocalDate.parse("2026-10-23"),6,30,weekdays,"UTC"));assertThrows(IllegalArgumentException.class,()->skip("2026-10-24",6,30,weekdays));assertThrows(IllegalArgumentException.class,()->skip("2026-10-23",24,30,weekdays));}
+ @Test public void mainDeliveryChecksSavedSkipAndDisabledState(){Alarm a=new Alarm(1);a.hour=6;a.minute=30;a.days.addAll(weekdays);a.enabled=true;a.skip=skip("2026-10-23",6,30,weekdays);long deadline=at("2026-10-23T06:30:00Z");assertFalse(AlarmSkips.eligible(a,deadline,deadline,0,utc));a.skip=null;assertTrue(AlarmSkips.eligible(a,deadline,deadline,0,utc));a.enabled=false;assertFalse(AlarmSkips.eligible(a,deadline,deadline,0,utc));}
+ @Test public void mainDeliveryRetainsSmartWindowAndAlreadyClaimedFence(){Alarm a=new Alarm(1);a.hour=6;a.minute=30;a.enabled=true;a.smartWindow=30;long deadline=at("2026-10-23T06:30:00Z");assertFalse(AlarmSkips.eligible(a,deadline,deadline-1800001,0,utc));assertTrue(AlarmSkips.eligible(a,deadline,deadline-1800000,0,utc));assertFalse(AlarmSkips.eligible(a,deadline,deadline,deadline,utc));assertFalse(AlarmSkips.eligible(a,deadline+60000,deadline+60000,0,utc));a.skipInvalid=true;assertFalse(AlarmSkips.eligible(a,deadline,deadline,0,utc));}
+ @Test public void deliveredOccurrenceCannotBeReplacedByAQueuedOldRequest(){long deadline=at("2026-10-23T06:30:00Z");assertTrue(AlarmReceiver.acceptCalendar(deadline,deadline,deadline));assertFalse(AlarmReceiver.acceptCalendar(deadline-86400000,deadline,deadline));assertFalse(AlarmReceiver.acceptCalendar(deadline,deadline,deadline-2000));assertTrue(AlarmReceiver.acceptCalendar(0,deadline,deadline));assertFalse(AlarmReceiver.acceptCalendar(0,0,deadline));}
+}
