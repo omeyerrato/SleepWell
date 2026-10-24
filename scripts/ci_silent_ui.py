@@ -60,8 +60,12 @@ SENSITIVITY_TESTS = ("SoundSensitivityStorageTest", "SoundSensitivityFlowTest", 
 SENSITIVITY_NEW_FRAMES = ["sound-sensitivity-" + name + ".png" for name in ("default", "selector", "draft", "recreated", "saved", "reopened", "invalid", "saving", "saving-recreated", "save-error", "retry")]
 SENSITIVITY_FRAMES = SENSITIVITY_NEW_FRAMES + ["analysis-events-" + name + ".png" for name in ("all", "speech", "recreated")]
 PHONE_FEATURE_TESTS = ("CalendarRulesStorageTest", "CalendarRulesFlowTest", "AlarmDefaultsStorageTest", "AlarmDefaultsFlowTest", "AutomationStorageTest")
+PHONE_FEATURE_TESTS += ("HealthSleepStorageTest", "HealthConnectFlowTest", "AlarmDateStorageTest", "AlarmDateFlowTest", "WalkConfigurationFlowTest", "DatedGoalBankFlowTest")
 PHONE_FEATURE_FRAMES = ["calendar-rules-" + name + ".png" for name in ("initial", "draft", "saved", "reopened")]
 PHONE_FEATURE_FRAMES += ["alarm-defaults-" + name + ".png" for name in ("initial", "recreated", "saved", "reopened", "reset", "saving", "saving-recreated", "save-error", "retry")]
+PHONE_FEATURE_FRAMES += ["health-connect-" + name + ".png" for name in ("default", "configured", "synced", "source", "conflict", "kept", "unavailable", "permissions")]
+PHONE_FEATURE_FRAMES += ["alarm-date-" + name + ".png" for name in ("initial", "selector", "draft", "recreated", "reopened")]
+PHONE_FEATURE_FRAMES += ["walk-" + name + ".png" for name in ("permission", "ready", "settings", "error", "unavailable", "reopened")] + DATED_GOAL_FRAMES
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
 root = Path(__file__).resolve().parents[1]
@@ -138,7 +142,7 @@ tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfiguratio
 tests += list(SENSING_TESTS)
 tests += ["SoundCategoryStorageTest", "SoundCategoryFlowTest"]
 tests += ["SoundSensitivityStorageTest", "SoundSensitivityFlowTest", "GoalStorageTest", "GoalFlowTest", "DatedGoalBankFlowTest"]
-tests += list(PHONE_FEATURE_TESTS)
+tests += [test for test in PHONE_FEATURE_TESTS if test not in tests]
 if args.audio_imports:
     tests += ["SoundImportPickerTest", "SoundImportReopenTest"]
 if args.scope == "tone-wake":
@@ -161,6 +165,7 @@ method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "Sound
 class_results = []
 method_counts.update({"SharedSoundProvenanceStorageTest": 12, "SonarNightStorageTest": 2, "SonarNightFlowTest": 2, "SonarSharedSoundFlowTest": 2, "WalkFallbackStorageTest": 2, "SoundCategoryStorageTest": 2, "SoundCategoryFlowTest": 2, "SoundSensitivityStorageTest": 3, "SoundSensitivityFlowTest": 2, "GoalStorageTest": 10, "DatedGoalBankFlowTest": 2})
 method_counts.update({"CalendarRulesStorageTest": 4, "AlarmDefaultsStorageTest": 3, "AlarmDefaultsFlowTest": 2, "AutomationStorageTest": 10})
+method_counts.update({"HealthSleepStorageTest": 12, "HealthConnectFlowTest": 2, "AlarmDateStorageTest": 3})
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
@@ -310,7 +315,7 @@ required += ["protection-" + name + ".png" for name in ("alarms", "editor", "off
 required += SENSING_FRAMES
 required += CATEGORY_NEW_FRAMES
 required += GOAL_FRAMES + DATED_GOAL_FRAMES + SENSITIVITY_NEW_FRAMES
-required += PHONE_FEATURE_FRAMES
+required += [name for name in PHONE_FEATURE_FRAMES if name not in required]
 required += WAKE_SETTING_FRAMES
 required += ["menus-" + name + ".png" for name in ("editor", "time", "time-recreated", "time-24", "time-invalid", "large-snooze", "duration-recreated", "tasks", "task-settings", "task-chosen", "snooze", "duration", "snooze-changed", "recreated", "sound", "reopened")]
 required += ["automatic-" + name + ".png" for name in ("manual", "stillness", "sounds", "reopened", "error")]
