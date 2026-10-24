@@ -139,14 +139,25 @@ else:
 category_report = output / "analysis-category-fixture-evaluation.json"
 try:
     category_rows = json.loads(category_report.read_text(encoding="utf-8"))["fixtures"]
-    expected_categories = {"cough-fabrizio": "cough", "cough-crowd": "cough", "babycry-bonehead": "baby_cry", "laughter-crowd": "laughter", "snoring-sorts": "snoring", "snoring-pencil": "snoring", "speech-countdown": "speech", "speech-crowd": "speech"}
+    expected_categories = {"cough-fabrizio": "cough", "cough-crowd": "cough", "babycry-bonehead": "baby_cry", "laughter-crowd": "laughter", "laughter-solo": "laughter", "babycry-ciccarelli": "baby_cry", "snoring-sorts": "snoring", "snoring-pencil": "snoring", "speech-countdown": "speech", "speech-crowd": "speech"}
     by_fixture = {row["fixture"]: row for row in category_rows}
-    if len(category_rows) != 8 or set(by_fixture) != set(expected_categories):
-        raise ValueError("Category fixture identities do not match the pinned eight")
+    pinned_rows = json.loads((root / "third_party/audio-fixtures/manifest.json").read_text(encoding="utf-8"))["fixtures"]
+    pinned = {row["name"]: row for row in pinned_rows}
+    if len(category_rows) != 10 or set(by_fixture) != set(expected_categories) or len(pinned_rows) != 10 or set(pinned) != set(expected_categories):
+        raise ValueError("Category fixture identities do not match the pinned ten")
     categories = {"snoring", "speech", "cough", "baby_cry", "laughter", "noise"}
     for name, row in by_fixture.items():
         if row["expected_broad_class"] != expected_categories[name] or row["frames"] <= 0 or row["frames"] != len(row["windows"]):
             raise ValueError("Invalid category fixture framing: " + name)
+        source_pcm = (root / "app/src/androidTest/assets/classifier-fixtures" / (name + ".pcm")).read_bytes()
+        samples = len(source_pcm) // 2
+        digest = hashlib.sha256(source_pcm).hexdigest()
+        if (len(source_pcm) % 2 or len(source_pcm) > 3 * 1024 * 1024 or samples > 80 * 16000
+                or row["pcm_sha256"] != digest or pinned[name]["pcm_sha256"] != digest
+                or row["samples"] != samples or pinned[name]["samples"] != samples
+                or row["duration_ms"] != samples * 1000 // 16000 or pinned[name]["duration_ms"] != row["duration_ms"]
+                or row["frames"] != samples // 15600):
+            raise ValueError("Category PCM hash, bounds or framing mismatch: " + name)
         counts = dict.fromkeys(categories, 0)
         for event in row["persisted_events"]:
             if event["category"] not in categories or event["duration_ms"] < 1950 or event.get("clip") is not None:
@@ -155,10 +166,13 @@ try:
         if row["counts"] != counts:
             raise ValueError("Stored category counts disagree with reopened events: " + name)
     count = lambda name, category: by_fixture[name]["counts"][category]
-    if (count("cough-fabrizio", "cough") + count("cough-crowd", "cough") < 1 or count("babycry-bonehead", "baby_cry") < 1 or count("laughter-crowd", "laughter") < 1
+    if (count("cough-fabrizio", "cough") + count("cough-crowd", "cough") < 1 or count("babycry-bonehead", "baby_cry") < 1 or count("laughter-solo", "laughter") < 1 or count("babycry-ciccarelli", "baby_cry") < 1
             or count("snoring-sorts", "snoring") + count("snoring-pencil", "snoring") < 1 or count("speech-countdown", "speech") < 1):
         raise ValueError("Production category positives were not all persisted")
-    if any(count(name, category) != 0 for name in ("snoring-sorts", "snoring-pencil", "speech-countdown", "speech-crowd") for category in ("cough", "baby_cry", "laughter")) or any(count(name, "snoring") != 0 for name in ("cough-fabrizio", "cough-crowd", "babycry-bonehead", "laughter-crowd")):
+    if (any(count("laughter-solo", category) != 0 for category in ("baby_cry", "cough"))
+            or any(count("babycry-ciccarelli", category) != 0 for category in ("laughter", "cough"))):
+        raise ValueError("Independent solo-source cross-category gate failed")
+    if any(count(name, category) != 0 for name in ("snoring-sorts", "snoring-pencil", "speech-countdown", "speech-crowd") for category in ("cough", "baby_cry", "laughter")) or any(count(name, "snoring") != 0 for name in ("cough-fabrizio", "cough-crowd", "babycry-bonehead", "laughter-crowd", "laughter-solo", "babycry-ciccarelli")):
         raise ValueError("Category cross-class negative gate failed")
 except (OSError, KeyError, ValueError, TypeError) as error:
     failures.append("Category PCM evidence incomplete: " + str(error))
