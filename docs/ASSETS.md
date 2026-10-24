@@ -1,5 +1,21 @@
 # Asset provenance
 
+## Contactless placement illustration
+
+`app/src/main/res/drawable-nodpi/sonar_bedside.png` is original artwork generated
+with the built-in image tool on 24 October 2026, using board06's middle-screen
+illustration as a composition/style reference. The selected output is copied
+unchanged into the repository. It contains no UI or measurement data. Native
+controls and the live graph remain functional Android views.
+
+Prompt: Standalone wide bedroom illustration, no screen, labels, controls, or
+logos. Match the middle reference's cozy flat painted/paper-cut plum and lavender
+room: amber lamp and dark plant at left, upright phone on a stable wooden bedside
+table, purple bed and resting adult at right. Small lilac dots illustrate sound
+reflections from phone toward torso. Keep the phone off the bed and pillow; use
+soft restrained gradients, edge-to-edge landscape composition, and no medical
+monitoring claim.
+
 ## Inter
 
 `app/src/main/assets/fonts/Inter.ttf` is Inter from Google Fonts,
