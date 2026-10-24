@@ -33,13 +33,18 @@ SONAR_REPORT_FRAMES = ["sonar-report-" + name + ".png" for name in ("night", "si
 REPORT_TESTS = ("RootVisualTest", "ChartClockFlowTest", "ReportRibbonNativeTest", "ReportReferenceFlowTest", "SonarReportFlowTest")
 REPORT_FRAMES = ["report-reference-" + name + ".png" for name in ("history", "week", "month", "year", "night", "editor", "tags-notes", "reopened")] + ["root-report.png"] + ["chart-clock-" + name + ".png" for name in ("overnight", "night", "short", "fold")]
 REPORT_FRAMES += SONAR_REPORT_FRAMES
-NIGHT_TESTS = ("SharedSoundProvenanceStorageTest", "SonarNightStorageTest", "SonarNightFlowTest", "SonarReportFlowTest")
+SHARED_SOUND_TESTS = ("SonarSharedSoundFlowTest", "SonarSharedClassifierStorageTest")
+SHARED_SOUND_FRAMES = ["sonar-shared-opt-in-" + name + ".png" for name in ("default-off", "opt-in-recreated", "analysis-live", "analysis-paused", "stop-confirmation")]
+SHARED_SOUND_FRAMES += ["sonar-shared-error-" + name + ".png" for name in ("model-error", "model-error-recreated", "model-error-resumed", "stop-confirmation")]
+NIGHT_TESTS = ("SharedSoundProvenanceStorageTest", "SonarNightStorageTest", "SonarNightFlowTest", "SonarReportFlowTest") + SHARED_SOUND_TESTS
 NIGHT_FRAMES = ["sonar-night-" + name + ".png" for name in ("setup", "measuring", "paused", "paused-recreated", "resumed", "missing", "stop-confirmation", "needs-setup", "charging-error", "charging-recreated")] + SONAR_REPORT_FRAMES
-SENSING_TESTS = ("SharedSoundProvenanceStorageTest", "SonarProvenanceStorageTest", "SonarSettingsNativeTest", "ContactlessSetupFlowTest", "SonarNightStorageTest", "SonarNightFlowTest", "SonarReportFlowTest", "TravelCueStorageTest", "TravelCueFlowTest")
+NIGHT_FRAMES += SHARED_SOUND_FRAMES
+SENSING_TESTS = ("SharedSoundProvenanceStorageTest", "SonarProvenanceStorageTest", "SonarSettingsNativeTest", "ContactlessSetupFlowTest", "SonarNightStorageTest", "SonarNightFlowTest", "SonarReportFlowTest", "TravelCueStorageTest", "TravelCueFlowTest") + SHARED_SOUND_TESTS
 SENSING_FRAMES = ["sonar-setup-" + name + ".png" for name in ("initial", "ready", "gain-changed", "retested", "reopened", "recreated", "testing", "cancelled", "cancel-recreated", "charging-error", "unsupported", "permission", "saving", "saving-recreated", "save-error")]
 SENSING_FRAMES += ["travel-cues-" + name + ".png" for name in ("settings-off", "window", "date", "time", "window-recreated", "settings-enabled", "settings-reopened", "invalid-window", "no-manual", "ready", "active", "active-recreated", "stopped", "stopped-reopened", "output-error", "interrupted")]
 SENSING_FRAMES += ["sonar-night-" + name + ".png" for name in ("setup", "measuring", "paused", "paused-recreated", "resumed", "missing", "stop-confirmation", "needs-setup", "charging-error", "charging-recreated")]
 SENSING_FRAMES += SONAR_REPORT_FRAMES
+SENSING_FRAMES += SHARED_SOUND_FRAMES
 CATEGORY_TESTS = ("SoundCategoryStorageTest", "SoundCategoryFlowTest", "SoundEventsUiTest", "FavoriteSoundsFlowTest", "ReportReferenceFlowTest", "SoundArchiveUiTest", "SoundLabelFlowTest", "SoundLibraryUiTest")
 CATEGORY_NEW_FRAMES = ["sound-category-" + name + ".png" for name in ("night-all", "night-selector", "night-cough", "night-playing", "night-recreated", "night-reopened", "night-other-empty", "night-baby", "album-selector", "album-laughter", "album-week", "album-recreated", "album-reopened", "album-speech")]
 CATEGORY_FRAMES = CATEGORY_NEW_FRAMES + ["analysis-events-" + name + ".png" for name in ("all", "speech", "recreated")]
@@ -120,7 +125,7 @@ failures = []
 tests = ["SoundSettingsFlowTest", "RootVisualTest", "NightArcFlowTest", "AlarmProtectionFlowTest", "AlarmWakeSettingsTest", "AlarmMenusFlowTest", "AutomaticTrackingFlowTest", "SoundAnalysisNativeTest", "SoundClassifierFixtureEvaluationTest", "SoundEventsUiTest", "SnoreCueSettingsNativeTest", "ReportReferenceFlowTest", "StorageMigrationTest", "SoundLibraryStorageTest", "TravelPlanFlowTest", "PrivacyHistoryFlowTest", "PlanPickerFlowTest", "SoundLibraryUiTest", "SoundRetentionLifecycleTest", "SleepRhythmFlowTest", "NightAudioArchiveTest", "SoundArchiveUiTest", "MotionConfigurationFlowTest", "AudioArchiveConcurrencyTest", "SoundArchiveJobTest", "RecordCalendarFlowTest", "ChallengeRoutineFlowTest"]
 if args.native_sounds:
     tests.append("NativeSoundFlowTest")
-tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest", "GradedMathConfigurationTest", "QrCodeConfigurationTest", "AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "WakeCheckFlowTest", "SoundLabelStorageTest", "SoundLabelFlowTest", "NapFlowTest", "NapIntegrationFlowTest", "RecurringTrackingTest", "RecurringTrackingFlowTest", "BackupStorageTest", "BackupDocumentFlowTest", "ReportRibbonNativeTest", "AlarmSkipStorageTest", "AlarmSkipFlowTest"]
+tests += ["HeadphoneCueOutputTest", "SnoreSoundRouteFlowTest", "WalkConfigurationFlowTest", "WalkFallbackStorageTest", "ChartClockFlowTest", "MissedNightFlowTest", "FavoriteSoundsStorageTest", "FavoriteSoundsFlowTest", "ClipReviewAccessTest", "SoundCategoryFixtureEvaluationTest", "GradedMathConfigurationTest", "QrCodeConfigurationTest", "AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "WakeCheckFlowTest", "SoundLabelStorageTest", "SoundLabelFlowTest", "NapFlowTest", "NapIntegrationFlowTest", "RecurringTrackingTest", "RecurringTrackingFlowTest", "BackupStorageTest", "BackupDocumentFlowTest", "ReportRibbonNativeTest", "AlarmSkipStorageTest", "AlarmSkipFlowTest"]
 tests += list(SENSING_TESTS)
 tests += ["SoundCategoryStorageTest", "SoundCategoryFlowTest"]
 if args.audio_imports:
@@ -139,7 +144,7 @@ metadata["test_classes"] = tests
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2, "BackupStorageTest": 6, "BackupDocumentFlowTest": 3, "ReportRibbonNativeTest": 2, "AlarmSkipStorageTest": 8, "AlarmSkipFlowTest": 2, "ContactlessSetupFlowTest": 3, "TravelCueStorageTest": 8, "TravelCueFlowTest": 2, "SonarProvenanceStorageTest": 12}
 class_results = []
-method_counts.update({"SharedSoundProvenanceStorageTest": 12, "SonarNightStorageTest": 2, "SonarNightFlowTest": 2, "SoundCategoryStorageTest": 2, "SoundCategoryFlowTest": 2})
+method_counts.update({"SharedSoundProvenanceStorageTest": 12, "SonarNightStorageTest": 2, "SonarNightFlowTest": 2, "SonarSharedSoundFlowTest": 2, "WalkFallbackStorageTest": 2, "SoundCategoryStorageTest": 2, "SoundCategoryFlowTest": 2})
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
@@ -164,6 +169,30 @@ for test in tests:
     if result.returncode or not passed:
         failures.append(test)
 command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", str(output), check=False)
+if "SonarSharedClassifierStorageTest" in tests:
+    try:
+        shared = json.loads((output / "sonar-shared-classifier-replay.json").read_text(encoding="utf-8"))
+        shared_rows = shared["fixtures"]
+        shared_by_name = {row["fixture"]: row for row in shared_rows}
+        pinned_shared = {row["name"]: row for row in json.loads((root / "third_party/audio-fixtures/manifest.json").read_text(encoding="utf-8"))["fixtures"]}
+        shared_expected = {"snoring-sorts", "snoring-pencil", "speech-countdown"}
+        if shared["model"] != "yamnet-mobile-v1-10c95ea3" or len(shared_rows) != 3 or set(shared_by_name) != shared_expected:
+            raise ValueError("Shared analysis replay identities differ from pinned whole sources")
+        for name, row in shared_by_name.items():
+            pcm = (root / "app/src/androidTest/assets/classifier-fixtures" / (name + ".pcm")).read_bytes()
+            digest = hashlib.sha256(pcm).hexdigest()
+            if len(pcm) % 2 or len(pcm) > 80 * 32000 or row["pcm_sha256"] != digest or pinned_shared[name]["pcm_sha256"] != digest:
+                raise ValueError("Shared analysis whole-source hash/bounds mismatch: " + name)
+            actual_frames = ((len(pcm) // 2 * 3 - 193) // 3 + 1) // 15600
+            if type(row["inferences"]) is not int or row["inferences"] != actual_frames or actual_frames < 1:
+                raise ValueError("Shared analysis capture framing mismatch: " + name)
+            if any(type(row[key]) is not int or row[key] < 0 for key in ("snoring_events", "speech_events")):
+                raise ValueError("Invalid shared persisted category count: " + name)
+        if (shared_by_name["speech-countdown"]["snoring_events"] != 0 or shared_by_name["speech-countdown"]["speech_events"] < 1
+                or sum(shared_by_name[name]["snoring_events"] for name in ("snoring-sorts", "snoring-pencil")) < 1):
+            raise ValueError("Shared real-model replay positive/cross-negative gate failed")
+    except (OSError, KeyError, ValueError, TypeError) as error:
+        failures.append("Shared PCM replay evidence incomplete: " + str(error))
 if args.scope != "full":
     focused_frames = CATEGORY_FRAMES if args.scope == "sound-categories" else NIGHT_FRAMES if args.scope == "sonar-night" else REPORT_FRAMES if args.scope == "report" else SENSING_FRAMES if args.scope == "sensing-travel" else TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES
     failures += [name for name in focused_frames if not (output / name).is_file()]
