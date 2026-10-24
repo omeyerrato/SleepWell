@@ -13,6 +13,7 @@ gradlew.bat text eol=crlf
 docs/verification/**/*.png binary
 docs/verification/**/*.txt -text
 docs/verification/**/environment.json -text
+docs/verification/**/*.xml -text
 
 # Keep vendored upstream bytes identical to the pinned source hashes.
 third_party/phosphor/** -text
