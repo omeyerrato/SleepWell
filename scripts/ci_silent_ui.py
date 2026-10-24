@@ -61,11 +61,18 @@ SENSITIVITY_NEW_FRAMES = ["sound-sensitivity-" + name + ".png" for name in ("def
 SENSITIVITY_FRAMES = SENSITIVITY_NEW_FRAMES + ["analysis-events-" + name + ".png" for name in ("all", "speech", "recreated")]
 PHONE_FEATURE_TESTS = ("CalendarRulesStorageTest", "CalendarRulesFlowTest", "AlarmDefaultsStorageTest", "AlarmDefaultsFlowTest", "AutomationStorageTest")
 PHONE_FEATURE_TESTS += ("HealthSleepStorageTest", "HealthConnectFlowTest", "AlarmDateStorageTest", "AlarmDateFlowTest", "WalkConfigurationFlowTest", "DatedGoalBankFlowTest")
+PHONE_FEATURE_TESTS += ("SmartLightStorageTest", "HomeAssistantProtocolTest", "AlarmInputsStorageTest", "AlarmInputsFlowTest", "MoonSearchStorageTest", "MoonSearchFlowTest", "TagStorageTest", "TagManagementFlowTest", "CloudBackupStorageTest", "CloudBackupFlowTest")
+PHONE_FEATURE_TESTS += ("AdvancedSnoozeStorageTest", "AdvancedSnoozeFlowTest")
 PHONE_FEATURE_FRAMES = ["calendar-rules-" + name + ".png" for name in ("initial", "draft", "saved", "reopened")]
 PHONE_FEATURE_FRAMES += ["alarm-defaults-" + name + ".png" for name in ("initial", "recreated", "saved", "reopened", "reset", "saving", "saving-recreated", "save-error", "retry")]
 PHONE_FEATURE_FRAMES += ["health-connect-" + name + ".png" for name in ("default", "configured", "synced", "source", "conflict", "kept", "unavailable", "permissions")]
 PHONE_FEATURE_FRAMES += ["alarm-date-" + name + ".png" for name in ("initial", "selector", "draft", "recreated", "reopened")]
 PHONE_FEATURE_FRAMES += ["walk-" + name + ".png" for name in ("permission", "ready", "settings", "error", "unavailable", "reopened")] + DATED_GOAL_FRAMES
+PHONE_FEATURE_FRAMES += ["alarm-inputs-" + name + ".png" for name in ("initial", "selector", "draft", "recreated", "reopened")]
+PHONE_FEATURE_FRAMES += ["moon-search-" + name + ".png" for name in ("initial", "wrong", "recreated", "complete", "new-board")]
+PHONE_FEATURE_FRAMES += ["tags-" + name + ".png" for name in ("quantity-draft", "quantity-recreated", "editor", "comparison", "rename", "renamed", "delete-confirm", "deleted")]
+PHONE_FEATURE_FRAMES += ["cloud-backup-" + name + ".png" for name in ("destination", "saved", "reopened", "restore-review")]
+PHONE_FEATURE_FRAMES += ["advanced-snooze-" + name + ".png" for name in ("initial", "draft", "recreated", "reopened")]
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
 root = Path(__file__).resolve().parents[1]
@@ -166,6 +173,8 @@ class_results = []
 method_counts.update({"SharedSoundProvenanceStorageTest": 12, "SonarNightStorageTest": 2, "SonarNightFlowTest": 2, "SonarSharedSoundFlowTest": 2, "WalkFallbackStorageTest": 2, "SoundCategoryStorageTest": 2, "SoundCategoryFlowTest": 2, "SoundSensitivityStorageTest": 3, "SoundSensitivityFlowTest": 2, "GoalStorageTest": 10, "DatedGoalBankFlowTest": 2})
 method_counts.update({"CalendarRulesStorageTest": 4, "AlarmDefaultsStorageTest": 3, "AlarmDefaultsFlowTest": 2, "AutomationStorageTest": 10})
 method_counts.update({"HealthSleepStorageTest": 12, "HealthConnectFlowTest": 2, "AlarmDateStorageTest": 3})
+method_counts.update({"SmartLightStorageTest": 6, "HomeAssistantProtocolTest": 4, "AlarmInputsStorageTest": 3, "MoonSearchStorageTest": 3, "TagStorageTest": 8, "CloudBackupStorageTest": 5})
+method_counts.update({"AdvancedSnoozeStorageTest": 2})
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
@@ -315,7 +324,7 @@ required += ["protection-" + name + ".png" for name in ("alarms", "editor", "off
 required += SENSING_FRAMES
 required += CATEGORY_NEW_FRAMES
 required += GOAL_FRAMES + DATED_GOAL_FRAMES + SENSITIVITY_NEW_FRAMES
-required += [name for name in PHONE_FEATURE_FRAMES if name not in required]
+required += [name for name in PHONE_FEATURE_FRAMES if name not in required and not name.startswith("walk-")]
 required += WAKE_SETTING_FRAMES
 required += ["menus-" + name + ".png" for name in ("editor", "time", "time-recreated", "time-24", "time-invalid", "large-snooze", "duration-recreated", "tasks", "task-settings", "task-chosen", "snooze", "duration", "snooze-changed", "recreated", "sound", "reopened")]
 required += ["automatic-" + name + ".png" for name in ("manual", "stillness", "sounds", "reopened", "error")]
