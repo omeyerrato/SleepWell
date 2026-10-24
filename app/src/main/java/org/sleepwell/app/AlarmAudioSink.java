@@ -51,7 +51,7 @@ final class AlarmAudioSink implements AlarmPlayback.Sink {
                 player.setOnErrorListener((value,what,extra)->{if(available())main.post(()->{if(available())callback.failed();});return true;});
                 if(tone.startsWith("content:"))player.setDataSource(context,Uri.parse(tone));
                 else if(tone.equals("system"))player.setDataSource(context,RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
-                else try(android.content.res.AssetFileDescriptor fd=context.getAssets().openFd(tone.equals("pulse")?"pulse.wav":"daybreak.wav")){player.setDataSource(fd.getFileDescriptor(),fd.getStartOffset(),fd.getLength());}
+                else try(android.content.res.AssetFileDescriptor fd=context.getAssets().openFd(AlarmTones.asset(tone))){player.setDataSource(fd.getFileDescriptor(),fd.getStartOffset(),fd.getLength());}
                 if(!available()){dispose();return;}player.prepareAsync();
             }catch(Exception failure){dispose();main.post(()->{if(available())callback.failed();});}
         });}

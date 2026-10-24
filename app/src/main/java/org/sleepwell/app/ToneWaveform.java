@@ -1,0 +1,12 @@
+package org.sleepwell.app;
+
+import java.io.*;
+
+/** Bounded actual PCM16 WAV decoding for bundled tone previews. */
+final class ToneWaveform {
+    final float[] peaks;final long durationMs;private ToneWaveform(float[] peaks,long duration){this.peaks=peaks;durationMs=duration;}
+    static ToneWaveform read(InputStream input)throws IOException{ByteArrayOutputStream out=new ByteArrayOutputStream();byte[] buffer=new byte[8192];for(int count;(count=input.read(buffer))!=-1;){if(out.size()+count>4*1024*1024)throw new IOException("Tone exceeds preview bound");out.write(buffer,0,count);}byte[] data=out.toByteArray();if(data.length<44||tag(data,0)!=0x52494646||tag(data,8)!=0x57415645)throw new IOException("Invalid WAV");long limit=u32(data,4)+8;if(limit>data.length||limit<44)throw new IOException("Truncated WAV");int channels=0,rate=0,align=0,start=-1,size=0;for(int at=12;at+8<=limit;){int type=tag(data,at);long bytes=u32(data,at+4);int body=at+8;if(bytes>limit-body)throw new IOException("Truncated chunk");if(type==0x666d7420){if(bytes<16||u16(data,body)!=1||u16(data,body+14)!=16)throw new IOException("PCM16 only");channels=u16(data,body+2);rate=(int)u32(data,body+4);align=u16(data,body+12);if(channels<1||channels>2||rate<8000||rate>192000||align!=channels*2||u32(data,body+8)!=(long)rate*align)throw new IOException("Invalid PCM contract");}else if(type==0x64617461){if(start!=-1)throw new IOException("Multiple PCM chunks");start=body;size=(int)bytes;}long next=body+bytes+(bytes&1);if(next>limit)throw new IOException("Invalid padding");at=(int)next;}if(start<0||rate==0||size<=0||size%align!=0)throw new IOException("No complete PCM");int frames=size/align;if((long)frames*1000/rate>120000)throw new IOException("Tone exceeds two minutes");float[] peaks=new float[32];for(int n=0;n<frames;n++){int bin=(int)((long)n*peaks.length/frames);for(int channel=0;channel<channels;channel++){int offset=start+n*align+channel*2;short sample=(short)u16(data,offset);peaks[bin]=Math.max(peaks[bin],Math.abs((int)sample)/32768f);}}return new ToneWaveform(peaks,(long)frames*1000/rate);}
+    private static int tag(byte[] b,int at){return (b[at]&255)<<24|(b[at+1]&255)<<16|(b[at+2]&255)<<8|(b[at+3]&255);}
+    private static long u32(byte[] b,int at){return Integer.toUnsignedLong(Integer.reverseBytes(tag(b,at)));}
+    private static int u16(byte[] b,int at){return (b[at]&255)|((b[at+1]&255)<<8);}
+}
