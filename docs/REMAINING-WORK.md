@@ -1,5 +1,7 @@
 # SleepWell remaining-work checklist
 
+For a compact checkmarked feature view, see [FEATURE-CHECKLIST.md](FEATURE-CHECKLIST.md).
+
 Updated 25 October 2026. This is the remaining-work view of the build brief and
 [full feature matrix](FEATURE-MATRIX.md), not a declaration that unchecked items
 have no code. Some need implementation; others have code but still need correction,

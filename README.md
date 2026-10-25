@@ -12,16 +12,19 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 25 October
 
-Application source **9c6b1c9** builds in **1m23s**, with schema15 / metadata
+Application source **0e352bc** builds in **2m31s**, with schema15 / metadata
 backup13 and the original installed signing key. It includes expanded alarm,
 snooze, reminder and extra-loud controls; shared contactless noise clips/cues;
 weekly naps, object challenges, offline narration and pre-travel sleep shifts;
 exact-second timers accessible directly from Nap; printable morning QR codes;
-battery-aware movement/light sampling; and snooze-aware home widgets.
+battery-aware movement/light sampling; snooze-aware home widgets; advanced alarm
+repeats; battery-reserve stopping; guarded automatic false-start rejection; and
+expanded gentle controls.
 
-[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-9c6b1c9).
+[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-0e352bc).
 Its uploaded checksum matches the local signed artifact. See the
 [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
+[checkmarked feature checklist](docs/FEATURE-CHECKLIST.md) and
 [remaining checklist](docs/REMAINING-WORK.md) for exact behavior and missing scope.
 These additions have **build-only evidence** and have not been installed on the
 personal phone. Runtime, provider, overnight, accuracy and visual acceptance remain

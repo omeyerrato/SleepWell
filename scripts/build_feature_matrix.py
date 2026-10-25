@@ -947,12 +947,10 @@ This feature window uses **build-only**
 evidence: no new unit/native/lint/screenshot batches or physical-phone actions.
 The APK retains the installed debug signing key. It has not been installed.
 Latest actual phone installation remains571018b (application sourcedc30736), schema7.
-The earlier public prerelease90e2583 excludes these four follow-up additions.
-The public53a0c08 development prerelease includes all five additions; its uploaded
-APK size and SHA256 match the frozen, originally signed local artifact.
-The newer public9c6b1c9 development prerelease also includes direct custom timers,
-battery-aware sampling, printable QR enrollment and snooze-aware widgets; uploaded
-size/SHA256 match the frozen local signed APK. It remains uninstalled on the phone.
+The current public0e352bc development prerelease includes these additions.
+Its uploaded size/SHA256 match the frozen local signed APK; it remains
+uninstalled on the personal phone. Earlier release inventories are preserved
+in [delivery history](2026-10-25-FEATURE-DELIVERY.md).
 Historical scoped functional evidence is preserved in [VERIFICATION.md](VERIFICATION.md)
 and the linked verification directories; it does not validate this newer source.
 The last full-app native run remains failing; narrower passing batches never

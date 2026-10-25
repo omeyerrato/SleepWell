@@ -252,3 +252,9 @@ Commits63cc7b7 (reserve),cb245e2 (repeat rules),28ceaa4 (false starts),
 No new tests, lint, screenshots, alarms, microphone, sensor, camera, provider or
 personal-phone actions ran. OS delivery, accuracy, data cleanup and visual/runtime
 acceptance remain unverified. The earlier9c6b1c9 APK excludes this follow-up.
+
+Published [0e352bc development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-0e352bc),214865843bytes.
+Uploaded SHA256 matches the frozen local signed artifact:
+`f3516def81934f9a4ef5edb5b425b27f7140f70bf43f9d426a70f74106ce3836`.
+[Compact checkmarked checklist](FEATURE-CHECKLIST.md) separates implemented paths
+from missing scope and runtime/design acceptance. No personal-phone installation.
