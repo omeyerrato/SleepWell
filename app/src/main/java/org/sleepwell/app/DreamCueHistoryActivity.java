@@ -1,0 +1,17 @@
+package org.sleepwell.app;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.LinearLayout;
+import org.json.*;
+import java.util.*;
+
+/** Actual saved cue receipts, independent of the recording's inferred movement or sleep stages. */
+public final class DreamCueHistoryActivity extends Activity {
+    private int generation;private List<JSONObject> runs=List.of();private String error="";
+    @Override public void onCreate(Bundle state){super.onCreate(state);RecordUi.review(this);load();}
+    private void load(){int request=++generation;LinearLayout body=page();Design.text(body,"Loading cue history…",14,400,Design.MUTED);DreamCues.read(this,getIntent().getLongExtra("record",0),rows->{if(isDestroyed()||isFinishing()||request!=generation)return;runs=rows;error="";render();},problem->{if(isDestroyed()||request!=generation)return;error=problem;render();});}
+    private LinearLayout page(){LinearLayout body=Design.page(this,false,null,n->{});RecordUi.label(this,body);RecordUi.header(body,"Timed cue history",this::finish);Design.space(body,16);return body;}
+    private void render(){LinearLayout body=page();if(!error.isEmpty()){Design.text(body,error,14,500,Design.BROWN);Design.button(body,"Try again",true,this::load);return;}if(runs.isEmpty()){Design.text(body,"No timed cues armed yet",22,600,Design.INK);Design.space(body,8);Design.text(body,"Only an explicitly armed active manual night creates a cue journal. No sleep-stage or dream outcome is inferred.",14,400,Design.MUTED);return;}Design.text(body,"Requests are not delivery measurements",18,600,Design.INK);Design.text(body,"The device may suppress vibration. A claimed but unconfirmed request is uncertain and is never replayed.",12,400,Design.MUTED);for(JSONObject run:runs){Design.space(body,20);Design.text(body,RecordUi.date(run.optLong("created"),java.time.ZoneId.systemDefault()),17,600,Design.INK);String phase=run.optString("state");boolean live=DreamCues.liveNonces().contains(run.optString("nonce"));Design.text(body,phase.equals("ARMED")&&!live?"Interrupted · no live cue owner":DreamCueActivity.title(phase),14,500,Design.BROWN);Design.text(body,"Timed from active tracking · first "+RecordUi.duration(run.optLong("initial_ms"))+" · every "+RecordUi.duration(run.optLong("interval_ms")),12,400,Design.MUTED);JSONArray requests=run.optJSONArray("requests");if(requests==null||requests.length()==0){Design.text(body,"No vibration requests recorded.",13,400,Design.MUTED);continue;}for(int i=0;i<requests.length();i++){JSONObject row=requests.optJSONObject(i);if(row==null)continue;String result=row.optString("result"),copy=switch(result){case "REQUESTED"->"Vibration requested";case "FAILED"->"Request failed · outcome unmeasured";case "SKIPPED"->"Missed time · skipped";case "CANCELLED"->"Cancelled before request";default->"Claimed · request outcome uncertain";};PlanActivity.detail(body,"clock","Cue "+(row.optInt("ordinal")+1),copy,RecordUi.duration(row.optLong("due_active")),null);if(!row.isNull("mask_start"))Design.text(body,"Own vibration / settling excluded · "+RecordUi.clock(this,row.optLong("mask_start"),java.time.ZoneId.systemDefault())+" · "+DreamCues.MASK_MILLIS+" ms",11,400,Design.MUTED);}}Design.space(body,12);Design.button(body,"Refresh saved receipts",false,this::load);}
+    @Override protected void onDestroy(){generation++;super.onDestroy();}@Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
+}

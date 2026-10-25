@@ -107,6 +107,8 @@
         <activity android:name=".AutomaticTrackingActivity" android:exported="false" />
         <activity android:name=".RecurringTrackingActivity" android:exported="false" />
         <activity android:name=".TrackingActivity" android:exported="false" />
+        <activity android:name=".DreamCueActivity" android:exported="false" />
+        <activity android:name=".DreamCueHistoryActivity" android:exported="false" />
         <receiver android:name=".PairMotionStopReceiver" android:exported="false" />
         <activity android:name=".PairMotionActivity" android:exported="false" />
         <activity android:name=".PairMotionSavedActivity" android:exported="false" />
