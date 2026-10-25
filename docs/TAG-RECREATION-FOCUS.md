@@ -1,0 +1,3 @@
+# Tag quantity recreation owner
+
+CI40144455894 failed in recreate(), not in persistence assertions. The original failure XML contains the recreated Coffee quantity dialog with the actual 2.5/cups draft intact. A visible modal owns focus, so requiring Activity.hasWindowFocus() cannot succeed while that modal is open. The test now requires the newly resumed Activity to differ from the old owner and the current focused app window to contain views belonging to that exact new Activity. This admits the real recreated modal while rejecting stale/foreign windows. Draft values, Save, rename/delete, original-data and all geometry assertions remain. No extra wait duration or product mutation is added; fresh native execution is required.
