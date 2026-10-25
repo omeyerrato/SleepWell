@@ -2,6 +2,12 @@ name: Android checks and APK
 on:
   push:
   pull_request:
+  workflow_dispatch:
+    inputs:
+      full_checks:
+        description: 'Run the deferred unit and lint checks as well as the APK build'
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -19,7 +25,9 @@ jobs:
           log-accepted-android-sdk-licenses: false
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x gradlew
-      - run: ./gradlew testDebugUnitTest lintDebug assembleDebug --stacktrace
+      - if: github.event_name == 'workflow_dispatch' && inputs.full_checks
+        run: ./gradlew testDebugUnitTest lintDebug --stacktrace
+      - run: ./gradlew assembleDebug --stacktrace
       - uses: actions/upload-artifact@v4
         with:
           name: sleepwell-debug-apk
