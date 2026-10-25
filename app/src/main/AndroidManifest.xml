@@ -127,6 +127,7 @@
         <activity android:name=".MoonSearchPreviewActivity" android:exported="false" />
         <activity android:name=".CalendarRulesActivity" android:exported="false" />
         <service android:name=".CalendarSyncJob" android:exported="true" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <activity android:name=".LibraryAudioImportActivity" android:exported="false" />
         <activity android:name=".LibraryAudioExportActivity" android:exported="false" />
         <activity android:name=".SoundArchiveActivity" android:exported="false" />
         <activity android:name=".FavoriteSoundsActivity" android:exported="false" />
