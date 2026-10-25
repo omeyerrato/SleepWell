@@ -29,17 +29,19 @@ public class TrackingService extends Service implements SensorEventListener {
     private volatile boolean sonarMode;private volatile SonarNight sonarNight;private SonarConfig sonarConfig;private boolean sonarAnalysis,sonarClips;private SonarClipPolicy sonarClipPolicy=SonarClipPolicy.OFF;
     private boolean clockChanged;private TrackingClock clock;private volatile long session;private long start,windowStart;private double sum;private Double light;private int count,activeMinutes,pairActiveMinutes;private boolean motionRegistered,lightRegistered;
     private ClipBudget clipBudget=new ClipBudget();
+    private TrackingBatteryReserve batteryReserve;private boolean reserveReady;
     private boolean batteryAwareRequested,samplingLightWanted,samplingReduced;private BatterySampling batterySampling;private String samplingIssue="";private long samplingBoundary,lastMotionNanos,lastLightNanos;
     private final MotionFilter motionFilter=new MotionFilter();private MotionProfile motionProfile=new MotionProfile(1);
     private final Runnable minuteTick=this::minute,limitTick=()->stop(false),liveTick=this::liveSample,automaticTick=this::automaticTick;
     private final List<org.json.JSONObject> liveReadings=new ArrayList<>();private int previewCount;private double previewSum;private long previewAt;
     static final class Snapshot {
-        final boolean flipEnabled,flipListening;final String flipStatus;final long flipRemaining;final long id,start,active,windowStart,now;final String phase,automaticState,googleSignal,samplingStatus;final String delayOwner;final long delayRemaining;final boolean delayed;final boolean sonar;final float sonarGain;final String sonarError;final SoundAnalysisStatus soundAnalysis;final List<SonarFrame> sonarReadings;final long quietMillis;final boolean motion,light,mic,automatic,soundsRequested,keepClips,filteredSounds,soundSettingsBlocked;final int samples;final Double movement,lightLevel;final List<org.json.JSONObject> readings;
+        final boolean flipEnabled,flipListening;final String flipStatus;final long flipRemaining;final long id,start,active,windowStart,now;final String phase,automaticState,googleSignal,samplingStatus,reserveStatus;final String delayOwner;final long delayRemaining;final boolean delayed;final boolean sonar;final float sonarGain;final String sonarError;final SoundAnalysisStatus soundAnalysis;final List<SonarFrame> sonarReadings;final long quietMillis;final boolean motion,light,mic,automatic,soundsRequested,keepClips,filteredSounds,soundSettingsBlocked;final int samples;final Double movement,lightLevel;final List<org.json.JSONObject> readings;
         Snapshot(SonarNight.State n){this(n,SoundSensitivity.DEFAULT);}
         Snapshot(SonarNight.State n,SoundSensitivity policy){this(n,policy,false);}
-        Snapshot(SonarNight.State n,SoundSensitivity policy,boolean clips){samplingStatus="Battery-aware sampling does not change contactless capture";googleSignal="";soundSettingsBlocked=!policy.available();filteredSounds=!policy.allIncluded();flipListening=false;flipEnabled=false;flipStatus="Unavailable with contactless tracking";flipRemaining=0;delayOwner="";delayed=false;delayRemaining=0;soundAnalysis=n.analysis;sonar=true;sonarGain=n.gain;sonarError=n.error;sonarReadings=n.readings;id=n.id;start=n.start;now=n.now;active=n.active;windowStart=n.start;phase=n.phase;automaticState="";quietMillis=0;soundsRequested=n.analysis.requested;keepClips=clips;automatic=motion=light=false;mic=n.microphone;samples=0;movement=lightLevel=null;readings=List.of();}
-        Snapshot(TrackingService s){samplingStatus=s.samplingStatus();googleSignal=s.googleSleep==null?"":s.googleSleep.status();soundSettingsBlocked=!s.clipBudget.analysisAllowed();filteredSounds=!s.clipBudget.sensitivity.allIncluded();flipListening=s.flip!=null&&s.flip.listening;flipEnabled=s.flipChosen;flipStatus=!s.flipIssue.isEmpty()?s.flipIssue:s.sonarMode?"Unavailable with contactless tracking":s.flip==null?s.flipChosen?"Waiting for recording to start":"Off":s.flip.label();flipRemaining=s.flip==null?0:s.flip.remaining();delayOwner=s.delayPlan==null?"":s.delayPlan.token;delayed=s.delayPlan!=null;delayRemaining=s.phase==Phase.DELAYED?s.delayPlan.remaining(SystemClock.elapsedRealtime()):0;soundAnalysis=null;sonar=s.sonarMode;sonarGain=s.sonarConfig==null?0:s.sonarConfig.gain;sonarError="";sonarReadings=List.of();id=s.session;start=s.start;now=s.timestamp();active=s.phase==Phase.DELAYED||s.clock==null?0:s.clock.active(SystemClock.elapsedRealtime());windowStart=s.windowStart;phase=s.phase.name();automaticState=!s.armedBlocked.isEmpty()?s.armedBlocked:s.automatic==null?"":s.automatic.state().name();quietMillis=s.automatic==null?0:s.automatic.quietMillis(SystemClock.elapsedRealtime());automatic=s.automaticRun;soundsRequested=s.sonarMode?s.sonarAnalysis:s.automaticCapture!=null&&s.automaticCapture.requested();keepClips=s.sonarMode?s.sonarClips:s.clipBudget.permitsClips(s.automaticCapture!=null?s.automaticCapture.keepClips():Prefs.flag(s,"saveClips"));motion=s.motionRegistered;light=s.lightRegistered;mic=s.audio!=null&&s.audio.capturing;samples=s.count;movement=s.count==0?null:Math.sqrt(s.sum/s.count);lightLevel=s.light;readings=new ArrayList<>(s.liveReadings);}
-        Snapshot(TrackingDelay p,long elapsed){samplingStatus="Waiting · no movement or light capture";googleSignal="";soundSettingsBlocked=false;filteredSounds=false;flipListening=false;flipEnabled=false;flipStatus="Off during delayed start";flipRemaining=0;delayOwner=p.token;delayed=true;delayRemaining=p.remaining(elapsed);soundAnalysis=null;sonar=p.sonar;sonarGain=0;sonarError="";sonarReadings=List.of();id=0;start=p.wall;now=p.wall+Math.max(0,elapsed-p.elapsed);active=0;windowStart=0;phase="DELAYED";automaticState="";quietMillis=0;automatic=false;soundsRequested=p.sounds;keepClips=p.clips;motion=light=mic=false;samples=0;movement=lightLevel=null;readings=List.of();}
+        Snapshot(SonarNight.State n,SoundSensitivity policy,boolean clips){this(n,policy,clips,"Battery reserve state unavailable");}
+        Snapshot(SonarNight.State n,SoundSensitivity policy,boolean clips,String reserve){reserveStatus=reserve;samplingStatus="Battery-aware sampling does not change contactless capture";googleSignal="";soundSettingsBlocked=!policy.available();filteredSounds=!policy.allIncluded();flipListening=false;flipEnabled=false;flipStatus="Unavailable with contactless tracking";flipRemaining=0;delayOwner="";delayed=false;delayRemaining=0;soundAnalysis=n.analysis;sonar=true;sonarGain=n.gain;sonarError=n.error;sonarReadings=n.readings;id=n.id;start=n.start;now=n.now;active=n.active;windowStart=n.start;phase=n.phase;automaticState="";quietMillis=0;soundsRequested=n.analysis.requested;keepClips=clips;automatic=motion=light=false;mic=n.microphone;samples=0;movement=lightLevel=null;readings=List.of();}
+        Snapshot(TrackingService s){reserveStatus=s.reserveStatus();samplingStatus=s.samplingStatus();googleSignal=s.googleSleep==null?"":s.googleSleep.status();soundSettingsBlocked=!s.clipBudget.analysisAllowed();filteredSounds=!s.clipBudget.sensitivity.allIncluded();flipListening=s.flip!=null&&s.flip.listening;flipEnabled=s.flipChosen;flipStatus=!s.flipIssue.isEmpty()?s.flipIssue:s.sonarMode?"Unavailable with contactless tracking":s.flip==null?s.flipChosen?"Waiting for recording to start":"Off":s.flip.label();flipRemaining=s.flip==null?0:s.flip.remaining();delayOwner=s.delayPlan==null?"":s.delayPlan.token;delayed=s.delayPlan!=null;delayRemaining=s.phase==Phase.DELAYED?s.delayPlan.remaining(SystemClock.elapsedRealtime()):0;soundAnalysis=null;sonar=s.sonarMode;sonarGain=s.sonarConfig==null?0:s.sonarConfig.gain;sonarError="";sonarReadings=List.of();id=s.session;start=s.start;now=s.timestamp();active=s.phase==Phase.DELAYED||s.clock==null?0:s.clock.active(SystemClock.elapsedRealtime());windowStart=s.windowStart;phase=s.phase.name();automaticState=!s.armedBlocked.isEmpty()?s.armedBlocked:s.automatic==null?"":s.automatic.state().name();quietMillis=s.automatic==null?0:s.automatic.quietMillis(SystemClock.elapsedRealtime());automatic=s.automaticRun;soundsRequested=s.sonarMode?s.sonarAnalysis:s.automaticCapture!=null&&s.automaticCapture.requested();keepClips=s.sonarMode?s.sonarClips:s.clipBudget.permitsClips(s.automaticCapture!=null?s.automaticCapture.keepClips():Prefs.flag(s,"saveClips"));motion=s.motionRegistered;light=s.lightRegistered;mic=s.audio!=null&&s.audio.capturing;samples=s.count;movement=s.count==0?null:Math.sqrt(s.sum/s.count);lightLevel=s.light;readings=new ArrayList<>(s.liveReadings);}
+        Snapshot(TrackingDelay p,long elapsed){reserveStatus="Battery reserve is checked by the waiting service";samplingStatus="Waiting · no movement or light capture";googleSignal="";soundSettingsBlocked=false;filteredSounds=false;flipListening=false;flipEnabled=false;flipStatus="Off during delayed start";flipRemaining=0;delayOwner=p.token;delayed=true;delayRemaining=p.remaining(elapsed);soundAnalysis=null;sonar=p.sonar;sonarGain=0;sonarError="";sonarReadings=List.of();id=0;start=p.wall;now=p.wall+Math.max(0,elapsed-p.elapsed);active=0;windowStart=0;phase="DELAYED";automaticState="";quietMillis=0;automatic=false;soundsRequested=p.sounds;keepClips=p.clips;motion=light=mic=false;samples=0;movement=lightLevel=null;readings=List.of();}
         boolean paused(){return phase.equals("PAUSED");}
     }
     static TravelCues.Manual travelManual(){TrackingService s=current;return s!=null&&s.phase==Phase.ACTIVE&&running&&!s.destroyed&&!s.automaticRun&&s.recurringToken==null&&!s.manualToken.isEmpty()&&(!s.sonarMode||s.sonarNight!=null&&s.sonarNight.state().phase.equals("ACTIVE"))?new TravelCues.Manual(s.session,s.manualToken):null;}
@@ -62,7 +64,7 @@ public class TrackingService extends Service implements SensorEventListener {
     private AwakeRuntime awake;private PirNight pir;
     private void beginPir(){if(pir!=null||automaticRun||recurringToken!=null||manualToken.isEmpty()||storeFactory!=PRODUCTION_STORE||Records.factory!=Records.PRODUCTION)return;long id=session;String token=manualToken;pir=PirNight.start(this,id,()->current==this&&running&&!destroyed&&phase==Phase.ACTIVE&&session==id&&manualToken.equals(token),()->sonarMode&&sonarNight!=null?sonarNight.state().now:timestamp());}
     private void closePir(){PirNight prior=pir;pir=null;if(prior!=null)prior.close();}
-    static Snapshot snapshot(){TrackingService s=current;return s==null?null:s.sonarMode&&s.sonarNight!=null?new Snapshot(s.sonarNight.state(),s.clipBudget.sensitivity,s.sonarClips):new Snapshot(s);}
+    static Snapshot snapshot(){TrackingService s=current;return s==null?null:s.sonarMode&&s.sonarNight!=null?new Snapshot(s.sonarNight.state(),s.clipBudget.sensitivity,s.sonarClips,s.reserveStatus()):new Snapshot(s);}
     @Override public IBinder onBind(Intent intent){return null;}
     @Override public void onCreate(){super.onCreate();Notifications.channels(this);}
     @Override public int onStartCommand(Intent intent,int flags,int startId){
@@ -81,6 +83,7 @@ public class TrackingService extends Service implements SensorEventListener {
             if(owned==null)return rejectRecurring();
             recurringToken=owned.token;intent=owned.intent(this); // Ignore caller sound, clip, mode and schedule extras.
         }
+        closeReserve();batteryReserve=null;
         if(batterySampling!=null)batterySampling.close();batterySampling=null;batteryAwareRequested=false;samplingReduced=false;samplingIssue="";
         sonarMode=false;sonarNight=null;sonarConfig=null;sonarAnalysis=false;sonarClips=false;sonarClipPolicy=SonarClipPolicy.OFF;
         if(SONAR.equals(action)){
@@ -100,15 +103,33 @@ public class TrackingService extends Service implements SensorEventListener {
         awake=new AwakeRuntime(getApplicationContext(),storeFactory);
         BackupRuntime.admitted();
         clipBudget=new ClipBudget(SoundSensitivitySettings.snapshot(getApplicationContext()));
-        current=this;running=true;clock=new TrackingClock(SystemClock.elapsedRealtime());
+        current=this;running=true;phase=Phase.STARTING;session=0;start=System.currentTimeMillis();clock=new TrackingClock(SystemClock.elapsedRealtime());
         try{
             if(sonarMode){if(sonarClips&&(!sonarAnalysis||!clipBudget.analysisAllowed()||!clipBudget.sensitivity.allIncluded()))throw new IllegalStateException("Sound clips require explicit analysis consent and all sound categories.");sonarClipPolicy=sonarClips?SonarClipPolicy.create(true,Prefs.number(this,"noiseThreshold",20)/1000d,clipBudget):SonarClipPolicy.OFF;}if(!sonarMode){motionProfile=MotionSettings.load(this);batteryAwareRequested=BatterySampling.requested(this);}automaticRun=ARM.equals(action);if(automaticRun||!sonarMode&&(delayPlan!=null||flipChosen)){automaticCapture=new AutomaticCapture(delayPlan!=null?delayPlan.sounds:automaticRun?recurringToken==null&&intent.getBooleanExtra("recordSounds",false):Prefs.flag(this,"noiseEnabled"),delayPlan!=null?delayPlan.clips:automaticRun?recurringToken==null&&intent.getBooleanExtra("keepClips",false):Prefs.flag(this,"saveClips"));if(automaticCapture.requested()&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is unavailable. Arm again with sound recording off.");}foreground(false);
             sensors=getSystemService(SensorManager.class);wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:tracking");
+            String reserveRun=dndRun;
+            batteryReserve=new TrackingBatteryReserve(this,TrackingBatteryReserve.requested(this),()->{if(current==this&&reserveRun.equals(dndRun)&&reserveReady)reserveStopIfNeeded();});batteryReserve.start();reserveReady=true;
+            if(reserveStopIfNeeded())return START_NOT_STICKY;
             if(delayPlan!=null){beginDelay();return START_NOT_STICKY;}
             if(automaticRun){arm(intent);return START_NOT_STICKY;}
             if(sonarMode)beginSonar();else beginRecording();
         }catch(Exception e){Prefs.put(this,"trackingError","Tracking could not start: "+e.getMessage());stop(true);}
         return START_NOT_STICKY;
+    }
+    private String reserveStatus(){return batteryReserve==null?"Battery reserve state unavailable":batteryReserve.label();}
+    private void closeReserve(){reserveReady=false;if(batteryReserve!=null)batteryReserve.close();}
+    private boolean reserveStopIfNeeded(){
+        if(!reserveReady||current!=this||!running||destroyed||batteryReserve==null||phase==Phase.STOPPING||phase==Phase.CLOSED||phase==Phase.BLOCKED||!batteryReserve.claim())return false;
+        if(phase==Phase.STARTING&&session==0&&sonarNight==null){
+            // Preserve a real cancelled wait journal without opening sensors or creating a night.
+            if(delayPlan!=null){phase=Phase.DELAYED;delayJob.arm(delayPlan,null,null);}
+            else if(automaticRun)phase=Phase.ARMED;
+        }
+        boolean noNight=session==0&&sonarNight==null;
+        String result="Stopped at "+batteryReserve.percent()+"% battery to reserve power for alarms. "+(noNight?"No recording was created. Start again explicitly when ready.":"Any captured data follows the normal save and cleanup flow. This recording will not restart itself.");
+        android.content.SharedPreferences.Editor saved=Prefs.of(this).edit().putString(TrackingBatteryReserve.RESULT,result).putLong(TrackingBatteryReserve.RESULT+"At",System.currentTimeMillis());if(session==0)saved.putString("trackingError","");saved.apply();
+        if(automaticRun&&session==0)Prefs.put(this,"automaticResult",result);
+        stop(false);return true;
     }
     private void beginDelay(){
         phase=Phase.DELAYED;clock=new TrackingClock(SystemClock.elapsedRealtime());foreground(false);wake.acquire(Math.max(1,delayPlan.remaining(SystemClock.elapsedRealtime())+60000));
@@ -144,10 +165,10 @@ public class TrackingService extends Service implements SensorEventListener {
             if(state.phase.equals("PAUSED")){stopSensors();if(!destroyed)foreground(true);}
             else if(state.phase.equals("ACTIVE")){automationEvents.started(state.id,state.start);if(wake!=null&&!wake.isHeld())wake.acquire(Math.max(1,12*3600000L));}
             else if(state.phase.equals("CLOSED")){
-                closePir();automationEvents.stopped();
+                closeReserve();closePir();automationEvents.stopped();
                 if(travelCues!=null)travelCues.stop("The recording ended. Light cues stopped.");
                 handler.removeCallbacks(limitTick);stopSensors();running=false;current=null;Prefs.of(this).edit().putBoolean("tracking",false).putBoolean("trackingPaused",false).putLong("session",0).apply();closer.shutdown();if(!destroyed){stopForeground(STOP_FOREGROUND_REMOVE);stopSelf();}
-            }else if(state.phase.equals("BLOCKED")){if(travelCues!=null)travelCues.stop("Audio cleanup needs attention. Light cues stopped.");if(!destroyed)getSystemService(NotificationManager.class).notify(102,trackingNotification(false));}
+            }else if(state.phase.equals("BLOCKED")){closeReserve();if(travelCues!=null)travelCues.stop("Audio cleanup needs attention. Light cues stopped.");if(!destroyed)getSystemService(NotificationManager.class).notify(102,trackingNotification(false));}
         },sonarAnalysis,()->new YamnetClassifier(getApplicationContext()),clipBudget.sensitivity,new SonarSnoreCues(getApplicationContext(),sonarAnalysis,()->current==this&&running&&!destroyed&&sonarMode&&sonarNight==owner[0]&&phase==Phase.ACTIVE),Prefs.flag(this,"sonarPeriodicity"),sonarClipPolicy);
         owner[0]=night;sonarNight=night;wake.acquire(12*3600000L);night.start();handler.postDelayed(limitTick,12*3600000L);
     }
@@ -296,6 +317,7 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void closeGoogleSleep(){GoogleSleepSignal old=googleSleep;googleSleep=null;if(old!=null)old.close();}
     private void stop(boolean wasInterrupted){
+        closeReserve();
         DreamCues.cancelRun(session,manualToken,wasInterrupted?"process":"ended");
         closePir();
         PairMotionRuntime.recordingStopped(session,manualToken,"ENDED");
@@ -310,5 +332,5 @@ public class TrackingService extends Service implements SensorEventListener {
     private void finishAwake(long at,Runnable complete){if(awake==null)complete.run();else awake.finish(at,interrupted,complete);}
     /** No Night has opened: this admission owns no Store, sound mixer or NoiseRecorder. */
     private void closeSonarAdmission(){if(phase==Phase.CLOSED)return;phase=Phase.CLOSED;handler.removeCallbacks(limitTick);stopSensors();if(current==this){running=false;current=null;Prefs.of(this).edit().putBoolean("tracking",false).putBoolean("trackingPaused",false).putLong("session",0).apply();}closer.shutdown();if(!destroyed){stopForeground(STOP_FOREGROUND_REMOVE);stopSelf();}}
-    @Override public void onDestroy(){if(batterySampling!=null)batterySampling.close();closeFlip();dndStop();destroyed=true;if(sonarMode)stopSensors();stop(true);super.onDestroy();}
+    @Override public void onDestroy(){closeReserve();if(batterySampling!=null)batterySampling.close();closeFlip();dndStop();destroyed=true;if(sonarMode)stopSensors();stop(true);super.onDestroy();}
 }
