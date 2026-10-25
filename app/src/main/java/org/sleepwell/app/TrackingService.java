@@ -32,6 +32,7 @@ public class TrackingService extends Service implements SensorEventListener {
     private boolean batchMode;private BatchedMotion batchedMotion;private long batchCutNanos,batchLastEnd;private String batchIssue="";
     private TrackingBatteryReserve batteryReserve;private boolean reserveReady;
     private boolean batteryAwareRequested,samplingLightWanted,samplingReduced;private BatterySampling batterySampling;private String samplingIssue="";private long samplingBoundary,lastMotionNanos,lastLightNanos;
+    private StillnessSoundFade.Policy soundFadePolicy=new StillnessSoundFade.Policy(false,"");private final StillnessSoundFade.Minute soundFadeMinute=new StillnessSoundFade.Minute();
     private final MotionFilter motionFilter=new MotionFilter();private MotionProfile motionProfile=new MotionProfile(1);
     private final Runnable minuteTick=this::minute,limitTick=()->stop(false),liveTick=this::liveSample,automaticTick=this::automaticTick;
     private final List<org.json.JSONObject> liveReadings=new ArrayList<>();private int previewCount;private double previewSum;private long previewAt;
@@ -97,6 +98,7 @@ public class TrackingService extends Service implements SensorEventListener {
             if(owned==null)return rejectRecurring();
             recurringToken=owned.token;intent=owned.intent(this); // Ignore caller sound, clip, mode and schedule extras.
         }
+        StillnessSoundFade.end(session,dndRun);
         batchMode=false;batchedMotion=null;batchCutNanos=batchLastEnd=0;batchIssue="";
         closeReserve();batteryReserve=null;
         if(batterySampling!=null)batterySampling.close();batterySampling=null;batteryAwareRequested=false;samplingReduced=false;samplingIssue="";
@@ -120,7 +122,7 @@ public class TrackingService extends Service implements SensorEventListener {
         clipBudget=new ClipBudget(SoundSensitivitySettings.snapshot(getApplicationContext()));
         current=this;running=true;phase=Phase.STARTING;session=0;start=System.currentTimeMillis();clock=new TrackingClock(SystemClock.elapsedRealtime());
         try{
-            if(sonarMode){if(sonarClips&&(!sonarAnalysis||!clipBudget.analysisAllowed()||!clipBudget.sensitivity.allIncluded()))throw new IllegalStateException("Sound clips require explicit analysis consent and all sound categories.");sonarClipPolicy=sonarClips?SonarClipPolicy.create(true,Prefs.number(this,"noiseThreshold",20)/1000d,clipBudget):SonarClipPolicy.OFF;}if(!sonarMode){motionProfile=MotionSettings.load(this);batteryAwareRequested=BatterySampling.requested(this);}automaticRun=ARM.equals(action);if(automaticRun||!sonarMode&&(delayPlan!=null||flipChosen)){automaticCapture=new AutomaticCapture(delayPlan!=null?delayPlan.sounds:automaticRun?recurringToken==null&&intent.getBooleanExtra("recordSounds",false):Prefs.flag(this,"noiseEnabled"),delayPlan!=null?delayPlan.clips:automaticRun?recurringToken==null&&intent.getBooleanExtra("keepClips",false):Prefs.flag(this,"saveClips"));if(automaticCapture.requested()&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is unavailable. Arm again with sound recording off.");}batchMode=BatchedMotion.requested(this);if(batchMode)BatchedMotion.selection(this,sonarMode,automaticRun||recurringToken!=null,delayPlan!=null,automaticCapture!=null?automaticCapture.requested():Prefs.flag(this,"noiseEnabled"),Prefs.of(this).getBoolean("recordLight",true),batteryAwareRequested,flipChosen);foreground(false);
+            if(sonarMode){if(sonarClips&&(!sonarAnalysis||!clipBudget.analysisAllowed()||!clipBudget.sensitivity.allIncluded()))throw new IllegalStateException("Sound clips require explicit analysis consent and all sound categories.");sonarClipPolicy=sonarClips?SonarClipPolicy.create(true,Prefs.number(this,"noiseThreshold",20)/1000d,clipBudget):SonarClipPolicy.OFF;}if(!sonarMode){motionProfile=MotionSettings.load(this);batteryAwareRequested=BatterySampling.requested(this);}automaticRun=ARM.equals(action);if(automaticRun||!sonarMode&&(delayPlan!=null||flipChosen)){automaticCapture=new AutomaticCapture(delayPlan!=null?delayPlan.sounds:automaticRun?recurringToken==null&&intent.getBooleanExtra("recordSounds",false):Prefs.flag(this,"noiseEnabled"),delayPlan!=null?delayPlan.clips:automaticRun?recurringToken==null&&intent.getBooleanExtra("keepClips",false):Prefs.flag(this,"saveClips"));if(automaticCapture.requested()&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is unavailable. Arm again with sound recording off.");}batchMode=BatchedMotion.requested(this);if(batchMode)BatchedMotion.selection(this,sonarMode,automaticRun||recurringToken!=null,delayPlan!=null,automaticCapture!=null?automaticCapture.requested():Prefs.flag(this,"noiseEnabled"),Prefs.of(this).getBoolean("recordLight",true),batteryAwareRequested,flipChosen);soundFadePolicy=!sonarMode&&!batchMode?StillnessSoundFade.policy(this):new StillnessSoundFade.Policy(false,"");foreground(false);
             sensors=getSystemService(SensorManager.class);wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:tracking");
             String reserveRun=dndRun;
             batteryReserve=new TrackingBatteryReserve(this,TrackingBatteryReserve.requested(this),()->{if(current==this&&reserveRun.equals(dndRun)&&reserveReady)reserveStopIfNeeded();});batteryReserve.start();reserveReady=true;
@@ -191,7 +193,7 @@ public class TrackingService extends Service implements SensorEventListener {
             if(batterySampling==null){batterySampling=new BatterySampling(this,batteryAwareRequested,this::refreshSampling);batterySampling.start();}
             StoreFactory storage=storeFactory;store=storage.open(this);backupProduction=storage==PRODUCTION_STORE&&Records.factory==Records.PRODUCTION&&"sleepwell.db".equals(store.getDatabaseName());session=store.begin(SensorProvenance.MOTION,batchMode?BatchedMotion.config(motionProfile.config()):batteryAwareRequested?BatterySampling.config(motionProfile.config()):motionProfile.config());start=store.rows("SELECT start FROM sessions WHERE id=?",""+session).get(0).optLong("start");windowStart=start;clock=new TrackingClock(SystemClock.elapsedRealtime());
             Prefs.of(this).edit().putLong("session",session).putBoolean("tracking",true).putBoolean("trackingPaused",false).putInt("epochCount",0).putString("audioError","").putString("trackingError","").apply();
-            if(!automaticRun&&recurringToken==null)manualToken=UUID.randomUUID().toString();phase=Phase.ACTIVE;dndActive();beginPir();automationEvents.started(session,start);if(automaticCapture!=null)automaticCapture.recordingBegan();collect();if(awake!=null)awake.begin(session,start,SystemClock.elapsedRealtime(),lightRegistered);beginFalseStart();handler.postDelayed(minuteTick,60000);handler.postDelayed(limitTick,12*60*60*1000L);
+            if(!automaticRun&&recurringToken==null)manualToken=UUID.randomUUID().toString();phase=Phase.ACTIVE;dndActive();beginPir();automationEvents.started(session,start);if(automaticCapture!=null)automaticCapture.recordingBegan();if(!batchMode){long fadeSession=session;String fadeRun=dndRun;StillnessSoundFade.begin(this,fadeSession,fadeRun,soundFadePolicy,()->current==this&&running&&!destroyed&&!sonarMode&&!batchMode&&session==fadeSession&&fadeRun.equals(dndRun)&&phase==Phase.ACTIVE);}collect();if(awake!=null)awake.begin(session,start,SystemClock.elapsedRealtime(),lightRegistered);beginFalseStart();handler.postDelayed(minuteTick,60000);handler.postDelayed(limitTick,12*60*60*1000L);
     }
     private void arm(Intent intent){
         automaticMode=AutomaticSleep.Mode.valueOf(intent.getStringExtra("mode"));rejectFalseStarts=automaticMode==AutomaticSleep.Mode.STILLNESS&&AutomaticFalseStart.requested(Prefs.of(this));falseStartRejected=false;falseStartIdentity=null;closeFalseStart();
@@ -301,7 +303,7 @@ public class TrackingService extends Service implements SensorEventListener {
     private final Runnable flipTick=new Runnable(){public void run(){if(flip==null||current!=TrackingService.this||!running||destroyed)return;flip.tick();handler.postDelayed(this,1000);}};
     private void closeFlip(){handler.removeCallbacks(flipTick);if(flip!=null)flip.close();}
     private long timestamp(){return clock==null?System.currentTimeMillis():clock.timestamp(start,SystemClock.elapsedRealtime());}
-    private void resetWindow(){sum=0;count=0;light=null;motionFilter.reset();activeMinutes=pairActiveMinutes=0;resetPreview(timestamp());}
+    private void resetWindow(){soundFadeMinute.reset(SystemClock.elapsedRealtimeNanos());sum=0;count=0;light=null;motionFilter.reset();activeMinutes=pairActiveMinutes=0;resetPreview(timestamp());}
     private void resetPreview(long now){liveReadings.clear();previewSum=0;previewCount=0;previewAt=now;}
     private void liveSample(){if(phase!=Phase.ACTIVE)return;long now=timestamp();int measured=count-previewCount;PairMotionRuntime.sample(pairManual(),previewAt,now,SystemClock.elapsedRealtime(),measured>0?Math.sqrt(Math.max(0,sum-previewSum)/measured):null,Math.max(0,measured));if(measured>0)try{liveReadings.add(new org.json.JSONObject().put("start",previewAt).put("time",now).put("movement",Math.sqrt(Math.max(0,sum-previewSum)/measured)));}catch(org.json.JSONException ignored){}previewAt=now;previewCount=count;previewSum=sum;handler.postDelayed(liveTick,1000);}
     private void checkClock(long now){if(store!=null&&session>0&&!clockChanged&&Math.abs(System.currentTimeMillis()-now)>2000){store.clockChanged(session);clockChanged=true;}}
@@ -316,17 +318,17 @@ public class TrackingService extends Service implements SensorEventListener {
         long interval=lastMotionNanos==0?0:event.timestamp-lastMotionNanos;
         if(batteryAwareRequested&&phase==Phase.ACTIVE){if(lastMotionNanos>0&&(interval<=0||samplingReduced&&interval<BatterySampling.REDUCED*1000L))return;if(interval>2000000000L)motionFilter.reset();lastMotionNanos=event.timestamp;}
         Double raw=batteryAwareRequested&&phase==Phase.ACTIVE&&samplingReduced?motionFilter.sample(event.values[0],event.values[1],event.values[2],interval):motionFilter.sample(event.values[0],event.values[1],event.values[2]);if(raw==null)return;
-        if(phase==Phase.ARMED){automaticTransition.sample(SystemClock.elapsedRealtime(),motionProfile.inference(raw),getSystemService(PowerManager.class).isInteractive());return;}if(falseStart!=null)falseStart.sample(event.timestamp,event.accuracy,event.values[0],event.values[1],event.values[2],motionProfile.inference(raw));sum+=raw*raw;count++;
+        if(phase==Phase.ARMED){automaticTransition.sample(SystemClock.elapsedRealtime(),motionProfile.inference(raw),getSystemService(PowerManager.class).isInteractive());return;}soundFadeMinute.sample(event.timestamp,event.accuracy);if(falseStart!=null)falseStart.sample(event.timestamp,event.accuracy,event.values[0],event.values[1],event.values[2],motionProfile.inference(raw));sum+=raw*raw;count++;
     }
     @Override public void onAccuracyChanged(Sensor sensor,int accuracy){}
     private void flush(long now,NoiseRecorder closingAudio,boolean recordEmpty){
         if(store==null||session==0)return;if(batchMode)return;checkClock(now);Double noise=closingAudio==null?null:closingAudio.takeEpoch();
         boolean measured=now>=windowStart&&(recordEmpty&&!batteryAwareRequested||count>0||light!=null||noise!=null);store.checkpoint(session,windowStart,now,count==0?null:Math.sqrt(sum/count),noise,light,count,clock.active(SystemClock.elapsedRealtime()),measured);if(measured)Prefs.put(this,"epochCount",Prefs.number(this,"epochCount",0)+1);
-        windowStart=now;sum=0;count=0;if(batteryAwareRequested)light=null;resetPreview(now);
+        windowStart=now;soundFadeMinute.reset(SystemClock.elapsedRealtimeNanos());sum=0;count=0;if(batteryAwareRequested)light=null;resetPreview(now);
     }
     private void minute(){
-        if(phase!=Phase.ACTIVE)return;if(batchMode){if(clock.lifetime(SystemClock.elapsedRealtime())>=12*3600000L)stop(false);else handler.postDelayed(minuteTick,60000);return;}try{long now=timestamp();double movement=count==0?0:Math.sqrt(sum/count);int measured=count;
-        double pairedInference=PairMotionRuntime.inference(session,manualToken,windowStart,now,movement);pairActiveMinutes=motionProfile.activeMinutes(pairedInference,pairActiveMinutes);activeMinutes=motionProfile.activeMinutes(movement,activeMinutes);flush(now,audio,true);Prefs.put(this,"movement",String.format(Locale.ROOT,"%.3f",movement));
+        if(phase!=Phase.ACTIVE)return;if(batchMode){if(clock.lifetime(SystemClock.elapsedRealtime())>=12*3600000L)stop(false);else handler.postDelayed(minuteTick,60000);return;}try{long now=timestamp();double movement=count==0?0:Math.sqrt(sum/count);int measured=count;StillnessSoundFade.Evidence fadeEvidence=soundFadeMinute.snapshot(SystemClock.elapsedRealtimeNanos());
+        double pairedInference=PairMotionRuntime.inference(session,manualToken,windowStart,now,movement);pairActiveMinutes=motionProfile.activeMinutes(pairedInference,pairActiveMinutes);activeMinutes=motionProfile.activeMinutes(movement,activeMinutes);flush(now,audio,true);boolean fadeScreenOff=false;try{PowerManager power=getSystemService(PowerManager.class);fadeScreenOff=power!=null&&!power.isInteractive();}catch(RuntimeException unavailable){}StillnessSoundFade.minute(session,dndRun,fadeEvidence,motionProfile.inference(movement),fadeScreenOff,clockChanged);Prefs.put(this,"movement",String.format(Locale.ROOT,"%.3f",movement));
         for(Alarm alarm:store.alarms()){
             if(alarm.nap!=null){if(Naps.movement(this,alarm,motionProfile.inference(movement),activeMinutes,measured))break;continue;}
             long deadline=Prefs.of(this).getLong("deadline_"+alarm.id,0);boolean goalMet=!Prefs.flag(this,"smartNeedsGoal")||SleepPlans.load(this).goalMet(clock.active(SystemClock.elapsedRealtime()));
@@ -343,6 +345,7 @@ public class TrackingService extends Service implements SensorEventListener {
         if(recorder==null){complete.run();return;}recorder.requestStop();closer.execute(()->{recorder.close();handler.post(complete);});
     }
     private void pause(){
+        StillnessSoundFade.pause(session,dndRun);
         closeFalseStart();
         DreamCues.cancelRun(session,manualToken,"paused");
         if(pir!=null)pir.pause();
@@ -356,10 +359,11 @@ public class TrackingService extends Service implements SensorEventListener {
         if(sonarMode&&sonarNight!=null){sonarNight.resume();return;}
         if(phase==Phase.PAUSING){resumeRequested=true;return;}if(phase!=Phase.PAUSED)return;resumeRequested=false;
         if(clock.lifetime(SystemClock.elapsedRealtime())>=12*60*60*1000L){stop(false);return;}
-        try{long now=timestamp();checkClock(now);store.resume(session,now);windowStart=now;clock.resume(SystemClock.elapsedRealtime());phase=Phase.ACTIVE;if(pir!=null)pir.resume();if(awake!=null)awake.resume();dndActive();Prefs.put(this,"trackingPaused",false);if(automaticCapture!=null)automaticCapture.recordingBegan();collect();handler.postDelayed(minuteTick,60000);}catch(Exception e){Prefs.put(this,"trackingError","Tracking could not resume: "+e.getMessage());stop(true);}
+        try{long now=timestamp();checkClock(now);store.resume(session,now);windowStart=now;clock.resume(SystemClock.elapsedRealtime());phase=Phase.ACTIVE;if(pir!=null)pir.resume();if(awake!=null)awake.resume();dndActive();Prefs.put(this,"trackingPaused",false);if(automaticCapture!=null)automaticCapture.recordingBegan();if(!batchMode)StillnessSoundFade.resume(session,dndRun);collect();handler.postDelayed(minuteTick,60000);}catch(Exception e){Prefs.put(this,"trackingError","Tracking could not resume: "+e.getMessage());stop(true);}
     }
     private void closeGoogleSleep(){GoogleSleepSignal old=googleSleep;googleSleep=null;if(old!=null)old.close();}
     private void stop(boolean wasInterrupted){
+        StillnessSoundFade.end(session,dndRun);
         closeReserve();closeFalseStart();
         DreamCues.cancelRun(session,manualToken,wasInterrupted?"process":"ended");
         closePir();
