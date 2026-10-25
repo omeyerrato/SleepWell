@@ -595,12 +595,28 @@ for row in rows:
     elif row["feature"] in ("Calendar holiday skip / meeting shift / record write", "Goal bank / wagers", "Dated goal bank"):
         row["validation"] += " Superseding da0f571 CI40141612460 CalendarRulesStorageTest4/FlowTest1 and DatedGoalBankFlowTest2 allPASS, with complete originals/save/reopen. Earlier UUID/owned-dialog failures fixed; no real provider/hardware claim."
 
+expanded = {
+    "Global search": (["SearchActivity.java", "SearchData.java", "SearchIndex.java"], "SearchStorageTest1 and SearchFlowTest1/all4 originals", "Actual saved-record/settings search opens the selected destination and retains query across recreation; no network or invented results."),
+    "Home widgets / shortcuts": (["HomeWidgetProvider.java", "HomeWidgetData.java", "HomeLaunch.java", "HomeLaunchActivity.java", "HomeWidgetSettingsActivity.java"], "HomeWidgetNativeTest7", "Next saved alarm/latest real record RemoteViews and add-alarm/tracking/history shortcuts use reconstructed screen-only routes. Fake host and private records pass; actual host pinning/sizing and snooze deadline projection remain unverified/absent."),
+    "Dream diary / mirror text task": (["TypedWakeTasks.java", "DiaryStore.java", "DiaryActivity.java", "MirrorText.java", "JournalRule.java", "AlarmActivity.java"], "DiaryStorageTest10 and TypedWakeFlowTest2/all11 originals", "Stable mirrored phrases and explicit bounded journal engagement rules use shared native challenge controls, with private idempotent diary persistence and create/edit/delete/export. Main portable backup excludes separate diary data. No physical AlarmActivity delivery or semantic dream validation claim."),
+    "Backup duration / repeat / timeout": (["AlarmTiming.java", "AlarmLifetime.java", "AlarmService.java", "AlarmAudioSink.java", "AlarmEditorActivity.java"], "AlarmTimingStorageTest3 and AlarmTimingFlowTest1/all7 originals", "Optional bounded backup-sound bursts/repeats/gaps and occurrence-owned auto-silence preserve continuous/Never defaults. Primary sound continues between backup bursts; timeout is not successful challenge completion. Configuration and pure ownership policy pass; real scheduling/output remains unverified."),
+}
+for row in rows:
+    if row["feature"] in expanded:
+        code, checks, notes = expanded[row["feature"]]
+        row.update(status="partial", implementation=code, validation="4b7d017 / CI40147599727: " + checks + " PASS within30classes/102methods/90originals. Private fixtures/fake providers only; no new combined local count or physical output inferred.", notes=notes)
+    elif row["feature"] == "Tilt maze / jumping / flags / counting tasks":
+        row.update(status="partial", implementation=["CountingPuzzle.java", "FlagPuzzle.java", "TiltMaze.java", "TiltMotion.java", "TiltMazeTask.java", "ChallengePackPreviewActivity.java", "AlarmActivity.java"], validation="Author a0d2bed: ChallengeCountingFlagsTest, TiltMazeTest, TiltMotionTest and existing ChallengeRoutineTest:24pure cases PASS, debug/native APKs and lint PASS. ChallengePackNativeTest8 authored/compiled, execution pending.", notes="Original Counting and eight-country Flags plus calibrated fresh-sensor collision maze are wired into saved routines and shared silent previews. Persisted Math fallback and lifecycle/run fences included. Actual sensor/alarm behavior and native execution remain unverified; jumping missing. See COUNTING-TILT-FLAGS.md.")
+    elif row["feature"] in ("Assistant voice actions", "Own Intent and data-provider contracts"):
+        row.update(status="partial", implementation=["AlarmRequest.java", "AlarmRequestInput.java", "AlarmRequestActivity.java", "HomeLaunch.java"], validation="8d00238: AlarmRequestTest4, AlarmRequestStorageTest3 and AlarmRequestFlowTest1 authored; build/native execution pending. No assistant or phone action.", notes="Permission-protected standard SET_ALARM/SHOW_ALARMS entry reconstructs bounded scalar fields into a fresh ordinary editor draft. Explicit Save required even when skip-UI requested. No incoming identity/nested Intent authority. Custom/silent ringtone requests explicitly unsupported; actual assistant routing, dismiss/snooze/timer and inbound data-provider contracts absent/unverified. See STANDARD-ALARM-REQUESTS.md.")
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
 
 for n, row in enumerate(rows, 1):
     row["id"] = f"F{n:03}"
+    row["validation"] = re.sub(r"(\b\w+Test)(\d+)", r"\1 \2", row["validation"])
     row["tests"] = [{"name": name, "path": test_paths[name]}
                     for name in sorted(set(re.findall(r"\b\w+Test\b", row["validation"])))
                     if name in test_paths]
@@ -639,6 +655,10 @@ Superseding da0f571 CI40141612460 passes23classes/77methods/all68originals for t
 feature sprint, including corrected calendar/defaults/HC/date/goals/tag/cloud flows.
 Local combined778pure/100suites, debug/native APKs and lint0errors98warnings pass7m03.
 See verification/2026-10-25-feature-sprint/README.md for original bounded evidence.
+Expanded4b7d017 CI40147599727 passes30classes/102methods/all90originals, adding
+search, diary, shared typed challenges, fake-host widget contracts and backup timing.
+See verification/2026-10-25-feature-sprint-expanded/README.md. Newer request/challenge
+increments remain pending native execution; no physical acceptance is inferred.
 At the user's request, the dedicated design reviewer is stopped and broad design,
 bug and security audits are deferred while agents implement features. Real acoustic
 accuracy, overnight reliability and full36screen parity remain uncertified.
