@@ -72,6 +72,7 @@ PHONE_FEATURE_TESTS += ("TrackingDelayStorageTest", "TrackingDelayFlowTest")
 PHONE_FEATURE_TESTS += ("BarcodeCodeStorageTest", "BarcodeCodeFlowTest", "DiaryTerminalStateTest")
 PHONE_FEATURE_TESTS += ("SpeakStorageTest", "SpeakConfigurationFlowTest", "SpeakCaptureFlowTest", "SpeakFixtureEvaluationTest", "TrackingFlipStorageTest", "TrackingFlipFlowTest")
 PHONE_FEATURE_TESTS += ("SunriseStorageTest", "SunriseTimeFlowTest", "ToneWaveArrivalTest", "AutoCloudBackupStorageTest", "AutoCloudBackupFlowTest")
+PHONE_FEATURE_TESTS += ("SoundInclusionStorageTest", "SoundInclusionFlowTest", "PictureNativeTest", "PictureMatchFlowTest", "GoalAlarmPlanStorageTest", "GoalAlarmTimeFlowTest")
 PHONE_FEATURE_FRAMES = ["calendar-rules-" + name + ".png" for name in ("initial", "draft", "saved", "reopened")]
 PHONE_FEATURE_FRAMES += ["alarm-defaults-" + name + ".png" for name in ("initial", "recreated", "saved", "reopened", "reset", "saving", "saving-recreated", "save-error", "retry")]
 PHONE_FEATURE_FRAMES += ["health-connect-" + name + ".png" for name in ("default", "configured", "synced", "source", "conflict", "kept", "unavailable", "permissions")]
@@ -97,11 +98,14 @@ PHONE_FEATURE_FRAMES += ["speak-capture-" + name + ".png" for name in ("permissi
 PHONE_FEATURE_FRAMES += ["tracking-flip-" + name + ".png" for name in ("default", "draft-recreated", "saved-reopened", "preview", "detected", "unsupported", "preview-stopped")]
 PHONE_FEATURE_FRAMES += ["sunrise-time-" + name + ".png" for name in ("invalid", "configured", "recreated", "reopened")]
 PHONE_FEATURE_FRAMES += ["automatic-backup-" + name + ".png" for name in ("off", "enabled", "recreated", "queued", "verified", "uncertain", "retried", "disabled")]
+PHONE_FEATURE_FRAMES += ["sound-inclusion-" + name + ".png" for name in ("default", "cancelled", "draft-recreated", "reopened", "restored", "last-required", "saving-recreated", "speech-only")]
+PHONE_FEATURE_FRAMES += ["picture-reference-" + name + ".png" for name in ("invalid", "captured", "recreated", "matched", "reopened")]
+PHONE_FEATURE_FRAMES += ["goal-alarm-" + name + ".png" for name in ("missing", "invalid", "review", "recreated", "copied", "dated", "sunrise-fallback")]
 # Source4b7d017 already passed the first30 classes/102methods. This shorter scope
 # exercises every later feature plus the two earlier flows with recent failures.
 # It never replaces phone-features or the independent full-app classifier gate.
 FEATURE_INCREMENT_TESTS = ("DatedGoalBankFlowTest", "TypedWakeFlowTest") + PHONE_FEATURE_TESTS[PHONE_FEATURE_TESTS.index("AlarmRequestStorageTest"):]
-FEATURE_INCREMENT_PREFIXES = ("dated-goal-", "typed-wake-", "alarm-request-", "tracking-dnd-", "alarm-mode-", "calendar-event-", "record-insights-", "tracking-delay-", "barcode-code-", "speak-config-", "speak-capture-", "tracking-flip-", "sunrise-time-", "automatic-backup-")
+FEATURE_INCREMENT_PREFIXES = ("dated-goal-", "typed-wake-", "alarm-request-", "tracking-dnd-", "alarm-mode-", "calendar-event-", "record-insights-", "tracking-delay-", "barcode-code-", "speak-config-", "speak-capture-", "tracking-flip-", "sunrise-time-", "automatic-backup-", "sound-inclusion-", "picture-reference-", "goal-alarm-")
 FEATURE_INCREMENT_FRAMES = [name for name in PHONE_FEATURE_FRAMES if name.startswith(FEATURE_INCREMENT_PREFIXES)]
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
@@ -215,6 +219,7 @@ method_counts.update({"TrackingDelayStorageTest": 4, "TrackingDelayFlowTest": 2}
 method_counts.update({"BarcodeCodeStorageTest": 3})
 method_counts.update({"SpeakCaptureFlowTest": 2, "TrackingFlipStorageTest": 3, "TrackingFlipFlowTest": 2})
 method_counts.update({"SunriseStorageTest": 6, "AutoCloudBackupStorageTest": 12, "AutoCloudBackupFlowTest": 2})
+method_counts.update({"SoundInclusionStorageTest": 3, "SoundInclusionFlowTest": 3, "PictureNativeTest": 3, "GoalAlarmPlanStorageTest": 3, "GoalAlarmTimeFlowTest": 2})
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
