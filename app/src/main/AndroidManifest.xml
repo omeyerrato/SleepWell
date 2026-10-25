@@ -106,6 +106,7 @@
         <activity android:name=".AlarmBedtimeActivity" android:exported="false" />
         <activity android:name=".WakeCheckActivity" android:exported="false" />
         <activity android:name=".TimerRequestActivity" android:exported="true" android:permission="com.android.alarm.permission.SET_ALARM"><intent-filter><action android:name="android.intent.action.SET_TIMER" /><category android:name="android.intent.category.DEFAULT" /></intent-filter></activity>
+        <activity android:name=".NapProfilesDocumentsActivity" android:exported="false" />
         <activity android:name=".NapProfilesActivity" android:exported="false" />
         <activity android:name=".NapActivity" android:exported="false" />
         <activity android:name=".NoteChallengeActivity" android:exported="false" />
