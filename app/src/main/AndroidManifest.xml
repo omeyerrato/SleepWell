@@ -44,7 +44,7 @@
     <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
     <uses-feature android:name="android.hardware.nfc" android:required="false" />
     <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
-    <queries><package android:name="com.google.android.apps.healthdata" /><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent></queries>
+    <queries><package android:name="com.google.android.apps.healthdata" /><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent><intent><action android:name="android.speech.action.RECOGNIZE_SPEECH" /></intent></queries>
     <application android:name=".SleepWellApplication" android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:label="SleepWell" android:theme="@style/AppTheme" android:icon="@drawable/ic_moon" android:supportsRtl="true">
         <!-- Foreground explicit contactless calibration only; never externally launchable. -->
         <activity android:name=".AwakeSettingsActivity" android:exported="false" />
@@ -145,6 +145,7 @@
         <activity android:name=".SoundEventsActivity" android:exported="false" />
         <activity android:name=".SoundLibrarySettingsActivity" android:exported="false" />
         <activity android:name=".SoundSensitivityActivity" android:exported="false" />
+        <activity android:name=".RelativeAlarmTimeActivity" android:exported="false" />
         <activity android:name=".GoalAlarmTimeActivity" android:exported="false" />
         <activity android:name=".SunriseTimeActivity" android:exported="false" />
         <activity android:name=".AlarmDefaultsActivity" android:exported="false" />
