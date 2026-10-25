@@ -14,6 +14,9 @@ below. External accounts and services are supplied by the user.
 - App guard: package identifiers you select and window package/class/ID metadata supplied by Android Accessibility. The service cannot retrieve window content. Package transitions are not saved as an app-usage history.
 - NFC: the identifier of a tag you intentionally enroll. This is not an authentication mechanism.
 - Camera challenges: QR/barcode enrollment retains a location label, format and payload hash rather than raw code text. Picture matching retains a compact visual signature rather than the original image; it is not identity, semantic-object or liveness verification. Camera access is requested explicitly.
+- Object recognition uses a bundled Apache2.0 TensorFlow model and selected model
+  label, with local CameraX/LiteRT processing after explicit Start. No images or
+  image templates are saved/uploaded. This checks image content, not liveness.
 - Smile and Pose challenges use bundled proprietary Google ML Kit models for local
   camera processing. SleepWell saves no camera images or face/body templates.
   Google may receive SDK usage/performance metrics; the in-app details disclose
@@ -42,6 +45,19 @@ below. External accounts and services are supplied by the user.
 - Optional alarm radio contacts the explicitly selected public HTTPS station when
   that alarm plays. The station receives normal connection information, including
   the network address; fallback playback does not make the remote exchange private.
+
+Optional guided narration sends only the app's original step text to an installed
+Android TTS engine, requiring an engine-declared offline English voice. It starts
+only on explicit Play during a running foreground guide. Engine implementation and
+voice availability are external prerequisites; no voice is downloaded by SleepWell.
+
+Travel sleep shifts store user-chosen home/destination dates, baseline times,
+direction and dated reminder receipts locally. Saving schedules silent reminders
+only when enabled; wake alarms require a separate reviewed Save. Weekly nap
+profiles store local definitions and private alarm-group ownership. Portable
+profile files never carry active authority; main-data restore strips ownership
+and clears group authority after commit. These private preferences are separate
+from the main metadata backup.
 
 ## Permissions
 

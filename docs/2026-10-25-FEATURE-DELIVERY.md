@@ -3,7 +3,7 @@
 This records the production feature window ending **17:23 Riyadh / 14:23 UTC**.
 It is a delivery inventory, not full functional or design acceptance.
 
-## Final candidate
+## Candidate published before the deadline
 
 - Application source: **90e2583**; main database **schema 15**; portable metadata
   **backup format 13**.
@@ -95,7 +95,8 @@ It is a delivery inventory, not full functional or design acceptance.
 - [ ] Actual contactless capture/playback and snoring-cue effectiveness; shared-stream
   WAV clips and separately consented Sound/Vibration/Both paths now have code.
   Their runtime/hardware acceptance remains outstanding.
-- [ ] Semantic object recognition and speech transcription/instrument recognition.
+- [ ] Speech transcription and reliable instrument/laughter recognition. Local object
+  classification was added in the later follow-up below; its acceptance remains open.
 - [ ] Direct vendor-account cloud clients; SAF providers handle their own remote upload.
 - [ ] Proven jet-lag prevention or clinical chronotype/regularity classification.
   Existing experimental cues and descriptive calculations are not equivalents.
@@ -122,3 +123,42 @@ contactless tracking and snoring-cue settings. Starting a new contactless night
 clears the previous route error. This follow-up has build-only evidence, no new
 tests/device actions, and is not included in the published90e2583 prerelease.
 The locally preserved6180a6f APK has the same installed debug signing key.
+
+## Four-feature source follow-up after the deadline
+
+Application source **bff9f7e** builds successfully in **2m59s**. Database15 and
+metadata backup13 remain unchanged; its APK retains the installed debug key.
+It has not been installed. No new unit/native/lint/screenshot/device batches ran.
+The earlier public90e2583 APK does not contain these changes.
+
+- **Weekly nap schedules:** explicitly reviewed recurring local-clock wake alarms
+  for selected start weekdays, including cross-midnight wake days, overlap checks,
+  acknowledged journaled apply/retry/cancel and private nonce/full-row ownership.
+  Independently edited rows detach. Portable definitions never schedule alarms;
+  main-data restore removes imported authority and clears private groups after
+  commit. Owned nap alarms bypass night calendar/reminder behavior. They are not
+  elapsed timers or automatic nap-start tracking.
+- **Optional narrated wind-down:** actual Android TTS speaks the current/subsequent
+  original timed guide steps only after explicit Play. Requires an installed English
+  engine-declared offline voice. Pause/end/focus loss/recreation/alarm/tracking stop
+  speech; visible provider/timeout errors retain silent guidance. The app does not
+  download voices; provider behavior and audible quality remain unverified.
+- **Object recognition challenge:** bundled Apache-2.0 EfficientNet-Lite0 runs on
+  real CameraX frames against16 curated labels, with score/margin/repeated-frame
+  requirements. Saved task configuration, camera preview, run-bound one-use alarm
+  results and persistent Math fallback are connected. No images are saved/uploaded.
+  Photos/screens can pass image classification; this is not a liveness check.
+- **Pre-travel sleep shifts:** user chooses Earlier/Later and15/30/60min daily shifts
+  across1–7 days before a saved departure. Dated home/destination review rejects
+  ambiguous/missing endpoints and overlapping windows. Default-off silent reminders
+  are revision-bound and recover future delivery only. Each wake time opens a new
+  ordinary alarm draft requiring separate Save; existing alarms are untouched.
+
+Commits include5127f0e (narration),76ffd0e/46cec0b (object capture and challenge),
+dfdb9fa/1c636b2 (travel plan/new draft),6f5c729/8e1cb43/0eaa290 (weekly naps and
+ownership integration) andbff9f7e (working weekly editor links).
+
+Actual camera/model accuracy, TTS providers, recurring OS delivery, travel reminders,
+overnight/device behavior and design acceptance remain outstanding. Travel planning
+does not establish clinical phase or effective jet-lag prevention. Full parity is
+unfinished; the six-hour full-completion deadline was missed.

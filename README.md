@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 25 October
 
-Application source **90e2583** builds with schema15 / backup format13. This
+Published application source **90e2583** builds with schema15 / backup format13. This
 production-only window added alarm/snooze/reminder controls, extra-loud processing,
 additional challenges, awake estimates, motion calibration, paired/PIR inputs,
 reviewed-day SRI, nap profiles, explicit summary sharing and whole-library audio
@@ -22,12 +22,19 @@ backups. See the [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
 The candidate has build-only evidence and has not been installed on the personal
 phone. Design, runtime, overnight and actual provider acceptance remain open.
 
+Follow-up source **bff9f7e** adds weekly recurring nap schedules, locally classified
+object challenges, optional offline English narration and dated pre-travel sleep
+shifts with silent reminders and separately saved wake-alarm drafts. Its production
+APK builds in2m59s with the same schema/backup format and installed signing key.
+These additions are not in the earlier90e2583 download. They have build-only
+evidence; no phone, camera, speech or overnight acceptance is claimed.
+
 ## Working capabilities
 
 - Multiple one-shot or weekday alarms using Android's exact `setAlarmClock` API, rescheduled on reboot, clock/time-zone changes, and updates.
 - Original Daybreak and Pulse alarm tones, Android's default alarm sound, or your own audio file; configurable alarm-stream volume, gradual ramp, vibration, and optional loud backup escalation.
 - Math, matching pairs, sequence, retyping, shaking, and enrolled NFC challenges. Configurable rounds, limited snoozes, optional screen pinning, and post-dismissal wake-up checks.
-- Additional saved tasks include graded arithmetic, QR/barcodes, walking, mirror text, dream diary, visual search, counting, flags, tilt maze, broad-speech detection and picture similarity. The matrix distinguishes real implementation, native fixture checks and unverified hardware behavior; laughter, instruments and semantic object recognition remain incomplete.
+- Additional saved tasks include graded arithmetic, QR/barcodes, walking, mirror text, dream diary, visual search, counting, flags, tilt maze, broad-speech detection, picture similarity and configurable local object classification. The matrix distinguishes real implementation, historical fixture checks and unverified hardware behavior; reliable laughter/instrument recognition and object-camera acceptance remain incomplete.
 - Optional accessibility-based return to the active alarm, plus a bedtime guard for explicitly selected distracting apps. Calls and Android Settings remain available. Developer stop is shown only in debug builds.
 - Native user-started tracking setup and live movement, same-session pause/resume, excluded paused duration and saved reports. Optional light/noise capture; real measured graphs and local history. Only short movement-only flows have current device verification.
 - An experimental early wake-up window based on sustained movement, with the fixed alarm scheduled independently. Movement is not a measured sleep stage.

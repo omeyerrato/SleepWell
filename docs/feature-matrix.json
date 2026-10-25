@@ -683,38 +683,21 @@
       "screens": "04–12,26",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
-        "PictureSignature.java",
-        "PictureReference.java",
-        "PictureReferenceJson.java",
-        "PictureHold.java",
-        "PictureProof.java",
-        "PictureCamera.java",
         "PictureMatchActivity.java",
-        "AlarmEditorActivity.java",
+        "ObjectRecognitionActivity.java",
+        "ObjectClassifier.java",
+        "ObjectTarget.java",
+        "ObjectProof.java",
+        "ObjectCamera.java",
+        "ChallengeRoutine.java",
+        "ChallengeEditorActivity.java",
         "AlarmActivity.java"
       ],
-      "validation": "d705352 integrateddf17b50:PictureSignatureTest/PictureHoldTest 10 host actual-pixel cases PASS under fixed declared policy. PictureNativeTest 3/PictureMatchFlowTest 1/five required originals compiled/execution pending combined build/CI. CI40166582977 PictureNativeTest 3 PASS, PictureMatchFlowTest 1 FAIL on offscreen Challenges title after successful cancellation.48b0917 integrated99d678a reveals the owned header before the unchanged observation; fresh native run pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: PictureNativeTest 3/PictureMatchFlowTest 1/all5 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS14s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
+      "validation": "Combined production assembleDebug bff9f7e PASS2m59s; build-only scope. No new unit/native/lint/screenshot, provider, camera, audio or personal-phone validation; historical test links do not certify these additions.",
       "status": "partial",
-      "notes": "Explicit local reference enrollment and offline compact similarity signature, no retained image or upload. Matching requires quality gates and three fresh stable frames, current reference/run/unit proof and Math fallback. Permission/error/cancel/recreation and strict portable rules are wired; actual camera/device accuracy unverified. This is picture similarity, not semantic object recognition or liveness. See PICTURE-MATCH-CHALLENGE.md.",
+      "notes": "Existing enrolled picture similarity remains separate. New configurable Object recognition runs the bundled Apache-2.0 EfficientNet-Lite0 model locally against 16 curated ImageNet labels, requiring confidence/margin and repeated fresh frames. Real CameraX capture, explicit start, bounded cleanup, saved targets, preview and run-bound one-use alarm results are wired; Math fallback persists. No images are retained/uploaded. Photos/screens can satisfy image classification: this supplies no identity or liveness proof. Bedroom framing, accuracy, full camera lifecycle and actual alarm completion remain unverified.",
       "id": "F028",
-      "tests": [
-        {
-          "name": "PictureHoldTest",
-          "path": "app/src/test/java/org/sleepwell/app/PictureHoldTest.java"
-        },
-        {
-          "name": "PictureMatchFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/PictureMatchFlowTest.java"
-        },
-        {
-          "name": "PictureNativeTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/PictureNativeTest.java"
-        },
-        {
-          "name": "PictureSignatureTest",
-          "path": "app/src/test/java/org/sleepwell/app/PictureSignatureTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Smile task",
@@ -955,15 +938,18 @@
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
         "NapProfiles.java",
-        "NapProfilesStore.java",
-        "NapProfilesRuntime.java",
+        "NapProfilesWeekly.java",
         "NapProfilesActivity.java",
-        "NapProfilesDefinitions.java",
-        "NapProfilesDocumentsActivity.java"
+        "NapProfilesStore.java",
+        "NapProfilesDocumentsActivity.java",
+        "Scheduler.java",
+        "CalendarAlarms.java",
+        "SmartBedtimeRuntime.java",
+        "Backup.java"
       ],
-      "validation": "Production assembleDebug90e2583 passed14s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Combined production assembleDebug bff9f7e PASS2m59s; build-only scope. No new unit/native/lint/screenshot, provider, camera, audio or personal-phone validation; historical test links do not certify these additions.",
       "status": "partial",
-      "notes": "Named local profiles contain two to six clock/duration entries. Saving does not schedule: applying requires review of one future date, existing nap defaults and explicit consent. Durable ownership journal creates disabled rows, schedules all and activates only after acknowledgements; partial/interrupted applications require owned Retry/Cancel. Strict portable definition export/import reviews duplicates and name conflicts, creates fresh identities and never imports active alarms. Weekly recurrence remains absent; actual OS delivery and document-provider exchange remain unverified.",
+      "notes": "Saved 2–6-entry definitions now choose one-date elapsed timers or explicitly reviewed weekly local-clock wake alarms on selected START weekdays. Cross-midnight wake days, first already-started-window skip, circular overlaps, journaled activation/retry/cancel and private nonce/full-row ownership are handled. Independent alarm edits detach ownership; owned nap alarms bypass work-calendar adjustment and main-night reminder selection. Definition imports schedule nothing; metadata restore strips authority and clears the private index after commit. No automatic nap-start tracking. DST/time-zone changes can alter elapsed rest. Actual recurring OS delivery, cancellation and edited-alarm behavior remain unverified.",
       "id": "F037",
       "tests": []
     },
@@ -1673,14 +1659,13 @@
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
         "BinauralTones.java",
-        "BinauralSettingsActivity.java",
-        "SleepSoundService.java",
-        "GuidedWindDown.java",
-        "GuidedWindDownActivity.java"
+        "BinauralActivity.java",
+        "GuidedWindDownActivity.java",
+        "GuidedWindDownNarration.java"
       ],
-      "validation": "Combined production assembleDebug90e2583 passed14s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug bff9f7e PASS2m59s; build-only scope. No new unit/native/lint/screenshot, provider, camera, audio or personal-phone validation; historical test links do not certify these additions.",
       "status": "partial",
-      "notes": "Manual-play stereo PCM binaural generation uses independently configured carrier/beat frequencies and the existing timer/fade/lifecycle. Original silent2/5/10minute guided reading with optional visual breathing cue has real timed progression and Start/Pause/Resume/End. No narration, health benefit or automatic output claim; physical playback remains unverified.",
+      "notes": "Real stereo binaural generation and original timed silent guidance remain available. Optional explicit Play narration now speaks the current and subsequent guide steps through an installed English engine-declared offline Android TTS voice. Opening, restoring, changing preference or regaining focus does not start speech. Pause/end/focus loss/recreation/alarm/tracking stop owned speech; timeouts and no-voice/focus/provider errors are visible. The app downloads no voice. Provider offline behavior, audible quality and lifecycle effects are unverified; no clinical sleep benefit is established.",
       "id": "F062",
       "tests": []
     },
@@ -1707,30 +1692,21 @@
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
         "TravelActivity.java",
-        "TravelCueReviewActivity.java",
-        "TravelCuePlan.java",
-        "TravelCueSession.java",
+        "TravelPlan.java",
         "TravelCueRuntime.java",
-        "TravelCueStore.java",
-        "TravelCues.java",
-        "PhoneTorchCoordinator.java",
-        "PhoneTorches.java",
-        "TrackingService.java"
+        "TripSleepPlan.java",
+        "TripSleepActivity.java",
+        "TripSleepRuntime.java",
+        "TripSleepStore.java",
+        "TripSleepReceiver.java",
+        "TripSleepBootReceiver.java",
+        "AlarmEditorActivity.java"
       ],
-      "validation": "Sourcecd35c21 integrated as5d11405.47 focused pure tests pass; debug/native APKs and lint0errors87warnings pass; strict source-clear. TravelCueStorageTest 8 and TravelCueFlowTest 2/16 originals execution-pending. No hardware output or actual clinical effect verified. Main05cd205/focusedCI40079038257 TravelCueStorageTest 8 PASS.158s andTravelCueFlowTest 2 PASS30.764s/all16originals. All16 individually inspected: disabledArm visiblymuted,windowCancel/recreate/save/reopen,active/interrupted/error gates pass bounded config/fake-light scope. Wholeboard09stillpartial: lower controls/continuation and supporting prose need polishing. Hardwaredose/OSdelivery/clinicalprevention are unproven.",
+      "validation": "Combined production assembleDebug bff9f7e PASS2m59s; build-only scope. No new unit/native/lint/screenshot, provider, camera, audio or personal-phone validation; historical test links do not certify these additions.",
       "status": "partial",
-      "notes": "Saved zones/date/daylight reminders plus separate default-off experimental phone-light windows. Explicit Arm only during current manual active tracking; separate Stop/journal/error/interruption, requested2ms/15s finite session, no automatic/recurring/boot/replay arming. Serial app torch ownership gives real alarms priority; timing/dose not measured. No evidence-based phase scheduling, jet-lag prevention, dream/REM or smart-light claim. See TRAVEL-PHONE-LIGHT-CUES.md.",
+      "notes": "Existing experimental timed light cues remain narrowly scoped. New separate pre-travel sleep schedule shifts user-reviewed bedtime and wake time Earlier/Later by15/30/60min per day for1–7 days before a saved trip, showing dated home/destination times and actual elapsed windows. Optional default-off silent reminders are revision-bound, reject stale/duplicate delivery and recover only future reminders. Each wake time can open a genuinely new ordinary alarm draft; the user must Save it separately. No existing alarms are rewritten. Gap/fold endpoints are rejected. This is user-chosen planning, not validated circadian phase, prescribed light dose or established jet-lag prevention. Actual OS notification/alarm behavior is unverified.",
       "id": "F064",
-      "tests": [
-        {
-          "name": "TravelCueFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/TravelCueFlowTest.java"
-        },
-        {
-          "name": "TravelCueStorageTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/TravelCueStorageTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "DND / airplane / screen dimming",
@@ -3711,14 +3687,13 @@
       "source": "https://sleep.urbandroid.org/docs/sleep/lullaby.html",
       "implementation": [
         "BinauralTones.java",
-        "BinauralSettingsActivity.java",
-        "SleepSoundService.java",
-        "GuidedWindDown.java",
-        "GuidedWindDownActivity.java"
+        "BinauralActivity.java",
+        "GuidedWindDownActivity.java",
+        "GuidedWindDownNarration.java"
       ],
-      "validation": "Combined production assembleDebug90e2583 passed14s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug bff9f7e PASS2m59s; build-only scope. No new unit/native/lint/screenshot, provider, camera, audio or personal-phone validation; historical test links do not certify these additions.",
       "status": "partial",
-      "notes": "Actual explicit-play stereo generator and original silent timed wind-down practice are integrated. Guidance pauses on leaving/locking/recreation and requires explicit Resume; it has no narration, microphone or service. Narrated meditation content is still absent. No efficacy or physical-output verification is inferred from compilation.",
+      "notes": "Original timed 2/5/10-minute guidance has optional visual pacing and separately user-started offline-voice narration. Actual Android TTS utterances follow timed guide steps with bounded initialization/utterance lifetime, foreground ownership, audio focus and cleanup. Requires a preinstalled engine-declared offline English voice; silent guidance remains usable on failure. Stereo tones remain the separate explicit generator. Provider/output/device behavior and therapeutic efficacy are not verified.",
       "id": "F127",
       "tests": []
     },
@@ -3731,11 +3706,13 @@
         "DreamCueActivity.java",
         "TravelCues.java",
         "TravelCueRuntime.java",
-        "TravelCueReviewActivity.java"
+        "TravelCueReviewActivity.java",
+        "TripSleepActivity.java",
+        "TripSleepRuntime.java"
       ],
       "validation": "Combined production assembleDebug90e2583 passed14s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Explicit manual-night travel light cues and separate optional timed low-amplitude dream vibration requests have saved schedules, request outcomes and cleanup. Neither REM detection nor jetlag-prevention/lucid-dream efficacy is established. Hardware output remains unverified; no automatic rearming of dream cues.",
+      "notes": "Explicit manual-night travel light cues and separate optional timed low-amplitude dream vibration requests have saved schedules, request outcomes and cleanup. Neither REM detection nor jetlag-prevention/lucid-dream efficacy is established. Hardware output remains unverified; no automatic rearming of dream cues. Separate pre-travel schedule planning now supplies dated voluntary sleep shifts, default-off silent reminders and explicitly saved wake-alarm drafts; this does not validate timed light or lucid-dream efficacy.",
       "id": "F128",
       "tests": []
     },

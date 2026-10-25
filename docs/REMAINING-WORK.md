@@ -16,10 +16,27 @@ Latest user deadline: **5:23 PM Riyadh (14:23 UTC)**. New unit tests, native tes
 batches, screenshot reviews, evidence archiving and broad audits are stopped.
 The next APK requires a production build; build failures are fixed as integration.
 
-Latest production source **90e2583** builds in **14s**, with schema15 and backup
+The six-hour deadline has passed; full parity remains unfinished. Published
+production source **90e2583** built in **14s**, with schema15 and backup
 format13. The frozen debug APK has the same signing key as the installed app.
 This is **build-only evidence**; no new tests, lint, screenshots or physical-phone
 runs were performed in this window. The phone remains on571018b/schema7.
+
+Follow-up application source **bff9f7e** builds in **2m59s** with the same schema,
+backup format and installed signing key. Four additional source flows now exist:
+
+- [x] Weekly nap definitions create reviewed recurring wake alarms, with durable
+  group ownership, retry/cancel, cross-midnight weekdays and independent-edit
+  detachment. They do not automatically start nap tracking.
+- [x] Optional explicitly started narration speaks original guide steps using an
+  installed English engine-declared offline voice; silent guidance remains usable.
+- [x] Configured Object recognition uses actual local CameraX/LiteRT classification,
+  repeated-frame confidence, saved targets and run-bound completion/Math fallback.
+- [x] Pre-travel sleep shifts provide dated home/destination plans, default-off
+  silent reminders and separately saved new wake-alarm drafts.
+
+These checkmarks mean the described production paths exist, not that their runtime,
+accuracy or visual acceptance is complete. They are absent from prerelease90e2583.
 
 This window adds actual production paths for:
 
@@ -49,10 +66,8 @@ See the [feature matrix](FEATURE-MATRIX.md) for exact controls, bounds and evide
 
 - [ ] Validated phone sleep-stage/REM and breathing/apnea/disturbance analysis.
   Periodic echoes and inactivity estimates do not establish those measurements.
-- [ ] Weekly recurring nap profiles; current profiles apply to one reviewed date.
-- [ ] Narrated meditation; current guidance is silent with optional visual pacing.
-- [ ] Semantic object recognition and reliable laughter/instrument identity models.
-  Picture similarity, broad speech and musical-pitch tasks have different scopes.
+- [ ] Reliable laughter/instrument identity models. Object classification now has
+  source, but real camera accuracy and framing remain acceptance work.
 - [ ] Dedicated Sleep Phaser hardware protocol; current PIR uses a user-owned
   Home Assistant HTTPS binary sensor and requires that hub/sensor.
 - [ ] Direct legacy Google Fit/Samsung Health SDK exchange; Health Connect is the
@@ -69,6 +84,8 @@ See the [feature matrix](FEATURE-MATRIX.md) for exact controls, bounds and evide
 - [ ] Physical alarm, ramp, volume restore, sunrise, torch and best-effort app/power
   restriction behavior. Hardware forced-off cannot be prevented by an ordinary app.
 - [ ] Actual model/camera/microphone/pitch calibration and two-phone behavior.
+- [ ] Weekly nap delivery/cancellation across clock, DST, reboot and data restore;
+  offline TTS provider/output/focus behavior; dated travel-reminder delivery.
 - [ ] Actual hub/Health Connect/calendar/SAF/cloud/assistant service exchange.
 - [ ] Backup then install the new schema15 candidate and verify original data.
 - [ ] Reference-by-reference visual correction, bugs and security review.
@@ -110,7 +127,8 @@ This verifies the named feature batch, not every app feature or physical effect.
 - [x] Speak configuration/storage/capture plus six pinned CPU trials pass narrowly.
   This detects broad speech, not words, laughter, instruments, identity or liveness.
 - [x] Picture match: actual pixel/private storage3 + configuration1/all5 originals pass.
-  Semantic object recognition, real camera framing/accuracy and liveness remain absent.
+  This historical batch predates semantic object classification. Real camera
+  framing/accuracy remains unverified; liveness is not supplied by either task.
 - [x] Arm-tonight charging/screen-off conditions Storage3/Flow1/all3 originals pass;
   smart-window projection follows actual dated/sunrise/skip/calendar deadlines.
 - [x] Optional exact same-day clock snooze Flow2/all7 originals pass; midnight and
@@ -154,8 +172,9 @@ The full app native run and independent laughter accuracy gate remain failing.
 - [ ] **Anti-snoring:** verify actual detection-to-cue behavior, cooldown, repeats,
   routing and stopping. Contactless Sound/Vibration/Both now has separately saved
   channel consents and capture masks; clips use a separate per-night opt-in.
-- [ ] **Jet lag:** complete useful travel planning and honestly labelled light cues;
-  validate scheduling and output. Effective jet-lag prevention is not established.
+- [ ] **Jet lag:** pre-travel sleep-shift planning and separate wake drafts now exist;
+  validate reminder scheduling and experimental light output. Effective jet-lag
+  prevention is not established.
 - [ ] **Reports and charts:** finish the reference composition throughout the Report
   flow; complete historical dated-goal accounting, missing-day handling and insights.
 - [ ] **Alarm interaction:** keep the list compact and detailed settings inside each

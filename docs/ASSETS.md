@@ -99,3 +99,18 @@ through a font resource without changing the existing in-app asset loader.
 The Inter source and OFL license above apply to both copies.
 
 Counting shapes, maze geometry and the eight-country flag recognition illustrations in WakePuzzleView/TiltMazeView are original Canvas drawings shipped as source under this repository's MIT license. No external flag/image/emoji assets were downloaded; illustrations are recognition patterns, not legal flag construction specifications.
+
+## Bundled semantic object classifier
+
+Object recognition uses TensorFlow's EfficientNet-Lite0 INT8 mobile model, whose
+embedded metadata identifies TensorFlow and Apache2.0. The exact model source,
+input/output tensors, normalization, quantization, labels and SHA256 pins are in
+[object_model_PROVENANCE.json](../app/src/main/assets/object_model_PROVENANCE.json).
+The [Apache2.0 license](../app/src/main/assets/object_model_LICENSE.txt) and unchanged
+metadata-extracted labels ship beside the model. This is independent of the
+existing picture-similarity task and Google ML Kit Smile/Pose models.
+
+Original challenge policy requires the chosen actual model label, score/margin
+and a fresh multi-frame hold. Scores are not calibrated confidence. Dim-room,
+household-object and camera accuracy remain unverified; photos/screens may pass.
+The app retains no camera image or face/body template for this task.

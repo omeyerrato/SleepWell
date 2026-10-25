@@ -839,6 +839,38 @@ for row in rows:
         row["notes"] += " Follow-up6180a6f displays skipped headphone-route errors in live contactless tracking and cue settings, clearing old route errors at the next night start."
         row["validation"] += " Error-state follow-up6180a6f assembleDebug PASS15s; no runtime/device validation. Published prerelease remains90e2583."
 
+# Source additions after the published 90e2583 candidate. Historical test results
+# above do not validate these newer paths.
+FOLLOW_UP_FEATURES = {
+    "Object/picture task": (
+        ["PictureMatchActivity.java", "ObjectRecognitionActivity.java", "ObjectClassifier.java", "ObjectTarget.java", "ObjectProof.java", "ObjectCamera.java", "ChallengeRoutine.java", "ChallengeEditorActivity.java", "AlarmActivity.java"],
+        "Existing enrolled picture similarity remains separate. New configurable Object recognition runs the bundled Apache-2.0 EfficientNet-Lite0 model locally against 16 curated ImageNet labels, requiring confidence/margin and repeated fresh frames. Real CameraX capture, explicit start, bounded cleanup, saved targets, preview and run-bound one-use alarm results are wired; Math fallback persists. No images are retained/uploaded. Photos/screens can satisfy image classification: this supplies no identity or liveness proof. Bedroom framing, accuracy, full camera lifecycle and actual alarm completion remain unverified."
+    ),
+    "Polyphasic routine": (
+        ["NapProfiles.java", "NapProfilesWeekly.java", "NapProfilesActivity.java", "NapProfilesStore.java", "NapProfilesDocumentsActivity.java", "Scheduler.java", "CalendarAlarms.java", "SmartBedtimeRuntime.java", "Backup.java"],
+        "Saved 2–6-entry definitions now choose one-date elapsed timers or explicitly reviewed weekly local-clock wake alarms on selected START weekdays. Cross-midnight wake days, first already-started-window skip, circular overlaps, journaled activation/retry/cancel and private nonce/full-row ownership are handled. Independent alarm edits detach ownership; owned nap alarms bypass work-calendar adjustment and main-night reminder selection. Definition imports schedule nothing; metadata restore strips authority and clears the private index after commit. No automatic nap-start tracking. DST/time-zone changes can alter elapsed rest. Actual recurring OS delivery, cancellation and edited-alarm behavior remain unverified."
+    ),
+    "Binaural beats / meditation": (
+        ["BinauralTones.java", "BinauralActivity.java", "GuidedWindDownActivity.java", "GuidedWindDownNarration.java"],
+        "Real stereo binaural generation and original timed silent guidance remain available. Optional explicit Play narration now speaks the current and subsequent guide steps through an installed English engine-declared offline Android TTS voice. Opening, restoring, changing preference or regaining focus does not start speech. Pause/end/focus loss/recreation/alarm/tracking stop owned speech; timeouts and no-voice/focus/provider errors are visible. The app downloads no voice. Provider offline behavior, audible quality and lifecycle effects are unverified; no clinical sleep benefit is established."
+    ),
+    "Meditation / stereo binaural generator": (
+        ["BinauralTones.java", "BinauralActivity.java", "GuidedWindDownActivity.java", "GuidedWindDownNarration.java"],
+        "Original timed 2/5/10-minute guidance has optional visual pacing and separately user-started offline-voice narration. Actual Android TTS utterances follow timed guide steps with bounded initialization/utterance lifetime, foreground ownership, audio focus and cleanup. Requires a preinstalled engine-declared offline English voice; silent guidance remains usable on failure. Stereo tones remain the separate explicit generator. Provider/output/device behavior and therapeutic efficacy are not verified."
+    ),
+    "Jet-lag light intervention": (
+        ["TravelActivity.java", "TravelPlan.java", "TravelCueRuntime.java", "TripSleepPlan.java", "TripSleepActivity.java", "TripSleepRuntime.java", "TripSleepStore.java", "TripSleepReceiver.java", "TripSleepBootReceiver.java", "AlarmEditorActivity.java"],
+        "Existing experimental timed light cues remain narrowly scoped. New separate pre-travel sleep schedule shifts user-reviewed bedtime and wake time Earlier/Later by15/30/60min per day for1–7 days before a saved trip, showing dated home/destination times and actual elapsed windows. Optional default-off silent reminders are revision-bound, reject stale/duplicate delivery and recover only future reminders. Each wake time can open a genuinely new ordinary alarm draft; the user must Save it separately. No existing alarms are rewritten. Gap/fold endpoints are rejected. This is user-chosen planning, not validated circadian phase, prescribed light dose or established jet-lag prevention. Actual OS notification/alarm behavior is unverified."
+    ),
+}
+for row in rows:
+    update = FOLLOW_UP_FEATURES.get(row["feature"])
+    if update:
+        row.update(status="partial", implementation=update[0], notes=update[1], validation="Combined production assembleDebug bff9f7e PASS2m59s; build-only scope. No new unit/native/lint/screenshot, provider, camera, audio or personal-phone validation; historical test links do not certify these additions.")
+    if row["feature"] == "Dream and travel light cues":
+        row["implementation"] += ["TripSleepActivity.java", "TripSleepRuntime.java"]
+        row["notes"] += " Separate pre-travel schedule planning now supplies dated voluntary sleep shifts, default-off silent reminders and explicitly saved wake-alarm drafts; this does not validate timed light or lucid-dream efficacy."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -866,11 +898,13 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Current production source **90e2583** builds a debug APK in **14s**, database
-schema15 and backup format13. This six-hour feature window uses **build-only**
+Current follow-up production source **bff9f7e** adds weekly nap schedules, offline
+narration, semantic object challenges and pre-travel sleep shifts. Database
+schema15 and backup format13 are unchanged. This feature window uses **build-only**
 evidence: no new unit/native/lint/screenshot batches or physical-phone actions.
 The APK retains the installed debug signing key. It has not been installed.
 Latest actual phone installation remains571018b (application sourcedc30736), schema7.
+The earlier public prerelease90e2583 excludes these four follow-up additions.
 Historical scoped functional evidence is preserved in [VERIFICATION.md](VERIFICATION.md)
 and the linked verification directories; it does not validate this newer source.
 The last full-app native run remains failing; narrower passing batches never
