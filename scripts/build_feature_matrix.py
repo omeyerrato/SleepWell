@@ -871,6 +871,14 @@ for row in rows:
         row["implementation"] += ["TripSleepActivity.java", "TripSleepRuntime.java"]
         row["notes"] += " Separate pre-travel schedule planning now supplies dated voluntary sleep shifts, default-off silent reminders and explicitly saved wake-alarm drafts; this does not validate timed light or lucid-dream efficacy."
 
+for row in rows:
+    if row["feature"] in ("Assistant voice actions", "Own Intent and data-provider contracts"):
+        row["implementation"] += ["TimerRequestDraft.java", "ExactTimerPicker.java", "NapActivity.java", "NapPlan.java", "NapPlanJson.java", "Naps.java"]
+        row["notes"] = row["notes"].replace("Timer requests support reviewed whole-minute naps1..600minutes, with explicit alternatives for unsupported seconds/durations.", "Timer requests now preserve exact1..86400seconds through the styled hours/minutes/seconds review, new private nap draft and separate Start. Optional strict NapPlan v2 exactSeconds supplies actual millisecond deadlines; legacy v1 minute plans stay unchanged. Exact timers disable smart early waking and Power nap. Pending/reopened duration/countdown/end clocks retain seconds.")
+        row["notes"] = row["notes"].replace(" and full24-hour exact-second timer compliance", "")
+        row["notes"] = row["notes"].replace("Unsupported timer precision/range requires an explicit alternative.", "Exact1second..24hour timer requests retain their selected duration through review, explicit Start, saved deadline and reopening; legacy minute naps remain available. No silent rounding.")
+        row["validation"] = "Combined production assembleDebug53a0c08 PASS3m2s; build-only. No new unit/native/lint/screenshot, assistant-provider or physical timer validation."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -898,8 +906,9 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Current follow-up production source **bff9f7e** adds weekly nap schedules, offline
-narration, semantic object challenges and pre-travel sleep shifts. Database
+Current follow-up production source **53a0c08** adds weekly nap schedules, offline
+narration, semantic object challenges, pre-travel sleep shifts and exact-second
+reviewed timers. Combined production build **PASS3m2s**. Database
 schema15 and backup format13 are unchanged. This feature window uses **build-only**
 evidence: no new unit/native/lint/screenshot batches or physical-phone actions.
 The APK retains the installed debug signing key. It has not been installed.

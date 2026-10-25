@@ -36,7 +36,15 @@ backup format and installed signing key. Four additional source flows now exist:
   silent reminders and separately saved new wake-alarm drafts.
 
 These checkmarks mean the described production paths exist, not that their runtime,
-accuracy or visual acceptance is complete. They are absent from prerelease90e2583.
+accuracy or visual acceptance is complete. They are absent from prerelease90e2583
+and included in the publishedbff9f7e development prerelease.
+
+Source **53a0c08** adds exact1second..24hour standard timer requests through a
+styled duration picker, reviewed new nap draft, separate Start, actual millisecond
+deadlines, saved state and reopening. Strict optional NapPlan v2 metadata preserves
+seconds; legacy v1 minute plans remain unchanged. Exact timers disable Power nap
+and smart early waking. Combined production build **PASS3m2s**, original signer
+preserved; actual OS timer delivery remains unverified.
 
 This window adds actual production paths for:
 
@@ -75,8 +83,8 @@ See the [feature matrix](FEATURE-MATRIX.md) for exact controls, bounds and evide
 - [ ] Hosted SleepCloud/research community and Spotify account/service parity.
   Public HTTPS radio and user-owned SAF backup folders are the available paths.
 - [ ] Clinical chronotype validation and established jet-lag/lucid-dream efficacy.
-- [ ] Full standard timer precision/range and no-UI assistant scheduling; current
-  requests deliberately require review and support whole-minute naps1..600minutes.
+- [ ] Actual assistant/provider handoff and exact-timer OS delivery. Requests now
+  support exact1second..24hours; no-UI scheduling remains intentionally unsupported.
 
 ### Acceptance deferred at your request
 
@@ -238,7 +246,7 @@ These groups remain open even after the priority list above is addressed.
   screenshots and verify saved/reopened state and unchanged existing data.
 - [x] Historical0a821eb batch passed1063 pure and108 native methods/all154 originals.
   This evidence predates the current production-only source and does not validate it.
-- [x] Build current production debug APK90e2583 and verify the local signing key.
+- [x] Build current production debug APK53a0c08 and verify the local signing key.
   No new test/lint/screenshot batches ran; physical acceptance stays open.
 - [ ] Verify real overnight background behavior, capture quality, battery use and
   interruptions when a suitable controlled test is available.

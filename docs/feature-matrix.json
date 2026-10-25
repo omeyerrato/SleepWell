@@ -2684,11 +2684,17 @@
         "TimerRequest.java",
         "TimerRequestInput.java",
         "RelativeTimeSpeech.java",
-        "RelativeAlarmTimeActivity.java"
+        "RelativeAlarmTimeActivity.java",
+        "TimerRequestDraft.java",
+        "ExactTimerPicker.java",
+        "NapActivity.java",
+        "NapPlan.java",
+        "NapPlanJson.java",
+        "Naps.java"
       ],
-      "validation": "Production assembleDebug90e2583 passed14s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Combined production assembleDebug53a0c08 PASS3m2s; build-only. No new unit/native/lint/screenshot, assistant-provider or physical timer validation.",
       "status": "partial",
-      "notes": "Standard Android alarm/timer requests produce owned review drafts and require explicit Save/Start. Optional external English speech input offers reviewed relative-time candidates; speech-provider availability and behavior are external prerequisites. SKIP_UI is deliberately ignored. Unsupported timer precision/range requires an explicit alternative. No autonomous voice capture or no-UI scheduling; actual assistant/provider integration remains unverified.",
+      "notes": "Standard Android alarm/timer requests produce owned review drafts and require explicit Save/Start. Optional external English speech input offers reviewed relative-time candidates; speech-provider availability and behavior are external prerequisites. SKIP_UI is deliberately ignored. Exact1second..24hour timer requests retain their selected duration through review, explicit Start, saved deadline and reopening; legacy minute naps remain available. No silent rounding. No autonomous voice capture or no-UI scheduling; actual assistant/provider integration remains unverified.",
       "id": "F096",
       "tests": []
     },
@@ -3912,11 +3918,17 @@
         "SleepSummaryActivity.java",
         "SleepSummary.java",
         "SleepSummaryFiles.java",
-        "SleepSummaryFileProvider.java"
+        "SleepSummaryFileProvider.java",
+        "TimerRequestDraft.java",
+        "ExactTimerPicker.java",
+        "NapActivity.java",
+        "NapPlan.java",
+        "NapPlanJson.java",
+        "Naps.java"
       ],
-      "validation": "Production assembleDebug90e2583 passed14s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Combined production assembleDebug53a0c08 PASS3m2s; build-only. No new unit/native/lint/screenshot, assistant-provider or physical timer validation.",
       "status": "partial",
-      "notes": "Permission-protected standard SET_ALARM and SET_TIMER requests require explicit reviewed Save/Start; caller flags, URI grants and unsupported values cannot silently schedule. Timer requests support reviewed whole-minute naps1..600minutes, with explicit alternatives for unsupported seconds/durations. Custom MIME GET_CONTENT supplies an explicitly shared bounded7/30day sleep summary through narrow read-only URI grants. History changes invalidate drafts/staging and erasure revokes known grants/deletes generated files; already-open descriptors/external copies cannot be recalled. Broader contracts, assistant/provider runtime and full24-hour exact-second timer compliance remain incomplete.",
+      "notes": "Permission-protected standard SET_ALARM and SET_TIMER requests require explicit reviewed Save/Start; caller flags, URI grants and unsupported values cannot silently schedule. Timer requests now preserve exact1..86400seconds through the styled hours/minutes/seconds review, new private nap draft and separate Start. Optional strict NapPlan v2 exactSeconds supplies actual millisecond deadlines; legacy v1 minute plans stay unchanged. Exact timers disable smart early waking and Power nap. Pending/reopened duration/countdown/end clocks retain seconds. Custom MIME GET_CONTENT supplies an explicitly shared bounded7/30day sleep summary through narrow read-only URI grants. History changes invalidate drafts/staging and erasure revokes known grants/deletes generated files; already-open descriptors/external copies cannot be recalled. Broader contracts, assistant/provider runtime remain incomplete.",
       "id": "F134",
       "tests": []
     },

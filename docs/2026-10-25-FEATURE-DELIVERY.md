@@ -162,3 +162,15 @@ Actual camera/model accuracy, TTS providers, recurring OS delivery, travel remin
 overnight/device behavior and design acceptance remain outstanding. Travel planning
 does not establish clinical phase or effective jet-lag prevention. Full parity is
 unfinished; the six-hour full-completion deadline was missed.
+
+## Exact-second timer follow-up
+
+Source **53a0c08** adds exact1..86400second standard timer requests. Duration
+passes unchanged through owned hours/minutes/seconds review, new nap draft,
+separate Start, the existing millisecond scheduler and saved/reopened countdown.
+Optional strict NapPlan v2 metadata carries seconds; legacy v1 minute nap metadata
+and ordinary nap presets remain compatible. Exact timers exclude smart early
+waking and Power nap; selecting a minute preset explicitly returns to ordinary naps.
+The combined APK builds in **3m2s**, retains the original installed signing key,
+and leaves schema15 / metadata format13 unchanged. No personal-phone actions or
+new test/lint/screenshot batches ran. Actual assistant/OS delivery is unverified.

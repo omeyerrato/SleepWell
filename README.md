@@ -22,11 +22,14 @@ backups. See the [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
 The candidate has build-only evidence and has not been installed on the personal
 phone. Design, runtime, overnight and actual provider acceptance remain open.
 
-Follow-up source **bff9f7e** adds weekly recurring nap schedules, locally classified
+Follow-up source **53a0c08** adds weekly recurring nap schedules, locally classified
 object challenges, optional offline English narration and dated pre-travel sleep
-shifts with silent reminders and separately saved wake-alarm drafts. Its production
-APK builds in2m59s with the same schema/backup format and installed signing key.
-These additions are not in the earlier90e2583 download. They have build-only
+shifts with silent reminders and separately saved wake-alarm drafts. Standard
+timer requests also retain exact1second..24hour durations through review, Start
+and saved/reopened deadlines. Its production APK builds in3m2s with the same
+schema/backup format and installed signing key. The four-feature predecessor is
+[published asbff9f7e](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-bff9f7e);
+it excludes the exact-second timer follow-up. These additions have build-only
 evidence; no phone, camera, speech or overnight acceptance is claimed.
 
 ## Working capabilities
