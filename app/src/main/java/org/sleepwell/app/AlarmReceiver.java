@@ -13,15 +13,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         if(Scheduler.BACKUP.equals(action)) {
             try{Alarm current=Alarm.read(new JSONObject(Prefs.text(c,"active_alarm","{}")));String run=Prefs.text(c,"alarmRun","");if(backupMatches(Prefs.flag(c,"ringing"),id,current.id,run,intent.getStringExtra("alarmRun"))){Prefs.put(c,"forceBackup",true);c.startForegroundService(new Intent(c,AlarmService.class));}}catch(JSONException ignored){}return;
         }
-        if(Scheduler.BED.equals(action)) {
-            if(SleepPlans.load(c).smartBedtime){SmartBedtimeRuntime.reconcile(c);return;}
-            long deadline=Prefs.of(c).getLong("bedReminderAt",0);if(!SleepPlans.load(c).reminder||deadline<=0||System.currentTimeMillis()<deadline-1000)return;
-            if(TrackingService.running){Scheduler.bedtime(c);return;}
-            c.getSystemService(NotificationManager.class).notify(300,new Notification.Builder(c,Notifications.BED)
-                .setSmallIcon(R.drawable.ic_moon).setContentTitle("Tomorrow starts tonight")
-                .setContentText("Put your phone down. Start your SleepWell night.").setContentIntent(Notifications.home(c)).setAutoCancel(true).build());
-            Scheduler.bedtime(c); return;
-        }
+        if(Scheduler.BED.equals(action)) {PendingResult pending=goAsync();SmartBedtimeRuntime.deliverFixed(c,Prefs.of(c).getLong("bedReminderAt",0),pending::finish);return;}
+
         try(Store s=new Store(c)) {
             Alarm a;
             if(Scheduler.TEST.equals(action)) a=Alarm.read(new JSONObject(Prefs.text(c,"test_alarm","{}")));

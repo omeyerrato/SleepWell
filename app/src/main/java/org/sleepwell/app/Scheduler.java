@@ -41,6 +41,10 @@ public final class Scheduler {
         cancel(c,0,BED);
         SleepPlan plan=SleepPlans.load(c);
         SmartBedtimeRuntime.reconcile(c);if(plan.smartBedtime)return;
+        fixedBedtime(c,plan);
+    }
+    static void fixedBedtime(Context c,SleepPlan plan){
+        cancel(c,0,BED);
         if(!plan.reminder){Prefs.of(c).edit().remove("bedReminderAt").apply();return;}
         if(!allowed(c)){Prefs.put(c,"bedReminderAt",0L);return;}
         long next=plan.nextReminder(System.currentTimeMillis(),ZoneId.systemDefault());

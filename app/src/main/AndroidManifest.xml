@@ -95,6 +95,7 @@
         <activity android:name=".BackupActivity" android:exported="false" />
         <activity android:name=".AlarmExcludedDatesActivity" android:exported="false" />
         <activity android:name=".AlarmEditorActivity" android:exported="false" />
+        <activity android:name=".AlarmBedtimeActivity" android:exported="false" />
         <activity android:name=".WakeCheckActivity" android:exported="false" />
         <activity android:name=".NapActivity" android:exported="false" />
         <activity android:name=".NoteChallengeActivity" android:exported="false" />
