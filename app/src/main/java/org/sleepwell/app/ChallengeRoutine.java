@@ -5,7 +5,7 @@ import java.util.*;
 /** Ordered, bounded tasks. Completing a sensor task is one unit, never an early dismissal. */
 final class ChallengeRoutine {
     static final int LIMIT=8;
-    static final List<String> TYPES=List.of("Math","Memory","Sequence","Retype","Shake","Walk","NFC","QR code","Visual search","Mirror text","Dream journal");
+    static final List<String> TYPES=List.of("Math","Memory","Sequence","Retype","Shake","Walk","NFC","QR code","Visual search","Counting","Tilt maze","Flags","Mirror text","Dream journal");
     static final class Task {
         final String type;final int rounds,targetSteps,journalMinimum;final MathSettings math;final MorningCode code;
         Task(String type,int rounds){this(type,rounds,type.equals("Walk")?10:0);}

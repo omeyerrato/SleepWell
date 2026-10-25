@@ -97,3 +97,5 @@ The native home widget uses the same unchanged Inter font bytes in
 `app/src/main/res/font/inter_widget.ttf`, so Android RemoteViews can load them
 through a font resource without changing the existing in-app asset loader.
 The Inter source and OFL license above apply to both copies.
+
+Counting shapes, maze geometry and the eight-country flag recognition illustrations in WakePuzzleView/TiltMazeView are original Canvas drawings shipped as source under this repository's MIT license. No external flag/image/emoji assets were downloaded; illustrations are recognition patterns, not legal flag construction specifications.
