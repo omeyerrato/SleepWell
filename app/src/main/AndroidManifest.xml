@@ -85,6 +85,7 @@
         <activity android:name=".AlarmEditorActivity" android:exported="false" />
         <activity android:name=".WakeCheckActivity" android:exported="false" />
         <activity android:name=".NapActivity" android:exported="false" />
+        <activity android:name=".CameraLightActivity" android:exported="false" />
         <activity android:name=".PoseActivity" android:exported="false" />
         <activity android:name=".SmileActivity" android:exported="false" />
         <activity android:name=".PictureMatchActivity" android:exported="false" />
