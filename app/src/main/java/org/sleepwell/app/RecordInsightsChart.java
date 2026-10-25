@@ -1,0 +1,19 @@
+package org.sleepwell.app;
+
+import android.content.Context;import android.graphics.*;import android.view.View;import java.time.format.DateTimeFormatter;import java.util.*;
+
+/** Actual daily values only. Unknown dates have no mark and no line bridging them. */
+final class RecordInsightsChart extends View {
+    final RecordInsights data;final int mode;final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG);
+    RecordInsightsChart(Context context,RecordInsights data,int mode){super(context);this.data=data;this.mode=mode;setLayerType(LAYER_TYPE_SOFTWARE,null);setContentDescription(description());setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_YES);}
+    private String description(){StringBuilder text=new StringBuilder(mode==0?"Recorded duration chart. ":mode==1?"Dated goal balance chart. ":"Main period start chart. ");for(RecordInsights.Day day:data.days){text.append(day.date).append(": ");if(mode==0)text.append(day.duration==null?"unknown":RecordUi.duration(day.duration));else if(mode==1)text.append(day.balance==null?"unknown":GoalProgress.signed(day.balance));else text.append(day.startMinute==null?"unknown":clock(day.startMinute));text.append(". ");}return text.toString();}
+    static String clock(double minute){int value=RhythmStats.displayMinute(minute);return String.format(Locale.ROOT,"%02d:%02d",value/60,value%60);}
+    @Override protected void onDraw(Canvas canvas){super.onDraw(canvas);float left=Design.dp(getContext(),43),right=getWidth()-Design.dp(getContext(),8),top=Design.dp(getContext(),15),bottom=getHeight()-Design.dp(getContext(),32),height=bottom-top,width=right-left;double low=0,high=mode==0?12:mode==1?2:1440,arcStart=0;
+        List<Double> starts=new ArrayList<>();if(mode==2){for(RecordInsights.Day d:data.days)if(d.startMinute!=null)starts.add(d.startMinute);if(!starts.isEmpty()){double[] arc=RhythmStats.arc(starts);arcStart=arc[0];low=Math.floor(arcStart/60)*60-30;high=Math.max(low+120,Math.ceil((arcStart+arc[1])/60)*60+30);}}
+        if(mode==0){for(RecordInsights.Day d:data.days)if(d.duration!=null)high=Math.max(high,Math.ceil(d.duration/3600000d));}else if(mode==1){for(RecordInsights.Day d:data.days)if(d.balance!=null)high=Math.max(high,Math.ceil(Math.abs(d.balance)/3600000d));low=-high;}
+        p.setTypeface(Design.font(getContext(),400));p.setTextSize(Design.dp(getContext(),10));for(int n=0;n<=4;n++){float y=top+height*n/4;double value=high-(high-low)*n/4;p.setColor(Design.LINE);p.setStrokeWidth(1);canvas.drawLine(left,y,right,y,p);p.setColor(Design.MUTED);String label=mode==2?clock(value):String.format(Locale.ROOT,"%.0f h",value);canvas.drawText(label,0,y+3,p);}
+        float step=width/data.days.size();Float priorX=null,priorY=null;for(int n=0;n<data.days.size();n++){RecordInsights.Day d=data.days.get(n);Double value=mode==0?(d.duration==null?null:d.duration/3600000d):mode==1?(d.balance==null?null:d.balance/3600000d):d.startMinute;if(value==null){priorX=priorY=null;continue;}if(mode==2&&value<arcStart)value+=1440;float x=left+step*(n+.5f),y=bottom-(float)((value-low)/(high-low))*height;
+            if(mode<2){float zero=bottom-(float)((0-low)/(high-low))*height;p.setColor(mode==1&&value<0?0xffa96b45:Design.VIOLET);canvas.drawRoundRect(x-Math.max(1,step*.32f),Math.min(y,zero),x+Math.max(1,step*.32f),Math.max(y,zero)+1,3,3,p);}else{p.setColor(Design.VIOLET);p.setStrokeWidth(Design.dp(getContext(),2));if(priorX!=null)canvas.drawLine(priorX,priorY,x,y,p);canvas.drawCircle(x,y,Design.dp(getContext(),3),p);priorX=x;priorY=y;}}
+        DateTimeFormatter format=DateTimeFormatter.ofPattern("d MMM",Locale.getDefault());for(int index:new int[]{0,data.days.size()/2,data.days.size()-1}){String label=data.days.get(index).date.format(format);float x=left+step*(index+.5f)-p.measureText(label)/2;x=Math.max(left,Math.min(right-p.measureText(label),x));p.setColor(Design.MUTED);canvas.drawText(label,x,bottom+Design.dp(getContext(),22),p);}
+    }
+}
