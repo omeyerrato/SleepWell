@@ -115,6 +115,7 @@
         <activity android:name=".HistoryActivity" android:exported="false" />
         <activity android:name=".RecordAchievementsActivity" android:exported="false" />
         <activity android:name=".RecordInsightsActivity" android:exported="false" />
+        <activity android:name=".RecordedNightScoreActivity" android:exported="false" />
         <activity android:name=".RecordReportActivity" android:exported="false" />
         <activity android:name=".RecordEditorActivity" android:exported="false" />
         <activity android:name=".SnoringCuesActivity" android:exported="false" />
