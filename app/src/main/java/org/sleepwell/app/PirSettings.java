@@ -1,0 +1,12 @@
+package org.sleepwell.app;
+import android.content.*;import org.json.*;
+final class PirSettings {
+ private static final Object LOCK=new Object();static SharedPreferences prefs(Context c){return c.getSharedPreferences("external_pir_v1",Context.MODE_PRIVATE);}
+ static final class Frozen {final String sealed;final boolean enabled;final long revision;Frozen(String sealed,boolean enabled,long revision){this.sealed=sealed;this.enabled=enabled;this.revision=revision;}}
+ static Frozen capture(Context c){synchronized(LOCK){SharedPreferences p=prefs(c);return new Frozen(p.getString("connection",""),p.getBoolean("enabled",false),p.getLong("revision",0));}}
+ static PirConfig load(Context c)throws Exception{return load(capture(c));}
+ static PirConfig load(Frozen snapshot)throws Exception{long revision=snapshot.revision;String sealed=snapshot.sealed;if(sealed.isEmpty())return PirConfig.empty(revision);JSONObject j=new JSONObject(new AutomationSecrets().open(sealed));if(j.getInt("version")!=1)throw new IllegalArgumentException("Unknown PIR settings.");PirConfig config=new PirConfig(j.getString("endpoint"),j.getString("token"),j.getString("entity"),j.getString("device_class"),snapshot.enabled,revision);config.validate();return config;}
+ static PirConfig save(Context c,PirConfig config)throws Exception{config.validate();String sealed=new AutomationSecrets().seal(new JSONObject().put("version",1).put("endpoint",config.endpoint).put("token",config.token).put("entity",config.entity).put("device_class",config.deviceClass).toString());synchronized(LOCK){SharedPreferences p=prefs(c);if(p.getLong("revision",0)!=config.revision||config.revision==Long.MAX_VALUE)throw new IllegalStateException("PIR settings changed. Reopen before saving.");long next=config.revision+1;if(!p.edit().putString("connection",sealed).putBoolean("enabled",config.enabled).putLong("revision",next).commit())throw new IllegalStateException("PIR settings could not be saved.");return new PirConfig(config.endpoint,config.token,config.entity,config.deviceClass,config.enabled,next);}}
+ static void disconnect(Context c,long revision){synchronized(LOCK){SharedPreferences p=prefs(c);if(p.getLong("revision",0)!=revision||revision==Long.MAX_VALUE)throw new IllegalStateException("PIR settings changed. Reopen before disconnecting.");if(!p.edit().clear().putLong("revision",revision+1).commit())throw new IllegalStateException("PIR settings could not be removed.");}}
+ private PirSettings(){}
+}

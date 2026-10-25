@@ -1,0 +1,12 @@
+package org.sleepwell.app;
+import java.net.URI;import java.util.*;import org.json.*;
+/** Independent opt-in connection. Credentials never enter recording metadata. */
+final class PirConfig {
+ final String endpoint,token,entity,deviceClass;final boolean enabled;final long revision;
+ PirConfig(String endpoint,String token,String entity,String deviceClass,boolean enabled,long revision){this.endpoint=endpoint;this.token=token;this.entity=entity;this.deviceClass=deviceClass;this.enabled=enabled;this.revision=revision;}
+ static PirConfig empty(long revision){return new PirConfig("","","binary_sensor.bedroom_motion","motion",false,revision);}
+ void validate(){URI uri;try{uri=URI.create(endpoint);}catch(Exception error){throw new IllegalArgumentException("Enter your Home Assistant HTTPS address.");}if(!"https".equalsIgnoreCase(uri.getScheme())||uri.getHost()==null||uri.getUserInfo()!=null||uri.getQuery()!=null||uri.getFragment()!=null||uri.getPort()==0||uri.getPort()>65535||endpoint.length()>2048)throw new IllegalArgumentException("Use an HTTPS server address without embedded credentials or a query.");if(token==null||token.isEmpty()||token.length()>2048||token.contains("\r")||token.contains("\n")||token.contains("\u0000"))throw new IllegalArgumentException("Enter a valid Home Assistant access token.");if(entity==null||!entity.matches("binary_sensor\\.[a-z0-9_]{1,120}")||!Set.of("motion","occupancy").contains(deviceClass)||revision<0)throw new IllegalArgumentException("Choose one binary_sensor motion or occupancy entity.");}
+ String base(){return endpoint.replaceAll("/+$","");}
+ String policy(){try{return new JSONObject().put("version",1).put("method","ha_binary_state_v1").put("poll_ms",15000).put("semantics","on_change_snapshot").put("device_class",deviceClass).toString();}catch(JSONException impossible){throw new IllegalStateException(impossible);}}
+ static void validatePolicy(String policy){try{JSONObject p=new JSONObject(policy);if(p.length()!=5||SensorProvenance.whole(p,"version")!=1||!SensorProvenance.text(p,"method").equals("ha_binary_state_v1")||SensorProvenance.whole(p,"poll_ms")!=15000||!SensorProvenance.text(p,"semantics").equals("on_change_snapshot")||!Set.of("motion","occupancy").contains(SensorProvenance.text(p,"device_class")))throw new JSONException("Unknown PIR policy");}catch(JSONException invalid){throw new IllegalArgumentException("Invalid PIR recording policy.");}}
+}

@@ -125,6 +125,8 @@
         <activity android:name=".MissedNightActivity" android:exported="false" />
         <activity android:name=".GuardActivity" android:exported="false" />
         <activity android:name=".BinauralSettingsActivity" android:exported="false" />
+        <activity android:name=".PirSettingsActivity" android:exported="false" />
+        <activity android:name=".PirReportActivity" android:exported="false" />
         <activity android:name=".SleepSoundsActivity" android:exported="false" />
         <activity android:name=".GoalBankActivity" android:exported="false" />
         <activity android:name=".HistoryActivity" android:exported="false" />
