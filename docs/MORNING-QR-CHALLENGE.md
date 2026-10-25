@@ -1,8 +1,8 @@
-# Offline morning QR code
+# Offline morning QR and barcode codes
 
-Board04 enrollment is a real private CameraX preview and offline ZXing QR decoder.
+Board04 enrollment is a real private CameraX preview and offline ZXing decoder. QR behavior below remains compatible; explicit typed barcode support is documented in [MORNING-BARCODES.md](MORNING-BARCODES.md).
 The location label and SHA-256 digest of the exact UTF-8 QR text (maximum 2048 bytes)
-are saved per routine task; raw text/images are never persisted, opened as URLs, or
+are saved per QR routine task (barcodes also save their explicit format); raw text/images are never persisted, opened as URLs, or
 sent over a network. A hash is a matching identifier, not secret encryption.
 
 Enrollment requests camera access only after Allow camera. Denial, unavailable
