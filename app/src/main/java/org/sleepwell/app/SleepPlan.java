@@ -5,14 +5,15 @@ import java.util.Set;
 
 /** User-selected schedule; it never changes a wake-up alarm. */
 final class SleepPlan {
-    int goal=480,bedtime=1350,wake=420,windDown=30,reminderAdvance=30;
+    int goal=480,bedtime=1350,wake=420,windDown=30,reminderAdvance=30,smartRepeatMinutes=0,smartRepeatLimit=3;
     boolean reminder,smartBedtime,noAlarmBedtime;
     long revision;
-    SleepPlan copy(){SleepPlan p=new SleepPlan();p.goal=goal;p.bedtime=bedtime;p.wake=wake;p.windDown=windDown;p.reminderAdvance=reminderAdvance;p.reminder=reminder;p.smartBedtime=smartBedtime;p.noAlarmBedtime=noAlarmBedtime;p.revision=revision;return p;}
+    SleepPlan copy(){SleepPlan p=new SleepPlan();p.goal=goal;p.bedtime=bedtime;p.wake=wake;p.windDown=windDown;p.reminderAdvance=reminderAdvance;p.reminder=reminder;p.smartRepeatMinutes=smartRepeatMinutes;p.smartRepeatLimit=smartRepeatLimit;p.smartBedtime=smartBedtime;p.noAlarmBedtime=noAlarmBedtime;p.revision=revision;return p;}
     void duration(int minutes){goal=minutes;bedtime=Math.floorMod(wake-goal,1440);}
     void bedtime(int minutes){bedtime=minutes;wake=Math.floorMod(bedtime+goal,1440);}
     void wake(int minutes){wake=minutes;bedtime=Math.floorMod(wake-goal,1440);}
     void validate(){
+        if(!Set.of(0,5,10,15,30,60).contains(smartRepeatMinutes)||!Set.of(1,3,6,12).contains(smartRepeatLimit))throw new IllegalArgumentException("Choose a supported bedtime repeat interval and limit.");
         if(goal<20||goal>810)throw new IllegalArgumentException("Choose a duration from 20 minutes to 13 h 30 min.");
         if(bedtime<0||bedtime>=1440||wake<0||wake>=1440)throw new IllegalArgumentException("Choose a valid bedtime and wake time.");
         if(windDown<0||windDown>120||reminderAdvance<0||reminderAdvance>120)throw new IllegalArgumentException("Choose an advance of at most two hours.");
