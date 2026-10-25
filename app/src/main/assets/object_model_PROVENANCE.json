@@ -1,0 +1,37 @@
+{
+  "model": "EfficientNet-Lite0 INT8 TensorFlow mobile image classifier",
+  "model_asset": "object_efficientnet_lite0.tflite",
+  "source": "https://storage.googleapis.com/download.tensorflow.org/models/tflite/task_library/image_classification/android/efficientnet_lite0_int8_2.tflite",
+  "official_example": "https://github.com/tensorflow/examples/blob/master/lite/examples/image_classification/android/app/download_models.gradle",
+  "model_card": "https://www.kaggle.com/models/tensorflow/efficientnet/tfLite/lite0-int8/2",
+  "model_sha256": "aa03e4017f54fd5c743bd397b0a3e136fab0942f9c7cd715064a31ca3e4fc996",
+  "labels_source": "labels_without_background.txt associated file extracted unchanged from model ZIP",
+  "labels_sha256": "e697a491aa735cc6c2aaf982f8e86e8fc7b0a1ea7750a2cc6a2bdfc1e109012f",
+  "license": "Apache-2.0; explicitly present in embedded TFLITE_METADATA model metadata; full license in object_model_LICENSE.txt",
+  "author": "TensorFlow (embedded metadata)",
+  "training": "ImageNet ILSVRC2012 classification; no household/night challenge validation performed",
+  "input": {
+    "type": "UINT8",
+    "shape": [
+      1,
+      224,
+      224,
+      3
+    ],
+    "channels": "RGB",
+    "metadata_mean": 127,
+    "metadata_std": 128,
+    "quantization_scale": 0.012566016986966133,
+    "quantization_zero_point": 131
+  },
+  "output": {
+    "type": "UINT8",
+    "shape": [
+      1,
+      1000
+    ],
+    "quantization_scale": 0.00390625,
+    "quantization_zero_point": 0
+  },
+  "challenge_policy": "Original experimental .70 top score, .15 margin vs all999 other labels; four fresh frames across >=900ms. Model scores are not calibrated real-world certainty. No liveness/identity/authentication."
+}

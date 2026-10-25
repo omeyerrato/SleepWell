@@ -30,3 +30,9 @@ app/src/main/assets/yamnet.tflite binary
 # Preserve actual classifier scores and fixture metadata as emitted by CI.
 docs/verification/**/analysis-human-fixture-evaluation.json -text
 docs/verification/**/analysis-category-fixture-evaluation.json -text
+
+# Preserve bundled object model and metadata source hashes on Windows.
+app/src/main/assets/object_efficientnet_lite0.tflite binary
+app/src/main/assets/object_labels.txt -text
+app/src/main/assets/object_model_LICENSE.txt -text
+app/src/main/assets/object_model_PROVENANCE.json -text
