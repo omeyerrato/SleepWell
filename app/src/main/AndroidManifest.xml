@@ -128,6 +128,7 @@
         <activity android:name=".TravelCueReviewActivity" android:exported="false" />
         <activity android:name=".HabitualTimingActivity" android:exported="false" />
         <activity android:name=".SleepRhythmActivity" android:exported="false" />
+        <activity android:name=".SRIActivity" android:exported="false" />
         <activity android:name=".MissedNightActivity" android:exported="false" />
         <activity android:name=".GuardActivity" android:exported="false" />
         <activity android:name=".BinauralSettingsActivity" android:exported="false" />

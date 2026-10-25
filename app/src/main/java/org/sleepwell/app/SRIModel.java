@@ -1,0 +1,38 @@
+package org.sleepwell.app;
+
+import org.json.JSONObject;
+import java.nio.charset.StandardCharsets;
+import java.security.*;
+import java.time.*;
+import java.time.zone.ZoneOffsetTransition;
+import java.util.*;
+
+/** Diary-based binary sleep/wake comparison. Unreviewed time has no sleep/wake state. */
+final class SRIModel {
+    static final long DAY=86400000L;static final int MIN_PAIRS=7,WINDOW=30;
+    static final String METHOD="https://pmc.ncbi.nlm.nih.gov/articles/PMC5468315/";
+    static final class Capture {
+        final String source;final long now;final List<Period> periods;final List<Open> open;final List<String> zones;
+        Capture(String source,List<RecordEntry> records,List<JSONObject> unfinished,long now){this.source=source==null?"private-memory-records":source;this.now=now;List<Period> closed=new ArrayList<>();Set<String> knownZones=new TreeSet<>();knownZones.add(ZoneId.systemDefault().getId());for(RecordEntry r:records){closed.add(new Period(r));if(!r.zone.isBlank())try{knownZones.add(ZoneId.of(r.zone).getId());}catch(DateTimeException ignored){}}closed.sort(Comparator.comparingLong(p->p.record.id));periods=List.copyOf(closed);List<Open> running=new ArrayList<>();for(JSONObject row:unfinished)running.add(new Open(row));running.sort(Comparator.comparingLong(p->p.id));open=List.copyOf(running);zones=List.copyOf(knownZones);}
+        Day day(LocalDate date,ZoneId zone){return new Day(this,date,zone);}
+    }
+    private static final class Period {final RecordEntry record;final List<RecordIntervals.Span> coverage;Period(RecordEntry r){record=r;coverage=List.copyOf(r.coverage());}}
+    private static final class Open {final long id,start;final String source,zone,sensor;Open(JSONObject row){id=row.optLong("id");start=row.optLong("start");source=row.optString("source");zone=row.optString("zone");sensor=row.optString("sensor");}}
+    static final class Day {
+        final LocalDate date;final ZoneId zone;final long start,end,sleepMillis;final String fingerprint,issue;final List<RecordIntervals.Span> sleep;final List<RecordEntry> records;final boolean[] centers;
+        Day(Capture capture,LocalDate date,ZoneId zone){this.date=date;this.zone=zone;start=date.atStartOfDay(zone).toInstant().toEpochMilli();end=date.plusDays(1).atStartOfDay(zone).toInstant().toEpochMilli();List<RecordIntervals.Span> intervals=new ArrayList<>();List<RecordEntry> relevant=new ArrayList<>();String problem="";if(end-start!=DAY)problem="This calendar day is not 24 hours because its clock changes.";ZoneOffsetTransition transition=zone.getRules().nextTransition(Instant.ofEpochMilli(start-1));if(transition!=null&&transition.getInstant().toEpochMilli()<end)problem="A time-zone clock transition occurs on this day.";if(end>capture.now)problem="Review a completed day. Today’s remaining time is unknown.";
+            Digest hash=new Digest();hash.add("sleepwell-reviewed-sri-v1").add(capture.source).add(date.toString()).add(zone.getId()).add(start).add(end);
+            for(Period period:capture.periods){RecordEntry r=period.record;boolean touches=overlaps(r.rawStart,r.rawEnd,start,end)||overlaps(r.edit.start,r.edit.end,start,end)||r.rawStart==r.rawEnd&&r.rawStart>=start&&r.rawStart<end;if(!touches)continue;relevant.add(r);hash.add(r.id).add(r.rawStart).add(r.rawEnd).add(r.active==null?-1:r.active).add(r.updated).add(r.source).add(r.origin).add(r.zone).add(r.sensor).add(r.sensorConfig).add(r.soundAnalysis).add(r.healthConnect).add(r.interrupted).add(r.clockChanged).add(r.edit.start).add(r.edit.end).add(r.edit.note).add(r.edit.rating).add(r.edit.rated?1:0).add(TagCodec.encode(r.edit).toString());for(RecordIntervals.Span span:period.coverage)hash.add(span.start).add(span.end);hash.add("period-end");intervals.addAll(RecordIntervals.intersect(period.coverage,start,end));if(r.clockChanged!=0)problem="A sleep record reports a clock change. Keep this day unknown.";if(r.rawEnd>capture.now||r.edit.end>capture.now)problem="A saved sleep record extends into the future. Review it first.";if(!r.zone.isBlank()&&!r.zone.equals(zone.getId()))problem="A sleep record uses another time zone. Review in its zone or keep this travel day unknown.";}
+            for(Open running:capture.open){if(running.start>=end)continue;hash.add("unfinished").add(running.id).add(running.start).add(running.source).add(running.zone).add(running.sensor);problem="An unfinished recording may overlap this day. Finalize it before confirming.";}
+            sleep=List.copyOf(RecordIntervals.union(intervals));sleepMillis=RecordIntervals.length(sleep);for(RecordIntervals.Span span:sleep)hash.add("union").add(span.start).add(span.end);fingerprint=hash.finish();issue=problem;records=List.copyOf(relevant);centers=new boolean[1440];if(end-start==DAY){int index=0;for(int minute=0;minute<1440;minute++){long at=start+minute*60000L+30000;while(index<sleep.size()&&sleep.get(index).end<=at)index++;centers[minute]=index<sleep.size()&&sleep.get(index).start<=at&&at<sleep.get(index).end;}}}
+        boolean eligible(){return issue.isEmpty();}String key(){return zone.getId()+"|"+date;}boolean reviewable(long now){LocalDate today=Instant.ofEpochMilli(now).atZone(zone).toLocalDate();return eligible()&&date.isBefore(today)&&!date.isBefore(today.minusDays(WINDOW));}
+    }
+    static final class Row {final Day day;final SRIReviews.Review review;final String status;final boolean confirmed;Row(Day day,SRIReviews.Review review){this.day=day;this.review=review;confirmed=review!=null&&review.matches(day)&&day.eligible();status=!day.eligible()?day.issue:review==null?"Not confirmed · unknown":confirmed?"Confirmed and unchanged":"Records changed · review again";}}
+    static final class Summary {
+        final List<Row> days;final int confirmedDays,pairs,possiblePairs,comparedMinutes,sameMinutes,changedDays;final Double score;
+        Summary(Capture capture,ZoneId zone,List<SRIReviews.Review> reviews){Map<String,SRIReviews.Review> saved=new HashMap<>();for(SRIReviews.Review value:reviews)saved.put(value.key(),value);LocalDate today=Instant.ofEpochMilli(capture.now).atZone(zone).toLocalDate();List<Row> values=new ArrayList<>();int confirmed=0,changed=0,pairCount=0,same=0;Row previous=null;for(int age=WINDOW;age>=1;age--){Day day=capture.day(today.minusDays(age),zone);Row row=new Row(day,saved.get(day.key()));values.add(row);if(row.confirmed)confirmed++;else if(row.review!=null)changed++;if(previous!=null&&previous.confirmed&&row.confirmed&&previous.day.zone.equals(day.zone)&&previous.day.date.plusDays(1).equals(day.date)&&day.start-previous.day.start==DAY){pairCount++;for(int minute=0;minute<1440;minute++)if(previous.day.centers[minute]==day.centers[minute])same++;}previous=row;}days=List.copyOf(values);confirmedDays=confirmed;changedDays=changed;pairs=pairCount;possiblePairs=WINDOW-1;comparedMinutes=pairCount*1440;sameMinutes=same;score=pairCount<MIN_PAIRS?null:100*(2*(same/(double)comparedMinutes)-1);}
+    }
+    private static boolean overlaps(long from,long to,long start,long end){return to>from&&from<end&&to>start;}
+    private static final class Digest {private final MessageDigest hash;Digest(){try{hash=MessageDigest.getInstance("SHA-256");}catch(NoSuchAlgorithmException impossible){throw new AssertionError(impossible);}}Digest add(long value){for(int shift=56;shift>=0;shift-=8)hash.update((byte)(value>>>shift));return this;}Digest add(String value){byte[] bytes=value.getBytes(StandardCharsets.UTF_8);add(bytes.length);hash.update(bytes);return this;}String finish(){StringBuilder result=new StringBuilder();for(byte b:hash.digest())result.append(String.format(Locale.ROOT,"%02x",b&255));return result.toString();}}
+    private SRIModel(){}
+}
