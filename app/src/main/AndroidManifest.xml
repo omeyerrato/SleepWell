@@ -45,7 +45,7 @@
     <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
     <uses-feature android:name="android.hardware.nfc" android:required="false" />
     <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
-    <queries><package android:name="com.google.android.apps.healthdata" /><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent><intent><action android:name="android.speech.action.RECOGNIZE_SPEECH" /></intent><intent><action android:name="android.intent.action.TTS_SERVICE" /></intent></queries>
+    <queries><intent><action android:name="android.speech.RecognitionService" /></intent><package android:name="com.google.android.apps.healthdata" /><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent><intent><action android:name="android.speech.action.RECOGNIZE_SPEECH" /></intent><intent><action android:name="android.intent.action.TTS_SERVICE" /></intent></queries>
     <application android:name=".SleepWellApplication" android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:label="SleepWell" android:theme="@style/AppTheme" android:icon="@drawable/ic_moon" android:supportsRtl="true">
         <!-- Foreground explicit contactless calibration only; never externally launchable. -->
         <activity android:name=".AwakeSettingsActivity" android:exported="false" />
@@ -184,6 +184,7 @@
         <activity android:name=".RecordSignalsActivity" android:exported="false" />
         <activity android:name=".AlarmActivity" android:exported="false" android:showWhenLocked="true" android:turnScreenOn="true" android:launchMode="singleTask" />
         <activity android:name=".FocusActivity" android:exported="false" android:launchMode="singleTask" />
+        <activity android:name=".PhraseChallengeActivity" android:exported="false" />
         <activity android:name=".SpeakChallengeActivity" android:exported="false" />
         <service android:name=".NoteCaptureService" android:exported="false" android:foregroundServiceType="microphone" />
         <service android:name=".SpeakCaptureService" android:exported="false" android:foregroundServiceType="microphone" />
