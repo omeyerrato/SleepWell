@@ -833,6 +833,12 @@ for row in rows:
     if row["feature"] in ("Anti-snoring cues", "Headphone-only cues / intensity / repeat"):
         row.update(status="partial", implementation=["SnoreCuePolicy.java", "SnoreCueOutput.java", "HeadphoneCue.java", "HeadphoneSound.java", "SonarSnoreCues.java", "SnoringCuesActivity.java", "SonarNight.java"], validation="Production assembleDebug90e2583 PASS14s; build-only. No new tests, physical output or overnight efficacy checks.", notes="Actual snoring estimates can request bounded cues under existing30/session and two-minute policy. Contactless Sound/Vibration/Both now intersects global selected mode with separate default-off remembered sound/vibration consents frozen per night. Current Off revokes each channel independently; pending asynchronous sound cannot pass through remaining vibration consent. Headphone-only routing is retained without speaker fallback. Output/route/settling gaps are installed before dispatch and late callbacks suppressed; pause/stop closes owned outputs. Shared capture excludes masked PCM/movement and drops partial clips. Real headphone/device output, detection accuracy and anti-snoring efficacy remain unverified.")
 
+for row in rows:
+    if row["feature"] in ("Anti-snoring cues", "Headphone-only cues / intensity / repeat"):
+        row["implementation"] += ["TrackingActivity.java", "TrackingService.java"]
+        row["notes"] += " Follow-up6180a6f displays skipped headphone-route errors in live contactless tracking and cue settings, clearing old route errors at the next night start."
+        row["validation"] += " Error-state follow-up6180a6f assembleDebug PASS15s; no runtime/device validation. Published prerelease remains90e2583."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}

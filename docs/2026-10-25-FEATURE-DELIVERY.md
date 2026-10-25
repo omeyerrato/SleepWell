@@ -114,3 +114,11 @@ It is a delivery inventory, not full functional or design acceptance.
 
 This candidate finishes the listed production increments. It does not close the
 user's complete feature, hardware or visual-quality goal.
+
+## Cue-route error-state follow-up
+
+Source6180a6f builds in15s and surfaces skipped headphone-route messages in live
+contactless tracking and snoring-cue settings. Starting a new contactless night
+clears the previous route error. This follow-up has build-only evidence, no new
+tests/device actions, and is not included in the published90e2583 prerelease.
+The locally preserved6180a6f APK has the same installed debug signing key.

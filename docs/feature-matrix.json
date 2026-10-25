@@ -1589,11 +1589,13 @@
         "HeadphoneSound.java",
         "SonarSnoreCues.java",
         "SnoringCuesActivity.java",
-        "SonarNight.java"
+        "SonarNight.java",
+        "TrackingActivity.java",
+        "TrackingService.java"
       ],
-      "validation": "Production assembleDebug90e2583 PASS14s; build-only. No new tests, physical output or overnight efficacy checks.",
+      "validation": "Production assembleDebug90e2583 PASS14s; build-only. No new tests, physical output or overnight efficacy checks. Error-state follow-up6180a6f assembleDebug PASS15s; no runtime/device validation. Published prerelease remains90e2583.",
       "status": "partial",
-      "notes": "Actual snoring estimates can request bounded cues under existing30/session and two-minute policy. Contactless Sound/Vibration/Both now intersects global selected mode with separate default-off remembered sound/vibration consents frozen per night. Current Off revokes each channel independently; pending asynchronous sound cannot pass through remaining vibration consent. Headphone-only routing is retained without speaker fallback. Output/route/settling gaps are installed before dispatch and late callbacks suppressed; pause/stop closes owned outputs. Shared capture excludes masked PCM/movement and drops partial clips. Real headphone/device output, detection accuracy and anti-snoring efficacy remain unverified.",
+      "notes": "Actual snoring estimates can request bounded cues under existing30/session and two-minute policy. Contactless Sound/Vibration/Both now intersects global selected mode with separate default-off remembered sound/vibration consents frozen per night. Current Off revokes each channel independently; pending asynchronous sound cannot pass through remaining vibration consent. Headphone-only routing is retained without speaker fallback. Output/route/settling gaps are installed before dispatch and late callbacks suppressed; pause/stop closes owned outputs. Shared capture excludes masked PCM/movement and drops partial clips. Real headphone/device output, detection accuracy and anti-snoring efficacy remain unverified. Follow-up6180a6f displays skipped headphone-route errors in live contactless tracking and cue settings, clearing old route errors at the next night start.",
       "id": "F059",
       "tests": []
     },
@@ -3646,11 +3648,13 @@
         "HeadphoneSound.java",
         "SonarSnoreCues.java",
         "SnoringCuesActivity.java",
-        "SonarNight.java"
+        "SonarNight.java",
+        "TrackingActivity.java",
+        "TrackingService.java"
       ],
-      "validation": "Production assembleDebug90e2583 PASS14s; build-only. No new tests, physical output or overnight efficacy checks.",
+      "validation": "Production assembleDebug90e2583 PASS14s; build-only. No new tests, physical output or overnight efficacy checks. Error-state follow-up6180a6f assembleDebug PASS15s; no runtime/device validation. Published prerelease remains90e2583.",
       "status": "partial",
-      "notes": "Actual snoring estimates can request bounded cues under existing30/session and two-minute policy. Contactless Sound/Vibration/Both now intersects global selected mode with separate default-off remembered sound/vibration consents frozen per night. Current Off revokes each channel independently; pending asynchronous sound cannot pass through remaining vibration consent. Headphone-only routing is retained without speaker fallback. Output/route/settling gaps are installed before dispatch and late callbacks suppressed; pause/stop closes owned outputs. Shared capture excludes masked PCM/movement and drops partial clips. Real headphone/device output, detection accuracy and anti-snoring efficacy remain unverified.",
+      "notes": "Actual snoring estimates can request bounded cues under existing30/session and two-minute policy. Contactless Sound/Vibration/Both now intersects global selected mode with separate default-off remembered sound/vibration consents frozen per night. Current Off revokes each channel independently; pending asynchronous sound cannot pass through remaining vibration consent. Headphone-only routing is retained without speaker fallback. Output/route/settling gaps are installed before dispatch and late callbacks suppressed; pause/stop closes owned outputs. Shared capture excludes masked PCM/movement and drops partial clips. Real headphone/device output, detection accuracy and anti-snoring efficacy remain unverified. Follow-up6180a6f displays skipped headphone-route errors in live contactless tracking and cue settings, clearing old route errors at the next night start.",
       "id": "F125",
       "tests": []
     },
