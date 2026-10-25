@@ -479,25 +479,17 @@
       "screens": "09",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
-        "SnoozePolicy.java",
-        "Alarm.java",
-        "AlarmEditorActivity.java",
-        "AlarmActivity.java"
+        "SnoozeBudget.java",
+        "SnoozeBudgets.java",
+        "SnoozeOffer.java",
+        "Scheduler.java",
+        "AlarmEditorActivity.java"
       ],
-      "validation": "SnoozePolicyTest three pure passes; AlarmMenusFlowTest native configuration/recreation/save/reopen/cancel passes at e00ff55/CI40002966787 with sixteen original screenshots, including long selected choices. No physical alarm/snooze execution.",
+      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Optional per-alarm decreasing delay shares display/schedule policy with a one-minute floor; legacy/import defaults preserve fixed snoozes. Separate total-minute cap remains missing.",
+      "notes": "Optional saved total-minute budget is enforced alongside count/decreasing limits across duration, exact-clock, flip and volume-key snoozes. Actual scheduled milliseconds carry only through an owned snooze continuation; new occurrences reset the ledger. Uncapped legacy alarms retain omitted JSON. Real delivery and output remain unverified.",
       "id": "F018",
-      "tests": [
-        {
-          "name": "AlarmMenusFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmMenusFlowTest.java"
-        },
-        {
-          "name": "SnoozePolicyTest",
-          "path": "app/src/test/java/org/sleepwell/app/SnoozePolicyTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Post-dismiss wake check",
@@ -1007,15 +999,14 @@
       "screens": "04–12,26",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
-        "Alarm.java",
-        "Scheduler.java",
-        "AlarmService.java",
-        "AlarmActivity.java",
+        "RelativeAlarmTime.java",
+        "RelativeTimeSpeech.java",
+        "RelativeAlarmTimeActivity.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Partial: accessible Android time picker; speech and relative entry pending.",
+      "notes": "Explicit relative one-time clock entry computes and reviews a date/zone/time before draft Use and Save alarm. Bounds, clock drift and ambiguous DST targets are checked. Optional external English speech entry returns selectable candidates; a provider is required and its offline preference may be ignored. No app microphone capture or automatic save. Physical provider behavior remains unverified.",
       "id": "F038",
       "tests": []
     },
@@ -1024,25 +1015,17 @@
       "screens": "04, root Alarms",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
-        "MainActivity.java",
-        "AlarmEditorActivity.java",
-        "Design.java",
-        "Icons.java"
+        "AlarmExcludedDates.java",
+        "AlarmExcludedDatesActivity.java",
+        "AlarmSkips.java",
+        "CalendarAlarms.java",
+        "AlarmEditorActivity.java"
       ],
-      "validation": "ab01ba5: RootVisualTest four selected dock destinations/API36 CI23.342 s and S23 19.215 s. AlarmProtectionFlowTest 15.794 s opens fixture time/name editor, verifies checked48dp Alarm on above Save and both protection links. Actual images in verification/2026-10-23-alarm-protection; no scheduling/alarm behavior test.",
+      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Dedicated Alarms root shows time, enable switch, name and days; per-alarm settings open inside the editor. Global optional protection is linked from each alarm. Compact list and supporting configuration reviewed separately from full editor/reference parity. Skip/restore occurrence is now source-integrated with pending native/visual verification; holiday rules remain missing.",
+      "notes": "Dedicated compact Alarms root and existing skip/restore occurrence remain. Up to64 explicit local excluded dates now affect clock/sunrise projections, actual occurrence checks and calendar adjustments; private draft editor requires Use then Save alarm. This is user-selected date skipping, not an automatic public-holiday feed. Full interaction/design/device acceptance remains open.",
       "id": "F039",
-      "tests": [
-        {
-          "name": "AlarmProtectionFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmProtectionFlowTest.java"
-        },
-        {
-          "name": "RootVisualTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/RootVisualTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Bedtime reminder",
@@ -1082,15 +1065,14 @@
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
         "SmartBedtime.java",
-        "SmartBedtimeActivity.java",
         "SmartBedtimeRuntime.java",
         "SmartBedtimeReceiver.java",
-        "SleepPlan.java",
-        "Scheduler.java"
+        "AlarmBedtime.java",
+        "AlarmBedtimeActivity.java"
       ],
-      "validation": "Production source8018a61; combined debug APK3262a03 builds. No new tests/native/OS delivery run per user steering.",
+      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Default-off reminder projected from next actual eligible alarm, current goal, smart window, tracking delay and bounded recent five observed-day shortfall. Explicit no-alarm fixed fallback, tracking suppression and stale occurrence receipt. Repeated reminders/per-alarm reminder overrides and actual Android delivery remain unverified or absent. Optional silent repeat interval/limit, current next receipt and owned swipe/Dismiss-tonight stop until next occurrence added509f3ec; compatibility build fix631f194.",
+      "notes": "Next actual eligible alarm projects a reminder from goal/window/delay and bounded observed shortfall. Silent interval/limit repeats have owned dismissal fences. Optional per-alarm Follow global/Off/custom lead changes actual revalidated reminder delivery; the earliest eligible wake-up owns the reminder. No duplicate reminders for later alarms. Android delivery and background reliability remain unverified.",
       "id": "F041",
       "tests": []
     },
@@ -1353,10 +1335,17 @@
       "feature": "PIR tracking",
       "screens": "13–21,27–30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: device-specific adapter and hardware tests.",
+      "implementation": [
+        "PirSettingsActivity.java",
+        "PirNight.java",
+        "PirHttp.java",
+        "PirStore.java",
+        "PirReportActivity.java",
+        "TrackingService.java"
+      ],
+      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "status": "partial",
+      "notes": "Default-off independently encrypted Home Assistant HTTPS binary_sensor motion/occupancy input requires an actual tested user-owned hub/sensor. Manual phone/sonar nights poll read-only snapshots every15s; saved hub-state, unknown/errors, update age and request latency feed a discrete-point report. On-change hub snapshots are not fresh physical motion samples. Pause/end/owner fences, schema14 and backup11 preserve evidence without changing duration/stages. Real hub exchange remains unverified; this is not the proprietary Sleep Phaser protocol.",
       "id": "F048",
       "tests": []
     },
@@ -1376,14 +1365,15 @@
       "screens": "13–21,27–30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
-        "TrackingService.java",
-        "NoiseRecorder.java",
-        "BedtimeGuard.java",
-        "MainActivity.java"
+        "AwakeRuntime.java",
+        "AwakeStore.java",
+        "AwakeBackup.java",
+        "AwakeReviewActivity.java",
+        "RecordEntry.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Partial: movement and light recording only; a tested wake classifier is pending.",
+      "notes": "Default-off per-night phone unlock/touch, opted-in fresh light and successful snooze evidence creates reversible estimated-awake intervals. Original evidence and review decisions remain separate; effective duration subtracts their union. It is an unvalidated awake estimate, not measured stages. New source compiles; actual overnight accuracy remains unverified.",
       "id": "F050",
       "tests": []
     },
@@ -1726,16 +1716,15 @@
       "screens": "13–21,27–30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
-        "BinauralTones.java",
+        "Binaural.java",
         "BinauralSettingsActivity.java",
-        "SoundMix.java",
-        "SoundPreferences.java",
-        "SleepSoundsActivity.java",
-        "SleepSoundService.java"
+        "SleepSoundService.java",
+        "GuidedWindDown.java",
+        "GuidedWindDownActivity.java"
       ],
-      "validation": "Sourcebbc3906 integrated; new production compile pending. No new tests or playback/device output.",
+      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Actual local4s PCM16 stereo48kHz loop, integer left100–400Hz/right+1–20Hz, low8% per-channel digital peak and bounded atomic cache. Explicit Play/Resume only; saved source/frequencies, timer/fade/focus/noisy/alarm cleanup through existing engine. No global volume/network/mic or health benefit claim. Original guided meditation content remains absent.",
+      "notes": "Manual-play stereo PCM binaural generation uses independently configured carrier/beat frequencies and the existing timer/fade/lifecycle. Original silent2/5/10minute guided reading with optional visual breathing cue has real timed progression and Start/Pause/Resume/End. No narration, health benefit or automatic output claim; physical playback remains unverified.",
       "id": "F062",
       "tests": []
     },
@@ -1743,10 +1732,16 @@
       "feature": "Lucid dreaming",
       "screens": "13–21,27–30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: no REM-trigger claims without a validated estimator.",
+      "implementation": [
+        "DreamCueActivity.java",
+        "DreamCues.java",
+        "DreamCueTables.java",
+        "DreamCueBackup.java",
+        "DreamCueHistoryActivity.java"
+      ],
+      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "status": "partial",
+      "notes": "Optional timed dream cues are functioning elapsed timers armed explicitly for an already-active manual night. One arm per night, bounded low-amplitude vibration requests, durable claim/request/failed/uncertain receipts, cancellation and self-output capture gaps are integrated with schema15/backup12. Requires amplitude support. This is not REM detection or established lucid-dream efficacy; actual output remains unverified.",
       "id": "F063",
       "tests": []
     },
@@ -3217,32 +3212,18 @@
       "screens": "10",
       "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
       "implementation": [
-        "TypedWakeTasks.java",
         "DiaryStore.java",
         "DiaryActivity.java",
-        "MirrorText.java",
-        "JournalRule.java",
-        "AlarmActivity.java",
-        "DiaryJobs.java"
+        "DiaryImport.java",
+        "DiaryImportJob.java",
+        "DiaryImportActivity.java",
+        "JournalRule.java"
       ],
-      "validation": "4b7d017 / CI40147599727: DiaryStorageTest 10 and TypedWakeFlowTest 2/all11 originals PASS within30classes/102methods/90originals. Private fixtures/fake providers only; no new combined local count or physical output inferred. CI40159540059 TypedWakeFlowTest 2/all11 originals and DiaryTerminalStateTest 1 PASS after4888864 consumes save/delete terminal results even when the worker finishes before first render.",
+      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Stable mirrored phrases and explicit bounded journal engagement rules use shared native challenge controls, with private idempotent diary persistence and create/edit/delete/export. Main portable backup excludes separate diary data. No physical AlarmActivity delivery or semantic dream validation claim.",
+      "notes": "Original mirror/journal challenges and private create/edit/delete/export remain. Separate reviewed diary JSON import now validates bounded UTF8, skips identical entries and explicitly keeps or imports conflicting text as new UUIDs in an insert-only transaction with stale-review checks. Challenge ownership is never imported. Private diary is separate from sleep-record backups. Actual provider/merge execution remains unverified.",
       "id": "F111",
-      "tests": [
-        {
-          "name": "DiaryStorageTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/DiaryStorageTest.java"
-        },
-        {
-          "name": "DiaryTerminalStateTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/DiaryTerminalStateTest.java"
-        },
-        {
-          "name": "TypedWakeFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/TypedWakeFlowTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Laughter / instrument microphone task",
@@ -3818,16 +3799,15 @@
       "screens": "19",
       "source": "https://sleep.urbandroid.org/docs/sleep/lullaby.html",
       "implementation": [
-        "BinauralTones.java",
+        "Binaural.java",
         "BinauralSettingsActivity.java",
-        "SoundMix.java",
-        "SoundPreferences.java",
-        "SleepSoundsActivity.java",
-        "SleepSoundService.java"
+        "SleepSoundService.java",
+        "GuidedWindDown.java",
+        "GuidedWindDownActivity.java"
       ],
-      "validation": "Sourcebbc3906 integrated; new production compile pending. No new tests or playback/device output.",
+      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Actual local4s PCM16 stereo48kHz loop, integer left100–400Hz/right+1–20Hz, low8% per-channel digital peak and bounded atomic cache. Explicit Play/Resume only; saved source/frequencies, timer/fade/focus/noisy/alarm cleanup through existing engine. No global volume/network/mic or health benefit claim. Original guided meditation content remains absent.",
+      "notes": "Actual explicit-play stereo generator and original silent timed wind-down practice are integrated. Guidance pauses on leaving/locking/recreation and requires explicit Resume; it has no narration, microphone or service. Narrated meditation content is still absent. No efficacy or physical-output verification is inferred from compilation.",
       "id": "F127",
       "tests": []
     },
@@ -3836,31 +3816,17 @@
       "screens": "27",
       "source": "https://sleep.urbandroid.org/docs/sleep/jetlag.html",
       "implementation": [
-        "TravelActivity.java",
-        "TravelCueReviewActivity.java",
-        "TravelCuePlan.java",
-        "TravelCueSession.java",
-        "TravelCueRuntime.java",
-        "TravelCueStore.java",
+        "DreamCues.java",
+        "DreamCueActivity.java",
         "TravelCues.java",
-        "PhoneTorchCoordinator.java",
-        "PhoneTorches.java",
-        "TrackingService.java"
+        "TravelCueRuntime.java",
+        "TravelCueReviewActivity.java"
       ],
-      "validation": "Sourcecd35c21 integrated as5d11405.47 focused pure tests pass; debug/native APKs and lint0errors87warnings pass; strict source-clear. TravelCueStorageTest 8 and TravelCueFlowTest 2/16 originals execution-pending. No hardware output or actual clinical effect verified. Main05cd205/focusedCI40079038257 TravelCueStorageTest 8 PASS.158s andTravelCueFlowTest 2 PASS30.764s/all16originals. All16 individually inspected: disabledArm visiblymuted,windowCancel/recreate/save/reopen,active/interrupted/error gates pass bounded config/fake-light scope. Wholeboard09stillpartial: lower controls/continuation and supporting prose need polishing. Hardwaredose/OSdelivery/clinicalprevention are unproven.",
+      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Saved zones/date/daylight reminders plus separate default-off experimental phone-light windows. Explicit Arm only during current manual active tracking; separate Stop/journal/error/interruption, requested2ms/15s finite session, no automatic/recurring/boot/replay arming. Serial app torch ownership gives real alarms priority; timing/dose not measured. No evidence-based phase scheduling, jet-lag prevention, dream/REM or smart-light claim. See TRAVEL-PHONE-LIGHT-CUES.md.",
+      "notes": "Explicit manual-night travel light cues and separate optional timed low-amplitude dream vibration requests have saved schedules, request outcomes and cleanup. Neither REM detection nor jetlag-prevention/lucid-dream efficacy is established. Hardware output remains unverified; no automatic rearming of dream cues.",
       "id": "F128",
-      "tests": [
-        {
-          "name": "TravelCueFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/TravelCueFlowTest.java"
-        },
-        {
-          "name": "TravelCueStorageTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/TravelCueStorageTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Sleep-day cutoff / naps / date filtering",

@@ -19,9 +19,13 @@ The next APK requires a production build; build failures are fixed as integratio
 Production code since the prior tested batch: Jump, Smart Bedtime, reversible awake
 estimates (schema11/backup8), Smile, radio alarms, optional Google Sleep API input,
 circular recorded-midpoint groups, and optional contactless vibration cues.
-Debug APKb9c206e builds with Pose/Light/Type code, timed-bedtime repeats, recording
-ZIP restore and experimental echo report. Later Pair/Note/Research/Score/Binaural
-source awaits a combined build after the scoped Note seed compile correction. No new device validation is claimed.
+Debug APK **4ab0887** builds in1m06 with Pose/Light/Type code/Spin/Note, paired
+movement, research export, recorded scoring, recording ZIP restore, experimental
+echoes, binaural audio, silent guided wind-down, PIR recording and timed dream cues.
+It also includes the total snooze-time cap, selected-date exclusions, per-alarm
+bedtime reminders, relative/speech time entry and reviewed private-diary import.
+These are production implementations with build-only evidence. No new runtime,
+provider, device or overnight acceptance is claimed.
 The phone is untouched. Full visual, hardware, provider and overnight acceptance
 remain deferred, and the missing feature rows in the matrix remain authoritative.
 
@@ -104,7 +108,8 @@ The full app native run and independent laughter accuracy gate remain failing.
   permission and charging changes, false starts and background restrictions. Phone
   inactivity is an estimate, not proof of sleep or measured sleep stage.
 - [ ] **Anti-snoring:** verify actual detection-to-cue behavior, cooldown, repeat limits,
-  routing and stopping. Contactless analysis currently excludes clips and cues.
+  routing and stopping. Contactless analysis now optionally requests vibration-only
+  cues with self-output gaps; saved contactless audio clips remain absent.
 - [ ] **Jet lag:** complete useful travel planning and honestly labelled light cues;
   validate scheduling and output. Effective jet-lag prevention is not established.
 - [ ] **Reports and charts:** finish the reference composition throughout the Report
