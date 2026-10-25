@@ -22,13 +22,14 @@ import java.util.function.BooleanSupplier;
 final class GuidedWindDownNarration implements AutoCloseable {
     interface Events {void status(String message,boolean failed);}
     private static final AtomicReference<GuidedWindDownNarration> OWNER=new AtomicReference<>();
-    private final Context app;private final BooleanSupplier foreground;private final Events events;
+    private final NarrationSettings settings;private final Context app;private final BooleanSupplier foreground;private final Events events;
     private final Handler main=new Handler(Looper.getMainLooper());
     private final HandlerThread thread=new HandlerThread("SleepWell guide narration");private final Handler worker;
     private final AudioAttributes attributes=new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_MEDIA).setContentType(AudioAttributes.CONTENT_TYPE_SPEECH).build();
     private final String run=UUID.randomUUID().toString();private volatile boolean closed;private boolean ready,failed;private TextToSpeech speech;private AudioManager audio;private AudioFocusRequest focus;private Voice voice;private String pending,spoken="",utterance="";private int serial,focusGeneration;
-    GuidedWindDownNarration(Context context,BooleanSupplier foreground,Events events,String first){
-        app=context.getApplicationContext();this.foreground=foreground;this.events=events;pending=first;
+    GuidedWindDownNarration(Context context,BooleanSupplier foreground,Events events,String first){this(context,foreground,events,first,NarrationSettings.DEFAULT);}
+    GuidedWindDownNarration(Context context,BooleanSupplier foreground,Events events,String first,NarrationSettings settings){
+        this.settings=java.util.Objects.requireNonNull(settings);app=context.getApplicationContext();this.foreground=foreground;this.events=events;pending=first;
         if(!OWNER.compareAndSet(null,this))throw new IllegalStateException("Previous narration is still stopping. Try again shortly.");
         try{thread.start();worker=new Handler(thread.getLooper());worker.post(this::initialize);}catch(RuntimeException failure){OWNER.compareAndSet(this,null);throw failure;}
     }
@@ -51,7 +52,7 @@ final class GuidedWindDownNarration implements AutoCloseable {
             if(local.isEmpty()){fail("No installed offline English voice. Install one in Android text-to-speech settings, then retry.");return;}
             voice=local.get(0);
             if(speech.setVoice(voice)!=TextToSpeech.SUCCESS||!selectedVoice()){fail("The installed provider could not select an offline voice. The silent guide still works.");return;}
-            if(speech.setAudioAttributes(attributes)!=TextToSpeech.SUCCESS||speech.setSpeechRate(.90f)!=TextToSpeech.SUCCESS){fail("The speech provider could not configure narration.");return;}
+            if(speech.setAudioAttributes(attributes)!=TextToSpeech.SUCCESS||speech.setSpeechRate(settings.speechRate())!=TextToSpeech.SUCCESS||speech.setPitch(settings.speechPitch())!=TextToSpeech.SUCCESS){fail("The speech provider could not configure narration.");return;}
             if(speech.setOnUtteranceProgressListener(new UtteranceProgressListener(){
                 public void onStart(String id){worker.post(()->{if(!allowed()){close();return;}if(id.equals(utterance))status("Reading with an installed offline voice.",false);});}
                 public void onDone(String id){worker.post(()->{if(!closed&&id.equals(utterance)){utterance="";worker.removeCallbacks(utteranceTimeout);abandon();status("Narration on · the next step will be read when it begins.",false);}});}
@@ -68,6 +69,7 @@ final class GuidedWindDownNarration implements AutoCloseable {
         if(!allowed()){close();return;}if(!ready||pending==null||pending.equals(spoken))return;
         try{
             if(!selectedVoice()){fail("The provider changed away from the selected offline voice. Narration stopped.");return;}
+            if(speech.setSpeechRate(settings.speechRate())!=TextToSpeech.SUCCESS||speech.setPitch(settings.speechPitch())!=TextToSpeech.SUCCESS){fail("The provider could not apply the saved speech rate or pitch. Narration stopped; the silent guide still works.");return;}
             speech.stop();worker.removeCallbacks(utteranceTimeout);abandon();audio=app.getSystemService(AudioManager.class);
             int requestedFocus=++focusGeneration;focus=new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT).setAudioAttributes(attributes).setWillPauseWhenDucked(true).setAcceptsDelayedFocusGain(false).setOnAudioFocusChangeListener(value->{if(requestedFocus==focusGeneration&&value!=AudioManager.AUDIOFOCUS_GAIN&&!closed)fail("Narration paused when audio focus changed. Press Play narration to continue.");},worker).build();
             if(audio==null||audio.requestAudioFocus(focus)!=AudioManager.AUDIOFOCUS_REQUEST_GRANTED){fail("Audio focus is busy. Pause other audio and press Play narration again.");return;}
