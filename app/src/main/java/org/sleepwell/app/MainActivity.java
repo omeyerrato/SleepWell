@@ -57,6 +57,7 @@ public class MainActivity extends Activity {
     void refreshTonightClock(){if(tab!=0)return;long now=TonightScreen.clock.getAsLong();java.time.ZoneId zone=java.time.ZoneId.systemDefault();if((nightArc!=null&&nightArc.needsNewOccurrence(now,zone))||(Appearance.automatic(this)&&Appearance.palette(this).phase!=renderedPhase))renderKeepingScroll();else if(nightArc!=null)nightArc.update(now,zone);}
     private void settingsHome(LinearLayout body){Design.header(body,"Settings",null);
         settingsRow(body,"search","Search SleepWell","Find alarms, records and settings",()->startActivity(RecordUi.intent(this,SearchActivity.class)));
+        settingsRow(body,"moon","Dream diary","Your private notes and dreams",()->startActivity(RecordUi.intent(this,DiaryActivity.class)));
         settingsRow(body,"bell","Alarms","Alarm time, sound and behavior",()->{tab=1;render();});
         settingsRow(body,"moon","Sleep tracking","Phone movement and microphone",this::tracking);
         settingsRow(body,"wave","Sound analysis","Snoring, speech and sound recordings",()->{tab=9;render();});
