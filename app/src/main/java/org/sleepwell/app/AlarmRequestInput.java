@@ -1,0 +1,11 @@
+package org.sleepwell.app;
+import android.content.Intent;import android.os.Bundle;import android.provider.AlarmClock;import java.util.*;
+/** Reconstructs a fresh internal draft from scalar fields only, never a nested Intent or URI grant. */
+final class AlarmRequestInput {
+    static AlarmRequest read(Intent source){if(source==null||!AlarmClock.ACTION_SET_ALARM.equals(source.getAction())||source.getData()!=null||source.getClipData()!=null)throw new IllegalArgumentException("This alarm request is unsupported.");Bundle values=source.getExtras();Integer hour=integer(values,AlarmClock.EXTRA_HOUR),minute=integer(values,AlarmClock.EXTRA_MINUTES);String message=text(values,AlarmClock.EXTRA_MESSAGE);Boolean vibrate=bool(values,AlarmClock.EXTRA_VIBRATE);bool(values,AlarmClock.EXTRA_SKIP_UI);String ringtone=text(values,AlarmClock.EXTRA_RINGTONE);if(ringtone!=null&&!ringtone.isEmpty())throw new IllegalArgumentException("Choose custom or silent sounds inside SleepWell.");List<Integer> days=null;if(values!=null&&values.containsKey(AlarmClock.EXTRA_DAYS)){Object raw=values.get(AlarmClock.EXTRA_DAYS);if(!(raw instanceof ArrayList<?> list)||list.size()>7)throw new IllegalArgumentException("Use valid repeating weekdays.");days=new ArrayList<>();for(Object value:list){if(!(value instanceof Integer))throw new IllegalArgumentException("Use valid repeating weekdays.");days.add((Integer)value);}}return new AlarmRequest(hour,minute,message,days,vibrate);}
+    private static Object value(Bundle b,String key){return b==null?null:b.get(key);}
+    private static Integer integer(Bundle b,String key){Object v=value(b,key);if(v==null)return null;if(!(v instanceof Integer))throw new IllegalArgumentException("Use a whole-number alarm time.");return(Integer)v;}
+    private static Boolean bool(Bundle b,String key){Object v=value(b,key);if(v==null)return null;if(!(v instanceof Boolean))throw new IllegalArgumentException("This alarm option is invalid.");return(Boolean)v;}
+    private static String text(Bundle b,String key){Object v=value(b,key);if(v==null)return null;if(!(v instanceof String))throw new IllegalArgumentException("This alarm request text is invalid.");return(String)v;}
+    private AlarmRequestInput(){}
+}

@@ -1,0 +1,11 @@
+package org.sleepwell.app;
+import android.app.Activity;import android.content.Intent;import android.os.Bundle;import android.provider.AlarmClock;import android.widget.LinearLayout;import java.util.concurrent.*;
+/** Public standard alarm entry. Save in the ordinary editor is always required before scheduling. */
+public final class AlarmRequestActivity extends Activity {
+    private final ExecutorService reader=Executors.newSingleThreadExecutor();
+    @Override public void onCreate(Bundle saved){super.onCreate(saved);Intent input=getIntent();if(input!=null&&AlarmClock.ACTION_SHOW_ALARMS.equals(input.getAction())){startActivity(new Intent(this,MainActivity.class).putExtra("destination",1));finish();return;}AlarmRequest request;try{request=AlarmRequestInput.read(input);}catch(RuntimeException invalid){error("This request could not be opened. Check its time, weekdays and sound options.");return;}LinearLayout body=Design.page(this,false,null,n->{});RecordUi.header(body,"New alarm",this::finish);Design.text(body,"Opening your alarm draft…",15,400,Design.MUTED);Records.Factory factory=Records.factory;reader.execute(()->{try(Store store=factory.open(getApplicationContext())){Alarm draft=request.draft(HomeLaunch.draft(getApplicationContext(),store));runOnUiThread(()->{if(isDestroyed()||isFinishing())return;startActivity(new Intent(this,AlarmEditorActivity.class).putExtra("alarm",draft.json().toString()));finish();});}catch(RuntimeException failed){runOnUiThread(()->{if(!isDestroyed())error("The alarm draft could not be opened. Try again from Alarms.");});}});}
+    private void error(String text){LinearLayout body=Design.page(this,false,null,n->{});RecordUi.header(body,"Alarm request",this::finish);Design.space(body,24);Design.text(body,text,16,400,Design.MUTED);Design.space(body,20);Design.button(body,"Open alarms",true,()->{startActivity(new Intent(this,MainActivity.class).putExtra("destination",1));finish();});}
+    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
+    @Override protected void onDestroy(){reader.shutdown();super.onDestroy();}
+    boolean awaitReaders(long millis)throws InterruptedException{return reader.awaitTermination(millis,TimeUnit.MILLISECONDS);}
+}
