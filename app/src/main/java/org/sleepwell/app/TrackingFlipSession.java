@@ -1,0 +1,22 @@
+package org.sleepwell.app;
+/** One live recording owns one optional gesture listener and at most one five-minute pause. */
+final class TrackingFlipSession implements AutoCloseable {
+ static final long MINUTE=60000L,PAUSE=5*MINUTE,LATE=30000;enum State{NEW,ACTIVE,PAUSING,PAUSED,RESUMING,MANUAL_PAUSED,ERROR,CLOSED}
+ interface Sink{void sample(long captured,long now,double x,double y,double z,boolean reliable);}interface Port{boolean available();boolean start(Sink sink);boolean stop();void hold(long milliseconds);void release();}
+ interface Effects{boolean current();void pause();void resume();}
+ final Port port;final Effects effects;final java.util.function.LongSupplier nanos;State state=State.NEW;TrackingFlipGesture gesture;long deadline,generation;boolean listening;String issue="";
+ TrackingFlipSession(Port port,Effects effects,java.util.function.LongSupplier nanos){this.port=port;this.effects=effects;this.nanos=nanos;}
+ void active(){if(state==State.CLOSED||state==State.ERROR)return;if(!effects.current()){close();return;}if(!releaseListener()){releaseHold();return;}releaseHold();deadline=0;gesture=new TrackingFlipGesture(nanos.getAsLong(),1);state=State.ACTIVE;open();}
+ void open(){long owned=++generation;try{if(!port.available()){fail("No accelerometer is available. Use Pause manually.");return;}listening=port.start((captured,now,x,y,z,reliable)->{if(owned!=generation||state==State.CLOSED)return;if(!effects.current()){close();return;}if(state!=State.ACTIVE&&state!=State.PAUSED)return;if(!reliable){issue="Motion input is unreliable. Use Pause manually.";}else if(issue.startsWith("Motion input"))issue="";if(gesture!=null&&gesture.sample(captured,now,x,y,z,reliable)){gesture=null;if(state==State.ACTIVE)requestPause(now/1000000L);else requestResume(now/1000000L);}});if(owned!=generation||state==State.CLOSED){releaseListener();return;}if(!listening)fail("Gesture input could not start. Use Pause manually.");}catch(RuntimeException unavailable){listening=true;fail("Gesture input is unavailable. Use Pause manually.");}}
+ void requestPause(long now){try{port.hold(PAUSE+60000);deadline=Math.addExact(now,PAUSE);state=State.PAUSING;effects.pause();}catch(RuntimeException failure){fail("Flip pause could not begin. Use Pause manually.");}}
+ void paused(){if(state!=State.PAUSING)return;if(!effects.current()){close();return;}state=State.PAUSED;gesture=new TrackingFlipGesture(nanos.getAsLong(),-1);tick();}
+ void tick(){if(state==State.ERROR){releaseListener();releaseHold();return;}if(state==State.CLOSED){releaseListener();return;}if(!effects.current()){close();return;}if(state==State.PAUSED&&nanos.getAsLong()/1000000L>=deadline)requestResume(nanos.getAsLong()/1000000L);}
+ void requestResume(long now){if(state!=State.PAUSED)return;if(now>deadline&&now-deadline>LATE){fail("The flip pause was interrupted. Tap Resume when ready.");return;}state=State.RESUMING;gesture=null;deadline=0;if(!releaseListener()){releaseHold();return;}releaseHold();try{effects.resume();}catch(RuntimeException failure){fail("Recording could not resume. Open tracking to continue.");}}
+ void manualPause(){if(state==State.CLOSED)return;state=State.MANUAL_PAUSED;deadline=0;gesture=null;releaseListener();releaseHold();}
+ boolean releaseListener(){generation++;gesture=null;if(!listening)return true;try{if(port.stop()){listening=false;return true;}}catch(RuntimeException ignored){}state=State.ERROR;issue="Gesture listener cleanup needs attention. Use Pause manually.";return false;}
+ void releaseHold(){try{port.release();}catch(RuntimeException failure){issue="Gesture pause cleanup needs attention. Use Resume manually.";}}
+ long remaining(){return (state==State.PAUSING||state==State.PAUSED)?Math.max(0,deadline-nanos.getAsLong()/1000000L):0;}
+ String label(){if(!issue.isEmpty())return issue;return switch(state){case ACTIVE->"Face up, then face down to pause";case PAUSING->"Finishing capture before the pause";case PAUSED->"Flip pause · face up or wait up to 5 min";case RESUMING->"Resuming this recording";case MANUAL_PAUSED->"Manual pause · automatic resume is off";case NEW->"Waiting for recording to start";case ERROR->"Use Pause manually";case CLOSED->"Off";};}
+ void fail(String error){issue=error;state=State.ERROR;deadline=0;gesture=null;releaseListener();releaseHold();}
+ @Override public void close(){state=State.CLOSED;deadline=0;gesture=null;releaseListener();releaseHold();state=State.CLOSED;}
+}

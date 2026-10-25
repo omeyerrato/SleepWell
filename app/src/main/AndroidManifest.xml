@@ -57,6 +57,7 @@
         <activity android:name=".AutomationActivity" android:exported="false" />
         <service android:name=".AutomationJobService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
         <activity android:name=".HealthSleepSourceActivity" android:exported="false" />
+        <activity android:name=".TrackingFlipActivity" android:exported="false" />
         <activity android:name=".TrackingDelayActivity" android:exported="false" />
         <activity android:name=".TrackingDndActivity" android:exported="true"><intent-filter><action android:name="android.app.action.AUTOMATIC_ZEN_RULE" /><category android:name="android.intent.category.DEFAULT" /></intent-filter></activity>
         <receiver android:name=".TrackingDndReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /><action android:name="android.app.action.AUTOMATIC_ZEN_RULE_STATUS_CHANGED" /></intent-filter></receiver>
