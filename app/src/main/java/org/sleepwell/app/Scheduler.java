@@ -49,7 +49,8 @@ public final class Scheduler {
         Alarm a=Alarm.read(source.json()); a.id=-1; a.volume=Math.min(25,a.volume); a.rampSeconds=0; a.awakeCheck=0; a.pin=false;a.backupMinutes=0;a.vibrate=false;a.extraLoud=false;a.sunrise=false;a.flashlight=false;a.soundDelaySeconds=0;a.inputs=AlarmInputs.DEFAULT;a.inputsInvalid=false;a.soundMode=AlarmSoundMode.SINGLE;a.soundModeInvalid=false;a.timing=AlarmTiming.DEFAULT;a.timingInvalid=false;
         Prefs.put(c,"snoozes_-1",0);Prefs.put(c,"test_alarm",a.json().toString()); at(c,-1,TEST,System.currentTimeMillis()+10000);
     }
-    static void fire(Context c,Alarm a,boolean mainAlarm) {
+    static void fire(Context c,Alarm a,boolean mainAlarm) {fire(c,a,mainAlarm,false);}
+    static void fire(Context c,Alarm a,boolean mainAlarm,boolean snoozeContinuation) {
         BackupRuntime.admitted();
         // Reserving the current occurrence before starting audio prevents smart/deadline races.
         synchronized(Scheduler.class) {
@@ -69,7 +70,8 @@ public final class Scheduler {
             if(alreadyRinging)return;
             WakeChecks.supersede(c);
             Prefs.put(c,"challengeCompleted",0);Prefs.put(c,"mathTask","");Prefs.put(c,"retypeTask","");
-            Prefs.of(c).edit().putLong("alarmStartedElapsed",android.os.SystemClock.elapsedRealtime()).putString("alarmRun",java.util.UUID.randomUUID().toString()).putBoolean("forceBackup",false).putString("active_alarm",a.json().toString()).putBoolean("ringing",true).apply();
+            String nextRun=java.util.UUID.randomUUID().toString();if(!SnoozeBudgets.started(c,a,nextRun,!mainAlarm&&snoozeContinuation))Prefs.put(c,"lastError","Snooze budget could not be initialized. Snooze may be unavailable.");
+            Prefs.of(c).edit().putLong("alarmStartedElapsed",android.os.SystemClock.elapsedRealtime()).putString("alarmRun",nextRun).putBoolean("forceBackup",false).putString("active_alarm",a.json().toString()).putBoolean("ringing",true).apply();
             if(a.backupMinutes>0 && allowed(c))at(c,a.id,BACKUP,System.currentTimeMillis()+a.backupMinutes*60000L);
             c.startForegroundService(new Intent(c,AlarmService.class));
         }

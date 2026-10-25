@@ -30,7 +30,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             else return;
             synchronized(Scheduler.class){
                 if(Scheduler.FIRE.equals(action)){long deadline=Prefs.of(c).getLong("deadline_"+id,0);long delivered=intent.getLongExtra("occurrence",0);if(!acceptCalendar(delivered,deadline,System.currentTimeMillis()))return;}
-                Scheduler.fire(c,a,Scheduler.FIRE.equals(action));
+                Scheduler.fire(c,a,Scheduler.FIRE.equals(action),Scheduler.SNOOZE.equals(action));
             }
         } catch(Exception e) { Prefs.put(c,"lastError","Alarm delivery: "+e.getMessage()); }
     }
