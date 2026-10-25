@@ -15,13 +15,14 @@ final class NoiseRecorder implements AutoCloseable {
     private NoiseRecorder(Context c,Store store,long session,ClipBudget budget,java.util.function.LongSupplier timeline,Boolean saveClips){
         saveOverride=saveClips;thread=new Thread(()->capture(c,store,session,budget,timeline),"SleepWell-audio");thread.start();
     }
-    private boolean savesClips(Context c){return saveOverride==null?Prefs.flag(c,"saveClips"):saveOverride;}
+    private boolean savesClips(Context c,ClipBudget budget){return budget.permitsClips(saveOverride==null?Prefs.flag(c,"saveClips"):saveOverride);}
     private void capture(Context c,Store store,long session,ClipBudget budget,java.util.function.LongSupplier timeline) {
         AudioRecord recorder=null;MicrophoneLease microphone=null;SoundAnalysisStream analysis=null;SnoreCuePolicy cues=new SnoreCuePolicy(budget.snoreCues,()->new SnoreCueOutput(c),()->Prefs.put(c,"snoreCueError","A snoring cue could not play."));
         try {
+            if(!budget.analysisAllowed()){Prefs.put(c,"audioError","Sound settings are unreadable. Review and save Sound sensitivity before recording sound.");return;}
             if(c.checkSelfPermission(android.Manifest.permission.RECORD_AUDIO)!=android.content.pm.PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is not granted");
             microphone=MicrophoneLease.acquire("sleep-noise");if(microphone==null)throw new IOException("Microphone is in use by another SleepWell capture.");
-            if(savesClips(c))prune(c,store,budget);
+            if(savesClips(c,budget))prune(c,store,budget);
             int size=Math.max(4096,AudioRecord.getMinBufferSize(16000,AudioFormat.CHANNEL_IN_MONO,AudioFormat.ENCODING_PCM_16BIT));
             recorder=new AudioRecord(MediaRecorder.AudioSource.MIC,16000,AudioFormat.CHANNEL_IN_MONO,AudioFormat.ENCODING_PCM_16BIT,size);
             if(recorder.getState()!=AudioRecord.STATE_INITIALIZED) throw new IOException("Microphone unavailable");
@@ -38,8 +39,8 @@ final class NoiseRecorder implements AutoCloseable {
                 level=SleepMath.rms(frame,n);window.add(level,n);
                 analysis.accept(frame,n,timeline.getAsLong());
                 double threshold=Prefs.number(c,"noiseThreshold",20)/1000.0;
-                if(!savesClips(c))clip=null;
-                if(clip==null && budget.canStart(android.os.SystemClock.elapsedRealtime()) && level>=threshold && savesClips(c)) { prune(c,store,budget);clip=new ByteArrayOutputStream(); peak=0; }
+                if(!savesClips(c,budget))clip=null;
+                if(clip==null && budget.canStart(android.os.SystemClock.elapsedRealtime()) && level>=threshold && savesClips(c,budget)) { prune(c,store,budget);clip=new ByteArrayOutputStream(); peak=0; }
                 if(clip!=null) {
                     peak=Math.max(peak,level);
                     for(int i=0;i<n;i++) { clip.write(frame[i]&255); clip.write((frame[i]>>8)&255); }

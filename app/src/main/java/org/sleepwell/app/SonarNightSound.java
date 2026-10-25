@@ -15,9 +15,9 @@ final class SonarNightSound {
     private volatile Segment current;private volatile long completed;private volatile String issue="";private String saved="";private int eventCount;
     SonarNightSound(boolean requested,SoundAnalysisStream.Factory factory,Port port){this(requested,factory,port,3600);}
     SonarNightSound(boolean requested,SoundAnalysisStream.Factory factory,Port port,int eventLimit){this(requested,factory,port,eventLimit,SoundSensitivity.DEFAULT);}
-    SonarNightSound(boolean requested,SoundAnalysisStream.Factory factory,Port port,int eventLimit,SoundSensitivity sensitivity){if(sensitivity==null)throw new IllegalArgumentException("Missing sound grouping policy");this.sensitivity=sensitivity;if(requested&&factory==null||port==null||eventLimit<1||eventLimit>3600)throw new IllegalArgumentException("Missing or invalid shared sound owner");this.requested=requested;this.factory=factory;this.port=port;this.eventLimit=eventLimit;}
+    SonarNightSound(boolean requested,SoundAnalysisStream.Factory factory,Port port,int eventLimit,SoundSensitivity sensitivity){if(sensitivity==null)throw new IllegalArgumentException("Missing sound grouping policy");this.sensitivity=sensitivity;if(requested&&factory==null||port==null||eventLimit<1||eventLimit>3600)throw new IllegalArgumentException("Missing or invalid shared sound owner");this.requested=requested;this.factory=factory;this.port=port;this.eventLimit=eventLimit;if(requested&&!sensitivity.available())issue="capture";}
     Segment begin(long start,long wallAnchor,long elapsedAnchorNanos,Executor storage){
-        if(!requested||!issue.isEmpty())return null;
+        if(!requested)return null;if(!issue.isEmpty()){if(saved.isEmpty())try{port.status(state());saved="error:0:"+issue;}catch(Exception failure){throw new IllegalStateException("Could not save unavailable sound status",failure);}return null;}
         if(current!=null&&!current.closed)throw new IllegalStateException("Previous sound worker has not acknowledged cleanup");
         ArrayBlockingQueue<Event> events=new ArrayBlockingQueue<>(64);
         SonarSoundWorker worker=new SonarSoundWorker(factory,(at,n,category,score)->{if(!events.offer(new Event(at,n,category,score)))throw new IllegalStateException("Sound persistence could not keep up");},wallAnchor,elapsedAnchorNanos,storage,sensitivity);

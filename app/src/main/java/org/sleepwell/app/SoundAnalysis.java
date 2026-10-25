@@ -35,7 +35,7 @@ final class SoundAnalysis {
         private final Sink sink;private final SoundSensitivity sensitivity;private String category;private int windows;private long start;private double sum;
         Group(Sink sink){this(sink,SoundSensitivity.DEFAULT);}
         Group(Sink sink,SoundSensitivity sensitivity){if(sink==null||sensitivity==null)throw new IllegalArgumentException("Missing sound grouping policy");this.sink=sink;this.sensitivity=sensitivity;}
-        void add(long at,Result value){if(value==null||!value.category.equals(category))flush();if(value==null)return;if(windows==0){start=at;category=value.category;}windows++;sum+=value.score;if(windows==10)flush();}
+        void add(long at,Result value){if(value!=null&&!sensitivity.includes(value.category))value=null;if(value==null||!value.category.equals(category))flush();if(value==null)return;if(windows==0){start=at;category=value.category;}windows++;sum+=value.score;if(windows==10)flush();}
         void flush(){int count=windows;long at=start;String type=category;double score=count==0?0:sum/count;category=null;windows=0;sum=0;if(count>0&&count>=sensitivity.windows(type))sink.event(at,count,type,score);}
     }
 }
