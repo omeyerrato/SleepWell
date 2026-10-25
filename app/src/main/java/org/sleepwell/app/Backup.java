@@ -42,9 +42,12 @@ final class Backup {
     }
     static void restore(Context c,Store store,JSONObject root) throws JSONException {
         if(TrackingService.running||Prefs.flag(c,"ringing"))throw new JSONException("End tracking and alarms before restoring.");
-        List<Alarm> previous=store.alarms();List<JSONObject> clips=store.rows("SELECT path FROM clips");restoreData(store,root);
+        boolean weeklyReplacement=Records.factory==Records.PRODUCTION&&"sleepwell.db".equals(store.getDatabaseName());if(weeklyReplacement)NapProfilesWeekly.replacing(c);
+        try{
+        List<Alarm> previous=store.alarms();List<JSONObject> clips=store.rows("SELECT path FROM clips");restoreData(store,root);if(weeklyReplacement)NapProfilesWeekly.replaced(c);
         for(Alarm a:previous){Naps.cancelJob(c,a);Scheduler.cancel(c,a.id,Scheduler.FIRE);Scheduler.cancel(c,a.id,Scheduler.SNOOZE);Scheduler.cancel(c,a.id,Scheduler.CHECK);Scheduler.cancel(c,a.id,Scheduler.BACKUP);}
         Scheduler.cancel(c,-1,Scheduler.TEST);Prefs.put(c,"checkPending",0);for(JSONObject clip:clips)FileSafety.deleteClip(c,clip.optString("path"));
+        }finally{if(weeklyReplacement)NapProfilesWeekly.replacementFinished();}
     }
     static void restoreData(Store store,JSONObject root) throws JSONException {
         restoreData(store,root,()->{});

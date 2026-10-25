@@ -68,7 +68,7 @@ public final class Scheduler {
                 Prefs.put(c,"snoozes_"+a.id,0);
                 try(Store s=new Store(c)) {
                     Alarm stored=s.alarm(a.id);
-                    if(stored!=null) { AlarmSkips.clear(stored);if(stored.days.isEmpty()) stored.enabled=false; s.save(stored); schedule(c,stored); }
+                    if(stored!=null) { AlarmSkips.consume(stored);if(stored.days.isEmpty()) stored.enabled=false; s.save(stored); schedule(c,stored); }
                 }
             }
             // Overlapping scheduled alarms share the currently active challenge, but both schedules advance.

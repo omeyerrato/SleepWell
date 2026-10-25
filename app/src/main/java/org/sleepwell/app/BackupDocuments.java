@@ -56,16 +56,16 @@ final class BackupDocuments implements BackupJob.Work {
         }return bytes.toByteArray();
     }
     @Override public String restore(BackupJob.Review review)throws Exception {
-        background();effects.idle(review.admission);JSONObject root=new JSONObject(review.document);Backup.validate(root);List<Alarm> old=new ArrayList<>();Store store=null;boolean committed=false;Exception failure=null;String message="";
-        try{store=records.open(app);final Store owned=store;
+        background();effects.idle(review.admission);JSONObject root=new JSONObject(review.document);Backup.validate(root);List<Alarm> old=new ArrayList<>();Store store=null;boolean committed=false,weeklyReplacement=false;Exception failure=null;String message="";
+        try{store=records.open(app);if(records==Records.PRODUCTION&&Records.factory==Records.PRODUCTION&&"sleepwell.db".equals(store.getDatabaseName())){NapProfilesWeekly.replacing(app);weeklyReplacement=true;}final Store owned=store;
             AtomicBoolean first=new AtomicBoolean(true);
-            Backup.restoreData(store,root,()->{effects.idle(review.admission);if(first.getAndSet(false)){if(!review.fingerprint.equals(BackupFingerprint.read(owned)))throw new IllegalStateException("Local data changed. Choose the backup again to review the latest data.");old.addAll(owned.alarms());}effects.idle(review.admission);});committed=true;
+            Backup.restoreData(store,root,()->{effects.idle(review.admission);if(first.getAndSet(false)){if(!review.fingerprint.equals(BackupFingerprint.read(owned)))throw new IllegalStateException("Local data changed. Choose the backup again to review the latest data.");old.addAll(owned.alarms());}effects.idle(review.admission);});committed=true;if(weeklyReplacement)NapProfilesWeekly.replaced(app);
             // Replacement committed. Cleanup failure must never be reported as an uncommitted restore.
             String warning="";try{effects.retired(old,store);}catch(RuntimeException cleanupFailure){warning=" Some old alarm schedules need review.";}
             try{effects.recover(store);}catch(RuntimeException cleanupFailure){warning+=" Audio cleanup needs attention.";}
             int pending=store.rows("SELECT clip FROM pending_clip_deletes").size();
             message="Data restored. Review and enable your alarms."+warning+(pending>0?" "+pending+" audio files still need cleanup in Data & privacy.":"");
-        }catch(Exception error){failure=error;}finally{if(store!=null)try{store.close();}catch(Exception close){if(failure!=null)failure.addSuppressed(close);else failure=close;}}
+        }catch(Exception error){failure=error;}finally{if(store!=null)try{store.close();}catch(Exception close){if(failure!=null)failure.addSuppressed(close);else failure=close;}if(weeklyReplacement)NapProfilesWeekly.replacementFinished();}
         if(!committed){if(failure!=null)throw failure;throw new IllegalStateException("Replacement did not start.");}
         return failure==null?message:"Data restored. Cleanup or storage verification needs attention. Review alarms and Data & privacy before importing again.";
     }

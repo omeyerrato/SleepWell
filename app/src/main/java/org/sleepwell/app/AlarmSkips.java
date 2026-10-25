@@ -12,7 +12,8 @@ final class AlarmSkips {
  static String scheduleKey(Alarm a){return a.hour+":"+a.minute+":"+new TreeSet<>(a.days)+":"+a.enabled+":"+(a.dateInvalid?"invalid-date:"+a.json().opt("date"):a.date==null?"":a.date)+(a.solarInvalid?":invalid-solar:"+a.json().opt("solar"):a.solar==null?"":":"+a.solar.key())+AlarmExcludedDates.key(a);}
  static String owner(Alarm a){return a.skipInvalid?"invalid:"+a.json().opt("skip"):a.skip==null?"":a.skip.nonce;}
  static boolean usable(Alarm a){return a!=null&&a.nap==null&&!a.napInvalid&&!a.skipInvalid&&!a.dateInvalid&&!a.solarInvalid&&!a.excludedDatesInvalid;}
- static void clear(Alarm a){a.weeklyNapOwner="";a.weeklyNapOwnerInvalid=false;a.skip=null;a.skipInvalid=false;a.invalidSkip=null;a.scheduleError="";}
+ static void clear(Alarm a){a.weeklyNapOwner="";a.weeklyNapOwnerInvalid=false;consume(a);}
+ static void consume(Alarm a){a.skip=null;a.skipInvalid=false;a.invalidSkip=null;a.scheduleError="";}
  static void requireSame(Alarm current,Alarm expected){if(!usable(current)||!scheduleKey(current).equals(scheduleKey(expected))||!owner(current).equals(owner(expected)))throw new Changed("This alarm changed. Reopen it before changing its occurrence.");}
  static long next(Context c,Alarm a){return next(c,a,clock.getAsLong(),zone.get());}
  static long next(Context c,Alarm a,long now,ZoneId zone){return CalendarAlarms.preview(c,a,a.next(Math.max(now,Prefs.of(c).getLong("lastOccurrence_"+a.id,0)),zone),now,zone);}

@@ -11,6 +11,7 @@ final class CalendarAlarms {
         return plan(c,alarm,base,now,ZoneId.systemDefault());
     }
     static CalendarPolicy.Plan plan(Context c,Alarm alarm,long base,long now,ZoneId zone){
+        if(NapProfilesWeekly.owns(c,alarm))return CalendarPolicy.ordinary(base,"");
         if(alarm.days.isEmpty()||alarm.nap!=null||alarm.napInvalid||alarm.skipInvalid)return CalendarPolicy.ordinary(base,"");
         try{CalendarPolicy.Rules rules=CalendarSettings.load(c);CalendarPolicy.Plan planned=CalendarPolicy.plan(rules,snapshot,now,base,zone,value->alarm.next(value,zone));if(planned.deadline>0&&AlarmExcludedDates.excludes(alarm,planned.deadline,zone))return CalendarPolicy.ordinary(base,"Calendar adjustment would fall on a selected skipped date");if(rules.enabled&&(snapshot==null||!snapshot.fresh(now,zone,rules)))CalendarSync.request(c);return planned;}
         catch(RuntimeException unavailable){return CalendarPolicy.ordinary(base,"Calendar settings need review");}
@@ -21,7 +22,7 @@ final class CalendarAlarms {
         if(!plan.changed()){if(!edit.remove(key).commit())throw new IllegalStateException("Calendar schedule could not be saved");return;}
         try{String receipt=new JSONObject().put("base",plan.base).put("deadline",plan.deadline).put("key",AlarmSkips.scheduleKey(alarm)).put("revision",plan.revision).toString();if(!edit.putString(key,receipt).commit())throw new IllegalStateException("Calendar schedule could not be saved");}catch(JSONException impossible){throw new IllegalStateException(impossible);}
     }
-    private static long base(Context c,Alarm alarm,long deadline){try{
+    private static long base(Context c,Alarm alarm,long deadline){if(NapProfilesWeekly.owns(c,alarm))return 0;try{
         String raw=CalendarSettings.prefs(c).getString("receipt_"+alarm.id,"");if(raw.isEmpty())return 0;JSONObject row=new JSONObject(raw);CalendarPolicy.Rules rules=CalendarSettings.load(c);
         long original=row.getLong("base");if(!rules.enabled||!rules.revision.equals(row.getString("revision"))||!AlarmSkips.scheduleKey(alarm).equals(row.getString("key"))||row.getLong("deadline")!=deadline||deadline>original||original-deadline>6*3600000L)return -1;return original;
     }catch(RuntimeException|JSONException invalid){return -1;}}
