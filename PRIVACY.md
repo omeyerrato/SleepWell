@@ -1,5 +1,26 @@
 # Privacy
 
+Optional uninstall protection asks you to activate Android’s administrator entry
+for SleepWell. It requests an empty policy set, adds the ordinary deactivation
+step before uninstall, and can be removed in-app or in Android security settings.
+There is no password, lock, wipe, camera, owner or disable-interception code, and
+backup restore never enrolls an administrator.
+
+Direct calendar export requires an explicit review, chosen writable calendar and
+read/write permission. Only the shown title/interval/zone and optional note are
+inserted. A separate private local receipt journal retains title, calendar name,
+source identity and note hash, not the note text. It supports duplicate/uncertain
+outcome checks and is excluded from record backups. Calendar copies remain external;
+local insertion does not prove remote synchronization. Later record changes never
+silently rewrite or delete the calendar copy.
+
+AAC export privately snapshots selected real audio intervals, encodes separate
+M4A parts and writes only to the explicitly chosen destination. Original WAVs are
+unchanged; files may include codec padding. Multi-part exports include interval,
+label/correction/provenance and hash metadata. Legacy clip stars now also enter
+portable metadata as clip/session/end/duration identities when audio is missing;
+no placeholder audio or events are fabricated.
+
 External-player fading is a separate default-off setting with explicit consent.
 It reads observable active-media, anticipated-route/device, audio-mode, screen and
 volume state during an eligible manual movement recording and may lower the device

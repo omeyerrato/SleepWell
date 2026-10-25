@@ -22,6 +22,24 @@ Sources: [Google](https://developers.google.com/fit/overview),
 
 ## Six-hour production window — 25 October
 
+Latest candidate **121dbd5**, **assembleDebug PASS1m41s**, adds:
+
+- [x] Optional Android-admin ordinary-uninstall step: explicit system activation,
+  actual OS state, user removal and no lock/wipe/password/camera/owner policies.
+- [x] Direct reviewed calendar insertion from an effective saved record, chosen
+  writable destination, optional note, permission/error states and durable receipts.
+- [x] Real platform AAC-LC M4A export of selected effective audio intervals, or
+  separate parts+manifest ZIP for a night/favorites collection; original WAVs kept.
+- [x] Portable independent legacy clip stars, including metadata-only missing-audio
+  identities, full ZIP attachment and older-backup defaults.
+
+New schema16 adds only portable missing-audio star storage; metadataformat13 and
+ZIPv2 retain versions with optional extensions. Old backups are accepted by the
+new reader; older readers may drop metadata stars or reject new ZIP extension
+fields. Actual migration/round trips, provider/encoder/admin/OEM behavior remain
+unverified. Candidate uninstalled; last phone update5a73464 is separate below.
+No new tests/lint/screenshots or phone/provider/codec/admin/audio/sensor actions.
+
 Subsequent user-authorized phone update: **5a73464 installed successfully**.
 Installed checksum, all original table rows, preferences and private files were
 preserved. Samsung Device Care package suspension blocked opening; schema remains7

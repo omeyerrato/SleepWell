@@ -2,13 +2,14 @@
 
 Not fully done. Checked items have actual production implementation and build
 success; they are not claims of current phone/overnight validation. Unchecked
-acceptance items below remain required. Latest application source5a73464 builds
-in1m5s; its published APK retains the installed signer
+acceptance items below remain required. Latest application source121dbd5 builds
+in1m41s; its published APK retains the installed signer
 and matching SHA256.
 
 ## Implemented feature paths
 
 - [x] Best-effort prevent-leave and recognized power-menu handling during alarms.
+- [x] Optional removable Android-admin step before ordinary uninstall, with no admin policies.
 - [x] Extra-loud toggle: maximum alarm stream plus optional owned-session gain.
 - [x] Gentle volume increase, sound delay and independent vibration timing.
 - [x] Screen sunrise and flashlight wake-up.
@@ -41,6 +42,9 @@ and matching SHA256.
 - [x] Separate opted-in external MEDIA-stream stillness fade with cancellation and no restoration.
 - [x] Saved narration speed/pitch presets applied after explicit Play.
 - [x] Metadata/audio backup and restore, including optional user-selected folder versions.
+- [x] Portable legacy clip stars without sound events, including missing-audio metadata round trips.
+- [x] Selected effective audio intervals/collections export as AAC-LC M4A or multi-part ZIP.
+- [x] Reviewed direct saved-record insertion into a selected writable calendar, with receipts.
 - [x] Integration paths for sleep-only Health Connect, calendar, smart lights,
   Tasker/webhooks/MQTT, subject to their external services/permissions.
 - [x] Published development APK; original signer and uploaded checksum verified.
@@ -67,13 +71,16 @@ and matching SHA256.
 - [ ] On-device phrase recognition, microphone cleanup and orientation behavior.
 - [ ] Local playlist provider/decoder lifecycle and stillness-fade sensor/output behavior.
 - [ ] Built-in rotation, external media volume/route cancellation and narration engine behavior.
+- [ ] Schema16 favorite migration/round trips, AAC encoder/provider output, direct calendar
+  insertion/uncertain receipts and Android-admin activation/removal behavior.
 - [ ] Full36-screen reference design fidelity, especially Report/charts and menus.
 - [ ] Remaining interaction bugs and security review, deferred by user instruction.
 - [ ] Open after Samsung Device Care suspension is removed and verify schema7→15 migration.
 - [ ] Full completion verification; current builds alone do not establish it.
 
 Forced hardware power-off cannot be prevented by an ordinary Android app. The
-personal phone now has5a73464; Device Care suspension blocked launch and schema
-remains7pending first-open migration. No new unit/native/lint/screenshot batches
-or alarm/audio/sensor actions ran. Details and bounds are in
+last phone update was5a73464; its last launch was blocked by Device Care and last
+verified schema was7pending its first-open migration to15. New121dbd5/schema16
+is uninstalled. No new unit/native/lint/screenshot batches or phone/provider/
+codec/admin/alarm/audio/sensor actions ran for these additions. Details and bounds are in
 [FEATURE-MATRIX.md](FEATURE-MATRIX.md) and [REMAINING-WORK.md](REMAINING-WORK.md).

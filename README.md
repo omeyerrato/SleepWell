@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 26 October
 
-Application source **5a73464** builds in **1m5s**, with schema15 / metadata
+Application source **121dbd5** builds in **1m41s**, with schema16 / metadata
 backup13 and the original installed signing key. It includes expanded alarm,
 snooze, reminder and extra-loud controls; shared contactless noise clips/cues;
 weekly naps, object challenges, offline narration and pre-travel sleep shifts;
@@ -24,18 +24,23 @@ sensor FIFO batching; an on-device spoken-phrase challenge; and per-alarm
 orientation lock; ordered local audio playlists; and optional tracking-owned
 movement-estimate fading; saved built-in sound rotation; separately consented
 external media-stream fading; and narration rate/pitch controls. Provider,
-OS-observation and sensor prerequisites remain explicit.
+OS-observation and sensor prerequisites remain explicit. It also adds optional
+removable Android-admin uninstall friction, reviewed direct calendar saving,
+AAC M4A interval/collection export and portable legacy clip favorites.
 
-[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-5a73464).
+[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-121dbd5).
 Its uploaded checksum matches the local signed artifact. See the
 [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
 [checkmarked feature checklist](docs/FEATURE-CHECKLIST.md) and
 [remaining checklist](docs/REMAINING-WORK.md) for exact behavior and missing scope.
-Feature behavior still has **build-only evidence**. The user-authorized5a73464
+Feature behavior still has **build-only evidence**; current121dbd5 is uninstalled.
+The earlier user-authorized5a73464
 phone update succeeded; checksum, original records/preferences/private files were
 preserved. Samsung Device Care suspension blocked opening, so schema7→15 first-open
 migration remains pending. Runtime, provider, overnight, accuracy and visual acceptance remain
-open; no new test/lint/screenshot batches or alarm/audio/sensor actions ran.
+open. New schema16 favorite storage and optional format13/ZIPv2 extensions have
+not had runtime migration/round-trip validation. No new test/lint/screenshot
+batches or phone/provider/codec/admin/alarm/audio/sensor actions ran in this batch.
 
 ## Working capabilities
 

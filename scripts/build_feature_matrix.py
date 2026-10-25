@@ -949,6 +949,32 @@ for row in rows:
     if row["feature"] == "Google Fit / Samsung Health":
         row.update(status="blocked", source="https://developers.google.com/fit/overview", validation="Read-only official Google/Samsung developer prerequisites checked26October2026. No direct SDK/provider/device actions; no direct clients delivered.", notes="Direct vendor SDK clients remain absent. Google Fit new developer sign-ups closed1May2024 and its APIs are deprecated in2026; the existing sleep-only Health Connect route remains the mobile integration path. Samsung's legacy Android SDK was deprecated31July2025. Its replacement Health Data SDK requires prior partner approval and registered package/signing SHA256 for public distribution; an unregistered client is blocked, and development mode is not a production workaround. SleepWell has no such approval. See [Google Fit overview](https://developers.google.com/fit/overview), [Samsung legacy notice](https://developer.samsung.com/health/android/overview.html) and [Samsung app verification](https://developer.samsung.com/health/data/guide/app-verification.html). Existing Health Connect implementation does not imply direct SDK exchange or provider acceptance.")
 
+for row in rows:
+    if row["feature"] == "Prevent uninstall / shutdown":
+        row["implementation"] += ["SleepWellAdminReceiver.java", "UninstallProtectionActivity.java", "AlarmProtectionActivity.java"]
+        row["notes"] = row["notes"].replace("uninstall prevention is not implemented.", "optional Android administrator uninstall friction is now present.")
+        row["notes"] += " A separate explicit system activation prompt can make normal uninstall require prior administrator deactivation. Actual DPM state, in-app removal and Android security settings remain available. Empty policy metadata requests no lock/wipe/password/camera/owner actions; no disable interception or automatic activation. This does not prevent hardware off/force-stop/suspension or every managed/OEM uninstall route. Device behavior remains unverified."
+        row["validation"] += " New admin flow: assembleDebug121dbd5 PASS1m41s only; no activation/removal/device actions."
+    if row["feature"] in ("Retention / favorite album / alternate formats", "Correct sound labels / favorites / export", "Local data backup", "User-controlled cloud / conflict / audio backup"):
+        row["implementation"] += ["SoundEventBackup.java", "Store.java", "Backup.java", "BackupFingerprint.java", "LibraryAudioArchive.java", "LibraryAudioImport.java"]
+        row["notes"] = row["notes"].replace("Alternate formats, portable favorite backup and real player/provider remain open.", "Runtime player/provider acceptance remains open.").replace("portable legacy clip favorites and alternate formats remain incomplete.", "portable legacy clip favorites and AAC export now have production code; runtime acceptance remains open.")
+        row["notes"] += " Optional clip_favoritesv1 under metadataformat13 now preserves actual legacy clip stars even without sound events. Additive schema16 portable_clip_favorites stores only missing-audio clip/session/end/duration identities, never phantom clips/events. Strict reference/duplicate/size/interval bounds, stale-review fingerprint, transactional replacement restore/erase/session-delete and re-export apply. ZIPv2 attaches verified audio and consumes matching orphan identity; optional source_duration_ms handles legacy stored/measured duration differences. Old backups are accepted; older readers may ignore metadata stars or reject new optional ZIP fields. Existing event stars/corrections remain independent."
+        row["validation"] += " Favorite extension: assembleDebug121dbd5 PASS1m41s; migration/round-trip runtime unverified, no new tests/provider/device actions."
+    if row["feature"] in ("Retention / favorite album / alternate formats", "Correct sound labels / favorites / export"):
+        row["implementation"] += ["AacPcmEncoder.java", "AacArchive.java", "AacExportJob.java", "AacExportActivity.java"]
+        row["notes"] += " Explicit AAC-LC M4A export now encodes selected actual effective PCM16 intervals, or separate M4A parts+manifest ZIP for a night/favorites collection. Gaps are not joined and source WAVs stay unchanged. Bounded staged input, reviewed selection/fresh SAF destination, EOS/drain/finalization, cancellation/partial-provider-error states exist. Platform encoder required; WAV/ZIP preserved. MP3/Ogg are not supplied; actual encoding/output remains unverified."
+    if row["feature"] == "Calendar holiday skip / meeting shift / record write":
+        row["implementation"] += ["CalendarEventDirectActivity.java", "CalendarEventWrites.java"]
+        row["notes"] = row["notes"].replace("Calendar record writing remains absent.", "Direct reviewed local calendar writing now has production code.")
+        row["notes"] += " Separate direct-export screen requests read/write access only on demand, selects a writable calendar and reviews title/effective times/zone/optional note. Private durable PREPARED/INSERTING/VERIFIED/UNCERTAIN journal, source/destination fingerprints, package+UUID marker lookup/readback and no blind uncertain replay prevent duplicate creation. Title/note changes do not create/update the same period again; unrelated events are never updated/deleted. Existing external compose option stays available. Provider marker support is required; local insertion does not prove remote sync. Source and provider writes cannot be one atomic transaction; later edits never silently rewrite the reviewed event."
+        row["validation"] += " Direct write: assembleDebug121dbd5 PASS1m41s; no provider/calendar/device actions, actual exchange unverified."
+
+rows.extend([
+    dict(feature="Optional removable uninstall administrator", screens="05 + Alarm protection detail", source="https://developer.android.com/work/device-admin", implementation=["SleepWellAdminReceiver.java", "UninstallProtectionActivity.java", "AlarmProtectionActivity.java"], validation="Combined assembleDebug121dbd5 PASS1m41s, build-only; no device/admin activation/removal or alarm actions.", status="partial", notes="Explicit Enable targets an exported system activation Activity with this app's component; only actual DevicePolicyManager state marks Active. The receiver is system-protected by BIND_DEVICE_ADMIN and has empty policy metadata. User may remove only this administrator in-app or through Android security settings; deactivation is never intercepted. Default-off OS state is not restored/copied by app backup. No password/lock/wipe/camera/owner capability, automatic enrollment, force-stop/shutdown/suspension guarantee or OEM acceptance claim."),
+    dict(feature="AAC interval and collection export", screens="20,21 + audio export review", source=SOURCE+"sleep/sleep_tracking.html", implementation=["AacPcmEncoder.java", "AacArchive.java", "AacExportJob.java", "AacExportActivity.java", "SoundEventsActivity.java", "FavoriteSoundsActivity.java", "SoundArchiveActivity.java"], validation="Combined assembleDebug121dbd5 PASS1m41s. No codec/provider/playback/device invocation or new tests/lint/screenshots.", status="partial", notes="Platform AAC-LC MediaCodec+MPEG4 MediaMuxer encodes actual selected PCM16 source frames. Up to60effective parts/64MiB original snapshots, per-part/collection deadlines, real edited/awake/pause coverage and separate gap parts; one M4A or a ZIP with per-part source/model/correction/provenance/hash manifest. Original WAVs untouched. Private reviewed selection and fresh SAF destination, retained chooser/write state, cancel/process-loss/error/partial-output states. No samples synthesized or capture/playback. Encoder availability, output padding/decodability/provider finalization remain unverified; MP3/Ogg are not claimed."),
+    dict(feature="Reviewed direct calendar record insertion", screens="14,22,24 + calendar export review", source=SOURCE+"services/google_calendar.html", implementation=["CalendarEventDirectActivity.java", "CalendarEventWrites.java", "CalendarEventExportActivity.java", "CalendarEventDraft.java"], validation="Combined assembleDebug121dbd5 PASS1m41s. No calendar/provider/device calls or new tests/lint/screenshots.", status="partial", notes="Explicit reviewed CalendarContract insertion of a saved effective interval into a chosen writable calendar. Read/write permissions on demand; visible denied/missing/revoked/error states. Exported data is title/start/end/zone and optional visible note; PRIVATE/FREE/no reminder requested. Worker journal retains title/note hash/source identity and local receipts, no raw note. Same-period/calendar dedup, source/destination rechecks, ownership marker verification and explicit uncertain receipt recheck; no blind second insertion or unrelated update/delete. Existing external composer remains. Provider metadata support and local permission required; remote sync, actual insertion and whole flow remain unverified.")
+])
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -976,19 +1002,19 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Current follow-up production source **5a73464** adds built-in ambience rotation,
-separately consented external-media fading and saved narration rate/pitch, alongside
-local audio queues, owned movement-estimate fading, one-occurrence rescheduling,
-manual FIFO batching, spoken phrases, orientation lock and preceding features.
-Combined production build **PASS1m5s**. Schema15 and backup13 are unchanged.
+Current follow-up production source **121dbd5** adds optional removable uninstall
+friction, direct calendar saving, AAC interval/collection export and portable legacy
+clip stars, alongside preceding alarm/tracking/data features. Combined production
+build **PASS1m41s**. Schema16 adds missing-audio favorite metadata storage; backup13
+and ZIPv2 retain their versions with optional extension fields. Migration is unverified.
 This feature window uses **build-only**
 evidence: no new unit/native/lint/screenshot batches or physical-phone actions.
-The APK retains the installed debug signing key. The user subsequently authorized
-installation of5a73464: streamed update succeeded and installed checksum/original
-rows/preferences/private files matched. Samsung Device Care suspension blocked
-normal launch; the phone still has schema7 and first-open migration to15 is pending.
-No suspension setting was changed and no alarm/audio/sensor actions were run.
-The current public5a73464 development prerelease includes these additions.
+The APK retains the original debug signing key. Candidate121dbd5 is uninstalled.
+Last authorized phone update was5a73464: streamed update/checksum/original rows,
+preferences/private files matched. Its last launch was blocked by Samsung Device
+Care suspension and last verified schema was7; its first-open target is15. No
+further phone/admin/provider/codec/alarm/audio/sensor actions ran in this batch.
+The current public121dbd5 development prerelease includes these additions.
 Its uploaded size/SHA256 match the frozen local signed APK. Earlier release inventories are preserved
 in [delivery history](2026-10-25-FEATURE-DELIVERY.md).
 Historical scoped functional evidence is preserved in [VERIFICATION.md](VERIFICATION.md)

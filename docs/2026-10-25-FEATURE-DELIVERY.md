@@ -384,3 +384,49 @@ A normal launch request was intercepted by Samsung Device Care's existing packag
 suspension. It was left unchanged. The database remains schema7; first-open migration
 to15 and normal foreground launch are still pending after the app is unpaused.
 Private backup/journal paths remain ignored locally; no personal data was published.
+
+
+## Calendar, AAC, legacy favorites and uninstall step —26 October,121dbd5
+
+Combined **assembleDebug PASS1m41s**, original signer retained. New additive main
+schema16 stores portable missing-audio favorites; metadataformat13 and ZIPv2 keep
+versions with optional fields. Runtime migration/round-trip acceptance is unverified.
+
+- Optional ordinary-uninstall friction uses explicit Android administrator activation,
+  actual DPM status and user removal. Empty policy metadata requests no password,
+  lock/wipe/camera/owner actions. System BIND_DEVICE_ADMIN protects the receiver;
+  internal Activity is private, targets a real exported system activation screen
+  and never forwards incoming nested intents. Opening/restore does not activate;
+  normal deactivation/settings remain available. No hardware-off/force-stop/OEM
+  guarantee and no activation/removal run.
+- Direct calendar saving reviews a real effective saved period, title/zone and
+  optional note into a chosen writable calendar. On-demand read/write permissions,
+  worker source/destination rechecks, durable prepared/inserting/verified/uncertain
+  receipts and package+UUID markers avoid blindly repeating uncertain effects.
+  Existing external composer remains. No unrelated update/delete; local insertion
+  is not remote-sync proof. Source/provider cannot be one atomic transaction and
+  later record edits do not rewrite the reviewed calendar copy. Private receipts
+  retain title/calendar/source identity/note hash, not raw note or sensor/audio data.
+- Actual AAC-LC MediaCodec/MediaMuxer export accepts real selected effective PCM16
+  intervals. One M4A or separate parts+manifest ZIP covers a night/favorites selection,
+  preserving edit/awake/pause gaps and original WAVs. Bounded input/part/collection
+  staging, encode/EOS/drain/finalization, explicit fresh SAF destination and partial/
+  cancelled/unavailable-encoder states are implemented. Actual output/padding/
+  decodability/provider behavior unverified. WAV/ZIP remains; MP3/Ogg not supplied.
+- Optional clip_favoritesv1 preserves legacy independent clip stars without sound
+  events and without inventing missing audio. Strict bounded identities, schema16
+  orphan storage, transactional restore/erase/session-delete and review fingerprint
+  are included. ZIPv2 verified audio attachment consumes exact orphan metadata;
+  optional source_duration_ms handles legacy stored-versus-measured durations.
+  Older backups remain readable by the new app; older apps may ignore metadata
+  stars or reject newly extended ZIP rows. Existing event stars/corrections stay separate.
+
+Source commits1cdadec (calendar),ec80054 (favorites),1c10a30 (AAC),121dbd5 (admin/hook).
+No new unit/native/lint/screenshot batches, phone/provider/codec/calendar/admin/
+audio/sensor actions. These are implementation/build paths, not functional or
+visual completion. Candidate is uninstalled; last authorized phone update5a73464
+and its preserved schema7/blocked-launch evidence remain separate.
+
+Frozen APK **215123840 bytes**, SHA256
+`23b4f3d03b5f505c9919669782e87c88fb009cfcd6bf5f4480db5e248a8aa46b`.
+[Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-121dbd5).
