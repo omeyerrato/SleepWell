@@ -19,8 +19,9 @@ The next APK requires a production build; build failures are fixed as integratio
 Production code since the prior tested batch: Jump, Smart Bedtime, reversible awake
 estimates (schema11/backup8), Smile, radio alarms, optional Google Sleep API input,
 circular recorded-midpoint groups, and optional contactless vibration cues.
-Only source3262a03 has a new debug APK so far. Later merged code awaits a published
-Google dependency correction and combined build. No new device validation is claimed.
+Debug APKb9c206e builds with Pose/Light/Type code, timed-bedtime repeats, recording
+ZIP restore and experimental echo report. Later Pair/Note/Research/Score/Binaural
+source awaits a combined build after the scoped Note seed compile correction. No new device validation is claimed.
 The phone is untouched. Full visual, hardware, provider and overnight acceptance
 remain deferred, and the missing feature rows in the matrix remain authoritative.
 

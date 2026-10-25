@@ -402,7 +402,7 @@
         "AlarmSoundMode.java",
         "AlarmAudioSink.java",
         "AlarmPlayback.java",
-        "ToneActivity.java"
+        "AlarmToneScreen.java"
       ],
       "validation": "Sourcec024b4d integrated; production compile and real Internet playback pending. No network previews/tests run.",
       "status": "partial",
@@ -761,7 +761,7 @@
         "SmileCamera.java",
         "SmileHold.java",
         "SmileProof.java",
-        "ChallengeRoutineEditor.java",
+        "AlarmEditorActivity.java",
         "AlarmActivity.java"
       ],
       "validation": "Sourceb7dffc4 integrated; production compile pending dependency correction. No new tests/device camera/model-accuracy execution.",
@@ -774,10 +774,17 @@
       "feature": "Pose task",
       "screens": "04–12,26",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: pose model, confidence and accessibility fallback.",
+      "implementation": [
+        "PoseActivity.java",
+        "PoseCamera.java",
+        "PoseHold.java",
+        "PoseProof.java",
+        "AlarmEditorActivity.java",
+        "AlarmActivity.java"
+      ],
+      "validation": "Source2d7e325; debug APKb9c206e builds. No camera/model/device execution per user steering.",
+      "status": "partial",
+      "notes": "Bundled ML Kit actual landmark/framing/confidence and sustained hands-raised pose, private visible Start/permission/timeout and shared preview/Math alternative. No images retained by app. Proprietary beta model/SDK metrics and most-prominent-person limitations disclosed; no identity/liveness/clinical proof.",
       "id": "F030",
       "tests": []
     },
@@ -1083,7 +1090,7 @@
       ],
       "validation": "Production source8018a61; combined debug APK3262a03 builds. No new tests/native/OS delivery run per user steering.",
       "status": "partial",
-      "notes": "Default-off reminder projected from next actual eligible alarm, current goal, smart window, tracking delay and bounded recent five observed-day shortfall. Explicit no-alarm fixed fallback, tracking suppression and stale occurrence receipt. Repeated reminders/per-alarm reminder overrides and actual Android delivery remain unverified or absent.",
+      "notes": "Default-off reminder projected from next actual eligible alarm, current goal, smart window, tracking delay and bounded recent five observed-day shortfall. Explicit no-alarm fixed fallback, tracking suppression and stale occurrence receipt. Repeated reminders/per-alarm reminder overrides and actual Android delivery remain unverified or absent. Optional silent repeat interval/limit, current next receipt and owned swipe/Dismiss-tonight stop until next occurrence added509f3ec; compatibility build fix631f194.",
       "id": "F041",
       "tests": []
     },
@@ -1400,10 +1407,18 @@
       "feature": "Breathing rate",
       "screens": "13–21,27–30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending. Not inferred from low-rate phone movement.",
+      "implementation": [
+        "EchoPeriodicity.java",
+        "EchoPeriods.java",
+        "EchoSettingsActivity.java",
+        "EchoPeriodsActivity.java",
+        "SonarDsp.java",
+        "SonarNight.java",
+        "Store.java"
+      ],
+      "validation": "Source3c763ae; debug APKb9c206e builds. No hardware, algorithm-accuracy or overnight checks; no new tests.",
+      "status": "partial",
+      "notes": "Default-off actual I/Q reflection capture, full continuous60s windows, static-offset removal/principal-axis projection, autocorrelation and half-window stability gates. Separate persisted periodic-echo rate/quality, gaps and reviewed/original report, schema12/backup9. Other motion may be periodic. This exploratory rate is NOT validated breathing or apnea/disturbance detection; those requirements remain incomplete.",
       "id": "F052",
       "tests": []
     },
@@ -1525,11 +1540,16 @@
         "Store.java",
         "FavoriteSoundRows.java",
         "FavoriteSoundsActivity.java",
-        "ClipReviewAccess.java"
+        "ClipReviewAccess.java",
+        "LibraryAudioArchive.java",
+        "LibraryAudioExportActivity.java",
+        "LibraryAudioImport.java",
+        "LibraryAudioImportActivity.java",
+        "LibraryAudioImportJournal.java"
       ],
       "validation": "FavoriteSoundsStorageTest 3 PASS0.604s and FavoriteSoundsFlowTest 1 PASS21.562s at12c8c0f/CI40042183746; fourteen prior individually reviewed originals, fake playback only. ClipReviewAccessTest 1 PASS0.364s with actual private SQLite/WAV before/after saved start/end trims, no player allocation. AtCI40047180910 FavoriteSoundsFlowTest 1 passes22.302s; strict review clears paused/retry Play contrast in2 fresh originals. Real player output remains unverified.",
       "status": "partial",
-      "notes": "Real per-night events and global independent stars with date/category filters, bounded paging, PCM wave/seek, unstar/save/reopen and absent/outside-edited audio states. Fake playback only in native tests. New shared guard rechecks current saved period at open/Play/Resume; not atomic against later concurrent edits while already playing. Alternate formats and physical playback remain open.",
+      "notes": "Real per-night events and global independent stars with date/category filters, bounded paging, PCM wave/seek, unstar/save/reopen and absent/outside-edited audio states. Fake playback only in native tests. New shared guard rechecks current saved period at open/Play/Resume; not atomic against later concurrent edits while already playing. Alternate formats and physical playback remain open. Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; no automatic audio cloud transport claim.",
       "id": "F057",
       "tests": [
         {
@@ -1637,10 +1657,20 @@
       "feature": "Pair tracking",
       "screens": "13–21,27–30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: peer pairing, clock alignment, filtering evaluation.",
+      "implementation": [
+        "PairMotionActivity.java",
+        "PairMotionRuntime.java",
+        "PairMotionClock.java",
+        "PairMotionFilter.java",
+        "PairMotionWriter.java",
+        "PairMotionTables.java",
+        "PairMotionBackup.java",
+        "PairMotionSavedActivity.java",
+        "TrackingService.java"
+      ],
+      "validation": "Sourcee6ae3f2 plus schema13/format10 integration47266dd; new combined build pending. Actual two-phone exchange/filter accuracy unverified; no new tests.",
+      "status": "partial",
+      "notes": "Explicit two-phone Nearby encrypted transport with matching-code acceptance on both phones, actual5s RMS packets, elapsed-clock alignment, fresh/unknown quality and separate raw/filtered persistence. Optional bounded common-motion reduction only for local smart-wake inference; raw readings preserved/fallback explicit. Both phones already need manual movement recording and Google Play/nearby permissions. Portable ended-recording-only scope reports omitted active/out-of-bounds fragments; physical separation is unvalidated.",
       "id": "F060",
       "tests": []
     },
@@ -1695,10 +1725,17 @@
       "feature": "Binaural beats / meditation",
       "screens": "13–21,27–30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending.",
+      "implementation": [
+        "BinauralTones.java",
+        "BinauralSettingsActivity.java",
+        "SoundMix.java",
+        "SoundPreferences.java",
+        "SleepSoundsActivity.java",
+        "SleepSoundService.java"
+      ],
+      "validation": "Sourcebbc3906 integrated; new production compile pending. No new tests or playback/device output.",
+      "status": "partial",
+      "notes": "Actual local4s PCM16 stereo48kHz loop, integer left100–400Hz/right+1–20Hz, low8% per-channel digital peak and bounded atomic cache. Explicit Play/Resume only; saved source/frequencies, timer/fade/focus/noisy/alarm cleanup through existing engine. No global volume/network/mic or health benefit claim. Original guided meditation content remains absent.",
       "id": "F062",
       "tests": []
     },
@@ -2043,10 +2080,15 @@
       "feature": "Multi-metric sleep score",
       "screens": "02,22–25",
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: no composite score manufactured from unavailable sensors.",
+      "implementation": [
+        "RecordedNightScore.java",
+        "RecordedNightScoreActivity.java",
+        "RecordReportActivity.java",
+        "RecordInsightsActivity.java"
+      ],
+      "validation": "Source9494b0d integrated; next combined production build pending. No new tests/device score execution.",
+      "status": "partial",
+      "notes": "Original descriptive recorded-night score combines at least two available historical-goal duration, reviewed retained-time fraction, explicitly saved rating and prior recorded start-time consistency inputs. Equal available weights, exact raw inputs/formulas and missing reasons shown; recalculates after actual edits/goals. No current-goal retrofit, fabricated sleep stages/vitals or validated health/recovery score.",
       "id": "F073",
       "tests": []
     },
@@ -2519,11 +2561,16 @@
         "BackupJobs.java",
         "BackupFingerprint.java",
         "BackupRuntime.java",
-        "SoundAnalysisProvenance.java"
+        "SoundAnalysisProvenance.java",
+        "LibraryAudioArchive.java",
+        "LibraryAudioExportActivity.java",
+        "LibraryAudioImport.java",
+        "LibraryAudioImportActivity.java",
+        "LibraryAudioImportJournal.java"
       ],
       "validation": "17 isolated device passes across migration/records/replay/clock suites, including formats 1/2/3, original-row preservation, malformed edit/manual rejection and atomic rollback. Actual document-picker restore pending Format4/schema7 label metadata and inactive Nap JSON restore are integrated atfeb38ec; complete453-test build passes. New actual SQLite SoundLabelStorageTest 9 and NapFlowTest 3 portable roundtrips await native execution. Backup49ad607 source passed independent review and author debug/native APK,26 focused tests (BackupIoTest 11, BackupJobTest 12, BackupRuntimeTest 3) and lint0errors87warnings. Integratedce19d14 with admission hook after accepted recurring normalization. BackupStorageTest 6 and BackupDocumentFlowTest 3/19 originals are compiled but not executed. Source does not certify an actual document provider, destructive restore on a phone, or absence of all ANRs. Latest244e4bc/fullCI40063157145 BackupStorageTest 6 PASS0.433s. BackupDocumentFlowTest 3 has2 failures (posted picker callback not awaited and confirmation capture checks unfocused Activity instead of owned Dialog),6/19 originals. Root adds exact chooser-state and owned-window/current-render gates; native full flow/provider acceptance remains pending. Fresh d43f480/fullCI40068184362: BackupStorageTest 6 PASS0.522s and BackupDocumentFlowTest 3 PASS28.984s/all19 original states. Strict individually reviews all19: supporting operations/confirmation/current-error contents pass, stale-state white navigation handle rejected. bca0d81 corrects actual owned-dialog/render bar appearance and checks current window bits; fresh capture required. Actual external provider/destructive phone restore remain unverified. Fresh dc30736/fullCI40072555253 Storage6 PASS0.412s,Document3 PASS26.612s/all19; strict stale-state cream/dark system-bar mismatch clears. External provider/physical restore remains unverified. Main05cd205/fullCI40079043221 BackupStorage6/Document3 eachhas1CSVfailure: streamedbytes omit new sensor/config whileRecords.csv includes them. da3b11a fixes actual16-column header+closed/openrows,retains8MiB/cancellation,and adds exactstreamedbyte equality/config regression. Native rerun pending; no green claim. Later04bdb4a full native backup/migration regressions pass. Current schema9/format6 adds strict immutable shared-analysis status to portable JSON and both17-column CSV implementations. Twelve new private storage cases are authored/compiled; actual schema9 migration/rollback/recovery execution remains pending.",
       "status": "partial",
-      "notes": "Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted. New portable event metadata preserves manual corrections and original estimates without clip links;8MiB pretty-UTF8 export bound matches importer. Nap imports are inactive and need explicit fresh Start. Provider IO/lifecycle and broad backup completeness still need their own verification. Private Backup screen uses retained view-free background IO and explicit review/replace confirmation, pinned application-only factory,8MiB strict UTF8/depth bounds, off-main best-effort cancellation, typed full-table fingerprint and within-transaction runtime/data checks. Imported alarms/naps stay off, original/user sound evidence stays portable, no audio/settings. Postcommit cleanup/count/close failure explicitly says data was restored. No WAL change; other main DB users and final-check/commit/system-scheduling intervals remain documented limitations. See BACKUP-DOCUMENT-IO.md. Latestformat5 adds strict original sensor/config/quality evidence;formats1–4stayreadable. Newschema8metadata participates in existing fulltyped stale-restore fingerprint. Format6 preserves explicit analysis outcomes; formats1–5 keep unknown legacy status rather than inventing off. New format6 native acceptance remains open.",
+      "notes": "Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted. New portable event metadata preserves manual corrections and original estimates without clip links;8MiB pretty-UTF8 export bound matches importer. Nap imports are inactive and need explicit fresh Start. Provider IO/lifecycle and broad backup completeness still need their own verification. Private Backup screen uses retained view-free background IO and explicit review/replace confirmation, pinned application-only factory,8MiB strict UTF8/depth bounds, off-main best-effort cancellation, typed full-table fingerprint and within-transaction runtime/data checks. Imported alarms/naps stay off, original/user sound evidence stays portable, no audio/settings. Postcommit cleanup/count/close failure explicitly says data was restored. No WAL change; other main DB users and final-check/commit/system-scheduling intervals remain documented limitations. See BACKUP-DOCUMENT-IO.md. Latestformat5 adds strict original sensor/config/quality evidence;formats1–4stayreadable. Newschema8metadata participates in existing fulltyped stale-restore fingerprint. Format6 preserves explicit analysis outcomes; formats1–5 keep unknown legacy status rather than inventing off. New format6 native acceptance remains open. Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; no automatic audio cloud transport claim.",
       "id": "F089",
       "tests": [
         {
@@ -2765,10 +2812,16 @@
       "feature": "Community research sharing",
       "screens": "32,33,35,36",
       "source": "https://sleep.urbandroid.org/docs/services/automation.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: optional user-controlled research export; no vendor endpoint or automatic telemetry is reused.",
+      "implementation": [
+        "ResearchSignals.java",
+        "ResearchWorkspace.java",
+        "ResearchExportJob.java",
+        "ResearchExportActivity.java",
+        "MainActivity.java"
+      ],
+      "validation": "Sourcea74e784 integrated; combined production build pending. No new tests/provider execution.",
+      "status": "partial",
+      "notes": "Explicit reviewed7/30/90day relative signal ZIP with bounded immutable SHA staging and SAF save. Random per-export night IDs/order, within-night offsets, normalized measured movements/quality/samples/gaps; excludes personal notes/audio/identifiers/config dumps/dates. Pattern identifiability disclosed. No automatic telemetry/upload or hosted research community endpoint.",
       "id": "F098",
       "tests": []
     },
@@ -3195,10 +3248,16 @@
       "feature": "Laughter / instrument microphone task",
       "screens": "10",
       "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
-      "implementation": [],
-      "validation": "Independent full native laughter positive remains FAIL. Fixed-policy piano experiment accepted0/2 pinned CC0 positives; full scores retained without production policy changes. See verification/2026-10-25-piano-challenge.",
-      "status": "missing",
-      "notes": "No accepted laughter/instrument task. Neither thresholds nor fixtures were changed to force acceptance. Separate Speak task detects broad speech only and does not fulfill this feature.",
+      "implementation": [
+        "NotePitch.java",
+        "NoteAudio.java",
+        "NoteRuntime.java",
+        "NoteChallengeActivity.java",
+        "NoteCaptureService.java"
+      ],
+      "validation": "Source884b8cb plus seed API fix1553813; compile pending, no actual microphone/pitch tests.",
+      "status": "partial",
+      "notes": "Distinct Musical note task matches actual fresh PCM pitch/tonality against deterministic C4/D4/E4/A4, sustained hold and saved tolerance, explicit Listen/permission/quiet owner and Math alternative. User may hum or play a note; this does NOT identify piano/instruments or laughter. Previous failed classifier gates remain rejected and unchanged.",
       "id": "F112",
       "tests": []
     },
@@ -3209,17 +3268,23 @@
       "implementation": [
         "ChallengeRoutine.java",
         "ChallengeRoutineJson.java",
-        "ChallengeRoutineEditor.java",
+        "AlarmEditorActivity.java",
         "ChallengePackPreviewActivity.java",
         "JumpTask.java",
         "JumpGame.java",
         "JumpCheckpoint.java",
         "TiltMazeTask.java",
-        "AlarmActivity.java"
+        "AlarmActivity.java",
+        "LightTask.java",
+        "TypeCodeTask.java",
+        "CameraLightActivity.java",
+        "SpinTask.java",
+        "NoteChallengeActivity.java",
+        "NotePitch.java"
       ],
       "validation": "Author a0d2bed: ChallengeCountingFlagsTest, TiltMazeTest, TiltMotionTest and existing ChallengeRoutineTest:24pure cases PASS, debug/native APKs and lint PASS. f5e80ab CI40150902142 ChallengePackNativeTest 8 PASS; whole focused run remains FAIL on DND permission callback and goal dialog recreation (targeted fixes pending rerun). Jump production built3262a03; no new tests/device execution per user steering.",
       "status": "partial",
-      "notes": "Saved original counting, flags, tilt maze and tap-to-jump hurdle game with retries, foreground pause, durable hurdle progress, one-use run/unit completion and Math alternatives. Jump integrated9c1ecfb/build3262a03. No addon vendor assets; actual phone challenge execution and full task-pack parity remain unverified.",
+      "notes": "Saved original counting, flags, tilt maze and tap-to-jump hurdle game with retries, foreground pause, durable hurdle progress, one-use run/unit completion and Math alternatives. Jump integrated9c1ecfb/build3262a03. No addon vendor assets; actual phone challenge execution and full task-pack parity remain unverified. New source includes real ambient Light, original Type code, actual camera-luma Light, rotation-vector Spin and live PCM musical-note pitch matching; broad laughter/piano identity detection remains unavailable.",
       "id": "F113",
       "tests": [
         {
@@ -3486,10 +3551,18 @@
       "feature": "Phone breathing / disturbance estimates",
       "screens": "17,02",
       "source": "https://sleep.urbandroid.org/docs/sleep/breath_rate.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Requires functioning sonar and independent accuracy evidence; no diagnosis claim.",
+      "implementation": [
+        "EchoPeriodicity.java",
+        "EchoPeriods.java",
+        "EchoSettingsActivity.java",
+        "EchoPeriodsActivity.java",
+        "SonarDsp.java",
+        "SonarNight.java",
+        "Store.java"
+      ],
+      "validation": "Source3c763ae; debug APKb9c206e builds. No hardware, algorithm-accuracy or overnight checks; no new tests.",
+      "status": "partial",
+      "notes": "Default-off actual I/Q reflection capture, full continuous60s windows, static-offset removal/principal-axis projection, autocorrelation and half-window stability gates. Separate persisted periodic-echo rate/quality, gaps and reviewed/original report, schema12/backup9. Other motion may be periodic. This exploratory rate is NOT validated breathing or apnea/disturbance detection; those requirements remain incomplete.",
       "id": "F121",
       "tests": []
     },
@@ -3744,10 +3817,17 @@
       "feature": "Meditation / stereo binaural generator",
       "screens": "19",
       "source": "https://sleep.urbandroid.org/docs/sleep/lullaby.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Original/licensed audio and actual stereo output needed.",
+      "implementation": [
+        "BinauralTones.java",
+        "BinauralSettingsActivity.java",
+        "SoundMix.java",
+        "SoundPreferences.java",
+        "SleepSoundsActivity.java",
+        "SleepSoundService.java"
+      ],
+      "validation": "Sourcebbc3906 integrated; new production compile pending. No new tests or playback/device output.",
+      "status": "partial",
+      "notes": "Actual local4s PCM16 stereo48kHz loop, integer left100–400Hz/right+1–20Hz, low8% per-channel digital peak and bounded atomic cache. Explicit Play/Resume only; saved source/frequencies, timer/fade/focus/noisy/alarm cleanup through existing engine. No global volume/network/mic or health benefit claim. Original guided meditation content remains absent.",
       "id": "F127",
       "tests": []
     },
@@ -4090,11 +4170,16 @@
         "AutoCloudBackupStore.java",
         "AutoCloudBackupPolicy.java",
         "AutoCloudBackupService.java",
-        "CloudBackupLease.java"
+        "CloudBackupLease.java",
+        "LibraryAudioArchive.java",
+        "LibraryAudioExportActivity.java",
+        "LibraryAudioImport.java",
+        "LibraryAudioImportActivity.java",
+        "LibraryAudioImportJournal.java"
       ],
       "validation": "da0f571 / CI40141612460: CloudBackupStorageTest 5 and CloudBackupFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. ce800dc integratedbc6c01e adds default-off deferred backup:21 focused pure/debug/native APKs/lint PASS before final durable-Off refinement; final source combined build pending. AutoCloudBackupStorageTest 12 and AutoCloudBackupFlowTest 2/eight originals execution pending CI40164774515. Superseding CI40164774515 AutoCloudBackupStorageTest 12 and first save/reopen UI method PASS; second uncertain-write confirmation method FAIL, two of eight required frames absent.6fbc212 fixes native dialog screen coordinates, fresh rerun pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: AutoCloudBackupStorageTest 12/AutoCloudBackupFlowTest 2/all8 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "partial",
-      "notes": "Manual verified create-only metadata versions and reviewed restore remain. Optional automatic backup queues only successfully ended production tracked nights into a separate durable journal, requires an explicitly selected writable SAF destination, bounds retries/size/queue and preserves uncertain provider outcomes without blind duplicate replay. Turning Off persists independently of blocked provider I/O; lease ownership remains until cleanup. Actual provider/account/job delivery unverified. Audio inclusion and proprietary SleepCloud service absent. See AUTOMATIC-METADATA-BACKUP.md.",
+      "notes": "Manual verified create-only metadata versions and reviewed restore remain. Optional automatic backup queues only successfully ended production tracked nights into a separate durable journal, requires an explicitly selected writable SAF destination, bounds retries/size/queue and preserves uncertain provider outcomes without blind duplicate replay. Turning Off persists independently of blocked provider I/O; lease ownership remains until cleanup. Actual provider/account/job delivery unverified. Audio inclusion and proprietary SleepCloud service absent. See AUTOMATIC-METADATA-BACKUP.md. Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; no automatic audio cloud transport claim.",
       "id": "F137",
       "tests": [
         {
@@ -4242,10 +4327,15 @@
       "feature": "Chronotype estimation",
       "screens": "25",
       "source": "https://sleep.urbandroid.org/docs/sleep/chrono_jetlag.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Recording progress is not a chronotype estimator. Alarm-free, recovery and sleep-onset evidence remain missing.",
+      "implementation": [
+        "HabitualTiming.java",
+        "HabitualTimingSettings.java",
+        "HabitualTimingActivity.java",
+        "SleepRhythmActivity.java"
+      ],
+      "validation": "Source49b8a6e; debug APKb9c206e builds. No new tests/device/formula acceptance or clinical validation.",
+      "status": "partial",
+      "notes": "Original self-reported habitual work/free-day onset/waking/workday/alarm/constraint form computes the published corrected free-day midpoint only with explicit prerequisites; unknown/constrained inputs remain unavailable. Separate scoped saved prefs, original wording and scientific method link. No copyrighted MCTQ instrument copied, validated questionnaire administration, clinical type or sensor-derived chronotype claim.",
       "id": "F142",
       "tests": []
     },
