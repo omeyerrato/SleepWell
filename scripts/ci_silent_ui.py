@@ -19,7 +19,7 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--serial", required=True, choices=("emulator-5554",))
-parser.add_argument("--scope", choices=("full", "tone-wake", "report", "sensing-travel", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features"), default="full", help="A named narrow scope is never a full app acceptance run")
+parser.add_argument("--scope", choices=("full", "tone-wake", "report", "sensing-travel", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features", "feature-increment"), default="full", help="A named narrow scope is never a full app acceptance run")
 parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
 parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
 args = parser.parse_args()
@@ -90,6 +90,12 @@ PHONE_FEATURE_FRAMES += ["calendar-event-" + name + ".png" for name in ("default
 PHONE_FEATURE_FRAMES += ["record-insights-" + name + ".png" for name in ("week", "goals", "reopened", "empty")]
 PHONE_FEATURE_FRAMES += ["tracking-delay-" + name + ".png" for name in ("default", "draft-recreated", "saved", "reopened", "countdown", "countdown-recreated", "cancelled", "second-wait", "started")]
 PHONE_FEATURE_FRAMES += ["barcode-code-" + name + ".png" for name in ("mode", "captured", "recreated", "routine", "reopened")]
+# Source4b7d017 already passed the first30 classes/102methods. This shorter scope
+# exercises every later feature plus the two earlier flows with recent failures.
+# It never replaces phone-features or the independent full-app classifier gate.
+FEATURE_INCREMENT_TESTS = ("DatedGoalBankFlowTest", "TypedWakeFlowTest") + PHONE_FEATURE_TESTS[PHONE_FEATURE_TESTS.index("AlarmRequestStorageTest"):]
+FEATURE_INCREMENT_PREFIXES = ("dated-goal-", "typed-wake-", "alarm-request-", "tracking-dnd-", "alarm-mode-", "calendar-event-", "record-insights-", "tracking-delay-", "barcode-code-")
+FEATURE_INCREMENT_FRAMES = [name for name in PHONE_FEATURE_FRAMES if name.startswith(FEATURE_INCREMENT_PREFIXES)]
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
 root = Path(__file__).resolve().parents[1]
@@ -183,6 +189,8 @@ elif args.scope == "sound-sensitivity":
     tests = list(SENSITIVITY_TESTS)
 elif args.scope == "phone-features":
     tests = list(PHONE_FEATURE_TESTS)
+elif args.scope == "feature-increment":
+    tests = list(FEATURE_INCREMENT_TESTS)
 metadata["test_classes"] = tests
 (output / "environment.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
 method_counts = {"SoundAnalysisNativeTest": 3, "StorageMigrationTest": 4, "SoundLibraryStorageTest": 3, "SoundLibraryUiTest": 2, "NightAudioArchiveTest": 3, "AudioArchiveConcurrencyTest": 3, "SoundArchiveJobTest": 2, "HeadphoneCueOutputTest": 2, "MissedNightFlowTest": 2, "FavoriteSoundsStorageTest": 3, "WakeCheckFlowTest": 2, "SoundLabelStorageTest": 10, "SoundLabelFlowTest": 3, "NapFlowTest": 3, "RecurringTrackingTest": 12, "RecurringTrackingFlowTest": 2, "BackupStorageTest": 6, "BackupDocumentFlowTest": 3, "ReportRibbonNativeTest": 2, "AlarmSkipStorageTest": 8, "AlarmSkipFlowTest": 2, "ContactlessSetupFlowTest": 3, "TravelCueStorageTest": 8, "TravelCueFlowTest": 2, "SonarProvenanceStorageTest": 12}
@@ -247,7 +255,7 @@ if "SonarSharedClassifierStorageTest" in tests:
     except (OSError, KeyError, ValueError, TypeError) as error:
         failures.append("Shared PCM replay evidence incomplete: " + str(error))
 if args.scope != "full":
-    focused_frames = {"phone-features": PHONE_FEATURE_FRAMES, "sound-categories": CATEGORY_FRAMES, "sound-sensitivity": SENSITIVITY_FRAMES, "sonar-night": NIGHT_FRAMES, "report": REPORT_FRAMES, "sensing-travel": SENSING_FRAMES, "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES}[args.scope]
+    focused_frames = {"feature-increment": FEATURE_INCREMENT_FRAMES, "phone-features": PHONE_FEATURE_FRAMES, "sound-categories": CATEGORY_FRAMES, "sound-sensitivity": SENSITIVITY_FRAMES, "sonar-night": NIGHT_FRAMES, "report": REPORT_FRAMES, "sensing-travel": SENSING_FRAMES, "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES}[args.scope]
     failures += [name for name in focused_frames if not (output / name).is_file()]
     summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "failures": failures}
     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
