@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.MqttPublishTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:37:30.101Z" hostname="DESKTOP-1UTDMNE" time="0.039">
+  <properties/>
+  <testcase name="encodesRemainingLengthBeyondSingleByte" classname="org.sleepwell.app.MqttPublishTest" time="0.001"/>
+  <testcase name="anonymousConnectDoesNotSetCredentialFlags" classname="org.sleepwell.app.MqttPublishTest" time="0.033"/>
+  <testcase name="refusedConnectionDoesNotPublishOrLeakCredentials" classname="org.sleepwell.app.MqttPublishTest" time="0.003"/>
+  <testcase name="boundsMalformedOrOversizedReplies" classname="org.sleepwell.app.MqttPublishTest" time="0.001"/>
+  <testcase name="rejectsWrongPacketIdBeforeReportingDelivery" classname="org.sleepwell.app.MqttPublishTest" time="0.001"/>
+  <testcase name="publishesQoSOneNonRetainedAndWaitsCorrectAcknowledgement" classname="org.sleepwell.app.MqttPublishTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

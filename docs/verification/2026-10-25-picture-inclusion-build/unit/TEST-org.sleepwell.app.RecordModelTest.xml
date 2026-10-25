@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.RecordModelTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:37:31.163Z" hostname="DESKTOP-1UTDMNE" time="0.006">
+  <properties/>
+  <testcase name="overlapsAndNapsMergeWithoutDoubleCounting" classname="org.sleepwell.app.RecordModelTest" time="0.001"/>
+  <testcase name="dstGapRejectsAndFoldRequiresAnOffset" classname="org.sleepwell.app.RecordModelTest" time="0.001"/>
+  <testcase name="trimIntersectsActualActiveIntervalsRatherThanScaling" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <testcase name="awakeAndPauseUnionIsExcludedOnlyOnce" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <testcase name="inconsistentMonotonicMetadataIsLimitedWithoutInventingCoverage" classname="org.sleepwell.app.RecordModelTest" time="0.001"/>
+  <testcase name="tagNormalizationDeduplicatesWithoutLosingUnicode" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <testcase name="crossEndDayOverlapsHaveSingleOwnership" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <testcase name="tracksCannotExtendAndManualCannotEndInFuture" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <testcase name="untouchedMonotonicProgressRemainsAuthoritative" classname="org.sleepwell.app.RecordModelTest" time="0.001"/>
+  <testcase name="sleepDayUsesLocalCalendarBoundary" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <testcase name="manualPeriodCanChangeWithoutInventingSensorCoverage" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <testcase name="missingDaysAreNotZeroSleepAndNapHasNoBedtime" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <testcase name="clippedUnionHandlesZeroAndNestedIntervals" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <testcase name="circularBedtimesKeepMidnightAdjacent" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <testcase name="overlappingAdjacentAwakesAndAllAwakeAreValid" classname="org.sleepwell.app.RecordModelTest" time="0.002"/>
+  <testcase name="monthAndYearUseRealCalendarLengths" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <testcase name="trimmingDropsAwakeCoverageOutsideTheNewBounds" classname="org.sleepwell.app.RecordModelTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

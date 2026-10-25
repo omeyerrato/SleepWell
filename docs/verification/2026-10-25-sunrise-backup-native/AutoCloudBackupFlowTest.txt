@@ -1,0 +1,64 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AutoCloudBackupFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.AutoCloudBackupFlowTest:
+INSTRUMENTATION_STATUS: test=uncertainWriteRequiresOwnedConfirmationThenOffCancelsFutureDelivery
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AutoCloudBackupFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Expected automatic backup state
+	at org.sleepwell.app.AutoCloudBackupFlowTest.await(AutoCloudBackupFlowTest.java:7)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.lambda$uncertainWriteRequiresOwnedConfirmationThenOffCancelsFutureDelivery$22(AutoCloudBackupFlowTest.java:19)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.$r8$lambda$xkdwSc8eIhRSvt_hFvIhwkj40no(Unknown Source:0)
+	at org.sleepwell.app.AutoCloudBackupFlowTest$$ExternalSyntheticLambda20.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.run(AutoCloudBackupFlowTest.java:17)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.uncertainWriteRequiresOwnedConfirmationThenOffCancelsFutureDelivery(AutoCloudBackupFlowTest.java:19)
+
+INSTRUMENTATION_STATUS: stream=
+Error in uncertainWriteRequiresOwnedConfirmationThenOffCancelsFutureDelivery(org.sleepwell.app.AutoCloudBackupFlowTest):
+java.lang.AssertionError: Expected automatic backup state
+	at org.sleepwell.app.AutoCloudBackupFlowTest.await(AutoCloudBackupFlowTest.java:7)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.lambda$uncertainWriteRequiresOwnedConfirmationThenOffCancelsFutureDelivery$22(AutoCloudBackupFlowTest.java:19)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.$r8$lambda$xkdwSc8eIhRSvt_hFvIhwkj40no(Unknown Source:0)
+	at org.sleepwell.app.AutoCloudBackupFlowTest$$ExternalSyntheticLambda20.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.run(AutoCloudBackupFlowTest.java:17)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.uncertainWriteRequiresOwnedConfirmationThenOffCancelsFutureDelivery(AutoCloudBackupFlowTest.java:19)
+
+INSTRUMENTATION_STATUS: test=uncertainWriteRequiresOwnedConfirmationThenOffCancelsFutureDelivery
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AutoCloudBackupFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=explicitOptionRecreatesAndSavedNightHasOneVerifiedVersionAfterReopen
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AutoCloudBackupFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=explicitOptionRecreatesAndSavedNightHasOneVerifiedVersionAfterReopen
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 20.126
+There was 1 failure:
+1) uncertainWriteRequiresOwnedConfirmationThenOffCancelsFutureDelivery(org.sleepwell.app.AutoCloudBackupFlowTest)
+java.lang.AssertionError: Expected automatic backup state
+	at org.sleepwell.app.AutoCloudBackupFlowTest.await(AutoCloudBackupFlowTest.java:7)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.lambda$uncertainWriteRequiresOwnedConfirmationThenOffCancelsFutureDelivery$22(AutoCloudBackupFlowTest.java:19)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.$r8$lambda$xkdwSc8eIhRSvt_hFvIhwkj40no(Unknown Source:0)
+	at org.sleepwell.app.AutoCloudBackupFlowTest$$ExternalSyntheticLambda20.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.run(AutoCloudBackupFlowTest.java:17)
+	at org.sleepwell.app.AutoCloudBackupFlowTest.uncertainWriteRequiresOwnedConfirmationThenOffCancelsFutureDelivery(AutoCloudBackupFlowTest.java:19)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

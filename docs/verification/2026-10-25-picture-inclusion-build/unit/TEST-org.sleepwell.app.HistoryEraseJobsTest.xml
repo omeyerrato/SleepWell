@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.HistoryEraseJobsTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:37:28.271Z" hostname="DESKTOP-1UTDMNE" time="0.025">
+  <properties/>
+  <testcase name="activeWorkCannotBeDiscardedByRecreationOrTestTeardown" classname="org.sleepwell.app.HistoryEraseJobsTest" time="0.007"/>
+  <testcase name="executorRejectionBecomesAnActionableTerminalFailure" classname="org.sleepwell.app.HistoryEraseJobsTest" time="0.001"/>
+  <testcase name="concurrentConfirmationsReuseExactlyOnePinnedTask" classname="org.sleepwell.app.HistoryEraseJobsTest" time="0.002"/>
+  <testcase name="storageFailureIsVisibleAndDoesNotPretendDeletionFinished" classname="org.sleepwell.app.HistoryEraseJobsTest" time="0.004"/>
+  <testcase name="failedCleanupKeepsPendingFilesInsteadOfOfferingAnotherHistoryErase" classname="org.sleepwell.app.HistoryEraseJobsTest" time="0.001"/>
+  <testcase name="cleanupResultRetainsCompletedHistoryDeletion" classname="org.sleepwell.app.HistoryEraseJobsTest" time="0.001"/>
+  <testcase name="successfulReinspectionClearsOnlyTransientInspectionFailure" classname="org.sleepwell.app.HistoryEraseJobsTest" time="0.001"/>
+  <testcase name="reinspectionRefreshesActualPendingCountAndPreservesActionError" classname="org.sleepwell.app.HistoryEraseJobsTest" time="0.002"/>
+  <testcase name="storageScopesUseIdentityEvenWhenKeysCompareEqual" classname="org.sleepwell.app.HistoryEraseJobsTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

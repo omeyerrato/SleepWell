@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SoundCategoryPolicyTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:38:01.846Z" hostname="DESKTOP-1UTDMNE" time="0.013">
+  <properties/>
+  <testcase name="coughIncludesDeclaredThroatClearChildButNotRespiratorySiblings" classname="org.sleepwell.app.SoundCategoryPolicyTest" time="0.007"/>
+  <testcase name="thresholdMarginAndSilenceRejectNewClassFalsePositives" classname="org.sleepwell.app.SoundCategoryPolicyTest" time="0.001"/>
+  <testcase name="onlySnoringCanAllocateACueEvenForConfidentNewClasses" classname="org.sleepwell.app.SoundCategoryPolicyTest" time="0.001"/>
+  <testcase name="infantCryingRequiresSpecificEvidenceNotParentOrWhimper" classname="org.sleepwell.app.SoundCategoryPolicyTest" time="0.0"/>
+  <testcase name="isolatedNewClassWindowsAreStillDiscarded" classname="org.sleepwell.app.SoundCategoryPolicyTest" time="0.0"/>
+  <testcase name="categoriesAreExplicitEstimatesAndUnknownInputsAreRejected" classname="org.sleepwell.app.SoundCategoryPolicyTest" time="0.001"/>
+  <testcase name="laughterFamilyUsesMaximumAndRetainsUnrelatedMargin" classname="org.sleepwell.app.SoundCategoryPolicyTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,159 @@
+{
+  "scope": "feature-increment",
+  "full_app_review": false,
+  "expected_classes": 29,
+  "expected_methods": 76,
+  "class_results": [
+    {
+      "class": "DatedGoalBankFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "TypedWakeFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "AlarmRequestStorageTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "AlarmRequestFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "ChallengePackNativeTest",
+      "expected_methods": 8,
+      "passed": true
+    },
+    {
+      "class": "TrackingDndStorageTest",
+      "expected_methods": 4,
+      "passed": true
+    },
+    {
+      "class": "TrackingDndFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "AlarmSoundModeStorageTest",
+      "expected_methods": 4,
+      "passed": true
+    },
+    {
+      "class": "AlarmSoundModeFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "CalendarEventExportTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "CalendarEventExportFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "RecordInsightsNativeTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "RecordInsightsFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "TrackingDelayStorageTest",
+      "expected_methods": 4,
+      "passed": true
+    },
+    {
+      "class": "TrackingDelayFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "BarcodeCodeStorageTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "BarcodeCodeFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "DiaryTerminalStateTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SpeakStorageTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SpeakConfigurationFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SpeakCaptureFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "SpeakFixtureEvaluationTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "TrackingFlipStorageTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "TrackingFlipFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "SunriseStorageTest",
+      "expected_methods": 6,
+      "passed": true
+    },
+    {
+      "class": "SunriseTimeFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "ToneWaveArrivalTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AutoCloudBackupStorageTest",
+      "expected_methods": 12,
+      "passed": true
+    },
+    {
+      "class": "AutoCloudBackupFlowTest",
+      "expected_methods": 2,
+      "passed": false
+    }
+  ],
+  "required_original_images": 91,
+  "failures": [
+    "AutoCloudBackupFlowTest",
+    "automatic-backup-retried.png",
+    "automatic-backup-disabled.png"
+  ]
+}

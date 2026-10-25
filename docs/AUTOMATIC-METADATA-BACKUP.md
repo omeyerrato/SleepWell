@@ -35,3 +35,5 @@ Final scoped build92137: debug/native APKs +21 focused pure tests/4 suites passe
 - https://developer.android.com/training/data-storage/shared/documents-files — user-selected document tree and persisted grants; no broad storage permission needed.
 - https://developer.android.com/reference/android/app/job/JobInfo.Builder — persisted jobs, battery constraint and minimum latency.
 - https://developer.android.com/reference/android/app/job/JobService — asynchronous start/stop lifecycle and explicit jobFinished.
+
+Superseding combined8027f83 passes1016 pure tests/125suites, both APKs and lint0errors142warnings. CI40166582977 AutoCloudBackupStorageTest12 and AutoCloudBackupFlowTest2/all8 declared originals pass after test-only confirmation coordinates were corrected. Fake-provider/private-journal evidence does not certify actual provider/account or OS-job delivery. The whole native increment fails separately on Picture configuration.

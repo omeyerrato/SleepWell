@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SonarDownsamplerTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:37:31.921Z" hostname="DESKTOP-1UTDMNE" time="1.035">
+  <properties/>
+  <testcase name="arbitraryChunkBoundariesCannotChangeSamplesOrTimestamps" classname="org.sleepwell.app.SonarDownsamplerTest" time="0.528"/>
+  <testcase name="invalidBlocksAndClockOverflowDoNotProduceSyntheticInput" classname="org.sleepwell.app.SonarDownsamplerTest" time="0.002"/>
+  <testcase name="mixedCarrierPreservesActualAudibleSamples" classname="org.sleepwell.app.SonarDownsamplerTest" time="0.102"/>
+  <testcase name="aboveNyquistAndSonarCarrierCannotAliasIntoAudibleBand" classname="org.sleepwell.app.SonarDownsamplerTest" time="0.242"/>
+  <testcase name="missingRepeatedOrReversedInputIsRejectedBeforeConsumingMoreSamples" classname="org.sleepwell.app.SonarDownsamplerTest" time="0.014"/>
+  <testcase name="audiblePassbandIsPreservedWithoutPerBlockNormalization" classname="org.sleepwell.app.SonarDownsamplerTest" time="0.128"/>
+  <testcase name="noStartupOrEofPaddingAndGroupDelayUsesOriginalCaptureClock" classname="org.sleepwell.app.SonarDownsamplerTest" time="0.001"/>
+  <testcase name="completeHistoryAndRatioGiveExactRealSampleCount" classname="org.sleepwell.app.SonarDownsamplerTest" time="0.017"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

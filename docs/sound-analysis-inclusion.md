@@ -19,3 +19,5 @@ Verification contract (no physical effects):
 Native methods and screenshots require CI execution. Real microphone/sonar behavior has not been tested by this increment. The unrelated Tone waveform control-identity regression is separately committed and enrolled as `ToneWaveArrivalTest`1 method/no images.
 
 Local validation: debug/native APKs,59 focused tests in six suites, and lint zero errors/137 warnings/one hint passed in3m16s. A subsequent Java/native compilation passed in45s for the safe editor-port/retry fixture. The final tiny recovered-port cache/round-trip assertion is left for the parent combined build; no further author Gradle run. Native execution and all eight original screenshots remain pending CI. No physical microphone/output/device test occurred.
+
+Superseding combined8027f83 passes1016 pure tests/125suites, both APKs and lint0errors142warnings. CI40166582977 SoundInclusionStorageTest3 and SoundInclusionFlowTest3/all8 declared originals pass, including corrupt/unavailable settings and explicit recovery. Whole native run fails separately on Picture configuration; no physical analysis/output acceptance is inferred.

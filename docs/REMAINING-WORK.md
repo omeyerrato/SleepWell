@@ -10,50 +10,50 @@ stopped and its slot reassigned to implementation at your request. Visual correc
 broad bug review and security auditing are deferred. Essential build, data-preservation
 and functional checks continue; unchecked visual items below remain future work.
 
-## Verified feature sprint — 25 October
+## Current feature sprint — 25 October
 
-Integrated source `da0f571`: **778 pure tests, debug/native APK builds and lint pass**.
-[Focused CI40141612460](https://github.com/omeyerrato/SleepWell/actions/runs/40141612460)
-passes **23 classes /77 native methods /68 original captures**. This is functional
-fixture evidence, not design approval, real provider exchange or physical output.
+Latest combined source **8027f83** passes **1016 pure tests/125 suites**, debug and
+native-test APK builds, and lint with zero errors/142 warnings in6m50. This includes
+picture matching, sound-category inclusion, automatic metadata backup, sunrise and
+reviewed sleep-plan time copy. [Raw build evidence](verification/2026-10-25-picture-inclusion-build/README.md).
+Newer armed-wait/smart-deadline changes need their combined check.
 
-- [x] Saved alarm defaults, explicit one-time dates and longer bounded snooze choices.
-- [x] Persisted flip/volume-key settings and their pure admission rules.
-- [x] Original visual-search task, saved board/routine and silent shared preview.
-- [x] Calendar-rule settings, adjusted occurrence/skip receipts and native persistence.
-- [x] Health Connect fake-provider import/export/update/delete/conflict/source flows.
-- [x] Tasker/HTTPS/MQTT private queue and transport tests; Home Assistant light policy.
-- [x] Tag quantities, global rename/delete and descriptive comparison flows.
-- [x] Remembered SAF destination, verified unique backup and reviewed restore flow.
-- [x] Historical dated-goal target/calendar/save/error/reopen flows.
-- [ ] Live hardware/OS behavior and actual external provider/account exchange above.
-- [x] Backup repeat/duration/timeout configuration, mirror-text/dream-diary shared
-  controls and private diary, saved search, fake-host widget/shortcut contracts:
-  expanded4b7d017 CI40147599727 passes30classes/102methods/all90 originals.
-- [ ] Physical alarm execution/timeout, real launcher host pinning and assistant routing.
-- [ ] Newly integrated Counting/Tilt maze/Flags and active-tracking DND: author unit
-  tests/builds pass. Challenge8 native methods pass atf5e80ab; DND6 methods/all7
-  originals pass atd346441. Actual hardware/OS delivery remains unverified;
-  jumping remains missing.
-- [ ] Standard Android SET_ALARM/SHOW_ALARMS draft/editor flow: native execution and
-  assistant compatibility remain separate. Native3contract+1Save/reopen method
-  pass; actual assistant routing remains unverified. Requests require explicit Save.
-- [x] Silent/ordered/shuffled alarm-mode settings and saved-record insight flows:
-  native5 and4 methods/all7+4 originals pass atd346441/CI40154059415. Physical
-  playback/provider behavior remains unverified; the whole focused run failed
-  separately on goal, diary and calendar UI actions.
-- [ ] Manual tracking delay native flow; barcode morning-code enrollment; optional
-  flip pause and microphone challenge increments. Source/build progress is recorded
-  in the matrix without labeling physical behavior verified.
-- [ ] Remaining matrix subfeatures, full regression and later design/security review.
+[CI40166582977](https://github.com/omeyerrato/SleepWell/actions/runs/40166582977)
+at27cdf83 runs35classes/91methods requiring111 original screenshots. It **fails
+only the picture configuration journey**; four required picture frames are absent.
+Passing classes are narrower functional evidence, not full app/design acceptance.
 
-Full originals and exact verification limits are in
-[the sprint evidence](verification/2026-10-25-feature-sprint/README.md).
-The expanded gate's exact transcripts and originals are in
-[expanded evidence](verification/2026-10-25-feature-sprint-expanded/README.md).
-Combined1275be1 passes900pure/113suites, debug/native APKs and lint0errors137warnings
-in6m49; [raw evidence](verification/2026-10-25-expanded-build/README.md). Later
-increments require their own checks; this is not a full native or visual gate.
+- [x] Alarm defaults, explicit dates, saved inputs and bounded per-press snooze choices.
+- [x] Calendar alarm rules, sleep-only Health Connect and optional integration contracts
+  in private/fake-provider native flows; actual accounts/providers remain unverified.
+- [x] Saved visual search, counting/flags/tilt, mirror text/diary and shared previews.
+- [x] Tags/quantities/management, recorded insights, history search and dated goal bank.
+- [x] Manual cloud-folder metadata versions and reviewed restore; automatic default-off
+  backup Storage12/Flow2/all8 originals now pass with private provider ports.
+- [x] Local sunrise Storage6/Flow1/all4 and fixed sleep-plan time copy Storage3/Flow2/
+  all7 originals pass. Save is required; the copied time does not follow later plans.
+- [x] Silent/ordered/shuffled modes, stable sound controls and active-tracking DND
+  configuration pass; actual output/OS ownership still require separate checks.
+- [x] Manual delay Storage4/Flow2/all9 and optional flip-pause Storage3/Flow2/all7 pass.
+- [x] QR/general barcode enrollment Storage3/Flow1/all5 originals pass.
+- [x] Per-class duration plus category inclusion Storage3/Flow3/all8 originals pass.
+  Custom inclusion suppresses all new clips; unreadable settings block analysis/clips.
+- [x] Speak configuration/storage/capture plus six pinned CPU trials pass narrowly.
+  This detects broad speech, not words, laughter, instruments, identity or liveness.
+- [ ] Picture match: actual pixel/private storage3 methods pass; configuration journey
+  fails on return after Cancel. Its author is correcting the concrete failure.
+- [ ] Arm-tonight charging/screen-off conditions and correct smart-window projection:
+  merged; focused host tests pass, combined/native checks pending.
+- [ ] Optional exact-clock snooze choice and recorded-night milestones: being built.
+- [ ] Live hardware, overnight capture, actual external exchange, new phone installation,
+  remaining matrix subfeatures and later design/security review.
+
+Earlier bounded milestones remain archived: [778-test/77-native-method sprint](verification/2026-10-25-feature-sprint/README.md),
+[102-method expanded native gate](verification/2026-10-25-feature-sprint-expanded/README.md),
+[956-test speech/flip build](verification/2026-10-25-speech-flip-build/README.md),
+[Speak/flip narrow native evidence](verification/2026-10-25-speak-native/README.md),
+and [sunrise/backup predecessor run](verification/2026-10-25-sunrise-backup-native/README.md).
+The full app native run and independent laughter accuracy gate remain failing.
 
 ## Your highest-priority features
 

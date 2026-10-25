@@ -624,6 +624,61 @@ for row in rows:
         row["validation"] += " CalendarEventDraftTest3 PASS in combined900-test1275be1 build. d346441 CI40154059415 CalendarEventExportTest1 PASS; FlowTest1 fails before note toggle because its helper selected a label instead of Switch.2732a6f fixes exact native control lookup; rerun pending."
         row["notes"] += " Explicit saved-period event draft handoff opens the calendar app only after review, with notes excluded by default; user saves externally. No WRITE_CALENDAR, automatic write/update/delete sync or save acknowledgment. See CALENDAR-EVENT-EXPORT.md."
 
+# Later evidence is intentionally narrow: the combined native run below failed.
+for row in rows:
+    title = row["feature"]
+    if title == "Date / sunrise / goal-derived alarm":
+        row["implementation"] += ["SunriseMath.java", "SunriseSchedule.java", "SunriseScheduleJson.java", "SunriseTimeActivity.java"]
+        row["validation"] += " Solar author e4f4f20 integrated6b8099a:38 focused pure/debug/native APKs/lint PASS. SunriseStorageTest6 and SunriseTimeFlowTest1/four originals execution pending CI40164774515."
+        row["implementation"] += ["GoalAlarmTime.java", "GoalAlarmPlan.java", "GoalAlarmTimeActivity.java"]
+        row["validation"] += " CI40164774515 SunriseStorageTest6/SunriseTimeFlowTest1/all4 originals PASS.9396f81 adds explicit fixed-time copy from saved sleep plan:GoalAlarmTimeTest11 host PASS; GoalAlarmPlanStorageTest3/GoalAlarmTimeFlowTest2/seven originals native pending."
+        row["notes"] = "Explicit dates plus optional manual-coordinate local sunrise schedules exist. Original solar calculation uses the current phone time zone, weekday/date rules and bounded offsets; polar/unsupported/no-crossing dates use an explicitly acknowledged ordinary-time fallback. Existing skip/calendar receipts retain the actual occurrence. Use sleep plan reviews a saved bedtime plus goal and copies a fixed local clock time, or sunrise fallback, into the editor; Save remains required and later plan edits do not auto-follow. Date/repeats preserved, DST elapsed differences disclosed. No GPS/network, actual alarm delivery or sunrise accuracy certification. See SUNRISE-ALARM-TIME.md and GOAL-DERIVED-ALARM.md."
+    elif title in ("Cloud backup / SleepCloud", "User-controlled cloud / conflict / audio backup"):
+        row["implementation"] += ["AutoCloudBackups.java", "AutoCloudBackupEngine.java", "AutoCloudBackupStore.java", "AutoCloudBackupPolicy.java", "AutoCloudBackupService.java", "CloudBackupLease.java"]
+        row["validation"] += " ce800dc integratedbc6c01e adds default-off deferred backup:21 focused pure/debug/native APKs/lint PASS before final durable-Off refinement; final source combined build pending. AutoCloudBackupStorageTest12 and AutoCloudBackupFlowTest2/eight originals execution pending CI40164774515."
+        row["validation"] += " Superseding CI40164774515 AutoCloudBackupStorageTest12 and first save/reopen UI method PASS; second uncertain-write confirmation method FAIL, two of eight required frames absent.6fbc212 fixes native dialog screen coordinates, fresh rerun pending."
+        row["notes"] = "Manual verified create-only metadata versions and reviewed restore remain. Optional automatic backup queues only successfully ended production tracked nights into a separate durable journal, requires an explicitly selected writable SAF destination, bounds retries/size/queue and preserves uncertain provider outcomes without blind duplicate replay. Turning Off persists independently of blocked provider I/O; lease ownership remains until cleanup. Actual provider/account/job delivery unverified. Audio inclusion and proprietary SleepCloud service absent. See AUTOMATIC-METADATA-BACKUP.md."
+    elif title == "Flip pause / delayed tracking start":
+        row["implementation"] += ["TrackingFlip.java", "TrackingFlipRuntime.java", "TrackingFlipSettings.java", "TrackingFlipActivity.java"]
+        row["validation"] += " a3445e7 combined956pure/117suites/debug/native APKs/lint PASS. CI40159540059 TrackingFlipFlowTest2/all7 originals PASS; delay storage/config and flip callback-clock assertion FAIL. aa5c72e fixes cold-boot fixture baseline, complete delay preset geometry and exact pause callback time; fresh native run pending."
+        row["validation"] += " Superseding CI40164774515 TrackingDelayStorageTest4/TrackingDelayFlowTest2/all9 originals and TrackingFlipStorageTest3/TrackingFlipFlowTest2/all7 originals PASS."
+        row["notes"] = "Default-off manual delay plus default-off movement-only flip pause are wired to real tracking. Delay allocates no capture/session/DND until durable due claim. Flip requires fresh calibrated orientation, closes capture before one same-session five-minute gap, and exposes keep-paused/resume states. Sonar requires fresh visible admission and does not support flip pause. Private/fake-sensor UI passes narrowly; actual capture/OEM/overnight behavior unverified. See MANUAL-TRACKING-DELAY.md and TRACKING-FLIP-PAUSE.md."
+    elif title == "Playlists / shuffle / silent alarm":
+        row["implementation"] += ["AlarmToneScreen.java"]
+        row["validation"] += " Later CI40159540059 fails playlist reopening on asynchronous decoded-waveform page replacement.49a9a80 preserves actual footer/control identity when waveforms arrive; ToneWaveArrivalTest1 plus original flow enrolled for fresh native execution."
+        row["validation"] += " Superseding CI40164774515 original mode Storage4/Flow1/all7 and ToneWaveArrivalTest1 PASS."
+    elif title == "Object/picture task":
+        row.update(status="partial", implementation=["PictureSignature.java", "PictureReference.java", "PictureReferenceJson.java", "PictureHold.java", "PictureProof.java", "PictureCamera.java", "PictureMatchActivity.java", "AlarmEditorActivity.java", "AlarmActivity.java"], validation="d705352 integrateddf17b50:PictureSignatureTest/PictureHoldTest10 host actual-pixel cases PASS under fixed declared policy. PictureNativeTest3/PictureMatchFlowTest1/five required originals compiled/execution pending combined build/CI.", notes="Explicit local reference enrollment and offline compact similarity signature, no retained image or upload. Matching requires quality gates and three fresh stable frames, current reference/run/unit proof and Math fallback. Permission/error/cancel/recreation and strict portable rules are wired; actual camera/device accuracy unverified. This is picture similarity, not semantic object recognition or liveness. See PICTURE-MATCH-CHALLENGE.md.")
+        row["validation"] += " CI40166582977 PictureNativeTest3 PASS, PictureMatchFlowTest1 FAIL on offscreen Challenges title after successful cancellation.48b0917 integrated99d678a reveals the owned header before the unchanged observation; fresh native run pending."
+    elif title == "Smile task":
+        row["notes"] = "No accepted Smile task. Fixed-policy original OpenCV/Haar experiment stopped when the pinned positive failed the declared framing gate; smile classification was never reached. No fixture recrop, threshold tuning, model or dependency shipped. See SMILE-DETECTOR-ASSESSMENT.md."
+    elif title == "Per-class sound sensitivity":
+        row["implementation"] += ["SoundSensitivityJson.java", "SonarNightSound.java"]
+        row["validation"] += "643c895 integrated92878b7 adds immutable inclusion profile:59 focused pure/debug/native APKs/lint0errors PASS; final tiny editor-port delta covered by combined build pending. SoundInclusionStorageTest3/SoundInclusionFlowTest3/eight originals native execution pending."
+        row["notes"] += " Optional category inclusion rejects a disabled winning label before grouping/storage/cues without relabeling it Other. Any custom selection suppresses all new clips (not category-private clip recognition); saved consent/old audio stay unchanged. Corrupt or unavailable settings block new analysis/clips until explicit review and Save. Absent/v1 retain exact all-included defaults. See sound-analysis-inclusion.md."
+        row["validation"] += " CI40166582977 SoundInclusionStorageTest3/SoundInclusionFlowTest3/all8 originals PASS; full run fails separately on Picture configuration."
+    elif title == "Charging condition / standby mode":
+        row.update(status="partial", implementation=["ArmedWaitConditions.java", "ArmedWaitSettings.java", "AutomaticSleep.java", "AutomaticTransition.java", "AutomaticTrackingActivity.java", "TrackingService.java", "TrackingActivity.java", "RecurringTracking.java"], validation="7b3e42e integrated6cec933:ArmedWaitTest8 plus AutomaticSleepTest13/AutomaticTransitionTest7=28 host PASS. ArmedWaitNativeTest3/ArmedWaitFlowTest1/three originals compile/native pending combined candidate.", notes="Default-off Arm tonight conditions wait for charging and/or screen off within the existing four-hour admission window. Conditions are frozen per arm, blocked stillness resets and final recording admission rechecks them; no record/capture while blocked. Already active capture does not stop on unplug. Recurring due-time charging skip remains independent. Actual OS/charging/sensor/FGS behavior unverified; this is not battery-adaptive standby sampling. See ARMED-WAIT-CONDITIONS.md.")
+    elif title in ("Automatic tracking", "Scheduled tracking"):
+        row["implementation"] += ["ArmedWaitConditions.java", "ArmedWaitSettings.java", "AutomaticStart.java"]
+        row["validation"] += " 264c2bb fixes smart-window projection:AutomaticStartTest18 host PASS; combined/native pending.6cec933 adds charging/screen-off conditions with28 focused host PASS."
+        row["notes"] += " Smart-window lead-in now uses the actual projected dated/sunrise/skipped/calendar-adjusted unconsumed deadline; expired or unsupported nap occurrences cannot admit capture. Optional charging/screen-off gates apply only to explicit Arm tonight, not background recurring tokens."
+    elif title == "Dynamic snooze choices / until deadline":
+        row["implementation"] += ["SnoozeUntil.java", "SnoozeUntilDialog.java", "SleepPicker.java", "AlarmActivity.java"]
+        row["validation"] += " 9c72096 integrated3f3fa6d adds SnoozeUntilTest12 plus8 existing snooze host tests PASS. SnoozeUntilFlowTest2/seven originals compile/native pending; AlarmActivity/Service are forbidden in this quiet harness."
+        row["notes"] = "Optional per-press duration chooser and configured1–60-minute choices retain defaults, shorten/count rules and occurrence ownership. When Choose snooze duration is enabled, Until… accepts an exact same-day local clock target within the current per-press cap. Current occurrence/count/settings/focus/zone/wall-and-elapsed timing are rechecked before exact deadline scheduling. Past/equal/out-of-range/DST gap/ambiguous targets reject visibly. Today-only; relative choices remain for midnight crossings. No actual snooze output tested. See snooze-until-time.md."
+    elif title == "Calendar holiday skip / meeting shift / record write":
+        row["validation"] += " Superseding CI40159540059 CalendarEventExportTest1 and CalendarEventExportFlowTest1/all4 originals PASS with a replaced calendar handoff port. No real event was saved."
+    elif title in ("Goal bank / wagers", "Dated goal bank"):
+        row["validation"] += " Superseding CI40159540059 DatedGoalBankFlowTest2/all10 originals PASS after owned-activity recreation handling; this does not make the full native run pass."
+    elif title == "Dream diary / mirror text task":
+        row["implementation"] += ["DiaryJobs.java"]
+        row["validation"] += " CI40159540059 TypedWakeFlowTest2/all11 originals and DiaryTerminalStateTest1 PASS after4888864 consumes save/delete terminal results even when the worker finishes before first render."
+    elif title == "Laughter / instrument microphone task":
+        row.update(status="missing", validation="Independent full native laughter positive remains FAIL. Fixed-policy piano experiment accepted0/2 pinned CC0 positives; full scores retained without production policy changes. See verification/2026-10-25-piano-challenge.", notes="No accepted laughter/instrument task. Neither thresholds nor fixtures were changed to force acceptance. Separate Speak task detects broad speech only and does not fulfill this feature.")
+
+rows.append(dict(feature="Speak microphone challenge", screens="03,10 + microphone permission/cleanup/fallback", source=SOURCE+"alarms/captcha.html", implementation=["SpeakChallengeActivity.java", "SpeakRuntime.java", "SpeakAudio.java", "SpeakCaptureService.java", "SpeakAdmission.java", "MicrophoneLease.java", "AlarmService.java"], validation="a3445e7 combined956pure/117suites/debug/native APKs/lint PASS. CI40159540059 SpeakStorageTest1, SpeakConfigurationFlowTest1, SpeakCaptureFlowTest2 and SpeakFixtureEvaluationTest1/all12 originals PASS. Six pinned whole-source CPU trials:two broad-speech positives accepted,four snore/music/cry distractors rejected. Whole24class/54method native run remains FAIL separately; raw bounded evidence in verification/2026-10-25-speak-native.", status="partial", notes="Explicit Listen, one-use visible microphone service admission, exclusive capture lease, matching-alarm quiet/cleanup barriers, two unchanged accepted speech windows and Math fallback are wired. No audio/transcript/event saved. Permission, cleanup, recreation and persistence tested with fake capture/output ports; actual microphone/FGS/alarm output and bedroom accuracy unverified. No speech transcription, speaker identity, laughter or instrument detection. See SPEAK-CHALLENGE.md."))
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -637,7 +692,7 @@ for n, row in enumerate(rows, 1):
 
 header = """# Phone feature matrix
 
-Reviewed 2026-10-24 against the supplied brief, all 12 visually inspected boards,
+Reviewed 2026-10-25 against the supplied brief, all 12 visually inspected boards,
 SCREEN-MAP.md, current code and official Sleep as Android manual. Screen numbers
 are intended reference destinations, not a claim of completed screens.
 
@@ -673,6 +728,16 @@ Expanded4b7d017 CI40147599727 passes30classes/102methods/all90originals, adding
 search, diary, shared typed challenges, fake-host widget contracts and backup timing.
 See verification/2026-10-25-feature-sprint-expanded/README.md. Newer request/challenge
 increments remain pending native execution; no physical acceptance is inferred.
+Later a3445e7 combined956pure/117suites/debug/native APKs/lint0errors139warnings
+passes; exact raw build evidence is in verification/2026-10-25-speech-flip-build.
+CI40159540059 remains FAIL overall, with narrow Speak5methods/12originals,
+flip UI2methods/7originals and corrected dated-goal/calendar/diary flows passing.
+CI40164774515 fails only automatic-backup confirmation; corrected CI40166582977
+passes backup14methods/all8 originals, inclusion6/all8 and sleep-plan5/all7.
+That35class/91method run still fails Picture configuration; its owned-title
+observation fix and new armed-wait/snooze flows await CI40167823818.
+Combined8027f83 passes1016pure/125suites, both APKs and lint0errors142warnings;
+raw evidence:verification/2026-10-25-picture-inclusion-build.
 At the user's request, the dedicated design reviewer is stopped and broad design,
 bug and security audits are deferred while agents implement features. Real acoustic
 accuracy, overnight reliability and full36screen parity remain uncertified.
@@ -687,5 +752,5 @@ for row in rows:
     validation = re.sub(r"\b\w+Test\b", lambda match: f"[{match[0]}](../{test_paths[match[0]]})" if match[0] in test_paths else match[0], row["validation"])
     header += f"| {row['id']} [{row['feature']}]({row['source']}) | {row['screens']} | {code} | {validation} | **{row['status']}** — {notes} |\n"
 (ROOT / "docs/FEATURE-MATRIX.md").write_text(header, encoding="utf-8")
-(ROOT / "docs/feature-matrix.json").write_text(json.dumps(dict(reviewed="2026-10-24", features=rows), indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
+(ROOT / "docs/feature-matrix.json").write_text(json.dumps(dict(reviewed="2026-10-25", features=rows), indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
 print(f"Persisted {len(rows)} phone-capable feature entries")

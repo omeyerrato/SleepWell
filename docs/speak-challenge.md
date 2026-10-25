@@ -21,4 +21,4 @@ Host `SpeakRuntimeTest` covers rule/reset, immediate and delayed quiet callbacks
 
 Native runtime, actual foreground delivery, real microphone/output cleanup and device behavior remain unverified until separately tested with user authorization. No physical-device effects were run while implementing this feature.
 
-Local validation: final scoped Gradle build passed in 3m05s: debug APK, native test APK, 71 focused tests in six suites (18 Speak tests), lint zero errors/137 warnings/one hint. Native methods and original screenshots have compiled but have not executed; the required PCM JSON is still pending CI.
+Local validation: final scoped Gradle build passed in 3m05s: debug APK, native test APK, 71 focused tests in six suites (18 Speak tests), lint zero errors/137 warnings/one hint. Superseding combined8027f83 passes1016 pure tests/125suites, both APKs and lint. Native CI40159540059 passes all five Speak methods,12 declared originals and the required six-trial CPU JSON; repeat CI40166582977 also passes this subset. Actual capture/output/service behavior remains unverified. The whole runs have separate failures and do not constitute full-app acceptance.

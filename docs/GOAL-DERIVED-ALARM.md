@@ -22,3 +22,5 @@ The existing testing-setup skill's Java Views/JUnit4/UIAutomator + injected priv
 Native execution/images and the scoped Android compile remain pending when this source document is created. Source/model tests do not establish real alarm delivery.
 
 Reference behavior: [Sleep as Android — Create alarm, Sleep Goal Alarm](https://sleep.urbandroid.org/docs/alarms/create_alarm.html). This increment uses a reviewed persisted plan rather than automatically following plan changes.
+
+Combined8027f83 passes1016 pure tests/125suites, both APKs and lint0errors142warnings. CI40166582977 GoalAlarmPlanStorageTest3 and GoalAlarmTimeFlowTest2/all7 declared originals pass using private settings and replaced scheduling. The whole native increment fails separately on Picture configuration; no real alarm or provider action ran.

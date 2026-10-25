@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SunriseMathTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:38:02.013Z" hostname="DESKTOP-1UTDMNE" time="0.019">
+  <properties/>
+  <testcase name="invalidCoordinatesCannotBecomeEquatorialDefaults" classname="org.sleepwell.app.SunriseMathTest" time="0.011"/>
+  <testcase name="leapYearAndSupportedYearBoundariesAreDeterministic" classname="org.sleepwell.app.SunriseMathTest" time="0.002"/>
+  <testcase name="polarDayNightAndExactPolesAreUnavailable" classname="org.sleepwell.app.SunriseMathTest" time="0.001"/>
+  <testcase name="dateLineCandidatesBelongToRequestedLocalDate" classname="org.sleepwell.app.SunriseMathTest" time="0.001"/>
+  <testcase name="winterAndSummerMatchIndependentNoaaTableWithinThreeMinutes" classname="org.sleepwell.app.SunriseMathTest" time="0.003"/>
+  <testcase name="realInstantRemainsContinuousAcrossSpringAndAutumnDst" classname="org.sleepwell.app.SunriseMathTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

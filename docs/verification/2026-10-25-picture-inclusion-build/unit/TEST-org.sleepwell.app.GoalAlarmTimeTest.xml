@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.GoalAlarmTimeTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:37:27.694Z" hostname="DESKTOP-1UTDMNE" time="0.006">
+  <properties/>
+  <testcase name="repeatedWakeClockUsesEarlierOffset" classname="org.sleepwell.app.GoalAlarmTimeTest" time="0.004"/>
+  <testcase name="fullSupportedGoalBoundsArePreserved" classname="org.sleepwell.app.GoalAlarmTimeTest" time="0.0"/>
+  <testcase name="overnightLocalClockGoalWrapsExactlyOnce" classname="org.sleepwell.app.GoalAlarmTimeTest" time="0.0"/>
+  <testcase name="sameDayAndMinutePrecisionDoNotRoundToHour" classname="org.sleepwell.app.GoalAlarmTimeTest" time="0.0"/>
+  <testcase name="corruptValuesRejected" classname="org.sleepwell.app.GoalAlarmTimeTest" time="0.001"/>
+  <testcase name="bedGapCannotClaimPositiveElapsedGoal" classname="org.sleepwell.app.GoalAlarmTimeTest" time="0.0"/>
+  <testcase name="skippedWakeClockMovesForwardUsingExistingAlarmResolution" classname="org.sleepwell.app.GoalAlarmTimeTest" time="0.0"/>
+  <testcase name="springTransitionReportsSevenElapsedHoursForEightClockHours" classname="org.sleepwell.app.GoalAlarmTimeTest" time="0.0"/>
+  <testcase name="wallClockProposalIsZoneIndependentButDatedElapsedIsNot" classname="org.sleepwell.app.GoalAlarmTimeTest" time="0.0"/>
+  <testcase name="existingWakeDateRemainsChosenDateAcrossMidnight" classname="org.sleepwell.app.GoalAlarmTimeTest" time="0.0"/>
+  <testcase name="autumnTransitionReportsNineElapsedHoursForEightClockHours" classname="org.sleepwell.app.GoalAlarmTimeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

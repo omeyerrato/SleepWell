@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SonarSharedNightTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:37:56.707Z" hostname="DESKTOP-1UTDMNE" time="4.633">
+  <properties/>
+  <testcase name="lossOfCaptureValidityCannotReachTheSoundPathAsGoodInput" classname="org.sleepwell.app.SonarSharedNightTest" time="0.001"/>
+  <testcase name="offNeverLoadsAnalysisOrChangesTheOneActualCaptureOwner" classname="org.sleepwell.app.SonarSharedNightTest" time="0.562"/>
+  <testcase name="pauseWaitsForAnalysisAcknowledgementWithoutBlockingCaptureClose" classname="org.sleepwell.app.SonarSharedNightTest" time="0.456"/>
+  <testcase name="oneCaptureFeedsBothRealSignalPathAndSoundFramingThroughPauseResume" classname="org.sleepwell.app.SonarSharedNightTest" time="3.278"/>
+  <testcase name="modelFailureIsSavedAndCannotRetryOnResumeWhileSonarStillWorks" classname="org.sleepwell.app.SonarSharedNightTest" time="0.336"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

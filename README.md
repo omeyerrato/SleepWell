@@ -5,7 +5,7 @@ An original, open-source Android app for protecting bedtime and making mornings 
 **Status: early development. This is not full feature parity with Sleep as Android or Challenges Alarm Clock.** The [feature audit](docs/FEATURES.md) records what exists, how it works, and what remains. Do not replace a dependable backup alarm until this app has been tested overnight on your device.
 
 The current phone-only build follows the supplied Changing light designs. See the
-[139-entry feature matrix](docs/FEATURE-MATRIX.md), [persistent plan](docs/IMPLEMENTATION-PLAN.md),
+[phone feature matrix](docs/FEATURE-MATRIX.md), [persistent plan](docs/IMPLEMENTATION-PLAN.md),
 and [strict visual review](docs/DESIGN-REVIEW.md). The first UI pass was rejected;
 the new root compositions are corrective work, not final acceptance of the 36 screens.
 Wearables and watch companions are excluded from this scope.
@@ -15,19 +15,22 @@ Wearables and watch companions are excluded from this scope.
 - Multiple one-shot or weekday alarms using Android's exact `setAlarmClock` API, rescheduled on reboot, clock/time-zone changes, and updates.
 - Original Daybreak and Pulse alarm tones, Android's default alarm sound, or your own audio file; configurable alarm-stream volume, gradual ramp, vibration, and optional loud backup escalation.
 - Math, matching pairs, sequence, retyping, shaking, and enrolled NFC challenges. Configurable rounds, limited snoozes, optional screen pinning, and post-dismissal wake-up checks.
+- Additional saved tasks include graded arithmetic, QR/barcodes, walking, mirror text, dream diary, visual search, counting, flags, tilt maze, broad-speech detection and picture similarity. The matrix distinguishes real implementation, native fixture checks and unverified hardware behavior; laughter, instruments and semantic object recognition remain incomplete.
 - Optional accessibility-based return to the active alarm, plus a bedtime guard for explicitly selected distracting apps. Calls and Android Settings remain available. Developer stop is shown only in debug builds.
 - Native user-started tracking setup and live movement, same-session pause/resume, excluded paused duration and saved reports. Optional light/noise capture; real measured graphs and local history. Only short movement-only flows have current device verification.
 - An experimental early wake-up window based on sustained movement, with the fixed alarm scheduled independently. Movement is not a measured sleep stage.
-- Optional microphone amplitude analysis and up to 60 ten-second noise-triggered WAV recordings per session across pauses; seven-day pruning when a new clip-saving session starts and local playback. Microphone lifecycle still needs hardware verification. **No sound classification yet.**
+- Optional offline sound estimates, event browsing/correction/favorites and bounded noise-triggered clips. Per-class accepted duration and inclusion are frozen per night; custom inclusion suppresses all new clips. Shared contactless analysis uses one capture and saves no raw sonar audio. Sound estimates and fixture replay do not establish representative bedroom accuracy. See [analysis limits](docs/SOUND-ANALYSIS.md).
 - Native Sleep sounds player and two-layer mixer source, per-layer gains, playing-time timer/fade and local audio import. Silent model tests and the API36 configuration/persistence flow pass, with a bounded screen 19 visual comparison. A short real MediaPlayer/background/notification/focus/error-retry journey also passes on the silent CI emulator. Provider access, listening quality, long lifecycle and S23 installation remain pending. See [playback limits](docs/SOUND-PLAYBACK.md). Bedtime reminders, nap alarms, recorded-duration goals, notes, tags and subjective ratings also exist.
 - Native history search/date/context filters; manual periods and measured-record trims, awake edits, notes/tags/ratings, restore-original and selected-record deletion. Calendar Week/Month/Year duration and bedtime charts merge overlaps and leave missing dates unknown.
 - Native linked sleep plan and free 14/30-day duration/bedtime goal bank with observed balances, motivation and preserved stopped history. Missing days remain unknown; these preferences are currently excluded from portable backups.
 - CSV export, versioned JSON data backup, validated transactional restore, and deletion of local history.
-- Saved Changing light colors for Tonight (automatic local-clock phases or fixed Midnight/Pre-dawn/Dawn), text-size options, high-contrast controls and reduced-motion press feedback. Smart-light connectivity remains absent.
+- Saved Changing light colors for Tonight (automatic local-clock phases or fixed Midnight/Pre-dawn/Dawn), text-size options, high-contrast controls and reduced-motion press feedback. Optional Home Assistant light controls require a separately configured compatible server and lamp; physical exchange remains unverified.
+- Optional manual-coordinate sunrise alarm schedules, explicit dated alarms, reviewed fixed alarm-time copy from a saved sleep plan, calendar rules, selected-calendar event drafts, sleep-only Health Connect exchange and Tasker/HTTPS/MQTT automations. Actual provider/account exchange requires separate verification.
+- Optional verified metadata versions in a selected Android document-provider folder, with reviewed restore and default-off deferred backup after successfully saved tracked nights. Audio is excluded from these metadata versions. See [automatic backup](docs/AUTOMATIC-METADATA-BACKUP.md).
 
 ## Privacy
 
-The app has **no Internet permission**. Microphone use is optional and occurs only in a visible user-started foreground tracking service. Recordings, sensor data, and notes stay in private app storage. Android cloud backup is disabled. Export requires Android's document picker. The accessibility service reads foreground package names only, never window text. See [PRIVACY.md](PRIVACY.md).
+Data is stored locally by default. Internet permission supports explicitly configured HTTPS/MQTT/Home Assistant integrations; Android document providers may also use their own cloud account. Optional microphone analysis and Speak capture require explicit consent and foreground admission. Android system backup is disabled; user-selected exports and optional metadata backups remain separate. The accessibility service reads foreground package names only, never window text. See [PRIVACY.md](PRIVACY.md).
 
 ## Build
 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.QrDecoderTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-25T05:37:30.483Z" hostname="DESKTOP-1UTDMNE" time="0.363">
+  <properties/>
+  <testcase name="actualGeneratedUtf8QrDecodesAcrossRotationsAndInversion" classname="org.sleepwell.app.QrDecoderTest" time="0.359"/>
+  <testcase name="blankAndBadFrameCannotBecomeEnrollmentProof" classname="org.sleepwell.app.QrDecoderTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
