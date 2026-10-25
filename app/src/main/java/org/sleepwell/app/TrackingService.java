@@ -62,6 +62,18 @@ public class TrackingService extends Service implements SensorEventListener {
     static void cancelRecurring(String token){TrackingService service=current;if(service==null||token==null||!token.equals(service.recurringToken))return;Runnable cancel=()->{if(token.equals(service.recurringToken))service.stop(false);};if(Looper.myLooper()==Looper.getMainLooper())cancel.run();else service.handler.post(cancel);}
     private int rejectRecurring(){phase=Phase.CLOSED;closer.shutdown();stopSelf();return START_NOT_STICKY;}
     private AwakeRuntime awake;private PirNight pir;
+    private boolean rejectFalseStarts,falseStartRejected;private AutomaticFalseStart falseStart;private AutomaticFalseStartStore.Identity falseStartIdentity;
+    private void closeFalseStart(){AutomaticFalseStart old=falseStart;falseStart=null;if(old!=null)old.close();}
+    private void beginFalseStart(){
+        if(!rejectFalseStarts||!automaticRun||automaticMode!=AutomaticSleep.Mode.STILLNESS||sonarMode||delayPlan!=null)return;
+        try{falseStartIdentity=new AutomaticFalseStartStore.Identity(store,session);long id=session;String token=dndRun;
+            falseStart=new AutomaticFalseStart(this,()->current==this&&running&&!destroyed&&phase==Phase.ACTIVE&&session==id&&token.equals(dndRun),()->{
+                if(current!=this||!running||destroyed||phase!=Phase.ACTIVE||session!=id||!token.equals(dndRun)||falseStartRejected)return;
+                falseStartRejected=true;closeFalseStart();stop(true);
+            });
+        }catch(RuntimeException unavailable){falseStartIdentity=null;Prefs.put(this,"trackingError","Recording continues, but awake-start rejection is unavailable. Its record will be kept.");}
+    }
+
     private void beginPir(){if(pir!=null||automaticRun||recurringToken!=null||manualToken.isEmpty()||storeFactory!=PRODUCTION_STORE||Records.factory!=Records.PRODUCTION)return;long id=session;String token=manualToken;pir=PirNight.start(this,id,()->current==this&&running&&!destroyed&&phase==Phase.ACTIVE&&session==id&&manualToken.equals(token),()->sonarMode&&sonarNight!=null?sonarNight.state().now:timestamp());}
     private void closePir(){PirNight prior=pir;pir=null;if(prior!=null)prior.close();}
     static Snapshot snapshot(){TrackingService s=current;return s==null?null:s.sonarMode&&s.sonarNight!=null?new Snapshot(s.sonarNight.state(),s.clipBudget.sensitivity,s.sonarClips,s.reserveStatus()):new Snapshot(s);}
@@ -74,6 +86,7 @@ public class TrackingService extends Service implements SensorEventListener {
         if(PAUSE.equals(action)){if(flip!=null)flip.manualPause();if(running)pause();else stopSelf();return START_NOT_STICKY;}
         if(RESUME.equals(action)){if(flip!=null&&(phase==Phase.PAUSED||phase==Phase.PAUSING))flip.manualPause();if(running){if(sonarMode){if(sonarNight==null||!sonarNight.state().phase.equals("PAUSED"))return START_NOT_STICKY;SonarEntry.Ticket admission=SonarEntry.consume(intent.getStringExtra("sonarAdmission"),SystemClock.elapsedRealtime(),session);if(!SonarEntry.sameRun(admission,session,sonarConfig,sonarAnalysis,sonarClips))return START_NOT_STICKY;try{foreground(false);}catch(RuntimeException failure){String message="Contactless resume needs attention: "+failure.getMessage();Prefs.put(this,"trackingError",message);sonarNight.resumeFailed(message);return START_NOT_STICKY;}}resume();}else stopSelf();return START_NOT_STICKY;}
         if(running){if(intent!=null&&intent.hasExtra("recurringToken")&&!Objects.equals(recurringToken,intent.getStringExtra("recurringToken")))try{RecurringTracking.occupied(this,RecurringTracking.port,intent.getStringExtra("recurringToken"));}catch(RuntimeException statusFailure){android.util.Log.e("SleepWell","Could not save skipped nightly start",statusFailure);}if(current!=this)stopSelf();return START_NOT_STICKY;}
+        closeFalseStart();rejectFalseStarts=false;falseStartRejected=false;falseStartIdentity=null;
         recurringToken=null;recurringOwner=null; // A new idle entry cannot inherit the previous run’s schedule ownership.
         if(intent!=null&&intent.hasExtra("recurringToken")){
             if(!ARM.equals(action))return rejectRecurring();
@@ -176,10 +189,10 @@ public class TrackingService extends Service implements SensorEventListener {
             if(batterySampling==null){batterySampling=new BatterySampling(this,batteryAwareRequested,this::refreshSampling);batterySampling.start();}
             StoreFactory storage=storeFactory;store=storage.open(this);backupProduction=storage==PRODUCTION_STORE&&Records.factory==Records.PRODUCTION&&"sleepwell.db".equals(store.getDatabaseName());session=store.begin(SensorProvenance.MOTION,batteryAwareRequested?BatterySampling.config(motionProfile.config()):motionProfile.config());start=store.rows("SELECT start FROM sessions WHERE id=?",""+session).get(0).optLong("start");windowStart=start;clock=new TrackingClock(SystemClock.elapsedRealtime());
             Prefs.of(this).edit().putLong("session",session).putBoolean("tracking",true).putBoolean("trackingPaused",false).putInt("epochCount",0).putString("audioError","").putString("trackingError","").apply();
-            if(!automaticRun&&recurringToken==null)manualToken=UUID.randomUUID().toString();phase=Phase.ACTIVE;dndActive();beginPir();automationEvents.started(session,start);if(automaticCapture!=null)automaticCapture.recordingBegan();collect();if(awake!=null)awake.begin(session,start,SystemClock.elapsedRealtime(),lightRegistered);handler.postDelayed(minuteTick,60000);handler.postDelayed(limitTick,12*60*60*1000L);
+            if(!automaticRun&&recurringToken==null)manualToken=UUID.randomUUID().toString();phase=Phase.ACTIVE;dndActive();beginPir();automationEvents.started(session,start);if(automaticCapture!=null)automaticCapture.recordingBegan();collect();if(awake!=null)awake.begin(session,start,SystemClock.elapsedRealtime(),lightRegistered);beginFalseStart();handler.postDelayed(minuteTick,60000);handler.postDelayed(limitTick,12*60*60*1000L);
     }
     private void arm(Intent intent){
-        automaticMode=AutomaticSleep.Mode.valueOf(intent.getStringExtra("mode"));
+        automaticMode=AutomaticSleep.Mode.valueOf(intent.getStringExtra("mode"));rejectFalseStarts=automaticMode==AutomaticSleep.Mode.STILLNESS&&AutomaticFalseStart.requested(Prefs.of(this));falseStartRejected=false;falseStartIdentity=null;closeFalseStart();
         long elapsed=SystemClock.elapsedRealtime(),delay=Math.max(0,intent.getLongExtra("scheduled",System.currentTimeMillis())-System.currentTimeMillis());
         armedConditions=recurringToken==null?ArmedWaitSettings.intent(intent):ArmedWaitConditions.NONE;armedBlocked="";automatic=new AutomaticSleep(automaticMode,elapsed,elapsed+delay);automaticTransition=new AutomaticTransition(automatic,this::triggerAutomatic,this::automaticAllowed,()->googleSleep==null||googleSleep.ready());start=System.currentTimeMillis();phase=Phase.ARMED;
         if(intent.getBooleanExtra(GoogleSleepSignal.EXTRA,false)){if(recurringToken!=null||automaticMode!=AutomaticSleep.Mode.STILLNESS)throw new IllegalArgumentException("Google sleep estimates require an explicitly armed settling-down wait.");googleSleep=GoogleSleepSignal.open(this,()->{if(current==this&&!destroyed&&phase==Phase.ARMED)try{getSystemService(NotificationManager.class).notify(102,trackingNotification(false));}catch(RuntimeException ignored){}});}
@@ -279,7 +292,7 @@ public class TrackingService extends Service implements SensorEventListener {
         long interval=lastMotionNanos==0?0:event.timestamp-lastMotionNanos;
         if(batteryAwareRequested&&phase==Phase.ACTIVE){if(lastMotionNanos>0&&(interval<=0||samplingReduced&&interval<BatterySampling.REDUCED*1000L))return;if(interval>2000000000L)motionFilter.reset();lastMotionNanos=event.timestamp;}
         Double raw=batteryAwareRequested&&phase==Phase.ACTIVE&&samplingReduced?motionFilter.sample(event.values[0],event.values[1],event.values[2],interval):motionFilter.sample(event.values[0],event.values[1],event.values[2]);if(raw==null)return;
-        if(phase==Phase.ARMED){automaticTransition.sample(SystemClock.elapsedRealtime(),motionProfile.inference(raw),getSystemService(PowerManager.class).isInteractive());return;}sum+=raw*raw;count++;
+        if(phase==Phase.ARMED){automaticTransition.sample(SystemClock.elapsedRealtime(),motionProfile.inference(raw),getSystemService(PowerManager.class).isInteractive());return;}if(falseStart!=null)falseStart.sample(event.timestamp,event.accuracy,event.values[0],event.values[1],event.values[2],motionProfile.inference(raw));sum+=raw*raw;count++;
     }
     @Override public void onAccuracyChanged(Sensor sensor,int accuracy){}
     private void flush(long now,NoiseRecorder closingAudio,boolean recordEmpty){
@@ -301,6 +314,7 @@ public class TrackingService extends Service implements SensorEventListener {
         if(recorder==null){complete.run();return;}recorder.requestStop();closer.execute(()->{recorder.close();handler.post(complete);});
     }
     private void pause(){
+        closeFalseStart();
         DreamCues.cancelRun(session,manualToken,"paused");
         if(pir!=null)pir.pause();
         PairMotionRuntime.recordingStopped(session,manualToken,"PAUSED");
@@ -317,7 +331,7 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void closeGoogleSleep(){GoogleSleepSignal old=googleSleep;googleSleep=null;if(old!=null)old.close();}
     private void stop(boolean wasInterrupted){
-        closeReserve();
+        closeReserve();closeFalseStart();
         DreamCues.cancelRun(session,manualToken,wasInterrupted?"process":"ended");
         closePir();
         PairMotionRuntime.recordingStopped(session,manualToken,"ENDED");
@@ -325,9 +339,24 @@ public class TrackingService extends Service implements SensorEventListener {
         if(sonarMode){if(sonarNight!=null){if(travelCues!=null)travelCues.stop("The recording ended. Light cues stopped.");sonarNight.stop(wasInterrupted);}else closeSonarAdmission();return;}
         interrupted|=wasInterrupted;if(automaticCapture!=null)automaticCapture.close();if(phase==Phase.CLOSED||phase==Phase.STOPPING)return;if(phase==Phase.PAUSING){stopRequested=true;return;}
         if(travelCues!=null)travelCues.stop("The recording ended. Light cues stopped.");boolean wasArmed=phase==Phase.ARMED,waitExpired=automatic!=null&&automatic.state()==AutomaticSleep.State.EXPIRED;if(wasArmed&&automaticTransition!=null){automaticTransition.cancel();if(Prefs.text(this,"automaticResult","").isEmpty())Prefs.put(this,"automaticResult",wasInterrupted?"Automatic waiting was interrupted. Arm again before bed.":"Automatic start cancelled. No recording was created.");}handler.removeCallbacks(automaticTick);Prefs.put(this,"automaticArmed",false);boolean wasPaused=phase==Phase.PAUSED;phase=Phase.STOPPING;long endedAt=timestamp();if(clock!=null)clock.pause(SystemClock.elapsedRealtime());handler.removeCallbacks(minuteTick);handler.removeCallbacks(liveTick);handler.removeCallbacks(limitTick);stopSensors();if(!automaticRun&&session>0)SleepSoundService.trackingStop(session);NoiseRecorder recorder=audio;audio=null;
-        closeAudio(recorder,()->finishAwake(endedAt,()->{try{if(store!=null&&session>0){checkClock(endedAt);if(!wasPaused)flush(endedAt,recorder,false);store.end(session,interrupted,clock.active(SystemClock.elapsedRealtime()),Math.max(start,endedAt));if(!interrupted)AutoCloudBackups.ended(getApplicationContext(),session,start,Math.max(start,endedAt),backupProduction);}}catch(Exception e){Prefs.put(this,"trackingError","Could not finalize the recording. Saved readings remain; review the interrupted record. "+e.getMessage());}finally{
-            try{if(store!=null)store.close();}catch(Exception e){Prefs.put(this,"trackingError","Could not close recording storage: "+e.getMessage());}finally{automationEvents.stopped();store=null;phase=Phase.CLOSED;if(recurringToken!=null)try{RecurringTracking.ended(this,recurringOwner,recurringToken,interrupted?"Nightly tracking was interrupted. Open tracking for details.":wasArmed?(waitExpired?"The stillness waiting period ended. Your nightly settings are kept.":"Tonight’s automatic start was cancelled. Your nightly settings are kept."):"Nightly recording ended. Your nightly settings are kept.");}catch(RuntimeException ignored){}if(current==this){running=false;current=null;Prefs.of(this).edit().putBoolean("tracking",false).putBoolean("trackingPaused",false).putLong("session",0).apply();}closer.shutdown();if(!destroyed){stopForeground(STOP_FOREGROUND_REMOVE);stopSelf();}}
-        }}));
+        closeAudio(recorder,()->finishAwake(endedAt,()->{
+            if(falseStartRejected&&store!=null&&session>0){
+                try{checkClock(endedAt);if(!wasPaused)flush(endedAt,recorder,false);Store pinned=store;long id=session,active=clock.active(SystemClock.elapsedRealtime()),completedAt=Math.max(start,endedAt);String token=dndRun;AutomaticFalseStartStore.Identity expected=falseStartIdentity;
+                    closer.execute(()->{String result;
+                        try{result=AutomaticFalseStartStore.finish(getApplicationContext(),pinned,expected,completedAt,active,()->current==this&&running&&!destroyed&&phase==Phase.STOPPING&&session==id&&token.equals(dndRun));}
+                        catch(Exception failure){result="Possible awake start stopped. Saved readings were kept for review; cleanup could not be completed. "+failure.getMessage();}
+                        String outcome=result;handler.post(()->{try{Prefs.put(this,"automaticResult",outcome);}finally{finishStopped(wasArmed,waitExpired);}});
+                    });return;
+                }catch(Exception failure){Prefs.put(this,"automaticResult","Possible awake start stopped. The record was kept for review: "+failure.getMessage());finishStopped(wasArmed,waitExpired);return;}
+            }
+            try{if(store!=null&&session>0){checkClock(endedAt);if(!wasPaused)flush(endedAt,recorder,false);store.end(session,interrupted,clock.active(SystemClock.elapsedRealtime()),Math.max(start,endedAt));if(!interrupted&&!falseStartRejected)AutoCloudBackups.ended(getApplicationContext(),session,start,Math.max(start,endedAt),backupProduction);}}
+            catch(Exception e){Prefs.put(this,"trackingError","Could not finalize the recording. Saved readings remain; review the interrupted record. "+e.getMessage());}
+            finally{finishStopped(wasArmed,waitExpired);}
+        }));
+    }
+    private void finishStopped(boolean wasArmed,boolean waitExpired){
+        try{if(store!=null)store.close();}catch(Exception e){Prefs.put(this,"trackingError","Could not close recording storage: "+e.getMessage());}
+        finally{automationEvents.stopped();store=null;phase=Phase.CLOSED;if(recurringToken!=null)try{RecurringTracking.ended(this,recurringOwner,recurringToken,falseStartRejected?Prefs.text(this,"automaticResult","An estimated awake start was stopped; review Report."):interrupted?"Nightly tracking was interrupted. Open tracking for details.":wasArmed?(waitExpired?"The stillness waiting period ended. Your nightly settings are kept.":"Tonight’s automatic start was cancelled. Your nightly settings are kept."):"Nightly recording ended. Your nightly settings are kept.");}catch(RuntimeException ignored){}if(current==this){running=false;current=null;Prefs.of(this).edit().putBoolean("tracking",false).putBoolean("trackingPaused",false).putLong("session",0).apply();}closer.shutdown();if(!destroyed){stopForeground(STOP_FOREGROUND_REMOVE);stopSelf();}}
     }
     private void finishAwake(long at,Runnable complete){if(awake==null)complete.run();else awake.finish(at,interrupted,complete);}
     /** No Night has opened: this admission owns no Store, sound mixer or NoiseRecorder. */
