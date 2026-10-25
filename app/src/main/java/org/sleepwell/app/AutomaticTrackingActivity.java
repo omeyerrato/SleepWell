@@ -23,7 +23,7 @@ public final class AutomaticTrackingActivity extends Activity {
     }
     private static final Port PLATFORM=new Port(){
         public SharedPreferences preferences(Activity a){return Prefs.of(a);}
-        public long schedule(Activity a,AutomaticSleep.Mode mode){try(Store store=new Store(a)){return AutomaticStart.schedule(mode,System.currentTimeMillis(),ZoneId.systemDefault(),SleepPlans.load(a).bedtime,store.alarms());}}
+        public long schedule(Activity a,AutomaticSleep.Mode mode){try(Store store=new Store(a)){return AutomaticStart.schedule(mode,System.currentTimeMillis(),ZoneId.systemDefault(),SleepPlans.load(a).bedtime,store.alarms(),(alarm,now,zone)->AlarmSkips.next(a,alarm,now,zone));}}
         public void arm(Activity a,AutomaticSleep.Mode mode,long scheduled,boolean recordSounds,boolean keepClips){arm(a,mode,scheduled,recordSounds,keepClips,ArmedWaitConditions.NONE);}
         public void arm(Activity a,AutomaticSleep.Mode mode,long scheduled,boolean recordSounds,boolean keepClips,ArmedWaitConditions conditions){a.startForegroundService(ArmedWaitSettings.extras(new Intent(a,TrackingService.class).setAction(TrackingService.ARM).putExtra("mode",mode.name()).putExtra("scheduled",scheduled).putExtra("recordSounds",recordSounds).putExtra("keepClips",keepClips),conditions));a.startActivity(new Intent(a,TrackingActivity.class).putExtra("automaticRequest",true));a.finish();}
         public boolean microphoneAllowed(Activity a){return a.checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED;}
