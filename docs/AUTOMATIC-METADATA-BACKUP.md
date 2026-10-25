@@ -1,0 +1,37 @@
+# Optional automatic metadata backup (F136)
+
+This increment adds a separate default-off **After a tracked night** option to Cloud backup. The user must first choose a writable SAF document tree with persisted read/write access. Enabling verifies that selected destination and does not upload existing history. No account/network/storage permission is added, and SleepWell does not operate a cloud-provider account. A document provider may be local or may perform its own later remote upload.
+
+## Admission and ownership
+
+Only the production TrackingService movement end and SonarNightStore end, after Store.end successfully returns with interrupted=false, call the trigger. The pinned production StoreFactory, Records.PRODUCTION identity, `sleepwell.db` name and local/tracked raw start/end identity are checked. Generic Store.end, test/private databases, manual records, imported records, migrations, interrupted recovery and UI rendering never trigger a job. The queued raw record identity is checked again before a delivery; imported/replaced/deleted records cancel that request. Edits after a verified receipt require a manual save or a later successfully ended night; they do not fabricate another completion trigger. Edits made before delivery are represented by the normal current-metadata snapshot, not a frozen historical export.
+
+A separate private SQLite journal stores explicit consent, a changed-owner token, destination/tree revision, requests and read-back receipts. It does not modify the main schema, records or portable format. Requests are unique by raw session ID/start/end plus destination revision/tree. Up to 16 uncompleted requests can queue; full-queue status asks for a manual save without removing any records. Verified receipts remain in this journal for idempotence, while the existing provider history shows its last 20 versions. Re-enabling does not resurrect cancelled requests.
+
+JobScheduler job 7416 persists the owner token, requires battery-not-low, and has minimum 60-second latency; Android may defer it further. It does not require a network, since the selected provider may be local. Boot/package replacement and application startup reconcile only an already-existing journal, never create a first-use journal, scan personal history or invent triggers. Startup recovery rechecks pinned production factories on the worker. A changed destination or lost persisted grant turns the option off and cancels pending work; the user must explicitly select/enable again.
+
+## File proof and failure behavior
+
+The source remains CloudBackupSnapshot/BackupDocuments' real portable JSON, with the existing 8 MiB UTF-8 limit, all current metadata/provenance and no WAV files, app settings or dated goal commitments. Oversize preparation stops immediately with an explicit permanent-limit state, with no provider create, data pruning or three-attempt transient loop. The actual CloudBackupCopy unique-create/hash-read-back and existing history receipts are reused. Read-back equality proves the returned document contents, not a provider's remote synchronization.
+
+A durable PREPARING claim precedes snapshot work. A durable CREATING marker precedes the provider create call; CREATED records its returned URI. Only known precreation failures can retry automatically, at most three attempts with 15/30/60-minute backoff. A possible create/write/read-back interruption becomes UNCERTAIN and never blindly replays. **Retry automatic backup** requires confirmation for uncertain/failed entries and creates another unique document; complete/partial earlier files are kept. Persisted SHA/size VERIFIED receipts prevent a later job or duplicate completion from making another copy.
+
+Manual and automatic copies share a nonblocking process lease. Off/destination changes invalidate the current generation and request provider cancellation; JobService stop/90-second watchdog cancel only their matching run. The lease is held until actual provider calls and stream cleanup return, including when cancellation has not unblocked I/O. It is not released on a guessed timeout. A separate bounded metadata-only Off worker commits disabled consent before OS cancellation even while provider I/O is blocked; it never performs provider I/O. On cannot race a pending Off or unacknowledged cleanup. Late returned URI/read-back evidence remains in the retired task. UI never waits/joins/closes provider I/O, and only worker snapshots publish retained immutable status. Existing manual version save, review/restore and file-retention behavior remain available.
+
+Limits: the database commit → enqueue and journal commit → OS-schedule boundaries cannot guarantee delivery if the process dies at exactly those points. Existing-journal recovery covers the latter at next process/boot, not history backfill for a lost trigger. A provider can ignore cancellation or continue remote work after process death; explicit retry can create duplicates. No exclusive OS/provider ownership or guaranteed cloud upload is claimed.
+
+## Verification contract
+
+Testing-setup skill was applied to the existing Java Views, JUnit4 and UIAutomator injected-port setup. No new dependency or framework migration is needed.
+
+- Pure `AutoCloudBackupPolicyTest`: eligibility, per-destination identity, safe retries/backoff, permanent oversize, invalid trigger rejection and nonblocking shared ownership. Existing CloudBackupCopy/Job/Review tests remain enabled.
+- `AutoCloudBackupStorageTest`: 12 private SQLite/in-memory provider methods cover default-off/private completion fencing, consent/grants, real snapshot/read-back receipt/reopen/idempotence, three safe retries, oversize, uncertain creates/hash mismatch with explicit retry, Off/stale tokens/destination changes, revoked access/imported trigger rejection, process recovery and a held I/O cancellation that proves the lease stays owned until cleanup acknowledgement. Original production DB fingerprint and preferences are compared unchanged.
+- `AutoCloudBackupFlowTest`: 2 private configuration/fake-job methods, 8 original PNGs: `automatic-backup-{off,enabled,recreated,queued,verified,uncertain,retried,disabled}.png`. They tap the actual Switch/owned retry confirmation, recreate/reopen, check exact persisted state, deliver through the real snapshot/copy path into an in-memory provider and verify no original records/preferences changed. They never run an OS job, chooser, account or real provider.
+
+Final scoped build92137: debug/native APKs +21 focused pure tests/4 suites passed; lint 0 errors/142 warnings. The subsequent bounded durable-Off worker/late-receipt follow-up and its two added storage regressions pass direct javac against the compiled app/native classes and Android36 API; exact APK/lint compilation remains pending root combined verification. Native methods/screenshots are compiled only until root runs the quiet CI contract. No device/provider/cloud/OS scheduling exchange is verified by local compilation.
+
+## Primary Android sources
+
+- https://developer.android.com/training/data-storage/shared/documents-files — user-selected document tree and persisted grants; no broad storage permission needed.
+- https://developer.android.com/reference/android/app/job/JobInfo.Builder — persisted jobs, battery constraint and minimum latency.
+- https://developer.android.com/reference/android/app/job/JobService — asynchronous start/stop lifecycle and explicit jobFinished.

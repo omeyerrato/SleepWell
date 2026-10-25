@@ -6,7 +6,8 @@ import java.util.*;
 
 final class CloudBackupSettings {
     interface Factory {SharedPreferences preferences(Context context);}
-    static Factory factory=c->c.getSharedPreferences("cloud_backup_tree_v1",Context.MODE_PRIVATE);
+    static final Factory PRODUCTION=c->c.getSharedPreferences("cloud_backup_tree_v1",Context.MODE_PRIVATE);
+    static Factory factory=PRODUCTION;
     static final class Destination {final String tree,label;final int owned;final long revision;Destination(String tree,String label,int owned,long revision){this.tree=tree;this.label=label;this.owned=owned;this.revision=revision;}}
     static final class Entry {final String tree,uri,name,sha;final long time,size;final boolean verified;Entry(String tree,String uri,String name,long time,long size,String sha,boolean verified){this.tree=tree;this.uri=uri;this.name=name;this.time=time;this.size=size;this.sha=sha;this.verified=verified;}}
     static Destination destination(SharedPreferences prefs){return new Destination(prefs.getString("tree",""),prefs.getString("label","No destination"),prefs.getInt("owned",0),prefs.getLong("revision",0));}
