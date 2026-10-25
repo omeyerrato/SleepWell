@@ -20,6 +20,7 @@ public final class Scheduler {
         if(!allowed(c)) throw new SecurityException("Enable Alarms & reminders in Setup first.");
         PendingIntent operation=FIRE.equals(action)?PendingIntent.getBroadcast(c,id,new Intent(c,AlarmReceiver.class).setAction(action).putExtra("id",id).putExtra("occurrence",time),PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE):intent(c,id,action);
         c.getSystemService(AlarmManager.class).setAlarmClock(new AlarmManager.AlarmClockInfo(time,Notifications.home(c)),operation);
+        if(SNOOZE.equals(action))SnoozeDeadline.scheduled(c,id,time);
     }
     static synchronized void schedule(Context c,Alarm a) {try{
         cancel(c,a.id,FIRE);
@@ -32,7 +33,8 @@ public final class Scheduler {
         if(a.enabled) { long now=System.currentTimeMillis(),next=a.next(Math.max(now,Prefs.of(c).getLong("lastOccurrence_"+a.id,0)));if(next<=0){CalendarAlarms.scheduled(c,a,CalendarPolicy.ordinary(0,""));Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException(a.date!=null&&a.excludedDates.contains(a.date)?"The selected run date is excluded. Remove it from skipped dates or choose another date.":"That alarm date has passed. Choose a future date.");}CalendarPolicy.Plan plan=CalendarAlarms.plan(c,a,next,now);CalendarAlarms.scheduled(c,a,plan);at(c,a.id,FIRE,plan.deadline);Prefs.put(c,"deadline_"+a.id,plan.deadline); }
         else {CalendarAlarms.scheduled(c,a,CalendarPolicy.ordinary(0,""));Prefs.put(c,"deadline_"+a.id,0L);}
     }finally{HomeSurfaces.changed(c);}}
-    static void cancel(Context c,int id,String action) { if(CHECK.equals(action))WakeChecks.cancelForAlarm(c,id);c.getSystemService(AlarmManager.class).cancel(intent(c,id,action)); }
+    static void cancel(Context c,int id,String action) { if(CHECK.equals(action))WakeChecks.cancelForAlarm(c,id);try{c.getSystemService(AlarmManager.class).cancel(intent(c,id,action));}finally{if(SNOOZE.equals(action)){SnoozeDeadline.clear(c,id);SnoozeDeadline.changed(c);}} }
+    static long pendingSnooze(Context c,android.content.SharedPreferences prefs,Alarm current,long now){return SnoozeDeadline.project(c,prefs,current,now);}
     static void all(Context c) {
         try(Store s=new Store(c)) { for(Alarm a:s.alarms())try{schedule(c,a);}catch(RuntimeException failed){Prefs.put(c,"lastError","Alarm "+a.id+" needs scheduling attention.");} }
         bedtime(c);
@@ -60,6 +62,7 @@ public final class Scheduler {
         // Reserving the current occurrence before starting audio prevents smart/deadline races.
         synchronized(Scheduler.class) {
             boolean alreadyRinging=Prefs.flag(c,"ringing");
+            if(snoozeContinuation){SnoozeDeadline.clear(c,a.id);SnoozeDeadline.changed(c);}
             if(mainAlarm) {
                 // Re-read under the same lock as Skip/Undo: stale smart-wake snapshots cannot bypass a saved skip.
                 try(Store store=Records.open(c)){Alarm current=store.alarm(a.id);long deadline=Prefs.of(c).getLong("deadline_"+a.id,0),now=System.currentTimeMillis();if(!CalendarAlarms.eligible(c,current,deadline,now,Prefs.of(c).getLong("lastOccurrence_"+a.id,0),ZoneId.systemDefault()))return;a=current;}
