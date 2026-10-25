@@ -1,0 +1,25 @@
+package org.sleepwell.app;
+
+import android.content.*;
+import org.json.*;
+import java.util.*;
+
+/** Independent audio-version receipts. Provider files are never overwritten or deleted here. */
+final class CloudAudioVersions {
+    interface Factory {SharedPreferences open(Context context);}
+    static final Factory PRODUCTION=c->c.getSharedPreferences("cloud_audio_versions_v1",Context.MODE_PRIVATE);static Factory factory=PRODUCTION;
+    static final String PROCESS=UUID.randomUUID().toString();
+    static final class Entry {
+        final String id,tree,uri,name,sha,status,message,owner;final long revision,time,audioBytes,zipBytes;final int clips,events,records;
+        Entry(String id,CloudBackupSettings.Destination destination,LibraryAudioArchive.Plan plan){this(id,destination.tree,"","sleepwell-audio-"+java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss'Z'").withZone(java.time.ZoneOffset.UTC).format(java.time.Instant.now())+"-"+id+".zip","","PREPARING","Preparing the reviewed private snapshot.",PROCESS,destination.revision,System.currentTimeMillis(),plan.bytes,0,plan.audio.size(),plan.metadata.events.size(),plan.metadata.records.size());}
+        private Entry(String id,String tree,String uri,String name,String sha,String status,String message,String owner,long revision,long time,long audioBytes,long zipBytes,int clips,int events,int records){this.id=id;this.tree=tree;this.uri=uri;this.name=name;this.sha=sha;this.status=status;this.message=message;this.owner=owner;this.revision=revision;this.time=time;this.audioBytes=audioBytes;this.zipBytes=zipBytes;this.clips=clips;this.events=events;this.records=records;}
+        Entry next(String status,String message,String uri,long size,String sha){return new Entry(id,tree,uri,name,sha,status,message,owner,revision,time,audioBytes,size,clips,events,records);}
+        boolean busy(){return Set.of("PREPARING","CREATING","WRITING","VERIFYING","CANCELLING").contains(status);}boolean verified(){return status.equals("VERIFIED")&&sha.matches("[a-f0-9]{64}")&&!uri.isEmpty();}
+        JSONObject json()throws JSONException{return new JSONObject().put("id",id).put("tree",tree).put("uri",uri).put("name",name).put("sha",sha).put("status",status).put("message",message).put("owner",owner).put("revision",revision).put("time",time).put("audio_bytes",audioBytes).put("zip_bytes",zipBytes).put("clips",clips).put("events",events).put("records",records);}
+        Entry(JSONObject row)throws JSONException{this(row.getString("id"),row.getString("tree"),row.getString("uri"),row.getString("name"),row.getString("sha"),row.getString("status"),row.getString("message"),row.getString("owner"),row.getLong("revision"),row.getLong("time"),row.getLong("audio_bytes"),row.getLong("zip_bytes"),row.getInt("clips"),row.getInt("events"),row.getInt("records"));if(!Set.of("PREPARING","CREATING","WRITING","VERIFYING","CANCELLING","VERIFIED","ERROR","UNCERTAIN","INTERRUPTED","CANCELLED","CLEANUP").contains(status)||time<0||revision<0||events<0||events>LibraryAudioArchive.MAX_EVENTS||records<0||records>LibraryAudioArchive.MAX_RECORDS||clips<0||clips>LibraryAudioArchive.MAX_CLIPS||audioBytes<0||audioBytes>LibraryAudioArchive.MAX_BYTES||zipBytes<0||zipBytes>LibraryAudioImport.MAX_ZIP||message.length()>600||name.length()>200||uri.length()>8192||tree.length()>8192||!sha.isEmpty()&&!sha.matches("[a-f0-9]{64}"))throw new JSONException("Invalid audio receipt");if(status.equals("VERIFIED")&&!verified())throw new JSONException("Incomplete verified audio receipt");}
+    }
+    static synchronized List<Entry> read(SharedPreferences prefs)throws JSONException{String raw=prefs.getString("versions","[]");if(raw.length()>512*1024)throw new JSONException("Audio version history is unreadable");JSONArray rows=new JSONArray(raw);if(rows.length()>20)throw new JSONException("Audio version history is unreadable");List<Entry> result=new ArrayList<>();Set<String> ids=new HashSet<>();for(int n=0;n<rows.length();n++){Entry entry=new Entry(rows.getJSONObject(n));if(!ids.add(entry.id))throw new JSONException("Duplicate audio version");result.add(entry);}return List.copyOf(result);}
+    static synchronized List<Entry> inspect(SharedPreferences prefs)throws JSONException{List<Entry> values=read(prefs);for(Entry entry:values)if(entry.busy()&&!entry.owner.equals(PROCESS))record(prefs,entry.next("INTERRUPTED",entry.status.equals("PREPARING")?"Private preparation was interrupted. No upload resumes automatically.":"The previous save was interrupted. A complete or partial provider file may exist; it has not been verified. No upload resumes automatically.",entry.uri,entry.zipBytes,entry.sha));return read(prefs);}
+    static synchronized void record(SharedPreferences prefs,Entry entry)throws JSONException{List<Entry> previous=read(prefs);JSONArray rows=new JSONArray();rows.put(entry.json());for(Entry old:previous)if(!old.id.equals(entry.id)&&rows.length()<20)rows.put(old.json());if(!prefs.edit().putString("versions",rows.toString()).commit())throw new IllegalStateException("The audio-version receipt could not be saved. A provider file may still exist.");}
+    private CloudAudioVersions(){}
+}
