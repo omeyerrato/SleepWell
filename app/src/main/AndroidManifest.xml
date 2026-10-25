@@ -95,6 +95,7 @@
         <activity android:name=".TrackingActivity" android:exported="false" />
         <activity android:name=".MotionSensorActivity" android:exported="false" />
         <activity android:name=".SmartBedtimeActivity" android:exported="false" />
+        <receiver android:name=".GoogleSleepSignalReceiver" android:exported="false" />
         <receiver android:name=".SmartBedtimeReceiver" android:exported="false" />
         <activity android:name=".PlanActivity" android:exported="false" />
         <activity android:name=".RhythmGroupsActivity" android:exported="false" />
