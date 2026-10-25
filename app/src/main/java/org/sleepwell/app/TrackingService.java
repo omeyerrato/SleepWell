@@ -20,14 +20,14 @@ public class TrackingService extends Service implements SensorEventListener {
     interface StoreFactory{Store open(Context c);}
     static final StoreFactory PRODUCTION_STORE=Store::new;
     static StoreFactory storeFactory=PRODUCTION_STORE;
-    private boolean backupProduction;
+    private boolean backupProduction;private int foregroundTypes;
     private enum Phase{STARTING,ARMED,DELAYED,ACTIVE,PAUSING,PAUSED,STOPPING,BLOCKED,CLOSED}
     private volatile Phase phase=Phase.STARTING;private boolean stopRequested,resumeRequested,interrupted;private volatile boolean destroyed;private volatile TravelCueRuntime travelCues;private volatile String manualToken="";
     private SensorManager sensors;private PowerManager.WakeLock wake;private Store store;private NoiseRecorder audio;private boolean soundAttempted,automaticRun;private AutomaticSleep automatic;private AutomaticCapture automaticCapture;private AutomaticTransition automaticTransition;private ArmedWaitConditions armedConditions=ArmedWaitConditions.NONE;private volatile String armedBlocked="";private AutomaticSleep.Mode automaticMode;private GoogleSleepSignal googleSleep;
     private final Handler handler=new Handler(Looper.getMainLooper());private final ExecutorService closer=Executors.newSingleThreadExecutor();
     private String recurringToken;private RecurringTracking.Port recurringOwner;
     private volatile boolean sonarMode;private volatile SonarNight sonarNight;private SonarConfig sonarConfig;private boolean sonarAnalysis;
-    private boolean clockChanged;private TrackingClock clock;private volatile long session;private long start,windowStart;private double sum;private Double light;private int count,activeMinutes;private boolean motionRegistered,lightRegistered;
+    private boolean clockChanged;private TrackingClock clock;private volatile long session;private long start,windowStart;private double sum;private Double light;private int count,activeMinutes,pairActiveMinutes;private boolean motionRegistered,lightRegistered;
     private ClipBudget clipBudget=new ClipBudget();
     private final MotionFilter motionFilter=new MotionFilter();private MotionProfile motionProfile=new MotionProfile(1);
     private final Runnable minuteTick=this::minute,limitTick=()->stop(false),liveTick=this::liveSample,automaticTick=this::automaticTick;
@@ -45,6 +45,8 @@ public class TrackingService extends Service implements SensorEventListener {
     static boolean travelLive(String nonce){TrackingService s=current;TravelCueRuntime r=s==null?null:s.travelCues;return r!=null&&r.nonce.equals(nonce)&&r.busy();}
     static TravelCueSession.State travelStatus(){TrackingService s=current;return s==null||s.travelCues==null?null:s.travelCues.state();}
     static void stopTravel(String nonce,String reason){TrackingService s=current;TravelCueRuntime r=s==null?null:s.travelCues;if(r!=null&&(nonce==null||r.nonce.equals(nonce)))r.stop(reason);}
+    static PairMotionRuntime.Manual pairManual(){TrackingService s=current;return s!=null&&running&&!s.destroyed&&s.phase==Phase.ACTIVE&&!s.sonarMode&&!s.automaticRun&&s.recurringToken==null&&s.motionRegistered&&s.backupProduction&&!s.manualToken.isEmpty()?new PairMotionRuntime.Manual(s.session,s.start,s.timestamp(),SystemClock.elapsedRealtime(),s.manualToken):null;}
+    static void pairTransportChanged(){if(Looper.myLooper()!=Looper.getMainLooper())throw new IllegalStateException("Open pairing to change nearby transport.");TrackingService s=current;if(s!=null&&running&&!s.destroyed&&s.phase==Phase.ACTIVE)s.retypePairTransport();}
     static boolean ownsDelay(String token){TrackingService s=current;return running&&s!=null&&!s.destroyed&&s.phase==Phase.DELAYED&&s.delayPlan!=null&&s.delayPlan.token.equals(token);}
     static boolean holdsDelayJournal(String token){TrackingService s=current;return running&&s!=null&&!s.destroyed&&s.phase!=Phase.CLOSED&&s.phase!=Phase.STOPPING&&s.phase!=Phase.BLOCKED&&s.delayPlan!=null&&s.delayPlan.token.equals(token);}
     static String delayToken(){TrackingService s=current;return s==null||s.delayPlan==null?"":s.delayPlan.token;}
@@ -184,13 +186,16 @@ public class TrackingService extends Service implements SensorEventListener {
         androidx.core.app.NotificationCompat.Builder builder=new androidx.core.app.NotificationCompat.Builder(this,Notifications.TRACK).setSmallIcon(R.drawable.ic_moon).setContentTitle(waitingDelay?"SleepWell · delayed start":phase==Phase.ARMED?"SleepWell · waiting to track":paused?"SleepWell · tracking paused":"SleepWell · recording your night").setContentText(waitingDelay?"No sensors or audio are recording. Open to start now or cancel.":phase==Phase.ARMED?armedWaitMessage(armedBlocked)+(googleSleep==null?"":" "+googleSleep.status()):paused?"Recording capture is paused. Open tracking for resume controls.":"Phone tracking is active. Open to see sensor status.").setContentIntent(content).setOngoing(true).setSilent(true).setOnlyAlertOnce(true).addAction(new androidx.core.app.NotificationCompat.Action(0,waitingDelay?"Cancel delayed start":phase==Phase.ARMED?"Cancel automatic start":"End night",stop));
         if(phase!=Phase.ARMED&&!waitingDelay)builder.addAction(new androidx.core.app.NotificationCompat.Action(0,paused?"Resume":"Pause",toggle));
         TravelCueRuntime cues=travelCues;if(cues!=null&&cues.busy()){builder.setContentText("Experimental light cues armed. Open to review or stop.");Intent cancelCues=new Intent(this,TravelCueStopReceiver.class).setAction(TravelCueStopReceiver.STOP).setData(android.net.Uri.parse("sleepwell://stop-travel-cues/"+cues.nonce)).putExtra("nonce",cues.nonce);PendingIntent stopCues=PendingIntent.getBroadcast(this,68,cancelCues,PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);builder.addAction(new androidx.core.app.NotificationCompat.Action(0,"Stop light cues",stopCues));}
+        if(PairMotionRuntime.transportOwned(session,manualToken)){PairMotionRuntime.State pair=PairMotionRuntime.state();Intent cancelPair=new Intent(this,PairMotionStopReceiver.class).setAction(PairMotionStopReceiver.ACTION).setData(android.net.Uri.parse("sleepwell://stop-pair/"+pair.link)).putExtra("link",pair.link);PendingIntent stopPair=PendingIntent.getBroadcast(this,243,cancelPair,PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);builder.addAction(new androidx.core.app.NotificationCompat.Action(0,"Stop pairing",stopPair));}
         return builder.build();
     }
     private void refreshTravelNotification(){if(current!=this||!running||phase!=Phase.ACTIVE||destroyed||Build.VERSION.SDK_INT>=33&&checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED)return;try{getSystemService(NotificationManager.class).notify(102,trackingNotification(false));}catch(RuntimeException ignored){/* The review screen remains the explicit stop path. */}}
+    private void retypePairTransport(){int types=(foregroundTypes&~ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE)|(PairMotionRuntime.transportOwned(session,manualToken)?ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE:0);startForeground(102,trackingNotification(false),types);foregroundTypes=types;}
     private void foreground(boolean paused){
         Notification notification=trackingNotification(paused);
         boolean granted=checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED;boolean mic=sonarMode?!paused&&granted:automaticCapture!=null?automaticCapture.foregroundType(granted):!paused&&Prefs.flag(this,"noiseEnabled")&&granted;
-        if(Build.VERSION.SDK_INT>=34)startForeground(102,notification,ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE|(mic?ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE:0));else startForeground(102,notification,mic?ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE:ServiceInfo.FOREGROUND_SERVICE_TYPE_NONE);
+        int nearby=PairMotionRuntime.transportOwned(session,manualToken)?ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE:0;
+        int types=(Build.VERSION.SDK_INT>=34?ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE:0)|(mic?ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE:0)|nearby;startForeground(102,notification,types);foregroundTypes=types;
         if(automaticCapture!=null&&phase==Phase.STARTING)automaticCapture.foregroundEstablished(mic);
     }
     private void collect(){
@@ -207,9 +212,9 @@ public class TrackingService extends Service implements SensorEventListener {
     private final Runnable flipTick=new Runnable(){public void run(){if(flip==null||current!=TrackingService.this||!running||destroyed)return;flip.tick();handler.postDelayed(this,1000);}};
     private void closeFlip(){handler.removeCallbacks(flipTick);if(flip!=null)flip.close();}
     private long timestamp(){return clock==null?System.currentTimeMillis():clock.timestamp(start,SystemClock.elapsedRealtime());}
-    private void resetWindow(){sum=0;count=0;light=null;motionFilter.reset();activeMinutes=0;resetPreview(timestamp());}
+    private void resetWindow(){sum=0;count=0;light=null;motionFilter.reset();activeMinutes=pairActiveMinutes=0;resetPreview(timestamp());}
     private void resetPreview(long now){liveReadings.clear();previewSum=0;previewCount=0;previewAt=now;}
-    private void liveSample(){if(phase!=Phase.ACTIVE)return;long now=timestamp();int measured=count-previewCount;if(measured>0)try{liveReadings.add(new org.json.JSONObject().put("start",previewAt).put("time",now).put("movement",Math.sqrt(Math.max(0,sum-previewSum)/measured)));}catch(org.json.JSONException ignored){}previewAt=now;previewCount=count;previewSum=sum;handler.postDelayed(liveTick,1000);}
+    private void liveSample(){if(phase!=Phase.ACTIVE)return;long now=timestamp();int measured=count-previewCount;PairMotionRuntime.sample(pairManual(),previewAt,now,SystemClock.elapsedRealtime(),measured>0?Math.sqrt(Math.max(0,sum-previewSum)/measured):null,Math.max(0,measured));if(measured>0)try{liveReadings.add(new org.json.JSONObject().put("start",previewAt).put("time",now).put("movement",Math.sqrt(Math.max(0,sum-previewSum)/measured)));}catch(org.json.JSONException ignored){}previewAt=now;previewCount=count;previewSum=sum;handler.postDelayed(liveTick,1000);}
     private void checkClock(long now){if(store!=null&&session>0&&!clockChanged&&Math.abs(System.currentTimeMillis()-now)>2000){store.clockChanged(session);clockChanged=true;}}
     private void stopSensors(){if(sensors!=null)sensors.unregisterListener(this);motionRegistered=lightRegistered=false;if(wake!=null&&wake.isHeld())wake.release();}
     @Override public void onSensorChanged(SensorEvent event){
@@ -227,11 +232,11 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void minute(){
         if(phase!=Phase.ACTIVE)return;try{long now=timestamp();double movement=count==0?0:Math.sqrt(sum/count);int measured=count;
-        activeMinutes=motionProfile.activeMinutes(movement,activeMinutes);flush(now,audio,true);Prefs.put(this,"movement",String.format(Locale.ROOT,"%.3f",movement));
+        double pairedInference=PairMotionRuntime.inference(session,manualToken,windowStart,now,movement);pairActiveMinutes=motionProfile.activeMinutes(pairedInference,pairActiveMinutes);activeMinutes=motionProfile.activeMinutes(movement,activeMinutes);flush(now,audio,true);Prefs.put(this,"movement",String.format(Locale.ROOT,"%.3f",movement));
         for(Alarm alarm:store.alarms()){
             if(alarm.nap!=null){if(Naps.movement(this,alarm,motionProfile.inference(movement),activeMinutes,measured))break;continue;}
             long deadline=Prefs.of(this).getLong("deadline_"+alarm.id,0);boolean goalMet=!Prefs.flag(this,"smartNeedsGoal")||SleepPlans.load(this).goalMet(clock.active(SystemClock.elapsedRealtime()));
-            if(alarm.enabled&&goalMet&&motionProfile.smartWake(System.currentTimeMillis(),deadline,alarm.smartWindow,movement,activeMinutes,measured)){Scheduler.fire(this,alarm,true);break;}
+            if(alarm.enabled&&goalMet&&motionProfile.smartWake(System.currentTimeMillis(),deadline,alarm.smartWindow,pairedInference,pairActiveMinutes,measured)){Scheduler.fire(this,alarm,true);break;}
         }
         if(clock.lifetime(SystemClock.elapsedRealtime())>=12*60*60*1000L){stop(false);return;}handler.postDelayed(minuteTick,60000);}catch(Exception e){Prefs.put(this,"trackingError","Could not save sensor readings: "+e.getMessage());stop(true);}
     }
@@ -239,6 +244,7 @@ public class TrackingService extends Service implements SensorEventListener {
         if(recorder==null){complete.run();return;}recorder.requestStop();closer.execute(()->{recorder.close();handler.post(complete);});
     }
     private void pause(){
+        PairMotionRuntime.recordingStopped(session,manualToken,"PAUSED");
         dndStop();
         if(sonarMode&&sonarNight!=null){if(travelCues!=null)travelCues.stop("Tracking paused. Arm remaining cues explicitly after resuming.");sonarNight.pause();return;}
         if(phase!=Phase.ACTIVE)return;if(awake!=null)awake.pause();phase=Phase.PAUSING;if(travelCues!=null)travelCues.stop("Tracking paused. Arm remaining cues explicitly after resuming.");if(automaticCapture!=null)automaticCapture.pause();long pausedAt=timestamp();clock.pause(SystemClock.elapsedRealtime());handler.removeCallbacks(minuteTick);handler.removeCallbacks(liveTick);stopSensors();if(!automaticRun)SleepSoundService.trackingPause(session);NoiseRecorder recorder=audio;audio=null;
@@ -252,6 +258,7 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void closeGoogleSleep(){GoogleSleepSignal old=googleSleep;googleSleep=null;if(old!=null)old.close();}
     private void stop(boolean wasInterrupted){
+        PairMotionRuntime.recordingStopped(session,manualToken,"ENDED");
         closeGoogleSleep();        closeFlip();dndStop();cancelDelay(wasInterrupted);if(awake!=null)awake.stopInputs();
         if(sonarMode){if(sonarNight!=null){if(travelCues!=null)travelCues.stop("The recording ended. Light cues stopped.");sonarNight.stop(wasInterrupted);}else closeSonarAdmission();return;}
         interrupted|=wasInterrupted;if(automaticCapture!=null)automaticCapture.close();if(phase==Phase.CLOSED||phase==Phase.STOPPING)return;if(phase==Phase.PAUSING){stopRequested=true;return;}

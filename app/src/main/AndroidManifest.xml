@@ -5,6 +5,17 @@
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" android:usesPermissionFlags="neverForLocation" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -96,6 +107,9 @@
         <activity android:name=".AutomaticTrackingActivity" android:exported="false" />
         <activity android:name=".RecurringTrackingActivity" android:exported="false" />
         <activity android:name=".TrackingActivity" android:exported="false" />
+        <receiver android:name=".PairMotionStopReceiver" android:exported="false" />
+        <activity android:name=".PairMotionActivity" android:exported="false" />
+        <activity android:name=".PairMotionSavedActivity" android:exported="false" />
         <activity android:name=".MotionSensorActivity" android:exported="false" />
         <activity android:name=".SmartBedtimeActivity" android:exported="false" />
         <receiver android:name=".GoogleSleepSignalReceiver" android:exported="false" />
@@ -144,7 +158,7 @@
         <service android:name=".SpeakCaptureService" android:exported="false" android:foregroundServiceType="microphone" />
         <service android:name=".AlarmService" android:exported="false" android:foregroundServiceType="mediaPlayback" />
         <service android:name=".SleepSoundService" android:exported="false" android:foregroundServiceType="mediaPlayback" />
-        <service android:name=".TrackingService" android:exported="false" android:foregroundServiceType="specialUse|microphone">
+        <service android:name=".TrackingService" android:exported="false" android:foregroundServiceType="specialUse|microphone|connectedDevice">
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-selected daily movement-only tracking, user-armed bounded phone-idle detection and overnight accelerometer sleep movement tracking with an ongoing notification, optional microphone noise recording and separately user-armed experimental phone-light cues during the current manual recording" />
         </service>
         <service android:name=".BedtimeGuard" android:exported="true" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">

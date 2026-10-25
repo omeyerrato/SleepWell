@@ -53,6 +53,7 @@ public final class TrackingActivity extends Activity {
         action(body,"Flip to pause (movement only)",false,()->startActivity(RecordUi.intent(this,TrackingFlipActivity.class)));
         action(body,"Manual start delay: "+delayLabel(),false,()->startActivity(RecordUi.intent(this,TrackingDelayActivity.class)));
         action(body,"Tracking Do Not Disturb",false,()->startActivity(RecordUi.intent(this,TrackingDndActivity.class)));
+        if(!sonar)action(body,"Pair movement tracking",false,()->startActivity(RecordUi.intent(this,PairMotionActivity.class)));
         error=text(body,setupIssue,12,500,0xffffd495);error.setVisibility(setupIssue.isEmpty()?View.GONE:View.VISIBLE);Design.space(body,4);primary=action(footer(body),"Start tracking  →",true,this::start);primary.setEnabled(sonar||available);if(!sonar&&!available)showError("Movement tracking needs a working accelerometer.");
     }
     private void sensor(LinearLayout body,String icon,String title,String help,boolean selected,boolean movement){
@@ -92,6 +93,7 @@ public final class TrackingActivity extends Activity {
         liveRow(body,"alarm","Next alarm",next==null?"No alarm set":AlarmEditorActivity.displayTime(this,next),true);line(body);Design.space(body,8);movementValue=liveRow(body,"report",s.sonar?"Contactless movement":"Movement (phone motion)","",false);soundValue=liveRow(body,"mic","Sound recording","",false);audioIssue=text(body,"",12,500,0xffffd495);audioIssue.setVisibility(View.GONE);Design.space(body,10);line(body);heading(body,s.sonar?"Relative echo change":"Movement activity");Design.space(body,4);chart=null;sonarChart=null;graph=Design.col(this);body.addView(graph,new LinearLayout.LayoutParams(-1,Design.dp(this,150)));
         flipInfo=text(body,"",12,500,Design.LILAC);action(body,"Flip pause settings",false,()->startActivity(RecordUi.intent(this,TrackingFlipActivity.class)));
         action(body,"Tracking Do Not Disturb",false,()->startActivity(RecordUi.intent(this,TrackingDndActivity.class)));
+        if(!s.sonar)action(body,"Pair movement tracking",false,()->startActivity(RecordUi.intent(this,PairMotionActivity.class)));
         if(TravelCues.control.manual()!=null){Design.space(body,12);action(body,"Review travel light cues",false,()->startActivity(RecordUi.intent(this,TravelCueReviewActivity.class)));}
         LinearLayout footer=footer(body);boolean ready=s.phase.equals("ACTIVE")||s.paused();primary=action(footer,s.paused()?"Resume tracking":"Pause tracking",true,()->command(s.paused()?TrackingService.RESUME:TrackingService.PAUSE));primary.setEnabled(ready);
         keepPaused=action(footer,"Keep paused",false,()->command(TrackingService.PAUSE));keepPaused.setVisibility(s.flipRemaining>0?View.VISIBLE:View.GONE);
