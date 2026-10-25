@@ -141,7 +141,7 @@ public class TrackingService extends Service implements SensorEventListener {
                 if(travelCues!=null)travelCues.stop("The recording ended. Light cues stopped.");
                 handler.removeCallbacks(limitTick);stopSensors();running=false;current=null;Prefs.of(this).edit().putBoolean("tracking",false).putBoolean("trackingPaused",false).putLong("session",0).apply();closer.shutdown();if(!destroyed){stopForeground(STOP_FOREGROUND_REMOVE);stopSelf();}
             }else if(state.phase.equals("BLOCKED")){if(travelCues!=null)travelCues.stop("Audio cleanup needs attention. Light cues stopped.");if(!destroyed)getSystemService(NotificationManager.class).notify(102,trackingNotification(false));}
-        },sonarAnalysis,()->new YamnetClassifier(getApplicationContext()),clipBudget.sensitivity);
+        },sonarAnalysis,()->new YamnetClassifier(getApplicationContext()),clipBudget.sensitivity,new SonarSnoreCues(getApplicationContext(),sonarAnalysis,()->current==this&&running&&!destroyed&&sonarMode&&sonarNight==owner[0]&&phase==Phase.ACTIVE));
         owner[0]=night;sonarNight=night;wake.acquire(12*3600000L);night.start();handler.postDelayed(limitTick,12*3600000L);
     }
     private void beginRecording(){
