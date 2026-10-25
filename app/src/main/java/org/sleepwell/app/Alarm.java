@@ -16,15 +16,16 @@ public class Alarm {
     AlarmSoundMode soundMode=AlarmSoundMode.SINGLE;boolean soundModeInvalid;private Object invalidSoundMode;
     AlarmTiming timing=AlarmTiming.DEFAULT;boolean timingInvalid;private Object invalidTiming;
     AlarmInputs inputs=AlarmInputs.DEFAULT;boolean inputsInvalid;private Object invalidInputs;
+    SunriseSchedule solar;boolean solarInvalid;private Object invalidSolar;
     AlarmSkip skip;boolean skipInvalid;Object invalidSkip;String scheduleError="";
     ChallengeRoutine challenges(){return routine==null?ChallengeRoutine.legacy(challenge,difficulty):routine;}
     void setRoutine(ChallengeRoutine value){routine=value;routineInvalid=false;invalidRoutine=null;challenge=value.tasks.get(0).type;difficulty=value.tasks.get(0).rounds;}
     public Set<Integer> days = new HashSet<>();
     public Alarm(int id) { this.id=id; }
-    public String time() { return String.format(Locale.getDefault(), "%02d:%02d", hour, minute); }
+    public String time() { return solarInvalid?"Review sunrise":solar==null?String.format(Locale.getDefault(), "%02d:%02d", hour, minute):"Sunrise"; }
     public long next(long now) { return next(now,ZoneId.systemDefault()); }
-    long next(long now,ZoneId zone) {if(skipInvalid||dateInvalid)return 0;if(date!=null){long at=AlarmDate.next(date,hour,minute,now,zone);return at>0&&(skip==null||!skip.excludes(at,zone))?at:0;}return AlarmSkip.next(hour,minute,days,now,zone,skip);}
-    boolean occurs(long at,ZoneId zone){return !dateInvalid&&(date==null?AlarmSkip.occurs(hour,minute,days,at,zone):days.isEmpty()&&AlarmDate.at(date,hour,minute,zone)==at);}
+    long next(long now,ZoneId zone) {if(skipInvalid||dateInvalid||solarInvalid)return 0;if(solar!=null)return solar.next(hour,minute,days,date,now,zone,skip);if(date!=null){long at=AlarmDate.next(date,hour,minute,now,zone);return at>0&&(skip==null||!skip.excludes(at,zone))?at:0;}return AlarmSkip.next(hour,minute,days,now,zone,skip);}
+    boolean occurs(long at,ZoneId zone){return !dateInvalid&&!solarInvalid&&(solar!=null?solar.occurs(hour,minute,days,date,at,zone):date==null?AlarmSkip.occurs(hour,minute,days,at,zone):days.isEmpty()&&AlarmDate.at(date,hour,minute,zone)==at);}
     public JSONObject json() {
         JSONObject j=new JSONObject();
         try {
@@ -41,6 +42,7 @@ public class Alarm {
             if(soundModeInvalid)j.put("soundMode",invalidSoundMode);else if(!soundMode.equals(AlarmSoundMode.SINGLE))j.put("soundMode",AlarmSoundModeJson.encode(soundMode));
             if(timingInvalid)j.put("timing",invalidTiming);else if(!timing.equals(AlarmTiming.DEFAULT))j.put("timing",AlarmTimingJson.encode(timing));
             if(inputsInvalid)j.put("inputs",invalidInputs);else if(!inputs.equals(AlarmInputs.DEFAULT))j.put("inputs",AlarmInputsJson.encode(inputs));
+            if(solar!=null)j.put("solar",SunriseScheduleJson.encode(solar));else if(solarInvalid)j.put("solar",invalidSolar);
             if(skip!=null)j.put("skip",AlarmSkipJson.encode(skip));else if(skipInvalid)j.put("skip",invalidSkip);
             if(!scheduleError.isEmpty())j.put("scheduleError",scheduleError);
         } catch(JSONException e) { throw new IllegalStateException(e); }
@@ -62,7 +64,8 @@ public class Alarm {
         if(j.has("timing"))try{a.timing=AlarmTimingJson.decode(j.get("timing"));if(a.nap!=null||a.napInvalid||a.backupMinutes<0||a.backupMinutes>15)throw new JSONException("Review this alarm timing");}catch(JSONException invalid){a.timing=AlarmTiming.DEFAULT;a.timingInvalid=true;a.invalidTiming=j.opt("timing");}
         if(j.has("inputs"))try{a.inputs=AlarmInputsJson.decode(j.get("inputs"));}catch(JSONException invalid){a.inputsInvalid=true;a.invalidInputs=j.opt("inputs");}
         if(j.has("date"))try{a.date=AlarmDate.read(j.get("date"));if(!a.days.isEmpty()||a.nap!=null||a.napInvalid)throw new IllegalArgumentException("A dated alarm cannot repeat or be a nap");}catch(JSONException|IllegalArgumentException invalid){a.date=null;a.dateInvalid=true;a.invalidDate=j.opt("date");}
-        if(j.has("skip"))try{a.skip=AlarmSkipJson.decode(j.getJSONObject("skip"));if(a.nap!=null||a.napInvalid||a.days.isEmpty()&&a.enabled||!a.skip.matches(a.hour,a.minute,a.days))throw new JSONException("Skip does not match alarm");}catch(JSONException invalid){a.skip=null;a.skipInvalid=true;a.invalidSkip=j.opt("skip");}
+        if(j.has("solar"))try{a.solar=SunriseScheduleJson.decode(j.get("solar"));if(a.nap!=null||a.napInvalid)throw new JSONException("A nap cannot use sunrise time");}catch(JSONException invalid){a.solar=null;a.solarInvalid=true;a.invalidSolar=j.opt("solar");}
+        if(j.has("skip"))try{a.skip=AlarmSkipJson.decode(j.getJSONObject("skip"));if(a.nap!=null||a.napInvalid||a.days.isEmpty()&&a.enabled||!a.skip.matches(a.hour,a.minute,a.days,a.solar,a.date)||a.solarInvalid)throw new JSONException("Skip does not match alarm");}catch(JSONException invalid){a.skip=null;a.skipInvalid=true;a.invalidSkip=j.opt("skip");}
         Object error=j.opt("scheduleError");if(error instanceof String&&((String)error).length()<=240)a.scheduleError=(String)error;
         return a;
     }
