@@ -151,9 +151,9 @@ The full app native run and independent laughter accuracy gate remain failing.
 - [ ] **Auto-detect sleeping:** validate real scheduled/inactivity/recurring starts,
   permission and charging changes, false starts and background restrictions. Phone
   inactivity is an estimate, not proof of sleep or measured sleep stage.
-- [ ] **Anti-snoring:** verify actual detection-to-cue behavior, cooldown, repeat limits,
-  routing and stopping. Contactless analysis now optionally requests vibration-only
-  cues with self-output gaps; contactless clips now require a separate per-night opt-in. Sound-based contactless cues remain absent.
+- [ ] **Anti-snoring:** verify actual detection-to-cue behavior, cooldown, repeats,
+  routing and stopping. Contactless Sound/Vibration/Both now has separately saved
+  channel consents and capture masks; clips use a separate per-night opt-in.
 - [ ] **Jet lag:** complete useful travel planning and honestly labelled light cues;
   validate scheduling and output. Effective jet-lag prevention is not established.
 - [ ] **Reports and charts:** finish the reference composition throughout the Report
