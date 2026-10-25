@@ -108,6 +108,7 @@
         <activity android:name=".SoundEventsActivity" android:exported="false" />
         <activity android:name=".SoundLibrarySettingsActivity" android:exported="false" />
         <activity android:name=".SoundSensitivityActivity" android:exported="false" />
+        <activity android:name=".GoalAlarmTimeActivity" android:exported="false" />
         <activity android:name=".SunriseTimeActivity" android:exported="false" />
         <activity android:name=".AlarmDefaultsActivity" android:exported="false" />
         <activity android:name=".ChallengePackPreviewActivity" android:exported="false" />
