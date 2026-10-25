@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-25",
+  "reviewed": "2026-10-26",
   "features": [
     {
       "feature": "Multiple alarms",
@@ -1603,11 +1603,15 @@
         "SleepSoundService.java",
         "SleepSoundsActivity.java",
         "SoundSliders.java",
-        "TrackingService.java"
+        "TrackingService.java",
+        "SoundPlaylist.java",
+        "SoundPlaylistEditor.java",
+        "SoundPlaylistAudio.java",
+        "StillnessSoundFade.java"
       ],
-      "validation": "SoundPlaybackTest 24 and AudioCopyTest 7 local passes. SoundSettingsFlowTest API36 CI18.146s and S23 9.079s: choices/recreation/reopen, no Play, exact personal preference preservation. NativeSoundFlowTest CI25.664s. SoundImportPickerTest CI108.542s: actual picker, invalid/known+unknown oversize/denied/cancel, stale choice and portrait Activity recreation; SoundImportReopenTest CI13.883s: saved read grant after actual process restart, explicit native Play/Pause/Stop/removal with original bytes unchanged. All five pass at cdf17d5 in no-host-audio CI39927399518;26 actual captures. The later More-only icon correction at efa9cae has fresh two-flow CI39928589826 and13 actual captures, not a same-head five-flow claim. No physical audio/import, listening/full-fade or full-screen parity acceptance.",
+      "validation": "SoundPlaybackTest 24 and AudioCopyTest 7 local passes. SoundSettingsFlowTest API36 CI18.146s and S23 9.079s: choices/recreation/reopen, no Play, exact personal preference preservation. NativeSoundFlowTest CI25.664s. SoundImportPickerTest CI108.542s: actual picker, invalid/known+unknown oversize/denied/cancel, stale choice and portrait Activity recreation; SoundImportReopenTest CI13.883s: saved read grant after actual process restart, explicit native Play/Pause/Stop/removal with original bytes unchanged. All five pass at cdf17d5 in no-host-audio CI39927399518;26 actual captures. The later More-only icon correction at efa9cae has fresh two-flow CI39928589826 and13 actual captures, not a same-head five-flow claim. No physical audio/import, listening/full-fade or full-screen parity acceptance. Additionsb212a67: combined assembleDebug224f2cd PASS38s; final cleanup-source assembleDebugb212a67 PASS15s. No new tests/lint/screenshots/provider/audio/device actions. Historical tests do not validate these changes.",
       "status": "partial",
-      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Import uses retained validation, actual100MiB bounds, visible cancel, revision fencing and neutral art; narrower picker/read-grant/restart/playback/removal flow now has native CI evidence. Physical configuration/navigation only verified; Samsung Maximum power saving initially paused app, temporarily unpaused without changing global settings. Physical audio/import, actual tracking ownership and audible loop quality remain unverified. Paused timeout, pending-import process death, missing persistable grants and disk-failure reporting remain open. Historical native timer verification exercised only the final three seconds of a valid timer using a57-second fixture offset; production timer duration is unchanged. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
+      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Import uses retained validation, actual100MiB bounds, visible cancel, revision fencing and neutral art; narrower picker/read-grant/restart/playback/removal flow now has native CI evidence. Physical configuration/navigation only verified; Samsung Maximum power saving initially paused app, temporarily unpaused without changing global settings. Physical audio/import, actual tracking ownership and audible loop quality remain unverified. Paused timeout, pending-import process death, missing persistable grants and disk-failure reporting remain open. Historical native timer verification exercised only the final three seconds of a valid timer using a57-second fixture offset; production timer duration is unchanged.  See SOUND-PLAYBACK.md for limits. Sourceb212a67 adds a real ordered local-document queue (up to8files/100MiB each), retained validation and draft Add/move/remove→Save with persistent read access. Manual Play only; actual finite MediaPlayer completion advances, Brown noise continues, native pause retains position and a single total timer/fade spans tracks. Queue end and unreadable/revoked files stop explicitly, with no silent skipping. Separate bounded staging prevents document reads from blocking native Stop/alarm/timer controls. Original files stay unchanged. Separate default-off tracking-owned stillness fade requires10complete fresh screen-off low-motion minutes after actual playback admission and fades over5min using monotone owned gain; it is not measured sleep. Built-in rotating playlists, external-player volume/control and Spotify remain separate missing scope. Actual playback/provider/background/energy behavior remains unverified.",
       "id": "F061",
       "tests": [
         {
@@ -3592,11 +3596,15 @@
         "SleepSoundService.java",
         "SleepSoundsActivity.java",
         "SoundSliders.java",
-        "TrackingService.java"
+        "TrackingService.java",
+        "SoundPlaylist.java",
+        "SoundPlaylistEditor.java",
+        "SoundPlaylistAudio.java",
+        "StillnessSoundFade.java"
       ],
-      "validation": "SoundPlaybackTest 24 and AudioCopyTest 7 local passes. SoundSettingsFlowTest API36 CI18.146s and S23 9.079s: choices/recreation/reopen, no Play, exact personal preference preservation. NativeSoundFlowTest CI25.664s. SoundImportPickerTest CI108.542s: actual picker, invalid/known+unknown oversize/denied/cancel, stale choice and portrait Activity recreation; SoundImportReopenTest CI13.883s: saved read grant after actual process restart, explicit native Play/Pause/Stop/removal with original bytes unchanged. All five pass at cdf17d5 in no-host-audio CI39927399518;26 actual captures. The later More-only icon correction at efa9cae has fresh two-flow CI39928589826 and13 actual captures, not a same-head five-flow claim. No physical audio/import, listening/full-fade or full-screen parity acceptance.",
+      "validation": "SoundPlaybackTest 24 and AudioCopyTest 7 local passes. SoundSettingsFlowTest API36 CI18.146s and S23 9.079s: choices/recreation/reopen, no Play, exact personal preference preservation. NativeSoundFlowTest CI25.664s. SoundImportPickerTest CI108.542s: actual picker, invalid/known+unknown oversize/denied/cancel, stale choice and portrait Activity recreation; SoundImportReopenTest CI13.883s: saved read grant after actual process restart, explicit native Play/Pause/Stop/removal with original bytes unchanged. All five pass at cdf17d5 in no-host-audio CI39927399518;26 actual captures. The later More-only icon correction at efa9cae has fresh two-flow CI39928589826 and13 actual captures, not a same-head five-flow claim. No physical audio/import, listening/full-fade or full-screen parity acceptance. Additionsb212a67: combined assembleDebug224f2cd PASS38s; final cleanup-source assembleDebugb212a67 PASS15s. No new tests/lint/screenshots/provider/audio/device actions. Historical tests do not validate these changes.",
       "status": "partial",
-      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Import uses retained validation, actual100MiB bounds, visible cancel, revision fencing and neutral art; narrower picker/read-grant/restart/playback/removal flow now has native CI evidence. Physical configuration/navigation only verified; Samsung Maximum power saving initially paused app, temporarily unpaused without changing global settings. Physical audio/import, actual tracking ownership and audible loop quality remain unverified. Paused timeout, pending-import process death, missing persistable grants and disk-failure reporting remain open. Historical native timer verification exercised only the final three seconds of a valid timer using a57-second fixture offset; production timer duration is unchanged. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
+      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Import uses retained validation, actual100MiB bounds, visible cancel, revision fencing and neutral art; narrower picker/read-grant/restart/playback/removal flow now has native CI evidence. Physical configuration/navigation only verified; Samsung Maximum power saving initially paused app, temporarily unpaused without changing global settings. Physical audio/import, actual tracking ownership and audible loop quality remain unverified. Paused timeout, pending-import process death, missing persistable grants and disk-failure reporting remain open. Historical native timer verification exercised only the final three seconds of a valid timer using a57-second fixture offset; production timer duration is unchanged.  See SOUND-PLAYBACK.md for limits. Sourceb212a67 adds a real ordered local-document queue (up to8files/100MiB each), retained validation and draft Add/move/remove→Save with persistent read access. Manual Play only; actual finite MediaPlayer completion advances, Brown noise continues, native pause retains position and a single total timer/fade spans tracks. Queue end and unreadable/revoked files stop explicitly, with no silent skipping. Separate bounded staging prevents document reads from blocking native Stop/alarm/timer controls. Original files stay unchanged. Separate default-off tracking-owned stillness fade requires10complete fresh screen-off low-motion minutes after actual playback admission and fades over5min using monotone owned gain; it is not measured sleep. Built-in rotating playlists, external-player volume/control and Spotify remain separate missing scope. Actual playback/provider/background/energy behavior remains unverified.",
       "id": "F126",
       "tests": [
         {
@@ -4298,6 +4306,24 @@
       "status": "partial",
       "notes": "Optional default-off Lock alarm orientation persists in the existing strict portable input settings and behavior defaults. An actual positive-ID alarm requests SCREEN_ORIENTATION_LOCKED after loading its saved settings; legacy/default JSON and quiet developer preview retain their behavior. No global autorotate setting is changed. External challenge Activities keep their own orientation lifecycle. Platform/multiwindow restrictions and real device behavior remain unverified; this is a request, not a system-wide rotation guarantee.",
       "id": "F150",
+      "tests": []
+    },
+    {
+      "feature": "Tracking-owned movement-estimate audio fade",
+      "screens": "19 + movement tracking",
+      "source": "https://sleep.urbandroid.org/docs/sleep/lullaby.html",
+      "implementation": [
+        "StillnessSoundFade.java",
+        "TrackingService.java",
+        "SleepSoundService.java",
+        "SoundPlayback.java",
+        "SoundPreferences.java",
+        "SleepSoundsActivity.java"
+      ],
+      "validation": "Combined production assembleDebug224f2cd PASS38s; final cleanup-source assembleDebugb212a67 PASS15s. Build-only; no new tests/lint/screenshots/sensor/audio/device actions.",
+      "status": "partial",
+      "notes": "Default-off policy is pinned when genuine nonsonar/nonbatch movement recording starts, then requires a sound-service Admission ticket after that recording actually owns PLAYING audio. No pre-play evidence is reused. Only successfully checkpointed calibrated motion minutes with59–65s duration,55s capture coverage, at least60actual samples, no over2s gaps/fresh tail and known screenoff throughout qualify; inferred RMS must be at/below.04. Ten contiguous actual minutes trigger a5minute monotone playback multiplier, with the original timer as upper bound. Missing/high/interactive/pause/clock/session changes reset evidence; Off/manual/end/destruction releases admission. Applied attenuation never automatically raises sound level. No extra sensors, microphone, DB polling, system-volume/other-app control or alarm changes. This is phone-stillness estimation, not measured sleep onset/stage or proven efficacy; real sensor/output/overnight behavior remains unverified.",
+      "id": "F151",
       "tests": []
     }
   ]

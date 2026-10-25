@@ -2,7 +2,7 @@
 
 For a compact checkmarked feature view, see [FEATURE-CHECKLIST.md](FEATURE-CHECKLIST.md).
 
-Updated 25 October 2026. This is the remaining-work view of the build brief and
+Updated 26 October 2026. This is the remaining-work view of the build brief and
 [full feature matrix](FEATURE-MATRIX.md), not a declaration that unchecked items
 have no code. Some need implementation; others have code but still need correction,
 visual comparison or functional evidence. No percentage is inferred from item counts.
@@ -14,7 +14,20 @@ and functional checks continue; unchecked visual items below remain future work.
 
 ## Six-hour production window — 25 October
 
-Latest follow-up source **8399109** builds **PASS2m33s**, with schema15 / backup13
+Latest application source **b212a67** adds two further implemented paths:
+
+- [x] Local-document playlists, up to8files/100MiB each, with reviewed saved order,
+  actual track-completion advancement, retained native pause position, explicit
+  Stop and one total timer/fade. End/unreadable tracks stop visibly.
+- [x] Optional tracking-owned movement-estimate fade. After playback admission,
+  ten complete contiguous fresh screen-off low-motion minutes precede a five-minute
+  monotone fade. It does not measure sleep stages or control other apps' volume.
+
+Combined build **PASS38s**, final cleanup-source build **PASS15s**, original signer,
+schema15/backup13 unchanged. Provider/decoder, sensor/output, overnight and design
+acceptance remain open. No new tests/lint/screenshots or personal-phone actions.
+
+Earlier follow-up source **8399109** builds **PASS2m33s**, with schema15 / backup13
 and the original installed signer. Four additional production paths exist:
 
 - [x] Reviewed one-occurrence rescheduling on saved recurring alarms, with source
@@ -27,7 +40,7 @@ and the original installed signer. Four additional production paths exist:
 
 These are build-only implementation checkmarks. Alarm/restore/DST, recognizer,
 microphone cleanup, FIFO/Doze/energy and orientation behavior remain unverified.
-Local sleep-audio playlists are the next implementation task. No new tests,
+Local sleep-audio playlists were subsequently added above. No new tests,
 lint, screenshots or personal-phone actions were run.
 
 Latest user deadline: **5:23 PM Riyadh (14:23 UTC)**. New unit tests, native test

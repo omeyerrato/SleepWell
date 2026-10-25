@@ -1,5 +1,13 @@
 # Privacy
 
+Local sleep-audio playlists retain document names, URIs, validated sizes/durations
+and read grants only after Save. Files are read through the chosen provider and
+the current track is temporarily staged in private cache with a100MiB bound; source
+documents are unchanged. The provider may itself be remote. The saved queue and
+URI grants are excluded from portable record backups. Optional stillness fading
+uses actual existing motion samples and screen-state metadata during an admitted
+recording; it introduces no new capture or general external-player control.
+
 The optional Spoken phrase challenge uses only Android's on-device speech
 recognizer, started by an explicit Listen action. It requires an installed
 offline English recognizer/language and does not request model downloads. Audio

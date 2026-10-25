@@ -1,9 +1,10 @@
-# SleepWell feature checklist —25 October 2026
+# SleepWell feature checklist —26 October 2026
 
 Not fully done. Checked items have actual production implementation and build
 success; they are not claims of current phone/overnight validation. Unchecked
-acceptance items below remain required. Latest application source8399109 builds
-in2m33s; its published APK retains the installed signer and matching SHA256.
+acceptance items below remain required. Latest application sourceb212a67 builds
+in15s after the38s combined build; its published APK retains the installed signer
+and matching SHA256.
 
 ## Implemented feature paths
 
@@ -34,6 +35,8 @@ in2m33s; its published APK retains the installed signer and matching SHA256.
 - [x] Optional manual wake-up sensor FIFO batching on supported hardware.
 - [x] Snooze-aware home widgets and screen-only shortcuts.
 - [x] Local ambient mixer, imported audio, timed fade, optional narration/binaural tools.
+- [x] Saved local-document playlists with ordered track completion, pause/stop and one timer.
+- [x] Optional tracking-owned fade after sustained measured phone stillness.
 - [x] Metadata/audio backup and restore, including optional user-selected folder versions.
 - [x] Integration paths for sleep-only Health Connect, calendar, smart lights,
   Tasker/webhooks/MQTT, subject to their external services/permissions.
@@ -43,7 +46,7 @@ in2m33s; its published APK retains the installed signer and matching SHA256.
 
 - [ ] Validated phone sleep-stage/REM and breathing/apnea analysis.
 - [ ] Reliable laughter/instrument recognition and additional recognition scope.
-- [ ] Remaining ambient-playlist/external-music functionality.
+- [ ] Built-in rotating playlists and external-music player control.
 - [ ] Dedicated Sleep Phaser hardware protocol.
 - [ ] Direct legacy Google Fit/Samsung Health SDK clients; Health Connect is the
   existing route.
@@ -58,6 +61,7 @@ in2m33s; its published APK retains the installed signer and matching SHA256.
 - [ ] New repeat/DST/calendar behavior, false-start data cleanup, printing, widget
   hosting, one-occurrence overrides, FIFO/Doze capture and real provider exchange.
 - [ ] On-device phrase recognition, microphone cleanup and orientation behavior.
+- [ ] Local playlist provider/decoder lifecycle and stillness-fade sensor/output behavior.
 - [ ] Full36-screen reference design fidelity, especially Report/charts and menus.
 - [ ] Remaining interaction bugs and security review, deferred by user instruction.
 - [ ] Back up/install the latest APK on the phone and verify preserved data.

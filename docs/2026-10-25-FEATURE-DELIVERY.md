@@ -300,3 +300,38 @@ Frozen APK: **214934427 bytes**, SHA256
 `f2a8c27273ff69ea161764acb04080ac8b2d2957af4a534fb407cd27fe170102`.
 [Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-8399109).
 The phone remains on571018b/schema7; this candidate is uninstalled.
+
+
+## Local playlists and owned stillness fade —26 October, b212a67
+
+- Up to eight local audio documents use existing actual100MiB validation and a
+  restored draft Add/move/remove→Save flow. Persistent read access is retained on
+  Save; selection/restoration never starts playback. Queue uses manual Play only.
+- Genuine finite MediaPlayer completion advances tracks. Native pause retains
+  position, Brown noise stays continuous and the original total timer/fade spans
+  the queue. Queue end and revoked/unreadable files stop explicitly; no track is
+  silently skipped. Source documents stay unchanged. A separate bounded reader
+  stages only the current file without holding native Stop/alarm/timer controls.
+- Separate default-off stillness fading pins tracking policy and claims playback
+  admission only after matching tracking-owned audio actually plays. No pre-play
+  evidence is reused. Ten contiguous complete fresh low-motion screen-off minutes
+  trigger a five-minute monotone multiplier. Missing/high/interactive/pause/clock/
+  session changes reset evidence; Off/manual/end/destruction releases admission
+  without raising faded levels. Existing timer/alarm cleanup remains authoritative.
+  This estimates stillness, not sleep stages. Local playlists remain manual-only;
+  this fade uses an eligible tracking-owned ambient mix.
+- No new sensors, microphone, DB polling, global media-volume/other-app control,
+  account service or alarm scheduling is introduced. Built-in rotating playlists,
+  external-player control and Spotify remain separate incomplete scope.
+
+Combined application224f2cd **assembleDebug PASS38s**; final cleanup source
+**b212a67 assembleDebug PASS15s**. No new tests/lint/screenshots/provider/audio/
+sensor/personal-phone actions. Real provider/decoder cleanup, sensor behavior,
+overnight accuracy and visual acceptance remain unverified. Source commits:
+852fb82 (fresh stillness signals),224f2cd (queue/service/UI) andb212a67 (destruction
+cleanup). Schema15 / metadata backup13 unchanged; original installed signer retained.
+
+Frozen APK **214979803 bytes**, SHA256
+`5c4aec36418e5242273fb10b122bfeb048ea0bbfbf487b4864a5dd149b4d52c3`.
+[Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-b212a67).
+The personal phone remains untouched on571018b/schema7; this APK is uninstalled.

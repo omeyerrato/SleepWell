@@ -10,9 +10,9 @@ and [strict visual review](docs/DESIGN-REVIEW.md). The first UI pass was rejecte
 the new root compositions are corrective work, not final acceptance of the 36 screens.
 Wearables and watch companions are excluded from this scope.
 
-## Current feature candidate — 25 October
+## Current feature candidate — 26 October
 
-Application source **8399109** builds in **2m33s**, with schema15 / metadata
+Application source **b212a67** builds in **15s** after the38s combined build, with schema15 / metadata
 backup13 and the original installed signing key. It includes expanded alarm,
 snooze, reminder and extra-loud controls; shared contactless noise clips/cues;
 weekly naps, object challenges, offline narration and pre-travel sleep shifts;
@@ -21,9 +21,10 @@ battery-aware movement/light sampling; snooze-aware home widgets; advanced alarm
 repeats; battery-reserve stopping; guarded automatic false-start rejection; and
 expanded gentle controls; reviewed one-occurrence rescheduling; optional manual
 sensor FIFO batching; an on-device spoken-phrase challenge; and per-alarm
-orientation lock. Provider and sensor prerequisites remain explicit.
+orientation lock; ordered local audio playlists; and optional tracking-owned
+movement-estimate fading. Provider and sensor prerequisites remain explicit.
 
-[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-8399109).
+[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-b212a67).
 Its uploaded checksum matches the local signed artifact. See the
 [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
 [checkmarked feature checklist](docs/FEATURE-CHECKLIST.md) and

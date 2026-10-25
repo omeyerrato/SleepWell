@@ -1,5 +1,35 @@
 # Sleep sounds — screen 19
 
+## Current feature addition —26 October2026
+
+Source **b212a67** adds ordered local-document playlists and a separate default-off
+tracking-owned stillness fade. Combined application build passed38s; final cleanup
+source passed15s. These additions have **build-only evidence**. All emulator/device
+results below are historical and do not validate the new paths. No new tests,
+provider reads, audio, sensor, screenshot or personal-phone actions ran.
+
+The local queue supports up to8readable documents,100MiB each. Add/reorder/remove
+is a draft; Save retains read grants and changes the saved mix silently. Playback
+requires Play. Genuine finite MediaPlayer completion advances tracks, Brown noise
+continues, and native-player pause retains the current position. One total playing
+timer/fade spans the queue; end/error stops rather than silently skipping a file.
+Only the current track is staged privately through a separate bounded reader,
+so provider reads cannot hold native Stop/alarm/timer controls. Original documents
+are unchanged. Configuration remains in local preferences, excluded from portable
+record backups; source files and grants must remain available.
+
+The stillness option applies to an admitted tracking-owned nonsonar/nonbatch mix,
+with policy pinned at tracking admission and a ticket claimed only after actual
+playback. It needs10contiguous complete fresh low-motion screen-off minutes after
+that ticket before a5minute fade. Gaps, screen use, clock/pause/session changes or
+high movement reset the estimate. Applied gain never automatically rises again;
+Off releases the estimate without restoring faded volume. The existing timer
+remains an upper bound. No global media volume, other-app control or stage/sleep
+measurement is supplied. Local playlists use manual Play and do not opt into
+automatic tracking playback. Built-in rotating playlists, external-player control
+and Spotify remain separate incomplete scope. Real provider/decoder cleanup,
+capture quality, overnight behavior and audible results remain unverified.
+
 Status: **partial**. The native configuration flow and a short real MediaPlayer/
 foreground-service integration journey pass on the disposable API36 CI emulator,
 with bounded board07 visual comparison. Actual document selection, bounded

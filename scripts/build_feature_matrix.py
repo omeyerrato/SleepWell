@@ -919,6 +919,15 @@ rows.extend([
     dict(feature="Per-alarm orientation lock", screens="05,09 + snooze/input detail", source=SOURCE+"alarms/alarm_settings.html", implementation=["AlarmInputs.java", "AlarmInputsJson.java", "AlarmEditorActivity.java", "AlarmActivity.java"], validation=batch_validation, status="partial", notes="Optional default-off Lock alarm orientation persists in the existing strict portable input settings and behavior defaults. An actual positive-ID alarm requests SCREEN_ORIENTATION_LOCKED after loading its saved settings; legacy/default JSON and quiet developer preview retain their behavior. No global autorotate setting is changed. External challenge Activities keep their own orientation lifecycle. Platform/multiwindow restrictions and real device behavior remain unverified; this is a request, not a system-wide rotation guarantee.")
 ])
 
+for row in rows:
+    if row["feature"] in ("Sleep sounds / lullabies", "Sound mixing / gains / fade / local playlist"):
+        row["implementation"] += ["SoundPlaylist.java", "SoundPlaylistEditor.java", "SoundPlaylistAudio.java", "StillnessSoundFade.java"]
+        row["notes"] = row["notes"].replace("Playlists, guided tracks, sleep-detected fade and external music remain absent.", "")
+        row["notes"] += " Sourceb212a67 adds a real ordered local-document queue (up to8files/100MiB each), retained validation and draft Add/move/remove→Save with persistent read access. Manual Play only; actual finite MediaPlayer completion advances, Brown noise continues, native pause retains position and a single total timer/fade spans tracks. Queue end and unreadable/revoked files stop explicitly, with no silent skipping. Separate bounded staging prevents document reads from blocking native Stop/alarm/timer controls. Original files stay unchanged. Separate default-off tracking-owned stillness fade requires10complete fresh screen-off low-motion minutes after actual playback admission and fades over5min using monotone owned gain; it is not measured sleep. Built-in rotating playlists, external-player volume/control and Spotify remain separate missing scope. Actual playback/provider/background/energy behavior remains unverified."
+        row["validation"] += " Additionsb212a67: combined assembleDebug224f2cd PASS38s; final cleanup-source assembleDebugb212a67 PASS15s. No new tests/lint/screenshots/provider/audio/device actions. Historical tests do not validate these changes."
+
+rows.append(dict(feature="Tracking-owned movement-estimate audio fade", screens="19 + movement tracking", source=SOURCE+"sleep/lullaby.html", implementation=["StillnessSoundFade.java", "TrackingService.java", "SleepSoundService.java", "SoundPlayback.java", "SoundPreferences.java", "SleepSoundsActivity.java"], validation="Combined production assembleDebug224f2cd PASS38s; final cleanup-source assembleDebugb212a67 PASS15s. Build-only; no new tests/lint/screenshots/sensor/audio/device actions.", status="partial", notes="Default-off policy is pinned when genuine nonsonar/nonbatch movement recording starts, then requires a sound-service Admission ticket after that recording actually owns PLAYING audio. No pre-play evidence is reused. Only successfully checkpointed calibrated motion minutes with59–65s duration,55s capture coverage, at least60actual samples, no over2s gaps/fresh tail and known screenoff throughout qualify; inferred RMS must be at/below.04. Ten contiguous actual minutes trigger a5minute monotone playback multiplier, with the original timer as upper bound. Missing/high/interactive/pause/clock/session changes reset evidence; Off/manual/end/destruction releases admission. Applied attenuation never automatically raises sound level. No extra sensors, microphone, DB polling, system-volume/other-app control or alarm changes. This is phone-stillness estimation, not measured sleep onset/stage or proven efficacy; real sensor/output/overnight behavior remains unverified."))
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -932,7 +941,7 @@ for n, row in enumerate(rows, 1):
 
 header = """# Phone feature matrix
 
-Reviewed 2026-10-25 against the supplied brief, all 12 visually inspected boards,
+Updated 2026-10-26 against the supplied brief, all 12 previously inspected boards,
 SCREEN-MAP.md, current code and official Sleep as Android manual. Screen numbers
 are intended reference destinations, not a claim of completed screens.
 
@@ -946,15 +955,16 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Current follow-up production source **8399109** adds one-occurrence rescheduling,
-optional manual sensor FIFO batching, an on-device spoken-phrase challenge and
-per-alarm orientation lock, alongside the preceding alarm/tracking/data features.
-Combined production build **PASS2m33s**. Database schema15 and backup format13 are unchanged.
+Current follow-up production source **b212a67** adds local audio playlists and
+tracking-owned movement-estimate fading, alongside one-occurrence rescheduling,
+optional manual FIFO batching, on-device spoken phrases, per-alarm orientation
+lock and the preceding alarm/tracking/data features. Combined production build
+PASS38s; final cleanup-source build **PASS15s**. Schema15 and backup13 are unchanged.
 This feature window uses **build-only**
 evidence: no new unit/native/lint/screenshot batches or physical-phone actions.
 The APK retains the installed debug signing key. It has not been installed.
 Latest actual phone installation remains571018b (application sourcedc30736), schema7.
-The current public8399109 development prerelease includes these additions.
+The current publicb212a67 development prerelease includes these additions.
 Its uploaded size/SHA256 match the frozen local signed APK; it remains
 uninstalled on the personal phone. Earlier release inventories are preserved
 in [delivery history](2026-10-25-FEATURE-DELIVERY.md).
@@ -986,5 +996,5 @@ for row in rows:
     validation = re.sub(r"\b\w+Test\b", lambda match: f"[{match[0]}](../{test_paths[match[0]]})" if match[0] in test_paths else match[0], row["validation"])
     header += f"| {row['id']} [{row['feature']}]({row['source']}) | {row['screens']} | {code} | {validation} | **{row['status']}** — {notes} |\n"
 (ROOT / "docs/FEATURE-MATRIX.md").write_text(header, encoding="utf-8")
-(ROOT / "docs/feature-matrix.json").write_text(json.dumps(dict(reviewed="2026-10-25", features=rows), indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
+(ROOT / "docs/feature-matrix.json").write_text(json.dumps(dict(reviewed="2026-10-26", features=rows), indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
 print(f"Persisted {len(rows)} phone-capable feature entries")
