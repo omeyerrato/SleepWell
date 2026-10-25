@@ -1,5 +1,41 @@
 # Sleep sounds — screen 19
 
+## Current follow-up —26 October,5a73464
+
+Combined production build **PASS1m5s**, build-only evidence. The earlier historical
+test/device results still do not validate these additions.
+
+Built-in rotation now saves an ordered selection of2–5bundled sounds at5/10/15
+playing-minute intervals. Draft Save/Cancel and recreation are silent, current-source
+status follows actual playing time, and one timer/fade spans the rotation. The
+separate Brown bed is muted while Brown noise is the primary sound. Local document
+queues and single tracks retain their own behavior.
+
+External-player media fading now has a separate default-off acknowledged setting.
+Android13+, observable already-playing media, known anticipated routing, normal
+audio mode and an immediate manual production movement recording are required;
+own mixer/autoplay, automatic/delayed/recurring/sonar/batch modes are excluded.
+The same actual fresh post-admission stillness evidence precedes a5minute reduction
+of STREAM_MUSIC. Own-sound and external admission channels remain independent;
+own playback has priority. Observed user-volume/device/route/config/playback/call
+changes, pause/end/Off/revision cancel current authority. No auto restoration,
+player launch/stop, audio-focus takeover or alarm/ringer/DND changes. The player may
+keep running at minimum. Android has no atomic compare/set volume and cannot reveal
+every player/focus handover; anticipated routing is not identity proof. Settings
+show these bounds and a token-fenced Stop; saving never arms current playback.
+
+Guided narration has saved rate.75/.90/1/1.15 and pitch.85/1/1.15 presets, frozen
+on explicit Play and checked with the installed offline English engine before
+speech. Provider errors stop narration while the silent guide continues. Editing
+or restoring settings does not speak or download voices. Voice selection remains
+automatic among eligible installed voices; there is no separate voice/language
+picker. Actual rendering remains engine dependent.
+
+No new tests/lint/screenshots/provider/sensor/audio/device actions. Actual
+playback/route/concurrency/provider/engine/overnight behavior remains unverified.
+Spotify account services remain absent; the scope below is historical where it
+states that rotation or external media fading is missing.
+
 ## Current feature addition —26 October2026
 
 Source **b212a67** adds ordered local-document playlists and a separate default-off

@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 26 October
 
-Application source **b212a67** builds in **15s** after the38s combined build, with schema15 / metadata
+Application source **5a73464** builds in **1m5s**, with schema15 / metadata
 backup13 and the original installed signing key. It includes expanded alarm,
 snooze, reminder and extra-loud controls; shared contactless noise clips/cues;
 weekly naps, object challenges, offline narration and pre-travel sleep shifts;
@@ -22,16 +22,20 @@ repeats; battery-reserve stopping; guarded automatic false-start rejection; and
 expanded gentle controls; reviewed one-occurrence rescheduling; optional manual
 sensor FIFO batching; an on-device spoken-phrase challenge; and per-alarm
 orientation lock; ordered local audio playlists; and optional tracking-owned
-movement-estimate fading. Provider and sensor prerequisites remain explicit.
+movement-estimate fading; saved built-in sound rotation; separately consented
+external media-stream fading; and narration rate/pitch controls. Provider,
+OS-observation and sensor prerequisites remain explicit.
 
-[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-b212a67).
+[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-5a73464).
 Its uploaded checksum matches the local signed artifact. See the
 [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
 [checkmarked feature checklist](docs/FEATURE-CHECKLIST.md) and
 [remaining checklist](docs/REMAINING-WORK.md) for exact behavior and missing scope.
-These additions have **build-only evidence** and have not been installed on the
-personal phone. Runtime, provider, overnight, accuracy and visual acceptance remain
-open; no new test/lint/screenshot/device batches ran during this feature window.
+Feature behavior still has **build-only evidence**. The user-authorized5a73464
+phone update succeeded; checksum, original records/preferences/private files were
+preserved. Samsung Device Care suspension blocked opening, so schema7→15 first-open
+migration remains pending. Runtime, provider, overnight, accuracy and visual acceptance remain
+open; no new test/lint/screenshot batches or alarm/audio/sensor actions ran.
 
 ## Working capabilities
 

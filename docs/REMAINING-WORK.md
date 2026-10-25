@@ -12,9 +12,41 @@ stopped and its slot reassigned to implementation at your request. Visual correc
 broad bug review and security auditing are deferred. Essential build, data-preservation
 and functional checks continue; unchecked visual items below remain future work.
 
+Direct vendor SDK integration also has external gates. Google Fit stopped new
+developer sign-ups in May2024 and is deprecated in2026; Health Connect remains the
+existing mobile route. Samsung's replacement Health Data SDK requires partner
+approval and package/signature registration for public distribution; development
+mode is not a public-app substitute. No direct client or Samsung approval is claimed.
+Sources: [Google](https://developers.google.com/fit/overview),
+[Samsung](https://developer.samsung.com/health/data/guide/app-verification.html).
+
 ## Six-hour production window — 25 October
 
-Latest application source **b212a67** adds two further implemented paths:
+Subsequent user-authorized phone update: **5a73464 installed successfully**.
+Installed checksum, all original table rows, preferences and private files were
+preserved. Samsung Device Care package suspension blocked opening; schema remains7
+and first-open migration to15 is pending. No suspension setting, alarm/audio/sensor
+test or broad device batch was changed/run. Earlier phone-status notes below are
+historical before this update.
+
+Latest candidate **5a73464**, **assembleDebug PASS1m5s**, adds:
+
+- [x] Ordered built-in sound rotation at5/10/15-minute playing-time intervals with
+  saved draft configuration, current-source status and one overall timer/fade.
+- [x] Separately acknowledged default-off external MEDIA-stream fading on a new
+  immediate manual motion recording, after actual complete stillness evidence.
+  Observed ownership/route/call/volume changes cancel it; volume never auto-restores.
+  Android cannot identify every player/focus handover or atomically compare/set volume.
+- [x] Saved narration speed/pitch presets, frozen on explicit Play and applied by
+  checked installed-offline-English TTS calls; no speech/download on settings/restore.
+
+Original signer and schema15/backup13 retained. These are build-only paths, with
+actual route/provider/engine/output/overnight behavior still unverified. No new
+tests/lint/screenshots or personal-phone actions. Spotify/hosted vendor services,
+validated sleep-stage/REM/breathing analysis and other unchecked acceptance items
+remain incomplete or externally gated; no full-completion claim is made.
+
+Earlier application source **b212a67** adds two further implemented paths:
 
 - [x] Local-document playlists, up to8files/100MiB each, with reviewed saved order,
   actual track-completion advancement, retained native pause position, explicit

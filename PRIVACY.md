@@ -1,5 +1,15 @@
 # Privacy
 
+External-player fading is a separate default-off setting with explicit consent.
+It reads observable active-media, anticipated-route/device, audio-mode, screen and
+volume state during an eligible manual movement recording and may lower the device
+MEDIA stream after sustained measured stillness. It does not identify a player,
+launch/stop apps, request audio focus or alter alarm volume. Observed changes stop
+further reductions; not every handover is observable. Volume never restores
+automatically, including after interruption. Local status/settings are retained;
+this adds no microphone/network capture. Narration rate/pitch preferences stay
+local and apply only after explicit Play through an installed offline English voice.
+
 Local sleep-audio playlists retain document names, URIs, validated sizes/durations
 and read grants only after Save. Files are read through the chosen provider and
 the current track is temporarily staged in private cache with a100MiB bound; source

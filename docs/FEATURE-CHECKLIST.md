@@ -2,8 +2,8 @@
 
 Not fully done. Checked items have actual production implementation and build
 success; they are not claims of current phone/overnight validation. Unchecked
-acceptance items below remain required. Latest application sourceb212a67 builds
-in15s after the38s combined build; its published APK retains the installed signer
+acceptance items below remain required. Latest application source5a73464 builds
+in1m5s; its published APK retains the installed signer
 and matching SHA256.
 
 ## Implemented feature paths
@@ -37,19 +37,23 @@ and matching SHA256.
 - [x] Local ambient mixer, imported audio, timed fade, optional narration/binaural tools.
 - [x] Saved local-document playlists with ordered track completion, pause/stop and one timer.
 - [x] Optional tracking-owned fade after sustained measured phone stillness.
+- [x] Saved built-in sound rotation on5/10/15-minute playing-time intervals.
+- [x] Separate opted-in external MEDIA-stream stillness fade with cancellation and no restoration.
+- [x] Saved narration speed/pitch presets applied after explicit Play.
 - [x] Metadata/audio backup and restore, including optional user-selected folder versions.
 - [x] Integration paths for sleep-only Health Connect, calendar, smart lights,
   Tasker/webhooks/MQTT, subject to their external services/permissions.
 - [x] Published development APK; original signer and uploaded checksum verified.
+- [x] User-authorized5a73464 phone update; installed checksum, original records,
+  preferences and private files verified preserved.
 
 ## Still missing or narrower than full parity
 
 - [ ] Validated phone sleep-stage/REM and breathing/apnea analysis.
 - [ ] Reliable laughter/instrument recognition and additional recognition scope.
-- [ ] Built-in rotating playlists and external-music player control.
 - [ ] Dedicated Sleep Phaser hardware protocol.
-- [ ] Direct legacy Google Fit/Samsung Health SDK clients; Health Connect is the
-  existing route.
+- [ ] Direct vendor SDK clients: Google Fit sign-ups are closed/deprecated; Samsung
+  public SDK distribution requires partner approval. Health Connect is the existing route.
 - [ ] Hosted SleepCloud/research-community/Spotify account-service parity.
 - [ ] Established chronotype, jet-lag-prevention or lucid-dream efficacy.
 
@@ -62,12 +66,14 @@ and matching SHA256.
   hosting, one-occurrence overrides, FIFO/Doze capture and real provider exchange.
 - [ ] On-device phrase recognition, microphone cleanup and orientation behavior.
 - [ ] Local playlist provider/decoder lifecycle and stillness-fade sensor/output behavior.
+- [ ] Built-in rotation, external media volume/route cancellation and narration engine behavior.
 - [ ] Full36-screen reference design fidelity, especially Report/charts and menus.
 - [ ] Remaining interaction bugs and security review, deferred by user instruction.
-- [ ] Back up/install the latest APK on the phone and verify preserved data.
+- [ ] Open after Samsung Device Care suspension is removed and verify schema7→15 migration.
 - [ ] Full completion verification; current builds alone do not establish it.
 
 Forced hardware power-off cannot be prevented by an ordinary Android app. The
-personal phone remains untouched on571018b/schema7. No new unit/native/lint/
-screenshot/device batches ran in this feature window. Details and bounds are in
+personal phone now has5a73464; Device Care suspension blocked launch and schema
+remains7pending first-open migration. No new unit/native/lint/screenshot batches
+or alarm/audio/sensor actions ran. Details and bounds are in
 [FEATURE-MATRIX.md](FEATURE-MATRIX.md) and [REMAINING-WORK.md](REMAINING-WORK.md).

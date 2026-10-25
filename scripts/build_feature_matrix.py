@@ -928,6 +928,27 @@ for row in rows:
 
 rows.append(dict(feature="Tracking-owned movement-estimate audio fade", screens="19 + movement tracking", source=SOURCE+"sleep/lullaby.html", implementation=["StillnessSoundFade.java", "TrackingService.java", "SleepSoundService.java", "SoundPlayback.java", "SoundPreferences.java", "SleepSoundsActivity.java"], validation="Combined production assembleDebug224f2cd PASS38s; final cleanup-source assembleDebugb212a67 PASS15s. Build-only; no new tests/lint/screenshots/sensor/audio/device actions.", status="partial", notes="Default-off policy is pinned when genuine nonsonar/nonbatch movement recording starts, then requires a sound-service Admission ticket after that recording actually owns PLAYING audio. No pre-play evidence is reused. Only successfully checkpointed calibrated motion minutes with59–65s duration,55s capture coverage, at least60actual samples, no over2s gaps/fresh tail and known screenoff throughout qualify; inferred RMS must be at/below.04. Ten contiguous actual minutes trigger a5minute monotone playback multiplier, with the original timer as upper bound. Missing/high/interactive/pause/clock/session changes reset evidence; Off/manual/end/destruction releases admission. Applied attenuation never automatically raises sound level. No extra sensors, microphone, DB polling, system-volume/other-app control or alarm changes. This is phone-stillness estimation, not measured sleep onset/stage or proven efficacy; real sensor/output/overnight behavior remains unverified."))
 
+for row in rows:
+    if row["feature"] in ("Sleep sounds / lullabies", "Sound mixing / gains / fade / local playlist"):
+        row["implementation"] += ["AmbientRotation.java", "AmbientRotationEditor.java", "ExternalMediaFade.java", "ExternalMediaFadeActivity.java"]
+        row["notes"] = row["notes"].replace("Built-in rotating playlists, external-player volume/control and Spotify remain separate missing scope.", "")
+        row["notes"] += " Follow-up5a73464 adds saved ordered2–5bundled-sound rotation at5/10/15playing-minute intervals, a single overall timer/fade, current-source status and silent draft Save/Cancel/recreation. Rotation works with normal tracking-owned playback; Brown's independent bed is muted when Brown is primary. Separate default-off external MEDIA-stream fading requires explicit acknowledged consent and a new immediate manual nonsonar/nonbatch production recording with observable already-playing external media and own mixer/autoplayOff. Real stillness evidence precedes monotone lowering; no restoration or player launch/stop. OS observation limits remain explicit. Spotify/account services are still absent."
+        row["validation"] += " Follow-up rotation/external integration: assembleDebug5a73464 PASS1m5s; no new tests/lint/screenshots/provider/audio/device actions."
+    if row["feature"] in ("Binaural beats / meditation", "Meditation / stereo binaural generator"):
+        row["implementation"] += ["NarrationSettings.java", "GuidedWindDownNarration.java", "GuidedWindDownActivity.java"]
+        row["notes"] = row["notes"].replace("No narration, health benefit or automatic output claim;", "Optional installed-offline-English narration is now present; no health benefit or automatic output claim;").replace("Original guided meditation content remains absent.", "An original timed guide with optional narration is now present; no vendor meditation content is copied.")
+        row["notes"] += " Follow-up saved narration rate.75/.90/1/1.15 and pitch.85/1/1.15 are frozen on explicit Play and applied through checked TextToSpeech calls before each utterance. Provider rejection is visible and stops narration, while the silent guide remains usable. Editing/restoring controls never speaks or downloads voices. Existing eligible installed offline English voice selection stays automatic; no separate voice/language picker or audible-rendering guarantee."
+        row["validation"] += " Narration controls: assembleDebug5a73464 PASS1m5s only, no new TTS/provider/audio/device actions."
+    if row["feature"] == "Tracking-owned movement-estimate audio fade":
+        row["notes"] += " Follow-up5a73464 separates own-sound versus external-media consent channels and admission tickets; enabling external mode does not authorize own-sound fade. Own-sound admission has priority."
+        row["validation"] += " Channel separation: assembleDebug5a73464 PASS1m5s; no runtime acceptance."
+
+rows.append(dict(feature="Opted-in external media-stream stillness fade", screens="19 + external-player settings + manual movement recording", source=SOURCE+"sleep/lullaby.html", implementation=["ExternalMediaFade.java", "ExternalMediaFadeActivity.java", "StillnessSoundFade.java", "TrackingService.java", "SleepSoundsActivity.java"], validation="Combined production assembleDebug5a73464 PASS1m5s. Build-only; no new tests/lint/screenshots/provider/sensor/audio/device actions.", status="partial", notes="Separate default-off acknowledged local preference/revision pins only for a new immediate manual nonsonar/nonbatch production recording. Android13+, observable already-playing media/configurations/anticipated route, normal audio mode, controllable media volume and no own mixer/autoplay required. A distinct post-admission stillness ticket uses10complete fresh low-motion screen-off minutes then5minfade. Only STREAM_MUSIC decreases; no audio focus takeover, alarm/ringer/DND change, player launch/stop or automatic restoration. Observed user-volume/playback/config/device/route/call changes, pause/end/Off/settings revision permanently cancel current authority. Final readback checks remain best-effort: Android has no atomic compare/set stream volume, anticipated route is not player proof, and every focus/player handover cannot be observed. Player may keep running at minimum; user raises media volume afterward. Private restored settings expose consent, errors, live status, token-fenced Stop and asynchronous acknowledged Save without capture/output. Runtime/OEM/route/concurrency/overnight behavior remains unverified; no Spotify account integration or sleep-stage claim."))
+
+for row in rows:
+    if row["feature"] == "Google Fit / Samsung Health":
+        row.update(status="blocked", source="https://developers.google.com/fit/overview", validation="Read-only official Google/Samsung developer prerequisites checked26October2026. No direct SDK/provider/device actions; no direct clients delivered.", notes="Direct vendor SDK clients remain absent. Google Fit new developer sign-ups closed1May2024 and its APIs are deprecated in2026; the existing sleep-only Health Connect route remains the mobile integration path. Samsung's legacy Android SDK was deprecated31July2025. Its replacement Health Data SDK requires prior partner approval and registered package/signing SHA256 for public distribution; an unregistered client is blocked, and development mode is not a production workaround. SleepWell has no such approval. See [Google Fit overview](https://developers.google.com/fit/overview), [Samsung legacy notice](https://developer.samsung.com/health/android/overview.html) and [Samsung app verification](https://developer.samsung.com/health/data/guide/app-verification.html). Existing Health Connect implementation does not imply direct SDK exchange or provider acceptance.")
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -955,18 +976,20 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Current follow-up production source **b212a67** adds local audio playlists and
-tracking-owned movement-estimate fading, alongside one-occurrence rescheduling,
-optional manual FIFO batching, on-device spoken phrases, per-alarm orientation
-lock and the preceding alarm/tracking/data features. Combined production build
-PASS38s; final cleanup-source build **PASS15s**. Schema15 and backup13 are unchanged.
+Current follow-up production source **5a73464** adds built-in ambience rotation,
+separately consented external-media fading and saved narration rate/pitch, alongside
+local audio queues, owned movement-estimate fading, one-occurrence rescheduling,
+manual FIFO batching, spoken phrases, orientation lock and preceding features.
+Combined production build **PASS1m5s**. Schema15 and backup13 are unchanged.
 This feature window uses **build-only**
 evidence: no new unit/native/lint/screenshot batches or physical-phone actions.
-The APK retains the installed debug signing key. It has not been installed.
-Latest actual phone installation remains571018b (application sourcedc30736), schema7.
-The current publicb212a67 development prerelease includes these additions.
-Its uploaded size/SHA256 match the frozen local signed APK; it remains
-uninstalled on the personal phone. Earlier release inventories are preserved
+The APK retains the installed debug signing key. The user subsequently authorized
+installation of5a73464: streamed update succeeded and installed checksum/original
+rows/preferences/private files matched. Samsung Device Care suspension blocked
+normal launch; the phone still has schema7 and first-open migration to15 is pending.
+No suspension setting was changed and no alarm/audio/sensor actions were run.
+The current public5a73464 development prerelease includes these additions.
+Its uploaded size/SHA256 match the frozen local signed APK. Earlier release inventories are preserved
 in [delivery history](2026-10-25-FEATURE-DELIVERY.md).
 Historical scoped functional evidence is preserved in [VERIFICATION.md](VERIFICATION.md)
 and the linked verification directories; it does not validate this newer source.

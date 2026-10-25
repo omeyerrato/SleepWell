@@ -12,8 +12,11 @@ Use essential production builds for integration. Do not act on the personal phon
 (including installation, ADB queries, capture, microphone, alarm or other outputs).
 The quiet-device procedures below are historical, not current authorization.
 
-Current application candidateb212a67 is published, signed with the installed debug
-key, and has build-only evidence; the personal phone remains on571018b/schema7.
+Current application candidate5a73464 is published, signed with the original debug
+key, and has build-only feature evidence. Its user-authorized phone update succeeded
+with checksum/original records/preferences/private files preserved. Device Care
+suspension blocked launch; schema7→15 migration remains pending. Installation
+authorization did not reinstate alarm/audio/sensor testing or the design reviewer.
 FEATURE-MATRIX.md and REMAINING-WORK.md carry current implementation/acceptance
 bounds. The numbered sequence below describes the original full plan and does
 not reinstate its old ordering or stopped reviewer.

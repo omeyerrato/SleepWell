@@ -335,3 +335,52 @@ Frozen APK **214979803 bytes**, SHA256
 `5c4aec36418e5242273fb10b122bfeb048ea0bbfbf487b4864a5dd149b4d52c3`.
 [Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-b212a67).
 The personal phone remains untouched on571018b/schema7; this APK is uninstalled.
+
+
+## Ambient rotation, external media and narration controls —26 October,5a73464
+
+- Saved ordered2–5bundled-sound rotation changes primary loops on5/10/15-minute
+  actual playing-time intervals. Draft Save/Cancel/recreation stay silent; current
+  source, normal tracking ownership and one overall timer/fade are retained.
+  Brown's independent bed is muted while Brown is primary. Local queues and
+  single tracks remain separate.
+- Separate default-off acknowledged external MEDIA-stream fading pins only on
+  a new immediate manual nonsonar/nonbatch production recording. Requires Android13+,
+  already-playing observable external media/config/routes, normal mode, controllable
+  media volume and own mixer/autoplayOff. Distinct admission and actual10complete
+  fresh screen-off low-motion minutes precede5min monotone reductions. Observed
+  volume/playback/config/device/route/call changes, pause/end/Off/settings revisions
+  cancel current authority. No automatic restoration, player launch/stop, audio
+  focus takeover or alarm/ringer/DND change. Player may continue at minimum.
+  Android cannot reveal every focus/player handover or atomically compare/set
+  stream volume; anticipated routing is not identity proof. Disclosures, status,
+  token-fenced Stop and acknowledged async Save are explicit.
+- Saved narration rate.75/.90/1/1.15 and pitch.85/1/1.15 presets freeze at explicit
+  Play and use checked TTS setters before each utterance. Provider rejection is
+  visible; the silent guide remains usable. Existing installed offline English
+  voice selection remains automatic. Settings/restore do not speak or download.
+
+Source5a73464 **assembleDebug PASS1m5s**, schema15/backup13 and original installed
+signer unchanged. No new tests/lint/screenshots/provider/sensor/audio/device actions.
+Actual provider/route/concurrency/engine/output/overnight and visual acceptance
+remain unverified. Direct SDK/service prerequisites are documented separately;
+full parity remains incomplete. Phone untouched on571018b/schema7.
+
+Frozen APK **215023099 bytes**, SHA256
+`94b4e08190da2c0cd5f8552b461cb34db2eb60ca787ceaca8ae01bda9b298aca`.
+[Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-5a73464).
+
+
+## User-authorized phone update —26 October
+
+The reconnected S23 received **5a73464** by successful streamed install-r after
+private app-data and previous-APK backup. The installed APK SHA256 matches the
+frozen published candidate. Read-back comparison confirmed every original table
+row/column, preference value and private file unchanged. This is installation/data
+preservation evidence, not feature acceptance; no alarm/audio/vibration/torch/sensor
+test ran.
+
+A normal launch request was intercepted by Samsung Device Care's existing package
+suspension. It was left unchanged. The database remains schema7; first-open migration
+to15 and normal foreground launch are still pending after the app is unpaused.
+Private backup/journal paths remain ignored locally; no personal data was published.
