@@ -2,6 +2,8 @@ package org.sleepwell.app;
 
 import android.content.*;
 import android.media.*;
+import android.media.audiofx.AudioEffect;
+import android.media.audiofx.LoudnessEnhancer;
 import android.net.Uri;
 import android.os.*;
 import org.json.*;
@@ -32,7 +34,7 @@ final class AlarmAudioSink implements AlarmPlayback.Sink {
     @Override public AlarmPlayback.Layer create(String tone,boolean loop,String key,int position){if(closed)throw new IllegalStateException("Closed alarm audio");Player player=new Player(tone,loop,key,position);players.add(player);return player;}
     @Override public void volume(AlarmPlayback.Layer layer,AlarmWakePolicy policy,boolean backup){
         // Queue on the pending player's owner, before its queued start. No stream I/O on main.
-        long revision=++volumeRevision;Player player=(Player)layer;player.worker.post(()->{if(!player.available()||revision!=volumeRevision)return;try{synchronized(VOLUME_LOCK){if(!player.available()||revision!=volumeRevision)return;player.digitalScale=volume.acquire(policy,backup);}}catch(RuntimeException error){player.digitalScale=policy.targetPercent/100f;error("Android did not allow the alarm volume change.");}});
+        long revision=++volumeRevision;Player player=(Player)layer;player.boostRequested=policy.extraLoud&&!policy.quiet;player.worker.post(()->{if(!player.available()||revision!=volumeRevision)return;try{synchronized(VOLUME_LOCK){if(!player.available()||revision!=volumeRevision)return;player.digitalScale=volume.acquire(policy,backup);}}catch(RuntimeException error){player.digitalScale=policy.targetPercent/100f;error("Android did not allow the alarm volume change.");}});
     }
     @Override public void stopped(){stopped(()->{});}
     @Override public void stopped(Runnable acknowledged){
@@ -47,7 +49,7 @@ final class AlarmAudioSink implements AlarmPlayback.Sink {
     private void error(String message){Prefs.put(context,"lastError",message);}
     private final class Player implements AlarmPlayback.Layer {
         final String tone,key;final boolean loop,radio;final int position;Runnable completion;final HandlerThread decoder=new HandlerThread("SleepWell alarm decoder");final Handler worker;
-        volatile boolean cancelled,started,finished;volatile float latestGain,digitalScale;MediaPlayer player;boolean prepared;AlarmPlayback.Ready callback;final java.util.concurrent.atomic.AtomicReference<Runnable> quiet=new java.util.concurrent.atomic.AtomicReference<>();
+        volatile boolean cancelled,started,finished,boostRequested;volatile float latestGain,digitalScale;MediaPlayer player;boolean prepared,boostAttempted;LoudnessEnhancer enhancer;AlarmPlayback.Ready callback;final java.util.concurrent.atomic.AtomicReference<Runnable> quiet=new java.util.concurrent.atomic.AtomicReference<>();
         Player(String tone,boolean loop,String key,int position){this.tone=tone;this.radio=AlarmRadioUrl.source(tone);this.loop=loop;this.key=key;this.position=position;decoder.start();worker=new Handler(decoder.getLooper());}
         private final Runnable stalled=()->{if(available()&&callback!=null){error("Internet radio is unavailable. Using the bundled alarm fallback.");callback.failed();}};
         @Override public void completion(Runnable done){completion=done;}
@@ -71,12 +73,36 @@ final class AlarmAudioSink implements AlarmPlayback.Sink {
             // Volatile ordering: stop sees started=true, or this observes cancelled
             // and cannot start. A quiet barrier follows any raced native start.
             started=true;if(!available()||!prepared){started=false;dispose();return;}
-            try{if(position>=0&&!AlarmPlaylistJournal.save(Prefs.of(context),occurrence,key,position,this::available))throw new IllegalStateException("Playlist progress unavailable");float gainNow=latestGain*digitalScale;player.setVolume(gainNow,gainNow);if(available()){player.start();main.post(()->{if(available())activated.ready();else close();});}else dispose();}
+            try{if(position>=0&&!AlarmPlaylistJournal.save(Prefs.of(context),occurrence,key,position,this::available))throw new IllegalStateException("Playlist progress unavailable");float gainNow=latestGain*digitalScale;player.setVolume(gainNow,gainNow);if(available()){attachLoudness();if(!available()){dispose();return;}player.start();main.post(()->{if(available())activated.ready();else close();});}else dispose();}
             catch(RuntimeException failure){dispose();main.post(()->{if(available())activated.failed();});}
         });}
+        // This runs only on this prepared player's decoder thread, immediately before start.
+        // Quiet policy, rather than a source name/session number, controls admission.
+        void attachLoudness(){
+            if(boostAttempted||!boostRequested||!available()||!prepared||player==null)return;
+            boostAttempted=true;
+            try{
+                int session=player.getAudioSessionId();
+                if(session<=0)throw new IllegalStateException("No owned alarm audio session");
+                enhancer=new LoudnessEnhancer(session);
+                enhancer.setTargetGain(600); // Millibels: +6 dB target; Android limits the actual output.
+                if(!available()||!boostRequested){releaseLoudness();return;}
+                if(!enhancer.hasControl()||enhancer.setEnabled(true)!=AudioEffect.SUCCESS||!enhancer.getEnabled())throw new IllegalStateException("Alarm boost unavailable");
+                if(!available()||!boostRequested||player.getAudioSessionId()!=session)releaseLoudness();
+            }catch(RuntimeException unavailable){
+                releaseLoudness();
+                if(available())boostError("Extra loud boost unavailable. Using maximum alarm volume.");
+            }
+        }
+        void boostError(String message){try{error(message);}catch(RuntimeException ignored){/* Optional effect errors must never stop the alarm decoder. */}}
+        void releaseLoudness(){
+            LoudnessEnhancer owned=enhancer;enhancer=null;if(owned==null)return;
+            try{owned.setEnabled(false);}catch(RuntimeException ignored){/* Still release a lost/disabled native effect. */}
+            try{owned.release();}catch(RuntimeException failure){boostError("Android could not release the alarm loudness effect.");}
+        }
         @Override public void close(){main.removeCallbacks(stalled);cancelled=true;finished=true;worker.post(this::dispose);}
         void whenQuiet(Runnable callback){main.removeCallbacks(stalled);cancelled=true;finished=true;quiet.set(callback);if(!started)notifyQuiet();worker.post(this::dispose);}
         void notifyQuiet(){Runnable callback=quiet.getAndSet(null);if(callback!=null)callback.run();}
-        void dispose(){main.removeCallbacks(stalled);boolean silent=player==null;try{if(player!=null){try{player.setVolume(0,0);silent=true;}catch(RuntimeException ignored){}try{player.release();silent=true;}finally{player=null;}}}catch(RuntimeException failure){error("Alarm decoder cleanup failed.");}finally{prepared=false;if(silent){started=false;players.remove(this);notifyQuiet();}if(finished)decoder.quitSafely();}}
+        void dispose(){main.removeCallbacks(stalled);releaseLoudness();boolean silent=player==null;try{if(player!=null){try{player.setVolume(0,0);silent=true;}catch(RuntimeException ignored){}try{player.release();silent=true;}finally{player=null;}}}catch(RuntimeException failure){error("Alarm decoder cleanup failed.");}finally{prepared=false;if(silent){started=false;players.remove(this);notifyQuiet();}if(finished)decoder.quitSafely();}}
     }
 }
