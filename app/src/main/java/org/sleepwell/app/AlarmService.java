@@ -9,17 +9,20 @@ import org.json.*;
 /** Foreground alarm lifetime. Output timing survives same-occurrence service restarts. */
 public class AlarmService extends Service {
     static volatile boolean active;
-    private AlarmVibration vibration;private PowerManager.WakeLock wake;private AlarmPlayback playback;private AlarmTorch torch;private SmartLightAlarm bedroomLight;
+    private AlarmVibration vibration;private PowerManager.WakeLock wake;private AlarmPlayback playback;private AlarmTorch torch;private SmartLightAlarm bedroomLight;private AlarmLifetime lifetime;private boolean backupPhase;private int latestStartId;
     private final Handler handler=new Handler(Looper.getMainLooper());private Alarm alarm;private String occurrence;private long started;private volatile boolean destroyed;
     @Override public IBinder onBind(Intent intent){return null;}
     @Override public void onCreate(){super.onCreate();Notifications.channels(this);}
     @Override public int onStartCommand(Intent intent,int flags,int startId){
-        if(!Prefs.flag(this,"ringing")){releaseOutputs();stopSelf();return START_NOT_STICKY;}
-        if(playback!=null){if(occurrence.equals(Prefs.text(this,"alarmRun",""))){if(Prefs.flag(this,"forceBackup"))playback.backup();return START_STICKY;}releaseOutputs();}
-        SleepSoundService.alarmStarting();
+        latestStartId=startId;
+        if(!Prefs.flag(this,"ringing")){releaseOutputs();stopSelf(latestStartId);return START_NOT_STICKY;}
+        if(playback!=null){if(occurrence.equals(Prefs.text(this,"alarmRun",""))){if(!timing())return START_NOT_STICKY;return START_STICKY;}releaseOutputs();}
         try{alarm=Alarm.read(new JSONObject(Prefs.text(this,"active_alarm","{}")));}catch(JSONException error){stopSelf();return START_NOT_STICKY;}
         occurrence=Prefs.text(this,"alarmRun","");started=Prefs.of(this).getLong("alarmStartedElapsed",0);long now=SystemClock.elapsedRealtime();
         if(occurrence.isEmpty()||started<=0||started>now){occurrence=java.util.UUID.randomUUID().toString();started=now;Prefs.of(this).edit().putString("alarmRun",occurrence).putLong("alarmStartedElapsed",started).apply();}
+        final String lifetimeRun=occurrence;lifetime=new AlarmLifetime(alarm,lifetimeRun,new AlarmLifetime.Owner(){public boolean current(String run){return alive(run);}public boolean backupIfCurrent(String run,boolean backup){synchronized(Scheduler.class){if(!alive(run))return false;backupPhase=backup;if(playback!=null)playback.backup(backup);return true;}}public boolean timeoutIfCurrent(String run){return expire(run);}});
+        if(!timing())return START_NOT_STICKY;
+        SleepSoundService.alarmStarting();
         Intent screen=new Intent(this,AlarmActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent launch=PendingIntent.getActivity(this,1,screen,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
         Notification notification=new Notification.Builder(this,Notifications.ALARM).setSmallIcon(R.drawable.ic_moon).setContentTitle(alarm.label)
@@ -27,7 +30,7 @@ public class AlarmService extends Service {
         startForeground(101,notification,ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);active=true;
         TrackingService.stopTravel(null,"An alarm took priority.");
         try{wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:alarm");wake.acquire(2*60*60*1000L);}catch(RuntimeException error){Prefs.put(this,"lastError","Android did not allow the alarm wake lock.");}
-        final String ownRun=occurrence;playback=new AlarmPlayback(alarm,new AlarmAudioSink(this,handler,occurrence,()->alive(ownRun)),()->Math.max(0,SystemClock.elapsedRealtime()-started),SystemClock::elapsedRealtime);playback.start();
+        final String ownRun=occurrence;playback=new AlarmPlayback(alarm,new AlarmAudioSink(this,handler,occurrence,()->alive(ownRun)),()->Math.max(0,SystemClock.elapsedRealtime()-started),SystemClock::elapsedRealtime);playback.start(backupPhase);
         try{bedroomLight=SmartLightAlarm.start(this,alarm,occurrence,started,()->alive(ownRun));}catch(RuntimeException failure){Prefs.put(this,"lastError","Bedroom light unavailable. Phone alarm continues.");}
         if(new AlarmWakePolicy(alarm).flashlight)torch=new AlarmTorch(this,()->alive(ownRun));
         AlarmWakePolicy policy=new AlarmWakePolicy(alarm);
@@ -40,14 +43,16 @@ public class AlarmService extends Service {
         tick.run();return START_STICKY;
     }
     private boolean alive(String run){return !destroyed&&run.equals(occurrence)&&Prefs.flag(this,"ringing")&&run.equals(Prefs.text(this,"alarmRun",""));}
-    private final Runnable tick=new Runnable(){public void run(){if(!alive(occurrence)){releaseOutputs();stopSelf();return;}boolean backup=Prefs.flag(AlarmService.this,"forceBackup");if(backup)playback.backup();playback.tick();try{if(bedroomLight!=null)bedroomLight.tick();}catch(RuntimeException failure){Prefs.put(AlarmService.this,"lastError","Bedroom light unavailable. Phone alarm continues.");}if(vibration!=null)vibration.tick(backup);handler.postDelayed(this,100);}};
+    private final Runnable tick=new Runnable(){public void run(){if(!alive(occurrence)){releaseOutputs();stopSelf(latestStartId);return;}if(!timing())return;playback.tick();try{if(bedroomLight!=null)bedroomLight.tick();}catch(RuntimeException failure){Prefs.put(AlarmService.this,"lastError","Bedroom light unavailable. Phone alarm continues.");}if(vibration!=null)vibration.tick(Prefs.flag(AlarmService.this,"forceBackup"));handler.postDelayed(this,100);}};
+    private boolean timing(){AlarmLifetime owned=lifetime;if(owned!=null&&owned.tick(Math.max(0,SystemClock.elapsedRealtime()-started),Prefs.flag(this,"forceBackup")))return true;releaseOutputs();stopSelf(latestStartId);return false;}
+    private boolean expire(String run){synchronized(Scheduler.class){if(!alive(run))return false;Prefs.of(this).edit().putBoolean("ringing",false).putBoolean("forceBackup",false).putString("lastError","Alarm stopped at your configured ringing timeout. Challenges were not completed.").apply();try{Scheduler.cancelBackup(this,alarm.id,run);}catch(RuntimeException ignored){/* Cleared ringing ownership fences a queued backup even if cancel fails. */}releaseOutputs();stopSelf(latestStartId);return true;}}
     static void stop(Context context){
         stop(context,Prefs.text(context,"alarmRun",""));
     }
     static boolean current(Context context,String expected){return Prefs.flag(context,"ringing")&&expected.equals(Prefs.text(context,"alarmRun",""));}
     static boolean stop(Context context,String expected){synchronized(Scheduler.class){if(!current(context,expected))return false;try{Alarm alarm=Alarm.read(new JSONObject(Prefs.text(context,"active_alarm","{}")));Scheduler.cancelBackup(context,alarm.id,expected);}catch(JSONException ignored){}Prefs.of(context).edit().putBoolean("ringing",false).putBoolean("forceBackup",false).apply();context.stopService(new Intent(context,AlarmService.class));return true;}}
     private void releaseOutputs(){
-        handler.removeCallbacksAndMessages(null);
+        handler.removeCallbacksAndMessages(null);if(lifetime!=null)lifetime.close();lifetime=null;backupPhase=false;
         try{if(playback!=null)playback.stop();}catch(RuntimeException ignored){}
         try{if(bedroomLight!=null)bedroomLight.close();}catch(RuntimeException ignored){}
         try{if(torch!=null)torch.close();}catch(RuntimeException ignored){}

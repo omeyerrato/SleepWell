@@ -12,7 +12,7 @@ final class AlarmVolumeLease {
     private boolean acquired,backup,closed;private float scale=1;
     AlarmVolumeLease(Port port,Journal journal,String occurrence,String owner){this.port=port;this.journal=journal;this.occurrence=occurrence;this.owner=owner;}
     synchronized float acquire(AlarmWakePolicy policy,boolean escalate){
-        if(closed)return 0;if(acquired&&(!escalate||backup))return scale;
+        if(closed)return 0;if(acquired&&escalate==backup)return scale;boolean leavingBackup=acquired&&backup&&!escalate;
         float conservative=policy.targetPercent/100f;
         // A quiet developer test never raises the global stream. Its permanent
         // digital cap remains safe even if volume keys are pressed during it.
@@ -21,7 +21,7 @@ final class AlarmVolumeLease {
         State saved=journal.load();int current=port.read(),original=current;
         if(saved!=null&&saved.occurrence.equals(occurrence)){
             if(saved.last==current&&!saved.overridden)original=saved.original;
-            else if(!escalate){journal.save(new State(occurrence,owner,current,current,true));acquired=true;scale=policy.quiet?conservative:1;return scale;}
+            else if(!escalate){journal.save(new State(occurrence,owner,current,current,true));acquired=true;backup=false;scale=leavingBackup&&current>0?Math.min(1,policy.streamLevel(maximum,false)/(float)current):policy.quiet?conservative:1;return scale;}
         }else if(saved!=null){
             if(!saved.overridden&&current==saved.last){port.write(saved.original);current=port.read();}
             original=current;

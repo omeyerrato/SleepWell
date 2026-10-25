@@ -14,7 +14,7 @@ final class AlarmAudioSink implements AlarmPlayback.Sink {
     private static final Object VOLUME_LOCK=new Object();
     private final Context context;private final Handler main;private final BooleanSupplier alive;
     private final List<Player> players=new ArrayList<>();private final AlarmVolumeLease volume;
-    private volatile boolean closed;
+    private volatile boolean closed;private volatile long volumeRevision;
     AlarmAudioSink(Context context,Handler main,String occurrence,BooleanSupplier alive){
         this.context=context.getApplicationContext();this.main=main;this.alive=alive;AudioManager audio=context.getSystemService(AudioManager.class);
         volume=new AlarmVolumeLease(new AlarmVolumeLease.Port(){public int read(){return audio.getStreamVolume(AudioManager.STREAM_ALARM);}public int maximum(){return audio.getStreamMaxVolume(AudioManager.STREAM_ALARM);}public void write(int value){audio.setStreamVolume(AudioManager.STREAM_ALARM,value,0);}},new AlarmVolumeLease.Journal(){
@@ -27,7 +27,7 @@ final class AlarmAudioSink implements AlarmPlayback.Sink {
     @Override public AlarmPlayback.Layer create(String tone){if(closed)throw new IllegalStateException("Closed alarm audio");Player player=new Player(tone);players.add(player);return player;}
     @Override public void volume(AlarmPlayback.Layer layer,AlarmWakePolicy policy,boolean backup){
         // Queue on the pending player's owner, before its queued start. No stream I/O on main.
-        Player player=(Player)layer;player.worker.post(()->{if(!player.available())return;try{synchronized(VOLUME_LOCK){player.digitalScale=volume.acquire(policy,backup);}}catch(RuntimeException error){player.digitalScale=policy.targetPercent/100f;error("Android did not allow the alarm volume change.");}});
+        long revision=++volumeRevision;Player player=(Player)layer;player.worker.post(()->{if(!player.available()||revision!=volumeRevision)return;try{synchronized(VOLUME_LOCK){if(!player.available()||revision!=volumeRevision)return;player.digitalScale=volume.acquire(policy,backup);}}catch(RuntimeException error){player.digitalScale=policy.targetPercent/100f;error("Android did not allow the alarm volume change.");}});
     }
     @Override public void stopped(){
         closed=true;

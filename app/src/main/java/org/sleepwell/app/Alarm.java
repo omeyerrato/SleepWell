@@ -13,6 +13,7 @@ public class Alarm {
     ChallengeRoutine routine;boolean routineInvalid;private Object invalidRoutine;
     NapPlan nap;boolean napInvalid;private Object invalidNap;
     LocalDate date;boolean dateInvalid;private Object invalidDate;
+    AlarmTiming timing=AlarmTiming.DEFAULT;boolean timingInvalid;private Object invalidTiming;
     AlarmInputs inputs=AlarmInputs.DEFAULT;boolean inputsInvalid;private Object invalidInputs;
     AlarmSkip skip;boolean skipInvalid;Object invalidSkip;String scheduleError="";
     ChallengeRoutine challenges(){return routine==null?ChallengeRoutine.legacy(challenge,difficulty):routine;}
@@ -36,6 +37,7 @@ public class Alarm {
             if(routine!=null)j.put("routine",ChallengeRoutineJson.encode(routine));else if(routineInvalid)j.put("routine",invalidRoutine);
             if(nap!=null)j.put("nap",NapPlanJson.encode(nap));else if(napInvalid)j.put("nap",invalidNap);
             if(date!=null)j.put("date",date.toString());else if(dateInvalid)j.put("date",invalidDate);
+            if(timingInvalid)j.put("timing",invalidTiming);else if(!timing.equals(AlarmTiming.DEFAULT))j.put("timing",AlarmTimingJson.encode(timing));
             if(inputsInvalid)j.put("inputs",invalidInputs);else if(!inputs.equals(AlarmInputs.DEFAULT))j.put("inputs",AlarmInputsJson.encode(inputs));
             if(skip!=null)j.put("skip",AlarmSkipJson.encode(skip));else if(skipInvalid)j.put("skip",invalidSkip);
             if(!scheduleError.isEmpty())j.put("scheduleError",scheduleError);
@@ -54,6 +56,7 @@ public class Alarm {
         if(j.has("routine"))try{a.routine=ChallengeRoutineJson.decode(j.getJSONArray("routine"));}catch(JSONException invalid){a.routineInvalid=true;a.invalidRoutine=j.opt("routine");}
         if(j.has("nap"))try{a.nap=NapPlanJson.decode(j.getJSONObject("nap"));}catch(JSONException invalid){a.napInvalid=true;a.invalidNap=j.opt("nap");}
         JSONArray ds=j.optJSONArray("days"); if(ds!=null) for(int i=0;i<ds.length();i++) a.days.add(ds.optInt(i));
+        if(j.has("timing"))try{a.timing=AlarmTimingJson.decode(j.get("timing"));if(a.nap!=null||a.napInvalid||a.backupMinutes<0||a.backupMinutes>15)throw new JSONException("Review this alarm timing");}catch(JSONException invalid){a.timing=AlarmTiming.DEFAULT;a.timingInvalid=true;a.invalidTiming=j.opt("timing");}
         if(j.has("inputs"))try{a.inputs=AlarmInputsJson.decode(j.get("inputs"));}catch(JSONException invalid){a.inputsInvalid=true;a.invalidInputs=j.opt("inputs");}
         if(j.has("date"))try{a.date=AlarmDate.read(j.get("date"));if(!a.days.isEmpty()||a.nap!=null||a.napInvalid)throw new IllegalArgumentException("A dated alarm cannot repeat or be a nap");}catch(JSONException|IllegalArgumentException invalid){a.date=null;a.dateInvalid=true;a.invalidDate=j.opt("date");}
         if(j.has("skip"))try{a.skip=AlarmSkipJson.decode(j.getJSONObject("skip"));if(a.nap!=null||a.napInvalid||a.days.isEmpty()&&a.enabled||!a.skip.matches(a.hour,a.minute,a.days))throw new JSONException("Skip does not match alarm");}catch(JSONException invalid){a.skip=null;a.skipInvalid=true;a.invalidSkip=j.opt("skip");}

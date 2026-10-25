@@ -12,7 +12,8 @@ final class AlarmPlayback {
     private final Set<Layer> allocated=new LinkedHashSet<>();private final String tone;
     private Layer current,pending;private boolean ready,activating,closed,backup,fallback,started;private long loadingAt;private int generation;
     AlarmPlayback(Alarm alarm,Sink sink,LongSupplier elapsed,LongSupplier clock){policy=new AlarmWakePolicy(alarm);tone=alarm.tone;this.sink=sink;this.elapsed=elapsed;this.clock=clock;}
-    void start(){if(started||closed)return;started=true;load(tone,false);}
+    void start(){start(false);}
+    void start(boolean escalation){if(started||closed)return;started=true;backup=escalation&&!policy.quiet;load(backup?"pulse":tone,false);}
     private void load(String source,boolean replacement){
         int request=++generation;ready=false;activating=false;loadingAt=clock.getAsLong();
         try{Layer layer=sink.create(source);allocated.add(layer);pending=layer;layer.prepare(new Ready(){
@@ -40,7 +41,8 @@ final class AlarmPlayback {
         }catch(RuntimeException error){failure(next,previous!=null);}
     }
     private void apply(){try{current.gain((float)policy.gain(elapsed.getAsLong(),backup));}catch(RuntimeException error){failure(current,false);}}
-    void backup(){if(closed||backup||policy.quiet)return;backup=true;if(pending!=null){safeClose(pending);pending=null;}load("pulse",current!=null);}
+    void backup(){backup(true);}
+    void backup(boolean enabled){if(closed||backup==enabled||policy.quiet)return;backup=enabled;if(pending!=null){safeClose(pending);pending=null;}if(!enabled&&current!=null)try{sink.volume(current,policy,false);apply();}catch(RuntimeException error){failure(current,false);return;}load(enabled?"pulse":tone,current!=null);}
     void stop(){if(closed)return;closed=true;generation++;for(Layer layer:allocated)safeClose(layer);current=pending=null;try{sink.stopped();}catch(RuntimeException ignored){}}
     private void safeClose(Layer layer){try{layer.close();}catch(RuntimeException ignored){}}
 }
