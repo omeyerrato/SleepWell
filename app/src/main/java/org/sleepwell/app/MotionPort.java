@@ -18,6 +18,6 @@ final class AndroidMotionPort implements MotionPort,SensorEventListener {
     public boolean begin(Sink sink){close();this.sink=sink;boolean registered=sensor!=null&&manager.registerListener(this,sensor,200000);if(!registered)this.sink=null;return registered;}
     public void close(){if(manager!=null)manager.unregisterListener(this);sink=null;}
     public long now(){return SystemClock.elapsedRealtime();}
-    public void onSensorChanged(SensorEvent event){Sink target=sink;if(target!=null&&event.values.length>=3)target.sample(now(),event.values[0],event.values[1],event.values[2],event.accuracy);}
+    public void onSensorChanged(SensorEvent event){Sink target=sink;if(target!=null&&event.values.length>=3)target.sample(event.timestamp/1000000L,event.values[0],event.values[1],event.values[2],event.accuracy);}
     public void onAccuracyChanged(Sensor sensor,int accuracy){}
 }

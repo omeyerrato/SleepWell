@@ -124,6 +124,7 @@
         <receiver android:name=".PairMotionStopReceiver" android:exported="false" />
         <activity android:name=".PairMotionActivity" android:exported="false" />
         <activity android:name=".PairMotionSavedActivity" android:exported="false" />
+        <activity android:name=".MotionCalibrationActivity" android:exported="false" />
         <activity android:name=".MotionSensorActivity" android:exported="false" />
         <activity android:name=".SmartBedtimeActivity" android:exported="false" />
         <receiver android:name=".GoogleSleepSignalReceiver" android:exported="false" />
