@@ -13,6 +13,7 @@ public class Alarm {
     String toneDisplayName="";
     ChallengeRoutine routine;boolean routineInvalid;private Object invalidRoutine;
     NapPlan nap;boolean napInvalid;private Object invalidNap;
+    String weeklyNapOwner="";boolean weeklyNapOwnerInvalid;private Object invalidWeeklyNapOwner;
     LocalDate date;boolean dateInvalid;private Object invalidDate;
     SortedSet<LocalDate> excludedDates=Collections.unmodifiableSortedSet(new TreeSet<>());boolean excludedDatesInvalid;private Object invalidExcludedDates;
     AlarmSoundMode soundMode=AlarmSoundMode.SINGLE;boolean soundModeInvalid;private Object invalidSoundMode;
@@ -43,6 +44,7 @@ public class Alarm {
             if(tone.startsWith("content:")&&!toneDisplayName.isEmpty())j.put("toneDisplayName",cleanToneName(toneDisplayName));
             if(routine!=null)j.put("routine",ChallengeRoutineJson.encode(routine));else if(routineInvalid)j.put("routine",invalidRoutine);
             if(nap!=null)j.put("nap",NapPlanJson.encode(nap));else if(napInvalid)j.put("nap",invalidNap);
+            if(weeklyNapOwnerInvalid)j.put("weeklyNapOwner",invalidWeeklyNapOwner);else if(!weeklyNapOwner.isEmpty())j.put("weeklyNapOwner",weeklyNapOwner);
             if(date!=null)j.put("date",date.toString());else if(dateInvalid)j.put("date",invalidDate);
             if(excludedDatesInvalid)j.put("excludedDates",invalidExcludedDates);else if(!excludedDates.isEmpty())j.put("excludedDates",AlarmExcludedDates.encode(excludedDates));
             if(soundModeInvalid)j.put("soundMode",invalidSoundMode);else if(!soundMode.equals(AlarmSoundMode.SINGLE))j.put("soundMode",AlarmSoundModeJson.encode(soundMode));
@@ -66,6 +68,7 @@ public class Alarm {
         a.shortenSnoozes=j.optBoolean("shortenSnoozes",false);
         if(j.has("snoozeTotalMinutes"))try{a.snoozeTotalMinutes=SnoozeBudget.read(j.get("snoozeTotalMinutes"));}catch(JSONException|IllegalArgumentException invalid){a.snoozeTotalInvalid=true;a.invalidSnoozeTotal=j.opt("snoozeTotalMinutes");}
         if(j.has("routine"))try{a.routine=ChallengeRoutineJson.decode(j.getJSONArray("routine"));}catch(JSONException invalid){a.routineInvalid=true;a.invalidRoutine=j.opt("routine");}
+        if(j.has("weeklyNapOwner")){Object raw=j.opt("weeklyNapOwner");if(raw instanceof String&&BackupRuntime.nonce((String)raw))a.weeklyNapOwner=(String)raw;else{a.weeklyNapOwnerInvalid=true;a.invalidWeeklyNapOwner=raw;}}
         if(j.has("nap"))try{a.nap=NapPlanJson.decode(j.getJSONObject("nap"));}catch(JSONException invalid){a.napInvalid=true;a.invalidNap=j.opt("nap");}
         JSONArray ds=j.optJSONArray("days"); if(ds!=null) for(int i=0;i<ds.length();i++) a.days.add(ds.optInt(i));
         if(j.has("soundMode"))try{a.soundMode=AlarmSoundModeJson.decode(j.get("soundMode"));}catch(JSONException invalid){a.soundMode=AlarmSoundMode.SINGLE;a.soundModeInvalid=true;a.invalidSoundMode=j.opt("soundMode");}
