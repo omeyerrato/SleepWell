@@ -83,6 +83,7 @@
         <activity android:name=".AlarmEditorActivity" android:exported="false" />
         <activity android:name=".WakeCheckActivity" android:exported="false" />
         <activity android:name=".NapActivity" android:exported="false" />
+        <activity android:name=".PictureMatchActivity" android:exported="false" />
         <activity android:name=".QrCodeActivity" android:exported="false" />
         <activity android:name=".AlarmProtectionActivity" android:exported="false" />
         <activity android:name=".AppearanceActivity" android:exported="false" />
