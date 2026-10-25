@@ -12,7 +12,7 @@ final class CalendarAlarms {
     }
     static CalendarPolicy.Plan plan(Context c,Alarm alarm,long base,long now,ZoneId zone){
         if(alarm.days.isEmpty()||alarm.nap!=null||alarm.napInvalid||alarm.skipInvalid)return CalendarPolicy.ordinary(base,"");
-        try{CalendarPolicy.Rules rules=CalendarSettings.load(c);CalendarPolicy.Plan planned=CalendarPolicy.plan(rules,snapshot,now,base,zone,value->alarm.next(value,zone));if(rules.enabled&&(snapshot==null||!snapshot.fresh(now,zone,rules)))CalendarSync.request(c);return planned;}
+        try{CalendarPolicy.Rules rules=CalendarSettings.load(c);CalendarPolicy.Plan planned=CalendarPolicy.plan(rules,snapshot,now,base,zone,value->alarm.next(value,zone));if(planned.deadline>0&&AlarmExcludedDates.excludes(alarm,planned.deadline,zone))return CalendarPolicy.ordinary(base,"Calendar adjustment would fall on a selected skipped date");if(rules.enabled&&(snapshot==null||!snapshot.fresh(now,zone,rules)))CalendarSync.request(c);return planned;}
         catch(RuntimeException unavailable){return CalendarPolicy.ordinary(base,"Calendar settings need review");}
     }
     static long preview(Context c,Alarm alarm,long ordinary,long now,ZoneId zone){long installed=Prefs.of(c).getLong("deadline_"+alarm.id,0),original=base(c,alarm,installed);if(installed>now&&original>0&&AlarmSkips.eligible(alarm,original,Math.max(now,original),Prefs.of(c).getLong("lastOccurrence_"+alarm.id,0),zone))return installed;return plan(c,alarm,ordinary,now,zone).deadline;}
