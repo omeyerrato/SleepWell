@@ -11,5 +11,5 @@ final class AlarmDefaultsSettings {
     static Read read(SharedPreferences prefs){try{return !prefs.contains(KEY)?new Read(null,""):new Read(AlarmDefaultsJson.decode(prefs.getString(KEY,null)),"");}catch(RuntimeException invalid){return new Read(null,"Saved defaults could not be read. Factory settings are being used.");}}
     static Read load(Context context){try{return factory.open(context.getApplicationContext()).read();}catch(RuntimeException failure){return new Read(null,"Saved defaults could not be read. Factory settings are being used.");}}
     // On uncertain references, retain the document grant rather than revoke a possibly saved template's access.
-    static boolean references(Context context,String uri){try{Read saved=factory.open(context.getApplicationContext()).read();return !saved.error.isEmpty()||saved.defaults!=null&&uri.equals(saved.defaults.tone());}catch(RuntimeException uncertain){return true;}}
+    static boolean references(Context context,String uri){try{Read saved=factory.open(context.getApplicationContext()).read();return !saved.error.isEmpty()||saved.defaults!=null&&saved.defaults.references(uri);}catch(RuntimeException uncertain){return true;}}
 }

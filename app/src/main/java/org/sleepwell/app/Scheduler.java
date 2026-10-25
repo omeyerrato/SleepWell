@@ -44,7 +44,7 @@ public final class Scheduler {
         c.getSystemService(AlarmManager.class).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,next,intent(c,0,BED));Prefs.put(c,"bedReminderAt",next);
     }
     static void test(Context c,Alarm source) {
-        Alarm a=Alarm.read(source.json()); a.id=-1; a.volume=Math.min(25,a.volume); a.rampSeconds=0; a.awakeCheck=0; a.pin=false;a.backupMinutes=0;a.vibrate=false;a.extraLoud=false;a.sunrise=false;a.flashlight=false;a.soundDelaySeconds=0;a.inputs=AlarmInputs.DEFAULT;a.inputsInvalid=false;a.timing=AlarmTiming.DEFAULT;a.timingInvalid=false;
+        Alarm a=Alarm.read(source.json()); a.id=-1; a.volume=Math.min(25,a.volume); a.rampSeconds=0; a.awakeCheck=0; a.pin=false;a.backupMinutes=0;a.vibrate=false;a.extraLoud=false;a.sunrise=false;a.flashlight=false;a.soundDelaySeconds=0;a.inputs=AlarmInputs.DEFAULT;a.inputsInvalid=false;a.soundMode=AlarmSoundMode.SINGLE;a.soundModeInvalid=false;a.timing=AlarmTiming.DEFAULT;a.timingInvalid=false;
         Prefs.put(c,"snoozes_-1",0);Prefs.put(c,"test_alarm",a.json().toString()); at(c,-1,TEST,System.currentTimeMillis()+10000);
     }
     static void fire(Context c,Alarm a,boolean mainAlarm) {
