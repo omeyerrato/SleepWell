@@ -211,3 +211,7 @@ Root commits3913808 (direct custom timers),9b7e260 (battery sampling),98e4f05
 (printable QR) and9c6b1c9 (snooze widget). No new tests/lint/screenshots or physical
 phone/camera/printer/provider actions ran. These source flows are build-only,
 not runtime or visual acceptance, and are absent from the earlier53a0c08 APK.
+
+Published [9c6b1c9 development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-9c6b1c9),
+214821691bytes. GitHub uploaded SHA256 matches the frozen local artifact:
+`628fda78cabef51496f6851b3c8e449852df5087fb546f278462701d3a80423c`.

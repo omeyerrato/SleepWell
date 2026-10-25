@@ -12,25 +12,20 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 25 October
 
-Published application source **90e2583** builds with schema15 / backup format13. This
-production-only window added alarm/snooze/reminder controls, extra-loud processing,
-additional challenges, awake estimates, motion calibration, paired/PIR inputs,
-reviewed-day SRI, nap profiles, explicit summary sharing and whole-library audio
-backups. See the [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
-[remaining checklist](docs/REMAINING-WORK.md) for exact behavior and missing scope.
-[Download the development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-90e2583).
-The candidate has build-only evidence and has not been installed on the personal
-phone. Design, runtime, overnight and actual provider acceptance remain open.
+Application source **9c6b1c9** builds in **1m23s**, with schema15 / metadata
+backup13 and the original installed signing key. It includes expanded alarm,
+snooze, reminder and extra-loud controls; shared contactless noise clips/cues;
+weekly naps, object challenges, offline narration and pre-travel sleep shifts;
+exact-second timers accessible directly from Nap; printable morning QR codes;
+battery-aware movement/light sampling; and snooze-aware home widgets.
 
-Follow-up source **53a0c08** adds weekly recurring nap schedules, locally classified
-object challenges, optional offline English narration and dated pre-travel sleep
-shifts with silent reminders and separately saved wake-alarm drafts. Standard
-timer requests also retain exact1second..24hour durations through review, Start
-and saved/reopened deadlines. Its production APK builds in3m2s with the same
-schema/backup format and installed signing key.
-[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-53a0c08).
-These additions have build-only
-evidence; no phone, camera, speech or overnight acceptance is claimed.
+[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-9c6b1c9).
+Its uploaded checksum matches the local signed artifact. See the
+[delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
+[remaining checklist](docs/REMAINING-WORK.md) for exact behavior and missing scope.
+These additions have **build-only evidence** and have not been installed on the
+personal phone. Runtime, provider, overnight, accuracy and visual acceptance remain
+open; no new test/lint/screenshot/device batches ran during this feature window.
 
 ## Working capabilities
 

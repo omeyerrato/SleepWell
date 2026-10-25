@@ -69,6 +69,9 @@ is now published with all five additions; uploaded size/digest match the local A
 Combined source **9c6b1c9** builds **PASS1m23s**, with the original signing key,
 unchanged schema15 and backup13. These additions still require runtime acceptance.
 The published53a0c08 APK does not contain them.
+They are included in the [9c6b1c9 development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-9c6b1c9),
+whose uploaded size/SHA256 match the frozen locally signed artifact. It remains
+uninstalled on the phone.
 
 This window adds actual production paths for:
 
