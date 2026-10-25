@@ -45,7 +45,7 @@
     <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
     <uses-feature android:name="android.hardware.nfc" android:required="false" />
     <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
-    <queries><package android:name="com.google.android.apps.healthdata" /><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent><intent><action android:name="android.speech.action.RECOGNIZE_SPEECH" /></intent></queries>
+    <queries><package android:name="com.google.android.apps.healthdata" /><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent><intent><action android:name="android.speech.action.RECOGNIZE_SPEECH" /></intent><intent><action android:name="android.intent.action.TTS_SERVICE" /></intent></queries>
     <application android:name=".SleepWellApplication" android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:label="SleepWell" android:theme="@style/AppTheme" android:icon="@drawable/ic_moon" android:supportsRtl="true">
         <!-- Foreground explicit contactless calibration only; never externally launchable. -->
         <activity android:name=".AwakeSettingsActivity" android:exported="false" />
@@ -137,6 +137,9 @@
         <activity android:name=".RhythmGroupsActivity" android:exported="false" />
         <activity android:name=".EchoSettingsActivity" android:exported="false" />
         <activity android:name=".EchoPeriodsActivity" android:exported="false" />
+        <activity android:name=".TripSleepActivity" android:exported="false" />
+        <receiver android:name=".TripSleepReceiver" android:exported="false" />
+        <receiver android:name=".TripSleepBootReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /><action android:name="android.intent.action.TIME_SET" /><action android:name="android.intent.action.TIMEZONE_CHANGED" /></intent-filter></receiver>
         <activity android:name=".TravelActivity" android:exported="false" />
         <activity android:name=".TravelCueReviewActivity" android:exported="false" />
         <activity android:name=".HabitualTimingActivity" android:exported="false" />
