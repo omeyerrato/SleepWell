@@ -74,6 +74,7 @@
         <activity android:name=".TrackingDelayActivity" android:exported="false" />
         <activity android:name=".TrackingDndActivity" android:exported="true"><intent-filter><action android:name="android.app.action.AUTOMATIC_ZEN_RULE" /><category android:name="android.intent.category.DEFAULT" /></intent-filter></activity>
         <receiver android:name=".TrackingDndReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /><action android:name="android.app.action.AUTOMATIC_ZEN_RULE_STATUS_CHANGED" /></intent-filter></receiver>
+        <activity android:name=".DiaryImportActivity" android:exported="false" />
         <activity android:name=".DiaryActivity" android:exported="false" />
         <activity android:name=".TypedWakePreviewActivity" android:exported="false" />
         <activity android:name=".TagManagementActivity" android:exported="false" />
