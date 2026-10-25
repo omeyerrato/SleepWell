@@ -26,6 +26,8 @@ public class AlarmActivity extends Activity implements SensorEventListener {
         if(!Prefs.flag(this,"ringing")) { finish();return; }
         try { alarm=Alarm.read(new JSONObject(Prefs.text(this,"active_alarm","{}"))); } catch(JSONException e) { finish();return; }
         routine=alarm.challenges();occurrence=Prefs.text(this,"alarmRun","");
+        if(alarm.id>0&&!alarm.inputsInvalid&&alarm.inputs.lockOrientation)try{setRequestedOrientation(android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LOCKED);}catch(RuntimeException unavailable){Prefs.put(this,"lastError","Alarm orientation could not be locked. The challenge remains active.");}
+
         if(state!=null){typedState=state.getBundle("typedWake");countState=state.getBundle("counting");typeCodeState=state.getBundle("typeCode");}
         if(state!=null) { completed=state.getInt("completed");shakes=state.getInt("shakes"); }
         completed=Math.max(0,Prefs.number(this,"challengeCompleted",completed));
