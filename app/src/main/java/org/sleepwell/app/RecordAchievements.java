@@ -1,0 +1,16 @@
+package org.sleepwell.app;
+import java.time.*;import java.util.*;
+/** Current saved evidence only. No stored awards, sleep/stage scores or inferred missing days. */
+final class RecordAchievements {
+ static final long MINIMUM=3*3600000L;
+ static final class Evidence {final RecordEntry record;final List<RecordIntervals.Span> measured;final boolean known;Evidence(RecordEntry record,List<RecordIntervals.Span> measured,boolean known){this.record=record;this.measured=List.copyOf(measured);this.known=known;}}
+ static final class Day {final LocalDate date;final long millis,record;Day(LocalDate date,long millis,long record){this.date=date;this.millis=millis;this.record=record;}}
+ final List<Day> days;final int count,excluded;final long millis,latest;
+ RecordAchievements(List<Evidence> source,long now){List<Evidence> sorted=new ArrayList<>(source);sorted.sort(Comparator.comparingLong((Evidence e)->e.record.rawStart).thenComparingLong(e->e.record.id));List<RecordIntervals.Span> claimed=new ArrayList<>();Map<LocalDate,List<RecordIntervals.Span>> coverage=new TreeMap<>();Map<LocalDate,Long> records=new HashMap<>();int skipped=0;
+  for(Evidence e:sorted){RecordEntry r=e.record;if(!eligible(e,now)){skipped++;continue;}List<RecordIntervals.Span> measured=new ArrayList<>();for(RecordIntervals.Span span:e.measured)measured.addAll(RecordIntervals.intersect(r.coverage(),span.start,span.end));List<RecordIntervals.Span> unique=RecordIntervals.subtract(measured,claimed);if(unique.isEmpty()){skipped++;continue;}claimed.addAll(unique);claimed=RecordIntervals.union(claimed);LocalDate day=SleepDay.label(r.edit.end,ZoneId.of(r.zone),720);coverage.computeIfAbsent(day,k->new ArrayList<>()).addAll(unique);records.put(day,r.id);}
+  List<Day> qualified=new ArrayList<>();long total=0,last=0;for(Map.Entry<LocalDate,List<RecordIntervals.Span>> item:coverage.entrySet()){long duration=RecordIntervals.length(item.getValue());if(duration<MINIMUM)continue;qualified.add(new Day(item.getKey(),duration,records.get(item.getKey())));total=Math.addExact(total,duration);last=records.get(item.getKey());}days=List.copyOf(qualified);count=days.size();excluded=skipped;millis=total;latest=last;
+ }
+ private static boolean eligible(Evidence e,long now){RecordEntry r=e.record;if(!e.known||!r.source.equals("tracked")||!Set.of("local","imported").contains(r.origin)||r.interrupted!=0||r.clockChanged!=0||r.rawStart<=0||r.rawEnd<=r.rawStart||r.rawEnd>now||r.rawEnd-r.rawStart>36*3600000L||r.active==null||r.active<=0||r.active>r.rawEnd-r.rawStart||r.edit.start<r.rawStart||r.edit.end>r.rawEnd||r.edit.end<=r.edit.start||!r.healthConnect.isEmpty()||r.edit.tags.stream().anyMatch(t->t.equalsIgnoreCase("nap")))return false;try{if(r.zone.isEmpty())return false;ZoneId.of(r.zone);}catch(DateTimeException invalid){return false;}return r.sensor.equals("accelerometer")||r.sensor.equals("sonar_fmcw_v1");}
+ static boolean epoch(RecordEntry r,long start,long end,Double value,int samples,String quality){if(start<r.rawStart||end>r.rawEnd||end<=start||samples<=0||value==null||!Double.isFinite(value)||value<0)return false;if(r.sonar())return end-start<=5000&&value<=4&&"VALID".equals(quality);return r.sensor.equals("accelerometer")&&end-start<=120000&&quality==null;}
+ int progress(int target){return Math.min(count,target);}boolean reached(int target){return count>=target;}
+}

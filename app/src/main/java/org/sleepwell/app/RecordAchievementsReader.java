@@ -1,0 +1,11 @@
+package org.sleepwell.app;
+import android.database.Cursor;import java.util.*;
+/** Streaming epoch read; adjacent evidence compacts before the derived model runs off the UI thread. */
+final class RecordAchievementsReader {
+ static RecordAchievements read(Store store,long now){android.database.sqlite.SQLiteDatabase db=store.getReadableDatabase();db.beginTransactionNonExclusive();try{RecordAchievements result=snapshot(store,now);db.setTransactionSuccessful();return result;}finally{db.endTransaction();}}
+ private static RecordAchievements snapshot(Store store,long now){long records=store.rows("SELECT COUNT(*) AS n FROM sessions").get(0).optLong("n"),epochs=store.rows("SELECT COUNT(*) AS n FROM epochs").get(0).optLong("n");if(records>5000||epochs>2000000)throw new IllegalStateException("This history is too large for this achievements view. Your records are kept.");List<RecordEntry> entries=Records.all(store);Map<Long,RecordEntry> byId=new HashMap<>();Map<Long,List<RecordIntervals.Span>> spans=new HashMap<>();Map<Long,Boolean> known=new HashMap<>();for(RecordEntry r:entries){byId.put(r.id,r);try{SensorProvenance.validate(r.sensor,r.sensorConfig);known.put(r.id,true);}catch(IllegalArgumentException invalid){known.put(r.id,false);}}
+  try(Cursor c=store.getReadableDatabase().rawQuery("SELECT session,start,time,movement,samples,signal_quality FROM epochs ORDER BY session,start,time",null)){while(c.moveToNext()){RecordEntry r=byId.get(c.getLong(0));if(r==null||!known.get(r.id)||c.isNull(1))continue;long start=c.getLong(1),end=c.getLong(2);Double value=c.isNull(3)?null:c.getDouble(3);int samples=c.isNull(4)?0:c.getInt(4);String quality=c.isNull(5)?null:c.getString(5);if(!RecordAchievements.epoch(r,start,end,value,samples,quality))continue;List<RecordIntervals.Span> rows=spans.computeIfAbsent(r.id,k->new ArrayList<>());if(!rows.isEmpty()&&start<=rows.get(rows.size()-1).end){RecordIntervals.Span last=rows.remove(rows.size()-1);rows.add(new RecordIntervals.Span(last.start,Math.max(last.end,end)));}else rows.add(new RecordIntervals.Span(start,end));}}
+  List<RecordAchievements.Evidence> evidence=new ArrayList<>();for(RecordEntry r:entries)evidence.add(new RecordAchievements.Evidence(r,spans.getOrDefault(r.id,List.of()),known.get(r.id)));return new RecordAchievements(evidence,now);
+ }
+ private RecordAchievementsReader(){}
+}
