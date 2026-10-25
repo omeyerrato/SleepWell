@@ -1,0 +1,49 @@
+{
+  "scope": "Two whole uploader-described CC0 solo piano sources selected before inference; no further source hunting after results",
+  "policy": {
+    "family": [
+      148,
+      149
+    ],
+    "compatible_ancestors": [
+      132,
+      133,
+      147
+    ],
+    "threshold": 0.65,
+    "unrelated_margin": 0.15,
+    "consecutive_full_windows": 2,
+    "samples_per_window": 15600,
+    "rate": 16000
+  },
+  "frozen_negatives": [
+    "speech-countdown",
+    "speech-balloon",
+    "snoring-sorts",
+    "snoring-pencil",
+    "babycry-bonehead",
+    "babycry-ciccarelli",
+    "crying-alucard"
+  ],
+  "existing_music_observation": "music-archtects retained as mixed music context, not independent solo-instrument ground truth",
+  "fixtures": [
+    {
+      "name": "piano-chromatic",
+      "author": "Tesabob2001",
+      "page": "https://freesound.org/people/Tesabob2001/sounds/203494/",
+      "license": "CC0-1.0",
+      "source_html_sha256": "742711903e97786840596e721302b4a0e9f53b84921b62a66b7faf9cca91068e",
+      "preview": "https://cdn.freesound.org/previews/203/203494_1622584-hq.mp3",
+      "expected_piano": true
+    },
+    {
+      "name": "piano-grand",
+      "author": "fnakez",
+      "page": "https://freesound.org/people/fnakez/sounds/788058/",
+      "license": "CC0-1.0",
+      "source_html_sha256": "d0b6d85e65a5dec58b228d6d1dc439111cc6f4ff12142986e5b495230341830c",
+      "preview": "https://cdn.freesound.org/previews/788/788058_14599654-hq.mp3",
+      "expected_piano": true
+    }
+  ]
+}
