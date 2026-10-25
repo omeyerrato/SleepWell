@@ -1,5 +1,18 @@
 # Privacy
 
+The optional Spoken phrase challenge uses only Android's on-device speech
+recognizer, started by an explicit Listen action. It requires an installed
+offline English recognizer/language and does not request model downloads. Audio
+and recognized text are not saved by SleepWell. Recognition providers and their
+cleanup behavior remain device prerequisites; recording-configuration diagnostics
+are not a physical microphone-release attestation.
+
+Optional manual sensor FIFO batching saves actual accelerometer capture-time
+movement buckets and sampling/calibration provenance. Gaps are left unknown;
+it does not establish sleep stages or guaranteed battery savings. One-occurrence
+alarm overrides and orientation preferences stay in local alarm data and portable
+metadata backups; restored alarms remain disabled pending review.
+
 SleepWell stores data on your phone by default. It has no SleepWell account system,
 advertising or SleepWell-operated telemetry endpoint. Optional integrations, radio,
 Google SDKs and document/speech providers have their own privacy behavior, described

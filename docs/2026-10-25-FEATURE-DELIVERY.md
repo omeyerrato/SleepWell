@@ -95,8 +95,9 @@ It is a delivery inventory, not full functional or design acceptance.
 - [ ] Actual contactless capture/playback and snoring-cue effectiveness; shared-stream
   WAV clips and separately consented Sound/Vibration/Both paths now have code.
   Their runtime/hardware acceptance remains outstanding.
-- [ ] Speech transcription and reliable instrument/laughter recognition. Local object
-  classification was added in the later follow-up below; its acceptance remains open.
+- [ ] Reliable instrument/laughter recognition. A later on-device spoken-phrase
+  challenge matches a displayed phrase; general saved transcription is not supplied.
+  Local object classification also has code; its acceptance remains open.
 - [ ] Direct vendor-account cloud clients; SAF providers handle their own remote upload.
 - [ ] Proven jet-lag prevention or clinical chronotype/regularity classification.
   Existing experimental cues and descriptive calculations are not equivalents.
@@ -258,3 +259,44 @@ Uploaded SHA256 matches the frozen local signed artifact:
 `f3516def81934f9a4ef5edb5b425b27f7140f70bf43f9d426a70f74106ce3836`.
 [Compact checkmarked checklist](FEATURE-CHECKLIST.md) separates implemented paths
 from missing scope and runtime/design acceptance. No personal-phone installation.
+
+
+## Next occurrence, offline phrase and FIFO batching —8399109
+
+Combined production **assembleDebug PASS2m33s**. Schema15 / metadata backup13
+unchanged. Original installed signer retained. Build-only evidence; no new tests,
+lint, screenshots, provider/sensor calls or personal-phone actions.
+
+- Reviewed **Next alarm only** replaces one occurrence of an enabled saved recurring
+  alarm. Review/Use changes the draft and Save applies it. Frozen source/config
+  identity fences stale changes; the target must be future, unambiguous and before
+  the following ordinary occurrence. Source suppression, consumption, Skip/Undo,
+  work-calendar bypass for the explicit target and ordinary recurrence restoration
+  share the same override. Missed targets are not backfilled. Current-zone changes
+  may require review. Imports retain disabled review-only metadata; Enable clears it.
+- Separate **Spoken phrase** challenge has1–3 actual units and stable original
+  English prompts. Only explicit Listen can invoke Android12+ on-device recognition;
+  Android13+ checks installed en-US support before acquiring microphone/quiet
+  ownership. No default/network recognizer or model download. Exact normalized top
+  final text and a fresh one-use task proof are required. Cancel/destroy precedes
+  release; failed/unclear cleanup retains ownership with Retry. Recording configs
+  are diagnostic, not proof of physical release. No audio/transcript is retained;
+  speaker identity, liveness and bedroom accuracy are not established.
+- Optional **manual sensor FIFO batching** requires a continuous wake-up accelerometer
+  with at least150 reserved/max FIFO events. Requests5Hz/15s delivery, removes the
+  normal full-night CPU wake lease and records actual capture-time buckets/counts.
+  Gaps stay blank. Pause/end freeze the cut, then asynchronously flush before storage
+  finalization under a bounded8s drain lease. Incomplete drain marks interruption;
+  unconfirmed unregister retains blocked ownership and Retry. Manual immediate
+  movement only; microphone/light/sonar/automatic/delay/flip/adaptive/sleep-sound
+  combinations are rejected. Hardware, Doze, cleanup, accuracy and energy savings
+  remain unverified. The fixed alarm deadline is unchanged.
+- Optional **Lock alarm orientation** is default-off, portable and copied by behavior
+  defaults. An actual alarm requests its current orientation; global autorotate is
+  unchanged and external challenge screens retain their own lifecycle. OS/window
+  restrictions and device behavior are unverified.
+
+Frozen APK: **214934427 bytes**, SHA256
+`f2a8c27273ff69ea161764acb04080ac8b2d2957af4a534fb407cd27fe170102`.
+[Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-8399109).
+The phone remains on571018b/schema7; this candidate is uninstalled.

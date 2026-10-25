@@ -2,8 +2,8 @@
 
 Not fully done. Checked items have actual production implementation and build
 success; they are not claims of current phone/overnight validation. Unchecked
-acceptance items below remain required. Latest application source0e352bc builds
-in2m31s; its published APK retains the installed signer and matching SHA256.
+acceptance items below remain required. Latest application source8399109 builds
+in2m33s; its published APK retains the installed signer and matching SHA256.
 
 ## Implemented feature paths
 
@@ -22,12 +22,16 @@ in2m31s; its published APK retains the installed signer and matching SHA256.
 - [x] Per-alarm detail settings and custom time/duration selectors.
 - [x] Weekday, odd/even ISO-week and anchored day-interval repeats, skips,
   excluded dates and sunrise schedules.
+- [x] Reviewed one-occurrence rescheduling, Skip/Undo and ordinary recurrence restoration.
+- [x] Optional per-alarm orientation lock with saved input settings.
 - [x] Configurable challenge routines, previews/fallbacks, QR/barcode/NFC,
   text/memory/Math/walking and additional motion/camera/object tasks.
+- [x] Separate explicitly started on-device spoken-phrase challenge and Math fallback.
 - [x] Generated morning QR codes, PNG/PDF export and Android printing.
 - [x] Naps, Power nap, weekly nap profiles and exact-second timers.
 - [x] Bedtime reminders, app guard and temporary pause.
 - [x] Battery-aware movement/light sampling and separate low-battery reserve stop.
+- [x] Optional manual wake-up sensor FIFO batching on supported hardware.
 - [x] Snooze-aware home widgets and screen-only shortcuts.
 - [x] Local ambient mixer, imported audio, timed fade, optional narration/binaural tools.
 - [x] Metadata/audio backup and restore, including optional user-selected folder versions.
@@ -52,7 +56,8 @@ in2m31s; its published APK retains the installed signer and matching SHA256.
   ramp, sunrise, flashlight, snooze and challenge behavior on the actual phone.
 - [ ] Overnight automatic tracking, noise accuracy, battery and anti-snoring behavior.
 - [ ] New repeat/DST/calendar behavior, false-start data cleanup, printing, widget
-  hosting and real provider exchange.
+  hosting, one-occurrence overrides, FIFO/Doze capture and real provider exchange.
+- [ ] On-device phrase recognition, microphone cleanup and orientation behavior.
 - [ ] Full36-screen reference design fidelity, especially Report/charts and menus.
 - [ ] Remaining interaction bugs and security review, deferred by user instruction.
 - [ ] Back up/install the latest APK on the phone and verify preserved data.

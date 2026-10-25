@@ -12,7 +12,7 @@ Use essential production builds for integration. Do not act on the personal phon
 (including installation, ADB queries, capture, microphone, alarm or other outputs).
 The quiet-device procedures below are historical, not current authorization.
 
-Current application candidate0e352bc is published, signed with the installed debug
+Current application candidate8399109 is published, signed with the installed debug
 key, and has build-only evidence; the personal phone remains on571018b/schema7.
 FEATURE-MATRIX.md and REMAINING-WORK.md carry current implementation/acceptance
 bounds. The numbered sequence below describes the original full plan and does

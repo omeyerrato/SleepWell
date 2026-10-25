@@ -14,6 +14,22 @@ and functional checks continue; unchecked visual items below remain future work.
 
 ## Six-hour production window — 25 October
 
+Latest follow-up source **8399109** builds **PASS2m33s**, with schema15 / backup13
+and the original installed signer. Four additional production paths exist:
+
+- [x] Reviewed one-occurrence rescheduling on saved recurring alarms, with source
+  suppression, Skip/Undo, ordinary recurrence restoration and disabled backup review.
+- [x] Separate on-device spoken-phrase task with1–3 actual rounds, explicit Listen,
+  installed offline English prerequisites, owned cleanup and Math fallback.
+- [x] Optional immediate manual FIFO movement batching on supported wake-up
+  accelerometers, using capture timestamps and asynchronous flush/end cleanup.
+- [x] Default-off per-alarm orientation lock in portable input settings.
+
+These are build-only implementation checkmarks. Alarm/restore/DST, recognizer,
+microphone cleanup, FIFO/Doze/energy and orientation behavior remain unverified.
+Local sleep-audio playlists are the next implementation task. No new tests,
+lint, screenshots or personal-phone actions were run.
+
 Latest user deadline: **5:23 PM Riyadh (14:23 UTC)**. New unit tests, native test
 batches, screenshot reviews, evidence archiving and broad audits are stopped.
 The next APK requires a production build; build failures are fixed as integration.

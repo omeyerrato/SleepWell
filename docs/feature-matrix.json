@@ -4225,6 +4225,80 @@
       "notes": "Strict optional repeatRule v1 adds odd/even ISO-week parity on selected weekdays or every1..365 calendar days forward from a chosen anchor. Existing omitted weekly/one-shot JSON and schedule keys remain unchanged. Interval alarms retain an all-weekday recurrence sentinel, avoiding accidental one-shot consumption. Clock and sunrise next/occurs, polar fallback, skip-date eligibility, excluded dates and calendar fingerprints use the rule; invalid metadata blocks scheduling/import/projection. New private restored detail requires Use then Save alarm and fences stale draft results. One-time Run on and elapsed nap timers are separate incompatible modes; behavior defaults do not copy recurrence identity. Main alarm labels show the rule. Actual scheduling/consumption/restore and UI behavior remain unverified.",
       "id": "F146",
       "tests": []
+    },
+    {
+      "feature": "One-occurrence alarm rescheduling",
+      "screens": "04,05 + Next alarm only",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "NextAlarmOverride.java",
+        "NextAlarmOverrides.java",
+        "NextAlarmOverrideActivity.java",
+        "Alarm.java",
+        "AlarmSkips.java",
+        "CalendarAlarms.java",
+        "Scheduler.java",
+        "AlarmEditorActivity.java",
+        "Backup.java",
+        "MainActivity.java"
+      ],
+      "validation": "Combined production assembleDebug8399109 PASS2m33s; build-only. No new tests/lint/screenshots, recognizer/provider, sensor, alarm or personal-phone actions.",
+      "status": "partial",
+      "notes": "Enabled saved recurring alarms can replace one source occurrence with a reviewed explicit local date/time, then resume ordinary recurrence. Review/Use changes only the draft; Save applies it. Frozen source marker, base fingerprint and nonce guard stale edits/delivery; target must be future, unambiguous and before the following ordinary occurrence. Source is suppressed, consumed metadata is cleared, and a passed target is not backfilled. Explicit target bypasses work-calendar adjustment while retaining smart-window settings. Skip/Undo maps source to target; Undo restores ordinary future schedule. Imports retain disabled review-only metadata; Enable clears it. Current-zone reinterpretation can require review after travel/DST. One-time dates and nap timers keep their own flows. Actual scheduling/consumption/restore behavior remains unverified.",
+      "id": "F147",
+      "tests": []
+    },
+    {
+      "feature": "Manual wake-up sensor FIFO batching",
+      "screens": "16,18 + tracking setup/status",
+      "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
+      "implementation": [
+        "BatchedMotion.java",
+        "TrackingService.java",
+        "TrackingActivity.java",
+        "MotionProfile.java"
+      ],
+      "validation": "Combined production assembleDebug8399109 PASS2m33s; build-only. No new tests/lint/screenshots, recognizer/provider, sensor, alarm or personal-phone actions.",
+      "status": "partial",
+      "notes": "Default-off immediate manual movement-only mode requires a continuous wake-up accelerometer with at least150 reserved/max FIFO events. Requests5Hz capture/15s delivery, releases the normal full-night CPU wake lease, and saves actual capture-time minute buckets, RMS/sample counts and policy/calibration provenance. Gaps remain blank. Pause/end freeze capture cut and asynchronously flush before unregister/storage end under a bounded8s drain wake lease; incomplete drain marks interruption, unconfirmed unregister retains blocked ownership and Retry cleanup. No microphone/light/sonar/automatic/delay/flip/adaptive-sampling/sleep-sound combination; paired/PIR/dream cues remain unavailable in this mode. Fixed alarm deadline unchanged; only fresh sufficiently complete measured minutes can support early waking. Hardware support, Doze delivery, cleanup, accuracy and energy savings remain unverified; requested rates are not guarantees.",
+      "id": "F148",
+      "tests": []
+    },
+    {
+      "feature": "On-device spoken-phrase challenge",
+      "screens": "03,10 + phrase permission/cleanup/fallback",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [
+        "PhraseRule.java",
+        "PhraseProof.java",
+        "PhraseRecognition.java",
+        "PhraseChallengeActivity.java",
+        "ChallengeRoutine.java",
+        "ChallengeRoutineJson.java",
+        "AlarmActivity.java",
+        "AlarmEditorActivity.java"
+      ],
+      "validation": "Combined production assembleDebug8399109 PASS2m33s; build-only. No new tests/lint/screenshots, recognizer/provider, sensor, alarm or personal-phone actions.",
+      "status": "partial",
+      "notes": "Separate saved Spoken phrase task has1–3 actual units, stable original English phrases, explicit Listen and preview/Math fallback. Android12+ on-device recognizer factory only; Android13+ requires installed en-US support preflight before quiet/microphone ownership. Android12 service availability does not establish installed language and language errors remain explicit. No default/network recognizer or model download. Top final normalized text only,15s attempt and run/unit/request/fresh-time one-use proof. Permission, foreground/current task, call/tracking/recording/playback guards and existing owned alarm quiet seam apply. Cancel/destroy precedes lease/sound release; destruction failure or unclear recording diagnostics retain ownership with visible cleanup Retry and guarded fallback. Recording configurations are diagnostic, not physical release proof. Audio/transcript not persisted; no identity/liveness or bedroom accuracy claim. Actual provider/microphone behavior remains unverified.",
+      "id": "F149",
+      "tests": []
+    },
+    {
+      "feature": "Per-alarm orientation lock",
+      "screens": "05,09 + snooze/input detail",
+      "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
+      "implementation": [
+        "AlarmInputs.java",
+        "AlarmInputsJson.java",
+        "AlarmEditorActivity.java",
+        "AlarmActivity.java"
+      ],
+      "validation": "Combined production assembleDebug8399109 PASS2m33s; build-only. No new tests/lint/screenshots, recognizer/provider, sensor, alarm or personal-phone actions.",
+      "status": "partial",
+      "notes": "Optional default-off Lock alarm orientation persists in the existing strict portable input settings and behavior defaults. An actual positive-ID alarm requests SCREEN_ORIENTATION_LOCKED after loading its saved settings; legacy/default JSON and quiet developer preview retain their behavior. No global autorotate setting is changed. External challenge Activities keep their own orientation lifecycle. Platform/multiwindow restrictions and real device behavior remain unverified; this is a request, not a system-wide rotation guarantee.",
+      "id": "F150",
+      "tests": []
     }
   ]
 }
