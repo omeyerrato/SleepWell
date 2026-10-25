@@ -7,7 +7,7 @@ import java.util.*;
 
 final class Backup {
     static void validate(JSONObject root) throws JSONException {
-        int format=root.getInt("format");if(format<1||format>7)throw new JSONException("Unsupported backup format");
+        int format=root.getInt("format");if(format<1||format>8)throw new JSONException("Unsupported backup format");
         JSONArray alarms=root.getJSONArray("alarms"),sessions=root.getJSONArray("sessions"),epochs=root.getJSONArray("epochs");
         Set<Long> ids=new HashSet<>(),alarmIds=new HashSet<>();Map<Long,JSONObject> byId=new HashMap<>();
         for(int i=0;i<alarms.length();i++){
@@ -38,6 +38,7 @@ final class Backup {
         if(format>=5)SensorBackup.validate(root,byId);
         if(format>=6)SoundAnalysisProvenance.validateExport(root);
         if(format>=7)HealthSleepCodec.validate(root);
+        if(format>=8)AwakeBackup.validate(root);
     }
     static void restore(Context c,Store store,JSONObject root) throws JSONException {
         if(TrackingService.running||Prefs.flag(c,"ringing"))throw new JSONException("End tracking and alarms before restoring.");
@@ -55,8 +56,9 @@ final class Backup {
         for(int i=0;i<sessions.length();i++){JSONObject s=sessions.getJSONObject(i);endpoints.put(s.getLong("id"),s.isNull("end")?s.getLong("start"):s.getLong("end"));if(s.isNull("end"))unfinished.add(s.getLong("id"));}
         for(int i=0;i<epochs.length();i++){JSONObject e=epochs.getJSONObject(i);long id=e.getLong("session");if(unfinished.contains(id))endpoints.put(id,Math.max(endpoints.get(id),e.getLong("time")));}
         if(pauses!=null)for(int i=0;i<pauses.length();i++){JSONObject p=pauses.getJSONObject(i);long id=p.getLong("session");endpoints.put(id,Math.max(endpoints.get(id),p.isNull("end")?p.getLong("start"):p.getLong("end")));}
+        if(format>=8)for(int n=0;n<root.getJSONArray("awake_estimates").length();n++){JSONObject e=root.getJSONArray("awake_estimates").getJSONObject(n);long id=e.getLong("session");if(unfinished.contains(id))endpoints.put(id,Math.max(endpoints.get(id),e.getLong("end")));}
         db.beginTransaction();try {
-            guard.run();HealthSleepTables.restored(db);
+            guard.run();AwakeStore.erase(db);HealthSleepTables.restored(db);
             for(JSONObject clip:store.rows("SELECT * FROM clips")){guard.run();SoundClips.stage(store,clip);}db.delete("sound_events",null,null);db.delete("record_create_requests",null,null);db.delete("alarms",null,null);db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null);db.delete("sessions",null,null);db.delete("clips",null,null);
             JSONArray alarms=root.getJSONArray("alarms");for(int i=0;i<alarms.length();i++){guard.run();Alarm a=Alarm.read(alarms.getJSONObject(i));a.enabled=false;AlarmSkips.clear(a);Naps.restored(a);if(a.tone.startsWith("content:"))a.tone="daybreak";store.save(a);}
             for(int i=0;i<sessions.length();i++){
@@ -67,6 +69,7 @@ final class Backup {
             for(int i=0;i<epochs.length();i++){guard.run();JSONObject e=epochs.getJSONObject(i);if(format>=5){SensorBackup.restoreEpoch(store,e);continue;}store.epoch(e.getLong("session"),e.isNull("start")?null:e.getLong("start"),e.getLong("time"),e.isNull("movement")?null:e.getDouble("movement"),e.isNull("noise")?null:e.getDouble("noise"),e.isNull("light")?null:e.getDouble("light"),e.optInt("samples",0));}
             if(pauses!=null)for(int i=0;i<pauses.length();i++){guard.run();JSONObject p=pauses.getJSONObject(i);ContentValues v=new ContentValues();v.put("id",p.getLong("id"));v.put("session",p.getLong("session"));v.put("start",p.getLong("start"));v.put("end",p.isNull("end")?endpoints.get(p.getLong("session")):p.getLong("end"));db.insertOrThrow("tracking_pauses",null,v);}
             if(format>=3){JSONArray edits=root.getJSONArray("edits");for(int i=0;i<edits.length();i++){guard.run();JSONObject edit=edits.getJSONObject(i);ContentValues v=Records.values(edit.getLong("session"),Records.draft(edit),edit.getLong("updated"));v.put("reverted",edit.optInt("reverted",0));db.insertOrThrow("record_edits",null,v);}}
+            if(format>=8)AwakeBackup.restore(store,root,guard);
             if(format>=4)SoundEventBackup.restore(store,root.getJSONArray("sound_events"),guard);
             guard.run();
             db.setTransactionSuccessful();

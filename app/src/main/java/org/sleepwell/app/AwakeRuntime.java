@@ -1,0 +1,30 @@
+package org.sleepwell.app;
+import android.content.*;import android.os.*;import androidx.core.content.ContextCompat;import java.util.concurrent.*;import java.util.function.*;
+/** One bounded, ordered metadata worker. Never opens a sensor, microphone or foreground service. */
+final class AwakeRuntime {
+ static volatile AwakeRuntime current;
+ final Context app;final TrackingService.StoreFactory factory;final AwakePolicy policy;final String initialError;final Handler main=new Handler(Looper.getMainLooper());
+ final ThreadPoolExecutor worker=new ThreadPoolExecutor(1,1,0,TimeUnit.MILLISECONDS,new ArrayBlockingQueue<>(128),r->new Thread(r,"SleepWell-awake-evidence"));
+ private Store store;private AwakeEngine engine;private long id,wall,elapsed,lastLight=-1;private volatile boolean ending;private boolean finalized;private volatile String failure="";private boolean registered;private String limitation="";
+ AwakeRuntime(Context app,TrackingService.StoreFactory factory){this.app=app.getApplicationContext();this.factory=factory;AwakePolicy chosen;String error="";try{chosen=AwakeSettings.read(app);}catch(RuntimeException invalid){chosen=AwakePolicy.OFF;error="Saved awake settings are unreadable. Review and save them.";}policy=chosen;initialError=error;}
+ void begin(long id,long wall,long elapsed,boolean lightAvailable){if(this.id!=0)throw new IllegalStateException("Awake recording already admitted");this.id=id;this.wall=wall;this.elapsed=elapsed;limitation=policy.enabled&&policy.light&&!lightAvailable?"Room-light evidence unavailable; no additional sensor was enabled.":"";
+  submit(()->{store=factory.open(app);AwakeStore.begin(store,id,policy,initialError);engine=new AwakeEngine(policy,wall,(a,b,reason)->AwakeStore.append(store,id,a,b,reason));});
+  if(policy.enabled&&initialError.isEmpty()&&!ending){current=this;if(policy.interaction){try{IntentFilter filter=new IntentFilter(Intent.ACTION_USER_PRESENT);filter.addAction(Intent.ACTION_SCREEN_OFF);ContextCompat.registerReceiver(app,receiver,filter,ContextCompat.RECEIVER_NOT_EXPORTED);registered=true;}catch(RuntimeException denied){failure="Phone-use signal unavailable.";}}main.postDelayed(tick,5000);}
+ }
+ private final BroadcastReceiver receiver=new BroadcastReceiver(){public void onReceive(Context context,Intent intent){String action=intent==null?null:intent.getAction();if(Intent.ACTION_USER_PRESENT.equals(action)){android.os.PowerManager power=app.getSystemService(android.os.PowerManager.class);android.app.KeyguardManager lock=app.getSystemService(android.app.KeyguardManager.class);if(power!=null&&power.isInteractive()&&lock!=null&&!lock.isKeyguardLocked())interaction();}else if(Intent.ACTION_SCREEN_OFF.equals(action))event((e,t)->e.screenOff(t));}};
+ private final Runnable tick=new Runnable(){public void run(){if(!ending){event((e,t)->e.tick(t));main.postDelayed(this,5000);}}};
+ private long stamp(){return wall+Math.max(0,SystemClock.elapsedRealtime()-elapsed);}
+ private void submit(Runnable task){try{worker.execute(()->{try{task.run();}catch(RuntimeException error){failure="Awake evidence could not be saved. Saved estimates remain reviewable.";android.util.Log.e("SleepWell","Awake evidence",error);}});}catch(RejectedExecutionException overflow){failure="Awake evidence queue was interrupted.";}}
+ private void event(java.util.function.BiConsumer<AwakeEngine,Long> action){if(ending||id==0||!policy.enabled||!initialError.isEmpty())return;long at=stamp();if(worker.getQueue().size()>120){failure="Awake signal queue was full; estimation stopped.";return;}submit(()->{if(engine!=null&&failure.isEmpty())action.accept(engine,at);});}
+ void interaction(){event((e,t)->e.interaction(t));}
+ void light(Double lux,long sensorNanos){long age=SystemClock.elapsedRealtimeNanos()-sensorNanos;if(sensorNanos<=0||age<0||age>2000000000L){event((e,t)->e.light(t,null));return;}long now=SystemClock.elapsedRealtime();if(lastLight>=0&&now-lastLight<1000)return;lastLight=now;event((e,t)->e.light(t,lux));}
+ void pause(){event((e,t)->e.pause(t));}
+ void resume(){event((e,t)->e.resume(t));}
+ static void explicitUse(){AwakeRuntime run=current;if(run!=null)run.interaction();}
+ static void snoozed(long from,long deadline){AwakeRuntime run=current;if(run==null||run.ending||deadline<=from)return;long duration=deadline-from;if(duration>60*60000L)return;run.event((e,t)->e.snooze(t,t+duration));}
+ private void detach(){ending=true;if(current==this)current=null;main.removeCallbacks(tick);if(registered){registered=false;try{app.unregisterReceiver(receiver);}catch(RuntimeException error){failure="Phone-use listener cleanup failed.";}}}
+ void stopInputs(){detach();}
+ private void finishWork(long at,boolean interrupted,Runnable complete){detach();submit(()->{try{try{if(engine!=null&&failure.isEmpty())engine.finish(Math.max(wall,at));}catch(RuntimeException failed){failure="Awake evidence could not be finalized.";}if(store!=null){String error=!initialError.isEmpty()?initialError:!failure.isEmpty()?failure:limitation;String state=!initialError.isEmpty()||!failure.isEmpty()?"error":!policy.enabled?"off":interrupted?"interrupted":"complete";AwakeStore.finish(store,id,state,error);}}finally{try{if(store!=null)store.close();}finally{store=null;worker.shutdown();complete.run();}}});}
+ void finish(long at,boolean interrupted,Runnable complete){if(id==0){detach();worker.shutdown();complete.run();return;}if(finalized){complete.run();return;}finalized=true;finishWork(at,interrupted,()->main.post(complete));}
+ void finishAndWait(long at,boolean interrupted){if(Looper.myLooper()==Looper.getMainLooper())throw new IllegalStateException("Do not wait for awake storage on the UI thread");if(finalized)return;finalized=true;CountDownLatch done=new CountDownLatch(1);finishWork(at,interrupted,done::countDown);try{if(!done.await(10,TimeUnit.SECONDS))throw new IllegalStateException("Awake storage did not finish.");}catch(InterruptedException stopped){Thread.currentThread().interrupt();throw new IllegalStateException("Awake storage interrupted",stopped);}}
+}

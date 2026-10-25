@@ -60,6 +60,7 @@ public class MainActivity extends Activity {
         settingsRow(body,"moon","Dream diary","Your private notes and dreams",()->startActivity(RecordUi.intent(this,DiaryActivity.class)));
         settingsRow(body,"bell","Alarms","Alarm time, sound and behavior",()->{tab=1;render();});
         settingsRow(body,"moon","Sleep tracking","Phone movement and microphone",this::tracking);
+        settingsRow(body,"sun","Awake estimates","Optional phone-use, light and snooze clues",()->startActivity(RecordUi.intent(this,AwakeSettingsActivity.class)));
         settingsRow(body,"wave","Sound analysis","Snoring, speech and sound recordings",()->{tab=9;render();});
         settingsRow(body,"clock","Automatic tracking","Choose when to start tonight",()->startActivity(RecordUi.intent(this,AutomaticTrackingActivity.class)));
         settingsRow(body,"sun","Travel mode","Time zones and daylight reminders",()->startActivity(RecordUi.intent(this,TravelActivity.class)));

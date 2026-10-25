@@ -22,6 +22,7 @@ public final class TrackingActivity extends Activity {
     private Store store;private boolean mic,clips,light,sawLive,startRequested,updatingSwitch,finishingFlow;private String rendered="",setupIssue="";private long lastGraph;
     private TextView flipInfo,elapsed,status,subtitle,movementValue,soundValue,error,micHelp,audioIssue;private Button keepPaused,primary;private LinearLayout graph;private RecordChart chart;private Switch microphone;
     private final Handler poller=new Handler(Looper.getMainLooper());private final Runnable tick=new Runnable(){public void run(){refresh();poller.postDelayed(this,1000);}};
+    @Override public void onUserInteraction(){super.onUserInteraction();if(hasWindowFocus())AwakeRuntime.explicitUse();}
     @Override public void onCreate(Bundle saved){super.onCreate(saved);if(getIntent().getBooleanExtra("visualReview",false))getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);runtime=commands;store=stores.open(this);
         if(runtime.snapshot()==null){store.recoverInterrupted();Prefs.of(this).edit().putBoolean("tracking",false).putBoolean("trackingPaused",false).apply();}
         sonar=saved==null?"sonar".equals(getIntent().getStringExtra("sensor")):saved.getBoolean("sonar");sonarAnalysis=saved!=null&&saved.getBoolean("sonarAnalysis");setupIssue=saved==null?"":saved.getString("setupIssue","");
