@@ -126,7 +126,7 @@ public final class SleepSoundService extends Service {
         main.removeCallbacks(tick);playback.stop();if(wake.isHeld())wake.release();abandonFocus();
         stopForeground(STOP_FOREGROUND_REMOVE);foreground=false;stopSelf();
     }
-    @Override public void onDestroy(){destroyed=true;main.removeCallbacksAndMessages(null);if(current==this)current=null;playback.stop();if(wake.isHeld())wake.release();abandonFocus();unregisterReceiver(noisy);media.release();decoder.quitSafely();super.onDestroy();}
+    @Override public void onDestroy(){destroyed=true;clearStillness();main.removeCallbacksAndMessages(null);if(current==this)current=null;playback.stop();if(wake.isHeld())wake.release();abandonFocus();unregisterReceiver(noisy);media.release();decoder.quitSafely();super.onDestroy();}
 
     /** All provider IO / decoder calls are on one worker. close() invalidates queued starts immediately. */
     private final class PlayerLayer implements SoundPlayback.Layer {
