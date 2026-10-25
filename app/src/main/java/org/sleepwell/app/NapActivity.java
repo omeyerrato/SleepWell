@@ -80,7 +80,7 @@ public final class NapActivity extends Activity {
  private LinearLayout gentleDuration(LinearLayout body,String icon,String title,int selected,java.util.function.IntConsumer use,boolean fromStart){
   String value=selected==0?(fromStart?"From start":"Off"):selected<60?selected+" sec":selected/60+" min";
   return Design.item(body,icon,title,value,()->open(()->{
-   int[] choices=new int[26];choices[0]=0;choices[1]=30;for(int n=2;n<choices.length;n++)choices[n]=(n-1)*60;
+   int[] choices=AlarmWakeTimes.options();
    String[] labels=new String[choices.length];int checked=-1;for(int n=0;n<choices.length;n++){int seconds=choices[n];labels[n]=seconds==0?(fromStart?"From start":"Off"):seconds<60?seconds+" sec":seconds/60+" min";if(seconds==selected)checked=n;}
    return SleepPicker.choices(this,title,labels,checked,index->{if(draft==null||pending()||claimed())return;use.accept(choices[index]);render();});
   }));
