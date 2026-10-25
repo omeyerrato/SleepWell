@@ -149,7 +149,7 @@ public class TrackingService extends Service implements SensorEventListener {
         owner[0]=night;sonarNight=night;wake.acquire(12*3600000L);night.start();handler.postDelayed(limitTick,12*3600000L);
     }
     private void beginRecording(){
-            StoreFactory storage=storeFactory;store=storage.open(this);backupProduction=storage==PRODUCTION_STORE&&Records.factory==Records.PRODUCTION&&"sleepwell.db".equals(store.getDatabaseName());session=store.begin();start=store.rows("SELECT start FROM sessions WHERE id=?",""+session).get(0).optLong("start");windowStart=start;clock=new TrackingClock(SystemClock.elapsedRealtime());
+            StoreFactory storage=storeFactory;store=storage.open(this);backupProduction=storage==PRODUCTION_STORE&&Records.factory==Records.PRODUCTION&&"sleepwell.db".equals(store.getDatabaseName());session=store.begin(SensorProvenance.MOTION,motionProfile.config());start=store.rows("SELECT start FROM sessions WHERE id=?",""+session).get(0).optLong("start");windowStart=start;clock=new TrackingClock(SystemClock.elapsedRealtime());
             Prefs.of(this).edit().putLong("session",session).putBoolean("tracking",true).putBoolean("trackingPaused",false).putInt("epochCount",0).putString("audioError","").putString("trackingError","").apply();
             if(!automaticRun&&recurringToken==null)manualToken=UUID.randomUUID().toString();phase=Phase.ACTIVE;dndActive();beginPir();automationEvents.started(session,start);if(automaticCapture!=null)automaticCapture.recordingBegan();collect();if(awake!=null)awake.begin(session,start,SystemClock.elapsedRealtime(),lightRegistered);handler.postDelayed(minuteTick,60000);handler.postDelayed(limitTick,12*60*60*1000L);
     }

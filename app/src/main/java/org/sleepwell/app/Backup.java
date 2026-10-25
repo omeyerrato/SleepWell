@@ -7,7 +7,7 @@ import java.util.*;
 
 final class Backup {
     static void validate(JSONObject root) throws JSONException {
-        int format=root.getInt("format");if(format<1||format>12)throw new JSONException("Unsupported backup format");
+        int format=root.getInt("format");if(format<1||format>13)throw new JSONException("Unsupported backup format");
         JSONArray alarms=root.getJSONArray("alarms"),sessions=root.getJSONArray("sessions"),epochs=root.getJSONArray("epochs");
         Set<Long> ids=new HashSet<>(),alarmIds=new HashSet<>();Map<Long,JSONObject> byId=new HashMap<>();
         for(int i=0;i<alarms.length();i++){
