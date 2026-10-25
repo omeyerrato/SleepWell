@@ -43,6 +43,8 @@
         <activity android:name=".AutomationActivity" android:exported="false" />
         <service android:name=".AutomationJobService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
         <activity android:name=".HealthSleepSourceActivity" android:exported="false" />
+        <activity android:name=".DiaryActivity" android:exported="false" />
+        <activity android:name=".TypedWakePreviewActivity" android:exported="false" />
         <activity android:name=".TagManagementActivity" android:exported="false" />
         <activity android:name=".HealthConnectActivity" android:exported="false" />
         <activity android:name=".HealthSleepPrivacyActivity" android:exported="true">
