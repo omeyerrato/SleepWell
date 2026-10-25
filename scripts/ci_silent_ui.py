@@ -76,6 +76,7 @@ PHONE_FEATURE_TESTS += ("SoundInclusionStorageTest", "SoundInclusionFlowTest", "
 PHONE_FEATURE_TESTS += ("ArmedWaitNativeTest", "ArmedWaitFlowTest")
 PHONE_FEATURE_TESTS += ("SnoozeUntilFlowTest",)
 PHONE_FEATURE_TESTS += ("RecordAchievementsStorageTest", "RecordAchievementsFlowTest")
+PHONE_FEATURE_TESTS += ("PowerNapNativeTest", "PowerNapFlowTest", "NapFlowTest", "NapIntegrationFlowTest")
 PHONE_FEATURE_FRAMES = ["calendar-rules-" + name + ".png" for name in ("initial", "draft", "saved", "reopened")]
 PHONE_FEATURE_FRAMES += ["alarm-defaults-" + name + ".png" for name in ("initial", "recreated", "saved", "reopened", "reset", "saving", "saving-recreated", "save-error", "retry")]
 PHONE_FEATURE_FRAMES += ["health-connect-" + name + ".png" for name in ("default", "configured", "synced", "source", "conflict", "kept", "unavailable", "permissions")]
@@ -107,11 +108,14 @@ PHONE_FEATURE_FRAMES += ["goal-alarm-" + name + ".png" for name in ("missing", "
 PHONE_FEATURE_FRAMES += ["armed-wait-" + name + ".png" for name in ("settings", "recreated", "reopened")]
 PHONE_FEATURE_FRAMES += ["snooze-until-" + name + ".png" for name in ("initial", "past", "too-late", "confirmed", "cancelled", "recreated", "stale")]
 PHONE_FEATURE_FRAMES += ["record-achievements-" + name + ".png" for name in ("empty", "first", "recreated", "search", "edited", "error")]
+PHONE_FEATURE_FRAMES += ["power-nap-" + name + ".png" for name in ("settings", "recreated", "pending", "reopened")]
+PHONE_FEATURE_FRAMES += ["nap-" + name + ".png" for name in ("default", "preset", "tracking-required", "sound", "pending", "recreated", "reopened", "cancelled", "schedule", "schedule-error", "scheduled", "list", "permission-error", "scheduler-error", "retry")]
+PHONE_FEATURE_FRAMES += ["nap-integration-" + name + ".png" for name in ("future", "clock-shift", "zone", "wind-down", "inactive", "started", "removed", "invalid")]
 # Source4b7d017 already passed the first30 classes/102methods. This shorter scope
 # exercises every later feature plus the two earlier flows with recent failures.
 # It never replaces phone-features or the independent full-app classifier gate.
 FEATURE_INCREMENT_TESTS = ("DatedGoalBankFlowTest", "TypedWakeFlowTest") + PHONE_FEATURE_TESTS[PHONE_FEATURE_TESTS.index("AlarmRequestStorageTest"):]
-FEATURE_INCREMENT_PREFIXES = ("dated-goal-", "typed-wake-", "alarm-request-", "tracking-dnd-", "alarm-mode-", "calendar-event-", "record-insights-", "tracking-delay-", "barcode-code-", "speak-config-", "speak-capture-", "tracking-flip-", "sunrise-time-", "automatic-backup-", "sound-inclusion-", "picture-reference-", "goal-alarm-", "armed-wait-", "snooze-until-", "record-achievements-")
+FEATURE_INCREMENT_PREFIXES = ("dated-goal-", "typed-wake-", "alarm-request-", "tracking-dnd-", "alarm-mode-", "calendar-event-", "record-insights-", "tracking-delay-", "barcode-code-", "speak-config-", "speak-capture-", "tracking-flip-", "sunrise-time-", "automatic-backup-", "sound-inclusion-", "picture-reference-", "goal-alarm-", "armed-wait-", "snooze-until-", "record-achievements-", "power-nap-", "nap-")
 FEATURE_INCREMENT_FRAMES = [name for name in PHONE_FEATURE_FRAMES if name.startswith(FEATURE_INCREMENT_PREFIXES)]
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
@@ -229,6 +233,7 @@ method_counts.update({"SoundInclusionStorageTest": 3, "SoundInclusionFlowTest": 
 method_counts.update({"ArmedWaitNativeTest": 3})
 method_counts.update({"SnoozeUntilFlowTest": 2})
 method_counts.update({"RecordAchievementsStorageTest": 2})
+method_counts.update({"PowerNapNativeTest": 3})
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
