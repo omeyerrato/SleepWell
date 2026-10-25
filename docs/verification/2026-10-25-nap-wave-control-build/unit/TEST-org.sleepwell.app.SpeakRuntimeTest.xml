@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SpeakRuntimeTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:35.450Z" hostname="DESKTOP-1UTDMNE" time="0.029">
+  <properties/>
+  <testcase name="failedNativeCloseBlocksResultAndSoundUntilExplicitCleanupRetry" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.008"/>
+  <testcase name="noAllocationBeforeConfirmedQuietAndCompletionFollowsCaptureClose" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.003"/>
+  <testcase name="unclaimedTicketExpiresAndCannotBeReplayed" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.001"/>
+  <testcase name="unavailableQuietBarrierHasNoModelOrCapture" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.001"/>
+  <testcase name="zeroSamplesNeverBecomeSpeechAndStopAtBudget" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.0"/>
+  <testcase name="resultProofRejectsWrongRequestUnitAndReplacementAndConsumesOnce" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.001"/>
+  <testcase name="cancelledQuietCallbackCannotStartCaptureOrRepeatAdmission" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.0"/>
+  <testcase name="deadlineWithoutQuietSupportsFallbackAndNeverStartsMicrophone" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.0"/>
+  <testcase name="ownerReplacementDuringInferenceCannotCompleteOrResumeUnrelatedSound" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.003"/>
+  <testcase name="releasedServiceOwnerCanBeReplacedAndOldFinishCannotStopIt" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.001"/>
+  <testcase name="modelFailureBeforeCaptureResumesOnlyOwnedSound" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.001"/>
+  <testcase name="immediateQuietAndInlineWorkerStillOwnAndRestoreQuietToken" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.001"/>
+  <testcase name="delayedQuietExecutorRejectionRestoresSoundWithoutCapture" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.0"/>
+  <testcase name="twoProductionSpeechWindowsPassAndOtherSoundResetsWithoutAmplitudeLabels" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.0"/>
+  <testcase name="speakTaskIsOneUnitAndNeverLegacyAutoselection" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.001"/>
+  <testcase name="explicitCancelDuringInferenceStillWaitsForConfirmedCleanup" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.001"/>
+  <testcase name="permissionRevokedDuringInferenceClosesAndCannotAcceptSpeech" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.003"/>
+  <testcase name="sharedMicrophoneTokenNeverReleasesNewOwner" classname="org.sleepwell.app.SpeakRuntimeTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -354,7 +354,7 @@
         "AlarmService.java",
         "AlarmToneScreen.java"
       ],
-      "validation": "Author e95a4c0: AlarmSoundModeTest plus existing AlarmPlaybackTest/AlarmLifetimeTest/AlarmVolumeLeaseTest/AlarmDefaultsTest:57focused pure/debug/native APKs/lint PASS before final bounded failure-circuit delta; final32direct host cases PASS. Superseding d346441 CI40154059415 AlarmSoundModeStorageTest 4/AlarmSoundModeFlowTest 1/all7 originals PASS with fake output/grant ports. Later CI40159540059 fails playlist reopening on asynchronous decoded-waveform page replacement.49a9a80 preserves actual footer/control identity when waveforms arrive; ToneWaveArrivalTest 1 plus original flow enrolled for fresh native execution. Superseding CI40164774515 original mode Storage4/Flow1/all7 and ToneWaveArrivalTest 1 PASS. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: AlarmSoundModeStorageTest 4/AlarmSoundModeFlowTest 1/all7 originals and ToneWaveArrivalTest 1. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance.",
+      "validation": "Author e95a4c0: AlarmSoundModeTest plus existing AlarmPlaybackTest/AlarmLifetimeTest/AlarmVolumeLeaseTest/AlarmDefaultsTest:57focused pure/debug/native APKs/lint PASS before final bounded failure-circuit delta; final32direct host cases PASS. Superseding d346441 CI40154059415 AlarmSoundModeStorageTest 4/AlarmSoundModeFlowTest 1/all7 originals PASS with fake output/grant ports. Later CI40159540059 fails playlist reopening on asynchronous decoded-waveform page replacement.49a9a80 preserves actual footer/control identity when waveforms arrive; ToneWaveArrivalTest 1 plus original flow enrolled for fresh native execution. Superseding CI40164774515 original mode Storage4/Flow1/all7 and ToneWaveArrivalTest 1 PASS. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: AlarmSoundModeStorageTest 4/AlarmSoundModeFlowTest 1/all7 originals and ToneWaveArrivalTest 1. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "partial",
       "notes": "Default Single preserves legacy. Silent suppresses audible playback/fallback/backup and silences the alarm notification while configured vibration/light/tasks continue. Ordered/shuffled2–8-track playlists advance on real decoder completion, checkpoint per-run position before start, retain imported names/grants and bound source failures. Physical output, real providers and restart delivery remain unverified. See alarm-sound-modes.md.",
       "id": "F014",
@@ -723,7 +723,7 @@
         "AlarmEditorActivity.java",
         "AlarmActivity.java"
       ],
-      "validation": "d705352 integrateddf17b50:PictureSignatureTest/PictureHoldTest 10 host actual-pixel cases PASS under fixed declared policy. PictureNativeTest 3/PictureMatchFlowTest 1/five required originals compiled/execution pending combined build/CI. CI40166582977 PictureNativeTest 3 PASS, PictureMatchFlowTest 1 FAIL on offscreen Challenges title after successful cancellation.48b0917 integrated99d678a reveals the owned header before the unchanged observation; fresh native run pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: PictureNativeTest 3/PictureMatchFlowTest 1/all5 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance.",
+      "validation": "d705352 integrateddf17b50:PictureSignatureTest/PictureHoldTest 10 host actual-pixel cases PASS under fixed declared policy. PictureNativeTest 3/PictureMatchFlowTest 1/five required originals compiled/execution pending combined build/CI. CI40166582977 PictureNativeTest 3 PASS, PictureMatchFlowTest 1 FAIL on offscreen Challenges title after successful cancellation.48b0917 integrated99d678a reveals the owned header before the unchanged observation; fresh native run pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: PictureNativeTest 3/PictureMatchFlowTest 1/all5 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "partial",
       "notes": "Explicit local reference enrollment and offline compact similarity signature, no retained image or upload. Matching requires quality gates and three fresh stable frames, current reference/run/unit proof and Math fallback. Permission/error/cancel/recreation and strict portable rules are wired; actual camera/device accuracy unverified. This is picture similarity, not semantic object recognition or liveness. See PICTURE-MATCH-CHALLENGE.md.",
       "id": "F028",
@@ -772,12 +772,41 @@
       "feature": "Other CAPTCHA pack tasks",
       "screens": "04–12,26",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: independent implementations, not vendor add-on reuse.",
+      "implementation": [
+        "CountingPuzzle.java",
+        "FlagPuzzle.java",
+        "TiltMaze.java",
+        "TiltMotion.java",
+        "TiltMazeTask.java",
+        "ChallengePackPreviewActivity.java",
+        "AlarmActivity.java"
+      ],
+      "validation": "Author a0d2bed: ChallengeCountingFlagsTest, TiltMazeTest, TiltMotionTest and existing ChallengeRoutineTest:24pure cases PASS, debug/native APKs and lint PASS. f5e80ab CI40150902142 ChallengePackNativeTest 8 PASS; whole focused run remains FAIL on DND permission callback and goal dialog recreation (targeted fixes pending rerun).",
+      "status": "partial",
+      "notes": "Original Counting and eight-country Flags plus calibrated fresh-sensor collision maze are wired into saved routines and shared silent previews. Persisted Math fallback and lifecycle/run fences included. Actual sensor/alarm behavior remains unverified; jumping missing. See COUNTING-TILT-FLAGS.md.",
       "id": "F031",
-      "tests": []
+      "tests": [
+        {
+          "name": "ChallengeCountingFlagsTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChallengeCountingFlagsTest.java"
+        },
+        {
+          "name": "ChallengePackNativeTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/ChallengePackNativeTest.java"
+        },
+        {
+          "name": "ChallengeRoutineTest",
+          "path": "app/src/test/java/org/sleepwell/app/ChallengeRoutineTest.java"
+        },
+        {
+          "name": "TiltMazeTest",
+          "path": "app/src/test/java/org/sleepwell/app/TiltMazeTest.java"
+        },
+        {
+          "name": "TiltMotionTest",
+          "path": "app/src/test/java/org/sleepwell/app/TiltMotionTest.java"
+        }
+      ]
     },
     {
       "feature": "Prevent leaving the alarm",
@@ -867,9 +896,9 @@
         "AlarmEditorActivity.java",
         "Backup.java"
       ],
-      "validation": "NapEngineTest 16 and NapWindowTest 6 plus existing NightWindowTest 10 pass in the combined453-test build atfeb38ec. Debug/native/release APKs and lint pass (0errors/87warnings). NapFlowTest 3 and NapIntegrationFlowTest 1 require23 originals and private fake-port persistence/cancel/restart/smart/migration checks; compiled, not yet executed. No actual delivery/hardware proof. FullCI40058852109 NapFlowTest 3 PASS27.884s, but NapIntegrationFlowTest 1 fails after4 of8 originals. Strict review of all19 available originals rejects question-mark sound/delete icons, clipped Delete row under error footer and stale card start time after same-occurrence clock refresh. Full visual/integration gate remains failed. Source92c3f19 integrated6f1db41 fixes aliases, error viewport reveal with full geometry assertions and same-window projected start display, with focused32 domain tests/lint pass. Final observer cleanup and integrated app await combined build/native23 originals; no runtime engine semantics changed. Latest244e4bc/fullCI40063157145 NapFlowTest 3 PASS20.594s; integration reaches6/8 originals then rejects its Remove dialog because the helper checks Activity focus. A read-only owned-dialog capture hook corrects this harness scope; unchanged cancellation/delivery assertions stay required. Fresh complete UI/design proof pending. Strict reviewer individually inspected21 latest Nap originals: icon/error-viewport/clock-projection corrections pass narrowly; removed/invalid integration frames remain absent and are not accepted. Fresh d43f480/fullCI40068184362 NapIntegrationFlowTest 1 PASS17.369s/all8 original states individually reviewed and bounded visual pass. Main NapFlowTest 3 has2 failures on immediate post-click new-row/retry reads;3fda351 waits actual private persisted state without retrying actions. Complete source/clock/quiet fake behavior does not prove actual delivery. Fresh dc30736/fullCI40072555253 NapFlow3 PASS20.604s +Integration1 PASS16.83s/all23 originals. Actual alarm delivery remains untested.",
+      "validation": "NapEngineTest 16 and NapWindowTest 6 plus existing NightWindowTest 10 pass in the combined453-test build atfeb38ec. Debug/native/release APKs and lint pass (0errors/87warnings). NapFlowTest 3 and NapIntegrationFlowTest 1 require23 originals and private fake-port persistence/cancel/restart/smart/migration checks; compiled, not yet executed. No actual delivery/hardware proof. FullCI40058852109 NapFlowTest 3 PASS27.884s, but NapIntegrationFlowTest 1 fails after4 of8 originals. Strict review of all19 available originals rejects question-mark sound/delete icons, clipped Delete row under error footer and stale card start time after same-occurrence clock refresh. Full visual/integration gate remains failed. Source92c3f19 integrated6f1db41 fixes aliases, error viewport reveal with full geometry assertions and same-window projected start display, with focused32 domain tests/lint pass. Final observer cleanup and integrated app await combined build/native23 originals; no runtime engine semantics changed. Latest244e4bc/fullCI40063157145 NapFlowTest 3 PASS20.594s; integration reaches6/8 originals then rejects its Remove dialog because the helper checks Activity focus. A read-only owned-dialog capture hook corrects this harness scope; unchanged cancellation/delivery assertions stay required. Fresh complete UI/design proof pending. Strict reviewer individually inspected21 latest Nap originals: icon/error-viewport/clock-projection corrections pass narrowly; removed/invalid integration frames remain absent and are not accepted. Fresh d43f480/fullCI40068184362 NapIntegrationFlowTest 1 PASS17.369s/all8 original states individually reviewed and bounded visual pass. Main NapFlowTest 3 has2 failures on immediate post-click new-row/retry reads;3fda351 waits actual private persisted state without retrying actions. Complete source/clock/quiet fake behavior does not prove actual delivery. Fresh dc30736/fullCI40072555253 NapFlow3 PASS20.604s +Integration1 PASS16.83s/all23 originals. Actual alarm delivery remains untested. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "partial",
-      "notes": "Saved exact relative timer and scheduled start,10/20/30/90 presets, owned cancel/restart/list, real shared sound settings and deferred delete after dismiss or matching wake confirmation. Main/Tonight/Wind-down use projected relative deadlines and a separately labelled nap arc; inactive restored timers require explicit fresh Start. Smart wake uses already-active phone movement, never starts sensors/microphone here and is not stage detection. Strict optional Alarm JSON, immutable nonce job, durable delivery claim and disabled portable restore. Crash after claim, overlapping alarm, force-stop/OEM and permission limits remain. Distinct minimum-rest Power Nap remains missing; see NAPS.md.",
+      "notes": "Saved exact relative timer and scheduled start,10/20/30/90 presets, owned cancel/restart/list, real shared sound settings and deferred delete after dismiss or matching wake confirmation. Main/Tonight/Wind-down use projected relative deadlines and a separately labelled nap arc; inactive restored timers require explicit fresh Start. Smart wake uses already-active phone movement, never starts sensors/microphone here and is not stage detection. Strict optional Alarm JSON, immutable nonce job, durable delivery claim and disabled portable restore. Crash after claim, overlapping alarm, force-stop/OEM and permission limits remain. Distinct minimum-rest Power Nap and ordinary native regression now pass in the stated quiet scope; see NAPS.md.",
       "id": "F035",
       "tests": [
         {
@@ -898,12 +927,43 @@
       "feature": "Power nap",
       "screens": "04–12,26",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending.",
+      "implementation": [
+        "NapPlan.java",
+        "NapPlanJson.java",
+        "NapEngine.java",
+        "NapActivity.java",
+        "Naps.java"
+      ],
+      "validation": "24fd667 integrated1d9da36:PowerNapTest 8 plus NapEngineTest 16=24 host cases PASS. PowerNapNativeTest 3/PowerNapFlowTest 1/four originals and unchanged NapFlowTest 3/NapIntegrationFlowTest 1/23 originals registered for CI40169243915; combined build/native pending. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
+      "status": "partial",
+      "notes": "Explicit protected minimum rest plus reviewed later-wake interval reuse the actual elapsed relative timer and fixed latest deadline. NapEngine rejects smart claims before the minimum. Optional smart movement uses only already-active tracking; otherwise visible timer-only fallback, with no sensor/microphone start. Strict optional portable metadata retains byte-identical ordinary naps and imports inactive. Private save/cancel/recreate/start/reopen and unchanged ordinary-nap regression pass. Actual timer delivery/OEM and physical motion remain unverified. No stage or measured sleep-onset claim. See NAPS.md.",
       "id": "F036",
-      "tests": []
+      "tests": [
+        {
+          "name": "NapEngineTest",
+          "path": "app/src/test/java/org/sleepwell/app/NapEngineTest.java"
+        },
+        {
+          "name": "NapFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/NapFlowTest.java"
+        },
+        {
+          "name": "NapIntegrationFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/NapIntegrationFlowTest.java"
+        },
+        {
+          "name": "PowerNapFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/PowerNapFlowTest.java"
+        },
+        {
+          "name": "PowerNapNativeTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/PowerNapNativeTest.java"
+        },
+        {
+          "name": "PowerNapTest",
+          "path": "app/src/test/java/org/sleepwell/app/PowerNapTest.java"
+        }
+      ]
     },
     {
       "feature": "Polyphasic routine",
@@ -1141,12 +1201,27 @@
       "feature": "Missing-night estimation",
       "screens": "13–21,27–30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending; missing nights are not fabricated.",
+      "implementation": [
+        "MissedNight.java",
+        "MissedNightUsage.java",
+        "MissedNightRecords.java",
+        "MissedNightActivity.java",
+        "MissedNightChart.java"
+      ],
+      "validation": "MissedNightTest 10 pure pass; MissedNightFlowTest 2 PASS21.570s at12c8c0f/CI40042183746,11 originals, real private SQLite/fake Usage Access, reviewed save/idempotence/conflict/evidence/permission failures. Strict review clears denied-state gray focus body; prior ten supporting-state findings retained. Actual Android Usage Access queries remain unverified.",
+      "status": "partial",
+      "notes": "Explicit Usage Access; on-demand actual paired screen-off/on events for one of the last three nights. User reviews/edits before manual-record insertion; rechecks original evidence, grant, overlap/open records and idempotence. No background capture, inferred stages, movement or audio. Phone inactivity does not establish sleep. Primary hook in Automatic tracking; permission/empty/incomplete/error/conflict and saved states present.",
       "id": "F045",
-      "tests": []
+      "tests": [
+        {
+          "name": "MissedNightFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/MissedNightFlowTest.java"
+        },
+        {
+          "name": "MissedNightTest",
+          "path": "app/src/test/java/org/sleepwell/app/MissedNightTest.java"
+        }
+      ]
     },
     {
       "feature": "Accelerometer tracking",
@@ -2035,12 +2110,26 @@
       "feature": "Chronotype / social jetlag / SRI",
       "screens": "02,22–25",
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: requires enough genuine observations, configurable week boundaries and circular-time calculations.",
+      "implementation": [
+        "SleepRhythmActivity.java",
+        "RhythmStats.java",
+        "RhythmChart.java",
+        "RhythmSettings.java"
+      ],
+      "validation": "RhythmStatsTest fourteen pure passes in integrated build. SleepRhythmFlowTest passes at f471c4d/CI40016966655: seven actual fixture nights, workday edits/recreation/save/reopen/empty and five originals. Strict reference review remains separate; no overnight or clinical claim.",
+      "status": "partial",
+      "notes": "Actual recorded main-night bedtime range, circular workday/free-day midpoint difference and editable wake-day work schedule. Naps excluded, missing dates stay absent, longest main night per sleep day. Thirty-night history progress is descriptive; no clinical chronotype or prevention claim. SRI and clinical chronotype remain missing; recorded midpoint comparison does not establish either.",
       "id": "F076",
-      "tests": []
+      "tests": [
+        {
+          "name": "RhythmStatsTest",
+          "path": "app/src/test/java/org/sleepwell/app/RhythmStatsTest.java"
+        },
+        {
+          "name": "SleepRhythmFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SleepRhythmFlowTest.java"
+        }
+      ]
     },
     {
       "feature": "Tag impact analysis",
@@ -2116,8 +2205,8 @@
         "RecordAchievementsActivity.java",
         "ReportScreen.java"
       ],
-      "validation": "f8c125a integrated0d51760:RecordAchievementsTest 9 host PASS and production/native direct Java compilation PASS. RecordAchievementsStorageTest 2/RecordAchievementsFlowTest 1/six required originals compiled/execution pending CI40168584743. Combined Gradle pending.",
-      "status": "partial",
+      "validation": "f8c125a integrated0d51760:RecordAchievementsTest 9 host PASS and production/native direct Java compilation PASS. RecordAchievementsStorageTest 2/RecordAchievementsFlowTest 1/six required originals compiled/execution pending CI40168584743. Combined Gradle pending. Supersedinge26e1ca CI40168584743 PASS40classes/100methods/all127 originals, including RecordAchievementsStorageTest 2/RecordAchievementsFlowTest 1/all6 originals. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
+      "status": "implemented",
       "notes": "Report exposes derived first/7/30 qualifying recorded days from known valid motion/sonar coverage, excluding incomplete/unknown/manual/HC evidence and deduplicating physical overlaps. Three-hour recording coverage is a documented criterion, not measured sleep or clinical advice. Progress recalculates from edits/deletions; no stored fake awards, schema change, retrospective current-goal comparisons or rewards. Untagged naps cannot be inferred. See RECORDED-ACHIEVEMENTS.md.",
       "id": "F079",
       "tests": [
@@ -2460,7 +2549,7 @@
         "AutoCloudBackupService.java",
         "CloudBackupLease.java"
       ],
-      "validation": "da0f571 / CI40141612460: CloudBackupStorageTest 5 and CloudBackupFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. ce800dc integratedbc6c01e adds default-off deferred backup:21 focused pure/debug/native APKs/lint PASS before final durable-Off refinement; final source combined build pending. AutoCloudBackupStorageTest 12 and AutoCloudBackupFlowTest 2/eight originals execution pending CI40164774515. Superseding CI40164774515 AutoCloudBackupStorageTest 12 and first save/reopen UI method PASS; second uncertain-write confirmation method FAIL, two of eight required frames absent.6fbc212 fixes native dialog screen coordinates, fresh rerun pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: AutoCloudBackupStorageTest 12/AutoCloudBackupFlowTest 2/all8 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance.",
+      "validation": "da0f571 / CI40141612460: CloudBackupStorageTest 5 and CloudBackupFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. ce800dc integratedbc6c01e adds default-off deferred backup:21 focused pure/debug/native APKs/lint PASS before final durable-Off refinement; final source combined build pending. AutoCloudBackupStorageTest 12 and AutoCloudBackupFlowTest 2/eight originals execution pending CI40164774515. Superseding CI40164774515 AutoCloudBackupStorageTest 12 and first save/reopen UI method PASS; second uncertain-write confirmation method FAIL, two of eight required frames absent.6fbc212 fixes native dialog screen coordinates, fresh rerun pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: AutoCloudBackupStorageTest 12/AutoCloudBackupFlowTest 2/all8 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "partial",
       "notes": "Manual verified create-only metadata versions and reviewed restore remain. Optional automatic backup queues only successfully ended production tracked nights into a separate durable journal, requires an explicitly selected writable SAF destination, bounds retries/size/queue and preserves uncertain provider outcomes without blind duplicate replay. Turning Off persists independently of blocked provider I/O; lease ownership remains until cleanup. Actual provider/account/job delivery unverified. Audio inclusion and proprietary SleepCloud service absent. See AUTOMATIC-METADATA-BACKUP.md.",
       "id": "F090",
@@ -2804,7 +2893,7 @@
         "GoalAlarmPlan.java",
         "GoalAlarmTimeActivity.java"
       ],
-      "validation": "da0f571 / CI40141612460: AlarmDateStorageTest 3 and AlarmDateFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. Solar author e4f4f20 integrated6b8099a:38 focused pure/debug/native APKs/lint PASS. SunriseStorageTest 6 and SunriseTimeFlowTest 1/four originals execution pending CI40164774515. CI40164774515 SunriseStorageTest 6/SunriseTimeFlowTest 1/all4 originals PASS.9396f81 adds explicit fixed-time copy from saved sleep plan:GoalAlarmTimeTest 11 host PASS; GoalAlarmPlanStorageTest 3/GoalAlarmTimeFlowTest 2/seven originals native pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: SunriseStorageTest 6/SunriseTimeFlowTest 1/all4 and GoalAlarmPlanStorageTest 3/GoalAlarmTimeFlowTest 2/all7 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance.",
+      "validation": "da0f571 / CI40141612460: AlarmDateStorageTest 3 and AlarmDateFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. Solar author e4f4f20 integrated6b8099a:38 focused pure/debug/native APKs/lint PASS. SunriseStorageTest 6 and SunriseTimeFlowTest 1/four originals execution pending CI40164774515. CI40164774515 SunriseStorageTest 6/SunriseTimeFlowTest 1/all4 originals PASS.9396f81 adds explicit fixed-time copy from saved sleep plan:GoalAlarmTimeTest 11 host PASS; GoalAlarmPlanStorageTest 3/GoalAlarmTimeFlowTest 2/seven originals native pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: SunriseStorageTest 6/SunriseTimeFlowTest 1/all4 and GoalAlarmPlanStorageTest 3/GoalAlarmTimeFlowTest 2/all7 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "partial",
       "notes": "Explicit dates plus optional manual-coordinate local sunrise schedules exist. Original solar calculation uses the current phone time zone, weekday/date rules and bounded offsets; polar/unsupported/no-crossing dates use an explicitly acknowledged ordinary-time fallback. Existing skip/calendar receipts retain the actual occurrence. Use sleep plan reviews a saved bedtime plus goal and copies a fixed local clock time, or sunrise fallback, into the editor; Save remains required and later plan edits do not auto-follow. Date/repeats preserved, DST elapsed differences disclosed. No GPS/network, actual alarm delivery or sunrise accuracy certification. See SUNRISE-ALARM-TIME.md and GOAL-DERIVED-ALARM.md.",
       "id": "F103",
@@ -2888,7 +2977,7 @@
         "SleepPicker.java",
         "AlarmActivity.java"
       ],
-      "validation": "da0f571 / CI40141612460: AdvancedSnoozeStorageTest 2 and AdvancedSnoozeFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. 9c72096 integrated3f3fa6d adds SnoozeUntilTest 12 plus8 existing snooze host tests PASS. SnoozeUntilFlowTest 2/seven originals compile/native pending; AlarmActivity/Service are forbidden in this quiet harness. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: SnoozeUntilFlowTest 2/all7 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance.",
+      "validation": "da0f571 / CI40141612460: AdvancedSnoozeStorageTest 2 and AdvancedSnoozeFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. 9c72096 integrated3f3fa6d adds SnoozeUntilTest 12 plus8 existing snooze host tests PASS. SnoozeUntilFlowTest 2/seven originals compile/native pending; AlarmActivity/Service are forbidden in this quiet harness. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: SnoozeUntilFlowTest 2/all7 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "partial",
       "notes": "Optional per-press duration chooser and configured1–60-minute choices retain defaults, shorten/count rules and occurrence ownership. When Choose snooze duration is enabled, Until… accepts an exact same-day local clock target within the current per-press cap. Current occurrence/count/settings/focus/zone/wall-and-elapsed timing are rechecked before exact deadline scheduling. Past/equal/out-of-range/DST gap/ambiguous targets reject visibly. Today-only; relative choices remain for midnight crossings. No actual snooze output tested. See snooze-until-time.md.",
       "id": "F105",
@@ -3222,7 +3311,7 @@
         "TrackingActivity.java",
         "RecurringTracking.java"
       ],
-      "validation": "7b3e42e integrated6cec933:ArmedWaitTest 8 plus AutomaticSleepTest 13/AutomaticTransitionTest 7=28 host PASS. ArmedWaitNativeTest 3/ArmedWaitFlowTest 1/three originals compile/native pending combined candidate. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: ArmedWaitNativeTest 3/ArmedWaitFlowTest 1/all3 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance.",
+      "validation": "7b3e42e integrated6cec933:ArmedWaitTest 8 plus AutomaticSleepTest 13/AutomaticTransitionTest 7=28 host PASS. ArmedWaitNativeTest 3/ArmedWaitFlowTest 1/three originals compile/native pending combined candidate. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: ArmedWaitNativeTest 3/ArmedWaitFlowTest 1/all3 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "partial",
       "notes": "Default-off Arm tonight conditions wait for charging and/or screen off within the existing four-hour admission window. Conditions are frozen per arm, blocked stillness resets and final recording admission rechecks them; no record/capture while blocked. Already active capture does not stop on unplug. Recurring due-time charging skip remains independent. Actual OS/charging/sensor/FGS behavior unverified; this is not battery-adaptive standby sampling. See ARMED-WAIT-CONDITIONS.md.",
       "id": "F116",
@@ -3326,7 +3415,7 @@
         "TrackingFlipSettings.java",
         "TrackingFlipActivity.java"
       ],
-      "validation": "Author6cd72db: TrackingDelayTest 16 and TrackingDelayEntryTest 6, plus8AutomaticCaptureTest and21TrackingDndOwnerTest=51pure/debug/native APKs/lint PASS. TrackingDelayStorageTest 4 + TrackingDelayFlowTest 2/nine originals compiled, native execution pending. a3445e7 combined956pure/117suites/debug/native APKs/lint PASS. CI40159540059 TrackingFlipFlowTest 2/all7 originals PASS; delay storage/config and flip callback-clock assertion FAIL. aa5c72e fixes cold-boot fixture baseline, complete delay preset geometry and exact pause callback time; fresh native run pending. Superseding CI40164774515 TrackingDelayStorageTest 4/TrackingDelayFlowTest 2/all9 originals and TrackingFlipStorageTest 3/TrackingFlipFlowTest 2/all7 originals PASS. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: TrackingDelayStorageTest 4/TrackingDelayFlowTest 2/all9 and TrackingFlipStorageTest 3/TrackingFlipFlowTest 2/all7 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance.",
+      "validation": "Author6cd72db: TrackingDelayTest 16 and TrackingDelayEntryTest 6, plus8AutomaticCaptureTest and21TrackingDndOwnerTest=51pure/debug/native APKs/lint PASS. TrackingDelayStorageTest 4 + TrackingDelayFlowTest 2/nine originals compiled, native execution pending. a3445e7 combined956pure/117suites/debug/native APKs/lint PASS. CI40159540059 TrackingFlipFlowTest 2/all7 originals PASS; delay storage/config and flip callback-clock assertion FAIL. aa5c72e fixes cold-boot fixture baseline, complete delay preset geometry and exact pause callback time; fresh native run pending. Superseding CI40164774515 TrackingDelayStorageTest 4/TrackingDelayFlowTest 2/all9 originals and TrackingFlipStorageTest 3/TrackingFlipFlowTest 2/all7 originals PASS. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: TrackingDelayStorageTest 4/TrackingDelayFlowTest 2/all9 and TrackingFlipStorageTest 3/TrackingFlipFlowTest 2/all7 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "partial",
       "notes": "Default-off manual delay plus default-off movement-only flip pause are wired to real tracking. Delay allocates no capture/session/DND until durable due claim. Flip requires fresh calibrated orientation, closes capture before one same-session five-minute gap, and exposes keep-paused/resume states. Sonar requires fresh visible admission and does not support flip pause. Private/fake-sensor UI passes narrowly; actual capture/OEM/overnight behavior unverified. See MANUAL-TRACKING-DELAY.md and TRACKING-FLIP-PAUSE.md.",
       "id": "F120",
@@ -3444,7 +3533,7 @@
         "SoundSensitivityJson.java",
         "SonarNightSound.java"
       ],
-      "validation": "496a0c2/3463834 CI40124391172 PASS5classes/10methods/all14required originals: SoundSensitivityStorageTest 3, SoundSensitivityFlowTest 2, SoundAnalysisNativeTest 3, SoundClassifierFixtureEvaluationTest 1 and SoundEventsUiTest 1. Private save/recreate/reopen/error and actual shared analysis policy tested; no acoustic accuracy claim.643c895 integrated92878b7 adds immutable inclusion profile:59 focused pure/debug/native APKs/lint0errors PASS; final tiny editor-port delta covered by combined build pending. SoundInclusionStorageTest 3/SoundInclusionFlowTest 3/eight originals native execution pending. CI40166582977 SoundInclusionStorageTest 3/SoundInclusionFlowTest 3/all8 originals PASS; full run fails separately on Picture configuration. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: SoundInclusionStorageTest 3/SoundInclusionFlowTest 3/all8 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance.",
+      "validation": "496a0c2/3463834 CI40124391172 PASS5classes/10methods/all14required originals: SoundSensitivityStorageTest 3, SoundSensitivityFlowTest 2, SoundAnalysisNativeTest 3, SoundClassifierFixtureEvaluationTest 1 and SoundEventsUiTest 1. Private save/recreate/reopen/error and actual shared analysis policy tested; no acoustic accuracy claim.643c895 integrated92878b7 adds immutable inclusion profile:59 focused pure/debug/native APKs/lint0errors PASS; final tiny editor-port delta covered by combined build pending. SoundInclusionStorageTest 3/SoundInclusionFlowTest 3/eight originals native execution pending. CI40166582977 SoundInclusionStorageTest 3/SoundInclusionFlowTest 3/all8 originals PASS; full run fails separately on Picture configuration. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: SoundInclusionStorageTest 3/SoundInclusionFlowTest 3/all8 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "implemented",
       "notes": "Explicit per-class minimum accepted duration (one/two/three inference windows) is frozen per admitted night for motion and shared sonar capture; default two windows retains previous policy. This controls event acceptance, not model score calibration or reliable cough/cry/laughter recognition. Optional category inclusion rejects a disabled winning label before grouping/storage/cues without relabeling it Other. Any custom selection suppresses all new clips (not category-private clip recognition); saved consent/old audio stay unchanged. Corrupt or unavailable settings block new analysis/clips until explicit review and Save. Absent/v1 retain exact all-included defaults. See sound-analysis-inclusion.md.",
       "id": "F123",
@@ -3960,7 +4049,7 @@
         "AutoCloudBackupService.java",
         "CloudBackupLease.java"
       ],
-      "validation": "da0f571 / CI40141612460: CloudBackupStorageTest 5 and CloudBackupFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. ce800dc integratedbc6c01e adds default-off deferred backup:21 focused pure/debug/native APKs/lint PASS before final durable-Off refinement; final source combined build pending. AutoCloudBackupStorageTest 12 and AutoCloudBackupFlowTest 2/eight originals execution pending CI40164774515. Superseding CI40164774515 AutoCloudBackupStorageTest 12 and first save/reopen UI method PASS; second uncertain-write confirmation method FAIL, two of eight required frames absent.6fbc212 fixes native dialog screen coordinates, fresh rerun pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: AutoCloudBackupStorageTest 12/AutoCloudBackupFlowTest 2/all8 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance.",
+      "validation": "da0f571 / CI40141612460: CloudBackupStorageTest 5 and CloudBackupFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. ce800dc integratedbc6c01e adds default-off deferred backup:21 focused pure/debug/native APKs/lint PASS before final durable-Off refinement; final source combined build pending. AutoCloudBackupStorageTest 12 and AutoCloudBackupFlowTest 2/eight originals execution pending CI40164774515. Superseding CI40164774515 AutoCloudBackupStorageTest 12 and first save/reopen UI method PASS; second uncertain-write confirmation method FAIL, two of eight required frames absent.6fbc212 fixes native dialog screen coordinates, fresh rerun pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: AutoCloudBackupStorageTest 12/AutoCloudBackupFlowTest 2/all8 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "partial",
       "notes": "Manual verified create-only metadata versions and reviewed restore remain. Optional automatic backup queues only successfully ended production tracked nights into a separate durable journal, requires an explicitly selected writable SAF destination, bounds retries/size/queue and preserves uncertain provider outcomes without blind duplicate replay. Turning Off persists independently of blocked provider I/O; lease ownership remains until cleanup. Actual provider/account/job delivery unverified. Audio inclusion and proprietary SleepCloud service absent. See AUTOMATIC-METADATA-BACKUP.md.",
       "id": "F137",
@@ -4193,7 +4282,7 @@
         "MicrophoneLease.java",
         "AlarmService.java"
       ],
-      "validation": "a3445e7 combined956pure/117suites/debug/native APKs/lint PASS. CI40159540059 SpeakStorageTest 1, SpeakConfigurationFlowTest 1, SpeakCaptureFlowTest 2 and SpeakFixtureEvaluationTest 1/all12 originals PASS. Six pinned whole-source CPU trials:two broad-speech positives accepted,four snore/music/cry distractors rejected. Whole24class/54method native run remains FAIL separately; raw bounded evidence in verification/2026-10-25-speak-native. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: SpeakStorageTest 1/SpeakConfigurationFlowTest 1/SpeakCaptureFlowTest 2/SpeakFixtureEvaluationTest 1/all12 originals and six pinned CPU trials. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance.",
+      "validation": "a3445e7 combined956pure/117suites/debug/native APKs/lint PASS. CI40159540059 SpeakStorageTest 1, SpeakConfigurationFlowTest 1, SpeakCaptureFlowTest 2 and SpeakFixtureEvaluationTest 1/all12 originals PASS. Six pinned whole-source CPU trials:two broad-speech positives accepted,four snore/music/cry distractors rejected. Whole24class/54method native run remains FAIL separately; raw bounded evidence in verification/2026-10-25-speak-native. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: SpeakStorageTest 1/SpeakConfigurationFlowTest 1/SpeakCaptureFlowTest 2/SpeakFixtureEvaluationTest 1/all12 originals and six pinned CPU trials. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
       "status": "partial",
       "notes": "Explicit Listen, one-use visible microphone service admission, exclusive capture lease, matching-alarm quiet/cleanup barriers, two unchanged accepted speech windows and Math fallback are wired. No audio/transcript/event saved. Permission, cleanup, recreation and persistence tested with fake capture/output ports; actual microphone/FGS/alarm output and bedroom accuracy unverified. No speech transcription, speaker identity, laughter or instrument detection. See SPEAK-CHALLENGE.md.",
       "id": "F145",

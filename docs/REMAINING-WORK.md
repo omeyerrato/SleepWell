@@ -21,7 +21,13 @@ on the same source passes **38classes/97native methods/all121 required originals
 This includes corrected picture matching, armed conditions and exact-clock snooze.
 [Original native evidence](verification/2026-10-25-feature-increment-pass/README.md).
 This is explicit-scope functional evidence, not full app/design/hardware acceptance.
-Later recorded achievements and Power Nap need their own integrated checks.
+Final application/test source **0a821eb** passes **1063pure/129suites**, debug/native
+APKs and lint0errors142warnings. [CI40170787840](https://github.com/omeyerrato/SleepWell/actions/runs/40170787840)
+passes **44classes/108native methods/all154 originals**, including the corrected
+waveform control race, protected Power Nap and ordinary-nap regression. [Final
+raw evidence](verification/2026-10-25-final-feature-batch/README.md). The predecessor
+ba2d478 also builds an unsigned release APK; it is not a signed current release.
+This verifies the named feature batch, not every app feature or physical effect.
 
 - [x] Alarm defaults, explicit dates, saved inputs and bounded per-press snooze choices.
 - [x] Calendar alarm rules, sleep-only Health Connect and optional integration contracts
@@ -46,8 +52,8 @@ Later recorded achievements and Power Nap need their own integrated checks.
   smart-window projection follows actual dated/sunrise/skip/calendar deadlines.
 - [x] Optional exact same-day clock snooze Flow2/all7 originals pass; midnight and
   ambiguous/skipped DST times retain relative-duration alternatives.
-- [ ] Recorded-night milestones: merged, host/direct Java checks pass; native CI pending.
-- [ ] Power Nap minimum-rest/latest-wake interval: implementation/native fixtures in progress.
+- [x] Recorded-night milestones: Storage2/Flow1/all6 originals pass; actual saved coverage, edit/recalculate/reopen and errors verified privately.
+- [x] Power Nap minimum-rest/latest-wake interval and unchanged ordinary naps: Storage3 + new Flow1 + old Flow3/Integration1, all27 originals pass with fake output ports.
 - [ ] Live hardware, overnight capture, actual external exchange, new phone installation,
   remaining matrix subfeatures and later design/security review.
 
@@ -147,8 +153,9 @@ These groups remain open even after the priority list above is addressed.
   laughter positive. Keep genuine failures visible; do not weaken gates to get green.
 - [ ] Complete new shared-analysis and walking native journeys; inspect their original
   screenshots and verify saved/reopened state and unchanged existing data.
-- [ ] Run combined unit tests, lint, builds and quiet native regression on the integrated
-  candidate, not merely its separate author branches.
+- [x] Run combined unit tests, lint, builds and quiet native regression on the integrated
+  current feature batch:1063 pure and108 native methods/all154 originals pass. Full
+  remaining-app regression and physical acceptance stay open above.
 - [ ] Verify real overnight background behavior, capture quality, battery use and
   interruptions when a suitable controlled test is available.
 - [ ] Perform alarm/speaker/vibration/torch/power-menu checks only when permitted;

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SnoozeUntilTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:13.654Z" hostname="DESKTOP-1UTDMNE" time="0.023">
+  <properties/>
+  <testcase name="wallClockJumpRollbackZoneChangeAndDateBoundaryRequireFreshReview" classname="org.sleepwell.app.SnoozeUntilTest" time="0.001"/>
+  <testcase name="sixtyMinutesAndShrinkingLimitRemainBounded" classname="org.sleepwell.app.SnoozeUntilTest" time="0.001"/>
+  <testcase name="daylightGapAndOverlapCannotSilentlyChooseAnotherInstant" classname="org.sleepwell.app.SnoozeUntilTest" time="0.01"/>
+  <testcase name="pastEqualAndOutsideMaximumAreRejectedWithoutRollingTomorrow" classname="org.sleepwell.app.SnoozeUntilTest" time="0.002"/>
+  <testcase name="midnightNeverTurnsAnEarlierClockIntoTomorrow" classname="org.sleepwell.app.SnoozeUntilTest" time="0.002"/>
+  <testcase name="unavailableOwnerAndLostFocusCannotSchedule" classname="org.sleepwell.app.SnoozeUntilTest" time="0.001"/>
+  <testcase name="disabledOrExhaustedOffersCannotBeCreated" classname="org.sleepwell.app.SnoozeUntilTest" time="0.001"/>
+  <testcase name="exactFutureClockDeadlinePreservesSecondsInsteadOfRoundingDelay" classname="org.sleepwell.app.SnoozeUntilTest" time="0.0"/>
+  <testcase name="cancellationAndSuccessfulConfirmationAreOneUseOnly" classname="org.sleepwell.app.SnoozeUntilTest" time="0.001"/>
+  <testcase name="changedOccurrenceCountSettingsAndRevisionCannotReuseAnOffer" classname="org.sleepwell.app.SnoozeUntilTest" time="0.001"/>
+  <testcase name="schedulerDenialIsAnExplicitErrorAndNeverBecomesCompleted" classname="org.sleepwell.app.SnoozeUntilTest" time="0.002"/>
+  <testcase name="ordinaryElapsedTimeReducesTheRemainingExactDeadline" classname="org.sleepwell.app.SnoozeUntilTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

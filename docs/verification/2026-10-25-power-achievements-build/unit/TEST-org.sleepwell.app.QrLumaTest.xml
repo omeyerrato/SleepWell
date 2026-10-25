@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.QrLumaTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:13.045Z" hostname="DESKTOP-1UTDMNE" time="0.025">
+  <properties/>
+  <testcase name="croppedPaddedInterleavedLumaUsesAbsolutePlaneCoordinatesWithoutMovingBuffer" classname="org.sleepwell.app.QrLumaTest" time="0.001"/>
+  <testcase name="invalidCropStrideTruncationAndOverflowCannotReadOutsidePlane" classname="org.sleepwell.app.QrLumaTest" time="0.023"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.MorningBarcodeTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:10.645Z" hostname="DESKTOP-1UTDMNE" time="1.502">
+  <properties/>
+  <testcase name="everySupportedBarcodeDecodesActualGeneratedOriginalPixels" classname="org.sleepwell.app.MorningBarcodeTest" time="0.271"/>
+  <testcase name="typedProofRejectsSameHashWithDifferentFormatAndStaleOccurrence" classname="org.sleepwell.app.MorningBarcodeTest" time="0.008"/>
+  <testcase name="oneDimensionalCodesDecodeAcrossQuarterTurnsAndInversion" classname="org.sleepwell.app.MorningBarcodeTest" time="0.943"/>
+  <testcase name="exactTextAndLeadingZerosArePreserved" classname="org.sleepwell.app.MorningBarcodeTest" time="0.003"/>
+  <testcase name="selectedFormatNeverFallsBackToUnrelatedCodeKinds" classname="org.sleepwell.app.MorningBarcodeTest" time="0.272"/>
+  <testcase name="invalidBoundsChecksumsUnsupportedAndUnencodableTextReject" classname="org.sleepwell.app.MorningBarcodeTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

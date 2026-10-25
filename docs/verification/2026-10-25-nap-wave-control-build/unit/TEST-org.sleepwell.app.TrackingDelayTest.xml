@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TrackingDelayTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:35.709Z" hostname="DESKTOP-1UTDMNE" time="0.028">
+  <properties/>
+  <testcase name="nearLongLimitDoesNotOverflowLateBoundary" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <testcase name="offCannotCreateWaitingPlan" classname="org.sleepwell.app.TrackingDelayTest" time="0.015"/>
+  <testcase name="recordingIdentityOnlyExistsAfterCapture" classname="org.sleepwell.app.TrackingDelayTest" time="0.011"/>
+  <testcase name="exactDeadlineClaimsWithoutRecording" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <testcase name="wallChangesCannotShortenOrExtendDeadline" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <testcase name="elapsedCountdownIsExactToMilliseconds" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <testcase name="beforeDeadlineDoesNotClaim" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <testcase name="overdueDeliveryDoesNotCaptureLate" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <testcase name="defaultOffAndOnlySupportedPresets" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <testcase name="permittedSmallSchedulingDelayRemainsBounded" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <testcase name="terminalPlanNeverReclaims" classname="org.sleepwell.app.TrackingDelayTest" time="0.001"/>
+  <testcase name="sonarNeverRequestsClipsOrLight" classname="org.sleepwell.app.TrackingDelayTest" time="0.001"/>
+  <testcase name="backwardsClockInterrupts" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <testcase name="explicitStartNowCanClaimEarly" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <testcase name="bootChangeInterruptsEvenIfElapsedLooksDue" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <testcase name="claimedPlanNeverReclaims" classname="org.sleepwell.app.TrackingDelayTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

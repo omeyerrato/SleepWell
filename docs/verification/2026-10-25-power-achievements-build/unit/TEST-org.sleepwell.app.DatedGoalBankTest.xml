@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.DatedGoalBankTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:06.939Z" hostname="DESKTOP-1UTDMNE" time="0.049">
+  <properties/>
+  <testcase name="adjacentZonePeriodsCannotCreditOneActualIntervalTwice" classname="org.sleepwell.app.DatedGoalBankTest" time="0.017"/>
+  <testcase name="aNewPlanCannotRetroactivelyChangeHistoricalTargets" classname="org.sleepwell.app.DatedGoalBankTest" time="0.008"/>
+  <testcase name="futureAndBedtimeGoalsDoNotMaskCurrentDuration" classname="org.sleepwell.app.DatedGoalBankTest" time="0.006"/>
+  <testcase name="closedDayBoundaryUsesFrozenZoneAcrossRepeatedDSTHour" classname="org.sleepwell.app.DatedGoalBankTest" time="0.003"/>
+  <testcase name="adjacentTargetsAreFrozenAndAggregateOnlyTheirOwnRecordedDays" classname="org.sleepwell.app.DatedGoalBankTest" time="0.005"/>
+  <testcase name="editedAwakeAndOverlappingRecordsUseEffectiveCoverageOnce" classname="org.sleepwell.app.DatedGoalBankTest" time="0.003"/>
+  <testcase name="rangeSlicesUsePerDayAmountsRatherThanWholePeriodBalance" classname="org.sleepwell.app.DatedGoalBankTest" time="0.002"/>
+  <testcase name="stoppedAndZeroLengthRecoveryRowsStayHonest" classname="org.sleepwell.app.DatedGoalBankTest" time="0.002"/>
+  <testcase name="currentFutureAndMissingDaysNeverGenerateShortfall" classname="org.sleepwell.app.DatedGoalBankTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

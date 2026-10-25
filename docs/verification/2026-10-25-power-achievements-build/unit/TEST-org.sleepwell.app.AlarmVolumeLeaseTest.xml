@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AlarmVolumeLeaseTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:05.212Z" hostname="DESKTOP-1UTDMNE" time="0.012">
+  <properties/>
+  <testcase name="restartDoesNotFightExternalChange" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.004"/>
+  <testcase name="refusedJournalOrUnsupportedStreamNeverChangesVolume" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.0"/>
+  <testcase name="primaryReturnPreservesUserChangedStreamWithBoundedDigitalCompensation" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.0"/>
+  <testcase name="quietVolumeFailuresReturnConservativeDigitalGain" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.001"/>
+  <testcase name="baselineIsSavedBeforeWriteAndRestoredAfterStop" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.0"/>
+  <testcase name="quietUsesPermanentDigitalCapWithoutGlobalVolumeOrJournalChanges" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.001"/>
+  <testcase name="sameRunRestartRetainsOriginalAndOldOwnerCannotRestore" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.0"/>
+  <testcase name="externalUserVolumeSurvivesCleanup" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.001"/>
+  <testcase name="newRunRecoversAnOrphanedOwnedBaseline" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.0"/>
+  <testcase name="backupUsesLatestUserBaselineWhenUserChangedDuringPrimary" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.0"/>
+  <testcase name="ignoredVolumeWriteIsCompensatedByDigitalGain" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.002"/>
+  <testcase name="repeatedBackupModeTransitionsRestoreConfiguredLevelAndKeepOriginalBaseline" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.002"/>
+  <testcase name="ignoredDowngradeCannotLeavePrimaryDigitalOutputAtBackupGain" classname="org.sleepwell.app.AlarmVolumeLeaseTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

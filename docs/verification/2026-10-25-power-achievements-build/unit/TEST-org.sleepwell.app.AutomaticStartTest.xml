@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AutomaticStartTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:05.431Z" hostname="DESKTOP-1UTDMNE" time="0.079">
+  <properties/>
+  <testcase name="calendarHolidayProjectionDoesNotArmForExcludedDate" classname="org.sleepwell.app.AutomaticStartTest" time="0.011"/>
+  <testcase name="earliestEnabledSmartWindowWins" classname="org.sleepwell.app.AutomaticStartTest" time="0.002"/>
+  <testcase name="alreadyOpenLeadInStartsNowInsteadOfWaitingTomorrow" classname="org.sleepwell.app.AutomaticStartTest" time="0.001"/>
+  <testcase name="calendarMeetingProjectionUsesActualAdvancedWakeDeadline" classname="org.sleepwell.app.AutomaticStartTest" time="0.007"/>
+  <testcase name="passedAlarmUsesItsNextCalendarOccurrence" classname="org.sleepwell.app.AutomaticStartTest" time="0.002"/>
+  <testcase name="projectedPastMissingOrConsumedDeadlineNeverBackfills" classname="org.sleepwell.app.AutomaticStartTest" time="0.005"/>
+  <testcase name="consumedOccurrenceFenceSurvivesWallClockRollback" classname="org.sleepwell.app.AutomaticStartTest" time="0.001"/>
+  <testcase name="expiredDatedAlarmCannotTurnIntoATomorrowArm" classname="org.sleepwell.app.AutomaticStartTest" time="0.001"/>
+  <testcase name="skippedFridayUsesNextUnskippedWeekday" classname="org.sleepwell.app.AutomaticStartTest" time="0.003"/>
+  <testcase name="stillnessStartsLookingNow" classname="org.sleepwell.app.AutomaticStartTest" time="0.001"/>
+  <testcase name="bedtimeUsesTheSavedLocalScheduleAndRollsTomorrow" classname="org.sleepwell.app.AutomaticStartTest" time="0.0"/>
+  <testcase name="smartWindowNeedsARealEnabledAlarm" classname="org.sleepwell.app.AutomaticStartTest" time="0.0"/>
+  <testcase name="relativeNapsAndMalformedSchedulingMetadataAreNotEligible" classname="org.sleepwell.app.AutomaticStartTest" time="0.025"/>
+  <testcase name="datedAlarmUsesChosenDateRatherThanTomorrow" classname="org.sleepwell.app.AutomaticStartTest" time="0.002"/>
+  <testcase name="daylightGapLeadInUsesActualElapsedDeadline" classname="org.sleepwell.app.AutomaticStartTest" time="0.001"/>
+  <testcase name="weeklyAlarmHonorsItsSelectedDays" classname="org.sleepwell.app.AutomaticStartTest" time="0.0"/>
+  <testcase name="smartLeadInIsFortyFiveMinutesBeforeTheWindow" classname="org.sleepwell.app.AutomaticStartTest" time="0.001"/>
+  <testcase name="sunriseUsesCalculatedDeadlineNotAcknowledgedFallbackClock" classname="org.sleepwell.app.AutomaticStartTest" time="0.012"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

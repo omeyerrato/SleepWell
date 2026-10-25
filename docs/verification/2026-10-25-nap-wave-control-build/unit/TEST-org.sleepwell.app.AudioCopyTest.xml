@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AudioCopyTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:09.073Z" hostname="DESKTOP-1UTDMNE" time="0.038">
+  <properties/>
+  <testcase name="providerFailurePropagates" classname="org.sleepwell.app.AudioCopyTest" time="0.008"/>
+  <testcase name="partialReadsPreserveEveryByte" classname="org.sleepwell.app.AudioCopyTest" time="0.022"/>
+  <testcase name="overflowIsNeverWritten" classname="org.sleepwell.app.AudioCopyTest" time="0.002"/>
+  <testcase name="emptyDocumentIsRejected" classname="org.sleepwell.app.AudioCopyTest" time="0.002"/>
+  <testcase name="cancellationAfterReadPreventsWriting" classname="org.sleepwell.app.AudioCopyTest" time="0.001"/>
+  <testcase name="repeatedEmptyReadsCannotSpinForever" classname="org.sleepwell.app.AudioCopyTest" time="0.002"/>
+  <testcase name="exactLimitAndUnknownLengthAreAccepted" classname="org.sleepwell.app.AudioCopyTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

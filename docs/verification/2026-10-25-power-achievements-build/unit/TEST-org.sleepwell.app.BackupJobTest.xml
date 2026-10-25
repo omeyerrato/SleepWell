@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.BackupJobTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:06.071Z" hostname="DESKTOP-1UTDMNE" time="0.038">
+  <properties/>
+  <testcase name="restartedRestoreDoesNotClaimAnUncommittedResultOrRunAgain" classname="org.sleepwell.app.BackupJobTest" time="0.011"/>
+  <testcase name="cancelledChooserAndInvalidUriDoNotOpenAnyProvider" classname="org.sleepwell.app.BackupJobTest" time="0.001"/>
+  <testcase name="duplicateConfirmCannotQueueASecondReplacement" classname="org.sleepwell.app.BackupJobTest" time="0.016"/>
+  <testcase name="failedRestoreDropsStaleReviewForExplicitReimport" classname="org.sleepwell.app.BackupJobTest" time="0.0"/>
+  <testcase name="failedImportHasNoRetainedDestructiveConfirmation" classname="org.sleepwell.app.BackupJobTest" time="0.002"/>
+  <testcase name="unavailableChooserIsARealErrorWithoutProviderWork" classname="org.sleepwell.app.BackupJobTest" time="0.001"/>
+  <testcase name="cancellationFencesLateReviewAndPreventsOverlappingTransport" classname="org.sleepwell.app.BackupJobTest" time="0.001"/>
+  <testcase name="failedCancellationPortCannotRestoreALateReview" classname="org.sleepwell.app.BackupJobTest" time="0.0"/>
+  <testcase name="providerWorkOnlyRunsOnWorkerAndPublicationOnlyOnUi" classname="org.sleepwell.app.BackupJobTest" time="0.0"/>
+  <testcase name="recreatedOwnerCannotOverwriteRetainedWorkWithInterruptedState" classname="org.sleepwell.app.BackupJobTest" time="0.001"/>
+  <testcase name="rejectedWorkerIsReportedWithoutPermanentlyBusyState" classname="org.sleepwell.app.BackupJobTest" time="0.002"/>
+  <testcase name="reviewNeverReplacesWithoutExplicitConfirmation" classname="org.sleepwell.app.BackupJobTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

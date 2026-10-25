@@ -696,6 +696,35 @@ for row in rows:
         row["validation"] += " Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: " + passing_increment[row["feature"]] + ". Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance."
     elif row["feature"] == "Achievements":
         row.update(status="partial", implementation=["RecordAchievements.java", "RecordAchievementsReader.java", "RecordAchievementsActivity.java", "ReportScreen.java"], validation="f8c125a integrated0d51760:RecordAchievementsTest9 host PASS and production/native direct Java compilation PASS. RecordAchievementsStorageTest2/RecordAchievementsFlowTest1/six required originals compiled/execution pending CI40168584743. Combined Gradle pending.", notes="Report exposes derived first/7/30 qualifying recorded days from known valid motion/sonar coverage, excluding incomplete/unknown/manual/HC evidence and deduplicating physical overlaps. Three-hour recording coverage is a documented criterion, not measured sleep or clinical advice. Progress recalculates from edits/deletions; no stored fake awards, schema change, retrospective current-goal comparisons or rewards. Untagged naps cannot be inferred. See RECORDED-ACHIEVEMENTS.md.")
+        row["validation"] += " Supersedinge26e1ca CI40168584743 PASS40classes/100methods/all127 originals, including RecordAchievementsStorageTest2/RecordAchievementsFlowTest1/all6 originals."
+    elif row["feature"] == "Power nap":
+        row.update(status="partial", implementation=["NapPlan.java", "NapPlanJson.java", "NapEngine.java", "NapActivity.java", "Naps.java"], validation="24fd667 integrated1d9da36:PowerNapTest8 plus NapEngineTest16=24 host cases PASS. PowerNapNativeTest3/PowerNapFlowTest1/four originals and unchanged NapFlowTest3/NapIntegrationFlowTest1/23 originals registered for CI40169243915; combined build/native pending.", notes="Explicit protected minimum rest plus reviewed later-wake interval reuse the actual elapsed relative timer and fixed latest deadline. NapEngine rejects smart claims before the minimum. Optional smart movement uses only already-active tracking; otherwise visible timer-only fallback, with no sensor/microphone start. Strict optional portable metadata retains byte-identical ordinary naps and imports inactive. Save/cancel/recreate/reopen, actual delivery/OEM and physical motion still need separate evidence. No stage or measured sleep-onset claim. See NAPS.md.")
+    elif row["feature"] == "Nap timer":
+        row["notes"] = row["notes"].replace("Distinct minimum-rest Power Nap remains missing;", "Distinct minimum-rest Power Nap is source-integrated with pending combined/native checks;")
+
+# Parent inventory entries share the narrower component's actual evidence, not a
+# contradictory stale 'missing' label. Unimplemented subfeatures remain explicit.
+by_title = {row["feature"]: row for row in rows}
+for parent, component in {
+    "Other CAPTCHA pack tasks": "Tilt maze / jumping / flags / counting tasks",
+    "Missing-night estimation": "Missed-night estimate review / provenance",
+    "Chronotype / social jetlag / SRI": "Recorded rhythm / social jetlag",
+}.items():
+    target, detail = by_title[parent], by_title[component]
+    for key in ("status", "implementation", "validation", "notes"):
+        target[key] = list(detail[key]) if isinstance(detail[key], list) else detail[key]
+    if parent == "Chronotype / social jetlag / SRI":
+        target["notes"] += " SRI and clinical chronotype remain missing; recorded midpoint comparison does not establish either."
+
+for row in rows:
+    if row["feature"] in set(passing_increment) | {"Power nap", "Nap timer", "Achievements"}:
+        row["validation"] += " Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green."
+    if row["feature"] == "Power nap":
+        row["notes"] = row["notes"].replace("Save/cancel/recreate/reopen, actual delivery/OEM and physical motion still need separate evidence.", "Private save/cancel/recreate/start/reopen and unchanged ordinary-nap regression pass. Actual timer delivery/OEM and physical motion remain unverified.")
+    elif row["feature"] == "Nap timer":
+        row["notes"] = row["notes"].replace("Distinct minimum-rest Power Nap is source-integrated with pending combined/native checks;", "Distinct minimum-rest Power Nap and ordinary native regression now pass in the stated quiet scope;")
+    elif row["feature"] == "Achievements":
+        row["status"] = "implemented"
 
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
@@ -760,7 +789,13 @@ Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals,
 including corrected Picture, armed conditions and exact-clock snooze. Same source
 passes1046pure/127suites, both APKs and lint0errors142warnings in5m37. Raw evidence:
 verification/2026-10-25-feature-increment-pass and2026-10-25-armed-snooze-build.
-Later achievements/Power Nap increments remain pending their integrated checks.
+Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals, including
+achievements, protected Power Nap and unchanged ordinary-nap regression. Exact
+source1063pure/129suites PASS41s; debug/native APKs+lint0errors142warnings PASS1m36.
+The predecessorba2d478 also built an unsigned release APK; the current UI correction
+has not been rebuilt as a signed production release. Raw evidence:
+verification/2026-10-25-final-feature-batch. These are scoped functional results,
+not full-app/design/physical/overnight/provider-account acceptance.
 At the user's request, the dedicated design reviewer is stopped and broad design,
 bug and security audits are deferred while agents implement features. Real acoustic
 accuracy, overnight reliability and full36screen parity remain uncertified.

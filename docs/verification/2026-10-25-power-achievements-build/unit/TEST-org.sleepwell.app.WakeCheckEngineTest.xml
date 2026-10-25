@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.WakeCheckEngineTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:38.976Z" hostname="DESKTOP-1UTDMNE" time="0.011">
+  <properties/>
+  <testcase name="legacyMigrationRejectsDifferentOrCurrentlyRingingAlarmInsteadOfInventingOwnership" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.001"/>
+  <testcase name="onlyOwnedNonceCanConfirmAndConfirmationIsDurable" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.003"/>
+  <testcase name="supersededOccurrenceRevokesPromptExpiryAndConfirm" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.0"/>
+  <testcase name="storageFailureBeforeClaimPreventsEffectAndUncertainRingFailureIsNotRepeated" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.002"/>
+  <testcase name="expirySchedulingFailureCanRetryWithoutRepostingOrExtending" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.001"/>
+  <testcase name="interruptedPromptDeliveryRecoversWithOriginalWindow" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.0"/>
+  <testcase name="missingPrerequisitesDoNotCreateUnseenAutomaticRering" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.001"/>
+  <testcase name="newDismissalReplacesSinglePendingCheckWithoutOldRepliesAffectingIt" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.0"/>
+  <testcase name="delayMeansSilentPromptThenSeparateTwoMinuteWindow" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.001"/>
+  <testcase name="rebootUsesSavedWallDeadlineWithoutResettingWindow" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.0"/>
+  <testcase name="failedDeliveryRetryPreservesNonceAndDeadlineAndCannotExtendExpiredWindow" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.001"/>
+  <testcase name="unrelatedAlarmEditsCannotCancelThisCheckButTurningItsCheckOffDoes" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.0"/>
+  <testcase name="expiryClaimsBeforeEffectAndCannotRingTwice" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.0"/>
+  <testcase name="duplicatePromptAndRecreationNeverExtendDeadline" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.0"/>
+  <testcase name="wallClockChangesCannotShortenOrExtendSameBootWindow" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.001"/>
+  <testcase name="legacyDeliveryCreatesNewWindowOnlyWhenActuallyDelivered" classname="org.sleepwell.app.WakeCheckEngineTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

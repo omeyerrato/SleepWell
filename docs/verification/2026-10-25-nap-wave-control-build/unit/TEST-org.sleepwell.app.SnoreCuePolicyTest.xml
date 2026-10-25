@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SnoreCuePolicyTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:14.230Z" hostname="DESKTOP-1UTDMNE" time="0.007">
+  <properties/>
+  <testcase name="explicitPreviewAlwaysRequestsLowSinglePulseWithoutChangingDetectionThreshold" classname="org.sleepwell.app.SnoreCuePolicyTest" time="0.0"/>
+  <testcase name="cooldownAndSessionCapSurviveRecorderRecreation" classname="org.sleepwell.app.SnoreCuePolicyTest" time="0.002"/>
+  <testcase name="disabledOrNonSnoringNeverAllocatesOutputs" classname="org.sleepwell.app.SnoreCuePolicyTest" time="0.001"/>
+  <testcase name="sensitivityIsAScoreThresholdNotVolume" classname="org.sleepwell.app.SnoreCuePolicyTest" time="0.0"/>
+  <testcase name="brokenAdapterIsReportedAndDoesNotRapidlyRetry" classname="org.sleepwell.app.SnoreCuePolicyTest" time="0.002"/>
+  <testcase name="closedControllerCannotEmitAndClosesAdapterOnlyOnce" classname="org.sleepwell.app.SnoreCuePolicyTest" time="0.001"/>
+  <testcase name="previewBudgetIsSharedAcrossClosedOwnersButIndependentOfNightBudget" classname="org.sleepwell.app.SnoreCuePolicyTest" time="0.001"/>
+  <testcase name="malformedSettingsAreBounded" classname="org.sleepwell.app.SnoreCuePolicyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

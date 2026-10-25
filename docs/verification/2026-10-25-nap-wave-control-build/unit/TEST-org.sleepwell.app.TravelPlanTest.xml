@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TravelPlanTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:35.806Z" hostname="DESKTOP-1UTDMNE" time="0.008">
+  <properties/>
+  <testcase name="londonOffsetChangesAcrossDepartureWeekend" classname="org.sleepwell.app.TravelPlanTest" time="0.0"/>
+  <testcase name="calendarOffsetIsNotReducedToAShortestFlightDirection" classname="org.sleepwell.app.TravelPlanTest" time="0.001"/>
+  <testcase name="springGapMovesToAValidInstantWithoutLosingFollowingDates" classname="org.sleepwell.app.TravelPlanTest" time="0.001"/>
+  <testcase name="repeatedFallHourDeliversOnlyTheEarlierOccurrence" classname="org.sleepwell.app.TravelPlanTest" time="0.001"/>
+  <testcase name="nextReminderUsesDestinationCivilTime" classname="org.sleepwell.app.TravelPlanTest" time="0.0"/>
+  <testcase name="periodIsFiniteAndNeverBackfillsMissedDays" classname="org.sleepwell.app.TravelPlanTest" time="0.001"/>
+  <testcase name="disabledPlanHasNoScheduledBehavior" classname="org.sleepwell.app.TravelPlanTest" time="0.0"/>
+  <testcase name="fractionalHourDifferencesRemainPrecise" classname="org.sleepwell.app.TravelPlanTest" time="0.001"/>
+  <testcase name="wallClockRollbackDoesNotRepeatConsumedCues" classname="org.sleepwell.app.TravelPlanTest" time="0.001"/>
+  <testcase name="copiedDraftDoesNotMutateTheSavedObject" classname="org.sleepwell.app.TravelPlanTest" time="0.0"/>
+  <testcase name="zoneSearchUsesRealIanaIdentifiers" classname="org.sleepwell.app.TravelPlanTest" time="0.001"/>
+  <testcase name="invalidZoneTimeAndPeriodAreRejected" classname="org.sleepwell.app.TravelPlanTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

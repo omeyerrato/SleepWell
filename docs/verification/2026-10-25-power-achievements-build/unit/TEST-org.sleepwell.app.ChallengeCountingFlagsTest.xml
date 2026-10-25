@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.ChallengeCountingFlagsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:06.231Z" hostname="DESKTOP-1UTDMNE" time="0.211">
+  <properties/>
+  <testcase name="originalPackVariesAcrossOwnersAndAllShapesAppear" classname="org.sleepwell.app.ChallengeCountingFlagsTest" time="0.004"/>
+  <testcase name="ownerAndRoundBoundsCannotCreateUnboundedBoards" classname="org.sleepwell.app.ChallengeCountingFlagsTest" time="0.002"/>
+  <testcase name="eachFlagQuestionHasFourUniqueChoicesAndOneCorrectAnswer" classname="org.sleepwell.app.ChallengeCountingFlagsTest" time="0.078"/>
+  <testcase name="stableCountingBoardsHaveOneTypedNumericalAnswer" classname="org.sleepwell.app.ChallengeCountingFlagsTest" time="0.125"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

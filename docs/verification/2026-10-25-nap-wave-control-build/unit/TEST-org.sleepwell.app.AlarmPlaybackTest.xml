@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AlarmPlaybackTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:08.639Z" hostname="DESKTOP-1UTDMNE" time="0.035">
+  <properties/>
+  <testcase name="delayDoesNotStartSilentLoopAndStopCancelsReady" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.007"/>
+  <testcase name="duplicateStartsWhileLoadingDoNotAllocateOrRestart" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.003"/>
+  <testcase name="successfulBackupClosesPrimaryOnlyAfterReplacementStarts" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.002"/>
+  <testcase name="backupIdentitiesSeparateRepeatedOccurrencesOfTheSameAlarm" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.002"/>
+  <testcase name="staleBackupCannotEscalateDifferentOrQuietOccurrence" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.006"/>
+  <testcase name="cancelledPendingBackupCannotStartAfterItsWindowEnds" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.0"/>
+  <testcase name="quietBackupRequestNeverAllocatesOrIncreasesVolume" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.0"/>
+  <testcase name="failedBackupKeepsWorkingPrimaryAndRaisesItsTarget" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.0"/>
+  <testcase name="gainAndStreamPrecedeStartAndRampUsesRealElapsedClock" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.0"/>
+  <testcase name="retainedPrimaryErrorAfterBackupFailureStillFallsBack" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.002"/>
+  <testcase name="timeoutFallsBackOnceAndStaleReadyCannotStart" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.001"/>
+  <testcase name="bothFailuresRemainBoundedUntilExplicitNewOccurrence" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.0"/>
+  <testcase name="restartInsideBackupLoadsOnlyBackupAndQuietRestartStillLoadsPrimary" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.001"/>
+  <testcase name="cleanupContinuesWhenLayerCloseThrowsAndLateCallbacksCannotStart" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.001"/>
+  <testcase name="boundedBackupReturnsVolumeBeforePrimaryReplacementAcknowledges" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.001"/>
+  <testcase name="lateReadyContinuesOccurrenceEnvelopeInsteadOfRestarting" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.001"/>
+  <testcase name="asynchronousBackupFailureDoesNotClosePrimary" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.0"/>
+  <testcase name="asynchronousBackupSuccessCommitsOnlyAfterAcknowledgement" classname="org.sleepwell.app.AlarmPlaybackTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

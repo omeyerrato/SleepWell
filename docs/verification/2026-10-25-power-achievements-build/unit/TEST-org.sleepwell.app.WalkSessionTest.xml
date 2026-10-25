@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.WalkSessionTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:39.001Z" hostname="DESKTOP-1UTDMNE" time="0.009">
+  <properties/>
+  <testcase name="counterUsesAnActivationBaselineInsteadOfBootTotal" classname="org.sleepwell.app.WalkSessionTest" time="0.005"/>
+  <testcase name="releaseFailureCannotCrashOrRearmTheOwner" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <testcase name="earnedProgressCanBeRestoredAndDoneIsDeliveredOnce" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <testcase name="changedTaskReleasesEvenWhenTheOccurrenceStillMatches" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <testcase name="counterResetAndResumeDoNotCountPausedOrPriorBootSteps" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <testcase name="registrationFailureOffersAnErrorWithoutCompleting" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <testcase name="callbackGenerationAndOccurrenceFencesSurviveLifecycle" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <testcase name="targetBoundsAndWholeStepEventsAreEnforced" classname="org.sleepwell.app.WalkSessionTest" time="0.001"/>
+  <testcase name="revokedPermissionWithFailedReleaseRetainsRetryHandleAndCannotRearm" classname="org.sleepwell.app.WalkSessionTest" time="0.001"/>
+  <testcase name="detectorCountsOnlyValidFreshDistinctStepEvents" classname="org.sleepwell.app.WalkSessionTest" time="0.001"/>
+  <testcase name="explicitFallbackRevokesAllQueuedCallbacksAndCanRetryUnregister" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <testcase name="permissionRevocationRejectsQueuedStepsAndReleasesBeforeNotification" classname="org.sleepwell.app.WalkSessionTest" time="0.001"/>
+  <testcase name="lostOccurrenceReleasesAndCannotReviveAnOldCallback" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <testcase name="genuineWalkIsOneRoutineUnitAndCannotSkipTheNextTask" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <testcase name="failedUnregisterKeepsTheOwnedHandleForRetryWithoutRevivingCallbacks" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <testcase name="permissionExceptionDuringCallbackIsContainedWithoutCompletion" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <testcase name="missingPermissionOrSensorDoesNotRegister" classname="org.sleepwell.app.WalkSessionTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

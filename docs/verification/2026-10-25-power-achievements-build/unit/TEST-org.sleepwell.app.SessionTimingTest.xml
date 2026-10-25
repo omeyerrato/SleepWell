@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SessionTimingTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:13.562Z" hostname="DESKTOP-1UTDMNE" time="0.005">
+  <properties/>
+  <testcase name="noPausesPreservesLegacyDurationAndInput" classname="org.sleepwell.app.SessionTimingTest" time="0.005"/>
+  <testcase name="recordedDurationSubtractsClippedAndOverlappingPausesOnce" classname="org.sleepwell.app.SessionTimingTest" time="0.0"/>
+  <testcase name="monotonicDurationIsAuthoritativeEvenWhenWallClockChanges" classname="org.sleepwell.app.SessionTimingTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SunriseScheduleTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:38.296Z" hostname="DESKTOP-1UTDMNE" time="0.007">
+  <properties/>
+  <testcase name="offsetChangesRealDeadlineAndClaimUsesExactComputedInstant" classname="org.sleepwell.app.SunriseScheduleTest" time="0.001"/>
+  <testcase name="offsetCrossingTargetDateUsesClockInsteadOfChangingSelectedWeekday" classname="org.sleepwell.app.SunriseScheduleTest" time="0.0"/>
+  <testcase name="skippedSolarInstantIsFrozenAndOnlyThatOccurrenceIsExcluded" classname="org.sleepwell.app.SunriseScheduleTest" time="0.001"/>
+  <testcase name="repeatingWeekdaysAndPastTodayUseNextMatchingSunrise" classname="org.sleepwell.app.SunriseScheduleTest" time="0.002"/>
+  <testcase name="absentSunriseUsesAcknowledgedClockWithOrdinaryDstResolution" classname="org.sleepwell.app.SunriseScheduleTest" time="0.0"/>
+  <testcase name="sameCoordinatesInNewPhoneZoneUseItsSelectedLocalDate" classname="org.sleepwell.app.SunriseScheduleTest" time="0.001"/>
+  <testcase name="skippedWholeCalendarDateDoesNotProduceDuplicateRepeatingFallback" classname="org.sleepwell.app.SunriseScheduleTest" time="0.0"/>
+  <testcase name="configurationRequiresFiniteBoundsAndExplicitFallbackConsent" classname="org.sleepwell.app.SunriseScheduleTest" time="0.001"/>
+  <testcase name="explicitDateNeverRollsForwardOrDeliversTwice" classname="org.sleepwell.app.SunriseScheduleTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

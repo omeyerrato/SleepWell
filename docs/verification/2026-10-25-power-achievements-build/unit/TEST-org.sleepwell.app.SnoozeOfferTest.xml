@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SnoozeOfferTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:13.612Z" hostname="DESKTOP-1UTDMNE" time="0.026">
+  <properties/>
+  <testcase name="staleRunCountPausedOwnerAndExhaustedBudgetCannotAcceptAnOldMenu" classname="org.sleepwell.app.SnoozeOfferTest" time="0.009"/>
+  <testcase name="invalidSelectionOrChangedMaximumDoesNotScheduleAnything" classname="org.sleepwell.app.SnoozeOfferTest" time="0.014"/>
+  <testcase name="immutableOfferPresentsBoundedCurrentShortenedDurations" classname="org.sleepwell.app.SnoozeOfferTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

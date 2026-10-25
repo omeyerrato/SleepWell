@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.MissedNightTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:11.766Z" hostname="DESKTOP-1UTDMNE" time="0.033">
+  <properties/>
+  <testcase name="reviewedBoundsMayDifferFromPhoneIdleButStayInsideTheNight" classname="org.sleepwell.app.MissedNightTest" time="0.005"/>
+  <testcase name="zeroLengthPairIsDiscardedAndRegressingEvidenceFailsClosed" classname="org.sleepwell.app.MissedNightTest" time="0.013"/>
+  <testcase name="missingEndpointsAreNeverInferredAtWindowBounds" classname="org.sleepwell.app.MissedNightTest" time="0.001"/>
+  <testcase name="longestUncoveredPairIsSuggestedWithoutTrimmingAroundRecords" classname="org.sleepwell.app.MissedNightTest" time="0.009"/>
+  <testcase name="actualPairsDoNotBridgeInteractiveBreaks" classname="org.sleepwell.app.MissedNightTest" time="0.0"/>
+  <testcase name="duplicateOffUsesLatestEvidenceAndOnCannotCreateTwoPairs" classname="org.sleepwell.app.MissedNightTest" time="0.0"/>
+  <testcase name="adjacentRecordsAreAllowedButOpenRecordsBlockFutureEstimates" classname="org.sleepwell.app.MissedNightTest" time="0.0"/>
+  <testcase name="morningWindowEndsAtQueryTimeAndOldOrFutureDatesAreRejected" classname="org.sleepwell.app.MissedNightTest" time="0.002"/>
+  <testcase name="rebootAndShutdownInvalidatePendingScreenOff" classname="org.sleepwell.app.MissedNightTest" time="0.0"/>
+  <testcase name="nightWindowUsesActualDstInstantsInsteadOfFixedTwentyFourHours" classname="org.sleepwell.app.MissedNightTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

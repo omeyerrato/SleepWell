@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TravelCuePlanTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:38.717Z" hostname="DESKTOP-1UTDMNE" time="0.016">
+  <properties/>
+  <testcase name="windowUsesHomeNotDestinationOrDeviceZone" classname="org.sleepwell.app.TravelCuePlanTest" time="0.009"/>
+  <testcase name="disabledDefaultsNeverChooseOutputOrPersistReview" classname="org.sleepwell.app.TravelCuePlanTest" time="0.001"/>
+  <testcase name="tripIdentityAndBothZonesAreFenced" classname="org.sleepwell.app.TravelCuePlanTest" time="0.0"/>
+  <testcase name="midWindowRetainsOriginalAnchorsAndAfterEndUsesNextNight" classname="org.sleepwell.app.TravelCuePlanTest" time="0.001"/>
+  <testcase name="springGapAdvancesToValidTimeAndDurationIsElapsed" classname="org.sleepwell.app.TravelCuePlanTest" time="0.0"/>
+  <testcase name="enabledWindowsMustFinishTheirNightsBeforeDeparture" classname="org.sleepwell.app.TravelCuePlanTest" time="0.001"/>
+  <testcase name="foldUsesEarlierOffsetOnceAndDoesNotRepeatFold" classname="org.sleepwell.app.TravelCuePlanTest" time="0.0"/>
+  <testcase name="unknownZoneRejected" classname="org.sleepwell.app.TravelCuePlanTest" time="0.0"/>
+  <testcase name="enabledUnreviewedRejected" classname="org.sleepwell.app.TravelCuePlanTest" time="0.0"/>
+  <testcase name="arbitraryDurationRejected" classname="org.sleepwell.app.TravelCuePlanTest" time="0.0"/>
+  <testcase name="bindingCreatesNewImmutableOwnerSnapshot" classname="org.sleepwell.app.TravelCuePlanTest" time="0.001"/>
+  <testcase name="unboundedNightsRejected" classname="org.sleepwell.app.TravelCuePlanTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.BackupIoTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:09.269Z" hostname="DESKTOP-1UTDMNE" time="0.367">
+  <properties/>
+  <testcase name="quotedBracketsAreDataButPathologicalNestingRejects" classname="org.sleepwell.app.BackupIoTest" time="0.002"/>
+  <testcase name="limitIsBytesRatherThanCharacters" classname="org.sleepwell.app.BackupIoTest" time="0.169"/>
+  <testcase name="cancelledReadCannotReturnAReview" classname="org.sleepwell.app.BackupIoTest" time="0.004"/>
+  <testcase name="exactLimitAndWideUtf8RoundTrip" classname="org.sleepwell.app.BackupIoTest" time="0.145"/>
+  <testcase name="brokenZeroByteProviderCannotSpinForever" classname="org.sleepwell.app.BackupIoTest" time="0.002"/>
+  <testcase name="partialExportAndCancellationAreHonest" classname="org.sleepwell.app.BackupIoTest" time="0.003"/>
+  <testcase name="oversizeOutputIsRejectedBeforeFirstByte" classname="org.sleepwell.app.BackupIoTest" time="0.011"/>
+  <testcase name="writePropagatesProviderFailureAndPreservesItsPrefix" classname="org.sleepwell.app.BackupIoTest" time="0.001"/>
+  <testcase name="malformedUtf8IsNeverSilentlyReplaced" classname="org.sleepwell.app.BackupIoTest" time="0.002"/>
+  <testcase name="boundedWriterCountsMixedBulkAndSingleByteWrites" classname="org.sleepwell.app.BackupIoTest" time="0.023"/>
+  <testcase name="cancelledBeforeOpenCompletesDoesNotReadAnyProviderBytes" classname="org.sleepwell.app.BackupIoTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

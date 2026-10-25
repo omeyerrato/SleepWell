@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AlarmSoundModeTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:08.776Z" hostname="DESKTOP-1UTDMNE" time="0.06">
+  <properties/>
+  <testcase name="inaccessibleEntriesAreSkippedOnceThenSingleSafeFallbackIsBounded" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.005"/>
+  <testcase name="supportedBoundsRejectDuplicatesAndNonContentProviders" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.002"/>
+  <testcase name="primaryCompletionDuringPendingBackupIsConsumedOnceWhenReplacementFails" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.001"/>
+  <testcase name="savedPositionResumesLastStartedTrackAndMalformedPositionStartsAtZero" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.002"/>
+  <testcase name="importedNamesFollowReorderingAndRemovalWithoutChangingSources" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.009"/>
+  <testcase name="backupInterruptsSequenceAndEndsAtSameTrackWithoutAcceptingOldCompletion" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.001"/>
+  <testcase name="deterministicShuffleHasEveryTrackOnceAndPreservesSameOccurrence" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.001"/>
+  <testcase name="explicitSilentNeverAllocatesEvenAfterBackupDelayErrorsOrRepeatedStarts" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.0"/>
+  <testcase name="failedProviderIsAttemptedOnlyOncePerOccurrenceEvenAcrossManyGoodCompletions" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.013"/>
+  <testcase name="failedBackupKeepsSequentialPrimaryWorkingAtEscalatedEnvelope" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.0"/>
+  <testcase name="immutableTemplateCopiesPreserveSourcesWithoutScheduleAuthority" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.001"/>
+  <testcase name="activeTrackDecodeErrorSkipsForwardRatherThanRestartingWholeList" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.001"/>
+  <testcase name="completionDrivesOrderedCyclicPlaylistAndOldCallbacksCannotAdvance" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.001"/>
+  <testcase name="defaultSingleTonePreservesLoopingAndNoCompletionSequence" classname="org.sleepwell.app.AlarmSoundModeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

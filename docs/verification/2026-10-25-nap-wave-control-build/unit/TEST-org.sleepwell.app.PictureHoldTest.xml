@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.PictureHoldTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:12.785Z" hostname="DESKTOP-1UTDMNE" time="0.049">
+  <properties/>
+  <testcase name="sensorTimestampMustMapToOneSupportedMonotonicClock" classname="org.sleepwell.app.PictureHoldTest" time="0.032"/>
+  <testcase name="missingDifferentStaleDuplicateFutureAndLongGapResetHold" classname="org.sleepwell.app.PictureHoldTest" time="0.007"/>
+  <testcase name="mathFallbackIsOwnedButNeverRequiresCameraSuccess" classname="org.sleepwell.app.PictureHoldTest" time="0.005"/>
+  <testcase name="proofRequiresSameRequestReferenceCurrentUnitAndFreshSingleUse" classname="org.sleepwell.app.PictureHoldTest" time="0.003"/>
+  <testcase name="threeFreshStableFramesOverDeclaredSpanAreRequired" classname="org.sleepwell.app.PictureHoldTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

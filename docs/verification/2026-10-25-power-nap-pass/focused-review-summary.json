@@ -1,0 +1,30 @@
+{
+  "scope": "nap-features",
+  "full_app_review": false,
+  "expected_classes": 4,
+  "expected_methods": 8,
+  "class_results": [
+    {
+      "class": "PowerNapNativeTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "PowerNapFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "NapFlowTest",
+      "expected_methods": 3,
+      "passed": true
+    },
+    {
+      "class": "NapIntegrationFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 27,
+  "failures": []
+}

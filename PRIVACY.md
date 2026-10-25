@@ -4,7 +4,7 @@ SleepWell stores data on your phone by default. It has no SleepWell account syst
 
 ## Data you choose to collect
 
-- Alarms: names, times, weekdays, challenge preferences, sound selections, and alarm state.
+- Alarms: names, times, weekdays, challenge preferences, sound selections, alarm state and optional manually entered sunrise coordinates.
 - Tracking: timestamps, one-minute movement summaries, ambient light values, and optional microphone amplitude.
 - Audio: optional on-device model estimates and, with separate consent, bounded ten-second amplitude-triggered clips. The initial clip limit is60 per tracked session; retention and favorite protection are configurable. Estimates may be wrong; corrections retain the original estimate. Custom category inclusion suppresses all new clips, and unreadable analysis settings block new analysis/clips until reviewed. Shared sonar analysis saves no raw sonar audio. No speech transcription is performed.
 - Journal: notes, tags, and subjective ratings you enter.

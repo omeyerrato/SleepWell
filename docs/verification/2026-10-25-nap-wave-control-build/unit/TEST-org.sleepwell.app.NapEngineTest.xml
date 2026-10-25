@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.NapEngineTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:12.714Z" hostname="DESKTOP-1UTDMNE" time="0.029">
+  <properties/>
+  <testcase name="motionGateRequiresRealFiniteSignalSamplesAndTwoActiveMinutesWithinWindow" classname="org.sleepwell.app.NapEngineTest" time="0.006"/>
+  <testcase name="cancelledNapPersistsAndCannotReappearAfterProcessRecreation" classname="org.sleepwell.app.NapEngineTest" time="0.007"/>
+  <testcase name="sameBootClockChangesDoNotAlterDurationOrSmartWindow" classname="org.sleepwell.app.NapEngineTest" time="0.004"/>
+  <testcase name="differentDeviceCannotMistakeMatchingBootNumberForSameBoot" classname="org.sleepwell.app.NapEngineTest" time="0.0"/>
+  <testcase name="scheduleErrorPersistsAndRecreationRetriesOriginalDeadline" classname="org.sleepwell.app.NapEngineTest" time="0.002"/>
+  <testcase name="rangesAndOverflowFailBeforeScheduling" classname="org.sleepwell.app.NapEngineTest" time="0.004"/>
+  <testcase name="duplicateLateAndReconciledCallbacksCannotDeliverAgain" classname="org.sleepwell.app.NapEngineTest" time="0.0"/>
+  <testcase name="uncertainDeliveryRemainsClaimedAndCannotBeBlindlyRetried" classname="org.sleepwell.app.NapEngineTest" time="0.001"/>
+  <testcase name="overdueBootReconcileSchedulesImmediateOwnedDeliveryNotTomorrowOrInlineEffect" classname="org.sleepwell.app.NapEngineTest" time="0.0"/>
+  <testcase name="twentyMinuteTimerPreservesMillisecondsAndNeverFloorsToLocalMinute" classname="org.sleepwell.app.NapEngineTest" time="0.0"/>
+  <testcase name="finishedOrDisabledRowRejectsCallbacks" classname="org.sleepwell.app.NapEngineTest" time="0.0"/>
+  <testcase name="replacementRejectsOldCancelAndOldDeliveryEvenWhenDue" classname="org.sleepwell.app.NapEngineTest" time="0.001"/>
+  <testcase name="permissionDeniedRetainsSameTimerForRetryWithoutExtendingIt" classname="org.sleepwell.app.NapEngineTest" time="0.0"/>
+  <testcase name="failedDurableClaimNeverCallsExternalDelivery" classname="org.sleepwell.app.NapEngineTest" time="0.0"/>
+  <testcase name="rebootUsesOriginalWallDeadlineWithoutStartingAnotherDuration" classname="org.sleepwell.app.NapEngineTest" time="0.001"/>
+  <testcase name="scheduledEntryIncludesFutureDelayAndCannotSmartWakeBeforeStart" classname="org.sleepwell.app.NapEngineTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

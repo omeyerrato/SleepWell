@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TrackingFlipSessionTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:38.701Z" hostname="DESKTOP-1UTDMNE" time="0.011">
+  <properties/>
+  <testcase name="failedHoldDoesNotPauseRecording" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.007"/>
+  <testcase name="unregisterFailurePreventsResumeAndRetainsRetry" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="resumeRearmsFreshBaselineAndCannotImmediatelyPause" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="closeCancelsPendingResumeAndReleasesOnlyItsPort" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.001"/>
+  <testcase name="staleOwnerClosesAndNeverRevives" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="faceDownCannotExtendPauseDeadline" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.001"/>
+  <testcase name="manualPauseRevokesTimerAndOldGesture" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="cleanupAcknowledgmentRequiredBeforeGestureResume" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="failedCapturePauseDoesNotRetry" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.001"/>
+  <testcase name="explicitStableFaceUpResumesSameOwner" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="unavailableInputLeavesManualFallback" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="registrationThrowKeepsRetryableStopHandle" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="lateTimerLeavesExplicitResumeFallback" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="activeFreshFlipRequestsExactlyOnePause" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="constructionHasNoSensorOrPauseEffects" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="latePauseAckCannotRestartAfterDeadline" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <testcase name="timerResumesAtFiveMinutesOnly" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.001"/>
+  <testcase name="unreliableSensorNeverTriggersPause" classname="org.sleepwell.app.TrackingFlipSessionTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

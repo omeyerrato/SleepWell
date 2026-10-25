@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SonarSoundWorkerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:34.880Z" hostname="DESKTOP-1UTDMNE" time="0.385">
+  <properties/>
+  <testcase name="finalCutCannotProcessQueuedFuturePcmOrPadAShortCapture" classname="org.sleepwell.app.SonarSoundWorkerTest" time="0.114"/>
+  <testcase name="invalidCaptureAdmissionDoesNotLoadAModel" classname="org.sleepwell.app.SonarSoundWorkerTest" time="0.003"/>
+  <testcase name="saturatedQueueExplicitlyFailsWithoutBlockingCaptureOrLeakingModel" classname="org.sleepwell.app.SonarSoundWorkerTest" time="0.008"/>
+  <testcase name="captureBufferIsCopiedAndModelRunsOnlyOnOwnedThread" classname="org.sleepwell.app.SonarSoundWorkerTest" time="0.126"/>
+  <testcase name="finishIsNonblockingAndNeverInterruptsAnInflightModel" classname="org.sleepwell.app.SonarSoundWorkerTest" time="0.112"/>
+  <testcase name="earlyModelFailureRetainsAnAcknowledgedOneShotFinishResult" classname="org.sleepwell.app.SonarSoundWorkerTest" time="0.022"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

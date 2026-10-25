@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TrackingFlipGestureTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:38.691Z" hostname="DESKTOP-1UTDMNE" time="0.003">
+  <properties/>
+  <testcase name="nonFiniteInputDoesNotPause" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <testcase name="sparseEndpointsCannotSatisfyStableDuration" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <testcase name="unreliableMotionRequiresFreshReliableSequence" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <testcase name="largeMotionResetsTargetHold" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <testcase name="staleSamplesCannotFormBaseline" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <testcase name="oldBaselineExpiresDuringLongTurn" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.001"/>
+  <testcase name="futureSampleResetsBaseline" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <testcase name="invertedBaselineSupportsResumeOnlyAfterDown" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <testcase name="initialUpOnlyDoesNotPause" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.001"/>
+  <testcase name="sampleGapRequiresNewUpBaseline" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <testcase name="startingFaceDownNeverPauses" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <testcase name="transientFlipDoesNotPause" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <testcase name="preAdmissionSamplesCannotArm" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <testcase name="stableUpThenDownTriggersOnce" classname="org.sleepwell.app.TrackingFlipGestureTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

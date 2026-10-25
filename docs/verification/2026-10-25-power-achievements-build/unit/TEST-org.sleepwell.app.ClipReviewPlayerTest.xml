@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.ClipReviewPlayerTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:30:06.614Z" hostname="DESKTOP-1UTDMNE" time="0.011">
+  <properties/>
+  <testcase name="seeksAndCompletedRestartStayWithinTheActualInterval" classname="org.sleepwell.app.ClipReviewPlayerTest" time="0.008"/>
+  <testcase name="failedPrepareReleasesOwnershipAndAllowsExplicitRetry" classname="org.sleepwell.app.ClipReviewPlayerTest" time="0.0"/>
+  <testcase name="duplicatePreparedAndPlayingCallbacksCannotRestartPlayback" classname="org.sleepwell.app.ClipReviewPlayerTest" time="0.0"/>
+  <testcase name="synchronousPreparationCanStillStartExactlyOnce" classname="org.sleepwell.app.ClipReviewPlayerTest" time="0.002"/>
+  <testcase name="hiddenOrDestroyedPlayerCannotStartAfterLatePrepare" classname="org.sleepwell.app.ClipReviewPlayerTest" time="0.0"/>
+  <testcase name="switchingSelectionFencesAllOldCallbacks" classname="org.sleepwell.app.ClipReviewPlayerTest" time="0.0"/>
+  <testcase name="explicitPauseBeforePreparationCannotAutoplayLater" classname="org.sleepwell.app.ClipReviewPlayerTest" time="0.0"/>
+  <testcase name="pauseAndFocusLossNeverAutomaticallyResume" classname="org.sleepwell.app.ClipReviewPlayerTest" time="0.0"/>
+  <testcase name="openingDoesNotPlayUntilRealPreparationAcknowledges" classname="org.sleepwell.app.ClipReviewPlayerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

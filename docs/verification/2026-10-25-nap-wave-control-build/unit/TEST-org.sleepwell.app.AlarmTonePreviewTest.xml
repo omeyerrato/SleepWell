@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AlarmTonePreviewTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:08.870Z" hostname="DESKTOP-1UTDMNE" time="0.026">
+  <properties/>
+  <testcase name="switchingClosesPreviousAndLateCallbacksCannotRestartIt" classname="org.sleepwell.app.AlarmTonePreviewTest" time="0.008"/>
+  <testcase name="failureAndCompletionReleaseSessionWithoutChangingVolume" classname="org.sleepwell.app.AlarmTonePreviewTest" time="0.001"/>
+  <testcase name="hiddenAndClosedOwnersFenceReadyPlayErrorAndEnd" classname="org.sleepwell.app.AlarmTonePreviewTest" time="0.002"/>
+  <testcase name="quietGainIsBoundedIndependentlyOfToneAndResumesOnlyExplicitly" classname="org.sleepwell.app.AlarmTonePreviewTest" time="0.004"/>
+  <testcase name="selectedChimeReachesActualAlarmOrchestrationThroughInertSink" classname="org.sleepwell.app.AlarmTonePreviewTest" time="0.001"/>
+  <testcase name="toneMappingPreservesOriginalsAndRoutesNewChime" classname="org.sleepwell.app.AlarmTonePreviewTest" time="0.0"/>
+  <testcase name="loadingPauseIsCancellationNotDeferredPlayback" classname="org.sleepwell.app.AlarmTonePreviewTest" time="0.0"/>
+  <testcase name="noOutputAllocationBeforeVisibleExplicitPlay" classname="org.sleepwell.app.AlarmTonePreviewTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

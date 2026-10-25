@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.RecordAchievementsTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:13.928Z" hostname="DESKTOP-1UTDMNE" time="0.014">
+  <properties/>
+  <testcase name="pausesAwakeAndTrimsAreExcludedFromActualEvidence" classname="org.sleepwell.app.RecordAchievementsTest" time="0.003"/>
+  <testcase name="measuredEpochsRequireRealFiniteValuesSamplesAndSonarValidQuality" classname="org.sleepwell.app.RecordAchievementsTest" time="0.001"/>
+  <testcase name="dstDurationIsElapsedAndRecordedZoneDefinesDay" classname="org.sleepwell.app.RecordAchievementsTest" time="0.001"/>
+  <testcase name="emptyMissingDaysNeverBecomeAwards" classname="org.sleepwell.app.RecordAchievementsTest" time="0.0"/>
+  <testcase name="futureEmptyAndPartialValidCoverageDoNotQualify" classname="org.sleepwell.app.RecordAchievementsTest" time="0.001"/>
+  <testcase name="samePhysicalIntervalAcrossZonesAndRestoredDuplicatesCountsOnce" classname="org.sleepwell.app.RecordAchievementsTest" time="0.0"/>
+  <testcase name="thresholdsUseUniqueRecordedDaysAndBoundedProgress" classname="org.sleepwell.app.RecordAchievementsTest" time="0.003"/>
+  <testcase name="unknownManualNapHealthInterruptedAndClockChangesDoNotQualify" classname="org.sleepwell.app.RecordAchievementsTest" time="0.001"/>
+  <testcase name="incompletePiecesOnOneRecordedDayCanReachThresholdWithoutDoubleCounting" classname="org.sleepwell.app.RecordAchievementsTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.HealthSleepTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-25T07:00:11.269Z" hostname="DESKTOP-1UTDMNE" time="0.01">
+  <properties/>
+  <testcase name="immutableStagesAndOriginalNotesSurviveDraftEdits" classname="org.sleepwell.app.HealthSleepTest" time="0.001"/>
+  <testcase name="boundedMetadataRejectsInvalidOriginsAndTooManyStages" classname="org.sleepwell.app.HealthSleepTest" time="0.003"/>
+  <testcase name="noOffsetRemainsUnknownAndBadOffsetRejects" classname="org.sleepwell.app.HealthSleepTest" time="0.002"/>
+  <testcase name="gapsBetweenStagesAreNotFilled" classname="org.sleepwell.app.HealthSleepTest" time="0.0"/>
+  <testcase name="absentStagesRemainUnreportedRatherThanInvented" classname="org.sleepwell.app.HealthSleepTest" time="0.0"/>
+  <testcase name="overlapAndOutOfSessionStagesReject" classname="org.sleepwell.app.HealthSleepTest" time="0.001"/>
+  <testcase name="independentStartEndOffsetsRemainHistoricalAcrossDst" classname="org.sleepwell.app.HealthSleepTest" time="0.0"/>
+  <testcase name="reportedAwakeKindsAreTheOnlyStagesRemovedFromDuration" classname="org.sleepwell.app.HealthSleepTest" time="0.001"/>
+  <testcase name="unknownStageAndReversedSessionReject" classname="org.sleepwell.app.HealthSleepTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
