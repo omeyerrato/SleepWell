@@ -11,12 +11,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /** Decoder/provider calls never block the main loop. Each bounded attempt owns its player thread. */
 final class AlarmAudioSink implements AlarmPlayback.Sink {
+    private static final AtomicInteger SOUND_OWNERS=new AtomicInteger();
+    static boolean captureQuiet(){return SOUND_OWNERS.get()==0;}
     private static final Object VOLUME_LOCK=new Object();
     private final Context context;private final Handler main;private final BooleanSupplier alive;
     private final Set<Player> players=java.util.concurrent.ConcurrentHashMap.newKeySet();private final String occurrence;private final AlarmVolumeLease volume;
     private volatile boolean closed;private volatile long volumeRevision;
     AlarmAudioSink(Context context,Handler main,String occurrence,BooleanSupplier alive){
-        this.occurrence=occurrence;this.context=context.getApplicationContext();this.main=main;this.alive=alive;AudioManager audio=context.getSystemService(AudioManager.class);
+        SOUND_OWNERS.incrementAndGet();this.occurrence=occurrence;this.context=context.getApplicationContext();this.main=main;this.alive=alive;AudioManager audio=context.getSystemService(AudioManager.class);
         volume=new AlarmVolumeLease(new AlarmVolumeLease.Port(){public int read(){return audio.getStreamVolume(AudioManager.STREAM_ALARM);}public int maximum(){return audio.getStreamMaxVolume(AudioManager.STREAM_ALARM);}public void write(int value){audio.setStreamVolume(AudioManager.STREAM_ALARM,value,0);}},new AlarmVolumeLease.Journal(){
             public AlarmVolumeLease.State load(){try{JSONObject j=new JSONObject(Prefs.text(context,"alarmVolumeLease",""));return new AlarmVolumeLease.State(j.getString("occurrence"),j.getString("owner"),j.getInt("original"),j.getInt("last"),j.optBoolean("overridden"));}catch(JSONException e){return null;}}
             @android.annotation.SuppressLint("ApplySharedPref") // Worker-only durability barrier before changing the global stream.
@@ -32,11 +34,12 @@ final class AlarmAudioSink implements AlarmPlayback.Sink {
         // Queue on the pending player's owner, before its queued start. No stream I/O on main.
         long revision=++volumeRevision;Player player=(Player)layer;player.worker.post(()->{if(!player.available()||revision!=volumeRevision)return;try{synchronized(VOLUME_LOCK){if(!player.available()||revision!=volumeRevision)return;player.digitalScale=volume.acquire(policy,backup);}}catch(RuntimeException error){player.digitalScale=policy.targetPercent/100f;error("Android did not allow the alarm volume change.");}});
     }
-    @Override public void stopped(){
+    @Override public void stopped(){stopped(()->{});}
+    @Override public void stopped(Runnable acknowledged){
         closed=true;
         // Only players that reached start need a quiet barrier. A blocked, cancelled
         // provider attempt can never start later and cannot stall volume restoration.
-        List<Player> closing=new ArrayList<>(players);AtomicInteger remaining=new AtomicInteger(closing.size()+1);Runnable quiet=()->{if(remaining.decrementAndGet()==0)new Thread(()->{try{synchronized(VOLUME_LOCK){volume.release();}}catch(RuntimeException error){error("Alarm volume could not be restored.");}},"SleepWell volume restore").start();};
+        List<Player> closing=new ArrayList<>(players);AtomicInteger remaining=new AtomicInteger(closing.size()+1);Runnable quiet=()->{if(remaining.decrementAndGet()==0)new Thread(()->{try{synchronized(VOLUME_LOCK){volume.release();}}catch(RuntimeException error){error("Alarm volume could not be restored.");}finally{SOUND_OWNERS.decrementAndGet();main.post(acknowledged);}},"SleepWell volume restore").start();};
         for(Player player:closing)player.whenQuiet(quiet);quiet.run();
     }
     @Override public void failed(){error("Alarm sound and its fallback could not be played. The challenge remains available.");}

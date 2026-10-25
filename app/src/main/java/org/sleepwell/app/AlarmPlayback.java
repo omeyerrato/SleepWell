@@ -7,7 +7,7 @@ import java.util.function.LongSupplier;
 final class AlarmPlayback {
     interface Ready {void ready();void failed();}
     interface Layer {void prepare(Ready callback);void gain(float gain);void start(Ready activated);void close();default void completion(Runnable done){}}
-    interface Sink {Layer create(String tone);default Layer create(String tone,boolean loop,String key,int position){return create(tone);}default String occurrence(){return "playback";}default int position(String key){return 0;}void volume(Layer layer,AlarmWakePolicy policy,boolean backup);void stopped();default void failed(){}}
+    interface Sink {Layer create(String tone);default Layer create(String tone,boolean loop,String key,int position){return create(tone);}default String occurrence(){return "playback";}default int position(String key){return 0;}void volume(Layer layer,AlarmWakePolicy policy,boolean backup);void stopped();default void stopped(Runnable quiet){stopped();quiet.run();}default void failed(){}}
     private final AlarmWakePolicy policy;private final Sink sink;private final LongSupplier elapsed,clock;
     private final Set<Layer> allocated=new LinkedHashSet<>();private final String tone;private final boolean silent;private final AlarmSoundSequence sequence;private final Set<String> failedSources=new HashSet<>();private boolean completedCurrent;
     private Layer current,pending;private boolean ready,activating,closed,backup,fallback,started;private long loadingAt;private int generation,pendingPosition=-1,currentPosition=-1;
@@ -47,6 +47,7 @@ final class AlarmPlayback {
     private void apply(){try{current.gain((float)policy.gain(elapsed.getAsLong(),backup));}catch(RuntimeException error){failure(current,false);}}
     void backup(){backup(true);}
     void backup(boolean enabled){if(closed||silent||backup==enabled||policy.quiet)return;backup=enabled;if(pending!=null){safeClose(pending);pending=null;}if(!enabled&&current!=null)try{sink.volume(current,policy,false);apply();}catch(RuntimeException error){failure(current,false);return;}if(enabled)load("pulse",current!=null);else{fallback=false;primary(current!=null);}}
-    void stop(){if(closed)return;closed=true;generation++;for(Layer layer:new ArrayList<>(allocated))safeClose(layer);current=pending=null;try{sink.stopped();}catch(RuntimeException ignored){}}
+    void stop(){stop(()->{});}
+    void stop(Runnable quiet){if(closed)return;closed=true;generation++;for(Layer layer:new ArrayList<>(allocated))safeClose(layer);current=pending=null;try{sink.stopped(quiet);}catch(RuntimeException ignored){}}
     private void safeClose(Layer layer){try{layer.close();}catch(RuntimeException ignored){}finally{allocated.remove(layer);}}
 }

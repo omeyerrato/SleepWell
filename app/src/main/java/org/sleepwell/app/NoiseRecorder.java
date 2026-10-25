@@ -17,9 +17,10 @@ final class NoiseRecorder implements AutoCloseable {
     }
     private boolean savesClips(Context c){return saveOverride==null?Prefs.flag(c,"saveClips"):saveOverride;}
     private void capture(Context c,Store store,long session,ClipBudget budget,java.util.function.LongSupplier timeline) {
-        AudioRecord recorder=null;SoundAnalysisStream analysis=null;SnoreCuePolicy cues=new SnoreCuePolicy(budget.snoreCues,()->new SnoreCueOutput(c),()->Prefs.put(c,"snoreCueError","A snoring cue could not play."));
+        AudioRecord recorder=null;MicrophoneLease microphone=null;SoundAnalysisStream analysis=null;SnoreCuePolicy cues=new SnoreCuePolicy(budget.snoreCues,()->new SnoreCueOutput(c),()->Prefs.put(c,"snoreCueError","A snoring cue could not play."));
         try {
             if(c.checkSelfPermission(android.Manifest.permission.RECORD_AUDIO)!=android.content.pm.PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is not granted");
+            microphone=MicrophoneLease.acquire("sleep-noise");if(microphone==null)throw new IOException("Microphone is in use by another SleepWell capture.");
             if(savesClips(c))prune(c,store,budget);
             int size=Math.max(4096,AudioRecord.getMinBufferSize(16000,AudioFormat.CHANNEL_IN_MONO,AudioFormat.ENCODING_PCM_16BIT));
             recorder=new AudioRecord(MediaRecorder.AudioSource.MIC,16000,AudioFormat.CHANNEL_IN_MONO,AudioFormat.ENCODING_PCM_16BIT,size);
@@ -51,7 +52,7 @@ final class NoiseRecorder implements AutoCloseable {
             }
         } catch(SecurityException e) { Prefs.put(c,"audioError","Microphone permission was denied or revoked."); }
         catch(Exception e) { Prefs.put(c,"audioError",e.getMessage()==null?e.toString():e.getMessage()); }
-        finally {cues.close();try{if(analysis!=null)analysis.close();}catch(RuntimeException e){Prefs.put(c,"analysisError","Could not save the final sound event.");}capturing=false;activeRecorder=null;if(recorder!=null) { try { recorder.stop(); } catch(IllegalStateException ignored) {} recorder.release(); } }
+        finally {cues.close();try{if(analysis!=null)analysis.close();}catch(RuntimeException e){Prefs.put(c,"analysisError","Could not save the final sound event.");}capturing=false;activeRecorder=null;if(recorder!=null) { try { recorder.stop(); } catch(IllegalStateException ignored) {} try{recorder.release();if(microphone!=null)microphone.released();}catch(RuntimeException cleanup){Prefs.put(c,"audioError","Microphone cleanup could not be confirmed. Restart SleepWell before recording again.");} }else if(microphone!=null)microphone.released(); }
     }
     private static void prune(Context c,Store store,ClipBudget budget){if(budget.pruneOnce())try{SoundClips.prune(c,store);}catch(RuntimeException error){Prefs.put(c,"audioRetentionError","Expired audio cleanup needs attention. New recording can continue.");}}
     private static void little(DataOutputStream out,int value,int bytes) throws IOException { for(int i=0;i<bytes;i++) out.writeByte(value>>(8*i)); }
