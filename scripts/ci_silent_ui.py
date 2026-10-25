@@ -68,6 +68,7 @@ PHONE_FEATURE_TESTS += ("DiaryStorageTest", "TypedWakeFlowTest", "HomeWidgetNati
 PHONE_FEATURE_TESTS += ("AlarmRequestStorageTest", "AlarmRequestFlowTest", "ChallengePackNativeTest")
 PHONE_FEATURE_TESTS += ("TrackingDndStorageTest", "TrackingDndFlowTest")
 PHONE_FEATURE_TESTS += ("AlarmSoundModeStorageTest", "AlarmSoundModeFlowTest", "CalendarEventExportTest", "CalendarEventExportFlowTest", "RecordInsightsNativeTest", "RecordInsightsFlowTest")
+PHONE_FEATURE_TESTS += ("TrackingDelayStorageTest", "TrackingDelayFlowTest")
 PHONE_FEATURE_FRAMES = ["calendar-rules-" + name + ".png" for name in ("initial", "draft", "saved", "reopened")]
 PHONE_FEATURE_FRAMES += ["alarm-defaults-" + name + ".png" for name in ("initial", "recreated", "saved", "reopened", "reset", "saving", "saving-recreated", "save-error", "retry")]
 PHONE_FEATURE_FRAMES += ["health-connect-" + name + ".png" for name in ("default", "configured", "synced", "source", "conflict", "kept", "unavailable", "permissions")]
@@ -86,6 +87,7 @@ PHONE_FEATURE_FRAMES += ["tracking-dnd-" + name + ".png" for name in ("default",
 PHONE_FEATURE_FRAMES += ["alarm-mode-" + name + ".png" for name in ("initial", "silent", "playlist", "configured", "recreated", "reopened", "single")]
 PHONE_FEATURE_FRAMES += ["calendar-event-" + name + ".png" for name in ("default", "recreated", "unavailable", "opened")]
 PHONE_FEATURE_FRAMES += ["record-insights-" + name + ".png" for name in ("week", "goals", "reopened", "empty")]
+PHONE_FEATURE_FRAMES += ["tracking-delay-" + name + ".png" for name in ("default", "draft-recreated", "saved", "reopened", "countdown", "countdown-recreated", "cancelled", "second-wait", "started")]
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
 root = Path(__file__).resolve().parents[1]
@@ -192,6 +194,7 @@ method_counts.update({"DiaryStorageTest": 10, "TypedWakeFlowTest": 2, "HomeWidge
 method_counts.update({"AlarmRequestStorageTest": 3, "ChallengePackNativeTest": 8})
 method_counts.update({"TrackingDndStorageTest": 4, "TrackingDndFlowTest": 2})
 method_counts.update({"AlarmSoundModeStorageTest": 4, "RecordInsightsNativeTest": 3})
+method_counts.update({"TrackingDelayStorageTest": 4, "TrackingDelayFlowTest": 2})
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
