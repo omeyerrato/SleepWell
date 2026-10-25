@@ -17,6 +17,11 @@ below. External accounts and services are supplied by the user.
 - Object recognition uses a bundled Apache2.0 TensorFlow model and selected model
   label, with local CameraX/LiteRT processing after explicit Start. No images or
   image templates are saved/uploaded. This checks image content, not liveness.
+- Generated morning QR codes keep their random payload only in the unfinished
+  screen and Android's saved screen state. Enrollment keeps the location label
+  and digest. Explicit PNG/PDF export or Android printing sends the usable code
+  to your chosen document/print provider; those copies can satisfy the challenge
+  and cannot be recreated from the saved digest. Cancelling does not enroll it.
 - Smile and Pose challenges use bundled proprietary Google ML Kit models for local
   camera processing. SleepWell saves no camera images or face/body templates.
   Google may receive SDK usage/performance metrics; the in-app details disclose

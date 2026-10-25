@@ -114,3 +114,8 @@ Original challenge policy requires the chosen actual model label, score/margin
 and a fresh multi-frame hold. Scores are not calibrated confidence. Dim-room,
 household-object and camera accuracy remain unverified; photos/screens may pass.
 The app retains no camera image or face/body template for this task.
+
+Generated morning-code PNG/PDF pages use original Canvas text/layout and locally
+generated random payloads encoded by the existing Apache2.0 ZXing dependency.
+The generated code is data, not downloaded artwork. No new asset pack, network
+service or dependency is introduced by printing/export.

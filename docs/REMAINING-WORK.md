@@ -49,6 +49,27 @@ preserved; actual OS timer delivery remains unverified.
 The [53a0c08 development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-53a0c08)
 is now published with all five additions; uploaded size/digest match the local APK.
 
+### Additional source after53a0c08
+
+- [x] Custom exact timers are reachable directly from Nap; cancelling the duration
+  picker leaves the draft unchanged. Nap profiles and narration entry labels now
+  describe their expanded behavior.
+- [x] Default-off battery-aware ACTIVE movement/light sampling requests a reduced
+  rate at20% unplugged, restoring normal at25% or charging. Automatic waiting,
+  microphone/sonar, capture admission and the fixed alarm deadline are unchanged.
+  Real sample counts and policy/calibration provenance are retained; no savings or
+  accuracy amount is claimed.
+- [x] Generated morning QR enrollment creates actual PNG/PDF pages and Android
+  printing. Only label/hash enter the task after explicit Use/Save; export or
+  Cancel does not replace enrollment. No camera/network is started by generation.
+- [x] Home widgets compare acknowledged owned snoozes with ordinary/nap deadlines,
+  showing seconds and a review state for unconfirmed snoozes. Widget refresh/taps
+  cannot schedule/fire alarms. Old snoozes without receipts remain unconfirmed.
+
+Combined source **9c6b1c9** builds **PASS1m23s**, with the original signing key,
+unchanged schema15 and backup13. These additions still require runtime acceptance.
+The published53a0c08 APK does not contain them.
+
 This window adds actual production paths for:
 
 - Extra loud optional per-player+6dB processing, with max-stream fallback.

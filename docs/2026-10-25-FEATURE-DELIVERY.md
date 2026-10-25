@@ -180,3 +180,34 @@ includes all five follow-up flows. GitHub reports the214779315-byte APK uploaded
 its SHA256 matches the frozen local artifact:
 `b86353e206feb0df1352fe5a869a6471ca26636c1a1fd26fce1e6a1b82a13638`.
 Original signer was checked locally. This release remains uninstalled on the phone.
+
+## Printable codes, sampling and widget follow-up
+
+Combined source **9c6b1c9** builds in **1m23s**, same installed signer, schema15
+and backup13. It adds:
+
+- Direct Nap → Custom timer access to the actual exact-second timer path, with
+  restored unfinished duration fields and Cancel leaving the draft unchanged.
+- Default-off battery-aware ACTIVE movement/light sampling, pinned per run.
+  At20% unplugged it requests500ms accelerometer/1s light, restoring normal at25%
+  or charging. Automatic waiting keeps5Hz; mic/sonar/admission/deadlines stay as
+  before. Counts are real, empty measurement minutes stay absent, original motion
+  calibration is retained in strict per-session policy metadata. Actual savings
+  and sensor/accuracy behavior are unverified.
+- Locally generated random morning QR codes with real PNG/PDF exports and Android
+  printing. Only label/hash return through a fresh request after explicit Use;
+  existing Save code/Save alarm remain required. Payload lives only in the
+  unfinished screen/Bundle, not task/preferences/backups. Export/cancel does not
+  replace enrollment. Provider failures disclose possible partial destination
+  files; a kept-copy confirmation prevents accidental unrecoverable enrollment.
+- Next-alarm widgets now include acknowledged owned snooze deadlines and exact
+  seconds. Receipt validation fences changed/deleted rows, run/budget/source,
+  consumed one-shot/claimed nap, occurrence and boot. Unconfirmed/old snoozes show
+  review/fallback. This display-only receipt never authorizes delivery; widget
+  refresh/taps do not schedule or fire alarms and failed receipt persistence
+  cannot roll back real scheduling.
+
+Root commits3913808 (direct custom timers),9b7e260 (battery sampling),98e4f05
+(printable QR) and9c6b1c9 (snooze widget). No new tests/lint/screenshots or physical
+phone/camera/printer/provider actions ran. These source flows are build-only,
+not runtime or visual acceptance, and are absent from the earlier53a0c08 APK.

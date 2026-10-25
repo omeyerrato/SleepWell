@@ -645,38 +645,16 @@
         "ChallengeRoutine.java",
         "AlarmEditorActivity.java",
         "AlarmActivity.java",
-        "MathOperatorGrid.java"
+        "MathOperatorGrid.java",
+        "GeneratedMorningQr.java",
+        "GeneratedMorningQrJob.java",
+        "GeneratedMorningQrActivity.java"
       ],
-      "validation": "MorningCodeTest, QrDecoderTest, QrLumaTest, QrProofTest and QrScanSessionTest:14 new pure passes on401-test branch, debug/native APK and lint pass. Actual generated UTF-8/rotated/inverted QR bytes decode. QrCodeConfigurationTest 1 PASS24.619s ata8362a1/CI40047180910 with12 individually reviewed inert fake-camera/access originals. Draft/save/reopen/private backup invariants pass; actual camera/ringing transition and full reference-screen fidelity remain unverified. Later14c4d5a shares the Math/QR operator cards; scoped debug/native APK and lint pass1m23s. QR last-operator error plus card geometry require13 original frames in a future run; current frozen9188e78 still requires12. Later9188e78/CI40051144096 QR flow FAILS on stale native control during fallback rerender; prior a836 pass remains narrower evidence. d4c08c7 re-finds controls after each action and retries only pre-click StaleObjectException; shared14c4d5a grid and13-frame geometry/error contract remain pending. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Latest QrCodeConfigurationTest 1 PASS26.218s atc48fedd/CI40054511743: all13 originals individually reviewed, shared card geometry/last-operator error/save/reopen proven with fake camera/access. Actual scanner/ringing and full board04 segmented fidelity remain open.",
+      "validation": "Combined production assembleDebug9c6b1c9 PASS1m23s; build-only. No new unit/native/lint/screenshot, device, camera, printer, provider or widget-host validation. Historical fixture evidence does not validate these additions.",
       "status": "partial",
-      "notes": "Explicit camera enrollment stores only location label and SHA256, never raw QR text or URLs. Multiple ordered distinct QR tasks can each own1 routine unit; nonce/run/unit/hash and current occurrence fence completion. Saved one-question graded Math fallback; no permission dialog while ringing. Optional CameraX/ZXing offline dependencies, missing permission/camera/error/cancel states and strict backup JSON. General barcode formats, generated printable codes and actual CameraX compatibility remain missing or unverified.",
+      "notes": "Explicit camera enrollment stores only location label and SHA256, never raw QR text or URLs. Multiple ordered distinct QR tasks can each own1 routine unit; nonce/run/unit/hash and current occurrence fence completion. Saved one-question graded Math fallback; no permission dialog while ringing. Optional CameraX/ZXing offline dependencies, missing permission/camera/error/cancel states and strict backup JSON. Existing barcode enrollment supports EAN-13/EAN-8/UPC-A/UPC-E/Code128/Code39 with format-specific normalization; actual CameraX compatibility remains unverified. Generated morning codes now create a local random non-URL payload and actual ZXing QR preview, bounded PNG/PDF export through chosen documents, and Android printing with selected print attributes. Use requires a kept-copy confirmation; only request nonce, label and existing digest return to enrollment, followed by explicit Save code/Save alarm. Export/cancel do not replace enrolled targets; unfinished payload survives screen recreation only and is excluded from alarm data/preferences/backups. Provider failures/cancellation disclose possible partial destinations; no camera/network starts. Actual exported scanability, print-provider behavior and enrollment runtime remain unverified.",
       "id": "F027",
-      "tests": [
-        {
-          "name": "MorningCodeTest",
-          "path": "app/src/test/java/org/sleepwell/app/MorningCodeTest.java"
-        },
-        {
-          "name": "QrCodeConfigurationTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/QrCodeConfigurationTest.java"
-        },
-        {
-          "name": "QrDecoderTest",
-          "path": "app/src/test/java/org/sleepwell/app/QrDecoderTest.java"
-        },
-        {
-          "name": "QrLumaTest",
-          "path": "app/src/test/java/org/sleepwell/app/QrLumaTest.java"
-        },
-        {
-          "name": "QrProofTest",
-          "path": "app/src/test/java/org/sleepwell/app/QrProofTest.java"
-        },
-        {
-          "name": "QrScanSessionTest",
-          "path": "app/src/test/java/org/sleepwell/app/QrScanSessionTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Object/picture task",
@@ -1624,7 +1602,7 @@
       ],
       "validation": "SoundPlaybackTest 24 and AudioCopyTest 7 local passes. SoundSettingsFlowTest API36 CI18.146s and S23 9.079s: choices/recreation/reopen, no Play, exact personal preference preservation. NativeSoundFlowTest CI25.664s. SoundImportPickerTest CI108.542s: actual picker, invalid/known+unknown oversize/denied/cancel, stale choice and portrait Activity recreation; SoundImportReopenTest CI13.883s: saved read grant after actual process restart, explicit native Play/Pause/Stop/removal with original bytes unchanged. All five pass at cdf17d5 in no-host-audio CI39927399518;26 actual captures. The later More-only icon correction at efa9cae has fresh two-flow CI39928589826 and13 actual captures, not a same-head five-flow claim. No physical audio/import, listening/full-fade or full-screen parity acceptance.",
       "status": "partial",
-      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Import uses retained validation, actual100MiB bounds, visible cancel, revision fencing and neutral art; narrower picker/read-grant/restart/playback/removal flow now has native CI evidence. Physical configuration/navigation only verified; Samsung Maximum power saving initially paused app, temporarily unpaused without changing global settings. Physical audio/import, actual tracking ownership and audible loop quality remain unverified. Paused timeout, pending-import process death, missing persistable grants and disk-failure reporting remain open. Timer completion uses only the last three seconds via a 57-second offset. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
+      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Import uses retained validation, actual100MiB bounds, visible cancel, revision fencing and neutral art; narrower picker/read-grant/restart/playback/removal flow now has native CI evidence. Physical configuration/navigation only verified; Samsung Maximum power saving initially paused app, temporarily unpaused without changing global settings. Physical audio/import, actual tracking ownership and audible loop quality remain unverified. Paused timeout, pending-import process death, missing persistable grants and disk-failure reporting remain open. Historical native timer verification exercised only the final three seconds of a valid timer using a57-second fixture offset; production timer duration is unchanged. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
       "id": "F061",
       "tests": [
         {
@@ -1745,46 +1723,17 @@
         "TrackingClock.java",
         "SessionTiming.java",
         "Store.java",
-        "ReportScreen.java"
+        "ReportScreen.java",
+        "BatterySampling.java",
+        "MotionFilter.java",
+        "MotionProfile.java",
+        "TrackingActivity.java"
       ],
-      "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest 2 and stronger ReportReferenceFlowTest 1/eight originals await fresh native/strict review; no visual completion inferred. Fresh d43f480/focusedCI40068186520 PASS4classes/5methods/13required originals: ReportRibbonNativeTest 2 PASS1.212s,ReportReferenceFlowTest 1 PASS33.744s. All13 originals individually inspected: report hierarchy/editor geometry pass, hard color-bin stripes and touching chips rejected. b4deeb3 blends only visual colors within contiguous measured spans (unchanged metrics/exact gaps), adds missing-signal Canvas assertions and4dp chip gutters; fresh raster/visual run required. Missing stage estimator remains explicit. Fresh dc30736/focusedCI40072560126 PASS4classes/5methods/all13 required originals, individually reviewed against boards01/08. Ribbon color blending/exact gaps, filter gutters, seven-row history, Week/Month/Year and complete editor Notes/Save/Delete pass this bounded correction. Stage estimator/full app parity remain incomplete. ba1ae61/0dcbb44 use exactpersistedSensorProvenance.SONAR for contactless graph/accessibility labels, preserve actualsamplegaps, and retain sensor/config throughgoalzonecopies. Newprivate saved-sonar navigation originals remain pending.",
+      "validation": "Combined production assembleDebug9c6b1c9 PASS1m23s; build-only. No new unit/native/lint/screenshot, device, camera, printer, provider or widget-host validation. Historical fixture evidence does not validate these additions.",
       "status": "partial",
-      "notes": "Partial: real same-session Pause/Resume stops sensors/audio and freezes active duration. Persisted pauses and interrupted recovery exist. Standby/battery-adaptive sampling absent; mic restart hardware evidence pending.",
+      "notes": "Same-session Pause/Resume stops sensors/audio and freezes active duration, with persisted pauses and interrupted recovery. New default-off battery-aware movement mode is pinned per admitted run: at20% or lower while unplugged it requests500ms accelerometer/1s light readings and throttles real callbacks, returning to normal at25% or charging. Unknown battery uses normal rate and visible status; registration failures are explicit. ARMED automatic inference retains its original5Hz; microphone, sonar, foreground admission and fixed alarm deadline are untouched. Reduced filtering uses actual elapsed intervals with the original gravity time constant, resets after gaps and stores actual sample counts; empty opted-in measurement minutes stay absent. Strict per-session policy metadata wraps the original calibration; old configs remain valid. Sensor periods are OS requests, other listeners can keep hardware faster, and energy savings/accuracy/hardware behavior remain unverified. Standby remains separate unfinished scope.",
       "id": "F066",
-      "tests": [
-        {
-          "name": "ChartSeriesTest",
-          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
-        },
-        {
-          "name": "RecordModelTest",
-          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
-        },
-        {
-          "name": "ReportReferenceFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/ReportReferenceFlowTest.java"
-        },
-        {
-          "name": "ReportRibbonNativeTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/ReportRibbonNativeTest.java"
-        },
-        {
-          "name": "SessionTimingTest",
-          "path": "app/src/test/java/org/sleepwell/app/SessionTimingTest.java"
-        },
-        {
-          "name": "StorageMigrationTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/StorageMigrationTest.java"
-        },
-        {
-          "name": "TrackingClockTest",
-          "path": "app/src/test/java/org/sleepwell/app/TrackingClockTest.java"
-        },
-        {
-          "name": "TrackingFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/TrackingFlowTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Sensor diagnostics",
@@ -2347,18 +2296,16 @@
         "HomeWidgetData.java",
         "HomeLaunch.java",
         "HomeLaunchActivity.java",
-        "HomeWidgetSettingsActivity.java"
+        "HomeWidgetSettingsActivity.java",
+        "SnoozeDeadline.java",
+        "Scheduler.java",
+        "HomeWidgetData.java"
       ],
-      "validation": "4b7d017 / CI40147599727: HomeWidgetNativeTest 7 PASS within30classes/102methods/90originals. Private fixtures/fake providers only; no new combined local count or physical output inferred.",
+      "validation": "Combined production assembleDebug9c6b1c9 PASS1m23s; build-only. No new unit/native/lint/screenshot, device, camera, printer, provider or widget-host validation. Historical fixture evidence does not validate these additions.",
       "status": "partial",
-      "notes": "Next saved alarm/latest real record RemoteViews and add-alarm/tracking/history shortcuts use reconstructed screen-only routes. Fake host and private records pass; actual host pinning/sizing and snooze deadline projection remain unverified/absent.",
+      "notes": "Next saved alarm/latest real record RemoteViews and add-alarm/tracking/history shortcuts use private reconstructed screen-only routes. The widget now compares real pending nap/ordinary deadlines with a successfully acknowledged owned snooze deadline, retaining seconds and RTC semantics. Display-only receipt checks current run, budget count/spend/source, full saved row, consumed one-shot/claimed-nap state, occurrence and boot; changed/deleted/unconfirmed snoozes fall back to review/ordinary deadlines. Receipt failure never rolls back scheduling; refreshing/clicking never schedules or fires alarms. Pre-update snoozes lack receipts and require review. OS acceptance is not delivery proof. Actual host pinning/sizing, snooze/runtime/clock behavior remain unverified.",
       "id": "F083",
-      "tests": [
-        {
-          "name": "HomeWidgetNativeTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/HomeWidgetNativeTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Localization / accessibility",
@@ -3658,7 +3605,7 @@
       ],
       "validation": "SoundPlaybackTest 24 and AudioCopyTest 7 local passes. SoundSettingsFlowTest API36 CI18.146s and S23 9.079s: choices/recreation/reopen, no Play, exact personal preference preservation. NativeSoundFlowTest CI25.664s. SoundImportPickerTest CI108.542s: actual picker, invalid/known+unknown oversize/denied/cancel, stale choice and portrait Activity recreation; SoundImportReopenTest CI13.883s: saved read grant after actual process restart, explicit native Play/Pause/Stop/removal with original bytes unchanged. All five pass at cdf17d5 in no-host-audio CI39927399518;26 actual captures. The later More-only icon correction at efa9cae has fresh two-flow CI39928589826 and13 actual captures, not a same-head five-flow claim. No physical audio/import, listening/full-fade or full-screen parity acceptance.",
       "status": "partial",
-      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Import uses retained validation, actual100MiB bounds, visible cancel, revision fencing and neutral art; narrower picker/read-grant/restart/playback/removal flow now has native CI evidence. Physical configuration/navigation only verified; Samsung Maximum power saving initially paused app, temporarily unpaused without changing global settings. Physical audio/import, actual tracking ownership and audible loop quality remain unverified. Paused timeout, pending-import process death, missing persistable grants and disk-failure reporting remain open. Timer completion uses only the last three seconds via a 57-second offset. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
+      "notes": "Native standalone two-layer player source: Rain/Ocean/Fireplace/Wind or local document plus Brown noise, per-layer gain, normalized output, playing-time timer/fade, notification controls and tracking ownership. Opening/selection does not start a stopped mix. Legacy Rain/Brown gain/timer preserved. Default-size API36 configuration composition has a bounded visual pass; error/recovery layouts also pass. Import uses retained validation, actual100MiB bounds, visible cancel, revision fencing and neutral art; narrower picker/read-grant/restart/playback/removal flow now has native CI evidence. Physical configuration/navigation only verified; Samsung Maximum power saving initially paused app, temporarily unpaused without changing global settings. Physical audio/import, actual tracking ownership and audible loop quality remain unverified. Paused timeout, pending-import process death, missing persistable grants and disk-failure reporting remain open. Historical native timer verification exercised only the final three seconds of a valid timer using a57-second fixture offset; production timer duration is unchanged. Playlists, guided tracks, sleep-detected fade and external music remain absent. See SOUND-PLAYBACK.md for limits.",
       "id": "F126",
       "tests": [
         {
