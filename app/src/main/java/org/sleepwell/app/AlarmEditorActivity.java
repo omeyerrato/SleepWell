@@ -142,7 +142,7 @@ public class AlarmEditorActivity extends Activity {
     private static int[] numbers(int first,int last){return java.util.stream.IntStream.rangeClosed(first,last).toArray();}
     private void snooze(LinearLayout body){Design.header(body,"Snooze & backup",this::back);Design.space(body,10);Design.text(body,"Snooze settings",21,600,Design.INK);Design.space(body,8);
         picker(body,"alarm","Snooze duration",null,(alarm.inputs.chooseSnooze?"Up to ":"")+alarm.snoozeMinutes+" min",alarm.snoozeMinutes,snoozeDurations(),n->n+" min",n->alarm.snoozeMinutes=n);Design.line(body);
-        wakeToggle(body,"clock","Choose duration each time","Show a duration menu for the on-screen Snooze action",alarm.inputs.chooseSnooze,on->{alarm.inputs=alarm.inputs.chooseSnooze(on);alarm.inputsInvalid=false;render();});
+        wakeToggle(body,"clock","Choose duration each time","Show durations and an Until clock for on-screen Snooze",alarm.inputs.chooseSnooze,on->{alarm.inputs=alarm.inputs.chooseSnooze(on);alarm.inputsInvalid=false;render();});
         picker(body,"clock","Maximum snoozes",null,alarm.snoozeLimit==0?"None":""+alarm.snoozeLimit,alarm.snoozeLimit,numbers(0,5),n->n==0?"None":""+n,n->alarm.snoozeLimit=n);Design.line(body);
         wakeToggle(body,"fade","Shorten each snooze","One minute shorter each time",alarm.shortenSnoozes,on->alarm.shortenSnoozes=on);Design.space(body,12);
         wakeToggle(body,"phone","Flip to snooze","Turn face-up, then face-down while the alarm is open",alarm.inputs.flip,on->{alarm.inputs=alarm.inputs.flip(on);alarm.inputsInvalid=false;});
