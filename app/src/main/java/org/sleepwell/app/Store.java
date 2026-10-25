@@ -7,8 +7,11 @@ import org.json.*;
 import java.util.*;
 
 public class Store extends SQLiteOpenHelper {
+    private final Context surfaceContext;private boolean surfaceDirty;
+    void surfaceChanged(){surfaceDirty=true;try{if(!getReadableDatabase().inTransaction()){surfaceDirty=false;HomeSurfaces.changed(surfaceContext);}}catch(RuntimeException ignored){}}
+    @Override public synchronized void close(){try{super.close();}finally{if(surfaceDirty){surfaceDirty=false;HomeSurfaces.changed(surfaceContext);}}}
     public Store(Context c) { this(c,"sleepwell.db"); }
-    Store(Context c,String name) { super(c,name,null,10); }
+    Store(Context c,String name) { super(c,name,null,10);surfaceContext=c.getApplicationContext(); }
     @Override public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE alarms(id INTEGER PRIMARY KEY, data TEXT NOT NULL)");
         db.execSQL("CREATE TABLE sessions(id INTEGER PRIMARY KEY, start INTEGER NOT NULL, end INTEGER, note TEXT DEFAULT '', rating INTEGER DEFAULT 0, interrupted INTEGER DEFAULT 0, active_ms INTEGER, clock_changed INTEGER DEFAULT 0)");
@@ -52,8 +55,8 @@ public class Store extends SQLiteOpenHelper {
         } return result;
     }
     public Alarm alarm(int id) { for(Alarm a:alarms()) if(a.id==id) return a; return null; }
-    public void save(Alarm a) { ContentValues v=new ContentValues(); v.put("id",a.id); v.put("data",a.json().toString()); getWritableDatabase().insertWithOnConflict("alarms",null,v,SQLiteDatabase.CONFLICT_REPLACE); }
-    public void deleteAlarm(int id) { getWritableDatabase().delete("alarms","id=?",new String[]{""+id}); }
+    public void save(Alarm a) { ContentValues v=new ContentValues(); v.put("id",a.id); v.put("data",a.json().toString()); getWritableDatabase().insertWithOnConflict("alarms",null,v,SQLiteDatabase.CONFLICT_REPLACE);surfaceChanged(); }
+    public void deleteAlarm(int id) { getWritableDatabase().delete("alarms","id=?",new String[]{""+id});surfaceChanged(); }
     public long begin() {return begin(SensorProvenance.MOTION,"");}
     public long begin(String sensor,String sensorConfig) {return begin(sensor,sensorConfig,SensorProvenance.SONAR.equals(sensor)?SoundAnalysisProvenance.encode(SoundAnalysisStatus.initial(false)):"");}
     long begin(String sensor,String sensorConfig,String soundAnalysis) {
@@ -62,8 +65,8 @@ public class Store extends SQLiteOpenHelper {
         SQLiteDatabase db=getWritableDatabase();long now=System.currentTimeMillis();
         recoverInterrupted();ContentValues v=new ContentValues();v.put("start",now);v.put("active_ms",0);v.put("source","tracked");v.put("origin","local");v.put("zone",java.time.ZoneId.systemDefault().getId());v.put("sensor",sensor);v.put("sensor_config",sensorConfig);v.put("sound_analysis",soundAnalysis);return db.insertOrThrow("sessions",null,v);
     }
-    public void end(long id, boolean interrupted) { ContentValues v=new ContentValues(); v.put("end",System.currentTimeMillis()); v.put("interrupted",interrupted?1:0); getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id}); }
-    void end(long id,boolean interrupted,long active,long now){resume(id,now);ContentValues v=new ContentValues();v.put("end",now);v.put("active_ms",active);v.put("interrupted",interrupted?1:0);getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id});}
+    public void end(long id, boolean interrupted) { ContentValues v=new ContentValues(); v.put("end",System.currentTimeMillis()); v.put("interrupted",interrupted?1:0); getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id});surfaceChanged(); }
+    void end(long id,boolean interrupted,long active,long now){resume(id,now);ContentValues v=new ContentValues();v.put("end",now);v.put("active_ms",active);v.put("interrupted",interrupted?1:0);getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id});surfaceChanged();}
     /** Ordered worker only. Counts cannot outrun the last durable capture checkpoint. */
     void soundAnalysisCheckpoint(long id,String encoded){SQLiteDatabase db=getWritableDatabase();db.beginTransaction();try{soundAnalysisValues(id,encoded,null,null);ContentValues values=new ContentValues();values.put("sound_analysis",encoded);if(db.update("sessions",values,"id=? AND end IS NULL",new String[]{""+id})!=1)throw new IllegalStateException("Sound analysis recording changed");db.setTransactionSuccessful();}finally{db.endTransaction();}}
     /** Final analysis evidence and the actual session end commit or roll back together. */
@@ -88,7 +91,7 @@ public class Store extends SQLiteOpenHelper {
         long start=s.optLong("start"),limit=start>Long.MAX_VALUE-36*3600000L?Long.MAX_VALUE:start+36*3600000L;
         for(JSONObject e:rows("SELECT MAX(time+duration_ms) AS time FROM sound_events WHERE session=? AND time>=? AND duration_ms>0 AND duration_ms<=129600000 AND time+duration_ms<=CAST(? AS INTEGER) AND category IN ('snoring','speech','cough','baby_cry','laughter','noise') AND score>=0 AND score<=1 AND LENGTH(TRIM(model))>0 AND LENGTH(model)<=128",""+id,""+start,""+limit))last=Math.max(last,e.optLong("time"));
         resume(id,last);ContentValues values=new ContentValues();values.put("end",last);values.put("interrupted",1);values.put("sound_analysis",analysis);if(db.update("sessions",values,"id=? AND end IS NULL",new String[]{""+id})!=1)throw new IllegalStateException("Recording changed during recovery");db.setTransactionSuccessful();
-    }finally{db.endTransaction();}}
+    }finally{db.endTransaction();surfaceChanged();}}
 
     long recordedMillis(JSONObject s){List<long[]> pauses=new ArrayList<>();long end=s.isNull("end")?System.currentTimeMillis():s.optLong("end");for(JSONObject p:rows("SELECT start,end FROM tracking_pauses WHERE session=?",""+s.optLong("id")))pauses.add(new long[]{p.optLong("start"),p.isNull("end")?end:p.optLong("end")});return SessionTiming.recorded(s.optLong("start"),end,s.isNull("active_ms")?null:s.optLong("active_ms"),pauses);}
     public void annotate(long id,String note,int rating) { ContentValues v=new ContentValues(); v.put("note",note); v.put("rating",rating); getWritableDatabase().update("sessions",v,"id=?",new String[]{""+id}); }
@@ -125,5 +128,5 @@ public class Store extends SQLiteOpenHelper {
         SQLiteDatabase db=getReadableDatabase();db.beginTransactionNonExclusive();try{JSONObject root=new JSONObject(); JSONArray savedAlarms=new JSONArray();for(Alarm a:alarms())savedAlarms.put(a.json());try { root.put("format",7).put("alarms",savedAlarms)
             .put("sessions",new JSONArray(rows("SELECT * FROM sessions"))).put("epochs",new JSONArray(rows("SELECT * FROM epochs"))).put("pauses",new JSONArray(rows("SELECT * FROM tracking_pauses"))).put("edits",new JSONArray(rows("SELECT * FROM record_edits"))).put("sound_events",SoundEventBackup.export(this));SoundEventBackup.checkPortableSize(root);SensorBackup.validateExport(root);SoundAnalysisProvenance.validateExport(root);HealthSleepCodec.validate(root); } catch(JSONException e) { throw new IllegalStateException(e); } db.setTransactionSuccessful();return root;}finally{db.endTransaction();}
     }
-    public void eraseHistory() { SQLiteDatabase db=getWritableDatabase(); db.beginTransaction(); try { HealthSleepTables.erased(db);SoundClips.stageAll(this,null);db.execSQL("UPDATE record_create_requests SET session=0");db.delete("sound_events",null,null);db.delete("clips",null,null); db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null); db.delete("sessions",null,null); db.setTransactionSuccessful(); } finally { db.endTransaction(); } }
+    public void eraseHistory() { SQLiteDatabase db=getWritableDatabase(); db.beginTransaction(); try { HealthSleepTables.erased(db);SoundClips.stageAll(this,null);db.execSQL("UPDATE record_create_requests SET session=0");db.delete("sound_events",null,null);db.delete("clips",null,null); db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null); db.delete("sessions",null,null); db.setTransactionSuccessful(); } finally { db.endTransaction();surfaceChanged(); } }
 }
