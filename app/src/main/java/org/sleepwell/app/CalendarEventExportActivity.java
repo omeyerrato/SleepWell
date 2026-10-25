@@ -1,0 +1,19 @@
+package org.sleepwell.app;
+import android.app.Activity;import android.os.Bundle;import android.widget.LinearLayout;import java.util.concurrent.*;
+/** A saved period is loaded privately; only Open calendar shares the displayed draft. */
+public final class CalendarEventExportActivity extends Activity {
+    private final ExecutorService worker=Executors.newSingleThreadExecutor();private CalendarEventDraft draft;private long id;private boolean notes;private String error="",status="";
+    @Override public void onCreate(Bundle state){super.onCreate(state);RecordUi.review(this);id=getIntent().getLongExtra("record",0);notes=state!=null&&state.getBoolean("notes");load();}
+    @Override protected void onSaveInstanceState(Bundle state){super.onSaveInstanceState(state);state.putBoolean("notes",notes);}
+    private void load(){render(true);Records.Factory factory=Records.factory;worker.execute(()->{try(Store store=factory.open(getApplicationContext())){CalendarEventDraft result=CalendarEventExport.draft(Records.get(store,id));runOnUiThread(()->{if(isDestroyed())return;draft=result;error="";render(false);});}catch(RuntimeException failed){runOnUiThread(()->{if(isDestroyed())return;draft=null;error="This sleep record could not be opened.";render(false);});}});}
+    private void render(boolean loading){LinearLayout body=Design.page(this,false,null,null);RecordUi.label(this,body);RecordUi.header(body,"Add to calendar",this::finish);Design.space(body,20);
+        if(loading){Design.text(body,"Opening your period…",16,400,Design.MUTED);return;}
+        if(draft==null){Design.text(body,error,16,500,Design.INK);Design.button(body,"Try again",true,this::load);return;}
+        Design.text(body,"Sleep period",24,600,Design.INK);Design.space(body,16);PlanActivity.detail(body,"moon","Start",RecordUi.date(draft.start,java.time.ZoneId.of(draft.zone)),RecordUi.clock(this,draft.start,java.time.ZoneId.of(draft.zone)),null);Design.line(body);PlanActivity.detail(body,"sun","End",RecordUi.date(draft.end,java.time.ZoneId.of(draft.zone)),RecordUi.clock(this,draft.end,java.time.ZoneId.of(draft.zone)),null);Design.line(body);PlanActivity.detail(body,"chart","Recorded duration",null,RecordUi.duration(draft.duration),null);Design.space(body,16);Design.text(body,"The event includes pauses and awake periods.",14,400,Design.MUTED);Design.space(body,16);
+        if(!draft.note.isEmpty()){Design.toggle(body,"Include my note","Shared with your chosen calendar",notes,on->{notes=on;status="";render(false);});if(notes){Design.space(body,12);Design.text(body,draft.note,15,400,Design.INK);}}
+        Design.space(body,16);Design.text(body,"Review and save in your calendar app. Repeating this action can create another event.",14,400,Design.MUTED);LinearLayout footer=RecordUi.footer(body);if(!error.isEmpty())Design.text(footer,error,14,500,0xffa93919);if(!status.isEmpty())Design.text(footer,status,14,500,Design.BROWN);Design.button(footer,"Open calendar",true,()->{try{CalendarEventExport.port.open(this,CalendarEventExport.intent(draft,notes));error="";status="Calendar draft opened. Saving is handled by your calendar app.";}catch(android.content.ActivityNotFoundException missing){error="No compatible calendar app was found.";status="";}catch(RuntimeException denied){error="The calendar draft could not be opened. Try again.";status="";}render(false);});
+    }
+    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
+    @Override protected void onDestroy(){worker.shutdown();super.onDestroy();}
+    boolean awaitReaders(long millis)throws InterruptedException{return worker.awaitTermination(millis,TimeUnit.MILLISECONDS);}
+}

@@ -67,6 +67,7 @@ PHONE_FEATURE_TESTS += ("SearchStorageTest", "SearchFlowTest")
 PHONE_FEATURE_TESTS += ("DiaryStorageTest", "TypedWakeFlowTest", "HomeWidgetNativeTest", "AlarmTimingStorageTest", "AlarmTimingFlowTest")
 PHONE_FEATURE_TESTS += ("AlarmRequestStorageTest", "AlarmRequestFlowTest", "ChallengePackNativeTest")
 PHONE_FEATURE_TESTS += ("TrackingDndStorageTest", "TrackingDndFlowTest")
+PHONE_FEATURE_TESTS += ("AlarmSoundModeStorageTest", "AlarmSoundModeFlowTest", "CalendarEventExportTest", "CalendarEventExportFlowTest", "RecordInsightsNativeTest", "RecordInsightsFlowTest")
 PHONE_FEATURE_FRAMES = ["calendar-rules-" + name + ".png" for name in ("initial", "draft", "saved", "reopened")]
 PHONE_FEATURE_FRAMES += ["alarm-defaults-" + name + ".png" for name in ("initial", "recreated", "saved", "reopened", "reset", "saving", "saving-recreated", "save-error", "retry")]
 PHONE_FEATURE_FRAMES += ["health-connect-" + name + ".png" for name in ("default", "configured", "synced", "source", "conflict", "kept", "unavailable", "permissions")]
@@ -82,6 +83,9 @@ PHONE_FEATURE_FRAMES += ["typed-wake-" + name + ".png" for name in ("config-mirr
 PHONE_FEATURE_FRAMES += ["alarm-timing-" + name + ".png" for name in ("initial", "selector", "configured", "recreated", "reopened", "continuous", "never")]
 PHONE_FEATURE_FRAMES += ["alarm-request-" + name + ".png" for name in ("draft", "recreated", "reopened")]
 PHONE_FEATURE_FRAMES += ["tracking-dnd-" + name + ".png" for name in ("default", "prerequisites", "saved", "ready", "owned", "cleanup-error", "cleaned")]
+PHONE_FEATURE_FRAMES += ["alarm-mode-" + name + ".png" for name in ("initial", "silent", "playlist", "configured", "recreated", "reopened", "single")]
+PHONE_FEATURE_FRAMES += ["calendar-event-" + name + ".png" for name in ("default", "recreated", "unavailable", "opened")]
+PHONE_FEATURE_FRAMES += ["record-insights-" + name + ".png" for name in ("week", "goals", "reopened", "empty")]
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
 root = Path(__file__).resolve().parents[1]
@@ -187,6 +191,7 @@ method_counts.update({"AdvancedSnoozeStorageTest": 2})
 method_counts.update({"DiaryStorageTest": 10, "TypedWakeFlowTest": 2, "HomeWidgetNativeTest": 7, "AlarmTimingStorageTest": 3})
 method_counts.update({"AlarmRequestStorageTest": 3, "ChallengePackNativeTest": 8})
 method_counts.update({"TrackingDndStorageTest": 4, "TrackingDndFlowTest": 2})
+method_counts.update({"AlarmSoundModeStorageTest": 4, "RecordInsightsNativeTest": 3})
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
