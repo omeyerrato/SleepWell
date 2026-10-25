@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.health.READ_SLEEP" />
     <uses-permission android:name="android.permission.health.WRITE_SLEEP" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
@@ -33,7 +34,7 @@
     <uses-feature android:name="android.hardware.nfc" android:required="false" />
     <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
     <queries><package android:name="com.google.android.apps.healthdata" /><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent></queries>
-    <application android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:label="SleepWell" android:theme="@style/AppTheme" android:icon="@drawable/ic_moon" android:supportsRtl="true">
+    <application android:name=".SleepWellApplication" android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:label="SleepWell" android:theme="@style/AppTheme" android:icon="@drawable/ic_moon" android:supportsRtl="true">
         <!-- Foreground explicit contactless calibration only; never externally launchable. -->
         <activity android:name=".ContactlessSetupActivity" android:exported="false" />
         <activity android:name=".HomeLaunchActivity" android:exported="true" />
@@ -56,6 +57,8 @@
         <activity android:name=".AutomationActivity" android:exported="false" />
         <service android:name=".AutomationJobService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
         <activity android:name=".HealthSleepSourceActivity" android:exported="false" />
+        <activity android:name=".TrackingDndActivity" android:exported="true"><intent-filter><action android:name="android.app.action.AUTOMATIC_ZEN_RULE" /><category android:name="android.intent.category.DEFAULT" /></intent-filter></activity>
+        <receiver android:name=".TrackingDndReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /><action android:name="android.app.action.AUTOMATIC_ZEN_RULE_STATUS_CHANGED" /></intent-filter></receiver>
         <activity android:name=".DiaryActivity" android:exported="false" />
         <activity android:name=".TypedWakePreviewActivity" android:exported="false" />
         <activity android:name=".TagManagementActivity" android:exported="false" />

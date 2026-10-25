@@ -1,0 +1,10 @@
+package org.sleepwell.app;
+import android.content.*;
+/** Separate local consent and durable owned-rule journal. Never part of a sleep-data restore. */
+final class TrackingDndSettings implements TrackingDndOwner.Store {
+ interface Factory{SharedPreferences open(Context c);}static Factory factory=c->c.getSharedPreferences("sleepwell-tracking-dnd",Context.MODE_PRIVATE);final SharedPreferences prefs;TrackingDndSettings(SharedPreferences p){prefs=p;}static TrackingDndSettings open(Context c){return new TrackingDndSettings(factory.open(c));}
+ boolean enabled(){return prefs.getBoolean("enabled",false);}void enabled(boolean value){if(!prefs.edit().putBoolean("enabled",value).commit())throw new IllegalStateException("DND preference could not be saved.");}
+ public TrackingDndLease read(){if(!prefs.contains("token"))return null;try{return new TrackingDndLease(prefs.getString("run",""),prefs.getString("token",""),prefs.getString("rule",""),prefs.getLong("deadline",-1),prefs.getLong("hard",-1),prefs.getInt("boot",-1),prefs.getBoolean("active",false));}catch(RuntimeException failure){throw new IllegalStateException("The owned DND lease is unreadable. Review SleepWell rules in Android.",failure);}}
+ public void save(TrackingDndLease lease){SharedPreferences.Editor edit=prefs.edit();if(lease==null){for(String key:new String[]{"run","token","rule","deadline","hard","boot","active"})edit.remove(key);}else edit.putString("run",lease.run).putString("token",lease.token).putString("rule",lease.rule).putLong("deadline",lease.deadline).putLong("hard",lease.hard).putInt("boot",lease.boot).putBoolean("active",lease.active);if(!edit.commit())throw new IllegalStateException("DND ownership could not be saved.");}
+ public void touched(){if(!prefs.edit().putBoolean("touched",true).commit())throw new IllegalStateException("DND ownership could not be prepared.");}public void error(String message){if(!prefs.edit().putString("error",message).commit())throw new IllegalStateException("DND status could not be saved.");}String error(){return prefs.getString("error","");}boolean touchedBefore(){return prefs.getBoolean("touched",false);}
+}
