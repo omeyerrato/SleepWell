@@ -32,6 +32,7 @@ public class TrackingService extends Service implements SensorEventListener {
     private boolean batchMode;private BatchedMotion batchedMotion;private long batchCutNanos,batchLastEnd;private String batchIssue="";
     private TrackingBatteryReserve batteryReserve;private boolean reserveReady;
     private boolean batteryAwareRequested,samplingLightWanted,samplingReduced;private BatterySampling batterySampling;private String samplingIssue="";private long samplingBoundary,lastMotionNanos,lastLightNanos;
+    private ExternalMediaFade.Selection externalFadeSelection=ExternalMediaFade.Selection.OFF;
     private StillnessSoundFade.Policy soundFadePolicy=new StillnessSoundFade.Policy(false,"");private final StillnessSoundFade.Minute soundFadeMinute=new StillnessSoundFade.Minute();
     private final MotionFilter motionFilter=new MotionFilter();private MotionProfile motionProfile=new MotionProfile(1);
     private final Runnable minuteTick=this::minute,limitTick=()->stop(false),liveTick=this::liveSample,automaticTick=this::automaticTick;
@@ -98,6 +99,7 @@ public class TrackingService extends Service implements SensorEventListener {
             if(owned==null)return rejectRecurring();
             recurringToken=owned.token;intent=owned.intent(this); // Ignore caller sound, clip, mode and schedule extras.
         }
+        ExternalMediaFade.end(session,dndRun,"Recording replaced; media fade stopped.");
         StillnessSoundFade.end(session,dndRun);
         batchMode=false;batchedMotion=null;batchCutNanos=batchLastEnd=0;batchIssue="";
         closeReserve();batteryReserve=null;
@@ -122,7 +124,7 @@ public class TrackingService extends Service implements SensorEventListener {
         clipBudget=new ClipBudget(SoundSensitivitySettings.snapshot(getApplicationContext()));
         current=this;running=true;phase=Phase.STARTING;session=0;start=System.currentTimeMillis();clock=new TrackingClock(SystemClock.elapsedRealtime());
         try{
-            if(sonarMode){if(sonarClips&&(!sonarAnalysis||!clipBudget.analysisAllowed()||!clipBudget.sensitivity.allIncluded()))throw new IllegalStateException("Sound clips require explicit analysis consent and all sound categories.");sonarClipPolicy=sonarClips?SonarClipPolicy.create(true,Prefs.number(this,"noiseThreshold",20)/1000d,clipBudget):SonarClipPolicy.OFF;}if(!sonarMode){motionProfile=MotionSettings.load(this);batteryAwareRequested=BatterySampling.requested(this);}automaticRun=ARM.equals(action);if(automaticRun||!sonarMode&&(delayPlan!=null||flipChosen)){automaticCapture=new AutomaticCapture(delayPlan!=null?delayPlan.sounds:automaticRun?recurringToken==null&&intent.getBooleanExtra("recordSounds",false):Prefs.flag(this,"noiseEnabled"),delayPlan!=null?delayPlan.clips:automaticRun?recurringToken==null&&intent.getBooleanExtra("keepClips",false):Prefs.flag(this,"saveClips"));if(automaticCapture.requested()&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is unavailable. Arm again with sound recording off.");}batchMode=BatchedMotion.requested(this);if(batchMode)BatchedMotion.selection(this,sonarMode,automaticRun||recurringToken!=null,delayPlan!=null,automaticCapture!=null?automaticCapture.requested():Prefs.flag(this,"noiseEnabled"),Prefs.of(this).getBoolean("recordLight",true),batteryAwareRequested,flipChosen);soundFadePolicy=!sonarMode&&!batchMode?StillnessSoundFade.policy(this):new StillnessSoundFade.Policy(false,"");foreground(false);
+            if(sonarMode){if(sonarClips&&(!sonarAnalysis||!clipBudget.analysisAllowed()||!clipBudget.sensitivity.allIncluded()))throw new IllegalStateException("Sound clips require explicit analysis consent and all sound categories.");sonarClipPolicy=sonarClips?SonarClipPolicy.create(true,Prefs.number(this,"noiseThreshold",20)/1000d,clipBudget):SonarClipPolicy.OFF;}if(!sonarMode){motionProfile=MotionSettings.load(this);batteryAwareRequested=BatterySampling.requested(this);}automaticRun=ARM.equals(action);if(automaticRun||!sonarMode&&(delayPlan!=null||flipChosen)){automaticCapture=new AutomaticCapture(delayPlan!=null?delayPlan.sounds:automaticRun?recurringToken==null&&intent.getBooleanExtra("recordSounds",false):Prefs.flag(this,"noiseEnabled"),delayPlan!=null?delayPlan.clips:automaticRun?recurringToken==null&&intent.getBooleanExtra("keepClips",false):Prefs.flag(this,"saveClips"));if(automaticCapture.requested()&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is unavailable. Arm again with sound recording off.");}batchMode=BatchedMotion.requested(this);if(batchMode)BatchedMotion.selection(this,sonarMode,automaticRun||recurringToken!=null,delayPlan!=null,automaticCapture!=null?automaticCapture.requested():Prefs.flag(this,"noiseEnabled"),Prefs.of(this).getBoolean("recordLight",true),batteryAwareRequested,flipChosen);externalFadeSelection=!sonarMode&&!batchMode&&!automaticRun&&recurringToken==null&&delayPlan==null?ExternalMediaFade.selection(this):ExternalMediaFade.Selection.OFF;soundFadePolicy=!sonarMode&&!batchMode?StillnessSoundFade.policy(this,externalFadeSelection.enabled):new StillnessSoundFade.Policy(false,"");foreground(false);
             sensors=getSystemService(SensorManager.class);wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:tracking");
             String reserveRun=dndRun;
             batteryReserve=new TrackingBatteryReserve(this,TrackingBatteryReserve.requested(this),()->{if(current==this&&reserveRun.equals(dndRun)&&reserveReady)reserveStopIfNeeded();});batteryReserve.start();reserveReady=true;
@@ -193,7 +195,7 @@ public class TrackingService extends Service implements SensorEventListener {
             if(batterySampling==null){batterySampling=new BatterySampling(this,batteryAwareRequested,this::refreshSampling);batterySampling.start();}
             StoreFactory storage=storeFactory;store=storage.open(this);backupProduction=storage==PRODUCTION_STORE&&Records.factory==Records.PRODUCTION&&"sleepwell.db".equals(store.getDatabaseName());session=store.begin(SensorProvenance.MOTION,batchMode?BatchedMotion.config(motionProfile.config()):batteryAwareRequested?BatterySampling.config(motionProfile.config()):motionProfile.config());start=store.rows("SELECT start FROM sessions WHERE id=?",""+session).get(0).optLong("start");windowStart=start;clock=new TrackingClock(SystemClock.elapsedRealtime());
             Prefs.of(this).edit().putLong("session",session).putBoolean("tracking",true).putBoolean("trackingPaused",false).putInt("epochCount",0).putString("audioError","").putString("trackingError","").apply();
-            if(!automaticRun&&recurringToken==null)manualToken=UUID.randomUUID().toString();phase=Phase.ACTIVE;dndActive();beginPir();automationEvents.started(session,start);if(automaticCapture!=null)automaticCapture.recordingBegan();if(!batchMode){long fadeSession=session;String fadeRun=dndRun;StillnessSoundFade.begin(this,fadeSession,fadeRun,soundFadePolicy,()->current==this&&running&&!destroyed&&!sonarMode&&!batchMode&&session==fadeSession&&fadeRun.equals(dndRun)&&phase==Phase.ACTIVE);}collect();if(awake!=null)awake.begin(session,start,SystemClock.elapsedRealtime(),lightRegistered);beginFalseStart();handler.postDelayed(minuteTick,60000);handler.postDelayed(limitTick,12*60*60*1000L);
+            if(!automaticRun&&recurringToken==null)manualToken=UUID.randomUUID().toString();phase=Phase.ACTIVE;dndActive();beginPir();automationEvents.started(session,start);if(automaticCapture!=null)automaticCapture.recordingBegan();if(!batchMode){long fadeSession=session;String fadeRun=dndRun;StillnessSoundFade.begin(this,fadeSession,fadeRun,soundFadePolicy,()->current==this&&running&&!destroyed&&!sonarMode&&!batchMode&&session==fadeSession&&fadeRun.equals(dndRun)&&phase==Phase.ACTIVE);ExternalMediaFade.start(this,fadeSession,fadeRun,externalFadeSelection,()->current==this&&running&&!destroyed&&!sonarMode&&!batchMode&&!automaticRun&&recurringToken==null&&delayPlan==null&&backupProduction&&(Build.VERSION.SDK_INT<34||foregroundTypes!=0)&&session==fadeSession&&fadeRun.equals(dndRun)&&phase==Phase.ACTIVE);}collect();if(awake!=null)awake.begin(session,start,SystemClock.elapsedRealtime(),lightRegistered);beginFalseStart();handler.postDelayed(minuteTick,60000);handler.postDelayed(limitTick,12*60*60*1000L);
     }
     private void arm(Intent intent){
         automaticMode=AutomaticSleep.Mode.valueOf(intent.getStringExtra("mode"));rejectFalseStarts=automaticMode==AutomaticSleep.Mode.STILLNESS&&AutomaticFalseStart.requested(Prefs.of(this));falseStartRejected=false;falseStartIdentity=null;closeFalseStart();
@@ -345,6 +347,7 @@ public class TrackingService extends Service implements SensorEventListener {
         if(recorder==null){complete.run();return;}recorder.requestStop();closer.execute(()->{recorder.close();handler.post(complete);});
     }
     private void pause(){
+        ExternalMediaFade.end(session,dndRun,"Tracking paused; media fade cancelled.");
         StillnessSoundFade.pause(session,dndRun);
         closeFalseStart();
         DreamCues.cancelRun(session,manualToken,"paused");
@@ -363,6 +366,7 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void closeGoogleSleep(){GoogleSleepSignal old=googleSleep;googleSleep=null;if(old!=null)old.close();}
     private void stop(boolean wasInterrupted){
+        ExternalMediaFade.end(session,dndRun,"Tracking ended; media fade cancelled.");
         StillnessSoundFade.end(session,dndRun);
         closeReserve();closeFalseStart();
         DreamCues.cancelRun(session,manualToken,wasInterrupted?"process":"ended");
