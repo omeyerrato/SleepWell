@@ -85,6 +85,7 @@
         <activity android:name=".AlarmEditorActivity" android:exported="false" />
         <activity android:name=".WakeCheckActivity" android:exported="false" />
         <activity android:name=".NapActivity" android:exported="false" />
+        <activity android:name=".NoteChallengeActivity" android:exported="false" />
         <activity android:name=".CameraLightActivity" android:exported="false" />
         <activity android:name=".PoseActivity" android:exported="false" />
         <activity android:name=".SmileActivity" android:exported="false" />
@@ -137,6 +138,7 @@
         <activity android:name=".AlarmActivity" android:exported="false" android:showWhenLocked="true" android:turnScreenOn="true" android:launchMode="singleTask" />
         <activity android:name=".FocusActivity" android:exported="false" android:launchMode="singleTask" />
         <activity android:name=".SpeakChallengeActivity" android:exported="false" />
+        <service android:name=".NoteCaptureService" android:exported="false" android:foregroundServiceType="microphone" />
         <service android:name=".SpeakCaptureService" android:exported="false" android:foregroundServiceType="microphone" />
         <service android:name=".AlarmService" android:exported="false" android:foregroundServiceType="mediaPlayback" />
         <service android:name=".SleepSoundService" android:exported="false" android:foregroundServiceType="mediaPlayback" />
