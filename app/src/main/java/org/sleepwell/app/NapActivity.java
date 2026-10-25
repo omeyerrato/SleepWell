@@ -65,7 +65,27 @@ public final class NapActivity extends Activity {
  private void powerSettings(LinearLayout b){RecordUi.header(b,"Power nap",()->go(""));Design.space(b,18);Design.toggle(b,"Minimum-rest mode","A protected rest interval, then a later chance to wake",power,on->{power=on;if(draft.smartWindow>0)draft.smartWindow=on?powerWindow:5;render();});Design.space(b,16);powerOptions(b,"Minimum rest",new int[]{10,20,30,90},minutes,n->{minutes=n;render();});Design.space(b,18);powerOptions(b,"Later wake interval",new int[]{5,15,30,60},powerWindow,n->{powerWindow=n;if(power&&draft.smartWindow>0)draft.smartWindow=powerWindow;render();});Design.space(b,18);Design.text(b,"Earliest wake after "+minutes+" min · latest after "+(minutes+powerWindow)+" min",16,600,Design.INK);Design.space(b,12);boolean motion=Naps.activeTracking.getAsBoolean();Design.text(b,motion?"Phone movement tracking is active. Smart wake-up can be enabled on the nap screen.":"Movement tracking is unavailable. The latest timer still works; no tracking starts here.",14,400,Design.MUTED);Design.space(b,12);Design.text(b,"Minimum rest is elapsed timer time, not measured sleep. No sleep-stage estimate.",12,400,Design.MUTED);Design.fixedAction(b,"Use nap interval",()->go(""));}
  private void closeTone(){if(tone!=null){tone.close();tone=null;}toneState=null;}
  private AlarmToneScreen tone(){if(tone==null){tone=new AlarmToneScreen(this,draft,toneState,this::render,()->go(""),()->go("gentle"));if(resumed)tone.resume();}return tone;}
- private void gentle(LinearLayout b){RecordUi.header(b,"Gentle wake-up",()->go("sound"));Design.space(b,20);Design.item(b,"sound","Volume ramp",draft.rampSeconds==0?"Off":draft.rampSeconds+" sec",()->open(()->SleepPicker.choices(this,"Volume ramp",new String[]{"Off","30 sec","1 min","2 min","5 min"},java.util.Arrays.binarySearch(new int[]{0,30,60,120,300},draft.rampSeconds),n->{draft.rampSeconds=new int[]{0,30,60,120,300}[n];render();})));b.addView(new AlarmRampChart(this,draft),new LinearLayout.LayoutParams(-1,Design.dp(this,220)));Design.toggle(b,"Vibration",null,draft.vibrate,on->draft.vibrate=on);Design.space(b,12);Design.toggle(b,"Screen sunrise","Brighten the alarm screen gradually",draft.sunrise,on->draft.sunrise=on);Design.fixedAction(b,"Save changes",()->go("sound"));}
+ private void gentle(LinearLayout b){
+  RecordUi.header(b,"Gentle wake-up",()->go("sound"));Design.space(b,18);
+  gentleDuration(b,"sound","Volume ramp",draft.rampSeconds,n->draft.rampSeconds=n,false);
+  b.addView(new AlarmRampChart(this,draft),new LinearLayout.LayoutParams(-1,Design.dp(this,220)));Design.space(b,12);Design.line(b);
+  gentleDuration(b,"clock","Sound delay",draft.soundDelaySeconds,n->draft.soundDelaySeconds=n,false);Design.line(b);
+  Design.toggle(b,"Vibration",null,draft.vibrate,on->{draft.vibrate=on;render();});
+  LinearLayout vibration=gentleDuration(b,"vibrate","Vibration starts",draft.vibrationDelaySeconds,n->draft.vibrationDelaySeconds=n,true);RecordUi.enabled(vibration,draft.vibrate);Design.line(b);
+  Design.toggle(b,"Screen sunrise","Brighten the alarm screen gradually",draft.sunrise,on->draft.sunrise=on);Design.space(b,10);
+  Design.toggle(b,"Flashlight wake-up","Keep the rear light on while ringing",draft.flashlight,on->draft.flashlight=on);Design.space(b,12);
+  Design.item(b,"info","About gentle wake-up",null,()->open(()->SleepPicker.message(this,"Gentle wake-up","Sound starts after its delay, then follows the volume ramp. Vibration has its own start time. Screen sunrise brightens only the alarm window. Flashlight availability depends on the camera permission and phone.")));
+  Design.fixedAction(b,"Save changes",()->go("sound"));
+ }
+ private LinearLayout gentleDuration(LinearLayout body,String icon,String title,int selected,java.util.function.IntConsumer use,boolean fromStart){
+  String value=selected==0?(fromStart?"From start":"Off"):selected<60?selected+" sec":selected/60+" min";
+  return Design.item(body,icon,title,value,()->open(()->{
+   int[] choices=new int[26];choices[0]=0;choices[1]=30;for(int n=2;n<choices.length;n++)choices[n]=(n-1)*60;
+   String[] labels=new String[choices.length];int checked=-1;for(int n=0;n<choices.length;n++){int seconds=choices[n];labels[n]=seconds==0?(fromStart?"From start":"Off"):seconds<60?seconds+" sec":seconds/60+" min";if(seconds==selected)checked=n;}
+   return SleepPicker.choices(this,title,labels,checked,index->{if(draft==null||pending()||claimed())return;use.accept(choices[index]);render();});
+  }));
+ }
+
  private void go(String next){if(preview!=null)preview.stop();if(tone!=null&&!next.equals("sound")){tone.stop();toneState=tone.save();}route=next;render();}
  private void open(java.util.function.Supplier<Dialog> create){if(dialog!=null&&dialog.isShowing())return;dialog=create.get();if(picker!=null&&dialog instanceof SleepPicker.StateDialog){dialog.onRestoreInstanceState(picker);picker=null;}}
  private void back(){if(route.isEmpty())finish();else go(route.equals("gentle")?"sound":"");}
