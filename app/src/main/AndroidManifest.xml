@@ -100,6 +100,8 @@
         <receiver android:name=".SmartBedtimeReceiver" android:exported="false" />
         <activity android:name=".PlanActivity" android:exported="false" />
         <activity android:name=".RhythmGroupsActivity" android:exported="false" />
+        <activity android:name=".EchoSettingsActivity" android:exported="false" />
+        <activity android:name=".EchoPeriodsActivity" android:exported="false" />
         <activity android:name=".TravelActivity" android:exported="false" />
         <activity android:name=".TravelCueReviewActivity" android:exported="false" />
         <activity android:name=".SleepRhythmActivity" android:exported="false" />

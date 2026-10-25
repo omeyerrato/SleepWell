@@ -8,7 +8,7 @@ final class SonarPump {
   Timing(double value){this(value,-1);}
   Timing(double value,long captureZeroElapsedNanos){if(!Double.isFinite(value)||captureZeroElapsedNanos< -1)throw new IllegalArgumentException("Audio timing");txAtRxZero=value;this.captureZeroElapsedNanos=captureZeroElapsedNanos;}
  }
- interface NightSink {void prepared(String capture)throws Exception;void started();void frame(SonarObservation observation);default void pcm(short[] pcm,int count,long firstNanos,boolean valid){} }
+ interface NightSink {default boolean periodicity(){return false;}void prepared(String capture)throws Exception;void started();void frame(SonarObservation observation);default void pcm(short[] pcm,int count,long firstNanos,boolean valid){} }
 
  interface Io extends AutoCloseable {default String captureSource(){return "";}void startMuted()throws Exception;void check()throws Exception;boolean routed();void confirmRoutes()throws Exception;Timing timing()throws Exception;int write(short[] values,int from,int count)throws Exception;int read(short[] values,int from,int count)throws Exception;void gain(float gain)throws Exception;void close();}
  static final class CleanupFailure extends RuntimeException {CleanupFailure(Throwable cause){super("Audio cleanup could not be confirmed.",cause);}}
@@ -18,7 +18,7 @@ final class SonarPump {
  }
  static SonarFrame runNight(Io io,SonarConfig config,AtomicBoolean cancelled,Clock clock,NightSink sink)throws Exception{return run(io,config,cancelled,clock,f->{},sink,12*3600000L);}
  private static SonarFrame run(Io io,SonarConfig config,AtomicBoolean cancelled,Clock clock,Consumer<SonarFrame> frames,NightSink night,long limit)throws Exception{
-  long begun=clock.millis(),writeProgress=begun,readProgress=begun;long written=0,read=0,origin=0;int outputAt=0,readAt=0;boolean emitting=false;short[] output=new short[480],input=new short[1920];SonarDsp dsp=new SonarDsp();Timing timing=null;SonarFrame latest=null;Throwable failure=null;
+  long begun=clock.millis(),writeProgress=begun,readProgress=begun;long written=0,read=0,origin=0;int outputAt=0,readAt=0;boolean emitting=false;short[] output=new short[480],input=new short[1920];SonarDsp dsp=new SonarDsp(night!=null&&night.periodicity());Timing timing=null;SonarFrame latest=null;Throwable failure=null;
   try{if(cancelled.get())return null;if(night!=null)night.prepared(io.captureSource());if(cancelled.get())return null;begun=clock.millis();writeProgress=readProgress=begun;io.startMuted();if(night!=null)night.started();while(!cancelled.get()&&clock.millis()-begun<limit){io.check();long now=clock.millis();if(!emitting&&now-begun>=2000)throw new Failure(SonarFrame.Quality.TIMING_LOST,"Audio timing or built-in routing could not be established.");
     Timing observed=io.timing();if(emitting&&(observed==null||Math.abs(observed.txAtRxZero-timing.txAtRxZero)>2))throw new Failure(SonarFrame.Quality.TIMING_LOST,"Audio timing changed. Test again.");
     if(!emitting&&written>=1920&&io.routed()&&observed!=null){timing=observed;io.confirmRoutes();io.check();if(cancelled.get())break;origin=written;emitting=true;outputAt=0;fill(output,written-origin);io.gain(config.gain);}
