@@ -91,6 +91,8 @@
         <activity android:name=".RecurringTrackingActivity" android:exported="false" />
         <activity android:name=".TrackingActivity" android:exported="false" />
         <activity android:name=".MotionSensorActivity" android:exported="false" />
+        <activity android:name=".SmartBedtimeActivity" android:exported="false" />
+        <receiver android:name=".SmartBedtimeReceiver" android:exported="false" />
         <activity android:name=".PlanActivity" android:exported="false" />
         <activity android:name=".TravelActivity" android:exported="false" />
         <activity android:name=".TravelCueReviewActivity" android:exported="false" />

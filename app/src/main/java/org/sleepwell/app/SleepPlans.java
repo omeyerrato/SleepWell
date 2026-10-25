@@ -9,7 +9,8 @@ import java.util.*;
 final class SleepPlans {
     interface Factory {SharedPreferences open(Context context);}
     interface Reminder {void apply(Context context);}
-    static Factory factory=Prefs::of;
+    static final Factory PRODUCTION=Prefs::of;
+    static Factory factory=PRODUCTION;
     static Reminder reminders=Scheduler::bedtime;
     static final class Repository {
         private final SharedPreferences preferences;
@@ -24,9 +25,9 @@ final class SleepPlans {
     }
     static Repository repository(Context c){return new Repository(factory.open(c));}
     static SleepPlan load(Context c){return repository(c).load();}
-    private static SleepPlan load(SharedPreferences p){SleepPlan plan=new SleepPlan();plan.goal=p.getInt("goal",480);plan.bedtime=p.getInt("bedtime",1350);plan.wake=p.getInt("wakeTime",420);plan.windDown=p.getInt("windDownMinutes",30);plan.reminder=p.getBoolean("bedReminder",false);plan.reminderAdvance=p.getInt("bedReminderAdvance",p.getBoolean("bedReminder",false)?0:30);plan.revision=p.getLong("planRevision",0);return plan;}
+    private static SleepPlan load(SharedPreferences p){SleepPlan plan=new SleepPlan();plan.goal=p.getInt("goal",480);plan.bedtime=p.getInt("bedtime",1350);plan.wake=p.getInt("wakeTime",420);plan.windDown=p.getInt("windDownMinutes",30);plan.reminder=p.getBoolean("bedReminder",false);plan.smartBedtime=p.getBoolean("smartBedtime",false);plan.noAlarmBedtime=p.getBoolean("noAlarmBedtime",false);plan.reminderAdvance=p.getInt("bedReminderAdvance",p.getBoolean("bedReminder",false)?0:30);plan.revision=p.getLong("planRevision",0);return plan;}
     static void save(Context c,SleepPlan plan){repository(c).save(plan);}
-    private static synchronized void save(SharedPreferences p,SleepPlan plan){plan.validate();if(p.getLong("planRevision",0)!=plan.revision)throw new IllegalArgumentException("Your plan changed while it was open. Reopen it before saving.");long revision=Math.max(System.currentTimeMillis(),plan.revision+1);if(!p.edit().putInt("goal",plan.goal).putInt("bedtime",plan.bedtime).putInt("wakeTime",plan.wake).putInt("windDownMinutes",plan.windDown).putInt("bedReminderAdvance",plan.reminderAdvance).putBoolean("bedReminder",plan.reminder).putLong("planRevision",revision).commit())throw new IllegalStateException("The plan could not be stored.");plan.revision=revision;}
+    private static synchronized void save(SharedPreferences p,SleepPlan plan){plan.validate();if(p.getLong("planRevision",0)!=plan.revision)throw new IllegalArgumentException("Your plan changed while it was open. Reopen it before saving.");long revision=Math.max(System.currentTimeMillis(),plan.revision+1);if(!p.edit().putInt("goal",plan.goal).putInt("bedtime",plan.bedtime).putInt("wakeTime",plan.wake).putInt("windDownMinutes",plan.windDown).putInt("bedReminderAdvance",plan.reminderAdvance).putBoolean("bedReminder",plan.reminder).putBoolean("smartBedtime",plan.smartBedtime).putBoolean("noAlarmBedtime",plan.noAlarmBedtime).putLong("planRevision",revision).commit())throw new IllegalStateException("The plan could not be stored.");plan.revision=revision;}
     static List<GoalCommitment> goals(Context c){return repository(c).goals();}
     private static List<GoalCommitment> goals(SharedPreferences p){try{JSONArray rows=new JSONArray(p.getString("goalCommitments","[]"));List<GoalCommitment> goals=new ArrayList<>();for(int i=0;i<rows.length();i++){JSONObject g=rows.getJSONObject(i);goals.add(new GoalCommitment(g.getString("id"),g.getString("metric"),g.getInt("target"),LocalDate.parse(g.getString("start")),g.getInt("days"),g.getString("zone"),g.getInt("cutoff"),g.optString("motivation",""),g.isNull("stopped")?null:LocalDate.parse(g.getString("stopped"))));}return goals;}catch(Exception e){throw new IllegalStateException("Goal history could not be read. Existing data was kept.",e);}}
     static void add(Context c,GoalCommitment goal){repository(c).add(goal);}

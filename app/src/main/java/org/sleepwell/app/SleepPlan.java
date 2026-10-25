@@ -6,9 +6,9 @@ import java.util.Set;
 /** User-selected schedule; it never changes a wake-up alarm. */
 final class SleepPlan {
     int goal=480,bedtime=1350,wake=420,windDown=30,reminderAdvance=30;
-    boolean reminder;
+    boolean reminder,smartBedtime,noAlarmBedtime;
     long revision;
-    SleepPlan copy(){SleepPlan p=new SleepPlan();p.goal=goal;p.bedtime=bedtime;p.wake=wake;p.windDown=windDown;p.reminderAdvance=reminderAdvance;p.reminder=reminder;p.revision=revision;return p;}
+    SleepPlan copy(){SleepPlan p=new SleepPlan();p.goal=goal;p.bedtime=bedtime;p.wake=wake;p.windDown=windDown;p.reminderAdvance=reminderAdvance;p.reminder=reminder;p.smartBedtime=smartBedtime;p.noAlarmBedtime=noAlarmBedtime;p.revision=revision;return p;}
     void duration(int minutes){goal=minutes;bedtime=Math.floorMod(wake-goal,1440);}
     void bedtime(int minutes){bedtime=minutes;wake=Math.floorMod(bedtime+goal,1440);}
     void wake(int minutes){wake=minutes;bedtime=Math.floorMod(wake-goal,1440);}

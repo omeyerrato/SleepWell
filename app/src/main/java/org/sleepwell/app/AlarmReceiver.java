@@ -14,6 +14,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             try{Alarm current=Alarm.read(new JSONObject(Prefs.text(c,"active_alarm","{}")));String run=Prefs.text(c,"alarmRun","");if(backupMatches(Prefs.flag(c,"ringing"),id,current.id,run,intent.getStringExtra("alarmRun"))){Prefs.put(c,"forceBackup",true);c.startForegroundService(new Intent(c,AlarmService.class));}}catch(JSONException ignored){}return;
         }
         if(Scheduler.BED.equals(action)) {
+            if(SleepPlans.load(c).smartBedtime){SmartBedtimeRuntime.reconcile(c);return;}
             long deadline=Prefs.of(c).getLong("bedReminderAt",0);if(!SleepPlans.load(c).reminder||deadline<=0||System.currentTimeMillis()<deadline-1000)return;
             if(TrackingService.running){Scheduler.bedtime(c);return;}
             c.getSystemService(NotificationManager.class).notify(300,new Notification.Builder(c,Notifications.BED)
