@@ -13,7 +13,7 @@ final class HistoryEraseConfirm {
         Dialog dialog=new Dialog(context);dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         LinearLayout root=Design.col(context);Design.pad(root,22,22);root.setBackground(Design.shape(context,Design.CREAM,24));
         Design.text(root,cleanup?"Finish audio cleanup?":"Delete recordings and nights?",22,600,Design.INK);Design.space(root,16);
-        Design.text(root,cleanup?"Retry removing audio left by the earlier deletion. New sleep records and alarms remain.":"This removes local sleep sessions, graphs, notes and audio. Alarms remain.",15,400,Design.MUTED);Design.space(root,18);
+        Design.text(root,cleanup?"Retry removing audio left by the earlier deletion. New sleep records and alarms remain.":"This removes local sleep sessions, graphs, notes and audio. Alarms remain. Backups and copies already shared with other apps stay where you saved them.",15,400,Design.MUTED);Design.space(root,18);
         Button positive=Design.button(root,cleanup?"Retry audio cleanup":"Delete history",true,()->{dialog.dismiss();confirmed.run();});positive.setContentDescription(cleanup?"Confirm audio cleanup":"Confirm history deletion");
         Design.button(root,"Keep",false,dialog::dismiss).setContentDescription("Keep history");
         ScrollView scroll=new ScrollView(context);scroll.setVerticalScrollBarEnabled(false);scroll.addView(root);dialog.setContentView(scroll);
