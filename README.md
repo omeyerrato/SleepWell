@@ -30,7 +30,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Privacy
 
-Data is stored locally by default. Internet permission supports explicitly configured HTTPS/MQTT/Home Assistant integrations; Android document providers may also use their own cloud account. Optional microphone analysis and Speak capture require explicit consent and foreground admission. Android system backup is disabled; user-selected exports and optional metadata backups remain separate. The accessibility service reads foreground package names only, never window text. See [PRIVACY.md](PRIVACY.md).
+Data is stored locally by default. Internet permission supports explicitly configured HTTPS/MQTT/Home Assistant integrations; Android document providers may also use their own cloud account. Optional microphone analysis and Speak capture require explicit consent and foreground admission. Android system backup is disabled; user-selected exports and optional metadata backups remain separate. The accessibility service uses window package/class/ID metadata, never window text. See [PRIVACY.md](PRIVACY.md).
 
 ## Build
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TiltMotionTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:06:22.326Z" hostname="DESKTOP-1UTDMNE" time="0.003">
+  <properties/>
+  <testcase name="calibratedTiltHasDeadzoneBoundedVelocityAndNoLargeGapCatchup" classname="org.sleepwell.app.TiltMotionTest" time="0.001"/>
+  <testcase name="staleFutureDuplicateNonfiniteAndViolentSamplesAreRejected" classname="org.sleepwell.app.TiltMotionTest" time="0.0"/>
+  <testcase name="displayRotationMapsBothAxesAndResetRequiresFreshCalibration" classname="org.sleepwell.app.TiltMotionTest" time="0.0"/>
+  <testcase name="stillCalibrationMustPrecedeMovement" classname="org.sleepwell.app.TiltMotionTest" time="0.0"/>
+  <testcase name="movingCalibrationNeverBecomesReady" classname="org.sleepwell.app.TiltMotionTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

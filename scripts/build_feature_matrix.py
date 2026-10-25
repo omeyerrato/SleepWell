@@ -679,6 +679,24 @@ for row in rows:
 
 rows.append(dict(feature="Speak microphone challenge", screens="03,10 + microphone permission/cleanup/fallback", source=SOURCE+"alarms/captcha.html", implementation=["SpeakChallengeActivity.java", "SpeakRuntime.java", "SpeakAudio.java", "SpeakCaptureService.java", "SpeakAdmission.java", "MicrophoneLease.java", "AlarmService.java"], validation="a3445e7 combined956pure/117suites/debug/native APKs/lint PASS. CI40159540059 SpeakStorageTest1, SpeakConfigurationFlowTest1, SpeakCaptureFlowTest2 and SpeakFixtureEvaluationTest1/all12 originals PASS. Six pinned whole-source CPU trials:two broad-speech positives accepted,four snore/music/cry distractors rejected. Whole24class/54method native run remains FAIL separately; raw bounded evidence in verification/2026-10-25-speak-native.", status="partial", notes="Explicit Listen, one-use visible microphone service admission, exclusive capture lease, matching-alarm quiet/cleanup barriers, two unchanged accepted speech windows and Math fallback are wired. No audio/transcript/event saved. Permission, cleanup, recreation and persistence tested with fake capture/output ports; actual microphone/FGS/alarm output and bedroom accuracy unverified. No speech transcription, speaker identity, laughter or instrument detection. See SPEAK-CHALLENGE.md."))
 
+passing_increment = {
+    "Object/picture task": "PictureNativeTest3/PictureMatchFlowTest1/all5 originals",
+    "Date / sunrise / goal-derived alarm": "SunriseStorageTest6/SunriseTimeFlowTest1/all4 and GoalAlarmPlanStorageTest3/GoalAlarmTimeFlowTest2/all7 originals",
+    "Charging condition / standby mode": "ArmedWaitNativeTest3/ArmedWaitFlowTest1/all3 originals",
+    "Dynamic snooze choices / until deadline": "SnoozeUntilFlowTest2/all7 originals",
+    "Per-class sound sensitivity": "SoundInclusionStorageTest3/SoundInclusionFlowTest3/all8 originals",
+    "Cloud backup / SleepCloud": "AutoCloudBackupStorageTest12/AutoCloudBackupFlowTest2/all8 originals",
+    "User-controlled cloud / conflict / audio backup": "AutoCloudBackupStorageTest12/AutoCloudBackupFlowTest2/all8 originals",
+    "Flip pause / delayed tracking start": "TrackingDelayStorageTest4/TrackingDelayFlowTest2/all9 and TrackingFlipStorageTest3/TrackingFlipFlowTest2/all7 originals",
+    "Playlists / shuffle / silent alarm": "AlarmSoundModeStorageTest4/AlarmSoundModeFlowTest1/all7 originals and ToneWaveArrivalTest1",
+    "Speak microphone challenge": "SpeakStorageTest1/SpeakConfigurationFlowTest1/SpeakCaptureFlowTest2/SpeakFixtureEvaluationTest1/all12 originals and six pinned CPU trials",
+}
+for row in rows:
+    if row["feature"] in passing_increment:
+        row["validation"] += " Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: " + passing_increment[row["feature"]] + ". Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance."
+    elif row["feature"] == "Achievements":
+        row.update(status="partial", implementation=["RecordAchievements.java", "RecordAchievementsReader.java", "RecordAchievementsActivity.java", "ReportScreen.java"], validation="f8c125a integrated0d51760:RecordAchievementsTest9 host PASS and production/native direct Java compilation PASS. RecordAchievementsStorageTest2/RecordAchievementsFlowTest1/six required originals compiled/execution pending CI40168584743. Combined Gradle pending.", notes="Report exposes derived first/7/30 qualifying recorded days from known valid motion/sonar coverage, excluding incomplete/unknown/manual/HC evidence and deduplicating physical overlaps. Three-hour recording coverage is a documented criterion, not measured sleep or clinical advice. Progress recalculates from edits/deletions; no stored fake awards, schema change, retrospective current-goal comparisons or rewards. Untagged naps cannot be inferred. See RECORDED-ACHIEVEMENTS.md.")
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -738,6 +756,11 @@ That35class/91method run still fails Picture configuration; its owned-title
 observation fix and new armed-wait/snooze flows await CI40167823818.
 Combined8027f83 passes1016pure/125suites, both APKs and lint0errors142warnings;
 raw evidence:verification/2026-10-25-picture-inclusion-build.
+Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals,
+including corrected Picture, armed conditions and exact-clock snooze. Same source
+passes1046pure/127suites, both APKs and lint0errors142warnings in5m37. Raw evidence:
+verification/2026-10-25-feature-increment-pass and2026-10-25-armed-snooze-build.
+Later achievements/Power Nap increments remain pending their integrated checks.
 At the user's request, the dedicated design reviewer is stopped and broad design,
 bug and security audits are deferred while agents implement features. Real acoustic
 accuracy, overnight reliability and full36screen parity remain uncertified.

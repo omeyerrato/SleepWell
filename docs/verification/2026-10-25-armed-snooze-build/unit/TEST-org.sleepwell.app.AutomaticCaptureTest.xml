@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AutomaticCaptureTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:05:44.364Z" hostname="DESKTOP-1UTDMNE" time="0.013">
+  <properties/>
+  <testcase name="foregroundEstablishmentIsAnInitialOneTimeBoundary" classname="org.sleepwell.app.AutomaticCaptureTest" time="0.002"/>
+  <testcase name="missingTypeCannotBeSilentlyUpgradedAfterArming" classname="org.sleepwell.app.AutomaticCaptureTest" time="0.0"/>
+  <testcase name="pauseAndCloseBlockCaptureAndNeverReestablishConsent" classname="org.sleepwell.app.AutomaticCaptureTest" time="0.001"/>
+  <testcase name="defaultNeverCapturesEvenWithExistingManualPermission" classname="org.sleepwell.app.AutomaticCaptureTest" time="0.001"/>
+  <testcase name="establishedForegroundAndRealRecordingTransitionAreBothRequired" classname="org.sleepwell.app.AutomaticCaptureTest" time="0.0"/>
+  <testcase name="currentPermissionRevocationPreventsCapture" classname="org.sleepwell.app.AutomaticCaptureTest" time="0.0"/>
+  <testcase name="foregroundTypeIsChosenBeforeTheWaitAndNeverPromotedAfterRevocation" classname="org.sleepwell.app.AutomaticCaptureTest" time="0.0"/>
+  <testcase name="consentAloneNeverStartsTheMicrophone" classname="org.sleepwell.app.AutomaticCaptureTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

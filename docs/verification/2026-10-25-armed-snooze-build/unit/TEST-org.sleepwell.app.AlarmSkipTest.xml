@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AlarmSkipTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:05:44.002Z" hostname="DESKTOP-1UTDMNE" time="0.017">
+  <properties/>
+  <testcase name="fridaySkipAdvancesToMondayWithoutChangingWeekdays" classname="org.sleepwell.app.AlarmSkipTest" time="0.003"/>
+  <testcase name="midnightNextDayAndWeeklyOnlyDayDoNotBecomeRelativeDelays" classname="org.sleepwell.app.AlarmSkipTest" time="0.001"/>
+  <testcase name="deliveredOccurrenceCannotBeReplacedByAQueuedOldRequest" classname="org.sleepwell.app.AlarmSkipTest" time="0.0"/>
+  <testcase name="invalidDateWeekdayAndIdentityFailClosed" classname="org.sleepwell.app.AlarmSkipTest" time="0.005"/>
+  <testcase name="mainDeliveryChecksSavedSkipAndDisabledState" classname="org.sleepwell.app.AlarmSkipTest" time="0.0"/>
+  <testcase name="mainDeliveryRetainsSmartWindowAndAlreadyClaimedFence" classname="org.sleepwell.app.AlarmSkipTest" time="0.001"/>
+  <testcase name="daylightGapSkipsResolvedOccurrenceNotAnUnrelatedHour" classname="org.sleepwell.app.AlarmSkipTest" time="0.001"/>
+  <testcase name="chosenDateFollowsLocalTimeWhenTimeZoneChanges" classname="org.sleepwell.app.AlarmSkipTest" time="0.001"/>
+  <testcase name="daylightFoldUsesSameEarlierOffsetAsCalendarScheduler" classname="org.sleepwell.app.AlarmSkipTest" time="0.001"/>
+  <testcase name="onlySelectedDateIsExcluded" classname="org.sleepwell.app.AlarmSkipTest" time="0.001"/>
+  <testcase name="clockRollbackCannotTurnChosenDateIntoAnotherSkip" classname="org.sleepwell.app.AlarmSkipTest" time="0.0"/>
+  <testcase name="mismatchedTimeAndDaysDoNotSilentlyApply" classname="org.sleepwell.app.AlarmSkipTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

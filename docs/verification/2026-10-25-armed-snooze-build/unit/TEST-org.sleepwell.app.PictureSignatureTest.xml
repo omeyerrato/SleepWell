@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.PictureSignatureTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:05:56.195Z" hostname="DESKTOP-1UTDMNE" time="0.096">
+  <properties/>
+  <testcase name="blankDarkTexturelessAndCorruptFramesAreRejected" classname="org.sleepwell.app.PictureSignatureTest" time="0.016"/>
+  <testcase name="descriptorArraysAreDefensivelyCopiedAndValidated" classname="org.sleepwell.app.PictureSignatureTest" time="0.007"/>
+  <testcase name="rotationMetadataCorrectsActualRotatedPixels" classname="org.sleepwell.app.PictureSignatureTest" time="0.009"/>
+  <testcase name="originalExactAndDeclaredBrightnessNoiseVariantsMatch" classname="org.sleepwell.app.PictureSignatureTest" time="0.024"/>
+  <testcase name="clearlyDifferentAndQuarterTurnDoNotMatch" classname="org.sleepwell.app.PictureSignatureTest" time="0.04"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

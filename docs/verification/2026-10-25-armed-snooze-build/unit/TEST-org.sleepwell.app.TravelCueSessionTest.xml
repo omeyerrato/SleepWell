@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TravelCueSessionTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:06:22.471Z" hostname="DESKTOP-1UTDMNE" time="0.011">
+  <properties/>
+  <testcase name="staleReadyAfterCancellationClosesInsteadOfActivating" classname="org.sleepwell.app.TravelCueSessionTest" time="0.005"/>
+  <testcase name="deviceZoneChangeRequiresExplicitReview" classname="org.sleepwell.app.TravelCueSessionTest" time="0.001"/>
+  <testcase name="armingFutureWindowNeverConstructsOrTouchesLight" classname="org.sleepwell.app.TravelCueSessionTest" time="0.0"/>
+  <testcase name="lostManualOwnershipStopsWithoutFurtherOn" classname="org.sleepwell.app.TravelCueSessionTest" time="0.0"/>
+  <testcase name="openThatNeverCompletesHasBoundedError" classname="org.sleepwell.app.TravelCueSessionTest" time="0.0"/>
+  <testcase name="failedOnHasRealErrorAndNoLaterPulse" classname="org.sleepwell.app.TravelCueSessionTest" time="0.0"/>
+  <testcase name="explicitStopInvalidatesAllQueuedCallbacks" classname="org.sleepwell.app.TravelCueSessionTest" time="0.0"/>
+  <testcase name="clockJumpCancelsInsteadOfChangingWindowPrescription" classname="org.sleepwell.app.TravelCueSessionTest" time="0.0"/>
+  <testcase name="duplicateArmCannotRestartAWindow" classname="org.sleepwell.app.TravelCueSessionTest" time="0.001"/>
+  <testcase name="lateTicksSkipMissedIndicesRatherThanBurst" classname="org.sleepwell.app.TravelCueSessionTest" time="0.0"/>
+  <testcase name="failedOffCannotBecomeSuccessfulCompletion" classname="org.sleepwell.app.TravelCueSessionTest" time="0.0"/>
+  <testcase name="armingRemainingWindowDoesNotExtendTheSelectedDeadline" classname="org.sleepwell.app.TravelCueSessionTest" time="0.001"/>
+  <testcase name="requestedPulseOffAndIntervalUseOriginalAbsoluteWindow" classname="org.sleepwell.app.TravelCueSessionTest" time="0.0"/>
+  <testcase name="failedJournalCannotActivateLight" classname="org.sleepwell.app.TravelCueSessionTest" time="0.001"/>
+  <testcase name="expiredFarFutureAndNonmanualAdmissionAreRejected" classname="org.sleepwell.app.TravelCueSessionTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

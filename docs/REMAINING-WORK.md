@@ -12,16 +12,16 @@ and functional checks continue; unchecked visual items below remain future work.
 
 ## Current feature sprint — 25 October
 
-Latest combined source **8027f83** passes **1016 pure tests/125 suites**, debug and
-native-test APK builds, and lint with zero errors/142 warnings in6m50. This includes
-picture matching, sound-category inclusion, automatic metadata backup, sunrise and
-reviewed sleep-plan time copy. [Raw build evidence](verification/2026-10-25-picture-inclusion-build/README.md).
-Newer armed-wait/smart-deadline changes need their combined check.
+Latest fully checked source **6ec80fb** passes **1046 pure tests/127 suites**, debug
+and native-test APKs, and lint with zero errors/142 warnings in5m37.
+[Raw local evidence](verification/2026-10-25-armed-snooze-build/README.md).
 
-[CI40166582977](https://github.com/omeyerrato/SleepWell/actions/runs/40166582977)
-at27cdf83 runs35classes/91methods requiring111 original screenshots. It **fails
-only the picture configuration journey**; four required picture frames are absent.
-Passing classes are narrower functional evidence, not full app/design acceptance.
+[CI40167823818](https://github.com/omeyerrato/SleepWell/actions/runs/40167823818)
+on the same source passes **38classes/97native methods/all121 required originals**.
+This includes corrected picture matching, armed conditions and exact-clock snooze.
+[Original native evidence](verification/2026-10-25-feature-increment-pass/README.md).
+This is explicit-scope functional evidence, not full app/design/hardware acceptance.
+Later recorded achievements and Power Nap need their own integrated checks.
 
 - [x] Alarm defaults, explicit dates, saved inputs and bounded per-press snooze choices.
 - [x] Calendar alarm rules, sleep-only Health Connect and optional integration contracts
@@ -40,11 +40,14 @@ Passing classes are narrower functional evidence, not full app/design acceptance
   Custom inclusion suppresses all new clips; unreadable settings block analysis/clips.
 - [x] Speak configuration/storage/capture plus six pinned CPU trials pass narrowly.
   This detects broad speech, not words, laughter, instruments, identity or liveness.
-- [ ] Picture match: actual pixel/private storage3 methods pass; configuration journey
-  fails on return after Cancel. Its author is correcting the concrete failure.
-- [ ] Arm-tonight charging/screen-off conditions and correct smart-window projection:
-  merged; focused host tests pass, combined/native checks pending.
-- [ ] Optional exact-clock snooze choice and recorded-night milestones: being built.
+- [x] Picture match: actual pixel/private storage3 + configuration1/all5 originals pass.
+  Semantic object recognition, real camera framing/accuracy and liveness remain absent.
+- [x] Arm-tonight charging/screen-off conditions Storage3/Flow1/all3 originals pass;
+  smart-window projection follows actual dated/sunrise/skip/calendar deadlines.
+- [x] Optional exact same-day clock snooze Flow2/all7 originals pass; midnight and
+  ambiguous/skipped DST times retain relative-duration alternatives.
+- [ ] Recorded-night milestones: merged, host/direct Java checks pass; native CI pending.
+- [ ] Power Nap minimum-rest/latest-wake interval: implementation/native fixtures in progress.
 - [ ] Live hardware, overnight capture, actual external exchange, new phone installation,
   remaining matrix subfeatures and later design/security review.
 

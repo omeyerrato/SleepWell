@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TrackingDndOwnerTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:06:22.408Z" hostname="DESKTOP-1UTDMNE" time="0.023">
+  <properties/>
+  <testcase name="expirySchedulingFailureNeverActivates" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.006"/>
+  <testcase name="actualExpiryRemovesOwnedRule" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.0"/>
+  <testcase name="initialJournalFailureCleansInactiveRule" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.0"/>
+  <testcase name="disabledRuleIsNotReenabledByHeartbeat" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.001"/>
+  <testcase name="failedRenewalJournalRetainsOldExpiry" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.0"/>
+  <testcase name="deniedPolicyDoesNotPretendToActivate" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.0"/>
+  <testcase name="processRecoveryDoesNotRemoveLiveNewlyAdmittedLease" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.001"/>
+  <testcase name="stopRemovesOnlyMatchingRunAndItsExpiry" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.0"/>
+  <testcase name="staleAdmissionCannotCreateRule" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.0"/>
+  <testcase name="missingExactSafeguardPreventsActivation" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.002"/>
+  <testcase name="expiryIsPreparedBeforeAnyActivation" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.001"/>
+  <testcase name="defaultOffNeverCreatesEnablesOrSchedules" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.001"/>
+  <testcase name="earlyOrStaleDeadlineCannotRemoveLease" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.0"/>
+  <testcase name="writeAfterOnFailureStillRequestsImmediateCleanup" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.002"/>
+  <testcase name="staleExpiryCannotStopReplacementLease" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.0"/>
+  <testcase name="hardLimitStopsEvenIfRecordingPortStillClaimsActive" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.001"/>
+  <testcase name="processAndBootRecoveryOnlyDeactivateNeverActivate" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.002"/>
+  <testcase name="renewalNeverReassertsRuleAndCancelsOldDeadline" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.0"/>
+  <testcase name="staleStartCannotRemoveCurrentLease" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.001"/>
+  <testcase name="unchangedHardDeadlineNeverCancelsItsOwnSafeguard" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.001"/>
+  <testcase name="cleanupFailureRetainsOwnerForHonestRetry" classname="org.sleepwell.app.TrackingDndOwnerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

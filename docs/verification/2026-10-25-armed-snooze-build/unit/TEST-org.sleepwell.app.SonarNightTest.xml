@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SonarNightTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:06:11.149Z" hostname="DESKTOP-1UTDMNE" time="3.854">
+  <properties/>
+  <testcase name="slowStorageCannotBlockAudioCancellation" classname="org.sleepwell.app.SonarNightTest" time="0.558"/>
+  <testcase name="failedForegroundResumeStaysPausedWithoutNewAudioAndCanRetryExplicitly" classname="org.sleepwell.app.SonarNightTest" time="0.207"/>
+  <testcase name="realSignalLossPersistsNullRatherThanZeroAndStopRemainsResponsive" classname="org.sleepwell.app.SonarNightTest" time="0.594"/>
+  <testcase name="captureSourceCannotSilentlyChangeWhenResumingSameNight" classname="org.sleepwell.app.SonarNightTest" time="0.013"/>
+  <testcase name="futureCaptureTimestampStopsInsteadOfFabricatingWallEvidence" classname="org.sleepwell.app.SonarNightTest" time="0.065"/>
+  <testcase name="userPauseCannotOverrideDiskFailureStopWhileNativeCloseIsPending" classname="org.sleepwell.app.SonarNightTest" time="0.548"/>
+  <testcase name="diskFailureIsVisibleAndDoesNotAdvertiseSavedSuccess" classname="org.sleepwell.app.SonarNightTest" time="0.507"/>
+  <testcase name="realPcmNightPauseResumeStopPreservesAnchorQualityAndActiveGap" classname="org.sleepwell.app.SonarNightTest" time="1.319"/>
+  <testcase name="cancellationDuringBlockedAdmissionNeverStartsCaptureAndEndCannotPredateBegin" classname="org.sleepwell.app.SonarNightTest" time="0.043"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

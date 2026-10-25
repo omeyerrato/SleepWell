@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TiltMazeTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:06:22.230Z" hostname="DESKTOP-1UTDMNE" time="0.094">
+  <properties/>
+  <testcase name="calibratedMotionCanTraverseGeneratedCorridorsWithoutTouchTeleport" classname="org.sleepwell.app.TiltMazeTest" time="0.025"/>
+  <testcase name="exactOwnerRegeneratesTheSameWallsAndNewOwnersVary" classname="org.sleepwell.app.TiltMazeTest" time="0.002"/>
+  <testcase name="invalidCheckpointsRejectRatherThanTeleport" classname="org.sleepwell.app.TiltMazeTest" time="0.001"/>
+  <testcase name="generatedMazesAlwaysConnectStartToTargetAndKeepSolidOuterWalls" classname="org.sleepwell.app.TiltMazeTest" time="0.029"/>
+  <testcase name="ballCannotTunnelOrLeaveThroughWalls" classname="org.sleepwell.app.TiltMazeTest" time="0.037"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.ArmedWaitTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:05:44.256Z" hostname="DESKTOP-1UTDMNE" time="0.042">
+  <properties/>
+  <testcase name="selectedConditionsBlockIndependentlyAndInStableOrder" classname="org.sleepwell.app.ArmedWaitTest" time="0.002"/>
+  <testcase name="timedWaitHoldsPastScheduledTimeThenStartsOnceWhenEligible" classname="org.sleepwell.app.ArmedWaitTest" time="0.007"/>
+  <testcase name="defaultConditionsKeepEveryExistingAdmissionUnchanged" classname="org.sleepwell.app.ArmedWaitTest" time="0.001"/>
+  <testcase name="frozenPolicyDoesNotStopAlreadyStartedCaptureOrRetryFailedStart" classname="org.sleepwell.app.ArmedWaitTest" time="0.005"/>
+  <testcase name="blockedStillnessNeverAccumulatesEvidenceAndEligibilityStartsNewWindow" classname="org.sleepwell.app.ArmedWaitTest" time="0.011"/>
+  <testcase name="conditionLostAfterQualifyingSampleRevokesPendingStart" classname="org.sleepwell.app.ArmedWaitTest" time="0.006"/>
+  <testcase name="conditionsDoNotExtendDeadlineOrCreateSessionAfterCancel" classname="org.sleepwell.app.ArmedWaitTest" time="0.005"/>
+  <testcase name="finalConditionRecheckCanRevokeTimedStartWithoutClosingWait" classname="org.sleepwell.app.ArmedWaitTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

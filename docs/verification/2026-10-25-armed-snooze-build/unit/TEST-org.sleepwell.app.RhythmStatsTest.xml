@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.RhythmStatsTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:05:56.946Z" hostname="DESKTOP-1UTDMNE" time="0.056">
+  <properties/>
+  <testcase name="manualEditsAffectPatternButNotRecordedEvidence" classname="org.sleepwell.app.RhythmStatsTest" time="0.001"/>
+  <testcase name="workdayScheduleUsesWakeCalendarDayEvenWithNoonHistoryCutoff" classname="org.sleepwell.app.RhythmStatsTest" time="0.001"/>
+  <testcase name="napsAndShortAndFutureAndOpenPeriodsAreExcluded" classname="org.sleepwell.app.RhythmStatsTest" time="0.001"/>
+  <testcase name="midpointUsesElapsedInstantAcrossDstFold" classname="org.sleepwell.app.RhythmStatsTest" time="0.001"/>
+  <testcase name="midnightRangeUsesShortestArc" classname="org.sleepwell.app.RhythmStatsTest" time="0.0"/>
+  <testcase name="circularDifferenceDoesNotTurnMidnightIntoTwentyThreeHours" classname="org.sleepwell.app.RhythmStatsTest" time="0.003"/>
+  <testcase name="effectiveAwakeTrimChangesPeriodBoundaries" classname="org.sleepwell.app.RhythmStatsTest" time="0.004"/>
+  <testcase name="evidenceProgressCountsAllDistinctRecordedNightsBeyondVisibleSeven" classname="org.sleepwell.app.RhythmStatsTest" time="0.035"/>
+  <testcase name="emptyAndSingleNightDoNotInventVariabilityOrJetlag" classname="org.sleepwell.app.RhythmStatsTest" time="0.001"/>
+  <testcase name="antipodalMidpointsHaveNoRepresentativeMean" classname="org.sleepwell.app.RhythmStatsTest" time="0.0"/>
+  <testcase name="displayedGapMatchesRoundedClockEndpoints" classname="org.sleepwell.app.RhythmStatsTest" time="0.001"/>
+  <testcase name="duplicateDaySelectsLongestThenNewestIdentity" classname="org.sleepwell.app.RhythmStatsTest" time="0.0"/>
+  <testcase name="duplicatePhysicalIntervalAcrossZonesDoesNotAddEvidence" classname="org.sleepwell.app.RhythmStatsTest" time="0.001"/>
+  <testcase name="onlyLastSevenAvailableDatedNightsAreUsedAndGapsStayReal" classname="org.sleepwell.app.RhythmStatsTest" time="0.002"/>
+  <testcase name="actualWorkFreeMidpointsFollowSavedClassification" classname="org.sleepwell.app.RhythmStatsTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

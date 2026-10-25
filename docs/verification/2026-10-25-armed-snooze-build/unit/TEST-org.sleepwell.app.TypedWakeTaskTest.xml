@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TypedWakeTaskTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:06:22.498Z" hostname="DESKTOP-1UTDMNE" time="0.014">
+  <properties/>
+  <testcase name="staleDuplicateUnitCannotSkipJournalOrNextTask" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.001"/>
+  <testcase name="mirrorRequiresExactNormalPhraseIncludingDigits" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.004"/>
+  <testcase name="unsupportedMinimumCannotAttachToOtherTasks" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.001"/>
+  <testcase name="overlongEntriesAndUnsupportedMinimumAreRejected" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.0"/>
+  <testcase name="newOccurrenceAndRoundProduceTheirOwnPhrase" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.0"/>
+  <testcase name="ArabicWordsAndUnicodeLettersCountWithoutEnglishDictionary" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.003"/>
+  <testcase name="missingOccurrenceCannotGenerateAValidTask" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.001"/>
+  <testcase name="EmojiAndInvisibleCharactersCannotSatisfyLettersOrWords" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.001"/>
+  <testcase name="journalIsExactlyOneUnitAndMirrorUsesConfiguredRounds" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.0"/>
+  <testcase name="mirrorPhraseIsStableForOneOccurrenceUnit" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.001"/>
+  <testcase name="oldLegacyTaskGenerationAndOrderingRemainSupported" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.0"/>
+  <testcase name="actualJournalNeedsAllEngagementCriteria" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.0"/>
+  <testcase name="configuredMinimumActuallyChangesAdmission" classname="org.sleepwell.app.TypedWakeTaskTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

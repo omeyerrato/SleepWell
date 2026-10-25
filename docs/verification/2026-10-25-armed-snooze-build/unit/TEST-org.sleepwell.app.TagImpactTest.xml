@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TagImpactTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:06:22.207Z" hostname="DESKTOP-1UTDMNE" time="0.018">
+  <properties/>
+  <testcase name="inputNamesRemainLegacyCompatible" classname="org.sleepwell.app.TagImpactTest" time="0.001"/>
+  <testcase name="sortedMedianIsComputedIndependentlyOfInputOrder" classname="org.sleepwell.app.TagImpactTest" time="0.0"/>
+  <testcase name="invalidQuantitiesAndOrphansAreRejected" classname="org.sleepwell.app.TagImpactTest" time="0.005"/>
+  <testcase name="quantityCopiesAndRemovalCannotLeaveOrphanedMetadata" classname="org.sleepwell.app.TagImpactTest" time="0.001"/>
+  <testcase name="constantOrTooFewQuantitiesCannotClaimCorrelation" classname="org.sleepwell.app.TagImpactTest" time="0.001"/>
+  <testcase name="overlapExcludesEveryAmbiguousRecordIncludingContainedOnes" classname="org.sleepwell.app.TagImpactTest" time="0.001"/>
+  <testcase name="emptyGroupIsMissingNotZeroSleep" classname="org.sleepwell.app.TagImpactTest" time="0.001"/>
+  <testcase name="quantitiesKeepUnitsSeparateAndBareTagsUnknown" classname="org.sleepwell.app.TagImpactTest" time="0.003"/>
+  <testcase name="groupsUseActualDurationsAndCaseInsensitivePresence" classname="org.sleepwell.app.TagImpactTest" time="0.001"/>
+  <testcase name="quantitativeAssociationPreservesNegativeDirection" classname="org.sleepwell.app.TagImpactTest" time="0.0"/>
+  <testcase name="touchingPeriodsAreIndependentAndAwakeEditsActuallyReduceDuration" classname="org.sleepwell.app.TagImpactTest" time="0.001"/>
+  <testcase name="regionalDecimalInputUsesRealDecimalDigits" classname="org.sleepwell.app.TagImpactTest" time="0.002"/>
+  <testcase name="quantitativeAssociationUsesPairedActualDurations" classname="org.sleepwell.app.TagImpactTest" time="0.001"/>
+  <testcase name="napsAndFutureDoNotBecomeComparators" classname="org.sleepwell.app.TagImpactTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

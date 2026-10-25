@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SoundInclusionTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:06:22.049Z" hostname="DESKTOP-1UTDMNE" time="0.028">
+  <properties/>
+  <testcase name="realClassificationWinnerIsNotChangedToRunnerUp" classname="org.sleepwell.app.SoundInclusionTest" time="0.003"/>
+  <testcase name="otherSelectionIsIndependentAndCannotTakeDisabledWinner" classname="org.sleepwell.app.SoundInclusionTest" time="0.001"/>
+  <testcase name="emptyUnknownOrMutableInputCannotBecomeAnAnalysisPolicy" classname="org.sleepwell.app.SoundInclusionTest" time="0.001"/>
+  <testcase name="eachDisabledWinnerIsDroppedAndNeverRelabeledOther" classname="org.sleepwell.app.SoundInclusionTest" time="0.0"/>
+  <testcase name="rejectedClassDoesNotSpendPersistentEventBudget" classname="org.sleepwell.app.SoundInclusionTest" time="0.004"/>
+  <testcase name="sharedSonarUsesTheSameSelectedWinnerDropWithoutAnotherMicrophone" classname="org.sleepwell.app.SoundInclusionTest" time="0.012"/>
+  <testcase name="snapshotOwnsSelectionAndDurationAcrossLaterCopies" classname="org.sleepwell.app.SoundInclusionTest" time="0.001"/>
+  <testcase name="defaultAllCategoriesAndClipConsentAreExactLegacy" classname="org.sleepwell.app.SoundInclusionTest" time="0.0"/>
+  <testcase name="filteredGapCannotBridgeSelectedTemporalEvent" classname="org.sleepwell.app.SoundInclusionTest" time="0.0"/>
+  <testcase name="droppedSnoreCannotAllocateCueOrSpendItsBudget" classname="org.sleepwell.app.SoundInclusionTest" time="0.002"/>
+  <testcase name="unreadableRuntimePolicyCannotAllocateModelOrClipsAndDoesNotPretendCompletion" classname="org.sleepwell.app.SoundInclusionTest" time="0.001"/>
+  <testcase name="anyCustomSelectionBlocksEveryNewClipWithoutChangingConsent" classname="org.sleepwell.app.SoundInclusionTest" time="0.0"/>
+  <testcase name="blockedSharedNightPublishesAnErrorWithoutAnalysisWorkerOrNewPortableState" classname="org.sleepwell.app.SoundInclusionTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

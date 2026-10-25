@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.MotionConfigurationTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:05:55.891Z" hostname="DESKTOP-1UTDMNE" time="0.018">
+  <properties/>
+  <testcase name="mediumMatchesExistingSmartWakePolicyExactly" classname="org.sleepwell.app.MotionConfigurationTest" time="0.002"/>
+  <testcase name="nonfiniteSensorValuesDoNotPoisonTheFilter" classname="org.sleepwell.app.MotionConfigurationTest" time="0.001"/>
+  <testcase name="sensitivityChangesActualWakeEligibilityWithoutChangingRawValue" classname="org.sleepwell.app.MotionConfigurationTest" time="0.001"/>
+  <testcase name="previewAndEngineUseIdenticalFilterOnActualSamples" classname="org.sleepwell.app.MotionConfigurationTest" time="0.003"/>
+  <testcase name="missingPreviewBinsStayNullAndStaleSamplesExpire" classname="org.sleepwell.app.MotionConfigurationTest" time="0.004"/>
+  <testcase name="invalidValuesCannotBecomeWakeSignals" classname="org.sleepwell.app.MotionConfigurationTest" time="0.001"/>
+  <testcase name="sensitivityAffectsAutomaticStillnessButPreservesRequiredDuration" classname="org.sleepwell.app.MotionConfigurationTest" time="0.005"/>
+  <testcase name="gravityWarmupAndResetDoNotInventMovement" classname="org.sleepwell.app.MotionConfigurationTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

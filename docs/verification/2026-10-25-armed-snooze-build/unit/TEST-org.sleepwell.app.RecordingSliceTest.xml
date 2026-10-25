@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.RecordingSliceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-25T06:05:56.925Z" hostname="DESKTOP-1UTDMNE" time="0.001">
+  <properties/>
+  <testcase name="containedEventHasRealOffsetAndDuration" classname="org.sleepwell.app.RecordingSliceTest" time="0.0"/>
+  <testcase name="partialCoverageCannotInventPlayableSamples" classname="org.sleepwell.app.RecordingSliceTest" time="0.001"/>
+  <testcase name="boundaryTouchingEventsArePlayable" classname="org.sleepwell.app.RecordingSliceTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
