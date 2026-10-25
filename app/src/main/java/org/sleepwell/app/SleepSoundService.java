@@ -30,6 +30,7 @@ public final class SleepSoundService extends Service {
         try{if(PLAY.equals(action))c.startForegroundService(intent);else if(current!=null)c.startService(intent);}
         catch(RuntimeException e){SoundPreferences.error(c,"Playback could not start. Open Sleep sounds and try again.");}
     }
+    static void pauseForSelection(){SleepSoundService s=current;if(s!=null)s.manualPause();}
     static void update(Context c){SleepSoundService s=current;if(s==null){last=null;return;}try{s.playback.update(SoundPreferences.load(c));s.publish();}catch(RuntimeException e){s.failure("Your sound settings could not be loaded.");}}
     static void trackingStart(Context c,long id,long elapsed){
         try{SoundMix mix=SoundPreferences.load(c);if(!mix.withTracking)return;
@@ -133,7 +134,8 @@ public final class SleepSoundService extends Service {
                 player=new MediaPlayer();player.setAudioAttributes(attributes);player.setLooping(true);player.setVolume(0,0);
                 player.setOnPreparedListener(p->{if(closed){release();return;}ready=true;main.post(()->{if(!destroyed)callback.ready();else close();});});
                 player.setOnErrorListener((p,what,extra)->{main.post(()->{if(!destroyed)callback.failed();});return true;});
-                if(source.startsWith("content://"))player.setDataSource(SleepSoundService.this,Uri.parse(source));
+                if(source.startsWith(BinauralTones.PREFIX)){java.io.File file=BinauralTones.prepare(SleepSoundService.this,source,()->!closed&&!destroyed);try(java.io.FileInputStream input=new java.io.FileInputStream(file)){player.setDataSource(input.getFD());}}
+                else if(source.startsWith("content://"))player.setDataSource(SleepSoundService.this,Uri.parse(source));
                 else {String file=Map.of("Rain","rain.wav","Ocean","ocean.wav","Fireplace","fireplace.wav","Wind","wind.wav","Brown noise","brown.wav").get(source);if(file==null)throw new IllegalArgumentException("Unknown sound");
                     try(android.content.res.AssetFileDescriptor fd=getAssets().openFd(file)){player.setDataSource(fd.getFileDescriptor(),fd.getStartOffset(),fd.getLength());}}
                 if(!closed)player.prepareAsync();else release();
