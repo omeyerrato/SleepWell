@@ -29,7 +29,7 @@ final class SoundImports {
         final String id=UUID.randomUUID().toString();final Context app;final Uri uri;final int flags;
         final SharedPreferences preferences;final long revision,started=SystemClock.elapsedRealtime();final SoundMix previous;
         final CancellationSignal signal=new CancellationSignal();final CountDownLatch exited=new CountDownLatch(1);
-        volatile State state=State.READING;volatile long bytes;volatile String title="My audio",error="";
+        volatile State state=State.READING;volatile long bytes,durationMillis;volatile String title="My audio",error="";
         volatile AssetFileDescriptor descriptor;volatile boolean retired;
         Job(Context c,Uri u,int f){app=c.getApplicationContext();uri=u;flags=f;preferences=SoundPreferences.factory.open(app);synchronized(SoundPreferences.class){revision=SoundPreferences.revision(preferences);previous=SoundPreferences.load(preferences).copy();}}
         synchronized void fail(String message){if(state==State.READING||state==State.READY){error=message;state=State.FAILED;}}
@@ -48,7 +48,7 @@ final class SoundImports {
             try(AssetFileDescriptor fd=descriptor;InputStream in=fd.createInputStream();OutputStream out=new FileOutputStream(temporary)){AudioCopy.copy(in,out,MAX_BYTES,this::check,n->bytes=n);}finally{descriptor=null;}
             check();try(MediaMetadataRetriever metadata=new MediaMetadataRetriever();FileInputStream input=new FileInputStream(temporary)){
                 metadata.setDataSource(input.getFD());String duration=metadata.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
-                if(duration==null||Long.parseLong(duration)<=0||!"yes".equals(metadata.extractMetadata(MediaMetadataRetriever.METADATA_KEY_HAS_AUDIO)))throw new IOException("No audio track");
+                if(duration==null||Long.parseLong(duration)<=0||!"yes".equals(metadata.extractMetadata(MediaMetadataRetriever.METADATA_KEY_HAS_AUDIO)))throw new IOException("No audio track");durationMillis=Long.parseLong(duration);
             }
             check();synchronized(this){if(state==State.READING)state=State.READY;}
         }catch(Exception e){fail(SystemClock.elapsedRealtime()-started>=TIMEOUT_MS?"The audio provider took too long. Choose the file again.":"That file could not be read as audio. Choose a readable audio file up to 100 MiB.");}
@@ -56,6 +56,8 @@ final class SoundImports {
         void cancel(){synchronized(this){if(state!=State.COMPLETED)state=State.CANCELLED;}closeOffMain();}
         void closeOffMain(){try{closers.execute(()->{signal.cancel();AssetFileDescriptor fd=descriptor;if(fd!=null)try{fd.close();}catch(IOException ignored){}});}catch(RejectedExecutionException ignored){/* A stuck provider never gets an unbounded number of cancellation threads. */}}
         void poll(){if(state==State.READING&&SystemClock.elapsedRealtime()-started>=TIMEOUT_MS){fail("The audio provider took too long. Choose the file again.");closeOffMain();}}
+        /** Transfers checked metadata to an unsaved playlist draft; retains no document grant and writes no mix. */
+        synchronized SoundPlaylist.Track playlistTrack(){if(state!=State.READY)throw new IllegalStateException("Wait for the file check to finish.");SoundPlaylist.Track result=new SoundPlaylist.Track(uri.toString(),title,bytes,durationMillis);state=State.COMPLETED;return result;}
         /** Main thread only: no import can commit after another mix edit or after cancellation. */
         synchronized boolean commit(){
             if(state!=State.READY)return false;
