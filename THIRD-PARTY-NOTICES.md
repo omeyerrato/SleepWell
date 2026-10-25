@@ -50,3 +50,7 @@ Jetpack libraries, licensed under Apache License 2.0. They provide lifecycle-bou
 preview and frame analysis. Versions are pinned in app/build.gradle.
 [CameraX release provenance](https://developer.android.com/jetpack/androidx/releases/camera),
 [Activity release provenance](https://developer.android.com/jetpack/androidx/releases/activity).
+
+## Google ML Kit face detector
+
+The optional Smile challenge uses `com.google.mlkit:face-detection:16.1.7` with a bundled on-device model, and Apache-2.0 CameraX `camera-mlkit-vision:1.5.3`. Google’s detector/model is a proprietary dependency governed by the [ML Kit terms](https://developers.google.com/ml-kit/terms), not by SleepWell’s MIT source license. It performs image inference on the device; Google states that the SDK may contact its services and send usage/performance metrics. SleepWell does not save camera images or face templates. The bundled option does not require a Play services model download. The visible Smile screen discloses these limits before camera admission.
