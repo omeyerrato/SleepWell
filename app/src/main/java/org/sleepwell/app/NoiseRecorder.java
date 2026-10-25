@@ -28,7 +28,7 @@ final class NoiseRecorder implements AutoCloseable {
             if(recorder.getState()!=AudioRecord.STATE_INITIALIZED) throw new IOException("Microphone unavailable");
             if(!running)return;
             Prefs.put(c,"analysisError","");
-            analysis=new SoundAnalysisStream(()->new YamnetClassifier(c),(at,count,category,score)->{if(budget.saveEvent())store.soundEvent(session,at,count*975L,category,score,null);if(running)cues.event(category,score,android.os.SystemClock.elapsedRealtime(),SnoreCueOutput.settings(c));},()->Prefs.put(c,"analysisError","Sound labels unavailable. Room sound levels and optional recordings continue."),budget.sensitivity);
+            analysis=new SoundAnalysisStream(()->new YamnetClassifier(c),(at,count,category,score)->{if(budget.saveEvent())store.soundEvent(session,at,count*975L,category,score,null);if(running&&!DreamCues.masks(android.os.SystemClock.elapsedRealtimeNanos(),android.os.SystemClock.elapsedRealtimeNanos()+1))cues.event(category,score,android.os.SystemClock.elapsedRealtime(),SnoreCueOutput.settings(c));},()->Prefs.put(c,"analysisError","Sound labels unavailable. Room sound levels and optional recordings continue."),budget.sensitivity);
             activeRecorder=recorder;if(!running)return;recorder.startRecording();capturing=true;short[] frame=new short[1024]; ByteArrayOutputStream clip=null;
             double peak=0;
             while(running) {
@@ -36,6 +36,7 @@ final class NoiseRecorder implements AutoCloseable {
                 if(!running)break;
                 if(n<0) throw new IOException("Microphone read error "+n);
                 if(n==0) continue;
+                long pcmEnd=android.os.SystemClock.elapsedRealtimeNanos();if(DreamCues.masks(pcmEnd-n*1000000000L/16000,pcmEnd)){analysis.gap();clip=null;continue;}
                 level=SleepMath.rms(frame,n);window.add(level,n);
                 analysis.accept(frame,n,timeline.getAsLong());
                 double threshold=Prefs.number(c,"noiseThreshold",20)/1000.0;

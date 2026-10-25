@@ -134,7 +134,7 @@ public class TrackingService extends Service implements SensorEventListener {
         StoreFactory storage=storeFactory;
         SonarNight night=new SonarNight(sonarConfig,(config,cancelled)->SonarAudio.openNight(getApplicationContext(),config,cancelled,()->current==this&&running&&!destroyed&&sonarMode&&sonarNight==owner[0]),new SonarNightStore(getApplicationContext(),storage,time,awake),time,handler::post,state->{
             if(current!=this||sonarNight!=owner[0])return;
-            Phase previousDndPhase=phase;session=state.id;start=state.start;phase=Phase.valueOf(state.phase);if(phase==Phase.ACTIVE&&previousDndPhase!=Phase.ACTIVE){dndActive();if(pir==null)beginPir();else pir.resume();if(delayPlan!=null)delayJob.finish(delayPlan.token,TrackingDelay.Phase.STARTED,state.id,"");}else if(phase!=Phase.ACTIVE){dndStop();if(pir!=null)pir.pause();}
+            if(!state.phase.equals("ACTIVE"))DreamCues.cancelRun(session,manualToken,state.phase.equals("PAUSED")||state.phase.equals("PAUSING")?"paused":"ended");Phase previousDndPhase=phase;session=state.id;start=state.start;phase=Phase.valueOf(state.phase);if(phase==Phase.ACTIVE&&previousDndPhase!=Phase.ACTIVE){dndActive();if(pir==null)beginPir();else pir.resume();if(delayPlan!=null)delayJob.finish(delayPlan.token,TrackingDelay.Phase.STARTED,state.id,"");}else if(phase!=Phase.ACTIVE){dndStop();if(pir!=null)pir.pause();}
             if(delayPlan!=null&&state.id==0&&(state.phase.equals("CLOSED")||state.phase.equals("BLOCKED")))delayJob.finish(delayPlan.token,TrackingDelay.Phase.FAILED,0,state.error.isEmpty()?"Contactless recording did not begin.":state.error);
             if(!state.error.isEmpty())Prefs.put(this,"trackingError",state.error);
             Prefs.of(this).edit().putLong("session",session).putBoolean("tracking",state.id>0&&!state.phase.equals("CLOSED")&&!state.phase.equals("BLOCKED")).putBoolean("trackingPaused",state.phase.equals("PAUSED")).apply();
@@ -223,6 +223,7 @@ public class TrackingService extends Service implements SensorEventListener {
         if(phase!=Phase.ACTIVE&&phase!=Phase.ARMED)return;
         if(event.sensor.getType()==Sensor.TYPE_LIGHT){if(lightRegistered){light=(double)event.values[0];if(awake!=null)awake.light(light,event.timestamp);}return;}
         if(!motionRegistered)return;
+        if(DreamCues.masks(event.timestamp,event.timestamp+1)){motionFilter.reset();return;}
         if(event.values.length<3)return;Double raw=motionFilter.sample(event.values[0],event.values[1],event.values[2]);if(raw==null)return;
         if(phase==Phase.ARMED){automaticTransition.sample(SystemClock.elapsedRealtime(),motionProfile.inference(raw),getSystemService(PowerManager.class).isInteractive());return;}sum+=raw*raw;count++;
     }
@@ -246,6 +247,7 @@ public class TrackingService extends Service implements SensorEventListener {
         if(recorder==null){complete.run();return;}recorder.requestStop();closer.execute(()->{recorder.close();handler.post(complete);});
     }
     private void pause(){
+        DreamCues.cancelRun(session,manualToken,"paused");
         if(pir!=null)pir.pause();
         PairMotionRuntime.recordingStopped(session,manualToken,"PAUSED");
         dndStop();
@@ -261,6 +263,7 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void closeGoogleSleep(){GoogleSleepSignal old=googleSleep;googleSleep=null;if(old!=null)old.close();}
     private void stop(boolean wasInterrupted){
+        DreamCues.cancelRun(session,manualToken,wasInterrupted?"process":"ended");
         closePir();
         PairMotionRuntime.recordingStopped(session,manualToken,"ENDED");
         closeGoogleSleep();        closeFlip();dndStop();cancelDelay(wasInterrupted);if(awake!=null)awake.stopInputs();

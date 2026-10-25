@@ -22,6 +22,7 @@ public class AlarmService extends Service {
         if(occurrence.isEmpty()||started<=0||started>now){occurrence=java.util.UUID.randomUUID().toString();started=now;Prefs.of(this).edit().putString("alarmRun",occurrence).putLong("alarmStartedElapsed",started).apply();}
         final String lifetimeRun=occurrence;lifetime=new AlarmLifetime(alarm,lifetimeRun,new AlarmLifetime.Owner(){public boolean current(String run){return alive(run);}public boolean backupIfCurrent(String run,boolean backup){synchronized(Scheduler.class){if(!alive(run))return false;backupPhase=backup;if(playback!=null)playback.backup(backup);return true;}}public boolean timeoutIfCurrent(String run){return expire(run);}});
         if(!timing())return START_NOT_STICKY;
+        DreamCues.alarmStarting();
         SleepSoundService.alarmStarting();
         Intent screen=new Intent(this,AlarmActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent launch=PendingIntent.getActivity(this,1,screen,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);

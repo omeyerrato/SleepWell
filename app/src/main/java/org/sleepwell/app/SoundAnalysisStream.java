@@ -17,6 +17,7 @@ final class SoundAnalysisStream implements AutoCloseable {
             if(count==SAMPLES){try{groups.add(start,SoundAnalysis.classify(model.infer(frame)));}catch(RuntimeException|LinkageError error){try{groups.flush();}finally{release();failed.run();}return;}count=0;}
         }
     }
+    void gap(){if(closed)return;count=0;groups.flush();}
     private void release(){if(model!=null){try{model.close();}catch(RuntimeException ignored){}model=null;}}
     @Override public void close(){if(closed)return;closed=true;try{groups.flush();}finally{release();}}
 }
