@@ -15,6 +15,7 @@ public class Alarm {
     NapPlan nap;boolean napInvalid;private Object invalidNap;
     String weeklyNapOwner="";boolean weeklyNapOwnerInvalid;private Object invalidWeeklyNapOwner;
     AlarmRepeat repeatRule=AlarmRepeat.WEEKLY;boolean repeatInvalid;private Object invalidRepeat;
+    NextAlarmOverride nextOverride;boolean nextOverrideInvalid;private Object invalidNextOverride;
     LocalDate date;boolean dateInvalid;private Object invalidDate;
     SortedSet<LocalDate> excludedDates=Collections.unmodifiableSortedSet(new TreeSet<>());boolean excludedDatesInvalid;private Object invalidExcludedDates;
     AlarmSoundMode soundMode=AlarmSoundMode.SINGLE;boolean soundModeInvalid;private Object invalidSoundMode;
@@ -26,13 +27,16 @@ public class Alarm {
     ChallengeRoutine challenges(){return routine==null?ChallengeRoutine.legacy(challenge,difficulty):routine;}
     void setRoutine(ChallengeRoutine value){routine=value;routineInvalid=false;invalidRoutine=null;challenge=value.tasks.get(0).type;difficulty=value.tasks.get(0).rounds;}
     void setRepeat(AlarmRepeat value){repeatRule=value;repeatInvalid=false;invalidRepeat=null;}
+    void setNextOverride(NextAlarmOverride value){nextOverride=value;nextOverrideInvalid=false;invalidNextOverride=null;}
     public Set<Integer> days = new HashSet<>();
     public Alarm(int id) { this.id=id; }
     public String time() { return solarInvalid?"Review sunrise":solar==null?String.format(Locale.getDefault(), "%02d:%02d", hour, minute):"Sunrise"; }
     public long next(long now) { return next(now,ZoneId.systemDefault()); }
-    long next(long now,ZoneId zone) {return AlarmExcludedDates.next(this,now,zone);}
+    long next(long now,ZoneId zone) {if(nextOverrideInvalid)return 0;return nextOverride==null?nextOrdinary(now,zone):nextOverride.next(this,now,zone);}
+    long nextOrdinary(long now,ZoneId zone){return AlarmExcludedDates.next(this,now,zone);}
     long nextBase(long now,ZoneId zone) {if(repeatInvalid||skipInvalid||dateInvalid||solarInvalid)return 0;if(repeatRule.custom())return repeatRule.next(this,now,zone);if(solar!=null)return solar.next(hour,minute,days,date,now,zone,skip);if(date!=null){long at=AlarmDate.next(date,hour,minute,now,zone);return at>0&&(skip==null||!skip.excludes(at,zone))?at:0;}return AlarmSkip.next(hour,minute,days,now,zone,skip);}
-    boolean occurs(long at,ZoneId zone){return !repeatInvalid&&repeatRule.validFor(this)&&repeatRule.accepts(Instant.ofEpochMilli(at).atZone(zone).toLocalDate())&&!excludedDatesInvalid&&!AlarmExcludedDates.excludes(this,at,zone)&&!dateInvalid&&!solarInvalid&&(solar!=null?solar.occurs(hour,minute,days,date,at,zone):date==null?AlarmSkip.occurs(hour,minute,days,at,zone):days.isEmpty()&&AlarmDate.at(date,hour,minute,zone)==at);}
+    boolean occurs(long at,ZoneId zone){return !nextOverrideInvalid&&(nextOverride==null?occursOrdinary(at,zone):nextOverride.occurs(this,at,zone));}
+    boolean occursOrdinary(long at,ZoneId zone){return !repeatInvalid&&repeatRule.validFor(this)&&repeatRule.accepts(Instant.ofEpochMilli(at).atZone(zone).toLocalDate())&&!excludedDatesInvalid&&!AlarmExcludedDates.excludes(this,at,zone)&&!dateInvalid&&!solarInvalid&&(solar!=null?solar.occurs(hour,minute,days,date,at,zone):date==null?AlarmSkip.occurs(hour,minute,days,at,zone):days.isEmpty()&&AlarmDate.at(date,hour,minute,zone)==at);}
     public JSONObject json() {
         JSONObject j=new JSONObject();
         try {
@@ -48,6 +52,7 @@ public class Alarm {
             if(nap!=null)j.put("nap",NapPlanJson.encode(nap));else if(napInvalid)j.put("nap",invalidNap);
             if(weeklyNapOwnerInvalid)j.put("weeklyNapOwner",invalidWeeklyNapOwner);else if(!weeklyNapOwner.isEmpty())j.put("weeklyNapOwner",weeklyNapOwner);
             if(repeatInvalid)j.put("repeatRule",invalidRepeat);else if(repeatRule.custom())j.put("repeatRule",AlarmRepeat.encode(repeatRule));
+            if(nextOverrideInvalid)j.put("nextOverride",invalidNextOverride);else if(nextOverride!=null)j.put("nextOverride",NextAlarmOverride.encode(nextOverride));
             if(date!=null)j.put("date",date.toString());else if(dateInvalid)j.put("date",invalidDate);
             if(excludedDatesInvalid)j.put("excludedDates",invalidExcludedDates);else if(!excludedDates.isEmpty())j.put("excludedDates",AlarmExcludedDates.encode(excludedDates));
             if(soundModeInvalid)j.put("soundMode",invalidSoundMode);else if(!soundMode.equals(AlarmSoundMode.SINGLE))j.put("soundMode",AlarmSoundModeJson.encode(soundMode));
@@ -83,6 +88,7 @@ public class Alarm {
         if(j.has("solar"))try{a.solar=SunriseScheduleJson.decode(j.get("solar"));if(a.nap!=null||a.napInvalid)throw new JSONException("A nap cannot use sunrise time");}catch(JSONException invalid){a.solar=null;a.solarInvalid=true;a.invalidSolar=j.opt("solar");}
         if(j.has("repeatRule"))try{a.repeatRule=AlarmRepeat.decode(j.get("repeatRule"));if(a.repeatRule.custom())a.days=new HashSet<>(AlarmRepeat.days(j.get("days")));a.repeatRule.check(a);}catch(JSONException|IllegalArgumentException invalid){a.repeatInvalid=true;a.invalidRepeat=j.opt("repeatRule");}
         if(j.has("skip"))try{a.skip=AlarmSkipJson.decode(j.getJSONObject("skip"));if(a.nap!=null||a.napInvalid||a.days.isEmpty()&&a.enabled||!a.skip.matches(a.hour,a.minute,a.days,a.solar,a.date)||a.solarInvalid||a.repeatInvalid||!a.repeatRule.accepts(a.skip.date))throw new JSONException("Skip does not match alarm");}catch(JSONException invalid){a.skip=null;a.skipInvalid=true;a.invalidSkip=j.opt("skip");}
+        if(j.has("nextOverride"))try{a.nextOverride=NextAlarmOverride.decode(j.get("nextOverride"));a.nextOverride.portable(a);}catch(JSONException|IllegalArgumentException invalid){a.nextOverrideInvalid=true;a.invalidNextOverride=j.opt("nextOverride");}
         Object error=j.opt("scheduleError");if(error instanceof String&&((String)error).length()<=240)a.scheduleError=(String)error;
         return a;
     }

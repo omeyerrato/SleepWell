@@ -26,13 +26,14 @@ public final class Scheduler {
         cancel(c,a.id,FIRE);
         if(a.repeatInvalid){Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException("Review the alarm repeat rule.");}
         a.repeatRule.check(a);
+        if(a.nextOverrideInvalid){Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException("Review or undo Next alarm only.");}
         if(a.nap!=null){Naps.reconcile(c,a.id);return;}
         if(a.napInvalid){Prefs.put(c,"lastError","This nap timer could not be read. Review it before starting.");return;}
         if(a.excludedDatesInvalid){Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException("Review the selected skipped dates for this alarm.");}
         if(a.solarInvalid){Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException("This sunrise time needs review.");}
         if(a.dateInvalid){Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException("This alarm date needs review.");}
         if(a.skipInvalid){Prefs.put(c,"deadline_"+a.id,0L);Prefs.put(c,"lastError","A skipped alarm occurrence needs review.");return;}
-        if(a.enabled) { long now=System.currentTimeMillis(),next=a.next(Math.max(now,Prefs.of(c).getLong("lastOccurrence_"+a.id,0)));if(next<=0){CalendarAlarms.scheduled(c,a,CalendarPolicy.ordinary(0,""));Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException(a.date!=null&&a.excludedDates.contains(a.date)?"The selected run date is excluded. Remove it from skipped dates or choose another date.":"That alarm date has passed. Choose a future date.");}CalendarPolicy.Plan plan=CalendarAlarms.plan(c,a,next,now);CalendarAlarms.scheduled(c,a,plan);at(c,a.id,FIRE,plan.deadline);Prefs.put(c,"deadline_"+a.id,plan.deadline); }
+        if(a.enabled) {try{NextAlarmOverrides.current(c,a,ZoneId.systemDefault());}catch(RuntimeException invalid){Prefs.put(c,"deadline_"+a.id,0L);throw invalid;} long now=System.currentTimeMillis(),next=a.next(Math.max(now,Prefs.of(c).getLong("lastOccurrence_"+a.id,0)));if(next<=0){CalendarAlarms.scheduled(c,a,CalendarPolicy.ordinary(0,""));Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException(a.date!=null&&a.excludedDates.contains(a.date)?"The selected run date is excluded. Remove it from skipped dates or choose another date.":"That alarm date has passed. Choose a future date.");}CalendarPolicy.Plan plan=CalendarAlarms.plan(c,a,next,now);CalendarAlarms.scheduled(c,a,plan);at(c,a.id,FIRE,plan.deadline);Prefs.put(c,"deadline_"+a.id,plan.deadline); }
         else {CalendarAlarms.scheduled(c,a,CalendarPolicy.ordinary(0,""));Prefs.put(c,"deadline_"+a.id,0L);}
     }finally{HomeSurfaces.changed(c);}}
     static void cancel(Context c,int id,String action) { if(CHECK.equals(action))WakeChecks.cancelForAlarm(c,id);try{c.getSystemService(AlarmManager.class).cancel(intent(c,id,action));}finally{if(SNOOZE.equals(action)){SnoozeDeadline.clear(c,id);SnoozeDeadline.changed(c);}} }

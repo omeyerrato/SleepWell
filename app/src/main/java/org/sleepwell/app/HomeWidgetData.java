@@ -20,7 +20,7 @@ final class HomeWidgetData {
                 // A consumed one-shot alarm can be disabled while its owned snooze is real.
                 // Ordinary deadlines still require the saved alarm itself to be enabled.
                 if(!alarm.enabled)continue;enabled=true;
-                if(alarm.repeatInvalid||!alarm.repeatRule.validFor(alarm)||alarm.napInvalid||alarm.skipInvalid||alarm.routineInvalid||alarm.dateInvalid){invalid=true;continue;}
+                if(alarm.nextOverrideInvalid||!NextAlarmOverrides.eligible(context,alarm,zone)||alarm.repeatInvalid||!alarm.repeatRule.validFor(alarm)||alarm.napInvalid||alarm.skipInvalid||alarm.routineInvalid||alarm.dateInvalid){invalid=true;continue;}
                 long due=prefs.getLong("deadline_"+alarm.id,0);
                 if(alarm.nap!=null){
                     if(alarm.nap.phase!=NapPlan.Phase.PENDING||!alarm.nap.error.isEmpty())continue;
