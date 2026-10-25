@@ -13,7 +13,7 @@ final class SnoozeDeadline {
     private static String budget(int id,String suffix){return "snoozeBudget_"+id+"_"+suffix;}
     private static long boot(Context context){return Settings.Global.getInt(context.getContentResolver(),Settings.Global.BOOT_COUNT,-1);}
     private static boolean nonce(String text){try{return UUID.fromString(text).toString().equals(text);}catch(RuntimeException invalid){return false;}}
-    private static boolean valid(Alarm alarm){return alarm!=null&&alarm.id>0&&!alarm.napInvalid&&!alarm.skipInvalid&&!alarm.routineInvalid&&!alarm.dateInvalid&&!alarm.solarInvalid&&!alarm.excludedDatesInvalid&&!alarm.snoozeTotalInvalid&&!alarm.weeklyNapOwnerInvalid;}
+    private static boolean valid(Alarm alarm){return alarm!=null&&alarm.id>0&&!alarm.repeatInvalid&&alarm.repeatRule.validFor(alarm)&&!alarm.napInvalid&&!alarm.skipInvalid&&!alarm.routineInvalid&&!alarm.dateInvalid&&!alarm.solarInvalid&&!alarm.excludedDatesInvalid&&!alarm.snoozeTotalInvalid&&!alarm.weeklyNapOwnerInvalid;}
     private static boolean sameSource(Alarm source,Alarm saved){
         if(!valid(source)||!valid(saved)||source.id!=saved.id)return false;
         if(source.nap!=null)return source.nap.phase==NapPlan.Phase.CLAIMED&&!source.enabled&&source.json().toString().equals(saved.json().toString());

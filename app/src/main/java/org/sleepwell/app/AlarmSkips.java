@@ -9,9 +9,9 @@ final class AlarmSkips {
  static final class Changed extends IllegalStateException{Changed(String message){super(message);}}
  static java.util.function.LongSupplier clock=System::currentTimeMillis;
  static java.util.function.Supplier<ZoneId> zone=ZoneId::systemDefault;
- static String scheduleKey(Alarm a){return a.hour+":"+a.minute+":"+new TreeSet<>(a.days)+":"+a.enabled+":"+(a.dateInvalid?"invalid-date:"+a.json().opt("date"):a.date==null?"":a.date)+(a.solarInvalid?":invalid-solar:"+a.json().opt("solar"):a.solar==null?"":":"+a.solar.key())+AlarmExcludedDates.key(a);}
+ static String scheduleKey(Alarm a){return a.hour+":"+a.minute+":"+new TreeSet<>(a.days)+":"+a.enabled+":"+(a.dateInvalid?"invalid-date:"+a.json().opt("date"):a.date==null?"":a.date)+(a.solarInvalid?":invalid-solar:"+a.json().opt("solar"):a.solar==null?"":":"+a.solar.key())+AlarmExcludedDates.key(a)+AlarmRepeat.key(a);}
  static String owner(Alarm a){return a.skipInvalid?"invalid:"+a.json().opt("skip"):a.skip==null?"":a.skip.nonce;}
- static boolean usable(Alarm a){return a!=null&&a.nap==null&&!a.napInvalid&&!a.skipInvalid&&!a.dateInvalid&&!a.solarInvalid&&!a.excludedDatesInvalid;}
+ static boolean usable(Alarm a){return a!=null&&a.nap==null&&!a.repeatInvalid&&a.repeatRule.validFor(a)&&!a.napInvalid&&!a.skipInvalid&&!a.dateInvalid&&!a.solarInvalid&&!a.excludedDatesInvalid;}
  static void clear(Alarm a){a.weeklyNapOwner="";a.weeklyNapOwnerInvalid=false;consume(a);}
  static void consume(Alarm a){a.skip=null;a.skipInvalid=false;a.invalidSkip=null;a.scheduleError="";}
  static void requireSame(Alarm current,Alarm expected){if(!usable(current)||!scheduleKey(current).equals(scheduleKey(expected))||!owner(current).equals(owner(expected)))throw new Changed("This alarm changed. Reopen it before changing its occurrence.");}

@@ -24,6 +24,8 @@ public final class Scheduler {
     }
     static synchronized void schedule(Context c,Alarm a) {try{
         cancel(c,a.id,FIRE);
+        if(a.repeatInvalid){Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException("Review the alarm repeat rule.");}
+        a.repeatRule.check(a);
         if(a.nap!=null){Naps.reconcile(c,a.id);return;}
         if(a.napInvalid){Prefs.put(c,"lastError","This nap timer could not be read. Review it before starting.");return;}
         if(a.excludedDatesInvalid){Prefs.put(c,"deadline_"+a.id,0L);throw new IllegalArgumentException("Review the selected skipped dates for this alarm.");}

@@ -7,6 +7,6 @@ final class RelativeAlarmTime {
  void check(long now,long nowElapsed,ZoneId nowZone){long drift;try{drift=Math.subtractExact(Math.subtractExact(now,wall),Math.subtractExact(nowElapsed,elapsed));}catch(ArithmeticException invalid){throw new IllegalArgumentException("Phone time changed. Review a new proposal.");}if(nowElapsed<elapsed||(drift>2000||drift< -2000)||!zone.equals(nowZone))throw new IllegalArgumentException("Phone time or zone changed. Review a new proposal.");if(target<=now)throw new IllegalArgumentException("This proposed time passed. Review a new proposal.");}
  String rounding(){long difference=target-requested;if(difference==0)return "Exact whole-minute target.";return "Whole-minute alarm: rounded "+(difference>0?"up":"down")+" by "+((Math.abs(difference)+999)/1000)+" seconds"+(difference<0?" to stay within 24 hours.":".");}
  boolean clockChanges(){return !Instant.ofEpochMilli(wall).atZone(zone).getOffset().equals(local.getOffset());}
- static boolean allowed(Alarm a){return a!=null&&a.nap==null&&!a.napInvalid&&a.solar==null&&!a.solarInvalid&&a.days.isEmpty();}
+ static boolean allowed(Alarm a){return a!=null&&!a.repeatInvalid&&!a.repeatRule.custom()&&a.nap==null&&!a.napInvalid&&a.solar==null&&!a.solarInvalid&&a.days.isEmpty();}
  static String identity(Alarm a){try{return Base64.getEncoder().encodeToString(MessageDigest.getInstance("SHA-256").digest(a.json().toString().getBytes(StandardCharsets.UTF_8)));}catch(NoSuchAlgorithmException impossible){throw new AssertionError(impossible);}}
 }

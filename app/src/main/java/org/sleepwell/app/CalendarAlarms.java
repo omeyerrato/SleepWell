@@ -12,7 +12,7 @@ final class CalendarAlarms {
     }
     static CalendarPolicy.Plan plan(Context c,Alarm alarm,long base,long now,ZoneId zone){
         if(NapProfilesWeekly.owns(c,alarm))return CalendarPolicy.ordinary(base,"");
-        if(alarm.days.isEmpty()||alarm.nap!=null||alarm.napInvalid||alarm.skipInvalid)return CalendarPolicy.ordinary(base,"");
+        if(alarm.days.isEmpty()||alarm.nap!=null||alarm.napInvalid||alarm.repeatInvalid||alarm.skipInvalid)return CalendarPolicy.ordinary(base,"");
         try{CalendarPolicy.Rules rules=CalendarSettings.load(c);CalendarPolicy.Plan planned=CalendarPolicy.plan(rules,snapshot,now,base,zone,value->alarm.next(value,zone));if(planned.deadline>0&&AlarmExcludedDates.excludes(alarm,planned.deadline,zone))return CalendarPolicy.ordinary(base,"Calendar adjustment would fall on a selected skipped date");if(rules.enabled&&(snapshot==null||!snapshot.fresh(now,zone,rules)))CalendarSync.request(c);return planned;}
         catch(RuntimeException unavailable){return CalendarPolicy.ordinary(base,"Calendar settings need review");}
     }
@@ -27,7 +27,7 @@ final class CalendarAlarms {
         long original=row.getLong("base");if(!rules.enabled||!rules.revision.equals(row.getString("revision"))||!AlarmSkips.scheduleKey(alarm).equals(row.getString("key"))||row.getLong("deadline")!=deadline||deadline>original||original-deadline>6*3600000L)return -1;return original;
     }catch(RuntimeException|JSONException invalid){return -1;}}
     static boolean eligible(Context c,Alarm alarm,long deadline,long now,long last,ZoneId zone){
-        if(alarm==null)return false;long original=base(c,alarm,deadline);if(original==0)return AlarmSkips.eligible(alarm,deadline,now,last,zone);return original>0&&AlarmSkips.eligible(alarm,original,Math.max(now,original),last,zone)&&now>=deadline-alarm.smartWindow*60000L;
+        if(alarm==null||alarm.repeatInvalid)return false;long original=base(c,alarm,deadline);if(original==0)return AlarmSkips.eligible(alarm,deadline,now,last,zone);return original>0&&AlarmSkips.eligible(alarm,original,Math.max(now,original),last,zone)&&now>=deadline-alarm.smartWindow*60000L;
     }
     static long consumed(Context c,Alarm alarm,long deadline){long original=base(c,alarm,deadline);return original>0?original:deadline;}
     static long skipBase(Context c,Alarm alarm,long chosen,long now,ZoneId zone){long original=base(c,alarm,chosen);if(original>0&&alarm.occurs(original,zone))return original;long ordinary=alarm.next(Math.max(now,Prefs.of(c).getLong("lastOccurrence_"+alarm.id,0)),zone);CalendarPolicy.Plan planned=plan(c,alarm,ordinary,now,zone);if(planned.deadline!=chosen||!alarm.occurs(planned.base,zone))throw new AlarmSkips.Changed("This sunrise occurrence changed. Review its new time.");return planned.base;}
