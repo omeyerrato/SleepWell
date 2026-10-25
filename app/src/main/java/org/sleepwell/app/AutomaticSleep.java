@@ -46,6 +46,7 @@ final class AutomaticSleep {
         if(lastSample<0||elapsed-lastSample>2000){reset();return state=State.COLLECTING;}
         return state;
     }
+    State hold(long elapsed){if(state==State.EXPIRED||state==State.CANCELLED)return state;if(elapsed<armed||elapsed<lastSample)throw new IllegalArgumentException("Wait time moved backwards.");reset();lastSample=elapsed;return state=elapsed-armed>=MAX_WAIT?State.EXPIRED:State.WAITING;}
     void cancel(){if(!terminal())state=State.CANCELLED;}
     State state(){return state;}
     long quietMillis(long elapsed){return quietSince<0?0:Math.max(0,Math.min(QUIET_REQUIRED,elapsed-quietSince));}
