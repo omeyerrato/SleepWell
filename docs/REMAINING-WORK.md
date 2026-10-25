@@ -46,6 +46,9 @@ seconds; legacy v1 minute plans remain unchanged. Exact timers disable Power nap
 and smart early waking. Combined production build **PASS3m2s**, original signer
 preserved; actual OS timer delivery remains unverified.
 
+The [53a0c08 development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-53a0c08)
+is now published with all five additions; uploaded size/digest match the local APK.
+
 This window adds actual production paths for:
 
 - Extra loud optional per-player+6dB processing, with max-stream fallback.

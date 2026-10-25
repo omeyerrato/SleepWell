@@ -27,9 +27,9 @@ object challenges, optional offline English narration and dated pre-travel sleep
 shifts with silent reminders and separately saved wake-alarm drafts. Standard
 timer requests also retain exact1second..24hour durations through review, Start
 and saved/reopened deadlines. Its production APK builds in3m2s with the same
-schema/backup format and installed signing key. The four-feature predecessor is
-[published asbff9f7e](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-bff9f7e);
-it excludes the exact-second timer follow-up. These additions have build-only
+schema/backup format and installed signing key.
+[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-53a0c08).
+These additions have build-only
 evidence; no phone, camera, speech or overnight acceptance is claimed.
 
 ## Working capabilities

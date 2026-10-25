@@ -174,3 +174,9 @@ waking and Power nap; selecting a minute preset explicitly returns to ordinary n
 The combined APK builds in **3m2s**, retains the original installed signing key,
 and leaves schema15 / metadata format13 unchanged. No personal-phone actions or
 new test/lint/screenshot batches ran. Actual assistant/OS delivery is unverified.
+
+Published [53a0c08 development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-53a0c08)
+includes all five follow-up flows. GitHub reports the214779315-byte APK uploaded;
+its SHA256 matches the frozen local artifact:
+`b86353e206feb0df1352fe5a869a6471ca26636c1a1fd26fce1e6a1b82a13638`.
+Original signer was checked locally. This release remains uninstalled on the phone.
