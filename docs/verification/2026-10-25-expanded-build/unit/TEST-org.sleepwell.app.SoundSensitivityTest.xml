@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SoundSensitivityTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-25T02:25:57.218Z" hostname="DESKTOP-1UTDMNE" time="0.029">
+  <properties/>
+  <testcase name="sharedSonarDownsamplingHonorsPolicyWithoutJoiningRealGaps" classname="org.sleepwell.app.SoundSensitivityTest" time="0.017"/>
+  <testcase name="tenWindowBoundAndIdempotentFlushRemainExact" classname="org.sleepwell.app.SoundSensitivityTest" time="0.002"/>
+  <testcase name="invalidPolicyKeysValuesAndMissingClassesReject" classname="org.sleepwell.app.SoundSensitivityTest" time="0.001"/>
+  <testcase name="shortEventsKeepActualStartWindowsAndOriginalMeanScore" classname="org.sleepwell.app.SoundSensitivityTest" time="0.0"/>
+  <testcase name="absentPolicyDefaultsMatchTheOriginalTwoWindowContractForAllClasses" classname="org.sleepwell.app.SoundSensitivityTest" time="0.001"/>
+  <testcase name="snapshotCopiesItsInputAndClipBudgetRetainsThatExactRunPolicy" classname="org.sleepwell.app.SoundSensitivityTest" time="0.0"/>
+  <testcase name="editingOneClassLeavesEveryOtherClassAndOtherSoundsUnchanged" classname="org.sleepwell.app.SoundSensitivityTest" time="0.0"/>
+  <testcase name="newStreamUsesItsImmutableSnapshotAcrossLaterSettingsCopies" classname="org.sleepwell.app.SoundSensitivityTest" time="0.003"/>
+  <testcase name="oneWindowStillNeedsAFullUnpaddedClassifierFrame" classname="org.sleepwell.app.SoundSensitivityTest" time="0.002"/>
+  <testcase name="silenceAndChangedCategoryCannotBridgeARequiredThreeWindowEvent" classname="org.sleepwell.app.SoundSensitivityTest" time="0.001"/>
+  <testcase name="minimumOneTwoThreeWindowsChangesOnlyTemporalAcceptance" classname="org.sleepwell.app.SoundSensitivityTest" time="0.0"/>
+  <testcase name="sensitivityNeverChangesClassifierScoreOrMarginDecisions" classname="org.sleepwell.app.SoundSensitivityTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

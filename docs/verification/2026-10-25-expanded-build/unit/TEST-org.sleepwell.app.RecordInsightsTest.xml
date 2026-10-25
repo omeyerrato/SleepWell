@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.RecordInsightsTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-25T02:25:32.370Z" hostname="DESKTOP-1UTDMNE" time="0.053">
+  <properties/>
+  <testcase name="futureOpenAndInvalidPeriodsCannotManufactureEvidence" classname="org.sleepwell.app.RecordInsightsTest" time="0.007"/>
+  <testcase name="tagComparisonsRequireBothGroupsAndNeverInferCausation" classname="org.sleepwell.app.RecordInsightsTest" time="0.026"/>
+  <testcase name="duplicatePhysicalIntervalAcrossZonesDoesNotCreateASecondObservedDay" classname="org.sleepwell.app.RecordInsightsTest" time="0.001"/>
+  <testcase name="actualRecordZoneAndCutoffDefineCoverageWithoutChangingElapsedDuration" classname="org.sleepwell.app.RecordInsightsTest" time="0.001"/>
+  <testcase name="unsupportedWindowAndCutoffRejectWithoutMutation" classname="org.sleepwell.app.RecordInsightsTest" time="0.001"/>
+  <testcase name="circularStartRangeHandlesMidnightAndExcludesNaps" classname="org.sleepwell.app.RecordInsightsTest" time="0.001"/>
+  <testcase name="overlapsAndMarkedAwakeTimeAreNotCountedTwice" classname="org.sleepwell.app.RecordInsightsTest" time="0.007"/>
+  <testcase name="unreadableGoalsDoNotSuppressOtherStatistics" classname="org.sleepwell.app.RecordInsightsTest" time="0.001"/>
+  <testcase name="currentPlanCannotRetrofitAnAbsentHistoricalGoal" classname="org.sleepwell.app.RecordInsightsTest" time="0.002"/>
+  <testcase name="zeroRemainingCoverageIsKnownButUnobservedDatesAreNotZero" classname="org.sleepwell.app.RecordInsightsTest" time="0.001"/>
+  <testcase name="missingDatesRemainUnknownAndNeverEnterTheAverage" classname="org.sleepwell.app.RecordInsightsTest" time="0.001"/>
+  <testcase name="stoppedGoalsAndCurrentOpenDatesDoNotBecomeFalseDeficits" classname="org.sleepwell.app.RecordInsightsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

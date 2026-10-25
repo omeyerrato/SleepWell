@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AlarmDefaultsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-25T02:25:29.233Z" hostname="DESKTOP-1UTDMNE" time="0.006">
+  <properties/>
+  <testcase name="unsupportedSettingsCannotBecomeDefaults" classname="org.sleepwell.app.AlarmDefaultsTest" time="0.001"/>
+  <testcase name="missingTemplateMatchesEveryLegacyFactoryBehavior" classname="org.sleepwell.app.AlarmDefaultsTest" time="0.002"/>
+  <testcase name="templateTransfersBehaviorButNeverScheduleIdentityOrAuthority" classname="org.sleepwell.app.AlarmDefaultsTest" time="0.001"/>
+  <testcase name="templateAndEveryCreatedAlarmAreIndependent" classname="org.sleepwell.app.AlarmDefaultsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

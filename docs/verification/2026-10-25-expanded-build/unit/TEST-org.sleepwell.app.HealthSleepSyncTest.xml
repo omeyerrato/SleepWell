@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.HealthSleepSyncTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-25T02:25:31.366Z" hostname="DESKTOP-1UTDMNE" time="0.017">
+  <properties/>
+  <testcase name="expiredChangesRebaselineWithoutDeletingOlderImportedHistory" classname="org.sleepwell.app.HealthSleepSyncTest" time="0.004"/>
+  <testcase name="importedCopiesNeverFeedBackIntoExports" classname="org.sleepwell.app.HealthSleepSyncTest" time="0.001"/>
+  <testcase name="selectedPermissionsAreRecheckedBeforeAnyDataAccess" classname="org.sleepwell.app.HealthSleepSyncTest" time="0.002"/>
+  <testcase name="exportOnlyNeedsOnlyWriteAndDoesNotReadProviderHistory" classname="org.sleepwell.app.HealthSleepSyncTest" time="0.003"/>
+  <testcase name="retryAfterAmbiguousWriteReusesStableIdentityVersion" classname="org.sleepwell.app.HealthSleepSyncTest" time="0.001"/>
+  <testcase name="noSelectedDirectionsHasNoRemoteEffects" classname="org.sleepwell.app.HealthSleepSyncTest" time="0.001"/>
+  <testcase name="cancelAfterReadDoesNotApplyItsBatchOrAdvanceToken" classname="org.sleepwell.app.HealthSleepSyncTest" time="0.001"/>
+  <testcase name="unavailableProviderCannotClaimConnectedOrSynced" classname="org.sleepwell.app.HealthSleepSyncTest" time="0.002"/>
+  <testcase name="importOnlyNeverWritesProviderAndStoresChangesAfterBaseline" classname="org.sleepwell.app.HealthSleepSyncTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

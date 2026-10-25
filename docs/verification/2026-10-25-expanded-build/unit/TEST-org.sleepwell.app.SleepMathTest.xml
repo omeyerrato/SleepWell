@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SleepMathTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-25T02:25:32.563Z" hostname="DESKTOP-1UTDMNE" time="0.003">
+  <properties/>
+  <testcase name="exactMinuteSchedulesTomorrow" classname="org.sleepwell.app.SleepMathTest" time="0.001"/>
+  <testcase name="smartWakeRequiresWindowAndRepeatedActivity" classname="org.sleepwell.app.SleepMathTest" time="0.001"/>
+  <testcase name="exportEscapesQuotesAndNewlines" classname="org.sleepwell.app.SleepMathTest" time="0.0"/>
+  <testcase name="durationScoreDoesNotRewardOvertrackingBeyond100" classname="org.sleepwell.app.SleepMathTest" time="0.0"/>
+  <testcase name="daytimeRestAndDisabledWindow" classname="org.sleepwell.app.SleepMathTest" time="0.0"/>
+  <testcase name="digitalAmplitudeIsNormalized" classname="org.sleepwell.app.SleepMathTest" time="0.0"/>
+  <testcase name="repeatSkipsWeekend" classname="org.sleepwell.app.SleepMathTest" time="0.0"/>
+  <testcase name="bedtimeSpansMidnight" classname="org.sleepwell.app.SleepMathTest" time="0.0"/>
+  <testcase name="oneShotRollsAcrossMidnight" classname="org.sleepwell.app.SleepMathTest" time="0.0"/>
+  <testcase name="daylightSavingGapMovesToValidTime" classname="org.sleepwell.app.SleepMathTest" time="0.0"/>
+  <testcase name="digitalSilenceIsZero" classname="org.sleepwell.app.SleepMathTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

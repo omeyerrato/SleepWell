@@ -15,6 +15,9 @@ choose sounds in SleepWell. It does not advertise dismiss/snooze/timer actions.
 Actual assistant routing/choice of alarm app is external and remains unverified.
 No voice account, cloud model or network request is introduced.
 
-Four pure normalization/bounds tests and three native scalar/manifest tests are
-authored. Live request/editor/native persistence execution and the combined build
-remain pending; no phone, assistant, alarm or audio action was tested.
+Four pure normalization/bounds tests pass within the combined900-test1275be1 build.
+Atf5e80ab/CI40150902142 three native scalar/manifest tests and the actual
+request/editor/recreate/explicit-Save/reopen flow pass with all three originals.
+The scheduler is injected and records are private. That focused run failed on
+separate DND/goal UI synchronization assertions, so it is not an overall green gate.
+No phone, assistant, alarm or audio action was tested.

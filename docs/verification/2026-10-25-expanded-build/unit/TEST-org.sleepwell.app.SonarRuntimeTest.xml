@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SonarRuntimeTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-25T02:25:50.986Z" hostname="DESKTOP-1UTDMNE" time="0.87">
+  <properties/>
+  <testcase name="uncertainCloseRefusesAnotherAllocationUntilProcessRestart" classname="org.sleepwell.app.SonarRuntimeTest" time="0.006"/>
+  <testcase name="actualDspReadinessUsesRealFramesAndBoundedHistory" classname="org.sleepwell.app.SonarRuntimeTest" time="0.43"/>
+  <testcase name="blockedCloseRetainsProcessLeaseUntilActualWorkerCleanup" classname="org.sleepwell.app.SonarRuntimeTest" time="0.043"/>
+  <testcase name="queuedTerminalCannotRestoreReadinessAfterCancel" classname="org.sleepwell.app.SonarRuntimeTest" time="0.387"/>
+  <testcase name="factoryFailureAndImmediateCancelReleaseOwnership" classname="org.sleepwell.app.SonarRuntimeTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

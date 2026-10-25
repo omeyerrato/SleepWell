@@ -32,17 +32,28 @@ fixture evidence, not design approval, real provider exchange or physical output
   expanded4b7d017 CI40147599727 passes30classes/102methods/all90 originals.
 - [ ] Physical alarm execution/timeout, real launcher host pinning and assistant routing.
 - [ ] Newly integrated Counting/Tilt maze/Flags and active-tracking DND: author unit
-  tests/builds pass; focused native execution is next. Jumping remains missing.
+  tests/builds pass. Challenge8 native methods pass atf5e80ab; DND6 methods/all7
+  originals pass atd346441. Actual hardware/OS delivery remains unverified;
+  jumping remains missing.
 - [ ] Standard Android SET_ALARM/SHOW_ALARMS draft/editor flow: native execution and
-  assistant compatibility remain pending. Requests require explicit Save.
-- [ ] Ordered/shuffled alarm playlists and silent mode, recorded-night insights,
-  optional tracking delay/pause increment: assigned in parallel worktrees.
+  assistant compatibility remain separate. Native3contract+1Save/reopen method
+  pass; actual assistant routing remains unverified. Requests require explicit Save.
+- [x] Silent/ordered/shuffled alarm-mode settings and saved-record insight flows:
+  native5 and4 methods/all7+4 originals pass atd346441/CI40154059415. Physical
+  playback/provider behavior remains unverified; the whole focused run failed
+  separately on goal, diary and calendar UI actions.
+- [ ] Manual tracking delay native flow; barcode morning-code enrollment; optional
+  flip pause and microphone challenge increments. Source/build progress is recorded
+  in the matrix without labeling physical behavior verified.
 - [ ] Remaining matrix subfeatures, full regression and later design/security review.
 
 Full originals and exact verification limits are in
 [the sprint evidence](verification/2026-10-25-feature-sprint/README.md).
 The expanded gate's exact transcripts and originals are in
 [expanded evidence](verification/2026-10-25-feature-sprint-expanded/README.md).
+Combined1275be1 passes900pure/113suites, debug/native APKs and lint0errors137warnings
+in6m49; [raw evidence](verification/2026-10-25-expanded-build/README.md). Later
+increments require their own checks; this is not a full native or visual gate.
 
 ## Your highest-priority features
 

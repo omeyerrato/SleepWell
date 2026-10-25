@@ -343,12 +343,50 @@
       "feature": "Playlists / shuffle / silent alarm",
       "screens": "04–12,26",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending.",
+      "implementation": [
+        "AlarmSoundMode.java",
+        "AlarmSoundModeJson.java",
+        "AlarmSoundSequence.java",
+        "AlarmSoundModesUi.java",
+        "AlarmPlayback.java",
+        "AlarmAudioSink.java",
+        "AlarmPlaylistJournal.java",
+        "AlarmService.java"
+      ],
+      "validation": "Author e95a4c0: AlarmSoundModeTest plus existing AlarmPlaybackTest/AlarmLifetimeTest/AlarmVolumeLeaseTest/AlarmDefaultsTest:57focused pure/debug/native APKs/lint PASS before final bounded failure-circuit delta; final32direct host cases PASS. Superseding d346441 CI40154059415 AlarmSoundModeStorageTest 4/AlarmSoundModeFlowTest 1/all7 originals PASS with fake output/grant ports.",
+      "status": "partial",
+      "notes": "Default Single preserves legacy. Silent suppresses audible playback/fallback/backup and silences the alarm notification while configured vibration/light/tasks continue. Ordered/shuffled2–8-track playlists advance on real decoder completion, checkpoint per-run position before start, retain imported names/grants and bound source failures. Physical output, real providers and restart delivery remain unverified. See alarm-sound-modes.md.",
       "id": "F014",
-      "tests": []
+      "tests": [
+        {
+          "name": "AlarmDefaultsTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmDefaultsTest.java"
+        },
+        {
+          "name": "AlarmLifetimeTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmLifetimeTest.java"
+        },
+        {
+          "name": "AlarmPlaybackTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmPlaybackTest.java"
+        },
+        {
+          "name": "AlarmSoundModeFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmSoundModeFlowTest.java"
+        },
+        {
+          "name": "AlarmSoundModeStorageTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmSoundModeStorageTest.java"
+        },
+        {
+          "name": "AlarmSoundModeTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmSoundModeTest.java"
+        },
+        {
+          "name": "AlarmVolumeLeaseTest",
+          "path": "app/src/test/java/org/sleepwell/app/AlarmVolumeLeaseTest.java"
+        }
+      ]
     },
     {
       "feature": "Internet radio / Spotify",
@@ -1572,12 +1610,28 @@
       "feature": "DND / airplane / screen dimming",
       "screens": "13–21,27–30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: no automatic global device-setting changes.",
+      "implementation": [
+        "TrackingDndOwner.java",
+        "TrackingDndRuntime.java",
+        "TrackingDndAndroid.java",
+        "TrackingDndSettings.java",
+        "TrackingDndActivity.java",
+        "TrackingService.java"
+      ],
+      "validation": "Author cf32b1e: TrackingDndOwnerTest 21 and debug/native APKs/lint PASS. f5e80ab CI40150902142 TrackingDndStorageTest 4 + cleanup UI case PASS; first permission UI callback wait failed.95e23e1 fixes exact fake callback/checked-state synchronization. Superseding d346441 CI40154059415 Storage4/Flow2/all7 originals PASS, no actual DND changes.",
+      "status": "partial",
+      "notes": "Default-off ACTIVE-tracking app-owned priority rule with own nonce/deadline,15-minute expiry/renewal, pause/end/boot/process cleanup and explicit prerequisite/error states. This rule allows calls/alarms; other OS policies still apply. Real DND and forced-stop/revoked-access cleanup remain unverified. Airplane control absent; app brightness dimming is a separate existing behavior. See TRACKING-DND.md.",
       "id": "F065",
-      "tests": []
+      "tests": [
+        {
+          "name": "TrackingDndOwnerTest",
+          "path": "app/src/test/java/org/sleepwell/app/TrackingDndOwnerTest.java"
+        },
+        {
+          "name": "TrackingDndStorageTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/TrackingDndStorageTest.java"
+        }
+      ]
     },
     {
       "feature": "Tracking pause / standby / battery-adaptive sampling",
@@ -1863,46 +1917,38 @@
       "screens": "22–24,02",
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
       "implementation": [
-        "Records.java",
-        "RecordEntry.java",
-        "RecordDraft.java",
-        "RecordIntervals.java",
+        "RecordInsights.java",
+        "RecordInsightsActivity.java",
+        "RecordInsightsChart.java",
+        "RecordInsightSettings.java",
         "RecordTrends.java",
-        "HistoryActivity.java",
-        "RecordEditorActivity.java",
-        "RecordSaves.java",
-        "PeriodTimeline.java",
-        "TrendsChart.java",
-        "RecordSignalsActivity.java"
+        "RhythmStats.java",
+        "TagImpact.java"
       ],
-      "validation": "RecordModelTest 17 local passes; isolated StorageMigration/RecordStorage/RecordReplay/RecordClock 17 device passes; HistoryFlowTest and pending-save RecordRecreationTest silent passes. Strict visual status and exact limits in DESIGN-REVIEW.md. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest 2 and stronger ReportReferenceFlowTest 1/eight originals await fresh native/strict review; no visual completion inferred. Fresh d43f480/focusedCI40068186520 PASS4classes/5methods/13required originals: ReportRibbonNativeTest 2 PASS1.212s,ReportReferenceFlowTest 1 PASS33.744s. All13 originals individually inspected: report hierarchy/editor geometry pass, hard color-bin stripes and touching chips rejected. b4deeb3 blends only visual colors within contiguous measured spans (unchanged metrics/exact gaps), adds missing-signal Canvas assertions and4dp chip gutters; fresh raster/visual run required. Missing stage estimator remains explicit. Fresh dc30736/focusedCI40072560126 PASS4classes/5methods/all13 required originals, individually reviewed against boards01/08. Ribbon color blending/exact gaps, filter gutters, seven-row history, Week/Month/Year and complete editor Notes/Save/Delete pass this bounded correction. Stage estimator/full app parity remain incomplete. ba1ae61/0dcbb44 use exactpersistedSensorProvenance.SONAR for contactless graph/accessibility labels, preserve actualsamplegaps, and retain sensor/config throughgoalzonecopies. Newprivate saved-sonar navigation originals remain pending.",
+      "validation": "Author e51f43f: RecordInsightsTest 12 + RhythmStatsTest 15 + TagImpactTest 14 =41pure PASS; debug/native APKs/lint PASS. Superseding d346441 CI40154059415 RecordInsightsNativeTest 3 and RecordInsightsFlowTest 1/all4 originals PASS.",
       "status": "partial",
-      "notes": "Partial: calendar Week/Month/Year charts, date/search/context filters and configurable day cutoff. Daily coverage merges overlaps, missing dates stay unknown, and naps count toward duration. Advanced statistics and correlations remain pending.",
+      "notes": "Saved7/30/90-day views use actual merged coverage, observed/missing dates, duration distribution, circular recorded main-period start range, original dated-goal targets and sufficiently sampled tag associations. Missing days stay unknown. Descriptive comparisons support reflection; no personalized clinical score, predictive advice, measured sleep onset/stages or chronotype claim. See RECORDED-INSIGHTS.md.",
       "id": "F074",
       "tests": [
         {
-          "name": "ChartSeriesTest",
-          "path": "app/src/test/java/org/sleepwell/app/ChartSeriesTest.java"
+          "name": "RecordInsightsFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/RecordInsightsFlowTest.java"
         },
         {
-          "name": "HistoryFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/HistoryFlowTest.java"
+          "name": "RecordInsightsNativeTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/RecordInsightsNativeTest.java"
         },
         {
-          "name": "RecordModelTest",
-          "path": "app/src/test/java/org/sleepwell/app/RecordModelTest.java"
+          "name": "RecordInsightsTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordInsightsTest.java"
         },
         {
-          "name": "RecordRecreationTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/RecordRecreationTest.java"
+          "name": "RhythmStatsTest",
+          "path": "app/src/test/java/org/sleepwell/app/RhythmStatsTest.java"
         },
         {
-          "name": "ReportReferenceFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/ReportReferenceFlowTest.java"
-        },
-        {
-          "name": "ReportRibbonNativeTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/ReportRibbonNativeTest.java"
+          "name": "TagImpactTest",
+          "path": "app/src/test/java/org/sleepwell/app/TagImpactTest.java"
         }
       ]
     },
@@ -1910,12 +1956,41 @@
       "feature": "Duration/deficit/regularity charts",
       "screens": "02,22–25",
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending; unknown nights must remain unknown rather than counted as zero sleep.",
+      "implementation": [
+        "RecordInsights.java",
+        "RecordInsightsActivity.java",
+        "RecordInsightsChart.java",
+        "RecordInsightSettings.java",
+        "RecordTrends.java",
+        "RhythmStats.java",
+        "TagImpact.java"
+      ],
+      "validation": "Author e51f43f: RecordInsightsTest 12 + RhythmStatsTest 15 + TagImpactTest 14 =41pure PASS; debug/native APKs/lint PASS. Superseding d346441 CI40154059415 RecordInsightsNativeTest 3 and RecordInsightsFlowTest 1/all4 originals PASS.",
+      "status": "partial",
+      "notes": "Saved7/30/90-day views use actual merged coverage, observed/missing dates, duration distribution, circular recorded main-period start range, original dated-goal targets and sufficiently sampled tag associations. Missing days stay unknown. Descriptive comparisons support reflection; no personalized clinical score, predictive advice, measured sleep onset/stages or chronotype claim. See RECORDED-INSIGHTS.md.",
       "id": "F075",
-      "tests": []
+      "tests": [
+        {
+          "name": "RecordInsightsFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/RecordInsightsFlowTest.java"
+        },
+        {
+          "name": "RecordInsightsNativeTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/RecordInsightsNativeTest.java"
+        },
+        {
+          "name": "RecordInsightsTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordInsightsTest.java"
+        },
+        {
+          "name": "RhythmStatsTest",
+          "path": "app/src/test/java/org/sleepwell/app/RhythmStatsTest.java"
+        },
+        {
+          "name": "TagImpactTest",
+          "path": "app/src/test/java/org/sleepwell/app/TagImpactTest.java"
+        }
+      ]
     },
     {
       "feature": "Chronotype / social jetlag / SRI",
@@ -1956,12 +2031,41 @@
       "feature": "Personalized advice",
       "screens": "02,22–25",
       "source": "https://sleep.urbandroid.org/docs/sleep/statistics.html",
-      "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending: no medical advice generated from a single short session.",
+      "implementation": [
+        "RecordInsights.java",
+        "RecordInsightsActivity.java",
+        "RecordInsightsChart.java",
+        "RecordInsightSettings.java",
+        "RecordTrends.java",
+        "RhythmStats.java",
+        "TagImpact.java"
+      ],
+      "validation": "Author e51f43f: RecordInsightsTest 12 + RhythmStatsTest 15 + TagImpactTest 14 =41pure PASS; debug/native APKs/lint PASS. Superseding d346441 CI40154059415 RecordInsightsNativeTest 3 and RecordInsightsFlowTest 1/all4 originals PASS.",
+      "status": "partial",
+      "notes": "Saved7/30/90-day views use actual merged coverage, observed/missing dates, duration distribution, circular recorded main-period start range, original dated-goal targets and sufficiently sampled tag associations. Missing days stay unknown. Descriptive comparisons support reflection; no personalized clinical score, predictive advice, measured sleep onset/stages or chronotype claim. See RECORDED-INSIGHTS.md.",
       "id": "F078",
-      "tests": []
+      "tests": [
+        {
+          "name": "RecordInsightsFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/RecordInsightsFlowTest.java"
+        },
+        {
+          "name": "RecordInsightsNativeTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/RecordInsightsNativeTest.java"
+        },
+        {
+          "name": "RecordInsightsTest",
+          "path": "app/src/test/java/org/sleepwell/app/RecordInsightsTest.java"
+        },
+        {
+          "name": "RhythmStatsTest",
+          "path": "app/src/test/java/org/sleepwell/app/RhythmStatsTest.java"
+        },
+        {
+          "name": "TagImpactTest",
+          "path": "app/src/test/java/org/sleepwell/app/TagImpactTest.java"
+        }
+      ]
     },
     {
       "feature": "Achievements",
@@ -2439,7 +2543,7 @@
         "AlarmRequestActivity.java",
         "HomeLaunch.java"
       ],
-      "validation": "8d00238: AlarmRequestTest 4, AlarmRequestStorageTest 3 and AlarmRequestFlowTest 1 authored; build/native execution pending. No assistant or phone action.",
+      "validation": "f5e80ab CI40150902142 AlarmRequestStorageTest 3 and AlarmRequestFlowTest 1/all3 originals PASS. AlarmRequestTest 4 authored; combined local run pending. Whole focused run FAIL on separate DND/goal synchronization assertions. No assistant or phone action.",
       "status": "partial",
       "notes": "Permission-protected standard SET_ALARM/SHOW_ALARMS entry reconstructs bounded scalar fields into a fresh ordinary editor draft. Explicit Save required even when skip-UI requested. No incoming identity/nested Intent authority. Custom/silent ringtone requests explicitly unsupported; actual assistant routing, dismiss/snooze/timer and inbound data-provider contracts absent/unverified. See STANDARD-ALARM-REQUESTS.md.",
       "id": "F096",
@@ -2883,9 +2987,9 @@
         "ChallengePackPreviewActivity.java",
         "AlarmActivity.java"
       ],
-      "validation": "Author a0d2bed: ChallengeCountingFlagsTest, TiltMazeTest, TiltMotionTest and existing ChallengeRoutineTest:24pure cases PASS, debug/native APKs and lint PASS. ChallengePackNativeTest 8 authored/compiled, execution pending.",
+      "validation": "Author a0d2bed: ChallengeCountingFlagsTest, TiltMazeTest, TiltMotionTest and existing ChallengeRoutineTest:24pure cases PASS, debug/native APKs and lint PASS. f5e80ab CI40150902142 ChallengePackNativeTest 8 PASS; whole focused run remains FAIL on DND permission callback and goal dialog recreation (targeted fixes pending rerun).",
       "status": "partial",
-      "notes": "Original Counting and eight-country Flags plus calibrated fresh-sensor collision maze are wired into saved routines and shared silent previews. Persisted Math fallback and lifecycle/run fences included. Actual sensor/alarm behavior and native execution remain unverified; jumping missing. See COUNTING-TILT-FLAGS.md.",
+      "notes": "Original Counting and eight-country Flags plus calibrated fresh-sensor collision maze are wired into saved routines and shared silent previews. Persisted Math fallback and lifecycle/run fences included. Actual sensor/alarm behavior remains unverified; jumping missing. See COUNTING-TILT-FLAGS.md.",
       "id": "F113",
       "tests": [
         {
@@ -3065,12 +3169,36 @@
       "feature": "Flip pause / delayed tracking start",
       "screens": "16,18",
       "source": "https://sleep.urbandroid.org/docs/sleep/awake_detection.html",
-      "implementation": [],
-      "validation": "Not yet verified",
-      "status": "missing",
-      "notes": "Needs gap provenance and monotonic timers.",
+      "implementation": [
+        "TrackingDelay.java",
+        "TrackingDelayEntry.java",
+        "TrackingDelayRuntime.java",
+        "TrackingDelaySettings.java",
+        "TrackingDelayActivity.java",
+        "TrackingService.java"
+      ],
+      "validation": "Author6cd72db: TrackingDelayTest 16 and TrackingDelayEntryTest 6, plus8AutomaticCaptureTest and21TrackingDndOwnerTest=51pure/debug/native APKs/lint PASS. TrackingDelayStorageTest 4 + TrackingDelayFlowTest 2/nine originals compiled, native execution pending.",
+      "status": "partial",
+      "notes": "DefaultOff optional1/5/10/15/30-minute manual delay holds original visible admission, frozen audio/light intent, monotonic deadline and nonce-fenced Cancel/Start now. No sensor/mic/sonar/DND/session row during waiting. Durable claim precedes actual capture; lost process/boot never auto-restarts. Real OEM behavior unverified; flip pause remains assigned. See MANUAL-TRACKING-DELAY.md.",
       "id": "F120",
-      "tests": []
+      "tests": [
+        {
+          "name": "TrackingDelayEntryTest",
+          "path": "app/src/test/java/org/sleepwell/app/TrackingDelayEntryTest.java"
+        },
+        {
+          "name": "TrackingDelayFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/TrackingDelayFlowTest.java"
+        },
+        {
+          "name": "TrackingDelayStorageTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/TrackingDelayStorageTest.java"
+        },
+        {
+          "name": "TrackingDelayTest",
+          "path": "app/src/test/java/org/sleepwell/app/TrackingDelayTest.java"
+        }
+      ]
     },
     {
       "feature": "Phone breathing / disturbance estimates",
@@ -3547,7 +3675,7 @@
         "AlarmRequestActivity.java",
         "HomeLaunch.java"
       ],
-      "validation": "8d00238: AlarmRequestTest 4, AlarmRequestStorageTest 3 and AlarmRequestFlowTest 1 authored; build/native execution pending. No assistant or phone action.",
+      "validation": "f5e80ab CI40150902142 AlarmRequestStorageTest 3 and AlarmRequestFlowTest 1/all3 originals PASS. AlarmRequestTest 4 authored; combined local run pending. Whole focused run FAIL on separate DND/goal synchronization assertions. No assistant or phone action.",
       "status": "partial",
       "notes": "Permission-protected standard SET_ALARM/SHOW_ALARMS entry reconstructs bounded scalar fields into a fresh ordinary editor draft. Explicit Save required even when skip-UI requested. No incoming identity/nested Intent authority. Custom/silent ringtone requests explicitly unsupported; actual assistant routing, dismiss/snooze/timer and inbound data-provider contracts absent/unverified. See STANDARD-ALARM-REQUESTS.md.",
       "id": "F134",
@@ -3580,13 +3708,24 @@
         "CalendarRulesActivity.java",
         "Scheduler.java",
         "AlarmSkips.java",
-        "Naps.java"
+        "Naps.java",
+        "CalendarEventDraft.java",
+        "CalendarEventExport.java",
+        "CalendarEventExportActivity.java"
       ],
-      "validation": "0b7f46d: CalendarPolicyTest 12 pure PASS. CalendarRulesStorageTest 4 and CalendarRulesFlowTest 1/four frames authored; combined native build/execution pending CI40133514540. No actual phone calendar or alarm access. Superseding da0f571 CI40141612460 CalendarRulesStorageTest 4/FlowTest 1 and DatedGoalBankFlowTest 2 allPASS, with complete originals/save/reopen. Earlier UUID/owned-dialog failures fixed; no real provider/hardware claim.",
+      "validation": "0b7f46d: CalendarPolicyTest 12 pure PASS. CalendarRulesStorageTest 4 and CalendarRulesFlowTest 1/four frames authored; combined native build/execution pending CI40133514540. No actual phone calendar or alarm access. Superseding da0f571 CI40141612460 CalendarRulesStorageTest 4/FlowTest 1 and DatedGoalBankFlowTest 2 allPASS, with complete originals/save/reopen. Earlier UUID/owned-dialog failures fixed; no real provider/hardware claim. CalendarEventDraftTest 3 PASS in combined900-test1275be1 build. d346441 CI40154059415 CalendarEventExportTest 1 PASS; FlowTest 1 fails before note toggle because its helper selected a label instead of Switch.2732a6f fixes exact native control lookup; rerun pending.",
       "status": "partial",
-      "notes": "Read-only selected-calendar all-day skip and bounded earlier-meeting rules apply to repeating alarms, with ordinary-time fallback, worker provider reads, background refresh, occurrence receipt, actual next-alarm preview and shifted Skip/Undo expiry. Default off; phone calendar provider/READ_CALENDAR and alarm readiness required. Calendar record writing remains absent. See CALENDAR-RULES.md.",
+      "notes": "Read-only selected-calendar all-day skip and bounded earlier-meeting rules apply to repeating alarms, with ordinary-time fallback, worker provider reads, background refresh, occurrence receipt, actual next-alarm preview and shifted Skip/Undo expiry. Default off; phone calendar provider/READ_CALENDAR and alarm readiness required. Calendar record writing remains absent. See CALENDAR-RULES.md. Explicit saved-period event draft handoff opens the calendar app only after review, with notes excluded by default; user saves externally. No WRITE_CALENDAR, automatic write/update/delete sync or save acknowledgment. See CALENDAR-EVENT-EXPORT.md.",
       "id": "F135",
       "tests": [
+        {
+          "name": "CalendarEventDraftTest",
+          "path": "app/src/test/java/org/sleepwell/app/CalendarEventDraftTest.java"
+        },
+        {
+          "name": "CalendarEventExportTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/CalendarEventExportTest.java"
+        },
         {
           "name": "CalendarPolicyTest",
           "path": "app/src/test/java/org/sleepwell/app/CalendarPolicyTest.java"

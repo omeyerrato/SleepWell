@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.MorningCodeTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-25T02:25:31.820Z" hostname="DESKTOP-1UTDMNE" time="0.019">
+  <properties/>
+  <testcase name="labelAndFallbackAreBoundedAndCodeOwnsOnlyOneRoutineUnit" classname="org.sleepwell.app.MorningCodeTest" time="0.004"/>
+  <testcase name="hashIsExactUtf8NotTrimmedOrOpened" classname="org.sleepwell.app.MorningCodeTest" time="0.01"/>
+  <testcase name="payloadBoundsRejectEmptyMalformedAndExcessUtf8" classname="org.sleepwell.app.MorningCodeTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

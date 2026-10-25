@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AutomaticStartTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-25T02:25:29.602Z" hostname="DESKTOP-1UTDMNE" time="0.014">
+  <properties/>
+  <testcase name="earliestEnabledSmartWindowWins" classname="org.sleepwell.app.AutomaticStartTest" time="0.003"/>
+  <testcase name="alreadyOpenLeadInStartsNowInsteadOfWaitingTomorrow" classname="org.sleepwell.app.AutomaticStartTest" time="0.001"/>
+  <testcase name="passedAlarmUsesItsNextCalendarOccurrence" classname="org.sleepwell.app.AutomaticStartTest" time="0.001"/>
+  <testcase name="stillnessStartsLookingNow" classname="org.sleepwell.app.AutomaticStartTest" time="0.0"/>
+  <testcase name="bedtimeUsesTheSavedLocalScheduleAndRollsTomorrow" classname="org.sleepwell.app.AutomaticStartTest" time="0.001"/>
+  <testcase name="smartWindowNeedsARealEnabledAlarm" classname="org.sleepwell.app.AutomaticStartTest" time="0.005"/>
+  <testcase name="weeklyAlarmHonorsItsSelectedDays" classname="org.sleepwell.app.AutomaticStartTest" time="0.001"/>
+  <testcase name="smartLeadInIsFortyFiveMinutesBeforeTheWindow" classname="org.sleepwell.app.AutomaticStartTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
