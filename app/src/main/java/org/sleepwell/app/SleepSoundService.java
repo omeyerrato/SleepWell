@@ -20,8 +20,8 @@ public final class SleepSoundService extends Service {
     private PowerManager.WakeLock wake;private MediaSession media;private boolean hasFocus,foreground,destroyed;
     private final SoundOwnership ownership=new SoundOwnership();private long fadeOwner;private boolean stillnessArmed,stillnessClaimed;private StillnessSoundFade.Admission stillnessAdmission;
     static final class Snapshot {
-        final SoundPlayback.State state;final long elapsed;final String error,trackTitle,finished,stillness;final int track,tracks;
-        Snapshot(SleepSoundService service){state=service.playback.state;elapsed=service.playback.elapsed();error=service.playback.error;trackTitle=service.playback.trackTitle();track=service.playback.trackNumber();tracks=service.playback.trackCount();finished=service.playback.finishedMessage();stillness=service.stillnessLabel();}
+        final SoundPlayback.State state;final long elapsed;final String error,trackTitle,finished,stillness;final int track,tracks;final boolean rotation;
+        Snapshot(SleepSoundService service){state=service.playback.state;elapsed=service.playback.elapsed();error=service.playback.error;trackTitle=service.playback.trackTitle();rotation=service.playback.rotation();track=service.playback.trackNumber();tracks=service.playback.trackCount();finished=service.playback.finishedMessage();stillness=service.stillnessLabel();}
     }
     static Snapshot snapshot(){SleepSoundService s=current;return s==null||s.playback.state==SoundPlayback.State.STOPPED?last:new Snapshot(s);}
     static String error(Context c){return SoundPreferences.error(c);}
@@ -117,7 +117,7 @@ public final class SleepSoundService extends Service {
         PendingIntent toggle=active?PendingIntent.getService(this,105,toggleIntent,PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT):PendingIntent.getForegroundService(this,107,toggleIntent,PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);
         PendingIntent stop=PendingIntent.getService(this,106,new Intent(this,SleepSoundService.class).setAction(STOP),PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT);
         SoundMix mix=playback==null?null:playback.mix();String label=mix==null?"Sleep sounds":mix.label();
-        Notification.Builder b=new Notification.Builder(this,Notifications.SOUND).setSmallIcon(R.drawable.ic_moon).setContentTitle(label).setContentText(active?(playback.trackCount()>0?"Track "+playback.trackNumber()+" of "+playback.trackCount()+" · "+playback.trackTitle():"Sleep sounds playing"):"Paused · tap Play to continue").setContentIntent(open).setDeleteIntent(stop).setOnlyAlertOnce(true).setSound(null).setVibrate(null).setOngoing(active).setVisibility(Notification.VISIBILITY_PUBLIC)
+        Notification.Builder b=new Notification.Builder(this,Notifications.SOUND).setSmallIcon(R.drawable.ic_moon).setContentTitle(label).setContentText(active?(playback.trackCount()>0?(playback.rotation()?"Rotating ":"Track ")+playback.trackNumber()+" of "+playback.trackCount()+" · "+playback.trackTitle():"Sleep sounds playing"):"Paused · tap Play to continue").setContentIntent(open).setDeleteIntent(stop).setOnlyAlertOnce(true).setSound(null).setVibrate(null).setOngoing(active).setVisibility(Notification.VISIBILITY_PUBLIC)
             .addAction(new Notification.Action.Builder(active?android.R.drawable.ic_media_pause:android.R.drawable.ic_media_play,active?"Pause":"Play",toggle).build()).addAction(new Notification.Action.Builder(android.R.drawable.ic_menu_close_clear_cancel,"Stop",stop).build());
         if(media!=null)b.setStyle(new Notification.MediaStyle().setMediaSession(media.getSessionToken()).setShowActionsInCompactView(0,1));return b.build();
     }
