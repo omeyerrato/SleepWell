@@ -25,6 +25,7 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
@@ -45,7 +46,7 @@
     <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
     <uses-feature android:name="android.hardware.nfc" android:required="false" />
     <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
-    <queries><intent><action android:name="android.speech.RecognitionService" /></intent><package android:name="com.google.android.apps.healthdata" /><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent><intent><action android:name="android.speech.action.RECOGNIZE_SPEECH" /></intent><intent><action android:name="android.intent.action.TTS_SERVICE" /></intent></queries>
+    <queries><intent><action android:name="android.app.action.ADD_DEVICE_ADMIN" /></intent><intent><action android:name="android.settings.SECURITY_SETTINGS" /></intent><intent><action android:name="android.speech.RecognitionService" /></intent><package android:name="com.google.android.apps.healthdata" /><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent><intent><action android:name="android.speech.action.RECOGNIZE_SPEECH" /></intent><intent><action android:name="android.intent.action.TTS_SERVICE" /></intent></queries>
     <application android:name=".SleepWellApplication" android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:label="SleepWell" android:theme="@style/AppTheme" android:icon="@drawable/ic_moon" android:supportsRtl="true">
         <!-- Foreground explicit contactless calibration only; never externally launchable. -->
         <activity android:name=".AwakeSettingsActivity" android:exported="false" />
@@ -123,6 +124,13 @@
         <activity android:name=".GeneratedMorningQrActivity" android:exported="false" />
         <activity android:name=".QrCodeActivity" android:exported="false" />
         <activity android:name=".AlarmProtectionActivity" android:exported="false" />
+        <activity android:name=".UninstallProtectionActivity" android:exported="false" />
+        <activity android:name=".AacExportActivity" android:exported="false" />
+        <activity android:name=".CalendarEventDirectActivity" android:exported="false" />
+        <receiver android:name=".SleepWellAdminReceiver" android:exported="true" android:permission="android.permission.BIND_DEVICE_ADMIN" android:label="@string/uninstall_admin_label" android:description="@string/uninstall_admin_description">
+            <meta-data android:name="android.app.device_admin" android:resource="@xml/uninstall_admin" />
+            <intent-filter><action android:name="android.app.action.DEVICE_ADMIN_ENABLED" /></intent-filter>
+        </receiver>
         <activity android:name=".AppearanceActivity" android:exported="false" />
         <activity android:name=".AutomaticTrackingActivity" android:exported="false" />
         <activity android:name=".RecurringTrackingActivity" android:exported="false" />

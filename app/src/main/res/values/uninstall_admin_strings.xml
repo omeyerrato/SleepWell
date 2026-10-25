@@ -1,0 +1,4 @@
+<resources>
+    <string name="uninstall_admin_label">SleepWell uninstall protection</string>
+    <string name="uninstall_admin_description">Adds Android’s administrator deactivation step before uninstall. No password, lock, wipe or camera policies are requested. You can deactivate SleepWell in its protection settings or Android security settings.</string>
+</resources>
