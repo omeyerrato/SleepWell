@@ -2,6 +2,33 @@
 
 This implementation adds a genuine on-device YAMNet classifier, not an amplitude-to-snoring rule. It is a general sound model, not a validated sleep monitor or a calibrated probability estimator. Speech can come from television or another person; it does not establish that the sleeper talked. Snoring estimates can be wrong. No anti-snoring output is enabled by this work.
 
+## Current production addition — 25 October
+
+Source760381c builds in41s; this addition has build-only evidence, with no new
+unit/native/lint/screenshot or phone runs. Earlier evidence below applies to its
+stated historical source only.
+
+Contactless setup has a separate **Save sound clips this night** choice, off by
+default and independent of the global movement-recording preference. The explicit
+visible-entry ticket, delayed-start plan and resume ticket retain the same choice.
+The existing48kHz capture is filtered to actual16kHz mono PCM on the shared sound
+worker. A threshold crossing may collect exactly160000 real samples; gaps, cues,
+pause, stop and model failure discard incomplete clips. No second microphone is
+opened. This does not retain the48kHz sonar stream.
+
+The existing60-clips/night and30-second post-save budget, all-categories requirement,
+retention, favorites, event linkage and WAV player/export paths are reused. Before
+writing, the ordered storage worker checks an open owned sonar session, no open
+pause and a persisted epoch through the clip end. Complete WAVs are fsynced and
+renamed before metadata insertion; unfinished or beyond-cutoff queued clips are
+not saved. The Report opens recordings even without a classified event. Clips may
+contain speech and enter separately consented whole-library audio backups. Actual
+hardware quality, capture continuity and playback remain unverified.
+
+The historical backup-format3 discussion below is superseded by metadata format13
+and the separate whole-library v2 ZIP restore/optional audio-folder backup paths.
+Contactless snoring cues are optional vibration-only; sound cues remain incomplete.
+
 ## Actual path
 
 The existing user-enabled microphone capture remains 16 kHz mono PCM16. A fixed 15,600-sample float window (PCM16 / 32768) is sent to the bundled mobile model on the same capture worker. Model creation, warm-up, inference, buffer reuse and destruction all run there. CPU only is intentional for compatibility and avoids pretending a GPU fallback was exercised. There is no model-download button or network dependency.

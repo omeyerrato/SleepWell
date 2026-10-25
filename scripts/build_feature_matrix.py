@@ -770,7 +770,7 @@ for row in rows:
         row.update(status="partial",implementation=["BinauralTones.java","BinauralSettingsActivity.java","SoundMix.java","SoundPreferences.java","SleepSoundsActivity.java","SleepSoundService.java"],validation="Sourcebbc3906 integrated; new production compile pending. No new tests or playback/device output.",notes="Actual local4s PCM16 stereo48kHz loop, integer left100–400Hz/right+1–20Hz, low8% per-channel digital peak and bounded atomic cache. Explicit Play/Resume only; saved source/frequencies, timer/fade/focus/noisy/alarm cleanup through existing engine. No global volume/network/mic or health benefit claim. Original guided meditation content remains absent.")
     elif title in ("Local data backup", "User-controlled cloud / conflict / audio backup", "Noise library"):
         row["implementation"] += [name for name in ["LibraryAudioArchive.java","LibraryAudioExportActivity.java","LibraryAudioImport.java","LibraryAudioImportActivity.java","LibraryAudioImportJournal.java"] if name not in row["implementation"]]
-        row["notes"] += " Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; no automatic audio cloud transport claim."
+        row["notes"] += " Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; separately consented manual/automatic audio-folder delivery is documented in the cloud backup rows."
     elif title == "Smart bedtime":
         row["notes"] += " Optional silent repeat interval/limit, current next receipt and owned swipe/Dismiss-tonight stop until next occurrence added509f3ec; compatibility build fix631f194."
     elif title in ("Other CAPTCHA addon packs", "Tilt maze / jumping / flags / counting tasks"):
@@ -796,7 +796,7 @@ SPRINT_FEATURES = {
 for row in rows:
     update=SPRINT_FEATURES.get(row["feature"])
     if update:
-        row.update(status="partial",implementation=update[0],notes=update[1],validation="Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.")
+        row.update(status="partial",implementation=update[0],notes=update[1],validation="Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.")
 
 # Final production additions. Partial status preserves missing subfeatures and acceptance.
 FINAL_FEATURES = {
@@ -813,14 +813,21 @@ FINAL_FEATURES = {
 for row in rows:
     update=FINAL_FEATURES.get(row["feature"])
     if update:
-        row.update(status="partial", implementation=update[0], notes=update[1], validation="Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.")
+        row.update(status="partial", implementation=update[0], notes=update[1], validation="Production assembleDebug760381c passed41s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.")
     if row["feature"] in ("Automatic tracking", "After-fall-asleep / false-start rejection"):
         row["notes"] = row["notes"].replace("dependency correction/compile and real Google delivery pending", "published21.4.0 dependency compiles; real Google delivery remains unverified")
     if row["feature"] in ("Gentle volume ramp", "Sunrise alarm", "Separate sound/vibration delay", "Phone flashlight wake-up"):
         row["notes"] = row["notes"].replace("No speaker boost or smart-light control.", "Optional per-session Extra loud processing is separately documented; no speaker-limit bypass or smart-light control in this path.")
     if row["feature"] in ("Smile task", "Internet radio / Spotify", "Multi-metric sleep score", "Pair tracking", "Community research sharing", "Laughter / instrument microphone task", "Anti-snoring cues", "Headphone-only cues / intensity / repeat", "Automatic tracking", "After-fall-asleep / false-start rejection"):
-        row["validation"] = "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance."
+        row["validation"] = "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance."
     row["implementation"] = ["BinauralTones.java" if name=="Binaural.java" else name for name in row["implementation"]]
+
+# Shared-stream recording remains explicit per night; old analysis-only defaults stay off.
+for row in rows:
+    if row["feature"] in ("Contactless sonar", "Triggered sound recordings", "Noise library", "Automatic sound labels", "Correct sound labels / favorites / export"):
+        row["implementation"] += [name for name in ["SonarClipPolicy.java", "SonarSoundClips.java", "SonarClipWriter.java", "SonarNightSound.java", "SonarEntry.java", "TrackingActivity.java"] if name not in row["implementation"]]
+        row["notes"] += " Source760381c adds a separate default-off per-night contactless clip choice, pinned through visible-entry/delay/resume ownership. Actual filtered16kHz mono PCM from the same capture yields complete ten-second noise-triggered WAVs only after durable interval checks. Existing60/night/30second budgets, category inclusion, retention, event linkage, player and exports are reused. Gaps/cues/pause/stop discard incomplete clips; model failure stops shared-stream clips too. No second microphone or schema change. Real capture/playback/retention behavior remains unverified."
+        row["validation"] += " Shared-stream clip addition: production assembleDebug760381c PASS41s; build-only, no new tests/device actions."
 
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
@@ -849,7 +856,7 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Current production source **6578575** builds a debug APK in **28s**, database
+Current production source **760381c** builds a debug APK in **41s**, database
 schema15 and backup format13. This six-hour feature window uses **build-only**
 evidence: no new unit/native/lint/screenshot batches or physical-phone actions.
 The APK retains the installed debug signing key. It has not been installed.

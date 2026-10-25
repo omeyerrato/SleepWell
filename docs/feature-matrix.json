@@ -118,7 +118,7 @@
         "TrackingService.java",
         "SensorProvenance.java"
       ],
-      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Production assembleDebug760381c passed41s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
       "notes": "Explicit foreground ten-second still/five-second gentle-movement calibration measures hardware-timestamped motion with freshness, accuracy and gap checks. Rest/movement distributions derive a bounded gain; unsuitable separation or out-of-range gain is rejected. Save/Reset affects the next manual or automatic motion night, whose configuration retains measured provenance in backup format13. Raw epochs remain unchanged. Actual mattress sensitivity, sleep/wake accuracy and physical calibration flow are unverified.",
       "id": "F006",
@@ -203,7 +203,7 @@
         "AlarmPlayback.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Production assembleDebug760381c passed41s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
       "notes": "Explicit per-alarm Extra loud selects maximum alarm stream volume and requests a+600mB(+6dB) LoudnessEnhancer on the prepared player's positive owned session immediately before playback. Quiet developer policy excludes the effect. Lost control/construction/enable failures record an error and retain max-stream playback; source change, snooze and dismissal release the player-owned effect. Ramp/delay behavior is retained. A processing target cannot bypass speaker limits; actual output, support and volume restoration remain unverified on hardware.",
       "id": "F009",
@@ -376,7 +376,7 @@
         "AlarmPlayback.java",
         "AlarmToneScreen.java"
       ],
-      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
+      "validation": "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Per-alarm public HTTPS station URL, explicit draft Use/Save/Cancel, real async MediaPlayer source, eight-second connect/buffer watchdog and mandatory bundled fallback. Existing ramp/backup/lifecycle retained; no automatic network preview. Credential/query-dependent links unsupported. Spotify/paid provider accounts are not replicated or made free.",
       "id": "F015",
@@ -457,7 +457,7 @@
         "Scheduler.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Optional saved total-minute budget is enforced alongside count/decreasing limits across duration, exact-clock, flip and volume-key snoozes. Actual scheduled milliseconds carry only through an owned snooze continuation; new occurrences reset the ledger. Uncapped legacy alarms retain omitted JSON. Real delivery and output remain unverified.",
       "id": "F018",
@@ -728,7 +728,7 @@
         "AlarmEditorActivity.java",
         "AlarmActivity.java"
       ],
-      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
+      "validation": "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Actual bundled ML Kit smile probability + framing/facing/fresh multi-frame hold, private CameraX activity, shared preview and owned challenge result, explicit Math fallback. No images saved by app. Proprietary model/SDK metrics disclosed before camera Start; not identity/liveness proof. Previous Haar experiment remains rejected and was not shipped.",
       "id": "F029",
@@ -961,7 +961,7 @@
         "NapProfilesDefinitions.java",
         "NapProfilesDocumentsActivity.java"
       ],
-      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Production assembleDebug760381c passed41s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
       "notes": "Named local profiles contain two to six clock/duration entries. Saving does not schedule: applying requires review of one future date, existing nap defaults and explicit consent. Durable ownership journal creates disabled rows, schedules all and activates only after acknowledgements; partial/interrupted applications require owned Retry/Cancel. Strict portable definition export/import reviews duplicates and name conflicts, creates fresh identities and never imports active alarms. Weekly recurrence remains absent; actual OS delivery and document-provider exchange remain unverified.",
       "id": "F037",
@@ -977,7 +977,7 @@
         "RelativeAlarmTimeActivity.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Explicit relative one-time clock entry computes and reviews a date/zone/time before draft Use and Save alarm. Bounds, clock drift and ambiguous DST targets are checked. Optional external English speech entry returns selectable candidates; a provider is required and its offline preference may be ignored. No app microphone capture or automatic save. Physical provider behavior remains unverified.",
       "id": "F038",
@@ -994,7 +994,7 @@
         "CalendarAlarms.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Dedicated compact Alarms root and existing skip/restore occurrence remain. Up to64 explicit local excluded dates now affect clock/sunrise projections, actual occurrence checks and calendar adjustments; private draft editor requires Use then Save alarm. This is user-selected date skipping, not an automatic public-holiday feed. Full interaction/design/device acceptance remains open.",
       "id": "F039",
@@ -1043,7 +1043,7 @@
         "AlarmBedtime.java",
         "AlarmBedtimeActivity.java"
       ],
-      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Next actual eligible alarm projects a reminder from goal/window/delay and bounded observed shortfall. Silent interval/limit repeats have owned dismissal fences. Optional per-alarm Follow global/Off/custom lead changes actual revalidated reminder delivery; the earliest eligible wake-up owns the reminder. No duplicate reminders for later alarms. Android delivery and background reliability remain unverified.",
       "id": "F041",
@@ -1154,7 +1154,7 @@
         "GoogleSleepSignal.java",
         "GoogleSleepSignalReceiver.java"
       ],
-      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
+      "validation": "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md. Separate Repeat nightly opt-in saves local calendar time, optional stillness and due-time charging condition; single-use persisted token/revision fences stale/duplicate/ABA starts. Disable affects only the owned run; enabled edits preserve admitted tonight capture. Recurring starts force microphone/clips/light/sleep sounds off, never open an Activity, never backfill missed starts, and retain4h/12h limits. Protected reconciliation and visible reopening schedule future occurrences only. Force-stop/OEM/permission restrictions and background specialUse distribution review remain; see RECURRING-MOVEMENT.md. Smart-window lead-in now uses the actual projected dated/sunrise/skipped/calendar-adjusted unconsumed deadline; expired or unsupported nap occurrences cannot admit capture. Optional charging/screen-off gates apply only to explicit Arm tonight, not background recurring tokens. Optional Google Sleep API confidence input1270922 adds permission, real registration/removal and current-arm fresh confidence final gate; published21.4.0 dependency compiles; real Google delivery remains unverified. Existing stillness conditions remain required; callback confidence is an estimate, not a sleep stage.",
       "id": "F044",
@@ -1250,11 +1250,15 @@
         "SonarSoundPipeline.java",
         "SonarSoundWorker.java",
         "SoundAnalysisStatus.java",
-        "SoundAnalysisProvenance.java"
+        "SoundAnalysisProvenance.java",
+        "SonarClipPolicy.java",
+        "SonarSoundClips.java",
+        "SonarClipWriter.java",
+        "SonarNightSound.java"
       ],
-      "validation": "f9f7acb CI40120286873 PASS6classes/20methods/all25required originals: SharedSoundProvenanceStorageTest 12, SonarNightStorageTest 2, SonarNightFlowTest 2, SonarReportFlowTest 1, SonarSharedSoundFlowTest 2 and SonarSharedClassifierStorageTest 1. Actual FIR/model/private SQLite replay covers three pinned PCM fixtures and correct distinct snore/speech events. No hardware/overnight evidence.",
+      "validation": "f9f7acb CI40120286873 PASS6classes/20methods/all25required originals: SharedSoundProvenanceStorageTest 12, SonarNightStorageTest 2, SonarNightFlowTest 2, SonarReportFlowTest 1, SonarSharedSoundFlowTest 2 and SonarSharedClassifierStorageTest 1. Actual FIR/model/private SQLite replay covers three pinned PCM fixtures and correct distinct snore/speech events. No hardware/overnight evidence. Shared-stream clip addition: production assembleDebug760381c PASS41s; build-only, no new tests/device actions.",
       "status": "partial",
-      "notes": "Manual contactless setup/start/pause/resume/stop/report now optionally shares one48k capture with ordered sound analysis and durable outcome/coverage. Legacy unknown remains unknown, exact gaps/zero preserved. Shared sonar sound analysis excludes saved clips/cues and automatic starts. Real hardware calibration, bedroom accuracy, battery and background delivery remain unverified; no breathing/stage/medical claim.",
+      "notes": "Manual contactless setup/start/pause/resume/stop/report now optionally shares one48k capture with ordered sound analysis and durable outcome/coverage. Legacy unknown remains unknown, exact gaps/zero preserved. Shared sonar sound analysis excludes saved clips/cues and automatic starts. Real hardware calibration, bedroom accuracy, battery and background delivery remain unverified; no breathing/stage/medical claim. Source760381c adds a separate default-off per-night contactless clip choice, pinned through visible-entry/delay/resume ownership. Actual filtered16kHz mono PCM from the same capture yields complete ten-second noise-triggered WAVs only after durable interval checks. Existing60/night/30second budgets, category inclusion, retention, event linkage, player and exports are reused. Gaps/cues/pause/stop discard incomplete clips; model failure stops shared-stream clips too. No second microphone or schema change. Real capture/playback/retention behavior remains unverified.",
       "id": "F047",
       "tests": [
         {
@@ -1295,7 +1299,7 @@
         "PirReportActivity.java",
         "TrackingService.java"
       ],
-      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Default-off independently encrypted Home Assistant HTTPS binary_sensor motion/occupancy input requires an actual tested user-owned hub/sensor. Manual phone/sonar nights poll read-only snapshots every15s; saved hub-state, unknown/errors, update age and request latency feed a discrete-point report. On-change hub snapshots are not fresh physical motion samples. Pause/end/owner fences, schema14 and backup11 preserve evidence without changing duration/stages. Real hub exchange remains unverified; this is not the proprietary Sleep Phaser protocol.",
       "id": "F048",
@@ -1323,7 +1327,7 @@
         "AwakeReviewActivity.java",
         "RecordEntry.java"
       ],
-      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Default-off per-night phone unlock/touch, opted-in fresh light and successful snooze evidence creates reversible estimated-awake intervals. Original evidence and review decisions remain separate; effective duration subtracts their union. It is an unvalidated awake estimate, not measured stages. New source compiles; actual overnight accuracy remains unverified.",
       "id": "F050",
@@ -1397,11 +1401,17 @@
         "NoiseRecorder.java",
         "ClipBudget.java",
         "TrackingService.java",
-        "Store.java"
+        "Store.java",
+        "SonarClipPolicy.java",
+        "SonarSoundClips.java",
+        "SonarClipWriter.java",
+        "SonarNightSound.java",
+        "SonarEntry.java",
+        "TrackingActivity.java"
       ],
-      "validation": "ClipBudgetTest 2 local passes; microphone/clip lifecycle not exercised under user's sleep-time restriction",
+      "validation": "ClipBudgetTest 2 local passes; microphone/clip lifecycle not exercised under user's sleep-time restriction Shared-stream clip addition: production assembleDebug760381c PASS41s; build-only, no new tests/device actions.",
       "status": "implemented",
-      "notes": "Code saves 10-second threshold-triggered WAV clips, shared maximum 60 and 30-second cooldown across pauses. Session clock anchors event timestamps. No classified labels; recording/restart hardware evidence still pending.",
+      "notes": "Code saves 10-second threshold-triggered WAV clips, shared maximum 60 and 30-second cooldown across pauses. Session clock anchors event timestamps. No classified labels; recording/restart hardware evidence still pending. Source760381c adds a separate default-off per-night contactless clip choice, pinned through visible-entry/delay/resume ownership. Actual filtered16kHz mono PCM from the same capture yields complete ten-second noise-triggered WAVs only after durable interval checks. Existing60/night/30second budgets, category inclusion, retention, event linkage, player and exports are reused. Gaps/cues/pause/stop discard incomplete clips; model failure stops shared-stream clips too. No second microphone or schema change. Real capture/playback/retention behavior remains unverified.",
       "id": "F054",
       "tests": [
         {
@@ -1426,11 +1436,17 @@
         "SoundBrowseFilter.java",
         "SoundBrowseState.java",
         "SoundAnalysisStatus.java",
-        "SoundAnalysisProvenance.java"
+        "SoundAnalysisProvenance.java",
+        "SonarClipPolicy.java",
+        "SonarSoundClips.java",
+        "SonarClipWriter.java",
+        "SonarNightSound.java",
+        "SonarEntry.java",
+        "TrackingActivity.java"
       ],
-      "validation": "SoundAnalysisNativeTest 3 and old SoundClassifierFixtureEvaluationTest 1 pass at12c8c0f/CI40042183746. New SoundCategoryPolicyTest 7 passes pure rules, but SoundCategoryFixtureEvaluationTest 1 FAILS actual laughter positive:0 events in initial30s. Cough1, baby-cry2 (also laughter2), retained snore9/3 and solo speech1; zero new classes on4 old fixtures. Full54.61s laughter preview also FAILS atCI40047180910:0 laughter, maximum family score0.26171875, unchanged thresholds/grouping. Independent solo-source evaluation remains pending. Raw all-window CPU scores/events preserved in verification/2026-10-24-math-chart-calendar. New10-fixture source retains all8 prior recordings and adds whole62.621s solo laughter/72.906s independent infant PCM selected before inference; test-only3MiB/80s bounds, all hashes/counts and521 label indices verified. Mandatory new positives/cross-negatives await actual CPU execution; model/threshold/grouping unchanged. Actual10-input CPU evaluation at9188e78/CI40051144096 FAILS independent solo laughter positivity: whole62.621s yields0 persisted laughter, max family0.5859375 below unchanged0.65 gate. Independent72.906s infant source persists5 babycry/0 laughter/cough/snore. Original crowd0, ambiguous bonehead2cry+2laugh, cough1 and snore9/3 observations retained. No model, threshold or grouping relaxation; laughter recognition remains unaccepted. Frozen laughter0.30 candidate rejected:0/3 new independent positives, production unchanged;9 host evidence-integrity tests pass. CI40093856492 still fails solo-laughter positive. See SOUND-CLASSIFIER-HOLDOUT-RESULT.md. Saved-category browsing CI40090631946 passes13methods/68originals, but strict appearance review rejects mixed system glyphs. First correction CI40093853208 fails; declared-window-policy and owned-input fixes await fresh native proof.",
+      "validation": "SoundAnalysisNativeTest 3 and old SoundClassifierFixtureEvaluationTest 1 pass at12c8c0f/CI40042183746. New SoundCategoryPolicyTest 7 passes pure rules, but SoundCategoryFixtureEvaluationTest 1 FAILS actual laughter positive:0 events in initial30s. Cough1, baby-cry2 (also laughter2), retained snore9/3 and solo speech1; zero new classes on4 old fixtures. Full54.61s laughter preview also FAILS atCI40047180910:0 laughter, maximum family score0.26171875, unchanged thresholds/grouping. Independent solo-source evaluation remains pending. Raw all-window CPU scores/events preserved in verification/2026-10-24-math-chart-calendar. New10-fixture source retains all8 prior recordings and adds whole62.621s solo laughter/72.906s independent infant PCM selected before inference; test-only3MiB/80s bounds, all hashes/counts and521 label indices verified. Mandatory new positives/cross-negatives await actual CPU execution; model/threshold/grouping unchanged. Actual10-input CPU evaluation at9188e78/CI40051144096 FAILS independent solo laughter positivity: whole62.621s yields0 persisted laughter, max family0.5859375 below unchanged0.65 gate. Independent72.906s infant source persists5 babycry/0 laughter/cough/snore. Original crowd0, ambiguous bonehead2cry+2laugh, cough1 and snore9/3 observations retained. No model, threshold or grouping relaxation; laughter recognition remains unaccepted. Frozen laughter0.30 candidate rejected:0/3 new independent positives, production unchanged;9 host evidence-integrity tests pass. CI40093856492 still fails solo-laughter positive. See SOUND-CLASSIFIER-HOLDOUT-RESULT.md. Saved-category browsing CI40090631946 passes13methods/68originals, but strict appearance review rejects mixed system glyphs. First correction CI40093853208 fails; declared-window-policy and owned-input fixes await fresh native proof. Shared-stream clip addition: production assembleDebug760381c PASS41s; build-only, no new tests/device actions.",
       "status": "partial",
-      "notes": "Offline snore/speech estimates exist. Cough, baby-cry and laughter recognition remain unaccepted candidates; reliable bedroom recognition and per-class calibration are incomplete. All six saved effective categories can be browsed independently, with user corrections distinguished from original estimates. Category browsing does not establish classifier accuracy. Same-capture contactless/noise runtime remains integration-pending.",
+      "notes": "Offline snore/speech estimates exist. Cough, baby-cry and laughter recognition remain unaccepted candidates; reliable bedroom recognition and per-class calibration are incomplete. All six saved effective categories can be browsed independently, with user corrections distinguished from original estimates. Category browsing does not establish classifier accuracy. Same-capture contactless/noise runtime remains integration-pending. Source760381c adds a separate default-off per-night contactless clip choice, pinned through visible-entry/delay/resume ownership. Actual filtered16kHz mono PCM from the same capture yields complete ten-second noise-triggered WAVs only after durable interval checks. Existing60/night/30second budgets, category inclusion, retention, event linkage, player and exports are reused. Gaps/cues/pause/stop discard incomplete clips; model failure stops shared-stream clips too. No second microphone or schema change. Real capture/playback/retention behavior remains unverified.",
       "id": "F055",
       "tests": [
         {
@@ -1487,11 +1503,17 @@
         "LibraryAudioExportActivity.java",
         "LibraryAudioImport.java",
         "LibraryAudioImportActivity.java",
-        "LibraryAudioImportJournal.java"
+        "LibraryAudioImportJournal.java",
+        "SonarClipPolicy.java",
+        "SonarSoundClips.java",
+        "SonarClipWriter.java",
+        "SonarNightSound.java",
+        "SonarEntry.java",
+        "TrackingActivity.java"
       ],
-      "validation": "FavoriteSoundsStorageTest 3 PASS0.604s and FavoriteSoundsFlowTest 1 PASS21.562s at12c8c0f/CI40042183746; fourteen prior individually reviewed originals, fake playback only. ClipReviewAccessTest 1 PASS0.364s with actual private SQLite/WAV before/after saved start/end trims, no player allocation. AtCI40047180910 FavoriteSoundsFlowTest 1 passes22.302s; strict review clears paused/retry Play contrast in2 fresh originals. Real player output remains unverified.",
+      "validation": "FavoriteSoundsStorageTest 3 PASS0.604s and FavoriteSoundsFlowTest 1 PASS21.562s at12c8c0f/CI40042183746; fourteen prior individually reviewed originals, fake playback only. ClipReviewAccessTest 1 PASS0.364s with actual private SQLite/WAV before/after saved start/end trims, no player allocation. AtCI40047180910 FavoriteSoundsFlowTest 1 passes22.302s; strict review clears paused/retry Play contrast in2 fresh originals. Real player output remains unverified. Shared-stream clip addition: production assembleDebug760381c PASS41s; build-only, no new tests/device actions.",
       "status": "partial",
-      "notes": "Real per-night events and global independent stars with date/category filters, bounded paging, PCM wave/seek, unstar/save/reopen and absent/outside-edited audio states. Fake playback only in native tests. New shared guard rechecks current saved period at open/Play/Resume; not atomic against later concurrent edits while already playing. Alternate formats and physical playback remain open. Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; no automatic audio cloud transport claim.",
+      "notes": "Real per-night events and global independent stars with date/category filters, bounded paging, PCM wave/seek, unstar/save/reopen and absent/outside-edited audio states. Fake playback only in native tests. New shared guard rechecks current saved period at open/Play/Resume; not atomic against later concurrent edits while already playing. Alternate formats and physical playback remain open. Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; separately consented manual/automatic audio-folder delivery is documented in the cloud backup rows. Source760381c adds a separate default-off per-night contactless clip choice, pinned through visible-entry/delay/resume ownership. Actual filtered16kHz mono PCM from the same capture yields complete ten-second noise-triggered WAVs only after durable interval checks. Existing60/night/30second budgets, category inclusion, retention, event linkage, player and exports are reused. Gaps/cues/pause/stop discard incomplete clips; model failure stops shared-stream clips too. No second microphone or schema change. Real capture/playback/retention behavior remains unverified.",
       "id": "F057",
       "tests": [
         {
@@ -1572,7 +1594,7 @@
         "SonarSnoreCues.java",
         "SonarNight.java"
       ],
-      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
+      "validation": "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Default-off confident-estimate cues retain sound/vibration/both, intensity/repeats/sensitivity, budget/cooldown and low/single preview. Optional headphone sound requires an accepted wired/USB headset or BLE headset and checks actual single route during bounded chunks. Ambiguous A2DP/SCO routes visibly excluded. OS rerouting can still cause a transient speaker leak; vibration is independent. No medical effectiveness claim. Production0e5feeb adds separate default-off contactless vibration consent, actual saved snoring estimates routed to bounded vibration-only cues; cue/settling motion and PCM are excluded as CUE_ACTIVE/missing. No additional microphone, sound cue or clip capture. Actual vibration/bedroom effectiveness unverified.",
       "id": "F059",
@@ -1593,7 +1615,7 @@
         "PairMotionSavedActivity.java",
         "TrackingService.java"
       ],
-      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
+      "validation": "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Explicit two-phone Nearby encrypted transport with matching-code acceptance on both phones, actual5s RMS packets, elapsed-clock alignment, fresh/unknown quality and separate raw/filtered persistence. Optional bounded common-motion reduction only for local smart-wake inference; raw readings preserved/fallback explicit. Both phones already need manual movement recording and Google Play/nearby permissions. Portable ended-recording-only scope reports omitted active/out-of-bounds fragments; physical separation is unvalidated.",
       "id": "F060",
@@ -1657,7 +1679,7 @@
         "GuidedWindDown.java",
         "GuidedWindDownActivity.java"
       ],
-      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Manual-play stereo PCM binaural generation uses independently configured carrier/beat frequencies and the existing timer/fade/lifecycle. Original silent2/5/10minute guided reading with optional visual breathing cue has real timed progression and Start/Pause/Resume/End. No narration, health benefit or automatic output claim; physical playback remains unverified.",
       "id": "F062",
@@ -1674,7 +1696,7 @@
         "DreamCueBackup.java",
         "DreamCueHistoryActivity.java"
       ],
-      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Optional timed dream cues are functioning elapsed timers armed explicitly for an already-active manual night. One arm per night, bounded low-amplitude vibration requests, durable claim/request/failed/uncertain receipts, cancellation and self-output capture gaps are integrated with schema15/backup12. Requires amplitude support. This is not REM detection or established lucid-dream efficacy; actual output remains unverified.",
       "id": "F063",
@@ -2016,7 +2038,7 @@
         "RecordReportActivity.java",
         "RecordInsightsActivity.java"
       ],
-      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
+      "validation": "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Original descriptive recorded-night score combines at least two available historical-goal duration, reviewed retained-time fraction, explicitly saved rating and prior recorded start-time consistency inputs. Equal available weights, exact raw inputs/formulas and missing reasons shown; recalculates after actual edits/goals. No current-goal retrofit, fabricated sleep stages/vitals or validated health/recovery score.",
       "id": "F073",
@@ -2500,7 +2522,7 @@
       ],
       "validation": "17 isolated device passes across migration/records/replay/clock suites, including formats 1/2/3, original-row preservation, malformed edit/manual rejection and atomic rollback. Actual document-picker restore pending Format4/schema7 label metadata and inactive Nap JSON restore are integrated atfeb38ec; complete453-test build passes. New actual SQLite SoundLabelStorageTest 9 and NapFlowTest 3 portable roundtrips await native execution. Backup49ad607 source passed independent review and author debug/native APK,26 focused tests (BackupIoTest 11, BackupJobTest 12, BackupRuntimeTest 3) and lint0errors87warnings. Integratedce19d14 with admission hook after accepted recurring normalization. BackupStorageTest 6 and BackupDocumentFlowTest 3/19 originals are compiled but not executed. Source does not certify an actual document provider, destructive restore on a phone, or absence of all ANRs. Latest244e4bc/fullCI40063157145 BackupStorageTest 6 PASS0.433s. BackupDocumentFlowTest 3 has2 failures (posted picker callback not awaited and confirmation capture checks unfocused Activity instead of owned Dialog),6/19 originals. Root adds exact chooser-state and owned-window/current-render gates; native full flow/provider acceptance remains pending. Fresh d43f480/fullCI40068184362: BackupStorageTest 6 PASS0.522s and BackupDocumentFlowTest 3 PASS28.984s/all19 original states. Strict individually reviews all19: supporting operations/confirmation/current-error contents pass, stale-state white navigation handle rejected. bca0d81 corrects actual owned-dialog/render bar appearance and checks current window bits; fresh capture required. Actual external provider/destructive phone restore remain unverified. Fresh dc30736/fullCI40072555253 Storage6 PASS0.412s,Document3 PASS26.612s/all19; strict stale-state cream/dark system-bar mismatch clears. External provider/physical restore remains unverified. Main05cd205/fullCI40079043221 BackupStorage6/Document3 eachhas1CSVfailure: streamedbytes omit new sensor/config whileRecords.csv includes them. da3b11a fixes actual16-column header+closed/openrows,retains8MiB/cancellation,and adds exactstreamedbyte equality/config regression. Native rerun pending; no green claim. Later04bdb4a full native backup/migration regressions pass. Current schema9/format6 adds strict immutable shared-analysis status to portable JSON and both17-column CSV implementations. Twelve new private storage cases are authored/compiled; actual schema9 migration/rollback/recovery execution remains pending.",
       "status": "partial",
-      "notes": "Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted. New portable event metadata preserves manual corrections and original estimates without clip links;8MiB pretty-UTF8 export bound matches importer. Nap imports are inactive and need explicit fresh Start. Provider IO/lifecycle and broad backup completeness still need their own verification. Private Backup screen uses retained view-free background IO and explicit review/replace confirmation, pinned application-only factory,8MiB strict UTF8/depth bounds, off-main best-effort cancellation, typed full-table fingerprint and within-transaction runtime/data checks. Imported alarms/naps stay off, original/user sound evidence stays portable, no audio/settings. Postcommit cleanup/count/close failure explicitly says data was restored. No WAL change; other main DB users and final-check/commit/system-scheduling intervals remain documented limitations. See BACKUP-DOCUMENT-IO.md. Latestformat5 adds strict original sensor/config/quality evidence;formats1–4stayreadable. Newschema8metadata participates in existing fulltyped stale-restore fingerprint. Format6 preserves explicit analysis outcomes; formats1–5 keep unknown legacy status rather than inventing off. New format6 native acceptance remains open. Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; no automatic audio cloud transport claim.",
+      "notes": "Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted. New portable event metadata preserves manual corrections and original estimates without clip links;8MiB pretty-UTF8 export bound matches importer. Nap imports are inactive and need explicit fresh Start. Provider IO/lifecycle and broad backup completeness still need their own verification. Private Backup screen uses retained view-free background IO and explicit review/replace confirmation, pinned application-only factory,8MiB strict UTF8/depth bounds, off-main best-effort cancellation, typed full-table fingerprint and within-transaction runtime/data checks. Imported alarms/naps stay off, original/user sound evidence stays portable, no audio/settings. Postcommit cleanup/count/close failure explicitly says data was restored. No WAL change; other main DB users and final-check/commit/system-scheduling intervals remain documented limitations. See BACKUP-DOCUMENT-IO.md. Latestformat5 adds strict original sensor/config/quality evidence;formats1–4stayreadable. Newschema8metadata participates in existing fulltyped stale-restore fingerprint. Format6 preserves explicit analysis outcomes; formats1–5 keep unknown legacy status rather than inventing off. New format6 native acceptance remains open. Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; separately consented manual/automatic audio-folder delivery is documented in the cloud backup rows.",
       "id": "F089",
       "tests": [
         {
@@ -2548,7 +2570,7 @@
         "AutoCloudAudioStore.java",
         "AutoCloudAudioService.java"
       ],
-      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Production assembleDebug760381c passed41s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
       "notes": "User-selected persisted SAF folder supports separate metadata versions and complete whole-library audio ZIP versions with exact readback SHA/length receipts and reviewed restore. Audio includes a separate default-off automatic consent for the entire existing and future library. Only a later actual production-night ending queues work; charging, unmetered network, battery, destination revision, bounded retries and durable uncertain outcomes control admission. Off/destination change/history erase cancel or gate owned work. Real provider exchange/remote cloud synchronization remain unverified; readback is not server-upload proof. No proprietary SleepCloud backend/account replication.",
       "id": "F090",
@@ -2689,7 +2711,7 @@
         "RelativeTimeSpeech.java",
         "RelativeAlarmTimeActivity.java"
       ],
-      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Production assembleDebug760381c passed41s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
       "notes": "Standard Android alarm/timer requests produce owned review drafts and require explicit Save/Start. Optional external English speech input offers reviewed relative-time candidates; speech-provider availability and behavior are external prerequisites. SKIP_UI is deliberately ignored. Unsupported timer precision/range requires an explicit alternative. No autonomous voice capture or no-UI scheduling; actual assistant/provider integration remains unverified.",
       "id": "F096",
@@ -2721,7 +2743,7 @@
         "ResearchExportActivity.java",
         "MainActivity.java"
       ],
-      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
+      "validation": "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Explicit reviewed7/30/90day relative signal ZIP with bounded immutable SHA staging and SAF save. Random per-export night IDs/order, within-night offsets, normalized measured movements/quality/samples/gaps; excludes personal notes/audio/identifiers/config dumps/dates. Pattern identifiability disclosed. No automatic telemetry/upload or hosted research community endpoint.",
       "id": "F098",
@@ -3126,7 +3148,7 @@
         "DiaryImportActivity.java",
         "JournalRule.java"
       ],
-      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Original mirror/journal challenges and private create/edit/delete/export remain. Separate reviewed diary JSON import now validates bounded UTF8, skips identical entries and explicitly keeps or imports conflicting text as new UUIDs in an insert-only transaction with stale-review checks. Challenge ownership is never imported. Private diary is separate from sleep-record backups. Actual provider/merge execution remains unverified.",
       "id": "F111",
@@ -3143,7 +3165,7 @@
         "NoteChallengeActivity.java",
         "NoteCaptureService.java"
       ],
-      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
+      "validation": "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Distinct Musical note task matches actual fresh PCM pitch/tonality against deterministic C4/D4/E4/A4, sustained hold and saved tolerance, explicit Listen/permission/quiet owner and Math alternative. User may hum or play a note; this does NOT identify piano/instruments or laughter. Previous failed classifier gates remain rejected and unchanged.",
       "id": "F112",
@@ -3332,7 +3354,7 @@
         "GoogleSleepSignal.java",
         "GoogleSleepSignalReceiver.java"
       ],
-      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
+      "validation": "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md. Optional Google Sleep API confidence input1270922 adds permission, real registration/removal and current-arm fresh confidence final gate; published21.4.0 dependency compiles; real Google delivery remains unverified. Existing stillness conditions remain required; callback confidence is an estimate, not a sleep stage.",
       "id": "F117",
@@ -3577,11 +3599,17 @@
         "ReportScreen.java",
         "NightAudioArchive.java",
         "SoundBrowseFilter.java",
-        "SoundBrowseState.java"
+        "SoundBrowseState.java",
+        "SonarClipPolicy.java",
+        "SonarSoundClips.java",
+        "SonarClipWriter.java",
+        "SonarNightSound.java",
+        "SonarEntry.java",
+        "TrackingActivity.java"
       ],
-      "validation": "Integrated935c773 source peer-reviewed including interrupted-night backup repair. Combined453 pure tests/55suites, debug/native/release APKs and lint pass atfeb38ec; SoundLabelStorageTest 9 and SoundLabelFlowTest 3/18 originals compiled but not yet executed. No real playback/microphone/phone actions. FullCI40058852109 at e0a78b4: Storage9 has5 failures and UI3 allfail because linked clip ID Double-versus-integer JSON comparison rejects unchanged evidence. A strict null-aware exact numeric comparison and tenth storage regression are added; fresh native proof required. Schema6-to7 migration and analysis-only cases pass narrowly; no general label flow acceptance. Latest244e4bc/fullCI40063157145: SoundLabelStorageTest 10 PASS1.106s and SoundLabelFlowTest 3 PASS26.038s with all18 originals. Typed clip comparison now proven on real Android SQLite/JSON, including migration/overlay/revision/WAV/backup invariants. Per-file visual review pending; automatic category accuracy and real capture/playback remain separate. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest 2 and stronger ReportReferenceFlowTest 1/eight originals await fresh native/strict review; no visual completion inferred. Strict reviewer individually inspected all18 latest label originals: bounded selector/provenance/error corrections pass. Broader automatic classification, alternate formats and actual capture/playback remain incomplete. Fresh d43f480/focusedCI40068186520 PASS4classes/5methods/13required originals: ReportRibbonNativeTest 2 PASS1.212s,ReportReferenceFlowTest 1 PASS33.744s. All13 originals individually inspected: report hierarchy/editor geometry pass, hard color-bin stripes and touching chips rejected. b4deeb3 blends only visual colors within contiguous measured spans (unchanged metrics/exact gaps), adds missing-signal Canvas assertions and4dp chip gutters; fresh raster/visual run required. Missing stage estimator remains explicit. Fresh dc30736/focusedCI40072560126 PASS4classes/5methods/all13 required originals, individually reviewed against boards01/08. Ribbon color blending/exact gaps, filter gutters, seven-row history, Week/Month/Year and complete editor Notes/Save/Delete pass this bounded correction. Stage estimator/full app parity remain incomplete. FullCI40079043221 onelegacyv6fixture failsduplicate sensorcolumn because it copiedv8schema then claimedv6. da3b11a constructs truepre-label/pre-sensor SQL+columns witholdrowassertionsretained;productionmigration unchanged. Actualv7→8preservation already passesnew12-case suite. ba1ae61/0dcbb44 use exactpersistedSensorProvenance.SONAR for contactless graph/accessibility labels, preserve actualsamplegaps, and retain sensor/config throughgoalzonecopies. Newprivate saved-sonar navigation originals remain pending. Saved-category browsing CI40090631946 passes8classes/13methods/all68originals; new14 content states pass, strict system-bar appearance rejects. CI40093856492 reveals old SoundLabelStorageTest catch-all noise expectation conflicts with new exact Other category; test now explicitly asserts cough1/noise0 and both row matches while retaining report aggregate/reset/WAV invariants, native rerun pending. f9f7acb CI40120293302 PASS8classes/13methods/all68required originals for saved category navigation, favorites, labels and export. Full3463834 legacy SoundLabelStorageTest now passes; broader visual review deferred by user.",
+      "validation": "Integrated935c773 source peer-reviewed including interrupted-night backup repair. Combined453 pure tests/55suites, debug/native/release APKs and lint pass atfeb38ec; SoundLabelStorageTest 9 and SoundLabelFlowTest 3/18 originals compiled but not yet executed. No real playback/microphone/phone actions. FullCI40058852109 at e0a78b4: Storage9 has5 failures and UI3 allfail because linked clip ID Double-versus-integer JSON comparison rejects unchanged evidence. A strict null-aware exact numeric comparison and tenth storage regression are added; fresh native proof required. Schema6-to7 migration and analysis-only cases pass narrowly; no general label flow acceptance. Latest244e4bc/fullCI40063157145: SoundLabelStorageTest 10 PASS1.106s and SoundLabelFlowTest 3 PASS26.038s with all18 originals. Typed clip comparison now proven on real Android SQLite/JSON, including migration/overlay/revision/WAV/backup invariants. Per-file visual review pending; automatic category accuracy and real capture/playback remain separate. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest 2 and stronger ReportReferenceFlowTest 1/eight originals await fresh native/strict review; no visual completion inferred. Strict reviewer individually inspected all18 latest label originals: bounded selector/provenance/error corrections pass. Broader automatic classification, alternate formats and actual capture/playback remain incomplete. Fresh d43f480/focusedCI40068186520 PASS4classes/5methods/13required originals: ReportRibbonNativeTest 2 PASS1.212s,ReportReferenceFlowTest 1 PASS33.744s. All13 originals individually inspected: report hierarchy/editor geometry pass, hard color-bin stripes and touching chips rejected. b4deeb3 blends only visual colors within contiguous measured spans (unchanged metrics/exact gaps), adds missing-signal Canvas assertions and4dp chip gutters; fresh raster/visual run required. Missing stage estimator remains explicit. Fresh dc30736/focusedCI40072560126 PASS4classes/5methods/all13 required originals, individually reviewed against boards01/08. Ribbon color blending/exact gaps, filter gutters, seven-row history, Week/Month/Year and complete editor Notes/Save/Delete pass this bounded correction. Stage estimator/full app parity remain incomplete. FullCI40079043221 onelegacyv6fixture failsduplicate sensorcolumn because it copiedv8schema then claimedv6. da3b11a constructs truepre-label/pre-sensor SQL+columns witholdrowassertionsretained;productionmigration unchanged. Actualv7→8preservation already passesnew12-case suite. ba1ae61/0dcbb44 use exactpersistedSensorProvenance.SONAR for contactless graph/accessibility labels, preserve actualsamplegaps, and retain sensor/config throughgoalzonecopies. Newprivate saved-sonar navigation originals remain pending. Saved-category browsing CI40090631946 passes8classes/13methods/all68originals; new14 content states pass, strict system-bar appearance rejects. CI40093856492 reveals old SoundLabelStorageTest catch-all noise expectation conflicts with new exact Other category; test now explicitly asserts cough1/noise0 and both row matches while retaining report aggregate/reset/WAV invariants, native rerun pending. f9f7acb CI40120293302 PASS8classes/13methods/all68required originals for saved category navigation, favorites, labels and export. Full3463834 legacy SoundLabelStorageTest now passes; broader visual review deferred by user. Shared-stream clip addition: production assembleDebug760381c PASS41s; build-only, no new tests/device actions.",
       "status": "partial",
-      "notes": "Schema7 nullable user_category and increment-only label_revision preserve original category/score/model/interval/clip/WAV; checked save/reset, retained worker/recreate/error/retry, stale/trim/deletion/ABA fences. Effective library/favorites/report counts clearly distinguish user choice from model estimates. Strict format4 analysis-only metadata and original/user provenance in ZIP; no portable WAV link. Old formats1–3 accepted. Recovery uses actual durable sound endpoints without invented active_ms; already recovered interrupted tails have explicit bounded provenance, preserving original times/end. Export self-validates and fits the existing8MiB pretty-UTF8 importer; portable legacy clip favorites and alternate formats remain incomplete. See SOUND-LABEL-CORRECTIONS.md. All six effective categories now have exact independent filters and optional persisted browsing state; Other excludes named cough/cry/laughter. This is saved metadata navigation, not new recognition accuracy.",
+      "notes": "Schema7 nullable user_category and increment-only label_revision preserve original category/score/model/interval/clip/WAV; checked save/reset, retained worker/recreate/error/retry, stale/trim/deletion/ABA fences. Effective library/favorites/report counts clearly distinguish user choice from model estimates. Strict format4 analysis-only metadata and original/user provenance in ZIP; no portable WAV link. Old formats1–3 accepted. Recovery uses actual durable sound endpoints without invented active_ms; already recovered interrupted tails have explicit bounded provenance, preserving original times/end. Export self-validates and fits the existing8MiB pretty-UTF8 importer; portable legacy clip favorites and alternate formats remain incomplete. See SOUND-LABEL-CORRECTIONS.md. All six effective categories now have exact independent filters and optional persisted browsing state; Other excludes named cough/cry/laughter. This is saved metadata navigation, not new recognition accuracy. Source760381c adds a separate default-off per-night contactless clip choice, pinned through visible-entry/delay/resume ownership. Actual filtered16kHz mono PCM from the same capture yields complete ten-second noise-triggered WAVs only after durable interval checks. Existing60/night/30second budgets, category inclusion, retention, event linkage, player and exports are reused. Gaps/cues/pause/stop discard incomplete clips; model failure stops shared-stream clips too. No second microphone or schema change. Real capture/playback/retention behavior remains unverified.",
       "id": "F124",
       "tests": [
         {
@@ -3626,7 +3654,7 @@
         "SonarSnoreCues.java",
         "SonarNight.java"
       ],
-      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
+      "validation": "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Default-off confident-estimate cues retain sound/vibration/both, intensity/repeats/sensitivity, budget/cooldown and low/single preview. Optional headphone sound requires an accepted wired/USB headset or BLE headset and checks actual single route during bounded chunks. Ambiguous A2DP/SCO routes visibly excluded. OS rerouting can still cause a transient speaker leak; vibration is independent. No medical effectiveness claim. Production0e5feeb adds separate default-off contactless vibration consent, actual saved snoring estimates routed to bounded vibration-only cues; cue/settling motion and PCM are excluded as CUE_ACTIVE/missing. No additional microphone, sound cue or clip capture. Actual vibration/bedroom effectiveness unverified.",
       "id": "F125",
@@ -3690,7 +3718,7 @@
         "GuidedWindDown.java",
         "GuidedWindDownActivity.java"
       ],
-      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Actual explicit-play stereo generator and original silent timed wind-down practice are integrated. Guidance pauses on leaving/locking/recreation and requires explicit Resume; it has no narration, microphone or service. Narrated meditation content is still absent. No efficacy or physical-output verification is inferred from compilation.",
       "id": "F127",
@@ -3707,7 +3735,7 @@
         "TravelCueRuntime.java",
         "TravelCueReviewActivity.java"
       ],
-      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Explicit manual-night travel light cues and separate optional timed low-amplitude dream vibration requests have saved schedules, request outcomes and cleanup. Neither REM detection nor jetlag-prevention/lucid-dream efficacy is established. Hardware output remains unverified; no automatic rearming of dream cues.",
       "id": "F128",
@@ -3891,7 +3919,7 @@
         "RhythmGroupsChart.java",
         "SleepRhythmActivity.java"
       ],
-      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Production assembleDebug760381c passed41s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
       "notes": "Separate reviewed-day SRI requires explicit complete-day/no-travel confirmations, unchanged recorded coverage and at least seven eligible adjacent 24-hour pairs. It compares 1440 minute centers per pair using100*(2*P(same)-1); negative values remain negative. Missing/unreviewed days, DST/zone changes and open recordings stay excluded. Edits/erasure invalidate confirmations. Original circular midpoint groups remain separate. This depends on truthful self-reported completeness; it is not sensor proof of unrecorded daytime wake or clinical validation.",
       "id": "F133",
@@ -3911,7 +3939,7 @@
         "SleepSummaryFiles.java",
         "SleepSummaryFileProvider.java"
       ],
-      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Production assembleDebug760381c passed41s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
       "notes": "Permission-protected standard SET_ALARM and SET_TIMER requests require explicit reviewed Save/Start; caller flags, URI grants and unsupported values cannot silently schedule. Timer requests support reviewed whole-minute naps1..600minutes, with explicit alternatives for unsupported seconds/durations. Custom MIME GET_CONTENT supplies an explicitly shared bounded7/30day sleep summary through narrow read-only URI grants. History changes invalidate drafts/staging and erasure revokes known grants/deletes generated files; already-open descriptors/external copies cannot be recalled. Broader contracts, assistant/provider runtime and full24-hour exact-second timer compliance remain incomplete.",
       "id": "F134",
@@ -4013,7 +4041,7 @@
         "LibraryAudioImport.java",
         "HistoryErase.java"
       ],
-      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Production assembleDebug760381c passed41s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
       "notes": "Manual reviewed whole-library ZIP creation and separately consented automatic future-night backups use unique versions, readback hashes, bounded receipts and the existing reviewed Replace restore. Enabling automatic audio never immediately uploads history. Off, destination changes, process recovery and history erasure preserve cancellation/ownership fences; uncertain provider writes are never silently replayed. Existing exported copies remain external. Actual provider/runtime/remote sync acceptance remains open; service/account/storage prerequisites are user supplied.",
       "id": "F137",
@@ -4170,7 +4198,7 @@
         "TrackingService.java",
         "SensorProvenance.java"
       ],
-      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Production assembleDebug760381c passed41s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
       "notes": "Saved measured calibration uses explicit capture, review and Save/Reset with stale-draft checks. A manual sensitivity change clears custom calibration; opening/recreating the screen never starts capture. Each new night pins its configuration; schema15/backup13 preserve provenance. Real device performance and clinical accuracy remain unverified.",
       "id": "F143",

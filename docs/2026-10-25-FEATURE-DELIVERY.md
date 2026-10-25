@@ -5,12 +5,12 @@ It is a delivery inventory, not full functional or design acceptance.
 
 ## Final candidate
 
-- Application source: **6578575**; main database **schema 15**; portable metadata
+- Application source: **760381c**; main database **schema 15**; portable metadata
   **backup format 13**.
-- Final debug APK build: **PASS, 28 seconds**, as reported by the integration owner.
+- Final debug APK build: **PASS, 41 seconds**, as reported by the integration owner.
   Its signer matches the installed debug key.
 - APK SHA-256:
-  `15d8576c4e241cfccf9701cb93dc94d696b3887266654197b2ed4a572160e3aa`
+  `cadc526224ba74f24c13d5baa97a2b4ee085b2219d0a9b7e3761ae7dcedfa39e`
 - The phone remains on **571018b / schema 7**. This candidate has **not** been installed.
 - At the user's request this window used production builds only: no new unit/native
   test batches, device actions, screenshots, broad audits or design reviews. Earlier
@@ -36,6 +36,10 @@ It is a delivery inventory, not full functional or design acceptance.
 
 - Optional vibration-only snoring cues during explicitly admitted contactless
   analysis, with output-error reporting and cue-contaminated capture gaps.
+- Separate per-night contactless clip consent now saves actual ten-second16kHz
+  mono WAVs from the existing filtered capture stream, with no second microphone.
+  Existing60/night and30-second limits, retention and event linkage are reused;
+  incomplete/cue-gap clips are dropped. Analysis failure also stops these clips.
 - Experimental periodic echo capture/reporting and measured surface-motion
   calibration; new recordings retain their actual calibration provenance.
 - Google Sleep API integration now uses the published Play Services artifact.
@@ -85,8 +89,8 @@ It is a delivery inventory, not full functional or design acceptance.
 **Implementation still incomplete or outside this delivered subset**
 
 - [ ] Validated sleep-stage/REM detection and REM-triggered dream cues.
-- [ ] Full contactless-noise parity: shared-stream WAV clips and sound-based snoring
-  cues; the new contactless cue option is vibration-only.
+- [ ] Sound-based contactless snoring cues; contactless cue output remains vibration-only.
+  Shared-stream WAV clips now exist but actual capture/playback remains unverified.
 - [ ] Semantic object recognition and speech transcription/instrument recognition.
 - [ ] Direct vendor-account cloud clients; SAF providers handle their own remote upload.
 - [ ] Proven jet-lag prevention or clinical chronotype/regularity classification.

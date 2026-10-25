@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 25 October
 
-Application source **6578575** builds with schema15 / backup format13. This
+Application source **760381c** builds with schema15 / backup format13. This
 production-only window added alarm/snooze/reminder controls, extra-loud processing,
 additional challenges, awake estimates, motion calibration, paired/PIR inputs,
 reviewed-day SRI, nap profiles, explicit summary sharing and whole-library audio
@@ -30,7 +30,7 @@ phone. Design, runtime, overnight and actual provider acceptance remain open.
 - Optional accessibility-based return to the active alarm, plus a bedtime guard for explicitly selected distracting apps. Calls and Android Settings remain available. Developer stop is shown only in debug builds.
 - Native user-started tracking setup and live movement, same-session pause/resume, excluded paused duration and saved reports. Optional light/noise capture; real measured graphs and local history. Only short movement-only flows have current device verification.
 - An experimental early wake-up window based on sustained movement, with the fixed alarm scheduled independently. Movement is not a measured sleep stage.
-- Optional offline sound estimates, event browsing/correction/favorites and bounded noise-triggered clips. Per-class accepted duration and inclusion are frozen per night; custom inclusion suppresses all new clips. Shared contactless analysis uses one capture and saves no raw sonar audio. Sound estimates and fixture replay do not establish representative bedroom accuracy. See [analysis limits](docs/SOUND-ANALYSIS.md).
+- Optional offline sound estimates, event browsing/correction/favorites and bounded noise-triggered clips. Per-class accepted duration and inclusion are frozen per night; custom inclusion suppresses all new clips. Shared contactless analysis uses one capture; separately chosen per-night clips save filtered16kHz WAVs, while48kHz raw sonar is not retained. Sound estimates and fixture replay do not establish representative bedroom accuracy. See [analysis limits](docs/SOUND-ANALYSIS.md).
 - Native Sleep sounds player and two-layer mixer source, per-layer gains, playing-time timer/fade and local audio import. Silent model tests and the API36 configuration/persistence flow pass, with a bounded screen 19 visual comparison. A short real MediaPlayer/background/notification/focus/error-retry journey also passes on the silent CI emulator. Provider access, listening quality, long lifecycle and S23 installation remain pending. See [playback limits](docs/SOUND-PLAYBACK.md). Bedtime reminders, nap alarms, recorded-duration goals, notes, tags and subjective ratings also exist.
 - Native history search/date/context filters; manual periods and measured-record trims, awake edits, notes/tags/ratings, restore-original and selected-record deletion. Calendar Week/Month/Year duration and bedtime charts merge overlaps and leave missing dates unknown.
 - Native linked sleep plan and free 14/30-day duration/bedtime goal bank with observed balances, motivation and preserved stopped history. Missing days remain unknown; these preferences are currently excluded from portable backups.

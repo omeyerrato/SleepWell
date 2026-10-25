@@ -16,7 +16,7 @@ Latest user deadline: **5:23 PM Riyadh (14:23 UTC)**. New unit tests, native tes
 batches, screenshot reviews, evidence archiving and broad audits are stopped.
 The next APK requires a production build; build failures are fixed as integration.
 
-Latest production source **6578575** builds in **28s**, with schema15 and backup
+Latest production source **760381c** builds in **41s**, with schema15 and backup
 format13. The frozen debug APK has the same signing key as the installed app.
 This is **build-only evidence**; no new tests, lint, screenshots or physical-phone
 runs were performed in this window. The phone remains on571018b/schema7.
@@ -35,6 +35,8 @@ This window adds actual production paths for:
   real binaural generation.
 - Whole-library audio ZIP restore, reviewed private-diary import, standard reviewed
   alarm/timer requests and explicit read-only sleep-summary sharing.
+- Explicit per-night contactless ten-second WAV clips from the shared microphone
+  stream, using actual persisted intervals, existing limits and the normal player.
 - Manual and separately consented automatic whole-library audio-folder backups,
   including actual night-ending, cancellation and history-erasure hooks.
 
@@ -149,7 +151,7 @@ The full app native run and independent laughter accuracy gate remain failing.
   inactivity is an estimate, not proof of sleep or measured sleep stage.
 - [ ] **Anti-snoring:** verify actual detection-to-cue behavior, cooldown, repeat limits,
   routing and stopping. Contactless analysis now optionally requests vibration-only
-  cues with self-output gaps; saved contactless audio clips remain absent.
+  cues with self-output gaps; contactless clips now require a separate per-night opt-in. Sound-based contactless cues remain absent.
 - [ ] **Jet lag:** complete useful travel planning and honestly labelled light cues;
   validate scheduling and output. Effective jet-lag prevention is not established.
 - [ ] **Reports and charts:** finish the reference composition throughout the Report
@@ -215,7 +217,7 @@ These groups remain open even after the priority list above is addressed.
   screenshots and verify saved/reopened state and unchanged existing data.
 - [x] Historical0a821eb batch passed1063 pure and108 native methods/all154 originals.
   This evidence predates the current production-only source and does not validate it.
-- [x] Build current production debug APK6578575 and verify the local signing key.
+- [x] Build current production debug APK760381c and verify the local signing key.
   No new test/lint/screenshot batches ran; physical acceptance stays open.
 - [ ] Verify real overnight background behavior, capture quality, battery use and
   interruptions when a suitable controlled test is available.
