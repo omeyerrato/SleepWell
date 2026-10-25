@@ -726,6 +726,31 @@ for row in rows:
     elif row["feature"] == "Achievements":
         row["status"] = "implemented"
 
+# Production-only feature sprint: no new tests or device acceptance inferred.
+for row in rows:
+    title=row["feature"]
+    if title == "Smart bedtime":
+        row.update(status="partial",implementation=["SmartBedtime.java","SmartBedtimeActivity.java","SmartBedtimeRuntime.java","SmartBedtimeReceiver.java","SleepPlan.java","Scheduler.java"],validation="Production source8018a61; combined debug APK3262a03 builds. No new tests/native/OS delivery run per user steering.",notes="Default-off reminder projected from next actual eligible alarm, current goal, smart window, tracking delay and bounded recent five observed-day shortfall. Explicit no-alarm fixed fallback, tracking suppression and stale occurrence receipt. Repeated reminders/per-alarm reminder overrides and actual Android delivery remain unverified or absent.")
+    elif title == "Awake triggers from interaction/light/snooze":
+        row.update(status="partial",implementation=["AwakeEngine.java","AwakeRuntime.java","AwakeStore.java","AwakeReviewActivity.java","AwakeSettingsActivity.java","RecordEntry.java","AwakeBackup.java"],validation="Production source3262a03; combined debug APK builds. No new tests, native runtime or classifier accuracy checks per user steering.",notes="Default-off frozen per-night policy; actual phone unlock/touch, fresh opted-in bright light and successful snooze generate separate reasoned intervals. Report duration subtracts union; individual/all ignore/restore is reversible. Schema11/backup8 preserve decisions and old format1–7 import. Heuristic estimates, no new sensor permission, no unobserved interval classified awake; real overnight reliability unverified.")
+    elif title in ("Other CAPTCHA addon packs", "Tilt maze / jumping / flags / counting tasks"):
+        row.update(status="partial",implementation=["ChallengeRoutine.java","ChallengeRoutineJson.java","ChallengeRoutineEditor.java","ChallengePackPreviewActivity.java","JumpTask.java","JumpGame.java","JumpCheckpoint.java","TiltMazeTask.java","AlarmActivity.java"],notes="Saved original counting, flags, tilt maze and tap-to-jump hurdle game with retries, foreground pause, durable hurdle progress, one-use run/unit completion and Math alternatives. Jump integrated9c1ecfb/build3262a03. No addon vendor assets; actual phone challenge execution and full task-pack parity remain unverified.")
+        row["validation"]+=" Jump production built3262a03; no new tests/device execution per user steering."
+    elif title == "Smile task":
+        row.update(status="partial",implementation=["SmileActivity.java","SmileCamera.java","SmileHold.java","SmileProof.java","ChallengeRoutineEditor.java","AlarmActivity.java"],validation="Sourceb7dffc4 integrated; production compile pending dependency correction. No new tests/device camera/model-accuracy execution.",notes="Actual bundled ML Kit smile probability + framing/facing/fresh multi-frame hold, private CameraX activity, shared preview and owned challenge result, explicit Math fallback. No images saved by app. Proprietary model/SDK metrics disclosed before camera Start; not identity/liveness proof. Previous Haar experiment remains rejected and was not shipped.")
+    elif title == "Internet radio / Spotify":
+        row.update(status="partial",implementation=["AlarmRadioUrl.java","AlarmSoundMode.java","AlarmAudioSink.java","AlarmPlayback.java","ToneActivity.java"],validation="Sourcec024b4d integrated; production compile and real Internet playback pending. No network previews/tests run.",notes="Per-alarm public HTTPS station URL, explicit draft Use/Save/Cancel, real async MediaPlayer source, eight-second connect/buffer watchdog and mandatory bundled fallback. Existing ramp/backup/lifecycle retained; no automatic network preview. Credential/query-dependent links unsupported. Spotify/paid provider accounts are not replicated or made free.")
+    elif title in ("Automatic tracking", "After-fall-asleep / false-start rejection"):
+        row["implementation"] += [name for name in ["GoogleSleepSignal.java","GoogleSleepSignalReceiver.java"] if name not in row["implementation"]]
+        row["notes"] += " Optional Google Sleep API confidence input1270922 adds permission, real registration/removal and current-arm fresh confidence final gate; dependency correction/compile and real Google delivery pending. Existing stillness conditions remain required; callback confidence is an estimate, not a sleep stage."
+        row["validation"] += " New Google source unverified; no new tests per user steering."
+    elif title == "SRI / circular midpoint clustering":
+        row.update(status="partial",implementation=["RhythmGroups.java","RhythmGroupsChart.java","RhythmGroupsActivity.java","SleepRhythmActivity.java"],validation="Production source2daedc4; combined build pending. No new tests/device/chart acceptance.",notes="Actual circular groups of latest30 eligible recorded main-night midpoints within90days, current matching known zone, missing dates omitted, interruptions/clock changes excluded, groups linked to source reports. Up to3 groups with explicit minimum3 and60minute improvement threshold. Descriptive grouping only; SRI and chronotype remain absent rather than treating unknown daytime as awake.")
+    elif title in ("Anti-snoring cues", "Headphone-only cues / intensity / repeat"):
+        row["implementation"] += [name for name in ["SonarSnoreCues.java","SonarNight.java"] if name not in row["implementation"]]
+        row["notes"] += " Production0e5feeb adds separate default-off contactless vibration consent, actual saved snoring estimates routed to bounded vibration-only cues; cue/settling motion and PCM are excluded as CUE_ACTIVE/missing. No additional microphone, sound cue or clip capture. Actual vibration/bedroom effectiveness unverified."
+        row["validation"] += " New contactless cues source only; build pending, no new tests or phone actions."
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -796,6 +821,10 @@ The predecessorba2d478 also built an unsigned release APK; the current UI correc
 has not been rebuilt as a signed production release. Raw evidence:
 verification/2026-10-25-final-feature-batch. These are scoped functional results,
 not full-app/design/physical/overnight/provider-account acceptance.
+Current production-only sprint adds Smart Bedtime, reversible awake estimates, Jump,
+Smile, Internet radio, Google confidence and circular timing groups. Only3262a03
+has a new debug build so far; later source compile is pending dependency correction.
+No new unit/native/lint/screenshot batches run per the latest user instruction.
 At the user's request, the dedicated design reviewer is stopped and broad design,
 bug and security audits are deferred while agents implement features. Real acoustic
 accuracy, overnight reliability and full36screen parity remain uncertified.

@@ -10,6 +10,20 @@ stopped and its slot reassigned to implementation at your request. Visual correc
 broad bug review and security auditing are deferred. Essential build, data-preservation
 and functional checks continue; unchecked visual items below remain future work.
 
+## Six-hour production window — 25 October
+
+Latest user deadline: **5:23 PM Riyadh (14:23 UTC)**. New unit tests, native test
+batches, screenshot reviews, evidence archiving and broad audits are stopped.
+The next APK requires a production build; build failures are fixed as integration.
+
+Production code since the prior tested batch: Jump, Smart Bedtime, reversible awake
+estimates (schema11/backup8), Smile, radio alarms, optional Google Sleep API input,
+circular recorded-midpoint groups, and optional contactless vibration cues.
+Only source3262a03 has a new debug APK so far. Later merged code awaits a published
+Google dependency correction and combined build. No new device validation is claimed.
+The phone is untouched. Full visual, hardware, provider and overnight acceptance
+remain deferred, and the missing feature rows in the matrix remain authoritative.
+
 ## Current feature sprint — 25 October
 
 Latest fully checked source **6ec80fb** passes **1046 pure tests/127 suites**, debug
