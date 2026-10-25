@@ -9,7 +9,13 @@ at 69298aa (CI 39967552077, five silent flows, 39 screenshots). This is not
 a completed-device-effects claim.
 
 Extra loud selects maximum device alarm volume while preserving the separate
-normal percentage. There is no hardware boost or speaker-limit bypass. The
+normal percentage. Source6578575 additionally requests a LoudnessEnhancer target
+of600mB(+6dB), attached only to the prepared alarm player's positive owned audio
+session immediately before start. Quiet developer policy excludes this effect.
+Missing effect/control/enable support records an error and retains maximum-stream
+playback. Each player releases its effect on source change, failure, snooze or
+dismissal. This is optional signal processing, not a speaker-limit bypass; actual
+hardware output remains unverified. The
 quadratic player-gain curve is shared with the planned-volume chart, with
 100 ms updates. The global alarm stream is claimed once, rather than rewritten
 every second. A durable occurrence/owner/baseline journal precedes stream

@@ -10,6 +10,17 @@ and [strict visual review](docs/DESIGN-REVIEW.md). The first UI pass was rejecte
 the new root compositions are corrective work, not final acceptance of the 36 screens.
 Wearables and watch companions are excluded from this scope.
 
+## Current feature candidate — 25 October
+
+Application source **6578575** builds with schema15 / backup format13. This
+production-only window added alarm/snooze/reminder controls, extra-loud processing,
+additional challenges, awake estimates, motion calibration, paired/PIR inputs,
+reviewed-day SRI, nap profiles, explicit summary sharing and whole-library audio
+backups. See the [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
+[remaining checklist](docs/REMAINING-WORK.md) for exact behavior and missing scope.
+The candidate has build-only evidence and has not been installed on the personal
+phone. Design, runtime, overnight and actual provider acceptance remain open.
+
 ## Working capabilities
 
 - Multiple one-shot or weekday alarms using Android's exact `setAlarmClock` API, rescheduled on reboot, clock/time-zone changes, and updates.
@@ -30,17 +41,24 @@ Wearables and watch companions are excluded from this scope.
 
 ## Privacy
 
-Data is stored locally by default. Internet permission supports explicitly configured HTTPS/MQTT/Home Assistant integrations; Android document providers may also use their own cloud account. Optional microphone analysis and Speak capture require explicit consent and foreground admission. Android system backup is disabled; user-selected exports and optional metadata backups remain separate. The accessibility service uses window package/class/ID metadata, never window text. See [PRIVACY.md](PRIVACY.md).
+Data is stored locally by default. Optional HTTPS/MQTT/Home Assistant, radio,
+Nearby/Google services, external speech recognition and document providers have
+their own prerequisites and privacy behavior. Bundled Google camera models may
+send SDK usage/performance metrics. Optional microphone analysis and Speak capture
+require explicit consent and foreground admission. Android system backup is
+disabled; metadata and whole-library audio backups have separate opt-ins. The
+accessibility service uses window package/class/ID metadata, never window text.
+See [PRIVACY.md](PRIVACY.md).
 
 ## Build
 
 Requires Android SDK 36, JDK 17 or newer (CI uses 21), and Android 11+ for the installed app.
 
 ```sh
-./gradlew testDebugUnitTest lintDebug assembleDebug
+./gradlew assembleDebug
 ```
 
-On Windows use `gradlew.bat`. Set `ANDROID_HOME` or an untracked `local.properties` with `sdk.dir=...`. APK output: `app/build/outputs/apk/debug/app-debug.apk`. GitHub Actions publishes a debug APK artifact for each successful build. Debug signing is for development, not a production signing identity.
+On Windows use `gradlew.bat`. Set `ANDROID_HOME` or an untracked `local.properties` with `sdk.dir=...`. APK output: `app/build/outputs/apk/debug/app-debug.apk`. GitHub Actions publishes a debug APK artifact for each successful build. Debug signing is for development, not a production signing identity. CI defaults to APK builds only during this feature window; deferred unit/lint checks can be explicitly requested through its `full_checks` dispatch input. A CI debug key may differ from an existing local installation; do not uninstall an app containing needed data to bypass a signature mismatch.
 
 ## First run
 

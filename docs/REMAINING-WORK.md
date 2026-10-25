@@ -16,22 +16,62 @@ Latest user deadline: **5:23 PM Riyadh (14:23 UTC)**. New unit tests, native tes
 batches, screenshot reviews, evidence archiving and broad audits are stopped.
 The next APK requires a production build; build failures are fixed as integration.
 
-Production code since the prior tested batch: Jump, Smart Bedtime, reversible awake
-estimates (schema11/backup8), Smile, radio alarms, optional Google Sleep API input,
-circular recorded-midpoint groups, and optional contactless vibration cues.
-Debug APK **4ab0887** builds in1m06 with Pose/Light/Type code/Spin/Note, paired
-movement, research export, recorded scoring, recording ZIP restore, experimental
-echoes, binaural audio, silent guided wind-down, PIR recording and timed dream cues.
-It also includes the total snooze-time cap, selected-date exclusions, per-alarm
-bedtime reminders, relative/speech time entry and reviewed private-diary import.
-These are production implementations with build-only evidence. No new runtime,
-provider, device or overnight acceptance is claimed.
-The phone is untouched. Full visual, hardware, provider and overnight acceptance
-remain deferred, and the missing feature rows in the matrix remain authoritative.
+Latest production source **6578575** builds in **28s**, with schema15 and backup
+format13. The frozen debug APK has the same signing key as the installed app.
+This is **build-only evidence**; no new tests, lint, screenshots or physical-phone
+runs were performed in this window. The phone remains on571018b/schema7.
 
-## Current feature sprint — 25 October
+This window adds actual production paths for:
 
-Latest fully checked source **6ec80fb** passes **1046 pure tests/127 suites**, debug
+- Extra loud optional per-player+6dB processing, with max-stream fallback.
+- Smart Bedtime, per-alarm reminder overrides, selected-date exclusions, relative/
+  speech time entry and a total snooze-time budget.
+- Optional Google sleep-confidence input, reversible awake estimates and measured
+  foreground motion calibration, with per-night configuration provenance.
+- Jump/Smile/Pose/Light/Camera light/Type code/Spin/Musical note challenges and radio.
+- Paired-phone motion, periodic-echo experiments, generic Home Assistant PIR input,
+  recorded-night scoring, reviewed-day SRI and timed dream cues.
+- Named one-date nap profiles with portable definitions, silent timed guidance and
+  real binaural generation.
+- Whole-library audio ZIP restore, reviewed private-diary import, standard reviewed
+  alarm/timer requests and explicit read-only sleep-summary sharing.
+- Manual and separately consented automatic whole-library audio-folder backups,
+  including actual night-ending, cancellation and history-erasure hooks.
+
+These are implemented source paths, not claims of verified delivery or accuracy.
+See the [feature matrix](FEATURE-MATRIX.md) for exact controls, bounds and evidence.
+
+### Implementation still missing or narrower than parity
+
+- [ ] Validated phone sleep-stage/REM and breathing/apnea/disturbance analysis.
+  Periodic echoes and inactivity estimates do not establish those measurements.
+- [ ] Weekly recurring nap profiles; current profiles apply to one reviewed date.
+- [ ] Narrated meditation; current guidance is silent with optional visual pacing.
+- [ ] Semantic object recognition and reliable laughter/instrument identity models.
+  Picture similarity, broad speech and musical-pitch tasks have different scopes.
+- [ ] Dedicated Sleep Phaser hardware protocol; current PIR uses a user-owned
+  Home Assistant HTTPS binary sensor and requires that hub/sensor.
+- [ ] Direct legacy Google Fit/Samsung Health SDK exchange; Health Connect is the
+  existing sleep-data route and requires supported services and permission.
+- [ ] Hosted SleepCloud/research community and Spotify account/service parity.
+  Public HTTPS radio and user-owned SAF backup folders are the available paths.
+- [ ] Clinical chronotype validation and established jet-lag/lucid-dream efficacy.
+- [ ] Full standard timer precision/range and no-UI assistant scheduling; current
+  requests deliberately require review and support whole-minute naps1..600minutes.
+
+### Acceptance deferred at your request
+
+- [ ] Actual overnight accuracy/background/battery and interruption behavior.
+- [ ] Physical alarm, ramp, volume restore, sunrise, torch and best-effort app/power
+  restriction behavior. Hardware forced-off cannot be prevented by an ordinary app.
+- [ ] Actual model/camera/microphone/pitch calibration and two-phone behavior.
+- [ ] Actual hub/Health Connect/calendar/SAF/cloud/assistant service exchange.
+- [ ] Backup then install the new schema15 candidate and verify original data.
+- [ ] Reference-by-reference visual correction, bugs and security review.
+
+## Historical checked feature batch — before this production-only window
+
+Historical checked source **6ec80fb** passes **1046 pure tests/127 suites**, debug
 and native-test APKs, and lint with zero errors/142 warnings in5m37.
 [Raw local evidence](verification/2026-10-25-armed-snooze-build/README.md).
 
@@ -88,9 +128,9 @@ The full app native run and independent laughter accuracy gate remain failing.
 - [ ] **Prevent leaving/powering off during alarms:** finish best-effort behavior and
   later verify actual Samsung handling. Configuration is tested; enforcement is not.
   Forced hardware restart and powered-off ringing remain device limitations.
-- [ ] **Extra loud:** verify actual maximum device alarm-volume behavior, restore the
-  prior volume correctly and confirm independent per-alarm persistence. Existing
-  settings tests are not proof of speaker output or amplification beyond hardware.
+- [ ] **Extra loud:** verify the new optional owned-session+6dB processing, fallback,
+  actual maximum stream output and prior-volume restoration. No processing target
+  can bypass speaker hardware limits; this source has build-only evidence.
 - [ ] **Gentle volume increase:** verify real ramp, sound delay and independent
   vibration timing through start, snooze, backup and dismissal.
 - [ ] **Sunrise wake-up:** verify actual screen-brightness progression and cleanup,
@@ -173,9 +213,10 @@ These groups remain open even after the priority list above is addressed.
   laughter positive. Keep genuine failures visible; do not weaken gates to get green.
 - [ ] Complete new shared-analysis and walking native journeys; inspect their original
   screenshots and verify saved/reopened state and unchanged existing data.
-- [x] Run combined unit tests, lint, builds and quiet native regression on the integrated
-  current feature batch:1063 pure and108 native methods/all154 originals pass. Full
-  remaining-app regression and physical acceptance stay open above.
+- [x] Historical0a821eb batch passed1063 pure and108 native methods/all154 originals.
+  This evidence predates the current production-only source and does not validate it.
+- [x] Build current production debug APK6578575 and verify the local signing key.
+  No new test/lint/screenshot batches ran; physical acceptance stays open.
 - [ ] Verify real overnight background behavior, capture quality, battery use and
   interruptions when a suitable controlled test is available.
 - [ ] Perform alarm/speaker/vibration/torch/power-menu checks only when permitted;

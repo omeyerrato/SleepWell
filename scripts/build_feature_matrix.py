@@ -714,7 +714,7 @@ for parent, component in {
     for key in ("status", "implementation", "validation", "notes"):
         target[key] = list(detail[key]) if isinstance(detail[key], list) else detail[key]
     if parent == "Chronotype / social jetlag / SRI":
-        target["notes"] += " SRI and clinical chronotype remain missing; recorded midpoint comparison does not establish either."
+        target["notes"] += " Separate reviewed-day SRI now requires explicit complete-day confirmations and at least seven eligible adjacent pairs; unreviewed intervals stay unknown. Clinical chronotype remains unvalidated."
 
 for row in rows:
     if row["feature"] in set(passing_increment) | {"Power nap", "Nap timer", "Achievements"}:
@@ -796,7 +796,31 @@ SPRINT_FEATURES = {
 for row in rows:
     update=SPRINT_FEATURES.get(row["feature"])
     if update:
-        row.update(status="partial",implementation=update[0],notes=update[1],validation="Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.")
+        row.update(status="partial",implementation=update[0],notes=update[1],validation="Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.")
+
+# Final production additions. Partial status preserves missing subfeatures and acceptance.
+FINAL_FEATURES = {
+    "Movement sensitivity": (["MotionCalibration.java", "MotionCalibrationActivity.java", "MotionCalibrationChart.java", "MotionSettings.java", "MotionProfile.java", "TrackingService.java", "SensorProvenance.java"], "Explicit foreground ten-second still/five-second gentle-movement calibration measures hardware-timestamped motion with freshness, accuracy and gap checks. Rest/movement distributions derive a bounded gain; unsuitable separation or out-of-range gain is rejected. Save/Reset affects the next manual or automatic motion night, whose configuration retains measured provenance in backup format13. Raw epochs remain unchanged. Actual mattress sensitivity, sleep/wake accuracy and physical calibration flow are unverified."),
+    "Motion sensitivity configuration": (["MotionCalibration.java", "MotionCalibrationActivity.java", "MotionSettings.java", "MotionProfile.java", "TrackingService.java", "SensorProvenance.java"], "Saved measured calibration uses explicit capture, review and Save/Reset with stale-draft checks. A manual sensitivity change clears custom calibration; opening/recreating the screen never starts capture. Each new night pins its configuration; schema15/backup13 preserve provenance. Real device performance and clinical accuracy remain unverified."),
+    "Polyphasic routine": (["NapProfiles.java", "NapProfilesStore.java", "NapProfilesRuntime.java", "NapProfilesActivity.java", "NapProfilesDefinitions.java", "NapProfilesDocumentsActivity.java"], "Named local profiles contain two to six clock/duration entries. Saving does not schedule: applying requires review of one future date, existing nap defaults and explicit consent. Durable ownership journal creates disabled rows, schedules all and activates only after acknowledgements; partial/interrupted applications require owned Retry/Cancel. Strict portable definition export/import reviews duplicates and name conflicts, creates fresh identities and never imports active alarms. Weekly recurrence remains absent; actual OS delivery and document-provider exchange remain unverified."),
+    "SRI / circular midpoint clustering": (["SRIModel.java", "SRIReviews.java", "SRIActivity.java", "RhythmGroups.java", "RhythmGroupsChart.java", "SleepRhythmActivity.java"], "Separate reviewed-day SRI requires explicit complete-day/no-travel confirmations, unchanged recorded coverage and at least seven eligible adjacent 24-hour pairs. It compares 1440 minute centers per pair using100*(2*P(same)-1); negative values remain negative. Missing/unreviewed days, DST/zone changes and open recordings stay excluded. Edits/erasure invalidate confirmations. Original circular midpoint groups remain separate. This depends on truthful self-reported completeness; it is not sensor proof of unrecorded daytime wake or clinical validation."),
+    "Own Intent and data-provider contracts": (["AlarmRequestActivity.java", "AlarmRequestInput.java", "TimerRequestActivity.java", "TimerRequestInput.java", "SleepSummaryActivity.java", "SleepSummary.java", "SleepSummaryFiles.java", "SleepSummaryFileProvider.java"], "Permission-protected standard SET_ALARM and SET_TIMER requests require explicit reviewed Save/Start; caller flags, URI grants and unsupported values cannot silently schedule. Timer requests support reviewed whole-minute naps1..600minutes, with explicit alternatives for unsupported seconds/durations. Custom MIME GET_CONTENT supplies an explicitly shared bounded7/30day sleep summary through narrow read-only URI grants. History changes invalidate drafts/staging and erasure revokes known grants/deletes generated files; already-open descriptors/external copies cannot be recalled. Broader contracts, assistant/provider runtime and full24-hour exact-second timer compliance remain incomplete."),
+    "Assistant voice actions": (["AlarmRequestActivity.java", "AlarmRequest.java", "AlarmRequestInput.java", "TimerRequestActivity.java", "TimerRequest.java", "TimerRequestInput.java", "RelativeTimeSpeech.java", "RelativeAlarmTimeActivity.java"], "Standard Android alarm/timer requests produce owned review drafts and require explicit Save/Start. Optional external English speech input offers reviewed relative-time candidates; speech-provider availability and behavior are external prerequisites. SKIP_UI is deliberately ignored. Unsupported timer precision/range requires an explicit alternative. No autonomous voice capture or no-UI scheduling; actual assistant/provider integration remains unverified."),
+    "Cloud backup / SleepCloud": (["CloudBackupActivity.java", "CloudBackupCopy.java", "AutoCloudBackups.java", "CloudAudioActivity.java", "CloudAudioSave.java", "CloudAudioVersions.java", "AutoCloudAudio.java", "AutoCloudAudioStore.java", "AutoCloudAudioService.java"], "User-selected persisted SAF folder supports separate metadata versions and complete whole-library audio ZIP versions with exact readback SHA/length receipts and reviewed restore. Audio includes a separate default-off automatic consent for the entire existing and future library. Only a later actual production-night ending queues work; charging, unmetered network, battery, destination revision, bounded retries and durable uncertain outcomes control admission. Off/destination change/history erase cancel or gate owned work. Real provider exchange/remote cloud synchronization remain unverified; readback is not server-upload proof. No proprietary SleepCloud backend/account replication."),
+    "User-controlled cloud / conflict / audio backup": (["CloudAudioActivity.java", "CloudAudioSave.java", "CloudAudioDocuments.java", "CloudAudioVersions.java", "AutoCloudAudio.java", "AutoCloudAudioStore.java", "AutoCloudAudioService.java", "LibraryAudioArchive.java", "LibraryAudioImport.java", "HistoryErase.java"], "Manual reviewed whole-library ZIP creation and separately consented automatic future-night backups use unique versions, readback hashes, bounded receipts and the existing reviewed Replace restore. Enabling automatic audio never immediately uploads history. Off, destination changes, process recovery and history erasure preserve cancellation/ownership fences; uncertain provider writes are never silently replayed. Existing exported copies remain external. Actual provider/runtime/remote sync acceptance remains open; service/account/storage prerequisites are user supplied."),
+    "Extra-loud mode": (["AlarmWakePolicy.java", "AlarmAudioSink.java", "AlarmVolumeLease.java", "AlarmPlayback.java", "AlarmEditorActivity.java"], "Explicit per-alarm Extra loud selects maximum alarm stream volume and requests a+600mB(+6dB) LoudnessEnhancer on the prepared player's positive owned session immediately before playback. Quiet developer policy excludes the effect. Lost control/construction/enable failures record an error and retain max-stream playback; source change, snooze and dismissal release the player-owned effect. Ramp/delay behavior is retained. A processing target cannot bypass speaker limits; actual output, support and volume restoration remain unverified on hardware."),
+}
+for row in rows:
+    update=FINAL_FEATURES.get(row["feature"])
+    if update:
+        row.update(status="partial", implementation=update[0], notes=update[1], validation="Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.")
+    if row["feature"] in ("Automatic tracking", "After-fall-asleep / false-start rejection"):
+        row["notes"] = row["notes"].replace("dependency correction/compile and real Google delivery pending", "published21.4.0 dependency compiles; real Google delivery remains unverified")
+    if row["feature"] in ("Gentle volume ramp", "Sunrise alarm", "Separate sound/vibration delay", "Phone flashlight wake-up"):
+        row["notes"] = row["notes"].replace("No speaker boost or smart-light control.", "Optional per-session Extra loud processing is separately documented; no speaker-limit bypass or smart-light control in this path.")
+    if row["feature"] in ("Smile task", "Internet radio / Spotify", "Multi-metric sleep score", "Pair tracking", "Community research sharing", "Laughter / instrument microphone task", "Anti-snoring cues", "Headphone-only cues / intensity / repeat", "Automatic tracking", "After-fall-asleep / false-start rejection"):
+        row["validation"] = "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance."
+    row["implementation"] = ["BinauralTones.java" if name=="Binaural.java" else name for name in row["implementation"]]
 
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
@@ -825,61 +849,29 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Baseline unit/lint/build passed before UI work. New device results and visual
-comparisons are recorded in DESIGN-REVIEW.md and VERIFICATION.md. Existing code links
-show the relevant group of implementation classes; exact narrower behavior and gaps
-are stated in the last column. Named tests link to committed source; those links
-are not passing-run claims. Most features still need device-level verification.
+Current production source **6578575** builds a debug APK in **28s**, database
+schema15 and backup format13. This six-hour feature window uses **build-only**
+evidence: no new unit/native/lint/screenshot batches or physical-phone actions.
+The APK retains the installed debug signing key. It has not been installed.
+Latest actual phone installation remains571018b (application sourcedc30736), schema7.
+Historical scoped functional evidence is preserved in [VERIFICATION.md](VERIFICATION.md)
+and the linked verification directories; it does not validate this newer source.
+The last full-app native run remains failing; narrower passing batches never
+established full-app acceptance.
 
-Latest phone installation: source571018b, same application source asdc30736,
-schema7 retained, all original rows/preferences and installed APK hash verified.
-No alarm/sound/vibration/flashlight/tracking test ran on the phone.
-Latest full native run3463834/CI40124416810 remains FAIL: Walk task hit height,
-one dated-goal target/date flow and the existing independent laughter positive.
-Other passing classes do not make that full run green. Focused f9f7acb shared Night
-CI40120286873 passes20methods/25originals; category browsing CI40120293302 passes
-13methods/68originals.3463834 sound sensitivity CI40124391172 passes10methods/14originals.
-Superseding da0f571 CI40141612460 passes23classes/77methods/all68originals for the
-feature sprint, including corrected calendar/defaults/HC/date/goals/tag/cloud flows.
-Local combined778pure/100suites, debug/native APKs and lint0errors98warnings pass7m03.
-See verification/2026-10-25-feature-sprint/README.md for original bounded evidence.
-Expanded4b7d017 CI40147599727 passes30classes/102methods/all90originals, adding
-search, diary, shared typed challenges, fake-host widget contracts and backup timing.
-See verification/2026-10-25-feature-sprint-expanded/README.md. Newer request/challenge
-increments remain pending native execution; no physical acceptance is inferred.
-Later a3445e7 combined956pure/117suites/debug/native APKs/lint0errors139warnings
-passes; exact raw build evidence is in verification/2026-10-25-speech-flip-build.
-CI40159540059 remains FAIL overall, with narrow Speak5methods/12originals,
-flip UI2methods/7originals and corrected dated-goal/calendar/diary flows passing.
-CI40164774515 fails only automatic-backup confirmation; corrected CI40166582977
-passes backup14methods/all8 originals, inclusion6/all8 and sleep-plan5/all7.
-That35class/91method run still fails Picture configuration; its owned-title
-observation fix and new armed-wait/snooze flows await CI40167823818.
-Combined8027f83 passes1016pure/125suites, both APKs and lint0errors142warnings;
-raw evidence:verification/2026-10-25-picture-inclusion-build.
-Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals,
-including corrected Picture, armed conditions and exact-clock snooze. Same source
-passes1046pure/127suites, both APKs and lint0errors142warnings in5m37. Raw evidence:
-verification/2026-10-25-feature-increment-pass and2026-10-25-armed-snooze-build.
-Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals, including
-achievements, protected Power Nap and unchanged ordinary-nap regression. Exact
-source1063pure/129suites PASS41s; debug/native APKs+lint0errors142warnings PASS1m36.
-The predecessorba2d478 also built an unsigned release APK; the current UI correction
-has not been rebuilt as a signed production release. Raw evidence:
-verification/2026-10-25-final-feature-batch. These are scoped functional results,
-not full-app/design/physical/overnight/provider-account acceptance.
-Current production-only sprint adds Smart Bedtime, reversible awake estimates, Jump,
-Smile, Internet radio, Google confidence and circular timing groups. Combined debug
-APK4ab0887 builds in1m06 with Pose/Light/Type code/Spin/Note, paired movement,
-research export, recorded scoring, ZIP restore, echo report, binaural/silent guidance,
-PIR/timed cues, total snooze cap, selected-date exclusions, per-alarm bedtime override,
-relative/speech entry and separate reviewed diary import. This is build-only evidence;
-actual providers, outputs, overnight accuracy and new runtime flows remain unverified.
-No new unit/native/lint/screenshot batches run per the latest user instruction.
-At the user's request, the dedicated design reviewer is stopped and broad design,
-bug and security audits are deferred while agents implement features. Real acoustic
-accuracy, overnight reliability and full36screen parity remain uncertified.
+New production behavior includes extra-loud session processing, Smart Bedtime,
+reversible awake estimates, Google sleep-confidence input, additional camera/motion/
+pitch/game challenges, radio, paired movement, recorded scoring, periodic-echo
+experiments, timed dream cues, PIR input, silent guidance/binaural generation,
+nap profiles and portable definitions, measured motion calibration, reviewed-day
+SRI, relative/speech alarm entry, per-alarm reminder/date/snooze controls, diary
+import, standard alarm/timer requests, explicit summary sharing, and separately
+consented manual/automatic whole-library audio backups. Exact behavior and limits
+are recorded per row and in [remaining work](REMAINING-WORK.md).
 
+At the user's request, the dedicated design reviewer is stopped. Broad design,
+bug and security audits are deferred. Real acoustic accuracy, overnight reliability,
+provider/hardware exchange and full36screen visual parity remain uncertified.
 
 | ID / feature and manual | Screen(s) | Code | Validation | Status and remaining work |
 | --- | --- | --- | --- | --- |

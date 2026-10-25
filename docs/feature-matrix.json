@@ -110,15 +110,17 @@
       "screens": "04–12,26",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
-        "Alarm.java",
-        "Scheduler.java",
-        "AlarmService.java",
-        "AlarmActivity.java",
-        "AlarmEditorActivity.java"
+        "MotionCalibration.java",
+        "MotionCalibrationActivity.java",
+        "MotionCalibrationChart.java",
+        "MotionSettings.java",
+        "MotionProfile.java",
+        "TrackingService.java",
+        "SensorProvenance.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
-      "notes": "Partial: conservative fixed 0.12 m/s² threshold; user calibration pending.",
+      "notes": "Explicit foreground ten-second still/five-second gentle-movement calibration measures hardware-timestamped motion with freshness, accuracy and gap checks. Rest/movement distributions derive a bounded gain; unsuitable separation or out-of-range gain is rejected. Save/Reset affects the next manual or automatic motion night, whose configuration retains measured provenance in backup format13. Raw epochs remain unchanged. Actual mattress sensitivity, sleep/wake accuracy and physical calibration flow are unverified.",
       "id": "F006",
       "tests": []
     },
@@ -161,7 +163,7 @@
       ],
       "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized. Latest AlarmWakeSettingsTest 1 FAIL at9188e78/CI40051144096 while finding Extra loud during options-dialog transition, before ramp assertions. Later d4c08c7 waits fresh dialog descendants. No actual effects test or new configuration pass claimed. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. c48fedd WakeSettings reaches7 named states then stale-node failure after reopen. Later1971b2b uses lazy native selectors and stronger48dp complete bounds; combined build passes, fresh full configuration proof required. FocusedCI40058849301 WakeSettings still fails: Flashlight node is below viewport but helper waits for existence before scrolling. Its loud-curve original is the wrong Alarm sound page; strict review rejects that named frame. Six later originals absent. Source fixes await a fresh native run; no effects claim. Fresh focusedCI40062368995 at4bd5317 WakeSettings1 PASS43.522s and all10 originals individually reviewed. Exact full-chart loud/reopened100%@2min, normal80%@2min, edited80%@1min and Off80% horizontal states pass; real saved/reopened/cancelled settings preserved via fake scheduling. No speaker/brightness/torch behavior certification. Fresh d43f480/focusedCI40068188579 PASS5classes/6methods/all39 required originals, individually reviewed. Assets1.497s,Grant0.611s,ToneFlow40.346s,WakeSettings44.902s,WakeCheck2/39.15s. Native configuration/private persistence/fake preview pass narrowly; full run's WakeSettings reopen fails prior-editor lifecycle timing, addressed3fda351. Filename-on-reopen and loading chevron polish remain, and actual outputs/provider grants/OS delivery are not certified.",
       "status": "partial",
-      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. No speaker boost or smart-light control. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
+      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. Optional per-session Extra loud processing is separately documented; no speaker-limit bypass or smart-light control in this path. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
       "id": "F008",
       "tests": [
         {
@@ -195,47 +197,17 @@
       "screens": "07–08 + supporting flashlight state",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
-        "Alarm.java",
         "AlarmWakePolicy.java",
-        "AlarmVibration.java",
-        "AlarmPlayback.java",
         "AlarmAudioSink.java",
         "AlarmVolumeLease.java",
-        "AlarmService.java",
-        "AlarmSunrise.java",
-        "AlarmTorch.java",
-        "TorchLease.java",
-        "AlarmActivity.java",
-        "AlarmEditorActivity.java",
-        "AlarmRampChart.java",
-        "Scheduler.java"
+        "AlarmPlayback.java",
+        "AlarmEditorActivity.java"
       ],
-      "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized.",
+      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
-      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. No speaker boost or smart-light control. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
+      "notes": "Explicit per-alarm Extra loud selects maximum alarm stream volume and requests a+600mB(+6dB) LoudnessEnhancer on the prepared player's positive owned session immediately before playback. Quiet developer policy excludes the effect. Lost control/construction/enable failures record an error and retain max-stream playback; source change, snooze and dismissal release the player-owned effect. Ramp/delay behavior is retained. A processing target cannot bypass speaker limits; actual output, support and volume restoration remain unverified on hardware.",
       "id": "F009",
-      "tests": [
-        {
-          "name": "AlarmLightTest",
-          "path": "app/src/test/java/org/sleepwell/app/AlarmLightTest.java"
-        },
-        {
-          "name": "AlarmPlaybackTest",
-          "path": "app/src/test/java/org/sleepwell/app/AlarmPlaybackTest.java"
-        },
-        {
-          "name": "AlarmVibrationTest",
-          "path": "app/src/test/java/org/sleepwell/app/AlarmVibrationTest.java"
-        },
-        {
-          "name": "AlarmVolumeLeaseTest",
-          "path": "app/src/test/java/org/sleepwell/app/AlarmVolumeLeaseTest.java"
-        },
-        {
-          "name": "AlarmWakePolicyTest",
-          "path": "app/src/test/java/org/sleepwell/app/AlarmWakePolicyTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Vibration",
@@ -404,7 +376,7 @@
         "AlarmPlayback.java",
         "AlarmToneScreen.java"
       ],
-      "validation": "Sourcec024b4d integrated; production compile and real Internet playback pending. No network previews/tests run.",
+      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Per-alarm public HTTPS station URL, explicit draft Use/Save/Cancel, real async MediaPlayer source, eight-second connect/buffer watchdog and mandatory bundled fallback. Existing ramp/backup/lifecycle retained; no automatic network preview. Credential/query-dependent links unsupported. Spotify/paid provider accounts are not replicated or made free.",
       "id": "F015",
@@ -432,7 +404,7 @@
       ],
       "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized.",
       "status": "partial",
-      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. No speaker boost or smart-light control. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
+      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. Optional per-session Extra loud processing is separately documented; no speaker-limit bypass or smart-light control in this path. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
       "id": "F016",
       "tests": [
         {
@@ -485,7 +457,7 @@
         "Scheduler.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Optional saved total-minute budget is enforced alongside count/decreasing limits across duration, exact-clock, flip and volume-key snoozes. Actual scheduled milliseconds carry only through an owned snooze continuation; new occurrences reset the ledger. Uncapped legacy alarms retain omitted JSON. Real delivery and output remain unverified.",
       "id": "F018",
@@ -756,7 +728,7 @@
         "AlarmEditorActivity.java",
         "AlarmActivity.java"
       ],
-      "validation": "Sourceb7dffc4 integrated; production compile pending dependency correction. No new tests/device camera/model-accuracy execution.",
+      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Actual bundled ML Kit smile probability + framing/facing/fresh multi-frame hold, private CameraX activity, shared preview and owned challenge result, explicit Math fallback. No images saved by app. Proprietary model/SDK metrics disclosed before camera Start; not identity/liveness proof. Previous Haar experiment remains rejected and was not shipped.",
       "id": "F029",
@@ -982,15 +954,16 @@
       "screens": "04–12,26",
       "source": "https://sleep.urbandroid.org/docs/alarms/alarm_settings.html",
       "implementation": [
-        "Alarm.java",
-        "Scheduler.java",
-        "AlarmService.java",
-        "AlarmActivity.java",
-        "AlarmEditorActivity.java"
+        "NapProfiles.java",
+        "NapProfilesStore.java",
+        "NapProfilesRuntime.java",
+        "NapProfilesActivity.java",
+        "NapProfilesDefinitions.java",
+        "NapProfilesDocumentsActivity.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
-      "notes": "Partial: multiple independent alarms; specialized goal/reminder profiles pending.",
+      "notes": "Named local profiles contain two to six clock/duration entries. Saving does not schedule: applying requires review of one future date, existing nap defaults and explicit consent. Durable ownership journal creates disabled rows, schedules all and activates only after acknowledgements; partial/interrupted applications require owned Retry/Cancel. Strict portable definition export/import reviews duplicates and name conflicts, creates fresh identities and never imports active alarms. Weekly recurrence remains absent; actual OS delivery and document-provider exchange remain unverified.",
       "id": "F037",
       "tests": []
     },
@@ -1004,7 +977,7 @@
         "RelativeAlarmTimeActivity.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Explicit relative one-time clock entry computes and reviews a date/zone/time before draft Use and Save alarm. Bounds, clock drift and ambiguous DST targets are checked. Optional external English speech entry returns selectable candidates; a provider is required and its offline preference may be ignored. No app microphone capture or automatic save. Physical provider behavior remains unverified.",
       "id": "F038",
@@ -1021,7 +994,7 @@
         "CalendarAlarms.java",
         "AlarmEditorActivity.java"
       ],
-      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Dedicated compact Alarms root and existing skip/restore occurrence remain. Up to64 explicit local excluded dates now affect clock/sunrise projections, actual occurrence checks and calendar adjustments; private draft editor requires Use then Save alarm. This is user-selected date skipping, not an automatic public-holiday feed. Full interaction/design/device acceptance remains open.",
       "id": "F039",
@@ -1070,7 +1043,7 @@
         "AlarmBedtime.java",
         "AlarmBedtimeActivity.java"
       ],
-      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Next actual eligible alarm projects a reminder from goal/window/delay and bounded observed shortfall. Silent interval/limit repeats have owned dismissal fences. Optional per-alarm Follow global/Off/custom lead changes actual revalidated reminder delivery; the earliest eligible wake-up owns the reminder. No duplicate reminders for later alarms. Android delivery and background reliability remain unverified.",
       "id": "F041",
@@ -1181,32 +1154,11 @@
         "GoogleSleepSignal.java",
         "GoogleSleepSignalReceiver.java"
       ],
-      "validation": "AutomaticTrackingFlowTest passes at7d02819/CI40021145034: five originals, Save versus fake Arm, consent, recreation/reopen/error. Strict per-file review accepts complete first-frame Save/Arm in all states. Actual Service, sensors, deferred microphone and overnight lifecycle unverified. Latest AutomaticTrackingFlowTest 1 FAIL at9188e78/CI40051144096 on initial footer visibility; diagnostic original shows full Save, indicating assertion ran before layout. Later d4c08c7 waits actual current layout then retains complete bounds and persistence assertions; fresh native pass still required. Combinedbed8aba debug/native APK and lint PASS1m26s (0errors/86warnings); no fresh native run or domain-test rerun inferred. Latest AutomaticTrackingFlowTest 1 PASS15.459s atc48fedd/CI40054511743: all5 named originals individually reviewed, complete Save/Arm/error geometry and private preferences/fake arming. This supersedes initial-layout failure only; recurring behavior and actual OS delivery are not covered. Recurring0150652 source passed independent ownership/security review and its scoped debug/native APK,9 RecurringNightTest cases and lint passed (0errors/86warnings). Integratedc9582a2; RecurringTrackingTest 12 and RecurringTrackingFlowTest 2/13 originals are compiled but not yet executed. Main app reopening now reconciles an enabled schedule, future-only. The full CI contract includes these isolated preference/fake-launch tests; actual AlarmManager/FGS delivery remains unverified. Latest244e4bc/fullCI40063157145 RecurringTrackingTest 12 PASS0.258s. SettingsFlow2 has1 failure on stale click after cancel/reopen,9 of13 named originals available, so complete UI acceptance remains rejected. Native preferences/fake admission are proven narrowly; actual OS/sensor delivery unverified. Final recurring UI fix9a3ca04 refreshes permission summaries after failed Save without losing draft/revision/error state, and resolves fresh native actions once; independent source review clear. Same2 methods/13 originals require rerun. Fresh d43f480/fullCI40068184362: backend12 PASS0.272s; first settings flow now passes, second fails because real error is below viewport. All8 named originals/diagnostic reviewed;3fda351 moves actual error into pinned footer above Save/Cancel. Same2methods/13states require rerun. Fresh dc30736/fullCI40072555253 runtime12 PASS0.312s; UI2 has1 Got it acknowledgment failure, diagnostic proves dismissal. Actual pinned error now visible; taller-state clock glyph still clipped (P2). b7e5233 injects once at owned dialog bounds then awaits exact detach/focus/error/preferences, fresh proof pending. 264c2bb fixes smart-window projection:AutomaticStartTest 18 host PASS; combined/native pending.6cec933 adds charging/screen-off conditions with28 focused host PASS. New Google source unverified; no new tests per user steering.",
+      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md. Separate Repeat nightly opt-in saves local calendar time, optional stillness and due-time charging condition; single-use persisted token/revision fences stale/duplicate/ABA starts. Disable affects only the owned run; enabled edits preserve admitted tonight capture. Recurring starts force microphone/clips/light/sleep sounds off, never open an Activity, never backfill missed starts, and retain4h/12h limits. Protected reconciliation and visible reopening schedule future occurrences only. Force-stop/OEM/permission restrictions and background specialUse distribution review remain; see RECURRING-MOVEMENT.md. Smart-window lead-in now uses the actual projected dated/sunrise/skipped/calendar-adjusted unconsumed deadline; expired or unsupported nap occurrences cannot admit capture. Optional charging/screen-off gates apply only to explicit Arm tonight, not background recurring tokens. Optional Google Sleep API confidence input1270922 adds permission, real registration/removal and current-arm fresh confidence final gate; dependency correction/compile and real Google delivery pending. Existing stillness conditions remain required; callback confidence is an estimate, not a sleep stage.",
+      "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md. Separate Repeat nightly opt-in saves local calendar time, optional stillness and due-time charging condition; single-use persisted token/revision fences stale/duplicate/ABA starts. Disable affects only the owned run; enabled edits preserve admitted tonight capture. Recurring starts force microphone/clips/light/sleep sounds off, never open an Activity, never backfill missed starts, and retain4h/12h limits. Protected reconciliation and visible reopening schedule future occurrences only. Force-stop/OEM/permission restrictions and background specialUse distribution review remain; see RECURRING-MOVEMENT.md. Smart-window lead-in now uses the actual projected dated/sunrise/skipped/calendar-adjusted unconsumed deadline; expired or unsupported nap occurrences cannot admit capture. Optional charging/screen-off gates apply only to explicit Arm tonight, not background recurring tokens. Optional Google Sleep API confidence input1270922 adds permission, real registration/removal and current-arm fresh confidence final gate; published21.4.0 dependency compiles; real Google delivery remains unverified. Existing stillness conditions remain required; callback confidence is an estimate, not a sleep stage.",
       "id": "F044",
-      "tests": [
-        {
-          "name": "AutomaticStartTest",
-          "path": "app/src/test/java/org/sleepwell/app/AutomaticStartTest.java"
-        },
-        {
-          "name": "AutomaticTrackingFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AutomaticTrackingFlowTest.java"
-        },
-        {
-          "name": "RecurringNightTest",
-          "path": "app/src/test/java/org/sleepwell/app/RecurringNightTest.java"
-        },
-        {
-          "name": "RecurringTrackingFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/RecurringTrackingFlowTest.java"
-        },
-        {
-          "name": "RecurringTrackingTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/RecurringTrackingTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Missing-night estimation",
@@ -1343,7 +1295,7 @@
         "PirReportActivity.java",
         "TrackingService.java"
       ],
-      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Default-off independently encrypted Home Assistant HTTPS binary_sensor motion/occupancy input requires an actual tested user-owned hub/sensor. Manual phone/sonar nights poll read-only snapshots every15s; saved hub-state, unknown/errors, update age and request latency feed a discrete-point report. On-change hub snapshots are not fresh physical motion samples. Pause/end/owner fences, schema14 and backup11 preserve evidence without changing duration/stages. Real hub exchange remains unverified; this is not the proprietary Sleep Phaser protocol.",
       "id": "F048",
@@ -1371,7 +1323,7 @@
         "AwakeReviewActivity.java",
         "RecordEntry.java"
       ],
-      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Default-off per-night phone unlock/touch, opted-in fresh light and successful snooze evidence creates reversible estimated-awake intervals. Original evidence and review decisions remain separate; effective duration subtracts their union. It is an unvalidated awake estimate, not measured stages. New source compiles; actual overnight accuracy remains unverified.",
       "id": "F050",
@@ -1620,28 +1572,11 @@
         "SonarSnoreCues.java",
         "SonarNight.java"
       ],
-      "validation": "HeadphoneCueTest eleven cases pass in integrated358-test build. At64ae8d2/CI40033681541, HeadphoneCueOutputTest 2 passes0.142s and SnoreSoundRouteFlowTest 1 passes11.571s with five individually reviewed originals. Fake worker/provider only, exact preference restoration; no AudioTrack/vibration/hardware route output tested. SnoreCueSettingsNativeTest also passes; its later Preview glyph styling needs new originals. New contactless cues source only; build pending, no new tests or phone actions.",
+      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Default-off confident-estimate cues retain sound/vibration/both, intensity/repeats/sensitivity, budget/cooldown and low/single preview. Optional headphone sound requires an accepted wired/USB headset or BLE headset and checks actual single route during bounded chunks. Ambiguous A2DP/SCO routes visibly excluded. OS rerouting can still cause a transient speaker leak; vibration is independent. No medical effectiveness claim. Production0e5feeb adds separate default-off contactless vibration consent, actual saved snoring estimates routed to bounded vibration-only cues; cue/settling motion and PCM are excluded as CUE_ACTIVE/missing. No additional microphone, sound cue or clip capture. Actual vibration/bedroom effectiveness unverified.",
       "id": "F059",
-      "tests": [
-        {
-          "name": "HeadphoneCueOutputTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/HeadphoneCueOutputTest.java"
-        },
-        {
-          "name": "HeadphoneCueTest",
-          "path": "app/src/test/java/org/sleepwell/app/HeadphoneCueTest.java"
-        },
-        {
-          "name": "SnoreCueSettingsNativeTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/SnoreCueSettingsNativeTest.java"
-        },
-        {
-          "name": "SnoreSoundRouteFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/SnoreSoundRouteFlowTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Pair tracking",
@@ -1658,7 +1593,7 @@
         "PairMotionSavedActivity.java",
         "TrackingService.java"
       ],
-      "validation": "Sourcee6ae3f2 plus schema13/format10 integration47266dd; new combined build pending. Actual two-phone exchange/filter accuracy unverified; no new tests.",
+      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Explicit two-phone Nearby encrypted transport with matching-code acceptance on both phones, actual5s RMS packets, elapsed-clock alignment, fresh/unknown quality and separate raw/filtered persistence. Optional bounded common-motion reduction only for local smart-wake inference; raw readings preserved/fallback explicit. Both phones already need manual movement recording and Google Play/nearby permissions. Portable ended-recording-only scope reports omitted active/out-of-bounds fragments; physical separation is unvalidated.",
       "id": "F060",
@@ -1716,13 +1651,13 @@
       "screens": "13–21,27–30",
       "source": "https://sleep.urbandroid.org/docs/sleep/sleep_tracking.html",
       "implementation": [
-        "Binaural.java",
+        "BinauralTones.java",
         "BinauralSettingsActivity.java",
         "SleepSoundService.java",
         "GuidedWindDown.java",
         "GuidedWindDownActivity.java"
       ],
-      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Manual-play stereo PCM binaural generation uses independently configured carrier/beat frequencies and the existing timer/fade/lifecycle. Original silent2/5/10minute guided reading with optional visual breathing cue has real timed progression and Start/Pause/Resume/End. No narration, health benefit or automatic output claim; physical playback remains unverified.",
       "id": "F062",
@@ -1739,7 +1674,7 @@
         "DreamCueBackup.java",
         "DreamCueHistoryActivity.java"
       ],
-      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Optional timed dream cues are functioning elapsed timers armed explicitly for an already-active manual night. One arm per night, bounded low-amplitude vibration requests, durable claim/request/failed/uncertain receipts, cancellation and self-output capture gaps are integrated with schema15/backup12. Requires amplitude support. This is not REM detection or established lucid-dream efficacy; actual output remains unverified.",
       "id": "F063",
@@ -2081,7 +2016,7 @@
         "RecordReportActivity.java",
         "RecordInsightsActivity.java"
       ],
-      "validation": "Source9494b0d integrated; next combined production build pending. No new tests/device score execution.",
+      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Original descriptive recorded-night score combines at least two available historical-goal duration, reviewed retained-time fraction, explicitly saved rating and prior recorded start-time consistency inputs. Equal available weights, exact raw inputs/formulas and missing reasons shown; recalculates after actual edits/goals. No current-goal retrofit, fabricated sleep stages/vitals or validated health/recovery score.",
       "id": "F073",
@@ -2179,7 +2114,7 @@
       ],
       "validation": "RhythmStatsTest fourteen pure passes in integrated build. SleepRhythmFlowTest passes at f471c4d/CI40016966655: seven actual fixture nights, workday edits/recreation/save/reopen/empty and five originals. Strict reference review remains separate; no overnight or clinical claim.",
       "status": "partial",
-      "notes": "Actual recorded main-night bedtime range, circular workday/free-day midpoint difference and editable wake-day work schedule. Naps excluded, missing dates stay absent, longest main night per sleep day. Thirty-night history progress is descriptive; no clinical chronotype or prevention claim. SRI and clinical chronotype remain missing; recorded midpoint comparison does not establish either.",
+      "notes": "Actual recorded main-night bedtime range, circular workday/free-day midpoint difference and editable wake-day work schedule. Naps excluded, missing dates stay absent, longest main night per sleep day. Thirty-night history progress is descriptive; no clinical chronotype or prevention claim. Separate reviewed-day SRI now requires explicit complete-day confirmations and at least seven eligible adjacent pairs; unreviewed intervals stay unknown. Clinical chronotype remains unvalidated.",
       "id": "F076",
       "tests": [
         {
@@ -2604,39 +2539,20 @@
       "source": "https://sleep.urbandroid.org/docs/services/automation.html",
       "implementation": [
         "CloudBackupActivity.java",
-        "CloudBackupProvider.java",
         "CloudBackupCopy.java",
-        "CloudBackupWork.java",
-        "CloudBackupSettings.java",
         "AutoCloudBackups.java",
-        "AutoCloudBackupEngine.java",
-        "AutoCloudBackupStore.java",
-        "AutoCloudBackupPolicy.java",
-        "AutoCloudBackupService.java",
-        "CloudBackupLease.java"
+        "CloudAudioActivity.java",
+        "CloudAudioSave.java",
+        "CloudAudioVersions.java",
+        "AutoCloudAudio.java",
+        "AutoCloudAudioStore.java",
+        "AutoCloudAudioService.java"
       ],
-      "validation": "da0f571 / CI40141612460: CloudBackupStorageTest 5 and CloudBackupFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. ce800dc integratedbc6c01e adds default-off deferred backup:21 focused pure/debug/native APKs/lint PASS before final durable-Off refinement; final source combined build pending. AutoCloudBackupStorageTest 12 and AutoCloudBackupFlowTest 2/eight originals execution pending CI40164774515. Superseding CI40164774515 AutoCloudBackupStorageTest 12 and first save/reopen UI method PASS; second uncertain-write confirmation method FAIL, two of eight required frames absent.6fbc212 fixes native dialog screen coordinates, fresh rerun pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: AutoCloudBackupStorageTest 12/AutoCloudBackupFlowTest 2/all8 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
+      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
-      "notes": "Manual verified create-only metadata versions and reviewed restore remain. Optional automatic backup queues only successfully ended production tracked nights into a separate durable journal, requires an explicitly selected writable SAF destination, bounds retries/size/queue and preserves uncertain provider outcomes without blind duplicate replay. Turning Off persists independently of blocked provider I/O; lease ownership remains until cleanup. Actual provider/account/job delivery unverified. Audio inclusion and proprietary SleepCloud service absent. See AUTOMATIC-METADATA-BACKUP.md.",
+      "notes": "User-selected persisted SAF folder supports separate metadata versions and complete whole-library audio ZIP versions with exact readback SHA/length receipts and reviewed restore. Audio includes a separate default-off automatic consent for the entire existing and future library. Only a later actual production-night ending queues work; charging, unmetered network, battery, destination revision, bounded retries and durable uncertain outcomes control admission. Off/destination change/history erase cancel or gate owned work. Real provider exchange/remote cloud synchronization remain unverified; readback is not server-upload proof. No proprietary SleepCloud backend/account replication.",
       "id": "F090",
-      "tests": [
-        {
-          "name": "AutoCloudBackupFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AutoCloudBackupFlowTest.java"
-        },
-        {
-          "name": "AutoCloudBackupStorageTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AutoCloudBackupStorageTest.java"
-        },
-        {
-          "name": "CloudBackupFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/CloudBackupFlowTest.java"
-        },
-        {
-          "name": "CloudBackupStorageTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/CloudBackupStorageTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Calendar",
@@ -2764,29 +2680,20 @@
       "screens": "32,33,35,36",
       "source": "https://sleep.urbandroid.org/docs/services/automation.html",
       "implementation": [
+        "AlarmRequestActivity.java",
         "AlarmRequest.java",
         "AlarmRequestInput.java",
-        "AlarmRequestActivity.java",
-        "HomeLaunch.java"
+        "TimerRequestActivity.java",
+        "TimerRequest.java",
+        "TimerRequestInput.java",
+        "RelativeTimeSpeech.java",
+        "RelativeAlarmTimeActivity.java"
       ],
-      "validation": "f5e80ab CI40150902142 AlarmRequestStorageTest 3 and AlarmRequestFlowTest 1/all3 originals PASS. AlarmRequestTest 4 authored; combined local run pending. Whole focused run FAIL on separate DND/goal synchronization assertions. No assistant or phone action.",
+      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
-      "notes": "Permission-protected standard SET_ALARM/SHOW_ALARMS entry reconstructs bounded scalar fields into a fresh ordinary editor draft. Explicit Save required even when skip-UI requested. No incoming identity/nested Intent authority. Custom/silent ringtone requests explicitly unsupported; actual assistant routing, dismiss/snooze/timer and inbound data-provider contracts absent/unverified. See STANDARD-ALARM-REQUESTS.md.",
+      "notes": "Standard Android alarm/timer requests produce owned review drafts and require explicit Save/Start. Optional external English speech input offers reviewed relative-time candidates; speech-provider availability and behavior are external prerequisites. SKIP_UI is deliberately ignored. Unsupported timer precision/range requires an explicit alternative. No autonomous voice capture or no-UI scheduling; actual assistant/provider integration remains unverified.",
       "id": "F096",
-      "tests": [
-        {
-          "name": "AlarmRequestFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmRequestFlowTest.java"
-        },
-        {
-          "name": "AlarmRequestStorageTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmRequestStorageTest.java"
-        },
-        {
-          "name": "AlarmRequestTest",
-          "path": "app/src/test/java/org/sleepwell/app/AlarmRequestTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Content provider / CSV compatibility",
@@ -2814,7 +2721,7 @@
         "ResearchExportActivity.java",
         "MainActivity.java"
       ],
-      "validation": "Sourcea74e784 integrated; combined production build pending. No new tests/provider execution.",
+      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Explicit reviewed7/30/90day relative signal ZIP with bounded immutable SHA staging and SAF save. Random per-export night IDs/order, within-night offsets, normalized measured movements/quality/samples/gaps; excludes personal notes/audio/identifiers/config dumps/dates. Pattern identifiability disclosed. No automatic telemetry/upload or hosted research community endpoint.",
       "id": "F098",
@@ -2870,7 +2777,7 @@
       ],
       "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized.",
       "status": "partial",
-      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. No speaker boost or smart-light control. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
+      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. Optional per-session Extra loud processing is separately documented; no speaker-limit bypass or smart-light control in this path. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
       "id": "F100",
       "tests": [
         {
@@ -3219,7 +3126,7 @@
         "DiaryImportActivity.java",
         "JournalRule.java"
       ],
-      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Original mirror/journal challenges and private create/edit/delete/export remain. Separate reviewed diary JSON import now validates bounded UTF8, skips identical entries and explicitly keeps or imports conflicting text as new UUIDs in an insert-only transaction with stale-review checks. Challenge ownership is never imported. Private diary is separate from sleep-record backups. Actual provider/merge execution remains unverified.",
       "id": "F111",
@@ -3236,7 +3143,7 @@
         "NoteChallengeActivity.java",
         "NoteCaptureService.java"
       ],
-      "validation": "Source884b8cb plus seed API fix1553813; compile pending, no actual microphone/pitch tests.",
+      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Distinct Musical note task matches actual fresh PCM pitch/tonality against deterministic C4/D4/E4/A4, sustained hold and saved tolerance, explicit Listen/permission/quiet owner and Math alternative. User may hum or play a note; this does NOT identify piano/instruments or laughter. Previous failed classifier gates remain rejected and unchanged.",
       "id": "F112",
@@ -3425,16 +3332,11 @@
         "GoogleSleepSignal.java",
         "GoogleSleepSignalReceiver.java"
       ],
-      "validation": "AutomaticTrackingFlowTest passes at7d02819/CI40021145034: five originals, Save versus fake Arm, consent, recreation/reopen/error. Strict per-file review accepts complete first-frame Save/Arm in all states. Actual Service, sensors, deferred microphone and overnight lifecycle unverified. New Google source unverified; no new tests per user steering.",
+      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
-      "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md. Optional Google Sleep API confidence input1270922 adds permission, real registration/removal and current-arm fresh confidence final gate; dependency correction/compile and real Google delivery pending. Existing stillness conditions remain required; callback confidence is an estimate, not a sleep stage.",
+      "notes": "Explicit four-hour foreground wait: bedtime, smart-window lead-in or 15-minute screen-off low movement. Missing/stale evidence resets; exactly-once recording boundary. Optional sound/clip consent establishes microphone foreground type while visible and defers capture. No boot start, no certainty that phone inactivity means sleep. See AUTOMATIC-TRACKING.md. Optional Google Sleep API confidence input1270922 adds permission, real registration/removal and current-arm fresh confidence final gate; published21.4.0 dependency compiles; real Google delivery remains unverified. Existing stillness conditions remain required; callback confidence is an estimate, not a sleep stage.",
       "id": "F117",
-      "tests": [
-        {
-          "name": "AutomaticTrackingFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AutomaticTrackingFlowTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Missed-night estimate review / provenance",
@@ -3724,28 +3626,11 @@
         "SonarSnoreCues.java",
         "SonarNight.java"
       ],
-      "validation": "HeadphoneCueTest eleven cases pass in integrated358-test build. At64ae8d2/CI40033681541, HeadphoneCueOutputTest 2 passes0.142s and SnoreSoundRouteFlowTest 1 passes11.571s with five individually reviewed originals. Fake worker/provider only, exact preference restoration; no AudioTrack/vibration/hardware route output tested. SnoreCueSettingsNativeTest also passes; its later Preview glyph styling needs new originals. New contactless cues source only; build pending, no new tests or phone actions.",
+      "validation": "Integrated production assembleDebug6578575 passed28s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Default-off confident-estimate cues retain sound/vibration/both, intensity/repeats/sensitivity, budget/cooldown and low/single preview. Optional headphone sound requires an accepted wired/USB headset or BLE headset and checks actual single route during bounded chunks. Ambiguous A2DP/SCO routes visibly excluded. OS rerouting can still cause a transient speaker leak; vibration is independent. No medical effectiveness claim. Production0e5feeb adds separate default-off contactless vibration consent, actual saved snoring estimates routed to bounded vibration-only cues; cue/settling motion and PCM are excluded as CUE_ACTIVE/missing. No additional microphone, sound cue or clip capture. Actual vibration/bedroom effectiveness unverified.",
       "id": "F125",
-      "tests": [
-        {
-          "name": "HeadphoneCueOutputTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/HeadphoneCueOutputTest.java"
-        },
-        {
-          "name": "HeadphoneCueTest",
-          "path": "app/src/test/java/org/sleepwell/app/HeadphoneCueTest.java"
-        },
-        {
-          "name": "SnoreCueSettingsNativeTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/SnoreCueSettingsNativeTest.java"
-        },
-        {
-          "name": "SnoreSoundRouteFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/SnoreSoundRouteFlowTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Sound mixing / gains / fade / local playlist",
@@ -3799,13 +3684,13 @@
       "screens": "19",
       "source": "https://sleep.urbandroid.org/docs/sleep/lullaby.html",
       "implementation": [
-        "Binaural.java",
+        "BinauralTones.java",
         "BinauralSettingsActivity.java",
         "SleepSoundService.java",
         "GuidedWindDown.java",
         "GuidedWindDownActivity.java"
       ],
-      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Actual explicit-play stereo generator and original silent timed wind-down practice are integrated. Guidance pauses on leaving/locking/recreation and requires explicit Resume; it has no narration, microphone or service. Narrated meditation content is still absent. No efficacy or physical-output verification is inferred from compilation.",
       "id": "F127",
@@ -3822,7 +3707,7 @@
         "TravelCueRuntime.java",
         "TravelCueReviewActivity.java"
       ],
-      "validation": "Combined production assembleDebug4ab0887 passed1m06; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
+      "validation": "Combined production assembleDebug6578575 passed28s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.",
       "status": "partial",
       "notes": "Explicit manual-night travel light cues and separate optional timed low-amplitude dream vibration requests have saved schedules, request outcomes and cleanup. Neither REM detection nor jetlag-prevention/lucid-dream efficacy is established. Hardware output remains unverified; no automatic rearming of dream cues.",
       "id": "F128",
@@ -3999,14 +3884,16 @@
       "screens": "25",
       "source": "https://sleep.urbandroid.org/docs/sleep/chrono_jetlag.html",
       "implementation": [
+        "SRIModel.java",
+        "SRIReviews.java",
+        "SRIActivity.java",
         "RhythmGroups.java",
         "RhythmGroupsChart.java",
-        "RhythmGroupsActivity.java",
         "SleepRhythmActivity.java"
       ],
-      "validation": "Production source2daedc4; combined build pending. No new tests/device/chart acceptance.",
+      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
-      "notes": "Actual circular groups of latest30 eligible recorded main-night midpoints within90days, current matching known zone, missing dates omitted, interruptions/clock changes excluded, groups linked to source reports. Up to3 groups with explicit minimum3 and60minute improvement threshold. Descriptive grouping only; SRI and chronotype remain absent rather than treating unknown daytime as awake.",
+      "notes": "Separate reviewed-day SRI requires explicit complete-day/no-travel confirmations, unchanged recorded coverage and at least seven eligible adjacent 24-hour pairs. It compares 1440 minute centers per pair using100*(2*P(same)-1); negative values remain negative. Missing/unreviewed days, DST/zone changes and open recordings stay excluded. Edits/erasure invalidate confirmations. Original circular midpoint groups remain separate. This depends on truthful self-reported completeness; it is not sensor proof of unrecorded daytime wake or clinical validation.",
       "id": "F133",
       "tests": []
     },
@@ -4015,29 +3902,20 @@
       "screens": "33",
       "source": "https://sleep.urbandroid.org/docs/devs/intent_api.html",
       "implementation": [
-        "AlarmRequest.java",
-        "AlarmRequestInput.java",
         "AlarmRequestActivity.java",
-        "HomeLaunch.java"
+        "AlarmRequestInput.java",
+        "TimerRequestActivity.java",
+        "TimerRequestInput.java",
+        "SleepSummaryActivity.java",
+        "SleepSummary.java",
+        "SleepSummaryFiles.java",
+        "SleepSummaryFileProvider.java"
       ],
-      "validation": "f5e80ab CI40150902142 AlarmRequestStorageTest 3 and AlarmRequestFlowTest 1/all3 originals PASS. AlarmRequestTest 4 authored; combined local run pending. Whole focused run FAIL on separate DND/goal synchronization assertions. No assistant or phone action.",
+      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
-      "notes": "Permission-protected standard SET_ALARM/SHOW_ALARMS entry reconstructs bounded scalar fields into a fresh ordinary editor draft. Explicit Save required even when skip-UI requested. No incoming identity/nested Intent authority. Custom/silent ringtone requests explicitly unsupported; actual assistant routing, dismiss/snooze/timer and inbound data-provider contracts absent/unverified. See STANDARD-ALARM-REQUESTS.md.",
+      "notes": "Permission-protected standard SET_ALARM and SET_TIMER requests require explicit reviewed Save/Start; caller flags, URI grants and unsupported values cannot silently schedule. Timer requests support reviewed whole-minute naps1..600minutes, with explicit alternatives for unsupported seconds/durations. Custom MIME GET_CONTENT supplies an explicitly shared bounded7/30day sleep summary through narrow read-only URI grants. History changes invalidate drafts/staging and erasure revokes known grants/deletes generated files; already-open descriptors/external copies cannot be recalled. Broader contracts, assistant/provider runtime and full24-hour exact-second timer compliance remain incomplete.",
       "id": "F134",
-      "tests": [
-        {
-          "name": "AlarmRequestFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmRequestFlowTest.java"
-        },
-        {
-          "name": "AlarmRequestStorageTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmRequestStorageTest.java"
-        },
-        {
-          "name": "AlarmRequestTest",
-          "path": "app/src/test/java/org/sleepwell/app/AlarmRequestTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Calendar holiday skip / meeting shift / record write",
@@ -4124,47 +4002,22 @@
       "screens": "35",
       "source": "https://sleep.urbandroid.org/docs/services/backup_data.html",
       "implementation": [
-        "CloudBackupActivity.java",
-        "CloudBackupCopy.java",
-        "CloudBackupJob.java",
-        "CloudBackupJobs.java",
-        "CloudBackupSnapshot.java",
-        "BackupJob.java",
-        "BackupActivity.java",
-        "AutoCloudBackups.java",
-        "AutoCloudBackupEngine.java",
-        "AutoCloudBackupStore.java",
-        "AutoCloudBackupPolicy.java",
-        "AutoCloudBackupService.java",
-        "CloudBackupLease.java",
+        "CloudAudioActivity.java",
+        "CloudAudioSave.java",
+        "CloudAudioDocuments.java",
+        "CloudAudioVersions.java",
+        "AutoCloudAudio.java",
+        "AutoCloudAudioStore.java",
+        "AutoCloudAudioService.java",
         "LibraryAudioArchive.java",
-        "LibraryAudioExportActivity.java",
         "LibraryAudioImport.java",
-        "LibraryAudioImportActivity.java",
-        "LibraryAudioImportJournal.java"
+        "HistoryErase.java"
       ],
-      "validation": "da0f571 / CI40141612460: CloudBackupStorageTest 5 and CloudBackupFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. ce800dc integratedbc6c01e adds default-off deferred backup:21 focused pure/debug/native APKs/lint PASS before final durable-Off refinement; final source combined build pending. AutoCloudBackupStorageTest 12 and AutoCloudBackupFlowTest 2/eight originals execution pending CI40164774515. Superseding CI40164774515 AutoCloudBackupStorageTest 12 and first save/reopen UI method PASS; second uncertain-write confirmation method FAIL, two of eight required frames absent.6fbc212 fixes native dialog screen coordinates, fresh rerun pending. Superseding6ec80fb CI40167823818 PASS38classes/97methods/all121 originals: AutoCloudBackupStorageTest 12/AutoCloudBackupFlowTest 2/all8 originals. Exact same source combined1046pure/127suites/debug/native APKs/lint0errors142warnings PASS5m37. This is private/fake-port evidence, not physical/design/full-app acceptance. Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green.",
+      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
-      "notes": "Manual verified create-only metadata versions and reviewed restore remain. Optional automatic backup queues only successfully ended production tracked nights into a separate durable journal, requires an explicitly selected writable SAF destination, bounds retries/size/queue and preserves uncertain provider outcomes without blind duplicate replay. Turning Off persists independently of blocked provider I/O; lease ownership remains until cleanup. Actual provider/account/job delivery unverified. Audio inclusion and proprietary SleepCloud service absent. See AUTOMATIC-METADATA-BACKUP.md. Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; no automatic audio cloud transport claim.",
+      "notes": "Manual reviewed whole-library ZIP creation and separately consented automatic future-night backups use unique versions, readback hashes, bounded receipts and the existing reviewed Replace restore. Enabling automatic audio never immediately uploads history. Off, destination changes, process recovery and history erasure preserve cancellation/ownership fences; uncertain provider writes are never silently replayed. Existing exported copies remain external. Actual provider/runtime/remote sync acceptance remains open; service/account/storage prerequisites are user supplied.",
       "id": "F137",
-      "tests": [
-        {
-          "name": "AutoCloudBackupFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AutoCloudBackupFlowTest.java"
-        },
-        {
-          "name": "AutoCloudBackupStorageTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/AutoCloudBackupStorageTest.java"
-        },
-        {
-          "name": "CloudBackupFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/CloudBackupFlowTest.java"
-        },
-        {
-          "name": "CloudBackupStorageTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/CloudBackupStorageTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Tasker events / webhook retries / MQTT transport",
@@ -4239,7 +4092,7 @@
       ],
       "validation": "Candidate: AlarmWakePolicyTest 6, AlarmPlaybackTest 15, AlarmVolumeLeaseTest 10, AlarmLightTest 9 pure passes. Earlier native configuration passes at e00ff55/CI40002966787. New independent vibration timing adds AlarmVibrationTest ten pure cases and requires fresh configuration capture. No actual alarm/effects test authorized.",
       "status": "partial",
-      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. No speaker boost or smart-light control. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
+      "notes": "Native runtime candidate: max-device-volume opt-in, shared continuous planned ramp, sound delay, window-only sunrise and optional steady flashlight with ownership cleanup. Independent vibration delay now shares occurrence time with backup/liveness cleanup; native effects remain unverified. Optional per-session Extra loud processing is separately documented; no speaker-limit bypass or smart-light control in this path. Occurrence-fenced async activation/backup, durable stream baseline and permanent quiet digital cap. See ALARM-WAKE-UP.md for exact limitations; device output is not certified.",
       "id": "F140",
       "tests": [
         {
@@ -4310,26 +4163,18 @@
       "screens": "16,29",
       "source": "https://sleep.urbandroid.org/docs/sleep/sensors.html",
       "implementation": [
-        "MotionSensorActivity.java",
-        "MotionProfile.java",
-        "MotionFilter.java",
-        "MotionPort.java",
-        "MotionPreview.java",
+        "MotionCalibration.java",
+        "MotionCalibrationActivity.java",
         "MotionSettings.java",
-        "MotionSignalChart.java",
+        "MotionProfile.java",
         "TrackingService.java",
-        "TrackingActivity.java"
+        "SensorProvenance.java"
       ],
-      "validation": "MotionConfigurationFlowTest passes at d6389dc/CI40027277488 with seven individually reviewed originals; saved profile, conflict/unsupported/error and cleanup verified using fake sensors. Helper/error/footer visibility now passes scoped review. Flat phone glyph still differs from the reference illustration; real hardware/overnight evidence absent.",
+      "validation": "Production assembleDebug6578575 passed28s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
       "status": "partial",
-      "notes": "Foreground-only real accelerometer preview, actual RMS bins with missing data blank, saved Low/Medium/High gain consumed by smart-wake/automatic-stillness heuristics on the next run. Raw epochs remain unchanged. Medium preserves default; gains are not clinically calibrated. Real sensor and overnight behavior unverified.",
+      "notes": "Saved measured calibration uses explicit capture, review and Save/Reset with stale-draft checks. A manual sensitivity change clears custom calibration; opening/recreating the screen never starts capture. Each new night pins its configuration; schema15/backup13 preserve provenance. Real device performance and clinical accuracy remain unverified.",
       "id": "F143",
-      "tests": [
-        {
-          "name": "MotionConfigurationFlowTest",
-          "path": "app/src/androidTest/java/org/sleepwell/app/MotionConfigurationFlowTest.java"
-        }
-      ]
+      "tests": []
     },
     {
       "feature": "Retained record date calendars",
