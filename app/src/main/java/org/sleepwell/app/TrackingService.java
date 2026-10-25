@@ -124,7 +124,7 @@ public class TrackingService extends Service implements SensorEventListener {
     private void beginSonar(){
         if(checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)throw new SecurityException("Allow microphone access before starting contactless recording.");
         manualToken=UUID.randomUUID().toString();
-        Prefs.of(this).edit().putString("trackingError","").putString("audioError","").apply();
+        Prefs.of(this).edit().putString("trackingError","").putString("audioError","").putString("snoreCueError","").apply();
         SonarNight.Clock time=new SonarNight.Clock(){public long millis(){return SystemClock.elapsedRealtime();}public long wall(){return System.currentTimeMillis();}public void idle()throws InterruptedException{Thread.sleep(5);}};
         SonarNight[] owner={null};
         StoreFactory storage=storeFactory;
