@@ -16,7 +16,7 @@ Latest user deadline: **5:23 PM Riyadh (14:23 UTC)**. New unit tests, native tes
 batches, screenshot reviews, evidence archiving and broad audits are stopped.
 The next APK requires a production build; build failures are fixed as integration.
 
-Latest production source **760381c** builds in **41s**, with schema15 and backup
+Latest production source **90e2583** builds in **14s**, with schema15 and backup
 format13. The frozen debug APK has the same signing key as the installed app.
 This is **build-only evidence**; no new tests, lint, screenshots or physical-phone
 runs were performed in this window. The phone remains on571018b/schema7.
@@ -35,6 +35,8 @@ This window adds actual production paths for:
   real binaural generation.
 - Whole-library audio ZIP restore, reviewed private-diary import, standard reviewed
   alarm/timer requests and explicit read-only sleep-summary sharing.
+- Separately consented contactless Sound/Vibration/Both snoring cues with channel
+  revocation, headphone routing and output/capture exclusion.
 - Explicit per-night contactless ten-second WAV clips from the shared microphone
   stream, using actual persisted intervals, existing limits and the normal player.
 - Manual and separately consented automatic whole-library audio-folder backups,
@@ -217,7 +219,7 @@ These groups remain open even after the priority list above is addressed.
   screenshots and verify saved/reopened state and unchanged existing data.
 - [x] Historical0a821eb batch passed1063 pure and108 native methods/all154 originals.
   This evidence predates the current production-only source and does not validate it.
-- [x] Build current production debug APK760381c and verify the local signing key.
+- [x] Build current production debug APK90e2583 and verify the local signing key.
   No new test/lint/screenshot batches ran; physical acceptance stays open.
 - [ ] Verify real overnight background behavior, capture quality, battery use and
   interruptions when a suitable controlled test is available.

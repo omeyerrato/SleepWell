@@ -5,12 +5,13 @@ It is a delivery inventory, not full functional or design acceptance.
 
 ## Final candidate
 
-- Application source: **760381c**; main database **schema 15**; portable metadata
+- Application source: **90e2583**; main database **schema 15**; portable metadata
   **backup format 13**.
-- Final debug APK build: **PASS, 41 seconds**, as reported by the integration owner.
+- Final debug APK build: **PASS, 14 seconds**, as reported by the integration owner.
   Its signer matches the installed debug key.
+- Download: [development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-90e2583).
 - APK SHA-256:
-  `cadc526224ba74f24c13d5baa97a2b4ee085b2219d0a9b7e3761ae7dcedfa39e`
+  `7913bb2b72fa3568d629509ebd634c186d5d7a55c109dee685a520078a2755d0`
 - The phone remains on **571018b / schema 7**. This candidate has **not** been installed.
 - At the user's request this window used production builds only: no new unit/native
   test batches, device actions, screenshots, broad audits or design reviews. Earlier
@@ -34,8 +35,10 @@ It is a delivery inventory, not full functional or design acceptance.
 
 ### Sleep sensing, noise and snoring
 
-- Optional vibration-only snoring cues during explicitly admitted contactless
-  analysis, with output-error reporting and cue-contaminated capture gaps.
+- Contactless snoring cues now support Sound/Vibration/Both through separate
+  remembered sound/vibration opt-ins. Each night pins permitted channels; Off
+  revokes pending channel output. Headphone-only routing, cooldown/session bounds
+  and cue/settling capture gaps are preserved. Actual output/efficacy is unverified.
 - Separate per-night contactless clip consent now saves actual ten-second16kHz
   mono WAVs from the existing filtered capture stream, with no second microphone.
   Existing60/night and30-second limits, retention and event linkage are reused;
@@ -89,8 +92,9 @@ It is a delivery inventory, not full functional or design acceptance.
 **Implementation still incomplete or outside this delivered subset**
 
 - [ ] Validated sleep-stage/REM detection and REM-triggered dream cues.
-- [ ] Sound-based contactless snoring cues; contactless cue output remains vibration-only.
-  Shared-stream WAV clips now exist but actual capture/playback remains unverified.
+- [ ] Actual contactless capture/playback and snoring-cue effectiveness; shared-stream
+  WAV clips and separately consented Sound/Vibration/Both paths now have code.
+  Their runtime/hardware acceptance remains outstanding.
 - [ ] Semantic object recognition and speech transcription/instrument recognition.
 - [ ] Direct vendor-account cloud clients; SAF providers handle their own remote upload.
 - [ ] Proven jet-lag prevention or clinical chronotype/regularity classification.

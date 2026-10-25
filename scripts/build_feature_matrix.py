@@ -718,7 +718,7 @@ for parent, component in {
 
 for row in rows:
     if row["feature"] in set(passing_increment) | {"Power nap", "Nap timer", "Achievements"}:
-        row["validation"] += " Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS41s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green."
+        row["validation"] += " Final0a821eb CI40170787840 PASS44classes/108methods/all154 originals; exact source1063pure/129suites PASS14s, debug/native APKs+lint0errors142warnings PASS1m36. Raw evidence:verification/2026-10-25-final-feature-batch. Prior failed runs remain historical, not relabelled green."
     if row["feature"] == "Power nap":
         row["notes"] = row["notes"].replace("Save/cancel/recreate/reopen, actual delivery/OEM and physical motion still need separate evidence.", "Private save/cancel/recreate/start/reopen and unchanged ordinary-nap regression pass. Actual timer delivery/OEM and physical motion remain unverified.")
     elif row["feature"] == "Nap timer":
@@ -796,7 +796,7 @@ SPRINT_FEATURES = {
 for row in rows:
     update=SPRINT_FEATURES.get(row["feature"])
     if update:
-        row.update(status="partial",implementation=update[0],notes=update[1],validation="Combined production assembleDebug760381c passed41s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.")
+        row.update(status="partial",implementation=update[0],notes=update[1],validation="Combined production assembleDebug90e2583 passed14s; no new unit/native/lint/screenshot or physical runs per user instruction. Compilation is not functional acceptance.")
 
 # Final production additions. Partial status preserves missing subfeatures and acceptance.
 FINAL_FEATURES = {
@@ -813,21 +813,25 @@ FINAL_FEATURES = {
 for row in rows:
     update=FINAL_FEATURES.get(row["feature"])
     if update:
-        row.update(status="partial", implementation=update[0], notes=update[1], validation="Production assembleDebug760381c passed41s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.")
+        row.update(status="partial", implementation=update[0], notes=update[1], validation="Production assembleDebug90e2583 passed14s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.")
     if row["feature"] in ("Automatic tracking", "After-fall-asleep / false-start rejection"):
         row["notes"] = row["notes"].replace("dependency correction/compile and real Google delivery pending", "published21.4.0 dependency compiles; real Google delivery remains unverified")
     if row["feature"] in ("Gentle volume ramp", "Sunrise alarm", "Separate sound/vibration delay", "Phone flashlight wake-up"):
         row["notes"] = row["notes"].replace("No speaker boost or smart-light control.", "Optional per-session Extra loud processing is separately documented; no speaker-limit bypass or smart-light control in this path.")
     if row["feature"] in ("Smile task", "Internet radio / Spotify", "Multi-metric sleep score", "Pair tracking", "Community research sharing", "Laughter / instrument microphone task", "Anti-snoring cues", "Headphone-only cues / intensity / repeat", "Automatic tracking", "After-fall-asleep / false-start rejection"):
-        row["validation"] = "Integrated production assembleDebug760381c passed41s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance."
+        row["validation"] = "Integrated production assembleDebug90e2583 passed14s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance."
     row["implementation"] = ["BinauralTones.java" if name=="Binaural.java" else name for name in row["implementation"]]
 
 # Shared-stream recording remains explicit per night; old analysis-only defaults stay off.
 for row in rows:
     if row["feature"] in ("Contactless sonar", "Triggered sound recordings", "Noise library", "Automatic sound labels", "Correct sound labels / favorites / export"):
         row["implementation"] += [name for name in ["SonarClipPolicy.java", "SonarSoundClips.java", "SonarClipWriter.java", "SonarNightSound.java", "SonarEntry.java", "TrackingActivity.java"] if name not in row["implementation"]]
-        row["notes"] += " Source760381c adds a separate default-off per-night contactless clip choice, pinned through visible-entry/delay/resume ownership. Actual filtered16kHz mono PCM from the same capture yields complete ten-second noise-triggered WAVs only after durable interval checks. Existing60/night/30second budgets, category inclusion, retention, event linkage, player and exports are reused. Gaps/cues/pause/stop discard incomplete clips; model failure stops shared-stream clips too. No second microphone or schema change. Real capture/playback/retention behavior remains unverified."
-        row["validation"] += " Shared-stream clip addition: production assembleDebug760381c PASS41s; build-only, no new tests/device actions."
+        row["notes"] += " Source90e2583 adds a separate default-off per-night contactless clip choice, pinned through visible-entry/delay/resume ownership. Actual filtered16kHz mono PCM from the same capture yields complete ten-second noise-triggered WAVs only after durable interval checks. Existing60/night/30second budgets, category inclusion, retention, event linkage, player and exports are reused. Gaps/cues/pause/stop discard incomplete clips; model failure stops shared-stream clips too. No second microphone or schema change. Real capture/playback/retention behavior remains unverified."
+        row["validation"] += " Shared-stream clip addition: production assembleDebug90e2583 PASS14s; build-only, no new tests/device actions."
+
+for row in rows:
+    if row["feature"] in ("Anti-snoring cues", "Headphone-only cues / intensity / repeat"):
+        row.update(status="partial", implementation=["SnoreCuePolicy.java", "SnoreCueOutput.java", "HeadphoneCue.java", "HeadphoneSound.java", "SonarSnoreCues.java", "SnoringCuesActivity.java", "SonarNight.java"], validation="Production assembleDebug90e2583 PASS14s; build-only. No new tests, physical output or overnight efficacy checks.", notes="Actual snoring estimates can request bounded cues under existing30/session and two-minute policy. Contactless Sound/Vibration/Both now intersects global selected mode with separate default-off remembered sound/vibration consents frozen per night. Current Off revokes each channel independently; pending asynchronous sound cannot pass through remaining vibration consent. Headphone-only routing is retained without speaker fallback. Output/route/settling gaps are installed before dispatch and late callbacks suppressed; pause/stop closes owned outputs. Shared capture excludes masked PCM/movement and drops partial clips. Real headphone/device output, detection accuracy and anti-snoring efficacy remain unverified.")
 
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
@@ -856,7 +860,7 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Current production source **760381c** builds a debug APK in **41s**, database
+Current production source **90e2583** builds a debug APK in **14s**, database
 schema15 and backup format13. This six-hour feature window uses **build-only**
 evidence: no new unit/native/lint/screenshot batches or physical-phone actions.
 The APK retains the installed debug signing key. It has not been installed.

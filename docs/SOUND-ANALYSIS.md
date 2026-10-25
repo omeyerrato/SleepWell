@@ -4,7 +4,7 @@ This implementation adds a genuine on-device YAMNet classifier, not an amplitude
 
 ## Current production addition — 25 October
 
-Source760381c builds in41s; this addition has build-only evidence, with no new
+Source90e2583 builds in14s; this addition has build-only evidence, with no new
 unit/native/lint/screenshot or phone runs. Earlier evidence below applies to its
 stated historical source only.
 
@@ -27,7 +27,13 @@ hardware quality, capture continuity and playback remain unverified.
 
 The historical backup-format3 discussion below is superseded by metadata format13
 and the separate whole-library v2 ZIP restore/optional audio-folder backup paths.
-Contactless snoring cues are optional vibration-only; sound cues remain incomplete.
+Contactless snoring cues now separately admit sound and vibration, intersected
+with the selected global Sound/Vibration/Both mode. Each channel rechecks its own
+consent asynchronously, including every repeat; one remaining consent cannot
+authorize the other channel. Headphone-only routing never falls back to speaker.
+Output and settling intervals are masked before dispatch, including bounded route
+admission; late callbacks are suppressed. Future-night consent is remembered,
+while current Off revokes output. Actual cue output and efficacy remain unverified.
 
 ## Actual path
 

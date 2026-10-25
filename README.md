@@ -12,12 +12,13 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 25 October
 
-Application source **760381c** builds with schema15 / backup format13. This
+Application source **90e2583** builds with schema15 / backup format13. This
 production-only window added alarm/snooze/reminder controls, extra-loud processing,
 additional challenges, awake estimates, motion calibration, paired/PIR inputs,
 reviewed-day SRI, nap profiles, explicit summary sharing and whole-library audio
 backups. See the [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
 [remaining checklist](docs/REMAINING-WORK.md) for exact behavior and missing scope.
+[Download the development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-90e2583).
 The candidate has build-only evidence and has not been installed on the personal
 phone. Design, runtime, overnight and actual provider acceptance remain open.
 
