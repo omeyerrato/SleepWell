@@ -64,6 +64,7 @@ PHONE_FEATURE_TESTS += ("HealthSleepStorageTest", "HealthConnectFlowTest", "Alar
 PHONE_FEATURE_TESTS += ("SmartLightStorageTest", "HomeAssistantProtocolTest", "AlarmInputsStorageTest", "AlarmInputsFlowTest", "MoonSearchStorageTest", "MoonSearchFlowTest", "TagStorageTest", "TagManagementFlowTest", "CloudBackupStorageTest", "CloudBackupFlowTest")
 PHONE_FEATURE_TESTS += ("AdvancedSnoozeStorageTest", "AdvancedSnoozeFlowTest")
 PHONE_FEATURE_TESTS += ("SearchStorageTest", "SearchFlowTest")
+PHONE_FEATURE_TESTS += ("DiaryStorageTest", "TypedWakeFlowTest", "HomeWidgetNativeTest", "AlarmTimingStorageTest", "AlarmTimingFlowTest")
 PHONE_FEATURE_FRAMES = ["calendar-rules-" + name + ".png" for name in ("initial", "draft", "saved", "reopened")]
 PHONE_FEATURE_FRAMES += ["alarm-defaults-" + name + ".png" for name in ("initial", "recreated", "saved", "reopened", "reset", "saving", "saving-recreated", "save-error", "retry")]
 PHONE_FEATURE_FRAMES += ["health-connect-" + name + ".png" for name in ("default", "configured", "synced", "source", "conflict", "kept", "unavailable", "permissions")]
@@ -75,6 +76,8 @@ PHONE_FEATURE_FRAMES += ["tags-" + name + ".png" for name in ("quantity-draft", 
 PHONE_FEATURE_FRAMES += ["cloud-backup-" + name + ".png" for name in ("destination", "saved", "reopened", "restore-review")]
 PHONE_FEATURE_FRAMES += ["advanced-snooze-" + name + ".png" for name in ("initial", "draft", "recreated", "reopened")]
 PHONE_FEATURE_FRAMES += ["search-" + name + ".png" for name in ("empty", "no-results", "record", "recreated")]
+PHONE_FEATURE_FRAMES += ["typed-wake-" + name + ".png" for name in ("config-mirror", "config-journal", "config-reopened", "mirror", "mirror-error", "journal-short", "journal-saved", "diary-list", "diary-edited", "diary-delete", "diary-empty")]
+PHONE_FEATURE_FRAMES += ["alarm-timing-" + name + ".png" for name in ("initial", "selector", "configured", "recreated", "reopened", "continuous", "never")]
 if os.environ.get("GITHUB_ACTIONS") != "true":
     raise SystemExit("This script is restricted to an ephemeral GitHub Actions emulator.")
 root = Path(__file__).resolve().parents[1]
@@ -177,6 +180,7 @@ method_counts.update({"CalendarRulesStorageTest": 4, "AlarmDefaultsStorageTest":
 method_counts.update({"HealthSleepStorageTest": 12, "HealthConnectFlowTest": 2, "AlarmDateStorageTest": 3})
 method_counts.update({"SmartLightStorageTest": 6, "HomeAssistantProtocolTest": 4, "AlarmInputsStorageTest": 3, "MoonSearchStorageTest": 3, "TagStorageTest": 8, "CloudBackupStorageTest": 5})
 method_counts.update({"AdvancedSnoozeStorageTest": 2})
+method_counts.update({"DiaryStorageTest": 10, "TypedWakeFlowTest": 2, "HomeWidgetNativeTest": 7, "AlarmTimingStorageTest": 3})
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
