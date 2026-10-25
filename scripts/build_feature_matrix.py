@@ -894,6 +894,23 @@ for row in rows:
     if row["feature"] in ("QR/barcode sequences", "Tracking pause / standby / battery-adaptive sampling", "Home widgets / shortcuts"):
         row.update(status="partial", validation="Combined production assembleDebug9c6b1c9 PASS1m23s; build-only. No new unit/native/lint/screenshot, device, camera, printer, provider or widget-host validation. Historical fixture evidence does not validate these additions.")
 
+for row in rows:
+    if row["feature"] in ("Tracking pause / standby / battery-adaptive sampling", "Charging condition / standby mode"):
+        row["implementation"] += ["TrackingBatteryReserve.java"]
+        row["notes"] = row["notes"].replace("Standby remains separate unfinished scope.", "")
+        row["notes"] += " Separate default-off battery reserve now pins a selected5/10/15/20/30percent threshold per admitted run. Known unplugged battery at/below it invokes the actual orderly stop/save/capture cleanup exactly once; unknown battery does not stop. Initial low battery cancels ARMED/DELAYED before capture or Store.begin; movement, paused and sonar runs use their real end paths. No automatic restart or alarm changes. Status/last-stop reason are visible. Existing sonar charging restrictions remain stronger. This does not guarantee enough charge to ring; actual threshold/cleanup/OS behavior remains unverified."
+        row.update(status="partial", validation="Combined production assembleDebug0e352bc PASS2m31s; build-only. No new tests/lint/screenshots, battery changes, capture, output or device actions.")
+    if row["feature"] in ("Automatic tracking", "After-fall-asleep / false-start rejection"):
+        row["implementation"] += ["AutomaticFalseStart.java", "AutomaticFalseStartStore.java", "SoundClips.java"]
+        row["notes"] += " Separate default-off false-start rejection is frozen for automatic STILLNESS runs only. Within45min, USER_PRESENT or focused tracking interaction must be followed by2min unlocked interactive use with fresh sustained upright/movement readings; SCREEN_ON alone does not qualify. Pause/alarm/ownership changes suppress it. Actual orderly interrupted stop drains mic/awake work, then transactionally ends and may delete only this newly created untouched local movement record with matching identity and no review/edit/import/link uncertainty. Otherwise the record remains for review. Only its pending audio deletion journal is recovered; unsuccessful unlink stays pending. Both retained/discarded false-start paths skip successful-night backup, never re-arm, and report the outcome. Phone use is a heuristic, not measured wake/sleep; actual false-positive and cleanup behavior remains unverified."
+        row.update(status="partial", validation="Combined production assembleDebug0e352bc PASS2m31s; build-only. No new tests/lint/screenshots, phone interaction, capture or deletion runtime runs.")
+    if row["feature"] in ("Gentle volume ramp", "Separate sound/vibration delay", "Phone flashlight wake-up"):
+        row["implementation"] += ["NapActivity.java", "AlarmWakeTimes.java"]
+        row["notes"] += " Nap's Gentle detail now exposes actual sound delay, independent vibration start, screen sunrise and flashlight settings; both editors share Off/30s/every1–24minute choices. Draft values feed existing AlarmWakePolicy/AlarmPlayback/AlarmVibration/AlarmTorch after Start/Save; opening/cancelling never starts output. Expanded nap selectors restore to their own setting."
+        row["validation"] += " New controls: combined production assembleDebug0e352bc PASS2m31s only; no output/device verification."
+
+rows.append(dict(feature="Odd/even ISO weeks and anchored day intervals", screens="04,05 + repeat detail", source=SOURCE+"alarms/alarm_settings.html", implementation=["AlarmRepeat.java", "AlarmRepeatActivity.java", "Alarm.java", "AlarmSkips.java", "CalendarAlarms.java", "Scheduler.java", "AlarmEditorActivity.java", "Backup.java", "HomeWidgetData.java", "SnoozeDeadline.java"], validation="Combined production assembleDebug0e352bc PASS2m31s; build-only, no tests/lint/screenshots or actual alarm/clock/DST/device runs.", status="partial", notes="Strict optional repeatRule v1 adds odd/even ISO-week parity on selected weekdays or every1..365 calendar days forward from a chosen anchor. Existing omitted weekly/one-shot JSON and schedule keys remain unchanged. Interval alarms retain an all-weekday recurrence sentinel, avoiding accidental one-shot consumption. Clock and sunrise next/occurs, polar fallback, skip-date eligibility, excluded dates and calendar fingerprints use the rule; invalid metadata blocks scheduling/import/projection. New private restored detail requires Use then Save alarm and fences stale draft results. One-time Run on and elapsed nap timers are separate incompatible modes; behavior defaults do not copy recurrence identity. Main alarm labels show the rule. Actual scheduling/consumption/restore and UI behavior remain unverified."))
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -921,12 +938,12 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Current follow-up production source **9c6b1c9** adds weekly nap schedules, offline
-narration, semantic object challenges, pre-travel sleep shifts and exact-second
-reviewed timers, directly reachable custom timers, battery-aware movement/light
-sampling, printable QR enrollment and snooze-aware widgets. Combined production
-build **PASS1m23s**. Database
-schema15 and backup format13 are unchanged. This feature window uses **build-only**
+Current follow-up production source **0e352bc** adds advanced calendar recurrence,
+battery-reserve stopping and guarded automatic false-start rejection, alongside
+the preceding alarm/tracking/data features. Nap gentle controls now include sound
+and vibration delays, flashlight and every1–24minute timing choice. Combined
+production build **PASS2m31s**. Database schema15 and backup format13 are unchanged.
+This feature window uses **build-only**
 evidence: no new unit/native/lint/screenshot batches or physical-phone actions.
 The APK retains the installed debug signing key. It has not been installed.
 Latest actual phone installation remains571018b (application sourcedc30736), schema7.

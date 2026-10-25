@@ -1,5 +1,16 @@
 # Automatic start: foreground-armed candidate
 
+Current-source note —25October2026: the original milestone below is historical.
+Optional recurring movement starts, armed charging/screen-off conditions and
+Google Sleep API confidence input were added later. Source0e352bc also adds
+default-off battery reserve and separate post-start false-start rejection for
+automatic STILLNESS. Sustained fresh unlocked phone-use evidence can end the run;
+only its untouched owned record may be discarded, while changed/uncertain data
+stays interrupted for review. There is no automatic restart or measured sleep
+certainty. [Current delivery behavior and limits](2026-10-25-FEATURE-DELIVERY.md)
+and [feature matrix](FEATURE-MATRIX.md) supersede obsolete absence statements below.
+These latest additions have build-only evidence; no new runtime/device runs.
+
 This is an opt-in, **one-night foreground wait**, not unattended sleep recognition.
 Open Tracking setup → Choose automatic start, select a radio option, then Arm tonight.
 Saving a preference alone does not start sensors or schedule background work.

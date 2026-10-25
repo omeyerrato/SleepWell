@@ -215,3 +215,40 @@ not runtime or visual acceptance, and are absent from the earlier53a0c08 APK.
 Published [9c6b1c9 development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261025-9c6b1c9),
 214821691bytes. GitHub uploaded SHA256 matches the frozen local artifact:
 `628fda78cabef51496f6851b3c8e449852df5087fb546f278462701d3a80423c`.
+
+## Advanced recurrence and automatic-tracking follow-up
+
+Application **0e352bc** builds **PASS2m31s** with the original installed signer,
+schema15 / backup13 unchanged. Root merged parallel implementations and completed
+the private Activity, backup-validation, alarm-label and stop-cleanup hooks.
+
+- **Repeats:** optional strict repeatRule v1 adds selected weekdays on odd/even
+  ISO weeks or every1..365 calendar days forward from a chosen anchor. Interval
+  alarms retain recurring status; old weekly/one-shot JSON stays unchanged. Clock
+  and sunrise projections, polar fallback, occurs/skip/excluded-date/calendar
+  identity and runtime validation use the same rule. Explicit detail Use then
+  Save alarm; restored stale results cannot replace a changed draft. Elapsed naps
+  and one-time Run on are distinct modes. Existing alarms/defaults stay as saved.
+- **Battery reserve:** default-off5/10/15/20/30% threshold pinned per admitted run.
+  A known unplugged reading at/below it claims one orderly stop/save, including
+  movement/paused/sonar paths. Initial ARMED/DELAYED cancellation creates no fake
+  night; unknown battery keeps tracking with visible status. No restart or alarm
+  changes. Existing sonar charging prerequisites remain stronger.
+- **Automatic false starts:** separate default-off choice for STILLNESS starts.
+  Within45min, actual USER_PRESENT/focused interaction plus2min unlocked use and
+  fresh sustained upright/movement can stop capture. Screen-on alone cannot.
+  Pause/alarm/owner changes suppress the heuristic. After mic/Awake drain, a
+  transaction checks current identity and modification/provenance evidence before
+  deleting only this run's untouched local record; otherwise it remains interrupted
+  for review. Audio unlink is restricted to that session's deletion journal; failed
+  files stay pending. Both outcomes skip successful-night backup and never re-arm.
+- **Gentle controls:** Nap now exposes sound delay, independent vibration start
+  and flashlight alongside sunrise/ramp. Both editors share Off/30s/all1–24minute
+  values; expanded nap selectors restore to their correct setting. Values reach
+  the existing actual wake policy after Start/Save, never while choosing them.
+
+Commits63cc7b7 (reserve),cb245e2 (repeat rules),28ceaa4 (false starts),
+258174e/b9f5a4c/e6f6ad8 (gentle controls) and0e352bc (integration).
+No new tests, lint, screenshots, alarms, microphone, sensor, camera, provider or
+personal-phone actions ran. OS delivery, accuracy, data cleanup and visual/runtime
+acceptance remain unverified. The earlier9c6b1c9 APK excludes this follow-up.

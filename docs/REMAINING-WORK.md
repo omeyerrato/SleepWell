@@ -73,6 +73,31 @@ They are included in the [9c6b1c9 development APK](https://github.com/omeyerrato
 whose uploaded size/SHA256 match the frozen locally signed artifact. It remains
 uninstalled on the phone.
 
+### Advanced repeats and automatic-tracking follow-up
+
+Combined source **0e352bc** builds **PASS2m31s**, original installed signer,
+schema15 / backup13 unchanged. These are source paths with build-only evidence:
+
+- [x] Odd/even ISO-week alarms and anchored every1..365day repeats, including
+  sunrise, ordinary projections, skipped dates, actual delivery eligibility,
+  backup validation and alarm-list labels. Explicit Use then Save alarm required.
+- [x] Separate default-off battery reserve stops/saves tracking at the selected
+  low unplugged threshold, cancels initial waiting before capture and never
+  changes alarms or restarts tracking. Unknown battery never triggers it.
+- [x] Separate default-off automatic STILLNESS false-start rejection requires
+  sustained unlocked phone use and fresh upright/movement evidence within45min.
+  It drains capture and transactionally discards only the current untouched owned
+  record; edited/linked/uncertain records remain interrupted for review. No restart
+  or successful-night backup; audio deletion uses only its session journal.
+- [x] Nap Gentle now exposes real sound delay, independent vibration timing and
+  flashlight; both editors offer Off/30s/every1–24minute timing values.
+
+- [ ] Actual odd/even/interval/sunrise delivery, clock/DST/calendar/restore behavior.
+- [ ] Real low-battery cleanup, alarm preservation and false-start accuracy/deletion.
+- [ ] Expanded gentle-control persistence and physical effects on a controlled device.
+
+These additions are absent from the earlier9c6b1c9 APK. Full parity is unfinished.
+
 This window adds actual production paths for:
 
 - Extra loud optional per-player+6dB processing, with max-stream fallback.

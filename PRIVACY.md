@@ -64,6 +64,15 @@ profile files never carry active authority; main-data restore strips ownership
 and clears group authority after commit. These private preferences are separate
 from the main metadata backup.
 
+Optional automatic awake-start rejection uses Android unlock/screen state and
+already-admitted motion samples during the first45minutes of an automatic
+stillness-start recording. Default off, it can stop capture and discard only that
+run's untouched local record; edited, linked or uncertain records stay interrupted
+for review. Any clip deletion is confined to that session's existing cleanup
+journal. Both outcomes skip successful-night backup and do not restart tracking.
+Battery reserve is a separate default-off local battery monitor that ends tracking
+at the selected unplugged threshold; it does not change alarm settings.
+
 ## Permissions
 
 Exact alarms schedule wake-up times. Notifications and full-screen access display alarm/tracking status. Audio settings change the alarm stream while ringing and conditionally restore the prior volume. Vibration, torch and screen/light effects are optional. A bounded wake lock supports sensor delivery. Foreground services visibly run alarms and explicitly admitted tracking/Speak. Microphone and camera access are optional and requested in context. NFC is used during enrollment or a challenge. Optional step/activity, usage access, calendar, sleep Health Connect and Do Not Disturb access support their named features. Accessibility is enabled separately in Android Settings.

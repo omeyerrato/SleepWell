@@ -3,6 +3,21 @@
 The full BUILD-PROMPT remains the goal. There are 36 intended phone screens;
 wearables/watch companions and hardware vitals are excluded. No claim of all-screen final acceptance is made. The first UI pass was rejected by the user for visual fidelity.
 
+## Current execution override — 25 October 2026
+
+The latest user direction is features first, using parallel implementation agents
+in separate worktrees. The dedicated design reviewer is stopped. Broad design,
+bug and security work is deferred, as are new unit/native/lint/screenshot batches.
+Use essential production builds for integration. Do not act on the personal phone
+(including installation, ADB queries, capture, microphone, alarm or other outputs).
+The quiet-device procedures below are historical, not current authorization.
+
+Current application candidate9c6b1c9 is published, signed with the installed debug
+key, and has build-only evidence; the personal phone remains on571018b/schema7.
+FEATURE-MATRIX.md and REMAINING-WORK.md carry current implementation/acceptance
+bounds. The numbered sequence below describes the original full plan and does
+not reinstate its old ordering or stopped reviewer.
+
 1. Repair the root compositions against the boards: Tonight, Alarms, Report and Settings (latest user override).
    Correct proportion, dock alignment, icon vocabulary and system-bar continuity.
    Use actual saved records; a short record is not an overnight fixture.
