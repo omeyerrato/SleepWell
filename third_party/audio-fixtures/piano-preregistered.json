@@ -34,7 +34,12 @@
       "license": "CC0-1.0",
       "source_html_sha256": "742711903e97786840596e721302b4a0e9f53b84921b62a66b7faf9cca91068e",
       "preview": "https://cdn.freesound.org/previews/203/203494_1622584-hq.mp3",
-      "expected_piano": true
+      "expected_piano": true,
+      "preview_sha256": "5ae88134ee5a70a63a10992d2464fa4749a1bc732f925068483da5aaf994f0b4",
+      "pcm_sha256": "b928f0b02e7f97cc075f40332bae181f7095197821baf520cc030a12825aaccf",
+      "samples": 537011,
+      "duration_ms": 33563,
+      "derivation": "Entire HQ MP3 preview; FFmpeg8.1.1 mono16000 PCM16 LE; no crop, padding, repetition or gain"
     },
     {
       "name": "piano-grand",
@@ -43,7 +48,12 @@
       "license": "CC0-1.0",
       "source_html_sha256": "d0b6d85e65a5dec58b228d6d1dc439111cc6f4ff12142986e5b495230341830c",
       "preview": "https://cdn.freesound.org/previews/788/788058_14599654-hq.mp3",
-      "expected_piano": true
+      "expected_piano": true,
+      "preview_sha256": "278a96d1a6477c0ff606982a90756dd385fc128a2414e4f5c5b15cf0f6d4dfd2",
+      "pcm_sha256": "0d82008106a44d3752847ba06a5648656066820fe4bda34ad18e7f24a3bf7017",
+      "samples": 448000,
+      "duration_ms": 28000,
+      "derivation": "Entire HQ MP3 preview; FFmpeg8.1.1 mono16000 PCM16 LE; no crop, padding, repetition or gain"
     }
   ]
 }
