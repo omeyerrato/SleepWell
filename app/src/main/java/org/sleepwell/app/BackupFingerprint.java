@@ -6,7 +6,7 @@ import java.security.*;
 
 /** Typed, ordered identity of every application table that replacement can affect. */
 final class BackupFingerprint {
-    static final String[] TABLES={"alarms","sessions","epochs","tracking_pauses","record_edits","record_create_requests","sound_events","clips","pending_clip_deletes","health_imports","health_exports","health_state"};
+    static final String[] TABLES={"alarms","sessions","epochs","tracking_pauses","record_edits","record_create_requests","sound_events","clips","pending_clip_deletes","health_imports","health_exports","health_state","awake_runs","awake_estimates","echo_runs","echo_periods","pair_links","pair_packets","pair_windows"};
     static String read(Store store){try{
         MessageDigest digest=MessageDigest.getInstance("SHA-256");
         for(String table:TABLES){part(digest,table);try(Cursor rows=store.getReadableDatabase().rawQuery("SELECT * FROM "+table+" ORDER BY rowid",null)){
