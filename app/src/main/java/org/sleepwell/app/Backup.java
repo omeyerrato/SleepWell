@@ -34,7 +34,7 @@ final class Backup {
             }
         }
         if(format>=3){Set<Long> edits=new HashSet<>();JSONArray overlays=root.getJSONArray("edits");for(int i=0;i<overlays.length();i++){JSONObject e=overlays.getJSONObject(i);long id=e.getLong("session");JSONObject s=byId.get(id);if(!edits.add(id)||s==null||s.isNull("end")||e.getLong("updated")<=0||e.optInt("reverted",0)<0||e.optInt("reverted",0)>1)throw new JSONException("Invalid record edit");if(s.getString("source").equals("manual")&&e.optInt("reverted",0)!=0)throw new JSONException("Manual records cannot be reverted");try{Records.draft(e).validate(s.getLong("start"),s.getLong("end"),s.getString("source").equals("manual"),System.currentTimeMillis());}catch(IllegalArgumentException bad){throw new JSONException(bad.getMessage());}}for(JSONObject s:byId.values())if(s.getString("source").equals("manual")&&!edits.contains(s.getLong("id")))throw new JSONException("Manual record details are missing");}
-        if(format>=4)SoundEventBackup.validate(root,byId);
+        if(format>=4)SoundEventBackup.validate(root,byId);SoundEventBackup.validateClipFavorites(root,byId);
         if(format>=5)SensorBackup.validate(root,byId);
         if(format>=6)SoundAnalysisProvenance.validateExport(root);
         if(format>=7)HealthSleepCodec.validate(root);
@@ -63,7 +63,7 @@ final class Backup {
         if(format>=9)for(int n=0;n<root.getJSONArray("echo_periods").length();n++){JSONObject e=root.getJSONArray("echo_periods").getJSONObject(n);long id=e.getLong("session");if(unfinished.contains(id))endpoints.put(id,Math.max(endpoints.get(id),e.getLong("end")));}
         if(format>=11)for(int n=0;n<root.getJSONArray("pir_samples").length();n++){JSONObject e=root.getJSONArray("pir_samples").getJSONObject(n);long id=e.getLong("session");if(unfinished.contains(id))endpoints.put(id,Math.max(endpoints.get(id),e.getLong("time")));}
         db.beginTransaction();try {
-            guard.run();AwakeStore.erase(db);HealthSleepTables.restored(db);
+            guard.run();AwakeStore.erase(db);HealthSleepTables.restored(db);db.delete("portable_clip_favorites",null,null);
             for(JSONObject clip:store.rows("SELECT * FROM clips")){guard.run();SoundClips.stage(store,clip);}db.delete("sound_events",null,null);db.delete("record_create_requests",null,null);db.delete("alarms",null,null);db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null);db.delete("sessions",null,null);db.delete("clips",null,null);
             JSONArray alarms=root.getJSONArray("alarms");for(int i=0;i<alarms.length();i++){guard.run();JSONObject portable=new JSONObject(alarms.getJSONObject(i).toString());portable.remove("weeklyNapOwner");Alarm a=Alarm.read(portable);NextAlarmOverride imported=a.nextOverride;a.enabled=false;AlarmSkips.clear(a);a.setNextOverride(imported);Naps.restored(a);if(a.tone.startsWith("content:"))a.tone="daybreak";store.save(a);}
             for(int i=0;i<sessions.length();i++){
@@ -75,7 +75,7 @@ final class Backup {
             if(pauses!=null)for(int i=0;i<pauses.length();i++){guard.run();JSONObject p=pauses.getJSONObject(i);ContentValues v=new ContentValues();v.put("id",p.getLong("id"));v.put("session",p.getLong("session"));v.put("start",p.getLong("start"));v.put("end",p.isNull("end")?endpoints.get(p.getLong("session")):p.getLong("end"));db.insertOrThrow("tracking_pauses",null,v);}
             if(format>=3){JSONArray edits=root.getJSONArray("edits");for(int i=0;i<edits.length();i++){guard.run();JSONObject edit=edits.getJSONObject(i);ContentValues v=Records.values(edit.getLong("session"),Records.draft(edit),edit.getLong("updated"));v.put("reverted",edit.optInt("reverted",0));db.insertOrThrow("record_edits",null,v);}}
             if(format>=8)AwakeBackup.restore(store,root,guard);if(format>=9)EchoPeriods.restore(store,root,guard);if(format>=10)PairMotionBackup.restore(store,root.getJSONObject("paired_motion"),guard);if(format>=11)PirStore.restore(store,root,guard);if(format>=12)DreamCueBackup.restore(store,root.getJSONObject("dream_cues"),guard);
-            if(format>=4)SoundEventBackup.restore(store,root.getJSONArray("sound_events"),guard);
+            if(format>=4)SoundEventBackup.restore(store,root.getJSONArray("sound_events"),guard);SoundEventBackup.restoreClipFavorites(store,root,guard);
             guard.run();
             db.setTransactionSuccessful();
         }finally {db.endTransaction();}
