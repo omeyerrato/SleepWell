@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AlarmVibrationTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:47:47.468Z" hostname="DESKTOP-1UTDMNE" time="0.019">
+  <properties/>
+  <testcase name="factoryAndReleaseFailuresAreBounded" classname="org.sleepwell.app.AlarmVibrationTest" time="0.006"/>
+  <testcase name="immediateStartsOnceAndCloseCancelsOnce" classname="org.sleepwell.app.AlarmVibrationTest" time="0.0"/>
+  <testcase name="unavailableOrThrowingHardwareGetsOneAttemptAndOneError" classname="org.sleepwell.app.AlarmVibrationTest" time="0.0"/>
+  <testcase name="policyPreservesLegacyImmediateDefaultAndDisablesQuietOrOptOut" classname="org.sleepwell.app.AlarmVibrationTest" time="0.0"/>
+  <testcase name="backupBypassesDelayButCannotStartAnAlreadyPlayingOwnerAgain" classname="org.sleepwell.app.AlarmVibrationTest" time="0.0"/>
+  <testcase name="livenessLossBeforeAndAfterStartClosesPermanently" classname="org.sleepwell.app.AlarmVibrationTest" time="0.0"/>
+  <testcase name="negativeElapsedCannotBypassAPositiveDelay" classname="org.sleepwell.app.AlarmVibrationTest" time="0.0"/>
+  <testcase name="restartedOwnerUsesOriginalOccurrenceElapsedTime" classname="org.sleepwell.app.AlarmVibrationTest" time="0.0"/>
+  <testcase name="delayedOutputDoesNotAllocateUntilTheExactBoundary" classname="org.sleepwell.app.AlarmVibrationTest" time="0.007"/>
+  <testcase name="livenessIsRecheckedAfterLazyAllocationAndStart" classname="org.sleepwell.app.AlarmVibrationTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AutomaticSleepTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:47:47.554Z" hostname="DESKTOP-1UTDMNE" time="0.02">
+  <properties/>
+  <testcase name="disallowsManualAndOutOfBoundSchedules" classname="org.sleepwell.app.AutomaticSleepTest" time="0.002"/>
+  <testcase name="missingSensorDataCannotCountAsStillness" classname="org.sleepwell.app.AutomaticSleepTest" time="0.002"/>
+  <testcase name="elapsedRealtimeTriggerDoesNotConsultChangingWallClock" classname="org.sleepwell.app.AutomaticSleepTest" time="0.0"/>
+  <testcase name="movementRestartsThePeriod" classname="org.sleepwell.app.AutomaticSleepTest" time="0.002"/>
+  <testcase name="screenUseResetsTheEntireQuietPeriod" classname="org.sleepwell.app.AutomaticSleepTest" time="0.003"/>
+  <testcase name="timerAloneNeverInventsMotionEvidence" classname="org.sleepwell.app.AutomaticSleepTest" time="0.0"/>
+  <testcase name="invalidEnergyNeverCountsAsQuiet" classname="org.sleepwell.app.AutomaticSleepTest" time="0.003"/>
+  <testcase name="reversedSensorTimeIsRejected" classname="org.sleepwell.app.AutomaticSleepTest" time="0.0"/>
+  <testcase name="cancelIsTerminalAndCannotStartLater" classname="org.sleepwell.app.AutomaticSleepTest" time="0.002"/>
+  <testcase name="fifteenMinutesOfContinuousScreenOffLowMotionStarts" classname="org.sleepwell.app.AutomaticSleepTest" time="0.001"/>
+  <testcase name="sparseEventsFailCoverageEvenWithoutLargeGaps" classname="org.sleepwell.app.AutomaticSleepTest" time="0.001"/>
+  <testcase name="timeTriggerDoesNotPretendToInferSleep" classname="org.sleepwell.app.AutomaticSleepTest" time="0.001"/>
+  <testcase name="fourHourExpiryWinsEvenWithNoEvents" classname="org.sleepwell.app.AutomaticSleepTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

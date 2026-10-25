@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.HomeAssistantHttpTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:47:49.623Z" hostname="DESKTOP-1UTDMNE" time="0.714">
+  <properties/>
+  <testcase name="readOnlyCheckUsesGetNoBodyAndVerifiedHttpsPolicy" classname="org.sleepwell.app.HomeAssistantHttpTest" time="0.709"/>
+  <testcase name="tlsAndTimeoutErrorsDoNotExposeCredentials" classname="org.sleepwell.app.HomeAssistantHttpTest" time="0.002"/>
+  <testcase name="rejectsRedirectErrorsAndOversizedResponse" classname="org.sleepwell.app.HomeAssistantHttpTest" time="0.002"/>
+  <testcase name="sendsOnlyExplicitServiceBodyAndClosesConnection" classname="org.sleepwell.app.HomeAssistantHttpTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

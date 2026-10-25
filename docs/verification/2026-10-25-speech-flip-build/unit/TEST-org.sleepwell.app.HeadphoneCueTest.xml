@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.HeadphoneCueTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:47:49.453Z" hostname="DESKTOP-1UTDMNE" time="0.044">
+  <properties/>
+  <testcase name="unavailablePreferenceAndStuckBufferFailClosedWithBoundedWork" classname="org.sleepwell.app.HeadphoneCueTest" time="0.012"/>
+  <testcase name="secondRouteCheckRejectsLossBetweenCoordinatorCheckAndWrite" classname="org.sleepwell.app.HeadphoneCueTest" time="0.001"/>
+  <testcase name="unsupportedBluetoothAndGenericDevicesNeverStartAnAudioTrack" classname="org.sleepwell.app.HeadphoneCueTest" time="0.002"/>
+  <testcase name="routeCallbackFailureStillClosesEveryOwnedResource" classname="org.sleepwell.app.HeadphoneCueTest" time="0.003"/>
+  <testcase name="duplicateRoutesAndWrongHeadphonesAreRejected" classname="org.sleepwell.app.HeadphoneCueTest" time="0.001"/>
+  <testcase name="actualSingleSelectedRouteAllowsBoundedSoundAfterSilentSetup" classname="org.sleepwell.app.HeadphoneCueTest" time="0.001"/>
+  <testcase name="routeLossImmediatelyMutesFlushesAndFencesQueuedChunks" classname="org.sleepwell.app.HeadphoneCueTest" time="0.003"/>
+  <testcase name="repeatedCallbacksAreCoalescedAndRepeatBudgetStaysExact" classname="org.sleepwell.app.HeadphoneCueTest" time="0.007"/>
+  <testcase name="connectedOrPreferredDeviceDoesNotAuthorizeAnUnverifiedSpeakerRoute" classname="org.sleepwell.app.HeadphoneCueTest" time="0.002"/>
+  <testcase name="partialAndInitiallyFullNonblockingBuffersDoNotDropOrInventFrames" classname="org.sleepwell.app.HeadphoneCueTest" time="0.006"/>
+  <testcase name="revokedLifecycleTokenClosesAndLateCallbacksCannotRestart" classname="org.sleepwell.app.HeadphoneCueTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

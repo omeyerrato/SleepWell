@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.QrProofTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:47:51.622Z" hostname="DESKTOP-1UTDMNE" time="0.015">
+  <properties/>
+  <testcase name="fallbackIsOwnedButDoesNotRequireInventedScanProof" classname="org.sleepwell.app.QrProofTest" time="0.002"/>
+  <testcase name="matchingReplyCompletesOnlyOnceAndCannotSkipNextTask" classname="org.sleepwell.app.QrProofTest" time="0.008"/>
+  <testcase name="livenessOccurrenceUnitAndEnrolledCodeChangesPermanentlyRevokeRequest" classname="org.sleepwell.app.QrProofTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

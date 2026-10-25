@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.AutomaticTransitionTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:47:47.602Z" hostname="DESKTOP-1UTDMNE" time="0.017">
+  <properties/>
+  <testcase name="screenTurningOnAfterQualifyingSampleRevokesTheProposal" classname="org.sleepwell.app.AutomaticTransitionTest" time="0.002"/>
+  <testcase name="failedStorageStartCannotRetryOrDuplicateLater" classname="org.sleepwell.app.AutomaticTransitionTest" time="0.001"/>
+  <testcase name="expiryDoesNotCreateAnEmptyRecord" classname="org.sleepwell.app.AutomaticTransitionTest" time="0.001"/>
+  <testcase name="newMovementAfterQualifyingSampleRevokesTheProposal" classname="org.sleepwell.app.AutomaticTransitionTest" time="0.008"/>
+  <testcase name="staleQualifyingSignalCannotStartAfterMainLoopDelay" classname="org.sleepwell.app.AutomaticTransitionTest" time="0.002"/>
+  <testcase name="repeatedCallbacksStartOneRecordingOnly" classname="org.sleepwell.app.AutomaticTransitionTest" time="0.002"/>
+  <testcase name="cancelBetweenQualifyingSampleAndTickPreventsRecording" classname="org.sleepwell.app.AutomaticTransitionTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

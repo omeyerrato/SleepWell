@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.ToneWaveformTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:48:16.500Z" hostname="DESKTOP-1UTDMNE" time="0.047">
+  <properties/>
+  <testcase name="resourceBoundRejectsOversizedInputBeforeDecode" classname="org.sleepwell.app.ToneWaveformTest" time="0.036"/>
+  <testcase name="actualPcmSilenceAndHalfScaleStayDistinctNotDecorative" classname="org.sleepwell.app.ToneWaveformTest" time="0.006"/>
+  <testcase name="unsupportedAndTruncatedAudioNeverProduceAWaveform" classname="org.sleepwell.app.ToneWaveformTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

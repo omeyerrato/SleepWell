@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.TravelReminderPolicyTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:48:16.671Z" hostname="DESKTOP-1UTDMNE" time="0.002">
+  <properties/>
+  <testcase name="earlyCallbackCannotDeliver" classname="org.sleepwell.app.TravelReminderPolicyTest" time="0.001"/>
+  <testcase name="currentDueOccurrenceIsDeliverable" classname="org.sleepwell.app.TravelReminderPolicyTest" time="0.0"/>
+  <testcase name="normalInexactDelayIsToleratedWithinItsBound" classname="org.sleepwell.app.TravelReminderPolicyTest" time="0.0"/>
+  <testcase name="cancelledAndEditedPlansRejectOldCallbacks" classname="org.sleepwell.app.TravelReminderPolicyTest" time="0.0"/>
+  <testcase name="staleDaylightCuesAreSkippedRatherThanShownHoursLate" classname="org.sleepwell.app.TravelReminderPolicyTest" time="0.0"/>
+  <testcase name="duplicateAndWrongOccurrencesCannotRepost" classname="org.sleepwell.app.TravelReminderPolicyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

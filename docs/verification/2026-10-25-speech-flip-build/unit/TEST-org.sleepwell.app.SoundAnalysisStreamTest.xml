@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SoundAnalysisStreamTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:48:16.238Z" hostname="DESKTOP-1UTDMNE" time="0.005">
+  <properties/>
+  <testcase name="framesEverySampleWithoutPaddingAndDiscardsIncompleteTail" classname="org.sleepwell.app.SoundAnalysisStreamTest" time="0.001"/>
+  <testcase name="clipAndMetadataBudgetsRemainSharedAcrossRecorderRestarts" classname="org.sleepwell.app.SoundAnalysisStreamTest" time="0.001"/>
+  <testcase name="chunksPreserveSignedPcmAndNeverInferUntilAFullWindow" classname="org.sleepwell.app.SoundAnalysisStreamTest" time="0.001"/>
+  <testcase name="inferenceFailureReleasesModelOnceAndLaterPcmDoesNotRetry" classname="org.sleepwell.app.SoundAnalysisStreamTest" time="0.001"/>
+  <testcase name="loadFailureDoesNotAllocateOrInventSoundEvents" classname="org.sleepwell.app.SoundAnalysisStreamTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

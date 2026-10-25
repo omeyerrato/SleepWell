@@ -1,0 +1,1039 @@
+{
+  "model": "yamnet-mobile-v1-10c95ea3",
+  "scope": "Six existing CC0 source compatibility trials; no speaker identity, words, microphone or room accuracy proof; frozen laughter failure unchanged",
+  "fixtures": [
+    {
+      "fixture": "speech-countdown",
+      "sha256": "4a62ee7002290bce1555a3995c87fd6d0138343e54f767c418efd356e2765880",
+      "detected": true,
+      "expected_speech": true,
+      "windows": [
+        {
+          "start_ms": 0,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 975,
+          "production": "speech",
+          "accepted": true
+        },
+        {
+          "start_ms": 1950,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 2925,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 3900,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 4875,
+          "production": "speech",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "fixture": "speech-balloon",
+      "sha256": "6c31bfa246d0355c9d4d7af24dc7b5d1411aa6caa1474605958c1166cafcd30c",
+      "detected": true,
+      "expected_speech": true,
+      "windows": [
+        {
+          "start_ms": 0,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 975,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 1950,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 2925,
+          "production": "speech",
+          "accepted": true
+        },
+        {
+          "start_ms": 3900,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 4875,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 5850,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 6825,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 7800,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 8775,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 9750,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 10725,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 11700,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 12675,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 13650,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 14625,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 15600,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 16575,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 17550,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 18525,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 19500,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 20475,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 21450,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 22425,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 23400,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 24375,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 25350,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 26325,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 27300,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 28275,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 29250,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 30225,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 31200,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 32175,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 33150,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 34125,
+          "production": "none",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "fixture": "snoring-sorts",
+      "sha256": "c7e95aed4687352e5dbd27148f521584e7224f7df7f1dddbb5875332dadce5a1",
+      "detected": false,
+      "expected_speech": false,
+      "windows": [
+        {
+          "start_ms": 0,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 975,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 1950,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 2925,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 3900,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 4875,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 5850,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 6825,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 7800,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 8775,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 9750,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 10725,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 11700,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 12675,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 13650,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 14625,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 15600,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 16575,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 17550,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 18525,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 19500,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 20475,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 21450,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 22425,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 23400,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 24375,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 25350,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 26325,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 27300,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 28275,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 29250,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 30225,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 31200,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 32175,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 33150,
+          "production": "snoring",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "fixture": "snoring-pencil",
+      "sha256": "d53e9312fe9abd9ec6174d864b660ac38dc0edc792698087a99b774084ca68a1",
+      "detected": false,
+      "expected_speech": false,
+      "windows": [
+        {
+          "start_ms": 0,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 975,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 1950,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 2925,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 3900,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 4875,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 5850,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 6825,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 7800,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 8775,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 9750,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 10725,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 11700,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 12675,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 13650,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 14625,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 15600,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 16575,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 17550,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 18525,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 19500,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 20475,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 21450,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 22425,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 23400,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 24375,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 25350,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 26325,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 27300,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 28275,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 29250,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 30225,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 31200,
+          "production": "snoring",
+          "accepted": false
+        },
+        {
+          "start_ms": 32175,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 33150,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 34125,
+          "production": "none",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "fixture": "music-archtects",
+      "sha256": "093d73a4d71c99bada661076efd86bf5c9d81e04891a591b2c66000dde695894",
+      "detected": false,
+      "expected_speech": false,
+      "windows": [
+        {
+          "start_ms": 0,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 975,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 1950,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 2925,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 3900,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 4875,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 5850,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 6825,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 7800,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 8775,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 9750,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 10725,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 11700,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 12675,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 13650,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 14625,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 15600,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 16575,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 17550,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 18525,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 19500,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 20475,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 21450,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 22425,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 23400,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 24375,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 25350,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 26325,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 27300,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 28275,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 29250,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 30225,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 31200,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 32175,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 33150,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 34125,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 35100,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 36075,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 37050,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 38025,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 39000,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 39975,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 40950,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 41925,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 42900,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 43875,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 44850,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 45825,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 46800,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 47775,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 48750,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 49725,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 50700,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 51675,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 52650,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 53625,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 54600,
+          "production": "noise",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "fixture": "crying-alucard",
+      "sha256": "e65835a571cae08554c8cf3027a587274d8981249c362f028ac006a3c75dcb02",
+      "detected": false,
+      "expected_speech": false,
+      "windows": [
+        {
+          "start_ms": 0,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 975,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 1950,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 2925,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 3900,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 4875,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 5850,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 6825,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 7800,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 8775,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 9750,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 10725,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 11700,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 12675,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 13650,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 14625,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 15600,
+          "production": "speech",
+          "accepted": false
+        },
+        {
+          "start_ms": 16575,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 17550,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 18525,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 19500,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 20475,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 21450,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 22425,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 23400,
+          "production": "none",
+          "accepted": false
+        },
+        {
+          "start_ms": 24375,
+          "production": "noise",
+          "accepted": false
+        },
+        {
+          "start_ms": 25350,
+          "production": "none",
+          "accepted": false
+        }
+      ]
+    }
+  ]
+}

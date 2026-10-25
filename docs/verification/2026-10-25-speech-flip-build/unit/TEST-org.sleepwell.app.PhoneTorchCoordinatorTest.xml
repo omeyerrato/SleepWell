@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.PhoneTorchCoordinatorTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:47:51.337Z" hostname="DESKTOP-1UTDMNE" time="0.012">
+  <properties/>
+  <testcase name="externallyLitTorchIsNeitherBorrowedNorExtinguishedByTravel" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.007"/>
+  <testcase name="alarmKeepsSteadySemanticsAndOnlyReleasesItsOwnRequest" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.001"/>
+  <testcase name="experimentalLeaseWaitsForExplicitPulse" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.0"/>
+  <testcase name="travelCannotPreemptAnAlarm" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.0"/>
+  <testcase name="alarmPreemptsTravelBeforeFirstAlarmOnAndStaleOffNeverRuns" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.001"/>
+  <testcase name="unrequestedOnAfterOffAcknowledgmentIsNotExtinguished" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.0"/>
+  <testcase name="unknownAndUnavailableDoNotTouchLight" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.0"/>
+  <testcase name="livenessLossBeforeAcquireOrOnPreventsActivation" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.0"/>
+  <testcase name="externalOffIsNotFoughtByAlarm" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.0"/>
+  <testcase name="unavailableDoesNotSendOffToUnownedCamera" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.0"/>
+  <testcase name="externalOffRevokesTravelAndCannotReviveItsGeneration" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.0"/>
+  <testcase name="failedOnFailsExplicitlyAndBestEffortReleasesPendingRequest" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.001"/>
+  <testcase name="failedReleaseIsNeverReportedAsCleanFinish" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.001"/>
+  <testcase name="lateOwnOnWhileOffAcknowledgmentPendingDoesNotCreateAnotherCommand" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.0"/>
+  <testcase name="alarmPreservesAlreadyLitExternalTorch" classname="org.sleepwell.app.PhoneTorchCoordinatorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

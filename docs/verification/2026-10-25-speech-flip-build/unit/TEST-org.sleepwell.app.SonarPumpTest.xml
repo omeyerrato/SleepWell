@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SonarPumpTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:48:10.339Z" hostname="DESKTOP-1UTDMNE" time="0.404">
+  <properties/>
+  <testcase name="unconfirmedOrLostRouteNeverEmits" classname="org.sleepwell.app.SonarPumpTest" time="0.002"/>
+  <testcase name="cleanupFailureDoesNotMaskOriginalFailure" classname="org.sleepwell.app.SonarPumpTest" time="0.004"/>
+  <testcase name="routeSilencingChargingFailuresAndCancelCloseWithoutReady" classname="org.sleepwell.app.SonarPumpTest" time="0.219"/>
+  <testcase name="progressingMicrophoneCannotHideStalledSpeaker" classname="org.sleepwell.app.SonarPumpTest" time="0.001"/>
+  <testcase name="progressingSpeakerCannotHideStalledMicrophone" classname="org.sleepwell.app.SonarPumpTest" time="0.004"/>
+  <testcase name="clockDiscontinuityCannotBecomeMotion" classname="org.sleepwell.app.SonarPumpTest" time="0.052"/>
+  <testcase name="partialDuplexProducesMeasuredEchoThenZeroAndCloses" classname="org.sleepwell.app.SonarPumpTest" time="0.122"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

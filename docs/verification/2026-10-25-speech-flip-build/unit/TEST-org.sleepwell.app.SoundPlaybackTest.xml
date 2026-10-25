@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.SoundPlaybackTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:48:16.277Z" hostname="DESKTOP-1UTDMNE" time="0.01">
+  <properties/>
+  <testcase name="fadeMultipliesEverySourceAndDuck" classname="org.sleepwell.app.SoundPlaybackTest" time="0.003"/>
+  <testcase name="shorterTimerEndsAlreadyElapsedMix" classname="org.sleepwell.app.SoundPlaybackTest" time="0.001"/>
+  <testcase name="onlyTrackingPauseMayAutoResumeOwnMix" classname="org.sleepwell.app.SoundPlaybackTest" time="0.001"/>
+  <testcase name="actualGainsChangeWithoutRestarting" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="sessionStopDoesNotStopAnotherSession" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="timerEndsReleasesAndTicksNeverRestart" classname="org.sleepwell.app.SoundPlaybackTest" time="0.001"/>
+  <testcase name="invalidMixCannotAuthorizeExternalNetworkSource" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="replacingSourceRetainsClockAndClosesOldDecoder" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="expiredTrackingOffsetDoesNotEvenAllocate" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="loadingTimeoutReleasesAndIgnoresLateReady" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="oldSettingsKeepTheirOldLevelsAndNoFade" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="allocationFailureIsAnErrorAndCannotRestartItself" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="pauseDuringFadeRestoresExactFadePositionOnResume" classname="org.sleepwell.app.SoundPlaybackTest" time="0.001"/>
+  <testcase name="trackingCannotStealManualSessionOrRetryAfterItEnds" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="stopWhilePreparingPreventsStaleStart" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="staleFailureCannotStopReplacement" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="choicesAndConstructionNeverOpenAPlayer" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="localDocumentReplacementUsesUriAndPreservesPause" classname="org.sleepwell.app.SoundPlaybackTest" time="0.001"/>
+  <testcase name="summedGainsAreBoundedEvenAtMaximum" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="loadingWaitsForBothLayersAndDoesNotConsumeTimer" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="pauseWhilePreparingInvalidatesReadyCallback" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="pauseFreezesElapsedAndExplicitResumeContinuesIt" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <testcase name="brownPrimaryDoesNotDuplicateBrownLayer" classname="org.sleepwell.app.SoundPlaybackTest" time="0.001"/>
+  <testcase name="sourceFailureReleasesWholeMix" classname="org.sleepwell.app.SoundPlaybackTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

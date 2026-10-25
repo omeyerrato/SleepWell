@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.GradedMathTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:47:48.937Z" hostname="DESKTOP-1UTDMNE" time="0.476">
+  <properties/>
+  <testcase name="gradeIsIndependentOfRoundsAndSurvivesRoutineReorderAndReplace" classname="org.sleepwell.app.GradedMathTest" time="0.001"/>
+  <testcase name="operatorSetsNeverLeakDisabledOperatorsAndEveryEnabledOperatorCanAppear" classname="org.sleepwell.app.GradedMathTest" time="0.183"/>
+  <testcase name="unsupportedEmptyOperatorsAndArithmeticOnOtherTaskTypesAreRejected" classname="org.sleepwell.app.GradedMathTest" time="0.003"/>
+  <testcase name="typedAnswersRequireTheWholeExactIntegerNotAnExpressionPrefixOrDecimal" classname="org.sleepwell.app.GradedMathTest" time="0.0"/>
+  <testcase name="boundedDistractorsTerminateEvenWithAConstantRandomSource" classname="org.sleepwell.app.GradedMathTest" time="0.005"/>
+  <testcase name="allGradesAndAnswerModesRetainExactOperatorOperandsAndChoiceOrder" classname="org.sleepwell.app.GradedMathTest" time="0.025"/>
+  <testcase name="regionalInputRejectsNondecimalNumericGlyphsSignsFractionsAndOverflow" classname="org.sleepwell.app.GradedMathTest" time="0.001"/>
+  <testcase name="originalSeededAdditionQuestionsAndChoiceOrderRemainUnchanged" classname="org.sleepwell.app.GradedMathTest" time="0.001"/>
+  <testcase name="eachGradeAndOperatorProducesOnlyValidUniqueExactlySolvableQuestions" classname="org.sleepwell.app.GradedMathTest" time="0.237"/>
+  <testcase name="restoringAnOldQuestionCannotIgnoreNewTaskSettings" classname="org.sleepwell.app.GradedMathTest" time="0.001"/>
+  <testcase name="invalidCachedQuestionsCannotCreateDivideByZeroOrMultipleCorrectChoices" classname="org.sleepwell.app.GradedMathTest" time="0.006"/>
+  <testcase name="regionalDecimalDigitsNormalizeToTheWholeExactAnswer" classname="org.sleepwell.app.GradedMathTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

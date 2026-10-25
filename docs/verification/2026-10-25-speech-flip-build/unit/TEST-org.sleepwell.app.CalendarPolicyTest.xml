@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.CalendarPolicyTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-25T03:47:48.096Z" hostname="DESKTOP-1UTDMNE" time="0.034">
+  <properties/>
+  <testcase name="advanceBoundAndPreviousLocalDayAreExcluded" classname="org.sleepwell.app.CalendarPolicyTest" time="0.009"/>
+  <testcase name="allDayUsesCalendarUtcDateRatherThanPhoneOffset" classname="org.sleepwell.app.CalendarPolicyTest" time="0.004"/>
+  <testcase name="laterMeetingNeverPostponesAlarm" classname="org.sleepwell.app.CalendarPolicyTest" time="0.005"/>
+  <testcase name="staleRevisedAndChangedZoneSnapshotsKeepOrdinaryAlarm" classname="org.sleepwell.app.CalendarPolicyTest" time="0.002"/>
+  <testcase name="badRulesAndEvidenceAreRejected" classname="org.sleepwell.app.CalendarPolicyTest" time="0.003"/>
+  <testcase name="earlyMeetingUsesPreparationAndRetainsConsumedBase" classname="org.sleepwell.app.CalendarPolicyTest" time="0.002"/>
+  <testcase name="otherCalendarsAndTimedHolidayEventsCannotSkip" classname="org.sleepwell.app.CalendarPolicyTest" time="0.001"/>
+  <testcase name="insufficientCoverageDoesNotSilentlySkipBeyondEvidence" classname="org.sleepwell.app.CalendarPolicyTest" time="0.001"/>
+  <testcase name="offAndUnavailableNeverRemoveOrdinaryAlarm" classname="org.sleepwell.app.CalendarPolicyTest" time="0.001"/>
+  <testcase name="allDayEndIsExclusive" classname="org.sleepwell.app.CalendarPolicyTest" time="0.001"/>
+  <testcase name="pastShiftsCannotBackfillAnAlarm" classname="org.sleepwell.app.CalendarPolicyTest" time="0.001"/>
+  <testcase name="firstMeetingWinsIndependentlyOfProviderOrder" classname="org.sleepwell.app.CalendarPolicyTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
