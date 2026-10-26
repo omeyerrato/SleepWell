@@ -4,7 +4,17 @@
 
 Settings mode loads only `SearchData.settings()` / the immutable local `SearchSettings` catalog: it does not open Store, enumerate saved alarms, read record notes/tags or contact a service. A blank query browses the real catalog. Filters correspond to the Settings groups: Alarms; Sleep & bedtime; Sound & recordings; Appearance & feedback; Reliability; Connected apps; Data & privacy; Home screen. Query, mode and selected filter survive Activity recreation. Query matching remains local, accent-insensitive, case-insensitive and bounded to 160 characters / 100 results; it is word matching with curated synonyms, not semantic/fuzzy search.
 
-The catalog expands the existing 30 destinations to 75, retaining their original ordering. The latest entry opens explicit experimental recorded-audio analysis; it does not start recording or inference. It includes the existing automatic/nightly tracking, motion/contactless calibration, anti-snoring and headphone cues, recording retention/favorites, backup/import/export, travel, offline narration, naps/profiles, permissions/protections, real integrations, app-access grants, appearance, home layout and widget settings. Entries carry a concise category/location breadcrumb and explain the actual destination. Examples: `snoring` finds analysis/cue settings, `prevent power off` finds alarm protection, `flashlight` finds the per-alarm wake-up route, `backup` finds actual backup flows, and `automatic` finds the existing tracking/reminder/calendar options.
+The catalog expands the existing 30 destinations to88, retaining their original ordering. The explicit experimental recorded-audio entry does not start recording or inference. It includes the existing automatic/nightly tracking, motion/contactless calibration, anti-snoring and headphone cues, recording retention/favorites, backup/import/export, travel, offline narration, naps/profiles, permissions/protections, real integrations, app-access grants, appearance, home layout and widget settings. Entries carry a concise category/location breadcrumb and explain the actual destination. Examples: `snoring` finds analysis/cue settings, `prevent power off` finds alarm protection, `flashlight` finds the per-alarm wake-up route, `backup` finds actual backup flows, and `automatic` finds the existing tracking/reminder/calendar options.
+
+The additional supporting-page links use only static allowlisted route extras:
+`trackingOptionsPage`, `soundSettingsPage` and `sleepSoundPage`. They open actual
+charging/screen conditions, recording choices, sleep confirmation, nightly
+reliability, detected categories/durations, contactless cues, mixer sources,
+playback, timer or fade pages. Unknown route values fall back to the Activity's
+main page. Selecting a search result never invokes Save, Arm, Play, a permission
+request or a preview. Timer/fade results open unsaved choices with explicit Use
+and Cancel. These new routes have source/build evidence separately from the
+earlier Settings-only runtime flow; that flow does not exercise all88 destinations.
 
 Record- or alarm-owned editors are not opened with fabricated context. Flashlight, extra loud, gentle volume, challenge tasks, snooze and repeat results clearly say **Choose an alarm** and open the actual Alarms list. New alarm defaults also route through the alarm draft that supplies their required template. Per-record SoundArchiveActivity is not exposed as a zero-extra destination; the actual whole-library export remains available. Trends opens the real HistoryActivity with `trends=true`; its row explains using Trend options for chart settings. Selecting a result opens a screen only; it does not invoke a test, grant, enrollment, output, recording or save callback.
 

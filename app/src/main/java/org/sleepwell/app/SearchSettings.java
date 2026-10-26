@@ -9,18 +9,20 @@ final class SearchSettings {
     static final String ALARMS="Alarms",SLEEP="Sleep & bedtime",SOUND="Sound & recordings",APPEARANCE="Appearance & feedback",RELIABILITY="Reliability",CONNECTED="Connected apps",PRIVACY="Data & privacy",HOME="Home screen";
     static final List<String> CATEGORIES=List.of(ALARMS,SLEEP,SOUND,APPEARANCE,RELIABILITY,CONNECTED,PRIVACY,HOME);
     private static final class Destination {
-        final String title,category,path,description,terms,page;final Class<?> target;
-        Destination(String title,String category,String location,String description,String terms,Class<?> target,String page){this.title=title;this.category=category;this.path="Settings › "+category+(location.isEmpty()?"":" › "+location);this.description=description;this.terms=terms;this.target=target;this.page=page;}
+        final String title,category,path,description,terms,page,extra;final Class<?> target;
+        Destination(String title,String category,String location,String description,String terms,Class<?> target,String page){this(title,category,location,description,terms,target,page,"settingsPage");}
+        Destination(String title,String category,String location,String description,String terms,Class<?> target,String page,String extra){this.title=title;this.category=category;this.path="Settings › "+category+(location.isEmpty()?"":" › "+location);this.description=description;this.terms=terms;this.target=target;this.page=page;this.extra=extra;}
     }
     private static Destination direct(String title,String category,String location,String description,String terms,Class<?> target){return new Destination(title,category,location,description,terms,target,"");}
     private static Destination page(String title,String category,String location,String description,String terms,String page){return new Destination(title,category,location,description,terms,MainActivity.class,page);}
+    private static Destination detail(String title,String category,String location,String description,String terms,Class<?> target,String extra,String page){return new Destination(title,category,location,description,terms,target,page,extra);}
     // Keep the first 30 original search destinations in their original order; entries are not saved IDs.
     private static final List<Destination> DESTINATIONS=List.of(
         direct("Sleep plan",SLEEP,"Sleep goals","Bedtime, wake time, sleep goal and reminders","goal hours duration bedtime reminder schedule",PlanActivity.class),
         direct("Automatic tracking",SLEEP,"Sleep tracking","Choose when phone tracking can start","auto detect sleeping asleep stillness charging screen off smart window",AutomaticTrackingActivity.class),
         direct("Nightly tracking schedule",SLEEP,"Sleep tracking","Choose recurring tracking days and times","automatic start bedtime weekly recurring charging",RecurringTrackingActivity.class),
         direct("Motion sensor",SLEEP,"Sleep tracking","Phone movement sensitivity and calibration","accelerometer movement sensor mattress sensitivity",MotionSensorActivity.class),
-        direct("Sound sensitivity",SOUND,"Sound analysis","Analysis categories, thresholds and clip limits","sleep noise analysis snoring talking speech sounds microphone recording sensitivity",SoundSensitivityActivity.class),
+        direct("Sound sensitivity",SOUND,"Sound analysis","Accepted categories and minimum event duration","sleep noise analysis snoring talking speech sounds microphone recording sensitivity",SoundSensitivityActivity.class),
         direct("Snoring cues",SOUND,"Sound analysis","Optional sound or vibration after a snoring estimate","anti snoring antisnore stop snore vibration contactless headphones",SnoringCuesActivity.class),
         direct("Bedtime guard",SLEEP,"Wind-down","Choose distracting apps to block at bedtime","scrolling prevent leave app block apps youtube instagram accessibility wind down",GuardActivity.class),
         direct("Travel mode",SLEEP,"Travel","Time zones, trip plans and daylight reminders","jet lag prevention jetlag travel timezone sun light circadian",TravelActivity.class),
@@ -90,10 +92,23 @@ final class SearchSettings {
         page("Data & privacy",PRIVACY,"","Local storage, optional sharing and reviewed deletion","privacy data delete erase history recordings account cloud local storage", "privacy"),
         direct("Tonight layout",HOME,"Tonight layout","Choose home rows, their order and illustration","home tonight layout hide show order customize customise illustration art",TonightLayoutActivity.class),
         direct("Widget & launcher shortcuts",HOME,"Widgets","Review home widgets and app shortcuts","widget next alarm snooze home screen launcher shortcut add pin",HomeWidgetSettingsActivity.class),
-        direct("Tap feedback",APPEARANCE,"Touch feedback","Choose optional feedback for app controls","vibration haptic tap touch feedback button clicks",FeedbackSettingsActivity.class)
+        direct("Tap feedback",APPEARANCE,"Touch feedback","Choose optional feedback for app controls","vibration haptic tap touch feedback button clicks",FeedbackSettingsActivity.class),
+        detail("Automatic start conditions",SLEEP,"Automatic tracking › Start conditions","Review charging and screen-off waits for tonight","charging charger screen off unplugged wait automatic armed",AutomaticTrackingActivity.class,"trackingOptionsPage","conditions"),
+        detail("Automatic sound recording",SLEEP,"Automatic tracking › Sound recording","Review analysis and clip choices for tonight's armed start","automatic microphone sound record clips keep analysis",AutomaticTrackingActivity.class,"trackingOptionsPage","sounds"),
+        detail("Sleep confirmation",SLEEP,"Automatic tracking › Sleep confirmation","Review Google estimate and awake-start rejection","google sleep detect asleep stillness false start rejection confirmation physical activity",AutomaticTrackingActivity.class,"trackingOptionsPage","detection"),
+        detail("Nightly start conditions",SLEEP,"Repeat nightly › Start conditions","Review whether an unplugged night is skipped","nightly recurring charging charger unplugged skip conditions",RecurringTrackingActivity.class,"trackingOptionsPage","conditions"),
+        detail("Nightly start reliability",SLEEP,"Repeat nightly › Start reliability","Review timing permissions and sensor availability","nightly recurring exact permission notifications movement sensor reliability",RecurringTrackingActivity.class,"trackingOptionsPage","reliability"),
+        detail("Detected sound categories",SOUND,"Sound sensitivity › Detected categories","Choose categories in a draft; Save applies next night","sound categories snoring speech cough baby crying laughter other include exclude",SoundSensitivityActivity.class,"soundSettingsPage","categories"),
+        detail("Sound event duration",SOUND,"Sound sensitivity › Event duration","Review minimum accepted durations in a draft","sound minimum duration sensitivity accepted windows seconds high low",SoundSensitivityActivity.class,"soundSettingsPage","durations"),
+        detail("Contactless snoring output",SOUND,"Snoring cues › Contactless & output","Review contactless opt-ins and sound routing","contactless sonar antisnore snoring sound vibration output headphones",SnoringCuesActivity.class,"soundSettingsPage","options"),
+        detail("Sleep sound sources",SOUND,"Sleep sounds › Sources & playlists","Open local audio, playlist, ambient rotation and radio options","radio station internet stream local audio import playlist ambient rotation sources library",SleepSoundsActivity.class,"sleepSoundPage","sources"),
+        detail("Sleep sound playback",SOUND,"Sleep sounds › Playback & tracking","Review tracking playback and stillness fade","sleep sound autoplay with tracking stillness fade brown noise playback",SleepSoundsActivity.class,"sleepSoundPage","playback"),
+        detail("Sleep sound timer",SOUND,"Sleep sounds › Timer","Select a timer draft; Use applies without starting sound","lullaby sleep sound timer stop minutes duration countdown",SleepSoundsActivity.class,"sleepSoundPage","timer"),
+        detail("Sleep sound fade",SOUND,"Sleep sounds › Fade out","Select a fade draft; Use applies without starting sound","lullaby sleep sound fade out taper volume timer minutes",SleepSoundsActivity.class,"sleepSoundPage","fade"),
+        page("Clip recording threshold",SOUND,"Sound analysis › Clip recording threshold","Open Sound analysis to adjust the clip amplitude threshold","clip recording threshold relative amplitude quiet loud minimum noise capture", "sound_analysis")
     );
     static List<SearchIndex.Entry> entries(){List<SearchIndex.Entry> rows=new ArrayList<>();for(int n=0;n<DESTINATIONS.size();n++){Destination d=DESTINATIONS.get(n);rows.add(new SearchIndex.Entry(SearchIndex.Kind.SETTING,n,d.title,d.path+"\n"+d.description,d.terms,d.category));}return List.copyOf(rows);}
-    static Intent intent(Activity owner,long id){if(id<0||id>=DESTINATIONS.size())throw new IllegalArgumentException("This setting is no longer available. Search again.");Destination d=DESTINATIONS.get((int)id);Intent intent=RecordUi.intent(owner,d.target);if(d.target==HistoryActivity.class)intent.putExtra("trends",true);if(!d.page.isEmpty())intent.putExtra("settingsPage",d.page);return intent;}
+    static Intent intent(Activity owner,long id){if(id<0||id>=DESTINATIONS.size())throw new IllegalArgumentException("This setting is no longer available. Search again.");Destination d=DESTINATIONS.get((int)id);Intent intent=RecordUi.intent(owner,d.target);if(d.target==HistoryActivity.class)intent.putExtra("trends",true);if(!d.page.isEmpty())intent.putExtra(d.extra,d.page);return intent;}
     static boolean category(String value){return value!=null&&(value.isEmpty()||CATEGORIES.contains(value));}
     private SearchSettings(){}
 }
