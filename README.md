@@ -12,26 +12,28 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 26 October
 
-Source **b5c63ad1** adds saved HTTPS radio stations, grouped Tracking setup,
-measured echo-rhythm review and explicit offline recorded-audio estimates using
-bundled PANNs/EfficientAT CPU models. It retains the grouped Settings, search,
-alarm submenus and native touch-feedback off switch from **f0c1a274**. The final
-APK builds in **16s**, with the original signer, packaged model hashes and full
-runtime licence notice verified. These new Android journeys remain unexercised;
-reliable automatic recognition remains unfinished (2/4 independent positive sources
-missed), and phone sleep-stage/REM and apnea analysis remain absent.
-[Exact feature/evidence scope](docs/verification/2026-10-26-radio-rhythm-recognition/README.md).
+Source **25ed7a9d** adds grouped automatic/recurring tracking, sound sensitivity,
+retention, snoring-cue and sleep-mixer menus. Main controls remain visible;
+supporting options use named pages with parent Back. Timer/fade choices use themed
+drafts with Use/Cancel. Settings search has88 allowlisted destinations, including
+direct detail-page links. Shared setting-respecting feedback extends to mixer
+selections and switches. The combined APK builds in **32s** with the original signer.
+[Exact menu/build scope](docs/verification/2026-10-26-sound-tracking-menus/README.md).
 
-[Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-b5c63ad).
-The APK is334,850,669bytes including the offline models/runtime; no model download
-is needed at runtime. Sleep schema17/backup13 and private automation2 remain;
-supplementary summaries use a separate private database1. Older builds may not open
-newer automation/movement backup metadata.
+[Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-menus-20261026-25ed7a9d).
+The APK is334,886,933bytes including bundled offline models/runtime. Uploaded APK
+and checksum hashes match the local candidate. It retains saved HTTPS radio,
+measured echo-rhythm review and explicit PANNs/EfficientAT recorded-audio estimates
+from **b5c63ad1**, with full model/runtime notices. Reliable automatic recognition
+still misses2/4 independent positive sources; phone sleep-stage/REM and apnea
+analysis remain absent. [Prior feature scope](docs/verification/2026-10-26-radio-rhythm-recognition/README.md).
 
-The earlier Settings-only increment passed one silent route/persistence flow with
-ten inspected actual screenshots. That pass does not cover these new features,
-physical haptic feel, every destination or all36 reference screens.
-[Settings evidence](docs/verification/2026-10-26-settings-organization/README.md).
+Sleep schema17/backup13/private automation2 and separate supplementary-summary
+database1 remain. Older builds may not open newer automation/movement metadata.
+The earlier Settings-only flow passed with ten inspected actual screenshots.
+**The new menus, gestures, recreation and screenshots remain unverified**; that
+historical pass does not cover these changes, physical haptic feel or all36
+reference screens. [Settings evidence](docs/verification/2026-10-26-settings-organization/README.md).
 
 The separately authorized **2cbfe043** phone update remains installed. Original
 rows/preferences/private files matched before and after; SleepWell was not

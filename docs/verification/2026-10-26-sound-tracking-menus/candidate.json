@@ -15,5 +15,15 @@
       "size": 334886933
     }
   },
-  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c"
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "distribution": {
+    "tag": "v0.1.0-menus-20261026-25ed7a9d",
+    "url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-menus-20261026-25ed7a9d",
+    "target_commit": "25ed7a9d9eda1f6d82a62ede1580ae921fe0c808",
+    "draft": false,
+    "prerelease": true,
+    "uploaded": true,
+    "uploaded_size": 334886933,
+    "uploaded_digest": "sha256:65ba63933b8c2164a251c507b8c7771317bfb13ab1911323b08fb5d95a751ac9"
+  }
 }

@@ -26,11 +26,12 @@ unverified. [Scoped evidence](verification/2026-10-26-settings-organization/READ
 | --- | --- |
 | Installed phone build | **2cbfe043**, authorized streamed update; installed checksum/original signer match. All original schema17 rows, preferences and original private files preserved. |
 | Phone availability | Connected for that authorized update only. No app launch, suspension change or output/capture/provider runtime action. |
-| Published candidate | **b5c63ad1**, production build **PASS16s**, original signer, packaged models/runtime notice and both uploaded assets verified. Adds radio, grouped Tracking setup, measured echo rhythm and explicit offline recorded estimates. Not installed. Sleep schema17/metadata13/private automation2; separate recorded-estimate database1. |
+| Published candidate | **25ed7a9d**, combined production build **PASS32s**, original signer, packaged model hashes/runtime notice and both uploaded assets verified. Adds grouped tracking/sound/mixer menus and direct detail search; prior radio/rhythm/recorded estimates retained. Not installed. Sleep schema17/metadata13/private automation2; separate recorded-estimate database1. |
 | New feature evidence | Prior Settings groups/search/Back and feedback/alarm edit state have a bounded silent pass. Latest Android flows remain unexercised; host numerical model/frontend parity is retained, while independent recognition still misses2/4 positives. Provider/snooze/client/output acceptance remains open. |
 | Current work policy | Features first; no new unit-test batches or broad campaigns. Essential builds, preservation and bounded changed-flow checks remain applicable. Dedicated reviewer stays stopped. |
 
-[Latest published feature scope](verification/2026-10-26-radio-rhythm-recognition/README.md).
+[Latest published menu/build scope](verification/2026-10-26-sound-tracking-menus/README.md).
+[Prior model/radio/rhythm scope](verification/2026-10-26-radio-rhythm-recognition/README.md).
 
 [Phone update evidence](verification/2026-10-26-phone-2cbfe043/README.md) is separate
 from the earlier [single Report flow](verification/2026-10-26-report-flow/README.md).

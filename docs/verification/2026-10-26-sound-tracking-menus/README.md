@@ -34,3 +34,5 @@ See [organization map](../../UI-ORGANIZATION.md),
 [sound control preservation](../../SOUND-SETTINGS-ORGANIZATION.md),
 [mixer preservation](../../SLEEP-MIXER-ORGANIZATION.md), and
 [compact checklist](../../QUICK-CHECKLIST.md).
+
+[Published development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-menus-20261026-25ed7a9d). Both asset upload states, sizes and SHA256 digests and the exact target commit/prerelease state match this candidate. Not installed on the phone.
