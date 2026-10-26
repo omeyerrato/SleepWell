@@ -16,6 +16,7 @@ on:
           - organized-settings
           - recorded-analysis
           - sensing-travel
+          - travel-ui
           - sonar-night
           - sound-categories
           - sound-sensitivity
