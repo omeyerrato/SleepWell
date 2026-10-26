@@ -27,6 +27,8 @@ original signer match. These new Android journeys are not runtime/visual accepte
 reliable automatic laughter still misses2/4 held-out sources, and sleep stages
 remain missing. No personal phone/output action or new unit/lint campaign ran.
 
+Latest menu source **25ed7a9d** builds production in **32s**, with original signer verified. Three parallel worktrees supplied grouped automatic/recurring, sound-analysis/cue/retention and mixer pages, plus direct supporting-page search. These new Android frames are not yet exercised or screenshot accepted. [Bounded scope](verification/2026-10-26-sound-tracking-menus/README.md).
+
 ## New priorities
 
 - [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.

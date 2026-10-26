@@ -5,6 +5,8 @@ history. The goal remains the full applicable phone functionality and **all 36
 supplied design screens across 12 boards**. Existing code, a successful build or a
 bounded historical pass does not establish that whole goal is complete.
 
+Latest menu source **25ed7a9d** builds production in **32s**, with original signer verified. Three parallel worktrees supplied grouped automatic/recurring, sound-analysis/cue/retention and mixer pages, plus direct supporting-page search. These new Android frames are not yet exercised or screenshot accepted. [Bounded scope](verification/2026-10-26-sound-tracking-menus/README.md).
+
 ## Current user priorities
 
 - [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.
