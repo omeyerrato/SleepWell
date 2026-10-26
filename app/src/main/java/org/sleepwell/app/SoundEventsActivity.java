@@ -29,9 +29,11 @@ public final class SoundEventsActivity extends Activity {
         bindings.clear();LinearLayout body=Design.page(this,false,null,n->{});RecordUi.label(this,body);LinearLayout header=RecordUi.header(body,"Sound events",this::finish);RecordUi.enabled(SoundCategoryPicker.header(header,this::categories),loaded&&error.isEmpty());RecordUi.headerAction(header,"more","Sound event options",this::menu);
         if(!loaded){Design.space(body,20);Design.text(body,"Loading recordings…",15,400,Design.MUTED);return;}if(!error.isEmpty()){Design.space(body,20);Design.text(body,error,16,400,Design.MUTED);Design.button(body,"Try again",true,this::load);return;}
         TextView date=Design.text(body,RecordUi.date(record.edit.end,record.zone()),14,400,Design.MUTED);date.setPadding(Design.dp(this,48),0,0,0);Design.space(body,18);
+        SoundAnalysisCopy.Info analysis=SoundAnalysisCopy.of(record);
+        Design.text(body,analysis.title,13,500,analysis.attention?Design.BROWN:Design.MUTED);if(!analysis.detail.isEmpty())Design.text(body,(record.edited?"Original recording · ":"")+analysis.detail,12,400,Design.MUTED);Design.space(body,10);
         SoundCategoryPicker.quick(body,category,this::count,this::filter);Design.space(body,16);
         SoundCategoryPicker.selected(body,category,count(category),this::categories);
-        if(rows.isEmpty()){Design.space(body,32);Design.text(body,metadata.isEmpty()?"No sound events":"No events in this category",22,600,Design.INK);Design.space(body,8);Design.text(body,metadata.isEmpty()?"Enable sound analysis for your next night.":category.equals("favorites")?"Tap a heart to keep a favorite.":"Try another category.",14,400,Design.MUTED);}
+        if(rows.isEmpty()){Design.space(body,32);Design.text(body,metadata.isEmpty()?"No sound events":"No events in this category",22,600,Design.INK);Design.space(body,8);Design.text(body,metadata.isEmpty()?analysis.empty():category.equals("favorites")?"Tap a heart to keep a favorite.":"Try another category.",14,400,Design.MUTED);}
         for(SoundEventRows.Row row:rows)addRow(body,row);
         if(count(category)>rows.size())Design.button(body,"Load more",false,()->{player.stop();limit+=50;load();});
         Design.space(body,20);
