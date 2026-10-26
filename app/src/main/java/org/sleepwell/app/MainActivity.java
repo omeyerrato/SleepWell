@@ -77,7 +77,7 @@ public class MainActivity extends Activity {
         settingsRow(body,"wave","Sound & recordings","Sleep sounds, analysis and snoring",()->openSettingsGroup("sound"));
         settingsRow(body,"palette","Appearance & feedback","Theme, text and touch feedback",()->openSettingsGroup("appearance"));
         settingsRow(body,"settings","Reliability","Permissions, battery and alarm readiness",()->openSettingsPage(5));
-        settingsRow(body,"link","Connected apps","Health, lights and automations",()->openSettingsGroup("connections"));
+        settingsRow(body,"plug","Connected apps","Health, lights and automations",()->openSettingsGroup("connections"));
         settingsRow(body,"lock","Data & privacy","Storage, backup and optional sharing",()->openSettingsPage(6));
         settingsRow(body,"home","Home screen","Widgets and launcher shortcuts",()->startActivity(RecordUi.intent(this,HomeWidgetSettingsActivity.class)));
         Design.space(body,12);LinearLayout source=PlanActivity.detail(body,"github","Free and open source","View source on GitHub",null,()->open(new Intent(Intent.ACTION_VIEW,Uri.parse("https://github.com/omeyerrato/SleepWell"))));source.setMinimumHeight(Ui.dp(this,56));source.removeViewAt(source.getChildCount()-1);source.addView(new Design.Icon(this,"external",Design.INK),new LinearLayout.LayoutParams(Ui.dp(this,18),Ui.dp(this,18)));
@@ -113,8 +113,8 @@ public class MainActivity extends Activity {
                 settingsRow(body,"phone","Touch feedback","Subtle acknowledgements for actions",()->startActivity(RecordUi.intent(this,FeedbackSettingsActivity.class)));
                 settingsRow(body,"home","Tonight layout","Order, visibility and illustration",()->startActivity(RecordUi.intent(this,TonightLayoutActivity.class)));break;
             default:
-                settingsRow(body,"link","Health Connect","Import and export sleep records",()->startActivity(RecordUi.intent(this,HealthConnectActivity.class)));
-                settingsRow(body,"link","Automations","Tasker, webhooks and MQTT",()->startActivity(RecordUi.intent(this,AutomationActivity.class)));
+                settingsRow(body,"plug","Health Connect","Import and export sleep records",()->startActivity(RecordUi.intent(this,HealthConnectActivity.class)));
+                settingsRow(body,"plug","Automations","Tasker, webhooks and MQTT",()->startActivity(RecordUi.intent(this,AutomationActivity.class)));
                 settingsRow(body,"sun","Bedroom light","Paired lights and sunrise controls",()->startActivity(RecordUi.intent(this,SmartLightActivity.class)));
                 settingsRow(body,"phone","Paired movement","Connect a second phone",()->startActivity(RecordUi.intent(this,PairMotionActivity.class)));
                 settingsRow(body,"home","External PIR input","Optional Home Assistant sensor",()->startActivity(RecordUi.intent(this,PirSettingsActivity.class)));

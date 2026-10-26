@@ -50,9 +50,18 @@ public class AlarmEditorActivity extends Activity {
         Design.item(body,"tasks","Challenges",alarm.challenges().summary(),()->go("challenge"));Design.line(body);
         Design.item(body,"sound","Sound",alarm.soundModeInvalid?"Review sound mode":alarm.soundMode.equals(AlarmSoundMode.SINGLE)?toneName(alarm.tone):alarm.soundMode.title(),()->go("sound"));Design.line(body);
         Design.item(body,"alarm","Snooze",alarm.snoozeMinutes+" min",()->go("snooze"));Design.line(body);
-        Design.item(body,"calendar","Schedule & dates",scheduleSummary(),()->go("schedule"));Design.line(body);
-        Design.item(body,"settings","More alarm settings",alarm.inputsInvalid?"Input settings need review":"Buttons, protection and defaults",()->go("options"));Design.line(body);
+        menu(body,"calendar","Schedule & dates",scheduleSummary(),()->go("schedule"));Design.line(body);
+        menu(body,"settings","More alarm settings",alarm.inputsInvalid?"Input settings need review":"Buttons, protection and defaults",()->go("options"));Design.line(body);
         LinearLayout footer=RecordUi.footer(body);Design.toggle(footer,"Alarm on","Rings at your chosen local time",alarm.enabled,on->alarm.enabled=on);Design.space(footer,12);Design.button(footer,"Save alarm",true,this::save);if(!saveError.isEmpty()){Design.space(footer,8);TextView error=Design.text(footer,saveError,13,500,0xffa93919);error.setContentDescription("Alarm save error");error.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);}
+    }
+    /** Descriptive destinations keep the whole title above supporting copy. */
+    private LinearLayout menu(LinearLayout body,String icon,String title,String description,Runnable action){
+        LinearLayout row=PlanActivity.detail(body,icon,title,description,null,action);
+        Design.pad(row,0,10);row.setMinimumHeight(Design.dp(this,72));
+        LinearLayout labels=(LinearLayout)row.getChildAt(1);
+        ((TextView)labels.getChildAt(0)).setTextSize(16*Appearance.scale(this));
+        if(labels.getChildCount()>2)((TextView)labels.getChildAt(2)).setTextSize(13*Appearance.scale(this));
+        return row;
     }
     private void openDate(Bundle saved){if(alarm.repeatInvalid||alarm.repeatRule.custom()){Ui.toast(this,"Choose Weekly / one-time before setting a one-time date.");return;}if(dateCalendar!=null)dateCalendar.close();java.time.LocalDate initial=alarm.date==null?java.time.LocalDate.now():alarm.date;dateCalendar=new RecordCalendar(this,"Alarm date",initial,saved,chosen->{alarm.date=chosen;alarm.dateInvalid=false;alarm.days.clear();saveError="";render();},null);}
     private String scheduleSummary(){
@@ -63,21 +72,21 @@ public class AlarmEditorActivity extends Activity {
     }
     private void scheduleSettings(LinearLayout body){
         Design.header(body,"Schedule & dates",()->go("edit"));Design.text(body,"Edit alarm",12,400,Design.MUTED);Design.space(body,16);
-        Design.item(body,"calendar","Skip selected dates",AlarmExcludedDates.summary(alarm),()->{excludedRequest=UUID.randomUUID().toString();startActivityForResult(AlarmExcludedDatesActivity.edit(this,alarm,excludedRequest),AlarmExcludedDatesActivity.REQUEST);});Design.line(body);
-        Design.item(body,"calendar","Next alarm only",NextAlarmOverrides.summary(this,alarm),this::openNextOverride);Design.line(body);
-        LinearLayout runDate=Design.item(body,"calendar","Run on",alarm.repeatRule.custom()?"One-time dates require Weekly / one-time":alarm.dateInvalid?"Review date":alarm.date==null?"Next occurrence":alarm.date.toString(),()->openDate(null));RecordUi.enabled(runDate,!alarm.repeatRule.custom()&&!alarm.repeatInvalid);Design.line(body);
+        menu(body,"calendar","Skip selected dates",AlarmExcludedDates.summary(alarm),()->{excludedRequest=UUID.randomUUID().toString();startActivityForResult(AlarmExcludedDatesActivity.edit(this,alarm,excludedRequest),AlarmExcludedDatesActivity.REQUEST);});Design.line(body);
+        menu(body,"calendar","Next alarm only",NextAlarmOverrides.summary(this,alarm),this::openNextOverride);Design.line(body);
+        LinearLayout runDate=menu(body,"calendar","Run on",alarm.repeatRule.custom()?"One-time dates require Weekly / one-time":alarm.dateInvalid?"Review date":alarm.date==null?"Next occurrence":alarm.date.toString(),()->openDate(null));RecordUi.enabled(runDate,!alarm.repeatRule.custom()&&!alarm.repeatInvalid);Design.line(body);
         if(alarm.date!=null||alarm.dateInvalid){Design.button(body,"Clear date",false,()->{alarm.date=null;alarm.dateInvalid=false;render();});Design.line(body);}
-        Design.item(body,"clock","Relative time / speech",RelativeAlarmTime.allowed(alarm)?"One-time elapsed duration":"One-time clock alarms only",()->{relativeRequest=UUID.randomUUID().toString();startActivityForResult(RelativeAlarmTimeActivity.edit(this,alarm,relativeRequest),RelativeAlarmTimeActivity.REQUEST);});Design.line(body);
-        Design.item(body,"bed","Use sleep plan",alarm.solar==null?"Copy a fixed time":"Copy sunrise fallback",()->{goalRequest=UUID.randomUUID().toString();startActivityForResult(GoalAlarmTimeActivity.edit(this,alarm,goalRequest),GoalAlarmTimeActivity.REQUEST);});Design.line(body);if(!goalNotice.isEmpty())Design.text(body,goalNotice,12,500,Design.BROWN);
+        menu(body,"clock","Relative time / speech",RelativeAlarmTime.allowed(alarm)?"One-time elapsed duration":"One-time clock alarms only",()->{relativeRequest=UUID.randomUUID().toString();startActivityForResult(RelativeAlarmTimeActivity.edit(this,alarm,relativeRequest),RelativeAlarmTimeActivity.REQUEST);});Design.line(body);
+        menu(body,"bed","Use sleep plan",alarm.solar==null?"Copy a fixed time":"Copy sunrise fallback",()->{goalRequest=UUID.randomUUID().toString();startActivityForResult(GoalAlarmTimeActivity.edit(this,alarm,goalRequest),GoalAlarmTimeActivity.REQUEST);});Design.line(body);if(!goalNotice.isEmpty())Design.text(body,goalNotice,12,500,Design.BROWN);
         Design.item(body,"sun","Time basis",alarm.solarInvalid?"Review sunrise":alarm.solar==null?"Clock time":"Sunrise time",()->{solarRequest=UUID.randomUUID().toString();startActivityForResult(SunriseTimeActivity.edit(this,alarm,solarRequest),SunriseTimeActivity.REQUEST);});Design.line(body);
-        Design.item(body,"bed","Bedtime reminder",alarm.bedtimeInvalid?"Review reminder":alarm.bedtime.title(),()->{bedtimeRequest=UUID.randomUUID().toString();startActivityForResult(AlarmBedtimeActivity.edit(this,alarm,bedtimeRequest),AlarmBedtimeActivity.REQUEST);});Design.line(body);
+        menu(body,"bed","Bedtime reminder",alarm.bedtimeInvalid?"Review reminder":alarm.bedtime.title(),()->{bedtimeRequest=UUID.randomUUID().toString();startActivityForResult(AlarmBedtimeActivity.edit(this,alarm,bedtimeRequest),AlarmBedtimeActivity.REQUEST);});Design.line(body);
         Design.fixedAction(body,"Done",()->go("edit"));
     }
     private void moreSettings(LinearLayout body){
         Design.header(body,"More alarm settings",()->go("edit"));Design.text(body,"Edit alarm",12,400,Design.MUTED);Design.space(body,16);
-        Design.item(body,"phone","Buttons & orientation",alarm.inputsInvalid?"Needs review":"Volume keys, flip and orientation lock",()->go("controls"));Design.line(body);
+        menu(body,"phone","Buttons & orientation",alarm.inputsInvalid?"Needs review":"Volume keys, flip and orientation lock",()->go("controls"));Design.line(body);
         Design.item(body,"shield","Alarm protection","All alarms",()->startActivity(RecordUi.intent(this,AlarmProtectionActivity.class)));Design.line(body);
-        Design.item(body,"save","New alarm defaults","Reuse this draft’s behavior",()->{try{String template=AlarmDefaultsJson.encode(new AlarmDefaults(alarm));startActivity(RecordUi.intent(this,AlarmDefaultsActivity.class).putExtra("template",template));}catch(IllegalArgumentException invalid){openDialog(()->SleepPicker.message(this,"Defaults unavailable",invalid.getMessage()));}});Design.line(body);
+        menu(body,"settings","New alarm defaults","Reuse this draft’s behavior",()->{try{String template=AlarmDefaultsJson.encode(new AlarmDefaults(alarm));startActivity(RecordUi.intent(this,AlarmDefaultsActivity.class).putExtra("template",template));}catch(IllegalArgumentException invalid){openDialog(()->SleepPicker.message(this,"Defaults unavailable",invalid.getMessage()));}});Design.line(body);
         if(store.alarm(alarm.id)!=null){Design.button(body,"Delete alarm",false,()->new AlertDialog.Builder(this).setTitle("Delete this alarm?").setPositiveButton("Delete",(d,w)->{for(String action:new String[]{Scheduler.FIRE,Scheduler.SNOOZE,Scheduler.CHECK,Scheduler.BACKUP})Scheduler.cancel(this,alarm.id,action);Naps.cancelJob(this,alarm);store.deleteAlarm(alarm.id);finish();}).setNegativeButton("Keep",null).show());}
         Design.fixedAction(body,"Done",()->go("edit"));
     }
@@ -211,7 +220,7 @@ public class AlarmEditorActivity extends Activity {
         picker(body,"clock","Maximum snoozes",null,alarm.snoozeLimit==0?"None":""+alarm.snoozeLimit,alarm.snoozeLimit,numbers(0,5),n->n==0?"None":""+n,n->alarm.snoozeLimit=n);Design.line(body);
         picker(body,"clock","Total snooze time","Shared across every snooze for this alarm occurrence",alarm.snoozeTotalInvalid?"Review":alarm.snoozeTotalMinutes==0?"No time cap":alarm.snoozeTotalMinutes+" min",alarm.snoozeTotalMinutes,new int[]{0,1,2,3,5,10,15,20,30,45,60,90,120,180,240,300},n->n==0?"No time cap":n+" min",n->{alarm.snoozeTotalMinutes=n;alarm.snoozeTotalInvalid=false;});Design.line(body);
         wakeToggle(body,"fade","Shorten each snooze","One minute shorter each time",alarm.shortenSnoozes,on->alarm.shortenSnoozes=on);Design.space(body,12);
-        Design.item(body,"phone","Buttons & orientation",alarm.inputsInvalid?"Needs review":"Volume keys, flip and orientation lock",()->go("controls"));Design.line(body);
+        menu(body,"phone","Buttons & orientation",alarm.inputsInvalid?"Needs review":"Volume keys, flip and orientation lock",()->go("controls"));Design.line(body);
         Design.item(body,"bell","Backup & wake-up check",alarm.backupMinutes>0?"Backup after "+alarm.backupMinutes+" min":"Backup off",()->go("backup"));
         Design.fixedAction(body,"Done",()->go("edit"));
     }
