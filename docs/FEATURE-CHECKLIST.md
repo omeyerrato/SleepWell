@@ -1,33 +1,18 @@
-# SleepWell feature checklist — 26 October 2026
+# SleepWell feature checklist — 27 October 2026
 
-The user-facing condensed version is [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
+Condensed version: [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
+Checked means implemented source/build, not full phone/overnight acceptance.
+Latest published source **5266e54b** builds27s; original signer, Git tag and both
+uploaded APK/checksum digests match. The update is not installed: the phone remains
+**2cbfe043** with its original rows/preferences/private files preserved.
 
-Not fully done. Checked feature paths have production implementation/build evidence,
-not current phone or overnight acceptance. The authorized **2cbfe043** phone update
-is installed: matching APK/signature, schema17 original rows/preferences/user files
-preserved, no app launch or outputs. [Phone evidence](verification/2026-10-26-phone-2cbfe043/README.md).
-
-Production source **f0c1a274** builds app/UI-check APKs in18s with the original
-signer. One focused silent organization flow at957f3380 (identical production
-source) passes with ten actual captures and persisted preference/alarm edits.
-No new unit/lint campaign or physical outputs ran. The new candidate is not
-installed; phone source remains2cbfe043. See [scoped evidence](verification/2026-10-26-settings-organization/README.md).
-Sleep schema17/backup13 and the private automation queue2 remain unchanged.
-Earlier Report evidence remains separately scoped.
-
-Features remain first; no new unit-test batches. A bounded saved-night Report flow passed on
-an isolated silent CI emulator. Broad design/bug/security campaigns
-and the dedicated reviewer remain deferred. All **36 reference screens** remain
-required; a successful build or one flow does not establish full acceptance.
-
-Latest packaged source **b5c63ad1** builds production in16s; functional ancestor **731e9725** built in1m5s. Full runtime MIT notice and readable credits are included. Added named radio
-stations, grouped Tracking options, measured echo-rhythm review and explicit
-experimental offline recorded-audio estimates. Bundled model/label hashes and
-original signer match. These new Android journeys are not runtime/visual accepted;
-reliable automatic laughter still misses2/4 held-out sources, and sleep stages
-remain missing. No personal phone/output action or new unit/lint campaign ran.
-
-Latest menu source **25ed7a9d** builds production in **32s**, with original signer verified. Three parallel worktrees supplied grouped automatic/recurring, sound-analysis/cue/retention and mixer pages, plus direct supporting-page search. These new Android frames are not yet exercised or screenshot accepted. [Bounded scope](verification/2026-10-26-sound-tracking-menus/README.md).
+Three focused Android flows pass, with23 inspected originals: Report43.351s/9,
+organized menus34.25s/11 and actual recorded CPU/save/reopen/delete13.826s/3.
+[Exact scope](verification/2026-10-27-report-menu-release/README.md).
+No new unit/lint/broad campaign or personal-phone/output action ran. Dedicated
+reviewer stays stopped; all36reference screens remain required. Additional
+recognition still misses2/4 held-out positives, and sleep stages remain missing.
+Sleep schema17/backup13/private automation2/result database1 are unchanged.
 
 ## New priorities
 

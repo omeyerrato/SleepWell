@@ -8,16 +8,15 @@ Full supporting evidence stays in FEATURE-CHECKLIST.md and FEATURE-MATRIX.md.
 - [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.
 - [x] First Settings/alarm-menu organization pass: eight groups, search and parent-aware Back; every feature retained.
 
-Latest built source **25ed7a9d** adds grouped sound/tracking/mixer menus and direct detail search (production build32s; Android acceptance pending). It also retains the prior source731e9725 feature increment, which adds saved radio stations, simpler Tracking setup, measured echo-rhythm review and experimental recorded-audio estimates. These new Android flows still need acceptance; the check marks below do not imply full parity.
+Latest published **5266e54b**: compact Report editor, numerical/gap chart
+inspection, grouped tracking/sound/mixer choices, simpler recording analysis and
+switch overlap correction. Production build27s; original signer and uploaded
+APK/checksum verified. [Release/evidence](verification/2026-10-27-report-menu-release/README.md).
 
-Latest unreleased work: compact Report editor, named tag/awake detail sheets,
-themed editor option/rating pickers, numerical chart inspection and explicit
-unmeasured-gap selection are committed. Their combined app/UI-check build passed
-in1m12s at source28e68f13. Two focused silent Android journeys are running at
-CI40387065340/40387070994; their screenshots have not yet been inspected.
-These changes do not close the Report/design checklist item.
-The sleep-stage research evidence is now recorded publicly; no useful stage model
-was accepted or shipped. Latest published APK25ed7a9d remains separate from this work.
+Bounded Android passes: Report43.351s/9inspected captures; organized menus34.25s/11;
+real recorded CPU analysis/save/reopen/delete13.826s/3. Each proves only its named
+actions and persistence. Reliable additional recognition, all36screens and
+physical/overnight acceptance remain open. The phone is still at2cbfe043.
 
 ## Implemented
 

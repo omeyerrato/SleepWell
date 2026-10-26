@@ -1,11 +1,11 @@
 # SleepWell current remaining work
 
-Updated 26 October 2026. This is the consolidated current checklist, not a release
+Updated 27 October 2026. This is the consolidated current checklist, not a release
 history. The goal remains the full applicable phone functionality and **all 36
 supplied design screens across 12 boards**. Existing code, a successful build or a
 bounded historical pass does not establish that whole goal is complete.
 
-Latest menu source **25ed7a9d** builds production in **32s**, with original signer verified. Three parallel worktrees supplied grouped automatic/recurring, sound-analysis/cue/retention and mixer pages, plus direct supporting-page search. These new Android frames are not yet exercised or screenshot accepted. [Bounded scope](verification/2026-10-26-sound-tracking-menus/README.md).
+Latest published **5266e54b** includes the Report/chart, organized-menu and recording-analysis changes. Build27s, original signer and both uploaded asset digests verified. Three focused flows pass with23 inspected originals; complete scope stays in the [release evidence](verification/2026-10-27-report-menu-release/README.md).
 
 ## Current user priorities
 
@@ -26,18 +26,18 @@ unverified. [Scoped evidence](verification/2026-10-26-settings-organization/READ
 | --- | --- |
 | Installed phone build | **2cbfe043**, authorized streamed update; installed checksum/original signer match. All original schema17 rows, preferences and original private files preserved. |
 | Phone availability | Connected for that authorized update only. No app launch, suspension change or output/capture/provider runtime action. |
-| Published candidate | **25ed7a9d**, combined production build **PASS32s**, original signer, packaged model hashes/runtime notice and both uploaded assets verified. Adds grouped tracking/sound/mixer menus and direct detail search; prior radio/rhythm/recorded estimates retained. Not installed. Sleep schema17/metadata13/private automation2; separate recorded-estimate database1. |
-| New feature evidence | Prior Settings groups/search/Back and feedback/alarm edit state have a bounded silent pass. Latest Android flows remain unexercised; host numerical model/frontend parity is retained, while independent recognition still misses2/4 positives. Provider/snooze/client/output acceptance remains open. |
+| Published candidate | **5266e54b**, production build PASS27s, original signer, exact tag target and both uploaded asset hashes verified. Report/chart/menu/recording-analysis changes and optional snooze API field included; not installed. Sleep schema17/backup13/private automation2/result database1. |
+| New feature evidence | Report43.351s/9captures; organized menus34.25s/11; native recorded CPU/save/reopen/delete13.826s/3. All originals inspected. Provider/client, physical haptics/outputs, accuracy and overnight acceptance remain open. |
 | Current work policy | Features first; no new unit-test batches or broad campaigns. Essential builds, preservation and bounded changed-flow checks remain applicable. Dedicated reviewer stays stopped. |
 
-[Latest published menu/build scope](verification/2026-10-26-sound-tracking-menus/README.md).
+[Latest published release and scoped evidence](verification/2026-10-27-report-menu-release/README.md).
 [Prior model/radio/rhythm scope](verification/2026-10-26-radio-rhythm-recognition/README.md).
 
 [Phone update evidence](verification/2026-10-26-phone-2cbfe043/README.md) is separate
 from the earlier [single Report flow](verification/2026-10-26-report-flow/README.md).
 That Report flow passed with8fixture captures and persisted edits, but did not
 cover provider-stage rendering, real audio, these new integrations or all36screens.
-The editor captures remain scrolled rather than full reference matches.
+The later compact editor flow shows the full default-size main composition and saved awake/tag/note state; secondary sheets, large fonts and full Report parity remain open. See [latest Report evidence](verification/2026-10-26-report-editor-and-chart/README.md).
 No further personal-phone actions are authorized by this status note.
 
 ## Concrete remaining implementation and interpretation limits

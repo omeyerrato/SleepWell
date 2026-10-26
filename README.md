@@ -10,42 +10,32 @@ and [strict visual review](docs/DESIGN-REVIEW.md). The first UI pass was rejecte
 the new root compositions are corrective work, not final acceptance of the 36 screens.
 Wearables and watch companions are excluded from this scope.
 
-## Current feature candidate — 26 October
+## Current development update — 27 October
 
-Source **25ed7a9d** adds grouped automatic/recurring tracking, sound sensitivity,
-retention, snoring-cue and sleep-mixer menus. Main controls remain visible;
-supporting options use named pages with parent Back. Timer/fade choices use themed
-drafts with Use/Cancel. Settings search has88 allowlisted destinations, including
-direct detail-page links. Shared setting-respecting feedback extends to mixer
-selections and switches. The combined APK builds in **32s** with the original signer.
-[Exact menu/build scope](docs/verification/2026-10-26-sound-tracking-menus/README.md).
+[Development APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-report-menus-20261027-5266e54b)
+from **5266e54b** includes a compact Report editor, measured chart inspection,
+explicit gaps, grouped sound/tracking/mixer menus, themed timer/fade choices and
+clearer recording-analysis pages. Shared switch descriptions now wrap before the
+control. Settings search retains88 destinations; all existing sources/features
+remain. The guarded ordinary-alarm API adds optional1–60min snooze duration.
 
-[Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-menus-20261026-25ed7a9d).
-The APK is334,886,933bytes including bundled offline models/runtime. Uploaded APK
-and checksum hashes match the local candidate. It retains saved HTTPS radio,
-measured echo-rhythm review and explicit PANNs/EfficientAT recorded-audio estimates
-from **b5c63ad1**, with full model/runtime notices. Reliable automatic recognition
-still misses2/4 independent positive sources; phone sleep-stage/REM and apnea
-analysis remain absent. [Prior feature scope](docs/verification/2026-10-26-radio-rhythm-recognition/README.md).
+Production build **PASS27s**, original signer and both uploaded asset hashes verified.
+APK334,914,969bytes includes the offline models/runtime. Three focused silent
+Android flows pass: Report43.351s/9inspected captures, organized menus34.25s/11,
+and actual recording CPU analysis/save/reopen/delete13.826s/3. These establish
+their documented actions and persistence, not all36screen or whole-app acceptance.
+[Exact release and evidence scope](docs/verification/2026-10-27-report-menu-release/README.md).
 
-Sleep schema17/backup13/private automation2 and separate supplementary-summary
-database1 remain. Older builds may not open newer automation/movement metadata.
-The earlier Settings-only flow passed with ten inspected actual screenshots.
-**The new menus, gestures, recreation and screenshots remain unverified**; that
-historical pass does not cover these changes, physical haptic feel or all36
-reference screens. [Settings evidence](docs/verification/2026-10-26-settings-organization/README.md).
+Additional sound recognition remains experimental: the independent holdout misses
+2/4 positive sources, and both native windows are Uncertain. Sleep-stage/REM/apnea,
+external-client/vendor exchange, physical haptic feel and overnight/output behavior
+remain open. No new unit/lint/broad campaign or personal-phone action ran.
 
-The separately authorized **2cbfe043** phone update remains installed. Original
-rows/preferences/private files matched before and after; SleepWell was not
-launched and no outputs ran. The newer candidate is **not installed**.
+Sleep schema17/backup13/private automation2 and separate result database1 remain.
+The separately authorized phone build remains **2cbfe043**, with original data
+preserved; this newer APK is **not installed**.
 [Phone evidence](docs/verification/2026-10-26-phone-2cbfe043/README.md).
-
-The earlier saved-night Report flow passed at4e3abe96 with persisted edits and
-eight actual Android fixture captures; only later production delta in the installed
-2cbfe043 build was imported-duration copy. This does not verify the new integrations,
-provider-stage rendering, real audio, overnight behavior or all36design screens.
-[Report evidence and visible differences](docs/verification/2026-10-26-report-flow/README.md).
-[Feature checklist](docs/FEATURE-CHECKLIST.md) · [Remaining work](docs/REMAINING-WORK.md).
+[Checklist](docs/QUICK-CHECKLIST.md) · [Remaining work](docs/REMAINING-WORK.md).
 
 ## Working capabilities
 

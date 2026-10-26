@@ -1,0 +1,29 @@
+{
+  "source": "5266e54bc4351d96c41c7c41aa0f4e3f1a4f9e4b",
+  "build": "assembleDebug passed in 27s",
+  "verification_scope": "Report CI40387070994 PASS43.351s/9inspected captures; organized-settings CI40398688904 PASS34.25s/11inspected captures; recorded-analysis CI40402840848 PASS13.826s/3inspected captures with actual CPU save/reopen/delete/source preservation. UI/model source identical to captured predecessors; only ordinary snooze API extension added afterward and remains external-client unverified. No new unit/lint/broad campaign or personal phone/output action.",
+  "database_schema": 17,
+  "backup_format": 13,
+  "phone_installed": false,
+  "artifacts": {
+    "debug": {
+      "source": "5266e54bc4351d96c41c7c41aa0f4e3f1a4f9e4b",
+      "sha256": "aa89766bf4cbb9b1f1cf0a04d28aefbdd36668aa17f38649bbdf28406fb47c24",
+      "path": "SleepWell-5266e54b.apk",
+      "size": 334914969
+    }
+  },
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "private_automation_schema": 2,
+  "recorded_estimates_schema": 1,
+  "distribution": {
+    "tag": "v0.1.0-report-menus-20261027-5266e54b",
+    "url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-report-menus-20261027-5266e54b",
+    "target_commit": "5266e54bc4351d96c41c7c41aa0f4e3f1a4f9e4b",
+    "draft": false,
+    "prerelease": true,
+    "uploaded": true,
+    "uploaded_size": 334914969,
+    "uploaded_digest": "sha256:aa89766bf4cbb9b1f1cf0a04d28aefbdd36668aa17f38649bbdf28406fb47c24"
+  }
+}
