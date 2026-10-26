@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.nfc.NfcAdapter;
+import android.media.AudioManager;
 import org.json.*;
 import java.security.SecureRandom;
 import java.util.*;
@@ -17,6 +18,8 @@ final class RandomChallenges {
     private static final String KEY="randomChallengeOccurrenceV1";
     static final List<String> SCREEN=List.of("Math","Memory","Sequence","Retype","Visual search","Counting","Flags","Mirror text","Dream journal","Jumping","Type code");
     static final List<String> HARDWARE=List.of("Shake","Walk","NFC","QR code","Tilt maze","Light","Spin around");
+    static final List<String> CAMERA=List.of("Picture match","Object recognition","Smile","Pose","Camera light");
+    static final List<String> AUDIO=List.of("Speak","Laughter","Loud sound","Spoken phrase","Musical note");
     static final class Prepared {
         final Alarm alarm;final String ledger;
         Prepared(Alarm alarm,String ledger){this.alarm=alarm;this.ledger=ledger;}
@@ -30,17 +33,33 @@ final class RandomChallenges {
         JSONArray pool=row.getJSONArray("pool");if(pool.length()<1||pool.length()>8)throw new JSONException("Choose 1–8 pool entries");
         for(int i=0;i<pool.length();i++){
             JSONObject task=pool.getJSONObject(i);String type=task.getString("type");if(TYPE.equals(type)||!supported(type))throw new JSONException("This task is not supported in a random pool");
-            Set<String> keys=new HashSet<>(List.of("type","rounds"));switch(type){case "Math":keys.add("math");break;case "Walk":keys.add("steps");break;case "Dream journal":keys.add("minimum");break;case "QR code":keys.add("code");break;default:break;}
+            Set<String> keys=new HashSet<>(List.of("type","rounds"));switch(type){case "Math":keys.add("math");break;case "Walk":keys.add("steps");break;case "Dream journal":keys.add("minimum");break;case "QR code":keys.add("code");break;case "Picture match":keys.add("picture");break;case "Object recognition":keys.add("objectTarget");break;default:break;}
             Iterator<String> names=task.keys();while(names.hasNext())if(!keys.contains(names.next()))throw new JSONException("Unknown random task setting");
         }
         ChallengeRoutine fixed=ChallengeRoutineJson.decode(pool);Set<String> seen=new HashSet<>();for(ChallengeRoutine.Task task:fixed.tasks)if(!seen.add(ChallengeRoutineJson.encode(new ChallengeRoutine(List.of(task))).toString()))throw new JSONException("Duplicate random pool entry");try{return ChallengeRoutine.random(fixed.tasks,(int)n);}catch(IllegalArgumentException invalid){throw new JSONException(invalid.getMessage());}
     }
-    static boolean supported(String type){return SCREEN.contains(type)||HARDWARE.contains(type);}
+    static boolean supported(String type){return SCREEN.contains(type)||HARDWARE.contains(type)||CAMERA.contains(type)||AUDIO.contains(type);}
+    static boolean needsTemplate(String type){return type.equals("QR code")||type.equals("Picture match")||type.equals("Object recognition");}
+    /** Capability checks deliberately do not initialize a detector, recognizer, camera or microphone. */
+    static String readinessNote(ChallengeRoutine.Task task){
+        if(task.type.equals(PhraseRule.TYPE))return "Offline English readiness is checked only after explicit Listen. An installed device recognizer does not guarantee its English model; Math remains available.";
+        if(CAMERA.contains(task.type))return "Camera and local detector availability are checked again only after explicit Start. Basic hardware and permission checks do not prove the model can run.";
+        if(AUDIO.contains(task.type))return "Listening starts only on an explicit tap. Microphone and local processing can still become unavailable; Math remains available.";
+        return "";
+    }
     /** Read-only eligibility; never requests permissions or starts hardware. Rechecked at the occurrence. */
     static String unavailable(Context context,ChallengeRoutine.Task task){
         if(!supported(task.type))return "Not supported in a random pool yet";
         if(SCREEN.contains(task.type))return "";
         try{
+            if(AUDIO.contains(task.type))return microphone(context,task);
+            if(CAMERA.contains(task.type)){
+                if(task.type.equals("Picture match")&&task.picture==null)return "Capture a picture reference in a fixed routine first";
+                if(task.type.equals("Object recognition")&&task.objectTarget==null)return "Choose an object target in a fixed routine first";
+                String feature=task.type.equals("Smile")||task.type.equals("Pose")?PackageManager.FEATURE_CAMERA_FRONT:task.type.equals("Object recognition")?PackageManager.FEATURE_CAMERA:PackageManager.FEATURE_CAMERA_ANY;
+                if(!context.getPackageManager().hasSystemFeature(feature))return feature.equals(PackageManager.FEATURE_CAMERA_FRONT)?"No front camera available":feature.equals(PackageManager.FEATURE_CAMERA)?"No rear camera available":"No camera available";
+                return context.checkSelfPermission(Manifest.permission.CAMERA)==PackageManager.PERMISSION_GRANTED?"":"Camera access not granted";
+            }
             if(task.type.equals("QR code")){if(task.code==null)return "Enroll a morning code in a fixed routine first";if(!context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY))return "No camera available";return context.checkSelfPermission(Manifest.permission.CAMERA)==PackageManager.PERMISSION_GRANTED?"":"Camera access not granted";}
             if(task.type.equals("NFC")){NfcAdapter adapter=NfcAdapter.getDefaultAdapter(context);if(adapter==null)return "No NFC reader";if(!adapter.isEnabled())return "NFC is switched off";return Prefs.text(context,"nfcTag","").isEmpty()?"No morning tag enrolled":"";}
             SensorManager sensors=context.getSystemService(SensorManager.class);if(sensors==null)return "Sensor service unavailable";
@@ -49,6 +68,17 @@ final class RandomChallenges {
             if(task.type.equals("Spin around"))return sensors.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)==null&&sensors.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR)==null?"No rotation-vector sensor":"";
             return sensors.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)==null?"No accelerometer":"";
         }catch(RuntimeException unavailable){return "Prerequisite could not be checked";}
+    }
+    private static String microphone(Context context,ChallengeRoutine.Task task){
+        if(!context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_MICROPHONE))return "No microphone available";
+        if(context.checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)return "Microphone access not granted";
+        if(TrackingService.running)return "Sleep tracking currently owns the recording flow";
+        if(MicrophoneLease.occupied())return "An existing microphone capture is still owned or closing";
+        AudioManager audio=context.getSystemService(AudioManager.class);if(audio==null)return "Audio service unavailable";
+        if(audio.getMode()!=AudioManager.MODE_NORMAL)return "Microphone unavailable during a call or communication session";
+        if(audio.isMicrophoneMute())return "Microphone is muted";
+        if(!audio.getActiveRecordingConfigurations().isEmpty())return "Another microphone capture is active";
+        return task.type.equals(PhraseRule.TYPE)?PhraseRecognition.unavailable(context,false):"";
     }
     private static String canonical(Alarm alarm){return alarm.json().toString();}
     private static JSONObject read(Context context){return read(Prefs.of(context));}
