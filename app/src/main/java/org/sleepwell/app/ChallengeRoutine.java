@@ -22,10 +22,12 @@ final class ChallengeRoutine {
         final Task task;final int index,round;
         Position(Task task,int index,int round){this.task=task;this.index=index;this.round=round;}
     }
-    final List<Task> tasks;
-    ChallengeRoutine(List<Task> tasks){if(tasks.isEmpty()||tasks.size()>LIMIT)throw new IllegalArgumentException("Choose 1–8 tasks");this.tasks=List.copyOf(tasks);}
+    final List<Task> tasks;final int randomCount;
+    ChallengeRoutine(List<Task> tasks){this(tasks,0);}
+    private ChallengeRoutine(List<Task> tasks,int count){if(tasks.isEmpty()||tasks.size()>LIMIT||count<0||count>tasks.size())throw new IllegalArgumentException("Choose 1–8 tasks and a count within the pool");this.tasks=List.copyOf(tasks);randomCount=count;}
+    static ChallengeRoutine random(List<Task> pool,int count){if(count<1)throw new IllegalArgumentException("Choose at least one random task");return new ChallengeRoutine(pool,count);}
     static ChallengeRoutine legacy(String type,int rounds){return new ChallengeRoutine(List.of(new Task(TYPES.contains(type)&&!type.equals("Walk")&&!type.equals("QR code")&&!type.equals("Dream journal")&&!type.equals("Speak")&&!type.equals("Picture match")&&!type.equals("Smile")&&!type.equals("Pose")&&!type.equals("Light")&&!type.equals("Type code")&&!type.equals("Camera light")&&!type.equals("Spin around")&&!type.equals("Musical note")&&!type.equals("Object recognition")&&!type.equals(PhraseRule.TYPE)?type:"Math",Math.max(1,Math.min(6,rounds)))));}
-    int units(){int total=0;for(Task task:tasks)total+=task.units();return total;}
+    int units(){if(randomCount>0)throw new IllegalStateException("Materialize random tasks for this occurrence first");int total=0;for(Task task:tasks)total+=task.units();return total;}
     Position at(int completed){if(completed<0||completed>=units())return null;int offset=0;for(int n=0;n<tasks.size();n++){Task task=tasks.get(n);if(completed<offset+task.units())return new Position(task,n,completed-offset);offset+=task.units();}throw new AssertionError();}
     /** A stale/duplicate task callback must not skip the next task or round. */
     int advance(int completed,int expected){return completed==expected&&at(completed)!=null?completed+1:completed;}
@@ -33,5 +35,5 @@ final class ChallengeRoutine {
     ChallengeRoutine add(Task task){List<Task> copy=new ArrayList<>(tasks);copy.add(task);return new ChallengeRoutine(copy);}
     ChallengeRoutine move(int index,int destination){List<Task> copy=new ArrayList<>(tasks);Task task=copy.remove(index);copy.add(destination,task);return new ChallengeRoutine(copy);}
     ChallengeRoutine remove(int index){List<Task> copy=new ArrayList<>(tasks);copy.remove(index);return new ChallengeRoutine(copy);}
-    String summary(){return tasks.size()==1?tasks.get(0).type.equals("Walk")?"Walk · "+tasks.get(0).targetSteps+" steps":tasks.get(0).type.equals("Object recognition")?"Object · "+tasks.get(0).objectTarget.label():tasks.get(0).type+" × "+tasks.get(0).rounds:tasks.size()+" tasks";}
+    String summary(){if(randomCount>0)return "Random · "+randomCount+" from "+tasks.size()+" tasks";return tasks.size()==1?tasks.get(0).type.equals("Walk")?"Walk · "+tasks.get(0).targetSteps+" steps":tasks.get(0).type.equals("Object recognition")?"Object · "+tasks.get(0).objectTarget.label():tasks.get(0).type+" × "+tasks.get(0).rounds:tasks.size()+" tasks";}
 }
