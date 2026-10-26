@@ -90,8 +90,13 @@ final class Design {
         if(click!=null){Icon chevron=new Icon(c,"chevron",INK);LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(dp(c,22),dp(c,22));cp.leftMargin=dp(c,8);r.addView(chevron,cp);r.setBackground(touch(c,Color.TRANSPARENT,8));r.setOnClickListener(v->{InteractionFeedback.action(v);click.run();});}
         p.addView(r,new LinearLayout.LayoutParams(-1,-2));return r;
     }
-    static Switch toggle(LinearLayout p,String title,String subtitle,boolean checked,Consumer<Boolean> change){Context c=p.getContext();LinearLayout r=row(c);pad(r,14,12);r.setBackground(shape(c,SOFT,16));LinearLayout copy=col(c);text(copy,title,16,600,INK);if(subtitle!=null){space(copy,5);text(copy,subtitle,12,400,MUTED);}r.addView(copy,new LinearLayout.LayoutParams(0,-2,1));
-        InteractionFeedback.Toggle s=new InteractionFeedback.Toggle(c);s.setContentDescription(title);styleSwitch(c,s,BROWN,0xffbcb5b0);s.setChecked(checked);s.setOnCheckedChangeListener((b,on)->{s.userChanged();change.accept(on);if(!InteractionFeedback.motion(c))s.jumpDrawablesToCurrentState();});r.addView(s);p.addView(r,new LinearLayout.LayoutParams(-1,-2));return s;
+    static Switch toggle(LinearLayout p,String title,String subtitle,boolean checked,Consumer<Boolean> change){Context c=p.getContext();RelativeLayout r=new RelativeLayout(c);pad(r,14,12);r.setBackground(shape(c,SOFT,16));
+        InteractionFeedback.Toggle s=new InteractionFeedback.Toggle(c);s.setId(View.generateViewId());s.setContentDescription(title);styleSwitch(c,s,BROWN,0xffbcb5b0);s.setChecked(checked);s.setOnCheckedChangeListener((b,on)->{s.userChanged();change.accept(on);if(!InteractionFeedback.motion(c))s.jumpDrawablesToCurrentState();});
+        RelativeLayout.LayoutParams control=new RelativeLayout.LayoutParams(-2,-2);control.addRule(RelativeLayout.ALIGN_PARENT_END);control.addRule(RelativeLayout.CENTER_VERTICAL);
+        LinearLayout copy=col(c);text(copy,title,16,600,INK);if(subtitle!=null){space(copy,5);text(copy,subtitle,12,400,MUTED);}
+        // Measure copy between the leading edge and the actual switch, never beneath its touch area.
+        RelativeLayout.LayoutParams labels=new RelativeLayout.LayoutParams(-1,-2);labels.addRule(RelativeLayout.ALIGN_PARENT_START);labels.addRule(RelativeLayout.START_OF,s.getId());labels.addRule(RelativeLayout.CENTER_VERTICAL);labels.setMarginEnd(dp(c,12));r.addView(copy,labels);r.addView(s,control);
+        p.addView(r,new LinearLayout.LayoutParams(-1,-2));return s;
     }
     /** Native vectors from the pinned Phosphor family; geometry and licenses are vendored. */
     static class Icon extends View {
