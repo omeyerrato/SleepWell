@@ -109,7 +109,13 @@ public final class ReportReferenceFlowTest {
             assertTrue(device.hasObject(By.text("1 event")));
             assertTrue(device.hasObject(By.text("Analysis only · no recordings saved.")));
             assertFalse(device.hasObject(By.textStartsWith("Play")));
+            UiObject2 measuredChart=device.wait(Until.findObject(By.descStartsWith("Phone movement chart.")),5000);assertNotNull("Actual movement chart",measuredChart);android.graphics.Rect measuredBounds=measuredChart.getVisibleBounds();assertTrue("Inspect a measured interval",device.click(measuredBounds.centerX(),measuredBounds.centerY()));assertTrue("Selected measured value is available",device.wait(Until.hasObject(By.desc(java.util.regex.Pattern.compile("(?s)Phone movement at .* relative.*"))),5000));
             reportActionsFit();capture("night");
+            launch(RecordReportActivity.class,2003);title("Sleep report");UiObject2 gapChart=device.wait(Until.findObject(By.descStartsWith("Phone movement chart.")),5000);assertNotNull("Gapped measured chart",gapChart);android.graphics.Rect gapBounds=gapChart.getVisibleBounds();
+            // This fixture has440 elapsed minutes and a real blank120–130min pause.
+            // Tap its midpoint on the visible time axis, rather than invoking a chart callback.
+            int gapX=gapBounds.left+Design.dp(context,28)+(int)((gapBounds.width()-Design.dp(context,36))*125d/440d);assertTrue("Inspect the recorded pause",device.click(gapX,gapBounds.centerY()));assertTrue("A blank interval must not select a distant measurement",device.wait(Until.hasObject(By.desc(java.util.regex.Pattern.compile("(?s)Phone movement at .*no readings for this interval.*"))),5000));capture("chart-gap");
+            launch(RecordReportActivity.class,2000);title("Sleep report");object("Edit sleep");reportActionsFit();
             object("Report options").click();click("About this recording");title("About this recording");click("Got it");title("Sleep report");
             object("Report options").click();click("View trends");title("Trends");device.pressBack();title("Sleep report");reportActionsFit();
             object("View sound events").click();

@@ -11,7 +11,7 @@ import java.util.*;
 class RecordChart extends View {
     private final List<ChartSeries.Sample> samples=new ArrayList<>();
     private final java.time.ZoneId zone;private final String metric;private final long start;private long end;private final boolean night;private final Paint paint=new Paint(3);
-    private List<ChartSeries.Bar> bars=Collections.emptyList();private int selected=-1;private double high=.001;private String measurementLabel;private int actualReadings;
+    private List<ChartSeries.Bar> bars=Collections.emptyList();private int selected=-1;private Long inspectedAt;private double high=.001;private String measurementLabel;private int actualReadings;
     RecordChart(Context c,List<JSONObject> epochs,String metric,long start,long end){
         this(c,epochs,metric,start,end,false);
     }
@@ -29,7 +29,7 @@ class RecordChart extends View {
     }
     RecordChart measurement(String label){measurementLabel=label;describeSeries();return this;}
     private String metricName(){return measurementLabel==null?metric:measurementLabel;}
-    private void describeSeries(){setContentDescription(metricName()+" chart. "+actualReadings+" actual readings. Missing intervals are blank. Dense bars average contiguous readings.");}
+    private void describeSeries(){setContentDescription(metricName()+" chart. "+actualReadings+" actual readings. Missing intervals are blank. Dense bars average contiguous readings. Tap a time or use the forward and backward actions to inspect a value.");}
     static String clock(long time){return java.time.Instant.ofEpochMilli(time).atZone(java.time.ZoneId.systemDefault()).format(java.time.format.DateTimeFormatter.ofPattern("h:mm a",Locale.getDefault()));}
     private boolean clock24(){return android.text.format.DateFormat.is24HourFormat(getContext());}
     private String label(long time){return ChartTicks.tooltip(time,start,end,zone,clock24(),Locale.getDefault());}
@@ -44,12 +44,14 @@ class RecordChart extends View {
         super.onSizeChanged(w,h,oldw,oldh);rebuild();
     }
     @Override protected void onFocusChanged(boolean focused,int direction,Rect previous){super.onFocusChanged(focused,direction,previous);invalidate();}
-    private void rebuild(){Long selection=selected>=0&&selected<bars.size()?bars.get(selected).from+(bars.get(selected).to-bars.get(selected).from)/2:null;bars=ChartSeries.aggregate(samples,start,end,Math.max(1,(int)((plotRight()-plotLeft())/(6*density()))));selected=-1;high=.001;for(int n=0;n<bars.size();n++){ChartSeries.Bar bar=bars.get(n);high=Math.max(high,bar.value);if(selection!=null&&selection>=bar.from&&selection<=bar.to)selected=n;}if(selected>=0)describeSelection();}
+    private void rebuild(){bars=ChartSeries.aggregate(samples,start,end,Math.max(1,(int)((plotRight()-plotLeft())/(6*density()))));high=.001;for(ChartSeries.Bar bar:bars)high=Math.max(high,bar.value);selectInspectedTime();if(inspectedAt!=null)describeSelection();}
+    private void selectInspectedTime(){selected=-1;if(inspectedAt==null)return;for(int n=0;n<bars.size();n++){ChartSeries.Bar bar=bars.get(n);if(inspectedAt>=bar.from&&inspectedAt<=bar.to){selected=n;return;}}}
+    private String valueLabel(ChartSeries.Bar bar){return String.format(Locale.getDefault(),"%.3g",bar.value)+(metric.equals("light")?" lx":metric.equals("movement")||metric.equals("noise")?" relative":"");}
     @Override protected void onDraw(Canvas canvas){
         super.onDraw(canvas);float d=density(),w=getWidth(),h=getHeight(),left=plotLeft(),right=plotRight();
         paint.setTypeface(Design.font(getContext(),400));paint.setTextSize(textSize());paint.setStyle(Paint.Style.FILL);paint.setTextAlign(Paint.Align.LEFT);
         List<ChartTicks.Tick> candidates=ChartTicks.candidates(start,end,zone,clock24(),Locale.getDefault(),5);List<ChartTicks.Placed> ticks=ChartTicks.layout(candidates,start,end,left,right,8*d,paint::measureText);int lines=1;for(ChartTicks.Placed tick:ticks)lines=Math.max(lines,tick.tick.label.split("\n").length);
-        Paint.FontMetrics font=paint.getFontMetrics();float lineHeight=font.descent-font.ascent+2*d,capsule=Math.max(22*d,font.descent-font.ascent+8*d),top=capsule+4*d,bottom=h-Math.max(28*d,lineHeight*lines+10*d);
+        Paint.FontMetrics font=paint.getFontMetrics();float lineHeight=font.descent-font.ascent+2*d,capsule=Math.max(36*d,2*lineHeight+8*d),top=capsule+4*d,bottom=h-Math.max(28*d,lineHeight*lines+10*d);
         paint.setColor(ink());canvas.drawText("High",0,top+5*d,paint);canvas.drawText("Low",0,bottom,paint);
         paint.setColor(night?0xff62566d:Appearance.contrast(getContext())?0xffa29185:Design.LINE);paint.setStrokeWidth(d*.7f);canvas.drawLine(left,bottom,right,bottom,paint);canvas.drawLine(left,top,left,bottom,paint);canvas.drawLine(right,top,right,bottom,paint);for(ChartTicks.Placed tick:ticks)if(tick.tick.endpoint==0){float grid=x(tick.tick.time);canvas.drawLine(grid,top,grid,bottom,paint);}
         for(int n=0;n<bars.size();n++){
@@ -58,21 +60,27 @@ class RecordChart extends View {
             int color=n==selected?0xffaa7352:Appearance.contrast(getContext())?(night?Design.LILAC:0xff6b3dc4):Design.VIOLET;
             if(!Appearance.contrast(getContext()))paint.setShader(new LinearGradient(0,y,0,bottom,color,n==selected?0xffd3ad94:0xffd6c2fa,Shader.TileMode.CLAMP));else paint.setColor(n==selected?Design.BROWN:color);
             canvas.drawRoundRect(center-width/2,y,center+width/2,bottom,3*d,3*d,paint);paint.setShader(null);
-            if(n==selected){
-                paint.setColor(Design.BROWN);canvas.drawCircle(center,y,3*d,paint);String label=bar.readings>1?axisTime(bar.from)+"–"+axisTime(bar.to)+" avg":axisTime(bar.to);float half=paint.measureText(label)/2+10*d,tx=Math.max(half,Math.min(w-half,center));
-                canvas.drawRoundRect(tx-half,0,tx+half,capsule,capsule/2,capsule/2,paint);paint.setTextAlign(Paint.Align.CENTER);paint.setColor(Design.CREAM);canvas.drawText(label,tx,(capsule-font.descent-font.ascent)/2,paint);
-            }
+        }
+        if(inspectedAt!=null){
+            float center=x(inspectedAt);String timeLabel=selected>=0?(bars.get(selected).readings>1?axisTime(bars.get(selected).from)+"–"+axisTime(bars.get(selected).to):axisTime(bars.get(selected).to)):axisTime(inspectedAt);
+            String value=selected>=0?valueLabel(bars.get(selected))+(bars.get(selected).readings>1?" avg":""):"No readings";timeLabel=timeLabel.replace('\n',' ');
+            float available=Math.max(1,w-24*d);timeLabel=android.text.TextUtils.ellipsize(timeLabel,paint,available,android.text.TextUtils.TruncateAt.END).toString();value=android.text.TextUtils.ellipsize(value,paint,available,android.text.TextUtils.TruncateAt.END).toString();
+            float half=Math.min(w/2,Math.max(paint.measureText(timeLabel),paint.measureText(value))/2+10*d),tx=Math.max(half,Math.min(w-half,center));
+            paint.setColor(Design.BROWN);paint.setStrokeWidth(d*.7f);
+            if(selected>=0){ChartSeries.Bar bar=bars.get(selected);float point=x(bar.from+(bar.to-bar.from)/2),y=(float)(bottom-(bottom-top)*(bar.value/high));y=Math.min(y,bottom-2*d);canvas.drawLine(point,capsule,point,y,paint);canvas.drawCircle(point,y,3*d,paint);}
+            canvas.drawRoundRect(tx-half,0,tx+half,capsule,8*d,8*d,paint);paint.setTextAlign(Paint.Align.CENTER);paint.setColor(Design.CREAM);float first=(capsule-2*lineHeight)/2-font.ascent;canvas.drawText(timeLabel,tx,first,paint);canvas.drawText(value,tx,first+lineHeight,paint);
         }
         if(bars.isEmpty()){paint.setColor(ink());paint.setTextAlign(Paint.Align.CENTER);canvas.drawText("No readings for this signal",w/2,(top+bottom)/2,paint);}
         paint.setColor(ink());paint.setTextAlign(Paint.Align.CENTER);for(ChartTicks.Placed tick:ticks){String[] labels=tick.tick.label.split("\n");for(int n=0;n<labels.length;n++)canvas.drawText(labels[n],(float)tick.center,h-7*d-(labels.length-1-n)*lineHeight,paint);}
         if(hasFocus()){paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(1.5f*d);paint.setColor(night?Design.LILAC:0xff8952e4);canvas.drawRoundRect(left-2*d,top-2*d,right+2*d,bottom+2*d,5*d,5*d,paint);paint.setStyle(Paint.Style.FILL);}
     }
     @Override public boolean onTouchEvent(MotionEvent event){
-        if(event.getAction()==MotionEvent.ACTION_UP){float ratio=Math.max(0,Math.min(1,(event.getX()-plotLeft())/(plotRight()-plotLeft())));long time=start+(long)((end-start)*ratio),distance=Long.MAX_VALUE;
-            for(int n=0;n<bars.size();n++){ChartSeries.Bar bar=bars.get(n);long center=bar.from+(bar.to-bar.from)/2,delta=Math.abs(center-time);if(delta<distance){selected=n;distance=delta;}}performClick();invalidate();return true;}return true;
+        if(event.getAction()==MotionEvent.ACTION_UP){float ratio=Math.max(0,Math.min(1,(event.getX()-plotLeft())/Math.max(1,plotRight()-plotLeft())));inspectedAt=start+(long)((end-start)*ratio);selectInspectedTime();InteractionFeedback.selection(this);performClick();invalidate();return true;}return true;
     }
-    private void describeSelection(){ChartSeries.Bar bar=bars.get(selected);setContentDescription(metricName()+" at "+label(bar.to)+": "+String.format(Locale.getDefault(),"%.3f",bar.value)+(bar.readings>1?" average of "+bar.readings+" readings from "+label(bar.from):" measured reading"));}
-    @Override public boolean performClick(){super.performClick();if(selected>=0)describeSelection();return true;}
+    private void describeSelection(){if(inspectedAt==null)return;if(selected<0){setContentDescription(metricName()+" at "+label(inspectedAt)+": no readings for this interval.");return;}ChartSeries.Bar bar=bars.get(selected);setContentDescription(metricName()+" at "+label(bar.to)+": "+valueLabel(bar)+(bar.readings>1?" average of "+bar.readings+" readings from "+label(bar.from):" measured reading"));}
+    @Override public boolean performClick(){super.performClick();if(inspectedAt==null&&!bars.isEmpty()){selected=0;inspectedAt=bars.get(0).from+(bars.get(0).to-bars.get(0).from)/2;}describeSelection();return true;}
     @Override public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info){super.onInitializeAccessibilityNodeInfo(info);info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_FORWARD);info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_BACKWARD);}
-    @Override public boolean performAccessibilityAction(int action,android.os.Bundle args){int step=action==AccessibilityNodeInfo.ACTION_SCROLL_FORWARD?1:action==AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD?-1:0;if(step==0)return super.performAccessibilityAction(action,args);int next=selected<0?(step>0?0:bars.size()-1):selected+step;if(next<0||next>=bars.size())return false;selected=next;performClick();invalidate();return true;}
+    private boolean step(int direction){int next=selected<0?(direction>0?0:bars.size()-1):selected+direction;if(selected<0&&inspectedAt!=null){while(next>=0&&next<bars.size()&&(direction>0?bars.get(next).to<inspectedAt:bars.get(next).from>inspectedAt))next+=direction;}if(next<0||next>=bars.size())return false;selected=next;ChartSeries.Bar bar=bars.get(next);inspectedAt=bar.from+(bar.to-bar.from)/2;InteractionFeedback.selection(this);performClick();invalidate();return true;}
+    @Override public boolean performAccessibilityAction(int action,android.os.Bundle args){int direction=action==AccessibilityNodeInfo.ACTION_SCROLL_FORWARD?1:action==AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD?-1:0;return direction==0?super.performAccessibilityAction(action,args):step(direction);}
+    @Override public boolean onKeyDown(int key,KeyEvent event){if(key==KeyEvent.KEYCODE_DPAD_RIGHT||key==KeyEvent.KEYCODE_DPAD_LEFT)return step(key==KeyEvent.KEYCODE_DPAD_RIGHT?1:-1);return super.onKeyDown(key,event);}
 }
