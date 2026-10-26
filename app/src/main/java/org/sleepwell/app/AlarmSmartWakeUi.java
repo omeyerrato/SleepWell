@@ -160,9 +160,8 @@ final class AlarmSmartWakeUi {
         }else{
             boolean effective=alarm.smartWake.requiresGoal(Boolean.TRUE.equals(global));
             String following=alarm.smartWake.goal<0?"Following global goal · "+(effective?"On":"Off")+"\n":"";
-            android.widget.Switch toggle=Design.toggle(body,"Respect sleep goal",following+target,effective,
+            Design.toggle(body,"Respect sleep goal",following+target,effective,
                     on->{alarm.setSmartWake(new AlarmSmartWake(alarm.smartWake.sensitivity,on?1:0));redraw.run();});
-            toggle.setContentDescription("Respect recorded-duration goal");
         }
     }
 
