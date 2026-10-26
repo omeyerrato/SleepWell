@@ -74,3 +74,5 @@ was executed. Real station decoding, buffering, offline errors, pause/reconnect,
 focus/route cleanup and timer/fade output remain acceptance work. Spotify library
 selection, proprietary provider playback and broader sound-catalog licensing remain
 separate missing prerequisites/features.
+
+Root integration731e9725: production build PASS1m5s; original signer and bundled model hashes verified. New Android UI/output/accuracy acceptance is still open. No new unit/lint/phone campaign.

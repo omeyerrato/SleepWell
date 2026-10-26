@@ -80,3 +80,5 @@ Sources, licences, hashes, export recipe and all failures are retained in
 `third_party/supplementary-sound/`. The two classifier exports and Java frontend
 were checked on unchanged real vectors; no new unit-test batch, phone, emulator,
 microphone, alarm or sound output was used for this implementation.
+
+Root integration731e9725: production build PASS1m5s; original signer and bundled model hashes verified. New Android UI/output/accuracy acceptance is still open. No new unit/lint/phone campaign.

@@ -20,6 +20,13 @@ an isolated silent CI emulator. Broad design/bug/security campaigns
 and the dedicated reviewer remain deferred. All **36 reference screens** remain
 required; a successful build or one flow does not establish full acceptance.
 
+Latest combined source **731e9725** builds production in1m5s. Added named radio
+stations, grouped Tracking options, measured echo-rhythm review and explicit
+experimental offline recorded-audio estimates. Bundled model/label hashes and
+original signer match. These new Android journeys are not runtime/visual accepted;
+reliable automatic laughter still misses2/4 held-out sources, and sleep stages
+remain missing. No personal phone/output action or new unit/lint campaign ran.
+
 ## New priorities
 
 - [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.

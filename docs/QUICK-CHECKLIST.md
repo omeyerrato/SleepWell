@@ -8,6 +8,8 @@ Full supporting evidence stays in FEATURE-CHECKLIST.md and FEATURE-MATRIX.md.
 - [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.
 - [x] First Settings/alarm-menu organization pass: eight groups, search and parent-aware Back; every feature retained.
 
+Latest built increment **731e9725** adds saved radio stations, simpler Tracking setup, measured echo-rhythm review and experimental recorded-audio estimates. These new Android flows still need acceptance; the check marks below do not imply full parity.
+
 ## Implemented
 
 - [x] Best-effort prevent-leave and recognized power-menu handling.

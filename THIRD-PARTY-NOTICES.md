@@ -54,3 +54,14 @@ preview and frame analysis. Versions are pinned in app/build.gradle.
 ## Google ML Kit face detector
 
 The optional Smile challenge uses `com.google.mlkit:face-detection:16.1.7` with a bundled on-device model, and Apache-2.0 CameraX `camera-mlkit-vision:1.5.3`. Google’s detector/model is a proprietary dependency governed by the [ML Kit terms](https://developers.google.com/ml-kit/terms), not by SleepWell’s MIT source license. It performs image inference on the device; Google states that the SDK may contact its services and send usage/performance metrics. SleepWell does not save camera images or face templates. The bundled option does not require a Play services model download. The visible Smile screen discloses these limits before camera admission.
+
+## Recorded-sound PANNs / EfficientAT / ONNX Runtime
+
+The optional explicit recorded-audio flow bundles converted PANNs MobileNetV2
+weights (Qiuqiang Kong and contributors, CC BY4.0; architecture MIT) and EfficientAT
+mn10_as (Florian Schmid and contributors, MIT). Models are converted to ONNX without
+weight retraining, with original527-class mapping and separate Java frontends.
+[Complete attribution, licences, sources, hashes and conversion recipe](third_party/supplementary-sound/README.md)
+are retained; the notices are packaged under assets/recorded-sound and readable
+from the analysis screen. Authors do not endorse SleepWell. ONNX Runtime Android
+1.23.2 is Microsoft's MIT-licensed CPU runtime, resolved from Maven Central.
