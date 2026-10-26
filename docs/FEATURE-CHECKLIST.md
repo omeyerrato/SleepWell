@@ -2,8 +2,8 @@
 
 Not fully done. Checked items have actual production implementation and build
 success; they are not claims of current phone/overnight validation. Unchecked
-acceptance items below remain required. Latest application source 8094497 builds
-in 2m3s; its published APK retains the installed signer
+acceptance items below remain required. Latest application source 714fc4cb builds
+in 1m52s; its published APK retains the installed signer
 and matching SHA256. It is published but **not installed**. Schema17 / backup13
 remain current. The installed phone build is **86d0d1e**: its checksum, original
 records, preferences and private files were verified preserved. Samsung Device
@@ -72,6 +72,10 @@ across 12 boards** remain required, not accepted by these checkmarks.
 - [x] Explicit experimental Laughter and relative Loud sound task/preview paths; accuracy unverified.
 - [x] Requested installed offline English narration voice selection, with no synthesis on Save.
 - [x] Explicitly paired direct Hue HTTPS/v1 sunrise path; hardware/TLS compatibility unverified.
+- [x] Saved movement-night analysis request, actual processed-window counts and failure outcomes.
+- [x] Report inline retained event playback with measured waveforms and lifecycle cleanup.
+- [x] Historical analysis empty/error/legacy-unknown states across live tracking and reports.
+- [x] Parent microphone tasks wait for confirmed capture cleanup before switching to Math.
 - [x] User-authorized 86d0d1e phone update; installed checksum, original records,
   preferences and private files verified preserved.
 
@@ -109,7 +113,8 @@ across 12 boards** remain required, not accepted by these checkmarks.
 - [ ] When the user permits reopening, verify the installed build's schema7→17
   migration after Device Care suspension is resolved; do not silently change it.
 - [ ] Separately authorized installation/data-preservation review for published
-  8094497, which is newer than installed86d0d1e.
+  714fc4cb, which is newer than installed86d0d1e.
+- [ ] Motion analysis count/checkpoint/recovery/backup and inline Report playback lifecycle.
 - [ ] Full completion verification; current builds alone do not establish it.
 
 Forced hardware power-off cannot be prevented by an ordinary Android app. New
@@ -117,7 +122,7 @@ runtime behavior is unverified. Historical full-app native failures and independ
 laughter-positive failures remain unresolved; narrower historical passes do not
 supersede them or validate the current candidate. No new tests/native/lint/
 screenshot batches or phone/provider/codec/admin/alarm/audio/sensor actions ran for
-8094497. This checklist does not authorize such actions or reinstate deferred work.
+714fc4cb. This checklist does not authorize such actions or reinstate deferred work.
 
 The consolidated actionable/deferred scope is in [REMAINING-WORK.md](REMAINING-WORK.md).
 Source/subfeature detail remains in the root-maintained [FEATURE-MATRIX.md](FEATURE-MATRIX.md);

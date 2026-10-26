@@ -11,12 +11,12 @@ bounded historical pass does not establish that whole goal is complete.
 | --- | --- |
 | Installed phone build | **86d0d1e**, installed with matching checksum; original records, preferences and private files verified preserved. |
 | Phone availability | Samsung Device Care still suspends the app. Last verified database is **schema 7**; first-open migration **7 → 17** remains pending. Installation did not establish migration or runtime success. |
-| Published candidate | **8094497**, production debug build **PASS, 2m3s**, original signer and uploaded/local digest verified. **Not installed.** Schema 17 / metadata backup format 13. |
+| Published candidate | **714fc4cb**, production debug build **PASS, 1m52s**, original signer and uploaded/local digest verified. **Not installed.** Schema 17 / metadata backup format 13. |
 | New feature evidence | Production implementation/build only. New runtime, physical output, provider, TTS engine and overnight behavior remain unverified. |
 | Current work policy | Features first. New unit/native test batches, screenshot/evidence batches, dedicated design review, broad bug review and security audits remain **deferred at the user's request**. This checklist does not restart them. Essential integration/build and data-preservation work remain applicable. |
 
 The installed build is not 571018b or 121dbd5; those are historical milestones.
-The newer 8094497 candidate is not the installed build. No further phone, alarm,
+The newer 714fc4cb candidate is not the installed build. No further phone, alarm,
 audio, microphone, sensor, provider or bridge actions are authorized by this note.
 
 ## Concrete remaining implementation and interpretation limits
@@ -44,6 +44,13 @@ audio, microphone, sensor, provider or bridge actions are authorized by this not
   and timed cues must retain their descriptive/experimental limits.
 
 Do not rebuild features merely because an older checklist called them missing.
+Current production also retains movement-night sound-analysis outcomes and offers
+explicit Report playback/PCM waveforms from actual linked event audio. These are
+build-only paths; capture, recovery and actual playback remain unverified. New
+metadata still uses schema17/format13, but older SONAR-only readers reject motion
+analysis evidence. The current reader accepts earlier empty/SONAR data. See
+[motion/report boundaries](MOTION-ANALYSIS-AND-REPORT-AUDIO.md).
+
 Current production already includes saved alarm defaults, date/repeat/exclusion
 rules, advanced snooze/backup controls, reviewed requests, Health Connect/calendar
 integration paths, local/ambient playlists, audio backup/restore and AAC export,
@@ -58,7 +65,7 @@ Runtime acceptance for these paths remains open rather than implementation absen
 
 - [ ] After the user permits reopening the suspended app, verify the installed
   86d0d1e first-open schema 7 → 17 migration and retained data. A separate authorized
-  installation is needed for 8094497; it must preserve signer, records, preferences
+  installation is needed for 714fc4cb; it must preserve signer, records, preferences
   and private files. Do not silently remove Device Care suspension.
 - [ ] Actual alarm delivery and best-effort prevent-leave/power-menu behavior;
   extra-loud output and restoration; gentle ramp, sound delay, vibration, screen
@@ -87,6 +94,9 @@ Runtime acceptance for these paths remains open rather than implementation absen
   missing days and CSV source graphs/event annotations must stay based on actual saved evidence.
   New event units are explicitly inferred from the vendor sample; full/six-hour
   view, complete-pair rules and exact inspection remain runtime-unverified.
+- [ ] New motion per-night request/count/error/checkpoint/finalization and pause/recovery;
+  actual inline Report audio/PCM waveforms, stale-state revocation, capture cleanup
+  before parent Math switching and backup compatibility/persistence.
 - [ ] Historical full-app native failures remain unresolved, including the independent
   laughter-positive gate. Earlier narrow passing batches do not supersede them or
   validate the current production-only candidate. Do not weaken those gates or

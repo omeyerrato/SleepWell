@@ -1067,6 +1067,20 @@ for row in rows:
         row["notes"] += " Read-only imported vendor event annotations do not implement or validate SleepWell phone sleep-stage estimation."
 rows.append(dict(feature="Imported CSV original event annotation timeline",screens="02,22,24 + imported source timeline/inspector",source=SOURCE+"devs/csv.html",implementation=["SleepCsvEvents.java","SleepCsvEventChart.java","SleepCsvSourceActivity.java","SleepCsvSourceJob.java"],validation="Combined assembleDebug 8094497 PASS 2m3s only; no parser/native/provider/device/screenshot tests.",status="partial",notes="Original parser pairs explicit LIGHT_START/END, DEEP_START/END, REM_START/END, TRACKING_PAUSED/RESUMED and BROKEN_START/END anchors only when complete, unambiguous and inside the original source period. Independent lanes retain overlaps; no mutually-exclusive hypnogram or unknown-gap filling. ALARM_* fields become points. Full/six-hour views, paged accessible interval selection, exact original fields/milliseconds/zoned timestamps and recreated view state. Numeric event epoch-ms units are an inference from the vendor public example, expressly disclosed, not a complete published event schema. Duplicate/unmatched/outside/other-payload/unreadable source fields remain raw/countable. No trimming to app edits, stage/awake/session projection, data mutation, new sensor/network capture or export authority. Whole source-view runtime/format/render acceptance remains unverified. See CSV-EVENT-ANNOTATIONS.md."))
 
+# Movement-night outcome evidence and actual inline report audio.
+for row in rows:
+    if row["feature"] in ("Sleep noise analysis","Noise library","Correct sound labels / favorites / export","Sound recognition","Night graphs"):
+        row["implementation"] += ["MotionSoundAnalysis.java","SoundAnalysisCopy.java","ReportAudioData.java","ReportAudioRows.java"]
+        row["notes"] += " Source 714fc4cb adds pinned movement-night requested/off, successful 975ms model-window totals across pauses and actual model/capture/storage/limit/cleanup outcomes, distinct from live preference diagnostics. Stable terminal checkpoints wait for worker acknowledgment; final status+end are transactional, legacy empty remains unknown. Report/Sound events/signals/live views use saved evidence. Inline Report previews select actual retained linked events with corrected labels/current edited bounds, up to 4 candidates/category, measured PCM peaks and explicit Play/Pause; missing audio remains nonplayable. Lifecycle/tab/focus/noisy/occupied and stale-source checks stop playback. No continuous coverage/accuracy/design guarantee."
+        row["validation"] += " Combined assembleDebug 714fc4cb PASS 1m52s only; no new tests/device/audio/model/provider actions."
+    elif row["feature"] in ("Speak microphone challenge","Laughter / instrument microphone task","Relative microphone sound-level wake task"):
+        row["notes"] += " Parent Math switching now cancels only the matching owned microphone attempt and requires confirmed release; closing/blocked ownership keeps the task reopenable for cleanup retry, with no fake progress."
+        row["validation"] += " Parent cleanup integration: assembleDebug 714fc4cb PASS 1m52s only, runtime unverified."
+rows.extend([
+ dict(feature="Historical movement-night sound analysis outcomes",screens="02,18,20 + recorded signals/empty/error",source=SOURCE+"sleep/sound_recognition.html",implementation=["MotionSoundAnalysis.java","NoiseRecorder.java","SoundAnalysisStream.java","SoundAnalysisStatus.java","SoundAnalysisProvenance.java","Store.java","TrackingService.java","AutomaticFalseStartStore.java","SoundAnalysisCopy.java","TrackingActivity.java","ReportScreen.java","RecordSignalsActivity.java","SoundEventsActivity.java"],validation="Combined assembleDebug 714fc4cb PASS 1m52s only; no new unit/native/microphone/model/device/backup/provider execution.",status="partial",notes="Actual motion admission pins requested/off. Owned microphone segments accumulate successful 15,600-sample/16kHz windows, excluding warmup/partial/gaps; frames are not eventcount or whole-night coverage. First actual model/capture/silencing/storage/limit/cleanup issue prevents false complete. Live errors immediate, terminal persistence waits for closed segment so in-flight result cannot invalidate final count. Status checkpoints follow durable active time, final status+end atomic, false-start/recovery use same actual path. Legacy empty stays unknown; shared UI distinguishes off/unknown/insufficient/complete/interrupted/error with original-record scope after edits. Existing schema17/metadata13 fields extended to tracked MOTION+SONAR; old SONAR-only readers reject new motion evidence, new reader accepts old empty/sonar. Runtime/count/pause/recovery/round-trip and accuracy acceptance unverified. See MOTION-ANALYSIS-AND-REPORT-AUDIO.md."),
+ dict(feature="Inline retained Report sound-event playback and waveform",screens="02 + report sound rows/options/error",source=SOURCE+"sleep/sound_recognition.html",implementation=["ReportAudioData.java","ReportAudioRows.java","ReportScreen.java","ClipReviewPlayer.java","ClipPlayback.java","ClipReviewAccess.java","ClipWave.java","ClipWaveView.java"],validation="Combined assembleDebug 714fc4cb PASS 1m52s only; no audio/device/native/screenshot tests.",status="partial",notes="Actual linked saved event per snoring/speech/other category selected from up to 4 bounded candidates, corrected labels and effective edited record window. Real PCM interval peaks only; analysis-only/missing/stale data has no fabricated waveform or Play. Explicit Play/Pause and actual three-dot menu; no autoplay/recreation. Existing current-event/clip/record guards, playback interval/focus and capture/alarm/call/other-player gates; lifecycle/tab detach closes, focus/noisy stops, occupied and periodic off-main stale rechecks revoke playback. One preview/category rather than whole library; normalized waveform shape is not calibrated noise. Runtime/playback/decoder/interruption/design acceptance remains unverified.")
+])
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -1094,18 +1108,19 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Current production source **8094497** expands random routines to all 28 existing
-challenge categories with real configured targets/prerequisites, and adds a
-read-only imported CSV event-pair timeline, six-hour view and exact inspection.
-Combined production build **PASS2m3s**, original debug signer, schema17/backup13
-unchanged. No new tests/lint/screenshots, hardware/model/microphone/provider/native
-acceptance or phone actions for this candidate. These are **build-only** paths;
-previous failed laughter evidence and the all-screen design gate remain unresolved.
-Current candidate 8094497 is uninstalled. Installed 86d0d1e retained its exact hash
-and all original rows/preferences/private files. Device Care still suspends it;
-last verified schema7 awaits first open to 17. Sleep Phaser's public Bluetooth
-protocol remains an external prerequisite, not substituted with another lamp.
-See [feature limits](CHALLENGE-AND-LIGHT-FEATURES.md),
+Current production source **714fc4cb** adds historical movement-night sound-analysis
+outcomes, shared Report/events/live empty/error states, actual inline retained
+Report clip playback with measured PCM waveforms, and cleanup-before-Math switching.
+Combined production build **PASS1m52s**, original debug signer, schema17/backup13
+unchanged. No new tests/lint/screenshots, device/model/microphone/audio/provider
+or output actions. Source/build evidence does not establish runtime or design
+acceptance, acoustic accuracy or continuous whole-night analysis coverage.
+Current candidate 714fc4cb is uninstalled. Installed 86d0d1e retained its checksum
+and original rows/preferences/private files; Device Care suspension and schema7
+first-open migration to 17 remain pending. Older SONAR-only readers reject backups
+containing the new movement analysis status; current readers accept old records.
+See [motion/report limits](MOTION-ANALYSIS-AND-REPORT-AUDIO.md),
+[challenge/light limits](CHALLENGE-AND-LIGHT-FEATURES.md),
 [CSV annotations](CSV-EVENT-ANNOTATIONS.md) and
 [delivery history](2026-10-25-FEATURE-DELIVERY.md).
 Historical scoped functional evidence is preserved in [VERIFICATION.md](VERIFICATION.md)

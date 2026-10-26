@@ -1,5 +1,15 @@
 # Privacy
 
+New movement recordings retain whether sound analysis was requested, actual successful
+PCM-window counts and first failure/cleanup outcome for that night. This does not
+transcribe speech or establish continuous whole-night coverage. Old empty metadata
+stays unknown. These status fields enter existing metadata/CSV/ZIP exports; older
+SONAR-only backup readers reject new motion evidence. New readers keep earlier data.
+
+Inline Report previews read already retained linked clips locally and keep measured
+waveform peaks in memory. Playback starts only on Play and stops on lifecycle or
+conflicting capture/output; no new recording, transfer or autoplay is introduced.
+
 Imported CSV event annotations are derived locally and temporarily from the already
 retained original fields. The timeline adds no capture, file, transfer or database
 projection, and leaves the existing explicit original-CSV export unchanged.

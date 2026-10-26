@@ -1,7 +1,7 @@
 # Movement-night sound analysis and inline Report audio
 
 This note describes the current source batch through **714fc4cb**. The combined
-production build is **running/pending at the time of writing**. No new tests,
+production build **passed in 1m52s**. No new tests,
 screenshots, device, audio, microphone, model, provider or network actions were
 performed for this note. The implementation does not establish bedroom recognition
 accuracy, complete design fidelity, sleep stages or clinical measurements.

@@ -12,46 +12,28 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 26 October
 
-Application source **8094497** builds in **2m3s**, with schema17 / metadata
-backup13 and the original installed signing key. It includes expanded alarm,
-snooze, reminder and extra-loud controls; shared contactless noise clips/cues;
-weekly naps, object challenges, offline narration and pre-travel sleep shifts;
-exact-second timers accessible directly from Nap; printable morning QR codes;
-battery-aware movement/light sampling; snooze-aware home widgets; advanced alarm
-repeats; battery-reserve stopping; guarded automatic false-start rejection; and
-expanded gentle controls; reviewed one-occurrence rescheduling; optional manual
-sensor FIFO batching; an on-device spoken-phrase challenge; and per-alarm
-orientation lock; ordered local audio playlists; and optional tracking-owned
-movement-estimate fading; saved built-in sound rotation; separately consented
-external media-stream fading; and narration rate/pitch controls. Provider,
-OS-observation and sensor prerequisites remain explicit. It also adds optional
-removable Android-admin uninstall friction, reviewed direct calendar saving,
-AAC M4A interval/collection export and portable legacy clip favorites; reviewed
-Sleep as Android CSV append with retained original evidence; separate supported
-settings profiles; optional Tonight row layout controls; confirmed lifecycle
-automation events; reviewed incoming tracking requests; original CSV source
-charts/export; separately opted-in future-night calendar export; saved random
-challenge pools across all 28 existing categories with occurrence-frozen selection; explicit experimental laughter
-and relative sound-level tasks; requested installed offline narration voices;
-direct manually verified Hue HTTPS/v1 sunrise control; and read-only imported
-explicit-event annotation lanes with six-hour view and exact timestamp inspection.
-The event time interpretation is disclosed and does not implement local sleep stages.
-See the [CSV interpretation](docs/CSV-EVENT-ANNOTATIONS.md) and precise
-[challenge/light limits](docs/CHALLENGE-AND-LIGHT-FEATURES.md).
+Application source **714fc4cb** builds in **1m52s** with schema17 / metadata13
+and the original installed signing key. This batch adds saved motion-night
+sound-analysis outcomes, honest historical empty/error states, inline Report
+playback with waveforms from retained audio, and confirmed microphone cleanup
+before switching a task to Math. Earlier alarm, sensing, report, backup and
+integration paths remain included in the [feature checklist](docs/FEATURE-CHECKLIST.md).
 
-[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-8094497).
-Its uploaded checksum matches the local signed artifact. See the
-[delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
-[checkmarked feature checklist](docs/FEATURE-CHECKLIST.md) and
-[remaining checklist](docs/REMAINING-WORK.md) for exact behavior and missing scope.
-Feature behavior still has **build-only evidence**. The user-authorized 86d0d1e
-phone update succeeded; checksum, original records/preferences/private files were
-preserved. Samsung Device Care still suspends the app, so schema7→17 first-open
-migration remains pending. Runtime, provider, overnight, accuracy and visual acceptance remain
-open. Current 8094497 is uninstalled. Schema16 favorites, schema17 CSV evidence
-and optional format13/ZIPv2 extensions have
-not had runtime migration/round-trip validation. No new test/lint/screenshot
-batches or phone/provider/codec/admin/alarm/audio/sensor actions ran in this batch.
+[Download the development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-714fc4cb).
+Uploaded size/digest match the frozen signed artifact. This is build-only evidence;
+new capture/recovery/backup/audio behavior and full36screen design acceptance are
+unverified. See [precise motion/report limits](docs/MOTION-ANALYSIS-AND-REPORT-AUDIO.md)
+and the [remaining checklist](docs/REMAINING-WORK.md).
+
+**Compatibility:** older SONAR-only readers reject backups containing new movement
+analysis metadata even though schema17/format13 are unchanged. This reader accepts
+old empty/SONAR evidence; historical data is not retroactively labeled complete.
+
+The separately authorized **86d0d1e** phone update preserved its exact checksum,
+original records/preferences/private files. Samsung Device Care still suspends it;
+first-open schema7→17 migration remains pending. The newer candidate is uninstalled.
+No new unit/native/lint/screenshot batches or phone/model/microphone/audio/provider/
+output actions ran for this batch.
 
 ## Working capabilities
 

@@ -596,3 +596,33 @@ Published [8094497 development APK](https://github.com/omeyerrato/SleepWell/rele
 exact source target, remote APK size and SHA-256 digest match the frozen local build.
 The first GitHub upload timed out and its failed draft was removed; retry used
 the same frozen APK, with no rebuild or phone action.
+
+## 26 October — source 714fc4cb motion outcomes and Report audio
+
+Production **assembleDebug PASS1m52s**, original signer and unchanged schema17 /
+metadata13 / ZIPv2. Motion recordings now pin requested/off and preserve actual
+processed PCM-window counts across segments plus first model/capture/storage/
+limit/cleanup outcome. Stable terminal checkpoint follows worker acknowledgment;
+final status and session end commit together, including false-start/recovery paths.
+Shared live/Report/events/signals wording keeps unknown/off/failure distinct from
+no detected events and never reconstructs history from current preference errors.
+
+Report inline Play/Pause selects an actual retained linked event per category
+from up to 4 candidates, preserving corrected labels, current edited record bounds,
+real PCM peaks and stale/lifecycle/occupied cleanup. Missing audio is nonplayable.
+Three-dot menus open options. Parent microphone tasks cannot silently switch to
+Math before matching capture release; blocked cleanup stays reopenable.
+
+No new tests/lint/screenshots, phone/model/microphone/audio/provider/output actions.
+Runtime, recovery, acoustic accuracy, actual playback and design acceptance remain
+unverified. Old SONAR-only readers reject current-format backups containing motion
+status; this reader accepts prior empty/SONAR evidence. Processed windows are not
+continuous-night coverage. Exact bounds: [motion/report notes](MOTION-ANALYSIS-AND-REPORT-AUDIO.md).
+
+Frozen APK size 215,567,816 bytes; local SHA-256:
+`01fcfb2e69e01dddbec2d10495e2aa1142de43dc2b576a5ce90b53927229a22b`.
+Phone remains 86d0d1e, preserved/suspended, schema7 first-open→17 pending;
+this candidate is uninstalled.
+
+Published [714fc4cb development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-714fc4cb). Exact target, uploaded APK
+size/digest and checksum-sidecar digest match the frozen local artifacts.
