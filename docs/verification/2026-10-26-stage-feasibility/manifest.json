@@ -1,0 +1,479 @@
+{
+  "schema_version": 1,
+  "reviewed": "2026-10-26",
+  "feature": "F049",
+  "status": "missing; candidate private and unaccepted",
+  "scope": "Metadata and derived outcomes only. No model, audio, dataset, annotations, machine paths or user recordings are distributed with this record.",
+  "nidra": {
+    "repository": "https://github.com/devangk003/Nidra",
+    "revision": "2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7",
+    "licence": "Apache-2.0; LICENSE.txt and NOTICE.md at pinned revision",
+    "source_files": [
+      {
+        "path": "LICENSE.txt",
+        "size": 11388,
+        "sha256": "48f8376bb077dc54b754aef5ded737c42332ddab417a49437b30a93a658485bb"
+      },
+      {
+        "path": "NOTICE.md",
+        "size": 708,
+        "sha256": "ea62461efe110e85ee0c9d10dd13e646c518623b72a791b5a33bb9385d2ec894"
+      },
+      {
+        "path": "requirements.txt",
+        "size": 151,
+        "sha256": "c7f1496a687b9848af56dfe9aeeb0324b0abb4d9531d4afb3d36cf0ab8d86ef6"
+      },
+      {
+        "path": "models/temporal/model_config.json",
+        "size": 88,
+        "sha256": "beb9140a7364e8509f67ebc51567e9b80c99d62d3c5dba6a2e89f03f06325fa7"
+      },
+      {
+        "path": "models/temporal/training_history.json",
+        "size": 270,
+        "sha256": "f212cc9a7e085f7450e4b0e21035de2dad7fc050102c6d507a42a2f5ec3211f4"
+      },
+      {
+        "path": "models/temporal_checkpoints/model_summary.txt",
+        "size": 3564,
+        "sha256": "a0f7c84a7c3b5a5cf02eea7a3ab20826925d38f93855d975f3a9aa642f233553"
+      },
+      {
+        "path": "scripts/Step1_convert_audio_to_mel_and_label.py",
+        "size": 6937,
+        "sha256": "933125b0fe752cc8e4c1ade30737add3c410e468850a73512954fa9409706900"
+      },
+      {
+        "path": "scripts/Step2_train_modelCNN_BiLSTM.py",
+        "size": 40253,
+        "sha256": "2492fcbfbbe956ec798c36e5e1d1d65fb4d00e1636cc27e1b2bccc5666f9e781"
+      },
+      {
+        "path": "scripts/Step3_Use_Model.py",
+        "size": 9018,
+        "sha256": "eace75497016a3cd22da29698b6ff5113fd06f2d9a4108dafe88e06da5e51344"
+      },
+      {
+        "path": "scripts/PreStep_edf_to_wav.py",
+        "size": 2438,
+        "sha256": "96402e1e1d1f0646da0594a2051c3e9f29ae66d1071befcb40ab58adb81caa4d"
+      },
+      {
+        "path": "dataset/audio/combine_audio.py",
+        "size": 3181,
+        "sha256": "2fe07b05e28df51e7032cb432aabc13c4d27ebe547aa45ccd30c02951537744e"
+      }
+    ],
+    "checkpoint": {
+      "path": "final_model_weights.h5",
+      "size": 22418608,
+      "sha256": "affbc5445f40d31c2109a4118f34f7fee177a4249bf403da0de10d8dfe2be873",
+      "git_blob": "9bcf4345d8e233539e680ab43ed1538f51ef7ce4"
+    },
+    "input_contract": {
+      "sample_rate_hz": 16000,
+      "audio_channels": 1,
+      "n_fft": 2048,
+      "hop_samples": 512,
+      "mel_bins": 224,
+      "frames_per_slice": 224,
+      "nominal_slice_seconds": 7.168,
+      "context_slices": 7,
+      "nominal_context_seconds": 50.176,
+      "target_slice_zero_based": 3,
+      "input_shape": [
+        1,
+        7,
+        224,
+        224,
+        3
+      ],
+      "output_shape": [
+        1,
+        4
+      ],
+      "class_map": [
+        "Wake",
+        "REM",
+        "Light",
+        "Deep"
+      ],
+      "preprocessing": [
+        "Ambient EDF Mic channel; original physical scaling and PCM16 WAV export, then Librosa mono resampling to 16 kHz",
+        "Whole-record Mel power spectrogram using Librosa defaults for other parameters",
+        "power_to_db(ref=max, top_db=80), followed by whole-record min-max normalization",
+        "Nonoverlapping 224-frame slices; repeat Mel plane into three identical channels",
+        "Per-slice (x-min)/(max-min+1e-8), then float32 seven-slice context"
+      ],
+      "timing": "Center fourth slice, not a 30-second epoch; upstream preprocessing computes labels using 224*512/16000. No plot-clock or cycle-based stages substituted.",
+      "global_context": "Whole-record maximum controls 80-dB clipping; per-slice normalization does not justify replacing whole-record preprocessing. Post-night only under this contract."
+    },
+    "rejected_initial_conversion": {
+      "name": "nidra-static-float32.tflite",
+      "bytes": 21969840,
+      "sha256": "1c52e73a24bf473ab533c025ca0a5524770256c41bb35d213b860e4be75bbaf9",
+      "reason": "weights=None construction omitted the ImageNet-only weightless Rescaling(1/sqrt([0.229,0.224,0.225])) after normalization. Strict H5 weight loading and comparison to the same incomplete graph did not detect this."
+    },
+    "faithful_conversion": {
+      "graph": "official tf-keras ImageNet graph; pretrained download/load skipped; full pinned weights strictly loaded afterward",
+      "parameters": 5531176,
+      "tensorflow": "2.16.1",
+      "tf_keras": "2.16.0",
+      "builtins_only": true,
+      "weights_changed": false,
+      "artifacts": [
+        {
+          "name": "nidra-faithful-full.tflite",
+          "bytes": 21970108,
+          "sha256": "1a3d8d639cebd8b666169a019b935df7cbed71911e18b5f2b09345ebb7c29369"
+        },
+        {
+          "name": "nidra-faithful-encoder.tflite",
+          "bytes": 16022952,
+          "sha256": "06a2b04663c7a765c18dc917a20181bd591f1f03c407d1e295bb5de95a3671c7"
+        },
+        {
+          "name": "nidra-faithful-head.tflite",
+          "bytes": 5958012,
+          "sha256": "4aa9b09c9e0e1a72f3b947cd9c095ebbb192c25e7a8c84789607104d1dab883e"
+        }
+      ],
+      "synthetic_examples": 3,
+      "static_unroll_max_abs_error": 0.0,
+      "full_vs_keras_max_abs_error": 3.069639205932617e-06,
+      "split_vs_keras_max_abs_error": 1.9937753677368164e-05,
+      "meaning": "Numerical conversion fidelity on those inputs, not staging usefulness or independent accuracy."
+    }
+  },
+  "replay": {
+    "dataset": "PSG-Audio V3",
+    "original_doi": "https://doi.org/10.11922/sciencedb.00345",
+    "licence": "CC-BY-4.0 in original Science Data Bank metadata",
+    "delivery_mirror": "https://huggingface.co/datasets/dust-systems/psg-audio",
+    "mirror_revision": "f1e8c79f27d5d2c1716c24dea4252840eda5c406",
+    "delivery_mirror_is_licence_authority": false,
+    "annotations": "Expert UserStaging/NeuroAdultAASMStaging, used only for selection and comparison; never model input",
+    "edf_input": "Mic channel only, 48 kHz, 16-bit digital [-32768,32767] mapped to physical [-1,1]; 197426 bytes per 1-second multichannel record, header 5376 bytes; Mic offset 5426 bytes in each record",
+    "requests": "Six exact HTTP 206 EDF record ranges, 55 seconds and 10858430 bytes each; no complete EDF/night download",
+    "total_audio_range_bytes": 65150580,
+    "versions": {
+      "python": "3.12.14",
+      "tensorflow": "2.16.1",
+      "librosa": "0.10.2.post1",
+      "numpy": "1.26.4"
+    },
+    "limitations": [
+      "Each complete 55-second excerpt supplies its own global normalization/reference and clipping; this differs from original whole-night context.",
+      "Librosa 0.10.2.post1 is a pinned reproducibility choice; author requirements specify >=0.8.0 rather than an exact original version.",
+      "Checkpoint training-subject exclusion is unknown: this is not held-out validation and provides no independent accuracy estimate.",
+      "First-hour Deep and REM were absent, so two predeclared Light/N2 fallbacks were used. Later Wake/N3/REM selections were fixed before their model scores.",
+      "Only raw model softmax/argmax outputs are recorded; no threshold bias, forced labels, cycle timing or postprocessing was used to manufacture stage diversity."
+    ],
+    "distinct_predictions": [
+      "Light"
+    ],
+    "independent_accuracy_proven": false,
+    "decision": "Useful stage discrimination not established; do not ship or render these predictions. Not proof that all phone-audio staging is impossible.",
+    "selections": [
+      {
+        "id": "wake",
+        "group": "first_hour",
+        "public_edf_path": "V3/APNEA_EDF/00000999-100507/00000999-100507%5B001%5D.edf",
+        "rml_sha256": "ef66da7eca3bc2e6cac357604282e7655b4332d2763e45be97c4ccd48950bbbd",
+        "excerpt_start_second_in_recording": 890,
+        "duration_seconds": 55,
+        "expert_label": "Wake",
+        "expert_interval_seconds": [
+          870,
+          960
+        ],
+        "target_center_interval_seconds": [
+          911.504,
+          918.672
+        ],
+        "selection_reason": "Wake",
+        "http_byte_range_inclusive": [
+          175714516,
+          186572945
+        ],
+        "range_bytes": 10858430,
+        "range_sha256": "1fae55497e7e1b640e5de111b72e6e6b285b36142f098d9d24d1a8ef59ea3068",
+        "input_tensor_raw_bytes_sha256": "e9b4e4b1e0332636c998dbfb8621dadee74b33f6c01d6c09e66c3088beb6066a",
+        "softmax_wake_rem_light_deep": [
+          0.3361906409263611,
+          0.2124815285205841,
+          0.38806605339050293,
+          0.06326183676719666
+        ],
+        "predicted": "Light",
+        "full_split_max_abs_error": 4.850327968597412e-06
+      },
+      {
+        "id": "deep_fallback_light",
+        "group": "first_hour",
+        "public_edf_path": "V3/APNEA_EDF/00000999-100507/00000999-100507%5B001%5D.edf",
+        "rml_sha256": "ef66da7eca3bc2e6cac357604282e7655b4332d2763e45be97c4ccd48950bbbd",
+        "excerpt_start_second_in_recording": 95,
+        "duration_seconds": 55,
+        "expert_label": "NonREM2",
+        "expert_interval_seconds": [
+          60,
+          180
+        ],
+        "target_center_interval_seconds": [
+          116.504,
+          123.672
+        ],
+        "selection_reason": "Deep absent from first hour",
+        "http_byte_range_inclusive": [
+          18760846,
+          29619275
+        ],
+        "range_bytes": 10858430,
+        "range_sha256": "e723e17402947603de64773c1d9742f21b577fa403283c8175ebc34cd99fa821",
+        "input_tensor_raw_bytes_sha256": "4f6b2499ccfded34581f20193edb22889ffd3505210399a38baa7b1e19af93b9",
+        "softmax_wake_rem_light_deep": [
+          0.33273136615753174,
+          0.219501793384552,
+          0.3933536410331726,
+          0.054413147270679474
+        ],
+        "predicted": "Light",
+        "full_split_max_abs_error": 6.020069122314453e-06
+      },
+      {
+        "id": "rem_fallback_light",
+        "group": "first_hour",
+        "public_edf_path": "V3/APNEA_EDF/00000999-100507/00000999-100507%5B001%5D.edf",
+        "rml_sha256": "ef66da7eca3bc2e6cac357604282e7655b4332d2763e45be97c4ccd48950bbbd",
+        "excerpt_start_second_in_recording": 515,
+        "duration_seconds": 55,
+        "expert_label": "NonREM2",
+        "expert_interval_seconds": [
+          210,
+          870
+        ],
+        "target_center_interval_seconds": [
+          536.504,
+          543.672
+        ],
+        "selection_reason": "REM absent from first hour",
+        "http_byte_range_inclusive": [
+          101679766,
+          112538195
+        ],
+        "range_bytes": 10858430,
+        "range_sha256": "2d6b740b1f2fc0214f06b5e2f330bbb806a47a0ac905e9d41be7ef3580ada5d7",
+        "input_tensor_raw_bytes_sha256": "c8d9d3a2ee7973c8b3027fe364c97b22f9934d155659a0e8dfa823f4b32c3003",
+        "softmax_wake_rem_light_deep": [
+          0.3352377712726593,
+          0.21439491212368011,
+          0.39137881994247437,
+          0.05898845195770264
+        ],
+        "predicted": "Light",
+        "full_split_max_abs_error": 4.015862941741943e-06
+      },
+      {
+        "id": "later_wake",
+        "group": "later_classes",
+        "public_edf_path": "V3/APNEA_EDF/00001016-100507/00001016-100507%5B001%5D.edf",
+        "rml_sha256": "eb2d00829ea94afa85b771ae0c8514fe1ec7cb97368a8cc0d1a593962fd7e150",
+        "excerpt_start_second_in_recording": 10,
+        "duration_seconds": 55,
+        "expert_label": "Wake",
+        "expert_interval_seconds": [
+          0.0,
+          210.0
+        ],
+        "target_center_interval_seconds": [
+          31.504,
+          38.672
+        ],
+        "selection_reason": "First lexically available subject with eligible Wake/N3/REM spans; selections fixed before scores",
+        "http_byte_range_inclusive": [
+          1979636,
+          12838065
+        ],
+        "range_bytes": 10858430,
+        "range_sha256": "c256f759f18936d3f9da1a2d7dd476da45b81be814b4c39cf7865f3383772b44",
+        "input_tensor_raw_bytes_sha256": "2ff528197ff36bbb4b27aa31f774f42fb5312802640aa0e2a36569e3e9f94073",
+        "softmax_wake_rem_light_deep": [
+          0.33136919140815735,
+          0.2216927409172058,
+          0.39490917325019836,
+          0.05202889069914818
+        ],
+        "predicted": "Light",
+        "full_split_max_abs_error": 5.453824996948242e-06
+      },
+      {
+        "id": "later_deep",
+        "group": "later_classes",
+        "public_edf_path": "V3/APNEA_EDF/00001016-100507/00001016-100507%5B002%5D.edf",
+        "rml_sha256": "eb2d00829ea94afa85b771ae0c8514fe1ec7cb97368a8cc0d1a593962fd7e150",
+        "excerpt_start_second_in_recording": 4240,
+        "duration_seconds": 55,
+        "expert_label": "NonREM3",
+        "expert_interval_seconds": [
+          4230.0,
+          6120.0
+        ],
+        "target_center_interval_seconds": [
+          4261.504,
+          4268.672
+        ],
+        "selection_reason": "First lexically available subject with eligible Wake/N3/REM spans; selections fixed before scores",
+        "http_byte_range_inclusive": [
+          126358016,
+          137216445
+        ],
+        "range_bytes": 10858430,
+        "range_sha256": "021fd78bf59aa18990a30d560fd23db5be8762fc6b990915f6fe3c6e84a26b85",
+        "input_tensor_raw_bytes_sha256": "9057c0f29f3be6359dc246a108ca36f571e5ac96465cf3b4b70ab6e045f4156d",
+        "softmax_wake_rem_light_deep": [
+          0.33061957359313965,
+          0.2236911505460739,
+          0.39386117458343506,
+          0.051828041672706604
+        ],
+        "predicted": "Light",
+        "full_split_max_abs_error": 2.0265579223632812e-06
+      },
+      {
+        "id": "later_rem",
+        "group": "later_classes",
+        "public_edf_path": "V3/APNEA_EDF/00001016-100507/00001016-100507%5B004%5D.edf",
+        "rml_sha256": "eb2d00829ea94afa85b771ae0c8514fe1ec7cb97368a8cc0d1a593962fd7e150",
+        "excerpt_start_second_in_recording": 11620,
+        "duration_seconds": 55,
+        "expert_label": "REM",
+        "expert_interval_seconds": [
+          11610.0,
+          11700.0
+        ],
+        "target_center_interval_seconds": [
+          11641.504,
+          11648.672
+        ],
+        "selection_reason": "First lexically available subject with eligible Wake/N3/REM spans; selections fixed before scores",
+        "http_byte_range_inclusive": [
+          161894696,
+          172753125
+        ],
+        "range_bytes": 10858430,
+        "range_sha256": "ad3c8827b235fef6dabf5dea122b6fd4cba69e01ca890824bda3a4dc3f212bc4",
+        "input_tensor_raw_bytes_sha256": "e09ee592f0b2245eef6ccdd740bd53003d16639184452ed70a3f845f6da4757e",
+        "softmax_wake_rem_light_deep": [
+          0.3316969871520996,
+          0.22147871553897858,
+          0.39440062642097473,
+          0.05242368206381798
+        ],
+        "predicted": "Light",
+        "full_split_max_abs_error": 9.715557098388672e-06
+      }
+    ]
+  },
+  "alternatives": [
+    {
+      "repository": "https://github.com/Andrew-Wong-CN/Snoring",
+      "revision": "d9bd48176b6b6309ebe4d4c8c139099289e95e5d",
+      "checkpoint_file": "parameters/training_SSNV2.pth",
+      "checkpoint_bytes_from_repository_tree": 13214085,
+      "weights_downloaded": false,
+      "source_contract": "Stereo smartphone audio loaded at 16 kHz; pre-emphasis 0.97, FFT 2048, hop 1024, 20 Mel bins and 469-frame feature extractor; five labels N1,N2,N3,REM,WK.",
+      "blockers": [
+        "No explicit repository licence found; repository metadata license=null and inspected tree has no LICENSE. Public availability alone does not grant app redistribution.",
+        "The trained-checkpoint/inference correspondence and exact stereo input contract remain unresolved; existing SleepWell sound input is mono. No substitute mono duplication or new model loading was attempted."
+      ],
+      "inspected_primary_files": {
+        "README.md": "afc06a1a0649d1569f002c1bbb712be8f7482cb2",
+        "dataset.py": "01fdaff4e4366338ac242228a68fbe7dfb974534",
+        "prepro.py": "d91e1a5b6f894a1a650c32404ccf61a7c3c5c46f",
+        "models/sound_stage_net_v2.py": "945847ab03eceb69a9495c3b66d5defb5bc98a1f"
+      },
+      "file_hash_type": "Git blob SHA-1"
+    },
+    {
+      "repository": "https://github.com/SPIresearch/SnoreSleep",
+      "revision": "174f535ffce5a8c592b3487663f3661003cbbbc2",
+      "licence": "MIT",
+      "source_contract": "Author project describes contactless snoring-event staging; repository provides N1/N2/N3/R event/features archives.",
+      "blockers": [
+        "Inspected tree and releases contain no model implementation or trained checkpoint; README and licensed dataset/feature archives are not a runnable staging model.",
+        "Exact inference preprocessing/time contract is not supplied by the inspected repository."
+      ],
+      "inspected_primary_files": {
+        "README.md": "6a073107b20a8a8b8dc7a25631d58cdd95332eef",
+        "LICENSE": "00e8f67519d7fc4c0bb520444d556e7cad8e2f19"
+      },
+      "file_hash_type": "Git blob SHA-1",
+      "weights_downloaded": false
+    }
+  ],
+  "audit_record_digests": [
+    {
+      "name": "source-manifest.json",
+      "sha256": "54481e210c2da5ea4c73e350ff024255b8766f1bc2b9f6804e4f6615e72966bd"
+    },
+    {
+      "name": "conversion-result.json",
+      "sha256": "2a4b5f98de849389e6fd52db7591b908c99a745c3698c916fc76f20ddf96ed3d"
+    },
+    {
+      "name": "convert_candidate.py",
+      "sha256": "83276162d5fe7fb0c4a4676ce0fbd3529ec234b929253e0daa2418e83667426d"
+    },
+    {
+      "name": "faithful-conversion-result.json",
+      "sha256": "382172e4ed08bc78322eff5b1e721bfe0d398d1fbf94b98406114e33523c94f6"
+    },
+    {
+      "name": "convert_faithful.py",
+      "sha256": "cf3f2b21973ef273a61464eb571db11ab8c01e7504839a9479c7d6da5b0fac47"
+    },
+    {
+      "name": "replay-plan.json",
+      "sha256": "7fcb4ae7c0161516c4fe1f2bbe151e501097c86402777f09ed2131c7fced3e18"
+    },
+    {
+      "name": "replay-downloads.json",
+      "sha256": "75f8da7e91c7a6c2e093ca833d329764a0690b4a42b6524db118c7d76097885b"
+    },
+    {
+      "name": "real-replay-result.json",
+      "sha256": "28365ecf3496358b1063f27ea91b9c3ba856ede7a24f70697e2058640b02eab2"
+    },
+    {
+      "name": "replay_real_audio.py",
+      "sha256": "54d358731825a56229c079d95e9d2a3e45996ebe5f90a01b175a2dbd830c3220"
+    },
+    {
+      "name": "later-replay-selection.json",
+      "sha256": "8d91719e6a603228c6963aee436476cc36e429001db82543768a4b06dc69adea"
+    },
+    {
+      "name": "later-replay-plan.json",
+      "sha256": "c3ba472504f76b4e4dd024ff9c6e39ee9c4af0e94240fee47a8f9ff65f4e39f3"
+    },
+    {
+      "name": "later-replay-downloads.json",
+      "sha256": "336c8a57d15ada8d42a35ad695347449bd78d44f5c424f88c0998f49a1bd1178"
+    },
+    {
+      "name": "later-real-replay-result.json",
+      "sha256": "24ff9171cc48e7513b67e6b12208eac8b2d01747b0e71ab74a6f583034978519"
+    },
+    {
+      "name": "replay_later_audio.py",
+      "sha256": "0862b8392d8ecbcde4b209a283860ad2bc70aca32422c13bd4badc4bdce68180"
+    },
+    {
+      "name": "psg-audio-original-jsonld.json",
+      "sha256": "7dce5f82292163fd5657b7aaba947afd42004c4261ce717f757444f7fbb86941"
+    }
+  ],
+  "no_new_experiments_in_documentation_update": true
+}
