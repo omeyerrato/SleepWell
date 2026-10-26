@@ -9,6 +9,15 @@ final class SpeakAccess {
     static Factory factory=new Native();private static final AtomicReference<NativeOperation> OWNER=new AtomicReference<>(),PENDING=new AtomicReference<>();
     static NativeOperation claim(String id){NativeOperation pending=PENDING.get();if(pending==null||!pending.id.equals(id)||!PENDING.compareAndSet(pending,null))return null;if(!pending.admission.claim(SystemClock.elapsedRealtime())||!pending.visible()||!pending.current()){pending.fail("Listening request expired. Tap Listen again.");return null;}return pending;}
     static void reject(String id){NativeOperation pending=PENDING.get();if(pending!=null&&pending.id.equals(id)&&PENDING.compareAndSet(pending,null))pending.fail("A previous listening service is still closing. Tap Listen again.");}
+    /** Switching tasks never bypasses a matching pending admission or unconfirmed microphone close. */
+    static boolean stopBeforeFallback(String run,int unit){
+        NativeOperation owner=OWNER.get(),pending=PENDING.get();
+        boolean ownerMatches=owner!=null&&owner.run.equals(run)&&owner.unit==unit;
+        boolean pendingMatches=pending!=null&&pending.run.equals(run)&&pending.unit==unit;
+        if(pendingMatches&&pending!=owner&&!pending.released())pending.cancel();
+        if(ownerMatches&&!owner.released())owner.cancel();
+        return (!ownerMatches||owner.released())&&(!pendingMatches||pending.released());
+    }
     static final class Native implements Factory {
         public boolean current(Context context,String run,int unit){return task(context,run,unit);}
         public Operation existing(String run,int unit,Runnable changed){NativeOperation op=OWNER.get();if(op==null||!op.run.equals(run)||op.unit!=unit||op.released())return null;op.observer=new WeakReference<>(changed);return op;}
