@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Bitmap;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
@@ -34,7 +39,9 @@ final class AlarmSmartWakeUi {
                     &&root.getChildCount()>0&&root.getChildAt(0) instanceof ScrollView replacement)
                 replacement.post(()->replacement.scrollTo(0,scroll));
         };
-        Design.header(body,"Smart wake-up",back);
+        LinearLayout header=RecordUi.header(body,"Smart wake-up",back);
+        RecordUi.headerAction(header,"more","Smart wake-up options",()->open.accept(()->options(activity,alarm,refresh,open)));
+        Design.space(body,10);
         Design.toggle(body,"Smart wake-up","Use movement within your wake window",alarm.smartWindow>0,
                 on->{alarm.smartWindow=on?30:0;refresh.run();});
         Design.space(body,14);
@@ -45,7 +52,7 @@ final class AlarmSmartWakeUi {
         Design.space(body,6);
         TextView caption=Design.text(body,"",13,400,Design.MUTED);
         WindowTimeline timeline=new WindowTimeline(activity,alarm,deadline);
-        body.addView(timeline,new LinearLayout.LayoutParams(-1,Design.dp(activity,100*Math.max(1,Design.fontScale(activity)))));
+        body.addView(timeline,new LinearLayout.LayoutParams(-1,Design.dp(activity,92*Math.max(1,Design.fontScale(activity)))));
         Design.space(body,8);
 
         LinearLayout length=Design.row(activity);
@@ -112,10 +119,7 @@ final class AlarmSmartWakeUi {
             Design.space(body,12);Design.line(body);Design.space(body,12);
             goal(activity,body,alarm,refresh);
         }
-        Design.space(body,10);Design.line(body);
-        PlanActivity.detail(body,"info","About smart wake-up","Phone movement estimates · fixed deadline kept",null,
-                ()->open.accept(()->SleepPicker.message(activity,"About smart wake-up",
-                        "Requires active phone-movement tracking. Sustained movement can trigger this alarm within its configured window; its fixed deadline stays scheduled. The illustration shows your schedule, not measured sleep stages.\n\nSensitivity can follow your tracking profile, including surface calibration, or use this alarm’s Low, Medium or High override.\n\nThe duration goal counts active recorded duration, excluding pauses, not confirmed sleep or a sleep-stage diagnosis. Missing or stale movement cannot trigger early waking. Changing these settings stays in the draft until Save alarm.")));
+        Design.space(body,12);
         Design.fixedAction(body,"Save settings",back);
     }
 
@@ -141,7 +145,6 @@ final class AlarmSmartWakeUi {
             options.addView(button,new LinearLayout.LayoutParams(0,-2,1));
         }
         body.addView(options);
-        if(alarm.smartWake.sensitivity>=0)action(body,"Follow tracking sensitivity",()->{alarm.setSmartWake(new AlarmSmartWake(-1,alarm.smartWake.goal));redraw.run();});
     }
 
     private static void goal(Activity activity,LinearLayout body,Alarm alarm,Runnable redraw){
@@ -150,17 +153,37 @@ final class AlarmSmartWakeUi {
         try{int minutes=SleepPlans.load(activity).goal;if(minutes<20||minutes>810)throw new IllegalArgumentException();target=RecordUi.duration(minutes*60000L)+" recorded before early waking";}
         catch(RuntimeException unreadable){target="Duration goal unavailable · review Sleep goals";}
         if(alarm.smartWake.goal<0&&global==null){
-            Design.text(body,"Respect recorded-duration goal",16,600,Design.INK);Design.space(body,6);
+            Design.text(body,"Respect sleep goal",16,600,Design.INK);Design.space(body,6);
             Design.text(body,"Following global goal · unavailable. Choose a value for this alarm or review Sleep goals.",12,400,Design.MUTED);
             Design.space(body,8);
             RecordUi.segments(body,new String[]{"Off","On"},-1,n->{alarm.setSmartWake(new AlarmSmartWake(alarm.smartWake.sensitivity,n));redraw.run();});
         }else{
             boolean effective=alarm.smartWake.requiresGoal(Boolean.TRUE.equals(global));
             String following=alarm.smartWake.goal<0?"Following global goal · "+(effective?"On":"Off")+"\n":"";
-            Design.toggle(body,"Respect recorded-duration goal",following+target,effective,
+            android.widget.Switch toggle=Design.toggle(body,"Respect sleep goal",following+target,effective,
                     on->{alarm.setSmartWake(new AlarmSmartWake(alarm.smartWake.sensitivity,on?1:0));redraw.run();});
+            toggle.setContentDescription("Respect recorded-duration goal");
         }
-        if(alarm.smartWake.goal>=0)action(body,"Follow global duration goal",()->{alarm.setSmartWake(new AlarmSmartWake(alarm.smartWake.sensitivity,-1));redraw.run();});
+    }
+
+    private static Dialog options(Activity activity,Alarm alarm,Runnable refresh,Consumer<Supplier<Dialog>> open){
+        SleepPicker.StateDialog dialog=new SleepPicker.StateDialog(activity,"actions","Smart wake-up options");
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        LinearLayout panel=Design.col(activity);Design.pad(panel,20,20);panel.setBackground(Design.shape(activity,Design.CREAM,22));
+        Design.text(panel,"Smart wake-up options",22,600,Design.INK);Design.space(panel,12);
+        if(alarm.smartWakeInvalid){
+            Design.button(panel,"Reset to following settings",false,()->{dialog.dismiss();alarm.setSmartWake(AlarmSmartWake.DEFAULT);refresh.run();});
+        }else{
+            Design.button(panel,"Follow tracking sensitivity",false,()->{dialog.dismiss();alarm.setSmartWake(new AlarmSmartWake(-1,alarm.smartWake.goal));refresh.run();});
+            Design.button(panel,"Follow global duration goal",false,()->{dialog.dismiss();alarm.setSmartWake(new AlarmSmartWake(alarm.smartWake.sensitivity,-1));refresh.run();});
+        }
+        Design.button(panel,"About smart wake-up",false,()->{dialog.dismiss();activity.getWindow().getDecorView().post(()->{if(activity.isFinishing()||activity.isDestroyed())return;open.accept(()->SleepPicker.message(activity,"About smart wake-up",
+                "Requires active phone-movement tracking. Sustained movement can trigger this alarm within its configured window; its fixed deadline stays scheduled. The landscape illustrates your configured schedule, not measured sleep stages.\n\nSensitivity can follow your tracking profile, including surface calibration, or use this alarm’s Low, Medium or High override. Follow tracking sensitivity and Follow global duration goal restore inheritance for this draft.\n\nThe goal counts active recorded duration, excluding pauses, not confirmed sleep. Missing or stale movement cannot trigger early waking. Changes stay in the draft until Save alarm."));});});
+        Design.button(panel,"Cancel",false,dialog::dismiss);
+        ScrollView scroll=new ScrollView(activity);dialog.scroll=scroll;scroll.addView(panel);dialog.setContentView(scroll);dialog.show();
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.getWindow().setLayout(Math.min(activity.getResources().getDisplayMetrics().widthPixels-Design.dp(activity,32),Design.dp(activity,400)),-2);
+        return dialog;
     }
 
     private static void action(LinearLayout body,String title,Runnable action){
@@ -181,28 +204,34 @@ final class AlarmSmartWakeUi {
     /** A configured time interval only: never a synthetic movement/stage trace. */
     private static final class WindowTimeline extends View {
         private final Alarm alarm;private final long deadline;private final Paint paint=new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Drawable sun;private final float density,scale;
-        WindowTimeline(Context context,Alarm alarm,long deadline){super(context);this.alarm=alarm;this.deadline=deadline;density=getResources().getDisplayMetrics().density;scale=Design.fontScale(context);sun=context.getDrawable(Icons.resource("sun")).mutate();sun.setTint(Appearance.color(context,0xffd87d13));paint.setTypeface(Design.font(context,400));setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_YES);}
+        private final Drawable sun;private final Bitmap landscape;private final float density,scale;
+        WindowTimeline(Context context,Alarm alarm,long deadline){super(context);this.alarm=alarm;this.deadline=deadline;density=getResources().getDisplayMetrics().density;scale=Design.fontScale(context);sun=context.getDrawable(Icons.resource("sun")).mutate();sun.setTint(Appearance.color(context,0xffd87d13));landscape=((BitmapDrawable)context.getDrawable(R.drawable.wake_dawn_landscape)).getBitmap();paint.setTypeface(Design.font(context,400));setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_YES);}
         void changed(){setContentDescription(alarm.smartWindow<=0?"Smart wake-up is off":deadline<=0?"Scheduled wake window unavailable":
                 "Scheduled wake window "+clock(getContext(),deadline-alarm.smartWindow*60000L)+" to "+clock(getContext(),deadline)+". No sleep-stage measurements shown.");invalidate();}
         @Override protected void onDraw(Canvas canvas){
-            super.onDraw(canvas);float left=12*density,right=getWidth()-12*density,top=34*density,bottom=top+30*density;
+            super.onDraw(canvas);float left=12*density,right=getWidth()-12*density,top=28*density,bottom=top+30*density;
             paint.setColor(Appearance.color(getContext(),Design.SOFT));canvas.drawRoundRect(new RectF(left,top,right,bottom),4*density,4*density,paint);
             if(deadline>0&&alarm.smartWindow>0){
                 float start=right-(right-left)*alarm.smartWindow/Math.max(60f,alarm.smartWindow);
-                paint.setColor(Appearance.color(getContext(),Design.LILAC));canvas.drawRect(left,top,start,bottom,paint);
-                paint.setColor(Appearance.color(getContext(),0xffffcd80));canvas.drawRect(start,top,right,bottom,paint);
+                // A decorative crop only; the window boundary is computed from real scheduled times.
+                RectF strip=new RectF(left,top,right,bottom);Path clip=new Path();clip.addRoundRect(strip,4*density,4*density,Path.Direction.CW);canvas.save();canvas.clipPath(clip);
+                int cropHeight=Math.max(1,Math.min(landscape.getHeight(),Math.round(landscape.getWidth()*(bottom-top)/Math.max(1,right-left))));
+                int cropTop=Math.max(0,Math.min(landscape.getHeight()-cropHeight,Math.round(landscape.getHeight()*.72f)-cropHeight/2));
+                paint.setFilterBitmap(true);canvas.drawBitmap(landscape,new Rect(0,cropTop,landscape.getWidth(),cropTop+cropHeight),strip,paint);
+                paint.setColor(Appearance.color(getContext(),Design.LILAC));paint.setAlpha(205);canvas.drawRect(left,top,start,bottom,paint);paint.setAlpha(255);canvas.restore();
                 paint.setColor(Appearance.color(getContext(),Design.BROWN));paint.setStrokeWidth(density);
                 canvas.drawLine(start,top-3*density,start,bottom+4*density,paint);canvas.drawLine(right,top-8*density,right,bottom+4*density,paint);
                 int size=(int)(30*density);sun.setBounds((int)right-size,(int)top-size-3*(int)density,(int)right,(int)top-3*(int)density);sun.draw(canvas);
             }
-            paint.setColor(Appearance.color(getContext(),Design.MUTED));paint.setTextSize(10*density*scale);
+            paint.setColor(Appearance.color(getContext(),Design.MUTED));paint.setTextSize(11*density*scale);
             if(deadline<=0){paint.setTextAlign(Paint.Align.CENTER);canvas.drawText("Scheduled window unavailable",getWidth()/2f,bottom+22*density*scale,paint);return;}
             float y=bottom+22*density*scale;
             long horizon=Math.max(60,alarm.smartWindow)*60000L;
-            paint.setTextAlign(Paint.Align.LEFT);canvas.drawText(clock(getContext(),deadline-horizon),left,y,paint);
-            paint.setTextAlign(Paint.Align.CENTER);canvas.drawText(clock(getContext(),deadline-horizon/2),(left+right)/2,y,paint);
-            paint.setTextAlign(Paint.Align.RIGHT);canvas.drawText(clock(getContext(),deadline),right,y,paint);
+            String first=clock(getContext(),deadline-horizon),middle=clock(getContext(),deadline-horizon/2),last=clock(getContext(),deadline);
+            paint.setTextAlign(Paint.Align.LEFT);canvas.drawText(first,left,y,paint);
+            float half=(right-left)/2;
+            if(paint.measureText(first)+paint.measureText(middle)/2+8*density<half&&paint.measureText(last)+paint.measureText(middle)/2+8*density<half){paint.setTextAlign(Paint.Align.CENTER);canvas.drawText(middle,(left+right)/2,y,paint);}
+            paint.setTextAlign(Paint.Align.RIGHT);canvas.drawText(last,right,y,paint);
         }
     }
 }
