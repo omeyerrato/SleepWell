@@ -1035,16 +1035,37 @@ for row in rows:
         row["validation"] += " Direct Hue combined assembleDebug a8f5f23 PASS 1m54s only; no bridge requests or output tests."
     elif feature == "Multi-task routine / reorder / per-task difficulty":
         row["implementation"] += ["RandomChallenges.java","RandomChallengeActivity.java","RandomChallengePreviewActivity.java","Scheduler.java","SnoozeDeadline.java"]
-        row["notes"] += " Separate random routine mode now saves1–8configured distinct pool entries/count, samples eligible entries without replacement and atomically publishes concrete tasks with the occurrence. Snooze/reopen keep the exact choice/source mapping. Missing prerequisites become real Math alternatives to preserve count. Eighteen categories supported; microphone/image-expression/object tasks excluded with visible copy. Runtime/restore/ownership/selection acceptance remains unverified."
+        row["notes"] += " Separate random routine mode now saves1–8configured distinct pool entries/count, samples eligible entries without replacement and atomically publishes concrete tasks with the occurrence. Snooze/reopen keep the exact choice/source mapping. Missing prerequisites become real Math alternatives to preserve count. All 28 current categories supported; picture/object/code entries require real configured targets, and hardware/permission/capture prerequisites are checked read-only. Child Start/Listen still rechecks model/English readiness. Runtime/restore/ownership/selection acceptance remains unverified."
     elif feature in ("Binaural beats / meditation","Meditation / stereo binaural generator"):
         row["notes"] = row["notes"].replace("no separate voice/language picker or audible-rendering guarantee.","a separate requested installed-offline-English voice chooser now exists, without translation or audible-rendering guarantee.")
         row["implementation"] += ["NarrationVoice.java","NarrationVoiceActivity.java","NarrationVoiceDiscovery.java","NarrationVoiceEngine.java"]
         row["notes"] += " Voice identity is separate device-local requested engine/name/locale, frozen on explicit Play; exact current installed/offline/English checks fail visibly if missing. Refresh initializes only an explicitly selected installed engine; no synthesis/download on chooser Save/open. Android may fall back from requested engine; public package-binding proof is not claimed. New provider/output/cleanup acceptance unverified."
 rows.extend([
- dict(feature="Saved occurrence-frozen random challenge routines",screens="03,10 + pool/selection preview",source=SOURCE+"alarms/captcha.html",implementation=["RandomChallenges.java","RandomChallengeActivity.java","RandomChallengePreviewActivity.java","ChallengeRoutine.java","ChallengeRoutineJson.java","AlarmEditorActivity.java","AlarmActivity.java","Scheduler.java","SnoozeDeadline.java"],validation="Combined assembleDebug a8f5f23 PASS 1m54s only; no new tests, alarm/output/phone actions.",status="partial",notes="Portable strict wrapper separates configured 1–8 entry pool and count from SecureRandom without-replacement concrete selection. Actual prerequisites rechecked read-only at occurrence; unavailable slots become real one-unit Math alternatives. Same edit commits ledger/run/concrete active_alarm/progress before effects. Reopening/snooze/check retain exact choice; fresh main occurrences choose anew. Per-entry original difficulty/enrollment and ordinary fixed routines preserved; eighteen categories only, microphone/image categories excluded. Preview is separate from occurrence. OS delivery, process/restore/snooze/codec/visual acceptance remain unverified."),
+ dict(feature="Saved occurrence-frozen random challenge routines",screens="03,10 + pool/selection preview",source=SOURCE+"alarms/captcha.html",implementation=["RandomChallenges.java","RandomChallengeActivity.java","RandomChallengePreviewActivity.java","ChallengeRoutine.java","ChallengeRoutineJson.java","AlarmEditorActivity.java","AlarmActivity.java","Scheduler.java","SnoozeDeadline.java"],validation="Combined assembleDebug a8f5f23 PASS 1m54s only; no new tests, alarm/output/phone actions.",status="partial",notes="Portable strict wrapper separates configured 1–8 entry pool and count from SecureRandom without-replacement concrete selection. Actual prerequisites rechecked read-only at occurrence; unavailable slots become real one-unit Math alternatives. Same edit commits ledger/run/concrete active_alarm/progress before effects. Reopening/snooze/check retain exact choice; fresh main occurrences choose anew. Per-entry original difficulty/enrollment and ordinary fixed routines preserved; all 28 existing categories; enrolled reference/target/code templates preserved, read-only camera/microphone/call/lease/SDK checks exclude unavailable tasks, child Start/Listen checks actual model/English readiness. Preview is separate from occurrence. OS delivery, process/restore/snooze/codec/visual acceptance remain unverified."),
  dict(feature="Relative microphone sound-level wake task",screens="03,10 + microphone preview/permission/cleanup",source=SOURCE+"alarms/captcha.html",implementation=["AudioChallengeMode.java","AudioChallengePreviewActivity.java","SpeakAccess.java","SpeakRuntime.java","SpeakChallengeActivity.java","SpeakCaptureService.java","AlarmEditorActivity.java","AlarmActivity.java"],validation="Combined assembleDebug a8f5f23 PASS 1m54s only. No raw microphone/output/native/device tests.",status="partial",notes="Saved fixed-routine Loud sound uses explicit visible 15s attempt, existing single microphone lease and owned alarm quieting; no raw recording saved. Three complete 15,600-sample/16kHz quiet baseline windows choose maximum RMS; rejects loud/clipped baseline. Two consecutive complete windows exceed max(.025,baseline*sqrt(10)) with<=1 percent clipping; nonmatch resets. Relative amplitude only, no calibrated dB, instrument identification or dangerous-volume request. Private explicit preview has no alarm proof. Permission/cleanup/actual amplitude/environment/runtime acceptance remain unverified; Math alternative exists."),
  dict(feature="Requested installed offline narration voice selection",screens="19 + guide/voice chooser",source=SOURCE+"sleep/lullaby.html",implementation=["NarrationVoice.java","NarrationVoiceActivity.java","NarrationVoiceDiscovery.java","NarrationVoiceEngine.java","GuidedWindDownActivity.java","GuidedWindDownNarration.java"],validation="Combined assembleDebug a8f5f23 PASS 1m54s only; no actual engine/TTS/provider/audio tests.",status="partial",notes="Separate device-local requested engine/name/locale with Auto, explicit installed voice refresh, English/offline/installed checks and Save/Cancel/draft/error states. No synthesis/download on chooser open/refresh/save. Explicit guide Play snapshots identity and rate/pitch, checks exact selected name/locale/offline-installed English before utterances; missing selection errors rather than another voice. Android initialization may fall back from requested engine; no public engine-package proof or translation. Voice identity excluded from portable settings. Actual provider/offline behavior, lifecycle and output remain unverified.")
 ])
+
+# Current expanded-pool and explicit CSV annotation paths; historical results remain scoped.
+for row in rows:
+    feature=row["feature"]
+    if feature == "Other CAPTCHA pack tasks":
+        row["implementation"] += ["JumpTask.java","JumpGame.java","JumpView.java","JumpCheckpoint.java"]
+        row["notes"] = row["notes"].replace("jumping missing.","Jumping is an original touch-controlled hurdle game with saved progress and a Math alternative; it is not physical-jump sensing.")
+    elif feature == "Sleep Phaser PIR lamp":
+        row["status"]="blocked"
+        row["validation"]="Primary vendor developer/support documentation reviewed 26 Oct 2026; no protocol/hardware requests, placeholders or source client added."
+        row["notes"]="Dedicated Sleep Phaser Bluetooth integration remains absent. The vendor's public developer page gives USB commands for cabled Mask/Glasses/Flex only and asks developers to contact it for the Sleep Phaser Bluetooth interface. No public UUID/framing/PIR units/light-command/auth/version specification or redistribution terms were available. Requires vendor-provided protocol/permission and compatible user-owned hardware; no contact sent. Existing Home Assistant PIR/Hue are separate paths, not claimed Phaser compatibility. Primary source: https://www.happy-electronics.eu/support/developers/ ."
+    elif feature in ("Saved occurrence-frozen random challenge routines","Multi-task routine / reorder / per-task difficulty"):
+        row["notes"] += " Expanded 8094497 supports all 28 current fixed task types. Picture/Object/QR need exact configured templates; no invented targets. New read-only camera/audio/call/current-capture/on-device-recognizer checks exclude unavailable entries and Math fills missing slots. Existing private explicit previews reused; runtime/recognition still unverified."
+        row["validation"] += " Expanded-pool combined assembleDebug 8094497 PASS 2m3s only; no new tests, hardware/provider/output/phone actions."
+    elif feature in ("Content provider / CSV compatibility","Source-preserving Sleep as Android CSV append","Imported CSV source signal charts and exact export"):
+        row["implementation"] += ["SleepCsvEvents.java","SleepCsvEventChart.java"]
+        row["notes"] += " Separate original-event timeline now displays only complete unambiguous in-period LIGHT/DEEP/REM/PAUSED/BROKEN source pairs on independent overlapping lanes, plus ALARM_* points, full/six-hour views and exact raw timestamp inspection. Unix-ms event interpretation is explicitly inferred from the vendor public example, not a documented unit guarantee. Unmatched/duplicate/outside/other/payload labels stay retained/counted; no interpolation, local epochs/awake/stage projection or record mutation. New rendering/lifecycle/runtime acceptance remains unverified."
+        row["validation"] += " Annotation source combined assembleDebug 8094497 PASS 2m3s only."
+    elif feature == "Sleep-phase estimation":
+        row["notes"] += " Read-only imported vendor event annotations do not implement or validate SleepWell phone sleep-stage estimation."
+rows.append(dict(feature="Imported CSV original event annotation timeline",screens="02,22,24 + imported source timeline/inspector",source=SOURCE+"devs/csv.html",implementation=["SleepCsvEvents.java","SleepCsvEventChart.java","SleepCsvSourceActivity.java","SleepCsvSourceJob.java"],validation="Combined assembleDebug 8094497 PASS 2m3s only; no parser/native/provider/device/screenshot tests.",status="partial",notes="Original parser pairs explicit LIGHT_START/END, DEEP_START/END, REM_START/END, TRACKING_PAUSED/RESUMED and BROKEN_START/END anchors only when complete, unambiguous and inside the original source period. Independent lanes retain overlaps; no mutually-exclusive hypnogram or unknown-gap filling. ALARM_* fields become points. Full/six-hour views, paged accessible interval selection, exact original fields/milliseconds/zoned timestamps and recreated view state. Numeric event epoch-ms units are an inference from the vendor public example, expressly disclosed, not a complete published event schema. Duplicate/unmatched/outside/other-payload/unreadable source fields remain raw/countable. No trimming to app edits, stage/awake/session projection, data mutation, new sensor/network capture or export authority. Whole source-view runtime/format/render acceptance remains unverified. See CSV-EVENT-ANNOTATIONS.md."))
 
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
@@ -1073,18 +1094,19 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Current production source **a8f5f23** adds saved occurrence-frozen random challenge
-pools, experimental laughter/relative sound-level tasks, requested installed offline
-narration voice selection and explicitly paired direct Hue HTTPS/v1 sunrise control.
-Combined production build **PASS1m54s**, original debug signer, schema17/backup13
-unchanged. No new tests/lint/screenshots, microphone/TTS/provider/bridge/native
-acceptance or personal-phone actions for this candidate. These are **build-only**
-paths; previous failed laughter evidence is not superseded by compilation.
-Current candidate a8f5f23 is uninstalled. The separate authorized 86d0d1e phone
-update succeeded with installed hash and all original rows/preferences/private
-files preserved. Samsung Device Care still suspends it; last verified schema7
-awaits first open to 17. Exact feature limits are in
-[challenge/light notes](CHALLENGE-AND-LIGHT-FEATURES.md) and
+Current production source **8094497** expands random routines to all 28 existing
+challenge categories with real configured targets/prerequisites, and adds a
+read-only imported CSV event-pair timeline, six-hour view and exact inspection.
+Combined production build **PASS2m3s**, original debug signer, schema17/backup13
+unchanged. No new tests/lint/screenshots, hardware/model/microphone/provider/native
+acceptance or phone actions for this candidate. These are **build-only** paths;
+previous failed laughter evidence and the all-screen design gate remain unresolved.
+Current candidate 8094497 is uninstalled. Installed 86d0d1e retained its exact hash
+and all original rows/preferences/private files. Device Care still suspends it;
+last verified schema7 awaits first open to 17. Sleep Phaser's public Bluetooth
+protocol remains an external prerequisite, not substituted with another lamp.
+See [feature limits](CHALLENGE-AND-LIGHT-FEATURES.md),
+[CSV annotations](CSV-EVENT-ANNOTATIONS.md) and
 [delivery history](2026-10-25-FEATURE-DELIVERY.md).
 Historical scoped functional evidence is preserved in [VERIFICATION.md](VERIFICATION.md)
 and the linked verification directories; it does not validate this newer source.

@@ -11,12 +11,12 @@ bounded historical pass does not establish that whole goal is complete.
 | --- | --- |
 | Installed phone build | **86d0d1e**, installed with matching checksum; original records, preferences and private files verified preserved. |
 | Phone availability | Samsung Device Care still suspends the app. Last verified database is **schema 7**; first-open migration **7 → 17** remains pending. Installation did not establish migration or runtime success. |
-| Published candidate | **a8f5f23**, production debug build **PASS, 1m54s**, original signer and uploaded/local digest verified. **Not installed.** Schema 17 / metadata backup format 13. |
+| Published candidate | **8094497**, production debug build **PASS, 2m3s**, original signer and uploaded/local digest verified. **Not installed.** Schema 17 / metadata backup format 13. |
 | New feature evidence | Production implementation/build only. New runtime, physical output, provider, TTS engine and overnight behavior remain unverified. |
 | Current work policy | Features first. New unit/native test batches, screenshot/evidence batches, dedicated design review, broad bug review and security audits remain **deferred at the user's request**. This checklist does not restart them. Essential integration/build and data-preservation work remain applicable. |
 
 The installed build is not 571018b or 121dbd5; those are historical milestones.
-The newer a8f5f23 candidate is not the installed build. No further phone, alarm,
+The newer 8094497 candidate is not the installed build. No further phone, alarm,
 audio, microphone, sensor, provider or bridge actions are authorized by this note.
 
 ## Concrete remaining implementation and interpretation limits
@@ -30,8 +30,11 @@ audio, microphone, sensor, provider or bridge actions are authorized by this not
 - [ ] Establish feasibility before claiming phone sleep-stage/REM, breathing,
   apnea or disturbance analysis. Motion, awake estimates, timed dream cues and
   experimental periodic echoes do not supply validated stage or medical evidence.
-- [ ] Dedicated Sleep Phaser hardware protocol is absent. Current secondary PIR
-  input requires a user-owned Home Assistant hub and binary sensor.
+- [ ] Dedicated Sleep Phaser Bluetooth protocol is absent. The vendor publishes only
+  other devices’ USB commands and asks developers to request this Bluetooth interface.
+  Actual UUIDs/framing/PIR/light/auth/version terms are required before implementation.
+  [Primary vendor source](https://www.happy-electronics.eu/support/developers/).
+  Current secondary PIR is a separate user-owned Home Assistant binary-sensor path.
 - [ ] Direct legacy Google Fit/Samsung SDK exchange and hosted SleepCloud,
   research-community or Spotify account-service parity remain absent or externally
   gated. Existing Health Connect, HTTPS radio, user-owned folder backups and local
@@ -55,7 +58,7 @@ Runtime acceptance for these paths remains open rather than implementation absen
 
 - [ ] After the user permits reopening the suspended app, verify the installed
   86d0d1e first-open schema 7 → 17 migration and retained data. A separate authorized
-  installation is needed for a8f5f23; it must preserve signer, records, preferences
+  installation is needed for 8094497; it must preserve signer, records, preferences
   and private files. Do not silently remove Device Care suspension.
 - [ ] Actual alarm delivery and best-effort prevent-leave/power-menu behavior;
   extra-loud output and restoration; gentle ramp, sound delay, vibration, screen
@@ -81,7 +84,9 @@ Runtime acceptance for these paths remains open rather than implementation absen
   compatibility, real sunrise and conditional restoration. Home Assistant and Hue
   remain exclusive; process death/in-flight commands cannot guarantee restoration.
 - [ ] Recorded-duration/awake edits, dated-goal accounting, tags, scores, history,
-  missing days and CSV source graphs must stay based on actual saved evidence.
+  missing days and CSV source graphs/event annotations must stay based on actual saved evidence.
+  New event units are explicitly inferred from the vendor sample; full/six-hour
+  view, complete-pair rules and exact inspection remain runtime-unverified.
 - [ ] Historical full-app native failures remain unresolved, including the independent
   laughter-positive gate. Earlier narrow passing batches do not supersede them or
   validate the current production-only candidate. Do not weaken those gates or

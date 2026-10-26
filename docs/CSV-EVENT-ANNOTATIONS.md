@@ -1,7 +1,6 @@
 # Imported CSV event annotations
 
-This note describes source **8094497**. Its production build is **pending at the
-time of writing**. No tests, screenshots, runtime flows, devices, providers or
+This note describes source **8094497**. Its combined production build **passed in 2m3s**. No tests, screenshots, runtime flows, devices, providers or
 network calls were exercised for this documentation. Source implementation is
 not evidence of completed visual acceptance or correct interpretation of every
 vendor export.

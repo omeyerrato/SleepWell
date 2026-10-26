@@ -560,3 +560,39 @@ Published [a8f5f23 development APK](https://github.com/omeyerrato/SleepWell/rele
 Both assets are uploaded; APK size 215,504,432 bytes and remote digest match the
 preserved local artifact. SHA-256:
 `7226ca3307e8ca3cbb72ac8031913d126965493335564fed2584e7dcb898fb8d`.
+
+## 26 October — source 8094497 expanded pools and CSV annotations
+
+Production **assembleDebug PASS2m3s**, original signer, schema17/metadata13/ZIPv2
+unchanged. Random pools now accept all 28 existing task categories, including exact
+configured picture/object/code references and real per-task settings. Read-only
+camera/microphone/call/capture/SDK prerequisites exclude unavailable entries; Math
+fills the requested count. Model/offline-English readiness is still checked only
+at explicit child Start/Listen, using the existing actual private previews.
+
+A separate original CSV annotation timeline displays complete unambiguous in-period
+LIGHT/DEEP/REM/PAUSED/BROKEN pairs and ALARM_* points, with independent overlapping
+lanes, full/six-hour view and exact raw-field/millisecond inspection. Event units
+are explicitly inferred from the vendor public example, not guaranteed by its
+CSV specification. No guessed endpoints, gap interpolation, local-stage/awake
+projection, record mutation or additional export authority is introduced.
+
+The current checklists have been consolidated; stale phone builds and the false
+Jumping-missing assertion were corrected. The original 36-screen goal and actual
+functional/visual failures remain open. Sleep Phaser remains externally gated by
+its unpublished Bluetooth interface; the vendor's USB table describes other devices.
+No contact or fake substitute client was added.
+
+Frozen APK size **215,530,780 bytes**; local SHA-256:
+`1cfe6c86ad70b2b28ead150371b420abd086aae98770b29056ef106766321dc1`.
+No new tests/lint/screenshots, device/provider/recognizer/microphone/output actions
+ran for this candidate. Runtime/format/accuracy/recovery/visual acceptance remains
+unverified. Installed phone remains 86d0d1e with data preserved, Device Care suspended
+and schema7→17 first-open migration pending. This candidate is uninstalled.
+See [annotation interpretation](CSV-EVENT-ANNOTATIONS.md) and
+[challenge boundaries](CHALLENGE-AND-LIGHT-FEATURES.md).
+
+Published [8094497 development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-8094497). Both assets are uploaded;
+exact source target, remote APK size and SHA-256 digest match the frozen local build.
+The first GitHub upload timed out and its failed draft was removed; retry used
+the same frozen APK, with no rebuild or phone action.

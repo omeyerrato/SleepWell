@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 26 October
 
-Application source **a8f5f23** builds in **1m54s**, with schema17 / metadata
+Application source **8094497** builds in **2m3s**, with schema17 / metadata
 backup13 and the original installed signing key. It includes expanded alarm,
 snooze, reminder and extra-loud controls; shared contactless noise clips/cues;
 weekly naps, object challenges, offline narration and pre-travel sleep shifts;
@@ -31,12 +31,15 @@ Sleep as Android CSV append with retained original evidence; separate supported
 settings profiles; optional Tonight row layout controls; confirmed lifecycle
 automation events; reviewed incoming tracking requests; original CSV source
 charts/export; separately opted-in future-night calendar export; saved random
-challenge pools with occurrence-frozen selection; explicit experimental laughter
+challenge pools across all 28 existing categories with occurrence-frozen selection; explicit experimental laughter
 and relative sound-level tasks; requested installed offline narration voices;
-and direct manually verified Hue HTTPS/v1 sunrise control. See the precise
+direct manually verified Hue HTTPS/v1 sunrise control; and read-only imported
+explicit-event annotation lanes with six-hour view and exact timestamp inspection.
+The event time interpretation is disclosed and does not implement local sleep stages.
+See the [CSV interpretation](docs/CSV-EVENT-ANNOTATIONS.md) and precise
 [challenge/light limits](docs/CHALLENGE-AND-LIGHT-FEATURES.md).
 
-[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-a8f5f23).
+[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-8094497).
 Its uploaded checksum matches the local signed artifact. See the
 [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
 [checkmarked feature checklist](docs/FEATURE-CHECKLIST.md) and
@@ -45,7 +48,7 @@ Feature behavior still has **build-only evidence**. The user-authorized 86d0d1e
 phone update succeeded; checksum, original records/preferences/private files were
 preserved. Samsung Device Care still suspends the app, so schema7→17 first-open
 migration remains pending. Runtime, provider, overnight, accuracy and visual acceptance remain
-open. Current a8f5f23 is uninstalled. Schema16 favorites, schema17 CSV evidence
+open. Current 8094497 is uninstalled. Schema16 favorites, schema17 CSV evidence
 and optional format13/ZIPv2 extensions have
 not had runtime migration/round-trip validation. No new test/lint/screenshot
 batches or phone/provider/codec/admin/alarm/audio/sensor actions ran in this batch.

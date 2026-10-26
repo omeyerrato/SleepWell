@@ -12,10 +12,12 @@ Use essential production builds for integration. Do not act on the personal phon
 (including installation, ADB queries, capture, microphone, alarm or other outputs).
 The quiet-device procedures below are historical, not current authorization.
 
-Current application candidate a8f5f23 builds in 1m54s with the original debug key
+Current application candidate 8094497 builds in 2m3s with the original debug key
 and schema17/backup13. It adds occurrence-frozen random routines, experimental
 laughter/relative sound tasks, requested installed offline narration voice choices
-and explicitly verified Hue HTTPS/v1 sunrise control. Runtime/acoustic/TLS/firmware
+and explicitly verified Hue HTTPS/v1 sunrise control. The latest source expands
+random pools to all 28 existing categories and adds imported explicit event-pair
+annotations with full/six-hour views and exact timestamp inspection. Runtime/acoustic/TLS/firmware
 and visual acceptance remain unverified. Earlier features remain included.
 The user-authorized 86d0d1e phone update succeeded with installed hash and all
 original rows/preferences/private files preserved. Device Care still suspends it;

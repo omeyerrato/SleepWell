@@ -726,11 +726,15 @@
         "TiltMotion.java",
         "TiltMazeTask.java",
         "ChallengePackPreviewActivity.java",
-        "AlarmActivity.java"
+        "AlarmActivity.java",
+        "JumpTask.java",
+        "JumpGame.java",
+        "JumpView.java",
+        "JumpCheckpoint.java"
       ],
       "validation": "Author a0d2bed: ChallengeCountingFlagsTest, TiltMazeTest, TiltMotionTest and existing ChallengeRoutineTest:24pure cases PASS, debug/native APKs and lint PASS. f5e80ab CI40150902142 ChallengePackNativeTest 8 PASS; whole focused run remains FAIL on DND permission callback and goal dialog recreation (targeted fixes pending rerun).",
       "status": "partial",
-      "notes": "Original Counting and eight-country Flags plus calibrated fresh-sensor collision maze are wired into saved routines and shared silent previews. Persisted Math fallback and lifecycle/run fences included. Actual sensor/alarm behavior remains unverified; jumping missing. See COUNTING-TILT-FLAGS.md.",
+      "notes": "Original Counting and eight-country Flags plus calibrated fresh-sensor collision maze are wired into saved routines and shared silent previews. Persisted Math fallback and lifecycle/run fences included. Actual sensor/alarm behavior remains unverified; Jumping is an original touch-controlled hurdle game with saved progress and a Math alternative; it is not physical-jump sensing. See COUNTING-TILT-FLAGS.md.",
       "id": "F031",
       "tests": [
         {
@@ -1284,7 +1288,7 @@
       "implementation": [],
       "validation": "Not verified for this feature",
       "status": "missing",
-      "notes": "Pending: current UI intentionally shows measured movement rather than fabricated REM/deep/light stages. Clinical stages require independent validation.",
+      "notes": "Pending: current UI intentionally shows measured movement rather than fabricated REM/deep/light stages. Clinical stages require independent validation. Read-only imported vendor event annotations do not implement or validate SleepWell phone sleep-stage estimation.",
       "id": "F049",
       "tests": []
     },
@@ -2383,9 +2387,9 @@
       "screens": "32,33,35,36",
       "source": "https://sleep.urbandroid.org/docs/services/automation.html",
       "implementation": [],
-      "validation": "Not verified for this feature",
-      "status": "missing",
-      "notes": "Pending; hardware itself is not replicated by an app.",
+      "validation": "Primary vendor developer/support documentation reviewed 26 Oct 2026; no protocol/hardware requests, placeholders or source client added.",
+      "status": "blocked",
+      "notes": "Dedicated Sleep Phaser Bluetooth integration remains absent. The vendor's public developer page gives USB commands for cabled Mask/Glasses/Flex only and asks developers to contact it for the Sleep Phaser Bluetooth interface. No public UUID/framing/PIR units/light-command/auth/version specification or redistribution terms were available. Requires vendor-provided protocol/permission and compatible user-owned hardware; no contact sent. Existing Home Assistant PIR/Hue are separate paths, not claimed Phaser compatibility. Primary source: https://www.happy-electronics.eu/support/developers/ .",
       "id": "F085",
       "tests": []
     },
@@ -2747,11 +2751,13 @@
         "SleepCsvActivity.java",
         "SleepCsvSourceJob.java",
         "SleepCsvSourceActivity.java",
-        "SleepCsvSourceChart.java"
+        "SleepCsvSourceChart.java",
+        "SleepCsvEvents.java",
+        "SleepCsvEventChart.java"
       ],
-      "validation": "Combined assembleDebug32f87b9 PASS2m2s; source-only format/provenance integration. No new tests, provider/device or migration execution.",
+      "validation": "Combined assembleDebug32f87b9 PASS2m2s; source-only format/provenance integration. No new tests, provider/device or migration execution. Annotation source combined assembleDebug 8094497 PASS 2m3s only.",
       "status": "partial",
-      "notes": "Reviewed Sleep as Android CSV import appends historical manual/imported/no-sensor periods with original zones, notes, tags and exact integral ratings. Repeated15-field headers, optional noise rows, quoting/newlines, source IDs and documented dates are validated. Conflicting IDs, existing exact periods and retained deleted-ID receipts are reviewed and never overwritten. Original rows, fractional ratings and aggregate adjustments remain in same-transaction source evidence with strict identity/hash/bounds, record deletion, optional metadata13 extension and library backup. App duration is the period, not vendor adjusted sleep duration; source details disclose both. Vendor actigraphy/noise/stage fields are retained without fabricating local measurements, stage estimates or positioned awake spans. Input4MiB/2000 records; retained raw3MiB/portable4MiB and overall8MiB backup bounds. Unsupported formats/oversized data reject explicitly. Public content provider and complete semantic vendor-format conversion remain absent. Runtime/provider/migration acceptance remains open. New source viewer plots exact retained vendor actigraphy/noise in paged64-position charts, zero vs missing/negative sentinel distinct, raw inspection and original rating/adjustment/event detail. Literal clock labels require proven column alignment; otherwise source order is explicit, never invented absolute times/DST/stages. Exact retained single-record CSV export uses reviewed SAF with current source checks; runtime/render/provider acceptance remains open.",
+      "notes": "Reviewed Sleep as Android CSV import appends historical manual/imported/no-sensor periods with original zones, notes, tags and exact integral ratings. Repeated15-field headers, optional noise rows, quoting/newlines, source IDs and documented dates are validated. Conflicting IDs, existing exact periods and retained deleted-ID receipts are reviewed and never overwritten. Original rows, fractional ratings and aggregate adjustments remain in same-transaction source evidence with strict identity/hash/bounds, record deletion, optional metadata13 extension and library backup. App duration is the period, not vendor adjusted sleep duration; source details disclose both. Vendor actigraphy/noise/stage fields are retained without fabricating local measurements, stage estimates or positioned awake spans. Input4MiB/2000 records; retained raw3MiB/portable4MiB and overall8MiB backup bounds. Unsupported formats/oversized data reject explicitly. Public content provider and complete semantic vendor-format conversion remain absent. Runtime/provider/migration acceptance remains open. New source viewer plots exact retained vendor actigraphy/noise in paged64-position charts, zero vs missing/negative sentinel distinct, raw inspection and original rating/adjustment/event detail. Literal clock labels require proven column alignment; otherwise source order is explicit, never invented absolute times/DST/stages. Exact retained single-record CSV export uses reviewed SAF with current source checks; runtime/render/provider acceptance remains open. Separate original-event timeline now displays only complete unambiguous in-period LIGHT/DEEP/REM/PAUSED/BROKEN source pairs on independent overlapping lanes, plus ALARM_* points, full/six-hour views and exact raw timestamp inspection. Unix-ms event interpretation is explicitly inferred from the vendor public example, not a documented unit guarantee. Unmatched/duplicate/outside/other/payload labels stay retained/counted; no interpolation, local epochs/awake/stage projection or record mutation. New rendering/lifecycle/runtime acceptance remains unverified.",
       "id": "F097",
       "tests": []
     },
@@ -3076,9 +3082,9 @@
         "Scheduler.java",
         "SnoozeDeadline.java"
       ],
-      "validation": "ChallengeRoutineFlowTest passes at d6389dc/CI40027277488: six individually reviewed originals, real JSON/privateDB/reorder/cancel/recreate/save/reopen, malformed backup rejection. New Walk source extends this candidate; native configuration still needs fresh run. Actual ringing/challenge execution remains unverified. Later gradedMath1 native7frame configuration passes at12c8c0f; new QR task metadata/decoder/ownership14 pure cases and12frame inert configuration gate pass ata8362a1. All6 routine originals reviewed with cream icon wells/action divider aligned; actual ordered runtime remains unverified.",
+      "validation": "ChallengeRoutineFlowTest passes at d6389dc/CI40027277488: six individually reviewed originals, real JSON/privateDB/reorder/cancel/recreate/save/reopen, malformed backup rejection. New Walk source extends this candidate; native configuration still needs fresh run. Actual ringing/challenge execution remains unverified. Later gradedMath1 native7frame configuration passes at12c8c0f; new QR task metadata/decoder/ownership14 pure cases and12frame inert configuration gate pass ata8362a1. All6 routine originals reviewed with cream icon wells/action divider aligned; actual ordered runtime remains unverified. Expanded-pool combined assembleDebug 8094497 PASS 2m3s only; no new tests, hardware/provider/output/phone actions.",
       "status": "partial",
-      "notes": "Additive ordered1–8task routine, per-task rounds/targets/graded Math and newly enrolled QR code, step-sensor Walk, Math/Memory/Sequence/Retype/Shake/NFC. Runtime callbacks fence occurrence/unit; legacy scalar behavior remains. QR actual camera/live challenge, silent interactive routine preview and full visual fidelity remain unverified or missing. Separate random routine mode now saves1–8configured distinct pool entries/count, samples eligible entries without replacement and atomically publishes concrete tasks with the occurrence. Snooze/reopen keep the exact choice/source mapping. Missing prerequisites become real Math alternatives to preserve count. Eighteen categories supported; microphone/image-expression/object tasks excluded with visible copy. Runtime/restore/ownership/selection acceptance remains unverified.",
+      "notes": "Additive ordered1–8task routine, per-task rounds/targets/graded Math and newly enrolled QR code, step-sensor Walk, Math/Memory/Sequence/Retype/Shake/NFC. Runtime callbacks fence occurrence/unit; legacy scalar behavior remains. QR actual camera/live challenge, silent interactive routine preview and full visual fidelity remain unverified or missing. Separate random routine mode now saves1–8configured distinct pool entries/count, samples eligible entries without replacement and atomically publishes concrete tasks with the occurrence. Snooze/reopen keep the exact choice/source mapping. Missing prerequisites become real Math alternatives to preserve count. All 28 current categories supported; picture/object/code entries require real configured targets, and hardware/permission/capture prerequisites are checked read-only. Child Start/Listen still rechecks model/English readiness. Runtime/restore/ownership/selection acceptance remains unverified. Expanded 8094497 supports all 28 current fixed task types. Picture/Object/QR need exact configured templates; no invented targets. New read-only camera/audio/call/current-capture/on-device-recognizer checks exclude unavailable entries and Math fills missing slots. Existing private explicit previews reused; runtime/recognition still unverified.",
       "id": "F107",
       "tests": [
         {
@@ -4575,11 +4581,13 @@
         "BackupFingerprint.java",
         "SleepCsvSourceJob.java",
         "SleepCsvSourceActivity.java",
-        "SleepCsvSourceChart.java"
+        "SleepCsvSourceChart.java",
+        "SleepCsvEvents.java",
+        "SleepCsvEventChart.java"
       ],
-      "validation": "Combined assembleDebug32f87b9 PASS2m2s only. Primary vendor documentation/example inspected; no parser/SQLite/provider/native execution.",
+      "validation": "Combined assembleDebug32f87b9 PASS2m2s only. Primary vendor documentation/example inspected; no parser/SQLite/provider/native execution. Annotation source combined assembleDebug 8094497 PASS 2m3s only.",
       "status": "partial",
-      "notes": "Real reviewed append of selected eligible source periods, transactional records+evidence+dedup receipts, explicit changed-ID/exact-period/deleted-ID conflicts, cancellation before commit and uncertain-commit recovery without replay. Exact raw2/3rows remain private/portable with fractional rating and LenAdjust/net aggregate; original source details accessible after import. DST offsets checked against Id/Hours, nonexistent/mismatched local times rejected. No synthetic sensor/stage graphs or inferred awake placement; app period duration and vendor adjusted duration stay distinct. Metadata13 optional extension, additive schema17 and session-deletion trigger preserve lifecycle. Manual, automatic and full-library metadata paths share it; older readers can drop the optional extension. Full vendor semantic projection and actual runtime/provider/migration acceptance remain open. New source viewer plots exact retained vendor actigraphy/noise in paged64-position charts, zero vs missing/negative sentinel distinct, raw inspection and original rating/adjustment/event detail. Literal clock labels require proven column alignment; otherwise source order is explicit, never invented absolute times/DST/stages. Exact retained single-record CSV export uses reviewed SAF with current source checks; runtime/render/provider acceptance remains open.",
+      "notes": "Real reviewed append of selected eligible source periods, transactional records+evidence+dedup receipts, explicit changed-ID/exact-period/deleted-ID conflicts, cancellation before commit and uncertain-commit recovery without replay. Exact raw2/3rows remain private/portable with fractional rating and LenAdjust/net aggregate; original source details accessible after import. DST offsets checked against Id/Hours, nonexistent/mismatched local times rejected. No synthetic sensor/stage graphs or inferred awake placement; app period duration and vendor adjusted duration stay distinct. Metadata13 optional extension, additive schema17 and session-deletion trigger preserve lifecycle. Manual, automatic and full-library metadata paths share it; older readers can drop the optional extension. Full vendor semantic projection and actual runtime/provider/migration acceptance remain open. New source viewer plots exact retained vendor actigraphy/noise in paged64-position charts, zero vs missing/negative sentinel distinct, raw inspection and original rating/adjustment/event detail. Literal clock labels require proven column alignment; otherwise source order is explicit, never invented absolute times/DST/stages. Exact retained single-record CSV export uses reviewed SAF with current source checks; runtime/render/provider acceptance remains open. Separate original-event timeline now displays only complete unambiguous in-period LIGHT/DEEP/REM/PAUSED/BROKEN source pairs on independent overlapping lanes, plus ALARM_* points, full/six-hour views and exact raw timestamp inspection. Unix-ms event interpretation is explicitly inferred from the vendor public example, not a documented unit guarantee. Unmatched/duplicate/outside/other/payload labels stay retained/counted; no interpolation, local epochs/awake/stage projection or record mutation. New rendering/lifecycle/runtime acceptance remains unverified.",
       "id": "F157",
       "tests": []
     },
@@ -4648,11 +4656,13 @@
         "SleepCsvSourceActivity.java",
         "SleepCsvSourceChart.java",
         "RecordEditorActivity.java",
-        "ReportScreen.java"
+        "ReportScreen.java",
+        "SleepCsvEvents.java",
+        "SleepCsvEventChart.java"
       ],
-      "validation": "Combined assembleDebug86d0d1e PASS1m14s only; no rendering/provider/parser/native flow execution.",
+      "validation": "Combined assembleDebug86d0d1e PASS1m14s only; no rendering/provider/parser/native flow execution. Annotation source combined assembleDebug 8094497 PASS 2m3s only.",
       "status": "partial",
-      "notes": "Read-transaction-pinned existing imported source, real relative actigraphy/noise values, paged64 original positions/global scale, selectable exact raw values, preserved zero/missing-negative gaps, original fractional rating/LenAdjust/net and event fields. Literal clocks only where row/header shape establishes columns; legacy/unmapped rows use explicit source order. No absolute timestamps, uniform-minute assumption, DST reconstruction or app-epoch/stage conversion. Retained explicit single-record SAF CSV export rechecks source/current record and copies exact original2/3rows with cancellation/process-loss bounds and private metadata disclosure. Both editor and imported report link actual source flow. Runtime/provider/visual acceptance remains open.",
+      "notes": "Read-transaction-pinned existing imported source, real relative actigraphy/noise values, paged64 original positions/global scale, selectable exact raw values, preserved zero/missing-negative gaps, original fractional rating/LenAdjust/net and event fields. Literal clocks only where row/header shape establishes columns; legacy/unmapped rows use explicit source order. No absolute timestamps, uniform-minute assumption, DST reconstruction or app-epoch/stage conversion. Retained explicit single-record SAF CSV export rechecks source/current record and copies exact original2/3rows with cancellation/process-loss bounds and private metadata disclosure. Both editor and imported report link actual source flow. Runtime/provider/visual acceptance remains open. Separate original-event timeline now displays only complete unambiguous in-period LIGHT/DEEP/REM/PAUSED/BROKEN source pairs on independent overlapping lanes, plus ALARM_* points, full/six-hour views and exact raw timestamp inspection. Unix-ms event interpretation is explicitly inferred from the vendor public example, not a documented unit guarantee. Unmatched/duplicate/outside/other/payload labels stay retained/counted; no interpolation, local epochs/awake/stage projection or record mutation. New rendering/lifecycle/runtime acceptance remains unverified.",
       "id": "F161",
       "tests": []
     },
@@ -4693,9 +4703,9 @@
         "Scheduler.java",
         "SnoozeDeadline.java"
       ],
-      "validation": "Combined assembleDebug a8f5f23 PASS 1m54s only; no new tests, alarm/output/phone actions.",
+      "validation": "Combined assembleDebug a8f5f23 PASS 1m54s only; no new tests, alarm/output/phone actions. Expanded-pool combined assembleDebug 8094497 PASS 2m3s only; no new tests, hardware/provider/output/phone actions.",
       "status": "partial",
-      "notes": "Portable strict wrapper separates configured 1–8 entry pool and count from SecureRandom without-replacement concrete selection. Actual prerequisites rechecked read-only at occurrence; unavailable slots become real one-unit Math alternatives. Same edit commits ledger/run/concrete active_alarm/progress before effects. Reopening/snooze/check retain exact choice; fresh main occurrences choose anew. Per-entry original difficulty/enrollment and ordinary fixed routines preserved; eighteen categories only, microphone/image categories excluded. Preview is separate from occurrence. OS delivery, process/restore/snooze/codec/visual acceptance remain unverified.",
+      "notes": "Portable strict wrapper separates configured 1–8 entry pool and count from SecureRandom without-replacement concrete selection. Actual prerequisites rechecked read-only at occurrence; unavailable slots become real one-unit Math alternatives. Same edit commits ledger/run/concrete active_alarm/progress before effects. Reopening/snooze/check retain exact choice; fresh main occurrences choose anew. Per-entry original difficulty/enrollment and ordinary fixed routines preserved; all 28 existing categories; enrolled reference/target/code templates preserved, read-only camera/microphone/call/lease/SDK checks exclude unavailable tasks, child Start/Listen checks actual model/English readiness. Preview is separate from occurrence. OS delivery, process/restore/snooze/codec/visual acceptance remain unverified. Expanded 8094497 supports all 28 current fixed task types. Picture/Object/QR need exact configured templates; no invented targets. New read-only camera/audio/call/current-capture/on-device-recognizer checks exclude unavailable entries and Math fills missing slots. Existing private explicit previews reused; runtime/recognition still unverified.",
       "id": "F163",
       "tests": []
     },
@@ -4735,6 +4745,22 @@
       "status": "partial",
       "notes": "Separate device-local requested engine/name/locale with Auto, explicit installed voice refresh, English/offline/installed checks and Save/Cancel/draft/error states. No synthesis/download on chooser open/refresh/save. Explicit guide Play snapshots identity and rate/pitch, checks exact selected name/locale/offline-installed English before utterances; missing selection errors rather than another voice. Android initialization may fall back from requested engine; no public engine-package proof or translation. Voice identity excluded from portable settings. Actual provider/offline behavior, lifecycle and output remain unverified.",
       "id": "F165",
+      "tests": []
+    },
+    {
+      "feature": "Imported CSV original event annotation timeline",
+      "screens": "02,22,24 + imported source timeline/inspector",
+      "source": "https://sleep.urbandroid.org/docs/devs/csv.html",
+      "implementation": [
+        "SleepCsvEvents.java",
+        "SleepCsvEventChart.java",
+        "SleepCsvSourceActivity.java",
+        "SleepCsvSourceJob.java"
+      ],
+      "validation": "Combined assembleDebug 8094497 PASS 2m3s only; no parser/native/provider/device/screenshot tests.",
+      "status": "partial",
+      "notes": "Original parser pairs explicit LIGHT_START/END, DEEP_START/END, REM_START/END, TRACKING_PAUSED/RESUMED and BROKEN_START/END anchors only when complete, unambiguous and inside the original source period. Independent lanes retain overlaps; no mutually-exclusive hypnogram or unknown-gap filling. ALARM_* fields become points. Full/six-hour views, paged accessible interval selection, exact original fields/milliseconds/zoned timestamps and recreated view state. Numeric event epoch-ms units are an inference from the vendor public example, expressly disclosed, not a complete published event schema. Duplicate/unmatched/outside/other-payload/unreadable source fields remain raw/countable. No trimming to app edits, stage/awake/session projection, data mutation, new sensor/network capture or export authority. Whole source-view runtime/format/render acceptance remains unverified. See CSV-EVENT-ANNOTATIONS.md.",
+      "id": "F166",
       "tests": []
     }
   ]

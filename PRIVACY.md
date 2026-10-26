@@ -1,5 +1,9 @@
 # Privacy
 
+Imported CSV event annotations are derived locally and temporarily from the already
+retained original fields. The timeline adds no capture, file, transfer or database
+projection, and leaves the existing explicit original-CSV export unchanged.
+
 Random challenge pools and occurrence selections stay in local alarm preferences;
 only the configured pool/settings enter portable alarm backups. Explicit Laughter
 and Loud sound tasks reuse visible microphone consent and single-capture ownership.
