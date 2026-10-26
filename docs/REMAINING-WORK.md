@@ -5,6 +5,17 @@ history. The goal remains the full applicable phone functionality and **all 36
 supplied design screens across 12 boards**. Existing code, a successful build or a
 bounded historical pass does not establish that whole goal is complete.
 
+## Current user priorities
+
+- [ ] Consistent subtle haptics and visible action feedback across shared controls.
+- [ ] Organize settings/options without removing features, with useful search and clear Back.
+
+Source62a8a128 builds app/UI-check APKs in1m13s. One silent organization flow
+CI40341331405 is pending; neither priority is accepted complete yet. All17former
+root destinations remain in8groups. The new source also includes guarded ordinary
+alarm API/snooze ownership; actual client/delivery behavior remains unverified.
+[Organization map](UI-ORGANIZATION.md) · [compact checklist](QUICK-CHECKLIST.md).
+
 ## Current delivery state
 
 | Item | Current state |
@@ -36,8 +47,8 @@ No further personal-phone actions are authorized by this status note.
   YAMNet classes and timed cues do not provide that algorithm. Breathing/apnea remain
   separate. See [feasibility and next work](PHONE-STAGE-FEASIBILITY.md).
 - [ ] Complete broader integration parity: original read-only summary access and
-  reviewed incoming requests now exist, but alarm CRUD provider and extended/vendor
-  semantic conversion remain absent. Actual client grants/revocation and four new
+  reviewed incoming requests now exist, but full alarm-editor API coverage and extended/vendor
+  semantic conversion remain absent; ordinary guarded CRUD is now in source. Actual client grants/revocation and four new
   sound-event lifecycles/recipients require bounded runtime acceptance.
 - [ ] Dedicated Sleep Phaser Bluetooth protocol is absent. The vendor publishes only
   other devices’ USB commands and asks developers to request this Bluetooth interface.

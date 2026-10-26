@@ -7,13 +7,12 @@ not current phone or overnight acceptance. The authorized **2cbfe043** phone upd
 is installed: matching APK/signature, schema17 original rows/preferences/user files
 preserved, no app launch or outputs. [Phone evidence](verification/2026-10-26-phone-2cbfe043/README.md).
 
-New source **c4c7bd20** builds in3m8s with explicit record access and four sound
-source events. It is not installed. No new unit/lint/UI/client/provider/output
-runtime checks establish those additions. Sleep schema17/metadata13 stay unchanged;
-private automation database1→2 is additive and cannot be opened by older builds.
-The earlier single Report flow at4e3abe96 passed with persisted edits and8captures;
-that evidence does not cover these new integrations or full36screen acceptance.
-[Report evidence](verification/2026-10-26-report-flow/README.md).
+Newest source **62a8a128** builds app and UI-check APKs in1m13s. It includes grouped
+settings/alarm menus, searchable destinations, touch feedback and the guarded alarm
+API/snooze delivery source. It is not installed. A single quiet organization flow
+CI40341331405 is pending; no runtime or screenshot pass is claimed yet. Current
+published candidate remainsc4c7bd20. Sleep schema17/metadata13 and private automation
+queue2 are unchanged. Earlier Report evidence remains separately scoped.
 
 Features remain first; no new unit-test batches. A bounded saved-night Report flow passed on
 an isolated silent CI emulator. Broad design/bug/security campaigns
