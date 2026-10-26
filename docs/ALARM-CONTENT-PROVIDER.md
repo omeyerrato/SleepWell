@@ -29,6 +29,8 @@ Whitelist projection columns:
 | `next_deadline_ms` | Future persisted ordinary scheduling deadline, or null; not a delivery guarantee or live snooze projection |
 | `scheduling_status` | `no_saved_error`, `needs_attention` or `unknown` |
 
+The default/null projection remains the original 13 columns above, in that order. An explicit projection may additionally request `snooze_minutes`: the configured snooze duration as an integer from 1 to 60, or null when outside this bounded range. This is not a pending snooze deadline or remaining snooze allowance. Explicit projections still reject unknown or duplicate columns.
+
 Unrepresentable/oversized rows retain their real ID with `writable=0`, a reason and unknown fields; no sample clock is invented. The ETag hashes exact stored JSON, saved deadline, consumed occurrence and boot identity. It is a content token, not a monotonic version or permanent incarnation ID. Re-query before each edit; do not infer that matching content proves unchanged history. No raw JSON, challenge codes, PINs, tone URIs, notes, recordings, credentials or live run tokens are exposed. Arbitrary SQL, selection, sort orders and nonempty query bundles are rejected.
 
 ## Writing
@@ -44,8 +46,9 @@ Supported ContentValues are exactly:
 | `days_mask` | Integer 0–127 |
 | `label` | Nonblank plain text, at most 80 characters, no control/format/line separator characters |
 | `enabled`, `vibrate` | Boolean or Integer 0/1 |
+| `snooze_minutes` | Optional integer 1–60; strings, floats, booleans and null are rejected |
 
-Unknown/null/coerced field values are rejected. Update is a patch; omitted sound, challenge, snooze, brightness and other supported saved behavior remain intact. Create inherits valid user behavior defaults, but starts disabled unless enabled is explicitly supplied. Invalid defaults require review inside SleepWell. The API cannot enroll challenges or request permissions. Enabling requires existing exact-alarm access and a projected occurrence more than one minute away; no permission/settings prompt opens.
+Unknown/null/coerced field values are rejected. Update is a patch; omitted fields, including `snooze_minutes`, preserve their saved values. Create inherits valid user behavior defaults, including snooze duration when omitted, but starts disabled unless enabled is explicitly supplied. Supplying `snooze_minutes` only changes the configured duration; it does not snooze now, reset snooze counts or total-budget limits, or bypass active/pending ownership guards. Omitted sound, challenge, brightness and other saved behavior remain intact. Invalid defaults require review inside SleepWell. The API cannot enroll challenges or request permissions. Enabling requires existing exact-alarm access and a projected occurrence more than one minute away; no permission/settings prompt opens.
 
 Only ordinary clock alarms are writable. Naps, date-specific/solar/custom-repeat/next-only schedules, weekly-profile ownership, active skip markers, invalid/unknown non-round-tripping metadata, due/near deadlines and active alarm/wake-check/snooze ownership require their existing app editor. A positive pending snooze reservation, including an overdue or uncertain one, remains read-only. An inert historical snoozed snapshot alone no longer blocks ordinary edits: production continuation now requires current durable ownership, pending deadline and an exact saved source match; cancellation clears pending authority before asking Android to cancel. Hidden unknown fields are not silently removed to make an alarm writable. This API is bounded to at most 128 saved alarms for mutation; listing remains paged.
 
@@ -63,6 +66,6 @@ If a process fails between request preparation, alarm commit, scheduling or rece
 
 Data & privacy → **Alarm access** opens the private `AlarmAccessActivity`. `Store.historyReplacing()` and `SleepSummaryFiles.historyChanging()` now call `AlarmAccessGrants.historyChanging(Context)` before production history replacement/erasure transactions (after the shared in-flight history epoch invalidation where applicable). It durably clears authority/revises the grant state before Android cleanup and can throw: abort replacement if it fails. It does not acquire Scheduler or access the main database; call before the replacement database transaction to preserve lock order.
 
-This source increment has not been built, device-tested or exercised against an external caller. No real alarm/output/provider calls were performed. It is intentionally narrower than full alarm-editor parity.
+This source increment has not been built, device-tested or exercised against an external caller. No real alarm/output/provider calls were performed. It is intentionally narrower than full alarm-editor parity. The optional `snooze_minutes` extension is source-only at this milestone; no new build or runtime verification was run for it. Sound selection, challenges, light settings and specialized schedules remain outside the write contract, as does vendor API compatibility.
 
 Primary platform references: [creating a content provider](https://developer.android.com/guide/topics/providers/content-provider-creating), [SigningInfo current signers](https://developer.android.com/reference/android/content/pm/SigningInfo), and [custom permissions](https://developer.android.com/guide/topics/manifest/permission-element).
