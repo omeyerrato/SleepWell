@@ -69,6 +69,6 @@ Data & privacy now has a **Connected apps** entry to the private `RecordAccessAc
 
 ## Verification limits
 
-This increment is source-only under the requested workflow: no builds, test batches, external provider/client calls, device/emulator operations, permission dialogs or network actions were run. Android URI-grant behavior and real client interoperability require later controlled verification. Opening **Preview local summary fields** performs only a user-requested self-query and never grants another package.
+Integrated source c4c7bd20 assembles successfully in3m8s with the original signer. No new test batches, external provider/client calls, device/emulator operations, permission dialogs or runtime network actions were run for this addition. Android URI-grant behavior and real client interoperability require later controlled verification. Opening **Preview local summary fields** performs only a user-requested self-query and never grants another package.
 
 Primary references: [Android provider implementation](https://developer.android.com/guide/topics/providers/content-provider-creating), [Android signing information](https://developer.android.com/reference/android/content/pm/SigningInfo), [Android permission declaration](https://developer.android.com/guide/topics/manifest/permission-element), and [vendor scope reference](https://sleep.urbandroid.org/docs/devs/content_provider_api.html). The installed Android permissions skill and its permission-element guide were applied narrowly to this new boundary.

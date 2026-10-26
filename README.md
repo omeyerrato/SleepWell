@@ -12,32 +12,32 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 26 October
 
-Published source **2cbfe043** builds in **48s**, with the original signing key and
-schema17 / metadata13. It brings saved provider stages into Report, shows the
-selected trend dates, scopes Read details to that period, and keeps awake review
-and recorded insights in their relevant options menus. Repeated no-audio messages
-collapse to one night-level status. Earlier motion-analysis, alarm, sensing, backup
-and integration paths remain included in the [feature checklist](docs/FEATURE-CHECKLIST.md).
+Source **c4c7bd20** builds in **3m8s** with the original signing key. It adds
+explicit managed read-only record access under **Data & privacy → Connected apps**
+and four automation sources: actual player start/stop acknowledgements,
+production anti-snore sound admission and saved recognition estimates.
+[Record contract](docs/RECORD-CONTENT-PROVIDER.md) ·
+[Sound-event contract](docs/CONFIRMED-SOUND-AUTOMATIONS.md).
 
-[Download the development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-2cbfe04).
-Uploaded APK and sidecar digests match the frozen local artifacts. One silent
-saved-night Report flow passed at ancestor4e3abe96, including edit/reopen
-persistence and eight actual Android fixture captures. The only later production
-delta clarifies imported-duration copy. Provider-stage rendering, real playback,
-provider/overnight behavior and full36screen design acceptance remain open.
-[Scoped evidence and visual differences](docs/verification/2026-10-26-report-flow/README.md).
+[Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-c4c7bd2).
+This candidate has build/signing evidence only: actual provider clients,
+permission grants, new sound-event lifecycles and outputs remain unverified.
+Sleep database schema17/metadata13 stay unchanged; the separate private automation
+database advances1→2 additively. Older builds cannot open that upgraded rule queue.
+Older SONAR-only readers also reject new movement-analysis backup metadata.
 
-**Compatibility:** older SONAR-only readers reject backups containing new movement
-analysis metadata even though schema17/format13 are unchanged. This reader accepts
-old empty/SONAR evidence. Source-reported stages are retained imports, not a local
-phone stage classifier. See [motion/report limits](docs/MOTION-ANALYSIS-AND-REPORT-AUDIO.md)
-and the [remaining checklist](docs/REMAINING-WORK.md).
+The separately authorized **2cbfe043** phone update is installed with matching APK
+hash and original signer. All original rows/preferences/private user files matched
+before and after. SleepWell was not launched and no outputs ran.
+[Phone evidence](docs/verification/2026-10-26-phone-2cbfe043/README.md).
+The newerc4c7bd20 candidate is **not installed**.
 
-Your separately authorized **714fc4cb** phone update is installed with its exact
-published checksum and original signer. Before/after schema17 database rows,
-preferences and user files are preserved; only AndroidX's profile marker changed
-its package-update timestamp. No app launch or outputs ran. The newer2cbfe043
-candidate is **not installed**. [Phone update evidence](docs/verification/2026-10-26-phone-714fc4cb/README.md).
+The earlier saved-night Report flow passed at4e3abe96 with persisted edits and
+eight actual Android fixture captures; only later production delta in the installed
+2cbfe043 build was imported-duration copy. This does not verify the new integrations,
+provider-stage rendering, real audio, overnight behavior or all36design screens.
+[Report evidence and visible differences](docs/verification/2026-10-26-report-flow/README.md).
+[Feature checklist](docs/FEATURE-CHECKLIST.md) · [Remaining work](docs/REMAINING-WORK.md).
 
 ## Working capabilities
 

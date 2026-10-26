@@ -1,18 +1,17 @@
 # SleepWell feature checklist — 26 October 2026
 
 Not fully done. Checked feature paths have production implementation/build evidence,
-not current phone or overnight acceptance. The phone build **714fc4cb** is now installed
-through the user-authorized update. Its APK checksum and original signer match;
-before/after schema17 database rows, preferences and user files are preserved.
-Only the AndroidX package-update marker timestamp changed. No app launch or
-physical output tests ran. [Update evidence](verification/2026-10-26-phone-714fc4cb/README.md).
+not current phone or overnight acceptance. The authorized **2cbfe043** phone update
+is installed: matching APK/signature, schema17 original rows/preferences/user files
+preserved, no app launch or outputs. [Phone evidence](verification/2026-10-26-phone-2cbfe043/README.md).
 
-Published newer source **2cbfe043** builds in48s: actual saved provider stages in Report,
-visible date-range/scoped details and less repeated night-report copy. One silent
-saved-night Report flow at ancestor4e3abe96 passed, including edit/reopen persistence
-and eight fixture captures. Only later production delta: imported-duration copy.
-This is not installed; provider-stage and real playback acceptance remain open.
-[Evidence and remaining visual differences](verification/2026-10-26-report-flow/README.md).
+New source **c4c7bd20** builds in3m8s with explicit record access and four sound
+source events. It is not installed. No new unit/lint/UI/client/provider/output
+runtime checks establish those additions. Sleep schema17/metadata13 stay unchanged;
+private automation database1→2 is additive and cannot be opened by older builds.
+The earlier single Report flow at4e3abe96 passed with persisted edits and8captures;
+that evidence does not cover these new integrations or full36screen acceptance.
+[Report evidence](verification/2026-10-26-report-flow/README.md).
 
 Features remain first; no new unit-test batches. A bounded saved-night Report flow passed on
 an isolated silent CI emulator. Broad design/bug/security campaigns
@@ -66,7 +65,8 @@ required; a successful build or one flow does not establish full acceptance.
 - [x] Reviewed Sleep as Android CSV append with portable original source evidence.
 - [x] Separate settings-profile export/review/Apply and interrupted-save recovery.
 - [x] Optional Tonight row order/visibility and illustration controls, with default layout kept.
-- [x] Seven new confirmed automation events, ten total, with stable IDs and existing transports.
+- [x] Fourteen automation kinds, including acknowledged sleep-player and anti-snore sound plus saved recognition estimates; actual new-source runtime behavior unverified.
+- [x] Explicit package/signer-controlled completed-summary provider with allow/revoke/self-preview and history-replacement invalidation; client behavior unverified.
 - [x] Reviewed version1 incoming tracking requests; START stages normal setup.
 - [x] Actual imported CSV source charts/raw values and exact original single-record export.
 - [x] Imported explicit event-pair timeline, six-hour view and exact timestamp inspection.
@@ -80,12 +80,12 @@ required; a successful build or one flow does not establish full acceptance.
 - [x] Report inline retained event playback with measured waveforms and lifecycle cleanup.
 - [x] Historical analysis empty/error/legacy-unknown states across live tracking and reports.
 - [x] Parent microphone tasks wait for confirmed capture cleanup before switching to Math.
-- [x] User-authorized 714fc4cb phone update; installed checksum, schema17 rows,
-  preferences and user files preserved. Only AndroidX profile timestamp changed.
+- [x] User-authorized 2cbfe043 phone update; installed checksum, schema17 rows,
+  preferences and original private files preserved.
 
 ## Still missing or narrower than full parity
 
-- [ ] Validated phone sleep-stage/REM and breathing/apnea analysis.
+- [ ] Implement phone-input sleep-stage/REM estimates with an appropriate licensed model and input contract; breathing/apnea analysis remains separate. See PHONE-STAGE-FEASIBILITY.md.
 - [ ] Reliable laughter/instrument recognition: experimental laughter and relative amplitude paths
   now exist, but previous failed positive evidence and actual accuracy remain unresolved.
 - [ ] Dedicated Sleep Phaser Bluetooth protocol: vendor-provided specification is required.
@@ -114,7 +114,7 @@ required; a successful build or one flow does not establish full acceptance.
 - [ ] CSV source graphs/event-pair inference/inspection/export and future-night calendar job/uncertainty handling.
 - [ ] Full36-screen reference design fidelity, especially Report/charts and menus.
 - [ ] Remaining interaction bugs and security review, deferred by user instruction.
-- [x] Authorized 714fc4cb phone installation and data-preservation comparison.
+- [x] Authorized 2cbfe043 phone installation and data-preservation comparison.
 - [ ] Phone runtime/navigation, Device Care state and actual migration-path acceptance.
 - [ ] Motion analysis count/checkpoint/recovery/backup and inline Report playback lifecycle.
 - [ ] Full completion verification; current builds alone do not establish it.

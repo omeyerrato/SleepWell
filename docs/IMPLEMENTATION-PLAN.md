@@ -10,20 +10,20 @@ reviewer stays stopped. Do not run new unit-test batches or broad design/bug/sec
 campaigns. Use essential builds, data-preservation checks and bounded changed-flow
 checks to finish actual behavior; a focused Report flow is not full-app acceptance.
 
-The authorized **714fc4cb** phone update succeeded with exact installed APK hash,
-schema17 original rows/preferences/user files preserved. Only AndroidX's profile
-marker update timestamp changed. No app launch, suspension change or output test
-ran. Further personal-phone actions require their own authorization.
+The authorized **2cbfe043** phone update succeeded with exact installed hash,
+schema17 original rows/preferences/private user files preserved. No app launch,
+suspension change or output test ran. Further personal-phone actions require their
+own authorization. [Evidence](verification/2026-10-26-phone-2cbfe043/README.md).
 
-Source **2cbfe043** builds in48s with actual saved provider-stage Report intervals,
-scoped trend navigation and less repeated Report text. A single silent saved-night
-Report flow passed at ancestor4e3abe96; only later production delta is imported-duration
-copy. Eight actual fixture captures were inspected and original data/persistence
-assertions passed. Provider-stage/audio/device/overnight/all36-screen acceptance
-remains open; editor captures are scrolled and not full reference matches.
-The candidate is not installed. Schema17/format13 remain current, including the
-older SONAR-only reader limitation. The original numbered sequence below retains
-full scope; FEATURE-MATRIX.md and REMAINING-WORK.md carry current per-feature limits.
+Current source **c4c7bd20** builds in3m8s: explicit completed-summary read access,
+durable revocation before history replacement, and four actual-player/saved-sound
+automation sources. The private automation queue migrates1→2; sleep schema17 and
+metadata13 stay current. This candidate is not installed. New-client/grant/output
+runtime and screenshot acceptance remain open. An earlier single saved-night
+Report flow passed at4e3abe96; its8fixture captures do not cover this new source or
+full36screen parity. PHONE-STAGE-FEASIBILITY.md records concrete model/input work,
+without imposing clinical certification as a gate for honestly labelled estimates.
+The original numbered sequence below retains the full goal.
 
 1. Repair the root compositions against the boards: Tonight, Alarms, Report and Settings (latest user override).
    Correct proportion, dock alignment, icon vocabulary and system-bar continuity.

@@ -91,8 +91,9 @@ live installation expecting its private rule queue to remain accessible.
 The source transition, durable recognition-rate claim and asynchronous outbox
 are separate transactions. The gate is claimed before enqueue; a crash can lose
 an event rather than replay it. Android may delay/reject jobs or broadcasts.
-There are no recipient requests, hardware outputs, device/emulator runs, unit
-batches or build claims in this source milestone. Runtime/provider verification
+Combined source c4c7bd20 assembleDebug passed in3m8s with the original signer.
+There are no recipient requests, hardware outputs, device/emulator runs, new unit
+batches or runtime acceptance claims in this milestone. Runtime/provider verification
 and consented hardware behavior remain open.
 
 The public vendor [Intent API](https://sleep.urbandroid.org/docs/devs/intent_api.html)

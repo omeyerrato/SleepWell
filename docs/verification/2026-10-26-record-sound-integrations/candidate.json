@@ -1,0 +1,20 @@
+{
+  "source": "c4c7bd2071503c3888b75ad2b86221efea17f3b3",
+  "build": "assembleDebug passed in 3m8s",
+  "verification_scope": "Combined assembleDebug PASS3m8s; signer/hash verified. No new unit/lint/native/UI/client/provider/audio/hardware runtime checks for these integrations. Prior Report and separately installed2cbfe043 evidence remain historical scoped milestones.",
+  "database_schema": 17,
+  "backup_format": 13,
+  "phone_installed": false,
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "private_automation_schema": 2,
+  "distribution": {
+    "tag": "v0.1.0-features-20261026-c4c7bd2",
+    "url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-c4c7bd2",
+    "target_commit": "c4c7bd2071503c3888b75ad2b86221efea17f3b3",
+    "prerelease": true,
+    "draft": false,
+    "uploaded": true,
+    "uploaded_size": 215631924,
+    "uploaded_digest": "sha256:08e3d7737b9eb7739a7a0fb1f2278bbb29eeec47cc980a4bd76abe7969696d22"
+  }
+}

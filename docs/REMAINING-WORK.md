@@ -9,19 +9,18 @@ bounded historical pass does not establish that whole goal is complete.
 
 | Item | Current state |
 | --- | --- |
-| Installed phone build | **714fc4cb**, user-authorized streamed update; installed checksum and signer match. Schema17 rows, preferences and user files preserved; only the AndroidX package-update marker timestamp changed. |
-| Phone availability | Connected for the authorized update. Before/after database is **schema17**. No app launch, suspension change or runtime/output test was performed; current foreground usability is not claimed. |
-| Published candidate | **2cbfe043**, production debug build **PASS, 48s**, original signer and uploaded APK/sidecar digests verified. **Not installed.** Schema17 / metadata13. |
-| New feature evidence | One silent saved-night Report flow passed with edit/reopen persistence and8actual fixture captures at ancestor4e3abe96; only later production delta is imported-duration copy. Provider-stage/audio/physical/provider/overnight acceptance remains open. |
-| Current work policy | Features first; no new unit-test batches. Essential builds, data preservation and a bounded changed-flow check remain applicable. Dedicated reviewer and broad design/bug/security campaigns remain deferred. A single silent emulator Report flow passed, without reinstating a full-app campaign. |
+| Installed phone build | **2cbfe043**, authorized streamed update; installed checksum/original signer match. All original schema17 rows, preferences and original private files preserved. |
+| Phone availability | Connected for that authorized update only. No app launch, suspension change or output/capture/provider runtime action. |
+| New candidate | **c4c7bd20**, production assembleDebug **PASS3m8s**, original signer/hash verified. Not installed. Sleep schema17/metadata13; separate private automation database1→2. |
+| New feature evidence | Explicit completed-summary provider and four actual-player/saved-sound automation sources have build/source evidence only. New-client/permission/output acceptance remains open. |
+| Current work policy | Features first; no new unit-test batches or broad campaigns. Essential builds, preservation and bounded changed-flow checks remain applicable. Dedicated reviewer stays stopped. |
 
-The installed build is714fc4cb. Newer candidate2cbfe043 builds in48s and is
-uninstalled. A single silent saved-night Report flow passed at ancestor4e3abe96;
-only later production delta: provider-duration explanation. Eight actual Android
-fixture captures were inspected; editor header/extra controls and full36-screen
-acceptance remain open. See [Report evidence](verification/2026-10-26-report-flow/README.md)
-and [phone update evidence](verification/2026-10-26-phone-714fc4cb/README.md).
-This note authorizes no further personal-phone or output actions.
+[Phone update evidence](verification/2026-10-26-phone-2cbfe043/README.md) is separate
+from the earlier [single Report flow](verification/2026-10-26-report-flow/README.md).
+That Report flow passed with8fixture captures and persisted edits, but did not
+cover provider-stage rendering, real audio, these new integrations or all36screens.
+The editor captures remain scrolled rather than full reference matches.
+No further personal-phone actions are authorized by this status note.
 
 ## Concrete remaining implementation and interpretation limits
 
@@ -31,9 +30,15 @@ This note authorizes no further personal-phone or output actions.
   relative microphone RMS, not calibrated dB or instrument recognition. Broad
   **Speak**, exact offline **Spoken phrase** and **Musical note** are distinct paths;
   none establishes generic instrument identification or laughter accuracy.
-- [ ] Establish feasibility before claiming phone sleep-stage/REM, breathing,
-  apnea or disturbance analysis. Motion, awake estimates, timed dream cues and
-  experimental periodic echoes do not supply validated stage or medical evidence.
+- [ ] Implement phone sleep-stage/REM estimates with a suitable redistributable
+  model and exact input contract or original licensed training. Clinical certification
+  is not a prerequisite for honestly labelled experimental estimates. Existing motion,
+  YAMNet classes and timed cues do not provide that algorithm. Breathing/apnea remain
+  separate. See [feasibility and next work](PHONE-STAGE-FEASIBILITY.md).
+- [ ] Complete broader integration parity: original read-only summary access and
+  reviewed incoming requests now exist, but alarm CRUD provider and extended/vendor
+  semantic conversion remain absent. Actual client grants/revocation and four new
+  sound-event lifecycles/recipients require bounded runtime acceptance.
 - [ ] Dedicated Sleep Phaser Bluetooth protocol is absent. The vendor publishes only
   other devices’ USB commands and asks developers to request this Bluetooth interface.
   Actual UUIDs/framing/PIR/light/auth/version terms are required before implementation.
@@ -67,7 +72,7 @@ Runtime acceptance for these paths remains open rather than implementation absen
 
 ## Functional acceptance still required
 
-- [x] Separately authorized installation of 714fc4cb with installed hash and
+- [x] Separately authorized installation of 2cbfe043 with installed hash and
   original rows/preferences/user files preserved. Both snapshots already use
   schema17; this is not a first-open migration test or app runtime acceptance.
 - [ ] Real phone app navigation, current Device Care state and functional acceptance
