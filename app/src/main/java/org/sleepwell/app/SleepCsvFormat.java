@@ -25,6 +25,35 @@ final class SleepCsvFormat {
         Entry(String sourceId,String zone,String note,String raw,long start,long end,Long adjustment,BigDecimal rating,RecordDraft draft,int actigraphy,int noise,int events,boolean dstResolved,boolean manualVendor,String contentKey)throws Exception{this.sourceId=sourceId;this.zone=zone;this.note=note;this.raw=raw;this.start=start;this.end=end;period=end-start;adjustmentMinutes=adjustment;netDuration=adjustment==null?null:Math.addExact(period,Math.multiplyExact(adjustment,60000));this.rating=rating;this.draft=draft;this.actigraphy=actigraphy;this.noise=noise;this.events=events;this.dstResolved=dstResolved;this.manualVendor=manualVendor;sha256=hash(raw.getBytes(StandardCharsets.UTF_8));this.contentKey=contentKey;}
         boolean fractionalRating(){return rating.stripTrailingZeros().scale()>0;}
     }
+    /** Index is the exact 1-based CSV column; clock is a literal label, never an inferred instant. */
+    static final class Sample {
+        final int column;final String clock,raw,missing;final BigDecimal value;
+        Sample(int column,String clock,String raw){this.column=column;this.clock=clock;this.raw=raw;BigDecimal numeric=null;if(!raw.isEmpty()&&!EVENT.matcher(raw).matches()){try{BigDecimal parsed=decimal(raw,"source signal");if(parsed.signum()>=0)numeric=parsed;}catch(IllegalArgumentException ignored){}}value=numeric;this.missing=numeric!=null?"":raw.isEmpty()?"Missing source field":EVENT.matcher(raw).matches()?"Event field, not a sample":"Negative / unavailable source value";}
+        boolean available(){return value!=null;}
+    }
+    static final class Signals {
+        final List<Sample> samples;final boolean clockColumns;final String interpretation;final int available,missing;final BigDecimal maximum;
+        Signals(List<Sample> samples,boolean clocks,String interpretation){this.samples=List.copyOf(samples);clockColumns=clocks;this.interpretation=interpretation;int known=0;BigDecimal max=BigDecimal.ZERO;for(Sample sample:samples)if(sample.available()){known++;max=max.max(sample.value);}available=known;missing=samples.size()-known;maximum=max;}
+    }
+    static final class SourceSignals {
+        final Signals actigraphy,noise;final List<String> events;
+        SourceSignals(Signals actigraphy,Signals noise,List<String> events){this.actigraphy=actigraphy;this.noise=noise;this.events=List.copyOf(events);}
+    }
+    /** Called on the source-view worker only: normal imports/backups do not allocate graph samples. */
+    static SourceSignals signals(Entry entry,BooleanSupplier active)throws Exception {
+        List<Row> original=new ArrayList<>();for(Row row:rows(entry.raw,active))if(!row.blank())original.add(row);if(original.size()<2||original.size()>3)throw new IllegalArgumentException("The source record rows are unavailable.");List<String> header=original.get(0).fields,values=original.get(1).fields;checkHeader(header);List<String> events=new ArrayList<>();for(int n=FIXED.size();n<values.size();n++)if(EVENT.matcher(values.get(n)).matches())events.add(values.get(n));return new SourceSignals(signal(header,values,false),signal(header,original.size()==3?original.get(2).fields:List.of(),true),events);
+    }
+    private static Signals signal(List<String> header,List<String> values,boolean noise){
+        List<Integer> clocks=new ArrayList<>();for(int n=FIXED.size();n<header.size();n++)if(CLOCK.matcher(header.get(n)).matches())clocks.add(n);
+        if(values.isEmpty())return new Signals(List.of(),false,noise?"No optional noise row was saved.":"No actigraphy row was saved.");
+        boolean aligned=!clocks.isEmpty();int lastClock=clocks.isEmpty()?-1:clocks.get(clocks.size()-1);
+        if(noise){aligned&=values.size()==lastClock+1||values.size()==header.size();for(int n=0;n<Math.min(FIXED.size(),values.size());n++)if(!values.get(n).isEmpty())aligned=false;for(int n=lastClock+1;n<values.size();n++)if(n>=0&&!values.get(n).isEmpty())aligned=false;}
+        else aligned&=values.size()==header.size();
+        for(int n=FIXED.size();n<Math.min(values.size(),header.size());n++){String raw=values.get(n);boolean event=EVENT.matcher(raw).matches();if(CLOCK.matcher(header.get(n)).matches()){if(event)aligned=false;}else if(!raw.isEmpty()&&(!event||noise))aligned=false;}
+        List<Sample> samples=new ArrayList<>();if(aligned){for(int column:clocks)samples.add(new Sample(column+1,header.get(column),column<values.size()?values.get(column):""));return new Signals(samples,true,"Source-column order with exact CSV clock labels. Spacing is not elapsed time; no dates or DST offsets are assigned to samples.");}
+        int first=noise?0:FIXED.size();if(noise)while(first<values.size()&&values.get(first).isEmpty())first++;int last=-1;for(int n=first;n<values.size();n++)if(!values.get(n).isEmpty()&&!EVENT.matcher(values.get(n)).matches())last=n;
+        for(int n=first;n<=last;n++)samples.add(new Sample(n+1,"",values.get(n)));return new Signals(samples,false,noise?"Noise row columns do not prove clock alignment. Original value order and CSV column numbers only; leading metadata placeholders are not treated as measurements.":"Header/value columns do not prove clock alignment. Original source value order and CSV column numbers only.");
+    }
     static final class Document {final List<Entry> entries;final int repeated;final String sha256;Document(List<Entry> entries,int repeated,String hash){this.entries=List.copyOf(entries);this.repeated=repeated;sha256=hash;}}
     private static final class Row {final List<String> fields;final int from,to;Row(List<String> fields,int from,int to){this.fields=List.copyOf(fields);this.from=from;this.to=to;}boolean blank(){return fields.size()==1&&fields.get(0).isBlank();}}
     static String hash(byte[] bytes)throws Exception{return NightAudioArchive.hash(MessageDigest.getInstance("SHA-256").digest(bytes));}
