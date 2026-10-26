@@ -1,0 +1,8 @@
+# Earlier attempts
+
+- CI40341331405 at62a8a128: one focused flow passed,10actual Android captures. Visual review then rejected the Buttons & orientation row because its trailing description squeezed the title into a thin column. Sourcef0c1a274 moves descriptive menu text beneath labels and replaces fallback icons for Connected apps and defaults.
+- CI40343758218 atf0c1a274: failed at SettingsOrganizationFlowTest line83 after the first Back dispatch returned false. The failure screenshot shows the expected parent Appearance & feedback screen, so the screen had closed. The test-onlyb9d5e40c correction dispatches Back exactly once and requires actual destruction of the owned Activity, rather than treating UIAutomator's injection acknowledgement as the outcome. No repeated Back, product callback invocation, route bypass, geometry reduction or persistence assertion removal was introduced.
+
+These attempts are historical and do not certify the final source. See the current README for the final result.
+
+- CI40355224974 atb9d5e40c: all route, draft, persistence and screenshot steps completed, but exact final preference cleanup failed: a delayed Android BOOT_COMPLETED wrote absent inactive keys (ringing=false, tracking=false, trackingPaused=false, session=0). Source957f3380 adopts the existing SoundSettingsFlowTest CI-only setup: after emulator/no-active-output guards, initialize only absent inactive defaults before taking the exact baseline. Existing values are never replaced, and every baseline key/value is still compared exactly in both flow and fixture cleanup. The failed run is not counted as a pass.

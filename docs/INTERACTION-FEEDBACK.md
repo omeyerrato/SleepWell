@@ -64,7 +64,8 @@ recommends semantic View feedback, which needs no VIBRATE permission. The
 define the selected native effects. Supplied SleepWell references retain
 precedence over generic UI skill palette or layout suggestions.
 
-This is a source milestone. No phone/emulator, haptic/alarm/audio output, unit
-batch or build ran here. Actual touch/drag/accessibility behavior and subjective
-strength require a later consented device check; source hooks do not prove that
-all custom controls across the app already participate.
+The shared hooks compile in sourcef0c1a274. One focused silent native flow
+verifies the opt-out persists across recreation/reopen, with actual captured
+pressed/selected/off states. Review suppresses haptic output deliberately.
+Actual touch/drag/accessibility behavior, device strength and every custom
+control remain unverified. [Scoped evidence](verification/2026-10-26-settings-organization/README.md).

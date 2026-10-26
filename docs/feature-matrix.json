@@ -4876,9 +4876,12 @@
         "AlarmEditorActivity.java"
       ],
       "tests": [
-        "SettingsOrganizationFlowTest.java"
+        {
+          "name": "SettingsOrganizationFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SettingsOrganizationFlowTest.java"
+        }
       ],
-      "validation": "Source62a8a128: app and Android UI-check APKs assemble PASS1m13s. CI40341331405 organization flow is pending; no unit/lint campaign, physical haptic/output/client/overnight proof or36screen acceptance.",
+      "validation": "Sourcef0c1a274 app/UI-check APKs assemble PASS18s. SettingsOrganizationFlowTest: one focused silent API36 flow PASS at 957f3380 (identical production source), ten actual captures inspected; search/group/Back/preference recreation and alarm draft/save/reopen exercised. No new unit/lint campaign or physical output/overnight/all36screen acceptance.",
       "status": "partial",
       "notes": "Subtle native View feedback acknowledges actual foreground inputs, with default-on persisted app opt-out and Android touch settings retained. Changed tabs/chips/segments/choices/weekdays, shared buttons/details and genuine Toggle gestures are wired; native pressed/selected feedback remains. No direct vibrator, claimed async-save success or effect from ordinary render/setChecked. Quiet alarm/tracking/capture/review and touch exploration suppress effects. Actual device feel and all custom-control consistency are not accepted yet. See INTERACTION-FEEDBACK.md and UI-ORGANIZATION.md."
     },
@@ -4896,11 +4899,14 @@
         "AlarmEditorActivity.java"
       ],
       "tests": [
-        "SettingsOrganizationFlowTest.java"
+        {
+          "name": "SettingsOrganizationFlowTest",
+          "path": "app/src/androidTest/java/org/sleepwell/app/SettingsOrganizationFlowTest.java"
+        }
       ],
-      "validation": "Source62a8a128: app and Android UI-check APKs assemble PASS1m13s. CI40341331405 organization flow is pending; no unit/lint campaign, physical haptic/output/client/overnight proof or36screen acceptance.",
+      "validation": "Sourcef0c1a274 app/UI-check APKs assemble PASS18s. SettingsOrganizationFlowTest: one focused silent API36 flow PASS at 957f3380 (identical production source), ten actual captures inspected; search/group/Back/preference recreation and alarm draft/save/reopen exercised. No new unit/lint campaign or physical output/overnight/all36screen acceptance.",
       "status": "partial",
-      "notes": "All17old root destinations remain in8named categories. Settings-only search browses8categories and74real catalog destinations with common terms/location breadcrumbs, without reading records; Search everything preserves global saved search. Main back history/group/scroll and search query/scope/category are retained. Alarm specialist schedule/input/backup controls move into actual draft subpages; final Save guards remain and Clear date is an action button. Actual screenshots, tap/back/draft/save/reopen acceptance is pending; no claim that every app menu or36reference screens is finished. See UI-ORGANIZATION.md and SETTINGS-FINDABILITY.md."
+      "notes": "All17old root destinations remain in8named categories. Settings-only search browses8categories and74real catalog destinations with common terms/location breadcrumbs, without reading records; Search everything preserves global saved search. Main back history/group/scroll and search query/scope/category are retained. Alarm specialist schedule/input/backup controls move into actual draft subpages; final Save guards remain and Clear date is an action button. One focused route/draft/save/reopen flow and ten actual capture comparisons pass; no claim that every app menu or36reference screens is finished. See UI-ORGANIZATION.md and SETTINGS-FINDABILITY.md."
     }
   ]
 }

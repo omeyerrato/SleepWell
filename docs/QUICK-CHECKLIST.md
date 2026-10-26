@@ -5,8 +5,8 @@ Full supporting evidence stays in FEATURE-CHECKLIST.md and FEATURE-MATRIX.md.
 
 ## Current priorities requested by the user
 
-- [ ] Subtle consistent haptics and visible action feedback throughout shared controls.
-- [ ] Organize options and menus without removing features: clear groups, search and Back.
+- [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.
+- [x] First Settings/alarm-menu organization pass: eight groups, search and parent-aware Back; every feature retained.
 
 ## Implemented
 

@@ -1,0 +1,52 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SettingsOrganizationFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.SettingsOrganizationFlowTest:
+INSTRUMENTATION_STATUS: test=groupedSettingsSearchAndAlarmDraftPersistWithoutOutputs
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SettingsOrganizationFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: All shared preferences restored expected:<{}> but was:<{ringing=false, trackingPaused=false, tracking=false, session=0}>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.sleepwell.app.SettingsOrganizationFlowTest.groupedSettingsSearchAndAlarmDraftPersistWithoutOutputs(SettingsOrganizationFlowTest.java:94)
+
+INSTRUMENTATION_STATUS: stream=
+Error in groupedSettingsSearchAndAlarmDraftPersistWithoutOutputs(org.sleepwell.app.SettingsOrganizationFlowTest):
+java.lang.AssertionError: All shared preferences restored expected:<{}> but was:<{ringing=false, trackingPaused=false, tracking=false, session=0}>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.sleepwell.app.SettingsOrganizationFlowTest.groupedSettingsSearchAndAlarmDraftPersistWithoutOutputs(SettingsOrganizationFlowTest.java:94)
+
+INSTRUMENTATION_STATUS: test=groupedSettingsSearchAndAlarmDraftPersistWithoutOutputs
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 27.697
+There was 1 failure:
+1) groupedSettingsSearchAndAlarmDraftPersistWithoutOutputs(org.sleepwell.app.SettingsOrganizationFlowTest)
+java.lang.AssertionError: All shared preferences restored expected:<{}> but was:<{ringing=false, trackingPaused=false, tracking=false, session=0}>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.sleepwell.app.SettingsOrganizationFlowTest.groupedSettingsSearchAndAlarmDraftPersistWithoutOutputs(SettingsOrganizationFlowTest.java:94)
+	Suppressed: java.lang.AssertionError: expected:<{}> but was:<{ringing=false, trackingPaused=false, tracking=false, session=0}>
+		at org.junit.Assert.fail(Assert.java:89)
+		at org.junit.Assert.failNotEquals(Assert.java:835)
+		at org.junit.Assert.assertEquals(Assert.java:120)
+		at org.junit.Assert.assertEquals(Assert.java:146)
+		at org.sleepwell.app.AlarmSkipFixture.close(AlarmSkipFixture.java:13)
+		at org.sleepwell.app.SettingsOrganizationFlowTest.groupedSettingsSearchAndAlarmDraftPersistWithoutOutputs(SettingsOrganizationFlowTest.java:76)
+		... 32 more
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

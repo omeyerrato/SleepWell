@@ -7,13 +7,15 @@ bounded historical pass does not establish that whole goal is complete.
 
 ## Current user priorities
 
-- [ ] Consistent subtle haptics and visible action feedback across shared controls.
-- [ ] Organize settings/options without removing features, with useful search and clear Back.
+- [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.
+- [x] First Settings/alarm-menu organization pass: eight groups, search and parent-aware Back; every feature retained.
 
-Source62a8a128 builds app/UI-check APKs in1m13s. One silent organization flow
-CI40341331405 is pending; neither priority is accepted complete yet. All17former
-root destinations remain in8groups. The new source also includes guarded ordinary
-alarm API/snooze ownership; actual client/delivery behavior remains unverified.
+Sourcef0c1a274 builds app/UI-check APKs in18s. The bounded organization flow
+CI40356841938 passes at test-only successor 957f3380, with ten inspected actual
+captures. Physical haptics and every remaining menu are not accepted by this pass.
+All17 former root destinations remain in eight groups. Guarded ordinary alarm
+API/snooze ownership source is included; actual client/delivery behavior remains
+unverified. [Scoped evidence](verification/2026-10-26-settings-organization/README.md).
 [Organization map](UI-ORGANIZATION.md) · [compact checklist](QUICK-CHECKLIST.md).
 
 ## Current delivery state

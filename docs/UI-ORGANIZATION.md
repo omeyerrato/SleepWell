@@ -5,9 +5,9 @@ light/Inter visual language. This is an implementation increment, not36screen ac
 
 ## Priority tasks
 
-- [ ] Verify subtle action feedback on navigation, selections, buttons and toggles.
-- [ ] Verify clear grouped navigation, useful settings search and predictable Back.
-- [ ] Capture actual Android screens and exercise draft/save/reopen persistence.
+- [x] Add shared input feedback and verify the saved opt-out; physical feel remains unchecked.
+- [x] Exercise grouped navigation, settings/global search and actual parent returns.
+- [x] Inspect ten actual Android captures and exercise draft/save/reopen persistence.
 
 ## Settings structure
 
@@ -49,3 +49,5 @@ coverage is not proof of recreation/persistence or reference fidelity.
 Shared feedback uses native setting-respecting haptics for tabs, buttons, menu rows, genuine switches, chips, segments, weekday selection and choice dialogs; no raw vibration. It
 acknowledges an input rather than claiming asynchronous success. Sleep/alarm/capture,
 quiet review and touch-exploration contexts are suppressed. SeeINTERACTION-FEEDBACK.md.
+
+Current evidence: [one focused organization flow](verification/2026-10-26-settings-organization/README.md), CI40356841938. Remaining all-app/custom-control/physical acceptance is separate.

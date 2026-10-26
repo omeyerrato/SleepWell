@@ -7,12 +7,13 @@ not current phone or overnight acceptance. The authorized **2cbfe043** phone upd
 is installed: matching APK/signature, schema17 original rows/preferences/user files
 preserved, no app launch or outputs. [Phone evidence](verification/2026-10-26-phone-2cbfe043/README.md).
 
-Newest source **62a8a128** builds app and UI-check APKs in1m13s. It includes grouped
-settings/alarm menus, searchable destinations, touch feedback and the guarded alarm
-API/snooze delivery source. It is not installed. A single quiet organization flow
-CI40341331405 is pending; no runtime or screenshot pass is claimed yet. Current
-published candidate remainsc4c7bd20. Sleep schema17/metadata13 and private automation
-queue2 are unchanged. Earlier Report evidence remains separately scoped.
+Production source **f0c1a274** builds app/UI-check APKs in18s with the original
+signer. One focused silent organization flow at957f3380 (identical production
+source) passes with ten actual captures and persisted preference/alarm edits.
+No new unit/lint campaign or physical outputs ran. The new candidate is not
+installed; phone source remains2cbfe043. See [scoped evidence](verification/2026-10-26-settings-organization/README.md).
+Sleep schema17/backup13 and the private automation queue2 remain unchanged.
+Earlier Report evidence remains separately scoped.
 
 Features remain first; no new unit-test batches. A bounded saved-night Report flow passed on
 an isolated silent CI emulator. Broad design/bug/security campaigns
@@ -21,10 +22,10 @@ required; a successful build or one flow does not establish full acceptance.
 
 ## New priorities
 
-- [ ] Consistent subtle action feedback through haptics and visible selected/pressed states.
-- [ ] Organize settings/menus without removing features; grouped destinations, settings search and clear Back behavior.
+- [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.
+- [x] First Settings/alarm-menu organization pass: eight groups, search and parent-aware Back; every feature retained.
 
-Source work is in progress; acceptance evidence is required before checking these off.
+This bounded increment passed one silent route/persistence flow and ten captured-screen comparisons. It does not establish whole-app or physical haptic acceptance.
 See [organization map](UI-ORGANIZATION.md).
 
 ## Implemented feature paths
