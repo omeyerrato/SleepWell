@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 
 /** Deliberately contains no alarm names, recording IDs, sounds, notes or locations. */
 final class AutomationEvent {
-    enum Kind { TRACKING_STARTED, TRACKING_STOPPED, ALARM_DISMISSED }
+    enum Kind { TRACKING_STARTED, TRACKING_STOPPED, ALARM_DISMISSED, TRACKING_PAUSED, TRACKING_RESUMED, ALARM_STARTED, ALARM_SNOOZED, WAKE_CHECK_CONFIRMED, WAKE_CHECK_MISSED, WIND_DOWN_REMINDER_POSTED }
     final String id; final Kind kind; final long time; final boolean test;
     AutomationEvent(String id,Kind kind,long time,boolean test){
         if(id==null||!id.matches("[a-f0-9]{64}")||kind==null||time<=0)throw new IllegalArgumentException("Invalid automation event");

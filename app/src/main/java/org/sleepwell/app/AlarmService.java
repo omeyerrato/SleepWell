@@ -28,7 +28,7 @@ public class AlarmService extends Service {
         PendingIntent launch=PendingIntent.getActivity(this,1,screen,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
         Notification notification=new androidx.core.app.NotificationCompat.Builder(this,Notifications.ALARM).setSmallIcon(R.drawable.ic_moon).setContentTitle(alarm.label)
             .setContentText("Complete your "+alarm.challenge.toLowerCase(java.util.Locale.getDefault())+" challenge").setSilent(!alarm.soundModeInvalid&&alarm.soundMode.silent()).setCategory(androidx.core.app.NotificationCompat.CATEGORY_ALARM).setVisibility(androidx.core.app.NotificationCompat.VISIBILITY_PUBLIC).setOngoing(true).setContentIntent(launch).setFullScreenIntent(launch,true).build();
-        startForeground(101,notification,ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);active=true;
+        startForeground(101,notification,ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);active=true;if(alarm.id>0&&alive(occurrence))Automations.confirmed(this,AutomationEvent.Kind.ALARM_STARTED,occurrence);
         TrackingService.stopTravel(null,"An alarm took priority.");
         try{wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:alarm");wake.acquire(2*60*60*1000L);}catch(RuntimeException error){Prefs.put(this,"lastError","Android did not allow the alarm wake lock.");}
         final String ownRun=occurrence;currentService=this;startPlayback();
@@ -53,7 +53,7 @@ public class AlarmService extends Service {
         stop(context,Prefs.text(context,"alarmRun",""));
     }
     static boolean current(Context context,String expected){return Prefs.flag(context,"ringing")&&expected.equals(Prefs.text(context,"alarmRun",""));}
-    static boolean stop(Context context,String expected){synchronized(Scheduler.class){if(!current(context,expected))return false;try{Alarm alarm=Alarm.read(new JSONObject(Prefs.text(context,"active_alarm","{}")));Scheduler.cancelBackup(context,alarm.id,expected);}catch(JSONException ignored){}Prefs.of(context).edit().putBoolean("ringing",false).putBoolean("forceBackup",false).apply();context.stopService(new Intent(context,AlarmService.class));return true;}}
+    static boolean stop(Context context,String expected){synchronized(Scheduler.class){if(!current(context,expected))return false;try{Alarm alarm=Alarm.read(new JSONObject(Prefs.text(context,"active_alarm","{}")));Scheduler.cancelBackup(context,alarm.id,expected);}catch(JSONException ignored){}Prefs.of(context).edit().putBoolean("ringing",false).putBoolean("forceBackup",false).apply();context.stopService(new Intent(context,AlarmService.class));String snooze=SnoozeDeadline.acceptedTransition(context,expected);if(!snooze.isEmpty())Automations.confirmed(context,AutomationEvent.Kind.ALARM_SNOOZED,snooze);return true;}}
     private void releaseOutputs(){
         handler.removeCallbacksAndMessages(null);listening=null;if(lifetime!=null)lifetime.close();lifetime=null;backupPhase=false;
         try{if(playback!=null)playback.stop();}catch(RuntimeException ignored){}

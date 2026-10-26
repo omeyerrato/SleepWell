@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.concurrent.*;
 
 public class TrackingService extends Service implements SensorEventListener {
-    private final AutomationTracking automationEvents=new AutomationTracking((kind,id)->Automations.emit(this,kind,id));
+    private final AutomationTracking automationEvents=new AutomationTracking((kind,id)->Automations.confirmed(this,kind,id));
     static final String PAUSE="PAUSE",RESUME="RESUME",STOP="STOP",ARM="ARM",SONAR="SONAR_MANUAL",DELAY="MANUAL_DELAY",DELAY_NOW="MANUAL_DELAY_NOW";
     private boolean flipChosen,flipLight;private TrackingFlipSession flip;private String flipIssue="";
     private TrackingDelay delayPlan;private boolean delayClaiming;private TrackingDelayRuntime.Job delayJob;
@@ -346,6 +346,7 @@ public class TrackingService extends Service implements SensorEventListener {
     private void closeRecorder(NoiseRecorder recorder,Runnable complete){
         if(recorder==null){complete.run();return;}recorder.requestStop();closer.execute(()->{recorder.close();handler.post(complete);});
     }
+    private void automationTransition(boolean paused){if(current!=this||!running||session<=0)return;try(Store evidence=storeFactory.open(this)){java.util.List<org.json.JSONObject> rows=evidence.rows("SELECT id,start,end FROM tracking_pauses WHERE session=? ORDER BY id DESC LIMIT 1",""+session);if(rows.isEmpty())return;org.json.JSONObject row=rows.get(0);if(paused&&row.isNull("end"))automationEvents.paused(row.optLong("id"),row.optLong("start"));else if(!paused&&!row.isNull("end"))automationEvents.resumed(row.optLong("id"),row.optLong("end"));}catch(RuntimeException unavailable){Prefs.put(this,"automationEventError","A committed tracking transition could not be queued. Recording is unaffected.");}}
     private void pause(){
         ExternalMediaFade.end(session,dndRun,"Tracking paused; media fade cancelled.");
         StillnessSoundFade.pause(session,dndRun);
@@ -356,13 +357,13 @@ public class TrackingService extends Service implements SensorEventListener {
         dndStop();
         if(sonarMode&&sonarNight!=null){if(travelCues!=null)travelCues.stop("Tracking paused. Arm remaining cues explicitly after resuming.");sonarNight.pause();return;}
         if(phase!=Phase.ACTIVE)return;if(awake!=null)awake.pause();phase=Phase.PAUSING;if(travelCues!=null)travelCues.stop("Tracking paused. Arm remaining cues explicitly after resuming.");if(automaticCapture!=null)automaticCapture.pause();batchCutNanos=batchCut();long pausedAt=batchMode?clock.timestamp(start,batchCutNanos/1000000L):timestamp();clock.pause(batchMode?batchCutNanos/1000000L:SystemClock.elapsedRealtime());handler.removeCallbacks(minuteTick);handler.removeCallbacks(liveTick);stopSensors();if(!automaticRun)SleepSoundService.trackingPause(session);NoiseRecorder recorder=audio;audio=null;
-        closeAudio(recorder,()->{try{flush(pausedAt,recorder,false);store.pause(session,pausedAt);resetWindow();phase=Phase.PAUSED;Prefs.put(this,"trackingPaused",true);if(!destroyed)foreground(true);if(flip!=null)flip.paused();if(stopRequested)stop(interrupted);else if(resumeRequested)resume();}catch(Exception e){phase=Phase.PAUSED;Prefs.put(this,"trackingError","Could not save the pause: "+e.getMessage());stop(true);}});
+        closeAudio(recorder,()->{try{flush(pausedAt,recorder,false);store.pause(session,pausedAt);resetWindow();phase=Phase.PAUSED;automationTransition(true);Prefs.put(this,"trackingPaused",true);if(!destroyed)foreground(true);if(flip!=null)flip.paused();if(stopRequested)stop(interrupted);else if(resumeRequested)resume();}catch(Exception e){phase=Phase.PAUSED;Prefs.put(this,"trackingError","Could not save the pause: "+e.getMessage());stop(true);}});
     }
     private void resume(){
         if(sonarMode&&sonarNight!=null){sonarNight.resume();return;}
         if(phase==Phase.PAUSING){resumeRequested=true;return;}if(phase!=Phase.PAUSED)return;resumeRequested=false;
         if(clock.lifetime(SystemClock.elapsedRealtime())>=12*60*60*1000L){stop(false);return;}
-        try{long now=timestamp();checkClock(now);store.resume(session,now);windowStart=now;clock.resume(SystemClock.elapsedRealtime());phase=Phase.ACTIVE;if(pir!=null)pir.resume();if(awake!=null)awake.resume();dndActive();Prefs.put(this,"trackingPaused",false);if(automaticCapture!=null)automaticCapture.recordingBegan();if(!batchMode)StillnessSoundFade.resume(session,dndRun);collect();handler.postDelayed(minuteTick,60000);}catch(Exception e){Prefs.put(this,"trackingError","Tracking could not resume: "+e.getMessage());stop(true);}
+        try{long now=timestamp();checkClock(now);store.resume(session,now);windowStart=now;clock.resume(SystemClock.elapsedRealtime());phase=Phase.ACTIVE;if(pir!=null)pir.resume();if(awake!=null)awake.resume();dndActive();Prefs.put(this,"trackingPaused",false);if(automaticCapture!=null)automaticCapture.recordingBegan();if(!batchMode)StillnessSoundFade.resume(session,dndRun);collect();handler.postDelayed(minuteTick,60000);automationTransition(false);}catch(Exception e){Prefs.put(this,"trackingError","Tracking could not resume: "+e.getMessage());stop(true);}
     }
     private void closeGoogleSleep(){GoogleSleepSignal old=googleSleep;googleSleep=null;if(old!=null)old.close();}
     private void stop(boolean wasInterrupted){

@@ -13,8 +13,9 @@ final class SonarNightStore implements SonarNight.Sink {
  public void periodicityWindow(long id,long from,long to,Double rate,double correlation,String quality){checkClock();EchoPeriods.append(store,id,from,to,rate,correlation,quality);}
  public void periodicityEnd(long id,boolean interrupted){EchoPeriods.end(store,id,interrupted);}
  public void checkpoint(long id,long from,long to,Double movement,String quality,int samples,long active){checkClock();store.sonarCheckpoint(id,from,to,movement,quality,samples,active);}
- public void pause(long id,long at){if(awake!=null)awake.pause();checkClock();store.pause(id,at);}
- public void resume(long id,long at){if(awake!=null)awake.resume();checkClock();store.resume(id,at);}
+ public void pause(long id,long at){if(awake!=null)awake.pause();checkClock();store.pause(id,at);automationTransition(id,true);}
+ public void resume(long id,long at){if(awake!=null)awake.resume();checkClock();store.resume(id,at);automationTransition(id,false);}
+ private void automationTransition(long id,boolean paused){if(session==null||session.id!=id)return;try{java.util.List<org.json.JSONObject> rows=store.rows("SELECT id,start,end FROM tracking_pauses WHERE session=? ORDER BY id DESC LIMIT 1",""+id);if(rows.isEmpty())return;org.json.JSONObject row=rows.get(0);if(paused!=row.isNull("end"))return;Automations.confirmed(app,paused?AutomationEvent.Kind.TRACKING_PAUSED:AutomationEvent.Kind.TRACKING_RESUMED,id+":"+session.wall+":pause:"+row.optLong("id"));}catch(RuntimeException unavailable){Prefs.put(app,"automationEventError","A committed contactless transition could not be queued. Recording is unaffected.");}}
  public void end(long id,long at,long active,boolean interrupted){if(awake!=null)awake.finishAndWait(at,interrupted);checkClock();store.end(id,interrupted,active,at);backupEnded(id,at,interrupted);}
  public void soundEvent(long id,long at,long duration,String category,double score){checkClock();store.soundEvent(id,at,duration,category,score,null);}
  public void clip(long id,SonarSoundClips.Clip clip)throws Exception{checkClock();if(session==null||session.id!=id)throw new IllegalStateException("Sound clip owner changed");SonarClipWriter.save(app,store,id,clip,clips);}

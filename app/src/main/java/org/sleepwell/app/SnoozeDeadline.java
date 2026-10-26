@@ -52,6 +52,8 @@ final class SnoozeDeadline {
             return deadline;
         }catch(Exception invalid){return 0;}
     }
+    /** After the owned alarm stops, only a fully validated successful system-schedule receipt is an event. */
+    static String acceptedTransition(Context context,String expected){try{SharedPreferences prefs=Prefs.of(context);if(!nonce(expected)||!expected.equals(prefs.getString("alarmRun",""))||prefs.getBoolean("ringing",false))return "";Alarm source=Alarm.read(new JSONObject(prefs.getString("active_alarm","{}")));Alarm saved;try(Store store=Records.open(context)){saved=store.alarm(source.id);}long deadline=project(context,prefs,saved,System.currentTimeMillis());if(deadline<=0)return "";return expected+":"+prefs.getInt("snoozes_"+source.id,0)+":"+deadline;}catch(Exception unavailable){return "";}}
     /** A saved offer without a valid success receipt is uncertainty, never a projected deadline. */
     static boolean requested(SharedPreferences prefs,Alarm current,long now){
         if(!valid(current))return false;
