@@ -46,6 +46,6 @@ alarm behavior; only finalSave alarm writes the draft. Delete keeps its explicit
 confirmation. Errors and unavailable controls remain represented. Existing source
 coverage is not proof of recreation/persistence or reference fidelity.
 
-Shared feedback uses native setting-respecting haptics, not raw vibration. It
+Shared feedback uses native setting-respecting haptics for tabs, buttons, menu rows, genuine switches, chips, segments, weekday selection and choice dialogs; no raw vibration. It
 acknowledges an input rather than claiming asynchronous success. Sleep/alarm/capture,
 quiet review and touch-exploration contexts are suppressed. SeeINTERACTION-FEEDBACK.md.
