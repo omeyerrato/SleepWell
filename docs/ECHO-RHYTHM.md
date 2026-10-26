@@ -2,7 +2,7 @@
 
 ## Functioning flow
 
-Enable **Breathing rhythm → Analyze periodic echoes**, save, and explicitly start a contactless night. The existing `EchoPeriodicity` analyzer stores one-minute results in `echo_periods`. Open that night's **Recorded signals → Breathing experiment** entry to review the results. This change retains that existing route and storage format; it introduces no microphone, capture, service, manifest, dependency or backup changes.
+Enable **Breathing rhythm → Analyze periodic echoes**, save, and explicitly start a contactless night. The existing `EchoPeriodicity` analyzer stores one-minute results in `echo_periods`. Open that night's **Recorded signals → Breathing rhythm** entry to review the results. This change retains that existing route and storage format; it introduces no microphone, capture, service, manifest, dependency or backup changes.
 
 `EchoPeriodsActivity` now offers:
 

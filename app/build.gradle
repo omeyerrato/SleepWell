@@ -30,6 +30,7 @@ dependencies {
     implementation 'com.google.mlkit:pose-detection:18.0.0-beta5'
     implementation 'com.google.zxing:core:3.5.3'
     implementation 'com.google.ai.edge.litert:litert:2.3.0'
+    implementation 'com.microsoft.onnxruntime:onnxruntime-android:1.23.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test:runner:1.6.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
