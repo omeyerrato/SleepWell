@@ -18,5 +18,7 @@ final class MotionSoundAnalysis {
     synchronized void fail(String reason){if(requested&&issue.isEmpty())issue=SoundAnalysisStatus.ISSUES.contains(reason)?reason:"capture";}
     synchronized void closed(Segment owner,long successful,String failure){update(owner,successful,failure);if(owner!=null&&owner==current)owner.closed=true;}
     synchronized SoundAnalysisStatus state(){return !requested?SoundAnalysisStatus.initial(false):new SoundAnalysisStatus(true,issue.equals("interrupted")?"interrupted":!issue.isEmpty()?"error":frames>0?"active":"pending",frames,issue);}
-    synchronized SoundAnalysisStatus ended(boolean interrupted){SoundAnalysisStatus actual=state();if(actual.terminal())return actual;if(current!=null&&!current.closed)return new SoundAnalysisStatus(true,"error",frames,"cleanup");return interrupted?new SoundAnalysisStatus(true,"interrupted",frames,"interrupted"):new SoundAnalysisStatus(true,frames>0?"complete":"insufficient",frames,"");}
+    /** Live errors are immediate; a terminal durable snapshot waits for the final worker acknowledgment. */
+    synchronized SoundAnalysisStatus checkpoint(){SoundAnalysisStatus actual=state();return actual.terminal()&&current!=null&&!current.closed?null:actual;}
+    synchronized SoundAnalysisStatus ended(boolean interrupted){if(current!=null&&!current.closed)throw new IllegalStateException("Sound capture has not acknowledged its final results");SoundAnalysisStatus actual=state();if(actual.terminal())return actual;return interrupted?new SoundAnalysisStatus(true,"interrupted",frames,"interrupted"):new SoundAnalysisStatus(true,frames>0?"complete":"insufficient",frames,"");}
 }
