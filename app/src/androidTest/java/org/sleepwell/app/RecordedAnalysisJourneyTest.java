@@ -239,13 +239,13 @@ public final class RecordedAnalysisJourneyTest {
             assertTrue(initialize.commit()); Map<String, ?> preferences = new HashMap<>(idle.getAll());
             i.runOnMainSync(() -> Records.factory = context -> new Store(context, database));
             launch(record, updated); String recording = "Recording ending " + RecordUi.preciseClock(c, start + DURATION, java.time.ZoneId.systemDefault());
-            require(recording); click(recording); require("Review this copy, then explicitly start analysis."); require("Analyze this copy");
+            require("Recording analysis"); click("Sources"); require(recording); click(recording); require("Analyze this copy");
             try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) { assertEquals(originalRows, snapshotRows(store)); }
             capture("prepared", "Analyze this copy"); click("Analyze this copy");
             step = "real bundled CPU inference and successful private Save";
             await(180000, () -> { boolean[] done = {false}; i.runOnMainSync(() -> {
                 try { RecordedRecognitionJob job = job(activity); assertNotEquals("Native inference failed: " + job.message, RecordedRecognitionJob.Phase.ERROR, job.phase);
-                    recordProgress(activity.getWindow().getDecorView()); done[0] = find(activity.getWindow().getDecorView(), "Saved on this phone. These are experimental estimates, not confirmed events.") != null;
+                    recordProgress(activity.getWindow().getDecorView()); done[0] = job.phase == RecordedRecognitionJob.Phase.RESULT && job.result != null;
                 } catch (RuntimeException | AssertionError failure) { throw failure; } catch (Exception failure) { throw new AssertionError(failure); }
             }); return done[0]; });
             i.runOnMainSync(() -> assertTrue("Actual in-flight native progress reached the UI", progress.stream().anyMatch(s -> s.matches("Analyzing window [01] of 2…"))));
@@ -262,16 +262,26 @@ public final class RecordedAnalysisJourneyTest {
             boolean pannResponded = false, efficientResponded = false;
             for (int n = 0; n < windows.length(); n++) { JSONObject window = windows.getJSONObject(n); assertEquals(n * 10000L, window.getLong("startMs"));
                 assertEquals(n == 0 ? 10000L : 3670L, window.getLong("durationMs")); assertTrue(Set.of("uncertain", "laughter", "instrument").contains(window.getString("candidate")));
+                assertFalse("Actual model class label has no carriage return", window.getString("instrumentLabel").contains("\r"));
                 finite(window.getJSONObject("laughter")); finite(window.getJSONObject("instrument"));
                 pannResponded |= window.getJSONObject("laughter").getDouble("score") > 0;
                 efficientResponded |= window.getJSONObject("instrument").getDouble("score") > 0; }
             assertTrue("Both real model families returned nonzero finite estimates", pannResponded && efficientResponded);
             // Functional execution is independent of accuracy. No candidate label is required to pass.
-            require("Model: " + MODEL); capture("result", "Experimental window estimates"); finish();
-            launch(record, updated); require(RecordUi.date(saved.created, java.time.ZoneId.systemDefault())); click(RecordUi.date(saved.created, java.time.ZoneId.systemDefault()));
-            require("Experimental window estimates"); require("Model: " + MODEL); capture("reopened", "Experimental window estimates");
+            require("Sound estimates"); capture("result", "Sound estimates"); click("Result details"); require("Model version"); require(MODEL);
+            assertTrue(device.pressBack()); require("Sound estimates"); finish();
+            launch(record, updated); click("Saved results"); require(RecordUi.date(saved.created, java.time.ZoneId.systemDefault())); click(RecordUi.date(saved.created, java.time.ZoneId.systemDefault()));
+            step = "reopen verified saved result";
+            String expectedSavedId = savedId;
+            await(8000, () -> { boolean[] done = {false}; i.runOnMainSync(() -> {
+                try { RecordedRecognitionJob current = job(activity); assertNotEquals("Saved provenance check failed: " + current.message, RecordedRecognitionJob.Phase.ERROR, current.phase);
+                    done[0] = current.phase == RecordedRecognitionJob.Phase.RESULT && current.result != null && expectedSavedId.equals(current.result.id);
+                } catch (RuntimeException | AssertionError failure) { throw failure; } catch (Exception failure) { throw new AssertionError(failure); }
+            }); return done[0]; });
+            require("Sound estimates");
             try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) { RecordedRecognitionStore.Entry reopened = store.entries().get(0);
                 assertEquals(savedId, reopened.id); assertEquals(saved.source.toString(), reopened.source.toString()); assertEquals(saved.result.toString(), reopened.result.toString()); }
+            click("Result details"); require("Model version"); require(MODEL); capture("details", "Model version");
             click("Delete this analysis"); require("Saved analysis deleted. Original audio is unchanged.");
             try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) { assertEquals(originalRows, snapshotRows(store)); assertEquals(originalRevision, store.revision()); }
             assertEquals(wavHash, sha(Files.readAllBytes(audio.toPath())));
