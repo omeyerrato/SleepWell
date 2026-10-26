@@ -94,13 +94,20 @@ public final class OrganizedSettingsJourneyTest {
         assertNotNull(decor.getRootWindowInsets()); int[] origin = new int[2]; decor.getLocationOnScreen(origin);
         return origin[1] + decor.getHeight() - decor.getRootWindowInsets().getInsets(WindowInsets.Type.navigationBars()).bottom;
     }
+    private Rect screenBounds(View view) {
+        int[] origin = new int[2]; view.getLocationOnScreen(origin);
+        return new Rect(origin[0], origin[1], origin[0] + view.getWidth(), origin[1] + view.getHeight());
+    }
     private Rect measured(View root, String value, boolean description) {
         View view = clickable(root, value, description); Rect visible = new Rect(); assertTrue(view.getGlobalVisibleRect(visible));
         assertEquals(value + " complete width", view.getWidth(), visible.width());
         assertEquals(value + " complete height", view.getHeight(), visible.height());
         assertTrue(value + " 48dp width", visible.width() >= Design.dp(c, 48));
         assertTrue(value + " 48dp height", visible.height() >= Design.dp(c, 48));
-        assertTrue(value + " clear of navigation dock", visible.bottom <= dockTop()); return visible;
+        // Global-visible bounds are relative to this window's root, including for floating dialogs.
+        // UiDevice taps and dockTop use screen coordinates, so preserve visibility checks separately.
+        Rect click = screenBounds(view);
+        assertTrue(value + " clear of navigation dock", click.bottom <= dockTop()); return click;
     }
     private void expose(View root, String value, boolean description) throws Exception {
         await(() -> { boolean[] yes = {false}; i.runOnMainSync(() -> {
@@ -110,7 +117,7 @@ public final class OrganizedSettingsJourneyTest {
             if (!view.isEnabled() || !view.isClickable()) return;
             view.requestRectangleOnScreen(new Rect(0, 0, view.getWidth(), view.getHeight()), true);
             Rect shown = new Rect(); yes[0] = view.getGlobalVisibleRect(shown)
-                    && shown.width() == view.getWidth() && shown.height() == view.getHeight() && shown.bottom <= dockTop();
+                    && shown.width() == view.getWidth() && shown.height() == view.getHeight() && screenBounds(view).bottom <= dockTop();
         }); return yes[0]; });
     }
     private void frame(View root) throws Exception {
@@ -143,6 +150,14 @@ public final class OrganizedSettingsJourneyTest {
     private void checked(String description, boolean value) throws Exception {
         ready(); i.runOnMainSync(() -> { View view = find(activity.getWindow().getDecorView(), description, true);
             assertTrue(description + " real switch", view instanceof Switch); assertEquals(description, value, ((Switch) view).isChecked()); });
+    }
+    private void duration(String category, int windows) throws Exception {
+        step = "require " + category + " draft duration " + SoundSensitivity.choice(windows); ready();
+        i.runOnMainSync(() -> {
+            View row = find(activity.getWindow().getDecorView(), "Minimum duration " + category, true);
+            assertNotNull(category + " duration row", row);
+            assertNotNull(category + " actual duration summary", find(row, SoundSensitivity.choice(windows), false));
+        });
     }
     private void selected(String text, boolean value) throws Exception {
         ready(); i.runOnMainSync(() -> assertEquals(text + " actual selected state",
@@ -263,10 +278,15 @@ public final class OrganizedSettingsJourneyTest {
             recreate(); checked("Include Laughter", false); capture("sensitivity-categories", "Include Laughter", true);
             back(); require("Sound sensitivity"); click("Event duration"); desc("Minimum duration Snoring");
             View duration = dialog("Snoring duration"); captureWindow(duration, "sensitivity-duration");
-            choose("Snoring duration", "High · about 1 second"); assertTrue("Draft is not saved", sensitivity.getAll().isEmpty());
-            back(); click("Save sensitivity"); require("Saved for the next night."); finish();
+            choose("Snoring duration", "High · about 1 second"); duration("Snoring", 1);
+            assertTrue("Draft is not saved", sensitivity.getAll().isEmpty());
+            back(); click("Save sensitivity"); require("Saved for the next night.");
+            SoundSensitivitySettings.Read storedSensitivity = SoundSensitivitySettings.read(sensitivity);
+            assertEquals("Saved private profile decodes without fallback", "", storedSensitivity.error);
+            assertFalse("Saved private profile keeps category choice", storedSensitivity.policy.includes("laughter"));
+            assertEquals("Saved private profile keeps selected snoring duration", 1, storedSensitivity.policy.windows("snoring")); finish();
             launch(SoundSensitivityActivity.class); click("Detected categories"); checked("Include Laughter", false); back(); click("Event duration");
-            require("About 1 sec · High"); back(); capture("sensitivity-reopened", "Save sensitivity", false); finish();
+            duration("Snoring", 1); back(); capture("sensitivity-reopened", "Save sensitivity", false); finish();
             assertFalse(SoundSensitivitySettings.read(sensitivity).policy.includes("laughter")); assertEquals(1, SoundSensitivitySettings.read(sensitivity).policy.windows("snoring"));
 
             launch(SoundLibrarySettingsActivity.class); click("Keep recordings"); choose("Keep recordings", "3 days"); recreate(); require("3 days");
