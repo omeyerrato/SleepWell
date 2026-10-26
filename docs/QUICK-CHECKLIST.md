@@ -12,9 +12,10 @@ Latest built source **25ed7a9d** adds grouped sound/tracking/mixer menus and dir
 
 Latest unreleased work: compact Report editor, named tag/awake detail sheets,
 themed editor option/rating pickers, numerical chart inspection and explicit
-unmeasured-gap selection are committed. Their combined app/UI-check build is in
-progress at source28e68f13; the focused Android journeys and screenshot comparison
-have not yet run. These changes do not close the Report/design checklist item.
+unmeasured-gap selection are committed. Their combined app/UI-check build passed
+in1m12s at source28e68f13. Two focused silent Android journeys are running at
+CI40387065340/40387070994; their screenshots have not yet been inspected.
+These changes do not close the Report/design checklist item.
 The sleep-stage research evidence is now recorded publicly; no useful stage model
 was accepted or shipped. Latest published APK25ed7a9d remains separate from this work.
 
