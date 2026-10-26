@@ -21,7 +21,8 @@ physical/overnight acceptance remain open. The phone is still at2cbfe043.
 Unreleased **69dbbca3** moves Repeat rule into Schedule & dates, keeping custom
 or invalid repeat status visible and restoring room for the main Snooze row.
 Production build21s/original signer verified; focused organization CI40407366922
-is running. Its actual captures and persistence result are not accepted yet.
+passes30.472s with ten inspected actual captures and preserved draft/Save/reopen.
+[Exact scope](verification/2026-10-27-alarm-hierarchy/README.md); full board02 remains open.
 
 ## Implemented
 
