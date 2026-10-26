@@ -31,7 +31,9 @@ public final class BackupActivity extends Activity {
         if(drawn.phase==BackupJob.Phase.REVIEW){Design.button(footer,"Review replacement",true,this::confirm);Design.button(footer,"Keep local data",false,()->{job.cancel();render();});}
         else if(drawn.occupied){Design.text(footer,drawn.phase==BackupJob.Phase.RESTORING?"Your data is being replaced. This step cannot be cancelled.":"You can leave this screen. Progress stays here while the app is running.",12,400,Design.MUTED);if(drawn.phase!=BackupJob.Phase.RESTORING)Design.button(footer,"Cancel operation",false,()->{job.cancel();render();});}
         else if(drawn.phase==BackupJob.Phase.CHOOSING){Design.button(footer,"Cancel selection",false,()->{pickerOutstanding=false;job.choiceCancelled();render();});}
-        else {Design.button(footer,"Export backup",true,()->choose(BackupJob.Kind.JSON));Design.button(footer,"Import backup",false,()->choose(BackupJob.Kind.IMPORT));Design.button(footer,"Export records as CSV",false,()->choose(BackupJob.Kind.CSV));}RecordUi.lightBars(this);
+        else {Design.button(footer,"Export backup",true,()->choose(BackupJob.Kind.JSON));Design.button(footer,"Import backup",false,()->choose(BackupJob.Kind.IMPORT));Design.button(footer,"Export records as CSV",false,()->choose(BackupJob.Kind.CSV));
+            PlanActivity.detail(body,"palette","Portable settings","Export or review supported preferences",null,()->startActivity(RecordUi.intent(this,SettingsProfileActivity.class)));
+            PlanActivity.detail(body,"file","Import sleep CSV","Review a Sleep as Android export",null,()->startActivity(RecordUi.intent(this,SleepCsvActivity.class)));}RecordUi.lightBars(this);
     }
     private void choose(BackupJob.Kind kind){if(!job.choose(kind))return;selected=kind;pickerOutstanding=true;render();try{picker.choose(this,kind);}catch(RuntimeException unavailable){pickerOutstanding=false;job.choiceFailed();render();}}
     private void confirm(){BackupJob.State state=job.state();if(state.phase!=BackupJob.Phase.REVIEW||state.review==null||confirmation!=null)return;BackupJob.Review owned=state.review;

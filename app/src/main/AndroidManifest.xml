@@ -68,6 +68,9 @@
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter>
         </activity>
+        <activity android:name=".TonightLayoutActivity" android:exported="false" />
+        <activity android:name=".SettingsProfileActivity" android:exported="false" />
+        <activity android:name=".SleepCsvActivity" android:exported="false" />
         <activity android:name=".SmartLightActivity" android:exported="false" />
         <activity android:name=".AutomationActivity" android:exported="false" />
         <service android:name=".AutomationJobService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />

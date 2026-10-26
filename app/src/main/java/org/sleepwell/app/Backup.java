@@ -6,8 +6,9 @@ import org.json.*;
 import java.util.*;
 
 final class Backup {
+    static final int FORMAT=13;
     static void validate(JSONObject root) throws JSONException {
-        int format=root.getInt("format");if(format<1||format>13)throw new JSONException("Unsupported backup format");
+        int format=root.getInt("format");if(format<1||format>FORMAT)throw new JSONException("Unsupported backup format");
         JSONArray alarms=root.getJSONArray("alarms"),sessions=root.getJSONArray("sessions"),epochs=root.getJSONArray("epochs");
         Set<Long> ids=new HashSet<>(),alarmIds=new HashSet<>();Map<Long,JSONObject> byId=new HashMap<>();
         for(int i=0;i<alarms.length();i++){
@@ -39,6 +40,7 @@ final class Backup {
         if(format>=6)SoundAnalysisProvenance.validateExport(root);
         if(format>=7)HealthSleepCodec.validate(root);
         if(format>=8)AwakeBackup.validate(root);if(format>=9)EchoPeriods.validate(root);if(format>=10)PairMotionBackup.validate(root,byId);if(format>=11)PirStore.validate(root);if(format>=12)DreamCueBackup.validate(root,byId);
+        if(root.has("sleep_csv")&&!(root.get("sleep_csv") instanceof JSONObject))throw new JSONException("Invalid imported CSV evidence");SleepCsvEvidence.validate(root.optJSONObject("sleep_csv"),byId);
     }
     static void restore(Context c,Store store,JSONObject root) throws JSONException {
         if(TrackingService.running||Prefs.flag(c,"ringing"))throw new JSONException("End tracking and alarms before restoring.");
@@ -76,6 +78,7 @@ final class Backup {
             if(format>=3){JSONArray edits=root.getJSONArray("edits");for(int i=0;i<edits.length();i++){guard.run();JSONObject edit=edits.getJSONObject(i);ContentValues v=Records.values(edit.getLong("session"),Records.draft(edit),edit.getLong("updated"));v.put("reverted",edit.optInt("reverted",0));db.insertOrThrow("record_edits",null,v);}}
             if(format>=8)AwakeBackup.restore(store,root,guard);if(format>=9)EchoPeriods.restore(store,root,guard);if(format>=10)PairMotionBackup.restore(store,root.getJSONObject("paired_motion"),guard);if(format>=11)PirStore.restore(store,root,guard);if(format>=12)DreamCueBackup.restore(store,root.getJSONObject("dream_cues"),guard);
             if(format>=4)SoundEventBackup.restore(store,root.getJSONArray("sound_events"),guard);SoundEventBackup.restoreClipFavorites(store,root,guard);
+            guard.run();SleepCsvEvidence.replace(store,root.optJSONObject("sleep_csv"));
             guard.run();
             db.setTransactionSuccessful();
         }finally {db.endTransaction();}
