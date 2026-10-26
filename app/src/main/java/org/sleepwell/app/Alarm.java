@@ -21,6 +21,7 @@ public class Alarm {
     AlarmSoundMode soundMode=AlarmSoundMode.SINGLE;boolean soundModeInvalid;private Object invalidSoundMode;
     AlarmTiming timing=AlarmTiming.DEFAULT;boolean timingInvalid;private Object invalidTiming;
     AlarmInputs inputs=AlarmInputs.DEFAULT;boolean inputsInvalid;private Object invalidInputs;
+    AlarmSmartWake smartWake=AlarmSmartWake.DEFAULT;boolean smartWakeInvalid;private Object invalidSmartWake;
     AlarmBedtime bedtime=AlarmBedtime.FOLLOW;boolean bedtimeInvalid;private Object invalidBedtime;
     SunriseSchedule solar;boolean solarInvalid;private Object invalidSolar;
     AlarmSkip skip;boolean skipInvalid;Object invalidSkip;String scheduleError="";
@@ -28,6 +29,7 @@ public class Alarm {
     void setRoutine(ChallengeRoutine value){routine=value;routineInvalid=false;invalidRoutine=null;challenge=value.tasks.get(0).type;difficulty=value.tasks.get(0).rounds;}
     void setRepeat(AlarmRepeat value){repeatRule=value;repeatInvalid=false;invalidRepeat=null;}
     void setNextOverride(NextAlarmOverride value){nextOverride=value;nextOverrideInvalid=false;invalidNextOverride=null;}
+    void setSmartWake(AlarmSmartWake value){if(value==null)throw new IllegalArgumentException("Choose smart wake-up settings.");smartWake=value;smartWakeInvalid=false;invalidSmartWake=null;}
     public Set<Integer> days = new HashSet<>();
     public Alarm(int id) { this.id=id; }
     public String time() { return solarInvalid?"Review sunrise":solar==null?String.format(Locale.getDefault(), "%02d:%02d", hour, minute):"Sunrise"; }
@@ -58,6 +60,7 @@ public class Alarm {
             if(soundModeInvalid)j.put("soundMode",invalidSoundMode);else if(!soundMode.equals(AlarmSoundMode.SINGLE))j.put("soundMode",AlarmSoundModeJson.encode(soundMode));
             if(timingInvalid)j.put("timing",invalidTiming);else if(!timing.equals(AlarmTiming.DEFAULT))j.put("timing",AlarmTimingJson.encode(timing));
             if(inputsInvalid)j.put("inputs",invalidInputs);else if(!inputs.equals(AlarmInputs.DEFAULT))j.put("inputs",AlarmInputsJson.encode(inputs));
+            if(smartWakeInvalid)j.put("smartWake",invalidSmartWake);else if(!smartWake.equals(AlarmSmartWake.DEFAULT))j.put("smartWake",AlarmSmartWakeJson.encode(smartWake));
             if(bedtimeInvalid)j.put("bedtimeReminder",invalidBedtime);else if(!bedtime.mode.equals("follow"))j.put("bedtimeReminder",AlarmBedtime.encode(bedtime));
             if(solar!=null)j.put("solar",SunriseScheduleJson.encode(solar));else if(solarInvalid)j.put("solar",invalidSolar);
             if(skip!=null)j.put("skip",AlarmSkipJson.encode(skip));else if(skipInvalid)j.put("skip",invalidSkip);
@@ -82,6 +85,7 @@ public class Alarm {
         if(j.has("soundMode"))try{a.soundMode=AlarmSoundModeJson.decode(j.get("soundMode"));}catch(JSONException invalid){a.soundMode=AlarmSoundMode.SINGLE;a.soundModeInvalid=true;a.invalidSoundMode=j.opt("soundMode");}
         if(j.has("timing"))try{a.timing=AlarmTimingJson.decode(j.get("timing"));if(a.nap!=null||a.napInvalid||a.backupMinutes<0||a.backupMinutes>15)throw new JSONException("Review this alarm timing");}catch(JSONException invalid){a.timing=AlarmTiming.DEFAULT;a.timingInvalid=true;a.invalidTiming=j.opt("timing");}
         if(j.has("inputs"))try{a.inputs=AlarmInputsJson.decode(j.get("inputs"));}catch(JSONException invalid){a.inputsInvalid=true;a.invalidInputs=j.opt("inputs");}
+        if(j.has("smartWake"))try{a.smartWake=AlarmSmartWakeJson.decode(j.get("smartWake"));if(!a.smartWake.equals(AlarmSmartWake.DEFAULT)&&(a.nap!=null||a.napInvalid))throw new JSONException("Use the nap timer’s separate smart wake-up policy");}catch(JSONException invalid){a.smartWake=AlarmSmartWake.DEFAULT;a.smartWakeInvalid=true;a.invalidSmartWake=j.opt("smartWake");}
         if(j.has("bedtimeReminder"))try{a.bedtime=AlarmBedtime.decode(j.get("bedtimeReminder"));if(a.nap!=null||a.napInvalid)throw new JSONException("Nap timers do not have bedtime overrides");}catch(JSONException invalid){a.bedtimeInvalid=true;a.invalidBedtime=j.opt("bedtimeReminder");}
         if(j.has("date"))try{a.date=AlarmDate.read(j.get("date"));if(!a.days.isEmpty()||a.nap!=null||a.napInvalid)throw new IllegalArgumentException("A dated alarm cannot repeat or be a nap");}catch(JSONException|IllegalArgumentException invalid){a.date=null;a.dateInvalid=true;a.invalidDate=j.opt("date");}
         if(j.has("excludedDates"))try{a.excludedDates=AlarmExcludedDates.read(j.get("excludedDates"));if(a.nap!=null||a.napInvalid)throw new JSONException("A nap cannot use excluded calendar dates");}catch(JSONException invalid){a.excludedDates=Collections.unmodifiableSortedSet(new TreeSet<>());a.excludedDatesInvalid=true;a.invalidExcludedDates=j.opt("excludedDates");}
