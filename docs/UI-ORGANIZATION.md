@@ -43,7 +43,7 @@ permissions. Existing actual feature screens still perform their own explicit ac
 
 These remain the same draft/validation/save paths. Grouping does not reset existing
 alarm behavior; only finalSave alarm writes the draft. Delete keeps its explicit
-confirmation. Errors and unavailable controls remain represented. Existing source
+confirmation. Errors and unavailable controls remain represented. Clear date is an action button rather than a misleading navigation chevron. Existing source
 coverage is not proof of recreation/persistence or reference fidelity.
 
 Shared feedback uses native setting-respecting haptics for tabs, buttons, menu rows, genuine switches, chips, segments, weekday selection and choice dialogs; no raw vibration. It

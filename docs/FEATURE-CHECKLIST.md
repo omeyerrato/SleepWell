@@ -1,5 +1,7 @@
 # SleepWell feature checklist — 26 October 2026
 
+The user-facing condensed version is [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
+
 Not fully done. Checked feature paths have production implementation/build evidence,
 not current phone or overnight acceptance. The authorized **2cbfe043** phone update
 is installed: matching APK/signature, schema17 original rows/preferences/user files

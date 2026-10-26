@@ -12,6 +12,7 @@ on:
           - tone-wake
           - report
           - report-flow
+          - organization
           - sensing-travel
           - sonar-night
           - sound-categories
