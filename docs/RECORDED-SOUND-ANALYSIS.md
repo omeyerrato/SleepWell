@@ -78,7 +78,6 @@ Both raw family estimates and their strongest competitors remain available.
 
 Sources, licences, hashes, export recipe and all failures are retained in
 `third_party/supplementary-sound/`. The two classifier exports and Java frontend
-were checked on unchanged real vectors; no new unit-test batch, phone, emulator,
-microphone, alarm or sound output was used for this implementation.
+were checked on unchanged real vectors; no new unit-test batch, personal-phone, microphone, alarm or sound output was used. A later bounded host-muted Android flow executes the real models as documented below.
 
-Root integration731e9725: production build PASS1m5s; original signer and bundled model hashes verified. New Android UI/output/accuracy acceptance is still open. No new unit/lint/phone campaign.
+Latest source5266e54b builds production in27s with the original signer. Native saved-clip CPU analysis/save/reopen/delete passes13.826s with three inspected captures; both windows remain Uncertain. [Exact scope and original outputs](verification/2026-10-27-recording-analysis/README.md). Imported providers, physical capture/output/overnight behavior and recognition accuracy remain open. No new unit/lint/broad campaign or personal-phone action.

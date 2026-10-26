@@ -1,0 +1,53 @@
+{
+  "fixture": "laughter-morning",
+  "pcmSha256": "ddf4f22ae871bc993329571af9660f1daba0b5a6f89ea2d11f77e3e2d222c305",
+  "wavSha256": "0d123625ed503f36852b6ad50b5dfec19bc839dd49f86825f19e8bb605db9d65",
+  "modelVersion": "recorded-experimental-v1-f9dd5647-7bb42270",
+  "samples": 218720,
+  "analyzedMs": 13670,
+  "omittedMs": 0,
+  "windows": [
+    {
+      "startMs": 0,
+      "durationMs": 10000,
+      "candidate": "uncertain",
+      "instrumentLabel": "Musical instrument",
+      "laughter": {
+        "score": 0.21625056862831116,
+        "competitor": 0.2501484155654907,
+        "qualifies": false
+      },
+      "instrument": {
+        "score": 0.0036126375198364258,
+        "competitor": 0.3519565165042877,
+        "qualifies": false
+      }
+    },
+    {
+      "startMs": 10000,
+      "durationMs": 3670,
+      "candidate": "uncertain",
+      "instrumentLabel": "Drum",
+      "laughter": {
+        "score": 0.13488498330116272,
+        "competitor": 0.21850532293319702,
+        "qualifies": false
+      },
+      "instrument": {
+        "score": 0.012211084365844727,
+        "competitor": 0.2747294306755066,
+        "qualifies": false
+      }
+    }
+  ],
+  "observedUiProgress": [
+    "Analyzing window 2 of 2…",
+    "Loading the bundled offline model…",
+    "Analyzing window 1 of 2…",
+    "Analyzing window 0 of 2…"
+  ],
+  "savedAndReopened": true,
+  "deleted": true,
+  "originalAudioUnchanged": true,
+  "accuracyAcceptanceRequired": false
+}

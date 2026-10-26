@@ -1,0 +1,17 @@
+{
+  "commit": "b4e25e592e97e0860d217f829f2831e7596608fa",
+  "emulator": true,
+  "scope": "recorded-analysis",
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no native playback output allowlisted; library uses fake playback",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": true,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420",
+  "test_classes": [
+    "RecordedAnalysisJourneyTest"
+  ]
+}

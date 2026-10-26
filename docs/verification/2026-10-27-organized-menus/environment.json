@@ -1,0 +1,17 @@
+{
+  "commit": "d4c30f8ffb4f5e6c55c486e97fef52dcc98a2125",
+  "emulator": true,
+  "scope": "organized-settings",
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no native playback output allowlisted; library uses fake playback",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": false,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420",
+  "test_classes": [
+    "OrganizedSettingsJourneyTest"
+  ]
+}
