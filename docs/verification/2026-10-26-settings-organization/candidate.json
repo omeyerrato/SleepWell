@@ -1,0 +1,37 @@
+{
+  "source": "f0c1a274e8ba8cc0d474d480a92b871960435e4f",
+  "build": "assembleDebug passed in 18s (app and UI-check APKs)",
+  "verification_scope": "App/UI-check APKs assemble PASS18s; one focused silent API36 organization flow passed at 957f3380 with identical production source,10 actual screenshots inspected. Navigation/search/preference recreation and alarm draft/save/reopen exercised. No new unit/lint/broad campaign or physical phone/haptic/alarm/audio/capture actions. Not all36screen acceptance.",
+  "database_schema": 17,
+  "backup_format": 13,
+  "phone_installed": false,
+  "artifacts": {
+    "debug": {
+      "source": "f0c1a274e8ba8cc0d474d480a92b871960435e4f",
+      "sha256": "129a877a8d393b42d662fbaf933bc3022b2536ef2346309d7267a786f4983386",
+      "path": "SleepWell-f0c1a27.apk",
+      "size": 215737636
+    }
+  },
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "private_automation_schema": 2,
+  "ui_flow": {
+    "run": 40356841938,
+    "source": "957f3380",
+    "production_source": "f0c1a274e8ba8cc0d474d480a92b871960435e4f",
+    "scope": "organization",
+    "passed": true,
+    "screenshots": 10,
+    "physical_haptics_verified": false
+  },
+  "distribution": {
+    "tag": "v0.1.0-ui-20261026-f0c1a27",
+    "url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-ui-20261026-f0c1a27",
+    "target_commit": "f0c1a274e8ba8cc0d474d480a92b871960435e4f",
+    "draft": false,
+    "prerelease": true,
+    "uploaded": true,
+    "uploaded_size": 215737636,
+    "uploaded_digest": "sha256:129a877a8d393b42d662fbaf933bc3022b2536ef2346309d7267a786f4983386"
+  }
+}

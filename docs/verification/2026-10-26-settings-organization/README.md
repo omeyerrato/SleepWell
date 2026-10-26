@@ -49,3 +49,13 @@ explicit dedicated Alarms-tab request. This is not a claim of pixel-perfect pari
 [Earlier passing and failed attempts](earlier-attempts.md) remain separate; they
 are not substituted for this final run. [Organization map](../../UI-ORGANIZATION.md)
 and [feedback contract](../../INTERACTION-FEEDBACK.md) document the full source scope.
+
+## Published candidate
+
+[Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-ui-20261026-f0c1a27): SleepWell-f0c1a27.apk,215737636bytes,
+SHA256 `129a877a8d393b42d662fbaf933bc3022b2536ef2346309d7267a786f4983386`.
+GitHub full source target, draft=false/prerelease=true, uploaded states, APK size/digest
+and checksum-sidecar digest match the frozen original-signed local files. This
+candidate is not installed; last phone source remains2cbfe043. CI-only absent
+inactive boot defaults are established before its exact preference baseline;
+existing values and all baseline key/value preservation assertions remain intact.

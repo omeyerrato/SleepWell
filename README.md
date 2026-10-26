@@ -12,25 +12,24 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 26 October
 
-Source **c4c7bd20** builds in **3m8s** with the original signing key. It adds
-explicit managed read-only record access under **Data & privacy → Connected apps**
-and four automation sources: actual player start/stop acknowledgements,
-production anti-snore sound admission and saved recognition estimates.
-[Record contract](docs/RECORD-CONTENT-PROVIDER.md) ·
-[Sound-event contract](docs/CONFIRMED-SOUND-AUTOMATIONS.md).
+Source **f0c1a274** adds eight Settings groups, local settings search, readable
+alarm submenus and shared native touch feedback with an off switch. All former
+root destinations remain available. App/UI-check APKs build in **18s** with the
+original signing key. One silent API36 route/persistence flow passes with ten
+actual Android screenshots inspected; physical tactile feel, all74 destinations,
+all36 reference screens and overnight behavior remain open.
+[Scope and screen comparisons](docs/verification/2026-10-26-settings-organization/README.md).
 
-[Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-c4c7bd2).
-This candidate has build/signing evidence only: actual provider clients,
-permission grants, new sound-event lifecycles and outputs remain unverified.
-Sleep database schema17/metadata13 stay unchanged; the separate private automation
-database advances1→2 additively. Older builds cannot open that upgraded rule queue.
-Older SONAR-only readers also reject new movement-analysis backup metadata.
+[Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-ui-20261026-f0c1a27).
+Sleep schema17/backup13 and the private automation database2 are retained. Older
+builds may not open that rule queue or new movement-analysis backup metadata.
+The included record/alarm provider and sound-event/snooze implementations retain
+their documented external-client/output limitations.
 
-The separately authorized **2cbfe043** phone update is installed with matching APK
-hash and original signer. All original rows/preferences/private user files matched
-before and after. SleepWell was not launched and no outputs ran.
+The separately authorized **2cbfe043** phone update remains installed. Original
+rows/preferences/private files matched before and after; SleepWell was not
+launched and no outputs ran. The newer candidate is **not installed**.
 [Phone evidence](docs/verification/2026-10-26-phone-2cbfe043/README.md).
-The newerc4c7bd20 candidate is **not installed**.
 
 The earlier saved-night Report flow passed at4e3abe96 with persisted edits and
 eight actual Android fixture captures; only later production delta in the installed

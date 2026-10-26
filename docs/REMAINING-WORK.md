@@ -24,8 +24,8 @@ unverified. [Scoped evidence](verification/2026-10-26-settings-organization/READ
 | --- | --- |
 | Installed phone build | **2cbfe043**, authorized streamed update; installed checksum/original signer match. All original schema17 rows, preferences and original private files preserved. |
 | Phone availability | Connected for that authorized update only. No app launch, suspension change or output/capture/provider runtime action. |
-| New candidate | **c4c7bd20**, production assembleDebug **PASS3m8s**, original signer/hash verified. Not installed. Sleep schema17/metadata13; separate private automation database1→2. |
-| New feature evidence | Explicit completed-summary provider and four actual-player/saved-sound automation sources have build/source evidence only. New-client/permission/output acceptance remains open. |
+| New candidate | **f0c1a274**, app/UI-check build **PASS18s**, original signer/hash and uploaded assets verified. One focused organization flow passes with ten inspected captures. Not installed. Sleep schema17/metadata13; separate private automation database1→2. |
+| New feature evidence | Settings groups/search/Back and saved feedback/alarm edit state have a bounded silent pass. Provider/snooze/client/output acceptance remains open. |
 | Current work policy | Features first; no new unit-test batches or broad campaigns. Essential builds, preservation and bounded changed-flow checks remain applicable. Dedicated reviewer stays stopped. |
 
 [Phone update evidence](verification/2026-10-26-phone-2cbfe043/README.md) is separate
