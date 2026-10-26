@@ -43,7 +43,7 @@ public class AlarmEditorActivity extends Activity {
         Design.space(body,12);LinearLayout days=Design.row(this);String[] labels={"M","T","W","T","F","S","S"},names={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
         for(int n=1;n<=7;n++){final int day=n;Button b=new Button(this);b.setStateListAnimator(null);b.setElevation(0);b.setText(labels[n-1]);b.setAllCaps(false);b.setTextSize(16*Appearance.scale(this));b.setTypeface(Design.font(this,600));b.setPadding(0,0,0,0);b.setMinWidth(0);b.setMinimumWidth(0);b.setTextColor(alarm.days.contains(n)?Design.CREAM:Design.BROWN);b.setSelected(alarm.days.contains(n));b.setContentDescription(names[n-1]);b.setBackground(Design.touch(this,alarm.days.contains(n)?Design.BROWN:Design.SOFT,28));
             LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,Design.dp(this,48),1);lp.setMargins(Design.dp(this,2),0,Design.dp(this,2),0);days.addView(b,lp);b.setEnabled(alarm.repeatInvalid||alarm.repeatRule.mode!=AlarmRepeat.Mode.INTERVAL);b.setAlpha(b.isEnabled()?1:.5f);b.setOnClickListener(v->{InteractionFeedback.selection(v);alarm.date=null;alarm.dateInvalid=false;if(alarm.days.contains(day))alarm.days.remove(day);else alarm.days.add(day);render();});}
-        body.addView(days);if(!alarm.repeatInvalid&&alarm.repeatRule.mode==AlarmRepeat.Mode.INTERVAL)Design.text(body,"Calendar dates follow your anchored interval; weekday buttons are inactive.",12,400,Design.MUTED);Design.space(body,10);Design.item(body,"calendar","Repeat rule",alarm.repeatInvalid?"Review repeat rule":alarm.repeatRule.label(),this::openRepeat);Design.space(body,16);
+        body.addView(days);if(!alarm.repeatInvalid&&alarm.repeatRule.mode==AlarmRepeat.Mode.INTERVAL)Design.text(body,"Calendar dates follow your anchored interval; weekday buttons are inactive.",12,400,Design.MUTED);Design.space(body,16);
         LinearLayout name=Design.item(body,null,"Name",alarm.label,()->openDialog(()->SleepPicker.name(this,alarm.label,value->{alarm.label=value;render();})));Design.pad(name,14,0);name.setBackground(Design.shape(this,Design.SOFT,14));
         Design.space(body,14);Design.line(body);
         Design.item(body,"sun","Smart wake-up",alarm.smartWindow==0?"Off":alarm.smartWindow+" min",()->go("smart"));Design.line(body);
@@ -65,13 +65,14 @@ public class AlarmEditorActivity extends Activity {
     }
     private void openDate(Bundle saved){if(alarm.repeatInvalid||alarm.repeatRule.custom()){Ui.toast(this,"Choose Weekly / one-time before setting a one-time date.");return;}if(dateCalendar!=null)dateCalendar.close();java.time.LocalDate initial=alarm.date==null?java.time.LocalDate.now():alarm.date;dateCalendar=new RecordCalendar(this,"Alarm date",initial,saved,chosen->{alarm.date=chosen;alarm.dateInvalid=false;alarm.days.clear();saveError="";render();},null);}
     private String scheduleSummary(){
-        if(alarm.dateInvalid||alarm.solarInvalid||alarm.excludedDatesInvalid||alarm.nextOverrideInvalid||alarm.bedtimeInvalid)return "Needs review";
-        if(alarm.nextOverride!=null)return "Next occurrence changed";
-        if(alarm.solar!=null)return "Sunrise schedule";
-        return alarm.date!=null?alarm.date.toString():"Dates, skips and bedtime reminder";
+        String repeat=alarm.repeatInvalid||!alarm.repeatRule.validFor(alarm)?"Repeat rule needs review":alarm.repeatRule.custom()?alarm.repeatRule.label():"";
+        String schedule=alarm.dateInvalid||alarm.solarInvalid||alarm.excludedDatesInvalid||alarm.nextOverrideInvalid||alarm.bedtimeInvalid?"Schedule needs review"
+                :alarm.nextOverride!=null?"Next occurrence changed":alarm.solar!=null?"Sunrise schedule":alarm.date!=null?alarm.date.toString():"Repeat, dates, skips and reminders";
+        return repeat.isEmpty()?schedule:repeat+" · "+schedule;
     }
     private void scheduleSettings(LinearLayout body){
         Design.header(body,"Schedule & dates",()->go("edit"));Design.text(body,"Edit alarm",12,400,Design.MUTED);Design.space(body,16);
+        menu(body,"calendar","Repeat rule",alarm.repeatInvalid||!alarm.repeatRule.validFor(alarm)?"Review repeat rule":alarm.repeatRule.label(),this::openRepeat);Design.line(body);
         menu(body,"calendar","Skip selected dates",AlarmExcludedDates.summary(alarm),()->{excludedRequest=UUID.randomUUID().toString();startActivityForResult(AlarmExcludedDatesActivity.edit(this,alarm,excludedRequest),AlarmExcludedDatesActivity.REQUEST);});Design.line(body);
         menu(body,"calendar","Next alarm only",NextAlarmOverrides.summary(this,alarm),this::openNextOverride);Design.line(body);
         LinearLayout runDate=menu(body,"calendar","Run on",alarm.repeatRule.custom()?"One-time dates require Weekly / one-time":alarm.dateInvalid?"Review date":alarm.date==null?"Next occurrence":alarm.date.toString(),()->openDate(null));RecordUi.enabled(runDate,!alarm.repeatRule.custom()&&!alarm.repeatInvalid);Design.line(body);
