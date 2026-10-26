@@ -19,7 +19,7 @@ sleep schema17 and backup13. The grouped settings/search/feedback increment pass
 one silent organization flow at test-only successor 957f3380, with ten inspected
 actual captures. Physical haptics, all destinations and all36 reference screens
 remain unverified. [Scoped evidence](verification/2026-10-26-settings-organization/README.md).
-New source **731e9725** builds production in1m5s with radio mixer, grouped Tracking setup, measured echo-rhythm review and explicit experimental recorded-audio inference. Original signer and packaged model hashes match; new Android flows remain unverified. See FEATURE-CHECKLIST.md.
+Final packaged source **b5c63ad1** builds production in16s (full runtime MIT notice/credit); functional ancestor **731e9725** built in1m5s with radio mixer, grouped Tracking setup, measured echo-rhythm review and explicit experimental recorded-audio inference. Original signer and packaged model hashes match; new Android flows remain unverified. See FEATURE-CHECKLIST.md.
 Installed phone source remains **2cbfe043**, original data preserved; no subsequent
 phone actions ran. [Phone evidence](verification/2026-10-26-phone-2cbfe043/README.md).
 Earlier Report, integration and acoustic evidence remain separately scoped; API

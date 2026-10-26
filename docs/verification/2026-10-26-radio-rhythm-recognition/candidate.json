@@ -1,19 +1,20 @@
 {
-  "source": "731e9725274a041d5a97ef904d4ce5a879bc9699",
-  "build": "assembleDebug passed in 1m5s",
-  "verification_scope": "Production assembleDebug PASS1m5s; original signer and packaged model/label integrity verified. Host Torch/ONNX and Java preprocessing parity retained (score max difference6.92e-6); independent holdout misses2/4 positive sources. New radio/Tracking/Echo/recorded-analysis Android flows and outputs have not been exercised; no new unit/lint/native/device campaign. Prior Settings-only CI40356841938 remains separately scoped.",
+  "source": "b5c63ad152e940a424982a243aad34f530927e19",
+  "build": "assembleDebug passed in 16s",
+  "verification_scope": "Production assembleDebug PASS16s after runtime-notice/credit packaging fix; functional ancestor731e9725 built in1m5s. Original signer and packaged models, labels and full runtime MIT notice verified. Host Torch/ONNX and Java frontend parity retained (score max difference6.92e-6); independent holdout misses2/4 positive sources. New radio/Tracking/Echo/recorded-analysis Android flows and outputs remain unexercised. No new unit/lint/native/device campaign. Prior Settings-only CI40356841938 remains separately scoped.",
   "database_schema": 17,
   "backup_format": 13,
   "phone_installed": false,
   "artifacts": {
     "debug": {
-      "source": "731e9725274a041d5a97ef904d4ce5a879bc9699",
-      "sha256": "65fc206e36079f015296a1eecc85b03a52f41ab5b5a1aa8e1c73d21578fb1dbd",
-      "path": "SleepWell-731e972.apk",
-      "size": 330223520
+      "source": "b5c63ad152e940a424982a243aad34f530927e19",
+      "sha256": "a2e89481386fe754a62363d4a3d6716aecf0081c4920cc4b9d5792806718874c",
+      "path": "SleepWell-b5c63ad.apk",
+      "size": 334850669
     }
   },
   "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
   "private_automation_schema": 2,
-  "recorded_estimates_schema": 1
+  "recorded_estimates_schema": 1,
+  "functional_ancestor": "731e9725274a041d5a97ef904d4ce5a879bc9699"
 }

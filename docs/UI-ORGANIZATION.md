@@ -12,13 +12,13 @@ light/Inter visual language. This is an implementation increment, not36screen ac
 ## Settings structure
 
 The previous17root destinations remain available in8groups, plus settings search.
-Search everything remains available from settings search. An empty settings query shows8categories rather than an undifferentiated74-item list; selecting a category or entering a term reveals matching destinations.
+Search everything remains available from settings search. An empty settings query shows8categories rather than an undifferentiated75-item list; selecting a category or entering a term reveals matching destinations.
 
 | Root category | Destinations |
 | --- | --- |
 | Alarms | Manage alarms, defaults, protection, calendar rules, naps/timers, NFC setup |
 | Sleep & bedtime | Tracking setup, automatic tracking, sleep plan, guard, awake estimates, rhythm, diary, travel |
-| Sound & recordings | Analysis, snoring cues, sleep sounds, recording retention, favorites |
+| Sound & recordings | Analysis, snoring cues, sleep sounds, recording retention, favorites, explicit recorded laughter/instrument estimates |
 | Appearance & feedback | Theme/text/motion, touch feedback, Tonight layout |
 | Reliability | Existing readiness/permissions/battery screen |
 | Connected apps | Health Connect, automations, lights, paired movement, external PIR, tracking requests, record/alarm access |
