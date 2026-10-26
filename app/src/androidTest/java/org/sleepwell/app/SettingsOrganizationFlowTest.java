@@ -70,6 +70,10 @@ public final class SettingsOrganizationFlowTest {
         assertEquals("true",InstrumentationRegistry.getArguments().getString("ciReview"));
         assertEquals("1",device.executeShellCommand("getprop ro.kernel.qemu").trim());
         assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"ringing"));assertFalse(Prefs.flag(c,"tracking"));assertEquals(0,Prefs.number(c,"checkPending",0));
+        // As in SoundSettingsFlowTest, initialize only absent inactive CI defaults before
+        // the exact preservation baseline; delayed BOOT_COMPLETED may write these same values.
+        SharedPreferences idle=Prefs.of(c);assertFalse(idle.getBoolean("trackingPaused",false));assertEquals(0L,idle.getLong("session",0));
+        SharedPreferences.Editor initialize=idle.edit();for(String key:new String[]{"ringing","tracking","trackingPaused"})if(!idle.contains(key))initialize.putBoolean(key,false);if(!idle.contains("session"))initialize.putLong("session",0L);assertTrue(initialize.commit());
         Map<String,?> before=new HashMap<>(Prefs.of(c).getAll());assertTrue(!before.containsKey(InteractionFeedback.ENABLED)||before.get(InteractionFeedback.ENABLED) instanceof Boolean);
         Application app=(Application)c.getApplicationContext();Application.ActivityLifecycleCallbacks observer=new Application.ActivityLifecycleCallbacks(){public void onActivityCreated(Activity a,Bundle state){owned.add(a);assertTrue("Only inert settings/search/alarm editors may open",a instanceof MainActivity||a instanceof SearchActivity||a instanceof FeedbackSettingsActivity||a instanceof AlarmEditorActivity);assertTrue("Every fixture window suppresses haptic output",a.getIntent().getBooleanExtra("visualReview",false));}public void onActivityStarted(Activity a){}public void onActivityResumed(Activity a){}public void onActivityPaused(Activity a){}public void onActivityStopped(Activity a){}public void onActivitySaveInstanceState(Activity a,Bundle state){}public void onActivityDestroyed(Activity a){}};
         app.registerActivityLifecycleCallbacks(observer);
