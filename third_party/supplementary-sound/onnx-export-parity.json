@@ -1,0 +1,26 @@
+[
+  {
+    "source": "laugh-frenkfurth",
+    "samples16k": 160000,
+    "model": "panns",
+    "maximumScoreDifference": 1.043081283569336e-07
+  },
+  {
+    "source": "laugh-frenkfurth",
+    "samples16k": 160000,
+    "model": "efficientat",
+    "maximumScoreDifference": 2.5331974029541016e-07
+  },
+  {
+    "source": "guitar-qubodup",
+    "samples16k": 91924,
+    "model": "panns",
+    "maximumScoreDifference": 2.384185791015625e-07
+  },
+  {
+    "source": "guitar-qubodup",
+    "samples16k": 91924,
+    "model": "efficientat",
+    "maximumScoreDifference": 5.364418029785156e-07
+  }
+]

@@ -1,0 +1,29 @@
+Supplementary recorded-audio estimates in SleepWell
+
+PANNs MobileNetV2: Qiuqiang Kong and PANNs contributors.
+Original pretrained AudioSet weights:
+https://zenodo.org/records/3987831
+CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+Full legal code: PANN-WEIGHTS-CC-BY-4.0.txt (in this asset directory).
+Original architecture copyright (c) 2018-2020 Qiuqiang Kong, MIT:
+https://github.com/qiuqiangkong/audioset_tagging_cnn
+Full MIT licence: PANN-CODE-MIT.txt.
+
+EfficientAT mn10_as: Florian Schmid and contributors.
+Copyright (c) 2022 Florian Schmid, MIT:
+https://github.com/fschmid56/EfficientAT
+Original official weights:
+https://github.com/fschmid56/EfficientAT/releases/tag/v0.0.1
+Full MIT licence: EFFICIENTAT-MIT.txt.
+
+SleepWell changes: evaluation-time classifiers exported to ONNX, separate Java
+audio frontends, experimental coarse selection policy. No weight retraining.
+Authors do not endorse SleepWell. Original 527-class AudioSet mapping preserved.
+Original checkpoint and exported model hashes, source revisions, full notices,
+export recipe and retained missed examples are in the public SleepWell source:
+third_party/supplementary-sound/
+
+Outputs are experimental uncalibrated sound estimates. A missed or uncertain
+window is not evidence that laughter or instruments were absent. This feature
+does not replace the automatic snoring/speech/cough/cry classifier or diagnose
+sleep or medical conditions.

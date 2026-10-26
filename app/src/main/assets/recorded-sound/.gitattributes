@@ -1,0 +1,3 @@
+# Integrity checks and licence digests cover exact bytes, including on Windows.
+* -text
+*.txt -whitespace

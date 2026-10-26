@@ -1,0 +1,52 @@
+[
+  {
+    "source": "laugh-frenkfurth",
+    "frontend": {
+      "upsampled": {
+        "maximumAbsoluteDifference": 1.7881393432617188e-07,
+        "meanAbsoluteDifference": 1.936572235905487e-09
+      },
+      "pann": {
+        "maximumAbsoluteDifference": 0.0159912109375,
+        "meanAbsoluteDifference": 3.7248693843139336e-05
+      },
+      "efficient": {
+        "maximumAbsoluteDifference": 7.402896881103516e-05,
+        "meanAbsoluteDifference": 7.49693128909712e-07
+      }
+    },
+    "score": {
+      "pann": {
+        "maximumAbsoluteDifference": 1.7285346984863281e-06
+      },
+      "efficient": {
+        "maximumAbsoluteDifference": 1.1920928955078125e-07
+      }
+    }
+  },
+  {
+    "source": "guitar-qubodup",
+    "frontend": {
+      "upsampled": {
+        "maximumAbsoluteDifference": 1.7881393432617188e-07,
+        "meanAbsoluteDifference": 1.1297471846916096e-09
+      },
+      "pann": {
+        "maximumAbsoluteDifference": 0.02252960205078125,
+        "meanAbsoluteDifference": 3.831385765806772e-05
+      },
+      "efficient": {
+        "maximumAbsoluteDifference": 6.973743438720703e-05,
+        "meanAbsoluteDifference": 3.8226755805226276e-07
+      }
+    },
+    "score": {
+      "pann": {
+        "maximumAbsoluteDifference": 6.9141387939453125e-06
+      },
+      "efficient": {
+        "maximumAbsoluteDifference": 3.516674041748047e-06
+      }
+    }
+  }
+]

@@ -1,0 +1,2 @@
+# Preserve the original upstream licence bytes and legal-code digest.
+*.txt -text -whitespace

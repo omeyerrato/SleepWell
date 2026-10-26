@@ -1,0 +1,1401 @@
+{
+  "plan_commit": "b241a2a066ce0e35d6d889830d6d78fed3ec6e6e",
+  "audio_pin_commit": "057e8304422d92aaac1e383d010fc3ef3c2613d1",
+  "policy": "panns laughter>=.10 margin>=.025, then EfficientAT instrument>=.65 margin>=.15, complete10s chunks plus real >=2s tail, unchanged from declared plan",
+  "torch": "2.9.1+cpu",
+  "fixtures": [
+    {
+      "name": "laugh-frenkfurth",
+      "role": "laughter",
+      "page": "https://freesound.org/people/frenkfurth/sounds/650910/",
+      "preview": "https://cdn.freesound.org/previews/650/650910_13558226-hq.mp3",
+      "licence": "CC0-1.0",
+      "html_sha256": "ca358293a063a3cbfe8f1b3692d21310b091cf7329b98d06fc783a9ef2a5ba44",
+      "preview_sha256": "a011a94396403543aea45c56c2b474dfe09346cc19d2c0e134c668474f83a1cf",
+      "pcm_sha256": "9175ce12581682b5c4d611fcae6302a980226cf788b431c3379a28490e2acbd3",
+      "samples": 461107,
+      "windows": [
+        {
+          "start_sample": 0,
+          "samples": 160000,
+          "laughter": {
+            "score": 0.07652194052934647,
+            "competitor": 0.09205889701843262,
+            "index": 19,
+            "label": "Snicker"
+          },
+          "instrument": {
+            "score": 0.004412963520735502,
+            "competitor": 0.14123477041721344,
+            "index": 138,
+            "label": "Musical instrument"
+          },
+          "accepted": null,
+          "panns_top8": [
+            {
+              "index": 38,
+              "label": "Groan",
+              "score": 0.09205889701843262
+            },
+            {
+              "index": 19,
+              "label": "Snicker",
+              "score": 0.07652194052934647
+            },
+            {
+              "index": 16,
+              "label": "Laughter",
+              "score": 0.06779833883047104
+            },
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.06421597301959991
+            },
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.0573243573307991
+            },
+            {
+              "index": 39,
+              "label": "Grunt",
+              "score": 0.047628797590732574
+            },
+            {
+              "index": 105,
+              "label": "Quack",
+              "score": 0.03632398322224617
+            },
+            {
+              "index": 42,
+              "label": "Wheeze",
+              "score": 0.03600230813026428
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 19,
+              "label": "Snicker",
+              "score": 0.14123477041721344
+            },
+            {
+              "index": 16,
+              "label": "Laughter",
+              "score": 0.08824343234300613
+            },
+            {
+              "index": 18,
+              "label": "Giggle",
+              "score": 0.05520455539226532
+            },
+            {
+              "index": 21,
+              "label": "Chuckle, chortle",
+              "score": 0.050529006868600845
+            },
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.047852613031864166
+            },
+            {
+              "index": 38,
+              "label": "Groan",
+              "score": 0.042782410979270935
+            },
+            {
+              "index": 506,
+              "label": "Inside, small room",
+              "score": 0.025006679818034172
+            },
+            {
+              "index": 504,
+              "label": "Sound effect",
+              "score": 0.022835085168480873
+            }
+          ]
+        },
+        {
+          "start_sample": 160000,
+          "samples": 160000,
+          "laughter": {
+            "score": 0.03390279784798622,
+            "competitor": 0.1854368895292282,
+            "index": 16,
+            "label": "Laughter"
+          },
+          "instrument": {
+            "score": 0.003389280755072832,
+            "competitor": 0.08684835582971573,
+            "index": 138,
+            "label": "Musical instrument"
+          },
+          "accepted": null,
+          "panns_top8": [
+            {
+              "index": 39,
+              "label": "Grunt",
+              "score": 0.1854368895292282
+            },
+            {
+              "index": 38,
+              "label": "Groan",
+              "score": 0.10527834296226501
+            },
+            {
+              "index": 25,
+              "label": "Wail, moan",
+              "score": 0.08385812491178513
+            },
+            {
+              "index": 44,
+              "label": "Gasp",
+              "score": 0.08244865387678146
+            },
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.056288689374923706
+            },
+            {
+              "index": 42,
+              "label": "Wheeze",
+              "score": 0.05093293637037277
+            },
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.03468836471438408
+            },
+            {
+              "index": 16,
+              "label": "Laughter",
+              "score": 0.03390279784798622
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 16,
+              "label": "Laughter",
+              "score": 0.08684835582971573
+            },
+            {
+              "index": 19,
+              "label": "Snicker",
+              "score": 0.08097390830516815
+            },
+            {
+              "index": 38,
+              "label": "Groan",
+              "score": 0.07995764911174774
+            },
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.05266103893518448
+            },
+            {
+              "index": 21,
+              "label": "Chuckle, chortle",
+              "score": 0.028339793905615807
+            },
+            {
+              "index": 506,
+              "label": "Inside, small room",
+              "score": 0.025880344212055206
+            },
+            {
+              "index": 18,
+              "label": "Giggle",
+              "score": 0.024798069149255753
+            },
+            {
+              "index": 44,
+              "label": "Gasp",
+              "score": 0.023544682189822197
+            }
+          ]
+        },
+        {
+          "start_sample": 320000,
+          "samples": 141107,
+          "laughter": {
+            "score": 0.048307619988918304,
+            "competitor": 0.16687220335006714,
+            "index": 16,
+            "label": "Laughter"
+          },
+          "instrument": {
+            "score": 0.01452687382698059,
+            "competitor": 0.053249653428792953,
+            "index": 158,
+            "label": "Synthesizer"
+          },
+          "accepted": null,
+          "panns_top8": [
+            {
+              "index": 25,
+              "label": "Wail, moan",
+              "score": 0.16687220335006714
+            },
+            {
+              "index": 38,
+              "label": "Groan",
+              "score": 0.08688659965991974
+            },
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.05580182000994682
+            },
+            {
+              "index": 16,
+              "label": "Laughter",
+              "score": 0.048307619988918304
+            },
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.04122811555862427
+            },
+            {
+              "index": 24,
+              "label": "Whimper",
+              "score": 0.03929173946380615
+            },
+            {
+              "index": 506,
+              "label": "Inside, small room",
+              "score": 0.031047921627759933
+            },
+            {
+              "index": 19,
+              "label": "Snicker",
+              "score": 0.03054647333920002
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.053249653428792953
+            },
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.03904585912823677
+            },
+            {
+              "index": 18,
+              "label": "Giggle",
+              "score": 0.034226659685373306
+            },
+            {
+              "index": 16,
+              "label": "Laughter",
+              "score": 0.03278408572077751
+            },
+            {
+              "index": 19,
+              "label": "Snicker",
+              "score": 0.026269273832440376
+            },
+            {
+              "index": 24,
+              "label": "Whimper",
+              "score": 0.025006825104355812
+            },
+            {
+              "index": 506,
+              "label": "Inside, small room",
+              "score": 0.017451075837016106
+            },
+            {
+              "index": 512,
+              "label": "Echo",
+              "score": 0.016239389777183533
+            }
+          ]
+        }
+      ],
+      "accepted": [],
+      "pass": false
+    },
+    {
+      "name": "laugh-kikorurelas",
+      "role": "laughter",
+      "page": "https://freesound.org/people/kikorurelas/sounds/767470/",
+      "preview": "https://cdn.freesound.org/previews/767/767470_6252416-hq.mp3",
+      "licence": "CC0-1.0",
+      "html_sha256": "1eb652202aad0cff1b2da3de8bf4bbc508f36856276d9e49e8cb479c94f41f82",
+      "preview_sha256": "0d1a781a972383c225cc64e316a6e8ea4978bd17d30af0909ebe410db8c150b1",
+      "pcm_sha256": "e5cda653ac9668434c91831df0d0c875ecece1909e4a3fb5d8d4b52caf2ad201",
+      "samples": 192000,
+      "windows": [
+        {
+          "start_sample": 0,
+          "samples": 160000,
+          "laughter": {
+            "score": 0.2944699227809906,
+            "competitor": 0.26346656680107117,
+            "index": 19,
+            "label": "Snicker"
+          },
+          "instrument": {
+            "score": 0.0012718562502413988,
+            "competitor": 0.6698368191719055,
+            "index": 138,
+            "label": "Musical instrument"
+          },
+          "accepted": "laughter",
+          "panns_top8": [
+            {
+              "index": 19,
+              "label": "Snicker",
+              "score": 0.2944699227809906
+            },
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.26346656680107117
+            },
+            {
+              "index": 68,
+              "label": "Chatter",
+              "score": 0.2397260218858719
+            },
+            {
+              "index": 69,
+              "label": "Crowd",
+              "score": 0.22696469724178314
+            },
+            {
+              "index": 16,
+              "label": "Laughter",
+              "score": 0.1288595050573349
+            },
+            {
+              "index": 21,
+              "label": "Chuckle, chortle",
+              "score": 0.11423402279615402
+            },
+            {
+              "index": 66,
+              "label": "Cheering",
+              "score": 0.0691908597946167
+            },
+            {
+              "index": 13,
+              "label": "Children shouting",
+              "score": 0.056451134383678436
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 19,
+              "label": "Snicker",
+              "score": 0.6698368191719055
+            },
+            {
+              "index": 16,
+              "label": "Laughter",
+              "score": 0.27964386343955994
+            },
+            {
+              "index": 21,
+              "label": "Chuckle, chortle",
+              "score": 0.19097977876663208
+            },
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.11428815871477127
+            },
+            {
+              "index": 69,
+              "label": "Crowd",
+              "score": 0.10652191936969757
+            },
+            {
+              "index": 66,
+              "label": "Cheering",
+              "score": 0.06241024658083916
+            },
+            {
+              "index": 13,
+              "label": "Children shouting",
+              "score": 0.05308088660240173
+            },
+            {
+              "index": 20,
+              "label": "Belly laugh",
+              "score": 0.04222704470157623
+            }
+          ]
+        },
+        {
+          "start_sample": 160000,
+          "samples": 32000,
+          "laughter": {
+            "score": 0.002776544773951173,
+            "competitor": 0.7792419195175171,
+            "index": 21,
+            "label": "Chuckle, chortle"
+          },
+          "instrument": {
+            "score": 1.0,
+            "competitor": 1.0,
+            "index": 145,
+            "label": "Tapping (guitar technique)"
+          },
+          "accepted": null,
+          "panns_top8": [
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.7792419195175171
+            },
+            {
+              "index": 72,
+              "label": "Animal",
+              "score": 0.11839691549539566
+            },
+            {
+              "index": 88,
+              "label": "Clip-clop",
+              "score": 0.06089763343334198
+            },
+            {
+              "index": 5,
+              "label": "Narration, monologue",
+              "score": 0.05960635840892792
+            },
+            {
+              "index": 111,
+              "label": "Bird",
+              "score": 0.050295453518629074
+            },
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.0464559830725193
+            },
+            {
+              "index": 1,
+              "label": "Male speech, man speaking",
+              "score": 0.04490191116929054
+            },
+            {
+              "index": 300,
+              "label": "Vehicle",
+              "score": 0.0385906882584095
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 12,
+              "label": "Battle cry",
+              "score": 1.0
+            },
+            {
+              "index": 39,
+              "label": "Grunt",
+              "score": 1.0
+            },
+            {
+              "index": 496,
+              "label": "Hum",
+              "score": 1.0
+            },
+            {
+              "index": 499,
+              "label": "Crunch",
+              "score": 1.0
+            },
+            {
+              "index": 501,
+              "label": "Sine wave",
+              "score": 1.0
+            },
+            {
+              "index": 503,
+              "label": "Chirp tone",
+              "score": 1.0
+            },
+            {
+              "index": 505,
+              "label": "Pulse",
+              "score": 1.0
+            },
+            {
+              "index": 54,
+              "label": "Chewing, mastication",
+              "score": 1.0
+            }
+          ]
+        }
+      ],
+      "accepted": [
+        "laughter"
+      ],
+      "pass": true
+    },
+    {
+      "name": "piano-bradovic",
+      "role": "instrument",
+      "page": "https://freesound.org/people/Bradovic/sounds/164718/",
+      "preview": "https://cdn.freesound.org/previews/164/164718_231674-hq.mp3",
+      "licence": "CC0-1.0",
+      "html_sha256": "1384911c74be54724da6e6c06e6217ebd133a1a76d17f513557cf4c82e1cdcd5",
+      "preview_sha256": "6a9ac974829308c732aa7229724cdbb1e6d1682ca53bd8baeda162b2111c0b73",
+      "pcm_sha256": "719521db79c3d9a8c475d6d4120d7fbe50425363feafd6f74c58655afd31b16b",
+      "samples": 692755,
+      "windows": [
+        {
+          "start_sample": 0,
+          "samples": 160000,
+          "laughter": {
+            "score": 8.704452193342149e-05,
+            "competitor": 0.768898069858551,
+            "index": 16,
+            "label": "Laughter"
+          },
+          "instrument": {
+            "score": 0.6328274607658386,
+            "competitor": 0.04362906143069267,
+            "index": 153,
+            "label": "Piano"
+          },
+          "accepted": null,
+          "panns_top8": [
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.768898069858551
+            },
+            {
+              "index": 153,
+              "label": "Piano",
+              "score": 0.759592592716217
+            },
+            {
+              "index": 154,
+              "label": "Electric piano",
+              "score": 0.6734980344772339
+            },
+            {
+              "index": 152,
+              "label": "Keyboard (musical)",
+              "score": 0.5918257832527161
+            },
+            {
+              "index": 138,
+              "label": "Musical instrument",
+              "score": 0.46057069301605225
+            },
+            {
+              "index": 271,
+              "label": "Lullaby",
+              "score": 0.03846539929509163
+            },
+            {
+              "index": 278,
+              "label": "Sad music",
+              "score": 0.03530678525567055
+            },
+            {
+              "index": 279,
+              "label": "Tender music",
+              "score": 0.028547324240207672
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.8404713273048401
+            },
+            {
+              "index": 153,
+              "label": "Piano",
+              "score": 0.6328274607658386
+            },
+            {
+              "index": 154,
+              "label": "Electric piano",
+              "score": 0.5660712122917175
+            },
+            {
+              "index": 152,
+              "label": "Keyboard (musical)",
+              "score": 0.5250741839408875
+            },
+            {
+              "index": 138,
+              "label": "Musical instrument",
+              "score": 0.34929171204566956
+            },
+            {
+              "index": 279,
+              "label": "Tender music",
+              "score": 0.04362906143069267
+            },
+            {
+              "index": 237,
+              "label": "Classical music",
+              "score": 0.040274687111377716
+            },
+            {
+              "index": 271,
+              "label": "Lullaby",
+              "score": 0.03938562795519829
+            }
+          ]
+        },
+        {
+          "start_sample": 160000,
+          "samples": 160000,
+          "laughter": {
+            "score": 9.549073729431257e-05,
+            "competitor": 0.7581577897071838,
+            "index": 16,
+            "label": "Laughter"
+          },
+          "instrument": {
+            "score": 0.49503418803215027,
+            "competitor": 0.06356640160083771,
+            "index": 153,
+            "label": "Piano"
+          },
+          "accepted": null,
+          "panns_top8": [
+            {
+              "index": 153,
+              "label": "Piano",
+              "score": 0.7581577897071838
+            },
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.7475553750991821
+            },
+            {
+              "index": 154,
+              "label": "Electric piano",
+              "score": 0.6165533661842346
+            },
+            {
+              "index": 152,
+              "label": "Keyboard (musical)",
+              "score": 0.6099923253059387
+            },
+            {
+              "index": 138,
+              "label": "Musical instrument",
+              "score": 0.5098036527633667
+            },
+            {
+              "index": 271,
+              "label": "Lullaby",
+              "score": 0.06116515398025513
+            },
+            {
+              "index": 278,
+              "label": "Sad music",
+              "score": 0.03782377764582634
+            },
+            {
+              "index": 279,
+              "label": "Tender music",
+              "score": 0.024384241551160812
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.8287637233734131
+            },
+            {
+              "index": 153,
+              "label": "Piano",
+              "score": 0.49503418803215027
+            },
+            {
+              "index": 152,
+              "label": "Keyboard (musical)",
+              "score": 0.3824325501918793
+            },
+            {
+              "index": 154,
+              "label": "Electric piano",
+              "score": 0.37359607219696045
+            },
+            {
+              "index": 138,
+              "label": "Musical instrument",
+              "score": 0.28427642583847046
+            },
+            {
+              "index": 271,
+              "label": "Lullaby",
+              "score": 0.06356640160083771
+            },
+            {
+              "index": 253,
+              "label": "New-age music",
+              "score": 0.04917357861995697
+            },
+            {
+              "index": 279,
+              "label": "Tender music",
+              "score": 0.04553864523768425
+            }
+          ]
+        },
+        {
+          "start_sample": 320000,
+          "samples": 160000,
+          "laughter": {
+            "score": 6.820983981015161e-05,
+            "competitor": 0.799990177154541,
+            "index": 16,
+            "label": "Laughter"
+          },
+          "instrument": {
+            "score": 0.6578218340873718,
+            "competitor": 0.033088479191064835,
+            "index": 153,
+            "label": "Piano"
+          },
+          "accepted": "instrument",
+          "panns_top8": [
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.799990177154541
+            },
+            {
+              "index": 153,
+              "label": "Piano",
+              "score": 0.7120537757873535
+            },
+            {
+              "index": 154,
+              "label": "Electric piano",
+              "score": 0.638034462928772
+            },
+            {
+              "index": 152,
+              "label": "Keyboard (musical)",
+              "score": 0.5884957313537598
+            },
+            {
+              "index": 138,
+              "label": "Musical instrument",
+              "score": 0.4334145188331604
+            },
+            {
+              "index": 160,
+              "label": "Harpsichord",
+              "score": 0.02741832472383976
+            },
+            {
+              "index": 279,
+              "label": "Tender music",
+              "score": 0.019628632813692093
+            },
+            {
+              "index": 278,
+              "label": "Sad music",
+              "score": 0.018806828185915947
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.8145501613616943
+            },
+            {
+              "index": 153,
+              "label": "Piano",
+              "score": 0.6578218340873718
+            },
+            {
+              "index": 154,
+              "label": "Electric piano",
+              "score": 0.6563011407852173
+            },
+            {
+              "index": 152,
+              "label": "Keyboard (musical)",
+              "score": 0.5629129409790039
+            },
+            {
+              "index": 138,
+              "label": "Musical instrument",
+              "score": 0.3377818167209625
+            },
+            {
+              "index": 279,
+              "label": "Tender music",
+              "score": 0.033088479191064835
+            },
+            {
+              "index": 237,
+              "label": "Classical music",
+              "score": 0.02116584964096546
+            },
+            {
+              "index": 278,
+              "label": "Sad music",
+              "score": 0.02112864889204502
+            }
+          ]
+        },
+        {
+          "start_sample": 480000,
+          "samples": 160000,
+          "laughter": {
+            "score": 7.085150718921795e-05,
+            "competitor": 0.7759373784065247,
+            "index": 16,
+            "label": "Laughter"
+          },
+          "instrument": {
+            "score": 0.5391217470169067,
+            "competitor": 0.04095246270298958,
+            "index": 153,
+            "label": "Piano"
+          },
+          "accepted": null,
+          "panns_top8": [
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.7759373784065247
+            },
+            {
+              "index": 153,
+              "label": "Piano",
+              "score": 0.5989606380462646
+            },
+            {
+              "index": 138,
+              "label": "Musical instrument",
+              "score": 0.478740394115448
+            },
+            {
+              "index": 154,
+              "label": "Electric piano",
+              "score": 0.44117504358291626
+            },
+            {
+              "index": 152,
+              "label": "Keyboard (musical)",
+              "score": 0.42263829708099365
+            },
+            {
+              "index": 278,
+              "label": "Sad music",
+              "score": 0.042418528348207474
+            },
+            {
+              "index": 271,
+              "label": "Lullaby",
+              "score": 0.03082200698554516
+            },
+            {
+              "index": 237,
+              "label": "Classical music",
+              "score": 0.02551094815135002
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.7999688982963562
+            },
+            {
+              "index": 153,
+              "label": "Piano",
+              "score": 0.5391217470169067
+            },
+            {
+              "index": 154,
+              "label": "Electric piano",
+              "score": 0.45423758029937744
+            },
+            {
+              "index": 152,
+              "label": "Keyboard (musical)",
+              "score": 0.43091705441474915
+            },
+            {
+              "index": 138,
+              "label": "Musical instrument",
+              "score": 0.2688554525375366
+            },
+            {
+              "index": 271,
+              "label": "Lullaby",
+              "score": 0.04095246270298958
+            },
+            {
+              "index": 279,
+              "label": "Tender music",
+              "score": 0.03829997777938843
+            },
+            {
+              "index": 253,
+              "label": "New-age music",
+              "score": 0.032945163547992706
+            }
+          ]
+        },
+        {
+          "start_sample": 640000,
+          "samples": 52755,
+          "laughter": {
+            "score": 9.25275671761483e-05,
+            "competitor": 0.4999274015426636,
+            "index": 18,
+            "label": "Giggle"
+          },
+          "instrument": {
+            "score": 0.37879642844200134,
+            "competitor": 0.8929449319839478,
+            "index": 210,
+            "label": "Bagpipes"
+          },
+          "accepted": null,
+          "panns_top8": [
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.4999274015426636
+            },
+            {
+              "index": 138,
+              "label": "Musical instrument",
+              "score": 0.3218264579772949
+            },
+            {
+              "index": 139,
+              "label": "Plucked string instrument",
+              "score": 0.11526869237422943
+            },
+            {
+              "index": 140,
+              "label": "Guitar",
+              "score": 0.10524499416351318
+            },
+            {
+              "index": 153,
+              "label": "Piano",
+              "score": 0.08114767074584961
+            },
+            {
+              "index": 152,
+              "label": "Keyboard (musical)",
+              "score": 0.06383756548166275
+            },
+            {
+              "index": 154,
+              "label": "Electric piano",
+              "score": 0.04278156906366348
+            },
+            {
+              "index": 143,
+              "label": "Acoustic guitar",
+              "score": 0.04108550772070885
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 421,
+              "label": "Sawing",
+              "score": 0.8929449319839478
+            },
+            {
+              "index": 423,
+              "label": "Sanding",
+              "score": 0.8232882022857666
+            },
+            {
+              "index": 420,
+              "label": "Jackhammer",
+              "score": 0.7598581910133362
+            },
+            {
+              "index": 419,
+              "label": "Hammer",
+              "score": 0.6808931827545166
+            },
+            {
+              "index": 345,
+              "label": "Dental drill, dentist's drill",
+              "score": 0.6442013382911682
+            },
+            {
+              "index": 203,
+              "label": "Bicycle bell",
+              "score": 0.5913877487182617
+            },
+            {
+              "index": 476,
+              "label": "Rub",
+              "score": 0.5585967898368835
+            },
+            {
+              "index": 385,
+              "label": "Typewriter",
+              "score": 0.5529590249061584
+            }
+          ]
+        }
+      ],
+      "accepted": [
+        "instrument"
+      ],
+      "pass": true
+    },
+    {
+      "name": "guitar-qubodup",
+      "role": "instrument",
+      "page": "https://freesound.org/people/qubodup/sounds/191322/",
+      "preview": "https://cdn.freesound.org/previews/191/191322_71257-hq.mp3",
+      "licence": "CC0-1.0",
+      "html_sha256": "ddad284c9860d3e7de399938681b1498bcfae83dbc5784ee0ff82bfdb8ad292c",
+      "preview_sha256": "b8628de205fd30b8cb03fff19fb05a9cf5b23e44720f58852d6b4dc649d89901",
+      "pcm_sha256": "8409dfb906f52670412c221050e08c6b16b88e4a3f46892e614fd3d3c8e2f439",
+      "samples": 91924,
+      "windows": [
+        {
+          "start_sample": 0,
+          "samples": 91924,
+          "laughter": {
+            "score": 3.985129660577513e-05,
+            "competitor": 0.8241152167320251,
+            "index": 16,
+            "label": "Laughter"
+          },
+          "instrument": {
+            "score": 0.4839448034763336,
+            "competitor": 0.028795985504984856,
+            "index": 138,
+            "label": "Musical instrument"
+          },
+          "accepted": null,
+          "panns_top8": [
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.8241152167320251
+            },
+            {
+              "index": 138,
+              "label": "Musical instrument",
+              "score": 0.5225450396537781
+            },
+            {
+              "index": 139,
+              "label": "Plucked string instrument",
+              "score": 0.29414522647857666
+            },
+            {
+              "index": 140,
+              "label": "Guitar",
+              "score": 0.27275368571281433
+            },
+            {
+              "index": 164,
+              "label": "Drum",
+              "score": 0.15469315648078918
+            },
+            {
+              "index": 143,
+              "label": "Acoustic guitar",
+              "score": 0.14416001737117767
+            },
+            {
+              "index": 161,
+              "label": "Percussion",
+              "score": 0.08361390233039856
+            },
+            {
+              "index": 192,
+              "label": "Pizzicato",
+              "score": 0.06834787130355835
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.8101659417152405
+            },
+            {
+              "index": 138,
+              "label": "Musical instrument",
+              "score": 0.4839448034763336
+            },
+            {
+              "index": 139,
+              "label": "Plucked string instrument",
+              "score": 0.3486793339252472
+            },
+            {
+              "index": 140,
+              "label": "Guitar",
+              "score": 0.34175461530685425
+            },
+            {
+              "index": 143,
+              "label": "Acoustic guitar",
+              "score": 0.15735062956809998
+            },
+            {
+              "index": 146,
+              "label": "Strum",
+              "score": 0.07530790567398071
+            },
+            {
+              "index": 161,
+              "label": "Percussion",
+              "score": 0.04884457588195801
+            },
+            {
+              "index": 189,
+              "label": "Bowed string instrument",
+              "score": 0.033739011734724045
+            }
+          ]
+        }
+      ],
+      "accepted": [],
+      "pass": false
+    },
+    {
+      "name": "speech-funnyvoices",
+      "role": "negative",
+      "page": "https://freesound.org/people/FunnyVoices/sounds/546065/",
+      "preview": "https://cdn.freesound.org/previews/546/546065_12187251-hq.mp3",
+      "licence": "CC0-1.0",
+      "html_sha256": "8dc9909b3304f8d1f4b059d1e41ca854ae77fba7320cc9665b3462376c4cfdb2",
+      "preview_sha256": "c86b5898dd7e7a322eab57389cac51e29640262408a91dc81d2cb45f742c5ff5",
+      "pcm_sha256": "eb6a5dec0e47cb77e0b869c66a51228e3a5b05ec3765f1e75191964906e2cbe4",
+      "samples": 228108,
+      "windows": [
+        {
+          "start_sample": 0,
+          "samples": 160000,
+          "laughter": {
+            "score": 0.0001701781729934737,
+            "competitor": 0.5619785189628601,
+            "index": 16,
+            "label": "Laughter"
+          },
+          "instrument": {
+            "score": 0.0024222189094871283,
+            "competitor": 0.831405758857727,
+            "index": 138,
+            "label": "Musical instrument"
+          },
+          "accepted": null,
+          "panns_top8": [
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.5619785189628601
+            },
+            {
+              "index": 5,
+              "label": "Narration, monologue",
+              "score": 0.21860061585903168
+            },
+            {
+              "index": 1,
+              "label": "Male speech, man speaking",
+              "score": 0.11034437268972397
+            },
+            {
+              "index": 506,
+              "label": "Inside, small room",
+              "score": 0.056107692420482635
+            },
+            {
+              "index": 7,
+              "label": "Speech synthesizer",
+              "score": 0.021980760619044304
+            },
+            {
+              "index": 459,
+              "label": "Whoosh, swoosh, swish",
+              "score": 0.020486943423748016
+            },
+            {
+              "index": 2,
+              "label": "Female speech, woman speaking",
+              "score": 0.017315026372671127
+            },
+            {
+              "index": 31,
+              "label": "Mantra",
+              "score": 0.01663726009428501
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.831405758857727
+            },
+            {
+              "index": 5,
+              "label": "Narration, monologue",
+              "score": 0.48203209042549133
+            },
+            {
+              "index": 1,
+              "label": "Male speech, man speaking",
+              "score": 0.3245675265789032
+            },
+            {
+              "index": 2,
+              "label": "Female speech, woman speaking",
+              "score": 0.060645684599876404
+            },
+            {
+              "index": 7,
+              "label": "Speech synthesizer",
+              "score": 0.055088333785533905
+            },
+            {
+              "index": 26,
+              "label": "Sigh",
+              "score": 0.03395804017782211
+            },
+            {
+              "index": 4,
+              "label": "Conversation",
+              "score": 0.02355627343058586
+            },
+            {
+              "index": 506,
+              "label": "Inside, small room",
+              "score": 0.018706105649471283
+            }
+          ]
+        },
+        {
+          "start_sample": 160000,
+          "samples": 68108,
+          "laughter": {
+            "score": 0.00010086470138048753,
+            "competitor": 0.6211238503456116,
+            "index": 16,
+            "label": "Laughter"
+          },
+          "instrument": {
+            "score": 0.006848838180303574,
+            "competitor": 0.6392120122909546,
+            "index": 138,
+            "label": "Musical instrument"
+          },
+          "accepted": null,
+          "panns_top8": [
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.6211238503456116
+            },
+            {
+              "index": 5,
+              "label": "Narration, monologue",
+              "score": 0.44218432903289795
+            },
+            {
+              "index": 1,
+              "label": "Male speech, man speaking",
+              "score": 0.2546974718570709
+            },
+            {
+              "index": 506,
+              "label": "Inside, small room",
+              "score": 0.03927243873476982
+            },
+            {
+              "index": 26,
+              "label": "Sigh",
+              "score": 0.02768491767346859
+            },
+            {
+              "index": 7,
+              "label": "Speech synthesizer",
+              "score": 0.01939169131219387
+            },
+            {
+              "index": 2,
+              "label": "Female speech, woman speaking",
+              "score": 0.01577325351536274
+            },
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.010075846686959267
+            }
+          ],
+          "efficientat_top8": [
+            {
+              "index": 0,
+              "label": "Speech",
+              "score": 0.6392120122909546
+            },
+            {
+              "index": 5,
+              "label": "Narration, monologue",
+              "score": 0.14431791007518768
+            },
+            {
+              "index": 1,
+              "label": "Male speech, man speaking",
+              "score": 0.11173675209283829
+            },
+            {
+              "index": 7,
+              "label": "Speech synthesizer",
+              "score": 0.07352481037378311
+            },
+            {
+              "index": 56,
+              "label": "Gargling",
+              "score": 0.048641905188560486
+            },
+            {
+              "index": 137,
+              "label": "Music",
+              "score": 0.047182075679302216
+            },
+            {
+              "index": 72,
+              "label": "Animal",
+              "score": 0.03482161462306976
+            },
+            {
+              "index": 2,
+              "label": "Female speech, woman speaking",
+              "score": 0.03276141360402107
+            }
+          ]
+        }
+      ],
+      "accepted": [],
+      "pass": true
+    }
+  ],
+  "pass": false
+}

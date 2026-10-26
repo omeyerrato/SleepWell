@@ -1,0 +1,109 @@
+{
+  "instrumentIndices": [
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215
+  ],
+  "musicIndex": 137,
+  "files": {
+    "efficient-mel.f32": {
+      "bytes": 262656,
+      "sha256": "ac487dbcdc9c3e6fa3cc9c3fc6226e5bb16f38b5b02a051dd838be9e75f27017"
+    },
+    "efficient-window.f32": {
+      "bytes": 4096,
+      "sha256": "d8d7d93900a463a83ba04971a3d5c42cbd1ed8a8819df689d42edf0baf02dbf0"
+    },
+    "efficientat-instruments.onnx": {
+      "bytes": 19516171,
+      "sha256": "7bb4227052d796a1ef35f0a5b703fdd724cd200fc7e6f85087289222e6c5b5c8"
+    },
+    "labels.txt": {
+      "bytes": 6864,
+      "sha256": "31560a0197c803832cedbba10d1fc8a70469983abeb954368be7bae83d975648"
+    },
+    "pann-mel.f32": {
+      "bytes": 131328,
+      "sha256": "bd0892e4dbf4fd016fc8fb21105b1f3cad415609aa6e01dfcfd85c62f9795f7d"
+    },
+    "pann-window.f32": {
+      "bytes": 4096,
+      "sha256": "1f0e971af59f6c758249e2fefac7479a16984255ead2c5ec82715b2b613d311b"
+    },
+    "panns-laughter.onnx": {
+      "bytes": 16372202,
+      "sha256": "f9dd56478e434e067cef505489d0ae4483d80d357e2c35bc3d94ba432eb08f3f"
+    },
+    "resample.f32": {
+      "bytes": 164,
+      "sha256": "053fb2664abea7baaaacd8ab2c3db08672c50f342e785a03c284edbedbd06ba5"
+    }
+  }
+}
