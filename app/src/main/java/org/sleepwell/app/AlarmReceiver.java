@@ -15,10 +15,10 @@ public class AlarmReceiver extends BroadcastReceiver {
         }
         if(Scheduler.BED.equals(action)) {PendingResult pending=goAsync();SmartBedtimeRuntime.deliverFixed(c,Prefs.of(c).getLong("bedReminderAt",0),pending::finish);return;}
 
+        if(Scheduler.SNOOZE.equals(action)){try{synchronized(Scheduler.class){Alarm snoozed=SnoozeDelivery.admit(c,id,intent,System.currentTimeMillis());if(snoozed!=null)Scheduler.fire(c,snoozed,false,true);}}catch(Exception failure){Prefs.put(c,"lastError","Snooze delivery could not be admitted. Review this alarm.");}return;}
         try(Store s=new Store(c)) {
             Alarm a;
             if(Scheduler.TEST.equals(action)) a=Alarm.read(new JSONObject(Prefs.text(c,"test_alarm","{}")));
-            else if(Scheduler.SNOOZE.equals(action)) a=Alarm.read(new JSONObject(Prefs.text(c,"snoozed_"+id,"{}")));
             else if(Scheduler.FIRE.equals(action)) { a=s.alarm(id); if(a==null || !a.enabled) return; if(a.nap!=null||a.napInvalid){if(a.nap!=null)Naps.reconcile(c,a.id);return;} }
             else return;
             synchronized(Scheduler.class){
