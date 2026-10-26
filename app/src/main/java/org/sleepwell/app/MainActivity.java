@@ -20,7 +20,7 @@ import java.util.*;
 
 public class MainActivity extends Activity {
     private final Set<Integer> collapsedAlarms=new HashSet<>();
-    private String settingsGroup="";private final Map<String,Integer> settingsScroll=new HashMap<>();
+    private String settingsGroup="";private final Map<String,Integer> settingsScroll=new HashMap<>();private final Deque<String> settingsBack=new ArrayDeque<>();private boolean settingsRoute;
     private Store store;private int tab=0;private Alarm pendingTone;private MediaPlayer preview;private NfcAdapter nfc;
     private static final int NOTIFY=21,TONE=22,EXPORT_JSON=23,EXPORT_CSV=24,IMPORT=25;
     private final Handler appearanceClock=new Handler(Looper.getMainLooper());
@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
         super.onCreate(state);store=Records.open(this);Notifications.channels(this);if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);
         if(getIntent().getBooleanExtra("visualReview",false))getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         if(state!=null){tab=state.getInt("tab");int[] collapsed=state.getIntArray("collapsedAlarms");if(collapsed!=null)for(int id:collapsed)collapsedAlarms.add(id);}
-        if(state!=null){settingsGroup=validSettingsGroup(state.getString("settingsGroup",""));Bundle positions=state.getBundle("settingsScroll");if(positions!=null)for(String key:positions.keySet())settingsScroll.put(key,Math.max(0,positions.getInt(key)));}
+        if(state!=null){settingsGroup=validSettingsGroup(state.getString("settingsGroup",""));settingsRoute=state.getBoolean("settingsRoute");ArrayList<String> history=state.getStringArrayList("settingsBack");if(history!=null)settingsBack.addAll(history);Bundle positions=state.getBundle("settingsScroll");if(positions!=null)for(String key:positions.keySet())settingsScroll.put(key,Math.max(0,positions.getInt(key)));}
         if(state==null){if("reliability".equals(getIntent().getStringExtra("homeSurfacePage")))tab=5;if(getIntent().getBooleanExtra("showReport",false))tab=2;if(getIntent().hasExtra("destination")){int destination=getIntent().getIntExtra("destination",0);tab=destination==3?4:Math.max(0,Math.min(2,destination));}}
         if(state==null)applySettingsRoute();
         if(!TrackingService.running && Prefs.flag(this,"tracking")) {
@@ -43,10 +43,10 @@ public class MainActivity extends Activity {
     private void recoverNightlySchedule(){try{RecurringTracking.Port owner=RecurringTracking.port;if(owner.preferences(this).getBoolean("enabled",false))RecurringTracking.recover(this,owner,false);}catch(RuntimeException failure){android.util.Log.e("SleepWell","Nightly schedule could not be reconciled on app reopening",failure);}}
     @Override protected void onPause(){rememberSettingsScroll();appearanceClock.removeCallbacks(clockUpdate);if(clockReceiverRegistered){unregisterReceiver(clockChanged);clockReceiverRegistered=false;}super.onPause();}
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){Runnable apply=()->{if(!isDestroyed()&&hasWindowFocus())Design.systemBars(this,tab==3||tab==0&&Appearance.palette(this).dark);};getWindow().getDecorView().post(apply);getWindow().getDecorView().postDelayed(apply,200);}}
-    @Override public void onSaveInstanceState(Bundle b) {super.onSaveInstanceState(b);rememberSettingsScroll();b.putString("settingsGroup",settingsGroup);Bundle positions=new Bundle();for(Map.Entry<String,Integer> entry:settingsScroll.entrySet())positions.putInt(entry.getKey(),entry.getValue());b.putBundle("settingsScroll",positions);b.putInt("tab",tab);b.putIntArray("collapsedAlarms",collapsedAlarms.stream().mapToInt(Integer::intValue).toArray());}
-    private void back(){if(tab==4&&!settingsGroup.isEmpty()){openSettingsGroup("");return;}if(tab==0){finish();return;}tab=tab==11?1:tab==3?0:tab==5||tab==6||tab==9?4:0;render();}
+    @Override public void onSaveInstanceState(Bundle b) {super.onSaveInstanceState(b);rememberSettingsScroll();b.putBoolean("settingsRoute",settingsRoute);b.putStringArrayList("settingsBack",new ArrayList<>(settingsBack));b.putString("settingsGroup",settingsGroup);Bundle positions=new Bundle();for(Map.Entry<String,Integer> entry:settingsScroll.entrySet())positions.putInt(entry.getKey(),entry.getValue());b.putBundle("settingsScroll",positions);b.putInt("tab",tab);b.putIntArray("collapsedAlarms",collapsedAlarms.stream().mapToInt(Integer::intValue).toArray());}
+    private void back(){if(!settingsBack.isEmpty()){rememberSettingsScroll();String[] prior=settingsBack.pop().split(":",2);tab=Integer.parseInt(prior[0]);settingsGroup=prior.length>1?validSettingsGroup(prior[1]):"";render();return;}if(settingsRoute){finish();return;}if(tab==4&&!settingsGroup.isEmpty()){settingsGroup="";render();return;}if(tab==0){finish();return;}tab=tab==11?1:tab==3?0:tab==5||tab==6||tab==9?4:0;render();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){back();}
-    private void navigate(int destination){rememberSettingsScroll();if(destination==3)settingsGroup="";if(destination==2){startActivity(RecordUi.intent(this,HistoryActivity.class));return;}tab=destination==3?4:Math.max(0,Math.min(2,destination));render();}
+    private void navigate(int destination){rememberSettingsScroll();settingsBack.clear();if(destination==3)settingsGroup="";if(destination==2){startActivity(RecordUi.intent(this,HistoryActivity.class));return;}tab=destination==3?4:Math.max(0,Math.min(2,destination));render();}
     private void render() {
         nightArc=null;
         renderedPhase=Appearance.palette(this).phase;
@@ -61,12 +61,12 @@ public class MainActivity extends Activity {
     void refreshTonightClock(){if(tab!=0)return;long now=TonightScreen.clock.getAsLong();java.time.ZoneId zone=java.time.ZoneId.systemDefault();if((nightArc!=null&&nightArc.needsNewOccurrence(now,zone))||(Appearance.automatic(this)&&Appearance.palette(this).phase!=renderedPhase))renderKeepingScroll();else if(nightArc!=null)nightArc.update(now,zone);}
     private static String validSettingsGroup(String group){return group!=null&&Set.of("alarm","sleep","sound","appearance","connections").contains(group)?group:"";}
     private void applySettingsRoute(){
-        String page=getIntent().getStringExtra("settingsPage");if(page!=null)tab=switch(page){case "alarms"->1;case "sound_analysis"->9;case "privacy"->6;case "reliability"->5;case "wind_down"->3;case "alarm_options"->11;default->4;};
+        String page=getIntent().getStringExtra("settingsPage");settingsRoute=page!=null||getIntent().hasExtra("settingsGroup");if(page!=null)tab=switch(page){case "alarms"->1;case "sound_analysis"->9;case "privacy"->6;case "reliability"->5;case "wind_down"->3;case "alarm_options"->11;default->4;};
         String group=validSettingsGroup(getIntent().getStringExtra("settingsGroup"));if(!group.isEmpty()){settingsGroup=group;tab=4;}
     }
     private void rememberSettingsScroll(){if(tab==4){ScrollView current=scroll(getWindow().getDecorView());if(current!=null)settingsScroll.put(settingsGroup,current.getScrollY());}}
-    private void openSettingsGroup(String group){rememberSettingsScroll();settingsGroup=validSettingsGroup(group);tab=4;render();}
-    private void openSettingsPage(int page){rememberSettingsScroll();tab=page;render();}
+    private void openSettingsGroup(String group){rememberSettingsScroll();settingsBack.push(tab+":"+settingsGroup);settingsGroup=validSettingsGroup(group);tab=4;render();}
+    private void openSettingsPage(int page){rememberSettingsScroll();settingsBack.push(tab+":"+settingsGroup);tab=page;render();}
     private void settingsSearch(){startActivity(RecordUi.intent(this,SearchActivity.class).putExtra("searchMode","settings"));}
     private void settingsHome(LinearLayout body){
         if(!settingsGroup.isEmpty()){settingsSection(body);return;}
@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
     }
     private void settingsSection(LinearLayout body){
         String title=switch(settingsGroup){case "alarm"->"Alarms";case "sleep"->"Sleep & bedtime";case "sound"->"Sound & recordings";case "appearance"->"Appearance & feedback";default->"Connected apps";};
-        RecordUi.header(body,title,()->openSettingsGroup(""));Design.text(body,"Settings",12,400,Design.MUTED);Design.space(body,16);
+        RecordUi.header(body,title,this::back);Design.text(body,"Settings",12,400,Design.MUTED);Design.space(body,16);
         switch(settingsGroup){
             case "alarm":
                 settingsRow(body,"bell","Manage alarms","Choose an alarm to edit its settings",()->openSettingsPage(1));
@@ -146,7 +146,7 @@ public class MainActivity extends Activity {
         PlanActivity.detail(body,"link","Connected app access","Review record and alarm permissions",null,()->openSettingsGroup("connections"));Design.line(body);Design.space(body,12);
         HistoryEraseUi.add(body,this::stopPreview,this::render);
     }
-    private void hero(LinearLayout body,String title,String subtitle){body.addView(Design.iconButton(this,"back","Back",()->{tab=4;render();}),new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48)));Design.space(body,14);Design.text(body,title,30,700,Design.INK);Design.space(body,8);Design.text(body,subtitle,15,400,Design.MUTED);}
+    private void hero(LinearLayout body,String title,String subtitle){body.addView(Design.iconButton(this,"back","Back",this::back),new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48)));Design.space(body,14);Design.text(body,title,30,700,Design.INK);Design.space(body,8);Design.text(body,subtitle,15,400,Design.MUTED);}
     private void tonight(LinearLayout body) {
         nightArc=TonightScreen.render(this,body,store,new TonightScreen.Actions(){
             public void alarms(){tab=1;render();}
@@ -185,7 +185,7 @@ public class MainActivity extends Activity {
         LinearLayout actions=Design.row(this),nap=Design.col(this),create=Design.col(this);LinearLayout.LayoutParams left=new LinearLayout.LayoutParams(0,-2,1);left.rightMargin=Ui.dp(this,4);actions.addView(nap,left);LinearLayout.LayoutParams right=new LinearLayout.LayoutParams(0,-2,1);right.leftMargin=Ui.dp(this,4);actions.addView(create,right);body.addView(actions);
         Button napButton=Design.button(nap,"Take a nap",false,this::nap);napButton.setText(RecordUi.withIcon(this,"Take a nap","bed",Design.INK));Button newButton=Design.button(create,"Add alarm",true,()->editAlarm(newAlarm()));newButton.setText(RecordUi.withIcon(this,"Add alarm","plus",Design.CREAM));
     }
-    private void alarmOptions(LinearLayout body){RecordUi.header(body,"Alarm options",()->{tab=1;render();});Design.space(body,14);Design.item(body,"shield","Alarm protection","All alarms",()->startActivity(RecordUi.intent(this,AlarmProtectionActivity.class)));Design.space(body,20);PlanActivity.detail(body,"phone","Bedside NFC tag",Prefs.text(this,"nfcTag","").isEmpty()?"No tag enrolled":"A tag is enrolled","Set up",this::enrollNfc);Design.line(body);Design.space(body,12);Design.text(body,"Place the tag across the room for an NFC challenge. Tag identifiers are a wake-up habit tool, not a security credential.",13,400,Design.MUTED);}
+    private void alarmOptions(LinearLayout body){RecordUi.header(body,"Alarm options",this::back);Design.space(body,14);Design.item(body,"shield","Alarm protection","All alarms",()->startActivity(RecordUi.intent(this,AlarmProtectionActivity.class)));Design.space(body,20);PlanActivity.detail(body,"phone","Bedside NFC tag",Prefs.text(this,"nfcTag","").isEmpty()?"No tag enrolled":"A tag is enrolled","Set up",this::enrollNfc);Design.line(body);Design.space(body,12);Design.text(body,"Place the tag across the room for an NFC challenge. Tag identifiers are a wake-up habit tool, not a security credential.",13,400,Design.MUTED);}
     private Alarm newAlarm(){AlarmDefaultsSettings.Read saved=AlarmDefaultsSettings.load(this);if(!saved.error.isEmpty())Ui.toast(this,saved.error);return saved.create(store.alarms().stream().mapToInt(a->a.id).max().orElse(0)+1);}
     private void alarmSetting(LinearLayout body,String icon,String title,String value,Runnable action){LinearLayout row=Design.item(body,icon,title,value,action);row.setMinimumHeight(Ui.dp(this,48));}
     private String days(Alarm a) {if(a.nap!=null||a.napInvalid)return Naps.summary(this,a);if(a.repeatInvalid)return "Review repeat rule";if(a.repeatRule.custom())return a.repeatRule.label();if(a.dateInvalid)return "Review date";if(a.date!=null)return a.date.format(java.time.format.DateTimeFormatter.ofPattern("EEE d MMM uuuu",Locale.getDefault()));if(a.days.isEmpty())return "One time";if(a.days.equals(Set.of(1,2,3,4,5)))return "Mon – Fri";if(a.days.equals(Set.of(6,7)))return "Sat – Sun";if(a.days.size()==7)return "Every day";String[] d={"Mon","Tue","Wed","Thu","Fri","Sat","Sun"};List<String> v=new ArrayList<>();for(int i=1;i<=7;i++)if(a.days.contains(i))v.add(d[i-1]);return String.join(" ",v);}
@@ -240,7 +240,7 @@ public class MainActivity extends Activity {
     }
     private String audioRetentionLabel(){int days=Prefs.number(this,"audioRetentionDays",7);return days==0?"Keep all":days+(days==1?" day":" days");}
     private void soundAnalysis(LinearLayout body){
-        RecordUi.header(body,"Sound analysis",()->{tab=4;render();});Design.space(body,8);Design.text(body,"Choose what your phone records while you sleep.",15,400,Design.MUTED);Design.space(body,24);
+        RecordUi.header(body,"Sound analysis",this::back);Design.space(body,8);Design.text(body,"Choose what your phone records while you sleep.",15,400,Design.MUTED);Design.space(body,24);
         Design.toggle(body,"Microphone analysis","Estimate snoring and speech on this phone.",Prefs.flag(this,"noiseEnabled"),on->{Prefs.put(this,"noiseEnabled",on);if(on&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO},NOTIFY);render();});
         Design.space(body,14);Switch clips=Design.toggle(body,"Save sound clips",Prefs.flag(this,"noiseEnabled")?"Keep short recordings privately on this phone.":"Turn on microphone analysis first.",Prefs.flag(this,"saveClips"),on->Prefs.put(this,"saveClips",on));clips.setEnabled(Prefs.flag(this,"noiseEnabled"));Design.space(body,22);
         Design.text(body,"Clip recording threshold",17,600,Design.INK);Design.space(body,6);Design.text(body,"Lower values capture quieter sounds.",13,400,Design.MUTED);Design.space(body,8);
@@ -253,7 +253,7 @@ public class MainActivity extends Activity {
         Design.item(body,"info","About sound analysis",null,()->SleepPicker.message(this,"Sound analysis","A bundled model estimates snoring and speech locally. Labels can be wrong and do not identify who made a sound. Microphone changes apply next recording; clip threshold affects saving, not class sensitivity. Relative sound levels are not calibrated decibels."));
         String analysisError=Prefs.text(this,"analysisError","");if(!analysisError.isEmpty())Design.text(body,analysisError,13,400,Design.MUTED);
         String error=Prefs.text(this,"audioError","");if(!error.isEmpty()){Design.space(body,18);Design.text(body,"Microphone needs attention",17,600,Design.INK);Design.space(body,6);Design.text(body,error,13,400,Design.MUTED);}
-        Design.button(body,"Done",true,()->{tab=4;render();});
+        Design.button(body,"Done",true,this::back);
     }
     private void open(Intent i) {try{startActivity(i);}catch(ActivityNotFoundException e){Ui.toast(this,"This setting is unavailable on this device.");}}
     @Override public void onRequestPermissionsResult(int r,String[] p,int[] g) {super.onRequestPermissionsResult(r,p,g);render();}
