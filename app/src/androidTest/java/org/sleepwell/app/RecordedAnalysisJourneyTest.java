@@ -185,12 +185,27 @@ public final class RecordedAnalysisJourneyTest {
         List<String> rows = new ArrayList<>(); for (RecordedRecognitionStore.Entry entry : store.entries())
             rows.add(entry.id + "|" + entry.created + "|" + entry.source + "|" + entry.result); return rows;
     }
+    private void restorePreferences(Map<String, ?> original) {
+        SharedPreferences.Editor edit = Prefs.of(c).edit().clear();
+        for (Map.Entry<String, ?> entry : original.entrySet()) {
+            String key = entry.getKey(); Object value = entry.getValue();
+            if (value instanceof Boolean) edit.putBoolean(key, (Boolean) value);
+            else if (value instanceof Integer) edit.putInt(key, (Integer) value);
+            else if (value instanceof Long) edit.putLong(key, (Long) value);
+            else if (value instanceof Float) edit.putFloat(key, (Float) value);
+            else if (value instanceof String) edit.putString(key, (String) value);
+            else if (value instanceof Set<?>) { Set<String> strings = new HashSet<>(); for (Object item : (Set<?>) value) strings.add((String) item); edit.putStringSet(key, strings); }
+            else throw new AssertionError("Unsupported original preference type");
+        }
+        assertTrue("Restore original preference values and absence", edit.commit());
+        assertEquals(original, Prefs.of(c).getAll());
+    }
 
     @Test public void savedClipRunsBundledModelsPersistsAndDeletesSummary() throws Exception {
         assertEquals("true", InstrumentationRegistry.getArguments().getString("ciReview"));
         assertEquals("1", device.executeShellCommand("getprop ro.kernel.qemu").trim()); assertEquals(36, android.os.Build.VERSION.SDK_INT); silent();
         assertFalse(Prefs.flag(c, "trackingPaused")); assertEquals(0L, Prefs.of(c).getLong("session", 0));
-        Map<String, ?> preferences = new HashMap<>(Prefs.of(c).getAll());
+        Map<String, ?> originalPreferences = new HashMap<>(Prefs.of(c).getAll());
         boolean estimatesExisted = c.getDatabasePath(ESTIMATES).exists(); long originalRevision; List<String> originalRows;
         try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) { originalRevision = store.revision(); originalRows = snapshotRows(store); }
         assertTrue("This native CI journey requires an initially empty dedicated estimate DB", originalRows.isEmpty());
@@ -216,6 +231,12 @@ public final class RecordedAnalysisJourneyTest {
         };
         app.registerActivityLifecycleCallbacks(observer); boolean drained = false; String savedId = "";
         try {
+            // Own only these four inert CI defaults during the flow. A delayed BOOT_COMPLETED
+            // may write the same values; every key is still compared against this full baseline.
+            SharedPreferences idle = Prefs.of(c); SharedPreferences.Editor initialize = idle.edit();
+            for (String key : List.of("ringing", "tracking", "trackingPaused")) if (!idle.contains(key)) initialize.putBoolean(key, false);
+            if (!idle.contains("session")) initialize.putLong("session", 0L);
+            assertTrue(initialize.commit()); Map<String, ?> preferences = new HashMap<>(idle.getAll());
             i.runOnMainSync(() -> Records.factory = context -> new Store(context, database));
             launch(record, updated); String recording = "Recording ending " + RecordUi.preciseClock(c, start + DURATION, java.time.ZoneId.systemDefault());
             require(recording); click(recording); require("Review this copy, then explicitly start analysis."); require("Analyze this copy");
@@ -228,6 +249,7 @@ public final class RecordedAnalysisJourneyTest {
                 } catch (RuntimeException | AssertionError failure) { throw failure; } catch (Exception failure) { throw new AssertionError(failure); }
             }); return done[0]; });
             i.runOnMainSync(() -> assertTrue("Actual in-flight native progress reached the UI", progress.stream().anyMatch(s -> s.matches("Analyzing window [01] of 2…"))));
+            assertEquals("Native analysis preserves every baseline preference", preferences, Prefs.of(c).getAll());
             RecordedRecognitionStore.Entry saved;
             try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) { List<RecordedRecognitionStore.Entry> rows = store.entries(); assertEquals(1, rows.size()); saved = rows.get(0); assertEquals(originalRevision, store.revision()); }
             savedId = saved.id; JSONObject source = saved.source, result = saved.result;
@@ -271,19 +293,21 @@ public final class RecordedAnalysisJourneyTest {
             } finally {
                 app.unregisterActivityLifecycleCallbacks(observer); i.runOnMainSync(() -> Records.factory = previous);
                 if (drained) {
-                    // Delete only this journey's UUID result, even when failure happened before it was assigned above.
-                    synchronized (RecordedRecognitionStore.LOCK) {
-                        try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) {
-                            for (RecordedRecognitionStore.Entry entry : store.entries())
-                                if (entry.source.optLong("record") == record && entry.source.optLong("clip") == clip
-                                        && wavHash.equals(entry.source.optString("wavSha256")) && PCM_SHA.equals(entry.source.optString("pcmSha256"))) store.delete(entry.id);
-                            assertEquals(originalRows, snapshotRows(store)); assertEquals(originalRevision, store.revision());
+                    try {
+                        // Delete only this journey's UUID result, even when failure happened before it was assigned above.
+                        synchronized (RecordedRecognitionStore.LOCK) {
+                            try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) {
+                                for (RecordedRecognitionStore.Entry entry : store.entries())
+                                    if (entry.source.optLong("record") == record && entry.source.optLong("clip") == clip
+                                            && wavHash.equals(entry.source.optString("wavSha256")) && PCM_SHA.equals(entry.source.optString("pcmSha256"))) store.delete(entry.id);
+                                assertEquals(originalRows, snapshotRows(store)); assertEquals(originalRevision, store.revision());
+                            }
+                            if (!estimatesExisted) assertTrue("Remove only our newly created empty estimate DB", c.deleteDatabase(ESTIMATES));
                         }
-                        if (!estimatesExisted) assertTrue("Remove only our newly created empty estimate DB", c.deleteDatabase(ESTIMATES));
-                    }
-                    assertTrue(audio.delete()); c.deleteDatabase(database);
+                        assertTrue(audio.delete()); c.deleteDatabase(database);
+                    } finally { restorePreferences(originalPreferences); }
                 }
-                assertEquals(preferences, Prefs.of(c).getAll()); silent();
+                assertEquals(originalPreferences, Prefs.of(c).getAll()); silent();
             }
         }
     }
