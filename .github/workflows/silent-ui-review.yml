@@ -13,6 +13,7 @@ on:
           - report
           - report-flow
           - organization
+          - organized-settings
           - sensing-travel
           - sonar-night
           - sound-categories
