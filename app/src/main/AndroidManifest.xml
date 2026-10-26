@@ -208,6 +208,7 @@
         <activity android:name=".SnoringCuesActivity" android:exported="false" />
         <activity android:name=".SoundLabelActivity" android:exported="false" />
         <activity android:name=".SoundEventsActivity" android:exported="false" />
+        <activity android:name=".RecordedRecognitionActivity" android:exported="false" />
         <activity android:name=".SoundLibrarySettingsActivity" android:exported="false" />
         <activity android:name=".SoundSensitivityActivity" android:exported="false" />
         <activity android:name=".RelativeAlarmTimeActivity" android:exported="false" />

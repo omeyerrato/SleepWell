@@ -104,6 +104,7 @@ public class MainActivity extends Activity {
                 settingsRow(body,"sun","Travel mode","Time zones and daylight reminders",()->startActivity(RecordUi.intent(this,TravelActivity.class)));break;
             case "sound":
                 settingsRow(body,"wave","Sound analysis","Choose recorded sound categories",()->openSettingsPage(9));
+                settingsRow(body,"wave","Laughter & instruments","Analyze a recording · experimental estimates",()->startActivity(RecordUi.intent(this,RecordedRecognitionActivity.class)));
                 settingsRow(body,"wave","Snoring cues","Optional sound and vibration responses",()->startActivity(RecordUi.intent(this,SnoringCuesActivity.class)));
                 settingsRow(body,"music","Sleep sounds","Mixer, playlists and bedtime audio",()->startActivity(RecordUi.intent(this,SleepSoundsActivity.class)));
                 settingsRow(body,"file","Recordings & retention","Storage limits and saved recordings",()->startActivity(RecordUi.intent(this,SoundLibrarySettingsActivity.class)));

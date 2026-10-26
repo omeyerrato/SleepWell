@@ -29,6 +29,7 @@ final class SoundClips {
         List<JSONObject> pending=store.rows("SELECT * FROM pending_clip_deletes WHERE clip=?",""+id);if(pending.isEmpty())return;JSONObject intent=pending.get(0);
         List<JSONObject> rows=store.rows("SELECT * FROM clips WHERE id=?",""+id);
         boolean matching=!rows.isEmpty()&&rows.get(0).optLong("session")==intent.optLong("session")&&rows.get(0).optLong("time")==intent.optLong("time")&&rows.get(0).optString("path").equals(intent.optString("path"));
+        store.recognitionSourceChanging(intent.optLong("session"),id);
         String path=intent.optString("path");File file=FileSafety.clip(context,path);
         // Legacy shared paths remain until their last reference is removed.
         if(store.rows("SELECT id FROM clips WHERE path=?"+(matching?" AND id!=?":""),matching?new String[]{path,""+id}:new String[]{path}).isEmpty()&&file.exists()&&!file.delete())throw new IOException("Deletion pending: the audio file could not be removed. Try again.");

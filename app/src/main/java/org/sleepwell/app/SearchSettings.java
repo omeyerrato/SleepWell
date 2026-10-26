@@ -66,6 +66,7 @@ final class SearchSettings {
         direct("Recording retention",PRIVACY,"Audio retention","Retention days, favorites and reviewed cleanup","delete old recordings retention storage keep favorites starred sounds space audio cleanup",SoundLibrarySettingsActivity.class),
         direct("Favorite sounds",SOUND,"Recordings","Open saved favorite recordings","favorites favourites starred snoring talking recordings clips",FavoriteSoundsActivity.class),
         direct("Cloud audio archive",PRIVACY,"Backup › Cloud backup","Review saved audio archives in your chosen folder","cloud audio archive recording backup export restore",CloudAudioActivity.class),
+        direct("Laughter & instruments",SOUND,"Recorded audio","Explicit recorded-audio analysis; uncertain experimental estimates","laughter laugh instrument piano guitar recorded audio classify analysis",RecordedRecognitionActivity.class),
         direct("Sleep sounds",SOUND,"Sleep sounds","Review lullabies, mixer and timers; Play is explicit","lullabies lullaby rain ocean wind brown noise white noise mixer timer fade audio radio stations internet stream",SleepSoundsActivity.class),
         direct("Fade external music",SOUND,"Sleep sounds","Opt-in device media-volume fade for eligible tracking","spotify external music audio player fade stillness media volume",ExternalMediaFadeActivity.class),
         page("Wind-down",SLEEP,"Wind-down","Open the bedtime screen without starting tracking","wind down winddown bedtime guard routine relax", "wind_down"),
