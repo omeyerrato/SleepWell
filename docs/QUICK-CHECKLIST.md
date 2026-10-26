@@ -18,6 +18,11 @@ real recorded CPU analysis/save/reopen/delete13.826s/3. Each proves only its nam
 actions and persistence. Reliable additional recognition, all36screens and
 physical/overnight acceptance remain open. The phone is still at2cbfe043.
 
+Unreleased **69dbbca3** moves Repeat rule into Schedule & dates, keeping custom
+or invalid repeat status visible and restoring room for the main Snooze row.
+Production build21s/original signer verified; focused organization CI40407366922
+is running. Its actual captures and persistence result are not accepted yet.
+
 ## Implemented
 
 - [x] Best-effort prevent-leave and recognized power-menu handling.
