@@ -3,29 +3,27 @@
 The full BUILD-PROMPT remains the goal. There are 36 intended phone screens;
 wearables/watch companions and hardware vitals are excluded. No claim of all-screen final acceptance is made. The first UI pass was rejected by the user for visual fidelity.
 
-## Current execution override — 25 October 2026
+## Current execution — 26 October 2026
 
-The latest user direction is features first, using parallel implementation agents
-in separate worktrees. The dedicated design reviewer is stopped. Broad design,
-bug and security work is deferred, as are new unit/native/lint/screenshot batches.
-Use essential production builds for integration. Do not act on the personal phone
-(including installation, ADB queries, capture, microphone, alarm or other outputs).
-The quiet-device procedures below are historical, not current authorization.
+Features first, with implementation agents in isolated worktrees. The dedicated
+reviewer stays stopped. Do not run new unit-test batches or broad design/bug/security
+campaigns. Use essential builds, data-preservation checks and bounded changed-flow
+checks to finish actual behavior; a focused Report flow is not full-app acceptance.
 
-Current application candidate 714fc4cb builds in 1m52s with the original debug key
-and schema17/backup13. It adds pinned movement-night sound-analysis outcomes,
-shared historical/live empty/error states, actual inline retained Report playback
-and PCM waveforms, plus matching microphone cleanup before parent Math switching.
-All earlier feature paths remain included. Old SONAR-only backup readers reject
-new motion status; current readers accept previous empty/SONAR evidence. Runtime,
-recognition/recovery/provider/decoder and visual acceptance remain unverified.
-The user-authorized 86d0d1e phone update succeeded with installed hash and all
-original rows/preferences/private files preserved. Device Care still suspends it;
-schema7→17 first-open migration remains pending. No new installation authorization
-extends to this newer candidate, alarm/audio/sensor/provider tests or the reviewer.
-FEATURE-MATRIX.md and REMAINING-WORK.md carry current implementation/acceptance
-bounds. The numbered sequence below describes the original full plan and does
-not reinstate its old ordering or stopped reviewer.
+The authorized **714fc4cb** phone update succeeded with exact installed APK hash,
+schema17 original rows/preferences/user files preserved. Only AndroidX's profile
+marker update timestamp changed. No app launch, suspension change or output test
+ran. Further personal-phone actions require their own authorization.
+
+Source **2cbfe043** builds in48s with actual saved provider-stage Report intervals,
+scoped trend navigation and less repeated Report text. A single silent saved-night
+Report flow passed at ancestor4e3abe96; only later production delta is imported-duration
+copy. Eight actual fixture captures were inspected and original data/persistence
+assertions passed. Provider-stage/audio/device/overnight/all36-screen acceptance
+remains open; editor captures are scrolled and not full reference matches.
+The candidate is not installed. Schema17/format13 remain current, including the
+older SONAR-only reader limitation. The original numbered sequence below retains
+full scope; FEATURE-MATRIX.md and REMAINING-WORK.md carry current per-feature limits.
 
 1. Repair the root compositions against the boards: Tonight, Alarms, Report and Settings (latest user override).
    Correct proportion, dock alignment, icon vocabulary and system-bar continuity.
@@ -48,7 +46,7 @@ not reinstate its old ordering or stopped reviewer.
 
 Use FEATURE-MATRIX.md and feature-matrix.json for implementation status, and
 DESIGN-REVIEW.md for the separate strict visual acceptance gate. Passing a build
-does not satisfy either gate. The independent reviewer must recheck fresh images.
+does not satisfy either gate. Every accepted screen still needs actual reference comparison; the dedicated reviewer remains stopped.
 
 ## Current device constraint
 

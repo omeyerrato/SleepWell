@@ -12,28 +12,32 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 26 October
 
-Application source **714fc4cb** builds in **1m52s** with schema17 / metadata13
-and the original installed signing key. This batch adds saved motion-night
-sound-analysis outcomes, honest historical empty/error states, inline Report
-playback with waveforms from retained audio, and confirmed microphone cleanup
-before switching a task to Math. Earlier alarm, sensing, report, backup and
-integration paths remain included in the [feature checklist](docs/FEATURE-CHECKLIST.md).
+Published source **2cbfe043** builds in **48s**, with the original signing key and
+schema17 / metadata13. It brings saved provider stages into Report, shows the
+selected trend dates, scopes Read details to that period, and keeps awake review
+and recorded insights in their relevant options menus. Repeated no-audio messages
+collapse to one night-level status. Earlier motion-analysis, alarm, sensing, backup
+and integration paths remain included in the [feature checklist](docs/FEATURE-CHECKLIST.md).
 
-[Download the development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-714fc4cb).
-Uploaded size/digest match the frozen signed artifact. This is build-only evidence;
-new capture/recovery/backup/audio behavior and full36screen design acceptance are
-unverified. See [precise motion/report limits](docs/MOTION-ANALYSIS-AND-REPORT-AUDIO.md)
-and the [remaining checklist](docs/REMAINING-WORK.md).
+[Download the development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-2cbfe04).
+Uploaded APK and sidecar digests match the frozen local artifacts. One silent
+saved-night Report flow passed at ancestor4e3abe96, including edit/reopen
+persistence and eight actual Android fixture captures. The only later production
+delta clarifies imported-duration copy. Provider-stage rendering, real playback,
+provider/overnight behavior and full36screen design acceptance remain open.
+[Scoped evidence and visual differences](docs/verification/2026-10-26-report-flow/README.md).
 
 **Compatibility:** older SONAR-only readers reject backups containing new movement
 analysis metadata even though schema17/format13 are unchanged. This reader accepts
-old empty/SONAR evidence; historical data is not retroactively labeled complete.
+old empty/SONAR evidence. Source-reported stages are retained imports, not a local
+phone stage classifier. See [motion/report limits](docs/MOTION-ANALYSIS-AND-REPORT-AUDIO.md)
+and the [remaining checklist](docs/REMAINING-WORK.md).
 
-The separately authorized **86d0d1e** phone update preserved its exact checksum,
-original records/preferences/private files. Samsung Device Care still suspends it;
-first-open schema7→17 migration remains pending. The newer candidate is uninstalled.
-No new unit/native/lint/screenshot batches or phone/model/microphone/audio/provider/
-output actions ran for this batch.
+Your separately authorized **714fc4cb** phone update is installed with its exact
+published checksum and original signer. Before/after schema17 database rows,
+preferences and user files are preserved; only AndroidX's profile marker changed
+its package-update timestamp. No app launch or outputs ran. The newer2cbfe043
+candidate is **not installed**. [Phone update evidence](docs/verification/2026-10-26-phone-714fc4cb/README.md).
 
 ## Working capabilities
 

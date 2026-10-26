@@ -1,19 +1,23 @@
 # SleepWell feature checklist — 26 October 2026
 
-Not fully done. Checked items have actual production implementation and build
-success; they are not claims of current phone/overnight validation. Unchecked
-acceptance items below remain required. Latest application source 714fc4cb builds
-in 1m52s; its published APK retains the installed signer
-and matching SHA256. It is published but **not installed**. Schema17 / backup13
-remain current. The installed phone build is **86d0d1e**: its checksum, original
-records, preferences and private files were verified preserved. Samsung Device
-Care still suspends the app; schema7 was last verified and first-open migration
-**7 → 17** remains pending. Installation is not proof that migration has run.
+Not fully done. Checked feature paths have production implementation/build evidence,
+not current phone or overnight acceptance. The phone build **714fc4cb** is now installed
+through the user-authorized update. Its APK checksum and original signer match;
+before/after schema17 database rows, preferences and user files are preserved.
+Only the AndroidX package-update marker timestamp changed. No app launch or
+physical output tests ran. [Update evidence](verification/2026-10-26-phone-714fc4cb/README.md).
 
-Current priority remains features first. New tests/native batches, screenshots,
-dedicated design review, broad bug review and security audits remain deferred at
-the user's request. The full functional goal and all **36 supplied design screens
-across 12 boards** remain required, not accepted by these checkmarks.
+Published newer source **2cbfe043** builds in48s: actual saved provider stages in Report,
+visible date-range/scoped details and less repeated night-report copy. One silent
+saved-night Report flow at ancestor4e3abe96 passed, including edit/reopen persistence
+and eight fixture captures. Only later production delta: imported-duration copy.
+This is not installed; provider-stage and real playback acceptance remain open.
+[Evidence and remaining visual differences](verification/2026-10-26-report-flow/README.md).
+
+Features remain first; no new unit-test batches. A bounded saved-night Report flow passed on
+an isolated silent CI emulator. Broad design/bug/security campaigns
+and the dedicated reviewer remain deferred. All **36 reference screens** remain
+required; a successful build or one flow does not establish full acceptance.
 
 ## Implemented feature paths
 
@@ -76,8 +80,8 @@ across 12 boards** remain required, not accepted by these checkmarks.
 - [x] Report inline retained event playback with measured waveforms and lifecycle cleanup.
 - [x] Historical analysis empty/error/legacy-unknown states across live tracking and reports.
 - [x] Parent microphone tasks wait for confirmed capture cleanup before switching to Math.
-- [x] User-authorized 86d0d1e phone update; installed checksum, original records,
-  preferences and private files verified preserved.
+- [x] User-authorized 714fc4cb phone update; installed checksum, schema17 rows,
+  preferences and user files preserved. Only AndroidX profile timestamp changed.
 
 ## Still missing or narrower than full parity
 
@@ -110,10 +114,8 @@ across 12 boards** remain required, not accepted by these checkmarks.
 - [ ] CSV source graphs/event-pair inference/inspection/export and future-night calendar job/uncertainty handling.
 - [ ] Full36-screen reference design fidelity, especially Report/charts and menus.
 - [ ] Remaining interaction bugs and security review, deferred by user instruction.
-- [ ] When the user permits reopening, verify the installed build's schema7→17
-  migration after Device Care suspension is resolved; do not silently change it.
-- [ ] Separately authorized installation/data-preservation review for published
-  714fc4cb, which is newer than installed86d0d1e.
+- [x] Authorized 714fc4cb phone installation and data-preservation comparison.
+- [ ] Phone runtime/navigation, Device Care state and actual migration-path acceptance.
 - [ ] Motion analysis count/checkpoint/recovery/backup and inline Report playback lifecycle.
 - [ ] Full completion verification; current builds alone do not establish it.
 
@@ -121,8 +123,8 @@ Forced hardware power-off cannot be prevented by an ordinary Android app. New
 runtime behavior is unverified. Historical full-app native failures and independent
 laughter-positive failures remain unresolved; narrower historical passes do not
 supersede them or validate the current candidate. No new tests/native/lint/
-screenshot batches or phone/provider/codec/admin/alarm/audio/sensor actions ran for
-714fc4cb. This checklist does not authorize such actions or reinstate deferred work.
+screenshot batches or phone/provider/codec/admin/alarm/audio/sensor runtime actions ran for
+714fc4cb. Its subsequent authorized installation is recorded separately above. This checklist does not authorize such actions or reinstate deferred work.
 
 The consolidated actionable/deferred scope is in [REMAINING-WORK.md](REMAINING-WORK.md).
 Source/subfeature detail remains in the root-maintained [FEATURE-MATRIX.md](FEATURE-MATRIX.md);

@@ -1842,11 +1842,12 @@
         "RecordChart.java",
         "ChartSeries.java",
         "GraphView.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "HistoryActivity.java"
       ],
-      "validation": "Not verified for this feature Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest 2 and stronger ReportReferenceFlowTest 1/eight originals await fresh native/strict review; no visual completion inferred. Fresh d43f480/focusedCI40068186520 PASS4classes/5methods/13required originals: ReportRibbonNativeTest 2 PASS1.212s,ReportReferenceFlowTest 1 PASS33.744s. All13 originals individually inspected: report hierarchy/editor geometry pass, hard color-bin stripes and touching chips rejected. b4deeb3 blends only visual colors within contiguous measured spans (unchanged metrics/exact gaps), adds missing-signal Canvas assertions and4dp chip gutters; fresh raster/visual run required. Missing stage estimator remains explicit. Fresh dc30736/focusedCI40072560126 PASS4classes/5methods/all13 required originals, individually reviewed against boards01/08. Ribbon color blending/exact gaps, filter gutters, seven-row history, Week/Month/Year and complete editor Notes/Save/Delete pass this bounded correction. Stage estimator/full app parity remain incomplete. ba1ae61/0dcbb44 use exactpersistedSensorProvenance.SONAR for contactless graph/accessibility labels, preserve actualsamplegaps, and retain sensor/config throughgoalzonecopies. Newprivate saved-sonar navigation originals remain pending.",
+      "validation": "Not verified for this feature Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest 2 and stronger ReportReferenceFlowTest 1/eight originals await fresh native/strict review; no visual completion inferred. Fresh d43f480/focusedCI40068186520 PASS4classes/5methods/13required originals: ReportRibbonNativeTest 2 PASS1.212s,ReportReferenceFlowTest 1 PASS33.744s. All13 originals individually inspected: report hierarchy/editor geometry pass, hard color-bin stripes and touching chips rejected. b4deeb3 blends only visual colors within contiguous measured spans (unchanged metrics/exact gaps), adds missing-signal Canvas assertions and4dp chip gutters; fresh raster/visual run required. Missing stage estimator remains explicit. Fresh dc30736/focusedCI40072560126 PASS4classes/5methods/all13 required originals, individually reviewed against boards01/08. Ribbon color blending/exact gaps, filter gutters, seven-row history, Week/Month/Year and complete editor Notes/Save/Delete pass this bounded correction. Stage estimator/full app parity remain incomplete. ba1ae61/0dcbb44 use exactpersistedSensorProvenance.SONAR for contactless graph/accessibility labels, preserve actualsamplegaps, and retain sensor/config throughgoalzonecopies. Newprivate saved-sonar navigation originals remain pending. Intermediate source21796c55 built PASS2m47s; its initial Report visibility failure is historical, corrected by later commits. No new unit/lint/full-app or phone output tests. Final single Report flow CI40289201899 at4e3abe96 PASS1method/8original screenshots with preserved raw rows/preferences and saved edit/reopen checks. Current2cbfe043 assembles PASS48s; only later production delta is imported-duration copy. Provider-stage rendering, actual audio playback and physical/overnight/full-app acceptance are not covered. See verification/2026-10-26-report-flow/README.md.",
       "status": "implemented",
-      "notes": "Implemented: recent 60 sessions, interrupted-state display, recorded time, detail screen. Pagination pending.",
+      "notes": "Implemented: recent 60 sessions, interrupted-state display, recorded time, detail screen. Pagination pending. Source61630db8/6ac2106b adds a visible 48dp calendar/date-range control under Week/Month/Year, retained anchor/period/draft recreation state, and Read details selecting a real latest record from the rendered range/cutoff, omitted for an empty range. Recorded insights remains available in Trend options. First single Report flow at21796c55 failed on details falling below the dock; source6ac2106b corrected the row order, and the later single saved-night flow passed. New date-range/calendar/recreation branches remain unverified by that same-range flow.",
       "id": "F069",
       "tests": [
         {
@@ -2446,11 +2447,13 @@
         "HealthSleepAndroid.java",
         "HealthSleepSync.java",
         "HealthSleepStore.java",
-        "HealthSleepSourceActivity.java"
+        "HealthSleepSourceActivity.java",
+        "ProviderSleepReport.java",
+        "ProviderStageChart.java"
       ],
-      "validation": "da0f571 / CI40141612460: HealthSleepStorageTest 12 and HealthConnectFlowTest 2 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects.",
+      "validation": "da0f571 / CI40141612460: HealthSleepStorageTest 12 and HealthConnectFlowTest 2 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. Intermediate source21796c55 built PASS2m47s; its initial Report visibility failure is historical, corrected by later commits. No new unit/lint/full-app or phone output tests. Final single Report flow CI40289201899 at4e3abe96 PASS1method/8original screenshots with preserved raw rows/preferences and saved edit/reopen checks. Current2cbfe043 assembles PASS48s; only later production delta is imported-duration copy. Provider-stage rendering, actual audio playback and physical/overnight/full-app acceptance are not covered. See verification/2026-10-26-report-flow/README.md.",
       "status": "partial",
-      "notes": "Manual sleep-only permissions/import/export, stable IDs/versions, provider changes/deletions, conflict review and historical provenance are real. Schema10/format7 retains source stages and clears live ownership on restore. Actual Health Connect provider exchange remains unverified; no hardware vitals. See HEALTH-CONNECT-SLEEP.md.",
+      "notes": "Manual sleep-only permissions/import/export, stable IDs/versions, provider changes/deletions, conflict review and historical provenance are real. Schema10/format7 retains source stages and clears live ownership on restore. Actual Health Connect provider exchange remains unverified; no hardware vitals. See HEALTH-CONNECT-SLEEP.md. Source21796c55 also projects retained Health Connect stage intervals directly in Report: source-labelled real-time bars, gaps left blank, only actual visible stage kinds in the legend, interval tap/keyboard/accessibility inspection (minute-level clock labels) and original Source details. Current edited bounds clip the view without rewriting source evidence; differing source offsets use an explicitly UTC timeline. No phone stage inference or real provider exchange is established.",
       "id": "F087",
       "tests": [
         {
@@ -4089,11 +4092,13 @@
         "HealthSleepCodec.java",
         "HealthSleepTables.java",
         "HealthSleepStore.java",
-        "HealthSleepSync.java"
+        "HealthSleepSync.java",
+        "ProviderSleepReport.java",
+        "ProviderStageChart.java"
       ],
-      "validation": "da0f571 / CI40141612460: HealthSleepStorageTest 12 and HealthConnectFlowTest 2 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects.",
+      "validation": "da0f571 / CI40141612460: HealthSleepStorageTest 12 and HealthConnectFlowTest 2 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. Intermediate source21796c55 built PASS2m47s; its initial Report visibility failure is historical, corrected by later commits. No new unit/lint/full-app or phone output tests. Final single Report flow CI40289201899 at4e3abe96 PASS1method/8original screenshots with preserved raw rows/preferences and saved edit/reopen checks. Current2cbfe043 assembles PASS48s; only later production delta is imported-duration copy. Provider-stage rendering, actual audio playback and physical/overnight/full-app acceptance are not covered. See verification/2026-10-26-report-flow/README.md.",
       "status": "partial",
-      "notes": "Native private-provider import/dedup/update/delete/conflict/export/restore cases pass. Imported stages remain source-reported, not a SleepWell stage estimate. Real provider availability/consent/exchange required. See HEALTH-CONNECT-SLEEP.md.",
+      "notes": "Native private-provider import/dedup/update/delete/conflict/export/restore cases pass. Imported stages remain source-reported, not a SleepWell stage estimate. Real provider availability/consent/exchange required. See HEALTH-CONNECT-SLEEP.md. Source21796c55 now shows saved source-reported stages in the main Report as well as original provider details. Current visible bounds never retime/relabel those intervals; local awake edits do not rewrite provider labels. This is existing retained evidence, not a new sensor classifier or new provider request. Main Report provider-stage runtime/design acceptance remains unverified.",
       "id": "F136",
       "tests": [
         {

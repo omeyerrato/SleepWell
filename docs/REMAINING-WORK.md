@@ -9,15 +9,19 @@ bounded historical pass does not establish that whole goal is complete.
 
 | Item | Current state |
 | --- | --- |
-| Installed phone build | **86d0d1e**, installed with matching checksum; original records, preferences and private files verified preserved. |
-| Phone availability | Samsung Device Care still suspends the app. Last verified database is **schema 7**; first-open migration **7 → 17** remains pending. Installation did not establish migration or runtime success. |
-| Published candidate | **714fc4cb**, production debug build **PASS, 1m52s**, original signer and uploaded/local digest verified. **Not installed.** Schema 17 / metadata backup format 13. |
-| New feature evidence | Production implementation/build only. New runtime, physical output, provider, TTS engine and overnight behavior remain unverified. |
-| Current work policy | Features first. New unit/native test batches, screenshot/evidence batches, dedicated design review, broad bug review and security audits remain **deferred at the user's request**. This checklist does not restart them. Essential integration/build and data-preservation work remain applicable. |
+| Installed phone build | **714fc4cb**, user-authorized streamed update; installed checksum and signer match. Schema17 rows, preferences and user files preserved; only the AndroidX package-update marker timestamp changed. |
+| Phone availability | Connected for the authorized update. Before/after database is **schema17**. No app launch, suspension change or runtime/output test was performed; current foreground usability is not claimed. |
+| Published candidate | **2cbfe043**, production debug build **PASS, 48s**, original signer and uploaded APK/sidecar digests verified. **Not installed.** Schema17 / metadata13. |
+| New feature evidence | One silent saved-night Report flow passed with edit/reopen persistence and8actual fixture captures at ancestor4e3abe96; only later production delta is imported-duration copy. Provider-stage/audio/physical/provider/overnight acceptance remains open. |
+| Current work policy | Features first; no new unit-test batches. Essential builds, data preservation and a bounded changed-flow check remain applicable. Dedicated reviewer and broad design/bug/security campaigns remain deferred. A single silent emulator Report flow passed, without reinstating a full-app campaign. |
 
-The installed build is not 571018b or 121dbd5; those are historical milestones.
-The newer 714fc4cb candidate is not the installed build. No further phone, alarm,
-audio, microphone, sensor, provider or bridge actions are authorized by this note.
+The installed build is714fc4cb. Newer candidate2cbfe043 builds in48s and is
+uninstalled. A single silent saved-night Report flow passed at ancestor4e3abe96;
+only later production delta: provider-duration explanation. Eight actual Android
+fixture captures were inspected; editor header/extra controls and full36-screen
+acceptance remain open. See [Report evidence](verification/2026-10-26-report-flow/README.md)
+and [phone update evidence](verification/2026-10-26-phone-714fc4cb/README.md).
+This note authorizes no further personal-phone or output actions.
 
 ## Concrete remaining implementation and interpretation limits
 
@@ -61,12 +65,13 @@ progress and a Math alternative; it is not physical-jump sensing. See
 [ChallengeRoutine](../app/src/main/java/org/sleepwell/app/ChallengeRoutine.java).
 Runtime acceptance for these paths remains open rather than implementation absent.
 
-## Deferred functional acceptance — retain, do not execute now
+## Functional acceptance still required
 
-- [ ] After the user permits reopening the suspended app, verify the installed
-  86d0d1e first-open schema 7 → 17 migration and retained data. A separate authorized
-  installation is needed for 714fc4cb; it must preserve signer, records, preferences
-  and private files. Do not silently remove Device Care suspension.
+- [x] Separately authorized installation of 714fc4cb with installed hash and
+  original rows/preferences/user files preserved. Both snapshots already use
+  schema17; this is not a first-open migration test or app runtime acceptance.
+- [ ] Real phone app navigation, current Device Care state and functional acceptance
+  remain unverified; do not change suspension or run outputs without authorization.
 - [ ] Actual alarm delivery and best-effort prevent-leave/power-menu behavior;
   extra-loud output and restoration; gentle ramp, sound delay, vibration, screen
   sunrise, flashlight, radio/playlist fallback, backup/timeout and wake-up checks.
@@ -130,8 +135,8 @@ finish a whole board, and adding feature paths does not finish UI/interaction wo
   48dp complete targets, readable charts, unclipped footers, font scaling/reduced
   motion, selected states, predictable Save/Cancel/back/recreation and concise copy.
 
-The dedicated reviewer remains stopped. Design/security/broad bug work is retained
-as deferred scope, not silently removed and not reinstated as current execution.
+The dedicated reviewer remains stopped. The full design/security/broad bug campaigns remain deferred. A bounded Report
+implementation correction does not reinstate the stopped reviewer or accept all screens.
 
 ## References and historical evidence
 

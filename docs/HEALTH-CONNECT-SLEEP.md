@@ -36,3 +36,25 @@ A durable local epoch invalidates prepared jobs after replacement/erase. Remote 
 - https://developer.android.com/jetpack/androidx/releases/health-connect
 
 Android 14+ uses a system Health Connect module; earlier supported versions require its provider app. Actual access depends on OS/profile/provider availability and granted sleep permissions. Distribution may require Health Connect policy declarations/approval. This source increment is a manual sleep-exchange feature, not verified interoperability with every provider or completion of SleepWell.
+
+## Main Report projection — source21796c55
+
+The saved provider stages now appear directly on the main Report. The existing
+strict historical codec is decoded with the report snapshot; no provider query,
+permission prompt, sensor inference or metadata rewrite occurs on opening it.
+Bars retain their actual source intervals, clipped to the current visible record
+period. Missing/unknown evidence is never filled with light/deep/REM labels.
+Tap or keyboard/accessibility navigation selects an actual interval and identifies
+its source kind and clock interval (minute-level display; retained timestamps are unchanged). The legend includes only visible kinds; awake,
+out-of-bed and awake-in-bed share the Awake legend but retain exact selection names.
+
+Source details still opens the unchanged original provider report. Local edits may
+trim/extend the view or exclude awake time from the displayed duration; they never
+relabel provider stages. If known endpoint offsets differ, the chart explicitly
+uses UTC, since offsets alone cannot identify the intervening timezone rules.
+No stages supplied/no stages in the selected period have explicit empty states.
+
+Combined current source2cbfe043 assembles in48s. This new provider projection has not had
+runtime/screenshot or real provider validation. The separately selected single
+Report history/edit flow uses isolated motion fixtures, so it cannot validate
+provider stages or clinical sleep accuracy even when it passes.
