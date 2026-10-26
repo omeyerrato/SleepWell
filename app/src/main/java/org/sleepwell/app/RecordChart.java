@@ -10,7 +10,7 @@ import java.util.*;
 /** Rounded measured-activity bars. Dense recordings use contiguous display averages, never interpolation. */
 class RecordChart extends View {
     private final List<ChartSeries.Sample> samples=new ArrayList<>();
-    private final java.time.ZoneId zone;private final String metric;private final long start;private long end;private final boolean night;private final Paint paint=new Paint(3);
+    private final java.time.ZoneId zone;private final String metric;private final long start;private long end;private final boolean night;private final android.text.TextPaint paint=new android.text.TextPaint(3);
     private List<ChartSeries.Bar> bars=Collections.emptyList();private int selected=-1;private Long inspectedAt;private double high=.001;private String measurementLabel;private int actualReadings;
     RecordChart(Context c,List<JSONObject> epochs,String metric,long start,long end){
         this(c,epochs,metric,start,end,false);
