@@ -13,9 +13,10 @@ final class HeadphoneCue implements AutoCloseable {
         int chunk(Endpoint expected,int intensity,int frame,int frames);default boolean drained(){return true;}void silence();void close();
     }
     interface Scheduler {void later(Runnable task,long delay);long now();}
-    private final Sink sink;private final Scheduler scheduler;private final BooleanSupplier allowed;private final Consumer<String> status;
+    private final Sink sink;private final Scheduler scheduler;private final BooleanSupplier allowed;private final Consumer<String> status;private final Runnable outputConfirmed;private boolean outputReported;
     private Endpoint selected;private SnoreCuePolicy.Settings settings;private long deadline,pulseStart;private int pulse,frame;private boolean closed,started,confirmed,queued;
-    HeadphoneCue(Sink sink,Scheduler scheduler,BooleanSupplier allowed,Consumer<String> status){this.sink=sink;this.scheduler=scheduler;this.allowed=allowed;this.status=status;}
+    HeadphoneCue(Sink sink,Scheduler scheduler,BooleanSupplier allowed,Consumer<String> status){this(sink,scheduler,allowed,status,()->{});}
+    HeadphoneCue(Sink sink,Scheduler scheduler,BooleanSupplier allowed,Consumer<String> status,Runnable outputConfirmed){this.sink=sink;this.scheduler=scheduler;this.allowed=allowed;this.status=status;this.outputConfirmed=outputConfirmed;}
     static boolean matches(List<Endpoint> routes,Endpoint selected){return selected!=null&&routes!=null&&routes.size()==1&&routes.get(0).id==selected.id&&routes.get(0).kind==selected.kind&&routes.get(0).supported();}
     static Endpoint select(List<Endpoint> available){if(available==null)return null;for(Kind kind:new Kind[]{Kind.WIRED,Kind.USB_HEADSET,Kind.BLE_HEADSET})for(Endpoint endpoint:available)if(endpoint.kind==kind)return endpoint;return null;}
     void start(SnoreCuePolicy.Settings settings){if(closed||started)return;started=true;this.settings=settings;if(!allowed.getAsBoolean()){close();return;}try{
@@ -30,7 +31,7 @@ final class HeadphoneCue implements AutoCloseable {
         if(!safeRoute()){if(confirmed||scheduler.now()>=deadline){fail(confirmed?"Headphone route lost. Snoring sounds stopped.":"Headphone route could not be verified. Snoring sounds skipped.");return;}schedule(20);return;}
         if(!confirmed){confirmed=true;pulseStart=scheduler.now();deadline=pulseStart+3500;status.accept("");}
         long target=pulseStart+pulse*900L;if(scheduler.now()<target){schedule(Math.min(20,target-scheduler.now()));return;}
-        if(frame>=4000){if(scheduler.now()>deadline){fail("Headphone sound timed out. Snoring sounds stopped.");return;}if(!sink.drained()){schedule(20);return;}frame=0;if(++pulse>=settings.repeats){close();return;}schedule(20);return;}
+        if(frame>=4000){if(scheduler.now()>deadline){fail("Headphone sound timed out. Snoring sounds stopped.");return;}if(!sink.drained()){schedule(20);return;}if(!outputReported){outputReported=true;try{outputConfirmed.run();}catch(RuntimeException ignored){}}frame=0;if(++pulse>=settings.repeats){close();return;}schedule(20);return;}
         int requested=Math.min(320,4000-frame),written=sink.chunk(selected,settings.intensity,frame,requested);if(written<0||written>requested||scheduler.now()>deadline){fail("Headphone route changed or sound could not play. Snoring sounds stopped.");return;}frame+=written;schedule(20);
     }catch(RuntimeException error){fail("Headphone sound is unavailable. Snoring sounds stopped.");}}
     private void fail(String message){if(closed)return;try{status.accept(message);}finally{close();}}

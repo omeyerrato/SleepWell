@@ -15,7 +15,7 @@ final class AutomationTransports implements AutomationDelivery.Transport {
         switch(rule.transport){case INTENT->intent(rule,event);case WEBHOOK->webhook(rule,event);case MQTT->mqtt(rule,event);}
     }
     private void intent(AutomationRule rule,AutomationEvent event)throws AutomationDelivery.Failure{
-        try{Intent intent=new Intent("org.sleepwell.app.event."+event.kind.name()).setPackage(rule.destination).putExtra("event_id",event.id).putExtra("event",event.kind.name().toLowerCase(java.util.Locale.ROOT)).putExtra("occurred_at",event.time).putExtra("test",event.test).putExtra("schema",1);context.sendBroadcast(intent);}catch(RuntimeException e){throw new AutomationDelivery.Failure("Android rejected the broadcast",false);}
+        try{Intent intent=new Intent("org.sleepwell.app.event."+event.kind.name()).setPackage(rule.destination).putExtra("event_id",event.id).putExtra("event",event.kind.name().toLowerCase(java.util.Locale.ROOT)).putExtra("occurred_at",event.time).putExtra("test",event.test).putExtra("schema",1);if(!event.soundClass.isEmpty())intent.putExtra("sound_class",event.soundClass);context.sendBroadcast(intent);}catch(RuntimeException e){throw new AutomationDelivery.Failure("Android rejected the broadcast",false);}
     }
     private void webhook(AutomationRule rule,AutomationEvent event)throws AutomationDelivery.Failure{
         WebhookPost.send(rule,event,url->(HttpsURLConnection)url.openConnection());

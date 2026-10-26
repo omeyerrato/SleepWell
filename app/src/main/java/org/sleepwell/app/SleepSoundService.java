@@ -18,6 +18,7 @@ public final class SleepSoundService extends Service {
     private final HandlerThread decoder=new HandlerThread("SleepWell sound decoder");
     private Handler worker;private SoundPlayback playback;private AudioManager audio;private AudioFocusRequest focus;private AudioAttributes attributes;private int focusGeneration;
     private PowerManager.WakeLock wake;private MediaSession media;private boolean hasFocus,foreground,destroyed;
+    private final AutomationPlayback soundEvents=new AutomationPlayback((kind,occurrence,at)->Automations.confirmedAt(this,kind,occurrence,at));private AutomationPlayback.Segment soundSegment;
     private final SoundOwnership ownership=new SoundOwnership();private long fadeOwner;private boolean stillnessArmed,stillnessClaimed;private StillnessSoundFade.Admission stillnessAdmission;
     static final class Snapshot {
         final SoundPlayback.State state;final long elapsed;final String error,trackTitle,finished,stillness;final int track,tracks;final boolean rotation;
@@ -73,7 +74,7 @@ public final class SleepSoundService extends Service {
         if(occupied){if(playback.state==SoundPlayback.State.PAUSED)resume();return START_NOT_STICKY;}
         try{
             ensureForeground();if(!requestFocus()){failure("Another app is using audio. Tap Play when it is available.");return START_NOT_STICKY;}
-            SoundMix selected=SoundPreferences.load(this);if(owner>0&&!selected.withTracking){end();return START_NOT_STICKY;}clearStillness();fadeOwner=owner>0&&selected.withTracking?owner:0;stillnessArmed=fadeOwner>0&&SoundPreferences.stillnessFade(this);SoundPreferences.error(this,"");playback.play(selected,intent.getLongExtra("offset",0));publish();
+            SoundMix selected=SoundPreferences.load(this);if(owner>0&&!selected.withTracking){end();return START_NOT_STICKY;}clearStillness();fadeOwner=owner>0&&selected.withTracking?owner:0;stillnessArmed=fadeOwner>0&&SoundPreferences.stillnessFade(this);SoundPreferences.error(this,"");soundEvents.closing(soundSegment);soundSegment=soundEvents.begin();playback.play(selected,intent.getLongExtra("offset",0));publish();
         }catch(RuntimeException e){failure("Sleep sound is unavailable. Check the selected file and try again.");}
         return START_NOT_STICKY;
     }
@@ -92,7 +93,7 @@ public final class SleepSoundService extends Service {
     private void resume(){
         if(playback.state!=SoundPlayback.State.PAUSED)return;
         if(Prefs.flag(this,"ringing")){failure("Finish your alarm before playing sleep sounds.");return;}
-        try{ensureForeground();if(requestFocus()){SoundPreferences.error(this,"");playback.resume();publish();}else failure("Another app is using audio. Tap Play when it is available.");}
+        try{ensureForeground();if(requestFocus()){SoundPreferences.error(this,"");soundEvents.closing(soundSegment);soundSegment=soundEvents.begin();playback.resume();publish();}else failure("Another app is using audio. Tap Play when it is available.");}
         catch(RuntimeException e){failure("Playback could not resume. Tap Play to try again.");}
     }
     private void manualPause(){ownership.manual();clearStillness();playback.pause();publish();}
@@ -102,7 +103,7 @@ public final class SleepSoundService extends Service {
         if(destroyed)return;refreshStillness();main.removeCallbacks(tick);
         SoundPlayback.State state=playback.state;boolean active=state==SoundPlayback.State.PLAYING||state==SoundPlayback.State.LOADING;
         if(state==SoundPlayback.State.ERROR){if(SoundPreferences.error(this).isEmpty())SoundPreferences.error(this,playback.error);}
-        if(!active){if(wake.isHeld())wake.release();abandonFocus();}
+        if(!active){soundEvents.closing(soundSegment);if(wake.isHeld())wake.release();abandonFocus();}
         else if(!wake.isHeld())wake.acquire(245*60000L);
         media.setPlaybackState(new PlaybackState.Builder().setActions(PlaybackState.ACTION_PLAY|PlaybackState.ACTION_PAUSE|PlaybackState.ACTION_STOP).setState(state==SoundPlayback.State.PLAYING?PlaybackState.STATE_PLAYING:state==SoundPlayback.State.LOADING?PlaybackState.STATE_BUFFERING:PlaybackState.STATE_PAUSED,playback.elapsed(),state==SoundPlayback.State.PLAYING?1:0).build());
         if(state==SoundPlayback.State.FINISHED||state==SoundPlayback.State.ERROR||state==SoundPlayback.State.STOPPED){end();return;}
@@ -123,14 +124,14 @@ public final class SleepSoundService extends Service {
     }
     private void end(){
         last=playback.state==SoundPlayback.State.FINISHED||playback.state==SoundPlayback.State.ERROR?new Snapshot(this):null;clearStillness();
-        main.removeCallbacks(tick);playback.stop();if(wake.isHeld())wake.release();abandonFocus();
+        main.removeCallbacks(tick);soundEvents.closing(soundSegment);playback.stop();if(wake.isHeld())wake.release();abandonFocus();
         stopForeground(STOP_FOREGROUND_REMOVE);foreground=false;stopSelf();
     }
-    @Override public void onDestroy(){destroyed=true;clearStillness();main.removeCallbacksAndMessages(null);if(current==this)current=null;playback.stop();if(wake.isHeld())wake.release();abandonFocus();unregisterReceiver(noisy);media.release();decoder.quitSafely();super.onDestroy();}
+    @Override public void onDestroy(){destroyed=true;clearStillness();main.removeCallbacksAndMessages(null);if(current==this)current=null;soundEvents.closing(soundSegment);playback.stop();if(wake.isHeld())wake.release();abandonFocus();unregisterReceiver(noisy);media.release();decoder.quitSafely();super.onDestroy();}
 
     /** All provider IO / decoder calls are on one worker. close() invalidates queued starts immediately. */
     private final class PlayerLayer implements SoundPlayback.Layer {
-        final String source;final AudioAttributes attributes;volatile boolean closed;MediaPlayer player;boolean ready;volatile boolean finite,ended;volatile Runnable completed;volatile SoundPlaylistAudio snapshot;
+        final String source;final AudioAttributes attributes;private AutomationPlayback.Segment playingSegment;volatile boolean closed;MediaPlayer player;boolean ready;volatile boolean finite,ended;volatile Runnable completed;volatile SoundPlaylistAudio snapshot;
         PlayerLayer(String s,AudioAttributes a){source=s;attributes=a;}
         @Override public void finite(Runnable completion){finite=true;completed=completion;}
         @Override public void prepare(SoundPlayback.Ready callback){worker.post(()->{
@@ -155,10 +156,10 @@ public final class SleepSoundService extends Service {
             }catch(Exception e){release();main.post(()->{if(!destroyed&&!closed)callback.failed();});}
         }
         @Override public void gain(float value){worker.post(()->{if(!closed&&ready&&player!=null)try{player.setVolume(value,value);}catch(IllegalStateException e){main.post(()->{if(!destroyed&&!closed)failure("Playback stopped. Please select the sound again.");});}});}
-        @Override public void start(){worker.post(()->{if(!closed&&ready&&player!=null&&(!finite||!ended))try{player.start();}catch(IllegalStateException e){main.post(()->{if(!destroyed&&!closed)failure("Playback stopped. Please select the sound again.");});}});}
-        @Override public void pause(){worker.post(()->{if(!closed&&ready&&player!=null)try{player.pause();}catch(IllegalStateException error){main.post(()->{if(!destroyed&&!closed)failure("Playlist could not pause. Select it again before playing.");});}});}
+        @Override public void start(){AutomationPlayback.Segment requested=soundSegment;soundEvents.starting(requested,this);if(!worker.post(()->{try{if(!closed&&ready&&player!=null&&(!finite||!ended)){player.start();if(player.isPlaying()){playingSegment=requested;soundEvents.started(requested,this);}}}catch(IllegalStateException e){main.post(()->{if(!destroyed&&!closed)failure("Playback stopped. Please select the sound again.");});}finally{soundEvents.settled(requested,this);}}))soundEvents.settled(requested,this);}
+        @Override public void pause(){worker.post(()->{if(!closed&&ready&&player!=null)try{player.pause();if(!player.isPlaying()){soundEvents.quiet(playingSegment,this);playingSegment=null;}}catch(IllegalStateException error){main.post(()->{if(!destroyed&&!closed)failure("Playlist could not pause. Select it again before playing.");});}});}
         @Override public void close(){closed=true;SoundPlaylistAudio reading=snapshot;if(reading!=null)reading.cancel();worker.post(this::release);}
-        private void release(){ready=false;try{if(player!=null){try{player.stop();}catch(IllegalStateException ignored){}player.release();player=null;}SoundPlaylistAudio reading=snapshot;if(reading!=null){reading.close();snapshot=null;}}catch(Exception cleanup){SoundPreferences.error(SleepSoundService.this,"Playlist cleanup needs attention. Restart SleepWell before trying another local file.");}}
+        private void release(){ready=false;try{if(player!=null){try{player.stop();}catch(IllegalStateException ignored){}player.release();player=null;soundEvents.quiet(playingSegment,this);playingSegment=null;}SoundPlaylistAudio reading=snapshot;if(reading!=null){reading.close();snapshot=null;}}catch(Exception cleanup){SoundPreferences.error(SleepSoundService.this,"Playlist cleanup needs attention. Restart SleepWell before trying another local file.");}}
 
     }
 }

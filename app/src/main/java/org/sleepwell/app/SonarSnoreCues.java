@@ -40,7 +40,7 @@ final class SonarSnoreCues implements SonarNight.Cues {
             try{
                 // Independent predicates are also checked by the existing asynchronous output
                 // and each repeat. Remaining vibration consent can never authorize a sound.
-                if(settings.mode!=SnoreCuePolicy.Mode.VIBRATION)sound=new SnoreCueOutput(app,()->outputAllowed(true,settings.headphoneSound,revision));
+                if(settings.mode!=SnoreCuePolicy.Mode.VIBRATION)sound=new SnoreCueOutput(app,()->outputAllowed(true,settings.headphoneSound,revision),true);
                 if(settings.mode!=SnoreCuePolicy.Mode.SOUND)vibration=new SnoreCueOutput(app,()->outputAllowed(false,false,revision));
             }catch(RuntimeException failure){closeOutputs();throw failure;}
             // Once dispatched, retain the mask even if another channel cannot be queued.

@@ -19,7 +19,7 @@ final class NoiseRecorder implements AutoCloseable {
     }
     private boolean savesClips(Context c,ClipBudget budget){return budget.permitsClips(saveOverride==null?Prefs.flag(c,"saveClips"):saveOverride);}
     private void capture(Context c,Store store,long session,ClipBudget budget,java.util.function.LongSupplier timeline) {
-        AudioRecord recorder=null;MicrophoneLease microphone=null;SoundAnalysisStream analysis=null;String stage="capture";String[] eventIssue={""};SnoreCuePolicy cues=new SnoreCuePolicy(budget.snoreCues,()->new SnoreCueOutput(c),()->diagnostic(c,"snoreCueError","A snoring cue could not play."));
+        AudioRecord recorder=null;MicrophoneLease microphone=null;SoundAnalysisStream analysis=null;String stage="capture";String[] eventIssue={""};SnoreCuePolicy cues=new SnoreCuePolicy(budget.snoreCues,()->new SnoreCueOutput(c,()->running&&Prefs.flag(c,"snoreCues"),"sleepwell.db".equals(store.getDatabaseName())),()->diagnostic(c,"snoreCueError","A snoring cue could not play."));
         try {
             if(!budget.analysisAllowed()){progress.fail("capture");diagnostic(c,"audioError","Sound settings are unreadable. Review and save Sound sensitivity before recording sound.");return;}
             if(c.checkSelfPermission(android.Manifest.permission.RECORD_AUDIO)!=android.content.pm.PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone permission is not granted");
@@ -30,7 +30,7 @@ final class NoiseRecorder implements AutoCloseable {
             if(recorder.getState()!=AudioRecord.STATE_INITIALIZED) throw new IOException("Microphone unavailable");
             if(!running)return;
             diagnostic(c,"analysisError","");
-            if(progress.analyzing(segment)){analysis=new SoundAnalysisStream(()->new YamnetClassifier(c),(at,count,category,score)->{if(!budget.saveEvent()){eventIssue[0]="limit";throw new IllegalStateException("Sound event limit reached");}store.soundEvent(session,at,count*975L,category,score,null);if(running&&!DreamCues.masks(android.os.SystemClock.elapsedRealtimeNanos(),android.os.SystemClock.elapsedRealtimeNanos()+1))cues.event(category,score,android.os.SystemClock.elapsedRealtime(),SnoreCueOutput.settings(c));},()->diagnostic(c,"analysisError","Sound labels unavailable. Room sound levels and optional recordings continue."),budget.sensitivity);updateAnalysis(analysis,eventIssue[0]);}
+            if(progress.analyzing(segment)){analysis=new SoundAnalysisStream(()->new YamnetClassifier(c),(at,count,category,score)->{if(!budget.saveEvent()){eventIssue[0]="limit";throw new IllegalStateException("Sound event limit reached");}long event=store.soundEvent(session,at,count*975L,category,score,null);if("sleepwell.db".equals(store.getDatabaseName()))Automations.soundRecognized(c,session,event,at,category);if(running&&!DreamCues.masks(android.os.SystemClock.elapsedRealtimeNanos(),android.os.SystemClock.elapsedRealtimeNanos()+1))cues.event(category,score,android.os.SystemClock.elapsedRealtime(),SnoreCueOutput.settings(c));},()->diagnostic(c,"analysisError","Sound labels unavailable. Room sound levels and optional recordings continue."),budget.sensitivity);updateAnalysis(analysis,eventIssue[0]);}
             activeRecorder=recorder;if(!running)return;recorder.startRecording();if(recorder.getRecordingState()!=AudioRecord.RECORDSTATE_RECORDING)throw new IOException("Microphone did not start");capturing=true;short[] frame=new short[1024]; ByteArrayOutputStream clip=null;
             double peak=0;
             while(running) {

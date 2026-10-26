@@ -58,8 +58,9 @@ cleanup model. This is SleepWell's own contract, not a vendor Intent alias.
 
 ## Outbound event catalog
 
-Existing opt-in Tasker/app broadcasts, HTTPS POST and TLS MQTT rules now offer ten
-types. Old enum names, rule data and schema1 remain valid.
+Existing opt-in Tasker/app broadcasts, HTTPS POST and TLS MQTT rules now offer fourteen
+types. Old enum names, rule data and schema1 remain valid. The four sound additions
+are detailed in [Confirmed sound automations](CONFIRMED-SOUND-AUTOMATIONS.md).
 
 | Kind | Emission boundary |
 | --- | --- |
@@ -73,19 +74,27 @@ types. Old enum names, rule data and schema1 remain valid.
 | WAKE_CHECK_CONFIRMED | Durable explicit confirmed check nonce/phase |
 | WAKE_CHECK_MISSED | Delivered check's confirmation deadline durably claimed as expired; re-ring success is separate |
 | WIND_DOWN_REMINDER_POSTED | Real fixed/smart reminder submitted to Android notifications; seeing/hearing it is separate |
+| SLEEP_SOUND_STARTED | Actual MediaPlayer playing acknowledgement, once per playback/resume segment |
+| SLEEP_SOUND_STOPPED | All acknowledged segment players paused/released after pause or termination; uncertain cleanup emits no success |
+| ANTI_SNORE_SOUND_STARTED | Real production tone admission or first drained routed headphone pulse; excludes preview/vibration-only |
+| SOUND_RECOGNIZED | Actual saved eligible estimate, globally throttled to one occurrence per 30 seconds; original class/time retained |
 
 Source identities include actual transition/occurrence/check/series identities, so
 the same committed transition has a stable event ID. The payload remains type,
 time, schema, test flag and hash ID, without notes, audio, names, record IDs or
-location. Existing destination queue uniqueness, encrypted credentials, bounded
+location. Actual recognition events additionally contain optional `sound_class`.
+The private automation database migrates version1→2; public schema1, old rules,
+sleep-record schema17 and settings exports remain valid and unchanged.
+Existing destination queue uniqueness, encrypted credentials, bounded
 attempts and destination revision invalidation remain. Editing/deleting a rule
 cancels future queued attempts; an in-flight external request cannot be recalled.
 
 The source transition and async outbox handoff are not a crash-atomic transaction.
 Process death can lose an event before durable enqueue. Transport retries can
 deliver more than once; receivers must deduplicate `event_id`. Android can delay
-jobs/broadcasts. Native decoder/player-start events, inferred REM/deep/light,
-apnea and unsupported recognition events are not offered.
+jobs/broadcasts. Player events acknowledge local player state, never physical
+audibility. Inferred REM/deep/light, apnea and unsupported recognition events
+are not offered.
 
 ## Future-night calendar export
 
