@@ -1,10 +1,19 @@
-# SleepWell feature checklist —26 October 2026
+# SleepWell feature checklist — 26 October 2026
 
 Not fully done. Checked items have actual production implementation and build
 success; they are not claims of current phone/overnight validation. Unchecked
 acceptance items below remain required. Latest application source a8f5f23 builds
 in 1m54s; its published APK retains the installed signer
-and matching SHA256.
+and matching SHA256. It is published but **not installed**. Schema17 / backup13
+remain current. The installed phone build is **86d0d1e**: its checksum, original
+records, preferences and private files were verified preserved. Samsung Device
+Care still suspends the app; schema7 was last verified and first-open migration
+**7 → 17** remains pending. Installation is not proof that migration has run.
+
+Current priority remains features first. New tests/native batches, screenshots,
+dedicated design review, broad bug review and security audits remain deferred at
+the user's request. The full functional goal and all **36 supplied design screens
+across 12 boards** remain required, not accepted by these checkmarks.
 
 ## Implemented feature paths
 
@@ -28,6 +37,8 @@ and matching SHA256.
 - [x] Optional per-alarm orientation lock with saved input settings.
 - [x] Configurable challenge routines, previews/fallbacks, QR/barcode/NFC,
   text/memory/Math/walking and additional motion/camera/object tasks.
+- [x] Jumping: original touch-controlled hurdle game, saved progress and Math
+  alternative; this is not physical-jump sensing.
 - [x] Separate explicitly started on-device spoken-phrase challenge and Math fallback.
 - [x] Generated morning QR codes, PNG/PDF export and Android printing.
 - [x] Naps, Power nap, weekly nap profiles and exact-second timers.
@@ -93,12 +104,21 @@ and matching SHA256.
 - [ ] CSV source graph/clock-label/export behavior and future-night calendar job/uncertainty handling.
 - [ ] Full36-screen reference design fidelity, especially Report/charts and menus.
 - [ ] Remaining interaction bugs and security review, deferred by user instruction.
-- [ ] Open after Samsung Device Care suspension is removed and verify schema7→16 migration.
+- [ ] When the user permits reopening, verify the installed build's schema7→17
+  migration after Device Care suspension is resolved; do not silently change it.
+- [ ] Separately authorized installation/data-preservation review for published
+  a8f5f23, which is newer than installed86d0d1e.
 - [ ] Full completion verification; current builds alone do not establish it.
 
-Forced hardware power-off cannot be prevented by an ordinary Android app. The
-last phone update was121dbd5; Device Care still suspends it and the last
-verified schema was7pending its first-open migration to16.
-New86d0d1e/schema17 is uninstalled. No new unit/native/lint/screenshot batches or phone/provider/
-codec/admin/alarm/audio/sensor actions ran for these additions. Details and bounds are in
-[FEATURE-MATRIX.md](FEATURE-MATRIX.md) and [REMAINING-WORK.md](REMAINING-WORK.md).
+Forced hardware power-off cannot be prevented by an ordinary Android app. New
+runtime behavior is unverified. Historical full-app native failures and independent
+laughter-positive failures remain unresolved; narrower historical passes do not
+supersede them or validate the current candidate. No new tests/native/lint/
+screenshot batches or phone/provider/codec/admin/alarm/audio/sensor actions ran for
+a8f5f23. This checklist does not authorize such actions or reinstate deferred work.
+
+The consolidated actionable/deferred scope is in [REMAINING-WORK.md](REMAINING-WORK.md).
+Source/subfeature detail remains in the root-maintained [FEATURE-MATRIX.md](FEATURE-MATRIX.md);
+historical delivery chronology belongs in [the delivery note](2026-10-25-FEATURE-DELIVERY.md),
+not a competing current phone-status assertion. See also
+[the latest challenge/narration/Hue boundaries](CHALLENGE-AND-LIGHT-FEATURES.md).
