@@ -11,6 +11,7 @@ on:
           - full
           - tone-wake
           - report
+          - report-flow
           - sensing-travel
           - sonar-night
           - sound-categories
