@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <permission android:name="org.sleepwell.app.permission.READ_RECORD_SUMMARIES" android:protectionLevel="signature" android:label="@string/record_summary_read_label" android:description="@string/record_summary_read_description" />
+    <permission android:name="org.sleepwell.app.permission.WRITE_RECORD_SUMMARIES" android:protectionLevel="signature" android:label="@string/record_summary_write_label" android:description="@string/record_summary_write_description" />
     <uses-permission android:name="android.permission.health.READ_SLEEP" />
     <uses-permission android:name="android.permission.health.WRITE_SLEEP" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
@@ -64,6 +66,13 @@
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/home_widget_info" />
+        </receiver>
+        <activity android:name=".RecordAccessActivity" android:exported="false" />
+        <provider android:name=".RecordContentProvider" android:authorities="org.sleepwell.app.records" android:exported="true" android:readPermission="org.sleepwell.app.permission.READ_RECORD_SUMMARIES" android:writePermission="org.sleepwell.app.permission.WRITE_RECORD_SUMMARIES" android:grantUriPermissions="true">
+            <grant-uri-permission android:pathPrefix="/shared/v1/records" />
+        </provider>
+        <receiver android:name=".RecordAccessReceiver" android:exported="false">
+            <intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /></intent-filter>
         </receiver>
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter>

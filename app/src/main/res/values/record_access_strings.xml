@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="record_summary_read_label">Read SleepWell record summaries</string>
+    <string name="record_summary_read_description">Read completed period summaries only when the user explicitly allows the installed app in SleepWell. Notes, audio and live tracking are excluded.</string>
+    <string name="record_summary_write_label">Reserved SleepWell record writes</string>
+    <string name="record_summary_write_description">Reserved protection for the read-only record provider. All writes, files and RPC operations are unsupported.</string>
+</resources>
