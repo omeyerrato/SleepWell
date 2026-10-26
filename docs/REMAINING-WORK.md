@@ -22,7 +22,27 @@ Sources: [Google](https://developers.google.com/fit/overview),
 
 ## Six-hour production window — 25 October
 
-Latest candidate **121dbd5**, **assembleDebug PASS1m41s**, adds:
+Latest feature source **32f87b9**, **assembleDebug PASS2m2s**, adds:
+
+- [x] Reviewed Sleep as Android CSV append, conflict handling and portable original
+  source evidence with period/adjusted-duration distinction and source details.
+- [x] Separate reviewed settings profiles: appearance, sleep-plan configuration,
+  bundled sounds, narration and Tonight layout, with activation kept off and
+  interrupted-write recovery. Unsupported/excluded values are explicit.
+- [x] Optional Tonight row order/visibility and artwork controls; defaults and
+  mandatory alarm/nap/tracking controls preserved. Optional goal/night links use
+  actual saved data, with empty/error states.
+- [x] Current-format sensor backup compatibility bound corrected.
+
+Schema17 adds original CSV source rows in the main record transaction and deletion
+lifecycle. Metadata13/ZIPv2 carry optional source evidence; separate settings files
+use version1. Candidate uninstalled; last authorized phone update121dbd5 remains
+suspended by Device Care, with schema7 last verified pending first-open migration16.
+No new tests/lint/screenshots, providers or phone/output actions. Document-provider,
+migration, recovery, runtime and design acceptance remain incomplete.
+
+Earlier candidate **121dbd5**, **assembleDebug PASS1m41s**, adds:
+
 
 - [x] Optional Android-admin ordinary-uninstall step: explicit system activation,
   actual OS state, user removal and no lock/wipe/password/camera/owner policies.

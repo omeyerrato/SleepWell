@@ -152,6 +152,24 @@ files. Already-open file descriptors and copies made by recipients cannot be
 recalled. Nap-profile definition sharing excludes active scheduling authority;
 private-diary imports use a separate reviewed merge.
 
+Optional Sleep as Android CSV import appends reviewed historical periods and
+retains their exact original rows privately. Those rows can contain comments,
+tags, fractional ratings, aggregate adjustments, location hashes and event/device
+metadata already present in the selected file. They travel with record metadata
+and whole-library backups, with explicit format/size bounds. Linked source evidence
+is deleted with its record/history. Vendor signal/stage fields do not become
+SleepWell measurements. Copies exported to a provider remain with that provider.
+
+Separate settings profiles transfer only reviewed supported appearance, sleep-plan,
+bundled-sound, narration and Tonight-layout configuration. They exclude capture,
+credentials, endpoints, provider/voice identities, document references/grants,
+enrollments, permissions, active authority and record/alarm replacement. Imported
+reminder and playback activation stays off. Interrupted multi-file Apply uses a
+private prior/planned-values journal, which can contain existing local audio
+references for recovery; the journal is not included in exported profiles. Recovery
+never silently overwrites a newer conflicting choice. See
+[portable settings and CSV limits](docs/PORTABLE-SETTINGS-AND-CSV.md).
+
 Uninstalling deletes private app data. History, audio and diary deletion are separate controls; deleting history preserves alarm configuration. A backup restore shows its included data before transactional replacement. See [backup limits](docs/AUTOMATIC-METADATA-BACKUP.md) and the [feature matrix](docs/FEATURE-MATRIX.md).
 
 SleepWell does not connect to the reference apps' services. External links open in

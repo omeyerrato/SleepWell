@@ -2,8 +2,8 @@
 
 Not fully done. Checked items have actual production implementation and build
 success; they are not claims of current phone/overnight validation. Unchecked
-acceptance items below remain required. Latest application source121dbd5 builds
-in1m41s; its published APK retains the installed signer
+acceptance items below remain required. Latest application source32f87b9 builds
+in2m2s; its published APK retains the installed signer
 and matching SHA256.
 
 ## Implemented feature paths
@@ -48,6 +48,9 @@ and matching SHA256.
 - [x] Integration paths for sleep-only Health Connect, calendar, smart lights,
   Tasker/webhooks/MQTT, subject to their external services/permissions.
 - [x] Published development APK; original signer and uploaded checksum verified.
+- [x] Reviewed Sleep as Android CSV append with portable original source evidence.
+- [x] Separate settings-profile export/review/Apply and interrupted-save recovery.
+- [x] Optional Tonight row order/visibility and illustration controls, with default layout kept.
 - [x] User-authorized121dbd5 phone update; installed checksum, original records,
   preferences and private files verified preserved.
 
@@ -71,8 +74,10 @@ and matching SHA256.
 - [ ] On-device phrase recognition, microphone cleanup and orientation behavior.
 - [ ] Local playlist provider/decoder lifecycle and stillness-fade sensor/output behavior.
 - [ ] Built-in rotation, external media volume/route cancellation and narration engine behavior.
-- [ ] Schema16 favorite migration/round trips, AAC encoder/provider output, direct calendar
+- [ ] Schema16 favorite and schema17 CSV-evidence migration/round trips, AAC encoder/provider output, direct calendar
   insertion/uncertain receipts and Android-admin activation/removal behavior.
+- [ ] CSV/profile document exchange, duplicate/conflict/cancel/restore and multi-file recovery.
+- [ ] Tonight layout persistence, real optional data links and large-text presentation.
 - [ ] Full36-screen reference design fidelity, especially Report/charts and menus.
 - [ ] Remaining interaction bugs and security review, deferred by user instruction.
 - [ ] Open after Samsung Device Care suspension is removed and verify schema7→16 migration.
@@ -81,6 +86,6 @@ and matching SHA256.
 Forced hardware power-off cannot be prevented by an ordinary Android app. The
 last phone update was121dbd5; Device Care still suspends it and the last
 verified schema was7pending its first-open migration to16.
-No new unit/native/lint/screenshot batches or phone/provider/
+New32f87b9/schema17 is uninstalled. No new unit/native/lint/screenshot batches or phone/provider/
 codec/admin/alarm/audio/sensor actions ran for these additions. Details and bounds are in
 [FEATURE-MATRIX.md](FEATURE-MATRIX.md) and [REMAINING-WORK.md](REMAINING-WORK.md).

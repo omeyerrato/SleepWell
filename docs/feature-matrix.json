@@ -2252,11 +2252,13 @@
         "TonightScreen.java",
         "NightArc.java",
         "NightWindow.java",
-        "Icons.java"
+        "Icons.java",
+        "TonightLayout.java",
+        "TonightLayoutActivity.java"
       ],
-      "validation": "NightWindowTest 10 pure clock/boundary/DST passes; NightArcFlowTest observes the real 30-second foreground tick in manual appearance, actual 0/50/100/next/help/weekly/app-large states and reachable large-text action. Final run and 22 actual captures: CI39940420018 at cfb5e68; exact scope in verification/2026-10-23-rest-window/README.md. Physical RootVisualTest 19.215 s, 10 private captures; SoundSettingsFlowTest 10.929 s, 4 stopped captures with actual light-on-plum system-bar pixel checks. Exact personal preferences/database rows preserved. Phosphor source/geometry/license audit and prior icon rendering pass remain separately recorded. No alarm/physical audio or all-screen acceptance. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest 2 and stronger ReportReferenceFlowTest 1/eight originals await fresh native/strict review; no visual completion inferred. Fresh d43f480/focusedCI40068186520 PASS4classes/5methods/13required originals: ReportRibbonNativeTest 2 PASS1.212s,ReportReferenceFlowTest 1 PASS33.744s. All13 originals individually inspected: report hierarchy/editor geometry pass, hard color-bin stripes and touching chips rejected. b4deeb3 blends only visual colors within contiguous measured spans (unchanged metrics/exact gaps), adds missing-signal Canvas assertions and4dp chip gutters; fresh raster/visual run required. Missing stage estimator remains explicit. Fresh dc30736/focusedCI40072560126 PASS4classes/5methods/all13 required originals, individually reviewed against boards01/08. Ribbon color blending/exact gaps, filter gutters, seven-row history, Week/Month/Year and complete editor Notes/Save/Delete pass this bounded correction. Stage estimator/full app parity remain incomplete. ba1ae61/0dcbb44 use exactpersistedSensorProvenance.SONAR for contactless graph/accessibility labels, preserve actualsamplegaps, and retain sensor/config throughgoalzonecopies. Newprivate saved-sonar navigation originals remain pending.",
+      "validation": "NightWindowTest 10 pure clock/boundary/DST passes; NightArcFlowTest observes the real 30-second foreground tick in manual appearance, actual 0/50/100/next/help/weekly/app-large states and reachable large-text action. Final run and 22 actual captures: CI39940420018 at cfb5e68; exact scope in verification/2026-10-23-rest-window/README.md. Physical RootVisualTest 19.215 s, 10 private captures; SoundSettingsFlowTest 10.929 s, 4 stopped captures with actual light-on-plum system-bar pixel checks. Exact personal preferences/database rows preserved. Phosphor source/geometry/license audit and prior icon rendering pass remain separately recorded. No alarm/physical audio or all-screen acceptance. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest 2 and stronger ReportReferenceFlowTest 1/eight originals await fresh native/strict review; no visual completion inferred. Fresh d43f480/focusedCI40068186520 PASS4classes/5methods/13required originals: ReportRibbonNativeTest 2 PASS1.212s,ReportReferenceFlowTest 1 PASS33.744s. All13 originals individually inspected: report hierarchy/editor geometry pass, hard color-bin stripes and touching chips rejected. b4deeb3 blends only visual colors within contiguous measured spans (unchanged metrics/exact gaps), adds missing-signal Canvas assertions and4dp chip gutters; fresh raster/visual run required. Missing stage estimator remains explicit. Fresh dc30736/focusedCI40072560126 PASS4classes/5methods/all13 required originals, individually reviewed against boards01/08. Ribbon color blending/exact gaps, filter gutters, seven-row history, Week/Month/Year and complete editor Notes/Save/Delete pass this bounded correction. Stage estimator/full app parity remain incomplete. ba1ae61/0dcbb44 use exactpersistedSensorProvenance.SONAR for contactless graph/accessibility labels, preserve actualsamplegaps, and retain sensor/config throughgoalzonecopies. Newprivate saved-sonar navigation originals remain pending. Optional-layout addition: combined assembleDebug32f87b9 PASS2m2s only; no new runtime/design acceptance.",
       "status": "partial",
-      "notes": "Partial: native Tonight/Alarms/Report/Settings roots and real theme settings. User-arranged cards and other home configurations absent; no all-screen acceptance claim. Tonight's prior fixed 80% decoration is replaced by a live clock-based rest window with a labeled Now marker, countdown, same-snapshot endpoints/hero, DST resolution, weekly date and themed explanation. It does not measure sleep; refresh neither schedules alarms nor writes preferences. Full screen parity remains partial.",
+      "notes": "Partial: native Tonight/Alarms/Report/Settings roots and real theme settings. Saved optional Tonight row order/visibility and illustration configuration now exists; broader card libraries and other home configurations remain absent; no all-screen acceptance claim. Tonight's prior fixed 80% decoration is replaced by a live clock-based rest window with a labeled Now marker, countdown, same-snapshot endpoints/hero, DST resolution, weekly date and themed explanation. It does not measure sleep; refresh neither schedules alarms nor writes preferences. Full screen parity remains partial.",
       "id": "F081",
       "tests": [
         {
@@ -2476,11 +2478,15 @@
         "Backup.java",
         "BackupFingerprint.java",
         "LibraryAudioArchive.java",
-        "LibraryAudioImport.java"
+        "LibraryAudioImport.java",
+        "SettingsProfile.java",
+        "SettingsProfilePersistence.java",
+        "SettingsProfileActivity.java",
+        "SleepCsvEvidence.java"
       ],
       "validation": "17 isolated device passes across migration/records/replay/clock suites, including formats 1/2/3, original-row preservation, malformed edit/manual rejection and atomic rollback. Actual document-picker restore pending Format4/schema7 label metadata and inactive Nap JSON restore are integrated atfeb38ec; complete453-test build passes. New actual SQLite SoundLabelStorageTest 9 and NapFlowTest 3 portable roundtrips await native execution. Backup49ad607 source passed independent review and author debug/native APK,26 focused tests (BackupIoTest 11, BackupJobTest 12, BackupRuntimeTest 3) and lint0errors87warnings. Integratedce19d14 with admission hook after accepted recurring normalization. BackupStorageTest 6 and BackupDocumentFlowTest 3/19 originals are compiled but not executed. Source does not certify an actual document provider, destructive restore on a phone, or absence of all ANRs. Latest244e4bc/fullCI40063157145 BackupStorageTest 6 PASS0.433s. BackupDocumentFlowTest 3 has2 failures (posted picker callback not awaited and confirmation capture checks unfocused Activity instead of owned Dialog),6/19 originals. Root adds exact chooser-state and owned-window/current-render gates; native full flow/provider acceptance remains pending. Fresh d43f480/fullCI40068184362: BackupStorageTest 6 PASS0.522s and BackupDocumentFlowTest 3 PASS28.984s/all19 original states. Strict individually reviews all19: supporting operations/confirmation/current-error contents pass, stale-state white navigation handle rejected. bca0d81 corrects actual owned-dialog/render bar appearance and checks current window bits; fresh capture required. Actual external provider/destructive phone restore remain unverified. Fresh dc30736/fullCI40072555253 Storage6 PASS0.412s,Document3 PASS26.612s/all19; strict stale-state cream/dark system-bar mismatch clears. External provider/physical restore remains unverified. Main05cd205/fullCI40079043221 BackupStorage6/Document3 eachhas1CSVfailure: streamedbytes omit new sensor/config whileRecords.csv includes them. da3b11a fixes actual16-column header+closed/openrows,retains8MiB/cancellation,and adds exactstreamedbyte equality/config regression. Native rerun pending; no green claim. Later04bdb4a full native backup/migration regressions pass. Current schema9/format6 adds strict immutable shared-analysis status to portable JSON and both17-column CSV implementations. Twelve new private storage cases are authored/compiled; actual schema9 migration/rollback/recovery execution remains pending. Favorite extension: assembleDebug121dbd5 PASS1m41s; migration/round-trip runtime unverified, no new tests/provider/device actions.",
       "status": "partial",
-      "notes": "Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted. New portable event metadata preserves manual corrections and original estimates without clip links;8MiB pretty-UTF8 export bound matches importer. Nap imports are inactive and need explicit fresh Start. Provider IO/lifecycle and broad backup completeness still need their own verification. Private Backup screen uses retained view-free background IO and explicit review/replace confirmation, pinned application-only factory,8MiB strict UTF8/depth bounds, off-main best-effort cancellation, typed full-table fingerprint and within-transaction runtime/data checks. Imported alarms/naps stay off, original/user sound evidence stays portable, no audio/settings. Postcommit cleanup/count/close failure explicitly says data was restored. No WAL change; other main DB users and final-check/commit/system-scheduling intervals remain documented limitations. See BACKUP-DOCUMENT-IO.md. Latestformat5 adds strict original sensor/config/quality evidence;formats1–4stayreadable. Newschema8metadata participates in existing fulltyped stale-restore fingerprint. Format6 preserves explicit analysis outcomes; formats1–5 keep unknown legacy status rather than inventing off. New format6 native acceptance remains open. Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; separately consented manual/automatic audio-folder delivery is documented in the cloud backup rows. Optional clip_favoritesv1 under metadataformat13 now preserves actual legacy clip stars even without sound events. Additive schema16 portable_clip_favorites stores only missing-audio clip/session/end/duration identities, never phantom clips/events. Strict reference/duplicate/size/interval bounds, stale-review fingerprint, transactional replacement restore/erase/session-delete and re-export apply. ZIPv2 attaches verified audio and consumes matching orphan identity; optional source_duration_ms handles legacy stored/measured duration differences. Old backups are accepted; older readers may ignore metadata stars or reject new optional ZIP fields. Existing event stars/corrections remain independent.",
+      "notes": "Partial: format 3 includes manual/recorded provenance, zones and edit overlays as well as active duration, epoch starts and pauses; formats 1/2 stay readable. Schema 4 adds local create-request tokens; these are not exported. Transactional database restore disables imported alarms; audio, preferences and external URI grants excluded. Full user-facing backup flow is not yet accepted. New portable event metadata preserves manual corrections and original estimates without clip links;8MiB pretty-UTF8 export bound matches importer. Nap imports are inactive and need explicit fresh Start. Provider IO/lifecycle and broad backup completeness still need their own verification. Private Backup screen uses retained view-free background IO and explicit review/replace confirmation, pinned application-only factory,8MiB strict UTF8/depth bounds, off-main best-effort cancellation, typed full-table fingerprint and within-transaction runtime/data checks. Imported alarms/naps stay off, original/user sound evidence stays portable, no audio/settings. Postcommit cleanup/count/close failure explicitly says data was restored. No WAL change; other main DB users and final-check/commit/system-scheduling intervals remain documented limitations. See BACKUP-DOCUMENT-IO.md. Latestformat5 adds strict original sensor/config/quality evidence;formats1–4stayreadable. Newschema8metadata participates in existing fulltyped stale-restore fingerprint. Format6 preserves explicit analysis outcomes; formats1–5 keep unknown legacy status rather than inventing off. New format6 native acceptance remains open. Whole-library archive v2 now carries bounded metadata+complete WAVs with SHA, explicit reviewed export/restore and second replacement confirmation, unique pre-copied files, atomic metadata/clip/event linkage and cleanup journal. Source019541c/b9c206e debug APK builds; standalone old JSON support retained. Actual document-provider/restore runtime remains unverified; separately consented manual/automatic audio-folder delivery is documented in the cloud backup rows. Optional clip_favoritesv1 under metadataformat13 now preserves actual legacy clip stars even without sound events. Additive schema16 portable_clip_favorites stores only missing-audio clip/session/end/duration identities, never phantom clips/events. Strict reference/duplicate/size/interval bounds, stale-review fingerprint, transactional replacement restore/erase/session-delete and re-export apply. ZIPv2 attaches verified audio and consumes matching orphan identity; optional source_duration_ms handles legacy stored/measured duration differences. Old backups are accepted; older readers may ignore metadata stars or reject new optional ZIP fields. Existing event stars/corrections remain independent. Separate settings-profilev1 now offers explicit reviewed supported-category transfer without record replacement, credentials, grants or active authority. Schema17 CSV evidence is linked to records, included in metadata13/ZIPv2 optional sleep_csv extension, stale fingerprint and replacement/deletion. Sensor validator now accepts the supported current Backup.FORMAT rather than rejecting formats9–13. These additions are build-only, not round-trip/runtime acceptance.",
       "id": "F089",
       "tests": [
         {
@@ -2688,11 +2694,16 @@
       "implementation": [
         "Backup.java",
         "FileSafety.java",
-        "MainActivity.java"
+        "MainActivity.java",
+        "SleepCsvFormat.java",
+        "SleepCsvImport.java",
+        "SleepCsvEvidence.java",
+        "SleepCsvJob.java",
+        "SleepCsvActivity.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "Combined assembleDebug32f87b9 PASS2m2s; source-only format/provenance integration. No new tests, provider/device or migration execution.",
       "status": "partial",
-      "notes": "Partial: documented project JSON/CSV, no public provider. Vendor data-format import pending.",
+      "notes": "Reviewed Sleep as Android CSV import appends historical manual/imported/no-sensor periods with original zones, notes, tags and exact integral ratings. Repeated15-field headers, optional noise rows, quoting/newlines, source IDs and documented dates are validated. Conflicting IDs, existing exact periods and retained deleted-ID receipts are reviewed and never overwritten. Original rows, fractional ratings and aggregate adjustments remain in same-transaction source evidence with strict identity/hash/bounds, record deletion, optional metadata13 extension and library backup. App duration is the period, not vendor adjusted sleep duration; source details disclose both. Vendor actigraphy/noise/stage fields are retained without fabricating local measurements, stage estimates or positioned awake spans. Input4MiB/2000 records; retained raw3MiB/portable4MiB and overall8MiB backup bounds. Unsupported formats/oversized data reject explicitly. Public content provider and complete semantic vendor-format conversion remain absent. Runtime/provider/migration acceptance remains open.",
       "id": "F097",
       "tests": []
     },
@@ -4442,6 +4453,65 @@
       "status": "partial",
       "notes": "Explicit reviewed CalendarContract insertion of a saved effective interval into a chosen writable calendar. Read/write permissions on demand; visible denied/missing/revoked/error states. Exported data is title/start/end/zone and optional visible note; PRIVATE/FREE/no reminder requested. Worker journal retains title/note hash/source identity and local receipts, no raw note. Same-period/calendar dedup, source/destination rechecks, ownership marker verification and explicit uncertain receipt recheck; no blind second insertion or unrelated update/delete. Existing external composer remains. Provider metadata support and local permission required; remote sync, actual insertion and whole flow remain unverified.",
       "id": "F155",
+      "tests": []
+    },
+    {
+      "feature": "Portable reviewed settings profiles",
+      "screens": "35,36,15,19 + separate settings review/recovery",
+      "source": "https://sleep.urbandroid.org/docs/services/backup_data.html",
+      "implementation": [
+        "SettingsProfile.java",
+        "SettingsProfileJson.java",
+        "SettingsProfilePersistence.java",
+        "SettingsProfileJob.java",
+        "SettingsProfileActivity.java",
+        "BackupActivity.java",
+        "TonightLayout.java"
+      ],
+      "validation": "Combined assembleDebug32f87b9 PASS2m2s only. No new tests/lint/screenshots, provider, output or phone actions.",
+      "status": "partial",
+      "notes": "Separate strict64KiB UTF-8 version1 JSON exports optional Appearance, Sleep plan, Bundled sounds, Narration and Tonight layout categories. Source-value review precedes explicit Apply; existing typed save APIs stage allowed values, with acknowledged writes, stale fingerprints, private multi-file recovery journal and guarded rollback. Background bedtime reminders and sound-with-tracking import off; active alarm/tracking/playback or incompatible bedtime activation blocks Apply. Home order/visibility/artwork transfer excludes local revisions/receipts and cannot hide mandatory controls. No arbitrary preference keys, capture/authority, credentials/endpoints, URI references/grants, enrollment, permission or record/alarm replacement. Unsupported source local-audio category explicitly rejected. Not a full settings backup; actual provider, recovery/lifecycle and persistence acceptance remains open.",
+      "id": "F156",
+      "tests": []
+    },
+    {
+      "feature": "Source-preserving Sleep as Android CSV append",
+      "screens": "22,24,35 + source review/details",
+      "source": "https://sleep.urbandroid.org/docs/devs/csv.html",
+      "implementation": [
+        "SleepCsvFormat.java",
+        "SleepCsvEvidence.java",
+        "SleepCsvImport.java",
+        "SleepCsvJob.java",
+        "SleepCsvActivity.java",
+        "RecordEntry.java",
+        "Records.java",
+        "RecordEditorActivity.java",
+        "Store.java",
+        "Backup.java",
+        "BackupFingerprint.java"
+      ],
+      "validation": "Combined assembleDebug32f87b9 PASS2m2s only. Primary vendor documentation/example inspected; no parser/SQLite/provider/native execution.",
+      "status": "partial",
+      "notes": "Real reviewed append of selected eligible source periods, transactional records+evidence+dedup receipts, explicit changed-ID/exact-period/deleted-ID conflicts, cancellation before commit and uncertain-commit recovery without replay. Exact raw2/3rows remain private/portable with fractional rating and LenAdjust/net aggregate; original source details accessible after import. DST offsets checked against Id/Hours, nonexistent/mismatched local times rejected. No synthetic sensor/stage graphs or inferred awake placement; app period duration and vendor adjusted duration stay distinct. Metadata13 optional extension, additive schema17 and session-deletion trigger preserve lifecycle. Manual, automatic and full-library metadata paths share it; older readers can drop the optional extension. Full vendor semantic projection and actual runtime/provider/migration acceptance remain open.",
+      "id": "F157",
+      "tests": []
+    },
+    {
+      "feature": "Configurable optional Tonight rows",
+      "screens": "01,36 + Tonight layout supporting screen",
+      "source": "https://sleep.urbandroid.org/docs/ux/personalize.html",
+      "implementation": [
+        "TonightLayout.java",
+        "TonightLayoutActivity.java",
+        "TonightScreen.java",
+        "AppearanceActivity.java",
+        "SettingsProfile.java"
+      ],
+      "validation": "Combined assembleDebug32f87b9 PASS2m2s only; default composition compared at source level, not fresh raster/design acceptance.",
+      "status": "partial",
+      "notes": "Saved reorder/show/hide of Bedtime goal, Wind-down, optional dated goal-bank progress and latest non-nap saved night, plus illustration visibility. Defaults keep original bedtime→wind-down and artwork; new data links default off. Goal ledger/record data read off-main with visible empty/error states and detached-view fences. Alarm/time/arc/days/tracking/run-check and nap start/duration controls mandatory. Draft Reset, Cancel, stale explicit Save and optional typed settings-profile transfer. No broad card library or accepted full-screen redesign; actual persistence, large-text and visual acceptance remain open.",
+      "id": "F158",
       "tests": []
     }
   ]

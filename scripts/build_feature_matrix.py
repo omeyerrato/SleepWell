@@ -975,6 +975,25 @@ rows.extend([
     dict(feature="Reviewed direct calendar record insertion", screens="14,22,24 + calendar export review", source=SOURCE+"services/google_calendar.html", implementation=["CalendarEventDirectActivity.java", "CalendarEventWrites.java", "CalendarEventExportActivity.java", "CalendarEventDraft.java"], validation="Combined assembleDebug121dbd5 PASS1m41s. No calendar/provider/device calls or new tests/lint/screenshots.", status="partial", notes="Explicit reviewed CalendarContract insertion of a saved effective interval into a chosen writable calendar. Read/write permissions on demand; visible denied/missing/revoked/error states. Exported data is title/start/end/zone and optional visible note; PRIVATE/FREE/no reminder requested. Worker journal retains title/note hash/source identity and local receipts, no raw note. Same-period/calendar dedup, source/destination rechecks, ownership marker verification and explicit uncertain receipt recheck; no blind second insertion or unrelated update/delete. Existing external composer remains. Provider metadata support and local permission required; remote sync, actual insertion and whole flow remain unverified.")
 ])
 
+# Current portable settings / source-preserving import / optional Tonight layout batch.
+for row in rows:
+    if row["feature"] == "Dashboard / tabs":
+        row["notes"] = row["notes"].replace("User-arranged cards and other home configurations absent;", "Saved optional Tonight row order/visibility and illustration configuration now exists; broader card libraries and other home configurations remain absent;")
+        row["implementation"] += ["TonightLayout.java", "TonightLayoutActivity.java"]
+        row["validation"] += " Optional-layout addition: combined assembleDebug32f87b9 PASS2m2s only; no new runtime/design acceptance."
+    elif row["feature"] == "Content provider / CSV compatibility":
+        row["implementation"] += ["SleepCsvFormat.java", "SleepCsvImport.java", "SleepCsvEvidence.java", "SleepCsvJob.java", "SleepCsvActivity.java"]
+        row["notes"] = "Reviewed Sleep as Android CSV import appends historical manual/imported/no-sensor periods with original zones, notes, tags and exact integral ratings. Repeated15-field headers, optional noise rows, quoting/newlines, source IDs and documented dates are validated. Conflicting IDs, existing exact periods and retained deleted-ID receipts are reviewed and never overwritten. Original rows, fractional ratings and aggregate adjustments remain in same-transaction source evidence with strict identity/hash/bounds, record deletion, optional metadata13 extension and library backup. App duration is the period, not vendor adjusted sleep duration; source details disclose both. Vendor actigraphy/noise/stage fields are retained without fabricating local measurements, stage estimates or positioned awake spans. Input4MiB/2000 records; retained raw3MiB/portable4MiB and overall8MiB backup bounds. Unsupported formats/oversized data reject explicitly. Public content provider and complete semantic vendor-format conversion remain absent. Runtime/provider/migration acceptance remains open."
+        row["validation"] = "Combined assembleDebug32f87b9 PASS2m2s; source-only format/provenance integration. No new tests, provider/device or migration execution."
+    elif row["feature"] == "Local data backup":
+        row["implementation"] += ["SettingsProfile.java", "SettingsProfilePersistence.java", "SettingsProfileActivity.java", "SleepCsvEvidence.java"]
+        row["notes"] += " Separate settings-profilev1 now offers explicit reviewed supported-category transfer without record replacement, credentials, grants or active authority. Schema17 CSV evidence is linked to records, included in metadata13/ZIPv2 optional sleep_csv extension, stale fingerprint and replacement/deletion. Sensor validator now accepts the supported current Backup.FORMAT rather than rejecting formats9–13. These additions are build-only, not round-trip/runtime acceptance."
+rows.extend([
+    dict(feature="Portable reviewed settings profiles", screens="35,36,15,19 + separate settings review/recovery", source=SOURCE+"services/backup_data.html", implementation=["SettingsProfile.java", "SettingsProfileJson.java", "SettingsProfilePersistence.java", "SettingsProfileJob.java", "SettingsProfileActivity.java", "BackupActivity.java", "TonightLayout.java"], validation="Combined assembleDebug32f87b9 PASS2m2s only. No new tests/lint/screenshots, provider, output or phone actions.", status="partial", notes="Separate strict64KiB UTF-8 version1 JSON exports optional Appearance, Sleep plan, Bundled sounds, Narration and Tonight layout categories. Source-value review precedes explicit Apply; existing typed save APIs stage allowed values, with acknowledged writes, stale fingerprints, private multi-file recovery journal and guarded rollback. Background bedtime reminders and sound-with-tracking import off; active alarm/tracking/playback or incompatible bedtime activation blocks Apply. Home order/visibility/artwork transfer excludes local revisions/receipts and cannot hide mandatory controls. No arbitrary preference keys, capture/authority, credentials/endpoints, URI references/grants, enrollment, permission or record/alarm replacement. Unsupported source local-audio category explicitly rejected. Not a full settings backup; actual provider, recovery/lifecycle and persistence acceptance remains open."),
+    dict(feature="Source-preserving Sleep as Android CSV append", screens="22,24,35 + source review/details", source=SOURCE+"devs/csv.html", implementation=["SleepCsvFormat.java", "SleepCsvEvidence.java", "SleepCsvImport.java", "SleepCsvJob.java", "SleepCsvActivity.java", "RecordEntry.java", "Records.java", "RecordEditorActivity.java", "Store.java", "Backup.java", "BackupFingerprint.java"], validation="Combined assembleDebug32f87b9 PASS2m2s only. Primary vendor documentation/example inspected; no parser/SQLite/provider/native execution.", status="partial", notes="Real reviewed append of selected eligible source periods, transactional records+evidence+dedup receipts, explicit changed-ID/exact-period/deleted-ID conflicts, cancellation before commit and uncertain-commit recovery without replay. Exact raw2/3rows remain private/portable with fractional rating and LenAdjust/net aggregate; original source details accessible after import. DST offsets checked against Id/Hours, nonexistent/mismatched local times rejected. No synthetic sensor/stage graphs or inferred awake placement; app period duration and vendor adjusted duration stay distinct. Metadata13 optional extension, additive schema17 and session-deletion trigger preserve lifecycle. Manual, automatic and full-library metadata paths share it; older readers can drop the optional extension. Full vendor semantic projection and actual runtime/provider/migration acceptance remain open."),
+    dict(feature="Configurable optional Tonight rows", screens="01,36 + Tonight layout supporting screen", source=SOURCE+"ux/personalize.html", implementation=["TonightLayout.java", "TonightLayoutActivity.java", "TonightScreen.java", "AppearanceActivity.java", "SettingsProfile.java"], validation="Combined assembleDebug32f87b9 PASS2m2s only; default composition compared at source level, not fresh raster/design acceptance.", status="partial", notes="Saved reorder/show/hide of Bedtime goal, Wind-down, optional dated goal-bank progress and latest non-nap saved night, plus illustration visibility. Defaults keep original bedtime→wind-down and artwork; new data links default off. Goal ledger/record data read off-main with visible empty/error states and detached-view fences. Alarm/time/arc/days/tracking/run-check and nap start/duration controls mandatory. Draft Reset, Cancel, stale explicit Save and optional typed settings-profile transfer. No broad card library or accepted full-screen redesign; actual persistence, large-text and visual acceptance remain open.")
+])
+
 test_paths = {path.stem: path.relative_to(ROOT).as_posix()
               for source_set in ("test", "androidTest")
               for path in (ROOT / "app/src" / source_set / "java/org/sleepwell/app").glob("*Test.java")}
@@ -1002,21 +1021,18 @@ excluded. Sonar, optional smart lights and sleep-only Health Connect remain in s
 Vendor proprietary assets/algorithms and hosted services are not copied.
 This matrix supersedes the wearable roadmap in the older FEATURES.md.
 
-Current follow-up production source **121dbd5** adds optional removable uninstall
-friction, direct calendar saving, AAC interval/collection export and portable legacy
-clip stars, alongside preceding alarm/tracking/data features. Combined production
-build **PASS1m41s**. Schema16 adds missing-audio favorite metadata storage; backup13
-and ZIPv2 retain their versions with optional extension fields. Migration is unverified.
-This feature window uses **build-only**
-evidence: no new unit/native/lint/screenshot batches or physical-phone actions.
-The APK retains the original debug signing key. Candidate121dbd5 is uninstalled.
-Last authorized phone update was5a73464: streamed update/checksum/original rows,
-preferences/private files matched. Its last launch was blocked by Samsung Device
-Care suspension and last verified schema was7; its first-open target is15. No
-further phone/admin/provider/codec/alarm/audio/sensor actions ran in this batch.
-The current public121dbd5 development prerelease includes these additions.
-Its uploaded size/SHA256 match the frozen local signed APK. Earlier release inventories are preserved
-in [delivery history](2026-10-25-FEATURE-DELIVERY.md).
+Current production source **32f87b9** adds reviewed settings profiles, source-preserving
+Sleep as Android CSV append and configurable optional Tonight rows. Combined
+production build **PASS2m2s**. Additive schema17 stores original CSV evidence;
+metadata13/ZIPv2 retain optional extensions and settings profiles are separatev1.
+No new tests/lint/screenshots/provider/native acceptance is claimed. The candidate
+retains the installed debug signing key; no further phone actions ran for these
+features. Last authorized phone update121dbd5 succeeded with matching installed
+hash and original rows/preferences/private files preserved. Samsung Device Care
+still suspends it; schema7 was last verified pending its first-open target16.
+Current32f87b9/schema17 is uninstalled. Migration/provider/overnight/full-screen
+acceptance remains unverified. Release metadata and exact artifact hashes are
+recorded in [delivery history](2026-10-25-FEATURE-DELIVERY.md).
 Historical scoped functional evidence is preserved in [VERIFICATION.md](VERIFICATION.md)
 and the linked verification directories; it does not validate this newer source.
 The last full-app native run remains failing; narrower passing batches never

@@ -441,3 +441,47 @@ no launch or suspension change was attempted. Database schema7 remains unchanged
 until the first-open migration to16. No alarm, audio, vibration, torch, sensor,
 provider, admin or UI tests ran on the phone. Earlier installation notes above
 are chronological, not the current installed version.
+
+## Portable settings, CSV source import and Tonight layout —26 October,32f87b9
+
+Three implementation agents worked in separate worktrees. Their combined source
+adds actual reviewed document import/export and saved optional home configuration:
+
+- Settings-profile version1 exports selected Appearance, Sleep plan, Bundled
+  sounds, Narration and Tonight layout. Strict64KiB typed JSON, source-value review,
+  explicit Apply, stale settings/runtime checks and private interrupted multi-file
+  recovery preserve the intended boundary. Imported reminder/playback activation
+  stays off. Capture, credentials, grants, enrollments, permissions, history/alarm
+  replacement and active authority remain excluded. Local audio export is rejected
+  in the sounds category with explicit deselection guidance.
+- Sleep as Android CSV review appends selected new periods, notes, tags, zones and
+  exact integral ratings. Conflicting IDs, exact periods and retained deleted-ID
+  receipts are kept. Exact source rows retain fractional rating, LenAdjust/net
+  aggregate and vendor signal/event fields in the same main database transaction.
+  App duration is the imported period; original adjusted duration is separately
+  visible. No sensor/stage graph or located awake interval is fabricated.
+- Schema17 adds linked CSV source storage/deletion; optional metadata13 `sleep_csv`
+  is included in backups, library metadata, stale fingerprint and restore.
+  The older sensor validator's format8 ceiling is replaced with the supported
+  Backup.FORMAT bound, restoring current-format9–13 acceptance at source level.
+- Tonight optional row order/show/hide and artwork are saved drafts with Reset,
+  Cancel and stale explicit Save. Goal bank/latest non-nap links default off and
+  read actual stored data. Default composition and mandatory alarm/nap/tracking
+  controls remain. Arrangement transfers through the separate profile category.
+
+Source commits7df9408 (layout),f7387d5 (profiles),00cba5e (layout profile),dd88594
+(CSV),32f87b9 (root lifecycle/entry/provenance integration). Production
+`:app:assembleDebug` **PASS2m2s**, original installed signer, schema17/backup13.
+New source paths have build-only evidence. No new unit/native/lint/screenshots,
+provider/document, migration/recovery, sensor/output or personal-phone actions.
+Full visual, runtime/overnight, classifier accuracy and service parity remain open.
+Details: [portable settings/CSV](PORTABLE-SETTINGS-AND-CSV.md).
+
+Frozen APK215249828bytes, SHA256
+`44cd037266f37b7a87690262967fe41c21d4a826abc01ec4715d9da0f1ae2dfb`.
+Candidate is uninstalled; last authorized phone source121dbd5 remains Device Care
+suspended, with schema7 last verified pending its first-open target16.
+
+[Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-32f87b9)
+is published. GitHub confirms draftfalse, prereleasetrue, the exact source target
+and both assets uploaded; APK size and SHA256 match the frozen local artifact.
