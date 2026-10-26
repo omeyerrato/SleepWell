@@ -18,6 +18,7 @@ final class SoundPlayback {
     SoundPlayback(Clock clock,Sink sink){this.clock=clock;this.sink=sink;}
     long elapsed(){return elapsed+(state==State.PLAYING||state==State.LOADING&&loadingContinues?Math.max(0,clock.now()-anchor):0);}
     SoundMix mix(){return mix==null?null:mix.copy();}
+    boolean radio(){return mix!=null&&mix.primary.equals(SleepRadio.NAME);}
     boolean playlist(){return mix!=null&&mix.primary.equals(SoundPlaylist.NAME);}
     boolean rotation(){return mix!=null&&mix.primary.equals(AmbientRotation.NAME);}
     int trackNumber(){return rotation()?Math.min(track+1,mix.rotation.sounds.size()):playlist()?Math.min(track+1,mix.playlist.tracks.size()):0;}
@@ -64,13 +65,13 @@ final class SoundPlayback {
         if(replace){track=0;rotationStart=elapsed;retainedPause=false;queueEnded=false;if(before==State.PLAYING||before==State.LOADING)load();else if(before==State.PAUSED)release();}
         else if(before==State.PLAYING||before==State.LOADING&&loadingContinues)try{apply();}catch(RuntimeException e){fail();}
     }
-    void tick(){if(state==State.LOADING&&clock.now()-loadingAt>=30000){fail();return;}if(state==State.PLAYING||state==State.LOADING&&loadingContinues){if(expired()){finish();return;}try{if(state==State.PLAYING&&rotation())rotate(mix.rotation.index(elapsed()-rotationStart));if(state==State.PLAYING||state==State.LOADING&&loadingContinues)apply();}catch(RuntimeException e){fail();}}}
+    void tick(){if(state==State.LOADING&&clock.now()-loadingAt>=(radio()?AlarmRadioUrl.TIMEOUT:30000)){fail();return;}if(state==State.PLAYING||state==State.LOADING&&loadingContinues){if(expired()){finish();return;}try{if(state==State.PLAYING&&rotation())rotate(mix.rotation.index(elapsed()-rotationStart));if(state==State.PLAYING||state==State.LOADING&&loadingContinues)apply();}catch(RuntimeException e){fail();}}}
     void pause(){if(state!=State.LOADING&&state!=State.PLAYING)return;elapsed=elapsed();if((playlist()||rotation())&&state==State.PLAYING){try{for(Layer layer:layers.values())layer.pause();retainedPause=true;}catch(RuntimeException failure){release();retainedPause=false;}}else{release();retainedPause=false;}loadingContinues=false;state=State.PAUSED;duck=1;}
     void stop(){release();elapsed=0;track=0;queueEnded=false;state=State.STOPPED;duck=attenuation=1;endedReason="";error="";}
     void duck(boolean value){duck=value?.2f:1;if(state==State.PLAYING||state==State.LOADING&&loadingContinues)try{apply();}catch(RuntimeException e){fail();}}
     float attenuation(){return attenuation;}
     void attenuate(float gain){if(!Float.isFinite(gain)||gain<0||gain>1)return;attenuation=Math.min(attenuation,gain);if(state==State.PLAYING||state==State.LOADING&&loadingContinues){if(attenuation==0){elapsed=elapsed();endedReason="Movement-estimate fade ended · tap Play to restart";release();state=State.FINISHED;}else try{apply();}catch(RuntimeException failure){fail();}}}
-    void fail(){elapsed=elapsed();release();state=State.ERROR;error=playlist()?"Playlist stopped. A file is unavailable or unreadable; no track was skipped. Re-select it before playing again.":"This sound could not be played. Re-select it or import another audio file.";}
+    void fail(){elapsed=elapsed();release();state=State.ERROR;error=radio()?"Radio stopped. The stream is offline, unsupported or took too long. Check your connection or station, then tap Play; no fallback was played.":playlist()?"Playlist stopped. A file is unavailable or unreadable; no track was skipped. Re-select it before playing again.":"This sound could not be played. Re-select it or import another audio file.";}
     private void finish(){elapsed=mix.timerMinutes*60000L;queueEnded=false;release();state=State.FINISHED;}
     private boolean expired(){return mix!=null&&elapsed()>=mix.timerMinutes*60000L;}
     float fade(){if(mix==null||mix.fadeMinutes==0)return 1;return Math.max(0,Math.min(1,(mix.timerMinutes*60000L-elapsed())/(float)(mix.fadeMinutes*60000L)));}

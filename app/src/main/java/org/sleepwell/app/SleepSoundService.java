@@ -9,7 +9,7 @@ import android.net.Uri;
 import android.os.*;
 import java.util.Map;
 
-/** User-started, local-only media playback. No stream-volume or alarm scheduling changes. */
+/** User-started local or explicitly chosen public-HTTPS media playback. No stream-volume or alarm scheduling changes. */
 public final class SleepSoundService extends Service {
     static final String PLAY="sound.PLAY",PAUSE="sound.PAUSE",STOP="sound.STOP";
     private static volatile SleepSoundService current;
@@ -131,10 +131,11 @@ public final class SleepSoundService extends Service {
 
     /** All provider IO / decoder calls are on one worker. close() invalidates queued starts immediately. */
     private final class PlayerLayer implements SoundPlayback.Layer {
-        final String source;final AudioAttributes attributes;private AutomationPlayback.Segment playingSegment;volatile boolean closed;MediaPlayer player;boolean ready;volatile boolean finite,ended;volatile Runnable completed;volatile SoundPlaylistAudio snapshot;
-        PlayerLayer(String s,AudioAttributes a){source=s;attributes=a;}
+        final String source;final AudioAttributes attributes;final boolean radio;private boolean radioBuffering;private AutomationPlayback.Segment playingSegment;volatile boolean closed;MediaPlayer player;boolean ready;volatile boolean finite,ended;volatile Runnable completed;volatile SoundPlaylistAudio snapshot;
+        PlayerLayer(String s,AudioAttributes a){source=s;attributes=a;radio=AlarmRadioUrl.source(s);}
+        private final Runnable radioStalled=()->{if(!destroyed&&!closed)failure("Radio stream did not respond within eight seconds. Check the station or connection, then tap Play. No fallback was played.");};
         @Override public void finite(Runnable completion){finite=true;completed=completion;}
-        @Override public void prepare(SoundPlayback.Ready callback){worker.post(()->{
+        @Override public void prepare(SoundPlayback.Ready callback){if(radio)main.postDelayed(radioStalled,AlarmRadioUrl.TIMEOUT);worker.post(()->{
             if(closed)return;
             if(finite&&source.startsWith("content://")){
                 try{snapshot=SoundPlaylistAudio.acquire(SleepSoundService.this);if(closed){release();return;}snapshot.readAsync(source,file->worker.post(()->{if(closed){release();return;}preparePlayer(callback,file);}),error->worker.post(()->{release();main.post(()->{if(!destroyed&&!closed)callback.failed();});}));}
@@ -144,10 +145,12 @@ public final class SleepSoundService extends Service {
         private void preparePlayer(SoundPlayback.Ready callback,java.io.File document){
             if(closed)return;
             try{
-                player=new MediaPlayer();player.setAudioAttributes(attributes);player.setLooping(!finite);player.setVolume(0,0);player.setOnCompletionListener(p->{Runnable completion=completed;if(finite&&!closed&&completion!=null){ended=true;main.post(()->{if(!destroyed&&!closed)completion.run();});}});
-                player.setOnPreparedListener(p->{if(closed){release();return;}ready=true;main.post(()->{if(!destroyed&&!closed)callback.ready();else close();});});
+                player=new MediaPlayer();player.setAudioAttributes(attributes);player.setLooping(!finite&&!radio);player.setVolume(0,0);player.setOnCompletionListener(p->{if(radio&&!closed){main.post(()->{if(!destroyed&&!closed)callback.failed();});return;}Runnable completion=completed;if(finite&&!closed&&completion!=null){ended=true;main.post(()->{if(!destroyed&&!closed)completion.run();});}});
+                player.setOnInfoListener((p,what,extra)->{if(radio&&!closed){if(what==MediaPlayer.MEDIA_INFO_BUFFERING_START)main.post(()->{if(!destroyed&&!closed&&!radioBuffering){radioBuffering=true;main.removeCallbacks(radioStalled);main.postDelayed(radioStalled,AlarmRadioUrl.TIMEOUT);}});else if(what==MediaPlayer.MEDIA_INFO_BUFFERING_END)main.post(()->{radioBuffering=false;main.removeCallbacks(radioStalled);});}return false;});
+                player.setOnPreparedListener(p->{if(closed){release();return;}ready=true;main.post(()->{radioBuffering=false;main.removeCallbacks(radioStalled);if(!destroyed&&!closed)callback.ready();else close();});});
                 player.setOnErrorListener((p,what,extra)->{main.post(()->{if(!destroyed&&!closed)callback.failed();});return true;});
-                if(document!=null){try(java.io.FileInputStream input=new java.io.FileInputStream(document)){player.setDataSource(input.getFD());}}
+                if(radio)player.setDataSource(SleepSoundService.this,Uri.parse(AlarmRadioUrl.parse(source.substring(6))),Map.of("android-allow-cross-domain-redirect","0"));
+                else if(document!=null){try(java.io.FileInputStream input=new java.io.FileInputStream(document)){player.setDataSource(input.getFD());}}
                 else if(source.startsWith(BinauralTones.PREFIX)){java.io.File file=BinauralTones.prepare(SleepSoundService.this,source,()->!closed&&!destroyed);try(java.io.FileInputStream input=new java.io.FileInputStream(file)){player.setDataSource(input.getFD());}}
                 else if(source.startsWith("content://"))player.setDataSource(SleepSoundService.this,Uri.parse(source));
                 else {String file=Map.of("Rain","rain.wav","Ocean","ocean.wav","Fireplace","fireplace.wav","Wind","wind.wav","Brown noise","brown.wav").get(source);if(file==null)throw new IllegalArgumentException("Unknown sound");
@@ -158,8 +161,8 @@ public final class SleepSoundService extends Service {
         @Override public void gain(float value){worker.post(()->{if(!closed&&ready&&player!=null)try{player.setVolume(value,value);}catch(IllegalStateException e){main.post(()->{if(!destroyed&&!closed)failure("Playback stopped. Please select the sound again.");});}});}
         @Override public void start(){AutomationPlayback.Segment requested=soundSegment;soundEvents.starting(requested,this);if(!worker.post(()->{try{if(!closed&&ready&&player!=null&&(!finite||!ended)){player.start();if(player.isPlaying()){playingSegment=requested;soundEvents.started(requested,this);}}}catch(IllegalStateException e){main.post(()->{if(!destroyed&&!closed)failure("Playback stopped. Please select the sound again.");});}finally{soundEvents.settled(requested,this);}}))soundEvents.settled(requested,this);}
         @Override public void pause(){worker.post(()->{if(!closed&&ready&&player!=null)try{player.pause();if(!player.isPlaying()){soundEvents.quiet(playingSegment,this);playingSegment=null;}}catch(IllegalStateException error){main.post(()->{if(!destroyed&&!closed)failure("Playlist could not pause. Select it again before playing.");});}});}
-        @Override public void close(){closed=true;SoundPlaylistAudio reading=snapshot;if(reading!=null)reading.cancel();worker.post(this::release);}
-        private void release(){ready=false;try{if(player!=null){try{player.stop();}catch(IllegalStateException ignored){}player.release();player=null;soundEvents.quiet(playingSegment,this);playingSegment=null;}SoundPlaylistAudio reading=snapshot;if(reading!=null){reading.close();snapshot=null;}}catch(Exception cleanup){SoundPreferences.error(SleepSoundService.this,"Playlist cleanup needs attention. Restart SleepWell before trying another local file.");}}
+        @Override public void close(){closed=true;main.removeCallbacks(radioStalled);SoundPlaylistAudio reading=snapshot;if(reading!=null)reading.cancel();worker.post(this::release);}
+        private void release(){ready=false;main.removeCallbacks(radioStalled);try{if(player!=null){try{player.stop();}catch(IllegalStateException ignored){}player.release();player=null;soundEvents.quiet(playingSegment,this);playingSegment=null;}SoundPlaylistAudio reading=snapshot;if(reading!=null){reading.close();snapshot=null;}}catch(Exception cleanup){SoundPreferences.error(SleepSoundService.this,"Playlist cleanup needs attention. Restart SleepWell before trying another local file.");}}
 
     }
 }
