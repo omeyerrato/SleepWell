@@ -10,6 +10,14 @@ Full supporting evidence stays in FEATURE-CHECKLIST.md and FEATURE-MATRIX.md.
 
 Latest built source **25ed7a9d** adds grouped sound/tracking/mixer menus and direct detail search (production build32s; Android acceptance pending). It also retains the prior source731e9725 feature increment, which adds saved radio stations, simpler Tracking setup, measured echo-rhythm review and experimental recorded-audio estimates. These new Android flows still need acceptance; the check marks below do not imply full parity.
 
+Latest unreleased work: compact Report editor, named tag/awake detail sheets,
+themed editor option/rating pickers, numerical chart inspection and explicit
+unmeasured-gap selection are committed. Their combined app/UI-check build is in
+progress at source28e68f13; the focused Android journeys and screenshot comparison
+have not yet run. These changes do not close the Report/design checklist item.
+The sleep-stage research evidence is now recorded publicly; no useful stage model
+was accepted or shipped. Latest published APK25ed7a9d remains separate from this work.
+
 ## Implemented
 
 - [x] Best-effort prevent-leave and recognized power-menu handling.
