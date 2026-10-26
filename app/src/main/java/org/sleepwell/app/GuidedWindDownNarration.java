@@ -22,13 +22,17 @@ import java.util.function.BooleanSupplier;
 final class GuidedWindDownNarration implements AutoCloseable {
     interface Events {void status(String message,boolean failed);}
     private static final AtomicReference<GuidedWindDownNarration> OWNER=new AtomicReference<>();
-    private final NarrationSettings settings;private final Context app;private final BooleanSupplier foreground;private final Events events;
+    private final NarrationSettings settings;private final NarrationVoice selected;private NarrationVoiceEngine engine;private final Context app;private final BooleanSupplier foreground;private final Events events;
     private final Handler main=new Handler(Looper.getMainLooper());
     private final HandlerThread thread=new HandlerThread("SleepWell guide narration");private final Handler worker;
     private final AudioAttributes attributes=new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_MEDIA).setContentType(AudioAttributes.CONTENT_TYPE_SPEECH).build();
     private final String run=UUID.randomUUID().toString();private volatile boolean closed;private boolean ready,failed;private TextToSpeech speech;private AudioManager audio;private AudioFocusRequest focus;private Voice voice;private String pending,spoken="",utterance="";private int serial,focusGeneration;
     GuidedWindDownNarration(Context context,BooleanSupplier foreground,Events events,String first){this(context,foreground,events,first,NarrationSettings.DEFAULT);}
     GuidedWindDownNarration(Context context,BooleanSupplier foreground,Events events,String first,NarrationSettings settings){
+        this(context,foreground,events,first,settings,NarrationVoice.AUTO);
+    }
+    GuidedWindDownNarration(Context context,BooleanSupplier foreground,Events events,String first,NarrationSettings settings,NarrationVoice selected){
+        this.selected=java.util.Objects.requireNonNull(selected);
         this.settings=java.util.Objects.requireNonNull(settings);app=context.getApplicationContext();this.foreground=foreground;this.events=events;pending=first;
         if(!OWNER.compareAndSet(null,this))throw new IllegalStateException("Previous narration is still stopping. Try again shortly.");
         try{thread.start();worker=new Handler(thread.getLooper());worker.post(this::initialize);}catch(RuntimeException failure){OWNER.compareAndSet(this,null);throw failure;}
@@ -39,7 +43,7 @@ final class GuidedWindDownNarration implements AutoCloseable {
         if(!allowed()){close();return;}
         status("Preparing an installed offline English voice…",false);
         worker.postDelayed(initializationTimeout,10000);
-        try{speech=new TextToSpeech(app,value->worker.post(()->initialized(value)));worker.post(watch);}catch(RuntimeException unavailable){fail("Text-to-speech is unavailable. The silent guide still works.");}
+        try{engine=new NarrationVoiceEngine(app,selected.engine,value->worker.post(()->initialized(value)));speech=engine.speech;worker.post(watch);}catch(RuntimeException unavailable){fail(unavailable.getMessage()==null?"Text-to-speech is unavailable. The silent guide still works.":unavailable.getMessage());}
     }
     private final Runnable initializationTimeout=()->fail("Offline voice initialization timed out. The silent guide still works.");
     private void initialized(int result){
@@ -50,7 +54,7 @@ final class GuidedWindDownNarration implements AutoCloseable {
             if(available!=null)for(Voice candidate:available)if(offline(candidate))local.add(candidate);
             local.sort(Comparator.comparingInt(Voice::getQuality).reversed().thenComparing(Voice::getName));
             if(local.isEmpty()){fail("No installed offline English voice. Install one in Android text-to-speech settings, then retry.");return;}
-            voice=local.get(0);
+            if(selected.automatic())voice=local.get(0);else {engine.checkRequested();for(Voice candidate:local)if(selected.matches(candidate)){voice=candidate;break;}if(voice==null){fail("The selected offline English voice is missing. Choose Auto or another installed voice; no different voice was played.");return;}if(speech.isLanguageAvailable(voice.getLocale())<TextToSpeech.LANG_AVAILABLE){fail("The requested voice language data is unavailable. Choose another installed English voice.");return;}}
             if(speech.setVoice(voice)!=TextToSpeech.SUCCESS||!selectedVoice()){fail("The installed provider could not select an offline voice. The silent guide still works.");return;}
             if(speech.setAudioAttributes(attributes)!=TextToSpeech.SUCCESS||speech.setSpeechRate(settings.speechRate())!=TextToSpeech.SUCCESS||speech.setPitch(settings.speechPitch())!=TextToSpeech.SUCCESS){fail("The speech provider could not configure narration.");return;}
             if(speech.setOnUtteranceProgressListener(new UtteranceProgressListener(){
@@ -62,12 +66,13 @@ final class GuidedWindDownNarration implements AutoCloseable {
             ready=true;readPending();
         }catch(RuntimeException unavailable){fail("Offline narration is unavailable. The silent guide still works.");}
     }
-    private static boolean offline(Voice value){return value!=null&&value.getLocale()!=null&&"en".equals(value.getLocale().getLanguage())&&!value.isNetworkConnectionRequired()&&(value.getFeatures()==null||!value.getFeatures().contains(TextToSpeech.Engine.KEY_FEATURE_NOT_INSTALLED));}
-    private boolean selectedVoice(){Voice selected=speech.getVoice();return offline(selected)&&voice.getName().equals(selected.getName());}
+    private static boolean offline(Voice value){return NarrationVoice.offline(value);}
+    private boolean selectedVoice(){Voice selected=speech.getVoice();return offline(selected)&&voice.getName().equals(selected.getName())&&voice.getLocale().equals(selected.getLocale())&&(this.selected.automatic()||this.selected.matches(selected));}
     void step(String text){if(closed)return;worker.post(()->{if(!allowed()){close();return;}pending=text;if(ready)readPending();});}
     private void readPending(){
         if(!allowed()){close();return;}if(!ready||pending==null||pending.equals(spoken))return;
         try{
+            if(!selected.automatic()){engine.checkRequested();if(speech.isLanguageAvailable(voice.getLocale())<TextToSpeech.LANG_AVAILABLE){fail("Selected English voice data is no longer available. Choose another voice.");return;}}
             if(!selectedVoice()){fail("The provider changed away from the selected offline voice. Narration stopped.");return;}
             if(speech.setSpeechRate(settings.speechRate())!=TextToSpeech.SUCCESS||speech.setPitch(settings.speechPitch())!=TextToSpeech.SUCCESS){fail("The provider could not apply the saved speech rate or pitch. Narration stopped; the silent guide still works.");return;}
             speech.stop();worker.removeCallbacks(utteranceTimeout);abandon();audio=app.getSystemService(AudioManager.class);
@@ -90,6 +95,6 @@ final class GuidedWindDownNarration implements AutoCloseable {
         main.post(()->events.status(message,true));
     }
     private void abandon(){++focusGeneration;AudioFocusRequest owned=focus;focus=null;if(owned!=null&&audio!=null)try{audio.abandonAudioFocusRequest(owned);}catch(RuntimeException ignored){}}
-    private void stopNative(){worker.removeCallbacksAndMessages(null);ready=false;utterance="";TextToSpeech owned=speech;speech=null;if(owned!=null){try{owned.stop();}catch(RuntimeException ignored){}try{owned.shutdown();}catch(RuntimeException ignored){}}abandon();}
+    private void stopNative(){worker.removeCallbacksAndMessages(null);ready=false;utterance="";speech=null;NarrationVoiceEngine owned=engine;engine=null;if(owned!=null)try{owned.close();}catch(RuntimeException cleanup){main.post(()->events.status(cleanup.getMessage(),true));}abandon();}
     @Override public void close(){if(closed)return;closed=true;worker.post(()->{try{stopNative();}finally{OWNER.compareAndSet(this,null);thread.quitSafely();}});}
 }

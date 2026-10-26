@@ -1,0 +1,11 @@
+package org.sleepwell.app;
+import android.content.*;import android.content.pm.*;import android.speech.tts.*;import java.util.*;import java.util.concurrent.atomic.AtomicReference;
+/** Explicit requested engine. Public TTS can fall back; this class does not claim active-package proof. */
+final class NarrationVoiceEngine {
+ static final class Installed {final String name,label;Installed(String name,String label){this.name=name;this.label=label;}}
+ static List<Installed> installed(Context app){Map<String,Installed> all=new TreeMap<>();for(ResolveInfo row:app.getPackageManager().queryIntentServices(new Intent(TextToSpeech.Engine.INTENT_ACTION_TTS_SERVICE),0)){if(row.serviceInfo==null||!row.serviceInfo.enabled||!row.serviceInfo.applicationInfo.enabled||!row.serviceInfo.exported)continue;String name=row.serviceInfo.packageName;all.put(name,new Installed(name,String.valueOf(row.loadLabel(app.getPackageManager()))));}return List.copyOf(all.values());}
+ private static final AtomicReference<NarrationVoiceEngine> ACTIVE=new AtomicReference<>();final Context app;final String requested;TextToSpeech speech;private boolean closed;
+ NarrationVoiceEngine(Context context,String requested,TextToSpeech.OnInitListener listener){app=context.getApplicationContext();this.requested=requested;if(!ACTIVE.compareAndSet(null,this))throw new IllegalStateException("A previous voice connection is still closing. Try Refresh again.");try{checkRequested();speech=requested.isEmpty()?new TextToSpeech(app,listener):new TextToSpeech(app,listener,requested);}catch(RuntimeException error){ACTIVE.compareAndSet(this,null);throw error;}}
+ void checkRequested(){if(!requested.isEmpty()&&installed(app).stream().noneMatch(e->e.name.equals(requested)))throw new IllegalStateException("The requested speech engine is not installed or is disabled. Choose Auto or another installed engine.");}
+ void close(){if(closed)return;closed=true;TextToSpeech owned=speech;if(owned==null){ACTIVE.compareAndSet(this,null);return;}try{try{owned.stop();}catch(RuntimeException ignored){}owned.shutdown();speech=null;ACTIVE.compareAndSet(this,null);}catch(RuntimeException uncertain){throw new IllegalStateException("The voice connection did not confirm cleanup. Restart the app before opening another speech engine.",uncertain);}}
+}
