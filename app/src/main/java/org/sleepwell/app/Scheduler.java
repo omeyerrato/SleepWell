@@ -80,9 +80,17 @@ public final class Scheduler {
             // Overlapping scheduled alarms share the currently active challenge, but both schedules advance.
             if(alreadyRinging)return;
             WakeChecks.supersede(c);
-            Prefs.put(c,"challengeCompleted",0);Prefs.put(c,"mathTask","");Prefs.put(c,"retypeTask","");
-            String nextRun=java.util.UUID.randomUUID().toString();if(!SnoozeBudgets.started(c,a,nextRun,!mainAlarm&&snoozeContinuation))Prefs.put(c,"lastError","Snooze budget could not be initialized. Snooze may be unavailable.");
-            Prefs.of(c).edit().putLong("alarmStartedElapsed",android.os.SystemClock.elapsedRealtime()).putString("alarmRun",nextRun).putBoolean("forceBackup",false).putString("active_alarm",a.json().toString()).putBoolean("ringing",true).apply();
+            String nextRun=java.util.UUID.randomUUID().toString();
+            RandomChallenges.Prepared picked=RandomChallenges.prepare(c,a,nextRun,!mainAlarm);a=picked.alarm;
+            if(!SnoozeBudgets.started(c,a,nextRun,!mainAlarm&&snoozeContinuation))Prefs.put(c,"lastError","Snooze budget could not be initialized. Snooze may be unavailable.");
+            // Concrete tasks, their configured source and the occurrence/progress become durable together.
+            SharedPreferences.Editor publication=Prefs.of(c).edit().putInt("challengeCompleted",0).putString("mathTask","").putString("retypeTask","").putLong("alarmStartedElapsed",android.os.SystemClock.elapsedRealtime()).putString("alarmRun",nextRun).putBoolean("forceBackup",false).putString("active_alarm",a.json().toString()).putBoolean("ringing",true);
+            picked.write(publication);
+            if(!publication.commit()){
+                // commit() may already have updated the in-memory preferences. Revoke only our failed publication.
+                if(nextRun.equals(Prefs.text(c,"alarmRun","")))Prefs.of(c).edit().putBoolean("ringing",false).putBoolean("forceBackup",false).putString("lastError","The alarm occurrence could not be saved. Alarm output was not started.").apply();
+                return;
+            }
             if(a.backupMinutes>0 && allowed(c))at(c,a.id,BACKUP,System.currentTimeMillis()+a.backupMinutes*60000L);
             c.startForegroundService(new Intent(c,AlarmService.class));
         }

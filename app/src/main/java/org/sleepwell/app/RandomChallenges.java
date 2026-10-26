@@ -51,15 +51,17 @@ final class RandomChallenges {
         }catch(RuntimeException unavailable){return "Prerequisite could not be checked";}
     }
     private static String canonical(Alarm alarm){return alarm.json().toString();}
-    private static JSONObject read(Context context){try{String raw=Prefs.text(context,KEY,"");return raw.length()>262144?null:new JSONObject(raw);}catch(JSONException|RuntimeException invalid){return null;}}
+    private static JSONObject read(Context context){return read(Prefs.of(context));}
+    private static JSONObject read(SharedPreferences prefs){try{String raw=prefs.getString(KEY,"");return raw.length()>262144?null:new JSONObject(raw);}catch(JSONException|RuntimeException invalid){return null;}}
     private static boolean nonce(String run){try{return UUID.fromString(run).toString().equals(run);}catch(RuntimeException invalid){return false;}}
     /** Must be called under Scheduler.class for a genuinely accepted occurrence, then write() on its publishing edit. */
-    static Prepared prepare(Context context,Alarm source,String run){
+    static Prepared prepare(Context context,Alarm source,String run){return prepare(context,source,run,true);}
+    static Prepared prepare(Context context,Alarm source,String run,boolean carrySource){
         if(!nonce(run))throw new IllegalArgumentException("An owned alarm occurrence is required");
         Alarm concrete=Alarm.read(source.json());ChallengeRoutine configured=source.challenges();JSONObject old=read(context);
         if(configured.randomCount==0){
             // A snooze carries the already selected concrete alarm, not the saved random pool.
-            if(old!=null&&Prefs.text(context,"alarmRun","").equals(old.optString("run"))&&canonical(source).equals(old.optString("selected"))){try{return new Prepared(concrete,new JSONObject(old.toString()).put("run",run).toString());}catch(JSONException invalid){/* Keep the concrete routine even if the optional notice is unreadable. */}}
+            if(carrySource&&old!=null&&Prefs.text(context,"alarmRun","").equals(old.optString("run"))&&canonical(source).equals(old.optString("selected"))){try{return new Prepared(concrete,new JSONObject(old.toString()).put("run",run).toString());}catch(JSONException invalid){/* Keep the concrete routine even if the optional notice is unreadable. */}}
             return new Prepared(concrete,"");
         }
         if(old!=null&&run.equals(old.optString("run"))&&canonical(source).equals(old.optString("source"))){try{Alarm selected=Alarm.read(new JSONObject(old.getString("selected")));if(!selected.routineInvalid&&selected.challenges().randomCount==0&&selected.id==source.id)return new Prepared(selected,old.toString());}catch(JSONException invalid){/* A corrupt selection never authorizes an external task. */}}
@@ -80,9 +82,11 @@ final class RandomChallenges {
         return new Selection(new ChallengeRoutine(selected),notice);
     }
     /** Map only this current occurrence's exact selected snapshot back to its configured source for schedule comparisons. */
-    static Alarm configured(Context context,Alarm concrete){
-        JSONObject ledger=read(context);if(ledger==null||!Prefs.text(context,"alarmRun","").equals(ledger.optString("run"))||!canonical(concrete).equals(ledger.optString("selected")))return concrete;
-        try{Alarm source=Alarm.read(new JSONObject(ledger.getString("source")));return !source.routineInvalid&&source.id==concrete.id&&source.challenges().randomCount>0?source:concrete;}catch(JSONException invalid){return concrete;}
+    static Alarm configured(Context context,Alarm concrete){return configured(Prefs.of(context),concrete);}
+    static Alarm configured(SharedPreferences prefs,Alarm concrete){
+        try{JSONObject ledger=read(prefs);if(ledger==null||!prefs.getString("alarmRun","").equals(ledger.optString("run"))||!canonical(concrete).equals(ledger.optString("selected")))return concrete;
+            Alarm source=Alarm.read(new JSONObject(ledger.getString("source")));return !source.routineInvalid&&source.id==concrete.id&&source.challenges().randomCount>0?source:concrete;
+        }catch(JSONException|RuntimeException invalid){return concrete;}
     }
     static String notice(Context context,String run){JSONObject ledger=read(context);return ledger!=null&&run.equals(ledger.optString("run"))?ledger.optString("notice",""):"";}
     /** Upgrade an old/unmaterialized active wrapper before any task or proof can start. Never rerolls an existing concrete run. */

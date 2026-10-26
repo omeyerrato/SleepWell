@@ -22,6 +22,7 @@ final class SnoozeDeadline {
         Alarm consumed=Alarm.read(source.json());AlarmSkips.consume(consumed);if(consumed.days.isEmpty())consumed.enabled=false;
         return consumed.json().toString().equals(saved.json().toString());
     }
+    private static boolean sameSource(SharedPreferences prefs,Alarm source,Alarm saved){return sameSource(RandomChallenges.configured(prefs,source),saved);}
     /** Called only after Android accepted this SNOOZE schedule. Failure cannot roll it back. */
     static void scheduled(Context context,int id,long deadline){
         if(id<=0)return;
@@ -30,7 +31,7 @@ final class SnoozeDeadline {
             long now=System.currentTimeMillis(),boot=boot(context),spent=prefs.getLong(budget(id,"spent"),-1);int count=prefs.getInt("snoozes_"+id,0);
             if(!nonce(run)||!prefs.getBoolean("ringing",false)||boot<0||deadline<=now||deadline-now>300L*60000||spent<0||spent>300L*60000||count<1||count>5||!run.equals(prefs.getString(budget(id,"owner"),""))||deadline!=prefs.getLong(budget(id,"pending"),0)||source.isEmpty()||source.length()>131072||!source.equals(prefs.getString("snoozed_"+id,""))||!source.equals(prefs.getString("active_alarm",""))){clear(context,id);return;}
             Alarm active=Alarm.read(new JSONObject(source));Alarm saved;try(Store store=Records.open(context)){saved=store.alarm(id);}
-            if(!sameSource(active,saved)||active.id!=id){clear(context,id);return;}
+            if(!sameSource(prefs,active,saved)||active.id!=id){clear(context,id);return;}
             long occurrence=prefs.getLong("lastOccurrence_"+id,0);if(active.nap==null&&active.days.isEmpty()&&occurrence<=0){clear(context,id);return;}
             JSONObject receipt=new JSONObject().put("version",1).put("run",run).put("deadline",deadline).put("boot",boot).put("elapsed",SystemClock.elapsedRealtime()).put("scheduled",now).put("source",source).put("record",saved.json().toString()).put("count",count).put("spent",spent).put("occurrence",occurrence);
             if(!prefs.edit().putString(key(id),receipt.toString()).commit())clear(context,id);
@@ -47,7 +48,7 @@ final class SnoozeDeadline {
             int id=current.id;
             if(!run.equals(prefs.getString("alarmRun",""))||!run.equals(prefs.getString(budget(id,"owner"),""))||deadline!=prefs.getLong(budget(id,"pending"),0)||count!=prefs.getInt("snoozes_"+id,0)||spent!=prefs.getLong(budget(id,"spent"),-1)||occurrence!=prefs.getLong("lastOccurrence_"+id,0))return 0;
             if(source.isEmpty()||source.length()>131072||!source.equals(prefs.getString(budget(id,"snapshot"),""))||!source.equals(prefs.getString("snoozed_"+id,""))||!source.equals(prefs.getString("active_alarm",""))||!current.json().toString().equals(SensorProvenance.text(receipt,"record")))return 0;
-            Alarm active=Alarm.read(new JSONObject(source));if(active.id!=id||!sameSource(active,current))return 0;
+            Alarm active=Alarm.read(new JSONObject(source));if(active.id!=id||!sameSource(prefs,active,current))return 0;
             if(!current.enabled&&current.nap==null&&(!current.days.isEmpty()||occurrence<=0))return 0;
             return deadline;
         }catch(Exception invalid){return 0;}
@@ -57,7 +58,7 @@ final class SnoozeDeadline {
     /** A saved offer without a valid success receipt is uncertainty, never a projected deadline. */
     static boolean requested(SharedPreferences prefs,Alarm current,long now){
         if(!valid(current))return false;
-        try{int id=current.id;String run=prefs.getString("alarmRun",""),source=prefs.getString(budget(id,"snapshot"),"");if(!nonce(run)||prefs.getBoolean("ringing",false)||!run.equals(prefs.getString(budget(id,"owner"),""))||prefs.getLong(budget(id,"pending"),0)<=now||source.isEmpty()||source.length()>131072||!source.equals(prefs.getString("snoozed_"+id,""))||!source.equals(prefs.getString("active_alarm","")))return false;return sameSource(Alarm.read(new JSONObject(source)),current);}catch(Exception invalid){return false;}
+        try{int id=current.id;String run=prefs.getString("alarmRun",""),source=prefs.getString(budget(id,"snapshot"),"");if(!nonce(run)||prefs.getBoolean("ringing",false)||!run.equals(prefs.getString(budget(id,"owner"),""))||prefs.getLong(budget(id,"pending"),0)<=now||source.isEmpty()||source.length()>131072||!source.equals(prefs.getString("snoozed_"+id,""))||!source.equals(prefs.getString("active_alarm","")))return false;return sameSource(prefs,Alarm.read(new JSONObject(source)),current);}catch(Exception invalid){return false;}
     }
     static void clear(Context context,int id){try{Prefs.of(context).edit().remove(key(id)).apply();}catch(RuntimeException ignored){/* Budget/run validation still rejects an obsolete hint. */}}
     static void changed(Context context){try{HomeSurfaces.changed(context);}catch(RuntimeException ignored){/* Widget delivery must never affect alarm scheduling. */}}
