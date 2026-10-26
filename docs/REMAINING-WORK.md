@@ -20,6 +20,35 @@ mode is not a public-app substitute. No direct client or Samsung approval is cla
 Sources: [Google](https://developers.google.com/fit/overview),
 [Samsung](https://developer.samsung.com/health/data/guide/app-verification.html).
 
+## Current feature batch — 26 October
+
+Source **a8f5f23**, **assembleDebug PASS1m54s**, retains schema17/backup13 and
+the original signer. New source paths:
+
+- [x] Saved random pools/count/settings, prerequisite exclusions with real Math
+  replacements, atomically frozen occurrence selection and exact snooze mapping.
+- [x] Explicit Laughter-estimate and relative Loud sound tasks with private previews,
+  single capture ownership, bounded attempts and Math alternatives.
+- [x] Device-local requested installed offline English narration voices, checked
+  again on explicit Play; no synthesis/download on chooser Save.
+- [x] Direct explicitly paired Hue HTTPS/v1 selected-light sunrise and conditional
+  restoration, separate from and exclusive with Home Assistant.
+
+These checkmarks mean source paths and a successful production build, not runtime
+acceptance. Laughter remains experimental; prior failed positive evidence is not
+superseded. Loud sound is amplitude relative to a room baseline, not dB or instrument
+recognition. Random pools support18categories and exclude microphone/image tasks.
+Hue needs independently verified identity/pin and compatible LAN firmware; direct
+IKEA/v2-only/groups/scenes/colors are absent. Android may fall back from a requested
+TTS engine; exact selected voice/offline/English checks remain required.
+See [feature boundaries](CHALLENGE-AND-LIGHT-FEATURES.md).
+
+Current a8f5f23 is uninstalled; no new tests/lint/screenshots, phone, microphone,
+TTS/provider/bridge/output actions ran for this candidate. The separately authorized
+**86d0d1e phone update succeeded** with matching installed hash and all original
+rows/preferences/private files preserved. Device Care suspension remains; schema7
+awaits first open to 17. Historical status paragraphs below describe earlier states.
+
 ## Six-hour production window — 25 October
 
 Latest feature source **86d0d1e**, **assembleDebug PASS1m14s**, adds:
@@ -36,8 +65,8 @@ Latest feature source **86d0d1e**, **assembleDebug PASS1m14s**, adds:
 
 Schema17/backup13 unchanged. No new tests/lint/screenshots, provider/recipient or
 personal-phone actions. Runtime/permission/process/OEM/graph/visual acceptance is
-still incomplete. Current candidate is uninstalled; phone remains121dbd5, Device
-Care suspended, with schema7 last verified pending first-open target16. Details:
+still incomplete. Candidate86d0d1e was subsequently installed with data preserved; Device Care remains
+suspended, with schema7 last verified pending first-open target17. Details:
 [automation requests and calendar](AUTOMATION-REQUESTS-AND-CALENDAR.md).
 
 Earlier feature source **32f87b9**, **assembleDebug PASS2m2s**, adds:

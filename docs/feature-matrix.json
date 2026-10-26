@@ -1668,11 +1668,15 @@
         "GuidedWindDownNarration.java",
         "NarrationSettings.java",
         "GuidedWindDownNarration.java",
-        "GuidedWindDownActivity.java"
+        "GuidedWindDownActivity.java",
+        "NarrationVoice.java",
+        "NarrationVoiceActivity.java",
+        "NarrationVoiceDiscovery.java",
+        "NarrationVoiceEngine.java"
       ],
       "validation": "Combined production assembleDebug bff9f7e PASS2m59s; build-only scope. No new unit/native/lint/screenshot, provider, camera, audio or personal-phone validation; historical test links do not certify these additions. Narration controls: assembleDebug5a73464 PASS1m5s only, no new TTS/provider/audio/device actions.",
       "status": "partial",
-      "notes": "Real stereo binaural generation and original timed silent guidance remain available. Optional explicit Play narration now speaks the current and subsequent guide steps through an installed English engine-declared offline Android TTS voice. Opening, restoring, changing preference or regaining focus does not start speech. Pause/end/focus loss/recreation/alarm/tracking stop owned speech; timeouts and no-voice/focus/provider errors are visible. The app downloads no voice. Provider offline behavior, audible quality and lifecycle effects are unverified; no clinical sleep benefit is established. Follow-up saved narration rate.75/.90/1/1.15 and pitch.85/1/1.15 are frozen on explicit Play and applied through checked TextToSpeech calls before each utterance. Provider rejection is visible and stops narration, while the silent guide remains usable. Editing/restoring controls never speaks or downloads voices. Existing eligible installed offline English voice selection stays automatic; no separate voice/language picker or audible-rendering guarantee.",
+      "notes": "Real stereo binaural generation and original timed silent guidance remain available. Optional explicit Play narration now speaks the current and subsequent guide steps through an installed English engine-declared offline Android TTS voice. Opening, restoring, changing preference or regaining focus does not start speech. Pause/end/focus loss/recreation/alarm/tracking stop owned speech; timeouts and no-voice/focus/provider errors are visible. The app downloads no voice. Provider offline behavior, audible quality and lifecycle effects are unverified; no clinical sleep benefit is established. Follow-up saved narration rate.75/.90/1/1.15 and pitch.85/1/1.15 are frozen on explicit Play and applied through checked TextToSpeech calls before each utterance. Provider rejection is visible and stops narration, while the silent guide remains usable. Editing/restoring controls never speaks or downloads voices. Existing eligible installed offline English voice selection stays automatic; a separate requested installed-offline-English voice chooser now exists, without translation or audible-rendering guarantee. Voice identity is separate device-local requested engine/name/locale, frozen on explicit Play; exact current installed/offline/English checks fail visibly if missing. Refresh initializes only an explicitly selected installed engine; no synthesis/download on chooser Save/open. Android may fall back from requested engine; public package-binding proof is not claimed. New provider/output/cleanup acceptance unverified.",
       "id": "F062",
       "tests": []
     },
@@ -2395,11 +2399,20 @@
         "SmartLightRun.java",
         "SmartLightAlarm.java",
         "HomeAssistantLight.java",
-        "HomeAssistantHttp.java"
+        "HomeAssistantHttp.java",
+        "HueBridgeActivity.java",
+        "HueBridgeSettings.java",
+        "HueBridgeConfig.java",
+        "HueBridgeClient.java",
+        "HueBridgeApi.java",
+        "HueBridgeWork.java",
+        "HueBridgeAlarm.java",
+        "HueBridgeRun.java",
+        "AlarmService.java"
       ],
-      "validation": "da0f571 / CI40141612460: SmartLightStorageTest 6 and HomeAssistantProtocolTest 4 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects.",
+      "validation": "da0f571 / CI40141612460: SmartLightStorageTest 6 and HomeAssistantProtocolTest 4 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects. Direct Hue combined assembleDebug a8f5f23 PASS 1m54s only; no bridge requests or output tests.",
       "status": "partial",
-      "notes": "Optional Home Assistant HTTPS dimmable-light entity ramps from ringing, with bounded network work/manual override and conditional restore. User-owned server, trusted TLS, token/entity and compatible lamp required. No direct vendor bridge, pre-alarm lamp claim or physical light test. See SMART-BEDROOM-LIGHT.md.",
+      "notes": "Optional Home Assistant HTTPS dimmable-light entity ramps from ringing, with bounded network work/manual override and conditional restore. User-owned server, trusted TLS, token/entity and compatible lamp required. A separate direct Hue HTTPS/v1 bridge path now exists; no direct IKEA, pre-alarm lamp or physical light claim. See SMART-BEDROOM-LIGHT.md. Explicit manual RFC1918 IPv4/443 bridge, independently verified 16-hex TLS identity and exact SHA-256 leaf pin, HTTPS name/date checks and physical-button pairing. Explicit read-only supported-light list/check, one chosen dimmable v1 light; off-by-default future-real-alarm ramp and conditional observed-state restoration. Home Assistant and direct Hue are exclusive; no fallback to another configured provider. Keystore credential is device-local/excluded from portable profiles. No discovery, HTTP downgrade, v2-only/groups/scenes/colors or all-firmware/restoration guarantee. Low test is separate explicit real output and was not invoked. TLS/firmware/network/physical ownership/process acceptance remains unverified.",
       "id": "F086",
       "tests": [
         {
@@ -3056,11 +3069,16 @@
         "Alarm.java",
         "AlarmEditorActivity.java",
         "AlarmActivity.java",
-        "Backup.java"
+        "Backup.java",
+        "RandomChallenges.java",
+        "RandomChallengeActivity.java",
+        "RandomChallengePreviewActivity.java",
+        "Scheduler.java",
+        "SnoozeDeadline.java"
       ],
       "validation": "ChallengeRoutineFlowTest passes at d6389dc/CI40027277488: six individually reviewed originals, real JSON/privateDB/reorder/cancel/recreate/save/reopen, malformed backup rejection. New Walk source extends this candidate; native configuration still needs fresh run. Actual ringing/challenge execution remains unverified. Later gradedMath1 native7frame configuration passes at12c8c0f; new QR task metadata/decoder/ownership14 pure cases and12frame inert configuration gate pass ata8362a1. All6 routine originals reviewed with cream icon wells/action divider aligned; actual ordered runtime remains unverified.",
       "status": "partial",
-      "notes": "Additive ordered1–8task routine, per-task rounds/targets/graded Math and newly enrolled QR code, step-sensor Walk, Math/Memory/Sequence/Retype/Shake/NFC. Runtime callbacks fence occurrence/unit; legacy scalar behavior remains. QR actual camera/live challenge, silent interactive routine preview and full visual fidelity remain unverified or missing.",
+      "notes": "Additive ordered1–8task routine, per-task rounds/targets/graded Math and newly enrolled QR code, step-sensor Walk, Math/Memory/Sequence/Retype/Shake/NFC. Runtime callbacks fence occurrence/unit; legacy scalar behavior remains. QR actual camera/live challenge, silent interactive routine preview and full visual fidelity remain unverified or missing. Separate random routine mode now saves1–8configured distinct pool entries/count, samples eligible entries without replacement and atomically publishes concrete tasks with the occurrence. Snooze/reopen keep the exact choice/source mapping. Missing prerequisites become real Math alternatives to preserve count. Eighteen categories supported; microphone/image-expression/object tasks excluded with visible copy. Runtime/restore/ownership/selection acceptance remains unverified.",
       "id": "F107",
       "tests": [
         {
@@ -3175,11 +3193,18 @@
         "NoteAudio.java",
         "NoteRuntime.java",
         "NoteChallengeActivity.java",
-        "NoteCaptureService.java"
+        "NoteCaptureService.java",
+        "AudioChallengeMode.java",
+        "AudioChallengePreviewActivity.java",
+        "SpeakRuntime.java",
+        "SpeakAccess.java",
+        "SpeakChallengeActivity.java",
+        "AlarmEditorActivity.java",
+        "AlarmActivity.java"
       ],
-      "validation": "Integrated production assembleDebug90e2583 passed14s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance.",
+      "validation": "Integrated production assembleDebug90e2583 passed14s; no new runtime/model/provider/physical validation. Compilation is not functional acceptance. New experimental task/preview: assembleDebug a8f5f23 PASS 1m54s only; no new acoustic/native/device tests.",
       "status": "partial",
-      "notes": "Distinct Musical note task matches actual fresh PCM pitch/tonality against deterministic C4/D4/E4/A4, sustained hold and saved tolerance, explicit Listen/permission/quiet owner and Math alternative. User may hum or play a note; this does NOT identify piano/instruments or laughter. Previous failed classifier gates remain rejected and unchanged.",
+      "notes": "Distinct Musical note task matches actual fresh PCM pitch/tonality against deterministic C4/D4/E4/A4, sustained hold and saved tolerance, explicit Listen/permission/quiet owner and Math alternative. User may hum or play a note; this does NOT identify piano/instruments or laughter. Previous failed classifier gates remain rejected and unchanged. Source a8f5f23 adds a saved fixed-routine Laughter task and explicit private preview using the unchanged YAMNet laughter-family policy for two consecutive complete windows. No earlier failed positive fixture evidence is superseded; reliable laughter accuracy remains unestablished. Separate Loud sound is relative amplitude only, not instrument recognition. No capture is saved; bounded visible admission, cleanup ownership and Math alternatives reuse the Speak pipeline. New runtime/cleanup/acoustic acceptance remains unverified. See CHALLENGE-AND-LIGHT-FEATURES.md.",
       "id": "F112",
       "tests": []
     },
@@ -3730,11 +3755,15 @@
         "GuidedWindDownNarration.java",
         "NarrationSettings.java",
         "GuidedWindDownNarration.java",
-        "GuidedWindDownActivity.java"
+        "GuidedWindDownActivity.java",
+        "NarrationVoice.java",
+        "NarrationVoiceActivity.java",
+        "NarrationVoiceDiscovery.java",
+        "NarrationVoiceEngine.java"
       ],
       "validation": "Combined production assembleDebug bff9f7e PASS2m59s; build-only scope. No new unit/native/lint/screenshot, provider, camera, audio or personal-phone validation; historical test links do not certify these additions. Narration controls: assembleDebug5a73464 PASS1m5s only, no new TTS/provider/audio/device actions.",
       "status": "partial",
-      "notes": "Original timed 2/5/10-minute guidance has optional visual pacing and separately user-started offline-voice narration. Actual Android TTS utterances follow timed guide steps with bounded initialization/utterance lifetime, foreground ownership, audio focus and cleanup. Requires a preinstalled engine-declared offline English voice; silent guidance remains usable on failure. Stereo tones remain the separate explicit generator. Provider/output/device behavior and therapeutic efficacy are not verified. Follow-up saved narration rate.75/.90/1/1.15 and pitch.85/1/1.15 are frozen on explicit Play and applied through checked TextToSpeech calls before each utterance. Provider rejection is visible and stops narration, while the silent guide remains usable. Editing/restoring controls never speaks or downloads voices. Existing eligible installed offline English voice selection stays automatic; no separate voice/language picker or audible-rendering guarantee.",
+      "notes": "Original timed 2/5/10-minute guidance has optional visual pacing and separately user-started offline-voice narration. Actual Android TTS utterances follow timed guide steps with bounded initialization/utterance lifetime, foreground ownership, audio focus and cleanup. Requires a preinstalled engine-declared offline English voice; silent guidance remains usable on failure. Stereo tones remain the separate explicit generator. Provider/output/device behavior and therapeutic efficacy are not verified. Follow-up saved narration rate.75/.90/1/1.15 and pitch.85/1/1.15 are frozen on explicit Play and applied through checked TextToSpeech calls before each utterance. Provider rejection is visible and stops narration, while the silent guide remains usable. Editing/restoring controls never speaks or downloads voices. Existing eligible installed offline English voice selection stays automatic; a separate requested installed-offline-English voice chooser now exists, without translation or audible-rendering guarantee. Voice identity is separate device-local requested engine/name/locale, frozen on explicit Play; exact current installed/offline/English checks fail visibly if missing. Refresh initializes only an explicitly selected installed engine; no synthesis/download on chooser Save/open. Android may fall back from requested engine; public package-binding proof is not claimed. New provider/output/cleanup acceptance unverified.",
       "id": "F127",
       "tests": []
     },
@@ -4647,6 +4676,65 @@
       "status": "partial",
       "notes": "Separate default-off reviewed writable-calendar consent queues only successful local production tracked nights started after Save. No existing history/import/manual/interrupted/rejected/edited-night backfill. Fixed Sleep period title, original full recording start/end/zone only; notes/tags/raw data/audio excluded. Private32entry acknowledged revision queue, deferrable persisted job, live token guards,90s cancellation and shared direct-export ownership/dedup receipts. Running/uncertain work never blindly replays; no automatic update/delete or remote-sync claim. Off/changed consent/history replacement/removal fence pending ownership and clear/cancel queue; an in-flight provider call may finish, external events/separate direct receipts remain. Provider access/marker support, Android timing, process/permission/cleanup behavior and whole flow remain unverified.",
       "id": "F162",
+      "tests": []
+    },
+    {
+      "feature": "Saved occurrence-frozen random challenge routines",
+      "screens": "03,10 + pool/selection preview",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [
+        "RandomChallenges.java",
+        "RandomChallengeActivity.java",
+        "RandomChallengePreviewActivity.java",
+        "ChallengeRoutine.java",
+        "ChallengeRoutineJson.java",
+        "AlarmEditorActivity.java",
+        "AlarmActivity.java",
+        "Scheduler.java",
+        "SnoozeDeadline.java"
+      ],
+      "validation": "Combined assembleDebug a8f5f23 PASS 1m54s only; no new tests, alarm/output/phone actions.",
+      "status": "partial",
+      "notes": "Portable strict wrapper separates configured 1–8 entry pool and count from SecureRandom without-replacement concrete selection. Actual prerequisites rechecked read-only at occurrence; unavailable slots become real one-unit Math alternatives. Same edit commits ledger/run/concrete active_alarm/progress before effects. Reopening/snooze/check retain exact choice; fresh main occurrences choose anew. Per-entry original difficulty/enrollment and ordinary fixed routines preserved; eighteen categories only, microphone/image categories excluded. Preview is separate from occurrence. OS delivery, process/restore/snooze/codec/visual acceptance remain unverified.",
+      "id": "F163",
+      "tests": []
+    },
+    {
+      "feature": "Relative microphone sound-level wake task",
+      "screens": "03,10 + microphone preview/permission/cleanup",
+      "source": "https://sleep.urbandroid.org/docs/alarms/captcha.html",
+      "implementation": [
+        "AudioChallengeMode.java",
+        "AudioChallengePreviewActivity.java",
+        "SpeakAccess.java",
+        "SpeakRuntime.java",
+        "SpeakChallengeActivity.java",
+        "SpeakCaptureService.java",
+        "AlarmEditorActivity.java",
+        "AlarmActivity.java"
+      ],
+      "validation": "Combined assembleDebug a8f5f23 PASS 1m54s only. No raw microphone/output/native/device tests.",
+      "status": "partial",
+      "notes": "Saved fixed-routine Loud sound uses explicit visible 15s attempt, existing single microphone lease and owned alarm quieting; no raw recording saved. Three complete 15,600-sample/16kHz quiet baseline windows choose maximum RMS; rejects loud/clipped baseline. Two consecutive complete windows exceed max(.025,baseline*sqrt(10)) with<=1 percent clipping; nonmatch resets. Relative amplitude only, no calibrated dB, instrument identification or dangerous-volume request. Private explicit preview has no alarm proof. Permission/cleanup/actual amplitude/environment/runtime acceptance remain unverified; Math alternative exists.",
+      "id": "F164",
+      "tests": []
+    },
+    {
+      "feature": "Requested installed offline narration voice selection",
+      "screens": "19 + guide/voice chooser",
+      "source": "https://sleep.urbandroid.org/docs/sleep/lullaby.html",
+      "implementation": [
+        "NarrationVoice.java",
+        "NarrationVoiceActivity.java",
+        "NarrationVoiceDiscovery.java",
+        "NarrationVoiceEngine.java",
+        "GuidedWindDownActivity.java",
+        "GuidedWindDownNarration.java"
+      ],
+      "validation": "Combined assembleDebug a8f5f23 PASS 1m54s only; no actual engine/TTS/provider/audio tests.",
+      "status": "partial",
+      "notes": "Separate device-local requested engine/name/locale with Auto, explicit installed voice refresh, English/offline/installed checks and Save/Cancel/draft/error states. No synthesis/download on chooser open/refresh/save. Explicit guide Play snapshots identity and rate/pitch, checks exact selected name/locale/offline-installed English before utterances; missing selection errors rather than another voice. Android initialization may fall back from requested engine; no public engine-package proof or translation. Voice identity excluded from portable settings. Actual provider/offline behavior, lifecycle and output remain unverified.",
+      "id": "F165",
       "tests": []
     }
   ]

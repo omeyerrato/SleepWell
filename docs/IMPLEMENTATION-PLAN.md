@@ -12,14 +12,15 @@ Use essential production builds for integration. Do not act on the personal phon
 (including installation, ADB queries, capture, microphone, alarm or other outputs).
 The quiet-device procedures below are historical, not current authorization.
 
-Current application candidate86d0d1e is published, signed with the original debug
-key, and has build-only feature evidence, schema17/backup13, uninstalled.
-It adds confirmed automation events/reviewed requests, original CSV source inspection
-and separately consented future-night calendar export, alongside earlier features.
-The user-authorized121dbd5 phone update succeeded
-with checksum/original records/preferences/private files preserved. Device Care
-suspension remains in place; schema7→16 migration remains pending. Installation
-authorization did not reinstate alarm/audio/sensor testing or the design reviewer.
+Current application candidate a8f5f23 builds in 1m54s with the original debug key
+and schema17/backup13. It adds occurrence-frozen random routines, experimental
+laughter/relative sound tasks, requested installed offline narration voice choices
+and explicitly verified Hue HTTPS/v1 sunrise control. Runtime/acoustic/TLS/firmware
+and visual acceptance remain unverified. Earlier features remain included.
+The user-authorized 86d0d1e phone update succeeded with installed hash and all
+original rows/preferences/private files preserved. Device Care still suspends it;
+schema7→17 first-open migration remains pending. No new installation authorization
+extends to this newer candidate, alarm/audio/sensor/provider tests or the reviewer.
 FEATURE-MATRIX.md and REMAINING-WORK.md carry current implementation/acceptance
 bounds. The numbered sequence below describes the original full plan and does
 not reinstate its old ordering or stopped reviewer.

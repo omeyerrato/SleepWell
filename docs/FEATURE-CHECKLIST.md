@@ -2,8 +2,8 @@
 
 Not fully done. Checked items have actual production implementation and build
 success; they are not claims of current phone/overnight validation. Unchecked
-acceptance items below remain required. Latest application source86d0d1e builds
-in1m14s; its published APK retains the installed signer
+acceptance items below remain required. Latest application source a8f5f23 builds
+in 1m54s; its published APK retains the installed signer
 and matching SHA256.
 
 ## Implemented feature paths
@@ -55,13 +55,18 @@ and matching SHA256.
 - [x] Reviewed version1 incoming tracking requests; START stages normal setup.
 - [x] Actual imported CSV source charts/raw values and exact original single-record export.
 - [x] Separate opted-in calendar export for future successful recordings, with shared receipts.
-- [x] User-authorized121dbd5 phone update; installed checksum, original records,
+- [x] Saved occurrence-frozen random challenge pools, per-entry settings and Math alternatives.
+- [x] Explicit experimental Laughter and relative Loud sound task/preview paths; accuracy unverified.
+- [x] Requested installed offline English narration voice selection, with no synthesis on Save.
+- [x] Explicitly paired direct Hue HTTPS/v1 sunrise path; hardware/TLS compatibility unverified.
+- [x] User-authorized 86d0d1e phone update; installed checksum, original records,
   preferences and private files verified preserved.
 
 ## Still missing or narrower than full parity
 
 - [ ] Validated phone sleep-stage/REM and breathing/apnea analysis.
-- [ ] Reliable laughter/instrument recognition and additional recognition scope.
+- [ ] Reliable laughter/instrument recognition: experimental laughter and relative amplitude paths
+  now exist, but previous failed positive evidence and actual accuracy remain unresolved.
 - [ ] Dedicated Sleep Phaser hardware protocol.
 - [ ] Direct vendor SDK clients: Google Fit sign-ups are closed/deprecated; Samsung
   public SDK distribution requires partner approval. Health Connect is the existing route.
@@ -77,7 +82,9 @@ and matching SHA256.
   hosting, one-occurrence overrides, FIFO/Doze capture and real provider exchange.
 - [ ] On-device phrase recognition, microphone cleanup and orientation behavior.
 - [ ] Local playlist provider/decoder lifecycle and stillness-fade sensor/output behavior.
-- [ ] Built-in rotation, external media volume/route cancellation and narration engine behavior.
+- [ ] Built-in rotation, external media volume/route cancellation, requested narration voices,
+  random-routine occurrence/snooze handling and microphone cleanup/accuracy.
+- [ ] Direct Hue TLS/firmware/network exchange, physical ramp/restore and restart ownership.
 - [ ] Schema16 favorite and schema17 CSV-evidence migration/round trips, AAC encoder/provider output, direct calendar
   insertion/uncertain receipts and Android-admin activation/removal behavior.
 - [ ] CSV/profile document exchange, duplicate/conflict/cancel/restore and multi-file recovery.

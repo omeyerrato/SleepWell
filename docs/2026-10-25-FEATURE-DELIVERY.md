@@ -532,3 +532,31 @@ Care suspension/schema7first-open-to16 evidence are unchanged.
 [Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-86d0d1e)
 is published. GitHub confirms the exact source target, draftfalse/prereleasetrue
 and both assets uploaded. APK size/SHA256 match the frozen local artifact.
+
+## 26 October — source a8f5f23 challenge/light batch
+
+Production **assembleDebug PASS1m54s**; schema17, metadata13 and ZIPv2 unchanged,
+original signer retained. New random configured pools/count/difficulty have
+occurrence-atomic concrete selection and snooze source mapping; missing eligible
+entries become real Math alternatives. Fixed microphone routines gain experimental
+Laughter and relative Loud sound, with explicit previews and no saved recording.
+Requested installed offline English narration identity is saved separately. Direct
+Hue HTTPS/v1 adds explicit physical-button pairing, independently verified identity/
+certificate pin, chosen dimmable-light checks and optional real-alarm sunrise with
+conditional restoration; Home Assistant stays a separate exclusive path.
+
+These are build-only paths. No new tests/lint/screenshots, microphone, TTS/provider,
+bridge or physical-output checks. Prior failed laughter positive evidence remains;
+no reliable instrument/laughter recognition, calibrated dB, v2-only Hue, all-firmware
+or guaranteed restore/engine-package binding claim. Runtime/visual acceptance and
+full parity remain unfinished. See [feature limits](CHALLENGE-AND-LIGHT-FEATURES.md).
+
+The earlier **86d0d1e** update was subsequently installed at the user's request.
+Its exact APK checksum, all original records/preferences/private files were verified;
+Device Care suspension remains and first-open schema7→17 migration is pending.
+The new **a8f5f23** candidate is uninstalled.
+
+Published [a8f5f23 development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-a8f5f23), exact target a8f5f23d04c4b880d538b742ac1b0a3f0d48653d.
+Both assets are uploaded; APK size 215,504,432 bytes and remote digest match the
+preserved local artifact. SHA-256:
+`7226ca3307e8ca3cbb72ac8031913d126965493335564fed2584e7dcb898fb8d`.

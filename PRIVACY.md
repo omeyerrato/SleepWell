@@ -1,5 +1,26 @@
 # Privacy
 
+Random challenge pools and occurrence selections stay in local alarm preferences;
+only the configured pool/settings enter portable alarm backups. Explicit Laughter
+and Loud sound tasks reuse visible microphone consent and single-capture ownership.
+They retain no recording, transcript or event: laughter is an experimental YAMNet
+estimate, and Loud sound compares PCM amplitude with a temporary quiet baseline.
+
+Requested narration engine/name/locale are separate device-local preferences,
+excluded from portable profiles. Explicit refresh initializes a chosen installed
+engine to inspect its declared offline English voices; no synthesis/download starts
+on chooser open/refresh/Save. Android may fall back from a requested engine, so the
+public API does not guarantee package binding or independently attest offline status.
+
+Direct Hue uses only the entered private IPv4 bridge over pinned HTTPS/v1. Pairing
+creates a bridge app user after explicit physical-button confirmation; that key is
+sealed by Android Keystore and excluded from portable exports. Read/list/check are
+explicit; saved future-alarm control is separately enabled. The selected light
+receives on/off and brightness, not sleep data/audio. Low testing sends real commands
+only after separate confirmation. Local disconnect removes credentials without
+revoking the bridge-side user; in-flight writes and restoration are not guaranteed.
+See [full limits](docs/CHALLENGE-AND-LIGHT-FEATURES.md).
+
 Optional uninstall protection asks you to activate Android’s administrator entry
 for SleepWell. It requests an empty policy set, adds the ordinary deactivation
 step before uninstall, and can be removed in-app or in Android security settings.
