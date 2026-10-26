@@ -19,7 +19,7 @@ final class SoundAnalysisProvenance {
         String encoded=SensorProvenance.text(session,"sound_analysis");SoundAnalysisStatus status;
         try{status=read(encoded);}catch(IllegalArgumentException invalid){throw new JSONException(invalid.getMessage());}
         if(status==null)return;
-        if(!SensorProvenance.SONAR.equals(SensorProvenance.text(session,"sensor"))||!"tracked".equals(SensorProvenance.text(session,"source")))throw new JSONException("Unexpected shared sound analysis provenance");
+        if(!Set.of(SensorProvenance.SONAR,SensorProvenance.MOTION).contains(SensorProvenance.text(session,"sensor"))||!"tracked".equals(SensorProvenance.text(session,"source")))throw new JSONException("Unexpected tracked sound analysis provenance");
         if(!session.isNull("end")&&!status.terminal())throw new JSONException("Closed recording has unfinished sound analysis");
         if(status.frames>0&&(session.isNull("active_ms")||status.frames*975>SensorProvenance.whole(session,"active_ms")))throw new JSONException("Sound analysis exceeds captured time");
     }
