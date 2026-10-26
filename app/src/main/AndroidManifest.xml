@@ -122,6 +122,9 @@
         <activity android:name=".AlarmRepeatActivity" android:exported="false" />
         <activity android:name=".NextAlarmOverrideActivity" android:exported="false" />
         <activity android:name=".AlarmEditorActivity" android:exported="false" />
+        <activity android:name=".RandomChallengeActivity" android:exported="false" />
+        <activity android:name=".RandomChallengePreviewActivity" android:exported="false" />
+        <activity android:name=".HueBridgeActivity" android:exported="false" />
         <activity android:name=".AlarmBedtimeActivity" android:exported="false" />
         <activity android:name=".WakeCheckActivity" android:exported="false" />
         <activity android:name=".TimerRequestActivity" android:exported="true" android:permission="com.android.alarm.permission.SET_ALARM"><intent-filter><action android:name="android.intent.action.SET_TIMER" /><category android:name="android.intent.category.DEFAULT" /></intent-filter></activity>

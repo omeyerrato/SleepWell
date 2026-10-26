@@ -9,7 +9,7 @@ import org.json.*;
 /** Foreground alarm lifetime. Output timing survives same-occurrence service restarts. */
 public class AlarmService extends Service {
     static volatile boolean active;private static AlarmService currentService;private SpeakRuntime.Quiet listening;
-    private AlarmVibration vibration;private PowerManager.WakeLock wake;private AlarmPlayback playback;private AlarmTorch torch;private SmartLightAlarm bedroomLight;private AlarmLifetime lifetime;private boolean backupPhase;private int latestStartId;
+    private AlarmVibration vibration;private PowerManager.WakeLock wake;private AlarmPlayback playback;private AlarmTorch torch;private SmartLightAlarm bedroomLight;private HueBridgeAlarm hueLight;private AlarmLifetime lifetime;private boolean backupPhase;private int latestStartId;
     private final Handler handler=new Handler(Looper.getMainLooper());private Alarm alarm;private String occurrence;private long started;private volatile boolean destroyed;
     @Override public IBinder onBind(Intent intent){return null;}
     @Override public void onCreate(){super.onCreate();Notifications.channels(this);}
@@ -32,7 +32,7 @@ public class AlarmService extends Service {
         TrackingService.stopTravel(null,"An alarm took priority.");
         try{wake=getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"SleepWell:alarm");wake.acquire(2*60*60*1000L);}catch(RuntimeException error){Prefs.put(this,"lastError","Android did not allow the alarm wake lock.");}
         final String ownRun=occurrence;currentService=this;startPlayback();
-        try{bedroomLight=SmartLightAlarm.start(this,alarm,occurrence,started,()->alive(ownRun));}catch(RuntimeException failure){Prefs.put(this,"lastError","Bedroom light unavailable. Phone alarm continues.");}
+        try{HueBridgeAlarm.stopTest();SmartLightTest.stop();if(HueBridgeAlarm.enabled(this))hueLight=HueBridgeAlarm.start(this,alarm,occurrence,started,()->alive(ownRun));else bedroomLight=SmartLightAlarm.start(this,alarm,occurrence,started,()->alive(ownRun));}catch(RuntimeException failure){Prefs.put(this,"lastError","Bedroom light unavailable. Phone alarm continues.");}
         if(new AlarmWakePolicy(alarm).flashlight)torch=new AlarmTorch(this,()->alive(ownRun));
         AlarmWakePolicy policy=new AlarmWakePolicy(alarm);
         final long vibrationStarted=started;
@@ -46,7 +46,7 @@ public class AlarmService extends Service {
     private void startPlayback(){if(listening!=null||playback!=null||!alive(occurrence)||!alarm.soundModeInvalid&&alarm.soundMode.silent())return;final String run=occurrence;playback=new AlarmPlayback(alarm,new AlarmAudioSink(this,handler,run,()->alive(run)),()->Math.max(0,SystemClock.elapsedRealtime()-started),SystemClock::elapsedRealtime);playback.start(backupPhase);}
     static SpeakRuntime.Quiet quietForSpeak(String run,Runnable acknowledged){if(Looper.myLooper()!=Looper.getMainLooper())throw new IllegalStateException("Listening admission must be visible");AlarmService service=currentService;if(service==null||!active||!service.alive(run)||service.listening!=null)throw new IllegalStateException("Alarm sound cannot pause for this request");SpeakRuntime.Quiet[] token=new SpeakRuntime.Quiet[1];token[0]=()->service.handler.post(()->{if(service.listening!=token[0])return;service.listening=null;if(service.alive(run))service.startPlayback();});service.listening=token[0];AlarmPlayback sound=service.playback;service.playback=null;Runnable quiet=()->{if(service.listening==token[0]&&service.alive(run)&&AlarmAudioSink.captureQuiet())acknowledged.run();};if(sound==null)service.handler.post(quiet);else sound.stop(quiet);return token[0];}
     private boolean alive(String run){return !destroyed&&run.equals(occurrence)&&Prefs.flag(this,"ringing")&&run.equals(Prefs.text(this,"alarmRun",""));}
-    private final Runnable tick=new Runnable(){public void run(){if(!alive(occurrence)){releaseOutputs();stopSelf(latestStartId);return;}if(!timing())return;if(playback!=null)playback.tick();try{if(bedroomLight!=null)bedroomLight.tick();}catch(RuntimeException failure){Prefs.put(AlarmService.this,"lastError","Bedroom light unavailable. Phone alarm continues.");}if(vibration!=null)vibration.tick(Prefs.flag(AlarmService.this,"forceBackup"));handler.postDelayed(this,100);}};
+    private final Runnable tick=new Runnable(){public void run(){if(!alive(occurrence)){releaseOutputs();stopSelf(latestStartId);return;}if(!timing())return;if(playback!=null)playback.tick();try{if(bedroomLight!=null)bedroomLight.tick();if(hueLight!=null)hueLight.tick();}catch(RuntimeException failure){Prefs.put(AlarmService.this,"lastError","Bedroom light unavailable. Phone alarm continues.");}if(vibration!=null)vibration.tick(Prefs.flag(AlarmService.this,"forceBackup"));handler.postDelayed(this,100);}};
     private boolean timing(){AlarmLifetime owned=lifetime;if(owned!=null&&owned.tick(Math.max(0,SystemClock.elapsedRealtime()-started),Prefs.flag(this,"forceBackup")))return true;releaseOutputs();stopSelf(latestStartId);return false;}
     private boolean expire(String run){synchronized(Scheduler.class){if(!alive(run))return false;Prefs.of(this).edit().putBoolean("ringing",false).putBoolean("forceBackup",false).putString("lastError","Alarm stopped at your configured ringing timeout. Challenges were not completed.").apply();try{Scheduler.cancelBackup(this,alarm.id,run);}catch(RuntimeException ignored){/* Cleared ringing ownership fences a queued backup even if cancel fails. */}releaseOutputs();stopSelf(latestStartId);return true;}}
     static void stop(Context context){
@@ -58,10 +58,11 @@ public class AlarmService extends Service {
         handler.removeCallbacksAndMessages(null);listening=null;if(lifetime!=null)lifetime.close();lifetime=null;backupPhase=false;
         try{if(playback!=null)playback.stop();}catch(RuntimeException ignored){}
         try{if(bedroomLight!=null)bedroomLight.close();}catch(RuntimeException ignored){}
+        try{if(hueLight!=null)hueLight.close();}catch(RuntimeException ignored){}
         try{if(torch!=null)torch.close();}catch(RuntimeException ignored){}
         try{if(vibration!=null)vibration.close();}catch(RuntimeException ignored){}
         try{if(wake!=null&&wake.isHeld())wake.release();}catch(RuntimeException ignored){}
-        playback=null;bedroomLight=null;torch=null;vibration=null;wake=null;
+        playback=null;bedroomLight=null;hueLight=null;torch=null;vibration=null;wake=null;
     }
     @Override public void onDestroy(){if(currentService==this)currentService=null;active=false;destroyed=true;releaseOutputs();super.onDestroy();}
 }
