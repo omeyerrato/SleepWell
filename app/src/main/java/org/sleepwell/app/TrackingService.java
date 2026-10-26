@@ -34,6 +34,7 @@ public class TrackingService extends Service implements SensorEventListener {
     private boolean batteryAwareRequested,samplingLightWanted,samplingReduced;private BatterySampling batterySampling;private String samplingIssue="";private long samplingBoundary,lastMotionNanos,lastLightNanos;
     private ExternalMediaFade.Selection externalFadeSelection=ExternalMediaFade.Selection.OFF;
     private StillnessSoundFade.Policy soundFadePolicy=new StillnessSoundFade.Policy(false,"");private final StillnessSoundFade.Minute soundFadeMinute=new StillnessSoundFade.Minute();
+    private final AlarmSmartWakeRuntime smartWake=new AlarmSmartWakeRuntime();
     private final MotionFilter motionFilter=new MotionFilter();private MotionProfile motionProfile=new MotionProfile(1);
     private final Runnable minuteTick=this::minute,limitTick=()->stop(false),liveTick=this::liveSample,automaticTick=this::automaticTick;
     private final List<org.json.JSONObject> liveReadings=new ArrayList<>();private int previewCount;private double previewSum;private long previewAt;
@@ -237,7 +238,7 @@ public class TrackingService extends Service implements SensorEventListener {
         return builder.build();
     }
     private void refreshTravelNotification(){if(current!=this||!running||phase!=Phase.ACTIVE||destroyed||Build.VERSION.SDK_INT>=33&&checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED)return;try{getSystemService(NotificationManager.class).notify(102,trackingNotification(false));}catch(RuntimeException ignored){/* The review screen remains the explicit stop path. */}}
-    private void retypePairTransport(){int types=(foregroundTypes&~ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE)|(PairMotionRuntime.transportOwned(session,manualToken)?ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE:0);startForeground(102,trackingNotification(false),types);foregroundTypes=types;}
+    private void retypePairTransport(){smartWake.reset();int types=(foregroundTypes&~ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE)|(PairMotionRuntime.transportOwned(session,manualToken)?ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE:0);startForeground(102,trackingNotification(false),types);foregroundTypes=types;}
     private void foreground(boolean paused){
         Notification notification=trackingNotification(paused);
         boolean granted=checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED;boolean mic=batchMode?false:sonarMode?!paused&&granted:automaticCapture!=null?automaticCapture.foregroundType(granted):!paused&&motionSoundRequested&&Prefs.flag(this,"noiseEnabled")&&granted;
@@ -268,16 +269,17 @@ public class TrackingService extends Service implements SensorEventListener {
         if(store==null||session==0)return;long now=timestamp();checkClock(now);store.checkpoint(session,frame.from,frame.to,frame.movement,null,null,frame.samples,clock.active(batchedMotion==null?SystemClock.elapsedRealtime():Math.min(SystemClock.elapsedRealtime(),batchedMotion.deadline/1000000L)),true);Prefs.put(this,"epochCount",Prefs.number(this,"epochCount",0)+1);
         if(phase!=Phase.ACTIVE)return;
         boolean continuous=batchLastEnd==0||frame.from-batchLastEnd<=2000;boolean full=frame.to-frame.from>=45000&&frame.samples>=100;activeMinutes=full&&continuous?motionProfile.activeMinutes(frame.movement,activeMinutes):0;batchLastEnd=frame.to;
-        if(System.currentTimeMillis()-frame.to<0||System.currentTimeMillis()-frame.to>45000||!full)return;
-        for(Alarm alarm:store.alarms()){
+        if(System.currentTimeMillis()-frame.to<0||System.currentTimeMillis()-frame.to>45000||!full){smartWake.reset();return;}
+        List<Alarm> alarms=store.alarms();smartWake.retain(alarms);
+        for(Alarm alarm:alarms){
             if(alarm.nap!=null){if(Naps.movement(this,alarm,motionProfile.inference(frame.movement),activeMinutes,frame.samples))break;continue;}
-            long deadline=Prefs.of(this).getLong("deadline_"+alarm.id,0);boolean goalMet=!Prefs.flag(this,"smartNeedsGoal")||SleepPlans.load(this).goalMet(clock.active(SystemClock.elapsedRealtime()));
-            if(alarm.enabled&&goalMet&&motionProfile.smartWake(System.currentTimeMillis(),deadline,alarm.smartWindow,frame.movement,activeMinutes,frame.samples)){Scheduler.fire(this,alarm,true);break;}
+            long deadline=Prefs.of(this).getLong("deadline_"+alarm.id,0);boolean inheritedGoal=Prefs.flag(this,"smartNeedsGoal"),needsGoal=!alarm.smartWakeInvalid&&alarm.smartWake!=null&&alarm.smartWake.requiresGoal(inheritedGoal),goalReached=!needsGoal||SleepPlans.load(this).goalMet(clock.active(SystemClock.elapsedRealtime()));
+            if(smartWake.measured(alarm,motionProfile,deadline,inheritedGoal,goalReached,frame.from,frame.to,full&&continuous&&frame.to-frame.from<=75000,frame.movement,frame.samples,System.currentTimeMillis())){Scheduler.fire(this,alarm,true);break;}
         }
     }
     private long batchCut(){return batchedMotion==null?SystemClock.elapsedRealtimeNanos():Math.min(SystemClock.elapsedRealtimeNanos(),batchedMotion.deadline);}
     private void registerSampling(boolean reduced){
-        samplingReduced=reduced;samplingIssue="";samplingBoundary=SystemClock.elapsedRealtimeNanos();lastMotionNanos=lastLightNanos=0;motionFilter.reset();
+        smartWake.reset();samplingReduced=reduced;samplingIssue="";samplingBoundary=SystemClock.elapsedRealtimeNanos();lastMotionNanos=lastLightNanos=0;motionFilter.reset();
         Sensor motion=sensors==null?null:sensors.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),brightness=sensors==null?null:sensors.getDefaultSensor(Sensor.TYPE_LIGHT);
         try{motionRegistered=motion!=null&&sensors.registerListener(this,motion,reduced?BatterySampling.REDUCED:BatterySampling.NORMAL);}catch(RuntimeException unavailable){motionRegistered=false;}
         if(reduced&&motion!=null&&!motionRegistered){samplingReduced=false;samplingIssue="Reduced motion rate unavailable; normal rate requested";try{motionRegistered=sensors.registerListener(this,motion,BatterySampling.NORMAL);}catch(RuntimeException unavailable){motionRegistered=false;}}
@@ -306,36 +308,39 @@ public class TrackingService extends Service implements SensorEventListener {
     private final Runnable flipTick=new Runnable(){public void run(){if(flip==null||current!=TrackingService.this||!running||destroyed)return;flip.tick();handler.postDelayed(this,1000);}};
     private void closeFlip(){handler.removeCallbacks(flipTick);if(flip!=null)flip.close();}
     private long timestamp(){return clock==null?System.currentTimeMillis():clock.timestamp(start,SystemClock.elapsedRealtime());}
-    private void resetWindow(){soundFadeMinute.reset(SystemClock.elapsedRealtimeNanos());sum=0;count=0;light=null;motionFilter.reset();activeMinutes=pairActiveMinutes=0;resetPreview(timestamp());}
+    private void resetWindow(){smartWake.reset();soundFadeMinute.reset(SystemClock.elapsedRealtimeNanos());sum=0;count=0;light=null;motionFilter.reset();activeMinutes=pairActiveMinutes=0;resetPreview(timestamp());}
     private void resetPreview(long now){liveReadings.clear();previewSum=0;previewCount=0;previewAt=now;}
     private void liveSample(){if(phase!=Phase.ACTIVE)return;long now=timestamp();int measured=count-previewCount;PairMotionRuntime.sample(pairManual(),previewAt,now,SystemClock.elapsedRealtime(),measured>0?Math.sqrt(Math.max(0,sum-previewSum)/measured):null,Math.max(0,measured));if(measured>0)try{liveReadings.add(new org.json.JSONObject().put("start",previewAt).put("time",now).put("movement",Math.sqrt(Math.max(0,sum-previewSum)/measured)));}catch(org.json.JSONException ignored){}previewAt=now;previewCount=count;previewSum=sum;handler.postDelayed(liveTick,1000);}
     private void checkClock(long now){if(store!=null&&session>0&&!clockChanged&&Math.abs(System.currentTimeMillis()-now)>2000){store.clockChanged(session);clockChanged=true;}}
     private void stopSensors(){if(sensors!=null)sensors.unregisterListener(this);motionRegistered=lightRegistered=false;if(wake!=null&&wake.isHeld())wake.release();}
     @Override public void onSensorChanged(SensorEvent event){
         if(phase!=Phase.ACTIVE&&phase!=Phase.ARMED)return;
-        if(batteryAwareRequested&&phase==Phase.ACTIVE&&(event.timestamp<samplingBoundary||event.timestamp>SystemClock.elapsedRealtimeNanos()+50000000L||SystemClock.elapsedRealtimeNanos()-event.timestamp>2000000000L))return;
+        if(batteryAwareRequested&&phase==Phase.ACTIVE&&(event.timestamp<samplingBoundary||event.timestamp>SystemClock.elapsedRealtimeNanos()+50000000L||SystemClock.elapsedRealtimeNanos()-event.timestamp>2000000000L)){if(event.sensor.getType()==Sensor.TYPE_ACCELEROMETER)smartWake.gap();return;}
         if(event.sensor.getType()==Sensor.TYPE_LIGHT){if(lightRegistered&&event.values.length>0){if(batteryAwareRequested&&(event.timestamp<=lastLightNanos||!Float.isFinite(event.values[0])||event.values[0]<0||samplingReduced&&lastLightNanos>0&&event.timestamp-lastLightNanos<BatterySampling.LIGHT*1000L))return;lastLightNanos=event.timestamp;light=(double)event.values[0];if(awake!=null)awake.light(light,event.timestamp);}return;}
         if(!motionRegistered)return;
-        if(DreamCues.masks(event.timestamp,event.timestamp+1)){motionFilter.reset();lastMotionNanos=0;return;}
-        if(event.values.length<3)return;
+        if(DreamCues.masks(event.timestamp,event.timestamp+1)){smartWake.gap();motionFilter.reset();lastMotionNanos=0;return;}
+        if(event.values.length<3){smartWake.gap();return;}
+        if(event.accuracy==SensorManager.SENSOR_STATUS_UNRELIABLE||!Float.isFinite(event.values[0])||!Float.isFinite(event.values[1])||!Float.isFinite(event.values[2]))smartWake.gap();
         long interval=lastMotionNanos==0?0:event.timestamp-lastMotionNanos;
         if(batteryAwareRequested&&phase==Phase.ACTIVE){if(lastMotionNanos>0&&(interval<=0||samplingReduced&&interval<BatterySampling.REDUCED*1000L))return;if(interval>2000000000L)motionFilter.reset();lastMotionNanos=event.timestamp;}
         Double raw=batteryAwareRequested&&phase==Phase.ACTIVE&&samplingReduced?motionFilter.sample(event.values[0],event.values[1],event.values[2],interval):motionFilter.sample(event.values[0],event.values[1],event.values[2]);if(raw==null)return;
-        if(phase==Phase.ARMED){automaticTransition.sample(SystemClock.elapsedRealtime(),motionProfile.inference(raw),getSystemService(PowerManager.class).isInteractive());return;}soundFadeMinute.sample(event.timestamp,event.accuracy);if(falseStart!=null)falseStart.sample(event.timestamp,event.accuracy,event.values[0],event.values[1],event.values[2],motionProfile.inference(raw));sum+=raw*raw;count++;
+        if(phase==Phase.ARMED){automaticTransition.sample(SystemClock.elapsedRealtime(),motionProfile.inference(raw),getSystemService(PowerManager.class).isInteractive());return;}smartWake.capture(event.timestamp,SystemClock.elapsedRealtimeNanos(),raw);soundFadeMinute.sample(event.timestamp,event.accuracy);if(falseStart!=null)falseStart.sample(event.timestamp,event.accuracy,event.values[0],event.values[1],event.values[2],motionProfile.inference(raw));sum+=raw*raw;count++;
     }
     @Override public void onAccuracyChanged(Sensor sensor,int accuracy){}
     private void flush(long now,NoiseRecorder closingAudio,boolean recordEmpty){
         if(store==null||session==0)return;if(batchMode)return;checkClock(now);Double noise=closingAudio==null?null:closingAudio.takeEpoch();
         boolean measured=now>=windowStart&&(recordEmpty&&!batteryAwareRequested||count>0||light!=null||noise!=null);long active=clock.active(SystemClock.elapsedRealtime());try{store.checkpoint(session,windowStart,now,count==0?null:Math.sqrt(sum/count),noise,light,count,active,measured);if(motionSound!=null){SoundAnalysisStatus status=motionSound.checkpoint();if(status!=null&&status.frames*975<=active)store.soundAnalysisCheckpoint(session,SoundAnalysisProvenance.encode(status));}}catch(RuntimeException failure){if(motionSound!=null)motionSound.fail("storage");throw failure;}if(measured)Prefs.put(this,"epochCount",Prefs.number(this,"epochCount",0)+1);
-        windowStart=now;soundFadeMinute.reset(SystemClock.elapsedRealtimeNanos());sum=0;count=0;if(batteryAwareRequested)light=null;resetPreview(now);
+        windowStart=now;smartWake.nextCaptureWindow();soundFadeMinute.reset(SystemClock.elapsedRealtimeNanos());sum=0;count=0;if(batteryAwareRequested)light=null;resetPreview(now);
     }
     private void minute(){
         if(phase!=Phase.ACTIVE)return;if(batchMode){if(clock.lifetime(SystemClock.elapsedRealtime())>=12*3600000L)stop(false);else handler.postDelayed(minuteTick,60000);return;}try{long now=timestamp();double movement=count==0?0:Math.sqrt(sum/count);int measured=count;StillnessSoundFade.Evidence fadeEvidence=soundFadeMinute.snapshot(SystemClock.elapsedRealtimeNanos());
+        long measuredFrom=windowStart;boolean complete=smartWake.complete(measuredFrom,now,SystemClock.elapsedRealtimeNanos());if(!complete)smartWake.reset();
         double pairedInference=PairMotionRuntime.inference(session,manualToken,windowStart,now,movement);pairActiveMinutes=motionProfile.activeMinutes(pairedInference,pairActiveMinutes);activeMinutes=motionProfile.activeMinutes(movement,activeMinutes);flush(now,audio,true);boolean fadeScreenOff=false;try{PowerManager power=getSystemService(PowerManager.class);fadeScreenOff=power!=null&&!power.isInteractive();}catch(RuntimeException unavailable){}StillnessSoundFade.minute(session,dndRun,fadeEvidence,motionProfile.inference(movement),fadeScreenOff,clockChanged);Prefs.put(this,"movement",String.format(Locale.ROOT,"%.3f",movement));
-        for(Alarm alarm:store.alarms()){
+        List<Alarm> alarms=store.alarms();smartWake.retain(alarms);
+        for(Alarm alarm:alarms){
             if(alarm.nap!=null){if(Naps.movement(this,alarm,motionProfile.inference(movement),activeMinutes,measured))break;continue;}
-            long deadline=Prefs.of(this).getLong("deadline_"+alarm.id,0);boolean goalMet=!Prefs.flag(this,"smartNeedsGoal")||SleepPlans.load(this).goalMet(clock.active(SystemClock.elapsedRealtime()));
-            if(alarm.enabled&&goalMet&&motionProfile.smartWake(System.currentTimeMillis(),deadline,alarm.smartWindow,pairedInference,pairActiveMinutes,measured)){Scheduler.fire(this,alarm,true);break;}
+            long deadline=Prefs.of(this).getLong("deadline_"+alarm.id,0);boolean inheritedGoal=Prefs.flag(this,"smartNeedsGoal"),needsGoal=!alarm.smartWakeInvalid&&alarm.smartWake!=null&&alarm.smartWake.requiresGoal(inheritedGoal),goalReached=!needsGoal||SleepPlans.load(this).goalMet(clock.active(SystemClock.elapsedRealtime()));
+            if(smartWake.measured(alarm,motionProfile,deadline,inheritedGoal,goalReached,measuredFrom,now,complete,pairedInference,measured,System.currentTimeMillis())){Scheduler.fire(this,alarm,true);break;}
         }
         if(clock.lifetime(SystemClock.elapsedRealtime())>=12*60*60*1000L){stop(false);return;}handler.postDelayed(minuteTick,60000);}catch(Exception e){Prefs.put(this,"trackingError","Could not save sensor readings: "+e.getMessage());stop(true);}
     }
@@ -349,6 +354,7 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void automationTransition(boolean paused){if(current!=this||!running||session<=0)return;try(Store evidence=storeFactory.open(this)){java.util.List<org.json.JSONObject> rows=evidence.rows("SELECT id,start,end FROM tracking_pauses WHERE session=? ORDER BY id DESC LIMIT 1",""+session);if(rows.isEmpty())return;org.json.JSONObject row=rows.get(0);if(paused&&row.isNull("end"))automationEvents.paused(row.optLong("id"),row.optLong("start"));else if(!paused&&!row.isNull("end"))automationEvents.resumed(row.optLong("id"),row.optLong("end"));}catch(RuntimeException unavailable){Prefs.put(this,"automationEventError","A committed tracking transition could not be queued. Recording is unaffected.");}}
     private void pause(){
+        smartWake.reset();
         ExternalMediaFade.end(session,dndRun,"Tracking paused; media fade cancelled.");
         StillnessSoundFade.pause(session,dndRun);
         closeFalseStart();
@@ -368,6 +374,7 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void closeGoogleSleep(){GoogleSleepSignal old=googleSleep;googleSleep=null;if(old!=null)old.close();}
     private void stop(boolean wasInterrupted){
+        smartWake.reset();
         ExternalMediaFade.end(session,dndRun,"Tracking ended; media fade cancelled.");
         StillnessSoundFade.end(session,dndRun);
         closeReserve();closeFalseStart();
