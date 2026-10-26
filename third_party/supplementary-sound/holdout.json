@@ -1,0 +1,61 @@
+{
+  "plan_commit": "b241a2a066ce0e35d6d889830d6d78fed3ec6e6e",
+  "inference": "not started",
+  "fixtures": [
+    {
+      "name": "laugh-frenkfurth",
+      "role": "laughter",
+      "page": "https://freesound.org/people/frenkfurth/sounds/650910/",
+      "preview": "https://cdn.freesound.org/previews/650/650910_13558226-hq.mp3",
+      "licence": "CC0-1.0",
+      "html_sha256": "ca358293a063a3cbfe8f1b3692d21310b091cf7329b98d06fc783a9ef2a5ba44",
+      "preview_sha256": "a011a94396403543aea45c56c2b474dfe09346cc19d2c0e134c668474f83a1cf",
+      "pcm_sha256": "9175ce12581682b5c4d611fcae6302a980226cf788b431c3379a28490e2acbd3",
+      "samples": 461107
+    },
+    {
+      "name": "laugh-kikorurelas",
+      "role": "laughter",
+      "page": "https://freesound.org/people/kikorurelas/sounds/767470/",
+      "preview": "https://cdn.freesound.org/previews/767/767470_6252416-hq.mp3",
+      "licence": "CC0-1.0",
+      "html_sha256": "1eb652202aad0cff1b2da3de8bf4bbc508f36856276d9e49e8cb479c94f41f82",
+      "preview_sha256": "0d1a781a972383c225cc64e316a6e8ea4978bd17d30af0909ebe410db8c150b1",
+      "pcm_sha256": "e5cda653ac9668434c91831df0d0c875ecece1909e4a3fb5d8d4b52caf2ad201",
+      "samples": 192000
+    },
+    {
+      "name": "piano-bradovic",
+      "role": "instrument",
+      "page": "https://freesound.org/people/Bradovic/sounds/164718/",
+      "preview": "https://cdn.freesound.org/previews/164/164718_231674-hq.mp3",
+      "licence": "CC0-1.0",
+      "html_sha256": "1384911c74be54724da6e6c06e6217ebd133a1a76d17f513557cf4c82e1cdcd5",
+      "preview_sha256": "6a9ac974829308c732aa7229724cdbb1e6d1682ca53bd8baeda162b2111c0b73",
+      "pcm_sha256": "719521db79c3d9a8c475d6d4120d7fbe50425363feafd6f74c58655afd31b16b",
+      "samples": 692755
+    },
+    {
+      "name": "guitar-qubodup",
+      "role": "instrument",
+      "page": "https://freesound.org/people/qubodup/sounds/191322/",
+      "preview": "https://cdn.freesound.org/previews/191/191322_71257-hq.mp3",
+      "licence": "CC0-1.0",
+      "html_sha256": "ddad284c9860d3e7de399938681b1498bcfae83dbc5784ee0ff82bfdb8ad292c",
+      "preview_sha256": "b8628de205fd30b8cb03fff19fb05a9cf5b23e44720f58852d6b4dc649d89901",
+      "pcm_sha256": "8409dfb906f52670412c221050e08c6b16b88e4a3f46892e614fd3d3c8e2f439",
+      "samples": 91924
+    },
+    {
+      "name": "speech-funnyvoices",
+      "role": "negative",
+      "page": "https://freesound.org/people/FunnyVoices/sounds/546065/",
+      "preview": "https://cdn.freesound.org/previews/546/546065_12187251-hq.mp3",
+      "licence": "CC0-1.0",
+      "html_sha256": "8dc9909b3304f8d1f4b059d1e41ca854ae77fba7320cc9665b3462376c4cfdb2",
+      "preview_sha256": "c86b5898dd7e7a322eab57389cac51e29640262408a91dc81d2cb45f742c5ff5",
+      "pcm_sha256": "eb6a5dec0e47cb77e0b869c66a51228e3a5b05ec3765f1e75191964906e2cbe4",
+      "samples": 228108
+    }
+  ]
+}
