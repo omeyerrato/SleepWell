@@ -16,5 +16,15 @@
   "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
   "private_automation_schema": 2,
   "recorded_estimates_schema": 1,
-  "functional_ancestor": "731e9725274a041d5a97ef904d4ce5a879bc9699"
+  "functional_ancestor": "731e9725274a041d5a97ef904d4ce5a879bc9699",
+  "distribution": {
+    "tag": "v0.1.0-features-20261026-b5c63ad",
+    "url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-b5c63ad",
+    "target_commit": "b5c63ad152e940a424982a243aad34f530927e19",
+    "draft": false,
+    "prerelease": true,
+    "uploaded": true,
+    "uploaded_size": 334850669,
+    "uploaded_digest": "sha256:a2e89481386fe754a62363d4a3d6716aecf0081c4920cc4b9d5792806718874c"
+  }
 }

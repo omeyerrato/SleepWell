@@ -40,3 +40,5 @@ UI evidence is historical and does not substitute for this new flow acceptance.
 No stage model or invented stage graph was shipped; F049 remains open.
 
 Final APK SHA256: `a2e89481386fe754a62363d4a3d6716aecf0081c4920cc4b9d5792806718874c`. The full runtime MIT notice is verified inside this APK. Distribution is recorded separately after upload verification.
+
+[Published development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-b5c63ad). GitHub target commit, prerelease state, both uploaded asset sizes and SHA256 digests match this candidate. This does not install or exercise it.

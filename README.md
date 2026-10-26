@@ -12,19 +12,26 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 26 October
 
-Source **f0c1a274** adds eight Settings groups, local settings search, readable
-alarm submenus and shared native touch feedback with an off switch. All former
-root destinations remain available. App/UI-check APKs build in **18s** with the
-original signing key. One silent API36 route/persistence flow passes with ten
-actual Android screenshots inspected; physical tactile feel, all74 destinations,
-all36 reference screens and overnight behavior remain open.
-[Scope and screen comparisons](docs/verification/2026-10-26-settings-organization/README.md).
+Source **b5c63ad1** adds saved HTTPS radio stations, grouped Tracking setup,
+measured echo-rhythm review and explicit offline recorded-audio estimates using
+bundled PANNs/EfficientAT CPU models. It retains the grouped Settings, search,
+alarm submenus and native touch-feedback off switch from **f0c1a274**. The final
+APK builds in **16s**, with the original signer, packaged model hashes and full
+runtime licence notice verified. These new Android journeys remain unexercised;
+reliable automatic recognition remains unfinished (2/4 independent positive sources
+missed), and phone sleep-stage/REM and apnea analysis remain absent.
+[Exact feature/evidence scope](docs/verification/2026-10-26-radio-rhythm-recognition/README.md).
 
-[Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-ui-20261026-f0c1a27).
-Sleep schema17/backup13 and the private automation database2 are retained. Older
-builds may not open that rule queue or new movement-analysis backup metadata.
-The included record/alarm provider and sound-event/snooze implementations retain
-their documented external-client/output limitations.
+[Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-b5c63ad).
+The APK is334,850,669bytes including the offline models/runtime; no model download
+is needed at runtime. Sleep schema17/backup13 and private automation2 remain;
+supplementary summaries use a separate private database1. Older builds may not open
+newer automation/movement backup metadata.
+
+The earlier Settings-only increment passed one silent route/persistence flow with
+ten inspected actual screenshots. That pass does not cover these new features,
+physical haptic feel, every destination or all36 reference screens.
+[Settings evidence](docs/verification/2026-10-26-settings-organization/README.md).
 
 The separately authorized **2cbfe043** phone update remains installed. Original
 rows/preferences/private files matched before and after; SleepWell was not
