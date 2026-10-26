@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="alarm_access_read_label">Read SleepWell alarm summaries</string>
+    <string name="alarm_access_read_description">Read bounded alarm summaries only after the user explicitly authorizes the installed app inside SleepWell.</string>
+    <string name="alarm_access_write_label">Manage supported SleepWell alarms</string>
+    <string name="alarm_access_write_description">Create, patch and delete supported ordinary clock alarms only after separate explicit user consent. This can schedule alarms that ring later; active alarms and complex schedule ownership are protected.</string>
+</resources>
