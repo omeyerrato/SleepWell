@@ -56,7 +56,7 @@ final class Backup {
     }
     /** Guard is run under the replacement transaction, before mutation, between rows and before commit. */
     static void restoreData(Store store,JSONObject root,Runnable guard) throws JSONException {
-        validate(root);SQLiteDatabase db=store.getWritableDatabase();
+        validate(root);store.historyReplacing();SQLiteDatabase db=store.getWritableDatabase();
         int format=root.getInt("format");Map<Long,Long> endpoints=new HashMap<>();Set<Long> unfinished=new HashSet<>();JSONArray sessions=root.getJSONArray("sessions"),epochs=root.getJSONArray("epochs"),pauses=format>=2?root.getJSONArray("pauses"):null;
         for(int i=0;i<sessions.length();i++){JSONObject s=sessions.getJSONObject(i);endpoints.put(s.getLong("id"),s.isNull("end")?s.getLong("start"):s.getLong("end"));if(s.isNull("end"))unfinished.add(s.getLong("id"));}
         for(int i=0;i<epochs.length();i++){JSONObject e=epochs.getJSONObject(i);long id=e.getLong("session");if(unfinished.contains(id))endpoints.put(id,Math.max(endpoints.get(id),e.getLong("time")));}

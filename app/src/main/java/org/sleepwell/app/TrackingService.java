@@ -84,6 +84,7 @@ public class TrackingService extends Service implements SensorEventListener {
     @Override public void onCreate(){super.onCreate();Notifications.channels(this);}
     @Override public int onStartCommand(Intent intent,int flags,int startId){
         String action=intent==null?STOP:intent.getAction();
+        if(intent!=null&&intent.hasExtra(IncomingAutomation.DISPATCH)&&!IncomingAutomation.accept(this,intent))return START_NOT_STICKY;
         if(STOP.equals(action)){if(intent!=null&&intent.hasExtra("delayOwner")&&!ownsDelay(intent.getStringExtra("delayOwner")))return START_NOT_STICKY;stop(false);return START_NOT_STICKY;}
         if(DELAY_NOW.equals(action)){if(intent!=null&&ownsDelay(intent.getStringExtra("delayOwner")))claimDelay(true);return START_NOT_STICKY;}
         if(PAUSE.equals(action)){if(flip!=null)flip.manualPause();if(running)pause();else stopSelf();return START_NOT_STICKY;}
@@ -387,7 +388,7 @@ public class TrackingService extends Service implements SensorEventListener {
                     });return;
                 }catch(Exception failure){Prefs.put(this,"automaticResult","Possible awake start stopped. The record was kept for review: "+failure.getMessage());finishStopped(wasArmed,waitExpired);return;}
             }
-            try{if(store!=null&&session>0){checkClock(endedAt);if(!wasPaused)flush(endedAt,recorder,false);store.end(session,interrupted,clock.active(SystemClock.elapsedRealtime()),Math.max(start,endedAt));if(!interrupted&&!falseStartRejected)AutoCloudBackups.ended(getApplicationContext(),session,start,Math.max(start,endedAt),backupProduction);}}
+            try{if(store!=null&&session>0){checkClock(endedAt);if(!wasPaused)flush(endedAt,recorder,false);store.end(session,interrupted,clock.active(SystemClock.elapsedRealtime()),Math.max(start,endedAt));if(!interrupted&&!falseStartRejected){AutoCalendar.ended(getApplicationContext(),session,start,Math.max(start,endedAt),backupProduction);AutoCloudBackups.ended(getApplicationContext(),session,start,Math.max(start,endedAt),backupProduction);}}}
             catch(Exception e){Prefs.put(this,"trackingError","Could not finalize the recording. Saved readings remain; review the interrupted record. "+e.getMessage());}
             finally{finishStopped(wasArmed,waitExpired);}
         }));

@@ -40,11 +40,19 @@ final class CalendarEventWrites {
  private static final Map<Long,Job> jobs=new LinkedHashMap<>();
  static synchronized Job get(Context c,long id){Job j=jobs.get(id);if(j==null||j.records!=Records.factory||j.providers!=factory){if(jobs.size()>=16)jobs.entrySet().removeIf(e->!e.getValue().state.busy);j=new Job(c,id);jobs.put(id,j);}return j;}
  static boolean allowed(Context c){return c.checkSelfPermission(Manifest.permission.READ_CALENDAR)==PackageManager.PERMISSION_GRANTED&&c.checkSelfPermission(Manifest.permission.WRITE_CALENDAR)==PackageManager.PERMISSION_GRANTED;}
+ /** Future-night automation has separate explicit consent. It shares direct-save receipts,
+  * so a manual and automatic request cannot silently create the same period twice. */
+ static void automatic(Context c,long id,long start,long end,Calendar calendar,java.util.function.BooleanSupplier authority,java.util.function.Consumer<State> finished){worker.execute(()->{
+  Job job=new Job(c,id);job.authority=authority;job.finished=finished;try{job.platformAllowed();try(Store store=job.records.open(job.context)){RecordEntry record=Records.get(store,id);if(!record.source.equals("tracked")||!record.origin.equals("local")||record.rawStart!=start||record.rawEnd!=end||record.interrupted!=0||record.edited)throw new IllegalStateException("The completed local recording changed. Review it manually before exporting.");}
+   Source source=job.read();job.state=new State(false,false,source,List.of(calendar),List.of(),"","");job.save(source,calendar,"Sleep period",false);
+  }catch(RuntimeException failed){job.state=new State(false,false,null,List.of(),List.of(),message(failed),"");job.deliver();}
+ });}
  static final class Job {
   final Context context;final long id;final Records.Factory records;final Factory providers;final Provider provider;final AtomicBoolean cancelled=new AtomicBoolean();
   volatile State state=new State(false,false,null,List.of(),List.of(),"","");
+  java.util.function.BooleanSupplier authority=()->true;java.util.function.Consumer<State> finished;
   Job(Context c,long id){context=c.getApplicationContext();this.id=id;records=Records.factory;providers=factory;provider=providers.open(context);}
-  private void owners(){if(records!=Records.factory||providers!=factory)throw new IllegalStateException("The record source changed. Reopen this screen.");}
+  private void owners(){if(!authority.getAsBoolean())throw new IllegalStateException("This export was cancelled or its consent changed. Review its receipt before retrying.");if(records!=Records.factory||providers!=factory)throw new IllegalStateException("The record source changed. Reopen this screen.");}
   private void platformAllowed(){owners();if(records!=Records.PRODUCTION&&providers==PLATFORM)throw new IllegalStateException("Direct calendar access is unavailable for this record source.");if(!provider.allowed())throw new SecurityException("Calendar access is unavailable. Allow access and review again.");}
   synchronized boolean begin(){if(state.busy)return false;cancelled.set(false);State s=state;state=new State(true,false,s.source,s.calendars,s.receipts,"","Working…");return true;}
   void cancel(){cancelled.set(true);}
@@ -66,12 +74,13 @@ final class CalendarEventWrites {
    attempted=true;Uri created=provider.insert(request);if(created==null)throw new IllegalStateException("The calendar provider did not return a receipt.");
    status=verify(journal,request,provider.find(request.marker()));
   }catch(RuntimeException failed){error=message(failed);if(request!=null)try(Journal journal=new Journal(context)){String phase=journal.state(request.token);if(attempted&&!phase.equals("VERIFIED")){journal.update(request.token,"UNCERTAIN",0,"The event may have been created. Check this request; do not repeat it.");error="The event may have been saved. Use Check receipt; no second event will be inserted.";}else if(attempted){error="The event was saved and verified locally; receipt cleanup needs attention.";}else if(phase.equals("PREPARED")||transitioned&&phase.equals("INSERTING"))journal.update(request.token,"PREPARED",0,error);}catch(RuntimeException journalFailed){error=attempted?"The event may have been saved, but its receipt could not be stored. Do not repeat the export.":error;}}
-   try(Journal journal=new Journal(context)){finish(journal,error,status);}catch(RuntimeException failed){State s=state;state=new State(false,false,s.source,s.calendars,s.receipts,error.isEmpty()?"Export status is unavailable. Do not repeat a possibly completed write.":error,status);}
+   try(Journal journal=new Journal(context)){finish(journal,error,status);}catch(RuntimeException failed){State s=state;state=new State(false,false,s.source,s.calendars,s.receipts,error.isEmpty()?"Export status is unavailable. Do not repeat a possibly completed write.":error,status);deliver();}
   });}
   void check(String token){if(!begin())return;worker.execute(()->{String error="",status="";try(Journal journal=new Journal(context)){platformAllowed();Request request=journal.byToken(token,id);if(request==null)throw new IllegalStateException("This request is no longer available.");status=reconcile(journal,request);finish(journal,"",status);return;}catch(RuntimeException failed){error=message(failed);}try(Journal journal=new Journal(context)){finish(journal,error,status);}catch(RuntimeException failed){State s=state;state=new State(false,false,s.source,s.calendars,s.receipts,error,status);}});}
   private String reconcile(Journal journal,Request request){platformAllowed();return verify(journal,request,provider.find(request.marker()));}
   private String verify(Journal journal,Request request,List<Event> events){if(events.size()==1&&events.get(0).matches(request)){journal.update(request.token,"VERIFIED",events.get(0).id,"");return "Saved to the local calendar provider. Remote calendar sync is handled by your calendar app.";}String issue=events.isEmpty()?"No matching event could be verified. It may be deleted, delayed or unobservable; no duplicate will be inserted.":"The marked event was changed or appears more than once. Existing events were left unchanged.";journal.update(request.token,"UNCERTAIN",events.size()==1?events.get(0).id:0,issue);return issue;}
-  private void finish(Journal journal,String error,String status){State s=state;state=new State(false,false,s.source,s.calendars,journal.receipts(id),error,status);}
+  private void finish(Journal journal,String error,String status){State s=state;state=new State(false,false,s.source,s.calendars,journal.receipts(id),error,status);deliver();}
+  private void deliver(){java.util.function.Consumer<State> callback=finished;finished=null;if(callback!=null)try{callback.accept(state);}catch(RuntimeException ignored){}}
   boolean await(long millis)throws InterruptedException{try{worker.submit(()->{}).get(millis,TimeUnit.MILLISECONDS);return true;}catch(ExecutionException|TimeoutException e){return false;}}
  }
  private static final class Journal extends SQLiteOpenHelper {

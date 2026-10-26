@@ -21,6 +21,6 @@ final class SonarNightStore implements SonarNight.Sink {
  public void clip(long id,SonarSoundClips.Clip clip)throws Exception{checkClock();if(session==null||session.id!=id)throw new IllegalStateException("Sound clip owner changed");SonarClipWriter.save(app,store,id,clip,clips);}
  public void soundStatus(long id,SoundAnalysisStatus analysis){checkClock();store.soundAnalysisCheckpoint(id,SoundAnalysisProvenance.encode(analysis));}
  public void end(long id,long at,long active,boolean interrupted,SoundAnalysisStatus analysis){if(awake!=null)awake.finishAndWait(at,interrupted);checkClock();store.end(id,interrupted,active,at,SoundAnalysisProvenance.encode(analysis));backupEnded(id,at,interrupted);}
- private void backupEnded(long id,long at,boolean interrupted){if(!interrupted&&session!=null&&session.id==id)AutoCloudBackups.ended(app,id,session.wall,at,backupProduction);}
+ private void backupEnded(long id,long at,boolean interrupted){if(!interrupted&&session!=null&&session.id==id){AutoCalendar.ended(app,id,session.wall,at,backupProduction);AutoCloudBackups.ended(app,id,session.wall,at,backupProduction);}}
  public void close(){if(store!=null){Store owned=store;store=null;owned.close();}}
 }

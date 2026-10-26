@@ -71,6 +71,14 @@
         <activity android:name=".TonightLayoutActivity" android:exported="false" />
         <activity android:name=".SettingsProfileActivity" android:exported="false" />
         <activity android:name=".SleepCsvActivity" android:exported="false" />
+        <activity android:name=".SleepCsvSourceActivity" android:exported="false" />
+        <activity android:name=".IncomingAutomationSettingsActivity" android:exported="false" />
+        <activity android:name=".IncomingAutomationActivity" android:exported="true">
+            <intent-filter><action android:name="org.sleepwell.app.action.TRACKING_REQUEST" /><category android:name="android.intent.category.DEFAULT" /></intent-filter>
+        </activity>
+        <activity android:name=".AutoCalendarActivity" android:exported="false" />
+        <service android:name=".AutoCalendarService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <receiver android:name=".AutoCalendarReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /></intent-filter></receiver>
         <activity android:name=".SmartLightActivity" android:exported="false" />
         <activity android:name=".AutomationActivity" android:exported="false" />
         <service android:name=".AutomationJobService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
