@@ -12,7 +12,7 @@ light/Inter visual language. This is an implementation increment, not36screen ac
 ## Settings structure
 
 The previous17root destinations remain available in8groups, plus settings search.
-Search everything remains available from settings search.
+Search everything remains available from settings search. An empty settings query shows8categories rather than an undifferentiated74-item list; selecting a category or entering a term reveals matching destinations.
 
 | Root category | Destinations |
 | --- | --- |
