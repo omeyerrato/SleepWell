@@ -37,13 +37,13 @@ New schema16 adds only portable missing-audio star storage; metadataformat13 and
 ZIPv2 retain versions with optional extensions. Old backups are accepted by the
 new reader; older readers may drop metadata stars or reject new ZIP extension
 fields. Actual migration/round trips, provider/encoder/admin/OEM behavior remain
-unverified. Candidate uninstalled; last phone update5a73464 is separate below.
+unverified. Subsequent authorized phone installation of121dbd5 is recorded below.
 No new tests/lint/screenshots or phone/provider/codec/admin/audio/sensor actions.
 
-Subsequent user-authorized phone update: **5a73464 installed successfully**.
+Subsequent user-authorized phone update: **121dbd5 installed successfully**.
 Installed checksum, all original table rows, preferences and private files were
 preserved. Samsung Device Care package suspension blocked opening; schema remains7
-and first-open migration to15 is pending. No suspension setting, alarm/audio/sensor
+and first-open migration to16 is pending. No suspension setting, alarm/audio/sensor
 test or broad device batch was changed/run. Earlier phone-status notes below are
 historical before this update.
 

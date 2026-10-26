@@ -430,3 +430,14 @@ and its preserved schema7/blocked-launch evidence remain separate.
 Frozen APK **215123840 bytes**, SHA256
 `23b4f3d03b5f505c9919669782e87c88fb009cfcd6bf5f4480db5e248a8aa46b`.
 [Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-121dbd5).
+
+### Subsequent authorized phone installation —26 October
+
+The reconnected S23 received121dbd5 by successful streamed install-r. The
+installed APK hash matches the frozen release. A fresh private backup precedes
+installation; readback confirms all original table columns/rows, preferences and
+private files are unchanged. Samsung Device Care still suspends the package;
+no launch or suspension change was attempted. Database schema7 remains unchanged
+until the first-open migration to16. No alarm, audio, vibration, torch, sensor,
+provider, admin or UI tests ran on the phone. Earlier installation notes above
+are chronological, not the current installed version.

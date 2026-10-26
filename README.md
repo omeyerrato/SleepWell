@@ -33,10 +33,9 @@ Its uploaded checksum matches the local signed artifact. See the
 [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
 [checkmarked feature checklist](docs/FEATURE-CHECKLIST.md) and
 [remaining checklist](docs/REMAINING-WORK.md) for exact behavior and missing scope.
-Feature behavior still has **build-only evidence**; current121dbd5 is uninstalled.
-The earlier user-authorized5a73464
+Feature behavior still has **build-only evidence**. The user-authorized121dbd5
 phone update succeeded; checksum, original records/preferences/private files were
-preserved. Samsung Device Care suspension blocked opening, so schema7→15 first-open
+preserved. Samsung Device Care still suspends the app, so schema7→16 first-open
 migration remains pending. Runtime, provider, overnight, accuracy and visual acceptance remain
 open. New schema16 favorite storage and optional format13/ZIPv2 extensions have
 not had runtime migration/round-trip validation. No new test/lint/screenshot

@@ -13,10 +13,10 @@ Use essential production builds for integration. Do not act on the personal phon
 The quiet-device procedures below are historical, not current authorization.
 
 Current application candidate121dbd5 is published, signed with the original debug
-key, and has build-only feature evidence. It is uninstalled, schema16/backup13.
-The earlier5a73464 user-authorized phone update succeeded
+key, and has build-only feature evidence, schema16/backup13.
+The user-authorized121dbd5 phone update succeeded
 with checksum/original records/preferences/private files preserved. Device Care
-suspension blocked launch; schema7→15 migration remains pending. Installation
+suspension remains in place; schema7→16 migration remains pending. Installation
 authorization did not reinstate alarm/audio/sensor testing or the design reviewer.
 FEATURE-MATRIX.md and REMAINING-WORK.md carry current implementation/acceptance
 bounds. The numbered sequence below describes the original full plan and does
