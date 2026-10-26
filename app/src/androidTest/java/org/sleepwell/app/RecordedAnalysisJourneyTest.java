@@ -139,9 +139,13 @@ public final class RecordedAnalysisJourneyTest {
         return (RecordedRecognitionJob) field.get(a);
     }
     private void drain(Activity a) throws Exception {
-        // Existing production job has no public drain hook. Read its worker only after Activity close.
+        // The platform marks Activity destroyed before its onDestroy callback has finished.
+        // Fence that main-thread callback, then require actual shutdown and termination.
         Field field = RecordedRecognitionJob.class.getDeclaredField("worker"); field.setAccessible(true);
-        ExecutorService worker = (ExecutorService) field.get(job(a)); assertTrue(worker.isShutdown());
+        ExecutorService worker = (ExecutorService) field.get(job(a));
+        i.runOnMainSync(() -> assertTrue("Owned Activity was destroyed before cleanup", a.isDestroyed()));
+        step = "owned model/reader worker shutdown after Activity destruction";
+        await(8000, worker::isShutdown);
         assertTrue("Owned model/reader worker terminates before fixture deletion", worker.awaitTermination(20000, TimeUnit.MILLISECONDS));
     }
     private void launch(long record, long updated) throws Exception {
