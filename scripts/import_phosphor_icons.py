@@ -50,6 +50,10 @@ ICONS = {
     "more": ("dots-three-vertical", "regular"), "trash": ("trash", "regular"),
     "external": ("arrow-square-out", "regular"), "alarm": ("alarm", "regular"),
     "help": ("question", "regular"),
+    "link": ("link-simple", "regular"), "edit": ("pencil-simple", "regular"),
+    "music": ("music-notes", "regular"), "download": ("download-simple", "regular"),
+    "reset": ("arrow-counter-clockwise", "regular"), "camera": ("camera", "regular"),
+    "star": ("star", "regular"),
     "heart": ("heart", "regular"), "heartFilled": ("heart", "fill"),
     "vibrate": ("vibrate", "regular"), "flashlight": ("flashlight", "regular"),
 }

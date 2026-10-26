@@ -66,6 +66,13 @@ final class Icons {
             case "external" -> R.drawable.ic_phosphor_arrow_square_out_regular;
             case "alarm" -> R.drawable.ic_phosphor_alarm_regular;
             case "help" -> R.drawable.ic_phosphor_question_regular;
+            case "link" -> R.drawable.ic_phosphor_link_simple_regular;
+            case "edit" -> R.drawable.ic_phosphor_pencil_simple_regular;
+            case "music" -> R.drawable.ic_phosphor_music_notes_regular;
+            case "download" -> R.drawable.ic_phosphor_download_simple_regular;
+            case "reset" -> R.drawable.ic_phosphor_arrow_counter_clockwise_regular;
+            case "camera" -> R.drawable.ic_phosphor_camera_regular;
+            case "star" -> R.drawable.ic_phosphor_star_regular;
             case "heart" -> R.drawable.ic_phosphor_heart_regular;
             case "heartFilled" -> R.drawable.ic_phosphor_heart_fill;
             case "vibrate" -> R.drawable.ic_phosphor_vibrate_regular;
