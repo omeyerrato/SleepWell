@@ -41,10 +41,20 @@ public final class SettingsOrganizationFlowTest {
     private void frame(View root)throws Exception{CountDownLatch committed=new CountDownLatch(1);i.runOnMainSync(()->{assertSame("Owned focused frame",root,focused());assertTrue(root.isHardwareAccelerated());root.getViewTreeObserver().registerFrameCommitCallback(committed::countDown);root.invalidate();});assertTrue(step+" committed frame",committed.await(5,TimeUnit.SECONDS));i.runOnMainSync(()->assertSame(root,focused()));}
     private void input(String value,boolean description)throws Exception{
         step="single native tap "+value;ready();View root=activity.getWindow().getDecorView();
+        input(value,description,root);
+    }
+    private void input(String value,boolean description,View root)throws Exception{
+        step="single native tap "+value;
         await(()->{boolean[] yes={false};i.runOnMainSync(()->{if(focused()!=root)return;View target=find(root,value,description);if(target==null)return;while(!target.isClickable()&&target.getParent() instanceof View)target=(View)target.getParent();if(!target.isClickable()||!target.isEnabled())return;target.requestRectangleOnScreen(new Rect(0,0,target.getWidth(),target.getHeight()),true);Rect shown=new Rect();yes[0]=target.getGlobalVisibleRect(shown)&&shown.width()==target.getWidth()&&shown.height()==target.getHeight();});return yes[0];});
         frame(root);Rect bounds=new Rect();i.runOnMainSync(()->{assertSame(root,focused());View target=find(root,value,description);assertNotNull(value,target);while(!target.isClickable()&&target.getParent() instanceof View)target=(View)target.getParent();assertTrue(target.isClickable()&&target.isEnabled());assertSame(root,target.getRootView());Rect shown=new Rect();assertTrue(target.getGlobalVisibleRect(shown));assertEquals("Whole action width",target.getWidth(),shown.width());assertEquals("Whole action height",target.getHeight(),shown.height());assertTrue(value+"48dp width",shown.width()>=Design.dp(c,48));assertTrue(value+"48dp height",shown.height()>=Design.dp(c,48));int[] location=new int[2];target.getLocationOnScreen(location);bounds.set(location[0],location[1],location[0]+target.getWidth(),location[1]+target.getHeight());});
         // No repeated click after delivery: absent postconditions are failures.
         assertTrue(value+" dispatched once",device.click(bounds.centerX(),bounds.centerY()));
+    }
+    private View dialog(String title)throws Exception{
+        step="owned dialog "+title;assertTrue(activity instanceof AlarmEditorActivity);
+        java.lang.reflect.Field field=AlarmEditorActivity.class.getDeclaredField("settingsDialog");field.setAccessible(true);View[] window={null};
+        await(()->{boolean[] yes={false};i.runOnMainSync(()->{try{Object owned=field.get(activity);if(!(owned instanceof SleepPicker.StateDialog current)||!current.title.equals(title)||!current.isShowing()||current.getWindow()==null)return;View root=current.getWindow().getDecorView();if(focused()!=root||!root.isAttachedToWindow()||!root.isLaidOut())return;assertNotNull("Actual owned dialog title",find(root,title,false));window[0]=root;yes[0]=true;}catch(IllegalAccessException inaccessible){throw new AssertionError(inaccessible);}});return yes[0];});
+        return window[0];
     }
     private void click(String value)throws Exception{input(value,false);}
     private void clickDescription(String value)throws Exception{input(value,true);}
@@ -92,6 +102,12 @@ public final class SettingsOrganizationFlowTest {
                 MainActivity alarms=openByTap(MainActivity.class,"Sunrise & flashlight wake-up",false);assertEquals("alarms",alarms.getIntent().getStringExtra("settingsPage"));require("Alarms");require("CI organization alarm");unchanged(fixture,original);
                 openByTap(AlarmEditorActivity.class,"Alarm settings for CI organization alarm",true);require("Edit alarm");capture("alarm-editor");
                 boolean inheritedGoal=Prefs.flag(c,"smartNeedsGoal");click("Smart wake-up");require("Movement sensitivity");switchChecked("Respect sleep goal",inheritedGoal);
+                clickDescription("Smart wake-up options");input("Cancel",false,dialog("Smart wake-up options"));require("Movement sensitivity");unchanged(fixture,original);
+                clickDescription("Smart wake-up options");input("About smart wake-up",false,dialog("Smart wake-up options"));dialog("About smart wake-up");unchanged(fixture,original);
+                Activity beforeAboutRotation=activity;Instrumentation.ActivityMonitor aboutMonitor=i.addMonitor(AlarmEditorActivity.class.getName(),null,false);
+                try{i.runOnMainSync(beforeAboutRotation::recreate);activity=aboutMonitor.waitForActivityWithTimeout(5000);assertNotNull("Recreated editor with owned About dialog",activity);}finally{i.removeMonitor(aboutMonitor);}
+                await(beforeAboutRotation::isDestroyed);View restoredAbout=dialog("About smart wake-up");i.runOnMainSync(()->assertNotNull("Restored About close action",find(restoredAbout,"Got it",false)));unchanged(fixture,original);
+                input("Got it",false,restoredAbout);require("Movement sensitivity");switchChecked("Respect sleep goal",inheritedGoal);unchanged(fixture,original);
                 i.runOnMainSync(()->{for(String level:List.of("Low","Medium","High")){View choice=find(activity.getWindow().getDecorView(),"Movement sensitivity "+level,true);assertNotNull(choice);assertFalse("Inherited sensitivity has no manual visual selection",choice.isSelected());android.view.accessibility.AccessibilityNodeInfo node=choice.createAccessibilityNodeInfo();try{assertTrue(node.isCheckable());assertFalse("Inherited sensitivity has no manual accessibility selection",node.isChecked());assertEquals(RadioButton.class.getName(),node.getClassName().toString());}finally{node.recycle();}}View goal=find(activity.getWindow().getDecorView(),"Respect sleep goal",true);goal.requestRectangleOnScreen(new Rect(0,0,goal.getWidth(),goal.getHeight()),true);});
                 unchanged(fixture,original);capture("smart-following");clickDescription("Movement sensitivity High");
                 // If inherited On, deliberately choose Off then On so the saved goal is an explicit override.
