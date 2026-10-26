@@ -485,3 +485,50 @@ suspended, with schema7 last verified pending its first-open target16.
 [Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-32f87b9)
 is published. GitHub confirms draftfalse, prereleasetrue, the exact source target
 and both assets uploaded; APK size and SHA256 match the frozen local artifact.
+
+## Confirmed automation, original CSV signals and future calendar —26 October,86d0d1e
+
+Three separate implementation worktrees supplied source-signal inspection,
+confirmed lifecycle events and incoming reviewed tracking requests. Root added
+future-night calendar consent/queue/jobs and integrated the actual boundaries.
+
+- Ten opt-in outbound event kinds, seven new: committed recording pause/resume,
+  foreground alarm admission, acknowledged snooze plus stopped owner, durable
+  confirmed/missed check phases and submitted wind-down notifications. Same source
+  transition has a stable event ID; schema1/minimal fields and existing transports
+  remain. Source-to-outbox handoff is async, so crash loss before enqueue is
+  possible. Recipient dedup is required for at-least-once delivery. No player,
+  phase/REM/apnea or audible/visible-output claim.
+- Own strict TRACKING_REQUESTv1 entrypoint, separate default-off consent and
+  unlocked/focused user review. START stages existing setup/final Start. Other
+  commands pin current run/phase/admission and consume one-use10s service grants.
+  Durable prepared request IDs prevent blind repeat/process replay; primitive
+  results distinguish staged/observed applied from pending/interrupted/rejected.
+  No nested forwarding, unattended capture or alarm dismissal.
+- Source CSV charts page every original64 positions, preserving original relative
+  actigraphy/noise, zeros, missing/negative sentinels and exact raw inspection.
+  Literal clocks require established column association; otherwise source order
+  is explicit. Original aggregate/fractional/event fields remain separate from
+  app measurements. Exact original2/3-row SAF export rechecks record/source.
+- Separate future-night calendar consent queues only successfully completed new
+  production recordings started after Save. Fixed title/start/end/zone only,
+  without notes/audio. Bounded private queue, deferrable persisted jobs and shared
+  direct-export receipts prevent blind uncertain retries. Off/consent/history
+  changes fence pending ownership; in-flight provider calls may finish. No
+  external updates/deletion, old-history backfill or remote-sync claim.
+
+Commits ec2af49 (CSV signals),b38b88d (events),545b54a (incoming),86d0d1e
+(calendar/entries/service guards/lifecycle). Production `:app:assembleDebug`
+**PASS1m14s**, original signer, schema17/backup13 unchanged. New paths have
+build-only evidence: no tests/lint/screenshots, request/provider/recipient/native
+or personal-phone/output actions. Runtime/OEM/permission/background/recovery,
+graph/visual and overnight acceptance remain unverified. Full parity is not done.
+
+APK215360032bytes, SHA256
+`0941b8bc0e98daccf97d4cff9b5685d8a2d70f320c51d9d8d0e8403bf55dab8f`.
+Candidate remains uninstalled. Phone source121dbd5 and its preserved data/Device
+Care suspension/schema7first-open-to16 evidence are unchanged.
+
+[Development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-86d0d1e)
+is published. GitHub confirms the exact source target, draftfalse/prereleasetrue
+and both assets uploaded. APK size/SHA256 match the frozen local artifact.

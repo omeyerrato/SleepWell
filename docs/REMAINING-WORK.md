@@ -22,7 +22,25 @@ Sources: [Google](https://developers.google.com/fit/overview),
 
 ## Six-hour production window — 25 October
 
-Latest feature source **32f87b9**, **assembleDebug PASS2m2s**, adds:
+Latest feature source **86d0d1e**, **assembleDebug PASS1m14s**, adds:
+
+- [x] Seven new confirmed outbound event kinds, ten total, using actual committed
+  transitions and existing minimal payload/destination retries.
+- [x] Own strict version1 incoming tracking requests with default-off access,
+  unlocked foreground confirmation, prepared-ID receipts and current-run service
+  admission. START stages the existing normal setup rather than claiming capture.
+- [x] Real original CSV source charts/raw-value inspection, original aggregate/
+  fractional-rating/event detail and exact single-record CSV export.
+- [x] Separate future-night calendar consent, successful-recording hooks, private
+  queue/background job and shared direct-export dedup/uncertain receipts.
+
+Schema17/backup13 unchanged. No new tests/lint/screenshots, provider/recipient or
+personal-phone actions. Runtime/permission/process/OEM/graph/visual acceptance is
+still incomplete. Current candidate is uninstalled; phone remains121dbd5, Device
+Care suspended, with schema7 last verified pending first-open target16. Details:
+[automation requests and calendar](AUTOMATION-REQUESTS-AND-CALENDAR.md).
+
+Earlier feature source **32f87b9**, **assembleDebug PASS2m2s**, adds:
 
 - [x] Reviewed Sleep as Android CSV append, conflict handling and portable original
   source evidence with period/adjusted-duration distinction and source details.

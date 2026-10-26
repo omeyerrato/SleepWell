@@ -12,9 +12,10 @@ Use essential production builds for integration. Do not act on the personal phon
 (including installation, ADB queries, capture, microphone, alarm or other outputs).
 The quiet-device procedures below are historical, not current authorization.
 
-Current application candidate32f87b9 is published, signed with the original debug
+Current application candidate86d0d1e is published, signed with the original debug
 key, and has build-only feature evidence, schema17/backup13, uninstalled.
-It adds portable settings profiles, retained-source CSV append and optional Tonight layout.
+It adds confirmed automation events/reviewed requests, original CSV source inspection
+and separately consented future-night calendar export, alongside earlier features.
 The user-authorized121dbd5 phone update succeeded
 with checksum/original records/preferences/private files preserved. Device Care
 suspension remains in place; schema7→16 migration remains pending. Installation

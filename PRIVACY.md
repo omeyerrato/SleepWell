@@ -98,6 +98,11 @@ below. External accounts and services are supplied by the user.
   a recognizable sleep pattern is anonymous.
 - Calendar and Health Connect: optional selected-calendar reads inform configured alarm rules; selected sleep records may be imported/exported with separate sleep permissions. Calendar event drafts open another app for user review and Save. Imported records retain source provenance.
 - Integrations: opted-in rules can send configured sleep/alarm event fields to a selected Tasker package, HTTPS endpoint or TLS MQTT broker. Home Assistant uses the configured server/token/light. Credentials and pending-delivery state stay in private app storage; receiving services determine their own retention. See the integration documents for exact fields and limits.
+- Incoming tracking requests have separate default-off access and unlocked
+  foreground confirmation. Only action/command/request UUID and minimal outcome
+  receipts are kept in a private bounded journal; no transcript/audio or sender
+  payload is forwarded. START stages normal setup. Current-session controls use
+  one-use admission and never grant alarm dismissal or unattended capture.
 - Sleep sounds: source choices, mixer gains, timer/fade and an optional read-only audio-document URI/title stay in app preferences. Imported documents remain with their provider. Old read grants are retained because an alarm tone may share them; SleepWell never deletes the source document. Provider network/storage behavior is controlled by the provider you choose.
 - Optional alarm radio contacts the explicitly selected public HTTPS station when
   that alarm plays. The station receives normal connection information, including
@@ -169,6 +174,17 @@ private prior/planned-values journal, which can contain existing local audio
 references for recovery; the journal is not included in exported profiles. Recovery
 never silently overwrites a newer conflicting choice. See
 [portable settings and CSV limits](docs/PORTABLE-SETTINGS-AND-CSV.md).
+
+Optional future-night calendar export has separate explicit destination consent
+and shares only fixed title, original completed recording start/end and recorded
+zone. It queues successful new production recordings started after consent, not
+existing history/imports. Notes, tags, ratings, audio and measurements stay out.
+A private bounded queue retains record/timing/revision/status identities. History
+erase/replacement clears those queue receipts and fences pending ownership;
+already-written calendar events and the separate direct-export receipt journal
+remain. Off stops future work, but an in-flight provider write may finish. Calendar
+app/server retention and sharing are outside SleepWell. Uncertain writes are not
+blindly replayed. See [automation and calendar limits](docs/AUTOMATION-REQUESTS-AND-CALENDAR.md).
 
 Uninstalling deletes private app data. History, audio and diary deletion are separate controls; deleting history preserves alarm configuration. A backup restore shows its included data before transactional replacement. See [backup limits](docs/AUTOMATIC-METADATA-BACKUP.md) and the [feature matrix](docs/FEATURE-MATRIX.md).
 

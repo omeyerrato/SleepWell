@@ -96,6 +96,24 @@ through an older app does not promise source retention. The source can contain
 sensitive comments, location hashes and event/device metadata already present in
 the chosen file; import explicitly discloses their private/portable retention.
 
+## Subsequent imported-source inspection —86d0d1e
+
+Edit sleep → Original CSV source and the imported report's Original CSV signals
+now open a private source viewer. It reads actual retained actigraphy/noise fields,
+shows original fractional rating/adjusted duration and pages original event fields.
+Charts page64 original positions without dropping data, retain a global original
+scale and allow raw-value inspection by touch or buttons. Measured zero is distinct
+from missing/negative sentinel columns; no interpolation bridges missing data.
+
+Literal clock labels are used only where header/value column structure establishes
+the association. Legacy noise rows without established alignment use source-order
+positions and disclose unmapped clocks. There are no invented absolute timestamps,
+DST offsets, uniform minute intervals or converted sleep stages/RMS values.
+Explicit Save original record CSV copies the exact retained2/3rows through Android
+Files after fresh record/source checks, with cancellation and no process replay.
+This includes original private comment/Geo/event fields, disclosed before export.
+Source/provider/chart/visual behavior remains build-only at86d0d1e PASS1m14s.
+
 ## Optional Tonight layout
 
 Appearance → Tonight layout offers row order/visibility and bedside illustration.

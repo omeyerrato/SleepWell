@@ -1,6 +1,13 @@
 # Phone automation events
 
-Screen 33 has real saved rules for tracking start, tracking end and completed alarm dismissal. Every new rule is off. Opening, configuring or saving a rule never sends a test. The separate **Send test event** action requires confirmation because it can trigger the destination's actions. Unsaved changes are not used for a test.
+Screen 33 has saved rules for ten confirmed lifecycle event kinds. Existing tracking
+start/end and alarm dismissal are joined by committed pause/resume, foreground
+alarm admission, acknowledged snooze+stop, confirmed/missed wake checks and posted
+wind-down reminders. Exact boundaries and the separate incoming request API are
+in [automation requests and calendar](AUTOMATION-REQUESTS-AND-CALENDAR.md).
+Every new rule is off. Opening, configuring or saving never sends a test. The
+separate **Send test event** action requires confirmation because it can trigger
+destination actions; unsaved changes are not used.
 
 ## Destinations
 
@@ -14,7 +21,14 @@ Screen 33 has real saved rules for tracking start, tracking end and completed al
 {"schema":1,"event_id":"64 lowercase hex characters","event":"tracking_started","occurred_at":1792800000000,"test":false}
 ```
 
-Other values are `tracking_stopped` and `alarm_dismissed`. `occurred_at` is Unix wall-clock milliseconds. Broadcasts provide the same five keys as extras. No notes, labels, sound recordings, sleep metrics, record IDs, contacts or location are included. Event ID is stable for the same kind/occurrence. A confirmed test uses a fresh ID and `test:true` and only targets the chosen saved enabled rule.
+Other values are `tracking_stopped`, `alarm_dismissed`, `tracking_paused`,
+`tracking_resumed`, `alarm_started`, `alarm_snoozed`, `wake_check_confirmed`,
+`wake_check_missed` and `wind_down_reminder_posted`. `occurred_at` is Unix wall-clock
+milliseconds. Broadcasts provide the same five keys. No notes, labels, recordings,
+sleep metrics, record IDs, contacts or location are included. Event ID is stable
+for the same kind/transition. Confirmed tests use a fresh ID and `test:true`, only
+for the chosen saved enabled rule. Source transition and async enqueue are not a
+crash-atomic outbox; loss before enqueue and at-least-once retries remain possible.
 
 ## Persistence and off behavior
 

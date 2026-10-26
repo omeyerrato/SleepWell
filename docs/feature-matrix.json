@@ -2548,11 +2548,16 @@
         "CalendarRulesActivity.java",
         "CalendarAccess.java",
         "CalendarAlarms.java",
-        "CalendarSync.java"
+        "CalendarSync.java",
+        "AutoCalendar.java",
+        "AutoCalendarActivity.java",
+        "AutoCalendarService.java",
+        "AutoCalendarReceiver.java",
+        "CalendarEventWrites.java"
       ],
       "validation": "da0f571 / CI40141612460: CalendarRulesStorageTest 4 and CalendarRulesFlowTest 1 pass; focused23classes/77methods/all68originals PASS. Combined778pure/100suites, debug/nativeAPKs and lint0errors98warnings PASS7m03. No real external or phone effects.",
       "status": "partial",
-      "notes": "Read-only opt-in all-day skips and bounded earlier-meeting rules for repeating alarms; original occurrence consumption and actual preview/Skip/Undo persisted. Calendar provider/read permission/job scheduling required; no calendar event writes or actual provider/OS-delivery test. See CALENDAR-RULES.md.",
+      "notes": "Read-only opt-in all-day skips and bounded earlier-meeting rules for repeating alarms; original occurrence consumption and actual preview/Skip/Undo persisted. Calendar provider/read permission/job scheduling required; separate direct/opted-in future-night event writing now has source, actual provider/OS-delivery remains unverified. See CALENDAR-RULES.md. Automatic calendar export now separately opts in to a writable destination for successful production recordings started after consent only. No history/import/interrupted/rejected/edited backfill, fixed title/start/end/zone only, no note/audio. Bounded private revision queue and deferrable JobScheduler share direct-save receipts; no uncertain replay, external event edits/deletion or remote-sync claim. Off/consent/history changes fence pending ownership; in-flight writes may finish. Actual provider, background/interrupt and restart behavior remain unverified.",
       "id": "F091",
       "tests": [
         {
@@ -2576,11 +2581,20 @@
         "AutomationDispatch.java",
         "AutomationTransports.java",
         "WebhookPost.java",
-        "MqttPublish.java"
+        "MqttPublish.java",
+        "IncomingAutomation.java",
+        "IncomingAutomationActivity.java",
+        "IncomingAutomationSettingsActivity.java",
+        "AutomationTracking.java",
+        "TrackingService.java",
+        "SonarNightStore.java",
+        "SnoozeDeadline.java",
+        "WakeChecks.java",
+        "SmartBedtimeRuntime.java"
       ],
-      "validation": "da0f571 CI40141612460 AutomationStorageTest 10 PASS.16 pure transport/policy cases and combined778pure/debug/native/lint PASS. No real recipient/broker/IFTTT request.",
+      "validation": "da0f571 CI40141612460 AutomationStorageTest 10 PASS.16 pure transport/policy cases and combined778pure/debug/native/lint PASS. No real recipient/broker/IFTTT request. New lifecycle/incoming integration: assembleDebug86d0d1e PASS1m14s only; no new tests/provider/destination/phone execution.",
       "status": "partial",
-      "notes": "Opted-in real tracking/alarm-dismiss events use targeted Tasker broadcasts, HTTPS POST and TLS MQTT QoS1, encrypted private credentials and bounded durable retries. HTTPS can target a user-configured webhook service; actual account/endpoint/broker exchange and inbound Intent/data-provider contracts remain unverified/absent. See AUTOMATIONS.md.",
+      "notes": "Opted-in ten-kind actual lifecycle catalog covers existing tracking start/end/alarm dismissal plus committed tracking pause/resume, foreground alarm admission, acknowledged snooze+stop, durable confirmed/missed wake checks and posted wind-down reminders. Targeted Tasker broadcasts, HTTPS POST/TLS MQTT, minimal schema1/type/time/hash/test fields, encrypted credentials, destination revisions and bounded durable retries remain. Same source transition retains stable event_id; source-to-outbox handoff is asynchronous and not crash-atomic, retries are at-least-once and receivers must dedup. No player/stage/REM/apnea events or audible/visible-output proof. Separate default-off version1 incoming START/PAUSE/RESUME/STOP requests now require unlocked foreground review, current-run ownership and one-use service delivery guards; START stages existing setup, not automatic capture. Full provider/destination/runtime acceptance remains unverified. See AUTOMATION-REQUESTS-AND-CALENDAR.md.",
       "id": "F092",
       "tests": [
         {
@@ -2624,11 +2638,20 @@
         "AutomationDispatch.java",
         "AutomationTransports.java",
         "WebhookPost.java",
-        "MqttPublish.java"
+        "MqttPublish.java",
+        "IncomingAutomation.java",
+        "IncomingAutomationActivity.java",
+        "IncomingAutomationSettingsActivity.java",
+        "AutomationTracking.java",
+        "TrackingService.java",
+        "SonarNightStore.java",
+        "SnoozeDeadline.java",
+        "WakeChecks.java",
+        "SmartBedtimeRuntime.java"
       ],
-      "validation": "da0f571 CI40141612460 AutomationStorageTest 10 PASS.16 pure transport/policy cases and combined778pure/debug/native/lint PASS. No real recipient/broker/IFTTT request.",
+      "validation": "da0f571 CI40141612460 AutomationStorageTest 10 PASS.16 pure transport/policy cases and combined778pure/debug/native/lint PASS. No real recipient/broker/IFTTT request. New lifecycle/incoming integration: assembleDebug86d0d1e PASS1m14s only; no new tests/provider/destination/phone execution.",
       "status": "partial",
-      "notes": "Opted-in real tracking/alarm-dismiss events use targeted Tasker broadcasts, HTTPS POST and TLS MQTT QoS1, encrypted private credentials and bounded durable retries. HTTPS can target a user-configured webhook service; actual account/endpoint/broker exchange and inbound Intent/data-provider contracts remain unverified/absent. See AUTOMATIONS.md.",
+      "notes": "Opted-in ten-kind actual lifecycle catalog covers existing tracking start/end/alarm dismissal plus committed tracking pause/resume, foreground alarm admission, acknowledged snooze+stop, durable confirmed/missed wake checks and posted wind-down reminders. Targeted Tasker broadcasts, HTTPS POST/TLS MQTT, minimal schema1/type/time/hash/test fields, encrypted credentials, destination revisions and bounded durable retries remain. Same source transition retains stable event_id; source-to-outbox handoff is asynchronous and not crash-atomic, retries are at-least-once and receivers must dedup. No player/stage/REM/apnea events or audible/visible-output proof. Separate default-off version1 incoming START/PAUSE/RESUME/STOP requests now require unlocked foreground review, current-run ownership and one-use service delivery guards; START stages existing setup, not automatic capture. Full provider/destination/runtime acceptance remains unverified. See AUTOMATION-REQUESTS-AND-CALENDAR.md.",
       "id": "F094",
       "tests": [
         {
@@ -2648,11 +2671,20 @@
         "AutomationDispatch.java",
         "AutomationTransports.java",
         "WebhookPost.java",
-        "MqttPublish.java"
+        "MqttPublish.java",
+        "IncomingAutomation.java",
+        "IncomingAutomationActivity.java",
+        "IncomingAutomationSettingsActivity.java",
+        "AutomationTracking.java",
+        "TrackingService.java",
+        "SonarNightStore.java",
+        "SnoozeDeadline.java",
+        "WakeChecks.java",
+        "SmartBedtimeRuntime.java"
       ],
-      "validation": "da0f571 CI40141612460 AutomationStorageTest 10 PASS.16 pure transport/policy cases and combined778pure/debug/native/lint PASS. No real recipient/broker/IFTTT request.",
+      "validation": "da0f571 CI40141612460 AutomationStorageTest 10 PASS.16 pure transport/policy cases and combined778pure/debug/native/lint PASS. No real recipient/broker/IFTTT request. New lifecycle/incoming integration: assembleDebug86d0d1e PASS1m14s only; no new tests/provider/destination/phone execution.",
       "status": "partial",
-      "notes": "Opted-in real tracking/alarm-dismiss events use targeted Tasker broadcasts, HTTPS POST and TLS MQTT QoS1, encrypted private credentials and bounded durable retries. HTTPS can target a user-configured webhook service; actual account/endpoint/broker exchange and inbound Intent/data-provider contracts remain unverified/absent. See AUTOMATIONS.md.",
+      "notes": "Opted-in ten-kind actual lifecycle catalog covers existing tracking start/end/alarm dismissal plus committed tracking pause/resume, foreground alarm admission, acknowledged snooze+stop, durable confirmed/missed wake checks and posted wind-down reminders. Targeted Tasker broadcasts, HTTPS POST/TLS MQTT, minimal schema1/type/time/hash/test fields, encrypted credentials, destination revisions and bounded durable retries remain. Same source transition retains stable event_id; source-to-outbox handoff is asynchronous and not crash-atomic, retries are at-least-once and receivers must dedup. No player/stage/REM/apnea events or audible/visible-output proof. Separate default-off version1 incoming START/PAUSE/RESUME/STOP requests now require unlocked foreground review, current-run ownership and one-use service delivery guards; START stages existing setup, not automatic capture. Full provider/destination/runtime acceptance remains unverified. See AUTOMATION-REQUESTS-AND-CALENDAR.md.",
       "id": "F095",
       "tests": [
         {
@@ -2699,11 +2731,14 @@
         "SleepCsvImport.java",
         "SleepCsvEvidence.java",
         "SleepCsvJob.java",
-        "SleepCsvActivity.java"
+        "SleepCsvActivity.java",
+        "SleepCsvSourceJob.java",
+        "SleepCsvSourceActivity.java",
+        "SleepCsvSourceChart.java"
       ],
       "validation": "Combined assembleDebug32f87b9 PASS2m2s; source-only format/provenance integration. No new tests, provider/device or migration execution.",
       "status": "partial",
-      "notes": "Reviewed Sleep as Android CSV import appends historical manual/imported/no-sensor periods with original zones, notes, tags and exact integral ratings. Repeated15-field headers, optional noise rows, quoting/newlines, source IDs and documented dates are validated. Conflicting IDs, existing exact periods and retained deleted-ID receipts are reviewed and never overwritten. Original rows, fractional ratings and aggregate adjustments remain in same-transaction source evidence with strict identity/hash/bounds, record deletion, optional metadata13 extension and library backup. App duration is the period, not vendor adjusted sleep duration; source details disclose both. Vendor actigraphy/noise/stage fields are retained without fabricating local measurements, stage estimates or positioned awake spans. Input4MiB/2000 records; retained raw3MiB/portable4MiB and overall8MiB backup bounds. Unsupported formats/oversized data reject explicitly. Public content provider and complete semantic vendor-format conversion remain absent. Runtime/provider/migration acceptance remains open.",
+      "notes": "Reviewed Sleep as Android CSV import appends historical manual/imported/no-sensor periods with original zones, notes, tags and exact integral ratings. Repeated15-field headers, optional noise rows, quoting/newlines, source IDs and documented dates are validated. Conflicting IDs, existing exact periods and retained deleted-ID receipts are reviewed and never overwritten. Original rows, fractional ratings and aggregate adjustments remain in same-transaction source evidence with strict identity/hash/bounds, record deletion, optional metadata13 extension and library backup. App duration is the period, not vendor adjusted sleep duration; source details disclose both. Vendor actigraphy/noise/stage fields are retained without fabricating local measurements, stage estimates or positioned awake spans. Input4MiB/2000 records; retained raw3MiB/portable4MiB and overall8MiB backup bounds. Unsupported formats/oversized data reject explicitly. Public content provider and complete semantic vendor-format conversion remain absent. Runtime/provider/migration acceptance remains open. New source viewer plots exact retained vendor actigraphy/noise in paged64-position charts, zero vs missing/negative sentinel distinct, raw inspection and original rating/adjustment/event detail. Literal clock labels require proven column alignment; otherwise source order is explicit, never invented absolute times/DST/stages. Exact retained single-record CSV export uses reviewed SAF with current source checks; runtime/render/provider acceptance remains open.",
       "id": "F097",
       "tests": []
     },
@@ -2923,7 +2958,7 @@
       ],
       "validation": "Author first build: AlarmSkipTest 12 pass, debug/native APKs and lint0errors87warnings. Final guarded Editor/new-ID/atomic replacement and confirmation-clock refinements passed independent source review and integrate asf2cd55f. Exact combined613e44b build passes debug/native/release APK, all500 pure cases/60 suites, and lint0errors87warnings in5m30. Phone install-r returned Success after private backup; app launch was suspended and USB disconnected before postupdate verification. AlarmSkipStorageTest 8 and AlarmSkipFlowTest 2/15 original captures require fresh native execution; CI contract53classes/112methods/314images includes both classes. Fresh d43f480/fullCI40068184362: AlarmSkipFlowTest 2 PASS20.891s/all15 originals; Storage8 has2 fixture failures (fixed ID1 assumption for new ID3 and incorrect SQL/platform atomicity assumption). Strict review accepts14 supporting frames but rejects oversized expired status; bca0d81 gives its text explicit wrap width and adds compact/full-action geometry assertions. Source correction and transactional-vs-platform fixture fix require new native execution. Fresh dc30736/fullCI40072555253: Storage8 PASS0.571s,UI2 PASS18.45s/all15 frames; strict expired compact-card/action gate now clears. Actual platform delivery remains unverified.",
       "status": "partial",
-      "notes": "Durable local-calendar skip and visible Undo/retry preserve recurring enable state; one-time skip disables and Undo expires at its original local deadline. Strict metadata/ownership fences queued deliveries, stale editors and concurrent replacement; non-schedule edits preserve current skip. Restore clears skip authority and imports disabled. A saved unconfirmed scheduling marker survives interruption; platform scheduling/delivery remains unverified and the final-check/platform-call race is documented in SKIP-NEXT-ALARM.md. Holiday rules remain separate and missing.",
+      "notes": "Durable local-calendar skip and visible Undo/retry preserve recurring enable state; one-time skip disables and Undo expires at its original local deadline. Strict metadata/ownership fences queued deliveries, stale editors and concurrent replacement; non-schedule edits preserve current skip. Restore clears skip authority and imports disabled. A saved unconfirmed scheduling marker survives interruption; platform scheduling/delivery remains unverified and the final-check/platform-call race is documented in SKIP-NEXT-ALARM.md. Selected-calendar all-day skip rules exist separately; provider delivery acceptance remains open.",
       "id": "F104",
       "tests": [
         {
@@ -3924,11 +3959,16 @@
         "NapActivity.java",
         "NapPlan.java",
         "NapPlanJson.java",
-        "Naps.java"
+        "Naps.java",
+        "IncomingAutomation.java",
+        "IncomingAutomationActivity.java",
+        "IncomingAutomationSettingsActivity.java",
+        "TrackingActivity.java",
+        "TrackingService.java"
       ],
       "validation": "Combined production assembleDebug53a0c08 PASS3m2s; build-only. No new unit/native/lint/screenshot, assistant-provider or physical timer validation.",
       "status": "partial",
-      "notes": "Permission-protected standard SET_ALARM and SET_TIMER requests require explicit reviewed Save/Start; caller flags, URI grants and unsupported values cannot silently schedule. Timer requests now preserve exact1..86400seconds through the styled hours/minutes/seconds review, new private nap draft and separate Start. Optional strict NapPlan v2 exactSeconds supplies actual millisecond deadlines; legacy v1 minute plans stay unchanged. Exact timers disable smart early waking and Power nap. Pending/reopened duration/countdown/end clocks retain seconds. Custom MIME GET_CONTENT supplies an explicitly shared bounded7/30day sleep summary through narrow read-only URI grants. History changes invalidate drafts/staging and erasure revokes known grants/deletes generated files; already-open descriptors/external copies cannot be recalled. Broader contracts, assistant/provider runtime remain incomplete.",
+      "notes": "Permission-protected standard SET_ALARM and SET_TIMER requests require explicit reviewed Save/Start; caller flags, URI grants and unsupported values cannot silently schedule. Timer requests now preserve exact1..86400seconds through the styled hours/minutes/seconds review, new private nap draft and separate Start. Optional strict NapPlan v2 exactSeconds supplies actual millisecond deadlines; legacy v1 minute plans stay unchanged. Exact timers disable smart early waking and Power nap. Pending/reopened duration/countdown/end clocks retain seconds. Custom MIME GET_CONTENT supplies an explicitly shared bounded7/30day sleep summary through narrow read-only URI grants. History changes invalidate drafts/staging and erasure revokes known grants/deletes generated files; already-open descriptors/external copies cannot be recalled. Broader contracts, assistant/provider runtime remain incomplete. Own TRACKING_REQUESTv1 now accepts exactly primitive version/command/request_id, rejects nested payload/routing/grants, requires separate default-off consent and unlocked foreground review, and journals prepared request IDs. START reports staged and uses existing setup/final Start; control grants pin current run and expire10s at actual service delivery. Results distinguish applied/observed vs pending/interrupted/rejected; no unattended or vendor-alias control. The existing bounded summary document API remains; no public SQL/history mutation provider. Runtime/assistant/provider acceptance still incomplete.",
       "id": "F134",
       "tests": []
     },
@@ -3951,11 +3991,16 @@
         "CalendarEventExport.java",
         "CalendarEventExportActivity.java",
         "CalendarEventDirectActivity.java",
+        "CalendarEventWrites.java",
+        "AutoCalendar.java",
+        "AutoCalendarActivity.java",
+        "AutoCalendarService.java",
+        "AutoCalendarReceiver.java",
         "CalendarEventWrites.java"
       ],
       "validation": "0b7f46d: CalendarPolicyTest 12 pure PASS. CalendarRulesStorageTest 4 and CalendarRulesFlowTest 1/four frames authored; combined native build/execution pending CI40133514540. No actual phone calendar or alarm access. Superseding da0f571 CI40141612460 CalendarRulesStorageTest 4/FlowTest 1 and DatedGoalBankFlowTest 2 allPASS, with complete originals/save/reopen. Earlier UUID/owned-dialog failures fixed; no real provider/hardware claim. CalendarEventDraftTest 3 PASS in combined900-test1275be1 build. d346441 CI40154059415 CalendarEventExportTest 1 PASS; FlowTest 1 fails before note toggle because its helper selected a label instead of Switch.2732a6f fixes exact native control lookup; rerun pending. Superseding CI40159540059 CalendarEventExportTest 1 and CalendarEventExportFlowTest 1/all4 originals PASS with a replaced calendar handoff port. No real event was saved. Direct write: assembleDebug121dbd5 PASS1m41s; no provider/calendar/device actions, actual exchange unverified.",
       "status": "partial",
-      "notes": "Read-only selected-calendar all-day skip and bounded earlier-meeting rules apply to repeating alarms, with ordinary-time fallback, worker provider reads, background refresh, occurrence receipt, actual next-alarm preview and shifted Skip/Undo expiry. Default off; phone calendar provider/READ_CALENDAR and alarm readiness required. Direct reviewed local calendar writing now has production code. See CALENDAR-RULES.md. Explicit saved-period event draft handoff opens the calendar app only after review, with notes excluded by default; user saves externally. No WRITE_CALENDAR, automatic write/update/delete sync or save acknowledgment. See CALENDAR-EVENT-EXPORT.md. Separate direct-export screen requests read/write access only on demand, selects a writable calendar and reviews title/effective times/zone/optional note. Private durable PREPARED/INSERTING/VERIFIED/UNCERTAIN journal, source/destination fingerprints, package+UUID marker lookup/readback and no blind uncertain replay prevent duplicate creation. Title/note changes do not create/update the same period again; unrelated events are never updated/deleted. Existing external compose option stays available. Provider marker support is required; local insertion does not prove remote sync. Source and provider writes cannot be one atomic transaction; later edits never silently rewrite the reviewed event.",
+      "notes": "Read-only selected-calendar all-day skip and bounded earlier-meeting rules apply to repeating alarms, with ordinary-time fallback, worker provider reads, background refresh, occurrence receipt, actual next-alarm preview and shifted Skip/Undo expiry. Default off; phone calendar provider/READ_CALENDAR and alarm readiness required. Direct reviewed local calendar writing now has production code. See CALENDAR-RULES.md. Explicit saved-period event draft handoff opens the calendar app only after review, with notes excluded by default; user saves externally. The external composer itself needs no WRITE_CALENDAR; direct and separately opted-in future-night local insertion use read/write permissions, with no update/delete synchronization. See CALENDAR-EVENT-EXPORT.md. Separate direct-export screen requests read/write access only on demand, selects a writable calendar and reviews title/effective times/zone/optional note. Private durable PREPARED/INSERTING/VERIFIED/UNCERTAIN journal, source/destination fingerprints, package+UUID marker lookup/readback and no blind uncertain replay prevent duplicate creation. Title/note changes do not create/update the same period again; unrelated events are never updated/deleted. Existing external compose option stays available. Provider marker support is required; local insertion does not prove remote sync. Source and provider writes cannot be one atomic transaction; later edits never silently rewrite the reviewed event. Automatic calendar export now separately opts in to a writable destination for successful production recordings started after consent only. No history/import/interrupted/rejected/edited backfill, fixed title/start/end/zone only, no note/audio. Bounded private revision queue and deferrable JobScheduler share direct-save receipts; no uncertain replay, external event edits/deletion or remote-sync claim. Off/consent/history changes fence pending ownership; in-flight writes may finish. Actual provider, background/interrupt and restart behavior remain unverified.",
       "id": "F135",
       "tests": [
         {
@@ -4053,11 +4098,20 @@
         "AutomationDispatch.java",
         "AutomationTransports.java",
         "WebhookPost.java",
-        "MqttPublish.java"
+        "MqttPublish.java",
+        "IncomingAutomation.java",
+        "IncomingAutomationActivity.java",
+        "IncomingAutomationSettingsActivity.java",
+        "AutomationTracking.java",
+        "TrackingService.java",
+        "SonarNightStore.java",
+        "SnoozeDeadline.java",
+        "WakeChecks.java",
+        "SmartBedtimeRuntime.java"
       ],
-      "validation": "da0f571 CI40141612460 AutomationStorageTest 10 PASS.16 pure transport/policy cases and combined778pure/debug/native/lint PASS. No real recipient/broker/IFTTT request.",
+      "validation": "da0f571 CI40141612460 AutomationStorageTest 10 PASS.16 pure transport/policy cases and combined778pure/debug/native/lint PASS. No real recipient/broker/IFTTT request. New lifecycle/incoming integration: assembleDebug86d0d1e PASS1m14s only; no new tests/provider/destination/phone execution.",
       "status": "partial",
-      "notes": "Opted-in real tracking/alarm-dismiss events use targeted Tasker broadcasts, HTTPS POST and TLS MQTT QoS1, encrypted private credentials and bounded durable retries. HTTPS can target a user-configured webhook service; actual account/endpoint/broker exchange and inbound Intent/data-provider contracts remain unverified/absent. See AUTOMATIONS.md.",
+      "notes": "Opted-in ten-kind actual lifecycle catalog covers existing tracking start/end/alarm dismissal plus committed tracking pause/resume, foreground alarm admission, acknowledged snooze+stop, durable confirmed/missed wake checks and posted wind-down reminders. Targeted Tasker broadcasts, HTTPS POST/TLS MQTT, minimal schema1/type/time/hash/test fields, encrypted credentials, destination revisions and bounded durable retries remain. Same source transition retains stable event_id; source-to-outbox handoff is asynchronous and not crash-atomic, retries are at-least-once and receivers must dedup. No player/stage/REM/apnea events or audible/visible-output proof. Separate default-off version1 incoming START/PAUSE/RESUME/STOP requests now require unlocked foreground review, current-run ownership and one-use service delivery guards; START stages existing setup, not automatic capture. Full provider/destination/runtime acceptance remains unverified. See AUTOMATION-REQUESTS-AND-CALENDAR.md.",
       "id": "F138",
       "tests": [
         {
@@ -4489,11 +4543,14 @@
         "RecordEditorActivity.java",
         "Store.java",
         "Backup.java",
-        "BackupFingerprint.java"
+        "BackupFingerprint.java",
+        "SleepCsvSourceJob.java",
+        "SleepCsvSourceActivity.java",
+        "SleepCsvSourceChart.java"
       ],
       "validation": "Combined assembleDebug32f87b9 PASS2m2s only. Primary vendor documentation/example inspected; no parser/SQLite/provider/native execution.",
       "status": "partial",
-      "notes": "Real reviewed append of selected eligible source periods, transactional records+evidence+dedup receipts, explicit changed-ID/exact-period/deleted-ID conflicts, cancellation before commit and uncertain-commit recovery without replay. Exact raw2/3rows remain private/portable with fractional rating and LenAdjust/net aggregate; original source details accessible after import. DST offsets checked against Id/Hours, nonexistent/mismatched local times rejected. No synthetic sensor/stage graphs or inferred awake placement; app period duration and vendor adjusted duration stay distinct. Metadata13 optional extension, additive schema17 and session-deletion trigger preserve lifecycle. Manual, automatic and full-library metadata paths share it; older readers can drop the optional extension. Full vendor semantic projection and actual runtime/provider/migration acceptance remain open.",
+      "notes": "Real reviewed append of selected eligible source periods, transactional records+evidence+dedup receipts, explicit changed-ID/exact-period/deleted-ID conflicts, cancellation before commit and uncertain-commit recovery without replay. Exact raw2/3rows remain private/portable with fractional rating and LenAdjust/net aggregate; original source details accessible after import. DST offsets checked against Id/Hours, nonexistent/mismatched local times rejected. No synthetic sensor/stage graphs or inferred awake placement; app period duration and vendor adjusted duration stay distinct. Metadata13 optional extension, additive schema17 and session-deletion trigger preserve lifecycle. Manual, automatic and full-library metadata paths share it; older readers can drop the optional extension. Full vendor semantic projection and actual runtime/provider/migration acceptance remain open. New source viewer plots exact retained vendor actigraphy/noise in paged64-position charts, zero vs missing/negative sentinel distinct, raw inspection and original rating/adjustment/event detail. Literal clock labels require proven column alignment; otherwise source order is explicit, never invented absolute times/DST/stages. Exact retained single-record CSV export uses reviewed SAF with current source checks; runtime/render/provider acceptance remains open.",
       "id": "F157",
       "tests": []
     },
@@ -4512,6 +4569,84 @@
       "status": "partial",
       "notes": "Saved reorder/show/hide of Bedtime goal, Wind-down, optional dated goal-bank progress and latest non-nap saved night, plus illustration visibility. Defaults keep original bedtime→wind-down and artwork; new data links default off. Goal ledger/record data read off-main with visible empty/error states and detached-view fences. Alarm/time/arc/days/tracking/run-check and nap start/duration controls mandatory. Draft Reset, Cancel, stale explicit Save and optional typed settings-profile transfer. No broad card library or accepted full-screen redesign; actual persistence, large-text and visual acceptance remain open.",
       "id": "F158",
+      "tests": []
+    },
+    {
+      "feature": "Reviewed incoming tracking Intent requests",
+      "screens": "18,33 + access/request/status supporting screens",
+      "source": "https://sleep.urbandroid.org/docs/devs/intent_api.html",
+      "implementation": [
+        "IncomingAutomation.java",
+        "IncomingAutomationActivity.java",
+        "IncomingAutomationSettingsActivity.java",
+        "TrackingActivity.java",
+        "TrackingService.java"
+      ],
+      "validation": "Combined assembleDebug86d0d1e PASS1m14s only; no request/recognition/provider/device/native execution.",
+      "status": "partial",
+      "notes": "Own action org.sleepwell.app.action.TRACKING_REQUEST, strict Integer version1 / START|PAUSE|RESUME|STOP / UUIDrequest_id only. Default-off local access; user unlock/focus review every request,2minTTL, stable prepared-ID journal prevents repeat/process replay. START opens existing setup and final Start, returns staged. Controls reuse actual sonar/microphone admission, pin id/start/sensor/phase/admission generation, and consume one-use10s grant in private service before control. Observed applied/already distinguished from pending/interrupted/rejected primitive result. No nested forwarding, remote alarm dismissal, unattended sensor authority or vendor-action compatibility. New external entrypoint/runtime/cleanup acceptance remains unverified.",
+      "id": "F159",
+      "tests": []
+    },
+    {
+      "feature": "Confirmed outbound lifecycle event catalog",
+      "screens": "33 + rule event picker",
+      "source": "https://sleep.urbandroid.org/docs/services/automation.html",
+      "implementation": [
+        "AutomationEvent.java",
+        "AutomationActivity.java",
+        "AutomationTracking.java",
+        "TrackingService.java",
+        "SonarNightStore.java",
+        "AlarmService.java",
+        "SnoozeDeadline.java",
+        "WakeChecks.java",
+        "SmartBedtimeRuntime.java"
+      ],
+      "validation": "Combined assembleDebug86d0d1e PASS1m14s only. No test recipients, phone, network or output events exercised.",
+      "status": "partial",
+      "notes": "Ten actual kinds: tracking start/end/pause/resume; alarm start/snoozed/dismissed; wake-check confirmed/missed; posted wind-down reminder. New pause/resume identities follow committed SQLite transitions; snooze requires acknowledged schedule receipt+owner stop; missed is durable check expiry, not re-ring success. Minimal schema1 and existing rule/destination/retry compatibility. Async handoff can lose an event before enqueue on process death; delivery retries are at-least-once and recipient dedup is required. No native player-start/stage/REM/apnea/unsupported medical events. Actual event/output/provider/destination acceptance open.",
+      "id": "F160",
+      "tests": []
+    },
+    {
+      "feature": "Imported CSV source signal charts and exact export",
+      "screens": "02,22,24 + original source detail",
+      "source": "https://sleep.urbandroid.org/docs/devs/csv.html",
+      "implementation": [
+        "SleepCsvFormat.java",
+        "SleepCsvSourceJob.java",
+        "SleepCsvSourceActivity.java",
+        "SleepCsvSourceChart.java",
+        "RecordEditorActivity.java",
+        "ReportScreen.java"
+      ],
+      "validation": "Combined assembleDebug86d0d1e PASS1m14s only; no rendering/provider/parser/native flow execution.",
+      "status": "partial",
+      "notes": "Read-transaction-pinned existing imported source, real relative actigraphy/noise values, paged64 original positions/global scale, selectable exact raw values, preserved zero/missing-negative gaps, original fractional rating/LenAdjust/net and event fields. Literal clocks only where row/header shape establishes columns; legacy/unmapped rows use explicit source order. No absolute timestamps, uniform-minute assumption, DST reconstruction or app-epoch/stage conversion. Retained explicit single-record SAF CSV export rechecks source/current record and copies exact original2/3rows with cancellation/process-loss bounds and private metadata disclosure. Both editor and imported report link actual source flow. Runtime/provider/visual acceptance remains open.",
+      "id": "F161",
+      "tests": []
+    },
+    {
+      "feature": "Opted-in future completed-night calendar export",
+      "screens": "33 + calendar consent/status/receipts",
+      "source": "https://sleep.urbandroid.org/docs/services/google_calendar.html",
+      "implementation": [
+        "AutoCalendar.java",
+        "AutoCalendarActivity.java",
+        "AutoCalendarService.java",
+        "AutoCalendarReceiver.java",
+        "CalendarEventWrites.java",
+        "CalendarRulesActivity.java",
+        "TrackingService.java",
+        "SonarNightStore.java",
+        "Store.java",
+        "Backup.java"
+      ],
+      "validation": "Combined assembleDebug86d0d1e PASS1m14s only; no calendar/provider/background/permission/phone actions.",
+      "status": "partial",
+      "notes": "Separate default-off reviewed writable-calendar consent queues only successful local production tracked nights started after Save. No existing history/import/manual/interrupted/rejected/edited-night backfill. Fixed Sleep period title, original full recording start/end/zone only; notes/tags/raw data/audio excluded. Private32entry acknowledged revision queue, deferrable persisted job, live token guards,90s cancellation and shared direct-export ownership/dedup receipts. Running/uncertain work never blindly replays; no automatic update/delete or remote-sync claim. Off/changed consent/history replacement/removal fence pending ownership and clear/cancel queue; an in-flight provider call may finish, external events/separate direct receipts remain. Provider access/marker support, Android timing, process/permission/cleanup behavior and whole flow remain unverified.",
+      "id": "F162",
       "tests": []
     }
   ]

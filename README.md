@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current feature candidate — 26 October
 
-Application source **32f87b9** builds in **2m2s**, with schema17 / metadata
+Application source **86d0d1e** builds in **1m14s**, with schema17 / metadata
 backup13 and the original installed signing key. It includes expanded alarm,
 snooze, reminder and extra-loud controls; shared contactless noise clips/cues;
 weekly naps, object challenges, offline narration and pre-travel sleep shifts;
@@ -28,9 +28,11 @@ OS-observation and sensor prerequisites remain explicit. It also adds optional
 removable Android-admin uninstall friction, reviewed direct calendar saving,
 AAC M4A interval/collection export and portable legacy clip favorites; reviewed
 Sleep as Android CSV append with retained original evidence; separate supported
-settings profiles; and optional Tonight row layout controls.
+settings profiles; optional Tonight row layout controls; confirmed lifecycle
+automation events; reviewed incoming tracking requests; original CSV source
+charts/export; and separately opted-in future-night calendar export.
 
-[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-32f87b9).
+[Download the latest development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-features-20261026-86d0d1e).
 Its uploaded checksum matches the local signed artifact. See the
 [delivery inventory](docs/2026-10-25-FEATURE-DELIVERY.md) and
 [checkmarked feature checklist](docs/FEATURE-CHECKLIST.md) and
@@ -39,7 +41,7 @@ Feature behavior still has **build-only evidence**. The user-authorized121dbd5
 phone update succeeded; checksum, original records/preferences/private files were
 preserved. Samsung Device Care still suspends the app, so schema7→16 first-open
 migration remains pending. Runtime, provider, overnight, accuracy and visual acceptance remain
-open. Current32f87b9 is uninstalled. Schema16 favorites, schema17 CSV evidence
+open. Current86d0d1e is uninstalled. Schema16 favorites, schema17 CSV evidence
 and optional format13/ZIPv2 extensions have
 not had runtime migration/round-trip validation. No new test/lint/screenshot
 batches or phone/provider/codec/admin/alarm/audio/sensor actions ran in this batch.

@@ -2,8 +2,8 @@
 
 Not fully done. Checked items have actual production implementation and build
 success; they are not claims of current phone/overnight validation. Unchecked
-acceptance items below remain required. Latest application source32f87b9 builds
-in2m2s; its published APK retains the installed signer
+acceptance items below remain required. Latest application source86d0d1e builds
+in1m14s; its published APK retains the installed signer
 and matching SHA256.
 
 ## Implemented feature paths
@@ -51,6 +51,10 @@ and matching SHA256.
 - [x] Reviewed Sleep as Android CSV append with portable original source evidence.
 - [x] Separate settings-profile export/review/Apply and interrupted-save recovery.
 - [x] Optional Tonight row order/visibility and illustration controls, with default layout kept.
+- [x] Seven new confirmed automation events, ten total, with stable IDs and existing transports.
+- [x] Reviewed version1 incoming tracking requests; START stages normal setup.
+- [x] Actual imported CSV source charts/raw values and exact original single-record export.
+- [x] Separate opted-in calendar export for future successful recordings, with shared receipts.
 - [x] User-authorized121dbd5 phone update; installed checksum, original records,
   preferences and private files verified preserved.
 
@@ -78,6 +82,8 @@ and matching SHA256.
   insertion/uncertain receipts and Android-admin activation/removal behavior.
 - [ ] CSV/profile document exchange, duplicate/conflict/cancel/restore and multi-file recovery.
 - [ ] Tonight layout persistence, real optional data links and large-text presentation.
+- [ ] Incoming request/replay/service ownership and outbound event/recipient lifecycle behavior.
+- [ ] CSV source graph/clock-label/export behavior and future-night calendar job/uncertainty handling.
 - [ ] Full36-screen reference design fidelity, especially Report/charts and menus.
 - [ ] Remaining interaction bugs and security review, deferred by user instruction.
 - [ ] Open after Samsung Device Care suspension is removed and verify schema7→16 migration.
@@ -86,6 +92,6 @@ and matching SHA256.
 Forced hardware power-off cannot be prevented by an ordinary Android app. The
 last phone update was121dbd5; Device Care still suspends it and the last
 verified schema was7pending its first-open migration to16.
-New32f87b9/schema17 is uninstalled. No new unit/native/lint/screenshot batches or phone/provider/
+New86d0d1e/schema17 is uninstalled. No new unit/native/lint/screenshot batches or phone/provider/
 codec/admin/alarm/audio/sensor actions ran for these additions. Details and bounds are in
 [FEATURE-MATRIX.md](FEATURE-MATRIX.md) and [REMAINING-WORK.md](REMAINING-WORK.md).
