@@ -96,6 +96,7 @@ public class MainActivity extends Activity {
         Design.item(body,"download","Restore audio backup","Review a ZIP before replacing local data",()->startActivity(RecordUi.intent(this,LibraryAudioImportActivity.class)));Design.line(body);Design.space(body,12);
         Design.item(body,"upload","Export research signals","Review relative movement data · no automatic upload",()->startActivity(RecordUi.intent(this,ResearchExportActivity.class)));Design.line(body);Design.space(body,12);
         PlanActivity.detail(body,"link","Connected apps","Control read access to saved sleep records",null,()->startActivity(RecordUi.intent(this,RecordAccessActivity.class)));Design.line(body);Design.space(body,12);
+        PlanActivity.detail(body,"alarm","Alarm access","Allow a trusted app to manage ordinary alarms",null,()->startActivity(RecordUi.intent(this,AlarmAccessActivity.class)));Design.line(body);Design.space(body,12);
         HistoryEraseUi.add(body,this::stopPreview,this::render);
     }
     private void hero(LinearLayout body,String title,String subtitle){body.addView(Design.iconButton(this,"back","Back",()->{tab=4;render();}),new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48)));Design.space(body,14);Design.text(body,title,30,700,Design.INK);Design.space(body,8);Design.text(body,subtitle,15,400,Design.MUTED);}
