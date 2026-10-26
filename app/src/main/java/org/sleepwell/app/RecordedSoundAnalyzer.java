@@ -52,7 +52,7 @@ final class RecordedSoundAnalyzer implements AutoCloseable {
                     floats(assets, "pann-mel.f32", 131328, "bd0892e4dbf4fd016fc8fb21105b1f3cad415609aa6e01dfcfd85c62f9795f7d"),
                     floats(assets, "efficient-mel.f32", 262656, "ac487dbcdc9c3e6fa3cc9c3fc6226e5bb16f38b5b02a051dd838be9e75f27017"));
             labels = new String(read(assets, "labels.txt", 6864,
-                    "31560a0197c803832cedbba10d1fc8a70469983abeb954368be7bae83d975648"), StandardCharsets.UTF_8).split("\n");
+                    "31560a0197c803832cedbba10d1fc8a70469983abeb954368be7bae83d975648"), StandardCharsets.UTF_8).split("\\r?\\n");
             if (labels.length != CLASSES) throw new IllegalStateException("Invalid sound class map");
             environment = OrtEnvironment.getEnvironment();
             try (OrtSession.SessionOptions options = new OrtSession.SessionOptions()) {
