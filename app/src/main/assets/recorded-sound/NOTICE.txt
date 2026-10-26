@@ -27,3 +27,7 @@ Outputs are experimental uncalibrated sound estimates. A missed or uncertain
 window is not evidence that laughter or instruments were absent. This feature
 does not replace the automatic snoring/speech/cough/cry classifier or diagnose
 sleep or medical conditions.
+
+ONNX Runtime Android 1.23.2 CPU inference, Copyright (c) Microsoft Corporation, MIT.
+Full notice: ONNX-RUNTIME-MIT.txt.
+Source: https://github.com/microsoft/onnxruntime/tree/v1.23.2
