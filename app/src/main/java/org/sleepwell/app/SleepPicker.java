@@ -27,7 +27,7 @@ final class SleepPicker {
             row.addView(new Mark(a,index==selected),new LinearLayout.LayoutParams(Design.dp(a,24),Design.dp(a,24)));
             TextView label=Design.text(a,labels[index],16,index==selected?600:400,Design.INK);LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,-2,1);lp.leftMargin=Design.dp(a,14);row.addView(label,lp);
             radio(row,index==selected);if(index==selected)selectedRow[0]=row;row.setFocusable(true);row.setContentDescription(labels[index]);
-            row.setOnClickListener(v->{dialog.dismiss();choose.accept(n);});options.addView(row,new LinearLayout.LayoutParams(-1,-2));
+            row.setOnClickListener(v->{if(n!=selected)InteractionFeedback.selection(v);dialog.dismiss();choose.accept(n);});options.addView(row,new LinearLayout.LayoutParams(-1,-2));
         }
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));Design.button(root,"Cancel",false,dialog::dismiss);
         scroll.getViewTreeObserver().addOnGlobalLayoutListener(new android.view.ViewTreeObserver.OnGlobalLayoutListener(){public void onGlobalLayout(){scroll.getViewTreeObserver().removeOnGlobalLayoutListener(this);int centered=selectedRow[0]==null?0:selectedRow[0].getTop()-(scroll.getHeight()-selectedRow[0].getHeight())/2;scroll.scrollTo(0,dialog.restoredScroll!=null?dialog.restoredScroll:Math.max(0,centered));}});

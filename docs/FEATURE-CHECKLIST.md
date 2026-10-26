@@ -18,6 +18,14 @@ an isolated silent CI emulator. Broad design/bug/security campaigns
 and the dedicated reviewer remain deferred. All **36 reference screens** remain
 required; a successful build or one flow does not establish full acceptance.
 
+## New priorities
+
+- [ ] Consistent subtle action feedback through haptics and visible selected/pressed states.
+- [ ] Organize settings/menus without removing features; grouped destinations, settings search and clear Back behavior.
+
+Source work is in progress; acceptance evidence is required before checking these off.
+See [organization map](UI-ORGANIZATION.md).
+
 ## Implemented feature paths
 
 - [x] Best-effort prevent-leave and recognized power-menu handling during alarms.

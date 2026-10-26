@@ -74,6 +74,7 @@
             <grant-uri-permission android:pathPrefix="/shared/v1/alarms" />
         </provider>
         <receiver android:name=".AlarmAccessReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /></intent-filter></receiver>
+        <activity android:name=".FeedbackSettingsActivity" android:exported="false" />
         <activity android:name=".RecordAccessActivity" android:exported="false" />
         <provider android:name=".RecordContentProvider" android:authorities="org.sleepwell.app.records" android:exported="true" android:readPermission="org.sleepwell.app.permission.READ_RECORD_SUMMARIES" android:writePermission="org.sleepwell.app.permission.WRITE_RECORD_SUMMARIES" android:grantUriPermissions="true">
             <grant-uri-permission android:pathPrefix="/shared/v1/records" />
