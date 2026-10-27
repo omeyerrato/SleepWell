@@ -1,0 +1,21 @@
+{
+  "release": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-design-interactions-20261027-795ab556",
+  "id": 425651914,
+  "tag": "v0.1.0-design-interactions-20261027-795ab556",
+  "source": "795ab556f843b1570809e5bf85fd387b9ee63260",
+  "assets": [
+    {
+      "name": "SleepWell-795ab556-arm64.apk",
+      "size": 166676096,
+      "state": "uploaded",
+      "digest": "sha256:980e851bb111386179419d27af8212a419b15f8d2ee7b4495aabc726d61f43aa"
+    },
+    {
+      "name": "SleepWell-795ab556-arm64.apk.sha256",
+      "size": 96,
+      "state": "uploaded",
+      "digest": "sha256:062105992bca81d4d9cbd296802e21bc59e10855d3e92473afffe802c1fc65d4"
+    }
+  ],
+  "tag_commit_verified": true
+}

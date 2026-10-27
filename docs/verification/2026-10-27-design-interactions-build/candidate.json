@@ -1,0 +1,124 @@
+{
+  "source": "795ab556f843b1570809e5bf85fd387b9ee63260",
+  "build": "assembleDebug passed in 4m 19s",
+  "verification_scope": "Five bounded API36 emulator journeys, seven methods,47 individually inspected original PNGs. Full48dp large-text targets required. Not full36-screen, physical-arm64/output/haptic/overnight/provider acceptance. No unit-test batch or broad lint campaign.",
+  "database_schema": 17,
+  "backup_format": 13,
+  "phone_installed": false,
+  "artifacts": {
+    "debug": {
+      "source": "795ab556f843b1570809e5bf85fd387b9ee63260",
+      "sha256": "980e851bb111386179419d27af8212a419b15f8d2ee7b4495aabc726d61f43aa",
+      "path": "SleepWell-795ab556-arm64.apk",
+      "size": 166676096
+    }
+  },
+  "abi": "arm64-v8a",
+  "build_command": ":app:assembleDebug -PsleepwellAbi=arm64-v8a --max-workers=2",
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "private_automation_schema": 2,
+  "recorded_result_schema": 1,
+  "native_scopes": [
+    {
+      "scope": "report-flow",
+      "run": 40505624465,
+      "head": "f1f839ce5da8c40f095b435744607864c0b6d7f1",
+      "methods": 1,
+      "frames": 11,
+      "evidence": "docs/verification/2026-10-27-report-spacing",
+      "images": {
+        "report-reference-chart-gap.png": "c45b886c5a54929651929fb806960a5b66ccc4b41a154ceb8251b6f36e2572e5",
+        "report-reference-editor.png": "29891f36592620c5921bbe84689d6ab0780eb35b08849537ab556a3815226786",
+        "report-reference-history.png": "860bb45660f9ee772e5cb281aa98a5f3dbae13c4d9ed75eb5bb1dd2f1c7015f5",
+        "report-reference-month.png": "a119f049db3054be8f0d5b26b8d53d1fe656858201902f38b82a261931815f8f",
+        "report-reference-night.png": "8d8c03becbdc0e7ba79d8fcd1c787e9127595fccdae63856fa4d115e8f3f7007",
+        "report-reference-reopened.png": "5b3fa2a900ea5e345aec7c7a477b263161163b1414111794b442fed9bab301a9",
+        "report-reference-tags-notes.png": "9bdb05ae1cf867df90def2468e906f8ce8c32c0521e083ff8ce7ae5c120859dd",
+        "report-reference-week-calendar.png": "53f34a509aaf848e6ad427c2b580726adac532e2694a1e94da71363d3698e78e",
+        "report-reference-week-selected.png": "ea86b05ed620260873c3ce53e4774e7b462d6a2504efb6b3f862d113f3b72918",
+        "report-reference-week.png": "d61073c5dc0ec24afef833c5d7c1fb2d116fe74c8dcda15d46fa08ca5d799334",
+        "report-reference-year.png": "2d3156c7c73177309022af00bc2f61737c5c5ac360cd43c10bf26933ffa9957c"
+      }
+    },
+    {
+      "scope": "event-library",
+      "run": 40505530587,
+      "head": "f1f839ce5da8c40f095b435744607864c0b6d7f1",
+      "methods": 1,
+      "frames": 9,
+      "evidence": "docs/verification/2026-10-27-sound-goal-reference-f1f839ce/event-library",
+      "images": {
+        "library-analysis-details-recreated.png": "87695f77bafda7157089e4ab1d29e3e1993f054685372832b4a98840aec1df6a",
+        "library-analysis-details.png": "87695f77bafda7157089e4ab1d29e3e1993f054685372832b4a98840aec1df6a",
+        "library-favorite-recreated.png": "51bba2561ce7af6ea3b4c39725386c9497f057d3032084ae0f0fdca59ed10750",
+        "library-options-recreated.png": "4021fb0283a2d89c7c541f18d327b0c126e865d01e8882886ab38e3b9fc0a77a",
+        "library-options.png": "4021fb0283a2d89c7c541f18d327b0c126e865d01e8882886ab38e3b9fc0a77a",
+        "library-playback.png": "a1d58f4ff2d0b894cda7ec67c4664e758917b320284a92b46952b61c0399697f",
+        "library-recording-deleted.png": "6f2818fb56e990a31b543b7f18c5c3113d104ccb3849640d44dce36e72a8e13b",
+        "library-recordings.png": "428d2edf860d7a7d9891cea48ec87de463f28872ec081e9ff16d0b0ba2358abf",
+        "library-speech.png": "66cf8ef49aed62de1293d4d13e129a3af9783ea720ade149a62ae84c8ec3768a"
+      }
+    },
+    {
+      "scope": "goal-plan",
+      "run": 40517758162,
+      "head": "795ab556f843b1570809e5bf85fd387b9ee63260",
+      "methods": 1,
+      "frames": 14,
+      "evidence": "docs/verification/2026-10-27-sleep-plan-options-795ab556",
+      "images": {
+        "goal-bank-details.png": "1b93f09d0e26bc97ae73b88abb0344ac3161ee8d7afdc317d206597d95cbccdb",
+        "goal-bank.png": "07b6d9867494c578d9783101c1a5e1a99ea016225093a48b5cf6390624082c1d",
+        "goal-create.png": "b7ab616f7b6e81dab967694e5b062d7c8ea64f0c406a5082e0ee07f2f1a543a9",
+        "goal-empty-bank.png": "3957dce0c428abdb239648eceae2a3eab7fa74349bac21f0d30d7b3c16439694",
+        "goal-options-recreated.png": "99026203f0328e0006afbb85d7a9554fb02e207a764c7d18e4ef4f543baebc7f",
+        "goal-options-updated.png": "d9431c92648a6e15da3ab96e4ba471934e9dda3fd27fa7ecee79903897bd882b",
+        "goal-options-winddown-recreated.png": "d017a5fa6be0c64cde3a98c3640c094616f70b1112fedfea00f5944ec55f8a06",
+        "goal-options.png": "99026203f0328e0006afbb85d7a9554fb02e207a764c7d18e4ef4f543baebc7f",
+        "goal-plan.png": "cdad7e9ef4d01c946ee92d067aef98656b98ebea6d94a117ee43ab1432df59d7",
+        "goal-reopened-bank.png": "07b6d9867494c578d9783101c1a5e1a99ea016225093a48b5cf6390624082c1d",
+        "goal-saved-plan.png": "622a80de63488ceb3be17b9437787656bbbc517b337ee150d533be382644f2ee",
+        "goal-stopped.png": "5d5feda472f133ca3c8c91eefb60e5ac5a014db80aab9c7b9f0407eead102c18",
+        "goal-tonight.png": "a773ec2f254ee29e290f8740853aa9e468db1b01c550c50fea786fd5fbd1cf49",
+        "goal-trends.png": "956374ac45622f27ed25902c6bfd30d3e0a01f7d1b172ae60e340ea0c3af64bb"
+      }
+    },
+    {
+      "scope": "interaction-security",
+      "run": 40517817995,
+      "head": "795ab556f843b1570809e5bf85fd387b9ee63260",
+      "methods": 3,
+      "frames": 3,
+      "evidence": "docs/verification/2026-10-27-interaction-security-ci40517817995",
+      "images": {
+        "calendar-rules-permission-granted-draft.png": "f3d9e8c2fdd9a1f2499159ad743721eec247595344c4b03e6e513c6223a8f16b",
+        "calendar-rules-permission-revoked-draft.png": "54a25e760e2ba5cdc86b8ab02a76a1b16c226dd965962d8305472df8807c891b",
+        "calendar-rules-permission-settings.png": "495ca295aa17680d2843239942a112adaded9964d201b94c7f4e1f4b554a8710"
+      }
+    },
+    {
+      "scope": "appearance",
+      "run": 40527204264,
+      "head": "666b20c5490f5a6e9a5cd4429a3f02be0e3d6f27",
+      "methods": 1,
+      "frames": 10,
+      "evidence": "docs/verification/2026-10-27-appearance-layout",
+      "images": {
+        "appearance-automatic.png": "da0aa45bd87b5e07f3bc820d967d58642bb8fadb673aad797857765be3970a89",
+        "appearance-large-contrast-tonight-action.png": "024d3e99619c8a4642d37eb5c52d017c6f3c955b2461b4975f4d8ee9bd1fa455",
+        "appearance-large-contrast-tonight.png": "1c12c7987f33454721f4872e1523dfdcc3956e9434a3247938ab253177fbf97c",
+        "appearance-large-contrast.png": "2824fd0d2fa98283d853ad120eac70d9abe4a42c1f6b2b5135de493226e69626",
+        "appearance-selected-0.png": "979bf5d61b04411f48875e90b6172303d9893a5907e34a538f99965f8b7ecf04",
+        "appearance-selected-1.png": "3893b9bdbc64de8c1e27a70fec06a0d18628b87ffb59fd09a3f837a5c0c37c0b",
+        "appearance-selected-2.png": "d650a41e03d0f019ccd8e288efd19219096df6db1221fef02f5c03b61a6a71f9",
+        "appearance-tonight-0.png": "537b7691a3d38c5496291de71245eb8a193591578e6d4b6a9773e80794364af3",
+        "appearance-tonight-1.png": "876dd3f32c71df9756a0324414a1abd324d137e849e83051a3f5b7c96a1e4d85",
+        "appearance-tonight-2.png": "6c797bf90ef3e910f7f9c2a66d981f1f0cf8b245c90570609c3524fcd46ef278"
+      }
+    }
+  ],
+  "release_tag": "v0.1.0-design-interactions-20261027-795ab556",
+  "release_url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-design-interactions-20261027-795ab556",
+  "distribution_verified": true,
+  "release_id": 425651914
+}

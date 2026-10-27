@@ -12,16 +12,16 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-Latest published and installed **32f064e2** adds Tonight arc/feedback/help
-restoration and the organized challenge routine. arm64 APK166,649,432bytes,
-original signer, build PASS11m19s; exact tag and both uploaded hashes verified.
-[Release/evidence](docs/verification/2026-10-27-tonight-report-routine/README.md).
+Latest published **795ab556** corrects Report, Sound events, Sleep plan options,
+Appearance and the scoped interaction/security issues. The arm64 build passed in
+4m19s; its remote tag, original signer and both uploaded hashes are verified.
+Five focused native journeys pass seven methods with 47 individually inspected
+Android captures. [Release and exact scope](docs/verification/2026-10-27-design-interactions-build/README.md).
 
-Tonight45.786s/9 and challenge48.33s/6 inspected captures pass their named
-actions/restoration/persistence. **New Report calendar verification failed and
-remains incomplete.** These passes do not accept all36 designs or physical outputs.
-Phone update installed with original database rows, preferences and user files
-preserved; no app launch or physical feature/output test ran.
+The phone remains **32f064e2**, with the original records, preferences and user
+files preserved by its earlier update. No further phone action or physical
+output test ran. Report calendar/edit verification now passes; all 36 designs
+and the broader interaction/security review remain open.
 
 ## Working capabilities
 

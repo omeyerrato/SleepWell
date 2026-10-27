@@ -5,16 +5,25 @@ history. The goal remains the full applicable phone functionality and **all 36
 supplied design screens across 12 boards**. Existing code, a successful build or a
 bounded historical pass does not establish that whole goal is complete.
 
-Latest published and installed **32f064e2** adds Tonight arc/feedback/help
-restoration and the organized challenge routine. arm64 APK166,649,432bytes,
-original signer, build PASS11m19s; exact tag and both uploaded hashes verified.
-[Release/evidence](verification/2026-10-27-tonight-report-routine/README.md).
+Latest published **795ab556** corrects Report, Sound events, Sleep plan options,
+Appearance and the scoped interaction/security issues. The arm64 build passed in
+4m19s; its remote tag, original signer and both uploaded hashes are verified.
+Five focused native journeys pass seven methods with 47 individually inspected
+Android captures. [Release and exact scope](verification/2026-10-27-design-interactions-build/README.md).
 
-Tonight45.786s/9 and challenge48.33s/6 inspected captures pass their named
-actions/restoration/persistence. **New Report calendar verification failed and
-remains incomplete.** These passes do not accept all36 designs or physical outputs.
-Phone update installed with original database rows, preferences and user files
-preserved; no app launch or physical feature/output test ran.
+The phone remains **32f064e2**, with the original records, preferences and user
+files preserved by its earlier update. No further phone action or physical
+output test ran. Report calendar/edit verification now passes; all 36 designs
+and the broader interaction/security review remain open.
+
+## Current top priorities
+
+- [ ] Match all36 reference screens. Sound events, Report spacing and Sleep goals have passing current-source native screenshots/actions; Appearance fits its controls, saves all three themes and passes full large-text action reach. [Screen-by-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
+- [x] Complete Report calendar/edit verification: source514a5800, CI40477887525,64.406s; all11 original screenshots inspected. Real date changes, selected-day chart, notes/tags/awake edits, Save/reopen and Back-discard pass. This is functional closure, not all36 design acceptance. [Evidence](verification/2026-10-27-report-calendar-complete/README.md).
+- [ ] Remaining interaction bugs and security review. Cancelled shortcut navigation, obscured authorization gestures and calendar-permission recovery now pass their three-method native scope at795ab556 (CI40517817995). All23 remaining exported components have a documented static review; broader interaction/runtime acceptance remains open. [Issue status](INTERACTION-SECURITY-REVIEW.md).
+
+The installed phone remains32f064e2; it predates the passing Report fix and these new source changes. No further phone action is included in this status update.
+
 
 ## Current user priorities
 
@@ -35,11 +44,11 @@ unverified. [Scoped evidence](verification/2026-10-26-settings-organization/READ
 | --- | --- |
 | Installed phone build | **32f064e2**, authorized streamed update; checksum/original signer match. Original schema17 rows, preference values and user files preserved. Only new empty access-policy files and Android profiling cache changed. |
 | Phone availability | Connected for that authorized update only. No app launch, suspension change or output/capture/provider runtime action. |
-| Published candidate | **32f064e2 arm64**, assembleDebug passed in11m19s, original signer, exact tag and both uploaded hashes verified; not installed. Sleep schema17/backup13/private automation2/result database1. |
+| Published candidate | **795ab556 arm64**, assembleDebug passed in4m19s; original signer, exact tag and both uploaded hashes verified. Not installed. Sleep schema17/backup13/private automation2/result1. |
 | New feature evidence | Organization 33.114s/14 inspected captures, challenge ordering 40.237s/6 and recording analysis 40.27s/5. Prior Report/menu/Travel evidence remains separate. Per-alarm sensor accuracy, physical output, all 36 screens and overnight acceptance remain open. |
 | Current work policy | Features first; no new unit-test batches or broad campaigns. Essential builds, preservation and bounded changed-flow checks remain applicable. Dedicated reviewer stays stopped. |
 
-[Latest published release and scoped evidence](verification/2026-10-27-alarm-search-audio/README.md).
+[Latest published release and scoped evidence](verification/2026-10-27-design-interactions-build/README.md).
 [Prior model/radio/rhythm scope](verification/2026-10-26-radio-rhythm-recognition/README.md).
 
 [Phone update evidence](verification/2026-10-26-phone-2cbfe043/README.md) is separate
