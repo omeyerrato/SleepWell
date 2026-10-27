@@ -8,7 +8,7 @@
   "backup_format": 14,
   "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
   "phone_installed": false,
-  "distribution_verified": false,
+  "distribution_verified": true,
   "release_tag": "v0.1.1-icon-haptics-20261027-f641cb52",
   "release_url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.1-icon-haptics-20261027-f641cb52",
   "baseline": "170b0e44785c52429f7b4c089e234ca9d18ce102",
@@ -44,5 +44,6 @@
     "versionName": "0.1.1",
     "versionCode": 2,
     "installed": false
-  }
+  },
+  "release_id": 425969440
 }

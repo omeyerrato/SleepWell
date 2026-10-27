@@ -12,7 +12,9 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-Latest published **170b0e44** includes real backup tone/volume, corrected rails,
+Latest published **0.1.1 / f641cb52** adds the new adaptive icon and crisper tap feedback to the verified170b baseline. It is built, signed and published; USB disconnected before this hotfix could be installed. The phone currently has170b with original user data preserved.
+
+Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped
 Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows

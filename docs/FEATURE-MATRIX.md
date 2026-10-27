@@ -1,10 +1,12 @@
 # Phone feature matrix
 
+Latest published **0.1.1 / f641cb52** adds the new adaptive icon and crisper tap feedback to the verified170b baseline. It is built, signed and published; USB disconnected before this hotfix could be installed. The phone currently has170b with original user data preserved.
+
 Updated 2026-10-27 against the supplied brief, all 12 previously inspected boards,
 SCREEN-MAP.md, current code and official Sleep as Android manual. Screen numbers
 are intended reference destinations, not a claim of completed screens.
 
-Latest published **170b0e44** includes real backup tone/volume, corrected rails,
+Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped
 Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows

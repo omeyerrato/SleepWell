@@ -1,5 +1,7 @@
 # Current requested priorities
 
+Latest published **0.1.1 / f641cb52** adds the new adaptive icon and crisper tap feedback to the verified170b baseline. It is built, signed and published; USB disconnected before this hotfix could be installed. The phone currently has170b with original user data preserved.
+
 ## Current top priorities
 
 - [ ] Match all36 reference screens. Current Report, Tone/Gentle, Snooze, QR, sleep plan, rhythm/Nap, Settings root and Appearance have bounded comparison/action evidence. Remaining screens, variants and full reference fidelity remain open. [Screen-by-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).

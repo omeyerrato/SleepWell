@@ -1,0 +1,20 @@
+{
+  "release": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.1-icon-haptics-20261027-f641cb52",
+  "id": 425969440,
+  "source": "f641cb5298748fc81012d723364eb5b9d02951be",
+  "tag_commit_verified": true,
+  "assets": [
+    {
+      "name": "SleepWell-0.1.1-f641cb52-arm64.apk",
+      "size": 161979485,
+      "state": "uploaded",
+      "digest": "sha256:d646a6f42cff152c944d195f81652679531c3553b4a1175d5ca3983dcba39332"
+    },
+    {
+      "name": "SleepWell-0.1.1-f641cb52-arm64.apk.sha256",
+      "size": 102,
+      "state": "uploaded",
+      "digest": "sha256:d7d20b8a21ee2c31891021d57b725c69a68167a7ea57d3c0a40d44189717cf60"
+    }
+  ]
+}

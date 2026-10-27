@@ -7,3 +7,5 @@ The old green launcher tile is replaced by a native adaptive plum/lavender dawn-
 Tap/selection feedback requests VIRTUAL_KEY (Android’s CLICK preset) instead of softer TICK/TEXTURE_TICK mappings. Saved OFF, Android settings, foreground/quiet/accessibility guards, user-only switch provenance and80ms rate limit remain. Physical strength is device-tuned and has not been measured. No direct vibrator or settings override is introduced.
 
 All model/audio assets and native libraries remain byte-identical to170b. Only two text assets differ by line endings; the license text and JSON provenance are equivalent. No resource is removed. SQLite17 is unchanged. This small hotfix has not yet been installed because the phone disconnected after the successful170b update; no physical effect was tested.
+
+[Published APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.1-icon-haptics-20261027-f641cb52). Both server asset hashes/sizes and exact source tag are verified: [distribution](distribution.json), [original signer](signer.txt). Phone installation remains pending USB reconnection; installed170b is preserved separately.

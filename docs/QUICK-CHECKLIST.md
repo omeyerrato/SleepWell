@@ -1,5 +1,7 @@
 # SleepWell quick checklist
 
+Latest published **0.1.1 / f641cb52** adds the new adaptive icon and crisper tap feedback to the verified170b baseline. It is built, signed and published; USB disconnected before this hotfix could be installed. The phone currently has170b with original user data preserved.
+
 Checked means implemented in source/build, not fully verified on the phone.
 Full supporting evidence stays in FEATURE-CHECKLIST.md and FEATURE-MATRIX.md.
 
@@ -17,7 +19,7 @@ The installed phone is170b0e44; its checksum and data preservation are verified.
 - [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.
 - [x] First Settings/alarm-menu organization pass: eight groups, search and parent-aware Back; every feature retained.
 
-Latest published **170b0e44** includes real backup tone/volume, corrected rails,
+Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped
 Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
