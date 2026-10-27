@@ -1,0 +1,25 @@
+{
+  "scope": "interaction-security",
+  "full_app_review": false,
+  "expected_classes": 2,
+  "expected_methods": 3,
+  "class_results": [
+    {
+      "class": "InteractionSecurityNativeTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 3,
+  "failures": [
+    "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft",
+    "calendar-rules-permission-settings.png",
+    "calendar-rules-permission-granted-draft.png",
+    "calendar-rules-permission-revoked-draft.png"
+  ]
+}
