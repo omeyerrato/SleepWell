@@ -1,0 +1,42 @@
+{
+  "scope": "room-bedtime-live",
+  "full_app_review": false,
+  "expected_classes": 4,
+  "expected_methods": 4,
+  "class_results": [
+    {
+      "class": "OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "SonarNightFlowTest#visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 54,
+  "failures": [
+    "GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen",
+    "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware",
+    "guard-wind-down-paused.png",
+    "room-conditions-measuring.png",
+    "room-conditions-recreated.png",
+    "room-conditions-dimming-saved.png",
+    "room-conditions-reopened.png",
+    "room-conditions-microphone-error.png",
+    "room-conditions-unavailable.png",
+    "room-conditions-cleanup-blocked.png",
+    "room-conditions-cleaned.png"
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "scope": "Named method and rendering/coordinator source blobs only; not APK, full-app or physical equivalence",
+  "run_id": 40597518409,
+  "run_source": "e6b3b8604b70d78ecfd746120183fb2793ca11a5",
+  "archive_base": "e6b3b8604b70d78ecfd746120183fb2793ca11a5",
+  "root_committed_head_at_archive": "6e283df14d0574177bce9bc86458e419f66bfa65",
+  "all_archive_base_sources_match_run": true,
+  "all_root_committed_sources_match_run": true,
+  "all_root_working_sources_match_run": true,
+  "sources": [
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/OrganizedSettingsJourneyTest.java",
+      "run_git_blob": "256d4e411e05c0c4db288cb843af843e0680c036",
+      "sha256_committed_bytes": "c7e62e823ce0f9e480b71bf6c0eeb7e24303fa1604cb31fd17a68bbc94e837fe",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SonarNightFlowTest.java",
+      "run_git_blob": "e2c65dd696e6bb23b995aa01401138d81500ac79",
+      "sha256_committed_bytes": "64d9ce9c459a27342b2c532a7d6b0bb23ee275b9d6642504ea2b39867ff3bf87",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SonarNightStorageTest.java",
+      "run_git_blob": "3aa8fba16f8e55bbd92c09a68de4e2f771d1301d",
+      "sha256_committed_bytes": "a7fe4b6c4b54340b88924269c5ca290f21fccd2a37b978a8bff949f75212fa03",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingActivity.java",
+      "run_git_blob": "cab5c7a526eb5fdb60610edf4624c0efcdd44500",
+      "sha256_committed_bytes": "a181dd8d3d6edf67c3d44da7cdc92b2131b398a696ccd064ebae1b6ae4826025",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java",
+      "run_git_blob": "6bb008f6c14ef24f2f6c8362418f7afddba5a176",
+      "sha256_committed_bytes": "ff32a6d434804de2b3cd7b8b11a2b08dbc03a6b2797ef58602266c1a7fc9c107",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecurringTrackingActivity.java",
+      "run_git_blob": "0f529df8d9124cacbf1e2c9b56e3b528fc7cc0e4",
+      "sha256_committed_bytes": "0c76e779c0e6ec7eec599fbca626df222f6b1f998d5767aa2593cbf7f2c29d47",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingOptionsUi.java",
+      "run_git_blob": "3a9a92d1b783ba9f68e6e4cb93897b1baa50d345",
+      "sha256_committed_bytes": "4ff7daabb493eeb0d9e168928a8b88d15724c69ba032ee3de085154c1ee8350f",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MotionSensorActivity.java",
+      "run_git_blob": "863efcdbb83cc6c91d60c482f8f35874f56c9470",
+      "sha256_committed_bytes": "f91e9728b70f62a5d948cbaf79de8fe951aa48996b0f1ace3182ee35cd4877f5",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundSensitivityActivity.java",
+      "run_git_blob": "b02c10a52feb4efa3323890b47186c08b19abe5d",
+      "sha256_committed_bytes": "05a06b8635396aa301c8f65e21291adeeb23265b48cceee950315c2bcb878019",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundLibrarySettingsActivity.java",
+      "run_git_blob": "8f2aa2e59fce9ceb1b898d8f34ef87b2fefcb230",
+      "sha256_committed_bytes": "ae76077822b9cf4ab612a0209a0dde108b21820306aafd50de6a3b3052759093",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SnoringCuesActivity.java",
+      "run_git_blob": "52a83481db3ec57a82286f7c0939ca264643ecbb",
+      "sha256_committed_bytes": "0b5f7c418cdff6f19f75c7793acd3f452177ffa4d365218a696371474cfb9cf7",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepSoundsActivity.java",
+      "run_git_blob": "76134bff041d17f716bfcd41603c27159864f8e1",
+      "sha256_committed_bytes": "eb072c21ac9eb09303c1ed8104acb978c3bd0233c073c60eb35f215e0e9fd0aa",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundSettingsUi.java",
+      "run_git_blob": "ae90ff4deb34802f5d8a31e60390c90739e19506",
+      "sha256_committed_bytes": "79da42451bd3df20ed938dcb1a6ea88a4b9b3b215ecf422b436d362c92e2ba27",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarSignalChart.java",
+      "run_git_blob": "c705721e7ea7910d731a9540bfbbf73114ad9ed2",
+      "sha256_committed_bytes": "17ccc6238a6d85dd972a4d88d110aff42ffcbe0315ed326b41c23153af5d0bee",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarNight.java",
+      "run_git_blob": "76b62643dfab9157d0d4f5a737e68f5b407e9d66",
+      "sha256_committed_bytes": "dc0f6ced6cc196e60b3af056eec8c159edc351ab402e01b4373a6c779d35ee74",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingService.java",
+      "run_git_blob": "8a527dd86ccbf5c93ca457515e57244fdff6bc95",
+      "sha256_committed_bytes": "e0348076351071a061092f071b2267022472b29d6f05a9d34f004dd567577335",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "run_git_blob": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "sha256_committed_bytes": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "run_git_blob": "1fe6571267dc3047eaf53ab4caa426ee91f244cb",
+      "sha256_committed_bytes": "178ec7feaaf24d0ee0994b6b74da6c670c6f5a924db7772e30865fc6cd4f9758",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    }
+  ],
+  "compared_references": [
+    {
+      "path": "design-concepts/2026-10-22-phone-app/06-tracking.png",
+      "sha256": "1dc8d2d3589777f1353d319f9e8767a0760b7878af61d991f5e762af25ef96ee",
+      "bytes": 1532576
+    },
+    {
+      "path": "design-concepts/2026-10-22-phone-app/10-phone-sensors.png",
+      "sha256": "8311f72d98b11cf3dfa92cd6d7977554fb4bd564bf30cd81facd5f26453e8b51",
+      "bytes": 1590323
+    }
+  ]
+}
