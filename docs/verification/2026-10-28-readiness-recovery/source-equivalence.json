@@ -1,0 +1,120 @@
+{
+  "scope": "Only the listed source blobs and compared reference files; no APK, unlisted source, security or physical-device equivalence claim",
+  "run_id": 40587737701,
+  "run_source": "9f22f2b3f83d9b22625e2fb6e8bd3f40591a64e3",
+  "archive_base": "accd9b3742ec23441f8e3ad9a8d2993fbd51e8bc",
+  "root_committed_head_at_archive": "accd9b3742ec23441f8e3ad9a8d2993fbd51e8bc",
+  "all_listed_archive_base_sources_match_run": true,
+  "all_listed_root_committed_sources_match_run": true,
+  "all_listed_root_working_sources_match_run": true,
+  "sources": [
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/AlarmProtectionFlowTest.java",
+      "run_git_blob": "af470183851892f94863715abfdbb5c370fa2610",
+      "sha256_committed_bytes": "cc5c936a36ef98701b211b5ac209618aa49a5e6d783f1a41ed0127a58470f57a",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmReadinessUi.java",
+      "run_git_blob": "878aebd7a4d560a1fcaa3da203c76748152a66e9",
+      "sha256_committed_bytes": "0318a99848da4528e69eb13b3c4cc9c80c104be70bd6763ebd1c987b3f0306dd",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmProtectionActivity.java",
+      "run_git_blob": "3a4c9fb6edba538684f32a7f1907c202dcd94e61",
+      "sha256_committed_bytes": "76176210489824f0d7048a43b68c83d61c79a5803a1518a0cb8ee861c40ed063",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmProtections.java",
+      "run_git_blob": "5e382f2dbdbcab994dab7c75d1d4c07ce0d163c1",
+      "sha256_committed_bytes": "0f4c22d1628a472bf458d0a5ee66a872c79c9fe4c950d227837a7de56b175e4b",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "run_git_blob": "6c08ebcd74c492fd119a8168217ffb45626e0737",
+      "sha256_committed_bytes": "f5102132a94c608b093535e81745b7a548a78c96b5a4724d3d94caf3964a9619",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java",
+      "run_git_blob": "64922e08594f963161aa0893b42a3c56e18b9ddf",
+      "sha256_committed_bytes": "cace53e758a61e7aeb0c4f19027fee16cf5bfc677f0bfdc00a9cfcfa855ed1b5",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "run_git_blob": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "sha256_committed_bytes": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+      "run_git_blob": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+      "sha256_committed_bytes": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Scheduler.java",
+      "run_git_blob": "4d0adb9983712f8600048b16a130ae9dbcb644ec",
+      "sha256_committed_bytes": "df86e686164f160faca4d40b30c1cd4ec83e5f6ff5cd9d9cd0a8ee8f5c2056b9",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Records.java",
+      "run_git_blob": "25368746615d6dc554f0afa239b1586cc20f8bfc",
+      "sha256_committed_bytes": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/HomeSurfaces.java",
+      "run_git_blob": "a814ea6d83487b01a2d92fa0a5d8ff5cc3c75bee",
+      "sha256_committed_bytes": "cc2f68d53ee401b012ea819a5a0bffc9c96c53f6a626768e443c119738b144bf",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "run_git_blob": "383446803af37d4b80ea59686be27ada0353c9b7",
+      "sha256_committed_bytes": "2a6c312bb9dbf85f586f216d18baa51060846155cc8a797cf252f2dac01887ec",
+      "archive_base_matches_run": true,
+      "root_committed_matches_run": true,
+      "root_working_tree_matches_run": true
+    }
+  ],
+  "compared_references": [
+    {
+      "path": "design-concepts/2026-10-22-phone-app/02-alarms.png",
+      "sha256": "d784871aae9b935fd8b9f74f1e305f73b84fd93df0ad4fac9c58243fc6ca0b11",
+      "bytes": 1561896
+    },
+    {
+      "path": "design-concepts/2026-10-22-phone-app/12-privacy-and-appearance.png",
+      "sha256": "243a172cba04cf0275f8dc76eea16440e24f3103b4783c088eed65264fa56e70",
+      "bytes": 1589725
+    }
+  ]
+}
