@@ -30,6 +30,7 @@ on:
           - readiness-recovery
           - sensing-reference
           - room-bedtime-live
+          - room-bedtime-repair
           - sensing-travel
           - travel-ui
           - sonar-night
