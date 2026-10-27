@@ -18,6 +18,9 @@ on:
           - challenge-routine
           - tonight
           - appearance
+          - event-library
+          - goal-plan
+          - interaction-security
           - sensing-travel
           - travel-ui
           - sonar-night

@@ -19,7 +19,7 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--serial", required=True, choices=("emulator-5554",))
-parser.add_argument("--scope", choices=("full", "tone-wake", "report", "report-flow", "organization", "organized-settings", "recorded-analysis", "challenge-routine", "tonight", "appearance", "sensing-travel", "travel-ui", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features", "feature-increment", "nap-features"), default="full", help="A named narrow scope is never a full app acceptance run")
+parser.add_argument("--scope", choices=("full", "tone-wake", "report", "report-flow", "organization", "organized-settings", "recorded-analysis", "challenge-routine", "tonight", "appearance", "event-library", "goal-plan", "interaction-security", "sensing-travel", "travel-ui", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features", "feature-increment", "nap-features"), default="full", help="A named narrow scope is never a full app acceptance run")
 parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
 parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
 args = parser.parse_args()
@@ -32,6 +32,9 @@ FOCUSED_TESTS = ("AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest
 ORGANIZED_SETTINGS_FRAMES = ["organized-settings-" + name + ".png" for name in ("sensitivity-categories", "sensitivity-duration", "sensitivity-reopened", "retention-details", "snoring-options", "automatic-conditions", "recurring-conditions", "sounds-sources", "sounds-playback", "timer-recreated", "fade-reopened")]
 RECORDED_ANALYSIS_FRAMES = ["recorded-analysis-" + name + ".png" for name in ("prepared", "result", "details", "import-prepared", "import-result")]
 ROUTINE_FRAMES = ["routine-" + name + ".png" for name in ("legacy", "ordered", "reordered", "recreated", "removed", "reopened")]
+EVENT_LIBRARY_FRAMES = ["library-"+name+".png" for name in ("recordings","playback","favorite-recreated","speech","recording-deleted","options","options-recreated","analysis-details","analysis-details-recreated")]
+GOAL_PLAN_FRAMES = ['goal-plan.png', 'goal-tonight.png', 'goal-saved-plan.png', 'goal-empty-bank.png', 'goal-create.png', 'goal-bank.png', 'goal-reopened-bank.png', 'goal-bank-details.png', 'goal-stopped.png', 'goal-trends.png']
+INTERACTION_SECURITY_FRAMES = ["calendar-rules-permission-"+name+".png" for name in ("settings","granted-draft","revoked-draft")]
 APPEARANCE_FRAMES = ["appearance-"+name+".png" for name in ("automatic","selected-0","selected-1","selected-2","tonight-0","tonight-1","tonight-2","large-contrast-tonight","large-contrast-tonight-action","large-contrast")]
 TONIGHT_FRAMES = ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 SONAR_REPORT_FRAMES = ["sonar-report-" + name + ".png" for name in ("night", "signals", "zero", "reopened", "legacy-unknown", "analysis-error")]
@@ -256,6 +259,12 @@ elif args.scope == "tonight":
     tests = ["NightArcFlowTest"]
 elif args.scope == "appearance":
     tests = ["AppearanceFlowTest"]
+elif args.scope == "event-library":
+    tests = ["SoundLibraryUiTest#recordedIntervalsFavoritesAndDeletionPersistWithFakePlaybackOnly"]
+elif args.scope == "goal-plan":
+    tests = ["GoalFlowTest"]
+elif args.scope == "interaction-security":
+    tests = ["InteractionSecurityNativeTest", "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft"]
 elif args.scope == "sensing-travel":
     tests = list(SENSING_TESTS)
 elif args.scope == "travel-ui":
@@ -294,6 +303,7 @@ method_counts.update({"ArmedWaitNativeTest": 3})
 method_counts.update({"SnoozeUntilFlowTest": 2})
 method_counts.update({"RecordAchievementsStorageTest": 2})
 method_counts.update({"PowerNapNativeTest": 3})
+method_counts["InteractionSecurityNativeTest"] = 2
 for test in tests:
     extra = []
     if test == "SoundImportReopenTest":
@@ -343,7 +353,7 @@ if "SonarSharedClassifierStorageTest" in tests:
     except (OSError, KeyError, ValueError, TypeError) as error:
         failures.append("Shared PCM replay evidence incomplete: " + str(error))
 if args.scope != "full":
-    focused_frames = {"appearance": APPEARANCE_FRAMES, "tonight": TONIGHT_FRAMES, "challenge-routine": ROUTINE_FRAMES, "travel-ui": TRAVEL_UI_FRAMES, "recorded-analysis": RECORDED_ANALYSIS_FRAMES, "organized-settings": ORGANIZED_SETTINGS_FRAMES, "organization": ['organization-settings-root.png', 'organization-settings-sleep.png', 'organization-search-flashlight.png', 'organization-feedback-off.png', 'organization-alarm-editor.png', 'organization-alarm-schedule.png', 'organization-alarm-options.png', 'organization-controls-recreated.png', 'organization-alarm-backup.png', 'organization-alarm-reopened.png', 'organization-smart-following.png', 'organization-smart-configured.png', 'organization-smart-reopened.png', 'organization-alarm-search.png'], "report-flow": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap")], "nap-features": NAP_FEATURE_FRAMES, "feature-increment": FEATURE_INCREMENT_FRAMES, "phone-features": PHONE_FEATURE_FRAMES, "sound-categories": CATEGORY_FRAMES, "sound-sensitivity": SENSITIVITY_FRAMES, "sonar-night": NIGHT_FRAMES, "report": REPORT_FRAMES, "sensing-travel": SENSING_FRAMES, "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES}[args.scope]
+    focused_frames = {"event-library": EVENT_LIBRARY_FRAMES, "goal-plan": GOAL_PLAN_FRAMES, "interaction-security": INTERACTION_SECURITY_FRAMES, "appearance": APPEARANCE_FRAMES, "tonight": TONIGHT_FRAMES, "challenge-routine": ROUTINE_FRAMES, "travel-ui": TRAVEL_UI_FRAMES, "recorded-analysis": RECORDED_ANALYSIS_FRAMES, "organized-settings": ORGANIZED_SETTINGS_FRAMES, "organization": ['organization-settings-root.png', 'organization-settings-sleep.png', 'organization-search-flashlight.png', 'organization-feedback-off.png', 'organization-alarm-editor.png', 'organization-alarm-schedule.png', 'organization-alarm-options.png', 'organization-controls-recreated.png', 'organization-alarm-backup.png', 'organization-alarm-reopened.png', 'organization-smart-following.png', 'organization-smart-configured.png', 'organization-smart-reopened.png', 'organization-alarm-search.png'], "report-flow": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap")], "nap-features": NAP_FEATURE_FRAMES, "feature-increment": FEATURE_INCREMENT_FRAMES, "phone-features": PHONE_FEATURE_FRAMES, "sound-categories": CATEGORY_FRAMES, "sound-sensitivity": SENSITIVITY_FRAMES, "sonar-night": NIGHT_FRAMES, "report": REPORT_FRAMES, "sensing-travel": SENSING_FRAMES, "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES}[args.scope]
     failures += [name for name in focused_frames if not (output / name).is_file()]
     summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "failures": failures}
     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
