@@ -1,0 +1,33 @@
+{
+  "id": 40587755991,
+  "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40587755991",
+  "commit": "9f22f2b3f83d9b22625e2fb6e8bd3f40591a64e3",
+  "conclusion": "success",
+  "full_app_review": false,
+  "methods": {
+    "ContactlessSetupFlowTest#explicitRealDspFakePcmQualificationSaveAndReopenNoAutostart": 40.989,
+    "SonarNightFlowTest#visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight": 18.668,
+    "SnoreCueSettingsNativeTest#savedSettingsSurviveRecreationAndControlFakeCueBehavior": 14.855
+  },
+  "original_images_individually_inspected": [
+    "sonar-setup-initial.png",
+    "sonar-setup-ready.png",
+    "sonar-setup-gain-changed.png",
+    "sonar-setup-retested.png",
+    "sonar-setup-reopened.png",
+    "sonar-setup-recreated.png",
+    "sonar-night-setup.png",
+    "sonar-night-measuring.png",
+    "sonar-night-paused.png",
+    "sonar-night-paused-recreated.png",
+    "sonar-night-resumed.png",
+    "sonar-night-missing.png",
+    "sonar-night-stop-confirmation.png",
+    "snore-settings-default.png",
+    "snore-settings-preview.png",
+    "snore-settings-selected.png",
+    "snore-settings-recreated.png",
+    "snore-settings-reopened.png"
+  ],
+  "physical_outputs_tested": false
+}

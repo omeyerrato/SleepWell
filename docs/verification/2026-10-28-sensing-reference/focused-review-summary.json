@@ -1,0 +1,25 @@
+{
+  "scope": "sensing-reference",
+  "full_app_review": false,
+  "expected_classes": 3,
+  "expected_methods": 3,
+  "class_results": [
+    {
+      "class": "ContactlessSetupFlowTest#explicitRealDspFakePcmQualificationSaveAndReopenNoAutostart",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SonarNightFlowTest#visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SnoreCueSettingsNativeTest#savedSettingsSurviveRecreationAndControlFakeCueBehavior",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 18,
+  "failures": []
+}

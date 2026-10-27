@@ -1,0 +1,83 @@
+{
+  "run_source": "9f22f2b3f83d9b22625e2fb6e8bd3f40591a64e3",
+  "archive_root_head": "accd9b3742ec23441f8e3ad9a8d2993fbd51e8bc",
+  "scope": "Listed committed sources only; no whole APK or unlisted source equivalence claim",
+  "listed_committed_files_match": true,
+  "sources": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ContactlessSetupActivity.java",
+      "git_blob": "8be27754e2a70200713ae2b5edc1e83e6c836a8c",
+      "sha256": "42da68774007bc90c49ec027768ce1b1358864102dd27dd2cf5747ff89d4d7f4"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ContactlessSetupUi.java",
+      "git_blob": "94d12dd4e42ed534b13e1431c30b720075254839",
+      "sha256": "4d0ad9a820f3e2fc8bcd3f1c1db11204337dbff7fd350a49e46a131afe3c2c06"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarSignalChart.java",
+      "git_blob": "c705721e7ea7910d731a9540bfbbf73114ad9ed2",
+      "sha256": "17ccc6238a6d85dd972a4d88d110aff42ffcbe0315ed326b41c23153af5d0bee"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingActivity.java",
+      "git_blob": "c3fa201a1bde13099814e3ad42bde17cb163b577",
+      "sha256": "762777983ee21bf331fe742297a15523a25b9d25c01c614d759f2871eefb3a60"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SnoringCuesActivity.java",
+      "git_blob": "52a83481db3ec57a82286f7c0939ca264643ecbb",
+      "sha256": "0b5f7c418cdff6f19f75c7793acd3f452177ffa4d365218a696371474cfb9cf7"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SnoreCuePolicy.java",
+      "git_blob": "ebe83f00c8e0b96e4a78016c4c441995523f96aa",
+      "sha256": "806372840a66bd26abe81dd848becf76370a553356e547b20e2ef00dfb09326f"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SnoreCueOutput.java",
+      "git_blob": "0dc03ab68825f71dbde8fcf891a3004b073f0b23",
+      "sha256": "b4c95b1109c3cb7304087427962392ecbdf417ec933c2afc32ba2fd905db5522"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarNight.java",
+      "git_blob": "76b62643dfab9157d0d4f5a737e68f5b407e9d66",
+      "sha256": "dc0f6ced6cc196e60b3af056eec8c159edc351ab402e01b4373a6c779d35ee74"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarPump.java",
+      "git_blob": "55cebb84e5ea0a8777e7fbf66892fbee6e460bed",
+      "sha256": "4593fb1f1ac04895edb32fe5fa10aa358ec9552ea5b9c19b20e468baf6811a21"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarFrame.java",
+      "git_blob": "1181f472234f900cd904bf28e9ff12348c641242",
+      "sha256": "73624d9af36e09780df5f363a5188517335722bd7a7465bb9904abeeced089b2"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "git_blob": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "sha256": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ContactlessSetupFlowTest.java",
+      "git_blob": "e43ace90aeaecf6141cd51984623e83195ddb0bb",
+      "sha256": "b55b3dc590a1aa520618d1fd22e7e7a6c334cc924abe60b3105ff3579382fde9"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SonarNightFlowTest.java",
+      "git_blob": "c5e0bbcb89d8491a3bbbe855cf20b97aeffffad7",
+      "sha256": "9633851c6c4cec6ad07b303b9f40a47cc1374469fb5bb780f79e6c024cb26c93"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SonarNightStorageTest.java",
+      "git_blob": "3aa8fba16f8e55bbd92c09a68de4e2f771d1301d",
+      "sha256": "a7fe4b6c4b54340b88924269c5ca290f21fccd2a37b978a8bff949f75212fa03"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SnoreCueSettingsNativeTest.java",
+      "git_blob": "c2f7ef307d6bdc0574e38b83c7c83a4e9e7bb4d2",
+      "sha256": "6ddcaf44c22dc35116b64d1b0ddc158a8e6fb66a7fe5f1b7dcf1466890f90c7f"
+    }
+  ]
+}
