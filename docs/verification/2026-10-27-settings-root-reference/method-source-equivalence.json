@@ -1,0 +1,40 @@
+{
+  "source_file": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+  "capture_revision": "eb3a7da884cdea93a23d54f6b2e7beb2fa4b6956",
+  "reviewed_revision": "170b0e44785c52429f7b4c089e234ca9d18ce102",
+  "comparison": "Exact extracted method declaration and body, with CRLF normalized to LF; no other whitespace normalization. This does not compare the whole file.",
+  "methods": [
+    {
+      "method": "settingsHome",
+      "equal": true,
+      "capture_sha256": "19581ca0fabfc6272755a4bacbd4428bcd26460f3199e72d0aafa633448777a8",
+      "reviewed_sha256": "19581ca0fabfc6272755a4bacbd4428bcd26460f3199e72d0aafa633448777a8"
+    },
+    {
+      "method": "settingsRow",
+      "equal": true,
+      "capture_sha256": "469a48f792c8d2925dafa79b187f68740988fb1b3cfb34b439e7aff99ca898a2",
+      "reviewed_sha256": "469a48f792c8d2925dafa79b187f68740988fb1b3cfb34b439e7aff99ca898a2"
+    },
+    {
+      "method": "settingsSearch",
+      "equal": true,
+      "capture_sha256": "8e84a2659322212d09556e81318abd083c4aa2e7f0c1f2c5ee7151f6cef961f8",
+      "reviewed_sha256": "8e84a2659322212d09556e81318abd083c4aa2e7f0c1f2c5ee7151f6cef961f8"
+    },
+    {
+      "method": "openSettingsGroup",
+      "equal": true,
+      "capture_sha256": "c75692b1229131c80a06aa328a20abaa36e5d3e05fc88d134453ff63e606a419",
+      "reviewed_sha256": "c75692b1229131c80a06aa328a20abaa36e5d3e05fc88d134453ff63e606a419"
+    },
+    {
+      "method": "openSettingsPage",
+      "equal": true,
+      "capture_sha256": "8f4bc5eb26f357c6e56bd71c448f5ce8666e1ec8e57bfab8a9b9a4831dcc0e64",
+      "reviewed_sha256": "8f4bc5eb26f357c6e56bd71c448f5ce8666e1ec8e57bfab8a9b9a4831dcc0e64"
+    }
+  ],
+  "design_java_identical": true,
+  "icons_note": "Only settings-outline was added since capture; existing root icon mappings did not change."
+}

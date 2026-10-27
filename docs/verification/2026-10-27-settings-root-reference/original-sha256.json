@@ -1,0 +1,18 @@
+[
+  {
+    "file": "organization-settings-root.png",
+    "sha256": "8ace53365e94b8de3218c994427cf08a20b2d60e391db5252dfff5228fce3c58"
+  },
+  {
+    "file": "SettingsOrganizationFlowTest.txt",
+    "sha256": "d10d9b4255511bcd8368de9025d71d327a5a94b92bdde36ed19da4d143b7f51f"
+  },
+  {
+    "file": "environment.json",
+    "sha256": "f09c41f4ddec77bff8cb991edbd5e89308cb003fbc5dc3a445d3d049a26aa3e5"
+  },
+  {
+    "file": "focused-review-summary.json",
+    "sha256": "b14fcf3a6c477a5a4185e47852c3d16fe1bd0f8bc524520a40f07a9b1040290c"
+  }
+]
