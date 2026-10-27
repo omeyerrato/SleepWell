@@ -59,6 +59,14 @@ Requires Android SDK 36, JDK 17 or newer (CI uses 21), and Android 11+ for the i
 
 On Windows use `gradlew.bat`. Set `ANDROID_HOME` or an untracked `local.properties` with `sdk.dir=...`. APK output: `app/build/outputs/apk/debug/app-debug.apk`. GitHub Actions publishes a debug APK artifact for each successful build. Debug signing is for development, not a production signing identity. CI defaults to APK builds only during this feature window; deferred unit/lint checks can be explicitly requested through its `full_checks` dispatch input. A CI debug key may differ from an existing local installation; do not uninstall an app containing needed data to bypass a signature mismatch.
 
+For an explicitly selected device architecture, add `-PsleepwellAbi=arm64-v8a`
+to `:app:assembleDebug` (the Galaxy S23 Ultra uses arm64). Other supported values
+are `armeabi-v7a`, `x86` and `x86_64`. Without this option the build remains
+universal. Architecture-specific APKs retain the same app ID and signing setup;
+only the matching native libraries are packaged. Their filenames/release notes
+must identify the architecture. Emulator checks do not verify physical arm64
+hardware behavior.
+
 ## First run
 
 1. Open **Settings → Reliability**. Grant notifications, exact alarms, and full-screen alarm access.

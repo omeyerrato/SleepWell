@@ -1,0 +1,17 @@
+{
+  "commit": "0043aaa469ac714ede1294e8ee3e3337493f2b8c",
+  "emulator": true,
+  "scope": "challenge-routine",
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no native playback output allowlisted; library uses fake playback",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": false,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420",
+  "test_classes": [
+    "ChallengeRoutineFlowTest"
+  ]
+}

@@ -74,7 +74,33 @@ Timer/fade writes retain revision checks rather than overwriting a newer mix.
 Settings search can open these allowlisted detail routes directly, with visible
 location breadcrumbs. Original search destinations retain their order.
 
-Source organization is not visual acceptance. These new frames have not yet been
-captured or exercised on Android; the earlier ten-capture Settings flow does not
-cover them. See [sound settings](SOUND-SETTINGS-ORGANIZATION.md) and
-[sleep mixer](SLEEP-MIXER-ORGANIZATION.md) for feature-preservation maps.
+The existing organized-settings journey subsequently passed in34.25seconds with
+11 individually inspected native captures, including sound category/duration
+Save/reopen, retention/snoring options, automatic/recurring conditions and mixer
+timer/fade persistence. It does not accept every tracking route or whole board.
+See [bounded evidence](verification/2026-10-27-organized-menus/README.md),
+[sound settings](SOUND-SETTINGS-ORGANIZATION.md) and
+[sleep mixer](SLEEP-MIXER-ORGANIZATION.md).
+
+## Finding settings within one alarm
+
+Edit alarm now has a48dp header Search action. Its empty search browses9 actual
+pages; a query searches42 named settings with their real parent breadcrumbs.
+Results open the existing draft controls without toggling them. Conditional
+restrictions remain visible; Extra loud points to Sound then More, and Alarm
+protection explicitly opens all-alarm options. Searching never writes the alarm.
+Final Save alarm remains the only commit action.
+
+The query, nonzero scroll position and originating search context survive
+recreation and returning from a result. Nested pages retain their natural parent;
+returning from the searched page restores the query. The search input scrolls with
+its page rather than remaining pinned. No saved record or audio is indexed.
+
+The existing organization flow at7781d342, CI40442348795, passes in34.969seconds
+with14 individually inspected Android captures. It verifies search/restoration,
+actual child controls, unchanged draft data before final Save and saved options
+after reopening. Settings search is now in the header; whole initial Home screen
+and Schedule & dates row checks pass without scrolling. An inherited Smart
+wake-up frame exposed low-contrast status icons after its About dialog; that
+separate correction remains under verification. Large fonts, physical haptics,
+all menus and all36-screen fidelity remain open.

@@ -18,6 +18,14 @@ Unreleased **a8842ada** adds optional guarded API scalars for smart-wake window,
 
 ## Implemented
 
+Unreleased source milestones: per-alarm settings search and first-viewport menu
+clearance pass the existing Android journey (34.969s/14 inspected captures);
+actual challenge drag ordering passes40.237s/6 inspected captures, including
+cancel, tap fallback and Save/reopen. [Challenge evidence](verification/2026-10-27-challenge-ordering/README.md).
+A post-dialog status-bar contrast issue and AAC export/import timing correction
+are still being verified. These are not yet in the publishedc6f2fcaa APK or on
+the phone; none completes the nine broad unfinished items below.
+
 - [x] Best-effort prevent-leave and recognized power-menu handling.
 - [x] Extra-loud toggle and optional audio gain.
 - [x] Gentle volume increase and independent sound/vibration delays.
