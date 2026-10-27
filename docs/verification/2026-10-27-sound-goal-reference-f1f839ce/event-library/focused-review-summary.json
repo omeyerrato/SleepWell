@@ -1,0 +1,15 @@
+{
+  "scope": "event-library",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "SoundLibraryUiTest#recordedIntervalsFavoritesAndDeletionPersistWithFakePlaybackOnly",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 9,
+  "failures": []
+}
