@@ -1,11 +1,13 @@
 package org.sleepwell.app;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -267,6 +269,7 @@ public final class OrganizedSettingsJourneyTest {
         SharedPreferences sensitivity = c.getSharedPreferences(names.get(0), 0), mix = c.getSharedPreferences(names.get(1), 0),
                 automatic = c.getSharedPreferences(names.get(2), 0), recurring = c.getSharedPreferences(names.get(3), 0),
                 motion = c.getSharedPreferences(names.get(4), 0), delay = c.getSharedPreferences(names.get(5), 0);
+        boolean[] automaticNotifications = {true};
         Records.Factory oldRecords = Records.factory; SoundSensitivitySettings.Factory oldSensitivity = SoundSensitivitySettings.factory;
         SoundPreferences.Factory oldMix = SoundPreferences.factory; SoundRetentionJob.Factory oldRetention = SoundRetentionJob.factory;
         SnoringCuesActivity.PreviewFactory oldPreview = SnoringCuesActivity.previewFactory;
@@ -317,7 +320,7 @@ public final class OrganizedSettingsJourneyTest {
                     public SharedPreferences preferences(Activity a) { return automatic; }
                     public long schedule(Activity a, AutomaticSleep.Mode mode) { throw new AssertionError("Arming is forbidden"); }
                     public void arm(Activity a, AutomaticSleep.Mode mode, long at, boolean sounds, boolean clips) { throw new AssertionError("Arming is forbidden"); }
-                    public boolean movementAvailable(Activity a) { return true; } public boolean notificationsAllowed(Activity a) { return true; }
+                    public boolean movementAvailable(Activity a) { return true; } public boolean notificationsAllowed(Activity a) { return automaticNotifications[0]; }
                     public boolean microphoneAllowed(Activity a) { throw new AssertionError("Capture admission is forbidden"); }
                 };
                 RecurringTracking.port = new RecurringTracking.Port() {
@@ -358,7 +361,23 @@ public final class OrganizedSettingsJourneyTest {
 
             launch(AutomaticTrackingActivity.class); click("At bedtime"); click("Start conditions"); desc("Wait for charging"); checked("Wait for charging", true);
             recreate(); checked("Wait for charging", true); capture("automatic-conditions", "Done", false); click("Done"); selected("At bedtime", true);
-            click("Start conditions"); checked("Wait for charging", true); back(); require("Automatic tracking"); finish(); assertTrue(automatic.getAll().isEmpty());
+            // Synthetic denied result + existing fake access port only: no Arm tap, OS request or system grant change.
+            java.lang.reflect.Field pending = AutomaticTrackingActivity.class.getDeclaredField("permissionPending"); pending.setAccessible(true);
+            AutomaticTrackingActivity denied = (AutomaticTrackingActivity) activity;
+            i.runOnMainSync(() -> { automaticNotifications[0] = false; try { pending.setBoolean(denied, true); } catch (IllegalAccessException bad) { throw new AssertionError(bad); }
+                denied.onRequestPermissionsResult(91, new String[]{Manifest.permission.POST_NOTIFICATIONS}, new int[]{PackageManager.PERMISSION_DENIED}); });
+            require("Open app settings"); View recovery = activity.getWindow().getDecorView(); expose(recovery, "Open app settings", false); frame(recovery);
+            i.runOnMainSync(() -> measured(recovery, "Open app settings", false));
+            recreate(); require("Open app settings"); View rebuiltRecovery = activity.getWindow().getDecorView(); expose(rebuiltRecovery, "Open app settings", false); frame(rebuiltRecovery);
+            i.runOnMainSync(() -> { measured(rebuiltRecovery, "Open app settings", false); int count = 0; List<View> views = new ArrayList<>(); views.add(rebuiltRecovery);
+                for (int n = 0; n < views.size(); n++) { View view = views.get(n); if (view instanceof TextView text && "Open app settings".contentEquals(text.getText())) count++;
+                    if (view instanceof ViewGroup group) for (int child = 0; child < group.getChildCount(); child++) views.add(group.getChildAt(child)); }
+                assertEquals("One rebuilt recovery action", 1, count); });
+            click("Start conditions"); checked("Wait for charging", true); back(); require("Automatic tracking"); selected("At bedtime", true);
+            i.runOnMainSync(() -> automaticNotifications[0] = true); recreate(); require("Access is available. Review your choices before arming tonight.");
+            i.runOnMainSync(() -> assertNull("Access recovery action clears only after current access is available", find(activity.getWindow().getDecorView(), "Open app settings", false)));
+            assertTrue("Denied result, recreation and access refresh never save the draft", automatic.getAll().isEmpty());
+            Activity cancelledAutomatic = activity; ready(); device.pressBack(); await(cancelledAutomatic::isDestroyed); drain(cancelledAutomatic); assertTrue(automatic.getAll().isEmpty());
 
             launch(RecurringTrackingActivity.class); click("After settling down"); click("Start conditions"); desc("Only when charging"); checked("Only when charging", true);
             recreate(); checked("Only when charging", true); capture("recurring-conditions", "Done", false); click("Done"); selected("After settling down", true);
