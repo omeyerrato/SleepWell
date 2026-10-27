@@ -1,0 +1,53 @@
+package org.sleepwell.app;
+
+import android.app.*;
+import android.content.*;
+import android.graphics.Rect;
+import android.os.*;
+import android.view.*;
+import android.widget.*;
+import androidx.test.uiautomator.*;
+import java.io.File;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+import java.util.function.BooleanSupplier;
+import static org.junit.Assert.*;
+
+/** Existing routine journey only: production Math widgets/validators in the real private practice route. */
+final class WakeMathPracticeFixture {
+    private final Instrumentation i;private final Context c;private final UiDevice device;private RandomChallengePreviewActivity activity;
+    private final List<Activity> owned=new CopyOnWriteArrayList<>();private String step="Math practice admission";
+    private WakeMathPracticeFixture(Instrumentation i,Context c,UiDevice device){this.i=i;this.c=c;this.device=device;}
+    static void verify(Instrumentation i,Context c,UiDevice device)throws Exception{new WakeMathPracticeFixture(i,c,device).run();}
+    private void await(BooleanSupplier condition)throws Exception{long end=SystemClock.elapsedRealtime()+8000;while(!condition.getAsBoolean()&&SystemClock.elapsedRealtime()<end)Thread.sleep(30);assertTrue(step,condition.getAsBoolean());}
+    private void ready()throws Exception{await(()->{boolean[] ok={false};i.runOnMainSync(()->ok[0]=activity!=null&&!activity.isDestroyed()&&activity.hasWindowFocus()&&activity.getWindow().getDecorView().isLaidOut());return ok[0];});}
+    private View find(View root,String label){if(label.equals(root.getContentDescription())||root instanceof TextView&&label.contentEquals(((TextView)root).getText()))return root;if(root instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){View value=find(group.getChildAt(n),label);if(value!=null)return value;}return null;}
+    private Rect target(String label,boolean scroll){Rect[] bounds={null};i.runOnMainSync(()->{View view=find(activity.getWindow().getDecorView(),label);assertNotNull(label,view);if(!view.isClickable())return;Rect visible=new Rect();if(view.isEnabled()&&view.getGlobalVisibleRect(visible)&&visible.width()==view.getWidth()&&visible.height()==view.getHeight()){assertTrue(visible.width()>=Design.dp(c,48));assertTrue(visible.height()>=Design.dp(c,48));int[] screen=new int[2];view.getLocationOnScreen(screen);bounds[0]=new Rect(screen[0],screen[1],screen[0]+view.getWidth(),screen[1]+view.getHeight());}else if(scroll)view.requestRectangleOnScreen(new Rect(0,0,view.getWidth(),view.getHeight()),true);});return bounds[0];}
+    private void frame()throws Exception{CountDownLatch frame=new CountDownLatch(1);i.runOnMainSync(()->{View root=activity.getWindow().getDecorView();assertTrue(root.hasWindowFocus());root.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);root.invalidate();});assertTrue(frame.await(5,TimeUnit.SECONDS));}
+    private void click(String label)throws Exception{step="Native practice click "+label;ready();await(()->target(label,true)!=null);frame();Rect area=target(label,false);assertNotNull(area);assertTrue(device.click(area.centerX(),area.centerY()));}
+    private void text(String value)throws Exception{await(()->{boolean[] shown={false};i.runOnMainSync(()->shown[0]=find(activity.getWindow().getDecorView(),value)!=null);return shown[0];});}
+    private void launch(boolean typed)throws Exception{step="Open private "+(typed?"typed":"choice")+" practice";ChallengeRoutine.Task task=new ChallengeRoutine.Task("Math",1,0,new MathSettings(MathSettings.Level.EASY,1,typed));String encoded=ChallengeRoutineJson.encode(new ChallengeRoutine(List.of(task))).toString();Instrumentation.ActivityMonitor monitor=i.addMonitor(RandomChallengePreviewActivity.class.getName(),null,false);try{i.runOnMainSync(()->c.startActivity(new Intent(c,RandomChallengePreviewActivity.class).putExtra("task",encoded).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)));activity=(RandomChallengePreviewActivity)monitor.waitForActivityWithTimeout(5000);assertNotNull(activity);}finally{i.removeMonitor(monitor);}ready();text("Math practice");}
+    private void recreate()throws Exception{step="Recreate actual Math practice";Activity old=activity;Instrumentation.ActivityMonitor monitor=i.addMonitor(RandomChallengePreviewActivity.class.getName(),null,false);try{i.runOnMainSync(old::recreate);activity=(RandomChallengePreviewActivity)monitor.waitForActivityWithTimeout(5000);assertNotNull(activity);}finally{i.removeMonitor(monitor);}ready();await(old::isDestroyed);}
+    private void finish()throws Exception{Activity old=activity;i.runOnMainSync(old::finish);await(old::isDestroyed);}
+    private String question(){String[] value={null};i.runOnMainSync(()->value[0]=question(activity.getWindow().getDecorView()));assertNotNull(value[0]);return value[0];}
+    private String question(View root){if(root instanceof TextView&&root.getContentDescription()!=null&&root.getContentDescription().toString().startsWith("Math question "))return ((TextView)root).getText().toString();if(root instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){String value=question(group.getChildAt(n));if(value!=null)return value;}return null;}
+    private int answer(){Matcher value=Pattern.compile("([0-9]+) \\+ ([0-9]+) = \\?").matcher(question());assertTrue(value.matches());return Integer.parseInt(value.group(1))+Integer.parseInt(value.group(2));}
+    private List<Integer> options(){List<Integer> values=new ArrayList<>();i.runOnMainSync(()->options(activity.getWindow().getDecorView(),values));return values;}
+    private void options(View root,List<Integer> values){if(root instanceof Button&&root.getContentDescription()!=null&&root.getContentDescription().toString().startsWith("Answer "))values.add(Integer.parseInt(root.getContentDescription().toString().substring(7)));if(root instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++)options(group.getChildAt(n),values);}
+    private void selected(int value)throws Exception{await(()->{boolean[] selected={false};i.runOnMainSync(()->{View view=find(activity.getWindow().getDecorView(),"Answer "+value);selected[0]=view!=null&&view.isSelected();});return selected[0];});}
+    private void input(String value){i.runOnMainSync(()->{EditText input=(EditText)find(activity.getWindow().getDecorView(),"Practice answer");assertNotNull(input);input.setText(value);});}
+    private void capture(String name)throws Exception{step="Capture "+name;ready();await(()->target("Check practice answer",true)!=null);frame();File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,name+".png")));}
+    private void run()throws Exception{
+        assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"ringing"));Map<String,?> preferences=new HashMap<>(Prefs.of(c).getAll());String original;try(Store store=new Store(c)){original=store.backup().toString();}
+        AlarmScheduling.Port scheduling=AlarmScheduling.port;Application app=(Application)c.getApplicationContext();Application.ActivityLifecycleCallbacks lifecycle=new Application.ActivityLifecycleCallbacks(){public void onActivityCreated(Activity activity,Bundle saved){owned.add(activity);assertTrue("Only existing private practice Activity; never real AlarmActivity",activity instanceof RandomChallengePreviewActivity);assertTrue(activity.getIntent().getBooleanExtra("visualReview",false));}public void onActivityStarted(Activity activity){}public void onActivityResumed(Activity activity){}public void onActivityPaused(Activity activity){}public void onActivityStopped(Activity activity){}public void onActivitySaveInstanceState(Activity activity,Bundle saved){}public void onActivityDestroyed(Activity activity){}};app.registerActivityLifecycleCallbacks(lifecycle);
+        try{
+            i.runOnMainSync(()->AlarmScheduling.port=new AlarmScheduling.Port(){public boolean allowed(Context context){return false;}public void schedule(Context context,Alarm alarm){fail("Practice never schedules an alarm");}});
+            launch(false);String puzzle=question();List<Integer> order=options();assertEquals(4,order.size());int correct=answer(),wrong=order.stream().filter(value->value!=correct).findFirst().orElseThrow();capture("challenge-math-initial");click("Check practice answer");text("Choose an answer first");click("Answer "+wrong);selected(wrong);capture("challenge-math-selected");click("Check practice answer");text("Try again");assertEquals(puzzle,question());assertEquals(order,options());capture("challenge-math-wrong");
+            click("Answer "+correct);selected(correct);recreate();assertEquals(puzzle,question());assertEquals(order,options());selected(correct);capture("challenge-math-recreated");click("Check practice answer");text("Practice completed");capture("challenge-math-completed");recreate();text("Practice completed");assertEquals(puzzle,question());finish();
+            launch(true);String typedQuestion=question();int typedAnswer=answer();click("Check practice answer");text("Enter an answer first");input("0");click("Check practice answer");text("Try again");capture("challenge-math-typed-wrong");input(Integer.toString(typedAnswer));recreate();assertEquals(typedQuestion,question());i.runOnMainSync(()->assertEquals(Integer.toString(typedAnswer),((EditText)find(activity.getWindow().getDecorView(),"Practice answer")).getText().toString()));capture("challenge-math-typed-recreated");click("Check practice answer");text("Practice completed");capture("challenge-math-typed-completed");finish();
+            assertEquals(preferences,Prefs.of(c).getAll());try(Store store=new Store(c)){assertEquals(original,store.backup().toString());}assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"ringing"));
+        }catch(Exception|AssertionError failure){try{File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());device.takeScreenshot(new File(folder,"challenge-math-failure.png"));device.dumpWindowHierarchy(new File(folder,"challenge-math-failure.xml"));}catch(Exception capture){failure.addSuppressed(capture);}throw failure;
+        }finally{try{i.runOnMainSync(()->{for(Activity activity:owned)if(!activity.isDestroyed())activity.finish();});await(()->owned.stream().allMatch(Activity::isDestroyed));}finally{app.unregisterActivityLifecycleCallbacks(lifecycle);i.runOnMainSync(()->AlarmScheduling.port=scheduling);}}
+    }
+}
