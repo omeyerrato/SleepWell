@@ -81,3 +81,50 @@ Sources, licences, hashes, export recipe and all failures are retained in
 were checked on unchanged real vectors; no new unit-test batch, personal-phone, microphone, alarm or sound output was used. A later bounded host-muted Android flow executes the real models as documented below.
 
 Latest source5266e54b builds production in27s with the original signer. Native saved-clip CPU analysis/save/reopen/delete passes13.826s with three inspected captures; both windows remain Uncertain. [Exact scope and original outputs](verification/2026-10-27-recording-analysis/README.md). Imported providers, physical capture/output/overnight behavior and recognition accuracy remain open. No new unit/lint/broad campaign or personal-phone action.
+
+## Selected decoded-audio resampling contract
+
+`RecordedPcmResampler.resample(short[] mono, int rate, BooleanSupplier active)`
+is an original pure-Java conversion primitive for explicitly selected, decoded
+continuous audio. It throws `IOException`; false `active` or worker interruption
+throws `InterruptedIOException`, without returning partial PCM. Callers retain
+source/decoded identity and must not concatenate separate or gapped intervals.
+No decoder, capture, player, permission, model or automatic YAMNet path starts
+inside this helper. The existing retained 16 kHz/WAV paths and model frontend
+coefficients are unchanged.
+
+Input is nonempty signed mono PCM16 at 8000–96000 Hz, at most 120 seconds.
+Exactly 16000 Hz returns an independent bit-identical clone without filtering
+or trimming. Other rates use a 193-tap Blackman-windowed sinc FIR with cutoff
+`0.45 * min(inputRate, 16000)` Hz, exact rational phases (at most 16000 phases),
+and unity **filter DC** gain; source peaks are never normalized. The coefficient
+table is bounded to 3,088,000 floats (~12.35 MB plus array overhead), output to
+1,920,000 samples, and processing to 193 tap operations per retained output.
+There is no padding, edge repetition, denoising or invented duration. Rounding
+and saturation are solely the final PCM16 representation. Cancellation is
+checked during each phase construction and every 256 output samples.
+
+The untrimmed grid has `floor(inputFrames * 16000 / inputRate)` frames. A centre
+is retained only if all 193 actual input frames exist; unsupported edge centres
+are omitted, and a too-short interval with none remaining is rejected.
+`Result` contains `pcm`, `inputRate`, `firstOutputFrame`, `fromInputFrame`,
+`omittedStartMs`, `omittedEndMs`. **Exact output origin is
+`firstOutputFrame / 16000` seconds relative to decoded source start**;
+`fromInputFrame` is only the floor of that position in input-frame units.
+Omission milliseconds round down for display; retain the original decoded
+frame count/rate and exact output origin for interval provenance. Output ends
+at `(firstOutputFrame + pcm.length) / 16000` seconds, never at the original EOF
+by implication. Decoder/job/UI integration must preserve those trims.
+
+A bounded direct JDK probe used analytical two-second, peak-10000 PCM16 tones,
+not recognition fixtures or a unit-test batch. At 1 kHz for 8/44.1/48/96 kHz
+input, retained output durations were 1.976/1.9956875/1.996/1.998 seconds and
+first output frames 192/35/32/16 respectively. Measured 1 kHz amplitude stayed
+within 0.009% of 10000; RMS alignment error was at most 0.172 PCM units.
+12 kHz input tones at 48/96 kHz produced zero-valued PCM16 output after filtering
+and rounding: residual was below that probe's PCM quantization resolution,
+not a claim of infinite attenuation or rejection at every frequency. Exact
+16 kHz clone behavior and pre-conversion cancellation were also checked.
+No Gradle build, new model inference, training, download, device, microphone or
+playback action ran. This narrow DSP evidence does not establish recognition
+accuracy, Android decoder compatibility or device performance.
