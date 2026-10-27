@@ -180,7 +180,9 @@ public class MainActivity extends Activity {
             enabled.setOnCheckedChangeListener((v,on)->{if(a.nap!=null||a.napInvalid){if(on)editAlarm(a);else try{Naps.cancel(this,a);}catch(RuntimeException failure){Ui.toast(this,failure.getMessage());}render();return;}if(on&&!Scheduler.allowed(this)){Ui.toast(this,"Allow exact alarms in Reliability first.");render();return;}try{AlarmSkips.toggle(this,store,a,on);}catch(RuntimeException e){Ui.toast(this,e.getMessage());}render();});
             LinearLayout identity=Design.row(this),copy=Design.col(this);Design.text(copy,a.label,17,600,Design.INK);Design.space(copy,4);Design.text(copy,days(a)+(a.nextOverride!=null||a.nextOverrideInvalid?" · Next: "+NextAlarmOverrides.summary(this,a):""),13,400,Design.MUTED);identity.addView(copy,new LinearLayout.LayoutParams(0,-2,1));
             View edit=Design.iconButton(this,"chevron","Alarm settings for "+a.label,()->editAlarm(a));identity.addView(edit,new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48)));identity.setMinimumHeight(Ui.dp(this,48));identity.setOnClickListener(v->editAlarm(a));body.addView(identity);
-            AlarmSkipUi.add(body,a,this::render);
+            int skipStart=body.getChildCount();AlarmSkipUi.add(body,a,this::render);
+            // Keep the ordinary one-line skip action compact; status/error rows retain their natural height.
+            for(int index=skipStart;index<body.getChildCount();index++){View action=body.getChildAt(index);if(("Skip next alarm for "+a.label).equals(action.getContentDescription()))action.setMinimumHeight(Ui.dp(this,48));}
             Design.space(body,16);Design.line(body);Design.space(body,12);
         }
         body.addView(new View(this),new LinearLayout.LayoutParams(1,0,1));
