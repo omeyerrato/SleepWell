@@ -5,6 +5,7 @@ import android.content.*;
 import android.graphics.Rect;
 import android.os.*;
 import android.view.*;
+import android.view.inspector.WindowInspector;
 import android.widget.*;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.UiDevice;
