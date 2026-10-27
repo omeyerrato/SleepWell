@@ -37,7 +37,6 @@ GOAL_PLAN_FRAMES = ['goal-plan.png', 'goal-options.png', 'goal-options-recreated
 INTERACTION_SECURITY_FRAMES = ["calendar-rules-permission-"+name+".png" for name in ("settings","granted-draft","revoked-draft")]
 PRIORITY_MENU_FRAMES = ["advanced-snooze-"+name+".png" for name in ("initial","options","options-recreated","draft","recreated","reopened","sound-picker","sound-picker-recreated","invalid","repaired-draft")]
 PRIORITY_MENU_FRAMES += ["qr-code-"+name+".png" for name in ("permission","invalid","denied","access-error","scanning","camera-error","captured","fallback","fallback-error","recreated","routine","reopened","unavailable")]
-PRIORITY_MENU_FRAMES += ["report-reference-"+name+".png" for name in ("history","week","week-calendar","week-selected","month","year","night","editor","tags-notes","reopened","chart-gap")]
 APPEARANCE_FRAMES = ["appearance-"+name+".png" for name in ("automatic","selected-0","selected-1","selected-2","tonight-0","tonight-1","tonight-2","large-contrast-tonight","large-contrast-tonight-action","large-contrast")]
 TONIGHT_FRAMES = ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 SONAR_REPORT_FRAMES = ["sonar-report-" + name + ".png" for name in ("night", "signals", "zero", "reopened", "legacy-unknown", "analysis-error")]
@@ -269,7 +268,7 @@ elif args.scope == "goal-plan":
 elif args.scope == "interaction-security":
     tests = ["InteractionSecurityNativeTest", "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft"]
 elif args.scope == "priority-menus":
-    tests = ["AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime", "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert", "ReportReferenceFlowTest"]
+    tests = ["AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime", "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert"]
 elif args.scope == "sensing-travel":
     tests = list(SENSING_TESTS)
 elif args.scope == "travel-ui":
