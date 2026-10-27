@@ -5,7 +5,7 @@ final class AlarmTonePreview implements AutoCloseable {
     enum Phase {STOPPED,LOADING,PLAYING,PAUSED,ERROR}
     interface Events {void ready();void playing();void paused();void ended();void failed(String message);}
     interface Session extends AutoCloseable {void play();void pause();void gain(float gain);void close();}
-    interface Port extends AutoCloseable {Session open(String tone,float gain,Events events);void close();}
+    interface Port extends AutoCloseable {Session open(String tone,float gain,Events events);default Session openLoop(String tone,float gain,Events events){throw new UnsupportedOperationException("Looped preview is unavailable.");}void close();}
     interface Observer {void changed();}
     private final Port port;private final Observer observer;private Session session;private boolean visible,closed;private int generation,volume=25;private String tone="",error="";private Phase phase=Phase.STOPPED;
     AlarmTonePreview(Port port,Observer observer){this.port=port;this.observer=observer;}
