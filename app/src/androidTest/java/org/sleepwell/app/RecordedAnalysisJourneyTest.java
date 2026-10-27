@@ -398,7 +398,12 @@ public final class RecordedAnalysisJourneyTest {
             assertEquals(5, frames); assertEquals(preferences, Prefs.of(c).getAll()); silent();
         } catch (Exception | AssertionError failure) {
             try { device.dumpWindowHierarchy(new File(folder(), "recorded-analysis-failure.xml"));
-                try (PrintWriter out = new PrintWriter(new File(folder(), "recorded-analysis-failure.txt"), "UTF-8")) { out.println(step); failure.printStackTrace(out); }
+                try (PrintWriter out = new PrintWriter(new File(folder(), "recorded-analysis-failure.txt"), "UTF-8")) {
+                    out.println(step); failure.printStackTrace(out);
+                    try { String timing = device.executeShellCommand("logcat -d -t 120 -s SleepWellDecode:W '*:S'");
+                        out.println("Bounded decoder metadata diagnostic (no audio):"); out.println(timing.substring(Math.max(0, timing.length() - 12000)));
+                    } catch (Exception diagnostic) { out.println("Decoder metadata diagnostic unavailable: " + diagnostic.getClass().getSimpleName()); }
+                }
             } catch (Exception diagnostic) { failure.addSuppressed(diagnostic); } throw failure;
         } finally {
             try { i.runOnMainSync(() -> { List<Activity> reverse = new ArrayList<>(owned); Collections.reverse(reverse); for (Activity a : reverse) if (!a.isDestroyed()) a.finish(); });
