@@ -1,0 +1,3 @@
+.gitattributes text eol=lf
+focused-review-summary.json -text
+SHA256SUMS text eol=lf
