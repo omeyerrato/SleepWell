@@ -9,8 +9,9 @@ import java.util.function.Consumer;
 /** Bedtime-to-alarm plan, not fabricated sensor or sleep-stage data. */
 final class NightArc extends View {
     private final Paint p=new Paint(3);private final RectF labelBounds=new RectF(),tickBounds=new RectF();private final int bedtime,wake;private final long alarmAt;private final NapPlan nap;private final NapPlan.Clock napClock;private final Consumer<NightWindow> changed;private ZoneId zone;private NightWindow window;private android.app.Dialog explanation;
-    NightArc(Context c,int bedtime,int wake,long alarmAt,long now,ZoneId zone,Consumer<NightWindow> changed){super(c);nap=null;napClock=null;this.bedtime=bedtime;this.wake=wake;this.alarmAt=alarmAt;this.changed=changed;update(now,zone);setFocusable(true);setOnClickListener(v->explain());}
-    NightArc(Context c,NapPlan nap,NapPlan.Clock clock,ZoneId zone,Consumer<NightWindow> changed){super(c);this.nap=nap;napClock=clock;bedtime=wake=0;alarmAt=nap.projectedDeadline(clock);this.changed=changed;update(clock.wall(),zone);setFocusable(true);setOnClickListener(v->explain());}
+    NightArc(Context c,int bedtime,int wake,long alarmAt,long now,ZoneId zone,Consumer<NightWindow> changed){super(c);nap=null;napClock=null;this.bedtime=bedtime;this.wake=wake;this.alarmAt=alarmAt;this.changed=changed;update(now,zone);setFocusable(true);setOnClickListener(v->{InteractionFeedback.action(v);explain();});}
+    NightArc(Context c,NapPlan nap,NapPlan.Clock clock,ZoneId zone,Consumer<NightWindow> changed){super(c);this.nap=nap;napClock=clock;bedtime=wake=0;alarmAt=nap.projectedDeadline(clock);this.changed=changed;update(clock.wall(),zone);setFocusable(true);setOnClickListener(v->{InteractionFeedback.action(v);explain();});}
+    @Override public CharSequence getAccessibilityClassName(){return android.widget.Button.class.getName();}
     boolean needsNewOccurrence(long now,ZoneId currentZone){return !zone.equals(currentZone)||(nap!=null?nap.remaining(napClock)<0:alarmAt>0&&now>alarmAt);}
     private void explain(){
         if(explanation!=null&&explanation.isShowing())return;
