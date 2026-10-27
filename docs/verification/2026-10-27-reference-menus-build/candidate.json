@@ -1,0 +1,416 @@
+{
+  "source": "170b0e44785c52429f7b4c089e234ca9d18ce102",
+  "build": "assembleDebug passed in 1m 22s",
+  "verification_scope": "Selected17 methods pass across11 bounded emulator scopes;126 individually inspected original captures. Mixed earlier summaries retain unrelated failures. Not all36 reference states, physical outputs, overnight accuracy or external-provider acceptance. Settings root uses five exact method-source comparisons. No new unit-test batch or broad lint campaign.",
+  "database_schema": 17,
+  "backup_format": 14,
+  "phone_installed": false,
+  "artifacts": {
+    "debug": {
+      "source": "170b0e44785c52429f7b4c089e234ca9d18ce102",
+      "sha256": "48b53f489fb5c7c3b5ffcbcd89b9a78d30df260bef651a01464e9f7465ffbe9f",
+      "path": "SleepWell-170b0e44-arm64.apk",
+      "size": 166719432
+    }
+  },
+  "abi": "arm64-v8a",
+  "build_command": ":app:assembleDebug -PsleepwellAbi=arm64-v8a --max-workers=2 --offline",
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "private_automation_schema": 2,
+  "recorded_result_schema": 1,
+  "native_scopes": [
+    {
+      "scope": "report-proportions",
+      "run": 40538711852,
+      "head": "2552adfda167764f1ab0b2e1ff133190216d8ac1",
+      "selectors": [
+        "ReportReferenceFlowTest"
+      ],
+      "methods": 1,
+      "frames": 11,
+      "evidence": "docs/verification/2026-10-27-report-proportions",
+      "overall_scope_failures_preserved": [
+        "AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime",
+        "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert",
+        "advanced-snooze-initial.png",
+        "advanced-snooze-options.png",
+        "advanced-snooze-options-recreated.png",
+        "advanced-snooze-draft.png",
+        "advanced-snooze-recreated.png",
+        "advanced-snooze-reopened.png",
+        "advanced-snooze-sound-picker.png",
+        "advanced-snooze-sound-picker-recreated.png",
+        "advanced-snooze-invalid.png",
+        "advanced-snooze-repaired-draft.png",
+        "qr-code-permission.png",
+        "qr-code-invalid.png",
+        "qr-code-denied.png",
+        "qr-code-access-error.png",
+        "qr-code-scanning.png",
+        "qr-code-camera-error.png",
+        "qr-code-captured.png",
+        "qr-code-fallback.png",
+        "qr-code-fallback-error.png",
+        "qr-code-recreated.png",
+        "qr-code-routine.png",
+        "qr-code-reopened.png",
+        "qr-code-unavailable.png"
+      ],
+      "images": {
+        "report-reference-chart-gap.png": "d380251953f9f4267b4f236964331fd7936d482b8e687299fbeed55a0b235e29",
+        "report-reference-editor.png": "f5f791a8036cd91fa44a917d5cac4557ac971ef4bbb9ecb91b8af7aab0a7788d",
+        "report-reference-history.png": "e24bfe4a6f26ab78d4131a077c6c109080557c2530c0f035583e2fd4fbaf2f56",
+        "report-reference-month.png": "2e75966e5a8a34652a44dbf06932f8aaee79f6d67427db3bb5725ee1f856bb6d",
+        "report-reference-night.png": "e30432068e9069bfe9df266981b1bd8a166cfb026b10fd3690e11e0dbaa087ce",
+        "report-reference-reopened.png": "80c266a61c739edf5cbfa5a8d6599407f7083710497e60aa36a8d4cf8f28db7a",
+        "report-reference-tags-notes.png": "c035c87d46a42fc358f8afcbe9bf83947769cf40a30cac630519cbe496c3ab48",
+        "report-reference-week-calendar.png": "217e0faef0c0fca6ba77467508ffe1e96060a5d4a0487d9cc9e2a330dcd3d220",
+        "report-reference-week-selected.png": "7aec1632160fd36c0c5bb6ecf1785dd397309d5b38c8c86819740123e181fd6b",
+        "report-reference-week.png": "0786a25c03a0a6c8f5a1cf820d0b72c8d9ed01517e5aea164679f72616971b8f",
+        "report-reference-year.png": "1ac86768b0b2f8ec5afb1e09c66aef65f5c52041c57ec2ec3ddb5db1b0ee69c4"
+      }
+    },
+    {
+      "scope": "snooze-rail",
+      "run": 40550003988,
+      "head": "ecd1c7ec5667708c37dbe884b5d1c3f586ba1c37",
+      "selectors": [
+        "AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime"
+      ],
+      "methods": 1,
+      "frames": 10,
+      "evidence": "docs/verification/2026-10-27-snooze-rail",
+      "overall_scope_failures_preserved": [
+        "AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs",
+        "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+        "wake-settings-sound.png",
+        "wake-settings-loud-curve.png",
+        "wake-settings-delay-options.png",
+        "wake-settings-vibration-options.png",
+        "wake-settings-lights.png",
+        "wake-settings-recreated.png",
+        "wake-settings-reopened.png",
+        "wake-settings-normal-curve.png",
+        "wake-settings-edited-curve.png",
+        "wake-settings-immediate.png",
+        "wake-settings-options.png",
+        "wake-settings-options-recreated.png",
+        "wake-settings-preview-loading.png",
+        "wake-settings-preview-playing.png",
+        "wake-settings-preview-recreated.png",
+        "wake-settings-preview-error.png",
+        "wake-settings-preview-complete.png",
+        "privacy-history-ready.png",
+        "privacy-history-error.png",
+        "privacy-history-busy.png",
+        "privacy-history-pending.png",
+        "privacy-history-done.png"
+      ],
+      "images": {
+        "advanced-snooze-draft.png": "0dabe2a2e46df2199cedf9cab89d1fbbcdbf79c47b6742d8c6c019b1fbd6d629",
+        "advanced-snooze-initial.png": "51556c30b0e59830febb39c3e397bdcc4dee60db3e593ed0ce19b0e24abecff6",
+        "advanced-snooze-invalid.png": "6a1406816608b6cf6fd8a7fa6257c5f05ba341dca22d3a0a219ba14f1d936075",
+        "advanced-snooze-options-recreated.png": "32f4a7f69ac141a0c467907fe4136a2280ddea579d7d09f6734c5b29067bebdd",
+        "advanced-snooze-options.png": "eec237768d7404ea35b097220a87d9e8ccf723e4ef0466aef5287e0e618e60a6",
+        "advanced-snooze-recreated.png": "0dabe2a2e46df2199cedf9cab89d1fbbcdbf79c47b6742d8c6c019b1fbd6d629",
+        "advanced-snooze-reopened.png": "d8e597c9a0be6a22cf41dc112b88560f9fa5a364a9b0e5217014bb1d9c99c668",
+        "advanced-snooze-repaired-draft.png": "d5f8ee402d647965e79f188885b6139c0466c152c8dcb13233feb4363ad39c23",
+        "advanced-snooze-sound-picker-recreated.png": "732951eb23afa9914339e9e80cfad3cab66fda8da2252fda74454ff8ac497abc",
+        "advanced-snooze-sound-picker.png": "732951eb23afa9914339e9e80cfad3cab66fda8da2252fda74454ff8ac497abc"
+      }
+    },
+    {
+      "scope": "health-recovery",
+      "run": 40550003988,
+      "head": "ecd1c7ec5667708c37dbe884b5d1c3f586ba1c37",
+      "selectors": [
+        "HealthConnectFlowTest"
+      ],
+      "methods": 2,
+      "frames": 8,
+      "evidence": "docs/verification/2026-10-27-health-permission-recovery",
+      "overall_scope_failures_preserved": [
+        "AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs",
+        "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+        "wake-settings-sound.png",
+        "wake-settings-loud-curve.png",
+        "wake-settings-delay-options.png",
+        "wake-settings-vibration-options.png",
+        "wake-settings-lights.png",
+        "wake-settings-recreated.png",
+        "wake-settings-reopened.png",
+        "wake-settings-normal-curve.png",
+        "wake-settings-edited-curve.png",
+        "wake-settings-immediate.png",
+        "wake-settings-options.png",
+        "wake-settings-options-recreated.png",
+        "wake-settings-preview-loading.png",
+        "wake-settings-preview-playing.png",
+        "wake-settings-preview-recreated.png",
+        "wake-settings-preview-error.png",
+        "wake-settings-preview-complete.png",
+        "privacy-history-ready.png",
+        "privacy-history-error.png",
+        "privacy-history-busy.png",
+        "privacy-history-pending.png",
+        "privacy-history-done.png"
+      ],
+      "images": {
+        "health-connect-configured.png": "842438fd384266ea48496df0a24ae37692b93ac94e9ab09edbbef59c42e0c1b1",
+        "health-connect-conflict.png": "efe8463b4913015d710ad3a4037b059236b531285448dcda85c5e285dd876f22",
+        "health-connect-default.png": "fbef9b7113d2ea93868d9742e7d3f813c5faf8c6956743ef5670a1dfd0235ad4",
+        "health-connect-kept.png": "6429ec20a2309f748d6c3e0416371c7df44bf17a03cb73e6ca678496e4c3ee38",
+        "health-connect-permissions.png": "91b498b3b4a1d4c89e6c782ab932b470c037a3df761e25845d2c3803d0b05bde",
+        "health-connect-source.png": "8b644d99279fbaeea0bd4abdea8dd6009b659799096e7879e2abed0b763a2f1b",
+        "health-connect-synced.png": "eaafb9e8691e487608e6729ddf50cd369200caeb6e9373ff2af2fe55ef09ce03",
+        "health-connect-unavailable.png": "497650c8cb9ad61bb1343273effbb1a7158403fdc311cdfb21a0abcb0dc5b845"
+      }
+    },
+    {
+      "scope": "tone-gentle",
+      "run": 40557496255,
+      "head": "170b0e44785c52429f7b4c089e234ca9d18ce102",
+      "selectors": [
+        "AlarmToneFlowTest#toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput",
+        "AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs"
+      ],
+      "methods": 2,
+      "frames": 33,
+      "evidence": "docs/verification/2026-10-27-tone-gentle-reference",
+      "overall_scope_failures_preserved": [
+        "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+        "privacy-history-pending.png",
+        "privacy-history-done.png"
+      ],
+      "images": {
+        "alarm-tone-builtins.png": "94aadb2b2965175d3abde87ec1b6ef736bf10e23cd8a58be9a348b6b88f38b4b",
+        "alarm-tone-cancelled.png": "479c76d595ccc80532deb2a1c97b7adb883a7ee77dde9f9088e7a064174c2b08",
+        "alarm-tone-decoder-busy.png": "8e3b3f521af07c87e63db5d04d26f9b84ea4fa50edf6922e8218ff4ed3884a9a",
+        "alarm-tone-decoder-recovered.png": "f425c6c7f9a6b2f4ee2cbe246f67443531830527e060af5105d421550d17ae4c",
+        "alarm-tone-import-cancelled.png": "5f2e4876f931977917a8ea320c103306f07aaf30ece2eaafdbfdc2b3fc65ce86",
+        "alarm-tone-import-checking.png": "09a07778e07185c143c0ee418f9e4587868ee28e4c182f7a301cc9302fc520eb",
+        "alarm-tone-import-empty.png": "1c866c8779b4b58955882b7e6387459943c343ddcaf444209b0e4affe3ecf161",
+        "alarm-tone-import-error.png": "c531b7ce4192014388a187e892a6971903f63014bf4b0daa3f4688d9a07cf47a",
+        "alarm-tone-imported.png": "96a238bd4ac3256231aaae82e6835e72c38761a533ffa9d8e29dd826c8f87615",
+        "alarm-tone-options.png": "fcc5b1bffdb3a6cbacd60c9ab38955cccfb5627b02cc63154bf72577b3f22b53",
+        "alarm-tone-paused.png": "1833819a6bd2f37d90f6a63805a03d513360ac3c269aedc87539ae27a5f913b9",
+        "alarm-tone-playing.png": "79f46c34ad47272105efbfe77156a752af3c46e2f3e800ffbc1e9b96bd751ceb",
+        "alarm-tone-preview-error.png": "e6e95584f4e0d5203c5cde10a11c16be1dfbd7662aed630cc37e435cb7b828d7",
+        "alarm-tone-recreated.png": "5f2e4876f931977917a8ea320c103306f07aaf30ece2eaafdbfdc2b3fc65ce86",
+        "alarm-tone-reopened.png": "479c76d595ccc80532deb2a1c97b7adb883a7ee77dde9f9088e7a064174c2b08",
+        "alarm-tone-selected.png": "dcdb1233ed384ea2299737ec8fa130c3ef50a45febd67c227b2ec6bbdb6b8832",
+        "wake-settings-delay-options.png": "a8746dd2b0ba37f5e80f5cf04f0a7defcd1eddb2ab80df439c25a3d7fc31c3f9",
+        "wake-settings-edited-curve.png": "a1932851fc6e07c3c48accaa22d1a942156e6c4e6f92acb3f3e603f5212a5ca4",
+        "wake-settings-immediate.png": "f38bedbacfeceee9f7340abfd6b2ac6a8c40db663f47aa7f73dc69566baa9324",
+        "wake-settings-lights.png": "baa8b249a470b9c968af57615bf5968000508ac6e34d6c60bce56f12a02fa866",
+        "wake-settings-loud-curve.png": "a3c5badd6ac5fe249405021e8aaf9d94db10f5d6bcd4392216da16a593dbbf7c",
+        "wake-settings-normal-curve.png": "65569105f112bcd0976e5870a986c4f747a86d1a3f73bb4de9f84df0fcc68243",
+        "wake-settings-options-recreated.png": "4c18964a88b9aa43404d8989a8f379f6bbfd574150a1eb90d184f4f56519d7bf",
+        "wake-settings-options.png": "4c18964a88b9aa43404d8989a8f379f6bbfd574150a1eb90d184f4f56519d7bf",
+        "wake-settings-preview-complete.png": "ea616274190ab6e9a0ba174589a99dc3647d65a0ef712e2b4ec20fce3899f80d",
+        "wake-settings-preview-error.png": "7007be153fa1ef2575b0d2fcb50a96b62d0ea503a5850725f81a0ea612a70a9b",
+        "wake-settings-preview-loading.png": "40999176cbe953dffd4731857d96f017433e5dd01c3bcb62735484efadd13479",
+        "wake-settings-preview-playing.png": "cfffa774053a893bba018863200584e828753a100e6f60ae8135edc51628a45d",
+        "wake-settings-preview-recreated.png": "69e27aac7150d57fc35e9a83588430d95a7d46ae221844dc03c4da6ccaaed716",
+        "wake-settings-recreated.png": "baa8b249a470b9c968af57615bf5968000508ac6e34d6c60bce56f12a02fa866",
+        "wake-settings-reopened.png": "baa8b249a470b9c968af57615bf5968000508ac6e34d6c60bce56f12a02fa866",
+        "wake-settings-sound.png": "a43ec309ee052ed98371400911e3f05dfc17b2a514a398bc77baea8225c8e403",
+        "wake-settings-vibration-options.png": "81d36f7dba87f57ce2884c9d3b56492604684e437a24abe3f8152736c498fae4"
+      }
+    },
+    {
+      "scope": "qr-cloud",
+      "run": 40557496255,
+      "head": "170b0e44785c52429f7b4c089e234ca9d18ce102",
+      "selectors": [
+        "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert",
+        "CloudBackupFlowTest#chooseSaveReopenAndReviewKeepLocalDataWithNoUpload"
+      ],
+      "methods": 2,
+      "frames": 18,
+      "evidence": "docs/verification/2026-10-27-qr-cloud-reference",
+      "overall_scope_failures_preserved": [
+        "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+        "privacy-history-pending.png",
+        "privacy-history-done.png"
+      ],
+      "images": {
+        "cloud-backup-destination.png": "711e780e0223d6e13c1d810460b4494e8fdba61ee8ef5d6d208021bfe1356d3b",
+        "cloud-backup-folder-busy.png": "948938bd9aa454a6c97ba97f46d73e4c787c473facf9771c016e95827988acf1",
+        "cloud-backup-reopened.png": "0e8dad814eb876ce351e72c89aac325c28d27f1e3d51ab91a3f96e30ae47f3e3",
+        "cloud-backup-restore-review.png": "12ce2493e9a5bc5321666b06f54b7b7bb889dc078edfeeb71acb1bb02a59247a",
+        "cloud-backup-saved.png": "0e8dad814eb876ce351e72c89aac325c28d27f1e3d51ab91a3f96e30ae47f3e3",
+        "qr-code-access-error.png": "31e2014b78e184dda9c6e8ca4ba43d7a3434cd4b7d50b39eaac6cb29fe784dcb",
+        "qr-code-camera-error.png": "308eb8586736493f2518247ed2ac82abd6af6b2f8cdc1ffefcbf7449a996e50e",
+        "qr-code-captured.png": "88e3f92e4cf76c1c51a819953aa27ea91d1ec2ede8adccd001144f1c70bd274c",
+        "qr-code-denied.png": "ec8e5ba94c713b507795a4f6cc6b5a275bff6e1dea0ca648ccc65ab063046e69",
+        "qr-code-fallback-error.png": "bbdec0e2242f6be2ddc36214af700e719c9c71fe078bca2359dcef7f5f260ab8",
+        "qr-code-fallback.png": "4a649663dbc723d7c88534c0bc39a41db4fa4e73cf861abaa4df01f1b410bf84",
+        "qr-code-invalid.png": "dd69848c4fec2b9aa87043b515df4f5b4550823c3088bf4d117bc6b608211d35",
+        "qr-code-permission.png": "47f32292302182057b8aa7776705b315d1b7cd9065004a6a8855ae5638b29c35",
+        "qr-code-recreated.png": "2de8b06b4d9ba0b90614dd62fa40069cbffc2ef46d514716eb94f67eff4d9ac2",
+        "qr-code-reopened.png": "2de8b06b4d9ba0b90614dd62fa40069cbffc2ef46d514716eb94f67eff4d9ac2",
+        "qr-code-routine.png": "7a0dcf10d8b75021175905061944312dd5aa1f793b775125a1bb48c2f68bf8c5",
+        "qr-code-scanning.png": "692f2d49fad99ae3c391a23959dfde60b2a4c3954f6a29a33f42f2689cc329bc",
+        "qr-code-unavailable.png": "eeb2b47c5f09507fb43415707ac3168bdfcb49be74b8a848929fcdbcf86490dd"
+      }
+    },
+    {
+      "scope": "privacy-recovery",
+      "run": 40562450140,
+      "head": "48dfd86aa314b53243802e9fe037682326df8755",
+      "selectors": [
+        "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory"
+      ],
+      "methods": 1,
+      "frames": 5,
+      "evidence": "docs/verification/2026-10-27-privacy-recovery",
+      "overall_scope_failures_preserved": [],
+      "images": {
+        "privacy-history-busy.png": "fb7d2d2cd04c9ca8033ac6ebf5268848602db7f9777d618ec633c68748d7cd4b",
+        "privacy-history-done.png": "c16c9f9e05824d6c0ab1c1fe0ea60d58c01179b63bb28844b5601396abd883ba",
+        "privacy-history-error.png": "8997b9cb972f19d99b2d78cae7a7f868cfa4e0042e5ce3c127cf27ca2a9a5191",
+        "privacy-history-pending.png": "6e52da2cdaf4d8f9ddca03cedd3f1204343acc27e47dfc5695b08a038d40645f",
+        "privacy-history-ready.png": "36a66d14f7a02247818d7bd965925bbb5f502e70afd141e16e021d419f04c4b3"
+      }
+    },
+    {
+      "scope": "rhythm-nap",
+      "run": 40546119570,
+      "head": "bfc27151a5e3c0e191589ca0b9fd296aff0fcc56",
+      "selectors": [
+        "SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+        "NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist"
+      ],
+      "methods": 2,
+      "frames": 13,
+      "evidence": "docs/verification/2026-10-27-rhythm-nap",
+      "overall_scope_failures_preserved": [
+        "AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs",
+        "HealthConnectFlowTest",
+        "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+        "wake-settings-delay-options.png",
+        "wake-settings-vibration-options.png",
+        "wake-settings-lights.png",
+        "wake-settings-recreated.png",
+        "wake-settings-reopened.png",
+        "wake-settings-normal-curve.png",
+        "wake-settings-edited-curve.png",
+        "wake-settings-immediate.png",
+        "wake-settings-options.png",
+        "wake-settings-options-recreated.png",
+        "wake-settings-preview-recreated.png",
+        "wake-settings-preview-error.png",
+        "wake-settings-preview-complete.png",
+        "privacy-history-ready.png",
+        "privacy-history-error.png",
+        "privacy-history-busy.png",
+        "privacy-history-pending.png",
+        "privacy-history-done.png"
+      ],
+      "images": {
+        "nap-cancelled.png": "3496e04918731c002cf4b37579d42613002c31d7232c28d847817d13440212dc",
+        "nap-default.png": "6203ae9beca75767996d158ee9470e5b1d2c7284b386d5ab1befe10c82117060",
+        "nap-pending.png": "f044420d202469dfd99f14ef1dbbc973574fb9699aed1484d9387b3bf152bc76",
+        "nap-preset.png": "8200f117b7ee4286801ef9831331b6ed23a5b12c6ec9f244bed635d1734d2b63",
+        "nap-recreated.png": "f044420d202469dfd99f14ef1dbbc973574fb9699aed1484d9387b3bf152bc76",
+        "nap-reopened.png": "789855e196e260e9b051192e263f2a00ffae458b887c6b123c72c49e518746a5",
+        "nap-sound.png": "75614cd75726672bc944215befa2f1ab08cebf460cd61f5a3038190e3ae8f920",
+        "nap-tracking-required.png": "514d9767b7ff7ba7cb77ac60ca51e555f9d53a9c943e8ce343b55fe0494d0a53",
+        "rhythm-empty.png": "47e5785ceec756e0a144cb8c40c0b5e1f43e987104e0a614acb0f3b74f95533d",
+        "rhythm-recreated.png": "f9100fbb668ad4aa3194d17487eb33ecb5ea322213b3c173aae32b5bf7c13c7f",
+        "rhythm-reopened.png": "3ce9cf6d124d6bfaf47109e43b3c2c3ddece6c1ed6f88f193c589e16d9469ff3",
+        "rhythm-seven-nights.png": "674cbb93fe0da1db56f69bfbc53ea5fd9597d34fcd2af2424dc6fb391645302e",
+        "rhythm-workdays.png": "f9100fbb668ad4aa3194d17487eb33ecb5ea322213b3c173aae32b5bf7c13c7f"
+      }
+    },
+    {
+      "scope": "goal-plan",
+      "run": 40517758162,
+      "head": "795ab556f843b1570809e5bf85fd387b9ee63260",
+      "selectors": [
+        "GoalFlowTest"
+      ],
+      "methods": 1,
+      "frames": 14,
+      "evidence": "docs/verification/2026-10-27-sleep-plan-options-795ab556",
+      "overall_scope_failures_preserved": [],
+      "images": {
+        "goal-bank-details.png": "1b93f09d0e26bc97ae73b88abb0344ac3161ee8d7afdc317d206597d95cbccdb",
+        "goal-bank.png": "07b6d9867494c578d9783101c1a5e1a99ea016225093a48b5cf6390624082c1d",
+        "goal-create.png": "b7ab616f7b6e81dab967694e5b062d7c8ea64f0c406a5082e0ee07f2f1a543a9",
+        "goal-empty-bank.png": "3957dce0c428abdb239648eceae2a3eab7fa74349bac21f0d30d7b3c16439694",
+        "goal-options-recreated.png": "99026203f0328e0006afbb85d7a9554fb02e207a764c7d18e4ef4f543baebc7f",
+        "goal-options-updated.png": "d9431c92648a6e15da3ab96e4ba471934e9dda3fd27fa7ecee79903897bd882b",
+        "goal-options-winddown-recreated.png": "d017a5fa6be0c64cde3a98c3640c094616f70b1112fedfea00f5944ec55f8a06",
+        "goal-options.png": "99026203f0328e0006afbb85d7a9554fb02e207a764c7d18e4ef4f543baebc7f",
+        "goal-plan.png": "cdad7e9ef4d01c946ee92d067aef98656b98ebea6d94a117ee43ab1432df59d7",
+        "goal-reopened-bank.png": "07b6d9867494c578d9783101c1a5e1a99ea016225093a48b5cf6390624082c1d",
+        "goal-saved-plan.png": "622a80de63488ceb3be17b9437787656bbbc517b337ee150d533be382644f2ee",
+        "goal-stopped.png": "5d5feda472f133ca3c8c91eefb60e5ac5a014db80aab9c7b9f0407eead102c18",
+        "goal-tonight.png": "a773ec2f254ee29e290f8740853aa9e468db1b01c550c50fea786fd5fbd1cf49",
+        "goal-trends.png": "956374ac45622f27ed25902c6bfd30d3e0a01f7d1b172ae60e340ea0c3af64bb"
+      }
+    },
+    {
+      "scope": "appearance",
+      "run": 40527204264,
+      "head": "666b20c5490f5a6e9a5cd4429a3f02be0e3d6f27",
+      "selectors": [
+        "AppearanceFlowTest"
+      ],
+      "methods": 1,
+      "frames": 10,
+      "evidence": "docs/verification/2026-10-27-appearance-layout",
+      "overall_scope_failures_preserved": [],
+      "images": {
+        "appearance-automatic.png": "da0aa45bd87b5e07f3bc820d967d58642bb8fadb673aad797857765be3970a89",
+        "appearance-large-contrast-tonight-action.png": "024d3e99619c8a4642d37eb5c52d017c6f3c955b2461b4975f4d8ee9bd1fa455",
+        "appearance-large-contrast-tonight.png": "1c12c7987f33454721f4872e1523dfdcc3956e9434a3247938ab253177fbf97c",
+        "appearance-large-contrast.png": "2824fd0d2fa98283d853ad120eac70d9abe4a42c1f6b2b5135de493226e69626",
+        "appearance-selected-0.png": "979bf5d61b04411f48875e90b6172303d9893a5907e34a538f99965f8b7ecf04",
+        "appearance-selected-1.png": "3893b9bdbc64de8c1e27a70fec06a0d18628b87ffb59fd09a3f837a5c0c37c0b",
+        "appearance-selected-2.png": "d650a41e03d0f019ccd8e288efd19219096df6db1221fef02f5c03b61a6a71f9",
+        "appearance-tonight-0.png": "537b7691a3d38c5496291de71245eb8a193591578e6d4b6a9773e80794364af3",
+        "appearance-tonight-1.png": "876dd3f32c71df9756a0324414a1abd324d137e849e83051a3f5b7c96a1e4d85",
+        "appearance-tonight-2.png": "6c797bf90ef3e910f7f9c2a66d981f1f0cf8b245c90570609c3524fcd46ef278"
+      }
+    },
+    {
+      "scope": "interaction-security",
+      "run": 40517817995,
+      "head": "795ab556f843b1570809e5bf85fd387b9ee63260",
+      "selectors": [
+        "InteractionSecurityNativeTest",
+        "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft"
+      ],
+      "methods": 3,
+      "frames": 3,
+      "evidence": "docs/verification/2026-10-27-interaction-security-ci40517817995",
+      "overall_scope_failures_preserved": [],
+      "images": {
+        "calendar-rules-permission-granted-draft.png": "f3d9e8c2fdd9a1f2499159ad743721eec247595344c4b03e6e513c6223a8f16b",
+        "calendar-rules-permission-revoked-draft.png": "54a25e760e2ba5cdc86b8ab02a76a1b16c226dd965962d8305472df8807c891b",
+        "calendar-rules-permission-settings.png": "495ca295aa17680d2843239942a112adaded9964d201b94c7f4e1f4b554a8710"
+      }
+    },
+    {
+      "scope": "settings-root",
+      "run": 40445147772,
+      "head": "eb3a7da884cdea93a23d54f6b2e7beb2fa4b6956",
+      "selectors": [
+        "SettingsOrganizationFlowTest"
+      ],
+      "methods": 1,
+      "frames": 1,
+      "evidence": "docs/verification/2026-10-27-settings-root-reference",
+      "overall_scope_failures_preserved": [],
+      "images": {
+        "organization-settings-root.png": "8ace53365e94b8de3218c994427cf08a20b2d60e391db5252dfff5228fce3c58"
+      }
+    }
+  ],
+  "release_tag": "v0.1.0-reference-menus-20261027-170b0e44",
+  "release_url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-reference-menus-20261027-170b0e44",
+  "distribution_verified": false
+}
