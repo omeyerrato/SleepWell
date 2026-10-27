@@ -5030,7 +5030,12 @@
         "RoomAudio.java",
         "RoomDimming.java"
       ],
-      "tests": [],
+      "tests": [
+        {
+          "name": "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware (existing method extended; native run pending)",
+          "path": "app/src/androidTest/java/org/sleepwell/app/MotionConfigurationFlowTest.java"
+        }
+      ],
       "validation": "Current source increment only; native fake-port capture/action/persistence and real phone validation pending. No physical microphone or dimming test ran.",
       "status": "partial",
       "notes": "Actual foreground TYPE_LIGHT lux and bounded fifteen-minute observation history with unknown/unreliable gaps. Optional microphone starts only on explicit current foreground action with permission and exclusive lease; relative RMS only, no calibrated dB, files, classification or upload. Opening/recreation/permission return never resumes capture. Saved opt-in dims only Room and active Wind-down windows, restoring their prior brightness on departure. Permission-recovery and complete reference acceptance remain pending."
