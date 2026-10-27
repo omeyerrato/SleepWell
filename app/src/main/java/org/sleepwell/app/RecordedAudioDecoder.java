@@ -47,6 +47,7 @@ final class RecordedAudioDecoder {
             format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE,262144);
             extractor.selectTrack(track);codec=MediaCodec.createDecoderByType(mime);codec.configure(format,null,null,0);codec.start();started=true;
             String decoder=codec.getName();samples=new Mono(rate);MediaCodec.BufferInfo info=new MediaCodec.BufferInfo();
+            StringBuilder packetTiming=new StringBuilder(),outputTiming=new StringBuilder();
             boolean inputEnd=false,outputEnd=false,outputFormat=false;long first=Long.MIN_VALUE,began=SystemClock.elapsedRealtime(),lastProgress=began,lastPts=Long.MIN_VALUE;
             while(!outputEnd){
                 check(active);long now=SystemClock.elapsedRealtime();if(now-began>30000||now-lastProgress>10000)throw new IOException("Audio decoding timed out. Try a shorter recording.");boolean progress=false;
@@ -57,6 +58,7 @@ final class RecordedAudioDecoder {
                         int flags=extractor.getSampleFlags();if((flags&(MediaExtractor.SAMPLE_FLAG_ENCRYPTED|MediaExtractor.SAMPLE_FLAG_PARTIAL_FRAME))!=0)throw new IOException("Protected or fragmented audio packets are unsupported.");
                         if(size>target.remaining()||size>262144)throw new IOException("This recording uses an unsupported audio packet size.");
                         long pts=extractor.getSampleTime();int count=extractor.readSampleData(target,0);if(count<0||count!=size)throw new IOException("This audio packet is incomplete.");
+                        if(packetTiming.length()<512)packetTiming.append(pts).append('/').append(count).append(';');
                         codec.queueInputBuffer(index,0,count,pts,0);extractor.advance();
                     }progress=true;
                 }}
@@ -72,8 +74,15 @@ final class RecordedAudioDecoder {
                         ByteBuffer buffer=codec.getOutputBuffer(index);int align=channels*2;
                         if(buffer==null||info.offset<0||info.size<0||info.offset>buffer.capacity()-info.size||info.size%align!=0)throw new IOException("The decoded audio is incomplete.");
                         if(first==Long.MIN_VALUE)first=info.presentationTimeUs;
+                        if(outputTiming.length()<512)outputTiming.append(info.presentationTimeUs).append('/').append(info.size/align).append('/').append(info.flags).append(';');
                         long difference;try{long expected=Math.addExact(first,samples.size*1000000L/rate);difference=Math.subtractExact(info.presentationTimeUs,expected);}catch(ArithmeticException invalid){throw new IOException("This file has invalid audio timestamps.",invalid);}
-                        if(info.presentationTimeUs<lastPts||difference< -2000||difference>2000)throw new IOException("This recording has a timestamp gap. Choose a continuous excerpt.");
+                        if(info.presentationTimeUs<lastPts||difference< -2000||difference>2000){
+                            // Bounded format/timing metadata only: never audio, source URI or a user filename.
+                            android.util.Log.w("SleepWellDecode","timestamp-discontinuity codec="+decoder+" mime="+mime+" rate="+rate+" channels="+channels
+                                    +" firstUs="+first+" previousUs="+lastPts+" actualUs="+info.presentationTimeUs+" accumulatedFrames="+samples.size
+                                    +" deltaUs="+difference+" bufferFrames="+(info.size/align)+" flags="+info.flags+" inputPts/bytes="+packetTiming+" outputPts/frames/flags="+outputTiming);
+                            throw new IOException("This recording has a timestamp gap. Choose a continuous excerpt.");
+                        }
                         lastPts=info.presentationTimeUs;buffer.position(info.offset);buffer.limit(info.offset+info.size);buffer.order(ByteOrder.nativeOrder());int frames=info.size/align;samples.reserve(frames);
                         for(int n=0;n<frames;n++){if((n&4095)==0)check(active);int left=buffer.getShort();samples.add(channels==1?(short)left:(short)Math.round((left+buffer.getShort())/2d));}
                     }
