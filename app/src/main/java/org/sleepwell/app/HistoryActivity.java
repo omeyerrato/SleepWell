@@ -76,6 +76,23 @@ public final class HistoryActivity extends Activity {
         @Override protected void onDraw(Canvas c){super.onDraw(c);long span=Math.max(1,record.edit.end-record.edit.start);float top=getHeight()*.25f,bottom=getHeight()*.8f;p.setColor(0xffeee5f5);c.drawRoundRect(0,top,getWidth(),bottom,4,4,p);p.setColor(record.manual()?0xffc5a7ee:Design.VIOLET);for(RecordIntervals.Span s:record.coverage()){float a=getWidth()*(s.start-record.edit.start)/(float)span,b=getWidth()*(s.end-record.edit.start)/(float)span;c.drawRoundRect(a,top,b,bottom,4,4,p);}}
     }
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
-    void awaitReaders(long timeoutMs) throws Exception {if(worker.isShutdown()){if(!worker.awaitTermination(timeoutMs,TimeUnit.MILLISECONDS))throw new java.util.concurrent.TimeoutException("History readers still active");}else worker.submit(()->{}).get(timeoutMs,TimeUnit.MILLISECONDS);}
+    void awaitReaders(long timeoutMillis)throws Exception{
+        long started=System.nanoTime(),budget=TimeUnit.MILLISECONDS.toNanos(timeoutMillis);
+        try{
+            // Android can mark the Activity destroyed before onDestroy shuts down its reader.
+            if(!isDestroyed()&&!worker.isShutdown()){
+                worker.submit(()->{}).get(Math.max(0,budget-(System.nanoTime()-started)),TimeUnit.NANOSECONDS);
+                if(!isDestroyed()&&!worker.isShutdown())return;
+            }
+        }catch(RejectedExecutionException rejected){
+            // Destruction may race the admission check; rejection alone never proves quiescence.
+            if(!worker.isShutdown())throw rejected;
+        }catch(TimeoutException timedOut){
+            // shutdownNow may remove a queued barrier. Require actual termination below.
+            if(!worker.isShutdown())throw timedOut;
+        }
+        long remaining=Math.max(0,budget-(System.nanoTime()-started));
+        if(!worker.awaitTermination(remaining,TimeUnit.NANOSECONDS))throw new TimeoutException("History readers still active");
+    }
     @Override protected void onDestroy(){generation++;if(calendar!=null)calendar.close();if(optionsDialog!=null)optionsDialog.dismiss();worker.shutdownNow();super.onDestroy();}
 }

@@ -28,6 +28,7 @@ public final class ReportReferenceFlowTest {
     private void launch(Class<?> activity,long id){context.startActivity(new Intent(context,activity).putExtra("record",id).putExtra("visualReview",true).putExtra("verificationLabel","VISUAL TEST · seven isolated fixture nights").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));}
     private boolean ready(Activity activity,View decor){return !activity.isFinishing()&&!activity.isDestroyed()&&ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED).contains(activity)&&activity.getWindow().getDecorView()==decor&&activity.hasWindowFocus()&&decor.hasWindowFocus()&&decor.isAttachedToWindow()&&decor.isLaidOut()&&decor.getWidth()>0&&decor.getHeight()>0;}
     private Activity focused(Class<? extends Activity> type)throws Exception{long until=SystemClock.elapsedRealtime()+8000;Activity[] found={null};while(found[0]==null&&SystemClock.elapsedRealtime()<until){instrumentation.runOnMainSync(()->{for(Activity activity:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))if(type.isInstance(activity)&&ready(activity,activity.getWindow().getDecorView())){found[0]=activity;break;}});if(found[0]==null)SystemClock.sleep(50);}assertNotNull("Focused resumed "+type.getSimpleName(),found[0]);return found[0];}
+    private void awaitHistoryRender()throws Exception{HistoryActivity owner=(HistoryActivity)focused(HistoryActivity.class);owner.awaitReaders(5000);instrumentation.waitForIdleSync();}
     private android.graphics.Rect trendActionBounds(HistoryActivity owner,View decor,View target){
         assertTrue("Current History window must own focus",ready(owner,decor));assertTrue("Native History frame",decor.isHardwareAccelerated());
         View week=named(decor,"Week");assertNotNull("Current Week selector",week);assertTrue("Week selection must render before options",week.isSelected());
@@ -133,13 +134,32 @@ public final class ReportReferenceFlowTest {
             click("Trends");
             title("Trends");
             capture("week");
-            LocalDate latestDay=LocalDate.now(ZoneId.systemDefault()).minusDays(1),chosenDay=latestDay.getDayOfMonth()>1?latestDay.minusDays(1):latestDay.plusDays(1);object("Choose trend date").click();title("Trend date");object("Choose date "+chosenDay).click();assertTrue(device.hasObject(By.desc("Pending date "+chosenDay)));captureCalendar(chosenDay);click("Use date");title("Trends");String missingDate=(chosenDay.isBefore(latestDay)?chosenDay.minusDays(6):chosenDay)+": no record.";assertTrue("Changing the calendar changes the actual plotted range and preserves unknown dates",device.wait(Until.hasObject(By.descContains(missingDate)),5000));object("Choose trend date").click();title("Trend date");assertTrue(device.hasObject(By.desc("Pending date "+chosenDay)));object("Choose date "+latestDay).click();click("Use date");title("Trends");assertTrue(device.wait(Until.hasObject(By.descStartsWith("Recorded duration. "+latestDay.minusDays(6)+": ")),5000));
+            LocalDate latestDay=LocalDate.now(ZoneId.systemDefault()).minusDays(1),chosenDay=latestDay.getDayOfMonth()>1?latestDay.minusDays(1):latestDay.plusDays(1);
+            object("Choose trend date").click();
+            title("Trend date");
+            object("Choose date "+chosenDay).click();
+            assertTrue("Calendar must render the actual pending date",device.wait(Until.hasObject(By.desc("Pending date "+chosenDay)),5000));
+            captureCalendar(chosenDay);
+            click("Use date");
+            title("Trends");
+            String missingDate=(chosenDay.isBefore(latestDay)?chosenDay.minusDays(6):chosenDay)+": no record.";
+            assertTrue("Changing the calendar changes the actual plotted range and preserves unknown dates",device.wait(Until.hasObject(By.descContains(missingDate)),5000));
+            awaitHistoryRender();
+            object("Choose trend date").click();
+            title("Trend date");
+            assertTrue("Calendar must render the actual pending date",device.wait(Until.hasObject(By.desc("Pending date "+chosenDay)),5000));
+            object("Choose date "+latestDay).click();
+            assertTrue("Restored date must render before Use",device.wait(Until.hasObject(By.desc("Pending date "+latestDay)),5000));
+            click("Use date");
+            title("Trends");
+            assertTrue(device.wait(Until.hasObject(By.descStartsWith("Recorded duration. "+latestDay.minusDays(6)+": ")),5000));
+            awaitHistoryRender();
             UiObject2 durationChart=device.wait(Until.findObject(By.descStartsWith("Recorded duration.")),5000);assertNotNull("Actual weekly duration chart",durationChart);android.graphics.Rect durationBounds=durationChart.getVisibleBounds();assertTrue("Inspect a recorded day",device.click(durationBounds.centerX(),durationBounds.centerY()));String selectedDay=LocalDate.now(ZoneId.systemDefault()).minusDays(4)+": 7 h 10 min";assertTrue("The selected fourth day reports its real paused-duration total",device.wait(Until.hasObject(By.desc(selectedDay)),5000));capture("week-selected");
             click("Month");
-            assertTrue(object("Month").isSelected());
+            assertTrue("Month selection must render",device.wait(Until.hasObject(By.desc("Month").selected(true)),5000));
             capture("month");
             click("Year");
-            assertTrue(object("Year").isSelected());
+            assertTrue("Year selection must render",device.wait(Until.hasObject(By.desc("Year").selected(true)),5000));
             capture("year");
             click("Week");
             openTrendOptionsAfterWeek();
@@ -147,6 +167,7 @@ public final class ReportReferenceFlowTest {
             title("Sleep rhythm");
             device.pressBack();
             title("Trends");
+            awaitHistoryRender();
             object("Read details").click();
             title("Sleep report");
             assertTrue(device.wait(Until.hasObject(By.text("Snoring estimates")),5000));
