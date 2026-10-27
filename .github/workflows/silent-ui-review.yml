@@ -21,6 +21,7 @@ on:
           - event-library
           - goal-plan
           - interaction-security
+          - priority-menus
           - sensing-travel
           - travel-ui
           - sonar-night
