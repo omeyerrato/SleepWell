@@ -383,14 +383,37 @@ public final class OrganizedSettingsJourneyTest {
             desc("More tracking settings"); require("Tracking settings"); capture("tracking-more", "Movement sensitivity", true);
             Activity settingsParent = openChild("Movement sensitivity", MotionSensorActivity.class);
             require("Motion sensor"); require("Waiting for motion readings. Missing data stays blank.");
-            capture("tracking-sensitivity", "Motion sensitivity", true);
+            // A native SeekBar is a range control, not an OnClick action. Inspect its own
+            // complete geometry and ACTION_SET_PROGRESS semantics; keep the capture action on the fixed footer.
+            i.runOnMainSync(() -> {
+                View root = activity.getWindow().getDecorView(); View range = find(root, "Motion sensitivity", true);
+                assertTrue("Actual enabled native sensitivity range", range instanceof android.widget.SeekBar && range.isEnabled() && range.isFocusable());
+                Rect visible = new Rect(); assertTrue("Sensitivity range is visible", range.getGlobalVisibleRect(visible));
+                assertEquals("Sensitivity range complete width", range.getWidth(), visible.width());
+                assertEquals("Sensitivity range complete height", range.getHeight(), visible.height());
+                assertTrue("Sensitivity range 48dp width", visible.width() >= Design.dp(c, 48));
+                assertTrue("Sensitivity range 48dp height", visible.height() >= Design.dp(c, 48));
+                Rect bounds = screenBounds(range), save = measured(root, "Use this sensor", false);
+                assertTrue("Sensitivity range clear of dock", bounds.bottom <= dockTop());
+                assertTrue("Sensitivity range above fixed Use action", bounds.bottom <= save.top);
+                android.view.accessibility.AccessibilityNodeInfo node = range.createAccessibilityNodeInfo();
+                assertNotNull("Native sensitivity range semantics", node.getRangeInfo());
+                assertEquals(0, node.getRangeInfo().getMin(), 0); assertEquals(2, node.getRangeInfo().getMax(), 0);
+                assertEquals("Initial Medium position", 1, node.getRangeInfo().getCurrent(), 0);
+                assertTrue("Native range supports actual progress input", node.getActionList().contains(android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction.ACTION_SET_PROGRESS));
+                View heading = find(root, "Sensitivity", false); assertNotNull(heading);
+                assertNotNull("Actual current sensitivity label", find((View) heading.getParent(), "Medium", false));
+            });
+            capture("tracking-sensitivity", "Use this sensor", false);
             i.runOnMainSync(() -> {
                 View target = find(activity.getWindow().getDecorView(), "Motion sensitivity", true); assertTrue(target instanceof android.widget.SeekBar);
                 Bundle args = new Bundle(); args.putFloat(android.view.accessibility.AccessibilityNodeInfo.ACTION_ARGUMENT_PROGRESS_VALUE, 2);
                 assertTrue(target.performAccessibilityAction(android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction.ACTION_SET_PROGRESS.getId(), args));
                 assertEquals("Actual sensitivity draft changes", 2, ((android.widget.SeekBar) target).getProgress());
+                View heading = find(activity.getWindow().getDecorView(), "Sensitivity", false); assertNotNull(heading);
+                assertNotNull("Current sensitivity label changes, independently of static High endpoint", find((View) heading.getParent(), "High", false));
             });
-            require("High"); cancelChild(settingsParent); require("Tracking settings"); assertTrue("Cancelled sensitivity draft is not saved", motion.getAll().isEmpty());
+            cancelChild(settingsParent); require("Tracking settings"); assertTrue("Cancelled sensitivity draft is not saved", motion.getAll().isEmpty());
             desc("Sampling & battery"); require("Sampling & battery"); capture("tracking-power", "Done", false);
             recreate(); require("Sampling & battery"); capture("tracking-power-recreated", "Done", false);
             back(); require("Tracking settings"); back(); recreate(); trackingMain("recreated", true);
