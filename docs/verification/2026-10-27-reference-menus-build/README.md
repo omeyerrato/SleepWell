@@ -2,7 +2,7 @@
 
 Production source: `170b0e44785c52429f7b4c089e234ca9d18ce102`. Arm64 development
 APK, 166,719,432 bytes, original signer; production build passed in 1m22s.
-Distribution is pending until the remote tag and both uploaded hashes are verified.
+[Published development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-reference-menus-20261027-170b0e44). The exact remote tag and both uploaded hashes are verified: [distribution](distribution.json).
 See [candidate](candidate.json), [build](production-build.txt) and [signer](signer.txt).
 
 Report calendar/edit and its subsequent proportion corrections pass. Backup

@@ -412,5 +412,6 @@
   ],
   "release_tag": "v0.1.0-reference-menus-20261027-170b0e44",
   "release_url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-reference-menus-20261027-170b0e44",
-  "distribution_verified": false
+  "distribution_verified": true,
+  "release_id": 425868383
 }

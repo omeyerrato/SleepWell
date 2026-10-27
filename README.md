@@ -12,16 +12,15 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-Latest published **795ab556** corrects Report, Sound events, Sleep plan options,
-Appearance and the scoped interaction/security issues. The arm64 build passed in
-4m19s; its remote tag, original signer and both uploaded hashes are verified.
-Five focused native journeys pass seven methods with 47 individually inspected
-Android captures. [Release and exact scope](docs/verification/2026-10-27-design-interactions-build/README.md).
+Latest published **170b0e44** includes real backup tone/volume, corrected rails,
+Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped
+Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
+1m22s; remote tag and both uploaded hashes are verified. Selected native flows
+exercise actions, cancellation, recreation and persistence. [Exact release scope](docs/verification/2026-10-27-reference-menus-build/README.md).
 
-The phone remains **32f064e2**, with the original records, preferences and user
-files preserved by its earlier update. No further phone action or physical
-output test ran. Report calendar/edit verification now passes; all 36 designs
-and the broader interaction/security review remain open.
+The phone remains **32f064e2**, preserving its original records, preferences and
+user files from the earlier update. No new phone action or physical output test
+ran. All36 reference states and the broader interaction/security review remain open.
 
 ## Working capabilities
 

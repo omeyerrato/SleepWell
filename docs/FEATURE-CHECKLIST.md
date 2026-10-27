@@ -2,22 +2,21 @@
 
 Condensed version: [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
 Checked means implemented source/build, not full phone/overnight acceptance.
-Latest published **795ab556** corrects Report, Sound events, Sleep plan options,
-Appearance and the scoped interaction/security issues. The arm64 build passed in
-4m19s; its remote tag, original signer and both uploaded hashes are verified.
-Five focused native journeys pass seven methods with 47 individually inspected
-Android captures. [Release and exact scope](verification/2026-10-27-design-interactions-build/README.md).
+Latest published **170b0e44** includes real backup tone/volume, corrected rails,
+Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped
+Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
+1m22s; remote tag and both uploaded hashes are verified. Selected native flows
+exercise actions, cancellation, recreation and persistence. [Exact release scope](verification/2026-10-27-reference-menus-build/README.md).
 
-The phone remains **32f064e2**, with the original records, preferences and user
-files preserved by its earlier update. No further phone action or physical
-output test ran. Report calendar/edit verification now passes; all 36 designs
-and the broader interaction/security review remain open.
+The phone remains **32f064e2**, preserving its original records, preferences and
+user files from the earlier update. No new phone action or physical output test
+ran. All36 reference states and the broader interaction/security review remain open.
 
 ## Current top priorities
 
-- [ ] Match all36 reference screens. Sound events, Report spacing and Sleep goals have passing current-source native screenshots/actions; Appearance fits its controls, saves all three themes and passes full large-text action reach. [Screen-by-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
-- [x] Complete Report calendar/edit verification: source514a5800, CI40477887525,64.406s; all11 original screenshots inspected. Real date changes, selected-day chart, notes/tags/awake edits, Save/reopen and Back-discard pass. This is functional closure, not all36 design acceptance. [Evidence](verification/2026-10-27-report-calendar-complete/README.md).
-- [ ] Remaining interaction bugs and security review. Cancelled shortcut navigation, obscured authorization gestures and calendar-permission recovery now pass their three-method native scope at795ab556 (CI40517817995). All23 remaining exported components have a documented static review; broader interaction/runtime acceptance remains open. [Issue status](INTERACTION-SECURITY-REVIEW.md).
+- [ ] Match all36 reference screens. Current Report, Tone/Gentle, Snooze, QR, sleep plan, rhythm/Nap, Settings root and Appearance have bounded comparison/action evidence. Remaining screens, variants and full reference fidelity remain open. [Screen-by-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
+- [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
+- [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness recovery and additional Tracking work are a separate source increment awaiting native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
 The installed phone remains32f064e2; it predates the passing Report fix and these new source changes. No further phone action is included in this status update.
 

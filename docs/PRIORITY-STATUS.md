@@ -2,9 +2,9 @@
 
 ## Current top priorities
 
-- [ ] Match all36 reference screens. Sound events, Report spacing and Sleep goals have passing current-source native screenshots/actions; Appearance fits its controls, saves all three themes and passes full large-text action reach. [Screen-by-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
-- [x] Complete Report calendar/edit verification: source514a5800, CI40477887525,64.406s; all11 original screenshots inspected. Real date changes, selected-day chart, notes/tags/awake edits, Save/reopen and Back-discard pass. This is functional closure, not all36 design acceptance. [Evidence](verification/2026-10-27-report-calendar-complete/README.md).
-- [ ] Remaining interaction bugs and security review. Cancelled shortcut navigation, obscured authorization gestures and calendar-permission recovery now pass their three-method native scope at795ab556 (CI40517817995). All23 remaining exported components have a documented static review; broader interaction/runtime acceptance remains open. [Issue status](INTERACTION-SECURITY-REVIEW.md).
+- [ ] Match all36 reference screens. Current Report, Tone/Gentle, Snooze, QR, sleep plan, rhythm/Nap, Settings root and Appearance have bounded comparison/action evidence. Remaining screens, variants and full reference fidelity remain open. [Screen-by-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
+- [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
+- [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness recovery and additional Tracking work are a separate source increment awaiting native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
 The installed phone remains32f064e2; it predates the passing Report fix and these new source changes. No further phone action is included in this status update.
 
@@ -12,8 +12,10 @@ Three implementation worktrees own the priorities. Additional breathing implemen
 
 ## New source and focused verification
 
-- [x] Report calendar/edit flow and subsequent spacing/proportion corrections: 11 original captures, actual actions and Save/reopen pass. [Current Report evidence](verification/2026-10-27-report-proportions/README.md).
-- [x] Real backup sound/volume settings and format14/legacy13 compatibility pass the same native journey with fake outputs; 10 originals inspected. The later progress-rail rendering fix still needs its final capture. [Snooze evidence](verification/2026-10-27-snooze-backup/README.md).
-- [x] Rhythm and Nap changed main layouts/actions pass, with 13 individually inspected originals. [Evidence](verification/2026-10-27-rhythm-nap/README.md).
-- [ ] Final acceptance of the new Gentle sample/rail and Health/privacy repairs. CI40546119570 exposed an interruption-notice loss, a Health input-handling race and a real cleanup-observation race; each has a narrow source fix. Follow-up is restricted to those repairs.
-- [ ] All36 reference screens and broad interaction/security acceptance remain open. The phone remains32f064e2; latest published795ab556 is separate from these newer source increments. No physical alarms or phone outputs ran.
+- [x] Report calendar/edit and proportion corrections; actual actions, Save/reopen and eleven inspected captures.
+- [x] Real backup tone/volume, format14 with legacy imports and correct progress rails; same native journey plus fake-output policy assertions.
+- [x] Gentle quiet ramp sample, Tone selection/import/preview controls and compact QR enrollment; real configuration/persistence with injected outputs.
+- [x] Rhythm/Nap layout/actions, Health permission recovery, Privacy deletion/cleanup recovery and Cloud folder rotation pass their named private native flows.
+- [ ] All36 reference states and broader interaction/security acceptance remain open. Source-only Tracking/readiness refinements require their focused native capture checks next.
+
+Published170b0e44 is separate from installed32f064e2. No personal-phone or physical output action ran. [Current release and exact evidence](verification/2026-10-27-reference-menus-build/README.md).

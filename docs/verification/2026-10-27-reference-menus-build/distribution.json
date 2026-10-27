@@ -1,0 +1,21 @@
+{
+  "release": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-reference-menus-20261027-170b0e44",
+  "id": 425868383,
+  "tag": "v0.1.0-reference-menus-20261027-170b0e44",
+  "source": "170b0e44785c52429f7b4c089e234ca9d18ce102",
+  "assets": [
+    {
+      "name": "SleepWell-170b0e44-arm64.apk",
+      "size": 166719432,
+      "state": "uploaded",
+      "digest": "sha256:48b53f489fb5c7c3b5ffcbcd89b9a78d30df260bef651a01464e9f7465ffbe9f"
+    },
+    {
+      "name": "SleepWell-170b0e44-arm64.apk.sha256",
+      "size": 96,
+      "state": "uploaded",
+      "digest": "sha256:3a9c313eec68a242e6243d31840f54188bf6f7dde09cee39281d25b9f7bca43e"
+    }
+  ],
+  "tag_commit_verified": true
+}
