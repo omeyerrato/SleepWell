@@ -2,17 +2,9 @@
 
 Condensed version: [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
 Checked means implemented source/build, not full phone/overnight acceptance.
-Latest published source **5266e54b** builds27s; original signer, Git tag and both
-uploaded APK/checksum digests match. The update is not installed: the phone remains
-**2cbfe043** with its original rows/preferences/private files preserved.
+Latest published source **c6f2fcaa** assembleDebug passed in 18s; original signer, Git tag and both uploaded APK/checksum digests match. It adds per-alarm smart-wake overrides, clearer Travel menus and help-dialog restoration. The update is not installed: the phone remains **2cbfe043** with original rows/preferences/private files preserved.
 
-Three focused Android flows pass, with23 inspected originals: Report43.351s/9,
-organized menus34.25s/11 and actual recorded CPU/save/reopen/delete13.826s/3.
-[Exact scope](verification/2026-10-27-report-menu-release/README.md).
-No new unit/lint/broad campaign or personal-phone/output action ran. Dedicated
-reviewer stays stopped; all36reference screens remain required. Additional
-recognition still misses2/4 held-out positives, and sleep stages remain missing.
-Sleep schema17/backup13/private automation2/result database1 are unchanged.
+Organization 26.671s/13 inspected captures; Travel plan 43.569s and cue flow 37.968s/31 inspected captures. [Exact scope](verification/2026-10-27-smart-wake-travel/README.md). Prior Report/menu/recording-analysis evidence remains separate; no whole-app acceptance is inferred. No new unit/lint/broad campaign or personal-phone/output action ran. Dedicated reviewer stays stopped; all36 reference screens remain required. Additional recognition still misses2/4 held-out positives, and phone sleep stages remain missing. Sleep schema17/backup13/private automation2/result database1 are unchanged.
 
 ## New priorities
 

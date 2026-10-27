@@ -8,21 +8,13 @@ Full supporting evidence stays in FEATURE-CHECKLIST.md and FEATURE-MATRIX.md.
 - [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.
 - [x] First Settings/alarm-menu organization pass: eight groups, search and parent-aware Back; every feature retained.
 
-Latest published **5266e54b**: compact Report editor, numerical/gap chart
-inspection, grouped tracking/sound/mixer choices, simpler recording analysis and
-switch overlap correction. Production build27s; original signer and uploaded
-APK/checksum verified. [Release/evidence](verification/2026-10-27-report-menu-release/README.md).
+Latest published **c6f2fcaa** adds real per-alarm smart-wake overrides, the configured dawn window, simpler Travel menus and restored help dialogs. assembleDebug passed in 18s; original signer, exact Git tag and both uploaded hashes verified. [Release/evidence](verification/2026-10-27-smart-wake-travel/README.md).
 
-Bounded Android passes: Report43.351s/9inspected captures; organized menus34.25s/11;
-real recorded CPU analysis/save/reopen/delete13.826s/3. Each proves only its named
-actions and persistence. Reliable additional recognition, all36screens and
-physical/overnight acceptance remain open. The phone is still at2cbfe043.
+Organization 26.671s/13 inspected captures; Travel plan 43.569s and cue flow 37.968s/31 inspected captures. Each proves its named actions and persistence. Sensor early-wake runtime/accuracy and physical/overnight acceptance remain open. The phone is still2cbfe043.
 
-Unreleased **69dbbca3** moves Repeat rule into Schedule & dates, keeping custom
-or invalid repeat status visible and restoring room for the main Snooze row.
-Production build21s/original signer verified; focused organization CI40407366922
-passes30.472s with ten inspected actual captures and preserved draft/Save/reopen.
-[Exact scope](verification/2026-10-27-alarm-hierarchy/README.md); full board02 remains open.
+This includes the prior compact Report/chart, organized sound/tracking/mixer menus, recording-analysis and alarm Schedule & dates hierarchy. [Prior release scope](verification/2026-10-27-report-menu-release/README.md). All36 designs and the nine unfinished items below remain open; these bounded passes do not check them off.
+
+Unreleased **a8842ada** adds optional guarded API scalars for smart-wake window, sensitivity and recorded-duration goal. Production build **PASS19s** and original signer verified; default13 columns and existing grant/revision/ownership guards remain. No external-caller verification or phone action ran. These fields are outside publishedc6f2fcaa.
 
 ## Implemented
 

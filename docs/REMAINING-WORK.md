@@ -5,7 +5,7 @@ history. The goal remains the full applicable phone functionality and **all 36
 supplied design screens across 12 boards**. Existing code, a successful build or a
 bounded historical pass does not establish that whole goal is complete.
 
-Latest published **5266e54b** includes the Report/chart, organized-menu and recording-analysis changes. Build27s, original signer and both uploaded asset digests verified. Three focused flows pass with23 inspected originals; complete scope stays in the [release evidence](verification/2026-10-27-report-menu-release/README.md).
+Latest published **c6f2fcaa** includes real per-alarm smart-wake overrides, clearer Travel menus and restorable help dialogs, plus prior Report/chart/menu/recording-analysis work. assembleDebug passed in 18s; original signer, exact tag and uploaded hashes verified. Organization 26.671s/13 inspected captures; Travel plan 43.569s and cue flow 37.968s/31 inspected captures. [Scoped evidence](verification/2026-10-27-smart-wake-travel/README.md).
 
 ## Current user priorities
 
@@ -26,11 +26,11 @@ unverified. [Scoped evidence](verification/2026-10-26-settings-organization/READ
 | --- | --- |
 | Installed phone build | **2cbfe043**, authorized streamed update; installed checksum/original signer match. All original schema17 rows, preferences and original private files preserved. |
 | Phone availability | Connected for that authorized update only. No app launch, suspension change or output/capture/provider runtime action. |
-| Published candidate | **5266e54b**, production build PASS27s, original signer, exact tag target and both uploaded asset hashes verified. Report/chart/menu/recording-analysis changes and optional snooze API field included; not installed. Sleep schema17/backup13/private automation2/result database1. |
-| New feature evidence | Report43.351s/9captures; organized menus34.25s/11; native recorded CPU/save/reopen/delete13.826s/3. All originals inspected. Provider/client, physical haptics/outputs, accuracy and overnight acceptance remain open. |
+| Published candidate | **c6f2fcaa**, assembleDebug passed in 18s, original signer, exact tag and both uploaded hashes verified; not installed. Sleep schema17/backup13/private automation2/result database1. |
+| New feature evidence | Organization 26.671s/13 inspected captures; Travel plan 43.569s and cue flow 37.968s/31 inspected captures. Prior Report/menu/recording flows remain separate. Per-alarm sensor runtime/accuracy, physical output, all36 screens and overnight acceptance remain open. |
 | Current work policy | Features first; no new unit-test batches or broad campaigns. Essential builds, preservation and bounded changed-flow checks remain applicable. Dedicated reviewer stays stopped. |
 
-[Latest published release and scoped evidence](verification/2026-10-27-report-menu-release/README.md).
+[Latest published release and scoped evidence](verification/2026-10-27-smart-wake-travel/README.md).
 [Prior model/radio/rhythm scope](verification/2026-10-26-radio-rhythm-recognition/README.md).
 
 [Phone update evidence](verification/2026-10-26-phone-2cbfe043/README.md) is separate
@@ -41,6 +41,10 @@ The later compact editor flow shows the full default-size main composition and s
 No further personal-phone actions are authorized by this status note.
 
 ## Concrete remaining implementation and interpretation limits
+
+Unreleased **a8842ada** builds in19s with the original signer and adds optional
+guarded smart-wake API fields. Published **c6f2fcaa** excludes that extension;
+external-caller/runtime acceptance remains open. [API contract](ALARM-CONTENT-PROVIDER.md).
 
 - [ ] Resolve reliable automatic laughter recognition. The new **Laughter** task is
   an experimental YAMNet-family estimate; earlier failed independent positives and

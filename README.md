@@ -12,30 +12,13 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-[Development APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-report-menus-20261027-5266e54b)
-from **5266e54b** includes a compact Report editor, measured chart inspection,
-explicit gaps, grouped sound/tracking/mixer menus, themed timer/fade choices and
-clearer recording-analysis pages. Shared switch descriptions now wrap before the
-control. Settings search retains88 destinations; all existing sources/features
-remain. The guarded ordinary-alarm API adds optional1–60min snooze duration.
+[Development APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-smart-travel-20261027-c6f2fcaa) from **c6f2fcaa** adds per-alarm Smart wake-up sensitivity and recorded-duration goal overrides. The configured dawn window, simpler Travel schedules/light-cue menus and restored help dialogs keep the main controls readable. Prior compact Report/chart, sound/tracking/mixer organization and recording-analysis work remain included.
 
-Production build **PASS27s**, original signer and both uploaded asset hashes verified.
-APK334,914,969bytes includes the offline models/runtime. Three focused silent
-Android flows pass: Report43.351s/9inspected captures, organized menus34.25s/11,
-and actual recording CPU analysis/save/reopen/delete13.826s/3. These establish
-their documented actions and persistence, not all36screen or whole-app acceptance.
-[Exact release and evidence scope](docs/verification/2026-10-27-report-menu-release/README.md).
+Production assembleDebug passed in 18s; original signer, exact tag and both uploaded hashes verified. APK 334,944,069 bytes includes offline models/runtime. Organization 26.671s/13 inspected captures; Travel plan 43.569s and cue flow 37.968s/31 inspected captures. These checks establish their documented actions and persistence. [Exact release/evidence scope](docs/verification/2026-10-27-smart-wake-travel/README.md).
 
-Additional sound recognition remains experimental: the independent holdout misses
-2/4 positive sources, and both native windows are Uncertain. Sleep-stage/REM/apnea,
-external-client/vendor exchange, physical haptic feel and overnight/output behavior
-remain open. No new unit/lint/broad campaign or personal-phone action ran.
+All36 reference screens, per-alarm sensor early-wake accuracy, reliable additional recognition, sleep-stage/REM/breathing/apnea, external providers and overnight/output acceptance remain open. No new unit/lint/broad campaign or personal-phone action ran. Sleep schema17/backup13/private automation2/result database1 remain.
 
-Sleep schema17/backup13/private automation2 and separate result database1 remain.
-The separately authorized phone build remains **2cbfe043**, with original data
-preserved; this newer APK is **not installed**.
-[Phone evidence](docs/verification/2026-10-26-phone-2cbfe043/README.md).
-[Checklist](docs/QUICK-CHECKLIST.md) · [Remaining work](docs/REMAINING-WORK.md).
+The separately authorized phone build remains **2cbfe043**, with original data preserved; this update is **not installed**. [Phone evidence](docs/verification/2026-10-26-phone-2cbfe043/README.md). [Checklist](docs/QUICK-CHECKLIST.md) · [Remaining work](docs/REMAINING-WORK.md).
 
 ## Working capabilities
 

@@ -1,0 +1,29 @@
+{
+  "source": "c6f2fcaaad0f83f08130399d76611020a2b39ea7",
+  "build": "assembleDebug passed in 18s",
+  "verification_scope": "Existing organization journey PASS26.671s/13 inspected Android captures; TravelPlanFlowTest PASS43.569s and TravelCueFlowTest PASS37.968s/31 inspected captures. Actual draft, modal recreation, Save/reopen, disabled fixture alarm and fake output ownership checks only; no personal-phone/physical output, overnight, unit/lint or broad campaign. Early-wake sensor runtime and accuracy remain unverified.",
+  "database_schema": 17,
+  "backup_format": 13,
+  "phone_installed": false,
+  "artifacts": {
+    "debug": {
+      "source": "c6f2fcaaad0f83f08130399d76611020a2b39ea7",
+      "sha256": "685e10168a46709b212c012094d8c6d5b33b43b9344f77bc6fe60f2bac2e6e43",
+      "path": "SleepWell-c6f2fcaa.apk",
+      "size": 334944069
+    }
+  },
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "private_automation_schema": 2,
+  "recorded_estimates_schema": 1,
+  "distribution": {
+    "tag": "v0.1.0-smart-travel-20261027-c6f2fcaa",
+    "url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-smart-travel-20261027-c6f2fcaa",
+    "target_commit": "c6f2fcaaad0f83f08130399d76611020a2b39ea7",
+    "draft": false,
+    "prerelease": true,
+    "uploaded": true,
+    "uploaded_size": 334944069,
+    "uploaded_digest": "sha256:685e10168a46709b212c012094d8c6d5b33b43b9344f77bc6fe60f2bac2e6e43"
+  }
+}
