@@ -10,6 +10,8 @@ import java.util.UUID;
 
 /** Exported review surface. Incoming values never become an unreviewed service Intent. */
 public final class IncomingAutomationActivity extends Activity {
+ private final SensitiveReviewTouches reviewTouches=new SensitiveReviewTouches();
+ @Override public boolean dispatchTouchEvent(android.view.MotionEvent event){return reviewTouches.dispatch(this,event,super::dispatchTouchEvent);}
  private IncomingAutomation.Request request;private IncomingAutomation.Identity pinned;private IncomingAutomation.Grant grant;private IncomingAutomation.Work inspecting,preparing;
  private boolean resumed,terminal,submitted,inspected;private long received,sentAt,settingsRevision;private String owner=UUID.randomUUID().toString(),source="",issue="",resultStatus="",initialProcess=IncomingAutomation.PROCESS;
  private final Handler main=new Handler(Looper.getMainLooper());
