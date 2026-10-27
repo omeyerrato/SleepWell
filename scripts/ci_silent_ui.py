@@ -145,6 +145,16 @@ process = subprocess.Popen([emulator, "-avd", "SleepWellSilent", "-port", "5554"
 
 def close_emulator():
     if process.poll() is None:
+        # Keep guest evidence for startup/system ANRs as well as app failures.
+        # This serial was admitted as an ephemeral qemu guest before any test.
+        for name, parts in (("guest-logcat.txt", ["logcat", "-d", "-b", "all", "-t", "3000"]),
+                            ("guest-last-anr.txt", ["shell", "dumpsys", "activity", "lastanr"]),
+                            ("guest-windows.txt", ["shell", "dumpsys", "window", "windows"])):
+            try:
+                result = subprocess.run(adb + parts, capture_output=True, text=True, timeout=15)
+                (output / name).write_text(result.stdout + result.stderr, encoding="utf-8")
+            except Exception as error:
+                (output / name).write_text("Guest diagnostic unavailable: " + str(error), encoding="utf-8")
         process.terminate()
         try:
             process.wait(timeout=15)
@@ -179,7 +189,9 @@ command("shell", "settings", "put", "system", "font_scale", "1.0")
 command("shell", "settings", "put", "system", "time_12_24", "12")
 for key in ("window_animation_scale", "transition_animation_scale", "animator_duration_scale"):
     command("shell", "settings", "put", "global", key, "0")
-command("shell", "input", "keyevent", "82")  # The fresh emulator has no credential lock.
+# Use the WindowManager operation instead of injecting a key into a cold launcher.
+# AOSP WindowManagerShellCommand documents dismiss-keyguard; this fresh guest has no credential.
+command("shell", "wm", "dismiss-keyguard")
 command("install", "-r", str(root / "app/build/outputs/apk/debug/app-debug.apk"))
 command("install", "-r", str(root / "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"))
 # Establish first-run Android/boot initialization before the strict preservation baseline.
@@ -188,7 +200,27 @@ try:
     broadcast_idle = command("shell", "am", "wait-for-broadcast-idle", check=False, timeout=10).returncode == 0
 except subprocess.TimeoutExpired:
     broadcast_idle = False  # System queues can stay busy; the app's exact preservation assertion still applies.
+# sys.boot_completed does not prove that a rendered application owns focus.
+# Require actual stable MainActivity focus before starting the unchanged journey;
+# never dismiss an ANR or relax an app assertion to make startup look successful.
+startup_deadline = time.monotonic() + 60
+focused_samples = 0
+startup_windows = []
+while time.monotonic() < startup_deadline:
+    windows = command("shell", "dumpsys", "window", "windows", timeout=10).stdout
+    focus = next((line.strip() for line in windows.splitlines() if "mCurrentFocus=" in line), "No focused window")
+    startup_windows.append(focus)
+    owned = "org.sleepwell.app" in focus and ".MainActivity" in focus
+    focused_samples = focused_samples + 1 if owned else 0
+    if focused_samples >= 3:
+        break
+    time.sleep(1)
+else:
+    (output / "startup-focus.txt").write_text("\n".join(startup_windows) + "\n", encoding="utf-8")
+    raise SystemExit("The CI guest never established stable application focus; no journey was started. See guest/startup diagnostics.")
+(output / "startup-focus.txt").write_text("\n".join(startup_windows) + "\n", encoding="utf-8")
 metadata = {"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "emulator": True, "scope": args.scope, "audio_imports": args.audio_imports, "import_process_restart": False, "audio": "host output disabled; native sound review allowlisted" if (args.native_sounds or args.audio_imports) else "host output disabled; no native playback output allowlisted; library uses fake playback", "serial": args.serial, "system_broadcast_idle": broadcast_idle}
+metadata["startup_focused_samples"] = focused_samples
 for prop in ("ro.build.version.sdk", "ro.product.model"):
     metadata[prop] = command("shell", "getprop", prop).stdout.strip()
 metadata["size"] = command("shell", "wm", "size").stdout.strip()
