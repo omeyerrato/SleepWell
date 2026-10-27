@@ -221,12 +221,8 @@ public class MainActivity extends Activity {
     }
     private void setup(LinearLayout body) {
         hero(body,"Alarm readiness","Check your device settings for reliable alarms.");Design.space(body,18);
-        readiness(body,"alarm","Exact alarms","Allows alarms to play on time.",Scheduler.allowed(this),false,()->open(new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,Uri.parse("package:"+getPackageName()))));
-        readiness(body,"bell","Notifications","Lets SleepWell show alerts.",getSystemService(NotificationManager.class).areNotificationsEnabled(),false,this::notificationAccess);
-        if(Build.VERSION.SDK_INT>=34)readiness(body,"phone","Full-screen alarms","Shows the alarm when the screen is locked.",getSystemService(NotificationManager.class).canUseFullScreenIntent(),false,()->open(new Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT,Uri.parse("package:"+getPackageName()))));
-        readiness(body,"battery","Background battery","Allow unrestricted battery use for reliable alarms.",getSystemService(PowerManager.class).isIgnoringBatteryOptimizations(getPackageName()),false,()->open(new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)));
-        readiness(body,"mic","Microphone","Used for optional sound recordings.",checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED,true,()->{if(checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO},NOTIFY);else open(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,Uri.parse("package:"+getPackageName())));});
-        Design.space(body,18);Design.button(body,"Open battery settings",true,()->open(new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)));
+        AlarmReadinessUi.rows(this,body,NOTIFY,this::render);
+        Design.space(body,18);Design.button(body,"Open battery settings",true,()->{if(body.isAttachedToWindow())AlarmReadinessUi.battery(this);});
         Design.space(body,14);Design.text(body,"On Samsung, add SleepWell to Never auto sleeping apps. Force stopping or powering off the phone prevents alarms.",12,400,Design.MUTED);
 
         Design.space(body,12);Design.toggle(body,"Wait for duration goal","Smart wake-up only: early waking waits for your recorded-duration goal. The fixed alarm still rings on time.",Prefs.flag(this,"smartNeedsGoal"),on->Prefs.put(this,"smartNeedsGoal",on));
