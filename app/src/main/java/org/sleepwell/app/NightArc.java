@@ -13,6 +13,8 @@ final class NightArc extends View {
     NightArc(Context c,NapPlan nap,NapPlan.Clock clock,ZoneId zone,Consumer<NightWindow> changed){super(c);this.nap=nap;napClock=clock;bedtime=wake=0;alarmAt=nap.projectedDeadline(clock);this.changed=changed;update(clock.wall(),zone);setFocusable(true);setOnClickListener(v->{InteractionFeedback.action(v);explain();});}
     @Override public CharSequence getAccessibilityClassName(){return android.widget.Button.class.getName();}
     boolean needsNewOccurrence(long now,ZoneId currentZone){return !zone.equals(currentZone)||(nap!=null?nap.remaining(napClock)<0:alarmAt>0&&now>alarmAt);}
+    boolean explanationShowing(){return explanation!=null&&explanation.isShowing();}
+    void restoreExplanation(){if(isAttachedToWindow())explain();}
     private void explain(){
         if(explanation!=null&&explanation.isShowing())return;
         Context context=getContext();Appearance.Palette palette=Appearance.palette(context);android.app.Dialog dialog=new android.app.Dialog(context);dialog.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);
