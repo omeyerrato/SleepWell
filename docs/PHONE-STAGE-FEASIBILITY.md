@@ -100,6 +100,32 @@ private and unaccepted; no capture scaffolding or predicted hypnogram is shipped
 These are bounded findings, not an exhaustive absence claim. Do not restart the
 same candidate search without new weights, licence or input-contract evidence.
 
+## New primary-source check — 27 October 2026
+
+The bounded follow-up found no additional usable checkpoint. Its
+[source manifest](verification/2026-10-27-stage-feasibility/manifest.json)
+records two new leads, without repeating the six Nidra replays:
+
+- [Choi et al., Sensors 2025](https://doi.org/10.3390/s25206282)
+  segments **tracheal** audio into respiratory events using fine-tuned Whisper,
+  then estimates whole-night Wake/Light/Deep/REM **proportions**, explicitly not
+  epoch-by-epoch stages. Inspected article and author-publication links did not
+  provide its task-specific segmentation checkpoint or fitted stage predictors.
+  Generic Whisper weights do not replace those components. This would need those
+  reusable artifacts and demonstrated ambient-phone compatibility; even then its
+  proportion output would not support a timed hypnogram.
+- [Jaworski et al., Frontiers 2026](https://doi.org/10.3389/fnetp.2026.1779111)
+  combines a **Murata SCA11h bed sensor** (1-kHz acceleration, derived cardiac
+  measures) with 44.1-kHz directional-microphone audio. It predicts 30-second
+  labels from 62 features using five-minute windows. The inspected article links
+  no trained checkpoint; its data statement offers data from the authors. A
+  reusable trained release and matching cardiac inputs are missing. SleepWell's
+  phone-motion summaries cannot substitute for this sensor's cardiac features.
+
+These are resource/domain gaps, not a clinical-certification requirement or a
+claim that no suitable model can exist. No new weights/data were downloaded,
+inference run, recording added or stage graph implemented in this follow-up.
+
 ## Work still needed
 
 Obtain a reusable trained phone-input method demonstrating meaningful real-input

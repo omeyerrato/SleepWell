@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "reviewed": "2026-10-27",
+  "feature": "F049",
+  "status": "open; no new usable checkpoint identified in bounded follow-up",
+  "baseline_commit": "5fe17124",
+  "prior_evidence": "../2026-10-26-stage-feasibility/manifest.json",
+  "scope": "Primary publisher/author metadata only; no model or dataset download, inference, training, capture or production change.",
+  "sources": [
+    {
+      "doi": "10.3390/s25206282",
+      "title": "Estimating Sleep-Stage Distribution from Respiratory Sounds via Deep Audio Segmentation",
+      "publication_year": 2025,
+      "publisher": "https://www.mdpi.com/1424-8220/25/20/6282",
+      "primary_article_mirror": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12567477/",
+      "author_publication_list": "https://aic.hanyang.ac.kr/research/thesis.php",
+      "evidence_sections": ["2.1 Respiratory Sound Segmentation", "2.3 Sleep-Stage Distribution Prediction", "3.4 Task 2", "Data Availability Statement"],
+      "trained_resource_status": "No task checkpoint/fitted-predictor download was identified in the inspected article and author-publication links. This is a bounded observation, not a universal absence claim.",
+      "phone_stage_gap": "Tracheal-audio domain; output is full-night proportions, not timed stage labels.",
+      "next_prerequisite": "Redistributable task-specific segmentation and prediction artifacts with exact preprocessing/support-data contract, plus ambient-phone validation; a separate epoch method is needed for a hypnogram.",
+      "licence_scope": "No trained artifact located, so no artifact redistribution licence could be verified. Publication access is not an inferred model licence."
+    },
+    {
+      "doi": "10.3389/fnetp.2026.1779111",
+      "title": "Evaluating sleep quality in a non-intrusive manner using contactless ballistocardiography and audio signals through a LSTM-TCN machine learning model",
+      "published": "2026-05-12",
+      "publisher": "https://www.frontiersin.org/journals/network-physiology/articles/10.3389/fnetp.2026.1779111/full",
+      "evidence_sections": ["2.3.1 Ballistocardiography", "2.3.2 Audio microphone", "2.4.4 LSTM-TCN model", "Data availability statement"],
+      "trained_resource_status": "No checkpoint/code download linked in inspected article; data statement says raw data will be made available by authors. No contact was made.",
+      "phone_stage_gap": "Specialized Murata cardiac/respiratory feature inputs are not supplied by existing phone-motion summaries.",
+      "next_prerequisite": "Redistributable checkpoint and feature pipeline plus matching physiological inputs, or an independently trained phone-input method.",
+      "licence_scope": "Article CC BY; this does not establish redistribution rights for an unlocated checkpoint."
+    }
+  ],
+  "limitations": [
+    "Focused discovery only, not an exhaustive proof of model absence.",
+    "Previously rejected candidates were not downloaded or replayed again.",
+    "No artifact digests are claimed because no new trained artifact was acquired."
+  ]
+}
