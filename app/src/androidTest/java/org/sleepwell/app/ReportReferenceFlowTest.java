@@ -89,6 +89,7 @@ public final class ReportReferenceFlowTest {
             click("Trends");
             title("Trends");
             capture("week");
+            UiObject2 durationChart=device.wait(Until.findObject(By.descStartsWith("Recorded duration.")),5000);assertNotNull("Actual weekly duration chart",durationChart);android.graphics.Rect durationBounds=durationChart.getVisibleBounds();assertTrue("Inspect a recorded day",device.click(durationBounds.centerX(),durationBounds.centerY()));String selectedDay=LocalDate.now(ZoneId.systemDefault()).minusDays(4)+": 7 h 10 min";assertTrue("The selected fourth day reports its real paused-duration total",device.wait(Until.hasObject(By.desc(selectedDay)),5000));capture("week-selected");
             click("Month");
             assertTrue(object("Month").isSelected());
             capture("month");

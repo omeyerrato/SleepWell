@@ -16,6 +16,7 @@ on:
           - organized-settings
           - recorded-analysis
           - challenge-routine
+          - tonight
           - sensing-travel
           - travel-ui
           - sonar-night
