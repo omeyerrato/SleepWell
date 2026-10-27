@@ -201,3 +201,11 @@ implementation correction does not reinstate the stopped reviewer or accept all 
 Wearables remain excluded. No paywall, subscription or advertising is to be added.
 External services retain their own prerequisites; SleepWell being free does not
 make those services free or establish full completion.
+
+## New source and focused verification
+
+- [x] Report calendar/edit flow and subsequent spacing/proportion corrections: 11 original captures, actual actions and Save/reopen pass. [Current Report evidence](verification/2026-10-27-report-proportions/README.md).
+- [x] Real backup sound/volume settings and format14/legacy13 compatibility pass the same native journey with fake outputs; 10 originals inspected. The later progress-rail rendering fix still needs its final capture. [Snooze evidence](verification/2026-10-27-snooze-backup/README.md).
+- [x] Rhythm and Nap changed main layouts/actions pass, with 13 individually inspected originals. [Evidence](verification/2026-10-27-rhythm-nap/README.md).
+- [ ] Final acceptance of the new Gentle sample/rail and Health/privacy repairs. CI40546119570 exposed an interruption-notice loss, a Health input-handling race and a real cleanup-observation race; each has a narrow source fix. Follow-up is restricted to those repairs.
+- [ ] All36 reference screens and broad interaction/security acceptance remain open. The phone remains32f064e2; latest published795ab556 is separate from these newer source increments. No physical alarms or phone outputs ran.

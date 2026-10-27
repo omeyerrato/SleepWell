@@ -125,7 +125,7 @@ See [organization map](UI-ORGANIZATION.md).
 - [ ] Incoming request/replay/service ownership and outbound event/recipient lifecycle behavior.
 - [ ] CSV source graphs/event-pair inference/inspection/export and future-night calendar job/uncertainty handling.
 - [ ] Full36-screen reference design fidelity, especially Report/charts and menus.
-- [ ] Remaining interaction bugs and security review, deferred by user instruction.
+- [ ] Remaining interaction bugs and security review; now a current priority.
 - [x] Authorized 2cbfe043 phone installation and data-preservation comparison.
 - [ ] Phone runtime/navigation, Device Care state and actual migration-path acceptance.
 - [ ] Motion analysis count/checkpoint/recovery/backup and inline Report playback lifecycle.
