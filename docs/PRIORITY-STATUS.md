@@ -21,3 +21,10 @@ Three implementation worktrees own the priorities. Additional breathing implemen
 - [ ] All36 reference states and broader interaction/security acceptance remain open. Readiness and current Contactless/Snoring flows have bounded native evidence; live-copy correction plus Automatic, Wind-down/Guard, Motion and Room increments still need their changed-flow captures.
 
 Published170b0e44 is now installed with verified original user-data preservation. No alarm, sound, flashlight or haptic test ran. Version0.1.1 icon/haptics is built, awaiting USB reconnection. [Current release and exact evidence](verification/2026-10-27-reference-menus-build/README.md).
+
+## 28 October increment
+
+- [x] Readiness: actual Android denial, rationale Cancel, permanent denial, Settings return and recreation; bounded13-frame native proof.
+- [x] Live Tracking options: main status/chart/Pause/Stop separated from supporting settings; native actions, stale controls, recreation and Done/Back pass. Whole-night sonar graph still open.
+- [ ] Room conditions, Wind-down/Guard and Motion final native acceptance. Real source is merged in upcoming0.1.2 (`e6b3b860`); corrected input/checker retry [40601122904](https://github.com/omeyerrato/SleepWell/actions/runs/40601122904) is running or queued, not a passing result.
+- [ ] Publish/install0.1.2 after its acceptance. Latest published0.1.1 icon/haptics still awaits USB; installed phone remains170b.
