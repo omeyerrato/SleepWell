@@ -178,7 +178,7 @@ final class AlarmSmartWakeUi {
         }
         Design.button(panel,"About smart wake-up",false,()->{dialog.dismiss();activity.getWindow().getDecorView().post(()->{if(activity.isFinishing()||activity.isDestroyed())return;open.accept(()->about(activity));});});
         Design.button(panel,"Cancel",false,dialog::dismiss);
-        ScrollView scroll=new ScrollView(activity);dialog.scroll=scroll;scroll.addView(panel);dialog.setContentView(scroll);dialog.show();
+        ScrollView scroll=new ScrollView(activity);dialog.scroll=scroll;scroll.addView(panel);dialog.setContentView(scroll);SleepPicker.show(activity,dialog,560);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.getWindow().setLayout(Math.min(activity.getResources().getDisplayMetrics().widthPixels-Design.dp(activity,32),Design.dp(activity,400)),-2);
         return dialog;
@@ -190,7 +190,7 @@ final class AlarmSmartWakeUi {
         Design.text(panel,"About smart wake-up",22,600,Design.INK);Design.space(panel,16);
         Design.text(panel,"Requires active phone-movement tracking. Sustained movement can trigger this alarm within its configured window; its fixed deadline stays scheduled. The landscape illustrates your configured schedule, not measured sleep stages.\n\nSensitivity can follow your tracking profile, including surface calibration, or use this alarm’s Low, Medium or High override. Follow tracking sensitivity and Follow global duration goal restore inheritance for this draft.\n\nThe goal counts active recorded duration, excluding pauses, not confirmed sleep. Missing or stale movement cannot trigger early waking. Changes stay in the draft until Save alarm.",15,400,Design.MUTED);
         Design.space(panel,16);Design.button(panel,"Got it",true,dialog::dismiss);
-        ScrollView scroll=new ScrollView(activity);dialog.scroll=scroll;scroll.addView(panel);dialog.setContentView(scroll);dialog.show();
+        ScrollView scroll=new ScrollView(activity);dialog.scroll=scroll;scroll.addView(panel);dialog.setContentView(scroll);SleepPicker.show(activity,dialog,560);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.getWindow().setLayout(Math.min(activity.getResources().getDisplayMetrics().widthPixels-Design.dp(activity,32),Design.dp(activity,400)),-2);
         return dialog;
