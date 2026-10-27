@@ -207,7 +207,7 @@ startup_deadline = time.monotonic() + 60
 focused_samples = 0
 startup_windows = []
 while time.monotonic() < startup_deadline:
-    windows = command("shell", "dumpsys", "window", "windows", timeout=10).stdout
+    windows = command("shell", "dumpsys", "window", timeout=10).stdout
     focus = next((line.strip() for line in windows.splitlines() if "mCurrentFocus=" in line), "No focused window")
     startup_windows.append(focus)
     owned = "org.sleepwell.app" in focus and ".MainActivity" in focus
