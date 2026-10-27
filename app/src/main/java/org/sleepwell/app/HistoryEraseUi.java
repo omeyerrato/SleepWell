@@ -25,8 +25,9 @@ final class HistoryEraseUi {
             else if(job.pending>0)message=(job.erased?"History removed. ":"")+job.pending+(job.pending==1?" audio file still needs cleanup.":" audio files still need cleanup.");
             else message=job.erased?"History cleanup finished. Alarms remain.":"";
             status.setText(message);status.setVisibility(message.isEmpty()?View.GONE:View.VISIBLE);
-            if(job.done&&job.refreshNeeded){job.refreshNeeded=false;refresh.run();return;}
-            if(!job.done)handler.postDelayed(this,150);
+            if(!busy&&job.refreshNeeded){job.refreshNeeded=false;refresh.run();return;}
+            // If this frame drew busy, always observe again even if the worker just finished.
+            if(busy)handler.postDelayed(this,150);
         }
         private void confirm(){HistoryEraseJobs.Job job=HistoryErase.jobs.get(factory);if(confirming||job!=null&&!job.done)return;confirming=true;row.setEnabled(false);
             boolean cleanup=job!=null&&job.pending>0;dialog=HistoryEraseConfirm.create(body.getContext(),cleanup,()->{stopPreview.run();HistoryErase.start(body.getContext(),factory,cleanup?HistoryEraseJobs.Kind.CLEAN:HistoryEraseJobs.Kind.ERASE);handler.removeCallbacks(this);handler.post(this);});dialog.setOnDismissListener(d->{confirming=false;handler.post(this);});dialog.show();
