@@ -38,7 +38,7 @@ final class RoomSoundLevel {
                 else if(now-latest>2500)throw new IllegalStateException("No microphone readings received");
                 Thread.sleep(20);
             }
-        }catch(Exception|LinkageError failure){if(failure instanceof OpenFailure uncertain){capture=uncertain.capture;retained=capture;}issue=failure instanceof SecurityException?"Microphone access was denied or revoked. Tap to review access.":"Microphone unavailable or interrupted. Tap to try again.";
+        }catch(Exception|LinkageError failure){if(failure instanceof OpenFailure uncertain){capture=uncertain.capture;retained=capture;}if(valid())issue=failure instanceof SecurityException?"Microphone access was denied or revoked. Tap to review access.":"Microphone unavailable or interrupted. Tap to try again.";
         }finally{
             Arrays.fill(values,(short)0);level=null;state=State.CLOSING;
             try{if(capture!=null)capture.close();retained=null;state=issue.isEmpty()?State.CLOSED:State.ERROR;released(this);}
