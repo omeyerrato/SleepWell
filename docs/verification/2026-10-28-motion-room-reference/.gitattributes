@@ -1,0 +1,4 @@
+*.png -text
+*.txt -text
+environment.json -text
+focused-review-summary.json -text

@@ -1,0 +1,121 @@
+{
+  "run_id": "40601122904",
+  "original_directory": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\40601122904\\silent-android-review",
+  "files": [
+    {
+      "file": "environment.json",
+      "bytes": 838,
+      "sha256": "7419b76e49a8683f054d9145c3f3f99c75fa2e9a355dc1992fd3f13e0ec8dda0"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "bytes": 780,
+      "sha256": "dd4e5efe9b8cac73f47bbb06a0e4036ced5dcfc64087e093439d43c99e04801e"
+    },
+    {
+      "file": "guard-failure.txt",
+      "bytes": 48806,
+      "sha256": "39e743e2d61694e98cb6ed6435dc83ad9d02f70423d28eeac221bd7e4a62aad6"
+    },
+    {
+      "file": "GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen.txt",
+      "bytes": 1804,
+      "sha256": "22a49844f4fe437639ad61da671c07ff4062e805384fc92bfa86c3e151dba8ae"
+    },
+    {
+      "file": "motion-settings-changed.png",
+      "bytes": 132472,
+      "sha256": "36c1c02509d3a35f8d2419dcfd83b483b4694a26cecc8caecd26626df1ce79de"
+    },
+    {
+      "file": "motion-settings-conflict.png",
+      "bytes": 129969,
+      "sha256": "dc3df99f4cb0fce8b86b4524f13e9f918f83bed9566f2d959522da1d5998c740"
+    },
+    {
+      "file": "motion-settings-error.png",
+      "bytes": 126117,
+      "sha256": "b40688c38caf6c6e0541ba0191520614f2ad06d26fb8834d50e08407f791613b"
+    },
+    {
+      "file": "motion-settings-ready.png",
+      "bytes": 133776,
+      "sha256": "0e6193633babbf545d77cb3423ca34ba259ee3e9f5e1d90bef788ecb62feec0a"
+    },
+    {
+      "file": "motion-settings-recreated.png",
+      "bytes": 128694,
+      "sha256": "5d7b6ca6897428ec9a1219b04c6a861fe464f8538eaad665944f3695058c4a08"
+    },
+    {
+      "file": "motion-settings-reopened.png",
+      "bytes": 128694,
+      "sha256": "5d7b6ca6897428ec9a1219b04c6a861fe464f8538eaad665944f3695058c4a08"
+    },
+    {
+      "file": "motion-settings-unavailable.png",
+      "bytes": 125794,
+      "sha256": "31d653332b17e09022b79a24d9c74a38b7d5d084513a0aca52cee4e6a5d42d14"
+    },
+    {
+      "file": "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware.txt",
+      "bytes": 842,
+      "sha256": "82ba4100d1afcb0509349ed235d8c7c58308974a8692ecf4163ab55a2c149a98"
+    },
+    {
+      "file": "room-conditions-cleaned.png",
+      "bytes": 192964,
+      "sha256": "e44d0d5b4e89324a32f391aeb061e77387b9681b97600df78421e629b12f612f"
+    },
+    {
+      "file": "room-conditions-cleanup-blocked.png",
+      "bytes": 208648,
+      "sha256": "48a74c4ecfeffa2f6caef74d518ef69ae72137e2b629e357bcb7f0fada6d23b7"
+    },
+    {
+      "file": "room-conditions-default.png",
+      "bytes": 147248,
+      "sha256": "3ed512768dad5223418c1423b23cf2dda532c4600da4e8a6975eacbe94c7e99e"
+    },
+    {
+      "file": "room-conditions-dialog-input.txt",
+      "bytes": 232,
+      "sha256": "7e62cc94ee78e73abd39b42f22cba11689c5cbbeada8e4974d71e3b833b5df91"
+    },
+    {
+      "file": "room-conditions-dimming-saved.png",
+      "bytes": 156314,
+      "sha256": "6cf4fda705faaafc2b2ce21d429bbdaa0eb877e9f93174916a0d25baf2d68148"
+    },
+    {
+      "file": "room-conditions-measuring.png",
+      "bytes": 145063,
+      "sha256": "0888db288ef95f755e8ce67c4968b183f47bb7bd9bac9abef8dbebde488ccb91"
+    },
+    {
+      "file": "room-conditions-microphone-access.png",
+      "bytes": 169069,
+      "sha256": "0e5c40a9431bf9dbf6493606b528d44b6c87981329b6803cde33906094e2e313"
+    },
+    {
+      "file": "room-conditions-microphone-error.png",
+      "bytes": 147141,
+      "sha256": "f9e45792ec7333ade86580190f5f47351349aea38e3987fe87383b06d1bc0307"
+    },
+    {
+      "file": "room-conditions-recreated.png",
+      "bytes": 146254,
+      "sha256": "2bc20bbf36cca2dd06610e5c97af21269b6d4996fee0244d44c73ac51b74abd3"
+    },
+    {
+      "file": "room-conditions-reopened.png",
+      "bytes": 146422,
+      "sha256": "2d341013a4363bd12eedd2bfb8e9fc9a8c4345ae2acd9c09f7a613a07754a58d"
+    },
+    {
+      "file": "room-conditions-unavailable.png",
+      "bytes": 147057,
+      "sha256": "000299db45f985655d45588bf8c378397f8295a627fc8458e2f38ae62c52b198"
+    }
+  ]
+}

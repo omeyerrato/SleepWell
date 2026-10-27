@@ -1,0 +1,2 @@
+Not now root-visible=Rect(554, 370 - 766, 512) root-screen-origin=28,930 screen-target=Rect(582, 1300 - 794, 1442)
+Continue root-visible=Rect(766, 370 - 992, 512) root-screen-origin=28,930 screen-target=Rect(794, 1300 - 1020, 1442)

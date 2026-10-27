@@ -1,0 +1,38 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.GuardFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.GuardFlowTest:
+INSTRUMENTATION_STATUS: test=blockedAppDraftCancelsAndSavedChoicesReopen
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.GuardFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: One native Guided wind-down click must launch GuidedWindDownActivity
+	at org.sleepwell.app.GuardFlowTest.openWindChild(GuardFlowTest.java:55)
+	at org.sleepwell.app.GuardFlowTest.blockedAppDraftCancelsAndSavedChoicesReopen(GuardFlowTest.java:98)
+
+INSTRUMENTATION_STATUS: stream=
+Error in blockedAppDraftCancelsAndSavedChoicesReopen(org.sleepwell.app.GuardFlowTest):
+java.lang.AssertionError: One native Guided wind-down click must launch GuidedWindDownActivity
+	at org.sleepwell.app.GuardFlowTest.openWindChild(GuardFlowTest.java:55)
+	at org.sleepwell.app.GuardFlowTest.blockedAppDraftCancelsAndSavedChoicesReopen(GuardFlowTest.java:98)
+
+INSTRUMENTATION_STATUS: test=blockedAppDraftCancelsAndSavedChoicesReopen
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 30.7
+There was 1 failure:
+1) blockedAppDraftCancelsAndSavedChoicesReopen(org.sleepwell.app.GuardFlowTest)
+java.lang.AssertionError: One native Guided wind-down click must launch GuidedWindDownActivity
+	at org.sleepwell.app.GuardFlowTest.openWindChild(GuardFlowTest.java:55)
+	at org.sleepwell.app.GuardFlowTest.blockedAppDraftCancelsAndSavedChoicesReopen(GuardFlowTest.java:98)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

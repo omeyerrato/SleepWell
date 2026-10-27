@@ -1,0 +1,146 @@
+{
+  "capture_commit": "203cb4177c07d198fc8ea86874fa69ad215edd1e",
+  "comparison_commit": "759ce8fe9afed97ff950d59ff4cd73e68ca56b39",
+  "scope": "Only listed complete files and selected route/dimming/manifest lines; no whole MainActivity equivalence claim.",
+  "files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomConditionsActivity.java",
+      "capture_blob": "535222d9185a62b21f3814601335e61632bae25a",
+      "comparison_blob": "535222d9185a62b21f3814601335e61632bae25a",
+      "sha256": "0cfaee18a15c3edad352e4c4e99cd7dc54ed7c19e46621f3b7baad16425391dd",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomConditionsUi.java",
+      "capture_blob": "b17fce950d914fa64f42ac4125d599a0523e030a",
+      "comparison_blob": "b17fce950d914fa64f42ac4125d599a0523e030a",
+      "sha256": "b5c1ecc055f8d75f9c0b6badf626e5929a81b88359f58b6a40afc0a5f1fcbe06",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomLightPort.java",
+      "capture_blob": "672d1650a590043ad233dd27ac6e08168538ec83",
+      "comparison_blob": "672d1650a590043ad233dd27ac6e08168538ec83",
+      "sha256": "2f25e8423a1de0fb5b524fcd077a07b518efaa6b365034d0ae877253c11aa417",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomLightHistory.java",
+      "capture_blob": "bc13b4c87d95acc43ae1261de383994ffdb84e01",
+      "comparison_blob": "bc13b4c87d95acc43ae1261de383994ffdb84e01",
+      "sha256": "a0f508f701d27cf27ee3ce6191c7925e02f2cd1fff9f34d1605e922c2875145d",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomSoundLevel.java",
+      "capture_blob": "7a4332021f8b45646a1171b1e88d2b6a5e441ab8",
+      "comparison_blob": "7a4332021f8b45646a1171b1e88d2b6a5e441ab8",
+      "sha256": "5f95b428f2917e5b8e92e572e16c74455028e32bb35ab1bc9596f650b9d20446",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomAudio.java",
+      "capture_blob": "4a1396f51c5a6164f3e369f01064e4685565abc8",
+      "comparison_blob": "4a1396f51c5a6164f3e369f01064e4685565abc8",
+      "sha256": "70d71ec2bd3e60230dd0552c0bfe60c0c5fe8afc21dbebb03480332c5394f72a",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomDimming.java",
+      "capture_blob": "4a744b712ed6040d271dc54a8c797cbc53bf1351",
+      "comparison_blob": "4a744b712ed6040d271dc54a8c797cbc53bf1351",
+      "sha256": "eb5b1059964433909fb952a5740e22ebaabf722f61b84877b1a2991cb3640a6a",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MotionSensorActivity.java",
+      "capture_blob": "863efcdbb83cc6c91d60c482f8f35874f56c9470",
+      "comparison_blob": "863efcdbb83cc6c91d60c482f8f35874f56c9470",
+      "sha256": "f91e9728b70f62a5d948cbaf79de8fe951aa48996b0f1ace3182ee35cd4877f5",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MotionSignalChart.java",
+      "capture_blob": "5178ee8877b4dfed97fc767a8349bbf72c8d9abe",
+      "comparison_blob": "5178ee8877b4dfed97fc767a8349bbf72c8d9abe",
+      "sha256": "94187857dd0c75fc7a01ec858c049577f1ebb0157e2fea997815da1a840f7b9e",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MotionPort.java",
+      "capture_blob": "785d458099c2030b7f24352b743700a801307b77",
+      "comparison_blob": "785d458099c2030b7f24352b743700a801307b77",
+      "sha256": "9ccd54a201c103af3a6a8c570e5ff2bc13dea2f2f86c303e8766db028f8a5194",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MotionSettings.java",
+      "capture_blob": "5688c934e7ecc6135b703efaacfddc6740d02e5b",
+      "comparison_blob": "5688c934e7ecc6135b703efaacfddc6740d02e5b",
+      "sha256": "70f2890f08561c6fe15f3e2931addd35d8f8dd851ce4fb9d3354546b06bd8af7",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MicrophoneLease.java",
+      "capture_blob": "383a72ab075e9d74090c9e2f54c8fd710d051f98",
+      "comparison_blob": "383a72ab075e9d74090c9e2f54c8fd710d051f98",
+      "sha256": "3fb6c8feb50fb59baa11620648c97256a89613fa91482ecfd1867b1f74f0352b",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/MotionConfigurationFlowTest.java",
+      "capture_blob": "ce8c1553296ff95dc26ec248a4511b567e39bf79",
+      "comparison_blob": "ce8c1553296ff95dc26ec248a4511b567e39bf79",
+      "sha256": "39dc7b5c4b4b94e342702c94c174907f76352677d083462df6df40f54fb40d13",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/RoomConditionsFixture.java",
+      "capture_blob": "a6881e6cfe2148c3356ba75660fa843f0ba0cdb4",
+      "comparison_blob": "a6881e6cfe2148c3356ba75660fa843f0ba0cdb4",
+      "sha256": "c75090a0024029a98f90399920bd1f1a0dfa447de909bc36b9b2326119eb83ad",
+      "byte_equal": true
+    }
+  ],
+  "selected_lines": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "literal_filter": "RoomConditionsActivity.class",
+      "equal_selected_lines": true,
+      "selected_lines": [
+        "                settingsRow(body,\"sun\",\"Room conditions\",\"Live light and optional sound level\",()->startActivity(RecordUi.intent(this,RoomConditionsActivity.class)));"
+      ]
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "literal_filter": "RoomDimming",
+      "equal_selected_lines": true,
+      "selected_lines": [
+        "    private int renderedPhase=-1;private TextView winddownValue,winddownCaption,windGuardState;private Dialog windOptions;private Bundle restoreWindOptions;private RoomDimming windDimming;private boolean windResumed;",
+        "    private void syncWindDimming(){boolean active=tab==3&&windResumed&&hasWindowFocus();if(active&&windDimming==null)windDimming=new RoomDimming(this);if(windDimming!=null)windDimming.apply(active);}"
+      ]
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "literal_filter": "RoomConditionsActivity",
+      "equal_selected_lines": true,
+      "selected_lines": [
+        "        <activity android:name=\".RoomConditionsActivity\" android:exported=\"false\" />"
+      ]
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "literal_filter": "syncWindDimming(",
+      "equal_selected_lines": true,
+      "selected_lines": [
+        "    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){Runnable apply=()->{if(!isDestroyed()&&hasWindowFocus())Design.systemBars(this,tab==3||tab==0&&Appearance.palette(this).dark);};getWindow().getDecorView().post(apply);getWindow().getDecorView().postDelayed(apply,200);if(tab==3&&restoreWindOptions!=null){Bundle saved=restoreWindOptions;restoreWindOptions=null;windDownOptions(saved);}}syncWindDimming();}",
+        "        syncWindDimming();",
+        "    private void syncWindDimming(){boolean active=tab==3&&windResumed&&hasWindowFocus();if(active&&windDimming==null)windDimming=new RoomDimming(this);if(windDimming!=null)windDimming.apply(active);}"
+      ]
+    }
+  ],
+  "reference": {
+    "path": "design-concepts\\2026-10-22-phone-app\\10-phone-sensors.png",
+    "sha256": "8311f72d98b11cf3dfa92cd6d7977554fb4bd564bf30cd81facd5f26453e8b51"
+  }
+}
