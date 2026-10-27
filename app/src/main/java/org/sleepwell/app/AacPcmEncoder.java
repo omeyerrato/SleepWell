@@ -17,6 +17,13 @@ final class AacPcmEncoder {
     }
     private static long u32(RandomAccessFile in)throws IOException{return Integer.toUnsignedLong(Integer.reverseBytes(in.readInt()));}
     private static int u16(RandomAccessFile in)throws IOException{return Short.toUnsignedInt(Short.reverseBytes(in.readShort()));}
+    private static void c2LcFrameContract(MediaFormat format,int rate,int channels)throws IOException {
+        ByteBuffer config=format.getByteBuffer("csd-0");if(config==null||config.remaining()<2)throw new IOException("AAC frame timing is unavailable. Use WAV/ZIP export.");
+        ByteBuffer bits=config.duplicate();int header=((bits.get()&255)<<8)|(bits.get()&255),frequency=(header>>7)&15;
+        int[] rates={96000,88200,64000,48000,44100,32000,24000,22050,16000,12000,11025,8000,7350};
+        if((header>>11)!=MediaCodecInfo.CodecProfileLevel.AACObjectLC||frequency>=rates.length||rates[frequency]!=rate
+                ||((header>>3)&15)!=channels||(header&4)!=0)throw new IOException("Unsupported AAC frame timing. Use WAV/ZIP export.");
+    }
     static Pcm inspect(RandomAccessFile in)throws IOException {
         in.seek(0);long length=in.length();if(length<44||length>16L*1024*1024||in.readInt()!=0x52494646)throw new IOException("Unsupported WAV recording.");
         long limit=u32(in)+8;if(limit!=length||in.readInt()!=0x57415645)throw new IOException("Truncated or unsupported WAV recording.");
@@ -36,18 +43,25 @@ final class AacPcmEncoder {
             MediaFormat format=MediaFormat.createAudioFormat(MediaFormat.MIMETYPE_AUDIO_AAC,pcm.rate,pcm.channels);
             format.setInteger(MediaFormat.KEY_AAC_PROFILE,MediaCodecInfo.CodecProfileLevel.AACObjectLC);format.setInteger(MediaFormat.KEY_BIT_RATE,pcm.channels==1?64000:96000);format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE,16384);
             try{codec=MediaCodec.createEncoderByType(MediaFormat.MIMETYPE_AUDIO_AAC);codec.configure(format,null,null,MediaCodec.CONFIGURE_FLAG_ENCODE);codec.start();started=true;}catch(Exception unavailable){throw new IOException("AAC encoding is unavailable for this recording on this phone. Use the original WAV/ZIP export.",unavailable);}
+            boolean c2SampleClock=codec.getName().equals("c2.android.aac.encoder");
             muxer=new MediaMuxer(destination.getAbsolutePath(),MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);MediaCodec.BufferInfo info=new MediaCodec.BufferInfo();
             input.seek(pcm.offset+first*pcm.align);long frames=0,total=end-first,lastProgress=SystemClock.elapsedRealtime(),began=lastProgress;boolean sentEnd=false,receivedEnd=false;int track=-1,samples=0;byte[] buffer=new byte[16384];
             while(!receivedEnd){NightAudioArchive.active(active);long now=SystemClock.elapsedRealtime();if(now-lastProgress>15000||now-began>120000)throw new IOException("AAC encoding timed out. Use WAV/ZIP or export fewer recordings.");boolean progress=false;
                 if(!sentEnd){int index=codec.dequeueInputBuffer(10000);if(index>=0){ByteBuffer target=codec.getInputBuffer(index);if(target==null)throw new IOException("AAC input buffer unavailable.");target.clear();int count=(int)Math.min(total-frames,Math.min(buffer.length,target.remaining())/pcm.align);if(count<=0)throw new IOException("AAC encoder has an invalid input buffer.");long pts=frames*1000000L/pcm.rate;
                     input.readFully(buffer,0,count*pcm.align);target.put(buffer,0,count*pcm.align);frames+=count;sentEnd=frames==total;
-                    // Flush with the final real PCM buffer. A separate empty EOS timestamp can
-                    // re-anchor Codec2 AAC's delayed tail after a partial 1024-sample frame.
-                    // No source frames are padded, dropped or assigned replacement timestamps.
+                    // Signal completion with the final real PCM; no source frames are padded or dropped.
                     codec.queueInputBuffer(index,0,count*pcm.align,pts,sentEnd?MediaCodec.BUFFER_FLAG_END_OF_STREAM:0);progress=true;}}
                 int index=codec.dequeueOutputBuffer(info,10000);
-                if(index==MediaCodec.INFO_OUTPUT_FORMAT_CHANGED){if(muxed)throw new IOException("AAC output format changed unexpectedly.");track=muxer.addTrack(codec.getOutputFormat());muxer.start();muxed=true;progress=true;}
-                else if(index>=0){try{ByteBuffer output=codec.getOutputBuffer(index);if((info.flags&MediaCodec.BUFFER_FLAG_CODEC_CONFIG)==0&&info.size>0){if(!muxed||output==null)throw new IOException("AAC output format unavailable.");output.position(info.offset);output.limit(info.offset+info.size);muxer.writeSampleData(track,output,info);samples++;}receivedEnd=(info.flags&MediaCodec.BUFFER_FLAG_END_OF_STREAM)!=0;progress=true;}finally{codec.releaseOutputBuffer(index,false);}}
+                if(index==MediaCodec.INFO_OUTPUT_FORMAT_CHANGED){if(muxed)throw new IOException("AAC output format changed unexpectedly.");MediaFormat actual=codec.getOutputFormat();if(c2SampleClock)c2LcFrameContract(actual,pcm.rate,pcm.channels);track=muxer.addTrack(actual);muxer.start();muxed=true;progress=true;}
+                else if(index>=0){try{ByteBuffer output=codec.getOutputBuffer(index);if((info.flags&MediaCodec.BUFFER_FLAG_CODEC_CONFIG)==0&&info.size>0){if(!muxed||output==null)throw new IOException("AAC output format unavailable.");output.position(info.offset);output.limit(info.offset+info.size);
+                    if(c2SampleClock){if((info.flags&MediaCodec.BUFFER_FLAG_PARTIAL_FRAME)!=0)throw new IOException("Partial AAC frames are unsupported. Use WAV/ZIP export.");
+                        // This AOSP encoder emits one AU per output; verified LC frameLengthFlag=0
+                        // means 1024 PCM frames. Its EOS work can shift delayed-tail timestamps.
+                        // Clock only our contiguous source export by its encoded sample count;
+                        // never apply this correction to imported files or arbitrary vendor codecs.
+                        info.presentationTimeUs=samples*1024L*1000000L/pcm.rate;
+                    }
+                    muxer.writeSampleData(track,output,info);samples++;}receivedEnd=(info.flags&MediaCodec.BUFFER_FLAG_END_OF_STREAM)!=0;progress=true;}finally{codec.releaseOutputBuffer(index,false);}}
                 if(progress)lastProgress=SystemClock.elapsedRealtime();if(destination.length()>8L*1024*1024)throw new IOException("Encoded recording exceeds the export limit.");
             }
             if(!muxed||samples==0||frames!=total)throw new IOException("AAC encoding did not produce complete audio.");NightAudioArchive.active(active);muxed=false;muxer.stop();completed=true;
