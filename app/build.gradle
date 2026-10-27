@@ -1,5 +1,11 @@
 plugins { id 'com.android.application' }
 
+// Optional smaller device package; absent keeps the universal app and CI renderer.
+def sleepwellAbi = providers.gradleProperty('sleepwellAbi').getOrElse('')
+if (sleepwellAbi && !['arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'].contains(sleepwellAbi)) {
+    throw new GradleException('sleepwellAbi must be arm64-v8a, armeabi-v7a, x86 or x86_64')
+}
+
 android {
     namespace 'org.sleepwell.app'
     compileSdk 36
@@ -10,6 +16,7 @@ android {
         versionCode 1
         versionName '0.1.0'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        if (sleepwellAbi) { ndk { abiFilters.add(sleepwellAbi) } }
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
     buildTypes { release { minifyEnabled false } }
