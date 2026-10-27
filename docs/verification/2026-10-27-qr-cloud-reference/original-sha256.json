@@ -1,0 +1,90 @@
+[
+  {
+    "file": "qr-code-access-error.png",
+    "sha256": "31e2014b78e184dda9c6e8ca4ba43d7a3434cd4b7d50b39eaac6cb29fe784dcb"
+  },
+  {
+    "file": "qr-code-camera-error.png",
+    "sha256": "308eb8586736493f2518247ed2ac82abd6af6b2f8cdc1ffefcbf7449a996e50e"
+  },
+  {
+    "file": "qr-code-captured.png",
+    "sha256": "88e3f92e4cf76c1c51a819953aa27ea91d1ec2ede8adccd001144f1c70bd274c"
+  },
+  {
+    "file": "qr-code-denied.png",
+    "sha256": "ec8e5ba94c713b507795a4f6cc6b5a275bff6e1dea0ca648ccc65ab063046e69"
+  },
+  {
+    "file": "qr-code-fallback-error.png",
+    "sha256": "bbdec0e2242f6be2ddc36214af700e719c9c71fe078bca2359dcef7f5f260ab8"
+  },
+  {
+    "file": "qr-code-fallback.png",
+    "sha256": "4a649663dbc723d7c88534c0bc39a41db4fa4e73cf861abaa4df01f1b410bf84"
+  },
+  {
+    "file": "qr-code-invalid.png",
+    "sha256": "dd69848c4fec2b9aa87043b515df4f5b4550823c3088bf4d117bc6b608211d35"
+  },
+  {
+    "file": "qr-code-permission.png",
+    "sha256": "47f32292302182057b8aa7776705b315d1b7cd9065004a6a8855ae5638b29c35"
+  },
+  {
+    "file": "qr-code-recreated.png",
+    "sha256": "2de8b06b4d9ba0b90614dd62fa40069cbffc2ef46d514716eb94f67eff4d9ac2"
+  },
+  {
+    "file": "qr-code-reopened.png",
+    "sha256": "2de8b06b4d9ba0b90614dd62fa40069cbffc2ef46d514716eb94f67eff4d9ac2"
+  },
+  {
+    "file": "qr-code-routine.png",
+    "sha256": "7a0dcf10d8b75021175905061944312dd5aa1f793b775125a1bb48c2f68bf8c5"
+  },
+  {
+    "file": "qr-code-scanning.png",
+    "sha256": "692f2d49fad99ae3c391a23959dfde60b2a4c3954f6a29a33f42f2689cc329bc"
+  },
+  {
+    "file": "qr-code-unavailable.png",
+    "sha256": "eeb2b47c5f09507fb43415707ac3168bdfcb49be74b8a848929fcdbcf86490dd"
+  },
+  {
+    "file": "cloud-backup-destination.png",
+    "sha256": "711e780e0223d6e13c1d810460b4494e8fdba61ee8ef5d6d208021bfe1356d3b"
+  },
+  {
+    "file": "cloud-backup-folder-busy.png",
+    "sha256": "948938bd9aa454a6c97ba97f46d73e4c787c473facf9771c016e95827988acf1"
+  },
+  {
+    "file": "cloud-backup-reopened.png",
+    "sha256": "0e8dad814eb876ce351e72c89aac325c28d27f1e3d51ab91a3f96e30ae47f3e3"
+  },
+  {
+    "file": "cloud-backup-restore-review.png",
+    "sha256": "12ce2493e9a5bc5321666b06f54b7b7bb889dc078edfeeb71acb1bb02a59247a"
+  },
+  {
+    "file": "cloud-backup-saved.png",
+    "sha256": "0e8dad814eb876ce351e72c89aac325c28d27f1e3d51ab91a3f96e30ae47f3e3"
+  },
+  {
+    "file": "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert.txt",
+    "sha256": "23d05132e1cc48a335f29c3ccf9c99fc73321d63fa89e743fd383fa9f500cb55"
+  },
+  {
+    "file": "CloudBackupFlowTest#chooseSaveReopenAndReviewKeepLocalDataWithNoUpload.txt",
+    "sha256": "c7f00f9ade3ce6a609f277075b01859ed704b2305ce3a708aa38ea1de00a2ebc"
+  },
+  {
+    "file": "environment.json",
+    "sha256": "ab3077db7a49503202fb383ee747969fb45c1e0e5478e84c83d00602662e3219"
+  },
+  {
+    "file": "focused-review-summary.json",
+    "sha256": "74d087a0b52ffebd3a4be9d5c32d8bd696f5e2e35779ec14adef5d00c7d81083"
+  }
+]
