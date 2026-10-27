@@ -13,7 +13,7 @@ final class AlarmVolumeLease {
     AlarmVolumeLease(Port port,Journal journal,String occurrence,String owner){this.port=port;this.journal=journal;this.occurrence=occurrence;this.owner=owner;}
     synchronized float acquire(AlarmWakePolicy policy,boolean escalate){
         if(closed)return 0;if(acquired&&escalate==backup)return scale;boolean leavingBackup=acquired&&backup&&!escalate;
-        float conservative=policy.targetPercent/100f;
+        float conservative=policy.percent(escalate)/100f;
         // A quiet developer test never raises the global stream. Its permanent
         // digital cap remains safe even if volume keys are pressed during it.
         if(policy.quiet){acquired=true;scale=conservative;return scale;}

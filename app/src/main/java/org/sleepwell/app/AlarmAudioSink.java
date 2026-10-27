@@ -34,7 +34,14 @@ final class AlarmAudioSink implements AlarmPlayback.Sink {
     @Override public AlarmPlayback.Layer create(String tone,boolean loop,String key,int position){if(closed)throw new IllegalStateException("Closed alarm audio");Player player=new Player(tone,loop,key,position);players.add(player);return player;}
     @Override public void volume(AlarmPlayback.Layer layer,AlarmWakePolicy policy,boolean backup){
         // Queue on the pending player's owner, before its queued start. No stream I/O on main.
-        long revision=++volumeRevision;Player player=(Player)layer;player.boostRequested=policy.extraLoud&&!policy.quiet;player.worker.post(()->{if(!player.available()||revision!=volumeRevision)return;try{synchronized(VOLUME_LOCK){if(!player.available()||revision!=volumeRevision)return;player.digitalScale=volume.acquire(policy,backup);}}catch(RuntimeException error){player.digitalScale=policy.targetPercent/100f;error("Android did not allow the alarm volume change.");}});
+        long revision=++volumeRevision;Player player=(Player)layer;player.boostRequested=policy.boost(backup);
+        player.worker.post(()->{if(!player.available()||revision!=volumeRevision)return;
+            try{synchronized(VOLUME_LOCK){if(!player.available()||revision!=volumeRevision)return;player.digitalScale=volume.acquire(policy,backup);}}
+            catch(RuntimeException error){player.digitalScale=policy.percent(backup)/100f;error("Android did not allow the alarm volume change.");}
+            // A retained primary layer may cross a backup phase after replacement fails.
+            // Remove its old effect before applying a lower requested backup level.
+            if(!player.boostRequested){player.releaseLoudness();player.boostAttempted=false;}else if(player.started)player.attachLoudness();
+        });
     }
     @Override public void stopped(){stopped(()->{});}
     @Override public void stopped(Runnable acknowledged){
@@ -44,6 +51,7 @@ final class AlarmAudioSink implements AlarmPlayback.Sink {
         List<Player> closing=new ArrayList<>(players);AtomicInteger remaining=new AtomicInteger(closing.size()+1);Runnable quiet=()->{if(remaining.decrementAndGet()==0)new Thread(()->{try{synchronized(VOLUME_LOCK){volume.release();}}catch(RuntimeException error){error("Alarm volume could not be restored.");}finally{SOUND_OWNERS.decrementAndGet();main.post(acknowledged);}},"SleepWell volume restore").start();};
         for(Player player:closing)player.whenQuiet(quiet);quiet.run();
     }
+    @Override public void backupReview(){error("Saved backup sound needs review. This alarm uses Pulse at 100% for backup until repaired in Snooze & backup.");}
     @Override public void radioFallback(){error("Internet radio is unavailable. Using the bundled alarm fallback.");}
     @Override public void failed(){error("Alarm sound and its fallback could not be played. The challenge remains available.");}
     private void error(String message){Prefs.put(context,"lastError",message);}

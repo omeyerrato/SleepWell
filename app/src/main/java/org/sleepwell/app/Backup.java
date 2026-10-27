@@ -6,13 +6,13 @@ import org.json.*;
 import java.util.*;
 
 final class Backup {
-    static final int FORMAT=13;
+    static final int FORMAT=14;
     static void validate(JSONObject root) throws JSONException {
         int format=root.getInt("format");if(format<1||format>FORMAT)throw new JSONException("Unsupported backup format");
         JSONArray alarms=root.getJSONArray("alarms"),sessions=root.getJSONArray("sessions"),epochs=root.getJSONArray("epochs");
         Set<Long> ids=new HashSet<>(),alarmIds=new HashSet<>();Map<Long,JSONObject> byId=new HashMap<>();
         for(int i=0;i<alarms.length();i++){
-            Alarm a=Alarm.read(alarms.getJSONObject(i));if(a.nextOverrideInvalid||a.repeatInvalid||a.weeklyNapOwnerInvalid||a.bedtimeInvalid||a.excludedDatesInvalid||a.solarInvalid||a.soundModeInvalid||a.timingInvalid||a.inputsInvalid||a.smartWakeInvalid||a.dateInvalid||a.skipInvalid||a.napInvalid||a.routineInvalid||a.snoozeTotalInvalid||a.snoozeTotalMinutes<0||a.snoozeTotalMinutes>300||a.id<=0||!alarmIds.add((long)a.id)||a.hour<0||a.hour>23||a.minute<0||a.minute>59||a.volume<10||a.volume>100||a.difficulty<1||a.difficulty>6||a.smartWindow<0||a.smartWindow>60||a.rampSeconds<0||a.rampSeconds>1440||a.soundDelaySeconds<0||a.soundDelaySeconds>1440||a.vibrationDelaySeconds<0||a.vibrationDelaySeconds>1440||a.snoozeMinutes<1||a.snoozeMinutes>60||a.snoozeLimit<0||a.snoozeLimit>5||a.awakeCheck<0||a.awakeCheck>15)throw new JSONException("Invalid alarm");
+            Alarm a=Alarm.read(alarms.getJSONObject(i));if(a.nextOverrideInvalid||a.repeatInvalid||a.weeklyNapOwnerInvalid||a.bedtimeInvalid||a.excludedDatesInvalid||a.solarInvalid||a.soundModeInvalid||a.backupSoundInvalid||a.timingInvalid||a.inputsInvalid||a.smartWakeInvalid||a.dateInvalid||a.skipInvalid||a.napInvalid||a.routineInvalid||a.snoozeTotalInvalid||a.snoozeTotalMinutes<0||a.snoozeTotalMinutes>300||a.id<=0||!alarmIds.add((long)a.id)||a.hour<0||a.hour>23||a.minute<0||a.minute>59||a.volume<10||a.volume>100||a.difficulty<1||a.difficulty>6||a.smartWindow<0||a.smartWindow>60||a.rampSeconds<0||a.rampSeconds>1440||a.soundDelaySeconds<0||a.soundDelaySeconds>1440||a.vibrationDelaySeconds<0||a.vibrationDelaySeconds>1440||a.snoozeMinutes<1||a.snoozeMinutes>60||a.snoozeLimit<0||a.snoozeLimit>5||a.awakeCheck<0||a.awakeCheck>15)throw new JSONException("Invalid alarm");
             for(int day:a.days)if(day<1||day>7)throw new JSONException("Invalid weekday");
         }
         for(int i=0;i<sessions.length();i++){
