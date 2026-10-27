@@ -14,6 +14,7 @@ import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.view.inspector.WindowInspector;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -235,7 +236,43 @@ public final class OrganizedSettingsJourneyTest {
     }
     private void captureWindow(View root, String name) throws Exception {
         assertTrue("At most twenty representative frames", captures < 20); frame(root); silent();
-        assertTrue(device.takeScreenshot(new File(folder(), "organized-settings-" + name + ".png"))); captures++;
+        boolean trackingDark = activity instanceof TrackingActivity && root == activity.getWindow().getDecorView();
+        int[] bars = new int[2];
+        if (trackingDark) {
+            i.runOnMainSync(() -> { assertSame(root, focused()); WindowInsets insets = root.getRootWindowInsets(); assertNotNull(insets);
+                bars[0] = insets.getInsets(WindowInsets.Type.statusBars()).top; bars[1] = insets.getInsets(WindowInsets.Type.navigationBars()).bottom; });
+            // App flags alone do not prove that SystemUI has committed light clock/Wi-Fi/gesture pixels.
+            await(() -> { boolean[] owned = {false}; i.runOnMainSync(() -> owned[0] = root == focused() && trackingAppearance(root) == 0);
+                if (!owned[0]) return false; android.graphics.Bitmap screen = i.getUiAutomation().takeScreenshot(); if (screen == null) return false;
+                android.graphics.Bitmap readable = screen;
+                try { if (screen.getConfig() == android.graphics.Bitmap.Config.HARDWARE) readable = screen.copy(android.graphics.Bitmap.Config.ARGB_8888, false);
+                    return brightTrackingBars(readable, bars[0], bars[1]);
+                } finally { if (readable != null && readable != screen) readable.recycle(); screen.recycle(); } });
+            i.runOnMainSync(() -> { assertSame(root, focused()); assertEquals("Tracking requests light status and gesture glyphs", 0, trackingAppearance(root)); });
+        }
+        File original = new File(folder(), "organized-settings-" + name + ".png"); assertTrue(device.takeScreenshot(original));
+        if (trackingDark) { android.graphics.Bitmap saved = android.graphics.BitmapFactory.decodeFile(original.getAbsolutePath());
+            try { assertTrue("Saved Tracking original has light system glyphs and gesture on plum", brightTrackingBars(saved, bars[0], bars[1])); }
+            finally { if (saved != null) saved.recycle(); } }
+        captures++;
+    }
+    private int trackingAppearance(View root) { WindowInsetsController controller = root.getWindowInsetsController(); assertNotNull(controller);
+        return controller.getSystemBarsAppearance() & (WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS | WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS); }
+    private boolean brightTrackingBars(android.graphics.Bitmap bitmap, int status, int navigation) {
+        return bitmap != null && status > 0 && navigation > 0 && status + navigation < bitmap.getHeight()
+                && brightTrackingRegion(bitmap, 0, status) && brightTrackingRegion(bitmap, bitmap.getHeight() - navigation, bitmap.getHeight());
+    }
+    // Same rendered-bar predicate as SonarNightFlowTest; reject dark glyphs even if other icons are light.
+    private boolean brightTrackingRegion(android.graphics.Bitmap bitmap, int top, int bottom) {
+        int[] row = new int[bitmap.getWidth()]; long bright = 0, plum = 0, dark = 0, total = (long) row.length * (bottom - top);
+        int background = Design.PLUM;
+        for (int y = top; y < bottom; y++) { bitmap.getPixels(row, 0, row.length, 0, y, row.length, 1);
+            for (int rgb : row) { int red = android.graphics.Color.red(rgb), green = android.graphics.Color.green(rgb), blue = android.graphics.Color.blue(rgb);
+                if (red > 180 && green > 180 && blue > 180) bright++; if (red < 20 && green < 20 && blue < 20) dark++;
+                if (Math.abs(red - android.graphics.Color.red(background)) <= 12 && Math.abs(green - android.graphics.Color.green(background)) <= 12 && Math.abs(blue - android.graphics.Color.blue(background)) <= 12) plum++;
+            }
+        }
+        return bright >= 24 && plum * 100 >= total * 60 && dark <= 2;
     }
     private void closeAll() throws Exception {
         i.runOnMainSync(() -> { List<Activity> reverse = new ArrayList<>(owned); Collections.reverse(reverse);
