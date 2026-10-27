@@ -11,10 +11,10 @@ does not change callbacks, saving semantics, navigation destinations or layout.
 - Save: `InteractionFeedback.setEnabled(Context, boolean)` returns the synchronous
   preference commit result. A settings row must show failure if it returns false.
   Reading/saving this preference does not itself vibrate or preview an effect.
-- Explicit user selection: `InteractionFeedback.selection(View)` uses the native
-  `CLOCK_TICK` semantic effect.
-- Explicit action activation: `InteractionFeedback.action(View)` uses native
-  `CONTEXT_CLICK`. It means the input was acknowledged, **not** that asynchronous
+- Explicit user selection and action activation: `InteractionFeedback.selection(View)`
+  and `InteractionFeedback.action(View)` request native `VIRTUAL_KEY` feedback.
+  This crisper platform click replaces the previous soft selection texture and
+  action tick. It means the input was acknowledged, **not** that asynchronous
   Save, export, permission or network work succeeded. There is no success effect.
 - For a custom quiet screen, add Boolean intent extra `quietInteractionFeedback`.
   Existing `visualReview` also suppresses feedback.
@@ -48,6 +48,16 @@ Requests use `View.performHapticFeedback(effect, 0)` only. There is no direct
 Vibrator/VibrationEffect, permission, forced stream volume or settings override.
 Android's touch-feedback preference, the View's own haptic-enabled setting and
 hardware support retain final control. Tactile strength varies by device.
+
+For the requested slight strength increase, the
+[AOSP platform mapping](https://android.googlesource.com/platform/frameworks/base/+/c03ab432b762d16b20fd5f9366ebb9207be76820/services/core/java/com/android/server/vibrator/HapticFeedbackVibrationProvider.java)
+resolves `VIRTUAL_KEY` to `EFFECT_CLICK`, the previous `CONTEXT_CLICK` to
+`EFFECT_TICK`, and `CLOCK_TICK` to `EFFECT_TEXTURE_TICK`. These names are not
+an intensity scale. The chosen click requests a clearer single acknowledgement;
+OEM customization and Android's touch intensity still determine physical feel.
+No heavy/long pulse, confirmation-of-success effect or repeated pulse is added.
+The existing saved OFF, 80 ms gate and all quiet/provenance guards are unchanged.
+This source adjustment has not been physically felt or accepted on a device.
 
 Only an attached, enabled, visible View in a focused live Activity on the main
 thread is eligible. Effects are suppressed while an alarm is ringing/active,

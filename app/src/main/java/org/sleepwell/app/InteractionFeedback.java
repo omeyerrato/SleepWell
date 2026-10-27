@@ -21,8 +21,10 @@ final class InteractionFeedback {
     static boolean motion(Context context){
         try{AccessibilityManager access=context.getSystemService(AccessibilityManager.class);return !Appearance.reduced(context)&&android.animation.ValueAnimator.areAnimatorsEnabled()&&(access==null||!access.isTouchExplorationEnabled());}catch(RuntimeException unavailable){return false;}
     }
-    static void selection(View source){acknowledge(source,HapticFeedbackConstants.CLOCK_TICK);}
-    static void action(View source){acknowledge(source,HapticFeedbackConstants.CONTEXT_CLICK);}
+    // Request a crisp platform click for user input; Android still tunes strength and respects OFF.
+    // AOSP maps VIRTUAL_KEY to EFFECT_CLICK, rather than CLOCK_TICK's texture or CONTEXT_CLICK's tick.
+    static void selection(View source){acknowledge(source,HapticFeedbackConstants.VIRTUAL_KEY);}
+    static void action(View source){acknowledge(source,HapticFeedbackConstants.VIRTUAL_KEY);}
     private static Activity activity(Context context){for(int n=0;n<12;n++){if(context instanceof Activity)return(Activity)context;if(!(context instanceof ContextWrapper))return null;Context base=((ContextWrapper)context).getBaseContext();if(base==context)return null;context=base;}return null;}
     private static boolean allowed(View source){
         if(source==null||Looper.myLooper()!=Looper.getMainLooper()||!source.isEnabled()||!source.isShown()||!source.isAttachedToWindow()||!source.hasWindowFocus()||!source.isHapticFeedbackEnabled())return false;
