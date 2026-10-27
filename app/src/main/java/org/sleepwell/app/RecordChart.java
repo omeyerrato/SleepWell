@@ -11,7 +11,7 @@ import java.util.*;
 class RecordChart extends View {
     private final List<ChartSeries.Sample> samples=new ArrayList<>();
     private final java.time.ZoneId zone;private final String metric;private final long start;private long end;private final boolean night;private final android.text.TextPaint paint=new android.text.TextPaint(3);
-    private List<ChartSeries.Bar> bars=Collections.emptyList();private int selected=-1;private Long inspectedAt;private double high=.001;private String measurementLabel;private int actualReadings;
+    private List<ChartSeries.Bar> bars=Collections.emptyList();private int selected=-1;private Long inspectedAt;private double high=.001;private String measurementLabel;private int actualReadings;private final Path column=new Path();
     RecordChart(Context c,List<JSONObject> epochs,String metric,long start,long end){
         this(c,epochs,metric,start,end,false);
     }
@@ -53,13 +53,13 @@ class RecordChart extends View {
         List<ChartTicks.Tick> candidates=ChartTicks.candidates(start,end,zone,clock24(),Locale.getDefault(),5);List<ChartTicks.Placed> ticks=ChartTicks.layout(candidates,start,end,left,right,8*d,paint::measureText);int lines=1;for(ChartTicks.Placed tick:ticks)lines=Math.max(lines,tick.tick.label.split("\n").length);
         Paint.FontMetrics font=paint.getFontMetrics();float lineHeight=font.descent-font.ascent+2*d,capsule=Math.max(36*d,2*lineHeight+8*d),top=capsule+4*d,bottom=h-Math.max(28*d,lineHeight*lines+10*d);
         paint.setColor(ink());canvas.drawText("High",0,top+5*d,paint);canvas.drawText("Low",0,bottom,paint);
-        paint.setColor(night?0xff62566d:Appearance.contrast(getContext())?0xffa29185:Design.LINE);paint.setStrokeWidth(d*.7f);canvas.drawLine(left,bottom,right,bottom,paint);canvas.drawLine(left,top,left,bottom,paint);canvas.drawLine(right,top,right,bottom,paint);for(ChartTicks.Placed tick:ticks)if(tick.tick.endpoint==0){float grid=x(tick.tick.time);canvas.drawLine(grid,top,grid,bottom,paint);}
+        paint.setColor(night?0xff62566d:Appearance.contrast(getContext())?0xffa29185:0xffeee6dc);paint.setStrokeWidth(d*.7f);canvas.drawLine(left,bottom,right,bottom,paint);for(ChartTicks.Placed tick:ticks)if(tick.tick.endpoint==0){float grid=x(tick.tick.time);canvas.drawLine(grid,top,grid,bottom,paint);}
         for(int n=0;n<bars.size();n++){
             ChartSeries.Bar bar=bars.get(n);float center=x(bar.from+(bar.to-bar.from)/2),width=Math.max(d,Math.min(14*d,(x(bar.to)-x(bar.from))*.8f));center=Math.min(right-width/2,Math.max(left+width/2,center));
             float y=(float)(bottom-(bottom-top)*(bar.value/high));y=Math.min(y,bottom-2*d); // Divide before multiplying: even a finite extreme reading must stay drawable.
             int color=n==selected?0xffaa7352:Appearance.contrast(getContext())?(night?Design.LILAC:0xff6b3dc4):Design.VIOLET;
             if(!Appearance.contrast(getContext()))paint.setShader(new LinearGradient(0,y,0,bottom,color,n==selected?0xffd3ad94:0xffd6c2fa,Shader.TileMode.CLAMP));else paint.setColor(n==selected?Design.BROWN:color);
-            canvas.drawRoundRect(center-width/2,y,center+width/2,bottom,3*d,3*d,paint);paint.setShader(null);
+            column.reset();column.addRoundRect(new RectF(center-width/2,y,center+width/2,bottom),new float[]{3*d,3*d,3*d,3*d,0,0,0,0},Path.Direction.CW);canvas.drawPath(column,paint);paint.setShader(null);
         }
         if(inspectedAt!=null){
             float center=x(inspectedAt);String timeLabel=selected>=0?(bars.get(selected).readings>1?axisTime(bars.get(selected).from)+"–"+axisTime(bars.get(selected).to):axisTime(bars.get(selected).to)):axisTime(inspectedAt);
