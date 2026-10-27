@@ -81,7 +81,7 @@ public final class TravelActivity extends Activity {
     private void lightSettings(){
         detailPage("Light-cue settings");
         PlanActivity.detail(body,"flashlight","Light source",null,"Phone flashlight",null);Design.line(body);
-        PlanActivity.detail(body,"calendar","Cue window",cues.home,cues.enabled?cueSummary():"Not enabled",this::openCues);Design.line(body);
+        PlanActivity.detail(body,"calendar","Cue window",(cues.enabled?cueSummary():"Not enabled")+" · "+cues.home,null,this::openCues);Design.line(body);
         PlanActivity.detail(body,"moon","During manual tracking","Arm from a current recording; never starts automatically",null,null);Design.line(body);
         if(cues.enabled)Design.button(body,"Review & arm cues",false,this::reviewCues);
         PlanActivity.detail(body,"info","About experimental cues","Requested pulses and device limits",null,this::aboutCues);
