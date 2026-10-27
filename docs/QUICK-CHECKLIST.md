@@ -8,17 +8,16 @@ Full supporting evidence stays in FEATURE-CHECKLIST.md and FEATURE-MATRIX.md.
 - [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.
 - [x] First Settings/alarm-menu organization pass: eight groups, search and parent-aware Back; every feature retained.
 
-Latest published **33cb5693** adds alarm-draft search, clear main menus,
-real challenge drag ordering and selected-audio preparation with the AAC export
-timing correction. The **arm64** APK builds in22s, is166,642,573bytes and retains
-the original signer; exact tag and both uploaded digests are verified.
-[Release/evidence](verification/2026-10-27-alarm-search-audio/README.md).
+Latest published and installed **32f064e2** adds Tonight arc/feedback/help
+restoration and the organized challenge routine. arm64 APK166,649,432bytes,
+original signer, build PASS11m19s; exact tag and both uploaded hashes verified.
+[Release/evidence](verification/2026-10-27-tonight-report-routine/README.md).
 
-Three existing Android journeys pass: organization33.114s/14 inspected captures,
-challenge ordering40.237s/6 and recording analysis40.27s/5. Each proves its named
-actions and persistence; they do not complete all36 designs or the nine unfinished
-items below. The phone remains **2cbfe043**. Optional smart-wake API fields are
-included; actual external callers remain unverified.
+Tonight45.786s/9 and challenge48.33s/6 inspected captures pass their named
+actions/restoration/persistence. **New Report calendar verification failed and
+remains incomplete.** These passes do not accept all36 designs or physical outputs.
+Phone update installed with original database rows, preferences and user files
+preserved; no app launch or physical feature/output test ran.
 
 ## Implemented
 
@@ -52,7 +51,7 @@ included; actual external callers remain unverified.
 - [ ] Optional vendor-service/hardware parity in the full checklist.
 - [ ] Verify real alarm protection, loudness, ramp, sunrise, flashlight and challenges.
 - [ ] Verify overnight tracking, sound accuracy, anti-snoring, battery behavior and integrations.
-- [ ] Install the newest built update while preserving user data.
+- [x] Install32f064e2 while preserving original records, preferences and user files.
 
-Installed phone source:2cbfe043. No further phone or output action is authorized by this document.
+Installed phone source:32f064e2. No further phone or output action is authorized by this document.
 Priority implementation/verification scope is tracked in UI-ORGANIZATION.md.

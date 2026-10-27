@@ -105,3 +105,16 @@ restores bars after dismissal. CI40445147772 passes33.114seconds/14 inspected
 frames, with actual light-status/navigation flag checks before every capture;
 About restoration and legible glyphs are verified. This is included in33cb5693. Large fonts, physical haptics,
 all menus and all36-screen fidelity remain open.
+
+## 27 October installed update
+
+Latest published and installed **32f064e2** adds Tonight arc/feedback/help
+restoration and the organized challenge routine. arm64 APK166,649,432bytes,
+original signer, build PASS11m19s; exact tag and both uploaded hashes verified.
+[Release/evidence](verification/2026-10-27-tonight-report-routine/README.md).
+
+Tonight45.786s/9 and challenge48.33s/6 inspected captures pass their named
+actions/restoration/persistence. **New Report calendar verification failed and
+remains incomplete.** These passes do not accept all36 designs or physical outputs.
+Phone update installed with original database rows, preferences and user files
+preserved; no app launch or physical feature/output test ran.

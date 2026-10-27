@@ -10,6 +10,17 @@ F004/F064/F097/F107/F128/F170/F171 retain their explicit partial/runtime limits.
 [Current release and scoped evidence](verification/2026-10-27-alarm-search-audio/README.md).
 The phone remains2cbfe043; all36 designs and physical/overnight acceptance remain open.
 
+Latest published and installed **32f064e2** adds Tonight arc/feedback/help
+restoration and the organized challenge routine. arm64 APK166,649,432bytes,
+original signer, build PASS11m19s; exact tag and both uploaded hashes verified.
+[Release/evidence](verification/2026-10-27-tonight-report-routine/README.md).
+
+Tonight45.786s/9 and challenge48.33s/6 inspected captures pass their named
+actions/restoration/persistence. **New Report calendar verification failed and
+remains incomplete.** These passes do not accept all36 designs or physical outputs.
+Phone update installed with original database rows, preferences and user files
+preserved; no app launch or physical feature/output test ran.
+
 **Implemented**: narrower stated behavior exists; validation is separately listed.
 **Partial**: subfeatures still missing. **Missing**: no working implementation.
 **Blocked**: stated OS or external prerequisite. Passing compilation, a screenshot,

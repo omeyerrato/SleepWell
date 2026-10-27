@@ -69,3 +69,16 @@ verifies the opt-out persists across recreation/reopen, with actual captured
 pressed/selected/off states. Review suppresses haptic output deliberately.
 Actual touch/drag/accessibility behavior, device strength and every custom
 control remain unverified. [Scoped evidence](verification/2026-10-26-settings-organization/README.md).
+
+## 27 October installed update
+
+Latest published and installed **32f064e2** adds Tonight arc/feedback/help
+restoration and the organized challenge routine. arm64 APK166,649,432bytes,
+original signer, build PASS11m19s; exact tag and both uploaded hashes verified.
+[Release/evidence](verification/2026-10-27-tonight-report-routine/README.md).
+
+Tonight45.786s/9 and challenge48.33s/6 inspected captures pass their named
+actions/restoration/persistence. **New Report calendar verification failed and
+remains incomplete.** These passes do not accept all36 designs or physical outputs.
+Phone update installed with original database rows, preferences and user files
+preserved; no app launch or physical feature/output test ran.

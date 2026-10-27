@@ -12,24 +12,16 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-[Development arm64 APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-search-audio-20261027-33cb5693) from **33cb5693** adds per-alarm
-settings search, readable main menus, actual challenge drag ordering and selected
-audio preparation. AAC export timing and post-dialog status-bar contrast are
-corrected. Previous smart-wake, Travel, Report/chart and menu work remains included.
+Latest published and installed **32f064e2** adds Tonight arc/feedback/help
+restoration and the organized challenge routine. arm64 APK166,649,432bytes,
+original signer, build PASS11m19s; exact tag and both uploaded hashes verified.
+[Release/evidence](docs/verification/2026-10-27-tonight-report-routine/README.md).
 
-Production build passed in22s; original signer, exact tag and both uploaded hashes
-verified. APK166,642,573bytes retains offline models/assets. Three existing Android
-journeys pass with25 individually inspected captures and real draft/Save/reopen
-actions. [Exact evidence and limits](docs/verification/2026-10-27-alarm-search-audio/README.md).
-
-All36 designs, physical/overnight acceptance, other codecs/providers, reliable
-additional recognition and phone sleep-stage/REM/breathing/apnea remain open.
-No new unit/lint/broad campaign or personal-phone action ran. Sleep schema17/
-backup13/private automation2/result database1 remain unchanged.
-
-The phone remains **2cbfe043** with original data preserved; this update is not
-installed. [Phone evidence](docs/verification/2026-10-26-phone-2cbfe043/README.md).
-[Checklist](docs/QUICK-CHECKLIST.md) · [Remaining work](docs/REMAINING-WORK.md).
+Tonight45.786s/9 and challenge48.33s/6 inspected captures pass their named
+actions/restoration/persistence. **New Report calendar verification failed and
+remains incomplete.** These passes do not accept all36 designs or physical outputs.
+Phone update installed with original database rows, preferences and user files
+preserved; no app launch or physical feature/output test ran.
 
 ## Working capabilities
 

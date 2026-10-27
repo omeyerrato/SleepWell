@@ -1,0 +1,21 @@
+{
+  "source": "32f064e247430e9ebcff373e921a97675d39d815",
+  "apkSha256": "e3f8dd7b6f78b9d5369206e16cb40723a07c7147b20e8656b4cee9fd0cd0369f",
+  "signerSha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "installed": true,
+  "installResult": "ADB streamed install -r returned Success",
+  "beforeSchema": 17,
+  "afterSchema": 17,
+  "originalRowsPreserved": true,
+  "originalPreferenceValuesPreserved": true,
+  "originalUserFilesPreserved": true,
+  "expectedRuntimeFileChanges": [
+    "files/profileInstalled"
+  ],
+  "expectedPreferenceInitializations": [
+    "shared_prefs/alarm_access_v1.xml",
+    "shared_prefs/record_access_v1.xml"
+  ],
+  "userDataPreserved": true,
+  "physicalEffectsTested": false
+}
