@@ -15,7 +15,7 @@ final class TonightScreen {
     static NightArc render(Activity a,LinearLayout body,Store store,Actions actions){
         Design.pad(body,12,10);Appearance.Palette palette=Appearance.palette(a);
         LinearLayout header=Design.row(a);header.setPadding(Design.dp(a,10),0,Design.dp(a,4),0);TextView title=Design.text(a,"Tonight",26,600,palette.ink);header.addView(title,new LinearLayout.LayoutParams(0,-2,1));
-        View settings=Design.iconButton(a,"settings","Settings",actions::settings);((Design.Icon)settings).tint(palette.ink);header.addView(settings,new LinearLayout.LayoutParams(Design.dp(a,48),Design.dp(a,48)));body.addView(header);
+        View settings=Design.iconButton(a,"settings-outline","Settings",actions::settings);((Design.Icon)settings).tint(palette.ink);header.addView(settings,new LinearLayout.LayoutParams(Design.dp(a,48),Design.dp(a,48)));body.addView(header);
         long now=clock.getAsLong();java.time.ZoneId zone=java.time.ZoneId.systemDefault();SleepPlan plan=SleepPlans.load(a);List<Alarm> saved=store.alarms();Naps.Upcoming upcoming=Naps.next(a,saved,now,zone);Alarm chosen=upcoming.alarm;
         if(chosen==null&&!saved.isEmpty())chosen=saved.stream().filter(item->item.nap==null&&!item.napInvalid).findFirst().orElse(saved.get(0));final Alarm alarm=chosen;final boolean scheduled=upcoming.alarm!=null;final boolean relative=scheduled&&Naps.pending(alarm);
         TextView next=Design.text(body,relative?"NAP ENDS":scheduled?"NEXT ALARM":"WAKE-UP PLAN",12,500,palette.softInk);next.setGravity(Gravity.CENTER);Design.space(body,6);

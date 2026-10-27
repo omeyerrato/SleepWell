@@ -29,6 +29,7 @@ ICONS = {
     "home": ("house", "fill"), "qr": ("qr-code", "regular"),
     "moon": ("moon", "fill"), "report": ("chart-bar", "fill"),
     "settings": ("gear-six", "fill"), "sun": ("sun", "regular"),
+    "settings-outline": ("gear-six", "regular"),
     "sound": ("speaker-high", "regular"), "tasks": ("list-checks", "regular"),
     "bed": ("bed", "regular"), "battery": ("battery-vertical-medium", "regular"),
     "skip": ("bell-slash", "regular"), "undo": ("arrow-counter-clockwise", "regular"),

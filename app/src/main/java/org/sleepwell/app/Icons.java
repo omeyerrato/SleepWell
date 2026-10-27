@@ -26,6 +26,7 @@ final class Icons {
             case "report" -> R.drawable.ic_phosphor_chart_bar_fill;
             case "settings" -> R.drawable.ic_phosphor_gear_six_fill;
             case "sun" -> R.drawable.ic_phosphor_sun_regular;
+            case "settings-outline" -> R.drawable.ic_phosphor_gear_six_regular;
             case "sound" -> R.drawable.ic_phosphor_speaker_high_regular;
             case "tasks" -> R.drawable.ic_phosphor_list_checks_regular;
             case "bed" -> R.drawable.ic_phosphor_bed_regular;
