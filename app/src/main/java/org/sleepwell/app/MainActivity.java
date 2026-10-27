@@ -98,6 +98,7 @@ public class MainActivity extends Activity {
                 settingsRow(body,"phone","Bedside NFC tag","Enroll a tag for wake-up challenges",()->openSettingsPage(11));break;
             case "sleep":
                 settingsRow(body,"moon","Sleep tracking","Sensor setup and current recording",this::tracking);
+                settingsRow(body,"sun","Room conditions","Live light and optional sound level",()->startActivity(RecordUi.intent(this,RoomConditionsActivity.class)));
                 settingsRow(body,"clock","Automatic tracking","When tracking starts each night",()->startActivity(RecordUi.intent(this,AutomaticTrackingActivity.class)));
                 settingsRow(body,"bed","Sleep plan","Bedtime, sleep goal and reminders",()->startActivity(RecordUi.intent(this,PlanActivity.class)));
                 settingsRow(body,"shield","Bedtime guard","Choose distracting apps to block",()->startActivity(RecordUi.intent(this,GuardActivity.class)));
