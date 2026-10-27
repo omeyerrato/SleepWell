@@ -15,7 +15,7 @@ INSTRUMENTATION_STATUS: test=saveReopenRelaunchCancelAndRenderAllThemes
 INSTRUMENTATION_STATUS_CODE: 0
 INSTRUMENTATION_RESULT: stream=
 
-Time: 53.315
+Time: 68.224
 
 OK (1 test)
 
