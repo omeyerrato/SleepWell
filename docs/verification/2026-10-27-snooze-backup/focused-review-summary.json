@@ -1,0 +1,35 @@
+{
+  "scope": "priority-menus",
+  "full_app_review": false,
+  "expected_classes": 2,
+  "expected_methods": 2,
+  "class_results": [
+    {
+      "class": "AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 23,
+  "failures": [
+    "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert",
+    "qr-code-permission.png",
+    "qr-code-invalid.png",
+    "qr-code-denied.png",
+    "qr-code-access-error.png",
+    "qr-code-scanning.png",
+    "qr-code-camera-error.png",
+    "qr-code-captured.png",
+    "qr-code-fallback.png",
+    "qr-code-fallback-error.png",
+    "qr-code-recreated.png",
+    "qr-code-routine.png",
+    "qr-code-reopened.png",
+    "qr-code-unavailable.png"
+  ]
+}
