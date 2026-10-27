@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -305,7 +307,31 @@ public final class RecordedAnalysisJourneyTest {
             AacPcmEncoder.encode(audio, encoded, 0, SAMPLES, () -> true);
             byte[] encodedBytes = Files.readAllBytes(encoded.toPath());
             assertTrue("Bounded private M4A", encodedBytes.length >= 32 && encodedBytes.length <= 256 * 1024);
-            importHash = sha(encodedBytes); Bundle seed = new Bundle(); seed.putByteArray("bytes", encodedBytes); seed.putString("sha256", importHash);
+            importHash = sha(encodedBytes);
+            JSONObject encodedTiming = new JSONObject().put("fileSha256", importHash).put("sourcePcmSha256", PCM_SHA).put("sourceFrames", SAMPLES);
+            MediaExtractor encodedTrack = new MediaExtractor();
+            try {
+                encodedTrack.setDataSource(encoded.getAbsolutePath()); assertEquals(1, encodedTrack.getTrackCount());
+                MediaFormat format = encodedTrack.getTrackFormat(0); assertEquals("audio/mp4a-latm", format.getString(MediaFormat.KEY_MIME));
+                assertEquals(16000, format.getInteger(MediaFormat.KEY_SAMPLE_RATE)); assertEquals(1, format.getInteger(MediaFormat.KEY_CHANNEL_COUNT));
+                encodedTiming.put("mime", format.getString(MediaFormat.KEY_MIME)).put("rate", format.getInteger(MediaFormat.KEY_SAMPLE_RATE))
+                        .put("channels", format.getInteger(MediaFormat.KEY_CHANNEL_COUNT));
+                for (String key : List.of(MediaFormat.KEY_DURATION, MediaFormat.KEY_ENCODER_DELAY, MediaFormat.KEY_ENCODER_PADDING))
+                    if (format.containsKey(key)) encodedTiming.put(key, format.getNumber(key));
+                JSONArray packets = new JSONArray(); encodedTrack.selectTrack(0);
+                while (encodedTrack.getSampleSize() >= 0) {
+                    assertTrue("Only this short fixture's bounded packet metadata", packets.length() < 256);
+                    packets.put(new JSONObject().put("ptsUs", encodedTrack.getSampleTime()).put("bytes", encodedTrack.getSampleSize()).put("flags", encodedTrack.getSampleFlags()));
+                    if (!encodedTrack.advance()) break;
+                }
+                encodedTiming.put("packets", packets);
+                try (PrintWriter out = new PrintWriter(new File(folder(), "recorded-analysis-import-timing.json"), "UTF-8")) { out.println(encodedTiming.toString(2)); }
+                assertTrue("AAC encoder produced packets", packets.length() > 0);
+                long firstPacket = packets.getJSONObject(0).getLong("ptsUs");
+                for (int n = 0; n < packets.length(); n++) assertEquals("Continuous AAC-LC packet " + n,
+                        firstPacket + n * 64000L, packets.getJSONObject(n).getLong("ptsUs"));
+            } finally { encodedTrack.release(); }
+            Bundle seed = new Bundle(); seed.putByteArray("bytes", encodedBytes); seed.putString("sha256", importHash);
             Bundle seeded = importFixture("prepareRecordedAnalysis", importUuid, seed);
             assertEquals(encodedBytes.length, seeded.getLong("size")); assertEquals(importHash, seeded.getString("sha256"));
             Uri importedUri = Uri.parse(seeded.getString("uri")); assertEquals("content", importedUri.getScheme());
@@ -393,7 +419,8 @@ public final class RecordedAnalysisJourneyTest {
                     .put("omittedMs", result.getLong("omittedMs")).put("windows", result.getJSONArray("windows")).put("observedUiProgress", seenProgress[0])
                     .put("savedAndReopened", true).put("deleted", true).put("originalAudioUnchanged", true).put("accuracyAcceptanceRequired", false)
                     .put("importedAudio", new JSONObject().put("selection", "resolver selected content URI; no DocumentsUI assertion")
-                            .put("source", imported.source).put("result", imported.result).put("savedAndReopened", true).put("deleted", true).put("originalEncodedAudioUnchanged", true));
+                            .put("encodedTiming", encodedTiming).put("source", imported.source).put("result", imported.result)
+                            .put("savedAndReopened", true).put("deleted", true).put("originalEncodedAudioUnchanged", true));
             try (PrintWriter out = new PrintWriter(new File(folder(), "recorded-analysis-proof.json"), "UTF-8")) { out.println(proof.toString(2)); }
             assertEquals(5, frames); assertEquals(preferences, Prefs.of(c).getAll()); silent();
         } catch (Exception | AssertionError failure) {
