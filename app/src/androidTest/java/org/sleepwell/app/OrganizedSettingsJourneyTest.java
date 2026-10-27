@@ -352,7 +352,7 @@ public final class OrganizedSettingsJourneyTest {
             click("Retention details"); require("Retention details"); capture("retention-details", "Save & apply retention", false); back(); require("3 days"); finish();
             assertEquals("Retention draft did not apply", 7, personal.getInt("audioRetentionDays", 0));
 
-            launch(SnoringCuesActivity.class); click("Both"); selected("Both", true); click("Contactless & output");
+            launch(SnoringCuesActivity.class); click("Both"); selected("Both", true); desc("Contactless & output");
             checked("Contactless vibration cues", false); recreate(); require("Contactless & output"); capture("snoring-options", "Save settings", false);
             back(); selected("Both", true); checked("Respond to snoring estimates", false); finish(); assertEquals(1, personal.getInt("snoreCueMode", -1));
 
