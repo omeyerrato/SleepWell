@@ -1,0 +1,102 @@
+[
+  {
+    "file": "qr-code-access-error.png",
+    "sha256": "d99c03ebd0642bc1c316f0115e65ff66cdb233c7346e8eb5862eaa46097f97a5"
+  },
+  {
+    "file": "qr-code-camera-error.png",
+    "sha256": "6416620baa02c9253721fd848e190064a71864a21460dcdb2f3fbc60d7d7d238"
+  },
+  {
+    "file": "qr-code-captured.png",
+    "sha256": "de9385cbabf0b4f5688458ac774b4473c81687f4356c1101abd79881ca5f570f"
+  },
+  {
+    "file": "qr-code-denied.png",
+    "sha256": "d83b2bfef476db091bf4cca5cf075a59785d57e8779e4f5a342a2d271ed518a1"
+  },
+  {
+    "file": "qr-code-fallback-error.png",
+    "sha256": "5f5fbbbbd93b51e2280fd3359dce60207a0d67c8c135fd386ba603ff5970902f"
+  },
+  {
+    "file": "qr-code-fallback.png",
+    "sha256": "d38c72399619da0b537275a6678c7612de848490831475703b89e1306f492e8e"
+  },
+  {
+    "file": "qr-code-invalid.png",
+    "sha256": "6cfef27e6d9232a61f55678ee03fdc10da974ca17f230d33956a11c23e4b95d2"
+  },
+  {
+    "file": "qr-code-permission.png",
+    "sha256": "a5c7b1981b228e70fa80cc8c79ac20821ce963b5a2e3584dc3fd8d10bb551476"
+  },
+  {
+    "file": "qr-code-recreated.png",
+    "sha256": "bd797ebd58129b5636b547b8d00738efa16fdb1bc1db94d0402a3945829bc8bb"
+  },
+  {
+    "file": "qr-code-reopened.png",
+    "sha256": "bd797ebd58129b5636b547b8d00738efa16fdb1bc1db94d0402a3945829bc8bb"
+  },
+  {
+    "file": "qr-code-routine.png",
+    "sha256": "c6172b49760dc5bc4fca045d5588a5382320d38a02421312786f590a7aa8307c"
+  },
+  {
+    "file": "qr-code-scanning.png",
+    "sha256": "82c1f93e62eb1bc2db082a19d1a7c0a32671d7fd936d0472f5955d6b413eb88f"
+  },
+  {
+    "file": "qr-code-unavailable.png",
+    "sha256": "3f181f283a77cddcf7aa2c02bfc0e9b5a6eda24e84a3cb9142f54888a4245b72"
+  },
+  {
+    "file": "backup-document-confirmation.png",
+    "sha256": "9a88f8c80f9d367a160728ddbf004bfece45bb78420741f6f922b23eb845e13e"
+  },
+  {
+    "file": "backup-document-restored.png",
+    "sha256": "50d0190805b7468c495b569a80f334fb980dc3686bcafb89b6f1acac2b2258e9"
+  },
+  {
+    "file": "backup-document-restoring-recreated.png",
+    "sha256": "91fc28a17ef473d5ae82541663f71e5b1135228b040fd634f624e3f26193744f"
+  },
+  {
+    "file": "backup-document-restoring.png",
+    "sha256": "91fc28a17ef473d5ae82541663f71e5b1135228b040fd634f624e3f26193744f"
+  },
+  {
+    "file": "backup-document-result-reopened.png",
+    "sha256": "50d0190805b7468c495b569a80f334fb980dc3686bcafb89b6f1acac2b2258e9"
+  },
+  {
+    "file": "backup-document-review-recreated.png",
+    "sha256": "eaaba2819dca98d920e4d4a1179dcae1925163f0b40e81bb9fe30ef3132de225"
+  },
+  {
+    "file": "backup-document-review-reopened.png",
+    "sha256": "eaaba2819dca98d920e4d4a1179dcae1925163f0b40e81bb9fe30ef3132de225"
+  },
+  {
+    "file": "backup-document-review.png",
+    "sha256": "eaaba2819dca98d920e4d4a1179dcae1925163f0b40e81bb9fe30ef3132de225"
+  },
+  {
+    "file": "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert.txt",
+    "sha256": "cefb7dffb42bc98b69727cadf486f5b3851572cd83fdd3fc569d1136dc01ab56"
+  },
+  {
+    "file": "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen.txt",
+    "sha256": "7cda6e048adfa29abe4f0e9ce1dba6df96cbfb0dea96db12dc89654179f0f495"
+  },
+  {
+    "file": "environment.json",
+    "sha256": "448892020c0bb52fd4dd2d2bd2b0b4b99d4abcbc022a42dd1b4ff2f829cbae8a"
+  },
+  {
+    "file": "focused-review-summary.json",
+    "sha256": "de329dd75b9d700090e96927a232d37890c401e1548ca22c176c08920d7d7244"
+  }
+]
