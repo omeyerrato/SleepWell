@@ -130,7 +130,8 @@ public final class OrganizedSettingsJourneyTest {
     private void input(View root, String value, boolean description) throws Exception {
         step = "single native input " + value;
         assertFalse("Activation and output controls are forbidden", Set.of("Preview cue", "Arm tonight", "Nightly tracking",
-                "Microphone analysis", "Record sounds", "Play sleep sounds", "Import audio file").contains(value));
+                "Microphone analysis", "Record sounds", "Play sleep sounds", "Import audio file",
+                "Start tracking  \u2192", "Use sonar", "Test again", "Analyze sleep sounds", "Save sound clips this night").contains(value));
         silent(); expose(root, value, description); frame(root); Rect[] area = {null};
         i.runOnMainSync(() -> area[0] = measured(root, value, description));
         assertTrue("Single delivered native tap", device.click(area[0].centerX(), area[0].centerY()));
@@ -164,12 +165,52 @@ public final class OrganizedSettingsJourneyTest {
                 value, clickable(activity.getWindow().getDecorView(), text, false).isSelected()));
     }
     private void launch(Class<? extends Activity> type) throws Exception {
+        launch(type, new Intent(c, type));
+    }
+    private void launch(Class<? extends Activity> type, Intent intent) throws Exception {
         step = "launch " + type.getSimpleName(); Instrumentation.ActivityMonitor monitor = i.addMonitor(type.getName(), null, false);
-        try { c.startActivity(new Intent(c, type).putExtra("visualReview", true)
+        try { c.startActivity(intent.putExtra("visualReview", true)
                 .putExtra("verificationLabel", "CI private settings · no output").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             activity = monitor.waitForActivityWithTimeout(5000); assertNotNull(activity);
         } finally { i.removeMonitor(monitor); }
         ready();
+    }
+    private Activity openChild(String description, Class<? extends Activity> type) throws Exception {
+        Activity parent = activity; Instrumentation.ActivityMonitor monitor = i.addMonitor(type.getName(), null, false);
+        try { desc(description); activity = monitor.waitForActivityWithTimeout(5000); assertNotNull(activity); }
+        finally { i.removeMonitor(monitor); }
+        ready(); return parent;
+    }
+    private void cancelChild(Activity parent) throws Exception {
+        Activity child = activity; ready(); device.pressBack(); await(child::isDestroyed); drain(child); activity = parent; ready();
+    }
+    private void trackingRadio(String description, boolean selected) throws Exception {
+        ready(); i.runOnMainSync(() -> {
+            View card = find(activity.getWindow().getDecorView(), description, true); assertNotNull(description, card);
+            android.view.accessibility.AccessibilityNodeInfo node = card.createAccessibilityNodeInfo();
+            assertEquals("Actual radio role", android.widget.RadioButton.class.getName(), node.getClassName().toString());
+            assertTrue("Sensor selection is checkable", node.isCheckable()); assertEquals(description, selected, node.isChecked());
+            assertEquals("Visual state agrees with actual radio", selected, card.isSelected());
+        });
+    }
+    private void trackingMain(String name, boolean lightDraft) throws Exception {
+        require("Tracking setup"); step = "Tracking main " + name + " full-control bounds"; ready(); View root = activity.getWindow().getDecorView(); frame(root);
+        trackingRadio("Phone movement selected", true); trackingRadio("Contactless sonar", false); checked("Record sounds", false);
+        checked("Record light levels", lightDraft);
+        i.runOnMainSync(() -> {
+            Rect start = measured(root, "Start tracking  \u2192", false);
+            for (String text : new String[]{"Choose sensor", "Phone placement", "Additional sensors", "On mattress, uncovered", "Manual"}) {
+                View view = find(root, text, false); assertNotNull(text, view); Rect visible = new Rect();
+                assertTrue(text + " visible in main frame", view.getGlobalVisibleRect(visible));
+                assertEquals(text + " complete width", view.getWidth(), visible.width());
+                assertEquals(text + " complete height", view.getHeight(), visible.height());
+                assertTrue(text + " above Start", screenBounds(view).bottom <= start.top);
+            }
+            for (String desc : new String[]{"Phone movement selected", "Contactless sonar", "Record sounds", "Record light levels", "Choose automatic start", "More tracking settings"}) {
+                Rect control = measured(root, desc, true); assertTrue(desc + " above Start", control.bottom <= start.top);
+            }
+        });
+        captureWindow(root, "tracking-" + name);
     }
     private void recreate() throws Exception {
         Activity before = activity; Instrumentation.ActivityMonitor monitor = i.addMonitor(before.getClass().getName(), null, false);
@@ -191,7 +232,7 @@ public final class OrganizedSettingsJourneyTest {
         captureWindow(root, name);
     }
     private void captureWindow(View root, String name) throws Exception {
-        assertTrue("At most eleven representative frames", captures < 11); frame(root); silent();
+        assertTrue("At most nineteen representative frames", captures < 19); frame(root); silent();
         assertTrue(device.takeScreenshot(new File(folder(), "organized-settings-" + name + ".png"))); captures++;
     }
     private void closeAll() throws Exception {
@@ -222,18 +263,23 @@ public final class OrganizedSettingsJourneyTest {
         assertFalse(Prefs.flag(c, "trackingPaused")); assertEquals(0L, Prefs.of(c).getLong("session", 0));
         SharedPreferences personal = Prefs.of(c); Map<String, ?> original = new HashMap<>(personal.getAll());
         String id = UUID.randomUUID().toString(), database = "organized-settings-" + id + ".db";
-        List<String> names = List.of("organized-sensitivity-" + id, "organized-mix-" + id, "organized-auto-" + id, "organized-recurring-" + id);
+        List<String> names = List.of("organized-sensitivity-" + id, "organized-mix-" + id, "organized-auto-" + id, "organized-recurring-" + id, "organized-motion-" + id, "organized-delay-" + id);
         SharedPreferences sensitivity = c.getSharedPreferences(names.get(0), 0), mix = c.getSharedPreferences(names.get(1), 0),
-                automatic = c.getSharedPreferences(names.get(2), 0), recurring = c.getSharedPreferences(names.get(3), 0);
+                automatic = c.getSharedPreferences(names.get(2), 0), recurring = c.getSharedPreferences(names.get(3), 0),
+                motion = c.getSharedPreferences(names.get(4), 0), delay = c.getSharedPreferences(names.get(5), 0);
         Records.Factory oldRecords = Records.factory; SoundSensitivitySettings.Factory oldSensitivity = SoundSensitivitySettings.factory;
         SoundPreferences.Factory oldMix = SoundPreferences.factory; SoundRetentionJob.Factory oldRetention = SoundRetentionJob.factory;
         SnoringCuesActivity.PreviewFactory oldPreview = SnoringCuesActivity.previewFactory;
         AutomaticTrackingActivity.Port oldAutomatic = AutomaticTrackingActivity.port; RecurringTracking.Port oldRecurring = RecurringTracking.port;
+        TrackingActivity.Commands oldTracking = TrackingActivity.commands; TrackingService.StoreFactory oldTrackingStores = TrackingActivity.stores;
+        MotionSettings.Factory oldMotionSettings = MotionSettings.factory; MotionPort.Factory oldMotionPorts = MotionSensorActivity.ports;
+        TrackingDelaySettings.Factory oldDelay = TrackingDelaySettings.factory, privateDelay = context -> delay;
         Application app = (Application) c.getApplicationContext();
         Application.ActivityLifecycleCallbacks lifecycle = new Application.ActivityLifecycleCallbacks() {
             public void onActivityCreated(Activity a, Bundle state) { owned.add(a);
                 assertTrue("Only inert settings windows", a instanceof SoundSensitivityActivity || a instanceof SoundLibrarySettingsActivity
-                        || a instanceof SnoringCuesActivity || a instanceof AutomaticTrackingActivity || a instanceof RecurringTrackingActivity || a instanceof SleepSoundsActivity);
+                        || a instanceof SnoringCuesActivity || a instanceof AutomaticTrackingActivity || a instanceof RecurringTrackingActivity || a instanceof SleepSoundsActivity
+                        || a instanceof TrackingActivity || a instanceof MotionSensorActivity);
                 assertTrue("Every window suppresses output haptics", a.getIntent().getBooleanExtra("visualReview", false)); }
             public void onActivityStarted(Activity a) {} public void onActivityResumed(Activity a) {} public void onActivityPaused(Activity a) {}
             public void onActivityStopped(Activity a) {} public void onActivitySaveInstanceState(Activity a, Bundle state) {} public void onActivityDestroyed(Activity a) {}
@@ -244,12 +290,25 @@ public final class OrganizedSettingsJourneyTest {
             // Define inert values during the journey so delayed BOOT_COMPLETED cannot race its baseline.
             assertTrue(personal.edit().putBoolean("ringing", false).putBoolean("tracking", false).putBoolean("trackingPaused", false)
                     .putLong("session", 0).putInt("audioRetentionDays", 7).putBoolean("keepAudioFavorites", true)
-                    .putBoolean("snoreCues", false).putBoolean("noiseEnabled", false).putBoolean("sonarSnoreVibration", false)
+                    .putBoolean("snoreCues", false).putBoolean("noiseEnabled", false).putBoolean("recordLight", false)
+                    .putBoolean("saveClips", false).putBoolean("sonarSnoreVibration", false)
                     .putBoolean("sonarSnoreSound", false).putInt("snoreCueMode", 1).putInt("snoreCueIntensity", 1)
                     .putInt("snoreCueRepeats", 1).putInt("snoreCueSensitivity", 1).commit());
             Map<String, ?> inert = new HashMap<>(personal.getAll());
             i.runOnMainSync(() -> {
                 Records.factory = context -> new Store(context, database);
+                TrackingActivity.stores = context -> new Store(context, database); TrackingDelaySettings.factory = privateDelay;
+                TrackingActivity.commands = new TrackingActivity.Commands() {
+                    public TrackingService.Snapshot snapshot() { return null; }
+                    public void start(TrackingActivity a, Intent intent) { throw new AssertionError("Tracking Start is forbidden"); }
+                    public void command(TrackingActivity a, Intent intent) { throw new AssertionError("Tracking command is forbidden"); }
+                    public void review(TrackingActivity a) { throw new AssertionError("Runtime report is forbidden"); }
+                };
+                MotionSettings.factory = context -> motion;
+                MotionSensorActivity.ports = context -> new MotionPort() {
+                    public boolean available() { return true; } public boolean begin(Sink sink) { return true; }
+                    public void close() {} public long now() { return 100000L; }
+                };
                 SoundSensitivitySettings.factory = context -> SoundSensitivitySettings.of(sensitivity);
                 SoundPreferences.factory = context -> mix;
                 SoundRetentionJob.factory = (context, records) -> policy -> { throw new AssertionError("Retention was not authorized to apply"); };
@@ -315,20 +374,54 @@ public final class OrganizedSettingsJourneyTest {
             assertEquals(45, SoundPreferences.load(mix).timerMinutes); assertEquals(10, SoundPreferences.load(mix).fadeMinutes);
             launch(SleepSoundsActivity.class); click("Timer"); selected("45 min", true); click("Cancel"); click("Fade out"); selected("10 min", true);
             capture("fade-reopened", "Use 10 min fade", false); click("Cancel"); finish();
-            assertEquals("All eleven actual frames captured", 11, captures); assertEquals("Only private setting stores changed", inert, personal.getAll()); silent();
+            // Configuration only: the actual Start/Arm/microphone/preflight actions are never pressed.
+            launch(TrackingActivity.class); trackingMain("main", false);
+            Activity setup = activity; int windows = owned.size(); desc("Phone movement selected"); ready();
+            assertSame("Selecting the current phone sensor does not navigate", setup, activity);
+            assertEquals("No unexpected sensor-settings window", windows, owned.size()); trackingRadio("Phone movement selected", true);
+            desc("Record light levels"); checked("Record light levels", true);
+            desc("More tracking settings"); require("Tracking settings"); capture("tracking-more", "Movement sensitivity", true);
+            Activity settingsParent = openChild("Movement sensitivity", MotionSensorActivity.class);
+            require("Motion sensor"); require("Waiting for motion readings. Missing data stays blank.");
+            capture("tracking-sensitivity", "Motion sensitivity", true);
+            i.runOnMainSync(() -> {
+                View target = find(activity.getWindow().getDecorView(), "Motion sensitivity", true); assertTrue(target instanceof android.widget.SeekBar);
+                Bundle args = new Bundle(); args.putFloat(android.view.accessibility.AccessibilityNodeInfo.ACTION_ARGUMENT_PROGRESS_VALUE, 2);
+                assertTrue(target.performAccessibilityAction(android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction.ACTION_SET_PROGRESS.getId(), args));
+                assertEquals("Actual sensitivity draft changes", 2, ((android.widget.SeekBar) target).getProgress());
+            });
+            require("High"); cancelChild(settingsParent); require("Tracking settings"); assertTrue("Cancelled sensitivity draft is not saved", motion.getAll().isEmpty());
+            desc("Sampling & battery"); require("Sampling & battery"); capture("tracking-power", "Done", false);
+            recreate(); require("Sampling & battery"); capture("tracking-power-recreated", "Done", false);
+            back(); require("Tracking settings"); back(); recreate(); trackingMain("recreated", true);
+            trackingRadio("Phone movement selected", true); checked("Record sounds", false); checked("Record light levels", true);
+            Activity manualParent = openChild("Choose automatic start", AutomaticTrackingActivity.class);
+            require("Automatic tracking"); selected("Manual only", true); assertNull("Manual mode has no Arm action", find(activity.getWindow().getDecorView(), "Arm tonight", false));
+            capture("tracking-automatic-manual", "Save settings", false); cancelChild(manualParent);
+            require("Manual"); checked("Record light levels", true); assertTrue("Automatic draft cancelled without Save/Arm", automatic.getAll().isEmpty()); finish();
+            launch(TrackingActivity.class, new Intent(c, TrackingActivity.class).putExtra("sensor", "sonar"));
+            trackingRadio("Contactless sonar selected", true); trackingRadio("Phone movement", false);
+            Activity sonarSetup = activity; windows = owned.size(); desc("Phone movement");
+            assertSame("Unselected phone card selects in place", sonarSetup, activity); assertEquals(windows, owned.size()); trackingMain("phone-selected", false); finish();
+            TrackingDelayRuntime.drain(privateDelay); assertTrue("No delayed admission was written", delay.getAll().isEmpty());
+            try (Store records = new Store(c, database)) { assertTrue("Setup creates no recording", records.rows("SELECT id FROM sessions").isEmpty()); }
+            assertEquals("All nineteen actual frames captured", 19, captures); assertEquals("Only private setting stores changed", inert, personal.getAll()); silent();
         } catch (Exception | AssertionError failure) {
-            try { device.dumpWindowHierarchy(new File(folder(), "organized-settings-failure.xml"));
+            try { assertTrue(device.takeScreenshot(new File(folder(), "organized-settings-failure.png")));
+                device.dumpWindowHierarchy(new File(folder(), "organized-settings-failure.xml"));
                 try (PrintWriter out = new PrintWriter(new File(folder(), "organized-settings-failure.txt"), "UTF-8")) { out.println(step); failure.printStackTrace(out); }
-            } catch (Exception diagnostic) { failure.addSuppressed(diagnostic); }
+            } catch (Exception | AssertionError diagnostic) { failure.addSuppressed(diagnostic); }
             throw failure;
         } finally {
             boolean drained = false;
-            try { closeAll(); drained = true; }
+            try { closeAll(); TrackingDelayRuntime.drain(privateDelay); TrackingDelayRuntime.forget(privateDelay); drained = true; }
             finally {
                 app.unregisterActivityLifecycleCallbacks(lifecycle);
                 i.runOnMainSync(() -> { Records.factory = oldRecords; SoundSensitivitySettings.factory = oldSensitivity;
                     SoundPreferences.factory = oldMix; SoundRetentionJob.factory = oldRetention; SnoringCuesActivity.previewFactory = oldPreview;
-                    AutomaticTrackingActivity.port = oldAutomatic; RecurringTracking.port = oldRecurring; });
+                    AutomaticTrackingActivity.port = oldAutomatic; RecurringTracking.port = oldRecurring;
+                    TrackingActivity.commands = oldTracking; TrackingActivity.stores = oldTrackingStores;
+                    MotionSettings.factory = oldMotionSettings; MotionSensorActivity.ports = oldMotionPorts; TrackingDelaySettings.factory = oldDelay; });
                 // Drain all owned workers before restoring exact absence as well as values.
                 restore(personal, original);
                 if (drained) {
