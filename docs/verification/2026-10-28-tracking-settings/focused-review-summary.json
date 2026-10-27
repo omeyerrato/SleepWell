@@ -1,0 +1,26 @@
+{
+  "scope": "setup-readiness",
+  "full_app_review": false,
+  "expected_classes": 2,
+  "expected_methods": 2,
+  "class_results": [
+    {
+      "class": "OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmProtectionFlowTest#compactListAndGlobalProtectionsPersistWithoutAlarmExecution",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 32,
+  "failures": [
+    "AlarmProtectionFlowTest#compactListAndGlobalProtectionsPersistWithoutAlarmExecution",
+    "protection-readiness-rationale.png",
+    "protection-readiness-rationale-cancel.png",
+    "protection-readiness-settings-recovery.png",
+    "protection-readiness-returned.png"
+  ]
+}

@@ -1,0 +1,50 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmProtectionFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.AlarmProtectionFlowTest:
+INSTRUMENTATION_STATUS: test=compactListAndGlobalProtectionsPersistWithoutAlarmExecution
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmProtectionFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Exact OS denial resource com.google.android.permissioncontroller:id/permission_deny_button
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.AlarmProtectionFlowTest.deny(AlarmProtectionFlowTest.java:44)
+	at org.sleepwell.app.AlarmProtectionFlowTest.readiness(AlarmProtectionFlowTest.java:53)
+	at org.sleepwell.app.AlarmProtectionFlowTest.compactListAndGlobalProtectionsPersistWithoutAlarmExecution(AlarmProtectionFlowTest.java:78)
+
+INSTRUMENTATION_STATUS: stream=
+Error in compactListAndGlobalProtectionsPersistWithoutAlarmExecution(org.sleepwell.app.AlarmProtectionFlowTest):
+java.lang.AssertionError: Exact OS denial resource com.google.android.permissioncontroller:id/permission_deny_button
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.AlarmProtectionFlowTest.deny(AlarmProtectionFlowTest.java:44)
+	at org.sleepwell.app.AlarmProtectionFlowTest.readiness(AlarmProtectionFlowTest.java:53)
+	at org.sleepwell.app.AlarmProtectionFlowTest.compactListAndGlobalProtectionsPersistWithoutAlarmExecution(AlarmProtectionFlowTest.java:78)
+
+INSTRUMENTATION_STATUS: test=compactListAndGlobalProtectionsPersistWithoutAlarmExecution
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 29.637
+There was 1 failure:
+1) compactListAndGlobalProtectionsPersistWithoutAlarmExecution(org.sleepwell.app.AlarmProtectionFlowTest)
+java.lang.AssertionError: Exact OS denial resource com.google.android.permissioncontroller:id/permission_deny_button
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.AlarmProtectionFlowTest.deny(AlarmProtectionFlowTest.java:44)
+	at org.sleepwell.app.AlarmProtectionFlowTest.readiness(AlarmProtectionFlowTest.java:53)
+	at org.sleepwell.app.AlarmProtectionFlowTest.compactListAndGlobalProtectionsPersistWithoutAlarmExecution(AlarmProtectionFlowTest.java:78)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

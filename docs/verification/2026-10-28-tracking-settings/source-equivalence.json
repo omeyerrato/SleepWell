@@ -1,0 +1,101 @@
+{
+  "scope": "Listed configuration/rendering sources and placement asset only; no APK, device or unlisted runtime equivalence claim",
+  "run_source": "fdb8006966ceec726174cfd25ca2bfe0ba72aa11",
+  "root_committed_head_at_archive": "9f22f2b3f83d9b22625e2fb6e8bd3f40591a64e3",
+  "listed_paths_match_root_working_tree": true,
+  "previous_run": {
+    "id": 40569431021,
+    "head": "9fefe2092e04648e650cdd10862f60e33dcb012b",
+    "tracking_prefix_before_live_method_identical": true,
+    "whole_tracking_file_identical": false,
+    "note": "Later live-page changes are outside this configuration journey. Earlier failure was the test capture helper treating native SeekBar as clickable."
+  },
+  "sources": [
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/OrganizedSettingsJourneyTest.java",
+      "git_blob": "fcc82c293e83eb4f7f0fdbca57de06dda80d2d5f",
+      "sha256_committed_bytes": "ea60e092e76151651c49faf2e3eb17dca3a8e83cf9c2c8e1a037a7527d7dcfe8"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingActivity.java",
+      "git_blob": "c3fa201a1bde13099814e3ad42bde17cb163b577",
+      "sha256_committed_bytes": "762777983ee21bf331fe742297a15523a25b9d25c01c614d759f2871eefb3a60"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MotionSensorActivity.java",
+      "git_blob": "7506b56cd50f08f6bbd0d6c96017ce0b305a1803",
+      "sha256_committed_bytes": "a8b6388e36d624d145a474550f881c4fd494cad0e5f397a9c1465ef0943de7a8"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MotionSettings.java",
+      "git_blob": "5688c934e7ecc6135b703efaacfddc6740d02e5b",
+      "sha256_committed_bytes": "70f2890f08561c6fe15f3e2931addd35d8f8dd851ce4fb9d3354546b06bd8af7"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MotionPort.java",
+      "git_blob": "785d458099c2030b7f24352b743700a801307b77",
+      "sha256_committed_bytes": "9ccd54a201c103af3a6a8c570e5ff2bc13dea2f2f86c303e8766db028f8a5194"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java",
+      "git_blob": "9ca7fadf8a3c59dc8a5b9ed1f1838b09ae563150",
+      "sha256_committed_bytes": "25862a94f68d6c0a75da6540a626cdaa66a420e17ee7f93ec7877c31fe33ad71"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecurringTrackingActivity.java",
+      "git_blob": "0f529df8d9124cacbf1e2c9b56e3b528fc7cc0e4",
+      "sha256_committed_bytes": "0c76e779c0e6ec7eec599fbca626df222f6b1f998d5767aa2593cbf7f2c29d47"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingOptionsUi.java",
+      "git_blob": "3a9a92d1b783ba9f68e6e4cb93897b1baa50d345",
+      "sha256_committed_bytes": "4ff7daabb493eeb0d9e168928a8b88d15724c69ba032ee3de085154c1ee8350f"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundSensitivityActivity.java",
+      "git_blob": "b02c10a52feb4efa3323890b47186c08b19abe5d",
+      "sha256_committed_bytes": "05a06b8635396aa301c8f65e21291adeeb23265b48cceee950315c2bcb878019"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundLibrarySettingsActivity.java",
+      "git_blob": "8f2aa2e59fce9ceb1b898d8f34ef87b2fefcb230",
+      "sha256_committed_bytes": "ae76077822b9cf4ab612a0209a0dde108b21820306aafd50de6a3b3052759093"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SnoringCuesActivity.java",
+      "git_blob": "52a83481db3ec57a82286f7c0939ca264643ecbb",
+      "sha256_committed_bytes": "0b5f7c418cdff6f19f75c7793acd3f452177ffa4d365218a696371474cfb9cf7"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepSoundsActivity.java",
+      "git_blob": "76134bff041d17f716bfcd41603c27159864f8e1",
+      "sha256_committed_bytes": "eb072c21ac9eb09303c1ed8104acb978c3bd0233c073c60eb35f215e0e9fd0aa"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "git_blob": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "sha256_committed_bytes": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Icons.java",
+      "git_blob": "ecb4282c40ffd5118eece20a7c85967e600b7770",
+      "sha256_committed_bytes": "86e8a356aa8d452b18d6df4f8f31ab66582717bc6ad13dedf2d193f53ae44aa4"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/InteractionFeedback.java",
+      "git_blob": "55f8b5ba4418bf5a4426034dcd56c606634138b4",
+      "sha256_committed_bytes": "9d728c99e7a1a81a3d44291d9861dee831fa09c179062fe898d65d84d421e1ef"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Appearance.java",
+      "git_blob": "aecb50792e4892b83b3cba664182e368efd15be0",
+      "sha256_committed_bytes": "e21213f167519292860f54afd96716a938c5ebbd972ec3f358de7810dc574c6a"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/tracking_placement.png",
+      "git_blob": "ba9f5a0fefe33b4b9131ab38727f7c99efc3b090",
+      "sha256_committed_bytes": "4f36867bceb626d9099456a4594d70f52cb67c648eaa4f58a66e683ff5d481ac"
+    }
+  ],
+  "listed_paths_match_root_commit": true
+}
