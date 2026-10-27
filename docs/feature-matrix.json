@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-27",
+  "reviewed": "2026-10-28",
   "features": [
     {
       "feature": "Multiple alarms",
@@ -5015,6 +5015,25 @@
       "validation": "Source5266e54b assembleDebug PASS27s/original signer; preceding app/UI-check buildd4c30f8f PASS1m15s. Native CI40402840848 at test-onlyb4e25e59 passes13.826s: actual bundled CPU inference, observed progress, source/model/hash/coverage checks, save/reopen/exact summary deletion, unchanged original audio/rows/preferences and owned worker termination. Three actual captures inspected. Both real windows Uncertain; independent holdout misses2/4 positives. No accuracy, physical capture/overnight or all-screen acceptance. Common selected-file decoding/resampling source builds, but native import acceptance is pending: CI40438735539 rejected a genuine AAC timestamp discontinuity; diagnostic40440341089 and encoder attempt40442037855 preserve the failure. The unchanged imported-audio gap guard must pass before claiming AAC import. No recognition thresholds/model/holdout changes. Final native CI40444367323 at3359881e PASS40.27s/5 individually inspected originals: real AAC encode/decode, bundled CPU inference, progress, Save/reopen/delete, exact provenance/original-data and worker cleanup. Source implementation matches published33cb5693; arm64 production buildPASS22s/original signer. Resolver fixture selection only; physical codec/provider/accuracy/overnight and full-screen acceptance remain open.",
       "status": "partial",
       "notes": "Real bundled PANNs/EfficientAT CPU inference on explicit retained clips (strict mono16k/4MiB) or bounded selected audio (16MiB/120s; installed decoder/format limits), coarse10s windows and uncertain outcomes. Worker-owned progress/cancel, private in-memory audio, source/edited-coverage/hash revalidation,50 separately saved results with deletion/history revocation, readable model credits. Original automatic YAMNet/event labels and alarm dismissal are unchanged. Not reliable automatic laughter/instrument recognition; no absence conclusion from uncertain. The bounded saved-clip Android workflow passes; imported providers and remaining lifecycle/source-change routes remain unverified. See RECORDED-SOUND-ANALYSIS.md. Main Recording analysis is concise; model identifiers/scores/delete are in Result details, with full licenses and uncertainty in named supporting pages. See verification/2026-10-27-recording-analysis/README.md. Common selected AAC/M4A, MP3, Ogg, FLAC, AMR and PCM16 WAV preparation is implemented; only the native mono16k AAC fixture path has this bounded runtime acceptance. Other formats/rates/channels/providers remain unverified. Exactly one mono/stereo8–96kHz audio track, complete EOS, PCM16 output and contiguous timestamps are required. Arithmetic stereo downmix and original193tap rational resampling record exact input/output provenance and omitted unsupported edge centers; no peak normalization, missing-audio filling, original capture mutation or automatic analysis. See RECORDING-AUDIO-IMPORT.md. AOSP c2.android.aac.encoder export verifies AAC-LC1024sample access units and derives their mux clock from known contiguous source PCM. Vendor encoders keep original timestamps; imported gaps still reject. Actual154ms codec padding remains disclosed, not trimmed. Both real model windows remain Uncertain. See verification/2026-10-27-alarm-search-audio/README.md."
+    },
+    {
+      "id": "F172",
+      "feature": "Foreground room light and optional sound-level preview",
+      "screens": "30 (Board10/right) + Settings / Sleep & bedtime",
+      "source": "design-concepts/2026-10-22-phone-app/SCREEN-MAP.md",
+      "implementation": [
+        "RoomConditionsActivity.java",
+        "RoomConditionsUi.java",
+        "RoomLightHistory.java",
+        "RoomLightPort.java",
+        "RoomSoundLevel.java",
+        "RoomAudio.java",
+        "RoomDimming.java"
+      ],
+      "tests": [],
+      "validation": "Current source increment only; native fake-port capture/action/persistence and real phone validation pending. No physical microphone or dimming test ran.",
+      "status": "partial",
+      "notes": "Actual foreground TYPE_LIGHT lux and bounded fifteen-minute observation history with unknown/unreliable gaps. Optional microphone starts only on explicit current foreground action with permission and exclusive lease; relative RMS only, no calibrated dB, files, classification or upload. Opening/recreation/permission return never resumes capture. Saved opt-in dims only Room and active Wind-down windows, restoring their prior brightness on departure. Permission-recovery and complete reference acceptance remain pending."
     }
   ]
 }

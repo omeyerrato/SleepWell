@@ -9,7 +9,7 @@ Full supporting evidence stays in FEATURE-CHECKLIST.md and FEATURE-MATRIX.md.
 
 - [ ] Match all36 reference screens. Current Report, Tone/Gentle, Snooze, QR, sleep plan, rhythm/Nap, Settings root and Appearance have bounded comparison/action evidence. Remaining screens, variants and full reference fidelity remain open. [Screen-by-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
 - [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
-- [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness recovery and additional Tracking work are a separate source increment awaiting native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
+- [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness denial/rationale/permanent-denial Settings recovery now passes its real Android journey (35.776s/13 inspected originals). Contactless/live/Snoring pass three selected methods (18 inspected originals); live supporting-copy crowding remains a visible defect under correction. New Automatic recovery, Wind-down/Guard, Motion and Room work awaits its own native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
 The installed phone is170b0e44; its checksum and data preservation are verified. The separate0.1.1 icon/haptics hotfix is built and awaiting USB reconnection.
 
@@ -52,7 +52,7 @@ The phone now has **170b0e44**, installed at the user’s request with original 
 ## Still unfinished
 
 - [ ] Match all36 reference screens, especially Report, charts, menus, icons and navigation.
-- [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness recovery and additional Tracking work are a separate source increment awaiting native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
+- [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness denial/rationale/permanent-denial Settings recovery now passes its real Android journey (35.776s/13 inspected originals). Contactless/live/Snoring pass three selected methods (18 inspected originals); live supporting-copy crowding remains a visible defect under correction. New Automatic recovery, Wind-down/Guard, Motion and Room work awaits its own native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 - [ ] Reliable additional sound recognition, including laughter/instruments.
 - [ ] Working phone-input sleep-stage/REM and breathing/apnea analysis.
 - [ ] Remaining ambient-playlist/provider-specific functionality and verification.
@@ -70,6 +70,6 @@ Priority implementation/verification scope is tracked in UI-ORGANIZATION.md.
 - [x] Real backup tone/volume, format14 with legacy imports and correct progress rails; same native journey plus fake-output policy assertions.
 - [x] Gentle quiet ramp sample, Tone selection/import/preview controls and compact QR enrollment; real configuration/persistence with injected outputs.
 - [x] Rhythm/Nap layout/actions, Health permission recovery, Privacy deletion/cleanup recovery and Cloud folder rotation pass their named private native flows.
-- [ ] All36 reference states and broader interaction/security acceptance remain open. Source-only Tracking/readiness refinements require their focused native capture checks next.
+- [ ] All36 reference states and broader interaction/security acceptance remain open. Readiness and current Contactless/Snoring flows have bounded native evidence; live-copy correction plus Automatic, Wind-down/Guard, Motion and Room increments still need their changed-flow captures.
 
 Published170b0e44 is now installed with verified original user-data preservation. No alarm, sound, flashlight or haptic test ran. Version0.1.1 icon/haptics is built, awaiting USB reconnection. [Current release and exact evidence](verification/2026-10-27-reference-menus-build/README.md).
