@@ -1,0 +1,39 @@
+{
+  "scope": "reference-menus",
+  "full_app_review": false,
+  "expected_classes": 5,
+  "expected_methods": 5,
+  "class_results": [
+    {
+      "class": "AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "AlarmToneFlowTest#toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "CloudBackupFlowTest#chooseSaveReopenAndReviewKeepLocalDataWithNoUpload",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 56,
+  "failures": [
+    "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+    "privacy-history-pending.png",
+    "privacy-history-done.png"
+  ]
+}
