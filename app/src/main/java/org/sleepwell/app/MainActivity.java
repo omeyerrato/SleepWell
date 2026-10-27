@@ -21,7 +21,7 @@ import java.util.*;
 public class MainActivity extends Activity {
     private final Set<Integer> collapsedAlarms=new HashSet<>();
     private String settingsGroup="";private final Map<String,Integer> settingsScroll=new HashMap<>();private final Deque<String> settingsBack=new ArrayDeque<>();private boolean settingsRoute;
-    private Store store;private int tab=0;private Alarm pendingTone;private MediaPlayer preview;private NfcAdapter nfc;
+    private Store store;private int tab=0;private Alarm pendingTone;private MediaPlayer preview;private NfcEnrollment nfcEnrollment;
     private static final int NOTIFY=21,TONE=22,EXPORT_JSON=23,EXPORT_CSV=24,IMPORT=25;
     private final Handler appearanceClock=new Handler(Looper.getMainLooper());
     private NightArc nightArc;private boolean clockReceiverRegistered,restoreRestWindow;
@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
     }
     @Override protected void onResume() {super.onResume();HomeSurfaces.changed(this);HomeShortcuts.publish(this);recoverNightlySchedule();if(!TrackingService.running)try{store.recoverInterrupted();}catch(Exception e){Prefs.put(this,"trackingError","An interrupted record could not be finalized. Free storage and reopen the app.");}render();appearanceClock.removeCallbacks(clockUpdate);appearanceClock.postDelayed(clockUpdate,30000);if(!clockReceiverRegistered){IntentFilter filter=new IntentFilter(Intent.ACTION_TIME_CHANGED);filter.addAction(Intent.ACTION_TIMEZONE_CHANGED);androidx.core.content.ContextCompat.registerReceiver(this,clockChanged,filter,androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED);clockReceiverRegistered=true;}}
     private void recoverNightlySchedule(){try{RecurringTracking.Port owner=RecurringTracking.port;if(owner.preferences(this).getBoolean("enabled",false))RecurringTracking.recover(this,owner,false);}catch(RuntimeException failure){android.util.Log.e("SleepWell","Nightly schedule could not be reconciled on app reopening",failure);}}
-    @Override protected void onPause(){rememberSettingsScroll();appearanceClock.removeCallbacks(clockUpdate);if(clockReceiverRegistered){unregisterReceiver(clockChanged);clockReceiverRegistered=false;}super.onPause();}
+    @Override protected void onPause(){if(nfcEnrollment!=null)nfcEnrollment.close();rememberSettingsScroll();appearanceClock.removeCallbacks(clockUpdate);if(clockReceiverRegistered){unregisterReceiver(clockChanged);clockReceiverRegistered=false;}super.onPause();}
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){Runnable apply=()->{if(!isDestroyed()&&hasWindowFocus())Design.systemBars(this,tab==3||tab==0&&Appearance.palette(this).dark);};getWindow().getDecorView().post(apply);getWindow().getDecorView().postDelayed(apply,200);}}
     @Override public void onSaveInstanceState(Bundle b) {super.onSaveInstanceState(b);b.putBoolean("restWindowExplanation",tab==0&&(restoreRestWindow||nightArc!=null&&nightArc.explanationShowing()));rememberSettingsScroll();b.putBoolean("settingsRoute",settingsRoute);b.putStringArrayList("settingsBack",new ArrayList<>(settingsBack));b.putString("settingsGroup",settingsGroup);Bundle positions=new Bundle();for(Map.Entry<String,Integer> entry:settingsScroll.entrySet())positions.putInt(entry.getKey(),entry.getValue());b.putBundle("settingsScroll",positions);b.putInt("tab",tab);b.putIntArray("collapsedAlarms",collapsedAlarms.stream().mapToInt(Integer::intValue).toArray());}
     private void back(){if(!settingsBack.isEmpty()){rememberSettingsScroll();String[] prior=settingsBack.pop().split(":",2);tab=Integer.parseInt(prior[0]);settingsGroup=prior.length>1?validSettingsGroup(prior[1]):"";render();return;}if(settingsRoute){finish();return;}if(tab==4&&!settingsGroup.isEmpty()){settingsGroup="";render();return;}if(tab==0){finish();return;}tab=tab==11?1:tab==3?0:tab==5||tab==6||tab==9?4:0;render();}
@@ -217,10 +217,7 @@ public class MainActivity extends Activity {
     private void guardDisclosure() {new AlertDialog.Builder(this).setTitle("Optional app guard").setMessage(getString(R.string.guard_description)).setPositiveButton("Open accessibility settings",(d,w)->open(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))).setNegativeButton("Later",null).show();}
     private boolean guardEnabled() {String s=Settings.Secure.getString(getContentResolver(),Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);return s!=null&&s.contains(getPackageName()+"/");}
     private void enrollNfc() {
-        nfc=NfcAdapter.getDefaultAdapter(this);if(nfc==null||!nfc.isEnabled()){Ui.toast(this,"Enable NFC on your phone first.");return;}
-        AlertDialog dialog=new AlertDialog.Builder(this).setTitle("Hold your phone over the tag").setMessage("This tag will be required for NFC alarms.").setNegativeButton("Cancel",null).create();
-        dialog.setOnDismissListener(d->nfc.disableReaderMode(this));dialog.show();
-        nfc.enableReaderMode(this,tag->runOnUiThread(()->{Prefs.put(this,"nfcTag",AlarmActivity.hex(tag.getId()));dialog.dismiss();Ui.toast(this,"Tag enrolled");render();}),NfcAdapter.FLAG_READER_NFC_A|NfcAdapter.FLAG_READER_NFC_B|NfcAdapter.FLAG_READER_NFC_F|NfcAdapter.FLAG_READER_NFC_V|NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK,null);
+        if(nfcEnrollment!=null)nfcEnrollment.close();try{nfcEnrollment=NfcEnrollment.platform(this,id->{Prefs.put(this,"nfcTag",id);render();},message->Ui.toast(this,message));nfcEnrollment.open();}catch(RuntimeException unavailable){Ui.toast(this,"NFC reader could not start. Your enrolled tag was kept.");}
     }
     private void setup(LinearLayout body) {
         hero(body,"Alarm readiness","Check your device settings for reliable alarms.");Design.space(body,18);
@@ -276,5 +273,5 @@ public class MainActivity extends Activity {
             }
         }catch(Exception e){Ui.toast(this,"Could not complete this operation: "+e.getMessage());}render();
     }
-    @Override protected void onDestroy(){stopPreview();if(nfc!=null)nfc.disableReaderMode(this);if(store!=null)store.close();super.onDestroy();}
+    @Override protected void onDestroy(){stopPreview();if(nfcEnrollment!=null)nfcEnrollment.close();if(store!=null)store.close();super.onDestroy();}
 }
