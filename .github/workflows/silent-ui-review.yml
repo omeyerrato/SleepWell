@@ -15,6 +15,7 @@ on:
           - organization
           - organized-settings
           - recorded-analysis
+          - challenge-routine
           - sensing-travel
           - travel-ui
           - sonar-night
