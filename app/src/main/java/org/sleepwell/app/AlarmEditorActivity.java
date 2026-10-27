@@ -124,11 +124,11 @@ public class AlarmEditorActivity extends Activity {
                 ()->alarm.json().toString()+"\n"+ChallengeRoutineJson.encode(routineDraft).toString(),
                 (source,destination)->{if(source<0||destination<0||source>=routineDraft.tasks.size()||destination>=routineDraft.tasks.size()||routineDraft.randomCount>0)return false;routineDraft=routineDraft.move(source,destination);render();return true;});
         for(int n=0;n<routineDraft.tasks.size();n++)routineRow(body,n,drag);
-        Design.space(body,14);Design.text(body,"Available tasks",17,600,Design.INK);Design.space(body,6);
+        Design.space(body,10);Design.text(body,"Available tasks",17,600,Design.INK);Design.space(body,6);
         boolean room=routineDraft.tasks.size()<ChallengeRoutine.LIMIT;
         if(!room)Design.text(body,"Routine full · remove a task before adding another.",12,400,Design.MUTED);
         for(String type:List.of("Shake","Walk","Retype","NFC"))ChallengeRoutineUi.task(body,type,taskSummary(type),room,()->configureTask(type));
-        PlanActivity.detail(body,"tasks","More task types","Math, memory, camera and sound challenges",null,()->go("taskcatalog"));
+        LinearLayout moreTypes=Design.item(body,"tasks","More task types",null,()->go("taskcatalog"));moreTypes.setMinimumHeight(Design.dp(this,48));
         ChallengeRoutineUi.save(body,()->{alarm.setRoutine(routineDraft);go("edit");});
     }
     private void routineOptions(LinearLayout body){
