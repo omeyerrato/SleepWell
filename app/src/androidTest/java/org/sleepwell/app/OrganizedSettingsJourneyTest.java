@@ -234,7 +234,7 @@ public final class OrganizedSettingsJourneyTest {
         captureWindow(root, name);
     }
     private void captureWindow(View root, String name) throws Exception {
-        assertTrue("At most nineteen representative frames", captures < 19); frame(root); silent();
+        assertTrue("At most twenty representative frames", captures < 20); frame(root); silent();
         assertTrue(device.takeScreenshot(new File(folder(), "organized-settings-" + name + ".png"))); captures++;
     }
     private void closeAll() throws Exception {
@@ -373,6 +373,7 @@ public final class OrganizedSettingsJourneyTest {
                 for (int n = 0; n < views.size(); n++) { View view = views.get(n); if (view instanceof TextView text && "Open app settings".contentEquals(text.getText())) count++;
                     if (view instanceof ViewGroup group) for (int child = 0; child < group.getChildCount(); child++) views.add(group.getChildAt(child)); }
                 assertEquals("One rebuilt recovery action", 1, count); });
+            capture("automatic-permission-recovery", "Open app settings", false);
             click("Start conditions"); checked("Wait for charging", true); back(); require("Automatic tracking"); selected("At bedtime", true);
             i.runOnMainSync(() -> automaticNotifications[0] = true); recreate(); require("Access is available. Review your choices before arming tonight.");
             i.runOnMainSync(() -> assertNull("Access recovery action clears only after current access is available", find(activity.getWindow().getDecorView(), "Open app settings", false)));
@@ -447,7 +448,7 @@ public final class OrganizedSettingsJourneyTest {
             assertSame("Unselected phone card selects in place", sonarSetup, activity); assertEquals(windows, owned.size()); trackingMain("phone-selected", false); finish();
             TrackingDelayRuntime.drain(privateDelay); assertTrue("No delayed admission was written", delay.getAll().isEmpty());
             try (Store records = new Store(c, database)) { assertTrue("Setup creates no recording", records.rows("SELECT id FROM sessions").isEmpty()); }
-            assertEquals("All nineteen actual frames captured", 19, captures); assertEquals("Only private setting stores changed", inert, personal.getAll()); silent();
+            assertEquals("All twenty actual frames captured", 20, captures); assertEquals("Only private setting stores changed", inert, personal.getAll()); silent();
         } catch (Exception | AssertionError failure) {
             try { assertTrue(device.takeScreenshot(new File(folder(), "organized-settings-failure.png")));
                 device.dumpWindowHierarchy(new File(folder(), "organized-settings-failure.xml"));
