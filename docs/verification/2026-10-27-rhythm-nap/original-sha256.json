@@ -1,0 +1,70 @@
+[
+  {
+    "file": "rhythm-empty.png",
+    "sha256": "47e5785ceec756e0a144cb8c40c0b5e1f43e987104e0a614acb0f3b74f95533d"
+  },
+  {
+    "file": "rhythm-recreated.png",
+    "sha256": "f9100fbb668ad4aa3194d17487eb33ecb5ea322213b3c173aae32b5bf7c13c7f"
+  },
+  {
+    "file": "rhythm-reopened.png",
+    "sha256": "3ce9cf6d124d6bfaf47109e43b3c2c3ddece6c1ed6f88f193c589e16d9469ff3"
+  },
+  {
+    "file": "rhythm-seven-nights.png",
+    "sha256": "674cbb93fe0da1db56f69bfbc53ea5fd9597d34fcd2af2424dc6fb391645302e"
+  },
+  {
+    "file": "rhythm-workdays.png",
+    "sha256": "f9100fbb668ad4aa3194d17487eb33ecb5ea322213b3c173aae32b5bf7c13c7f"
+  },
+  {
+    "file": "nap-cancelled.png",
+    "sha256": "3496e04918731c002cf4b37579d42613002c31d7232c28d847817d13440212dc"
+  },
+  {
+    "file": "nap-default.png",
+    "sha256": "6203ae9beca75767996d158ee9470e5b1d2c7284b386d5ab1befe10c82117060"
+  },
+  {
+    "file": "nap-pending.png",
+    "sha256": "f044420d202469dfd99f14ef1dbbc973574fb9699aed1484d9387b3bf152bc76"
+  },
+  {
+    "file": "nap-preset.png",
+    "sha256": "8200f117b7ee4286801ef9831331b6ed23a5b12c6ec9f244bed635d1734d2b63"
+  },
+  {
+    "file": "nap-recreated.png",
+    "sha256": "f044420d202469dfd99f14ef1dbbc973574fb9699aed1484d9387b3bf152bc76"
+  },
+  {
+    "file": "nap-reopened.png",
+    "sha256": "789855e196e260e9b051192e263f2a00ffae458b887c6b123c72c49e518746a5"
+  },
+  {
+    "file": "nap-sound.png",
+    "sha256": "75614cd75726672bc944215befa2f1ab08cebf460cd61f5a3038190e3ae8f920"
+  },
+  {
+    "file": "nap-tracking-required.png",
+    "sha256": "514d9767b7ff7ba7cb77ac60ca51e555f9d53a9c943e8ce343b55fe0494d0a53"
+  },
+  {
+    "file": "SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs.txt",
+    "sha256": "c748384e3595c78c18a04bc0aa45d453231a0d7c27a7c16d983e25e198a8a2dd"
+  },
+  {
+    "file": "NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist.txt",
+    "sha256": "a82d6bbec7427b302961e01efba67a12d082bf28cd3c92734a784de97ac47e05"
+  },
+  {
+    "file": "environment.json",
+    "sha256": "448892020c0bb52fd4dd2d2bd2b0b4b99d4abcbc022a42dd1b4ff2f829cbae8a"
+  },
+  {
+    "file": "focused-review-summary.json",
+    "sha256": "de329dd75b9d700090e96927a232d37890c401e1548ca22c176c08920d7d7244"
+  }
+]
