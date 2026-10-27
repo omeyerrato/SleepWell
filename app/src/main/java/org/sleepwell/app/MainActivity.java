@@ -70,8 +70,8 @@ public class MainActivity extends Activity {
     private void settingsSearch(){startActivity(RecordUi.intent(this,SearchActivity.class).putExtra("searchMode","settings"));}
     private void settingsHome(LinearLayout body){
         if(!settingsGroup.isEmpty()){settingsSection(body);return;}
-        Design.header(body,"Settings",null);Design.space(body,12);
-        Button search=Design.button(body,"Search settings",false,this::settingsSearch);search.setContentDescription("Search settings");Design.space(body,8);
+        Design.header(body,"Settings",null);
+        RecordUi.headerAction((LinearLayout)body.getChildAt(0),"search","Search settings",this::settingsSearch);
         settingsRow(body,"bell","Alarms","Sound, challenges and wake-up",()->openSettingsGroup("alarm"));
         settingsRow(body,"moon","Sleep & bedtime","Tracking, sleep plan and bedtime guard",()->openSettingsGroup("sleep"));
         settingsRow(body,"wave","Sound & recordings","Sleep sounds, analysis and snoring",()->openSettingsGroup("sound"));

@@ -43,23 +43,30 @@ public class AlarmEditorActivity extends Activity {
     }
     private android.view.View findSetting(android.view.View view,String title){if(title!=null&&android.text.TextUtils.equals(title,view.getContentDescription()))return view;if(view instanceof android.view.ViewGroup group)for(int n=0;n<group.getChildCount();n++){android.view.View found=findSetting(group.getChildAt(n),title);if(found!=null)return found;}return null;}
     private View findSearchAnchor(View view,String title){if(android.text.TextUtils.equals(title,view.getContentDescription())||view instanceof TextView text&&android.text.TextUtils.equals(title,text.getText()))return view;if(view instanceof android.view.ViewGroup group)for(int n=0;n<group.getChildCount();n++){View found=findSearchAnchor(group.getChildAt(n),title);if(found!=null)return found;}return null;}
-    private void editor(LinearLayout body){Design.header(body,"Edit alarm",this::back);RecordUi.headerAction((LinearLayout)body.getChildAt(0),"search","Search this alarm",this::openSearch);Design.space(body,12);
+    private void editor(LinearLayout body){
+        // Keep the complete main menu above the fixed footer at ordinary text size.
+        // Long labels and larger accessible text retain the existing scroll path.
+        body.setPadding(body.getPaddingLeft(),Design.dp(this,8),body.getPaddingRight(),Design.dp(this,8));
+        Design.header(body,"Edit alarm",this::back);RecordUi.headerAction((LinearLayout)body.getChildAt(0),"search","Search this alarm",this::openSearch);
         Button time=Design.button(body,displayTime(this,alarm),false,()->openDialog(()->SleepPicker.time(this,"Alarm time",alarm.hour*60+alarm.minute,value->{alarm.hour=value/60;alarm.minute=value%60;render();})));
         if(alarm.solar!=null)Design.text(body,"Next sunrise alarm · tap time to edit fallback",12,500,Design.MUTED);
-        time.setText(Design.timeText(displayTime(this,alarm)));time.setTextSize(52*Appearance.scale(this));time.setContentDescription("Alarm time "+displayTime(this,alarm));time.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));time.setMinHeight(Design.dp(this,88));
-        Design.space(body,12);LinearLayout days=Design.row(this);String[] labels={"M","T","W","T","F","S","S"},names={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+        time.setText(Design.timeText(displayTime(this,alarm)));time.setTextSize(52*Appearance.scale(this));time.setContentDescription("Alarm time "+displayTime(this,alarm));time.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));time.setMinHeight(Design.dp(this,80));time.setMinimumHeight(Design.dp(this,80));time.setPadding(0,0,0,0);
+        Design.space(body,8);LinearLayout days=Design.row(this);String[] labels={"M","T","W","T","F","S","S"},names={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
         for(int n=1;n<=7;n++){final int day=n;Button b=new Button(this);b.setStateListAnimator(null);b.setElevation(0);b.setText(labels[n-1]);b.setAllCaps(false);b.setTextSize(16*Appearance.scale(this));b.setTypeface(Design.font(this,600));b.setPadding(0,0,0,0);b.setMinWidth(0);b.setMinimumWidth(0);b.setTextColor(alarm.days.contains(n)?Design.CREAM:Design.BROWN);b.setSelected(alarm.days.contains(n));b.setContentDescription(names[n-1]);b.setBackground(Design.touch(this,alarm.days.contains(n)?Design.BROWN:Design.SOFT,28));
             LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,Design.dp(this,48),1);lp.setMargins(Design.dp(this,2),0,Design.dp(this,2),0);days.addView(b,lp);b.setEnabled(alarm.repeatInvalid||alarm.repeatRule.mode!=AlarmRepeat.Mode.INTERVAL);b.setAlpha(b.isEnabled()?1:.5f);b.setOnClickListener(v->{InteractionFeedback.selection(v);alarm.date=null;alarm.dateInvalid=false;if(alarm.days.contains(day))alarm.days.remove(day);else alarm.days.add(day);render();});}
-        body.addView(days);if(!alarm.repeatInvalid&&alarm.repeatRule.mode==AlarmRepeat.Mode.INTERVAL)Design.text(body,"Calendar dates follow your anchored interval; weekday buttons are inactive.",12,400,Design.MUTED);Design.space(body,16);
-        LinearLayout name=Design.item(body,null,"Name",alarm.label,()->openDialog(()->SleepPicker.name(this,alarm.label,value->{alarm.label=value;render();})));Design.pad(name,14,0);name.setBackground(Design.shape(this,Design.SOFT,14));
-        Design.space(body,14);Design.line(body);
+        body.addView(days);if(!alarm.repeatInvalid&&alarm.repeatRule.mode==AlarmRepeat.Mode.INTERVAL)Design.text(body,"Calendar dates follow your anchored interval; weekday buttons are inactive.",12,400,Design.MUTED);Design.space(body,12);
+        LinearLayout name=Design.item(body,null,"Name",alarm.label,()->openDialog(()->SleepPicker.name(this,alarm.label,value->{alarm.label=value;render();})));Design.pad(name,14,0);name.setMinimumHeight(Design.dp(this,56));name.setBackground(Design.shape(this,Design.SOFT,14));
+        Design.space(body,8);Design.line(body);
+        int primaryRows=body.getChildCount();
         Design.item(body,"sun","Smart wake-up",alarm.smartWakeInvalid?"Review settings":alarm.smartWindow==0?"Off":alarm.smartWindow+" min",()->go("smart"));Design.line(body);
         Design.item(body,"tasks","Challenges",alarm.challenges().summary(),()->go("challenge"));Design.line(body);
         Design.item(body,"sound","Sound",alarm.soundModeInvalid?"Review sound mode":alarm.soundMode.equals(AlarmSoundMode.SINGLE)?toneName(alarm.tone):alarm.soundMode.title(),()->go("sound"));Design.line(body);
         Design.item(body,"alarm","Snooze",alarm.snoozeMinutes+" min",()->go("snooze"));Design.line(body);
         menu(body,"calendar","Schedule & dates",scheduleSummary(),()->go("schedule"));Design.line(body);
         menu(body,"settings","More alarm settings",alarm.inputsInvalid?"Input settings need review":"Buttons, protection and defaults",()->go("options"));Design.line(body);
-        LinearLayout footer=RecordUi.footer(body);Design.toggle(footer,"Alarm on","Rings at your chosen local time",alarm.enabled,on->alarm.enabled=on);Design.space(footer,12);Design.button(footer,"Save alarm",true,this::save);if(!saveError.isEmpty()){Design.space(footer,8);TextView error=Design.text(footer,saveError,13,500,0xffa93919);error.setContentDescription("Alarm save error");error.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);}
+        for(int n=primaryRows;n<body.getChildCount();n++)if(body.getChildAt(n) instanceof LinearLayout row)row.setMinimumHeight(Design.dp(this,56));
+        android.widget.ScrollView viewport=(android.widget.ScrollView)body.getParent();viewport.setClipToPadding(true);
+        LinearLayout footer=RecordUi.footer(body);footer.setPadding(footer.getPaddingLeft(),Design.dp(this,8),footer.getPaddingRight(),footer.getPaddingBottom());footer.setBackgroundColor(Appearance.color(this,Design.CREAM));Design.toggle(footer,"Alarm on","Rings at your chosen local time",alarm.enabled,on->alarm.enabled=on);Design.space(footer,12);Design.button(footer,"Save alarm",true,this::save);if(!saveError.isEmpty()){Design.space(footer,8);TextView error=Design.text(footer,saveError,13,500,0xffa93919);error.setContentDescription("Alarm save error");error.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);}
     }
     /** Descriptive destinations keep the whole title above supporting copy. */
     private LinearLayout menu(LinearLayout body,String icon,String title,String description,Runnable action){
