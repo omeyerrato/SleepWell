@@ -33,6 +33,7 @@ final class AppearanceLightCard implements AutoCloseable {
         duration=detail(copy,"Sunrise duration","—","Configure lamp sunrise duration",configure);
         intensity=detail(copy,"Maximum intensity","—","Configure lamp maximum intensity",configure);
         Button connect=Design.button(copy,"Connect light",false,configure);connect.setTextSize(13*Appearance.scale(activity));connect.setMinHeight(Design.dp(activity,48));connect.setMinimumHeight(Design.dp(activity,48));connect.setPadding(Design.dp(activity,8),0,Design.dp(activity,8),0);LinearLayout.LayoutParams connectSpace=(LinearLayout.LayoutParams)connect.getLayoutParams();connectSpace.height=Design.dp(activity,48);connectSpace.topMargin=0;connect.setLayoutParams(connectSpace);connect.setContentDescription("Configure smart bedroom light");
+        card.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener(){@Override public void onViewAttachedToWindow(View view){refresh();}@Override public void onViewDetachedFromWindow(View view){generation++;}});
         body.addView(card,new LinearLayout.LayoutParams(-1,-2));
     }
     private TextView detail(LinearLayout parent,String title,String value,String description,Runnable action){
@@ -43,7 +44,8 @@ final class AppearanceLightCard implements AutoCloseable {
         row.setContentDescription(description);row.setFocusable(true);row.setOnClickListener(v->{InteractionFeedback.action(v);action.run();});parent.addView(row);Design.line(parent);return amount;
     }
     void refresh(){
-        if(closed)return;long ticket=++generation;
+        // onResume may run before attachment; attachment owns the initial read instead of losing a fast result.
+        if(closed||!card.isAttachedToWindow())return;long ticket=++generation;card.setContentDescription(null);
         worker.execute(()->{
             String label="Bedroom lamp",state="Not connected";Integer minutes=null,maximum=null;
             try{
