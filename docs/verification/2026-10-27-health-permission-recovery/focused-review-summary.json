@@ -1,0 +1,55 @@
+{
+  "scope": "priority-repair",
+  "full_app_review": false,
+  "expected_classes": 4,
+  "expected_methods": 5,
+  "class_results": [
+    {
+      "class": "AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "HealthConnectFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 40,
+  "failures": [
+    "AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs",
+    "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+    "wake-settings-sound.png",
+    "wake-settings-loud-curve.png",
+    "wake-settings-delay-options.png",
+    "wake-settings-vibration-options.png",
+    "wake-settings-lights.png",
+    "wake-settings-recreated.png",
+    "wake-settings-reopened.png",
+    "wake-settings-normal-curve.png",
+    "wake-settings-edited-curve.png",
+    "wake-settings-immediate.png",
+    "wake-settings-options.png",
+    "wake-settings-options-recreated.png",
+    "wake-settings-preview-loading.png",
+    "wake-settings-preview-playing.png",
+    "wake-settings-preview-recreated.png",
+    "wake-settings-preview-error.png",
+    "wake-settings-preview-complete.png",
+    "privacy-history-ready.png",
+    "privacy-history-error.png",
+    "privacy-history-busy.png",
+    "privacy-history-pending.png",
+    "privacy-history-done.png"
+  ]
+}
