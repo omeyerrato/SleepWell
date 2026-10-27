@@ -14,7 +14,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /** Visible room preview only. Opening/rotation never starts the optional microphone or writes a record. */
 public final class RoomConditionsActivity extends ComponentActivity {
-    interface Access {boolean microphone(Context context);}
+    interface Access {
+        boolean microphone(Context context);
+        default boolean rationale(Activity owner){return owner.shouldShowRequestPermissionRationale(Manifest.permission.RECORD_AUDIO);}
+        default void request(Activity owner,ActivityResultLauncher<String> launcher){launcher.launch(Manifest.permission.RECORD_AUDIO);}
+    }
     static RoomLightPort.Factory lights=RoomLightPort.PLATFORM;
     static RoomSoundLevel.Factory microphones=RoomAudio::open;
     static Access access=context->context.checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED;
@@ -25,6 +29,7 @@ public final class RoomConditionsActivity extends ComponentActivity {
     private RoomDimming dimming;private RoomSoundLevel sound;private AtomicBoolean admission=new AtomicBoolean();
     private TextView luxValue,lightStatus,soundValue,soundStatus,savedStatus;private Switch microphoneSwitch;private Button cleanup;
     private boolean resumed,lightStarted,updating,dimDraft,requesting;private Float lux;private String lightIssue="",message="";private AlertDialog rationale;
+    private int permissionChoice,pendingPermissionChoice;private boolean requestAfterRationale;
     private ActivityResultLauncher<String> microphonePermission;
     private final Runnable tick=new Runnable(){public void run(){if(!resumed)return;update();main.postDelayed(this,250);}};
 
@@ -60,13 +65,17 @@ public final class RoomConditionsActivity extends ComponentActivity {
         RoomSoundLevel owner=RoomSoundLevel.current();if(owner!=null){message=owner.state==RoomSoundLevel.State.BLOCKED?owner.issue:"A previous microphone preview is still closing. Wait, then tap again.";update();return;}
         if(TrackingService.running||AlarmService.active||Prefs.flag(this,"ringing")||MicrophoneLease.occupied()){message="Microphone is in use. End the other capture or alarm before measuring.";update();return;}
         if(microphoneAllowed()){message="";admission=new AtomicBoolean(true);sound=RoomSoundLevel.start(getApplicationContext(),microphoneFactory,admission);if(sound==null){admission.set(false);message="A microphone preview is still closing. Tap again after cleanup.";}update();return;}
-        if(shouldShowRequestPermissionRationale(Manifest.permission.RECORD_AUDIO)){
-            rationale=new AlertDialog.Builder(this).setTitle("Microphone for room sound").setMessage("Allow an optional live sound-level preview while this screen is visible. Audio is not saved, classified or uploaded. You can keep it off.").setPositiveButton("Continue",(dialog,which)->askMicrophone()).setNegativeButton("Not now",null).create();rationale.show();ReportDialogs.style(rationale);
+        if(permissions.rationale(this)){
+            final int choice=++permissionChoice;requestAfterRationale=false;
+            AlertDialog dialog=new AlertDialog.Builder(this).setTitle("Microphone for room sound").setMessage("Allow an optional live sound-level preview while this screen is visible. Audio is not saved, classified or uploaded. You can keep it off.").setPositiveButton("Continue",(prompt,which)->{if(rationale!=prompt||!resumed||isFinishing()||isDestroyed()||choice!=permissionChoice||!rationale.getWindow().getDecorView().hasWindowFocus())return;pendingPermissionChoice=choice;requestAfterRationale=true;}).setNegativeButton("Not now",null).create();
+            rationale=dialog;dialog.setOnCancelListener(ignored->cancelPermissionChoice());dialog.setOnDismissListener(ignored->{if(rationale!=dialog)return;rationale=null;if(!requestAfterRationale||pendingPermissionChoice!=permissionChoice)return;main.post(this::continuePermissionChoice);});dialog.show();ReportDialogs.style(dialog);
         }else if(Prefs.flag(this,ASKED)||Prefs.flag(this,"readinessMicrophoneAsked")||Prefs.flag(this,"snoreCueMicrophoneAsked")){
             message="Allow microphone access in Android settings, then tap Microphone analysis to measure.";try{startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,android.net.Uri.parse("package:"+getPackageName())));}catch(RuntimeException unavailable){message="Android could not open microphone settings. Try again later.";}update();
         }else askMicrophone();
     }
-    private void askMicrophone(){if(!foreground()||requesting)return;if(microphoneAllowed()){message="Microphone allowed. Tap Microphone analysis to measure.";update();return;}boolean previous=Prefs.flag(this,ASKED);try{Prefs.put(this,ASKED,true);requesting=true;microphonePermission.launch(Manifest.permission.RECORD_AUDIO);}catch(RuntimeException unavailable){requesting=false;Prefs.put(this,ASKED,previous);message="Android could not request microphone access. Your microphone remains off.";}update();}
+    private void cancelPermissionChoice(){permissionChoice++;requestAfterRationale=false;}
+    private void continuePermissionChoice(){if(!requestAfterRationale||pendingPermissionChoice!=permissionChoice||rationale!=null||!foreground())return;requestAfterRationale=false;askMicrophone();}
+    private void askMicrophone(){if(!foreground()||requesting)return;if(microphoneAllowed()){message="Microphone allowed. Tap Microphone analysis to measure.";update();return;}boolean previous=Prefs.flag(this,ASKED);try{Prefs.put(this,ASKED,true);requesting=true;permissions.request(this,microphonePermission);}catch(RuntimeException unavailable){requesting=false;Prefs.put(this,ASKED,previous);message="Android could not request microphone access. Your microphone remains off.";}update();}
     private void stopSound(){admission.set(false);if(sound!=null)sound.cancel();}
     private void startLight(){
         if(lightStarted||!foreground())return;
@@ -86,8 +95,8 @@ public final class RoomConditionsActivity extends ComponentActivity {
         soundStatus.setText(!issue.isEmpty()?issue:live?"Live digital level only · no audio saved":"Microphone is off. Nothing is recorded.");cleanup.setVisibility(owner!=null&&owner.state==RoomSoundLevel.State.BLOCKED?View.VISIBLE:View.GONE);
     }
     @Override protected void onResume(){super.onResume();resumed=true;main.post(tick);if(hasWindowFocus()){startLight();dimming.apply(true);}}
-    @Override protected void onPause(){resumed=false;main.removeCallbacksAndMessages(null);stopSound();stopLight();dimming.restore();super.onPause();}
-    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(dimming==null)return;if(focused&&resumed){Design.focusedSystemBars(this,true);startLight();dimming.apply(true);}else{stopSound();stopLight();dimming.restore();}update();}
+    @Override protected void onPause(){resumed=false;cancelPermissionChoice();main.removeCallbacksAndMessages(null);if(rationale!=null)rationale.dismiss();stopSound();stopLight();dimming.restore();super.onPause();}
+    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(dimming==null)return;if(focused&&resumed){Design.focusedSystemBars(this,true);startLight();dimming.apply(true);continuePermissionChoice();}else{stopSound();stopLight();dimming.restore();}update();}
     @Override protected void onSaveInstanceState(Bundle out){super.onSaveInstanceState(out);history.save(out);out.putBoolean("roomDimDraft",dimDraft);out.putBoolean("roomPermissionPending",requesting);}
     @Override protected void onDestroy(){main.removeCallbacksAndMessages(null);stopSound();stopLight();dimming.restore();if(rationale!=null)rationale.dismiss();super.onDestroy();}
 }
