@@ -2,6 +2,9 @@ package org.sleepwell.app;
 import android.app.Activity;import android.content.*;import android.os.Bundle;import android.view.*;import android.widget.*;import java.util.*;
 /** Public GET_CONTENT picker for one allowlisted custom summary. Explicit user Share is mandatory. */
 public final class SleepSummaryActivity extends Activity implements SleepSummaryJob.Observer {
+ private final SensitiveReviewTouches reviewTouches=new SensitiveReviewTouches();
+ @Override public boolean dispatchTouchEvent(android.view.MotionEvent event){return reviewTouches.dispatch(this,event,super::dispatchTouchEvent);}
+
  private SleepSummaryJob job;private String caller,error="";private boolean resumed,returned;
  @Override public void onCreate(Bundle saved){super.onCreate(saved);setResult(RESULT_CANCELED);caller=getCallingPackage();try{validate(getIntent());if(caller==null||caller.isBlank())throw new IllegalArgumentException("Open this summary picker from a requesting app’s Get content action.");}catch(RuntimeException invalid){error="Unsupported summary request. Use Android Get content with the SleepWell summary MIME type, without a data URI or attached content.";render(null);return;}Object retained=getLastNonConfigurationInstance();int days=saved==null?7:saved.getInt("days",7);job=retained instanceof SleepSummaryJob?(SleepSummaryJob)retained:new SleepSummaryJob(getApplicationContext(),days,saved!=null);job.observe(this);}
  private static void validate(Intent input){if(input==null||!Intent.ACTION_GET_CONTENT.equals(input.getAction())||!SleepSummaryFileProvider.MIME.equals(input.getType())||input.getData()!=null||input.getClipData()!=null||input.getSelector()!=null)throw new IllegalArgumentException("Unsupported summary request.");}

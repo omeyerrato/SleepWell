@@ -14,6 +14,9 @@ import java.util.concurrent.*;
 
 /** Private visible opt-in and revoke UI. No installed app is automatically trusted or launched. */
 public final class AlarmAccessActivity extends Activity {
+ private final SensitiveReviewTouches reviewTouches=new SensitiveReviewTouches();
+ @Override public boolean dispatchTouchEvent(android.view.MotionEvent event){return reviewTouches.dispatch(this,event,super::dispatchTouchEvent);}
+
     private String packageName="",message="",issue="",preview="";private AlarmAccessGrants.Snapshot snapshot;private Map<String,String> statuses=Map.of();private AlarmAccessGrants.Identity verified;private boolean consent,resumed;private EditText packageInput;private Operation operation;private final Handler main=new Handler(Looper.getMainLooper());
     private enum Kind{LOAD,VERIFY,ALLOW,REVOKE,REVOKE_ALL,PREVIEW}
     private static final ExecutorService WORKER=Executors.newSingleThreadExecutor(r->new Thread(r,"SleepWell alarm access"));
