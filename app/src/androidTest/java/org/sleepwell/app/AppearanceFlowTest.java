@@ -20,10 +20,10 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class AppearanceFlowTest {
     private Context context;private UiDevice device;private File folder;
-    private void capture(String name){device.waitForIdle();assertTrue(device.takeScreenshot(new File(folder,"appearance-"+name+".png")));}
+    private void capture(String name)throws Exception{device.waitForIdle();Activity owner=resumed();java.util.concurrent.CountDownLatch frame=new java.util.concurrent.CountDownLatch(1);InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{View decor=owner.getWindow().getDecorView();assertTrue("Actual focused native Appearance/Tonight frame",owner.hasWindowFocus()&&decor.isAttachedToWindow()&&decor.isLaidOut()&&decor.isHardwareAccelerated());decor.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);decor.invalidate();});assertTrue(frame.await(5,java.util.concurrent.TimeUnit.SECONDS));device.waitForIdle();assertTrue(device.takeScreenshot(new File(folder,"appearance-"+name+".png")));}
     private void clickText(String text){UiObject2 v=device.wait(Until.findObject(By.text(text)),5000);assertNotNull(text,v);v.click();device.waitForIdle();}
     private void settings(){for(UiObject2 v:device.findObjects(By.desc("Settings")))if(v.getVisibleBounds().centerY()>device.getDisplayHeight()*.7f){v.click();break;}assertTrue(device.wait(Until.hasObject(By.desc("Settings").selected(true)),5000));}
-    private void appearance(){settings();clickText("Appearance");assertTrue(device.wait(Until.hasObject(By.desc("Time of day")),5000));}
+    private void appearance(){settings();clickText("Appearance & feedback");clickText("Theme & text");assertTrue(device.wait(Until.hasObject(By.desc("Time of day")),5000));assertTrue(device.wait(Until.hasObject(By.desc("Bedroom lamp summary ready")),5000));}
     private void tonight(){if(device.wait(Until.hasObject(By.desc("Tonight").selected(true)),1000))return;UiObject2 target=device.wait(Until.findObject(By.desc("Tonight")),5000);assertNotNull(target);target.click();assertTrue(device.wait(Until.hasObject(By.desc("Tonight").selected(true)),5000));}
     private void save(){UiObject2 save=device.findObject(By.textStartsWith("Save appearance"));assertNotNull(save);save.click();device.waitForIdle();assertTrue(device.wait(Until.hasObject(By.desc("Settings").selected(true)),5000));}
     private Activity resumed(){final Activity[] result={null};InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{for(Activity a:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))result[0]=a;});assertNotNull(result[0]);return result[0];}
@@ -32,13 +32,13 @@ public class AppearanceFlowTest {
     private float actualTitleSize(){Activity a=resumed();final float[] size={0};InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{TextView title=findText(a.getWindow().getDecorView(),"Tonight");assertNotNull(title);size[0]=title.getTextSize();});return size[0];}
     private void assertActualRootColor(int expected){Activity a=resumed();InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{android.view.ViewGroup content=a.findViewById(android.R.id.content);assertEquals(expected,((ColorDrawable)content.getChildAt(0).getBackground()).getColor());});}
     @Test public void saveReopenRelaunchCancelAndRenderAllThemes() throws Exception {
-        context=InstrumentationRegistry.getInstrumentation().getTargetContext();device=UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());folder=new File(context.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());
+        context=InstrumentationRegistry.getInstrumentation().getTargetContext();device=UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());assertEquals("true",InstrumentationRegistry.getArguments().getString("ciReview"));assertEquals("1",device.executeShellCommand("getprop ro.kernel.qemu").trim());folder=new File(context.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());
         String[] keys={Appearance.AUTO,Appearance.THEME,Appearance.SIZE,Appearance.MOTION,Appearance.CONTRAST};Map<String,?> original=Prefs.of(context).getAll();
         assertFalse("No active alarm may be disturbed",Prefs.flag(context,"ringing"));assertFalse("No recording may be disturbed",TrackingService.running);
         try{
             Appearance.save(context,true,0,0,false,false);
             relaunch();
-            appearance();capture("automatic");
+            appearance();capture("automatic");UiObject2 connect=device.findObject(By.desc("Configure smart bedroom light")),save=device.findObject(By.textStartsWith("Save appearance"));assertNotNull(connect);assertNotNull(save);assertTrue("Complete lamp connection control on the first default frame",connect.getVisibleBounds().height()>=Design.dp(context,48)&&connect.getVisibleBounds().bottom<=save.getVisibleBounds().top);
             // Back cancels a draft, including a tile's explicit switch to manual mode.
             device.findObject(By.desc("Dawn theme")).click();assertFalse(device.findObject(By.desc("Time of day")).isChecked());device.pressBack();device.waitForIdle();assertTrue(Appearance.automatic(context));
             int[] expected={0xff241e30,0xff483768,0xffffd291};float normalSize=0;
