@@ -1,0 +1,51 @@
+{
+  "scope": "priority-menus",
+  "full_app_review": false,
+  "expected_classes": 3,
+  "expected_methods": 3,
+  "class_results": [
+    {
+      "class": "AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "ReportReferenceFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 34,
+  "failures": [
+    "AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime",
+    "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert",
+    "advanced-snooze-initial.png",
+    "advanced-snooze-options.png",
+    "advanced-snooze-options-recreated.png",
+    "advanced-snooze-draft.png",
+    "advanced-snooze-recreated.png",
+    "advanced-snooze-reopened.png",
+    "advanced-snooze-sound-picker.png",
+    "advanced-snooze-sound-picker-recreated.png",
+    "advanced-snooze-invalid.png",
+    "advanced-snooze-repaired-draft.png",
+    "qr-code-permission.png",
+    "qr-code-invalid.png",
+    "qr-code-denied.png",
+    "qr-code-access-error.png",
+    "qr-code-scanning.png",
+    "qr-code-camera-error.png",
+    "qr-code-captured.png",
+    "qr-code-fallback.png",
+    "qr-code-fallback-error.png",
+    "qr-code-recreated.png",
+    "qr-code-routine.png",
+    "qr-code-reopened.png",
+    "qr-code-unavailable.png"
+  ]
+}

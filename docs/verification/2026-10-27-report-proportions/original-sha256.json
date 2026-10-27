@@ -1,0 +1,58 @@
+[
+  {
+    "file": "report-reference-chart-gap.png",
+    "sha256": "d380251953f9f4267b4f236964331fd7936d482b8e687299fbeed55a0b235e29"
+  },
+  {
+    "file": "report-reference-editor.png",
+    "sha256": "f5f791a8036cd91fa44a917d5cac4557ac971ef4bbb9ecb91b8af7aab0a7788d"
+  },
+  {
+    "file": "report-reference-history.png",
+    "sha256": "e24bfe4a6f26ab78d4131a077c6c109080557c2530c0f035583e2fd4fbaf2f56"
+  },
+  {
+    "file": "report-reference-month.png",
+    "sha256": "2e75966e5a8a34652a44dbf06932f8aaee79f6d67427db3bb5725ee1f856bb6d"
+  },
+  {
+    "file": "report-reference-night.png",
+    "sha256": "e30432068e9069bfe9df266981b1bd8a166cfb026b10fd3690e11e0dbaa087ce"
+  },
+  {
+    "file": "report-reference-reopened.png",
+    "sha256": "80c266a61c739edf5cbfa5a8d6599407f7083710497e60aa36a8d4cf8f28db7a"
+  },
+  {
+    "file": "report-reference-tags-notes.png",
+    "sha256": "c035c87d46a42fc358f8afcbe9bf83947769cf40a30cac630519cbe496c3ab48"
+  },
+  {
+    "file": "report-reference-week-calendar.png",
+    "sha256": "217e0faef0c0fca6ba77467508ffe1e96060a5d4a0487d9cc9e2a330dcd3d220"
+  },
+  {
+    "file": "report-reference-week-selected.png",
+    "sha256": "7aec1632160fd36c0c5bb6ecf1785dd397309d5b38c8c86819740123e181fd6b"
+  },
+  {
+    "file": "report-reference-week.png",
+    "sha256": "0786a25c03a0a6c8f5a1cf820d0b72c8d9ed01517e5aea164679f72616971b8f"
+  },
+  {
+    "file": "report-reference-year.png",
+    "sha256": "1ac86768b0b2f8ec5afb1e09c66aef65f5c52041c57ec2ec3ddb5db1b0ee69c4"
+  },
+  {
+    "file": "ReportReferenceFlowTest.txt",
+    "sha256": "185dcd463c4457248bec725e72b0475b693be1b7761d8766490a6de98cab9e1f"
+  },
+  {
+    "file": "environment.json",
+    "sha256": "6cc24f989043e98634d97500f7cc0ec81f62cd3927ab4927ddea463ba8528421"
+  },
+  {
+    "file": "focused-review-summary.json",
+    "sha256": "1984b723d20580dca8cc41231399681939099632f830ac03854a9e46feb0477d"
+  }
+]
