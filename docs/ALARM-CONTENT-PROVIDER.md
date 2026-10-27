@@ -29,7 +29,16 @@ Whitelist projection columns:
 | `next_deadline_ms` | Future persisted ordinary scheduling deadline, or null; not a delivery guarantee or live snooze projection |
 | `scheduling_status` | `no_saved_error`, `needs_attention` or `unknown` |
 
-The default/null projection remains the original 13 columns above, in that order. An explicit projection may additionally request `snooze_minutes`: the configured snooze duration as an integer from 1 to 60, or null when outside this bounded range. This is not a pending snooze deadline or remaining snooze allowance. Explicit projections still reject unknown or duplicate columns.
+The default/null projection remains the original 13 columns above, in that order. Explicit projections may additionally request these configured values:
+
+| Optional column | Meaning |
+| --- | --- |
+| `snooze_minutes` | Snooze duration, integer 1–60; not a pending snooze deadline or remaining allowance |
+| `smart_window_minutes` | Early-wake window, integer 0–60; zero disables smart wake-up |
+| `smart_sensitivity` | -1 follows the tracking profile (including calibration), 0 Low, 1 Medium, 2 High |
+| `smart_respect_goal` | -1 follows the global duration-goal setting, 0 Off, 1 On |
+
+An out-of-range configured duration/window is null; invalid saved smart-wake metadata produces null sensitivity/goal values and remains nonwritable. No inherited value is invented for corrupt metadata. Absent valid smart-wake metadata reports -1 for both inherited choices. These are configured choices, not inferred sleep stages, current movement or proof that a duration goal has been met. Explicit projections still reject unknown or duplicate columns.
 
 Unrepresentable/oversized rows retain their real ID with `writable=0`, a reason and unknown fields; no sample clock is invented. The ETag hashes exact stored JSON, saved deadline, consumed occurrence and boot identity. It is a content token, not a monotonic version or permanent incarnation ID. Re-query before each edit; do not infer that matching content proves unchanged history. No raw JSON, challenge codes, PINs, tone URIs, notes, recordings, credentials or live run tokens are exposed. Arbitrary SQL, selection, sort orders and nonempty query bundles are rejected.
 
@@ -47,12 +56,48 @@ Supported ContentValues are exactly:
 | `label` | Nonblank plain text, at most 80 characters, no control/format/line separator characters |
 | `enabled`, `vibrate` | Boolean or Integer 0/1 |
 | `snooze_minutes` | Optional integer 1–60; strings, floats, booleans and null are rejected |
+| `smart_window_minutes` | Optional integer 0–60; 0 disables early waking |
+| `smart_sensitivity` | Optional integer -1 (inherit), 0 (Low), 1 (Medium), 2 (High) |
+| `smart_respect_goal` | Optional integer -1 (inherit), 0 (Off), 1 (On) |
+
+Smart-wake scalars accept only integral ContentValues types (`Integer`, `Long`, `Short`, `Byte`) within their documented bounds; strings, floats, booleans and null are rejected. The window bound follows the existing editor/defaults/backup validity of 0–60 minutes. Patching either sensitivity or goal preserves the other choice through `setSmartWake`; omitting all three preserves the existing smart-wake configuration. Create inherits valid defaults for omitted choices. Invalid existing metadata requires review in SleepWell and cannot be repaired through this API. Setting smart-wake choices never starts tracking: early wake still requires active phone-movement tracking and eligible measured intervals. The duration goal counts active recorded time excluding pauses, not confirmed sleep; the fixed alarm deadline remains scheduled.
 
 Unknown/null/coerced field values are rejected. Update is a patch; omitted fields, including `snooze_minutes`, preserve their saved values. Create inherits valid user behavior defaults, including snooze duration when omitted, but starts disabled unless enabled is explicitly supplied. Supplying `snooze_minutes` only changes the configured duration; it does not snooze now, reset snooze counts or total-budget limits, or bypass active/pending ownership guards. Omitted sound, challenge, brightness and other saved behavior remain intact. Invalid defaults require review inside SleepWell. The API cannot enroll challenges or request permissions. Enabling requires existing exact-alarm access and a projected occurrence more than one minute away; no permission/settings prompt opens.
 
 Only ordinary clock alarms are writable. Naps, date-specific/solar/custom-repeat/next-only schedules, weekly-profile ownership, active skip markers, invalid/unknown non-round-tripping metadata, due/near deadlines and active alarm/wake-check/snooze ownership require their existing app editor. A positive pending snooze reservation, including an overdue or uncertain one, remains read-only. An inert historical snoozed snapshot alone no longer blocks ordinary edits: production continuation now requires current durable ownership, pending deadline and an exact saved source match; cancellation clears pending authority before asking Android to cancel. Hidden unknown fields are not silently removed to make an alarm writable. This API is bounded to at most 128 saved alarms for mutation; listing remains paged.
 
 Create returns the actual saved item URI. Update/delete acknowledge one logical row, including an idempotent replay of a completed request receipt. A receipt is historical acknowledgement, not proof that the row still exists or remains unchanged: query current state separately. Reusing the same UUID for a different payload is rejected. The receipt ledger is capped at 4,096 requests; exhaustion fails closed rather than discarding old deduplication authority.
+
+## Optional smart-wake examples
+
+These snippets are for a caller already explicitly granted access. Obtain and review the current item, including `writable` and `revision`, before editing. Do not execute a write solely because the example supplies values.
+
+```java
+Uri item = ContentUris.withAppendedId(
+    Uri.parse("content://org.sleepwell.app.alarms/shared/v1/alarms"), reviewedAlarmId);
+String[] columns = {"_id", "revision", "writable", "write_issue",
+    "smart_window_minutes", "smart_sensitivity", "smart_respect_goal"};
+try (Cursor current = resolver.query(item, columns, null, null, null)) {
+    // Review the returned configuration and preserve its exact current revision.
+}
+```
+
+After reviewing a writable current alarm, this conditional patch changes its window and sensitivity while restoring inheritance for the duration-goal choice. It preserves all other fields and uses a fresh request UUID. An enabled alarm may subsequently ring under its normal scheduling rules.
+
+```java
+ContentValues patch = new ContentValues();
+patch.put("smart_window_minutes", 30);
+patch.put("smart_sensitivity", 1);
+patch.put("smart_respect_goal", -1);
+Uri conditional = item.buildUpon()
+    .appendQueryParameter("request_id", UUID.randomUUID().toString())
+    .appendQueryParameter("if_match", reviewedRevision)
+    .build();
+int acknowledgedRows = resolver.update(conditional, patch, null, null);
+// Query again for current saved values and scheduling status; acknowledgement is historical.
+```
+
+To change only goal behavior, supply only `smart_respect_goal`; to disable early waking, supply only `smart_window_minutes=0`. Neither patch resets the other smart-wake choices. The same optional scalars may accompany a create with required `hour`/`minute`; omission inherits valid defaults and create remains disabled unless explicitly enabled.
 
 ## Commit and failure boundaries
 
@@ -66,6 +111,6 @@ If a process fails between request preparation, alarm commit, scheduling or rece
 
 Data & privacy → **Alarm access** opens the private `AlarmAccessActivity`. `Store.historyReplacing()` and `SleepSummaryFiles.historyChanging()` now call `AlarmAccessGrants.historyChanging(Context)` before production history replacement/erasure transactions (after the shared in-flight history epoch invalidation where applicable). It durably clears authority/revises the grant state before Android cleanup and can throw: abort replacement if it fails. It does not acquire Scheduler or access the main database; call before the replacement database transaction to preserve lock order.
 
-Latest source5266e54b builds production in27s with the original signer; the provider has not been exercised against an external caller. No real alarm/output/provider calls were performed. It is intentionally narrower than full alarm-editor parity. The optional `snooze_minutes` extension has build/source evidence only; no external-client runtime verification was run for it. Sound selection, challenges, light settings and specialized schedules remain outside the write contract, as does vendor API compatibility.
+Latest source5266e54b builds production in27s with the original signer; the provider has not been exercised against an external caller. No real alarm/output/provider calls were performed. It is intentionally narrower than full alarm-editor parity. The optional `snooze_minutes` extension has build/source evidence only; no external-client runtime verification was run for it. Sound selection, challenges, light settings and specialized schedules remain outside the write contract, as does vendor API compatibility. The optional smart-wake scalar extension is source-only at this milestone; no build, external-caller/runtime verification or device/output action was performed for that extension.
 
 Primary platform references: [creating a content provider](https://developer.android.com/guide/topics/providers/content-provider-creating), [SigningInfo current signers](https://developer.android.com/reference/android/content/pm/SigningInfo), and [custom permissions](https://developer.android.com/guide/topics/manifest/permission-element).
