@@ -56,6 +56,29 @@ public final class ReportReferenceFlowTest {
         }
         File folder=new File(context.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"report-reference-"+name+".png")));
     }
+    private Object field(Object owner,String name){try{java.lang.reflect.Field value=owner.getClass().getDeclaredField(name);value.setAccessible(true);return value.get(owner);}catch(ReflectiveOperationException error){throw new AssertionError("Owned calendar field "+name,error);}}
+    private boolean calendarReady(HistoryActivity owner,RecordCalendar calendar,Dialog dialog,View decor,LocalDate selected){
+        if(owner.isFinishing()||owner.isDestroyed()||!ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED).contains(owner)
+                ||field(owner,"calendar")!=calendar||field(calendar,"activity")!=owner||field(calendar,"dialog")!=dialog
+                ||!calendar.showing()||!dialog.isShowing()||dialog.getWindow()==null||dialog.getWindow().getDecorView()!=decor
+                ||!decor.hasWindowFocus()||!decor.isAttachedToWindow()||!decor.isLaidOut()||!decor.isShown()||decor.getWidth()<=0||decor.getHeight()<=0||!decor.isHardwareAccelerated())return false;
+        View title=textView(decor,"Trend date"),pending=named(decor,"Pending date "+selected),choice=named(decor,"Choose date "+selected);
+        return title!=null&&title.isShown()&&pending!=null&&pending.isShown()&&choice!=null&&choice.isShown()&&choice.isSelected();
+    }
+    private void captureCalendar(LocalDate selected)throws Exception{
+        CountDownLatch frame=new CountDownLatch(1);HistoryActivity[] owner={null};RecordCalendar[] calendar={null};Dialog[] dialog={null};View[] decor={null};
+        instrumentation.runOnMainSync(()->{
+            int count=0;for(Activity activity:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))if(activity instanceof HistoryActivity){owner[0]=(HistoryActivity)activity;count++;}
+            assertEquals("Exactly one resumed History owns the calendar",1,count);
+            Object current=field(owner[0],"calendar");assertTrue("Current owned calendar",current instanceof RecordCalendar);calendar[0]=(RecordCalendar)current;
+            Object window=field(calendar[0],"dialog");assertTrue("Actual calendar Dialog",window instanceof Dialog);dialog[0]=(Dialog)window;assertNotNull(dialog[0].getWindow());decor[0]=dialog[0].getWindow().getDecorView();
+            assertTrue("Owned focused calendar must show the requested pending date",calendarReady(owner[0],calendar[0],dialog[0],decor[0],selected));
+            decor[0].getViewTreeObserver().registerFrameCommitCallback(frame::countDown);decor[0].invalidate();
+        });
+        assertTrue("The actual focused calendar window must commit its hardware frame",frame.await(8,TimeUnit.SECONDS));device.waitForIdle();
+        instrumentation.runOnMainSync(()->assertTrue("The same owned calendar/date must retain focus after its frame",calendarReady(owner[0],calendar[0],dialog[0],decor[0],selected)));
+        File folder=new File(context.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"report-reference-week-calendar.png")));
+    }
     private View named(View view,String description){if(android.text.TextUtils.equals(description,view.getContentDescription()))return view;if(view instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){View found=named(group.getChildAt(n),description);if(found!=null)return found;}return null;}
     private View textView(View view,String value){if(view instanceof android.widget.TextView&&value.contentEquals(((android.widget.TextView)view).getText()))return view;if(view instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){View found=textView(group.getChildAt(n),value);if(found!=null)return found;}return null;}
     private void completeNotes()throws Exception{
@@ -89,7 +112,7 @@ public final class ReportReferenceFlowTest {
             click("Trends");
             title("Trends");
             capture("week");
-            LocalDate latestDay=LocalDate.now(ZoneId.systemDefault()).minusDays(1),chosenDay=latestDay.getDayOfMonth()>1?latestDay.minusDays(1):latestDay.plusDays(1);object("Choose trend date").click();title("Trend date");object("Choose date "+chosenDay).click();assertTrue(device.hasObject(By.desc("Pending date "+chosenDay)));capture("week-calendar");click("Use date");title("Trends");String missingDate=(chosenDay.isBefore(latestDay)?chosenDay.minusDays(6):chosenDay)+": no record.";assertTrue("Changing the calendar changes the actual plotted range and preserves unknown dates",device.wait(Until.hasObject(By.descContains(missingDate)),5000));object("Choose trend date").click();title("Trend date");assertTrue(device.hasObject(By.desc("Pending date "+chosenDay)));object("Choose date "+latestDay).click();click("Use date");title("Trends");assertTrue(device.wait(Until.hasObject(By.descStartsWith("Recorded duration. "+latestDay.minusDays(6)+": ")),5000));
+            LocalDate latestDay=LocalDate.now(ZoneId.systemDefault()).minusDays(1),chosenDay=latestDay.getDayOfMonth()>1?latestDay.minusDays(1):latestDay.plusDays(1);object("Choose trend date").click();title("Trend date");object("Choose date "+chosenDay).click();assertTrue(device.hasObject(By.desc("Pending date "+chosenDay)));captureCalendar(chosenDay);click("Use date");title("Trends");String missingDate=(chosenDay.isBefore(latestDay)?chosenDay.minusDays(6):chosenDay)+": no record.";assertTrue("Changing the calendar changes the actual plotted range and preserves unknown dates",device.wait(Until.hasObject(By.descContains(missingDate)),5000));object("Choose trend date").click();title("Trend date");assertTrue(device.hasObject(By.desc("Pending date "+chosenDay)));object("Choose date "+latestDay).click();click("Use date");title("Trends");assertTrue(device.wait(Until.hasObject(By.descStartsWith("Recorded duration. "+latestDay.minusDays(6)+": ")),5000));
             UiObject2 durationChart=device.wait(Until.findObject(By.descStartsWith("Recorded duration.")),5000);assertNotNull("Actual weekly duration chart",durationChart);android.graphics.Rect durationBounds=durationChart.getVisibleBounds();assertTrue("Inspect a recorded day",device.click(durationBounds.centerX(),durationBounds.centerY()));String selectedDay=LocalDate.now(ZoneId.systemDefault()).minusDays(4)+": 7 h 10 min";assertTrue("The selected fourth day reports its real paused-duration total",device.wait(Until.hasObject(By.desc(selectedDay)),5000));capture("week-selected");
             click("Month");
             assertTrue(object("Month").isSelected());
