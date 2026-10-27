@@ -19,7 +19,7 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--serial", required=True, choices=("emulator-5554",))
-parser.add_argument("--scope", choices=("full", "tone-wake", "report", "report-flow", "organization", "organized-settings", "recorded-analysis", "challenge-routine", "tonight", "appearance", "event-library", "goal-plan", "interaction-security", "priority-menus", "sensing-travel", "travel-ui", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features", "feature-increment", "nap-features"), default="full", help="A named narrow scope is never a full app acceptance run")
+parser.add_argument("--scope", choices=("full", "tone-wake", "report", "report-flow", "organization", "organized-settings", "recorded-analysis", "challenge-routine", "tonight", "appearance", "event-library", "goal-plan", "interaction-security", "priority-menus", "priority-current", "sensing-travel", "travel-ui", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features", "feature-increment", "nap-features"), default="full", help="A named narrow scope is never a full app acceptance run")
 parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
 parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
 args = parser.parse_args()
@@ -37,6 +37,13 @@ GOAL_PLAN_FRAMES = ['goal-plan.png', 'goal-options.png', 'goal-options-recreated
 INTERACTION_SECURITY_FRAMES = ["calendar-rules-permission-"+name+".png" for name in ("settings","granted-draft","revoked-draft")]
 PRIORITY_MENU_FRAMES = ["advanced-snooze-"+name+".png" for name in ("initial","options","options-recreated","draft","recreated","reopened","sound-picker","sound-picker-recreated","invalid","repaired-draft")]
 PRIORITY_MENU_FRAMES += ["qr-code-"+name+".png" for name in ("permission","invalid","denied","access-error","scanning","camera-error","captured","fallback","fallback-error","recreated","routine","reopened","unavailable")]
+PRIORITY_CURRENT_FRAMES = ["qr-code-"+name+".png" for name in ("permission","invalid","denied","access-error","scanning","camera-error","captured","fallback","fallback-error","recreated","routine","reopened","unavailable")]
+PRIORITY_CURRENT_FRAMES += WAKE_SETTING_FRAMES + ["wake-settings-"+name+".png" for name in ("options","options-recreated","preview-loading","preview-playing","preview-recreated","preview-error","preview-complete")]
+PRIORITY_CURRENT_FRAMES += ["rhythm-"+name+".png" for name in ("seven-nights","workdays","recreated","reopened","empty")]
+PRIORITY_CURRENT_FRAMES += ["nap-"+name+".png" for name in ("default","preset","tracking-required","sound","pending","recreated","reopened","cancelled")]
+PRIORITY_CURRENT_FRAMES += ["health-connect-"+name+".png" for name in ("default","configured","synced","source","conflict","kept","unavailable","permissions")]
+PRIORITY_CURRENT_FRAMES += ["privacy-history-"+name+".png" for name in ("ready","error","busy","pending","done")]
+PRIORITY_CURRENT_FRAMES += ["backup-document-"+name+".png" for name in ("review","confirmation","review-recreated","review-reopened","restoring","restoring-recreated","restored","result-reopened")]
 APPEARANCE_FRAMES = ["appearance-"+name+".png" for name in ("automatic","selected-0","selected-1","selected-2","tonight-0","tonight-1","tonight-2","large-contrast-tonight","large-contrast-tonight-action","large-contrast")]
 TONIGHT_FRAMES = ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 SONAR_REPORT_FRAMES = ["sonar-report-" + name + ".png" for name in ("night", "signals", "zero", "reopened", "legacy-unknown", "analysis-error")]
@@ -269,6 +276,8 @@ elif args.scope == "interaction-security":
     tests = ["InteractionSecurityNativeTest", "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft"]
 elif args.scope == "priority-menus":
     tests = ["AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime", "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert"]
+elif args.scope == "priority-current":
+    tests = ["QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert", "AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs", "SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs", "NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist", "HealthConnectFlowTest", "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory", "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen"]
 elif args.scope == "sensing-travel":
     tests = list(SENSING_TESTS)
 elif args.scope == "travel-ui":
@@ -294,6 +303,7 @@ method_counts.update({"CalendarRulesStorageTest": 4, "AlarmDefaultsStorageTest":
 method_counts.update({"HealthSleepStorageTest": 12, "HealthConnectFlowTest": 2, "AlarmDateStorageTest": 3})
 method_counts.update({"SmartLightStorageTest": 6, "HomeAssistantProtocolTest": 4, "AlarmInputsStorageTest": 3, "MoonSearchStorageTest": 3, "TagStorageTest": 8, "CloudBackupStorageTest": 5})
 method_counts.update({"AdvancedSnoozeStorageTest": 2})
+method_counts.update({"HealthConnectFlowTest": 2})
 method_counts.update({"DiaryStorageTest": 10, "TypedWakeFlowTest": 2, "HomeWidgetNativeTest": 7, "AlarmTimingStorageTest": 3})
 method_counts.update({"AlarmRequestStorageTest": 3, "ChallengePackNativeTest": 8})
 method_counts.update({"TrackingDndStorageTest": 4, "TrackingDndFlowTest": 2})
@@ -357,7 +367,7 @@ if "SonarSharedClassifierStorageTest" in tests:
     except (OSError, KeyError, ValueError, TypeError) as error:
         failures.append("Shared PCM replay evidence incomplete: " + str(error))
 if args.scope != "full":
-    focused_frames = {"priority-menus": PRIORITY_MENU_FRAMES, "event-library": EVENT_LIBRARY_FRAMES, "goal-plan": GOAL_PLAN_FRAMES, "interaction-security": INTERACTION_SECURITY_FRAMES, "appearance": APPEARANCE_FRAMES, "tonight": TONIGHT_FRAMES, "challenge-routine": ROUTINE_FRAMES, "travel-ui": TRAVEL_UI_FRAMES, "recorded-analysis": RECORDED_ANALYSIS_FRAMES, "organized-settings": ORGANIZED_SETTINGS_FRAMES, "organization": ['organization-settings-root.png', 'organization-settings-sleep.png', 'organization-search-flashlight.png', 'organization-feedback-off.png', 'organization-alarm-editor.png', 'organization-alarm-schedule.png', 'organization-alarm-options.png', 'organization-controls-recreated.png', 'organization-alarm-backup.png', 'organization-alarm-reopened.png', 'organization-smart-following.png', 'organization-smart-configured.png', 'organization-smart-reopened.png', 'organization-alarm-search.png'], "report-flow": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap")], "nap-features": NAP_FEATURE_FRAMES, "feature-increment": FEATURE_INCREMENT_FRAMES, "phone-features": PHONE_FEATURE_FRAMES, "sound-categories": CATEGORY_FRAMES, "sound-sensitivity": SENSITIVITY_FRAMES, "sonar-night": NIGHT_FRAMES, "report": REPORT_FRAMES, "sensing-travel": SENSING_FRAMES, "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES}[args.scope]
+    focused_frames = {"priority-current": PRIORITY_CURRENT_FRAMES, "priority-menus": PRIORITY_MENU_FRAMES, "event-library": EVENT_LIBRARY_FRAMES, "goal-plan": GOAL_PLAN_FRAMES, "interaction-security": INTERACTION_SECURITY_FRAMES, "appearance": APPEARANCE_FRAMES, "tonight": TONIGHT_FRAMES, "challenge-routine": ROUTINE_FRAMES, "travel-ui": TRAVEL_UI_FRAMES, "recorded-analysis": RECORDED_ANALYSIS_FRAMES, "organized-settings": ORGANIZED_SETTINGS_FRAMES, "organization": ['organization-settings-root.png', 'organization-settings-sleep.png', 'organization-search-flashlight.png', 'organization-feedback-off.png', 'organization-alarm-editor.png', 'organization-alarm-schedule.png', 'organization-alarm-options.png', 'organization-controls-recreated.png', 'organization-alarm-backup.png', 'organization-alarm-reopened.png', 'organization-smart-following.png', 'organization-smart-configured.png', 'organization-smart-reopened.png', 'organization-alarm-search.png'], "report-flow": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap")], "nap-features": NAP_FEATURE_FRAMES, "feature-increment": FEATURE_INCREMENT_FRAMES, "phone-features": PHONE_FEATURE_FRAMES, "sound-categories": CATEGORY_FRAMES, "sound-sensitivity": SENSITIVITY_FRAMES, "sonar-night": NIGHT_FRAMES, "report": REPORT_FRAMES, "sensing-travel": SENSING_FRAMES, "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES}[args.scope]
     failures += [name for name in focused_frames if not (output / name).is_file()]
     summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "failures": failures}
     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
