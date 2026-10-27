@@ -5,5 +5,8 @@
             android:exported="true" android:grantUriPermissions="true" android:permission="android.permission.MANAGE_DOCUMENTS">
             <intent-filter><action android:name="android.content.action.DOCUMENTS_PROVIDER" /></intent-filter>
         </provider>
+        <!-- Test APK only. Exact target-UID/emulator checks guard bounded fixture setup; no document read surface. -->
+        <provider android:name="org.sleepwell.app.RecordedAnalysisFixtureProvider"
+            android:authorities="org.sleepwell.app.test.recorded-analysis-fixture" android:exported="true" />
     </application>
 </manifest>

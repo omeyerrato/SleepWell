@@ -1,8 +1,7 @@
 package org.sleepwell.app;
 
 import android.database.*;
-import android.content.Intent;
-import android.net.Uri;
+import android.content.Context;
 import android.os.*;
 import android.provider.*;
 import java.io.*;
@@ -15,26 +14,8 @@ public final class ImportDocuments extends DocumentsProvider {
     private static final String[] NAMES={"Quiet sea.wav","Unknown size.wav","Broken audio.wav","Too large.wav","Hidden large.wav","Denied.wav","Delayed.wav"};
     private boolean enabled(){return Build.MODEL.startsWith("sdk_gphone64")&&Build.HARDWARE.equals("ranchu");}
     private void guard(){if(!enabled())throw new SecurityException("CI emulator fixture only");}
-    private File analysisFile(String uuid){if(uuid==null||!java.util.UUID.fromString(uuid).toString().equals(uuid))throw new IllegalArgumentException("Canonical fixture UUID required");return new File(getContext().getCacheDir(),"recorded-analysis-"+uuid+".m4a");}
-    private File analysisDocument(String id){return id!=null&&id.startsWith("recorded-analysis-")?analysisFile(id.substring("recorded-analysis-".length())):null;}
-    @Override public Bundle call(String method,String arg,Bundle extras){
-        Bundle inherited=super.call(method,arg,extras);if(inherited!=null)return inherited;
-        if(!method.equals("prepareRecordedAnalysis")&&!method.equals("clearRecordedAnalysis"))return null;
-        guard();getContext().enforceCallingPermission("android.permission.MANAGE_DOCUMENTS","CI fixture setup only");
-        File file=analysisFile(arg);String id="recorded-analysis-"+arg;Uri uri=DocumentsContract.buildDocumentUri(AUTHORITY,id);
-        synchronized(ImportDocuments.class){try{
-            Bundle out=new Bundle();
-            if(method.equals("clearRecordedAnalysis")){getContext().revokeUriPermission(uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);if(file.exists()&&!file.delete())throw new IOException("Fixture cleanup failed");out.putBoolean("absent",!file.exists());return out;}
-            byte[] bytes=extras==null?null:extras.getByteArray("bytes");String expected=extras==null?null:extras.getString("sha256");
-            if(bytes==null||bytes.length<32||bytes.length>256*1024||expected==null||!expected.matches("[a-f0-9]{64}"))throw new IllegalArgumentException("Bounded encoded fixture required");
-            StringBuilder hash=new StringBuilder();for(byte b:java.security.MessageDigest.getInstance("SHA-256").digest(bytes))hash.append(String.format(java.util.Locale.ROOT,"%02x",b&255));
-            if(!hash.toString().equals(expected)||bytes[4]!='f'||bytes[5]!='t'||bytes[6]!='y'||bytes[7]!='p')throw new IllegalArgumentException("M4A fixture/hash mismatch");
-            if(!file.createNewFile())throw new IOException("Fixture UUID already exists");
-            try(FileOutputStream output=new FileOutputStream(file)){output.write(bytes);output.getFD().sync();}catch(IOException failure){file.delete();throw failure;}
-            getContext().grantUriPermission("org.sleepwell.app",uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            out.putString("uri",uri.toString());out.putString("documentId",id);out.putLong("size",file.length());out.putString("sha256",expected);return out;
-        }catch(IOException|java.security.NoSuchAlgorithmException failure){throw new IllegalStateException("Private CI fixture unavailable",failure);}}
-    }
+    static File analysisFile(Context context,String uuid){if(uuid==null||!java.util.UUID.fromString(uuid).toString().equals(uuid))throw new IllegalArgumentException("Canonical fixture UUID required");return new File(context.getCacheDir(),"recorded-analysis-"+uuid+".m4a");}
+    private File analysisDocument(String id){return id!=null&&id.startsWith("recorded-analysis-")?analysisFile(getContext(),id.substring("recorded-analysis-".length())):null;}
     @Override public boolean onCreate(){return true;}
     private MatrixCursor cursor(String[] projection,String... defaults){return new MatrixCursor(projection==null?defaults:projection);}
     @Override public Cursor queryRoots(String[] projection){MatrixCursor c=cursor(projection,DocumentsContract.Root.COLUMN_ROOT_ID,DocumentsContract.Root.COLUMN_TITLE,DocumentsContract.Root.COLUMN_DOCUMENT_ID,DocumentsContract.Root.COLUMN_FLAGS,DocumentsContract.Root.COLUMN_MIME_TYPES);if(enabled()){MatrixCursor.RowBuilder row=c.newRow();for(String column:c.getColumnNames())row.add(column,switch(column){case DocumentsContract.Root.COLUMN_ROOT_ID->"audio";case DocumentsContract.Root.COLUMN_TITLE->ROOT;case DocumentsContract.Root.COLUMN_DOCUMENT_ID->"root";case DocumentsContract.Root.COLUMN_FLAGS->DocumentsContract.Root.FLAG_LOCAL_ONLY;case DocumentsContract.Root.COLUMN_MIME_TYPES->"audio/*";default->null;});}return c;}

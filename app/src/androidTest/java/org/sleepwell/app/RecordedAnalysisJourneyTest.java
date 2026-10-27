@@ -170,11 +170,9 @@ public final class RecordedAnalysisJourneyTest {
             out.append(Character.forDigit((b >>> 4) & 15, 16)).append(Character.forDigit(b & 15, 16)); return out.toString();
     }
     private Bundle importFixture(String method, String uuid, Bundle request) {
-        // Shell identity is limited to fixture setup/cleanup. The actual job reads only its URI grant.
-        i.getUiAutomation().adoptShellPermissionIdentity("android.permission.MANAGE_DOCUMENTS");
-        try { Bundle result = c.getContentResolver().call(Uri.parse("content://" + ImportDocuments.AUTHORITY), method, uuid, request);
-            assertNotNull("CI provider response", result); return result;
-        } finally { i.getUiAutomation().dropShellPermissionIdentity(); }
+        // The APK-only bootstrap authenticates this target UID; document reads still require its narrow URI grant.
+        Bundle result = c.getContentResolver().call(Uri.parse("content://" + RecordedAnalysisFixtureProvider.AUTHORITY), method, uuid, request);
+        assertNotNull("CI fixture bootstrap response", result); return result;
     }
     private byte[] fixture() throws Exception {
         // Whole, already pinned CC0 preview from third_party/audio-fixtures/laughter-holdout.json.
@@ -314,7 +312,7 @@ public final class RecordedAnalysisJourneyTest {
             assertEquals(ImportDocuments.AUTHORITY, importedUri.getAuthority());
             assertEquals("recorded-analysis-" + importUuid, seeded.getString("documentId"));
             java.util.Arrays.fill(encodedBytes, (byte) 0); seed.clear();
-            assertTrue("Provider setup identity dropped before actual import", c.checkUriPermission(importedUri,
+            assertTrue("Actual import receives only the provider's document read grant", c.checkUriPermission(importedUri,
                     android.os.Process.myPid(), android.os.Process.myUid(), Intent.FLAG_GRANT_READ_URI_PERMISSION) == android.content.pm.PackageManager.PERMISSION_GRANTED);
             assertFalse("Selected document receives no write grant", c.checkUriPermission(importedUri,
                     android.os.Process.myPid(), android.os.Process.myUid(), Intent.FLAG_GRANT_WRITE_URI_PERMISSION) == android.content.pm.PackageManager.PERMISSION_GRANTED);
