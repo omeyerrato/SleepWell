@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -42,7 +43,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.BooleanSupplier;
 import static org.junit.Assert.*;
 
-/** API36 CI only. Real bundled CPU inference on a licensed fixture; no recording or audio output. */
+/** API36 CI only. Real bundled CPU inference and AAC encode/decode on a licensed fixture; no recording or audio output. */
 public final class RecordedAnalysisJourneyTest {
     private static final String ESTIMATES = "recorded-sound-estimates-v1.db";
     private static final String PCM_SHA = "ddf4f22ae871bc993329571af9660f1daba0b5a6f89ea2d11f77e3e2d222c305";
@@ -131,7 +132,8 @@ public final class RecordedAnalysisJourneyTest {
     }
     private File folder() { File dir = new File(c.getExternalFilesDir(null), "verification"); assertTrue(dir.isDirectory() || dir.mkdirs()); return dir; }
     private void capture(String name, String visible) throws Exception {
-        assertTrue("At most three real captures", frames < 3); step = "capture " + name; expose(visible); frame();
+        // Three original saved-WAV frames plus two frames for the genuinely new resolver-import flow.
+        assertTrue("At most five real captures", frames < 5); step = "capture " + name; expose(visible); frame();
         assertTrue(device.takeScreenshot(new File(folder(), "recorded-analysis-" + name + ".png"))); frames++;
     }
     private RecordedRecognitionJob job(Activity a) throws Exception {
@@ -166,6 +168,13 @@ public final class RecordedAnalysisJourneyTest {
     private String sha(byte[] bytes) throws Exception {
         StringBuilder out = new StringBuilder(); for (byte b : MessageDigest.getInstance("SHA-256").digest(bytes))
             out.append(Character.forDigit((b >>> 4) & 15, 16)).append(Character.forDigit(b & 15, 16)); return out.toString();
+    }
+    private Bundle importFixture(String method, String uuid, Bundle request) {
+        // Shell identity is limited to fixture setup/cleanup. The actual job reads only its URI grant.
+        i.getUiAutomation().adoptShellPermissionIdentity("android.permission.MANAGE_DOCUMENTS");
+        try { Bundle result = c.getContentResolver().call(Uri.parse("content://" + ImportDocuments.AUTHORITY), method, uuid, request);
+            assertNotNull("CI provider response", result); return result;
+        } finally { i.getUiAutomation().dropShellPermissionIdentity(); }
     }
     private byte[] fixture() throws Exception {
         // Whole, already pinned CC0 preview from third_party/audio-fixtures/laughter-holdout.json.
@@ -233,6 +242,8 @@ public final class RecordedAnalysisJourneyTest {
             public void onActivityStarted(Activity a) {} public void onActivityResumed(Activity a) {} public void onActivityPaused(Activity a) {}
             public void onActivityStopped(Activity a) {} public void onActivitySaveInstanceState(Activity a, Bundle state) {} public void onActivityDestroyed(Activity a) {}
         };
+        String importUuid = UUID.randomUUID().toString(), importHash = "";
+        File encoded = new File(c.getCacheDir(), "recorded-analysis-" + importUuid + ".m4a");
         app.registerActivityLifecycleCallbacks(observer); boolean drained = false; String savedId = "";
         try {
             // Own only these four inert CI defaults during the flow. A delayed BOOT_COMPLETED
@@ -290,13 +301,103 @@ public final class RecordedAnalysisJourneyTest {
             try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) { assertEquals(originalRows, snapshotRows(store)); assertEquals(originalRevision, store.revision()); }
             assertEquals(wavHash, sha(Files.readAllBytes(audio.toPath())));
             try (Store store = new Store(c, database)) { assertEquals(sourceBefore, List.of(store.rows("SELECT * FROM sessions").toString(), store.rows("SELECT * FROM clips").toString(), store.rows("SELECT * FROM sound_events").toString())); }
+            assertEquals("Original three saved-WAV captures remain intact", 3, frames);
+
+            step = "encode unchanged complete fixture through actual AAC MediaCodec";
+            AacPcmEncoder.encode(audio, encoded, 0, SAMPLES, () -> true);
+            byte[] encodedBytes = Files.readAllBytes(encoded.toPath());
+            assertTrue("Bounded private M4A", encodedBytes.length >= 32 && encodedBytes.length <= 256 * 1024);
+            importHash = sha(encodedBytes); Bundle seed = new Bundle(); seed.putByteArray("bytes", encodedBytes); seed.putString("sha256", importHash);
+            Bundle seeded = importFixture("prepareRecordedAnalysis", importUuid, seed);
+            assertEquals(encodedBytes.length, seeded.getLong("size")); assertEquals(importHash, seeded.getString("sha256"));
+            Uri importedUri = Uri.parse(seeded.getString("uri")); assertEquals("content", importedUri.getScheme());
+            assertEquals(ImportDocuments.AUTHORITY, importedUri.getAuthority());
+            assertEquals("recorded-analysis-" + importUuid, seeded.getString("documentId"));
+            java.util.Arrays.fill(encodedBytes, (byte) 0); seed.clear();
+            assertTrue("Provider setup identity dropped before actual import", c.checkUriPermission(importedUri,
+                    android.os.Process.myPid(), android.os.Process.myUid(), Intent.FLAG_GRANT_READ_URI_PERMISSION) == android.content.pm.PackageManager.PERMISSION_GRANTED);
+            assertFalse("Selected document receives no write grant", c.checkUriPermission(importedUri,
+                    android.os.Process.myPid(), android.os.Process.myUid(), Intent.FLAG_GRANT_WRITE_URI_PERMISSION) == android.content.pm.PackageManager.PERMISSION_GRANTED);
+            assertTrue(device.pressBack()); require("Recording analysis"); click("Sources"); require("Choose an audio file");
+            assertTrue(device.pressBack()); require("Recording analysis");
+            // Resolver selection exercises the actual job and provider. This does not claim DocumentsUI coverage.
+            i.runOnMainSync(() -> { try { RecordedRecognitionJob current = job(activity); assertTrue(current.choosing()); current.selected(importedUri); }
+                catch (Exception failure) { throw new AssertionError(failure); } });
+            step = "actual resolver copy and MediaCodec AAC decode reaches READY";
+            await(35000, () -> { boolean[] done = {false}; i.runOnMainSync(() -> {
+                try { RecordedRecognitionJob current = job(activity); assertNotEquals("Imported audio preparation failed: " + current.message, RecordedRecognitionJob.Phase.ERROR, current.phase);
+                    done[0] = current.phase == RecordedRecognitionJob.Phase.READY && current.input != null;
+                } catch (Exception failure) { throw new AssertionError(failure); }
+            }); return done[0]; });
+            require("Selected audio"); require("Analyze this copy");
+            JSONObject[] prepared = {null}; i.runOnMainSync(() -> { try { prepared[0] = job(activity).input.provenance(); }
+                catch (Exception failure) { throw new AssertionError(failure); } });
+            JSONObject importedSource = prepared[0];
+            assertEquals("selected_audio", importedSource.getString("kind")); assertEquals("audio/mp4a-latm", importedSource.getString("inputMime"));
+            assertEquals(16000, importedSource.getInt("inputRate")); assertEquals(1, importedSource.getInt("inputChannels"));
+            assertEquals(16000, importedSource.getInt("sampleRate")); assertEquals(importHash, importedSource.getString("fileSha256"));
+            assertEquals(importHash, importedSource.getString("sourceSha256")); assertFalse(importedSource.getString("decoder").isBlank());
+            long firstPresentationUs = importedSource.getLong("firstPresentationUs");
+            assertTrue("This fixture's observed AAC priming stays within 4096 samples; no timestamp coercion",
+                    firstPresentationUs >= -256000 && firstPresentationUs <= 256000);
+            assertEquals(0, importedSource.getLong("firstOutputFrame"));
+            assertEquals(0, importedSource.getLong("omittedStartMs")); assertEquals(0, importedSource.getLong("omittedEndMs"));
+            assertEquals("none", importedSource.getString("downmix")); assertEquals("none", importedSource.getString("resampling"));
+            int importedSamples = importedSource.getInt("samples"); long importedDuration = importedSource.getLong("durationMs");
+            assertEquals(importedSamples, importedSource.getLong("decodedFrames"));
+            assertTrue("This fixture's actual AAC trimming/padding stays within 4096 samples",
+                    importedSamples >= SAMPLES - 4096 && importedSamples <= SAMPLES + 4096);
+            assertEquals(importedSamples * 1000L / 16000, importedDuration);
+            assertNotEquals("Lossy AAC decoding is not the original PCM", PCM_SHA, importedSource.getString("pcmSha256"));
+            assertTrue(importedSource.getString("pcmSha256").matches("[a-f0-9]{64}"));
+            try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) { assertEquals(originalRows, snapshotRows(store)); }
+            capture("import-prepared", "Analyze this copy"); click("Analyze this copy");
+            step = "real bundled CPU inference on decoded AAC and private Save";
+            await(180000, () -> { boolean[] done = {false}; i.runOnMainSync(() -> {
+                try { RecordedRecognitionJob current = job(activity); assertNotEquals("Imported audio inference failed: " + current.message, RecordedRecognitionJob.Phase.ERROR, current.phase);
+                    done[0] = current.phase == RecordedRecognitionJob.Phase.RESULT && current.result != null;
+                } catch (Exception failure) { throw new AssertionError(failure); }
+            }); return done[0]; });
+            RecordedRecognitionStore.Entry imported;
+            try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) { assertEquals(1, store.entries().size()); imported = store.entries().get(0);
+                assertEquals(originalRevision, store.revision()); }
+            assertEquals(importedSource.toString(), imported.source.toString()); assertEquals(MODEL, imported.result.getString("modelVersion"));
+            assertEquals(importedDuration, imported.result.getLong("analyzedMs")); assertEquals(0, imported.result.getLong("omittedMs"));
+            JSONArray importedWindows = imported.result.getJSONArray("windows"); assertEquals(2, importedWindows.length());
+            for (int n = 0; n < importedWindows.length(); n++) { JSONObject window = importedWindows.getJSONObject(n);
+                assertEquals(n * 10000L, window.getLong("startMs")); assertEquals(n == 0 ? 10000L : importedDuration - 10000L, window.getLong("durationMs"));
+                finite(window.getJSONObject("laughter")); finite(window.getJSONObject("instrument"));
+                assertTrue(Set.of("uncertain", "laughter", "instrument").contains(window.getString("candidate"))); }
+            require("Sound estimates"); capture("import-result", "Sound estimates"); finish();
+            launch(record, updated); click("Saved results"); String importedDate = RecordUi.date(imported.created, java.time.ZoneId.systemDefault());
+            require(importedDate); click(importedDate); step = "reopen persisted imported-audio result";
+            await(8000, () -> { boolean[] done = {false}; i.runOnMainSync(() -> {
+                try { RecordedRecognitionJob current = job(activity); assertNotEquals("Imported saved result failed: " + current.message, RecordedRecognitionJob.Phase.ERROR, current.phase);
+                    done[0] = current.phase == RecordedRecognitionJob.Phase.RESULT && current.result != null && imported.id.equals(current.result.id);
+                } catch (Exception failure) { throw new AssertionError(failure); }
+            }); return done[0]; });
+            require("Sound estimates"); try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) {
+                assertEquals(1, store.entries().size()); RecordedRecognitionStore.Entry reopened = store.entries().get(0);
+                assertEquals(imported.id, reopened.id); assertEquals(imported.source.toString(), reopened.source.toString()); assertEquals(imported.result.toString(), reopened.result.toString()); }
+            click("Result details"); require(MODEL); click("Delete this analysis"); require("Saved analysis deleted. Original audio is unchanged.");
+            try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) { assertEquals(originalRows, snapshotRows(store)); assertEquals(originalRevision, store.revision()); }
+            assertEquals(importHash, sha(Files.readAllBytes(encoded.toPath()))); assertEquals(wavHash, sha(Files.readAllBytes(audio.toPath())));
+            try (InputStream originalEncoded = c.getContentResolver().openInputStream(importedUri); ByteArrayOutputStream copied = new ByteArrayOutputStream()) {
+                assertNotNull(originalEncoded); byte[] buffer = new byte[8192];
+                for (int n; (n = originalEncoded.read(buffer)) != -1;) { assertTrue(copied.size() + n <= 256 * 1024); copied.write(buffer, 0, n); }
+                assertEquals("Provider's original encoded document is unchanged", importHash, sha(copied.toByteArray()));
+            }
+            try (Store store = new Store(c, database)) { assertEquals(sourceBefore, List.of(store.rows("SELECT * FROM sessions").toString(), store.rows("SELECT * FROM clips").toString(), store.rows("SELECT * FROM sound_events").toString())); }
+            assertEquals(preferences, Prefs.of(c).getAll()); silent();
             JSONArray[] seenProgress = {null}; i.runOnMainSync(() -> seenProgress[0] = new JSONArray(new ArrayList<>(progress)));
             JSONObject proof = new JSONObject().put("fixture", "laughter-morning").put("pcmSha256", PCM_SHA).put("wavSha256", wavHash)
                     .put("modelVersion", result.getString("modelVersion")).put("samples", SAMPLES).put("analyzedMs", result.getLong("analyzedMs"))
                     .put("omittedMs", result.getLong("omittedMs")).put("windows", result.getJSONArray("windows")).put("observedUiProgress", seenProgress[0])
-                    .put("savedAndReopened", true).put("deleted", true).put("originalAudioUnchanged", true).put("accuracyAcceptanceRequired", false);
+                    .put("savedAndReopened", true).put("deleted", true).put("originalAudioUnchanged", true).put("accuracyAcceptanceRequired", false)
+                    .put("importedAudio", new JSONObject().put("selection", "resolver selected content URI; no DocumentsUI assertion")
+                            .put("source", imported.source).put("result", imported.result).put("savedAndReopened", true).put("deleted", true).put("originalEncodedAudioUnchanged", true));
             try (PrintWriter out = new PrintWriter(new File(folder(), "recorded-analysis-proof.json"), "UTF-8")) { out.println(proof.toString(2)); }
-            assertEquals(3, frames); assertEquals(preferences, Prefs.of(c).getAll()); silent();
+            assertEquals(5, frames); assertEquals(preferences, Prefs.of(c).getAll()); silent();
         } catch (Exception | AssertionError failure) {
             try { device.dumpWindowHierarchy(new File(folder(), "recorded-analysis-failure.xml"));
                 try (PrintWriter out = new PrintWriter(new File(folder(), "recorded-analysis-failure.txt"), "UTF-8")) { out.println(step); failure.printStackTrace(out); }
@@ -312,12 +413,15 @@ public final class RecordedAnalysisJourneyTest {
                         synchronized (RecordedRecognitionStore.LOCK) {
                             try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) {
                                 for (RecordedRecognitionStore.Entry entry : store.entries())
-                                    if (entry.source.optLong("record") == record && entry.source.optLong("clip") == clip
-                                            && wavHash.equals(entry.source.optString("wavSha256")) && PCM_SHA.equals(entry.source.optString("pcmSha256"))) store.delete(entry.id);
+                                    if ((entry.source.optLong("record") == record && entry.source.optLong("clip") == clip
+                                            && wavHash.equals(entry.source.optString("wavSha256")) && PCM_SHA.equals(entry.source.optString("pcmSha256")))
+                                            || (!importHash.isEmpty() && entry.source.optString("kind").equals("selected_audio") && importHash.equals(entry.source.optString("fileSha256")))) store.delete(entry.id);
                                 assertEquals(originalRows, snapshotRows(store)); assertEquals(originalRevision, store.revision());
                             }
                             if (!estimatesExisted) assertTrue("Remove only our newly created empty estimate DB", c.deleteDatabase(ESTIMATES));
                         }
+                        assertTrue(importFixture("clearRecordedAnalysis", importUuid, null).getBoolean("absent"));
+                        assertTrue("Private encoded fixture removed", !encoded.exists() || encoded.delete());
                         assertTrue(audio.delete()); c.deleteDatabase(database);
                     } finally { restorePreferences(originalPreferences); }
                 }
