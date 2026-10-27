@@ -8,9 +8,7 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
 exercise actions, cancellation, recreation and persistence. [Exact release scope](verification/2026-10-27-reference-menus-build/README.md).
 
-The phone remains **32f064e2**, preserving its original records, preferences and
-user files from the earlier update. No new phone action or physical output test
-ran. All36 reference states and the broader interaction/security review remain open.
+The phone now has **170b0e44**, installed at the user’s request with original records, user settings and user files preserved. No physical output test ran. All36 reference states and the broader interaction/security review remain open.
 
 ## Current top priorities
 
@@ -18,7 +16,7 @@ ran. All36 reference states and the broader interaction/security review remain o
 - [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
 - [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness recovery and additional Tracking work are a separate source increment awaiting native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
-The installed phone remains32f064e2; it predates the passing Report fix and these new source changes. No further phone action is included in this status update.
+The installed phone is170b0e44; its checksum and data preservation are verified. The separate0.1.1 icon/haptics hotfix is built and awaiting USB reconnection.
 
 
 ## New priorities

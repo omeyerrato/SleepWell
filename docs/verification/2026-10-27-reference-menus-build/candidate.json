@@ -4,7 +4,7 @@
   "verification_scope": "Selected17 methods pass across11 bounded emulator scopes;126 individually inspected original captures. Mixed earlier summaries retain unrelated failures. Not all36 reference states, physical outputs, overnight accuracy or external-provider acceptance. Settings root uses five exact method-source comparisons. No new unit-test batch or broad lint campaign.",
   "database_schema": 17,
   "backup_format": 14,
-  "phone_installed": false,
+  "phone_installed": true,
   "artifacts": {
     "debug": {
       "source": "170b0e44785c52429f7b4c089e234ca9d18ce102",

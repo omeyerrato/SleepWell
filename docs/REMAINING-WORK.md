@@ -11,9 +11,7 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
 exercise actions, cancellation, recreation and persistence. [Exact release scope](verification/2026-10-27-reference-menus-build/README.md).
 
-The phone remains **32f064e2**, preserving its original records, preferences and
-user files from the earlier update. No new phone action or physical output test
-ran. All36 reference states and the broader interaction/security review remain open.
+The phone now has **170b0e44**, installed at the user’s request with original records, user settings and user files preserved. No physical output test ran. All36 reference states and the broader interaction/security review remain open.
 
 ## Current top priorities
 
@@ -21,7 +19,7 @@ ran. All36 reference states and the broader interaction/security review remain o
 - [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
 - [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness recovery and additional Tracking work are a separate source increment awaiting native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
-The installed phone remains32f064e2; it predates the passing Report fix and these new source changes. No further phone action is included in this status update.
+The installed phone is170b0e44; its checksum and data preservation are verified. The separate0.1.1 icon/haptics hotfix is built and awaiting USB reconnection.
 
 
 ## Current user priorities
@@ -41,7 +39,7 @@ unverified. [Scoped evidence](verification/2026-10-26-settings-organization/READ
 
 | Item | Current state |
 | --- | --- |
-| Installed phone build | **32f064e2**, authorized streamed update; checksum/original signer match. Original schema17 rows, preference values and user files preserved. Only new empty access-policy files and Android profiling cache changed. |
+| Installed phone build | **170b0e44**, original signer/checksum and original user-data preservation verified. Only internal permission revisions, framework counter and profiling cache changed. |
 | Phone availability | Connected for that authorized update only. No app launch, suspension change or output/capture/provider runtime action. |
 | Published candidate | **170b0e44 arm64**, build1m22s; original signer, exact tag and both uploaded hashes verified. Not installed. Sleep schema17/backup14/private automation2/result1. |
 | New feature evidence | Organization 33.114s/14 inspected captures, challenge ordering 40.237s/6 and recording analysis 40.27s/5. Prior Report/menu/Travel evidence remains separate. Per-alarm sensor accuracy, physical output, all 36 screens and overnight acceptance remain open. |
@@ -209,4 +207,4 @@ make those services free or establish full completion.
 - [x] Rhythm/Nap layout/actions, Health permission recovery, Privacy deletion/cleanup recovery and Cloud folder rotation pass their named private native flows.
 - [ ] All36 reference states and broader interaction/security acceptance remain open. Source-only Tracking/readiness refinements require their focused native capture checks next.
 
-Published170b0e44 is separate from installed32f064e2. No personal-phone or physical output action ran. [Current release and exact evidence](verification/2026-10-27-reference-menus-build/README.md).
+Published170b0e44 is now installed with verified original user-data preservation. No alarm, sound, flashlight or haptic test ran. Version0.1.1 icon/haptics is built, awaiting USB reconnection. [Current release and exact evidence](verification/2026-10-27-reference-menus-build/README.md).

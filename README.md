@@ -18,9 +18,7 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
 exercise actions, cancellation, recreation and persistence. [Exact release scope](docs/verification/2026-10-27-reference-menus-build/README.md).
 
-The phone remains **32f064e2**, preserving its original records, preferences and
-user files from the earlier update. No new phone action or physical output test
-ran. All36 reference states and the broader interaction/security review remain open.
+The phone now has **170b0e44**, installed at the user’s request with original records, user settings and user files preserved. No physical output test ran. All36 reference states and the broader interaction/security review remain open.
 
 ## Working capabilities
 

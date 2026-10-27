@@ -45,5 +45,4 @@ SQLite17, private automation2 and recorded-result1 are unchanged. Portable
 exports now use format14 for custom backup tone/volume; formats1–13 remain
 accepted. Older apps reject format14 instead of silently dropping those fields.
 Every packaged offline asset matches the preceding `795ab556` APK byte-for-byte:
-[asset hashes](preserved-assets.sha256.json). No personal-phone action ran for
-this milestone; the installed phone remains `32f064e2`.
+[asset hashes](preserved-assets.sha256.json). A subsequent user-authorized streamed update installed this APK on the phone. Original database rows, user settings and user files are preserved; only internal access-policy revisions, the Samsung framework counter and Android profiling cache changed. [Preservation result](phone-update.json). No app launch, alarm, sound, flashlight or haptic test ran.

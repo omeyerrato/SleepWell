@@ -9,7 +9,7 @@ Full supporting evidence stays in FEATURE-CHECKLIST.md and FEATURE-MATRIX.md.
 - [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
 - [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness recovery and additional Tracking work are a separate source increment awaiting native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
-The installed phone remains32f064e2; it predates the passing Report fix and these new source changes. No further phone action is included in this status update.
+The installed phone is170b0e44; its checksum and data preservation are verified. The separate0.1.1 icon/haptics hotfix is built and awaiting USB reconnection.
 
 
 ## Current priorities requested by the user
@@ -23,9 +23,7 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
 exercise actions, cancellation, recreation and persistence. [Exact release scope](verification/2026-10-27-reference-menus-build/README.md).
 
-The phone remains **32f064e2**, preserving its original records, preferences and
-user files from the earlier update. No new phone action or physical output test
-ran. All36 reference states and the broader interaction/security review remain open.
+The phone now has **170b0e44**, installed at the user’s request with original records, user settings and user files preserved. No physical output test ran. All36 reference states and the broader interaction/security review remain open.
 
 ## Implemented
 
@@ -59,9 +57,9 @@ ran. All36 reference states and the broader interaction/security review remain o
 - [ ] Optional vendor-service/hardware parity in the full checklist.
 - [ ] Verify real alarm protection, loudness, ramp, sunrise, flashlight and challenges.
 - [ ] Verify overnight tracking, sound accuracy, anti-snoring, battery behavior and integrations.
-- [x] Install32f064e2 while preserving original records, preferences and user files.
+- [x] Install170b0e44 while preserving original records, user settings and user files.
 
-Installed phone source:32f064e2. No further phone or output action is authorized by this document.
+Installed phone source:170b0e44. No further phone or output action is authorized by this document.
 Priority implementation/verification scope is tracked in UI-ORGANIZATION.md.
 
 ## New source and focused verification
@@ -72,4 +70,4 @@ Priority implementation/verification scope is tracked in UI-ORGANIZATION.md.
 - [x] Rhythm/Nap layout/actions, Health permission recovery, Privacy deletion/cleanup recovery and Cloud folder rotation pass their named private native flows.
 - [ ] All36 reference states and broader interaction/security acceptance remain open. Source-only Tracking/readiness refinements require their focused native capture checks next.
 
-Published170b0e44 is separate from installed32f064e2. No personal-phone or physical output action ran. [Current release and exact evidence](verification/2026-10-27-reference-menus-build/README.md).
+Published170b0e44 is now installed with verified original user-data preservation. No alarm, sound, flashlight or haptic test ran. Version0.1.1 icon/haptics is built, awaiting USB reconnection. [Current release and exact evidence](verification/2026-10-27-reference-menus-build/README.md).

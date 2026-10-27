@@ -1,0 +1,28 @@
+{
+  "source": "f641cb5298748fc81012d723364eb5b9d02951be",
+  "apk": "SleepWell-0.1.1-f641cb52-arm64.apk",
+  "sha256": "d646a6f42cff152c944d195f81652679531c3553b4a1175d5ca3983dcba39332",
+  "size": 161979485,
+  "missingAssets": [],
+  "addedAssets": [],
+  "changedAssets": [
+    "assets/fonts/OFL.txt",
+    "assets/object_model_PROVENANCE.json"
+  ],
+  "equivalentTextLineEndings": [
+    "assets/fonts/OFL.txt",
+    "assets/object_model_PROVENANCE.json"
+  ],
+  "abis": [
+    "arm64-v8a"
+  ],
+  "missingNativeLibraries": [],
+  "changedNativeLibraries": [],
+  "removedResources": [],
+  "versionName": "0.1.1",
+  "versionCode": 2,
+  "installed": false,
+  "build": "assembleDebug PASS3m36s; offline arm64, two workers, isolated daemon",
+  "signerSha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "baseline": "170b0e44785c52429f7b4c089e234ca9d18ce102"
+}

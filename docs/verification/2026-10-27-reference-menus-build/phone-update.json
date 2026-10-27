@@ -1,0 +1,28 @@
+{
+  "source": "170b0e44785c52429f7b4c089e234ca9d18ce102",
+  "apkSha256": "48b53f489fb5c7c3b5ffcbcd89b9a78d30df260bef651a01464e9f7465ffbe9f",
+  "signerSha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "installed": true,
+  "installResult": "ADB streamed install -r returned Success",
+  "beforeSchema": 17,
+  "afterSchema": 17,
+  "originalRowsPreserved": true,
+  "originalUserPreferenceValuesPreserved": true,
+  "originalUserFilesPreserved": true,
+  "userDataPreserved": true,
+  "physicalEffectsTested": false,
+  "expectedRuntimeFileChanges": [
+    "files/profileInstalled"
+  ],
+  "expectedInternalPreferenceChanges": {
+    "shared_prefs/android.app.ActivityThread.IDS.xml": [
+      "IDSCount"
+    ],
+    "shared_prefs/record_access_v1.xml": [
+      "revision"
+    ],
+    "shared_prefs/alarm_access_v1.xml": [
+      "revision"
+    ]
+  }
+}
