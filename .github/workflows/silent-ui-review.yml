@@ -32,6 +32,7 @@ on:
           - room-bedtime-live
           - room-bedtime-repair
           - bedtime-navigation
+          - label-navigation
           - sensing-travel
           - travel-ui
           - sonar-night
