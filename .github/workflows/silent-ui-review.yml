@@ -27,6 +27,8 @@ on:
           - reference-menus
           - privacy-recovery
           - setup-readiness
+          - readiness-recovery
+          - sensing-reference
           - sensing-travel
           - travel-ui
           - sonar-night
