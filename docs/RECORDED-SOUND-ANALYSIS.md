@@ -24,7 +24,7 @@ try (RecordedSoundAnalyzer analyzer = new RecordedSoundAnalyzer(context)) {
 ```
 
 Input is signed PCM16 mono at exactly16kHz, at most1,920,000 samples/120seconds.
-The caller owns strict WAV/source validation, source identity/hash, stale clip
+The caller owns retained-WAV or selected-file decoding/validation, source identity/hash, stale clip
 checks, progress lifecycle and result persistence. Constructor, `analyze` and
 `close` throw `Exception`; model/runtime/integrity failures are errors, never
 successful empty estimates. A process-wide lease admits only one live engine;

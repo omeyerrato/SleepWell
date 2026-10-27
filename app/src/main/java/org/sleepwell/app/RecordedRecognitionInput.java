@@ -8,7 +8,7 @@ import java.security.MessageDigest;
 import java.util.*;
 import java.util.function.BooleanSupplier;
 
-/** Immutable private memory copy. Never normalizes, pads, resamples, plays or stores audio. */
+/** Private memory copy. Retained WAV is exact; explicit imports decode/resample with provenance. No playback or audio storage. */
 final class RecordedRecognitionInput {
     static final int MAX_BYTES=4*1024*1024, MAX_SAMPLES=1_920_000;
     final short[] pcm;final String hash,wavHash;final JSONObject source;final long durationMs;
@@ -17,8 +17,28 @@ final class RecordedRecognitionInput {
         MessageDigest digest=MessageDigest.getInstance("SHA-256");for(short sample:pcm){digest.update((byte)sample);digest.update((byte)(sample>>8));}hash=hex(digest.digest());
     }
     static byte[] copy(InputStream in,BooleanSupplier active)throws IOException {
+        return copy(in,active,MAX_BYTES);
+    }
+    static byte[] copySelected(InputStream in,BooleanSupplier active)throws IOException {
+        return copy(in,active,RecordedAudioDecoder.MAX_BYTES);
+    }
+    private static byte[] copy(InputStream in,BooleanSupplier active,int maximum)throws IOException {
         ByteArrayOutputStream out=new ByteArrayOutputStream();byte[] buffer=new byte[16384];int total=0;
-        for(int n;(n=in.read(buffer))!=-1;){check(active);if(n==0)continue;total+=n;if(total>MAX_BYTES)throw new IOException("Choose a WAV file no larger than 4 MiB.");out.write(buffer,0,n);}check(active);return out.toByteArray();
+        for(int n;(n=in.read(buffer))!=-1;){check(active);if(n==0)continue;total+=n;if(total>maximum)throw new IOException("Choose audio no larger than "+maximum/1024/1024+" MiB.");out.write(buffer,0,n);}check(active);return out.toByteArray();
+    }
+    static RecordedRecognitionInput selected(byte[] bytes,BooleanSupplier active)throws Exception {
+        RecordedAudioDecoder.Result decoded=null;RecordedPcmResampler.Result resampled=null;
+        try{
+            decoded=RecordedAudioDecoder.decode(bytes,active);resampled=RecordedPcmResampler.resample(decoded.mono,decoded.rate,active);
+            String kind=decoded.decoder.equals("PCM16 WAV")?"selected_wav":"selected_audio";
+            JSONObject source=new JSONObject().put("kind",kind).put("provenance","Explicitly selected audio; original recording context unverified")
+                    .put("inputMime",decoded.mime).put("inputRate",decoded.rate).put("inputChannels",decoded.channels).put("decodedFrames",decoded.mono.length)
+                    .put("firstPresentationUs",decoded.firstPresentationUs).put("decoder",decoded.decoder).put("firstOutputFrame",resampled.firstOutputFrame)
+                    .put("omittedStartMs",resampled.omittedStartMs).put("omittedEndMs",resampled.omittedEndMs)
+                    .put("downmix",decoded.channels==1?"none":"arithmetic-mean").put("resampling",decoded.rate==16000?"none":"blackman193-v1");
+            check(active);RecordedRecognitionInput result=new RecordedRecognitionInput(resampled.pcm,hex(MessageDigest.getInstance("SHA-256").digest(bytes)),source);
+            check(active);resampled=null;return result;
+        }finally{if(decoded!=null)Arrays.fill(decoded.mono,(short)0);if(resampled!=null)Arrays.fill(resampled.pcm,(short)0);}
     }
     private static int u16(byte[] bytes,int at){return (bytes[at]&255)|((bytes[at+1]&255)<<8);}
     private static long u32(byte[] bytes,int at){return Integer.toUnsignedLong(u16(bytes,at)|(u16(bytes,at+2)<<16));}
@@ -64,6 +84,6 @@ final class RecordedRecognitionInput {
             }finally{db.endTransaction();}
         }}
     }
-    JSONObject provenance()throws JSONException {return new JSONObject(source.toString()).put("pcmSha256",hash).put("wavSha256",wavHash).put("sampleRate",16000).put("samples",pcm.length).put("durationMs",durationMs);}
+    JSONObject provenance()throws JSONException {JSONObject value=new JSONObject(source.toString()).put("pcmSha256",hash).put("sourceSha256",wavHash).put("sampleRate",16000).put("samples",pcm.length).put("durationMs",durationMs);return value.put(source.optString("kind").equals("selected_audio")?"fileSha256":"wavSha256",wavHash);}
     void erase(){Arrays.fill(pcm,(short)0);}
 }

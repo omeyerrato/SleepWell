@@ -59,9 +59,9 @@ public final class RecordedRecognitionActivity extends Activity implements Recor
                 Design.button(body,"Analyze this copy",true,()->{positions.putInt(Page.MAIN.name(),0);scroll=null;job.analyze();});
                 RecordUi.quietButton(body,"Discard copy",job::cancel);
             }else if(job.result!=null)result(body,job.result);
-            else{Design.text(body,"Choose a recording",22,600,Design.INK);Design.space(body,6);Design.text(body,"Look for laughter and instrument sounds in a saved clip or WAV file.",14,400,Design.MUTED);Design.button(body,"Sources",true,()->go(Page.SOURCES));}
+            else{Design.text(body,"Choose a recording",22,600,Design.INK);Design.space(body,6);Design.text(body,"Look for laughter and instrument sounds in a saved clip or audio file.",14,400,Design.MUTED);Design.button(body,"Sources",true,()->go(Page.SOURCES));}
         }
-        Design.space(body,12);if(working()||job.input!=null||job.result!=null){navigation(body,"file","Sources","Saved recordings or a WAV file",()->go(Page.SOURCES));Design.line(body);}
+        Design.space(body,12);if(working()||job.input!=null||job.result!=null){navigation(body,"file","Sources","Saved recordings or an audio file",()->go(Page.SOURCES));Design.line(body);}
         navigation(body,"wave","Saved results",job.saved.isEmpty()?"No analyses saved":job.saved.size()+" saved on this phone",()->go(Page.SAVED));Design.line(body);
         navigation(body,"info","About analysis","Limits, format and model credits",()->go(Page.ABOUT));
     }
@@ -77,8 +77,8 @@ public final class RecordedRecognitionActivity extends Activity implements Recor
             if(job.moreClips)RecordUi.enabled(RecordUi.quietButton(body,"More recordings",()->job.pageClips(true)),!job.busy());
             Design.space(body,12);
         }
-        RecordUi.enabled(Design.button(body,"Choose a WAV file",job.record<=0,this::choose),!job.busy());
-        Design.space(body,8);Design.text(body,"Mono 16 kHz PCM16 · up to 120 seconds",12,400,Design.MUTED);
+        RecordUi.enabled(Design.button(body,"Choose an audio file",job.record<=0,this::choose),!job.busy());
+        Design.space(body,8);Design.text(body,"AAC, MP3, Ogg, FLAC or PCM16 WAV · up to 2 min",12,400,Design.MUTED);
         navigation(body,"info","Audio requirements","Supported files and source checks",this::sourceInfo);
         if(job.input!=null||job.result!=null)RecordUi.quietButton(body,"Back to current analysis",()->go(Page.MAIN));
     }
@@ -88,7 +88,7 @@ public final class RecordedRecognitionActivity extends Activity implements Recor
         for(RecordedRecognitionStore.Entry entry:job.saved){String date=RecordUi.date(entry.created,java.time.ZoneId.systemDefault());LinearLayout row=Design.row(this);LinearLayout link=Design.col(this);navigation(link,"wave",date,sourceName(entry.source)+" · "+RecordUi.duration(entry.source.optLong("durationMs")),()->{go(Page.MAIN);job.open(entry);});row.addView(link,new LinearLayout.LayoutParams(0,-2,1));row.addView(Design.iconButton(this,"trash","Delete saved analysis "+date,()->job.delete(entry)),new LinearLayout.LayoutParams(Design.dp(this,48),Design.dp(this,48)));RecordUi.enabled(row,!job.busy());body.addView(row);Design.line(body);}
         if(!job.saved.isEmpty())RecordUi.enabled(RecordUi.quietButton(body,"Clear saved analyses",this::clear),!job.busy());
     }
-    private static String sourceName(JSONObject source){return source.optString("kind").equals("saved_clip")?"Saved recording":"Selected WAV";}
+    private static String sourceName(JSONObject source){return source.optString("kind").equals("saved_clip")?"Saved recording":source.optString("kind").equals("selected_wav")?"Selected WAV":"Selected audio";}
     private void source(LinearLayout body,JSONObject source,long duration){LinearLayout card=Design.col(this);Design.pad(card,16,16);card.setBackground(Design.shape(this,Design.SOFT,18));Design.text(card,sourceName(source),14,500,Design.MUTED);Design.space(card,6);Design.text(card,RecordUi.duration(duration),30,700,Design.INK);String provenance=source.optString("provenance","");if(!provenance.isEmpty()){Design.space(card,5);Design.text(card,provenance,12,400,Design.MUTED);}body.addView(card);}
     private static String clock(long ms){long seconds=ms/1000;return seconds/60+":"+String.format(Locale.ROOT,"%02d",seconds%60);}
     private void result(LinearLayout body,RecordedRecognitionStore.Entry entry){
@@ -116,10 +116,10 @@ public final class RecordedRecognitionActivity extends Activity implements Recor
         navigation(body,"file","Source info","Provenance and file fingerprints",this::sourceInfo);navigation(body,"info","About analysis","Limitations and model credits",()->go(Page.ABOUT));
         Design.space(body,10);RecordUi.enabled(RecordUi.quietButton(body,"Delete this analysis",()->{go(Page.SAVED);job.delete(entry);}),!job.busy());Design.text(body,"Deletes only this summary. Original audio stays unchanged.",12,400,Design.MUTED);
     }
-    private JSONObject currentSource(){return job.input!=null?job.input.source:job.result!=null?job.result.source:null;}
+    private JSONObject currentSource(){if(job.input!=null)try{return job.input.provenance();}catch(JSONException unavailable){return job.input.source;}return job.result!=null?job.result.source:null;}
     private void sourceDetails(LinearLayout body){
         JSONObject source=currentSource();if(source!=null){source(body,source,source.optLong("durationMs"));RecordUi.heading(body,"Source provenance");try{Design.text(body,source.toString(2),12,400,Design.MUTED).setTextIsSelectable(true);}catch(JSONException invalid){Design.text(body,"Source metadata is unavailable.",14,400,Design.MUTED);}}
-        RecordUi.heading(body,"Audio requirements");Design.text(body,"One PCM16 mono 16 kHz WAV, up to 120 seconds and 4 MiB. No resampling, gain adjustment or padding is applied. Less than two seconds produces no analyzed window.",14,400,Design.MUTED);Design.space(body,12);
+        RecordUi.heading(body,"Audio requirements");Design.text(body,"One audio file, up to 120 seconds and 16 MiB. Supported phone decoders can prepare AAC/M4A, MP3, Ogg and FLAC; PCM16 WAV is also supported. Use mono or stereo audio at 8–96 kHz. Stereo channels are averaged and supported audio is converted to mono 16 kHz. Filter edges are omitted rather than padded; no peak normalization is applied. Less than two seconds after preparation produces no analyzed window.",14,400,Design.MUTED);Design.space(body,12);
         Design.text(body,"Saved recordings are checked against their current file and effective record interval. Missing audio, pending deletion, gaps, reviewed awake periods and pauses may prevent analysis. Source edits or deletion invalidate saved results.",14,400,Design.MUTED);Design.space(body,12);
         Design.text(body,"The selected audio is copied into private memory only. No audio is saved by this tool and no document access is retained. Its provider may need a connection to supply the file; analysis stays on this phone. Unfinished copies are discarded after process loss.",14,400,Design.MUTED);
     }
@@ -133,7 +133,7 @@ public final class RecordedRecognitionActivity extends Activity implements Recor
     private void notice(LinearLayout body){if(job.notice.isEmpty()){if(!working())Design.text(body,"No notice is open. Choose a model credit or license.",14,400,Design.MUTED);}else Design.text(body,job.notice,12,400,Design.MUTED).setTextIsSelectable(true);RecordUi.quietButton(body,"Close model notice",()->{go(Page.LICENSES);job.hideNotice();});}
     private void clear(){Dialog dialog=new Dialog(this);clearDialog=dialog;dialog.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);LinearLayout panel=Design.col(this);Design.pad(panel,22,22);panel.setBackground(Design.shape(this,Design.CREAM,22));Design.text(panel,"Clear saved analyses?",22,600,Design.INK);Design.space(panel,12);Design.text(panel,"Remove these experimental summaries. Original audio, sleep records and corrected labels stay unchanged.",14,400,Design.MUTED);Design.button(panel,"Clear summaries",true,()->{dialog.dismiss();job.clearSaved();});Design.button(panel,"Cancel",false,dialog::dismiss);dialog.setContentView(panel);dialog.show();dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);dialog.getWindow().setLayout(Math.min(getResources().getDisplayMetrics().widthPixels-Design.dp(this,32),Design.dp(this,420)),-2);}
     private void choose(){if(!hasWindowFocus()||!job.choosing())return;try{startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).addCategory(Intent.CATEGORY_OPENABLE).setType("audio/*"),DOCUMENT);}catch(ActivityNotFoundException|SecurityException unavailable){job.choiceCancelled("A document picker is unavailable. No audio was read.");}}
-    @Override protected void onActivityResult(int request,int result,Intent data){super.onActivityResult(request,result,data);if(request!=DOCUMENT)return;if(result!=RESULT_OK||data==null){job.choiceCancelled(null);return;}try{if(data.getClipData()!=null&&data.getClipData().getItemCount()!=1){job.choiceCancelled("Select one WAV document.");return;}go(Page.MAIN);job.selected(data.getData());}catch(RuntimeException invalid){job.choiceCancelled("This file selection could not be read.");}}
+    @Override protected void onActivityResult(int request,int result,Intent data){super.onActivityResult(request,result,data);if(request!=DOCUMENT)return;if(result!=RESULT_OK||data==null){job.choiceCancelled(null);return;}try{if(data.getClipData()!=null&&data.getClipData().getItemCount()!=1){job.choiceCancelled("Select one audio document.");return;}go(Page.MAIN);job.selected(data.getData());}catch(RuntimeException invalid){job.choiceCancelled("This file selection could not be read.");}}
     @Override protected void onStop(){if(!isChangingConfigurations()&&(job.phase==RecordedRecognitionJob.Phase.ANALYZING||job.phase==RecordedRecognitionJob.Phase.READING))job.cancel();super.onStop();}
     @Override protected void onDestroy(){if(clearDialog!=null)clearDialog.dismiss();job.detach(this);if(!isChangingConfigurations())job.close();super.onDestroy();}
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
