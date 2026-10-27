@@ -25,6 +25,7 @@ on:
           - priority-current
           - priority-repair
           - reference-menus
+          - privacy-recovery
           - sensing-travel
           - travel-ui
           - sonar-night
