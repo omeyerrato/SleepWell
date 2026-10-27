@@ -28,6 +28,27 @@ public final class ReportReferenceFlowTest {
     private void launch(Class<?> activity,long id){context.startActivity(new Intent(context,activity).putExtra("record",id).putExtra("visualReview",true).putExtra("verificationLabel","VISUAL TEST · seven isolated fixture nights").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));}
     private boolean ready(Activity activity,View decor){return !activity.isFinishing()&&!activity.isDestroyed()&&ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED).contains(activity)&&activity.getWindow().getDecorView()==decor&&activity.hasWindowFocus()&&decor.hasWindowFocus()&&decor.isAttachedToWindow()&&decor.isLaidOut()&&decor.getWidth()>0&&decor.getHeight()>0;}
     private Activity focused(Class<? extends Activity> type)throws Exception{long until=SystemClock.elapsedRealtime()+8000;Activity[] found={null};while(found[0]==null&&SystemClock.elapsedRealtime()<until){instrumentation.runOnMainSync(()->{for(Activity activity:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))if(type.isInstance(activity)&&ready(activity,activity.getWindow().getDecorView())){found[0]=activity;break;}});if(found[0]==null)SystemClock.sleep(50);}assertNotNull("Focused resumed "+type.getSimpleName(),found[0]);return found[0];}
+    private android.graphics.Rect trendActionBounds(HistoryActivity owner,View decor,View target){
+        assertTrue("Current History window must own focus",ready(owner,decor));assertTrue("Native History frame",decor.isHardwareAccelerated());
+        View week=named(decor,"Week");assertNotNull("Current Week selector",week);assertTrue("Week selection must render before options",week.isSelected());
+        assertSame("Use the current rendered Trend options",target,named(decor,"Trend options"));
+        assertTrue("Trend options must be an attached visible enabled action",target.isAttachedToWindow()&&target.isLaidOut()&&target.isShown()&&target.isEnabled()&&target.isClickable());
+        android.graphics.Rect visible=new android.graphics.Rect();assertTrue("Trend options must be visible",target.getGlobalVisibleRect(visible));
+        assertEquals("Complete Trend options width",target.getWidth(),visible.width());assertEquals("Complete Trend options height",target.getHeight(),visible.height());
+        assertTrue("Trend options retains a 48dp target",visible.width()>=Design.dp(context,48)&&visible.height()>=Design.dp(context,48));
+        int[] location=new int[2];target.getLocationOnScreen(location);return new android.graphics.Rect(location[0],location[1],location[0]+target.getWidth(),location[1]+target.getHeight());
+    }
+    private void openTrendOptionsAfterWeek()throws Exception{
+        HistoryActivity owner=(HistoryActivity)focused(HistoryActivity.class);owner.awaitReaders(5000);instrumentation.waitForIdleSync();
+        CountDownLatch frame=new CountDownLatch(1);View[] decor={null},target={null};android.graphics.Rect[] bounds={null};
+        instrumentation.runOnMainSync(()->{
+            decor[0]=owner.getWindow().getDecorView();target[0]=named(decor[0],"Trend options");assertNotNull("Native Trend options",target[0]);bounds[0]=trendActionBounds(owner,decor[0],target[0]);
+            decor[0].getViewTreeObserver().registerFrameCommitCallback(frame::countDown);decor[0].invalidate();
+        });
+        assertTrue("Current Week and options must commit their native frame",frame.await(8,TimeUnit.SECONDS));device.waitForIdle();
+        instrumentation.runOnMainSync(()->assertEquals("The same current action must retain its full bounds",bounds[0],trendActionBounds(owner,decor[0],target[0])));
+        assertTrue("Physically tap current Trend options",device.click(bounds[0].centerX(),bounds[0].centerY()));device.waitForIdle();title("Trend options");
+    }
     private void destroyed(Activity activity){long until=SystemClock.elapsedRealtime()+8000;while(!activity.isDestroyed()&&SystemClock.elapsedRealtime()<until)SystemClock.sleep(50);assertTrue("Saved editor must finish before opening a replacement",activity.isDestroyed());}
     private void diagnose(Throwable original){
         File folder=new File(context.getExternalFilesDir(null),"verification");folder.mkdirs();
@@ -121,7 +142,7 @@ public final class ReportReferenceFlowTest {
             assertTrue(object("Year").isSelected());
             capture("year");
             click("Week");
-            object("Trend options").click();
+            openTrendOptionsAfterWeek();
             click("Sleep rhythm");
             title("Sleep rhythm");
             device.pressBack();
