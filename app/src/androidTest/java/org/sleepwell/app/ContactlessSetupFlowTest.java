@@ -78,14 +78,21 @@ public final class ContactlessSetupFlowTest {
    assertEquals(1,opens.get());
    click("Test signal");
    qualified("probe after recreation");
+   step="open actual contactless options before changing probe gain";
+   click("Contactless options");
+   ActivityMonitorAction(()->activity.recreate());
+   step="restored owned options have focus and actual gain control";
+   waitFor(()->{boolean[] present={false};i.runOnMainSync(()->{int count=0;for(View root:android.view.inspector.WindowInspector.getGlobalWindowViews())if(root.hasWindowFocus()&&root.isAttachedToWindow()&&root.isLaidOut()&&root.getContext().getPackageName().equals(c.getPackageName())){if(root!=activity.getWindow().getDecorView()&&find(root,"Contactless probe gain") instanceof SeekBar)count++;}assertTrue("Only one owned gain dialog",count<=1);present[0]=count==1;});return present[0];});
    step="change probe gain to 7 percent";
    i.runOnMainSync(()->{
-    SeekBar slider=(SeekBar)find(activity.getWindow().getDecorView(),"Contactless probe gain");
+    SeekBar slider=null;for(View root:android.view.inspector.WindowInspector.getGlobalWindowViews())if(root.hasWindowFocus()&&root.getContext().getPackageName().equals(c.getPackageName())){View value=find(root,"Contactless probe gain");if(value instanceof SeekBar)slider=(SeekBar)value;}
     assertNotNull(slider);
     Bundle args=new Bundle();
     args.putFloat(android.view.accessibility.AccessibilityNodeInfo.ACTION_ARGUMENT_PROGRESS_VALUE,6);
     assertTrue(slider.performAccessibilityAction(android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction.ACTION_SET_PROGRESS.getId(),args));
    });
+   i.runOnMainSync(()->{View done=null;for(View root:android.view.inspector.WindowInspector.getGlobalWindowViews())if(root.hasWindowFocus()&&root.getContext().getPackageName().equals(c.getPackageName())){View target=find(root,"Done");if(target!=null){assertNull("One options Done",done);done=target;}}assertNotNull(done);android.graphics.Rect bounds=new android.graphics.Rect();assertTrue(done.getGlobalVisibleRect(bounds));assertEquals(done.getWidth(),bounds.width());assertEquals(done.getHeight(),bounds.height());assertTrue(bounds.width()>=Design.dp(c,48));assertTrue(bounds.height()>=Design.dp(c,48));assertTrue(done.performClick());});
+   ready();
    assertFalse(enabled("Use sonar"));
    capture("gain-changed");
    click("Test signal");
