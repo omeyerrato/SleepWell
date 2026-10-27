@@ -1,4 +1,59 @@
-# Recognition gap: evidence and next viable model
+# Recognition gap: current evidence and historical model study
+
+## Current source investigation, 27 October 2026
+
+Inspected `5fe17124`, the frozen supplementary manifests/full scores, pinned
+original model code, and Java frontend/analyzer. **No new preprocessing,
+class-index, time-accounting or aggregation bug was demonstrated.** The PANNs
+proposal/runtime prerequisites below are historical: both supplementary models
+are already bundled, numerically matched and executed in the native recorded
+flow. See [current implementation](RECORDED-SOUND-ANALYSIS.md) and
+[provenance/evidence](../third_party/supplementary-sound/README.md).
+
+All 527 Android labels match the pinned original CSV in order after the existing
+CRLF fix. Laughter 16–21, instruments 138–199/208–215 and Music 137 match the
+current family policy. PCM16/32768, polyphase 16→32 kHz resampling, the distinct
+PANNs/EfficientAT frontends and tensor layouts match the pinned originals.
+Retained classifier-export score error is <=5.37e-7; Java frontend score error
+is <=6.92e-6 on the unchanged solo-laughter/guitar vectors. These are narrow
+numeric checks, not general accuracy proof.
+
+Every held-out sample is accounted for by actual 10-second windows/tails. Solo
+laughter retains all 461,107 samples (10 s + 10 s + 8.8191875 s), guitar all
+91,924 samples (5.74525 s). Neither missed positive was lost to the <2 s rule.
+Family maximum, margin and candidate priority match the predeclared policy.
+
+| Missed source/window | Original model family score | Strongest unrelated score |
+| --- | ---: | ---: |
+| Solo laughter, first 10 s | Snicker 0.076521941 | Groan 0.092058897 |
+| Solo laughter, second 10 s | Laughter 0.033902798 | Grunt 0.185436890 |
+| Solo laughter, final 8.8191875 s | Laughter 0.048307620 | Wail/moan 0.166872203 |
+| Guitar, whole 5.74525 s | Musical instrument 0.483944803 | 0.028795986 |
+
+Solo laughter fails the unchanged PANNs 0.10/0.025 score/margin gate; guitar
+ranks the right family but falls below EfficientAT 0.65. Crowd/piano still pass,
+speech accepts neither category: **2/4 positives remain missed**. The crowd's
+actual 2 s tail has saturated incompatible EfficientAT classes in the original
+Torch output too; the margin rejects it. This records unstable short-duration
+estimates, not a demonstrated Java framing bug or a new accepted result.
+
+The concrete missing prerequisite is independently interval-annotated native
+16 kHz target-room development data, including solo/crowd/quiet laughter,
+isolated/mixed instruments and speech/snore/cough/cry/moan/media/noise negatives
+across microphones, distances and rooms. Separate development/calibration and
+new untouched evaluation by original source, speaker and device; retain source
+and PCM hashes. Uploader descriptions/current corrections are insufficient
+interval ground truth or training-disjointness proof. Any duration policy or
+model-specific calibration/fine-tuned redistributable head must use that new
+development data, preserve licence/weight/preprocessing provenance, and pass the
+new untouched set plus retained snore/speech/cry/cough behavior. Do not train or
+retune against the failed existing holdout; upsampling restores no lost audio.
+
+No classifier/frontend/model/gate/fixture changed. No new inference, download,
+training, test batch, build, CI, phone/microphone/playback/output action ran.
+Reliable automatic laughter/instrument recognition remains unfinished.
+
+## Historical model study, 26 October 2026
 
 Investigated at source `c4c7bd2071503c3888b75ad2b86221efea17f3b3` on 26 October
 2026. No production classifier, threshold, capture path, fixture or user label
