@@ -23,6 +23,7 @@ on:
           - interaction-security
           - priority-menus
           - priority-current
+          - priority-repair
           - sensing-travel
           - travel-ui
           - sonar-night
