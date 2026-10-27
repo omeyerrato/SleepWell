@@ -5,7 +5,17 @@ history. The goal remains the full applicable phone functionality and **all 36
 supplied design screens across 12 boards**. Existing code, a successful build or a
 bounded historical pass does not establish that whole goal is complete.
 
-Latest published **c6f2fcaa** includes real per-alarm smart-wake overrides, clearer Travel menus and restorable help dialogs, plus prior Report/chart/menu/recording-analysis work. assembleDebug passed in 18s; original signer, exact tag and uploaded hashes verified. Organization 26.671s/13 inspected captures; Travel plan 43.569s and cue flow 37.968s/31 inspected captures. [Scoped evidence](verification/2026-10-27-smart-wake-travel/README.md).
+Latest published **33cb5693** adds alarm-draft search, clear main menus,
+real challenge drag ordering and selected-audio preparation with the AAC export
+timing correction. The **arm64** APK builds in22s, is166,642,573bytes and retains
+the original signer; exact tag and both uploaded digests are verified.
+[Release/evidence](verification/2026-10-27-alarm-search-audio/README.md).
+
+Three existing Android journeys pass: organization33.114s/14 inspected captures,
+challenge ordering40.237s/6 and recording analysis40.27s/5. Each proves its named
+actions and persistence; they do not complete all36 designs or the nine unfinished
+items below. The phone remains **2cbfe043**. Optional smart-wake API fields are
+included; actual external callers remain unverified.
 
 ## Current user priorities
 
@@ -26,11 +36,11 @@ unverified. [Scoped evidence](verification/2026-10-26-settings-organization/READ
 | --- | --- |
 | Installed phone build | **2cbfe043**, authorized streamed update; installed checksum/original signer match. All original schema17 rows, preferences and original private files preserved. |
 | Phone availability | Connected for that authorized update only. No app launch, suspension change or output/capture/provider runtime action. |
-| Published candidate | **c6f2fcaa**, assembleDebug passed in 18s, original signer, exact tag and both uploaded hashes verified; not installed. Sleep schema17/backup13/private automation2/result database1. |
-| New feature evidence | Organization 26.671s/13 inspected captures; Travel plan 43.569s and cue flow 37.968s/31 inspected captures. Prior Report/menu/recording flows remain separate. Per-alarm sensor runtime/accuracy, physical output, all36 screens and overnight acceptance remain open. |
+| Published candidate | **33cb5693 arm64**, assembleDebug passed in22s, original signer, exact tag and both uploaded hashes verified; not installed. Sleep schema17/backup13/private automation2/result database1. |
+| New feature evidence | Organization 33.114s/14 inspected captures, challenge ordering 40.237s/6 and recording analysis 40.27s/5. Prior Report/menu/Travel evidence remains separate. Per-alarm sensor accuracy, physical output, all 36 screens and overnight acceptance remain open. |
 | Current work policy | Features first; no new unit-test batches or broad campaigns. Essential builds, preservation and bounded changed-flow checks remain applicable. Dedicated reviewer stays stopped. |
 
-[Latest published release and scoped evidence](verification/2026-10-27-smart-wake-travel/README.md).
+[Latest published release and scoped evidence](verification/2026-10-27-alarm-search-audio/README.md).
 [Prior model/radio/rhythm scope](verification/2026-10-26-radio-rhythm-recognition/README.md).
 
 [Phone update evidence](verification/2026-10-26-phone-2cbfe043/README.md) is separate
@@ -42,9 +52,8 @@ No further personal-phone actions are authorized by this status note.
 
 ## Concrete remaining implementation and interpretation limits
 
-Unreleased **a8842ada** builds in19s with the original signer and adds optional
-guarded smart-wake API fields. Published **c6f2fcaa** excludes that extension;
-external-caller/runtime acceptance remains open. [API contract](ALARM-CONTENT-PROVIDER.md).
+Published **33cb5693** includes the optional guarded smart-wake API fields from
+a8842ada; external-caller/runtime acceptance remains open. [API contract](ALARM-CONTENT-PROVIDER.md).
 
 - [ ] Resolve reliable automatic laughter recognition. The new **Laughter** task is
   an experimental YAMNet-family estimate; earlier failed independent positives and

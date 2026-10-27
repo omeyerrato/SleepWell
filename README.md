@@ -12,13 +12,24 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-[Development APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-smart-travel-20261027-c6f2fcaa) from **c6f2fcaa** adds per-alarm Smart wake-up sensitivity and recorded-duration goal overrides. The configured dawn window, simpler Travel schedules/light-cue menus and restored help dialogs keep the main controls readable. Prior compact Report/chart, sound/tracking/mixer organization and recording-analysis work remain included.
+[Development arm64 APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.0-search-audio-20261027-33cb5693) from **33cb5693** adds per-alarm
+settings search, readable main menus, actual challenge drag ordering and selected
+audio preparation. AAC export timing and post-dialog status-bar contrast are
+corrected. Previous smart-wake, Travel, Report/chart and menu work remains included.
 
-Production assembleDebug passed in 18s; original signer, exact tag and both uploaded hashes verified. APK 334,944,069 bytes includes offline models/runtime. Organization 26.671s/13 inspected captures; Travel plan 43.569s and cue flow 37.968s/31 inspected captures. These checks establish their documented actions and persistence. [Exact release/evidence scope](docs/verification/2026-10-27-smart-wake-travel/README.md).
+Production build passed in22s; original signer, exact tag and both uploaded hashes
+verified. APK166,642,573bytes retains offline models/assets. Three existing Android
+journeys pass with25 individually inspected captures and real draft/Save/reopen
+actions. [Exact evidence and limits](docs/verification/2026-10-27-alarm-search-audio/README.md).
 
-All36 reference screens, per-alarm sensor early-wake accuracy, reliable additional recognition, sleep-stage/REM/breathing/apnea, external providers and overnight/output acceptance remain open. No new unit/lint/broad campaign or personal-phone action ran. Sleep schema17/backup13/private automation2/result database1 remain.
+All36 designs, physical/overnight acceptance, other codecs/providers, reliable
+additional recognition and phone sleep-stage/REM/breathing/apnea remain open.
+No new unit/lint/broad campaign or personal-phone action ran. Sleep schema17/
+backup13/private automation2/result database1 remain unchanged.
 
-The separately authorized phone build remains **2cbfe043**, with original data preserved; this update is **not installed**. [Phone evidence](docs/verification/2026-10-26-phone-2cbfe043/README.md). [Checklist](docs/QUICK-CHECKLIST.md) · [Remaining work](docs/REMAINING-WORK.md).
+The phone remains **2cbfe043** with original data preserved; this update is not
+installed. [Phone evidence](docs/verification/2026-10-26-phone-2cbfe043/README.md).
+[Checklist](docs/QUICK-CHECKLIST.md) · [Remaining work](docs/REMAINING-WORK.md).
 
 ## Working capabilities
 

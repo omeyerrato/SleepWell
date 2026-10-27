@@ -2,9 +2,19 @@
 
 Condensed version: [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
 Checked means implemented source/build, not full phone/overnight acceptance.
-Latest published source **c6f2fcaa** assembleDebug passed in 18s; original signer, Git tag and both uploaded APK/checksum digests match. It adds per-alarm smart-wake overrides, clearer Travel menus and help-dialog restoration. The update is not installed: the phone remains **2cbfe043** with original rows/preferences/private files preserved.
+Latest published **33cb5693** adds alarm-draft search, clear main menus,
+real challenge drag ordering and selected-audio preparation with the AAC export
+timing correction. The **arm64** APK builds in22s, is166,642,573bytes and retains
+the original signer; exact tag and both uploaded digests are verified.
+[Release/evidence](verification/2026-10-27-alarm-search-audio/README.md).
 
-Organization 26.671s/13 inspected captures; Travel plan 43.569s and cue flow 37.968s/31 inspected captures. [Exact scope](verification/2026-10-27-smart-wake-travel/README.md). Prior Report/menu/recording-analysis evidence remains separate; no whole-app acceptance is inferred. No new unit/lint/broad campaign or personal-phone/output action ran. Dedicated reviewer stays stopped; all36 reference screens remain required. Additional recognition still misses2/4 held-out positives, and phone sleep stages remain missing. Sleep schema17/backup13/private automation2/result database1 are unchanged.
+Three existing Android journeys pass: organization33.114s/14 inspected captures,
+challenge ordering40.237s/6 and recording analysis40.27s/5. Each proves its named
+actions and persistence; they do not complete all36 designs or the nine unfinished
+items below. The phone remains **2cbfe043**. Optional smart-wake API fields are
+included; actual external callers remain unverified.
+
+Checked still means source/build, not full phone or overnight acceptance.
 
 ## New priorities
 

@@ -1,0 +1,21 @@
+{
+  "organization/organization-alarm-backup.png": "babdae4bb52f34f5184eaad5b710c5a0244166183c222c818941bc31e6c80083",
+  "organization/organization-alarm-editor.png": "2d0dc25f95f9e2c5994a8ebd0f2a28cfbf715e711d07b6567476b8b0d88095d2",
+  "organization/organization-alarm-options.png": "28713447cd0af0036fe97f4fece07f40553c3694a168ae187299801228bdf241",
+  "organization/organization-alarm-reopened.png": "76a00117af2c8d3aa1ece6fe01681c6d30b9706e4714b243e663723ccdbb575b",
+  "organization/organization-alarm-schedule.png": "1001e3030fb5f3117c3c28b10d862d203b2060f40262a786c978a01eaf9c5484",
+  "organization/organization-alarm-search.png": "2218dcdc827ff3aba25cb7c5b26be2a0206f77a69f2016f3d1d538c2069fd85f",
+  "organization/organization-controls-recreated.png": "0688da3444dcb151e8d1284c3403593aa8e23d71f7a339bb32d20b8e4e0a19bb",
+  "organization/organization-feedback-off.png": "9027ec06d137fa30ac0e5bf2e38ad4caeff7418ebcfd9e881df7d5957c4f2d0d",
+  "organization/organization-search-flashlight.png": "0b3fee785b602e644234bcd62a474e86c4402fd7819e5226e3b31dbd4064d7ea",
+  "organization/organization-settings-root.png": "8ace53365e94b8de3218c994427cf08a20b2d60e391db5252dfff5228fce3c58",
+  "organization/organization-settings-sleep.png": "a57784bf27ae013d9e23ccfa6730d9c6ee3d91813154afe5eda2122ad8a1a03b",
+  "organization/organization-smart-configured.png": "6ea0f62c5eef70750acbecc0c8b31197c2f633c7da6a3ef376a3bc801619cf3c",
+  "organization/organization-smart-following.png": "0d2e2bc8d413ebd940e3df316e6410fdf7d72caaf230e48931b433d1d3641bce",
+  "organization/organization-smart-reopened.png": "a167a9f416f9e2d22cbc835d717453ffedeeb33c68ea38e090cb2835ca94249a",
+  "recorded-analysis/recorded-analysis-details.png": "6807fe35fa22372eddbfa7cd9f60fcdfdd8602abf306feab72aa28d611305541",
+  "recorded-analysis/recorded-analysis-import-prepared.png": "f67076841faa339bee666f3bbc0ae7823be45705919d50d577795c0c36ec23e0",
+  "recorded-analysis/recorded-analysis-import-result.png": "c8d65fd0239e380562cecb9877f1ff9ed14caf99c4a34de14bed86c7c01f3fe6",
+  "recorded-analysis/recorded-analysis-prepared.png": "800ccbcb54101be4182f0913e24c9097ce98fa1e539d699331c59618b770e7a0",
+  "recorded-analysis/recorded-analysis-result.png": "bb227de9b129714d55e0706d52ec0d7718f6b195485a9b8f457692b366796f4a"
+}

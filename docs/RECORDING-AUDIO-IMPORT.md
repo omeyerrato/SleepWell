@@ -10,4 +10,33 @@ PCM16 RIFF/WAVE uses a strict chunk parser, bounded to128chunks with coherent fo
 
 The separate saved-estimate source JSON records `inputMime`, `inputRate`, `inputChannels`, `decoder`, actual `decodedFrames`, `firstPresentationUs`, stereo `downmix`, `resampling`, `firstOutputFrame`, `omittedStartMs` and `omittedEndMs`. `firstOutputFrame/16000` is the exact analysis-copy origin relative to decoded samples; millisecond omission fields round down. Result-window positions refer to that prepared copy. Source hashes retain actual encoded bytes (`sourceSha256` and `fileSha256` for compressed imports); PCM hashes identify actual prepared samples. Existing WAV sources retain `wavSha256`. No URI, file path or document filename is saved. Retained-WAV revalidation and original result JSON/database schema remain compatible.
 
-Source/build evidence does not establish device codec coverage, real document-provider behavior, physical capture or recognition accuracy. The bounded changed-flow Android run must exercise native AAC decoding, actual analysis/Save/reopen/delete and original data preservation before this new import path is accepted. It does not establish reliable automatic laughter/instrument detection or sleep stages.
+The bounded native AAC flow below exercises decoding, actual analysis/Save/reopen/delete and original data preservation. It does not establish other device codec coverage, real document-provider behavior, physical capture, reliable automatic laughter/instrument recognition or sleep stages.
+
+## Native AAC milestone and export correction
+
+The existing recorded-analysis journey passes at3359881e in
+[CI40444367323](https://github.com/omeyerrato/SleepWell/actions/runs/40444367323):
+40.27seconds, actual platform encoding/decoding and bundled CPU inference,
+Save/reopen/delete, original rows/preferences/audio preservation and five
+individually inspected original Android screenshots. Selection uses a narrowly
+read-granted fixture content URI; this does not verify DocumentsUI or real
+external document providers. Host audio is disabled; no personal phone or
+microphone/playback output is used.
+
+The source contains218,720 real PCM samples (13.670seconds). Native AAC produces
+216 packets; decoding yields221,184 samples (13.824seconds). The additional154ms
+is actual codec padding, retained and disclosed rather than guessed away. Both
+10second and3.824second model windows remain Uncertain. Source and prepared PCM
+hashes, packet timestamps and actual decoded metadata are retained in the
+separate saved-result proof; no recognition-accuracy improvement follows.
+
+The earlier failed runs caught a genuine38ms jump in our generated AAC tail.
+Sending EOS with the last real input buffer did not eliminate it. For the AOSP
+`c2.android.aac.encoder` only, export now verifies the output AudioSpecificConfig
+as AAC-LC, matching rate/channels and1024sample frames, rejects partial output,
+and clocks each encoded access unit from that known continuous source frame
+count. Encoded bytes and original PCM are unchanged; arbitrary vendor encoders
+retain their original timestamps. The import decoder still rejects timestamp
+gaps over2ms. This correction never joins, normalizes or repairs imported files.
+Other codecs, rates/channels, physical arm64 and provider/lifecycle coverage
+remain unverified by this one AAC fixture flow.

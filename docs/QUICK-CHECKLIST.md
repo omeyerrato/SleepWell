@@ -8,23 +8,19 @@ Full supporting evidence stays in FEATURE-CHECKLIST.md and FEATURE-MATRIX.md.
 - [x] Shared navigation/control haptics and pressed/selected feedback, with a saved off switch; physical feel remains unchecked.
 - [x] First Settings/alarm-menu organization pass: eight groups, search and parent-aware Back; every feature retained.
 
-Latest published **c6f2fcaa** adds real per-alarm smart-wake overrides, the configured dawn window, simpler Travel menus and restored help dialogs. assembleDebug passed in 18s; original signer, exact Git tag and both uploaded hashes verified. [Release/evidence](verification/2026-10-27-smart-wake-travel/README.md).
+Latest published **33cb5693** adds alarm-draft search, clear main menus,
+real challenge drag ordering and selected-audio preparation with the AAC export
+timing correction. The **arm64** APK builds in22s, is166,642,573bytes and retains
+the original signer; exact tag and both uploaded digests are verified.
+[Release/evidence](verification/2026-10-27-alarm-search-audio/README.md).
 
-Organization 26.671s/13 inspected captures; Travel plan 43.569s and cue flow 37.968s/31 inspected captures. Each proves its named actions and persistence. Sensor early-wake runtime/accuracy and physical/overnight acceptance remain open. The phone is still2cbfe043.
-
-This includes the prior compact Report/chart, organized sound/tracking/mixer menus, recording-analysis and alarm Schedule & dates hierarchy. [Prior release scope](verification/2026-10-27-report-menu-release/README.md). All36 designs and the nine unfinished items below remain open; these bounded passes do not check them off.
-
-Unreleased **a8842ada** adds optional guarded API scalars for smart-wake window, sensitivity and recorded-duration goal. Production build **PASS19s** and original signer verified; default13 columns and existing grant/revision/ownership guards remain. No external-caller verification or phone action ran. These fields are outside publishedc6f2fcaa.
+Three existing Android journeys pass: organization33.114s/14 inspected captures,
+challenge ordering40.237s/6 and recording analysis40.27s/5. Each proves its named
+actions and persistence; they do not complete all36 designs or the nine unfinished
+items below. The phone remains **2cbfe043**. Optional smart-wake API fields are
+included; actual external callers remain unverified.
 
 ## Implemented
-
-Unreleased source milestones: per-alarm settings search and first-viewport menu
-clearance pass the existing Android journey (34.969s/14 inspected captures);
-actual challenge drag ordering passes40.237s/6 inspected captures, including
-cancel, tap fallback and Save/reopen. [Challenge evidence](verification/2026-10-27-challenge-ordering/README.md).
-A post-dialog status-bar contrast issue and AAC export/import timing correction
-are still being verified. These are not yet in the publishedc6f2fcaa APK or on
-the phone; none completes the nine broad unfinished items below.
 
 - [x] Best-effort prevent-leave and recognized power-menu handling.
 - [x] Extra-loud toggle and optional audio gain.

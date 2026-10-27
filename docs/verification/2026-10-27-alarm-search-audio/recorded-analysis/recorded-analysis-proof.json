@@ -1,0 +1,1211 @@
+{
+  "fixture": "laughter-morning",
+  "pcmSha256": "ddf4f22ae871bc993329571af9660f1daba0b5a6f89ea2d11f77e3e2d222c305",
+  "wavSha256": "0d123625ed503f36852b6ad50b5dfec19bc839dd49f86825f19e8bb605db9d65",
+  "modelVersion": "recorded-experimental-v1-f9dd5647-7bb42270",
+  "samples": 218720,
+  "analyzedMs": 13670,
+  "omittedMs": 0,
+  "windows": [
+    {
+      "startMs": 0,
+      "durationMs": 10000,
+      "candidate": "uncertain",
+      "instrumentLabel": "Musical instrument",
+      "laughter": {
+        "score": 0.21625056862831116,
+        "competitor": 0.2501484155654907,
+        "qualifies": false
+      },
+      "instrument": {
+        "score": 0.0036126375198364258,
+        "competitor": 0.3519565165042877,
+        "qualifies": false
+      }
+    },
+    {
+      "startMs": 10000,
+      "durationMs": 3670,
+      "candidate": "uncertain",
+      "instrumentLabel": "Drum",
+      "laughter": {
+        "score": 0.13488498330116272,
+        "competitor": 0.21850532293319702,
+        "qualifies": false
+      },
+      "instrument": {
+        "score": 0.012211084365844727,
+        "competitor": 0.2747294306755066,
+        "qualifies": false
+      }
+    }
+  ],
+  "observedUiProgress": [
+    "Analyzing window 2 of 2…",
+    "Loading the bundled offline model…",
+    "Analyzing window 1 of 2…",
+    "Analyzing window 0 of 2…"
+  ],
+  "savedAndReopened": true,
+  "deleted": true,
+  "originalAudioUnchanged": true,
+  "accuracyAcceptanceRequired": false,
+  "importedAudio": {
+    "selection": "resolver selected content URI; no DocumentsUI assertion",
+    "encodedTiming": {
+      "fileSha256": "d56be1b5f7940c4b33d77712363cfef0485f16667895a7c868b70c3900321b54",
+      "sourcePcmSha256": "ddf4f22ae871bc993329571af9660f1daba0b5a6f89ea2d11f77e3e2d222c305",
+      "sourceFrames": 218720,
+      "mime": "audio\/mp4a-latm",
+      "rate": 16000,
+      "channels": 1,
+      "durationUs": 13824000,
+      "packets": [
+        {
+          "ptsUs": 0,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 64000,
+          "bytes": 550,
+          "flags": 1
+        },
+        {
+          "ptsUs": 128000,
+          "bytes": 545,
+          "flags": 1
+        },
+        {
+          "ptsUs": 192000,
+          "bytes": 503,
+          "flags": 1
+        },
+        {
+          "ptsUs": 256000,
+          "bytes": 500,
+          "flags": 1
+        },
+        {
+          "ptsUs": 320000,
+          "bytes": 532,
+          "flags": 1
+        },
+        {
+          "ptsUs": 384000,
+          "bytes": 502,
+          "flags": 1
+        },
+        {
+          "ptsUs": 448000,
+          "bytes": 506,
+          "flags": 1
+        },
+        {
+          "ptsUs": 512000,
+          "bytes": 516,
+          "flags": 1
+        },
+        {
+          "ptsUs": 576000,
+          "bytes": 514,
+          "flags": 1
+        },
+        {
+          "ptsUs": 640000,
+          "bytes": 516,
+          "flags": 1
+        },
+        {
+          "ptsUs": 704000,
+          "bytes": 531,
+          "flags": 1
+        },
+        {
+          "ptsUs": 768000,
+          "bytes": 463,
+          "flags": 1
+        },
+        {
+          "ptsUs": 832000,
+          "bytes": 531,
+          "flags": 1
+        },
+        {
+          "ptsUs": 896000,
+          "bytes": 521,
+          "flags": 1
+        },
+        {
+          "ptsUs": 960000,
+          "bytes": 548,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1024000,
+          "bytes": 469,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1088000,
+          "bytes": 474,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1152000,
+          "bytes": 496,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1216000,
+          "bytes": 534,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1280000,
+          "bytes": 569,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1344000,
+          "bytes": 451,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1408000,
+          "bytes": 494,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1472000,
+          "bytes": 514,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1536000,
+          "bytes": 510,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1600000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1664000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1728000,
+          "bytes": 572,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1792000,
+          "bytes": 461,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1856000,
+          "bytes": 552,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1920000,
+          "bytes": 479,
+          "flags": 1
+        },
+        {
+          "ptsUs": 1984000,
+          "bytes": 503,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2048000,
+          "bytes": 508,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2112000,
+          "bytes": 539,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2176000,
+          "bytes": 551,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2240000,
+          "bytes": 506,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2304000,
+          "bytes": 471,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2368000,
+          "bytes": 506,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2432000,
+          "bytes": 504,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2496000,
+          "bytes": 504,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2560000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2624000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2688000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2752000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2816000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2880000,
+          "bytes": 529,
+          "flags": 1
+        },
+        {
+          "ptsUs": 2944000,
+          "bytes": 503,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3008000,
+          "bytes": 507,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3072000,
+          "bytes": 509,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3136000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3200000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3264000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3328000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3392000,
+          "bytes": 549,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3456000,
+          "bytes": 486,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3520000,
+          "bytes": 501,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3584000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3648000,
+          "bytes": 517,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3712000,
+          "bytes": 573,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3776000,
+          "bytes": 463,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3840000,
+          "bytes": 553,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3904000,
+          "bytes": 457,
+          "flags": 1
+        },
+        {
+          "ptsUs": 3968000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4032000,
+          "bytes": 511,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4096000,
+          "bytes": 510,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4160000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4224000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4288000,
+          "bytes": 513,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4352000,
+          "bytes": 514,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4416000,
+          "bytes": 509,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4480000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4544000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4608000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4672000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4736000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4800000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4864000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4928000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 4992000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5056000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5120000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5184000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5248000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5312000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5376000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5440000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5504000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5568000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5632000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5696000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5760000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5824000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5888000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 5952000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6016000,
+          "bytes": 514,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6080000,
+          "bytes": 510,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6144000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6208000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6272000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6336000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6400000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6464000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6528000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6592000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6656000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6720000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6784000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6848000,
+          "bytes": 535,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6912000,
+          "bytes": 489,
+          "flags": 1
+        },
+        {
+          "ptsUs": 6976000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7040000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7104000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7168000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7232000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7296000,
+          "bytes": 518,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7360000,
+          "bytes": 510,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7424000,
+          "bytes": 508,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7488000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7552000,
+          "bytes": 544,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7616000,
+          "bytes": 486,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7680000,
+          "bytes": 506,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7744000,
+          "bytes": 584,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7808000,
+          "bytes": 462,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7872000,
+          "bytes": 491,
+          "flags": 1
+        },
+        {
+          "ptsUs": 7936000,
+          "bytes": 598,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8000000,
+          "bytes": 460,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8064000,
+          "bytes": 497,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8128000,
+          "bytes": 590,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8192000,
+          "bytes": 440,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8256000,
+          "bytes": 495,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8320000,
+          "bytes": 589,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8384000,
+          "bytes": 444,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8448000,
+          "bytes": 499,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8512000,
+          "bytes": 576,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8576000,
+          "bytes": 453,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8640000,
+          "bytes": 502,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8704000,
+          "bytes": 541,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8768000,
+          "bytes": 501,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8832000,
+          "bytes": 502,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8896000,
+          "bytes": 505,
+          "flags": 1
+        },
+        {
+          "ptsUs": 8960000,
+          "bytes": 563,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9024000,
+          "bytes": 474,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9088000,
+          "bytes": 513,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9152000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9216000,
+          "bytes": 580,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9280000,
+          "bytes": 455,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9344000,
+          "bytes": 486,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9408000,
+          "bytes": 516,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9472000,
+          "bytes": 517,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9536000,
+          "bytes": 516,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9600000,
+          "bytes": 504,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9664000,
+          "bytes": 568,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9728000,
+          "bytes": 498,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9792000,
+          "bytes": 501,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9856000,
+          "bytes": 476,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9920000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 9984000,
+          "bytes": 531,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10048000,
+          "bytes": 551,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10112000,
+          "bytes": 467,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10176000,
+          "bytes": 502,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10240000,
+          "bytes": 529,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10304000,
+          "bytes": 518,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10368000,
+          "bytes": 486,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10432000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10496000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10560000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10624000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10688000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10752000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10816000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10880000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 10944000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11008000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11072000,
+          "bytes": 551,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11136000,
+          "bytes": 479,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11200000,
+          "bytes": 506,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11264000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11328000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11392000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11456000,
+          "bytes": 536,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11520000,
+          "bytes": 502,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11584000,
+          "bytes": 513,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11648000,
+          "bytes": 502,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11712000,
+          "bytes": 518,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11776000,
+          "bytes": 501,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11840000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11904000,
+          "bytes": 567,
+          "flags": 1
+        },
+        {
+          "ptsUs": 11968000,
+          "bytes": 525,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12032000,
+          "bytes": 463,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12096000,
+          "bytes": 502,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12160000,
+          "bytes": 503,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12224000,
+          "bytes": 566,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12288000,
+          "bytes": 458,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12352000,
+          "bytes": 519,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12416000,
+          "bytes": 505,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12480000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12544000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12608000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12672000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12736000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12800000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12864000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12928000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 12992000,
+          "bytes": 571,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13056000,
+          "bytes": 481,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13120000,
+          "bytes": 552,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13184000,
+          "bytes": 460,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13248000,
+          "bytes": 496,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13312000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13376000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13440000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13504000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13568000,
+          "bytes": 512,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13632000,
+          "bytes": 513,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13696000,
+          "bytes": 511,
+          "flags": 1
+        },
+        {
+          "ptsUs": 13760000,
+          "bytes": 512,
+          "flags": 1
+        }
+      ]
+    },
+    "source": {
+      "kind": "selected_audio",
+      "provenance": "Explicitly selected audio; original recording context unverified",
+      "inputMime": "audio\/mp4a-latm",
+      "inputRate": 16000,
+      "inputChannels": 1,
+      "decodedFrames": 221184,
+      "firstPresentationUs": 0,
+      "decoder": "c2.android.aac.decoder",
+      "firstOutputFrame": 0,
+      "omittedStartMs": 0,
+      "omittedEndMs": 0,
+      "downmix": "none",
+      "resampling": "none",
+      "pcmSha256": "e914e0b5ea552ab55eba3b8561a40666865bf617323602fc4d5f97e229b1268d",
+      "sourceSha256": "d56be1b5f7940c4b33d77712363cfef0485f16667895a7c868b70c3900321b54",
+      "sampleRate": 16000,
+      "samples": 221184,
+      "durationMs": 13824,
+      "fileSha256": "d56be1b5f7940c4b33d77712363cfef0485f16667895a7c868b70c3900321b54"
+    },
+    "result": {
+      "schema": 1,
+      "modelVersion": "recorded-experimental-v1-f9dd5647-7bb42270",
+      "analyzedMs": 13824,
+      "omittedMs": 0,
+      "windows": [
+        {
+          "startMs": 0,
+          "durationMs": 10000,
+          "candidate": "uncertain",
+          "instrumentLabel": "Musical instrument",
+          "laughter": {
+            "score": 0.2033313512802124,
+            "competitor": 0.26568299531936646,
+            "qualifies": false
+          },
+          "instrument": {
+            "score": 0.002811342477798462,
+            "competitor": 0.361198365688324,
+            "qualifies": false
+          }
+        },
+        {
+          "startMs": 10000,
+          "durationMs": 3824,
+          "candidate": "uncertain",
+          "instrumentLabel": "Musical instrument",
+          "laughter": {
+            "score": 0.14955377578735352,
+            "competitor": 0.17733824253082275,
+            "qualifies": false
+          },
+          "instrument": {
+            "score": 0.004510730504989624,
+            "competitor": 0.22004637122154236,
+            "qualifies": false
+          }
+        }
+      ]
+    },
+    "savedAndReopened": true,
+    "deleted": true,
+    "originalEncodedAudioUnchanged": true
+  }
+}

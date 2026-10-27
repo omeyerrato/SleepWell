@@ -100,7 +100,8 @@ The existing organization flow at7781d342, CI40442348795, passes in34.969seconds
 with14 individually inspected Android captures. It verifies search/restoration,
 actual child controls, unchanged draft data before final Save and saved options
 after reopening. Settings search is now in the header; whole initial Home screen
-and Schedule & dates row checks pass without scrolling. An inherited Smart
-wake-up frame exposed low-contrast status icons after its About dialog; that
-separate correction remains under verification. Large fonts, physical haptics,
+and Schedule & dates row checks pass without scrolling. A later correction uses the shared modal setup for Smart wake-up dialogs and
+restores bars after dismissal. CI40445147772 passes33.114seconds/14 inspected
+frames, with actual light-status/navigation flag checks before every capture;
+About restoration and legible glyphs are verified. This is included in33cb5693. Large fonts, physical haptics,
 all menus and all36-screen fidelity remain open.
