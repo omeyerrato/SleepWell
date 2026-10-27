@@ -22,7 +22,24 @@ public final class RecordReportActivity extends Activity {
         public Runnable backAction(){return RecordReportActivity.this::finish;}
     });}
     private void openHistory(boolean trends){startActivity(RecordUi.intent(this,HistoryActivity.class).putExtra("trends",trends));}
-    void awaitReaders(long timeoutMillis)throws Exception{if(worker.isShutdown()){if(!worker.awaitTermination(timeoutMillis,TimeUnit.MILLISECONDS))throw new TimeoutException("Report reader still active");}else worker.submit(()->{}).get(timeoutMillis,TimeUnit.MILLISECONDS);}
+    void awaitReaders(long timeoutMillis)throws Exception{
+        long started=System.nanoTime(),budget=TimeUnit.MILLISECONDS.toNanos(timeoutMillis);
+        try{
+            // Android can mark the Activity destroyed before onDestroy shuts down its reader.
+            if(!isDestroyed()&&!worker.isShutdown()){
+                worker.submit(()->{}).get(Math.max(0,budget-(System.nanoTime()-started)),TimeUnit.NANOSECONDS);
+                if(!isDestroyed()&&!worker.isShutdown())return;
+            }
+        }catch(RejectedExecutionException rejected){
+            // Destruction may race the admission check; rejection alone never proves quiescence.
+            if(!worker.isShutdown())throw rejected;
+        }catch(TimeoutException timedOut){
+            // shutdownNow may remove a queued barrier. Require actual termination below.
+            if(!worker.isShutdown())throw timedOut;
+        }
+        long remaining=Math.max(0,budget-(System.nanoTime()-started));
+        if(!worker.awaitTermination(remaining,TimeUnit.NANOSECONDS))throw new TimeoutException("Report reader still active");
+    }
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
     @Override protected void onDestroy(){generation++;worker.shutdownNow();super.onDestroy();}
 }
