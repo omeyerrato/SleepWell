@@ -1,0 +1,45 @@
+{
+  "status": "Proposed exact manifest removal; root review required before merge",
+  "scope": "Static source/dependency reference review and fresh manifest merge only",
+  "component": "com.google.android.gms.nearby.exposurenotification.WakeUpService",
+  "manifest_rule": "service android:name exact component, tools:node=\"remove\"",
+  "before_components": 188,
+  "after_components": 187,
+  "removed": [
+    "service:com.google.android.gms.nearby.exposurenotification.WakeUpService"
+  ],
+  "added": [],
+  "changed_remaining_components": [],
+  "before_exported": 24,
+  "after_exported": 23,
+  "permissions_features_queries_unchanged": true,
+  "nearby_dependency_unchanged": "com.google.android.gms:play-services-nearby:19.5.1",
+  "app_api": "PairMotionRuntime constructs Nearby.getConnectionsClient(application); P2P_POINT_TO_POINT advertising/discovery, code confirmation, byte payloads; no Exposure API",
+  "app_reference_search": "app/src and app/build.gradle before removal rule: no ExposureNotification/exposurenotification/WakeUpService/EXPOSURE_CALLBACK references",
+  "selected_aar": {
+    "name": "play-services-nearby-19.5.1.aar",
+    "sha256": "AD7F451F7E98DFF862230D6CFD6B57CD408FB3421A9CD2EBC705E5ED07B03D9C",
+    "classfiles_scanned": 1505,
+    "exact_WakeUpService_class_found": false,
+    "WakeUpService_or_package_or_EXPOSURE_CALLBACK_class_constant_matches": 0,
+    "ExposureNotification_string_matches": 1,
+    "string_match_class": "com.google.android.gms.internal.nearby.zzaw",
+    "string_match_role": "Shared logger-category map, not an Exposure component reference",
+    "consumer_rules": "No Exposure service/API reference or keep rule",
+    "code_archives": "classes.jar only"
+  },
+  "pairing_preserved": [
+    "org.sleepwell.app.PairMotionActivity",
+    "org.sleepwell.app.PairMotionSavedActivity",
+    "org.sleepwell.app.PairMotionStopReceiver",
+    "org.sleepwell.app.TrackingService"
+  ],
+  "merge_command": ":app:processDebugMainManifest --offline --console=plain",
+  "merge_result": "BUILD SUCCESSFUL in 4s; 1 executed, 2 up-to-date",
+  "after_manifest_sha256": "A51585F6B95EAADDA4A53F3F720B07F8D93A50CEBDBD30D9D767D5599519A9FE",
+  "limits": [
+    "No phone, Nearby radio connection, capture, playback, alarm or emulator runtime was executed",
+    "Manifest preservation and bounded static references support unused-component removal; they do not establish all dynamic SDK or physical pairing behavior",
+    "Broader security acceptance remains open; unrelated dependency behavior is not certified"
+  ]
+}

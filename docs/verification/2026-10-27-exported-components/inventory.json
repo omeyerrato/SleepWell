@@ -319,8 +319,9 @@
     }
   ],
   "bytecode_evidence": "Existing JDK static inspection; public artifact contains concise identities/auth-predicates/limits only, not full method bodies or REA Evidence. Full transcripts retained privately in ignored .android-local; no artifact launched.",
-  "nearby_limit": "WakeUpService/exposurenotification class absent from selected play-services-nearby19.5.1 classes.jar; handler implementation unresolved",
+  "nearby_limit": "Original selected-AAR implementation absence retained as historical observation; exact unused-component removal proposal and fresh23-export comparison are in nearby-removal.json",
   "manifest_snapshot_encoding": "UTF-8 without BOM, LF normalized",
   "source_manifest_git_blob": "22937033d092f1807c87cf46365f9ac4264411fb",
-  "build_gradle_git_blob": "be570f543eff29161a71d3b4880429d36ef0a68d"
+  "build_gradle_git_blob": "be570f543eff29161a71d3b4880429d36ef0a68d",
+  "followup_proposal": "nearby-removal.json; exact Exposure Notifications WakeUpService removal, root review pending; Nearby Connections preserved"
 }
