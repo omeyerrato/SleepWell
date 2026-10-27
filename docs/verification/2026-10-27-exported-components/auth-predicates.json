@@ -1,0 +1,97 @@
+{
+  "evidence_kind": "Human-authored summary of ordinary static javap observations; no runtime or REA Evidence claim",
+  "artifact_identity": "Exact dependency versions and AAR SHA-256 values are recorded in inventory.json",
+  "publication_boundary": "Class/method identities, concise observed authorization predicates and limits only. Full implementation transcripts are retained privately in ignored .android-local and are not distributed.",
+  "handlers": [
+    {
+      "artifact": "connect-client-1.1.0.aar",
+      "class": "androidx.health.platform.client.impl.sdkservice.HealthDataSdkService",
+      "methods": ["onBind"],
+      "observations": ["Only the exact ACTION_BIND_SDK_SERVICE action returns the SDK binder"],
+      "continuation": "HealthDataSdkServiceStubImpl"
+    },
+    {
+      "artifact": "connect-client-1.1.0.aar",
+      "class": "androidx.health.platform.client.impl.sdkservice.HealthDataSdkServiceStubImpl",
+      "methods": ["setPermissionToken", "getPermissionToken", "getIsInForeground", "verifyPackageName"],
+      "observations": [
+        "Each public AIDL operation verifies the caller before scheduling worker work",
+        "The supplied package must belong to Binder.getCallingUid() according to PackageManager",
+        "The package must equal com.google.android.apps.healthdata",
+        "The permitted operations concern the SDK permission token or app foreground state"
+      ],
+      "limits": ["No signer verification asserted", "Complete Health Connect token protocol and replacement-provider scenarios were not tested"]
+    },
+    {
+      "artifact": "asset-delivery-2.3.0.aar",
+      "class": "com.google.android.play.core.assetpacks.AssetPackExtractionService",
+      "methods": ["onCreate", "onBind"],
+      "observations": ["Service is disabled in the merged manifest", "If enabled, binding returns the SDK extraction binder"],
+      "continuation": "com.google.android.play.core.assetpacks.b"
+    },
+    {
+      "artifact": "asset-delivery-2.3.0.aar",
+      "class": "com.google.android.play.core.assetpacks.b",
+      "methods": ["b(Bundle, callback)", "c(Bundle, callback)", "d(Bundle, callback)"],
+      "observations": [
+        "Clear-storage and service-state operations verify the installed Play Store and Binder caller before effects",
+        "Service-state input is handled through fixed SDK action types"
+      ],
+      "continuation": "com.google.android.play.core.assetpacks.internal.ai"
+    },
+    {
+      "artifact": "asset-delivery-2.3.0.aar",
+      "class": "com.google.android.play.core.assetpacks.internal.ai",
+      "methods": ["a(Context)", "b(Context)"],
+      "observations": [
+        "Caller UID must resolve to a package set containing com.android.vending",
+        "Installed Play Store must be enabled and match a supported signer digest",
+        "The alternative development signer is conditional on development/test build tags"
+      ],
+      "limits": ["Installed device signer state, dynamic component enabling and full extraction behavior were not tested"]
+    },
+    {
+      "artifact": "asset-delivery-2.3.0.aar",
+      "class": "com.google.android.play.core.assetpacks.SessionStateBroadcastReceiver",
+      "methods": ["onReceive"],
+      "observations": [
+        "Manifest requires INSTALL_PACKAGES",
+        "Handler requires a flags bundle, the enableWorkManager flag and a session-state bundle before SDK asset handling"
+      ],
+      "limits": ["No asset work executed; downstream extraction not exhaustively reviewed"]
+    },
+    {
+      "artifact": "work-runtime-2.9.1.aar",
+      "class": "androidx.work.impl.background.systemjob.SystemJobService",
+      "methods": ["onStartJob", "onStopJob", "workGenerationalIdFromJobParameters"],
+      "observations": [
+        "Manifest requires BIND_JOB_SERVICE",
+        "Job entry resolves WorkSpec and generation from platform JobParameters",
+        "Missing work identity and duplicate active jobs are rejected"
+      ],
+      "limits": ["Runtime scheduler and all downstream workers were not tested"]
+    },
+    {
+      "artifact": "work-runtime-2.9.1.aar",
+      "class": "androidx.work.impl.diagnostics.DiagnosticsReceiver",
+      "methods": ["onReceive"],
+      "observations": [
+        "Manifest requires DUMP",
+        "A received request schedules the SDK DiagnosticsWorker",
+        "No incoming file, URI or SQL parameter is used at this entry"
+      ],
+      "limits": ["No diagnostics executed; installed OS permission ownership not runtime-tested"]
+    },
+    {
+      "artifact": "profileinstaller-1.4.0.aar",
+      "class": "androidx.profileinstaller.ProfileInstallReceiver",
+      "methods": ["onReceive", "saveProfile"],
+      "observations": [
+        "Manifest requires DUMP",
+        "Handler selects fixed profile-install, skip-file, save-profile or benchmark operations",
+        "Entry branches act on the app's profile, skip or cache state; no arbitrary supplied file path was found"
+      ],
+      "limits": ["No profiling, signal or cache operation executed"]
+    }
+  ]
+}

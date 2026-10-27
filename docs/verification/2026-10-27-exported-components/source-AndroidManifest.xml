@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <permission android:name="org.sleepwell.app.permission.READ_MANAGED_ALARMS" android:protectionLevel="signature" android:label="@string/alarm_access_read_label" android:description="@string/alarm_access_read_description" />
+    <permission android:name="org.sleepwell.app.permission.MANAGE_ALARMS" android:protectionLevel="signature" android:label="@string/alarm_access_write_label" android:description="@string/alarm_access_write_description" />
+    <permission android:name="org.sleepwell.app.permission.READ_RECORD_SUMMARIES" android:protectionLevel="signature" android:label="@string/record_summary_read_label" android:description="@string/record_summary_read_description" />
+    <permission android:name="org.sleepwell.app.permission.WRITE_RECORD_SUMMARIES" android:protectionLevel="signature" android:label="@string/record_summary_write_label" android:description="@string/record_summary_write_description" />
+    <uses-permission android:name="android.permission.health.READ_SLEEP" />
+    <uses-permission android:name="android.permission.health.WRITE_SLEEP" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" android:usesPermissionFlags="neverForLocation" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera.any" android:required="false" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <!-- UsageStatsManager explicitly supports user-granted Usage Access via Settings.
+         This app-op declaration does not grant access; MissedNightUsage checks it per query.
+         https://developer.android.com/reference/android/app/usage/UsageStatsManager -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
+    <uses-feature android:name="android.hardware.sensor.stepdetector" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.stepcounter" android:required="false" />
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
+    <uses-feature android:name="android.hardware.nfc" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
+    <queries><intent><action android:name="android.app.action.ADD_DEVICE_ADMIN" /></intent><intent><action android:name="android.settings.SECURITY_SETTINGS" /></intent><intent><action android:name="android.speech.RecognitionService" /></intent><package android:name="com.google.android.apps.healthdata" /><intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent><intent><action android:name="android.speech.action.RECOGNIZE_SPEECH" /></intent><intent><action android:name="android.intent.action.TTS_SERVICE" /></intent></queries>
+    <application android:name=".SleepWellApplication" android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:label="SleepWell" android:theme="@style/AppTheme" android:icon="@drawable/ic_moon" android:supportsRtl="true">
+        <!-- Foreground explicit contactless calibration only; never externally launchable. -->
+        <activity android:name=".AwakeSettingsActivity" android:exported="false" />
+        <activity android:name=".AwakeReviewActivity" android:exported="false" />
+        <activity android:name=".ContactlessSetupActivity" android:exported="false" />
+        <activity android:name=".HomeLaunchActivity" android:exported="true" />
+        <activity android:name=".HomeWidgetSettingsActivity" android:exported="false" />
+        <receiver android:name=".HomeWidgetProvider" android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.DATE_CHANGED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/home_widget_info" />
+        </receiver>
+        <activity android:name=".AlarmAccessActivity" android:exported="false" />
+        <provider android:name=".AlarmContentProvider" android:authorities="org.sleepwell.app.alarms" android:exported="true" android:readPermission="org.sleepwell.app.permission.READ_MANAGED_ALARMS" android:writePermission="org.sleepwell.app.permission.MANAGE_ALARMS" android:grantUriPermissions="true">
+            <grant-uri-permission android:pathPrefix="/shared/v1/alarms" />
+        </provider>
+        <receiver android:name=".AlarmAccessReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /></intent-filter></receiver>
+        <activity android:name=".FeedbackSettingsActivity" android:exported="false" />
+        <activity android:name=".RecordAccessActivity" android:exported="false" />
+        <provider android:name=".RecordContentProvider" android:authorities="org.sleepwell.app.records" android:exported="true" android:readPermission="org.sleepwell.app.permission.READ_RECORD_SUMMARIES" android:writePermission="org.sleepwell.app.permission.WRITE_RECORD_SUMMARIES" android:grantUriPermissions="true">
+            <grant-uri-permission android:pathPrefix="/shared/v1/records" />
+        </provider>
+        <receiver android:name=".RecordAccessReceiver" android:exported="false">
+            <intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /></intent-filter>
+        </receiver>
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter>
+        </activity>
+        <activity android:name=".TonightLayoutActivity" android:exported="false" />
+        <activity android:name=".SettingsProfileActivity" android:exported="false" />
+        <activity android:name=".SleepCsvActivity" android:exported="false" />
+        <activity android:name=".SleepCsvSourceActivity" android:exported="false" />
+        <activity android:name=".IncomingAutomationSettingsActivity" android:exported="false" />
+        <activity android:name=".AudioChallengePreviewActivity" android:exported="false" />
+        <activity android:name=".NarrationVoiceActivity" android:exported="false" />
+        <activity android:name=".IncomingAutomationActivity" android:exported="true">
+            <intent-filter><action android:name="org.sleepwell.app.action.TRACKING_REQUEST" /><category android:name="android.intent.category.DEFAULT" /></intent-filter>
+        </activity>
+        <activity android:name=".AutoCalendarActivity" android:exported="false" />
+        <service android:name=".AutoCalendarService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <receiver android:name=".AutoCalendarReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /></intent-filter></receiver>
+        <activity android:name=".SmartLightActivity" android:exported="false" />
+        <activity android:name=".AutomationActivity" android:exported="false" />
+        <service android:name=".AutomationJobService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <activity android:name=".HealthSleepSourceActivity" android:exported="false" />
+        <activity android:name=".TrackingFlipActivity" android:exported="false" />
+        <activity android:name=".TrackingDelayActivity" android:exported="false" />
+        <activity android:name=".TrackingDndActivity" android:exported="true"><intent-filter><action android:name="android.app.action.AUTOMATIC_ZEN_RULE" /><category android:name="android.intent.category.DEFAULT" /></intent-filter></activity>
+        <receiver android:name=".TrackingDndReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /><action android:name="android.app.action.AUTOMATIC_ZEN_RULE_STATUS_CHANGED" /></intent-filter></receiver>
+        <activity android:name=".DiaryImportActivity" android:exported="false" />
+        <activity android:name=".DiaryActivity" android:exported="false" />
+        <activity android:name=".TypedWakePreviewActivity" android:exported="false" />
+        <activity android:name=".TagManagementActivity" android:exported="false" />
+        <activity android:name=".HealthConnectActivity" android:exported="false" />
+        <activity android:name=".HealthSleepPrivacyActivity" android:exported="true">
+            <intent-filter><action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" /></intent-filter>
+        </activity>
+        <activity-alias android:name=".HealthSleepPermissionUsage" android:targetActivity=".HealthSleepPrivacyActivity" android:exported="true" android:permission="android.permission.START_VIEW_PERMISSION_USAGE">
+            <intent-filter><action android:name="android.intent.action.VIEW_PERMISSION_USAGE" /><category android:name="android.intent.category.HEALTH_PERMISSIONS" /></intent-filter>
+        </activity-alias>
+        <activity android:name=".CloudAudioActivity" android:exported="false" />
+        <activity android:name=".CloudBackupActivity" android:exported="false" />
+        <service android:name=".AutoCloudAudioService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <receiver android:name=".AutoCloudAudioReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /></intent-filter></receiver>
+        <service android:name=".AutoCloudBackupService" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <receiver android:name=".AutoCloudBackupReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /></intent-filter></receiver>
+        <activity android:name=".SearchActivity" android:exported="false" />
+        <activity android:name=".CalendarEventExportActivity" android:exported="false" />
+        <provider android:name=".SleepSummaryFileProvider" android:authorities="${applicationId}.sleep-summary" android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/sleep_summary_paths" />
+        </provider>
+        <activity android:name=".SleepSummaryActivity" android:exported="true">
+            <intent-filter><action android:name="android.intent.action.GET_CONTENT" /><category android:name="android.intent.category.DEFAULT" /><category android:name="android.intent.category.OPENABLE" /><data android:mimeType="application/vnd.org.sleepwell.sleep-summary+json" /></intent-filter>
+        </activity>
+        <activity android:name=".AlarmRequestActivity" android:exported="true" android:permission="com.android.alarm.permission.SET_ALARM">
+            <intent-filter><action android:name="android.intent.action.SET_ALARM" /><action android:name="android.intent.action.SHOW_ALARMS" /><category android:name="android.intent.category.DEFAULT" /></intent-filter>
+        </activity>
+        <activity android:name=".BackupActivity" android:exported="false" />
+        <activity android:name=".AlarmExcludedDatesActivity" android:exported="false" />
+        <activity android:name=".AlarmRepeatActivity" android:exported="false" />
+        <activity android:name=".NextAlarmOverrideActivity" android:exported="false" />
+        <activity android:name=".AlarmEditorActivity" android:exported="false" />
+        <activity android:name=".RandomChallengeActivity" android:exported="false" />
+        <activity android:name=".RandomChallengePreviewActivity" android:exported="false" />
+        <activity android:name=".HueBridgeActivity" android:exported="false" />
+        <activity android:name=".AlarmBedtimeActivity" android:exported="false" />
+        <activity android:name=".WakeCheckActivity" android:exported="false" />
+        <activity android:name=".TimerRequestActivity" android:exported="true" android:permission="com.android.alarm.permission.SET_ALARM"><intent-filter><action android:name="android.intent.action.SET_TIMER" /><category android:name="android.intent.category.DEFAULT" /></intent-filter></activity>
+        <activity android:name=".NapProfilesDocumentsActivity" android:exported="false" />
+        <activity android:name=".NapProfilesActivity" android:exported="false" />
+        <activity android:name=".NapActivity" android:exported="false" />
+        <activity android:name=".NoteChallengeActivity" android:exported="false" />
+        <activity android:name=".CameraLightActivity" android:exported="false" />
+        <activity android:name=".ObjectRecognitionActivity" android:exported="false" />
+        <activity android:name=".PoseActivity" android:exported="false" />
+        <activity android:name=".SmileActivity" android:exported="false" />
+        <activity android:name=".PictureMatchActivity" android:exported="false" />
+        <activity android:name=".GeneratedMorningQrActivity" android:exported="false" />
+        <activity android:name=".QrCodeActivity" android:exported="false" />
+        <activity android:name=".AlarmProtectionActivity" android:exported="false" />
+        <activity android:name=".UninstallProtectionActivity" android:exported="false" />
+        <activity android:name=".AacExportActivity" android:exported="false" />
+        <activity android:name=".CalendarEventDirectActivity" android:exported="false" />
+        <receiver android:name=".SleepWellAdminReceiver" android:exported="true" android:permission="android.permission.BIND_DEVICE_ADMIN" android:label="@string/uninstall_admin_label" android:description="@string/uninstall_admin_description">
+            <meta-data android:name="android.app.device_admin" android:resource="@xml/uninstall_admin" />
+            <intent-filter><action android:name="android.app.action.DEVICE_ADMIN_ENABLED" /></intent-filter>
+        </receiver>
+        <activity android:name=".AppearanceActivity" android:exported="false" />
+        <activity android:name=".AutomaticTrackingActivity" android:exported="false" />
+        <activity android:name=".RecurringTrackingActivity" android:exported="false" />
+        <activity android:name=".TrackingActivity" android:exported="false" />
+        <activity android:name=".DreamCueActivity" android:exported="false" />
+        <activity android:name=".DreamCueHistoryActivity" android:exported="false" />
+        <receiver android:name=".PairMotionStopReceiver" android:exported="false" />
+        <activity android:name=".PairMotionActivity" android:exported="false" />
+        <activity android:name=".PairMotionSavedActivity" android:exported="false" />
+        <activity android:name=".MotionCalibrationActivity" android:exported="false" />
+        <activity android:name=".MotionSensorActivity" android:exported="false" />
+        <activity android:name=".SmartBedtimeActivity" android:exported="false" />
+        <receiver android:name=".GoogleSleepSignalReceiver" android:exported="false" />
+        <receiver android:name=".SmartBedtimeReceiver" android:exported="false" />
+        <activity android:name=".PlanActivity" android:exported="false" />
+        <activity android:name=".RhythmGroupsActivity" android:exported="false" />
+        <activity android:name=".EchoSettingsActivity" android:exported="false" />
+        <activity android:name=".EchoPeriodsActivity" android:exported="false" />
+        <activity android:name=".TripSleepActivity" android:exported="false" />
+        <receiver android:name=".TripSleepReceiver" android:exported="false" />
+        <receiver android:name=".TripSleepBootReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /><action android:name="android.intent.action.TIME_SET" /><action android:name="android.intent.action.TIMEZONE_CHANGED" /></intent-filter></receiver>
+        <activity android:name=".TravelActivity" android:exported="false" />
+        <activity android:name=".TravelCueReviewActivity" android:exported="false" />
+        <activity android:name=".HabitualTimingActivity" android:exported="false" />
+        <activity android:name=".SleepRhythmActivity" android:exported="false" />
+        <activity android:name=".SRIActivity" android:exported="false" />
+        <activity android:name=".MissedNightActivity" android:exported="false" />
+        <activity android:name=".GuardActivity" android:exported="false" />
+        <activity android:name=".BinauralSettingsActivity" android:exported="false" />
+        <activity android:name=".PirSettingsActivity" android:exported="false" />
+        <activity android:name=".PirReportActivity" android:exported="false" />
+        <activity android:name=".GuidedWindDownActivity" android:exported="false" />
+        <activity android:name=".SleepSoundsActivity" android:exported="false" />
+        <activity android:name=".ExternalMediaFadeActivity" android:exported="false" />
+        <activity android:name=".GoalBankActivity" android:exported="false" />
+        <activity android:name=".HistoryActivity" android:exported="false" />
+        <activity android:name=".RecordAchievementsActivity" android:exported="false" />
+        <activity android:name=".RecordInsightsActivity" android:exported="false" />
+        <activity android:name=".RecordedNightScoreActivity" android:exported="false" />
+        <activity android:name=".RecordReportActivity" android:exported="false" />
+        <activity android:name=".RecordEditorActivity" android:exported="false" />
+        <activity android:name=".SnoringCuesActivity" android:exported="false" />
+        <activity android:name=".SoundLabelActivity" android:exported="false" />
+        <activity android:name=".SoundEventsActivity" android:exported="false" />
+        <activity android:name=".RecordedRecognitionActivity" android:exported="false" />
+        <activity android:name=".SoundLibrarySettingsActivity" android:exported="false" />
+        <activity android:name=".SoundSensitivityActivity" android:exported="false" />
+        <activity android:name=".RelativeAlarmTimeActivity" android:exported="false" />
+        <activity android:name=".GoalAlarmTimeActivity" android:exported="false" />
+        <activity android:name=".SunriseTimeActivity" android:exported="false" />
+        <activity android:name=".AlarmDefaultsActivity" android:exported="false" />
+        <activity android:name=".ChallengePackPreviewActivity" android:exported="false" />
+        <activity android:name=".MoonSearchPreviewActivity" android:exported="false" />
+        <activity android:name=".CalendarRulesActivity" android:exported="false" />
+        <service android:name=".CalendarSyncJob" android:exported="true" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <activity android:name=".ResearchExportActivity" android:exported="false" />
+        <activity android:name=".LibraryAudioImportActivity" android:exported="false" />
+        <activity android:name=".LibraryAudioExportActivity" android:exported="false" />
+        <activity android:name=".SoundArchiveActivity" android:exported="false" />
+        <activity android:name=".FavoriteSoundsActivity" android:exported="false" />
+        <activity android:name=".SnoreSoundRouteActivity" android:exported="false" />
+        <activity android:name=".RecordSignalsActivity" android:exported="false" />
+        <activity android:name=".AlarmActivity" android:exported="false" android:showWhenLocked="true" android:turnScreenOn="true" android:launchMode="singleTask" />
+        <activity android:name=".FocusActivity" android:exported="false" android:launchMode="singleTask" />
+        <activity android:name=".PhraseChallengeActivity" android:exported="false" />
+        <activity android:name=".SpeakChallengeActivity" android:exported="false" />
+        <service android:name=".NoteCaptureService" android:exported="false" android:foregroundServiceType="microphone" />
+        <service android:name=".SpeakCaptureService" android:exported="false" android:foregroundServiceType="microphone" />
+        <service android:name=".AlarmService" android:exported="false" android:foregroundServiceType="mediaPlayback" />
+        <service android:name=".SleepSoundService" android:exported="false" android:foregroundServiceType="mediaPlayback" />
+        <service android:name=".TrackingService" android:exported="false" android:foregroundServiceType="specialUse|microphone|connectedDevice">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-selected daily movement-only tracking, user-armed bounded phone-idle detection and overnight accelerometer sleep movement tracking with an ongoing notification, optional microphone noise recording and separately user-armed experimental phone-light cues during the current manual recording" />
+        </service>
+        <service android:name=".BedtimeGuard" android:exported="true" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter><action android:name="android.accessibilityservice.AccessibilityService" /></intent-filter>
+            <meta-data android:name="android.accessibilityservice" android:resource="@xml/accessibility_service" />
+        </service>
+        <receiver android:name=".WakeCheckReceiver" android:exported="false" />
+        <receiver android:name=".NapReceiver" android:exported="false" />
+        <receiver android:name=".AlarmReceiver" android:exported="false" />
+        <receiver android:name=".TravelReminderReceiver" android:exported="false" />
+        <receiver android:name=".TravelCueStopReceiver" android:exported="false" />
+        <receiver android:name=".RecurringTrackingReceiver" android:exported="false" />
+        <receiver android:name=".RecurringTrackingBootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".TravelBootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".BootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

@@ -1,0 +1,7 @@
+Artifact: play-services-nearby-19.5.1.aar; SHA-256 recorded in inventory.json.
+AAR code entry inventory: classes.jar only; no libs/*.jar or embedded dex found.
+Requested exact class entry: com/google/android/gms/nearby/exposurenotification/WakeUpService.class
+Exact class entry found: False
+exposurenotification inventory matches: 0
+classes.jar inventory entry count: 1514
+This bounded negative inventory does not prove absence from other dependencies or dynamic modules. No runtime bind or installed permission lookup was performed.

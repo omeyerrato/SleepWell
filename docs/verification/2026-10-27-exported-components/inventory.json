@@ -1,0 +1,326 @@
+{
+  "reviewed_main": "bd2fc32c97c0e515ef0c1e9b4564956b1f57d64d",
+  "source_manifest_sha256": "0146F40D76193D9BC1F2BCD7C13CA2CA062D2A0444C01D37F98241802D21E048",
+  "build_gradle_sha256": "0664C7D2D8CE557700428DCCBA705837C3FA9C06FD9A66D25FF6A98BFFD4074D",
+  "manifest_merge": ":app:processDebugMainManifest --offline --console=plain; BUILD SUCCESSFUL; wrapper downloaded existing configured Gradle8.14.3 distribution first; no Java/APK/test/emulator tasks",
+  "app_source_exported": 17,
+  "merged_exported": 24,
+  "entries": [
+    {
+      "kind": "activity",
+      "name": "org.sleepwell.app.HomeLaunchActivity",
+      "permission": "",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": []
+    },
+    {
+      "kind": "provider",
+      "name": "org.sleepwell.app.AlarmContentProvider",
+      "permission": "",
+      "readPermission": "org.sleepwell.app.permission.READ_MANAGED_ALARMS",
+      "writePermission": "org.sleepwell.app.permission.MANAGE_ALARMS",
+      "enabled": "",
+      "authorities": "org.sleepwell.app.alarms",
+      "actions": []
+    },
+    {
+      "kind": "provider",
+      "name": "org.sleepwell.app.RecordContentProvider",
+      "permission": "",
+      "readPermission": "org.sleepwell.app.permission.READ_RECORD_SUMMARIES",
+      "writePermission": "org.sleepwell.app.permission.WRITE_RECORD_SUMMARIES",
+      "enabled": "",
+      "authorities": "org.sleepwell.app.records",
+      "actions": []
+    },
+    {
+      "kind": "activity",
+      "name": "org.sleepwell.app.MainActivity",
+      "permission": "",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "android.intent.action.MAIN"
+      ]
+    },
+    {
+      "kind": "activity",
+      "name": "org.sleepwell.app.IncomingAutomationActivity",
+      "permission": "",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "org.sleepwell.app.action.TRACKING_REQUEST"
+      ]
+    },
+    {
+      "kind": "activity",
+      "name": "org.sleepwell.app.TrackingDndActivity",
+      "permission": "",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "android.app.action.AUTOMATIC_ZEN_RULE"
+      ]
+    },
+    {
+      "kind": "activity",
+      "name": "org.sleepwell.app.HealthSleepPrivacyActivity",
+      "permission": "",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE"
+      ]
+    },
+    {
+      "kind": "activity-alias",
+      "name": "org.sleepwell.app.HealthSleepPermissionUsage",
+      "permission": "android.permission.START_VIEW_PERMISSION_USAGE",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "android.intent.action.VIEW_PERMISSION_USAGE"
+      ]
+    },
+    {
+      "kind": "activity",
+      "name": "org.sleepwell.app.SleepSummaryActivity",
+      "permission": "",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "android.intent.action.GET_CONTENT"
+      ]
+    },
+    {
+      "kind": "activity",
+      "name": "org.sleepwell.app.AlarmRequestActivity",
+      "permission": "com.android.alarm.permission.SET_ALARM",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "android.intent.action.SET_ALARM",
+        "android.intent.action.SHOW_ALARMS"
+      ]
+    },
+    {
+      "kind": "activity",
+      "name": "org.sleepwell.app.TimerRequestActivity",
+      "permission": "com.android.alarm.permission.SET_ALARM",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "android.intent.action.SET_TIMER"
+      ]
+    },
+    {
+      "kind": "receiver",
+      "name": "org.sleepwell.app.SleepWellAdminReceiver",
+      "permission": "android.permission.BIND_DEVICE_ADMIN",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "android.app.action.DEVICE_ADMIN_ENABLED"
+      ]
+    },
+    {
+      "kind": "service",
+      "name": "org.sleepwell.app.CalendarSyncJob",
+      "permission": "android.permission.BIND_JOB_SERVICE",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": []
+    },
+    {
+      "kind": "service",
+      "name": "org.sleepwell.app.BedtimeGuard",
+      "permission": "android.permission.BIND_ACCESSIBILITY_SERVICE",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "android.accessibilityservice.AccessibilityService"
+      ]
+    },
+    {
+      "kind": "receiver",
+      "name": "org.sleepwell.app.RecurringTrackingBootReceiver",
+      "permission": "",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "android.intent.action.TIME_SET",
+        "android.intent.action.TIMEZONE_CHANGED",
+        "android.intent.action.MY_PACKAGE_REPLACED",
+        "android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED"
+      ]
+    },
+    {
+      "kind": "receiver",
+      "name": "org.sleepwell.app.TravelBootReceiver",
+      "permission": "",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "android.intent.action.TIME_SET",
+        "android.intent.action.TIMEZONE_CHANGED",
+        "android.intent.action.MY_PACKAGE_REPLACED"
+      ]
+    },
+    {
+      "kind": "receiver",
+      "name": "org.sleepwell.app.BootReceiver",
+      "permission": "",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "android.intent.action.TIME_SET",
+        "android.intent.action.TIMEZONE_CHANGED",
+        "android.intent.action.MY_PACKAGE_REPLACED",
+        "android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED"
+      ]
+    },
+    {
+      "kind": "service",
+      "name": "com.google.android.gms.nearby.exposurenotification.WakeUpService",
+      "permission": "com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "",
+      "authorities": "",
+      "actions": []
+    },
+    {
+      "kind": "service",
+      "name": "androidx.health.platform.client.impl.sdkservice.HealthDataSdkService",
+      "permission": "",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "true",
+      "authorities": "",
+      "actions": [
+        "androidx.health.platform.client.ACTION_BIND_SDK_SERVICE"
+      ]
+    },
+    {
+      "kind": "service",
+      "name": "com.google.android.play.core.assetpacks.AssetPackExtractionService",
+      "permission": "",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "false",
+      "authorities": "",
+      "actions": []
+    },
+    {
+      "kind": "receiver",
+      "name": "com.google.android.play.core.assetpacks.SessionStateBroadcastReceiver",
+      "permission": "android.permission.INSTALL_PACKAGES",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "true",
+      "authorities": "",
+      "actions": [
+        "com.google.android.play.core.assetpacks.receiver.ACTION_SESSION_UPDATE"
+      ]
+    },
+    {
+      "kind": "service",
+      "name": "androidx.work.impl.background.systemjob.SystemJobService",
+      "permission": "android.permission.BIND_JOB_SERVICE",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "@bool/enable_system_job_service_default",
+      "authorities": "",
+      "actions": []
+    },
+    {
+      "kind": "receiver",
+      "name": "androidx.work.impl.diagnostics.DiagnosticsReceiver",
+      "permission": "android.permission.DUMP",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "true",
+      "authorities": "",
+      "actions": [
+        "androidx.work.diagnostics.REQUEST_DIAGNOSTICS"
+      ]
+    },
+    {
+      "kind": "receiver",
+      "name": "androidx.profileinstaller.ProfileInstallReceiver",
+      "permission": "android.permission.DUMP",
+      "readPermission": "",
+      "writePermission": "",
+      "enabled": "true",
+      "authorities": "",
+      "actions": [
+        "androidx.profileinstaller.action.INSTALL_PROFILE",
+        "androidx.profileinstaller.action.SKIP_FILE",
+        "androidx.profileinstaller.action.SAVE_PROFILE",
+        "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "connect-client-1.1.0.aar",
+      "sha256": "CE1601AF0EF671EC6A76B0F29D2AF22ACC578E408C7107D08EA23067D3822593"
+    },
+    {
+      "file": "play-services-nearby-19.5.1.aar",
+      "sha256": "AD7F451F7E98DFF862230D6CFD6B57CD408FB3421A9CD2EBC705E5ED07B03D9C"
+    },
+    {
+      "file": "asset-delivery-2.3.0.aar",
+      "sha256": "ED21FDCEBDCF62E315F4BAEE3555BC8223EE7B9D66D11A3A204C52A94734B5A5"
+    },
+    {
+      "file": "work-runtime-2.9.1.aar",
+      "sha256": "1BE76486B894AF179462941A39CAB242B00D7235C3AEB4D756F45262B0C2E4A3"
+    },
+    {
+      "file": "profileinstaller-1.4.0.aar",
+      "sha256": "D502141FCCE902430F62B674C32AECD0F75262E7EE2CD15C74ADB617CD13130A"
+    }
+  ],
+  "bytecode_evidence": "Existing JDK static inspection; public artifact contains concise identities/auth-predicates/limits only, not full method bodies or REA Evidence. Full transcripts retained privately in ignored .android-local; no artifact launched.",
+  "nearby_limit": "WakeUpService/exposurenotification class absent from selected play-services-nearby19.5.1 classes.jar; handler implementation unresolved",
+  "manifest_snapshot_encoding": "UTF-8 without BOM, LF normalized",
+  "source_manifest_git_blob": "22937033d092f1807c87cf46365f9ac4264411fb",
+  "build_gradle_git_blob": "be570f543eff29161a71d3b4880429d36ef0a68d"
+}
