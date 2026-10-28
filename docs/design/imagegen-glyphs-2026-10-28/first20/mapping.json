@@ -1,0 +1,347 @@
+{
+  "base": "d5c2e03e6d78dfebf8ccfa5b74c28ecfd8fba5c9",
+  "generation": "Built-in image_gen, one distinct call per glyph, transparent_background=true",
+  "entries": [
+    {
+      "resource": "ic_phosphor_alarm_regular",
+      "aliases": [
+        "alarm"
+      ],
+      "subject": "An alarm clock: a round clock face with two separated small bell caps above and two short feet below; two simple hands, no digits.",
+      "prompt": "prompts/ic_phosphor_alarm_regular.txt",
+      "original_png": "originals/ic_phosphor_alarm_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_alarm_regular.xml",
+      "previous_xml_sha256": "72bcebd0e7aa4ef5cb0cb970c1a4aa3f03a19ba635582384ebda69e4f343d479",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_arrow_counter_clockwise_regular",
+      "aliases": [
+        "undo",
+        "reset"
+      ],
+      "subject": "A counterclockwise undo/reset arrow: one open circular arc with a clearly left-turning arrowhead at its upper-left end. No clock face.",
+      "prompt": "prompts/ic_phosphor_arrow_counter_clockwise_regular.txt",
+      "original_png": "originals/ic_phosphor_arrow_counter_clockwise_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_arrow_counter_clockwise_regular.xml",
+      "previous_xml_sha256": "9aaad366bf76edde51c3df763c82bd4f0d6de5fa6d35fdb829da1fc8fc3c0bc1",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_arrow_left_regular",
+      "aliases": [
+        "back"
+      ],
+      "subject": "A simple left-pointing back arrow, one long horizontal shaft and two diagonal arrowhead strokes. No enclosing shape.",
+      "prompt": "prompts/ic_phosphor_arrow_left_regular.txt",
+      "original_png": "originals/ic_phosphor_arrow_left_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_arrow_left_regular.xml",
+      "previous_xml_sha256": "f972f3761d36bc9caaaa3aa263c916b7d7bfec3056fe9d1b087bc2ba8a4e1bb3",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_arrow_square_out_regular",
+      "aliases": [
+        "external"
+      ],
+      "subject": "An external-link symbol: a simple open square outline with an upper-right gap and a diagonal arrow escaping toward the upper-right.",
+      "prompt": "prompts/ic_phosphor_arrow_square_out_regular.txt",
+      "original_png": "originals/ic_phosphor_arrow_square_out_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_arrow_square_out_regular.xml",
+      "previous_xml_sha256": "549cbf8472b7dc764621cdcbc825e2f026d9aadb133f6d4d9350672b1622cdc1",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_battery_vertical_medium_regular",
+      "aliases": [
+        "battery"
+      ],
+      "subject": "A vertical medium-charge battery: upright rounded rectangular outline, centered short terminal at top, lower half solid dark-brown charge, upper half transparent.",
+      "prompt": "prompts/ic_phosphor_battery_vertical_medium_regular.txt",
+      "original_png": "originals/ic_phosphor_battery_vertical_medium_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_battery_vertical_medium_regular.xml",
+      "previous_xml_sha256": "f238605671f1c8fac9c324194ade59b386d31efea5cb5a29de66ad3708ab23e6",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_bed_regular",
+      "aliases": [
+        "bed"
+      ],
+      "subject": "A side-view bed: simple headboard at left, one pillow, a horizontal mattress and two legs. Clear open negative spaces, no person.",
+      "prompt": "prompts/ic_phosphor_bed_regular.txt",
+      "original_png": "originals/ic_phosphor_bed_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_bed_regular.xml",
+      "previous_xml_sha256": "fae556a7053576f811e23ebc10db4fda24ced6d9306fbc85cffef1f3f6245e8a",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_bell_regular",
+      "aliases": [
+        "bell"
+      ],
+      "subject": "A notification bell: simple domed bell body, small round clapper below and short top stem, no radiating lines.",
+      "prompt": "prompts/ic_phosphor_bell_regular.txt",
+      "original_png": "originals/ic_phosphor_bell_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_bell_regular.xml",
+      "previous_xml_sha256": "e14ac59d95c026c1346b479e917721a1ba205f378ec9e547c0fdac45be37d0df",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_bell_slash_regular",
+      "aliases": [
+        "skip"
+      ],
+      "subject": "A disabled/skipped bell: simple recognizable bell silhouette with a strong diagonal slash crossing it. No radiating lines.",
+      "prompt": "prompts/ic_phosphor_bell_slash_regular.txt",
+      "original_png": "originals/ic_phosphor_bell_slash_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_bell_slash_regular.xml",
+      "previous_xml_sha256": "c5fb7d823654e84185a32c8a15a85b2f0526c8f93dd06cc4e4bade8b5c6bef6e",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_broadcast_regular",
+      "aliases": [
+        "sonar"
+      ],
+      "subject": "A broadcast/sonar symbol: one small central transmitter dot, a short vertical support below, two concentric open radio-wave arcs on each side, symmetrical and clearly separated.",
+      "prompt": "prompts/ic_phosphor_broadcast_regular.txt",
+      "original_png": "originals/ic_phosphor_broadcast_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_broadcast_regular.xml",
+      "previous_xml_sha256": "a689003e6f27720b0b39cf125521452c4cddc05bb514e84f72ad3b8084510924",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_calendar_blank_regular",
+      "aliases": [
+        "calendar"
+      ],
+      "subject": "A blank calendar: rounded-square calendar outline, two simple top binding tabs, one horizontal divider near top, otherwise empty transparent interior. No dates or digits.",
+      "prompt": "prompts/ic_phosphor_calendar_blank_regular.txt",
+      "original_png": "originals/ic_phosphor_calendar_blank_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_calendar_blank_regular.xml",
+      "previous_xml_sha256": "c10ee8a977f1b0bbfb65cc3a841f2cd870b3800fb4667150f463cd295c062f45",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_camera_regular",
+      "aliases": [
+        "camera"
+      ],
+      "subject": "A camera: simple rectangular camera body with a small raised top shoulder and one large circular lens, transparent open lens center. No tiny buttons.",
+      "prompt": "prompts/ic_phosphor_camera_regular.txt",
+      "original_png": "originals/ic_phosphor_camera_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_camera_regular.xml",
+      "previous_xml_sha256": "6e12ede9e1500a4def4f2f5fe05ac94b802134466f9b06aea785ccc03044735b",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_cards_regular",
+      "aliases": [
+        "memory"
+      ],
+      "subject": "Two offset overlapping playing/memory cards, simple rounded rectangles at a slight angle, blank interiors, no suits or markings.",
+      "prompt": "prompts/ic_phosphor_cards_regular.txt",
+      "original_png": "originals/ic_phosphor_cards_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_cards_regular.xml",
+      "previous_xml_sha256": "0b1c7e6a84da15e2cacef7f2a740f75f04e3449528e56cfdc14b1a147e7cadbe",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_caret_down_regular",
+      "aliases": [
+        "down"
+      ],
+      "subject": "A downward-pointing chevron/caret made of just two symmetrical diagonal strokes with rounded ends. No shaft or enclosure.",
+      "prompt": "prompts/ic_phosphor_caret_down_regular.txt",
+      "original_png": "originals/ic_phosphor_caret_down_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_caret_down_regular.xml",
+      "previous_xml_sha256": "79cb21fcaa539d4df69d640862f7341f04dd6769e15dd86db0192d87d24aebb8",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_caret_right_regular",
+      "aliases": [
+        "chevron"
+      ],
+      "subject": "A right-pointing chevron/caret made of just two symmetrical diagonal strokes with rounded ends. No shaft or enclosure.",
+      "prompt": "prompts/ic_phosphor_caret_right_regular.txt",
+      "original_png": "originals/ic_phosphor_caret_right_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_caret_right_regular.xml",
+      "previous_xml_sha256": "e7a193618783b5aaa72df8c31bc5660d025bd3ae8a3774505520b24f4a8ba2cd",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_caret_up_regular",
+      "aliases": [
+        "up"
+      ],
+      "subject": "An upward-pointing chevron/caret made of just two symmetrical diagonal strokes with rounded ends. No shaft or enclosure.",
+      "prompt": "prompts/ic_phosphor_caret_up_regular.txt",
+      "original_png": "originals/ic_phosphor_caret_up_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_caret_up_regular.xml",
+      "previous_xml_sha256": "b3f4456c7b5bd0f303c58a0f9ad8b58cac166d4a58be15a7f04d418b0a0dfe8a",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_chart_bar_fill",
+      "aliases": [
+        "report"
+      ],
+      "subject": "A filled bar-chart glyph: exactly three simple solid vertical bars of increasing height from left to right, aligned to one subtle horizontal baseline. No axes ticks, chart labels or frame.",
+      "prompt": "prompts/ic_phosphor_chart_bar_fill.txt",
+      "original_png": "originals/ic_phosphor_chart_bar_fill.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_chart_bar_fill.xml",
+      "previous_xml_sha256": "f543b0b8b4ddb0fa390ae6d8f849cccc45a5df5cf849bbb6b1dad6428fd8a1b1",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_chats_regular",
+      "aliases": [
+        "speech"
+      ],
+      "subject": "Two overlapping speech bubbles: one forward rounded rectangular bubble with a short tail and a second offset bubble behind. Empty transparent interiors, no dots or text.",
+      "prompt": "prompts/ic_phosphor_chats_regular.txt",
+      "original_png": "originals/ic_phosphor_chats_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_chats_regular.xml",
+      "previous_xml_sha256": "befab71f354321d40ee4a4622ab4069ffb2409a3b288fb3a2886b023df4c11d2",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_check_regular",
+      "aliases": [
+        "check"
+      ],
+      "subject": "One clean checkmark/tick: a short descending stroke followed by a longer ascending stroke, rounded ends and joined corner. No circle, box or enclosure.",
+      "prompt": "prompts/ic_phosphor_check_regular.txt",
+      "original_png": "originals/ic_phosphor_check_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_check_regular.xml",
+      "previous_xml_sha256": "881f0eec599b413dc4bc767950333795e383f863566c80405159ad050a793f4d",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_circle_half_regular",
+      "aliases": [
+        "contrast"
+      ],
+      "subject": "A contrast/half-circle glyph: a perfect circular outer outline with the left half filled solid dark brown and the right half transparent; one straight vertical division. No hatching.",
+      "prompt": "prompts/ic_phosphor_circle_half_regular.txt",
+      "original_png": "originals/ic_phosphor_circle_half_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_circle_half_regular.xml",
+      "previous_xml_sha256": "4cfb6e9e646835df70941d0aaa94b87cd0ff4cd4bea30aafe4baf11f54e4a99e",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    },
+    {
+      "resource": "ic_phosphor_clock_regular",
+      "aliases": [
+        "clock"
+      ],
+      "subject": "A simple round analog clock: circular outline with two clear hands, one pointing up and one toward the upper-right. No digits, ticks, bells or feet.",
+      "prompt": "prompts/ic_phosphor_clock_regular.txt",
+      "original_png": "originals/ic_phosphor_clock_regular.png",
+      "replaced_xml": "app/src/main/res/drawable/ic_phosphor_clock_regular.xml",
+      "previous_xml_sha256": "a205a6c561c05098e46f18a74f5024448b5b9635118522f6d493c3956086cb7c",
+      "old_dimensions": {
+        "{http://schemas.android.com/apk/res/android}width": "24dp",
+        "{http://schemas.android.com/apk/res/android}height": "24dp",
+        "{http://schemas.android.com/apk/res/android}viewportWidth": "256",
+        "{http://schemas.android.com/apk/res/android}viewportHeight": "256"
+      }
+    }
+  ]
+}

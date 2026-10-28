@@ -1,0 +1,1542 @@
+[
+  {
+    "resource": "ic_phosphor_alarm_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "850a9ed8ad60bd14dbfaefbae0ef78c6a8b067984cea070ba7cb9df328e49322",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      41,
+      135,
+      1144,
+      1192
+    ],
+    "alpha128_bbox": [
+      182,
+      138,
+      1072,
+      1134
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_alarm_regular.png",
+        "pixels": 24,
+        "sha256": "50815fe8c1b53f611f590ebf0c84ecc601016c0af8ffe669ca3390081113a611",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_alarm_regular.png",
+        "pixels": 36,
+        "sha256": "980cca66abe05131f19b81f7bdef495ce926e13fff121fcb143468352a3d17be",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_alarm_regular.png",
+        "pixels": 48,
+        "sha256": "2fd9096cb4565d7c32458a09843ecaa042882b689c96bc95ab066f7d3bd29b30",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_alarm_regular.png",
+        "pixels": 72,
+        "sha256": "ea807bcf0aed85e0425909baa549253e1c09e43cc5f5f094543e3d1d651f5f45",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_alarm_regular.png",
+        "pixels": 96,
+        "sha256": "16e444e1c5d063bfa6259430cb6a2ce71b76ca43e63f449b57a20dd352642137",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_arrow_counter_clockwise_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "3e6e1b7e7bf0aae4ec2547a33af51332092e661267e783a154f8bfd2eafdaef8",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      170,
+      145,
+      1094,
+      1160
+    ],
+    "alpha128_bbox": [
+      173,
+      148,
+      1091,
+      1156
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_arrow_counter_clockwise_regular.png",
+        "pixels": 24,
+        "sha256": "0b01d931b3c2fca0024db57434a0d163fc9aa7b911ed2b40739aa5cc0f927f98",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_arrow_counter_clockwise_regular.png",
+        "pixels": 36,
+        "sha256": "31684975b933955df8d2906e1bbce9b4ce5128f85e469e93763aa9a1aae477f9",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_arrow_counter_clockwise_regular.png",
+        "pixels": 48,
+        "sha256": "055598f8d3f0bc267034177efe4aef866a71ba78fb03b129adbe6d441d644dd5",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_arrow_counter_clockwise_regular.png",
+        "pixels": 72,
+        "sha256": "2c5961fd0b28dc38a1c6e2f3c1196c150acd1868ea7638b8007b7bba81643785",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_arrow_counter_clockwise_regular.png",
+        "pixels": 96,
+        "sha256": "a152a0766d7779f3f933b47928dd90cf277ede22838cf95da570c2574215efdf",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_arrow_left_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "ad743c435ae20d2a3ab1e43b5655addab103f2359a2e26b017b14fb08f87a7c1",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      137,
+      202,
+      1125,
+      1196
+    ],
+    "alpha128_bbox": [
+      140,
+      255,
+      1122,
+      1025
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_arrow_left_regular.png",
+        "pixels": 24,
+        "sha256": "37517c4949ecaa7b93cd76bed5319ea2d1e07885ba65503bb387c1d244e11746",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_arrow_left_regular.png",
+        "pixels": 36,
+        "sha256": "5071a45a36bcb66d25db8b0d6a92ce954024ca22284381e53db8badbd75e22e9",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_arrow_left_regular.png",
+        "pixels": 48,
+        "sha256": "056676261acfb7fd7849082b8128fa5ad6d05ef08aea6c488028bb6e7923d3e1",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_arrow_left_regular.png",
+        "pixels": 72,
+        "sha256": "8d2d636216c23faf1b992490260bb46b2cc1349b1f8ab30f4d52daf1284a04d8",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_arrow_left_regular.png",
+        "pixels": 96,
+        "sha256": "4af77ea416b0ea7c3292c539badaac6f4c62138432570129f367186447750f9b",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_arrow_square_out_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "34939bd1d6f1d7abf73fb8d86a0b1910716adfc8dc9e33ced08864364b5929fa",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      153,
+      168,
+      1190,
+      1229
+    ],
+    "alpha128_bbox": [
+      156,
+      171,
+      1105,
+      1108
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_arrow_square_out_regular.png",
+        "pixels": 24,
+        "sha256": "935cfe9fcd4493dd0615c3688b9ac8d158e1d3432562aafd9b5f61a1328c393f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_arrow_square_out_regular.png",
+        "pixels": 36,
+        "sha256": "f154fd08e551ac948853708a82e0e507e26f54543c8152acd346133e2c66087e",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_arrow_square_out_regular.png",
+        "pixels": 48,
+        "sha256": "3700991b39aa2b411e63b30ea7bdfeeef5a189bdcceee02a7df9bd366172bf8a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_arrow_square_out_regular.png",
+        "pixels": 72,
+        "sha256": "be8e8a884ebbe51f9c8363c5e590d341956af58365b637dd8bfcbc2b584b3b99",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_arrow_square_out_regular.png",
+        "pixels": 96,
+        "sha256": "98bf49304f3c095b182518d2311320dc3ddc23a1ee70c1a2de3d8467b8a61c1f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_battery_vertical_medium_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "e26f2632909ed38557f04a962b08c2c083766a56ff5924d2527407624a5f4beb",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      0,
+      78,
+      975,
+      1194
+    ],
+    "alpha128_bbox": [
+      315,
+      81,
+      939,
+      1159
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_battery_vertical_medium_regular.png",
+        "pixels": 24,
+        "sha256": "0608c4c0d6de09cede7e20ef70574db79597b73f630a22edfe4c6c58d2228b7e",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_battery_vertical_medium_regular.png",
+        "pixels": 36,
+        "sha256": "a4772a3c7fdddb63e2ac41e0b3c9a9aa6aa379d9a273eb611684bed77d1a1e4c",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_battery_vertical_medium_regular.png",
+        "pixels": 48,
+        "sha256": "4db0a57e3039155b1230d3605eb0d0ad5d2581b02b861aee626b77dfee4ac368",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_battery_vertical_medium_regular.png",
+        "pixels": 72,
+        "sha256": "9c7ba75b787d1f70f280df51311c128b47c0a64d3ae052f2cadeb2e99870504a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_battery_vertical_medium_regular.png",
+        "pixels": 96,
+        "sha256": "055174029a8fe043a748694eef3662258450d7f3196a008afd8f4afe5f59a4d8",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_bed_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "208b5884814436bc9e5192723d7a0f79fa23e2b16649231f751b1a8bfc0d6e03",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      86,
+      200,
+      1226,
+      1212
+    ],
+    "alpha128_bbox": [
+      91,
+      285,
+      1165,
+      986
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_bed_regular.png",
+        "pixels": 24,
+        "sha256": "94bfde51e09814af6f9029dd122bab6dfc6aa3d4a0121b1cd761042b5562f0a2",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_bed_regular.png",
+        "pixels": 36,
+        "sha256": "4096292755d3a2f52c1023ae6af8aeda01b70410833e99adc8dde1e09bc7f4a3",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_bed_regular.png",
+        "pixels": 48,
+        "sha256": "0c9ac04ed91155bbe6789067a7d629c15be3d94ff1a5568df13e3f8dc5f792a3",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_bed_regular.png",
+        "pixels": 72,
+        "sha256": "4d5b21270643bb9364355a465f6e24e486a6558b38e0d0aa3fc42319178a774f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_bed_regular.png",
+        "pixels": 96,
+        "sha256": "b0ef12c42c540a49b3c4551e2d1aea89c43c2e042586fced216fafd9bc5c5d27",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_bell_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "865426a29f99961cd13ac305da3d61c3ab0c46dbd35c4a8cd00ca581495fe13b",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      109,
+      80,
+      1214,
+      1179
+    ],
+    "alpha128_bbox": [
+      112,
+      83,
+      1142,
+      1176
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_bell_regular.png",
+        "pixels": 24,
+        "sha256": "ab035755429ef6a63b139e8dd8f30a5de1594a2a798f2f855e2b6099e813f43c",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_bell_regular.png",
+        "pixels": 36,
+        "sha256": "3db2e97c2b43c0782b111fbe99dc7ece2ec94004ff6b70eddc2c5da11a25d2c5",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_bell_regular.png",
+        "pixels": 48,
+        "sha256": "df421d1cc216beb9d35e2b29e04f50474456cd480b5a169336c769375544de2a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_bell_regular.png",
+        "pixels": 72,
+        "sha256": "e9a1d21496c44d861c164263b1637eab27c724804ffa8e088aab4dae7f1ee8f1",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_bell_regular.png",
+        "pixels": 96,
+        "sha256": "0cbd605bb626f701d9044ca1b02dcf7da782b83a7b9c604289f07777661613e4",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_bell_slash_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "999a6ac3470e2b6aafe1ce358c74b5ba5bb7c67124b5d8f7224a13a001620c12",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      57,
+      41,
+      1232,
+      1254
+    ],
+    "alpha128_bbox": [
+      122,
+      79,
+      1132,
+      1175
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_bell_slash_regular.png",
+        "pixels": 24,
+        "sha256": "d701ab60e570fd2cc1e4c54dcd3f4d80278dc999e052f4bbe1246d9491462f9b",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_bell_slash_regular.png",
+        "pixels": 36,
+        "sha256": "5cf200f4c1d75bf43b217abc937b227eb1c38c952c8dcfff1c5b2cda0721c713",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_bell_slash_regular.png",
+        "pixels": 48,
+        "sha256": "ee7f42c465ade11bf799e449e75b8e429e077c77b6e435667a94ebf9d3186d31",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_bell_slash_regular.png",
+        "pixels": 72,
+        "sha256": "da71715711fe0c37dd80890772a56169c11f2da594418bd04a8bb034bb365a00",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_bell_slash_regular.png",
+        "pixels": 96,
+        "sha256": "995f1a9cf8121d4bc5fc4b2f2184743e28e945cdb25a1f5c87e77234d85933a0",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_broadcast_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "c8063da26dd94706fce3100856016e72a40d5a6620485f59b7f9316f80518483",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      31,
+      63,
+      1220,
+      1214
+    ],
+    "alpha128_bbox": [
+      74,
+      131,
+      1180,
+      1133
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_broadcast_regular.png",
+        "pixels": 24,
+        "sha256": "6131d516d2748a2461dd8ed0d021eda4cb98d28938545fc0afe0ab5a25634180",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_broadcast_regular.png",
+        "pixels": 36,
+        "sha256": "1e1792fdb6a1cbe2ae041b8c686538ee47c09cbb50a01f462fb0a1273f38f2fc",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_broadcast_regular.png",
+        "pixels": 48,
+        "sha256": "d4b7f17908122c70c4ee3505fb2d0a0fe7ee5456dd18f6af263050d140f9ffd0",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_broadcast_regular.png",
+        "pixels": 72,
+        "sha256": "7365e8e3c4531c468ca8aeab7f3a4c2d60fb8f94928be868727621a6e2edb1f9",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_broadcast_regular.png",
+        "pixels": 96,
+        "sha256": "afd09c0316a620e8819131b3b3a38ac039794c8320f95f6b8284f6b2bf30f838",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_calendar_blank_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "e3eb76c1cb2b415bc23550c683048aab1ca2f97d8e82381c49231d308ad4bcd7",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      61,
+      103,
+      1139,
+      1244
+    ],
+    "alpha128_bbox": [
+      120,
+      118,
+      1134,
+      1147
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_calendar_blank_regular.png",
+        "pixels": 24,
+        "sha256": "2306b30f5fc797a33a964eefbfae44b1a833a4bf81bd3915d7d94a2fdbaf999d",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_calendar_blank_regular.png",
+        "pixels": 36,
+        "sha256": "f85ae306225634fc2c8f86bd159a59b6170ac041c8fc50266755fff815bb4e53",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_calendar_blank_regular.png",
+        "pixels": 48,
+        "sha256": "c145c16b9af2bdfc3a84f6f413fc6d1adf7ca491b76fffcdf0d437fdff4fa7d1",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_calendar_blank_regular.png",
+        "pixels": 72,
+        "sha256": "a4def168be8fecfeced7973dbe4cd57aa7742a146ba13e1426d76b6613a03c1b",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_calendar_blank_regular.png",
+        "pixels": 96,
+        "sha256": "5b2ac142323178bdbf9f49e5096f25bf8c57d52b547ea663a0fb72b1feeae415",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_camera_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "aa9b310ed01072115daff9d5a094ebb0356e6939edf28085a8b7378e7a155c5a",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      39,
+      193,
+      1183,
+      1075
+    ],
+    "alpha128_bbox": [
+      77,
+      196,
+      1178,
+      1067
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_camera_regular.png",
+        "pixels": 24,
+        "sha256": "df6d7c0eaaeb7860b38a5e2b9ac0aecf1ae69c8dffe1ab143f9b01d91b352aee",
+        "alpha_extrema": [
+          0,
+          254
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_camera_regular.png",
+        "pixels": 36,
+        "sha256": "4fb23865fb66924720fa22f0c30c399ce915e8b91e866985c50fcce28362b900",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_camera_regular.png",
+        "pixels": 48,
+        "sha256": "1024d00eec73b0514b90b9a032ca45fe3abaded005f6fb0bb8cec904012cecc6",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_camera_regular.png",
+        "pixels": 72,
+        "sha256": "35fc815ccacdbddf1967bcc03cd9fbbf0b8fdd330f10ff0074bfa74d4c753c39",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_camera_regular.png",
+        "pixels": 96,
+        "sha256": "6fd3fc1829c9d5fc2d4cc1a17c797c0fc8b93739d62d6a0a555d323626bcc481",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_cards_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "02b616c9c3bbb979c1327d9fd43a6b25daeb1c0b104225fd37ce6da5eb257f19",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      0,
+      121,
+      1226,
+      1254
+    ],
+    "alpha128_bbox": [
+      123,
+      124,
+      1143,
+      1147
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_cards_regular.png",
+        "pixels": 24,
+        "sha256": "12c6be648c38c63d80f850535d0625e0b4e679e5e274cd55197d8226413a5d59",
+        "alpha_extrema": [
+          0,
+          250
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_cards_regular.png",
+        "pixels": 36,
+        "sha256": "eb88c3644f1fdd749eeff915015920da65e5ce85fdec6f49daf990b1b0af329c",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_cards_regular.png",
+        "pixels": 48,
+        "sha256": "f22f22a4b284acc14e6d73187d16a187f37d66496d8595c0989f90f0e660990a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_cards_regular.png",
+        "pixels": 72,
+        "sha256": "d65990bbd5045a209adbc963055c5f68eb77486fe6cc7bf6a7c120728af2e310",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_cards_regular.png",
+        "pixels": 96,
+        "sha256": "50254775afba775059e0736ff4f1393ca6751681f2b8072d2d30aaab33feef7a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_caret_down_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "b916292a46e45f76c8ce04329eb7639c9a9b1c5607def0362ef0979d959ca17b",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      116,
+      341,
+      1222,
+      952
+    ],
+    "alpha128_bbox": [
+      120,
+      434,
+      1136,
+      949
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_caret_down_regular.png",
+        "pixels": 24,
+        "sha256": "d98717f757a827a6a6350737312882e2142b866f2a40e00083cbf5a003ccf024",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_caret_down_regular.png",
+        "pixels": 36,
+        "sha256": "ea29ff543a85ec86c786849ec9262085f8d37492b6da762f0768e6eff431d1c4",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_caret_down_regular.png",
+        "pixels": 48,
+        "sha256": "4ffcf226a89dff81b6058bf86bfdf05cadc301abdd606a75fd58491ffd41580f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_caret_down_regular.png",
+        "pixels": 72,
+        "sha256": "8c38db992a337a1717b9da4ed01b5826bf228475364740a3f1cf81584626b7fd",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_caret_down_regular.png",
+        "pixels": 96,
+        "sha256": "3664d12ee1d1843216fcc46fa3305ba0619aa48787419acecc1126d1cd972efa",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_caret_right_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "471b51860d4e93154f17e235d56cd6233b25753d51f0262545a4b74926389d70",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      194,
+      136,
+      1208,
+      1165
+    ],
+    "alpha128_bbox": [
+      361,
+      152,
+      902,
+      1101
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_caret_right_regular.png",
+        "pixels": 24,
+        "sha256": "4f6ef0bb4412209d5698ce6d0dec97b7e325065e6bcd5b07c77d34ffb0c4e6f0",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_caret_right_regular.png",
+        "pixels": 36,
+        "sha256": "eefd3af362e0ddab17e36bacc6b6c35185af0d2a2af51ddbdac0ad15fbd781ed",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_caret_right_regular.png",
+        "pixels": 48,
+        "sha256": "38ec17b227828bdce1aece6397e05ffb6ef4cda9f57cac2398d6b36883521607",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_caret_right_regular.png",
+        "pixels": 72,
+        "sha256": "de137795a773dedc4fbb34257b935a685cbf0c3ad52eb435d87d2617ee262323",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_caret_right_regular.png",
+        "pixels": 96,
+        "sha256": "868fbcc8ba7024f3f741bff77591a60b55aa26c61916a4acb2bd6b14c73b681b",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_caret_up_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "0da68b67968c4d03ab9fa5380cef55931a8501c8fa5c53afe9182f81d57d5c21",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      153,
+      383,
+      1101,
+      908
+    ],
+    "alpha128_bbox": [
+      156,
+      386,
+      1098,
+      903
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_caret_up_regular.png",
+        "pixels": 24,
+        "sha256": "cc940298f398e728dc07913e419afe41426706d8dbd1a0f1e821e7fd808f7901",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_caret_up_regular.png",
+        "pixels": 36,
+        "sha256": "bd14678b67a45472adf96bb18a8bbf159cd87f8931f83fc3a9ccb4bf60c79370",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_caret_up_regular.png",
+        "pixels": 48,
+        "sha256": "8f90c853057731cfd219c64b1625fc2a79e03952ba42dec88a03467c0bc16f61",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_caret_up_regular.png",
+        "pixels": 72,
+        "sha256": "fc35a23d13308a7c2294663a5a7e411abe0904f70814c30ad411ccd5fed49ed4",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_caret_up_regular.png",
+        "pixels": 96,
+        "sha256": "83661316c86f8f3bddeb82e544608c0564217147e6f9d3286dafb4a10ac72607",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_chart_bar_fill",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "23cd30fbaaea4c9556e4b89695568294b3b913ff5c3cc9453f5b3651fffeebd8",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      85,
+      23,
+      1184,
+      1165
+    ],
+    "alpha128_bbox": [
+      90,
+      242,
+      1166,
+      1036
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_chart_bar_fill.png",
+        "pixels": 24,
+        "sha256": "4170a5ff10e50c969b8e2877b8a6fcf9dabbe57f8c9d81bcac3bebbf036e83bf",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_chart_bar_fill.png",
+        "pixels": 36,
+        "sha256": "9c4a4ca41ac2630f00b21ce46cc6e3d924d0e81618b3418993b28d6fdd04db72",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_chart_bar_fill.png",
+        "pixels": 48,
+        "sha256": "e37b903706aed436d823c4c11a7425f18c2d8ebf97e1c1790d0bd3bf01147f3f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_chart_bar_fill.png",
+        "pixels": 72,
+        "sha256": "44cef14954c6e403d30c28ec0f73d9393ca01a0f5d526bab61dfe3097082d30f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_chart_bar_fill.png",
+        "pixels": 96,
+        "sha256": "c1b031771ee77045d923e11ff532b9e887ee7f39d641f378389b5939b5397932",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_chats_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "8f882547bf9f2391b95040e1362a32293daee6af37fd7fe962eb88917a48d2c5",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      75,
+      165,
+      1179,
+      1254
+    ],
+    "alpha128_bbox": [
+      78,
+      231,
+      1176,
+      1083
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_chats_regular.png",
+        "pixels": 24,
+        "sha256": "f664130cfc6e63d598b82026b84e9285139ecd4f34d8ea427a9b87fa45b29383",
+        "alpha_extrema": [
+          0,
+          248
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_chats_regular.png",
+        "pixels": 36,
+        "sha256": "f400968e69654d1688f1bf9618892d6d9c366d5fd16266bba089f09c7469daa7",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_chats_regular.png",
+        "pixels": 48,
+        "sha256": "9395a02050d506b7d22ce11dd99ac45fab7e381f223bba201c3a56ab7705c5ea",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_chats_regular.png",
+        "pixels": 72,
+        "sha256": "a6e81bb2fe56df48ce07645bc988579c8a6f0c99c485e941d5943421a289b975",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_chats_regular.png",
+        "pixels": 96,
+        "sha256": "9764c24112d51db00716da6b1537ed0900474ca04a983e02be1aa5c83f390b05",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_check_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "3c0777771e751630a0861b755323b74ccc512b942e728b9b6fab6c9179600f52",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      49,
+      51,
+      1233,
+      1174
+    ],
+    "alpha128_bbox": [
+      92,
+      278,
+      1163,
+      1052
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_check_regular.png",
+        "pixels": 24,
+        "sha256": "731b6d2cf1afee01293370dda11258b5ddc88f070e2856408b85d7f3e3b71986",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_check_regular.png",
+        "pixels": 36,
+        "sha256": "e4a1beef3341ca9d00035af49ea85bf4487b77633be5392eb233f0cda8c29a62",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_check_regular.png",
+        "pixels": 48,
+        "sha256": "3f252675389609258ec408e318cb5f4c09654c952af5b3452052ee062bdee411",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_check_regular.png",
+        "pixels": 72,
+        "sha256": "04becb2ce30fb36f3d212d7660408016ad9de0fad39da4cc2edb819df3de2fef",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_check_regular.png",
+        "pixels": 96,
+        "sha256": "5d661c1043963a85c8ea829d9dfb5d81293c5ddc550c043f54b13cbd83bc8191",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_circle_half_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "2f36f7bf68650fc55e9b3352d1be4a3b17f2028e14d4aae55e847116901764c2",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      135,
+      91,
+      1204,
+      1221
+    ],
+    "alpha128_bbox": [
+      138,
+      137,
+      1116,
+      1117
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_circle_half_regular.png",
+        "pixels": 24,
+        "sha256": "012864fe2928a919c120f5058e2f8f1b8fb15db6cbb60973f14fc404baca5001",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_circle_half_regular.png",
+        "pixels": 36,
+        "sha256": "ae1d23b138e3d797920232e670b908c76c04ff96a029208fa6cb3805bdab784f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_circle_half_regular.png",
+        "pixels": 48,
+        "sha256": "dae7335bde9b2440d48a55d85a80b4eadd979d4c3f239dd6f48f858e2d4aba38",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_circle_half_regular.png",
+        "pixels": 72,
+        "sha256": "b0673cd7f177e4e46f7ca43500d6eafb414352ae8186210ae1e838e865a28f9d",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_circle_half_regular.png",
+        "pixels": 96,
+        "sha256": "6e265a6e68beb1cb733003de644abfc7cc7b24b6a9e46b869a7fe36cf5ebbb6a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "resource": "ic_phosphor_clock_regular",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "original_sha256": "609211330983511831071d1d38245ad51512876f94831007e4ce843115534964",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "alpha_bbox": [
+      53,
+      41,
+      1232,
+      1244
+    ],
+    "alpha128_bbox": [
+      104,
+      118,
+      1149,
+      1163
+    ],
+    "density_files": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_clock_regular.png",
+        "pixels": 24,
+        "sha256": "0c1b24d510199558289151f184714fc12b9164d5895c73dc59b7a6cbbb44ce89",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_clock_regular.png",
+        "pixels": 36,
+        "sha256": "ec943b14e4d0d547e3cf9d46f9504fc8e1c5d46f5a7cd6cd99fc5e50cdb338d0",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_clock_regular.png",
+        "pixels": 48,
+        "sha256": "0819c80efdbd0799b11628ff44221a13ce1a127fc50c276311f8110c466bcb69",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_clock_regular.png",
+        "pixels": 72,
+        "sha256": "973f032bae4ae734d3243c0465d5633c481f64ac0cb912a63db5749f2fdc5fcb",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_clock_regular.png",
+        "pixels": 96,
+        "sha256": "ab2f7da0362b8ba7166d310627d9a629e2abd5a94f3e817c71d9337cb91e97bf",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  }
+]

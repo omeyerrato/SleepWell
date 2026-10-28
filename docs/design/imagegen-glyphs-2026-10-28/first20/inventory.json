@@ -1,0 +1,10 @@
+{
+  "base": "d5c2e03e6d78dfebf8ccfa5b74c28ecfd8fba5c9",
+  "base_phosphor_xml": 73,
+  "base_vendor_svg": 73,
+  "base_app_svg": 0,
+  "replaced_resources": 20,
+  "density_pngs": 100,
+  "original_pngs": 20,
+  "compile": "PASS :app:processDebugResources, 50s,13 actionable/8 executed/5 cache; no APK or tests"
+}

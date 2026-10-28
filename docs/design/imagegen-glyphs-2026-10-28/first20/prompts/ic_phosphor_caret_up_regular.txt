@@ -1,0 +1,6 @@
+Use case: logo-brand.
+Asset type: one functional Android UI glyph, raster PNG with genuine transparent alpha, designed to remain very readable at 24dp.
+Subject: An upward-pointing chevron/caret made of just two symmetrical diagonal strokes with rounded ends. No shaft or enclosure.
+Style: crisp, simple, cohesive medium-weight monochrome icon; smooth precise silhouette, uniform stroke equivalent to 7 percent of symbol width, softly rounded stroke caps and joins. Solid dark-brown #4A2414 linework/fills only; no shading, gradients or texture.
+Composition: one centered icon on a square 1024x1024 transparent canvas. The symbol occupies about 76 percent of the canvas; even breathing space; all edges safely inside the canvas. Strong negative spaces, no tiny details. Preserve the stated direction and functional meaning.
+Strict constraints: ONLY the icon; no decorative surrounding tile/container, background, white fill/canvas, checkerboard pixels, shadow, glow, extra outer frame, ornament, letters, digits, words or watermark. Do not create an icon sheet or variants. Areas between strokes and all background must be truly transparent, not painted white. Intended for later Android tinting; preserve clean antialiased alpha edges.
