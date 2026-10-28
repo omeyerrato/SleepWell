@@ -1,0 +1,50 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.ReportReferenceFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.ReportReferenceFlowTest:
+INSTRUMENTATION_STATUS: test=referenceHistoryTrendsEditAndNightReportPersistWithoutEffects
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.ReportReferenceFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: One native pointer event dispatched
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.ReportReferenceFlowTest.periodInput(ReportReferenceFlowTest.java:130)
+	at org.sleepwell.app.ReportReferenceFlowTest.periodDrag(ReportReferenceFlowTest.java:135)
+	at org.sleepwell.app.ReportReferenceFlowTest.periodInteractionProof(ReportReferenceFlowTest.java:153)
+	at org.sleepwell.app.ReportReferenceFlowTest.referenceHistoryTrendsEditAndNightReportPersistWithoutEffects(ReportReferenceFlowTest.java:240)
+
+INSTRUMENTATION_STATUS: stream=
+Error in referenceHistoryTrendsEditAndNightReportPersistWithoutEffects(org.sleepwell.app.ReportReferenceFlowTest):
+java.lang.AssertionError: One native pointer event dispatched
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.ReportReferenceFlowTest.periodInput(ReportReferenceFlowTest.java:130)
+	at org.sleepwell.app.ReportReferenceFlowTest.periodDrag(ReportReferenceFlowTest.java:135)
+	at org.sleepwell.app.ReportReferenceFlowTest.periodInteractionProof(ReportReferenceFlowTest.java:153)
+	at org.sleepwell.app.ReportReferenceFlowTest.referenceHistoryTrendsEditAndNightReportPersistWithoutEffects(ReportReferenceFlowTest.java:240)
+
+INSTRUMENTATION_STATUS: test=referenceHistoryTrendsEditAndNightReportPersistWithoutEffects
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 52.566
+There was 1 failure:
+1) referenceHistoryTrendsEditAndNightReportPersistWithoutEffects(org.sleepwell.app.ReportReferenceFlowTest)
+java.lang.AssertionError: One native pointer event dispatched
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.ReportReferenceFlowTest.periodInput(ReportReferenceFlowTest.java:130)
+	at org.sleepwell.app.ReportReferenceFlowTest.periodDrag(ReportReferenceFlowTest.java:135)
+	at org.sleepwell.app.ReportReferenceFlowTest.periodInteractionProof(ReportReferenceFlowTest.java:153)
+	at org.sleepwell.app.ReportReferenceFlowTest.referenceHistoryTrendsEditAndNightReportPersistWithoutEffects(ReportReferenceFlowTest.java:240)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

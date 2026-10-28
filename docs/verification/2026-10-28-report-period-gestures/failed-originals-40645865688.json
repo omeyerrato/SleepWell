@@ -1,0 +1,154 @@
+{
+  "run": 40645865688,
+  "source": "4361dd853b6860198e616d1db7d489c9390a8154",
+  "result": "FAILED",
+  "native_seconds": 46.98,
+  "raw_files": [
+    {
+      "original": "acceleration.txt",
+      "archive": "failed-40645865688/acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "original": "avds.txt",
+      "archive": "failed-40645865688/avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    {
+      "original": "emulator.log",
+      "archive": "failed-40645865688/emulator.log",
+      "bytes": 7335,
+      "sha256": "3e8c3c389148c84ebe14f32b60e46384e36b62d0fb381cc475d5da3ec6bfbc45"
+    },
+    {
+      "original": "environment.json",
+      "archive": "failed-40645865688/environment.json",
+      "bytes": 659,
+      "sha256": "54113f73467a2f5ddc704bc8ae1389c4a3fc4c068cc61f4876a33c1dc5e8ea4e"
+    },
+    {
+      "original": "focused-review-summary.json",
+      "archive": "failed-40645865688/focused-review-summary.json",
+      "bytes": 803,
+      "sha256": "e53dde2b0f6fd9081ae8427fc2103e9bfdb865489c29a71ed61d6f76aa168d25"
+    },
+    {
+      "original": "guest-last-anr.txt",
+      "archive": "failed-40645865688/guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+    },
+    {
+      "original": "guest-logcat.txt",
+      "archive": "failed-40645865688/guest-logcat.txt",
+      "bytes": 505123,
+      "sha256": "dc8cf490c921c7a9b3e3f72bd54eea2b9b6531b8f39f7946b0ad087bb951ef5f"
+    },
+    {
+      "original": "guest-windows.txt",
+      "archive": "failed-40645865688/guest-windows.txt",
+      "bytes": 40240,
+      "sha256": "772f89d75a1ac530449e47cdb5ac675cf4592b549ac9fb9f5f3dd2448778e226"
+    },
+    {
+      "original": "report-reference-chart-gap.png",
+      "archive": "failed-40645865688/report-reference-chart-gap.png",
+      "bytes": 140402,
+      "sha256": "e98e3aa3c9007d406ee2f516738f0d5839fe651b2f767d7466a60402a521b253"
+    },
+    {
+      "original": "report-reference-editor.png",
+      "archive": "failed-40645865688/report-reference-editor.png",
+      "bytes": 130774,
+      "sha256": "b532daaea73516b4f5da9202da3de6d224c934ffdad78c5c87b0d98e4eac9ced"
+    },
+    {
+      "original": "report-reference-failure.png",
+      "archive": "failed-40645865688/report-reference-failure.png",
+      "bytes": 133421,
+      "sha256": "a366e84b28dbcb8ea87b4472f6a140c6dcfe68202d49d38579c61be38ff3999d"
+    },
+    {
+      "original": "report-reference-failure.xml",
+      "archive": "failed-40645865688/report-reference-failure.xml",
+      "bytes": 36568,
+      "sha256": "59ef083aa32c3734fbafb6a8e344d4787a677923a6997625aa61701807924911"
+    },
+    {
+      "original": "report-reference-history.png",
+      "archive": "failed-40645865688/report-reference-history.png",
+      "bytes": 221524,
+      "sha256": "62c746baba76e3ce74d25c874d5b04fb6ee55d46a81f09ad6fb60b5dc1b92b49"
+    },
+    {
+      "original": "report-reference-month.png",
+      "archive": "failed-40645865688/report-reference-month.png",
+      "bytes": 163553,
+      "sha256": "04d4b12d102c72eaf93e37e5d71b49190ab2c389b5a4abae2124507c4e680efa"
+    },
+    {
+      "original": "report-reference-night.png",
+      "archive": "failed-40645865688/report-reference-night.png",
+      "bytes": 164247,
+      "sha256": "22b6c22e3e74217aafb3e5e443d07e2dc1a7d0f715c621a9ac3fb33351fdb898"
+    },
+    {
+      "original": "report-reference-original-error.txt",
+      "archive": "failed-40645865688/report-reference-original-error.txt",
+      "bytes": 1989,
+      "sha256": "b973e64a800f6dfc368ee02cf1e514e6d56ad80213b3f7cab4de8cd25dc9efad"
+    },
+    {
+      "original": "report-reference-week-calendar.png",
+      "archive": "failed-40645865688/report-reference-week-calendar.png",
+      "bytes": 132788,
+      "sha256": "4c8727f0721f1ea5dc9c982da744b6ed9a7676b5526afadc209fd895a1f9b9c5"
+    },
+    {
+      "original": "report-reference-week-selected.png",
+      "archive": "failed-40645865688/report-reference-week-selected.png",
+      "bytes": 200400,
+      "sha256": "45af89dbd3b3c6c755a669d96a6b0f55d667119830785299cd0d73e6c1d9d202"
+    },
+    {
+      "original": "report-reference-week.png",
+      "archive": "failed-40645865688/report-reference-week.png",
+      "bytes": 197863,
+      "sha256": "6a079ce8b9a74ff718f4cc66f3aa0420b8f30b66ffd38ce9a8db266888c223f8"
+    },
+    {
+      "original": "report-reference-year.png",
+      "archive": "failed-40645865688/report-reference-year.png",
+      "bytes": 163288,
+      "sha256": "0ce3a4dcf0d2bd05aea408f19abd9c8a1e093a69cef3bf0b9052bec74b5ba18e"
+    },
+    {
+      "original": "ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "archive": "failed-40645865688/ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "bytes": 4558,
+      "sha256": "115a6b590a1aaa3d67a4e5bc12466b33693d68bf0c161ed955a6d0875047654c"
+    },
+    {
+      "original": "startup-focus.txt",
+      "archive": "failed-40645865688/startup-focus.txt",
+      "bytes": 246,
+      "sha256": "bbeca3fd0dc44bfd095ac6c73364dc78537ae994bf596244657ea943fa46d23c"
+    }
+  ],
+  "individually_viewed_pngs": [
+    "report-reference-chart-gap.png",
+    "report-reference-editor.png",
+    "report-reference-failure.png",
+    "report-reference-history.png",
+    "report-reference-month.png",
+    "report-reference-night.png",
+    "report-reference-week-calendar.png",
+    "report-reference-week-selected.png",
+    "report-reference-week.png",
+    "report-reference-year.png"
+  ],
+  "diagnosis": "Helper immediately asserted current editor focus after the actual Awake ends dialog Use time. Guest log shows dismissal tap09:51:05.208 and focus return09:51:05.439; diagnostic later has current focused editor and unchanged baseline. No production defect evidenced.",
+  "correction": "ef2ded6b7073b94188dcdd56245d3e557c88262e awaits SAME current resumed/focused/attached actual timeline before geometry/actions, retaining strict checks and no action replay; adds phase diagnostics."
+}

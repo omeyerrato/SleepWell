@@ -1,0 +1,509 @@
+{
+  "claim": "Every original downloaded artifact copied without any byte normalization, editing or generated replacement",
+  "files": [
+    {
+      "run": 40644483192,
+      "original": "acceleration.txt",
+      "archive": "failed-40644483192/acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "run": 40644483192,
+      "original": "avds.txt",
+      "archive": "failed-40644483192/avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    {
+      "run": 40644483192,
+      "original": "emulator.log",
+      "archive": "failed-40644483192/emulator.log",
+      "bytes": 7484,
+      "sha256": "228d47f7f2ebfda3d7db2ec0d55ddf85a0b555500363f0f06f89f7facfac20f1"
+    },
+    {
+      "run": 40644483192,
+      "original": "environment.json",
+      "archive": "failed-40644483192/environment.json",
+      "bytes": 659,
+      "sha256": "61ef78d3c89e68a68336e145ea28af847b9d265b75e3e30526ae804dd617fd64"
+    },
+    {
+      "run": 40644483192,
+      "original": "focused-review-summary.json",
+      "archive": "failed-40644483192/focused-review-summary.json",
+      "bytes": 758,
+      "sha256": "ecd3422865696adcaa2a41a9e81c8850087e545f01f3af6a5267550b4a410527"
+    },
+    {
+      "run": 40644483192,
+      "original": "guest-last-anr.txt",
+      "archive": "failed-40644483192/guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+    },
+    {
+      "run": 40644483192,
+      "original": "guest-logcat.txt",
+      "archive": "failed-40644483192/guest-logcat.txt",
+      "bytes": 472144,
+      "sha256": "005e3d8d962590ad724aa95a27e24acd1fe2bd3d61f42bc6be3cd92780866179"
+    },
+    {
+      "run": 40644483192,
+      "original": "guest-windows.txt",
+      "archive": "failed-40644483192/guest-windows.txt",
+      "bytes": 40237,
+      "sha256": "64aeedc7ddeab05cd3c7f35cae11666167f0f4681a6881693aa41b9efc41b708"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-chart-gap.png",
+      "archive": "failed-40644483192/report-reference-chart-gap.png",
+      "bytes": 169253,
+      "sha256": "7883aa51f6d8a8da0a202811f297b98f5956a4edfa825ee023fd99196470e208"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-editor.png",
+      "archive": "failed-40644483192/report-reference-editor.png",
+      "bytes": 131645,
+      "sha256": "7139fde3b7854268aabd460602a1c472c76fbb62dd6d158e7e80ecd49532f8a3"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-failure.png",
+      "archive": "failed-40644483192/report-reference-failure.png",
+      "bytes": 134137,
+      "sha256": "8dd621f2f13f623bf51ca49696c6a11257b6ddc4ffcb5abd7312828110e819a5"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-failure.xml",
+      "archive": "failed-40644483192/report-reference-failure.xml",
+      "bytes": 36563,
+      "sha256": "b00a60cbe67499d5826990ff11341f874ce99f513b7869e381d9387b064a9d1c"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-history.png",
+      "archive": "failed-40644483192/report-reference-history.png",
+      "bytes": 221376,
+      "sha256": "72d4fe2bb83e4a806c06bdf0514901aeaf4bdb19dccb80c545083b25698d7730"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-month.png",
+      "archive": "failed-40644483192/report-reference-month.png",
+      "bytes": 163407,
+      "sha256": "9c75dc1791bc1eac007c94fd4dea0fbdc70a92260bf3fd6ba0351214335c9c5f"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-night.png",
+      "archive": "failed-40644483192/report-reference-night.png",
+      "bytes": 199861,
+      "sha256": "a993d9de6bcdd9270c75942d81240fae76fe761542e64216998d45f01aaa812c"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-original-error.txt",
+      "archive": "failed-40644483192/report-reference-original-error.txt",
+      "bytes": 3874,
+      "sha256": "86ee346b2bd493cd322c769475bff6eac97fa511bb397a4627529023d111ec87"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-period-cancelled.png",
+      "archive": "failed-40644483192/report-reference-period-cancelled.png",
+      "bytes": 134137,
+      "sha256": "8dd621f2f13f623bf51ca49696c6a11257b6ddc4ffcb5abd7312828110e819a5"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-week-calendar.png",
+      "archive": "failed-40644483192/report-reference-week-calendar.png",
+      "bytes": 132675,
+      "sha256": "3d334b9eab80bee2e96273d34315c924f7d5a328edc14367df753cf4eda944c9"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-week-selected.png",
+      "archive": "failed-40644483192/report-reference-week-selected.png",
+      "bytes": 200237,
+      "sha256": "baa861f8ce6dfe7f7f35bc60045e6d7a5e767b51e3b1c2f561c4210af4f667ee"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-week.png",
+      "archive": "failed-40644483192/report-reference-week.png",
+      "bytes": 197702,
+      "sha256": "b4596296c7402fc2dcaa2ee1163977595a34ce2894c8fe7d173674e337a7302b"
+    },
+    {
+      "run": 40644483192,
+      "original": "report-reference-year.png",
+      "archive": "failed-40644483192/report-reference-year.png",
+      "bytes": 163132,
+      "sha256": "c393edbb9fb7a272c848daf23b7bec2e45550791f91e97efb6b0414c3bc868eb"
+    },
+    {
+      "run": 40644483192,
+      "original": "ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "archive": "failed-40644483192/ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "bytes": 2855,
+      "sha256": "3c914a88474c279fc84930acaf298c50a818a18b1b5049bb48f9a9cb30abe8a5"
+    },
+    {
+      "run": 40644483192,
+      "original": "startup-focus.txt",
+      "archive": "failed-40644483192/startup-focus.txt",
+      "bytes": 246,
+      "sha256": "9000c32d5947c0ec429dfa23294a7a148b98cac0c2414e4631b22c45ecfcb3c4"
+    },
+    {
+      "run": 40645865688,
+      "original": "acceleration.txt",
+      "archive": "failed-40645865688/acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "run": 40645865688,
+      "original": "avds.txt",
+      "archive": "failed-40645865688/avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    {
+      "run": 40645865688,
+      "original": "emulator.log",
+      "archive": "failed-40645865688/emulator.log",
+      "bytes": 7335,
+      "sha256": "3e8c3c389148c84ebe14f32b60e46384e36b62d0fb381cc475d5da3ec6bfbc45"
+    },
+    {
+      "run": 40645865688,
+      "original": "environment.json",
+      "archive": "failed-40645865688/environment.json",
+      "bytes": 659,
+      "sha256": "54113f73467a2f5ddc704bc8ae1389c4a3fc4c068cc61f4876a33c1dc5e8ea4e"
+    },
+    {
+      "run": 40645865688,
+      "original": "focused-review-summary.json",
+      "archive": "failed-40645865688/focused-review-summary.json",
+      "bytes": 803,
+      "sha256": "e53dde2b0f6fd9081ae8427fc2103e9bfdb865489c29a71ed61d6f76aa168d25"
+    },
+    {
+      "run": 40645865688,
+      "original": "guest-last-anr.txt",
+      "archive": "failed-40645865688/guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+    },
+    {
+      "run": 40645865688,
+      "original": "guest-logcat.txt",
+      "archive": "failed-40645865688/guest-logcat.txt",
+      "bytes": 505123,
+      "sha256": "dc8cf490c921c7a9b3e3f72bd54eea2b9b6531b8f39f7946b0ad087bb951ef5f"
+    },
+    {
+      "run": 40645865688,
+      "original": "guest-windows.txt",
+      "archive": "failed-40645865688/guest-windows.txt",
+      "bytes": 40240,
+      "sha256": "772f89d75a1ac530449e47cdb5ac675cf4592b549ac9fb9f5f3dd2448778e226"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-chart-gap.png",
+      "archive": "failed-40645865688/report-reference-chart-gap.png",
+      "bytes": 140402,
+      "sha256": "e98e3aa3c9007d406ee2f516738f0d5839fe651b2f767d7466a60402a521b253"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-editor.png",
+      "archive": "failed-40645865688/report-reference-editor.png",
+      "bytes": 130774,
+      "sha256": "b532daaea73516b4f5da9202da3de6d224c934ffdad78c5c87b0d98e4eac9ced"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-failure.png",
+      "archive": "failed-40645865688/report-reference-failure.png",
+      "bytes": 133421,
+      "sha256": "a366e84b28dbcb8ea87b4472f6a140c6dcfe68202d49d38579c61be38ff3999d"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-failure.xml",
+      "archive": "failed-40645865688/report-reference-failure.xml",
+      "bytes": 36568,
+      "sha256": "59ef083aa32c3734fbafb6a8e344d4787a677923a6997625aa61701807924911"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-history.png",
+      "archive": "failed-40645865688/report-reference-history.png",
+      "bytes": 221524,
+      "sha256": "62c746baba76e3ce74d25c874d5b04fb6ee55d46a81f09ad6fb60b5dc1b92b49"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-month.png",
+      "archive": "failed-40645865688/report-reference-month.png",
+      "bytes": 163553,
+      "sha256": "04d4b12d102c72eaf93e37e5d71b49190ab2c389b5a4abae2124507c4e680efa"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-night.png",
+      "archive": "failed-40645865688/report-reference-night.png",
+      "bytes": 164247,
+      "sha256": "22b6c22e3e74217aafb3e5e443d07e2dc1a7d0f715c621a9ac3fb33351fdb898"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-original-error.txt",
+      "archive": "failed-40645865688/report-reference-original-error.txt",
+      "bytes": 1989,
+      "sha256": "b973e64a800f6dfc368ee02cf1e514e6d56ad80213b3f7cab4de8cd25dc9efad"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-week-calendar.png",
+      "archive": "failed-40645865688/report-reference-week-calendar.png",
+      "bytes": 132788,
+      "sha256": "4c8727f0721f1ea5dc9c982da744b6ed9a7676b5526afadc209fd895a1f9b9c5"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-week-selected.png",
+      "archive": "failed-40645865688/report-reference-week-selected.png",
+      "bytes": 200400,
+      "sha256": "45af89dbd3b3c6c755a669d96a6b0f55d667119830785299cd0d73e6c1d9d202"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-week.png",
+      "archive": "failed-40645865688/report-reference-week.png",
+      "bytes": 197863,
+      "sha256": "6a079ce8b9a74ff718f4cc66f3aa0420b8f30b66ffd38ce9a8db266888c223f8"
+    },
+    {
+      "run": 40645865688,
+      "original": "report-reference-year.png",
+      "archive": "failed-40645865688/report-reference-year.png",
+      "bytes": 163288,
+      "sha256": "0ce3a4dcf0d2bd05aea408f19abd9c8a1e093a69cef3bf0b9052bec74b5ba18e"
+    },
+    {
+      "run": 40645865688,
+      "original": "ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "archive": "failed-40645865688/ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "bytes": 4558,
+      "sha256": "115a6b590a1aaa3d67a4e5bc12466b33693d68bf0c161ed955a6d0875047654c"
+    },
+    {
+      "run": 40645865688,
+      "original": "startup-focus.txt",
+      "archive": "failed-40645865688/startup-focus.txt",
+      "bytes": 246,
+      "sha256": "bbeca3fd0dc44bfd095ac6c73364dc78537ae994bf596244657ea943fa46d23c"
+    },
+    {
+      "run": 40647443477,
+      "original": "acceleration.txt",
+      "archive": "passing/acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "run": 40647443477,
+      "original": "avds.txt",
+      "archive": "passing/avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    {
+      "run": 40647443477,
+      "original": "emulator.log",
+      "archive": "passing/emulator.log",
+      "bytes": 7484,
+      "sha256": "6073d3414e26abcc362c2d982a94356b90adb3cf02b2f9749fccf318ba546b21"
+    },
+    {
+      "run": 40647443477,
+      "original": "environment.json",
+      "archive": "passing/environment.json",
+      "bytes": 659,
+      "sha256": "968cf7fa12f0a847d81c5eb50c0bab122db196947dcfae5dcfff2ab025c0711c"
+    },
+    {
+      "run": 40647443477,
+      "original": "focused-review-summary.json",
+      "archive": "passing/focused-review-summary.json",
+      "bytes": 351,
+      "sha256": "446a5a4eb479083a81ada9d0b17e59842c58f5fd104e1f3a626fc2c27390b239"
+    },
+    {
+      "run": 40647443477,
+      "original": "guest-last-anr.txt",
+      "archive": "passing/guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+    },
+    {
+      "run": 40647443477,
+      "original": "guest-logcat.txt",
+      "archive": "passing/guest-logcat.txt",
+      "bytes": 483124,
+      "sha256": "04bb662ea06a125d1ce97ad4ba73206b988349614275517c5ec02a5ca238189c"
+    },
+    {
+      "run": 40647443477,
+      "original": "guest-windows.txt",
+      "archive": "passing/guest-windows.txt",
+      "bytes": 40331,
+      "sha256": "21c64703ee5df1806c5157bd13bd43823ac13c908f2a7a9ea4a1551438d3b07e"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-chart-gap.png",
+      "archive": "passing/report-reference-chart-gap.png",
+      "bytes": 168894,
+      "sha256": "302d10ac30113ca17fa66de9d9302703e09f588298fb37181f142c9002c5d68a"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-editor.png",
+      "archive": "passing/report-reference-editor.png",
+      "bytes": 130784,
+      "sha256": "6725d4c49aa504ee6d62d5c0d1d17923a7c070e15f045bd85594bbaee96eecc1"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-history.png",
+      "archive": "passing/report-reference-history.png",
+      "bytes": 221024,
+      "sha256": "0a52f210853ef59a40b421773a1cd958e206690925611804a01d3758071ff116"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-month.png",
+      "archive": "passing/report-reference-month.png",
+      "bytes": 163120,
+      "sha256": "172d46201a5421d449601462f4e039717e133fa90119e473bf0fdd838b674a35"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-night.png",
+      "archive": "passing/report-reference-night.png",
+      "bytes": 199647,
+      "sha256": "d4044a104a20d151c311ca40e1777a3b9d45794446bff391c939f4b1bf543667"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-period-accessibility.png",
+      "archive": "passing/report-reference-period-accessibility.png",
+      "bytes": 130048,
+      "sha256": "562c858b392604d1ea828289704f51b72b09aae4822569c0a7e558ddefedef42"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-period-cancelled.png",
+      "archive": "passing/report-reference-period-cancelled.png",
+      "bytes": 133052,
+      "sha256": "e119fc210fa2b012ce7760248a2704ffd35394d53d340ffe555077acff36db91"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-period-draft-recreated.png",
+      "archive": "passing/report-reference-period-draft-recreated.png",
+      "bytes": 128370,
+      "sha256": "dd148715e3b9479222bbcda042bcf5b09214f30c651ddc1e9fdc6c519dd7bae1"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-period-drag-end.png",
+      "archive": "passing/report-reference-period-drag-end.png",
+      "bytes": 128370,
+      "sha256": "dd148715e3b9479222bbcda042bcf5b09214f30c651ddc1e9fdc6c519dd7bae1"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-period-drag-start.png",
+      "archive": "passing/report-reference-period-drag-start.png",
+      "bytes": 129300,
+      "sha256": "db1497daf0374c91f3ab8137e3e05ea672223119f2bfe6c0e18f7f0b34bda1e5"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-period-persisted.png",
+      "archive": "passing/report-reference-period-persisted.png",
+      "bytes": 135002,
+      "sha256": "636f02efea7415d2374916dd8ecaa41c224bb1dbbf4c3a14d3b5e306c23c1122"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-reopened.png",
+      "archive": "passing/report-reference-reopened.png",
+      "bytes": 135002,
+      "sha256": "636f02efea7415d2374916dd8ecaa41c224bb1dbbf4c3a14d3b5e306c23c1122"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-tags-notes.png",
+      "archive": "passing/report-reference-tags-notes.png",
+      "bytes": 132574,
+      "sha256": "2ae19f4d558414f738a28576bd01bde39f1a42f67eec03bedd09e9ccf1b07e65"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-week-calendar.png",
+      "archive": "passing/report-reference-week-calendar.png",
+      "bytes": 132513,
+      "sha256": "f6fda7edce431d620ea96257b645d123532538cb1b9c070516125a41a0797ba8"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-week-selected.png",
+      "archive": "passing/report-reference-week-selected.png",
+      "bytes": 199915,
+      "sha256": "8fdb57e3e676d84676b932865db9186b8ac25d929ca7a0254028dc8c6add1506"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-week.png",
+      "archive": "passing/report-reference-week.png",
+      "bytes": 197441,
+      "sha256": "dcab525dcc1b75f1f21738ad22c6d565b66e022da04d072785fa7f09ecee0be4"
+    },
+    {
+      "run": 40647443477,
+      "original": "report-reference-year.png",
+      "archive": "passing/report-reference-year.png",
+      "bytes": 162867,
+      "sha256": "2451a02b523700225dc160a14e06f42201d1631651989492b7723b0ae451bfe9"
+    },
+    {
+      "run": 40647443477,
+      "original": "ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "archive": "passing/ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "bytes": 812,
+      "sha256": "59d770adc487f766ce051d4d763014c245c447013ebc25f583808cc7983521e4"
+    },
+    {
+      "run": 40647443477,
+      "original": "startup-focus.txt",
+      "archive": "passing/startup-focus.txt",
+      "bytes": 246,
+      "sha256": "5df2ec7d632550ffffbb6aacf6a22ea1436106c0244bd72f4ea873d6c670699d"
+    }
+  ]
+}

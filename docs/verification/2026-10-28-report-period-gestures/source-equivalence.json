@@ -1,0 +1,130 @@
+{
+  "base": "4cf8a86fcf035686979052b95fbd5f08b6c385b1",
+  "production": "e93a94d8e4a833f7954e6a3a6cd32bca38d1c971",
+  "initial_native": "ccb101537b1c770b9c11ee65666672f0568c2cb1",
+  "native_protocol_correction": "4361dd853b6860198e616d1db7d489c9390a8154",
+  "initial_run": 40644483192,
+  "corrected_run": 40647443477,
+  "production_files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PeriodTimeline.java",
+      "production_commit_sha256": "0add33f3815159af9c30c76adabff73d61cd240b980a90a68280c63a9572a23c",
+      "verification_sha256": "0add33f3815159af9c30c76adabff73d61cd240b980a90a68280c63a9572a23c",
+      "identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordEditorActivity.java",
+      "production_commit_sha256": "391fd6b89648ae0f03f17533fe89209f83984d5f3f7d796abda73edf9a590f72",
+      "verification_sha256": "391fd6b89648ae0f03f17533fe89209f83984d5f3f7d796abda73edf9a590f72",
+      "identical": true
+    },
+    {
+      "path": "app/src/main/res/values/period_timeline_ids.xml",
+      "production_commit_sha256": "de1370ae659c229d2c118139b95fa54f6e3cc2c66a4dba22ee46381e63f720e0",
+      "verification_sha256": "de1370ae659c229d2c118139b95fa54f6e3cc2c66a4dba22ee46381e63f720e0",
+      "identical": true
+    }
+  ],
+  "unchanged_runtime": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordDraft.java",
+      "sha256": "77960473513b27a996b01798d4aa7aad47c32c027b0a3e336549ffa18f9fbb52",
+      "byte_identical_to_published_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordIntervals.java",
+      "sha256": "475bd0de471fc09593c90bda3d79462d0fdc84fec1b1741e0325cb8b3b8c68f2",
+      "byte_identical_to_published_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Records.java",
+      "sha256": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+      "byte_identical_to_published_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "byte_identical_to_published_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordRibbon.java",
+      "sha256": "1e626f83cf0be8657ec0d1e18bc47ae03cbd10c40ee8647e073cb5444ba02ecb",
+      "byte_identical_to_published_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordEditorSheets.java",
+      "sha256": "908723ea5d13eb7ca42ae5cbd082840b0d342572344ac6f67e032b473a5f0d3e",
+      "byte_identical_to_published_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChartSeries.java",
+      "sha256": "fea83915953148f02ffea99204981283e334e1685bcde70d66bfaef2f57e910c",
+      "byte_identical_to_published_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/InteractionFeedback.java",
+      "sha256": "9d728c99e7a1a81a3d44291d9861dee831fa09c179062fe898d65d84d421e1ef",
+      "byte_identical_to_published_base": true
+    }
+  ],
+  "main_tree_identical_across_native_correction": true,
+  "native_path": "app/src/androidTest/java/org/sleepwell/app/ReportReferenceFlowTest.java",
+  "native_sha256": "df0e04bd65b8d67a8428564c8ca501bee8b4a25d35dfeba33fd55f92d8fd799c",
+  "source_delta": [
+    "M\tapp/src/main/java/org/sleepwell/app/PeriodTimeline.java",
+    "M\tapp/src/main/java/org/sleepwell/app/RecordEditorActivity.java",
+    "A\tapp/src/main/res/values/period_timeline_ids.xml"
+  ],
+  "method": "org.sleepwell.app.ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects",
+  "scope": "report-flow",
+  "literal_pngs": [
+    "report-reference-history.png",
+    "report-reference-week.png",
+    "report-reference-week-calendar.png",
+    "report-reference-week-selected.png",
+    "report-reference-month.png",
+    "report-reference-year.png",
+    "report-reference-night.png",
+    "report-reference-editor.png",
+    "report-reference-tags-notes.png",
+    "report-reference-reopened.png",
+    "report-reference-chart-gap.png",
+    "report-reference-period-cancelled.png",
+    "report-reference-period-drag-start.png",
+    "report-reference-period-drag-end.png",
+    "report-reference-period-accessibility.png",
+    "report-reference-period-draft-recreated.png",
+    "report-reference-period-persisted.png"
+  ],
+  "native_sounds": false,
+  "audio_imports": false,
+  "workflow_sha256": "359ab47ee1fbed34e096bb0be9a5323a26022a82dc02b5f82da08370c16c8ca7",
+  "workflow_unchanged": true,
+  "script_sha256": "e8e3702ef4a544f79641fc3d69554971871331135f95750b041dd19b1f22ed43",
+  "script_audit": "Only report-flow exact existing method selector and six additional frame names differ. Reversing those two edits restores entire prior script AST; other scopes/defaults preserved. Script parsed statically, not imported/executed by this comparison.",
+  "not_claimed": [
+    "Physical touch/haptic/sensor/output behavior",
+    "Actual alarm/tracking service admission",
+    "New manual36h/DST runtime verification",
+    "Full36-screen or whole-app acceptance",
+    "Release or install"
+  ],
+  "verification_head": "ef2ded6b7073b94188dcdd56245d3e557c88262e",
+  "native_readiness_correction": "ef2ded6b7073b94188dcdd56245d3e557c88262e",
+  "failed_runs": [
+    {
+      "id": 40644483192,
+      "head": "73a0ea65c7c67ed879de7c8631bcdcb9b5f53b0b",
+      "seconds": 52.566
+    },
+    {
+      "id": 40645865688,
+      "head": "4361dd853b6860198e616d1db7d489c9390a8154",
+      "seconds": 46.98
+    }
+  ],
+  "native_seconds": 68.984,
+  "full_app_review": false,
+  "production_app_src_main_tree": "fa0ee0925d834bc3eb16a265ff4ad18623b10335",
+  "verification_app_src_main_tree": "fa0ee0925d834bc3eb16a265ff4ad18623b10335"
+}
