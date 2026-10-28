@@ -34,6 +34,7 @@ on:
           - bedtime-navigation
           - label-navigation
           - live-night-timeline
+          - chart-phone-motion
           - wake-challenge-reference
           - calendar-consent-recovery
           - profile-room-dimming
