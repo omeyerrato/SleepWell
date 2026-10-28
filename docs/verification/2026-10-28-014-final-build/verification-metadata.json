@@ -1,0 +1,291 @@
+{
+  "historical_source": "63cc05cd816ce12c70936f25b37aa4cb27d6c270",
+  "candidate_source": "08d3911e90af666d79a1f57fb0ea1326e91c3929",
+  "whole_files_identical": false,
+  "comparison": {
+    "chart-phone-motion": {
+      "historical": {
+        "selectors": [
+          "ChartClockFlowTest#alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects"
+        ],
+        "literal_pngs": [
+          "chart-clock-overnight.png",
+          "chart-clock-night.png",
+          "chart-clock-short.png",
+          "chart-clock-fold.png",
+          "chart-clock-phone-history.png",
+          "chart-clock-phone-selected.png",
+          "chart-clock-phone-paused.png",
+          "chart-clock-phone-retry.png",
+          "chart-clock-tracking-main.png",
+          "chart-clock-tracking-options.png",
+          "chart-clock-tracking-returned.png",
+          "chart-clock-tracking-paused.png",
+          "chart-clock-tracking-recreated.png",
+          "chart-clock-tracking-session.png"
+        ],
+        "png_count": 14
+      },
+      "final": {
+        "selectors": [
+          "ChartClockFlowTest#alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects"
+        ],
+        "literal_pngs": [
+          "chart-clock-overnight.png",
+          "chart-clock-night.png",
+          "chart-clock-short.png",
+          "chart-clock-fold.png",
+          "chart-clock-phone-history.png",
+          "chart-clock-phone-selected.png",
+          "chart-clock-phone-paused.png",
+          "chart-clock-phone-retry.png",
+          "chart-clock-tracking-main.png",
+          "chart-clock-tracking-options.png",
+          "chart-clock-tracking-returned.png",
+          "chart-clock-tracking-paused.png",
+          "chart-clock-tracking-recreated.png",
+          "chart-clock-tracking-session.png"
+        ],
+        "png_count": 14
+      },
+      "structurally_equal": true
+    },
+    "math-owner": {
+      "historical": null,
+      "final": {
+        "selectors": [
+          "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"
+        ],
+        "literal_pngs": [
+          "routine-legacy.png",
+          "routine-ordered.png",
+          "routine-reordered.png",
+          "routine-recreated.png",
+          "routine-removed.png",
+          "routine-reopened.png",
+          "challenge-math-initial.png",
+          "challenge-math-selected.png",
+          "challenge-math-wrong.png",
+          "challenge-math-recreated.png",
+          "challenge-math-completed.png",
+          "challenge-math-typed-wrong.png",
+          "challenge-math-typed-recreated.png",
+          "challenge-math-typed-completed.png"
+        ],
+        "png_count": 14
+      },
+      "structurally_equal": false
+    },
+    "organization": {
+      "historical": {
+        "selectors": [
+          "SettingsOrganizationFlowTest"
+        ],
+        "literal_pngs": [
+          "organization-settings-root.png",
+          "organization-settings-sleep.png",
+          "organization-search-flashlight.png",
+          "organization-feedback-off.png",
+          "organization-alarm-editor.png",
+          "organization-alarm-schedule.png",
+          "organization-alarm-options.png",
+          "organization-controls-recreated.png",
+          "organization-alarm-backup.png",
+          "organization-alarm-reopened.png",
+          "organization-smart-following.png",
+          "organization-smart-configured.png",
+          "organization-smart-reopened.png",
+          "organization-alarm-search.png"
+        ],
+        "png_count": 14
+      },
+      "final": {
+        "selectors": [
+          "SettingsOrganizationFlowTest"
+        ],
+        "literal_pngs": [
+          "organization-alarm-list.png",
+          "organization-alarm-list-large.png",
+          "organization-alarm-time-stepped.png",
+          "organization-alarm-time-recreated.png",
+          "organization-settings-root.png",
+          "organization-settings-sleep.png",
+          "organization-feedback-off.png",
+          "organization-search-flashlight.png",
+          "organization-alarm-editor.png",
+          "organization-alarm-search.png",
+          "organization-smart-following.png",
+          "organization-smart-configured.png",
+          "organization-alarm-schedule.png",
+          "organization-alarm-options.png",
+          "organization-controls-recreated.png",
+          "organization-alarm-backup.png",
+          "organization-smart-reopened.png",
+          "organization-alarm-reopened.png"
+        ],
+        "png_count": 18
+      },
+      "structurally_equal": false
+    },
+    "room-settings-search": {
+      "historical": {
+        "selectors": [
+          "SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls"
+        ],
+        "literal_pngs": [
+          "search-empty.png",
+          "search-room.png",
+          "search-no-results.png",
+          "search-record.png",
+          "search-recreated.png"
+        ],
+        "png_count": 5
+      },
+      "final": {
+        "selectors": [
+          "SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls"
+        ],
+        "literal_pngs": [
+          "search-empty.png",
+          "search-room.png",
+          "search-no-results.png",
+          "search-record.png",
+          "search-recreated.png"
+        ],
+        "png_count": 5
+      },
+      "structurally_equal": true
+    },
+    "travel-cue-cleanup": {
+      "historical": null,
+      "final": {
+        "selectors": [
+          "TravelCueFlowTest#windowReviewCancelSaveRecreateAndReopenNeverArmAnything"
+        ],
+        "literal_pngs": [
+          "travel-cues-tracking-reminder-draft.png",
+          "travel-cues-tracking-reminder-saved.png",
+          "travel-cues-tracking-reminder-details.png",
+          "travel-cues-settings-off.png",
+          "travel-cues-tracking-settings.png",
+          "travel-cues-tracking-settings-recreated.png",
+          "travel-cues-about-main-recreated.png",
+          "travel-cues-window.png",
+          "travel-cues-date.png",
+          "travel-cues-time.png",
+          "travel-cues-window-recreated.png",
+          "travel-cues-settings-enabled.png",
+          "travel-cues-settings-reopened.png",
+          "travel-cues-light-settings.png",
+          "travel-cues-light-settings-recreated.png",
+          "travel-cues-about-recreated.png",
+          "travel-cues-invalid-window.png",
+          "travel-cues-review-from-menu.png"
+        ],
+        "png_count": 18
+      },
+      "structurally_equal": false
+    },
+    "travel-ui": {
+      "historical": {
+        "selectors": [
+          "TravelPlanFlowTest",
+          "TravelCueFlowTest"
+        ],
+        "literal_pngs": [
+          "travel-plan.png",
+          "travel-zones.png",
+          "travel-date.png",
+          "travel-reminders.png",
+          "travel-reopened.png",
+          "travel-error.png",
+          "travel-disabled.png",
+          "travel-schedules.png",
+          "travel-reminders-recreated.png",
+          "travel-reminders-reopened.png",
+          "travel-disabled-main.png",
+          "travel-cues-settings-off.png",
+          "travel-cues-window.png",
+          "travel-cues-date.png",
+          "travel-cues-time.png",
+          "travel-cues-window-recreated.png",
+          "travel-cues-settings-enabled.png",
+          "travel-cues-settings-reopened.png",
+          "travel-cues-invalid-window.png",
+          "travel-cues-no-manual.png",
+          "travel-cues-ready.png",
+          "travel-cues-active.png",
+          "travel-cues-active-recreated.png",
+          "travel-cues-stopped.png",
+          "travel-cues-stopped-reopened.png",
+          "travel-cues-output-error.png",
+          "travel-cues-interrupted.png",
+          "travel-cues-light-settings.png",
+          "travel-cues-light-settings-recreated.png",
+          "travel-cues-review-from-menu.png",
+          "travel-cues-about-recreated.png",
+          "travel-cues-tracking-settings.png",
+          "travel-cues-tracking-settings-recreated.png",
+          "travel-cues-about-main-recreated.png",
+          "travel-cues-tracking-reminder-draft.png",
+          "travel-cues-tracking-reminder-saved.png",
+          "travel-cues-tracking-reminder-details.png"
+        ],
+        "png_count": 37
+      },
+      "final": {
+        "selectors": [
+          "TravelPlanFlowTest",
+          "TravelCueFlowTest"
+        ],
+        "literal_pngs": [
+          "travel-plan.png",
+          "travel-zones.png",
+          "travel-date.png",
+          "travel-reminders.png",
+          "travel-reopened.png",
+          "travel-error.png",
+          "travel-disabled.png",
+          "travel-schedules.png",
+          "travel-reminders-recreated.png",
+          "travel-reminders-reopened.png",
+          "travel-disabled-main.png",
+          "travel-cues-settings-off.png",
+          "travel-cues-window.png",
+          "travel-cues-date.png",
+          "travel-cues-time.png",
+          "travel-cues-window-recreated.png",
+          "travel-cues-settings-enabled.png",
+          "travel-cues-settings-reopened.png",
+          "travel-cues-invalid-window.png",
+          "travel-cues-no-manual.png",
+          "travel-cues-ready.png",
+          "travel-cues-active.png",
+          "travel-cues-active-recreated.png",
+          "travel-cues-stopped.png",
+          "travel-cues-stopped-reopened.png",
+          "travel-cues-output-error.png",
+          "travel-cues-interrupted.png",
+          "travel-cues-light-settings.png",
+          "travel-cues-light-settings-recreated.png",
+          "travel-cues-review-from-menu.png",
+          "travel-cues-about-recreated.png",
+          "travel-cues-tracking-settings.png",
+          "travel-cues-tracking-settings-recreated.png",
+          "travel-cues-about-main-recreated.png",
+          "travel-cues-tracking-reminder-draft.png",
+          "travel-cues-tracking-reminder-saved.png",
+          "travel-cues-tracking-reminder-details.png"
+        ],
+        "png_count": 37
+      },
+      "structurally_equal": true
+    }
+  },
+  "notes": [
+    "Formatting and scope-union differences are explicit in patch, not blanket script/workflow equivalence.",
+    "organization14 historical inventory corrected to actual18 by metadata-only 7ceb894e before final source; chart14 vs older organization-capture chart8 is expected union.",
+    "New math-owner14 and travel-cue-cleanup18 scopes select existing methods only.",
+    "Optional native-sounds/audio-imports flags false for these bounded proofs; host audio disabled."
+  ]
+}

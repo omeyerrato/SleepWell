@@ -1,0 +1,132 @@
+diff --git a/app/src/main/java/org/sleepwell/app/AlarmActivity.java b/app/src/main/java/org/sleepwell/app/AlarmActivity.java
+index 5c8bf08c..ca73b273 100644
+--- a/app/src/main/java/org/sleepwell/app/AlarmActivity.java
++++ b/app/src/main/java/org/sleepwell/app/AlarmActivity.java
+@@ -136,7 +136,8 @@ public class AlarmActivity extends Activity implements SensorEventListener {
+     private void math(LinearLayout card,String expectedRun,int expected,MathSettings configuration){
+         try{mathTask=MathTask.decode(Prefs.text(this,"mathTask",""));if(!mathTask.matches(configuration))throw new IllegalArgumentException("Arithmetic settings changed");}catch(RuntimeException e){mathTask=MathTask.create(random,configuration);selected=null;Prefs.put(this,"mathTask",mathTask.encode());}
+         if(configuration.typed){String key=expectedRun+":"+expected+":"+mathTask.encode();if(!key.equals(mathEntryKey)){mathEntry="";mathEntryKey=key;}}
+-        MathTask ownedTask=mathTask;WakeMathCard.Binding rendered=WakeMathCard.render(card,ownedTask,selected,mathEntry,false,option->{if(mathTask!=ownedTask)return;selected=option;build();},()->{if(mathTask==ownedTask)advance(expectedRun,expected);});
++        MathTask ownedTask=mathTask;MathAnswerOwner owner=new MathAnswerOwner(this,card,expectedRun,expected,ownedTask,Prefs.of(this),()->resumed,()->occurrence,()->completed,()->mathTask);
++        WakeMathCard.Binding rendered=WakeMathCard.render(card,ownedTask,selected,mathEntry,false,option->{selected=option;build();},()->advance(expectedRun,expected),owner::submit);
+         feedback=rendered.feedback;mathInput=rendered.input;
+     }
+     private void pose(LinearLayout card,String run,int unit){if(run.equals(Prefs.text(this,"poseFallbackRun",""))&&unit==Prefs.number(this,"poseFallbackUnit",-1)){Design.text(card,"Math alternative",16,600,Design.INK);math(card,run,unit);return;}Design.text(card,"Raise both hands",22,600,Design.INK);Design.text(card,"Hold both hands above your head for a moment. The front camera must see your head, arms and hips; no identity or liveness check.",13,400,Design.MUTED);Design.button(card,"Open pose camera",true,()->{if(!run.equals(occurrence)||unit!=completed||!AlarmService.current(this,run))return;poseProof=new PoseProof(run,unit,UUID.randomUUID().toString(),SystemClock.elapsedRealtime());try{startActivityForResult(PoseActivity.challenge(this,run,unit,poseProof.nonce),PoseActivity.CHALLENGE);}catch(RuntimeException unavailable){poseProof=null;Ui.toast(this,"Pose camera unavailable. Use Math instead.");}});Design.button(card,"Use Math instead",false,()->poseFallback(run,unit));}
+@@ -231,7 +232,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
+     }
+     private boolean registerShake(Sensor accelerometer){try{return sensors.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_GAME);}catch(RuntimeException unavailable){return false;}}
+     private void restoreShakes(){shakes=occurrence.equals(Prefs.text(this,"challengeShakeRun",""))&&completed==Prefs.number(this,"challengeShakeUnit",-1)?Prefs.number(this,"challengeShakeCount",0):0;}
+-    private void advance(String expectedRun,int expected) {synchronized(Scheduler.class){if(!expectedRun.equals(occurrence))return;if(!AlarmService.current(this,expectedRun)){finish();return;}int next=routine.advance(completed,expected);if(next==completed)return;completed=next;Prefs.of(this).edit().putInt("challengeCompleted",completed).putString("mathTask","").putString("retypeTask","").putInt("challengeShakeCount",0).putInt("challengeShakeUnit",completed).putString("challengeShakeRun",occurrence).apply();shakes=0;selected=null;if(routine.at(completed)==null)dismiss();else build();}}
++    private void advance(String expectedRun,int expected) {synchronized(Scheduler.class){if(!expectedRun.equals(occurrence))return;if(!AlarmService.current(this,expectedRun)){finish();return;}if(Prefs.number(this,"challengeCompleted",0)!=expected)return;int next=routine.advance(completed,expected);if(next==completed)return;completed=next;Prefs.of(this).edit().putInt("challengeCompleted",completed).putString("mathTask","").putString("retypeTask","").putInt("challengeShakeCount",0).putInt("challengeShakeUnit",completed).putString("challengeShakeRun",occurrence).apply();shakes=0;selected=null;if(routine.at(completed)==null)dismiss();else build();}}
+     private void memory(LinearLayout card,String expectedRun,int expected) {
+         Ui.heading(card,"Find the matching pairs",24);List<String> values=new ArrayList<>(List.of("☀","☀","☽","☽","✿","✿"));Collections.shuffle(values,random);
+         GridLayout grid=new GridLayout(this);grid.setColumnCount(3);card.addView(grid);final Button[] first={null};final String[] firstValue={null};final int[] pairs={0};final boolean[] waiting={false};
+diff --git a/app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java b/app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java
+index 5b948d78..06d73303 100644
+--- a/app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java
++++ b/app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java
+@@ -70,7 +70,7 @@ public class AlarmEditorActivity extends Activity {
+         menu(body,"settings","More alarm settings",alarm.inputsInvalid?"Input settings need review":"Buttons, protection and defaults",()->go("options"));Design.line(body);
+         for(int n=primaryRows;n<body.getChildCount();n++)if(body.getChildAt(n) instanceof LinearLayout row)row.setMinimumHeight(Design.dp(this,56));
+         android.widget.ScrollView viewport=(android.widget.ScrollView)body.getParent();viewport.setClipToPadding(true);
+-        LinearLayout footer=RecordUi.footer(body);footer.setPadding(footer.getPaddingLeft(),Design.dp(this,8),footer.getPaddingRight(),footer.getPaddingBottom());footer.setBackgroundColor(Appearance.color(this,Design.CREAM));Design.toggle(footer,"Alarm on","Rings at your chosen local time",alarm.enabled,on->alarm.enabled=on);Design.space(footer,12);Design.button(footer,"Save alarm",true,this::save);if(!saveError.isEmpty()){Design.space(footer,8);TextView error=Design.text(footer,saveError,13,500,0xffa93919);error.setContentDescription("Alarm save error");error.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);}
++        LinearLayout footer=RecordUi.footer(body);footer.setPadding(footer.getPaddingLeft(),Design.dp(this,8),footer.getPaddingRight(),footer.getPaddingBottom());footer.setBackgroundColor(Appearance.color(this,Design.CREAM));Design.toggle(footer,"Alarm on",alarm.smartWakeInvalid||alarm.smartWake==null?"Review smart wake-up before saving":alarm.smartWindow>0?"May ring within the wake window":"Rings at your chosen local time",alarm.enabled,on->alarm.enabled=on);Design.space(footer,12);Design.button(footer,"Save alarm",true,this::save);if(!saveError.isEmpty()){Design.space(footer,8);TextView error=Design.text(footer,saveError,13,500,0xffa93919);error.setContentDescription("Alarm save error");error.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);}
+     }
+     /** Descriptive destinations keep the whole title above supporting copy. */
+     private LinearLayout menu(LinearLayout body,String icon,String title,String description,Runnable action){
+diff --git a/app/src/main/java/org/sleepwell/app/MathAnswerOwner.java b/app/src/main/java/org/sleepwell/app/MathAnswerOwner.java
+new file mode 100644
+index 00000000..138da409
+--- /dev/null
++++ b/app/src/main/java/org/sleepwell/app/MathAnswerOwner.java
+@@ -0,0 +1,31 @@
++package org.sleepwell.app;
++
++import android.app.Activity;
++import android.content.SharedPreferences;
++import android.os.Looper;
++import android.view.View;
++import java.util.function.*;
++
++/** A synchronous Math input belongs to one visible card, question and durable occurrence unit. */
++final class MathAnswerOwner {
++    private final Activity activity;private final View card;private final String run,cache;private final int unit;
++    private final MathTask task;private final SharedPreferences prefs;private final BooleanSupplier resumed;
++    private final Supplier<String> occurrence;private final IntSupplier completed;private final Supplier<MathTask> currentTask;
++    MathAnswerOwner(Activity activity,View card,String run,int unit,MathTask task,SharedPreferences prefs,
++                    BooleanSupplier resumed,Supplier<String> occurrence,IntSupplier completed,Supplier<MathTask> currentTask){
++        this.activity=activity;this.card=card;this.run=run;this.unit=unit;this.task=task;this.prefs=prefs;this.resumed=resumed;
++        this.occurrence=occurrence;this.completed=completed;this.currentTask=currentTask;cache=prefs.getString("mathTask","");
++    }
++    /** Keep the guard and the caller's selection/build/advance indivisible with occurrence replacement. */
++    boolean submit(Runnable mutation){synchronized(Scheduler.class){if(!current())return false;mutation.run();return true;}}
++    boolean current(){
++        if(Looper.myLooper()!=Looper.getMainLooper())return false;
++        if(run==null||run.isEmpty()||unit<0||task==null||!resumed.getAsBoolean()||activity.isFinishing()||activity.isDestroyed()
++                ||!activity.hasWindowFocus()||!card.isAttachedToWindow()||!card.isShown()
++                ||card.getRootView()!=activity.getWindow().getDecorView()||currentTask.get()!=task
++                ||!run.equals(occurrence.get())||completed.getAsInt()!=unit)return false;
++        try{return prefs.getBoolean("ringing",false)&&run.equals(prefs.getString("alarmRun",""))
++                    &&prefs.getInt("challengeCompleted",0)==unit&&!cache.isEmpty()&&cache.equals(prefs.getString("mathTask",""));}
++        catch(RuntimeException unreadable){return false;}
++    }
++}
+diff --git a/app/src/main/java/org/sleepwell/app/TravelTrackingReminders.java b/app/src/main/java/org/sleepwell/app/TravelTrackingReminders.java
+index 25f6fdb9..02ab0204 100644
+--- a/app/src/main/java/org/sleepwell/app/TravelTrackingReminders.java
++++ b/app/src/main/java/org/sleepwell/app/TravelTrackingReminders.java
+@@ -15,7 +15,6 @@ final class TravelTrackingReminders {
+     static final long MAX_LATE=60000;
+     private static final Handler MAIN=new Handler(Looper.getMainLooper());
+     private static final AtomicLong generation=new AtomicLong();
+-    private static boolean visible;
+     interface Recording {TravelCues.Manual active();}
+     static Recording recording=()->TravelCues.control.manual();
+     static final class Request {
+@@ -45,7 +44,7 @@ final class TravelTrackingReminders {
+     private static void scheduleNext(Context c,TravelPlans.Repository repo){TravelPlan trip=repo.load(TravelReminders.clock.getAsLong());if(!trip.trackingReminders)return;TravelCuePlan cues=new TravelCueStore(repo.prefs).load(trip,TravelReminders.clock.getAsLong());long after=TravelReminders.clock.getAsLong();String consumed=repo.prefs.getString(CONSUMED,"");if(!consumed.isEmpty()){String[] identity=consumed.split(":");if(identity.length==5)try{if(Long.parseLong(identity[1])==trip.revision&&Long.parseLong(identity[2])==cues.revision)after=Math.max(after,Long.parseLong(identity[3]));}catch(NumberFormatException invalid){throw new IllegalStateException("The tracking reminder receipt could not be read.");}}Request next=next(trip,cues,after);if(next==null)return;if(!port.allowed(c))throw new IllegalStateException("Allow Travel reminder notifications in Android settings.");commit(repo.prefs.edit().putString(PENDING,next.json()));try{port.schedule(c,next);}catch(RuntimeException error){commit(repo.prefs.edit().remove(PENDING));throw error;}}
+     // Called before the recording phase changes, so even an asynchronously pausing sonar run is fenced.
+     static void recordingEnded(Context c){generation.incrementAndGet();if(Looper.myLooper()==Looper.getMainLooper())dismiss(c);else MAIN.post(()->dismiss(c));}
+-    private static void dismiss(Context c){if(visible){visible=false;port.dismiss(c);}}
++    private static void dismiss(Context c){try{port.dismiss(c);}catch(RuntimeException error){String notice="Your previous tracking reminder could not be dismissed. Clear it from Android notifications.";try{TravelPlans.repository(c).prefs.edit().putString(ERROR,notice).putString(NOTICE,notice).apply();}catch(RuntimeException unavailable){android.util.Log.e("SleepWell","Could not store tracking reminder cleanup error",unavailable);}}}
+     static void receive(Context c,Request incoming,Runnable finished){Context app=c.getApplicationContext();MAIN.post(()->{long fence=generation.get();TravelCues.Manual active;try{active=recording.active();}catch(RuntimeException unavailable){active=null;}TravelCues.Manual owner=active;new Thread(()->{boolean publish=false;try{synchronized(TravelPlans.LOCK){TravelPlans.Repository repo=TravelPlans.repository(app);Request pending=pending(repo);TravelPlan trip=repo.load(TravelReminders.clock.getAsLong());TravelCuePlan cues=new TravelCueStore(repo.prefs).load(trip,TravelReminders.clock.getAsLong());long now=TravelReminders.clock.getAsLong();if(incoming.token().equals(repo.prefs.getString(CONSUMED,""))||pending==null||!pending.token().equals(incoming.token())||!matches(trip,cues,incoming)||now<incoming.start)return;
+                     // Durable consumption precedes every output attempt; process death can skip, never replay.
+                     commit(repo.prefs.edit().remove(PENDING).putString(CONSUMED,incoming.token()).putString(NOTICE,"The saved window was processed; no reminder was shown."));
+@@ -53,7 +52,7 @@ final class TravelTrackingReminders {
+                     try{scheduleNext(app,repo);}catch(RuntimeException error){repo.prefs.edit().putString(ERROR,"The next tracking reminder could not be scheduled: "+message(error)).apply();}
+                 }}catch(RuntimeException error){TravelPlans.repository(app).prefs.edit().putString(ERROR,"Tracking reminder delivery needs attention: "+message(error)).apply();}finally{boolean eligible=publish;MAIN.post(()->{try{if(eligible)publish(app,incoming,owner,fence);}catch(RuntimeException error){TravelPlans.repository(app).prefs.edit().putString(ERROR,"Tracking reminder delivery needs attention: "+message(error)).apply();}finally{finished.run();}});}},"SleepWell-tracking-reminder").start();});}
+     private static void publish(Context c,Request r,TravelCues.Manual owner,long fence){synchronized(TravelPlans.LOCK){TravelPlans.Repository repo=TravelPlans.repository(c);TravelPlan trip=repo.load(TravelReminders.clock.getAsLong());TravelCuePlan cues=new TravelCueStore(repo.prefs).load(trip,TravelReminders.clock.getAsLong());TravelCues.Manual current=recording.active();long now=TravelReminders.clock.getAsLong();if(fence!=generation.get()||current==null||owner.session!=current.session||!owner.token.equals(current.token)||!matches(trip,cues,r)||!r.token().equals(repo.prefs.getString(CONSUMED,""))||now<r.start||now-r.start>MAX_LATE||now>=r.end||!port.allowed(c))return;
+-            try{port.show(c,r);visible=true;repo.prefs.edit().putString(NOTICE,"Your last tracking reminder was shown silently.").apply();}catch(RuntimeException error){repo.prefs.edit().putString(ERROR,"Your tracking reminder could not be shown.").apply();}
++            try{port.show(c,r);repo.prefs.edit().putString(NOTICE,"Your last tracking reminder was shown silently.").apply();}catch(RuntimeException error){repo.prefs.edit().putString(ERROR,"Your tracking reminder could not be shown.").apply();}
+         }}
+     private static boolean matches(TravelPlan trip,TravelCuePlan cues,Request r){if(!trip.trackingReminders||!cues.enabled||!cues.reviewed||trip.revision!=r.trip||cues.revision!=r.cue||cues.tripRevision!=r.trip)return false;try{cues.validateTrip(trip);for(int i=0;i<cues.nights;i++){long start=cues.first.plusDays(i).atTime(cues.minute/60,cues.minute%60).atZone(ZoneId.of(cues.home)).toInstant().toEpochMilli();if(start==r.start&&Math.addExact(start,cues.minutes*60000L)==r.end)return true;}return false;}catch(RuntimeException invalid){return false;}}
+     private static String message(Exception e){return e.getMessage()==null?"Unavailable.":e.getMessage();}
+diff --git a/app/src/main/java/org/sleepwell/app/WakeMathCard.java b/app/src/main/java/org/sleepwell/app/WakeMathCard.java
+index b4ce255a..f506bb34 100644
+--- a/app/src/main/java/org/sleepwell/app/WakeMathCard.java
++++ b/app/src/main/java/org/sleepwell/app/WakeMathCard.java
+@@ -6,17 +6,22 @@ import android.util.TypedValue;
+ import android.view.*;
+ import android.widget.*;
+ import java.util.function.IntConsumer;
++import java.util.function.Consumer;
+ 
+ /** Shared production Math widgets and validator; completion belongs solely to the caller. */
+ final class WakeMathCard {
+     static final class Binding {EditText input;TextView feedback;}
+     static Binding render(LinearLayout card,MathTask task,Integer selected,String entry,boolean practice,IntConsumer choose,Runnable correct){
++        return render(card,task,selected,entry,practice,choose,correct,Runnable::run);
++    }
++    /** A runtime owner can reject the whole input before widget feedback or host state changes. */
++    static Binding render(LinearLayout card,MathTask task,Integer selected,String entry,boolean practice,IntConsumer choose,Runnable correct,Consumer<Runnable> submit){
+         Context context=card.getContext();Binding binding=new Binding();Design.text(card,practice?"Math practice":"Solve to dismiss",22,600,Design.INK).setGravity(Gravity.CENTER);Design.space(card,10);
+         TextView question=Design.text(card,task.question(),64,700,Design.INK);question.setGravity(Gravity.CENTER);question.setSingleLine(true);question.setHorizontallyScrolling(false);question.setAutoSizeTextTypeUniformWithConfiguration(Math.max(24,Math.round(28*Appearance.scale(context))),Math.round(64*Appearance.scale(context)),2,TypedValue.COMPLEX_UNIT_SP);question.setContentDescription(task.spoken());Design.space(card,16);
+         if(task.settings.typed){EditText input=new EditText(context);binding.input=input;input.setContentDescription(practice?"Practice answer":"Math answer");input.setHint("Your answer");input.setSingleLine(true);input.setInputType(InputType.TYPE_CLASS_NUMBER);input.setFilters(new android.text.InputFilter[]{new android.text.InputFilter.LengthFilter(5)});input.setImeOptions(android.view.inputmethod.EditorInfo.IME_ACTION_DONE);input.setGravity(Gravity.CENTER);input.setTextSize(34*Appearance.scale(context));input.setTypeface(Design.font(context,600));input.setTextColor(Design.INK);input.setHintTextColor(Design.MUTED);input.setBackground(Design.outline(context,Design.SOFT,Design.LINE,20));Design.pad(input,16,18);input.setText(entry);card.addView(input,new LinearLayout.LayoutParams(-1,-2));}
+-        else for(int row=0;row<2;row++){LinearLayout choices=Design.row(context);for(int col=0;col<2;col++){int option=task.options.get(row*2+col);Button button=new Button(context);button.setStateListAnimator(null);button.setElevation(0);button.setText(Integer.toString(option));button.setTextSize(42*Appearance.scale(context));button.setSingleLine(true);button.setHorizontallyScrolling(false);button.setAutoSizeTextTypeUniformWithConfiguration(Math.round(24*Appearance.scale(context)),Math.round(42*Appearance.scale(context)),2,TypedValue.COMPLEX_UNIT_SP);button.setTypeface(Design.font(context,600));boolean active=selected!=null&&selected==option;button.setTextColor(active?Design.CREAM:Design.INK);button.setSelected(active);button.setContentDescription("Answer "+option);button.setBackground(Design.touch(context,active?Design.BROWN:Design.SOFT,22));LinearLayout.LayoutParams size=new LinearLayout.LayoutParams(0,Design.dp(context,84*Math.max(1,Design.fontScale(context))),1);size.setMargins(Design.dp(context,col==0?0:4),Design.dp(context,4),Design.dp(context,col==0?4:0),Design.dp(context,4));choices.addView(button,size);button.setOnClickListener(view->choose.accept(option));}card.addView(choices);}
++        else for(int row=0;row<2;row++){LinearLayout choices=Design.row(context);for(int col=0;col<2;col++){int option=task.options.get(row*2+col);Button button=new Button(context);button.setStateListAnimator(null);button.setElevation(0);button.setText(Integer.toString(option));button.setTextSize(42*Appearance.scale(context));button.setSingleLine(true);button.setHorizontallyScrolling(false);button.setAutoSizeTextTypeUniformWithConfiguration(Math.round(24*Appearance.scale(context)),Math.round(42*Appearance.scale(context)),2,TypedValue.COMPLEX_UNIT_SP);button.setTypeface(Design.font(context,600));boolean active=selected!=null&&selected==option;button.setTextColor(active?Design.CREAM:Design.INK);button.setSelected(active);button.setContentDescription("Answer "+option);button.setBackground(Design.touch(context,active?Design.BROWN:Design.SOFT,22));LinearLayout.LayoutParams size=new LinearLayout.LayoutParams(0,Design.dp(context,84*Math.max(1,Design.fontScale(context))),1);size.setMargins(Design.dp(context,col==0?0:4),Design.dp(context,4),Design.dp(context,col==0?4:0),Design.dp(context,4));choices.addView(button,size);button.setOnClickListener(view->submit.accept(()->choose.accept(option)));}card.addView(choices);}
+         binding.feedback=Design.text(card,task.settings.typed?"Type a whole-number answer":"Select an answer",13,400,Design.MUTED);binding.feedback.setGravity(Gravity.CENTER);Design.space(card,6);
+-        Runnable check=()->{if(task.settings.typed){String typed=binding.input.getText().toString();if(typed.trim().isEmpty()){binding.feedback.setText("Enter an answer first");return;}if(task.acceptsTyped(typed)){correct.run();return;}}else{if(selected==null){binding.feedback.setText("Choose an answer first");return;}if(task.accepts(selected)){correct.run();return;}}binding.feedback.setText(practice?"Try again":"Try again · alarm is still ringing");binding.feedback.setTextColor(0xffb33120);binding.feedback.announceForAccessibility("Try again");};
++        Runnable check=()->submit.accept(()->{if(task.settings.typed){String typed=binding.input.getText().toString();if(typed.trim().isEmpty()){binding.feedback.setText("Enter an answer first");return;}if(task.acceptsTyped(typed)){correct.run();return;}}else{if(selected==null){binding.feedback.setText("Choose an answer first");return;}if(task.accepts(selected)){correct.run();return;}}binding.feedback.setText(practice?"Try again":"Try again · alarm is still ringing");binding.feedback.setTextColor(0xffb33120);binding.feedback.announceForAccessibility("Try again");});
+         Design.button(card,practice?"Check practice answer":"Check answer",true,check);
+         if(binding.input!=null)binding.input.setOnEditorActionListener((view,action,event)->{if(action==android.view.inputmethod.EditorInfo.IME_ACTION_DONE){check.run();return true;}return false;});return binding;
+     }

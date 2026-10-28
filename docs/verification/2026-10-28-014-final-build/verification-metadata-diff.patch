@@ -1,0 +1,116 @@
+diff --git a/.github/workflows/silent-ui-review.yml b/.github/workflows/silent-ui-review.yml
+index 28b1ac8e..61928d93 100644
+--- a/.github/workflows/silent-ui-review.yml
++++ b/.github/workflows/silent-ui-review.yml
+@@ -16,6 +16,7 @@ on:
+           - organized-settings
+           - recorded-analysis
+           - challenge-routine
++          - math-owner
+           - tonight
+           - appearance
+           - event-library
+@@ -41,6 +42,7 @@ on:
+           - room-settings-search
+           - sensing-travel
+           - travel-ui
++          - travel-cue-cleanup
+           - sonar-night
+           - sound-categories
+           - sound-sensitivity
+diff --git a/scripts/ci_silent_ui.py b/scripts/ci_silent_ui.py
+index 9a212b3f..80f3693f 100644
+--- a/scripts/ci_silent_ui.py
++++ b/scripts/ci_silent_ui.py
+@@ -19,7 +19,49 @@ import time
+ 
+ parser = argparse.ArgumentParser()
+ parser.add_argument("--serial", required=True, choices=("emulator-5554",))
+-parser.add_argument("--scope", choices=("full", "tone-wake", "report", "report-flow", "organization", "organized-settings", "recorded-analysis", "challenge-routine", "tonight", "appearance", "event-library", "goal-plan", "interaction-security", "priority-menus", "priority-current", "priority-repair", "reference-menus", "privacy-recovery", "setup-readiness", "readiness-recovery", "sensing-reference", "room-bedtime-live", "room-bedtime-repair", "bedtime-navigation", "label-navigation", "live-night-timeline", "chart-phone-motion", "wake-challenge-reference", "calendar-consent-recovery", "profile-room-dimming", "room-settings-search", "sensing-travel", "travel-ui", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features", "feature-increment", "nap-features"), default="full", help="A named narrow scope is never a full app acceptance run")
++parser.add_argument("--scope", choices=(
++    'full',
++    'tone-wake',
++    'report',
++    'report-flow',
++    'organization',
++    'organized-settings',
++    'recorded-analysis',
++    'challenge-routine',
++    'math-owner',
++    'tonight',
++    'appearance',
++    'event-library',
++    'goal-plan',
++    'interaction-security',
++    'priority-menus',
++    'priority-current',
++    'priority-repair',
++    'reference-menus',
++    'privacy-recovery',
++    'setup-readiness',
++    'readiness-recovery',
++    'sensing-reference',
++    'room-bedtime-live',
++    'room-bedtime-repair',
++    'bedtime-navigation',
++    'label-navigation',
++    'live-night-timeline',
++    'chart-phone-motion',
++    'wake-challenge-reference',
++    'calendar-consent-recovery',
++    'profile-room-dimming',
++    'room-settings-search',
++    'sensing-travel',
++    'travel-ui',
++    'travel-cue-cleanup',
++    'sonar-night',
++    'sound-categories',
++    'sound-sensitivity',
++    'phone-features',
++    'feature-increment',
++    'nap-features',
++), default="full", help="A named narrow scope is never a full app acceptance run")
+ parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
+ parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
+ args = parser.parse_args()
+@@ -87,6 +129,7 @@ TRAVEL_UI_FRAMES = ["travel-" + name + ".png" for name in ("plan", "zones", "dat
+ TRAVEL_UI_FRAMES += ["travel-cues-" + name + ".png" for name in ("settings-off", "window", "date", "time", "window-recreated", "settings-enabled", "settings-reopened", "invalid-window", "no-manual", "ready", "active", "active-recreated", "stopped", "stopped-reopened", "output-error", "interrupted", "light-settings", "light-settings-recreated", "review-from-menu", "about-recreated")]
+ TRAVEL_UI_FRAMES += ["travel-cues-tracking-settings.png", "travel-cues-tracking-settings-recreated.png", "travel-cues-about-main-recreated.png"]
+ TRAVEL_UI_FRAMES += ["travel-cues-tracking-reminder-draft.png", "travel-cues-tracking-reminder-saved.png", "travel-cues-tracking-reminder-details.png"]
++TRAVEL_CUE_CLEANUP_FRAMES = ['travel-cues-tracking-reminder-draft.png', 'travel-cues-tracking-reminder-saved.png', 'travel-cues-tracking-reminder-details.png', 'travel-cues-settings-off.png', 'travel-cues-tracking-settings.png', 'travel-cues-tracking-settings-recreated.png', 'travel-cues-about-main-recreated.png', 'travel-cues-window.png', 'travel-cues-date.png', 'travel-cues-time.png', 'travel-cues-window-recreated.png', 'travel-cues-settings-enabled.png', 'travel-cues-settings-reopened.png', 'travel-cues-light-settings.png', 'travel-cues-light-settings-recreated.png', 'travel-cues-about-recreated.png', 'travel-cues-invalid-window.png', 'travel-cues-review-from-menu.png']
+ CATEGORY_TESTS = ("SoundCategoryStorageTest", "SoundCategoryFlowTest", "SoundEventsUiTest", "FavoriteSoundsFlowTest", "ReportReferenceFlowTest", "SoundArchiveUiTest", "SoundLabelFlowTest", "SoundLibraryUiTest")
+ CATEGORY_NEW_FRAMES = ["sound-category-" + name + ".png" for name in ("night-all", "night-selector", "night-cough", "night-playing", "night-recreated", "night-reopened", "night-other-empty", "night-baby", "album-selector", "album-laughter", "album-week", "album-recreated", "album-reopened", "album-speech")]
+ CATEGORY_FRAMES = CATEGORY_NEW_FRAMES + ["analysis-events-" + name + ".png" for name in ("all", "speech", "recreated")]
+@@ -281,6 +324,8 @@ elif args.scope == "organized-settings":
+     tests = ["OrganizedSettingsJourneyTest"]
+ elif args.scope == "recorded-analysis":
+     tests = ["RecordedAnalysisJourneyTest"]
++elif args.scope == "math-owner":
++    tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
+ elif args.scope == "challenge-routine":
+     tests = ["ChallengeRoutineFlowTest"]
+ elif args.scope == "tonight":
+@@ -333,6 +378,8 @@ elif args.scope == "sensing-travel":
+     tests = list(SENSING_TESTS)
+ elif args.scope == "travel-ui":
+     tests = list(TRAVEL_UI_TESTS)
++elif args.scope == "travel-cue-cleanup":
++    tests = ["TravelCueFlowTest#windowReviewCancelSaveRecreateAndReopenNeverArmAnything"]
+ elif args.scope == "sonar-night":
+     tests = list(NIGHT_TESTS)
+ elif args.scope == "sound-categories":
+@@ -442,11 +489,13 @@ if args.scope != "full":
+         "interaction-security": INTERACTION_SECURITY_FRAMES,
+         "appearance": APPEARANCE_FRAMES,
+         "tonight": TONIGHT_FRAMES,
++        "math-owner": ['routine-legacy.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png'],
+         "challenge-routine": ROUTINE_FRAMES,
+         "travel-ui": TRAVEL_UI_FRAMES,
++        "travel-cue-cleanup": TRAVEL_CUE_CLEANUP_FRAMES,
+         "recorded-analysis": RECORDED_ANALYSIS_FRAMES,
+         "organized-settings": ORGANIZED_SETTINGS_FRAMES,
+-        "organization": ['organization-settings-root.png', 'organization-settings-sleep.png', 'organization-search-flashlight.png', 'organization-feedback-off.png', 'organization-alarm-editor.png', 'organization-alarm-schedule.png', 'organization-alarm-options.png', 'organization-controls-recreated.png', 'organization-alarm-backup.png', 'organization-alarm-reopened.png', 'organization-smart-following.png', 'organization-smart-configured.png', 'organization-smart-reopened.png', 'organization-alarm-search.png'],
++        "organization": ['organization-alarm-list.png', 'organization-alarm-list-large.png', 'organization-alarm-time-stepped.png', 'organization-alarm-time-recreated.png', 'organization-settings-root.png', 'organization-settings-sleep.png', 'organization-feedback-off.png', 'organization-search-flashlight.png', 'organization-alarm-editor.png', 'organization-alarm-search.png', 'organization-smart-following.png', 'organization-smart-configured.png', 'organization-alarm-schedule.png', 'organization-alarm-options.png', 'organization-controls-recreated.png', 'organization-alarm-backup.png', 'organization-smart-reopened.png', 'organization-alarm-reopened.png'],
+         "report-flow": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap")],
+         "nap-features": NAP_FEATURE_FRAMES,
+         "feature-increment": FEATURE_INCREMENT_FRAMES,

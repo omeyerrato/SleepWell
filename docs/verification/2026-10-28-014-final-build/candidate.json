@@ -1,0 +1,77 @@
+{
+  "source": "08d3911e90af666d79a1f57fb0ea1326e91c3929",
+  "app_tree": "4859aa32a69de918ffc4f599577938454a45bf1e",
+  "app_src_main_tree": "4459930509280751c888fb17dfb4a38a8c91776d",
+  "apk": "SleepWell-08d3911e90af666d79a1f57fb0ea1326e91c3929.apk",
+  "bytes": 167067516,
+  "sha256": "3b6c698fbfc1d71a21fa2e9b5420b7cf08ad39632608648e226482d11709a024",
+  "package": "org.sleepwell.app",
+  "versionName": "0.1.4",
+  "versionCode": 5,
+  "minSdk": 30,
+  "targetSdk": 36,
+  "abi": "arm64-v8a",
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "database_schema": 17,
+  "records_backup_format": 14,
+  "portable_settings_profile": "v2 iff optional typed Room dimming present; legacy v1 supported; Travel excluded",
+  "baseline": {
+    "source": "d4415a2b5194abd50c36921a5c7c317ef1f18c51",
+    "versionName": "0.1.3",
+    "versionCode": 4,
+    "bytes": 162061389,
+    "sha256": "bfb3015de97e521951c681a80bcc39443ddca489fe0ade89a525a9295890023d"
+  },
+  "independent_checks": [
+    "Frozen candidate and baseline byte length/SHA256",
+    "SDK36 aapt badging of both packages",
+    "SDK36 apksigner verification of both packages",
+    "All assets/native/res/resources.arsc uncompressed byte comparison",
+    "Bounded source/native fragment and inventory comparisons",
+    "Database17/Backup14 unchanged source"
+  ],
+  "not_performed": [
+    "Build",
+    "CI",
+    "Phone/device/output",
+    "Publication",
+    "Install",
+    "Latest metadata modification"
+  ],
+  "native_scope_status": "Named older scoped proofs plus new Math51.773s/14 pass. New first-Cue cleanup retry40635063367 pending; prior40633953280 failed before cleanup assertions. No blanket whole-app or37-frame single-job pass.",
+  "status": "Frozen final candidate independently audited; this archive performs no publication",
+  "historical_candidate": {
+    "file": "SleepWell-63cc05cd816ce12c70936f25b37aa4cb27d6c270.apk",
+    "bytes": 162094173,
+    "sha256": "f571e436cab88d639b43f41d7d5095d11f007c8ecbc6955571eb5870a913ab4f"
+  },
+  "build": {
+    "result": "BUILD SUCCESSFUL",
+    "original_log_sha256": "aca7baa73063584313d1cf21188dce69f8ba5e0304efbb17392b425eea0534b6",
+    "provenance": "Root-owned final assembleDebug; byte-identical original transcript. Verifier performed no build and did not independently time it. Source/package association is pinned to Root frozen result.",
+    "printed_duration": "1m 19s",
+    "tasks": {
+      "total": 34,
+      "executed": 4,
+      "up_to_date": 30
+    }
+  },
+  "badging_deltas": {
+    "baseline": {
+      "candidate_lines": 166,
+      "reference_lines": 166,
+      "differences": [
+        {
+          "index_1based": 1,
+          "candidate": "package: name='org.sleepwell.app' versionCode='5' versionName='0.1.4' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+          "reference": "package: name='org.sleepwell.app' versionCode='4' versionName='0.1.3' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'"
+        }
+      ]
+    },
+    "historical": {
+      "candidate_lines": 166,
+      "reference_lines": 166,
+      "differences": []
+    }
+  }
+}
