@@ -1,0 +1,7 @@
+* -text
+*.png binary
+failed-40729220884/*.txt -whitespace
+failed-40729220884/*.xml -whitespace
+failed-40729220884/*.json -whitespace
+passed-40735685243/*.txt -whitespace
+passed-40735685243/*.json -whitespace

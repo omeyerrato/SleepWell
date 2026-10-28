@@ -1,0 +1,89 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightArcFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NightArcFlowTest:
+INSTRUMENTATION_STATUS: test=clockProgressAndExplanationWithoutAnyAlarmDelivery
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightArcFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Existing dock Tonight full height expected:<163> but was:<162>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.sleepwell.app.NightArcFlowTest.full(NightArcFlowTest.java:34)
+	at org.sleepwell.app.NightArcFlowTest.mainActionBounds(NightArcFlowTest.java:36)
+	at org.sleepwell.app.NightArcFlowTest.lambda$capture$5(NightArcFlowTest.java:37)
+	at org.sleepwell.app.NightArcFlowTest.$r8$lambda$NaJp0D5EXKApWumB8S5zke22ohs(Unknown Source:0)
+	at org.sleepwell.app.NightArcFlowTest$$ExternalSyntheticLambda5.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2616)
+	at android.os.Handler.handleCallback(Handler.java:995)
+	at android.os.Handler.dispatchMessage(Handler.java:103)
+	at android.os.Looper.loopOnce(Looper.java:248)
+	at android.os.Looper.loop(Looper.java:338)
+	at android.app.ActivityThread.main(ActivityThread.java:9067)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+
+INSTRUMENTATION_STATUS: stream=
+Error in clockProgressAndExplanationWithoutAnyAlarmDelivery(org.sleepwell.app.NightArcFlowTest):
+java.lang.AssertionError: Existing dock Tonight full height expected:<163> but was:<162>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.sleepwell.app.NightArcFlowTest.full(NightArcFlowTest.java:34)
+	at org.sleepwell.app.NightArcFlowTest.mainActionBounds(NightArcFlowTest.java:36)
+	at org.sleepwell.app.NightArcFlowTest.lambda$capture$5(NightArcFlowTest.java:37)
+	at org.sleepwell.app.NightArcFlowTest.$r8$lambda$NaJp0D5EXKApWumB8S5zke22ohs(Unknown Source:0)
+	at org.sleepwell.app.NightArcFlowTest$$ExternalSyntheticLambda5.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2616)
+	at android.os.Handler.handleCallback(Handler.java:995)
+	at android.os.Handler.dispatchMessage(Handler.java:103)
+	at android.os.Looper.loopOnce(Looper.java:248)
+	at android.os.Looper.loop(Looper.java:338)
+	at android.app.ActivityThread.main(ActivityThread.java:9067)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+
+INSTRUMENTATION_STATUS: test=clockProgressAndExplanationWithoutAnyAlarmDelivery
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 4.58
+There was 1 failure:
+1) clockProgressAndExplanationWithoutAnyAlarmDelivery(org.sleepwell.app.NightArcFlowTest)
+java.lang.AssertionError: Existing dock Tonight full height expected:<163> but was:<162>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.sleepwell.app.NightArcFlowTest.full(NightArcFlowTest.java:34)
+	at org.sleepwell.app.NightArcFlowTest.mainActionBounds(NightArcFlowTest.java:36)
+	at org.sleepwell.app.NightArcFlowTest.lambda$capture$5(NightArcFlowTest.java:37)
+	at org.sleepwell.app.NightArcFlowTest.$r8$lambda$NaJp0D5EXKApWumB8S5zke22ohs(Unknown Source:0)
+	at org.sleepwell.app.NightArcFlowTest$$ExternalSyntheticLambda5.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2616)
+	at android.os.Handler.handleCallback(Handler.java:995)
+	at android.os.Handler.dispatchMessage(Handler.java:103)
+	at android.os.Looper.loopOnce(Looper.java:248)
+	at android.os.Looper.loop(Looper.java:338)
+	at android.app.ActivityThread.main(ActivityThread.java:9067)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

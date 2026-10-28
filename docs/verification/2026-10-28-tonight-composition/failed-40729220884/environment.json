@@ -1,0 +1,18 @@
+{
+  "commit": "886cbb7a088ae1c2021a8edb23a0f9ea5d6c4206",
+  "emulator": true,
+  "scope": "tonight-composition",
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no native playback output allowlisted; library uses fake playback",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": true,
+  "startup_focused_samples": 3,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420",
+  "test_classes": [
+    "NightArcFlowTest#clockProgressAndExplanationWithoutAnyAlarmDelivery"
+  ]
+}
