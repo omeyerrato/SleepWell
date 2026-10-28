@@ -1,0 +1,35 @@
+{
+  "base": "5bf664434ca303d26069e59287cc0e3c3a55a497",
+  "captured_head": "b25a80f20963832c3fd915a6e5e4998bfd223000",
+  "ordered_candidate_commits": [
+    {
+      "commit": "1c6b19ad2cd5732d2a8e9fb137d019eea1424abd",
+      "subject": "Refine wake-up check sunrise hierarchy and reachable acknowledgement"
+    },
+    {
+      "commit": "83bd08cf69a0f67f1591699e12b6a941f4feaf65",
+      "subject": "Check full wake acknowledgement bounds in existing countdown frames"
+    },
+    {
+      "commit": "2578269bef96f9eefec30a0aeb8b3bb0fb0ef7e3",
+      "subject": "Share sunrise challenge shell and real Math controls with quiet practice"
+    },
+    {
+      "commit": "67cd8064ebff0e3f7c99fe07a86b7a3254df8113",
+      "subject": "Ignore stale Math card callbacks after a question is replaced"
+    },
+    {
+      "commit": "141f48c8e330b4abf7e9b467594bbe9824724dc2",
+      "subject": "Fit single-line arithmetic to available card width"
+    },
+    {
+      "commit": "b57b17d949d6db734b7ab99221f3674282a26dfd",
+      "subject": "Exercise shared Math challenge widgets through existing inert routine journey"
+    },
+    {
+      "commit": "b25a80f20963832c3fd915a6e5e4998bfd223000",
+      "subject": "ci: add inert Wake-check and Math reference scope"
+    }
+  ],
+  "docs_commit": "The archive commit follows the seven candidate commits on codex/wake-challenge-evidence-20261028."
+}

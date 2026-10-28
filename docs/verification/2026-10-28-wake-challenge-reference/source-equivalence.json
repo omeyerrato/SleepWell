@@ -1,0 +1,129 @@
+{
+  "capture_commit": "b25a80f20963832c3fd915a6e5e4998bfd223000",
+  "archive_parent": "b25a80f20963832c3fd915a6e5e4998bfd223000",
+  "scope": "Listed captured production UI, validators/routine host, native methods/helper, focused CI scope and landscape match this docs branch parent. Future candidate differs from frozen root base; no installed/integrated claim.",
+  "files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/WakeCheckActivity.java",
+      "capture_blob": "5f2dbc2ab927bc5d74fff218467bc56f3d04e9cc",
+      "archive_parent_blob": "5f2dbc2ab927bc5d74fff218467bc56f3d04e9cc",
+      "sha256": "05a2fca7a6386a6612d477bea505f5460aa61bdf5e8b8e46ad745f469e35b11f",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmActivity.java",
+      "capture_blob": "5c8bf08ca85404d5b9c43af9c0fd56e29c381b08",
+      "archive_parent_blob": "5c8bf08ca85404d5b9c43af9c0fd56e29c381b08",
+      "sha256": "7129c36215918fa8b1d334f05bda45f0aa780196730a07311c19fdd309473e8a",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RandomChallengePreviewActivity.java",
+      "capture_blob": "ca3253d7881ac38c66362299e601974cbe9b6222",
+      "archive_parent_blob": "ca3253d7881ac38c66362299e601974cbe9b6222",
+      "sha256": "972f0004000317fc0b00e53fc957a98e24bcdca2c1fd11c74b821b68219fb0a6",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/WakeChallengeUi.java",
+      "capture_blob": "7c8f2baf66ad9858e8e926d85245e8428b11d1a3",
+      "archive_parent_blob": "7c8f2baf66ad9858e8e926d85245e8428b11d1a3",
+      "sha256": "31c621d0302a1a5405e4481b3aee3f57e84192b87f56e9ca040bad9ac35f657f",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/WakeMathCard.java",
+      "capture_blob": "b4ce255aac62219feda0f4f790756439de681260",
+      "archive_parent_blob": "b4ce255aac62219feda0f4f790756439de681260",
+      "sha256": "5edb1f33b844ac2a6ca3bb43421531f77a56096bcd47a00c0e8ff58f766755a0",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MathTask.java",
+      "capture_blob": "e5685b903f08f00ad24ddbcdd9546f2b39685b8b",
+      "archive_parent_blob": "e5685b903f08f00ad24ddbcdd9546f2b39685b8b",
+      "sha256": "677557da97d08a32f73530cfe7da3d256e2de451b73c1d91fbe3c1f681277ddf",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MathSettings.java",
+      "capture_blob": "4b921c6b86955136ed03f637ab5d53ffe895848e",
+      "archive_parent_blob": "4b921c6b86955136ed03f637ab5d53ffe895848e",
+      "sha256": "c6253e9e8d501b7d9e238ab53cf0e2ad4cd05430ce3979960898d45745be14ad",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengeRoutine.java",
+      "capture_blob": "de1076f9a75ff8b09f0bea3b1a008019f9c98a43",
+      "archive_parent_blob": "de1076f9a75ff8b09f0bea3b1a008019f9c98a43",
+      "sha256": "fd6f1df14e3a89ca30899e47273c36826ab862df11aefe77197095979ae38fe3",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengeRoutineUi.java",
+      "capture_blob": "01ba84cc3bd79dab37b1a60536cb14ccf070386d",
+      "archive_parent_blob": "01ba84cc3bd79dab37b1a60536cb14ccf070386d",
+      "sha256": "7cf53f223ef0ea136ab638481ab37a56c040bc2e9f961f9a6bef854c141abaeb",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java",
+      "capture_blob": "64922e08594f963161aa0893b42a3c56e18b9ddf",
+      "archive_parent_blob": "64922e08594f963161aa0893b42a3c56e18b9ddf",
+      "sha256": "cace53e758a61e7aeb0c4f19027fee16cf5bfc677f0bfdc00a9cfcfa855ed1b5",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/WakeCheckFlowTest.java",
+      "capture_blob": "bf4540bc132b4c007bef225c0a71ff885aace64e",
+      "archive_parent_blob": "bf4540bc132b4c007bef225c0a71ff885aace64e",
+      "sha256": "5c9e141355e9d6dcad60d224d5206f28abf28b15041299c34988bba6328204e8",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ChallengeRoutineFlowTest.java",
+      "capture_blob": "ebb46dc4f159fdf6dda441196fe5c59480b2f82e",
+      "archive_parent_blob": "ebb46dc4f159fdf6dda441196fe5c59480b2f82e",
+      "sha256": "4ac3f989e407a34d82edb84ee83c860e9478eabef078967d8d5be6fb88a39f76",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/WakeMathPracticeFixture.java",
+      "capture_blob": "564835af992adc47f1a8922492df4914822e7914",
+      "archive_parent_blob": "564835af992adc47f1a8922492df4914822e7914",
+      "sha256": "fe9ad6836af03f7c5e1ed35ecf4c89d82d85de50f024ebbb0c718e62391bf016",
+      "byte_equal": true
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "capture_blob": "f21eca240a4219a431c9d80ca4cc8525f370d32b",
+      "archive_parent_blob": "f21eca240a4219a431c9d80ca4cc8525f370d32b",
+      "sha256": "a52b9511fb7d260e1adf7d5b622b7af6a12c41b1524e5daf850b27bdd7e0c0ef",
+      "byte_equal": true
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "capture_blob": "1c1e42df4acd9918f7f29fc9148d291842ea855f",
+      "archive_parent_blob": "1c1e42df4acd9918f7f29fc9148d291842ea855f",
+      "sha256": "d7565118e9ab5a9e6232f3e26fef55ec8e55741899f6b266059cee38f0ca4c9a",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/wake_dawn_landscape.png",
+      "capture_blob": "69ace61983a2545c8899d826802320273b197765",
+      "archive_parent_blob": "69ace61983a2545c8899d826802320273b197765",
+      "sha256": "69e73f759b6bb0f2fe96fce996a4123de92934be436c608c3d1da8363827f6cc",
+      "byte_equal": true
+    }
+  ],
+  "references": [
+    {
+      "path": "design-concepts/2026-10-22-phone-app/01-everyday.png",
+      "sha256": "e69ff57f5aa69abbb1ff60b791850daf84c2a16bd5d6c7db5ae6f72421f80c95"
+    },
+    {
+      "path": "design-concepts/2026-10-22-phone-app/04-challenges.png",
+      "sha256": "b0613752e8d3ba3ce4743968d1abb2be3a710b7cf606fb50a877b9e06e48f739"
+    }
+  ]
+}

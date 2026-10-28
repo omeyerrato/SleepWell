@@ -1,0 +1,131 @@
+{
+  "run_id": "40607145222",
+  "original_directory": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\40607145222\\silent-android-review",
+  "files": [
+    {
+      "file": "challenge-math-completed.png",
+      "bytes": 345850,
+      "sha256": "5484535cec8d1d1035916db6be1923a012527518dc27735cf297e19dfe45236a"
+    },
+    {
+      "file": "challenge-math-initial.png",
+      "bytes": 344396,
+      "sha256": "b17794455e2825d997a24223b02d81234b377a914f6ac5de216600962f4cc3b7"
+    },
+    {
+      "file": "challenge-math-recreated.png",
+      "bytes": 345896,
+      "sha256": "30dbc90da69a2153970544fbaf357ccf0c90bbb000b19754512172d585c4046f"
+    },
+    {
+      "file": "challenge-math-selected.png",
+      "bytes": 345846,
+      "sha256": "c44da9f4e753dc40b12fd88402307c8b609a8c4fc18e94620eeebef35be7f6e1"
+    },
+    {
+      "file": "challenge-math-typed-completed.png",
+      "bytes": 337547,
+      "sha256": "98585a58e0e322df27db19e53748a96fd73e174f2bff9623dbf705e001aefbe0"
+    },
+    {
+      "file": "challenge-math-typed-recreated.png",
+      "bytes": 352756,
+      "sha256": "3de0786680e61b3e4b1571aa68da0f1c413cceed1fa1d58419b3db8aa8e7b67a"
+    },
+    {
+      "file": "challenge-math-typed-wrong.png",
+      "bytes": 334820,
+      "sha256": "aa0d6c2d2cd5478fcaa7dae8d8bb2e23a95f6122a0ca428654ce71d5f5cef8c6"
+    },
+    {
+      "file": "challenge-math-wrong.png",
+      "bytes": 343785,
+      "sha256": "c1405a5856f1920e6d3c88061f072335872482ef4ba45de7673f3274f7f88d14"
+    },
+    {
+      "file": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs.txt",
+      "bytes": 825,
+      "sha256": "dcfb2fcb1313b19b7a12b47ab68c9253100b5365b3a2dc7bcefde868c10c02f0"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 760,
+      "sha256": "b40634aed49ff3e60a300a53e6a7b5f05a4993ce5fbd79c86974f943b4784eeb"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "bytes": 526,
+      "sha256": "197c7dc32dd70218469302677619943806b9e08b267233e40676c5f62d2337a5"
+    },
+    {
+      "file": "routine-legacy.png",
+      "bytes": 116332,
+      "sha256": "198d1abb4676475e6a3c067e83451394beb0a524b8b9047f08dc44ac506e1d19"
+    },
+    {
+      "file": "routine-ordered.png",
+      "bytes": 141379,
+      "sha256": "e75d3b461d5f493ba6fa79127dd118db4425374c9104f9678c8ee5eceb3762d2"
+    },
+    {
+      "file": "routine-recreated.png",
+      "bytes": 53376,
+      "sha256": "bdcb94bd94d895ac2add3a630b0f977f38e5b3dcb9c69d4d9a4c69a25b87b887"
+    },
+    {
+      "file": "routine-removed.png",
+      "bytes": 129015,
+      "sha256": "5d4d0badf66494c11fd41ea7ad562c2e0811cce6e0c963f33aaada7d795b647e"
+    },
+    {
+      "file": "routine-reopened.png",
+      "bytes": 129015,
+      "sha256": "5d4d0badf66494c11fd41ea7ad562c2e0811cce6e0c963f33aaada7d795b647e"
+    },
+    {
+      "file": "routine-reordered.png",
+      "bytes": 141345,
+      "sha256": "98adaed8abeaa0e9c3fae18f912f3944310bdb4a126004b118f475a6aba7bce0"
+    },
+    {
+      "file": "wake-check-confirmed.png",
+      "bytes": 1415814,
+      "sha256": "fc585ab11bd124aedf3db609a61e9d0a7c41906c650c451109bc9a43847407a3"
+    },
+    {
+      "file": "wake-check-countdown.png",
+      "bytes": 1341614,
+      "sha256": "9f49ff707b513a7256af8975ca16385404c9c4fcd8f77a759af7ac0b3af7ffad"
+    },
+    {
+      "file": "wake-check-prompt.png",
+      "bytes": 1346473,
+      "sha256": "98ceca4edda4ba17385203628edf5f525ef4d10be7b9d9c0895534d4d6f1f710"
+    },
+    {
+      "file": "wake-check-recreated.png",
+      "bytes": 1341730,
+      "sha256": "25f6123dcaa3396b65b9b7648cbcb20ed8b7796b5ad7e36911d58bd6f187ad2f"
+    },
+    {
+      "file": "wake-check-reopened.png",
+      "bytes": 1417194,
+      "sha256": "a98fb6e75e0f0e26c85aed0b11db8d95834dfd879970f268ae739b200cb75820"
+    },
+    {
+      "file": "wake-check-storage-error.png",
+      "bytes": 1378341,
+      "sha256": "3a90f86a707a3d9eb2c59130d2833a5d349a7f261b8727f7b76ae5ec12af660d"
+    },
+    {
+      "file": "wake-check-waiting.png",
+      "bytes": 1361308,
+      "sha256": "cd50fa81b31b684e6d57e1d7a981fc09cb89fa3ce866e32b802e92890319f9cc"
+    },
+    {
+      "file": "WakeCheckFlowTest#silentPromptCountsDownRecreatesConfirmsAndReopensDurably.txt",
+      "bytes": 784,
+      "sha256": "e31726f5da7117b3a2a0ad3781dbc7c2196893ed1c610a804670be75e1b40ef3"
+    }
+  ]
+}
