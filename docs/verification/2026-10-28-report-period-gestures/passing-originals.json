@@ -1,0 +1,189 @@
+{
+  "run": 40647443477,
+  "source": "ef2ded6b7073b94188dcdd56245d3e557c88262e",
+  "result": "PASS",
+  "native_seconds": 68.984,
+  "raw_files": [
+    {
+      "original": "acceleration.txt",
+      "archive": "passing/acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "original": "avds.txt",
+      "archive": "passing/avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    {
+      "original": "emulator.log",
+      "archive": "passing/emulator.log",
+      "bytes": 7484,
+      "sha256": "6073d3414e26abcc362c2d982a94356b90adb3cf02b2f9749fccf318ba546b21"
+    },
+    {
+      "original": "environment.json",
+      "archive": "passing/environment.json",
+      "bytes": 659,
+      "sha256": "968cf7fa12f0a847d81c5eb50c0bab122db196947dcfae5dcfff2ab025c0711c"
+    },
+    {
+      "original": "focused-review-summary.json",
+      "archive": "passing/focused-review-summary.json",
+      "bytes": 351,
+      "sha256": "446a5a4eb479083a81ada9d0b17e59842c58f5fd104e1f3a626fc2c27390b239"
+    },
+    {
+      "original": "guest-last-anr.txt",
+      "archive": "passing/guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+    },
+    {
+      "original": "guest-logcat.txt",
+      "archive": "passing/guest-logcat.txt",
+      "bytes": 483124,
+      "sha256": "04bb662ea06a125d1ce97ad4ba73206b988349614275517c5ec02a5ca238189c"
+    },
+    {
+      "original": "guest-windows.txt",
+      "archive": "passing/guest-windows.txt",
+      "bytes": 40331,
+      "sha256": "21c64703ee5df1806c5157bd13bd43823ac13c908f2a7a9ea4a1551438d3b07e"
+    },
+    {
+      "original": "report-reference-chart-gap.png",
+      "archive": "passing/report-reference-chart-gap.png",
+      "bytes": 168894,
+      "sha256": "302d10ac30113ca17fa66de9d9302703e09f588298fb37181f142c9002c5d68a"
+    },
+    {
+      "original": "report-reference-editor.png",
+      "archive": "passing/report-reference-editor.png",
+      "bytes": 130784,
+      "sha256": "6725d4c49aa504ee6d62d5c0d1d17923a7c070e15f045bd85594bbaee96eecc1"
+    },
+    {
+      "original": "report-reference-history.png",
+      "archive": "passing/report-reference-history.png",
+      "bytes": 221024,
+      "sha256": "0a52f210853ef59a40b421773a1cd958e206690925611804a01d3758071ff116"
+    },
+    {
+      "original": "report-reference-month.png",
+      "archive": "passing/report-reference-month.png",
+      "bytes": 163120,
+      "sha256": "172d46201a5421d449601462f4e039717e133fa90119e473bf0fdd838b674a35"
+    },
+    {
+      "original": "report-reference-night.png",
+      "archive": "passing/report-reference-night.png",
+      "bytes": 199647,
+      "sha256": "d4044a104a20d151c311ca40e1777a3b9d45794446bff391c939f4b1bf543667"
+    },
+    {
+      "original": "report-reference-period-accessibility.png",
+      "archive": "passing/report-reference-period-accessibility.png",
+      "bytes": 130048,
+      "sha256": "562c858b392604d1ea828289704f51b72b09aae4822569c0a7e558ddefedef42"
+    },
+    {
+      "original": "report-reference-period-cancelled.png",
+      "archive": "passing/report-reference-period-cancelled.png",
+      "bytes": 133052,
+      "sha256": "e119fc210fa2b012ce7760248a2704ffd35394d53d340ffe555077acff36db91"
+    },
+    {
+      "original": "report-reference-period-draft-recreated.png",
+      "archive": "passing/report-reference-period-draft-recreated.png",
+      "bytes": 128370,
+      "sha256": "dd148715e3b9479222bbcda042bcf5b09214f30c651ddc1e9fdc6c519dd7bae1"
+    },
+    {
+      "original": "report-reference-period-drag-end.png",
+      "archive": "passing/report-reference-period-drag-end.png",
+      "bytes": 128370,
+      "sha256": "dd148715e3b9479222bbcda042bcf5b09214f30c651ddc1e9fdc6c519dd7bae1"
+    },
+    {
+      "original": "report-reference-period-drag-start.png",
+      "archive": "passing/report-reference-period-drag-start.png",
+      "bytes": 129300,
+      "sha256": "db1497daf0374c91f3ab8137e3e05ea672223119f2bfe6c0e18f7f0b34bda1e5"
+    },
+    {
+      "original": "report-reference-period-persisted.png",
+      "archive": "passing/report-reference-period-persisted.png",
+      "bytes": 135002,
+      "sha256": "636f02efea7415d2374916dd8ecaa41c224bb1dbbf4c3a14d3b5e306c23c1122"
+    },
+    {
+      "original": "report-reference-reopened.png",
+      "archive": "passing/report-reference-reopened.png",
+      "bytes": 135002,
+      "sha256": "636f02efea7415d2374916dd8ecaa41c224bb1dbbf4c3a14d3b5e306c23c1122"
+    },
+    {
+      "original": "report-reference-tags-notes.png",
+      "archive": "passing/report-reference-tags-notes.png",
+      "bytes": 132574,
+      "sha256": "2ae19f4d558414f738a28576bd01bde39f1a42f67eec03bedd09e9ccf1b07e65"
+    },
+    {
+      "original": "report-reference-week-calendar.png",
+      "archive": "passing/report-reference-week-calendar.png",
+      "bytes": 132513,
+      "sha256": "f6fda7edce431d620ea96257b645d123532538cb1b9c070516125a41a0797ba8"
+    },
+    {
+      "original": "report-reference-week-selected.png",
+      "archive": "passing/report-reference-week-selected.png",
+      "bytes": 199915,
+      "sha256": "8fdb57e3e676d84676b932865db9186b8ac25d929ca7a0254028dc8c6add1506"
+    },
+    {
+      "original": "report-reference-week.png",
+      "archive": "passing/report-reference-week.png",
+      "bytes": 197441,
+      "sha256": "dcab525dcc1b75f1f21738ad22c6d565b66e022da04d072785fa7f09ecee0be4"
+    },
+    {
+      "original": "report-reference-year.png",
+      "archive": "passing/report-reference-year.png",
+      "bytes": 162867,
+      "sha256": "2451a02b523700225dc160a14e06f42201d1631651989492b7723b0ae451bfe9"
+    },
+    {
+      "original": "ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "archive": "passing/ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "bytes": 812,
+      "sha256": "59d770adc487f766ce051d4d763014c245c447013ebc25f583808cc7983521e4"
+    },
+    {
+      "original": "startup-focus.txt",
+      "archive": "passing/startup-focus.txt",
+      "bytes": 246,
+      "sha256": "5df2ec7d632550ffffbb6aacf6a22ea1436106c0244bd72f4ea873d6c670699d"
+    }
+  ],
+  "individually_viewed_pngs": [
+    "report-reference-chart-gap.png",
+    "report-reference-editor.png",
+    "report-reference-history.png",
+    "report-reference-month.png",
+    "report-reference-night.png",
+    "report-reference-period-accessibility.png",
+    "report-reference-period-cancelled.png",
+    "report-reference-period-draft-recreated.png",
+    "report-reference-period-drag-end.png",
+    "report-reference-period-drag-start.png",
+    "report-reference-period-persisted.png",
+    "report-reference-reopened.png",
+    "report-reference-tags-notes.png",
+    "report-reference-week-calendar.png",
+    "report-reference-week-selected.png",
+    "report-reference-week.png",
+    "report-reference-year.png"
+  ]
+}

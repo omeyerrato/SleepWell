@@ -1,0 +1,24 @@
+{
+  "scope": "report-flow",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 17,
+  "failures": [
+    "ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects",
+    "report-reference-tags-notes.png",
+    "report-reference-reopened.png",
+    "report-reference-period-drag-start.png",
+    "report-reference-period-drag-end.png",
+    "report-reference-period-accessibility.png",
+    "report-reference-period-draft-recreated.png",
+    "report-reference-period-persisted.png"
+  ]
+}

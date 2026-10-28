@@ -1,0 +1,161 @@
+{
+  "run": 40644483192,
+  "source": "73a0ea65c7c67ed879de7c8631bcdcb9b5f53b0b",
+  "result": "FAILED",
+  "native_seconds": 52.566,
+  "raw_files": [
+    {
+      "original": "acceleration.txt",
+      "archive": "failed-40644483192/acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "original": "avds.txt",
+      "archive": "failed-40644483192/avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    {
+      "original": "emulator.log",
+      "archive": "failed-40644483192/emulator.log",
+      "bytes": 7484,
+      "sha256": "228d47f7f2ebfda3d7db2ec0d55ddf85a0b555500363f0f06f89f7facfac20f1"
+    },
+    {
+      "original": "environment.json",
+      "archive": "failed-40644483192/environment.json",
+      "bytes": 659,
+      "sha256": "61ef78d3c89e68a68336e145ea28af847b9d265b75e3e30526ae804dd617fd64"
+    },
+    {
+      "original": "focused-review-summary.json",
+      "archive": "failed-40644483192/focused-review-summary.json",
+      "bytes": 758,
+      "sha256": "ecd3422865696adcaa2a41a9e81c8850087e545f01f3af6a5267550b4a410527"
+    },
+    {
+      "original": "guest-last-anr.txt",
+      "archive": "failed-40644483192/guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+    },
+    {
+      "original": "guest-logcat.txt",
+      "archive": "failed-40644483192/guest-logcat.txt",
+      "bytes": 472144,
+      "sha256": "005e3d8d962590ad724aa95a27e24acd1fe2bd3d61f42bc6be3cd92780866179"
+    },
+    {
+      "original": "guest-windows.txt",
+      "archive": "failed-40644483192/guest-windows.txt",
+      "bytes": 40237,
+      "sha256": "64aeedc7ddeab05cd3c7f35cae11666167f0f4681a6881693aa41b9efc41b708"
+    },
+    {
+      "original": "report-reference-chart-gap.png",
+      "archive": "failed-40644483192/report-reference-chart-gap.png",
+      "bytes": 169253,
+      "sha256": "7883aa51f6d8a8da0a202811f297b98f5956a4edfa825ee023fd99196470e208"
+    },
+    {
+      "original": "report-reference-editor.png",
+      "archive": "failed-40644483192/report-reference-editor.png",
+      "bytes": 131645,
+      "sha256": "7139fde3b7854268aabd460602a1c472c76fbb62dd6d158e7e80ecd49532f8a3"
+    },
+    {
+      "original": "report-reference-failure.png",
+      "archive": "failed-40644483192/report-reference-failure.png",
+      "bytes": 134137,
+      "sha256": "8dd621f2f13f623bf51ca49696c6a11257b6ddc4ffcb5abd7312828110e819a5"
+    },
+    {
+      "original": "report-reference-failure.xml",
+      "archive": "failed-40644483192/report-reference-failure.xml",
+      "bytes": 36563,
+      "sha256": "b00a60cbe67499d5826990ff11341f874ce99f513b7869e381d9387b064a9d1c"
+    },
+    {
+      "original": "report-reference-history.png",
+      "archive": "failed-40644483192/report-reference-history.png",
+      "bytes": 221376,
+      "sha256": "72d4fe2bb83e4a806c06bdf0514901aeaf4bdb19dccb80c545083b25698d7730"
+    },
+    {
+      "original": "report-reference-month.png",
+      "archive": "failed-40644483192/report-reference-month.png",
+      "bytes": 163407,
+      "sha256": "9c75dc1791bc1eac007c94fd4dea0fbdc70a92260bf3fd6ba0351214335c9c5f"
+    },
+    {
+      "original": "report-reference-night.png",
+      "archive": "failed-40644483192/report-reference-night.png",
+      "bytes": 199861,
+      "sha256": "a993d9de6bcdd9270c75942d81240fae76fe761542e64216998d45f01aaa812c"
+    },
+    {
+      "original": "report-reference-original-error.txt",
+      "archive": "failed-40644483192/report-reference-original-error.txt",
+      "bytes": 3874,
+      "sha256": "86ee346b2bd493cd322c769475bff6eac97fa511bb397a4627529023d111ec87"
+    },
+    {
+      "original": "report-reference-period-cancelled.png",
+      "archive": "failed-40644483192/report-reference-period-cancelled.png",
+      "bytes": 134137,
+      "sha256": "8dd621f2f13f623bf51ca49696c6a11257b6ddc4ffcb5abd7312828110e819a5"
+    },
+    {
+      "original": "report-reference-week-calendar.png",
+      "archive": "failed-40644483192/report-reference-week-calendar.png",
+      "bytes": 132675,
+      "sha256": "3d334b9eab80bee2e96273d34315c924f7d5a328edc14367df753cf4eda944c9"
+    },
+    {
+      "original": "report-reference-week-selected.png",
+      "archive": "failed-40644483192/report-reference-week-selected.png",
+      "bytes": 200237,
+      "sha256": "baa861f8ce6dfe7f7f35bc60045e6d7a5e767b51e3b1c2f561c4210af4f667ee"
+    },
+    {
+      "original": "report-reference-week.png",
+      "archive": "failed-40644483192/report-reference-week.png",
+      "bytes": 197702,
+      "sha256": "b4596296c7402fc2dcaa2ee1163977595a34ce2894c8fe7d173674e337a7302b"
+    },
+    {
+      "original": "report-reference-year.png",
+      "archive": "failed-40644483192/report-reference-year.png",
+      "bytes": 163132,
+      "sha256": "c393edbb9fb7a272c848daf23b7bec2e45550791f91e97efb6b0414c3bc868eb"
+    },
+    {
+      "original": "ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "archive": "failed-40644483192/ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "bytes": 2855,
+      "sha256": "3c914a88474c279fc84930acaf298c50a818a18b1b5049bb48f9a9cb30abe8a5"
+    },
+    {
+      "original": "startup-focus.txt",
+      "archive": "failed-40644483192/startup-focus.txt",
+      "bytes": 246,
+      "sha256": "9000c32d5947c0ec429dfa23294a7a148b98cac0c2414e4631b22c45ecfcb3c4"
+    }
+  ],
+  "individually_viewed_pngs": [
+    "report-reference-chart-gap.png",
+    "report-reference-editor.png",
+    "report-reference-failure.png",
+    "report-reference-history.png",
+    "report-reference-month.png",
+    "report-reference-night.png",
+    "report-reference-period-cancelled.png",
+    "report-reference-week-calendar.png",
+    "report-reference-week-selected.png",
+    "report-reference-week.png",
+    "report-reference-year.png"
+  ],
+  "diagnosis": "After unfinished-gesture Activity recreation, fixture omitted terminal pointer7 release. InputDispatcher rejects next DOWN because pointer7 remains down. Not a production-gesture failure; cleanup/drag/accessibility/persistence full acceptance remains incomplete at this source.",
+  "correction": "4361dd853b6860198e616d1db7d489c9390a8154 injects one terminal UP after recreation and asserts restored baseline again before starting a distinct gesture."
+}
