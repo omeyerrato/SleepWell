@@ -1,0 +1,72 @@
+{
+  "base": "a6f3f5ccd9964ce408205732ff45009f4aba2aac",
+  "source": "9481eaef5b6ae1aaee209b7b8b296e9f6d9afe39",
+  "native": "a2cb1638bbb4c967d7b16ba03703c4658929e253",
+  "verification_head": "95716b6adf14272ddc7d9a946a76161d3cf53563",
+  "root_compared_read_only": "e08c945bd0f703e18c45e3641c80ad980ad37496",
+  "files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmActivity.java",
+      "accepted_commit": "9481eaef5b6ae1aaee209b7b8b296e9f6d9afe39",
+      "verified_sha256": "e0fec60d374a817de4a8c6e9644a311252b6c5e6795d20bb60df6339bfd72eab",
+      "identical_at_verified_head": true,
+      "root_sha256": "e0fec60d374a817de4a8c6e9644a311252b6c5e6795d20bb60df6339bfd72eab",
+      "root_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MathAnswerOwner.java",
+      "accepted_commit": "9481eaef5b6ae1aaee209b7b8b296e9f6d9afe39",
+      "verified_sha256": "4ce2b1e88e10cf89f5d123163f12cfc8606eb052704f615a175b8376746dc68c",
+      "identical_at_verified_head": true,
+      "root_sha256": "4ce2b1e88e10cf89f5d123163f12cfc8606eb052704f615a175b8376746dc68c",
+      "root_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/WakeMathCard.java",
+      "accepted_commit": "9481eaef5b6ae1aaee209b7b8b296e9f6d9afe39",
+      "verified_sha256": "fb5e195efd4570a3dfa033b661b1867679d9a05fc63cc07380d064f5309e9076",
+      "identical_at_verified_head": true,
+      "root_sha256": "fb5e195efd4570a3dfa033b661b1867679d9a05fc63cc07380d064f5309e9076",
+      "root_equal": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/WakeMathPracticeFixture.java",
+      "accepted_commit": "a2cb1638bbb4c967d7b16ba03703c4658929e253",
+      "verified_sha256": "30f88ade3b98b536636a0e26919f01996d5d0ff9631c23a1893552d67567aa59",
+      "identical_at_verified_head": true,
+      "root_sha256": "30f88ade3b98b536636a0e26919f01996d5d0ff9631c23a1893552d67567aa59",
+      "root_equal": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ChallengeRoutineFlowTest.java",
+      "accepted_commit": "a2cb1638bbb4c967d7b16ba03703c4658929e253",
+      "verified_sha256": "4ac3f989e407a34d82edb84ee83c860e9478eabef078967d8d5be6fb88a39f76",
+      "identical_at_verified_head": true,
+      "root_sha256": "4ac3f989e407a34d82edb84ee83c860e9478eabef078967d8d5be6fb88a39f76",
+      "root_equal": true
+    }
+  ],
+  "metadata_sha256": {
+    "scripts/ci_silent_ui.py": "6e762e1b8f29b7bc418eee8efeae8cfab0bbde5aeed058e59ba94c1008bbfbf7",
+    ".github/workflows/silent-ui-review.yml": "1c894165b9151b6bf86d8449a38ef8883813cd306b880ff211fe5cf7799eeda0"
+  },
+  "metadata_audit": "Removing only math-owner choice/selector/14-name dictionary entry recovers original Python AST and original workflow bytes. Other scopes/defaults unchanged.",
+  "selector": "org.sleepwell.app.ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+  "literal_originals": [
+    "routine-legacy.png",
+    "routine-ordered.png",
+    "routine-reordered.png",
+    "routine-recreated.png",
+    "routine-removed.png",
+    "routine-reopened.png",
+    "challenge-math-initial.png",
+    "challenge-math-selected.png",
+    "challenge-math-wrong.png",
+    "challenge-math-recreated.png",
+    "challenge-math-completed.png",
+    "challenge-math-typed-wrong.png",
+    "challenge-math-typed-recreated.png",
+    "challenge-math-typed-completed.png"
+  ],
+  "full_alarm_runtime_verified": false
+}
