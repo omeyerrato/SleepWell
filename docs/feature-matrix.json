@@ -1211,9 +1211,10 @@
         "Store.java",
         "RecordChart.java",
         "ChartSeries.java",
-        "ChartTicks.java"
+        "ChartTicks.java",
+        "PhoneMotionChartReader.java"
       ],
-      "validation": "TrackingFlowTest 2 passing on S23 2026-10-23 (movement only, live selection/focus, pause/recreate/resume/reopen); ChartSeriesTest 7 passing; full-night and broader-device coverage incomplete; ChartTicksTest ten integrated passes for aligned clock/12–24h/DST/fractional seconds/no-overlap labels. ChartClockFlowTest FAILS initial fixture focus at64ae8d2/CI40033681541 before all four images; correction/new native originals required. ChartClockFlowTest now passes4.366s atbb582cf/CI40037791812 with four actual images and retained selection/focus; visual review rejects default focus slabs and long fixture title. Deliberate focus/input-mode cleanup requires new captures. Latest ChartClockFlowTest 1 PASS4.590s at12c8c0f/CI40042183746 with4 originals; strict review clears gray focus slabs and fold-title clipping while retaining actual selection/clock/DST/short-second labels. This supersedes earlier rejected chart styling only; hardware tracking accuracy remains unverified.",
+      "validation": "TrackingFlowTest 2 passing on S23 2026-10-23 (movement only, live selection/focus, pause/recreate/resume/reopen); ChartSeriesTest 7 passing; full-night and broader-device coverage incomplete; ChartTicksTest ten integrated passes for aligned clock/12–24h/DST/fractional seconds/no-overlap labels. ChartClockFlowTest FAILS initial fixture focus at64ae8d2/CI40033681541 before all four images; correction/new native originals required. ChartClockFlowTest now passes4.366s atbb582cf/CI40037791812 with four actual images and retained selection/focus; visual review rejects default focus slabs and long fixture title. Deliberate focus/input-mode cleanup requires new captures. Latest ChartClockFlowTest 1 PASS4.590s at12c8c0f/CI40042183746 with4 originals; strict review clears gray focus slabs and fold-title clipping while retaining actual selection/clock/DST/short-second labels. This supersedes earlier rejected chart styling only; hardware tracking accuracy remains unverified. After0.1.3, CI40623012447 at662e44cf passes12.185s/8 originals for bounded indexed worker paging, exact aggregation/gaps/zero, pending-durable dedup, retained selection/focus, pause refresh and explicit Retry. The actual TrackingActivity lifecycle continuation is still pending; this initial fixture uses RecordReportActivity and has an explicitly rejected clipped fixture heading. No new physical/overnight/ANR benchmark claim.",
       "status": "implemented",
       "notes": "Measured gravity-filtered RMS: real 1-second live previews, minute saved epochs and partial final windows. Explicit interval starts preserve pauses; unavailable samples stay null. No stage estimator or clinical validation. Narrow movement flow accepted; full screens remain partial.",
       "id": "F046",
@@ -2380,11 +2381,12 @@
       "implementation": [
         "SearchActivity.java",
         "SearchData.java",
-        "SearchIndex.java"
+        "SearchIndex.java",
+        "SearchSettings.java"
       ],
-      "validation": "4b7d017 / CI40147599727: SearchStorageTest 1 and SearchFlowTest 1/all4 originals PASS within30classes/102methods/90originals. Private fixtures/fake providers only; no new combined local count or physical output inferred.",
+      "validation": "4b7d017 / CI40147599727: SearchStorageTest 1 and SearchFlowTest 1/all4 originals PASS within30classes/102methods/90originals. Private fixtures/fake providers only; no new combined local count or physical output inferred. Current CI40623526256 at52b6dbb5 passes12.917s/5 originals: actual Room result navigation, unsaved dimming draft recreation/Back with query retained/no Save, unambiguous saved-record identity/report/recreation, exact original preferences restored. Fake unavailable sensor/audio/access ports; no real capture or permission request. Earlier failed15.63s ambiguous fixture and loading capture are preserved separately.",
       "status": "partial",
-      "notes": "Actual saved-record/settings search opens the selected destination and retains query across recreation; no network or invented results.",
+      "notes": "Actual saved-record/settings search opens the selected destination and retains query across recreation; no network or invented results. Room conditions and Screen dimming are now explicit search terms and an allowlisted real destination in Sleep & bedtime; Main retains its existing route and names dimming.",
       "id": "F082",
       "tests": [
         {
@@ -3907,7 +3909,7 @@
         "TravelPlan.java",
         "TravelReminders.java"
       ],
-      "validation": "Productionc6f2fcaa assembleDebug passed in 18s; original signer/uploaded hashes verified. Travel-only CI40426761660 PASS3methods: Plan43.569s/Cues37.968s and31 inspected actual captures; draft/modal recreation, Save/reopen, errors/retry/disable and injected-light lifecycle. Physical light/notification delivery, pre-travel sleep schedule itself, dream cues, efficacy and whole board09 remain unverified.",
+      "validation": "Productionc6f2fcaa assembleDebug passed in 18s; original signer/uploaded hashes verified. Travel-only CI40426761660 PASS3methods: Plan43.569s/Cues37.968s and31 inspected actual captures; draft/modal recreation, Save/reopen, errors/retry/disable and injected-light lifecycle. Physical light/notification delivery, pre-travel sleep schedule itself, dream cues, efficacy and whole board09 remain unverified. Current UI CI40620048754 atd09bb7d7 passes existing3methods/34 individually inspected originals: Plan34.514s/Cues39.439s; compact actual UTC clocks, full48dp main actions, child/About restoration and saved state. At this source During tracking remains a Manual-only prerequisite child; the independent silent-reminder implementation is separate and pending its full native run.",
       "status": "partial",
       "notes": "Explicit manual-night travel light cues and separate optional timed low-amplitude dream vibration requests have saved schedules, request outcomes and cleanup. Neither REM detection nor jetlag-prevention/lucid-dream efficacy is established. Hardware output remains unverified; no automatic rearming of dream cues. Separate pre-travel schedule planning now supplies dated voluntary sleep shifts, default-off silent reminders and explicitly saved wake-alarm drafts; this does not validate timed light or lucid-dream efficacy. Travel main now groups schedules/reminders and light-cue settings, preserving all options and visible Save; owned About restoration retains context. Detail Done keeps edits in the draft. See verification/2026-10-27-smart-wake-travel/README.md.",
       "id": "F128",

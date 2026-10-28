@@ -1,0 +1,43 @@
+{
+  "root_source_head": "f073504f68d4c3073ebd3f8cb23dcf729e04b0b8",
+  "source_matches": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TravelActivity.java",
+      "source": "8c20d00f5019f58ea2cb58d18548883e10d40f3b",
+      "sha256": "4cdc8eba722e1cb49c65e33dc7f1e79258074cdf69874293026664706430ec4c"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PhoneMotionChartReader.java",
+      "source": "4d0a3f4a7f1cdf7f08872eccef9e0c9c78173659",
+      "sha256": "307785b1b014e9c8b0ece1c2c0b96628bf0a16656345197a208a2edeb19c217e"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordChart.java",
+      "source": "4d0a3f4a7f1cdf7f08872eccef9e0c9c78173659",
+      "sha256": "18d48952c78abcc1156a319c8b6c1d19be618131007ac1de6f7af95bb82e1783"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingActivity.java",
+      "source": "4d0a3f4a7f1cdf7f08872eccef9e0c9c78173659",
+      "sha256": "84882315b59b8c2a02bf02ae570ef91189e2191ad36d5104f4af531f7269494e"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "source": "9ca48928ae203b3cc0b1c73a31a714f1175e1792",
+      "sha256": "2be8a0d7d625cc7aa4cb07f6b9913022551c640d6e665caee31cef47a218b225"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SearchSettings.java",
+      "source": "9ca48928ae203b3cc0b1c73a31a714f1175e1792",
+      "sha256": "878953748aefce18495fbd14b7de7b46faf2799645847bedeb396ca79a0b0efd"
+    }
+  ],
+  "scope_union": {
+    "existing_frame_manifests_preserved": 37,
+    "existing_selectors_preserved": 37,
+    "added": "room-settings-search"
+  },
+  "build": "Combined package pending",
+  "published": false,
+  "phone_installed": false
+}
