@@ -32,6 +32,7 @@ on:
           - privacy-recovery
           - setup-readiness
           - readiness-recovery
+          - protection-recovery
           - sensing-reference
           - contactless-status
           - room-bedtime-live

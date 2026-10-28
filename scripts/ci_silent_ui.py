@@ -44,6 +44,7 @@ parser.add_argument("--scope", choices=(
     'privacy-recovery',
     'setup-readiness',
     'readiness-recovery',
+    'protection-recovery',
     'sensing-reference',
     'contactless-status',
     'room-bedtime-live',
@@ -99,6 +100,24 @@ AUTOMATION_RULE_FRAMES = [
     "automation-rules-saved-notice.png",
     "automation-rules-load-error.png",
     "automation-rule-reopened.png"
+]
+PROTECTION_RECOVERY_FRAMES = [
+    "protection-alarms.png",
+    "protection-editor.png",
+    "protection-off.png",
+    "protection-disclosure.png",
+    "protection-on.png",
+    "protection-recreated.png",
+    "protection-global.png",
+    "protection-power-only.png",
+    "protection-readiness.png",
+    "protection-readiness-rationale.png",
+    "protection-readiness-rationale-cancel.png",
+    "protection-readiness-settings-recovery.png",
+    "protection-readiness-returned.png",
+    "protection-about-recreated.png",
+    "protection-disclosure-recreated.png",
+    "protection-read-error.png",
 ]
 SETUP_READINESS_FRAMES = ORGANIZED_SETTINGS_FRAMES + ["protection-"+name+".png" for name in ("alarms","editor","off","disclosure","on","recreated","global","power-only","readiness","readiness-rationale","readiness-rationale-cancel","readiness-settings-recovery","readiness-returned")]
 ROOM_BEDTIME_LIVE_FRAMES = ORGANIZED_SETTINGS_FRAMES + ["guard-"+name+".png" for name in ("draft","saved","options-recreated","paused","wind-down","wind-down-options","wind-down-recreated","wind-down-paused")]
@@ -385,6 +404,8 @@ elif args.scope == "setup-readiness":
     tests = ["OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs", "AlarmProtectionFlowTest#compactListAndGlobalProtectionsPersistWithoutAlarmExecution"]
 elif args.scope == "readiness-recovery":
     tests = ["AlarmProtectionFlowTest#compactListAndGlobalProtectionsPersistWithoutAlarmExecution"]
+elif args.scope == "protection-recovery":
+    tests = ["AlarmProtectionFlowTest#compactListAndGlobalProtectionsPersistWithoutAlarmExecution"]
 elif args.scope == "contactless-status":
     tests = ["ContactlessSetupFlowTest#explicitRealDspFakePcmQualificationSaveAndReopenNoAutostart"]
 elif args.scope == "sensing-reference":
@@ -518,6 +539,7 @@ if args.scope != "full":
         "room-bedtime-live": ROOM_BEDTIME_LIVE_FRAMES,
         "readiness-recovery": ["protection-"+name+".png" for name in ("alarms", "editor", "off", "disclosure", "on", "recreated", "global", "power-only", "readiness", "readiness-rationale", "readiness-rationale-cancel", "readiness-settings-recovery", "readiness-returned")],
         "sensing-reference": ["sonar-setup-"+name+".png" for name in ("initial", "ready", "gain-changed", "retested", "reopened", "recreated")]+["sonar-night-"+name+".png" for name in ("setup", "measuring", "paused", "paused-recreated", "resumed", "missing", "stop-confirmation")]+["snore-settings-"+name+".png" for name in ("default", "preview", "selected", "recreated", "reopened")],
+        "protection-recovery": PROTECTION_RECOVERY_FRAMES,
         "setup-readiness": SETUP_READINESS_FRAMES,
         "privacy-recovery": ["privacy-history-"+name+".png" for name in ("ready","error","busy","pending","done")],
         "reference-menus": REFERENCE_MENU_FRAMES,
