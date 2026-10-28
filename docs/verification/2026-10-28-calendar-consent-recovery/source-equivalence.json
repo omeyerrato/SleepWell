@@ -1,0 +1,139 @@
+{
+  "run_id": 40607144683,
+  "capture_source": "7ee0b7de9a716c9b4273dd6166dc533421737292",
+  "archive_base": "7ee0b7de9a716c9b4273dd6166dc533421737292",
+  "scope": "Only the listed committed UI/default platform delegation/native fixtures/workflow sources. No root0.1.2 APK equivalence or production provider/storage-CAS runtime claim.",
+  "sources": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AutoCalendarActivity.java",
+      "capture_git_blob": "27431420273b41135b90e0c1f6855bd3ec0a3c2c",
+      "sha256_committed_bytes": "e3aaaf41617a19f71951db9bd7ce36f8307196b9f4c63afe425c5c06b66f8b44",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AutoCalendar.java",
+      "capture_git_blob": "f27b85d19caa504569ad6b790f178b77730459e2",
+      "sha256_committed_bytes": "8443793035fc1bff49efac823535d0945bed8094fa7cb1fe01fe32314fdbcb2d",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CalendarEventWrites.java",
+      "capture_git_blob": "03becb22bf898b77ff8bc322101c7dec979497e3",
+      "sha256_committed_bytes": "208779a85643b302b7911dd9af8c79454b57d9ac2fc1c31c08cd69f63605e2a4",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CalendarRulesActivity.java",
+      "capture_git_blob": "3c149ec65827df4da3c72be4a2b31aab9867c6bf",
+      "sha256_committed_bytes": "bfb1c4551f0724f18541b83ed089039b445a4797befa7700f73ba36844c0df1c",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CalendarAccess.java",
+      "capture_git_blob": "eef04d90097c9c33825e15dc1f0b0ffa5d5c1cf8",
+      "sha256_committed_bytes": "b18672f72d5d5dc86b77c479187142a084cc619cb87f1621a280dee34a1d63fa",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CalendarSettings.java",
+      "capture_git_blob": "f99710c360a43e19673719f77e9299d0f6fa6a0b",
+      "sha256_committed_bytes": "f9be19116c800822bc945e32263928a93d82e0d15528da807de7148b05814fc6",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CalendarPolicy.java",
+      "capture_git_blob": "77f2fd5efabe37c8f9971449d30b1185ed7692c6",
+      "sha256_committed_bytes": "578ba6fdec0edc90530184cdd4ffc6adc152c40d890846016a71a6f4b5750288",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CalendarSync.java",
+      "capture_git_blob": "08ae18c858a3cd1b450c6c0aff329f8ece20abc5",
+      "sha256_committed_bytes": "6c0ec473c6ff4052eb3c56cb89269f9d9e5409d0c28cae81b4c9fa210a026ba4",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PlanOperations.java",
+      "capture_git_blob": "26da87f3deb2104f26392c926ed96542b038ee01",
+      "sha256_committed_bytes": "9c8045f194a5ab9da410d741f97e5b23da6b1d2dcaa98b4b9e318efd17b42b80",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PlanActivity.java",
+      "capture_git_blob": "afaedf20564c46c88370ba19dae6cf84b6ae01a2",
+      "sha256_committed_bytes": "2f0f04d0e05bd39727156542b85167ff454c58590bc27677bad77932fd1cf682",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "capture_git_blob": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "sha256_committed_bytes": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+      "capture_git_blob": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+      "sha256_committed_bytes": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/CalendarRulesFlowTest.java",
+      "capture_git_blob": "6d0edfac2ce004570df2819182c4743048a2de26",
+      "sha256_committed_bytes": "2f50886df5410e82fe09cdf21885a0141cb80df2cff21d9a6f36ac3c2c5245c0",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "capture_git_blob": "1fe6571267dc3047eaf53ab4caa426ee91f244cb",
+      "sha256_committed_bytes": "178ec7feaaf24d0ee0994b6b74da6c670c6f5a924db7772e30865fc6cd4f9758",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "capture_git_blob": "366d59f8f3ee1ec689f225eb39785398dc9ad42d",
+      "sha256_committed_bytes": "fe7696c8519e7b4a375a0171fa017a51af0a62d7dc2ef5466b8594c088124288",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "capture_git_blob": "81bf524bdab59b361b82cc8afae0bec3365dad13",
+      "sha256_committed_bytes": "53e374aaf2fdcbeebd9d3b63a892c09ed0e6cd2e41c294986b93eee3d2161fb9",
+      "archive_base_matches_capture": true,
+      "git_filtered_working_file_matches_capture": true
+    }
+  ],
+  "verification_commit_order": [
+    {
+      "commit": "a54a679849590223f5a594100975a6ccb0e0b0cd",
+      "subject": "fix: preserve automatic calendar draft and reviewed consent revision"
+    },
+    {
+      "commit": "e8ea2c937c238d6212e7add6b9b047c429dd9d74",
+      "subject": "refactor: pin calendar UI access to existing platform operations"
+    },
+    {
+      "commit": "0fd315d20e091a0f784ab4709e14c14aa04b0259",
+      "subject": "test: verify future calendar drafts and consent conflict in existing journey"
+    },
+    {
+      "commit": "7ee0b7de9a716c9b4273dd6166dc533421737292",
+      "subject": "Add isolated calendar consent recovery verification scope"
+    }
+  ],
+  "fixture_boundary": "AutoCalendarActivity.PLATFORM defaults delegate existing real operations; native method replaces Access with private AtomicReference CAS and fake calendar list/access. CalendarRules uses private preferences and fake permission/provider/apply ports."
+}

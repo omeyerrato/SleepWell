@@ -1,0 +1,51 @@
+{
+  "run_id": 40607144683,
+  "source": "7ee0b7de9a716c9b4273dd6166dc533421737292",
+  "unchanged_originals": [
+    {
+      "file": "calendar-rules-permission-settings.png",
+      "bytes": 212778,
+      "sha256": "83b6215d148f967d33d055163e411c2b0d1cfbb33c650562441c9f2da2ca451d"
+    },
+    {
+      "file": "calendar-rules-permission-granted-draft.png",
+      "bytes": 178974,
+      "sha256": "4d097ed762e604e314de06491e2c1885073bbabdae8ab96e384e3d3e81cc03d0"
+    },
+    {
+      "file": "calendar-rules-permission-revoked-draft.png",
+      "bytes": 195425,
+      "sha256": "bb3779de942368ceadc304241a981afb7e96b803a3f118b3f1fd78634363db77"
+    },
+    {
+      "file": "auto-calendar-draft-recreated.png",
+      "bytes": 265704,
+      "sha256": "07d2f385b750ffe2fb1605814ff306789f9dc5e665403a6d53bc607aa1235b36"
+    },
+    {
+      "file": "auto-calendar-consent-conflict.png",
+      "bytes": 286855,
+      "sha256": "7a04f9117170905f2dd0c64cd36aa008253198198d1688fd902bf8b7a4b56cf7"
+    },
+    {
+      "file": "auto-calendar-saved-private.png",
+      "bytes": 265607,
+      "sha256": "0805852eb387853f48d4ed236bf7dabb6b1fbbb5f336d4b8236449f5921828cb"
+    },
+    {
+      "file": "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft.txt",
+      "bytes": 808,
+      "sha256": "0a3fb17978d8d8fc905d0ae0deec9eb86333e8bf2fad95a0068a6c2b47e7000b"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 672,
+      "sha256": "fbdb51f42b2413aeac52a3ebd5fe555225fb3c1606e1effcb2d938e202c9dccc"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "bytes": 363,
+      "sha256": "8ba1538070ab6eaab8aeda70b61881adfd82ce42c5df44ef5955dcd120b6b28a"
+    }
+  ]
+}
