@@ -29,6 +29,7 @@ parser.add_argument("--scope", choices=(
     'recorded-analysis',
     'challenge-routine',
     'math-owner',
+    'challenge-selection',
     'tonight',
     'tonight-composition',
     'appearance',
@@ -336,6 +337,8 @@ elif args.scope == "organized-settings":
     tests = ["OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs"]
 elif args.scope == "recorded-analysis":
     tests = ["RecordedAnalysisJourneyTest"]
+elif args.scope == "challenge-selection":
+    tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
 elif args.scope == "math-owner":
     tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
 elif args.scope == "challenge-routine":
@@ -507,6 +510,7 @@ if args.scope != "full":
         "interaction-security": INTERACTION_SECURITY_FRAMES,
         "appearance": APPEARANCE_FRAMES,
         "tonight": TONIGHT_FRAMES,
+        "challenge-selection": ['routine-legacy.png', 'routine-catalog-empty.png', 'routine-catalog-search.png', 'routine-task-about.png', 'routine-task-values.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png'],
         "math-owner": ['routine-legacy.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png'],
         "challenge-routine": ROUTINE_FRAMES,
         "travel-ui": TRAVEL_UI_FRAMES,

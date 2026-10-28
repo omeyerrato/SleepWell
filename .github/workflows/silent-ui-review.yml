@@ -17,6 +17,7 @@ on:
           - recorded-analysis
           - challenge-routine
           - math-owner
+          - challenge-selection
           - tonight
           - tonight-composition
           - appearance
