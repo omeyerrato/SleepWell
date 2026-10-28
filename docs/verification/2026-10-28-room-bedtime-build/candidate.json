@@ -1,0 +1,39 @@
+{
+  "source": "5bf664434ca303d26069e59287cc0e3c3a55a497",
+  "apk": "SleepWell-5bf664434ca303d26069e59287cc0e3c3a55a497.apk",
+  "bytes": 166954308,
+  "sha256": "47ad0a0c11ed7020c4663df0143a990d9cab5eaeb23545398e587c921d475ec1",
+  "package": "org.sleepwell.app",
+  "versionName": "0.1.2",
+  "versionCode": 3,
+  "abi": "arm64-v8a",
+  "minSdk": 30,
+  "targetSdk": 36,
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "signature_verification": "apksigner36.0.0 verify --verbose --print-certs: PASS; v2, one original signer",
+  "build": {
+    "result": "BUILD SUCCESSFUL",
+    "duration": "1m8s",
+    "tasks": {
+      "total": 34,
+      "executed": 4,
+      "up_to_date": 30
+    },
+    "command": "assembleDebug -PsleepwellAbi=arm64-v8a --offline --max-workers=2 --no-daemon",
+    "jdk": "java-runtime-delta",
+    "gradle": "8.14.3",
+    "provenance": "Release owner Root terminal observation; raw final stdout was not retained. No build rerun by this verifier."
+  },
+  "database_schema": 17,
+  "backup_format": 14,
+  "independent_checks": [
+    "APK size/SHA-256",
+    "aapt package/version/ABI/icon references",
+    "apksigner candidate and baseline",
+    "uncompressed ZIP assets/native/resources",
+    "committed storage-format source equality"
+  ],
+  "publication": "pending; not performed or verified by this task",
+  "phone_installation": "pending; no phone action by this task",
+  "scope": "Package integrity and named historical native configuration/fixture evidence only; no full-app/security/reference/physical-output acceptance."
+}
