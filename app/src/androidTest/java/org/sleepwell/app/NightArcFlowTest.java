@@ -69,9 +69,9 @@ public class NightArcFlowTest {
             try{for(int index=0;index<controls.size();index++){ImageButton control=controls.get(index);int[] xy=new int[2];i.runOnMainSync(()->control.getLocationInWindow(xy));assertNativeTint(frame,xy[0],xy[1],control.getWidth(),control.getHeight(),colors.get(index),control.getContentDescription().toString());metrics.add(decoded.get(index)+"\t"+xy[0]+","+xy[1]+","+control.getWidth()+","+control.getHeight());}}finally{frame.recycle();}
             dismissDiagnostic();
         }
-        launcherDiagnostic(metrics);
-        File folder=new File(c.getExternalFilesDir(null),"verification");try(java.io.Writer output=new java.io.OutputStreamWriter(new java.io.FileOutputStream(new File(folder,"arc-icon-metrics.tsv")),java.nio.charset.StandardCharsets.UTF_8)){for(String row:metrics)output.write(row+"\n");}
+        writeAssetMetrics(metrics);launcherDiagnostic(metrics);writeAssetMetrics(metrics);
     }
+    private void writeAssetMetrics(List<String> metrics)throws Exception{File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());try(java.io.Writer output=new java.io.OutputStreamWriter(new java.io.FileOutputStream(new File(folder,"arc-icon-metrics.tsv")),java.nio.charset.StandardCharsets.UTF_8)){for(String row:metrics)output.write(row+"\n");}}
     private LinearLayout diagnosticBody(String title,String subtitle){
         LinearLayout body=new LinearLayout(activity);body.setOrientation(LinearLayout.VERTICAL);body.setPadding(Design.dp(c,12),Design.dp(c,12),Design.dp(c,12),Design.dp(c,12));body.setBackgroundColor(0xfffff4e4);
         TextView heading=new TextView(activity);heading.setText(title);heading.setTextSize(20);heading.setTextColor(0xff4a2414);body.addView(heading);
@@ -108,7 +108,14 @@ public class NightArcFlowTest {
             showDiagnostic(body);
         });
         captureDiagnostic("arc-launcher-icons.png",previews);
-        i.runOnMainSync(()->{for(int index=0;index<previews.size();index++){AdaptiveIconDrawable icon=icons.get(index);Rect bounds=icon.getBounds();RectF mask=new RectF();icon.getIconMask().computeBounds(mask,true);assertTrue("Real framework adaptive mask is nonempty",!mask.isEmpty());assertTrue("Mask fits drawable bounds",mask.left>=bounds.left-1&&mask.top>=bounds.top-1&&mask.right<=bounds.right+1&&mask.bottom<=bounds.bottom+1);assertEquals("Preview fully accommodates native drawable width",previews.get(index).getWidth(),bounds.width());assertEquals("Preview fully accommodates native drawable height",previews.get(index).getHeight(),bounds.height());metrics.add("launcher\t"+previews.get(index).getContentDescription()+"\t"+icon.getClass().getSimpleName()+"\tmask="+mask+"\tbounds="+bounds);}});
+        i.runOnMainSync(()->{for(int index=0;index<previews.size();index++){
+            ImageView preview=previews.get(index);AdaptiveIconDrawable icon=icons.get(index);Rect bounds=icon.getBounds();RectF mask=new RectF();icon.getIconMask().computeBounds(mask,true);assertTrue("Real framework adaptive mask is nonempty",!mask.isEmpty());assertTrue("Mask fits drawable bounds",mask.left>=bounds.left-1&&mask.top>=bounds.top-1&&mask.right<=bounds.right+1&&mask.bottom<=bounds.bottom+1);
+            // FIT_CENTER retains intrinsic drawable bounds and scales them with ImageView's actual matrix.
+            RectF rendered=new RectF(bounds),renderedMask=new RectF(mask);preview.getImageMatrix().mapRect(rendered);preview.getImageMatrix().mapRect(renderedMask);rendered.offset(preview.getPaddingLeft(),preview.getPaddingTop());renderedMask.offset(preview.getPaddingLeft(),preview.getPaddingTop());
+            assertEquals("Native image matrix fills full preview width",preview.getWidth()-preview.getPaddingLeft()-preview.getPaddingRight(),rendered.width(),1f);assertEquals("Native image matrix fills full preview height",preview.getHeight()-preview.getPaddingTop()-preview.getPaddingBottom(),rendered.height(),1f);
+            assertTrue("Rendered drawable fits fully inside preview",rendered.left>=-1&&rendered.top>=-1&&rendered.right<=preview.getWidth()+1&&rendered.bottom<=preview.getHeight()+1);assertTrue("Rendered native mask fits fully inside preview",renderedMask.left>=-1&&renderedMask.top>=-1&&renderedMask.right<=preview.getWidth()+1&&renderedMask.bottom<=preview.getHeight()+1);
+            metrics.add("launcher\t"+preview.getContentDescription()+"\t"+icon.getClass().getSimpleName()+"\tmask="+mask+"\tbounds="+bounds+"\timageMatrix="+preview.getImageMatrix()+"\trendered="+rendered+"\trenderedMask="+renderedMask);
+        }});
         dismissDiagnostic();
     }
     private long local(int day,int hour,int minute){return LocalDate.of(2026,10,day).atTime(hour,minute).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();}
