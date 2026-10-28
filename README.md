@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-Latest published **0.1.4 / 08d3911e** adds direct alarm-time controls and consistent feedback, background phone-chart loading, Room search, silent Travel reminders and stale-Math/notification cleanup repairs. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.4-alarm-travel-20261028-08d3911e); [exact bounded evidence](docs/verification/2026-10-28-014-final-build/README.md). Phone installation awaits USB; the last verified installation is170b0e44, with original user data preserved at that update.
+Published **0.1.4 / 08d3911e** is installed on the S23 with original user data preserved. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.4-alarm-travel-20261028-08d3911e); [installation evidence](docs/verification/2026-10-28-014-final-build/phone-installation.md). Current0.1.5 source adds a generated flat identity/control raster set and scoped Contactless, Report, Tonight and Automatic-menu improvements. Its arm64 build passed3m6s; current raster/native acceptance and publication are pending. [Current checklist](docs/QUICK-CHECKLIST.md).
 
 Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped
@@ -20,7 +20,7 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
 exercise actions, cancellation, recreation and persistence. [Exact release scope](docs/verification/2026-10-27-reference-menus-build/README.md).
 
-The phone now has **170b0e44**, installed at the user’s request with original records, user settings and user files preserved. No physical output test ran. All36 reference states and the broader interaction/security review remain open.
+The last verified phone installation is **0.1.4 / 08d3911e**. No physical output test ran. All36 reference states and broader interaction/security acceptance remain open; newer source is not automatically installed on the phone.
 
 ## Working capabilities
 

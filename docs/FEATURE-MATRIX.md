@@ -1,6 +1,6 @@
 # Phone feature matrix
 
-Latest published **0.1.4 / 08d3911e** adds direct alarm-time controls and consistent feedback, background phone-chart loading, Room search, silent Travel reminders and stale-Math/notification cleanup repairs. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.4-alarm-travel-20261028-08d3911e); [exact bounded evidence](verification/2026-10-28-014-final-build/README.md). Phone installation awaits USB; the last verified installation is170b0e44, with original user data preserved at that update.
+Published **0.1.4 / 08d3911e** is installed on the S23 with original user records, settings and files preserved. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md). Current0.1.5 source adds generated raster artwork and the scoped Contactless, Report, Tonight and Automatic menus below; its arm64 build passed3m6s, while native raster review and publication are pending. The172 entries retain the full phone scope and explicit remaining limitations.
 
 Updated 2026-10-28 incrementally against the supplied brief, all 12 previously inspected boards,
 SCREEN-MAP.md, current code and official Sleep as Android manual. Screen numbers

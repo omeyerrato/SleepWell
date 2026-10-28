@@ -1,4 +1,4 @@
-# SleepWell feature checklist — 27 October 2026
+# SleepWell feature checklist — 28 October 2026
 
 Latest published **0.1.4 / 08d3911e** adds direct alarm-time controls and consistent feedback, background phone-chart loading, Room search, silent Travel reminders and stale-Math/notification cleanup repairs. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.4-alarm-travel-20261028-08d3911e); [exact bounded evidence](verification/2026-10-28-014-final-build/README.md). **0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md).
 
