@@ -25,7 +25,7 @@ final class TravelReminders {
     };
     static Port port=PLATFORM;
     static void channel(Context c){NotificationChannel channel=new NotificationChannel(CHANNEL,"Travel daylight reminders",NotificationManager.IMPORTANCE_DEFAULT);channel.setDescription("User-chosen destination-time reminders; no sound, vibration or flashlight.");channel.setSound(null,null);channel.enableVibration(false);c.getSystemService(NotificationManager.class).createNotificationChannel(channel);}
-    static void apply(Context c){apply(c,true);}
+    static void apply(Context c){try{apply(c,true);}finally{TravelTrackingReminders.apply(c);}}
     private static void apply(Context c,boolean dismiss){synchronized(TravelPlans.LOCK){TravelPlans.Repository repo=TravelPlans.repository(c);TravelPlan p=repo.load(clock.getAsLong());Request previous=repo.pending();
         try{repo.pending(null,"");port.cancel(c,previous);if(dismiss)port.dismiss(c);long next=p.next(clock.getAsLong(),repo.delivered());if(next>0){Request request=new Request(p.revision,next);repo.pending(request,"");port.schedule(c,request);}repo.prefs.edit().remove("travelDeliveryError").apply();}
         catch(Exception error){String message=error.getMessage()==null?"Reminder scheduling is unavailable.":error.getMessage();repo.pending(null,message);throw new IllegalStateException(message,error);}

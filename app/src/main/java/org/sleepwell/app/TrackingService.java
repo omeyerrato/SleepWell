@@ -354,6 +354,7 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void automationTransition(boolean paused){if(current!=this||!running||session<=0)return;try(Store evidence=storeFactory.open(this)){java.util.List<org.json.JSONObject> rows=evidence.rows("SELECT id,start,end FROM tracking_pauses WHERE session=? ORDER BY id DESC LIMIT 1",""+session);if(rows.isEmpty())return;org.json.JSONObject row=rows.get(0);if(paused&&row.isNull("end"))automationEvents.paused(row.optLong("id"),row.optLong("start"));else if(!paused&&!row.isNull("end"))automationEvents.resumed(row.optLong("id"),row.optLong("end"));}catch(RuntimeException unavailable){Prefs.put(this,"automationEventError","A committed tracking transition could not be queued. Recording is unaffected.");}}
     private void pause(){
+        TravelTrackingReminders.recordingEnded(this);
         smartWake.reset();
         ExternalMediaFade.end(session,dndRun,"Tracking paused; media fade cancelled.");
         StillnessSoundFade.pause(session,dndRun);
@@ -374,6 +375,7 @@ public class TrackingService extends Service implements SensorEventListener {
     }
     private void closeGoogleSleep(){GoogleSleepSignal old=googleSleep;googleSleep=null;if(old!=null)old.close();}
     private void stop(boolean wasInterrupted){
+        TravelTrackingReminders.recordingEnded(this);
         smartWake.reset();
         ExternalMediaFade.end(session,dndRun,"Tracking ended; media fade cancelled.");
         StillnessSoundFade.end(session,dndRun);
