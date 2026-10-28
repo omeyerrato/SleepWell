@@ -43,6 +43,7 @@ ICONS = {
     "motion": ("wave-sine", "regular"), "contrast": ("circle-half", "regular"),
     "bulb": ("lightbulb", "regular"), "info": ("info", "regular"),
     "phone": ("device-mobile", "regular"), "mic": ("microphone", "regular"),
+    "headphones": ("headphones", "regular"),
     "speech": ("chats", "regular"),
     "pause": ("pause", "fill"), "play": ("play", "fill"),
     "tracking": ("spinner-gap", "regular"), "sonar": ("broadcast", "regular"),

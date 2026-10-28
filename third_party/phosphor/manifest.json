@@ -43,6 +43,7 @@
     "assets/regular/footprints.svg": "eed51ca4f2ddfc6dbf6a9adb6325424861ac8cf762dafebd5db5cc8153028893",
     "assets/regular/fork-knife.svg": "24388d27ec51856a899b2ba8a1f68b1c31b385ed1f27eb275d5685ebf951b80f",
     "assets/regular/gear-six.svg": "2bb05ec80cc37505a3f21c74989dbb297ab8442a668f5ffbd6a8f7c1d5794c7b",
+    "assets/regular/headphones.svg": "992d04ff6759f1f12d40259298a92589c18556bf5b2ea6f82bc23e74d9c48185",
     "assets/regular/heart.svg": "312dee73d1d969631d5498012f619ccf4edbdf31e1be3e65af4f4f1b3ac1b2dd",
     "assets/regular/info.svg": "438a1f319d53d86e840af73fb7b1d224c9224a437b9fa449a4e2cb45a82a3552",
     "assets/regular/keyboard.svg": "96646775c552eb7944a88071ec3d7b93f28fd0e19ae995cfb52957403e38422e",
@@ -267,6 +268,10 @@
     },
     "mic": {
       "name": "microphone",
+      "weight": "regular"
+    },
+    "headphones": {
+      "name": "headphones",
       "weight": "regular"
     },
     "speech": {
