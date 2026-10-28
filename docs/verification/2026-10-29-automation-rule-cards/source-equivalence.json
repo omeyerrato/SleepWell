@@ -1,0 +1,124 @@
+{
+  "tested_head": "0cadd897a40b423314607f7d994dabfc2dbae6a2",
+  "previous_functional_head": "805704afbb600741f4a43c8fd85759e11650b77d",
+  "app_and_scope_changes": [
+    "app/src/androidTest/java/org/sleepwell/app/AutomationStorageTest.java",
+    "app/src/main/java/org/sleepwell/app/AutomationActivity.java"
+  ],
+  "scope": "automation-rules",
+  "selector": "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows",
+  "required_original_images": [
+    "automation-rules-main.png",
+    "automation-rules-options.png",
+    "automation-rules-destination.png",
+    "automation-rule-type-recreated.png",
+    "automation-rule-draft.png",
+    "automation-rule-test-confirmation-recreated.png",
+    "automation-rule-busy-recreated.png",
+    "automation-rules-saved-notice.png",
+    "automation-rules-load-error.png",
+    "automation-rule-reopened.png"
+  ],
+  "workflow_and_script_exactly_unchanged": true,
+  "native_sounds": false,
+  "audio_imports": false,
+  "source_equivalence": "Exact blobs, not equality to a later root checkout. Only local rule-card rendering/helpers and the same existing native method subsection changed. Prior evidence DOCS are preserved separately.",
+  "files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AutomationActivity.java",
+      "git_blob": "3f021233a4d10386b49fd4decd9d031f547f7176",
+      "sha256": "bf8fbe523a0720a6eb5bbcd25fe406cb3956717f2069d76a73aef5aeb2a13d56",
+      "unchanged_from_prior_tested_head": false
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/AutomationStorageTest.java",
+      "git_blob": "0106a8e981905e04ea185efa55cf323f2d5588e3",
+      "sha256": "2c95950b952c82223feb463f117df41b266d488d25dd0d38896f0e74527511b6",
+      "unchanged_from_prior_tested_head": false
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "git_blob": "7968fa886565c0d8266229fadd09584b8d8c7d65",
+      "sha256": "9c0b2c53aa20932fad957e83a0cc50796a8c8f2e41810ec77396a93e70b81beb",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "git_blob": "b5dd3ee1986c2f1cc5d8419b5f393d60e813ebd8",
+      "sha256": "da2da5a90f70745e0547891a62e27f097f69e3f85c64c333b3060e1b62e833d8",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AutomationStore.java",
+      "git_blob": "7a3512edcb3f9886f7ab521a5f966c48ad4860b5",
+      "sha256": "6d2f314ba5b9ba71b6ba9eccde74968005dcd679d978a5328737df800b1a49e2",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AutomationRule.java",
+      "git_blob": "344b3e8803f2204b79b3a79ddfaa9d96e417f6b1",
+      "sha256": "29a11db05d70435cb951e86c579bef4886a3e7d0bfeb2f498248ee9d2cb082eb",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AutomationSecrets.java",
+      "git_blob": "258577075f994fdd85e78db24540ac91b5423935",
+      "sha256": "5db3aae6a511c370861e12d55ecaf235dd7ce553b0431e4e214fca3387a23731",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Automations.java",
+      "git_blob": "f2bfbc5f5ae1edf3e135259f54d0f7e45f180a81",
+      "sha256": "924167c3964bb35d2142551db57fb258e2ede544cc72b8c589c707a03de2f067",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AutomationEvent.java",
+      "git_blob": "7e9b1ad3fa0c00b9bdcf2b28e8c876bd95c5fa9d",
+      "sha256": "67d9c6cd6a47c00fe41632e6f0b2e77d3f3e9567941f947053dcc3875ee9ef56",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AutomationDispatch.java",
+      "git_blob": "61114a1997e1a809bb003e189f0b7e75936736ae",
+      "sha256": "2114196734500cf34468a4ae660e9a3e47a9376098fecdd2438e39df4c62372a",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AutomationTransports.java",
+      "git_blob": "e6ab7eac53ec061811bd63dcba204154593059a0",
+      "sha256": "f50d13f004120de77555823e428593163034ee7c6d4e45f399a76615180681c9",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/IncomingAutomation.java",
+      "git_blob": "06285b905c105b05abf8ed865185d5ecf68dde9d",
+      "sha256": "715bac03c028f705d06e876bfbb8ac4e462426ed95ba6516096c9495e0f8db9d",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/IncomingAutomationActivity.java",
+      "git_blob": "e0083b8df393d7cbfe8380a413fe392631210dc2",
+      "sha256": "8759bb6db3d321f408c0e6e2bfc2ffb70e0970a0f1694315235b669b931086be",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/IncomingAutomationSettingsActivity.java",
+      "git_blob": "4f49f40164cf63e2bf3776111fc5b0c84c2979f8",
+      "sha256": "081c1027b5e9e7a4722feb3d47f45f41b3f3f9dd762fef3efcc7b101b2a4f475",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PlanOperations.java",
+      "git_blob": "26da87f3deb2104f26392c926ed96542b038ee01",
+      "sha256": "9c8045f194a5ab9da410d741f97e5b23da6b1d2dcaa98b4b9e318efd17b42b80",
+      "unchanged_from_prior_tested_head": true
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "git_blob": "3796dbc5d07608b67f7b5766d62a23aa812f1096",
+      "sha256": "bfbe56034243efae83a98644fe31e76f8372adea2924ddd6c83607fd50cbc11d",
+      "unchanged_from_prior_tested_head": true
+    }
+  ]
+}
