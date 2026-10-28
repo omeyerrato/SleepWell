@@ -25,7 +25,14 @@ and use the picker for the fallback clock; direct arrows are omitted there.
 The four main menus and fixed Alarm on/Save footer retain their actions;
 supporting settings retain the scroll path.
 
-## Verification prepared, not yet run
+## Focused native verification
+
+[CI 40630084064](https://github.com/omeyerrato/SleepWell/actions/runs/40630084064)
+passed the existing method in 41.023 seconds with all 18 required originals.
+The [archive](verification/2026-10-28-alarm-clock-interactions/README.md) includes
+the individual image inspection, unchanged logs and the first failed run's
+evidence. Native-only correction `4e9366d9` follows the current owned Gentle
+options dialog; production source is identical between the two runs.
 
 The existing inert method
 `SettingsOrganizationFlowTest#groupedSettingsSearchAndAlarmDraftPersistWithoutOutputs`
@@ -70,10 +77,12 @@ Exact changed-source and changed-native-file `javac` checks passed with JDK 21,
 `--release 17`, Android API 36 and existing cached project/dependency classes.
 The source check emitted five missing annotation-enum warnings from the minimal
 classpath; both checks emitted only the expected deprecation notes otherwise.
-`git diff --check` passed. No Gradle build, native run or CI dispatch was made
-for this increment. The existing workflow inventories were not changed.
+`git diff --check` passed. Those local checks preceded CI. The subsequent
+verification commit updates only the organization inventory from 14 to 18;
+all other scope inventories are preserved. Both CI runs built the application
+and allowlisted test APK successfully; the corrected run passed the method.
 
-Runtime layout and the 18 originals still require focused native verification.
+The inspected runtime layout is scoped to the captured emulator configuration.
 The test adapts to the current OS 12/24-hour mode; it does not force both modes,
 change locale or system font scale, exercise sunrise runtime calculation, or
 claim coverage of every display size. The larger list case changes only the

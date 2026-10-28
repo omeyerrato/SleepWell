@@ -1,0 +1,126 @@
+{
+  "conclusion": "failure",
+  "createdAt": "2026-10-28T03:52:13Z",
+  "databaseId": 40629112361,
+  "headSha": "240e46497415bba0b274ff3eab608c1e5492c64d",
+  "jobs": [
+    {
+      "completedAt": "2026-10-28T03:57:01Z",
+      "conclusion": "failure",
+      "databaseId": 122621049158,
+      "name": "silent-ui",
+      "startedAt": "2026-10-28T03:52:16Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-28T03:52:20Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-28T03:52:17Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:52:43Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-28T03:52:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:52:43Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-java@v4",
+          "number": 3,
+          "startedAt": "2026-10-28T03:52:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:53:53Z",
+          "conclusion": "success",
+          "name": "Run android-actions/setup-android@v3",
+          "number": 4,
+          "startedAt": "2026-10-28T03:52:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:54:00Z",
+          "conclusion": "success",
+          "name": "Run gradle/actions/setup-gradle@v4",
+          "number": 5,
+          "startedAt": "2026-10-28T03:53:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:54:50Z",
+          "conclusion": "success",
+          "name": "Build application and allowlisted test APK",
+          "number": 6,
+          "startedAt": "2026-10-28T03:54:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:54:52Z",
+          "conclusion": "success",
+          "name": "Configure isolated Android renderer",
+          "number": 7,
+          "startedAt": "2026-10-28T03:54:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:56:56Z",
+          "conclusion": "failure",
+          "name": "Allowlisted UI checks and real Android captures",
+          "number": 8,
+          "startedAt": "2026-10-28T03:54:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:56:58Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 9,
+          "startedAt": "2026-10-28T03:56:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:56:58Z",
+          "conclusion": "success",
+          "name": "Post Run gradle/actions/setup-gradle@v4",
+          "number": 16,
+          "startedAt": "2026-10-28T03:56:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:56:58Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-java@v4",
+          "number": 17,
+          "startedAt": "2026-10-28T03:56:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:56:58Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 18,
+          "startedAt": "2026-10-28T03:56:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-28T03:56:58Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-10-28T03:56:58Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40629112361/job/122621049158"
+    }
+  ],
+  "status": "completed",
+  "updatedAt": "2026-10-28T03:57:02Z",
+  "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40629112361"
+}

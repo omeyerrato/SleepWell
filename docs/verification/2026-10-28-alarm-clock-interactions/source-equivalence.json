@@ -1,0 +1,218 @@
+{
+  "capture_source": "4e9366d9ce4e31b3db55b4341a0325c21ffd1839",
+  "archive_base": "4e9366d9ce4e31b3db55b4341a0325c21ffd1839",
+  "candidate_base": "f073504f68d4c3073ebd3f8cb23dcf729e04b0b8",
+  "production_change_commit": "36592e6fadc23e4d4778333bc05c6642a07af72d",
+  "app_src_main_tree": "77aa918e341abaa45fee0e8f99b4a9a89c48dee2",
+  "production_tree_byte_identical_from_source_commit_through_both_runs": true,
+  "scope": "Listed source blobs and app/src/main tree only. No equality claim against later root integration or release APK; native correction is the only source difference between runs.",
+  "sources": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmClockUi.java",
+      "capture_git_blob": "1b6c9e105c84368c26e460c31cf41a184ba4db04",
+      "sha256_capture_bytes": "1da02838f99659d5378c8c36911ad1f36ee9224cfda08da937cf84252818fee3",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": null,
+      "base_byte_identical": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java",
+      "capture_git_blob": "5b948d784983c2e00b3cc12d98190db1245fca0b",
+      "sha256_capture_bytes": "77555baee00478872365c9894f8268b326ca8faa85e5aee05eb54b0316c273ad",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "64922e08594f963161aa0893b42a3c56e18b9ddf",
+      "base_byte_identical": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "capture_git_blob": "f41aeaea257a81a6bcf170da396bea9f35e4b2f7",
+      "sha256_capture_bytes": "fa3b861327749975282de34fa6533a64541e72e385c3ef2a08a413360b180594",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "86e4e736f9fd852819a3d116dcc18bfe83a166b5",
+      "base_byte_identical": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "capture_git_blob": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "sha256_capture_bytes": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/InteractionFeedback.java",
+      "capture_git_blob": "55f8b5ba4418bf5a4426034dcd56c606634138b4",
+      "sha256_capture_bytes": "9d728c99e7a1a81a3d44291d9861dee831fa09c179062fe898d65d84d421e1ef",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "55f8b5ba4418bf5a4426034dcd56c606634138b4",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Appearance.java",
+      "capture_git_blob": "aecb50792e4892b83b3cba664182e368efd15be0",
+      "sha256_capture_bytes": "e21213f167519292860f54afd96716a938c5ebbd972ec3f358de7810dc574c6a",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "aecb50792e4892b83b3cba664182e368efd15be0",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Prefs.java",
+      "capture_git_blob": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "sha256_capture_bytes": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+      "capture_git_blob": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+      "sha256_capture_bytes": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Alarm.java",
+      "capture_git_blob": "c47185b4b2ff6df6c73850a4e6f854befd3df2a2",
+      "sha256_capture_bytes": "d3a1142e2e5fe98ced61a23bd0708c6f9de63a8049187eddd91a9fd36ea6a14a",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "c47185b4b2ff6df6c73850a4e6f854befd3df2a2",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmScheduling.java",
+      "capture_git_blob": "8c407889344ac56fc9a15a86de92bfd90a687f3a",
+      "sha256_capture_bytes": "e4977a15b49db223d78427afca7650553ad6b2c85a2a9ee40ce9838d9061b7c7",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "8c407889344ac56fc9a15a86de92bfd90a687f3a",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Scheduler.java",
+      "capture_git_blob": "4d0adb9983712f8600048b16a130ae9dbcb644ec",
+      "sha256_capture_bytes": "df86e686164f160faca4d40b30c1cd4ec83e5f6ff5cd9d9cd0a8ee8f5c2056b9",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "4d0adb9983712f8600048b16a130ae9dbcb644ec",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmSkips.java",
+      "capture_git_blob": "4d4fa893f934132eeacf2b3104255635e904c289",
+      "sha256_capture_bytes": "9b761f6c21735fd890586b13e9d9ce2148488406b11487f37a1380992592b0c3",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "4d4fa893f934132eeacf2b3104255635e904c289",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Naps.java",
+      "capture_git_blob": "8cb9ac221de49f26cf7a43e37e82135ea14a6e3c",
+      "sha256_capture_bytes": "29f5db9d15a82261b01bcc3a71256b86ed55f96129385f6412d2872957d9c038",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "8cb9ac221de49f26cf7a43e37e82135ea14a6e3c",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepPicker.java",
+      "capture_git_blob": "2373fa22ba4c407af2d4af24c0dd26de8e23d593",
+      "sha256_capture_bytes": "1b8db38e9e6bf926713e9c933e107d615befe6eb3e6eadc344c0b7cec5f7a492",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "2373fa22ba4c407af2d4af24c0dd26de8e23d593",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmEditorSearchUi.java",
+      "capture_git_blob": "2c7902a66d506363bd49bc98238a6dcaf9d3fd45",
+      "sha256_capture_bytes": "038def1542cb08b0df00e111975d7cab1888735cd7b4a175314bbde4e56765d4",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "2c7902a66d506363bd49bc98238a6dcaf9d3fd45",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmSmartWakeUi.java",
+      "capture_git_blob": "e2585e31adb662c959258267aeeaada8ff1ea2a2",
+      "sha256_capture_bytes": "09df8758583c6fa6b8952779670208e78b06289d9602c2abf3c7e3d757d1834f",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "e2585e31adb662c959258267aeeaada8ff1ea2a2",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "capture_git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "sha256_capture_bytes": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Records.java",
+      "capture_git_blob": "25368746615d6dc554f0afa239b1586cc20f8bfc",
+      "sha256_capture_bytes": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "25368746615d6dc554f0afa239b1586cc20f8bfc",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SettingsOrganizationFlowTest.java",
+      "capture_git_blob": "369f0a5df4dfdb6c2a88dd930bd1aec889f2c6a3",
+      "sha256_capture_bytes": "0cd270f018a74e7e2d98572a703b70615748e12b584c52799309856a4f4eb3a3",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": false,
+      "base_git_blob": "c49587577d732a28b48fc67a47f87e35bc1a6327",
+      "base_byte_identical": false
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/AlarmSkipFixture.java",
+      "capture_git_blob": "605813c883c478064ebf5f19f2f1bfb7d82bba4c",
+      "sha256_capture_bytes": "ba29bb3dbaba5cb3911f2607807a5f2e962efa28db333a614c3187dd126f7086",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "605813c883c478064ebf5f19f2f1bfb7d82bba4c",
+      "base_byte_identical": true
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "capture_git_blob": "d688d41c34e85136287032feaf0e24b7db9c402f",
+      "sha256_capture_bytes": "8a5975ffce13344dc1017fca5023487811a1d83778146c7ffebdfb03abce810a",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "f48381cc1fa152c9410a1561d4414e2eba8b945f",
+      "base_byte_identical": false
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "capture_git_blob": "28b1ac8eb3ecf5fbba0f7bfffe08e6424d959f3c",
+      "sha256_capture_bytes": "fc7bb0a3bfb60c3af5b808cdf45676b99960f0193eab7fca170419cd5d319acf",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "28b1ac8eb3ecf5fbba0f7bfffe08e6424d959f3c",
+      "base_byte_identical": true
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "capture_git_blob": "1fe6571267dc3047eaf53ab4caa426ee91f244cb",
+      "sha256_capture_bytes": "178ec7feaaf24d0ee0994b6b74da6c670c6f5a924db7772e30865fc6cd4f9758",
+      "archive_base_matches_capture": true,
+      "first_failed_run_byte_identical": true,
+      "base_git_blob": "1fe6571267dc3047eaf53ab4caa426ee91f244cb",
+      "base_byte_identical": true
+    }
+  ]
+}

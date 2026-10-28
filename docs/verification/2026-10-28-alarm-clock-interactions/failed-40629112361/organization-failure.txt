@@ -1,0 +1,18 @@
+require Gentle wake-up
+java.lang.AssertionError: Flashlight wake-up is a real Switch
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.SettingsOrganizationFlowTest.lambda$switchChecked$13(SettingsOrganizationFlowTest.java:69)
+	at org.sleepwell.app.SettingsOrganizationFlowTest.$r8$lambda$X2LydfdV7u-PZVVywkeS3iItj5Q(Unknown Source:0)
+	at org.sleepwell.app.SettingsOrganizationFlowTest$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2616)
+	at android.os.Handler.handleCallback(Handler.java:995)
+	at android.os.Handler.dispatchMessage(Handler.java:103)
+	at android.os.Looper.loopOnce(Looper.java:248)
+	at android.os.Looper.loop(Looper.java:338)
+	at android.app.ActivityThread.main(ActivityThread.java:9067)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
