@@ -100,7 +100,7 @@ public final class AutomationActivity extends Activity {
         if(rowsLoaded&&rows.isEmpty())Design.text(body,"No rules yet. Add a destination and choose a sleep event.",14,400,Design.MUTED);
         for(AutomationStore.Row row:rows){
             LinearLayout card=Design.col(this);Design.pad(card,14,8);card.setBackground(Design.shape(this,Design.SOFT,16));
-            menu(card,row.transport.equals("INTENT")?"settings":"link",row.name,eventLabel(AutomationEvent.Kind.valueOf(row.event))+" → "+transportLabel(AutomationRule.Transport.valueOf(row.transport)),null,()->load(row));
+            menu(card,row.transport.equals("INTENT")?"settings":"link",row.name,eventLabel(AutomationEvent.Kind.valueOf(row.event))+" → "+transportLabel(AutomationRule.Transport.valueOf(row.transport)),null,()->load(row));card.getChildAt(0).setEnabled(request==null&&!loading);
             Switch choice=Design.toggle(card,"Enabled",row.status,row.enabled,on->setEnabled(row,on));choice.setContentDescription("Rule enabled: "+row.name);choice.setEnabled(request==null&&!loading);
             body.addView(card);Design.space(body,10);
         }
