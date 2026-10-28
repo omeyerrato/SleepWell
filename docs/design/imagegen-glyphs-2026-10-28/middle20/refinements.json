@@ -1,0 +1,17 @@
+[
+  {
+    "name": "ic_phosphor_flashlight_regular",
+    "prompt": "Use case: logo-brand. Generate one Android 24dp UI icon: a front-facing upright handheld FLASHLIGHT drawn only as a hollow OUTLINE. The lamp head is a broad horizontal rounded rectangle, its lower shoulders taper to a narrower long handle with a rounded bottom. The whole head and handle interior must be completely transparent, NOT filled. Add one tiny round-ended switch outline on the handle. Single dark espresso #4A2414 rounded line, medium 7% of symbol width, consistent weight. Square canvas, centered symbol occupying about 76% of canvas, genuinely transparent alpha background and hollow interior. No light rays, tile, badge, words, perspective, gradients, texture, shading, shadows, 3D. Make the outline unmistakably readable at 24 pixels; do not make a filled flashlight silhouette.",
+    "transparent_background": true,
+    "generated_file": "C:/Users/omeye/.codex/generated_images/01a17d39-91d2-7a90-b30f-219863db8637/exec-c277cdf0-2040-4293-8702-71aa443a9075.png"
+  },
+  {
+    "name": "ic_phosphor_github_logo_fill",
+    "prompt": "Use case: identity-preserve. Reference image is the official GitHub brand's logo lockup: preserve ONLY the exact recognizable Invertocat circular symbol to the LEFT of the word GitHub, not the word. Create a single Android 24dp icon from that mark: solid dark espresso #4A2414 circle with the exact transparent negative-space Octocat head, two pointed ears, compact downward body and curling left tail seen in the reference. Preserve the familiar brand silhouette and circular outer shape faithfully; do not invent a generic cat, paws or extra legs. Center this one mark at about 76% of a square canvas. Actual transparent alpha outside the mark AND in every negative-space cat region. No text, no wordmark, no background, no green shapes, no enclosing tile beyond the mark's intrinsic circle, no gradients, texture, shadows, 3D or extra ornaments. Flat monochrome, sharp antialiased edges, strong recognizability at 24 pixels.",
+    "transparent_background": true,
+    "referenced_image_paths": [
+      "C:/Users/omeye/.codex/worktrees/phone-automations/SleepWell/.android-local/imagegen-middle20/github-official-reference.png"
+    ],
+    "generated_file": "C:/Users/omeye/.codex/generated_images/01a17d39-91d2-7a90-b30f-219863db8637/exec-3e4204f5-aa99-477e-93a2-3c3082336b5f.png"
+  }
+]

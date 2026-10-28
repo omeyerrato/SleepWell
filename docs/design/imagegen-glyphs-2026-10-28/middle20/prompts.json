@@ -1,0 +1,102 @@
+[
+  {
+    "name": "ic_phosphor_cloud_rain_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Rainy weather: a single rounded cloud outline above three short separate diagonal rain strokes.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_cloud_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Cloudy weather: one simple rounded cloud outline, with a flat lower base, no sun or raindrops.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_device_mobile_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Mobile phone: a front-facing upright rounded rectangular phone outline, with one tiny bottom home indicator and empty screen.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_dots_three_vertical_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: More options: exactly three equally sized solid round dots arranged in a vertical line, with generous equal spacing.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_download_simple_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Download: one clear downward arrow ending just above a shallow U-shaped receiving tray; arrow and tray are separate.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_exclamation_mark_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Alert: a single upright thick exclamation mark with rounded ends and one distinct round dot below; no enclosing circle or triangle.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_faders_horizontal_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Adjust settings: exactly three horizontal slider rails stacked vertically, each with one small rounded outlined slider knob at a different horizontal position.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_file_text_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Document: one upright page outline with a small folded upper-right corner and three short horizontal text-indicator lines, no actual letters.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_flashlight_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Flashlight: a simple vertical handheld torch outline with a broad flat lamp head at top, tapered shoulders and narrower straight handle below; tiny switch on handle; no light rays.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_footprints_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Footsteps: two staggered footprints, each a simple sole silhouette with a rounded heel and a few distinct rounded toe marks above, one left foot and one right foot; readable at tiny size.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_fork_knife_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Food: an upright fork on the left with three tines and an upright table knife on the right with one broad rounded blade and slim handle; no plate.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_gear_six_fill",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Settings selected: one solid filled six-tooth gear silhouette with six evenly spaced broad rounded teeth and one round transparent center hole; strict six-fold symmetry.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_gear_six_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Settings: one outlined six-tooth gear, with six evenly spaced broad rounded teeth and a round hollow center; strict six-fold symmetry.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_github_logo_fill",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: GitHub brand mark: an accurate instantly recognizable classic GitHub Octocat silhouette, solid filled, cat head with two pointed ears, compact body and curling tail. Preserve the established recognizable GitHub brand proportions. No enclosing circle, lettering or added details.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_headphones_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Headphones: an inverted U-shaped over-head band with two compact rounded rectangular ear cups at the bottom left and bottom right, open empty center; no microphone boom.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_heart_fill",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Heart selected: one solid filled symmetrical classic heart silhouette with two rounded upper lobes and a gently pointed lower tip.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_heart_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Heart: one symmetrical classic heart outline, with two rounded upper lobes, open transparent center and a gently pointed lower tip.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_house_fill",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Home selected: one solid filled simple house silhouette with a pitched triangular roof and a small transparent doorway at the bottom center; no windows or chimney.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_info_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Information: one clean circle outline containing a simple lowercase information i formed only by a short round-ended vertical stem and one round dot; no serif.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  },
+  {
+    "name": "ic_phosphor_keyboard_regular",
+    "prompt": "Use case: logo-brand. Asset type: a single Android 24dp UI glyph, square 1024x1024 PNG. Subject: Keyboard: a wide rounded rectangular keyboard outline with three rows of a few evenly spaced simple short key marks and one clearly longer spacebar at the bottom; no letters or numbers.\nStyle: flat monochrome icon, dark espresso #4A2414 only, clean rounded medium strokes about 7 percent of symbol width, rounded joins and caps; filled variants use a solid silhouette. Composition: exactly one centered glyph occupying about 76 percent of the square canvas, generous transparent outer margin. Background: genuinely transparent alpha, including every hollow center. Keep strong immediately legible semantics when downscaled to 24 pixels. Avoid: tiles, badges, backdrop, text except the required simple information-i shape, labels, gradients, shadows, glow, texture, 3D, perspective, decorative motifs, multiple icons, white fill or checkerboard painting.",
+    "transparent_background": true
+  }
+]
