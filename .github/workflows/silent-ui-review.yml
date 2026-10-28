@@ -30,6 +30,7 @@ on:
           - setup-readiness
           - readiness-recovery
           - sensing-reference
+          - contactless-status
           - room-bedtime-live
           - room-bedtime-repair
           - bedtime-navigation
