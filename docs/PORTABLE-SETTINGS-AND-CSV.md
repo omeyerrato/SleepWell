@@ -30,6 +30,8 @@ version1 Appearance schema has exactly five fields. Profiles without that new
 field still export version1. All valid legacy version1 documents remain readable;
 their absent dimming field leaves the current local preference unchanged. Review
 names the imported dimming choice, or explicitly says it remains unchanged.
+Older version1-only readers reject version2; omit Appearance when a version1
+export is needed for an older installation.
 Unknown categories/fields/types/duplicates, malformed UTF-8/JSON and files
 above64KiB are rejected. No persistent document grant is requested.
 
@@ -40,6 +42,16 @@ device-local and excluded. The separate records/alarms backup remains format14
 and still excludes app preferences; database schema17 is unchanged. A local data
 restore therefore preserves the existing dimming choice, while moving that
 choice to another installation requires the reviewed Appearance settings profile.
+
+The existing `BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen`
+has a bounded private settings-API continuation: real JSON-file round-trip,
+version2 review/apply/reread, legacy absence preserving current on/off values,
+permission-marker exclusion, stale fingerprint refusal and absent-key rollback
+from a deliberately seeded private recovery journal. It does not open the
+Settings profile Activity or a provider, change window brightness, or simulate a
+real process interruption. Its original eight Backup UI frames remain a separate
+records-replacement scope. Native execution of this extension is pending; source
+compilation alone is not round-trip runtime acceptance.
 
 Apply checks the reviewed local-settings fingerprint and runtime admission,
 blocks active alarms/tracking and active or paused sleep playback, and blocks
