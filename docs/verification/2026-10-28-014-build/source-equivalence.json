@@ -1,0 +1,760 @@
+{
+  "candidate_source": "63cc05cd816ce12c70936f25b37aa4cb27d6c270",
+  "candidate_app_tree": "37af5ec78ec9d4a452e20a15f27f167ae3c34864",
+  "baseline_source": "d4415a2b5194abd50c36921a5c7c317ef1f18c51",
+  "claim": "Listed source/fragment equivalence only; no whole-app or whole-APK runtime equivalence",
+  "cases": [
+    {
+      "scope": "TravelCueFlowTest",
+      "capture_source": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "run": 40626264781,
+      "native_seconds": 54.505,
+      "originals": 26,
+      "full_job_passed": false,
+      "files": [
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelActivity.java",
+          "capture_sha256": "84e9c8c64824e2ce2d41d83dc593214ad1a2fbbe9837603fcebf058b2139f927",
+          "candidate_sha256": "84e9c8c64824e2ce2d41d83dc593214ad1a2fbbe9837603fcebf058b2139f927",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelPlan.java",
+          "capture_sha256": "900ad6f7aea132a7013a15cf71c0de8933fe4d7aad72a8334261d80a332fb97b",
+          "candidate_sha256": "900ad6f7aea132a7013a15cf71c0de8933fe4d7aad72a8334261d80a332fb97b",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelPlans.java",
+          "capture_sha256": "e277549e92d18f5140e46fcfd72734b69876da85d6afa7cb7cd75db0ce85abed",
+          "candidate_sha256": "e277549e92d18f5140e46fcfd72734b69876da85d6afa7cb7cd75db0ce85abed",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelReminders.java",
+          "capture_sha256": "5c7716b543995d5305e7f86c94ec500eeb7c6d1c066a7281217ed6a15984e0b4",
+          "candidate_sha256": "5c7716b543995d5305e7f86c94ec500eeb7c6d1c066a7281217ed6a15984e0b4",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelTrackingReminders.java",
+          "capture_sha256": "73b2528b7769247f88f6e81e6956b732313bd54cdd9ff8a0f80000f61b61a0a5",
+          "candidate_sha256": "73b2528b7769247f88f6e81e6956b732313bd54cdd9ff8a0f80000f61b61a0a5",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelTrackingReminderReceiver.java",
+          "capture_sha256": "d0e18b0e16db5e012fbe8e9ff8f5a9ddab967cbe83f29e170433209ba70cf04b",
+          "candidate_sha256": "d0e18b0e16db5e012fbe8e9ff8f5a9ddab967cbe83f29e170433209ba70cf04b",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelClock.java",
+          "capture_sha256": "daa9b19d957a5babb3e65e4145af1b6468daa21dc572d774c6e23d8b55952203",
+          "candidate_sha256": "daa9b19d957a5babb3e65e4145af1b6468daa21dc572d774c6e23d8b55952203",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCuePlan.java",
+          "capture_sha256": "ba6c391ea4966720a64200f7d8be039d7b3a844910631751aaebfb6f5b4df07d",
+          "candidate_sha256": "ba6c391ea4966720a64200f7d8be039d7b3a844910631751aaebfb6f5b4df07d",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCueReviewActivity.java",
+          "capture_sha256": "2daef62808d296d1253d72fe57c1bc67cc75119cdc7e731eda64110b527ef297",
+          "candidate_sha256": "2daef62808d296d1253d72fe57c1bc67cc75119cdc7e731eda64110b527ef297",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCues.java",
+          "capture_sha256": "598542d4ec433596e94da45663454987fde9d4dd6c779ac1b74671c43a3386e9",
+          "candidate_sha256": "598542d4ec433596e94da45663454987fde9d4dd6c779ac1b74671c43a3386e9",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCueRuntime.java",
+          "capture_sha256": "d94ceae2dc7a06c577dd94e135c8ade08eedfec55d595ef9ec2dd887092bdb68",
+          "candidate_sha256": "d94ceae2dc7a06c577dd94e135c8ade08eedfec55d595ef9ec2dd887092bdb68",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCueSession.java",
+          "capture_sha256": "032de405b8573c7fa24b3faffbd820f6016c2c20ef1742847e59f825ac98ec90",
+          "candidate_sha256": "032de405b8573c7fa24b3faffbd820f6016c2c20ef1742847e59f825ac98ec90",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCueStore.java",
+          "capture_sha256": "3d9bf94e635d04a0b03abdd337e9723363bd3889112142d3c30bd8c78fa7ad8c",
+          "candidate_sha256": "3d9bf94e635d04a0b03abdd337e9723363bd3889112142d3c30bd8c78fa7ad8c",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCueJson.java",
+          "capture_sha256": "07ea1c9af7292fa7dd9d1b3876c7ce9b60c16262559af3c479687b2fb965c507",
+          "candidate_sha256": "07ea1c9af7292fa7dd9d1b3876c7ce9b60c16262559af3c479687b2fb965c507",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/PhoneTorches.java",
+          "capture_sha256": "4457712ea2f058a44d89ff4a4f09e13e9763e61878fb5753a455377f00dbe86a",
+          "candidate_sha256": "4457712ea2f058a44d89ff4a4f09e13e9763e61878fb5753a455377f00dbe86a",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TrackingService.java",
+          "capture_sha256": "4edb35f6143e33cf17c98f31c40155910f0b00836095a071f272e390f1df490a",
+          "candidate_sha256": "4edb35f6143e33cf17c98f31c40155910f0b00836095a071f272e390f1df490a",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Design.java",
+          "capture_sha256": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+          "candidate_sha256": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+          "capture_sha256": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+          "candidate_sha256": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/PlanActivity.java",
+          "capture_sha256": "2f0f04d0e05bd39727156542b85167ff454c58590bc27677bad77932fd1cf682",
+          "candidate_sha256": "2f0f04d0e05bd39727156542b85167ff454c58590bc27677bad77932fd1cf682",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/androidTest/java/org/sleepwell/app/TravelCueFlowTest.java",
+          "capture_sha256": "fed502eee35b65213351975b3c0bcf18aa4db653f020ea00b3e445546e2cea81",
+          "candidate_sha256": "93e3984c68fa3733241fb402a4a3dfb29be4dc4884741e926a57106bbf2d262f",
+          "byte_identical": false
+        }
+      ],
+      "difference": "Production listed files byte-identical; candidate native-only input helper differs. Composite uses each original actual passing class, not a single full-job pass."
+    },
+    {
+      "scope": "TravelPlanFlowTest",
+      "capture_source": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "run": 40627465253,
+      "native_seconds": 41.859,
+      "originals": 11,
+      "full_job_passed": false,
+      "files": [
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelActivity.java",
+          "capture_sha256": "84e9c8c64824e2ce2d41d83dc593214ad1a2fbbe9837603fcebf058b2139f927",
+          "candidate_sha256": "84e9c8c64824e2ce2d41d83dc593214ad1a2fbbe9837603fcebf058b2139f927",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelPlan.java",
+          "capture_sha256": "900ad6f7aea132a7013a15cf71c0de8933fe4d7aad72a8334261d80a332fb97b",
+          "candidate_sha256": "900ad6f7aea132a7013a15cf71c0de8933fe4d7aad72a8334261d80a332fb97b",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelPlans.java",
+          "capture_sha256": "e277549e92d18f5140e46fcfd72734b69876da85d6afa7cb7cd75db0ce85abed",
+          "candidate_sha256": "e277549e92d18f5140e46fcfd72734b69876da85d6afa7cb7cd75db0ce85abed",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelReminders.java",
+          "capture_sha256": "5c7716b543995d5305e7f86c94ec500eeb7c6d1c066a7281217ed6a15984e0b4",
+          "candidate_sha256": "5c7716b543995d5305e7f86c94ec500eeb7c6d1c066a7281217ed6a15984e0b4",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelTrackingReminders.java",
+          "capture_sha256": "73b2528b7769247f88f6e81e6956b732313bd54cdd9ff8a0f80000f61b61a0a5",
+          "candidate_sha256": "73b2528b7769247f88f6e81e6956b732313bd54cdd9ff8a0f80000f61b61a0a5",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelTrackingReminderReceiver.java",
+          "capture_sha256": "d0e18b0e16db5e012fbe8e9ff8f5a9ddab967cbe83f29e170433209ba70cf04b",
+          "candidate_sha256": "d0e18b0e16db5e012fbe8e9ff8f5a9ddab967cbe83f29e170433209ba70cf04b",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelClock.java",
+          "capture_sha256": "daa9b19d957a5babb3e65e4145af1b6468daa21dc572d774c6e23d8b55952203",
+          "candidate_sha256": "daa9b19d957a5babb3e65e4145af1b6468daa21dc572d774c6e23d8b55952203",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCuePlan.java",
+          "capture_sha256": "ba6c391ea4966720a64200f7d8be039d7b3a844910631751aaebfb6f5b4df07d",
+          "candidate_sha256": "ba6c391ea4966720a64200f7d8be039d7b3a844910631751aaebfb6f5b4df07d",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCueReviewActivity.java",
+          "capture_sha256": "2daef62808d296d1253d72fe57c1bc67cc75119cdc7e731eda64110b527ef297",
+          "candidate_sha256": "2daef62808d296d1253d72fe57c1bc67cc75119cdc7e731eda64110b527ef297",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCues.java",
+          "capture_sha256": "598542d4ec433596e94da45663454987fde9d4dd6c779ac1b74671c43a3386e9",
+          "candidate_sha256": "598542d4ec433596e94da45663454987fde9d4dd6c779ac1b74671c43a3386e9",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCueRuntime.java",
+          "capture_sha256": "d94ceae2dc7a06c577dd94e135c8ade08eedfec55d595ef9ec2dd887092bdb68",
+          "candidate_sha256": "d94ceae2dc7a06c577dd94e135c8ade08eedfec55d595ef9ec2dd887092bdb68",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCueSession.java",
+          "capture_sha256": "032de405b8573c7fa24b3faffbd820f6016c2c20ef1742847e59f825ac98ec90",
+          "candidate_sha256": "032de405b8573c7fa24b3faffbd820f6016c2c20ef1742847e59f825ac98ec90",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCueStore.java",
+          "capture_sha256": "3d9bf94e635d04a0b03abdd337e9723363bd3889112142d3c30bd8c78fa7ad8c",
+          "candidate_sha256": "3d9bf94e635d04a0b03abdd337e9723363bd3889112142d3c30bd8c78fa7ad8c",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TravelCueJson.java",
+          "capture_sha256": "07ea1c9af7292fa7dd9d1b3876c7ce9b60c16262559af3c479687b2fb965c507",
+          "candidate_sha256": "07ea1c9af7292fa7dd9d1b3876c7ce9b60c16262559af3c479687b2fb965c507",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/PhoneTorches.java",
+          "capture_sha256": "4457712ea2f058a44d89ff4a4f09e13e9763e61878fb5753a455377f00dbe86a",
+          "candidate_sha256": "4457712ea2f058a44d89ff4a4f09e13e9763e61878fb5753a455377f00dbe86a",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TrackingService.java",
+          "capture_sha256": "4edb35f6143e33cf17c98f31c40155910f0b00836095a071f272e390f1df490a",
+          "candidate_sha256": "4edb35f6143e33cf17c98f31c40155910f0b00836095a071f272e390f1df490a",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Design.java",
+          "capture_sha256": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+          "candidate_sha256": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+          "capture_sha256": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+          "candidate_sha256": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/PlanActivity.java",
+          "capture_sha256": "2f0f04d0e05bd39727156542b85167ff454c58590bc27677bad77932fd1cf682",
+          "candidate_sha256": "2f0f04d0e05bd39727156542b85167ff454c58590bc27677bad77932fd1cf682",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/androidTest/java/org/sleepwell/app/TravelPlanFlowTest.java",
+          "capture_sha256": "f83fe9f50942a987e78d15ed2083a26c4f35bccdfcfc2e943721fa7ec39210b4",
+          "candidate_sha256": "f83fe9f50942a987e78d15ed2083a26c4f35bccdfcfc2e943721fa7ec39210b4",
+          "byte_identical": true
+        }
+      ],
+      "difference": "All listed production files and this native test are byte-identical to the passing Plan candidate. Cue input-only correction is separate."
+    },
+    {
+      "scope": "2026-10-28-phone-motion-activity",
+      "capture_source": "5c7940716ded2a3620814a302f90d147d994a081",
+      "files": [
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TrackingActivity.java",
+          "capture_sha256": "84882315b59b8c2a02bf02ae570ef91189e2191ad36d5104f4af531f7269494e",
+          "candidate_sha256": "84882315b59b8c2a02bf02ae570ef91189e2191ad36d5104f4af531f7269494e",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/PhoneMotionChartReader.java",
+          "capture_sha256": "307785b1b014e9c8b0ece1c2c0b96628bf0a16656345197a208a2edeb19c217e",
+          "candidate_sha256": "307785b1b014e9c8b0ece1c2c0b96628bf0a16656345197a208a2edeb19c217e",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RecordChart.java",
+          "capture_sha256": "18d48952c78abcc1156a319c8b6c1d19be618131007ac1de6f7af95bb82e1783",
+          "candidate_sha256": "18d48952c78abcc1156a319c8b6c1d19be618131007ac1de6f7af95bb82e1783",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/ChartSeries.java",
+          "capture_sha256": "fea83915953148f02ffea99204981283e334e1685bcde70d66bfaef2f57e910c",
+          "candidate_sha256": "fea83915953148f02ffea99204981283e334e1685bcde70d66bfaef2f57e910c",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/ChartTicks.java",
+          "capture_sha256": "81a3d30d4e5ba0137dca271a6177b71333cb9ca3953b09078ada0e1efab3cdd8",
+          "candidate_sha256": "81a3d30d4e5ba0137dca271a6177b71333cb9ca3953b09078ada0e1efab3cdd8",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TrackingService.java",
+          "capture_sha256": "e0348076351071a061092f071b2267022472b29d6f05a9d34f004dd567577335",
+          "candidate_sha256": "4edb35f6143e33cf17c98f31c40155910f0b00836095a071f272e390f1df490a",
+          "byte_identical": false
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TrackingClock.java",
+          "capture_sha256": "34fca136e8a54935073312898acdc2211ada4513ce231dd7b1c81ce295d39e2d",
+          "candidate_sha256": "34fca136e8a54935073312898acdc2211ada4513ce231dd7b1c81ce295d39e2d",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/BatchedMotion.java",
+          "capture_sha256": "7fc4970d471ccf7973cb54e4688cec5412ca4b31c4198a77a4c99eb3a7405acb",
+          "candidate_sha256": "7fc4970d471ccf7973cb54e4688cec5412ca4b31c4198a77a4c99eb3a7405acb",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/LiveMovementTimeline.java",
+          "capture_sha256": "f2b61722505fa1511d9596a67cdbb3cb6fcf1ab1b86f531fc5bbc7ef66a9c028",
+          "candidate_sha256": "f2b61722505fa1511d9596a67cdbb3cb6fcf1ab1b86f531fc5bbc7ef66a9c028",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Store.java",
+          "capture_sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+          "candidate_sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RecordReportActivity.java",
+          "capture_sha256": "446d39ffbf7f24791873e1099e6bf4b7578977caf716e54dc38c3a4166f1d7f0",
+          "candidate_sha256": "446d39ffbf7f24791873e1099e6bf4b7578977caf716e54dc38c3a4166f1d7f0",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Records.java",
+          "capture_sha256": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+          "candidate_sha256": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Prefs.java",
+          "capture_sha256": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+          "candidate_sha256": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Design.java",
+          "capture_sha256": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+          "candidate_sha256": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Appearance.java",
+          "capture_sha256": "e21213f167519292860f54afd96716a938c5ebbd972ec3f358de7810dc574c6a",
+          "candidate_sha256": "e21213f167519292860f54afd96716a938c5ebbd972ec3f358de7810dc574c6a",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/InteractionFeedback.java",
+          "capture_sha256": "9d728c99e7a1a81a3d44291d9861dee831fa09c179062fe898d65d84d421e1ef",
+          "candidate_sha256": "9d728c99e7a1a81a3d44291d9861dee831fa09c179062fe898d65d84d421e1ef",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/androidTest/java/org/sleepwell/app/ChartClockFlowTest.java",
+          "capture_sha256": "1ee565f920b056d24d9b4f7989d3fd28f216e5061940b321ae514c35be962a54",
+          "candidate_sha256": "1ee565f920b056d24d9b4f7989d3fd28f216e5061940b321ae514c35be962a54",
+          "byte_identical": true
+        },
+        {
+          "path": ".github/workflows/silent-ui-review.yml",
+          "capture_sha256": "9ae79f74346781103f30342d3364a897ad5827d39e9c166353775ab9ee2cc42c",
+          "candidate_sha256": "fc7bb0a3bfb60c3af5b808cdf45676b99960f0193eab7fca170419cd5d319acf",
+          "byte_identical": false
+        },
+        {
+          "path": "scripts/ci_silent_ui.py",
+          "capture_sha256": "caea80e96ceeb5f87d4896ef9853e8a7aed4ae1d883daaac86b3a10b6f4a3e59",
+          "candidate_sha256": "6b4ab29522c4cadcfb98d0ee8dc6639c8ac915d184f57dc05e6cd44bf598b514",
+          "byte_identical": false
+        }
+      ],
+      "fragments": [
+        {
+          "path": "app/src/main/java/org/sleepwell/app/TrackingService.java",
+          "fragment": "static final class Snapshot",
+          "capture_sha256": "2cbf47239aa88dd09f983bed8983717d78514e6c13ca0971d619ad33c5fe925b",
+          "candidate_sha256": "2cbf47239aa88dd09f983bed8983717d78514e6c13ca0971d619ad33c5fe925b",
+          "byte_identical": true
+        }
+      ],
+      "difference": "Whole TrackingService differs only by three TravelTrackingReminders.recordingEnded hooks outside the inert source fixture; actual Snapshot class equivalent. Whole workflow/script differ by scope union/formatting."
+    },
+    {
+      "scope": "2026-10-28-room-settings-search",
+      "capture_source": "52b6dbb56ff77175ef1116fabb3a12a8596d24ec",
+      "files": [
+        {
+          "path": "app/src/main/java/org/sleepwell/app/SearchSettings.java",
+          "capture_sha256": "878953748aefce18495fbd14b7de7b46faf2799645847bedeb396ca79a0b0efd",
+          "candidate_sha256": "878953748aefce18495fbd14b7de7b46faf2799645847bedeb396ca79a0b0efd",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/SearchActivity.java",
+          "capture_sha256": "db209c32e9c1cd6ed6c7851212e2e62ac8f34bb11aca2510ef28134e3f9d3bbe",
+          "candidate_sha256": "db209c32e9c1cd6ed6c7851212e2e62ac8f34bb11aca2510ef28134e3f9d3bbe",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/SearchIndex.java",
+          "capture_sha256": "62f292af546c00d88ce3d2106bb1e7829afe8d87dd39c4ee72034418c5c6881a",
+          "candidate_sha256": "62f292af546c00d88ce3d2106bb1e7829afe8d87dd39c4ee72034418c5c6881a",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/SearchData.java",
+          "capture_sha256": "0e0936d3fe566c899b0fdbd5bd61cffc858464bec1f48b486f6e5d72338ec20c",
+          "candidate_sha256": "0e0936d3fe566c899b0fdbd5bd61cffc858464bec1f48b486f6e5d72338ec20c",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+          "capture_sha256": "2be8a0d7d625cc7aa4cb07f6b9913022551c640d6e665caee31cef47a218b225",
+          "candidate_sha256": "fa3b861327749975282de34fa6533a64541e72e385c3ef2a08a413360b180594",
+          "byte_identical": false
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RoomConditionsActivity.java",
+          "capture_sha256": "0cfaee18a15c3edad352e4c4e99cd7dc54ed7c19e46621f3b7baad16425391dd",
+          "candidate_sha256": "0cfaee18a15c3edad352e4c4e99cd7dc54ed7c19e46621f3b7baad16425391dd",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RoomDimming.java",
+          "capture_sha256": "eb5b1059964433909fb952a5740e22ebaabf722f61b84877b1a2991cb3640a6a",
+          "candidate_sha256": "eb5b1059964433909fb952a5740e22ebaabf722f61b84877b1a2991cb3640a6a",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RoomLightPort.java",
+          "capture_sha256": "2f25e8423a1de0fb5b524fcd077a07b518efaa6b365034d0ae877253c11aa417",
+          "candidate_sha256": "2f25e8423a1de0fb5b524fcd077a07b518efaa6b365034d0ae877253c11aa417",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RoomSoundLevel.java",
+          "capture_sha256": "5f95b428f2917e5b8e92e572e16c74455028e32bb35ab1bc9596f650b9d20446",
+          "candidate_sha256": "5f95b428f2917e5b8e92e572e16c74455028e32bb35ab1bc9596f650b9d20446",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RoomAudio.java",
+          "capture_sha256": "70d71ec2bd3e60230dd0552c0bfe60c0c5fe8afc21dbebb03480332c5394f72a",
+          "candidate_sha256": "70d71ec2bd3e60230dd0552c0bfe60c0c5fe8afc21dbebb03480332c5394f72a",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Prefs.java",
+          "capture_sha256": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+          "candidate_sha256": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+          "capture_sha256": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+          "candidate_sha256": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Design.java",
+          "capture_sha256": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+          "candidate_sha256": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/PlanActivity.java",
+          "capture_sha256": "2f0f04d0e05bd39727156542b85167ff454c58590bc27677bad77932fd1cf682",
+          "candidate_sha256": "2f0f04d0e05bd39727156542b85167ff454c58590bc27677bad77932fd1cf682",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Records.java",
+          "capture_sha256": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+          "candidate_sha256": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RecordEntry.java",
+          "capture_sha256": "de5e56e5a0868858efbd95f0bdabca5ceb5809a290c11cafac3cd2b18805b5ba",
+          "candidate_sha256": "de5e56e5a0868858efbd95f0bdabca5ceb5809a290c11cafac3cd2b18805b5ba",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RecordReportActivity.java",
+          "capture_sha256": "446d39ffbf7f24791873e1099e6bf4b7578977caf716e54dc38c3a4166f1d7f0",
+          "candidate_sha256": "446d39ffbf7f24791873e1099e6bf4b7578977caf716e54dc38c3a4166f1d7f0",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Store.java",
+          "capture_sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+          "candidate_sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/BackupFingerprint.java",
+          "capture_sha256": "d6462e1a44f5b661ea54e3fa2b3722040982656ed3b90d6d0a50e5a37c6249ed",
+          "candidate_sha256": "d6462e1a44f5b661ea54e3fa2b3722040982656ed3b90d6d0a50e5a37c6249ed",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/androidTest/java/org/sleepwell/app/SearchFlowTest.java",
+          "capture_sha256": "3f8123f9fa999585855c62654d892d079af2441d5d153dc27d3fa29661a488dc",
+          "candidate_sha256": "3f8123f9fa999585855c62654d892d079af2441d5d153dc27d3fa29661a488dc",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/AndroidManifest.xml",
+          "capture_sha256": "178ec7feaaf24d0ee0994b6b74da6c670c6f5a924db7772e30865fc6cd4f9758",
+          "candidate_sha256": "bfbe56034243efae83a98644fe31e76f8372adea2924ddd6c83607fd50cbc11d",
+          "byte_identical": false
+        },
+        {
+          "path": "scripts/ci_silent_ui.py",
+          "capture_sha256": "b07476b1a72201e8c947464f52889a20642a6dd79855af12c4a3c03ed94521ea",
+          "candidate_sha256": "6b4ab29522c4cadcfb98d0ee8dc6639c8ac915d184f57dc05e6cd44bf598b514",
+          "byte_identical": false
+        },
+        {
+          "path": ".github/workflows/silent-ui-review.yml",
+          "capture_sha256": "da0d87c41a7722b990663b46320e2bc707ca2e6c70d4a0c983ee94bd4996e27a",
+          "candidate_sha256": "fc7bb0a3bfb60c3af5b808cdf45676b99960f0193eab7fca170419cd5d319acf",
+          "byte_identical": false
+        }
+      ],
+      "fragments": [
+        {
+          "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+          "fragment": "private void settingsSection(",
+          "capture_sha256": "d74108f942ed5500a3a76a4a6e0f18e9f7f0dcd3a02f30bcc74b7cc666b84608",
+          "candidate_sha256": "d74108f942ed5500a3a76a4a6e0f18e9f7f0dcd3a02f30bcc74b7cc666b84608",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+          "fragment": "private void openSettingsGroup(",
+          "capture_sha256": "c75692b1229131c80a06aa328a20abaa36e5d3e05fc88d134453ff63e606a419",
+          "candidate_sha256": "c75692b1229131c80a06aa328a20abaa36e5d3e05fc88d134453ff63e606a419",
+          "byte_identical": true
+        }
+      ],
+      "manifest_room_component": {
+        "capture": {
+          "{http://schemas.android.com/apk/res/android}name": ".RoomConditionsActivity",
+          "{http://schemas.android.com/apk/res/android}exported": "false"
+        },
+        "candidate": {
+          "{http://schemas.android.com/apk/res/android}name": ".RoomConditionsActivity",
+          "{http://schemas.android.com/apk/res/android}exported": "false"
+        },
+        "equivalent": true
+      },
+      "difference": "Main differs only in alarm-list methods; named settings routing fragments equivalent. Manifest adds private TravelTrackingReminderReceiver; Room component unchanged. Workflow/script add other scopes/inventory."
+    },
+    {
+      "scope": "SettingsOrganizationFlowTest",
+      "capture_source": "4e9366d9ce4e31b3db55b4341a0325c21ffd1839",
+      "run": 40630084064,
+      "native_seconds": 41.023,
+      "originals": 18,
+      "files": [
+        {
+          "path": "app/src/main/java/org/sleepwell/app/AlarmClockUi.java",
+          "capture_sha256": "1da02838f99659d5378c8c36911ad1f36ee9224cfda08da937cf84252818fee3",
+          "candidate_sha256": "1da02838f99659d5378c8c36911ad1f36ee9224cfda08da937cf84252818fee3",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java",
+          "capture_sha256": "77555baee00478872365c9894f8268b326ca8faa85e5aee05eb54b0316c273ad",
+          "candidate_sha256": "77555baee00478872365c9894f8268b326ca8faa85e5aee05eb54b0316c273ad",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+          "capture_sha256": "fa3b861327749975282de34fa6533a64541e72e385c3ef2a08a413360b180594",
+          "candidate_sha256": "fa3b861327749975282de34fa6533a64541e72e385c3ef2a08a413360b180594",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Design.java",
+          "capture_sha256": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+          "candidate_sha256": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/InteractionFeedback.java",
+          "capture_sha256": "9d728c99e7a1a81a3d44291d9861dee831fa09c179062fe898d65d84d421e1ef",
+          "candidate_sha256": "9d728c99e7a1a81a3d44291d9861dee831fa09c179062fe898d65d84d421e1ef",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Appearance.java",
+          "capture_sha256": "e21213f167519292860f54afd96716a938c5ebbd972ec3f358de7810dc574c6a",
+          "candidate_sha256": "e21213f167519292860f54afd96716a938c5ebbd972ec3f358de7810dc574c6a",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Prefs.java",
+          "capture_sha256": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+          "candidate_sha256": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+          "capture_sha256": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+          "candidate_sha256": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Alarm.java",
+          "capture_sha256": "d3a1142e2e5fe98ced61a23bd0708c6f9de63a8049187eddd91a9fd36ea6a14a",
+          "candidate_sha256": "d3a1142e2e5fe98ced61a23bd0708c6f9de63a8049187eddd91a9fd36ea6a14a",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/AlarmScheduling.java",
+          "capture_sha256": "e4977a15b49db223d78427afca7650553ad6b2c85a2a9ee40ce9838d9061b7c7",
+          "candidate_sha256": "e4977a15b49db223d78427afca7650553ad6b2c85a2a9ee40ce9838d9061b7c7",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Scheduler.java",
+          "capture_sha256": "df86e686164f160faca4d40b30c1cd4ec83e5f6ff5cd9d9cd0a8ee8f5c2056b9",
+          "candidate_sha256": "df86e686164f160faca4d40b30c1cd4ec83e5f6ff5cd9d9cd0a8ee8f5c2056b9",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/AlarmSkips.java",
+          "capture_sha256": "9b761f6c21735fd890586b13e9d9ce2148488406b11487f37a1380992592b0c3",
+          "candidate_sha256": "9b761f6c21735fd890586b13e9d9ce2148488406b11487f37a1380992592b0c3",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Naps.java",
+          "capture_sha256": "29f5db9d15a82261b01bcc3a71256b86ed55f96129385f6412d2872957d9c038",
+          "candidate_sha256": "29f5db9d15a82261b01bcc3a71256b86ed55f96129385f6412d2872957d9c038",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/SleepPicker.java",
+          "capture_sha256": "1b8db38e9e6bf926713e9c933e107d615befe6eb3e6eadc344c0b7cec5f7a492",
+          "candidate_sha256": "1b8db38e9e6bf926713e9c933e107d615befe6eb3e6eadc344c0b7cec5f7a492",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/AlarmEditorSearchUi.java",
+          "capture_sha256": "038def1542cb08b0df00e111975d7cab1888735cd7b4a175314bbde4e56765d4",
+          "candidate_sha256": "038def1542cb08b0df00e111975d7cab1888735cd7b4a175314bbde4e56765d4",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/AlarmSmartWakeUi.java",
+          "capture_sha256": "09df8758583c6fa6b8952779670208e78b06289d9602c2abf3c7e3d757d1834f",
+          "candidate_sha256": "09df8758583c6fa6b8952779670208e78b06289d9602c2abf3c7e3d757d1834f",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Store.java",
+          "capture_sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+          "candidate_sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/Records.java",
+          "capture_sha256": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+          "candidate_sha256": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/androidTest/java/org/sleepwell/app/SettingsOrganizationFlowTest.java",
+          "capture_sha256": "0cd270f018a74e7e2d98572a703b70615748e12b584c52799309856a4f4eb3a3",
+          "candidate_sha256": "0cd270f018a74e7e2d98572a703b70615748e12b584c52799309856a4f4eb3a3",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/androidTest/java/org/sleepwell/app/AlarmSkipFixture.java",
+          "capture_sha256": "ba29bb3dbaba5cb3911f2607807a5f2e962efa28db333a614c3187dd126f7086",
+          "candidate_sha256": "ba29bb3dbaba5cb3911f2607807a5f2e962efa28db333a614c3187dd126f7086",
+          "byte_identical": true
+        },
+        {
+          "path": "scripts/ci_silent_ui.py",
+          "capture_sha256": "8a5975ffce13344dc1017fca5023487811a1d83778146c7ffebdfb03abce810a",
+          "candidate_sha256": "6b4ab29522c4cadcfb98d0ee8dc6639c8ac915d184f57dc05e6cd44bf598b514",
+          "byte_identical": false
+        },
+        {
+          "path": ".github/workflows/silent-ui-review.yml",
+          "capture_sha256": "fc7bb0a3bfb60c3af5b808cdf45676b99960f0193eab7fca170419cd5d319acf",
+          "candidate_sha256": "fc7bb0a3bfb60c3af5b808cdf45676b99960f0193eab7fca170419cd5d319acf",
+          "byte_identical": true
+        },
+        {
+          "path": "app/src/main/AndroidManifest.xml",
+          "capture_sha256": "178ec7feaaf24d0ee0994b6b74da6c670c6f5a924db7772e30865fc6cd4f9758",
+          "candidate_sha256": "bfbe56034243efae83a98644fe31e76f8372adea2924ddd6c83607fd50cbc11d",
+          "byte_identical": false
+        }
+      ],
+      "difference": "All listed source/native files except manifest and script are byte-identical. Manifest additionally registers private TravelTrackingReminderReceiver. Script is the scope union with frozen organization14 rather than captured18; current metadata-only7ceb894e restores18. Workflow bytes are equivalent here."
+    }
+  ],
+  "database_backup": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "capture_sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "candidate_sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "capture_sha256": "17bf74d23a9bbcf3c2897ca6d773fbcda273e24940deeab0cc52297ee2252323",
+      "candidate_sha256": "17bf74d23a9bbcf3c2897ca6d773fbcda273e24940deeab0cc52297ee2252323",
+      "byte_identical": true
+    }
+  ],
+  "database_schema": 17,
+  "records_backup_format": 14,
+  "production_delta_from_013": [
+    "M\tapp/build.gradle",
+    "M\tapp/src/main/AndroidManifest.xml",
+    "A\tapp/src/main/java/org/sleepwell/app/AlarmClockUi.java",
+    "M\tapp/src/main/java/org/sleepwell/app/AlarmEditorActivity.java",
+    "M\tapp/src/main/java/org/sleepwell/app/MainActivity.java",
+    "A\tapp/src/main/java/org/sleepwell/app/PhoneMotionChartReader.java",
+    "M\tapp/src/main/java/org/sleepwell/app/RecordChart.java",
+    "M\tapp/src/main/java/org/sleepwell/app/SearchSettings.java",
+    "M\tapp/src/main/java/org/sleepwell/app/TrackingActivity.java",
+    "M\tapp/src/main/java/org/sleepwell/app/TrackingService.java",
+    "M\tapp/src/main/java/org/sleepwell/app/TravelActivity.java",
+    "M\tapp/src/main/java/org/sleepwell/app/TravelPlan.java",
+    "M\tapp/src/main/java/org/sleepwell/app/TravelPlans.java",
+    "M\tapp/src/main/java/org/sleepwell/app/TravelReminders.java",
+    "A\tapp/src/main/java/org/sleepwell/app/TravelTrackingReminderReceiver.java",
+    "A\tapp/src/main/java/org/sleepwell/app/TravelTrackingReminders.java"
+  ],
+  "candidate_app_src_main_tree": "78c12f6b9828c0e34348f805b2b3f260d4b8dac2",
+  "portable_settings_profile": {
+    "path": "app/src/main/java/org/sleepwell/app/SettingsProfile.java",
+    "byte_identical_to_013": true,
+    "contract": "v2 iff typed Appearance.roomDimming present; legacy v1 supported; Travel excluded from both"
+  }
+}

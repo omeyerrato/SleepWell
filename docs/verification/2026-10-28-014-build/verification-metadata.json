@@ -1,0 +1,288 @@
+{
+  "candidate_source": "63cc05cd816ce12c70936f25b37aa4cb27d6c270",
+  "whole_files_identical": false,
+  "scope_comparisons": [
+    {
+      "scope": "travel-ui",
+      "capture": {
+        "selectors": [
+          "TravelPlanFlowTest",
+          "TravelCueFlowTest"
+        ],
+        "required_originals": [
+          "travel-plan.png",
+          "travel-zones.png",
+          "travel-date.png",
+          "travel-reminders.png",
+          "travel-reopened.png",
+          "travel-error.png",
+          "travel-disabled.png",
+          "travel-schedules.png",
+          "travel-reminders-recreated.png",
+          "travel-reminders-reopened.png",
+          "travel-disabled-main.png",
+          "travel-cues-settings-off.png",
+          "travel-cues-window.png",
+          "travel-cues-date.png",
+          "travel-cues-time.png",
+          "travel-cues-window-recreated.png",
+          "travel-cues-settings-enabled.png",
+          "travel-cues-settings-reopened.png",
+          "travel-cues-invalid-window.png",
+          "travel-cues-no-manual.png",
+          "travel-cues-ready.png",
+          "travel-cues-active.png",
+          "travel-cues-active-recreated.png",
+          "travel-cues-stopped.png",
+          "travel-cues-stopped-reopened.png",
+          "travel-cues-output-error.png",
+          "travel-cues-interrupted.png",
+          "travel-cues-light-settings.png",
+          "travel-cues-light-settings-recreated.png",
+          "travel-cues-review-from-menu.png",
+          "travel-cues-about-recreated.png",
+          "travel-cues-tracking-settings.png",
+          "travel-cues-tracking-settings-recreated.png",
+          "travel-cues-about-main-recreated.png",
+          "travel-cues-tracking-reminder-draft.png",
+          "travel-cues-tracking-reminder-saved.png",
+          "travel-cues-tracking-reminder-details.png"
+        ],
+        "count": 37
+      },
+      "candidate": {
+        "selectors": [
+          "TravelPlanFlowTest",
+          "TravelCueFlowTest"
+        ],
+        "required_originals": [
+          "travel-plan.png",
+          "travel-zones.png",
+          "travel-date.png",
+          "travel-reminders.png",
+          "travel-reopened.png",
+          "travel-error.png",
+          "travel-disabled.png",
+          "travel-schedules.png",
+          "travel-reminders-recreated.png",
+          "travel-reminders-reopened.png",
+          "travel-disabled-main.png",
+          "travel-cues-settings-off.png",
+          "travel-cues-window.png",
+          "travel-cues-date.png",
+          "travel-cues-time.png",
+          "travel-cues-window-recreated.png",
+          "travel-cues-settings-enabled.png",
+          "travel-cues-settings-reopened.png",
+          "travel-cues-invalid-window.png",
+          "travel-cues-no-manual.png",
+          "travel-cues-ready.png",
+          "travel-cues-active.png",
+          "travel-cues-active-recreated.png",
+          "travel-cues-stopped.png",
+          "travel-cues-stopped-reopened.png",
+          "travel-cues-output-error.png",
+          "travel-cues-interrupted.png",
+          "travel-cues-light-settings.png",
+          "travel-cues-light-settings-recreated.png",
+          "travel-cues-review-from-menu.png",
+          "travel-cues-about-recreated.png",
+          "travel-cues-tracking-settings.png",
+          "travel-cues-tracking-settings-recreated.png",
+          "travel-cues-about-main-recreated.png",
+          "travel-cues-tracking-reminder-draft.png",
+          "travel-cues-tracking-reminder-saved.png",
+          "travel-cues-tracking-reminder-details.png"
+        ],
+        "count": 37
+      },
+      "selectors_equal": true,
+      "frames_equal": true,
+      "candidate_missing_required": [],
+      "candidate_additional_required": []
+    },
+    {
+      "scope": "chart-phone-motion",
+      "capture": {
+        "selectors": [
+          "ChartClockFlowTest#alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects"
+        ],
+        "required_originals": [
+          "chart-clock-overnight.png",
+          "chart-clock-night.png",
+          "chart-clock-short.png",
+          "chart-clock-fold.png",
+          "chart-clock-phone-history.png",
+          "chart-clock-phone-selected.png",
+          "chart-clock-phone-paused.png",
+          "chart-clock-phone-retry.png",
+          "chart-clock-tracking-main.png",
+          "chart-clock-tracking-options.png",
+          "chart-clock-tracking-returned.png",
+          "chart-clock-tracking-paused.png",
+          "chart-clock-tracking-recreated.png",
+          "chart-clock-tracking-session.png"
+        ],
+        "count": 14
+      },
+      "candidate": {
+        "selectors": [
+          "ChartClockFlowTest#alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects"
+        ],
+        "required_originals": [
+          "chart-clock-overnight.png",
+          "chart-clock-night.png",
+          "chart-clock-short.png",
+          "chart-clock-fold.png",
+          "chart-clock-phone-history.png",
+          "chart-clock-phone-selected.png",
+          "chart-clock-phone-paused.png",
+          "chart-clock-phone-retry.png",
+          "chart-clock-tracking-main.png",
+          "chart-clock-tracking-options.png",
+          "chart-clock-tracking-returned.png",
+          "chart-clock-tracking-paused.png",
+          "chart-clock-tracking-recreated.png",
+          "chart-clock-tracking-session.png"
+        ],
+        "count": 14
+      },
+      "selectors_equal": true,
+      "frames_equal": true,
+      "candidate_missing_required": [],
+      "candidate_additional_required": []
+    },
+    {
+      "scope": "room-settings-search",
+      "capture": {
+        "selectors": [
+          "SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls"
+        ],
+        "required_originals": [
+          "search-empty.png",
+          "search-room.png",
+          "search-no-results.png",
+          "search-record.png",
+          "search-recreated.png"
+        ],
+        "count": 5
+      },
+      "candidate": {
+        "selectors": [
+          "SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls"
+        ],
+        "required_originals": [
+          "search-empty.png",
+          "search-room.png",
+          "search-no-results.png",
+          "search-record.png",
+          "search-recreated.png"
+        ],
+        "count": 5
+      },
+      "selectors_equal": true,
+      "frames_equal": true,
+      "candidate_missing_required": [],
+      "candidate_additional_required": []
+    },
+    {
+      "scope": "organization",
+      "capture": {
+        "selectors": [
+          "SettingsOrganizationFlowTest"
+        ],
+        "required_originals": [
+          "organization-alarm-list.png",
+          "organization-alarm-list-large.png",
+          "organization-alarm-time-stepped.png",
+          "organization-alarm-time-recreated.png",
+          "organization-settings-root.png",
+          "organization-settings-sleep.png",
+          "organization-feedback-off.png",
+          "organization-search-flashlight.png",
+          "organization-alarm-editor.png",
+          "organization-alarm-search.png",
+          "organization-smart-following.png",
+          "organization-smart-configured.png",
+          "organization-alarm-schedule.png",
+          "organization-alarm-options.png",
+          "organization-controls-recreated.png",
+          "organization-alarm-backup.png",
+          "organization-smart-reopened.png",
+          "organization-alarm-reopened.png"
+        ],
+        "count": 18
+      },
+      "candidate": {
+        "selectors": [
+          "SettingsOrganizationFlowTest"
+        ],
+        "required_originals": [
+          "organization-settings-root.png",
+          "organization-settings-sleep.png",
+          "organization-search-flashlight.png",
+          "organization-feedback-off.png",
+          "organization-alarm-editor.png",
+          "organization-alarm-schedule.png",
+          "organization-alarm-options.png",
+          "organization-controls-recreated.png",
+          "organization-alarm-backup.png",
+          "organization-alarm-reopened.png",
+          "organization-smart-following.png",
+          "organization-smart-configured.png",
+          "organization-smart-reopened.png",
+          "organization-alarm-search.png"
+        ],
+        "count": 14
+      },
+      "selectors_equal": true,
+      "frames_equal": false,
+      "candidate_missing_required": [
+        "organization-alarm-list-large.png",
+        "organization-alarm-list.png",
+        "organization-alarm-time-recreated.png",
+        "organization-alarm-time-stepped.png"
+      ],
+      "candidate_additional_required": []
+    }
+  ],
+  "release_delta_from_013": {
+    "workflow_added_scopes": [
+      "chart-phone-motion",
+      "room-settings-search"
+    ],
+    "travel_frames_added": 6,
+    "phone_scope_frames": 14,
+    "organization_capture_frames": 18,
+    "organization_candidate_frames": 14,
+    "note": "Global focused_frames dictionary was reformatted and named scope inventories unioned; no whole-file metadata equality is asserted. Organization candidate misses four captured required frames; no test assertion or emitted native image was inferred absent from this inventory difference."
+  },
+  "current_metadata_correction": {
+    "commit": "7ceb894e65be196dd2d5e7300f08387ae3b06b0c",
+    "app_tree": "37af5ec78ec9d4a452e20a15f27f167ae3c34864",
+    "app_src_main_tree": "78c12f6b9828c0e34348f805b2b3f260d4b8dac2",
+    "production_tree_unchanged_from_frozen": true,
+    "organization_required_originals": [
+      "organization-alarm-list.png",
+      "organization-alarm-list-large.png",
+      "organization-alarm-time-stepped.png",
+      "organization-alarm-time-recreated.png",
+      "organization-settings-root.png",
+      "organization-settings-sleep.png",
+      "organization-feedback-off.png",
+      "organization-search-flashlight.png",
+      "organization-alarm-editor.png",
+      "organization-alarm-search.png",
+      "organization-smart-following.png",
+      "organization-smart-configured.png",
+      "organization-alarm-schedule.png",
+      "organization-alarm-options.png",
+      "organization-controls-recreated.png",
+      "organization-alarm-backup.png",
+      "organization-smart-reopened.png",
+      "organization-alarm-reopened.png"
+    ],
+    "count": 18,
+    "note": "Frozen63 remains build identity; post-build metadata-only correction. No rebuild/whole-metadata equality claim."
+  }
+}

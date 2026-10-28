@@ -1,0 +1,115 @@
+diff --git a/.github/workflows/silent-ui-review.yml b/.github/workflows/silent-ui-review.yml
+index 11bda7f1..28b1ac8e 100644
+--- a/.github/workflows/silent-ui-review.yml
++++ b/.github/workflows/silent-ui-review.yml
+@@ -34,9 +34,11 @@ on:
+           - bedtime-navigation
+           - label-navigation
+           - live-night-timeline
++          - chart-phone-motion
+           - wake-challenge-reference
+           - calendar-consent-recovery
+           - profile-room-dimming
++          - room-settings-search
+           - sensing-travel
+           - travel-ui
+           - sonar-night
+diff --git a/scripts/ci_silent_ui.py b/scripts/ci_silent_ui.py
+index aabe58b6..9a212b3f 100644
+--- a/scripts/ci_silent_ui.py
++++ b/scripts/ci_silent_ui.py
+@@ -19,7 +19,7 @@ import time
+ 
+ parser = argparse.ArgumentParser()
+ parser.add_argument("--serial", required=True, choices=("emulator-5554",))
+-parser.add_argument("--scope", choices=("full", "tone-wake", "report", "report-flow", "organization", "organized-settings", "recorded-analysis", "challenge-routine", "tonight", "appearance", "event-library", "goal-plan", "interaction-security", "priority-menus", "priority-current", "priority-repair", "reference-menus", "privacy-recovery", "setup-readiness", "readiness-recovery", "sensing-reference", "room-bedtime-live", "room-bedtime-repair", "bedtime-navigation", "label-navigation", "live-night-timeline", "wake-challenge-reference", "calendar-consent-recovery", "profile-room-dimming", "sensing-travel", "travel-ui", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features", "feature-increment", "nap-features"), default="full", help="A named narrow scope is never a full app acceptance run")
++parser.add_argument("--scope", choices=("full", "tone-wake", "report", "report-flow", "organization", "organized-settings", "recorded-analysis", "challenge-routine", "tonight", "appearance", "event-library", "goal-plan", "interaction-security", "priority-menus", "priority-current", "priority-repair", "reference-menus", "privacy-recovery", "setup-readiness", "readiness-recovery", "sensing-reference", "room-bedtime-live", "room-bedtime-repair", "bedtime-navigation", "label-navigation", "live-night-timeline", "chart-phone-motion", "wake-challenge-reference", "calendar-consent-recovery", "profile-room-dimming", "room-settings-search", "sensing-travel", "travel-ui", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features", "feature-increment", "nap-features"), default="full", help="A named narrow scope is never a full app acceptance run")
+ parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
+ parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
+ args = parser.parse_args()
+@@ -41,6 +41,13 @@ ROUTINE_FRAMES = ["routine-" + name + ".png" for name in ("legacy", "ordered", "
+ EVENT_LIBRARY_FRAMES = ["library-"+name+".png" for name in ("recordings","playback","favorite-recreated","speech","recording-deleted","options","options-recreated","analysis-details","analysis-details-recreated")]
+ GOAL_PLAN_FRAMES = ['goal-plan.png', 'goal-options.png', 'goal-options-recreated.png', 'goal-options-winddown-recreated.png', 'goal-options-updated.png', 'goal-tonight.png', 'goal-saved-plan.png', 'goal-empty-bank.png', 'goal-create.png', 'goal-bank.png', 'goal-reopened-bank.png', 'goal-bank-details.png', 'goal-stopped.png', 'goal-trends.png']
+ INTERACTION_SECURITY_FRAMES = ["calendar-rules-permission-"+name+".png" for name in ("settings","granted-draft","revoked-draft")]
++ROOM_SETTINGS_SEARCH_FRAMES = [
++    "search-empty.png",
++    "search-room.png",
++    "search-no-results.png",
++    "search-record.png",
++    "search-recreated.png",
++]
+ PRIORITY_MENU_FRAMES = ["advanced-snooze-"+name+".png" for name in ("initial","options","options-recreated","draft","recreated","reopened","sound-picker","sound-picker-recreated","invalid","repaired-draft")]
+ PRIORITY_MENU_FRAMES += ["qr-code-"+name+".png" for name in ("permission","invalid","denied","access-error","scanning","camera-error","captured","fallback","fallback-error","recreated","routine","reopened","unavailable")]
+ PRIORITY_CURRENT_FRAMES = ["qr-code-"+name+".png" for name in ("permission","invalid","denied","access-error","scanning","camera-error","captured","fallback","fallback-error","recreated","routine","reopened","unavailable")]
+@@ -78,6 +85,8 @@ SENSING_FRAMES += SHARED_SOUND_FRAMES
+ TRAVEL_UI_TESTS = ("TravelPlanFlowTest", "TravelCueFlowTest")
+ TRAVEL_UI_FRAMES = ["travel-" + name + ".png" for name in ("plan", "zones", "date", "reminders", "reopened", "error", "disabled", "schedules", "reminders-recreated", "reminders-reopened", "disabled-main")]
+ TRAVEL_UI_FRAMES += ["travel-cues-" + name + ".png" for name in ("settings-off", "window", "date", "time", "window-recreated", "settings-enabled", "settings-reopened", "invalid-window", "no-manual", "ready", "active", "active-recreated", "stopped", "stopped-reopened", "output-error", "interrupted", "light-settings", "light-settings-recreated", "review-from-menu", "about-recreated")]
++TRAVEL_UI_FRAMES += ["travel-cues-tracking-settings.png", "travel-cues-tracking-settings-recreated.png", "travel-cues-about-main-recreated.png"]
++TRAVEL_UI_FRAMES += ["travel-cues-tracking-reminder-draft.png", "travel-cues-tracking-reminder-saved.png", "travel-cues-tracking-reminder-details.png"]
+ CATEGORY_TESTS = ("SoundCategoryStorageTest", "SoundCategoryFlowTest", "SoundEventsUiTest", "FavoriteSoundsFlowTest", "ReportReferenceFlowTest", "SoundArchiveUiTest", "SoundLabelFlowTest", "SoundLibraryUiTest")
+ CATEGORY_NEW_FRAMES = ["sound-category-" + name + ".png" for name in ("night-all", "night-selector", "night-cough", "night-playing", "night-recreated", "night-reopened", "night-other-empty", "night-baby", "album-selector", "album-laughter", "album-week", "album-recreated", "album-reopened", "album-speech")]
+ CATEGORY_FRAMES = CATEGORY_NEW_FRAMES + ["analysis-events-" + name + ".png" for name in ("all", "speech", "recreated")]
+@@ -310,10 +319,14 @@ elif args.scope == "label-navigation":
+     tests = ["AlarmToneFlowTest#toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput", "GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen"]
+ elif args.scope == "live-night-timeline":
+     tests = ["SonarNightFlowTest#visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight"]
++elif args.scope == "chart-phone-motion":
++    tests = ["ChartClockFlowTest#alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects"]
+ elif args.scope == "wake-challenge-reference":
+     tests = ["WakeCheckFlowTest#silentPromptCountsDownRecreatesConfirmsAndReopensDurably", "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
+ elif args.scope == "calendar-consent-recovery":
+     tests = ["CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft"]
++elif args.scope == "room-settings-search":
++    tests = ["SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls"]
+ elif args.scope == "profile-room-dimming":
+     tests = ["BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen"]
+ elif args.scope == "sensing-travel":
+@@ -405,7 +418,46 @@ if "SonarSharedClassifierStorageTest" in tests:
+     except (OSError, KeyError, ValueError, TypeError) as error:
+         failures.append("Shared PCM replay evidence incomplete: " + str(error))
+ if args.scope != "full":
+-    focused_frames = {"live-night-timeline": ["sonar-night-setup.png", "sonar-night-measuring.png", "sonar-night-paused.png", "sonar-night-options.png", "sonar-night-options-recreated.png", "sonar-night-paused-recreated.png", "sonar-night-resumed.png", "sonar-night-missing.png", "sonar-night-stop-confirmation.png", "sonar-night-whole-night.png"], "wake-challenge-reference": ["wake-check-waiting.png", "wake-check-prompt.png", "wake-check-countdown.png", "wake-check-recreated.png", "wake-check-confirmed.png", "wake-check-reopened.png", "wake-check-storage-error.png", "routine-legacy.png", "routine-ordered.png", "routine-reordered.png", "routine-recreated.png", "routine-removed.png", "routine-reopened.png", "challenge-math-initial.png", "challenge-math-selected.png", "challenge-math-wrong.png", "challenge-math-recreated.png", "challenge-math-completed.png", "challenge-math-typed-wrong.png", "challenge-math-typed-recreated.png", "challenge-math-typed-completed.png"], "calendar-consent-recovery": ["calendar-rules-permission-settings.png", "calendar-rules-permission-granted-draft.png", "calendar-rules-permission-revoked-draft.png", "auto-calendar-draft-recreated.png", "auto-calendar-consent-conflict.png", "auto-calendar-saved-private.png"], "profile-room-dimming": ["backup-document-review.png", "backup-document-confirmation.png", "backup-document-review-recreated.png", "backup-document-review-reopened.png", "backup-document-restoring.png", "backup-document-restoring-recreated.png", "backup-document-restored.png", "backup-document-result-reopened.png"], "label-navigation": TONE_FRAMES + ["guard-"+name+".png" for name in ("draft","saved","options-recreated","paused","wind-down","wind-down-options","wind-down-recreated","wind-down-paused")], "bedtime-navigation": ["guard-"+name+".png" for name in ("draft","saved","options-recreated","paused","wind-down","wind-down-options","wind-down-recreated","wind-down-paused")], "room-bedtime-repair": [name for name in ROOM_BEDTIME_LIVE_FRAMES if not name.startswith("sonar-night-")], "room-bedtime-live": ROOM_BEDTIME_LIVE_FRAMES, "readiness-recovery": ["protection-"+name+".png" for name in ("alarms", "editor", "off", "disclosure", "on", "recreated", "global", "power-only", "readiness", "readiness-rationale", "readiness-rationale-cancel", "readiness-settings-recovery", "readiness-returned")], "sensing-reference": ["sonar-setup-"+name+".png" for name in ("initial", "ready", "gain-changed", "retested", "reopened", "recreated")]+["sonar-night-"+name+".png" for name in ("setup", "measuring", "paused", "paused-recreated", "resumed", "missing", "stop-confirmation")]+["snore-settings-"+name+".png" for name in ("default", "preview", "selected", "recreated", "reopened")], "setup-readiness": SETUP_READINESS_FRAMES, "privacy-recovery": ["privacy-history-"+name+".png" for name in ("ready","error","busy","pending","done")], "reference-menus": REFERENCE_MENU_FRAMES, "priority-repair": PRIORITY_REPAIR_FRAMES, "priority-current": PRIORITY_CURRENT_FRAMES, "priority-menus": PRIORITY_MENU_FRAMES, "event-library": EVENT_LIBRARY_FRAMES, "goal-plan": GOAL_PLAN_FRAMES, "interaction-security": INTERACTION_SECURITY_FRAMES, "appearance": APPEARANCE_FRAMES, "tonight": TONIGHT_FRAMES, "challenge-routine": ROUTINE_FRAMES, "travel-ui": TRAVEL_UI_FRAMES, "recorded-analysis": RECORDED_ANALYSIS_FRAMES, "organized-settings": ORGANIZED_SETTINGS_FRAMES, "organization": ['organization-settings-root.png', 'organization-settings-sleep.png', 'organization-search-flashlight.png', 'organization-feedback-off.png', 'organization-alarm-editor.png', 'organization-alarm-schedule.png', 'organization-alarm-options.png', 'organization-controls-recreated.png', 'organization-alarm-backup.png', 'organization-alarm-reopened.png', 'organization-smart-following.png', 'organization-smart-configured.png', 'organization-smart-reopened.png', 'organization-alarm-search.png'], "report-flow": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap")], "nap-features": NAP_FEATURE_FRAMES, "feature-increment": FEATURE_INCREMENT_FRAMES, "phone-features": PHONE_FEATURE_FRAMES, "sound-categories": CATEGORY_FRAMES, "sound-sensitivity": SENSITIVITY_FRAMES, "sonar-night": NIGHT_FRAMES, "report": REPORT_FRAMES, "sensing-travel": SENSING_FRAMES, "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES}[args.scope]
++    focused_frames = {
++        "room-settings-search": ROOM_SETTINGS_SEARCH_FRAMES,
++        "chart-phone-motion": ['chart-clock-overnight.png', 'chart-clock-night.png', 'chart-clock-short.png', 'chart-clock-fold.png', 'chart-clock-phone-history.png', 'chart-clock-phone-selected.png', 'chart-clock-phone-paused.png', 'chart-clock-phone-retry.png', 'chart-clock-tracking-main.png', 'chart-clock-tracking-options.png', 'chart-clock-tracking-returned.png', 'chart-clock-tracking-paused.png', 'chart-clock-tracking-recreated.png', 'chart-clock-tracking-session.png'],
++        "live-night-timeline": ["sonar-night-setup.png", "sonar-night-measuring.png", "sonar-night-paused.png", "sonar-night-options.png", "sonar-night-options-recreated.png", "sonar-night-paused-recreated.png", "sonar-night-resumed.png", "sonar-night-missing.png", "sonar-night-stop-confirmation.png", "sonar-night-whole-night.png"],
++        "wake-challenge-reference": ["wake-check-waiting.png", "wake-check-prompt.png", "wake-check-countdown.png", "wake-check-recreated.png", "wake-check-confirmed.png", "wake-check-reopened.png", "wake-check-storage-error.png", "routine-legacy.png", "routine-ordered.png", "routine-reordered.png", "routine-recreated.png", "routine-removed.png", "routine-reopened.png", "challenge-math-initial.png", "challenge-math-selected.png", "challenge-math-wrong.png", "challenge-math-recreated.png", "challenge-math-completed.png", "challenge-math-typed-wrong.png", "challenge-math-typed-recreated.png", "challenge-math-typed-completed.png"],
++        "calendar-consent-recovery": ["calendar-rules-permission-settings.png", "calendar-rules-permission-granted-draft.png", "calendar-rules-permission-revoked-draft.png", "auto-calendar-draft-recreated.png", "auto-calendar-consent-conflict.png", "auto-calendar-saved-private.png"],
++        "profile-room-dimming": ["backup-document-review.png", "backup-document-confirmation.png", "backup-document-review-recreated.png", "backup-document-review-reopened.png", "backup-document-restoring.png", "backup-document-restoring-recreated.png", "backup-document-restored.png", "backup-document-result-reopened.png"],
++        "label-navigation": TONE_FRAMES + ["guard-"+name+".png" for name in ("draft","saved","options-recreated","paused","wind-down","wind-down-options","wind-down-recreated","wind-down-paused")],
++        "bedtime-navigation": ["guard-"+name+".png" for name in ("draft","saved","options-recreated","paused","wind-down","wind-down-options","wind-down-recreated","wind-down-paused")],
++        "room-bedtime-repair": [name for name in ROOM_BEDTIME_LIVE_FRAMES if not name.startswith("sonar-night-")],
++        "room-bedtime-live": ROOM_BEDTIME_LIVE_FRAMES,
++        "readiness-recovery": ["protection-"+name+".png" for name in ("alarms", "editor", "off", "disclosure", "on", "recreated", "global", "power-only", "readiness", "readiness-rationale", "readiness-rationale-cancel", "readiness-settings-recovery", "readiness-returned")],
++        "sensing-reference": ["sonar-setup-"+name+".png" for name in ("initial", "ready", "gain-changed", "retested", "reopened", "recreated")]+["sonar-night-"+name+".png" for name in ("setup", "measuring", "paused", "paused-recreated", "resumed", "missing", "stop-confirmation")]+["snore-settings-"+name+".png" for name in ("default", "preview", "selected", "recreated", "reopened")],
++        "setup-readiness": SETUP_READINESS_FRAMES,
++        "privacy-recovery": ["privacy-history-"+name+".png" for name in ("ready","error","busy","pending","done")],
++        "reference-menus": REFERENCE_MENU_FRAMES,
++        "priority-repair": PRIORITY_REPAIR_FRAMES,
++        "priority-current": PRIORITY_CURRENT_FRAMES,
++        "priority-menus": PRIORITY_MENU_FRAMES,
++        "event-library": EVENT_LIBRARY_FRAMES,
++        "goal-plan": GOAL_PLAN_FRAMES,
++        "interaction-security": INTERACTION_SECURITY_FRAMES,
++        "appearance": APPEARANCE_FRAMES,
++        "tonight": TONIGHT_FRAMES,
++        "challenge-routine": ROUTINE_FRAMES,
++        "travel-ui": TRAVEL_UI_FRAMES,
++        "recorded-analysis": RECORDED_ANALYSIS_FRAMES,
++        "organized-settings": ORGANIZED_SETTINGS_FRAMES,
++        "organization": ['organization-settings-root.png', 'organization-settings-sleep.png', 'organization-search-flashlight.png', 'organization-feedback-off.png', 'organization-alarm-editor.png', 'organization-alarm-schedule.png', 'organization-alarm-options.png', 'organization-controls-recreated.png', 'organization-alarm-backup.png', 'organization-alarm-reopened.png', 'organization-smart-following.png', 'organization-smart-configured.png', 'organization-smart-reopened.png', 'organization-alarm-search.png'],
++        "report-flow": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap")],
++        "nap-features": NAP_FEATURE_FRAMES,
++        "feature-increment": FEATURE_INCREMENT_FRAMES,
++        "phone-features": PHONE_FEATURE_FRAMES,
++        "sound-categories": CATEGORY_FRAMES,
++        "sound-sensitivity": SENSITIVITY_FRAMES,
++        "sonar-night": NIGHT_FRAMES,
++        "report": REPORT_FRAMES,
++        "sensing-travel": SENSING_FRAMES,
++        "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES,
++    }[args.scope]
+     failures += [name for name in focused_frames if not (output / name).is_file()]
+     summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "failures": failures}
+     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
