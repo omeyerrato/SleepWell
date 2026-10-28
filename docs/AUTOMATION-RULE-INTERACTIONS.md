@@ -2,7 +2,8 @@
 
 Future source increment from `ef69408258e900a50274d6f2488e859647138714` on
 `codex/automation-rules-board11`. This work is separate from the frozen 0.1.5
-package; no root workspace, device, release or CI action was performed.
+package; no root workspace, device or release was changed. The later focused
+CI execution is recorded below.
 
 Ordered commits before this note:
 
@@ -95,7 +96,7 @@ The pinned fixture status/recover/schedule port never touches JobScheduler or a
 remote recipient. Every input checks that this exact private owner remains
 installed. Visual-review flags suppress optional interaction feedback.
 
-The extension plans to verify real native navigation, full 48dp bounds, actual
+The extension verifies real native navigation, full 48dp bounds, actual
 focused windows and committed frames; default-Off Add/cancel; page recreation;
 current-type no-op with retained URL/credential; original saved values before
 Save; old confirmation rejection; Test/Delete confirmation cancellation; one
@@ -105,7 +106,7 @@ Readers and accepted tasks drain before restoring the prior Port and removing
 private fixtures. Exact original global preference values/key absence and
 absence of capture/playback/alarm runtime are asserted.
 
-The ten planned original names are:
+The ten required original names are:
 
 - `automation-rules-main.png`
 - `automation-rules-options.png`
@@ -118,12 +119,15 @@ The ten planned original names are:
 - `automation-rules-load-error.png`
 - `automation-rule-reopened.png`
 
-The existing method and changed Activity compile against Android API 36 with
-JDK 21 / Java release 17. Native compilation has no diagnostics; Activity
-compilation has deprecation notes only. `git diff --check` passes. This is
-compile-only evidence: no CI/native execution, actual frame, reference/layout
-acceptance or new functional PASS is claimed. Workflow scope/inventory is not
-changed. Any future run must select only the named method and these ten images.
+The method and changed Activity compile against Android API36 / Java release17.
+Focused `automation-rules` [CI40773076249](https://github.com/omeyerrato/SleepWell/actions/runs/40773076249)
+passed at `805704af`: **31.979 seconds, one existing method / ten required originals**.
+All ten originals were individually inspected against Board11 right; exact
+assertions, source/scope hashes, the first failed run and limits are in the
+[verification archive](verification/2026-10-29-automation-rules/README.md).
+Both optional-output flags were false. The native-only correction waits for
+current owned-window handoff; no production change followed the source commits
+listed above. All42 previous scope mappings/selectors/arrays/defaults remain.
 
 The fake Vault is not an Android Keystore runtime claim. Private SQLite queue
 writes and fake scheduling do not prove real event delivery, recipient actions,
