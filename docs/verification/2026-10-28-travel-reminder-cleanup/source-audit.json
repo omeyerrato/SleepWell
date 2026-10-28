@@ -1,0 +1,422 @@
+{
+  "review_base": "6c325721efd52e6ff881faf2b4ad28c8cd17d47f",
+  "frozen_source": "63cc05cd816ce12c70936f25b37aa4cb27d6c270",
+  "frozen_and_review_app_main_tree_equal": true,
+  "prior_manifest_review": "bd2fc32c97c0e515ef0c1e9b4564956b1f57d64d",
+  "capture_source": "32d024657093d3cd3ed098e69dff92c4edb18c81",
+  "app_declared_export_count": 17,
+  "all_exported_declarations_identical_to_prior_review": true,
+  "scope": "Source manifest and listed sources only. No new merged dependency inventory, Android cross-UID/process enforcement, provider or physical run. Prior SDK inspection remains historical.",
+  "exported_entries": [
+    {
+      "component": ".HomeLaunchActivity",
+      "declaration": {
+        "tag": "activity",
+        "attributes": {
+          "name": ".HomeLaunchActivity",
+          "exported": "true"
+        },
+        "intent_filters": []
+      },
+      "source": "app/src/main/java/org/sleepwell/app/HomeLaunchActivity.java",
+      "git_blob": "02ac75db2bb28e21d3724b093ed757d12b9ebe09",
+      "sha256": "aeea54bb43a5acd3fcd01266fa1febb744d0c4134e8d5622c3c42af3d4212208",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".AlarmContentProvider",
+      "declaration": {
+        "tag": "provider",
+        "attributes": {
+          "name": ".AlarmContentProvider",
+          "authorities": "org.sleepwell.app.alarms",
+          "exported": "true",
+          "readPermission": "org.sleepwell.app.permission.READ_MANAGED_ALARMS",
+          "writePermission": "org.sleepwell.app.permission.MANAGE_ALARMS",
+          "grantUriPermissions": "true"
+        },
+        "intent_filters": []
+      },
+      "source": "app/src/main/java/org/sleepwell/app/AlarmContentProvider.java",
+      "git_blob": "0b3e5edd29eb43b47e0712fc8b8ded855e9930db",
+      "sha256": "20b33d3e82f5269c4139e1ed5c1409f49954fb9842fb7404fac889a388bf726a",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".RecordContentProvider",
+      "declaration": {
+        "tag": "provider",
+        "attributes": {
+          "name": ".RecordContentProvider",
+          "authorities": "org.sleepwell.app.records",
+          "exported": "true",
+          "readPermission": "org.sleepwell.app.permission.READ_RECORD_SUMMARIES",
+          "writePermission": "org.sleepwell.app.permission.WRITE_RECORD_SUMMARIES",
+          "grantUriPermissions": "true"
+        },
+        "intent_filters": []
+      },
+      "source": "app/src/main/java/org/sleepwell/app/RecordContentProvider.java",
+      "git_blob": "cf3198b8683863a7aefeb514740abaa3f36f8ee8",
+      "sha256": "d0893c0aa1e30dec796c3eb4ddebddc80d2ef4507b82d5ff90108f67ee241761",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".MainActivity",
+      "declaration": {
+        "tag": "activity",
+        "attributes": {
+          "name": ".MainActivity",
+          "exported": "true"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\"><action ns0:name=\"android.intent.action.MAIN\" /><category ns0:name=\"android.intent.category.LAUNCHER\" /></intent-filter>\n        "
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "git_blob": "f41aeaea257a81a6bcf170da396bea9f35e4b2f7",
+      "sha256": "fa3b861327749975282de34fa6533a64541e72e385c3ef2a08a413360b180594",
+      "source_identical_to_prior_review": false
+    },
+    {
+      "component": ".IncomingAutomationActivity",
+      "declaration": {
+        "tag": "activity",
+        "attributes": {
+          "name": ".IncomingAutomationActivity",
+          "exported": "true"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\"><action ns0:name=\"org.sleepwell.app.action.TRACKING_REQUEST\" /><category ns0:name=\"android.intent.category.DEFAULT\" /></intent-filter>\n        "
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/IncomingAutomationActivity.java",
+      "git_blob": "e0083b8df393d7cbfe8380a413fe392631210dc2",
+      "sha256": "8759bb6db3d321f408c0e6e2bfc2ffb70e0970a0f1694315235b669b931086be",
+      "source_identical_to_prior_review": false
+    },
+    {
+      "component": ".TrackingDndActivity",
+      "declaration": {
+        "tag": "activity",
+        "attributes": {
+          "name": ".TrackingDndActivity",
+          "exported": "true"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\"><action ns0:name=\"android.app.action.AUTOMATIC_ZEN_RULE\" /><category ns0:name=\"android.intent.category.DEFAULT\" /></intent-filter>"
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/TrackingDndActivity.java",
+      "git_blob": "53cda9595c5026788e726f750741b491ec259455",
+      "sha256": "3d61502ebf7e44efec2d33277d7cf24271ec64d0d470337b586e089c5dd0078e",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".HealthSleepPrivacyActivity",
+      "declaration": {
+        "tag": "activity",
+        "attributes": {
+          "name": ".HealthSleepPrivacyActivity",
+          "exported": "true"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\"><action ns0:name=\"androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE\" /></intent-filter>\n        "
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/HealthSleepPrivacyActivity.java",
+      "git_blob": "fad997f9e324d203cf0c787b0d87e3dcebeddabe",
+      "sha256": "b9fd31e545a4efe21ffadc6c86c85a6a6f0e6fb641803beea8d373d39ef42a11",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".HealthSleepPermissionUsage",
+      "declaration": {
+        "tag": "activity-alias",
+        "attributes": {
+          "name": ".HealthSleepPermissionUsage",
+          "targetActivity": ".HealthSleepPrivacyActivity",
+          "exported": "true",
+          "permission": "android.permission.START_VIEW_PERMISSION_USAGE"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\"><action ns0:name=\"android.intent.action.VIEW_PERMISSION_USAGE\" /><category ns0:name=\"android.intent.category.HEALTH_PERMISSIONS\" /></intent-filter>\n        "
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/HealthSleepPrivacyActivity.java",
+      "git_blob": "fad997f9e324d203cf0c787b0d87e3dcebeddabe",
+      "sha256": "b9fd31e545a4efe21ffadc6c86c85a6a6f0e6fb641803beea8d373d39ef42a11",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".SleepSummaryActivity",
+      "declaration": {
+        "tag": "activity",
+        "attributes": {
+          "name": ".SleepSummaryActivity",
+          "exported": "true"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\"><action ns0:name=\"android.intent.action.GET_CONTENT\" /><category ns0:name=\"android.intent.category.DEFAULT\" /><category ns0:name=\"android.intent.category.OPENABLE\" /><data ns0:mimeType=\"application/vnd.org.sleepwell.sleep-summary+json\" /></intent-filter>\n        "
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/SleepSummaryActivity.java",
+      "git_blob": "b50f13816360a10ab6af89320bca9ec530dd9561",
+      "sha256": "0edd72949707c52d53db2ac99a874615b77f3843a6b8ae816bdf49cec877e140",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".AlarmRequestActivity",
+      "declaration": {
+        "tag": "activity",
+        "attributes": {
+          "name": ".AlarmRequestActivity",
+          "exported": "true",
+          "permission": "com.android.alarm.permission.SET_ALARM"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\"><action ns0:name=\"android.intent.action.SET_ALARM\" /><action ns0:name=\"android.intent.action.SHOW_ALARMS\" /><category ns0:name=\"android.intent.category.DEFAULT\" /></intent-filter>\n        "
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/AlarmRequestActivity.java",
+      "git_blob": "5212c5af4b4e7377cb838983ea2926f473e0e4d6",
+      "sha256": "2f0c109c6d35011f5b97ce870e8741b9658489b922f1ce7b0bb4365ab07b5f7c",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".TimerRequestActivity",
+      "declaration": {
+        "tag": "activity",
+        "attributes": {
+          "name": ".TimerRequestActivity",
+          "exported": "true",
+          "permission": "com.android.alarm.permission.SET_ALARM"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\"><action ns0:name=\"android.intent.action.SET_TIMER\" /><category ns0:name=\"android.intent.category.DEFAULT\" /></intent-filter>"
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/TimerRequestActivity.java",
+      "git_blob": "6c4c15ec6b46708e8bfb782c51942b03b2529f67",
+      "sha256": "b6eb87bcb73e6597f98fb55bebafdab14ce4e1b52343b8bbd7b091378c455fa8",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".SleepWellAdminReceiver",
+      "declaration": {
+        "tag": "receiver",
+        "attributes": {
+          "name": ".SleepWellAdminReceiver",
+          "exported": "true",
+          "permission": "android.permission.BIND_DEVICE_ADMIN",
+          "label": "@string/uninstall_admin_label",
+          "description": "@string/uninstall_admin_description"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\"><action ns0:name=\"android.app.action.DEVICE_ADMIN_ENABLED\" /></intent-filter>\n        "
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/SleepWellAdminReceiver.java",
+      "git_blob": "6b30f5635f5e8f638f84ea56faab3d47d845cb34",
+      "sha256": "a7ad15cc23b3101371db2c4f130e416cb468ff65d1aefca564bb1c56ee301e41",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".CalendarSyncJob",
+      "declaration": {
+        "tag": "service",
+        "attributes": {
+          "name": ".CalendarSyncJob",
+          "exported": "true",
+          "permission": "android.permission.BIND_JOB_SERVICE"
+        },
+        "intent_filters": []
+      },
+      "source": "app/src/main/java/org/sleepwell/app/CalendarSyncJob.java",
+      "git_blob": "f06772e31d4abffb31a7efbbe1e7ed1e38644a9c",
+      "sha256": "ec117665ded1ac0bcf2e9922fc556d5ba2893f896eb2a874424ad95625c712f6",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".BedtimeGuard",
+      "declaration": {
+        "tag": "service",
+        "attributes": {
+          "name": ".BedtimeGuard",
+          "exported": "true",
+          "permission": "android.permission.BIND_ACCESSIBILITY_SERVICE"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\"><action ns0:name=\"android.accessibilityservice.AccessibilityService\" /></intent-filter>\n            "
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/BedtimeGuard.java",
+      "git_blob": "441fac367a158ba6fcaee5b5f69ea2c96abc2a25",
+      "sha256": "8b46808fae8dd1389a5b42cbaf6da7d932cbaf99759e17716c4d4f95215bdcda",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".RecurringTrackingBootReceiver",
+      "declaration": {
+        "tag": "receiver",
+        "attributes": {
+          "name": ".RecurringTrackingBootReceiver",
+          "exported": "true"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.BOOT_COMPLETED\" />\n                <action ns0:name=\"android.intent.action.TIME_SET\" />\n                <action ns0:name=\"android.intent.action.TIMEZONE_CHANGED\" />\n                <action ns0:name=\"android.intent.action.MY_PACKAGE_REPLACED\" />\n                <action ns0:name=\"android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED\" />\n            </intent-filter>\n        "
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/RecurringTrackingBootReceiver.java",
+      "git_blob": "cf34dbeb1a11765054567b5475a36bc29c325a2b",
+      "sha256": "27d949831130372353337d37b9e2d0475bf211ba3ce2e02ad450d8cbb81db1f3",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".TravelBootReceiver",
+      "declaration": {
+        "tag": "receiver",
+        "attributes": {
+          "name": ".TravelBootReceiver",
+          "exported": "true"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.BOOT_COMPLETED\" />\n                <action ns0:name=\"android.intent.action.TIME_SET\" />\n                <action ns0:name=\"android.intent.action.TIMEZONE_CHANGED\" />\n                <action ns0:name=\"android.intent.action.MY_PACKAGE_REPLACED\" />\n            </intent-filter>\n        "
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/TravelBootReceiver.java",
+      "git_blob": "86a8b18d22daeee8e403c3eaf9a31a4740ac71c3",
+      "sha256": "b02816e0affb0f46d6f5f82e1b3206c2b3cd09de45006858679f21c7f381d9fd",
+      "source_identical_to_prior_review": true
+    },
+    {
+      "component": ".BootReceiver",
+      "declaration": {
+        "tag": "receiver",
+        "attributes": {
+          "name": ".BootReceiver",
+          "exported": "true"
+        },
+        "intent_filters": [
+          "<intent-filter xmlns:ns0=\"http://schemas.android.com/apk/res/android\">\n                <action ns0:name=\"android.intent.action.BOOT_COMPLETED\" />\n                <action ns0:name=\"android.intent.action.TIME_SET\" />\n                <action ns0:name=\"android.intent.action.TIMEZONE_CHANGED\" />\n                <action ns0:name=\"android.intent.action.MY_PACKAGE_REPLACED\" />\n                <action ns0:name=\"android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED\" />\n            </intent-filter>\n        "
+        ]
+      },
+      "source": "app/src/main/java/org/sleepwell/app/BootReceiver.java",
+      "git_blob": "cd763d5ae29ba1218b39b741c76c35a3287efe0f",
+      "sha256": "aea8a14dbd5abbfc650d36020daf37ba88b6da3d52bf6fe652f2b8fe7b946cf8",
+      "source_identical_to_prior_review": true
+    }
+  ],
+  "sources": [
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "git_blob": "3796dbc5d07608b67f7b5766d62a23aa812f1096",
+      "sha256": "bfbe56034243efae83a98644fe31e76f8372adea2924ddd6c83607fd50cbc11d",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TravelTrackingReminderReceiver.java",
+      "git_blob": "e88093bcd5fa083210e65d9177da253caa70f73b",
+      "sha256": "d0e18b0e16db5e012fbe8e9ff8f5a9ddab967cbe83f29e170433209ba70cf04b",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TravelTrackingReminders.java",
+      "git_blob": "02ab020485f82d586eaf0dd57886b2cda75ebd95",
+      "sha256": "53b7c555edfc9c294675f79c760225b202d9f237ee94bf19105f26b8cb491e18",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TravelReminders.java",
+      "git_blob": "678f41a60c25d16861858174ba9f9c922a7b29c1",
+      "sha256": "5c7716b543995d5305e7f86c94ec500eeb7c6d1c066a7281217ed6a15984e0b4",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TravelPlans.java",
+      "git_blob": "4b4cf0d48b6bcda4244eac417f24297f79a41ef2",
+      "sha256": "e277549e92d18f5140e46fcfd72734b69876da85d6afa7cb7cd75db0ce85abed",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TravelCues.java",
+      "git_blob": "ea9ce9443b2439657ea5b4f5adf4f178186c8e02",
+      "sha256": "598542d4ec433596e94da45663454987fde9d4dd6c779ac1b74671c43a3386e9",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TravelBootReceiver.java",
+      "git_blob": "86a8b18d22daeee8e403c3eaf9a31a4740ac71c3",
+      "sha256": "b02816e0affb0f46d6f5f82e1b3206c2b3cd09de45006858679f21c7f381d9fd",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingService.java",
+      "git_blob": "b8a6c8399a5944e98de5f18096aa10943d97d451",
+      "sha256": "4edb35f6143e33cf17c98f31c40155910f0b00836095a071f272e390f1df490a",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TravelCueStopReceiver.java",
+      "git_blob": "6afb63b4b2ca388729f1f5e5e5a49207e868e5b6",
+      "sha256": "f871fd658ea096f5b5128e6ecc9fa0f85db880babddb1ca8d49bdbd9e2bc501a",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PairMotionStopReceiver.java",
+      "git_blob": "98ece07a1726f800c3a06b9e0b3e16c7d45d134e",
+      "sha256": "2bc422c0763e0c1b71a43df8469166a8f6b90d9988e8a24d46cc1f6a8ab3d1c1",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/GoogleSleepSignal.java",
+      "git_blob": "92edad449e9cfd9faba1267100e132ec661a024f",
+      "sha256": "ce8adaefcbee7f0448a8cd1d433334374717010504c55a590aa9955f1c5de7d2",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java",
+      "git_blob": "06d73303d7fd980d321e9337c105cee221e16706",
+      "sha256": "12ee0dd6a3eab9fc88e2e6d05e53ae98ab5349016457e3c1fdb21e31a20d10c3",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmSmartWake.java",
+      "git_blob": "0df428dfae19f9f782036afc33f3c0a8051e64fd",
+      "sha256": "18140a6fe000b6590c0da8a652c4f79c7e86c8d03b13366b4d85047b2587a691",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmSmartWakeRuntime.java",
+      "git_blob": "c190f2ab3196692493dba706748cd9f6804ee8ac",
+      "sha256": "08c7f5c8c4b5a07c4dc92abfbc1d9993346feb0cdd224b682011c267b51f5da5",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/TravelCueFlowTest.java",
+      "git_blob": "2717ec90b70e84a1fa09d6fcea1e7abcc7d9a878",
+      "sha256": "993b4eb8c14f02926f21c3cedb2f2d8c147d014aed8a246653f2d450bcc2eb0c",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "git_blob": "493e4deba0adc92f596161a2c2896fb25892c8ff",
+      "sha256": "989c2c5d4c7b91a5642a12259909cd740299d18b9bd216c936f72ededb99abba",
+      "archive_base_matches_capture": true
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "git_blob": "d4554ba4641a494c9bd1a39c864a14a004faa1a2",
+      "sha256": "ac0eebf5ef2e275db62d2ab197760f141485fcfd1508267e1b672ff74ab2193f",
+      "archive_base_matches_capture": true
+    }
+  ],
+  "first_failed_capture": "dd201da3bda614a7fdd94711081fe046730630fe",
+  "app_src_main_tree": "47d9509db2c851ee564eb93d2d5f069595627d76",
+  "production_tree_equal_between_runs": true,
+  "recorded_failed_sources": [
+    "dd201da3bda614a7fdd94711081fe046730630fe",
+    "747de52587556061e59eddbff025fd04f2198434"
+  ],
+  "production_tree_equal_across_all_three_runs": true
+}

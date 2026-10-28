@@ -1,0 +1,29 @@
+{
+  "base": "6c325721efd52e6ff881faf2b4ad28c8cd17d47f",
+  "ordered_commits": [
+    {
+      "commit": "381355cdd84fd665837fc3026564d897e95784f9",
+      "role": "fixed-ID cleanup/fail-safe diagnostics"
+    },
+    {
+      "commit": "b4ce07695e875addafc30457279a2f21a2ad0ce8",
+      "role": "same inert method cold-port regression"
+    },
+    {
+      "commit": "ee4deeff5bac2a335a01f57c6fbd823cb3385275",
+      "role": "separate editor footer copy, uncaptured"
+    },
+    {
+      "commit": "dd201da3bda614a7fdd94711081fe046730630fe",
+      "role": "one-method scope; first run failed"
+    },
+    {
+      "commit": "747de52587556061e59eddbff025fd04f2198434",
+      "role": "actual owned time dialog capture; second run failed"
+    },
+    {
+      "commit": "32d024657093d3cd3ed098e69dff92c4edb18c81",
+      "role": "generic target-before-frame correction; passing run"
+    }
+  ]
+}

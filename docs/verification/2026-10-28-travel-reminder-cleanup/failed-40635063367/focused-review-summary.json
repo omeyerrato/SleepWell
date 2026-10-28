@@ -1,0 +1,28 @@
+{
+  "scope": "travel-cue-cleanup",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "TravelCueFlowTest#windowReviewCancelSaveRecreateAndReopenNeverArmAnything",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 18,
+  "failures": [
+    "TravelCueFlowTest#windowReviewCancelSaveRecreateAndReopenNeverArmAnything",
+    "travel-cues-tracking-reminder-draft.png",
+    "travel-cues-tracking-reminder-saved.png",
+    "travel-cues-tracking-reminder-details.png",
+    "travel-cues-window-recreated.png",
+    "travel-cues-settings-enabled.png",
+    "travel-cues-settings-reopened.png",
+    "travel-cues-light-settings.png",
+    "travel-cues-light-settings-recreated.png",
+    "travel-cues-about-recreated.png",
+    "travel-cues-invalid-window.png",
+    "travel-cues-review-from-menu.png"
+  ]
+}
