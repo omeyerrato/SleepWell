@@ -41,6 +41,7 @@ on:
           - room-settings-search
           - sensing-travel
           - travel-ui
+          - travel-cue-cleanup
           - sonar-night
           - sound-categories
           - sound-sensitivity
