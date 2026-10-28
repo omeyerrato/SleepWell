@@ -1,0 +1,31 @@
+{
+  "scope": "tonight-composition",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "NightArcFlowTest#clockProgressAndExplanationWithoutAnyAlarmDelivery",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 14,
+  "failures": [
+    "NightArcFlowTest#clockProgressAndExplanationWithoutAnyAlarmDelivery",
+    "arc-upcoming.png",
+    "arc-help.png",
+    "arc-start.png",
+    "arc-middle.png",
+    "arc-end.png",
+    "arc-next.png",
+    "arc-large.png",
+    "arc-large-action.png",
+    "arc-weekly.png",
+    "arc-off.png",
+    "arc-off-recreated.png",
+    "arc-weekday-recreated.png",
+    "arc-empty.png",
+    "arc-empty-action.png"
+  ]
+}
