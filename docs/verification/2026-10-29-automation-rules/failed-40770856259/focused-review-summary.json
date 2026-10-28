@@ -1,0 +1,22 @@
+{
+  "scope": "automation-rules",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 10,
+  "failures": [
+    "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows",
+    "automation-rule-test-confirmation-recreated.png",
+    "automation-rule-busy-recreated.png",
+    "automation-rules-saved-notice.png",
+    "automation-rules-load-error.png",
+    "automation-rule-reopened.png"
+  ]
+}

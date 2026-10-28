@@ -1,0 +1,22 @@
+{
+  "scope": "automation-rules",
+  "selector": "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows",
+  "required_original_images": [
+    "automation-rules-main.png",
+    "automation-rules-options.png",
+    "automation-rules-destination.png",
+    "automation-rule-type-recreated.png",
+    "automation-rule-draft.png",
+    "automation-rule-test-confirmation-recreated.png",
+    "automation-rule-busy-recreated.png",
+    "automation-rules-saved-notice.png",
+    "automation-rules-load-error.png",
+    "automation-rule-reopened.png"
+  ],
+  "preserved_scope_mappings": 42,
+  "preserved_selector_assignments": 42,
+  "previous_constant_arrays_unchanged": true,
+  "native_sounds": false,
+  "audio_imports": false,
+  "defaults_unchanged": true
+}
