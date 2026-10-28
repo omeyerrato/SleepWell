@@ -537,13 +537,21 @@
         "Scheduler.java",
         "AlarmService.java",
         "AlarmActivity.java",
-        "AlarmEditorActivity.java"
+        "AlarmEditorActivity.java",
+        "WakeChallengeUi.java",
+        "WakeMathCard.java",
+        "RandomChallengePreviewActivity.java"
       ],
-      "validation": "Not verified for this feature",
+      "validation": "CI40607145222 passes the existing ordered-routine method48.983s/14 inspected originals, including real shared production Math UI/validators in private practice: choice, wrong answer, recreation, completion and typed fallback. No actual AlarmActivity admission/run/protection or physical output claim. Existing rounds and non-Math runtime preserved.",
       "status": "implemented",
       "notes": "Implemented: 1–6 rounds; shaking uses 5×rounds motion events.",
       "id": "F020",
-      "tests": []
+      "tests": [
+        {
+          "name": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+          "path": "app/src/androidTest/java/org/sleepwell/app/ChallengeRoutineFlowTest.java"
+        }
+      ]
     },
     {
       "feature": "Math",
@@ -1260,9 +1268,10 @@
         "SonarClipPolicy.java",
         "SonarSoundClips.java",
         "SonarClipWriter.java",
-        "SonarNightSound.java"
+        "SonarNightSound.java",
+        "LiveMovementTimeline.java"
       ],
-      "validation": "f9f7acb CI40120286873 PASS6classes/20methods/all25required originals: SharedSoundProvenanceStorageTest 12, SonarNightStorageTest 2, SonarNightFlowTest 2, SonarReportFlowTest 1, SonarSharedSoundFlowTest 2 and SonarSharedClassifierStorageTest 1. Actual FIR/model/private SQLite replay covers three pinned PCM fixtures and correct distinct snore/speech events. No hardware/overnight evidence. Shared-stream clip addition: production assembleDebug90e2583 PASS14s; build-only, no new tests/device actions.",
+      "validation": "f9f7acb CI40120286873 PASS6classes/20methods/all25required originals: SharedSoundProvenanceStorageTest 12, SonarNightStorageTest 2, SonarNightFlowTest 2, SonarReportFlowTest 1, SonarSharedSoundFlowTest 2 and SonarSharedClassifierStorageTest 1. Actual FIR/model/private SQLite replay covers three pinned PCM fixtures and correct distinct snore/speech events. No hardware/overnight evidence. Shared-stream clip addition: production assembleDebug90e2583 PASS14s; build-only, no new tests/device actions. Current live timeline: CI40612296204 at526de5e7 passes21.564s/10 inspected originals with settled paused/recreated bars, real generated-PCM coordinator/private SQLite, seeded8h wall history, explicit gaps, zeros, overlap dedup and bounded background reads. This is not physical/overnight acceptance; setup retains its15second calibration chart.",
       "status": "partial",
       "notes": "Manual contactless setup/start/pause/resume/stop/report now optionally shares one48k capture with ordered sound analysis and durable outcome/coverage. Legacy unknown remains unknown, exact gaps/zero preserved. Shared sonar sound analysis excludes saved clips/cues and automatic starts. Real hardware calibration, bedroom accuracy, battery and background delivery remain unverified; no breathing/stage/medical claim. Source90e2583 adds a separate default-off per-night contactless clip choice, pinned through visible-entry/delay/resume ownership. Actual filtered16kHz mono PCM from the same capture yields complete ten-second noise-triggered WAVs only after durable interval checks. Existing60/night/30second budgets, category inclusion, retention, event linkage, player and exports are reused. Gaps/cues/pause/stop discard incomplete clips; model failure stops shared-stream clips too. No second microphone or schema change. Real capture/playback/retention behavior remains unverified.",
       "id": "F047",
@@ -4680,11 +4689,16 @@
         "BackupActivity.java",
         "TonightLayout.java"
       ],
-      "validation": "Combined assembleDebug32f87b9 PASS2m2s only. No new tests/lint/screenshots, provider, output or phone actions.",
+      "validation": "CI40615701815 atbc9bc9c2 passes15.905s: eight inspected Backup UI originals followed by real private JSON/profilev2/v1/preferences/stale-fingerprint/seeded AtomicFile-journal rollback APIs in the same existing method. No Settings profile Activity, SAF/provider, power-loss or window operation is established. Older omitted-key journal compatibility is a static finding only.",
       "status": "partial",
-      "notes": "Separate strict64KiB UTF-8 version1 JSON exports optional Appearance, Sleep plan, Bundled sounds, Narration and Tonight layout categories. Source-value review precedes explicit Apply; existing typed save APIs stage allowed values, with acknowledged writes, stale fingerprints, private multi-file recovery journal and guarded rollback. Background bedtime reminders and sound-with-tracking import off; active alarm/tracking/playback or incompatible bedtime activation blocks Apply. Home order/visibility/artwork transfer excludes local revisions/receipts and cannot hide mandatory controls. No arbitrary preference keys, capture/authority, credentials/endpoints, URI references/grants, enrollment, permission or record/alarm replacement. Unsupported source local-audio category explicitly rejected. Not a full settings backup; actual provider, recovery/lifecycle and persistence acceptance remains open.",
+      "notes": "Separate strict64KiB UTF-8 version1 JSON exports optional Appearance, Sleep plan, Bundled sounds, Narration and Tonight layout categories. Source-value review precedes explicit Apply; existing typed save APIs stage allowed values, with acknowledged writes, stale fingerprints, private multi-file recovery journal and guarded rollback. Background bedtime reminders and sound-with-tracking import off; active alarm/tracking/playback or incompatible bedtime activation blocks Apply. Home order/visibility/artwork transfer excludes local revisions/receipts and cannot hide mandatory controls. No arbitrary preference keys, capture/authority, credentials/endpoints, URI references/grants, enrollment, permission or record/alarm replacement. Unsupported source local-audio category explicitly rejected. Not a full settings backup; actual provider, recovery/lifecycle and persistence acceptance remains open. Room dimming is now a typed optional Appearance field: exports use profile version2 when present; legacy version1 remains readable and an absent field preserves the local saved choice. Local permission-request markers remain excluded; this does not change records-backup14 or apply brightness.",
       "id": "F156",
-      "tests": []
+      "tests": [
+        {
+          "name": "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen",
+          "path": "app/src/androidTest/java/org/sleepwell/app/BackupDocumentFlowTest.java"
+        }
+      ]
     },
     {
       "feature": "Source-preserving Sleep as Android CSV append",
@@ -4805,11 +4819,16 @@
         "Store.java",
         "Backup.java"
       ],
-      "validation": "Combined assembleDebug86d0d1e PASS1m14s only; no calendar/provider/background/permission/phone actions.",
+      "validation": "CI40607144683 at7ee0b7de passes29.271s/6 inspected originals in the existing Calendar Rules method: AutoCalendar unsaved draft survives fake permission-return/recreation, stale owned callbacks are rejected, private AtomicReference revision CAS prevents stale Save, and a fresh Save persists once. No real OS grant, calendar provider, storage CAS, export queue or background delivery is established.",
       "status": "partial",
       "notes": "Separate default-off reviewed writable-calendar consent queues only successful local production tracked nights started after Save. No existing history/import/manual/interrupted/rejected/edited-night backfill. Fixed Sleep period title, original full recording start/end/zone only; notes/tags/raw data/audio excluded. Private32entry acknowledged revision queue, deferrable persisted job, live token guards,90s cancellation and shared direct-export ownership/dedup receipts. Running/uncertain work never blindly replays; no automatic update/delete or remote-sync claim. Off/changed consent/history replacement/removal fence pending ownership and clear/cancel queue; an in-flight provider call may finish, external events/separate direct receipts remain. Provider access/marker support, Android timing, process/permission/cleanup behavior and whole flow remain unverified.",
       "id": "F162",
-      "tests": []
+      "tests": [
+        {
+          "name": "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft",
+          "path": "app/src/androidTest/java/org/sleepwell/app/CalendarRulesFlowTest.java"
+        }
+      ]
     },
     {
       "feature": "Saved occurrence-frozen random challenge routines",
@@ -5038,7 +5057,7 @@
       ],
       "validation": "CI40601122904 at203cb417 passes30.873s: seven Motion and ten Room originals individually inspected; actual UI selections, owned rationale Cancel/Continue with fake request, fake0/2lux and RMS, no replay, dimming save/reopen/window restoration, capture failure and retained cleanup Retry. No real OS permission grant, native audio, hardware brightness or overnight accuracy claim. Source matches published0.1.2/5bf66443; original-signer arm64 build passes1m8s and both server hashes/tag are verified.",
       "status": "partial",
-      "notes": "Actual foreground TYPE_LIGHT lux and bounded fifteen-minute observation history with unknown/unreliable gaps. Optional microphone starts only on explicit current foreground action with permission and exclusive lease; relative RMS only, no calibrated dB, files, classification or upload. Opening/recreation/permission return never resumes capture. Saved opt-in dims only Room and active Wind-down windows, restoring their prior brightness on departure. Permission-recovery and complete reference acceptance remain pending."
+      "notes": "Actual foreground TYPE_LIGHT lux and bounded fifteen-minute observation history with unknown/unreliable gaps. Optional microphone starts only on explicit current foreground action with permission and exclusive lease; relative RMS only, no calibrated dB, files, classification or upload. Opening/recreation/permission return never resumes capture. Saved opt-in dims only Room and active Wind-down windows, restoring their prior brightness on departure. Permission-recovery and complete reference acceptance remain pending. Portable Appearance profilev2 now carries the saved dimming choice; legacy absence preserves it. Private API round-trip/rollback is verified separately in CI40615701815; no new brightness or device claim."
     }
   ]
 }
