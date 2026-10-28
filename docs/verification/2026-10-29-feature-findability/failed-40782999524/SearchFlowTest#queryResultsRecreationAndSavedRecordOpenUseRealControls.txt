@@ -1,0 +1,44 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SearchFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.SearchFlowTest:
+INSTRUMENTATION_STATUS: test=queryResultsRecreationAndSavedRecordOpenUseRealControls
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SearchFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Ready Extra loud: actual owner and current page did not become ready
+	at org.sleepwell.app.SearchFlowTest.featureReady(SearchFlowTest.java:40)
+	at org.sleepwell.app.SearchFlowTest.extraLoud(SearchFlowTest.java:56)
+	at org.sleepwell.app.SearchFlowTest.featureDiscovery(SearchFlowTest.java:86)
+	at org.sleepwell.app.SearchFlowTest.queryResultsRecreationAndSavedRecordOpenUseRealControls(SearchFlowTest.java:100)
+
+INSTRUMENTATION_STATUS: stream=
+Error in queryResultsRecreationAndSavedRecordOpenUseRealControls(org.sleepwell.app.SearchFlowTest):
+java.lang.AssertionError: Ready Extra loud: actual owner and current page did not become ready
+	at org.sleepwell.app.SearchFlowTest.featureReady(SearchFlowTest.java:40)
+	at org.sleepwell.app.SearchFlowTest.extraLoud(SearchFlowTest.java:56)
+	at org.sleepwell.app.SearchFlowTest.featureDiscovery(SearchFlowTest.java:86)
+	at org.sleepwell.app.SearchFlowTest.queryResultsRecreationAndSavedRecordOpenUseRealControls(SearchFlowTest.java:100)
+
+INSTRUMENTATION_STATUS: test=queryResultsRecreationAndSavedRecordOpenUseRealControls
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 40.748
+There was 1 failure:
+1) queryResultsRecreationAndSavedRecordOpenUseRealControls(org.sleepwell.app.SearchFlowTest)
+java.lang.AssertionError: Ready Extra loud: actual owner and current page did not become ready
+	at org.sleepwell.app.SearchFlowTest.featureReady(SearchFlowTest.java:40)
+	at org.sleepwell.app.SearchFlowTest.extraLoud(SearchFlowTest.java:56)
+	at org.sleepwell.app.SearchFlowTest.featureDiscovery(SearchFlowTest.java:86)
+	at org.sleepwell.app.SearchFlowTest.queryResultsRecreationAndSavedRecordOpenUseRealControls(SearchFlowTest.java:100)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

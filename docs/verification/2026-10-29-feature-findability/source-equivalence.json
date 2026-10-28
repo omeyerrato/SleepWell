@@ -1,0 +1,55 @@
+{
+  "base": "cff2778ca6baaed3abeaa9c39a660b7bb932a869",
+  "base_app_main_tree": "435a3f890533d2a4c4554ab77aa2b5dbdccfb682",
+  "attempts": [
+    {
+      "head": "8c701162e4e91101a91985ca45d23c6909e995b0",
+      "app_main_tree": "56d344a63592779ab458c0b40824cd59c7021b4c",
+      "production_sha256": {
+        "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java": "7c036d32fb5ba297ace34b6d8e41a3c04a426f1385e25de741dbbd48addfffe4",
+        "app/src/main/java/org/sleepwell/app/AlarmEditorSearchUi.java": "70d343f4c25868ca5628868296c6a5757e756b033cd9eee55b984d130b26d4b0",
+        "app/src/main/java/org/sleepwell/app/AlarmToneScreen.java": "0e2830c1022172f1392ed1dabd34dac36f66d24d234e0d44f1b853bbbf843f5f",
+        "app/src/main/java/org/sleepwell/app/SearchActivity.java": "1be4379f6ecd3d55f81ac2e976c3639c8a105d5838f139e4466dcc5d9085fb59",
+        "app/src/main/java/org/sleepwell/app/SearchAlarmChooser.java": "531b079366c4f1eec1980136f427cc6b610cb3231ecf9dd0750e7c7f1ef01fe1",
+        "app/src/main/java/org/sleepwell/app/SearchIndex.java": "6e49b96e14f4bf2a1b09416919413faa797111c7cbbc2c96d254276ed9724332",
+        "app/src/main/java/org/sleepwell/app/SearchSettings.java": "bbdf4590343dbbc8d44e6c0e7b3edf0b1f9d5e38c7f12f54ef45f12a7b3f3adc"
+      },
+      "native_path": "app/src/androidTest/java/org/sleepwell/app/SearchFlowTest.java",
+      "native_sha256": "f042b51c3f34b729d11858102207788fa84e93566f1268d1bf61d2012462e4d0"
+    },
+    {
+      "head": "4b0949e57ed8d5576c92cd1877e0721b4532b25c",
+      "app_main_tree": "56d344a63592779ab458c0b40824cd59c7021b4c",
+      "production_sha256": {
+        "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java": "7c036d32fb5ba297ace34b6d8e41a3c04a426f1385e25de741dbbd48addfffe4",
+        "app/src/main/java/org/sleepwell/app/AlarmEditorSearchUi.java": "70d343f4c25868ca5628868296c6a5757e756b033cd9eee55b984d130b26d4b0",
+        "app/src/main/java/org/sleepwell/app/AlarmToneScreen.java": "0e2830c1022172f1392ed1dabd34dac36f66d24d234e0d44f1b853bbbf843f5f",
+        "app/src/main/java/org/sleepwell/app/SearchActivity.java": "1be4379f6ecd3d55f81ac2e976c3639c8a105d5838f139e4466dcc5d9085fb59",
+        "app/src/main/java/org/sleepwell/app/SearchAlarmChooser.java": "531b079366c4f1eec1980136f427cc6b610cb3231ecf9dd0750e7c7f1ef01fe1",
+        "app/src/main/java/org/sleepwell/app/SearchIndex.java": "6e49b96e14f4bf2a1b09416919413faa797111c7cbbc2c96d254276ed9724332",
+        "app/src/main/java/org/sleepwell/app/SearchSettings.java": "bbdf4590343dbbc8d44e6c0e7b3edf0b1f9d5e38c7f12f54ef45f12a7b3f3adc"
+      },
+      "native_path": "app/src/androidTest/java/org/sleepwell/app/SearchFlowTest.java",
+      "native_sha256": "79bf0f59854b81aa7bc3ff1db670cab52a877435379461b96aa085ce78aa52cf"
+    },
+    {
+      "head": "19f6ac9e121c0767d5b63d8aab93c9c40c895835",
+      "app_main_tree": "7d0b39312318829464aae68027fe8cf1c9ed45a9",
+      "production_sha256": {
+        "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java": "9f2f179813d3209ba2a606eb0f1eedad5b68f1c000a52d0f44c9b65d97d12680",
+        "app/src/main/java/org/sleepwell/app/AlarmEditorSearchUi.java": "70d343f4c25868ca5628868296c6a5757e756b033cd9eee55b984d130b26d4b0",
+        "app/src/main/java/org/sleepwell/app/AlarmToneScreen.java": "0e2830c1022172f1392ed1dabd34dac36f66d24d234e0d44f1b853bbbf843f5f",
+        "app/src/main/java/org/sleepwell/app/SearchActivity.java": "1be4379f6ecd3d55f81ac2e976c3639c8a105d5838f139e4466dcc5d9085fb59",
+        "app/src/main/java/org/sleepwell/app/SearchAlarmChooser.java": "531b079366c4f1eec1980136f427cc6b610cb3231ecf9dd0750e7c7f1ef01fe1",
+        "app/src/main/java/org/sleepwell/app/SearchIndex.java": "6e49b96e14f4bf2a1b09416919413faa797111c7cbbc2c96d254276ed9724332",
+        "app/src/main/java/org/sleepwell/app/SearchSettings.java": "bbdf4590343dbbc8d44e6c0e7b3edf0b1f9d5e38c7f12f54ef45f12a7b3f3adc"
+      },
+      "native_path": "app/src/androidTest/java/org/sleepwell/app/SearchFlowTest.java",
+      "native_sha256": "79bf0f59854b81aa7bc3ff1db670cab52a877435379461b96aa085ce78aa52cf"
+    }
+  ],
+  "second_to_third_source_delta": [
+    "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java"
+  ],
+  "second_to_third_native_equal": true
+}
