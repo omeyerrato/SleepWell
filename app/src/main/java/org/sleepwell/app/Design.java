@@ -73,7 +73,9 @@ final class Design {
                 if(Appearance.contrast(a)&&destination==n){GradientDrawable selection=shape(a,night?palette.selected:CREAM,32);selection.setStroke(dp(a,2),night?palette.softInk:BROWN);item.setBackground(selection);}
                 item.setContentDescription(names[n]);item.setSelected(destination==n);item.setOnClickListener(v->{if(destination!=index)InteractionFeedback.selection(v);navigate.accept(index);});dock.addView(item,new LinearLayout.LayoutParams(0,dp(a,62*Math.max(1,fontScale(a))),1));}
             GradientDrawable dockSurface=shape(a,night?palette.dock:SOFT,40);if(night)dockSurface.setStroke(dp(a,1),palette.line);dock.setBackground(dockSurface);
-            LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,dp(a,12+62*Math.max(1,fontScale(a))));lp.setMargins(dp(a,12),dp(a,8),dp(a,12),dp(a,8));root.addView(dock,lp);
+            // Sum the already rounded child and padding pixels so fractional densities never clip a tab.
+            int dockHeight=dock.getPaddingTop()+dock.getPaddingBottom()+dp(a,62*Math.max(1,fontScale(a)));
+            LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,dockHeight);lp.setMargins(dp(a,12),dp(a,8),dp(a,12),dp(a,8));root.addView(dock,lp);
         }
         a.setContentView(root);root.requestApplyInsets();root.post(()->{ViewGroup content=a.findViewById(android.R.id.content);if(!a.isDestroyed()&&root.isAttachedToWindow()&&content.getChildCount()>0&&content.getChildAt(0)==root)systemBars(a,dark);});return body;
     }
