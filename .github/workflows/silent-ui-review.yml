@@ -18,6 +18,7 @@ on:
           - challenge-routine
           - math-owner
           - tonight
+          - tonight-composition
           - appearance
           - event-library
           - goal-plan
