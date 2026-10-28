@@ -179,6 +179,7 @@ public class TrackingService extends Service implements SensorEventListener {
         StoreFactory storage=storeFactory;
         SonarNight night=new SonarNight(sonarConfig,(config,cancelled)->SonarAudio.openNight(getApplicationContext(),config,cancelled,()->current==this&&running&&!destroyed&&sonarMode&&sonarNight==owner[0]),new SonarNightStore(getApplicationContext(),storage,time,awake,sonarClipPolicy),time,handler::post,state->{
             if(current!=this||sonarNight!=owner[0])return;
+            if(!state.phase.equals("ACTIVE"))TravelTrackingReminders.recordingEnded(this);
             if(!state.phase.equals("ACTIVE"))DreamCues.cancelRun(session,manualToken,state.phase.equals("PAUSED")||state.phase.equals("PAUSING")?"paused":"ended");Phase previousDndPhase=phase;session=state.id;start=state.start;phase=Phase.valueOf(state.phase);if(phase==Phase.ACTIVE&&previousDndPhase!=Phase.ACTIVE){dndActive();if(pir==null)beginPir();else pir.resume();if(delayPlan!=null)delayJob.finish(delayPlan.token,TrackingDelay.Phase.STARTED,state.id,"");}else if(phase!=Phase.ACTIVE){dndStop();if(pir!=null)pir.pause();}
             if(delayPlan!=null&&state.id==0&&(state.phase.equals("CLOSED")||state.phase.equals("BLOCKED")))delayJob.finish(delayPlan.token,TrackingDelay.Phase.FAILED,0,state.error.isEmpty()?"Contactless recording did not begin.":state.error);
             if(!state.error.isEmpty())Prefs.put(this,"trackingError",state.error);
