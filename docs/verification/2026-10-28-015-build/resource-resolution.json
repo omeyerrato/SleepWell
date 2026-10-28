@@ -1,0 +1,4530 @@
+{
+  "method": "aapt xmltree; replace only application numeric IDs with aapt resource names independently for each APK; no other normalization",
+  "changed_compiled_xml": 60,
+  "equivalent_after_resolving_ids": 55,
+  "owned_semantic_xml_changes": [
+    "res/drawable/ic_sleepwell_monochrome.xml",
+    "res/mipmap-anydpi-v26/ic_launcher.xml",
+    "res/mipmap-anydpi-v26/ic_launcher_round.xml",
+    "res/mipmap-anydpi-v33/ic_launcher.xml",
+    "res/mipmap-anydpi-v33/ic_launcher_round.xml"
+  ],
+  "entries": {
+    "res/drawable-v21/abc_edit_text_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "bc12a692fa9432aa26905d6c480d8dd79424ca2f93eca1d723a1df7fd55c9502",
+      "candidate_xmltree_sha256": "180f62e0a0d654fc9a6eca36cf707e1b895fdbe9492425dd36bec40060769ff9",
+      "baseline_resolved_sha256": "9b2cdd36318d54ddd7f578f177e1a01eaf060f9506166f701e4d2f8bc7ae3368",
+      "candidate_resolved_sha256": "9b2cdd36318d54ddd7f578f177e1a01eaf060f9506166f701e4d2f8bc7ae3368"
+    },
+    "res/drawable/abc_btn_borderless_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "226e6f85380939951512a91c67108b305ad3460f086bbeac939b1a4fcae84fef",
+      "candidate_xmltree_sha256": "8098ade5f138d05b58351ac1aa500aa270ff2a9bff0c133fe8f8bf02c9322308",
+      "baseline_resolved_sha256": "d0ba335949431eab47d6005ef9fd7b9cde9a5e34ff63a09ea0a772919fb2fa4d",
+      "candidate_resolved_sha256": "d0ba335949431eab47d6005ef9fd7b9cde9a5e34ff63a09ea0a772919fb2fa4d"
+    },
+    "res/drawable/abc_btn_check_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "89897f95350e237e7619460e152b3452e99de55b5681c40b7fda5a36c7ee0b22",
+      "candidate_xmltree_sha256": "709a6e74a96ac257037f48eae624b626c6e3bf072d256414acc6b0ad8874a966",
+      "baseline_resolved_sha256": "8bcb590787996cd04f0eda500f07e53884d28d9c5049d4a9fd545e80a8794e63",
+      "candidate_resolved_sha256": "8bcb590787996cd04f0eda500f07e53884d28d9c5049d4a9fd545e80a8794e63"
+    },
+    "res/drawable/abc_btn_check_material_anim.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "cc01e3d893486391c434788e1bdcc7d40d2576bba792105f050a959f26410786",
+      "candidate_xmltree_sha256": "e688f9596e1bfa6bcb7440e4b2e467ea9137676e2be5a86f48e1d7ca7abf0777",
+      "baseline_resolved_sha256": "b9d51f90ca605497df037c8c50601b0db14206823c43a7468af831e4cd06a822",
+      "candidate_resolved_sha256": "b9d51f90ca605497df037c8c50601b0db14206823c43a7468af831e4cd06a822"
+    },
+    "res/drawable/abc_btn_radio_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "b18207b6713caee6eb6b65ae486c498e1b397c1e11ef2e18a9c45cb7a160ad69",
+      "candidate_xmltree_sha256": "6e927a6ceb29d37c7607b909c122f77786c6c9bd3fb5f38effc3d2be6ce99814",
+      "baseline_resolved_sha256": "26c4c5bf33fc5ecc2c25ca543ee54d18f3dfcd6510a8497c49810cc607408745",
+      "candidate_resolved_sha256": "26c4c5bf33fc5ecc2c25ca543ee54d18f3dfcd6510a8497c49810cc607408745"
+    },
+    "res/drawable/abc_btn_radio_material_anim.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "d4aa312ffbcdd75097c35ee9c70872173e458d9bb4f74eabfa2b5216ae8b67d3",
+      "candidate_xmltree_sha256": "ac7788560e7031f838b65093560e56afa2da789b03785a1536f8f71418465dc2",
+      "baseline_resolved_sha256": "1674391adf1c3cdb4b38db063f55e24490341f3c8037146fb8ec9ac3f2f3020c",
+      "candidate_resolved_sha256": "1674391adf1c3cdb4b38db063f55e24490341f3c8037146fb8ec9ac3f2f3020c"
+    },
+    "res/drawable/abc_item_background_holo_dark.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "419aaeafc6a038c9d1e94c140701b36cd7eea48d3639a46daafee574e76b5204",
+      "candidate_xmltree_sha256": "91e022ea2785b482abc0436a5df1e8261a0c3f656b42c9eeb826f60ae2433fe2",
+      "baseline_resolved_sha256": "a4c06acfd2e9e3bc6735d94d55eeebda41d85dc851a9c25175350d10dbc206a4",
+      "candidate_resolved_sha256": "a4c06acfd2e9e3bc6735d94d55eeebda41d85dc851a9c25175350d10dbc206a4"
+    },
+    "res/drawable/abc_item_background_holo_light.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "3ca1cf40d11710b790693a77ebdcdd8fb97169313b5b9f07dce63513df8641e5",
+      "candidate_xmltree_sha256": "3956d499cf54b961b66cad6472544524c458a6906472bfc8a62a0e79393f6e51",
+      "baseline_resolved_sha256": "74ad8b6c0639a21e15330662d41f64c0cddad255dde93c2e51229b4f166389ac",
+      "candidate_resolved_sha256": "74ad8b6c0639a21e15330662d41f64c0cddad255dde93c2e51229b4f166389ac"
+    },
+    "res/drawable/abc_list_selector_background_transition_holo_dark.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "dcb217823c7d47db8d0c114b67c2987a0f4a7e7621119628ef9761bd4e157325",
+      "candidate_xmltree_sha256": "6b7c24bfa7d6041ca5d6f217f02f28aa3b7c36d81fb2b2523e0d993670c0f5ce",
+      "baseline_resolved_sha256": "1a266c780c3f087a6b6470e7534d96332ca0a39fef2496f38387850c92daa8f1",
+      "candidate_resolved_sha256": "1a266c780c3f087a6b6470e7534d96332ca0a39fef2496f38387850c92daa8f1"
+    },
+    "res/drawable/abc_list_selector_background_transition_holo_light.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "5c6b612c8f4c3a7cef3e72f6c202c5a2f577fc285c81d3ecbdf33fc773edce7b",
+      "candidate_xmltree_sha256": "554a50a610c9f838d817f934e1e29fdd48738f7fbc487b5c5e938df820156174",
+      "baseline_resolved_sha256": "e60cd981dfe6d7b81f607f78eee0045dafe9e6ffbfefd585667d9bc6e806c32b",
+      "candidate_resolved_sha256": "e60cd981dfe6d7b81f607f78eee0045dafe9e6ffbfefd585667d9bc6e806c32b"
+    },
+    "res/drawable/abc_list_selector_holo_dark.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "7d481584f00fe610a65faf3e8291478ae290b14221c313457ead897113e7f2c7",
+      "candidate_xmltree_sha256": "03ed8328c399abb41e1e0c044a2bae37e91890fac1d742ca1acdee66a5a589fb",
+      "baseline_resolved_sha256": "6ccee2f85031551e79bb679e41ea3db6ea85efcb0b050382c3e3269b6b925071",
+      "candidate_resolved_sha256": "6ccee2f85031551e79bb679e41ea3db6ea85efcb0b050382c3e3269b6b925071"
+    },
+    "res/drawable/abc_list_selector_holo_light.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "1d6a777c98101fcf95addb9fabebd6918385b7db8bdbce8b63e9b2f0839b5b2d",
+      "candidate_xmltree_sha256": "16445258e79d4b0cbb5ecd187123cf596ec05b36692db5113912d9624b55b1ed",
+      "baseline_resolved_sha256": "b622ea5c5c67f8cc11df15166ee12ec4d09931d92c44930fc9363ddb7591dbb9",
+      "candidate_resolved_sha256": "b622ea5c5c67f8cc11df15166ee12ec4d09931d92c44930fc9363ddb7591dbb9"
+    },
+    "res/drawable/abc_seekbar_thumb_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "400bcbd6ed8867604c4c553a46904b30af62cc89b204f76774d6b57f7dcc81d2",
+      "candidate_xmltree_sha256": "3f5a2637d4652fc4777216a16d4a64c7f291e263f77104e5498bf1d7a97da0ec",
+      "baseline_resolved_sha256": "05e1f83cead57e781fed75085100e5b2e06111f96d6e9fcb558ae3b0f5c311db",
+      "candidate_resolved_sha256": "05e1f83cead57e781fed75085100e5b2e06111f96d6e9fcb558ae3b0f5c311db"
+    },
+    "res/drawable/abc_seekbar_track_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "a21eaf9906bf438c1cf5102a0325c7df57ba9b5a90858e040a4b97178367e5dd",
+      "candidate_xmltree_sha256": "9caafceb0b0762cecc017b78eaaedfbde61bc82db0801bbadee14db1d72fa7df",
+      "baseline_resolved_sha256": "d4bb0c72302801f71ef8a7b7abf4e1de0b21025a8f1aac4bafe73fd43ca11956",
+      "candidate_resolved_sha256": "d4bb0c72302801f71ef8a7b7abf4e1de0b21025a8f1aac4bafe73fd43ca11956"
+    },
+    "res/drawable/abc_spinner_textfield_background_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "9fb742d193335443f4e8e5f827b02926506e18e25e40cfd0242af1ea4a9778cd",
+      "candidate_xmltree_sha256": "9e0b32c30ecb2ca5ccda78ac079036d7a502b56ec30827a6885f5664f143d67f",
+      "baseline_resolved_sha256": "49ff2569d408a85cb518b523f23dec9980610d47ce842a0870216bf44bca00d1",
+      "candidate_resolved_sha256": "49ff2569d408a85cb518b523f23dec9980610d47ce842a0870216bf44bca00d1"
+    },
+    "res/drawable/abc_switch_thumb_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "8f07385a9578f1c08c5569a372e877b7628374a2be8db68e83bbd071682c05e6",
+      "candidate_xmltree_sha256": "d1a1231fe89f4342eef3b87d4d3170bbdb93aeeb430590f239c983caee1277bc",
+      "baseline_resolved_sha256": "1dd9729ff36e6a05fd7ffbfdd4e1526709eaa0ae936756575de43a3c443894e7",
+      "candidate_resolved_sha256": "1dd9729ff36e6a05fd7ffbfdd4e1526709eaa0ae936756575de43a3c443894e7"
+    },
+    "res/drawable/abc_tab_indicator_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "7d9d1f0875d84ffd324632d5891a9d0f2a9bf230a15a82b0b57b9ece857c9a97",
+      "candidate_xmltree_sha256": "a34aa0201417b6a058f91769adc4c3f303d395d6b04a00753d7c25dd2b2a3c3a",
+      "baseline_resolved_sha256": "8269640120bd5927ae431134af0b136b11f48082649ea51b5043e7b0715c42c3",
+      "candidate_resolved_sha256": "8269640120bd5927ae431134af0b136b11f48082649ea51b5043e7b0715c42c3"
+    },
+    "res/drawable/abc_textfield_search_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "e516b20ee09dfcefb9c321044039cee1f209ae007adb70f24d77740ae4e903f7",
+      "candidate_xmltree_sha256": "26f6545d67f22133af95ecc62ded4dfa97bce1c0669edd8d928b03970467a3df",
+      "baseline_resolved_sha256": "64239f32942fd621f9223addf9b1c7559c59616b40f8009846e187fb42514b81",
+      "candidate_resolved_sha256": "64239f32942fd621f9223addf9b1c7559c59616b40f8009846e187fb42514b81"
+    },
+    "res/drawable/btn_checkbox_checked_to_unchecked_mtrl_animation.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "e8442c21670e1170d8ee15f8f8172505648baed97bbcd6c35c819242230a8754",
+      "candidate_xmltree_sha256": "808b80d72e2ba9bd9a2367df57e4f5b41644a7af027400aea21f860181805947",
+      "baseline_resolved_sha256": "4c63c6ff1c998edb13a23164c8d8d710266e0487570316c46dcf02c9b76920b7",
+      "candidate_resolved_sha256": "4c63c6ff1c998edb13a23164c8d8d710266e0487570316c46dcf02c9b76920b7"
+    },
+    "res/drawable/btn_checkbox_unchecked_to_checked_mtrl_animation.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "7cb629d9810dae1cd318e13998c4701b98d5753a47bd8110a28ecaa68566d933",
+      "candidate_xmltree_sha256": "45f7fca6f07aca28def45376d135f24a0c949957fc3eb32227e9549b7341af4a",
+      "baseline_resolved_sha256": "742cf33b5bc87f7c211dd3408f19fa64b2e3d4a0ea88449572e37b1254738e07",
+      "candidate_resolved_sha256": "742cf33b5bc87f7c211dd3408f19fa64b2e3d4a0ea88449572e37b1254738e07"
+    },
+    "res/drawable/btn_radio_off_to_on_mtrl_animation.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "b78c43ec1b7f8a4869ffa4564eb26ed12f18af96fcbe606c4230f8d95ffe7e13",
+      "candidate_xmltree_sha256": "2b6f2549007a62d77426b1b2ef9179183a3cd876ed330e4e88008f49d4b65f5f",
+      "baseline_resolved_sha256": "7e787047eedae127e2ab6e10d7634b73bc6f1fa8a272ec5f5ae7bcbbf88ef361",
+      "candidate_resolved_sha256": "7e787047eedae127e2ab6e10d7634b73bc6f1fa8a272ec5f5ae7bcbbf88ef361"
+    },
+    "res/drawable/btn_radio_on_to_off_mtrl_animation.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "6bfec2a9a884e70442180f37cdcd5341dbfddf0dbd17f0d3c9c8bdff254aa092",
+      "candidate_xmltree_sha256": "9558119989f051fe776ce15ba895210582d54f1ad896ea72f221cee5d138c348",
+      "baseline_resolved_sha256": "810d78cd3e6564c019f38003ae15a5f4caad6c47f24b2642b1973ca65f6d7577",
+      "candidate_resolved_sha256": "810d78cd3e6564c019f38003ae15a5f4caad6c47f24b2642b1973ca65f6d7577"
+    },
+    "res/drawable/common_google_signin_btn_icon_dark.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "95de7df5108fb4246a916a9205d48e1249c29fec2c644048f8d5e5d33a49981d",
+      "candidate_xmltree_sha256": "e64d9d77f272fcccce5e1839d414940d0901fe68705a27d4dc3b1b10be472e91",
+      "baseline_resolved_sha256": "45095735b88c567846e3466c2a6f92287095bd4b6757065176a553ed917213d6",
+      "candidate_resolved_sha256": "45095735b88c567846e3466c2a6f92287095bd4b6757065176a553ed917213d6"
+    },
+    "res/drawable/common_google_signin_btn_icon_dark_focused.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "030480e62a8665bc91b150f1fad8141a83d627f535c4878ca11171e975fe13db",
+      "candidate_xmltree_sha256": "3becc4b43fbd983a5be271bd36a0817a2874813b1abbf5a3a6f4fa5dfce8a5d1",
+      "baseline_resolved_sha256": "39ce42a3293c90992b35bdbe959a9dce0f1dd2d7ba0ed6fd25074c67da7a614c",
+      "candidate_resolved_sha256": "39ce42a3293c90992b35bdbe959a9dce0f1dd2d7ba0ed6fd25074c67da7a614c"
+    },
+    "res/drawable/common_google_signin_btn_icon_dark_normal.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "bd097961941c09a1b5a0508e78f7465310ce920c9c5c5f89313d0d5e31d0146f",
+      "candidate_xmltree_sha256": "9423ce6fdc683594c19e7d6f2e63d4bd3842be59768e63793cb65044ec89e81c",
+      "baseline_resolved_sha256": "939c7c836be27a788526cac6fbec7f5b3c298c2e085f293d54755638b84ee873",
+      "candidate_resolved_sha256": "939c7c836be27a788526cac6fbec7f5b3c298c2e085f293d54755638b84ee873"
+    },
+    "res/drawable/common_google_signin_btn_icon_disabled.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "e698abddb5d562f54aef7329337c652a4fd6ef8ad09230a1a3b8a108cf7948ad",
+      "candidate_xmltree_sha256": "a23bd3c58bfd6feafb4a3a04a35fa793d8ac3ca96f07bc5e61deb3e7ca7601ac",
+      "baseline_resolved_sha256": "979ee7c3d6f0c91f566a56ae836b22a1edc6a0e84c4977393400713be1f6fec7",
+      "candidate_resolved_sha256": "979ee7c3d6f0c91f566a56ae836b22a1edc6a0e84c4977393400713be1f6fec7"
+    },
+    "res/drawable/common_google_signin_btn_icon_light.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "92cf67bb9fb9a57f4ff91897a4d2d03d981ef1ef1a0a8840d999b2efd3a2f0b2",
+      "candidate_xmltree_sha256": "b4bb712f0758c3fa36f22e6ad09455ce71e0b88abd787a3d2de6780b510fad6b",
+      "baseline_resolved_sha256": "858d3ac770a7d9aae9146598f04a30110e44a6e9b04334f0789106e3b2b884be",
+      "candidate_resolved_sha256": "858d3ac770a7d9aae9146598f04a30110e44a6e9b04334f0789106e3b2b884be"
+    },
+    "res/drawable/common_google_signin_btn_icon_light_focused.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "52ca8cf3a79ea4f2375ba844ded59866863cd03a7020856d8cab556ed2a0a027",
+      "candidate_xmltree_sha256": "b7fc7250a53c9ede9f694c04fd13e3cdc10d19d4a34b87c55546359bfdb76dfd",
+      "baseline_resolved_sha256": "f94e7e184843d7eac6df8f2b753bfe564d38359a1a4f53d3ecb28bb1e88816d5",
+      "candidate_resolved_sha256": "f94e7e184843d7eac6df8f2b753bfe564d38359a1a4f53d3ecb28bb1e88816d5"
+    },
+    "res/drawable/common_google_signin_btn_icon_light_normal.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "2dd02b05daf40b830602760ae1b7ef6eceb4219b6edd0b6e42d39f2e118f4f82",
+      "candidate_xmltree_sha256": "7b643a7c70edc4d2c945b58135ee01170dd495c733e6ee6f272bd8880d447c20",
+      "baseline_resolved_sha256": "194e9bb7fe840f1bec0c5cec3edf6d1e842244595aa939e8c95cc917ddf3818f",
+      "candidate_resolved_sha256": "194e9bb7fe840f1bec0c5cec3edf6d1e842244595aa939e8c95cc917ddf3818f"
+    },
+    "res/drawable/common_google_signin_btn_text_dark.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "0bbb495ad78c29763dfc669a15f6a18b34761eed2a0f4ec5fa7eab8ff99451c4",
+      "candidate_xmltree_sha256": "894edc1eec2d6bb34c5dba570ac6863aa5539d936670cc5a7d51848685b403f7",
+      "baseline_resolved_sha256": "cc3311fd1af47f0fab2ce2d35e894497b6a94a14a56f09e8df570cb5e9be8d74",
+      "candidate_resolved_sha256": "cc3311fd1af47f0fab2ce2d35e894497b6a94a14a56f09e8df570cb5e9be8d74"
+    },
+    "res/drawable/common_google_signin_btn_text_dark_focused.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "448c7df7f67ce3d45c4d42863b12890d5505e0e25ef09ec415a6345231684b99",
+      "candidate_xmltree_sha256": "574e6d937c7fe6d478a24b2a5e097f633a5d17ef05721e0487a207ca47c7f8b5",
+      "baseline_resolved_sha256": "d4f410122f6efd9285215a03d1a3197185a704809ec4542812afaed6fd7f0148",
+      "candidate_resolved_sha256": "d4f410122f6efd9285215a03d1a3197185a704809ec4542812afaed6fd7f0148"
+    },
+    "res/drawable/common_google_signin_btn_text_dark_normal.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "4c82e04b5a4056f68997ac486a12bcbcacfcd0025e5df60d48280fe7ff6a9bc3",
+      "candidate_xmltree_sha256": "0b2d98e5cab3db830330dbdef52249c10892049b32435a59fc97512b7e2aaf30",
+      "baseline_resolved_sha256": "f87c35a06e231016cf46e511681dcef431a896e53c68fcb4ad53812c395350ab",
+      "candidate_resolved_sha256": "f87c35a06e231016cf46e511681dcef431a896e53c68fcb4ad53812c395350ab"
+    },
+    "res/drawable/common_google_signin_btn_text_disabled.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "23a5ee032c4a46f9836a42ad869b3de389cf0d675344ddf01371f4818e963646",
+      "candidate_xmltree_sha256": "08ca5eb178f3a926e26893b59335f1c68f81b03acdb91bb3f59750a76d554968",
+      "baseline_resolved_sha256": "400855d2f2f09f0111b9c66d5b6ec511275dd2b13ab2bfffb1454b03e6269761",
+      "candidate_resolved_sha256": "400855d2f2f09f0111b9c66d5b6ec511275dd2b13ab2bfffb1454b03e6269761"
+    },
+    "res/drawable/common_google_signin_btn_text_light.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "4ccba16c387aba68d354d9dd4598e29376d710f7fed21fbadf02a378a3cf94a0",
+      "candidate_xmltree_sha256": "0f6b1bc4ffea037a66eddd3953167296397116bc03f51e92c65c6432f6bee008",
+      "baseline_resolved_sha256": "c821450da41b9fce1be732d870196e7cbff6d6aebe2a172fe000908c90642ec2",
+      "candidate_resolved_sha256": "c821450da41b9fce1be732d870196e7cbff6d6aebe2a172fe000908c90642ec2"
+    },
+    "res/drawable/common_google_signin_btn_text_light_focused.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "684f09b1d396e6b8af0887a38c18b4e89a9c85a61443ed39ddd5e5156d3a2c06",
+      "candidate_xmltree_sha256": "c78375cbfdc408039aa50fbc0d2c03851933293b43fc38e54b2204a83ee12605",
+      "baseline_resolved_sha256": "eb3ca59b8d8f80bc64dbe42e1e4159d66b0934c46d445332c918d3206e6f0b7d",
+      "candidate_resolved_sha256": "eb3ca59b8d8f80bc64dbe42e1e4159d66b0934c46d445332c918d3206e6f0b7d"
+    },
+    "res/drawable/common_google_signin_btn_text_light_normal.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "35b428ae770b23665311a2a614dae70ba3c677332d0297ba27bec495886c1655",
+      "candidate_xmltree_sha256": "8eabea419555381a9f9ce7ba40daae6110b55907e53663001251aa1fe0a769a1",
+      "baseline_resolved_sha256": "dec8bd01d94bb7be26e947bb532de858a780f3c8a592cbe399ecc9c051549009",
+      "candidate_resolved_sha256": "dec8bd01d94bb7be26e947bb532de858a780f3c8a592cbe399ecc9c051549009"
+    },
+    "res/drawable/ic_sleepwell_monochrome.xml": {
+      "resolved_references_equal": false,
+      "baseline_xmltree_sha256": "9040769ef3a5ca47004b254a2d12863411cb8922fbb3221450a8e336933abc4f",
+      "candidate_xmltree_sha256": "d8faa61eed653b4079567b3c4d57ee775015fb91665f25f0654c2ce53005bacf",
+      "baseline_resolved_sha256": "9040769ef3a5ca47004b254a2d12863411cb8922fbb3221450a8e336933abc4f",
+      "candidate_resolved_sha256": "d7442226e1319cc5b6ae8d7471ea1b49433bb53506733fa477d9a742afbf4704"
+    },
+    "res/drawable/notification_bg.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "9219643b554fda634592cd5021fbbe33026584eb2a55ebbbe81de4dc3eebce8c",
+      "candidate_xmltree_sha256": "049f5bd30ddfde2cdc68a3baa5660ddbf9b3257cfca0205f6cb1873cace77b73",
+      "baseline_resolved_sha256": "7d14eba978749373d9d1530934f1d9a3935af5b9e549d39f32d13db5887ea6d8",
+      "candidate_resolved_sha256": "7d14eba978749373d9d1530934f1d9a3935af5b9e549d39f32d13db5887ea6d8"
+    },
+    "res/drawable/notification_bg_low.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "20f57db7c1bec85b24bb95b3d9208cf7de72620135611467199bb01ceb49fd5f",
+      "candidate_xmltree_sha256": "c314011928046f8a1150fe6fdd726b0431115b1c7a5e198b8c857914ac00d5f7",
+      "baseline_resolved_sha256": "5617ee7a39ab71c5fbf1481de28b72e4fc82ab1177655bb2d9f26aa50577134c",
+      "candidate_resolved_sha256": "5617ee7a39ab71c5fbf1481de28b72e4fc82ab1177655bb2d9f26aa50577134c"
+    },
+    "res/drawable/notification_tile_bg.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "4bbbec5661aa9ddc88110080e57faec52281522359fa2cbf07b521c535d4be88",
+      "candidate_xmltree_sha256": "bd3329857bdd1d790de9ff77cfe743c89bf63f8b47dee68a6fa1afb8b35b5380",
+      "baseline_resolved_sha256": "bf1a333fe58983dd70de28d8aa99e86cb283216a691ff346e47c9e720802a577",
+      "candidate_resolved_sha256": "bf1a333fe58983dd70de28d8aa99e86cb283216a691ff346e47c9e720802a577"
+    },
+    "res/layout-v21/notification_template_custom_big.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "88e763e6fd22c0f4681aff6d343a92fd6a3aa4ce81a98ce9282a4b6e325fe0ea",
+      "candidate_xmltree_sha256": "7d1b1ceedea99b4bed206477cc4bd3c4cd056095793ae24a89eed98db35d22f3",
+      "baseline_resolved_sha256": "507b1553d8a2e430013abc6e05e0a2d14a81a323cec0eddd7b365acecc80e4dd",
+      "candidate_resolved_sha256": "507b1553d8a2e430013abc6e05e0a2d14a81a323cec0eddd7b365acecc80e4dd"
+    },
+    "res/layout-v21/notification_template_icon_group.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "b92346025e4b88749d84f0d20e8aa9bd087496f78933b98da5b57a2947a705f5",
+      "candidate_xmltree_sha256": "bb9c79e48ca8eedaa2cadb30a2b7f34ee1798a9c96c5a7088e935b77df9fb270",
+      "baseline_resolved_sha256": "61e54a6ad54fd8e26b06e930eb304be1d6e4292cdd63afe2348e788ccbbcf622",
+      "candidate_resolved_sha256": "61e54a6ad54fd8e26b06e930eb304be1d6e4292cdd63afe2348e788ccbbcf622"
+    },
+    "res/layout-watch-v20/abc_alert_dialog_title_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "775793b0024678f4440486703cb1adfc9a5cc102272c0db51f30bdccff262445",
+      "candidate_xmltree_sha256": "dfc924ea22b66ac807590e6591d613fbaee29e9199f48e247ca5991c867323b4",
+      "baseline_resolved_sha256": "b72fda380f27052ca18ae7a1f903313d58a405db2aeb02625536a58622abc233",
+      "candidate_resolved_sha256": "b72fda380f27052ca18ae7a1f903313d58a405db2aeb02625536a58622abc233"
+    },
+    "res/layout/abc_activity_chooser_view_list_item.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "eeb7a310b1394ed35b71da50b411e4950933560a6954370ba660bd83cb723041",
+      "candidate_xmltree_sha256": "174c7885cb986a2e02fd35cac62bb3d986e2331b88eff1e3f38cde7bb9be4c0f",
+      "baseline_resolved_sha256": "f26f6a8c9894692d8406d20a226901f44209c086ddb7748946e07010b7ec1f1d",
+      "candidate_resolved_sha256": "f26f6a8c9894692d8406d20a226901f44209c086ddb7748946e07010b7ec1f1d"
+    },
+    "res/layout/abc_alert_dialog_button_bar_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "b89b81286ef61a61e97462c926db8768c777bb9736a0ce6b83b2dd55a864149f",
+      "candidate_xmltree_sha256": "7d5ab77796113efc65ded38993a6f718faf3f812e017e1533b8c64552e9e2b32",
+      "baseline_resolved_sha256": "639e0ad4f8b588a6ab7a0c968ea2506f2de04b8edef1321ad364e67c78979784",
+      "candidate_resolved_sha256": "639e0ad4f8b588a6ab7a0c968ea2506f2de04b8edef1321ad364e67c78979784"
+    },
+    "res/layout/abc_alert_dialog_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "41802cf1ab2949753ea40e4d0a1869d768854812a1b0008d63343c60e3e4d4af",
+      "candidate_xmltree_sha256": "65503ba7020ec869dae9a667eea438877e73281b4ccb44e65a4fb99f30e38f0b",
+      "baseline_resolved_sha256": "a427529938514b91fb74972e764e22879094c6c79ef1d0275b9949210751467f",
+      "candidate_resolved_sha256": "a427529938514b91fb74972e764e22879094c6c79ef1d0275b9949210751467f"
+    },
+    "res/layout/abc_alert_dialog_title_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "5dd4c94c74aae695b241fa4803113bd786cf6248d6ea0d19ade4900680de4f3f",
+      "candidate_xmltree_sha256": "f306452a645e5f85f5b55f3d43e5fb897d0bc2be85ab5fd0e25ede2b2d6f563e",
+      "baseline_resolved_sha256": "e73a64095befd7c0394d8f6ab4cd11953dce5658959bbdc7c1e6e3686e098527",
+      "candidate_resolved_sha256": "e73a64095befd7c0394d8f6ab4cd11953dce5658959bbdc7c1e6e3686e098527"
+    },
+    "res/layout/abc_cascading_menu_item_layout.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "25e28b8783e199106f4198de65f92ca6d4f6675afd13cea13e081cafee10d169",
+      "candidate_xmltree_sha256": "e57b9cf531ae0fa8f7b40152caf9c2cb654807209f89738239ab69879c755011",
+      "baseline_resolved_sha256": "2f2eba5e090a5fbfd63e4f7d3e300fcadcbf7df202a289c546e0be0d034b928c",
+      "candidate_resolved_sha256": "2f2eba5e090a5fbfd63e4f7d3e300fcadcbf7df202a289c546e0be0d034b928c"
+    },
+    "res/layout/abc_dialog_title_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "52dfd957373c6b79c8ec9121eb6cac6224541072186d14cc727407e56c04f967",
+      "candidate_xmltree_sha256": "6b2017b008e3c974274cd173b128afaaa467ea13ee5bd31bd3e83c5f78245a13",
+      "baseline_resolved_sha256": "11036b9af38180db1549118729a7d3add653993b20298ea2b1862e87d16a824f",
+      "candidate_resolved_sha256": "11036b9af38180db1549118729a7d3add653993b20298ea2b1862e87d16a824f"
+    },
+    "res/layout/abc_list_menu_item_layout.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "e1b75f21d20a49f25a7958fb1c4004fa8b6a61e542d67959940d8097a0ee06b4",
+      "candidate_xmltree_sha256": "29c6b82551bd7348cae0e1500fbb05fc2e7269c7a8152909c3b835c90f0426ed",
+      "baseline_resolved_sha256": "d5beb4cebaf64d383e0a4682cea377046c48277e32de83e6e4180e2b0fea6518",
+      "candidate_resolved_sha256": "d5beb4cebaf64d383e0a4682cea377046c48277e32de83e6e4180e2b0fea6518"
+    },
+    "res/layout/abc_list_menu_item_radio.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "f3ddeadda85b4e4673fe56cbd71947aa40ba3c50ea855aeabe8379427c8e45d7",
+      "candidate_xmltree_sha256": "949b286ac798eecab5f1d57a46a8df559e2894f7cb68cc61ed1ac0a90e5383c0",
+      "baseline_resolved_sha256": "4f08839a1bd6323696ae8c27a6ff599dfd36dc13f30f20b1bb81e9515695d280",
+      "candidate_resolved_sha256": "4f08839a1bd6323696ae8c27a6ff599dfd36dc13f30f20b1bb81e9515695d280"
+    },
+    "res/layout/abc_popup_menu_item_layout.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "05a443bc96876c4ae7b2058ec6ec1b8a58d13558666825cbe3506b7ca293304b",
+      "candidate_xmltree_sha256": "977429a40b107d03ee021f1b09e91c4b73276c4e94989ac8c71f4c2c5046415c",
+      "baseline_resolved_sha256": "cd9f6c6348651b05f9c7f66b474ea33d9eb69f8c0a2a9310325920f762cbe220",
+      "candidate_resolved_sha256": "cd9f6c6348651b05f9c7f66b474ea33d9eb69f8c0a2a9310325920f762cbe220"
+    },
+    "res/layout/abc_search_view.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "81c3c4b51a79806b92c3a7b36c1e964b76d44b788c82e82a2d9ab6669cf6fb0a",
+      "candidate_xmltree_sha256": "5e4083a2b1b4e741c030296b9599397318fb8d82e7a6c2a748867c1b31782308",
+      "baseline_resolved_sha256": "2629740c5f2ed197f52dad43de4fb3ae352afd58a4c075c2133ef63e9afac953",
+      "candidate_resolved_sha256": "2629740c5f2ed197f52dad43de4fb3ae352afd58a4c075c2133ef63e9afac953"
+    },
+    "res/layout/abc_select_dialog_material.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "94dbf747365f06c76f15a75c4de29c06b3620a15c99be2811c014316a87672b5",
+      "candidate_xmltree_sha256": "435b3a7e9e281058aac2dc7f25db770b7b1306a038e65ce4a38c2d34499561bb",
+      "baseline_resolved_sha256": "02ae6fa531132508336340f6f0b4027b317ddced196a833ddd2b93e882579416",
+      "candidate_resolved_sha256": "02ae6fa531132508336340f6f0b4027b317ddced196a833ddd2b93e882579416"
+    },
+    "res/layout/home_widget.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "86ee705f8b0088f6d43b8e79f31ebc7d2001428594b84beb2d0f0f24ccac7c42",
+      "candidate_xmltree_sha256": "ca8091d432fc3b499d4ef67962619cf82d5e94aa77342a5b9f1def7610efc340",
+      "baseline_resolved_sha256": "ee13de8eedfd29c03c74e6d528c7efe4a484f77dcec400b1afd5199c1467cf4c",
+      "candidate_resolved_sha256": "ee13de8eedfd29c03c74e6d528c7efe4a484f77dcec400b1afd5199c1467cf4c"
+    },
+    "res/layout/notification_template_part_time.xml": {
+      "resolved_references_equal": true,
+      "baseline_xmltree_sha256": "fce21733647a0fa5090283111f4d1530f2d2554ad81ab3e766c7ec2fda26b94e",
+      "candidate_xmltree_sha256": "1b1814755544e96e05845c5b9f77fa388a0d784abde979dce8f7064e25082e86",
+      "baseline_resolved_sha256": "a40e8e3e4681c1006c863ba409de3201c792c52d4b5d5987c2736618357ab626",
+      "candidate_resolved_sha256": "a40e8e3e4681c1006c863ba409de3201c792c52d4b5d5987c2736618357ab626"
+    },
+    "res/mipmap-anydpi-v26/ic_launcher.xml": {
+      "resolved_references_equal": false,
+      "baseline_xmltree_sha256": "65791a79d152d95808f6aee5981ac109bb6e459d53219c9805e4fc94778bdc81",
+      "candidate_xmltree_sha256": "9383c0646fe16e6876b55918026cce51707f24735acf0e7c47a76b3eb9968bc1",
+      "baseline_resolved_sha256": "4b7099d48c0b1657062a0a7d0aa050b9f06eaaebf49ef85feb34f542f36e53ca",
+      "candidate_resolved_sha256": "d34ee973ff67cfb51c9bd9c04e0cd3f944df587ca747626da1f130f798c24904"
+    },
+    "res/mipmap-anydpi-v26/ic_launcher_round.xml": {
+      "resolved_references_equal": false,
+      "baseline_xmltree_sha256": "65791a79d152d95808f6aee5981ac109bb6e459d53219c9805e4fc94778bdc81",
+      "candidate_xmltree_sha256": "9383c0646fe16e6876b55918026cce51707f24735acf0e7c47a76b3eb9968bc1",
+      "baseline_resolved_sha256": "4b7099d48c0b1657062a0a7d0aa050b9f06eaaebf49ef85feb34f542f36e53ca",
+      "candidate_resolved_sha256": "d34ee973ff67cfb51c9bd9c04e0cd3f944df587ca747626da1f130f798c24904"
+    },
+    "res/mipmap-anydpi-v33/ic_launcher.xml": {
+      "resolved_references_equal": false,
+      "baseline_xmltree_sha256": "36cba6c21142bce6e26b9524a7079f54d8b77e0570f3192fd791053bd32a72ac",
+      "candidate_xmltree_sha256": "4a740bfedc1446ab046bc0a47be853b6b3ce710fcff0775e647934d4d4b3e3b9",
+      "baseline_resolved_sha256": "62651d0eabe89b0aebf81d046afc4851252e1a38d71867281398a65e0014f358",
+      "candidate_resolved_sha256": "87a73dcc457befeadd6111c9e8fb7eacb0f8a11702ff03492c584955ae1ca1b5"
+    },
+    "res/mipmap-anydpi-v33/ic_launcher_round.xml": {
+      "resolved_references_equal": false,
+      "baseline_xmltree_sha256": "36cba6c21142bce6e26b9524a7079f54d8b77e0570f3192fd791053bd32a72ac",
+      "candidate_xmltree_sha256": "4a740bfedc1446ab046bc0a47be853b6b3ce710fcff0775e647934d4d4b3e3b9",
+      "baseline_resolved_sha256": "62651d0eabe89b0aebf81d046afc4851252e1a38d71867281398a65e0014f358",
+      "candidate_resolved_sha256": "87a73dcc457befeadd6111c9e8fb7eacb0f8a11702ff03492c584955ae1ca1b5"
+    }
+  },
+  "all_added_png_pixels_equal_source": true,
+  "new_png_count": 372,
+  "png_entries": [
+    {
+      "entry": "res/drawable-hdpi-v4/ic_moon.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_moon.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d921f87b109e602ec3e40c03124dcde54c6d5616199857499267c906f5b32115",
+      "source_png_sha256": "d921f87b109e602ec3e40c03124dcde54c6d5616199857499267c906f5b32115"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_alarm_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_alarm_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "980cca66abe05131f19b81f7bdef495ce926e13fff121fcb143468352a3d17be",
+      "source_png_sha256": "980cca66abe05131f19b81f7bdef495ce926e13fff121fcb143468352a3d17be"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_arrow_counter_clockwise_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_arrow_counter_clockwise_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "31684975b933955df8d2906e1bbce9b4ce5128f85e469e93763aa9a1aae477f9",
+      "source_png_sha256": "31684975b933955df8d2906e1bbce9b4ce5128f85e469e93763aa9a1aae477f9"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_arrow_left_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_arrow_left_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "5071a45a36bcb66d25db8b0d6a92ce954024ca22284381e53db8badbd75e22e9",
+      "source_png_sha256": "5071a45a36bcb66d25db8b0d6a92ce954024ca22284381e53db8badbd75e22e9"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_arrow_square_out_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_arrow_square_out_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f154fd08e551ac948853708a82e0e507e26f54543c8152acd346133e2c66087e",
+      "source_png_sha256": "f154fd08e551ac948853708a82e0e507e26f54543c8152acd346133e2c66087e"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_battery_vertical_medium_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_battery_vertical_medium_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a4772a3c7fdddb63e2ac41e0b3c9a9aa6aa379d9a273eb611684bed77d1a1e4c",
+      "source_png_sha256": "a4772a3c7fdddb63e2ac41e0b3c9a9aa6aa379d9a273eb611684bed77d1a1e4c"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_bed_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_bed_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4096292755d3a2f52c1023ae6af8aeda01b70410833e99adc8dde1e09bc7f4a3",
+      "source_png_sha256": "4096292755d3a2f52c1023ae6af8aeda01b70410833e99adc8dde1e09bc7f4a3"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_bell_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_bell_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "3db2e97c2b43c0782b111fbe99dc7ece2ec94004ff6b70eddc2c5da11a25d2c5",
+      "source_png_sha256": "3db2e97c2b43c0782b111fbe99dc7ece2ec94004ff6b70eddc2c5da11a25d2c5"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_bell_slash_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_bell_slash_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "5cf200f4c1d75bf43b217abc937b227eb1c38c952c8dcfff1c5b2cda0721c713",
+      "source_png_sha256": "5cf200f4c1d75bf43b217abc937b227eb1c38c952c8dcfff1c5b2cda0721c713"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_broadcast_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_broadcast_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "1e1792fdb6a1cbe2ae041b8c686538ee47c09cbb50a01f462fb0a1273f38f2fc",
+      "source_png_sha256": "1e1792fdb6a1cbe2ae041b8c686538ee47c09cbb50a01f462fb0a1273f38f2fc"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_calendar_blank_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_calendar_blank_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f85ae306225634fc2c8f86bd159a59b6170ac041c8fc50266755fff815bb4e53",
+      "source_png_sha256": "f85ae306225634fc2c8f86bd159a59b6170ac041c8fc50266755fff815bb4e53"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_camera_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_camera_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4fb23865fb66924720fa22f0c30c399ce915e8b91e866985c50fcce28362b900",
+      "source_png_sha256": "4fb23865fb66924720fa22f0c30c399ce915e8b91e866985c50fcce28362b900"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_cards_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_cards_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "eb88c3644f1fdd749eeff915015920da65e5ce85fdec6f49daf990b1b0af329c",
+      "source_png_sha256": "eb88c3644f1fdd749eeff915015920da65e5ce85fdec6f49daf990b1b0af329c"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_caret_down_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_caret_down_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ea29ff543a85ec86c786849ec9262085f8d37492b6da762f0768e6eff431d1c4",
+      "source_png_sha256": "ea29ff543a85ec86c786849ec9262085f8d37492b6da762f0768e6eff431d1c4"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_caret_right_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_caret_right_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "eefd3af362e0ddab17e36bacc6b6c35185af0d2a2af51ddbdac0ad15fbd781ed",
+      "source_png_sha256": "eefd3af362e0ddab17e36bacc6b6c35185af0d2a2af51ddbdac0ad15fbd781ed"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_caret_up_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_caret_up_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "bd14678b67a45472adf96bb18a8bbf159cd87f8931f83fc3a9ccb4bf60c79370",
+      "source_png_sha256": "bd14678b67a45472adf96bb18a8bbf159cd87f8931f83fc3a9ccb4bf60c79370"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_chart_bar_fill.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_chart_bar_fill.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "9c4a4ca41ac2630f00b21ce46cc6e3d924d0e81618b3418993b28d6fdd04db72",
+      "source_png_sha256": "9c4a4ca41ac2630f00b21ce46cc6e3d924d0e81618b3418993b28d6fdd04db72"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_chats_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_chats_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f400968e69654d1688f1bf9618892d6d9c366d5fd16266bba089f09c7469daa7",
+      "source_png_sha256": "f400968e69654d1688f1bf9618892d6d9c366d5fd16266bba089f09c7469daa7"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_check_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_check_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e4a1beef3341ca9d00035af49ea85bf4487b77633be5392eb233f0cda8c29a62",
+      "source_png_sha256": "e4a1beef3341ca9d00035af49ea85bf4487b77633be5392eb233f0cda8c29a62"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_circle_half_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_circle_half_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ae1d23b138e3d797920232e670b908c76c04ff96a029208fa6cb3805bdab784f",
+      "source_png_sha256": "ae1d23b138e3d797920232e670b908c76c04ff96a029208fa6cb3805bdab784f"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_clock_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_clock_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ec943b14e4d0d547e3cf9d46f9504fc8e1c5d46f5a7cd6cd99fc5e50cdb338d0",
+      "source_png_sha256": "ec943b14e4d0d547e3cf9d46f9504fc8e1c5d46f5a7cd6cd99fc5e50cdb338d0"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_cloud_rain_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_cloud_rain_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "3dd715ec3eeed8960701633db5a91193ea42394baf8a5a30fed19795e97bbc8c",
+      "source_png_sha256": "3dd715ec3eeed8960701633db5a91193ea42394baf8a5a30fed19795e97bbc8c"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_cloud_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_cloud_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8c1c13e8aee727764ffe0e03de3a7e1d5ea4a5bd208bb7f52e78f44f2bf3f84d",
+      "source_png_sha256": "8c1c13e8aee727764ffe0e03de3a7e1d5ea4a5bd208bb7f52e78f44f2bf3f84d"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_device_mobile_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_device_mobile_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "cb7a0f5d3dc3ce55ca4ec4bca59ef2373bd5e2151a8c2886e5c9ccaf70e1ccef",
+      "source_png_sha256": "cb7a0f5d3dc3ce55ca4ec4bca59ef2373bd5e2151a8c2886e5c9ccaf70e1ccef"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_dots_three_vertical_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_dots_three_vertical_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "220d8978faf3b0ff17396612f5fb39a2bbe164fd757103179bb1990400c929e4",
+      "source_png_sha256": "220d8978faf3b0ff17396612f5fb39a2bbe164fd757103179bb1990400c929e4"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_download_simple_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_download_simple_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2a5c57d98aefe95e7da9e60c73077449db6e3705dd30551337cbab51c3db2223",
+      "source_png_sha256": "2a5c57d98aefe95e7da9e60c73077449db6e3705dd30551337cbab51c3db2223"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_exclamation_mark_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_exclamation_mark_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "15f4df0f4c5ad208f66779d90cbddf9ce027346eef649d8a9b9ed47121a48b21",
+      "source_png_sha256": "15f4df0f4c5ad208f66779d90cbddf9ce027346eef649d8a9b9ed47121a48b21"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_faders_horizontal_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_faders_horizontal_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "793d61d3a33531097f42ab7fa33615bdee155ba90c48813e152a1a7aa2f98e05",
+      "source_png_sha256": "793d61d3a33531097f42ab7fa33615bdee155ba90c48813e152a1a7aa2f98e05"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_file_text_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_file_text_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "9389a0918034c307b86e83f8e616edbf79f7218f04842a211b6a7c78e58c40e2",
+      "source_png_sha256": "9389a0918034c307b86e83f8e616edbf79f7218f04842a211b6a7c78e58c40e2"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_flashlight_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_flashlight_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4aa5ad18de320c6c768317defa284242a023e78f818d2990b77aa39b0b9f0667",
+      "source_png_sha256": "4aa5ad18de320c6c768317defa284242a023e78f818d2990b77aa39b0b9f0667"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_footprints_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_footprints_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a68ed9abe57d88b5334123a404eed182596b3c550890149e6ac8c25defe36c1f",
+      "source_png_sha256": "a68ed9abe57d88b5334123a404eed182596b3c550890149e6ac8c25defe36c1f"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_fork_knife_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_fork_knife_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e3b7888b56dbd2ebed72b728c4683e7aa4a73d32bb7751d5f929195de696b80b",
+      "source_png_sha256": "e3b7888b56dbd2ebed72b728c4683e7aa4a73d32bb7751d5f929195de696b80b"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_gear_six_fill.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_gear_six_fill.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b4eebcafb116028292b8b100fec012f4a3e1d47a1e1affaa1846ec2eca4f0810",
+      "source_png_sha256": "b4eebcafb116028292b8b100fec012f4a3e1d47a1e1affaa1846ec2eca4f0810"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_gear_six_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_gear_six_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a2387f1ec8d3cb105501287d277aaefd31ed33d8b6e0e020804f93fada3e17bb",
+      "source_png_sha256": "a2387f1ec8d3cb105501287d277aaefd31ed33d8b6e0e020804f93fada3e17bb"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_github_logo_fill.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_github_logo_fill.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "1fd8bb92042b0afb0d40e9949250492172ce7673ff08688afe6a4f10e5602d82",
+      "source_png_sha256": "1fd8bb92042b0afb0d40e9949250492172ce7673ff08688afe6a4f10e5602d82"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_headphones_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_headphones_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "72d872628f2cb4cded0d1f6f2a3d22850148622a285dc128be1d2b5884cd199f",
+      "source_png_sha256": "72d872628f2cb4cded0d1f6f2a3d22850148622a285dc128be1d2b5884cd199f"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_heart_fill.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_heart_fill.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "429fe58f60c359cc510568cdbe393d090f5bbf230751c45138bb0fee42e24c12",
+      "source_png_sha256": "429fe58f60c359cc510568cdbe393d090f5bbf230751c45138bb0fee42e24c12"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_heart_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_heart_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f1fb804b9afc9412edd4cc74c08539e693e973ad97ebee320844d2e4cac10c41",
+      "source_png_sha256": "f1fb804b9afc9412edd4cc74c08539e693e973ad97ebee320844d2e4cac10c41"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_house_fill.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_house_fill.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "22a8b864286dde38b33357fd835d736c4caf9078f484fd080e01e1f9a5a5c65c",
+      "source_png_sha256": "22a8b864286dde38b33357fd835d736c4caf9078f484fd080e01e1f9a5a5c65c"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_info_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_info_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "acd72bf34f1776a0a8b951857e5e7db35cf542802dd2ba37c663a0153bf2b1d6",
+      "source_png_sha256": "acd72bf34f1776a0a8b951857e5e7db35cf542802dd2ba37c663a0153bf2b1d6"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_keyboard_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_keyboard_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c83ba4cef25811d6631e97c0aeb48ea8854ab6a5c038f8831aa798ab7e0296e8",
+      "source_png_sha256": "c83ba4cef25811d6631e97c0aeb48ea8854ab6a5c038f8831aa798ab7e0296e8"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_lightbulb_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_lightbulb_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "515a3a1cc4d321123087788042579b9bcc4df72b952dbf01ad2ef5dd0158efdf",
+      "source_png_sha256": "515a3a1cc4d321123087788042579b9bcc4df72b952dbf01ad2ef5dd0158efdf"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_link_simple_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_link_simple_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8569a59792b0cec845b995d4f55a8ebe9ca81112d54b4793b9e4ff9b41336408",
+      "source_png_sha256": "8569a59792b0cec845b995d4f55a8ebe9ca81112d54b4793b9e4ff9b41336408"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_list_checks_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_list_checks_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "7908046603e2834d58c032f4bc0d1da14b2f0b293643a289a0e5b60af7158bb3",
+      "source_png_sha256": "7908046603e2834d58c032f4bc0d1da14b2f0b293643a289a0e5b60af7158bb3"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_list_numbers_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_list_numbers_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0259b49d36e5e2398614089c9310e9e1249f2b18cec6b51395c7b9152d01392f",
+      "source_png_sha256": "0259b49d36e5e2398614089c9310e9e1249f2b18cec6b51395c7b9152d01392f"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_lock_key_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_lock_key_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "04dba0260a7799b4edfdffade807fd5dd1662c3f49bcb664c6c480857280db35",
+      "source_png_sha256": "04dba0260a7799b4edfdffade807fd5dd1662c3f49bcb664c6c480857280db35"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_magnifying_glass_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_magnifying_glass_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "65574a6620c99d074141763f54c475cf0d760bf9243c6bbf6515c95fbb602091",
+      "source_png_sha256": "65574a6620c99d074141763f54c475cf0d760bf9243c6bbf6515c95fbb602091"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_math_operations_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_math_operations_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "611ceee8ec06b8a6dc8d43b13aa4ef8f9ad50cedd8f947910a02f2f185163770",
+      "source_png_sha256": "611ceee8ec06b8a6dc8d43b13aa4ef8f9ad50cedd8f947910a02f2f185163770"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_microphone_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_microphone_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "72b8c496ae8f7d5a9448d778d8dc1456a29e68f524945a75671425250677ac56",
+      "source_png_sha256": "72b8c496ae8f7d5a9448d778d8dc1456a29e68f524945a75671425250677ac56"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_minus_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_minus_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "23c8347ed92919464713b0154a2799f212a726f41e153eee7de8fa83140736e0",
+      "source_png_sha256": "23c8347ed92919464713b0154a2799f212a726f41e153eee7de8fa83140736e0"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_moon_fill.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_moon_fill.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "eca002d0f9228a364fcbfe7ba6f0e40958b2838e340f339e6a413725b904f13e",
+      "source_png_sha256": "eca002d0f9228a364fcbfe7ba6f0e40958b2838e340f339e6a413725b904f13e"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_music_notes_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_music_notes_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f6edfc10576fb8439f62372d763d58a9ff94d799c73c8322001eda46e894e253",
+      "source_png_sha256": "f6edfc10576fb8439f62372d763d58a9ff94d799c73c8322001eda46e894e253"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_palette_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_palette_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2e554d8c8a18dead99fd17d1bf00091c51d3866fa0a64c8819e1ac4e714bbc6f",
+      "source_png_sha256": "2e554d8c8a18dead99fd17d1bf00091c51d3866fa0a64c8819e1ac4e714bbc6f"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_pause_fill.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_pause_fill.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b41542c72487581cf2f327dc6fa0fe03a33c7169f1586c509e8b2b4b275117e9",
+      "source_png_sha256": "b41542c72487581cf2f327dc6fa0fe03a33c7169f1586c509e8b2b4b275117e9"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_pencil_simple_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_pencil_simple_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ebbbba8b62bd95703d74897ebdbb02009573289c656780000358b65c43f40a27",
+      "source_png_sha256": "ebbbba8b62bd95703d74897ebdbb02009573289c656780000358b65c43f40a27"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_person_simple_run_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_person_simple_run_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ce57d9f8425a55c764c3b1a45c7343ea10b55d9017c3d18e99fdac9e6244f6e8",
+      "source_png_sha256": "ce57d9f8425a55c764c3b1a45c7343ea10b55d9017c3d18e99fdac9e6244f6e8"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_play_fill.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_play_fill.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "6a89131d56d2afa157ddc37f92cb0b12f4bf4ec7ae2bf9ac127e31110be1c549",
+      "source_png_sha256": "6a89131d56d2afa157ddc37f92cb0b12f4bf4ec7ae2bf9ac127e31110be1c549"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_plug_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_plug_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "532669edc2cf164f3ce1e5be3ae6af6cfa6dd7e76a3e57a60a2b5f0b2b4fe148",
+      "source_png_sha256": "532669edc2cf164f3ce1e5be3ae6af6cfa6dd7e76a3e57a60a2b5f0b2b4fe148"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_plus_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_plus_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "5feeb15d7cd3a59ba2c786c18fc27d8d152a27a2865ecc091c6349ce34e8cff1",
+      "source_png_sha256": "5feeb15d7cd3a59ba2c786c18fc27d8d152a27a2865ecc091c6349ce34e8cff1"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_qr_code_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_qr_code_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b4610a4725d13578dea1e7dbc103c692ef0ad8e309aa01b8bbc626ea9648f7fd",
+      "source_png_sha256": "b4610a4725d13578dea1e7dbc103c692ef0ad8e309aa01b8bbc626ea9648f7fd"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_question_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_question_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "da493b06e1e6febf56dbcd91c8ca6f476f0946381e727e9b2a54121067973390",
+      "source_png_sha256": "da493b06e1e6febf56dbcd91c8ca6f476f0946381e727e9b2a54121067973390"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_shield_check_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_shield_check_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "726457abe81fc15defd8ebc3c577309fe6dfd84457564046a00050db747ddb8f",
+      "source_png_sha256": "726457abe81fc15defd8ebc3c577309fe6dfd84457564046a00050db747ddb8f"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_speaker_high_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_speaker_high_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "9da4af2dd18aeb710d244c8c5a6658ee203d9d1491d03bd7db51e8f745dbf983",
+      "source_png_sha256": "9da4af2dd18aeb710d244c8c5a6658ee203d9d1491d03bd7db51e8f745dbf983"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_spinner_gap_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_spinner_gap_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "eab770ac15acac6bbb5491bc4462de573d42a4e099b80029f1ded6591661c00e",
+      "source_png_sha256": "eab770ac15acac6bbb5491bc4462de573d42a4e099b80029f1ded6591661c00e"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_star_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_star_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "acccf298316d535282140246015a53f65c8458a621ed65ded6b4dbc44834b5d1",
+      "source_png_sha256": "acccf298316d535282140246015a53f65c8458a621ed65ded6b4dbc44834b5d1"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_stop_fill.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_stop_fill.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ef66c73b8ce89be70444ff784e10a52cf393330fb62a9072c64f4ba66f5161a5",
+      "source_png_sha256": "ef66c73b8ce89be70444ff784e10a52cf393330fb62a9072c64f4ba66f5161a5"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_sun_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_sun_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "63948ce805f2e3205e9ecef9d631bd0b4c01e5d4e9f856eb2462254d622bdcf9",
+      "source_png_sha256": "63948ce805f2e3205e9ecef9d631bd0b4c01e5d4e9f856eb2462254d622bdcf9"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_tag_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_tag_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "9acb3d151d4172debcb0a6052163730d4eb595a3ccf680f2c0b032927b310699",
+      "source_png_sha256": "9acb3d151d4172debcb0a6052163730d4eb595a3ccf680f2c0b032927b310699"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_trash_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_trash_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8549e4126c1ed32fdbdc6aac65f8d0fc6e5c825120ca37ccab0815dc6afe7e30",
+      "source_png_sha256": "8549e4126c1ed32fdbdc6aac65f8d0fc6e5c825120ca37ccab0815dc6afe7e30"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_upload_simple_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_upload_simple_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "447a8fd36d145b757e66e9c266d93577c328aaffef763f49e3397b16f8c991c3",
+      "source_png_sha256": "447a8fd36d145b757e66e9c266d93577c328aaffef763f49e3397b16f8c991c3"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_vibrate_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_vibrate_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "005b7d8b44ff49d4032dfd70b09b4821ef6539e58c26b889a0f304955f2dc813",
+      "source_png_sha256": "005b7d8b44ff49d4032dfd70b09b4821ef6539e58c26b889a0f304955f2dc813"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_wave_sine_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_wave_sine_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "701ba89bf79cbefea4b542caebd3c6cedf6e1ac9b571c9a0b1a08300b167399e",
+      "source_png_sha256": "701ba89bf79cbefea4b542caebd3c6cedf6e1ac9b571c9a0b1a08300b167399e"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_waveform_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_waveform_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "bc3236fe52ca077413e114916fb8e3a95fd555b4f20298b68645ef974a7172e6",
+      "source_png_sha256": "bc3236fe52ca077413e114916fb8e3a95fd555b4f20298b68645ef974a7172e6"
+    },
+    {
+      "entry": "res/drawable-hdpi-v4/ic_phosphor_x_regular.png",
+      "source": "app/src/main/res/drawable-hdpi/ic_phosphor_x_regular.png",
+      "size": [
+        36,
+        36
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "01ad520ab51c6e9dd2ccb7e781816f9bec40f137246ad06b5d58034021a3dbe7",
+      "source_png_sha256": "01ad520ab51c6e9dd2ccb7e781816f9bec40f137246ad06b5d58034021a3dbe7"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_moon.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_moon.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c787a34b27173ca9d3d9951b91472e41feedf6c4e78afe1352b9b14e258e9329",
+      "source_png_sha256": "c787a34b27173ca9d3d9951b91472e41feedf6c4e78afe1352b9b14e258e9329"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_alarm_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_alarm_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "50815fe8c1b53f611f590ebf0c84ecc601016c0af8ffe669ca3390081113a611",
+      "source_png_sha256": "50815fe8c1b53f611f590ebf0c84ecc601016c0af8ffe669ca3390081113a611"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_arrow_counter_clockwise_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_arrow_counter_clockwise_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0b01d931b3c2fca0024db57434a0d163fc9aa7b911ed2b40739aa5cc0f927f98",
+      "source_png_sha256": "0b01d931b3c2fca0024db57434a0d163fc9aa7b911ed2b40739aa5cc0f927f98"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_arrow_left_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_arrow_left_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "37517c4949ecaa7b93cd76bed5319ea2d1e07885ba65503bb387c1d244e11746",
+      "source_png_sha256": "37517c4949ecaa7b93cd76bed5319ea2d1e07885ba65503bb387c1d244e11746"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_arrow_square_out_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_arrow_square_out_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "935cfe9fcd4493dd0615c3688b9ac8d158e1d3432562aafd9b5f61a1328c393f",
+      "source_png_sha256": "935cfe9fcd4493dd0615c3688b9ac8d158e1d3432562aafd9b5f61a1328c393f"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_battery_vertical_medium_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_battery_vertical_medium_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0608c4c0d6de09cede7e20ef70574db79597b73f630a22edfe4c6c58d2228b7e",
+      "source_png_sha256": "0608c4c0d6de09cede7e20ef70574db79597b73f630a22edfe4c6c58d2228b7e"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_bed_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_bed_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "94bfde51e09814af6f9029dd122bab6dfc6aa3d4a0121b1cd761042b5562f0a2",
+      "source_png_sha256": "94bfde51e09814af6f9029dd122bab6dfc6aa3d4a0121b1cd761042b5562f0a2"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_bell_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_bell_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ab035755429ef6a63b139e8dd8f30a5de1594a2a798f2f855e2b6099e813f43c",
+      "source_png_sha256": "ab035755429ef6a63b139e8dd8f30a5de1594a2a798f2f855e2b6099e813f43c"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_bell_slash_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_bell_slash_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d701ab60e570fd2cc1e4c54dcd3f4d80278dc999e052f4bbe1246d9491462f9b",
+      "source_png_sha256": "d701ab60e570fd2cc1e4c54dcd3f4d80278dc999e052f4bbe1246d9491462f9b"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_broadcast_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_broadcast_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "6131d516d2748a2461dd8ed0d021eda4cb98d28938545fc0afe0ab5a25634180",
+      "source_png_sha256": "6131d516d2748a2461dd8ed0d021eda4cb98d28938545fc0afe0ab5a25634180"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_calendar_blank_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_calendar_blank_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2306b30f5fc797a33a964eefbfae44b1a833a4bf81bd3915d7d94a2fdbaf999d",
+      "source_png_sha256": "2306b30f5fc797a33a964eefbfae44b1a833a4bf81bd3915d7d94a2fdbaf999d"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_camera_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_camera_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "df6d7c0eaaeb7860b38a5e2b9ac0aecf1ae69c8dffe1ab143f9b01d91b352aee",
+      "source_png_sha256": "df6d7c0eaaeb7860b38a5e2b9ac0aecf1ae69c8dffe1ab143f9b01d91b352aee"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_cards_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_cards_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "12c6be648c38c63d80f850535d0625e0b4e679e5e274cd55197d8226413a5d59",
+      "source_png_sha256": "12c6be648c38c63d80f850535d0625e0b4e679e5e274cd55197d8226413a5d59"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_caret_down_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_caret_down_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d98717f757a827a6a6350737312882e2142b866f2a40e00083cbf5a003ccf024",
+      "source_png_sha256": "d98717f757a827a6a6350737312882e2142b866f2a40e00083cbf5a003ccf024"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_caret_right_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_caret_right_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4f6ef0bb4412209d5698ce6d0dec97b7e325065e6bcd5b07c77d34ffb0c4e6f0",
+      "source_png_sha256": "4f6ef0bb4412209d5698ce6d0dec97b7e325065e6bcd5b07c77d34ffb0c4e6f0"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_caret_up_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_caret_up_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "cc940298f398e728dc07913e419afe41426706d8dbd1a0f1e821e7fd808f7901",
+      "source_png_sha256": "cc940298f398e728dc07913e419afe41426706d8dbd1a0f1e821e7fd808f7901"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_chart_bar_fill.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_chart_bar_fill.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4170a5ff10e50c969b8e2877b8a6fcf9dabbe57f8c9d81bcac3bebbf036e83bf",
+      "source_png_sha256": "4170a5ff10e50c969b8e2877b8a6fcf9dabbe57f8c9d81bcac3bebbf036e83bf"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_chats_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_chats_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f664130cfc6e63d598b82026b84e9285139ecd4f34d8ea427a9b87fa45b29383",
+      "source_png_sha256": "f664130cfc6e63d598b82026b84e9285139ecd4f34d8ea427a9b87fa45b29383"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_check_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_check_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "731b6d2cf1afee01293370dda11258b5ddc88f070e2856408b85d7f3e3b71986",
+      "source_png_sha256": "731b6d2cf1afee01293370dda11258b5ddc88f070e2856408b85d7f3e3b71986"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_circle_half_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_circle_half_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "012864fe2928a919c120f5058e2f8f1b8fb15db6cbb60973f14fc404baca5001",
+      "source_png_sha256": "012864fe2928a919c120f5058e2f8f1b8fb15db6cbb60973f14fc404baca5001"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_clock_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_clock_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0c1b24d510199558289151f184714fc12b9164d5895c73dc59b7a6cbbb44ce89",
+      "source_png_sha256": "0c1b24d510199558289151f184714fc12b9164d5895c73dc59b7a6cbbb44ce89"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_cloud_rain_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_cloud_rain_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8eb1f08bacfe23abb7d74cf9f06779554d129d6959e5a2f5fba420976f8ffeca",
+      "source_png_sha256": "8eb1f08bacfe23abb7d74cf9f06779554d129d6959e5a2f5fba420976f8ffeca"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_cloud_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_cloud_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "479a3c1fb3f2b8008519f2eff89d76097302211ca98859350b8f861909c15fc5",
+      "source_png_sha256": "479a3c1fb3f2b8008519f2eff89d76097302211ca98859350b8f861909c15fc5"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_device_mobile_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_device_mobile_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0eaa04fd97f1c0d491777e66681483def06ff507414d8e6f5c5f0606406f82fb",
+      "source_png_sha256": "0eaa04fd97f1c0d491777e66681483def06ff507414d8e6f5c5f0606406f82fb"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_dots_three_vertical_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_dots_three_vertical_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "66decb00222364660d91bda966e14b67ac6d3cb76672d65cebfe151c428b3e7f",
+      "source_png_sha256": "66decb00222364660d91bda966e14b67ac6d3cb76672d65cebfe151c428b3e7f"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_download_simple_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_download_simple_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "79a5d0ad53dc0c7859e3a2a04b088c0bf1ed53ddd9549f44eb20ae382abc02cb",
+      "source_png_sha256": "79a5d0ad53dc0c7859e3a2a04b088c0bf1ed53ddd9549f44eb20ae382abc02cb"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_exclamation_mark_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_exclamation_mark_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "1eec772928f7af3a9ac16e19b55814b5f684656d0582ba4be9be5bf8fed5bffd",
+      "source_png_sha256": "1eec772928f7af3a9ac16e19b55814b5f684656d0582ba4be9be5bf8fed5bffd"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_faders_horizontal_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_faders_horizontal_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "87fe40a5aeb390ec985e2917708425d05ddb3c4ae805582f94f1f1cba3fe9dfb",
+      "source_png_sha256": "87fe40a5aeb390ec985e2917708425d05ddb3c4ae805582f94f1f1cba3fe9dfb"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_file_text_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_file_text_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "89dbb772bd114fa6e2d9b3d9f1af6dd28e4702b78f1e6c9159ce1a597113af26",
+      "source_png_sha256": "89dbb772bd114fa6e2d9b3d9f1af6dd28e4702b78f1e6c9159ce1a597113af26"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_flashlight_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_flashlight_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0085a8d19fcd4ceae8a3e40cfd1a7c31094abbcadbf5e8819b7c0057de7c4666",
+      "source_png_sha256": "0085a8d19fcd4ceae8a3e40cfd1a7c31094abbcadbf5e8819b7c0057de7c4666"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_footprints_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_footprints_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c09c208a746bba78251a750f93d90e3ec039cc60908c121415166370b6a4d531",
+      "source_png_sha256": "c09c208a746bba78251a750f93d90e3ec039cc60908c121415166370b6a4d531"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_fork_knife_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_fork_knife_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "60470b59b86f8eccac8e070b40653063528ad95706c0454d6eb05c16055a5257",
+      "source_png_sha256": "60470b59b86f8eccac8e070b40653063528ad95706c0454d6eb05c16055a5257"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_gear_six_fill.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_gear_six_fill.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2620caebdeb39deb7dbe64370d1ad7b13aa25aa18c278a53cc629b5b17124b1a",
+      "source_png_sha256": "2620caebdeb39deb7dbe64370d1ad7b13aa25aa18c278a53cc629b5b17124b1a"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_gear_six_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_gear_six_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f775c952de297aed02d099d9fad1d5922a016ba1e0b190ab73f0048be6091550",
+      "source_png_sha256": "f775c952de297aed02d099d9fad1d5922a016ba1e0b190ab73f0048be6091550"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_github_logo_fill.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_github_logo_fill.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "eeb8ff1bc4caed6af1603afb47900119b606eecb75169ac0cf72ee586cd67026",
+      "source_png_sha256": "eeb8ff1bc4caed6af1603afb47900119b606eecb75169ac0cf72ee586cd67026"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_headphones_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_headphones_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4b5f84c3c2caca46755d27cefb9350e2e745a5eaafec53f021e69247665dabb0",
+      "source_png_sha256": "4b5f84c3c2caca46755d27cefb9350e2e745a5eaafec53f021e69247665dabb0"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_heart_fill.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_heart_fill.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d628acec1b0d38a3bd5f4c19563127f2eb777bcfd37a90e21429cbca225627aa",
+      "source_png_sha256": "d628acec1b0d38a3bd5f4c19563127f2eb777bcfd37a90e21429cbca225627aa"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_heart_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_heart_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "eb83a418ba9f4cba63bc06f6b0b42bfaec9982be65aa82f5f8a0d4e4ed04d25b",
+      "source_png_sha256": "eb83a418ba9f4cba63bc06f6b0b42bfaec9982be65aa82f5f8a0d4e4ed04d25b"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_house_fill.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_house_fill.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "487275e2ca4e4524794fdd6c935d0e9976b4efeeac4358e68b6ab0627802b135",
+      "source_png_sha256": "487275e2ca4e4524794fdd6c935d0e9976b4efeeac4358e68b6ab0627802b135"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_info_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_info_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "46ce2b1f6a69375e796e554e4817777515fed19040e9231f5bedbd8cfc358642",
+      "source_png_sha256": "46ce2b1f6a69375e796e554e4817777515fed19040e9231f5bedbd8cfc358642"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_keyboard_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_keyboard_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "12618d0a60a5a8e110ba57d6879979c95ac2bcb4e66fe56724d6504291da9403",
+      "source_png_sha256": "12618d0a60a5a8e110ba57d6879979c95ac2bcb4e66fe56724d6504291da9403"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_lightbulb_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_lightbulb_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a677079e4275bb4626e09ded0fff94447845c261f106f6f2bafb5f1898f4c4dc",
+      "source_png_sha256": "a677079e4275bb4626e09ded0fff94447845c261f106f6f2bafb5f1898f4c4dc"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_link_simple_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_link_simple_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ba5ac63cf3f6f7b7c614f75202eb966416c1f41a517544729d7b7491605e3df5",
+      "source_png_sha256": "ba5ac63cf3f6f7b7c614f75202eb966416c1f41a517544729d7b7491605e3df5"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_list_checks_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_list_checks_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "417d24d8e694c49e6ef2b0804ee960058016fc942fa1fa1b5c7768c2a9ed35e7",
+      "source_png_sha256": "417d24d8e694c49e6ef2b0804ee960058016fc942fa1fa1b5c7768c2a9ed35e7"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_list_numbers_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_list_numbers_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b190c89d9db101b66b65eab486572834f381510472f6f13c8151783531ff6516",
+      "source_png_sha256": "b190c89d9db101b66b65eab486572834f381510472f6f13c8151783531ff6516"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_lock_key_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_lock_key_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d263ecf6d516ce4ad9bad62c6d088c2ff4c8281a281d516decbf5e422614177a",
+      "source_png_sha256": "d263ecf6d516ce4ad9bad62c6d088c2ff4c8281a281d516decbf5e422614177a"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_magnifying_glass_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_magnifying_glass_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "36c1727fef2d950b587685ddc8beeacf5412d880d108b83bc1d552e20bb1a7fb",
+      "source_png_sha256": "36c1727fef2d950b587685ddc8beeacf5412d880d108b83bc1d552e20bb1a7fb"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_math_operations_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_math_operations_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d3e0b36bcaaf0dfdd5b0c466067d9a19a19a52c7e9f6816f3c21d9dc487ffa28",
+      "source_png_sha256": "d3e0b36bcaaf0dfdd5b0c466067d9a19a19a52c7e9f6816f3c21d9dc487ffa28"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_microphone_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_microphone_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "843b15e74cf610a7ee9f55cb20f1bdfd167471347f7db63ee94db15ed8f873f0",
+      "source_png_sha256": "843b15e74cf610a7ee9f55cb20f1bdfd167471347f7db63ee94db15ed8f873f0"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_minus_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_minus_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "3bb37080657cde96658b83106c011aabcb2a2bab71176fe656a98dd0e9157a1b",
+      "source_png_sha256": "3bb37080657cde96658b83106c011aabcb2a2bab71176fe656a98dd0e9157a1b"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_moon_fill.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_moon_fill.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "5db6febd01292802ef7f253fbadb5662b85eed2209aba2a577e6833caba2bc3b",
+      "source_png_sha256": "5db6febd01292802ef7f253fbadb5662b85eed2209aba2a577e6833caba2bc3b"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_music_notes_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_music_notes_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "267e044f5fef4aeec04b4ed32aeca626e0b82250da3aeb12f4a6d96a8c1dba20",
+      "source_png_sha256": "267e044f5fef4aeec04b4ed32aeca626e0b82250da3aeb12f4a6d96a8c1dba20"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_palette_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_palette_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8da389a15f023baf5cc9cb3dafe53ac3a5a57f8ffdea9513dddccc8c12b3a175",
+      "source_png_sha256": "8da389a15f023baf5cc9cb3dafe53ac3a5a57f8ffdea9513dddccc8c12b3a175"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_pause_fill.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_pause_fill.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0fcea70951b6e935ac6032ba511ab9d2f9b124ebf3ce4d0cc3901463104b864a",
+      "source_png_sha256": "0fcea70951b6e935ac6032ba511ab9d2f9b124ebf3ce4d0cc3901463104b864a"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_pencil_simple_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_pencil_simple_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "73498da5a9d55dc7d6d2d186f188ea851479bc4c56e78950b2b88116b1c7ab2e",
+      "source_png_sha256": "73498da5a9d55dc7d6d2d186f188ea851479bc4c56e78950b2b88116b1c7ab2e"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_person_simple_run_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_person_simple_run_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "7adc052c4801f751928539becf872b475cc66a0242fd9392ee74a1da3576520f",
+      "source_png_sha256": "7adc052c4801f751928539becf872b475cc66a0242fd9392ee74a1da3576520f"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_play_fill.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_play_fill.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0ff0ecf5c0238e2fb3b330d401a34fdc4f8c716c955e56831285e5f10105400e",
+      "source_png_sha256": "0ff0ecf5c0238e2fb3b330d401a34fdc4f8c716c955e56831285e5f10105400e"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_plug_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_plug_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a1a525dee9d03ff4305c11eb8260ff038329ab88ca49eac91f2b39d954b89142",
+      "source_png_sha256": "a1a525dee9d03ff4305c11eb8260ff038329ab88ca49eac91f2b39d954b89142"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_plus_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_plus_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8e12aefe11d6eb58a2ce68be93a3dbff62041de91e645eedd7b003988748f2e6",
+      "source_png_sha256": "8e12aefe11d6eb58a2ce68be93a3dbff62041de91e645eedd7b003988748f2e6"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_qr_code_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_qr_code_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "94b696fd9bb62d5e2682524c550a99454b308746060dcb763e6e98be4ee9ce40",
+      "source_png_sha256": "94b696fd9bb62d5e2682524c550a99454b308746060dcb763e6e98be4ee9ce40"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_question_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_question_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "59521436a660c0bf4cca1cbbf62622a7ebb9282f854254ca89aeff54ac1ba107",
+      "source_png_sha256": "59521436a660c0bf4cca1cbbf62622a7ebb9282f854254ca89aeff54ac1ba107"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_shield_check_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_shield_check_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "088f24ca5d083f9e2959f0e90613a900f61a19290c5a88f1fe9d670afe3bb66b",
+      "source_png_sha256": "088f24ca5d083f9e2959f0e90613a900f61a19290c5a88f1fe9d670afe3bb66b"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_speaker_high_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_speaker_high_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "12f6eaefd91683c2ac8e4781e249d39e6728cc7f60513332c2aeeca8815a5ca1",
+      "source_png_sha256": "12f6eaefd91683c2ac8e4781e249d39e6728cc7f60513332c2aeeca8815a5ca1"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_spinner_gap_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_spinner_gap_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ca689c457b22ad3c8d477da28b13430381f47d130f0ae23f1d481c072d2a175c",
+      "source_png_sha256": "ca689c457b22ad3c8d477da28b13430381f47d130f0ae23f1d481c072d2a175c"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_star_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_star_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "7e8022c11af0d895557a9e42aff8b7ed22a066bb2e419e9621578dd0a989b6f7",
+      "source_png_sha256": "7e8022c11af0d895557a9e42aff8b7ed22a066bb2e419e9621578dd0a989b6f7"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_stop_fill.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_stop_fill.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c6eeef3a1a28a254e307229a0effe68c0385a8e6e286bd10e6081e6cbe065f96",
+      "source_png_sha256": "c6eeef3a1a28a254e307229a0effe68c0385a8e6e286bd10e6081e6cbe065f96"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_sun_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_sun_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "6e5c94c056b7d31732a99061dc7087877ea4e6858ec2fde509efa6182f0f1fc3",
+      "source_png_sha256": "6e5c94c056b7d31732a99061dc7087877ea4e6858ec2fde509efa6182f0f1fc3"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_tag_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_tag_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "754cebd54431817406f24de809d1d4a0720b2750b82a04329e04551668b029c9",
+      "source_png_sha256": "754cebd54431817406f24de809d1d4a0720b2750b82a04329e04551668b029c9"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_trash_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_trash_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "cab78ea5bd2b66a4605e11e959cd2abddfcb86cc0e7907ab27191415bc60f25d",
+      "source_png_sha256": "cab78ea5bd2b66a4605e11e959cd2abddfcb86cc0e7907ab27191415bc60f25d"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_upload_simple_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_upload_simple_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "9c2209940cd1cd009f64e24b4e2fd90698f99a4e73ac2424454e0f551045ff45",
+      "source_png_sha256": "9c2209940cd1cd009f64e24b4e2fd90698f99a4e73ac2424454e0f551045ff45"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_vibrate_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_vibrate_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c6fdc07bc023f9409d1047cea171f5b54fd0af538330de51d417f5f618fe1a4e",
+      "source_png_sha256": "c6fdc07bc023f9409d1047cea171f5b54fd0af538330de51d417f5f618fe1a4e"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_wave_sine_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_wave_sine_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "edc8f26531dfa048f81aa8d433c1c48c1966ec5f701135fd187abd2b2d6ead22",
+      "source_png_sha256": "edc8f26531dfa048f81aa8d433c1c48c1966ec5f701135fd187abd2b2d6ead22"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_waveform_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_waveform_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "877659569f8dd48800c90bbbba21abba1fba75868d320e4a6cea97061212158d",
+      "source_png_sha256": "877659569f8dd48800c90bbbba21abba1fba75868d320e4a6cea97061212158d"
+    },
+    {
+      "entry": "res/drawable-mdpi-v4/ic_phosphor_x_regular.png",
+      "source": "app/src/main/res/drawable-mdpi/ic_phosphor_x_regular.png",
+      "size": [
+        24,
+        24
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "1d9a6421c9fc46486c388dfdda1432603c4dcf4214e98a7138e8031cf8b3e11f",
+      "source_png_sha256": "1d9a6421c9fc46486c388dfdda1432603c4dcf4214e98a7138e8031cf8b3e11f"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_moon.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_moon.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d2e00a9dbc9e39bec6d88bd5ccbb8121e0ca0e18ada7be29f8962705fc45834b",
+      "source_png_sha256": "d2e00a9dbc9e39bec6d88bd5ccbb8121e0ca0e18ada7be29f8962705fc45834b"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_alarm_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_alarm_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2fd9096cb4565d7c32458a09843ecaa042882b689c96bc95ab066f7d3bd29b30",
+      "source_png_sha256": "2fd9096cb4565d7c32458a09843ecaa042882b689c96bc95ab066f7d3bd29b30"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_arrow_counter_clockwise_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_arrow_counter_clockwise_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "055598f8d3f0bc267034177efe4aef866a71ba78fb03b129adbe6d441d644dd5",
+      "source_png_sha256": "055598f8d3f0bc267034177efe4aef866a71ba78fb03b129adbe6d441d644dd5"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_arrow_left_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_arrow_left_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "056676261acfb7fd7849082b8128fa5ad6d05ef08aea6c488028bb6e7923d3e1",
+      "source_png_sha256": "056676261acfb7fd7849082b8128fa5ad6d05ef08aea6c488028bb6e7923d3e1"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_arrow_square_out_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_arrow_square_out_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "3700991b39aa2b411e63b30ea7bdfeeef5a189bdcceee02a7df9bd366172bf8a",
+      "source_png_sha256": "3700991b39aa2b411e63b30ea7bdfeeef5a189bdcceee02a7df9bd366172bf8a"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_battery_vertical_medium_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_battery_vertical_medium_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4db0a57e3039155b1230d3605eb0d0ad5d2581b02b861aee626b77dfee4ac368",
+      "source_png_sha256": "4db0a57e3039155b1230d3605eb0d0ad5d2581b02b861aee626b77dfee4ac368"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_bed_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_bed_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0c9ac04ed91155bbe6789067a7d629c15be3d94ff1a5568df13e3f8dc5f792a3",
+      "source_png_sha256": "0c9ac04ed91155bbe6789067a7d629c15be3d94ff1a5568df13e3f8dc5f792a3"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_bell_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_bell_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "df421d1cc216beb9d35e2b29e04f50474456cd480b5a169336c769375544de2a",
+      "source_png_sha256": "df421d1cc216beb9d35e2b29e04f50474456cd480b5a169336c769375544de2a"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_bell_slash_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_bell_slash_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ee7f42c465ade11bf799e449e75b8e429e077c77b6e435667a94ebf9d3186d31",
+      "source_png_sha256": "ee7f42c465ade11bf799e449e75b8e429e077c77b6e435667a94ebf9d3186d31"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_broadcast_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_broadcast_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d4b7f17908122c70c4ee3505fb2d0a0fe7ee5456dd18f6af263050d140f9ffd0",
+      "source_png_sha256": "d4b7f17908122c70c4ee3505fb2d0a0fe7ee5456dd18f6af263050d140f9ffd0"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_calendar_blank_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_calendar_blank_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c145c16b9af2bdfc3a84f6f413fc6d1adf7ca491b76fffcdf0d437fdff4fa7d1",
+      "source_png_sha256": "c145c16b9af2bdfc3a84f6f413fc6d1adf7ca491b76fffcdf0d437fdff4fa7d1"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_camera_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_camera_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "1024d00eec73b0514b90b9a032ca45fe3abaded005f6fb0bb8cec904012cecc6",
+      "source_png_sha256": "1024d00eec73b0514b90b9a032ca45fe3abaded005f6fb0bb8cec904012cecc6"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_cards_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_cards_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f22f22a4b284acc14e6d73187d16a187f37d66496d8595c0989f90f0e660990a",
+      "source_png_sha256": "f22f22a4b284acc14e6d73187d16a187f37d66496d8595c0989f90f0e660990a"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_caret_down_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_caret_down_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4ffcf226a89dff81b6058bf86bfdf05cadc301abdd606a75fd58491ffd41580f",
+      "source_png_sha256": "4ffcf226a89dff81b6058bf86bfdf05cadc301abdd606a75fd58491ffd41580f"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_caret_right_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_caret_right_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "38ec17b227828bdce1aece6397e05ffb6ef4cda9f57cac2398d6b36883521607",
+      "source_png_sha256": "38ec17b227828bdce1aece6397e05ffb6ef4cda9f57cac2398d6b36883521607"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_caret_up_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_caret_up_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8f90c853057731cfd219c64b1625fc2a79e03952ba42dec88a03467c0bc16f61",
+      "source_png_sha256": "8f90c853057731cfd219c64b1625fc2a79e03952ba42dec88a03467c0bc16f61"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_chart_bar_fill.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_chart_bar_fill.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e37b903706aed436d823c4c11a7425f18c2d8ebf97e1c1790d0bd3bf01147f3f",
+      "source_png_sha256": "e37b903706aed436d823c4c11a7425f18c2d8ebf97e1c1790d0bd3bf01147f3f"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_chats_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_chats_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "9395a02050d506b7d22ce11dd99ac45fab7e381f223bba201c3a56ab7705c5ea",
+      "source_png_sha256": "9395a02050d506b7d22ce11dd99ac45fab7e381f223bba201c3a56ab7705c5ea"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_check_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_check_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "3f252675389609258ec408e318cb5f4c09654c952af5b3452052ee062bdee411",
+      "source_png_sha256": "3f252675389609258ec408e318cb5f4c09654c952af5b3452052ee062bdee411"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_circle_half_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_circle_half_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "dae7335bde9b2440d48a55d85a80b4eadd979d4c3f239dd6f48f858e2d4aba38",
+      "source_png_sha256": "dae7335bde9b2440d48a55d85a80b4eadd979d4c3f239dd6f48f858e2d4aba38"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_clock_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_clock_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0819c80efdbd0799b11628ff44221a13ce1a127fc50c276311f8110c466bcb69",
+      "source_png_sha256": "0819c80efdbd0799b11628ff44221a13ce1a127fc50c276311f8110c466bcb69"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_cloud_rain_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_cloud_rain_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "cc73cde71562dbc01b6f73b318c26967c55f780554d981ac3290267dd7a5af06",
+      "source_png_sha256": "cc73cde71562dbc01b6f73b318c26967c55f780554d981ac3290267dd7a5af06"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_cloud_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_cloud_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b6965a1719a06c2d4c1933849f575883e881eb1823c4b5be7ab0b1440b9f5751",
+      "source_png_sha256": "b6965a1719a06c2d4c1933849f575883e881eb1823c4b5be7ab0b1440b9f5751"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_device_mobile_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_device_mobile_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "bb34105ee0c359f53f038a49e173129eb172bb601189984485d58732eea98935",
+      "source_png_sha256": "bb34105ee0c359f53f038a49e173129eb172bb601189984485d58732eea98935"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_dots_three_vertical_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_dots_three_vertical_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f4d12b7de43a17a825ec7c56bf404f16bb91f40b0621d3435033e4313a0857aa",
+      "source_png_sha256": "f4d12b7de43a17a825ec7c56bf404f16bb91f40b0621d3435033e4313a0857aa"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_download_simple_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_download_simple_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "fe9341ef65ffeecb4ff5c84e27b2281618f60813161ea700c6f7a70cf84efaeb",
+      "source_png_sha256": "fe9341ef65ffeecb4ff5c84e27b2281618f60813161ea700c6f7a70cf84efaeb"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_exclamation_mark_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_exclamation_mark_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "cc86aa6240fd133e0df7cff98a4583637d11996a4bb01aed3c3dafce954a8a75",
+      "source_png_sha256": "cc86aa6240fd133e0df7cff98a4583637d11996a4bb01aed3c3dafce954a8a75"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_faders_horizontal_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_faders_horizontal_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ec0f75d3e1a7975cceb70c3c8803e2c10e13dc892ae5d5cd1bb63e0cf789b729",
+      "source_png_sha256": "ec0f75d3e1a7975cceb70c3c8803e2c10e13dc892ae5d5cd1bb63e0cf789b729"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_file_text_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_file_text_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2e8e30d9fd254a5c83a88af5e384b84b678c8b266396006cd213fe2f344dded2",
+      "source_png_sha256": "2e8e30d9fd254a5c83a88af5e384b84b678c8b266396006cd213fe2f344dded2"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_flashlight_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_flashlight_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "93c9f102d6c2519d90f9526da5f9d9cd8cd2f009eae2c30778854bafbcb2a258",
+      "source_png_sha256": "93c9f102d6c2519d90f9526da5f9d9cd8cd2f009eae2c30778854bafbcb2a258"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_footprints_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_footprints_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "cbe4f852373b8c37b616241d5cd1a8854526eaed24e995921e8c96d3bd3ee15e",
+      "source_png_sha256": "cbe4f852373b8c37b616241d5cd1a8854526eaed24e995921e8c96d3bd3ee15e"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_fork_knife_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_fork_knife_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0eb9c6791474f69bf8eb0d7a01be68111e0ed5de77d419d439119c18814c7e52",
+      "source_png_sha256": "0eb9c6791474f69bf8eb0d7a01be68111e0ed5de77d419d439119c18814c7e52"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_gear_six_fill.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_gear_six_fill.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d7e9bc44aa1acf9a9c3758f762f1747b8368fd8399a481909c9a9318f0bf7cd8",
+      "source_png_sha256": "d7e9bc44aa1acf9a9c3758f762f1747b8368fd8399a481909c9a9318f0bf7cd8"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_gear_six_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_gear_six_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2a3bd4a9177a6f24b3a028367a48f0949f2733dc3f0cf2e10e8d5b4c137b054d",
+      "source_png_sha256": "2a3bd4a9177a6f24b3a028367a48f0949f2733dc3f0cf2e10e8d5b4c137b054d"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_github_logo_fill.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_github_logo_fill.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ef54fb5629318b205713c3f9805eff62a2e64ec89aad21249713519106afa41b",
+      "source_png_sha256": "ef54fb5629318b205713c3f9805eff62a2e64ec89aad21249713519106afa41b"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_headphones_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_headphones_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "53e9a114bcc0e9e88bef43f991fadddc041d3ce085aacfaa4634f4d68a1dd6c6",
+      "source_png_sha256": "53e9a114bcc0e9e88bef43f991fadddc041d3ce085aacfaa4634f4d68a1dd6c6"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_heart_fill.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_heart_fill.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "dfdfa20fa8680ddf847a229af2d0516ab55c61c7be9bfb6faff60b6b9f65078e",
+      "source_png_sha256": "dfdfa20fa8680ddf847a229af2d0516ab55c61c7be9bfb6faff60b6b9f65078e"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_heart_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_heart_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c4f25047d60d85ed67ad440eed88c20f620d12b7cc296005275ca372f4c7d6c3",
+      "source_png_sha256": "c4f25047d60d85ed67ad440eed88c20f620d12b7cc296005275ca372f4c7d6c3"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_house_fill.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_house_fill.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a9a95c2b22557403a7713725699d95562c228bbefd224d3a23ce8cf268fdc2be",
+      "source_png_sha256": "a9a95c2b22557403a7713725699d95562c228bbefd224d3a23ce8cf268fdc2be"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_info_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_info_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "eee6cde9fd6e2702d3eb791bb67833172eb2d2f630b1bf14c0ea5866ae67f340",
+      "source_png_sha256": "eee6cde9fd6e2702d3eb791bb67833172eb2d2f630b1bf14c0ea5866ae67f340"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_keyboard_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_keyboard_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "6d735d7a334156f0b7ddec91fc10b80b0d1b888d6e38e6a8268659ec25b70cdb",
+      "source_png_sha256": "6d735d7a334156f0b7ddec91fc10b80b0d1b888d6e38e6a8268659ec25b70cdb"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_lightbulb_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_lightbulb_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "00c10ffa03694bcb3e7d4415af35dd195c90031652d77bcabeab32f4ff4a8e6e",
+      "source_png_sha256": "00c10ffa03694bcb3e7d4415af35dd195c90031652d77bcabeab32f4ff4a8e6e"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_link_simple_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_link_simple_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "01d1b464399630b98c6e1608beb93207f3ca0aafa802e91c6a14b6dbbbb3f1f4",
+      "source_png_sha256": "01d1b464399630b98c6e1608beb93207f3ca0aafa802e91c6a14b6dbbbb3f1f4"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_list_checks_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_list_checks_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a2425ea639f2d68fdb041624daaf0cee72f0d5cd51b0538ba395bf19d2dcfb5b",
+      "source_png_sha256": "a2425ea639f2d68fdb041624daaf0cee72f0d5cd51b0538ba395bf19d2dcfb5b"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_list_numbers_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_list_numbers_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "788a00871fa179c0f0c586bc34818ade69d36c15f20f2276523f80e582a65032",
+      "source_png_sha256": "788a00871fa179c0f0c586bc34818ade69d36c15f20f2276523f80e582a65032"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_lock_key_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_lock_key_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "3ce23fe2f495af0d90c6230f96736ae9feb43afccea82aaf2e4764c8a614e8cb",
+      "source_png_sha256": "3ce23fe2f495af0d90c6230f96736ae9feb43afccea82aaf2e4764c8a614e8cb"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_magnifying_glass_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_magnifying_glass_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "142a9f7f3bd094211d2d2a79a250630dbcc9ae6cbf0503b5e03fdd2b983175b3",
+      "source_png_sha256": "142a9f7f3bd094211d2d2a79a250630dbcc9ae6cbf0503b5e03fdd2b983175b3"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_math_operations_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_math_operations_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8b21c35582f05f0e7983bd8d93b0831852920aa938ea0105411f18e0f40c9044",
+      "source_png_sha256": "8b21c35582f05f0e7983bd8d93b0831852920aa938ea0105411f18e0f40c9044"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_microphone_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_microphone_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "74aee60adf858d1f976cb5d790eb97f7bb7f6510bb28217382f607210c4ede8f",
+      "source_png_sha256": "74aee60adf858d1f976cb5d790eb97f7bb7f6510bb28217382f607210c4ede8f"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_minus_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_minus_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "9b9715d8f1a4ee0a5038b2482250ab72869ab9ea09004ccf3c1650f8ffdeebec",
+      "source_png_sha256": "9b9715d8f1a4ee0a5038b2482250ab72869ab9ea09004ccf3c1650f8ffdeebec"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_moon_fill.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_moon_fill.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a95865c6247b8bb1aac329a9b36090c1f6d1f42a700210c747f692245d8e6f48",
+      "source_png_sha256": "a95865c6247b8bb1aac329a9b36090c1f6d1f42a700210c747f692245d8e6f48"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_music_notes_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_music_notes_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "21bd8096ff7262d51e1304cd80a2a1a8804fe6b048e5f745c07c2210046c0bf6",
+      "source_png_sha256": "21bd8096ff7262d51e1304cd80a2a1a8804fe6b048e5f745c07c2210046c0bf6"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_palette_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_palette_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2c8816c347bb55cae7a9908a3e236eae0db209725a3094a4cb52dc418f7d2c32",
+      "source_png_sha256": "2c8816c347bb55cae7a9908a3e236eae0db209725a3094a4cb52dc418f7d2c32"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_pause_fill.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_pause_fill.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ea5caf99fde77145ecc674ace0f213eb1b766a49e0c483cda2f801f4a7221783",
+      "source_png_sha256": "ea5caf99fde77145ecc674ace0f213eb1b766a49e0c483cda2f801f4a7221783"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_pencil_simple_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_pencil_simple_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "7117c3b0b9cdcbfc2054157ca164f88002c7e0d652a5390d76b17b78cfdebee3",
+      "source_png_sha256": "7117c3b0b9cdcbfc2054157ca164f88002c7e0d652a5390d76b17b78cfdebee3"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_person_simple_run_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_person_simple_run_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8f99107676bc22a02acf0f1e4a274a81c4ddb1a74d227f89b8a7133af9178be7",
+      "source_png_sha256": "8f99107676bc22a02acf0f1e4a274a81c4ddb1a74d227f89b8a7133af9178be7"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_play_fill.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_play_fill.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "7a38a02594e19e7ab6828b6a571aa5b69acd29a161a9b1182a9219708d0b1b67",
+      "source_png_sha256": "7a38a02594e19e7ab6828b6a571aa5b69acd29a161a9b1182a9219708d0b1b67"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_plug_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_plug_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "273da57c30be9a195425604b844384631f9f9667425aeae4350b223cd8803e3c",
+      "source_png_sha256": "273da57c30be9a195425604b844384631f9f9667425aeae4350b223cd8803e3c"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_plus_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_plus_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "6c6db0f75fa1fba70a57e1a5364d297f4673a1b0b410a93ef30ce65cc81391c7",
+      "source_png_sha256": "6c6db0f75fa1fba70a57e1a5364d297f4673a1b0b410a93ef30ce65cc81391c7"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_qr_code_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_qr_code_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "93dd82dd69090cf9051afb15474a6b78365ff1bca6508859fff717d8ee3bd086",
+      "source_png_sha256": "93dd82dd69090cf9051afb15474a6b78365ff1bca6508859fff717d8ee3bd086"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_question_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_question_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "cafdf765c01080a263a33781487b8e37b889e812e51ba840e4ed3ab5b68a4e3d",
+      "source_png_sha256": "cafdf765c01080a263a33781487b8e37b889e812e51ba840e4ed3ab5b68a4e3d"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_shield_check_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_shield_check_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4d42262f2a509617b52194e793d9cddf3b9e4e0e6fd93b5fe54d433a3351d0ef",
+      "source_png_sha256": "4d42262f2a509617b52194e793d9cddf3b9e4e0e6fd93b5fe54d433a3351d0ef"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_speaker_high_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_speaker_high_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b122a348681e2f59d53e9ae0638a6cc58deb2295016203285e1255456f07a920",
+      "source_png_sha256": "b122a348681e2f59d53e9ae0638a6cc58deb2295016203285e1255456f07a920"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_spinner_gap_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_spinner_gap_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ec13f286ec857cd94bbd4f1d9b1b297553831de07977eacb29c6dbf814abceee",
+      "source_png_sha256": "ec13f286ec857cd94bbd4f1d9b1b297553831de07977eacb29c6dbf814abceee"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_star_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_star_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4b5d5f6b0255232c8d0a62975ea045e578920c6c15fa233ed5c06d3051da97f7",
+      "source_png_sha256": "4b5d5f6b0255232c8d0a62975ea045e578920c6c15fa233ed5c06d3051da97f7"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_stop_fill.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_stop_fill.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "259f60f9918b5fa094acd5503fd1cee46fb3242a9aac401a7978c2e2e6018056",
+      "source_png_sha256": "259f60f9918b5fa094acd5503fd1cee46fb3242a9aac401a7978c2e2e6018056"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_sun_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_sun_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "632c9cd18396ac148ced0bae66f69b8c7effa4dd4e8da3c8b9fe20e7cf1da76b",
+      "source_png_sha256": "632c9cd18396ac148ced0bae66f69b8c7effa4dd4e8da3c8b9fe20e7cf1da76b"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_tag_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_tag_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "06a860a1d63176ac26b7acb0126e987983547c1e05d1b42930cf38d2d762dec5",
+      "source_png_sha256": "06a860a1d63176ac26b7acb0126e987983547c1e05d1b42930cf38d2d762dec5"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_trash_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_trash_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b3e6d4e84350327ea02363c81aa13be7b8d2f8f71771b78956bd000e016cdb6b",
+      "source_png_sha256": "b3e6d4e84350327ea02363c81aa13be7b8d2f8f71771b78956bd000e016cdb6b"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_upload_simple_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_upload_simple_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "61d9a27c7d8b11bcf2cb9730d1b22763ba929dc6e09d54a01817603d489959ee",
+      "source_png_sha256": "61d9a27c7d8b11bcf2cb9730d1b22763ba929dc6e09d54a01817603d489959ee"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_vibrate_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_vibrate_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "50f7fee2fba693928a854b03b27d7052caeb681fe8cdd643642fd31cfd8cd062",
+      "source_png_sha256": "50f7fee2fba693928a854b03b27d7052caeb681fe8cdd643642fd31cfd8cd062"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_wave_sine_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_wave_sine_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "9258ba24a5e01d694ba9ca36350c8ac5cb61f798d8cf54d54107cc264a606c9d",
+      "source_png_sha256": "9258ba24a5e01d694ba9ca36350c8ac5cb61f798d8cf54d54107cc264a606c9d"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_waveform_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_waveform_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "69fbef849f7f8e7e56c55af1848558c4148866be4c730ac83768969fe7d0310e",
+      "source_png_sha256": "69fbef849f7f8e7e56c55af1848558c4148866be4c730ac83768969fe7d0310e"
+    },
+    {
+      "entry": "res/drawable-xhdpi-v4/ic_phosphor_x_regular.png",
+      "source": "app/src/main/res/drawable-xhdpi/ic_phosphor_x_regular.png",
+      "size": [
+        48,
+        48
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "781b8e67fd74a65082eed9753361840be435b25eee188fdf55f757f2fbc50b44",
+      "source_png_sha256": "781b8e67fd74a65082eed9753361840be435b25eee188fdf55f757f2fbc50b44"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_moon.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_moon.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ebd3b0ce56556e42dfdc5603fcfd352647fed0735268e67bd6e34a3d93c63395",
+      "source_png_sha256": "ebd3b0ce56556e42dfdc5603fcfd352647fed0735268e67bd6e34a3d93c63395"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_alarm_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_alarm_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ea807bcf0aed85e0425909baa549253e1c09e43cc5f5f094543e3d1d651f5f45",
+      "source_png_sha256": "ea807bcf0aed85e0425909baa549253e1c09e43cc5f5f094543e3d1d651f5f45"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_arrow_counter_clockwise_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_arrow_counter_clockwise_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2c5961fd0b28dc38a1c6e2f3c1196c150acd1868ea7638b8007b7bba81643785",
+      "source_png_sha256": "2c5961fd0b28dc38a1c6e2f3c1196c150acd1868ea7638b8007b7bba81643785"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_arrow_left_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_arrow_left_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8d2d636216c23faf1b992490260bb46b2cc1349b1f8ab30f4d52daf1284a04d8",
+      "source_png_sha256": "8d2d636216c23faf1b992490260bb46b2cc1349b1f8ab30f4d52daf1284a04d8"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_arrow_square_out_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_arrow_square_out_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "be8e8a884ebbe51f9c8363c5e590d341956af58365b637dd8bfcbc2b584b3b99",
+      "source_png_sha256": "be8e8a884ebbe51f9c8363c5e590d341956af58365b637dd8bfcbc2b584b3b99"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_battery_vertical_medium_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_battery_vertical_medium_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "9c7ba75b787d1f70f280df51311c128b47c0a64d3ae052f2cadeb2e99870504a",
+      "source_png_sha256": "9c7ba75b787d1f70f280df51311c128b47c0a64d3ae052f2cadeb2e99870504a"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_bed_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_bed_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4d5b21270643bb9364355a465f6e24e486a6558b38e0d0aa3fc42319178a774f",
+      "source_png_sha256": "4d5b21270643bb9364355a465f6e24e486a6558b38e0d0aa3fc42319178a774f"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_bell_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_bell_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e9a1d21496c44d861c164263b1637eab27c724804ffa8e088aab4dae7f1ee8f1",
+      "source_png_sha256": "e9a1d21496c44d861c164263b1637eab27c724804ffa8e088aab4dae7f1ee8f1"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_bell_slash_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_bell_slash_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "da71715711fe0c37dd80890772a56169c11f2da594418bd04a8bb034bb365a00",
+      "source_png_sha256": "da71715711fe0c37dd80890772a56169c11f2da594418bd04a8bb034bb365a00"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_broadcast_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_broadcast_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "7365e8e3c4531c468ca8aeab7f3a4c2d60fb8f94928be868727621a6e2edb1f9",
+      "source_png_sha256": "7365e8e3c4531c468ca8aeab7f3a4c2d60fb8f94928be868727621a6e2edb1f9"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_calendar_blank_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_calendar_blank_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a4def168be8fecfeced7973dbe4cd57aa7742a146ba13e1426d76b6613a03c1b",
+      "source_png_sha256": "a4def168be8fecfeced7973dbe4cd57aa7742a146ba13e1426d76b6613a03c1b"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_camera_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_camera_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "35fc815ccacdbddf1967bcc03cd9fbbf0b8fdd330f10ff0074bfa74d4c753c39",
+      "source_png_sha256": "35fc815ccacdbddf1967bcc03cd9fbbf0b8fdd330f10ff0074bfa74d4c753c39"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_cards_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_cards_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d65990bbd5045a209adbc963055c5f68eb77486fe6cc7bf6a7c120728af2e310",
+      "source_png_sha256": "d65990bbd5045a209adbc963055c5f68eb77486fe6cc7bf6a7c120728af2e310"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_caret_down_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_caret_down_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8c38db992a337a1717b9da4ed01b5826bf228475364740a3f1cf81584626b7fd",
+      "source_png_sha256": "8c38db992a337a1717b9da4ed01b5826bf228475364740a3f1cf81584626b7fd"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_caret_right_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_caret_right_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "de137795a773dedc4fbb34257b935a685cbf0c3ad52eb435d87d2617ee262323",
+      "source_png_sha256": "de137795a773dedc4fbb34257b935a685cbf0c3ad52eb435d87d2617ee262323"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_caret_up_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_caret_up_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "fc35a23d13308a7c2294663a5a7e411abe0904f70814c30ad411ccd5fed49ed4",
+      "source_png_sha256": "fc35a23d13308a7c2294663a5a7e411abe0904f70814c30ad411ccd5fed49ed4"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_chart_bar_fill.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_chart_bar_fill.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "44cef14954c6e403d30c28ec0f73d9393ca01a0f5d526bab61dfe3097082d30f",
+      "source_png_sha256": "44cef14954c6e403d30c28ec0f73d9393ca01a0f5d526bab61dfe3097082d30f"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_chats_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_chats_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a6e81bb2fe56df48ce07645bc988579c8a6f0c99c485e941d5943421a289b975",
+      "source_png_sha256": "a6e81bb2fe56df48ce07645bc988579c8a6f0c99c485e941d5943421a289b975"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_check_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_check_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "04becb2ce30fb36f3d212d7660408016ad9de0fad39da4cc2edb819df3de2fef",
+      "source_png_sha256": "04becb2ce30fb36f3d212d7660408016ad9de0fad39da4cc2edb819df3de2fef"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_circle_half_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_circle_half_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b0673cd7f177e4e46f7ca43500d6eafb414352ae8186210ae1e838e865a28f9d",
+      "source_png_sha256": "b0673cd7f177e4e46f7ca43500d6eafb414352ae8186210ae1e838e865a28f9d"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_clock_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_clock_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "973f032bae4ae734d3243c0465d5633c481f64ac0cb912a63db5749f2fdc5fcb",
+      "source_png_sha256": "973f032bae4ae734d3243c0465d5633c481f64ac0cb912a63db5749f2fdc5fcb"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_cloud_rain_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_cloud_rain_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0a9f5f03792260c8e2934be814cc839ab7a18b79bb237b5ee0168a7e655a6339",
+      "source_png_sha256": "0a9f5f03792260c8e2934be814cc839ab7a18b79bb237b5ee0168a7e655a6339"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_cloud_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_cloud_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e6012af25717d8c4d7187fe4df01faba0e355dca524f52636040f7091dccc40d",
+      "source_png_sha256": "e6012af25717d8c4d7187fe4df01faba0e355dca524f52636040f7091dccc40d"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_device_mobile_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_device_mobile_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b7291e96b951d9928a40bfbe2883606f0cc551e36bbaba948108cb42fe1baf89",
+      "source_png_sha256": "b7291e96b951d9928a40bfbe2883606f0cc551e36bbaba948108cb42fe1baf89"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_dots_three_vertical_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_dots_three_vertical_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "efd79ee4781ce4febb78b455a815c1e5d55da5cffcc3cf2c47b40b4f393bcb67",
+      "source_png_sha256": "efd79ee4781ce4febb78b455a815c1e5d55da5cffcc3cf2c47b40b4f393bcb67"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_download_simple_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_download_simple_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "9e7e5831b4ce64c17d29d619ce6e23d45eeb8680cc944a45711dbf4a264dd029",
+      "source_png_sha256": "9e7e5831b4ce64c17d29d619ce6e23d45eeb8680cc944a45711dbf4a264dd029"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_exclamation_mark_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_exclamation_mark_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e6cd3399783739be00c1aa96d87b96d0ffbf95c2f1dca9d8ecb6ef2f56cdaa64",
+      "source_png_sha256": "e6cd3399783739be00c1aa96d87b96d0ffbf95c2f1dca9d8ecb6ef2f56cdaa64"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_faders_horizontal_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_faders_horizontal_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e52d6e3a79225f7526105c971431802e9d0732eb223525541699b4b7e1b9eeb0",
+      "source_png_sha256": "e52d6e3a79225f7526105c971431802e9d0732eb223525541699b4b7e1b9eeb0"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_file_text_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_file_text_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "db068345f94b265ca97cd5107ec47ee6dc8de6e1f9f3f9312392815004593b97",
+      "source_png_sha256": "db068345f94b265ca97cd5107ec47ee6dc8de6e1f9f3f9312392815004593b97"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_flashlight_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_flashlight_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d22c24c415af4fc045e742efa58dd3955b23bf3143e95d7903c6689d29c4490b",
+      "source_png_sha256": "d22c24c415af4fc045e742efa58dd3955b23bf3143e95d7903c6689d29c4490b"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_footprints_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_footprints_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d7fa941d4ea3fd6160ef67fbfbd26f6547e6c9291bfccf620346411dc2a51b5e",
+      "source_png_sha256": "d7fa941d4ea3fd6160ef67fbfbd26f6547e6c9291bfccf620346411dc2a51b5e"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_fork_knife_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_fork_knife_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "330540bb5cb96bc0d3168d396d833aae8531adec894bdc7136118867baab90b2",
+      "source_png_sha256": "330540bb5cb96bc0d3168d396d833aae8531adec894bdc7136118867baab90b2"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_gear_six_fill.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_gear_six_fill.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a206da831a13b18b949e777449aa62fb4728a536ebca2360337b5c3c98018bb4",
+      "source_png_sha256": "a206da831a13b18b949e777449aa62fb4728a536ebca2360337b5c3c98018bb4"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_gear_six_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_gear_six_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c0e28ac5346d8e1832747c10f13807d9efa3e0122c015466bae0c87c3c19d56c",
+      "source_png_sha256": "c0e28ac5346d8e1832747c10f13807d9efa3e0122c015466bae0c87c3c19d56c"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_github_logo_fill.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_github_logo_fill.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "3884e8f2a12cadbcba130d6e09db2715c1349c044edb6f0954f3bd8216e6ade3",
+      "source_png_sha256": "3884e8f2a12cadbcba130d6e09db2715c1349c044edb6f0954f3bd8216e6ade3"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_headphones_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_headphones_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c50480f4d8bc638dda91b3ff9889f2fb496a3fab94379971efb839994b417496",
+      "source_png_sha256": "c50480f4d8bc638dda91b3ff9889f2fb496a3fab94379971efb839994b417496"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_heart_fill.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_heart_fill.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2bdbce1e44e74b8e6e4e7cdb0908000beb1ff106c9bc5ffc67b78b5fd7d321c9",
+      "source_png_sha256": "2bdbce1e44e74b8e6e4e7cdb0908000beb1ff106c9bc5ffc67b78b5fd7d321c9"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_heart_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_heart_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2b6b0097a18a8f05517bcd42cf87c885a602ef20dc5f9b627e2905a017845cdf",
+      "source_png_sha256": "2b6b0097a18a8f05517bcd42cf87c885a602ef20dc5f9b627e2905a017845cdf"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_house_fill.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_house_fill.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "74c27f0f681f63a9c62163586f381d1146aafa902ab0081b313731c7488a2b66",
+      "source_png_sha256": "74c27f0f681f63a9c62163586f381d1146aafa902ab0081b313731c7488a2b66"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_info_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_info_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0dd047ddd252d69961133056ccacac7bee387e3fcb84e9727c4134dbf672d1ec",
+      "source_png_sha256": "0dd047ddd252d69961133056ccacac7bee387e3fcb84e9727c4134dbf672d1ec"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_keyboard_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_keyboard_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f4ca331c42d5e948876e2d19561dfc538d29ae4e95212ab54b5264fe5026bc9c",
+      "source_png_sha256": "f4ca331c42d5e948876e2d19561dfc538d29ae4e95212ab54b5264fe5026bc9c"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_lightbulb_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_lightbulb_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "769f2c33822fbd6d25a97e22c9314860dd4568289d967d68c6e9026611278378",
+      "source_png_sha256": "769f2c33822fbd6d25a97e22c9314860dd4568289d967d68c6e9026611278378"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_link_simple_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_link_simple_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "102284f755528bb6adbc724b6f5284c4bb5eeeda2f750e08cf67fd20cb7d214f",
+      "source_png_sha256": "102284f755528bb6adbc724b6f5284c4bb5eeeda2f750e08cf67fd20cb7d214f"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_list_checks_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_list_checks_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a2872934bd03fd38b047769c6f3a0854cbb2c6d0683184768125bd98de158e69",
+      "source_png_sha256": "a2872934bd03fd38b047769c6f3a0854cbb2c6d0683184768125bd98de158e69"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_list_numbers_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_list_numbers_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "3ae866653f8bae1a08c6e95187d38c9f27ce36fc11cd0fa181ef9e3cc051018a",
+      "source_png_sha256": "3ae866653f8bae1a08c6e95187d38c9f27ce36fc11cd0fa181ef9e3cc051018a"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_lock_key_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_lock_key_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2de696973ade282b23d414d5015127a619eb91bea680646010ab7bcd74766537",
+      "source_png_sha256": "2de696973ade282b23d414d5015127a619eb91bea680646010ab7bcd74766537"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_magnifying_glass_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_magnifying_glass_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "af79673a84a3989c8849fe2b9cc60711828c736820f4680beacbc0c786a8302c",
+      "source_png_sha256": "af79673a84a3989c8849fe2b9cc60711828c736820f4680beacbc0c786a8302c"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_math_operations_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_math_operations_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "107378051b20717498a0f3832eebc4ce0186e047a0e7f06e6ab6589cd16b0d6f",
+      "source_png_sha256": "107378051b20717498a0f3832eebc4ce0186e047a0e7f06e6ab6589cd16b0d6f"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_microphone_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_microphone_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "973e37dd06c8ae91dcaa29c3e4290d2a11bd58d1c16ae483087615fb583b0683",
+      "source_png_sha256": "973e37dd06c8ae91dcaa29c3e4290d2a11bd58d1c16ae483087615fb583b0683"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_minus_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_minus_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f0d4bf47cd5a0fbb33c71d67004b0da67cb5ade21f0a756f0bde07b79e81d7a6",
+      "source_png_sha256": "f0d4bf47cd5a0fbb33c71d67004b0da67cb5ade21f0a756f0bde07b79e81d7a6"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_moon_fill.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_moon_fill.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "bff77ac38b6032d0bdbe09a2535fc57a1aa5fa4fc4448df286724aa8623fae6a",
+      "source_png_sha256": "bff77ac38b6032d0bdbe09a2535fc57a1aa5fa4fc4448df286724aa8623fae6a"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_music_notes_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_music_notes_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "839951b432a3d1842351b4970cdc6f5548a0d1b31ecf98aab2dd6c35939ca126",
+      "source_png_sha256": "839951b432a3d1842351b4970cdc6f5548a0d1b31ecf98aab2dd6c35939ca126"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_palette_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_palette_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "12d4952bfd7228858bd209deb9304c7aac0ae27ba7e5a43f587b520b26227f29",
+      "source_png_sha256": "12d4952bfd7228858bd209deb9304c7aac0ae27ba7e5a43f587b520b26227f29"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_pause_fill.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_pause_fill.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b034725f6acd55e3344f52f21d00a8f5f4f2fa53445fc5b1582bdf2a4b7d04c6",
+      "source_png_sha256": "b034725f6acd55e3344f52f21d00a8f5f4f2fa53445fc5b1582bdf2a4b7d04c6"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_pencil_simple_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_pencil_simple_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e584ec3140009b826d93532e69c32a4fab03eeca8b2d5f2587d5c0c89b95c542",
+      "source_png_sha256": "e584ec3140009b826d93532e69c32a4fab03eeca8b2d5f2587d5c0c89b95c542"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_person_simple_run_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_person_simple_run_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "61f3a5213fd63e05aaebca5ad1491f014ca6eab4cf9ab1ba06819d0fb991e39a",
+      "source_png_sha256": "61f3a5213fd63e05aaebca5ad1491f014ca6eab4cf9ab1ba06819d0fb991e39a"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_play_fill.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_play_fill.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0b692aac80f622a15466efbcdf1da233f87482f0dfba82da7f0216893a5c0c9f",
+      "source_png_sha256": "0b692aac80f622a15466efbcdf1da233f87482f0dfba82da7f0216893a5c0c9f"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_plug_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_plug_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "eaf87bf641ab4d73defe0005f5b8ef56f39233e95ce1d4334bf9095663285f51",
+      "source_png_sha256": "eaf87bf641ab4d73defe0005f5b8ef56f39233e95ce1d4334bf9095663285f51"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_plus_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_plus_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "706f37d8e3532e0d69530e90e039e25538e452a9b3b23ccf72fa8b058162878e",
+      "source_png_sha256": "706f37d8e3532e0d69530e90e039e25538e452a9b3b23ccf72fa8b058162878e"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_qr_code_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_qr_code_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2ec98b213679907249c87c399cdb544c8b577ce8450dc3fadf94d0d7d42667f7",
+      "source_png_sha256": "2ec98b213679907249c87c399cdb544c8b577ce8450dc3fadf94d0d7d42667f7"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_question_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_question_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "35f42f20aa7123d4fad433cf8d32938a65423995340654918fb621836eb1a0e6",
+      "source_png_sha256": "35f42f20aa7123d4fad433cf8d32938a65423995340654918fb621836eb1a0e6"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_shield_check_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_shield_check_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8e048300efe258a580e7fc1d1fef602bc8ce764c0ac3a3538a117f33787c281e",
+      "source_png_sha256": "8e048300efe258a580e7fc1d1fef602bc8ce764c0ac3a3538a117f33787c281e"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_speaker_high_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_speaker_high_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e4d15ad1718542a5c4d6182487398cc5a939ad148b2221baa6a87a295dfc9339",
+      "source_png_sha256": "e4d15ad1718542a5c4d6182487398cc5a939ad148b2221baa6a87a295dfc9339"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_spinner_gap_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_spinner_gap_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c84940bd9337953c12dcb1976f206df5292d810a9b1848cfcbc099d701ae5b6a",
+      "source_png_sha256": "c84940bd9337953c12dcb1976f206df5292d810a9b1848cfcbc099d701ae5b6a"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_star_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_star_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "62114510d2e4e8d06adab7fff9f1fe731b3a0e02277bbe087b4313ad9613b762",
+      "source_png_sha256": "62114510d2e4e8d06adab7fff9f1fe731b3a0e02277bbe087b4313ad9613b762"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_stop_fill.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_stop_fill.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "346d7a2523b027fe934b8fb6e02ca22ea7ea5861663b459835fcd5fad807b39d",
+      "source_png_sha256": "346d7a2523b027fe934b8fb6e02ca22ea7ea5861663b459835fcd5fad807b39d"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_sun_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_sun_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4f01adfc070c6db2518c128b3882484a1117e3639315fcd2d7a430a5936175de",
+      "source_png_sha256": "4f01adfc070c6db2518c128b3882484a1117e3639315fcd2d7a430a5936175de"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_tag_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_tag_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "867dd51e66d9d18837c5ce439309dfa9109265ec63db399752096a4ba496fcbe",
+      "source_png_sha256": "867dd51e66d9d18837c5ce439309dfa9109265ec63db399752096a4ba496fcbe"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_trash_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_trash_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ac846393c87e0c3025680d665db0bb5944a6ac2f558815c75fd9dd5230e70f40",
+      "source_png_sha256": "ac846393c87e0c3025680d665db0bb5944a6ac2f558815c75fd9dd5230e70f40"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_upload_simple_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_upload_simple_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8a5a817173d43e1a2be98120226182658af1acc8b93e33ba84270d43ab0ad2b9",
+      "source_png_sha256": "8a5a817173d43e1a2be98120226182658af1acc8b93e33ba84270d43ab0ad2b9"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_vibrate_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_vibrate_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4fe98b007931d194fa84c5ecd0ed9d7144f3988c8ea61631945869866b626f72",
+      "source_png_sha256": "4fe98b007931d194fa84c5ecd0ed9d7144f3988c8ea61631945869866b626f72"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_wave_sine_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_wave_sine_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "dbb733aee7ccfa36c437a1dcdd068bb3e6ef3bcad722d4d1118e680c431d8b2f",
+      "source_png_sha256": "dbb733aee7ccfa36c437a1dcdd068bb3e6ef3bcad722d4d1118e680c431d8b2f"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_waveform_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_waveform_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "dbbedbd50228ad53d9aacc37706479365ef29693dccae68e33161381c1df807e",
+      "source_png_sha256": "dbbedbd50228ad53d9aacc37706479365ef29693dccae68e33161381c1df807e"
+    },
+    {
+      "entry": "res/drawable-xxhdpi-v4/ic_phosphor_x_regular.png",
+      "source": "app/src/main/res/drawable-xxhdpi/ic_phosphor_x_regular.png",
+      "size": [
+        72,
+        72
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ec5829bcb31f9ff0010a70cafe0dbdbaed793d73f0bf8a2754c6f990c90c812c",
+      "source_png_sha256": "ec5829bcb31f9ff0010a70cafe0dbdbaed793d73f0bf8a2754c6f990c90c812c"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_moon.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_moon.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "8b8b924ff8e139bfd98a9d01f6c48f31a2efb020edb58d0b2b388379dd8ba4c1",
+      "source_png_sha256": "8b8b924ff8e139bfd98a9d01f6c48f31a2efb020edb58d0b2b388379dd8ba4c1"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_alarm_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_alarm_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "16e444e1c5d063bfa6259430cb6a2ce71b76ca43e63f449b57a20dd352642137",
+      "source_png_sha256": "16e444e1c5d063bfa6259430cb6a2ce71b76ca43e63f449b57a20dd352642137"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_arrow_counter_clockwise_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_arrow_counter_clockwise_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a152a0766d7779f3f933b47928dd90cf277ede22838cf95da570c2574215efdf",
+      "source_png_sha256": "a152a0766d7779f3f933b47928dd90cf277ede22838cf95da570c2574215efdf"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_arrow_left_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_arrow_left_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "4af77ea416b0ea7c3292c539badaac6f4c62138432570129f367186447750f9b",
+      "source_png_sha256": "4af77ea416b0ea7c3292c539badaac6f4c62138432570129f367186447750f9b"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_arrow_square_out_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_arrow_square_out_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "98bf49304f3c095b182518d2311320dc3ddc23a1ee70c1a2de3d8467b8a61c1f",
+      "source_png_sha256": "98bf49304f3c095b182518d2311320dc3ddc23a1ee70c1a2de3d8467b8a61c1f"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_battery_vertical_medium_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_battery_vertical_medium_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "055174029a8fe043a748694eef3662258450d7f3196a008afd8f4afe5f59a4d8",
+      "source_png_sha256": "055174029a8fe043a748694eef3662258450d7f3196a008afd8f4afe5f59a4d8"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_bed_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_bed_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b0ef12c42c540a49b3c4551e2d1aea89c43c2e042586fced216fafd9bc5c5d27",
+      "source_png_sha256": "b0ef12c42c540a49b3c4551e2d1aea89c43c2e042586fced216fafd9bc5c5d27"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_bell_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_bell_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0cbd605bb626f701d9044ca1b02dcf7da782b83a7b9c604289f07777661613e4",
+      "source_png_sha256": "0cbd605bb626f701d9044ca1b02dcf7da782b83a7b9c604289f07777661613e4"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_bell_slash_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_bell_slash_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "995f1a9cf8121d4bc5fc4b2f2184743e28e945cdb25a1f5c87e77234d85933a0",
+      "source_png_sha256": "995f1a9cf8121d4bc5fc4b2f2184743e28e945cdb25a1f5c87e77234d85933a0"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_broadcast_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_broadcast_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "afd09c0316a620e8819131b3b3a38ac039794c8320f95f6b8284f6b2bf30f838",
+      "source_png_sha256": "afd09c0316a620e8819131b3b3a38ac039794c8320f95f6b8284f6b2bf30f838"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_calendar_blank_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_calendar_blank_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "5b2ac142323178bdbf9f49e5096f25bf8c57d52b547ea663a0fb72b1feeae415",
+      "source_png_sha256": "5b2ac142323178bdbf9f49e5096f25bf8c57d52b547ea663a0fb72b1feeae415"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_camera_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_camera_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "6fd3fc1829c9d5fc2d4cc1a17c797c0fc8b93739d62d6a0a555d323626bcc481",
+      "source_png_sha256": "6fd3fc1829c9d5fc2d4cc1a17c797c0fc8b93739d62d6a0a555d323626bcc481"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_cards_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_cards_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "50254775afba775059e0736ff4f1393ca6751681f2b8072d2d30aaab33feef7a",
+      "source_png_sha256": "50254775afba775059e0736ff4f1393ca6751681f2b8072d2d30aaab33feef7a"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_caret_down_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_caret_down_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "3664d12ee1d1843216fcc46fa3305ba0619aa48787419acecc1126d1cd972efa",
+      "source_png_sha256": "3664d12ee1d1843216fcc46fa3305ba0619aa48787419acecc1126d1cd972efa"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_caret_right_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_caret_right_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "868fbcc8ba7024f3f741bff77591a60b55aa26c61916a4acb2bd6b14c73b681b",
+      "source_png_sha256": "868fbcc8ba7024f3f741bff77591a60b55aa26c61916a4acb2bd6b14c73b681b"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_caret_up_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_caret_up_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "83661316c86f8f3bddeb82e544608c0564217147e6f9d3286dafb4a10ac72607",
+      "source_png_sha256": "83661316c86f8f3bddeb82e544608c0564217147e6f9d3286dafb4a10ac72607"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_chart_bar_fill.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_chart_bar_fill.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c1b031771ee77045d923e11ff532b9e887ee7f39d641f378389b5939b5397932",
+      "source_png_sha256": "c1b031771ee77045d923e11ff532b9e887ee7f39d641f378389b5939b5397932"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_chats_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_chats_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "9764c24112d51db00716da6b1537ed0900474ca04a983e02be1aa5c83f390b05",
+      "source_png_sha256": "9764c24112d51db00716da6b1537ed0900474ca04a983e02be1aa5c83f390b05"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_check_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_check_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "5d661c1043963a85c8ea829d9dfb5d81293c5ddc550c043f54b13cbd83bc8191",
+      "source_png_sha256": "5d661c1043963a85c8ea829d9dfb5d81293c5ddc550c043f54b13cbd83bc8191"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_circle_half_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_circle_half_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "6e265a6e68beb1cb733003de644abfc7cc7b24b6a9e46b869a7fe36cf5ebbb6a",
+      "source_png_sha256": "6e265a6e68beb1cb733003de644abfc7cc7b24b6a9e46b869a7fe36cf5ebbb6a"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_clock_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_clock_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "ab2f7da0362b8ba7166d310627d9a629e2abd5a94f3e817c71d9337cb91e97bf",
+      "source_png_sha256": "ab2f7da0362b8ba7166d310627d9a629e2abd5a94f3e817c71d9337cb91e97bf"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_cloud_rain_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_cloud_rain_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c52e8b977ae4bc9b354e2eeb6f62cd363cbb14f5d35e05993637c9f916387314",
+      "source_png_sha256": "c52e8b977ae4bc9b354e2eeb6f62cd363cbb14f5d35e05993637c9f916387314"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_cloud_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_cloud_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "7db816284749b0721e51c7863d32a73b998dc492a39764807c12a269c0cc655a",
+      "source_png_sha256": "7db816284749b0721e51c7863d32a73b998dc492a39764807c12a269c0cc655a"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_device_mobile_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_device_mobile_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "675519513cc23b5492993309daca1556621651155d6a2999f541cc57fb1bacc7",
+      "source_png_sha256": "675519513cc23b5492993309daca1556621651155d6a2999f541cc57fb1bacc7"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_dots_three_vertical_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_dots_three_vertical_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "cabab13e77fee39ae975d852ba5c0a92dfbd8c32135fbbe1166263463b7ad1fd",
+      "source_png_sha256": "cabab13e77fee39ae975d852ba5c0a92dfbd8c32135fbbe1166263463b7ad1fd"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_download_simple_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_download_simple_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f9ba576e7646db441e639f4300ee7ca375f4c95c7af1be9164e9cf3e0010a63e",
+      "source_png_sha256": "f9ba576e7646db441e639f4300ee7ca375f4c95c7af1be9164e9cf3e0010a63e"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_exclamation_mark_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_exclamation_mark_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "61d167aa83e03a262fc7fba6830d59dc01d4d45ec5f0065843c7f417962347ef",
+      "source_png_sha256": "61d167aa83e03a262fc7fba6830d59dc01d4d45ec5f0065843c7f417962347ef"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_faders_horizontal_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_faders_horizontal_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "3e48a3c475e06414b410c8ed28b6b1f302d1e3d7fe658dd2498210d5a73334af",
+      "source_png_sha256": "3e48a3c475e06414b410c8ed28b6b1f302d1e3d7fe658dd2498210d5a73334af"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_file_text_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_file_text_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c53550da3752200eed95d4e21d02f8b23107a8354a1f79c415458de2656ebbf1",
+      "source_png_sha256": "c53550da3752200eed95d4e21d02f8b23107a8354a1f79c415458de2656ebbf1"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_flashlight_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_flashlight_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "935cd990f760e7c1a27cf0be7c6545e495c27f0a3cbea8a5f57f254362a1b583",
+      "source_png_sha256": "935cd990f760e7c1a27cf0be7c6545e495c27f0a3cbea8a5f57f254362a1b583"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_footprints_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_footprints_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "2256a8c4c7e636f3e35ff47ed64070ff509c1e1d622a6da405bbd44c59b98bd1",
+      "source_png_sha256": "2256a8c4c7e636f3e35ff47ed64070ff509c1e1d622a6da405bbd44c59b98bd1"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_fork_knife_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_fork_knife_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e82b5f7b75f13a4cacff1ee222c8ce9d63b75a32f4a9e322b7187579d8284ed4",
+      "source_png_sha256": "e82b5f7b75f13a4cacff1ee222c8ce9d63b75a32f4a9e322b7187579d8284ed4"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_gear_six_fill.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_gear_six_fill.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "66e80af83f00ca94866ac0b978e3490aa4afcbf5c9e9c59f94b5a29cf134ee9a",
+      "source_png_sha256": "66e80af83f00ca94866ac0b978e3490aa4afcbf5c9e9c59f94b5a29cf134ee9a"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_gear_six_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_gear_six_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f388900768fadddadc357a3ad6ef59cc35679f3fff1d24daec8f67590ed723a8",
+      "source_png_sha256": "f388900768fadddadc357a3ad6ef59cc35679f3fff1d24daec8f67590ed723a8"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_github_logo_fill.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_github_logo_fill.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e0260c8660bc99d330010fae5214655cd3abf938dd31ee71b0b1bbcbaa3ab246",
+      "source_png_sha256": "e0260c8660bc99d330010fae5214655cd3abf938dd31ee71b0b1bbcbaa3ab246"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_headphones_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_headphones_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "cd5ae2215c926eacbc87dfd6612d9dce49140b36d032fed417e3858e4563b9bb",
+      "source_png_sha256": "cd5ae2215c926eacbc87dfd6612d9dce49140b36d032fed417e3858e4563b9bb"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_heart_fill.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_heart_fill.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "75795765d013d1c94b313e2fd565b5c70e2a03a832142bd98a2c961feb33c54a",
+      "source_png_sha256": "75795765d013d1c94b313e2fd565b5c70e2a03a832142bd98a2c961feb33c54a"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_heart_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_heart_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "64593429d9e804051ef934f68fa117dd2da151ba3943cae3227342d589cf7a1f",
+      "source_png_sha256": "64593429d9e804051ef934f68fa117dd2da151ba3943cae3227342d589cf7a1f"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_house_fill.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_house_fill.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d9d4589aba16c5425b555e81e6595be53630ae1790c6b94038d677623e9114a8",
+      "source_png_sha256": "d9d4589aba16c5425b555e81e6595be53630ae1790c6b94038d677623e9114a8"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_info_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_info_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e7ae4cbdbe05821b27d7e409191f45d654e5b75297b3200cc859bde542cc3884",
+      "source_png_sha256": "e7ae4cbdbe05821b27d7e409191f45d654e5b75297b3200cc859bde542cc3884"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_keyboard_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_keyboard_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "5f9f32a339ab18a01646dee7971c74259238e6afc4f84594e1bace374435c467",
+      "source_png_sha256": "5f9f32a339ab18a01646dee7971c74259238e6afc4f84594e1bace374435c467"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_lightbulb_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_lightbulb_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "108596fd5649b90f370d56d5a7e8d943fec8f193563bf4fea4ed0d7e26e375aa",
+      "source_png_sha256": "108596fd5649b90f370d56d5a7e8d943fec8f193563bf4fea4ed0d7e26e375aa"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_link_simple_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_link_simple_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f2ad1ebe9ff8480475336f398bd7520ecd4276ae7d09512fa85090657a723a98",
+      "source_png_sha256": "f2ad1ebe9ff8480475336f398bd7520ecd4276ae7d09512fa85090657a723a98"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_list_checks_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_list_checks_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "3f87f9054a50a654ffc2335b4a910836b9eb14412acc60624c7a5fc086795ba8",
+      "source_png_sha256": "3f87f9054a50a654ffc2335b4a910836b9eb14412acc60624c7a5fc086795ba8"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_list_numbers_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_list_numbers_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "694d2963546761df6af3ea4462ba0a807c541fbc70f00b68406dc83e7d4f7b2d",
+      "source_png_sha256": "694d2963546761df6af3ea4462ba0a807c541fbc70f00b68406dc83e7d4f7b2d"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_lock_key_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_lock_key_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "65a6998cba4e2954fe3e4dba0514bff1c9398f2d17f7747b851d7e4dd197f41b",
+      "source_png_sha256": "65a6998cba4e2954fe3e4dba0514bff1c9398f2d17f7747b851d7e4dd197f41b"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_magnifying_glass_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_magnifying_glass_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "945e2fe72cd08c7c5d0a7863782e1d6382b4397943cdfa9b603e1aff7096ac94",
+      "source_png_sha256": "945e2fe72cd08c7c5d0a7863782e1d6382b4397943cdfa9b603e1aff7096ac94"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_math_operations_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_math_operations_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b4fffbaee435938ffbf5895ac7d26338cb6f880c3553fbe4bcf972817e57971e",
+      "source_png_sha256": "b4fffbaee435938ffbf5895ac7d26338cb6f880c3553fbe4bcf972817e57971e"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_microphone_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_microphone_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "6f41e8739d9a2c91c4ef5a229236f1c504366413ce8b1bd160bd6d3dd6d4c73a",
+      "source_png_sha256": "6f41e8739d9a2c91c4ef5a229236f1c504366413ce8b1bd160bd6d3dd6d4c73a"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_minus_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_minus_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "990af1d97dae297e9ae9ef05718714d888e8c11b8f706df676a918df0943d773",
+      "source_png_sha256": "990af1d97dae297e9ae9ef05718714d888e8c11b8f706df676a918df0943d773"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_moon_fill.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_moon_fill.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a2e9bb5d19b6b58983ca7632cb2a31179a041cdd3dd64ae756437acb2257fcf1",
+      "source_png_sha256": "a2e9bb5d19b6b58983ca7632cb2a31179a041cdd3dd64ae756437acb2257fcf1"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_music_notes_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_music_notes_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "d70fe7321f8e9c023170ed1b8d34ee08cc16c28321e423e0cb261d27a8522934",
+      "source_png_sha256": "d70fe7321f8e9c023170ed1b8d34ee08cc16c28321e423e0cb261d27a8522934"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_palette_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_palette_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "82aa1e30d79c2613f21565ad8f41c8a3f8b2a3bd9ddf1ea0f09dfc687c46f923",
+      "source_png_sha256": "82aa1e30d79c2613f21565ad8f41c8a3f8b2a3bd9ddf1ea0f09dfc687c46f923"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_pause_fill.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_pause_fill.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b2fdf2200617ce31854a26c50a41649f979ab942feeb4d7ceb5b2b44017db22d",
+      "source_png_sha256": "b2fdf2200617ce31854a26c50a41649f979ab942feeb4d7ceb5b2b44017db22d"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_pencil_simple_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_pencil_simple_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "f8c4a7eedf7eef739252cea4bd317e2d1f8fbb2b15d0d1e4bce80b5ca2d23899",
+      "source_png_sha256": "f8c4a7eedf7eef739252cea4bd317e2d1f8fbb2b15d0d1e4bce80b5ca2d23899"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_person_simple_run_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_person_simple_run_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "7b80f5da306e3ad6add6ec4286763e5f73c12e17d4a7e028a445dbee426eb5e2",
+      "source_png_sha256": "7b80f5da306e3ad6add6ec4286763e5f73c12e17d4a7e028a445dbee426eb5e2"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_play_fill.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_play_fill.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "c27f493cb024f9218be082e9cdd65714b35fb82880ef596b811af6ab4c0dbc87",
+      "source_png_sha256": "c27f493cb024f9218be082e9cdd65714b35fb82880ef596b811af6ab4c0dbc87"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_plug_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_plug_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "6a89b7a91621d8c3d7bc6fa78c12c257f2d90483af50aa2cbdf4503e4e26ede1",
+      "source_png_sha256": "6a89b7a91621d8c3d7bc6fa78c12c257f2d90483af50aa2cbdf4503e4e26ede1"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_plus_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_plus_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "664d4848eabcda9efd8210d3ac06478b1d1ad2fce7af7419486be62f99b53642",
+      "source_png_sha256": "664d4848eabcda9efd8210d3ac06478b1d1ad2fce7af7419486be62f99b53642"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_qr_code_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_qr_code_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "7467a90741638304b3e3b53ac2048728e284f984f8f5efcb56976130a684dcbe",
+      "source_png_sha256": "7467a90741638304b3e3b53ac2048728e284f984f8f5efcb56976130a684dcbe"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_question_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_question_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0c8fae763db14438a46d243a6111a2629a3dc05b688427076721e55949e6f83a",
+      "source_png_sha256": "0c8fae763db14438a46d243a6111a2629a3dc05b688427076721e55949e6f83a"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_shield_check_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_shield_check_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0a150905c9cbc019de66eb6cfa57a281a7a5bffb06bffab77a4a1d7110b80a8a",
+      "source_png_sha256": "0a150905c9cbc019de66eb6cfa57a281a7a5bffb06bffab77a4a1d7110b80a8a"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_speaker_high_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_speaker_high_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "333eef9ec302d4df099ea208080006bd0f2014a66fbe89c647adabc59a67134f",
+      "source_png_sha256": "333eef9ec302d4df099ea208080006bd0f2014a66fbe89c647adabc59a67134f"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_spinner_gap_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_spinner_gap_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "461a9d24ffd3805415a636fcb19ee718bffb20ddba8e573e0e0b31a8861fdb7c",
+      "source_png_sha256": "461a9d24ffd3805415a636fcb19ee718bffb20ddba8e573e0e0b31a8861fdb7c"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_star_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_star_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a71edbe0cf7ad26699dfbf7a3ced12cbea37845933bc4b9479be66fd96040446",
+      "source_png_sha256": "a71edbe0cf7ad26699dfbf7a3ced12cbea37845933bc4b9479be66fd96040446"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_stop_fill.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_stop_fill.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "842f4c376bc237276b94ea5b5f5e13473b84edf42f1df92a16775875a3dd3317",
+      "source_png_sha256": "842f4c376bc237276b94ea5b5f5e13473b84edf42f1df92a16775875a3dd3317"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_sun_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_sun_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "a9f7b4c8c918f65dfa95e84071d3fbdb6be5dc7deb3cde25a6a98bd91793ca55",
+      "source_png_sha256": "a9f7b4c8c918f65dfa95e84071d3fbdb6be5dc7deb3cde25a6a98bd91793ca55"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_tag_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_tag_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "10caf3e4fb95a1183c9a87a4346c36111efc0bb0642c204eef18d384495f4e29",
+      "source_png_sha256": "10caf3e4fb95a1183c9a87a4346c36111efc0bb0642c204eef18d384495f4e29"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_trash_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_trash_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "6ab8740d684c8e1c01d6d76edb87108fb18a1e2e47993363b6ec61a7bc2bb636",
+      "source_png_sha256": "6ab8740d684c8e1c01d6d76edb87108fb18a1e2e47993363b6ec61a7bc2bb636"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_upload_simple_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_upload_simple_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "0dfb8cd92670787d6f03f525cc01cfd4aa00a4c5502d63fd0fb2c4f3a479fb5e",
+      "source_png_sha256": "0dfb8cd92670787d6f03f525cc01cfd4aa00a4c5502d63fd0fb2c4f3a479fb5e"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_vibrate_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_vibrate_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e175afbe1cc428118fb93e11cfe85212bf8d5cc68853f8553d421187d4db6567",
+      "source_png_sha256": "e175afbe1cc428118fb93e11cfe85212bf8d5cc68853f8553d421187d4db6567"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_wave_sine_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_wave_sine_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "fe80a63e48b34685699b75175e7c11f6e37e4c04b099c60358ef24eaecaebfa0",
+      "source_png_sha256": "fe80a63e48b34685699b75175e7c11f6e37e4c04b099c60358ef24eaecaebfa0"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_waveform_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_waveform_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "e2775176d76443741fb572eb87eb49e021f0c9481fb78463e52fdac443e4af7e",
+      "source_png_sha256": "e2775176d76443741fb572eb87eb49e021f0c9481fb78463e52fdac443e4af7e"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_phosphor_x_regular.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_x_regular.png",
+      "size": [
+        96,
+        96
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "be1a45eb2d019bc8aaea7aadebcc78420ae2b2b4e99902cfd4c6efd2a1905d22",
+      "source_png_sha256": "be1a45eb2d019bc8aaea7aadebcc78420ae2b2b4e99902cfd4c6efd2a1905d22"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_sleepwell_background.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_sleepwell_background.png",
+      "size": [
+        432,
+        432
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "6c52a4758c534a5c6be32fe9b0d780abf60c9a5a4da0f7cd9dc5b749649a03ba",
+      "source_png_sha256": "6c52a4758c534a5c6be32fe9b0d780abf60c9a5a4da0f7cd9dc5b749649a03ba"
+    },
+    {
+      "entry": "res/drawable-xxxhdpi-v4/ic_sleepwell_monochrome_raster.png",
+      "source": "app/src/main/res/drawable-xxxhdpi/ic_sleepwell_monochrome_raster.png",
+      "size": [
+        432,
+        432
+      ],
+      "rgba_pixels_equal": true,
+      "apk_png_sha256": "b4f8720600433002851f3ea4122850f834926428bcb0c3294555e1d860c46ec7",
+      "source_png_sha256": "b4f8720600433002851f3ea4122850f834926428bcb0c3294555e1d860c46ec7"
+    }
+  ]
+}

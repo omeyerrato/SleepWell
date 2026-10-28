@@ -1,0 +1,62 @@
+--- 0.1.4/res/drawable/ic_sleepwell_monochrome.xml
++++ 0.1.5/res/drawable/ic_sleepwell_monochrome.xml
+@@ -1,20 +1,4 @@
+ N: android=http://schemas.android.com/apk/res/android
+-  N: aapt=http://schemas.android.com/aapt
+-    E: vector (line=1)
+-      A: android:height(0x01010155)=(type 0x5)0x6c01
+-      A: android:width(0x01010159)=(type 0x5)0x6c01
+-      A: android:viewportWidth(0x01010402)=(type 0x4)0x42d80000
+-      A: android:viewportHeight(0x01010403)=(type 0x4)0x42d80000
+-      E: path (line=2)
+-        A: android:fillColor(0x01010404)=(type 0x1d)0xffffffff
+-        A: android:pathData(0x01010405)="M66,27 C54,19 37,23 29,35 C19,50 25,69 41,77 C53,83 69,79 77,68 C65,73 52,67 47,57 C41,45 48,32 60,28 C62,27 64,27 66,27 Z" (Raw: "M66,27 C54,19 37,23 29,35 C19,50 25,69 41,77 C53,83 69,79 77,68 C65,73 52,67 47,57 C41,45 48,32 60,28 C62,27 64,27 66,27 Z")
+-      E: path (line=3)
+-        A: android:fillColor(0x01010404)=(type 0x1d)0xffffffff
+-        A: android:pathData(0x01010405)="M60,31 A19,19 0,1 1,60,69 A19,19 0,1 1,60,31 Z M58.35,38 H61.65 V49.05 L68.65,53.05 L67,55.95 L58.35,50.95 Z" (Raw: "M60,31 A19,19 0,1 1,60,69 A19,19 0,1 1,60,31 Z M58.35,38 H61.65 V49.05 L68.65,53.05 L67,55.95 L58.35,50.95 Z")
+-        A: android:fillType(0x0101051e)=(type 0x10)0x1
+-      E: path (line=4)
+-        A: android:fillColor(0x01010404)=@0x0106000d
+-        A: android:pathData(0x01010405)="M73,30 L76,26 M81,39 L85,37 M61,25 L61,22" (Raw: "M73,30 L76,26 M81,39 L85,37 M61,25 L61,22")
+-        A: android:strokeColor(0x01010406)=(type 0x1d)0xffffffff
+-        A: android:strokeWidth(0x01010407)=(type 0x4)0x4019999a
+-        A: android:strokeLineCap(0x0101040b)=(type 0x10)0x1
++  E: inset (line=1)
++    A: android:drawable(0x01010199)=@org.sleepwell.app:drawable/ic_sleepwell_monochrome_raster
++    A: android:inset(0x010104b5)=(type 0x5)0xe01
+--- 0.1.4/res/mipmap-anydpi-v26/ic_launcher.xml
++++ 0.1.5/res/mipmap-anydpi-v26/ic_launcher.xml
+@@ -3,4 +3,4 @@
+     E: background (line=1)
+       A: android:drawable(0x01010199)=@org.sleepwell.app:drawable/ic_sleepwell_background
+     E: foreground (line=1)
+-      A: android:drawable(0x01010199)=@org.sleepwell.app:drawable/ic_sleepwell_foreground
++      A: android:drawable(0x01010199)=@0x0106000d
+--- 0.1.4/res/mipmap-anydpi-v26/ic_launcher_round.xml
++++ 0.1.5/res/mipmap-anydpi-v26/ic_launcher_round.xml
+@@ -3,4 +3,4 @@
+     E: background (line=1)
+       A: android:drawable(0x01010199)=@org.sleepwell.app:drawable/ic_sleepwell_background
+     E: foreground (line=1)
+-      A: android:drawable(0x01010199)=@org.sleepwell.app:drawable/ic_sleepwell_foreground
++      A: android:drawable(0x01010199)=@0x0106000d
+--- 0.1.4/res/mipmap-anydpi-v33/ic_launcher.xml
++++ 0.1.5/res/mipmap-anydpi-v33/ic_launcher.xml
+@@ -3,6 +3,6 @@
+     E: background (line=1)
+       A: android:drawable(0x01010199)=@org.sleepwell.app:drawable/ic_sleepwell_background
+     E: foreground (line=1)
+-      A: android:drawable(0x01010199)=@org.sleepwell.app:drawable/ic_sleepwell_foreground
++      A: android:drawable(0x01010199)=@0x0106000d
+     E: monochrome (line=1)
+       A: android:drawable(0x01010199)=@org.sleepwell.app:drawable/ic_sleepwell_monochrome
+--- 0.1.4/res/mipmap-anydpi-v33/ic_launcher_round.xml
++++ 0.1.5/res/mipmap-anydpi-v33/ic_launcher_round.xml
+@@ -3,6 +3,6 @@
+     E: background (line=1)
+       A: android:drawable(0x01010199)=@org.sleepwell.app:drawable/ic_sleepwell_background
+     E: foreground (line=1)
+-      A: android:drawable(0x01010199)=@org.sleepwell.app:drawable/ic_sleepwell_foreground
++      A: android:drawable(0x01010199)=@0x0106000d
+     E: monochrome (line=1)
+       A: android:drawable(0x01010199)=@org.sleepwell.app:drawable/ic_sleepwell_monochrome

@@ -1,0 +1,3610 @@
+{
+  "baseline_entries": 653,
+  "candidate_entries": 947,
+  "added_count": 372,
+  "removed_count": 78,
+  "changed_count": 64,
+  "equal_content_count": 511,
+  "added": {
+    "res/drawable-hdpi-v4/ic_moon.png": {
+      "bytes": 877,
+      "compressed_bytes": 877,
+      "method": 0,
+      "sha256": "d921f87b109e602ec3e40c03124dcde54c6d5616199857499267c906f5b32115"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_alarm_regular.png": {
+      "bytes": 1984,
+      "compressed_bytes": 1984,
+      "method": 0,
+      "sha256": "980cca66abe05131f19b81f7bdef495ce926e13fff121fcb143468352a3d17be"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_arrow_counter_clockwise_regular.png": {
+      "bytes": 1627,
+      "compressed_bytes": 1627,
+      "method": 0,
+      "sha256": "31684975b933955df8d2906e1bbce9b4ce5128f85e469e93763aa9a1aae477f9"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_arrow_left_regular.png": {
+      "bytes": 987,
+      "compressed_bytes": 987,
+      "method": 0,
+      "sha256": "5071a45a36bcb66d25db8b0d6a92ce954024ca22284381e53db8badbd75e22e9"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_arrow_square_out_regular.png": {
+      "bytes": 1302,
+      "compressed_bytes": 1302,
+      "method": 0,
+      "sha256": "f154fd08e551ac948853708a82e0e507e26f54543c8152acd346133e2c66087e"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_battery_vertical_medium_regular.png": {
+      "bytes": 930,
+      "compressed_bytes": 930,
+      "method": 0,
+      "sha256": "a4772a3c7fdddb63e2ac41e0b3c9a9aa6aa379d9a273eb611684bed77d1a1e4c"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_bed_regular.png": {
+      "bytes": 872,
+      "compressed_bytes": 872,
+      "method": 0,
+      "sha256": "4096292755d3a2f52c1023ae6af8aeda01b70410833e99adc8dde1e09bc7f4a3"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_bell_regular.png": {
+      "bytes": 1522,
+      "compressed_bytes": 1522,
+      "method": 0,
+      "sha256": "3db2e97c2b43c0782b111fbe99dc7ece2ec94004ff6b70eddc2c5da11a25d2c5"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_bell_slash_regular.png": {
+      "bytes": 2059,
+      "compressed_bytes": 2059,
+      "method": 0,
+      "sha256": "5cf200f4c1d75bf43b217abc937b227eb1c38c952c8dcfff1c5b2cda0721c713"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_broadcast_regular.png": {
+      "bytes": 2110,
+      "compressed_bytes": 2110,
+      "method": 0,
+      "sha256": "1e1792fdb6a1cbe2ae041b8c686538ee47c09cbb50a01f462fb0a1273f38f2fc"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_calendar_blank_regular.png": {
+      "bytes": 1333,
+      "compressed_bytes": 1333,
+      "method": 0,
+      "sha256": "f85ae306225634fc2c8f86bd159a59b6170ac041c8fc50266755fff815bb4e53"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_camera_regular.png": {
+      "bytes": 1780,
+      "compressed_bytes": 1780,
+      "method": 0,
+      "sha256": "4fb23865fb66924720fa22f0c30c399ce915e8b91e866985c50fcce28362b900"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_cards_regular.png": {
+      "bytes": 1809,
+      "compressed_bytes": 1809,
+      "method": 0,
+      "sha256": "eb88c3644f1fdd749eeff915015920da65e5ce85fdec6f49daf990b1b0af329c"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_caret_down_regular.png": {
+      "bytes": 934,
+      "compressed_bytes": 934,
+      "method": 0,
+      "sha256": "ea29ff543a85ec86c786849ec9262085f8d37492b6da762f0768e6eff431d1c4"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_caret_right_regular.png": {
+      "bytes": 870,
+      "compressed_bytes": 870,
+      "method": 0,
+      "sha256": "eefd3af362e0ddab17e36bacc6b6c35185af0d2a2af51ddbdac0ad15fbd781ed"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_caret_up_regular.png": {
+      "bytes": 744,
+      "compressed_bytes": 744,
+      "method": 0,
+      "sha256": "bd14678b67a45472adf96bb18a8bbf159cd87f8931f83fc3a9ccb4bf60c79370"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_chart_bar_fill.png": {
+      "bytes": 909,
+      "compressed_bytes": 909,
+      "method": 0,
+      "sha256": "9c4a4ca41ac2630f00b21ce46cc6e3d924d0e81618b3418993b28d6fdd04db72"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_chats_regular.png": {
+      "bytes": 1378,
+      "compressed_bytes": 1378,
+      "method": 0,
+      "sha256": "f400968e69654d1688f1bf9618892d6d9c366d5fd16266bba089f09c7469daa7"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_check_regular.png": {
+      "bytes": 958,
+      "compressed_bytes": 958,
+      "method": 0,
+      "sha256": "e4a1beef3341ca9d00035af49ea85bf4487b77633be5392eb233f0cda8c29a62"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_circle_half_regular.png": {
+      "bytes": 1497,
+      "compressed_bytes": 1497,
+      "method": 0,
+      "sha256": "ae1d23b138e3d797920232e670b908c76c04ff96a029208fa6cb3805bdab784f"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_clock_regular.png": {
+      "bytes": 1869,
+      "compressed_bytes": 1869,
+      "method": 0,
+      "sha256": "ec943b14e4d0d547e3cf9d46f9504fc8e1c5d46f5a7cd6cd99fc5e50cdb338d0"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_cloud_rain_regular.png": {
+      "bytes": 1462,
+      "compressed_bytes": 1462,
+      "method": 0,
+      "sha256": "3dd715ec3eeed8960701633db5a91193ea42394baf8a5a30fed19795e97bbc8c"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_cloud_regular.png": {
+      "bytes": 1193,
+      "compressed_bytes": 1193,
+      "method": 0,
+      "sha256": "8c1c13e8aee727764ffe0e03de3a7e1d5ea4a5bd208bb7f52e78f44f2bf3f84d"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_device_mobile_regular.png": {
+      "bytes": 718,
+      "compressed_bytes": 718,
+      "method": 0,
+      "sha256": "cb7a0f5d3dc3ce55ca4ec4bca59ef2373bd5e2151a8c2886e5c9ccaf70e1ccef"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_dots_three_vertical_regular.png": {
+      "bytes": 744,
+      "compressed_bytes": 744,
+      "method": 0,
+      "sha256": "220d8978faf3b0ff17396612f5fb39a2bbe164fd757103179bb1990400c929e4"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_download_simple_regular.png": {
+      "bytes": 1139,
+      "compressed_bytes": 1139,
+      "method": 0,
+      "sha256": "2a5c57d98aefe95e7da9e60c73077449db6e3705dd30551337cbab51c3db2223"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_exclamation_mark_regular.png": {
+      "bytes": 711,
+      "compressed_bytes": 711,
+      "method": 0,
+      "sha256": "15f4df0f4c5ad208f66779d90cbddf9ce027346eef649d8a9b9ed47121a48b21"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_faders_horizontal_regular.png": {
+      "bytes": 1052,
+      "compressed_bytes": 1052,
+      "method": 0,
+      "sha256": "793d61d3a33531097f42ab7fa33615bdee155ba90c48813e152a1a7aa2f98e05"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_file_text_regular.png": {
+      "bytes": 1258,
+      "compressed_bytes": 1258,
+      "method": 0,
+      "sha256": "9389a0918034c307b86e83f8e616edbf79f7218f04842a211b6a7c78e58c40e2"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_flashlight_regular.png": {
+      "bytes": 1072,
+      "compressed_bytes": 1072,
+      "method": 0,
+      "sha256": "4aa5ad18de320c6c768317defa284242a023e78f818d2990b77aa39b0b9f0667"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_footprints_regular.png": {
+      "bytes": 1645,
+      "compressed_bytes": 1645,
+      "method": 0,
+      "sha256": "a68ed9abe57d88b5334123a404eed182596b3c550890149e6ac8c25defe36c1f"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_fork_knife_regular.png": {
+      "bytes": 1095,
+      "compressed_bytes": 1095,
+      "method": 0,
+      "sha256": "e3b7888b56dbd2ebed72b728c4683e7aa4a73d32bb7751d5f929195de696b80b"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_gear_six_fill.png": {
+      "bytes": 1882,
+      "compressed_bytes": 1882,
+      "method": 0,
+      "sha256": "b4eebcafb116028292b8b100fec012f4a3e1d47a1e1affaa1846ec2eca4f0810"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_gear_six_regular.png": {
+      "bytes": 2103,
+      "compressed_bytes": 2103,
+      "method": 0,
+      "sha256": "a2387f1ec8d3cb105501287d277aaefd31ed33d8b6e0e020804f93fada3e17bb"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_github_logo_fill.png": {
+      "bytes": 1439,
+      "compressed_bytes": 1439,
+      "method": 0,
+      "sha256": "1fd8bb92042b0afb0d40e9949250492172ce7673ff08688afe6a4f10e5602d82"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_headphones_regular.png": {
+      "bytes": 1390,
+      "compressed_bytes": 1390,
+      "method": 0,
+      "sha256": "72d872628f2cb4cded0d1f6f2a3d22850148622a285dc128be1d2b5884cd199f"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_heart_fill.png": {
+      "bytes": 1228,
+      "compressed_bytes": 1228,
+      "method": 0,
+      "sha256": "429fe58f60c359cc510568cdbe393d090f5bbf230751c45138bb0fee42e24c12"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_heart_regular.png": {
+      "bytes": 1477,
+      "compressed_bytes": 1477,
+      "method": 0,
+      "sha256": "f1fb804b9afc9412edd4cc74c08539e693e973ad97ebee320844d2e4cac10c41"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_house_fill.png": {
+      "bytes": 1271,
+      "compressed_bytes": 1271,
+      "method": 0,
+      "sha256": "22a8b864286dde38b33357fd835d736c4caf9078f484fd080e01e1f9a5a5c65c"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_info_regular.png": {
+      "bytes": 1665,
+      "compressed_bytes": 1665,
+      "method": 0,
+      "sha256": "acd72bf34f1776a0a8b951857e5e7db35cf542802dd2ba37c663a0153bf2b1d6"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_keyboard_regular.png": {
+      "bytes": 1456,
+      "compressed_bytes": 1456,
+      "method": 0,
+      "sha256": "c83ba4cef25811d6631e97c0aeb48ea8854ab6a5c038f8831aa798ab7e0296e8"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_lightbulb_regular.png": {
+      "bytes": 1298,
+      "compressed_bytes": 1298,
+      "method": 0,
+      "sha256": "515a3a1cc4d321123087788042579b9bcc4df72b952dbf01ad2ef5dd0158efdf"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_link_simple_regular.png": {
+      "bytes": 1710,
+      "compressed_bytes": 1710,
+      "method": 0,
+      "sha256": "8569a59792b0cec845b995d4f55a8ebe9ca81112d54b4793b9e4ff9b41336408"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_list_checks_regular.png": {
+      "bytes": 1194,
+      "compressed_bytes": 1194,
+      "method": 0,
+      "sha256": "7908046603e2834d58c032f4bc0d1da14b2f0b293643a289a0e5b60af7158bb3"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_list_numbers_regular.png": {
+      "bytes": 1214,
+      "compressed_bytes": 1214,
+      "method": 0,
+      "sha256": "0259b49d36e5e2398614089c9310e9e1249f2b18cec6b51395c7b9152d01392f"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_lock_key_regular.png": {
+      "bytes": 1300,
+      "compressed_bytes": 1300,
+      "method": 0,
+      "sha256": "04dba0260a7799b4edfdffade807fd5dd1662c3f49bcb664c6c480857280db35"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_magnifying_glass_regular.png": {
+      "bytes": 1279,
+      "compressed_bytes": 1279,
+      "method": 0,
+      "sha256": "65574a6620c99d074141763f54c475cf0d760bf9243c6bbf6515c95fbb602091"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_math_operations_regular.png": {
+      "bytes": 1479,
+      "compressed_bytes": 1479,
+      "method": 0,
+      "sha256": "611ceee8ec06b8a6dc8d43b13aa4ef8f9ad50cedd8f947910a02f2f185163770"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_microphone_regular.png": {
+      "bytes": 1210,
+      "compressed_bytes": 1210,
+      "method": 0,
+      "sha256": "72b8c496ae8f7d5a9448d778d8dc1456a29e68f524945a75671425250677ac56"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_minus_regular.png": {
+      "bytes": 310,
+      "compressed_bytes": 310,
+      "method": 0,
+      "sha256": "23c8347ed92919464713b0154a2799f212a726f41e153eee7de8fa83140736e0"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_moon_fill.png": {
+      "bytes": 1361,
+      "compressed_bytes": 1361,
+      "method": 0,
+      "sha256": "eca002d0f9228a364fcbfe7ba6f0e40958b2838e340f339e6a413725b904f13e"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_music_notes_regular.png": {
+      "bytes": 1131,
+      "compressed_bytes": 1131,
+      "method": 0,
+      "sha256": "f6edfc10576fb8439f62372d763d58a9ff94d799c73c8322001eda46e894e253"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_palette_regular.png": {
+      "bytes": 2062,
+      "compressed_bytes": 2062,
+      "method": 0,
+      "sha256": "2e554d8c8a18dead99fd17d1bf00091c51d3866fa0a64c8819e1ac4e714bbc6f"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_pause_fill.png": {
+      "bytes": 694,
+      "compressed_bytes": 694,
+      "method": 0,
+      "sha256": "b41542c72487581cf2f327dc6fa0fe03a33c7169f1586c509e8b2b4b275117e9"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_pencil_simple_regular.png": {
+      "bytes": 1093,
+      "compressed_bytes": 1093,
+      "method": 0,
+      "sha256": "ebbbba8b62bd95703d74897ebdbb02009573289c656780000358b65c43f40a27"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_person_simple_run_regular.png": {
+      "bytes": 1593,
+      "compressed_bytes": 1593,
+      "method": 0,
+      "sha256": "ce57d9f8425a55c764c3b1a45c7343ea10b55d9017c3d18e99fdac9e6244f6e8"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_play_fill.png": {
+      "bytes": 1017,
+      "compressed_bytes": 1017,
+      "method": 0,
+      "sha256": "6a89131d56d2afa157ddc37f92cb0b12f4bf4ec7ae2bf9ac127e31110be1c549"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_plug_regular.png": {
+      "bytes": 1119,
+      "compressed_bytes": 1119,
+      "method": 0,
+      "sha256": "532669edc2cf164f3ce1e5be3ae6af6cfa6dd7e76a3e57a60a2b5f0b2b4fe148"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_plus_regular.png": {
+      "bytes": 778,
+      "compressed_bytes": 778,
+      "method": 0,
+      "sha256": "5feeb15d7cd3a59ba2c786c18fc27d8d152a27a2865ecc091c6349ce34e8cff1"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_qr_code_regular.png": {
+      "bytes": 1799,
+      "compressed_bytes": 1799,
+      "method": 0,
+      "sha256": "b4610a4725d13578dea1e7dbc103c692ef0ad8e309aa01b8bbc626ea9648f7fd"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_question_regular.png": {
+      "bytes": 1936,
+      "compressed_bytes": 1936,
+      "method": 0,
+      "sha256": "da493b06e1e6febf56dbcd91c8ca6f476f0946381e727e9b2a54121067973390"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_shield_check_regular.png": {
+      "bytes": 1633,
+      "compressed_bytes": 1633,
+      "method": 0,
+      "sha256": "726457abe81fc15defd8ebc3c577309fe6dfd84457564046a00050db747ddb8f"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_speaker_high_regular.png": {
+      "bytes": 1422,
+      "compressed_bytes": 1422,
+      "method": 0,
+      "sha256": "9da4af2dd18aeb710d244c8c5a6658ee203d9d1491d03bd7db51e8f745dbf983"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_spinner_gap_regular.png": {
+      "bytes": 1284,
+      "compressed_bytes": 1284,
+      "method": 0,
+      "sha256": "eab770ac15acac6bbb5491bc4462de573d42a4e099b80029f1ded6591661c00e"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_star_regular.png": {
+      "bytes": 1637,
+      "compressed_bytes": 1637,
+      "method": 0,
+      "sha256": "acccf298316d535282140246015a53f65c8458a621ed65ded6b4dbc44834b5d1"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_stop_fill.png": {
+      "bytes": 851,
+      "compressed_bytes": 851,
+      "method": 0,
+      "sha256": "ef66c73b8ce89be70444ff784e10a52cf393330fb62a9072c64f4ba66f5161a5"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_sun_regular.png": {
+      "bytes": 1535,
+      "compressed_bytes": 1535,
+      "method": 0,
+      "sha256": "63948ce805f2e3205e9ecef9d631bd0b4c01e5d4e9f856eb2462254d622bdcf9"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_tag_regular.png": {
+      "bytes": 1341,
+      "compressed_bytes": 1341,
+      "method": 0,
+      "sha256": "9acb3d151d4172debcb0a6052163730d4eb595a3ccf680f2c0b032927b310699"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_trash_regular.png": {
+      "bytes": 1230,
+      "compressed_bytes": 1230,
+      "method": 0,
+      "sha256": "8549e4126c1ed32fdbdc6aac65f8d0fc6e5c825120ca37ccab0815dc6afe7e30"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_upload_simple_regular.png": {
+      "bytes": 1102,
+      "compressed_bytes": 1102,
+      "method": 0,
+      "sha256": "447a8fd36d145b757e66e9c266d93577c328aaffef763f49e3397b16f8c991c3"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_vibrate_regular.png": {
+      "bytes": 1396,
+      "compressed_bytes": 1396,
+      "method": 0,
+      "sha256": "005b7d8b44ff49d4032dfd70b09b4821ef6539e58c26b889a0f304955f2dc813"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_wave_sine_regular.png": {
+      "bytes": 979,
+      "compressed_bytes": 979,
+      "method": 0,
+      "sha256": "701ba89bf79cbefea4b542caebd3c6cedf6e1ac9b571c9a0b1a08300b167399e"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_waveform_regular.png": {
+      "bytes": 1101,
+      "compressed_bytes": 1101,
+      "method": 0,
+      "sha256": "bc3236fe52ca077413e114916fb8e3a95fd555b4f20298b68645ef974a7172e6"
+    },
+    "res/drawable-hdpi-v4/ic_phosphor_x_regular.png": {
+      "bytes": 1269,
+      "compressed_bytes": 1269,
+      "method": 0,
+      "sha256": "01ad520ab51c6e9dd2ccb7e781816f9bec40f137246ad06b5d58034021a3dbe7"
+    },
+    "res/drawable-mdpi-v4/ic_moon.png": {
+      "bytes": 575,
+      "compressed_bytes": 575,
+      "method": 0,
+      "sha256": "c787a34b27173ca9d3d9951b91472e41feedf6c4e78afe1352b9b14e258e9329"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_alarm_regular.png": {
+      "bytes": 1231,
+      "compressed_bytes": 1231,
+      "method": 0,
+      "sha256": "50815fe8c1b53f611f590ebf0c84ecc601016c0af8ffe669ca3390081113a611"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_arrow_counter_clockwise_regular.png": {
+      "bytes": 974,
+      "compressed_bytes": 974,
+      "method": 0,
+      "sha256": "0b01d931b3c2fca0024db57434a0d163fc9aa7b911ed2b40739aa5cc0f927f98"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_arrow_left_regular.png": {
+      "bytes": 643,
+      "compressed_bytes": 643,
+      "method": 0,
+      "sha256": "37517c4949ecaa7b93cd76bed5319ea2d1e07885ba65503bb387c1d244e11746"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_arrow_square_out_regular.png": {
+      "bytes": 915,
+      "compressed_bytes": 915,
+      "method": 0,
+      "sha256": "935cfe9fcd4493dd0615c3688b9ac8d158e1d3432562aafd9b5f61a1328c393f"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_battery_vertical_medium_regular.png": {
+      "bytes": 669,
+      "compressed_bytes": 669,
+      "method": 0,
+      "sha256": "0608c4c0d6de09cede7e20ef70574db79597b73f630a22edfe4c6c58d2228b7e"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_bed_regular.png": {
+      "bytes": 569,
+      "compressed_bytes": 569,
+      "method": 0,
+      "sha256": "94bfde51e09814af6f9029dd122bab6dfc6aa3d4a0121b1cd761042b5562f0a2"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_bell_regular.png": {
+      "bytes": 860,
+      "compressed_bytes": 860,
+      "method": 0,
+      "sha256": "ab035755429ef6a63b139e8dd8f30a5de1594a2a798f2f855e2b6099e813f43c"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_bell_slash_regular.png": {
+      "bytes": 1222,
+      "compressed_bytes": 1222,
+      "method": 0,
+      "sha256": "d701ab60e570fd2cc1e4c54dcd3f4d80278dc999e052f4bbe1246d9491462f9b"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_broadcast_regular.png": {
+      "bytes": 1176,
+      "compressed_bytes": 1176,
+      "method": 0,
+      "sha256": "6131d516d2748a2461dd8ed0d021eda4cb98d28938545fc0afe0ab5a25634180"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_calendar_blank_regular.png": {
+      "bytes": 827,
+      "compressed_bytes": 827,
+      "method": 0,
+      "sha256": "2306b30f5fc797a33a964eefbfae44b1a833a4bf81bd3915d7d94a2fdbaf999d"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_camera_regular.png": {
+      "bytes": 1076,
+      "compressed_bytes": 1076,
+      "method": 0,
+      "sha256": "df6d7c0eaaeb7860b38a5e2b9ac0aecf1ae69c8dffe1ab143f9b01d91b352aee"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_cards_regular.png": {
+      "bytes": 1096,
+      "compressed_bytes": 1096,
+      "method": 0,
+      "sha256": "12c6be648c38c63d80f850535d0625e0b4e679e5e274cd55197d8226413a5d59"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_caret_down_regular.png": {
+      "bytes": 565,
+      "compressed_bytes": 565,
+      "method": 0,
+      "sha256": "d98717f757a827a6a6350737312882e2142b866f2a40e00083cbf5a003ccf024"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_caret_right_regular.png": {
+      "bytes": 565,
+      "compressed_bytes": 565,
+      "method": 0,
+      "sha256": "4f6ef0bb4412209d5698ce6d0dec97b7e325065e6bcd5b07c77d34ffb0c4e6f0"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_caret_up_regular.png": {
+      "bytes": 511,
+      "compressed_bytes": 511,
+      "method": 0,
+      "sha256": "cc940298f398e728dc07913e419afe41426706d8dbd1a0f1e821e7fd808f7901"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_chart_bar_fill.png": {
+      "bytes": 656,
+      "compressed_bytes": 656,
+      "method": 0,
+      "sha256": "4170a5ff10e50c969b8e2877b8a6fcf9dabbe57f8c9d81bcac3bebbf036e83bf"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_chats_regular.png": {
+      "bytes": 865,
+      "compressed_bytes": 865,
+      "method": 0,
+      "sha256": "f664130cfc6e63d598b82026b84e9285139ecd4f34d8ea427a9b87fa45b29383"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_check_regular.png": {
+      "bytes": 636,
+      "compressed_bytes": 636,
+      "method": 0,
+      "sha256": "731b6d2cf1afee01293370dda11258b5ddc88f070e2856408b85d7f3e3b71986"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_circle_half_regular.png": {
+      "bytes": 940,
+      "compressed_bytes": 940,
+      "method": 0,
+      "sha256": "012864fe2928a919c120f5058e2f8f1b8fb15db6cbb60973f14fc404baca5001"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_clock_regular.png": {
+      "bytes": 1131,
+      "compressed_bytes": 1131,
+      "method": 0,
+      "sha256": "0c1b24d510199558289151f184714fc12b9164d5895c73dc59b7a6cbbb44ce89"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_cloud_rain_regular.png": {
+      "bytes": 886,
+      "compressed_bytes": 886,
+      "method": 0,
+      "sha256": "8eb1f08bacfe23abb7d74cf9f06779554d129d6959e5a2f5fba420976f8ffeca"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_cloud_regular.png": {
+      "bytes": 737,
+      "compressed_bytes": 737,
+      "method": 0,
+      "sha256": "479a3c1fb3f2b8008519f2eff89d76097302211ca98859350b8f861909c15fc5"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_device_mobile_regular.png": {
+      "bytes": 500,
+      "compressed_bytes": 500,
+      "method": 0,
+      "sha256": "0eaa04fd97f1c0d491777e66681483def06ff507414d8e6f5c5f0606406f82fb"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_dots_three_vertical_regular.png": {
+      "bytes": 516,
+      "compressed_bytes": 516,
+      "method": 0,
+      "sha256": "66decb00222364660d91bda966e14b67ac6d3cb76672d65cebfe151c428b3e7f"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_download_simple_regular.png": {
+      "bytes": 735,
+      "compressed_bytes": 735,
+      "method": 0,
+      "sha256": "79a5d0ad53dc0c7859e3a2a04b088c0bf1ed53ddd9549f44eb20ae382abc02cb"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_exclamation_mark_regular.png": {
+      "bytes": 460,
+      "compressed_bytes": 460,
+      "method": 0,
+      "sha256": "1eec772928f7af3a9ac16e19b55814b5f684656d0582ba4be9be5bf8fed5bffd"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_faders_horizontal_regular.png": {
+      "bytes": 673,
+      "compressed_bytes": 673,
+      "method": 0,
+      "sha256": "87fe40a5aeb390ec985e2917708425d05ddb3c4ae805582f94f1f1cba3fe9dfb"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_file_text_regular.png": {
+      "bytes": 827,
+      "compressed_bytes": 827,
+      "method": 0,
+      "sha256": "89dbb772bd114fa6e2d9b3d9f1af6dd28e4702b78f1e6c9159ce1a597113af26"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_flashlight_regular.png": {
+      "bytes": 734,
+      "compressed_bytes": 734,
+      "method": 0,
+      "sha256": "0085a8d19fcd4ceae8a3e40cfd1a7c31094abbcadbf5e8819b7c0057de7c4666"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_footprints_regular.png": {
+      "bytes": 960,
+      "compressed_bytes": 960,
+      "method": 0,
+      "sha256": "c09c208a746bba78251a750f93d90e3ec039cc60908c121415166370b6a4d531"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_fork_knife_regular.png": {
+      "bytes": 694,
+      "compressed_bytes": 694,
+      "method": 0,
+      "sha256": "60470b59b86f8eccac8e070b40653063528ad95706c0454d6eb05c16055a5257"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_gear_six_fill.png": {
+      "bytes": 1135,
+      "compressed_bytes": 1135,
+      "method": 0,
+      "sha256": "2620caebdeb39deb7dbe64370d1ad7b13aa25aa18c278a53cc629b5b17124b1a"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_gear_six_regular.png": {
+      "bytes": 1200,
+      "compressed_bytes": 1200,
+      "method": 0,
+      "sha256": "f775c952de297aed02d099d9fad1d5922a016ba1e0b190ab73f0048be6091550"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_github_logo_fill.png": {
+      "bytes": 887,
+      "compressed_bytes": 887,
+      "method": 0,
+      "sha256": "eeb8ff1bc4caed6af1603afb47900119b606eecb75169ac0cf72ee586cd67026"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_headphones_regular.png": {
+      "bytes": 870,
+      "compressed_bytes": 870,
+      "method": 0,
+      "sha256": "4b5f84c3c2caca46755d27cefb9350e2e745a5eaafec53f021e69247665dabb0"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_heart_fill.png": {
+      "bytes": 750,
+      "compressed_bytes": 750,
+      "method": 0,
+      "sha256": "d628acec1b0d38a3bd5f4c19563127f2eb777bcfd37a90e21429cbca225627aa"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_heart_regular.png": {
+      "bytes": 880,
+      "compressed_bytes": 880,
+      "method": 0,
+      "sha256": "eb83a418ba9f4cba63bc06f6b0b42bfaec9982be65aa82f5f8a0d4e4ed04d25b"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_house_fill.png": {
+      "bytes": 848,
+      "compressed_bytes": 848,
+      "method": 0,
+      "sha256": "487275e2ca4e4524794fdd6c935d0e9976b4efeeac4358e68b6ab0627802b135"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_info_regular.png": {
+      "bytes": 988,
+      "compressed_bytes": 988,
+      "method": 0,
+      "sha256": "46ce2b1f6a69375e796e554e4817777515fed19040e9231f5bedbd8cfc358642"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_keyboard_regular.png": {
+      "bytes": 982,
+      "compressed_bytes": 982,
+      "method": 0,
+      "sha256": "12618d0a60a5a8e110ba57d6879979c95ac2bcb4e66fe56724d6504291da9403"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_lightbulb_regular.png": {
+      "bytes": 752,
+      "compressed_bytes": 752,
+      "method": 0,
+      "sha256": "a677079e4275bb4626e09ded0fff94447845c261f106f6f2bafb5f1898f4c4dc"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_link_simple_regular.png": {
+      "bytes": 1052,
+      "compressed_bytes": 1052,
+      "method": 0,
+      "sha256": "ba5ac63cf3f6f7b7c614f75202eb966416c1f41a517544729d7b7491605e3df5"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_list_checks_regular.png": {
+      "bytes": 681,
+      "compressed_bytes": 681,
+      "method": 0,
+      "sha256": "417d24d8e694c49e6ef2b0804ee960058016fc942fa1fa1b5c7768c2a9ed35e7"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_list_numbers_regular.png": {
+      "bytes": 715,
+      "compressed_bytes": 715,
+      "method": 0,
+      "sha256": "b190c89d9db101b66b65eab486572834f381510472f6f13c8151783531ff6516"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_lock_key_regular.png": {
+      "bytes": 802,
+      "compressed_bytes": 802,
+      "method": 0,
+      "sha256": "d263ecf6d516ce4ad9bad62c6d088c2ff4c8281a281d516decbf5e422614177a"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_magnifying_glass_regular.png": {
+      "bytes": 768,
+      "compressed_bytes": 768,
+      "method": 0,
+      "sha256": "36c1727fef2d950b587685ddc8beeacf5412d880d108b83bc1d552e20bb1a7fb"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_math_operations_regular.png": {
+      "bytes": 961,
+      "compressed_bytes": 961,
+      "method": 0,
+      "sha256": "d3e0b36bcaaf0dfdd5b0c466067d9a19a19a52c7e9f6816f3c21d9dc487ffa28"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_microphone_regular.png": {
+      "bytes": 773,
+      "compressed_bytes": 773,
+      "method": 0,
+      "sha256": "843b15e74cf610a7ee9f55cb20f1bdfd167471347f7db63ee94db15ed8f873f0"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_minus_regular.png": {
+      "bytes": 176,
+      "compressed_bytes": 176,
+      "method": 0,
+      "sha256": "3bb37080657cde96658b83106c011aabcb2a2bab71176fe656a98dd0e9157a1b"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_moon_fill.png": {
+      "bytes": 860,
+      "compressed_bytes": 860,
+      "method": 0,
+      "sha256": "5db6febd01292802ef7f253fbadb5662b85eed2209aba2a577e6833caba2bc3b"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_music_notes_regular.png": {
+      "bytes": 736,
+      "compressed_bytes": 736,
+      "method": 0,
+      "sha256": "267e044f5fef4aeec04b4ed32aeca626e0b82250da3aeb12f4a6d96a8c1dba20"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_palette_regular.png": {
+      "bytes": 1153,
+      "compressed_bytes": 1153,
+      "method": 0,
+      "sha256": "8da389a15f023baf5cc9cb3dafe53ac3a5a57f8ffdea9513dddccc8c12b3a175"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_pause_fill.png": {
+      "bytes": 494,
+      "compressed_bytes": 494,
+      "method": 0,
+      "sha256": "0fcea70951b6e935ac6032ba511ab9d2f9b124ebf3ce4d0cc3901463104b864a"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_pencil_simple_regular.png": {
+      "bytes": 626,
+      "compressed_bytes": 626,
+      "method": 0,
+      "sha256": "73498da5a9d55dc7d6d2d186f188ea851479bc4c56e78950b2b88116b1c7ab2e"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_person_simple_run_regular.png": {
+      "bytes": 1005,
+      "compressed_bytes": 1005,
+      "method": 0,
+      "sha256": "7adc052c4801f751928539becf872b475cc66a0242fd9392ee74a1da3576520f"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_play_fill.png": {
+      "bytes": 644,
+      "compressed_bytes": 644,
+      "method": 0,
+      "sha256": "0ff0ecf5c0238e2fb3b330d401a34fdc4f8c716c955e56831285e5f10105400e"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_plug_regular.png": {
+      "bytes": 773,
+      "compressed_bytes": 773,
+      "method": 0,
+      "sha256": "a1a525dee9d03ff4305c11eb8260ff038329ab88ca49eac91f2b39d954b89142"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_plus_regular.png": {
+      "bytes": 533,
+      "compressed_bytes": 533,
+      "method": 0,
+      "sha256": "8e12aefe11d6eb58a2ce68be93a3dbff62041de91e645eedd7b003988748f2e6"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_qr_code_regular.png": {
+      "bytes": 1115,
+      "compressed_bytes": 1115,
+      "method": 0,
+      "sha256": "94b696fd9bb62d5e2682524c550a99454b308746060dcb763e6e98be4ee9ce40"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_question_regular.png": {
+      "bytes": 1209,
+      "compressed_bytes": 1209,
+      "method": 0,
+      "sha256": "59521436a660c0bf4cca1cbbf62622a7ebb9282f854254ca89aeff54ac1ba107"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_shield_check_regular.png": {
+      "bytes": 988,
+      "compressed_bytes": 988,
+      "method": 0,
+      "sha256": "088f24ca5d083f9e2959f0e90613a900f61a19290c5a88f1fe9d670afe3bb66b"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_speaker_high_regular.png": {
+      "bytes": 880,
+      "compressed_bytes": 880,
+      "method": 0,
+      "sha256": "12f6eaefd91683c2ac8e4781e249d39e6728cc7f60513332c2aeeca8815a5ca1"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_spinner_gap_regular.png": {
+      "bytes": 852,
+      "compressed_bytes": 852,
+      "method": 0,
+      "sha256": "ca689c457b22ad3c8d477da28b13430381f47d130f0ae23f1d481c072d2a175c"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_star_regular.png": {
+      "bytes": 899,
+      "compressed_bytes": 899,
+      "method": 0,
+      "sha256": "7e8022c11af0d895557a9e42aff8b7ed22a066bb2e419e9621578dd0a989b6f7"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_stop_fill.png": {
+      "bytes": 529,
+      "compressed_bytes": 529,
+      "method": 0,
+      "sha256": "c6eeef3a1a28a254e307229a0effe68c0385a8e6e286bd10e6081e6cbe065f96"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_sun_regular.png": {
+      "bytes": 936,
+      "compressed_bytes": 936,
+      "method": 0,
+      "sha256": "6e5c94c056b7d31732a99061dc7087877ea4e6858ec2fde509efa6182f0f1fc3"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_tag_regular.png": {
+      "bytes": 784,
+      "compressed_bytes": 784,
+      "method": 0,
+      "sha256": "754cebd54431817406f24de809d1d4a0720b2750b82a04329e04551668b029c9"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_trash_regular.png": {
+      "bytes": 786,
+      "compressed_bytes": 786,
+      "method": 0,
+      "sha256": "cab78ea5bd2b66a4605e11e959cd2abddfcb86cc0e7907ab27191415bc60f25d"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_upload_simple_regular.png": {
+      "bytes": 767,
+      "compressed_bytes": 767,
+      "method": 0,
+      "sha256": "9c2209940cd1cd009f64e24b4e2fd90698f99a4e73ac2424454e0f551045ff45"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_vibrate_regular.png": {
+      "bytes": 904,
+      "compressed_bytes": 904,
+      "method": 0,
+      "sha256": "c6fdc07bc023f9409d1047cea171f5b54fd0af538330de51d417f5f618fe1a4e"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_wave_sine_regular.png": {
+      "bytes": 597,
+      "compressed_bytes": 597,
+      "method": 0,
+      "sha256": "edc8f26531dfa048f81aa8d433c1c48c1966ec5f701135fd187abd2b2d6ead22"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_waveform_regular.png": {
+      "bytes": 714,
+      "compressed_bytes": 714,
+      "method": 0,
+      "sha256": "877659569f8dd48800c90bbbba21abba1fba75868d320e4a6cea97061212158d"
+    },
+    "res/drawable-mdpi-v4/ic_phosphor_x_regular.png": {
+      "bytes": 786,
+      "compressed_bytes": 786,
+      "method": 0,
+      "sha256": "1d9a6421c9fc46486c388dfdda1432603c4dcf4214e98a7138e8031cf8b3e11f"
+    },
+    "res/drawable-xhdpi-v4/ic_moon.png": {
+      "bytes": 1209,
+      "compressed_bytes": 1209,
+      "method": 0,
+      "sha256": "d2e00a9dbc9e39bec6d88bd5ccbb8121e0ca0e18ada7be29f8962705fc45834b"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_alarm_regular.png": {
+      "bytes": 2920,
+      "compressed_bytes": 2920,
+      "method": 0,
+      "sha256": "2fd9096cb4565d7c32458a09843ecaa042882b689c96bc95ab066f7d3bd29b30"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_arrow_counter_clockwise_regular.png": {
+      "bytes": 2350,
+      "compressed_bytes": 2350,
+      "method": 0,
+      "sha256": "055598f8d3f0bc267034177efe4aef866a71ba78fb03b129adbe6d441d644dd5"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_arrow_left_regular.png": {
+      "bytes": 1358,
+      "compressed_bytes": 1358,
+      "method": 0,
+      "sha256": "056676261acfb7fd7849082b8128fa5ad6d05ef08aea6c488028bb6e7923d3e1"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_arrow_square_out_regular.png": {
+      "bytes": 1777,
+      "compressed_bytes": 1777,
+      "method": 0,
+      "sha256": "3700991b39aa2b411e63b30ea7bdfeeef5a189bdcceee02a7df9bd366172bf8a"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_battery_vertical_medium_regular.png": {
+      "bytes": 1293,
+      "compressed_bytes": 1293,
+      "method": 0,
+      "sha256": "4db0a57e3039155b1230d3605eb0d0ad5d2581b02b861aee626b77dfee4ac368"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_bed_regular.png": {
+      "bytes": 1204,
+      "compressed_bytes": 1204,
+      "method": 0,
+      "sha256": "0c9ac04ed91155bbe6789067a7d629c15be3d94ff1a5568df13e3f8dc5f792a3"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_bell_regular.png": {
+      "bytes": 2087,
+      "compressed_bytes": 2087,
+      "method": 0,
+      "sha256": "df421d1cc216beb9d35e2b29e04f50474456cd480b5a169336c769375544de2a"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_bell_slash_regular.png": {
+      "bytes": 2774,
+      "compressed_bytes": 2774,
+      "method": 0,
+      "sha256": "ee7f42c465ade11bf799e449e75b8e429e077c77b6e435667a94ebf9d3186d31"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_broadcast_regular.png": {
+      "bytes": 3239,
+      "compressed_bytes": 3239,
+      "method": 0,
+      "sha256": "d4b7f17908122c70c4ee3505fb2d0a0fe7ee5456dd18f6af263050d140f9ffd0"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_calendar_blank_regular.png": {
+      "bytes": 1925,
+      "compressed_bytes": 1925,
+      "method": 0,
+      "sha256": "c145c16b9af2bdfc3a84f6f413fc6d1adf7ca491b76fffcdf0d437fdff4fa7d1"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_camera_regular.png": {
+      "bytes": 2359,
+      "compressed_bytes": 2359,
+      "method": 0,
+      "sha256": "1024d00eec73b0514b90b9a032ca45fe3abaded005f6fb0bb8cec904012cecc6"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_cards_regular.png": {
+      "bytes": 2651,
+      "compressed_bytes": 2651,
+      "method": 0,
+      "sha256": "f22f22a4b284acc14e6d73187d16a187f37d66496d8595c0989f90f0e660990a"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_caret_down_regular.png": {
+      "bytes": 1420,
+      "compressed_bytes": 1420,
+      "method": 0,
+      "sha256": "4ffcf226a89dff81b6058bf86bfdf05cadc301abdd606a75fd58491ffd41580f"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_caret_right_regular.png": {
+      "bytes": 1175,
+      "compressed_bytes": 1175,
+      "method": 0,
+      "sha256": "38ec17b227828bdce1aece6397e05ffb6ef4cda9f57cac2398d6b36883521607"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_caret_up_regular.png": {
+      "bytes": 1130,
+      "compressed_bytes": 1130,
+      "method": 0,
+      "sha256": "8f90c853057731cfd219c64b1625fc2a79e03952ba42dec88a03467c0bc16f61"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_chart_bar_fill.png": {
+      "bytes": 1269,
+      "compressed_bytes": 1269,
+      "method": 0,
+      "sha256": "e37b903706aed436d823c4c11a7425f18c2d8ebf97e1c1790d0bd3bf01147f3f"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_chats_regular.png": {
+      "bytes": 1998,
+      "compressed_bytes": 1998,
+      "method": 0,
+      "sha256": "9395a02050d506b7d22ce11dd99ac45fab7e381f223bba201c3a56ab7705c5ea"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_check_regular.png": {
+      "bytes": 1341,
+      "compressed_bytes": 1341,
+      "method": 0,
+      "sha256": "3f252675389609258ec408e318cb5f4c09654c952af5b3452052ee062bdee411"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_circle_half_regular.png": {
+      "bytes": 2126,
+      "compressed_bytes": 2126,
+      "method": 0,
+      "sha256": "dae7335bde9b2440d48a55d85a80b4eadd979d4c3f239dd6f48f858e2d4aba38"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_clock_regular.png": {
+      "bytes": 2697,
+      "compressed_bytes": 2697,
+      "method": 0,
+      "sha256": "0819c80efdbd0799b11628ff44221a13ce1a127fc50c276311f8110c466bcb69"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_cloud_rain_regular.png": {
+      "bytes": 2132,
+      "compressed_bytes": 2132,
+      "method": 0,
+      "sha256": "cc73cde71562dbc01b6f73b318c26967c55f780554d981ac3290267dd7a5af06"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_cloud_regular.png": {
+      "bytes": 1749,
+      "compressed_bytes": 1749,
+      "method": 0,
+      "sha256": "b6965a1719a06c2d4c1933849f575883e881eb1823c4b5be7ab0b1440b9f5751"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_device_mobile_regular.png": {
+      "bytes": 1066,
+      "compressed_bytes": 1066,
+      "method": 0,
+      "sha256": "bb34105ee0c359f53f038a49e173129eb172bb601189984485d58732eea98935"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_dots_three_vertical_regular.png": {
+      "bytes": 1048,
+      "compressed_bytes": 1048,
+      "method": 0,
+      "sha256": "f4d12b7de43a17a825ec7c56bf404f16bb91f40b0621d3435033e4313a0857aa"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_download_simple_regular.png": {
+      "bytes": 1609,
+      "compressed_bytes": 1609,
+      "method": 0,
+      "sha256": "fe9341ef65ffeecb4ff5c84e27b2281618f60813161ea700c6f7a70cf84efaeb"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_exclamation_mark_regular.png": {
+      "bytes": 955,
+      "compressed_bytes": 955,
+      "method": 0,
+      "sha256": "cc86aa6240fd133e0df7cff98a4583637d11996a4bb01aed3c3dafce954a8a75"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_faders_horizontal_regular.png": {
+      "bytes": 1483,
+      "compressed_bytes": 1483,
+      "method": 0,
+      "sha256": "ec0f75d3e1a7975cceb70c3c8803e2c10e13dc892ae5d5cd1bb63e0cf789b729"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_file_text_regular.png": {
+      "bytes": 1701,
+      "compressed_bytes": 1701,
+      "method": 0,
+      "sha256": "2e8e30d9fd254a5c83a88af5e384b84b678c8b266396006cd213fe2f344dded2"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_flashlight_regular.png": {
+      "bytes": 1414,
+      "compressed_bytes": 1414,
+      "method": 0,
+      "sha256": "93c9f102d6c2519d90f9526da5f9d9cd8cd2f009eae2c30778854bafbcb2a258"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_footprints_regular.png": {
+      "bytes": 2390,
+      "compressed_bytes": 2390,
+      "method": 0,
+      "sha256": "cbe4f852373b8c37b616241d5cd1a8854526eaed24e995921e8c96d3bd3ee15e"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_fork_knife_regular.png": {
+      "bytes": 1629,
+      "compressed_bytes": 1629,
+      "method": 0,
+      "sha256": "0eb9c6791474f69bf8eb0d7a01be68111e0ed5de77d419d439119c18814c7e52"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_gear_six_fill.png": {
+      "bytes": 2648,
+      "compressed_bytes": 2648,
+      "method": 0,
+      "sha256": "d7e9bc44aa1acf9a9c3758f762f1747b8368fd8399a481909c9a9318f0bf7cd8"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_gear_six_regular.png": {
+      "bytes": 3047,
+      "compressed_bytes": 3047,
+      "method": 0,
+      "sha256": "2a3bd4a9177a6f24b3a028367a48f0949f2733dc3f0cf2e10e8d5b4c137b054d"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_github_logo_fill.png": {
+      "bytes": 2117,
+      "compressed_bytes": 2117,
+      "method": 0,
+      "sha256": "ef54fb5629318b205713c3f9805eff62a2e64ec89aad21249713519106afa41b"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_headphones_regular.png": {
+      "bytes": 1843,
+      "compressed_bytes": 1843,
+      "method": 0,
+      "sha256": "53e9a114bcc0e9e88bef43f991fadddc041d3ce085aacfaa4634f4d68a1dd6c6"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_heart_fill.png": {
+      "bytes": 1759,
+      "compressed_bytes": 1759,
+      "method": 0,
+      "sha256": "dfdfa20fa8680ddf847a229af2d0516ab55c61c7be9bfb6faff60b6b9f65078e"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_heart_regular.png": {
+      "bytes": 2205,
+      "compressed_bytes": 2205,
+      "method": 0,
+      "sha256": "c4f25047d60d85ed67ad440eed88c20f620d12b7cc296005275ca372f4c7d6c3"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_house_fill.png": {
+      "bytes": 1829,
+      "compressed_bytes": 1829,
+      "method": 0,
+      "sha256": "a9a95c2b22557403a7713725699d95562c228bbefd224d3a23ce8cf268fdc2be"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_info_regular.png": {
+      "bytes": 2396,
+      "compressed_bytes": 2396,
+      "method": 0,
+      "sha256": "eee6cde9fd6e2702d3eb791bb67833172eb2d2f630b1bf14c0ea5866ae67f340"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_keyboard_regular.png": {
+      "bytes": 2053,
+      "compressed_bytes": 2053,
+      "method": 0,
+      "sha256": "6d735d7a334156f0b7ddec91fc10b80b0d1b888d6e38e6a8268659ec25b70cdb"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_lightbulb_regular.png": {
+      "bytes": 1776,
+      "compressed_bytes": 1776,
+      "method": 0,
+      "sha256": "00c10ffa03694bcb3e7d4415af35dd195c90031652d77bcabeab32f4ff4a8e6e"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_link_simple_regular.png": {
+      "bytes": 2492,
+      "compressed_bytes": 2492,
+      "method": 0,
+      "sha256": "01d1b464399630b98c6e1608beb93207f3ca0aafa802e91c6a14b6dbbbb3f1f4"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_list_checks_regular.png": {
+      "bytes": 1617,
+      "compressed_bytes": 1617,
+      "method": 0,
+      "sha256": "a2425ea639f2d68fdb041624daaf0cee72f0d5cd51b0538ba395bf19d2dcfb5b"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_list_numbers_regular.png": {
+      "bytes": 1580,
+      "compressed_bytes": 1580,
+      "method": 0,
+      "sha256": "788a00871fa179c0f0c586bc34818ade69d36c15f20f2276523f80e582a65032"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_lock_key_regular.png": {
+      "bytes": 1758,
+      "compressed_bytes": 1758,
+      "method": 0,
+      "sha256": "3ce23fe2f495af0d90c6230f96736ae9feb43afccea82aaf2e4764c8a614e8cb"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_magnifying_glass_regular.png": {
+      "bytes": 1749,
+      "compressed_bytes": 1749,
+      "method": 0,
+      "sha256": "142a9f7f3bd094211d2d2a79a250630dbcc9ae6cbf0503b5e03fdd2b983175b3"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_math_operations_regular.png": {
+      "bytes": 2075,
+      "compressed_bytes": 2075,
+      "method": 0,
+      "sha256": "8b21c35582f05f0e7983bd8d93b0831852920aa938ea0105411f18e0f40c9044"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_microphone_regular.png": {
+      "bytes": 1804,
+      "compressed_bytes": 1804,
+      "method": 0,
+      "sha256": "74aee60adf858d1f976cb5d790eb97f7bb7f6510bb28217382f607210c4ede8f"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_minus_regular.png": {
+      "bytes": 358,
+      "compressed_bytes": 358,
+      "method": 0,
+      "sha256": "9b9715d8f1a4ee0a5038b2482250ab72869ab9ea09004ccf3c1650f8ffdeebec"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_moon_fill.png": {
+      "bytes": 1833,
+      "compressed_bytes": 1833,
+      "method": 0,
+      "sha256": "a95865c6247b8bb1aac329a9b36090c1f6d1f42a700210c747f692245d8e6f48"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_music_notes_regular.png": {
+      "bytes": 1417,
+      "compressed_bytes": 1417,
+      "method": 0,
+      "sha256": "21bd8096ff7262d51e1304cd80a2a1a8804fe6b048e5f745c07c2210046c0bf6"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_palette_regular.png": {
+      "bytes": 3085,
+      "compressed_bytes": 3085,
+      "method": 0,
+      "sha256": "2c8816c347bb55cae7a9908a3e236eae0db209725a3094a4cb52dc418f7d2c32"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_pause_fill.png": {
+      "bytes": 936,
+      "compressed_bytes": 936,
+      "method": 0,
+      "sha256": "ea5caf99fde77145ecc674ace0f213eb1b766a49e0c483cda2f801f4a7221783"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_pencil_simple_regular.png": {
+      "bytes": 1576,
+      "compressed_bytes": 1576,
+      "method": 0,
+      "sha256": "7117c3b0b9cdcbfc2054157ca164f88002c7e0d652a5390d76b17b78cfdebee3"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_person_simple_run_regular.png": {
+      "bytes": 2403,
+      "compressed_bytes": 2403,
+      "method": 0,
+      "sha256": "8f99107676bc22a02acf0f1e4a274a81c4ddb1a74d227f89b8a7133af9178be7"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_play_fill.png": {
+      "bytes": 1409,
+      "compressed_bytes": 1409,
+      "method": 0,
+      "sha256": "7a38a02594e19e7ab6828b6a571aa5b69acd29a161a9b1182a9219708d0b1b67"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_plug_regular.png": {
+      "bytes": 1587,
+      "compressed_bytes": 1587,
+      "method": 0,
+      "sha256": "273da57c30be9a195425604b844384631f9f9667425aeae4350b223cd8803e3c"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_plus_regular.png": {
+      "bytes": 1151,
+      "compressed_bytes": 1151,
+      "method": 0,
+      "sha256": "6c6db0f75fa1fba70a57e1a5364d297f4673a1b0b410a93ef30ce65cc81391c7"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_qr_code_regular.png": {
+      "bytes": 2607,
+      "compressed_bytes": 2607,
+      "method": 0,
+      "sha256": "93dd82dd69090cf9051afb15474a6b78365ff1bca6508859fff717d8ee3bd086"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_question_regular.png": {
+      "bytes": 2802,
+      "compressed_bytes": 2802,
+      "method": 0,
+      "sha256": "cafdf765c01080a263a33781487b8e37b889e812e51ba840e4ed3ab5b68a4e3d"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_shield_check_regular.png": {
+      "bytes": 2336,
+      "compressed_bytes": 2336,
+      "method": 0,
+      "sha256": "4d42262f2a509617b52194e793d9cddf3b9e4e0e6fd93b5fe54d433a3351d0ef"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_speaker_high_regular.png": {
+      "bytes": 1998,
+      "compressed_bytes": 1998,
+      "method": 0,
+      "sha256": "b122a348681e2f59d53e9ae0638a6cc58deb2295016203285e1255456f07a920"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_spinner_gap_regular.png": {
+      "bytes": 1930,
+      "compressed_bytes": 1930,
+      "method": 0,
+      "sha256": "ec13f286ec857cd94bbd4f1d9b1b297553831de07977eacb29c6dbf814abceee"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_star_regular.png": {
+      "bytes": 2330,
+      "compressed_bytes": 2330,
+      "method": 0,
+      "sha256": "4b5d5f6b0255232c8d0a62975ea045e578920c6c15fa233ed5c06d3051da97f7"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_stop_fill.png": {
+      "bytes": 1275,
+      "compressed_bytes": 1275,
+      "method": 0,
+      "sha256": "259f60f9918b5fa094acd5503fd1cee46fb3242a9aac401a7978c2e2e6018056"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_sun_regular.png": {
+      "bytes": 2313,
+      "compressed_bytes": 2313,
+      "method": 0,
+      "sha256": "632c9cd18396ac148ced0bae66f69b8c7effa4dd4e8da3c8b9fe20e7cf1da76b"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_tag_regular.png": {
+      "bytes": 1991,
+      "compressed_bytes": 1991,
+      "method": 0,
+      "sha256": "06a860a1d63176ac26b7acb0126e987983547c1e05d1b42930cf38d2d762dec5"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_trash_regular.png": {
+      "bytes": 1764,
+      "compressed_bytes": 1764,
+      "method": 0,
+      "sha256": "b3e6d4e84350327ea02363c81aa13be7b8d2f8f71771b78956bd000e016cdb6b"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_upload_simple_regular.png": {
+      "bytes": 1579,
+      "compressed_bytes": 1579,
+      "method": 0,
+      "sha256": "61d9a27c7d8b11bcf2cb9730d1b22763ba929dc6e09d54a01817603d489959ee"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_vibrate_regular.png": {
+      "bytes": 1948,
+      "compressed_bytes": 1948,
+      "method": 0,
+      "sha256": "50f7fee2fba693928a854b03b27d7052caeb681fe8cdd643642fd31cfd8cd062"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_wave_sine_regular.png": {
+      "bytes": 1299,
+      "compressed_bytes": 1299,
+      "method": 0,
+      "sha256": "9258ba24a5e01d694ba9ca36350c8ac5cb61f798d8cf54d54107cc264a606c9d"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_waveform_regular.png": {
+      "bytes": 1606,
+      "compressed_bytes": 1606,
+      "method": 0,
+      "sha256": "69fbef849f7f8e7e56c55af1848558c4148866be4c730ac83768969fe7d0310e"
+    },
+    "res/drawable-xhdpi-v4/ic_phosphor_x_regular.png": {
+      "bytes": 1598,
+      "compressed_bytes": 1598,
+      "method": 0,
+      "sha256": "781b8e67fd74a65082eed9753361840be435b25eee188fdf55f757f2fbc50b44"
+    },
+    "res/drawable-xxhdpi-v4/ic_moon.png": {
+      "bytes": 1853,
+      "compressed_bytes": 1853,
+      "method": 0,
+      "sha256": "ebd3b0ce56556e42dfdc5603fcfd352647fed0735268e67bd6e34a3d93c63395"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_alarm_regular.png": {
+      "bytes": 4901,
+      "compressed_bytes": 4901,
+      "method": 0,
+      "sha256": "ea807bcf0aed85e0425909baa549253e1c09e43cc5f5f094543e3d1d651f5f45"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_arrow_counter_clockwise_regular.png": {
+      "bytes": 3832,
+      "compressed_bytes": 3832,
+      "method": 0,
+      "sha256": "2c5961fd0b28dc38a1c6e2f3c1196c150acd1868ea7638b8007b7bba81643785"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_arrow_left_regular.png": {
+      "bytes": 2294,
+      "compressed_bytes": 2294,
+      "method": 0,
+      "sha256": "8d2d636216c23faf1b992490260bb46b2cc1349b1f8ab30f4d52daf1284a04d8"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_arrow_square_out_regular.png": {
+      "bytes": 3057,
+      "compressed_bytes": 3057,
+      "method": 0,
+      "sha256": "be8e8a884ebbe51f9c8363c5e590d341956af58365b637dd8bfcbc2b584b3b99"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_battery_vertical_medium_regular.png": {
+      "bytes": 2158,
+      "compressed_bytes": 2158,
+      "method": 0,
+      "sha256": "9c7ba75b787d1f70f280df51311c128b47c0a64d3ae052f2cadeb2e99870504a"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_bed_regular.png": {
+      "bytes": 2026,
+      "compressed_bytes": 2026,
+      "method": 0,
+      "sha256": "4d5b21270643bb9364355a465f6e24e486a6558b38e0d0aa3fc42319178a774f"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_bell_regular.png": {
+      "bytes": 3602,
+      "compressed_bytes": 3602,
+      "method": 0,
+      "sha256": "e9a1d21496c44d861c164263b1637eab27c724804ffa8e088aab4dae7f1ee8f1"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_bell_slash_regular.png": {
+      "bytes": 4906,
+      "compressed_bytes": 4906,
+      "method": 0,
+      "sha256": "da71715711fe0c37dd80890772a56169c11f2da594418bd04a8bb034bb365a00"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_broadcast_regular.png": {
+      "bytes": 5334,
+      "compressed_bytes": 5334,
+      "method": 0,
+      "sha256": "7365e8e3c4531c468ca8aeab7f3a4c2d60fb8f94928be868727621a6e2edb1f9"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_calendar_blank_regular.png": {
+      "bytes": 2944,
+      "compressed_bytes": 2944,
+      "method": 0,
+      "sha256": "a4def168be8fecfeced7973dbe4cd57aa7742a146ba13e1426d76b6613a03c1b"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_camera_regular.png": {
+      "bytes": 4069,
+      "compressed_bytes": 4069,
+      "method": 0,
+      "sha256": "35fc815ccacdbddf1967bcc03cd9fbbf0b8fdd330f10ff0074bfa74d4c753c39"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_cards_regular.png": {
+      "bytes": 4122,
+      "compressed_bytes": 4122,
+      "method": 0,
+      "sha256": "d65990bbd5045a209adbc963055c5f68eb77486fe6cc7bf6a7c120728af2e310"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_caret_down_regular.png": {
+      "bytes": 2293,
+      "compressed_bytes": 2293,
+      "method": 0,
+      "sha256": "8c38db992a337a1717b9da4ed01b5826bf228475364740a3f1cf81584626b7fd"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_caret_right_regular.png": {
+      "bytes": 1898,
+      "compressed_bytes": 1898,
+      "method": 0,
+      "sha256": "de137795a773dedc4fbb34257b935a685cbf0c3ad52eb435d87d2617ee262323"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_caret_up_regular.png": {
+      "bytes": 1745,
+      "compressed_bytes": 1745,
+      "method": 0,
+      "sha256": "fc35a23d13308a7c2294663a5a7e411abe0904f70814c30ad411ccd5fed49ed4"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_chart_bar_fill.png": {
+      "bytes": 2132,
+      "compressed_bytes": 2132,
+      "method": 0,
+      "sha256": "44cef14954c6e403d30c28ec0f73d9393ca01a0f5d526bab61dfe3097082d30f"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_chats_regular.png": {
+      "bytes": 3307,
+      "compressed_bytes": 3307,
+      "method": 0,
+      "sha256": "a6e81bb2fe56df48ce07645bc988579c8a6f0c99c485e941d5943421a289b975"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_check_regular.png": {
+      "bytes": 2251,
+      "compressed_bytes": 2251,
+      "method": 0,
+      "sha256": "04becb2ce30fb36f3d212d7660408016ad9de0fad39da4cc2edb819df3de2fef"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_circle_half_regular.png": {
+      "bytes": 3618,
+      "compressed_bytes": 3618,
+      "method": 0,
+      "sha256": "b0673cd7f177e4e46f7ca43500d6eafb414352ae8186210ae1e838e865a28f9d"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_clock_regular.png": {
+      "bytes": 4554,
+      "compressed_bytes": 4554,
+      "method": 0,
+      "sha256": "973f032bae4ae734d3243c0465d5633c481f64ac0cb912a63db5749f2fdc5fcb"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_cloud_rain_regular.png": {
+      "bytes": 3392,
+      "compressed_bytes": 3392,
+      "method": 0,
+      "sha256": "0a9f5f03792260c8e2934be814cc839ab7a18b79bb237b5ee0168a7e655a6339"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_cloud_regular.png": {
+      "bytes": 2941,
+      "compressed_bytes": 2941,
+      "method": 0,
+      "sha256": "e6012af25717d8c4d7187fe4df01faba0e355dca524f52636040f7091dccc40d"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_device_mobile_regular.png": {
+      "bytes": 1777,
+      "compressed_bytes": 1777,
+      "method": 0,
+      "sha256": "b7291e96b951d9928a40bfbe2883606f0cc551e36bbaba948108cb42fe1baf89"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_dots_three_vertical_regular.png": {
+      "bytes": 1702,
+      "compressed_bytes": 1702,
+      "method": 0,
+      "sha256": "efd79ee4781ce4febb78b455a815c1e5d55da5cffcc3cf2c47b40b4f393bcb67"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_download_simple_regular.png": {
+      "bytes": 2513,
+      "compressed_bytes": 2513,
+      "method": 0,
+      "sha256": "9e7e5831b4ce64c17d29d619ce6e23d45eeb8680cc944a45711dbf4a264dd029"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_exclamation_mark_regular.png": {
+      "bytes": 1674,
+      "compressed_bytes": 1674,
+      "method": 0,
+      "sha256": "e6cd3399783739be00c1aa96d87b96d0ffbf95c2f1dca9d8ecb6ef2f56cdaa64"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_faders_horizontal_regular.png": {
+      "bytes": 2546,
+      "compressed_bytes": 2546,
+      "method": 0,
+      "sha256": "e52d6e3a79225f7526105c971431802e9d0732eb223525541699b4b7e1b9eeb0"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_file_text_regular.png": {
+      "bytes": 2991,
+      "compressed_bytes": 2991,
+      "method": 0,
+      "sha256": "db068345f94b265ca97cd5107ec47ee6dc8de6e1f9f3f9312392815004593b97"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_flashlight_regular.png": {
+      "bytes": 2375,
+      "compressed_bytes": 2375,
+      "method": 0,
+      "sha256": "d22c24c415af4fc045e742efa58dd3955b23bf3143e95d7903c6689d29c4490b"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_footprints_regular.png": {
+      "bytes": 3856,
+      "compressed_bytes": 3856,
+      "method": 0,
+      "sha256": "d7fa941d4ea3fd6160ef67fbfbd26f6547e6c9291bfccf620346411dc2a51b5e"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_fork_knife_regular.png": {
+      "bytes": 2700,
+      "compressed_bytes": 2700,
+      "method": 0,
+      "sha256": "330540bb5cb96bc0d3168d396d833aae8531adec894bdc7136118867baab90b2"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_gear_six_fill.png": {
+      "bytes": 4341,
+      "compressed_bytes": 4341,
+      "method": 0,
+      "sha256": "a206da831a13b18b949e777449aa62fb4728a536ebca2360337b5c3c98018bb4"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_gear_six_regular.png": {
+      "bytes": 5163,
+      "compressed_bytes": 5163,
+      "method": 0,
+      "sha256": "c0e28ac5346d8e1832747c10f13807d9efa3e0122c015466bae0c87c3c19d56c"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_github_logo_fill.png": {
+      "bytes": 3541,
+      "compressed_bytes": 3541,
+      "method": 0,
+      "sha256": "3884e8f2a12cadbcba130d6e09db2715c1349c044edb6f0954f3bd8216e6ade3"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_headphones_regular.png": {
+      "bytes": 3127,
+      "compressed_bytes": 3127,
+      "method": 0,
+      "sha256": "c50480f4d8bc638dda91b3ff9889f2fb496a3fab94379971efb839994b417496"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_heart_fill.png": {
+      "bytes": 2985,
+      "compressed_bytes": 2985,
+      "method": 0,
+      "sha256": "2bdbce1e44e74b8e6e4e7cdb0908000beb1ff106c9bc5ffc67b78b5fd7d321c9"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_heart_regular.png": {
+      "bytes": 3792,
+      "compressed_bytes": 3792,
+      "method": 0,
+      "sha256": "2b6b0097a18a8f05517bcd42cf87c885a602ef20dc5f9b627e2905a017845cdf"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_house_fill.png": {
+      "bytes": 3010,
+      "compressed_bytes": 3010,
+      "method": 0,
+      "sha256": "74c27f0f681f63a9c62163586f381d1146aafa902ab0081b313731c7488a2b66"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_info_regular.png": {
+      "bytes": 3859,
+      "compressed_bytes": 3859,
+      "method": 0,
+      "sha256": "0dd047ddd252d69961133056ccacac7bee387e3fcb84e9727c4134dbf672d1ec"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_keyboard_regular.png": {
+      "bytes": 3731,
+      "compressed_bytes": 3731,
+      "method": 0,
+      "sha256": "f4ca331c42d5e948876e2d19561dfc538d29ae4e95212ab54b5264fe5026bc9c"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_lightbulb_regular.png": {
+      "bytes": 2973,
+      "compressed_bytes": 2973,
+      "method": 0,
+      "sha256": "769f2c33822fbd6d25a97e22c9314860dd4568289d967d68c6e9026611278378"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_link_simple_regular.png": {
+      "bytes": 4178,
+      "compressed_bytes": 4178,
+      "method": 0,
+      "sha256": "102284f755528bb6adbc724b6f5284c4bb5eeeda2f750e08cf67fd20cb7d214f"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_list_checks_regular.png": {
+      "bytes": 2779,
+      "compressed_bytes": 2779,
+      "method": 0,
+      "sha256": "a2872934bd03fd38b047769c6f3a0854cbb2c6d0683184768125bd98de158e69"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_list_numbers_regular.png": {
+      "bytes": 2609,
+      "compressed_bytes": 2609,
+      "method": 0,
+      "sha256": "3ae866653f8bae1a08c6e95187d38c9f27ce36fc11cd0fa181ef9e3cc051018a"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_lock_key_regular.png": {
+      "bytes": 3034,
+      "compressed_bytes": 3034,
+      "method": 0,
+      "sha256": "2de696973ade282b23d414d5015127a619eb91bea680646010ab7bcd74766537"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_magnifying_glass_regular.png": {
+      "bytes": 2886,
+      "compressed_bytes": 2886,
+      "method": 0,
+      "sha256": "af79673a84a3989c8849fe2b9cc60711828c736820f4680beacbc0c786a8302c"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_math_operations_regular.png": {
+      "bytes": 3279,
+      "compressed_bytes": 3279,
+      "method": 0,
+      "sha256": "107378051b20717498a0f3832eebc4ce0186e047a0e7f06e6ab6589cd16b0d6f"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_microphone_regular.png": {
+      "bytes": 3086,
+      "compressed_bytes": 3086,
+      "method": 0,
+      "sha256": "973e37dd06c8ae91dcaa29c3e4290d2a11bd58d1c16ae483087615fb583b0683"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_minus_regular.png": {
+      "bytes": 614,
+      "compressed_bytes": 614,
+      "method": 0,
+      "sha256": "f0d4bf47cd5a0fbb33c71d67004b0da67cb5ade21f0a756f0bde07b79e81d7a6"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_moon_fill.png": {
+      "bytes": 2990,
+      "compressed_bytes": 2990,
+      "method": 0,
+      "sha256": "bff77ac38b6032d0bdbe09a2535fc57a1aa5fa4fc4448df286724aa8623fae6a"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_music_notes_regular.png": {
+      "bytes": 2361,
+      "compressed_bytes": 2361,
+      "method": 0,
+      "sha256": "839951b432a3d1842351b4970cdc6f5548a0d1b31ecf98aab2dd6c35939ca126"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_palette_regular.png": {
+      "bytes": 5285,
+      "compressed_bytes": 5285,
+      "method": 0,
+      "sha256": "12d4952bfd7228858bd209deb9304c7aac0ae27ba7e5a43f587b520b26227f29"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_pause_fill.png": {
+      "bytes": 1564,
+      "compressed_bytes": 1564,
+      "method": 0,
+      "sha256": "b034725f6acd55e3344f52f21d00a8f5f4f2fa53445fc5b1582bdf2a4b7d04c6"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_pencil_simple_regular.png": {
+      "bytes": 2791,
+      "compressed_bytes": 2791,
+      "method": 0,
+      "sha256": "e584ec3140009b826d93532e69c32a4fab03eeca8b2d5f2587d5c0c89b95c542"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_person_simple_run_regular.png": {
+      "bytes": 3805,
+      "compressed_bytes": 3805,
+      "method": 0,
+      "sha256": "61f3a5213fd63e05aaebca5ad1491f014ca6eab4cf9ab1ba06819d0fb991e39a"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_play_fill.png": {
+      "bytes": 2350,
+      "compressed_bytes": 2350,
+      "method": 0,
+      "sha256": "0b692aac80f622a15466efbcdf1da233f87482f0dfba82da7f0216893a5c0c9f"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_plug_regular.png": {
+      "bytes": 2527,
+      "compressed_bytes": 2527,
+      "method": 0,
+      "sha256": "eaf87bf641ab4d73defe0005f5b8ef56f39233e95ce1d4334bf9095663285f51"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_plus_regular.png": {
+      "bytes": 1744,
+      "compressed_bytes": 1744,
+      "method": 0,
+      "sha256": "706f37d8e3532e0d69530e90e039e25538e452a9b3b23ccf72fa8b058162878e"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_qr_code_regular.png": {
+      "bytes": 4438,
+      "compressed_bytes": 4438,
+      "method": 0,
+      "sha256": "2ec98b213679907249c87c399cdb544c8b577ce8450dc3fadf94d0d7d42667f7"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_question_regular.png": {
+      "bytes": 4469,
+      "compressed_bytes": 4469,
+      "method": 0,
+      "sha256": "35f42f20aa7123d4fad433cf8d32938a65423995340654918fb621836eb1a0e6"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_shield_check_regular.png": {
+      "bytes": 4002,
+      "compressed_bytes": 4002,
+      "method": 0,
+      "sha256": "8e048300efe258a580e7fc1d1fef602bc8ce764c0ac3a3538a117f33787c281e"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_speaker_high_regular.png": {
+      "bytes": 3415,
+      "compressed_bytes": 3415,
+      "method": 0,
+      "sha256": "e4d15ad1718542a5c4d6182487398cc5a939ad148b2221baa6a87a295dfc9339"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_spinner_gap_regular.png": {
+      "bytes": 3182,
+      "compressed_bytes": 3182,
+      "method": 0,
+      "sha256": "c84940bd9337953c12dcb1976f206df5292d810a9b1848cfcbc099d701ae5b6a"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_star_regular.png": {
+      "bytes": 3904,
+      "compressed_bytes": 3904,
+      "method": 0,
+      "sha256": "62114510d2e4e8d06adab7fff9f1fe731b3a0e02277bbe087b4313ad9613b762"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_stop_fill.png": {
+      "bytes": 2304,
+      "compressed_bytes": 2304,
+      "method": 0,
+      "sha256": "346d7a2523b027fe934b8fb6e02ca22ea7ea5861663b459835fcd5fad807b39d"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_sun_regular.png": {
+      "bytes": 3828,
+      "compressed_bytes": 3828,
+      "method": 0,
+      "sha256": "4f01adfc070c6db2518c128b3882484a1117e3639315fcd2d7a430a5936175de"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_tag_regular.png": {
+      "bytes": 3374,
+      "compressed_bytes": 3374,
+      "method": 0,
+      "sha256": "867dd51e66d9d18837c5ce439309dfa9109265ec63db399752096a4ba496fcbe"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_trash_regular.png": {
+      "bytes": 2859,
+      "compressed_bytes": 2859,
+      "method": 0,
+      "sha256": "ac846393c87e0c3025680d665db0bb5944a6ac2f558815c75fd9dd5230e70f40"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_upload_simple_regular.png": {
+      "bytes": 2629,
+      "compressed_bytes": 2629,
+      "method": 0,
+      "sha256": "8a5a817173d43e1a2be98120226182658af1acc8b93e33ba84270d43ab0ad2b9"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_vibrate_regular.png": {
+      "bytes": 3330,
+      "compressed_bytes": 3330,
+      "method": 0,
+      "sha256": "4fe98b007931d194fa84c5ecd0ed9d7144f3988c8ea61631945869866b626f72"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_wave_sine_regular.png": {
+      "bytes": 2228,
+      "compressed_bytes": 2228,
+      "method": 0,
+      "sha256": "dbb733aee7ccfa36c437a1dcdd068bb3e6ef3bcad722d4d1118e680c431d8b2f"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_waveform_regular.png": {
+      "bytes": 2571,
+      "compressed_bytes": 2571,
+      "method": 0,
+      "sha256": "dbbedbd50228ad53d9aacc37706479365ef29693dccae68e33161381c1df807e"
+    },
+    "res/drawable-xxhdpi-v4/ic_phosphor_x_regular.png": {
+      "bytes": 2823,
+      "compressed_bytes": 2823,
+      "method": 0,
+      "sha256": "ec5829bcb31f9ff0010a70cafe0dbdbaed793d73f0bf8a2754c6f990c90c812c"
+    },
+    "res/drawable-xxxhdpi-v4/ic_moon.png": {
+      "bytes": 2523,
+      "compressed_bytes": 2523,
+      "method": 0,
+      "sha256": "8b8b924ff8e139bfd98a9d01f6c48f31a2efb020edb58d0b2b388379dd8ba4c1"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_alarm_regular.png": {
+      "bytes": 7223,
+      "compressed_bytes": 7223,
+      "method": 0,
+      "sha256": "16e444e1c5d063bfa6259430cb6a2ce71b76ca43e63f449b57a20dd352642137"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_arrow_counter_clockwise_regular.png": {
+      "bytes": 5358,
+      "compressed_bytes": 5358,
+      "method": 0,
+      "sha256": "a152a0766d7779f3f933b47928dd90cf277ede22838cf95da570c2574215efdf"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_arrow_left_regular.png": {
+      "bytes": 3281,
+      "compressed_bytes": 3281,
+      "method": 0,
+      "sha256": "4af77ea416b0ea7c3292c539badaac6f4c62138432570129f367186447750f9b"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_arrow_square_out_regular.png": {
+      "bytes": 4626,
+      "compressed_bytes": 4626,
+      "method": 0,
+      "sha256": "98bf49304f3c095b182518d2311320dc3ddc23a1ee70c1a2de3d8467b8a61c1f"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_battery_vertical_medium_regular.png": {
+      "bytes": 3123,
+      "compressed_bytes": 3123,
+      "method": 0,
+      "sha256": "055174029a8fe043a748694eef3662258450d7f3196a008afd8f4afe5f59a4d8"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_bed_regular.png": {
+      "bytes": 3038,
+      "compressed_bytes": 3038,
+      "method": 0,
+      "sha256": "b0ef12c42c540a49b3c4551e2d1aea89c43c2e042586fced216fafd9bc5c5d27"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_bell_regular.png": {
+      "bytes": 5113,
+      "compressed_bytes": 5113,
+      "method": 0,
+      "sha256": "0cbd605bb626f701d9044ca1b02dcf7da782b83a7b9c604289f07777661613e4"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_bell_slash_regular.png": {
+      "bytes": 6895,
+      "compressed_bytes": 6895,
+      "method": 0,
+      "sha256": "995f1a9cf8121d4bc5fc4b2f2184743e28e945cdb25a1f5c87e77234d85933a0"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_broadcast_regular.png": {
+      "bytes": 7591,
+      "compressed_bytes": 7591,
+      "method": 0,
+      "sha256": "afd09c0316a620e8819131b3b3a38ac039794c8320f95f6b8284f6b2bf30f838"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_calendar_blank_regular.png": {
+      "bytes": 4424,
+      "compressed_bytes": 4424,
+      "method": 0,
+      "sha256": "5b2ac142323178bdbf9f49e5096f25bf8c57d52b547ea663a0fb72b1feeae415"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_camera_regular.png": {
+      "bytes": 6175,
+      "compressed_bytes": 6175,
+      "method": 0,
+      "sha256": "6fd3fc1829c9d5fc2d4cc1a17c797c0fc8b93739d62d6a0a555d323626bcc481"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_cards_regular.png": {
+      "bytes": 6135,
+      "compressed_bytes": 6135,
+      "method": 0,
+      "sha256": "50254775afba775059e0736ff4f1393ca6751681f2b8072d2d30aaab33feef7a"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_caret_down_regular.png": {
+      "bytes": 3121,
+      "compressed_bytes": 3121,
+      "method": 0,
+      "sha256": "3664d12ee1d1843216fcc46fa3305ba0619aa48787419acecc1126d1cd972efa"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_caret_right_regular.png": {
+      "bytes": 2861,
+      "compressed_bytes": 2861,
+      "method": 0,
+      "sha256": "868fbcc8ba7024f3f741bff77591a60b55aa26c61916a4acb2bd6b14c73b681b"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_caret_up_regular.png": {
+      "bytes": 2757,
+      "compressed_bytes": 2757,
+      "method": 0,
+      "sha256": "83661316c86f8f3bddeb82e544608c0564217147e6f9d3286dafb4a10ac72607"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_chart_bar_fill.png": {
+      "bytes": 3321,
+      "compressed_bytes": 3321,
+      "method": 0,
+      "sha256": "c1b031771ee77045d923e11ff532b9e887ee7f39d641f378389b5939b5397932"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_chats_regular.png": {
+      "bytes": 5160,
+      "compressed_bytes": 5160,
+      "method": 0,
+      "sha256": "9764c24112d51db00716da6b1537ed0900474ca04a983e02be1aa5c83f390b05"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_check_regular.png": {
+      "bytes": 3162,
+      "compressed_bytes": 3162,
+      "method": 0,
+      "sha256": "5d661c1043963a85c8ea829d9dfb5d81293c5ddc550c043f54b13cbd83bc8191"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_circle_half_regular.png": {
+      "bytes": 5337,
+      "compressed_bytes": 5337,
+      "method": 0,
+      "sha256": "6e265a6e68beb1cb733003de644abfc7cc7b24b6a9e46b869a7fe36cf5ebbb6a"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_clock_regular.png": {
+      "bytes": 6434,
+      "compressed_bytes": 6434,
+      "method": 0,
+      "sha256": "ab2f7da0362b8ba7166d310627d9a629e2abd5a94f3e817c71d9337cb91e97bf"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_cloud_rain_regular.png": {
+      "bytes": 4916,
+      "compressed_bytes": 4916,
+      "method": 0,
+      "sha256": "c52e8b977ae4bc9b354e2eeb6f62cd363cbb14f5d35e05993637c9f916387314"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_cloud_regular.png": {
+      "bytes": 4245,
+      "compressed_bytes": 4245,
+      "method": 0,
+      "sha256": "7db816284749b0721e51c7863d32a73b998dc492a39764807c12a269c0cc655a"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_device_mobile_regular.png": {
+      "bytes": 2556,
+      "compressed_bytes": 2556,
+      "method": 0,
+      "sha256": "675519513cc23b5492993309daca1556621651155d6a2999f541cc57fb1bacc7"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_dots_three_vertical_regular.png": {
+      "bytes": 2201,
+      "compressed_bytes": 2201,
+      "method": 0,
+      "sha256": "cabab13e77fee39ae975d852ba5c0a92dfbd8c32135fbbe1166263463b7ad1fd"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_download_simple_regular.png": {
+      "bytes": 3609,
+      "compressed_bytes": 3609,
+      "method": 0,
+      "sha256": "f9ba576e7646db441e639f4300ee7ca375f4c95c7af1be9164e9cf3e0010a63e"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_exclamation_mark_regular.png": {
+      "bytes": 2410,
+      "compressed_bytes": 2410,
+      "method": 0,
+      "sha256": "61d167aa83e03a262fc7fba6830d59dc01d4d45ec5f0065843c7f417962347ef"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_faders_horizontal_regular.png": {
+      "bytes": 3544,
+      "compressed_bytes": 3544,
+      "method": 0,
+      "sha256": "3e48a3c475e06414b410c8ed28b6b1f302d1e3d7fe658dd2498210d5a73334af"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_file_text_regular.png": {
+      "bytes": 4302,
+      "compressed_bytes": 4302,
+      "method": 0,
+      "sha256": "c53550da3752200eed95d4e21d02f8b23107a8354a1f79c415458de2656ebbf1"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_flashlight_regular.png": {
+      "bytes": 3450,
+      "compressed_bytes": 3450,
+      "method": 0,
+      "sha256": "935cd990f760e7c1a27cf0be7c6545e495c27f0a3cbea8a5f57f254362a1b583"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_footprints_regular.png": {
+      "bytes": 5656,
+      "compressed_bytes": 5656,
+      "method": 0,
+      "sha256": "2256a8c4c7e636f3e35ff47ed64070ff509c1e1d622a6da405bbd44c59b98bd1"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_fork_knife_regular.png": {
+      "bytes": 3961,
+      "compressed_bytes": 3961,
+      "method": 0,
+      "sha256": "e82b5f7b75f13a4cacff1ee222c8ce9d63b75a32f4a9e322b7187579d8284ed4"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_gear_six_fill.png": {
+      "bytes": 6178,
+      "compressed_bytes": 6178,
+      "method": 0,
+      "sha256": "66e80af83f00ca94866ac0b978e3490aa4afcbf5c9e9c59f94b5a29cf134ee9a"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_gear_six_regular.png": {
+      "bytes": 7594,
+      "compressed_bytes": 7594,
+      "method": 0,
+      "sha256": "f388900768fadddadc357a3ad6ef59cc35679f3fff1d24daec8f67590ed723a8"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_github_logo_fill.png": {
+      "bytes": 4991,
+      "compressed_bytes": 4991,
+      "method": 0,
+      "sha256": "e0260c8660bc99d330010fae5214655cd3abf938dd31ee71b0b1bbcbaa3ab246"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_headphones_regular.png": {
+      "bytes": 4410,
+      "compressed_bytes": 4410,
+      "method": 0,
+      "sha256": "cd5ae2215c926eacbc87dfd6612d9dce49140b36d032fed417e3858e4563b9bb"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_heart_fill.png": {
+      "bytes": 4502,
+      "compressed_bytes": 4502,
+      "method": 0,
+      "sha256": "75795765d013d1c94b313e2fd565b5c70e2a03a832142bd98a2c961feb33c54a"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_heart_regular.png": {
+      "bytes": 5335,
+      "compressed_bytes": 5335,
+      "method": 0,
+      "sha256": "64593429d9e804051ef934f68fa117dd2da151ba3943cae3227342d589cf7a1f"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_house_fill.png": {
+      "bytes": 4714,
+      "compressed_bytes": 4714,
+      "method": 0,
+      "sha256": "d9d4589aba16c5425b555e81e6595be53630ae1790c6b94038d677623e9114a8"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_info_regular.png": {
+      "bytes": 5679,
+      "compressed_bytes": 5679,
+      "method": 0,
+      "sha256": "e7ae4cbdbe05821b27d7e409191f45d654e5b75297b3200cc859bde542cc3884"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_keyboard_regular.png": {
+      "bytes": 5639,
+      "compressed_bytes": 5639,
+      "method": 0,
+      "sha256": "5f9f32a339ab18a01646dee7971c74259238e6afc4f84594e1bace374435c467"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_lightbulb_regular.png": {
+      "bytes": 4322,
+      "compressed_bytes": 4322,
+      "method": 0,
+      "sha256": "108596fd5649b90f370d56d5a7e8d943fec8f193563bf4fea4ed0d7e26e375aa"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_link_simple_regular.png": {
+      "bytes": 6004,
+      "compressed_bytes": 6004,
+      "method": 0,
+      "sha256": "f2ad1ebe9ff8480475336f398bd7520ecd4276ae7d09512fa85090657a723a98"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_list_checks_regular.png": {
+      "bytes": 3765,
+      "compressed_bytes": 3765,
+      "method": 0,
+      "sha256": "3f87f9054a50a654ffc2335b4a910836b9eb14412acc60624c7a5fc086795ba8"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_list_numbers_regular.png": {
+      "bytes": 3934,
+      "compressed_bytes": 3934,
+      "method": 0,
+      "sha256": "694d2963546761df6af3ea4462ba0a807c541fbc70f00b68406dc83e7d4f7b2d"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_lock_key_regular.png": {
+      "bytes": 4231,
+      "compressed_bytes": 4231,
+      "method": 0,
+      "sha256": "65a6998cba4e2954fe3e4dba0514bff1c9398f2d17f7747b851d7e4dd197f41b"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_magnifying_glass_regular.png": {
+      "bytes": 4111,
+      "compressed_bytes": 4111,
+      "method": 0,
+      "sha256": "945e2fe72cd08c7c5d0a7863782e1d6382b4397943cdfa9b603e1aff7096ac94"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_math_operations_regular.png": {
+      "bytes": 4633,
+      "compressed_bytes": 4633,
+      "method": 0,
+      "sha256": "b4fffbaee435938ffbf5895ac7d26338cb6f880c3553fbe4bcf972817e57971e"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_microphone_regular.png": {
+      "bytes": 4575,
+      "compressed_bytes": 4575,
+      "method": 0,
+      "sha256": "6f41e8739d9a2c91c4ef5a229236f1c504366413ce8b1bd160bd6d3dd6d4c73a"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_minus_regular.png": {
+      "bytes": 940,
+      "compressed_bytes": 940,
+      "method": 0,
+      "sha256": "990af1d97dae297e9ae9ef05718714d888e8c11b8f706df676a918df0943d773"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_moon_fill.png": {
+      "bytes": 4258,
+      "compressed_bytes": 4258,
+      "method": 0,
+      "sha256": "a2e9bb5d19b6b58983ca7632cb2a31179a041cdd3dd64ae756437acb2257fcf1"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_music_notes_regular.png": {
+      "bytes": 3282,
+      "compressed_bytes": 3282,
+      "method": 0,
+      "sha256": "d70fe7321f8e9c023170ed1b8d34ee08cc16c28321e423e0cb261d27a8522934"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_palette_regular.png": {
+      "bytes": 7743,
+      "compressed_bytes": 7743,
+      "method": 0,
+      "sha256": "82aa1e30d79c2613f21565ad8f41c8a3f8b2a3bd9ddf1ea0f09dfc687c46f923"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_pause_fill.png": {
+      "bytes": 2376,
+      "compressed_bytes": 2376,
+      "method": 0,
+      "sha256": "b2fdf2200617ce31854a26c50a41649f979ab942feeb4d7ceb5b2b44017db22d"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_pencil_simple_regular.png": {
+      "bytes": 4108,
+      "compressed_bytes": 4108,
+      "method": 0,
+      "sha256": "f8c4a7eedf7eef739252cea4bd317e2d1f8fbb2b15d0d1e4bce80b5ca2d23899"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_person_simple_run_regular.png": {
+      "bytes": 5491,
+      "compressed_bytes": 5491,
+      "method": 0,
+      "sha256": "7b80f5da306e3ad6add6ec4286763e5f73c12e17d4a7e028a445dbee426eb5e2"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_play_fill.png": {
+      "bytes": 3474,
+      "compressed_bytes": 3474,
+      "method": 0,
+      "sha256": "c27f493cb024f9218be082e9cdd65714b35fb82880ef596b811af6ab4c0dbc87"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_plug_regular.png": {
+      "bytes": 3512,
+      "compressed_bytes": 3512,
+      "method": 0,
+      "sha256": "6a89b7a91621d8c3d7bc6fa78c12c257f2d90483af50aa2cbdf4503e4e26ede1"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_plus_regular.png": {
+      "bytes": 2447,
+      "compressed_bytes": 2447,
+      "method": 0,
+      "sha256": "664d4848eabcda9efd8210d3ac06478b1d1ad2fce7af7419486be62f99b53642"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_qr_code_regular.png": {
+      "bytes": 6373,
+      "compressed_bytes": 6373,
+      "method": 0,
+      "sha256": "7467a90741638304b3e3b53ac2048728e284f984f8f5efcb56976130a684dcbe"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_question_regular.png": {
+      "bytes": 6610,
+      "compressed_bytes": 6610,
+      "method": 0,
+      "sha256": "0c8fae763db14438a46d243a6111a2629a3dc05b688427076721e55949e6f83a"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_shield_check_regular.png": {
+      "bytes": 5582,
+      "compressed_bytes": 5582,
+      "method": 0,
+      "sha256": "0a150905c9cbc019de66eb6cfa57a281a7a5bffb06bffab77a4a1d7110b80a8a"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_speaker_high_regular.png": {
+      "bytes": 4928,
+      "compressed_bytes": 4928,
+      "method": 0,
+      "sha256": "333eef9ec302d4df099ea208080006bd0f2014a66fbe89c647adabc59a67134f"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_spinner_gap_regular.png": {
+      "bytes": 4466,
+      "compressed_bytes": 4466,
+      "method": 0,
+      "sha256": "461a9d24ffd3805415a636fcb19ee718bffb20ddba8e573e0e0b31a8861fdb7c"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_star_regular.png": {
+      "bytes": 5496,
+      "compressed_bytes": 5496,
+      "method": 0,
+      "sha256": "a71edbe0cf7ad26699dfbf7a3ced12cbea37845933bc4b9479be66fd96040446"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_stop_fill.png": {
+      "bytes": 3823,
+      "compressed_bytes": 3823,
+      "method": 0,
+      "sha256": "842f4c376bc237276b94ea5b5f5e13473b84edf42f1df92a16775875a3dd3317"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_sun_regular.png": {
+      "bytes": 5353,
+      "compressed_bytes": 5353,
+      "method": 0,
+      "sha256": "a9f7b4c8c918f65dfa95e84071d3fbdb6be5dc7deb3cde25a6a98bd91793ca55"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_tag_regular.png": {
+      "bytes": 4871,
+      "compressed_bytes": 4871,
+      "method": 0,
+      "sha256": "10caf3e4fb95a1183c9a87a4346c36111efc0bb0642c204eef18d384495f4e29"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_trash_regular.png": {
+      "bytes": 4158,
+      "compressed_bytes": 4158,
+      "method": 0,
+      "sha256": "6ab8740d684c8e1c01d6d76edb87108fb18a1e2e47993363b6ec61a7bc2bb636"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_upload_simple_regular.png": {
+      "bytes": 3690,
+      "compressed_bytes": 3690,
+      "method": 0,
+      "sha256": "0dfb8cd92670787d6f03f525cc01cfd4aa00a4c5502d63fd0fb2c4f3a479fb5e"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_vibrate_regular.png": {
+      "bytes": 4922,
+      "compressed_bytes": 4922,
+      "method": 0,
+      "sha256": "e175afbe1cc428118fb93e11cfe85212bf8d5cc68853f8553d421187d4db6567"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_wave_sine_regular.png": {
+      "bytes": 3156,
+      "compressed_bytes": 3156,
+      "method": 0,
+      "sha256": "fe80a63e48b34685699b75175e7c11f6e37e4c04b099c60358ef24eaecaebfa0"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_waveform_regular.png": {
+      "bytes": 3796,
+      "compressed_bytes": 3796,
+      "method": 0,
+      "sha256": "e2775176d76443741fb572eb87eb49e021f0c9481fb78463e52fdac443e4af7e"
+    },
+    "res/drawable-xxxhdpi-v4/ic_phosphor_x_regular.png": {
+      "bytes": 4143,
+      "compressed_bytes": 4143,
+      "method": 0,
+      "sha256": "be1a45eb2d019bc8aaea7aadebcc78420ae2b2b4e99902cfd4c6efd2a1905d22"
+    },
+    "res/drawable-xxxhdpi-v4/ic_sleepwell_background.png": {
+      "bytes": 144716,
+      "compressed_bytes": 144716,
+      "method": 0,
+      "sha256": "6c52a4758c534a5c6be32fe9b0d780abf60c9a5a4da0f7cd9dc5b749649a03ba"
+    },
+    "res/drawable-xxxhdpi-v4/ic_sleepwell_monochrome_raster.png": {
+      "bytes": 29855,
+      "compressed_bytes": 29855,
+      "method": 0,
+      "sha256": "b4f8720600433002851f3ea4122850f834926428bcb0c3294555e1d860c46ec7"
+    }
+  },
+  "removed": {
+    "res/drawable/$ic_sleepwell_background__0.xml": {
+      "bytes": 752,
+      "compressed_bytes": 324,
+      "method": 8,
+      "sha256": "0041ec8eff76aebc01622092c0689a3457ee99cf35e286cf4959b4f451b5d2a8"
+    },
+    "res/drawable/$ic_sleepwell_foreground__0.xml": {
+      "bytes": 752,
+      "compressed_bytes": 323,
+      "method": 8,
+      "sha256": "1abe734c4e6dcf6e44a79e582426f74eba8a76240e97352d29794f8bf8ffc7fb"
+    },
+    "res/drawable/$ic_sleepwell_foreground__1.xml": {
+      "bytes": 752,
+      "compressed_bytes": 323,
+      "method": 8,
+      "sha256": "b556d72e97d8500573436cfd9ece04d46d563c7853a801c57213629c3fdaff02"
+    },
+    "res/drawable/ic_moon.xml": {
+      "bytes": 876,
+      "compressed_bytes": 434,
+      "method": 8,
+      "sha256": "e3581aec83f0ff24d8c09fbfc72d829ffe51584bdded409bb8636fd0a3f89cc9"
+    },
+    "res/drawable/ic_phosphor_alarm_regular.xml": {
+      "bytes": 908,
+      "compressed_bytes": 461,
+      "method": 8,
+      "sha256": "c4ed9dc4f6a1c8579e460eb9588fcae0c2eb70451d1c7e5f6fda5ce8a2a87e3b"
+    },
+    "res/drawable/ic_phosphor_arrow_counter_clockwise_regular.xml": {
+      "bytes": 816,
+      "compressed_bytes": 432,
+      "method": 8,
+      "sha256": "c217c55d11cff4cf19273a3def0334a34d2472130d4e5b0a0935ac777980bbf0"
+    },
+    "res/drawable/ic_phosphor_arrow_left_regular.xml": {
+      "bytes": 736,
+      "compressed_bytes": 375,
+      "method": 8,
+      "sha256": "8d2c8a1f70f3abef4c3bc16eabc87fa233d9f872426f781a8e51c0e53a41689e"
+    },
+    "res/drawable/ic_phosphor_arrow_square_out_regular.xml": {
+      "bytes": 836,
+      "compressed_bytes": 434,
+      "method": 8,
+      "sha256": "2ab605c51cdcaa89e165211aab675086a17ca724bf645a69e5260ce3c169e09f"
+    },
+    "res/drawable/ic_phosphor_battery_vertical_medium_regular.xml": {
+      "bytes": 932,
+      "compressed_bytes": 434,
+      "method": 8,
+      "sha256": "80a7912e113151cc12f7efa4a0736c72315216bd1e120fe37259168cf9d1b4da"
+    },
+    "res/drawable/ic_phosphor_bed_regular.xml": {
+      "bytes": 736,
+      "compressed_bytes": 387,
+      "method": 8,
+      "sha256": "fd2d4e43524db23364fd1e10e8dd9c61aca29e1ce73833e84304ef742afb54af"
+    },
+    "res/drawable/ic_phosphor_bell_regular.xml": {
+      "bytes": 888,
+      "compressed_bytes": 487,
+      "method": 8,
+      "sha256": "8ecdf0b6f66c6f251fa55b7128e171dcb508b79800d1a6e2db270fb6593ca32e"
+    },
+    "res/drawable/ic_phosphor_bell_slash_regular.xml": {
+      "bytes": 1108,
+      "compressed_bytes": 599,
+      "method": 8,
+      "sha256": "1f93ab06725f8c72fe237df40b187563423b5633772e73bc417100e7a8e62bb7"
+    },
+    "res/drawable/ic_phosphor_broadcast_regular.xml": {
+      "bytes": 1188,
+      "compressed_bytes": 571,
+      "method": 8,
+      "sha256": "ca38e6c407658c386ca60726ad330e7f4abb2b1e2d39715b82d09cabb8a27f7e"
+    },
+    "res/drawable/ic_phosphor_calendar_blank_regular.xml": {
+      "bytes": 816,
+      "compressed_bytes": 394,
+      "method": 8,
+      "sha256": "7e910c8ec76f4d48940d7f736ac1d9ca59cfa8e8cb614f70cf434156b385511b"
+    },
+    "res/drawable/ic_phosphor_camera_regular.xml": {
+      "bytes": 988,
+      "compressed_bytes": 507,
+      "method": 8,
+      "sha256": "85b3ca678afc3dee917eef09b7601ba130f64adaceb00e233e25b8e90c3630a4"
+    },
+    "res/drawable/ic_phosphor_cards_regular.xml": {
+      "bytes": 776,
+      "compressed_bytes": 394,
+      "method": 8,
+      "sha256": "8d5541e18b239a6820c03151097a4d5176d72a80b433d942fb1bf70faf869fb2"
+    },
+    "res/drawable/ic_phosphor_caret_down_regular.xml": {
+      "bytes": 700,
+      "compressed_bytes": 372,
+      "method": 8,
+      "sha256": "5af2f78b949027d9ac219e72dab3e69bca9e185eb0e21d0bf77fb334353c99bf"
+    },
+    "res/drawable/ic_phosphor_caret_right_regular.xml": {
+      "bytes": 708,
+      "compressed_bytes": 364,
+      "method": 8,
+      "sha256": "942a72b0eaed5e734d834a6574183145b1f153fa9ad810a0cdab7f729530e388"
+    },
+    "res/drawable/ic_phosphor_caret_up_regular.xml": {
+      "bytes": 720,
+      "compressed_bytes": 364,
+      "method": 8,
+      "sha256": "7a17e55e8c4c4e91f5bd36d09711bc2e588bbedda8154296f650dfd0c9a10010"
+    },
+    "res/drawable/ic_phosphor_chart_bar_fill.xml": {
+      "bytes": 772,
+      "compressed_bytes": 376,
+      "method": 8,
+      "sha256": "bac57e45cc661861e517b991039ab468b59ee7a8c9465422154d504384e85d70"
+    },
+    "res/drawable/ic_phosphor_chats_regular.xml": {
+      "bytes": 904,
+      "compressed_bytes": 475,
+      "method": 8,
+      "sha256": "b627d5b81b2f28d2088722070afe05e7d662f74c8b3b6a3996431770013db669"
+    },
+    "res/drawable/ic_phosphor_check_regular.xml": {
+      "bytes": 704,
+      "compressed_bytes": 366,
+      "method": 8,
+      "sha256": "414209150e2d0c4aa1e55e450dff40040a9f16094956f1536d2066ed635b9ab1"
+    },
+    "res/drawable/ic_phosphor_circle_half_regular.xml": {
+      "bytes": 884,
+      "compressed_bytes": 452,
+      "method": 8,
+      "sha256": "8cebbd2278d10d374febd91c7e1c688da1d383af667f4d2567deca44dbaa3208"
+    },
+    "res/drawable/ic_phosphor_clock_regular.xml": {
+      "bytes": 776,
+      "compressed_bytes": 397,
+      "method": 8,
+      "sha256": "17d4058ef8850017483f7507dffa5a8bd13d8e9fd56df25024a13700eb0596db"
+    },
+    "res/drawable/ic_phosphor_cloud_rain_regular.xml": {
+      "bytes": 952,
+      "compressed_bytes": 502,
+      "method": 8,
+      "sha256": "a5826d5087af3481e13ae902190a370ef9bc0ccd40d42d857e7b375b90ba369e"
+    },
+    "res/drawable/ic_phosphor_cloud_regular.xml": {
+      "bytes": 768,
+      "compressed_bytes": 401,
+      "method": 8,
+      "sha256": "c63f7ba32c2d22fdca46f3da88b9da83fdbf81735160176716e828c5e90b6a60"
+    },
+    "res/drawable/ic_phosphor_device_mobile_regular.xml": {
+      "bytes": 800,
+      "compressed_bytes": 408,
+      "method": 8,
+      "sha256": "f5d92d41ee4b38e952b24d1fc42487c9684dd7593b22768204757eca212893e3"
+    },
+    "res/drawable/ic_phosphor_dots_three_vertical_regular.xml": {
+      "bytes": 728,
+      "compressed_bytes": 359,
+      "method": 8,
+      "sha256": "bf4e58cd6f5d03ef7571dad0ecf7a2c8c60053bb59d69f99bebdf625b7be5b3e"
+    },
+    "res/drawable/ic_phosphor_download_simple_regular.xml": {
+      "bytes": 808,
+      "compressed_bytes": 405,
+      "method": 8,
+      "sha256": "6a265a894e959ab3dec3f54209a7e1084f927f33420131b6d8dc98fcbc551f33"
+    },
+    "res/drawable/ic_phosphor_exclamation_mark_regular.xml": {
+      "bytes": 696,
+      "compressed_bytes": 364,
+      "method": 8,
+      "sha256": "915220658847f269a2cd96eeccda2d1d35e2d036a4a6cf620aedb31b344ac45e"
+    },
+    "res/drawable/ic_phosphor_faders_horizontal_regular.xml": {
+      "bytes": 848,
+      "compressed_bytes": 414,
+      "method": 8,
+      "sha256": "acdb589b017e524c00f03e919c803f0def1339377d6bb1d77fa1ea62165cac7e"
+    },
+    "res/drawable/ic_phosphor_file_text_regular.xml": {
+      "bytes": 904,
+      "compressed_bytes": 454,
+      "method": 8,
+      "sha256": "984e65abb58f8b6b93511f9fb0d5741ca7071a4e88e34811f9d2287c693078b0"
+    },
+    "res/drawable/ic_phosphor_flashlight_regular.xml": {
+      "bytes": 936,
+      "compressed_bytes": 471,
+      "method": 8,
+      "sha256": "9e7e361a33f1e1c985c4be691b16b866def5ca972395537c5469c02e772d4847"
+    },
+    "res/drawable/ic_phosphor_footprints_regular.xml": {
+      "bytes": 1404,
+      "compressed_bytes": 705,
+      "method": 8,
+      "sha256": "1a529a88a77465f120fd1656d37f22c074f568d5f0a7ba1e0f24ed01e26e561b"
+    },
+    "res/drawable/ic_phosphor_fork_knife_regular.xml": {
+      "bytes": 1040,
+      "compressed_bytes": 538,
+      "method": 8,
+      "sha256": "ffecd58eeba95c90e28dbf8ea3a9a4c053e79966518e262e056ef50621232e0f"
+    },
+    "res/drawable/ic_phosphor_gear_six_fill.xml": {
+      "bytes": 1216,
+      "compressed_bytes": 575,
+      "method": 8,
+      "sha256": "bae1269d3e2a36b2df283948614ec90c91f434c3a5471345986656c6963f4612"
+    },
+    "res/drawable/ic_phosphor_gear_six_regular.xml": {
+      "bytes": 1952,
+      "compressed_bytes": 878,
+      "method": 8,
+      "sha256": "841c1d9bdaa77146c7149ee634b2bb06f928f375496d3f332f260d9148420811"
+    },
+    "res/drawable/ic_phosphor_github_logo_fill.xml": {
+      "bytes": 1032,
+      "compressed_bytes": 506,
+      "method": 8,
+      "sha256": "dad7be2340cdabd7ca382b02cf62770e57aa439b644936826c4e126a2d9cb23e"
+    },
+    "res/drawable/ic_phosphor_heart_fill.xml": {
+      "bytes": 780,
+      "compressed_bytes": 424,
+      "method": 8,
+      "sha256": "c291694c01493d05332d2db341507fb75cdda66eb1688f1cb4abf9fe3130b2b4"
+    },
+    "res/drawable/ic_phosphor_heart_regular.xml": {
+      "bytes": 980,
+      "compressed_bytes": 523,
+      "method": 8,
+      "sha256": "30bc66ac35180a156bd391f8afacf6b4bc0d74d66cf2fb90c84418a4de9dc0e2"
+    },
+    "res/drawable/ic_phosphor_house_fill.xml": {
+      "bytes": 784,
+      "compressed_bytes": 401,
+      "method": 8,
+      "sha256": "d152ef13c10121d0d4adf8f953112146bb851fb6274a41161151b150ff81e96e"
+    },
+    "res/drawable/ic_phosphor_info_regular.xml": {
+      "bytes": 836,
+      "compressed_bytes": 428,
+      "method": 8,
+      "sha256": "ad2ac3f0a36324afcbff74fc7a1aced34962dbd0b864f96065bb0297a941a830"
+    },
+    "res/drawable/ic_phosphor_keyboard_regular.xml": {
+      "bytes": 1004,
+      "compressed_bytes": 447,
+      "method": 8,
+      "sha256": "c1f60e40a7e02b1eb8387fd74d7a0cfaa102a82b232167577f43141710ec8c85"
+    },
+    "res/drawable/ic_phosphor_lightbulb_regular.xml": {
+      "bytes": 1192,
+      "compressed_bytes": 612,
+      "method": 8,
+      "sha256": "aa8eb40368a750d61e42a4e610bf14de5ef8792db272c1ccae0e396403f80c24"
+    },
+    "res/drawable/ic_phosphor_link_simple_regular.xml": {
+      "bytes": 996,
+      "compressed_bytes": 490,
+      "method": 8,
+      "sha256": "5f793386774772a7e50558e509bb0af5970911fa2564910ca1b31deb7299d02f"
+    },
+    "res/drawable/ic_phosphor_list_checks_regular.xml": {
+      "bytes": 1056,
+      "compressed_bytes": 459,
+      "method": 8,
+      "sha256": "6c254c302f8c4a954099efbb48523f55571a8fc8761d3860f99135f103c6e819"
+    },
+    "res/drawable/ic_phosphor_list_numbers_regular.xml": {
+      "bytes": 1168,
+      "compressed_bytes": 583,
+      "method": 8,
+      "sha256": "9b1fdb673ca7f72943b142626bfff6c2eb3456da36c73a66b0739758fadf6260"
+    },
+    "res/drawable/ic_phosphor_lock_key_regular.xml": {
+      "bytes": 884,
+      "compressed_bytes": 456,
+      "method": 8,
+      "sha256": "53bcba56b0156848c2571d0d76a70b05b110ee016f9ab143a647ff853b3ad21e"
+    },
+    "res/drawable/ic_phosphor_magnifying_glass_regular.xml": {
+      "bytes": 732,
+      "compressed_bytes": 391,
+      "method": 8,
+      "sha256": "50b350079f8ead6517bf45db23d3438a02194bdc11531c3f91a0c3697ff6677d"
+    },
+    "res/drawable/ic_phosphor_math_operations_regular.xml": {
+      "bytes": 1044,
+      "compressed_bytes": 491,
+      "method": 8,
+      "sha256": "cfa895f693720d6b031f13e3c18740d199ba57628352439c8e4479f9572dd9a7"
+    },
+    "res/drawable/ic_phosphor_microphone_regular.xml": {
+      "bytes": 852,
+      "compressed_bytes": 425,
+      "method": 8,
+      "sha256": "6dacb6101aaeaeab74a420ba576833fc2afa648767b74e0001360b51594620e8"
+    },
+    "res/drawable/ic_phosphor_minus_regular.xml": {
+      "bytes": 652,
+      "compressed_bytes": 339,
+      "method": 8,
+      "sha256": "0b1558af8a397d8bf9465b6e8ef5a77337d2298268501596bbc122766caa10f3"
+    },
+    "res/drawable/ic_phosphor_moon_fill.xml": {
+      "bytes": 776,
+      "compressed_bytes": 390,
+      "method": 8,
+      "sha256": "9259006a0963e79ed375ea3de604dde24b0e13660b06585b4dd13ec91da73a47"
+    },
+    "res/drawable/ic_phosphor_music_notes_regular.xml": {
+      "bytes": 860,
+      "compressed_bytes": 446,
+      "method": 8,
+      "sha256": "a7469d7ff48a0a0cbbe8366db439e55c1271994a0d940611ed1b3dec323b0fc2"
+    },
+    "res/drawable/ic_phosphor_palette_regular.xml": {
+      "bytes": 1192,
+      "compressed_bytes": 586,
+      "method": 8,
+      "sha256": "88a789fd73e81942f7763cfd1a1c259a17959b721eba2576c2ceab674b825724"
+    },
+    "res/drawable/ic_phosphor_pause_fill.xml": {
+      "bytes": 776,
+      "compressed_bytes": 373,
+      "method": 8,
+      "sha256": "809f511ec41a63470eff5fe76b8f0ebeb07a2a17534945db74646d676b92a46c"
+    },
+    "res/drawable/ic_phosphor_pencil_simple_regular.xml": {
+      "bytes": 836,
+      "compressed_bytes": 447,
+      "method": 8,
+      "sha256": "b957999835eff58038379dade860c9b846dac46d648d90c522f117a09efbbf6a"
+    },
+    "res/drawable/ic_phosphor_person_simple_run_regular.xml": {
+      "bytes": 1196,
+      "compressed_bytes": 642,
+      "method": 8,
+      "sha256": "0bcae4c3aafd9a35e0fdbf7e7af30c08fb226628682ff61b1940aad7972ae736"
+    },
+    "res/drawable/ic_phosphor_play_fill.xml": {
+      "bytes": 780,
+      "compressed_bytes": 408,
+      "method": 8,
+      "sha256": "0896c6684d42ae9ebf1e0a74ae51f21db08fc0d3be0f7afbf3e10f035162bd09"
+    },
+    "res/drawable/ic_phosphor_plug_regular.xml": {
+      "bytes": 1012,
+      "compressed_bytes": 497,
+      "method": 8,
+      "sha256": "2deeac107d7a96ada2910467cc9731c4553a8049ceaafa9bafa12ef400afe3bd"
+    },
+    "res/drawable/ic_phosphor_plus_regular.xml": {
+      "bytes": 700,
+      "compressed_bytes": 355,
+      "method": 8,
+      "sha256": "11b0ce0ced140b314c0a2b8f38ab8b6270619de4ffde0ba72976195ec96f9d93"
+    },
+    "res/drawable/ic_phosphor_qr_code_regular.xml": {
+      "bytes": 1120,
+      "compressed_bytes": 471,
+      "method": 8,
+      "sha256": "341e5d19750a577cf4b7bd5671c7d4ce40b6b361532bac46693491f02e775bf2"
+    },
+    "res/drawable/ic_phosphor_question_regular.xml": {
+      "bytes": 932,
+      "compressed_bytes": 492,
+      "method": 8,
+      "sha256": "eca6c0a93c7aa00c6c9d18fcf9515564be105c1c5523a140f49bc30d3e02c6d0"
+    },
+    "res/drawable/ic_phosphor_shield_check_regular.xml": {
+      "bytes": 1024,
+      "compressed_bytes": 549,
+      "method": 8,
+      "sha256": "7d51d8c713b5c1f230432ff170241700eb4bd513f7566ce1a500ae614019165b"
+    },
+    "res/drawable/ic_phosphor_speaker_high_regular.xml": {
+      "bytes": 1004,
+      "compressed_bytes": 523,
+      "method": 8,
+      "sha256": "13c4b7c84a74706cc5262fee7ccb7158277f27cb8d416b224866e916e9cd3d93"
+    },
+    "res/drawable/ic_phosphor_spinner_gap_regular.xml": {
+      "bytes": 1020,
+      "compressed_bytes": 491,
+      "method": 8,
+      "sha256": "58c286f2161194f683e32af929b758b4a8e35d0b1d341b3d1c6ce1969b35516b"
+    },
+    "res/drawable/ic_phosphor_star_regular.xml": {
+      "bytes": 1300,
+      "compressed_bytes": 675,
+      "method": 8,
+      "sha256": "9395566b23a2c22acfe4a4e8c30f331f339a28c2b38c55cc5bff792568651fb8"
+    },
+    "res/drawable/ic_phosphor_stop_fill.xml": {
+      "bytes": 684,
+      "compressed_bytes": 346,
+      "method": 8,
+      "sha256": "7f2db61f27e9066e78bfd502de7e7b46cfb4c345898ade47a9720be386573d82"
+    },
+    "res/drawable/ic_phosphor_sun_regular.xml": {
+      "bytes": 1176,
+      "compressed_bytes": 547,
+      "method": 8,
+      "sha256": "42cb96a3e7d79139622dfb0849385232c33e1dfc35f11ec7f61ca0a7716a1860"
+    },
+    "res/drawable/ic_phosphor_tag_regular.xml": {
+      "bytes": 836,
+      "compressed_bytes": 439,
+      "method": 8,
+      "sha256": "f8ed72123b0b90a0959cbeba58d5aff7ad6deb0b874c2694913a233fb189e30c"
+    },
+    "res/drawable/ic_phosphor_trash_regular.xml": {
+      "bytes": 880,
+      "compressed_bytes": 438,
+      "method": 8,
+      "sha256": "8b9d8771cb36d37bb523b7b8b283c221c1de86e3281c02d27edb13bb3fc3230c"
+    },
+    "res/drawable/ic_phosphor_upload_simple_regular.xml": {
+      "bytes": 812,
+      "compressed_bytes": 406,
+      "method": 8,
+      "sha256": "60df148fbbcc2dca0537b7d143c39d263eeae983bd39d2e1c4ac6ced95795768"
+    },
+    "res/drawable/ic_phosphor_vibrate_regular.xml": {
+      "bytes": 932,
+      "compressed_bytes": 422,
+      "method": 8,
+      "sha256": "0b1c1f06f4d60ad41c4402f41c494765118bcf7b5900126546514932513d43ce"
+    },
+    "res/drawable/ic_phosphor_wave_sine_regular.xml": {
+      "bytes": 876,
+      "compressed_bytes": 483,
+      "method": 8,
+      "sha256": "ffbb5406b4b40e2678da981baa0481a5ee39eb8ed13651769cd06f5a5116e88f"
+    },
+    "res/drawable/ic_phosphor_waveform_regular.xml": {
+      "bytes": 868,
+      "compressed_bytes": 405,
+      "method": 8,
+      "sha256": "43eaf71ba1a54c330459a7ace5a1556650b34caba5ecef36bab84f1da7d8c9a9"
+    },
+    "res/drawable/ic_phosphor_x_regular.xml": {
+      "bytes": 772,
+      "compressed_bytes": 389,
+      "method": 8,
+      "sha256": "1bf237dfccaf1e168597931eda576be9ab26bbe0bb750e59148f50bd4ebabae8"
+    },
+    "res/drawable/ic_sleepwell_background.xml": {
+      "bytes": 664,
+      "compressed_bytes": 329,
+      "method": 8,
+      "sha256": "cba185c4b67d49b7d8e5764dc29444c31f45d39e6ea6c3cd9207f9ebd45a5ef8"
+    },
+    "res/drawable/ic_sleepwell_foreground.xml": {
+      "bytes": 1616,
+      "compressed_bytes": 677,
+      "method": 8,
+      "sha256": "bb1e5b87194eb52f68d49213da2560bfe334770edb4b59ca56fde61070c1c441"
+    }
+  },
+  "changed": {
+    "AndroidManifest.xml": {
+      "baseline": {
+        "bytes": 73880,
+        "compressed_bytes": 12329,
+        "method": 8,
+        "sha256": "9c55bba44280f6f6f14338950a62119fade222d8c21c6fd17dd5812f6eb078aa"
+      },
+      "candidate": {
+        "bytes": 73880,
+        "compressed_bytes": 12331,
+        "method": 8,
+        "sha256": "b00d864af3fa465da7c288a779da761ba66c38f963a56607565ac8402b915eca"
+      }
+    },
+    "classes2.dex": {
+      "baseline": {
+        "bytes": 161292,
+        "compressed_bytes": 161292,
+        "method": 0,
+        "sha256": "ef4accc0c5a72e39180373527182e7ef588741f937e975807427c8b7dfebad50"
+      },
+      "candidate": {
+        "bytes": 161508,
+        "compressed_bytes": 161508,
+        "method": 0,
+        "sha256": "32cb3c3eaef8dfbbd27bf20c9ce8f03681d65cfa85cefd74ac633c382b7f1edf"
+      }
+    },
+    "classes3.dex": {
+      "baseline": {
+        "bytes": 4973300,
+        "compressed_bytes": 4973300,
+        "method": 0,
+        "sha256": "97f24fa080d66b91fd740d51a6a4691bb8c9d7559c3a119d0fd3fd4f07e5c292"
+      },
+      "candidate": {
+        "bytes": 4994380,
+        "compressed_bytes": 4994380,
+        "method": 0,
+        "sha256": "4de24aaf3ba215ca011cc466dc45c8b9cc401f7a2fcc835def4d0418df681204"
+      }
+    },
+    "res/drawable-v21/abc_edit_text_material.xml": {
+      "baseline": {
+        "bytes": 1172,
+        "compressed_bytes": 463,
+        "method": 8,
+        "sha256": "f769d1e4ec160ab6fea513601aafd35f4ea49a2c29b6679355ae9c8c54f3d4d6"
+      },
+      "candidate": {
+        "bytes": 1172,
+        "compressed_bytes": 462,
+        "method": 8,
+        "sha256": "5125370c1b2515a505c02c1bfffaf059ec2ed186efa07ee20b9da3a8cb81ef3c"
+      }
+    },
+    "res/drawable/abc_btn_borderless_material.xml": {
+      "baseline": {
+        "bytes": 588,
+        "compressed_bytes": 252,
+        "method": 8,
+        "sha256": "f4f68c4f7a9beb74377d915e73d26f55e2f8cb6b04e86efb27c45dd9424d5014"
+      },
+      "candidate": {
+        "bytes": 588,
+        "compressed_bytes": 252,
+        "method": 8,
+        "sha256": "008ab99ec5591cf6e37a9826ee9451566ba2e3e8821905f017506c34c02dc7aa"
+      }
+    },
+    "res/drawable/abc_btn_check_material.xml": {
+      "baseline": {
+        "bytes": 464,
+        "compressed_bytes": 230,
+        "method": 8,
+        "sha256": "c80d626eb3cafde0f2665872b220daba22a380debdf77b30b33b86fde691cd67"
+      },
+      "candidate": {
+        "bytes": 464,
+        "compressed_bytes": 230,
+        "method": 8,
+        "sha256": "97c60161f8e9396a70e993ffbbbe6a9d7096b62b639d00392e9b9f3dbcc072a2"
+      }
+    },
+    "res/drawable/abc_btn_check_material_anim.xml": {
+      "baseline": {
+        "bytes": 816,
+        "compressed_bytes": 344,
+        "method": 8,
+        "sha256": "e4ce23c667b4587950fa2e87f5ac422df583d159dccf856336752ce18923fdfd"
+      },
+      "candidate": {
+        "bytes": 816,
+        "compressed_bytes": 344,
+        "method": 8,
+        "sha256": "24632378f0d4b51f98032c3a8ca8eeb533cd98f5c6f62a1625f4fda4de5df409"
+      }
+    },
+    "res/drawable/abc_btn_radio_material.xml": {
+      "baseline": {
+        "bytes": 464,
+        "compressed_bytes": 230,
+        "method": 8,
+        "sha256": "78b90eb1c7a058ddba3c18f8b93529b9ab98db7900ddc6390b8789440b4aedc7"
+      },
+      "candidate": {
+        "bytes": 464,
+        "compressed_bytes": 231,
+        "method": 8,
+        "sha256": "3ea724e118328647d6d4a83fee5146d8a2d682c997e3d7b7fda7bcb8d490da80"
+      }
+    },
+    "res/drawable/abc_btn_radio_material_anim.xml": {
+      "baseline": {
+        "bytes": 816,
+        "compressed_bytes": 341,
+        "method": 8,
+        "sha256": "da247e47bd9e7e7ed186807e62224bb8452a8b0cc13bdb783a6e48f282e3d463"
+      },
+      "candidate": {
+        "bytes": 816,
+        "compressed_bytes": 341,
+        "method": 8,
+        "sha256": "4f131b7af20c081537c637574418ceacb968799ae4e573caae662144ac482a0f"
+      }
+    },
+    "res/drawable/abc_item_background_holo_dark.xml": {
+      "baseline": {
+        "bytes": 1012,
+        "compressed_bytes": 318,
+        "method": 8,
+        "sha256": "d8230d6b08d53e596ad0e17ad1b7ed74e3f16c30fab322e8e1c0c03de74539ce"
+      },
+      "candidate": {
+        "bytes": 1012,
+        "compressed_bytes": 319,
+        "method": 8,
+        "sha256": "9e23db4a5c99e14671e16abd07722108e724558bfa67b0b42ec542ff793684aa"
+      }
+    },
+    "res/drawable/abc_item_background_holo_light.xml": {
+      "baseline": {
+        "bytes": 1012,
+        "compressed_bytes": 318,
+        "method": 8,
+        "sha256": "be19d1ac99de00b480d7b7f52677247a166a7feee222c68248f1c69b6a5b21e7"
+      },
+      "candidate": {
+        "bytes": 1012,
+        "compressed_bytes": 319,
+        "method": 8,
+        "sha256": "874a6b3cd909f0cc5d59d3b99c07289794e2d70918920123ebe3272eaf92a492"
+      }
+    },
+    "res/drawable/abc_list_selector_background_transition_holo_dark.xml": {
+      "baseline": {
+        "bytes": 424,
+        "compressed_bytes": 198,
+        "method": 8,
+        "sha256": "918e2b64eed684a218617a3b06389e84bcde5f156bb09cdf37c99c5cebb12c32"
+      },
+      "candidate": {
+        "bytes": 424,
+        "compressed_bytes": 199,
+        "method": 8,
+        "sha256": "21df75316fc079a1e056a215b7c05a6af233924b24dea362baf110358d359a38"
+      }
+    },
+    "res/drawable/abc_list_selector_background_transition_holo_light.xml": {
+      "baseline": {
+        "bytes": 424,
+        "compressed_bytes": 198,
+        "method": 8,
+        "sha256": "bb9c803a4511818ee6133d2c39ffd5f1b24b4c19fb112670b094dd42286c00ec"
+      },
+      "candidate": {
+        "bytes": 424,
+        "compressed_bytes": 199,
+        "method": 8,
+        "sha256": "97211721d392aadf578bfc2b737df7b32aab9a6752487d6eb6bc3aa58a31e49a"
+      }
+    },
+    "res/drawable/abc_list_selector_holo_dark.xml": {
+      "baseline": {
+        "bytes": 1064,
+        "compressed_bytes": 337,
+        "method": 8,
+        "sha256": "8a58a565412df452836311599fd66e509352dbc3a0ca40e52e628b7780e99c54"
+      },
+      "candidate": {
+        "bytes": 1064,
+        "compressed_bytes": 338,
+        "method": 8,
+        "sha256": "7bf664be91e94f0b9a8ad17bcb31df070d94c1a1dc6327b9cc833d750a34f794"
+      }
+    },
+    "res/drawable/abc_list_selector_holo_light.xml": {
+      "baseline": {
+        "bytes": 1064,
+        "compressed_bytes": 338,
+        "method": 8,
+        "sha256": "aea94c990845c24a78a26d64c37c4905e66c578d78b34bbb30a341d7ac2c81b9"
+      },
+      "candidate": {
+        "bytes": 1064,
+        "compressed_bytes": 338,
+        "method": 8,
+        "sha256": "ccd9984aedd2c8ffc586b83176e88c17bc2ef2b0af4cac83b89dec5fe4f68df9"
+      }
+    },
+    "res/drawable/abc_seekbar_thumb_material.xml": {
+      "baseline": {
+        "bytes": 1100,
+        "compressed_bytes": 352,
+        "method": 8,
+        "sha256": "5c76445541bfc1aab32de2261ee3252b8259b75ea2b52defd607ad9718a69341"
+      },
+      "candidate": {
+        "bytes": 1100,
+        "compressed_bytes": 354,
+        "method": 8,
+        "sha256": "6be11e7513695f109febb9aaec1e9aaab99be3264789d88beab81f64e9751904"
+      }
+    },
+    "res/drawable/abc_seekbar_track_material.xml": {
+      "baseline": {
+        "bytes": 1408,
+        "compressed_bytes": 423,
+        "method": 8,
+        "sha256": "bab48baa7d11bb1efb61cc0d7778932e7da6e3ddfbc7da08b44c8ad1bc1bbb4a"
+      },
+      "candidate": {
+        "bytes": 1408,
+        "compressed_bytes": 423,
+        "method": 8,
+        "sha256": "7dde405a8b87a45cfe7db91fe77f81e13c34f6e70bbe6a5abc14f34f7ba6c374"
+      }
+    },
+    "res/drawable/abc_spinner_textfield_background_material.xml": {
+      "baseline": {
+        "bytes": 1160,
+        "compressed_bytes": 408,
+        "method": 8,
+        "sha256": "5e32b8e8e6c0fffbff24d298a11e0ecb0e9aba8c639f449355889dc6ab2e66aa"
+      },
+      "candidate": {
+        "bytes": 1160,
+        "compressed_bytes": 409,
+        "method": 8,
+        "sha256": "9d98cb0d63a06334757b678a1e9bd5766511b69b5631de72f14d31af74c03891"
+      }
+    },
+    "res/drawable/abc_switch_thumb_material.xml": {
+      "baseline": {
+        "bytes": 464,
+        "compressed_bytes": 229,
+        "method": 8,
+        "sha256": "24b4e77b2b2d827ddaeeb1dc551c33ccfc8252055b658730012381e2df49b4ef"
+      },
+      "candidate": {
+        "bytes": 464,
+        "compressed_bytes": 230,
+        "method": 8,
+        "sha256": "dbffc8ed2a57a88cbdf73c042eec9b6b25250b7c7d50e8537f5aee2c0e59e87c"
+      }
+    },
+    "res/drawable/abc_tab_indicator_material.xml": {
+      "baseline": {
+        "bytes": 468,
+        "compressed_bytes": 233,
+        "method": 8,
+        "sha256": "d4f0b8177327a98f40da0c3652aebd08751314e6d980247c0ce4bcf23f74d573"
+      },
+      "candidate": {
+        "bytes": 468,
+        "compressed_bytes": 232,
+        "method": 8,
+        "sha256": "72447d7e1f54a5d835a0c53cd1cbeb5b83920b07683c889f1f20e43cf2d4e548"
+      }
+    },
+    "res/drawable/abc_textfield_search_material.xml": {
+      "baseline": {
+        "bytes": 756,
+        "compressed_bytes": 292,
+        "method": 8,
+        "sha256": "72dd33de18653451eae4ebdd555abed573ae787579e8b779b5fa02b8b73bfcf9"
+      },
+      "candidate": {
+        "bytes": 756,
+        "compressed_bytes": 291,
+        "method": 8,
+        "sha256": "8f6539ead30c41dc3bf30e19b62f72d06c67e6d6b4a4e0f54944e23195bd3bec"
+      }
+    },
+    "res/drawable/btn_checkbox_checked_to_unchecked_mtrl_animation.xml": {
+      "baseline": {
+        "bytes": 688,
+        "compressed_bytes": 305,
+        "method": 8,
+        "sha256": "2ac15448e6cbe0890c1462fba73d7377260ca655fed8aba07eff0a2cc0d3d95d"
+      },
+      "candidate": {
+        "bytes": 688,
+        "compressed_bytes": 306,
+        "method": 8,
+        "sha256": "2e5234d92ea99adb2e8f3d2500fa33ab7332bea42d6a700638612b9fae329022"
+      }
+    },
+    "res/drawable/btn_checkbox_unchecked_to_checked_mtrl_animation.xml": {
+      "baseline": {
+        "bytes": 688,
+        "compressed_bytes": 301,
+        "method": 8,
+        "sha256": "93a1972ada7b346e5b997ce8c22e087d998122b620fdeded81bf320b6e1a2fbe"
+      },
+      "candidate": {
+        "bytes": 688,
+        "compressed_bytes": 301,
+        "method": 8,
+        "sha256": "9f23232f18c638ed810f981771e6333bb52344e43faa681c26bd720455e76445"
+      }
+    },
+    "res/drawable/btn_radio_off_to_on_mtrl_animation.xml": {
+      "baseline": {
+        "bytes": 680,
+        "compressed_bytes": 302,
+        "method": 8,
+        "sha256": "eebd0053a87caa61416343c86b3844fc780d405acf483ef07c6677eb3bd3fed9"
+      },
+      "candidate": {
+        "bytes": 680,
+        "compressed_bytes": 301,
+        "method": 8,
+        "sha256": "b0c37c6f1e2f1f41710c42e590061c9498e28339a4da3e8bd0e736da4c9c41cd"
+      }
+    },
+    "res/drawable/btn_radio_on_to_off_mtrl_animation.xml": {
+      "baseline": {
+        "bytes": 680,
+        "compressed_bytes": 301,
+        "method": 8,
+        "sha256": "06024ec3f6a25d901ed52ea99e0342e3cf3b3f8c4bfd1ec93067aa6e5e9f36c1"
+      },
+      "candidate": {
+        "bytes": 680,
+        "compressed_bytes": 301,
+        "method": 8,
+        "sha256": "d1cffde0957abe01bf56ffab5e2dc319cb0ce6f0df6767cc37a52e365e66c0e9"
+      }
+    },
+    "res/drawable/common_google_signin_btn_icon_dark.xml": {
+      "baseline": {
+        "bytes": 588,
+        "compressed_bytes": 258,
+        "method": 8,
+        "sha256": "0ef85ff14e30b87e697cef474b21f4fc342692f3fe6ff4429569d9b9a298c5dc"
+      },
+      "candidate": {
+        "bytes": 588,
+        "compressed_bytes": 259,
+        "method": 8,
+        "sha256": "353f4b980f7fd455812a947950a993a99fff6f598c29aa4c500df14becf3bc0f"
+      }
+    },
+    "res/drawable/common_google_signin_btn_icon_dark_focused.xml": {
+      "baseline": {
+        "bytes": 892,
+        "compressed_bytes": 373,
+        "method": 8,
+        "sha256": "be47c70c7dc631b44af5fa7e780a75be3cfa0b35bc861d1e53bdc05bd19a4035"
+      },
+      "candidate": {
+        "bytes": 892,
+        "compressed_bytes": 374,
+        "method": 8,
+        "sha256": "8cd08704e3108c61df294ebe5366eb07742da317a553f0027ba265c678098055"
+      }
+    },
+    "res/drawable/common_google_signin_btn_icon_dark_normal.xml": {
+      "baseline": {
+        "bytes": 548,
+        "compressed_bytes": 254,
+        "method": 8,
+        "sha256": "38c4e797c2d6b7faac4afc13609c31eb0e3a15aded271ab3f8a163bfa466a433"
+      },
+      "candidate": {
+        "bytes": 548,
+        "compressed_bytes": 255,
+        "method": 8,
+        "sha256": "8c64fc47f24d91f6d0d77cfc0592540f732835a687d3f135956c9637c19f3d78"
+      }
+    },
+    "res/drawable/common_google_signin_btn_icon_disabled.xml": {
+      "baseline": {
+        "bytes": 1132,
+        "compressed_bytes": 438,
+        "method": 8,
+        "sha256": "eba71a8b2ee990cf5884ae8dc04ed11453f7a3234186fcefc0952ed80d3438e7"
+      },
+      "candidate": {
+        "bytes": 1132,
+        "compressed_bytes": 438,
+        "method": 8,
+        "sha256": "1ae4932d25fdb440b02001d550ebcd41d80c3549dfb0e17bc5b8621b8d66be92"
+      }
+    },
+    "res/drawable/common_google_signin_btn_icon_light.xml": {
+      "baseline": {
+        "bytes": 588,
+        "compressed_bytes": 257,
+        "method": 8,
+        "sha256": "ae1d18829ac929f01ce413479959e6ae51ea830323721c347b547f10f648fbd4"
+      },
+      "candidate": {
+        "bytes": 588,
+        "compressed_bytes": 258,
+        "method": 8,
+        "sha256": "37aa6421177582797f027faf0efb34fe06d8cc7acb795b30d4ca66f33ab52590"
+      }
+    },
+    "res/drawable/common_google_signin_btn_icon_light_focused.xml": {
+      "baseline": {
+        "bytes": 892,
+        "compressed_bytes": 370,
+        "method": 8,
+        "sha256": "d5b163a6f551a25f491e7f7c33420cd134adf7a8d7283e8f046e78b1a0f00c48"
+      },
+      "candidate": {
+        "bytes": 892,
+        "compressed_bytes": 370,
+        "method": 8,
+        "sha256": "b66b0ed780c45e3e93c3013fd0bb499f8fb82919b4d765f074889241315379de"
+      }
+    },
+    "res/drawable/common_google_signin_btn_icon_light_normal.xml": {
+      "baseline": {
+        "bytes": 548,
+        "compressed_bytes": 254,
+        "method": 8,
+        "sha256": "3098bd0a546f6e67d27f082d23f922c957e4ae5cc62da53f809b3350fe1dde12"
+      },
+      "candidate": {
+        "bytes": 548,
+        "compressed_bytes": 254,
+        "method": 8,
+        "sha256": "e0462cabb167f1603cab6b5bc39a376e0b4fb9bd4694d928abe5676553a68c13"
+      }
+    },
+    "res/drawable/common_google_signin_btn_text_dark.xml": {
+      "baseline": {
+        "bytes": 588,
+        "compressed_bytes": 255,
+        "method": 8,
+        "sha256": "f383b07b8f17a6f7e50331658ce55c38ec0987fd9fbdcfaf17afcae0d1bf1fdd"
+      },
+      "candidate": {
+        "bytes": 588,
+        "compressed_bytes": 256,
+        "method": 8,
+        "sha256": "682eaa54a73e1ed68fd762c1bbd232fc5568091134388e164ddf9b45eaecd75e"
+      }
+    },
+    "res/drawable/common_google_signin_btn_text_dark_focused.xml": {
+      "baseline": {
+        "bytes": 892,
+        "compressed_bytes": 373,
+        "method": 8,
+        "sha256": "e663de052a8b98708886675a1d3b95138f45c14047f005c837f10d96bc0ec721"
+      },
+      "candidate": {
+        "bytes": 892,
+        "compressed_bytes": 373,
+        "method": 8,
+        "sha256": "1befcb22c8aad4c7b7190bd26a5556bc34dbfd8a41887bf7d9adad5ef314c61f"
+      }
+    },
+    "res/drawable/common_google_signin_btn_text_dark_normal.xml": {
+      "baseline": {
+        "bytes": 584,
+        "compressed_bytes": 271,
+        "method": 8,
+        "sha256": "3483f230f72052bae0145bfac1eea2fda49b9836e893fa92549fb5ae77d67bbf"
+      },
+      "candidate": {
+        "bytes": 584,
+        "compressed_bytes": 271,
+        "method": 8,
+        "sha256": "ff45846d984f16c7e193872ddc5165299dc023db84f252b72f6669cecc7519bd"
+      }
+    },
+    "res/drawable/common_google_signin_btn_text_disabled.xml": {
+      "baseline": {
+        "bytes": 1152,
+        "compressed_bytes": 447,
+        "method": 8,
+        "sha256": "4d0b45657187ce283ec6872d0ac0dc5d6a066b09f88f72001419589f9727bd30"
+      },
+      "candidate": {
+        "bytes": 1152,
+        "compressed_bytes": 447,
+        "method": 8,
+        "sha256": "b63bc3be7e5abbc534108a09d9d13f7905ae7b79b8bb6236515494bbfe883247"
+      }
+    },
+    "res/drawable/common_google_signin_btn_text_light.xml": {
+      "baseline": {
+        "bytes": 588,
+        "compressed_bytes": 257,
+        "method": 8,
+        "sha256": "11dc94d06512d3541cae3614972c61c34fd1e1525e7a1c7d5f411f8d90bfdcc1"
+      },
+      "candidate": {
+        "bytes": 588,
+        "compressed_bytes": 257,
+        "method": 8,
+        "sha256": "547ef0c56f23ce61f44cd5e2e4af20d2653c80fa7d59bed53b06329cdc4f7775"
+      }
+    },
+    "res/drawable/common_google_signin_btn_text_light_focused.xml": {
+      "baseline": {
+        "bytes": 892,
+        "compressed_bytes": 370,
+        "method": 8,
+        "sha256": "e443aa9342a668b4dd4a905760b3236f2bc2b8be81cf244b1297fc84207e4f08"
+      },
+      "candidate": {
+        "bytes": 892,
+        "compressed_bytes": 370,
+        "method": 8,
+        "sha256": "0ecf19612eefa7eccb00d0b2e09cdf423533eb1dc978f220b6dbd3de6292d3f7"
+      }
+    },
+    "res/drawable/common_google_signin_btn_text_light_normal.xml": {
+      "baseline": {
+        "bytes": 584,
+        "compressed_bytes": 271,
+        "method": 8,
+        "sha256": "acec48be89d40e3f161e441c7ec4d5c324aecf89bc00eddd19f827758cc59900"
+      },
+      "candidate": {
+        "bytes": 584,
+        "compressed_bytes": 272,
+        "method": 8,
+        "sha256": "7c07d50c66995c9e513c26bbf83b6fa2489e035a47daf4a0ec54fb13f3fa2daa"
+      }
+    },
+    "res/drawable/ic_sleepwell_monochrome.xml": {
+      "baseline": {
+        "bytes": 1296,
+        "compressed_bytes": 617,
+        "method": 8,
+        "sha256": "490e6339389b51e69a98c675e6cee0133c4f114b8509c3a6aadecdd77328b2db"
+      },
+      "candidate": {
+        "bytes": 304,
+        "compressed_bytes": 175,
+        "method": 8,
+        "sha256": "1723f6c58e2e77f33c4502326d99a289cd33a431e6fdad7437248f1a6dd64a94"
+      }
+    },
+    "res/drawable/notification_bg.xml": {
+      "baseline": {
+        "bytes": 532,
+        "compressed_bytes": 254,
+        "method": 8,
+        "sha256": "cb3f6326640322a8fe987d26fbc9c3303e92efee7ee81d7d3e6c6ee124cfc025"
+      },
+      "candidate": {
+        "bytes": 532,
+        "compressed_bytes": 254,
+        "method": 8,
+        "sha256": "d4905f498696c339f57b16257aa436f839cdb6841a8f77cdb39aab6c5983f9e4"
+      }
+    },
+    "res/drawable/notification_bg_low.xml": {
+      "baseline": {
+        "bytes": 532,
+        "compressed_bytes": 254,
+        "method": 8,
+        "sha256": "3616873329c4b08eaddedef948ee87f70cf9c47a0aad0a31723e1db61185ae3b"
+      },
+      "candidate": {
+        "bytes": 532,
+        "compressed_bytes": 254,
+        "method": 8,
+        "sha256": "e8d5c1f6564f494797d374bf86b4b5adb39ca9dbbc526bb6bfdfac54559698c3"
+      }
+    },
+    "res/drawable/notification_tile_bg.xml": {
+      "baseline": {
+        "bytes": 304,
+        "compressed_bytes": 174,
+        "method": 8,
+        "sha256": "e1cd03736202713f1709b5c2dc3bc487bc4560b8191cb01879e78e1359fca059"
+      },
+      "candidate": {
+        "bytes": 304,
+        "compressed_bytes": 174,
+        "method": 8,
+        "sha256": "0ce61e4562042203b2fffb4a047ea2686d353ec5023d8c7f26741850e8f27668"
+      }
+    },
+    "res/layout-v21/notification_template_custom_big.xml": {
+      "baseline": {
+        "bytes": 2456,
+        "compressed_bytes": 790,
+        "method": 8,
+        "sha256": "ad4588fe61f590ffa3a9c50e3dec130113fdd4aabad11b3b81320e596cc74eab"
+      },
+      "candidate": {
+        "bytes": 2456,
+        "compressed_bytes": 790,
+        "method": 8,
+        "sha256": "0c5f985b1e03ab599057ab54f1189d11b5312c820fa7c34d0580d8aedbc3e9d6"
+      }
+    },
+    "res/layout-v21/notification_template_icon_group.xml": {
+      "baseline": {
+        "bytes": 988,
+        "compressed_bytes": 416,
+        "method": 8,
+        "sha256": "dbd90481cac0fd3fbe37db19f04bab5c7ccb11774620d83c6d565b014ecbe0fc"
+      },
+      "candidate": {
+        "bytes": 988,
+        "compressed_bytes": 416,
+        "method": 8,
+        "sha256": "c25e1767925283a3e987fbbf8abd25d8d5b306a97cb7cb886fd05c827440b6fc"
+      }
+    },
+    "res/layout-watch-v20/abc_alert_dialog_title_material.xml": {
+      "baseline": {
+        "bytes": 1352,
+        "compressed_bytes": 551,
+        "method": 8,
+        "sha256": "8a5fc6a4b00d5e66f2069e389784514be8cb9d616d43ee1ba3a11bd10ce39061"
+      },
+      "candidate": {
+        "bytes": 1352,
+        "compressed_bytes": 550,
+        "method": 8,
+        "sha256": "fb62b797c689973702cecdec97a29fb340e75d28e4259b00d0d60af117bb8831"
+      }
+    },
+    "res/layout/abc_activity_chooser_view_list_item.xml": {
+      "baseline": {
+        "bytes": 1304,
+        "compressed_bytes": 566,
+        "method": 8,
+        "sha256": "ae704e32d50ba99228c465bf8ad3cb17d412197a36fd3667a33a337d6a843f45"
+      },
+      "candidate": {
+        "bytes": 1304,
+        "compressed_bytes": 565,
+        "method": 8,
+        "sha256": "58fca76a43b11fc7c06bb6c2558f904142280e0e9e93c69678f067c1b3b30d75"
+      }
+    },
+    "res/layout/abc_alert_dialog_button_bar_material.xml": {
+      "baseline": {
+        "bytes": 1584,
+        "compressed_bytes": 611,
+        "method": 8,
+        "sha256": "fffd173398fdc648899a2563f372e220523293e556df75c5b90e896790e3bcd9"
+      },
+      "candidate": {
+        "bytes": 1584,
+        "compressed_bytes": 611,
+        "method": 8,
+        "sha256": "72af9305c165ba0cdaab1ca20d1282622c87217d388400fca2e276b745db5d37"
+      }
+    },
+    "res/layout/abc_alert_dialog_material.xml": {
+      "baseline": {
+        "bytes": 2648,
+        "compressed_bytes": 835,
+        "method": 8,
+        "sha256": "d79fa665a604b2ae529829abb5e549a414dff61491dac1da5b56a2a581416bc4"
+      },
+      "candidate": {
+        "bytes": 2648,
+        "compressed_bytes": 837,
+        "method": 8,
+        "sha256": "fd1bed817210eee1988f65d67bf47e3750c7efb314098588e00d11285b639534"
+      }
+    },
+    "res/layout/abc_alert_dialog_title_material.xml": {
+      "baseline": {
+        "bytes": 1560,
+        "compressed_bytes": 644,
+        "method": 8,
+        "sha256": "eb5ed5e7c1dbe7ed3ccd95114b51e8d3e5aaa41b4e43dba44ef235a05b343c1f"
+      },
+      "candidate": {
+        "bytes": 1560,
+        "compressed_bytes": 645,
+        "method": 8,
+        "sha256": "e01a637300c6216b06a420601b3648d5e5dcf5de46f7888f2ff2c3848cc7eb3e"
+      }
+    },
+    "res/layout/abc_cascading_menu_item_layout.xml": {
+      "baseline": {
+        "bytes": 1868,
+        "compressed_bytes": 711,
+        "method": 8,
+        "sha256": "624d669a43d3e699f7f3e12d6a69a1382feaf006df342f97bc42e0458886cd00"
+      },
+      "candidate": {
+        "bytes": 1868,
+        "compressed_bytes": 712,
+        "method": 8,
+        "sha256": "cc39a613170e30c7cbd1654b8f75046341a12beaea10fe7c5cfa9890902cdc16"
+      }
+    },
+    "res/layout/abc_dialog_title_material.xml": {
+      "baseline": {
+        "bytes": 1116,
+        "compressed_bytes": 524,
+        "method": 8,
+        "sha256": "b07fd677be34082f8c069a1a03c554dba57bcb95b56d7fd43f47c018d35700bc"
+      },
+      "candidate": {
+        "bytes": 1116,
+        "compressed_bytes": 524,
+        "method": 8,
+        "sha256": "4c770535d8d185e0da529307a881cf8b7ffd4e6b63acda4bde3fbea2be447590"
+      }
+    },
+    "res/layout/abc_list_menu_item_layout.xml": {
+      "baseline": {
+        "bytes": 1396,
+        "compressed_bytes": 597,
+        "method": 8,
+        "sha256": "1bdfd8c08c7ded820e27d82dbafe6670498d73b328315d08022879c3add01525"
+      },
+      "candidate": {
+        "bytes": 1396,
+        "compressed_bytes": 596,
+        "method": 8,
+        "sha256": "7dc3f0ac3324a1f57aa0a4b05e4620cf744e312461f19ffba4d4a7495fa0a02c"
+      }
+    },
+    "res/layout/abc_list_menu_item_radio.xml": {
+      "baseline": {
+        "bytes": 532,
+        "compressed_bytes": 287,
+        "method": 8,
+        "sha256": "1833c7577b39c2a3993c5ce8896c791d45079672bd8dd4f8fe56eafe26db5451"
+      },
+      "candidate": {
+        "bytes": 532,
+        "compressed_bytes": 287,
+        "method": 8,
+        "sha256": "d8490056233cbb3c1e1dbaea1ae065b11f3d7c633f18d52d7abfe16f6b9595ff"
+      }
+    },
+    "res/layout/abc_popup_menu_item_layout.xml": {
+      "baseline": {
+        "bytes": 2072,
+        "compressed_bytes": 807,
+        "method": 8,
+        "sha256": "107e60c5cdf095315357931cd08e5d38262eb6d4846dc5a6ef48b904d7219c4a"
+      },
+      "candidate": {
+        "bytes": 2072,
+        "compressed_bytes": 807,
+        "method": 8,
+        "sha256": "4d124638288473a604faa93f12bb98cdd08e3c0ddbd58ccc547b51d310227b8e"
+      }
+    },
+    "res/layout/abc_search_view.xml": {
+      "baseline": {
+        "bytes": 3472,
+        "compressed_bytes": 1105,
+        "method": 8,
+        "sha256": "72847d338cea0492da16ef4e17d760f97262dd792f8f1b5362be29a0b928725c"
+      },
+      "candidate": {
+        "bytes": 3472,
+        "compressed_bytes": 1106,
+        "method": 8,
+        "sha256": "8f17e35c59bcd24f51920903977feb65b4f5510ff76f5e5ec89d3d00ed76e25b"
+      }
+    },
+    "res/layout/abc_select_dialog_material.xml": {
+      "baseline": {
+        "bytes": 1020,
+        "compressed_bytes": 537,
+        "method": 8,
+        "sha256": "8ad3f54c3c19bdf69b625a13acfebb1725b7a4ef28af584033fab5aa430bc312"
+      },
+      "candidate": {
+        "bytes": 1020,
+        "compressed_bytes": 537,
+        "method": 8,
+        "sha256": "ecebd68966b6d16af9219d84909372d2d6e17925310341b9fcb8b0bd7fdc65e0"
+      }
+    },
+    "res/layout/home_widget.xml": {
+      "baseline": {
+        "bytes": 4064,
+        "compressed_bytes": 1119,
+        "method": 8,
+        "sha256": "4eb963056cc5ba172d901ee1a8f75a783dab04d0c6aa747d1322c94261a3dd68"
+      },
+      "candidate": {
+        "bytes": 4064,
+        "compressed_bytes": 1119,
+        "method": 8,
+        "sha256": "956c1b5ef84b4bea9fa9102543b100ed13a30e12656aa6159a96263c17cbdfa9"
+      }
+    },
+    "res/layout/notification_template_part_time.xml": {
+      "baseline": {
+        "bytes": 440,
+        "compressed_bytes": 264,
+        "method": 8,
+        "sha256": "ee6b285b726d6fb4742cf63abb1ace3075637f19e1428956942638d093252802"
+      },
+      "candidate": {
+        "bytes": 440,
+        "compressed_bytes": 262,
+        "method": 8,
+        "sha256": "a4a74f8cb712b2c207a23a377948d3ad9077163683cec9946156509b52846636"
+      }
+    },
+    "res/mipmap-anydpi-v26/ic_launcher.xml": {
+      "baseline": {
+        "bytes": 448,
+        "compressed_bytes": 215,
+        "method": 8,
+        "sha256": "020f7c467be4972172a9dc551cdfc359391699a1600193fc1cbec1475f7c79b8"
+      },
+      "candidate": {
+        "bytes": 448,
+        "compressed_bytes": 217,
+        "method": 8,
+        "sha256": "8acab72d2e07955afa2189de83897a4ec4c20a7f934ec98eab0c12a23299742f"
+      }
+    },
+    "res/mipmap-anydpi-v26/ic_launcher_round.xml": {
+      "baseline": {
+        "bytes": 448,
+        "compressed_bytes": 215,
+        "method": 8,
+        "sha256": "020f7c467be4972172a9dc551cdfc359391699a1600193fc1cbec1475f7c79b8"
+      },
+      "candidate": {
+        "bytes": 448,
+        "compressed_bytes": 217,
+        "method": 8,
+        "sha256": "8acab72d2e07955afa2189de83897a4ec4c20a7f934ec98eab0c12a23299742f"
+      }
+    },
+    "res/mipmap-anydpi-v33/ic_launcher.xml": {
+      "baseline": {
+        "bytes": 548,
+        "compressed_bytes": 234,
+        "method": 8,
+        "sha256": "846130e50d168bf5b761a8b5a0f416632234ae89d4209b59ea71ebb6721372a0"
+      },
+      "candidate": {
+        "bytes": 548,
+        "compressed_bytes": 236,
+        "method": 8,
+        "sha256": "7f14e06e5f3e289e81bd61f643670ace5d0a0c6aee91922bc1724a33c1c0e23a"
+      }
+    },
+    "res/mipmap-anydpi-v33/ic_launcher_round.xml": {
+      "baseline": {
+        "bytes": 548,
+        "compressed_bytes": 234,
+        "method": 8,
+        "sha256": "846130e50d168bf5b761a8b5a0f416632234ae89d4209b59ea71ebb6721372a0"
+      },
+      "candidate": {
+        "bytes": 548,
+        "compressed_bytes": 236,
+        "method": 8,
+        "sha256": "7f14e06e5f3e289e81bd61f643670ace5d0a0c6aee91922bc1724a33c1c0e23a"
+      }
+    },
+    "resources.arsc": {
+      "baseline": {
+        "bytes": 423332,
+        "compressed_bytes": 423332,
+        "method": 0,
+        "sha256": "f5d98f904e3ecbb17260bf9fd129e532acff42d71fcc1f49798595a5856e0699"
+      },
+      "candidate": {
+        "bytes": 446908,
+        "compressed_bytes": 446908,
+        "method": 0,
+        "sha256": "1440ca93cf0e7c75201149805017df301678fd25bfae39453016867e7d2910cf"
+      }
+    }
+  }
+}

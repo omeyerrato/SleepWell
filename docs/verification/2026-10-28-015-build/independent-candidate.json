@@ -1,0 +1,61 @@
+{
+  "source": "ef69408258e900a50274d6f2488e859647138714",
+  "apk": "SleepWell-ef69408258e900a50274d6f2488e859647138714.apk",
+  "bytes": 163200933,
+  "sha256": "41447d6bce55abb20ce504d44dd21dfee949a88f68ee7e7633e160cebef4cdde",
+  "app_tree": "791ff991bd19eb2ff72d8933499ed30b106baf92",
+  "app_src_main_tree": "435a3f890533d2a4c4554ab77aa2b5dbdccfb682",
+  "baseline": {
+    "source": "08d3911e90af666d79a1f57fb0ea1326e91c3929",
+    "apk": "SleepWell-08d3911e90af666d79a1f57fb0ea1326e91c3929.apk",
+    "bytes": 167067516,
+    "sha256": "3b6c698fbfc1d71a21fa2e9b5420b7cf08ad39632608648e226482d11709a024"
+  },
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "badging_differences": [
+    "--- 0.1.4",
+    "+++ 0.1.5",
+    "@@ -1,4 +1,4 @@",
+    "-package: name='org.sleepwell.app' versionCode='5' versionName='0.1.4' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+    "+package: name='org.sleepwell.app' versionCode='6' versionName='0.1.5' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+    " sdkVersion:'30'",
+    " targetSdkVersion:'36'",
+    " uses-permission: name='android.permission.health.READ_SLEEP'"
+  ],
+  "manifest_tree_differences": [
+    "--- 0.1.4",
+    "+++ 0.1.5",
+    "@@ -1,7 +1,7 @@",
+    " N: android=http://schemas.android.com/apk/res/android",
+    "   E: manifest (line=2)",
+    "-    A: android:versionCode(0x0101021b)=(type 0x10)0x5",
+    "-    A: android:versionName(0x0101021c)=\"0.1.4\" (Raw: \"0.1.4\")",
+    "+    A: android:versionCode(0x0101021b)=(type 0x10)0x6",
+    "+    A: android:versionName(0x0101021c)=\"0.1.5\" (Raw: \"0.1.5\")",
+    "     A: android:compileSdkVersion(0x01010572)=(type 0x10)0x24",
+    "     A: android:compileSdkVersionCodename(0x01010573)=\"16\" (Raw: \"16\")",
+    "     A: package=\"org.sleepwell.app\" (Raw: \"org.sleepwell.app\")"
+  ],
+  "zip_summary": {
+    "baseline_entries": 653,
+    "candidate_entries": 947,
+    "added_count": 372,
+    "removed_count": 78,
+    "changed_count": 64,
+    "equal_content_count": 511
+  },
+  "resource_entry_counts": {
+    "baseline": 481,
+    "candidate": 775,
+    "candidate_phosphor_png": 365,
+    "baseline_phosphor_xml": 72
+  },
+  "build_log_sha256": "14b67aeb4f9d36596d9ee9310f631d0b043bcc5c30566617c827bb266add0d26",
+  "build_transcript_duration": "3m 6s",
+  "build_transcript_tasks": {
+    "total": 34,
+    "executed": 15,
+    "up_to_date": 19
+  },
+  "source_to_dex_equivalence_proven": false
+}

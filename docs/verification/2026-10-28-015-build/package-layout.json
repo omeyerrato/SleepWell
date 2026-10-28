@@ -1,0 +1,27 @@
+{
+  "baseline": {
+    "bytes": 167067516,
+    "central_entries": 653,
+    "compressed_payload_bytes": 161918059,
+    "central_referenced_local_headers_names_extras_bytes": 116173,
+    "gaps_before_signing_bytes": 4967956,
+    "gaps": [
+      {
+        "offset": 10817844,
+        "bytes": 4967956
+      }
+    ],
+    "signing_block_bytes": 4096,
+    "central_directory_and_end_bytes": 61232
+  },
+  "candidate": {
+    "bytes": 163200933,
+    "central_entries": 947,
+    "compressed_payload_bytes": 162956888,
+    "central_referenced_local_headers_names_extras_bytes": 148401,
+    "gaps_before_signing_bytes": 0,
+    "gaps": [],
+    "signing_block_bytes": 4096,
+    "central_directory_and_end_bytes": 91548
+  }
+}

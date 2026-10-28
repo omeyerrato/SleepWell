@@ -1,0 +1,24 @@
+{
+  "source": "ef69408258e900a50274d6f2488e859647138714",
+  "versionName": "0.1.5",
+  "versionCode": 6,
+  "abi": "arm64-v8a",
+  "build": "assembleDebug PASS; original local transcript retained",
+  "build_seconds": 188.375,
+  "app_tree": "791ff991bd19eb2ff72d8933499ed30b106baf92",
+  "database_schema": 17,
+  "backup_format": 14,
+  "phone_installed": false,
+  "published": false,
+  "distribution_verified": false,
+  "verification_scope": "Contactless11,Report17,Tonight14,Automatic28 scoped native evidence predates raster replacement. Current18-frame actualTonight+73nativeglyph+adaptive-mask scope pending. No full36-screen, physical/output/overnight/provider/security completion claim.",
+  "artifacts": {
+    "debug": {
+      "source": "ef69408258e900a50274d6f2488e859647138714",
+      "path": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\updates\\SleepWell-ef69408258e900a50274d6f2488e859647138714.apk",
+      "size": 163200933,
+      "sha256": "41447d6bce55abb20ce504d44dd21dfee949a88f68ee7e7633e160cebef4cdde"
+    }
+  },
+  "private_build_log": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\builds\\0.1.5-ef694082.log"
+}
