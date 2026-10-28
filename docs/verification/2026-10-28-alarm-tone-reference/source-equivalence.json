@@ -1,0 +1,95 @@
+{
+  "capture_commit": "5bf664434ca303d26069e59287cc0e3c3a55a497",
+  "comparison_root_main_commit": "5bf664434ca303d26069e59287cc0e3c3a55a497",
+  "scope": "Exact listed Tone runtime, host, existing method and bundled WAV files. Comparison root main resolves to the same captured commit; this archive adds docs only. No whole-app acceptance claim.",
+  "files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmToneScreen.java",
+      "capture_blob": "a3d3a5f4d13321668962d67ee05a5e800ccd9e28",
+      "comparison_blob": "a3d3a5f4d13321668962d67ee05a5e800ccd9e28",
+      "sha256": "cd73cb76dcfe418f2a6b9fac5aa5d6d6660bfba593c4a0635a5121224e71cba5",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmTones.java",
+      "capture_blob": "1a67d611250206ee65e5004ff34c83541bdbfd0a",
+      "comparison_blob": "1a67d611250206ee65e5004ff34c83541bdbfd0a",
+      "sha256": "04b7e99058d6b45608f8056de96d9e162ef6dbf3ba3129b6cda0e38b5f67938d",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmTonePreview.java",
+      "capture_blob": "8a616d09cfedfb7f0e736c6c65286aa7b371bc86",
+      "comparison_blob": "8a616d09cfedfb7f0e736c6c65286aa7b371bc86",
+      "sha256": "7b31f3722955693235bfe9cee4e6d2e5e67b5925be1a32af55d51b155771a639",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmToneImport.java",
+      "capture_blob": "227db3517fb468e2e93d5ae8ac7ba90b04079f75",
+      "comparison_blob": "227db3517fb468e2e93d5ae8ac7ba90b04079f75",
+      "sha256": "f265c1435e448ac9fb73ed383e53a54b135104ab4317bdec6214ae21c021d1ac",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmToneAudio.java",
+      "capture_blob": "f3e9061dabfc67bafb902f319787e60c3109360e",
+      "comparison_blob": "f3e9061dabfc67bafb902f319787e60c3109360e",
+      "sha256": "0acf261a25559ce029ba5a4b40d4a27e2a2334ec415b83c0869b107d476d6b73",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ToneWaveform.java",
+      "capture_blob": "b52e810f282377aa4307a76acfa2492313247ebb",
+      "comparison_blob": "b52e810f282377aa4307a76acfa2492313247ebb",
+      "sha256": "1f59111ac2d3fc8189f2501d161913ad45dc4b5d6fbce100dde5ad91f759c6ce",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ClipWaveView.java",
+      "capture_blob": "92b94fdacff16cfffb699bcf08276997ba391615",
+      "comparison_blob": "92b94fdacff16cfffb699bcf08276997ba391615",
+      "sha256": "de522e51313695f59a5cf1cec802efbb23236f433826843b316e9617b30d3cd0",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java",
+      "capture_blob": "64922e08594f963161aa0893b42a3c56e18b9ddf",
+      "comparison_blob": "64922e08594f963161aa0893b42a3c56e18b9ddf",
+      "sha256": "cace53e758a61e7aeb0c4f19027fee16cf5bfc677f0bfdc00a9cfcfa855ed1b5",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/AlarmToneFlowTest.java",
+      "capture_blob": "84b1b2b3c2347f25a3b1cec2312940a9ba8b135e",
+      "comparison_blob": "84b1b2b3c2347f25a3b1cec2312940a9ba8b135e",
+      "sha256": "0a982e893eb8e84fdfcfa3480077cb3745d024a1217cae538f0018ea4e944394",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/assets/daybreak.wav",
+      "capture_blob": "0b3f70749db50cd3fc5ac73b4e7232fa8a0cb23e",
+      "comparison_blob": "0b3f70749db50cd3fc5ac73b4e7232fa8a0cb23e",
+      "sha256": "219d51b28313bbbc57d4df72db4a67bbdb97be0dd613f54d2fd18093e3285e8b",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/assets/pulse.wav",
+      "capture_blob": "ee713ae721f2cca3e97e3a36f81bddf97283f9c0",
+      "comparison_blob": "ee713ae721f2cca3e97e3a36f81bddf97283f9c0",
+      "sha256": "fe6d5fd277d36bb1e46628ae21dc572d21bd51551d0bafd480eea1d32fe441eb",
+      "byte_equal": true
+    },
+    {
+      "path": "app/src/main/assets/chime.wav",
+      "capture_blob": "fa6dc4d31607653057a199862f53e2d3767f1460",
+      "comparison_blob": "fa6dc4d31607653057a199862f53e2d3767f1460",
+      "sha256": "64c45df18fb96c4121fb1c9df28fabdcb6a0408423d2a4e94c5cd57a762cdd3d",
+      "byte_equal": true
+    }
+  ],
+  "reference": {
+    "path": "design-concepts/2026-10-22-phone-app/03-sound-and-snooze.png",
+    "sha256": "210a3d88eb5d57d3a0e9e4ff2707c41299a1b2b536f11ef09a3eb4e20e09e548"
+  }
+}

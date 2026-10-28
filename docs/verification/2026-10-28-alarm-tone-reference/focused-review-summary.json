@@ -1,0 +1,20 @@
+{
+  "scope": "label-navigation",
+  "full_app_review": false,
+  "expected_classes": 2,
+  "expected_methods": 2,
+  "class_results": [
+    {
+      "class": "AlarmToneFlowTest#toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 24,
+  "failures": []
+}
