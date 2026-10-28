@@ -15,7 +15,7 @@ Five optional categories are supported:
 
 | Category | Transferred configuration | Activation and exclusions |
 | --- | --- | --- |
-| Appearance | Changing light automatic/fixed phase, text size, reduce motion, contrast | No permissions or external light credentials |
+| Appearance | Changing light automatic/fixed phase, text size, reduce motion, contrast, Room/Wind-down app-window dimming | No permissions or external light credentials; import saves the dimming preference without applying window brightness |
 | Sleep plan | Goal, bedtime, wake time, wind-down, reminder lead/repeat values | Imported bedtime reminder, Smart Bedtime and no-alarm reminder activation stay off |
 | Bundled sounds | Bundled source, gains, timer/fade, rotation and stereo generator values | Sound-with-tracking stays off; local document/playlist references cannot be exported in this category |
 | Narration | Supported rate and pitch presets | No engine/voice identities, download or speech |
@@ -24,9 +24,22 @@ Five optional categories are supported:
 Prepare freezes the selected current values for review. Export uses a newly
 selected Android Files document. Import reads a separately selected document,
 validates all fields and displays the actual incoming configuration before Apply.
-Cancelling selection or review does not apply values. Version1 files may omit
-categories; unknown categories/fields/types/duplicates, malformed UTF-8/JSON and
-files above64KiB are rejected. No persistent document grant is requested.
+Cancelling selection or review does not apply values. Appearance exports include
+the typed `roomDimming` Boolean and use settings-profile version2, because the
+version1 Appearance schema has exactly five fields. Profiles without that new
+field still export version1. All valid legacy version1 documents remain readable;
+their absent dimming field leaves the current local preference unchanged. Review
+names the imported dimming choice, or explicitly says it remains unchanged.
+Unknown categories/fields/types/duplicates, malformed UTF-8/JSON and files
+above64KiB are rejected. No persistent document grant is requested.
+
+The Room preference participates in the supported-settings fingerprint and
+recoverable apply journal, including absent-key rollback and newer-choice
+conflict checks. Permission-request markers such as `roomMicrophoneAsked` remain
+device-local and excluded. The separate records/alarms backup remains format14
+and still excludes app preferences; database schema17 is unchanged. A local data
+restore therefore preserves the existing dimming choice, while moving that
+choice to another installation requires the reviewed Appearance settings profile.
 
 Apply checks the reviewed local-settings fingerprint and runtime admission,
 blocks active alarms/tracking and active or paused sleep playback, and blocks
