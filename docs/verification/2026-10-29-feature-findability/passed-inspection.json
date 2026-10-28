@@ -1,0 +1,203 @@
+{
+  "run": 40784711149,
+  "head": "19f6ac9e121c0767d5b63d8aab93c9c40c895835",
+  "result": "PASS",
+  "seconds": 44.557,
+  "method": "SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls",
+  "required_images": 18,
+  "full_app_review": false,
+  "all_36_accepted": false,
+  "reference_boards": [
+    "11-settings-and-integrations.png",
+    "03-sound-and-snooze.png",
+    "08-history-and-trends.png"
+  ],
+  "individual_originals": [
+    {
+      "path": "search-empty.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "c683a480f3fb15e8e9d9de88eb6d1c6f41fe4479ff17391af83456cd7168dc2c",
+      "individually_opened": true,
+      "observation": "Original search modes, input and honest empty guidance remain readable."
+    },
+    {
+      "path": "search-room.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "22efe407384daecef5011d8c8ab35e28db1397f84694ba88d3d9742578d5fdef",
+      "individually_opened": true,
+      "observation": "Original Room result retains its actual breadcrumb and light/sound/dimming scope."
+    },
+    {
+      "path": "search-no-results.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "81f1df0349a3a19585980bc32f419ac378528a4df4b8679d1af242c55f2f07af",
+      "individually_opened": true,
+      "observation": "Actual unmatched query shows No matching results with no fabricated entries."
+    },
+    {
+      "path": "search-record.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "c7bf65d64953e444f5cf6715d9f1ffde7510eac82cb6203f687adadb57fb1309",
+      "individually_opened": true,
+      "observation": "Unique private record remains 8 h 0 min, User-reported; long query scrolls in its single-line field."
+    },
+    {
+      "path": "search-recreated.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "c7bf65d64953e444f5cf6715d9f1ffde7510eac82cb6203f687adadb57fb1309",
+      "individually_opened": true,
+      "observation": "Original unique query and actual user-reported record remain after recreation."
+    },
+    {
+      "path": "search-feature-extra-loud.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "e72234b725e2238867079cccf7c3ac0f6bfdd7215fd1b25989083e8301d6f983",
+      "individually_opened": true,
+      "observation": "Extra loud has Alarms > Choose an alarm breadcrumb, alarm-only draft scope and full result row."
+    },
+    {
+      "path": "search-feature-alarm-choice.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "4dc4f0a6869bc2eb8cd63600410e8b67eb2ef01c44147457175b8114167ed718",
+      "individually_opened": true,
+      "observation": "Recreated chooser shows both actual disabled alarm times/labels and explicit New alarm draft."
+    },
+    {
+      "path": "search-feature-chosen-extra-loud.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "5e635a2803d65f2b45bbc33c0d1701d1b90f368ee214ba217c5529b778e8999e",
+      "individually_opened": true,
+      "observation": "Actual second alarm identity Weekend 8:15 AM appears in the full Sound options dialog; toggle starts off."
+    },
+    {
+      "path": "search-feature-extra-loud-recreated.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "ee97eb47583506122d871a2c0a32f42541d908ffd37a2885c1b3e38de0f1c70d",
+      "individually_opened": true,
+      "observation": "Actual second-alarm Extra loud toggle remains on in the restored owned dialog before Save."
+    },
+    {
+      "path": "search-feature-reopened-extra-loud.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "fbbd7d5e3e749142d502bdd0ec904688ad025a1daa5ff418467c68af1da5f175",
+      "individually_opened": true,
+      "observation": "After explicit Save alarm/reopen, actual chosen alarm identity and on toggle remain."
+    },
+    {
+      "path": "search-feature-new-draft.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "a461a7f0e0ff78f0105898b0b4d15880a8c2c5c5d05e546ab823b0423df05943",
+      "individually_opened": true,
+      "observation": "Actual Flashlight options open for New alarm draft 7:00 AM, off; warning and Done/full draft footer readable."
+    },
+    {
+      "path": "search-feature-new-draft-recreated.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "a7f24b496cea2d448fa678d956638a6a7900184f96e76dc122a033f8c0d445bc",
+      "individually_opened": true,
+      "observation": "Flashlight-origin draft now restores the actual Sound options dialog and deliberately changed toggle after navigation/recreation."
+    },
+    {
+      "path": "search-feature-unsaved-draft.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "48096d7b1836ecafaff9ee7058826853f31c4def5aa214cfa14ab93cf41f9d2f",
+      "individually_opened": true,
+      "observation": "Actual Discard alarm changes dialog clearly offers Keep editing/Discard and says Save alarm applies the draft."
+    },
+    {
+      "path": "search-feature-query-restored.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "e7a98519f74c8d94c646c2343446f1d56424585dc6c30d531c6ea6abfe8e1062",
+      "individually_opened": true,
+      "observation": "Back returns to extra loud query and selected Alarms filter with one real result."
+    },
+    {
+      "path": "search-feature-report-editing.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "c00472350849b12ef791a4f63129fa5ad260a7b23a2de0c417c757160e867683",
+      "individually_opened": true,
+      "observation": "Report editing explicitly leads to Choose a night; wrapped draft warning is complete."
+    },
+    {
+      "path": "search-feature-report-history.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "416828f72bb788061a3c848308d93469af6e38f1b76bf1aa55cd994768691742",
+      "individually_opened": true,
+      "observation": "Actual single private Manual night is shown with true 8 h duration, real times and a plain coverage ribbon; no invented stages."
+    },
+    {
+      "path": "search-feature-auto-detect.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "a44006913040dc3a1a3d33bfbbb0c9dfe0b5048fcbf2a7c55c9e7f60ea936915",
+      "individually_opened": true,
+      "observation": "Auto-detect sleep name and Automatic tracking breadcrumb are readable; no automatic tracking armed."
+    },
+    {
+      "path": "search-feature-protection.png",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "sha256": "5617c521cf2eea89fe56bd66d95ec010c1a5b2587d7f2ac9db4ca3cfd621376d",
+      "individually_opened": true,
+      "observation": "Alarm protection result explicitly says All alarms and deterrence options; complete wrapped text."
+    }
+  ],
+  "raw_artifact_files": 28,
+  "limits": [
+    "No physical alarm, audio, torch, automatic tracking, Android power menu/accessibility or phone acceptance.",
+    "Only Extra loud/Flashlight and selected Report night navigation are exercised as actual opened feature routes; other aliases/destinations are catalog and Intent checks.",
+    "Empty/error chooser branches, alternate themes/large text/devices and the existing global SystemUI contrast issue are not closed by this run."
+  ]
+}

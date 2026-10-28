@@ -1,0 +1,30 @@
+{
+  "scope": "feature-search",
+  "methods": [
+    "SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls"
+  ],
+  "required_frames": [
+    "search-empty.png",
+    "search-room.png",
+    "search-no-results.png",
+    "search-record.png",
+    "search-recreated.png",
+    "search-feature-extra-loud.png",
+    "search-feature-alarm-choice.png",
+    "search-feature-chosen-extra-loud.png",
+    "search-feature-extra-loud-recreated.png",
+    "search-feature-reopened-extra-loud.png",
+    "search-feature-new-draft.png",
+    "search-feature-new-draft-recreated.png",
+    "search-feature-unsaved-draft.png",
+    "search-feature-query-restored.png",
+    "search-feature-report-editing.png",
+    "search-feature-report-history.png",
+    "search-feature-auto-detect.png",
+    "search-feature-protection.png"
+  ],
+  "full_app_review": false,
+  "native_sounds": false,
+  "audio_imports": false,
+  "prior_scope_mapping_unchanged": true
+}

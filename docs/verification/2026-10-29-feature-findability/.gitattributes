@@ -1,0 +1,7 @@
+.gitattributes text eol=lf
+SHA256SUMS text eol=lf
+failed-40781016190/* -text -whitespace
+failed-40782999524/* -text -whitespace
+passed-40784711149/* -text -whitespace
+*.json -text
+*.log -text -whitespace

@@ -1,0 +1,22 @@
+{
+  "run": 40782999524,
+  "head": "4b0949e57ed8d5576c92cd1877e0721b4532b25c",
+  "result": "FAIL",
+  "seconds": 40.748,
+  "required_images": 18,
+  "actual_pngs": 10,
+  "individually_opened": [
+    "search-empty.png",
+    "search-feature-alarm-choice.png",
+    "search-feature-chosen-extra-loud.png",
+    "search-feature-extra-loud-recreated.png",
+    "search-feature-extra-loud.png",
+    "search-feature-failure.png",
+    "search-feature-new-draft.png",
+    "search-feature-query-restored.png",
+    "search-feature-reopened-extra-loud.png",
+    "search-room.png"
+  ],
+  "failure": "Actual production options restoration tied the pending dialog to the original flashlight feature, clearing a saved sound-options dialog after user navigation/recreation. Saved second-alarm Save/reopen and new Flashlight draft arrival had run, but method is failed and not full acceptance.",
+  "raw_artifact_files": 22
+}

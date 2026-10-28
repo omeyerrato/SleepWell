@@ -1,0 +1,17 @@
+{
+  "run": 40781016190,
+  "head": "8c701162e4e91101a91985ca45d23c6909e995b0",
+  "result": "FAIL",
+  "seconds": 14.782,
+  "required_images": 18,
+  "actual_pngs": 5,
+  "individually_opened": [
+    "search-empty.png",
+    "search-room.png",
+    "search-feature-extra-loud.png",
+    "search-feature-alarm-choice.png",
+    "search-feature-failure.png"
+  ],
+  "failure": "Native readiness allowed any focused app window, including the chooser Extra loud heading while the editor was launching. Exact owner binding and single acceptance required. No production source changed.",
+  "raw_artifact_files": 17
+}
