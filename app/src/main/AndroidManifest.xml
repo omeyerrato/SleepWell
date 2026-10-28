@@ -219,6 +219,7 @@
         <activity android:name=".SunriseTimeActivity" android:exported="false" />
         <activity android:name=".AlarmDefaultsActivity" android:exported="false" />
         <activity android:name=".ChallengePackPreviewActivity" android:exported="false" />
+        <activity android:name=".ChallengePracticeActivity" android:exported="false" />
         <activity android:name=".MoonSearchPreviewActivity" android:exported="false" />
         <activity android:name=".CalendarRulesActivity" android:exported="false" />
         <service android:name=".CalendarSyncJob" android:exported="true" android:permission="android.permission.BIND_JOB_SERVICE" />
