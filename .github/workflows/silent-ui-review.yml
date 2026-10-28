@@ -21,6 +21,7 @@ on:
           - event-library
           - goal-plan
           - interaction-security
+          - calendar-consent-recovery
           - priority-menus
           - priority-current
           - priority-repair
