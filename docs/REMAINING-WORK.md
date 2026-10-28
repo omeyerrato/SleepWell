@@ -1,8 +1,8 @@
 # SleepWell current remaining work
 
-Latest published **0.1.4 / 08d3911e** adds direct alarm-time controls and consistent feedback, background phone-chart loading, Room search, silent Travel reminders and stale-Math/notification cleanup repairs. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.4-alarm-travel-20261028-08d3911e); [exact bounded evidence](verification/2026-10-28-014-final-build/README.md). **0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md).
+Latest published **0.1.5 / ef694082** adds the generated flat launcher/control rasters and clearer Contactless, Report, Tonight and Automatic menus. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.5-raster-menus-20261028-ef694082); [build/package audit](verification/2026-10-28-015-build/README.md); [current native scope and UI04 contrast limit](verification/2026-10-28-raster-tonight-native/README.md). The phone remains on0.1.4 with original user data preserved; its next update is deferred by the user until after waking.
 
-Updated 28 October 2026. This is the consolidated current checklist, not a release
+Updated 29 October 2026. This is the consolidated current checklist, not a release
 history. The goal remains the full applicable phone functionality and **all 36
 supplied design screens across 12 boards**. Existing code, a successful build or a
 bounded historical pass does not establish that whole goal is complete.
@@ -15,13 +15,13 @@ exercise actions, cancellation, recreation and persistence. [Exact release scope
 
 **0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md). All36 reference states and broader interaction/security acceptance remain open.
 
-## Next update — implemented source, not yet delivered
+## Published in0.1.5 — phone update deferred
 
 - [x] Contactless Headphones/Microphone status and explicit access/settings recovery, real route invalidation and fit. [58.348s / 11 inspected originals](verification/2026-10-28-contactless-settled-glyphs/README.md); generated PCM/private ports, not bedroom hardware.
 - [x] Report handle dragging/cancellation, both-boundary keyboard/accessibility actions and saved bounds. [68.984s / 17 inspected originals](verification/2026-10-28-report-period-gestures/README.md).
 - [x] Tonight fixed Start above the four-tab dock, readable larger text, real first-alarm action and saved Off/weekdays. [52.457s / 14 inspected originals](verification/2026-10-28-tonight-composition/README.md).
 - [x] Automatic tracking core choices/restorable supporting pages, explicit Save/Arm, active-wait guard and status-bar contrast. [83.548s / 28 inspected originals](verification/2026-10-28-automatic-tracking/README.md); synthetic callbacks/private phases, not actual service arming.
-- [ ] Finish integrating the user-requested imagegen raster icons, inspect native launcher/theme/control rendering, build and deliver0.1.5. Earlier screen captures predate these new assets.
+- [x] Generate and integrate73 raster control icons, flat launcher/themed mask and notification art; build and publish0.1.5 with both server hashes verified. Current native method passes50.332s/18 originals, all73 glyphs and native launcher previews inspected. UI04 SystemUI contrast remains open; this is not all18-screen visual acceptance. Earlier other-flow captures predate the rasters.
 
 
 ## Current top priorities
@@ -52,7 +52,7 @@ unverified. [Scoped evidence](verification/2026-10-26-settings-organization/READ
 | --- | --- |
 | Installed phone build | **0.1.4 / 08d3911e**, installed APK hash and original user-data preservation verified; expected internal API revisions/profile cache only. |
 | Phone availability | Connected for that authorized update only. No app launch, suspension change or output/capture/provider runtime action. |
-| Published candidate | **0.1.4 / 08d3911e arm64**, build1m19s; original signer, exact tag and both uploaded hashes verified; installed. Schema17/backup14 unchanged. |
+| Published candidate | **0.1.5 / ef694082 arm64**, build3m6s; signer, exact tag and both uploaded hashes verified. Phone still0.1.4; user deferred update. Schema17/backup14 unchanged. |
 | New feature evidence | Organization 33.114s/14 inspected captures, challenge ordering 40.237s/6 and recording analysis 40.27s/5. Prior Report/menu/Travel evidence remains separate. Per-alarm sensor accuracy, physical output, all 36 screens and overnight acceptance remain open. |
 | Current work policy | Features first; no new unit-test batches or broad campaigns. Essential builds, preservation and bounded changed-flow checks remain applicable. Dedicated reviewer stays stopped. |
 

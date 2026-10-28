@@ -1,6 +1,6 @@
 # SleepWell quick checklist
 
-Latest published: **0.1.4 / 08d3911e** — [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.4-alarm-travel-20261028-08d3911e), [build and verification limits](verification/2026-10-28-014-final-build/README.md).
+Latest published **0.1.5 / ef694082** adds the generated flat launcher/control rasters and clearer Contactless, Report, Tonight and Automatic menus. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.5-raster-menus-20261028-ef694082); [build/package audit](verification/2026-10-28-015-build/README.md); [current native scope and UI04 contrast limit](verification/2026-10-28-raster-tonight-native/README.md). The phone remains on0.1.4 with original user data preserved; its next update is deferred by the user until after waking.
 
 **0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md).
 
@@ -56,13 +56,13 @@ Frozen source **08d3911e**, version **0.1.4 / code5**: Root build succeeded in *
 - [x] Publish0.1.4 with the original signer, exact source tag and both server asset hashes verified.
 - [x] Install0.1.4 on the S23 with original user data preserved.
 
-## Next update — implemented source, not yet delivered
+## Published in0.1.5 — phone update deferred
 
 - [x] Contactless Headphones/Microphone status and explicit access/settings recovery, real route invalidation and fit. [58.348s / 11 inspected originals](verification/2026-10-28-contactless-settled-glyphs/README.md); generated PCM/private ports, not bedroom hardware.
 - [x] Report handle dragging/cancellation, both-boundary keyboard/accessibility actions and saved bounds. [68.984s / 17 inspected originals](verification/2026-10-28-report-period-gestures/README.md).
 - [x] Tonight fixed Start above the four-tab dock, readable larger text, real first-alarm action and saved Off/weekdays. [52.457s / 14 inspected originals](verification/2026-10-28-tonight-composition/README.md).
 - [x] Automatic tracking core choices/restorable supporting pages, explicit Save/Arm, active-wait guard and status-bar contrast. [83.548s / 28 inspected originals](verification/2026-10-28-automatic-tracking/README.md); synthetic callbacks/private phases, not actual service arming.
-- [ ] Finish integrating the user-requested imagegen raster icons, inspect native launcher/theme/control rendering, build and deliver0.1.5. Earlier screen captures predate these new assets.
+- [x] Generate and integrate73 raster control icons, flat launcher/themed mask and notification art; build and publish0.1.5 with both server hashes verified. Current native method passes50.332s/18 originals, all73 glyphs and native launcher previews inspected. UI04 SystemUI contrast remains open; this is not all18-screen visual acceptance. Earlier other-flow captures predate the rasters.
 
 
 ## Still unfinished
@@ -74,4 +74,4 @@ Frozen source **08d3911e**, version **0.1.4 / code5**: Root build succeeded in *
 - [ ] Optional vendor-service/hardware parity listed in the full feature matrix.
 - [ ] Verify real alarm protection, loudness, ramp, sunrise, flashlight and challenges when output testing is authorized.
 - [ ] Verify overnight tracking, sound accuracy, anti-snoring, battery behavior and external integrations.
-- [x] Install the latest published0.1.4 update while preserving phone data. New0.1.5 source is not yet published/installed.
+- [x] Install the latest published0.1.4 update while preserving phone data. 0.1.5 is published; installation is deferred by the user until after waking.

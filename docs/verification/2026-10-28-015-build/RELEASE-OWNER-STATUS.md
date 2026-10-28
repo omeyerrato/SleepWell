@@ -28,3 +28,12 @@ The last verified phone installation remains0.1.4/08d3911e with original user da
 preserved. The user deferred the next phone update until after waking. No further
 phone action or output testing is authorized by this record. Full36-screen,
 broader UX/security, acoustic/overnight/provider/physical acceptance remains open.
+
+## Published and remotely verified
+
+Release427155499 is now published as0.1.5 (development prerelease), with exact
+source tag `v0.1.5-raster-menus-20261028-ef694082` resolving toef694082. Both server asset
+hashes, sizes and upload states match the frozen APK/checksum.
+[Download](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.5-raster-menus-20261028-ef694082) · [Exact distribution record](distribution.json).
+Phone installation remains deferred by the user;0.1.4 is the last verified phone
+build. The earlier draft checkpoint above and raw audit records are historical.

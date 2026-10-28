@@ -29,6 +29,4 @@ canvas, preserving its alpha. The rejected glossy crescent is not shipped.
 
 The bounded [native scope](../../verification/2026-10-28-native-raster-gallery/README.md)
 checks all73 loaded bitmap resources, real native tinting, color/themed adaptive
-mask previews and the14 actual Tonight states. Its execution is pending at this
-source checkpoint. Neither this index nor the earlier source-only compile results
-claim Android launcher acceptance or completion of all36 design references.
+mask previews and the14 actual Tonight states. Its current execution passed50.332s/18 originals; the73 glyphs and native launcher previews are inspected. See the [actual archive](../../verification/2026-10-28-raster-tonight-native/README.md). UI04 SystemUI contrast remains pending; this does not accept all18 UI states, OEM launchers or all36 reference screens.

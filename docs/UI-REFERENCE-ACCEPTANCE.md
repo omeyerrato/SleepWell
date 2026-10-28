@@ -2,7 +2,7 @@
 
 Reference: `design-concepts/2026-10-22-phone-app/SCREEN-MAP.md`. Each board has left / middle / right screens. This is a visual and interaction acceptance inventory, separate from feature availability. **No screen is declared fully finished by this inventory.** A bounded passing journey does not establish every reference state or physical-device behavior.
 
-Current package state: **0.1.4 / 08d3911e is published and installed**, with original user data preserved. [Installation](verification/2026-10-28-014-final-build/phone-installation.md). New source below targets0.1.5 and is not yet packaged; its bounded native originals predate the imagegen asset replacement. No screen is declared wholly finished.
+Current package state: **0.1.5 / ef694082 is published**, with a3m6s arm64 build and independent package/signature audit. [Current native raster scope](verification/2026-10-28-raster-tonight-native/README.md) passes50.332s/18 originals, with all73 glyph/tint and native launcher previews inspected; **UI04 SystemUI transition contrast remains pending, so not all18 frames are fully visually accepted**. Phone installation is deferred by the user; last verified0.1.4 retained original user data. Full36-screen acceptance remains open.
 
 Evidence prefixes below are repository-relative. `CI:` paths are downloaded original Android captures under the root checkout's ignored `.android-local/ci-reviews/<run>/silent-android-review/`; they are not generated mockups. `Pending` means a current-source native comparison and main-action/persistence check is still required. Existing capture locations are identified without pretending they were all visually reviewed in this pass.
 

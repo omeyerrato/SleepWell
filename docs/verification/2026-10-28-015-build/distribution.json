@@ -1,0 +1,39 @@
+{
+  "source": "ef69408258e900a50274d6f2488e859647138714",
+  "tag": "v0.1.5-raster-menus-20261028-ef694082",
+  "release_id": 427155499,
+  "draft": false,
+  "prerelease": true,
+  "url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.5-raster-menus-20261028-ef694082",
+  "assets": [
+    {
+      "name": "SleepWell-0.1.5-ef694082-arm64.apk",
+      "id": 686249913,
+      "size": 163200933,
+      "sha256": "41447d6bce55abb20ce504d44dd21dfee949a88f68ee7e7633e160cebef4cdde",
+      "server_digest": "sha256:41447d6bce55abb20ce504d44dd21dfee949a88f68ee7e7633e160cebef4cdde",
+      "state": "uploaded"
+    },
+    {
+      "name": "SleepWell-0.1.5-ef694082-arm64.apk.sha256",
+      "id": 686249914,
+      "size": 101,
+      "sha256": "3ee4dd1ea2ca418da5efc83694b523f2f896e5b3e18281c7aa3ef836b98af2c3",
+      "server_digest": "sha256:3ee4dd1ea2ca418da5efc83694b523f2f896e5b3e18281c7aa3ef836b98af2c3",
+      "state": "uploaded"
+    }
+  ],
+  "published": true,
+  "tag_commit": "ef69408258e900a50274d6f2488e859647138714",
+  "published_at": "2026-10-28T21:27:41Z",
+  "versionName": "0.1.5",
+  "versionCode": 6,
+  "phone_installed": false,
+  "phone_update": "Deferred by user",
+  "build": "PASS3m6s",
+  "native_run": 40759551606,
+  "native_seconds": 50.332,
+  "native_required_originals": 18,
+  "all_18_visually_accepted": false,
+  "scope": "73 native raster/tint controls and real color/themed adaptive previews;14 actualTonight controls/clock/persistence states. UI04 SystemUI transition contrast remains pending. No full-app/36-screen/physical/overnight/provider/security claim."
+}

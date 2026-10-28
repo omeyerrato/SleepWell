@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-Published **0.1.4 / 08d3911e** is installed on the S23 with original user data preserved. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.4-alarm-travel-20261028-08d3911e); [installation evidence](docs/verification/2026-10-28-014-final-build/phone-installation.md). Current0.1.5 source adds a generated flat identity/control raster set and scoped Contactless, Report, Tonight and Automatic-menu improvements. Its arm64 build passed3m6s; current raster/native acceptance and publication are pending. [Current checklist](docs/QUICK-CHECKLIST.md).
+Latest published **0.1.5 / ef694082** adds the generated flat launcher/control rasters and clearer Contactless, Report, Tonight and Automatic menus. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.5-raster-menus-20261028-ef694082); [build/package audit](docs/verification/2026-10-28-015-build/README.md); [current native scope and UI04 contrast limit](docs/verification/2026-10-28-raster-tonight-native/README.md). The phone remains on0.1.4 with original user data preserved; its next update is deferred by the user until after waking.
 
 Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped

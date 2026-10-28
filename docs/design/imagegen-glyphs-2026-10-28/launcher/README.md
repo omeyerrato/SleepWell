@@ -13,3 +13,7 @@ vector. Density derivatives are ordinary resizes; no paths were redrawn.
 Launcher appearance on a real Android launcher and themed-mask fidelity still
 require Android inspection. The user has seen the generated color artwork;
 this does not imply acceptance of the rejected earlier icon or all app screens.
+
+Native API36 color and themed adaptive-mask previews at120dp/48dp now pass and
+were inspected in [the actual archive](../../../verification/2026-10-28-raster-tonight-native/README.md).
+Actual OEM/home-screen caching and phone installation remain outside that proof.
