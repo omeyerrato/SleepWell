@@ -260,22 +260,24 @@ public final class OrganizedSettingsJourneyTest {
     private void captureWindow(View root, String name) throws Exception {
         assertTrue("At most twenty-eight representative frames", captures < 28); frame(root); silent();
         boolean trackingDark = activity instanceof TrackingActivity && root == activity.getWindow().getDecorView();
+        boolean automaticLight = activity instanceof AutomaticTrackingActivity && root == activity.getWindow().getDecorView();
+        int requested = automaticLight ? WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS | WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS : 0;
         int[] bars = new int[2];
-        if (trackingDark) {
+        if (trackingDark || automaticLight) {
             i.runOnMainSync(() -> { assertSame(root, focused()); WindowInsets insets = root.getRootWindowInsets(); assertNotNull(insets);
                 bars[0] = insets.getInsets(WindowInsets.Type.statusBars()).top; bars[1] = insets.getInsets(WindowInsets.Type.navigationBars()).bottom; });
-            // App flags alone do not prove that SystemUI has committed light clock/Wi-Fi/gesture pixels.
-            await(() -> { boolean[] owned = {false}; i.runOnMainSync(() -> owned[0] = root == focused() && trackingAppearance(root) == 0);
+            // Require actual contrasting clock/Wi-Fi/gesture pixels after this owner gains focus.
+            await(() -> { boolean[] owned = {false}; i.runOnMainSync(() -> owned[0] = root == focused() && trackingAppearance(root) == requested);
                 if (!owned[0]) return false; android.graphics.Bitmap screen = i.getUiAutomation().takeScreenshot(); if (screen == null) return false;
                 android.graphics.Bitmap readable = screen;
                 try { if (screen.getConfig() == android.graphics.Bitmap.Config.HARDWARE) readable = screen.copy(android.graphics.Bitmap.Config.ARGB_8888, false);
-                    return brightTrackingBars(readable, bars[0], bars[1]);
+                    return automaticLight ? darkAutomaticBars(readable, bars[0], bars[1]) : brightTrackingBars(readable, bars[0], bars[1]);
                 } finally { if (readable != null && readable != screen) readable.recycle(); screen.recycle(); } });
-            i.runOnMainSync(() -> { assertSame(root, focused()); assertEquals("Tracking requests light status and gesture glyphs", 0, trackingAppearance(root)); });
+            i.runOnMainSync(() -> { assertSame(root, focused()); assertEquals("Owned surface requests contrasting status and gesture glyphs", requested, trackingAppearance(root)); });
         }
         File original = new File(folder(), "organized-settings-" + name + ".png"); assertTrue(device.takeScreenshot(original));
-        if (trackingDark) { android.graphics.Bitmap saved = android.graphics.BitmapFactory.decodeFile(original.getAbsolutePath());
-            try { assertTrue("Saved Tracking original has light system glyphs and gesture on plum", brightTrackingBars(saved, bars[0], bars[1])); }
+        if (trackingDark || automaticLight) { android.graphics.Bitmap saved = android.graphics.BitmapFactory.decodeFile(original.getAbsolutePath());
+            try { assertTrue("Saved original has contrasting system glyphs and gesture", automaticLight ? darkAutomaticBars(saved, bars[0], bars[1]) : brightTrackingBars(saved, bars[0], bars[1])); }
             finally { if (saved != null) saved.recycle(); } }
         captures++;
     }
@@ -296,6 +298,20 @@ public final class OrganizedSettingsJourneyTest {
             }
         }
         return bright >= 24 && plum * 100 >= total * 60 && dark <= 2;
+    }
+    private boolean darkAutomaticBars(android.graphics.Bitmap bitmap,int status,int navigation){
+        return bitmap!=null&&status>0&&navigation>0&&status+navigation<bitmap.getHeight()
+                &&darkAutomaticRegion(bitmap,0,status)&&darkAutomaticRegion(bitmap,bitmap.getHeight()-navigation,bitmap.getHeight());
+    }
+    private boolean darkAutomaticRegion(android.graphics.Bitmap bitmap,int top,int bottom){
+        int[] row=new int[bitmap.getWidth()];long dark=0,cream=0,white=0,total=(long)row.length*(bottom-top);
+        for(int y=top;y<bottom;y++){bitmap.getPixels(row,0,row.length,0,y,row.length,1);
+            for(int rgb:row){int red=android.graphics.Color.red(rgb),green=android.graphics.Color.green(rgb),blue=android.graphics.Color.blue(rgb);
+                if(red<170&&green<170&&blue<170)dark++;if(red>250&&green>250&&blue>250)white++;
+                if(Math.abs(red-android.graphics.Color.red(Design.CREAM))<=12&&Math.abs(green-android.graphics.Color.green(Design.CREAM))<=12&&Math.abs(blue-android.graphics.Color.blue(Design.CREAM))<=12)cream++;
+            }
+        }
+        return dark>=24&&cream*100>=total*60&&white<=2;
     }
     private void closeAll() throws Exception {
         i.runOnMainSync(() -> { List<Activity> reverse = new ArrayList<>(owned); Collections.reverse(reverse);
