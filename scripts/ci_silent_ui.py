@@ -19,7 +19,7 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--serial", required=True, choices=("emulator-5554",))
-parser.add_argument("--scope", choices=("full", "tone-wake", "report", "report-flow", "organization", "organized-settings", "recorded-analysis", "challenge-routine", "tonight", "appearance", "event-library", "goal-plan", "interaction-security", "priority-menus", "priority-current", "priority-repair", "reference-menus", "privacy-recovery", "setup-readiness", "readiness-recovery", "sensing-reference", "room-bedtime-live", "room-bedtime-repair", "bedtime-navigation", "label-navigation", "live-night-timeline", "chart-phone-motion", "wake-challenge-reference", "calendar-consent-recovery", "profile-room-dimming", "room-settings-search", "sensing-travel", "travel-ui", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features", "feature-increment", "nap-features"), default="full", help="A named narrow scope is never a full app acceptance run")
+parser.add_argument("--scope", choices=("full", "tone-wake", "report", "report-flow", "organization", "organized-settings", "recorded-analysis", "challenge-routine", "math-owner", "tonight", "appearance", "event-library", "goal-plan", "interaction-security", "priority-menus", "priority-current", "priority-repair", "reference-menus", "privacy-recovery", "setup-readiness", "readiness-recovery", "sensing-reference", "room-bedtime-live", "room-bedtime-repair", "bedtime-navigation", "label-navigation", "live-night-timeline", "chart-phone-motion", "wake-challenge-reference", "calendar-consent-recovery", "profile-room-dimming", "room-settings-search", "sensing-travel", "travel-ui", "sonar-night", "sound-categories", "sound-sensitivity", "phone-features", "feature-increment", "nap-features"), default="full", help="A named narrow scope is never a full app acceptance run")
 parser.add_argument("--native-sounds", action="store_true", help="Real media service tests on this no-host-audio CI emulator only")
 parser.add_argument("--audio-imports", action="store_true", help="Actual document picker and imported playback on this isolated emulator only")
 args = parser.parse_args()
@@ -281,6 +281,8 @@ elif args.scope == "organized-settings":
     tests = ["OrganizedSettingsJourneyTest"]
 elif args.scope == "recorded-analysis":
     tests = ["RecordedAnalysisJourneyTest"]
+elif args.scope == "math-owner":
+    tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
 elif args.scope == "challenge-routine":
     tests = ["ChallengeRoutineFlowTest"]
 elif args.scope == "tonight":
@@ -442,6 +444,7 @@ if args.scope != "full":
         "interaction-security": INTERACTION_SECURITY_FRAMES,
         "appearance": APPEARANCE_FRAMES,
         "tonight": TONIGHT_FRAMES,
+        "math-owner": ['routine-legacy.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png'],
         "challenge-routine": ROUTINE_FRAMES,
         "travel-ui": TRAVEL_UI_FRAMES,
         "recorded-analysis": RECORDED_ANALYSIS_FRAMES,
