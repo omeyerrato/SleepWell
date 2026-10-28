@@ -1,0 +1,20 @@
+{
+  "scope": "travel-ui",
+  "full_app_review": false,
+  "expected_classes": 2,
+  "expected_methods": 3,
+  "class_results": [
+    {
+      "class": "TravelPlanFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "TravelCueFlowTest",
+      "expected_methods": 2,
+      "passed": true
+    }
+  ],
+  "required_original_images": 34,
+  "failures": []
+}
