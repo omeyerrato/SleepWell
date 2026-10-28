@@ -1,0 +1,87 @@
+{
+  "base": "4cf8a86f",
+  "refs": {
+    "4cf8a86f": {
+      "production_tree": "4459930509280751c888fb17dfb4a38a8c91776d",
+      "blobs": {
+        "app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java": "6bb008f6c14ef24f2f6c8362418f7afddba5a176",
+        "app/src/main/java/org/sleepwell/app/TrackingService.java": "b8a6c8399a5944e98de5f18096aa10943d97d451",
+        "app/src/main/java/org/sleepwell/app/TrackingOptionsUi.java": "3a9a92d1b783ba9f68e6e4cb93897b1baa50d345",
+        "app/src/androidTest/java/org/sleepwell/app/OrganizedSettingsJourneyTest.java": "c687dd81ef0a4e755e0ce19192204e4695dd8d1c",
+        "scripts/ci_silent_ui.py": "80f3693f390d1078f79fd8e18881d64164d7fa89",
+        ".github/workflows/silent-ui-review.yml": "61928d93cbd3f3c7b784ed5e6763d7cd5e6b89a9"
+      }
+    },
+    "69b15445aeee5002f573521f07e2e83fba3eb04e": {
+      "production_tree": "371819ecc118169e577a831dc8d861a47d711fa2",
+      "blobs": {
+        "app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java": "b49932b02c96a4f718d19460f77a39cf5edf62c1",
+        "app/src/main/java/org/sleepwell/app/TrackingService.java": "b8a6c8399a5944e98de5f18096aa10943d97d451",
+        "app/src/main/java/org/sleepwell/app/TrackingOptionsUi.java": "3a9a92d1b783ba9f68e6e4cb93897b1baa50d345",
+        "app/src/androidTest/java/org/sleepwell/app/OrganizedSettingsJourneyTest.java": "c687dd81ef0a4e755e0ce19192204e4695dd8d1c",
+        "scripts/ci_silent_ui.py": "80f3693f390d1078f79fd8e18881d64164d7fa89",
+        ".github/workflows/silent-ui-review.yml": "61928d93cbd3f3c7b784ed5e6763d7cd5e6b89a9"
+      }
+    },
+    "4bd1be77776286d083898799b32a07f94621fdd0": {
+      "production_tree": "371819ecc118169e577a831dc8d861a47d711fa2",
+      "blobs": {
+        "app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java": "b49932b02c96a4f718d19460f77a39cf5edf62c1",
+        "app/src/main/java/org/sleepwell/app/TrackingService.java": "b8a6c8399a5944e98de5f18096aa10943d97d451",
+        "app/src/main/java/org/sleepwell/app/TrackingOptionsUi.java": "3a9a92d1b783ba9f68e6e4cb93897b1baa50d345",
+        "app/src/androidTest/java/org/sleepwell/app/OrganizedSettingsJourneyTest.java": "67f2170a830a35bcc056fa8a7724d75d7b8a516c",
+        "scripts/ci_silent_ui.py": "80f3693f390d1078f79fd8e18881d64164d7fa89",
+        ".github/workflows/silent-ui-review.yml": "61928d93cbd3f3c7b784ed5e6763d7cd5e6b89a9"
+      }
+    },
+    "930212da5ac0f179227f87bebaafd5f196e73f96": {
+      "production_tree": "371819ecc118169e577a831dc8d861a47d711fa2",
+      "blobs": {
+        "app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java": "b49932b02c96a4f718d19460f77a39cf5edf62c1",
+        "app/src/main/java/org/sleepwell/app/TrackingService.java": "b8a6c8399a5944e98de5f18096aa10943d97d451",
+        "app/src/main/java/org/sleepwell/app/TrackingOptionsUi.java": "3a9a92d1b783ba9f68e6e4cb93897b1baa50d345",
+        "app/src/androidTest/java/org/sleepwell/app/OrganizedSettingsJourneyTest.java": "67f2170a830a35bcc056fa8a7724d75d7b8a516c",
+        "scripts/ci_silent_ui.py": "80f3693f390d1078f79fd8e18881d64164d7fa89",
+        ".github/workflows/silent-ui-review.yml": "61928d93cbd3f3c7b784ed5e6763d7cd5e6b89a9"
+      }
+    },
+    "ed65b1ab50787b5cce9d91d5e054d08b9682df5a": {
+      "production_tree": "371819ecc118169e577a831dc8d861a47d711fa2",
+      "blobs": {
+        "app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java": "b49932b02c96a4f718d19460f77a39cf5edf62c1",
+        "app/src/main/java/org/sleepwell/app/TrackingService.java": "b8a6c8399a5944e98de5f18096aa10943d97d451",
+        "app/src/main/java/org/sleepwell/app/TrackingOptionsUi.java": "3a9a92d1b783ba9f68e6e4cb93897b1baa50d345",
+        "app/src/androidTest/java/org/sleepwell/app/OrganizedSettingsJourneyTest.java": "67f2170a830a35bcc056fa8a7724d75d7b8a516c",
+        "scripts/ci_silent_ui.py": "f3ec3c769757900f3ecbef8df095eb94be468b9e",
+        ".github/workflows/silent-ui-review.yml": "61928d93cbd3f3c7b784ed5e6763d7cd5e6b89a9"
+      }
+    },
+    "e0d8b4aeb906b3877c631e9c76ad83642905d0de": {
+      "production_tree": "0a06dc0ad19a1fb1ab2777e4af18c77241412b21",
+      "blobs": {
+        "app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java": "2e42b8a231bc82898831cbffd1061a7f412114a0",
+        "app/src/main/java/org/sleepwell/app/TrackingService.java": "b8a6c8399a5944e98de5f18096aa10943d97d451",
+        "app/src/main/java/org/sleepwell/app/TrackingOptionsUi.java": "3a9a92d1b783ba9f68e6e4cb93897b1baa50d345",
+        "app/src/androidTest/java/org/sleepwell/app/OrganizedSettingsJourneyTest.java": "67f2170a830a35bcc056fa8a7724d75d7b8a516c",
+        "scripts/ci_silent_ui.py": "f3ec3c769757900f3ecbef8df095eb94be468b9e",
+        ".github/workflows/silent-ui-review.yml": "61928d93cbd3f3c7b784ed5e6763d7cd5e6b89a9"
+      }
+    },
+    "0d2c0fb8181ab7c9f76a4f2653994232973133d6": {
+      "production_tree": "0a06dc0ad19a1fb1ab2777e4af18c77241412b21",
+      "blobs": {
+        "app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java": "2e42b8a231bc82898831cbffd1061a7f412114a0",
+        "app/src/main/java/org/sleepwell/app/TrackingService.java": "b8a6c8399a5944e98de5f18096aa10943d97d451",
+        "app/src/main/java/org/sleepwell/app/TrackingOptionsUi.java": "3a9a92d1b783ba9f68e6e4cb93897b1baa50d345",
+        "app/src/androidTest/java/org/sleepwell/app/OrganizedSettingsJourneyTest.java": "3fc9a2324077510ceab9cc66963b20301961996f",
+        "scripts/ci_silent_ui.py": "f3ec3c769757900f3ecbef8df095eb94be468b9e",
+        ".github/workflows/silent-ui-review.yml": "61928d93cbd3f3c7b784ed5e6763d7cd5e6b89a9"
+      }
+    }
+  },
+  "only_production_changed_path": [
+    "app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java"
+  ],
+  "production_delta_between_runs": "diff --git a/app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java b/app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java\nindex b49932b0..2e42b8a2 100644\n--- a/app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java\n+++ b/app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java\n@@ -45,6 +45,7 @@ public final class AutomaticTrackingActivity extends Activity {\n     @Override public void onCreate(Bundle state){super.onCreate(state);if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);owner=port;GoogleSleepSignal.recover(this);if(getIntent().getBooleanExtra(\"visualReview\",false))getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);String selected=state==null?owner.preferences(this).getString(\"automaticMode\",\"MANUAL\"):state.getString(\"mode\",\"MANUAL\");try{mode=AutomaticSleep.Mode.valueOf(selected);}catch(Exception ignored){mode=AutomaticSleep.Mode.MANUAL;}rejectFalseStarts=state==null?AutomaticFalseStart.requested(owner.preferences(this)):state.getBoolean(\"rejectFalseStarts\");googleSleep=state==null?owner.preferences(this).getBoolean(\"automaticGoogleSleep\",false):state.getBoolean(\"googleSleep\");recordSounds=state==null?owner.preferences(this).getBoolean(\"automaticRecordSounds\",false):state.getBoolean(\"recordSounds\");keepClips=state==null?owner.preferences(this).getBoolean(\"automaticKeepClips\",false):state.getBoolean(\"keepClips\");try{conditions=state==null?ArmedWaitSettings.read(owner.preferences(this)):new ArmedWaitConditions(state.getBoolean(\"waitCharging\"),state.getBoolean(\"waitScreenOff\"));conditionsError=state==null?\"\":state.getString(\"conditionsError\",\"\");}catch(IllegalArgumentException invalid){conditionsError=invalid.getMessage();}String requested=state==null?getIntent().getStringExtra(PAGE_EXTRA):state.getString(\"page\");if(PAGES.contains(requested==null?\"home\":requested))page=requested==null?\"home\":requested;if(state!=null){positions=state.getBundle(\"positions\")==null?new Bundle():state.getBundle(\"positions\");errorCopy=state.getString(\"errorCopy\",\"\");int recovery=state.getInt(\"permissionRecovery\");if(recovery==91||recovery==93||recovery==94)permissionRecovery=recovery;int request=state.getInt(\"permissionRequest\");if(state.getBoolean(\"permissionPending\")&&(request==91||request==93||request==94)){permissionPending=true;permissionRequest=request;}java.util.ArrayList<String> restored=state.getStringArrayList(\"pageHistory\");if(restored!=null)for(String entry:restored)if(PAGES.contains(entry))history.addLast(entry);}render();}\n     @Override protected void onSaveInstanceState(Bundle state){rememberPosition();super.onSaveInstanceState(state);state.putString(\"page\",page);state.putBundle(\"positions\",positions);state.putString(\"errorCopy\",errorCopy);state.putInt(\"permissionRecovery\",permissionRecovery);state.putBoolean(\"permissionPending\",permissionPending);state.putInt(\"permissionRequest\",permissionRequest);state.putStringArrayList(\"pageHistory\",new java.util.ArrayList<>(history));state.putString(\"mode\",mode.name());state.putBoolean(\"rejectFalseStarts\",rejectFalseStarts);state.putBoolean(\"recordSounds\",recordSounds);state.putBoolean(\"googleSleep\",googleSleep);state.putBoolean(\"keepClips\",keepClips);state.putBoolean(\"waitCharging\",conditions.charging);state.putBoolean(\"waitScreenOff\",conditions.screenOff);state.putString(\"conditionsError\",conditionsError);}\n     @Override protected void onResume(){super.onResume();resumed=true;stateHandler.removeCallbacks(stateTick);stateHandler.post(stateTick);if(permissionRecovery!=0&&!permissionMissing(permissionRecovery)){permissionRecovery=0;errorCopy=\"Access is available. Review your choices before arming tonight.\";}refresh();}\n+    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}\n     @Override protected void onPause(){resumed=false;stateHandler.removeCallbacks(stateTick);super.onPause();}\n     @Override protected void onDestroy(){stateHandler.removeCallbacks(stateTick);super.onDestroy();}\n     private String currentPhase(){try{String phase=owner.currentPhase(this);return phase==null?\"UNAVAILABLE\":phase;}catch(RuntimeException unavailable){return \"UNAVAILABLE\";}}",
+  "unchanged_engines_and_shared_helper_from_base": true
+}

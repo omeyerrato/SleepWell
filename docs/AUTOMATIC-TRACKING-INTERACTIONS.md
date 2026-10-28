@@ -2,6 +2,7 @@
 
 Source: `69b15445aeee5002f573521f07e2e83fba3eb04e`.
 Native extension: `4bd1be77776286d083898799b32a07f94621fdd0`.
+Focus contrast repair: `e0d8b4ae`; native rendered-bar gate: `0d2c0fb8`.
 Base: `4cf8a86f`. This work is separate from the frozen 0.1.4 release.
 
 The [Board 10 reference](../design-concepts/2026-10-22-phone-app/10-phone-sensors.png)
@@ -86,17 +87,22 @@ no-microphone, no-playback and no-created-record assertions remain.
 
 ## Verification status and limits
 
-The changed Activity and exact native file compile with JDK 21, Java release
-17 and Android API 36 against cached app/test dependencies. The native compile
-has cached dependency annotation warnings and deprecation notes, with no
-errors. `git diff --check` passes. No Gradle build, CI dispatch, native execution
-or new screenshot inspection has run for this change. The current workflow
-still lists the historical 20-frame inventory; a separately reviewed bounded
-scope must list all 28 before execution.
+[CI40735370471](https://github.com/omeyerrato/SleepWell/actions/runs/40735370471)
+passed the exact existing method in83.548s with all28 required originals at
+`0d2c0fb8181ab7c9f76a4f2653994232973133d6`. The
+[archive](verification/2026-10-28-automatic-tracking/README.md) contains all28
+individually inspected originals, exact transcripts/environments/summaries,
+source blobs and hash proof. The first passing run79.935s exposed white glyphs
+on cream in its manual-entry frame; that original remains explicit historical
+evidence. A local focus-bar repair and actual contrasting rendered-bar gates
+passed in the final run. Both APKs built in CI. Scope inventory is now28 for
+the same named method; all39 other scope mappings and prior arrays are kept.
 
-Geometry, current layout/reference fidelity and runtime assertions remain
-pending native evidence. Synthetic permission results and a private phase
-port do not establish actual OS denial, service admission, wait cancellation,
-Google subscription, microphone, physical sensing or alarm behavior. Blocking
-intent monitors prove dispatch shape, not destination behavior. This is not
-whole-app security or all-screen acceptance.
+The main core, restorable children, error/recovery and modeled active-wait
+states are readable in the represented normal-text configuration. This is
+bounded evidence, not all-device or pixel-equality acceptance. Synthetic
+permission results and a private phase port do not establish actual OS denial,
+service admission, wait cancellation, Google subscription, microphone,
+physical sensing or alarm behavior. Blocking intent monitors prove dispatch
+shape, not destination behavior. This is not whole-app security or all-screen
+acceptance. No personal device, root workspace or released package was changed.

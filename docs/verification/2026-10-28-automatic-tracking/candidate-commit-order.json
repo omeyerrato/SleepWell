@@ -1,0 +1,26 @@
+[
+  {
+    "commit": "69b15445aeee5002f573521f07e2e83fba3eb04e",
+    "subject": "Clarify automatic start choices and retain supporting draft routes"
+  },
+  {
+    "commit": "4bd1be77776286d083898799b32a07f94621fdd0",
+    "subject": "Exercise automatic start draft routes and wait ownership in existing journey"
+  },
+  {
+    "commit": "930212da5ac0f179227f87bebaafd5f196e73f96",
+    "subject": "Document bounded automatic tracking draft and verification scope"
+  },
+  {
+    "commit": "ed65b1ab50787b5cce9d91d5e054d08b9682df5a",
+    "subject": "Scope automatic tracking verification to one existing journey and 28 originals"
+  },
+  {
+    "commit": "e0d8b4aeb906b3877c631e9c76ad83642905d0de",
+    "subject": "Restore automatic tracking system bar contrast when focus arrives"
+  },
+  {
+    "commit": "0d2c0fb8181ab7c9f76a4f2653994232973133d6",
+    "subject": "Require rendered contrasting bars in automatic tracking originals"
+  }
+]

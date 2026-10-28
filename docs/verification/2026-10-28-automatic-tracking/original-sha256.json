@@ -1,0 +1,177 @@
+{
+  "organized-settings-automatic-access.png": {
+    "run": 40735370471,
+    "sha256": "2a3cfee9b7002a774128ae621310ce14ee9d91c878e87b8f67709f25156b4aa6",
+    "bytes": 126284
+  },
+  "organized-settings-automatic-active-wait.png": {
+    "run": 40735370471,
+    "sha256": "dcf02bcb9abf2d7069f0107c4b2d9e9969c39a8fa1752f0b12085be475c5c0ba",
+    "bytes": 208733
+  },
+  "organized-settings-automatic-conditions.png": {
+    "run": 40735370471,
+    "sha256": "4656d8e10ca2ab43eb61f5d1625a6e2ee2406066c381146b5fd0c12f16642a6e",
+    "bytes": 100775
+  },
+  "organized-settings-automatic-detection.png": {
+    "run": 40735370471,
+    "sha256": "b0b9dfd88dd718cf8519c79a48c5842a511b5397b74e160ba93b05e702f8a93a",
+    "bytes": 158147
+  },
+  "organized-settings-automatic-main.png": {
+    "run": 40735370471,
+    "sha256": "c6bbda7ef7b0ffa17c02f6d59993997b6b54f13b2f12a7073c1bea09d7e0e9af",
+    "bytes": 182539
+  },
+  "organized-settings-automatic-options.png": {
+    "run": 40735370471,
+    "sha256": "b3cc4e4bcb6c6b30452ada0f9fd95d7dd5437146193ed19214ad98844e982d9a",
+    "bytes": 175969
+  },
+  "organized-settings-automatic-permission-recovery.png": {
+    "run": 40735370471,
+    "sha256": "4b0c6b515238ff5d4572bad7a109497a9e051e1109bed4a8138440ac298278b1",
+    "bytes": 198602
+  },
+  "organized-settings-automatic-saved-reopened.png": {
+    "run": 40735370471,
+    "sha256": "727b82e2b91ccf5209a079dd8b3abf873a85277345d72476ac74addd9a64e51f",
+    "bytes": 193839
+  },
+  "organized-settings-automatic-sounds.png": {
+    "run": 40735370471,
+    "sha256": "92befd783f87c829d2661e72a0641a52db46fa1a263e3fcaa9716051ef03bef9",
+    "bytes": 104643
+  },
+  "organized-settings-automatic-source.png": {
+    "run": 40735370471,
+    "sha256": "b80b1cd9295db6fa4b13529e26328d4a670b35048fe2438f627056b784ddbb1f",
+    "bytes": 118251
+  },
+  "organized-settings-fade-reopened.png": {
+    "run": 40735370471,
+    "sha256": "f15225e57ab4b108493a27ddc4fce29d34d82bfd2a1f5f71a639b70f182d0230",
+    "bytes": 74145
+  },
+  "organized-settings-recurring-conditions.png": {
+    "run": 40735370471,
+    "sha256": "980181a605f2e59e90b8db0c8d97f785fdaf93a7040733b90cae60e29f327ee4",
+    "bytes": 159793
+  },
+  "organized-settings-retention-details.png": {
+    "run": 40735370471,
+    "sha256": "dfd4cc780314dd7c10c16b7403983b372685fbbcdbf5fade7638f4725d555078",
+    "bytes": 106149
+  },
+  "organized-settings-sensitivity-categories.png": {
+    "run": 40735370471,
+    "sha256": "4cd475775e4396416e85cef267b2e926c992df5992697b8c39a49758d7fee7cd",
+    "bytes": 130682
+  },
+  "organized-settings-sensitivity-duration.png": {
+    "run": 40735370471,
+    "sha256": "ef9c446cca2c4d0afe43a1314f0032498d55bd285cdca8c05382d99e4f105901",
+    "bytes": 122960
+  },
+  "organized-settings-sensitivity-reopened.png": {
+    "run": 40735370471,
+    "sha256": "d5b054578b54f30f353918c69edd7fc32771ce75d326eb6c4782700c3f3d0845",
+    "bytes": 101147
+  },
+  "organized-settings-snoring-options.png": {
+    "run": 40735370471,
+    "sha256": "e4776c9ac158dd3553e90d8f04c4016e0fecfa2900a6bb53a1af178d254d2144",
+    "bytes": 164698
+  },
+  "organized-settings-sounds-playback.png": {
+    "run": 40735370471,
+    "sha256": "906908a8edfadcf39e7635929e99014d0a6e0aa88eb8fff71d18ca989f20f673",
+    "bytes": 123190
+  },
+  "organized-settings-sounds-sources.png": {
+    "run": 40735370471,
+    "sha256": "cc71566775b745d40720df56432ec966749d107d43eb95ff858050ae93dd7343",
+    "bytes": 118845
+  },
+  "organized-settings-timer-recreated.png": {
+    "run": 40735370471,
+    "sha256": "c4a69afe555f8416f1a661bdcad69be256360955c9c86f73e3b9200707c39b7c",
+    "bytes": 87191
+  },
+  "organized-settings-tracking-automatic-manual.png": {
+    "run": 40735370471,
+    "sha256": "0df7951b2cb4c251c9bc8f6e405ebebe2416300cbcad60bf5955cda7a3a80016",
+    "bytes": 213872
+  },
+  "organized-settings-tracking-main.png": {
+    "run": 40735370471,
+    "sha256": "f84144a413f15987cb2a8f6af181562b14ae06abe1f4541d57b0f6d5da25a61e",
+    "bytes": 434344
+  },
+  "organized-settings-tracking-more.png": {
+    "run": 40735370471,
+    "sha256": "5a217586c24db0c56c20d5f628e9c672b96ffe68f77e549dd770eee61e1cd09a",
+    "bytes": 190661
+  },
+  "organized-settings-tracking-phone-selected.png": {
+    "run": 40735370471,
+    "sha256": "55be8af7ff525de3b0835334e1ea2885682fcad1c8c4485cc0c47a87a1f511ac",
+    "bytes": 434304
+  },
+  "organized-settings-tracking-power-recreated.png": {
+    "run": 40735370471,
+    "sha256": "4dd14870d2e23490930a3586e3cf2649822220e2272b02b7d0d2918991dc5b4d",
+    "bytes": 156925
+  },
+  "organized-settings-tracking-power.png": {
+    "run": 40735370471,
+    "sha256": "2a04b9a447d7c94668fdec97b6c42fbeacb618af6f52984ee4ca877d9ff79cf4",
+    "bytes": 156964
+  },
+  "organized-settings-tracking-recreated.png": {
+    "run": 40735370471,
+    "sha256": "100f6be31b09c443633a1c07743e5ec0d95fdb6fc0a8e6a2fa0e49d00ae0500a",
+    "bytes": 434354
+  },
+  "organized-settings-tracking-sensitivity.png": {
+    "run": 40735370471,
+    "sha256": "258382a129d5c7473dfb88a767fec4781884bda27933da4fc987c0d1098cb93e",
+    "bytes": 130891
+  },
+  "environment.json": {
+    "run": 40735370471,
+    "sha256": "e22e64170b20b099947f7752ea257c41eb5372dc73605462aaccb8fcfb049502",
+    "bytes": 666
+  },
+  "focused-review-summary.json": {
+    "run": 40735370471,
+    "sha256": "4182a1a5f8bb42cef12982306397b2514d72a23eac79024ae16a9330285c36be",
+    "bytes": 358
+  },
+  "OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs.txt": {
+    "run": 40735370471,
+    "sha256": "7b30c9abbfa3b3f5bb6aa8a7a4c23ef0139e8d5b7b9f42c2442ceaa44804489d",
+    "bytes": 817
+  },
+  "visual-gap-40729522971/environment.json": {
+    "run": 40729522971,
+    "sha256": "c32143530797d84f49a6519687637a53c2fce09eb1753b1c82bddca07f376ccb",
+    "bytes": 666
+  },
+  "visual-gap-40729522971/focused-review-summary.json": {
+    "run": 40729522971,
+    "sha256": "4182a1a5f8bb42cef12982306397b2514d72a23eac79024ae16a9330285c36be",
+    "bytes": 358
+  },
+  "visual-gap-40729522971/organized-settings-tracking-automatic-manual.png": {
+    "run": 40729522971,
+    "sha256": "14f41dc034d7c4278640f66c2989b290175b35f5d1ef8039d594ffdcc3b681e8",
+    "bytes": 212059
+  },
+  "visual-gap-40729522971/OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs.txt": {
+    "run": 40729522971,
+    "sha256": "0fca6f882c7821d46143070068fedc73c5d4e539c99e07ac25baa01bccc01943",
+    "bytes": 817
+  }
+}
