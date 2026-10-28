@@ -1,0 +1,44 @@
+{
+  "success_run": 40759551606,
+  "native_head": "ecdea35da8956adc120cbf96a50fc08449a374d0",
+  "production_source": "ef69408258e900a50274d6f2488e859647138714",
+  "method_seconds": 50.332,
+  "original_pngs": 18,
+  "glyphs": 73,
+  "glyph_type": "BitmapDrawable",
+  "intrinsic_pixels": [
+    63,
+    63
+  ],
+  "density_dpi": 420,
+  "intrinsic_dp": 24,
+  "alpha_min_all": 0,
+  "alpha_max_range": [
+    251,
+    255
+  ],
+  "decoded_transparent_pixel_range": [
+    1828,
+    3552
+  ],
+  "native_tint_checks_passed": 73,
+  "gallery_control_counts": [
+    25,
+    25,
+    23
+  ],
+  "launcher_preview_count": 4,
+  "launcher_rendered_pixels": [
+    315,
+    126
+  ],
+  "failed_run": 40756639924,
+  "failed_method_seconds": 58.396,
+  "failed_pngs_including_diagnostic": 19,
+  "individual_pngs_inspected": 37,
+  "production_files_changed_by_fix": [],
+  "full_app_review": false,
+  "all_18_visually_accepted": false,
+  "ui04_system_bar_contrast_pending": true,
+  "bounded_visual_result": "73 glyph/native launcher checks and app controls reviewed; UI04 SystemUI contrast pending"
+}
