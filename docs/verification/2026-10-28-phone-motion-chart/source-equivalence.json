@@ -1,0 +1,186 @@
+{
+  "scope": "Only listed source/native/scope bytes; not complete app, release APK, hardware or installed-profile equivalence. Verification branch changes are kept separate from frozen root release.",
+  "run_source": "662e44cf9a7a9990348be0c923ef53c04cf30021",
+  "base_root_commit": "dcf97f20c049e75c2fd436b3dceac5ea88afa603",
+  "root_committed_head_at_archive": "c019f6b25ec41069dedc56eef10275cb7e8b0e3a",
+  "delivery_commits": {
+    "source": "4d0a3f4a7f1cdf7f08872eccef9e0c9c78173659",
+    "native_extension": "9375bc6c8920a6f77647ee3e1fd013d935803034",
+    "scope": "b11b666783403ae8992f722d920c4dd4ae2659dd",
+    "native_fixture_correction": "662e44cf9a7a9990348be0c923ef53c04cf30021"
+  },
+  "execution_boundary": "Production PhoneMotionChartReader and RecordChart apply/interaction execute on a real focused RecordReportActivity fixture. TrackingActivity tick/snapshot/lifecycle integration is source-reviewed only; its owner callback and pause/More/back reattachment have not been executed by this selector.",
+  "sources": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingActivity.java",
+      "git_blob_at_run": "d2ed18d2c7b54da3e6bf7234f7aa38b7b9beea8b",
+      "sha256_committed_bytes": "84882315b59b8c2a02bf02ae570ef91189e2191ad36d5104f4af531f7269494e",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "ba543310e825fe027b3fd32caee55ce43caeba28",
+      "matches_root_committed_blob": false,
+      "matches_root_git_filtered_working_tree": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PhoneMotionChartReader.java",
+      "git_blob_at_run": "a5d9902916332ada426255e22f7c1c12cbcc2445",
+      "sha256_committed_bytes": "307785b1b014e9c8b0ece1c2c0b96628bf0a16656345197a208a2edeb19c217e",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": null,
+      "matches_root_committed_blob": false,
+      "matches_root_git_filtered_working_tree": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordChart.java",
+      "git_blob_at_run": "c2e86460737b0546f2ae6b499fdd4357ea5cf916",
+      "sha256_committed_bytes": "18d48952c78abcc1156a319c8b6c1d19be618131007ac1de6f7af95bb82e1783",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "1bd7192b456103c5f7ba24565dc75afeee582504",
+      "matches_root_committed_blob": false,
+      "matches_root_git_filtered_working_tree": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChartSeries.java",
+      "git_blob_at_run": "0cfdafc02c44cf0fdc9ae790ead686ebaa776ce5",
+      "sha256_committed_bytes": "fea83915953148f02ffea99204981283e334e1685bcde70d66bfaef2f57e910c",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "0cfdafc02c44cf0fdc9ae790ead686ebaa776ce5",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChartTicks.java",
+      "git_blob_at_run": "287cfb242003c836fd285a62b642e175deeeab84",
+      "sha256_committed_bytes": "81a3d30d4e5ba0137dca271a6177b71333cb9ca3953b09078ada0e1efab3cdd8",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "287cfb242003c836fd285a62b642e175deeeab84",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingService.java",
+      "git_blob_at_run": "8a527dd86ccbf5c93ca457515e57244fdff6bc95",
+      "sha256_committed_bytes": "e0348076351071a061092f071b2267022472b29d6f05a9d34f004dd567577335",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "8a527dd86ccbf5c93ca457515e57244fdff6bc95",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingClock.java",
+      "git_blob_at_run": "0afb2a92ebe16e7eefd286179573f33e6b338ee6",
+      "sha256_committed_bytes": "34fca136e8a54935073312898acdc2211ada4513ce231dd7b1c81ce295d39e2d",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "0afb2a92ebe16e7eefd286179573f33e6b338ee6",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BatchedMotion.java",
+      "git_blob_at_run": "42aa7015b1f2981490cee31e44b5808eba9b80a0",
+      "sha256_committed_bytes": "7fc4970d471ccf7973cb54e4688cec5412ca4b31c4198a77a4c99eb3a7405acb",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "42aa7015b1f2981490cee31e44b5808eba9b80a0",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/LiveMovementTimeline.java",
+      "git_blob_at_run": "1c955cdfa5af3b044398b620dfb7a9e82c789151",
+      "sha256_committed_bytes": "f2b61722505fa1511d9596a67cdbb3cb6fcf1ab1b86f531fc5bbc7ef66a9c028",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "1c955cdfa5af3b044398b620dfb7a9e82c789151",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob_at_run": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "sha256_committed_bytes": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordReportActivity.java",
+      "git_blob_at_run": "a270635256e4ae8287786c6bd5f43af5daf4ac89",
+      "sha256_committed_bytes": "446d39ffbf7f24791873e1099e6bf4b7578977caf716e54dc38c3a4166f1d7f0",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "a270635256e4ae8287786c6bd5f43af5daf4ac89",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Records.java",
+      "git_blob_at_run": "25368746615d6dc554f0afa239b1586cc20f8bfc",
+      "sha256_committed_bytes": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "25368746615d6dc554f0afa239b1586cc20f8bfc",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Prefs.java",
+      "git_blob_at_run": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "sha256_committed_bytes": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "git_blob_at_run": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "sha256_committed_bytes": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Appearance.java",
+      "git_blob_at_run": "aecb50792e4892b83b3cba664182e368efd15be0",
+      "sha256_committed_bytes": "e21213f167519292860f54afd96716a938c5ebbd972ec3f358de7810dc574c6a",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "aecb50792e4892b83b3cba664182e368efd15be0",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/InteractionFeedback.java",
+      "git_blob_at_run": "55f8b5ba4418bf5a4426034dcd56c606634138b4",
+      "sha256_committed_bytes": "9d728c99e7a1a81a3d44291d9861dee831fa09c179062fe898d65d84d421e1ef",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "55f8b5ba4418bf5a4426034dcd56c606634138b4",
+      "matches_root_committed_blob": true,
+      "matches_root_git_filtered_working_tree": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ChartClockFlowTest.java",
+      "git_blob_at_run": "c2f1163ae06ca4d7ee3a7988f02546624941ec1c",
+      "sha256_committed_bytes": "c8f27b097a8007427d326337fb30a9460312dadf7db6d0ff6be2376392c03cd8",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "99a4b1e83bc3b3dca157f03cdb08342f9af83c82",
+      "matches_root_committed_blob": false,
+      "matches_root_git_filtered_working_tree": false
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "git_blob_at_run": "51703a79b3d3fadb126d15583485fb70999dabe2",
+      "sha256_committed_bytes": "9ae79f74346781103f30342d3364a897ad5827d39e9c166353775ab9ee2cc42c",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "11bda7f1c5e19918c10c9751141e77e31a24da5c",
+      "matches_root_committed_blob": false,
+      "matches_root_git_filtered_working_tree": false
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "git_blob_at_run": "4839f9460e3dc459fda939d1185062365ac947ff",
+      "sha256_committed_bytes": "73b87413a834dc33a34659d48a34d44a6dafd8a0c5a64dc47c31348ba6d94998",
+      "matches_verification_git_filtered_working_tree": true,
+      "root_committed_blob": "aabe58b6fc7d00b3a5d36e9b4302125a09dcaa24",
+      "matches_root_committed_blob": false,
+      "matches_root_git_filtered_working_tree": false
+    }
+  ]
+}

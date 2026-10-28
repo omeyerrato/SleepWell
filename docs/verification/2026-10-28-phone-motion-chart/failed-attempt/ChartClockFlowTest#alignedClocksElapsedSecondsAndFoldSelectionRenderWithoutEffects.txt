@@ -1,0 +1,38 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.ChartClockFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.ChartClockFlowTest:
+INSTRUMENTATION_STATUS: test=alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.ChartClockFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.NullPointerException: Attempt to invoke virtual method 'double java.lang.Double.doubleValue()' on a null object reference
+	at org.sleepwell.app.ChartClockFlowTest.phoneHistory(ChartClockFlowTest.java:50)
+	at org.sleepwell.app.ChartClockFlowTest.alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects(ChartClockFlowTest.java:82)
+
+INSTRUMENTATION_STATUS: stream=
+Error in alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects(org.sleepwell.app.ChartClockFlowTest):
+java.lang.NullPointerException: Attempt to invoke virtual method 'double java.lang.Double.doubleValue()' on a null object reference
+	at org.sleepwell.app.ChartClockFlowTest.phoneHistory(ChartClockFlowTest.java:50)
+	at org.sleepwell.app.ChartClockFlowTest.alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects(ChartClockFlowTest.java:82)
+
+INSTRUMENTATION_STATUS: test=alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 7.797
+There was 1 failure:
+1) alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects(org.sleepwell.app.ChartClockFlowTest)
+java.lang.NullPointerException: Attempt to invoke virtual method 'double java.lang.Double.doubleValue()' on a null object reference
+	at org.sleepwell.app.ChartClockFlowTest.phoneHistory(ChartClockFlowTest.java:50)
+	at org.sleepwell.app.ChartClockFlowTest.alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects(ChartClockFlowTest.java:82)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
