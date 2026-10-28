@@ -1,0 +1,70 @@
+{
+  "verified_head": "bf513ca4c864305eeb62677a3994fa0206ca2d75",
+  "native_gate_commit": "bf513ca4c864305eeb62677a3994fa0206ca2d75",
+  "functional_run_head": "175f34227571347b44220849c73d97add5f513e6",
+  "previous_archive_commit": "844a420794477cf1541538afb2917b0782cf117a",
+  "whole_production_tree_equal": true,
+  "all_three_native_method_bodies_identical": true,
+  "files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ContactlessSetupActivity.java",
+      "verified_sha256": "4439e8d5de8ccc3e034697bc36d91db676a99e85914f027423992a06b9ed1801",
+      "production_unchanged_from_functional_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ContactlessSetupUi.java",
+      "verified_sha256": "b9a7805afd679f483725153cc079ed6c9fd3e3bdc9d5d110d6f5dacb8c069827",
+      "production_unchanged_from_functional_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ContactlessSetupAccess.java",
+      "verified_sha256": "8f3d21285a6ea74fe497a062ade78d4e90584e749262b346e5309c46ad85f573",
+      "production_unchanged_from_functional_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarCapabilities.java",
+      "verified_sha256": "42b367ed5fc341f01f83060a837dcd029a79fbc93c6f0b57be282750c9aa6321",
+      "production_unchanged_from_functional_run": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Icons.java",
+      "verified_sha256": "7476acfafeed715e30a05306fc47faf43488e4b66bdacda325dfae61d77737c6",
+      "production_unchanged_from_functional_run": true
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_phosphor_headphones_regular.xml",
+      "verified_sha256": "6cbcf9619ebbf4cbeaa7205f367bee812d54d7510af9a50757b54ef3364d480d",
+      "production_unchanged_from_functional_run": true
+    },
+    {
+      "path": "third_party/phosphor/assets/regular/headphones.svg",
+      "verified_sha256": "992d04ff6759f1f12d40259298a92589c18556bf5b2ea6f82bc23e74d9c48185",
+      "production_unchanged_from_functional_run": true
+    },
+    {
+      "path": "third_party/phosphor/manifest.json",
+      "verified_sha256": "d4868834c462635ec4e443af4f05be2444be9a5a09025d02eb298a81f3ea3502",
+      "production_unchanged_from_functional_run": true
+    },
+    {
+      "path": "scripts/import_phosphor_icons.py",
+      "verified_sha256": "63cdfaad0c38e965ac08b4682f668396b667db92ce0e6f212c83a493793d8523",
+      "production_unchanged_from_functional_run": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ContactlessSetupFlowTest.java",
+      "verified_sha256": "5e0ada0c945d5bcaf4d17ce70b1f5b3327dec13d0bc64bb373c19248d5a3222a",
+      "production_unchanged_from_functional_run": false
+    }
+  ],
+  "metadata_whole_file_equal_to_functional_run": {
+    "scripts/ci_silent_ui.py": "a0480113f1946b42a6f6d6254e982bdd632cb48622b09cf2ff2be7f97dca5223",
+    ".github/workflows/silent-ui-review.yml": "0670d8c59dad6383ffca1f47e18332c16bffafac5bf55b627660eb4e8e67404f"
+  },
+  "original_inventory_equal": true,
+  "compositor_samples_per_capture": 2,
+  "saved_regions_per_capture": 5,
+  "all_saved_region_black_counts": 0,
+  "permission_hardware_service_outputs_verified": false,
+  "previous_mixed_frame_cause_conclusive": false
+}
