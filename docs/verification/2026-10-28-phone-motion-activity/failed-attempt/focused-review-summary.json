@@ -1,0 +1,22 @@
+{
+  "scope": "chart-phone-motion",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "ChartClockFlowTest#alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 14,
+  "failures": [
+    "ChartClockFlowTest#alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects",
+    "chart-clock-tracking-options.png",
+    "chart-clock-tracking-returned.png",
+    "chart-clock-tracking-paused.png",
+    "chart-clock-tracking-recreated.png",
+    "chart-clock-tracking-session.png"
+  ]
+}

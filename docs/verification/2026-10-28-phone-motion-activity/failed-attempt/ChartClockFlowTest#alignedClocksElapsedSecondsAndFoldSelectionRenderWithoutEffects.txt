@@ -1,0 +1,48 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.ChartClockFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.ChartClockFlowTest:
+INSTRUMENTATION_STATUS: test=alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.ChartClockFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at org.sleepwell.app.ChartClockFlowTest.lambda$trackingOwner$4(ChartClockFlowTest.java:81)
+	at org.sleepwell.app.ChartClockFlowTest.$r8$lambda$dse7QkUXP84o2femJllN-Ti46FQ(Unknown Source:0)
+	at org.sleepwell.app.ChartClockFlowTest$$ExternalSyntheticLambda0.open(D8$$SyntheticClass:0)
+	at org.sleepwell.app.PhoneMotionChartReader.load(PhoneMotionChartReader.java:56)
+	at org.sleepwell.app.PhoneMotionChartReader.read(PhoneMotionChartReader.java:48)
+	at org.sleepwell.app.PhoneMotionChartReader.$r8$lambda$-Q7G9uDH27aQt8gGeYsXUWVRL2Q(Unknown Source:0)
+	at org.sleepwell.app.PhoneMotionChartReader$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+	at java.lang.Thread.run(Thread.java:1119)
+
+INSTRUMENTATION_STATUS: stream=
+Process crashed while executing alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects(org.sleepwell.app.ChartClockFlowTest):
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at org.sleepwell.app.ChartClockFlowTest.lambda$trackingOwner$4(ChartClockFlowTest.java:81)
+	at org.sleepwell.app.ChartClockFlowTest.$r8$lambda$dse7QkUXP84o2femJllN-Ti46FQ(Unknown Source:0)
+	at org.sleepwell.app.ChartClockFlowTest$$ExternalSyntheticLambda0.open(D8$$SyntheticClass:0)
+	at org.sleepwell.app.PhoneMotionChartReader.load(PhoneMotionChartReader.java:56)
+	at org.sleepwell.app.PhoneMotionChartReader.read(PhoneMotionChartReader.java:48)
+	at org.sleepwell.app.PhoneMotionChartReader.$r8$lambda$-Q7G9uDH27aQt8gGeYsXUWVRL2Q(Unknown Source:0)
+	at org.sleepwell.app.PhoneMotionChartReader$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+	at java.lang.Thread.run(Thread.java:1119)
+
+INSTRUMENTATION_STATUS: test=alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: shortMsg=Process crashed.
+INSTRUMENTATION_CODE: 0
