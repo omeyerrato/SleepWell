@@ -1,0 +1,61 @@
+{
+  "run_id": 40615701815,
+  "capture_source": "bc9bc9c28568e441b1fb44b656c77e8915d8698f",
+  "originals": [
+    {
+      "file": "backup-document-review.png",
+      "bytes": 132717,
+      "sha256": "2a0eaa8aaeea3a846eeb7dcb8c55258f9d6f371c2e949f069c5c56a6f85016c3"
+    },
+    {
+      "file": "backup-document-confirmation.png",
+      "bytes": 129572,
+      "sha256": "ff527b5a8739559a7f28d6857a48d04bb202a80cdc2b28bd1b4f39a0f601d894"
+    },
+    {
+      "file": "backup-document-review-recreated.png",
+      "bytes": 132717,
+      "sha256": "2a0eaa8aaeea3a846eeb7dcb8c55258f9d6f371c2e949f069c5c56a6f85016c3"
+    },
+    {
+      "file": "backup-document-review-reopened.png",
+      "bytes": 132345,
+      "sha256": "a26ffec8d258a2735f02d7a951c5939e01fd59db9d00ed545c920f914218f54f"
+    },
+    {
+      "file": "backup-document-restoring.png",
+      "bytes": 113203,
+      "sha256": "bb8ede4985bcf12a103ce511c811f1f3bcdec75166142bea9fe2d623858678f9"
+    },
+    {
+      "file": "backup-document-restoring-recreated.png",
+      "bytes": 113203,
+      "sha256": "bb8ede4985bcf12a103ce511c811f1f3bcdec75166142bea9fe2d623858678f9"
+    },
+    {
+      "file": "backup-document-restored.png",
+      "bytes": 139428,
+      "sha256": "afbc44800dda69f43f0b67d71de67487de85c61db31925c9c5fca3608cae8b5b"
+    },
+    {
+      "file": "backup-document-result-reopened.png",
+      "bytes": 139428,
+      "sha256": "afbc44800dda69f43f0b67d71de67487de85c61db31925c9c5fca3608cae8b5b"
+    },
+    {
+      "file": "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen.txt",
+      "bytes": 803,
+      "sha256": "1c2f41fe7ec1101182fad28d6787ae78a1b821174941f8214b690f1ade31c263"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 663,
+      "sha256": "feed082f48277df583a9b4b5779f9789bc47a4df94592102cee630a51d6f8f8e"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "bytes": 355,
+      "sha256": "ee52870cfffe261f646482477735fc87ab056975f8574b96c66c3d861e3f8666"
+    }
+  ]
+}

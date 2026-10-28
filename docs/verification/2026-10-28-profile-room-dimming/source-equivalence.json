@@ -1,0 +1,179 @@
+{
+  "run_id": 40615701815,
+  "capture_source": "bc9bc9c28568e441b1fb44b656c77e8915d8698f",
+  "archive_base": "bc9bc9c28568e441b1fb44b656c77e8915d8698f",
+  "release_source_comparison": "d4415a2b5194abd50c36921a5c7c317ef1f18c51",
+  "scope": "Listed production/native fixture blobs only; workflow files may differ because the release contains additional independently bounded scopes. No whole-APK/runtime equivalence claim.",
+  "sources": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SettingsProfile.java",
+      "capture_git_blob": "ae6eec64f7a3711596a803325e6815d272f29da1",
+      "release_git_blob": "ae6eec64f7a3711596a803325e6815d272f29da1",
+      "sha256_capture_bytes": "5c638e26beb75c6bb9b2781a43117ae3d4f6511b35f9eb2d182764d78d8a3747",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SettingsProfilePersistence.java",
+      "capture_git_blob": "d565211da62be47df1f919b820195687a9a60c1c",
+      "release_git_blob": "d565211da62be47df1f919b820195687a9a60c1c",
+      "sha256_capture_bytes": "f37c785d3ea7f9531cbc63a96b9a4013dc8cf8af004b46e10458cbd633d0ef5b",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SettingsProfileJson.java",
+      "capture_git_blob": "c40de914d90f5af80b0af77d6968cfe93b3b0b8a",
+      "release_git_blob": "c40de914d90f5af80b0af77d6968cfe93b3b0b8a",
+      "sha256_capture_bytes": "b55fa06ffc27bc5048bcbbacf146b9b2dc211363f215a4e8e5ef9e96162a55d7",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SettingsProfileActivity.java",
+      "capture_git_blob": "d999fc85620ee645ae4d299967b96a93440f4177",
+      "release_git_blob": "d999fc85620ee645ae4d299967b96a93440f4177",
+      "sha256_capture_bytes": "31a857350a939af87c39b947ad5ad704f3c91aa270830a4c9e21781605fd0597",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SettingsProfileJob.java",
+      "capture_git_blob": "8655d47dbeb5afc6aa6547e9cc864bf9182fae59",
+      "release_git_blob": "8655d47dbeb5afc6aa6547e9cc864bf9182fae59",
+      "sha256_capture_bytes": "ecd163a8d2797bef380586f04e3841bccd1c7cf7d802bffa64e9e4adf7c1842a",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomDimming.java",
+      "capture_git_blob": "4a744b712ed6040d271dc54a8c797cbc53bf1351",
+      "release_git_blob": "4a744b712ed6040d271dc54a8c797cbc53bf1351",
+      "sha256_capture_bytes": "eb5b1059964433909fb952a5740e22ebaabf722f61b84877b1a2991cb3640a6a",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Prefs.java",
+      "capture_git_blob": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "release_git_blob": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "sha256_capture_bytes": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Appearance.java",
+      "capture_git_blob": "aecb50792e4892b83b3cba664182e368efd15be0",
+      "release_git_blob": "aecb50792e4892b83b3cba664182e368efd15be0",
+      "sha256_capture_bytes": "e21213f167519292860f54afd96716a938c5ebbd972ec3f358de7810dc574c6a",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupActivity.java",
+      "capture_git_blob": "831492be6cf436ee23993397ff6dc77a46a8dc17",
+      "release_git_blob": "831492be6cf436ee23993397ff6dc77a46a8dc17",
+      "sha256_capture_bytes": "cd2efb683da5b5019dcd367d44e2c71d2b48a8ea78db48802d93e9c10e4ae5f8",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupDocuments.java",
+      "capture_git_blob": "7088129f5bcb768af491a3221b59a394f2f25e44",
+      "release_git_blob": "7088129f5bcb768af491a3221b59a394f2f25e44",
+      "sha256_capture_bytes": "3c3f127acdce2f9d9e0ee980728b14dc25aa6ee81d73343e2128149f9ebcf867",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupJob.java",
+      "capture_git_blob": "a82414bdb3697a8fda67569264725477dd8d32ec",
+      "release_git_blob": "a82414bdb3697a8fda67569264725477dd8d32ec",
+      "sha256_capture_bytes": "c06c770764d5c21acbcb2cb45f98dd5927c0c04c0b57350fe1a98e9f8d504f00",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupJobs.java",
+      "capture_git_blob": "2ac8afcc013f6b222ddebc7ca8cab311f9cb571c",
+      "release_git_blob": "2ac8afcc013f6b222ddebc7ca8cab311f9cb571c",
+      "sha256_capture_bytes": "86271833e8ef58e81814947e38a3c045117275727eff2ba02077632ed32d7807",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupFingerprint.java",
+      "capture_git_blob": "db9585ad744f4b8118eedda62471e49b5c13f86f",
+      "release_git_blob": "db9585ad744f4b8118eedda62471e49b5c13f86f",
+      "sha256_capture_bytes": "d6462e1a44f5b661ea54e3fa2b3722040982656ed3b90d6d0a50e5a37c6249ed",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupRuntime.java",
+      "capture_git_blob": "d093e7423d2944b490b99fdde6d46bf7098af0dd",
+      "release_git_blob": "d093e7423d2944b490b99fdde6d46bf7098af0dd",
+      "sha256_capture_bytes": "c232d43051268ab3a4c5b8f7f2b7aa1b291d93ada6ed448bdae29a56e312c7b4",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "capture_git_blob": "8f33543a0898a498075e4b82d70e6dfddd6af77f",
+      "release_git_blob": "8f33543a0898a498075e4b82d70e6dfddd6af77f",
+      "sha256_capture_bytes": "17bf74d23a9bbcf3c2897ca6d773fbcda273e24940deeab0cc52297ee2252323",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "capture_git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "release_git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "sha256_capture_bytes": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundClips.java",
+      "capture_git_blob": "a72e8ae8cbc231ba326c8fffd55b248adbe39d49",
+      "release_git_blob": "a72e8ae8cbc231ba326c8fffd55b248adbe39d49",
+      "sha256_capture_bytes": "42794db82e035fa1b2691d170f5d31779fc361756fd65e94be84e7b1be680078",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundLabels.java",
+      "capture_git_blob": "cc577c471de30246600debf39efb74fd6f0ee899",
+      "release_git_blob": "cc577c471de30246600debf39efb74fd6f0ee899",
+      "sha256_capture_bytes": "6917aa8d0d2dd598f294f32dafe49a6d3fd5480e3c3cbdeb85004d58527f19d9",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Naps.java",
+      "capture_git_blob": "8cb9ac221de49f26cf7a43e37e82135ea14a6e3c",
+      "release_git_blob": "8cb9ac221de49f26cf7a43e37e82135ea14a6e3c",
+      "sha256_capture_bytes": "29f5db9d15a82261b01bcc3a71256b86ed55f96129385f6412d2872957d9c038",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/NapPlan.java",
+      "capture_git_blob": "7c940b82ac78dc70f4ed406ca61649e6e8b4e9b3",
+      "release_git_blob": "7c940b82ac78dc70f4ed406ca61649e6e8b4e9b3",
+      "sha256_capture_bytes": "f6d866a5436fd69339c229b8e673a02652a5b360c581387b40c3392c55686994",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/BackupDocumentFlowTest.java",
+      "capture_git_blob": "9e706e2cc39734e238051b3636d5f22c020fc6da",
+      "release_git_blob": "9e706e2cc39734e238051b3636d5f22c020fc6da",
+      "sha256_capture_bytes": "08e1387a51e3e1db7fc38c3a9b25c36e9ade5a3403b1b5ddf7c674a470c1422c",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SoundLabelFixture.java",
+      "capture_git_blob": "2962833c68a096068c1359713f13963ab34d3b7d",
+      "release_git_blob": "2962833c68a096068c1359713f13963ab34d3b7d",
+      "sha256_capture_bytes": "6301411f095e5b4581df38c45cc0b0170743ba0b69f5589bd123cdaeb081d675",
+      "byte_identical": true
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "capture_git_blob": "02cdd9545470f3ba4584dce2ef45ed2c7ef7c6c2",
+      "release_git_blob": "11bda7f1c5e19918c10c9751141e77e31a24da5c",
+      "sha256_capture_bytes": "4dfafa9949a2e1c2f540708c2e40a919a1696f958492cabc39bee3fec06b420d",
+      "byte_identical": false
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "capture_git_blob": "68621cc69ca5b4d48576d40b77850498c10c4df3",
+      "release_git_blob": "aabe58b6fc7d00b3a5d36e9b4302125a09dcaa24",
+      "sha256_capture_bytes": "40944cf379a9e81f6fb53d9099ca45b62af69e3377172b9d07f117f9a8415544",
+      "byte_identical": false
+    }
+  ],
+  "runtime_boundary": "The passing selected method unconditionally invokes roomDimmingProfileRoundTrip after its eighth Backup screenshot, then exits through fixture cleanup. There is no separate per-assertion trace or Settings profile screenshot.",
+  "old_journal_boundary": "Old v1 recovery journals with omitted Room key are source-inspected only; native continuation seeds a new journal with explicit absent/null Room key and runs real rollback."
+}
