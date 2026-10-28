@@ -1,0 +1,97 @@
+{
+  "base_frozen_release": "08d3911e90af666d79a1f57fb0ea1326e91c3929",
+  "verification_head": "175f34227571347b44220849c73d97add5f513e6",
+  "files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ContactlessSetupActivity.java",
+      "source_commit": "175f34227571347b44220849c73d97add5f513e6",
+      "verified_sha256": "4439e8d5de8ccc3e034697bc36d91db676a99e85914f027423992a06b9ed1801",
+      "identical_at_verified_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ContactlessSetupUi.java",
+      "source_commit": "1e5b6dc0d3f23930e38790f12ec0c184fe129bfa",
+      "verified_sha256": "b9a7805afd679f483725153cc079ed6c9fd3e3bdc9d5d110d6f5dacb8c069827",
+      "identical_at_verified_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ContactlessSetupAccess.java",
+      "source_commit": "1e5b6dc0d3f23930e38790f12ec0c184fe129bfa",
+      "verified_sha256": "8f3d21285a6ea74fe497a062ade78d4e90584e749262b346e5309c46ad85f573",
+      "identical_at_verified_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarCapabilities.java",
+      "source_commit": "1e5b6dc0d3f23930e38790f12ec0c184fe129bfa",
+      "verified_sha256": "42b367ed5fc341f01f83060a837dcd029a79fbc93c6f0b57be282750c9aa6321",
+      "identical_at_verified_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Icons.java",
+      "source_commit": "8ecb9bf80739fc94f767b488b6e8a80a89581d64",
+      "verified_sha256": "7476acfafeed715e30a05306fc47faf43488e4b66bdacda325dfae61d77737c6",
+      "identical_at_verified_head": true
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_phosphor_headphones_regular.xml",
+      "source_commit": "8ecb9bf80739fc94f767b488b6e8a80a89581d64",
+      "verified_sha256": "6cbcf9619ebbf4cbeaa7205f367bee812d54d7510af9a50757b54ef3364d480d",
+      "identical_at_verified_head": true
+    },
+    {
+      "path": "third_party/phosphor/assets/regular/headphones.svg",
+      "source_commit": "8ecb9bf80739fc94f767b488b6e8a80a89581d64",
+      "verified_sha256": "992d04ff6759f1f12d40259298a92589c18556bf5b2ea6f82bc23e74d9c48185",
+      "identical_at_verified_head": true
+    },
+    {
+      "path": "third_party/phosphor/manifest.json",
+      "source_commit": "8ecb9bf80739fc94f767b488b6e8a80a89581d64",
+      "verified_sha256": "d4868834c462635ec4e443af4f05be2444be9a5a09025d02eb298a81f3ea3502",
+      "identical_at_verified_head": true
+    },
+    {
+      "path": "scripts/import_phosphor_icons.py",
+      "source_commit": "8ecb9bf80739fc94f767b488b6e8a80a89581d64",
+      "verified_sha256": "63cdfaad0c38e965ac08b4682f668396b667db92ce0e6f212c83a493793d8523",
+      "identical_at_verified_head": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ContactlessSetupFlowTest.java",
+      "source_commit": "4b51db058506a0397c132481077548183e8856ec",
+      "verified_sha256": "c5c692932ec0168957d518fd1a964aa464c3838ed5b8aa92dad423634289e4d5",
+      "identical_at_verified_head": true
+    }
+  ],
+  "unchanged_engine_schema_setup_chart_from_base": {
+    "app/src/main/java/org/sleepwell/app/SonarAudio.java": "b54a4e86d65046dd8672b5a7c8e21ed9892c367b50d0698d4d8734a7cac3c2fe",
+    "app/src/main/java/org/sleepwell/app/SonarRuntime.java": "f44aac69e16e41ec58609100b90e87e09b88a99e0e37476a0721bf1962f4815d",
+    "app/src/main/java/org/sleepwell/app/SonarPump.java": "4593fb1f1ac04895edb32fe5fa10aa358ec9552ea5b9c19b20e468baf6811a21",
+    "app/src/main/java/org/sleepwell/app/SonarDsp.java": "08706350e391ebd9de936feaaf97431f1f09bb77376bd8bec5373f406b31fc53",
+    "app/src/main/java/org/sleepwell/app/SonarSettings.java": "bead94a0a2bb3dccd2c3a160fcbca40f44833a4431de3a477c6fe536c962c191",
+    "app/src/main/java/org/sleepwell/app/SonarSignalChart.java": "17ccc6238a6d85dd972a4d88d110aff42ffcbe0315ed326b41c23153af5d0bee"
+  },
+  "scope_metadata_commit": "58c5f4e730da4c10ce4751f2ff4ad142de397247",
+  "metadata_sha256": {
+    "scripts/ci_silent_ui.py": "a0480113f1946b42a6f6d6254e982bdd632cb48622b09cf2ff2be7f97dca5223",
+    ".github/workflows/silent-ui-review.yml": "0670d8c59dad6383ffca1f47e18332c16bffafac5bf55b627660eb4e8e67404f"
+  },
+  "metadata_audit": "Removing only contactless-status choice/selector/11-name dictionary entry recovers entire original Python AST and workflow bytes; all prior scopes, manifests and defaults remain unchanged.",
+  "selector": "org.sleepwell.app.ContactlessSetupFlowTest#explicitRealDspFakePcmQualificationSaveAndReopenNoAutostart",
+  "originals": [
+    "sonar-setup-access-denied.png",
+    "sonar-setup-access-requesting.png",
+    "sonar-setup-access-returned.png",
+    "sonar-setup-gain-changed.png",
+    "sonar-setup-initial.png",
+    "sonar-setup-ready.png",
+    "sonar-setup-recreated.png",
+    "sonar-setup-reopened.png",
+    "sonar-setup-retested.png",
+    "sonar-setup-route-blocked.png",
+    "sonar-setup-route-returned.png"
+  ],
+  "hardware_permission_controller_and_android_settings_not_executed": true,
+  "full_visual_acceptance": false,
+  "visible_limitation": "reopened PNG has mixed dark clock/cellular/battery glyphs on plum; aggregate brightness gate admits this mixed frame."
+}
