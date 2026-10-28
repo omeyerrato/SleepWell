@@ -42,6 +42,7 @@ parser.add_argument("--scope", choices=(
     'setup-readiness',
     'readiness-recovery',
     'sensing-reference',
+    'contactless-status',
     'room-bedtime-live',
     'room-bedtime-repair',
     'bedtime-navigation',
@@ -352,6 +353,8 @@ elif args.scope == "setup-readiness":
     tests = ["OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs", "AlarmProtectionFlowTest#compactListAndGlobalProtectionsPersistWithoutAlarmExecution"]
 elif args.scope == "readiness-recovery":
     tests = ["AlarmProtectionFlowTest#compactListAndGlobalProtectionsPersistWithoutAlarmExecution"]
+elif args.scope == "contactless-status":
+    tests = ["ContactlessSetupFlowTest#explicitRealDspFakePcmQualificationSaveAndReopenNoAutostart"]
 elif args.scope == "sensing-reference":
     tests = ["ContactlessSetupFlowTest#explicitRealDspFakePcmQualificationSaveAndReopenNoAutostart", "SonarNightFlowTest#visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight", "SnoreCueSettingsNativeTest#savedSettingsSurviveRecreationAndControlFakeCueBehavior"]
 elif args.scope == "room-bedtime-live":
@@ -466,6 +469,7 @@ if "SonarSharedClassifierStorageTest" in tests:
         failures.append("Shared PCM replay evidence incomplete: " + str(error))
 if args.scope != "full":
     focused_frames = {
+        "contactless-status": ['sonar-setup-initial.png', 'sonar-setup-access-denied.png', 'sonar-setup-access-requesting.png', 'sonar-setup-access-returned.png', 'sonar-setup-ready.png', 'sonar-setup-route-blocked.png', 'sonar-setup-route-returned.png', 'sonar-setup-gain-changed.png', 'sonar-setup-retested.png', 'sonar-setup-reopened.png', 'sonar-setup-recreated.png'],
         "room-settings-search": ROOM_SETTINGS_SEARCH_FRAMES,
         "chart-phone-motion": ['chart-clock-overnight.png', 'chart-clock-night.png', 'chart-clock-short.png', 'chart-clock-fold.png', 'chart-clock-phone-history.png', 'chart-clock-phone-selected.png', 'chart-clock-phone-paused.png', 'chart-clock-phone-retry.png', 'chart-clock-tracking-main.png', 'chart-clock-tracking-options.png', 'chart-clock-tracking-returned.png', 'chart-clock-tracking-paused.png', 'chart-clock-tracking-recreated.png', 'chart-clock-tracking-session.png'],
         "live-night-timeline": ["sonar-night-setup.png", "sonar-night-measuring.png", "sonar-night-paused.png", "sonar-night-options.png", "sonar-night-options-recreated.png", "sonar-night-paused-recreated.png", "sonar-night-resumed.png", "sonar-night-missing.png", "sonar-night-stop-confirmation.png", "sonar-night-whole-night.png"],
