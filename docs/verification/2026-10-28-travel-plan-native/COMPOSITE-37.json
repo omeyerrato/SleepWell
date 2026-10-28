@@ -1,0 +1,362 @@
+{
+  "full_job_passed": false,
+  "interpretation": "Composite of two separately passing class scopes, not a single run pass",
+  "app_src_main_tree": "0e11bef2d0cee4925f29915438f8397addba7283",
+  "production_source_commits": [
+    "ddc9217ef0a1656b82ab60af5bcbdecc7f3d6196",
+    "83379ec4752af58710a5242075124dbb9404b460"
+  ],
+  "scope": "travel-ui",
+  "existing_methods": 3,
+  "classes": [
+    {
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "seconds": 54.505,
+      "passed_methods": 2,
+      "test_sha256": "fed502eee35b65213351975b3c0bcf18aa4db653f020ea00b3e445546e2cea81"
+    },
+    {
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "seconds": 41.859,
+      "passed_methods": 1,
+      "test_sha256": "f83fe9f50942a987e78d15ed2083a26c4f35bccdfcfc2e943721fa7ec39210b4"
+    }
+  ],
+  "frames": [
+    {
+      "original": "travel-plan.png",
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "path": "passing-plan/travel-plan.png",
+      "sha256": "29f88a075679f290fbc8ef6d539308d1fe995ae77c6b4f43b786726f821c4fe2",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-zones.png",
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "path": "passing-plan/travel-zones.png",
+      "sha256": "0cfdf6b0bac8836c8c512301947ccfdf3f22e0dbd2a4165b29e7e1c8e77213f5",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-date.png",
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "path": "passing-plan/travel-date.png",
+      "sha256": "7042d19b8f23271b55a164a9d5ac37b821ee5eac5a0aaf08afc6200ba9255ec4",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-reminders.png",
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "path": "passing-plan/travel-reminders.png",
+      "sha256": "fb67edb6e6ebff5c35e01b4012677bb2180137ec65063377e4112373f91e97c2",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-reopened.png",
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "path": "passing-plan/travel-reopened.png",
+      "sha256": "3daab37d4febcdd97dd594ad52f89f7292fee7ae48c0ed50fa05c2a65116be66",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-error.png",
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "path": "passing-plan/travel-error.png",
+      "sha256": "57bb6fba2e05919b540aa5bc642a93749eb96761794e3ff79f8ad31ac2ffb83d",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-disabled.png",
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "path": "passing-plan/travel-disabled.png",
+      "sha256": "8c967909aa81484294a264c1f73c88e5524ba9ba176a6f016ae4aef78d34fe3d",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-schedules.png",
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "path": "passing-plan/travel-schedules.png",
+      "sha256": "7561c2aa79bd7479a9a97bffd7997100036247f84671f327b2034fda7e41433d",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-reminders-recreated.png",
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "path": "passing-plan/travel-reminders-recreated.png",
+      "sha256": "fb67edb6e6ebff5c35e01b4012677bb2180137ec65063377e4112373f91e97c2",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-reminders-reopened.png",
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "path": "passing-plan/travel-reminders-reopened.png",
+      "sha256": "17a30dedd1bffed134e46c477f6973c05a2b6368d3ba63eecabd1a0ac708b670",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-disabled-main.png",
+      "class": "TravelPlanFlowTest",
+      "run": "40627465253",
+      "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+      "path": "passing-plan/travel-disabled-main.png",
+      "sha256": "abd2003c6fef48bcfb1552d4310ebf2d27ba767b1d50a97b29163239e4feab94",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-settings-off.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-settings-off.png",
+      "sha256": "04e83108e0193d3edbabf8225ac7e4c42f4b53e13bf3f030313401c3ad28dcb9",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-window.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-window.png",
+      "sha256": "430babd74ca1887eff1a5cc5b9c9ce6808cb3a120269d347210c29ace1210ea9",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-date.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-date.png",
+      "sha256": "7644f320a0369be3fb79e536abb9a8d1f36209088dd1ae35e78ab6f1f9a371ad",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-time.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-time.png",
+      "sha256": "543c54a2cc16d780667914da85ea97ff3efaffd38cc24dc1403e77a17762d597",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-window-recreated.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-window-recreated.png",
+      "sha256": "0a90c54d4783420322dee709cb7ce906b841909c99b59da0f29fead48de5882a",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-settings-enabled.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-settings-enabled.png",
+      "sha256": "178985aabefd31f19a3e97992162ddf0d5867a2ddb50d917bf464387bdfd58fc",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-settings-reopened.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-settings-reopened.png",
+      "sha256": "a38fc560321406c2e27ea1e3ec7349bd293370f6113581059cd008baf6432012",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-invalid-window.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-invalid-window.png",
+      "sha256": "a901f2a5c173fcbae3bf2615028b94d6e6a7b0dd39eea65c5de981f083c3768a",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-no-manual.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-no-manual.png",
+      "sha256": "7d62667b4f54624562df53c293cb9bd09a2d8488b5319b0f44aeb558e708a36f",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-ready.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-ready.png",
+      "sha256": "6edf430a43290d854a4145925fd134653da6d382dfb890297541e9383cd5881b",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-active.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-active.png",
+      "sha256": "9c55e6e563e1a27771e31c27f285bb06590450d222b67fb3eceb13ea9ae4adf6",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-active-recreated.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-active-recreated.png",
+      "sha256": "9c55e6e563e1a27771e31c27f285bb06590450d222b67fb3eceb13ea9ae4adf6",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-stopped.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-stopped.png",
+      "sha256": "0a2294cf45e80ce9f32b348d522c14d224ab69cc2eec6f91571477aa38b555f5",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-stopped-reopened.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-stopped-reopened.png",
+      "sha256": "0a2294cf45e80ce9f32b348d522c14d224ab69cc2eec6f91571477aa38b555f5",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-output-error.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-output-error.png",
+      "sha256": "4f47c694551b4f14a5787e57374494903f71d8bb4f48c1128d6680d53b361906",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-interrupted.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-interrupted.png",
+      "sha256": "84491d09f46c5ffcd81aa93e99c87f243a5757043b22465692a07160736c3a0f",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-light-settings.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-light-settings.png",
+      "sha256": "12d675eaf857f83e9e84b2c98ae6e7849506f518b5d47f48678fd13581de50da",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-light-settings-recreated.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-light-settings-recreated.png",
+      "sha256": "12d675eaf857f83e9e84b2c98ae6e7849506f518b5d47f48678fd13581de50da",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-review-from-menu.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-review-from-menu.png",
+      "sha256": "65479ed5ce96c12c5af15d6815fc9ebb532e5f17146217dda9f70204771c6ed9",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-about-recreated.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-about-recreated.png",
+      "sha256": "d180e5737eb037a9df8e0e7d3dbd6c479a79225809cad1ccc599724cbb040f62",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-tracking-settings.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-tracking-settings.png",
+      "sha256": "3c1f1bfc339e9753ce6c5e42ca91aadc289f1dafa9aa2862198e78852576b5cb",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-tracking-settings-recreated.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-tracking-settings-recreated.png",
+      "sha256": "cc497cfbec3965ce9e2515cb88df597108a2b1715549cf4d209bb3fcc5b76715",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-about-main-recreated.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-about-main-recreated.png",
+      "sha256": "303bd87499287453c501faa443c0a13dc8ff6e12c50f9da50df123c0e949a0f2",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-tracking-reminder-draft.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-tracking-reminder-draft.png",
+      "sha256": "52874f6713e733d94b87e706c39d992de0980a9b4a77490a339664864d2d645d",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-tracking-reminder-saved.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-tracking-reminder-saved.png",
+      "sha256": "f1fe06460dd42549b03b2a5007327d09e7681fe4717c260205f769ea41e02b09",
+      "full_job_passed": false
+    },
+    {
+      "original": "travel-cues-tracking-reminder-details.png",
+      "class": "TravelCueFlowTest",
+      "run": "40626264781",
+      "commit": "3ed244d9b49b30fa7ef74b70cada99c59b27a4f5",
+      "path": "../2026-10-28-travel-reminders-attempt2/originals/travel-cues-tracking-reminder-details.png",
+      "sha256": "bb66f1618b72ea2e7444c0bca550cc90e0166c4484935a9990a691ef9659f12c",
+      "full_job_passed": false
+    }
+  ]
+}

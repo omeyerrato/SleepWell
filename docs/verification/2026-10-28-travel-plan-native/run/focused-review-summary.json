@@ -1,0 +1,26 @@
+{
+  "scope": "travel-ui",
+  "full_app_review": false,
+  "expected_classes": 2,
+  "expected_methods": 3,
+  "class_results": [
+    {
+      "class": "TravelPlanFlowTest",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "TravelCueFlowTest",
+      "expected_methods": 2,
+      "passed": false
+    }
+  ],
+  "required_original_images": 37,
+  "failures": [
+    "TravelCueFlowTest",
+    "travel-cues-review-from-menu.png",
+    "travel-cues-tracking-reminder-draft.png",
+    "travel-cues-tracking-reminder-saved.png",
+    "travel-cues-tracking-reminder-details.png"
+  ]
+}

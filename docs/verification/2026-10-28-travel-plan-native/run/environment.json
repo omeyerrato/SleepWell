@@ -1,0 +1,19 @@
+{
+  "commit": "2f0e6578d13f9608f69b560b725051f5272c8d2a",
+  "emulator": true,
+  "scope": "travel-ui",
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no native playback output allowlisted; library uses fake playback",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": false,
+  "startup_focused_samples": 3,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420",
+  "test_classes": [
+    "TravelPlanFlowTest",
+    "TravelCueFlowTest"
+  ]
+}
