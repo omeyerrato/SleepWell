@@ -33,6 +33,10 @@ on:
           - room-bedtime-repair
           - bedtime-navigation
           - label-navigation
+          - live-night-timeline
+          - wake-challenge-reference
+          - calendar-consent-recovery
+          - profile-room-dimming
           - sensing-travel
           - travel-ui
           - sonar-night
