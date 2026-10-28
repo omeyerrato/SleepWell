@@ -1,0 +1,176 @@
+{
+  "scope": "Listed captured UI, native assertions, private-store boundaries and art only; not a full APK/runtime/hardware/permission equivalence claim.",
+  "run_source": "5bf664434ca303d26069e59287cc0e3c3a55a497",
+  "root_committed_head_at_archive": "5bf664434ca303d26069e59287cc0e3c3a55a497",
+  "all_listed_paths_match_root_committed_and_git_filtered_working_tree": true,
+  "production_touch_ownership_fixes_in_run": {
+    "main_wind_down": "759ce8fe9afed97ff950d59ff4cd73e68ca56b39",
+    "guard_picker": "ae79157438f11ab056a22639918942a1d69648a2",
+    "note": "Tooltips moved from consuming child labels to actionable rows. Earlier test-only input synchronization did not implement this production correction."
+  },
+  "asserted_original_table_snapshot": [
+    "alarms",
+    "sessions",
+    "epochs",
+    "clips",
+    "tracking_pauses",
+    "record_edits",
+    "record_create_requests"
+  ],
+  "sources": [
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/GuardFlowTest.java",
+      "git_blob_at_run": "1ec0dc7b4181f7f3114128b10c4c4307f92bf49a",
+      "sha256_committed_bytes": "98a7f296238c62434e321fc434717fa9325b0b555efde03b5afc35a61b372e2f",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "git_blob_at_run": "7f8f827d06c8c0fcb841f54da8d22f545003aaad",
+      "sha256_committed_bytes": "dcbf3ebca87895530797182b27537b0ae7f348ff09cbe368e84d8745475ff7dc",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/GuardActivity.java",
+      "git_blob_at_run": "f79606cd1f70c1dd529f0cbf7fc4f2220f322cbd",
+      "sha256_committed_bytes": "6971ccff2a32b0bacb30d13b16693703a8ba44a785ce66dd95eca80708cd6fa3",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PlanActivity.java",
+      "git_blob_at_run": "afaedf20564c46c88370ba19dae6cf84b6ae01a2",
+      "sha256_committed_bytes": "2f0f04d0e05bd39727156542b85167ff454c58590bc27677bad77932fd1cf682",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/GuidedWindDownActivity.java",
+      "git_blob_at_run": "53185e6c5353791b1afbf3063aa048515018503d",
+      "sha256_committed_bytes": "cafc40d8aa1b673f2a770929b1a2b5fde3b06eae7a6739890f238ae079768b1a",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingActivity.java",
+      "git_blob_at_run": "cab5c7a526eb5fdb60610edf4624c0efcdd44500",
+      "sha256_committed_bytes": "a181dd8d3d6edf67c3d44da7cdc92b2131b398a696ccd064ebae1b6ae4826025",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomDimming.java",
+      "git_blob_at_run": "4a744b712ed6040d271dc54a8c797cbc53bf1351",
+      "sha256_committed_bytes": "eb5b1059964433909fb952a5740e22ebaabf722f61b84877b1a2991cb3640a6a",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepPlans.java",
+      "git_blob_at_run": "0d232af380078593fdbedb00d48b3bff253d795b",
+      "sha256_committed_bytes": "06685beeee70eae274aa1669fa9d49fb8faf3f4a1117de3891be7709d0f93aab",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundPreferences.java",
+      "git_blob_at_run": "5eae1768a4d736c0fb2d1c7051ad786f7fcff9ca",
+      "sha256_committed_bytes": "9ecc61941523ed753eed9080f361cc96ebde4d06daf4d9b33d35f0a3cedf5587",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundMix.java",
+      "git_blob_at_run": "92d16c1568ed87eda561646114a093d7de68c9fd",
+      "sha256_committed_bytes": "4564eeb7fb6440a2c0f8e19eb175d2c40ada16d3d536f42b62e353d1c4061ad7",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+      "git_blob_at_run": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+      "sha256_committed_bytes": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "git_blob_at_run": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "sha256_committed_bytes": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Icons.java",
+      "git_blob_at_run": "ecb4282c40ffd5118eece20a7c85967e600b7770",
+      "sha256_committed_bytes": "86e8a356aa8d452b18d6df4f8f31ab66582717bc6ad13dedf2d193f53ae44aa4",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/InteractionFeedback.java",
+      "git_blob_at_run": "55f8b5ba4418bf5a4426034dcd56c606634138b4",
+      "sha256_committed_bytes": "9d728c99e7a1a81a3d44291d9861dee831fa09c179062fe898d65d84d421e1ef",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepPicker.java",
+      "git_blob_at_run": "2373fa22ba4c407af2d4af24c0dd26de8e23d593",
+      "sha256_committed_bytes": "1b8db38e9e6bf926713e9c933e107d615befe6eb3e6eadc344c0b7cec5f7a492",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob_at_run": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "sha256_committed_bytes": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Records.java",
+      "git_blob_at_run": "25368746615d6dc554f0afa239b1586cc20f8bfc",
+      "sha256_committed_bytes": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Prefs.java",
+      "git_blob_at_run": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "sha256_committed_bytes": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PlanOperations.java",
+      "git_blob_at_run": "26da87f3deb2104f26392c926ed96542b038ee01",
+      "sha256_committed_bytes": "9c8045f194a5ab9da410d741f97e5b23da6b1d2dcaa98b4b9e318efd17b42b80",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingDelaySettings.java",
+      "git_blob_at_run": "c5571dceacff5ed6ba4eb36e11008e95a7d3d8a1",
+      "sha256_committed_bytes": "0d2b531f586e499e18a50ef5798ca55dede0e5e7275eb13d8f1bfef08ebbb190",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingDelayRuntime.java",
+      "git_blob_at_run": "6a27834c681b392a02f536646026ddcc2d96ad5e",
+      "sha256_committed_bytes": "1a91864bafe085795ecf5d427df04eefabd214c1a7c360cfb9b8559fdc44cda5",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/bedside_winddown.png",
+      "git_blob_at_run": "9932ab751c835b04614fdd3d0808b717ae92a5e0",
+      "sha256_committed_bytes": "b4b412241e42462dac5727484811868fb91b13d5736f6135c6fd4be22921264b",
+      "matches_root_committed_head": true,
+      "matches_root_working_tree_git_filtered_blob": true
+    }
+  ]
+}
