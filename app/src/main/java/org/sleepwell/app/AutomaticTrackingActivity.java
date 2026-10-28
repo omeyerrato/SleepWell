@@ -21,6 +21,7 @@ public final class AutomaticTrackingActivity extends Activity {
         boolean movementAvailable(Activity activity);
         boolean notificationsAllowed(Activity activity);
         boolean microphoneAllowed(Activity activity);
+        default String currentPhase(Activity activity){TrackingService.Snapshot snapshot=TrackingService.snapshot();return snapshot==null||snapshot.phase.equals("CLOSED")?"":snapshot.phase;}
     }
     private static final Port PLATFORM=new Port(){
         public SharedPreferences preferences(Activity a){return Prefs.of(a);}
@@ -35,54 +36,78 @@ public final class AutomaticTrackingActivity extends Activity {
     static Port port=PLATFORM;
     static final String PAGE_EXTRA="trackingOptionsPage";
     // Denial recovery belongs to the draft, not a callback's soon-to-be-replaced view.
-    private String page="home",errorCopy="";private int permissionRecovery;private Bundle positions=new Bundle();private ScrollView currentScroll;
+    private static final java.util.Set<String> PAGES=java.util.Set.of("home","conditions","sounds","detection","options","source","access");
+    private final java.util.ArrayDeque<String> history=new java.util.ArrayDeque<>();
+    private final Handler stateHandler=new Handler(Looper.getMainLooper());private boolean resumed;private String runtimePhase="";
+    private final Runnable stateTick=new Runnable(){public void run(){if(!resumed)return;if(!currentPhase().equals(runtimePhase))refresh();stateHandler.postDelayed(this,1000);}};
+    private String page="home",errorCopy="";private int permissionRecovery,permissionRequest;private Bundle positions=new Bundle();private ScrollView currentScroll;
     private ArmedWaitConditions conditions=ArmedWaitConditions.NONE;private String conditionsError="";private AutomaticSleep.Mode mode;private TextView error;private boolean permissionPending,recordSounds,keepClips,googleSleep,rejectFalseStarts;private Port owner;private LinearLayout body;
-    @Override public void onCreate(Bundle state){super.onCreate(state);if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);owner=port;GoogleSleepSignal.recover(this);if(getIntent().getBooleanExtra("visualReview",false))getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);String selected=state==null?owner.preferences(this).getString("automaticMode","MANUAL"):state.getString("mode","MANUAL");try{mode=AutomaticSleep.Mode.valueOf(selected);}catch(Exception ignored){mode=AutomaticSleep.Mode.MANUAL;}rejectFalseStarts=state==null?AutomaticFalseStart.requested(owner.preferences(this)):state.getBoolean("rejectFalseStarts");googleSleep=state==null?owner.preferences(this).getBoolean("automaticGoogleSleep",false):state.getBoolean("googleSleep");recordSounds=state==null?owner.preferences(this).getBoolean("automaticRecordSounds",false):state.getBoolean("recordSounds");keepClips=state==null?owner.preferences(this).getBoolean("automaticKeepClips",false):state.getBoolean("keepClips");try{conditions=state==null?ArmedWaitSettings.read(owner.preferences(this)):new ArmedWaitConditions(state.getBoolean("waitCharging"),state.getBoolean("waitScreenOff"));conditionsError=state==null?"":state.getString("conditionsError","");}catch(IllegalArgumentException invalid){conditionsError=invalid.getMessage();}String requested=state==null?getIntent().getStringExtra(PAGE_EXTRA):state.getString("page");if(java.util.Set.of("home","conditions","sounds","detection").contains(requested==null?"home":requested))page=requested==null?"home":requested;if(state!=null){positions=state.getBundle("positions")==null?new Bundle():state.getBundle("positions");errorCopy=state.getString("errorCopy","");int recovery=state.getInt("permissionRecovery");if(recovery==91||recovery==93||recovery==94)permissionRecovery=recovery;}render();}
-    @Override protected void onSaveInstanceState(Bundle state){rememberPosition();super.onSaveInstanceState(state);state.putString("page",page);state.putBundle("positions",positions);state.putString("errorCopy",errorCopy);state.putInt("permissionRecovery",permissionRecovery);state.putString("mode",mode.name());state.putBoolean("rejectFalseStarts",rejectFalseStarts);state.putBoolean("recordSounds",recordSounds);state.putBoolean("googleSleep",googleSleep);state.putBoolean("keepClips",keepClips);state.putBoolean("waitCharging",conditions.charging);state.putBoolean("waitScreenOff",conditions.screenOff);state.putString("conditionsError",conditionsError);}
-    @Override protected void onResume(){super.onResume();if(permissionRecovery!=0&&!permissionMissing(permissionRecovery)){permissionRecovery=0;errorCopy="Access is available. Review your choices before arming tonight.";}refresh();}
+    @Override public void onCreate(Bundle state){super.onCreate(state);if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);owner=port;GoogleSleepSignal.recover(this);if(getIntent().getBooleanExtra("visualReview",false))getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);String selected=state==null?owner.preferences(this).getString("automaticMode","MANUAL"):state.getString("mode","MANUAL");try{mode=AutomaticSleep.Mode.valueOf(selected);}catch(Exception ignored){mode=AutomaticSleep.Mode.MANUAL;}rejectFalseStarts=state==null?AutomaticFalseStart.requested(owner.preferences(this)):state.getBoolean("rejectFalseStarts");googleSleep=state==null?owner.preferences(this).getBoolean("automaticGoogleSleep",false):state.getBoolean("googleSleep");recordSounds=state==null?owner.preferences(this).getBoolean("automaticRecordSounds",false):state.getBoolean("recordSounds");keepClips=state==null?owner.preferences(this).getBoolean("automaticKeepClips",false):state.getBoolean("keepClips");try{conditions=state==null?ArmedWaitSettings.read(owner.preferences(this)):new ArmedWaitConditions(state.getBoolean("waitCharging"),state.getBoolean("waitScreenOff"));conditionsError=state==null?"":state.getString("conditionsError","");}catch(IllegalArgumentException invalid){conditionsError=invalid.getMessage();}String requested=state==null?getIntent().getStringExtra(PAGE_EXTRA):state.getString("page");if(PAGES.contains(requested==null?"home":requested))page=requested==null?"home":requested;if(state!=null){positions=state.getBundle("positions")==null?new Bundle():state.getBundle("positions");errorCopy=state.getString("errorCopy","");int recovery=state.getInt("permissionRecovery");if(recovery==91||recovery==93||recovery==94)permissionRecovery=recovery;int request=state.getInt("permissionRequest");if(state.getBoolean("permissionPending")&&(request==91||request==93||request==94)){permissionPending=true;permissionRequest=request;}java.util.ArrayList<String> restored=state.getStringArrayList("pageHistory");if(restored!=null)for(String entry:restored)if(PAGES.contains(entry))history.addLast(entry);}render();}
+    @Override protected void onSaveInstanceState(Bundle state){rememberPosition();super.onSaveInstanceState(state);state.putString("page",page);state.putBundle("positions",positions);state.putString("errorCopy",errorCopy);state.putInt("permissionRecovery",permissionRecovery);state.putBoolean("permissionPending",permissionPending);state.putInt("permissionRequest",permissionRequest);state.putStringArrayList("pageHistory",new java.util.ArrayList<>(history));state.putString("mode",mode.name());state.putBoolean("rejectFalseStarts",rejectFalseStarts);state.putBoolean("recordSounds",recordSounds);state.putBoolean("googleSleep",googleSleep);state.putBoolean("keepClips",keepClips);state.putBoolean("waitCharging",conditions.charging);state.putBoolean("waitScreenOff",conditions.screenOff);state.putString("conditionsError",conditionsError);}
+    @Override protected void onResume(){super.onResume();resumed=true;stateHandler.removeCallbacks(stateTick);stateHandler.post(stateTick);if(permissionRecovery!=0&&!permissionMissing(permissionRecovery)){permissionRecovery=0;errorCopy="Access is available. Review your choices before arming tonight.";}refresh();}
+    @Override protected void onPause(){resumed=false;stateHandler.removeCallbacks(stateTick);super.onPause();}
+    @Override protected void onDestroy(){stateHandler.removeCallbacks(stateTick);super.onDestroy();}
+    private String currentPhase(){try{String phase=owner.currentPhase(this);return phase==null?"UNAVAILABLE":phase;}catch(RuntimeException unavailable){return "UNAVAILABLE";}}
     private void rememberPosition(){if(currentScroll!=null&&currentScroll.isLaidOut())positions.putInt(page,currentScroll.getScrollY());}
     private void refresh(){rememberPosition();render();}
-    private void openPage(String destination){rememberPosition();page=destination;render();}
-    private void back(){if(!page.equals("home"))openPage("home");else finish();}
+    private void openPage(String destination){if(!PAGES.contains(destination)||page.equals(destination))return;rememberPosition();history.push(page);page=destination;render();}
+    private void back(){if(page.equals("home")){finish();return;}rememberPosition();page=history.isEmpty()?"home":history.pop();render();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){back();}
     private void render(){
-        body=Design.page(this,false,null,n->{});currentScroll=(ScrollView)body.getParent();RecordUi.label(this,body);
-        String title=switch(page){case "conditions"->"Start conditions";case "sounds"->"Sound recording";case "detection"->"Sleep confirmation";default->"Automatic tracking";};
-        RecordUi.header(body,title,this::back);Design.space(body,12);
+        runtimePhase=currentPhase();body=Design.page(this,false,null,n->{});body.setPadding(body.getPaddingLeft(),Design.dp(this,8),body.getPaddingRight(),body.getPaddingBottom());currentScroll=(ScrollView)body.getParent();RecordUi.label(this,body);
+        String title=switch(page){case "conditions"->"Start conditions";case "sounds"->"Sound recording";case "detection"->"Sleep confirmation";case "options"->"Automatic tracking options";case "source"->"Source schedule";case "access"->"Activity access";default->"Automatic tracking";};
+        LinearLayout header=RecordUi.header(body,title,this::back);header.getLayoutParams().height=-2;header.setMinimumHeight(Design.dp(this,52));
+        if(page.equals("home"))RecordUi.headerAction(header,"more","Automatic tracking options",()->openPage("options"));Design.space(body,8);
         if(!page.equals("home"))TrackingOptionsUi.context(body,"Automatic tracking");
-        switch(page){case "conditions"->conditionsPage();case "sounds"->soundsPage();case "detection"->detectionPage();default->home();}
+        switch(page){case "conditions"->conditionsPage();case "sounds"->soundsPage();case "detection"->detectionPage();case "options"->optionsPage();case "source"->sourcePage();case "access"->accessPage();default->home();}
         LinearLayout footer=RecordUi.footer(body);
         error=Design.text(footer,errorCopy.isEmpty()?conditionsError:errorCopy,13,500,0xffa93919);error.setVisibility(error.getText().length()==0?View.GONE:View.VISIBLE);
         if(permissionRecovery!=0&&permissionMissing(permissionRecovery))Design.button(footer,"Open app settings",false,this::openPermissionSettings);
         if(page.equals("home")){
-            Design.button(footer,"Save settings",true,()->{if(save()){setResult(RESULT_OK);finish();}});
-            if(mode!=AutomaticSleep.Mode.MANUAL)Design.button(footer,"Arm tonight",false,this::arm);
-        }else{Design.text(footer,"Changes apply when you save or arm tonight.",12,400,Design.MUTED);Design.button(footer,"Done",true,this::back);}
+            Design.text(footer,runtimePhase.equals("ARMED")?"Save changes future choices; the active wait continues.":!runtimePhase.isEmpty()?"Save keeps choices. Manage the current session in Tracking.":"Save keeps choices. Arm tonight starts one bounded wait.",12,400,Design.MUTED);
+            if(mode==AutomaticSleep.Mode.MANUAL)Design.button(footer,"Save settings",true,this::saveAndClose);
+            else{LinearLayout actions=Design.row(this),save=Design.col(this),arm=Design.col(this);LinearLayout.LayoutParams left=new LinearLayout.LayoutParams(0,-2,1);left.rightMargin=Design.dp(this,5);actions.addView(save,left);LinearLayout.LayoutParams right=new LinearLayout.LayoutParams(0,-2,1);right.leftMargin=Design.dp(this,5);actions.addView(arm,right);footer.addView(actions);Design.button(save,"Save settings",true,this::saveAndClose);Button start=Design.button(arm,"Arm tonight",false,this::arm);RecordUi.enabled(start,runtimePhase.isEmpty()&&!permissionPending);}
+        }else{Design.text(footer,"Changes stay in this draft until Save or Arm tonight.",12,400,Design.MUTED);Design.button(footer,"Done",true,this::back);}
         ScrollView owned=currentScroll;int position=positions.getInt(page);owned.post(()->{if(currentScroll==owned)owned.scrollTo(0,position);});
     }
+    private void saveAndClose(){if(save()){setResult(RESULT_OK);finish();}}
     private void home(){
-        Design.text(body,"Choose when to start recording tonight.",15,400,Design.MUTED);Design.space(body,16);
+        Design.text(body,"Choose tonight’s start method.",14,400,Design.MUTED);Design.space(body,8);
+        if(!runtimePhase.isEmpty()){String status=switch(runtimePhase){case "ARMED"->"Automatic wait active";case "DELAYED"->"Delayed start active";case "STARTING"->"Tracking is starting";case "ACTIVE"->"Recording is active";case "PAUSED"->"Recording is paused";case "PAUSING"->"Recording is pausing";case "STOPPING"->"Recording is finishing";case "BLOCKED"->"Tracking needs attention";default->"Tracking status unavailable";};menu("info",status,"Review the current session without changing this draft",null,()->startActivity(RecordUi.intent(this,TrackingActivity.class)));}
         option(AutomaticSleep.Mode.MANUAL,"Manual only","Start a recording yourself.",null);
         option(AutomaticSleep.Mode.BEDTIME,"At bedtime","Use your saved bedtime.",Design.clock(this,SleepPlans.load(this).bedtime));
         option(AutomaticSleep.Mode.SMART_WINDOW,"Before smart window","45 min before an alarm’s wake window.",null);
         option(AutomaticSleep.Mode.STILLNESS,"After settling down","15 min still, with the screen off. An estimate.",null);
-        if(mode!=AutomaticSleep.Mode.MANUAL){
-            RecordUi.heading(body,"Tonight’s setup");
-            String timing=mode==AutomaticSleep.Mode.BEDTIME?Design.clock(this,SleepPlans.load(this).bedtime):mode==AutomaticSleep.Mode.STILLNESS?"Wait begins when armed":"Next enabled alarm’s wake window";
-            TrackingOptionsUi.menu(body,"calendar","Schedule details",timing,"",()->SleepPicker.message(this,"Schedule details",mode==AutomaticSleep.Mode.BEDTIME?"Uses your saved sleep-plan bedtime. Change the bedtime in Sleep goals before arming tonight.":mode==AutomaticSleep.Mode.SMART_WINDOW?"Uses the next enabled alarm and its smart-wake window, starting 45 minutes before that window. Change the alarm in Alarms before arming tonight.":"Arming begins a wait for 15 minutes of stillness with the screen off. Waiting alone does not prove sleep."));
-            TrackingOptionsUi.menu(body,"plug","Start conditions","Charging and screen requirements",conditions.charging?"Charging required":conditions.screenOff||mode==AutomaticSleep.Mode.STILLNESS?"Screen off":"No extra wait",()->openPage("conditions"));
-            TrackingOptionsUi.menu(body,"mic","Sound recording","For tonight’s automatic recording",recordSounds?(keepClips?"Analysis + clips":"Analysis only"):"Off",()->openPage("sounds"));
-            if(mode==AutomaticSleep.Mode.STILLNESS)TrackingOptionsUi.menu(body,"moon","Sleep confirmation","Google estimate and awake-start rejection",googleSleep?"Google + stillness":"Phone stillness",()->openPage("detection"));
-            Design.space(body,10);Design.text(body,"Save keeps your choices. Arm tonight starts one wait, lasting up to 4 hours.",12,400,Design.MUTED);
-        }
-        RecordUi.heading(body,"More start options");
-        TrackingOptionsUi.menu(body,"calendar","Repeat nightly","A separate movement-only schedule",null,()->startActivity(RecordUi.intent(this,RecurringTrackingActivity.class)));
-        TrackingOptionsUi.menu(body,"file","Missing-night estimate","Review phone activity before saving",null,()->startActivity(RecordUi.intent(this,MissedNightActivity.class)));
-        String old=owner.preferences(this).getString("automaticResult","");if(!TrackingService.running&&owner.preferences(this).getBoolean("automaticArmed",false))old="The previous wait stopped. Arm again to resume automatic starts.";
-        if(!old.isEmpty()){RecordUi.heading(body,"Last automatic start");Design.text(body,old,13,400,Design.MUTED);}
-        if(googleSleep&&mode==AutomaticSleep.Mode.STILLNESS){String unavailable=GoogleSleepSignal.unavailable(this);if(!unavailable.isEmpty()){Design.space(body,10);Design.text(body,unavailable,13,500,Design.BROWN);}}
+        Design.space(body,6);Design.line(body);
+        menu("calendar","Source schedule",mode==AutomaticSleep.Mode.MANUAL?"Manual start":mode==AutomaticSleep.Mode.BEDTIME?"Sleep-plan bedtime":mode==AutomaticSleep.Mode.SMART_WINDOW?"Next enabled alarm’s wake window":"Stillness and screen off",mode==AutomaticSleep.Mode.BEDTIME?Design.clock(this,SleepPlans.load(this).bedtime):null,()->openPage("source"));
+        menu("plug","Start conditions","For a wait you explicitly arm",!conditionsError.isEmpty()?"Review settings":conditions.charging?"Charging":conditions.screenOff||mode==AutomaticSleep.Mode.STILLNESS?"Screen off":"No extra wait",()->openPage("conditions"));
+        menu("shield","Activity access","Only optional Google estimates need it",!googleSleep||mode!=AutomaticSleep.Mode.STILLNESS?"Not required":activityAllowed()?"Allowed":"Needed",()->openPage("access"));
     }
-    private void option(AutomaticSleep.Mode choice,String title,String help,String value){TrackingOptionsUi.choice(body,title,help,value,mode==choice,()->{mode=choice;refresh();});}
+    private void option(AutomaticSleep.Mode choice,String title,String help,String value){int index=body.getChildCount();TrackingOptionsUi.choice(body,title,help,value,mode==choice,()->{mode=choice;refresh();});LinearLayout row=(LinearLayout)body.getChildAt(index);Design.pad(row,12,8);row.setMinimumHeight(Design.dp(this,64));}
+    private void menu(String icon,String title,String detail,String value,Runnable open){int index=body.getChildCount();TrackingOptionsUi.menu(body,icon,title,detail,value,open);LinearLayout row=(LinearLayout)body.getChildAt(index);Design.pad(row,0,8);row.setMinimumHeight(Design.dp(this,56));}
+    private void sourcePage(){
+        String explanation=switch(mode){case MANUAL->"No wait starts automatically. Start a recording from Tracking when you are ready.";case BEDTIME->"Uses your saved sleep-plan bedtime. Review that bedtime before arming tonight.";case SMART_WINDOW->"Uses the next enabled alarm and begins 45 minutes before its smart wake-up window. Review the alarm before arming tonight.";case STILLNESS->"Arming begins a wait for 15 minutes of stillness with the screen off. Waiting alone does not prove sleep.";};
+        Design.text(body,explanation,15,400,Design.INK);Design.space(body,16);
+        if(mode==AutomaticSleep.Mode.BEDTIME){Design.text(body,"Saved bedtime · "+Design.clock(this,SleepPlans.load(this).bedtime),20,600,Design.INK);menu("bed","Review sleep plan","Opens the saved plan; this draft stays here",null,()->startActivity(RecordUi.intent(this,PlanActivity.class)));}
+        if(mode==AutomaticSleep.Mode.SMART_WINDOW)menu("alarm","Open alarms","Choose an alarm to review its wake window",null,()->startActivity(RecordUi.intent(this,MainActivity.class).putExtra("settingsPage","alarms")));
+        Design.space(body,16);Design.text(body,"Arm tonight creates one wait of up to four hours. Save settings alone starts no wait. Repeating schedules are separate.",13,400,Design.MUTED);
+    }
+    private void optionsPage(){
+        menu("mic","Sound recording","For the recording after Arm tonight",recordSounds?(keepClips?"Analysis + clips":"Analysis only"):"Off",()->openPage("sounds"));
+        menu("moon","Sleep confirmation","For After settling down only",googleSleep?"Google + stillness":"Phone stillness",()->openPage("detection"));
+        menu("calendar","Repeat nightly","A separate movement-only schedule",null,()->startActivity(RecordUi.intent(this,RecurringTrackingActivity.class)));
+        menu("file","Missing-night estimate","Review phone activity before saving",null,()->startActivity(RecordUi.intent(this,MissedNightActivity.class)));
+        String old=owner.preferences(this).getString("automaticResult","");if(runtimePhase.isEmpty()&&owner.preferences(this).getBoolean("automaticArmed",false))old="The previous wait stopped. Arm again to resume automatic starts.";
+        RecordUi.heading(body,"Last automatic start");Design.text(body,old.isEmpty()?"No previous automatic-start result is saved.":old,13,400,Design.MUTED);
+        RecordUi.heading(body,"Save and Arm tonight");Design.text(body,"Save stores choices for a later arm. Arm tonight saves these choices and starts one bounded wait. Neither action edits an already active wait. Open Tracking to review or cancel that wait.",13,400,Design.MUTED);
+    }
+    private boolean activityAllowed(){return checkSelfPermission(Manifest.permission.ACTIVITY_RECOGNITION)==PackageManager.PERMISSION_GRANTED;}
+    private void accessPage(){
+        Design.text(body,"Physical activity access",20,600,Design.INK);TextView state=Design.text(body,activityAllowed()?"Allowed":"Not allowed",15,600,Design.BROWN);state.setContentDescription("Physical activity access state");Design.space(body,14);
+        Design.text(body,"Phone movement and settling-down waits do not need this permission. Only optional Google sleep estimates require Physical activity access and Google Play services. Permission alone starts no wait.",14,400,Design.MUTED);Design.space(body,14);
+        menu("moon","Google estimate settings","Review the optional extra condition",googleSleep?"On":"Off",()->openPage("detection"));
+        if(permissionRecovery==0||!permissionMissing(permissionRecovery))Design.button(body,"Manage activity access",false,this::openPermissionSettings);
+    }
     private void conditionsPage(){
         Design.toggle(body,"Wait for charging","Keep tonight armed until the phone is charging.",conditions.charging,on->conditions=new ArmedWaitConditions(on,conditions.screenOff));Design.space(body,14);
         if(mode!=AutomaticSleep.Mode.STILLNESS)Design.toggle(body,"Wait for screen off","Wait after the scheduled time while you use the phone.",conditions.screenOff,on->conditions=new ArmedWaitConditions(conditions.charging,on));
@@ -107,24 +132,26 @@ public final class AutomaticTrackingActivity extends Activity {
     private boolean save(){if(!ArmedWaitSettings.put(owner.preferences(this).edit().putBoolean(AutomaticFalseStart.SETTING,rejectFalseStarts).putString("automaticMode",mode.name()).putBoolean("automaticRecordSounds",recordSounds).putBoolean("automaticGoogleSleep",googleSleep).putBoolean("automaticKeepClips",recordSounds&&keepClips),conditions).commit()){show("Settings could not be saved. Try again.");return false;}conditionsError="";return true;}
     private void arm(){
         if(permissionPending)return;if(permissionRecovery!=0&&!permissionMissing(permissionRecovery))permissionRecovery=0;if(!conditionsError.isEmpty()){show("Review the armed wait conditions and Save settings before arming.");return;}
-        if(TrackingService.running){show("A recording or automatic wait is already active. Open tracking to manage it.");return;}
+        if(!currentPhase().isEmpty()||TrackingService.running){show("A recording or automatic wait is already active. Open tracking to manage it.");return;}
         if(!owner.movementAvailable(this)){show("A working movement sensor is required.");return;}
         try{
             long scheduled=owner.schedule(this,mode);long wait=scheduled-System.currentTimeMillis();
             if(wait>AutomaticSleep.MAX_WAIT)throw new IllegalArgumentException("Arm within four hours of the start time.");
-            if(Build.VERSION.SDK_INT>=33&&!owner.notificationsAllowed(this)){permissionPending=true;requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS},91);return;}
-            if(googleSleep&&mode==AutomaticSleep.Mode.STILLNESS){if(checkSelfPermission(Manifest.permission.ACTIVITY_RECOGNITION)!=PackageManager.PERMISSION_GRANTED){permissionPending=true;requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION},94);return;}String unavailable=GoogleSleepSignal.unavailable(this);if(!unavailable.isEmpty())throw new IllegalStateException(unavailable);}
-            if(recordSounds&&!owner.microphoneAllowed(this)){permissionPending=true;requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO},93);return;}
+            if(Build.VERSION.SDK_INT>=33&&!owner.notificationsAllowed(this)){requestPermission(91,Manifest.permission.POST_NOTIFICATIONS);return;}
+            if(googleSleep&&mode==AutomaticSleep.Mode.STILLNESS){if(checkSelfPermission(Manifest.permission.ACTIVITY_RECOGNITION)!=PackageManager.PERMISSION_GRANTED){requestPermission(94,Manifest.permission.ACTIVITY_RECOGNITION);return;}String unavailable=GoogleSleepSignal.unavailable(this);if(!unavailable.isEmpty())throw new IllegalStateException(unavailable);}
+            if(recordSounds&&!owner.microphoneAllowed(this)){requestPermission(93,Manifest.permission.RECORD_AUDIO);return;}
             if(save())owner.arm(this,mode,scheduled,recordSounds,keepClips,conditions,googleSleep&&mode==AutomaticSleep.Mode.STILLNESS);
         }catch(Exception failure){show(failure.getMessage()==null?"Automatic tracking could not start.":failure.getMessage());}
     }
+    private void requestPermission(int request,String permission){permissionPending=true;permissionRequest=request;try{requestPermissions(new String[]{permission},request);}catch(RuntimeException unavailable){permissionPending=false;permissionRequest=0;throw unavailable;}}
     private void show(String copy){errorCopy=copy;error.setText(copy);error.setVisibility(View.VISIBLE);error.post(()->error.requestRectangleOnScreen(new android.graphics.Rect(0,0,error.getWidth(),error.getHeight()),true));}
     private boolean permissionMissing(int request){return switch(request){case 91->Build.VERSION.SDK_INT>=33&&!owner.notificationsAllowed(this);case 93->!owner.microphoneAllowed(this);case 94->checkSelfPermission(Manifest.permission.ACTIVITY_RECOGNITION)!=PackageManager.PERMISSION_GRANTED;default->false;};}
     private void openPermissionSettings(){if(isFinishing()||isDestroyed()||!hasWindowFocus())return;try{startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,android.net.Uri.parse("package:"+getPackageName())));}catch(RuntimeException unavailable){show("Android could not open app settings. Open SleepWell's permissions in Android Settings, then return here.");}}
     @Override public void onRequestPermissionsResult(int request,String[] permissions,int[] grants){
         super.onRequestPermissionsResult(request,permissions,grants);
-        if((request==91||request==93||request==94)&&permissionPending){permissionPending=false;
-            if(grants.length>0&&grants[0]==PackageManager.PERMISSION_GRANTED)arm();
+        if(isDestroyed()||isFinishing())return;String expected=switch(request){case 91->Manifest.permission.POST_NOTIFICATIONS;case 93->Manifest.permission.RECORD_AUDIO;case 94->Manifest.permission.ACTIVITY_RECOGNITION;default->"";};
+        if(permissionPending&&request==permissionRequest&&!expected.isEmpty()){if(permissions.length>0&&(permissions.length!=1||!expected.equals(permissions[0])))return;permissionPending=false;permissionRequest=0;
+            if(permissions.length==1&&grants.length==1&&grants[0]==PackageManager.PERMISSION_GRANTED&&!permissionMissing(request))arm();
             else{permissionRecovery=request;errorCopy=request==94?"Physical activity was not allowed. Turn Google sleep estimates off to use phone stillness only.":request==93?"Microphone was not allowed. Turn Record sounds off for movement only, or allow it in app settings.":"Notifications are needed to keep the cancel control visible.";refresh();show(errorCopy);}
         }
     }
