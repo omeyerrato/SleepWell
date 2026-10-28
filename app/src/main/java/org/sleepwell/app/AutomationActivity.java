@@ -105,7 +105,7 @@ public final class AutomationActivity extends Activity {
         destinationRoute(body,AutomationRule.Transport.MQTT,"MQTT over TLS","Publish to your broker and topic");
         Design.space(body,8);Design.text(body,"New rules are Off. Enable only destinations you trust.",12,400,Design.MUTED);
     }
-    /** Row metadata only: choosing a card never decrypts a destination or queues an event. */
+    /** Rendering uses row metadata only; the explicit edit action opens its destination. */
     private void ruleCard(LinearLayout body,AutomationStore.Row row){
         AutomationEvent.Kind event=AutomationEvent.Kind.valueOf(row.event);AutomationRule.Transport transport=AutomationRule.Transport.valueOf(row.transport);boolean admitted=request==null&&!loading;
         LinearLayout card=Design.col(this);Design.pad(card,12,10);android.graphics.drawable.GradientDrawable surface=Design.shape(this,Design.CREAM,16);surface.setStroke(Design.dp(this,1),Design.LINE);card.setBackground(surface);
