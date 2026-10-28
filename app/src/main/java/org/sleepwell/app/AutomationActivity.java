@@ -106,7 +106,7 @@ public final class AutomationActivity extends Activity {
         }
         Design.space(body,10);RecordUi.heading(body,"Connection destinations");
         destinationRoute(body,AutomationRule.Transport.INTENT,"Tasker / receiving app","Target a receiving app package");
-        destinationRoute(body,AutomationRule.Transport.WEBHOOK,"HTTPS webhook","Send a reviewed event to your URL");
+        destinationRoute(body,AutomationRule.Transport.WEBHOOK,"HTTPS webhook","Deliver sleep events to your URL");
         destinationRoute(body,AutomationRule.Transport.MQTT,"MQTT over TLS","Publish to your broker and topic");
         Design.space(body,8);Design.text(body,"New rules are Off. Enable only destinations you trust.",12,400,Design.MUTED);
     }
@@ -125,7 +125,7 @@ public final class AutomationActivity extends Activity {
     }
     private void destinationHelp(LinearLayout body){
         String detail=switch(destinationType){case INTENT->"Choose the receiving app package. In Tasker use Event → System → Intent Received, then the action shown in your rule. The receiving profile must be active.";case WEBHOOK->"Enter your HTTPS destination and optional bearer token. Events use HTTPS POST; redirects are rejected. A saved rule alone does not prove that the destination accepts requests.";case MQTT->"Enter ssl://host:8883, a publish topic and optional username/password. TLS certificates are verified; publishes use non-retained QoS 1. Connection status is not inferred from saving.";};
-        Design.text(body,detail,15,400,Design.INK);Design.space(body,18);Design.text(body,"Add rule opens a private draft with Enabled Off. Nothing is sent while you choose or review it.",14,400,Design.MUTED);Design.space(body,18);
+        Design.text(body,detail,15,400,Design.INK);Design.space(body,18);Design.text(body,"Add rule opens an editable draft with Enabled Off. Nothing is sent while you choose or review it.",14,400,Design.MUTED);Design.space(body,18);
         Design.button(body,"Add "+transportLabel(destinationType)+" rule",false,()->newDraft(destinationType));
     }
     private void newDraft(AutomationRule.Transport type){if(!available()||loading)return;remember();navigation++;draft=new AutomationRule(UUID.randomUUID().toString(),"",AutomationEvent.Kind.TRACKING_STARTED,type,false,0,type==AutomationRule.Transport.INTENT?"net.dinglisch.android.taskerm":"","","","");secretRestorationFailed=false;failure="";history.clear();page="editor";clearFields();render();}
@@ -165,7 +165,7 @@ public final class AutomationActivity extends Activity {
     private void begin(String kind,PlanOperations.Task task){if(request!=null||isFinishing()||isDestroyed())return;request=UUID.randomUUID().toString();operationKind=kind;failure="";PlanOperations.start(getApplicationContext(),request,task);render();observe();}
     private void observe(){
         if(!resumed||request==null||isFinishing()||isDestroyed())return;String token=request;
-        if(!PlanOperations.tokens().contains(token)){request=null;operationKind="";failure="The previous operation finished or was interrupted. Review saved rules before trying again.";render();if(page.equals("home"))refreshRows();return;}
+        if(!PlanOperations.tokens().contains(token)){request=null;failure=operationKind.equals("test")?"The previous test may already have been queued. Check its destination before sending again.":"The previous operation finished or was interrupted. Review saved rules before trying again.";operationKind="";render();if(page.equals("home"))refreshRows();return;}
         PlanOperations.Operation operation=PlanOperations.start(getApplicationContext(),token,app->{throw new IllegalStateException("Operation result unavailable. Review saved rules.");});
         if(!operation.done){handler.removeCallbacks(poll);handler.postDelayed(poll,100);return;}
         PlanOperations.forget(token);request=null;String kind=operationKind;operationKind="";
