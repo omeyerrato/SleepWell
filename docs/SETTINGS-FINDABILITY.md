@@ -4,7 +4,7 @@
 
 Settings mode loads only `SearchData.settings()` / the immutable local `SearchSettings` catalog: it does not open Store, enumerate saved alarms, read record notes/tags or contact a service. A blank query browses the real catalog. Filters correspond to the Settings groups: Alarms; Sleep & bedtime; Sound & recordings; Appearance & feedback; Reliability; Connected apps; Data & privacy; Home screen. Query, mode and selected filter survive Activity recreation. Query matching remains local, accent-insensitive, case-insensitive and bounded to 160 characters / 100 results; it is word matching with curated synonyms, not semantic/fuzzy search.
 
-The catalog expands the existing 30 destinations to88, retaining their original ordering. The explicit experimental recorded-audio entry does not start recording or inference. It includes the existing automatic/nightly tracking, motion/contactless calibration, anti-snoring and headphone cues, recording retention/favorites, backup/import/export, travel, offline narration, naps/profiles, permissions/protections, real integrations, app-access grants, appearance, home layout and widget settings. Entries carry a concise category/location breadcrumb and explain the actual destination. Examples: `snoring` finds analysis/cue settings, `prevent power off` finds alarm protection, `flashlight` finds the per-alarm wake-up route, `backup` finds actual backup flows, and `automatic` finds the existing tracking/reminder/calendar options.
+The catalog expands the existing 30 destinations to89, retaining their original ordering. The explicit experimental recorded-audio entry does not start recording or inference. It includes the existing automatic/nightly tracking, motion/contactless calibration, anti-snoring and headphone cues, recording retention/favorites, backup/import/export, travel, offline narration, naps/profiles, permissions/protections, real integrations, app-access grants, appearance, home layout and widget settings. Entries carry a concise category/location breadcrumb and explain the actual destination. Examples: `snoring` finds analysis/cue settings, `prevent power off` finds alarm protection, `flashlight` finds the per-alarm wake-up route, `backup` finds actual backup flows, and `automatic` finds the existing tracking/reminder/calendar options.
 
 The additional supporting-page links use only static allowlisted route extras:
 `trackingOptionsPage`, `soundSettingsPage` and `sleepSoundPage`. They open actual
@@ -12,9 +12,38 @@ charging/screen conditions, recording choices, sleep confirmation, nightly
 reliability, detected categories/durations, contactless cues, mixer sources,
 playback, timer or fade pages. Unknown route values fall back to the Activity's
 main page. Selecting a search result never invokes Save, Arm, Play, a permission
-request or a preview. Timer/fade results open unsaved choices with explicit Use
+request or microphone capture. Room conditions retains its existing foreground
+light preview while visible; optional sound needs an explicit action. Timer/fade
+results open unsaved choices with explicit Use
 and Cancel. These new routes have source/build evidence separately from the
-earlier Settings-only runtime flow; that flow does not exercise all88 destinations.
+earlier Settings-only runtime flow; that flow does not exercise all89 destinations.
+
+## Room conditions discovery
+
+Settings → Sleep & bedtime → Room conditions now names screen dimming alongside
+live light and optional sound. The appended search entry uses that actual category
+and breadcrumb. `screen dimming`, `ambient light` and `room sound level` lead to
+the same explicit, nonexported RoomConditionsActivity; no route extras toggle a
+setting or request access. All prior search entries retain their positions.
+The saved Room/Wind-down dimming choice and all existing controls are unchanged.
+
+The existing `SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls`
+has a bounded continuation for the Settings-only queries, actual native result
+tap, unsaved Screen dimming draft, framework recreation and actual Back to the
+same search query without saving. Unavailable light and throwing audio/permission
+ports prevent sensor/microphone/permission operations. Only the disposable CI
+dimming value is temporarily staged off to prevent an existing opt-in from
+affecting the Room window; its exact original value or absence is restored before
+the full preference equality check. Ports are restored after Room owners close.
+This does not verify the copy-only Main settings row by native input or measure
+real light/sound/dimming behavior.
+
+The selected method still has one `@Test` and retains its private-record navigation
+checks. Its five screenshot literals are `search-empty.png`, `search-room.png`,
+`search-no-results.png`, `search-record.png` and `search-recreated.png`. The new
+Room search frame waits for the actual focused committed native frame. Exact
+changed source/native Java compilation passed; native execution is pending.
+No new CI, device/provider/output action or app-data migration was performed.
 
 Record- or alarm-owned editors are not opened with fabricated context. Flashlight, extra loud, gentle volume, challenge tasks, snooze and repeat results clearly say **Choose an alarm** and open the actual Alarms list. New alarm defaults also route through the alarm draft that supplies their required template. Per-record SoundArchiveActivity is not exposed as a zero-extra destination; the actual whole-library export remains available. Trends opens the real HistoryActivity with `trends=true`; its row explains using Trend options for chart settings. Selecting a result opens a screen only; it does not invoke a test, grant, enrollment, output, recording or save callback.
 
