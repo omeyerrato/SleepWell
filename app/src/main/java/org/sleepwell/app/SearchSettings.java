@@ -6,26 +6,29 @@ import java.util.*;
 
 /** Allowlisted local settings destinations. Lookup and route creation never start a feature. */
 final class SearchSettings {
+    static final String ALARM_SETTING="alarmSetting";
     static final String ALARMS="Alarms",SLEEP="Sleep & bedtime",SOUND="Sound & recordings",APPEARANCE="Appearance & feedback",RELIABILITY="Reliability",CONNECTED="Connected apps",PRIVACY="Data & privacy",HOME="Home screen";
     static final List<String> CATEGORIES=List.of(ALARMS,SLEEP,SOUND,APPEARANCE,RELIABILITY,CONNECTED,PRIVACY,HOME);
     private static final class Destination {
-        final String title,category,path,description,terms,page,extra;final Class<?> target;
+        final String title,category,path,description,terms,page,extra,alarmKey;final Class<?> target;
         Destination(String title,String category,String location,String description,String terms,Class<?> target,String page){this(title,category,location,description,terms,target,page,"settingsPage");}
-        Destination(String title,String category,String location,String description,String terms,Class<?> target,String page,String extra){this.title=title;this.category=category;this.path="Settings › "+category+(location.isEmpty()?"":" › "+location);this.description=description;this.terms=terms;this.target=target;this.page=page;this.extra=extra;}
+        Destination(String title,String category,String location,String description,String terms,Class<?> target,String page,String extra){this(title,category,location,description,terms,target,page,extra,"");}
+        Destination(String title,String category,String location,String description,String terms,Class<?> target,String page,String extra,String alarmKey){this.title=title;this.category=category;this.path=!alarmKey.isEmpty()?"Alarms › Choose an alarm › "+location:target==HistoryActivity.class&&page.equals("records")?"Report › Choose a night › Edit report":"Settings › "+category+(location.isEmpty()?"":" › "+location);this.description=description;this.terms=terms;this.target=target;this.page=page;this.extra=extra;this.alarmKey=alarmKey;}
     }
     private static Destination direct(String title,String category,String location,String description,String terms,Class<?> target){return new Destination(title,category,location,description,terms,target,"");}
     private static Destination page(String title,String category,String location,String description,String terms,String page){return new Destination(title,category,location,description,terms,MainActivity.class,page);}
     private static Destination detail(String title,String category,String location,String description,String terms,Class<?> target,String extra,String page){return new Destination(title,category,location,description,terms,target,page,extra);}
+    private static Destination alarm(String title,String location,String terms,String key){return new Destination(title,ALARMS,location,"This alarm only · choose a saved alarm or start a new draft",terms,AlarmEditorActivity.class,"","",key);}
     // Keep the first 30 original search destinations in their original order; entries are not saved IDs.
     private static final List<Destination> DESTINATIONS=List.of(
         direct("Sleep plan",SLEEP,"Sleep goals","Bedtime, wake time, sleep goal and reminders","goal hours duration bedtime reminder schedule",PlanActivity.class),
-        direct("Automatic tracking",SLEEP,"Sleep tracking","Choose when phone tracking can start","auto detect sleeping asleep stillness charging screen off smart window",AutomaticTrackingActivity.class),
+        direct("Auto-detect sleep",SLEEP,"Automatic tracking","Review automatic phone tracking and its start conditions","automatic tracking autodetect autodetectsleep auto detect sleep sleeping asleep stillness charging screen off smart window",AutomaticTrackingActivity.class),
         direct("Nightly tracking schedule",SLEEP,"Sleep tracking","Choose recurring tracking days and times","automatic start bedtime weekly recurring charging",RecurringTrackingActivity.class),
         direct("Motion sensor",SLEEP,"Sleep tracking","Phone movement sensitivity and calibration","accelerometer movement sensor mattress sensitivity",MotionSensorActivity.class),
         direct("Sound sensitivity",SOUND,"Sound analysis","Accepted categories and minimum event duration","sleep noise analysis snoring talking speech sounds microphone recording sensitivity",SoundSensitivityActivity.class),
-        direct("Snoring cues",SOUND,"Sound analysis","Optional sound or vibration after a snoring estimate","anti snoring antisnore stop snore vibration contactless headphones",SnoringCuesActivity.class),
+        direct("Anti-snoring cues",SOUND,"Snoring cues","Optional sound or vibration after a snoring estimate","anti snoring antisnoring antisnore stop snore vibration contactless headphones",SnoringCuesActivity.class),
         direct("Bedtime guard",SLEEP,"Wind-down","Choose distracting apps to block at bedtime","scrolling prevent leave app block apps youtube instagram accessibility wind down",GuardActivity.class),
-        direct("Travel mode",SLEEP,"Travel","Time zones, trip plans and daylight reminders","jet lag prevention jetlag travel timezone sun light circadian",TravelActivity.class),
+        direct("Jet lag & travel mode",SLEEP,"Travel mode","Time zones, trip plans and daylight reminders","jet lag prevention jetlag travel timezone sun light circadian",TravelActivity.class),
         direct("Health Connect",CONNECTED,"Health Connect","Review sleep record import and export","android health sync integration permissions",HealthConnectActivity.class),
         direct("Automations",CONNECTED,"Automations","Outgoing Tasker, webhook and MQTT rules","tasker intents event trigger http mqtt webhook tracking alarm snooze",AutomationActivity.class),
         direct("Calendar rules",ALARMS,"Calendar rules","Skip dates or wake before selected meetings","calendar holiday holidays skip exclude meetings event workdays",CalendarRulesActivity.class),
@@ -44,18 +47,18 @@ final class SearchSettings {
         direct("Flip to pause",SLEEP,"Sleep tracking","Face-down tracking pause controls","flip orientation face down pause sensor",TrackingFlipActivity.class),
         direct("Tracking Do Not Disturb",SLEEP,"Sleep tracking","Optional DND policy while recording","do not disturb dnd quiet notification permission",TrackingDndActivity.class),
         direct("Restore recording archive",PRIVACY,"Backup","Review a ZIP before replacing local data","import restore audio recordings backup wav zip archive",LibraryAudioImportActivity.class),
-        direct("Alarm protection",ALARMS,"Alarm protection","App-leaving and power-menu deterrence settings","prevent prevention leave app power off poweroff shutdown button protection accessibility",AlarmProtectionActivity.class),
+        direct("Alarm protection",ALARMS,"Alarm protection","All alarms · app-leaving and power-menu deterrence options","prevent prevention leaving preventleave leave exit app power off poweroff shutdown button protection accessibility",AlarmProtectionActivity.class),
         direct("Paired movement tracking",CONNECTED,"Paired phone","Configure an optional second Android phone","pair paired bluetooth ble second phone movement sensor",PairMotionActivity.class),
         direct("Research signal export",PRIVACY,"Backup","Review relative movement signal exports","research raw signal data csv export movement",ResearchExportActivity.class),
         direct("Binaural tones",SOUND,"Sleep sounds","Configure optional headphone tones","binaural headphones frequency beat tones audio",BinauralSettingsActivity.class),
         page("Alarms",ALARMS,"","Choose a saved alarm to edit its settings","alarm time clock set edit add enable disable", "alarms"),
-        page("Alarm sound & extra loud",ALARMS,"Choose an alarm › Sound","Opens Alarms; choose an alarm, then Sound","extra loud louder maximum volume boost ringtone tone playlist radio import music", "alarms"),
-        page("Gentle volume increase",ALARMS,"Choose an alarm › Gentle wake-up","Opens Alarms; choose an alarm to set its volume ramp","gentle gradual volume increase ramp fade sound delay", "alarms"),
-        page("Sunrise & flashlight wake-up",ALARMS,"Choose an alarm › Wake-up","Opens Alarms; choose an alarm to set wake-up outputs","screen sunrise flashlight torch flashing flash wakeup brightness light", "alarms"),
-        page("Challenge tasks",ALARMS,"Choose an alarm › Challenges","Opens Alarms; choose an alarm to configure tasks","tasks captcha math memory qr barcode nfc shake walk smile pose picture object musical note jumping type light spin", "alarms"),
-        page("Snooze, backup & wake-up check",ALARMS,"Choose an alarm › Snooze","Opens Alarms; choose an alarm to review snooze settings","snooze duration limit total cap minutes decreasing backup escalate wake check still awake", "alarms"),
-        page("Alarm repeat & next date",ALARMS,"Choose an alarm › Schedule","Opens Alarms; choose an alarm to review its schedule","odd even week every interval days repeat sunrise solar coordinates next date skip exclude", "alarms"),
-        page("New alarm defaults",ALARMS,"Choose an alarm › New alarm defaults","Opens Alarms; defaults are saved from an alarm draft","default template future new alarms factory reset behavior", "alarms"),
+        alarm("Extra loud","Alarm sound › More","extra loud extraloud louder maximum alarm sound volume boost ringtone tone","extra-loud"),
+        alarm("Gentle volume increase","Alarm sound › Gentle wake-up","gentle increase gentleincrease gradual gradually volume increase ramp fade sound delay crescendo","gentle-increase"),
+        alarm("Screen sunrise","Alarm sound › Gentle wake-up › Screen sunrise","screen sunrise wake up wakeup brightness light dawn brighten","screen-sunrise"),
+        alarm("Challenge tasks","Challenges","tasks captcha math memory qr barcode nfc shake walk smile pose picture object musical note jumping type light spin","challenges"),
+        alarm("Snooze, backup & wake-up check","Snooze","snooze duration limit total cap minutes decreasing backup escalate wake check still awake","snooze"),
+        alarm("Alarm repeat & next date","Schedule & dates","odd even week every interval days repeat sunrise solar coordinates next date skip exclude","schedule"),
+        direct("New alarm defaults",ALARMS,"Alarm defaults","Future alarms only · existing saved alarms stay unchanged","default template future new alarms factory reset behavior",AlarmDefaultsActivity.class),
         page("Bedside NFC tag",ALARMS,"Alarm options","Open alarm options; enrollment needs your explicit action","nfc tag enroll bedside bathroom challenge scan", "alarm_options"),
         direct("Uninstall protection",RELIABILITY,"Alarm protection","Review Android device-admin protection","uninstall delete app administrator device admin protection",UninstallProtectionActivity.class),
         page("Alarm readiness",RELIABILITY,"","Battery, exact-alarm and notification permission status","reliability battery optimization unrestricted permissions exact alarm notification full screen microphone", "reliability"),
@@ -106,10 +109,15 @@ final class SearchSettings {
         detail("Sleep sound timer",SOUND,"Sleep sounds › Timer","Select a timer draft; Use applies without starting sound","lullaby sleep sound timer stop minutes duration countdown",SleepSoundsActivity.class,"sleepSoundPage","timer"),
         detail("Sleep sound fade",SOUND,"Sleep sounds › Fade out","Select a fade draft; Use applies without starting sound","lullaby sleep sound fade out taper volume timer minutes",SleepSoundsActivity.class,"sleepSoundPage","fade"),
         page("Clip recording threshold",SOUND,"Sound analysis › Clip recording threshold","Open Sound analysis to adjust the clip amplitude threshold","clip recording threshold relative amplitude quiet loud minimum noise capture", "sound_analysis"),
-        direct("Room conditions",SLEEP,"Room conditions","Live light, optional sound level and screen dimming","room conditions ambient light lux brightness sound level rms microphone screen dimming dim wind down bedtime",RoomConditionsActivity.class)
+        direct("Room conditions",SLEEP,"Room conditions","Live light, optional sound level and screen dimming","room conditions ambient light lux brightness sound level rms microphone screen dimming dim wind down bedtime",RoomConditionsActivity.class),
+        alarm("Flashlight wake-up","Alarm sound › Gentle wake-up › Flashlight wake-up","flashlight torch flashing flash wake up wakeup light","flashlight"),
+        alarm("Alarm sound","Alarm sound","ringtone tone playlist radio import music audio volume sound","sound"),
+        detail("Report editing",SLEEP,"Reports","Choose a saved night, then Edit report; changes stay in a draft until Save","edit editing report reportediting sleep period awake annotations bedtime wake up tags notes manual history",HistoryActivity.class,"historyPage","records")
     );
     static List<SearchIndex.Entry> entries(){List<SearchIndex.Entry> rows=new ArrayList<>();for(int n=0;n<DESTINATIONS.size();n++){Destination d=DESTINATIONS.get(n);rows.add(new SearchIndex.Entry(SearchIndex.Kind.SETTING,n,d.title,d.path+"\n"+d.description,d.terms,d.category));}return List.copyOf(rows);}
-    static Intent intent(Activity owner,long id){if(id<0||id>=DESTINATIONS.size())throw new IllegalArgumentException("This setting is no longer available. Search again.");Destination d=DESTINATIONS.get((int)id);Intent intent=RecordUi.intent(owner,d.target);if(d.target==HistoryActivity.class)intent.putExtra("trends",true);if(!d.page.isEmpty())intent.putExtra(d.extra,d.page);return intent;}
+    static Intent intent(Activity owner,long id){if(id<0||id>=DESTINATIONS.size())throw new IllegalArgumentException("This setting is no longer available. Search again.");Destination d=DESTINATIONS.get((int)id);Intent intent=RecordUi.intent(owner,d.target);if(!d.alarmKey.isEmpty())throw new IllegalArgumentException("Choose an alarm before opening this setting.");if(d.target==HistoryActivity.class){intent.putExtra("trends",!d.page.equals("records"));return intent;}if(!d.page.isEmpty())intent.putExtra(d.extra,d.page);return intent;}
+    static String alarmKey(long id){return id>=0&&id<DESTINATIONS.size()?DESTINATIONS.get((int)id).alarmKey:"";}
+    static SearchIndex.Entry entry(long id){if(id<0||id>=DESTINATIONS.size())throw new IllegalArgumentException("Search again for this setting.");return entries().get((int)id);}
     static boolean category(String value){return value!=null&&(value.isEmpty()||CATEGORIES.contains(value));}
     private SearchSettings(){}
 }

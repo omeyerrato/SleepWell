@@ -68,10 +68,16 @@ final class AlarmEditorSearchUi {
         item("Volume keys","controls","Volume keys","More alarm settings › Buttons & orientation","buttons volume hardware ignore snooze")
     );
     private static final Set<String> BROWSE=Set.of("Alarm time & weekdays","Smart wake-up","Challenges","Sound","Gentle wake-up","Snooze","Schedule & dates","More alarm settings","Buttons & orientation");
+    /** Internal named destinations only; caller-supplied class names, routes and URIs are never accepted. */
+    static Entry named(String key){
+        if(key==null)return null;
+        String title=switch(key){case "extra-loud"->"Extra loud";case "sound"->"Sound";case "gentle-increase"->"Volume ramp";case "screen-sunrise"->"Screen sunrise";case "flashlight"->"Flashlight wake-up";case "challenges"->"Challenges";case "snooze"->"Snooze";case "schedule"->"Schedule & dates";default->"";};
+        for(Entry entry:CATALOG)if(entry.title.equals(title))return entry;return null;
+    }
     static boolean route(String value){return value!=null&&Set.of("edit","smart","challenge","sound","soundmodes","gentle","snooze","backup","schedule","options","controls").contains(value);}
     static void hideKeyboard(Activity activity){View focus=activity.getCurrentFocus();InputMethodManager keyboard=activity.getSystemService(InputMethodManager.class);if(focus!=null&&keyboard!=null)keyboard.hideSoftInputFromWindow(focus.getWindowToken(),0);}
     static void render(Activity activity,LinearLayout body,State state,Alarm alarm,Consumer<Entry> navigate,Runnable back){
-        RecordUi.header(body,"Search alarm settings",back);Design.space(body,8);Design.text(body,"This draft only · Save alarm keeps your changes",12,400,Design.MUTED);Design.space(body,14);
+        RecordUi.header(body,"Search alarm settings",back);Design.space(body,8);Design.text(body,SearchAlarmChooser.identity(activity,alarm,false)+"\nThis draft only · Save alarm keeps your changes",12,400,Design.MUTED);Design.space(body,14);
         EditText input=new EditText(activity);input.setSingleLine();input.setTextSize(16*Appearance.scale(activity));input.setTypeface(Design.font(activity,400));input.setTextColor(Design.INK);input.setHintTextColor(Design.MUTED);input.setHint("Try flashlight, snooze or repeat");input.setContentDescription("Search alarm query");input.setFilters(new InputFilter[]{new InputFilter.LengthFilter(160)});input.setImeOptions(EditorInfo.IME_ACTION_SEARCH);input.setBackground(Design.shape(activity,Design.SOFT,14));Design.pad(input,14,12);input.setText(state.query);body.addView(input,new LinearLayout.LayoutParams(-1,Design.dp(activity,56)));Design.space(body,12);
         TextView status=Design.text(body,"",13,500,Design.MUTED);status.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);Design.space(body,8);LinearLayout results=Design.col(activity);body.addView(results);
         state.scroll=(ScrollView)body.getParent();ScrollView owner=state.scroll;
