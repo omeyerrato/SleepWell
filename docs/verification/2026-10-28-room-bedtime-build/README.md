@@ -2,7 +2,7 @@
 
 Frozen source `5bf664434ca303d26069e59287cc0e3c3a55a497`, **0.1.2 / code 3**, package `org.sleepwell.app`, arm64-v8a. The independently checked APK is **166,954,308 bytes**, SHA-256 `47ad0a0c11ed7020c4663df0143a990d9cab5eaeb23545398e587c921d475ec1`. [Candidate metadata](candidate.json), [aapt badging](package-badging.txt), [signature verification](signer.txt).
 
-This folder records a local candidate. Publication and phone installation are pending and were not performed or verified by this task. It contains no APK, private backup, device data, or private filesystem paths. No build, CI run, device operation or output action was performed to create this evidence.
+The package audit below was produced before publication. The release owner subsequently verified publication, both server asset hashes and the exact source tag: [distribution](distribution.json). Phone installation remains pending USB availability. This folder contains no APK, private backup, device data, or private filesystem paths. No build, CI run, device operation or output action was performed to create this evidence.
 
 The release owner observed `BUILD SUCCESSFUL in 1m 8s`, 34 tasks / 4 executed / 30 up-to-date, using Gradle 8.14.3, JDK delta and `assembleDebug -PsleepwellAbi=arm64-v8a --offline --max-workers=2 --no-daemon`. Final stdout was not retained; this is explicitly an attributed terminal observation, not an archived raw build transcript. Package checks below were independently repeated read-only with SDK build-tools 36.0.0.
 
@@ -35,8 +35,8 @@ The entire aapt badging output differs from f641 only in its package/version lin
 | Organized settings, Automatic recovery and rendered Tracking light bars | 58.691s / 20 PNGs | [Tracking light glyphs](../2026-10-28-tracking-light-glyphs/README.md), CI40601122904 |
 | Live tracking and Tracking options recreation/cancellation | 9.750s / 9 PNGs | [Live](../2026-10-28-organized-live-ci40597518409/README.md), CI40597518409 |
 | Motion settings plus Room conditions continuation | 30.873s / 17 PNGs | [Motion/Room](../2026-10-28-motion-room-reference/README.md), CI40601122904 |
-| Final Tone label selection / inert preview and import flow | 31.887s / 16 PNGs | Release-owner observed latest result; separately owned original archive pending |
-| Final Guard label selection / Wind-down navigation | 24.657s / 8 PNGs | Release-owner observed latest result; separately owned original archive pending |
+| Final Tone label selection / inert preview and import flow | 31.887s / 16 PNGs | [Tone](../2026-10-28-alarm-tone-reference/README.md), CI40605830605 |
+| Final Guard label selection / Wind-down navigation | 24.657s / 8 PNGs | [Wind-down/Guard](../2026-10-28-winddown-guard-pass/README.md), CI40605830605 |
 
 Historical combined jobs CI40597518409 and CI40601122904 failed separate methods; their archives preserve those failures. The later label-flow result does not retroactively change their raw summaries. This table is not an aggregate full-app acceptance run. Each linked archive defines its own fake ports, private preferences/records, actual native inputs, OS-permission boundary and cleanup assertions.
 

@@ -1,0 +1,30 @@
+{
+  "source": "5bf664434ca303d26069e59287cc0e3c3a55a497",
+  "tag": "v0.1.2-room-bedtime-20261028-5bf66443",
+  "release_id": 426134945,
+  "draft": false,
+  "prerelease": true,
+  "url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.2-room-bedtime-20261028-5bf66443",
+  "assets": [
+    {
+      "name": "SleepWell-0.1.2-5bf66443-arm64.apk",
+      "id": 683322180,
+      "size": 166954308,
+      "sha256": "47ad0a0c11ed7020c4663df0143a990d9cab5eaeb23545398e587c921d475ec1",
+      "server_digest": "sha256:47ad0a0c11ed7020c4663df0143a990d9cab5eaeb23545398e587c921d475ec1",
+      "state": "uploaded"
+    },
+    {
+      "name": "SleepWell-0.1.2-5bf66443-arm64.apk.sha256",
+      "id": 683322182,
+      "size": 102,
+      "sha256": "d045411c23d446bdb96bc63d0ed68602533e6f087041efaa16077098cc86b3fa",
+      "server_digest": "sha256:d045411c23d446bdb96bc63d0ed68602533e6f087041efaa16077098cc86b3fa",
+      "state": "uploaded"
+    }
+  ],
+  "phone_installed": false,
+  "published": true,
+  "tag_commit": "5bf664434ca303d26069e59287cc0e3c3a55a497",
+  "published_at": "2026-10-28T00:49:06Z"
+}

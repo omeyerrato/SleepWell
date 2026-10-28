@@ -5032,11 +5032,11 @@
       ],
       "tests": [
         {
-          "name": "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware (existing method extended; native run pending)",
+          "name": "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware",
           "path": "app/src/androidTest/java/org/sleepwell/app/MotionConfigurationFlowTest.java"
         }
       ],
-      "validation": "Production and allowlisted test APK build pass at e6b3b860 in CI40597518409. Motion/Room native method stopped30.472s awaiting the fake permission request after a root-coordinate dialog tap; fixture input corrected in4ed3ff6a. Two original Room frames inspected; remaining measurement/dimming/error/cleanup acceptance requires rerun. No physical microphone or dimming test ran.",
+      "validation": "CI40601122904 at203cb417 passes30.873s: seven Motion and ten Room originals individually inspected; actual UI selections, owned rationale Cancel/Continue with fake request, fake0/2lux and RMS, no replay, dimming save/reopen/window restoration, capture failure and retained cleanup Retry. No real OS permission grant, native audio, hardware brightness or overnight accuracy claim. Source matches published0.1.2/5bf66443; original-signer arm64 build passes1m8s and both server hashes/tag are verified.",
       "status": "partial",
       "notes": "Actual foreground TYPE_LIGHT lux and bounded fifteen-minute observation history with unknown/unreliable gaps. Optional microphone starts only on explicit current foreground action with permission and exclusive lease; relative RMS only, no calibrated dB, files, classification or upload. Opening/recreation/permission return never resumes capture. Saved opt-in dims only Room and active Wind-down windows, restoring their prior brightness on departure. Permission-recovery and complete reference acceptance remain pending."
     }

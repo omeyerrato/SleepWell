@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-Latest published **0.1.1 / f641cb52** adds the new adaptive icon and crisper tap feedback to the verified170b baseline. It is built, signed and published; USB disconnected before this hotfix could be installed. The phone currently has170b with original user data preserved.
+Latest published **0.1.2 / 5bf66443** adds Room conditions, saved bedtime dimming, clearer Wind-down/Tracking controls and permission/selection fixes, including the new icon and firmer tap feedback. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.2-room-bedtime-20261028-5bf66443); [exact bounded evidence](docs/verification/2026-10-28-room-bedtime-build/README.md). Phone installation awaits USB; installed170b and its original user data are preserved.
 
 Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped
