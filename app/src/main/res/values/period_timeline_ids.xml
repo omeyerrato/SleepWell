@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="period_start_earlier" type="id" />
+    <item name="period_start_later" type="id" />
+    <item name="period_end_earlier" type="id" />
+    <item name="period_end_later" type="id" />
+</resources>
