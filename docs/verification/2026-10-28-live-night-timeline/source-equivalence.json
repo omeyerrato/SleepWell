@@ -1,0 +1,211 @@
+{
+  "scope": "Listed live-sonar UI, coordinator/storage provenance, native fixture and scope metadata only. Verification branch source is not the frozen root release.",
+  "run_source": "a166c922ee25e48d0ca322cfff1ee8d863cd8b8e",
+  "verification_branch": "codex/verify-live-night-20261028",
+  "verification_branch_head_at_archive": "a166c922ee25e48d0ca322cfff1ee8d863cd8b8e",
+  "root_committed_head_at_archive": "9db7b4aeb50c1ca996f90cecc28413170e02bee0",
+  "all_listed_paths_match_verification_git_filtered_working_tree": true,
+  "unchanged_since_frozen_base": {
+    "app/src/main/java/org/sleepwell/app/RecordChart.java": "1bd7192b456103c5f7ba24565dc75afeee582504",
+    "app/src/main/java/org/sleepwell/app/SonarSignalChart.java": "c705721e7ea7910d731a9540bfbbf73114ad9ed2"
+  },
+  "integration_order": [
+    "2053e85aa6b0a410664c5a72a3690a08ca4ded4a",
+    "b33f96d66a26ed1eecc97cfb9703c57c5d86716a",
+    "a166c922ee25e48d0ca322cfff1ee8d863cd8b8e"
+  ],
+  "sources": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/LiveMovementTimeline.java",
+      "git_blob_at_run": "1c955cdfa5af3b044398b620dfb7a9e82c789151",
+      "sha256_committed_bytes": "f2b61722505fa1511d9596a67cdbb3cb6fcf1ab1b86f531fc5bbc7ef66a9c028",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": null,
+      "matches_root_committed_blob": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingActivity.java",
+      "git_blob_at_run": "ba543310e825fe027b3fd32caee55ce43caeba28",
+      "sha256_committed_bytes": "6e8f35b41a9ac3c2f17c8b419873551c136675f3edb8109d86733d9133e3a811",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "cab5c7a526eb5fdb60610edf4624c0efcdd44500",
+      "matches_root_committed_blob": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarNight.java",
+      "git_blob_at_run": "76b62643dfab9157d0d4f5a737e68f5b407e9d66",
+      "sha256_committed_bytes": "dc0f6ced6cc196e60b3af056eec8c159edc351ab402e01b4373a6c779d35ee74",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "76b62643dfab9157d0d4f5a737e68f5b407e9d66",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarEpochs.java",
+      "git_blob_at_run": "a4106cc9d93e644e399427847b39c9be7d533d89",
+      "sha256_committed_bytes": "bd2e38814b829ec6548b724be8af94f26eda73073ff2887b5c4b3f6984bc5a05",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "a4106cc9d93e644e399427847b39c9be7d533d89",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarNightStore.java",
+      "git_blob_at_run": "4f4a035458790ab23d8cfa2f0393df736bde60a3",
+      "sha256_committed_bytes": "c365827cad7b8910eb595b696bab2ab56fd0734a560c853b5fffa7952d885dbd",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "4f4a035458790ab23d8cfa2f0393df736bde60a3",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarFrame.java",
+      "git_blob_at_run": "1181f472234f900cd904bf28e9ff12348c641242",
+      "sha256_committed_bytes": "73624d9af36e09780df5f363a5188517335722bd7a7465bb9904abeeced089b2",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "1181f472234f900cd904bf28e9ff12348c641242",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarObservation.java",
+      "git_blob_at_run": "2386727875d4d801950ddc6734162505766b938f",
+      "sha256_committed_bytes": "5bff707a5d5044a71ba0eb8e4064faf8cdf7599fe5016caf1f8a47e913992254",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "2386727875d4d801950ddc6734162505766b938f",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingService.java",
+      "git_blob_at_run": "8a527dd86ccbf5c93ca457515e57244fdff6bc95",
+      "sha256_committed_bytes": "e0348076351071a061092f071b2267022472b29d6f05a9d34f004dd567577335",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "8a527dd86ccbf5c93ca457515e57244fdff6bc95",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob_at_run": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "sha256_committed_bytes": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SensorProvenance.java",
+      "git_blob_at_run": "6996b6d1367f9731c39b3c61a7ba6a7b5b163c85",
+      "sha256_committed_bytes": "293ec538355373c6cad682c145898293c8c1e3855bf9dca16a7a981ca6855594",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "6996b6d1367f9731c39b3c61a7ba6a7b5b163c85",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarSignalChart.java",
+      "git_blob_at_run": "c705721e7ea7910d731a9540bfbbf73114ad9ed2",
+      "sha256_committed_bytes": "17ccc6238a6d85dd972a4d88d110aff42ffcbe0315ed326b41c23153af5d0bee",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "c705721e7ea7910d731a9540bfbbf73114ad9ed2",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ContactlessSetupActivity.java",
+      "git_blob_at_run": "8be27754e2a70200713ae2b5edc1e83e6c836a8c",
+      "sha256_committed_bytes": "42da68774007bc90c49ec027768ce1b1358864102dd27dd2cf5747ff89d4d7f4",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "8be27754e2a70200713ae2b5edc1e83e6c836a8c",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordChart.java",
+      "git_blob_at_run": "1bd7192b456103c5f7ba24565dc75afeee582504",
+      "sha256_committed_bytes": "dc8d8b54fc260756dceb1cc3ab8194529cd61b2dbc9906fb3cdbf86cadaf4bb8",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "1bd7192b456103c5f7ba24565dc75afeee582504",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChartSeries.java",
+      "git_blob_at_run": "0cfdafc02c44cf0fdc9ae790ead686ebaa776ce5",
+      "sha256_committed_bytes": "fea83915953148f02ffea99204981283e334e1685bcde70d66bfaef2f57e910c",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "0cfdafc02c44cf0fdc9ae790ead686ebaa776ce5",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChartTicks.java",
+      "git_blob_at_run": "287cfb242003c836fd285a62b642e175deeeab84",
+      "sha256_committed_bytes": "81a3d30d4e5ba0137dca271a6177b71333cb9ca3953b09078ada0e1efab3cdd8",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "287cfb242003c836fd285a62b642e175deeeab84",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+      "git_blob_at_run": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+      "sha256_committed_bytes": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "git_blob_at_run": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "sha256_committed_bytes": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Icons.java",
+      "git_blob_at_run": "ecb4282c40ffd5118eece20a7c85967e600b7770",
+      "sha256_committed_bytes": "86e8a356aa8d452b18d6df4f8f31ab66582717bc6ad13dedf2d193f53ae44aa4",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "ecb4282c40ffd5118eece20a7c85967e600b7770",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Appearance.java",
+      "git_blob_at_run": "aecb50792e4892b83b3cba664182e368efd15be0",
+      "sha256_committed_bytes": "e21213f167519292860f54afd96716a938c5ebbd972ec3f358de7810dc574c6a",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "aecb50792e4892b83b3cba664182e368efd15be0",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SonarNightFlowTest.java",
+      "git_blob_at_run": "35cc3d8a264b7d76bc3a49e52898de2a97df29fa",
+      "sha256_committed_bytes": "8270b772e575d76128a2080339dc44218577e463c6c7e1d4151e55cc2291c6f8",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "e2c65dd696e6bb23b995aa01401138d81500ac79",
+      "matches_root_committed_blob": false
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SonarNightStorageTest.java",
+      "git_blob_at_run": "3aa8fba16f8e55bbd92c09a68de4e2f771d1301d",
+      "sha256_committed_bytes": "a7fe4b6c4b54340b88924269c5ca290f21fccd2a37b978a8bff949f75212fa03",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "3aa8fba16f8e55bbd92c09a68de4e2f771d1301d",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/sonar_bedside.png",
+      "git_blob_at_run": "051a460d77f69292a9d85a45a44a0065705dd3b5",
+      "sha256_committed_bytes": "f675e214277c916a2922cf2301b9f77859d600ca76cd1919e88cb611e44a8094",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "051a460d77f69292a9d85a45a44a0065705dd3b5",
+      "matches_root_committed_blob": true
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "git_blob_at_run": "63d815f627faee1a90bf70bfc30512ad643addf2",
+      "sha256_committed_bytes": "cf915e2272eeee3c3b2582bff9a896cb1e3828b3791d1be80b92517e1377522c",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "3f057f3b852a4210f39c0cb5a890d2341d4342b9",
+      "matches_root_committed_blob": false
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "git_blob_at_run": "47dea778b66dda6844fadb7a0946cba1933a32d7",
+      "sha256_committed_bytes": "f0206c3e125890eee1dbac40d475a433a3500c67d04086b2609615063208e5f7",
+      "matches_verification_working_tree_git_filtered_blob": true,
+      "root_committed_blob": "83962aa4e873bd7898b9e8c0b6c6cc7192b465d7",
+      "matches_root_committed_blob": false
+    }
+  ]
+}
