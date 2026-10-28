@@ -3,7 +3,10 @@ package org.sleepwell.app;
 import android.app.*;
 import android.content.*;
 import android.os.*;
-import android.view.View;
+import android.view.*;
+import android.view.inspector.WindowInspector;
+import android.graphics.Rect;
+import android.widget.*;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.runner.lifecycle.*;
 import androidx.test.uiautomator.*;
@@ -19,8 +22,20 @@ import static org.junit.Assert.*;
 public class TravelPlanFlowTest {
     private final Instrumentation i=InstrumentationRegistry.getInstrumentation();private final Context c=i.getTargetContext();private final UiDevice device=UiDevice.getInstance(i);private TravelActivity activity;
     private UiObject2 object(String description)throws Exception{UiObject2 result=device.wait(Until.findObject(By.desc(description)),2000);if(result==null){new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().description(description));result=device.wait(Until.findObject(By.desc(description)),5000);}assertNotNull(description,result);return result;}
-    private void clickDescription(String description)throws Exception{object(description).click();device.waitForIdle();}
-    private void click(String label)throws Exception{UiObject2 result=device.wait(Until.findObject(By.text(label)),1500);if(result==null){new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(label));result=device.wait(Until.findObject(By.text(label)),5000);}assertNotNull(label,result);result.click();device.waitForIdle();}
+    private View focused(){View found=null;for(View v:WindowInspector.getGlobalWindowViews())if(v.hasWindowFocus()&&v.isAttachedToWindow()&&v.isLaidOut()&&v.getContext().getPackageName().equals(c.getPackageName())){assertNull("One owned focused window",found);found=v;}return found;}
+    private View find(View root,String value,boolean description){if(description?value.contentEquals(root.getContentDescription()==null?"":root.getContentDescription()):root instanceof TextView&&value.contentEquals(((TextView)root).getText()))return root;if(root instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){View result=find(group.getChildAt(n),value,description);if(result!=null)return result;}return null;}
+    private void clickDescription(String description)throws Exception{inputOnce(description,true);}
+    private void click(String label)throws Exception{inputOnce(label,false);}
+    private void inputOnce(String value,boolean description)throws Exception{
+        // Reacquire actual widgets before input; never retain UiObject2 across a callback's render.
+        assertTrue(value+": current enabled target",device.wait(new Condition<UiDevice,Boolean>(){public Boolean apply(UiDevice unused){boolean[] ready={false};i.runOnMainSync(()->{View owner=focused();if(owner==null)return;View target=find(owner,value,description);if(target==null)return;while(!target.isClickable()&&target.getParent() instanceof View)target=(View)target.getParent();if(target.isEnabled()&&target.isClickable()){target.requestRectangleOnScreen(new Rect(0,0,target.getWidth(),target.getHeight()),true);ready[0]=true;}});return ready[0];}},5000));
+        device.waitForIdle();Rect bounds=new Rect();Boolean[] checked={null};
+        i.runOnMainSync(()->{View owner=focused();assertNotNull(value+": focused owner",owner);View target=find(owner,value,description);assertNotNull(value,target);if(target instanceof CompoundButton toggle)checked[0]=toggle.isChecked();while(!target.isClickable()&&target.getParent() instanceof View)target=(View)target.getParent();assertTrue(target.isEnabled()&&target.isClickable());assertTrue(target.getGlobalVisibleRect(bounds));assertEquals(value+": full target height",target.getHeight(),bounds.height());assertEquals(value+": full target width",target.getWidth(),bounds.width());assertTrue(value+": 48dp target",bounds.height()>=Design.dp(c,48)&&bounds.width()>=Design.dp(c,48));});
+        assertTrue(value+": exactly one native input",device.click(bounds.centerX(),bounds.centerY()));
+        // A toggle may synchronously replace the entire page. Observe its new owner and state,
+        // rather than retrying input when the previous accessibility object detaches.
+        assertTrue(value+": durable result on reacquired owner",device.wait(new Condition<UiDevice,Boolean>(){public Boolean apply(UiDevice unused){boolean[] done={false};i.runOnMainSync(()->{View owner=focused();if(checked[0]==null){done[0]=owner!=null||activity!=null&&activity.isDestroyed();return;}if(owner==null)return;View target=find(owner,value,description);done[0]=target instanceof CompoundButton toggle&&toggle.isChecked()!=checked[0];});return done[0];}},5000));device.waitForIdle();
+    }
     private void launch()throws Exception{Instrumentation.ActivityMonitor monitor=i.addMonitor(TravelActivity.class.getName(),null,false);try{c.startActivity(new Intent(c,TravelActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));activity=(TravelActivity)monitor.waitForActivityWithTimeout(5000);assertNotNull("A fresh travel window must open",activity);}finally{i.removeMonitor(monitor);}assertTrue(device.wait(Until.hasObject(By.text("Save travel settings")),5000));}
     private void capture(String name)throws Exception{long deadline=SystemClock.elapsedRealtime()+5000;CountDownLatch frame=new CountDownLatch(1);boolean[] registered={false};while(!registered[0]&&SystemClock.elapsedRealtime()<deadline){i.runOnMainSync(()->{if(activity!=null&&!activity.isDestroyed()&&activity.hasWindowFocus()){View decor=activity.getWindow().getDecorView();if(decor.isAttachedToWindow()&&decor.isHardwareAccelerated()){decor.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);decor.invalidate();registered[0]=true;}}});if(!registered[0])SystemClock.sleep(50);}assertTrue("A focused hardware travel window is required",registered[0]);assertTrue(frame.await(5,TimeUnit.SECONDS));device.waitForIdle();File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"travel-"+name+".png")));}
     private void destroyed(Activity target){long deadline=SystemClock.elapsedRealtime()+5000;boolean[] done={false};while(!done[0]&&SystemClock.elapsedRealtime()<deadline){i.runOnMainSync(()->done[0]=target.isDestroyed());if(!done[0])SystemClock.sleep(50);}assertTrue("Saved travel window must close",done[0]);}
