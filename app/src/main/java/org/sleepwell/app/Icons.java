@@ -53,6 +53,7 @@ final class Icons {
             case "info" -> R.drawable.ic_phosphor_info_regular;
             case "phone" -> R.drawable.ic_phosphor_device_mobile_regular;
             case "mic" -> R.drawable.ic_phosphor_microphone_regular;
+            case "headphones" -> R.drawable.ic_phosphor_headphones_regular;
             case "speech" -> R.drawable.ic_phosphor_chats_regular;
             case "pause" -> R.drawable.ic_phosphor_pause_fill;
             case "play" -> R.drawable.ic_phosphor_play_fill;
