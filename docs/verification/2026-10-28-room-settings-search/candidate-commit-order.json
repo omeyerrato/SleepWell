@@ -1,0 +1,26 @@
+{
+  "base": "d4415a2b5194abd50c36921a5c7c317ef1f18c51",
+  "capture_head": "52b6dbb56ff77175ef1116fabb3a12a8596d24ec",
+  "commits": [
+    {
+      "commit": "9ca48928ae203b3cc0b1c73a31a714f1175e1792",
+      "subject": "Make Room conditions and screen dimming discoverable in settings"
+    },
+    {
+      "commit": "45c1fb82c44d18c921a506cde5daee26cb947918",
+      "subject": "Verify Room search routing and unsaved dimming Back in existing journey"
+    },
+    {
+      "commit": "7f8caf885ebaddd388e2ca1827943fd40288f0c8",
+      "subject": "Document bounded Room search and navigation verification"
+    },
+    {
+      "commit": "2e78c303db032bee6af3106f2ee1584610042e07",
+      "subject": "Add isolated Room settings search verification scope"
+    },
+    {
+      "commit": "52b6dbb56ff77175ef1116fabb3a12a8596d24ec",
+      "subject": "Use unique saved-record identity and committed search states"
+    }
+  ]
+}

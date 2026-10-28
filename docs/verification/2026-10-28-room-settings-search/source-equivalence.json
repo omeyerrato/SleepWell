@@ -1,0 +1,194 @@
+{
+  "capture_source": "52b6dbb56ff77175ef1116fabb3a12a8596d24ec",
+  "archive_base": "52b6dbb56ff77175ef1116fabb3a12a8596d24ec",
+  "frozen_013_source_comparison": "d4415a2b5194abd50c36921a5c7c317ef1f18c51",
+  "scope": "Listed sources only; frozen0.1.3 remains separate. Main differs only in the Room row subtitle, registry appends one explicit private Room target, and native/workflow sources add this bounded verification. No full-app or physical/output equivalence claim.",
+  "sources": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SearchSettings.java",
+      "capture_git_blob": "11ba58143fcb299042f0fbd73d57acf8260df96e",
+      "sha256_capture_bytes": "878953748aefce18495fbd14b7de7b46faf2799645847bedeb396ca79a0b0efd",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "3a469b53f9e9fa13d245d727a16defd705230782",
+      "frozen_013_byte_identical": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SearchActivity.java",
+      "capture_git_blob": "31a91a1e7cc892a2c0ad93d142a17e97aeae9b85",
+      "sha256_capture_bytes": "db209c32e9c1cd6ed6c7851212e2e62ac8f34bb11aca2510ef28134e3f9d3bbe",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "31a91a1e7cc892a2c0ad93d142a17e97aeae9b85",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SearchIndex.java",
+      "capture_git_blob": "25877bcd87d2cdefa155082d08a63b7f10608228",
+      "sha256_capture_bytes": "62f292af546c00d88ce3d2106bb1e7829afe8d87dd39c4ee72034418c5c6881a",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "25877bcd87d2cdefa155082d08a63b7f10608228",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SearchData.java",
+      "capture_git_blob": "e6a48250a3302f88758f0ad63511e615493a7182",
+      "sha256_capture_bytes": "0e0936d3fe566c899b0fdbd5bd61cffc858464bec1f48b486f6e5d72338ec20c",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "e6a48250a3302f88758f0ad63511e615493a7182",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "capture_git_blob": "86e4e736f9fd852819a3d116dcc18bfe83a166b5",
+      "sha256_capture_bytes": "2be8a0d7d625cc7aa4cb07f6b9913022551c640d6e665caee31cef47a218b225",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "7f8f827d06c8c0fcb841f54da8d22f545003aaad",
+      "frozen_013_byte_identical": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomConditionsActivity.java",
+      "capture_git_blob": "535222d9185a62b21f3814601335e61632bae25a",
+      "sha256_capture_bytes": "0cfaee18a15c3edad352e4c4e99cd7dc54ed7c19e46621f3b7baad16425391dd",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "535222d9185a62b21f3814601335e61632bae25a",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomDimming.java",
+      "capture_git_blob": "4a744b712ed6040d271dc54a8c797cbc53bf1351",
+      "sha256_capture_bytes": "eb5b1059964433909fb952a5740e22ebaabf722f61b84877b1a2991cb3640a6a",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "4a744b712ed6040d271dc54a8c797cbc53bf1351",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomLightPort.java",
+      "capture_git_blob": "672d1650a590043ad233dd27ac6e08168538ec83",
+      "sha256_capture_bytes": "2f25e8423a1de0fb5b524fcd077a07b518efaa6b365034d0ae877253c11aa417",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "672d1650a590043ad233dd27ac6e08168538ec83",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomSoundLevel.java",
+      "capture_git_blob": "7a4332021f8b45646a1171b1e88d2b6a5e441ab8",
+      "sha256_capture_bytes": "5f95b428f2917e5b8e92e572e16c74455028e32bb35ab1bc9596f650b9d20446",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "7a4332021f8b45646a1171b1e88d2b6a5e441ab8",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomAudio.java",
+      "capture_git_blob": "4a1396f51c5a6164f3e369f01064e4685565abc8",
+      "sha256_capture_bytes": "70d71ec2bd3e60230dd0552c0bfe60c0c5fe8afc21dbebb03480332c5394f72a",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "4a1396f51c5a6164f3e369f01064e4685565abc8",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Prefs.java",
+      "capture_git_blob": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "sha256_capture_bytes": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+      "capture_git_blob": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+      "sha256_capture_bytes": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "capture_git_blob": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "sha256_capture_bytes": "6bd7f443f36e4ef2c38f73decb5e212383436f3ed9a3a61033ca49515851ac90",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "d3bac5a0a0c3f94db400bcce722ae2b728428bf5",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PlanActivity.java",
+      "capture_git_blob": "afaedf20564c46c88370ba19dae6cf84b6ae01a2",
+      "sha256_capture_bytes": "2f0f04d0e05bd39727156542b85167ff454c58590bc27677bad77932fd1cf682",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "afaedf20564c46c88370ba19dae6cf84b6ae01a2",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Records.java",
+      "capture_git_blob": "25368746615d6dc554f0afa239b1586cc20f8bfc",
+      "sha256_capture_bytes": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "25368746615d6dc554f0afa239b1586cc20f8bfc",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordEntry.java",
+      "capture_git_blob": "14c4501a1b0eed7d93eb5e9eb4df403f5323a8ec",
+      "sha256_capture_bytes": "de5e56e5a0868858efbd95f0bdabca5ceb5809a290c11cafac3cd2b18805b5ba",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "14c4501a1b0eed7d93eb5e9eb4df403f5323a8ec",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordReportActivity.java",
+      "capture_git_blob": "a270635256e4ae8287786c6bd5f43af5daf4ac89",
+      "sha256_capture_bytes": "446d39ffbf7f24791873e1099e6bf4b7578977caf716e54dc38c3a4166f1d7f0",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "a270635256e4ae8287786c6bd5f43af5daf4ac89",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "capture_git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "sha256_capture_bytes": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupFingerprint.java",
+      "capture_git_blob": "db9585ad744f4b8118eedda62471e49b5c13f86f",
+      "sha256_capture_bytes": "d6462e1a44f5b661ea54e3fa2b3722040982656ed3b90d6d0a50e5a37c6249ed",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "db9585ad744f4b8118eedda62471e49b5c13f86f",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SearchFlowTest.java",
+      "capture_git_blob": "405ddab53791eeda6bd93b7d3dd641f47179957c",
+      "sha256_capture_bytes": "3f8123f9fa999585855c62654d892d079af2441d5d153dc27d3fa29661a488dc",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "b6f567b4a04374ed678ac33dc7c9c716b794f343",
+      "frozen_013_byte_identical": false
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "capture_git_blob": "1fe6571267dc3047eaf53ab4caa426ee91f244cb",
+      "sha256_capture_bytes": "178ec7feaaf24d0ee0994b6b74da6c670c6f5a924db7772e30865fc6cd4f9758",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "1fe6571267dc3047eaf53ab4caa426ee91f244cb",
+      "frozen_013_byte_identical": true
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "capture_git_blob": "896f026e85da4c3b9d866cb20571cda51eba6bd1",
+      "sha256_capture_bytes": "b07476b1a72201e8c947464f52889a20642a6dd79855af12c4a3c03ed94521ea",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "aabe58b6fc7d00b3a5d36e9b4302125a09dcaa24",
+      "frozen_013_byte_identical": false
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "capture_git_blob": "4166e365206e8c5fb3d2d55373b61c0011606f98",
+      "sha256_capture_bytes": "da0d87c41a7722b990663b46320e2bc707ca2e6c70d4a0c983ee94bd4996e27a",
+      "archive_base_matches_capture": true,
+      "frozen_013_git_blob": "11bda7f1c5e19918c10c9751141e77e31a24da5c",
+      "frozen_013_byte_identical": false
+    }
+  ],
+  "first_failed_capture": "2e78c303db032bee6af3106f2ee1584610042e07",
+  "production_unchanged_between_two_runs": true
+}

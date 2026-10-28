@@ -40,10 +40,13 @@ real light/sound/dimming behavior.
 
 The selected method still has one `@Test` and retains its private-record navigation
 checks. Its five screenshot literals are `search-empty.png`, `search-room.png`,
-`search-no-results.png`, `search-record.png` and `search-recreated.png`. The new
-Room search frame waits for the actual focused committed native frame. Exact
-changed source/native Java compilation passed; native execution is pending.
-No new CI, device/provider/output action or app-data migration was performed.
+`search-no-results.png`, `search-record.png` and `search-recreated.png`. All five
+frames require their expected visible status and an actual focused committed
+native frame. The exact method passed in12.917s in focusedCI40623526256, with all
+five originals individually inspected. [Scoped evidence](verification/2026-10-28-room-settings-search/README.md)
+retains the first failed run and its ambiguous record query/loading capture,
+the corrected unique-record assertions and the fake-port/preservation limits.
+No phone/provider/output action or app-data migration was performed.
 
 Record- or alarm-owned editors are not opened with fabricated context. Flashlight, extra loud, gentle volume, challenge tasks, snooze and repeat results clearly say **Choose an alarm** and open the actual Alarms list. New alarm defaults also route through the alarm draft that supplies their required template. Per-record SoundArchiveActivity is not exposed as a zero-extra destination; the actual whole-library export remains available. Trends opens the real HistoryActivity with `trends=true`; its row explains using Trend options for chart settings. Selecting a result opens a screen only; it does not invoke a test, grant, enrollment, output, recording or save callback.
 
