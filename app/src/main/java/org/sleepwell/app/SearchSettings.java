@@ -66,7 +66,7 @@ final class SearchSettings {
         direct("Contactless setup",SLEEP,"Sleep tracking","Sonar placement, capability and explicit signal test","contactless sonar ultrasound speaker microphone gain calibration distance",ContactlessSetupActivity.class),
         direct("Motion calibration",SLEEP,"Sleep tracking › Motion sensor","Review sensitivity and explicitly start calibration","motion sensor accelerometer calibrate sensitivity mattress",MotionCalibrationActivity.class),
         direct("External PIR input",CONNECTED,"Home Assistant","Configure an optional room movement sensor","pir passive infrared room sensor motion home assistant external",PirSettingsActivity.class),
-        page("Sound analysis",SOUND,"","Review saved analysis and recording choices","sleep noise analysis snoring speech talking recording clips microphone classify sound events", "sound_analysis"),
+        page("Sound analysis",SOUND,"","Review saved analysis and recording choices","sleep noise analysis sleepnoiseanalysis snoring speech talking recording clips microphone classify sound events", "sound_analysis"),
         direct("Snoring sound output",SOUND,"Sound analysis › Snoring cues","Choose headphone-only sound routing","anti snore snoring headphones speaker wired usb ble sound route output",SnoreSoundRouteActivity.class),
         direct("Recording retention",PRIVACY,"Audio retention","Retention days, favorites and reviewed cleanup","delete old recordings retention storage keep favorites starred sounds space audio cleanup",SoundLibrarySettingsActivity.class),
         direct("Favorite sounds",SOUND,"Recordings","Open saved favorite recordings","favorites favourites starred snoring talking recordings clips",FavoriteSoundsActivity.class),
