@@ -1,0 +1,83 @@
+{
+  "candidate_source": "d4415a2b5194abd50c36921a5c7c317ef1f18c51",
+  "baseline_source": "5bf664434ca303d26069e59287cc0e3c3a55a497",
+  "database_backup_comparison": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "baseline_git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "candidate_git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "byte_identical": true,
+      "schema_or_format": 17
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "baseline_git_blob": "8f33543a0898a498075e4b82d70e6dfddd6af77f",
+      "candidate_git_blob": "8f33543a0898a498075e4b82d70e6dfddd6af77f",
+      "sha256": "17bf74d23a9bbcf3c2897ca6d773fbcda273e24940deeab0cc52297ee2252323",
+      "byte_identical": true,
+      "schema_or_format": 14
+    }
+  ],
+  "profile_native_capture_source": "bc9bc9c28568e441b1fb44b656c77e8915d8698f",
+  "profile_scope_comparison": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SettingsProfile.java",
+      "captured_git_blob": "ae6eec64f7a3711596a803325e6815d272f29da1",
+      "candidate_git_blob": "ae6eec64f7a3711596a803325e6815d272f29da1",
+      "sha256": "5c638e26beb75c6bb9b2781a43117ae3d4f6511b35f9eb2d182764d78d8a3747",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SettingsProfilePersistence.java",
+      "captured_git_blob": "d565211da62be47df1f919b820195687a9a60c1c",
+      "candidate_git_blob": "d565211da62be47df1f919b820195687a9a60c1c",
+      "sha256": "f37c785d3ea7f9531cbc63a96b9a4013dc8cf8af004b46e10458cbd633d0ef5b",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SettingsProfileJson.java",
+      "captured_git_blob": "c40de914d90f5af80b0af77d6968cfe93b3b0b8a",
+      "candidate_git_blob": "c40de914d90f5af80b0af77d6968cfe93b3b0b8a",
+      "sha256": "b55fa06ffc27bc5048bcbbacf146b9b2dc211363f215a4e8e5ef9e96162a55d7",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SettingsProfileActivity.java",
+      "captured_git_blob": "d999fc85620ee645ae4d299967b96a93440f4177",
+      "candidate_git_blob": "d999fc85620ee645ae4d299967b96a93440f4177",
+      "sha256": "31a857350a939af87c39b947ad5ad704f3c91aa270830a4c9e21781605fd0597",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SettingsProfileJob.java",
+      "captured_git_blob": "8655d47dbeb5afc6aa6547e9cc864bf9182fae59",
+      "candidate_git_blob": "8655d47dbeb5afc6aa6547e9cc864bf9182fae59",
+      "sha256": "ecd163a8d2797bef380586f04e3841bccd1c7cf7d802bffa64e9e4adf7c1842a",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoomDimming.java",
+      "captured_git_blob": "4a744b712ed6040d271dc54a8c797cbc53bf1351",
+      "candidate_git_blob": "4a744b712ed6040d271dc54a8c797cbc53bf1351",
+      "sha256": "eb5b1059964433909fb952a5740e22ebaabf722f61b84877b1a2991cb3640a6a",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Prefs.java",
+      "captured_git_blob": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "candidate_git_blob": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "sha256": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+      "byte_identical": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/BackupDocumentFlowTest.java",
+      "captured_git_blob": "9e706e2cc39734e238051b3636d5f22c020fc6da",
+      "candidate_git_blob": "9e706e2cc39734e238051b3636d5f22c020fc6da",
+      "sha256": "08e1387a51e3e1db7fc38c3a9b25c36e9ade5a3403b1b5ddf7c674a470c1422c",
+      "byte_identical": true
+    }
+  ],
+  "native_evidence_commit": "6b0ae76391c0a9f1166714a576dc18664991424e",
+  "scope": "Listed source blobs only; no whole-app or native ARM64/physical runtime equivalence claim. The profile private-API native method uses actual typed JSON/preferences/journal APIs on an x86_64 emulator, not a provider or window."
+}

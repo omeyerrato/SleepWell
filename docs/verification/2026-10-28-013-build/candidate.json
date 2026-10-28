@@ -1,0 +1,73 @@
+{
+  "source": "d4415a2b5194abd50c36921a5c7c317ef1f18c51",
+  "apk": "SleepWell-d4415a2b5194abd50c36921a5c7c317ef1f18c51.apk",
+  "bytes": 162061389,
+  "sha256": "bfb3015de97e521951c681a80bcc39443ddca489fe0ade89a525a9295890023d",
+  "package": "org.sleepwell.app",
+  "versionName": "0.1.3",
+  "versionCode": 4,
+  "abi": "arm64-v8a",
+  "minSdk": 30,
+  "targetSdk": 36,
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "database_schema": 17,
+  "records_backup_format": 14,
+  "portable_settings_profile": "version2 iff Appearance has the typed roomDimming field; valid legacy version1 readable and absent field preserves local dimming",
+  "build": {
+    "result": "BUILD SUCCESSFUL",
+    "duration": "2m3s",
+    "tasks": {
+      "total": 34,
+      "executed": 10,
+      "up_to_date": 24
+    },
+    "provenance": "Release owner Root terminal observation; no retained raw final transcript and no build rerun by this verifier."
+  },
+  "independently_repeated_checks": [
+    "APK length/SHA-256",
+    "aapt package/version/ABI/icons",
+    "apksigner candidate and baseline",
+    "all uncompressed asset/native/resource bytes",
+    "database/backup format source equality",
+    "profile native captured-source equality"
+  ],
+  "publication_installation": "Neither publication nor phone installation was performed or verified by this task. Root-owned distribution/phone metadata is separate.",
+  "runtime_limits": "Package retention/static/compile integrity plus separately bounded native evidence; no full-app, OS/provider/hardware/output/security acceptance.",
+  "native_proofs": [
+    {
+      "method": "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft",
+      "run": 40607144683,
+      "source": "7ee0b7de9a716c9b4273dd6166dc533421737292",
+      "seconds": 29.271,
+      "images": 6
+    },
+    {
+      "method": "WakeCheckFlowTest#silentPromptCountsDownRecreatesConfirmsAndReopensDurably",
+      "run": 40607145222,
+      "source": "b25a80f20963832c3fd915a6e5e4998bfd223000",
+      "seconds": 25.682,
+      "images": 7
+    },
+    {
+      "method": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+      "run": 40607145222,
+      "source": "b25a80f20963832c3fd915a6e5e4998bfd223000",
+      "seconds": 48.983,
+      "images": 14
+    },
+    {
+      "method": "SonarNightFlowTest#visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight",
+      "run": 40612296204,
+      "source": "526de5e700a0d934c168e7231ed89ef8e34043f9",
+      "seconds": 21.564,
+      "images": 10
+    },
+    {
+      "method": "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen",
+      "run": 40615701815,
+      "source": "bc9bc9c28568e441b1fb44b656c77e8915d8698f",
+      "seconds": 15.905,
+      "images": 8
+    }
+  ]
+}
