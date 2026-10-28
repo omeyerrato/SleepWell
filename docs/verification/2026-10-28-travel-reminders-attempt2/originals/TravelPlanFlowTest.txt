@@ -1,0 +1,47 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.TravelPlanFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.TravelPlanFlowTest:
+INSTRUMENTATION_STATUS: test=savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.TravelPlanFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Remind for: current enabled target
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.TravelPlanFlowTest.inputOnce(TravelPlanFlowTest.java:31)
+	at org.sleepwell.app.TravelPlanFlowTest.clickDescription(TravelPlanFlowTest.java:27)
+	at org.sleepwell.app.TravelPlanFlowTest.savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs(TravelPlanFlowTest.java:48)
+
+INSTRUMENTATION_STATUS: stream=
+Error in savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs(org.sleepwell.app.TravelPlanFlowTest):
+java.lang.AssertionError: Remind for: current enabled target
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.TravelPlanFlowTest.inputOnce(TravelPlanFlowTest.java:31)
+	at org.sleepwell.app.TravelPlanFlowTest.clickDescription(TravelPlanFlowTest.java:27)
+	at org.sleepwell.app.TravelPlanFlowTest.savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs(TravelPlanFlowTest.java:48)
+
+INSTRUMENTATION_STATUS: test=savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 27.148
+There was 1 failure:
+1) savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs(org.sleepwell.app.TravelPlanFlowTest)
+java.lang.AssertionError: Remind for: current enabled target
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.TravelPlanFlowTest.inputOnce(TravelPlanFlowTest.java:31)
+	at org.sleepwell.app.TravelPlanFlowTest.clickDescription(TravelPlanFlowTest.java:27)
+	at org.sleepwell.app.TravelPlanFlowTest.savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs(TravelPlanFlowTest.java:48)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
