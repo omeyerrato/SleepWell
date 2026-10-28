@@ -30,10 +30,13 @@ public final class TravelActivity extends Activity {
             case "cues":cueSettings();break;
             case "light":lightSettings();break;
             case "planning":planningSettings();break;
+            case "tracking":trackingSettings();break;
             case "reminders":reminderSettings();break;
             case "home":case "destination":zones();break;
             default:route="";mainPage();
         }
+        // Let long zone names, errors and larger text grow within this feature's scroll view.
+        body.setLayoutParams(new ScrollView.LayoutParams(-1,-2));
         renderedRoute=route;
         if(body.getParent() instanceof ScrollView scroll){int position=scrolls.getOrDefault(route,0);scroll.post(()->scroll.scrollTo(0,position));}
         clocks();restorePicker();
@@ -41,17 +44,30 @@ public final class TravelActivity extends Activity {
     private void rememberScroll(){if(body!=null&&body.getParent() instanceof ScrollView scroll)scrolls.put(renderedRoute,scroll.getScrollY());}
     private void go(String destination){route=destination;render();}
     private void mainPage(){
-        body=Design.page(this,false,null,n->{});RecordUi.header(body,"Travel mode",this::back);Design.space(body,10);
+        body=Design.page(this,false,null,n->{});LinearLayout header=RecordUi.header(body,"Travel mode",this::back);
+        RecordUi.headerAction(header,"more","Schedules & reminders",()->go("planning"));Design.space(body,8);
         Design.text(body,"Target time zone",15,600,Design.INK);Design.space(body,6);
         zoneCard("clock",draft.destination,"Target time zone",()->zoneRoute("destination"));Design.space(body,6);
-        zoneCard("home",draft.home,"Home time zone",()->zoneRoute("home"));Design.space(body,8);Design.line(body);
-        PlanActivity.detail(body,"calendar","Departure date",null,draft.departure.format(DateTimeFormatter.ofPattern("d MMM uuuu",Locale.getDefault())),()->{month=YearMonth.from(draft.departure);go("date");});
-        Design.line(body);Design.space(body,12);Design.text(body,"Time difference · now",14,600,Design.INK);Design.space(body,6);
-        clockRow();Design.space(body,8);Design.line(body);Design.space(body,12);
-        Design.toggle(body,"Experimental light cues","Flashlight windows · manual arming required",cues.enabled,on->{if(on)openCues();else{cues=cues.change(false,cues.reviewed,cues.first,cues.minute,cues.minutes,cues.nights);render();}});
-        PlanActivity.detail(body,"flashlight","Light source","Window, manual arming and limits","Phone flashlight",()->go("light"));Design.line(body);
-        PlanActivity.detail(body,"calendar","Schedules & reminders",draft.reminders?"Daylight at "+Design.clock(this,draft.minute)+" · "+draft.days+(draft.days==1?" day":" days"):"Daylight reminders off · pre-travel sleep shifts",null,()->go("planning"));
+        zoneCard("home",draft.home,"Home time zone",()->zoneRoute("home"));Design.space(body,6);Design.line(body);
+        mainRow("calendar","Departure date",null,draft.departure.format(DateTimeFormatter.ofPattern("d MMM uuuu",Locale.getDefault())),()->{month=YearMonth.from(draft.departure);go("date");});
+        Design.line(body);Design.space(body,10);Design.text(body,"Time difference · now",14,600,Design.INK);Design.space(body,6);
+        clockRow();Design.space(body,6);Design.line(body);
+        Switch enabled=Design.toggle(body,"Experimental light cues","Chosen windows · manual arming required",cues.enabled,on->{if(on)openCues();else{cues=cues.change(false,cues.reviewed,cues.first,cues.minute,cues.minutes,cues.nights);render();}});
+        View cueRow=(View)enabled.getParent();Design.pad(cueRow,0,8);cueRow.setBackgroundColor(Color.TRANSPARENT);enabled.setMinimumHeight(Design.dp(this,48));enabled.setMinimumWidth(Design.dp(this,48));Design.line(body);
+        mainRow("flashlight","Light source",null,"Phone flashlight",()->go("light"));Design.line(body);
+        mainRow("moon","During sleep tracking",null,"Manual only",()->go("tracking"));Design.line(body);
+        mainRow("info","About light cues",null,null,this::aboutCues);
         footer(true);
+    }
+    private LinearLayout mainRow(String icon,String title,String subtitle,String value,Runnable action){LinearLayout row=PlanActivity.detail(body,icon,title,subtitle,value,action);row.setMinimumHeight(Design.dp(this,52));return row;}
+    private void trackingSettings(){
+        detailPage("During sleep tracking");
+        Design.text(body,"Manual recording only",22,600,Design.INK);Design.space(body,10);
+        Design.text(body,"A current manual recording is required. Travel mode never starts a recording or arms light output automatically.",14,400,Design.MUTED);Design.space(body,14);
+        PlanActivity.detail(body,"flashlight","Experimental light cues",null,cues.enabled?"Enabled draft":"Off",null);Design.line(body);
+        if(cues.enabled){Design.space(body,12);Design.text(body,"Save your matching cue window before review. You will see the actual recording and window status before choosing whether to arm it.",13,400,Design.MUTED);Design.button(body,"Review & arm cues",false,this::reviewCues);}
+        else{Design.space(body,12);Design.text(body,"Enable and save a light-cue window before reviewing it for a manual recording.",13,400,Design.MUTED);}
+        footer(false);
     }
     private void detailPage(String title){body=Design.page(this,false,null,n->{});RecordUi.header(body,title,this::back);Design.text(body,route.equals("reminders")?"Travel mode · Schedules & reminders":"Travel mode",12,400,Design.MUTED);Design.space(body,14);}
     private void planningSettings(){
@@ -112,9 +128,19 @@ public final class TravelActivity extends Activity {
         Design.text(body,"Requested pulse: 2 ms every 15 seconds",14,600,Design.INK);Design.space(body,7);Design.text(body,"Actual light timing and intensity are not measured. Times are yours to choose, not a treatment recommendation.",13,400,Design.MUTED);Design.space(body,16);Design.text(body,"Only a current manual recording can be armed. Pause, stop, alarm, clock changes or output errors stop the cues. Missed pulses are skipped.",13,400,Design.MUTED);
         LinearLayout footer=RecordUi.footer(body);TextView issue=Design.text(footer,cueError,12,500,0xffa93919);issue.setContentDescription("Light-cue window error");issue.setVisibility(cueError.isEmpty()?View.GONE:View.VISIBLE);Design.button(footer,"Use experimental cues",true,()->{try{TravelCuePlan reviewed=cues.change(true,true,cues.first,cues.minute,cues.minutes,cues.nights);reviewed.validateTrip(draft);if(reviewed.next(TravelReminders.clock.getAsLong())==null)throw new IllegalArgumentException("Choose a window that has not ended.");cues=reviewed;cueBefore="";cueError="";route=cueParent;render();}catch(Exception failure){cueError=failure.getMessage();issue.setText(cueError);issue.setVisibility(View.VISIBLE);}});Design.button(footer,"Cancel",false,this::back);
     }
-    private void zoneCard(String icon,String zone,String title,Runnable choose){LinearLayout row=Design.row(this);Design.pad(row,12,8);row.setMinimumHeight(Design.dp(this,72));row.setBackground(Design.outline(this,Color.TRANSPARENT,Design.LINE,16));Design.Icon glyph=new Design.Icon(this,icon,Design.BROWN);glyph.setPadding(Design.dp(this,10),Design.dp(this,10),Design.dp(this,10),Design.dp(this,10));glyph.setBackground(Design.shape(this,Design.SOFT,30));row.addView(glyph,new LinearLayout.LayoutParams(Design.dp(this,50),Design.dp(this,50)));LinearLayout copy=Design.col(this);copy.setPadding(Design.dp(this,14),0,0,0);Design.text(copy,title.equals("Target time zone")?TravelPlan.city(zone):title,16,600,Design.INK);Design.space(copy,4);Design.text(copy,title.equals("Home time zone")?TravelPlan.city(zone)+" · "+zone:zone,12,400,Design.MUTED);Design.space(copy,3);TextView offset=Design.text(copy,TravelPlan.offset(zone,TravelReminders.clock.getAsLong()),11,400,Design.MUTED);if(title.equals("Target time zone"))targetOffset=offset;else homeOffset=offset;row.addView(copy,new LinearLayout.LayoutParams(0,-2,1));row.addView(new Design.Icon(this,"chevron",Design.BROWN),new LinearLayout.LayoutParams(Design.dp(this,20),Design.dp(this,20)));row.setContentDescription(title);row.setFocusable(true);row.setOnClickListener(v->{InteractionFeedback.action(v);choose.run();});body.addView(row);}
+    private void zoneCard(String icon,String zone,String title,Runnable choose){
+        LinearLayout row=Design.row(this);Design.pad(row,10,8);row.setMinimumHeight(Design.dp(this,64));row.setBackground(Design.outline(this,Color.TRANSPARENT,Design.LINE,16));
+        Design.Icon glyph=new Design.Icon(this,icon,Design.BROWN);glyph.setPadding(Design.dp(this,8),Design.dp(this,8),Design.dp(this,8),Design.dp(this,8));glyph.setBackground(Design.shape(this,Design.SOFT,24));row.addView(glyph,new LinearLayout.LayoutParams(Design.dp(this,42),Design.dp(this,42)));
+        LinearLayout copy=Design.col(this);copy.setPadding(Design.dp(this,12),0,Design.dp(this,6),0);Design.text(copy,title.equals("Target time zone")?TravelPlan.city(zone):title,16,600,Design.INK);Design.space(copy,4);Design.text(copy,title.equals("Home time zone")?TravelPlan.city(zone)+" · "+zone:zone,12,400,Design.MUTED);row.addView(copy,new LinearLayout.LayoutParams(0,-2,1));
+        row.addView(new Design.Icon(this,"chevron",Design.BROWN),new LinearLayout.LayoutParams(Design.dp(this,20),Design.dp(this,20)));row.setContentDescription(title);row.setStateDescription(TravelPlan.city(zone)+" · "+zone);row.setFocusable(true);row.setOnClickListener(v->{InteractionFeedback.action(v);choose.run();});body.addView(row);
+    }
     private void clockRow(){LinearLayout row=Design.row(this);LinearLayout left=clockColumn(row,draft.home,true),middle=Design.col(this),right;middle.setGravity(Gravity.CENTER);Design.text(middle,"→",24,400,Design.BROWN).setGravity(Gravity.CENTER);difference=Design.text(middle,"",15,600,Design.INK);difference.setGravity(Gravity.CENTER);row.addView(middle,new LinearLayout.LayoutParams(0,-2,1));right=clockColumn(row,draft.destination,false);body.addView(row);departureDifference=Design.text(body,"",11,400,Design.MUTED);departureDifference.setGravity(Gravity.CENTER);}
-    private LinearLayout clockColumn(LinearLayout row,String zone,boolean home){LinearLayout col=Design.col(this);col.setGravity(Gravity.CENTER);Design.text(col,TravelPlan.city(zone),12,500,Design.INK).setGravity(Gravity.CENTER);TravelClock dial=new TravelClock(this,zone,home?0xffffe4aa:0xffdfd2ff);col.addView(dial,new LinearLayout.LayoutParams(Design.dp(this,72),Design.dp(this,72)));TextView clock=Design.text(col,"",14,600,Design.INK);clock.setGravity(Gravity.CENTER);TextView date=Design.text(col,"",10,400,Design.MUTED);date.setGravity(Gravity.CENTER);row.addView(col,new LinearLayout.LayoutParams(0,-2,1));if(home){homeDial=dial;homeTime=clock;homeDate=date;}else{targetDial=dial;targetTime=clock;targetDate=date;}return col;}
+    private LinearLayout clockColumn(LinearLayout row,String zone,boolean home){
+        LinearLayout col=Design.col(this);col.setGravity(Gravity.CENTER);Design.text(col,TravelPlan.city(zone),12,500,Design.INK).setGravity(Gravity.CENTER);
+        TextView offset=Design.text(col,TravelPlan.offset(zone,TravelReminders.clock.getAsLong()),10,400,Design.MUTED);offset.setGravity(Gravity.CENTER);Design.space(col,3);
+        TravelClock dial=new TravelClock(this,zone,home?0xffffe4aa:0xffdfd2ff);col.addView(dial,new LinearLayout.LayoutParams(Design.dp(this,64),Design.dp(this,64)));TextView clock=Design.text(col,"",14,600,Design.INK);clock.setGravity(Gravity.CENTER);TextView date=Design.text(col,"",10,400,Design.MUTED);date.setGravity(Gravity.CENTER);row.addView(col,new LinearLayout.LayoutParams(0,-2,1));
+        if(home){homeDial=dial;homeTime=clock;homeDate=date;homeOffset=offset;}else{targetDial=dial;targetTime=clock;targetDate=date;targetOffset=offset;}return col;
+    }
     private void clocks(){if(homeDial==null||targetDial==null||draft==null||!route.isEmpty())return;long now=TravelReminders.clock.getAsLong();homeDial.update(now);targetDial.update(now);DateTimeFormatter dateFormat=DateTimeFormatter.ofPattern("EEE d MMM",Locale.getDefault());homeDate.setText(Instant.ofEpochMilli(now).atZone(ZoneId.of(draft.home)).format(dateFormat));targetDate.setText(Instant.ofEpochMilli(now).atZone(ZoneId.of(draft.destination)).format(dateFormat));homeOffset.setText(TravelPlan.offset(draft.home,now));targetOffset.setText(TravelPlan.offset(draft.destination,now));homeTime.setText(RecordUi.clock(this,now,ZoneId.of(draft.home)));targetTime.setText(RecordUi.clock(this,now,ZoneId.of(draft.destination)));difference.setText(TravelPlan.difference(draft.differenceSeconds(now)));departureDifference.setText("On departure day: "+TravelPlan.difference(draft.differenceSeconds(draft.departureAnchor())));homeTime.setContentDescription("Home clock "+RecordUi.date(now,ZoneId.of(draft.home))+" "+homeTime.getText());targetTime.setContentDescription("Destination clock "+RecordUi.date(now,ZoneId.of(draft.destination))+" "+targetTime.getText());}
     private void zoneRoute(String route){this.route=route;query="";render();}
     private void zones(){body=Design.page(this,false,null,n->{});RecordUi.header(body,route.equals("home")?"Home time zone":"Target time zone",this::back);EditText search=new EditText(this);search.setSingleLine(true);search.setTextSize(16*Appearance.scale(this));search.setTypeface(Design.font(this,400));search.setTextColor(Design.INK);search.setHint("Search city or IANA zone");search.setContentDescription("Search time zones");Design.pad(search,14,12);search.setBackground(Design.shape(this,Design.SOFT,14));body.addView(search,new LinearLayout.LayoutParams(-1,-2));Design.space(body,8);LinearLayout results=Design.col(this);body.addView(results);search.setText(query);fillZones(results);search.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int start,int count,int after){}public void onTextChanged(CharSequence s,int start,int before,int count){query=s.toString();fillZones(results);}public void afterTextChanged(Editable e){}});}
