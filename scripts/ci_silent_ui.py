@@ -54,6 +54,7 @@ parser.add_argument("--scope", choices=(
     'calendar-consent-recovery',
     'profile-room-dimming',
     'room-settings-search',
+    'feature-search',
     'sensing-travel',
     'travel-ui',
     'travel-cue-cleanup',
@@ -388,6 +389,8 @@ elif args.scope == "calendar-consent-recovery":
     tests = ["CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft"]
 elif args.scope == "room-settings-search":
     tests = ["SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls"]
+elif args.scope == "feature-search":
+    tests = ["SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls"]
 elif args.scope == "profile-room-dimming":
     tests = ["BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen"]
 elif args.scope == "sensing-travel":
@@ -485,6 +488,7 @@ if args.scope != "full":
         "contactless-status": ['sonar-setup-initial.png', 'sonar-setup-access-denied.png', 'sonar-setup-access-requesting.png', 'sonar-setup-access-returned.png', 'sonar-setup-ready.png', 'sonar-setup-route-blocked.png', 'sonar-setup-route-returned.png', 'sonar-setup-gain-changed.png', 'sonar-setup-retested.png', 'sonar-setup-reopened.png', 'sonar-setup-recreated.png'],
         "tonight-composition": ['arc-upcoming.png', 'arc-help.png', 'arc-start.png', 'arc-middle.png', 'arc-end.png', 'arc-next.png', 'arc-large.png', 'arc-large-action.png', 'arc-weekly.png', 'arc-off.png', 'arc-off-recreated.png', 'arc-weekday-recreated.png', 'arc-empty.png', 'arc-empty-action.png', 'arc-icon-page-1.png', 'arc-icon-page-2.png', 'arc-icon-page-3.png', 'arc-launcher-icons.png'],
         "room-settings-search": ROOM_SETTINGS_SEARCH_FRAMES,
+        "feature-search": ROOM_SETTINGS_SEARCH_FRAMES + ['search-feature-extra-loud.png', 'search-feature-alarm-choice.png', 'search-feature-chosen-extra-loud.png', 'search-feature-extra-loud-recreated.png', 'search-feature-reopened-extra-loud.png', 'search-feature-new-draft.png', 'search-feature-new-draft-recreated.png', 'search-feature-unsaved-draft.png', 'search-feature-query-restored.png', 'search-feature-report-editing.png', 'search-feature-report-history.png', 'search-feature-auto-detect.png', 'search-feature-protection.png'],
         "chart-phone-motion": ['chart-clock-overnight.png', 'chart-clock-night.png', 'chart-clock-short.png', 'chart-clock-fold.png', 'chart-clock-phone-history.png', 'chart-clock-phone-selected.png', 'chart-clock-phone-paused.png', 'chart-clock-phone-retry.png', 'chart-clock-tracking-main.png', 'chart-clock-tracking-options.png', 'chart-clock-tracking-returned.png', 'chart-clock-tracking-paused.png', 'chart-clock-tracking-recreated.png', 'chart-clock-tracking-session.png'],
         "live-night-timeline": ["sonar-night-setup.png", "sonar-night-measuring.png", "sonar-night-paused.png", "sonar-night-options.png", "sonar-night-options-recreated.png", "sonar-night-paused-recreated.png", "sonar-night-resumed.png", "sonar-night-missing.png", "sonar-night-stop-confirmation.png", "sonar-night-whole-night.png"],
         "wake-challenge-reference": ["wake-check-waiting.png", "wake-check-prompt.png", "wake-check-countdown.png", "wake-check-recreated.png", "wake-check-confirmed.png", "wake-check-reopened.png", "wake-check-storage-error.png", "routine-legacy.png", "routine-ordered.png", "routine-reordered.png", "routine-recreated.png", "routine-removed.png", "routine-reopened.png", "challenge-math-initial.png", "challenge-math-selected.png", "challenge-math-wrong.png", "challenge-math-recreated.png", "challenge-math-completed.png", "challenge-math-typed-wrong.png", "challenge-math-typed-recreated.png", "challenge-math-typed-completed.png"],
