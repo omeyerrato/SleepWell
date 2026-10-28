@@ -1,6 +1,6 @@
 # Phone feature matrix
 
-Latest published **0.1.3 / d4415a2b** adds the full-night live sonar timeline, revised wake-check/shared Math UI, calendar-consent recovery and portable Room dimming, including the new crescent-and-clock icon and firmer tap feedback. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.3-night-challenges-20261028-d4415a2b); [exact bounded evidence](verification/2026-10-28-013-build/README.md). Phone installation awaits USB; installed170b and its original user data are preserved.
+Latest published **0.1.4 / 08d3911e** adds direct alarm-time controls and consistent feedback, background phone-chart loading, Room search, silent Travel reminders and stale-Math/notification cleanup repairs. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.4-alarm-travel-20261028-08d3911e); [exact bounded evidence](verification/2026-10-28-014-final-build/README.md). Phone installation awaits USB; the last verified installation is170b0e44, with original user data preserved at that update.
 
 Updated 2026-10-28 incrementally against the supplied brief, all 12 previously inspected boards,
 SCREEN-MAP.md, current code and official Sleep as Android manual. Screen numbers
@@ -20,7 +20,7 @@ The phone now has **170b0e44**, installed at the user’s request with original 
 - [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
 - [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness recovery and additional Tracking work are a separate source increment awaiting native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
-The installed phone is170b0e44; its checksum and data preservation are verified. The0.1.3 update is published and awaiting USB reconnection.
+The installed phone is170b0e44; its checksum and data preservation are verified. The0.1.4 update is published and awaiting USB reconnection.
 
 **Implemented**: narrower stated behavior exists; validation is separately listed.
 **Partial**: subfeatures still missing. **Missing**: no working implementation.

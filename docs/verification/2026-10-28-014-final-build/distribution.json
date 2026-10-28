@@ -1,0 +1,30 @@
+{
+  "source": "08d3911e90af666d79a1f57fb0ea1326e91c3929",
+  "tag": "v0.1.4-alarm-travel-20261028-08d3911e",
+  "release_id": 426298509,
+  "draft": false,
+  "prerelease": true,
+  "url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.4-alarm-travel-20261028-08d3911e",
+  "assets": [
+    {
+      "name": "SleepWell-0.1.4-08d3911e-arm64.apk",
+      "id": 683960945,
+      "size": 167067516,
+      "sha256": "3b6c698fbfc1d71a21fa2e9b5420b7cf08ad39632608648e226482d11709a024",
+      "server_digest": "sha256:3b6c698fbfc1d71a21fa2e9b5420b7cf08ad39632608648e226482d11709a024",
+      "state": "uploaded"
+    },
+    {
+      "name": "SleepWell-0.1.4-08d3911e-arm64.apk.sha256",
+      "id": 683960946,
+      "size": 101,
+      "sha256": "224f8737410b18a5a836f48e35b7fbb80eca5053d72543839f7362e98d299b26",
+      "server_digest": "sha256:224f8737410b18a5a836f48e35b7fbb80eca5053d72543839f7362e98d299b26",
+      "state": "uploaded"
+    }
+  ],
+  "phone_installed": false,
+  "published": true,
+  "tag_commit": "08d3911e90af666d79a1f57fb0ea1326e91c3929",
+  "published_at": "2026-10-28T05:47:31Z"
+}
