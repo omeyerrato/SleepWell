@@ -50,17 +50,17 @@ public class AlarmEditorActivity extends Activity {
     private void editor(LinearLayout body){
         // Keep the complete main menu above the fixed footer at ordinary text size.
         // Long labels and larger accessible text retain the existing scroll path.
-        body.setPadding(body.getPaddingLeft(),Design.dp(this,8),body.getPaddingRight(),Design.dp(this,8));
+        body.setPadding(body.getPaddingLeft(),Design.dp(this,4),body.getPaddingRight(),Design.dp(this,8));
         Design.header(body,"Edit alarm",this::back);RecordUi.headerAction((LinearLayout)body.getChildAt(0),"search","Search this alarm",this::openSearch);
         Button time=Design.button(body,displayTime(this,alarm),false,()->openDialog(()->SleepPicker.time(this,"Alarm time",alarm.hour*60+alarm.minute,value->{alarm.hour=value/60;alarm.minute=value%60;render();})));
         if(alarm.solar!=null)Design.text(body,"Next sunrise alarm · tap time to edit fallback",12,500,Design.MUTED);
-        time.setText(Design.timeText(displayTime(this,alarm)));time.setTextSize(52*Appearance.scale(this));time.setContentDescription("Alarm time "+displayTime(this,alarm));time.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));time.setMinHeight(Design.dp(this,80));time.setMinimumHeight(Design.dp(this,80));time.setPadding(0,0,0,0);
-        Design.space(body,8);LinearLayout days=Design.row(this);String[] labels={"M","T","W","T","F","S","S"},names={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+        time.setText(Design.timeText(displayTime(this,alarm)));time.setTextSize(52*Appearance.scale(this));time.setContentDescription("Alarm time "+displayTime(this,alarm));time.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));time.setMinHeight(Design.dp(this,80));time.setMinimumHeight(Design.dp(this,80));time.setPadding(0,0,0,0);AlarmClockUi.fit(time,52,1);if(alarm.solar==null&&!alarm.solarInvalid)AlarmClockUi.steps(body,time,alarm.hour*60+alarm.minute,()->route.equals("edit")&&settingsDialog==null&&alarm.solar==null&&!alarm.solarInvalid,value->{alarm.hour=value/60;alarm.minute=value%60;render();});
+        Design.space(body,0);LinearLayout days=Design.row(this);String[] labels={"M","T","W","T","F","S","S"},names={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
         for(int n=1;n<=7;n++){final int day=n;Button b=new Button(this);b.setStateListAnimator(null);b.setElevation(0);b.setText(labels[n-1]);b.setAllCaps(false);b.setTextSize(16*Appearance.scale(this));b.setTypeface(Design.font(this,600));b.setPadding(0,0,0,0);b.setMinWidth(0);b.setMinimumWidth(0);b.setTextColor(alarm.days.contains(n)?Design.CREAM:Design.BROWN);b.setSelected(alarm.days.contains(n));b.setContentDescription(names[n-1]);b.setBackground(Design.touch(this,alarm.days.contains(n)?Design.BROWN:Design.SOFT,28));
             LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,Design.dp(this,48),1);lp.setMargins(Design.dp(this,2),0,Design.dp(this,2),0);days.addView(b,lp);b.setEnabled(alarm.repeatInvalid||alarm.repeatRule.mode!=AlarmRepeat.Mode.INTERVAL);b.setAlpha(b.isEnabled()?1:.5f);b.setOnClickListener(v->{InteractionFeedback.selection(v);alarm.date=null;alarm.dateInvalid=false;if(alarm.days.contains(day))alarm.days.remove(day);else alarm.days.add(day);render();});}
-        body.addView(days);if(!alarm.repeatInvalid&&alarm.repeatRule.mode==AlarmRepeat.Mode.INTERVAL)Design.text(body,"Calendar dates follow your anchored interval; weekday buttons are inactive.",12,400,Design.MUTED);Design.space(body,12);
+        body.addView(days);if(!alarm.repeatInvalid&&alarm.repeatRule.mode==AlarmRepeat.Mode.INTERVAL)Design.text(body,"Calendar dates follow your anchored interval; weekday buttons are inactive.",12,400,Design.MUTED);Design.space(body,8);
         LinearLayout name=Design.item(body,null,"Name",alarm.label,()->openDialog(()->SleepPicker.name(this,alarm.label,value->{alarm.label=value;render();})));Design.pad(name,14,0);name.setMinimumHeight(Design.dp(this,56));name.setBackground(Design.shape(this,Design.SOFT,14));
-        Design.space(body,8);Design.line(body);
+        Design.space(body,4);Design.line(body);
         int primaryRows=body.getChildCount();
         Design.item(body,"sun","Smart wake-up",alarm.smartWakeInvalid?"Review settings":alarm.smartWindow==0?"Off":alarm.smartWindow+" min",()->go("smart"));Design.line(body);
         Design.item(body,"tasks","Challenges",alarm.challenges().summary(),()->go("challenge"));Design.line(body);
