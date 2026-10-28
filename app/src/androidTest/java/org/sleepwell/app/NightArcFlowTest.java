@@ -2,6 +2,8 @@ package org.sleepwell.app;
 
 import android.app.*;
 import android.content.*;
+import android.graphics.*;
+import android.graphics.drawable.*;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
@@ -24,6 +26,91 @@ public class NightArcFlowTest {
     private final Instrumentation i=InstrumentationRegistry.getInstrumentation();
     private final Context c=i.getTargetContext();private final UiDevice device=UiDevice.getInstance(i);
     private MainActivity activity;
+    private AlertDialog assetDialog;
+
+    /** Diagnostic fixture only: Android-loaded resources in real windows, never app navigation. */
+    private void nativeRasterGallery()throws Exception{
+        List<java.lang.reflect.Field> resources=new ArrayList<>();
+        for(java.lang.reflect.Field field:R.drawable.class.getFields())if(field.getName().startsWith("ic_phosphor_"))resources.add(field);
+        resources.sort(Comparator.comparing(java.lang.reflect.Field::getName));
+        assertEquals("All semantic resources, without duplicate aliases",73,resources.size());
+        List<String> metrics=new ArrayList<>();metrics.add("resource\tclass\tintrinsic_width\tintrinsic_height\tbitmap_width\tbitmap_height\tbitmap_density\talpha_min\talpha_max\ttransparent_pixels\ttint\tactual_window_bounds");
+        for(int page=0;page<3;page++){
+            int begin=page*25,end=Math.min(begin+25,resources.size()),number=page+1;
+            List<ImageButton> controls=new ArrayList<>();List<Integer> colors=new ArrayList<>();List<String> decoded=new ArrayList<>();
+            i.runOnMainSync(()->{
+                LinearLayout body=diagnosticBody("Raster glyphs "+number+" / 3",(end-begin)+" real Android drawables · espresso / teal tint check");
+                for(int row=begin;row<end;row+=5){
+                    LinearLayout line=new LinearLayout(activity);line.setGravity(Gravity.CENTER);
+                    for(int index=row;index<Math.min(row+5,end);index++){
+                        String name=resources.get(index).getName();int id;
+                        try{id=resources.get(index).getInt(null);}catch(IllegalAccessException failure){throw new AssertionError(failure);}
+                        Drawable loaded=activity.getDrawable(id);assertTrue(name+" must load as BitmapDrawable, never VectorDrawable",loaded instanceof BitmapDrawable);
+                        BitmapDrawable glyph=(BitmapDrawable)loaded.mutate();Bitmap bitmap=glyph.getBitmap();
+                        int expected=Design.dp(c,24);assertTrue(name+" intrinsic 24dp width",Math.abs(expected-glyph.getIntrinsicWidth())<=1);assertTrue(name+" intrinsic 24dp height",Math.abs(expected-glyph.getIntrinsicHeight())<=1);
+                        assertTrue(name+" decoded alpha channel",bitmap.hasAlpha());int min=255,max=0,transparent=0;
+                        for(int y=0;y<bitmap.getHeight();y++)for(int x=0;x<bitmap.getWidth();x++){int alpha=Color.alpha(bitmap.getPixel(x,y));min=Math.min(min,alpha);max=Math.max(max,alpha);if(alpha==0)transparent++;}
+                        assertEquals(name+" background genuinely transparent",0,min);assertTrue(name+" nonempty visible glyph",max>0);assertTrue(name+" transparent outside",transparent>0);
+                        for(int x:new int[]{0,bitmap.getWidth()-1})for(int y:new int[]{0,bitmap.getHeight()-1})assertEquals(name+" no opaque corner/canvas",0,Color.alpha(bitmap.getPixel(x,y)));
+                        // Two successive real Drawable tint changes; PixelCopy below verifies the final native-rendered color.
+                        int color=index%2==0?0xff4a2414:0xff315f73;glyph.setTint(0xffb34c35);glyph.setTint(color);
+                        LinearLayout cell=new LinearLayout(activity);cell.setOrientation(LinearLayout.VERTICAL);cell.setGravity(Gravity.CENTER);
+                        ImageButton button=new ImageButton(activity);button.setImageDrawable(glyph);button.setScaleType(ImageView.ScaleType.CENTER);button.setPadding(Design.dp(c,12),Design.dp(c,12),Design.dp(c,12),Design.dp(c,12));button.setBackgroundColor(Color.TRANSPARENT);button.setSoundEffectsEnabled(false);button.setHapticFeedbackEnabled(false);button.setContentDescription("Raster glyph "+name);cell.addView(button,new LinearLayout.LayoutParams(Design.dp(c,48),Design.dp(c,48)));
+                        TextView label=new TextView(activity);label.setText((index+1)+" "+name.replace("ic_phosphor_","").replace("_regular","").replace('_',' '));label.setTextSize(9);label.setTextColor(0xff4a2414);label.setGravity(Gravity.CENTER);label.setMaxLines(2);label.setEllipsize(android.text.TextUtils.TruncateAt.END);cell.addView(label,new LinearLayout.LayoutParams(-1,Design.dp(c,28)));
+                        line.addView(cell,new LinearLayout.LayoutParams(0,Design.dp(c,76),1));controls.add(button);colors.add(color);decoded.add(name+"\t"+glyph.getClass().getSimpleName()+"\t"+glyph.getIntrinsicWidth()+"\t"+glyph.getIntrinsicHeight()+"\t"+bitmap.getWidth()+"\t"+bitmap.getHeight()+"\t"+bitmap.getDensity()+"\t"+min+"\t"+max+"\t"+transparent+"\t"+Integer.toHexString(color));
+                    }
+                    body.addView(line,new LinearLayout.LayoutParams(-1,-2));
+                }
+                showDiagnostic(body);
+            });
+            assertEquals("Exact page control count",page<2?25:23,controls.size());
+            captureDiagnostic("arc-icon-page-"+number+".png",controls);
+            Bitmap frame=copyDiagnosticWindow();
+            try{for(int index=0;index<controls.size();index++){ImageButton control=controls.get(index);int[] xy=new int[2];i.runOnMainSync(()->control.getLocationInWindow(xy));assertNativeTint(frame,xy[0],xy[1],control.getWidth(),control.getHeight(),colors.get(index),control.getContentDescription().toString());metrics.add(decoded.get(index)+"\t"+xy[0]+","+xy[1]+","+control.getWidth()+","+control.getHeight());}}finally{frame.recycle();}
+            dismissDiagnostic();
+        }
+        launcherDiagnostic(metrics);
+        File folder=new File(c.getExternalFilesDir(null),"verification");try(java.io.Writer output=new java.io.OutputStreamWriter(new java.io.FileOutputStream(new File(folder,"arc-icon-metrics.tsv")),java.nio.charset.StandardCharsets.UTF_8)){for(String row:metrics)output.write(row+"\n");}
+    }
+    private LinearLayout diagnosticBody(String title,String subtitle){
+        LinearLayout body=new LinearLayout(activity);body.setOrientation(LinearLayout.VERTICAL);body.setPadding(Design.dp(c,12),Design.dp(c,12),Design.dp(c,12),Design.dp(c,12));body.setBackgroundColor(0xfffff4e4);
+        TextView heading=new TextView(activity);heading.setText(title);heading.setTextSize(20);heading.setTextColor(0xff4a2414);body.addView(heading);
+        TextView detail=new TextView(activity);detail.setText("Diagnostic fixture · "+subtitle);detail.setTextSize(11);detail.setTextColor(0xff4a2414);detail.setPadding(0,0,0,Design.dp(c,12));body.addView(detail);return body;
+    }
+    private void showDiagnostic(LinearLayout body){assetDialog=new AlertDialog.Builder(activity).setView(body).setPositiveButton("Close diagnostic",(dialog,which)->{}).create();assetDialog.setCanceledOnTouchOutside(false);assetDialog.show();assetDialog.getWindow().setLayout(activity.getResources().getDisplayMetrics().widthPixels-Design.dp(c,24),ViewGroup.LayoutParams.WRAP_CONTENT);}
+    private void captureDiagnostic(String name,List<? extends View> controls)throws Exception{
+        AlertDialog owned=assetDialog;View window=owned.getWindow().getDecorView();
+        waitFor(()->{View active=focused();boolean[] ready={false};i.runOnMainSync(()->ready[0]=assetDialog==owned&&owned.isShowing()&&window.isLaidOut()&&window.hasWindowFocus()&&active==window);return ready[0];});
+        CountDownLatch committed=new CountDownLatch(1);i.runOnMainSync(()->{assertTrue(window.isHardwareAccelerated());for(View control:controls)full(control,"Diagnostic "+control.getContentDescription());window.getViewTreeObserver().registerFrameCommitCallback(committed::countDown);window.invalidate();});assertTrue("Actual diagnostic frame committed",committed.await(5,TimeUnit.SECONDS));
+        File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,name)));
+    }
+    private Bitmap copyDiagnosticWindow()throws Exception{
+        // PixelCopy samples the actual committed dialog surface, not an offscreen Canvas rendering of an icon.
+        Window window=assetDialog.getWindow();View decor=window.getDecorView();Bitmap copied=Bitmap.createBitmap(decor.getWidth(),decor.getHeight(),Bitmap.Config.ARGB_8888);CountDownLatch done=new CountDownLatch(1);int[] result={-1};i.runOnMainSync(()->PixelCopy.request(window,copied,value->{result[0]=value;done.countDown();},new Handler(Looper.getMainLooper())));assertTrue(done.await(5,TimeUnit.SECONDS));assertEquals("Actual dialog surface copied",PixelCopy.SUCCESS,result[0]);return copied;
+    }
+    private void assertNativeTint(Bitmap frame,int left,int top,int width,int height,int color,String label){boolean found=false;for(int y=Math.max(0,top);y<Math.min(frame.getHeight(),top+height)&&!found;y++)for(int x=Math.max(0,left);x<Math.min(frame.getWidth(),left+width);x++){int actual=frame.getPixel(x,y);if(Math.abs(Color.red(actual)-Color.red(color))<=8&&Math.abs(Color.green(actual)-Color.green(color))<=8&&Math.abs(Color.blue(actual)-Color.blue(color))<=8){found=true;break;}}assertTrue(label+" retains real rendered tint",found);}
+    private void dismissDiagnostic()throws Exception{AlertDialog owned=assetDialog;View window=owned.getWindow().getDecorView();i.runOnMainSync(owned::dismiss);waitFor(()->{boolean[] closed={false};i.runOnMainSync(()->closed[0]=!window.isAttachedToWindow()&&activity.hasWindowFocus());return closed[0];});assetDialog=null;}
+    private void launcherDiagnostic(List<String> metrics)throws Exception{
+        assertTrue("The themed preview scope requires CI API33+",Build.VERSION.SDK_INT>=33);List<ImageView> previews=new ArrayList<>();List<AdaptiveIconDrawable> icons=new ArrayList<>();
+        i.runOnMainSync(()->{
+            Drawable applicationIcon;try{applicationIcon=activity.getPackageManager().getApplicationIcon(c.getPackageName());}catch(android.content.pm.PackageManager.NameNotFoundException failure){throw new AssertionError(failure);}
+            assertTrue("PackageManager loads the actual adaptive launcher",applicationIcon instanceof AdaptiveIconDrawable);AdaptiveIconDrawable adaptive=(AdaptiveIconDrawable)applicationIcon;assertNotNull("Actual API33 monochrome resource",adaptive.getMonochrome());
+            LinearLayout body=diagnosticBody("Launcher color and themed icons","PackageManager resource + framework adaptive mask; large and48dp");
+            for(int size:new int[]{120,48}){
+                LinearLayout line=new LinearLayout(activity);line.setGravity(Gravity.CENTER);line.setPadding(0,Design.dp(c,12),0,Design.dp(c,12));
+                for(boolean themed:new boolean[]{false,true}){
+                    Drawable loaded=adaptive.getConstantState().newDrawable(activity.getResources()).mutate();AdaptiveIconDrawable shown;
+                    if(themed){Drawable monochrome=((AdaptiveIconDrawable)loaded).getMonochrome().mutate();monochrome.setTint(0xff4a2414);shown=new AdaptiveIconDrawable(new ColorDrawable(0xffe9d6b8),monochrome);}else shown=(AdaptiveIconDrawable)loaded;
+                    ImageView preview=new ImageView(activity);preview.setImageDrawable(shown);preview.setScaleType(ImageView.ScaleType.FIT_CENTER);preview.setContentDescription((themed?"Themed":"Color")+" actual adaptive launcher "+size+"dp");LinearLayout.LayoutParams slot=new LinearLayout.LayoutParams(Design.dp(c,size),Design.dp(c,size));slot.setMargins(Design.dp(c,12),0,Design.dp(c,12),0);line.addView(preview,slot);previews.add(preview);icons.add(shown);
+                }
+                body.addView(line,new LinearLayout.LayoutParams(-1,-2));
+            }
+            showDiagnostic(body);
+        });
+        captureDiagnostic("arc-launcher-icons.png",previews);
+        i.runOnMainSync(()->{for(int index=0;index<previews.size();index++){AdaptiveIconDrawable icon=icons.get(index);Rect bounds=icon.getBounds();RectF mask=new RectF();icon.getIconMask().computeBounds(mask,true);assertTrue("Real framework adaptive mask is nonempty",!mask.isEmpty());assertTrue("Mask fits drawable bounds",mask.left>=bounds.left-1&&mask.top>=bounds.top-1&&mask.right<=bounds.right+1&&mask.bottom<=bounds.bottom+1);assertEquals("Preview fully accommodates native drawable width",previews.get(index).getWidth(),bounds.width());assertEquals("Preview fully accommodates native drawable height",previews.get(index).getHeight(),bounds.height());metrics.add("launcher\t"+previews.get(index).getContentDescription()+"\t"+icon.getClass().getSimpleName()+"\tmask="+mask+"\tbounds="+bounds);}});
+        dismissDiagnostic();
+    }
     private long local(int day,int hour,int minute){return LocalDate.of(2026,10,day).atTime(hour,minute).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();}
     private void launch(){Instrumentation.ActivityMonitor monitor=i.addMonitor(MainActivity.class.getName(),null,false);try{c.startActivity(new Intent(c,MainActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));activity=(MainActivity)monitor.waitForActivityWithTimeout(5000);assertNotNull(activity);i.waitForIdleSync();device.waitForIdle();}finally{i.removeMonitor(monitor);}}
     private NightArc arc(View view){if(view instanceof NightArc)return (NightArc)view;if(view instanceof ViewGroup)for(int n=0;n<((ViewGroup)view).getChildCount();n++){NightArc found=arc(((ViewGroup)view).getChildAt(n));if(found!=null)return found;}return null;}
@@ -61,8 +148,9 @@ public class NightArcFlowTest {
             click("Tonight alarm enabled");state("Bedtime in 48 h 30 min");assertEquals(2,scheduled[0]);click("Monday");assertTrue(device.wait(Until.hasObject(By.desc("Monday").selected(true)),5000));try(Store store=new Store(c,database)){assertTrue(store.alarm(1).enabled);assertEquals(Set.of(1,7),store.alarm(1).days);}assertEquals(3,scheduled[0]);recreate();assertTrue(device.findObject(By.desc("Monday")).isSelected());assertTrue(device.findObject(By.desc("Sunday")).isSelected());capture("weekday-recreated");
             try(Store store=new Store(c,database)){store.deleteAlarm(1);}now.set(local(22,22,0));launch();state("Bedtime in 30 min");assertFalse("No switch without an existing alarm",device.hasObject(By.desc("Tonight alarm enabled")));UiObject2 first=device.wait(Until.findObject(By.desc("Set first alarm")),5000);assertNotNull(first);assertFalse(device.hasObject(By.text("Alarm off")));capture("empty");UiObject2 firstAction=device.findObject(By.desc("Set first alarm"));assertNotNull(firstAction);assertEquals(android.widget.Button.class.getName(),firstAction.getClassName());click("Set first alarm");assertTrue(device.wait(Until.hasObject(By.desc("Add alarm")),5000));capture("empty-action");device.pressBack();state("Bedtime in 30 min");assertNotNull(device.findObject(By.desc("Set first alarm")));assertEquals(3,scheduled[0]);try(Store store=new Store(c,database)){assertTrue(store.alarms().isEmpty());}
             assertEquals("Clock refresh must not save the isolated plan",saved,fixture.getAll());assertFalse(Prefs.flag(c,"ringing"));assertFalse(TrackingService.running);assertNull(SleepSoundService.snapshot());
+            nativeRasterGallery();
         }catch(Exception|AssertionError failure){try{File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());device.takeScreenshot(new File(folder,"arc-failure.png"));device.dumpWindowHierarchy(new File(folder,"arc-failure.xml"));}catch(Exception diagnostic){failure.addSuppressed(diagnostic);}throw failure;}finally{
-            try{i.runOnMainSync(()->{for(Activity a:owned)if(!a.isDestroyed())a.finish();});i.waitForIdleSync();long deadline=SystemClock.elapsedRealtime()+5000;while(owned.stream().anyMatch(a->!a.isDestroyed())&&SystemClock.elapsedRealtime()<deadline)SystemClock.sleep(50);assertTrue("Owned Activities must close before restoring factories",owned.stream().allMatch(Activity::isDestroyed));}
+            try{i.runOnMainSync(()->{if(assetDialog!=null){assetDialog.dismiss();assetDialog=null;}for(Activity a:owned)if(!a.isDestroyed())a.finish();});i.waitForIdleSync();long deadline=SystemClock.elapsedRealtime()+5000;while(owned.stream().anyMatch(a->!a.isDestroyed())&&SystemClock.elapsedRealtime()<deadline)SystemClock.sleep(50);assertTrue("Owned Activities must close before restoring factories",owned.stream().allMatch(Activity::isDestroyed));}
             finally{app.unregisterActivityLifecycleCallbacks(lifecycle);TonightScreen.clock=priorClock;AlarmSkips.clock=priorSkipsClock;AlarmScheduling.port=priorScheduling;Records.factory=priorRecords;SleepPlans.factory=priorPlans;SharedPreferences.Editor edit=Prefs.of(c).edit();for(String key:new String[]{Appearance.AUTO,Appearance.THEME,Appearance.SIZE,Appearance.MOTION,Appearance.CONTRAST}){Object value=personal.get(key);if(value instanceof Boolean)edit.putBoolean(key,(Boolean)value);else if(value instanceof Integer)edit.putInt(key,(Integer)value);else edit.remove(key);}assertTrue(edit.commit());assertEquals("All personal preferences must be restored exactly",personal,Prefs.of(c).getAll());if(owned.stream().allMatch(Activity::isDestroyed)){c.deleteDatabase(database);c.deleteSharedPreferences(preferences);}}
         }
     }
