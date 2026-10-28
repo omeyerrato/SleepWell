@@ -16,6 +16,7 @@ on:
           - organized-settings
           - recorded-analysis
           - challenge-routine
+          - wake-challenge-reference
           - tonight
           - appearance
           - event-library
