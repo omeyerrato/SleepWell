@@ -43,6 +43,17 @@ and still excludes app preferences; database schema17 is unchanged. A local data
 restore therefore preserves the existing dimming choice, while moving that
 choice to another installation requires the reviewed Appearance settings profile.
 
+Recovery journals remain version1, independently of the portable profile's
+version. Existing journals written before Room dimming contain only their older
+changed keys. The decoder validates each supplied key against the expanded
+allowlist; it does not require every allowed key. Rollback compares the journal's
+before/after key sets and writes only those entries, so an old omitted Room key
+leaves the current dimming choice untouched. A new journal's explicit Room
+`kind: absent` / `value: null` instead restores prior key absence. This distinction
+was checked against `decoded`, `rollback` and `write`; older-journal compatibility
+is a static source finding, while the private native continuation specifically
+asserts the new explicit-absence rollback.
+
 The existing `BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen`
 has a bounded private settings-API continuation: real JSON-file round-trip,
 version2 review/apply/reread, legacy absence preserving current on/off values,

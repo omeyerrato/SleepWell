@@ -33,6 +33,7 @@ on:
           - room-bedtime-repair
           - bedtime-navigation
           - label-navigation
+          - profile-room-dimming
           - sensing-travel
           - travel-ui
           - sonar-night
