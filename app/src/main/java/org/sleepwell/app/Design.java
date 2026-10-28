@@ -100,7 +100,7 @@ final class Design {
         RelativeLayout.LayoutParams labels=new RelativeLayout.LayoutParams(-1,-2);labels.addRule(RelativeLayout.ALIGN_PARENT_START);labels.addRule(RelativeLayout.START_OF,s.getId());labels.addRule(RelativeLayout.CENTER_VERTICAL);labels.setMarginEnd(dp(c,12));r.addView(copy,labels);r.addView(s,control);
         p.addView(r,new LinearLayout.LayoutParams(-1,-2));return s;
     }
-    /** Native vectors from the pinned Phosphor family; geometry and licenses are vendored. */
+    /** Generated density raster glyphs; native tint retains themed and selected colors. */
     static class Icon extends View {
         private final Drawable glyph;
         Icon(Context c,String name,int color){super(c);glyph=c.getDrawable(Icons.resource(name)).mutate();glyph.setTint(color);setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);}

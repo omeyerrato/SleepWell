@@ -1,7 +1,7 @@
-"""Vendor a pinned Phosphor subset and convert its unchanged paths to Android vectors.
+"""Historical Phosphor reference helpers. Runtime icons now use imagegen rasters.
 
-Default is offline/reproducible. --download fetches only these selected SVGs and
-LICENSE from the pinned upstream commit. No downloaded code is executed.
+The old resource-writing entry point is retired to prevent accidentally restoring
+vectors over the user's generated PNG replacements. Vendor files remain history.
 """
 from pathlib import Path
 import argparse
@@ -89,6 +89,7 @@ def convert(data):
 
 
 def main():
+    raise SystemExit('Retired: runtime glyphs are generated PNGs. See docs/design/imagegen-glyphs-2026-10-28/. No resources were changed.')
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--download", action="store_true")
     args = parser.parse_args()

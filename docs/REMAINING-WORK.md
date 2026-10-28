@@ -1,8 +1,8 @@
 # SleepWell current remaining work
 
-Latest published **0.1.4 / 08d3911e** adds direct alarm-time controls and consistent feedback, background phone-chart loading, Room search, silent Travel reminders and stale-Math/notification cleanup repairs. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.4-alarm-travel-20261028-08d3911e); [exact bounded evidence](verification/2026-10-28-014-final-build/README.md). Phone installation awaits USB; the last verified installation is170b0e44, with original user data preserved at that update.
+Latest published **0.1.4 / 08d3911e** adds direct alarm-time controls and consistent feedback, background phone-chart loading, Room search, silent Travel reminders and stale-Math/notification cleanup repairs. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.4-alarm-travel-20261028-08d3911e); [exact bounded evidence](verification/2026-10-28-014-final-build/README.md). **0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md).
 
-Updated 27 October 2026. This is the consolidated current checklist, not a release
+Updated 28 October 2026. This is the consolidated current checklist, not a release
 history. The goal remains the full applicable phone functionality and **all 36
 supplied design screens across 12 boards**. Existing code, a successful build or a
 bounded historical pass does not establish that whole goal is complete.
@@ -13,7 +13,16 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
 exercise actions, cancellation, recreation and persistence. [Exact release scope](verification/2026-10-27-reference-menus-build/README.md).
 
-The phone now has **170b0e44**, installed at the user’s request with original records, user settings and user files preserved. No physical output test ran. All36 reference states and the broader interaction/security review remain open.
+**0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md). All36 reference states and broader interaction/security acceptance remain open.
+
+## Next update — implemented source, not yet delivered
+
+- [x] Contactless Headphones/Microphone status and explicit access/settings recovery, real route invalidation and fit. [58.348s / 11 inspected originals](verification/2026-10-28-contactless-settled-glyphs/README.md); generated PCM/private ports, not bedroom hardware.
+- [x] Report handle dragging/cancellation, both-boundary keyboard/accessibility actions and saved bounds. [68.984s / 17 inspected originals](verification/2026-10-28-report-period-gestures/README.md).
+- [x] Tonight fixed Start above the four-tab dock, readable larger text, real first-alarm action and saved Off/weekdays. [52.457s / 14 inspected originals](verification/2026-10-28-tonight-composition/README.md).
+- [x] Automatic tracking core choices/restorable supporting pages, explicit Save/Arm, active-wait guard and status-bar contrast. [83.548s / 28 inspected originals](verification/2026-10-28-automatic-tracking/README.md); synthetic callbacks/private phases, not actual service arming.
+- [ ] Finish integrating the user-requested imagegen raster icons, inspect native launcher/theme/control rendering, build and deliver0.1.5. Earlier screen captures predate these new assets.
+
 
 ## Current top priorities
 
@@ -21,7 +30,7 @@ The phone now has **170b0e44**, installed at the user’s request with original 
 - [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
 - [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness denial/rationale/permanent-denial Settings recovery now passes its real Android journey (35.776s/13 inspected originals). Contactless and Snoring keep their bounded passes. Automatic recovery, clear live Tracking options, Room/Motion and Wind-down/Guard now pass their named native action/recreation/persistence journeys; actual label taps also pass. The full-night sonar timeline, shared Math/wake-check UI and calendar-consent draft recovery now have bounded native evidence in published0.1.3; real alarm admission/provider/overnight behavior remains unverified. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
-The installed phone is170b0e44; its checksum and data preservation are verified. The0.1.4 update is published and awaiting USB reconnection.
+**0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md).
 
 
 ## Current user priorities
@@ -41,9 +50,9 @@ unverified. [Scoped evidence](verification/2026-10-26-settings-organization/READ
 
 | Item | Current state |
 | --- | --- |
-| Installed phone build | **170b0e44**, original signer/checksum and original user-data preservation verified. Only internal permission revisions, framework counter and profiling cache changed. |
+| Installed phone build | **0.1.4 / 08d3911e**, installed APK hash and original user-data preservation verified; expected internal API revisions/profile cache only. |
 | Phone availability | Connected for that authorized update only. No app launch, suspension change or output/capture/provider runtime action. |
-| Published candidate | **170b0e44 arm64**, build1m22s; original signer, exact tag and both uploaded hashes verified. Not installed. Sleep schema17/backup14/private automation2/result1. |
+| Published candidate | **0.1.4 / 08d3911e arm64**, build1m19s; original signer, exact tag and both uploaded hashes verified; installed. Schema17/backup14 unchanged. |
 | New feature evidence | Organization 33.114s/14 inspected captures, challenge ordering 40.237s/6 and recording analysis 40.27s/5. Prior Report/menu/Travel evidence remains separate. Per-alarm sensor accuracy, physical output, all 36 screens and overnight acceptance remain open. |
 | Current work policy | Features first; no new unit-test batches or broad campaigns. Essential builds, preservation and bounded changed-flow checks remain applicable. Dedicated reviewer stays stopped. |
 
@@ -55,7 +64,7 @@ from the earlier [single Report flow](verification/2026-10-26-report-flow/README
 That Report flow passed with8fixture captures and persisted edits, but did not
 cover provider-stage rendering, real audio, these new integrations or all36screens.
 The later compact editor flow shows the full default-size main composition and saved awake/tag/note state; secondary sheets, large fonts and full Report parity remain open. See [latest Report evidence](verification/2026-10-26-report-editor-and-chart/README.md).
-No further personal-phone actions are authorized by this status note.
+Phone actions follow the human's explicit instructions; this status artifact grants no additional authority.
 
 ## Concrete remaining implementation and interpretation limits
 
@@ -209,4 +218,4 @@ make those services free or establish full completion.
 - [x] Rhythm/Nap layout/actions, Health permission recovery, Privacy deletion/cleanup recovery and Cloud folder rotation pass their named private native flows.
 - [ ] All36 reference states and broader interaction/security acceptance remain open. Published0.1.2 has inspected native action/persistence evidence for these changed flows. All36 reference states and physical/overnight/provider behavior remain open.
 
-Published170b0e44 is now installed with verified original user-data preservation. No alarm, sound, flashlight or haptic test ran. Version0.1.4 is published with verified server hashes, awaiting USB reconnection. [Installed-build evidence](verification/2026-10-27-reference-menus-build/README.md).
+Published170b0e44 is now installed with verified original user-data preservation. No alarm, sound, flashlight or haptic test ran. Version0.1.4 is installed with verified original user-data preservation. [Installed-build evidence](verification/2026-10-27-reference-menus-build/README.md).
