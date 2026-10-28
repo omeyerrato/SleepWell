@@ -1,0 +1,44 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.ChallengeRoutineFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.ChallengeRoutineFlowTest:
+INSTRUMENTATION_STATUS: test=orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.ChallengeRoutineFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Scrollable route for About this task
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.ChallengeRoutineFlowTest.object(ChallengeRoutineFlowTest.java:19)
+	at org.sleepwell.app.ChallengeRoutineFlowTest.orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs(ChallengeRoutineFlowTest.java:34)
+
+INSTRUMENTATION_STATUS: stream=
+Error in orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs(org.sleepwell.app.ChallengeRoutineFlowTest):
+java.lang.AssertionError: Scrollable route for About this task
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.ChallengeRoutineFlowTest.object(ChallengeRoutineFlowTest.java:19)
+	at org.sleepwell.app.ChallengeRoutineFlowTest.orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs(ChallengeRoutineFlowTest.java:34)
+
+INSTRUMENTATION_STATUS: test=orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 16.862
+There was 1 failure:
+1) orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs(org.sleepwell.app.ChallengeRoutineFlowTest)
+java.lang.AssertionError: Scrollable route for About this task
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.ChallengeRoutineFlowTest.object(ChallengeRoutineFlowTest.java:19)
+	at org.sleepwell.app.ChallengeRoutineFlowTest.orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs(ChallengeRoutineFlowTest.java:34)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

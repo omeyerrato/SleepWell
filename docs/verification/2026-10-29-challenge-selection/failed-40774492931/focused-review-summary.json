@@ -1,0 +1,32 @@
+{
+  "scope": "challenge-selection",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 18,
+  "failures": [
+    "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+    "routine-task-about.png",
+    "routine-task-values.png",
+    "routine-ordered.png",
+    "routine-reordered.png",
+    "routine-recreated.png",
+    "routine-removed.png",
+    "routine-reopened.png",
+    "challenge-math-initial.png",
+    "challenge-math-selected.png",
+    "challenge-math-wrong.png",
+    "challenge-math-recreated.png",
+    "challenge-math-completed.png",
+    "challenge-math-typed-wrong.png",
+    "challenge-math-typed-recreated.png",
+    "challenge-math-typed-completed.png"
+  ]
+}
