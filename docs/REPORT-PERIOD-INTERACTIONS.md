@@ -1,0 +1,31 @@
+# Period timeline interaction ownership
+
+Source base: published 0.1.4 root `4cf8a86f`, whose production package is frozen at 08d3911e. This follow-up stays separate from that release. Production commit `e93a94d8e4a833f7954e6a3a6cd32bca38d1c971`; native extension `ccb101537b1c770b9c11ee65666672f0568c2cb1`.
+
+The existing two brown handles, time labels and actual measured coverage already match the reference editor structure. [Board08/right](../design-concepts/2026-10-22-phone-app/08-history-and-trends.png) and the [previous actual editor original](verification/2026-10-27-report-proportions/report-reference-editor.png) were opened before this change. They do not verify new gesture behavior.
+
+The concrete bug was interaction ownership: any DOWN selected the closest boundary and blocked scrolling, MOVE/UP changed it even from empty chart space, CANCEL left the handle selected, and pointer indices had no stable owner. The new behavior is:
+
+- Only a 48dp hit region around an existing handle begins a candidate drag. Empty chart space remains available to the parent page. Touch-slop and horizontal intent must establish the drag before the parent is held; vertical scrolling and a simple handle tap do not edit the period. The original finger-to-handle offset prevents a grab jump.
+- One pointer ID owns the gesture. CANCEL, a second pointer, lost pointer, actual window focus loss, pause/state snapshot or detach abort it and restore exact start/end/awake-annotation snapshots. Another finger does not inherit ownership.
+- Every preview clips annotations from the complete original gesture baseline. Dragging past an awake annotation and back before release does not silently erase it. A completed trim keeps only annotations inside the final bounds. Other editor time-button edits keep their existing clipping behavior.
+- Four named accessibility actions independently move Start earlier/later and End earlier/later. Keyboard Up/Down selects Start/End; Left/Right adjusts that boundary. The selected boundary has semantic state and a keyboard-only outline. Existing Start/End date/time buttons remain the precise alternative, including explicit DST-offset choices.
+- Feedback occurs once after a completed changed drag, or on a deliberate changed keyboard/accessibility action. MOVE, rendering, cancellation, restoration and no-op boundary clamps produce no acknowledgement. Existing InteractionFeedback still enforces saved OFF, Android/View settings, quiet review/recording/accessibility/foreground guards and rate limiting. There is no new vibrator/output API or per-move buzz.
+
+Period limits and rendering remain the existing implementation: original recorded bounds; positive ordered intervals; manual 36-hour/current-time limits; second granularity below two minutes and minute granularity otherwise; actual epoch shading, zeros, pause/awake gaps and no invented stages. Schema, raw records, persistence, calendar and time-zone conversion code are unchanged. The editor cancels an unfinished preview before Save and disables the timeline while saving; failure re-enables it. Completed draft edits still survive recreation and are persisted only through explicit Save; Back discards them.
+
+Android references: [parent interception/touch slop](https://developer.android.com/develop/ui/views/touch-and-input/gestures/viewgroup), [masked actions, pointer IDs and cancellation](https://developer.android.com/reference/android/view/MotionEvent), [custom action resource identifiers](https://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.AccessibilityAction). Feature-local `period_timeline_ids.xml` supplies the four stable action IDs.
+
+## Existing native journey
+
+The same `ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects` method remains one test. Its original private seven-night SQLite/epoch/sound fixture, Report navigation, gaps, tags, notes, raw-row/personal-preference invariance and cleanup checks remain. No new unit batch or @Test was added.
+
+The extension injects actual native pointer events (including IDs 7/11), uses the real accessibility node's named actions and sends real key events. Reflection only reads current owned draft/axis/window state; it does not call a period mutation callback. A genuine editor time-button action opens the actual dialog for focus-loss cancellation. Current-owner/focus/load checks precede actions; caller actions are not blindly replayed.
+
+Added checks cover off-handle/near-handle vertical gestures, tap-without-jump, annotation preview/backtracking, CANCEL, second-pointer cancellation, real dialog focus loss, unfinished-gesture recreation, both deliberate boundary drags, raw-bound clamps, both boundary accessibility/keyboard actions, completed unsaved recreation, explicit Save/reopen and unsaved Back discard. Final period expectations come from observed draft bounds, while deliberate drags must change the intended boundary within the requested range. An initial awake annotation is intentionally clipped by the completed Start trim; a newly added in-range annotation is then saved through the existing controls.
+
+The existing 11 literal PNGs remain. Six more are emitted, all with `report-reference-` prefix and `.png` suffix: `period-cancelled`, `period-drag-start`, `period-drag-end`, `period-accessibility`, `period-draft-recreated`, `period-persisted`. The existing focused report-flow inventory therefore requires 17 originals. Failure PNG/XML/logs remain diagnostics, not passing frames.
+
+Final offline `:app:compileDebugAndroidTestJavaWithJavac` completed successfully in 1m51s (25 tasks: 1 executed, 24 up-to-date; production Java up-to-date). The prior final resource/production/native Java compile passed 1m11s. No APK assembly, unit/native execution, CI dispatch or phone/output operation was performed here. `git diff --check` passes.
+
+Native execution and individual comparison of all new originals are **pending**. Earlier Report 55.975s / 11 evidence does not prove this changed source. The disposable host-muted visualReview fixture suppresses interaction effects and opens no actual sensor/service/output. Real haptic feel, physical touch hardware, full reference variants and broad app acceptance remain outside this proof.
