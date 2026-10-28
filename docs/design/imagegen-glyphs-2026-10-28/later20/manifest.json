@@ -1,0 +1,1962 @@
+[
+  {
+    "name": "ic_phosphor_lightbulb_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, single square transparent PNG.\nSubject: a simple upright light bulb outline with a rounded bulb, short neck and two simple base bars; no rays.\nStyle: flat monochrome glyph, clean rounded medium strokes about 7% of symbol width, rounded joins and caps. Espresso #4A2414 only. Center the symbol in the square, occupy about 76% of canvas width/height, generous balanced transparent margins. Uniform weight and simple high contrast silhouette readable at 24dp.\nConstraints: actual alpha transparency throughout background and negative spaces. One icon only. No tile, border frame, label, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects. No white background or checkerboard painted in the image.",
+    "original": "originals/ic_phosphor_lightbulb_regular.png",
+    "source_artifact": "exec-cbfea716-a8a8-4eee-ba44-e22c009b3983.png",
+    "original_bytes": 252885,
+    "original_sha256": "af2879ad1d0f076d03a757bc50ebb95dad186f579cb0495f0434bea9f3aba157",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      286,
+      164,
+      968,
+      1090
+    ],
+    "max_dimension_canvas_fraction": 0.7384,
+    "most_common_opaque_rgb": [
+      [
+        86,
+        40,
+        17,
+        106
+      ],
+      [
+        86,
+        40,
+        16,
+        88
+      ],
+      [
+        85,
+        39,
+        16,
+        83
+      ]
+    ],
+    "replaced_xml_sha256": "730ef8ca77dc12cfa1d558c8741c3c8690aa66a72d051f9923660e470679bd87",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_lightbulb_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "a677079e4275bb4626e09ded0fff94447845c261f106f6f2bafb5f1898f4c4dc",
+        "alpha_extrema": [
+          0,
+          253
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_lightbulb_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "515a3a1cc4d321123087788042579b9bcc4df72b952dbf01ad2ef5dd0158efdf",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_lightbulb_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "00c10ffa03694bcb3e7d4415af35dd195c90031652d77bcabeab32f4ff4a8e6e",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_lightbulb_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "769f2c33822fbd6d25a97e22c9314860dd4568289d967d68c6e9026611278378",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_lightbulb_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "108596fd5649b90f370d56d5a7e8d943fec8f193563bf4fea4ed0d7e26e375aa",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_link_simple_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, single square transparent PNG.\nSubject: two interlocking diagonal rounded chain links, a clear simple link symbol.\nStyle: flat monochrome glyph, clean rounded medium strokes about 7% of symbol width, rounded joins and caps. Espresso #4A2414 only. Center the symbol in the square, occupy about 76% of canvas width/height, generous balanced transparent margins. Uniform weight and simple high contrast silhouette readable at 24dp.\nConstraints: actual alpha transparency throughout background and negative spaces. One icon only. No tile, border frame, label, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects. No white background or checkerboard painted in the image.",
+    "original": "originals/ic_phosphor_link_simple_regular.png",
+    "source_artifact": "exec-59dbc4e5-f924-4fdb-9cc3-3c9b0db1d40a.png",
+    "original_bytes": 396393,
+    "original_sha256": "9808ee3851e8bdee1586a0b1b63bf98f8c820630cb813848fe9dc25544db39ab",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      175,
+      201,
+      1092,
+      1075
+    ],
+    "max_dimension_canvas_fraction": 0.7313,
+    "most_common_opaque_rgb": [
+      [
+        86,
+        40,
+        22,
+        119
+      ],
+      [
+        85,
+        40,
+        22,
+        111
+      ],
+      [
+        85,
+        39,
+        21,
+        105
+      ]
+    ],
+    "replaced_xml_sha256": "a847552457cd425932ce0a7daa2b3bc5bbe5dd46ad53adc4c2880bafed905ce5",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_link_simple_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "ba5ac63cf3f6f7b7c614f75202eb966416c1f41a517544729d7b7491605e3df5",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_link_simple_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "8569a59792b0cec845b995d4f55a8ebe9ca81112d54b4793b9e4ff9b41336408",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_link_simple_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "01d1b464399630b98c6e1608beb93207f3ca0aafa802e91c6a14b6dbbbb3f1f4",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_link_simple_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "102284f755528bb6adbc724b6f5284c4bb5eeeda2f750e08cf67fd20cb7d214f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_link_simple_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "f2ad1ebe9ff8480475336f398bd7520ecd4276ae7d09512fa85090657a723a98",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_list_checks_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, single square transparent PNG.\nSubject: three horizontal list rows, each with a bold check mark at its left; three short bars at the right.\nStyle: flat monochrome glyph, clean rounded medium strokes about 7% of symbol width, rounded joins and caps. Espresso #4A2414 only. Center the symbol in the square, occupy about 76% of canvas width/height, generous balanced transparent margins. Uniform weight and simple high contrast silhouette readable at 24dp.\nConstraints: actual alpha transparency throughout background and negative spaces. One icon only. No tile, border frame, label, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects. No white background or checkerboard painted in the image.",
+    "original": "originals/ic_phosphor_list_checks_regular.png",
+    "source_artifact": "exec-b86ff073-78b5-427f-bec1-0603fd87b6d7.png",
+    "original_bytes": 277335,
+    "original_sha256": "69ef0ea798317eab377bf3c7434e93c2e9313d531e809ec402bf02a492cf7d9c",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      235,
+      290,
+      1020,
+      985
+    ],
+    "max_dimension_canvas_fraction": 0.626,
+    "most_common_opaque_rgb": [
+      [
+        87,
+        44,
+        22,
+        114
+      ],
+      [
+        88,
+        45,
+        22,
+        106
+      ],
+      [
+        87,
+        45,
+        22,
+        97
+      ]
+    ],
+    "replaced_xml_sha256": "b639831f1a2c0ca4b020729254f2133d529203233528d573d69d5c0d14024a1a",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_list_checks_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "417d24d8e694c49e6ef2b0804ee960058016fc942fa1fa1b5c7768c2a9ed35e7",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_list_checks_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "7908046603e2834d58c032f4bc0d1da14b2f0b293643a289a0e5b60af7158bb3",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_list_checks_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "a2425ea639f2d68fdb041624daaf0cee72f0d5cd51b0538ba395bf19d2dcfb5b",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_list_checks_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "a2872934bd03fd38b047769c6f3a0854cbb2c6d0683184768125bd98de158e69",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_list_checks_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "3f87f9054a50a654ffc2335b4a910836b9eb14412acc60624c7a5fc086795ba8",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_list_numbers_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, single square transparent PNG.\nSubject: three horizontal list rows, with the tiny pictographic counters 1, 2 and 3 at the left and three short bars at the right; these three digits are the only permitted text.\nStyle: flat monochrome glyph, clean rounded medium strokes about 7% of symbol width, rounded joins and caps. Espresso #4A2414 only. Center the symbol in the square, occupy about 76% of canvas width/height, generous balanced transparent margins. Uniform weight and simple high contrast silhouette readable at 24dp.\nConstraints: actual alpha transparency throughout background and negative spaces. One icon only. No tile, border frame, label, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects. No white background or checkerboard painted in the image.",
+    "original": "originals/ic_phosphor_list_numbers_regular.png",
+    "source_artifact": "exec-f62e6e9c-c266-4e1d-a8e8-2b6dcaba6105.png",
+    "original_bytes": 285881,
+    "original_sha256": "c53606f88cc6e8e0faed00e3b0614b006383a5f7f7b3350fafc2e1e0912118a2",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      232,
+      262,
+      1022,
+      1051
+    ],
+    "max_dimension_canvas_fraction": 0.63,
+    "most_common_opaque_rgb": [
+      [
+        87,
+        37,
+        17,
+        229
+      ],
+      [
+        88,
+        37,
+        17,
+        180
+      ],
+      [
+        88,
+        38,
+        17,
+        174
+      ]
+    ],
+    "replaced_xml_sha256": "c74318afa632871fefcafd41f1eea586576462848e0bca94f87d9e1969a7b74c",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_list_numbers_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "b190c89d9db101b66b65eab486572834f381510472f6f13c8151783531ff6516",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_list_numbers_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "0259b49d36e5e2398614089c9310e9e1249f2b18cec6b51395c7b9152d01392f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_list_numbers_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "788a00871fa179c0f0c586bc34818ade69d36c15f20f2276523f80e582a65032",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_list_numbers_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "3ae866653f8bae1a08c6e95187d38c9f27ce36fc11cd0fa181ef9e3cc051018a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_list_numbers_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "694d2963546761df6af3ea4462ba0a807c541fbc70f00b68406dc83e7d4f7b2d",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_lock_key_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, one square transparent PNG.\nSubject: an upright closed padlock, simple rounded rectangular body, rounded U-shaped shackle and a single tiny keyhole-shaped transparent cutout.\nStyle: flat single-ink glyph in solid espresso #4A2414. Rounded medium strokes, approximately 7% of symbol width, rounded joins/caps. Centered symbol about 76% of square canvas with balanced transparent margins. Keep simple and instantly legible at 24dp.\nConstraints: real alpha transparency on background and negative spaces. Uniform solid color, no shading. One icon only. No tile, label, letters, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, no white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_lock_key_regular.png",
+    "source_artifact": "exec-14d625b3-c8a2-4729-a2d7-4c9d63f66b67.png",
+    "original_bytes": 457879,
+    "original_sha256": "3579b2e246457262723f311717b2f96d6e33306486e23c3d21f016655838a82d",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      276,
+      174,
+      978,
+      1080
+    ],
+    "max_dimension_canvas_fraction": 0.7225,
+    "most_common_opaque_rgb": [
+      [
+        85,
+        40,
+        22,
+        146
+      ],
+      [
+        84,
+        39,
+        21,
+        131
+      ],
+      [
+        85,
+        39,
+        21,
+        102
+      ]
+    ],
+    "replaced_xml_sha256": "14a300d9f2ab9517ac4ab6e3262a2c41c1a734a8a2a906d657ae3074882765eb",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_lock_key_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "d263ecf6d516ce4ad9bad62c6d088c2ff4c8281a281d516decbf5e422614177a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_lock_key_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "04dba0260a7799b4edfdffade807fd5dd1662c3f49bcb664c6c480857280db35",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_lock_key_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "3ce23fe2f495af0d90c6230f96736ae9feb43afccea82aaf2e4764c8a614e8cb",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_lock_key_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "2de696973ade282b23d414d5015127a619eb91bea680646010ab7bcd74766537",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_lock_key_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "65a6998cba4e2954fe3e4dba0514bff1c9398f2d17f7747b851d7e4dd197f41b",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_magnifying_glass_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, one square transparent PNG.\nSubject: a round magnifying glass outline with one diagonal handle down to the right, simple search symbol.\nStyle: flat single-ink glyph in solid espresso #4A2414. Rounded medium strokes, approximately 7% of symbol width, rounded joins/caps. Centered symbol about 76% of square canvas with balanced transparent margins. Keep simple and instantly legible at 24dp.\nConstraints: real alpha transparency on background and negative spaces. Uniform solid color, no shading. One icon only. No tile, label, letters, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, no white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_magnifying_glass_regular.png",
+    "source_artifact": "exec-1241fd7b-0628-4f73-aac7-8bf5c5bcf307.png",
+    "original_bytes": 251953,
+    "original_sha256": "5b97540c5592c7753c1e55df7d0ed46713eecad3f75e7b685ee3d7b6f909b270",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      207,
+      230,
+      1044,
+      1052
+    ],
+    "max_dimension_canvas_fraction": 0.6675,
+    "most_common_opaque_rgb": [
+      [
+        83,
+        39,
+        19,
+        88
+      ],
+      [
+        83,
+        40,
+        19,
+        77
+      ],
+      [
+        84,
+        40,
+        19,
+        66
+      ]
+    ],
+    "replaced_xml_sha256": "a90248f628d597eca79bb8951b9864915a487f87ed5891c08555d380801696f3",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_magnifying_glass_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "36c1727fef2d950b587685ddc8beeacf5412d880d108b83bc1d552e20bb1a7fb",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_magnifying_glass_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "65574a6620c99d074141763f54c475cf0d760bf9243c6bbf6515c95fbb602091",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_magnifying_glass_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "142a9f7f3bd094211d2d2a79a250630dbcc9ae6cbf0503b5e03fdd2b983175b3",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_magnifying_glass_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "af79673a84a3989c8849fe2b9cc60711828c736820f4680beacbc0c786a8302c",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_magnifying_glass_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "945e2fe72cd08c7c5d0a7863782e1d6382b4397943cdfa9b603e1aff7096ac94",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_math_operations_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, one square transparent PNG.\nSubject: four clear arithmetic symbols arranged in a 2 by 2 square: plus top left, minus top right, multiplication cross bottom left, division bottom right; these pictograms are the only marks.\nStyle: flat single-ink glyph in solid espresso #4A2414. Rounded medium strokes, approximately 7% of symbol width, rounded joins/caps. Centered symbol about 76% of square canvas with balanced transparent margins. Keep simple and instantly legible at 24dp.\nConstraints: real alpha transparency on background and negative spaces. Uniform solid color, no shading. One icon only. No tile, label, letters, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, no white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_math_operations_regular.png",
+    "source_artifact": "exec-ea5f67a8-1902-4c61-a52b-d34631d5d434.png",
+    "original_bytes": 322228,
+    "original_sha256": "a12452b62650f89b67d5fadefa51d2c68eea7ba488e71c4e4ec8538acccf1222",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      185,
+      218,
+      1073,
+      1095
+    ],
+    "max_dimension_canvas_fraction": 0.7081,
+    "most_common_opaque_rgb": [
+      [
+        84,
+        37,
+        20,
+        137
+      ],
+      [
+        85,
+        37,
+        20,
+        121
+      ],
+      [
+        83,
+        37,
+        20,
+        93
+      ]
+    ],
+    "replaced_xml_sha256": "aad569a00a4ec820089e618b315e9ac378f5fefb1673ee41d0485cbe5df9a10a",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_math_operations_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "d3e0b36bcaaf0dfdd5b0c466067d9a19a19a52c7e9f6816f3c21d9dc487ffa28",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_math_operations_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "611ceee8ec06b8a6dc8d43b13aa4ef8f9ad50cedd8f947910a02f2f185163770",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_math_operations_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "8b21c35582f05f0e7983bd8d93b0831852920aa938ea0105411f18e0f40c9044",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_math_operations_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "107378051b20717498a0f3832eebc4ce0186e047a0e7f06e6ab6589cd16b0d6f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_math_operations_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "b4fffbaee435938ffbf5895ac7d26338cb6f880c3553fbe4bcf972817e57971e",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_microphone_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, one square transparent PNG.\nSubject: a simple upright microphone outline with a rounded capsule, U-shaped cradle and short straight stand/base, no sound waves.\nStyle: flat single-ink glyph in solid espresso #4A2414. Rounded medium strokes, approximately 7% of symbol width, rounded joins/caps. Centered symbol about 76% of square canvas with balanced transparent margins. Keep simple and instantly legible at 24dp.\nConstraints: real alpha transparency on background and negative spaces. Uniform solid color, no shading. One icon only. No tile, label, letters, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, no white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_microphone_regular.png",
+    "source_artifact": "exec-fc90b868-8b9d-4857-b23c-c7996aacf512.png",
+    "original_bytes": 289268,
+    "original_sha256": "a54b8d85c574766127b60a61b535545b8f3f8932b3cc4c49ff869cd0f5d7c1d2",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      312,
+      169,
+      942,
+      1097
+    ],
+    "max_dimension_canvas_fraction": 0.74,
+    "most_common_opaque_rgb": [
+      [
+        84,
+        37,
+        16,
+        105
+      ],
+      [
+        83,
+        37,
+        16,
+        103
+      ],
+      [
+        82,
+        36,
+        16,
+        95
+      ]
+    ],
+    "replaced_xml_sha256": "5af03ed47e03a5ffd644245b3ac89cac1b0741621d357b488adbae4fb7a05425",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_microphone_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "843b15e74cf610a7ee9f55cb20f1bdfd167471347f7db63ee94db15ed8f873f0",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_microphone_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "72b8c496ae8f7d5a9448d778d8dc1456a29e68f524945a75671425250677ac56",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_microphone_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "74aee60adf858d1f976cb5d790eb97f7bb7f6510bb28217382f607210c4ede8f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_microphone_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "973e37dd06c8ae91dcaa29c3e4290d2a11bd58d1c16ae483087615fb583b0683",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_microphone_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "6f41e8739d9a2c91c4ef5a229236f1c504366413ce8b1bd160bd6d3dd6d4c73a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_minus_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility glyph, one square transparent PNG.\nSubject: one single horizontal minus bar, rounded ends, centered vertically; longest dimension about 76% of canvas, thickness about 7% of bar width.\nStyle: flat monochrome espresso #4A2414, single solid ink with no shading. Rounded medium strokes about 7% of symbol width, rounded joins/caps. Center and balance the symbol, longest dimension 76% of square, generous transparent margins. Simple high contrast 24dp semantics.\nConstraints: real alpha transparency on background and negative spaces. One icon only. No tile, frame, labels, text, watermark, gradient, shadow, texture, glow, perspective, 3D or extra objects. No white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_minus_regular.png",
+    "source_artifact": "exec-058180f6-8926-42bf-bf6f-881441985af3.png",
+    "original_bytes": 127603,
+    "original_sha256": "a37dca781a6c5c8e4bb2a144e01f7943d7d32e489ff64c8eecc3729a8fc9008d",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      183,
+      585,
+      1071,
+      669
+    ],
+    "max_dimension_canvas_fraction": 0.7081,
+    "most_common_opaque_rgb": [
+      [
+        81,
+        40,
+        22,
+        9
+      ],
+      [
+        82,
+        41,
+        23,
+        9
+      ],
+      [
+        83,
+        41,
+        23,
+        6
+      ]
+    ],
+    "replaced_xml_sha256": "4ac6ef7188e00f6f81ea56338004cc1bf6464fac363343db1d1340ab505e0eaf",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_minus_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "3bb37080657cde96658b83106c011aabcb2a2bab71176fe656a98dd0e9157a1b",
+        "alpha_extrema": [
+          0,
+          212
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_minus_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "23c8347ed92919464713b0154a2799f212a726f41e153eee7de8fa83140736e0",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_minus_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "9b9715d8f1a4ee0a5038b2482250ab72869ab9ea09004ccf3c1650f8ffdeebec",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_minus_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "f0d4bf47cd5a0fbb33c71d67004b0da67cb5ade21f0a756f0bde07b79e81d7a6",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_minus_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "990af1d97dae297e9ae9ef05718714d888e8c11b8f706df676a918df0943d773",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_moon_fill",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility glyph, one square transparent PNG.\nSubject: one simple solid crescent moon, smooth outer arc and deep curved transparent cutout opening on the upper right, no stars.\nStyle: flat monochrome espresso #4A2414, single solid ink with no shading. Rounded medium strokes about 7% of symbol width, rounded joins/caps. Center and balance the symbol, longest dimension 76% of square, generous transparent margins. Simple high contrast 24dp semantics.\nConstraints: real alpha transparency on background and negative spaces. One icon only. No tile, frame, labels, text, watermark, gradient, shadow, texture, glow, perspective, 3D or extra objects. No white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_moon_fill.png",
+    "source_artifact": "exec-78cda0c2-6ba5-47bf-bede-aceaf9e0d80e.png",
+    "original_bytes": 399524,
+    "original_sha256": "e5067f8bd45bba9ac41a3e5f9b324c4642abe9208f952993f6c83431cfbbcce0",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      201,
+      190,
+      1071,
+      1084
+    ],
+    "max_dimension_canvas_fraction": 0.7129,
+    "most_common_opaque_rgb": [
+      [
+        85,
+        41,
+        22,
+        49
+      ],
+      [
+        84,
+        40,
+        22,
+        42
+      ],
+      [
+        83,
+        39,
+        21,
+        37
+      ]
+    ],
+    "replaced_xml_sha256": "dc06b093a033da2e687f4e1132baf76accb801fb7b7fa1871c2e9c32bcc86a32",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_moon_fill.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "5db6febd01292802ef7f253fbadb5662b85eed2209aba2a577e6833caba2bc3b",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_moon_fill.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "eca002d0f9228a364fcbfe7ba6f0e40958b2838e340f339e6a413725b904f13e",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_moon_fill.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "a95865c6247b8bb1aac329a9b36090c1f6d1f42a700210c747f692245d8e6f48",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_moon_fill.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "bff77ac38b6032d0bdbe09a2535fc57a1aa5fa4fc4448df286724aa8623fae6a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_moon_fill.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "a2e9bb5d19b6b58983ca7632cb2a31179a041cdd3dd64ae756437acb2257fcf1",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_music_notes_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility glyph, one square transparent PNG.\nSubject: two simple joined musical eighth notes, two vertical stems connected by one beam and two rounded note heads, no staff or extra marks.\nStyle: flat monochrome espresso #4A2414, single solid ink with no shading. Rounded medium strokes about 7% of symbol width, rounded joins/caps. Center and balance the symbol, longest dimension 76% of square, generous transparent margins. Simple high contrast 24dp semantics.\nConstraints: real alpha transparency on background and negative spaces. One icon only. No tile, frame, labels, text, watermark, gradient, shadow, texture, glow, perspective, 3D or extra objects. No white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_music_notes_regular.png",
+    "source_artifact": "exec-b3ef4f0a-f4f3-48d7-a5ce-cf2ce3133c32.png",
+    "original_bytes": 287890,
+    "original_sha256": "96d6cc107c4badcd21166c05db3710ca906a1c5da59e9f0ae7baf9f498765b3b",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      240,
+      251,
+      1012,
+      1019
+    ],
+    "max_dimension_canvas_fraction": 0.6156,
+    "most_common_opaque_rgb": [
+      [
+        85,
+        42,
+        23,
+        119
+      ],
+      [
+        84,
+        41,
+        22,
+        108
+      ],
+      [
+        83,
+        41,
+        22,
+        96
+      ]
+    ],
+    "replaced_xml_sha256": "6fea4d704c805a7e4508d3b2f04da4f6a0cd8cdedeea186c2e643833c2baf5b5",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_music_notes_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "267e044f5fef4aeec04b4ed32aeca626e0b82250da3aeb12f4a6d96a8c1dba20",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_music_notes_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "f6edfc10576fb8439f62372d763d58a9ff94d799c73c8322001eda46e894e253",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_music_notes_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "21bd8096ff7262d51e1304cd80a2a1a8804fe6b048e5f745c07c2210046c0bf6",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_music_notes_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "839951b432a3d1842351b4970cdc6f5548a0d1b31ecf98aab2dd6c35939ca126",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_music_notes_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "d70fe7321f8e9c023170ed1b8d34ee08cc16c28321e423e0cb261d27a8522934",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_palette_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility glyph, one square transparent PNG.\nSubject: a simple artist paint palette outline with four clearly separated small transparent paint-well holes and a thumb opening on the lower right, a recognizable clean rounded palette silhouette.\nStyle: flat monochrome espresso #4A2414, single solid ink with no shading. Rounded medium strokes about 7% of symbol width, rounded joins/caps. Center and balance the symbol, longest dimension 76% of square, generous transparent margins. Simple high contrast 24dp semantics.\nConstraints: real alpha transparency on background and negative spaces. One icon only. No tile, frame, labels, text, watermark, gradient, shadow, texture, glow, perspective, 3D or extra objects. No white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_palette_regular.png",
+    "source_artifact": "exec-7c1154ad-16c9-4fab-9d2e-e96b115a499b.png",
+    "original_bytes": 383573,
+    "original_sha256": "675481e82ce9ad7e06b61ff84573e4bc77cb49a0a6209e6a6aadb1cf9ea4e219",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      154,
+      206,
+      1102,
+      1079
+    ],
+    "max_dimension_canvas_fraction": 0.756,
+    "most_common_opaque_rgb": [
+      [
+        83,
+        37,
+        19,
+        205
+      ],
+      [
+        82,
+        37,
+        19,
+        183
+      ],
+      [
+        84,
+        38,
+        20,
+        151
+      ]
+    ],
+    "replaced_xml_sha256": "0eaf43f75ca41f9e5019eb8120be952f1dc7a5fdfd65db1aa712f6580144d730",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_palette_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "8da389a15f023baf5cc9cb3dafe53ac3a5a57f8ffdea9513dddccc8c12b3a175",
+        "alpha_extrema": [
+          0,
+          232
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_palette_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "2e554d8c8a18dead99fd17d1bf00091c51d3866fa0a64c8819e1ac4e714bbc6f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_palette_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "2c8816c347bb55cae7a9908a3e236eae0db209725a3094a4cb52dc418f7d2c32",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_palette_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "12d4952bfd7228858bd209deb9304c7aac0ae27ba7e5a43f587b520b26227f29",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_palette_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "82aa1e30d79c2613f21565ad8f41c8a3f8b2a3bd9ddf1ea0f09dfc687c46f923",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_pause_fill",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, one square transparent PNG.\nSubject: a pause symbol: exactly two equal solid vertical bars with softly rounded corners, centered with a clear transparent gap.\nStyle: flat monochrome solid espresso #4A2414. Rounded medium strokes about 7% of symbol width for outlined parts, rounded joins/caps; filled shapes only where requested. Center the symbol with longest dimension about 76% of square canvas and balanced transparent margins. Strong simple 24dp silhouette.\nConstraints: genuine alpha background and negative spaces. Single solid ink with no shading. One icon only. No tile, border, label, text, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_pause_fill.png",
+    "source_artifact": "exec-7bc7f188-1471-4a52-8560-c8b7e00a00d8.png",
+    "original_bytes": 331813,
+    "original_sha256": "07e7e929953f74d5454faccb1e615b1ac34a9f2c0097c6287164123be6dfbd91",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      359,
+      265,
+      893,
+      989
+    ],
+    "max_dimension_canvas_fraction": 0.5774,
+    "most_common_opaque_rgb": [
+      [
+        81,
+        36,
+        17,
+        237
+      ],
+      [
+        80,
+        36,
+        17,
+        96
+      ],
+      [
+        81,
+        36,
+        18,
+        93
+      ]
+    ],
+    "replaced_xml_sha256": "85154961c4f3ebe50fd749ade56a78de69444cc54b03fcc41e9ac0fc624194ec",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_pause_fill.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "0fcea70951b6e935ac6032ba511ab9d2f9b124ebf3ce4d0cc3901463104b864a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_pause_fill.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "b41542c72487581cf2f327dc6fa0fe03a33c7169f1586c509e8b2b4b275117e9",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_pause_fill.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "ea5caf99fde77145ecc674ace0f213eb1b766a49e0c483cda2f801f4a7221783",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_pause_fill.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "b034725f6acd55e3344f52f21d00a8f5f4f2fa53445fc5b1582bdf2a4b7d04c6",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_pause_fill.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "b2fdf2200617ce31854a26c50a41649f979ab942feeb4d7ceb5b2b44017db22d",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_pencil_simple_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, one square transparent PNG.\nSubject: a simple diagonal pencil outline pointing down left, with a clear triangular nib and one short parallel band near the upper-right eraser end; no scribble.\nStyle: flat monochrome solid espresso #4A2414. Rounded medium strokes about 7% of symbol width for outlined parts, rounded joins/caps; filled shapes only where requested. Center the symbol with longest dimension about 76% of square canvas and balanced transparent margins. Strong simple 24dp silhouette.\nConstraints: genuine alpha background and negative spaces. Single solid ink with no shading. One icon only. No tile, border, label, text, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_pencil_simple_regular.png",
+    "source_artifact": "exec-7ff04938-68c4-4378-9b83-95b697160e3a.png",
+    "original_bytes": 230954,
+    "original_sha256": "a9ba8a5d3ec20da84d3c7ef0af55551a9ffecf83591feadedca742e77868155f",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      229,
+      237,
+      1070,
+      1050
+    ],
+    "max_dimension_canvas_fraction": 0.6707,
+    "most_common_opaque_rgb": [
+      [
+        85,
+        39,
+        18,
+        108
+      ],
+      [
+        84,
+        38,
+        18,
+        85
+      ],
+      [
+        85,
+        38,
+        18,
+        73
+      ]
+    ],
+    "replaced_xml_sha256": "7f3189fa133375c8abe7d10ecf44c2e025eb4b0920862f6f3d502f2cd0b81dcf",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_pencil_simple_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "73498da5a9d55dc7d6d2d186f188ea851479bc4c56e78950b2b88116b1c7ab2e",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_pencil_simple_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "ebbbba8b62bd95703d74897ebdbb02009573289c656780000358b65c43f40a27",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_pencil_simple_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "7117c3b0b9cdcbfc2054157ca164f88002c7e0d652a5390d76b17b78cfdebee3",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_pencil_simple_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "e584ec3140009b826d93532e69c32a4fab03eeca8b2d5f2587d5c0c89b95c542",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_pencil_simple_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "f8c4a7eedf7eef739252cea4bd317e2d1f8fbb2b15d0d1e4bce80b5ca2d23899",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_person_simple_run_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, one square transparent PNG.\nSubject: a simple stick-person running to the right: one round head, forward leaning torso, bent arms and two clearly separated bent legs; expressive and instantly readable.\nStyle: flat monochrome solid espresso #4A2414. Rounded medium strokes about 7% of symbol width for outlined parts, rounded joins/caps; filled shapes only where requested. Center the symbol with longest dimension about 76% of square canvas and balanced transparent margins. Strong simple 24dp silhouette.\nConstraints: genuine alpha background and negative spaces. Single solid ink with no shading. One icon only. No tile, border, label, text, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_person_simple_run_regular.png",
+    "source_artifact": "exec-5e8e5a82-9fa1-48e4-8553-d3c490d4df2d.png",
+    "original_bytes": 371899,
+    "original_sha256": "21757c5f649f5ee5b55924a3ea9ae142008967e0bfde1902d607d57bde04c028",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      184,
+      146,
+      1112,
+      1104
+    ],
+    "max_dimension_canvas_fraction": 0.764,
+    "most_common_opaque_rgb": [
+      [
+        81,
+        37,
+        19,
+        108
+      ],
+      [
+        82,
+        37,
+        19,
+        96
+      ],
+      [
+        81,
+        36,
+        19,
+        84
+      ]
+    ],
+    "replaced_xml_sha256": "ac10e0e4bb72c63ee63f462d2a69f34ad01fdaffd7676b2d66381a952dfd007f",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_person_simple_run_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "7adc052c4801f751928539becf872b475cc66a0242fd9392ee74a1da3576520f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_person_simple_run_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "ce57d9f8425a55c764c3b1a45c7343ea10b55d9017c3d18e99fdac9e6244f6e8",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_person_simple_run_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "8f99107676bc22a02acf0f1e4a274a81c4ddb1a74d227f89b8a7133af9178be7",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_person_simple_run_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "61f3a5213fd63e05aaebca5ad1491f014ca6eab4cf9ab1ba06819d0fb991e39a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_person_simple_run_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "7b80f5da306e3ad6add6ec4286763e5f73c12e17d4a7e028a445dbee426eb5e2",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_play_fill",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility icon, one square transparent PNG.\nSubject: one solid right-pointing play triangle, softly rounded three corners, no surrounding circle or button tile.\nStyle: flat monochrome solid espresso #4A2414. Rounded medium strokes about 7% of symbol width for outlined parts, rounded joins/caps; filled shapes only where requested. Center the symbol with longest dimension about 76% of square canvas and balanced transparent margins. Strong simple 24dp silhouette.\nConstraints: genuine alpha background and negative spaces. Single solid ink with no shading. One icon only. No tile, border, label, text, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_play_fill.png",
+    "source_artifact": "exec-b4031e98-e8ec-4559-b485-9db03edf51c8.png",
+    "original_bytes": 414130,
+    "original_sha256": "eaa622fb64e723d2f9c570d8b6c8fce730a94a74fcfe10ee01dd59bcc16061e3",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      255,
+      209,
+      999,
+      1045
+    ],
+    "max_dimension_canvas_fraction": 0.6667,
+    "most_common_opaque_rgb": [
+      [
+        82,
+        40,
+        22,
+        134
+      ],
+      [
+        82,
+        41,
+        22,
+        91
+      ],
+      [
+        81,
+        40,
+        22,
+        74
+      ]
+    ],
+    "replaced_xml_sha256": "558670dc3ff35e2b61d1a04915cc113215fcb7af39734aa87a46765b0673e2c9",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_play_fill.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "0ff0ecf5c0238e2fb3b330d401a34fdc4f8c716c955e56831285e5f10105400e",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_play_fill.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "6a89131d56d2afa157ddc37f92cb0b12f4bf4ec7ae2bf9ac127e31110be1c549",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_play_fill.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "7a38a02594e19e7ab6828b6a571aa5b69acd29a161a9b1182a9219708d0b1b67",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_play_fill.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "0b692aac80f622a15466efbcdf1da233f87482f0dfba82da7f0216893a5c0c9f",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_play_fill.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "c27f493cb024f9218be082e9cdd65714b35fb82880ef596b811af6ab4c0dbc87",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_plug_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility glyph, one square transparent PNG.\nSubject: an upright simple electrical plug outline: two prongs at the top, rounded plug body and short curved cable at the bottom; no socket or bolt.\nStyle: flat single solid espresso #4A2414. Clean rounded medium strokes about 7% of symbol width, rounded joins/caps. Center and balance symbol in square, longest dimension about 76% of canvas, with generous transparent margins. Instantly legible at 24dp.\nConstraints: genuine alpha transparency on background and negative spaces. No shading. One icon only. No tile, frame beyond a requested symbolic outline, label, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_plug_regular.png",
+    "source_artifact": "exec-45620aae-b9d5-4782-8501-58f823dd0675.png",
+    "original_bytes": 238987,
+    "original_sha256": "734e77f3afcdeb1dbaa13d196a6fc2399c89f268b3d05a0237e29efd586371fe",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      331,
+      145,
+      924,
+      1109
+    ],
+    "max_dimension_canvas_fraction": 0.7687,
+    "most_common_opaque_rgb": [
+      [
+        86,
+        39,
+        18,
+        84
+      ],
+      [
+        86,
+        40,
+        18,
+        65
+      ],
+      [
+        87,
+        40,
+        18,
+        55
+      ]
+    ],
+    "replaced_xml_sha256": "99f56aac1f827c2d121dd8e28627556e9fcdb1e1bf0603aa93bf99c6f1c2c782",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_plug_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "a1a525dee9d03ff4305c11eb8260ff038329ab88ca49eac91f2b39d954b89142",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_plug_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "532669edc2cf164f3ce1e5be3ae6af6cfa6dd7e76a3e57a60a2b5f0b2b4fe148",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_plug_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "273da57c30be9a195425604b844384631f9f9667425aeae4350b223cd8803e3c",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_plug_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "eaf87bf641ab4d73defe0005f5b8ef56f39233e95ce1d4334bf9095663285f51",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_plug_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "6a89b7a91621d8c3d7bc6fa78c12c257f2d90483af50aa2cbdf4503e4e26ede1",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_plus_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility glyph, one square transparent PNG.\nSubject: one clear equal-armed plus sign, horizontal and vertical bars with rounded ends; no circle.\nStyle: flat single solid espresso #4A2414. Clean rounded medium strokes about 7% of symbol width, rounded joins/caps. Center and balance symbol in square, longest dimension about 76% of canvas, with generous transparent margins. Instantly legible at 24dp.\nConstraints: genuine alpha transparency on background and negative spaces. No shading. One icon only. No tile, frame beyond a requested symbolic outline, label, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_plus_regular.png",
+    "source_artifact": "exec-29533319-8cd5-4292-a070-e3c321e0d0b1.png",
+    "original_bytes": 288200,
+    "original_sha256": "0ccc879581a34714859db2b8e8ab58920ef8659d2924a025237913c19bc8dbff",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      222,
+      234,
+      1032,
+      1036
+    ],
+    "max_dimension_canvas_fraction": 0.6459,
+    "most_common_opaque_rgb": [
+      [
+        78,
+        37,
+        21,
+        178
+      ],
+      [
+        79,
+        37,
+        21,
+        177
+      ],
+      [
+        78,
+        37,
+        20,
+        136
+      ]
+    ],
+    "replaced_xml_sha256": "45ca22050356b0388a0192433a844b43c2e2f994f3366a70599274443a9fddab",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_plus_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "8e12aefe11d6eb58a2ce68be93a3dbff62041de91e645eedd7b003988748f2e6",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_plus_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "5feeb15d7cd3a59ba2c786c18fc27d8d152a27a2865ecc091c6349ce34e8cff1",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_plus_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "6c6db0f75fa1fba70a57e1a5364d297f4673a1b0b410a93ef30ce65cc81391c7",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_plus_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "706f37d8e3532e0d69530e90e039e25538e452a9b3b23ccf72fa8b058162878e",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_plus_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "664d4848eabcda9efd8210d3ac06478b1d1ad2fce7af7419486be62f99b53642",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_qr_code_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility glyph, one square transparent PNG.\nSubject: a symbolic QR-code pictogram, NOT a usable or scannable code: three rounded square finder corners and only a few bold disconnected square modules at bottom right. Keep simplified, no encoded content or dense matrix.\nStyle: flat single solid espresso #4A2414. Clean rounded medium strokes about 7% of symbol width, rounded joins/caps. Center and balance symbol in square, longest dimension about 76% of canvas, with generous transparent margins. Instantly legible at 24dp.\nConstraints: genuine alpha transparency on background and negative spaces. No shading. One icon only. No tile, frame beyond a requested symbolic outline, label, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_qr_code_regular.png",
+    "source_artifact": "exec-e264fc4d-8e2e-4879-acd7-c530bf3ffa87.png",
+    "original_bytes": 472982,
+    "original_sha256": "27bd3519f2ff2795ff16698507d9c65ecd02d6b54f040bf389d7053cdb3a8cb4",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      191,
+      229,
+      1071,
+      1062
+    ],
+    "max_dimension_canvas_fraction": 0.7018,
+    "most_common_opaque_rgb": [
+      [
+        85,
+        37,
+        18,
+        219
+      ],
+      [
+        82,
+        36,
+        17,
+        210
+      ],
+      [
+        82,
+        35,
+        17,
+        187
+      ]
+    ],
+    "replaced_xml_sha256": "96d7245ea13c3b73ae3dbd1ee412e5d80f8ed64075d3052e0b1869a56e5c7951",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_qr_code_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "94b696fd9bb62d5e2682524c550a99454b308746060dcb763e6e98be4ee9ce40",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_qr_code_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "b4610a4725d13578dea1e7dbc103c692ef0ad8e309aa01b8bbc626ea9648f7fd",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_qr_code_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "93dd82dd69090cf9051afb15474a6b78365ff1bca6508859fff717d8ee3bd086",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_qr_code_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "2ec98b213679907249c87c399cdb544c8b577ce8450dc3fadf94d0d7d42667f7",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_qr_code_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "7467a90741638304b3e3b53ac2048728e284f984f8f5efcb56976130a684dcbe",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ic_phosphor_question_regular",
+    "builtin_tool": "image_gen.imagegen",
+    "prompt": "Use case: logo-brand. Asset type: Android 24dp utility glyph, one square transparent PNG.\nSubject: a simple help icon: circular outline surrounding one large question-mark pictogram with a detached round dot, no other lettering.\nStyle: flat single solid espresso #4A2414. Clean rounded medium strokes about 7% of symbol width, rounded joins/caps. Center and balance symbol in square, longest dimension about 76% of canvas, with generous transparent margins. Instantly legible at 24dp.\nConstraints: genuine alpha transparency on background and negative spaces. No shading. One icon only. No tile, frame beyond a requested symbolic outline, label, words, watermark, gradient, shadow, texture, glow, perspective or 3D. No extra objects, white background or painted checkerboard.",
+    "original": "originals/ic_phosphor_question_regular.png",
+    "source_artifact": "exec-7fce35ce-09bb-40a9-a428-9443cf4a9e6a.png",
+    "original_bytes": 352250,
+    "original_sha256": "fcc947245d3a59c912f7749a5175031d8e84fd08f196e6199e3d410f20a9bd16",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_bbox": [
+      145,
+      151,
+      1106,
+      1108
+    ],
+    "max_dimension_canvas_fraction": 0.7663,
+    "most_common_opaque_rgb": [
+      [
+        85,
+        40,
+        20,
+        129
+      ],
+      [
+        86,
+        40,
+        20,
+        84
+      ],
+      [
+        84,
+        39,
+        19,
+        78
+      ]
+    ],
+    "replaced_xml_sha256": "3aa88703e0fc84db2154ba123e07f8aea1df25646d39a19e34cbba06deadbc68",
+    "variants": [
+      {
+        "path": "app/src/main/res/drawable-mdpi/ic_phosphor_question_regular.png",
+        "pixels": 24,
+        "nominal_dp": 24,
+        "sha256": "59521436a660c0bf4cca1cbbf62622a7ebb9282f854254ca89aeff54ac1ba107",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-hdpi/ic_phosphor_question_regular.png",
+        "pixels": 36,
+        "nominal_dp": 24,
+        "sha256": "da493b06e1e6febf56dbcd91c8ca6f476f0946381e727e9b2a54121067973390",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xhdpi/ic_phosphor_question_regular.png",
+        "pixels": 48,
+        "nominal_dp": 24,
+        "sha256": "cafdf765c01080a263a33781487b8e37b889e812e51ba840e4ed3ab5b68a4e3d",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxhdpi/ic_phosphor_question_regular.png",
+        "pixels": 72,
+        "nominal_dp": 24,
+        "sha256": "35f42f20aa7123d4fad433cf8d32938a65423995340654918fb621836eb1a0e6",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      },
+      {
+        "path": "app/src/main/res/drawable-xxxhdpi/ic_phosphor_question_regular.png",
+        "pixels": 96,
+        "nominal_dp": 24,
+        "sha256": "0c8fae763db14438a46d243a6111a2629a3dc05b688427076721e55949e6f83a",
+        "alpha_extrema": [
+          0,
+          255
+        ]
+      }
+    ]
+  }
+]
