@@ -1,0 +1,344 @@
+{
+  "tool": "built-in image_gen",
+  "operation": "One distinct generated glyph per call; unchanged original; LANCZOS density resize only; existing Android tint and semantic aliases retained",
+  "assets": [
+    {
+      "name": "ic_phosphor_shield_check_regular",
+      "original": "originals/ic_phosphor_shield_check_regular.png",
+      "originalSha256": "58149017f8a48311eb0c57b2422bc192b012f5120a6866387f14464640887b0f",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        33,
+        77,
+        1208,
+        1206
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_shield_check_regular.png": "088f24ca5d083f9e2959f0e90613a900f61a19290c5a88f1fe9d670afe3bb66b",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_shield_check_regular.png": "726457abe81fc15defd8ebc3c577309fe6dfd84457564046a00050db747ddb8f",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_shield_check_regular.png": "4d42262f2a509617b52194e793d9cddf3b9e4e0e6fd93b5fe54d433a3351d0ef",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_shield_check_regular.png": "8e048300efe258a580e7fc1d1fef602bc8ce764c0ac3a3538a117f33787c281e",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_shield_check_regular.png": "0a150905c9cbc019de66eb6cfa57a281a7a5bffb06bffab77a4a1d7110b80a8a"
+      }
+    },
+    {
+      "name": "ic_phosphor_speaker_high_regular",
+      "original": "originals/ic_phosphor_speaker_high_regular.png",
+      "originalSha256": "1dd2b87221401ff169e8dd4194ee4b4654a0da54c932bf9a6607db856e35157e",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        73,
+        253,
+        1210,
+        1053
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_speaker_high_regular.png": "12f6eaefd91683c2ac8e4781e249d39e6728cc7f60513332c2aeeca8815a5ca1",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_speaker_high_regular.png": "9da4af2dd18aeb710d244c8c5a6658ee203d9d1491d03bd7db51e8f745dbf983",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_speaker_high_regular.png": "b122a348681e2f59d53e9ae0638a6cc58deb2295016203285e1255456f07a920",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_speaker_high_regular.png": "e4d15ad1718542a5c4d6182487398cc5a939ad148b2221baa6a87a295dfc9339",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_speaker_high_regular.png": "333eef9ec302d4df099ea208080006bd0f2014a66fbe89c647adabc59a67134f"
+      }
+    },
+    {
+      "name": "ic_phosphor_spinner_gap_regular",
+      "original": "originals/ic_phosphor_spinner_gap_regular.png",
+      "originalSha256": "3889609aed5227a3a55e87c2ba1ce45f3716257726efec5b7106d14f61b546b2",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        79,
+        23,
+        1134,
+        1254
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_spinner_gap_regular.png": "ca689c457b22ad3c8d477da28b13430381f47d130f0ae23f1d481c072d2a175c",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_spinner_gap_regular.png": "eab770ac15acac6bbb5491bc4462de573d42a4e099b80029f1ded6591661c00e",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_spinner_gap_regular.png": "ec13f286ec857cd94bbd4f1d9b1b297553831de07977eacb29c6dbf814abceee",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_spinner_gap_regular.png": "c84940bd9337953c12dcb1976f206df5292d810a9b1848cfcbc099d701ae5b6a",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_spinner_gap_regular.png": "461a9d24ffd3805415a636fcb19ee718bffb20ddba8e573e0e0b31a8861fdb7c"
+      }
+    },
+    {
+      "name": "ic_phosphor_star_regular",
+      "original": "originals/ic_phosphor_star_regular.png",
+      "originalSha256": "b99a83cabb97e5ed4ffd038ecefbc66f27fed2759560b9af7a61587769a5d7c2",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        41,
+        33,
+        1234,
+        1228
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_star_regular.png": "7e8022c11af0d895557a9e42aff8b7ed22a066bb2e419e9621578dd0a989b6f7",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_star_regular.png": "acccf298316d535282140246015a53f65c8458a621ed65ded6b4dbc44834b5d1",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_star_regular.png": "4b5d5f6b0255232c8d0a62975ea045e578920c6c15fa233ed5c06d3051da97f7",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_star_regular.png": "62114510d2e4e8d06adab7fff9f1fe731b3a0e02277bbe087b4313ad9613b762",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_star_regular.png": "a71edbe0cf7ad26699dfbf7a3ced12cbea37845933bc4b9479be66fd96040446"
+      }
+    },
+    {
+      "name": "ic_phosphor_stop_fill",
+      "original": "originals/ic_phosphor_stop_fill.png",
+      "originalSha256": "17e61f965f4dfd6bfe7cefcbf0cb86e444c1fe44b29d83ca3133b252bea3d174",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        120,
+        65,
+        1210,
+        1230
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_stop_fill.png": "c6eeef3a1a28a254e307229a0effe68c0385a8e6e286bd10e6081e6cbe065f96",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_stop_fill.png": "ef66c73b8ce89be70444ff784e10a52cf393330fb62a9072c64f4ba66f5161a5",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_stop_fill.png": "259f60f9918b5fa094acd5503fd1cee46fb3242a9aac401a7978c2e2e6018056",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_stop_fill.png": "346d7a2523b027fe934b8fb6e02ca22ea7ea5861663b459835fcd5fad807b39d",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_stop_fill.png": "842f4c376bc237276b94ea5b5f5e13473b84edf42f1df92a16775875a3dd3317"
+      }
+    },
+    {
+      "name": "ic_phosphor_sun_regular",
+      "original": "originals/ic_phosphor_sun_regular.png",
+      "originalSha256": "551444f3ff662d91bddce8ac16e33cd9e6ae461588db06b587461d167b40aea2",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        33,
+        75,
+        1230,
+        1254
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_sun_regular.png": "6e5c94c056b7d31732a99061dc7087877ea4e6858ec2fde509efa6182f0f1fc3",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_sun_regular.png": "63948ce805f2e3205e9ecef9d631bd0b4c01e5d4e9f856eb2462254d622bdcf9",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_sun_regular.png": "632c9cd18396ac148ced0bae66f69b8c7effa4dd4e8da3c8b9fe20e7cf1da76b",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_sun_regular.png": "4f01adfc070c6db2518c128b3882484a1117e3639315fcd2d7a430a5936175de",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_sun_regular.png": "a9f7b4c8c918f65dfa95e84071d3fbdb6be5dc7deb3cde25a6a98bd91793ca55"
+      }
+    },
+    {
+      "name": "ic_phosphor_tag_regular",
+      "original": "originals/ic_phosphor_tag_regular.png",
+      "originalSha256": "ff94c627074b9204d6d708c2af990184b6c20b67c8704a18ea3b2510c51b8f07",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        73,
+        169,
+        1106,
+        1112
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_tag_regular.png": "754cebd54431817406f24de809d1d4a0720b2750b82a04329e04551668b029c9",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_tag_regular.png": "9acb3d151d4172debcb0a6052163730d4eb595a3ccf680f2c0b032927b310699",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_tag_regular.png": "06a860a1d63176ac26b7acb0126e987983547c1e05d1b42930cf38d2d762dec5",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_tag_regular.png": "867dd51e66d9d18837c5ce439309dfa9109265ec63db399752096a4ba496fcbe",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_tag_regular.png": "10caf3e4fb95a1183c9a87a4346c36111efc0bb0642c204eef18d384495f4e29"
+      }
+    },
+    {
+      "name": "ic_phosphor_trash_regular",
+      "original": "originals/ic_phosphor_trash_regular.png",
+      "originalSha256": "f24cb45965e2c5639f3593b290e1490d80a4b35544971b775b78efcf216d8571",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        266,
+        128,
+        1216,
+        1176
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_trash_regular.png": "cab78ea5bd2b66a4605e11e959cd2abddfcb86cc0e7907ab27191415bc60f25d",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_trash_regular.png": "8549e4126c1ed32fdbdc6aac65f8d0fc6e5c825120ca37ccab0815dc6afe7e30",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_trash_regular.png": "b3e6d4e84350327ea02363c81aa13be7b8d2f8f71771b78956bd000e016cdb6b",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_trash_regular.png": "ac846393c87e0c3025680d665db0bb5944a6ac2f558815c75fd9dd5230e70f40",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_trash_regular.png": "6ab8740d684c8e1c01d6d76edb87108fb18a1e2e47993363b6ec61a7bc2bb636"
+      }
+    },
+    {
+      "name": "ic_phosphor_upload_simple_regular",
+      "original": "originals/ic_phosphor_upload_simple_regular.png",
+      "originalSha256": "5940dcca19a51f9b3123732afaf9ab7db281e0877ceb786fe2429d0667655eb9",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        57,
+        111,
+        1186,
+        1105
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_upload_simple_regular.png": "9c2209940cd1cd009f64e24b4e2fd90698f99a4e73ac2424454e0f551045ff45",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_upload_simple_regular.png": "447a8fd36d145b757e66e9c266d93577c328aaffef763f49e3397b16f8c991c3",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_upload_simple_regular.png": "61d9a27c7d8b11bcf2cb9730d1b22763ba929dc6e09d54a01817603d489959ee",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_upload_simple_regular.png": "8a5a817173d43e1a2be98120226182658af1acc8b93e33ba84270d43ab0ad2b9",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_upload_simple_regular.png": "0dfb8cd92670787d6f03f525cc01cfd4aa00a4c5502d63fd0fb2c4f3a479fb5e"
+      }
+    },
+    {
+      "name": "ic_phosphor_vibrate_regular",
+      "original": "originals/ic_phosphor_vibrate_regular.png",
+      "originalSha256": "b11258f3dd8ad8029f627d6e3ce6d68e8aa5b8e315dec7385c667cb904649389",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        33,
+        39,
+        1170,
+        1254
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_vibrate_regular.png": "c6fdc07bc023f9409d1047cea171f5b54fd0af538330de51d417f5f618fe1a4e",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_vibrate_regular.png": "005b7d8b44ff49d4032dfd70b09b4821ef6539e58c26b889a0f304955f2dc813",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_vibrate_regular.png": "50f7fee2fba693928a854b03b27d7052caeb681fe8cdd643642fd31cfd8cd062",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_vibrate_regular.png": "4fe98b007931d194fa84c5ecd0ed9d7144f3988c8ea61631945869866b626f72",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_vibrate_regular.png": "e175afbe1cc428118fb93e11cfe85212bf8d5cc68853f8553d421187d4db6567"
+      }
+    },
+    {
+      "name": "ic_phosphor_wave_sine_regular",
+      "original": "originals/ic_phosphor_wave_sine_regular.png",
+      "originalSha256": "7f5419e4410fd4f9165dda8edc2104634d7ebe0f417be6f7badb3df942154149",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        122,
+        264,
+        1136,
+        1196
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_wave_sine_regular.png": "edc8f26531dfa048f81aa8d433c1c48c1966ec5f701135fd187abd2b2d6ead22",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_wave_sine_regular.png": "701ba89bf79cbefea4b542caebd3c6cedf6e1ac9b571c9a0b1a08300b167399e",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_wave_sine_regular.png": "9258ba24a5e01d694ba9ca36350c8ac5cb61f798d8cf54d54107cc264a606c9d",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_wave_sine_regular.png": "dbb733aee7ccfa36c437a1dcdd068bb3e6ef3bcad722d4d1118e680c431d8b2f",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_wave_sine_regular.png": "fe80a63e48b34685699b75175e7c11f6e37e4c04b099c60358ef24eaecaebfa0"
+      }
+    },
+    {
+      "name": "ic_phosphor_waveform_regular",
+      "original": "originals/ic_phosphor_waveform_regular.png",
+      "originalSha256": "9151de43303797e66d338fb7c62a48c1b10361c7d499fdef4592707a9907a5d2",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        39,
+        226,
+        1216,
+        1142
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_waveform_regular.png": "877659569f8dd48800c90bbbba21abba1fba75868d320e4a6cea97061212158d",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_waveform_regular.png": "bc3236fe52ca077413e114916fb8e3a95fd555b4f20298b68645ef974a7172e6",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_waveform_regular.png": "69fbef849f7f8e7e56c55af1848558c4148866be4c730ac83768969fe7d0310e",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_waveform_regular.png": "dbbedbd50228ad53d9aacc37706479365ef29693dccae68e33161381c1df807e",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_waveform_regular.png": "e2775176d76443741fb572eb87eb49e021f0c9481fb78463e52fdac443e4af7e"
+      }
+    },
+    {
+      "name": "ic_phosphor_x_regular",
+      "original": "originals/ic_phosphor_x_regular.png",
+      "originalSha256": "960d3edb23b8f53d34efa699cade5cdaf5cf873a38ef4c35b5347cf51cc1369d",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        33,
+        200,
+        1168,
+        1085
+      ],
+      "variants": {
+        "app/src/main/res/drawable-mdpi/ic_phosphor_x_regular.png": "1d9a6421c9fc46486c388dfdda1432603c4dcf4214e98a7138e8031cf8b3e11f",
+        "app/src/main/res/drawable-hdpi/ic_phosphor_x_regular.png": "01ad520ab51c6e9dd2ccb7e781816f9bec40f137246ad06b5d58034021a3dbe7",
+        "app/src/main/res/drawable-xhdpi/ic_phosphor_x_regular.png": "781b8e67fd74a65082eed9753361840be435b25eee188fdf55f757f2fbc50b44",
+        "app/src/main/res/drawable-xxhdpi/ic_phosphor_x_regular.png": "ec5829bcb31f9ff0010a70cafe0dbdbaed793d73f0bf8a2754c6f990c90c812c",
+        "app/src/main/res/drawable-xxxhdpi/ic_phosphor_x_regular.png": "be1a45eb2d019bc8aaea7aadebcc78420ae2b2b4e99902cfd4c6efd2a1905d22"
+      }
+    }
+  ]
+}

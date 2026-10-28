@@ -1,5 +1,1 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
-    <path android:fillColor="#FFFFFF" android:pathData="M66,27 C54,19 37,23 29,35 C19,50 25,69 41,77 C53,83 69,79 77,68 C65,73 52,67 47,57 C41,45 48,32 60,28 C62,27 64,27 66,27 Z"/>
-    <path android:fillColor="#FFFFFF" android:fillType="evenOdd" android:pathData="M60,31 A19,19 0,1 1,60,69 A19,19 0,1 1,60,31 Z M58.35,38 H61.65 V49.05 L68.65,53.05 L67,55.95 L58.35,50.95 Z"/>
-    <path android:pathData="M73,30 L76,26 M81,39 L85,37 M61,25 L61,22" android:fillColor="@android:color/transparent" android:strokeColor="#FFFFFF" android:strokeWidth="2.4" android:strokeLineCap="round"/>
-</vector>
+<inset xmlns:android="http://schemas.android.com/apk/res/android" android:inset="14dp" android:drawable="@drawable/ic_sleepwell_monochrome_raster"/>
