@@ -1,0 +1,117 @@
+{
+  "base": "3a54f48d8543c62b900398282604b286ced32ada",
+  "source_commits": [
+    "55940ba3321a48bae3fa87e59d969282613c167c",
+    "12c81a638b9bf7c131956f1ccf01e64154232138"
+  ],
+  "native_commits": [
+    "ad01699e3dc1cd993f32b851e9756fa38c3c9cff",
+    "a43adc41bcd63c73bbd2e2c71564b42d6d776388",
+    "5958285ac75be6eeaeb05d3adfef34d4a88b483f"
+  ],
+  "scope_commit": "b318d57069fa2b447c31c53a14693a17d483fc07",
+  "verified_head": "5958285ac75be6eeaeb05d3adfef34d4a88b483f",
+  "production_files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java",
+      "sha256": "be143da61362311c29884d69f26bd03ce9cd97c8c8c05f795e1d5bb0e9364896",
+      "git_blob": "3c866128dc5e1f29a7ee4e75272ef7186c80f479"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengeActionRows.java",
+      "sha256": "5441f86ce434c56474428f3c3ed765f21f9165e30ce6084d346c48a3c88e2a5a",
+      "git_blob": "20e54ba0eeff0f5d1bdd33bad0bb1ecd6d49849e"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengeRoutineUi.java",
+      "sha256": "ada04fadb6f142e9b41bb509a599dcd38c797aaaf1838017560e668f837d2e4c",
+      "git_blob": "965c929881fdaf52b87f5694b434e47acc2ed8ed"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengeTaskUi.java",
+      "sha256": "ada8de594e3a52d0079874b1174cda028519cfce244d8d746a8f598bd7e53aa1",
+      "git_blob": "a5563a45b5ec0b4b9554cffed66638ea8afedd6a"
+    }
+  ],
+  "all_prior_scope_script_AST_equal_after_removing_only_new_scope": true,
+  "prior_workflow_bytes_equal_after_removing_only_new_choice": true,
+  "original_math_owner_images": 14,
+  "new_challenge_selection_images": 18,
+  "native_files": [
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/AlarmMenusFlowTest.java",
+      "sha256": "7017f52621c73b4fd4c86a03838fcc2861861d6c0a3b5833b26f6a904f2a66ce",
+      "git_blob": "9528f5aba71ffd8034011402692630df40f472e0"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ChallengeRoutineFlowTest.java",
+      "sha256": "51727bf0aa498ac17cf7a36f5915ba55473ab921f521cd0832df37b36b573056",
+      "git_blob": "5d4b95fda6151e48e41cda072b5258c632190d02"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/GradedMathConfigurationTest.java",
+      "sha256": "0c888615304483f1339ddc94d0d2fa11eb0d1969528e2b237bbbbcb8522a8d49",
+      "git_blob": "68706e84e7d9c0b768abb5f6f1d72d3e36708399"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/TypedWakeFlowTest.java",
+      "sha256": "3ed36d34814d53d28fc7e6ca8625590c80117cd3e2f75462be146c14dc952e5a",
+      "git_blob": "86b9b3cc054b88545943f7ca5f36347fb0385862"
+    }
+  ],
+  "verification_files": [
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "sha256": "a5d5d10ef922d8cff902c8750f9f868c31afee14ba757a4ca20704a9a11f1ec5",
+      "git_blob": "2db53478dfd8fdff0e8124be406976dd0cd2526d"
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "sha256": "502c58a9277f1453d1daa01fef36c5534bfc24361e4b8a879a01ac3a3cc9d1fa",
+      "git_blob": "d36976863ee58f02919cb23ffa42c983bd7d36b2"
+    }
+  ],
+  "unchanged_core_files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Alarm.java",
+      "sha256": "d3a1142e2e5fe98ced61a23bd0708c6f9de63a8049187eddd91a9fd36ea6a14a",
+      "git_blob": "c47185b4b2ff6df6c73850a4e6f854befd3df2a2"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmActivity.java",
+      "sha256": "e0fec60d374a817de4a8c6e9644a311252b6c5e6795d20bb60df6339bfd72eab",
+      "git_blob": "ca73b273675f3c80f5537e8c81f14fde54899d19"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmService.java",
+      "sha256": "3b53f37fde32c8003d1efb3662a41b085923f40c82afcd7adbc066dcaaf9df64",
+      "git_blob": "ab156702ac3fad08fed70f78f6c7d0acd7b9bec2"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmScheduling.java",
+      "sha256": "e4977a15b49db223d78427afca7650553ad6b2c85a2a9ee40ce9838d9061b7c7",
+      "git_blob": "8c407889344ac56fc9a15a86de92bfd90a687f3a"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengeRoutine.java",
+      "sha256": "fd6f1df14e3a89ca30899e47273c36826ab862df11aefe77197095979ae38fe3",
+      "git_blob": "de1076f9a75ff8b09f0bea3b1a008019f9c98a43"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "sha256": "17bf74d23a9bbcf3c2897ca6d773fbcda273e24940deeab0cc52297ee2252323",
+      "git_blob": "8f33543a0898a498075e4b82d70e6dfddd6af77f"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/WakeMathPracticeFixture.java",
+      "sha256": "30f88ade3b98b536636a0e26919f01996d5d0ff9631c23a1893552d67567aa59",
+      "git_blob": "abe11538a8b2ac95383df5b0e65030036491029a"
+    }
+  ],
+  "manifest_unchanged": true
+}
