@@ -52,7 +52,7 @@ Frozen source **08d3911e**, version **0.1.4 / code5**: Root build succeeded in *
 - [x] Room/dimming search route and unsaved-draft Back/recreation. [12.917s/5 originals](verification/2026-10-28-room-settings-search/README.md); fake unavailable access/sensor/audio ports.
 - [x] Direct draft hour/minute controls and compact alarm-list feedback, Save/reopen and larger app text. [41.023s/18 originals](verification/2026-10-28-alarm-clock-interactions/README.md); no alarm scheduling/output. New smart-window footer wording is source-only and uncaptured.
 - [x] Current/stale Math answer ownership guards in shared real widgets. [51.773s/14 originals](verification/2026-10-28-stale-math-owner/README.md); explicit private Practice context, not actual AlarmActivity admission/central advance or physical challenge execution.
-- [ ] Finish native verification of unconditional owned Travel-notification cleanup. Source is included in 08; prior scopes failed before cleanup assertions. Third exact first-Cue / 18-image scope CI 40636332489 at 32d02465 is terminal SUCCESS; original-image inspection/archive remains pending. It models leftover fake-port state, not a real OS restart/controller.
+- [x] Unconditional owned Travel-notification cleanup: [39.92s/18 inspected originals](verification/2026-10-28-travel-reminder-cleanup/README.md), including cold-state/error/retry and private preference restoration. This models leftover fake-port state, not a real Android restart/controller.
 - [ ] Publish the built 0.1.4 candidate after remaining required review; it is not published or installed.
 
 ## Still unfinished

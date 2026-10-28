@@ -1,0 +1,22 @@
+{
+  "source": "08d3911e90af666d79a1f57fb0ea1326e91c3929",
+  "versionName": "0.1.4",
+  "versionCode": 5,
+  "apk_sha256": "3b6c698fbfc1d71a21fa2e9b5420b7cf08ad39632608648e226482d11709a024",
+  "apk_bytes": 167067516,
+  "package_audit": "passed",
+  "published": false,
+  "distribution_verified": false,
+  "phone_installed": false,
+  "last_verified_phone_source": "170b0e44785c52429f7b4c089e234ca9d18ce102",
+  "cold_cleanup": {
+    "run": 40636332489,
+    "source": "32d024657093d3cd3ed098e69dff92c4edb18c81",
+    "seconds": 39.92,
+    "images": 18,
+    "originals_individually_inspected": true,
+    "scope": "Private fake-port leftover state and actual UI; not a real Android restart/notification controller",
+    "evidence": "../2026-10-28-travel-reminder-cleanup/README.md"
+  },
+  "limitations": "Named action/recreation/persistence native proofs, individually inspected originals and independent APK/signature/retention audit. Cold cleanup39.92s/18 and Math owner51.773s/14 pass their private/injected boundaries. Actual alarm admission, OS process/notification, physical/overnight/provider/full36-screen/security completion remain unverified; editor footer copy is uncaptured."
+}
