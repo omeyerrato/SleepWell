@@ -247,6 +247,7 @@
         <receiver android:name=".WakeCheckReceiver" android:exported="false" />
         <receiver android:name=".NapReceiver" android:exported="false" />
         <receiver android:name=".AlarmReceiver" android:exported="false" />
+        <receiver android:name=".TravelTrackingReminderReceiver" android:exported="false" />
         <receiver android:name=".TravelReminderReceiver" android:exported="false" />
         <receiver android:name=".TravelCueStopReceiver" android:exported="false" />
         <receiver android:name=".RecurringTrackingReceiver" android:exported="false" />

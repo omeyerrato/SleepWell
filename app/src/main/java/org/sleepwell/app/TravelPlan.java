@@ -5,9 +5,9 @@ import java.util.*;
 
 /** User-chosen civil-time reminders, not a circadian treatment or a flight-direction model. */
 final class TravelPlan {
-    String home,destination;LocalDate departure;int minute=9*60,days=3;boolean reminders;long revision;
+    String home,destination;LocalDate departure;int minute=9*60,days=3;boolean reminders,trackingReminders;long revision;
     TravelPlan(String home,LocalDate departure){this.home=home;this.departure=departure;destination="Europe/London";}
-    TravelPlan copy(){TravelPlan p=new TravelPlan(home,departure);p.destination=destination;p.minute=minute;p.days=days;p.reminders=reminders;p.revision=revision;return p;}
+    TravelPlan copy(){TravelPlan p=new TravelPlan(home,departure);p.destination=destination;p.minute=minute;p.days=days;p.reminders=reminders;p.trackingReminders=trackingReminders;p.revision=revision;return p;}
     void validate(){
         if(!ZoneId.getAvailableZoneIds().contains(home)||!ZoneId.getAvailableZoneIds().contains(destination))throw new IllegalArgumentException("Choose a listed time zone.");
         if(departure==null||departure.getYear()<2000||departure.getYear()>2100)throw new IllegalArgumentException("Choose a departure date from 2000 to 2100.");
