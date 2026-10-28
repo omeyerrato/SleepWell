@@ -317,7 +317,7 @@ if args.scope == "tone-wake":
 elif args.scope == "report":
     tests = list(REPORT_TESTS)
 elif args.scope == "report-flow":
-    tests = ["ReportReferenceFlowTest"]
+    tests = ["ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects"]
 elif args.scope == "organization":
     tests = ["SettingsOrganizationFlowTest"]
 elif args.scope == "organized-settings":
@@ -496,7 +496,7 @@ if args.scope != "full":
         "recorded-analysis": RECORDED_ANALYSIS_FRAMES,
         "organized-settings": ORGANIZED_SETTINGS_FRAMES,
         "organization": ['organization-alarm-list.png', 'organization-alarm-list-large.png', 'organization-alarm-time-stepped.png', 'organization-alarm-time-recreated.png', 'organization-settings-root.png', 'organization-settings-sleep.png', 'organization-feedback-off.png', 'organization-search-flashlight.png', 'organization-alarm-editor.png', 'organization-alarm-search.png', 'organization-smart-following.png', 'organization-smart-configured.png', 'organization-alarm-schedule.png', 'organization-alarm-options.png', 'organization-controls-recreated.png', 'organization-alarm-backup.png', 'organization-smart-reopened.png', 'organization-alarm-reopened.png'],
-        "report-flow": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap")],
+        "report-flow": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap", "period-cancelled", "period-drag-start", "period-drag-end", "period-accessibility", "period-draft-recreated", "period-persisted")],
         "nap-features": NAP_FEATURE_FRAMES,
         "feature-increment": FEATURE_INCREMENT_FRAMES,
         "phone-features": PHONE_FEATURE_FRAMES,
