@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-Latest published **0.1.2 / 5bf66443** adds Room conditions, saved bedtime dimming, clearer Wind-down/Tracking controls and permission/selection fixes, including the new icon and firmer tap feedback. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.2-room-bedtime-20261028-5bf66443); [exact bounded evidence](docs/verification/2026-10-28-room-bedtime-build/README.md). Phone installation awaits USB; installed170b and its original user data are preserved.
+Latest published **0.1.3 / d4415a2b** adds the full-night live sonar timeline, revised wake-check/shared Math UI, calendar-consent recovery and portable Room dimming, including the new crescent-and-clock icon and firmer tap feedback. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.3-night-challenges-20261028-d4415a2b); [exact bounded evidence](docs/verification/2026-10-28-013-build/README.md). Phone installation awaits USB; installed170b and its original user data are preserved.
 
 Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped

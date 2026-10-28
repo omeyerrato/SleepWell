@@ -38,3 +38,7 @@ Portable Appearance profiles use version2 only when they contain the typed Room 
 Each archive preserves its exact source, selected method(s), original logs/images and limits. The settled-timeline archive contains new loaded paused-history frames; the earlier23.302s loading-state archive remains historical and unchanged. The five named methods above were independently bounded runs, not an aggregate full-app campaign. Earlier0.1.2 evidence remains separately scoped rather than being replayed or expanded by this package check.
 
 No whole-app security, all36-screen/reference completion, real OS/provider delivery, alarm admission, physical audio/haptic/light/sensor behavior, process-death recovery or overnight result is claimed. Package retention, typed preference round-trip and the linked fixture/native results establish their stated boundaries only.
+
+## Release-owner publication
+
+The release owner subsequently published [0.1.3](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.3-night-challenges-20261028-d4415a2b) and independently verified both uploaded asset hashes/sizes and the exact source tag. [Distribution record](distribution.json). This is separate from the original package-audit task above. Phone installation remains pending USB availability; the last verified installed source is170b0e44.
