@@ -98,18 +98,28 @@ public final class AutomationActivity extends Activity {
         if(!loadFailure.isEmpty()){Design.text(body,loadFailure,13,500,Design.BROWN);Design.button(body,"Refresh rules",false,this::refreshRows).setEnabled(request==null);}
         if(!status.isEmpty())Design.text(body,status,13,500,Design.BROWN);
         if(rowsLoaded&&rows.isEmpty())Design.text(body,"No rules yet. Add a destination and choose a sleep event.",14,400,Design.MUTED);
-        for(AutomationStore.Row row:rows){
-            LinearLayout card=Design.col(this);Design.pad(card,14,8);card.setBackground(Design.shape(this,Design.SOFT,16));
-            menu(card,row.transport.equals("INTENT")?"settings":"link",row.name,eventLabel(AutomationEvent.Kind.valueOf(row.event))+" → "+transportLabel(AutomationRule.Transport.valueOf(row.transport)),null,()->load(row));card.getChildAt(0).setEnabled(request==null&&!loading);
-            Switch choice=Design.toggle(card,"Enabled",row.status,row.enabled,on->setEnabled(row,on));choice.setContentDescription("Rule enabled: "+row.name);choice.setEnabled(request==null&&!loading);
-            body.addView(card);Design.space(body,10);
-        }
+        for(AutomationStore.Row row:rows){ruleCard(body,row);Design.space(body,10);}
         Design.space(body,10);RecordUi.heading(body,"Connection destinations");
         destinationRoute(body,AutomationRule.Transport.INTENT,"Tasker / receiving app","Target a receiving app package");
         destinationRoute(body,AutomationRule.Transport.WEBHOOK,"HTTPS webhook","Deliver sleep events to your URL");
         destinationRoute(body,AutomationRule.Transport.MQTT,"MQTT over TLS","Publish to your broker and topic");
         Design.space(body,8);Design.text(body,"New rules are Off. Enable only destinations you trust.",12,400,Design.MUTED);
     }
+    /** Row metadata only: choosing a card never decrypts a destination or queues an event. */
+    private void ruleCard(LinearLayout body,AutomationStore.Row row){
+        AutomationEvent.Kind event=AutomationEvent.Kind.valueOf(row.event);AutomationRule.Transport transport=AutomationRule.Transport.valueOf(row.transport);boolean admitted=request==null&&!loading;
+        LinearLayout card=Design.col(this);Design.pad(card,12,10);android.graphics.drawable.GradientDrawable surface=Design.shape(this,Design.CREAM,16);surface.setStroke(Design.dp(this,1),Design.LINE);card.setBackground(surface);
+        LinearLayout heading=Design.row(this),identity=Design.row(this);identity.setMinimumHeight(Design.dp(this,48));
+        Design.Icon symbol=new Design.Icon(this,eventIcon(event),Design.BROWN);Design.pad(symbol,9,9);symbol.setBackground(Design.shape(this,Design.LILAC,12));LinearLayout.LayoutParams symbolSize=new LinearLayout.LayoutParams(Design.dp(this,40),Design.dp(this,40));symbolSize.setMarginEnd(Design.dp(this,10));identity.addView(symbol,symbolSize);
+        LinearLayout copy=Design.col(this);Design.text(copy,row.name,15,600,Design.INK);Design.space(copy,3);Design.text(copy,row.status,11,400,Design.MUTED);identity.addView(copy,new LinearLayout.LayoutParams(0,-2,1));
+        identity.setContentDescription(row.name);identity.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,8));identity.setOnClickListener(v->{InteractionFeedback.action(v);load(row);});identity.setEnabled(admitted);heading.addView(identity,new LinearLayout.LayoutParams(0,-2,1));
+        InteractionFeedback.Toggle choice=new InteractionFeedback.Toggle(this);choice.setContentDescription("Rule enabled: "+row.name);Design.styleSwitch(this,choice,Design.BROWN,0xffbcb5b0);choice.setChecked(row.enabled);choice.setOnCheckedChangeListener((button,on)->{choice.userChanged();setEnabled(row,on);if(!InteractionFeedback.motion(this))choice.jumpDrawablesToCurrentState();});choice.setEnabled(admitted);LinearLayout.LayoutParams switchSize=new LinearLayout.LayoutParams(Design.dp(this,52),Design.dp(this,48));switchSize.setMarginStart(Design.dp(this,10));heading.addView(choice,switchSize);card.addView(heading,new LinearLayout.LayoutParams(-1,-2));
+        Design.space(card,8);LinearLayout flow=Design.row(this);flow.setMinimumHeight(Design.dp(this,48));String trigger=eventLabel(event);if(trigger.startsWith("When "))trigger=trigger.substring(5);trigger=Character.toUpperCase(trigger.charAt(0))+trigger.substring(1);
+        flow.addView(ruleChip(eventIcon(event),trigger),new LinearLayout.LayoutParams(0,-2,1));TextView arrow=Design.text(this,"→",20,500,Design.INK);arrow.setGravity(Gravity.CENTER);arrow.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);flow.addView(arrow,new LinearLayout.LayoutParams(Design.dp(this,28),Design.dp(this,48)));flow.addView(ruleChip(transport==AutomationRule.Transport.INTENT?"settings":transport==AutomationRule.Transport.MQTT?"sonar":"link",transportLabel(transport)),new LinearLayout.LayoutParams(0,-2,1));
+        flow.setContentDescription(eventLabel(event)+" → "+transportLabel(transport)+"; edit "+row.name);flow.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,8));flow.setOnClickListener(v->{InteractionFeedback.action(v);load(row);});flow.setEnabled(admitted);card.addView(flow,new LinearLayout.LayoutParams(-1,-2));body.addView(card,new LinearLayout.LayoutParams(-1,-2));
+    }
+    private LinearLayout ruleChip(String icon,String label){LinearLayout chip=Design.row(this);Design.pad(chip,8,6);chip.setMinimumHeight(Design.dp(this,44));chip.setBackground(Design.shape(this,Design.SOFT,10));Design.Icon glyph=new Design.Icon(this,icon,Design.BROWN);LinearLayout.LayoutParams size=new LinearLayout.LayoutParams(Design.dp(this,22),Design.dp(this,22));size.setMarginEnd(Design.dp(this,6));chip.addView(glyph,size);chip.addView(Design.text(this,label,11,500,Design.INK),new LinearLayout.LayoutParams(0,-2,1));return chip;}
+    private static String eventIcon(AutomationEvent.Kind event){return switch(event){case TRACKING_STARTED->"moon";case TRACKING_STOPPED,SLEEP_SOUND_STOPPED->"stop";case TRACKING_PAUSED->"pause";case TRACKING_RESUMED->"play";case ALARM_STARTED,ALARM_SNOOZED,ALARM_DISMISSED->"bell";case WAKE_CHECK_CONFIRMED->"check";case WAKE_CHECK_MISSED->"attention";case WIND_DOWN_REMINDER_POSTED->"moon";case SLEEP_SOUND_STARTED->"music";case ANTI_SNORE_SOUND_STARTED->"sound";case SOUND_RECOGNIZED->"wave";};}
     private void destinationRoute(LinearLayout body,AutomationRule.Transport type,String title,String detail){menu(body,type==AutomationRule.Transport.INTENT?"settings":"link",title,detail,null,()->{if(!available())return;destinationType=type;open("destination");});}
     private void options(LinearLayout body){
         menu(body,"link","Incoming tracking requests","Separate default-off access; confirmation each time",null,()->{if(available())startActivity(RecordUi.intent(this,IncomingAutomationSettingsActivity.class));});
