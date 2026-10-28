@@ -75,6 +75,16 @@ WAKE_CHECK_FRAMES = ["wake-check-" + name + ".png" for name in ("waiting", "prom
 FOCUSED_TESTS = ("AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "AlarmWakeSettingsTest", "WakeCheckFlowTest")
 ORGANIZED_SETTINGS_FRAMES = ["organized-settings-" + name + ".png" for name in ("sensitivity-categories", "sensitivity-duration", "sensitivity-reopened", "retention-details", "snoring-options", "automatic-conditions", "automatic-permission-recovery", "recurring-conditions", "sounds-sources", "sounds-playback", "timer-recreated", "fade-reopened")]
 ORGANIZED_SETTINGS_FRAMES += ["organized-settings-tracking-"+name+".png" for name in ("main","more","sensitivity","power","power-recreated","recreated","automatic-manual","phone-selected")]
+ORGANIZED_AUTOMATIC_FRAMES = ORGANIZED_SETTINGS_FRAMES + [
+    "organized-settings-automatic-main.png",
+    "organized-settings-automatic-source.png",
+    "organized-settings-automatic-options.png",
+    "organized-settings-automatic-sounds.png",
+    "organized-settings-automatic-detection.png",
+    "organized-settings-automatic-access.png",
+    "organized-settings-automatic-active-wait.png",
+    "organized-settings-automatic-saved-reopened.png",
+]
 SETUP_READINESS_FRAMES = ORGANIZED_SETTINGS_FRAMES + ["protection-"+name+".png" for name in ("alarms","editor","off","disclosure","on","recreated","global","power-only","readiness","readiness-rationale","readiness-rationale-cancel","readiness-settings-recovery","readiness-returned")]
 ROOM_BEDTIME_LIVE_FRAMES = ORGANIZED_SETTINGS_FRAMES + ["guard-"+name+".png" for name in ("draft","saved","options-recreated","paused","wind-down","wind-down-options","wind-down-recreated","wind-down-paused")]
 ROOM_BEDTIME_LIVE_FRAMES += ["motion-settings-"+name+".png" for name in ("ready","changed","recreated","reopened","conflict","unavailable","error")]
@@ -323,7 +333,7 @@ elif args.scope == "report-flow":
 elif args.scope == "organization":
     tests = ["SettingsOrganizationFlowTest"]
 elif args.scope == "organized-settings":
-    tests = ["OrganizedSettingsJourneyTest"]
+    tests = ["OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs"]
 elif args.scope == "recorded-analysis":
     tests = ["RecordedAnalysisJourneyTest"]
 elif args.scope == "math-owner":
@@ -502,7 +512,7 @@ if args.scope != "full":
         "travel-ui": TRAVEL_UI_FRAMES,
         "travel-cue-cleanup": TRAVEL_CUE_CLEANUP_FRAMES,
         "recorded-analysis": RECORDED_ANALYSIS_FRAMES,
-        "organized-settings": ORGANIZED_SETTINGS_FRAMES,
+        "organized-settings": ORGANIZED_AUTOMATIC_FRAMES,
         "organization": ['organization-alarm-list.png', 'organization-alarm-list-large.png', 'organization-alarm-time-stepped.png', 'organization-alarm-time-recreated.png', 'organization-settings-root.png', 'organization-settings-sleep.png', 'organization-feedback-off.png', 'organization-search-flashlight.png', 'organization-alarm-editor.png', 'organization-alarm-search.png', 'organization-smart-following.png', 'organization-smart-configured.png', 'organization-alarm-schedule.png', 'organization-alarm-options.png', 'organization-controls-recreated.png', 'organization-alarm-backup.png', 'organization-smart-reopened.png', 'organization-alarm-reopened.png'],
         "report-flow": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap", "period-cancelled", "period-drag-start", "period-drag-end", "period-accessibility", "period-draft-recreated", "period-persisted")],
         "nap-features": NAP_FEATURE_FRAMES,
