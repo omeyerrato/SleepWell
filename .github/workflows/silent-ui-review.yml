@@ -37,6 +37,7 @@ on:
           - wake-challenge-reference
           - calendar-consent-recovery
           - profile-room-dimming
+          - room-settings-search
           - sensing-travel
           - travel-ui
           - sonar-night
