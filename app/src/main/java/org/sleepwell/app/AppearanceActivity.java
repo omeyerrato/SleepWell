@@ -72,7 +72,11 @@ public final class AppearanceActivity extends Activity {
         themeHelp.setText("Preview the look for different times.");
     }
     private void textSize(){if(picker!=null&&picker.isShowing())picker.dismiss();picker=SleepPicker.choices(this,"Text size",AppearancePolicy.SIZES,size,which->{size=which;sizeValue.setText(AppearancePolicy.SIZES[size]);});}
-    private void appearanceOptions(){if(options!=null&&options.isShowing())options.dismiss();optionsPage="menu";options=ChallengeActionRows.actions(this,"Appearance options",java.util.List.of("Tonight layout","Color schedule"),which->{if(which==0)startActivity(RecordUi.intent(this,TonightLayoutActivity.class));else colorSchedule();});}
+    private void appearanceOptions(){
+        if(options!=null&&options.isShowing())options.dismiss();optionsPage="menu";Dialog dialog=new Dialog(this);options=dialog;dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);LinearLayout content=Design.col(this);Design.pad(content,22,20);content.setBackground(Design.shape(this,Design.CREAM,24));Design.text(content,"Appearance options",22,600,Design.INK);Design.space(content,12);
+        PlanActivity.detail(content,"home","Tonight layout","Choose your home screen sections",null,()->{dialog.dismiss();startActivity(RecordUi.intent(this,TonightLayoutActivity.class));});Design.line(content);
+        PlanActivity.detail(content,"clock","Color schedule","See when the theme changes",null,()->{dialog.dismiss();colorSchedule();});Design.button(content,"Done",false,dialog::dismiss);ScrollView scroll=new ScrollView(this);scroll.addView(content);dialog.setContentView(scroll);dialog.show();dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));dialog.getWindow().setLayout(Math.min(getResources().getDisplayMetrics().widthPixels-Design.dp(this,32),Design.dp(this,420)),-2);
+    }
     private void colorSchedule(){if(options!=null&&options.isShowing())options.dismiss();optionsPage="schedule";options=SleepPicker.message(this,"Colors through the day","Midnight: 6 PM–4 AM. Pre-dawn: 4–6 AM. Dawn: 6 AM–6 PM. These follow your local clock. Choosing a theme turns Time of day off.");}
     @Override protected void onResume(){super.onResume();if(lightCard!=null)lightCard.refresh();}
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
