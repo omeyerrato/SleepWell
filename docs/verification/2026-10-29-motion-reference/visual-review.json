@@ -1,0 +1,46 @@
+{
+  "reference": "design-concepts/2026-10-22-phone-app/10-phone-sensors.png middle panel, inspected individually",
+  "review": "Each original PNG was opened separately and compared with the reference; no montage substituted for review.",
+  "frames": [
+    {
+      "file": "originals/motion-settings-ready.png",
+      "individually_inspected": true,
+      "observation": "Medium; Scale 0–0.27; only the latest injected six seconds have bars, earlier missing history blank. Handset, all time ticks, complete signal feedback, rail, full calibration row and fixed actions visible."
+    },
+    {
+      "file": "originals/motion-settings-changed.png",
+      "individually_inspected": true,
+      "observation": "High selected at the far rail endpoint; observed data range now 0–0.53. Same complete layout, with an uncut thumb and info target."
+    },
+    {
+      "file": "originals/motion-settings-recreated.png",
+      "individually_inspected": true,
+      "observation": "High selection retained; newly started subscription has no samples and shows a blank chart with Scale 0–0.24. The complete waiting message wraps safely; calibration and footer remain visible."
+    },
+    {
+      "file": "originals/motion-settings-reopened.png",
+      "individually_inspected": true,
+      "observation": "Persisted High setting is visible after the real Use save/reopen. Chart correctly remains blank until new callbacks; complete waiting feedback and all controls fit."
+    },
+    {
+      "file": "originals/motion-settings-conflict.png",
+      "individually_inspected": true,
+      "observation": "Complete orange concurrent-change feedback survives recreation. High is the attempted selection; the original test asserts stored concurrent Low remains unchanged. Calibration/footer remain visible."
+    },
+    {
+      "file": "originals/motion-settings-unavailable.png",
+      "individually_inspected": true,
+      "observation": "Unavailable status and full no-accelerometer feedback; blank chart, stored Low, Use visibly disabled. Test/calibration row remain available and fully visible."
+    },
+    {
+      "file": "originals/motion-settings-error.png",
+      "individually_inspected": true,
+      "observation": "Not active status and full startup error; blank chart, stored Low, Use visibly disabled. Test/calibration row and chart labels remain fully visible."
+    }
+  ],
+  "qualifications": [
+    "System status/navigation glyph contrast inherited, not changed or fully accepted here.",
+    "Additional calibration action is retained and adds a row beyond the visual concept. Artwork/chart and gaps are compacted without reducing body text or touch target sizes.",
+    "Renderer configuration only; no physical sensor, hardware calibration or font-scale matrix acceptance."
+  ]
+}

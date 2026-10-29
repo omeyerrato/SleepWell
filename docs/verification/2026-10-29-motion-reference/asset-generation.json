@@ -1,0 +1,22 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "generation from a visual reference",
+  "transparent_background_requested": true,
+  "reference": "design-concepts/2026-10-22-phone-app/10-phone-sensors.png, middle panel handset",
+  "output": "app/src/main/res/drawable-nodpi/motion_sensor_handset.png",
+  "generated_original_basename": "exec-aacfb75f-39d5-49ff-b28a-95096354129b.png",
+  "bytes": 502933,
+  "sha256": "6f7ae09ce1c38ac8b0caba5e32b288613589bd94c3625d06ddf6147663c36420",
+  "width": 2005,
+  "height": 784,
+  "mode_pixels": "RGBA",
+  "alpha_range": [
+    0,
+    255
+  ],
+  "post_generation_pixel_edits": false,
+  "workspace_copy_exact_original_bytes": true,
+  "inspection": "Generated result individually inspected: complete dark horizontal handset, two violet arcs on each side, subtle shadow, no text or UI. Native fit remains part of the focused screenshot review.",
+  "prompt": "Use case: stylized-concept. Asset type: transparent raster illustration for the existing SleepWell native Android Motion sensor settings screen. Input image is a STYLE AND COMPOSITION REFERENCE ONLY: use just the small horizontal smartphone illustration near the top of the MIDDLE panel in Board 10, not any UI or text. Create that isolated illustration: a dark aubergine/charcoal smartphone lying face-up in a shallow three-quarter perspective, long edge horizontal, slightly diagonal rising to the right; thin dark outline, soft matte glass, two simple lilac curved motion arcs on each side. A very faint pale mauve oval contact shadow beneath. Match the refined soft flat illustration, proportions, and quiet black/lavender palette of the supplied middle-panel handset. It will be displayed about 210 dp wide by 82 dp tall on cream, so keep a wide compact composition with a small transparent margin. True transparent background; preserve alpha. No opaque backdrop, cream rectangle, text, labels, logos, app screen, numbers, extra objects, hands, people, gradients/glow, bright highlights or drop-shadow halo. Render only the complete phone, four clean motion arcs, and subtle oval shadow. Return one production-ready PNG asset.",
+  "reference_sha256": "8311f72d98b11cf3dfa92cd6d7977554fb4bd564bf30cd81facd5f26453e8b51"
+}

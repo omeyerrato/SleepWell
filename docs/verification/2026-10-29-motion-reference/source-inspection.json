@@ -1,0 +1,73 @@
+{
+  "base": "19e49e74e58ff05812229743df441e8942775db1",
+  "candidate": "a46f1b7cc4cb8737cc5b532a318072ff515ad8d8",
+  "file": "app/src/main/java/org/sleepwell/app/MotionSensorActivity.java",
+  "scope": "Read-only exact method definition comparison; not executed runtime proof",
+  "unchanged_methods": [
+    {
+      "method": "onCreate",
+      "definition_identical": true,
+      "sha256": "8844f5626244557c88bc574dd225876ace558e5f871c243caf2d8c5bff8e56a4"
+    },
+    {
+      "method": "onResume",
+      "definition_identical": true,
+      "sha256": "fbe84f6ba49fd98601cbef050bb483d9982f92665f7843dc16ae41487c1547f4"
+    },
+    {
+      "method": "onPause",
+      "definition_identical": true,
+      "sha256": "f0e1df3fa652018e77fb903c02f342d38027a14fda9f7204a4f078320447cdf8"
+    },
+    {
+      "method": "styleSlider",
+      "definition_identical": true,
+      "sha256": "082618427bd92762122895981e55e09f1a6d423ce9496303d17bf60a6d595e32"
+    },
+    {
+      "method": "test",
+      "definition_identical": true,
+      "sha256": "270ba432b0e7c16c73be190143c85b829338fa9b80fc9ed275ea80aa5783f849"
+    },
+    {
+      "method": "save",
+      "definition_identical": true,
+      "sha256": "62912163589d19013e978809cd2bdb75b41ead23fdd17b96e5316342dcb601e4"
+    },
+    {
+      "method": "observe",
+      "definition_identical": true,
+      "sha256": "6cc27f251c3e13ba99278bd09ebe58766bc3fb775b1395a5410791bf5a6c4cd8"
+    },
+    {
+      "method": "onActivityResult",
+      "definition_identical": true,
+      "sha256": "949d03733cd9c996a5bc4a70b768d3ef291f4467ce5819e5ecdb855f9f697488"
+    },
+    {
+      "method": "back",
+      "definition_identical": true,
+      "sha256": "10f7c069c0e21e7b21d5dc33fa020d795f9313065600f00bc87b9935dcc62d0d"
+    },
+    {
+      "method": "onBackPressed",
+      "definition_identical": true,
+      "sha256": "9bcd3bd01fa8353a0f7cb25978905c12f87d17a9cd011887a06149dc9eb69ac2"
+    },
+    {
+      "method": "onWindowFocusChanged",
+      "definition_identical": true,
+      "sha256": "afbfbe4b493bfad3265834e129ae4284b21530e78a7d330aee7bab3c58f66885"
+    },
+    {
+      "method": "onSaveInstanceState",
+      "definition_identical": true,
+      "sha256": "44aed86e171d3126bb4c5ddadb6fee71c2789429da9d6a094462701e36670a69"
+    },
+    {
+      "method": "onDestroy",
+      "definition_identical": true,
+      "sha256": "52a7ed1caae7039c117db0a186f41cde04cfc766860ee639a6659726149fa3c6"
+    }
+  ]
+}
