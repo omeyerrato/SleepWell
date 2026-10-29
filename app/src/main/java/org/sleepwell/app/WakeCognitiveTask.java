@@ -2,6 +2,8 @@ package org.sleepwell.app;
 
 import android.os.*;
 import android.text.InputType;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.*;
 import android.widget.*;
 import java.util.*;
@@ -25,6 +27,14 @@ abstract class WakeCognitiveTask implements AutoCloseable {
     final void finish(){if(!live())return;delivered=true;main.removeCallbacksAndMessages(null);complete.run();}
     final boolean restores(Bundle state,String type){return state!=null&&key.equals(state.getString("key"))&&type.equals(state.getString("type"));}
     final Bundle base(String type){Bundle state=new Bundle();state.putString("key",key);state.putString("type",type);return state;}
+    // Inline task status stays in the card, away from the caller's fixed exit actions.
+    // Native polite live-region semantics; no forced announcement or output on restore.
+    final TextView feedbackView(){
+        TextView view=Design.text(card,"",16,500,Design.BROWN);
+        view.setPadding(0,Design.dp(card.getContext(),8),0,Design.dp(card.getContext(),8));
+        view.setVisibility(View.GONE);view.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);return view;
+    }
+    final void feedback(TextView view,String value){view.setText(value);view.setVisibility(value.isEmpty()?View.GONE:View.VISIBLE);}
     abstract Bundle state();
     void pause(){main.removeCallbacksAndMessages(null);}
     void resume(){}
@@ -72,7 +82,7 @@ abstract class WakeCognitiveTask implements AutoCloseable {
     static final class Sequence extends WakeCognitiveTask {
         final Random random;
         final int length;
-        final TextView prompt;
+        final TextView prompt,feedback;
         String expected,entered="";
         long revealUntil;
 
@@ -86,21 +96,25 @@ abstract class WakeCognitiveTask implements AutoCloseable {
             Ui.heading(card,"Watch. Remember. Repeat.",22);prompt=Ui.heading(card,"",32);
             long remaining=restoring?Math.max(0,Math.min(2500,restored.getLong("revealRemaining"))):2500;
             if(!entered.isEmpty())prompt.setText(entered);else if(remaining>0)reveal(remaining);else prompt.setText("Now repeat the sequence");
+            feedback=feedbackView();
+            if(restoring&&restored.getBoolean("retry")&&expected.equals(restored.getString("retryExpected"))&&entered.equals(restored.getString("entered"))&&entered.equals(restored.getString("retryInput")))feedback(feedback,"That did not match. Watch the new sequence, then try again.");
             LinearLayout row=new LinearLayout(card.getContext());card.addView(row,new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
             for(int n=1;n<=4;n++){final int value=n;Button button=new Button(card.getContext());button.setStateListAnimator(null);button.setElevation(0);button.setText(Integer.toString(n));button.setTextColor(Design.INK);button.setBackground(Design.touch(card.getContext(),Design.SOFT,16));row.addView(button,new LinearLayout.LayoutParams(0,Ui.dp(card.getContext(),56),1));button.setOnClickListener(ignored->tap(value));}
-            Ui.button(card,"Show sequence again",()->{if(!live())return;entered="";reveal(2500);});
+            Ui.button(card,"Show sequence again",()->{if(!live())return;feedback(feedback,"");entered="";reveal(2500);});
         }
         private static boolean digits(String value,int length){if(value.length()!=length)return false;for(int n=0;n<length;n++)if(value.charAt(n)<'1'||value.charAt(n)>'4')return false;return true;}
         private void fresh(){StringBuilder value=new StringBuilder();for(int n=0;n<length;n++)value.append(1+random.nextInt(4));expected=value.toString();entered="";}
         private void reveal(long duration){main.removeCallbacksAndMessages(null);revealUntil=SystemClock.elapsedRealtime()+duration;prompt.setText(expected);main.postDelayed(()->{if(!live())return;revealUntil=0;prompt.setText(entered.isEmpty()?"Now repeat the sequence":entered);},duration);}
-        private void tap(int value){if(!live())return;entered+=value;prompt.setText(entered);if(!expected.startsWith(entered)){Ui.toast(card.getContext(),"Watch once more");fresh();reveal(2500);}else if(entered.equals(expected))finish();}
-        @Override Bundle state(){Bundle state=base("Sequence");state.putString("expected",expected);state.putString("entered",entered);state.putLong("revealRemaining",Math.max(0,Math.min(2500,revealUntil-SystemClock.elapsedRealtime())));return state;}
+        private void tap(int value){if(!live())return;entered+=value;prompt.setText(entered);if(!expected.startsWith(entered)){fresh();reveal(2500);feedback(feedback,"That did not match. Watch the new sequence, then try again.");}else{feedback(feedback,"");if(entered.equals(expected))finish();}}
+        @Override Bundle state(){Bundle state=base("Sequence");state.putString("expected",expected);state.putString("entered",entered);state.putBoolean("retry",feedback.getVisibility()==View.VISIBLE);state.putString("retryInput",entered);state.putString("retryExpected",expected);state.putLong("revealRemaining",Math.max(0,Math.min(2500,revealUntil-SystemClock.elapsedRealtime())));return state;}
         @Override void resume(){if(!live())return;long remaining=revealUntil-SystemClock.elapsedRealtime();if(revealUntil>0&&remaining>0)reveal(remaining);else{revealUntil=0;prompt.setText(entered.isEmpty()?"Now repeat the sequence":entered);}}
     }
 
     static final class Retype extends WakeCognitiveTask {
         final EditText input;
+        final TextView feedback;
         final String phrase;
+        String rejected;
         Retype(LinearLayout card,String run,int unit,String phrase,boolean practice,Bundle restored,BooleanSupplier current,Runnable complete){
             super(card,run,unit,current,complete);this.phrase=phrase;
             Design.text(card,practice?"Retype the phrase":"Retype to dismiss",22,600,Design.INK).setGravity(Gravity.CENTER);
@@ -109,8 +123,15 @@ abstract class WakeCognitiveTask implements AutoCloseable {
             input=Ui.input(card,"Your answer",saved,InputType.TYPE_CLASS_TEXT);
             input.setMinimumHeight(Design.dp(card.getContext(),48));
             if(practice)input.setFilters(new android.text.InputFilter[]{new android.text.InputFilter.LengthFilter(120)});
-            Ui.button(card,"Check answer",()->{if(!live())return;if(input.getText().toString().trim().equals(phrase))finish();else input.setError("Try again");},true);
+            feedback=feedbackView();
+            if(restores(restored,"Retype")&&phrase.equals(restored.getString("phrase"))&&saved.equals(restored.getString("rejected"))){rejected=saved;feedback(feedback,"That did not match. Retype the phrase exactly as shown.");}
+            input.addTextChangedListener(new TextWatcher(){
+                public void beforeTextChanged(CharSequence value,int start,int count,int after){}
+                public void onTextChanged(CharSequence value,int start,int before,int count){if(live()&&rejected!=null&&!rejected.contentEquals(value)){rejected=null;feedback(feedback,"");}}
+                public void afterTextChanged(Editable value){}
+            });
+            Ui.button(card,"Check answer",()->{if(!live())return;if(input.getText().toString().trim().equals(phrase))finish();else{rejected=input.getText().toString();feedback(feedback,"That did not match. Retype the phrase exactly as shown.");}},true);
         }
-        @Override Bundle state(){Bundle state=base("Retype");state.putString("phrase",phrase);state.putString("answer",input.getText().toString());return state;}
+        @Override Bundle state(){Bundle state=base("Retype");state.putString("phrase",phrase);state.putString("answer",input.getText().toString());if(rejected!=null)state.putString("rejected",rejected);return state;}
     }
 }
