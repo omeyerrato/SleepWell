@@ -42,7 +42,7 @@ final class ChallengePracticeSession {
         try{
             ChallengeRoutine configured=ChallengeRoutineJson.decode(new JSONArray(snapshot));
             List<String> missing=unwired(configured,supported);
-            if(!missing.isEmpty())throw new IllegalArgumentException("Routine preview is not wired for "+String.join(", ",missing)+".");
+            if(!missing.isEmpty())throw new IllegalArgumentException("Routine preview is not available for "+String.join(", ",missing)+".");
             if(restored!=null){
                 if(restored.getInt("version")!=VERSION||!snapshot.equals(restored.getString("snapshot")))
                     throw new IllegalArgumentException("This routine changed. Start a new preview.");

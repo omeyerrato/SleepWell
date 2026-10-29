@@ -33,7 +33,7 @@ public final class ChallengePracticeActivity extends Activity {
             raw=ChallengePracticeSession.canonical(input.getStringExtra("routine"));
             ChallengeRoutine configured=ChallengeRoutineJson.decode(new JSONArray(raw));
             List<String> missing=ChallengePracticeSession.unwired(configured,ChallengePracticeScreen.SUPPORTED);
-            if(!missing.isEmpty())throw new IllegalArgumentException("This routine cannot be previewed yet. Working preview controllers are still needed for:\n"+String.join("\n",missing)+"\nYour routine has not changed.");
+            if(!missing.isEmpty())throw new IllegalArgumentException("Routine preview is not available for these tasks yet:\n"+String.join("\n",missing)+"\nYour routine has not changed.");
             Bundle restored=saved==null?input.getBundleExtra("practiceState"):saved.getBundle("practiceState");
             session=ChallengePracticeSession.open(this,raw,restored==null?null:restored.getBundle("session"),ChallengePracticeScreen.SUPPORTED);
             checkpoints=new PracticeCheckpoints(session.run,restored==null?null:restored.getBundle("checkpoints"));
@@ -48,7 +48,7 @@ public final class ChallengePracticeActivity extends Activity {
         if(session.finished()){
             LinearLayout body=Design.page(this,false,null,null);RecordUi.header(body,"Routine preview",action(this::cancel));Design.space(body,20);
             Design.text(body,"Routine preview completed",26,600,Design.INK);Design.space(body,10);
-            Design.text(body,"All "+session.routine.tasks.size()+" tasks completed in order. No saved alarm or alarm task was changed.",14,400,Design.MUTED);
+            Design.text(body,"All "+session.routine.tasks.size()+" tasks completed in order. Practice does not change your alarm.",14,400,Design.MUTED);
             if(!session.selectionNotice.isEmpty()){Design.space(body,12);Design.text(body,session.selectionNotice,13,400,Design.MUTED);}
             Design.button(body,session.configured.randomCount>0?"Try another example selection":"Practice again",false,action(()->{
                 session.invalidate();session=ChallengePracticeSession.open(this,raw,null,ChallengePracticeScreen.SUPPORTED);checkpoints=new PracticeCheckpoints(session.run,null);render();

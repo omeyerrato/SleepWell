@@ -14,20 +14,20 @@ final class PracticeCheckpoints implements SharedPreferences {
     PracticeCheckpoints(String run,Bundle restored){
         this.run=run;
         if(restored==null)return;
-        if(!run.equals(restored.getString("run")))throw new IllegalArgumentException("Preview checkpoints belong to another session.");
+        if(!run.equals(restored.getString("run")))throw new IllegalArgumentException("This preview progress belongs to another session.");
         Bundle entries=restored.getBundle("entries");
-        if(entries==null||entries.size()>MAX_KEYS)throw new IllegalArgumentException("Preview checkpoints are unavailable.");
+        if(entries==null||entries.size()>MAX_KEYS)throw new IllegalArgumentException("Preview progress is unavailable.");
         for(String key:entries.keySet()){
-            Bundle row=entries.getBundle(key);if(row==null)throw new IllegalArgumentException("Invalid preview checkpoint.");
+            Bundle row=entries.getBundle(key);if(row==null)throw new IllegalArgumentException("Preview progress could not be read.");
             Object value=switch(row.getString("type","")){
                 case "string"->row.getString("value");case "int"->row.getInt("value");case "long"->row.getLong("value");
                 case "float"->row.getFloat("value");case "boolean"->row.getBoolean("value");
-                case "set"->{ArrayList<String> items=row.getStringArrayList("value");if(items==null)throw new IllegalArgumentException("Invalid preview checkpoint set.");yield Set.copyOf(items);}
-                default->throw new IllegalArgumentException("Unknown preview checkpoint type.");
+                case "set"->{ArrayList<String> items=row.getStringArrayList("value");if(items==null)throw new IllegalArgumentException("Preview progress could not be read.");yield Set.copyOf(items);}
+                default->throw new IllegalArgumentException("Preview progress could not be read.");
             };
-            if(value==null)throw new IllegalArgumentException("Missing preview checkpoint value.");values.put(key,value);
+            if(value==null)throw new IllegalArgumentException("Preview progress could not be read.");values.put(key,value);
         }
-        if(!bounded(values))throw new IllegalArgumentException("Preview checkpoints are too large.");
+        if(!bounded(values))throw new IllegalArgumentException("This preview has too much saved progress. Start a new preview.");
     }
 
     synchronized Bundle save(){
@@ -94,6 +94,6 @@ final class PracticeCheckpoints implements SharedPreferences {
             if(Looper.myLooper()==Looper.getMainLooper())notify.run();else new Handler(Looper.getMainLooper()).post(notify);
             return true;
         }
-        @Override public void apply(){if(!commit())throw new IllegalStateException("Preview checkpoint limit reached. Return and start a new preview.");}
+        @Override public void apply(){if(!commit())throw new IllegalStateException("This preview has too much saved progress. Return and start a new preview.");}
     }
 }
