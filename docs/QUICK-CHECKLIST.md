@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated 30 October 2026. Latest published APK: **0.1.12 / 031d44e5** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
+Updated 30 October 2026. Latest published APK: **0.1.13 / f11cc1cf** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.12-readiness-20261030-031d44e5) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.13-report-bedtime-20261030-f11cc1cf) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -91,6 +91,13 @@ Appearance theme rings (`6d56b05b`) are included in0.1.11.
 - [x] Add explicit review/confirmation for the reference's quiet-alarm control, plus permission/busy/error/request states.
 - [x] Give real alarm occurrences priority over the new quiet request; retain ordinary alarm overlap behavior.
 - [x] Produce and publish0.1.12 (`031d44e5`), APK packaging1m3s. No alarm was executed and new verification remains deferred. The earlier6cfcc62e package was held and never published.
+
+## Published in 0.1.13 — report and bedtime
+
+- [x] Keep Report sound rows and the main action prominent; move routine details into About while retaining errors.
+- [x] Add name/package search, selection counts and an empty state to the guard app picker.
+- [x] Replace the blocking screen's misleading Start label with Open Wind-down, night styling, settings and saved-state information. Preserve Pause/Home actions.
+- [x] Produce and publish0.1.13 (`f11cc1cf`), APK packaging1m55s only. New visual/action/device acceptance remains deferred.
 
 ## Still unfinished
 

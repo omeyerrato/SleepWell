@@ -1,6 +1,6 @@
 # SleepWell feature checklist — 30 October 2026
 
-Latest published **0.1.12 / 031d44e5** includes the usability-first updates and explicit readiness alarm control. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.12-readiness-20261030-031d44e5); [current source changes and deferred acceptance](USABILITY-PASS-2026-10-29.md). APK packaging only; no new verification, security review or physical output ran. The phone remains on0.1.4; installation is deferred. All36 matching, combined Privacy acceptance, remaining feature parity and device/overnight work remain open.
+Latest published **0.1.13 / f11cc1cf** includes the usability-first updates and explicit readiness alarm control. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.13-report-bedtime-20261030-f11cc1cf); [current source changes and deferred acceptance](USABILITY-PASS-2026-10-29.md). APK packaging only; no new verification, security review or physical output ran. The phone remains on0.1.4; installation is deferred. All36 matching, combined Privacy acceptance, remaining feature parity and device/overnight work remain open.
 
 Condensed version: [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
 Checked means implemented source/build, not full phone/overnight acceptance.

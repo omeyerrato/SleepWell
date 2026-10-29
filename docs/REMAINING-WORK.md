@@ -1,6 +1,6 @@
 # SleepWell current remaining work
 
-Latest published **0.1.12 / 031d44e5** contains the [usability-first source pass](USABILITY-PASS-2026-10-29.md). [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.12-readiness-20261030-031d44e5). APK packaging only; new verification/security/bug-fixing work is deferred by the user. Recording-only cleanup and Last export source are integrated; combined Privacy acceptance and all36 matching remain open. The phone remains on0.1.4; installation is deferred.
+Latest published **0.1.13 / f11cc1cf** contains the [usability-first source pass](USABILITY-PASS-2026-10-29.md). [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.13-report-bedtime-20261030-f11cc1cf). APK packaging only; new verification/security/bug-fixing work is deferred by the user. Recording-only cleanup and Last export source are integrated; combined Privacy acceptance and all36 matching remain open. The phone remains on0.1.4; installation is deferred.
 
 Updated 29 October 2026. This is the consolidated current checklist, not a release
 history. The goal remains the full applicable phone functionality and **all 36
@@ -87,7 +87,7 @@ unverified. [Scoped evidence](verification/2026-10-26-settings-organization/READ
 | --- | --- |
 | Installed phone build | **0.1.4 / 08d3911e**, installed APK hash and original user-data preservation verified; expected internal API revisions/profile cache only. |
 | Phone availability | Update deferred by user; no phone/ADB action is being taken. Last verified installed build0.1.4. |
-| Published candidate | **0.1.12 / 031d44e5 arm64**, APK packaging1m3s only; new verification deferred. Phone0.1.4; update deferred. |
+| Published candidate | **0.1.13 / f11cc1cf arm64**, APK packaging1m55s only; new verification deferred. Phone0.1.4; update deferred. |
 | Earlier feature evidence | Organization 33.114s/14 inspected captures, challenge ordering 40.237s/6 and recording analysis 40.27s/5. These do not accept newer source. Per-alarm sensor accuracy, physical output, all36 screens and overnight acceptance remain open. |
 | Current work policy | Usability first. New tests, lint, screenshot verification, security review and a separate bug pass are deferred. APK packaging only; phone/output operations remain deferred. |
 

@@ -46,6 +46,16 @@ No new tests, lint, visual verification, security review or physical outputs ran
 
 The initial candidate `6cfcc62e` packaged successfully in1m48s but was held and never published or executed. It was superseded by **`031d44e5`**, [published as0.1.12](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.12-readiness-20261030-031d44e5), APK packaging1m3s only. Positive real alarm occurrences replace an active id-1 quiet test through the existing occurrence handoff; queued quiet delivery yields to active alarms, tracking and wake-up checks. Ordinary alarm-overlap behavior and lifetime rules remain. This flow has no new runtime or visual acceptance and was never executed.
 
+## Report and bedtime — 0.1.13
+
+Published source **`f11cc1cf`**, version **0.1.13 / 14**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.13-report-bedtime-20261030-f11cc1cf). APK packaging1m55s only.
+
+- Routine sound-analysis and clip-count details move to the existing About path. Errors and unavailable-playback explanations remain on the main Report. No data or analysis rules change.
+- The guard picker searches real app names and package IDs. Clearing/filtering retains the owned selection; query/draft rotation state is saved, Cancel discards the picker copy, Use updates the outer draft and Save keeps its existing persistence behavior.
+- The guard interruption screen follows the Wind-down visual vocabulary and uses the existing night illustration. Open Wind-down opens that exact route without starting tracking. Guard settings, Pause for5minutes and Home remain available. Visible status reads the saved schedule/pause/access state.
+
+No new tests, lint, screenshot verification, security review, device or output actions ran. F042 links the guard source; the full36 acceptance remains open.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.
