@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
         renderedPhase=Appearance.palette(this).phase;
         boolean root=tab==0||tab==1||tab==2||tab==4||tab==7;
         LinearLayout body=tab==3?Design.darkPage(this):Design.page(this,tab==0,root?(tab==2||tab==7?2:tab==4?3:tab==1?1:0):null,this::navigate);
-        switch(tab){case 1:alarmList(body);break;case 2:report(body);break;case 3:bedtime(body);break;case 4:settingsHome(body);break;case 5:setup(body);break;case 9:soundAnalysis(body);break;case 11:alarmOptions(body);break;case 6:privacy(body);break;case 7:history(body);break;default:tonight(body);}
+        switch(tab){case 1:alarmList(body);break;case 2:report(body);break;case 3:bedtime(body);break;case 4:settingsHome(body);break;case 5:setup(body);break;case 9:soundAnalysis(body);break;case 11:alarmOptions(body);break;case 12:recordingOptions(body);break;case 6:privacy(body);break;case 7:history(body);break;default:tonight(body);}
         if(tab==4){ScrollView current=scroll(getWindow().getDecorView());if(current!=null){int position=settingsScroll.getOrDefault(settingsGroup,0);current.post(()->current.scrollTo(0,position));}}
         if(restoreRestWindow){restoreRestWindow=false;NightArc owner=nightArc;if(tab==0&&owner!=null)owner.post(()->{if(!isDestroyed()&&!isFinishing()&&tab==0&&nightArc==owner)owner.restoreExplanation();});}
         syncWindDimming();
@@ -75,59 +75,74 @@ public class MainActivity extends Activity {
         if(!settingsGroup.isEmpty()){settingsSection(body);return;}
         Design.header(body,"Settings",null);
         RecordUi.headerAction((LinearLayout)body.getChildAt(0),"search","Search settings",this::settingsSearch);
-        settingsRow(body,"bell","Alarms","Sound, challenges and wake-up",()->openSettingsGroup("alarm"));
-        settingsRow(body,"moon","Sleep & bedtime","Tracking, sleep plan and bedtime guard",()->openSettingsGroup("sleep"));
-        settingsRow(body,"wave","Sound & recordings","Sleep sounds, analysis and snoring",()->openSettingsGroup("sound"));
-        settingsRow(body,"palette","Appearance & feedback","Theme, text and touch feedback",()->openSettingsGroup("appearance"));
-        settingsRow(body,"settings","Reliability","Permissions, battery and alarm readiness",()->openSettingsPage(5));
-        settingsRow(body,"plug","Connected apps","Health, lights and automations",()->openSettingsGroup("connections"));
-        settingsRow(body,"lock","Data & privacy","Storage, backup and optional sharing",()->openSettingsPage(6));
-        settingsRow(body,"home","Home screen","Widgets and launcher shortcuts",()->startActivity(RecordUi.intent(this,HomeWidgetSettingsActivity.class)));
+        settingsRow(body,"bell","Alarms","Alarm time, sound and wake-up",()->openSettingsGroup("alarm"));
+        settingsRow(body,"moon","Sleep tracking","Sensors, bedtime and sleep goals",()->openSettingsGroup("sleep"));
+        settingsRow(body,"wave","Sound analysis","Snoring and sleep recordings",()->openSettingsPage(9));
+        settingsRow(body,"shield","Bedtime guard","Reduce distractions at night",()->startActivity(RecordUi.intent(this,GuardActivity.class)));
+        settingsRow(body,"palette","Appearance","Theme, text and touch feedback",()->openSettingsGroup("appearance"));
+        settingsRow(body,"settings","Reliability","Battery, permissions and alarm readiness",()->openSettingsPage(5));
+        settingsRow(body,"plug","Integrations","Health Connect, lights and automations",()->openSettingsGroup("connections"));
+        settingsRow(body,"lock","Data & privacy","Recordings, storage and backup",()->openSettingsPage(6));
         Design.space(body,12);LinearLayout source=PlanActivity.detail(body,"github","Free and open source","View source on GitHub",null,()->open(new Intent(Intent.ACTION_VIEW,Uri.parse("https://github.com/omeyerrato/SleepWell"))));source.setMinimumHeight(Ui.dp(this,56));source.removeViewAt(source.getChildCount()-1);source.addView(new Design.Icon(this,"external",Design.INK),new LinearLayout.LayoutParams(Ui.dp(this,18),Ui.dp(this,18)));
     }
     private void settingsSection(LinearLayout body){
-        String title=switch(settingsGroup){case "alarm"->"Alarms";case "sleep"->"Sleep & bedtime";case "sound"->"Sound & recordings";case "appearance"->"Appearance & feedback";default->"Connected apps";};
-        RecordUi.header(body,title,this::back);Design.text(body,"Settings",12,400,Design.MUTED);Design.space(body,16);
+        String title=switch(settingsGroup){case "alarm"->"Alarms";case "sleep"->"Sleep tracking";case "sound"->"Sound & recordings";case "appearance"->"Appearance";default->"Integrations";};
+        RecordUi.header(body,title,this::back);
         switch(settingsGroup){
             case "alarm":
+                settingsHeading(body,"Your alarms");
                 settingsRow(body,"bell","Manage alarms","Choose an alarm to edit its settings",()->openSettingsPage(1));
                 settingsRow(body,"settings","Alarm defaults","Starting settings for new alarms",()->startActivity(RecordUi.intent(this,AlarmDefaultsActivity.class)));
                 settingsRow(body,"shield","Alarm protection","Prevent leaving and power-menu handling",()->startActivity(RecordUi.intent(this,AlarmProtectionActivity.class)));
+                settingsHeading(body,"Schedules & challenges");
                 settingsRow(body,"calendar","Calendar rules","Skipped dates and meeting-aware alarms",()->startActivity(RecordUi.intent(this,CalendarRulesActivity.class)));
                 settingsRow(body,"clock","Naps & timers","Short rests, Power nap and schedules",()->startActivity(RecordUi.intent(this,NapActivity.class)));
                 settingsRow(body,"phone","Bedside NFC tag","Enroll a tag for wake-up challenges",()->openSettingsPage(11));break;
             case "sleep":
+                settingsHeading(body,"Tracking");
                 settingsRow(body,"moon","Sleep tracking","Sensor setup and current recording",this::tracking);
-                settingsRow(body,"sun","Room conditions","Live light, optional sound and screen dimming",()->startActivity(RecordUi.intent(this,RoomConditionsActivity.class)));
                 settingsRow(body,"clock","Automatic tracking","When tracking starts each night",()->startActivity(RecordUi.intent(this,AutomaticTrackingActivity.class)));
+                settingsRow(body,"sun","Room conditions","Light, sound and screen dimming",()->startActivity(RecordUi.intent(this,RoomConditionsActivity.class)));
+                settingsRow(body,"sun","Awake estimates","Phone-use, light and snooze clues",()->startActivity(RecordUi.intent(this,AwakeSettingsActivity.class)));
+                settingsHeading(body,"Bedtime");
                 settingsRow(body,"bed","Sleep plan","Bedtime, sleep goal and reminders",()->startActivity(RecordUi.intent(this,PlanActivity.class)));
                 settingsRow(body,"shield","Bedtime guard","Choose distracting apps to block",()->startActivity(RecordUi.intent(this,GuardActivity.class)));
-                settingsRow(body,"sun","Awake estimates","Phone-use, light and snooze clues",()->startActivity(RecordUi.intent(this,AwakeSettingsActivity.class)));
+                settingsHeading(body,"Rhythm & diary");
                 settingsRow(body,"report","Sleep rhythm","Recorded timing and consistency",()->startActivity(RecordUi.intent(this,SleepRhythmActivity.class)));
                 settingsRow(body,"moon","Dream diary","Private notes and dreams",()->startActivity(RecordUi.intent(this,DiaryActivity.class)));
                 settingsRow(body,"sun","Travel mode","Time zones and daylight reminders",()->startActivity(RecordUi.intent(this,TravelActivity.class)));break;
             case "sound":
+                settingsHeading(body,"Analysis & recordings");
                 settingsRow(body,"wave","Sound analysis","Choose recorded sound categories",()->openSettingsPage(9));
-                settingsRow(body,"wave","Laughter & instruments","Analyze a recording · experimental estimates",()->startActivity(RecordUi.intent(this,RecordedRecognitionActivity.class)));
+                settingsRow(body,"mic","Recording threshold","Choose which sounds save a clip",()->openSettingsPage(12));
                 settingsRow(body,"wave","Snoring cues","Optional sound and vibration responses",()->startActivity(RecordUi.intent(this,SnoringCuesActivity.class)));
-                settingsRow(body,"music","Sleep sounds","Mixer, playlists and bedtime audio",()->startActivity(RecordUi.intent(this,SleepSoundsActivity.class)));
                 settingsRow(body,"file","Recordings & retention","Storage limits and saved recordings",()->startActivity(RecordUi.intent(this,SoundLibrarySettingsActivity.class)));
-                settingsRow(body,"heart","Favorite sounds","Review starred recordings",()->startActivity(RecordUi.intent(this,FavoriteSoundsActivity.class)));break;
+                settingsRow(body,"heart","Favorite sounds","Review starred recordings",()->startActivity(RecordUi.intent(this,FavoriteSoundsActivity.class)));
+                settingsHeading(body,"Bedtime audio");
+                settingsRow(body,"music","Sleep sounds","Mixer, playlists and bedtime audio",()->startActivity(RecordUi.intent(this,SleepSoundsActivity.class)));
+                settingsHeading(body,"Experimental");
+                settingsRow(body,"wave","Laughter & instruments","Analyze a saved recording",()->startActivity(RecordUi.intent(this,RecordedRecognitionActivity.class)));break;
             case "appearance":
                 settingsRow(body,"palette","Theme & text","Changing light, text size and contrast",()->{startActivity(RecordUi.intent(this,AppearanceActivity.class));if(Appearance.reduced(this))overridePendingTransition(0,0);});
                 settingsRow(body,"phone","Touch feedback","Subtle acknowledgements for actions",()->startActivity(RecordUi.intent(this,FeedbackSettingsActivity.class)));
-                settingsRow(body,"home","Tonight layout","Order, visibility and illustration",()->startActivity(RecordUi.intent(this,TonightLayoutActivity.class)));break;
+                settingsHeading(body,"Home screen");
+                settingsRow(body,"home","Tonight layout","Order, visibility and illustration",()->startActivity(RecordUi.intent(this,TonightLayoutActivity.class)));
+                settingsRow(body,"home","Widgets & shortcuts","Add SleepWell to your home screen",()->startActivity(RecordUi.intent(this,HomeWidgetSettingsActivity.class)));break;
             default:
+                settingsHeading(body,"Health & routines");
                 settingsRow(body,"plug","Health Connect","Import and export sleep records",()->startActivity(RecordUi.intent(this,HealthConnectActivity.class)));
                 settingsRow(body,"plug","Automations","Tasker, webhooks and MQTT",()->startActivity(RecordUi.intent(this,AutomationActivity.class)));
+                settingsHeading(body,"Bedroom devices");
                 settingsRow(body,"sun","Bedroom light","Paired lights and sunrise controls",()->startActivity(RecordUi.intent(this,SmartLightActivity.class)));
                 settingsRow(body,"phone","Paired movement","Connect a second phone",()->startActivity(RecordUi.intent(this,PairMotionActivity.class)));
                 settingsRow(body,"home","External PIR input","Optional Home Assistant sensor",()->startActivity(RecordUi.intent(this,PirSettingsActivity.class)));
+                settingsHeading(body,"App access");
                 settingsRow(body,"moon","Tracking requests","Review requests from other apps",()->startActivity(RecordUi.intent(this,IncomingAutomationSettingsActivity.class)));
                 settingsRow(body,"lock","Saved record access","Apps allowed to read sleep summaries",()->startActivity(RecordUi.intent(this,RecordAccessActivity.class)));
                 settingsRow(body,"alarm","Alarm access","Apps allowed to manage ordinary alarms",()->startActivity(RecordUi.intent(this,AlarmAccessActivity.class)));break;
         }
     }
+    private void settingsHeading(LinearLayout body,String title){Design.space(body,16);Design.text(body,title,14,600,Design.MUTED);Design.space(body,6);}
     private void settingsRow(LinearLayout body,String icon,String title,String subtitle,Runnable action){
         LinearLayout row=Design.row(this);row.setMinimumHeight(Ui.dp(this,70));Design.Icon image=new Design.Icon(this,icon,Design.BROWN);image.setPadding(Ui.dp(this,8),Ui.dp(this,8),Ui.dp(this,8),Ui.dp(this,8));image.setBackground(Design.shape(this,Design.SOFT,15));LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48));ip.rightMargin=Ui.dp(this,18);row.addView(image,ip);
         LinearLayout labels=Design.col(this);Design.text(labels,title,17,600,Design.INK);Design.space(labels,5);Design.text(labels,subtitle,13,400,Design.MUTED);row.addView(labels,new LinearLayout.LayoutParams(0,-2,1));row.addView(new Design.Icon(this,"chevron",Design.INK),new LinearLayout.LayoutParams(Ui.dp(this,20),Ui.dp(this,20)));row.setContentDescription(title+". "+subtitle);row.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,8));row.setOnClickListener(v->{InteractionFeedback.action(v);action.run();});body.addView(row);Design.line(body);
@@ -240,20 +255,30 @@ public class MainActivity extends Activity {
     }
     private String audioRetentionLabel(){int days=Prefs.number(this,"audioRetentionDays",7);return days==0?"Keep all":days+(days==1?" day":" days");}
     private void soundAnalysis(LinearLayout body){
-        RecordUi.header(body,"Sound analysis",this::back);Design.space(body,8);Design.text(body,"Choose what your phone records while you sleep.",15,400,Design.MUTED);Design.space(body,24);
+        RecordUi.header(body,"Sound analysis",this::back);Design.space(body,8);
         Design.toggle(body,"Microphone analysis","Estimate snoring and speech on this phone.",Prefs.flag(this,"noiseEnabled"),on->{Prefs.put(this,"noiseEnabled",on);if(on&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO},NOTIFY);render();});
-        Design.space(body,14);Switch clips=Design.toggle(body,"Save sound clips",Prefs.flag(this,"noiseEnabled")?"Keep short recordings privately on this phone.":"Turn on microphone analysis first.",Prefs.flag(this,"saveClips"),on->Prefs.put(this,"saveClips",on));clips.setEnabled(Prefs.flag(this,"noiseEnabled"));Design.space(body,22);
-        Design.text(body,"Clip recording threshold",17,600,Design.INK);Design.space(body,6);Design.text(body,"Lower values capture quieter sounds.",13,400,Design.MUTED);Design.space(body,8);
-        TextView value=Design.text(body,"Relative amplitude · "+Prefs.number(this,"noiseThreshold",20),14,500,Design.BROWN);SeekBar threshold=new SeekBar(this);threshold.setContentDescription("Sound detection threshold");threshold.setMin(5);threshold.setMax(100);threshold.setProgress(Prefs.number(this,"noiseThreshold",20));AlarmSliders.style(threshold);body.addView(threshold,new LinearLayout.LayoutParams(-1,Ui.dp(this,56)));threshold.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar b,int n,boolean user){value.setText("Relative amplitude · "+n);if(user)Prefs.put(MainActivity.this,"noiseThreshold",n);}public void onStartTrackingTouch(SeekBar b){}public void onStopTrackingTouch(SeekBar b){}});
-        Design.space(body,18);Design.line(body);PlanActivity.detail(body,"lock","Private recordings","Kept in this phone's app storage",null,null);Design.line(body);PlanActivity.detail(body,"calendar","Audio retention","Choose how long to keep saved recordings.",audioRetentionLabel(),()->startActivity(RecordUi.intent(this,SoundLibrarySettingsActivity.class)));Design.line(body);Design.space(body,18);
+        Design.space(body,12);Switch clips=Design.toggle(body,"Save sound clips",Prefs.flag(this,"noiseEnabled")?"Keep short recordings on this phone.":"Turn on microphone analysis first.",Prefs.flag(this,"saveClips"),on->Prefs.put(this,"saveClips",on));clips.setEnabled(Prefs.flag(this,"noiseEnabled"));
+        settingsHeading(body,"Detection");
+        settingsRow(body,"wave","Sound sensitivity","Choose which sound categories to detect",()->startActivity(RecordUi.intent(this,SoundSensitivityActivity.class)));
+        settingsRow(body,"wave","Snoring cues","Sound or vibration when snoring is estimated",()->startActivity(RecordUi.intent(this,SnoringCuesActivity.class)));
+        settingsHeading(body,"Your recordings");
         RecordEntry latest=Records.latest(store);PlanActivity.detail(body,"wave","Sound events",latest==null?"Record a night first":"Review your latest night",null,latest==null?null:()->startActivity(RecordUi.intent(this,SoundEventsActivity.class).putExtra("record",latest.id)));Design.line(body);
-        Design.item(body,"heart","Favorite sounds",null,()->startActivity(RecordUi.intent(this,FavoriteSoundsActivity.class)));Design.line(body);
-        Design.item(body,"wave","Sound sensitivity",null,()->startActivity(RecordUi.intent(this,SoundSensitivityActivity.class)));Design.line(body);
-        Design.item(body,"wave","Snoring cues",null,()->startActivity(RecordUi.intent(this,SnoringCuesActivity.class)));Design.line(body);
-        Design.item(body,"info","About sound analysis",null,()->SleepPicker.message(this,"Sound analysis","A bundled model estimates snoring and speech locally. Labels can be wrong and do not identify who made a sound. Microphone changes apply next recording; clip threshold affects saving, not class sensitivity. Relative sound levels are not calibrated decibels."));
+        PlanActivity.detail(body,"calendar","Audio retention","Automatically remove older recordings",audioRetentionLabel(),()->startActivity(RecordUi.intent(this,SoundLibrarySettingsActivity.class)));Design.line(body);
+        settingsRow(body,"more","More sound settings","Threshold, favorites and bedtime audio",()->openSettingsGroup("sound"));
+        Design.space(body,8);Design.item(body,"info","About sound analysis",null,()->SleepPicker.message(this,"Sound analysis","A bundled model estimates snoring and speech locally. Labels can be wrong and do not identify who made a sound. Microphone changes apply next recording; clip threshold affects saving, not class sensitivity. Relative sound levels are not calibrated decibels."));
         String analysisError=Prefs.text(this,"analysisError","");if(!analysisError.isEmpty())Design.text(body,analysisError,13,400,Design.MUTED);
         String error=Prefs.text(this,"audioError","");if(!error.isEmpty()){Design.space(body,18);Design.text(body,"Microphone needs attention",17,600,Design.INK);Design.space(body,6);Design.text(body,error,13,400,Design.MUTED);}
         Design.button(body,"Done",true,this::back);
+    }
+    private void recordingOptions(LinearLayout body){
+        RecordUi.header(body,"Recording threshold",this::back);
+        Design.space(body,10);Design.text(body,"Lower values save quieter sounds.",15,400,Design.MUTED);Design.space(body,24);
+        TextView value=Design.text(body,"Relative amplitude · "+Prefs.number(this,"noiseThreshold",20),17,600,Design.INK);
+        SeekBar threshold=new SeekBar(this);threshold.setContentDescription("Sound detection threshold");threshold.setMin(5);threshold.setMax(100);threshold.setProgress(Prefs.number(this,"noiseThreshold",20));AlarmSliders.style(threshold);body.addView(threshold,new LinearLayout.LayoutParams(-1,Ui.dp(this,56)));
+        threshold.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar b,int n,boolean user){value.setText("Relative amplitude · "+n);if(user)Prefs.put(MainActivity.this,"noiseThreshold",n);}public void onStartTrackingTouch(SeekBar b){}public void onStopTrackingTouch(SeekBar b){}});
+        Design.space(body,20);PlanActivity.detail(body,"lock","Private recordings","Kept in this phone's app storage",null,null);Design.line(body);
+        PlanActivity.detail(body,"wave","Detection sensitivity","Sound categories have separate sensitivity controls",null,()->startActivity(RecordUi.intent(this,SoundSensitivityActivity.class)));
+        Design.fixedAction(body,"Done",this::back);
     }
     private void open(Intent i) {try{startActivity(i);}catch(ActivityNotFoundException e){Ui.toast(this,"This setting is unavailable on this device.");}}
     @Override public void onRequestPermissionsResult(int r,String[] p,int[] g) {super.onRequestPermissionsResult(r,p,g);render();}
