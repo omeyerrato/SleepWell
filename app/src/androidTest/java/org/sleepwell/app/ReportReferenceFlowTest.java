@@ -211,6 +211,8 @@ public final class ReportReferenceFlowTest {
                 for(int night=0;night<minutes.length;night++)if(latestDay.minusDays(night).getYear()==latestDay.getYear()&&latestDay.minusDays(night).getMonthValue()==latestDay.getMonthValue()){total+=minutes[night]*60000L;count++;}
                 String expected=latestDay.withDayOfMonth(1)+": "+RecordUi.roundedDuration(total/count);
                 assertEquals("Monthly tooltip and spoken selection use the same rounded mean",expected,chart.getContentDescription().toString());
+                assertFalse("Selected monthly value must not cover the current goal caption",android.graphics.RectF.intersects(chart.selectedLabelBounds(),chart.goalLabelBounds()));
+                assertTrue("Selected monthly value stays within the actual chart width",chart.selectedLabelBounds().left>=0&&chart.selectedLabelBounds().right<=chart.getWidth());
             });
             capture("year-selected");
             click("Week");
