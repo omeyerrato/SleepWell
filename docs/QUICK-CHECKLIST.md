@@ -69,9 +69,16 @@ These checks record implemented source and packaging, not new visual or runtime 
 - [x] Integrate recording-only cleanup and manual export-receipt source; combined acceptance remains open.
 - [x] Produce and publish0.1.9 from `4e47ab35`; APK packaging3m47s. Tests, lint, new screenshots, security and device checks were not run.
 
-## Still unfinished
+## Published in 0.1.10 — clearer controls
 
-Latest delivery is0.1.10 (`44cb41e7`): command/selection distinction, grouped editor tools, task setup labels, popular settings shortcuts and warm app confirmations. APK packaging3m15s; no new verification or physical-device actions. [Changes](USABILITY-PASS-2026-10-29.md#command-and-discovery-follow-up).
+- [x] Distinguish command menus from saved-value selections and group record-editor tools.
+- [x] Add common settings shortcuts while retaining the alarm chooser for per-alarm choices.
+- [x] Use clearer task setup/confirmation labels and warm app-owned confirmations.
+- [x] Produce and publish0.1.10 from `44cb41e7`; APK packaging3m15s. New verification and physical-device actions remain deferred. [Changes](USABILITY-PASS-2026-10-29.md#command-and-discovery-follow-up).
+
+Newer source: Appearance theme rings are merged at `6d56b05b`, ready for the next combined package; they are not in the published0.1.10 APK.
+
+## Still unfinished
 
 - [ ] Reference/interaction/security priorities above.
 - [ ] Finish acceptance of recording-only cleanup and the persistent Last export display. Source is integrated in0.1.9; the previous combined Privacy run failed and new verification is deferred.

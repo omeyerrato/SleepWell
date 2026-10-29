@@ -27,6 +27,8 @@ Published package source: `44cb41e7`, version **0.1.10 / 11**. [Development APK]
 
 This follow-up also runs APK packaging only. It does not add new verification or acceptance claims.
 
+Newer source: `6d56b05b` replaces Appearance's platform theme radio indicators with app-owned lilac rings. Existing tile selection and saving paths remain. This source is queued for the next combined package and is not included in0.1.10.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.
