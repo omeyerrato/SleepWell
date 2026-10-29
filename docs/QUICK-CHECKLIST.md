@@ -40,7 +40,7 @@ Checked means implemented with the stated supporting evidence. Physical-device a
 - [x] Sleep sounds header navigation and fixed Timer/Fade actions, preserving draft/scroll/focus and advanced routes. [14-original configuration proof](verification/2026-10-29-sleep-mixer-reference/README.md); no active-playback or physical-output claim.
 - [x] Integrate17 routine-preview controllers with explicit capture Start, Cancel/Resume, retained progress and one-use child results. [58-original private/fake-port proof](verification/2026-10-29-routine-motion/README.md); this is not full28-type or actual-alarm/hardware acceptance.
 - [x] Report means round consistently. The first18-frame flow passed functionally; its tooltip/goal-caption overlap is retained as a visible failure in the archive.
-- [ ] Integrate the corrected Report recapture evidence. The correction compiles and the fresh18-frame run passes; all18 were inspected, with the full goal caption and selected value visible.
+- [x] Correct the Report tooltip/goal-caption overlap: [18 fresh originals](verification/2026-10-29-report-rounded-means/corrected-40822971575/README.md) show both labels clearly, with actions/persistence/raw data preserved.
 - [ ] Finish the remaining11 microphone/camera preview adapters. Five audio adapters are being implemented separately; six camera adapters remain.
 - [ ] Verify and integrate the actual Walk completion-after-failed-cleanup correction. Its separate source compiles; the current17-type integration does not claim that fix.
 - [ ] Complete the combined build/release and prepare the next phone update.

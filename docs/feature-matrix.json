@@ -2098,9 +2098,12 @@
         "RecordInsightSettings.java",
         "RecordTrends.java",
         "RhythmStats.java",
-        "TagImpact.java"
+        "TagImpact.java",
+        "HistoryActivity.java",
+        "TrendsChart.java",
+        "RecordUi.java"
       ],
-      "validation": "Author e51f43f: RecordInsightsTest 12 + RhythmStatsTest 15 + TagImpactTest 14 =41pure PASS; debug/native APKs/lint PASS. Superseding d346441 CI40154059415 RecordInsightsNativeTest 3 and RecordInsightsFlowTest 1/all4 originals PASS.",
+      "validation": "Author e51f43f: RecordInsightsTest 12 + RhythmStatsTest 15 + TagImpactTest 14 =41pure PASS; debug/native APKs/lint PASS. Superseding d346441 CI40154059415 RecordInsightsNativeTest 3 and RecordInsightsFlowTest 1/all4 originals PASS. CI40822971575 at697d1232 subsequently PASS62.071s/one existing method/18 fresh originals, all individually inspected against Board08/01. Weekly mean and selected-month tooltip/spoken value agree at7h43; selected annotation and full current-goal caption no longer overlap. Actual renderer bounds and original calendar/edit/Save/reopen/Back-discard/raw-table/preferences invariants pass. Evidence: verification/2026-10-29-report-rounded-means/corrected-40822971575/. The earlier64.885s functional pass with a visible overlap remains qualified in the parent archive. No large-font fallback, physical sensor/model or full36-reference acceptance claim. Integrated0.1.7 source, not yet published/installed.",
       "status": "partial",
       "notes": "Saved7/30/90-day views use actual merged coverage, observed/missing dates, duration distribution, circular recorded main-period start range, original dated-goal targets and sufficiently sampled tag associations. Missing days stay unknown. Descriptive comparisons support reflection; no personalized clinical score, predictive advice, measured sleep onset/stages or chronotype claim. See RECORDED-INSIGHTS.md.",
       "id": "F074",
