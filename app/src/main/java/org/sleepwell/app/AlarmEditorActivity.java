@@ -13,6 +13,7 @@ import java.util.*;
 
 /** A draft survives settings navigation and recreation; only Save alarm writes user data. */
 public class AlarmEditorActivity extends Activity {
+    private final MorningTagSetup.Port nfcSetupAccess=MorningTagSetup.port;
     private String settingsFeature="",settingsDefaultsNotice="",searchOptionsPage="";private boolean editorResumed;private int restoreSearchPosition=-1;
     private AlarmGentleUi gentlePreview;private Bundle gentlePreviewState;
     private AlarmEditorSearchUi.State alarmSearch;private String searchTarget="",searchAnchor="";
@@ -224,7 +225,7 @@ public class AlarmEditorActivity extends Activity {
         }else if(inspectedTask.equals("Walk")){
             taskPicker(body,"walk","Target steps",null,taskSteps+" steps",taskSteps,new int[]{5,10,15,20,30,50,75,100},n->n+" steps",n->taskSteps=n);Design.line(body);walkAccess(body);
         }else if(inspectedTask.equals("NFC")){
-            Design.text(body,Prefs.text(this,"nfcTag","").isEmpty()?"No tag enrolled":"Morning tag enrolled",16,600,Design.INK);Design.space(body,8);Design.text(body,"Enroll your tag in Alarms → Alarm options.",13,400,Design.MUTED);
+            PlanActivity.detail(body,"phone","Bedside NFC tag",MorningTagSetup.summary(this,nfcSetupAccess),"Set up",()->startActivity(QrCodeActivity.nfcSetup(this)));Design.space(body,8);Design.text(body,"Shared by all NFC alarms. Saving a bedside tag does not save this alarm.",13,400,Design.MUTED);
         }else if(inspectedTask.equals("Shake")){
             taskPicker(body,"phone","Shakes",null,""+(taskRounds*5),taskRounds,new int[]{1,2,3,4,5,6},n->(n*5)+" shakes",n->taskRounds=n);
         }else{
@@ -253,7 +254,7 @@ public class AlarmEditorActivity extends Activity {
     private void taskAbout(LinearLayout body){Design.header(body,"How it works",this::back);Design.text(body,inspectedTask,20,600,Design.INK);Design.space(body,16);Design.text(body,taskDescription(),15,400,Design.MUTED);Design.fixedAction(body,"Back to task",()->go("task"));}
     private void taskPicker(LinearLayout body,String icon,String title,String description,String value,int current,int[] values,java.util.function.IntFunction<String> format,java.util.function.IntConsumer change){if(!title.equals("Rounds")&&!title.equals("Shakes")){picker(body,icon,title,description,value,current,values,format,change);return;}ChallengeTaskUi.values(body,title,current,values,n->title.equals("Rounds")?String.valueOf(n):title.equals("Shakes")?String.valueOf(n*5):format.apply(n),format,change);}
     private void walkAccess(LinearLayout body){WalkPermission.Status access=WalkPermission.port.status(this);if(access==WalkPermission.Status.READY||access==WalkPermission.Status.UNSUPPORTED)walkPermissionError="";String label=switch(access){case READY->"Allowed";case UNSUPPORTED->"Unavailable";default->"Not allowed";};PlanActivity.detail(body,"shield","Physical activity access",access==WalkPermission.Status.UNSUPPORTED?"This phone has no supported step sensor.":"Required for Android step sensors",label,null);Design.space(body,10);Design.text(body,"Math replaces unavailable steps. You can also choose it while walking.",13,400,Design.MUTED);if(!walkPermissionError.isEmpty())Design.text(body,walkPermissionError,13,500,0xffa93919);if(access==WalkPermission.Status.NEEDED||access==WalkPermission.Status.SETTINGS)Design.button(body,access==WalkPermission.Status.SETTINGS?"Open activity settings":"Allow physical activity",false,()->{walkPermissionError="";try{WalkPermission.port.request(this);}catch(RuntimeException failure){walkPermissionError="Physical activity access could not be opened. Try again.";}render();});}
-    @Override protected void onResume(){super.onResume();editorResumed=true;if(gentlePreview!=null)gentlePreview.resume();if(toneScreen!=null)toneScreen.resume();if(alarm!=null&&route.equals("task")&&inspectedTask.equals("Walk"))render();getWindow().getDecorView().post(this::showPendingSearchOptions);}
+    @Override protected void onResume(){super.onResume();editorResumed=true;if(gentlePreview!=null)gentlePreview.resume();if(toneScreen!=null)toneScreen.resume();if(alarm!=null&&route.equals("task")&&(inspectedTask.equals("Walk")||inspectedTask.equals("NFC")))render();getWindow().getDecorView().post(this::showPendingSearchOptions);}
     @Override protected void onPause(){editorResumed=false;if(gentlePreview!=null)gentlePreview.pause();if(toneScreen!=null)toneScreen.pause();super.onPause();}
     @Override public void onRequestPermissionsResult(int request,String[] permissions,int[] grants){super.onRequestPermissionsResult(request,permissions,grants);if(request==WalkPermission.REQUEST){walkPermissionError="";render();}}
     private void sound(LinearLayout body){if(toneScreen==null){toneScreen=new AlarmToneScreen(this,alarm,toneState,this::render,()->go("edit"),()->go("gentle"),()->go("soundmodes"));toneState=null;}toneScreen.settingsScope(settingsFeature.isEmpty()?"":SearchAlarmChooser.identity(this,alarm,!originalExisted)+"\nDraft only · Save alarm keeps your changes");toneScreen.render(body);}
