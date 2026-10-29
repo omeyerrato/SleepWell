@@ -20,6 +20,8 @@ on:
           - challenge-routine
           - math-owner
           - challenge-selection
+          - routine-preview
+          - routine-motion
           - tonight
           - tonight-composition
           - appearance
