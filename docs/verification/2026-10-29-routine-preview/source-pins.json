@@ -1,0 +1,26 @@
+{
+  "tested_head": "635cf7eb001ea0efeccf782bc6dc957409ce1199",
+  "production_correction": "562477c9",
+  "native_correction": "cbba5471",
+  "source_and_native_bytes_equal_at_archive": true,
+  "sha256": {
+    ".github/workflows/silent-ui-review.yml": "0349883e8898bda73add0cd3615188c62c30d5fe148f7f36d1cc70da25e39ff7",
+    "app/src/androidTest/java/org/sleepwell/app/ChallengeRoutineFlowTest.java": "810aadad5a5e069d8133ad7df286d1f6df103884516a31bda8dc18fd2d50b6b9",
+    "app/src/androidTest/java/org/sleepwell/app/RoutinePracticeFixture.java": "8c89ca5d0037ffe78c3e79d6868ee1f196e291d2a5062b6ad2b5ca3f35769453",
+    "app/src/main/AndroidManifest.xml": "cad4c3816b4bc6d32d8ff9ecc189ea29e59845f6b7ead076787bceebfff8c9a7",
+    "app/src/main/java/org/sleepwell/app/AlarmActivity.java": "0721e5a6cc45c0aadc829558916ec933222ca3cc426b0bd1e9fd769e9a2c9e45",
+    "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java": "901a2cb6e4dc133759ff3b9b0e3cfd64efdb56eb5b70d39e75a26bab942e2c15",
+    "app/src/main/java/org/sleepwell/app/ChallengePracticeActivity.java": "ecda0a4ab7c305f073f17c09b67912e2391b62487e186e7f19106d193d0fe830",
+    "app/src/main/java/org/sleepwell/app/ChallengePracticeOwner.java": "df988dfa77d513700ef82c172892021d3878eec07fa701085ae5ea220f08d9e6",
+    "app/src/main/java/org/sleepwell/app/ChallengePracticeScreen.java": "6f3445b3a2d429bd56cc7b5be583c0c7e4973c6f95c5d2d63de80baae8974499",
+    "app/src/main/java/org/sleepwell/app/ChallengePracticeSession.java": "c81523e6a2be022fce5366491740016c6b95153f87b4e1e96e3aa2d2c55364fe",
+    "app/src/main/java/org/sleepwell/app/ChallengeRoutineUi.java": "4c0808593abe00225b82391de73c9d567f4dbb89d6a24fac6fa211b895444c9e",
+    "app/src/main/java/org/sleepwell/app/PracticeCheckpoints.java": "b5d71f7f12b8347c07279ad90a5c2f4df19ae65fdc9920903b4684bc4615d0a5",
+    "app/src/main/java/org/sleepwell/app/PracticeChildTicket.java": "79d7d46dc2e07a366a0f0fc425bf86ba8e5d9641784a68ab6fdd231a740cb596",
+    "app/src/main/java/org/sleepwell/app/TypedWakeTasks.java": "50605d714e2372846cf08ccb4b5b9ecfc9dd4929001f0f4d3be55aa60efd9014",
+    "app/src/main/java/org/sleepwell/app/WakeChallengeUi.java": "1b0c18556d953e94939fa2553ad1b66cb003f7d75ba09cae4495c2ad6252caac",
+    "app/src/main/java/org/sleepwell/app/WakeCognitiveTask.java": "ada3bc6e13f7a6a0a093f6891e2fc64f2aacf58df189d36ae188df19d852641e",
+    "app/src/main/java/org/sleepwell/app/WakePuzzleView.java": "599f5a4f0a562743ecefd9b040889a6c92933aa8def9f282e5b9f2926e02743c",
+    "scripts/ci_silent_ui.py": "a8c96439d8fe22ab48e4de1a4f7f2020445777cad8f3a7e3c9d1db394a6d8923"
+  }
+}
