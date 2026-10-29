@@ -104,6 +104,7 @@ final class ChallengePracticeSession {
     boolean sameUnit(String run,int unit,String task){return android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&this.run.equals(run)&&completed==unit&&position()!=null&&taskKey(position().task).equals(task);}
     boolean issueChild(String nonce,int unit,String task){if(!pending.isEmpty()||!sameUnit(run,unit,task))return false;pending=nonce;generation++;return true;}
     boolean child(String nonce,int unit,String task){return nonce!=null&&nonce.equals(pending)&&sameUnit(run,unit,task);}
+    boolean rememberChild(String nonce,int unit,String task,Bundle checkpoint){if(!child(nonce,unit,task))return false;Bundle next=draft==null?new Bundle():new Bundle(draft);if(checkpoint!=null)next.putBundle("motionCheckpoint",new Bundle(checkpoint));draft=boundedDraft(next);return true;}
     boolean childReturned(String nonce,int unit,String task,boolean success,boolean fallback){
         if(!child(nonce,unit,task)||success&&fallback)return false;
         pending="";generation++;
