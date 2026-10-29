@@ -1,0 +1,56 @@
+{
+  "source": "19e49e74e58ff05812229743df441e8942775db1",
+  "kind": "bounded static source review",
+  "result": "No concrete caller/input authorization defect found in these nine classes; no source change",
+  "files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmContentProvider.java",
+      "sha256": "20b33d3e82f5269c4139e1ed5c1409f49954fb9842fb7404fac889a388bf726a",
+      "git_blob": "0b3e5edd29eb43b47e0712fc8b8ded855e9930db"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordContentProvider.java",
+      "sha256": "d0893c0aa1e30dec796c3eb4ddebddc80d2ef4507b82d5ff90108f67ee241761",
+      "git_blob": "cf3198b8683863a7aefeb514740abaa3f36f8ee8"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmContentContract.java",
+      "sha256": "58162e2bfdf18ff5d5edbe5d478398710b55908efae21ab4bb0cb22642fec763",
+      "git_blob": "b9392eb939ea5fdb0a9f0b48509c3a181319887f"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordContentContract.java",
+      "sha256": "d911add6c63da741df50a82010f3de7a08a146b3fdf7347b81af67090109a9cd",
+      "git_blob": "277ff7bdce6afe18cd7ffcba1bd437730a4fc9ab"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmAccessGrants.java",
+      "sha256": "e1f34549f245684d3e13d3617878af0d1f581defaa75f83f2daa5aaf4dcc3b67",
+      "git_blob": "815da117e9a400273c43df978aa5f465fc9e7aa5"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordAccessGrants.java",
+      "sha256": "f6629204621942c569872926eb7fa650e02220f033e7722957f710ecb0efd6ce",
+      "git_blob": "b1d7a6c385627644a96b66ad086fd9cc40ffb0b7"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmContentStore.java",
+      "sha256": "e1e919455d46650525454caeed1be5c5b49e8500863761a311b5a6e6a743274d",
+      "git_blob": "3a71f2098040df9fad83a1e791077c4459362d6e"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordContentRows.java",
+      "sha256": "a97000f861cc59f951ed9694c5898535c8035ebbb985e445c4c2971e65cde80d",
+      "git_blob": "4345effbb1804f80b5fa852de61957aedcb5afdb"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmContentLedger.java",
+      "sha256": "0e50bd41dc12c53c636ee64f4a5b5659ae3aae209c364a6380349cd528bc0b2e",
+      "git_blob": "4245bbef9e9f32cfdc9fa941cb5aad034b7da194"
+    }
+  ],
+  "runtime_executed": false,
+  "external_provider_calls": false,
+  "new_tests": false,
+  "whole_app_security_accepted": false
+}
