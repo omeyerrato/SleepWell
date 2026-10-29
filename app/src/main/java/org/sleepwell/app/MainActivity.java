@@ -257,8 +257,12 @@ public class MainActivity extends Activity {
     private String audioRetentionLabel(){int days=Prefs.number(this,"audioRetentionDays",7);return days==0?"Keep all":days+(days==1?" day":" days");}
     private void soundAnalysis(LinearLayout body){
         RecordUi.header(body,"Sound analysis",this::back);Design.space(body,8);
-        Design.toggle(body,"Microphone analysis","Estimate snoring and speech on this phone.",Prefs.flag(this,"noiseEnabled"),on->{Prefs.put(this,"noiseEnabled",on);if(on&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO},NOTIFY);render();});
-        Design.space(body,12);Switch clips=Design.toggle(body,"Save sound clips",Prefs.flag(this,"noiseEnabled")?"Keep short recordings on this phone.":"Turn on microphone analysis first.",Prefs.flag(this,"saveClips"),on->Prefs.put(this,"saveClips",on));clips.setEnabled(Prefs.flag(this,"noiseEnabled"));
+        Design.toggle(body,"Microphone analysis","Estimate snoring and speech in your next recording.",Prefs.flag(this,"noiseEnabled"),on->{Prefs.put(this,"noiseEnabled",on);if(on&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO},NOTIFY);render();});
+        Design.space(body,12);Switch clips=Design.toggle(body,"Save sound clips",Prefs.flag(this,"noiseEnabled")?"Keep short clips from your next recording.":"Turn on microphone analysis first.",Prefs.flag(this,"saveClips"),on->Prefs.put(this,"saveClips",on));clips.setEnabled(Prefs.flag(this,"noiseEnabled"));
+        if(Prefs.flag(this,"noiseEnabled")&&checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED){
+            Design.space(body,12);LinearLayout access=PlanActivity.detail(body,"mic","Microphone access","Allow access to analyze and record sounds.","Open settings",()->open(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,Uri.parse("package:"+getPackageName()))));
+            Design.pad(access,12,10);access.setBackground(Design.touch(this,Design.SOFT,14));access.setContentDescription("Microphone permission needed. Open Android settings");
+        }
         settingsHeading(body,"Detection");
         settingsRow(body,"wave","Sound sensitivity","Choose which sound categories to detect",()->startActivity(RecordUi.intent(this,SoundSensitivityActivity.class)));
         settingsRow(body,"wave","Snoring cues","Sound or vibration when snoring is estimated",()->startActivity(RecordUi.intent(this,SnoringCuesActivity.class)));
