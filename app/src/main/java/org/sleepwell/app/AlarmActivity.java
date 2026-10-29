@@ -258,7 +258,7 @@ public class AlarmActivity extends Activity implements SensorEventListener {
     @Override public void onSensorChanged(SensorEvent e) {
         if(!resumed||position==null||!position.task.type.equals("Shake")||sensorExpected!=completed||!sensorRun.equals(occurrence)||e.timestamp<sensorArmedNanos)return;
         double mag=Math.sqrt(e.values[0]*e.values[0]+e.values[1]*e.values[1]+e.values[2]*e.values[2]);long now=SystemClock.elapsedRealtime();
-        if(mag>15 && now-lastShake>500) { lastShake=now;shakes++;progress.setVisibility(View.VISIBLE);progress.setText(shakes+" / "+target+" deliberate shakes");Prefs.of(this).edit().putString("challengeShakeRun",occurrence).putInt("challengeShakeUnit",completed).putInt("challengeShakeCount",shakes).apply();if(shakes>=target)advance(sensorRun,sensorExpected); }
+        if(WakeShakeRule.accepts(mag,now,lastShake)) { lastShake=now;shakes++;progress.setVisibility(View.VISIBLE);progress.setText(shakes+" / "+target+" deliberate shakes");Prefs.of(this).edit().putString("challengeShakeRun",occurrence).putInt("challengeShakeUnit",completed).putInt("challengeShakeCount",shakes).apply();if(shakes>=target)advance(sensorRun,sensorExpected); }
     }
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(cognitive!=null){if(focused&&resumed)cognitive.resume();else cognitive.pause();}}
     @Override public void onAccuracyChanged(Sensor sensor,int accuracy){}
