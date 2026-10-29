@@ -46,6 +46,7 @@ on:
           - profile-room-dimming
           - room-settings-search
           - feature-search
+          - sleep-mixer-reference
           - sensing-travel
           - travel-ui
           - travel-cue-cleanup
