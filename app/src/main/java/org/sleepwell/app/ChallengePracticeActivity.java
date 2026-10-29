@@ -1,5 +1,8 @@
 package org.sleepwell.app;
 
+import androidx.activity.ComponentActivity;
+import androidx.activity.OnBackPressedCallback;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.*;
@@ -8,7 +11,7 @@ import java.util.*;
 import org.json.JSONArray;
 
 /** A cancellable draft exercise, never an alarm admission or a saved-alarm editor. */
-public final class ChallengePracticeActivity extends Activity {
+public final class ChallengePracticeActivity extends ComponentActivity {
     static final int PREVIEW=846;
     private ChallengePracticeSession session;
     private PracticeCheckpoints checkpoints;
@@ -39,7 +42,7 @@ public final class ChallengePracticeActivity extends Activity {
             checkpoints=new PracticeCheckpoints(session.run,restored==null?null:restored.getBundle("checkpoints"));
             PracticeChildTicket.attach(session);
         }catch(Exception invalid){issue=invalid.getMessage()==null?"This preview could not open. Your routine has not changed.":invalid.getMessage();session=null;}
-        if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::cancel);
+        getOnBackPressedDispatcher().addCallback(this,new OnBackPressedCallback(true){@Override public void handleOnBackPressed(){cancel();}});
         render();
     }
 
@@ -118,7 +121,6 @@ public final class ChallengePracticeActivity extends Activity {
         finish();
     }
     private void cancel(){if(Looper.myLooper()==Looper.getMainLooper()&&resumed&&hasWindowFocus())returned(RESULT_CANCELED);}
-    @Override public void onBackPressed(){cancel();}
     @Override protected void onResume(){super.onResume();resumed=true;if(hasWindowFocus()&&screen==null)render();}
     @Override protected void onPause(){closeScreen(true);if(session!=null)session.invalidate();resumed=false;super.onPause();}
     @Override protected void onSaveInstanceState(Bundle saved){super.onSaveInstanceState(saved);Bundle state=state();if(state!=null)saved.putBundle("practiceState",state);}

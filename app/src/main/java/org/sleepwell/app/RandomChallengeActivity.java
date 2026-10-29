@@ -1,5 +1,8 @@
 package org.sleepwell.app;
 
+import androidx.activity.ComponentActivity;
+import androidx.activity.OnBackPressedCallback;
+
 import android.app.*;
 import android.content.Intent;
 import android.os.*;
@@ -8,7 +11,7 @@ import org.json.*;
 import java.util.*;
 
 /** Edits a portable pool; Use returns a draft. Only the parent alarm Save persists it. */
-public final class RandomChallengeActivity extends Activity {
+public final class RandomChallengeActivity extends ComponentActivity {
     static final int REQUEST=835;
     private final List<ChallengeRoutine.Task> pool=new ArrayList<>(),templates=new ArrayList<>();
     private String request,error="";private int count=1,editing=-1;private Dialog picker;
@@ -18,13 +21,12 @@ public final class RandomChallengeActivity extends Activity {
         ChallengeRoutine source=ChallengeRoutineJson.decode(new JSONArray(getIntent().getStringExtra("routine")));templates.addAll(source.tasks);
         if(state!=null){ChallengeRoutine restored=ChallengeRoutineJson.decode(new JSONArray(state.getString("draft")));pool.addAll(restored.tasks);count=restored.randomCount;editing=state.getInt("editing",-1);error=state.getString("error","");}
         else{for(ChallengeRoutine.Task task:source.tasks)if(RandomChallenges.supported(task.type))addInitial(task);if(source.randomCount>0)count=source.randomCount;else{for(String type:List.of("Math","Memory","Sequence","Retype","Counting"))if(pool.size()<5)addInitial(new ChallengeRoutine.Task(type,1));count=Math.min(5,pool.size());}}
-        if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);
+        getOnBackPressedDispatcher().addCallback(this,new OnBackPressedCallback(true){@Override public void handleOnBackPressed(){back();}});
         render();
     }catch(Exception invalid){finish();}}
     private static String key(ChallengeRoutine.Task task){return ChallengeRoutineJson.encode(new ChallengeRoutine(List.of(task))).toString();}
     private void addInitial(ChallengeRoutine.Task task){if(pool.size()<8&&pool.stream().noneMatch(t->key(t).equals(key(task))))pool.add(task);}
     private void back(){if(editing>=0){editing=-1;render();}else finish();}
-    @Override public void onBackPressed(){back();}
     private void render(){if(editing>=pool.size())editing=-1;LinearLayout body=Design.page(this,false,null,n->{});RecordUi.label(this,body);RecordUi.header(body,editing<0?"Random tasks":pool.get(editing).type,this::back);Design.space(body,14);
         if(editing>=0){editTask(body);return;}
         Design.text(body,"A fresh selection at each alarm",22,600,Design.INK);Design.space(body,8);Design.text(body,"Choose distinct pool entries without replacement. Their saved settings stay intact. Snoozing or reopening keeps the current selection.",13,400,Design.MUTED);Design.space(body,12);

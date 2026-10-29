@@ -1,6 +1,8 @@
 package org.sleepwell.app;
 
-import android.app.Activity;
+import androidx.activity.ComponentActivity;
+import androidx.activity.OnBackPressedCallback;
+
 import android.os.Bundle;
 import android.widget.*;
 import org.json.*;
@@ -8,7 +10,7 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /** Reviews real echo measurements and quality, without reconstructing a breathing waveform. */
-public final class EchoPeriodsActivity extends Activity {
+public final class EchoPeriodsActivity extends ComponentActivity {
     private static final int PAGE_SIZE=20;
     private final ExecutorService reader=Executors.newSingleThreadExecutor();
     private Records.Factory factory;
@@ -23,6 +25,7 @@ public final class EchoPeriodsActivity extends Activity {
 
     @Override public void onCreate(Bundle state){
         super.onCreate(state);RecordUi.review(this);factory=Records.factory;
+        getOnBackPressedDispatcher().addCallback(this,new OnBackPressedCallback(true){@Override public void handleOnBackPressed(){back();}});
         if(state!=null){original=state.getBoolean("original");filter=Math.max(0,Math.min(2,state.getInt("filter")));page=Math.max(0,state.getInt("page"));chartMode=state.getInt("chartMode")==1?1:0;selectedStart=state.getLong("selectedStart");overviewScroll=state.getInt("overviewScroll");detailScroll=state.getInt("detailScroll");}
     }
     @Override protected void onResume(){super.onResume();load();}
@@ -118,7 +121,6 @@ public final class EchoPeriodsActivity extends Activity {
     private static String runState(String state){return switch(state){case "active"->"recording in progress";case "complete"->"capture complete";case "interrupted"->"capture interrupted";default->"capture state unavailable";};}
     private void restoreScroll(int position){ScrollView owned=scroll;owned.post(()->{if(scroll==owned)owned.scrollTo(0,Math.max(0,position));});}
     private void back(){if(selectedStart!=0){selectedStart=0;detailScroll=0;render();}else finish();}
-    @Override public void onBackPressed(){back();}
     @Override public void onSaveInstanceState(Bundle state){rememberScroll();super.onSaveInstanceState(state);state.putBoolean("original",original);state.putInt("filter",filter);state.putInt("page",page);state.putInt("chartMode",chartMode);state.putLong("selectedStart",selectedStart);state.putInt("overviewScroll",overviewScroll);state.putInt("detailScroll",detailScroll);}
     @Override protected void onDestroy(){generation++;reader.shutdownNow();super.onDestroy();}
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}

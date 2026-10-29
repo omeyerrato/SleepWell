@@ -1,5 +1,8 @@
 package org.sleepwell.app;
 
+import androidx.activity.ComponentActivity;
+import androidx.activity.OnBackPressedCallback;
+
 import android.Manifest;
 import android.app.*;
 import android.content.*;
@@ -9,13 +12,13 @@ import android.widget.*;
 import java.util.UUID;
 
 /** Exported review surface. Incoming values never become an unreviewed service Intent. */
-public final class IncomingAutomationActivity extends Activity {
+public final class IncomingAutomationActivity extends ComponentActivity {
  private final SensitiveReviewTouches reviewTouches=new SensitiveReviewTouches();
  @Override public boolean dispatchTouchEvent(android.view.MotionEvent event){return reviewTouches.dispatch(this,event,super::dispatchTouchEvent);}
  private IncomingAutomation.Request request;private IncomingAutomation.Identity pinned;private IncomingAutomation.Grant grant;private IncomingAutomation.Work inspecting,preparing;
  private boolean resumed,terminal,submitted,inspected;private long received,sentAt,settingsRevision;private String owner=UUID.randomUUID().toString(),source="",issue="",resultStatus="",initialProcess=IncomingAutomation.PROCESS;
  private final Handler main=new Handler(Looper.getMainLooper());
- @Override public void onCreate(Bundle b){super.onCreate(b);getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_SECURE);getWindow().getDecorView().setFilterTouchesWhenObscured(true);receive(getIntent(),b);if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::cancel);render();}
+ @Override public void onCreate(Bundle b){super.onCreate(b);getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_SECURE);getWindow().getDecorView().setFilterTouchesWhenObscured(true);receive(getIntent(),b);getOnBackPressedDispatcher().addCallback(this,new OnBackPressedCallback(true){@Override public void handleOnBackPressed(){cancel();}});render();}
  private void receive(Intent intent,Bundle b){try{request=IncomingAutomation.parse(this,intent);source=IncomingAutomation.verifiedCaller(this);received=SystemClock.elapsedRealtime();TrackingService.Snapshot snapshot=TrackingService.snapshot();pinned=snapshot==null?null:new IncomingAutomation.Identity(snapshot);
   if(b!=null){received=b.getLong("received",received);owner=b.getString("owner",owner);initialProcess=b.getString("process","");submitted=b.getBoolean("submitted");terminal=b.getBoolean("terminal");issue=b.getString("issue","");resultStatus=b.getString("status","");if(b.getBoolean("hasIdentity"))pinned=new IncomingAutomation.Identity(b.getLong("id"),b.getLong("start"),b.getBoolean("sonar"),b.getString("phase",""),b.getString("delay",""),b.getLong("admission"));else pinned=null;if(!IncomingAutomation.PROCESS.equals(initialProcess)||submitted&&!terminal){terminal=true;resultStatus="interrupted";issue="This request window was recreated after preparation. The command may have been accepted; it will not be replayed. Review tracking before making a new request.";}}
  }catch(RuntimeException invalid){request=null;terminal=true;resultStatus="rejected";issue=invalid.getMessage()==null?"The request is invalid.":invalid.getMessage();}setResult(java.util.Set.of("applied","already","staged").contains(resultStatus)?RESULT_OK:RESULT_CANCELED,IncomingAutomation.result(request,resultStatus.isEmpty()?"cancelled":resultStatus));}
@@ -51,5 +54,5 @@ public final class IncomingAutomationActivity extends Activity {
  @Override protected void onPause(){resumed=false;main.removeCallbacks(tick);if(grant!=null&&!grant.accepted){IncomingAutomation.revoke(grant);grant.issue="The request lost its visible window before service admission.";}if(preparing!=null&&!terminal){terminal=true;resultStatus="cancelled";issue="The confirmation window left the foreground before dispatch. Send a new request to continue.";IncomingAutomation.record(this,request,owner,"cancelled");setResult(RESULT_CANCELED,IncomingAutomation.result(request,"cancelled"));}super.onPause();}
  @Override protected void onNewIntent(Intent intent){super.onNewIntent(intent);setIntent(intent);try{IncomingAutomation.parse(this,intent);}catch(RuntimeException ignored){}IncomingAutomation.revoke(grant);complete("rejected","A reused request window cannot accept a second request. Launch a fresh standard Activity request.");}
  @Override public void onSaveInstanceState(Bundle b){super.onSaveInstanceState(b);b.putLong("received",received);b.putString("owner",owner);b.putString("process",initialProcess);b.putBoolean("submitted",submitted);b.putBoolean("terminal",terminal);b.putString("issue",issue);b.putString("status",resultStatus);b.putBoolean("hasIdentity",pinned!=null);if(pinned!=null){b.putLong("id",pinned.id);b.putLong("start",pinned.start);b.putBoolean("sonar",pinned.sonar);b.putString("phase",pinned.phase);b.putString("delay",pinned.delay);b.putLong("admission",pinned.admission);}}
- @Override public void onBackPressed(){cancel();}@Override protected void onDestroy(){main.removeCallbacks(tick);IncomingAutomation.revoke(grant);super.onDestroy();}@Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus){RecordUi.lightBars(this);if(resumed&&!terminal)poll();}}
+ @Override protected void onDestroy(){main.removeCallbacks(tick);IncomingAutomation.revoke(grant);super.onDestroy();}@Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus){RecordUi.lightBars(this);if(resumed&&!terminal)poll();}}
 }

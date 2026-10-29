@@ -1,5 +1,8 @@
 package org.sleepwell.app;
 
+import androidx.activity.ComponentActivity;
+import androidx.activity.OnBackPressedCallback;
+
 import android.Manifest;
 import android.app.*;
 import android.content.*;
@@ -11,10 +14,10 @@ import android.widget.*;
 import java.time.ZoneId;
 
 /** Explicit record review -> selected writable calendar -> one journalled local insert. */
-public final class CalendarEventDirectActivity extends Activity {
+public final class CalendarEventDirectActivity extends ComponentActivity {
  private CalendarEventWrites.Job job;private CalendarEventWrites.State drawn;private boolean resumed,notes;private long selected;private String title="Sleep period",error="";private Dialog dialog;
  private final Handler main=new Handler(Looper.getMainLooper());
- @Override public void onCreate(Bundle b){super.onCreate(b);RecordUi.review(this);job=CalendarEventWrites.get(this,getIntent().getLongExtra("record",0));if(b!=null){notes=b.getBoolean("notes");selected=b.getLong("calendar");title=b.getString("title","Sleep period");error=b.getString("error","");}if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);render();if(job.state.source==null&&!job.state.busy)job.load();}
+ @Override public void onCreate(Bundle b){super.onCreate(b);RecordUi.review(this);job=CalendarEventWrites.get(this,getIntent().getLongExtra("record",0));if(b!=null){notes=b.getBoolean("notes");selected=b.getLong("calendar");title=b.getString("title","Sleep period");error=b.getString("error","");}getOnBackPressedDispatcher().addCallback(this,new OnBackPressedCallback(true){@Override public void handleOnBackPressed(){back();}});render();if(job.state.source==null&&!job.state.busy)job.load();}
  private void back(){if(dialog!=null&&dialog.isShowing()){dialog.dismiss();return;}finish();}
  private CalendarEventWrites.Calendar chosen(){for(CalendarEventWrites.Calendar c:job.state.calendars)if(c.id==selected)return c;return null;}
  private void render(){CalendarEventWrites.State s=job.state;drawn=s;LinearLayout body=Design.page(this,false,null,n->{});RecordUi.label(this,body);RecordUi.header(body,"Save sleep period",this::back);Design.space(body,16);
@@ -44,5 +47,5 @@ public final class CalendarEventDirectActivity extends Activity {
  private final Runnable poll=new Runnable(){public void run(){if(!resumed)return;if(drawn!=job.state)render();main.postDelayed(this,150);}};
  @Override protected void onResume(){super.onResume();resumed=true;if(!job.state.busy)job.load();poll.run();}@Override protected void onPause(){resumed=false;main.removeCallbacks(poll);super.onPause();}
  @Override public void onSaveInstanceState(Bundle b){super.onSaveInstanceState(b);b.putBoolean("notes",notes);b.putLong("calendar",selected);b.putString("title",title);b.putString("error",error);}
- @Override protected void onDestroy(){main.removeCallbacks(poll);if(dialog!=null)dialog.dismiss();super.onDestroy();}@Override public void onBackPressed(){back();}@Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
+ @Override protected void onDestroy(){main.removeCallbacks(poll);if(dialog!=null)dialog.dismiss();super.onDestroy();}@Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
 }

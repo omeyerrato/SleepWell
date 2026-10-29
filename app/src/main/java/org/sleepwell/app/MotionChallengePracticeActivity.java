@@ -1,13 +1,15 @@
 package org.sleepwell.app;
 
-import android.app.Activity;
+import androidx.activity.ComponentActivity;
+import androidx.activity.OnBackPressedCallback;
+
 import android.content.Intent;
 import android.os.*;
 import android.widget.LinearLayout;
 import java.util.Set;
 
 /** Private routine child. No alarm admission, service, output, or access grant is implied by launch. */
-public final class MotionChallengePracticeActivity extends Activity {
+public final class MotionChallengePracticeActivity extends ComponentActivity {
     static final int REQUEST=847;
     static final Set<String> TYPES=Set.of("Tilt maze","Light","Spin around","Shake","Walk","NFC");
     private PracticeChildTicket.Ticket ticket;
@@ -21,7 +23,7 @@ public final class MotionChallengePracticeActivity extends Activity {
         super.onCreate(saved);RecordUi.review(this);setResult(RESULT_CANCELED);
         ticket=PracticeChildTicket.claim(this,TYPES.toArray(new String[0]));
         if(ticket!=null){try{access=PracticeMotionAccess.factory.create(this);checkpoints=new PracticeCheckpoints(ticket.run+":"+ticket.unit,ticket.checkpoint());}catch(RuntimeException failure){access=null;}}
-        if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,()->returned(RESULT_CANCELED));
+        getOnBackPressedDispatcher().addCallback(this,new OnBackPressedCallback(true){@Override public void handleOnBackPressed(){returned(RESULT_CANCELED);}});
         render();
     }
     private boolean visible(){return Looper.myLooper()==Looper.getMainLooper()&&resumed&&!returning&&ticket!=null&&ticket.captureOwner(this,true);}
@@ -58,7 +60,6 @@ public final class MotionChallengePracticeActivity extends Activity {
         if(proof==null){if(result==RESULT_CANCELED){returning=true;finish();}else render();return;}
         returning=true;main.removeCallbacksAndMessages(null);setResult(result,proof);finish();
     }
-    @Override public void onBackPressed(){returned(RESULT_CANCELED);}
     @Override protected void onResume(){super.onResume();resumed=true;if(hasWindowFocus())render();}
     @Override protected void onPause(){if(ticket!=null)ticket.suspendCapture(this);closeTask();resumed=false;super.onPause();}
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){RecordUi.lightBars(this);if(resumed&&task==null)render();}else{if(ticket!=null)ticket.suspendCapture(this);closeTask();}}
