@@ -1,0 +1,31 @@
+{
+  "scope": "sleep-mixer-reference",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "SoundSettingsFlowTest#silentChoicesRecreateAndReopenWithoutPlayback",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 14,
+  "failures": [
+    "SoundSettingsFlowTest#silentChoicesRecreateAndReopenWithoutPlayback",
+    "sounds-settings-rain.png",
+    "sounds-settings-timer-draft.png",
+    "sounds-settings-timer-recreated.png",
+    "sounds-settings-fade-draft.png",
+    "sounds-settings-fade-recreated.png",
+    "sounds-settings-ocean.png",
+    "sounds-settings-recreated.png",
+    "sounds-settings-reopened.png",
+    "sounds-settings-custom-timer.png",
+    "sounds-settings-custom-fade.png",
+    "sounds-settings-menu.png",
+    "sounds-settings-sources.png",
+    "sounds-settings-playback.png",
+    "sounds-settings-menu-recreated.png"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "base": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
+  "head": "7a4c6dfb656c180f5762b6771a50d935c52d5251",
+  "app_main_tree": "c756112b139cce51dcb735babd369fef3aca7585",
+  "scope": "sleep-mixer-reference",
+  "native_sounds": false,
+  "audio_imports": false,
+  "full_app_review": false,
+  "changed_source_native_sha256": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepSoundsActivity.java",
+      "sha256": "411f968224884627d9696062f795882e6379b8da43dd01bc2b24d316fe837e38"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepMixerChoiceEditor.java",
+      "sha256": "eef46f5387b1ea04666520c689f098c58bc4bd25a540fd6541202393013bb162"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SoundSettingsFlowTest.java",
+      "sha256": "7ba182e54ed99935cd2ec9880188a9ab8d16eaa81032998b3cea6811b7eab94d"
+    }
+  ],
+  "runtime_paths_identical_to_base": [
+    "SoundMix.java",
+    "SoundPreferences.java",
+    "SoundPlayback.java",
+    "SleepSoundService.java",
+    "SoundOwnership.java",
+    "SoundImports.java",
+    "SleepRadioEditor.java",
+    "AmbientRotationEditor.java",
+    "SoundPlaylistEditor.java"
+  ],
+  "compile": {
+    "first_production_seconds": 110,
+    "initial_native_seconds": 128,
+    "final_production_and_native_seconds": 141,
+    "final_tasks": 25,
+    "final_executed": 3,
+    "final_uptodate": 22,
+    "corrected_native_seconds": 60
+  },
+  "originals_review": "All14 successful originals and first failed diagnostic individually opened; see inspection.json.",
+  "first_run": 40798291747,
+  "current_run": 40800438208,
+  "first_attempt": {
+    "head": "76b03ef7964c834943317e26c7be607ac7452bbb",
+    "run": 40798291747,
+    "passed": false,
+    "method_seconds": 6.441,
+    "required_originals": 0,
+    "diagnostic_pngs": 1,
+    "cause": "New native helper String.contentEquals(null); no production edit followed."
+  },
+  "production_tree_equal_between_attempts": true,
+  "retained_production_fragments": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepSoundsActivity.java",
+      "fragment": "private void playbackSettings",
+      "sha256": "50a071750189ab4d34f72f6aee8b85e29aadcdce88eaa70a6431aa978d91391a",
+      "equal_to_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepSoundsActivity.java",
+      "fragment": "private void renderMenu",
+      "sha256": "41d22f3330e86eb695e1e69a8582121089063878ae6d6f0df2f7dafaf70fa680",
+      "equal_to_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepSoundsActivity.java",
+      "fragment": "private void select",
+      "sha256": "b25138f4ced5a1ceb6235b84e863252d15b2cfeba21c3151c5f923ad821fdaef",
+      "equal_to_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepSoundsActivity.java",
+      "fragment": "private void save",
+      "sha256": "0a2ce4a5b3b3782cbfa428ca2c66c2718ef8655c343c56dd03c09ee7fc77ae70",
+      "equal_to_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepSoundsActivity.java",
+      "fragment": "private void openChoice",
+      "sha256": "861a423f20b6d5c94af17996f8f273bed11a1d3f38953a9d10fcf6b6cbf868f2",
+      "equal_to_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepSoundsActivity.java",
+      "fragment": "private void toggle",
+      "sha256": "99677b05f5cbdbf2e4de64b7913e2318ec7f1e3dc1544abd53d23ec9654a9609",
+      "equal_to_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepSoundsActivity.java",
+      "fragment": "private void back",
+      "sha256": "757c26d7a5a0e4a5024780eb62c5a32beae1b621266edc801ebd81a3939edb71",
+      "equal_to_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepMixerChoiceEditor.java",
+      "fragment": "private void save through class end",
+      "sha256": "7f3d567dca51410e644ce80767886db9f7ac71f879e75c5abe6da84f47476b3e",
+      "equal_to_base": true
+    }
+  ],
+  "native_acceptance": {
+    "run": 40800438208,
+    "head": "7a4c6dfb656c180f5762b6771a50d935c52d5251",
+    "passed": true,
+    "seconds": 34.228,
+    "existing_methods": 1,
+    "originals": 14,
+    "full_app_review": false
+  }
+}

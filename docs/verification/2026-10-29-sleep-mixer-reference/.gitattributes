@@ -1,0 +1,6 @@
+.gitattributes text eol=lf
+SHA256SUMS text eol=lf
+originals/** -text -whitespace
+*.json -text
+attempt-1/** -text -whitespace
+compile/** -text -whitespace

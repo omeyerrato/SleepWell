@@ -1,0 +1,83 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundSettingsFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.SoundSettingsFlowTest:
+INSTRUMENTATION_STATUS: test=silentChoicesRecreateAndReopenWithoutPlayback
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.SoundSettingsFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.NullPointerException: Attempt to invoke interface method 'int java.lang.CharSequence.length()' on a null object reference
+	at java.lang.String.contentEquals(String.java:1387)
+	at org.sleepwell.app.SoundSettingsFlowTest.named(SoundSettingsFlowTest.java:27)
+	at org.sleepwell.app.SoundSettingsFlowTest.find(SoundSettingsFlowTest.java:28)
+	at org.sleepwell.app.SoundSettingsFlowTest.lambda$ready$0(SoundSettingsFlowTest.java:29)
+	at org.sleepwell.app.SoundSettingsFlowTest.$r8$lambda$7Mdw59bKOvkRFMDUaD3nogyfDnU(Unknown Source:0)
+	at org.sleepwell.app.SoundSettingsFlowTest$$ExternalSyntheticLambda8.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2616)
+	at android.os.Handler.handleCallback(Handler.java:995)
+	at android.os.Handler.dispatchMessage(Handler.java:103)
+	at android.os.Looper.loopOnce(Looper.java:248)
+	at android.os.Looper.loop(Looper.java:338)
+	at android.app.ActivityThread.main(ActivityThread.java:9067)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+
+INSTRUMENTATION_STATUS: stream=
+Error in silentChoicesRecreateAndReopenWithoutPlayback(org.sleepwell.app.SoundSettingsFlowTest):
+java.lang.NullPointerException: Attempt to invoke interface method 'int java.lang.CharSequence.length()' on a null object reference
+	at java.lang.String.contentEquals(String.java:1387)
+	at org.sleepwell.app.SoundSettingsFlowTest.named(SoundSettingsFlowTest.java:27)
+	at org.sleepwell.app.SoundSettingsFlowTest.find(SoundSettingsFlowTest.java:28)
+	at org.sleepwell.app.SoundSettingsFlowTest.lambda$ready$0(SoundSettingsFlowTest.java:29)
+	at org.sleepwell.app.SoundSettingsFlowTest.$r8$lambda$7Mdw59bKOvkRFMDUaD3nogyfDnU(Unknown Source:0)
+	at org.sleepwell.app.SoundSettingsFlowTest$$ExternalSyntheticLambda8.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2616)
+	at android.os.Handler.handleCallback(Handler.java:995)
+	at android.os.Handler.dispatchMessage(Handler.java:103)
+	at android.os.Looper.loopOnce(Looper.java:248)
+	at android.os.Looper.loop(Looper.java:338)
+	at android.app.ActivityThread.main(ActivityThread.java:9067)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+
+INSTRUMENTATION_STATUS: test=silentChoicesRecreateAndReopenWithoutPlayback
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 6.441
+There was 1 failure:
+1) silentChoicesRecreateAndReopenWithoutPlayback(org.sleepwell.app.SoundSettingsFlowTest)
+java.lang.NullPointerException: Attempt to invoke interface method 'int java.lang.CharSequence.length()' on a null object reference
+	at java.lang.String.contentEquals(String.java:1387)
+	at org.sleepwell.app.SoundSettingsFlowTest.named(SoundSettingsFlowTest.java:27)
+	at org.sleepwell.app.SoundSettingsFlowTest.find(SoundSettingsFlowTest.java:28)
+	at org.sleepwell.app.SoundSettingsFlowTest.lambda$ready$0(SoundSettingsFlowTest.java:29)
+	at org.sleepwell.app.SoundSettingsFlowTest.$r8$lambda$7Mdw59bKOvkRFMDUaD3nogyfDnU(Unknown Source:0)
+	at org.sleepwell.app.SoundSettingsFlowTest$$ExternalSyntheticLambda8.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2616)
+	at android.os.Handler.handleCallback(Handler.java:995)
+	at android.os.Handler.dispatchMessage(Handler.java:103)
+	at android.os.Looper.loopOnce(Looper.java:248)
+	at android.os.Looper.loop(Looper.java:338)
+	at android.app.ActivityThread.main(ActivityThread.java:9067)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

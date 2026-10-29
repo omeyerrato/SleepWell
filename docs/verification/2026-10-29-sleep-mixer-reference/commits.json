@@ -1,0 +1,41 @@
+{
+  "base": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
+  "ordered": [
+    {
+      "sha": "94c1cb45293d3579a4446fda870ee1e253e360c3",
+      "kind": "source",
+      "subject": "Keep sleep mixer choices and sound settings accessible"
+    },
+    {
+      "sha": "7df469d24a6de23dc273865c5c0610620313c007",
+      "kind": "source",
+      "subject": "Restore mixer choice position after its first layout"
+    },
+    {
+      "sha": "8b5af1250b3de0081bd689197ec0e0c6a6d13e09",
+      "kind": "native",
+      "subject": "Exercise actual silent mixer drafts and source menus"
+    },
+    {
+      "sha": "dbd95e90ea93c8b1037f9d12e7392de343657661",
+      "kind": "native",
+      "subject": "Prove nonzero mixer choice scroll with a retained custom value"
+    },
+    {
+      "sha": "76b03ef7964c834943317e26c7be607ac7452bbb",
+      "kind": "scope",
+      "subject": "Scope one silent mixer reference configuration journey"
+    },
+    {
+      "sha": "0dbb5fee37c2d22f3418fe0b3be4c7d2c32379ca",
+      "kind": "native",
+      "subject": "Bind mixer native helpers to null-safe owned UI state"
+    },
+    {
+      "sha": "7a4c6dfb656c180f5762b6771a50d935c52d5251",
+      "kind": "native",
+      "subject": "Use the fixed cancel action after scrolling a mixer draft"
+    }
+  ],
+  "docs_commit": "separate following commit"
+}

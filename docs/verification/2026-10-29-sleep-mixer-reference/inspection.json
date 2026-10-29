@@ -1,0 +1,199 @@
+{
+  "run": 40800438208,
+  "head": "7a4c6dfb656c180f5762b6771a50d935c52d5251",
+  "conclusion": "success",
+  "selector": "SoundSettingsFlowTest#silentChoicesRecreateAndReopenWithoutPlayback",
+  "seconds": 34.228,
+  "status_code": 0,
+  "expected_methods": 1,
+  "required_originals": 14,
+  "all_originals_individually_opened": true,
+  "reference": "design-concepts/2026-10-22-phone-app/07-sleep-audio.png / left / UI19",
+  "visual_result": "No new core clipping observed. Main hierarchy/core/tiles, selected/focus text and fixed choice actions readable. Extra Stop/More, functional child pages, retained artwork and idle playback are intentional differences from the static reference.",
+  "nonzero_scroll_boundary": "A nine-choice private concurrent-revision scenario completed native assertions for nonzero retained scroll/focus and stale Use rejection; no extra screenshot of that scenario or error is claimed.",
+  "failure_retained": {
+    "run": 40798291747,
+    "seconds": 6.441,
+    "required_originals": 0,
+    "diagnostic": {
+      "file": "attempt-1/sounds-settings-failed.png",
+      "sha256": "6db7cb60bc332ecf3413374bd2cd3dd0eb2625a8075057fbeceaae6148aa54e7",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "individually_opened": true,
+      "observation": "Actual current main core and allfourtiles visible; native helper failed before any required capture."
+    }
+  },
+  "images": [
+    {
+      "file": "originals/sounds-settings-rain.png",
+      "sha256": "bcf2eb77c33ca728c993fcc9c22006bdc6ba1feeb624b5ab789d1d9ef088a9b9",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Current Rain artwork/70% primary/20% brown, idle0:00/30:00, Timer30/Fade5, headerStop/More, allfourtiles/status fully visible.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-timer-draft.png",
+      "sha256": "7797316b4ff40d08fb39fe79f50b1d282bbd4d1983afb0885e8154b08aa6a4a9",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "240-minute draft selected and keyboard-focused; check/label remain readable; fixed Use/Cancel fully visible; no write before Use.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-timer-recreated.png",
+      "sha256": "7797316b4ff40d08fb39fe79f50b1d282bbd4d1983afb0885e8154b08aa6a4a9",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Same240 selection and keyboard focus after recreation; same readable fixed actions.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-fade-draft.png",
+      "sha256": "4e0e0cdb79e1289b8c1b6868d21024c1229914f7377eda6128c9b361d668bb8f",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "10-minute unsaved fade selected among Off/1/2/5/10/15; fixed Use/Cancel fully visible.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-fade-recreated.png",
+      "sha256": "4e0e0cdb79e1289b8c1b6868d21024c1229914f7377eda6128c9b361d668bb8f",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "10-minute unsaved fade selection survives recreation; same controls and description.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-ocean.png",
+      "sha256": "a4a34ad1d201c60146dcd32eab438a7e8699b76109a85a9afcd8ed4ea9a9853c",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Ocean selected with actual45-minute timer/10-minute fade; unchanged70/20 levels; allcore/tile actions fit.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-recreated.png",
+      "sha256": "a4a34ad1d201c60146dcd32eab438a7e8699b76109a85a9afcd8ed4ea9a9853c",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Ocean selection,45/10 values and complete main hierarchy survive recreation.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-reopened.png",
+      "sha256": "a4a34ad1d201c60146dcd32eab438a7e8699b76109a85a9afcd8ed4ea9a9853c",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Ocean selection and45/10 values retained after closing/reopening; Ready/zero progress remains honest.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-custom-timer.png",
+      "sha256": "78550593ad141315a75675ee56460d66029b5bcf565014c5cde5a404435a2826",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Saved custom37-minute value remains selected among presets, with matching Use37 action and fixed Cancel.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-custom-fade.png",
+      "sha256": "b515a2a5689c3e45bb6cae913cb28a40bf1d852407648b367c737219b03b42af",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Saved custom7-minute value remains selected among preset fades, with matching Use7 action and fixed Cancel.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-menu.png",
+      "sha256": "2d50daa1f526d036173ef4fd08e84999961d07b62566f5f053f4c284511498ab",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Actual More menu shows Sources/playlists, Playback/tracking, Guided wind-down and Back to sleep sounds.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-sources.png",
+      "sha256": "83270e7fc87a406072eab7e5dd2485bc831dddeee9d6644dc796a79a0db8bd0c",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "All retained source rows, actualSelectedOcean, standalone brown-noise choice and Back fit; no source selected on arrival.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-playback.png",
+      "sha256": "b764fc13a735077c2bee69e440934d1ab7d33c2bd597d67fe598f9e1a3e92e4e",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Tracking/stillness switches OFF, honest measured-stillness copy, About and separate-consent media-fade route readable; no toggle/output on arrival.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/sounds-settings-menu-recreated.png",
+      "sha256": "2d50daa1f526d036173ef4fd08e84999961d07b62566f5f053f4c284511498ab",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Actual More menu and savedOcean source scope restored after child Back and recreation.",
+      "new_core_clipping_observed": false
+    }
+  ]
+}
