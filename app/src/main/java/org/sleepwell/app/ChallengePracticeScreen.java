@@ -33,7 +33,7 @@ final class ChallengePracticeScreen implements AutoCloseable {
         owner=new ChallengePracticeOwner(activity,card,session,ticket,resumed);
         Bundle saved=session.draft();draft=saved==null?new Bundle():saved;
         ChallengeRoutine.Position position=session.position();ChallengeRoutine.Task task=position.task;
-        if(!SUPPORTED.contains(task.type))throw new IllegalArgumentException(task.type+" routine preview is not wired yet.");
+        if(!SUPPORTED.contains(task.type))throw new IllegalArgumentException(task.type+" is not available in routine preview yet.");
         if(draft.getBoolean("practiceFallback")){math(card,task.code==null?MathSettings.LEGACY:task.code.fallback);return;}
         if(mathSelected(position)){math(card,MathSettings.LEGACY);return;}
         switch(task.type){
@@ -47,7 +47,7 @@ final class ChallengePracticeScreen implements AutoCloseable {
             case "Visual search"->{MoonSearch board=MoonSearchState.open(checkpoints,session.run,ticket.unit(),position.round,random);MoonSearchView.render(card,board,owner::current,this::complete);Design.button(card,"Use Math instead",false,()->owner.submit(()->{if(!checkpoints.edit().putString("practiceMathRun",session.run).putInt("practiceMathUnit",ticket.unit()).commit()){Ui.toast(activity,"The preview alternative could not be retained.");return;}refresh();}));}
             case "Type code"->code=new TypeCodeTask(card,checkpoints,session.run,ticket.unit(),task.rounds,draft.getBundle("typeCode"),owner::current,this::complete,this::refresh);
             case "Jumping"->jump=new JumpTask(card,checkpoints,session.run,ticket.unit(),position.round,owner::current,this::complete,this::refresh);
-            default->throw new IllegalArgumentException("This task has no working routine preview controller.");
+            default->throw new IllegalArgumentException("This task is not available in routine preview yet.");
         }
     }
 

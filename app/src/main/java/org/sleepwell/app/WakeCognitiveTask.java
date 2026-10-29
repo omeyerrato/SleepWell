@@ -107,6 +107,7 @@ abstract class WakeCognitiveTask implements AutoCloseable {
             Design.space(card,16);Design.text(card,phrase,26,700,Design.INK).setGravity(Gravity.CENTER);
             String saved=restores(restored,"Retype")&&phrase.equals(restored.getString("phrase"))?restored.getString("answer",""):"";
             input=Ui.input(card,"Your answer",saved,InputType.TYPE_CLASS_TEXT);
+            input.setMinimumHeight(Design.dp(card.getContext(),48));
             if(practice)input.setFilters(new android.text.InputFilter[]{new android.text.InputFilter.LengthFilter(120)});
             Ui.button(card,"Check answer",()->{if(!live())return;if(input.getText().toString().trim().equals(phrase))finish();else input.setError("Try again");},true);
         }
