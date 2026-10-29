@@ -70,6 +70,11 @@ public final class Scheduler {
         // Reserving the current occurrence before starting audio prevents smart/deadline races.
         synchronized(Scheduler.class) {
             boolean alreadyRinging=Prefs.flag(c,"ringing");
+            // Readiness is a low-priority test, including if real work began during its 10-second wait.
+            if(a.id==-1){
+                if(alreadyRinging||AlarmService.active||TrackingService.running||Prefs.flag(c,"tracking"))return;
+                WakeCheckState check=WakeChecks.open(c).read();if(check!=null&&(check.active()||check.phase==WakeCheckState.Phase.CLAIMED))return;
+            }
             if(snoozeContinuation&&SnoozeDelivery.continuation(c,a)==null)return;
             if(mainAlarm) {
                 // Re-read under the same lock as Skip/Undo: stale smart-wake snapshots cannot bypass a saved skip.
@@ -82,8 +87,12 @@ public final class Scheduler {
                     if(stored!=null) { AlarmSkips.consume(stored);if(stored.days.isEmpty()) stored.enabled=false; s.save(stored); schedule(c,stored); }
                 }
             }
-            // Overlapping scheduled alarms share the currently active challenge, but both schedules advance.
-            if(alreadyRinging)return;
+            // Real alarms keep their existing overlap policy; only the expendable readiness test yields.
+            if(alreadyRinging){
+                boolean replacingQuietTest=false;
+                if(a.id>0)try{replacingQuietTest=Alarm.read(new org.json.JSONObject(Prefs.text(c,"active_alarm","{}"))).id==-1;}catch(org.json.JSONException|RuntimeException unreadable){/* Keep the ordinary overlap rule if the active owner cannot be identified. */}
+                if(!replacingQuietTest)return;
+            }
             WakeChecks.supersede(c);
             String nextRun=java.util.UUID.randomUUID().toString();
             RandomChallenges.Prepared picked=RandomChallenges.prepare(c,a,nextRun,!mainAlarm);a=picked.alarm;
