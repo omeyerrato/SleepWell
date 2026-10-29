@@ -1,0 +1,8 @@
+{
+  "original_sha256": "15532263f1424e1d0a72d7b9fbed5d6791b69efd7097b930254a804578df6f16",
+  "public_sha256": "66503860c7cb1db21229ec0023d7bd01fcb03d00a1a6fcda6ca428b35c3b76c4",
+  "replacements": 1,
+  "rule": "Only the local source-workspace prefix in the generated Problems-report URL becomes <workspace>; every other byte is unchanged. Original transcript remains private.",
+  "independent_build_run": false,
+  "owner_wall_seconds": 333.266
+}

@@ -1,0 +1,48 @@
+{
+  "source": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
+  "apk": "SleepWell-741b3718032ab4dc1d52eb67cf2194d4c59884f9.apk",
+  "bytes": 163250139,
+  "sha256": "3e44d6899aa52ccc567de983b91c70765c5cbdc00562144a4bbdc04125940459",
+  "app_tree": "ed2b45fb19ce648973b9e2a82a2bec0620b00879",
+  "app_src_main_tree": "3f258eab6b1ec342bfb5bc0d32aaf7f4996747d1",
+  "versionName": "0.1.6",
+  "versionCode": 7,
+  "baseline": {
+    "source": "ef69408258e900a50274d6f2488e859647138714",
+    "apk": "SleepWell-ef69408258e900a50274d6f2488e859647138714.apk",
+    "bytes": 163200933,
+    "sha256": "41447d6bce55abb20ce504d44dd21dfee949a88f68ee7e7633e160cebef4cdde"
+  },
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "compiled_manifest_equal_excluding_only_versionCode_and_versionName": true,
+  "zip_counts": {
+    "baseline_entries": 947,
+    "candidate_entries": 948,
+    "added": 1,
+    "removed": 0,
+    "changed": 4,
+    "equal_content": 943,
+    "baseline_assets": 65,
+    "candidate_assets": 65,
+    "baseline_native": 8,
+    "candidate_native": 8,
+    "baseline_resources": 775,
+    "candidate_resources": 775
+  },
+  "resource_delta": {
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "all_resource_entries_exact_equal": true
+  },
+  "build_original_sha256": "15532263f1424e1d0a72d7b9fbed5d6791b69efd7097b930254a804578df6f16",
+  "build_public_sanitized_sha256": "66503860c7cb1db21229ec0023d7bd01fcb03d00a1a6fcda6ca428b35c3b76c4",
+  "build_duration_from_original_log": "5m30s",
+  "build_tasks": {
+    "total": 34,
+    "executed": 11,
+    "up_to_date": 23
+  },
+  "owner_wall_seconds": 333.266,
+  "source_to_dex_equivalence_proven": false
+}

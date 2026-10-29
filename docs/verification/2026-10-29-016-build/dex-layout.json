@@ -1,0 +1,120 @@
+{
+  "scope": "DEX header/string/type/class identities only; no instruction or vendor implementation listing. Not source-to-DEX behavioral equivalence.",
+  "dex": {
+    "0.1.5": [
+      {
+        "name": "classes.dex",
+        "bytes": 10656324,
+        "sha256": "43ba88341a46ed73bbe0a1e745566d2b07cc33ad4ddbb84260f7ce905b2e1070",
+        "class_count": 7238,
+        "class_descriptor_set_sha256": "0851f4b0201e20c1c74aa2a41d6d8f547ac70e73fa688fef2cb2fcb10c3776db"
+      },
+      {
+        "name": "classes2.dex",
+        "bytes": 161508,
+        "sha256": "32cb3c3eaef8dfbbd27bf20c9ce8f03681d65cfa85cefd74ac633c382b7f1edf",
+        "class_count": 227,
+        "class_descriptor_set_sha256": "b4978f954814c2abb11588e3abd90433e635f37377ad009c8636c5b74b5f4e93"
+      },
+      {
+        "name": "classes3.dex",
+        "bytes": 4994380,
+        "sha256": "4de24aaf3ba215ca011cc466dc45c8b9cc401f7a2fcc835def4d0418df681204",
+        "class_count": 5405,
+        "class_descriptor_set_sha256": "1772b0a30f326ae5842d5e1ed15330e717fe9fd6abda377e9de0cea5c1620e85"
+      },
+      {
+        "name": "classes4.dex",
+        "bytes": 10621576,
+        "sha256": "fc7a45823eca03f707ccba4089b14736d59bbd59239e35c9492fc052a6c104df",
+        "class_count": 10708,
+        "class_descriptor_set_sha256": "d977a9d3316e28ea0acfd363f79d9047354bfc2ec21e6585ed4778500aa84156"
+      },
+      {
+        "name": "classes5.dex",
+        "bytes": 1555064,
+        "sha256": "73af00f3dfc42d11570bdbde18c25f9c2e11c827405bd0ca0e9abbd47805b1a6",
+        "class_count": 1113,
+        "class_descriptor_set_sha256": "5a0ce723c7b2be07aadea06ad9cd2dcfd831e6ea32de69bcae7da344f7bc66c4"
+      }
+    ],
+    "0.1.6": [
+      {
+        "name": "classes.dex",
+        "bytes": 10656324,
+        "sha256": "43ba88341a46ed73bbe0a1e745566d2b07cc33ad4ddbb84260f7ce905b2e1070",
+        "class_count": 7238,
+        "class_descriptor_set_sha256": "0851f4b0201e20c1c74aa2a41d6d8f547ac70e73fa688fef2cb2fcb10c3776db"
+      },
+      {
+        "name": "classes2.dex",
+        "bytes": 161508,
+        "sha256": "32cb3c3eaef8dfbbd27bf20c9ce8f03681d65cfa85cefd74ac633c382b7f1edf",
+        "class_count": 227,
+        "class_descriptor_set_sha256": "b4978f954814c2abb11588e3abd90433e635f37377ad009c8636c5b74b5f4e93"
+      },
+      {
+        "name": "classes3.dex",
+        "bytes": 5047652,
+        "sha256": "26e445ac68563ff8c9764f2180456967831bae3c8a5fbcd4b40bb6eb6a970372",
+        "class_count": 5451,
+        "class_descriptor_set_sha256": "fca234780b9079639a22cda47f2b6c742c45135eabf685df7ca13895c9d2e530"
+      },
+      {
+        "name": "classes4.dex",
+        "bytes": 612,
+        "sha256": "c33618d888a1f88fc4904a60b7470ca84ba29cd86d47571d9ff307283d0ea78b",
+        "class_count": 1,
+        "class_descriptor_set_sha256": "896de86b41e1bdaf6e650afdaf7d91a5b4018489cd14d827786032d6e1d18df9",
+        "class_identities": [
+          "Lcom/android/tools/r8/RecordTag;"
+        ]
+      },
+      {
+        "name": "classes5.dex",
+        "bytes": 10621576,
+        "sha256": "fc7a45823eca03f707ccba4089b14736d59bbd59239e35c9492fc052a6c104df",
+        "class_count": 10708,
+        "class_descriptor_set_sha256": "d977a9d3316e28ea0acfd363f79d9047354bfc2ec21e6585ed4778500aa84156"
+      },
+      {
+        "name": "classes6.dex",
+        "bytes": 1555064,
+        "sha256": "73af00f3dfc42d11570bdbde18c25f9c2e11c827405bd0ca0e9abbd47805b1a6",
+        "class_count": 1113,
+        "class_descriptor_set_sha256": "5a0ce723c7b2be07aadea06ad9cd2dcfd831e6ea32de69bcae7da344f7bc66c4"
+      }
+    ]
+  },
+  "exact_content_matches_across_entries": [
+    {
+      "baseline": "classes.dex",
+      "candidate": "classes.dex",
+      "sha256": "43ba88341a46ed73bbe0a1e745566d2b07cc33ad4ddbb84260f7ce905b2e1070"
+    },
+    {
+      "baseline": "classes2.dex",
+      "candidate": "classes2.dex",
+      "sha256": "32cb3c3eaef8dfbbd27bf20c9ce8f03681d65cfa85cefd74ac633c382b7f1edf"
+    },
+    {
+      "baseline": "classes4.dex",
+      "candidate": "classes5.dex",
+      "sha256": "fc7a45823eca03f707ccba4089b14736d59bbd59239e35c9492fc052a6c104df"
+    },
+    {
+      "baseline": "classes5.dex",
+      "candidate": "classes6.dex",
+      "sha256": "73af00f3dfc42d11570bdbde18c25f9c2e11c827405bd0ca0e9abbd47805b1a6"
+    }
+  ],
+  "baseline_classes": 24691,
+  "candidate_classes": 24738,
+  "removed_classes": [],
+  "added_class_count": 47,
+  "added_app_class_count": 46,
+  "added_non_app_identities": [
+    "Lcom/android/tools/r8/RecordTag;"
+  ],
+  "added_app_class_descriptor_set_sha256": "9eea1c79a8cd31c3906fa1a0b00f2830b7365ab6ec7d19bef46b88a30c5ab55a"
+}

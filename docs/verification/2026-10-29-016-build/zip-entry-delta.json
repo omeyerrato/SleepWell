@@ -1,0 +1,63 @@
+{
+  "counts": {
+    "baseline_entries": 947,
+    "candidate_entries": 948,
+    "added": 1,
+    "removed": 0,
+    "changed": 4,
+    "equal_content": 943,
+    "baseline_assets": 65,
+    "candidate_assets": 65,
+    "baseline_native": 8,
+    "candidate_native": 8,
+    "baseline_resources": 775,
+    "candidate_resources": 775
+  },
+  "added": [
+    "classes6.dex"
+  ],
+  "removed": [],
+  "changed": [
+    {
+      "name": "AndroidManifest.xml",
+      "baseline_bytes": 73880,
+      "candidate_bytes": 73880,
+      "baseline_sha256": "b00d864af3fa465da7c288a779da761ba66c38f963a56607565ac8402b915eca",
+      "candidate_sha256": "9b7608203b001f2ab22726e5dcf85fdfc17e686aa9cdc709ffa2148886b47156"
+    },
+    {
+      "name": "classes3.dex",
+      "baseline_bytes": 4994380,
+      "candidate_bytes": 5047652,
+      "baseline_sha256": "4de24aaf3ba215ca011cc466dc45c8b9cc401f7a2fcc835def4d0418df681204",
+      "candidate_sha256": "26e445ac68563ff8c9764f2180456967831bae3c8a5fbcd4b40bb6eb6a970372"
+    },
+    {
+      "name": "classes4.dex",
+      "baseline_bytes": 10621576,
+      "candidate_bytes": 612,
+      "baseline_sha256": "fc7a45823eca03f707ccba4089b14736d59bbd59239e35c9492fc052a6c104df",
+      "candidate_sha256": "c33618d888a1f88fc4904a60b7470ca84ba29cd86d47571d9ff307283d0ea78b"
+    },
+    {
+      "name": "classes5.dex",
+      "baseline_bytes": 1555064,
+      "candidate_bytes": 10621576,
+      "baseline_sha256": "73af00f3dfc42d11570bdbde18c25f9c2e11c827405bd0ca0e9abbd47805b1a6",
+      "candidate_sha256": "fc7a45823eca03f707ccba4089b14736d59bbd59239e35c9492fc052a6c104df"
+    }
+  ],
+  "resources": {
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "all_resource_entries_exact_equal": true
+  },
+  "compressed_payload_bytes_delta": 53883,
+  "apk_bytes_delta": 49206,
+  "resources_arsc": {
+    "bytes": 446908,
+    "sha256": "1440ca93cf0e7c75201149805017df301678fd25bfae39453016867e7d2910cf",
+    "exact_bytes_equal": true
+  }
+}

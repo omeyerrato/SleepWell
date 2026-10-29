@@ -1,0 +1,269 @@
+{
+  "source": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
+  "baseline": "ef69408258e900a50274d6f2488e859647138714",
+  "app_tree": "ed2b45fb19ce648973b9e2a82a2bec0620b00879",
+  "app_src_main_tree": "3f258eab6b1ec342bfb5bc0d32aaf7f4996747d1",
+  "changed_app_main_files": [
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java",
+      "git_blob": "5e35805d57d8c3444b9f4148c197c21965cb718e",
+      "sha256": "a582e368e301afe7d2acc83f4b4d4ea70b9229ff2d6dfa86f1e2720147fa327e"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/AlarmEditorSearchUi.java",
+      "git_blob": "8f7d9044759a6ddc5bba9a833e432b14bd2312b4",
+      "sha256": "70d343f4c25868ca5628868296c6a5757e756b033cd9eee55b984d130b26d4b0"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/AlarmProtectionActivity.java",
+      "git_blob": "4f6daddc46d3e8e834a9d377c91956470d09f2f1",
+      "sha256": "7fa59b8270f5b71d25914a2eb1234f3cc854b798720d614861098ab551681d91"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/AlarmToneScreen.java",
+      "git_blob": "065ca77ed28f13e607ad185e658afa4ba5fa8298",
+      "sha256": "0e2830c1022172f1392ed1dabd34dac36f66d24d234e0d44f1b853bbbf843f5f"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/AutomationActivity.java",
+      "git_blob": "3f021233a4d10386b49fd4decd9d031f547f7176",
+      "sha256": "bf8fbe523a0720a6eb5bbcd25fe406cb3956717f2069d76a73aef5aeb2a13d56"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/ChallengeActionRows.java",
+      "git_blob": "20e54ba0eeff0f5d1bdd33bad0bb1ecd6d49849e",
+      "sha256": "5441f86ce434c56474428f3c3ed765f21f9165e30ce6084d346c48a3c88e2a5a"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/ChallengeRoutineUi.java",
+      "git_blob": "965c929881fdaf52b87f5694b434e47acc2ed8ed",
+      "sha256": "ada04fadb6f142e9b41bb509a599dcd38c797aaaf1838017560e668f837d2e4c"
+    },
+    {
+      "status": "A",
+      "path": "app/src/main/java/org/sleepwell/app/ChallengeTaskUi.java",
+      "git_blob": "a5563a45b5ec0b4b9554cffed66638ea8afedd6a",
+      "sha256": "ada8de594e3a52d0079874b1174cda028519cfce244d8d746a8f598bd7e53aa1"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/SearchActivity.java",
+      "git_blob": "716a3cd6f9ecbf63d725e6284a3af528aa022f98",
+      "sha256": "1be4379f6ecd3d55f81ac2e976c3639c8a105d5838f139e4466dcc5d9085fb59"
+    },
+    {
+      "status": "A",
+      "path": "app/src/main/java/org/sleepwell/app/SearchAlarmChooser.java",
+      "git_blob": "4d3c378e26b72165a4479c53290e8eef576ad7dc",
+      "sha256": "531b079366c4f1eec1980136f427cc6b610cb3231ecf9dd0750e7c7f1ef01fe1"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/SearchIndex.java",
+      "git_blob": "12f5eb344fbe8411699f7b05e5f1ea8461503e7f",
+      "sha256": "6e49b96e14f4bf2a1b09416919413faa797111c7cbbc2c96d254276ed9724332"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/SearchSettings.java",
+      "git_blob": "8e22803ff3b7d53fd78a1ba7a8ddd72494d00a80",
+      "sha256": "bbdf4590343dbbc8d44e6c0e7b3edf0b1f9d5e38c7f12f54ef45f12a7b3f3adc"
+    }
+  ],
+  "unchanged_contracts_and_build_files": [
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "git_blob": "3796dbc5d07608b67f7b5766d62a23aa812f1096",
+      "sha256": "bfbe56034243efae83a98644fe31e76f8372adea2924ddd6c83607fd50cbc11d"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "git_blob": "8f33543a0898a498075e4b82d70e6dfddd6af77f",
+      "sha256": "17bf74d23a9bbcf3c2897ca6d773fbcda273e24940deeab0cc52297ee2252323"
+    },
+    {
+      "path": "build.gradle",
+      "git_blob": "695c5c33c21a965127721dadcb1979d94c74ffc3",
+      "sha256": "fb639e5e628deb129f5c804ad8cc664b3b56fce1b0ce6880ac02f54515ba59da"
+    },
+    {
+      "path": "gradle.properties",
+      "git_blob": "2977b855352a3c91be2f4c82ff2b6f3af7b334ac",
+      "sha256": "8973471a9784cc525961258119dd1167113a76ee2d340f1c75582ce34e86b8ff"
+    }
+  ],
+  "unchanged_trees": [
+    {
+      "path": "app/src/main/assets",
+      "git_tree": "cbbe10142c6d48ff0c9249f081ea796af8fb51b1",
+      "unchanged_from_0_1_5": true
+    },
+    {
+      "path": "app/src/main/res",
+      "git_tree": "0f40b3bb0992b7843e11599828021f42eba2e2cf",
+      "unchanged_from_0_1_5": true
+    }
+  ],
+  "app_build_gradle_changes": "Only versionCode6->7 and versionName0.1.5->0.1.6; remaining bytes equal.",
+  "schema": 17,
+  "records_alarms_backup_format": 14,
+  "combined_search_challenge": {
+    "head": "669cc50f87410b6bc3411432cbd67543e1372592",
+    "run": 40792566584,
+    "methods": 2,
+    "required_images": 36,
+    "app_main_delta_to_frozen": [
+      "app/src/main/java/org/sleepwell/app/AlarmProtectionActivity.java"
+    ],
+    "build_delta_to_frozen": "Only version metadata; no whole-app equality claim.",
+    "visual_review": "Separate owner archive reports all36 originals individually inspected; not repeated by this package auditor.",
+    "archive": "docs/verification/2026-10-29-editor-usability-integration/README.md",
+    "archived_method_seconds": {
+      "challenge": 69.905,
+      "search": 33.847
+    },
+    "native_sources_equal": [
+      {
+        "path": "app/src/androidTest/java/org/sleepwell/app/SearchFlowTest.java",
+        "sha256": "79bf0f59854b81aa7bc3ff1db670cab52a877435379461b96aa085ce78aa52cf"
+      },
+      {
+        "path": "app/src/androidTest/java/org/sleepwell/app/ChallengeRoutineFlowTest.java",
+        "sha256": "51727bf0aa498ac17cf7a36f5915ba55473ab921f521cd0832df37b36b573056"
+      }
+    ]
+  },
+  "protection": {
+    "head": "1fdaf3544a3f68e36c7887bce6fd5d46d5e569be",
+    "run": 40790536650,
+    "seconds": 35.916,
+    "methods": 1,
+    "images": 16,
+    "exact_named_source_equal": [
+      {
+        "path": "app/src/main/java/org/sleepwell/app/AlarmProtectionActivity.java",
+        "git_blob": "4f6daddc46d3e8e834a9d377c91956470d09f2f1",
+        "sha256": "7fa59b8270f5b71d25914a2eb1234f3cc854b798720d614861098ab551681d91"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/AlarmProtections.java",
+        "git_blob": "5e382f2dbdbcab994dab7c75d1d4c07ce0d163c1",
+        "sha256": "0f4c22d1628a472bf458d0a5ee66a872c79c9fe4c950d227837a7de56b175e4b"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/BedtimeGuard.java",
+        "git_blob": "441fac367a158ba6fcaee5b5f69ea2c96abc2a25",
+        "sha256": "8b46808fae8dd1389a5b42cbaf6da7d932cbaf99759e17716c4d4f95215bdcda"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/PowerMenuGuard.java",
+        "git_blob": "0f713a903f116b59e6ce55e99c6d070dcb0870c8",
+        "sha256": "95f3399dd1e3058bc1c2cbefe6e172624893c3e940542ec382770c9834d90bcc"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/UninstallProtectionActivity.java",
+        "git_blob": "cd00075b8c7665ee89fabee845fe38ef1c58cd06",
+        "sha256": "d02ba1597541a66623cdd09ad78e20e52fc8aa3020a95ed4ca107e4624115c1f"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/SleepPicker.java",
+        "git_blob": "2373fa22ba4c407af2d4af24c0dd26de8e23d593",
+        "sha256": "1b8db38e9e6bf926713e9c933e107d615befe6eb3e6eadc344c0b7cec5f7a492"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/Design.java",
+        "git_blob": "a18de9add587b1be50a9515443ba734817fee912",
+        "sha256": "5ca004091312f1307566568e2f259f5fb637f93c123ded9070d62080666390a1"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+        "git_blob": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+        "sha256": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+        "git_blob": "f41aeaea257a81a6bcf170da396bea9f35e4b2f7",
+        "sha256": "fa3b861327749975282de34fa6533a64541e72e385c3ef2a08a413360b180594"
+      }
+    ],
+    "limits": "Actual access-enabled/live guard/real alarm and nonzero scroll restoration unverified."
+  },
+  "automation": {
+    "head": "0cadd897a40b423314607f7d994dabfc2dbae6a2",
+    "run": 40777798244,
+    "seconds": 33.903,
+    "methods": 1,
+    "images": 10,
+    "exact_named_source_equal": [
+      {
+        "path": "app/src/main/java/org/sleepwell/app/AutomationActivity.java",
+        "git_blob": "3f021233a4d10386b49fd4decd9d031f547f7176",
+        "sha256": "bf8fbe523a0720a6eb5bbcd25fe406cb3956717f2069d76a73aef5aeb2a13d56"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/AutomationStore.java",
+        "git_blob": "7a3512edcb3f9886f7ab521a5f966c48ad4860b5",
+        "sha256": "6d2f314ba5b9ba71b6ba9eccde74968005dcd679d978a5328737df800b1a49e2"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/AutomationRule.java",
+        "git_blob": "344b3e8803f2204b79b3a79ddfaa9d96e417f6b1",
+        "sha256": "29a11db05d70435cb951e86c579bef4886a3e7d0bfeb2f498248ee9d2cb082eb"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/AutomationSecrets.java",
+        "git_blob": "258577075f994fdd85e78db24540ac91b5423935",
+        "sha256": "5db3aae6a511c370861e12d55ecaf235dd7ce553b0431e4e214fca3387a23731"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/Automations.java",
+        "git_blob": "f2bfbc5f5ae1edf3e135259f54d0f7e45f180a81",
+        "sha256": "924167c3964bb35d2142551db57fb258e2ede544cc72b8c589c707a03de2f067"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/AutomationEvent.java",
+        "git_blob": "7e9b1ad3fa0c00b9bdcf2b28e8c876bd95c5fa9d",
+        "sha256": "67d9c6cd6a47c00fe41632e6f0b2e77d3f3e9567941f947053dcc3875ee9ef56"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/AutomationDispatch.java",
+        "git_blob": "61114a1997e1a809bb003e189f0b7e75936736ae",
+        "sha256": "2114196734500cf34468a4ae660e9a3e47a9376098fecdd2438e39df4c62372a"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/AutomationTransports.java",
+        "git_blob": "e6ab7eac53ec061811bd63dcba204154593059a0",
+        "sha256": "f50d13f004120de77555823e428593163034ee7c6d4e45f399a76615180681c9"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/PlanOperations.java",
+        "git_blob": "26da87f3deb2104f26392c926ed96542b038ee01",
+        "sha256": "9c8045f194a5ab9da410d741f97e5b23da6b1d2dcaa98b4b9e318efd17b42b80"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/Design.java",
+        "git_blob": "a18de9add587b1be50a9515443ba734817fee912",
+        "sha256": "5ca004091312f1307566568e2f259f5fb637f93c123ded9070d62080666390a1"
+      },
+      {
+        "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+        "git_blob": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+        "sha256": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068"
+      }
+    ],
+    "limits": "Private-store/fake scheduler; external delivery/Keystore/JobScheduler/process-death unverified."
+  },
+  "source_to_dex_equivalence_proven": false
+}

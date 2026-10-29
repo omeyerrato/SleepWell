@@ -1,0 +1,32 @@
+{
+  "source": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
+  "versionName": "0.1.6",
+  "versionCode": 7,
+  "abi": "arm64-v8a",
+  "build": "assembleDebug PASS; original local transcript retained",
+  "build_seconds": 333.266,
+  "app_tree": "ed2b45fb19ce648973b9e2a82a2bec0620b00879",
+  "database_schema": 17,
+  "backup_format": 14,
+  "phone_installed": false,
+  "published": false,
+  "distribution_verified": false,
+  "verification_scope": "Combined Search/Challenge2existing methods36originals PASS40792566584 at669cc50f; individual visual review pending. Independent Automation10 and Protection16 proofs; exact named-path equivalence audit pending. No full36screen, actual alarm/output, overnight/provider/security completion claim. Phone update deferred by user.",
+  "artifacts": {
+    "debug": {
+      "source": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
+      "path": "SleepWell-741b3718032ab4dc1d52eb67cf2194d4c59884f9.apk",
+      "size": 163250139,
+      "sha256": "3e44d6899aa52ccc567de983b91c70765c5cbdc00562144a4bbdc04125940459"
+    }
+  },
+  "private_build_log": "build-sanitized.txt",
+  "sanitization": {
+    "original_sha256": "481338ce7b541b22598b63985d8ebc3f124abb54ff55055dfd117b75b09ec34d",
+    "changed_fields": [
+      "artifacts.debug.path",
+      "private_build_log"
+    ],
+    "rule": "Local absolute paths replaced with archive basenames; original record remains private. Frozen owner checkpoint, not current publication/install status."
+  }
+}
