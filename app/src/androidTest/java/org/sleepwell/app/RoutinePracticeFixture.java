@@ -77,18 +77,27 @@ final class RoutinePracticeFixture {
     }
     private WakeCognitiveTask cognitive(){return main(()->field(screen(),"cognitive"));}
     private void memoryPairs(int limit)throws Exception{WakeCognitiveTask.Memory memory=(WakeCognitiveTask.Memory)cognitive();int done=0;for(int symbol=0;symbol<3&&done<limit;symbol++){List<Integer> pair=new ArrayList<>();for(int n=0;n<6;n++)if(memory.order[n]==symbol)pair.add(n);if((memory.matched&(1<<pair.get(0)))!=0)continue;tap(memory.buttons[pair.get(0)]);tap(memory.buttons[pair.get(1)]);done++;}}
+    private Button cognitiveButton(View root,String digit){
+        if(root instanceof Button button&&digit.contentEquals(button.getText()))return button;
+        if(root instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){Button button=cognitiveButton(group.getChildAt(n),digit);if(button!=null)return button;}return null;
+    }
+    private void cognitiveDigit(String digit)throws Exception{
+        step="Actual owned Sequence keypad "+digit;ready();
+        Button button=main(()->cognitiveButton(((WakeCognitiveTask.Sequence)cognitive()).card,digit));
+        assertNotNull("The actual keypad Button, never the entered prompt",button);tap(button);
+    }
     private void cognitiveFeedback()throws Exception{
         launch(new ChallengeRoutine(List.of(task("Sequence",1),task("Retype",1))));
         WakeCognitiveTask.Sequence first=(WakeCognitiveTask.Sequence)cognitive();String before=main(()->first.expected);
-        click(before.charAt(0)=='1'?"2":"1");assertEquals("Wrong input cannot earn a unit",0,completed());
+        cognitiveDigit(before.charAt(0)=='1'?"2":"1");assertEquals("Wrong input cannot earn a unit",0,completed());
         WakeCognitiveTask.Sequence wrong=(WakeCognitiveTask.Sequence)cognitive();String expected=main(()->wrong.expected);long remaining=main(()->wrong.state().getLong("revealRemaining"));assertTrue("Original 2500ms reveal bound",remaining>=0&&remaining<=2500);
         cognitiveCapture("sequence-wrong",wrong.feedback);
         View staleDigit=find(expected.substring(0,1));recreate();WakeCognitiveTask.Sequence restored=(WakeCognitiveTask.Sequence)cognitive();
         assertEquals(expected,main(()->restored.expected));assertEquals("",main(()->restored.entered));assertEquals(0,completed());
         i.runOnMainSync(()->{assertTrue(staleDigit.performClick());assertEquals("Detached owner cannot change entered digits","",wrong.entered);});
         cognitiveCapture("sequence-recreated",restored.feedback);
-        click("Show sequence again");assertEquals(View.GONE,main(()->restored.feedback.getVisibility()).intValue());click(expected.substring(0,1));assertEquals(View.GONE,main(()->restored.feedback.getVisibility()).intValue());cognitiveCapture("sequence-retry",restored.feedback);
-        for(int n=1;n<expected.length();n++)click(expected.substring(n,n+1));assertEquals(1,completed());
+        click("Show sequence again");assertEquals(View.GONE,main(()->restored.feedback.getVisibility()).intValue());cognitiveDigit(expected.substring(0,1));assertEquals(View.GONE,main(()->restored.feedback.getVisibility()).intValue());cognitiveCapture("sequence-retry",restored.feedback);
+        for(int n=1;n<expected.length();n++)cognitiveDigit(expected.substring(n,n+1));assertEquals(1,completed());
         WakeCognitiveTask.Retype retype=(WakeCognitiveTask.Retype)cognitive();assertEquals(View.GONE,main(()->retype.feedback.getVisibility()).intValue());
         enter(retype.input,"wrong");click("Check answer");assertEquals(1,completed());assertNull(main(()->retype.input.getError()));cognitiveCapture("retype-wrong",retype.feedback);
         View staleCheck=find("Check answer");recreate();WakeCognitiveTask.Retype typed=(WakeCognitiveTask.Retype)cognitive();assertEquals(retype.phrase,typed.phrase);assertEquals("wrong",main(()->typed.input.getText().toString()));
