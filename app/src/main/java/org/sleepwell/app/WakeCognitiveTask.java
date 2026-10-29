@@ -46,7 +46,7 @@ abstract class WakeCognitiveTask implements AutoCloseable {
             GridLayout grid=new GridLayout(card.getContext());grid.setColumnCount(3);card.addView(grid);
             for(int n=0;n<6;n++){
                 final int index=n;Button button=new Button(card.getContext());buttons[n]=button;
-                button.setStateListAnimator(null);button.setElevation(0);button.setTextSize(25*Appearance.scale(card.getContext()));button.setTextColor(Ui.BG);
+                button.setStateListAnimator(null);button.setElevation(0);button.setTextSize(25*Appearance.scale(card.getContext()));button.setTextColor(Design.INK);button.setBackground(Design.touch(card.getContext(),Design.SOFT,16));
                 GridLayout.LayoutParams size=new GridLayout.LayoutParams();size.width=Ui.dp(card.getContext(),76);size.height=Ui.dp(card.getContext(),68);size.setMargins(3,3,3,3);grid.addView(button,size);
                 refresh(n);button.setOnClickListener(ignored->tap(index));
             }
@@ -56,11 +56,11 @@ abstract class WakeCognitiveTask implements AutoCloseable {
         }
         private static boolean valid(int[] values){if(values==null||values.length!=6)return false;int[] counts=new int[3];for(int value:values){if(value<0||value>=3)return false;counts[value]++;}return counts[0]==2&&counts[1]==2&&counts[2]==2;}
         private boolean validPairs(int mask){if(mask<0||mask>=64)return false;int[] counts=new int[3];for(int n=0;n<6;n++)if((mask&(1<<n))!=0)counts[order[n]]++;for(int count:counts)if(count!=0&&count!=2)return false;return true;}
-        private void refresh(int n){boolean paired=(matched&(1<<n))!=0,revealed=paired||first==n;buttons[n].setText(revealed?SYMBOLS[order[n]]:"?");buttons[n].setContentDescription(revealed?SYMBOLS[order[n]]:"Hidden memory card");buttons[n].setEnabled(!paired);}
+        private void refresh(int n){boolean paired=(matched&(1<<n))!=0,revealed=paired||first==n;buttons[n].setText(revealed?SYMBOLS[order[n]]:"?");buttons[n].setContentDescription(revealed?SYMBOLS[order[n]]:"Hidden memory card");buttons[n].setEnabled(!paired);buttons[n].setSelected(revealed);buttons[n].setTextColor(paired?Design.CREAM:Design.INK);buttons[n].setBackground(paired?Design.shape(card.getContext(),Design.BROWN,16):Design.outline(card.getContext(),Design.SOFT,revealed?Design.BROWN:Design.LINE,16));}
         private void tap(int index){
             if(!live()||waiting||first==index||(matched&(1<<index))!=0)return;
             buttons[index].setText(SYMBOLS[order[index]]);buttons[index].setContentDescription(SYMBOLS[order[index]]);
-            if(first<0){first=index;return;}
+            if(first<0){first=index;refresh(index);return;}
             int previous=first;first=-1;
             if(order[previous]==order[index]){matched|=(1<<previous)|(1<<index);refresh(previous);refresh(index);if(matched==63)finish();}
             else{waiting=true;main.postDelayed(()->{if(!live())return;refresh(previous);refresh(index);waiting=false;},700);}
@@ -87,7 +87,7 @@ abstract class WakeCognitiveTask implements AutoCloseable {
             long remaining=restoring?Math.max(0,Math.min(2500,restored.getLong("revealRemaining"))):2500;
             if(!entered.isEmpty())prompt.setText(entered);else if(remaining>0)reveal(remaining);else prompt.setText("Now repeat the sequence");
             LinearLayout row=new LinearLayout(card.getContext());card.addView(row);
-            for(int n=1;n<=4;n++){final int value=n;Button button=new Button(card.getContext());button.setStateListAnimator(null);button.setElevation(0);button.setText(Integer.toString(n));button.setTextColor(Ui.BG);row.addView(button,new LinearLayout.LayoutParams(0,Ui.dp(card.getContext(),56),1));button.setOnClickListener(ignored->tap(value));}
+            for(int n=1;n<=4;n++){final int value=n;Button button=new Button(card.getContext());button.setStateListAnimator(null);button.setElevation(0);button.setText(Integer.toString(n));button.setTextColor(Design.INK);button.setBackground(Design.touch(card.getContext(),Design.SOFT,16));row.addView(button,new LinearLayout.LayoutParams(0,Ui.dp(card.getContext(),56),1));button.setOnClickListener(ignored->tap(value));}
             Ui.button(card,"Show sequence again",()->{if(!live())return;entered="";reveal(2500);});
         }
         private static boolean digits(String value,int length){if(value.length()!=length)return false;for(int n=0;n<length;n++)if(value.charAt(n)<'1'||value.charAt(n)>'4')return false;return true;}
