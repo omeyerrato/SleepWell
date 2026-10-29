@@ -58,6 +58,7 @@ parser.add_argument("--scope", choices=(
     'room-bedtime-live',
     'room-bedtime-repair',
     'motion-reference',
+    'manual-export-receipt',
     'bedtime-navigation',
     'label-navigation',
     'live-night-timeline',
@@ -442,6 +443,8 @@ elif args.scope == "room-bedtime-live":
     tests = ["OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs", "GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen", "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware", "SonarNightFlowTest#visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight"]
 elif args.scope == "room-bedtime-repair":
     tests = ["OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs", "GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen", "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware"]
+elif args.scope == "manual-export-receipt":
+    tests = ["BackupDocumentFlowTest#realMainRouteProviderWaitCancelRecreateAndCsvStayResponsive"]
 elif args.scope == "motion-reference":
     tests = ["MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware"]
 elif args.scope == "bedtime-navigation":
@@ -579,6 +582,7 @@ if args.scope != "full":
         "profile-room-dimming": ["backup-document-review.png", "backup-document-confirmation.png", "backup-document-review-recreated.png", "backup-document-review-reopened.png", "backup-document-restoring.png", "backup-document-restoring-recreated.png", "backup-document-restored.png", "backup-document-result-reopened.png"],
         "label-navigation": TONE_FRAMES + ["guard-"+name+".png" for name in ("draft","saved","options-recreated","paused","wind-down","wind-down-options","wind-down-recreated","wind-down-paused")],
         "bedtime-navigation": ["guard-"+name+".png" for name in ("draft","saved","options-recreated","paused","wind-down","wind-down-options","wind-down-recreated","wind-down-paused")],
+        "manual-export-receipt": ["backup-document-"+name+".png" for name in ("chooser","selection-cancelled","writing","writing-recreated","cancelled","csv-done","json-done","receipt-warning")],
         "motion-reference": ["motion-settings-"+name+".png" for name in ("ready","changed","recreated","reopened","conflict","unavailable","error")],
         "room-bedtime-repair": [name for name in ROOM_BEDTIME_LIVE_FRAMES if not name.startswith("sonar-night-")],
         "room-bedtime-live": ROOM_BEDTIME_LIVE_FRAMES,
