@@ -47,6 +47,7 @@ parser.add_argument("--scope", choices=(
     'priority-current',
     'priority-repair',
     'reference-menus',
+    'morning-code-enrollment',
     'privacy-recovery',
     'setup-readiness',
     'readiness-recovery',
@@ -417,6 +418,8 @@ elif args.scope == "priority-current":
     tests = ["QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert", "AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs", "SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs", "NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist", "HealthConnectFlowTest", "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory", "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen"]
 elif args.scope == "priority-repair":
     tests = ["AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs", "AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime", "HealthConnectFlowTest", "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory"]
+elif args.scope == "morning-code-enrollment":
+    tests = ["QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert"]
 elif args.scope == "reference-menus":
     tests = ["AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs", "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory", "AlarmToneFlowTest#toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput", "CloudBackupFlowTest#chooseSaveReopenAndReviewKeepLocalDataWithNoUpload", "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert"]
 elif args.scope == "privacy-recovery":
@@ -551,6 +554,7 @@ if "SonarSharedClassifierStorageTest" in tests:
         failures.append("Shared PCM replay evidence incomplete: " + str(error))
 if args.scope != "full":
     focused_frames = {
+        "morning-code-enrollment": ['qr-code-permission.png', 'qr-code-invalid.png', 'qr-code-denied.png', 'qr-code-access-error.png', 'qr-code-scanning.png', 'qr-code-camera-error.png', 'qr-code-captured.png', 'qr-code-fallback.png', 'qr-code-fallback-error.png', 'qr-code-recreated.png', 'qr-code-routine.png', 'qr-code-reopened.png', 'qr-code-unavailable.png', 'qr-code-types-recreated.png', 'qr-code-nfc-main.png', 'qr-code-nfc-draft.png', 'qr-code-nfc-draft-recreated.png', 'qr-code-nfc-read-error.png', 'qr-code-nfc-settings-error.png', 'qr-code-nfc-saved.png', 'qr-code-nfc-task-setup.png', 'qr-code-nfc-task-returned.png'],
         "contactless-status": ['sonar-setup-initial.png', 'sonar-setup-access-denied.png', 'sonar-setup-access-requesting.png', 'sonar-setup-access-returned.png', 'sonar-setup-ready.png', 'sonar-setup-route-blocked.png', 'sonar-setup-route-returned.png', 'sonar-setup-gain-changed.png', 'sonar-setup-retested.png', 'sonar-setup-reopened.png', 'sonar-setup-recreated.png'],
         "tonight-composition": ['arc-upcoming.png', 'arc-help.png', 'arc-start.png', 'arc-middle.png', 'arc-end.png', 'arc-next.png', 'arc-large.png', 'arc-large-action.png', 'arc-weekly.png', 'arc-off.png', 'arc-off-recreated.png', 'arc-weekday-recreated.png', 'arc-empty.png', 'arc-empty-action.png', 'arc-icon-page-1.png', 'arc-icon-page-2.png', 'arc-icon-page-3.png', 'arc-launcher-icons.png'],
         "room-settings-search": ROOM_SETTINGS_SEARCH_FRAMES,

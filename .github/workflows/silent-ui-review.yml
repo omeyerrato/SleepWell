@@ -35,6 +35,7 @@ on:
           - priority-current
           - priority-repair
           - reference-menus
+          - morning-code-enrollment
           - privacy-recovery
           - setup-readiness
           - readiness-recovery
