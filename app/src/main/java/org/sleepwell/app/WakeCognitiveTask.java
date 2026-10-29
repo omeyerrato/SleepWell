@@ -43,11 +43,11 @@ abstract class WakeCognitiveTask implements AutoCloseable {
             if(valid(saved)){order=saved.clone();matched=restored.getInt("matched");if(!validPairs(matched))matched=0;int shown=restored.getInt("first",-1);if(shown>=0&&shown<6&&(matched&(1<<shown))==0)first=shown;}
             else{List<Integer> values=new ArrayList<>(List.of(0,0,1,1,2,2));Collections.shuffle(values,random);order=values.stream().mapToInt(Integer::intValue).toArray();}
             Ui.heading(card,"Find the matching pairs",24);
-            GridLayout grid=new GridLayout(card.getContext());grid.setColumnCount(3);card.addView(grid);
+            GridLayout grid=new GridLayout(card.getContext());grid.setColumnCount(3);grid.setContentDescription("Memory pairs board");card.addView(grid,new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
             for(int n=0;n<6;n++){
                 final int index=n;Button button=new Button(card.getContext());buttons[n]=button;
                 button.setStateListAnimator(null);button.setElevation(0);button.setTextSize(25*Appearance.scale(card.getContext()));button.setTextColor(Design.INK);button.setBackground(Design.touch(card.getContext(),Design.SOFT,16));
-                GridLayout.LayoutParams size=new GridLayout.LayoutParams();size.width=Ui.dp(card.getContext(),76);size.height=Ui.dp(card.getContext(),68);size.setMargins(3,3,3,3);grid.addView(button,size);
+                GridLayout.LayoutParams size=new GridLayout.LayoutParams(GridLayout.spec(n/3),GridLayout.spec(n%3,1f));size.width=0;size.height=Ui.dp(card.getContext(),68);size.setGravity(Gravity.FILL_HORIZONTAL);size.setMargins(3,3,3,3);grid.addView(button,size);
                 refresh(n);button.setOnClickListener(ignored->tap(index));
             }
             // A focus interruption can occur between earning the final pair and owner admission.
@@ -86,7 +86,7 @@ abstract class WakeCognitiveTask implements AutoCloseable {
             Ui.heading(card,"Watch. Remember. Repeat.",22);prompt=Ui.heading(card,"",32);
             long remaining=restoring?Math.max(0,Math.min(2500,restored.getLong("revealRemaining"))):2500;
             if(!entered.isEmpty())prompt.setText(entered);else if(remaining>0)reveal(remaining);else prompt.setText("Now repeat the sequence");
-            LinearLayout row=new LinearLayout(card.getContext());card.addView(row);
+            LinearLayout row=new LinearLayout(card.getContext());card.addView(row,new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
             for(int n=1;n<=4;n++){final int value=n;Button button=new Button(card.getContext());button.setStateListAnimator(null);button.setElevation(0);button.setText(Integer.toString(n));button.setTextColor(Design.INK);button.setBackground(Design.touch(card.getContext(),Design.SOFT,16));row.addView(button,new LinearLayout.LayoutParams(0,Ui.dp(card.getContext(),56),1));button.setOnClickListener(ignored->tap(value));}
             Ui.button(card,"Show sequence again",()->{if(!live())return;entered="";reveal(2500);});
         }
