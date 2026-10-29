@@ -57,7 +57,7 @@ public final class RoutineAudioPracticeActivity extends Activity {
         if(permission!=SpeakAccess.Permission.ALLOWED)Design.button(body,permission==SpeakAccess.Permission.SETTINGS?"Open microphone settings":"Allow microphone",false,action(()->{try{access.request();}catch(RuntimeException unavailable){issue="Microphone access could not open. Retry or choose Math.";render();}}));
         if(capture!=null&&capture.state()==PracticeAudioCapture.State.BLOCKED)Design.button(body,"Retry microphone cleanup",true,cleanupAction(()->{closing=true;ticket.retryCleanup();render();}));
         else if(working)Design.button(body,"Stop listening",false,cleanupAction(()->{closing=true;capture.close();render();}));
-        else Design.button(body,"Listen",true,action(this::listen)).setEnabled(permission==SpeakAccess.Permission.ALLOWED&&!busy());
+        else{Button listen=Design.button(body,"Listen",true,action(this::listen));boolean enabled=permission==SpeakAccess.Permission.ALLOWED&&!busy();RecordUi.enabled(listen,enabled);listen.setAlpha(enabled?1f:.45f);}
         Design.button(body,"Use Math instead",false,action(()->returned(PracticeChildTicket.FALLBACK)));
         Design.space(body,10);Design.text(body,(type.equals("Musical note")?"Up to 20 seconds":"Up to 15 seconds")+" per attempt. Leaving or losing focus stops listening. Access and Settings return never start it.",12,400,Design.MUTED);
         LinearLayout footer=RecordUi.footer(body);footer.setBackgroundColor(Design.CREAM);Design.button(footer,"Cancel practice step",false,cleanupAction(()->returned(RESULT_CANCELED)));
@@ -75,7 +75,7 @@ public final class RoutineAudioPracticeActivity extends Activity {
         render();
     }
     private void cleanupPage(){
-        generation++;cleanupView=true;LinearLayout body=Design.page(this,false,null,null);RecordUi.header(body,"Close practice microphone",null);
+        generation++;cleanupView=true;LinearLayout body=Design.page(this,false,null,null);RecordUi.header(body,"Release microphone",null);
         Design.text(body,"This attempt has not confirmed its own microphone, recognizer or worker cleanup. It cannot complete or choose Math yet.",15,400,Design.MUTED);
         Design.button(body,"Retry microphone cleanup",true,cleanupAction(()->{closing=true;ticket.retryCleanup();render();}));
         Design.button(body,"Cancel practice step",false,cleanupAction(()->returned(RESULT_CANCELED)));shown=signature();schedule();
