@@ -1,3 +1,5 @@
+> **Corrected follow-up:** [CI40822971575 / 62.071s / 18 fresh originals](corrected-40822971575/README.md) resolves the selected-tooltip/goal-caption overlap in the captured default scope. The first pass below and its original qualification remain preserved.
+
 # Report rounded means: functional pass, visual overlap open
 
 [CI40802190314](https://github.com/omeyerrato/SleepWell/actions/runs/40802190314) **PASSED in 64.885s**, one existing method / 18 required original PNGs, at `bdd09c4170f97becae77a8c7681bae23a071c70a`. All 18 originals were individually opened. **Visual acceptance remains partial:** the selected October tooltip in `report-reference-year-selected.png` covers part of the right-aligned **8 h current goal** caption. The tooltip value is readable and correct; this is not an claim that all 18 frames are visually clean.

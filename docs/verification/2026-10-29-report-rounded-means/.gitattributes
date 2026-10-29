@@ -2,3 +2,4 @@
 SHA256SUMS text eol=lf
 originals/* -text -whitespace
 *.json -text
+corrected-40822971575/originals/* -text -whitespace

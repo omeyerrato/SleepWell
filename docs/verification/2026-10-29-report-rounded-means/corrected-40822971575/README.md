@@ -1,0 +1,19 @@
+# Corrected Report tooltip: scoped functional and visual pass
+
+[CI40822971575](https://github.com/omeyerrato/SleepWell/actions/runs/40822971575) **PASSED in 62.071 seconds** at `697d123202cf53c62b14b09eab4a6527bb13b1c9`. The same existing Report method produced all 18 required originals. Every new original was individually opened against Board 08 and Board 01/middle; no new core clipping or overlap was observed in these captures.
+
+The selected October **7 h 43 min** tooltip is now clearly left of the fully readable **8 h current goal** caption. The real renderer bounds assertions also passed: the selected label does not intersect the goal caption and remains inside the chart width. The visible value and accessibility content description (`2026-10-01: 7 h 43 min`) agree. Numeric rectangle coordinates were not logged; no fabricated bounds or physical TalkBack audio result is claimed.
+
+## Source and retained behavior
+
+`697d1232` measures the selected value and current-goal text separately. The default-size annotation fits left of the goal caption. A narrow/large-font fallback may reserve its own annotation row; that variant was not exercised here. Chart point construction, axes/data-range calculations, selection/accessibility behavior and the ten core record/editor/coverage/store files remain byte-identical to the first native head. `RecordUi`, `HistoryActivity`, `Design` and `Icons` also match that head. `source-preflight.json` pins these named files/fragments; unrelated mixer integration is outside this Report proof, and no whole-app equality is claimed.
+
+The native file differs from the first pass by exactly the two real renderer bounds assertions. It remains one `@Test`, `ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects`. The scope remains `report-rounding`, original 17 names plus `report-reference-year-selected.png`, with both optional output flags false. The raw summary reports one class / one method / 18 images / no failures and `full_app_review=false`. Root reported compile success in 1m 52s, 25 tasks (3 executed / 22 up-to-date); this archive author ran no build or CI dispatch.
+
+All previous functional assertions completed again on this exact source: weekly mean 7 h 43 min, real calendar/chart selection, missing dates and movement gaps, Report/Sound events routes, full primary actions, valid handle drags and Cancel/multitouch/focus/recreation rollback, both-boundary accessibility/keyboard actions, explicit Save/reopen and Back discard. The persisted 11:18 PM–6:00 AM period with one 10-minute awake interval remains 6 h 32 min, with the saved tags/note. The raw sessions/epochs/tracking-pauses/sound-events/clips fingerprint and personal preferences remain unchanged.
+
+## Evidence and limits
+
+`originals/` retains all 28 downloaded artifact files byte-for-byte, including all 18 new PNGs, the exact 62.071-second method log, environment, original summary and guest diagnostics. `inspection.json` records each new original's hash, dimensions and observations; first-pass images were not reused. `run.json` independently pins terminal success and the exact head. The parent archive checksum file includes this separate pass.
+
+The earlier 64.885-second functional pass and its visible caption overlap remain preserved in the parent `originals/` folder, with its original qualification. The corrected capture closes that overlap for this default Pixel 7 / API 36 scope. It does not establish all 36 reference screens, physical sensor/audio behavior, real model/provider accuracy, alternate devices/fonts/themes or the narrow/large-font fallback. Private synthetic fixtures, honest gaps/absent goals and **Sleep stages: Not estimated** remain explicit. No Root source, release, metadata, install or phone action was performed by this archive task.
