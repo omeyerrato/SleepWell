@@ -8,9 +8,11 @@ Checked means implemented with the stated supporting evidence. Physical-device a
 
 ## Current priorities
 
+**Current phase: usability and reference layouts first.** Three parallel implementation agents have delivered the [0.1.9 source pass](USABILITY-PASS-2026-10-29.md). New verification, security review and a separate bug-fixing pass are deferred by the user. Source changes are not full36 visual acceptance.
+
 - [ ] Match all36 reference screens, especially remaining charts, menus and visual states.
 - [x] Report calendar/edit verification: actual date selection, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
-- [ ] Finish remaining interaction bugs and security review.
+- [ ] Finish remaining interaction bugs and security review after the usability phase.
 
 ## Implemented
 

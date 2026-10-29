@@ -2,6 +2,8 @@
 
 Reference: `design-concepts/2026-10-22-phone-app/SCREEN-MAP.md`. Each board has left / middle / right screens. This is a visual and interaction acceptance inventory, separate from feature availability. **No screen is declared fully finished by this inventory.** A bounded passing journey does not establish every reference state or physical-device behavior.
 
+New source: [0.1.9 usability pass](USABILITY-PASS-2026-10-29.md), `4e47ab35`. The user has deferred new verification/security/bug-fixing work in favor of usability implementation. The historical evidence below does not accept the newly changed layouts; no all36 completion claim is made.
+
 Current package state: **0.1.8 / 0b3cb9ed is published**, with combined APK/lint and independent package/signature audit. Motion7 and Privacy12 originals have private/fake-port action/persistence proofs, and exact named source paths match the frozen candidate. No full36, physical/overnight or broad security acceptance. Phone update deferred; last verified installation0.1.4.
 
 Evidence prefixes below are repository-relative. `CI:` paths are downloaded original Android captures under the root checkout's ignored `.android-local/ci-reviews/<run>/silent-android-review/`; they are not generated mockups. `Pending` means a current-source native comparison and main-action/persistence check is still required. Existing capture locations are identified without pretending they were all visually reviewed in this pass.
