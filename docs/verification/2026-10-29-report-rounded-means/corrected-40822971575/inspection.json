@@ -1,0 +1,238 @@
+{
+  "run": 40822971575,
+  "head": "697d123202cf53c62b14b09eab4a6527bb13b1c9",
+  "functional_conclusion": "pass",
+  "method_seconds": 62.071,
+  "required_original_images": 18,
+  "all18_new_originals_individually_opened": true,
+  "selected_month_goal_overlap_resolved_in_this_default_capture": true,
+  "new_core_clipping_or_overlap_observed": false,
+  "bounds_assertions": {
+    "actual_renderer_rectangles_do_not_intersect": true,
+    "selected_value_within_chart_width": true,
+    "numeric_rectangles_logged": false
+  },
+  "reference_boards": [
+    "08-history-and-trends.png",
+    "01-everyday.png / middle"
+  ],
+  "not_full36_acceptance": true,
+  "images": [
+    {
+      "file": "originals/report-reference-history.png",
+      "sha256": "15f7d0d6672f4c4a004e6d99c65b60f25fda43acec7f2bb4a1f67f436c114eb0",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "All seven private fixture nights and actual raw durations readable;7h42 latest record, one real coverage gap; four-tab navigation is intentional.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-week.png",
+      "sha256": "c7721b867f1712654cefab0bd641bd7b36357b3b810c6c6482c427cbb95f1ca3",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Weekly average visibly7h43; individual labels8:03/7:30/7:55/7:10/8:05/7:35/7:42 retained; No dated goal shown honestly.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-week-calendar.png",
+      "sha256": "d71c1e0959d98d07f47bea75061d61c025ce01c913ae12019c40d0d25a08afa7",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Actual27Oct pending date, month grid and Use/Cancel controls fit.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-week-selected.png",
+      "sha256": "4508828461d74b4ffd00aa3adc609ca52a17efa56e7f948b816b033236e21a70",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Actual selected25Oct recorded duration7h10 visible in tooltip; average stays7h43; goal caption readable.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-month.png",
+      "sha256": "f936f62440875e2a2d1b244800336c346e2facaa133c03aa99c5bd9f7b4ecd2e",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "October average7h43; only seven actual recorded days drawn, unknown earlier days left blank.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-year.png",
+      "sha256": "0c29807af795c4e63f5655af37600ccffb7a9fbadd1059c5073b01ba235d7f61",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Annual average7h43 and only October populated; unknown months blank, not zero or invented history.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-night.png",
+      "sha256": "c52e336ee12b10ee4bbb518841085fe08a17b0dab244590519d68d1fd3bc735c",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Individual recorded time remains7h42; selected actual fixture movement interval0.0708 relative average; Sleep stages Not estimated; analysis-only event counts and Edit/View actions readable.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-editor.png",
+      "sha256": "67f5cc0fdbb090c5269fe9387d13110afc817ee1c2cdb60a917904d9d564668e",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Original10:48PM\u20136:30AM period,7h42 duration, notes, Save/Delete all fit; no display mean rounding applied to the individual record.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-tags-notes.png",
+      "sha256": "c36ce8b2ddb9bdea0c9ba6b7c561c5af7735c2bb82953188f08df1f96ba0aeeb",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Late meal/Exercise tags and explicit fixture note visible with Save/Delete; both trimmed period bounds retained.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-reopened.png",
+      "sha256": "8046d5226427bd323c48576cb74c7a4bb140c1f4cf6fdf37606f4addda2b73cb",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "After Save,11:18PM\u20136:00AM plus one10min awake interval gives6h32; tags/note and controls retained.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-chart-gap.png",
+      "sha256": "410d86bac8bf47878610ea3494dfc266618d596f4aa780d56f187dc276472789",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Selected1:15AM gap says No readings; recorded duration7h10 and blank pause remain honest.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-period-cancelled.png",
+      "sha256": "a9746d9a6d1dc550595f0854471aacddea97b245af18f8846b4fb3a0c729491e",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Baseline bounds restored after abandoned gestures/recreation, with Awake1 annotation and7h32 draft duration retained.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-period-drag-start.png",
+      "sha256": "108eb8bbb2d836c5932041a25077832677cf5e97ccb06df5ede3c7c0fc4bca64",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Intentional start trim to11:18PM, end6:30AM;7h12 draft and clipped outside awake annotation reflected.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-period-drag-end.png",
+      "sha256": "5e8cd42ee8607a7b28d09511959cee72d9423518ae48083e1220fe0272539b47",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Both trimmed boundaries11:18PM\u20136:00AM and6h42 draft visible.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-period-accessibility.png",
+      "sha256": "c9dbc08ae5a9905b95900437d14c98787b0c47982093679c797b57ce8a6fdad6",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Both-boundary keyboard/accessibility actions reversed to11:18PM\u20136:00AM; selected start handle has readable focus ring.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-period-draft-recreated.png",
+      "sha256": "5e8cd42ee8607a7b28d09511959cee72d9423518ae48083e1220fe0272539b47",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Unsaved completed period11:18PM\u20136:00AM/6h42 retained after recreation.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-period-persisted.png",
+      "sha256": "8046d5226427bd323c48576cb74c7a4bb140c1f4cf6fdf37606f4addda2b73cb",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "Persisted period, Awake1,6h32 and saved tags/note agree with reopened frame and database assertions.",
+      "new_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/report-reference-year-selected.png",
+      "sha256": "b9d26d3b00faa69f75ec1e2ee86119bde3e899cd052a77f0dbe401187d11ae7f",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened_in_this_pass": true,
+      "observation": "New October tooltip7h43 is clearly left of the fully visible8h current-goal caption; the selected October bar and7h43 mean remain correct. Actual accessibility description2026-10-01:7h43 and real renderer nonoverlap/within-width assertions passed.",
+      "new_clipping_or_overlap_observed": false
+    }
+  ]
+}

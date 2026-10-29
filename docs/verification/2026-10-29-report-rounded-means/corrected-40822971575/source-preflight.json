@@ -1,0 +1,151 @@
+{
+  "head": "697d123202cf53c62b14b09eab4a6527bb13b1c9",
+  "first_native_head": "bdd09c4170f97becae77a8c7681bae23a071c70a",
+  "app_main_tree": "89e7c5b5d2e6c5b99e3ed4694695c659a524a5bb",
+  "pins": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrendsChart.java",
+      "sha256": "172079a50fd5bdd5187faa63b4a257297ade258f8fd4f654807264ff965055c6"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+      "sha256": "261b0ec147a70dee273d61f06a3763d958ec3ed49ebe58679f430ce20a0994c6"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/HistoryActivity.java",
+      "sha256": "3097003525c5fdcf369ebb07d753a916ab614d5ea7d987dfcb908e5be0cf0679"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ReportReferenceFlowTest.java",
+      "sha256": "b270d00b5cd4dd4af14de5fa54ec2fed7faae2d91fc10e85c0039ecc55933277"
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "sha256": "8bd7ece03bb5e71fc165e5adb5b010571da9fb490e2a0a12bd7d5810a11e033e"
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "sha256": "56a4334038c338678c71368ee233805d6954af6f4f54026e5e797167718f1234"
+    }
+  ],
+  "unchanged_named_paths": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordTrends.java",
+      "sha256": "8f13700d510b09458b5f5a5f1ea43cba1c97a87d6602c03294b7ebbd68083309",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordEntry.java",
+      "sha256": "de5e56e5a0868858efbd95f0bdabca5ceb5809a290c11cafac3cd2b18805b5ba",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordDraft.java",
+      "sha256": "77960473513b27a996b01798d4aa7aad47c32c027b0a3e336549ffa18f9fbb52",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Records.java",
+      "sha256": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PeriodTimeline.java",
+      "sha256": "0add33f3815159af9c30c76adabff73d61cd240b980a90a68280c63a9572a23c",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordEditorActivity.java",
+      "sha256": "391fd6b89648ae0f03f17533fe89209f83984d5f3f7d796abda73edf9a590f72",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordChart.java",
+      "sha256": "18d48952c78abcc1156a319c8b6c1d19be618131007ac1de6f7af95bb82e1783",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordReportActivity.java",
+      "sha256": "446d39ffbf7f24791873e1099e6bf4b7578977caf716e54dc38c3a4166f1d7f0",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordIntervals.java",
+      "sha256": "475bd0de471fc09593c90bda3d79462d0fdc84fec1b1741e0325cb8b3b8c68f2",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+      "sha256": "261b0ec147a70dee273d61f06a3763d958ec3ed49ebe58679f430ce20a0994c6",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/HistoryActivity.java",
+      "sha256": "3097003525c5fdcf369ebb07d753a916ab614d5ea7d987dfcb908e5be0cf0679",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "sha256": "5ca004091312f1307566568e2f259f5fb637f93c123ded9070d62080666390a1",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Icons.java",
+      "sha256": "2dd99da04414cc217950a53c3fb48af2310342783d4c25e9991d9380050b52a0",
+      "same_as_first_native_head": true
+    }
+  ],
+  "unchanged_chart_data_selection_fragments": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrendsChart.java",
+      "fragment": "TrendsChart(Context",
+      "sha256": "e8789ee14ce6b028e6c4201788a3660d68d9021ab2bbf43d9571a47142816382",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrendsChart.java",
+      "fragment": "private float left()",
+      "sha256": "d48cc8124e610ea902d801ea4625807dbe3fc4a5664b79b91eb7132d46cc00e8",
+      "same_as_first_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrendsChart.java",
+      "fragment": "private void describe()",
+      "sha256": "53b74bfeb8c78bcf68bbdcd03695004cdb3609e1ba6832bb0e2c94669d292674",
+      "same_as_first_native_head": true
+    }
+  ],
+  "native_difference_only_two_renderer_bounds_assertions": true,
+  "existing_test_count": 1,
+  "runtime_only_report_presentation_change": "TrendsChart caption/selected-label geometry; unrelated mixer integration excluded from this Report proof.",
+  "root_reported_compile": {
+    "duration": "1m52s",
+    "tasks": 25,
+    "executed": 3,
+    "uptodate": 22,
+    "local_build_by_archive_author": false
+  },
+  "native_result": {
+    "run": 40822971575,
+    "passed": true,
+    "seconds": 62.071,
+    "originals": 18,
+    "full_app_review": false
+  },
+  "default_label_fit": "Measured tooltip clamps left of measured goal caption; the20dp plot top remains when the labels fit. Narrow/large-font fallback can reserve a separate annotation row.",
+  "fallback_native_variant_tested": false,
+  "raw_fingerprint_tables": [
+    "sessions",
+    "epochs",
+    "tracking_pauses",
+    "sound_events",
+    "clips"
+  ],
+  "spoken_value_verified_as_accessibility_string_only": true,
+  "all_app_equality_claimed": false
+}

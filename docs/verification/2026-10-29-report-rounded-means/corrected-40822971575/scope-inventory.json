@@ -1,0 +1,32 @@
+{
+  "scope": "report-rounding",
+  "head": "697d123202cf53c62b14b09eab4a6527bb13b1c9",
+  "selector": "ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects",
+  "expected_methods": 1,
+  "required_original_images": 18,
+  "frames": [
+    "report-reference-history.png",
+    "report-reference-week.png",
+    "report-reference-week-calendar.png",
+    "report-reference-week-selected.png",
+    "report-reference-month.png",
+    "report-reference-year.png",
+    "report-reference-night.png",
+    "report-reference-editor.png",
+    "report-reference-tags-notes.png",
+    "report-reference-reopened.png",
+    "report-reference-chart-gap.png",
+    "report-reference-period-cancelled.png",
+    "report-reference-period-drag-start.png",
+    "report-reference-period-drag-end.png",
+    "report-reference-period-accessibility.png",
+    "report-reference-period-draft-recreated.png",
+    "report-reference-period-persisted.png",
+    "report-reference-year-selected.png"
+  ],
+  "inventory_is_required_names_not_execution_order": true,
+  "native_sounds": false,
+  "audio_imports": false,
+  "full_app_review": false,
+  "new_test_methods": 0
+}
