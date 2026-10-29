@@ -42,7 +42,11 @@ final class PracticeCameraTasks {
   object=ticket.task.objectTarget==null?null:new ObjectHold(ticket.task.objectTarget);
   light=ticket.task.type.equals("Camera light")?new CameraLightHold(ticket.task.rounds):null;
  }
- State state(){return state;}String status(){return status;}String issue(){return issue;}
+ State state(){return !active&&!released()?State.RELEASING:state;}String status(){return state()==State.RELEASING?(earned?"Check earned · releasing camera":"Releasing this camera attempt"):status;}String issue(){return issue;}
+ boolean active(){return active;}
+ boolean boundTo(ComponentActivity activity){return activity()==activity;}
+ void pause(ComponentActivity activity){if(!boundTo(activity))return;close();}
+ void detach(ComponentActivity activity){if(!boundTo(activity))return;close();owner.clear();visible=null;changed=null;}
  View preview(){return active?preview:null;}
  boolean done(){return earned&&ticket.earned(attempt);}
  private ComponentActivity activity(){return owner==null?null:owner.get();}
@@ -64,39 +68,39 @@ final class PracticeCameraTasks {
    switch(ticket.task.type){
     case "QR code"->{
      if(ticket.task.code==null)throw new IllegalArgumentException("Enroll a morning code first");
-     QrCamera.Port port=access.code(ticket.task.code.format);bind(activity,port.preview(),port::close,port::released);
+     QrCamera.Port port=access.code(ticket.task.code.format);bind(activity,port::close,port::released);preview=port.preview();
      status="Scan the enrolled code at "+ticket.task.code.label;
-     port.start(new QrScanSession.Listener(){public void captured(String hash){if(!current(expected))return;if(MorningCode.validHash(hash)&&MorningCode.same(ticket.task.code.hash,hash))solved(expected);else{status="That is not the enrolled morning code.";notifyChanged();}}public void error(String issue){failed(expected,issue);}});
+     port.start(new QrScanSession.Listener(){public void captured(String hash){onMain(()->{if(!current(expected))return;if(MorningCode.validHash(hash)&&MorningCode.same(ticket.task.code.hash,hash))solved(expected);else{status="That is not the enrolled morning code.";notifyChanged();}});}public void error(String issue){onMain(()->failed(expected,issue));}});
     }
     case "Picture match"->{
      if(picture==null)throw new IllegalArgumentException("Capture a picture reference first");
-     PictureCamera.Port port=access.picture();bind(activity,port.preview(),port::close,port::released);status="Match the saved framing and lighting.";
-     port.start(new PictureCamera.Listener(){public void frame(PictureSignature signature,long captured,String issue){if(!current(expected))return;if(picture.frame(signature,captured,access.now()))solved(expected);else{status=signature==null?message(issue,"Use a detailed, well-lit view."):"Hold steady · "+picture.progress()+" of 3 frames";notifyChanged();}}public void error(String issue){failed(expected,issue);}});
+     PictureCamera.Port port=access.picture();bind(activity,port::close,port::released);preview=port.preview();status="Match the saved framing and lighting.";
+     port.start(new PictureCamera.Listener(){public void frame(PictureSignature signature,long captured,String issue){onMain(()->{if(!current(expected))return;if(picture.frame(signature,captured,access.now()))solved(expected);else{status=signature==null?message(issue,"Use a detailed, well-lit view."):"Hold steady · "+picture.progress()+" of 3 frames";notifyChanged();}});}public void error(String issue){onMain(()->failed(expected,issue));}});
     }
     case "Smile"->{
-     SmileCamera.Port port=access.smile();bind(activity,port.preview(),port::close,port::released);status="Face the camera, smile naturally and hold steady.";
-     port.start(new SmileCamera.Listener(){public void frame(SmileHold.Sample sample,String issue){if(!current(expected))return;if(smile.frame(sample,access.now()))solved(expected);else{status=sample!=null&&sample.framed()?"Hold your smile · "+smile.progress()+"%":message(issue,"Center one face in good light.");notifyChanged();}}public void error(String issue){failed(expected,issue);}});
+     SmileCamera.Port port=access.smile();bind(activity,port::close,port::released);preview=port.preview();status="Face the camera, smile naturally and hold steady.";
+     port.start(new SmileCamera.Listener(){public void frame(SmileHold.Sample sample,String issue){onMain(()->{if(!current(expected))return;if(smile.frame(sample,access.now()))solved(expected);else{status=sample!=null&&sample.framed()?"Hold your smile · "+smile.progress()+"%":message(issue,"Center one face in good light.");notifyChanged();}});}public void error(String issue){onMain(()->failed(expected,issue));}});
     }
     case "Pose"->{
-     PoseCamera.Port port=access.pose();bind(activity,port.preview(),port::close,port::released);status="Keep your head, arms and hips visible. Raise both hands.";
-     port.start(new PoseCamera.Listener(){public void frame(PoseHold.Sample sample,String issue){if(!current(expected))return;if(pose.frame(sample,access.now()))solved(expected);else{status=sample!=null&&sample.raised()?"Hold both hands up · "+pose.progress()+"%":message(issue,"Keep your upper body in view.");notifyChanged();}}public void error(String issue){failed(expected,issue);}});
+     PoseCamera.Port port=access.pose();bind(activity,port::close,port::released);preview=port.preview();status="Keep your head, arms and hips visible. Raise both hands.";
+     port.start(new PoseCamera.Listener(){public void frame(PoseHold.Sample sample,String issue){onMain(()->{if(!current(expected))return;if(pose.frame(sample,access.now()))solved(expected);else{status=sample!=null&&sample.raised()?"Hold both hands up · "+pose.progress()+"%":message(issue,"Keep your upper body in view.");notifyChanged();}});}public void error(String issue){onMain(()->failed(expected,issue));}});
     }
     case "Object recognition"->{
      if(object==null)throw new IllegalArgumentException("Choose an object target first");
-     ObjectCamera.Port port=access.object();bind(activity,port.preview(),()->{port.close();},port::released);status="Keep "+ticket.task.objectTarget.label()+" centered.";
-     port.start(new ObjectCamera.Listener(){public void frame(float[] scores,long captured){if(!current(expected))return;if(object.frame(scores,captured,access.now()))solved(expected);else{status="Hold the selected object steady · "+object.progress()+"%";notifyChanged();}}public void error(String issue){failed(expected,issue);}});
+     ObjectCamera.Port port=access.object();bind(activity,port::close,port::released);preview=port.preview();status="Keep "+ticket.task.objectTarget.label()+" centered.";
+     port.start(new ObjectCamera.Listener(){public void frame(float[] scores,long captured){float[] snapshot=scores==null?null:scores.clone();onMain(()->{if(!current(expected))return;if(object.frame(snapshot,captured,access.now()))solved(expected);else{status="Hold the selected object steady · "+object.progress()+"%";notifyChanged();}});}public void error(String issue){onMain(()->failed(expected,issue));}});
     }
     case "Camera light"->{
-     CameraLightCamera.Port port=access.light();bind(activity,port.preview(),port::close,port::released);status="Aim the center square toward a room light.";
-     port.start(new CameraLightCamera.Listener(){public void frame(double brightness,long captured,String issue){if(!current(expected))return;if(light.frame(brightness,captured,access.now()))solved(expected);else{status=Double.isFinite(brightness)?Math.round(brightness*100/255)+"% brightness · hold "+light.progress()+"%":message(issue,"Waiting for a fresh frame.");notifyChanged();}}public void error(String issue){failed(expected,issue);}});
+     CameraLightCamera.Port port=access.light();bind(activity,port::close,port::released);preview=port.preview();status="Keep a room light centered.";
+     port.start(new CameraLightCamera.Listener(){public void frame(double brightness,long captured,String issue){onMain(()->{if(!current(expected))return;if(light.frame(brightness,captured,access.now()))solved(expected);else{status=Double.isFinite(brightness)?Math.round(brightness*100/255)+"% brightness · hold "+light.progress()+"%":message(issue,"Waiting for a fresh frame.");notifyChanged();}});}public void error(String issue){onMain(()->failed(expected,issue));}});
     }
     default->throw new IllegalArgumentException("This camera adapter is not available");
    }
   }catch(RuntimeException|LinkageError failure){close();state=State.ERROR;issue="Camera could not start safely. Retry after cleanup or choose the configured alternative.";}
   notifyChanged();
  }
- private void bind(ComponentActivity activity,View preview,Runnable close,BooleanSupplier released){
-  this.preview=preview;this.close=close;this.released=released;
+ private void bind(ComponentActivity activity,Runnable close,BooleanSupplier released){
+  this.close=close;this.released=released;
   ticket.bindCleanup(activity,this::close,this::released,this::retry);
  }
  private void solved(int expected){
@@ -122,5 +126,6 @@ final class PracticeCameraTasks {
  }
  void retry(){close();}
  void forget(){if(released())RETAINED.remove(ticket.nonce);}
+ private static void onMain(Runnable callback){if(android.os.Looper.myLooper()==android.os.Looper.getMainLooper())callback.run();else new android.os.Handler(android.os.Looper.getMainLooper()).post(callback);}
  private void notifyChanged(){if(changed!=null&&visible!=null&&visible.getAsBoolean())changed.run();}
 }

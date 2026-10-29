@@ -68,6 +68,9 @@ final class ChallengePracticeSession {
                     if(RoutineAudioPracticeActivity.TYPES.contains(task.type)&&context instanceof android.app.Activity owner){
                         try{return PracticeAudioAccess.factory.create(owner).unavailable(task.type);}catch(RuntimeException unreadable){return "Listening readiness could not be checked";}
                     }
+                    if(RoutineCameraPracticeActivity.TYPES.contains(task.type)&&context instanceof android.app.Activity owner){
+                        try{return PracticeCameraAccess.factory.create(owner).unavailable(task);}catch(RuntimeException unreadable){return "Camera readiness could not be checked";}
+                    }
                     return RandomChallenges.unavailable(context,task);
                 });
                 selected=sample.routine;
