@@ -58,7 +58,7 @@ public final class AutomaticTrackingActivity extends Activity {
         runtimePhase=currentPhase();body=Design.page(this,false,null,n->{});body.setPadding(body.getPaddingLeft(),Design.dp(this,8),body.getPaddingRight(),body.getPaddingBottom());currentScroll=(ScrollView)body.getParent();RecordUi.label(this,body);
         String title=switch(page){case "conditions"->"Start conditions";case "sounds"->"Sound recording";case "detection"->"Sleep confirmation";case "options"->"Automatic tracking options";case "source"->"Source schedule";case "access"->"Activity access";default->"Automatic tracking";};
         LinearLayout header=RecordUi.header(body,title,this::back);header.getLayoutParams().height=-2;header.setMinimumHeight(Design.dp(this,52));
-        if(page.equals("home"))RecordUi.headerAction(header,"more","Automatic tracking options",()->openPage("options"));Design.space(body,8);
+        if(page.equals("home"))RecordUi.menuAction(header,"Automatic tracking options",()->openPage("options"),false);Design.space(body,8);
         if(!page.equals("home"))TrackingOptionsUi.context(body,"Automatic tracking");
         switch(page){case "conditions"->conditionsPage();case "sounds"->soundsPage();case "detection"->detectionPage();case "options"->optionsPage();case "source"->sourcePage();case "access"->accessPage();default->home();}
         LinearLayout footer=RecordUi.footer(body);

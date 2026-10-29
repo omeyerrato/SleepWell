@@ -51,7 +51,7 @@ public final class TrackingActivity extends Activity {
     private void back(){if(liveOptions){closeLiveOptions();return;}if(rendered.equals("SETUP")&&!setupRoute.equals("setup")){setupPage(setupRoute.equals("power")?"more":"setup");return;}finish();}
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){back();}
     private void setupHeader(LinearLayout body,String title,Runnable back){LinearLayout header=Design.row(this);View button=Design.iconButton(this,"back","Back",back);((Design.Icon)button).tint(Design.CREAM);header.addView(button,new LinearLayout.LayoutParams(Design.dp(this,48),Design.dp(this,48)));header.addView(Design.text(this,title,23,600,Design.CREAM),new LinearLayout.LayoutParams(0,-2,1));
-        if(title.equals("Tracking setup")){View more=Design.iconButton(this,"more","More tracking settings",()->setupPage("more"));((Design.Icon)more).tint(Design.CREAM);header.addView(more,new LinearLayout.LayoutParams(Design.dp(this,48),Design.dp(this,48)));}
+        if(title.equals("Tracking setup"))RecordUi.menuAction(header,"More tracking settings",()->setupPage("more"),true);
         header.setMinimumHeight(Design.dp(this,48));body.addView(header,new LinearLayout.LayoutParams(-1,-2));}
     private void setup(){rememberSetupPosition();rendered="SETUP";renderedSetupRoute=setupRoute;microphone=null;micHelp=null;error=null;primary=null;if(setupRoute.equals("more")){moreTrackingSettings();restoreSetupPosition();return;}if(setupRoute.equals("power")){powerTrackingSettings();restoreSetupPosition();return;}LinearLayout body=Design.darkPage(this);Design.pad(body,24,8);
         setupHeader(body,"Tracking setup",this::back);
