@@ -1,0 +1,88 @@
+{
+  "tested_head": "0a5f3fa31d37479a9863fc8108406ea270802643",
+  "base": "6cd00676356534b58388d7664fa584fa52a38ecc",
+  "production_trees": {
+    "base": "3f258eab6b1ec342bfb5bc0d32aaf7f4996747d1",
+    "tested": "3f258eab6b1ec342bfb5bc0d32aaf7f4996747d1"
+  },
+  "native_blob": "be02615b5bc1aeef7d7518afc9d28a5f31b60af9",
+  "script_blob": "95ffc8ae020495f1f54d39c59429c8d8834d77ff",
+  "method": "NightArcFlowTest#clockProgressAndExplanationWithoutAnyAlarmDelivery",
+  "scope": "system-bars-transition",
+  "native_sounds": false,
+  "audio_imports": false,
+  "original_tonight_scope_preserved": 18,
+  "all_prior_frame_inventories_preserved": 47,
+  "raw_files": [
+    {
+      "name": "arc-bars-tonight.png",
+      "bytes": 437160,
+      "sha256": "c6c2477a6ae367abf6b640adc9d7f27318cf19028a9e447c2b7fe53c8086005e"
+    },
+    {
+      "name": "arc-bars-help.png",
+      "bytes": 243826,
+      "sha256": "faa3a4177e004fdaadfbc7f4caea7065086f14371931a487494f452ad038dc5f"
+    },
+    {
+      "name": "arc-bars-help-return.png",
+      "bytes": 437160,
+      "sha256": "c6c2477a6ae367abf6b640adc9d7f27318cf19028a9e447c2b7fe53c8086005e"
+    },
+    {
+      "name": "arc-bars-alarms-first.png",
+      "bytes": 104582,
+      "sha256": "44e9a3c936337c86cb431fa3a783a41a57e61b034371fa28c9d7da4cb41843bd"
+    },
+    {
+      "name": "arc-bars-alarms-observed.png",
+      "bytes": 105237,
+      "sha256": "c8b3ea9d2f3c23e146dfad89be0cfa8a039dc2406e4e7ce7e4a4bea8825c2b82"
+    },
+    {
+      "name": "arc-bars-tonight-return.png",
+      "bytes": 437139,
+      "sha256": "b5e1bca519f21732dbb8e224d971577d7ddb56e8c971aed802ef18eb73052c51"
+    },
+    {
+      "name": "arc-bars-alarms-recreated.png",
+      "bytes": 105164,
+      "sha256": "9f6f8b8ccd3880d749b54ae0aed3ee853b75b5b342a53d0d6cdbce423f8ee490"
+    },
+    {
+      "name": "arc-bars-help-recreated.png",
+      "bytes": 244138,
+      "sha256": "e98b0d99e3d86194899e6802bc02fa40f45d796399898077734789a1d01e4b00"
+    },
+    {
+      "name": "arc-failure.png",
+      "bytes": 437568,
+      "sha256": "b0cb1a4b77c1421811b220232408d61dcd9430990cad6bcbaa3eeaa4ca316bf5"
+    },
+    {
+      "name": "arc-failure.xml",
+      "bytes": 41003,
+      "sha256": "6a402fa20305a1b26fc5b66ea06c2fb69e8706f89bc9593a47cd9be009c531e6"
+    },
+    {
+      "name": "arc-bars-observations.tsv",
+      "bytes": 4664,
+      "sha256": "c029c7128735136c8fd0436d6c20a8b05f6e26a4e064e99180498d4515dbd088"
+    },
+    {
+      "name": "NightArcFlowTest#clockProgressAndExplanationWithoutAnyAlarmDelivery.txt",
+      "bytes": 11296,
+      "sha256": "da295b3906e14b1de2ef8d3ae5179e7810359e7b0b6da22789e1d739f30df302"
+    },
+    {
+      "name": "environment.json",
+      "bytes": 652,
+      "sha256": "8ae6f8b8a2c1adc3583c0993bf8fa5200063c53b7a9deb9e8f0033ad51a5b9d0"
+    },
+    {
+      "name": "focused-review-summary.json",
+      "bytes": 421,
+      "sha256": "6c0479e5bf18173c01a52d6766d9d467f24f7b29fae345f8b789577679a5b6da"
+    }
+  ]
+}
