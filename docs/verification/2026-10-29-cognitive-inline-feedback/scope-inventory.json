@@ -1,0 +1,16 @@
+{
+  "scope": "cognitive-feedback",
+  "method": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+  "routineSlice": "cognitive-feedback",
+  "required_originals": [
+    "routine-preview-cognitive-sequence-wrong.png",
+    "routine-preview-cognitive-sequence-recreated.png",
+    "routine-preview-cognitive-sequence-retry.png",
+    "routine-preview-cognitive-retype-wrong.png",
+    "routine-preview-cognitive-retype-recreated.png",
+    "routine-preview-cognitive-retype-corrected.png"
+  ],
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "full_app_review": false
+}

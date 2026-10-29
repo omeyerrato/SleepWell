@@ -1,0 +1,19 @@
+{
+  "commit": "ae58fd8516f952647881ff5762588e11fb340c62",
+  "emulator": true,
+  "scope": "cognitive-feedback",
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no native playback output allowlisted; library uses fake playback",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": false,
+  "startup_focused_samples": 3,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420",
+  "routine_slice": "cognitive-feedback",
+  "test_classes": [
+    "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"
+  ]
+}
