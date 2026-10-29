@@ -1,0 +1,30 @@
+{
+  "scope": "protection-recovery",
+  "selector": "AlarmProtectionFlowTest#compactListAndGlobalProtectionsPersistWithoutAlarmExecution",
+  "expected_methods": 1,
+  "required_original_images": [
+    "protection-alarms.png",
+    "protection-editor.png",
+    "protection-off.png",
+    "protection-disclosure.png",
+    "protection-on.png",
+    "protection-recreated.png",
+    "protection-global.png",
+    "protection-power-only.png",
+    "protection-readiness.png",
+    "protection-readiness-rationale.png",
+    "protection-readiness-rationale-cancel.png",
+    "protection-readiness-settings-recovery.png",
+    "protection-readiness-returned.png",
+    "protection-about-recreated.png",
+    "protection-disclosure-recreated.png",
+    "protection-read-error.png"
+  ],
+  "preserved_scope_mappings": 43,
+  "preserved_selector_assignments": 43,
+  "old_constant_arrays_unchanged": true,
+  "workflow_otherwise_exact": true,
+  "native_sounds": false,
+  "audio_imports": false,
+  "defaults_unchanged": true
+}

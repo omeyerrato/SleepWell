@@ -1,0 +1,94 @@
+{
+  "tested_head": "1fdaf3544a3f68e36c7887bce6fd5d46d5e569be",
+  "base": "b5d3b2b6bb558b7d0038351770e38d0c32e07988",
+  "production_changes": [
+    "app/src/main/java/org/sleepwell/app/AlarmProtectionActivity.java"
+  ],
+  "source_equivalence": "Exact named Git blobs; not equivalence to a later root checkout or an installed package. Access-enabled/live guard/real alarm remain unverified.",
+  "files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmProtectionActivity.java",
+      "git_blob": "4f6daddc46d3e8e834a9d377c91956470d09f2f1",
+      "sha256": "7fa59b8270f5b71d25914a2eb1234f3cc854b798720d614861098ab551681d91",
+      "unchanged_from_base": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmProtections.java",
+      "git_blob": "5e382f2dbdbcab994dab7c75d1d4c07ce0d163c1",
+      "sha256": "0f4c22d1628a472bf458d0a5ee66a872c79c9fe4c950d227837a7de56b175e4b",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BedtimeGuard.java",
+      "git_blob": "441fac367a158ba6fcaee5b5f69ea2c96abc2a25",
+      "sha256": "8b46808fae8dd1389a5b42cbaf6da7d932cbaf99759e17716c4d4f95215bdcda",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PowerMenuGuard.java",
+      "git_blob": "0f713a903f116b59e6ce55e99c6d070dcb0870c8",
+      "sha256": "95f3399dd1e3058bc1c2cbefe6e172624893c3e940542ec382770c9834d90bcc",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/UninstallProtectionActivity.java",
+      "git_blob": "cd00075b8c7665ee89fabee845fe38ef1c58cd06",
+      "sha256": "d02ba1597541a66623cdd09ad78e20e52fc8aa3020a95ed4ca107e4624115c1f",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SleepPicker.java",
+      "git_blob": "2373fa22ba4c407af2d4af24c0dd26de8e23d593",
+      "sha256": "1b8db38e9e6bf926713e9c933e107d615befe6eb3e6eadc344c0b7cec5f7a492",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "git_blob": "f41aeaea257a81a6bcf170da396bea9f35e4b2f7",
+      "sha256": "fa3b861327749975282de34fa6533a64541e72e385c3ef2a08a413360b180594",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "git_blob": "a18de9add587b1be50a9515443ba734817fee912",
+      "sha256": "5ca004091312f1307566568e2f259f5fb637f93c123ded9070d62080666390a1",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+      "git_blob": "71576255a393fc70471a3eb9d31c1ea7f7e4f640",
+      "sha256": "392252f29881e7a23eade4848f3b3a92a9f65db2d2616943c990b026a6030068",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "git_blob": "3796dbc5d07608b67f7b5766d62a23aa812f1096",
+      "sha256": "bfbe56034243efae83a98644fe31e76f8372adea2924ddd6c83607fd50cbc11d",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/res/values/styles.xml",
+      "git_blob": "49848a515765d3a5b28813edeb003090feadc965",
+      "sha256": "ceb23e75e31da9da85aca7ead519a20475653236813cb56cfec1fe427334b9bd",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/AlarmProtectionFlowTest.java",
+      "git_blob": "a4ae85aa86add834bc474a1deb11abbfcebecd3b",
+      "sha256": "76b6d408e800ebb38955834cabcfa84eb0cb89b945848daa9ba629277f182c7b",
+      "unchanged_from_base": false
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "git_blob": "c23e8fad75e5718f56f312c5362d23690e339605",
+      "sha256": "441660938b3bd802a75df721cbbf8cba0fc0121157230e4c1ad181616c665d0b",
+      "unchanged_from_base": false
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "git_blob": "60a3bd68a68755164e6198a5503dffbf13fbf9ff",
+      "sha256": "943c3ee8ce77e99c57ae38f9f89053cb67b84d737d1bcb5605400cb4b6fdab29",
+      "unchanged_from_base": false
+    }
+  ]
+}

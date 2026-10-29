@@ -1,0 +1,44 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmProtectionFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.AlarmProtectionFlowTest:
+INSTRUMENTATION_STATUS: test=compactListAndGlobalProtectionsPersistWithoutAlarmExecution
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.AlarmProtectionFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Actual accessibility settings action; destination blocked expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.sleepwell.app.AlarmProtectionFlowTest.compactListAndGlobalProtectionsPersistWithoutAlarmExecution(AlarmProtectionFlowTest.java:94)
+
+INSTRUMENTATION_STATUS: stream=
+Error in compactListAndGlobalProtectionsPersistWithoutAlarmExecution(org.sleepwell.app.AlarmProtectionFlowTest):
+java.lang.AssertionError: Actual accessibility settings action; destination blocked expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.sleepwell.app.AlarmProtectionFlowTest.compactListAndGlobalProtectionsPersistWithoutAlarmExecution(AlarmProtectionFlowTest.java:94)
+
+INSTRUMENTATION_STATUS: test=compactListAndGlobalProtectionsPersistWithoutAlarmExecution
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 16.979
+There was 1 failure:
+1) compactListAndGlobalProtectionsPersistWithoutAlarmExecution(org.sleepwell.app.AlarmProtectionFlowTest)
+java.lang.AssertionError: Actual accessibility settings action; destination blocked expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.sleepwell.app.AlarmProtectionFlowTest.compactListAndGlobalProtectionsPersistWithoutAlarmExecution(AlarmProtectionFlowTest.java:94)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
