@@ -1,6 +1,6 @@
 # SleepWell current remaining work
 
-Latest published **0.1.11 / ce2cb571** contains the [usability-first source pass](USABILITY-PASS-2026-10-29.md). [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.11-pickers-feedback-20261030-ce2cb571). APK packaging only; new verification/security/bug-fixing work is deferred by the user. Recording-only cleanup and Last export source are integrated; combined Privacy acceptance and all36 matching remain open. The phone remains on0.1.4; installation is deferred.
+Latest published **0.1.12 / 031d44e5** contains the [usability-first source pass](USABILITY-PASS-2026-10-29.md). [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.12-readiness-20261030-031d44e5). APK packaging only; new verification/security/bug-fixing work is deferred by the user. Recording-only cleanup and Last export source are integrated; combined Privacy acceptance and all36 matching remain open. The phone remains on0.1.4; installation is deferred.
 
 Updated 29 October 2026. This is the consolidated current checklist, not a release
 history. The goal remains the full applicable phone functionality and **all 36

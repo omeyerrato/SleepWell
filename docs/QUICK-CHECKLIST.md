@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated 30 October 2026. Latest published APK: **0.1.11 / ce2cb571** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
+Updated 30 October 2026. Latest published APK: **0.1.12 / 031d44e5** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.11-pickers-feedback-20261030-ce2cb571) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.12-readiness-20261030-031d44e5) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -85,6 +85,12 @@ Appearance theme rings (`6d56b05b`) are included in0.1.11.
 - [x] Saved Light / Standard / Firm touch feedback, explicit Try feedback and preserved Off/quiet behavior.
 - [x] App-owned Appearance rings and search labels/icons aligned with Settings.
 - [x] Produce and publish0.1.11 (`ce2cb571`), APK packaging2m24s only. New interaction, visual and device acceptance remains deferred.
+
+## Published in 0.1.12 — readiness control
+
+- [x] Add explicit review/confirmation for the reference's quiet-alarm control, plus permission/busy/error/request states.
+- [x] Give real alarm occurrences priority over the new quiet request; retain ordinary alarm overlap behavior.
+- [x] Produce and publish0.1.12 (`031d44e5`), APK packaging1m3s. No alarm was executed and new verification remains deferred. The earlier6cfcc62e package was held and never published.
 
 ## Still unfinished
 

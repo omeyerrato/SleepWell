@@ -40,11 +40,11 @@ Published source **`ce2cb571`**, version **0.1.11 / 12**. [Development APK](http
 
 No new tests, lint, visual verification, security review or physical outputs ran. Implementation references and deferred status are recorded in F035/F064/F169 of the feature matrix.
 
-## Readiness control — source in progress
+## Readiness control — 0.1.12
 
 `9822fc65` adds the reference's explicit quiet-alarm review/scheduling control. A fresh one-question Math alarm is scheduled only after confirmation; the requested level is capped at25%, with no boosted sound, vibration, torch or screen sunrise. The review states that completing Math stops it; no automatic-stop claim is made. Permission/busy/error/request-note states are included, and ordinary saved alarm configurations are not edited.
 
-The initial candidate `6cfcc62e` packaged successfully in1m48s but is **not published or executed**. Publication is held while the new quiet alarm's priority yields to a saved alarm that arrives during it. Latest published remains0.1.11.
+The initial candidate `6cfcc62e` packaged successfully in1m48s but was held and never published or executed. It was superseded by **`031d44e5`**, [published as0.1.12](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.12-readiness-20261030-031d44e5), APK packaging1m3s only. Positive real alarm occurrences replace an active id-1 quiet test through the existing occurrence handoff; queued quiet delivery yields to active alarms, tracking and wake-up checks. Ordinary alarm-overlap behavior and lifetime rules remain. This flow has no new runtime or visual acceptance and was never executed.
 
 ## Delivery limits
 
