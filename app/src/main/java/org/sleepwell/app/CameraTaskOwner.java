@@ -42,6 +42,7 @@ final class CameraTaskOwner {
   closing=true;if(close!=null)try{close.run();}catch(RuntimeException|LinkageError failure){return false;}
   boolean done=clean();if(done)closing=false;return done;
  }
+ void releasing(Activity activity){if(owned(activity))closing=true;}
  boolean clean(){
   if(released==null)return true;if(!closing)return false;
   try{if(!released.getAsBoolean())return false;}catch(RuntimeException|LinkageError unavailable){return false;}

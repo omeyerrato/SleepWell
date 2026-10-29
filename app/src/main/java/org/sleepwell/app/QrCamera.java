@@ -16,7 +16,7 @@ import java.util.concurrent.*;
 
 /** CameraX Preview + bounded offline ZXing analysis. No capture files, network, audio or torch. */
 final class QrCamera {
-    interface Port extends QrScanSession.Port,CameraTaskPorts.Capture {View preview();default void format(String format){if(!MorningBarcode.QR.equals(format))throw new IllegalStateException("This camera adapter does not support barcode scanning.");}}
+    interface Port extends QrScanSession.Port,CameraTaskPorts.Capture {View preview();default boolean released(){return QrScanSession.Port.super.released();}default void format(String format){if(!MorningBarcode.QR.equals(format))throw new IllegalStateException("This camera adapter does not support barcode scanning.");}}
     interface Factory {Port create(ComponentActivity activity);default Port create(ComponentActivity activity,String format){Port port=create(activity);port.format(format);return port;}}
     static Factory factory=Real::new;
     private static final class Real implements Port {
