@@ -26,7 +26,7 @@ final class PracticeChildTicket {
         private int cleanedAttempt=-1;
         private int outcome=Activity.RESULT_CANCELED;
         private Bundle checkpoint;
-        private Runnable cleanup;
+        private Runnable cleanup,retry;
         private java.util.function.BooleanSupplier released;
         Ticket(ChallengePracticeSession parent){this.parent=parent;nonce=UUID.randomUUID().toString();run=parent.run;snapshot=parent.snapshot;unit=parent.completed();ChallengeRoutine.Position at=parent.position();task=at.task;round=at.round;configuration=key(task);deadline=SystemClock.elapsedRealtime()+LIFETIME;Bundle draft=parent.draft();checkpoint=draft==null?null:draft.getBundle("motionCheckpoint");}
         private boolean live(){return !consumed&&SystemClock.elapsedRealtime()<=deadline&&issued.get(nonce)==this&&parent.child(nonce,unit,configuration);}
@@ -37,8 +37,10 @@ final class PracticeChildTicket {
         /** Workers inspect only a main-thread-issued volatile lease, never Activity Views or parent state. */
         boolean captureCurrent(int expected){return capturing&&!published&&!consumed&&attempt==expected&&SystemClock.elapsedRealtime()<=deadline;}
         void suspendCapture(Activity owner){requireMain();if(child.get()==owner){capturing=false;attempt++;}}
-        void bindCleanup(Activity owner,Runnable cleanup,java.util.function.BooleanSupplier released){requireMain();if(child.get()!=owner||this.cleanup!=null)throw new IllegalStateException("Earlier practice capture must close first.");this.cleanup=cleanup;this.released=released;}
-        boolean clean(){requireMain();if(cleanup==null){if(capture==this)capture=null;return true;}try{cleanup.run();if(!released.getAsBoolean())return false;if(capturing)cleanedAttempt=attempt;capturing=false;attempt++;cleanup=null;released=null;if(capture==this)capture=null;return true;}catch(RuntimeException failure){return false;}}
+        void bindCleanup(Activity owner,Runnable cleanup,java.util.function.BooleanSupplier released){bindCleanup(owner,cleanup,released,cleanup);}
+        void bindCleanup(Activity owner,Runnable cleanup,java.util.function.BooleanSupplier released,Runnable retry){requireMain();if(child.get()!=owner||this.cleanup!=null)throw new IllegalStateException("Earlier practice capture must close first.");this.cleanup=cleanup;this.released=released;this.retry=retry;}
+        boolean retryCleanup(){requireMain();try{if(retry!=null)retry.run();}catch(RuntimeException failure){return false;}return clean();}
+        boolean clean(){requireMain();if(cleanup==null){if(capture==this)capture=null;return true;}try{cleanup.run();if(!released.getAsBoolean())return false;if(capturing)cleanedAttempt=attempt;capturing=false;attempt++;cleanup=null;released=null;retry=null;if(capture==this)capture=null;return true;}catch(RuntimeException failure){return false;}}
         boolean cleanupPending(){requireMain();return cleanup!=null;}
         Bundle checkpoint(){requireMain();return checkpoint==null?null:new Bundle(checkpoint);}
         void checkpoint(Activity owner,Bundle state){requireMain();if(child.get()!=owner)return;Parcel parcel=Parcel.obtain();try{parcel.writeBundle(state);if(parcel.dataSize()>65536)throw new IllegalArgumentException("Practice step state is too large to retain.");checkpoint=state==null?null:new Bundle(state);}finally{parcel.recycle();}}

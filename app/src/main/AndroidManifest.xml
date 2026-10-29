@@ -220,6 +220,7 @@
         <activity android:name=".AlarmDefaultsActivity" android:exported="false" />
         <activity android:name=".ChallengePackPreviewActivity" android:exported="false" />
         <activity android:name=".MotionChallengePracticeActivity" android:exported="false" />
+        <activity android:name=".RoutineAudioPracticeActivity" android:exported="false" />
         <activity android:name=".ChallengePracticeActivity" android:exported="false" />
         <activity android:name=".MoonSearchPreviewActivity" android:exported="false" />
         <activity android:name=".CalendarRulesActivity" android:exported="false" />

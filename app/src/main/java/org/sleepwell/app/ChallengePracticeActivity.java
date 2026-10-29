@@ -63,7 +63,7 @@ public final class ChallengePracticeActivity extends Activity {
         LinearLayout card=WakeChallengeUi.card(this,clock,"Routine preview",caption,position.index,session.routine.tasks.size(),action(this::cancel),true);
         Design.text(card,"Practice only · no alarm is running from this preview.",12,400,Design.MUTED);
         if(!session.selectionNotice.isEmpty())Design.button(card,"Example selection details",false,action(()->SleepPicker.message(this,"This preview selection",session.selectionNotice)));
-        try{screen=new ChallengePracticeScreen(this,card,session,checkpoints,()->resumed,this::render,this::openMotion);}
+        try{screen=new ChallengePracticeScreen(this,card,session,checkpoints,()->resumed,this::render,this::openChild);}
         catch(RuntimeException unavailable){
             session.invalidate();closeScreen(false);Design.text(card,"This practice task could not open. "+(unavailable.getMessage()==null?"Retry or return to your routine.":unavailable.getMessage()),14,400,Design.MUTED);
             Design.button(card,"Retry this task",true,action(this::render));
@@ -72,22 +72,26 @@ public final class ChallengePracticeActivity extends Activity {
         Design.button(footer,"Cancel preview",false,action(this::cancel));
     }
 
-    private void openMotion(){
-        if(session==null||!session.pending().isEmpty()||!MotionChallengePracticeActivity.TYPES.contains(session.position().task.type))return;
+    private void openChild(){
+        if(session==null||!session.pending().isEmpty()||!MotionChallengePracticeActivity.TYPES.contains(session.position().task.type)&&!RoutineAudioPracticeActivity.TYPES.contains(session.position().task.type))return;
         closeScreen(true);
-        try{PracticeChildTicket.Ticket child=PracticeChildTicket.issue(session);startActivityForResult(PracticeChildTicket.intent(this,MotionChallengePracticeActivity.class,child),MotionChallengePracticeActivity.REQUEST);}
+        try{PracticeChildTicket.Ticket child=PracticeChildTicket.issue(session);launchChild(child);}
         catch(RuntimeException unavailable){try{PracticeChildTicket.abandon(session);}catch(RuntimeException closing){}Ui.toast(this,"The practice step could not open. Retry after cleanup.");render();}
+    }
+    private void launchChild(PracticeChildTicket.Ticket child){
+        boolean audio=RoutineAudioPracticeActivity.TYPES.contains(child.task.type);
+        startActivityForResult(PracticeChildTicket.intent(this,audio?RoutineAudioPracticeActivity.class:MotionChallengePracticeActivity.class,child),audio?RoutineAudioPracticeActivity.REQUEST:MotionChallengePracticeActivity.REQUEST);
     }
     private void pendingPage(){
         LinearLayout body=Design.page(this,false,null,null);RecordUi.header(body,"Practice step",action(this::cancel));
         Design.text(body,"A private practice step is awaiting its result or cleanup. No task is skipped.",15,400,Design.MUTED);
-        Design.button(body,"Reopen practice step",true,action(()->{PracticeChildTicket.Ticket child=PracticeChildTicket.pending(session);if(child==null){session.abandonChild();render();return;}try{startActivityForResult(PracticeChildTicket.intent(this,MotionChallengePracticeActivity.class,child),MotionChallengePracticeActivity.REQUEST);}catch(RuntimeException unavailable){Ui.toast(this,"The step expired or could not open. Close its capture before retrying.");}}));
+        Design.button(body,"Reopen practice step",true,action(()->{PracticeChildTicket.Ticket child=PracticeChildTicket.pending(session);if(child==null){session.abandonChild();render();return;}try{launchChild(child);}catch(RuntimeException unavailable){Ui.toast(this,"The step expired or could not open. Close its capture before retrying.");}}));
         Design.button(body,"Close practice step and retry",false,action(()->{try{PracticeChildTicket.abandon(session);render();}catch(RuntimeException unavailable){Ui.toast(this,"This practice capture has not confirmed cleanup. Retry cleanup before continuing.");}}));
         Design.fixedAction(body,"Cancel preview",action(this::cancel));
     }
     @Override protected void onActivityResult(int requestCode,int resultCode,Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode!=MotionChallengePracticeActivity.REQUEST||session==null)return;
+        if(requestCode!=MotionChallengePracticeActivity.REQUEST&&requestCode!=RoutineAudioPracticeActivity.REQUEST||session==null)return;
         // Authenticated child receipts may precede this parent's onResume or focus handoff.
         PracticeChildTicket.consume(session,resultCode,data);
         if(resumed&&hasWindowFocus())render();

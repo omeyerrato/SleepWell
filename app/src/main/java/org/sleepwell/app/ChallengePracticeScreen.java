@@ -9,7 +9,7 @@ import java.util.function.BooleanSupplier;
 /** Real screen-task controllers; no hardware or configuration-only success substitutes. */
 final class ChallengePracticeScreen implements AutoCloseable {
     static final Set<String> SUPPORTED;
-    static{Set<String> types=new HashSet<>(RandomChallenges.SCREEN);types.addAll(MotionChallengePracticeActivity.TYPES);SUPPORTED=Set.copyOf(types);}
+    static{Set<String> types=new HashSet<>(RandomChallenges.SCREEN);types.addAll(MotionChallengePracticeActivity.TYPES);types.addAll(RoutineAudioPracticeActivity.TYPES);SUPPORTED=Set.copyOf(types);}
     private final Activity activity;
     private final ChallengePracticeSession session;
     private final ChallengePracticeSession.Ticket ticket;
@@ -28,7 +28,7 @@ final class ChallengePracticeScreen implements AutoCloseable {
     private boolean closed;
 
     ChallengePracticeScreen(Activity activity,LinearLayout card,ChallengePracticeSession session,
-                            PracticeCheckpoints checkpoints,BooleanSupplier resumed,Runnable changed,Runnable openMotion){
+                            PracticeCheckpoints checkpoints,BooleanSupplier resumed,Runnable changed,Runnable openChild){
         this.activity=activity;this.session=session;this.checkpoints=checkpoints;this.changed=changed;
         ticket=session.render();if(ticket==null)throw new IllegalArgumentException("This practice is complete.");
         owner=new ChallengePracticeOwner(activity,card,session,ticket,resumed);
@@ -48,7 +48,7 @@ final class ChallengePracticeScreen implements AutoCloseable {
             case "Visual search"->{MoonSearch board=MoonSearchState.open(checkpoints,session.run,ticket.unit(),position.round,random);MoonSearchView.render(card,board,owner::current,this::complete);Design.button(card,"Use Math instead",false,()->owner.submit(()->{if(!checkpoints.edit().putString("practiceMathRun",session.run).putInt("practiceMathUnit",ticket.unit()).commit()){Ui.toast(activity,"The preview alternative could not be retained.");return;}refresh();}));}
             case "Type code"->code=new TypeCodeTask(card,checkpoints,session.run,ticket.unit(),task.rounds,draft.getBundle("typeCode"),owner::current,this::complete,this::refresh);
             case "Jumping"->jump=new JumpTask(card,checkpoints,session.run,ticket.unit(),position.round,owner::current,this::complete,this::refresh);
-            case "Tilt maze","Light","Spin around","Shake","Walk","NFC"->{Design.text(card,task.type,24,600,Design.INK);Design.text(card,task.detail(),15,500,Design.BROWN);Design.text(card,"Open this step, then choose Start when ready. Returning from access settings never starts a check.",14,400,Design.MUTED);Design.button(card,"Open practice step",true,()->owner.submit(openMotion));}
+            case "Tilt maze","Light","Spin around","Shake","Walk","NFC","Speak","Laughter","Loud sound","Musical note","Spoken phrase"->{Design.text(card,task.type,24,600,Design.INK);Design.text(card,task.detail(),15,500,Design.BROWN);Design.text(card,"Open this step, then choose "+(RoutineAudioPracticeActivity.TYPES.contains(task.type)?"Listen":"Start")+" when ready. Returning from access settings never starts a check.",14,400,Design.MUTED);Design.button(card,"Open practice step",true,()->owner.submit(openChild));}
             default->throw new IllegalArgumentException("This task is not available in routine preview yet.");
         }
     }
