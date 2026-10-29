@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated29October2026. Latest published APK: **0.1.6 /741b3718**. Last verified phone installation: **0.1.4 /08d3911e**. Phone update is deferred by the user. The newer0.1.7 source below is not published or installed.
+Updated 29 October 2026. Latest published APK: **0.1.7 / 02aacc6b**. Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.6-clearer-settings-20261029-741b3718) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.7-routine-preview-20261029-02aacc6b) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -35,7 +35,7 @@ Checked means implemented with the stated supporting evidence. Physical-device a
 - [x] Settings organization and search, genuine task-configuration rows, compact automation cards and clearer protection setup.
 - [x] Free, open-source development APK published.
 
-## Integrated 0.1.7 source — not published or installed
+## Published in 0.1.7 — phone update deferred
 
 - [x] Sleep sounds header navigation and fixed Timer/Fade actions, with draft/scroll/focus retained. [14-original proof](verification/2026-10-29-sleep-mixer-reference/README.md).
 - [x] All 28 routine-preview controllers integrated: 11 screen, six motion/NFC, five audio and six camera. [Motion](verification/2026-10-29-routine-motion/README.md), [audio](verification/2026-10-29-routine-audio-visual/README.md), [camera](verification/2026-10-29-routine-camera/README.md). Genuine rules, synthetic inputs; physical/model and actual-alarm acceptance remain open.
@@ -43,10 +43,10 @@ Checked means implemented with the stated supporting evidence. Physical-device a
 - [x] Inline Sequence/Retype error feedback replaces overlapping Toast/native input error. [Six-original proof](verification/2026-10-29-cognitive-inline-feedback/README.md).
 - [x] Code/NFC tabs, dedicated NFC task setup and explicit retained tag enrollment. [22-original proof](verification/2026-10-29-morning-code-enrollment/README.md); no real tag/camera claim.
 - [x] Consistent Report averages and corrected tooltip/goal-caption overlap. [18-original proof](verification/2026-10-29-report-rounded-means/corrected-40822971575/README.md).
-- [x] Source repairs for nine Back-gesture handlers, native permission/API call guards and narrowly documented native-view lint exceptions. Runtime behavior after these last repairs is not yet accepted.
+- [x] Nine supporting Back handlers use lifecycle dispatchers; native permission/API call guards and documented native-view lint exceptions are repaired. Final merged private audio-practice flow passes 32.298s / 26 inspected originals. This exercises buttons/recreation/cleanup, not all nine actual Back gestures. [Evidence](verification/2026-10-29-017-routine-integration/README.md).
 - [x] Combined arm64 APK and lint pass at `02aacc6b` (8m 4s, 45 tasks). The first candidate's 19-error lint failure remains archived.
-- [ ] Finish the independent package/signature audit; this is separate from build success.
-- [ ] Publish the next update; installation remains deferred by the user.
+- [x] Independent original-signer/package audit passed: retained assets/libraries, compiled manifest and unchanged schema 17 / backup 14. [Evidence](verification/2026-10-29-017-build/README.md).
+- [x] Publish 0.1.7 and verify its exact tag, APK and checksum hashes. Installation remains deferred by the user.
 
 ## Still unfinished
 

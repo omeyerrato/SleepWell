@@ -1,0 +1,39 @@
+{
+  "source": "02aacc6b122cb1e2c50486190ece608f8d5e3e87",
+  "tag": "v0.1.7-routine-preview-20261029-02aacc6b",
+  "tag_commit": "02aacc6b122cb1e2c50486190ece608f8d5e3e87",
+  "release_id": 427713427,
+  "url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.7-routine-preview-20261029-02aacc6b",
+  "draft": false,
+  "published": true,
+  "published_at": "2026-10-29T10:29:24Z",
+  "prerelease": true,
+  "assets": [
+    {
+      "name": "SleepWell-0.1.7-02aacc6b-arm64.apk",
+      "id": 688147402,
+      "size": 168752618,
+      "sha256": "7aa7e4fb3db0ec298a00459e83443f1342649e00fb3923396d867d2d83383143",
+      "state": "uploaded",
+      "server_digest": "sha256:7aa7e4fb3db0ec298a00459e83443f1342649e00fb3923396d867d2d83383143"
+    },
+    {
+      "name": "SleepWell-0.1.7-02aacc6b-arm64.apk.sha256",
+      "id": 688147404,
+      "size": 101,
+      "sha256": "f06d972a7aebb8efe67ba06e861b8b3715d4311b89bc041ccc0a2da9e7e4bbe1",
+      "state": "uploaded",
+      "server_digest": "sha256:f06d972a7aebb8efe67ba06e861b8b3715d4311b89bc041ccc0a2da9e7e4bbe1"
+    }
+  ],
+  "versionName": "0.1.7",
+  "versionCode": 8,
+  "phone_installed": false,
+  "phone_update": "Deferred by user",
+  "build": "assembleDebug and lintDebug PASS8m4s",
+  "native_routine_run": 40853867058,
+  "native_routine_seconds": 32.298,
+  "native_routine_originals": 26,
+  "all_36_reference_screens_accepted": false,
+  "scope": "Changed Report, mixer, Code/NFC configuration and cognitive feedback have separately pinned native action/recreation/private-state proofs. Routine controllers use genuine rules with synthetic inputs; final parent/audio lifecycle/actions passed CI40853867058 in32.298s/26 inspected originals at the identical app tree, without direct Back/gesture execution. Other Back/API guard repairs are source-reviewed with combined build/lint only. Physical camera/microphone/model accuracy, actual alarm admission/outputs, overnight behavior, providers, all36 references and broad security remain open. No unit batch or personal-phone action."
+}

@@ -1,6 +1,6 @@
 # SleepWell feature checklist — 29 October 2026
 
-Latest published **0.1.6 / 741b3718** improves feature search, challenge selection, automation cards and protection setup. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.6-clearer-settings-20261029-741b3718); [package audit](verification/2026-10-29-016-build/README.md); [combined editor action/persistence proof](verification/2026-10-29-editor-usability-integration/README.md). The phone remains on0.1.4 with original user data preserved; installation is deferred by the user. All36-reference acceptance remains unfinished.
+Latest published **0.1.7 / 02aacc6b** adds all 28 routine-preview controllers, Code/NFC enrollment, inline task feedback, Report chart fixes and clearer sleep-sound controls. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.7-routine-preview-20261029-02aacc6b); [package audit](verification/2026-10-29-017-build/README.md); [final private challenge flow](verification/2026-10-29-017-routine-integration/README.md). The phone remains on 0.1.4; installation is deferred. All 36-reference, physical/overnight and broad security acceptance remain unfinished.
 
 Condensed version: [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
 Checked means implemented source/build, not full phone/overnight acceptance.
@@ -33,7 +33,7 @@ These changes are published in0.1.6; they are not installed on the phone.
 - [x] Build and publish0.1.6 with the original signing identity, retained assets/libraries and unchanged schema17/backup14; exact source tag and both server asset hashes verified. Phone installation remains deferred.
 - [x] All 28 routine-preview controller types are integrated in newer 0.1.7 source. Physical/model and actual-alarm acceptance remain open; see the current section below.
 
-## Integrated 0.1.7 source — not published or installed
+## Published in 0.1.7 — phone update deferred
 
 - [x] Sleep sounds header navigation and fixed Timer/Fade actions, with draft/scroll/focus retained. [14-original proof](verification/2026-10-29-sleep-mixer-reference/README.md).
 - [x] All 28 routine-preview controllers integrated: 11 screen, six motion/NFC, five audio and six camera. [Motion](verification/2026-10-29-routine-motion/README.md), [audio](verification/2026-10-29-routine-audio-visual/README.md), [camera](verification/2026-10-29-routine-camera/README.md). Genuine rules, synthetic inputs; physical/model and actual-alarm acceptance remain open.
@@ -41,10 +41,10 @@ These changes are published in0.1.6; they are not installed on the phone.
 - [x] Inline Sequence/Retype error feedback replaces overlapping Toast/native input error. [Six-original proof](verification/2026-10-29-cognitive-inline-feedback/README.md).
 - [x] Code/NFC tabs, dedicated NFC task setup and explicit retained tag enrollment. [22-original proof](verification/2026-10-29-morning-code-enrollment/README.md); no real tag/camera claim.
 - [x] Consistent Report averages and corrected tooltip/goal-caption overlap. [18-original proof](verification/2026-10-29-report-rounded-means/corrected-40822971575/README.md).
-- [x] Source repairs for nine Back-gesture handlers, native permission/API call guards and narrowly documented native-view lint exceptions. Runtime behavior after these last repairs is not yet accepted.
+- [x] Nine supporting Back handlers use lifecycle dispatchers; native permission/API call guards and documented native-view lint exceptions are repaired. Final merged private audio-practice flow passes 32.298s / 26 inspected originals. This exercises buttons/recreation/cleanup, not all nine actual Back gestures. [Evidence](verification/2026-10-29-017-routine-integration/README.md).
 - [x] Combined arm64 APK and lint pass at `02aacc6b` (8m 4s, 45 tasks). The first candidate's 19-error lint failure remains archived.
-- [ ] Finish the independent package/signature audit; this is separate from build success.
-- [ ] Publish the next update; installation remains deferred by the user.
+- [x] Independent original-signer/package audit passed: retained assets/libraries, compiled manifest and unchanged schema 17 / backup 14. [Evidence](verification/2026-10-29-017-build/README.md).
+- [x] Publish 0.1.7 and verify its exact tag, APK and checksum hashes. Installation remains deferred by the user.
 
 ## Current top priorities
 
