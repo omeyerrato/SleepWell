@@ -23,7 +23,7 @@ final class PracticeChildTicket {
         private WeakReference<Activity> child=new WeakReference<>(null);
         private volatile boolean published,consumed,capturing;
         private volatile int attempt;
-        private int cleanedAttempt=-1;
+        private int cleanedAttempt=-1,earnedAttempt=-1;
         private int outcome=Activity.RESULT_CANCELED;
         private Bundle checkpoint;
         private Runnable cleanup,retry;
@@ -33,14 +33,17 @@ final class PracticeChildTicket {
         boolean captureOwner(Activity owner,boolean resumed){return main()&&resumed&&live()&&!published&&child.get()==owner&&!owner.isDestroyed()&&!owner.isFinishing()&&owner.hasWindowFocus()&&owner.getWindow().getDecorView().isAttachedToWindow();}
         boolean cleanupOwner(Activity owner,boolean resumed){return main()&&resumed&&child.get()==owner&&!published&&!owner.isDestroyed()&&!owner.isFinishing()&&owner.hasWindowFocus()&&owner.getWindow().getDecorView().isAttachedToWindow();}
         boolean belongs(String type){return main()&&live()&&task.type.equals(type);}
-        int beginCapture(Activity owner,boolean resumed){requireMain();if(!captureOwner(owner,resumed)||capture!=null&&capture!=this)return -1;capture=this;attempt++;cleanedAttempt=-1;capturing=true;return attempt;}
+        int beginCapture(Activity owner,boolean resumed){requireMain();if(!captureOwner(owner,resumed)||earnedAttempt>=0||capture!=null&&capture!=this)return -1;capture=this;attempt++;cleanedAttempt=-1;capturing=true;return attempt;}
+        /** Camera validators latch an earned immutable unit before asynchronous owned release. */
+        boolean markEarned(Activity owner,boolean resumed,int expected){requireMain();if(!captureOwner(owner,resumed)||!captureCurrent(expected)||earnedAttempt>=0)return false;earnedAttempt=expected;return true;}
+        boolean earned(int expected){requireMain();return earnedAttempt==expected&&expected>0;}
         /** Workers inspect only a main-thread-issued volatile lease, never Activity Views or parent state. */
         boolean captureCurrent(int expected){return capturing&&!published&&!consumed&&attempt==expected&&SystemClock.elapsedRealtime()<=deadline;}
         void suspendCapture(Activity owner){requireMain();if(child.get()==owner){capturing=false;attempt++;}}
         void bindCleanup(Activity owner,Runnable cleanup,java.util.function.BooleanSupplier released){bindCleanup(owner,cleanup,released,cleanup);}
         void bindCleanup(Activity owner,Runnable cleanup,java.util.function.BooleanSupplier released,Runnable retry){requireMain();if(child.get()!=owner||this.cleanup!=null)throw new IllegalStateException("Earlier practice capture must close first.");this.cleanup=cleanup;this.released=released;this.retry=retry;}
         boolean retryCleanup(){requireMain();try{if(retry!=null)retry.run();}catch(RuntimeException failure){return false;}return clean();}
-        boolean clean(){requireMain();if(cleanup==null){if(capture==this)capture=null;return true;}try{cleanup.run();if(!released.getAsBoolean())return false;if(capturing)cleanedAttempt=attempt;capturing=false;attempt++;cleanup=null;released=null;retry=null;if(capture==this)capture=null;return true;}catch(RuntimeException failure){return false;}}
+        boolean clean(){requireMain();if(cleanup==null){if(capture==this)capture=null;return true;}try{cleanup.run();if(!released.getAsBoolean())return false;if(earnedAttempt>=0)cleanedAttempt=earnedAttempt;else if(capturing)cleanedAttempt=attempt;capturing=false;attempt++;cleanup=null;released=null;retry=null;if(capture==this)capture=null;return true;}catch(RuntimeException failure){return false;}}
         boolean cleanupPending(){requireMain();return cleanup!=null;}
         Bundle checkpoint(){requireMain();return checkpoint==null?null:new Bundle(checkpoint);}
         void checkpoint(Activity owner,Bundle state){requireMain();if(child.get()!=owner)return;Parcel parcel=Parcel.obtain();try{parcel.writeBundle(state);if(parcel.dataSize()>65536)throw new IllegalArgumentException("Practice step state is too large to retain.");checkpoint=state==null?null:new Bundle(state);}finally{parcel.recycle();}}
