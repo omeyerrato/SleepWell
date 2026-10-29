@@ -1,0 +1,32 @@
+{
+  "source": "df3ab653d7e042e2e41e74fc1cb39957189a9500",
+  "run": 40872218512,
+  "method": "BackupDocumentFlowTest#realMainRouteProviderWaitCancelRecreateAndCsvStayResponsive",
+  "seconds": 24.362,
+  "expected_methods": 1,
+  "actual_originals": 8,
+  "failures": [],
+  "asserted_paths": [
+    "Chooser cancellation and active provider-wait cancellation leave receipts absent",
+    "Main Looper heartbeat while fake document provider waits; recreation retains operation",
+    "Actual CSV serialized bytes and typed CSV receipt; JSON remains unknown",
+    "Held output close keeps WRITING and JSON unrecorded until released",
+    "Actual JSON serialized bytes and typed JSON receipt; CSV timestamp unchanged",
+    "Forget retained job/read fresh scope recovers committed private preference timestamps; not a process kill",
+    "Close failure and write failure do not replace JSON receipt",
+    "Denied output-open does not replace CSV receipt",
+    "Receipt factory failure leaves actual document DONE with separate warning/unavailable status, prior private preferences unchanged",
+    "Subsequent successful closed export records new JSON timestamp and clears warning",
+    "Explicit unreadable receipt store returns UNAVAILABLE",
+    "UTC October29 versus Honolulu October28 from the same instant",
+    "Private keys only last_json_v1/last_csv_v1; original personal preferences/database/source files unchanged"
+  ],
+  "source_only_failure_variant": "Production handles false SharedPreferences.commit as well as exceptions; this method injects the exception variant, not every platform preference failure mode.",
+  "not_executed": [
+    "Real external document provider",
+    "Actual process death/restart",
+    "Import/restore paths",
+    "Final Privacy Last export UI hook",
+    "Broad security, physical behavior or all 36 references"
+  ]
+}

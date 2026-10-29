@@ -1,0 +1,5 @@
+# Exact CI artifacts retain original bytes.
+* -text whitespace=cr-at-eol
+*.txt -whitespace
+*.log -whitespace
+*.patch -whitespace

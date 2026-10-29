@@ -1,0 +1,98 @@
+{
+  "base": "0b3cb9ed78fcb36d1a899c8c1dc56d0060387c59",
+  "source": "df3ab653d7e042e2e41e74fc1cb39957189a9500",
+  "production_source": "6a05fd7b1f2c452b9081b29174bf74edd45c70a0",
+  "production_tree": "648edad99da7a70eacfc62f76f8393f810b9856c",
+  "scope": "manual-export-receipt",
+  "selector": "BackupDocumentFlowTest#realMainRouteProviderWaitCancelRecreateAndCsvStayResponsive",
+  "expected_methods": 1,
+  "frames": [
+    "backup-document-chooser.png",
+    "backup-document-selection-cancelled.png",
+    "backup-document-writing.png",
+    "backup-document-writing-recreated.png",
+    "backup-document-cancelled.png",
+    "backup-document-csv-done.png",
+    "backup-document-json-done.png",
+    "backup-document-receipt-warning.png"
+  ],
+  "method_timeout_seconds": 180,
+  "native_sounds": false,
+  "audio_imports": false,
+  "source_compile": "PASS1m21s/15tasks3executed3cache9up",
+  "native_compile": "PASS2m59s/25tasks2executed23up",
+  "pins": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupJob.java",
+      "git_blob": "d12effb3ba983508b83f58ed52081cf2e994b642",
+      "sha256": "87a5b67de82618cd407aa8b74efffed138b7178cfc13b884c59940cb85473697"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupJobs.java",
+      "git_blob": "262f70aa6caca467b4249f6bb9918352b34ad4c4",
+      "sha256": "766e7b1669892168a47f3ef0bdb2a15343dec141599701f0e6765b6b9847c17d"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupExportReceipt.java",
+      "git_blob": "b2b8157de3fbb72837455dd349d5816ff903aa3b",
+      "sha256": "c7373826a2b69763ad26a1b0c5a6d7f5b8f3b7f47819aeda8157dbb213518e37"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/BackupDocumentFlowTest.java",
+      "git_blob": "25857d3aefa1938b1ae4813b4cb888587ffc1ce2",
+      "sha256": "f09f2d96d329cbe86d6701a2eaeba03cdccba8c3ca780955f1584a604555c9be"
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "git_blob": "6c80c3081ebcd0c361e5d9dab6be13f879518045",
+      "sha256": "b95ce5f23d12e00ab88377d967787740e53312d8021cdb4cf0823e7e46eef407"
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "git_blob": "abb40244afdd8c400637a51b834305200432c146",
+      "sha256": "08eaaff7705fa03f108135b3bbc1a27e10c52af4b103d2e9d671a8aa3615229c"
+    }
+  ],
+  "unchanged_source_contracts": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupDocuments.java",
+      "git_blob": "7088129f5bcb768af491a3221b59a394f2f25e44",
+      "exact_baseline_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupIo.java",
+      "git_blob": "1af1854f58866fdf4885bd10c33d2286db876480",
+      "exact_baseline_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupActivity.java",
+      "git_blob": "831492be6cf436ee23993397ff6dc77a46a8dc17",
+      "exact_baseline_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PrivacyScreen.java",
+      "git_blob": "0b3f84c6020ac191d4c963c3c3c56b58fb69f7da",
+      "exact_baseline_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "git_blob": "4ecb84778eb450f95e1ce1c38af27dc5542b5c95",
+      "exact_baseline_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "exact_baseline_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "git_blob": "8f33543a0898a498075e4b82d70e6dfddd6af77f",
+      "exact_baseline_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Prefs.java",
+      "git_blob": "20579beee65af8b85b242cec278b93ec4fc6f182",
+      "exact_baseline_equal": true
+    }
+  ]
+}
