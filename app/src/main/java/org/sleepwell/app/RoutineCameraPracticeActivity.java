@@ -41,25 +41,25 @@ public final class RoutineCameraPracticeActivity extends ComponentActivity {
     private void enabled(View view,boolean enabled){RecordUi.enabled(view,enabled);view.setAlpha(enabled?1f:.45f);}
     private void render(){
         if(returning||isDestroyed())return;generation++;
-        LinearLayout body=Design.page(this,false,null,null);RecordUi.header(body,"Camera practice",cleanupAction(()->returned(RESULT_CANCELED)));
+        LinearLayout body=Design.page(this,false,null,null);RecordUi.header(body,ticket==null?"Camera practice":ticket.task.type,cleanupAction(()->returned(RESULT_CANCELED)));
         if(ticket==null||access==null||task==null){Design.text(body,issue.isEmpty()?"This practice request is unavailable. Return and open it again.":issue,15,400,Design.MUTED);Design.fixedAction(body,"Return to routine",this::finish);return;}
-        Design.text(body,ticket.task.type,23,600,Design.INK);Design.space(body,8);
+        Design.text(body,"Routine preview",12,500,Design.MUTED);Design.space(body,8);
         Design.text(body,instruction(),14,400,Design.MUTED);Design.space(body,14);
         FrameLayout panel=new FrameLayout(this);panel.setBackground(Design.shape(this,Design.SOFT,20));panel.setClipToOutline(true);panel.setContentDescription("Routine camera preview");
         View preview=task.preview();
         if(preview!=null){if(preview.getParent() instanceof ViewGroup parent)parent.removeView(preview);panel.addView(preview,new FrameLayout.LayoutParams(-1,-1));}
-        else{LinearLayout placeholder=Design.col(this);placeholder.setGravity(Gravity.CENTER);placeholder.addView(new Design.Icon(this,"camera",Design.BROWN),new LinearLayout.LayoutParams(Design.dp(this,58),Design.dp(this,58)));Design.space(placeholder,12);Design.text(placeholder,releasing()?"Camera cleanup pending":task.done()?"Check completed":"Camera stays off until Start",14,500,Design.MUTED).setGravity(Gravity.CENTER);panel.addView(placeholder,new FrameLayout.LayoutParams(-1,-1));}
+        else{LinearLayout placeholder=Design.col(this);placeholder.setGravity(Gravity.CENTER);placeholder.addView(new Design.Icon(this,"camera",Design.BROWN),new LinearLayout.LayoutParams(Design.dp(this,58),Design.dp(this,58)));if(task.state()==PracticeCameraTasks.State.IDLE){Design.space(placeholder,12);Design.text(placeholder,"Camera stays off until Start",14,500,Design.MUTED).setGravity(Gravity.CENTER);}panel.addView(placeholder,new FrameLayout.LayoutParams(-1,-1));}
         body.addView(panel,new LinearLayout.LayoutParams(-1,Design.dp(this,178)));Design.space(body,14);
-        String status=pendingOutcome==RESULT_CANCELED?"Result discarded · releasing camera":task.status();
-        TextView state=Design.text(body,status,16,600,Design.BROWN);state.setContentDescription("Routine camera status");state.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
+        String status=pendingOutcome==RESULT_CANCELED?"Closing camera…":task.status();
+        if(task.state()!=PracticeCameraTasks.State.IDLE){TextView state=Design.text(body,status,16,600,Design.BROWN);state.setContentDescription("Routine camera status");state.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);}
         String detail=!issue.isEmpty()?issue:task.issue();if(!detail.isEmpty()){Design.space(body,8);Design.text(body,detail,13,500,Design.BROWN);}
         PracticeCameraAccess.Permission permission=permission();boolean waiting=releasing()||ticket.cleanupPending()&&!task.active();
         if(!task.active()&&!waiting&&!task.done()){String reason=readiness();if(!reason.isEmpty()){Design.space(body,8);Design.text(body,reason,13,400,Design.MUTED);}}
-        Design.space(body,8);Design.text(body,"Practice only · no camera image is saved.",12,400,Design.MUTED);
+        Design.space(body,8);Design.text(body,"Images aren’t saved.",12,400,Design.MUTED);
         Button alternative=Design.button(body,"Use Math instead",false,action(()->returned(PracticeChildTicket.FALLBACK)));
         enabled(alternative,!waiting&&!task.done()&&pendingOutcome==Integer.MIN_VALUE);
         LinearLayout footer=RecordUi.footer(body);footer.setBackgroundColor(Design.CREAM);
-        if(waiting){Design.button(footer,"Retry camera cleanup",true,cleanupAction(()->{ticket.retryCleanup();update();render();}));}
+        if(waiting){Design.button(footer,"Close camera",true,cleanupAction(()->{ticket.retryCleanup();update();render();}));}
         else if(task.active()){Design.button(footer,"Stop camera",true,cleanupAction(()->{ticket.suspendCapture(this);task.pause(this);issue="Camera stopped. Tap Start for a new attempt.";render();}));}
         else if(!task.done()&&pendingOutcome==Integer.MIN_VALUE){
             if(permission==PracticeCameraAccess.Permission.NEEDED||permission==PracticeCameraAccess.Permission.SETTINGS)Design.button(footer,permission==PracticeCameraAccess.Permission.NEEDED?"Allow camera":"Open camera settings",false,action(this::requestAccess));
@@ -77,7 +77,7 @@ public final class RoutineCameraPracticeActivity extends ComponentActivity {
         case "Object recognition"->"Keep "+ticket.task.objectTarget.label()+" centered. This is an experimental object estimate.";
         default->"Tap Start when ready.";
     };}
-    private void requestAccess(){if(!visible())return;try{accessReturn=true;access.request(ticket.task.type);asked=true;issue="Access requested. Tap Start when ready.";}catch(RuntimeException unavailable){issue="Camera access could not open. Retry or use Math.";}if(resumed&&hasWindowFocus())render();}
+    private void requestAccess(){if(!visible())return;try{accessReturn=true;access.request(ticket.task.type);asked=true;issue="";}catch(RuntimeException unavailable){issue="Camera access could not open. Retry or use Math.";}if(resumed&&hasWindowFocus())render();}
     private void changed(){if(resumed&&hasWindowFocus()&&!updating)update();}
     private void update(){
         if(!visible()||task==null||updating)return;updating=true;
@@ -105,11 +105,11 @@ public final class RoutineCameraPracticeActivity extends ComponentActivity {
     }
     private void schedule(){main.removeCallbacks(watch);if(resumed&&!returning)main.postDelayed(watch,100);}
     private final Runnable watch=new Runnable(){public void run(){if(!resumed||returning)return;update();schedule();}};
-    @Override protected void onResume(){super.onResume();resumed=true;if(accessReturn){accessReturn=false;issue="Access checked. Tap Start when ready.";}if(hasWindowFocus()){update();render();}schedule();}
+    @Override protected void onResume(){super.onResume();resumed=true;if(accessReturn)accessReturn=false;if(hasWindowFocus()){update();render();}schedule();}
     private void pauseCapture(){if(ticket!=null)ticket.suspendCapture(this);if(task!=null)task.pause(this);}
     @Override protected void onPause(){resumed=false;main.removeCallbacksAndMessages(null);pauseCapture();super.onPause();}
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){RecordUi.lightBars(this);if(resumed){update();render();}}else pauseCapture();}
     @Override protected void onSaveInstanceState(Bundle saved){super.onSaveInstanceState(saved);saved.putBoolean("cameraAsked",asked);saved.putBoolean("accessReturn",accessReturn);saved.putInt("pendingOutcome",pendingOutcome);}
     @Override protected void onDestroy(){main.removeCallbacksAndMessages(null);pauseCapture();if(task!=null)task.detach(this);super.onDestroy();}
-    @Override public void onRequestPermissionsResult(int request,String[] permissions,int[] grants){super.onRequestPermissionsResult(request,permissions,grants);if(request==PracticeCameraAccess.REQUEST){issue="Access checked. Tap Start when ready.";if(resumed&&hasWindowFocus())render();}}
+    @Override public void onRequestPermissionsResult(int request,String[] permissions,int[] grants){super.onRequestPermissionsResult(request,permissions,grants);if(request==PracticeCameraAccess.REQUEST){issue="";if(resumed&&hasWindowFocus())render();}}
 }
