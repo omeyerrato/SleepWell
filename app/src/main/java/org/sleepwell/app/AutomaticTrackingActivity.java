@@ -65,10 +65,10 @@ public final class AutomaticTrackingActivity extends Activity {
         error=Design.text(footer,errorCopy.isEmpty()?conditionsError:errorCopy,13,500,0xffa93919);error.setVisibility(error.getText().length()==0?View.GONE:View.VISIBLE);
         if(permissionRecovery!=0&&permissionMissing(permissionRecovery))Design.button(footer,"Open app settings",false,this::openPermissionSettings);
         if(page.equals("home")){
-            Design.text(footer,runtimePhase.equals("ARMED")?"Save changes future choices; the active wait continues.":!runtimePhase.isEmpty()?"Save keeps choices. Manage the current session in Tracking.":"Save keeps choices. Arm tonight starts one bounded wait.",12,400,Design.MUTED);
+            Design.text(footer,runtimePhase.equals("ARMED")?"Tonight is already armed. Save applies next time.":!runtimePhase.isEmpty()?"Manage your current session in Tracking.":"Save for later, or arm these settings for tonight.",12,400,Design.MUTED);
             if(mode==AutomaticSleep.Mode.MANUAL)Design.button(footer,"Save settings",true,this::saveAndClose);
             else{LinearLayout actions=Design.row(this),save=Design.col(this),arm=Design.col(this);LinearLayout.LayoutParams left=new LinearLayout.LayoutParams(0,-2,1);left.rightMargin=Design.dp(this,5);actions.addView(save,left);LinearLayout.LayoutParams right=new LinearLayout.LayoutParams(0,-2,1);right.leftMargin=Design.dp(this,5);actions.addView(arm,right);footer.addView(actions);Design.button(save,"Save settings",true,this::saveAndClose);Button start=Design.button(arm,"Arm tonight",false,this::arm);RecordUi.enabled(start,runtimePhase.isEmpty()&&!permissionPending);}
-        }else{Design.text(footer,"Changes stay in this draft until Save or Arm tonight.",12,400,Design.MUTED);Design.button(footer,"Done",true,this::back);}
+        }else{Design.text(footer,"Save or Arm tonight on the previous screen to apply.",12,400,Design.MUTED);Design.button(footer,"Done",true,this::back);}
         ScrollView owned=currentScroll;int position=positions.getInt(page);owned.post(()->{if(currentScroll==owned)owned.scrollTo(0,position);});
     }
     private void saveAndClose(){if(save()){setResult(RESULT_OK);finish();}}
@@ -81,8 +81,8 @@ public final class AutomaticTrackingActivity extends Activity {
         option(AutomaticSleep.Mode.STILLNESS,"After settling down","15 min still, with the screen off. An estimate.",null);
         Design.space(body,6);Design.line(body);
         menu("calendar","Source schedule",mode==AutomaticSleep.Mode.MANUAL?"Manual start":mode==AutomaticSleep.Mode.BEDTIME?"Sleep-plan bedtime":mode==AutomaticSleep.Mode.SMART_WINDOW?"Next enabled alarm’s wake window":"Stillness and screen off",mode==AutomaticSleep.Mode.BEDTIME?Design.clock(this,SleepPlans.load(this).bedtime):null,()->openPage("source"));
-        menu("plug","Start conditions","For a wait you explicitly arm",!conditionsError.isEmpty()?"Review settings":conditions.charging?"Charging":conditions.screenOff||mode==AutomaticSleep.Mode.STILLNESS?"Screen off":"No extra wait",()->openPage("conditions"));
-        menu("shield","Activity access","Only optional Google estimates need it",!googleSleep||mode!=AutomaticSleep.Mode.STILLNESS?"Not required":activityAllowed()?"Allowed":"Needed",()->openPage("access"));
+        menu("plug","Start conditions","Charging and screen-off requirements",!conditionsError.isEmpty()?"Review settings":conditions.charging?"Charging":conditions.screenOff||mode==AutomaticSleep.Mode.STILLNESS?"Screen off":"None",()->openPage("conditions"));
+        menu("shield","Activity access","For optional Google sleep estimates",!googleSleep||mode!=AutomaticSleep.Mode.STILLNESS?"Not required":activityAllowed()?"Allowed":"Needed",()->openPage("access"));
     }
     private void option(AutomaticSleep.Mode choice,String title,String help,String value){int index=body.getChildCount();TrackingOptionsUi.choice(body,title,help,value,mode==choice,()->{mode=choice;refresh();});LinearLayout row=(LinearLayout)body.getChildAt(index);Design.pad(row,12,8);row.setMinimumHeight(Design.dp(this,64));}
     private void menu(String icon,String title,String detail,String value,Runnable open){int index=body.getChildCount();TrackingOptionsUi.menu(body,icon,title,detail,value,open);LinearLayout row=(LinearLayout)body.getChildAt(index);Design.pad(row,0,8);row.setMinimumHeight(Design.dp(this,56));}
@@ -100,7 +100,7 @@ public final class AutomaticTrackingActivity extends Activity {
         menu("file","Missing-night estimate","Review phone activity before saving",null,()->startActivity(RecordUi.intent(this,MissedNightActivity.class)));
         String old=owner.preferences(this).getString("automaticResult","");if(runtimePhase.isEmpty()&&owner.preferences(this).getBoolean("automaticArmed",false))old="The previous wait stopped. Arm again to resume automatic starts.";
         RecordUi.heading(body,"Last automatic start");Design.text(body,old.isEmpty()?"No previous automatic-start result is saved.":old,13,400,Design.MUTED);
-        RecordUi.heading(body,"Save and Arm tonight");Design.text(body,"Save stores choices for a later arm. Arm tonight saves these choices and starts one bounded wait. Neither action edits an already active wait. Open Tracking to review or cancel that wait.",13,400,Design.MUTED);
+        Design.space(body,12);menu("info","About Save and Arm tonight",null,null,()->SleepPicker.message(this,"Save and Arm tonight","Save stores these choices for later. Arm tonight saves them and waits for your selected start condition for up to four hours. Repeating schedules are separate. An already active wait keeps its original settings; open Tracking to review or cancel it."));
     }
     private boolean activityAllowed(){return checkSelfPermission(Manifest.permission.ACTIVITY_RECOGNITION)==PackageManager.PERMISSION_GRANTED;}
     private void accessPage(){

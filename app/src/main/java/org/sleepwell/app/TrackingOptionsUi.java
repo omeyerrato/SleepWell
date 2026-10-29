@@ -23,7 +23,7 @@ final class TrackingOptionsUi {
         if(value!=null){TextView text=Design.text(c,value,14,600,Design.INK);LinearLayout.LayoutParams vp=new LinearLayout.LayoutParams(-2,-2);vp.leftMargin=Design.dp(c,8);row.addView(text,vp);}
         row.setFocusable(true);row.setContentDescription(title+". "+detail+(value==null?"":". "+value));SleepPicker.radio(row,selected);row.setOnClickListener(v->{if(!selected)InteractionFeedback.selection(v);choose.run();});body.addView(row,new LinearLayout.LayoutParams(-1,-2));
     }
-    static void context(LinearLayout body,String parent){Design.text(body,parent+" / Settings",12,500,Design.MUTED);Design.space(body,16);}
+    static void context(LinearLayout body,String parent){Design.text(body,parent,12,500,Design.MUTED);Design.space(body,12);}
     private static final class Radio extends View {
         final boolean checked;final Paint paint=new Paint(Paint.ANTI_ALIAS_FLAG);
         Radio(Context c,boolean checked){super(c);this.checked=checked;setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);}
