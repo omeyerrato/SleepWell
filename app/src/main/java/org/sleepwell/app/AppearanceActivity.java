@@ -1,7 +1,8 @@
 package org.sleepwell.app;
 
 import android.app.*;
-import android.content.res.ColorStateList;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.*;
 import android.view.accessibility.AccessibilityNodeInfo;
@@ -10,7 +11,7 @@ import android.widget.*;
 /** Board 12: a draft with an explicit Save action; Back cancels every unsaved change. */
 public final class AppearanceActivity extends Activity {
     private boolean automatic,motion,contrast;private int theme,size;
-    private LinearLayout[] choices;private RadioButton[] radios;private TextView themeHelp,sizeValue;private Dialog picker,options;private String optionsPage="menu";private Bundle restoredPicker;private AppearanceLightCard lightCard;
+    private LinearLayout[] choices;private ThemeMark[] radios;private TextView themeHelp,sizeValue;private Dialog picker,options;private String optionsPage="menu";private Bundle restoredPicker;private AppearanceLightCard lightCard;
     @Override public void onCreate(Bundle saved){super.onCreate(saved);
         if(getIntent().getBooleanExtra("visualReview",false))getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         automatic=saved==null?Appearance.automatic(this):saved.getBoolean("auto");
@@ -27,11 +28,11 @@ public final class AppearanceActivity extends Activity {
         Design.text(body,"Customize how SleepWell looks and feels.",14,400,Design.MUTED);Design.space(body,6);
         preference(body,"sun","Time of day","Colors follow your local clock.",automatic,on->{automatic=on;updateSelection();});Design.line(body);
         LinearLayout intro=Design.row(this);intro.setMinimumHeight(Design.dp(this,40));LinearLayout.LayoutParams paletteSpace=new LinearLayout.LayoutParams(Design.dp(this,26),Design.dp(this,26));paletteSpace.rightMargin=Design.dp(this,18);intro.addView(new Design.Icon(this,"palette",Design.INK),paletteSpace);LinearLayout themeCopy=Design.col(this);Design.text(themeCopy,"App theme",15,500,Design.INK);Design.space(themeCopy,4);themeHelp=Design.text(themeCopy,"Preview the look for different times.",11,400,Design.MUTED);intro.addView(themeCopy,new LinearLayout.LayoutParams(0,-2,1));body.addView(intro);Design.space(body,6);
-        choices=new LinearLayout[3];radios=new RadioButton[3];LinearLayout tiles=Design.row(this);tiles.setGravity(Gravity.TOP);body.addView(tiles);
+        choices=new LinearLayout[3];radios=new ThemeMark[3];LinearLayout tiles=Design.row(this);tiles.setGravity(Gravity.TOP);body.addView(tiles);
         for(int n=0;n<3;n++){final int index=n;LinearLayout tile=Design.col(this);tile.setGravity(Gravity.CENTER);choices[n]=tile;
             ThemeScene scene=new ThemeScene(this,n);scene.setBackground(Design.shape(this,Design.SOFT,12));scene.setClipToOutline(true);tile.addView(scene,new LinearLayout.LayoutParams(-1,Design.dp(this,92)));Design.space(tile,4);
             TextView label=Design.text(this,AppearancePolicy.THEMES[n],12,500,Design.INK);label.setGravity(Gravity.CENTER);tile.addView(label);
-            RadioButton radio=new RadioButton(this);radio.setButtonTintList(ColorStateList.valueOf(Appearance.contrast(this)?Design.BROWN:Design.VIOLET));radio.setGravity(Gravity.CENTER);radio.setMinHeight(Design.dp(this,28));radio.setClickable(false);radio.setFocusable(false);radio.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);radios[n]=radio;tile.addView(radio,new LinearLayout.LayoutParams(Design.dp(this,32),Design.dp(this,28)));
+            ThemeMark radio=new ThemeMark(this);radios[n]=radio;tile.addView(radio,new LinearLayout.LayoutParams(Design.dp(this,32),Design.dp(this,28)));
             tile.setContentDescription(AppearancePolicy.THEMES[n]+" theme");tile.setFocusable(true);tile.setClickable(true);tile.setAccessibilityDelegate(new View.AccessibilityDelegate(){@Override public void onInitializeAccessibilityNodeInfo(View v,AccessibilityNodeInfo info){super.onInitializeAccessibilityNodeInfo(v,info);info.setClassName(RadioButton.class.getName());info.setCheckable(true);info.setChecked(selectedTheme()==index);}});
             tile.setOnClickListener(v->{InteractionFeedback.selection(v);theme=index;automatic=false;autoSwitch.setChecked(false);updateSelection();});
             LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,-2,1);if(n>0)lp.leftMargin=Design.dp(this,10);tiles.addView(tile,lp);
@@ -70,6 +71,17 @@ public final class AppearanceActivity extends Activity {
     private int selectedTheme(){java.time.LocalTime now=java.time.LocalTime.now();return AppearancePolicy.phase(automatic,theme,now.getHour()*60+now.getMinute());}
     private void updateSelection(){if(choices==null)return;for(int n=0;n<3;n++){boolean selected=selectedTheme()==n;choices[n].setSelected(selected);radios[n].setChecked(selected);}
         themeHelp.setText("Preview the look for different times.");
+    }
+    /** Decorative ring only; the whole theme tile retains its existing radio semantics and action. */
+    private static final class ThemeMark extends View {
+        private final Paint paint=new Paint(Paint.ANTI_ALIAS_FLAG);private boolean checked;
+        ThemeMark(android.content.Context context){super(context);setClickable(false);setFocusable(false);setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);}
+        void setChecked(boolean value){if(checked!=value){checked=value;invalidate();}}
+        @Override protected void onDraw(Canvas canvas){
+            super.onDraw(canvas);float centerX=getWidth()/2f,centerY=getHeight()/2f,radius=Math.min(Design.dp(getContext(),9),Math.min(getWidth(),getHeight())*.45f);
+            if(checked){paint.setStyle(Paint.Style.FILL);paint.setColor(Appearance.contrast(getContext())?Design.BROWN:Design.VIOLET);canvas.drawCircle(centerX,centerY,radius,paint);paint.setColor(Design.CREAM);canvas.drawCircle(centerX,centerY,radius*.43f,paint);}
+            else{paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(getResources().getDisplayMetrics().density*1.5f);paint.setColor(Appearance.color(getContext(),Design.MUTED));canvas.drawCircle(centerX,centerY,radius-.75f*getResources().getDisplayMetrics().density,paint);}
+        }
     }
     private void textSize(){if(picker!=null&&picker.isShowing())picker.dismiss();picker=SleepPicker.choices(this,"Text size",AppearancePolicy.SIZES,size,which->{size=which;sizeValue.setText(AppearancePolicy.SIZES[size]);});}
     private void appearanceOptions(){
