@@ -64,7 +64,12 @@ final class ChallengePracticeSession {
             }
             ChallengeRoutine selected=configured;String notice="";
             if(configured.randomCount>0){
-                RandomChallenges.Selection sample=RandomChallenges.select(context,configured);
+                RandomChallenges.Selection sample=RandomChallenges.select(configured,task->{
+                    if(RoutineAudioPracticeActivity.TYPES.contains(task.type)&&context instanceof android.app.Activity owner){
+                        try{return PracticeAudioAccess.factory.create(owner).unavailable(task.type);}catch(RuntimeException unreadable){return "Listening readiness could not be checked";}
+                    }
+                    return RandomChallenges.unavailable(context,task);
+                });
                 selected=sample.routine;
                 notice="Example only · "+sample.notice.replace("this occurrence","this preview")+" The next alarm makes its own selection.";
             }
