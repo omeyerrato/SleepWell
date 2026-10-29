@@ -14,15 +14,15 @@ final class SearchAlarmChooser {
         Design.space(body,8);
         Design.text(body,feature.title,20,600,Design.INK);
         Design.space(body,6);
-        Design.text(body,"This alarm only · changes stay in its draft until Save alarm.",13,400,Design.MUTED);
+        Design.text(body,"Choose which alarm to configure.",13,400,Design.MUTED);
         Design.space(body,16);
         if(loading){Design.text(body,"Opening saved alarms…",14,400,Design.MUTED);return;}
         if(!error.isEmpty()){
             Design.text(body,error,14,500,0xffa93919);
             Design.button(body,"Try again",false,reload);return;
         }
-        Design.button(body,"New alarm draft",false,create);
-        Design.text(body,"Starts from your new-alarm defaults. Nothing is saved or scheduled yet.",12,400,Design.MUTED);
+        Design.button(body,"New alarm",false,create);
+        Design.text(body,"New alarms use your saved defaults.",12,400,Design.MUTED);
         if(!defaultsNotice.isEmpty()){Design.space(body,6);Design.text(body,defaultsNotice,12,500,0xffa93919);}
         Design.space(body,20);
         Design.text(body,alarms.isEmpty()?"No saved alarms":"Saved alarms",14,600,Design.INK);
