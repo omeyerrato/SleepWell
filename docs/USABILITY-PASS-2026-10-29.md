@@ -16,11 +16,9 @@ The APK packaged successfully in3m47s and is [published as a development prerele
 - **Audio:** playback keeps a visible Stop action, event tools are grouped, category selections use radio semantics, and the snoring preview has a full-row action. Analysis and playback rules are retained.
 - **Privacy and integrations:** main actions follow the reference grouping. Export/navigation menus use action rows instead of selection-style lists. Appearance routes have matching labels/icons. Health Connect and automation setup use clearer headings and choices. Existing recording-only cleanup and persistent export-receipt source is integrated.
 
-## Delivery limits
-
 ## Command and discovery follow-up
 
-Next package source: `44cb41e7`, version **0.1.10 / 11**. This adds:
+Published package source: `44cb41e7`, version **0.1.10 / 11**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.10-clearer-actions-20261029-44cb41e7), APK packaging3m15s only. This adds:
 
 - Five compact search shortcuts: Extra loud, Automatic tracking, Snoring cues, Sleep goal and Flashlight. They use the existing search entries and retain the alarm chooser for alarm-specific settings.
 - Separate command rows for record/audio tools, playlist reorder/remove, radio station actions, CSV interval details, backup reset and playlist additions. Genuine saved-value selections keep their radio controls.

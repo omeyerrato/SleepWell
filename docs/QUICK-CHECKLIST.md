@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated 29 October 2026. Latest published APK: **0.1.9 / 4e47ab35** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
+Updated 29 October 2026. Latest published APK: **0.1.10 / 44cb41e7** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.9-usability-20261029-4e47ab35) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.10-clearer-actions-20261029-44cb41e7) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -70,6 +70,8 @@ These checks record implemented source and packaging, not new visual or runtime 
 - [x] Produce and publish0.1.9 from `4e47ab35`; APK packaging3m47s. Tests, lint, new screenshots, security and device checks were not run.
 
 ## Still unfinished
+
+Latest delivery is0.1.10 (`44cb41e7`): command/selection distinction, grouped editor tools, task setup labels, popular settings shortcuts and warm app confirmations. APK packaging3m15s; no new verification or physical-device actions. [Changes](USABILITY-PASS-2026-10-29.md#command-and-discovery-follow-up).
 
 - [ ] Reference/interaction/security priorities above.
 - [ ] Finish acceptance of recording-only cleanup and the persistent Last export display. Source is integrated in0.1.9; the previous combined Privacy run failed and new verification is deferred.

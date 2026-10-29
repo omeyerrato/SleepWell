@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 29 October
 
-Latest published **0.1.9 / 4e47ab35** is the usability-first update: clearer Report navigation, alarm/task menus, Settings sections, chart labels, bedtime/travel/audio controls and Privacy/integration organization. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.9-usability-20261029-4e47ab35); [exact source and deferred acceptance](docs/USABILITY-PASS-2026-10-29.md). Packaging only; no new tests, lint, screenshots, security review or device checks ran, as requested. The phone remains on0.1.4; installation is deferred. All36 matching and broader feature/device acceptance remain open.
+Latest published **0.1.10 / 44cb41e7** is the usability-first update: clearer Report navigation, alarm/task menus, Settings sections, chart labels, bedtime/travel/audio controls and Privacy/integration organization. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.10-clearer-actions-20261029-44cb41e7); [exact source and deferred acceptance](docs/USABILITY-PASS-2026-10-29.md). Packaging only; no new tests, lint, screenshots, security review or device checks ran, as requested. The phone remains on0.1.4; installation is deferred. All36 matching and broader feature/device acceptance remain open.
 
 Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped
