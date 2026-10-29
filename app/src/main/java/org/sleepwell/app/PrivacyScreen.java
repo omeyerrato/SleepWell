@@ -15,15 +15,15 @@ final class PrivacyScreen {
     static void render(Activity activity,LinearLayout body,Actions actions){new Binding(activity,body,actions);}
     private static final class Binding implements View.OnAttachStateChangeListener,ViewTreeObserver.OnWindowFocusChangeListener,Runnable{
         final Activity activity;final LinearLayout body;final Actions actions;final Handler main=new Handler(Looper.getMainLooper());
-        final BackupJob backup;final TextView backupStatus;private BackupJob.State shown;private boolean attached;private Dialog options;
+        final BackupJob backup;final TextView backupStatus;final PrivacyStorageSummary summary;private BackupExportReceipt.Read receipt;private BackupJob.State shown;private boolean attached;private Dialog options;
         Binding(Activity activity,LinearLayout body,Actions actions){
-            this.activity=activity;this.body=body;this.actions=actions;Records.Factory records=Records.factory;
+            this.activity=activity;this.body=body;this.actions=actions;Records.Factory records=Records.factory;backup=BackupJobs.get(activity,records);
             LinearLayout navigation=Design.row(activity);navigation.addView(Design.iconButton(activity,"back","Back",actions::back),new LinearLayout.LayoutParams(Design.dp(activity,48),Design.dp(activity,48)));navigation.addView(new View(activity),new LinearLayout.LayoutParams(0,1,1));navigation.addView(Design.iconButton(activity,"more","Privacy options",this::options),new LinearLayout.LayoutParams(Design.dp(activity,48),Design.dp(activity,48)));body.addView(navigation);
             Design.space(body,10);Design.text(body,"Data & privacy",30,700,Design.INK);Design.space(body,6);Design.text(body,"Stored on this phone. Sharing is optional.",14,400,Design.MUTED);Design.space(body,18);
-            new PrivacyStorageSummary(body,records);Design.space(body,6);
+            summary=new PrivacyStorageSummary(body,records,BackupJobs.receipts(activity,records),read->{receipt=read;showBackupStatus();});Design.space(body,6);
             row(body,"file","Audio retention","Automatically remove older recordings.",retentionLabel(activity),actions::retention);Design.line(body);
             favorites(body);Design.line(body);
-            backup=BackupJobs.get(activity,records);Row backupRow=row(body,"upload","Backup","Manual JSON backup",null,actions::backup);backupStatus=backupRow.subtitle;
+            Row backupRow=row(body,"upload","Backup","Last export: Loading…",null,actions::backup);backupStatus=backupRow.subtitle;backupStatus.setContentDescription("Backup export status");
             LinearLayout pair=Design.row(activity);button(pair,"upload","Export backup",true,actions::exportBackup);button(pair,"download","Import backup",false,actions::importBackup);body.addView(pair);Design.space(body,12);Design.line(body);
             row(body,"cloud","Cloud backup",cloudStatus(activity),null,actions::cloud);
             Button audio=Design.button(body,"Export audio library",false,actions::exportAudio);audio.setMinHeight(Design.dp(activity,48));audio.setMinimumHeight(Design.dp(activity,48));audio.setCompoundDrawablesRelativeWithIntrinsicBounds(Icons.resource("upload"),0,0,0);audio.setCompoundDrawablePadding(Design.dp(activity,8));tintButtonIcon(audio,false);LinearLayout.LayoutParams audioLayout=(LinearLayout.LayoutParams)audio.getLayoutParams();audioLayout.topMargin=0;audio.setLayoutParams(audioLayout);
@@ -33,8 +33,17 @@ final class PrivacyScreen {
         }
         @Override public void onViewAttachedToWindow(View view){if(attached)return;attached=true;HistoryErase.inspect(activity,Records.factory);body.getViewTreeObserver().addOnWindowFocusChangeListener(this);run();}
         @Override public void onViewDetachedFromWindow(View view){attached=false;main.removeCallbacks(this);if(body.getViewTreeObserver().isAlive())body.getViewTreeObserver().removeOnWindowFocusChangeListener(this);if(options!=null){options.setOnDismissListener(null);options.dismiss();options=null;}}
-        @Override public void onWindowFocusChanged(boolean focused){main.removeCallbacks(this);if(focused&&attached)run();}
-        @Override public void run(){main.removeCallbacks(this);if(!attached)return;BackupJob.State state=backup.state();if(shown!=state){shown=state;backupStatus.setText(backupStatus(state));}if(activity.hasWindowFocus())main.postDelayed(this,250);}
+        @Override public void onWindowFocusChanged(boolean focused){main.removeCallbacks(this);if(focused&&attached){summary.refreshReceipt();run();}}
+        @Override public void run(){main.removeCallbacks(this);if(!attached)return;BackupJob.State state=backup.state();if(shown!=state){shown=state;summary.refreshReceipt();showBackupStatus();}if(activity.hasWindowFocus())main.postDelayed(this,250);}
+        private void showBackupStatus(){
+            BackupJob.State state=backup.state();String text;
+            if(state.phase==BackupJob.Phase.DONE&&state.receiptStatus==BackupJob.ReceiptStatus.UNAVAILABLE)text=state.receiptWarning;
+            else if(state.phase==BackupJob.Phase.DONE&&state.receiptStatus==BackupJob.ReceiptStatus.PENDING)text=backupStatus(state)+" · recording export receipt…";
+            else if(state.phase!=BackupJob.Phase.IDLE&&!(state.phase==BackupJob.Phase.DONE&&state.kind==BackupJob.Kind.JSON&&state.receiptStatus==BackupJob.ReceiptStatus.SAVED))text=backupStatus(state);
+            else if(receipt==null||state.phase==BackupJob.Phase.DONE&&state.receiptStatus==BackupJob.ReceiptStatus.SAVED&&receipt.status==BackupExportReceipt.Status.NOT_RECORDED)text="Last export: Loading…";
+            else text=switch(receipt.status){case NOT_RECORDED->"Last export: No saved export date";case PENDING->"Last export: Recording receipt…";case UNAVAILABLE->"Last export date unavailable · reopen to retry";case RECORDED->"Last export: "+receipt.format(java.time.ZoneId.systemDefault(),java.util.Locale.getDefault());};
+            backupStatus.setText(text);
+        }
         private void options(){
             if(!attached||options!=null&&options.isShowing())return;
             String[] entries={"Backup contents","Export records as CSV","Restore audio backup","Export research signals","Connected app access","Delete sleep history"};

@@ -25,7 +25,7 @@ final class AudioClearJob {
         }catch(Exception failure){state=new State(false,null,previous.pending,notice(failure));}
     });}
     synchronized void confirm(State reviewed){if(state!=reviewed||reviewed.busy||reviewed.plan==null||reviewed.plan.clips.isEmpty())return;pendingSelection=reviewed.plan;state=new State(true,reviewed.plan,reviewed.pending,"Removing selected local audio…");worker.execute(()->{
-        try(Store store=factory.open(app)){int pending=SoundClips.clearReviewed(app,store,reviewed.plan);if(pending==0)pendingSelection=null;state=new State(false,reviewed.plan,pending,pending>0?pending+" selected recordings need cleanup. Retry when storage is available.":"Selected audio removed. Sleep records, notes, alarms and sound estimates remain.");}
+        try(Store store=factory.open(app)){int pending=SoundClips.clearReviewed(app,store,reviewed.plan);if(pending==0)pendingSelection=null;state=new State(false,reviewed.plan,pending,pending>0?pending+" selected recording"+(pending==1?" needs":"s need")+" cleanup. Retry when storage is available.":"Selected audio removed. Sleep records, notes, alarms and sound estimates remain.");}
         catch(Exception failure){state=new State(false,reviewed.plan,reviewed.pending,notice(failure));}
     });}
     private static String notice(Exception failure){String text=failure.getMessage();return text==null||text.isBlank()?"Audio deletion could not finish. Review and retry.":text;}

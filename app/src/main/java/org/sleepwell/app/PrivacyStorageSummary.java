@@ -22,13 +22,15 @@ final class PrivacyStorageSummary implements View.OnAttachStateChangeListener {
     private final View retry;
     private final Context app;
     private final Records.Factory factory;
+    private final BackupExportReceipt.Scope receipts;
+    private final java.util.function.Consumer<BackupExportReceipt.Read> receiptChanged;
     private final Handler main=new Handler(Looper.getMainLooper());
     private final ExecutorService worker=Executors.newSingleThreadExecutor(r->new Thread(r,"privacy-storage-summary"));
-    private boolean attached,closed,loading;
-    private int generation;
+    private boolean attached,closed,loading,receiptLoading;
+    private int generation,receiptGeneration;
 
-    PrivacyStorageSummary(LinearLayout body,Records.Factory factory){
-        this.factory=factory;Context context=body.getContext();app=context.getApplicationContext();
+    PrivacyStorageSummary(LinearLayout body,Records.Factory factory,BackupExportReceipt.Scope receipts,java.util.function.Consumer<BackupExportReceipt.Read> receiptChanged){
+        this.factory=factory;this.receipts=receipts;this.receiptChanged=receiptChanged;Context context=body.getContext();app=context.getApplicationContext();
         card=Design.col(context);Design.pad(card,16,14);card.setBackground(Design.shape(context,Design.SOFT,18));
         card.setContentDescription("Local storage summary");
         LinearLayout heading=Design.row(context);
@@ -45,10 +47,14 @@ final class PrivacyStorageSummary implements View.OnAttachStateChangeListener {
         body.addView(card);card.addOnAttachStateChangeListener(this);if(card.isAttachedToWindow())onViewAttachedToWindow(card);
     }
 
-    @Override public void onViewAttachedToWindow(View view){if(attached||closed)return;attached=true;load();}
-    @Override public void onViewDetachedFromWindow(View view){attached=false;closed=true;generation++;main.removeCallbacksAndMessages(null);worker.shutdown();}
+    @Override public void onViewAttachedToWindow(View view){if(attached||closed)return;attached=true;load();refreshReceipt();}
+    @Override public void onViewDetachedFromWindow(View view){attached=false;closed=true;generation++;receiptGeneration++;main.removeCallbacksAndMessages(null);worker.shutdown();}
+    void refreshReceipt(){
+        if(!attached||closed||receiptLoading)return;receiptLoading=true;int expected=receiptGeneration;BackupExportReceipt.Scope pinned=receipts;Handler dispatcher=main;WeakReference<PrivacyStorageSummary> owner=new WeakReference<>(this);
+        worker.execute(()->{BackupExportReceipt.Read read=pinned.read(BackupExportReceipt.Kind.JSON);dispatcher.post(()->{PrivacyStorageSummary target=owner.get();if(target!=null&&target.attached&&!target.closed&&target.receiptGeneration==expected){target.receiptLoading=false;target.receiptChanged.accept(read);}});});
+    }
     private void load(){
-        if(!attached||closed||loading)return;loading=true;int expected=++generation;retry.setVisibility(View.GONE);records.setText("Loading…");audio.setText("Loading…");status.setText("Reading local storage…");status.setVisibility(View.VISIBLE);
+        if(!attached||closed||loading)return;loading=true;int expected=++generation;refreshReceipt();retry.setVisibility(View.GONE);records.setText("Loading…");audio.setText("Loading…");status.setText("Reading local storage…");status.setVisibility(View.VISIBLE);
         Context context=app;Records.Factory pinned=factory;Handler dispatcher=main;WeakReference<PrivacyStorageSummary> owner=new WeakReference<>(this);
         worker.execute(()->{Snapshot snapshot;try{snapshot=read(context,pinned);}catch(Exception unavailable){snapshot=new Snapshot(-1,-1,0,"Storage totals unavailable. Try again.");}Snapshot result=snapshot;dispatcher.post(()->{PrivacyStorageSummary target=owner.get();if(target!=null&&target.attached&&!target.closed&&target.generation==expected)target.show(result);});});
     }
