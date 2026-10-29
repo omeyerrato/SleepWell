@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated 29 October 2026. Latest published APK: **0.1.8 / 0b3cb9ed**. Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
+Updated 29 October 2026. Latest published APK: **0.1.9 / 4e47ab35** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.8-reference-layouts-20261029-0b3cb9ed) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.9-usability-20261029-4e47ab35) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -57,6 +57,17 @@ Checked means implemented with the stated supporting evidence. Physical-device a
 - [x] Integrate the Privacy storage/backup composition and real loading/error/favorites persistence flow. [12 inspected originals](verification/2026-10-29-privacy-reference/README.md); audio-only bulk deletion and a persistent last-export receipt remain missing.
 - [x] Build and lint next0.1.8 at `0b3cb9ed`: PASS11m43s.
 - [x] Independent package/signature audit and publication passed; exact tag and both uploaded hashes verified. [Evidence](verification/2026-10-29-018-build/README.md).
+
+## Published in 0.1.9 — usability first
+
+These checks record implemented source and packaging, not new visual or runtime acceptance. [Full change scope](USABILITY-PASS-2026-10-29.md).
+
+- [x] Direct Settings routes, named option groups and clearer tracking controls.
+- [x] Night / History / Trends navigation, chart selection labels and sleep-goal presentation.
+- [x] Compact alarm editor, task-category filters, labelled Options and direct Flashlight control.
+- [x] Clearer bedtime app selection, Nap options, Trip plan, audio/event and integration menus.
+- [x] Integrate recording-only cleanup and manual export-receipt source; combined acceptance remains open.
+- [x] Produce and publish0.1.9 from `4e47ab35`; APK packaging3m47s. Tests, lint, new screenshots, security and device checks were not run.
 
 ## Still unfinished
 

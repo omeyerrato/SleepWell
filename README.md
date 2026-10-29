@@ -10,9 +10,9 @@ and [strict visual review](docs/DESIGN-REVIEW.md). The first UI pass was rejecte
 the new root compositions are corrective work, not final acceptance of the 36 screens.
 Wearables and watch companions are excluded from this scope.
 
-## Current development update — 27 October
+## Current development update — 29 October
 
-Latest published **0.1.8 / 0b3cb9ed** improves the Privacy storage/backup layout and Motion sensor artwork/chart/controls. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.8-reference-layouts-20261029-0b3cb9ed); [package audit](docs/verification/2026-10-29-018-build/README.md); [Privacy12 proof](docs/verification/2026-10-29-privacy-reference/README.md); [Motion7 proof](docs/verification/2026-10-29-motion-reference/README.md). The phone remains on 0.1.4; installation is deferred. Audio-only bulk deletion, a durable manual Last export receipt and broader design/security/hardware work remain unfinished.
+Latest published **0.1.9 / 4e47ab35** is the usability-first update: clearer Report navigation, alarm/task menus, Settings sections, chart labels, bedtime/travel/audio controls and Privacy/integration organization. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.9-usability-20261029-4e47ab35); [exact source and deferred acceptance](docs/USABILITY-PASS-2026-10-29.md). Packaging only; no new tests, lint, screenshots, security review or device checks ran, as requested. The phone remains on0.1.4; installation is deferred. All36 matching and broader feature/device acceptance remain open.
 
 Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped

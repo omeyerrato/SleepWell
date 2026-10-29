@@ -4,6 +4,8 @@ Current instruction: make the app usable first. New tests, lint, screenshot veri
 
 Three implementation agents worked in separate worktrees. The main checkout integrated their changes with the shared Settings and tracking navigation work. Package source: `4e47ab35`, version **0.1.9 / 10**. Packaging runs `:app:assembleDebug` only. The phone remains untouched.
 
+The APK packaged successfully in3m47s and is [published as a development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.9-usability-20261029-4e47ab35). No new acceptance or review jobs ran.
+
 ## Main changes
 
 - **Settings:** the eight primary destinations follow the reference hierarchy. Sound analysis and Bedtime guard open directly. Secondary tracking, bedtime, integration and home-screen options have named sections. Recording threshold has its own page. Alarm readiness contains permission/device setup; the smart wake-up default lives under Alarms.
