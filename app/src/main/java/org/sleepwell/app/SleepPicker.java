@@ -33,6 +33,19 @@ final class SleepPicker {
         scroll.getViewTreeObserver().addOnGlobalLayoutListener(new android.view.ViewTreeObserver.OnGlobalLayoutListener(){public void onGlobalLayout(){scroll.getViewTreeObserver().removeOnGlobalLayoutListener(this);int centered=selectedRow[0]==null?0:selectedRow[0].getTop()-(scroll.getHeight()-selectedRow[0].getHeight())/2;scroll.scrollTo(0,dialog.restoredScroll!=null?dialog.restoredScroll:Math.max(0,centered));}});
         dialog.setContentView(root);show(a,dialog,Math.min(620,150+labels.length*58));return dialog;
     }
+    static StateDialog actions(Activity a,String title,String[] labels,String[] icons,IntConsumer choose){
+        StateDialog dialog=new StateDialog(a,"choice",title);dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        LinearLayout root=Design.col(a);Design.pad(root,20,20);root.setBackground(Design.shape(a,Design.CREAM,24));Design.text(root,title,22,600,Design.INK);Design.space(root,12);
+        ScrollView scroll=new ScrollView(a);dialog.scroll=scroll;scroll.setContentDescription("Actions for "+title);scroll.setVerticalScrollBarEnabled(false);LinearLayout options=Design.col(a);scroll.addView(options);
+        for(int index=0;index<labels.length;index++){
+            int selected=index;LinearLayout row=Design.row(a);Design.pad(row,12,12);row.setMinimumHeight(Design.dp(a,56));row.setBackground(Design.touch(a,Color.TRANSPARENT,12));
+            if(icons!=null&&index<icons.length&&icons[index]!=null){LinearLayout.LayoutParams glyph=new LinearLayout.LayoutParams(Design.dp(a,23),Design.dp(a,23));glyph.rightMargin=Design.dp(a,14);row.addView(new Design.Icon(a,icons[index],Design.BROWN),glyph);}
+            row.addView(Design.text(a,labels[index],16,500,Design.INK),new LinearLayout.LayoutParams(0,-2,1));row.setContentDescription(labels[index]);row.setFocusable(true);
+            row.setAccessibilityDelegate(new View.AccessibilityDelegate(){@Override public void onInitializeAccessibilityNodeInfo(View host,android.view.accessibility.AccessibilityNodeInfo info){super.onInitializeAccessibilityNodeInfo(host,info);info.setClassName(Button.class.getName());}});
+            row.setOnClickListener(v->{InteractionFeedback.action(v);dialog.dismiss();choose.accept(selected);});options.addView(row,new LinearLayout.LayoutParams(-1,-2));if(index+1<labels.length)Design.line(options);
+        }
+        root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));Design.button(root,"Cancel",false,dialog::dismiss);dialog.setContentView(root);show(a,dialog,Math.min(620,150+labels.length*57));return dialog;
+    }
     static Dialog time(Activity a,String title,int minuteOfDay,IntConsumer choose){return time(a,title,minuteOfDay,choose,null,null,"Use time");}
     static Dialog time(Activity a,String title,int minuteOfDay,IntConsumer choose,java.util.function.IntFunction<String> validate,String detail,String confirm){
         StateDialog dialog=new StateDialog(a,"time",title);dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
