@@ -33,6 +33,8 @@ parser.add_argument("--scope", choices=(
     'challenge-selection',
     'routine-preview',
     'routine-motion',
+    'routine-walk-cleanup',
+    'routine-audio',
     'tonight',
     'tonight-composition',
     'appearance',
@@ -361,6 +363,12 @@ elif args.scope == "routine-preview":
     tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
 elif args.scope == "routine-motion":
     tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
+elif args.scope == "routine-walk-cleanup":
+    tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
+    metadata["routine_slice"] = "walk-cleanup"
+elif args.scope == "routine-audio":
+    tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
+    metadata["routine_slice"] = "audio"
 elif args.scope == "math-owner":
     tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
 elif args.scope == "challenge-routine":
@@ -461,6 +469,8 @@ method_counts.update({"PowerNapNativeTest": 3})
 method_counts["InteractionSecurityNativeTest"] = 2
 for test in tests:
     extra = []
+    if args.scope in ("routine-walk-cleanup", "routine-audio"):
+        extra += ["-e", "routineSlice", "walk-cleanup" if args.scope == "routine-walk-cleanup" else "audio"]
     if test == "SoundImportReopenTest":
         if "SoundImportPickerTest" in failures:
             failures.append(test + " skipped: picker prerequisite failed")
@@ -538,6 +548,8 @@ if args.scope != "full":
         "challenge-selection": ['routine-legacy.png', 'routine-catalog-empty.png', 'routine-catalog-search.png', 'routine-task-about.png', 'routine-task-values.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png'],
         "routine-preview": ['routine-legacy.png', 'routine-catalog-empty.png', 'routine-catalog-search.png', 'routine-task-about.png', 'routine-task-values.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png', 'routine-preview-math.png', 'routine-preview-math-round2.png', 'routine-preview-memory.png', 'routine-preview-memory-recreated.png', 'routine-preview-sequence.png', 'routine-preview-sequence-recreated.png', 'routine-preview-retype.png', 'routine-preview-counting.png', 'routine-preview-flags.png', 'routine-preview-mirror.png', 'routine-preview-journal-invalid.png', 'routine-preview-journal-recreated.png', 'routine-preview-completed.png', 'routine-preview-search.png', 'routine-preview-type-code.png', 'routine-preview-jumping.png', 'routine-preview-second-completed.png', 'routine-preview-random.png', 'routine-preview-random-recreated.png', 'routine-preview-unsupported.png'],
         "routine-motion": ['routine-legacy.png', 'routine-catalog-empty.png', 'routine-catalog-search.png', 'routine-task-about.png', 'routine-task-values.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png', 'routine-preview-math.png', 'routine-preview-math-round2.png', 'routine-preview-memory.png', 'routine-preview-memory-recreated.png', 'routine-preview-sequence.png', 'routine-preview-sequence-recreated.png', 'routine-preview-retype.png', 'routine-preview-counting.png', 'routine-preview-flags.png', 'routine-preview-mirror.png', 'routine-preview-journal-invalid.png', 'routine-preview-journal-recreated.png', 'routine-preview-completed.png', 'routine-preview-search.png', 'routine-preview-type-code.png', 'routine-preview-jumping.png', 'routine-preview-second-completed.png', 'routine-preview-random.png', 'routine-preview-random-recreated.png', 'routine-preview-unsupported.png', 'routine-motion-tilt-idle.png', 'routine-motion-tilt-calibrated.png', 'routine-motion-tilt-recreated.png', 'routine-motion-light-idle.png', 'routine-motion-light-hold.png', 'routine-motion-light-recreated.png', 'routine-motion-spin-idle.png', 'routine-motion-spin-progress.png', 'routine-motion-shake-idle.png', 'routine-motion-shake-recreated.png', 'routine-motion-walk-access.png', 'routine-motion-walk-idle.png', 'routine-motion-walk-progress.png', 'routine-motion-walk-recreated.png', 'routine-motion-nfc-idle.png', 'routine-motion-nfc-wrong.png', 'routine-motion-nfc-recreated.png', 'routine-motion-cleanup-error.png', 'routine-motion-fallback.png', 'routine-motion-completed.png'],
+        "routine-walk-cleanup": ['routine-motion-walk-idle.png', 'routine-motion-walk-recreated.png', 'routine-motion-walk-cleanup-blocked.png', 'routine-motion-walk-cleanup-retried.png'],
+        "routine-audio": ['routine-audio-parent.png', 'routine-audio-math.png', 'routine-audio-memory-recreated.png', 'routine-audio-permission.png', 'routine-audio-speech-idle.png', 'routine-audio-speech-progress.png', 'routine-audio-speech-recreated.png', 'routine-audio-laughter-idle.png', 'routine-audio-laughter-progress.png', 'routine-audio-cleanup-error.png', 'routine-audio-cleanup-recreated.png', 'routine-audio-loud-baseline.png', 'routine-audio-loud-progress.png', 'routine-audio-note-idle.png', 'routine-audio-note-progress.png', 'routine-audio-note-recreated.png', 'routine-audio-phrase-idle.png', 'routine-audio-phrase-wrong.png', 'routine-audio-phrase-recreated.png', 'routine-audio-phrase-round2.png', 'routine-audio-fallback.png', 'routine-audio-motion-return.png', 'routine-audio-completed.png', 'routine-audio-random.png', 'routine-audio-random-recreated.png', 'routine-audio-random-completed.png'],
         "math-owner": ['routine-legacy.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png'],
         "challenge-routine": ROUTINE_FRAMES,
         "travel-ui": TRAVEL_UI_FRAMES,

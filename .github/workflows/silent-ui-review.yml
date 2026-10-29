@@ -21,6 +21,8 @@ on:
           - challenge-selection
           - routine-preview
           - routine-motion
+          - routine-walk-cleanup
+          - routine-audio
           - tonight
           - tonight-composition
           - appearance
