@@ -9,8 +9,21 @@ import java.util.concurrent.*;
 final class BackupJobs {
     private static final Map<Records.Factory,Entry> entries=new IdentityHashMap<>();
     private static final Handler main=new Handler(Looper.getMainLooper());
-    private static final class Entry {final ExecutorService worker=Executors.newSingleThreadExecutor(r->new Thread(r,"backup-document-worker"));final BackupJob job;Entry(Context context,Records.Factory records){job=new BackupJob(BackupDocuments.factory.create(context.getApplicationContext(),records),worker,main::post);}}
+    private static final class Entry {
+        final ExecutorService worker=Executors.newSingleThreadExecutor(r->new Thread(r,"backup-document-worker"));final BackupJob job;final BackupExportReceipt.Scope receipts;
+        Entry(Context context,Records.Factory records){
+            receipts=new BackupExportReceipt.Scope(context,BackupExportReceipt.factory,BackupExportReceipt.clock);
+            job=new BackupJob(BackupDocuments.factory.create(context.getApplicationContext(),records),worker,main::post,(kind,result)->{
+                BackupExportReceipt.Kind receiptKind=kind==BackupJob.Kind.JSON?BackupExportReceipt.Kind.JSON:BackupExportReceipt.Kind.CSV;
+                long completedAt=receipts.completedAt();receipts.pending(receiptKind);
+                try{worker.execute(()->result.accept(receipts.record(receiptKind,completedAt)));}
+                catch(RuntimeException unavailable){receipts.finished(receiptKind,BackupExportReceipt.WARNING);result.accept(BackupExportReceipt.WARNING);}
+            });
+        }
+    }
     static synchronized BackupJob get(Context context,Records.Factory records){Entry entry=entries.get(records);if(entry==null){entry=new Entry(context,records);entries.put(records,entry);}return entry.job;}
+    /** Read on the UI summary's owned worker; this accessor only pins an existing job/storage scope. */
+    static synchronized BackupExportReceipt.Scope receipts(Context context,Records.Factory records){get(context,records);return entries.get(records).receipts;}
     static void drain(Records.Factory records,long timeout)throws Exception{Entry entry;synchronized(BackupJobs.class){entry=entries.get(records);}if(entry!=null)entry.worker.submit(()->{}).get(timeout,TimeUnit.MILLISECONDS);}
     static void forget(Records.Factory records){Entry entry;synchronized(BackupJobs.class){entry=entries.get(records);if(entry!=null&&entry.job.state().occupied)throw new IllegalStateException("Document work remains active.");entries.remove(records);}if(entry!=null)entry.worker.shutdown();}
     private BackupJobs(){}
