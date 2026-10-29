@@ -1,0 +1,72 @@
+{
+  "base": "000458fd2848443264c29ce7e05f94ea500855da",
+  "scope_head": "669cc50f87410b6bc3411432cbd67543e1372592",
+  "app_main_tree": "20d7d443b47f1f7a2dfd5830ef24f793891e9aea",
+  "runtime_and_native_equal_to_root_base": true,
+  "files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java",
+      "sha256": "a582e368e301afe7d2acc83f4b4d4ea70b9229ff2d6dfa86f1e2720147fa327e"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SearchActivity.java",
+      "sha256": "1be4379f6ecd3d55f81ac2e976c3639c8a105d5838f139e4466dcc5d9085fb59"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SearchSettings.java",
+      "sha256": "bbdf4590343dbbc8d44e6c0e7b3edf0b1f9d5e38c7f12f54ef45f12a7b3f3adc"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmEditorSearchUi.java",
+      "sha256": "70d343f4c25868ca5628868296c6a5757e756b033cd9eee55b984d130b26d4b0"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmToneScreen.java",
+      "sha256": "0e2830c1022172f1392ed1dabd34dac36f66d24d234e0d44f1b853bbbf843f5f"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengeTaskUi.java",
+      "sha256": "ada8de594e3a52d0079874b1174cda028519cfce244d8d746a8f598bd7e53aa1"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengeRoutineUi.java",
+      "sha256": "ada04fadb6f142e9b41bb509a599dcd38c797aaaf1838017560e668f837d2e4c"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ChallengeRoutineFlowTest.java",
+      "sha256": "51727bf0aa498ac17cf7a36f5915ba55473ab921f521cd0832df37b36b573056"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/SearchFlowTest.java",
+      "sha256": "79bf0f59854b81aa7bc3ff1db670cab52a877435379461b96aa085ce78aa52cf"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/WakeMathPracticeFixture.java",
+      "sha256": "30f88ade3b98b536636a0e26919f01996d5d0ff9631c23a1893552d67567aa59"
+    }
+  ],
+  "read_only_contracts": [
+    "Search pending options record actual sound/gentle/none independently of initial search feature; owner/current-page/resumed/focus/one-shot gates remain.",
+    "Back/navigation clear obsolete pending options; external draft confirmation and actual Save alarm path remain.",
+    "Challenge taskQuery/taskCatalogScroll/routinePinBefore have distinct saved keys, retained query/catalogue return, About parent task and explicit routine Cancel pin restoration.",
+    "Challenge Save routine updates only alarm draft; task configuration/validators and real Save alarm behavior remain."
+  ],
+  "native_acceptance": "CI40792566584 PASS: Challenge69.905s / Search33.847s;2existingmethods36originals;full_app_review=false",
+  "subsequent_root_named_paths": {
+    "head": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
+    "equal_paths": [
+      "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java",
+      "app/src/main/java/org/sleepwell/app/SearchActivity.java",
+      "app/src/main/java/org/sleepwell/app/SearchSettings.java",
+      "app/src/main/java/org/sleepwell/app/AlarmEditorSearchUi.java",
+      "app/src/main/java/org/sleepwell/app/AlarmToneScreen.java",
+      "app/src/main/java/org/sleepwell/app/ChallengeTaskUi.java",
+      "app/src/main/java/org/sleepwell/app/ChallengeRoutineUi.java",
+      "app/src/androidTest/java/org/sleepwell/app/ChallengeRoutineFlowTest.java",
+      "app/src/androidTest/java/org/sleepwell/app/SearchFlowTest.java",
+      "app/src/androidTest/java/org/sleepwell/app/WakeMathPracticeFixture.java"
+    ],
+    "all_app_equality_claimed": false,
+    "note": "Root subsequently added independent Protection source and version metadata. This confirms only these named editor/Search/Challenge production/native paths; native run remains pinned to669cc50f."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "scope": "editor-usability-integration",
+  "full_app_review": false,
+  "expected_classes": 2,
+  "expected_methods": 2,
+  "class_results": [
+    {
+      "class": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 36,
+  "failures": []
+}

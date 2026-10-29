@@ -1,0 +1,469 @@
+{
+  "run": 40792566584,
+  "head": "669cc50f87410b6bc3411432cbd67543e1372592",
+  "overall_conclusion": "success",
+  "methods": [
+    {
+      "selector": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+      "seconds": 69.905,
+      "passed": true,
+      "images": 18
+    },
+    {
+      "selector": "SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls",
+      "seconds": 33.847,
+      "passed": true,
+      "images": 18
+    }
+  ],
+  "native_originals": 36,
+  "original_artifact_files": 48,
+  "references": [
+    "01-everyday.png: amber Math challenge shell",
+    "04-challenges.png: routine/task configuration",
+    "11-settings-and-integrations.png: Settings hierarchy",
+    "03-sound-and-snooze.png: Sound options",
+    "08-history-and-trends.png: record chooser/history"
+  ],
+  "review": "All36 native originals individually opened; no new core clipping observed. Functional added catalogue, scope and Practice copy remain intentional. This is not full acceptance of36 reference screens.",
+  "system_ui": "Raw routine-system-glyphs.txt records ten routine screenshots with dark clock/connectivity/battery/notification/navigation glyph pixels and zero white glyph pixels in measured bounds. This does not close global transition/SystemUI contrast concerns.",
+  "limits": [
+    "Private fixtures and fake scheduling/audio/Room ports, not actual alarm admission or physical outputs.",
+    "Math Practice is explicitly distinct from real AlarmActivity admission.",
+    "Alternative font/theme/device layouts, physical/protection/model/provider behavior and broader reference acceptance remain open."
+  ],
+  "images": [
+    {
+      "file": "originals/routine-legacy.png",
+      "sha256": "9e33b4e8dcadfc8864f84597fbde6a51ab4da0b1973f76087bddbc34508433b5",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Legacy Math routine and available task rows; complete Cancel/Save footer.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/routine-catalog-empty.png",
+      "sha256": "5f89127722b5e7d36f65b1d47e8147935660b9a11ae690ef997295cb84e61b12",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Actual unmatched task query, clear action and honest empty result.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/routine-catalog-search.png",
+      "sha256": "1f14a719d1ab88eb5eb00792f1f5ef29fb05bde0790074c4d3dee1411be25b16",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Phrase query narrows to Retype and Spoken phrase in their actual categories.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/routine-task-about.png",
+      "sha256": "9bc9dcb760df0b7ec467e05bfb40c5b73fc724c1736c051895d71e534c8260e4",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Spoken phrase About requirements/disclaimer and Back to task fully visible.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/routine-task-values.png",
+      "sha256": "daf02fe9500e2268f16b321ebf31ac6000e42ca9f6a99b87cd0984966b727e2c",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Memory round selection and all six choices; Cancel/Use Memory actions fit.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/routine-ordered.png",
+      "sha256": "a0bec9c5626562698feae0d4f88d7402ed3b9955182922bc078d76e0d814c7d2",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Math/Memory/Retype draft order and available task actions visible.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/routine-reordered.png",
+      "sha256": "3d15d5335315a8450ddd354dfb293ec6c9d0f041922cfe5e6113cca4d73d8a6b",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Actual Math/Retype/Memory reordered draft reflected.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/routine-recreated.png",
+      "sha256": "4abda51a2334a35672826273828501cb2ae4f16950903f47f7ee88ab186cbf78",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Retype three-round draft selection survives recreation; explicit task-2 scope.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/routine-removed.png",
+      "sha256": "fbdd5e4669b2d8edbaa4cb99c7c030d9de290206a04e2bc7475cbee698bb0546",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Two remaining tasks after Memory removal; footer and available tasks fit.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/routine-reopened.png",
+      "sha256": "fbdd5e4669b2d8edbaa4cb99c7c030d9de290206a04e2bc7475cbee698bb0546",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Math two rounds/Retype three rounds retained after Save alarm and reopening.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/challenge-math-initial.png",
+      "sha256": "a436d2a39772645a40b29e31af4d8a6e21b6d8ce4135e742159aaac9b8a8d965",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Explicit private Task preview/Math practice; amber sunrise shell, actual question, cream grid, Check/Done fit.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/challenge-math-selected.png",
+      "sha256": "c7777601a7f5e3be77db99c48bc118ea0b3921c8c5f35ddaa195a1e31c5f29b1",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Choice20 selected without implicit completion; selected contrast clear.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/challenge-math-wrong.png",
+      "sha256": "865c6912643986f727a61cebd6802c9591ca7af6fc814d12ec5674afea81b4d2",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Incorrect choice retained with visible Try again and full actions.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/challenge-math-recreated.png",
+      "sha256": "09953ecd241fe1e25d63e5b6dc278921e090db18bab6a1aeccba65a90411e826",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Same question and correct16 selection retained after recreation.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/challenge-math-completed.png",
+      "sha256": "e4cb2292c607b100693e30f2b468d91931170b07e5844fd17d25baf7af28f116",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Practice completed state remains explicitly preview context.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/challenge-math-typed-wrong.png",
+      "sha256": "5fa1007cb8011a759a91fac3f7eca6157428859815966d48acb72d0759c455f3",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Typed0 for3+3 gives Try again with visible Check/Done.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/challenge-math-typed-recreated.png",
+      "sha256": "f59165fe4ae45763b44d17827943bb32ed410f86e0794eddfa6aed2c1495c3ac",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Same question and typed6 retained after recreation; input guidance visible.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/challenge-math-typed-completed.png",
+      "sha256": "9a0687ab0df417edb9e0e988a9ab66cd577833a9144209c23ea43195dd90dbbb",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Typed practice completion visible; no actual alarm admission claimed.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-empty.png",
+      "sha256": "da713b6812a11d405a43adbe30377241b85fcc410d4befcf008111a8a1d45d64",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Original Search modes, input and honest empty guidance.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-room.png",
+      "sha256": "f9a380d7061d96b8adaed45926f1264e37ede3f58905bde95179f5a49f350e2d",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Actual Room result and breadcrumb; light/optional sound/dimming description.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-no-results.png",
+      "sha256": "a1a2cdb6f166484970761f7c0e1d0c7f672c013fc3c2187596268a76759e5378",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Unmatched query gives No matching results.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-record.png",
+      "sha256": "92f0049188ec787c58ae600e0c7380f7dea6783ecddf67c3869ccae5724e60a3",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Private query returns actual manual record eight-hour duration; long query horizontally scrolls.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-recreated.png",
+      "sha256": "92f0049188ec787c58ae600e0c7380f7dea6783ecddf67c3869ccae5724e60a3",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Same private record/query retained after recreation.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-extra-loud.png",
+      "sha256": "eaebe966ecc6773a3a5f4d70104bc31f0b13529e9340ce17ff31cc29948e9764",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Alarms result says Choose alarm and per-draft scope.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-alarm-choice.png",
+      "sha256": "60fcbe5898bbc4445bb2c71fc58e6081d940fc4def8a55ece9ab58dd7ccdf53b",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Both actual disabled alarm identities and explicit New alarm draft visible.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-chosen-extra-loud.png",
+      "sha256": "76f2db0d05622e949d29703fcba5effa959d3b0403a0f059e0875fb7383a3bfe",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Actual selected second Weekend8:15 identity; Extra loud OFF in Sound options.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-extra-loud-recreated.png",
+      "sha256": "ee19cdcfea817b4a8b07486042fe3118b3e9976f9a92b7c92cd417ab1e4bbedc",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Same second-alarm identity and ON draft restored.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-reopened-extra-loud.png",
+      "sha256": "ee19cdcfea817b4a8b07486042fe3118b3e9976f9a92b7c92cd417ab1e4bbedc",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "ON retained after explicit Save alarm and reopening.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-new-draft.png",
+      "sha256": "cda1e9a18ea39f824f94ff9889faf7fb164d644c0cd52efd832a42d107eb1390",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Actual Gentle options for new7AM draft, Flashlight OFF and scope warning.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-new-draft-recreated.png",
+      "sha256": "8199a28c23254913bbffd52e3771fcf9df7db558089e5c355efc68dd9645aabf",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Flashlight-origin draft restores actual Sound options after navigation, Extra loud ON.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-unsaved-draft.png",
+      "sha256": "3497e4e9e1f9b78287f28f460fde235207deb684fe2360a3b63391cdbb2fc0ef",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Owned Discard alarm changes dialog; Keep editing/Discard and Save alarm warning readable.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-query-restored.png",
+      "sha256": "eaebe966ecc6773a3a5f4d70104bc31f0b13529e9340ce17ff31cc29948e9764",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Extra loud query and Alarms filter restored.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-report-editing.png",
+      "sha256": "96589604e133376735126a16473edbc4eb6a5e3efef9474d7c62b9c72ee64026",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Report > Choose a night > Edit report breadcrumb and full scope description.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-report-history.png",
+      "sha256": "edb7522b3255ceadba592a633f756512421ac972275cccfbf35ed4b39a104001",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Actual private manual eight-hour night and coverage ribbon; no invented measured stages.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-auto-detect.png",
+      "sha256": "3976387f4eef86ed201bebd25d1c566fc4c7aee3c5717f240b412f875333a546",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Actual Auto-detect sleep result/Automatic tracking breadcrumb only; no arming.",
+      "new_core_clipping_observed": false
+    },
+    {
+      "file": "originals/search-feature-protection.png",
+      "sha256": "9a7577fb473402485358c069618fb9fdf49555bb4b6310a67b1f4b96a8c0f1fd",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Global All alarms deterrence scope wraps fully; no platform-enforcement claim.",
+      "new_core_clipping_observed": false
+    }
+  ]
+}
