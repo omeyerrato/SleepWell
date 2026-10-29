@@ -1,0 +1,211 @@
+{
+  "reference": "Board04 middle; Board01 and Board12 support",
+  "run": 40835499904,
+  "all_required_originals_individually_opened": true,
+  "images": [
+    {
+      "file": "originals/qr-code-permission.png",
+      "sha256": "bddf790c8ca50b7acbaf8ba0236110b7bf178820e69257188354545189f8a942",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Code selected; Code type, name, printable action, inactive camera panel, fallback and fixed Save fit. Platform navigation pill is faint/white on cream.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-invalid.png",
+      "sha256": "29425d51732dba90af584bb1f8db1bb041a513626eb303d31d67690b298a3f2d",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Invalid-name error is readable immediately above fixed Save; form, tabs and fallback remain visible.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-denied.png",
+      "sha256": "ade1708fe3584991c52622083deb6eb6d3dc0def6dd0a7b461a50a9284e88cf8",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Denied-camera message wraps cleanly above Save; Bathroom and fallback remain intact.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-access-error.png",
+      "sha256": "4553a99c59b688729eed1e39db3f163d84a29474d5527cfd2a3e05a1cf5162aa",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Settings-open failure fits above Save; editable code form and permission action remain visible.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-scanning.png",
+      "sha256": "659dedfe8af901d5f73d7ac3723755d9be60bd6a415cd755956aa8f8904f225a",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Injected preview reticle and pointing instruction fit; fallback and Save remain visible. No physical camera imagery is claimed.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-camera-error.png",
+      "sha256": "26cdae4137ccb1a99a2cfa310da2edf6177b43858c1f5a3116964c1de33de735",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Camera unavailable error and real Scan action fit; form and fallback remain visible.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-captured.png",
+      "sha256": "ee64a645c5b028aa63c1662c336fabe804b09141079a3f898b53a0e52f54a00b",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Green Code captured state; complete fallback subtitle, Scan/print actions and fixed Save fit.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-fallback.png",
+      "sha256": "e7531f91d936f824e9cd7a91c27e2e1885e16a32aff8b4e0a0be552b0a6c9e05",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Hard, Division and Type answer selected; operator cards have complete borders and fixed Use fits.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-fallback-error.png",
+      "sha256": "bdafd98425efeccca61ad48594d85cb37343f9458df3157dd27e3905d3ac5554",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Last-operator warning fits above Use; Division remains selected and all cards readable.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-recreated.png",
+      "sha256": "644a5c5c24b41a5d63627f2dc85d6afe3df3c1e33080b815fdf06ea9fb692dfd",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Bathroom, captured code and Hard fallback retained after recreation; full form and Save fit.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-routine.png",
+      "sha256": "56382996144ecdb837730fe86cfc59d692c4063f008c4879267195bdaf797091",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Two draft rows Math/QR Bathroom plus available tasks and fixed Cancel/Save routine fit; unchanged pending-save explanation readable.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-reopened.png",
+      "sha256": "644a5c5c24b41a5d63627f2dc85d6afe3df3c1e33080b815fdf06ea9fb692dfd",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Saved Bathroom/captured QR/Hard fallback restored; complete fallback and fixed Save fit.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-unavailable.png",
+      "sha256": "4e46b27f05eb2a56cc6f516a5d71f3bcd50961b80c6235a1302079576b7d1eb8",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Disabled Scan and unavailable-camera message visible alongside retained captured code; full fallback and Save fit.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-types-recreated.png",
+      "sha256": "d5840cb8684d247c87df266aa42cc82f4cf58c5eac5764bc456ed106da19b94f",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Owned Code type dialog retains nonzero scroll and selected Code 39; option and fixed Cancel are complete and readable.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-nfc-main.png",
+      "sha256": "22d71e02d111bb8afc94afc6fb4e6fcc0361635e7d51ce7aa178202514b9c5bb",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "NFC selected, shared scope and saved-tag summary readable; Read and fixed Save fit. Save is disabled by native state assertion.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-nfc-draft.png",
+      "sha256": "8b58b623d890a652362728e281c552897b440ec21879091ef5a78e9b9a03ad9d",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Captured-but-unsaved green status is readable; Read remains clear above fixed Save.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-nfc-draft-recreated.png",
+      "sha256": "8b58b623d890a652362728e281c552897b440ec21879091ef5a78e9b9a03ad9d",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Recreated NFC tab preserves captured-but-unsaved status and complete Read/Save layout.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-nfc-read-error.png",
+      "sha256": "6c915404f2721630a3f2b4de34c3b39405d7d0d29dbbb59fda57a6e113032be4",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Read failure explains retained draft; Retry and Back to code remain complete; no empty-tag claim or Save presented.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-nfc-settings-error.png",
+      "sha256": "7b30bd7cbc4dbafd132774191f43bebfb67a3410663ae06a643d913dd2b57b85",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Off state, settings action, retained captured status and settings error fit above fixed Save.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-nfc-saved.png",
+      "sha256": "3466b2e0802f8fc8a041793e1251af36e33484fbb4d52a33765ae95bc07ca5a1",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Success status survives recreation; shared saved summary, Read and fixed Save remain complete.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-nfc-task-setup.png",
+      "sha256": "8bda575f35ccf1d75274d6545a3d2073931eaa4fe5349260bd9d581869c9addc",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Dedicated NFC heading, empty-tag summary and complete Read, Save, Done actions fit; no QR-result action.",
+      "app_content_clipping_observed": false
+    },
+    {
+      "file": "originals/qr-code-nfc-task-returned.png",
+      "sha256": "e12e799af4eeaab094efa5064e536921a4925a7ddebc0774df9536764dbabcce",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Same NFC task draft shows saved bedside tag; setup route, explanatory text and fixed Cancel/Use NFC fit.",
+      "app_content_clipping_observed": false
+    }
+  ],
+  "limits": [
+    "Configuration on one API36 emulator, 1080x2316 at420dpi; physical camera/NFC behavior excluded.",
+    "Injected camera preview has no bathroom photo; Code label retains supported barcode choice.",
+    "Permission screenshot has faint platform navigation pill; broader SystemUI acceptance remains open.",
+    "No alternate font/theme/device or full36-screen acceptance claimed."
+  ]
+}

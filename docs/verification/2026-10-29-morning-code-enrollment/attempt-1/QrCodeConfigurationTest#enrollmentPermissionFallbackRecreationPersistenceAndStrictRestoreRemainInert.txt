@@ -1,0 +1,50 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.QrCodeConfigurationTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.QrCodeConfigurationTest:
+INSTRUMENTATION_STATUS: test=enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.QrCodeConfigurationTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Actual main-thread action: owned text Code 39
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.QrCodeConfigurationTest.awaitAction(QrCodeConfigurationTest.java:108)
+	at org.sleepwell.app.QrCodeConfigurationTest.textOnOwner(QrCodeConfigurationTest.java:47)
+	at org.sleepwell.app.QrCodeConfigurationTest.codeTypes(QrCodeConfigurationTest.java:49)
+	at org.sleepwell.app.QrCodeConfigurationTest.enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert(QrCodeConfigurationTest.java:112)
+
+INSTRUMENTATION_STATUS: stream=
+Error in enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert(org.sleepwell.app.QrCodeConfigurationTest):
+java.lang.AssertionError: Actual main-thread action: owned text Code 39
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.QrCodeConfigurationTest.awaitAction(QrCodeConfigurationTest.java:108)
+	at org.sleepwell.app.QrCodeConfigurationTest.textOnOwner(QrCodeConfigurationTest.java:47)
+	at org.sleepwell.app.QrCodeConfigurationTest.codeTypes(QrCodeConfigurationTest.java:49)
+	at org.sleepwell.app.QrCodeConfigurationTest.enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert(QrCodeConfigurationTest.java:112)
+
+INSTRUMENTATION_STATUS: test=enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 22.954
+There was 1 failure:
+1) enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert(org.sleepwell.app.QrCodeConfigurationTest)
+java.lang.AssertionError: Actual main-thread action: owned text Code 39
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.QrCodeConfigurationTest.awaitAction(QrCodeConfigurationTest.java:108)
+	at org.sleepwell.app.QrCodeConfigurationTest.textOnOwner(QrCodeConfigurationTest.java:47)
+	at org.sleepwell.app.QrCodeConfigurationTest.codeTypes(QrCodeConfigurationTest.java:49)
+	at org.sleepwell.app.QrCodeConfigurationTest.enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert(QrCodeConfigurationTest.java:112)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

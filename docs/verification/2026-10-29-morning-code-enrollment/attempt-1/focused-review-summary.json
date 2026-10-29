@@ -1,0 +1,38 @@
+{
+  "scope": "morning-code-enrollment",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 22,
+  "failures": [
+    "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert",
+    "qr-code-invalid.png",
+    "qr-code-denied.png",
+    "qr-code-access-error.png",
+    "qr-code-scanning.png",
+    "qr-code-camera-error.png",
+    "qr-code-captured.png",
+    "qr-code-fallback.png",
+    "qr-code-fallback-error.png",
+    "qr-code-recreated.png",
+    "qr-code-routine.png",
+    "qr-code-reopened.png",
+    "qr-code-unavailable.png",
+    "qr-code-types-recreated.png",
+    "qr-code-nfc-main.png",
+    "qr-code-nfc-draft.png",
+    "qr-code-nfc-draft-recreated.png",
+    "qr-code-nfc-read-error.png",
+    "qr-code-nfc-settings-error.png",
+    "qr-code-nfc-saved.png",
+    "qr-code-nfc-task-setup.png",
+    "qr-code-nfc-task-returned.png"
+  ]
+}
