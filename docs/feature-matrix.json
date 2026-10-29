@@ -11,11 +11,13 @@
         "AlarmService.java",
         "AlarmActivity.java",
         "AlarmEditorActivity.java",
-        "AlarmClockUi.java"
+        "AlarmClockUi.java",
+        "AlarmReadinessUi.java",
+        "ReadinessQuietAlarm.java"
       ],
       "validation": "CI 40630084064 at 4e9366d9 PASS 41.023s / 18 originals: actual compact list, direct draft hour/minute controls, full picker, recreation and explicit Save/reopen on private disabled alarms. Evidence: verification/2026-10-28-alarm-clock-interactions/. Named AlarmClockUi/editor/Main control comparison to frozen 08 matches except AlarmEditor footer subtitle copy (source-only, uncaptured). No scheduling, real alarm/output or all-reference acceptance.",
       "status": "implemented",
-      "notes": "Implemented: SQLite alarm configurations, distinct OS PendingIntents.",
+      "notes": "Implemented: SQLite alarm configurations, distinct OS PendingIntents. 0.1.12 adds the explicit readiness quiet-alarm review and scheduling flow: fresh one-question Math/Daybreak request,25% cap, permission/busy/error/request-note states and real-alarm priority. New delivery, interaction and visual verification are deferred; no alarm was executed.",
       "id": "F001",
       "tests": [
         {
