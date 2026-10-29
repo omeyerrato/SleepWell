@@ -56,6 +56,17 @@ Published source **`f11cc1cf`**, version **0.1.13 / 14**. [Development APK](http
 
 No new tests, lint, screenshot verification, security review, device or output actions ran. F042 links the guard source; the full36 acceptance remains open.
 
+## Defaults and data tools — 0.1.14
+
+Published source **`701747b3`**, version **0.1.14 / 15**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.14-defaults-data-20261030-701747b3). APK packaging1m39s only.
+
+- Future-alarm defaults have an actual edit/review/save flow. Template mode omits identity, time, repeat, enable and scheduling controls. It returns behavior values to the parent's explicit Save defaults action; existing alarms remain independent.
+- Backup has two primary actions, Export and Import. Other data tools remain in a named group below.
+- Portable settings selection is concise, with named category/value review cards and details behind About. Apply prerequisites, recovery, status and errors remain visible. Backend and file formats are unchanged.
+- Sound analysis names the next-recording scope and offers the app-settings route when selected microphone features lack access.
+
+No new tests, lint, screenshot verification, security review, device or output actions ran. This records implementation and packaging, not all36 acceptance.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.

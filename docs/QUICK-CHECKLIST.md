@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated 30 October 2026. Latest published APK: **0.1.13 / f11cc1cf** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
+Updated 30 October 2026. Latest published APK: **0.1.14 / 701747b3** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.13-report-bedtime-20261030-f11cc1cf) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.14-defaults-data-20261030-701747b3) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -111,3 +111,10 @@ Appearance theme rings (`6d56b05b`) are included in0.1.11.
 - [ ] Verify real protection, loudness, ramp, sunrise, flashlight and challenges when output testing is authorized.
 - [ ] Verify overnight tracking, sound accuracy, anti-snoring, battery behavior and external integrations.
 - [ ] Install the newer update when the user is ready, preserving existing phone data.
+
+## Published in 0.1.14 — editable defaults and data tools
+
+- [x] Edit and review future-alarm defaults through a template-only flow, then save explicitly.
+- [x] Keep Export/Import primary; group other backup tools and use readable settings-profile review cards.
+- [x] Show next-recording scope and missing microphone access in Sound analysis.
+- [x] Produce and publish0.1.14 (`701747b3`), APK packaging1m39s only. New verification and phone actions remain deferred.
