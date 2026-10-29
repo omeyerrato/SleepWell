@@ -44,6 +44,7 @@ public final class ChallengePracticeActivity extends Activity {
     }
 
     private void render(){
+        if(!resumed||!hasWindowFocus())return;
         closeScreen(true);presentationGeneration++;
         if(session==null){LinearLayout body=Design.page(this,false,null,null);RecordUi.header(body,"Routine preview",action(this::cancel));Design.space(body,16);Design.text(body,issue,15,400,Design.MUTED);Design.fixedAction(body,"Return to routine",action(this::cancel));return;}
         if(!session.pending().isEmpty()){pendingPage();return;}
@@ -62,6 +63,7 @@ public final class ChallengePracticeActivity extends Activity {
         String clock=Design.clock(this,java.time.LocalTime.now().getHour()*60+java.time.LocalTime.now().getMinute());
         LinearLayout card=WakeChallengeUi.card(this,clock,"Routine preview",caption,position.index,session.routine.tasks.size(),action(this::cancel),true);
         Design.text(card,"Practice only · no alarm is running from this preview.",12,400,Design.MUTED);
+        if(!issue.isEmpty())Design.text(card,issue,13,500,Design.BROWN);
         if(!session.selectionNotice.isEmpty())Design.button(card,"Example selection details",false,action(()->SleepPicker.message(this,"This preview selection",session.selectionNotice)));
         try{screen=new ChallengePracticeScreen(this,card,session,checkpoints,()->resumed,this::render,this::openChild);}
         catch(RuntimeException unavailable){
@@ -73,27 +75,30 @@ public final class ChallengePracticeActivity extends Activity {
     }
 
     private void openChild(){
-        if(session==null||!session.pending().isEmpty()||!MotionChallengePracticeActivity.TYPES.contains(session.position().task.type)&&!RoutineAudioPracticeActivity.TYPES.contains(session.position().task.type))return;
+        if(session==null||!session.pending().isEmpty()||!MotionChallengePracticeActivity.TYPES.contains(session.position().task.type)&&!RoutineAudioPracticeActivity.TYPES.contains(session.position().task.type)&&!RoutineCameraPracticeActivity.TYPES.contains(session.position().task.type))return;
         closeScreen(true);
         try{PracticeChildTicket.Ticket child=PracticeChildTicket.issue(session);launchChild(child);}
-        catch(RuntimeException unavailable){try{PracticeChildTicket.abandon(session);}catch(RuntimeException closing){}Ui.toast(this,"The practice step could not open. Retry after cleanup.");render();}
+        catch(RuntimeException unavailable){try{PracticeChildTicket.abandon(session);}catch(RuntimeException closing){}issue="The practice step could not open. Retry after cleanup.";render();}
     }
     private void launchChild(PracticeChildTicket.Ticket child){
         boolean audio=RoutineAudioPracticeActivity.TYPES.contains(child.task.type);
-        startActivityForResult(PracticeChildTicket.intent(this,audio?RoutineAudioPracticeActivity.class:MotionChallengePracticeActivity.class,child),audio?RoutineAudioPracticeActivity.REQUEST:MotionChallengePracticeActivity.REQUEST);
+        boolean camera=RoutineCameraPracticeActivity.TYPES.contains(child.task.type);
+        Class<? extends Activity> target=audio?RoutineAudioPracticeActivity.class:camera?RoutineCameraPracticeActivity.class:MotionChallengePracticeActivity.class;
+        startActivityForResult(PracticeChildTicket.intent(this,target,child),audio?RoutineAudioPracticeActivity.REQUEST:camera?RoutineCameraPracticeActivity.REQUEST:MotionChallengePracticeActivity.REQUEST);
     }
     private void pendingPage(){
         LinearLayout body=Design.page(this,false,null,null);RecordUi.header(body,"Practice step",action(this::cancel));
         Design.text(body,"A private practice step is awaiting its result or cleanup. No task is skipped.",15,400,Design.MUTED);
-        Design.button(body,"Reopen practice step",true,action(()->{PracticeChildTicket.Ticket child=PracticeChildTicket.pending(session);if(child==null){session.abandonChild();render();return;}try{launchChild(child);}catch(RuntimeException unavailable){Ui.toast(this,"The step expired or could not open. Close its capture before retrying.");}}));
-        Design.button(body,"Close practice step and retry",false,action(()->{try{PracticeChildTicket.abandon(session);render();}catch(RuntimeException unavailable){Ui.toast(this,"This practice capture has not confirmed cleanup. Retry cleanup before continuing.");}}));
+        if(!issue.isEmpty())Design.text(body,issue,13,500,Design.BROWN);
+        Design.button(body,"Reopen practice step",true,action(()->{PracticeChildTicket.Ticket child=PracticeChildTicket.pending(session);if(child==null){session.abandonChild();render();return;}try{launchChild(child);}catch(RuntimeException unavailable){issue="The step expired or could not open. Close its capture before retrying.";render();}}));
+        Design.button(body,"Close practice step and retry",false,action(()->{try{PracticeChildTicket.abandon(session);render();}catch(RuntimeException unavailable){issue="This practice capture has not confirmed cleanup. Retry cleanup before continuing.";render();}}));
         Design.fixedAction(body,"Cancel preview",action(this::cancel));
     }
     @Override protected void onActivityResult(int requestCode,int resultCode,Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode!=MotionChallengePracticeActivity.REQUEST&&requestCode!=RoutineAudioPracticeActivity.REQUEST||session==null)return;
+        if(requestCode!=MotionChallengePracticeActivity.REQUEST&&requestCode!=RoutineAudioPracticeActivity.REQUEST&&requestCode!=RoutineCameraPracticeActivity.REQUEST||session==null)return;
         // Authenticated child receipts may precede this parent's onResume or focus handoff.
-        PracticeChildTicket.consume(session,resultCode,data);
+        if(PracticeChildTicket.consume(session,resultCode,data))issue="";
         if(resumed&&hasWindowFocus())render();
     }
     private Runnable action(Runnable work){int expected=presentationGeneration;return ()->{if(Looper.myLooper()!=Looper.getMainLooper()||expected!=presentationGeneration||!resumed||returning||isFinishing()||isDestroyed()||!hasWindowFocus()||!getWindow().getDecorView().isAttachedToWindow())return;work.run();};}
@@ -107,16 +112,16 @@ public final class ChallengePracticeActivity extends Activity {
     }
     private void returned(int result){
         if(returning||isFinishing()||isDestroyed())return;
-        if(session!=null&&!session.pending().isEmpty())try{PracticeChildTicket.abandon(session);}catch(RuntimeException closing){Ui.toast(this,"Close this practice capture before leaving its preview.");return;}
+        if(session!=null&&!session.pending().isEmpty())try{PracticeChildTicket.abandon(session);}catch(RuntimeException closing){issue="Close this practice capture before leaving its preview.";render();return;}
         Bundle state=state();returning=true;if(session!=null)session.invalidate();closeScreen(false);
         if(state!=null)setResult(result,new Intent().putExtra("request",request).putExtra("routine",raw).putExtra("practiceState",state));
         finish();
     }
     private void cancel(){if(Looper.myLooper()==Looper.getMainLooper()&&resumed&&hasWindowFocus())returned(RESULT_CANCELED);}
     @Override public void onBackPressed(){cancel();}
-    @Override protected void onResume(){super.onResume();resumed=true;if(session!=null&&screen==null)render();}
+    @Override protected void onResume(){super.onResume();resumed=true;if(hasWindowFocus()&&screen==null)render();}
     @Override protected void onPause(){closeScreen(true);if(session!=null)session.invalidate();resumed=false;super.onPause();}
     @Override protected void onSaveInstanceState(Bundle saved){super.onSaveInstanceState(saved);Bundle state=state();if(state!=null)saved.putBundle("practiceState",state);}
-    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){RecordUi.lightBars(this);if(resumed&&session!=null&&screen==null)render();}else{closeScreen(true);if(session!=null)session.invalidate();}}
+    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){RecordUi.lightBars(this);if(resumed&&screen==null)render();}else{closeScreen(true);if(session!=null)session.invalidate();}}
     @Override protected void onDestroy(){closeScreen(false);if(session!=null){if(isFinishing())try{PracticeChildTicket.abandon(session);}catch(RuntimeException closing){}session.invalidate();}super.onDestroy();}
 }
