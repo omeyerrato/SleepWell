@@ -1,0 +1,25 @@
+{
+  "scope": "sleep-mixer-reference",
+  "selector": "SoundSettingsFlowTest#silentChoicesRecreateAndReopenWithoutPlayback",
+  "frames": [
+    "sounds-settings-rain.png",
+    "sounds-settings-timer-draft.png",
+    "sounds-settings-timer-recreated.png",
+    "sounds-settings-fade-draft.png",
+    "sounds-settings-fade-recreated.png",
+    "sounds-settings-ocean.png",
+    "sounds-settings-recreated.png",
+    "sounds-settings-reopened.png",
+    "sounds-settings-custom-timer.png",
+    "sounds-settings-custom-fade.png",
+    "sounds-settings-menu.png",
+    "sounds-settings-sources.png",
+    "sounds-settings-playback.png",
+    "sounds-settings-menu-recreated.png"
+  ],
+  "expected_methods": 1,
+  "required_original_images": 14,
+  "native_sounds": false,
+  "audio_imports": false,
+  "full_app_review": false
+}
