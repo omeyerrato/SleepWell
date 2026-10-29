@@ -42,7 +42,7 @@ final class PracticeCameraTasks {
   object=ticket.task.objectTarget==null?null:new ObjectHold(ticket.task.objectTarget);
   light=ticket.task.type.equals("Camera light")?new CameraLightHold(ticket.task.rounds):null;
  }
- State state(){return !active&&!released()?State.RELEASING:state;}String status(){return state()==State.RELEASING?(earned?"Check earned · releasing camera":"Releasing this camera attempt"):status;}String issue(){return issue;}
+ State state(){return !active&&!released()?State.RELEASING:state;}String status(){return state()==State.RELEASING?(earned?"Task passed · finishing…":"Closing camera…"):status;}String issue(){return issue;}
  boolean active(){return active;}
  boolean boundTo(ComponentActivity activity){return activity()==activity;}
  void pause(ComponentActivity activity){if(!boundTo(activity))return;close();}
@@ -57,11 +57,11 @@ final class PracticeCameraTasks {
  private boolean current(int expected){return expected==generation&&current();}
  void start(){
   ComponentActivity activity=activity();if(activity==null||visible==null||!visible.getAsBoolean())return;
-  if(earned){status="This earned result is waiting for its own camera cleanup.";notifyChanged();return;}
-  if(active||!released()){issue="Release this camera attempt before starting another.";notifyChanged();return;}
-  if(!ticket.clean()){issue="Previous practice capture is still releasing.";notifyChanged();return;}
+  if(earned){status="Task passed · finishing…";notifyChanged();return;}
+  if(active||!released()){issue="Close the camera before trying again.";notifyChanged();return;}
+  if(!ticket.clean()){issue="Camera is still closing.";notifyChanged();return;}
   String unavailable=access.unavailable(ticket.task);if(!unavailable.isEmpty()){issue=unavailable;state=State.ERROR;notifyChanged();return;}
-  attempt=ticket.beginCapture(activity,true);if(attempt<0){issue="Another practice owner is active or still releasing.";notifyChanged();return;}
+  attempt=ticket.beginCapture(activity,true);if(attempt<0){issue="Another camera task is still closing.";notifyChanged();return;}
   active=true;closeFailed=false;state=State.RUNNING;issue="";started=access.now();int expected=++generation;
   if(picture!=null)picture.reset();smile.reset();pose.reset();if(object!=null)object.reset();if(light!=null)light.reset();
   try{
@@ -96,7 +96,7 @@ final class PracticeCameraTasks {
     }
     default->throw new IllegalArgumentException("This camera adapter is not available");
    }
-  }catch(RuntimeException|LinkageError failure){close();state=State.ERROR;issue="Camera could not start safely. Retry after cleanup or choose the configured alternative.";}
+  }catch(RuntimeException|LinkageError failure){close();state=State.ERROR;issue="Camera couldn’t start. Try again or use Math.";}
   notifyChanged();
  }
  private void bind(ComponentActivity activity,Runnable close,BooleanSupplier released){
@@ -106,12 +106,12 @@ final class PracticeCameraTasks {
  private void solved(int expected){
   ComponentActivity activity=activity();
   if(!current(expected)||activity==null||!ticket.markEarned(activity,true,attempt))return;
-  earned=true;status="Real check completed · releasing camera";close();state=State.DONE;notifyChanged();
+  earned=true;status="Task passed · finishing…";close();state=State.DONE;notifyChanged();
  }
  private void failed(int expected,String issue){if(!current(expected))return;this.issue=message(issue,"Camera is unavailable. Retry or choose the configured alternative.");close();state=State.ERROR;notifyChanged();}
  private static String message(String issue,String fallback){return issue==null||issue.isBlank()?fallback:issue;}
  void tick(){
-  if(active&&!current()){close();state=State.PAUSED;status="Camera paused after capture ownership changed.";notifyChanged();return;}
+  if(active&&!current()){close();state=State.PAUSED;status="Camera paused. Check access, then tap Start.";notifyChanged();return;}
   if(active&&access.now()-started>=(ticket.task.type.equals("Object recognition")?30000:60000)){close();state=State.PAUSED;status="Attempt ended. Start a new attempt when ready.";notifyChanged();}
  }
  boolean released(){
@@ -121,7 +121,7 @@ final class PracticeCameraTasks {
  }
  void close(){
   active=false;generation++;
-  try{if(close!=null)close.run();closeFailed=false;}catch(RuntimeException|LinkageError failure){closeFailed=true;issue="This camera attempt has not confirmed cleanup.";}
+  try{if(close!=null)close.run();closeFailed=false;}catch(RuntimeException|LinkageError failure){closeFailed=true;issue="Couldn’t finish closing. Try again.";}
   if(!earned&&state==State.RUNNING){state=State.PAUSED;status="Camera paused. Tap Start for a new attempt.";}
  }
  void retry(){close();}
