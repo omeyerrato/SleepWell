@@ -1,0 +1,9 @@
+# First routine preview run — failed
+
+Run 40795096344 at 1a8cb0abc6bc6cc42f3875a00c17e62326b13305 failed the one existing routine method after 95.380 seconds. Both optional output flags were false. Raw artifacts are unchanged in failed-40795096344. Reached images are not a passed-method claim.
+
+The diagnostic screenshot/XML show Counting’s square board occupying 954 pixels. Its Check count action and Cancel preview fall below the viewport. The full exit-bounds assertion correctly failed before routine-preview-counting.png. Counting and subsequent task completion remain unproven. The seven reached practice frames also show clipped progress dots and poor-contrast platform-gray Memory/Sequence buttons. Original eighteen routine/Math frames, seven reached practice frames, diagnostic PNG/XML and raw method/environment/summary are retained.
+
+Correction: preview-only compact header and centered 220dp maximum square Counting board; compact Flag artwork and four real choices in two rows; fixed Cancel footer. Default alarm/standalone puzzle sizing remains unchanged. Shared dot-row bottom gravity DOES change actual default rendered geometry: full measured dots now fit beneath their top margin instead of clipping under center gravity. Default card sizing/content remain unchanged. Shared Cognitive controls now use existing readable SOFT/INK touch backgrounds; revealed and matched Memory states remain distinct, matched cards remain disabled. Rules, earned masks and admission are unchanged. Native capture gates additionally require full Counting action/board, Flag choices/art and all progress-dot bounds.
+
+Only first eleven screen controllers are implemented. Seventeen other adapters and full 28-type preview remain unfinished. Actual AlarmActivity admission, physical outputs and phone behavior were not exercised.
