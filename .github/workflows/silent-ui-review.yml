@@ -45,6 +45,7 @@ on:
           - profile-room-dimming
           - room-settings-search
           - feature-search
+          - editor-usability-integration
           - sensing-travel
           - travel-ui
           - travel-cue-cleanup
