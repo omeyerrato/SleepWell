@@ -20,7 +20,7 @@ final class TrendsChart extends View {
         setFocusable(true);StringBuilder summary=new StringBuilder(bedtime?"Bedtime consistency. ":"Recorded duration. ");for(Point point:points)summary.append(point.date).append(": ").append(point.value==null?"no record":bedtime?bedtimeLabel(point.value):RecordUi.roundedDuration((long)(point.value*3600000))).append(". ");setContentDescription(summary);
     }
     private float d(){return getResources().getDisplayMetrics().density;}
-    private String goalLabel(){return (goal%3600000==0?goal/3600000+" h":RecordUi.duration(goal))+" current goal";}
+    private String goalLabel(){return (goal%3600000==0?goal/3600000+" h":RecordUi.duration(goal))+" goal";}
     private Paint labelMetrics(){labelMeasure.setTypeface(Design.font(getContext(),400));labelMeasure.setTextSize(Design.sp(getContext(),10*Appearance.scale(getContext())));return labelMeasure;}
     private String selectedLabel(){Point point=points.get(selected);return point.value==null?"No record":bedtime?bedtimeLabel(point.value):RecordUi.roundedDuration((long)(point.value*3600000));}
     RectF goalLabelBounds(){if(bedtime)return new RectF();Paint text=labelMetrics();return new RectF(right()-text.measureText(goalLabel()),0,right(),text.descent()-text.ascent());}

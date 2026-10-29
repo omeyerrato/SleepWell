@@ -12,6 +12,7 @@ class RecordChart extends View {
     private final List<ChartSeries.Sample> samples=new ArrayList<>();
     private final java.time.ZoneId zone;private final String metric;private final long start;private long end;private final boolean night;private final android.text.TextPaint paint=new android.text.TextPaint(3);
     private List<ChartSeries.Bar> bars=Collections.emptyList();private int selected=-1;private Long inspectedAt;private double high=.001;private String measurementLabel;private int actualReadings;private final Path column=new Path();
+    private boolean compactLabels;
     private Runnable liveReload,liveRetry;private String liveMessage;private PhoneMotionChartReader.Data liveData;
     RecordChart(Context c,List<JSONObject> epochs,String metric,long start,long end){
         this(c,epochs,metric,start,end,false);
@@ -37,6 +38,7 @@ class RecordChart extends View {
     void liveData(PhoneMotionChartReader.Data data){if(data.start!=start)return;liveData=data;liveMessage=null;liveRetry=null;end=data.end;bars=data.bars;high=data.high;actualReadings=data.readings;describeSeries();selectInspectedTime();if(inspectedAt!=null)describeSelection();invalidate();}
     void liveMessage(String message,Runnable retry){liveData=null;liveMessage=message;liveRetry=retry;bars=Collections.emptyList();selected=-1;setContentDescription(message);invalidate();}
     RecordChart measurement(String label){measurementLabel=label;describeSeries();return this;}
+    RecordChart compactLabels(){compactLabels=true;return this;}
     private String metricName(){return measurementLabel==null?metric:measurementLabel;}
     private void describeSeries(){setContentDescription(metricName()+" chart. "+actualReadings+" actual readings. Missing intervals are blank. Dense bars average contiguous readings. Tap a time or use the forward and backward actions to inspect a value.");}
     static String clock(long time){return java.time.Instant.ofEpochMilli(time).atZone(java.time.ZoneId.systemDefault()).format(java.time.format.DateTimeFormatter.ofPattern("h:mm a",Locale.getDefault()));}
@@ -60,7 +62,7 @@ class RecordChart extends View {
         super.onDraw(canvas);float d=density(),w=getWidth(),h=getHeight(),left=plotLeft(),right=plotRight();
         paint.setTypeface(Design.font(getContext(),400));paint.setTextSize(textSize());paint.setStyle(Paint.Style.FILL);paint.setTextAlign(Paint.Align.LEFT);
         List<ChartTicks.Tick> candidates=ChartTicks.candidates(start,end,zone,clock24(),Locale.getDefault(),5);List<ChartTicks.Placed> ticks=ChartTicks.layout(candidates,start,end,left,right,8*d,paint::measureText);int lines=1;for(ChartTicks.Placed tick:ticks)lines=Math.max(lines,tick.tick.label.split("\n").length);
-        Paint.FontMetrics font=paint.getFontMetrics();float lineHeight=font.descent-font.ascent+2*d,capsule=Math.max(36*d,2*lineHeight+8*d),top=capsule+4*d,bottom=h-Math.max(28*d,lineHeight*lines+10*d);
+        Paint.FontMetrics font=paint.getFontMetrics();float lineHeight=font.descent-font.ascent+2*d,capsule=compactLabels?Math.max(24*d,lineHeight+8*d):Math.max(36*d,2*lineHeight+8*d),top=capsule+4*d,bottom=h-Math.max(28*d,lineHeight*lines+10*d);
         paint.setColor(ink());canvas.drawText("High",0,top+5*d,paint);canvas.drawText("Low",0,bottom,paint);
         paint.setColor(night?0xff62566d:Appearance.contrast(getContext())?0xffa29185:0xffeee6dc);paint.setStrokeWidth(d*.7f);canvas.drawLine(left,bottom,right,bottom,paint);for(ChartTicks.Placed tick:ticks)if(tick.tick.endpoint==0){float grid=x(tick.tick.time);canvas.drawLine(grid,top,grid,bottom,paint);}
         for(int n=0;n<bars.size();n++){
@@ -73,11 +75,12 @@ class RecordChart extends View {
         if(inspectedAt!=null&&liveMessage==null){
             float center=x(inspectedAt);String timeLabel=selected>=0?(bars.get(selected).readings>1?axisTime(bars.get(selected).from)+"–"+axisTime(bars.get(selected).to):axisTime(bars.get(selected).to)):axisTime(inspectedAt);
             String value=selected>=0?valueLabel(bars.get(selected))+(bars.get(selected).readings>1?" avg":""):"No readings";timeLabel=timeLabel.replace('\n',' ');
+            if(compactLabels){timeLabel=timeLabel+" · "+value;value="";}
             float available=Math.max(1,w-24*d);timeLabel=android.text.TextUtils.ellipsize(timeLabel,paint,available,android.text.TextUtils.TruncateAt.END).toString();value=android.text.TextUtils.ellipsize(value,paint,available,android.text.TextUtils.TruncateAt.END).toString();
             float half=Math.min(w/2,Math.max(paint.measureText(timeLabel),paint.measureText(value))/2+10*d),tx=Math.max(half,Math.min(w-half,center));
             paint.setColor(Design.BROWN);paint.setStrokeWidth(d*.7f);
             if(selected>=0){ChartSeries.Bar bar=bars.get(selected);float point=x(bar.from+(bar.to-bar.from)/2),y=(float)(bottom-(bottom-top)*(bar.value/high));y=Math.min(y,bottom-2*d);canvas.drawLine(point,capsule,point,y,paint);canvas.drawCircle(point,y,3*d,paint);}
-            canvas.drawRoundRect(tx-half,0,tx+half,capsule,8*d,8*d,paint);paint.setTextAlign(Paint.Align.CENTER);paint.setColor(Design.CREAM);float first=(capsule-2*lineHeight)/2-font.ascent;canvas.drawText(timeLabel,tx,first,paint);canvas.drawText(value,tx,first+lineHeight,paint);
+            canvas.drawRoundRect(tx-half,0,tx+half,capsule,8*d,8*d,paint);paint.setTextAlign(Paint.Align.CENTER);paint.setColor(Design.CREAM);float first=compactLabels?capsule/2-(font.ascent+font.descent)/2:(capsule-2*lineHeight)/2-font.ascent;canvas.drawText(timeLabel,tx,first,paint);if(!compactLabels)canvas.drawText(value,tx,first+lineHeight,paint);
         }
         if(bars.isEmpty()){paint.setColor(ink());paint.setTextAlign(Paint.Align.CENTER);if(liveMessage==null)canvas.drawText("No readings for this signal",w/2,(top+bottom)/2,paint);else{String[] words=liveMessage.split(" ");String line="";List<String> linesText=new ArrayList<>();for(String word:words){String next=line.isEmpty()?word:line+" "+word;if(!line.isEmpty()&&paint.measureText(next)>Math.max(1,right-left)){linesText.add(line);line=word;}else line=next;}if(!line.isEmpty())linesText.add(line);for(int n=0;n<linesText.size();n++)canvas.drawText(linesText.get(n),(left+right)/2,(top+bottom)/2+(n-(linesText.size()-1)/2f)*lineHeight,paint);}}
         paint.setColor(ink());paint.setTextAlign(Paint.Align.CENTER);for(ChartTicks.Placed tick:ticks){String[] labels=tick.tick.label.split("\n");for(int n=0;n<labels.length;n++)canvas.drawText(labels[n],(float)tick.center,h-7*d-(labels.length-1-n)*lineHeight,paint);}

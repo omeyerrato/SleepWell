@@ -53,10 +53,11 @@ final class GoalChart extends View {
     private float y(double value,float top,float bottom){return (float)(bottom-(bottom-top)*(value-low)/Math.max(1,high-low));}
     private String clock(double minutes){return Design.clock(getContext(),Math.floorMod((int)Math.round(minutes),1440));}
     private String value(double amount){return bedtime?clock(amount):GoalProgress.signed((long)(amount*60000));}
-    @Override protected void onDraw(Canvas c){super.onDraw(c);float d=d(),top=(bedtime?12:26)*d,bottom=getHeight()-32*d;
+    private String tick(double amount){String label=value(amount);return bedtime&&!android.text.format.DateFormat.is24HourFormat(getContext())?label.replace(":00",""):label;}
+    @Override protected void onDraw(Canvas c){super.onDraw(c);float d=d(),top=(bedtime&&selected<0?12:26)*d,bottom=getHeight()-32*d;
         p.setTypeface(Design.font(getContext(),400));p.setTextSize(Design.sp(getContext(),(bedtime?10:9)*Appearance.scale(getContext())));p.setStrokeWidth(.7f*d);p.setTextAlign(Paint.Align.RIGHT);
         if(bedtime){p.setColor(Design.LINE);p.setAlpha(100);for(int n=0;n<dates.size();n++)c.drawLine(x(n),top,x(n),bottom,p);p.setAlpha(255);p.setColor(Design.LINE);c.drawLine(left(),top,left(),bottom,p);c.drawLine(left(),bottom,right(),bottom,p);}
-        for(int n=0;n<3;n++){double v=low+(high-low)*n/2;float yy=y(v,top,bottom);if(!bedtime){p.setColor(Design.LINE);c.drawLine(left(),yy,right(),yy,p);}p.setColor(Design.MUTED);c.drawText(value(v),left()-6*d,yy+3*d,p);}
+        for(int n=0,count=bedtime?1:2;n<=count;n++){double v=low+(high-low)*n/count;float yy=y(v,top,bottom);if(!bedtime){p.setColor(Design.LINE);c.drawLine(left(),yy,right(),yy,p);}p.setColor(Design.MUTED);c.drawText(tick(v),left()-6*d,yy+3*d,p);}
         if(!bedtime){p.setColor(0xffe47825);p.setPathEffect(new DashPathEffect(new float[]{4*d,4*d},0));c.drawLine(left(),y(target,top,bottom),right(),y(target,top,bottom),p);p.setPathEffect(null);p.setTextAlign(Paint.Align.RIGHT);p.setColor(Design.MUTED);c.drawText("0 · on target",right(),12*d,p);}
         float width=Math.max(d,Math.min(22*d,(right()-left())/dates.size()*.65f));boolean any=false,connected=false;Path line=new Path();
         for(int n=0;n<values.size();n++){Double v=values.get(n);if(v==null){connected=false;continue;}any=true;float xx=x(n),yy=y(v,top,bottom);int color=selected==n?Design.BROWN:Design.VIOLET;
@@ -69,7 +70,7 @@ final class GoalChart extends View {
         int stride=bedtime?1:Math.max(1,dates.size()/5);for(int n=0;n<dates.size();n+=stride)c.drawText(dates.get(n).format(DateTimeFormatter.ofPattern(bedtime?"EEE":"d MMM",Locale.getDefault())),x(n),bottom+18*d,p);
         if(selected>=0){String text=values.get(selected)==null?"No closed record":value(values.get(selected));float half=p.measureText(text)/2+8*d,center=Math.max(half,Math.min(getWidth()-half,x(selected)));p.setColor(Design.BROWN);c.drawRoundRect(center-half,0,center+half,20*d,10*d,10*d,p);p.setColor(Design.CREAM);c.drawText(text,center,14*d,p);}
     }
-    private void select(int n){selected=n;setContentDescription(dates.get(n)+": "+(values.get(n)==null?"no closed record":value(values.get(n))));invalidate();}
+    private void select(int n){if(selected!=n)InteractionFeedback.selection(this);selected=n;setContentDescription(dates.get(n)+": "+(values.get(n)==null?"no closed record":value(values.get(n))));invalidate();}
     @Override public boolean onTouchEvent(MotionEvent e){if(e.getAction()==MotionEvent.ACTION_UP){select(Math.max(0,Math.min(dates.size()-1,(int)((e.getX()-left())/(right()-left())*dates.size()))));performClick();}return true;}
     @Override public boolean performClick(){super.performClick();return true;}
     @Override public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info){super.onInitializeAccessibilityNodeInfo(info);info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_FORWARD);info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_BACKWARD);}
