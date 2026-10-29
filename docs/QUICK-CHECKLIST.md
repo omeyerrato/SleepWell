@@ -61,7 +61,7 @@ Checked means implemented with the stated supporting evidence. Physical-device a
 ## Still unfinished
 
 - [ ] Reference/interaction/security priorities above.
-- [ ] Audio-only bulk Delete recordings retaining sleep history, and a persistent manual Last export receipt. Both are next-increment work.
+- [ ] Finish acceptance of recording-only cleanup and the persistent Last export display. Source is integrated in0.1.9; the previous combined Privacy run failed and new verification is deferred.
 - [ ] Initial Android system-bar contrast handoff: first light frame can retain white glyphs despite correct requested appearance. The attempted change failed and was rejected. [Actual diagnostic evidence](verification/2026-10-29-systemui-transitions/README.md).
 - [ ] Reliable additional sound recognition, including laughter/instruments.
 - [ ] Working phone-input sleep-stage/REM and breathing/apnea analysis.
