@@ -1,0 +1,76 @@
+{
+  "run": 40853867058,
+  "tested_head": "2d3891e199d5015b8010507827661bb315311421",
+  "file": "app/src/androidTest/java/org/sleepwell/app/RoutinePracticeFixture.java",
+  "git_blob": "01eaa2ff9f339009cfe290236de8f5c6a269ec6a",
+  "evidence": "Existing source assertions executed by the passing audio slice, not new tests.",
+  "back_coverage": "AudioProof calls actual Cancel practice step buttons and does not directly call onBackPressed or device.pressBack; no gesture/all-nine claim.",
+  "bounds_helper": [
+    {
+      "source_line": 52,
+      "source": "private void fullBounds(View view,String label,boolean action){"
+    }
+  ],
+  "proofs": [
+    {
+      "claim": "exit_full_bounds_48dp",
+      "source_line": 272,
+      "source": "i.runOnMainSync(()->{View root=expected.getWindow().getDecorView();String exit=expected instanceof ChallengePracticeActivity?(suffix.equals(\"completed\")||suffix.equals(\"random-completed\")?\"Done\":\"Cancel preview\"):\"Cancel practice step\";fullBounds(find(root,exit),\"Full routine Audio exit\",true);"
+    },
+    {
+      "claim": "one_line_unellipsized_title",
+      "source_line": 275,
+      "source": "TextView title=(TextView)find(root,suffix.equals(\"cleanup-recreated\")?\"Release microphone\":\"Practice listening\");fullBounds(title,\"Complete Audio page title\",false);assertEquals(\"One-line Audio title\",1,title.getLineCount());assertNotNull(title.getLayout());assertEquals(\"Unellipsized Audio title\",0,title.getLayout().getEllipsisCount(0));"
+    },
+    {
+      "claim": "primary_listen_stop_retry_full_bounds",
+      "source_line": 276,
+      "source": "View listen=find(root,\"Listen\"),stop=find(root,\"Stop listening\"),retry=find(root,\"Retry microphone cleanup\");fullBounds(listen!=null?listen:stop!=null?stop:retry,\"Actual listening or cleanup action\",true);"
+    },
+    {
+      "claim": "listen_disabled_and_visible_alpha",
+      "source_line": 277,
+      "source": "if(listen!=null){boolean enabled=!suffix.equals(\"permission\");assertEquals(\"True Listen availability\",enabled,listen.isEnabled());assertEquals(\"Visible Listen availability\",enabled?1f:.45f,listen.getAlpha(),.001f);}"
+    },
+    {
+      "claim": "math_choice_and_check_bounds",
+      "source_line": 280,
+      "source": "if(suffix.equals(\"math\")||suffix.equals(\"fallback\")){MathTask math=field(screen(),\"math\");for(int option:math.options)fullBounds(find(root,\"Answer \"+option),\"Full Math choice\",true);fullBounds(find(root,\"Check practice answer\"),\"Full Math Check\",true);}"
+    },
+    {
+      "claim": "memory_board_equal_columns",
+      "source_line": 281,
+      "source": "if(suffix.equals(\"memory-recreated\")){WakeCognitiveTask.Memory memory=(WakeCognitiveTask.Memory)cognitive();View board=find(root,\"Memory pairs board\");fullBounds(board,\"Full responsive Memory board\",false);assertEquals(memory.card.getWidth()-memory.card.getPaddingLeft()-memory.card.getPaddingRight(),board.getWidth());int width=memory.buttons[0].getWidth();for(Button button:memory.buttons){fullBounds(button,\"Full Memory target\",true);assertTrue(\"Equal Memory column widths\",Math.abs(width-button.getWidth())<=1);}assertEquals(6,((GridLayout)board).getChildCount());}"
+    },
+    {
+      "claim": "cancel_reopen_nonce_and_stale_callback",
+      "source_line": 298,
+      "source": "String nonce=main(()->((PracticeChildTicket.Ticket)field(child,\"ticket\")).nonce);click(\"Cancel practice step\");parent(6);open();assertNotEquals(nonce,main(()->((PracticeChildTicket.Ticket)field(child,\"ticket\")).nonce));int recognizerCount=recognizers.size();recreated(false);assertEquals(recognizerCount,recognizers.size());capture(\"phrase-recreated\");i.runOnMainSync(()->wrong.result(PhraseRule.target(session().run,6)));assertEquals(6,completed());"
+    },
+    {
+      "claim": "paused_authentic_receipt_once",
+      "source_line": 299,
+      "source": "listen();await(()->main(()->((PhraseRecognition)field(operation(),\"phrase\")).state)==PhraseRecognition.State.LISTENING);i.runOnMainSync(()->{receipt=field(child,\"ticket\");receiptBefore=6;replay=new Intent().putExtra(\"practiceNonce\",receipt.nonce).putExtra(\"practiceRun\",receipt.run).putExtra(\"practiceUnit\",receipt.unit).putExtra(\"practiceTask\",receipt.configuration);assertFalse(PracticeChildTicket.consume(field(practice,\"session\"),Activity.RESULT_OK,replay));recognizer().result(PhraseRule.target(receipt.run,receipt.unit));});parent(7);assertTrue(pausedReceipt);assertFalse(main(()->PracticeChildTicket.consume(field(practice,\"session\"),Activity.RESULT_OK,replay)));"
+    },
+    {
+      "claim": "separate_math_fallback",
+      "source_line": 300,
+      "source": "open();capture(\"phrase-round2\");english=false;listen();await(()->main(()->operation().state())==PracticeAudioCapture.State.ERROR);assertEquals(7,completed());click(\"Use Math instead\");parent(7);capture(\"fallback\");checkMath();assertEquals(8,completed());english=true;"
+    },
+    {
+      "claim": "explicit_motion_start_then_completion",
+      "source_line": 301,
+      "source": "motion.open();capture(\"motion-return\");click(\"Start step check\");i.runOnMainSync(()->{for(int n=0;n<5;n++)motion.steps.step();});parent(9);assertTrue(main(()->session().finished()));capture(\"completed\");click(\"Done\");await(()->top==editor&&ready(editor));unchanged();"
+    },
+    {
+      "claim": "random_fixed_across_recreation",
+      "source_line": 302,
+      "source": "launch(ChallengeRoutine.random(List.of(task(\"Speak\",1),task(\"Musical note\",2)),2));String selected=ChallengeRoutineJson.encode(session().routine).toString(),run=session().run;assertTrue(session().routine.tasks.stream().allMatch(task->task.type.equals(\"Speak\")||task.type.equals(\"Musical note\")));capture(\"random\");recreate();assertEquals(selected,ChallengeRoutineJson.encode(session().routine).toString());assertEquals(run,session().run);capture(\"random-recreated\");"
+    },
+    {
+      "claim": "owned_runtime_workers_drained",
+      "source_line": 288,
+      "source": "void closed()throws Exception{drained();assertFalse(MicrophoneLease.occupied());for(Pcm input:inputs)assertTrue(input.closed);for(Model model:models)assertTrue(model.closed);for(Recognizer recognizer:recognizers)assertTrue(recognizer.closed);i.runOnMainSync(()->{for(Activity activity:owned)if(activity instanceof RoutineAudioPracticeActivity){Handler handler=field(activity,\"main\");Runnable watch=field(activity,\"watch\");assertFalse(handler.hasCallbacks(watch));}});}"
+    }
+  ]
+}

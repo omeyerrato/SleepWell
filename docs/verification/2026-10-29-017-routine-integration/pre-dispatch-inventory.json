@@ -1,0 +1,272 @@
+[
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T08:44:41Z",
+    "databaseId": 40844350768,
+    "displayTitle": "Silent Android review (routine-camera)",
+    "headSha": "f88fe04acf92d4c8e3cd25c3d565c1a2f1e54ab7",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40844350768"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T08:14:00Z",
+    "databaseId": 40840665476,
+    "displayTitle": "Silent Android review (routine-camera)",
+    "headSha": "47677c4be37297ead851740153065e0614e7c587",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40840665476"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T07:27:03Z",
+    "databaseId": 40835499904,
+    "displayTitle": "Silent Android review (morning-code-enrollment)",
+    "headSha": "db13b5dae2630896991b5695e16ed2060a3dc4cd",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40835499904"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-29T07:17:50Z",
+    "databaseId": 40834521546,
+    "displayTitle": "Silent Android review (morning-code-enrollment)",
+    "headSha": "05e7369a1e3306f3cb3ce55994707b85c0558a7d",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40834521546"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-29T06:49:25Z",
+    "databaseId": 40831542713,
+    "displayTitle": "Silent Android review (morning-code-enrollment)",
+    "headSha": "d8f9b441092ed1e18f35a9399afa72214a5ecc34",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40831542713"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T06:30:59Z",
+    "databaseId": 40829678446,
+    "displayTitle": "Silent Android review (cognitive-feedback)",
+    "headSha": "b5afce4c4f681dd100de0c63db89a31710b081f0",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40829678446"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-29T06:27:42Z",
+    "databaseId": 40829340570,
+    "displayTitle": "Silent Android review (morning-code-enrollment)",
+    "headSha": "a19499d22df9551feface08734610a1df39c2377",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40829340570"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T06:19:34Z",
+    "databaseId": 40828519562,
+    "displayTitle": "Silent Android review (routine-audio)",
+    "headSha": "9a106bfa9b69c3fe814da8679178c5208c73a19f",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40828519562"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-29T06:19:26Z",
+    "databaseId": 40828505805,
+    "displayTitle": "Silent Android review (cognitive-feedback)",
+    "headSha": "ae58fd8516f952647881ff5762588e11fb340c62",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40828505805"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T05:50:55Z",
+    "databaseId": 40825735361,
+    "displayTitle": "Silent Android review (routine-audio)",
+    "headSha": "e6a1707dc9e3e91f86fa48028c6a565495c324bf",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40825735361"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T05:50:38Z",
+    "databaseId": 40825708696,
+    "displayTitle": "Silent Android review (routine-walk-cleanup)",
+    "headSha": "e6a1707dc9e3e91f86fa48028c6a565495c324bf",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40825708696"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T05:21:58Z",
+    "databaseId": 40822971575,
+    "displayTitle": "Silent Android review (report-rounding)",
+    "headSha": "697d123202cf53c62b14b09eab4a6527bb13b1c9",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40822971575"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T02:09:39Z",
+    "databaseId": 40804694715,
+    "displayTitle": "Silent Android review (routine-motion)",
+    "headSha": "0ac20411a7869312a8da4cf4fd46b449368e1e51",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40804694715"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-29T01:55:54Z",
+    "databaseId": 40803344526,
+    "displayTitle": "Silent Android review (system-bars-transition)",
+    "headSha": "f78593ff256cc377ffd3a2cb83d95361b043a187",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40803344526"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T01:44:08Z",
+    "databaseId": 40802190314,
+    "displayTitle": "Silent Android review (report-rounding)",
+    "headSha": "bdd09c4170f97becae77a8c7681bae23a071c70a",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40802190314"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-29T01:36:09Z",
+    "databaseId": 40801401054,
+    "displayTitle": "Silent Android review (system-bars-transition)",
+    "headSha": "0a5f3fa31d37479a9863fc8108406ea270802643",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40801401054"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T01:26:26Z",
+    "databaseId": 40800438208,
+    "displayTitle": "Silent Android review (sleep-mixer-reference)",
+    "headSha": "7a4c6dfb656c180f5762b6771a50d935c52d5251",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40800438208"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T01:11:52Z",
+    "databaseId": 40798925382,
+    "displayTitle": "Silent Android review (routine-preview)",
+    "headSha": "635cf7eb001ea0efeccf782bc6dc957409ce1199",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40798925382"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-29T01:05:50Z",
+    "databaseId": 40798291747,
+    "displayTitle": "Silent Android review (sleep-mixer-reference)",
+    "headSha": "76b03ef7964c834943317e26c7be607ac7452bbb",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40798291747"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-29T00:35:54Z",
+    "databaseId": 40795096344,
+    "displayTitle": "Silent Android review (routine-preview)",
+    "headSha": "1a8cb0abc6bc6cc42f3875a00c17e62326b13305",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40795096344"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-29T00:12:54Z",
+    "databaseId": 40792566584,
+    "displayTitle": "Silent Android review (editor-usability-integration)",
+    "headSha": "669cc50f87410b6bc3411432cbd67543e1372592",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40792566584"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-28T23:54:37Z",
+    "databaseId": 40790536650,
+    "displayTitle": "Silent Android review (protection-recovery)",
+    "headSha": "1fdaf3544a3f68e36c7887bce6fd5d46d5e569be",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40790536650"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-28T23:43:52Z",
+    "databaseId": 40789352903,
+    "displayTitle": "Silent Android review (protection-recovery)",
+    "headSha": "699254afe1cdda32944d9137cdbe64c63635e02a",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40789352903"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-28T23:29:11Z",
+    "databaseId": 40787686648,
+    "displayTitle": "Silent Android review (protection-recovery)",
+    "headSha": "853e90643f6b4ac355e77ceaaef541a683719ba1",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40787686648"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-28T23:16:31Z",
+    "databaseId": 40786188235,
+    "displayTitle": "Silent Android review (protection-recovery)",
+    "headSha": "58cc1c3390d2b008821b07b3cbbebf3737630a41",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40786188235"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-28T23:04:31Z",
+    "databaseId": 40784711149,
+    "displayTitle": "Silent Android review (feature-search)",
+    "headSha": "19f6ac9e121c0767d5b63d8aab93c9c40c895835",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40784711149"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-28T22:50:30Z",
+    "databaseId": 40782999524,
+    "displayTitle": "Silent Android review (feature-search)",
+    "headSha": "4b0949e57ed8d5576c92cd1877e0721b4532b25c",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40782999524"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-28T22:37:42Z",
+    "databaseId": 40781422567,
+    "displayTitle": "Silent Android review (challenge-selection)",
+    "headSha": "5958285ac75be6eeaeb05d3adfef34d4a88b483f",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40781422567"
+  },
+  {
+    "conclusion": "failure",
+    "createdAt": "2026-10-28T22:34:33Z",
+    "databaseId": 40781016190,
+    "displayTitle": "Silent Android review (feature-search)",
+    "headSha": "8c701162e4e91101a91985ca45d23c6909e995b0",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40781016190"
+  },
+  {
+    "conclusion": "success",
+    "createdAt": "2026-10-28T22:09:47Z",
+    "databaseId": 40777798244,
+    "displayTitle": "Silent Android review (automation-rules)",
+    "headSha": "0cadd897a40b423314607f7d994dabfc2dbae6a2",
+    "status": "completed",
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40777798244"
+  }
+]

@@ -1,0 +1,952 @@
+silent-ui	Set up job	﻿2026-10-29T09:58:56.6335977Z Current runner version: '2.338.0'
+silent-ui	Set up job	2026-10-29T09:58:56.6356037Z ##[group]Runner Image Provisioner
+silent-ui	Set up job	2026-10-29T09:58:56.6356677Z Hosted Compute Agent
+silent-ui	Set up job	2026-10-29T09:58:56.6357115Z Version: 20261021.618
+silent-ui	Set up job	2026-10-29T09:58:56.6357558Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+silent-ui	Set up job	2026-10-29T09:58:56.6357999Z Build Date: 2026-10-21T00:45:21Z
+silent-ui	Set up job	2026-10-29T09:58:56.6358481Z Worker ID: {c0c3ebfa-592e-4408-96d7-f4107bd874e5}
+silent-ui	Set up job	2026-10-29T09:58:56.6358931Z Region: centralus
+silent-ui	Set up job	2026-10-29T09:58:56.6359353Z Cloud: Azure
+silent-ui	Set up job	2026-10-29T09:58:56.6359742Z ##[endgroup]
+silent-ui	Set up job	2026-10-29T09:58:56.6360746Z ##[group]Operating System
+silent-ui	Set up job	2026-10-29T09:58:56.6361203Z Ubuntu
+silent-ui	Set up job	2026-10-29T09:58:56.6361543Z 24.04.5
+silent-ui	Set up job	2026-10-29T09:58:56.6361910Z LTS
+silent-ui	Set up job	2026-10-29T09:58:56.6362296Z ##[endgroup]
+silent-ui	Set up job	2026-10-29T09:58:56.6362646Z ##[group]Runner Image
+silent-ui	Set up job	2026-10-29T09:58:56.6363074Z Image: ubuntu-24.04
+silent-ui	Set up job	2026-10-29T09:58:56.6363442Z Version: 20261025.353.1
+silent-ui	Set up job	2026-10-29T09:58:56.6364140Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+silent-ui	Set up job	2026-10-29T09:58:56.6365228Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+silent-ui	Set up job	2026-10-29T09:58:56.6365851Z ##[endgroup]
+silent-ui	Set up job	2026-10-29T09:58:56.6366568Z ##[group]GITHUB_TOKEN Permissions
+silent-ui	Set up job	2026-10-29T09:58:56.6368347Z Contents: read
+silent-ui	Set up job	2026-10-29T09:58:56.6368718Z Metadata: read
+silent-ui	Set up job	2026-10-29T09:58:56.6369112Z ##[endgroup]
+silent-ui	Set up job	2026-10-29T09:58:56.6370638Z Secret source: Actions
+silent-ui	Set up job	2026-10-29T09:58:56.6371196Z Cache mode: write
+silent-ui	Set up job	2026-10-29T09:58:56.6371773Z Prepare workflow directory
+silent-ui	Set up job	2026-10-29T09:58:56.6585919Z Prepare all required actions
+silent-ui	Set up job	2026-10-29T09:58:56.6619127Z Getting action download info
+silent-ui	Set up job	2026-10-29T09:58:56.9726671Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+silent-ui	Set up job	2026-10-29T09:58:57.0821374Z Download action repository 'actions/setup-java@v4' (SHA:cf277c60eb25467037889841efdb72551f06f6c3)
+silent-ui	Set up job	2026-10-29T09:58:57.6961017Z Download action repository 'android-actions/setup-android@v3' (SHA:9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407)
+silent-ui	Set up job	2026-10-29T09:58:58.0095361Z Download action repository 'gradle/actions@v4' (SHA:ed408507eac070d1f99cc633dbcf757c94c7933a)
+silent-ui	Set up job	2026-10-29T09:58:59.1998939Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+silent-ui	Set up job	2026-10-29T09:58:59.3855680Z Complete job name: silent-ui
+silent-ui	Run actions/checkout@v4	﻿2026-10-29T09:58:59.4353986Z ##[group]Run actions/checkout@v4
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4354453Z with:
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4354761Z   repository: omeyerrato/SleepWell
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4356437Z   token: ***
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4356660Z   ssh-strict: true
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4356950Z   ssh-user: git
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4357196Z   persist-credentials: true
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4357477Z   clean: true
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4357768Z   sparse-checkout-cone-mode: true
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4358048Z   fetch-depth: 1
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4358322Z   fetch-tags: false
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4358577Z   show-progress: true
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4358872Z   lfs: false
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4359150Z   submodules: false
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4359407Z   set-safe-directory: true
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4359702Z   allow-unsafe-pr-checkout: false
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.4360054Z ##[endgroup]
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.6929106Z Syncing repository: omeyerrato/SleepWell
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.6930292Z ##[group]Getting Git version info
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.6930763Z Working directory is '/home/runner/work/SleepWell/SleepWell'
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.6931350Z [command]/usr/bin/git version
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7042048Z git version 2.56.0
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7062873Z ##[endgroup]
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7068395Z Temporarily overriding HOME='/home/runner/work/_temp/3b840a5f-27c0-4900-a904-2d83bb646db4' before making global git config changes
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7070882Z Adding repository directory to the temporary git global config as a safe directory
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7073983Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SleepWell/SleepWell
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7141198Z Deleting the contents of '/home/runner/work/SleepWell/SleepWell'
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7145985Z ##[group]Initializing the repository
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7156887Z [command]/usr/bin/git init /home/runner/work/SleepWell/SleepWell
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7246829Z hint: Using 'master' as the name for the initial branch. This default branch name
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7247566Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7248138Z hint: to use in all of your new repositories, which will suppress this warning,
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7248469Z hint: call:
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7248636Z hint:
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7248995Z hint: 	git config --global init.defaultBranch <name>
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7249179Z hint:
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7249348Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7249629Z hint: 'development'. The just-created branch can be renamed via this command:
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7249838Z hint:
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7249958Z hint: 	git branch -m <name>
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7250092Z hint:
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7250282Z hint: Disable this message with "git config set advice.defaultBranchName false"
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7256836Z Initialized empty Git repository in /home/runner/work/SleepWell/SleepWell/.git/
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7267321Z [command]/usr/bin/git remote add origin https://github.com/omeyerrato/SleepWell
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7319143Z ##[endgroup]
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7319688Z ##[group]Disabling automatic garbage collection
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7323243Z [command]/usr/bin/git config --local gc.auto 0
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7357291Z ##[endgroup]
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7357666Z ##[group]Setting up auth
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7364487Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7418315Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7756234Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.7798980Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.8007939Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.8047426Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.8258364Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.8304600Z ##[endgroup]
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.8305172Z ##[group]Fetching the repository
+silent-ui	Run actions/checkout@v4	2026-10-29T09:58:59.8315000Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2d3891e199d5015b8010507827661bb315311421:refs/remotes/origin/main
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:18.9784384Z From https://github.com/omeyerrato/SleepWell
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:18.9784973Z  * [new ref]         2d3891e199d5015b8010507827661bb315311421 -> origin/main
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:18.9787450Z ##[endgroup]
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:18.9787893Z ##[group]Determining the checkout info
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:18.9789573Z ##[endgroup]
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:18.9795173Z [command]/usr/bin/git sparse-checkout disable
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:18.9954668Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:19.0006679Z ##[group]Checking out the ref
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:19.0021741Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.0204563Z Updating files:  35% (2960/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.0393665Z Updating files:  36% (2996/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.0687620Z Updating files:  37% (3080/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.0799032Z Updating files:  38% (3163/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.1083516Z Updating files:  39% (3246/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.1353800Z Updating files:  40% (3329/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.1438553Z Updating files:  41% (3413/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.1628474Z Updating files:  42% (3496/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.1912963Z Updating files:  43% (3579/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.2073239Z Updating files:  44% (3662/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.2264165Z Updating files:  45% (3745/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.2541732Z Updating files:  46% (3829/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.2627150Z Updating files:  47% (3912/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.2660022Z Updating files:  48% (3995/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.2684049Z Updating files:  49% (4078/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.2816146Z Updating files:  50% (4161/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.3166208Z Updating files:  51% (4245/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.3390166Z Updating files:  52% (4328/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.3617107Z Updating files:  53% (4411/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.3854625Z Updating files:  54% (4494/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.3901662Z Updating files:  55% (4578/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.4082638Z Updating files:  56% (4661/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.4444673Z Updating files:  57% (4744/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.4659546Z Updating files:  58% (4827/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.5005129Z Updating files:  59% (4910/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.5156962Z Updating files:  60% (4994/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.5180174Z Updating files:  61% (5077/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.5226226Z Updating files:  62% (5160/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.5249535Z Updating files:  63% (5243/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.5270355Z Updating files:  64% (5327/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.5470888Z Updating files:  65% (5410/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.5503131Z Updating files:  66% (5493/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.5576385Z Updating files:  67% (5576/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.5921662Z Updating files:  68% (5659/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.6166790Z Updating files:  69% (5743/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.6392139Z Updating files:  70% (5826/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.6610038Z Updating files:  71% (5909/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.6894834Z Updating files:  72% (5992/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.7132755Z Updating files:  73% (6076/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.7439626Z Updating files:  74% (6159/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.7745821Z Updating files:  75% (6242/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.7802353Z Updating files:  76% (6325/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.8095596Z Updating files:  77% (6408/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.8368649Z Updating files:  78% (6492/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.8619639Z Updating files:  79% (6575/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.8824793Z Updating files:  80% (6658/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.9206335Z Updating files:  81% (6741/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.9464208Z Updating files:  82% (6825/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.9659172Z Updating files:  83% (6908/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:20.9940611Z Updating files:  84% (6991/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.0108034Z Updating files:  85% (7074/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.0239094Z Updating files:  85% (7114/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.0483429Z Updating files:  86% (7157/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.0813515Z Updating files:  87% (7241/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.0983941Z Updating files:  88% (7324/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.1188473Z Updating files:  89% (7407/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.1424170Z Updating files:  90% (7490/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.1604499Z Updating files:  91% (7574/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.1793595Z Updating files:  92% (7657/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.2072478Z Updating files:  93% (7740/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.2308892Z Updating files:  94% (7823/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.2545920Z Updating files:  95% (7906/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.2824741Z Updating files:  96% (7990/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.3068091Z Updating files:  97% (8073/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.3252553Z Updating files:  98% (8156/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.3274928Z Updating files:  99% (8239/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.3275482Z Updating files: 100% (8322/8322)
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.3275875Z Updating files: 100% (8322/8322), done.
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.3337119Z Switched to a new branch 'main'
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.3341809Z branch 'main' set up to track 'origin/main'.
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.3460112Z ##[endgroup]
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.3514508Z [command]/usr/bin/git log -1 --format=%H
+silent-ui	Run actions/checkout@v4	2026-10-29T09:59:21.3550341Z 2d3891e199d5015b8010507827661bb315311421
+silent-ui	Run actions/setup-java@v4	﻿2026-10-29T09:59:21.3782618Z ##[group]Run actions/setup-java@v4
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3782796Z with:
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3782920Z   distribution: temurin
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3783044Z   java-version: 21
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3783159Z   java-package: jdk
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3783277Z   check-latest: false
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3783396Z   server-id: github
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3783514Z   server-username: GITHUB_ACTOR
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3783655Z   server-password: GITHUB_TOKEN
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3783798Z   overwrite-settings: true
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3783930Z   job-status: success
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3785332Z   token: ***
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.3785450Z ##[endgroup]
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5039705Z ##[warning]setup-java v4 is deprecated and will no longer receive updates. Please migrate to actions/setup-java@v5.
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5045836Z ##[group]Installed distributions
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5213862Z Resolved Java 21.0.13+9 from tool-cache
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5214181Z Setting Java 21.0.13+9 as the default
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5222013Z (node:2105) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5222465Z (Use `node --trace-deprecation ...` to show where the warning was created)
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5224794Z Creating toolchains.xml for JDK version 21 from temurin
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5273559Z Writing to /home/runner/.m2/toolchains.xml
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5273859Z 
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5273952Z Java configuration:
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5274160Z   Distribution: temurin
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5274358Z   Version: 21.0.13+9
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5274640Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5274900Z 
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5275336Z ##[endgroup]
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5300675Z Creating settings.xml with server-id: github
+silent-ui	Run actions/setup-java@v4	2026-10-29T09:59:21.5319232Z Writing to /home/runner/.m2/settings.xml
+silent-ui	Run android-actions/setup-android@v3	﻿2026-10-29T09:59:21.5504317Z ##[group]Run android-actions/setup-android@v3
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.5504665Z with:
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.5505101Z   packages: platform-tools platforms;android-36 build-tools;36.0.0 emulator system-images;android-36;google_apis;x86_64
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.5505618Z   log-accepted-android-sdk-licenses: false
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.5505897Z   cmdline-tools-version: 12266719
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.5506147Z   accept-android-sdk-licenses: true
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.5506388Z env:
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.5506657Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.5507100Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.5507457Z ##[endgroup]
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.6249179Z Found preinstalled sdkmanager in /usr/local/lib/android/sdk/cmdline-tools/latest with following source.properties:
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.6249949Z Pkg.Revision=12.0
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.6250167Z Pkg.Path=cmdline-tools;12.0
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.6250343Z Pkg.Desc=Android SDK Command-line Tools
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.6250761Z 
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.6250865Z Wrong version in preinstalled sdkmanager
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:21.6251235Z Downloading commandline tools from https://dl.google.com/android/repository/commandlinetools-linux-12266719_latest.zip
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:22.2628733Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/6b88acc7-6280-4c0e-b648-657a0c6f87fa
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:22.7720851Z Accepting Android SDK licenses
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:28.5558648Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager platform-tools
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.1333178Z Loading package information...                                                  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.2003990Z Loading local repository...                                                     
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.2005265Z [                                       ] 3% Loading local repository...        
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.2045551Z [                                       ] 3% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.4062236Z [=                                      ] 3% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.4632439Z [=                                      ] 4% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.5173246Z [=                                      ] 5% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.5685344Z [==                                     ] 5% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.6375040Z [==                                     ] 6% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.7002073Z [==                                     ] 7% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.7028591Z [==                                     ] 7% Computing updates...               
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.7071553Z [===                                    ] 8% Computing updates...               
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.7186220Z [===                                    ] 10% Computing updates...              
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.7186836Z [=======================================] 100% Computing updates...             
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.7187234Z 
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:29.7456478Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager platforms;android-36
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.3012424Z Loading package information...                                                  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.3662919Z Loading local repository...                                                     
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.3665363Z [                                       ] 3% Loading local repository...        
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.3702312Z [                                       ] 3% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.5555485Z [=                                      ] 3% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.6464137Z [=                                      ] 4% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.6712101Z [=                                      ] 5% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.7186656Z [==                                     ] 5% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.7718280Z [==                                     ] 6% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.8231528Z [==                                     ] 7% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.8261514Z [==                                     ] 7% Computing updates...               
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.8331534Z [===                                    ] 8% Computing updates...               
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.8378114Z [===                                    ] 10% Computing updates...              
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.8382137Z [=======================================] 100% Computing updates...             
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.8385263Z 
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:30.8759034Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager build-tools;36.0.0
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.4349340Z Loading package information...                                                  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.4997657Z Loading local repository...                                                     
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.4999170Z [                                       ] 3% Loading local repository...        
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.5030229Z [                                       ] 3% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.6862292Z [=                                      ] 3% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.7354579Z [=                                      ] 4% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.7627860Z [=                                      ] 5% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.8231913Z [==                                     ] 5% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.8891739Z [==                                     ] 6% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.9471794Z [==                                     ] 7% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.9496054Z [==                                     ] 7% Computing updates...               
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.9541735Z [===                                    ] 8% Computing updates...               
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.9593268Z [===                                    ] 10% Computing updates...              
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.9597429Z [=======================================] 100% Computing updates...             
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.9601701Z 
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:31.9906785Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager emulator
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.5542166Z Loading package information...                                                  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.6130739Z Loading local repository...                                                     
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.6141126Z [                                       ] 3% Loading local repository...        
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.6166004Z [                                       ] 3% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.7291548Z [=                                      ] 3% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.8202429Z [=                                      ] 4% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.8672387Z [=                                      ] 5% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.8932644Z [==                                     ] 5% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.9552444Z [==                                     ] 6% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.9891954Z [==                                     ] 7% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.9921539Z [==                                     ] 7% Computing updates...               
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:32.9968338Z [===                                    ] 8% Computing updates...               
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.0062425Z [===                                    ] 10% Computing updates...              
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.3694618Z [===                                    ] 10% Installing Android Emulator       
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.6222991Z [===                                    ] 10% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.6868548Z [====                                   ] 10% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.7387855Z [====                                   ] 11% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.7776278Z [====                                   ] 12% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.8047479Z [=====                                  ] 13% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.8321086Z [=====                                  ] 14% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.8529988Z [=====                                  ] 15% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.8667858Z [======                                 ] 15% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.8942726Z [======                                 ] 16% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.9286753Z [======                                 ] 17% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.9567196Z [=======                                ] 18% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:33.9922214Z [=======                                ] 19% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.0057861Z [=======                                ] 20% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.0192766Z [========                               ] 20% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.0530218Z [========                               ] 21% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.0807226Z [========                               ] 22% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.1064631Z [=========                              ] 23% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.1396695Z [=========                              ] 24% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.1532406Z [=========                              ] 25% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.1667401Z [==========                             ] 25% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.2003137Z [==========                             ] 26% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.2269552Z [==========                             ] 27% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.2515250Z [===========                            ] 28% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.2720001Z [===========                            ] 29% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.2820873Z [===========                            ] 30% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.2973555Z [============                           ] 30% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.3194592Z [============                           ] 31% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.3450042Z [============                           ] 32% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.3453640Z [============                           ] 33% Downloading emulator-linux_x64-164
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.4016776Z [============                           ] 33% Unzipping...                      
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.4017529Z [============                           ] 33% Unzipping... emulator/            
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.4018244Z [============                           ] 33% Unzipping... emulator/resources/  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.4039281Z [============                           ] 33% Unzipping... emulator/qsn         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.4451049Z [=============                          ] 33% Unzipping... emulator/qsn         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.5674207Z [=============                          ] 33% Unzipping... emulator/emulator    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.8572005Z [=============                          ] 33% Unzipping... emulator/netsimd     
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.8572482Z [=============                          ] 33% Unzipping... emulator/bin64/      
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.8599896Z [=============                          ] 33% Unzipping... emulator/qemu/       
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.8600789Z [=============                          ] 33% Unzipping... emulator/NOTICE.txt  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.8693666Z [=============                          ] 33% Unzipping... emulator/crashpad_han
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.8739505Z [=============                          ] 34% Unzipping... emulator/crashpad_han
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.8742666Z [=============                          ] 34% Unzipping... emulator/source.prope
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9261760Z [=============                          ] 34% Unzipping... emulator/nimble_bridg
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9263573Z [=============                          ] 34% Unzipping... emulator/LICENSE     
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9264112Z [=============                          ] 34% Unzipping... emulator/lib/        
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9332144Z [=============                          ] 34% Unzipping... emulator/qemu-img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9332842Z [=============                          ] 34% Unzipping... emulator/include/    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9338901Z [=============                          ] 34% Unzipping... emulator/NOTICE.csv  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9339534Z [=============                          ] 34% Unzipping... emulator/lib64/      
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9469692Z [=============                          ] 34% Unzipping... emulator/emulator-che
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9633982Z [=============                          ] 34% Unzipping... emulator/crashreport 
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9638646Z [=============                          ] 34% Unzipping... emulator/mksdcard    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9767487Z [=============                          ] 34% Unzipping... emulator/resources/To
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9778653Z [=============                          ] 35% Unzipping... emulator/resources/To
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9829552Z [=============                          ] 35% Unzipping... emulator/resources/de
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9831768Z [=============                          ] 35% Unzipping... emulator/resources/To
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:34.9840909Z [=============                          ] 35% Unzipping... emulator/resources/de
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0774757Z [=============                          ] 35% Unzipping... emulator/resources/To
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0775116Z [=============                          ] 35% Unzipping... emulator/resources/ma
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0793917Z [=============                          ] 35% Unzipping... emulator/resources/de
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0794632Z [=============                          ] 35% Unzipping... emulator/resources/sk
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0822796Z [=============                          ] 35% Unzipping... emulator/resources/de
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0823287Z [=============                          ] 35% Unzipping... emulator/resources/ma
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0832833Z [=============                          ] 35% Unzipping... emulator/resources/po
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0889367Z [=============                          ] 35% Unzipping... emulator/resources/ma
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0892801Z [==============                         ] 35% Unzipping... emulator/resources/ma
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0940513Z [==============                         ] 35% Unzipping... emulator/resources/sk
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0951445Z [==============                         ] 35% Unzipping... emulator/resources/ma
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.0984631Z [==============                         ] 35% Unzipping... emulator/bin64/e2fsck
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.1021050Z [==============                         ] 35% Unzipping... emulator/bin64/fsck.e
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.1041533Z [==============                         ] 35% Unzipping... emulator/bin64/tune2f
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.1053457Z [==============                         ] 35% Unzipping... emulator/bin64/resize
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.1076983Z [==============                         ] 35% Unzipping... emulator/bin64/mkfs.e
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.1805662Z [==============                         ] 35% Unzipping... emulator/qemu/linux-x
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.3221314Z [==============                         ] 36% Unzipping... emulator/qemu/linux-x
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.6101668Z [==============                         ] 37% Unzipping... emulator/qemu/linux-x
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:35.8532926Z [===============                        ] 38% Unzipping... emulator/qemu/linux-x
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.2162954Z [===============                        ] 39% Unzipping... emulator/qemu/linux-x
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.2800344Z [===============                        ] 40% Unzipping... emulator/qemu/linux-x
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.4696192Z [================                       ] 40% Unzipping... emulator/qemu/linux-x
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.5488343Z [================                       ] 41% Unzipping... emulator/qemu/linux-x
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.5489673Z [================                       ] 41% Unzipping... emulator/lib/emulator
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.5492143Z [================                       ] 41% Unzipping... emulator/lib/rtc_serv
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6577527Z [================                       ] 41% Unzipping... emulator/lib/advanced
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6579737Z [================                       ] 41% Unzipping... emulator/lib/cmake/  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6582133Z [================                       ] 41% Unzipping... emulator/lib/emulator
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6583739Z [================                       ] 41% Unzipping... emulator/lib/control_
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6585271Z [================                       ] 41% Unzipping... emulator/lib/emulated
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6601230Z [================                       ] 41% Unzipping... emulator/lib/rtc_serv
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6602012Z [================                       ] 41% Unzipping... emulator/lib/emu-orig
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6602427Z [================                       ] 41% Unzipping... emulator/lib/hardware
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6602784Z [================                       ] 41% Unzipping... emulator/lib/pkgconfi
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6603143Z [================                       ] 41% Unzipping... emulator/lib/pc-bios/
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6603501Z [================                       ] 41% Unzipping... emulator/lib/snapshot
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6604134Z [================                       ] 41% Unzipping... emulator/lib/adb_serv
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6604501Z [================                       ] 41% Unzipping... emulator/lib/hostapd.
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6604845Z [================                       ] 41% Unzipping... emulator/lib/grpc_end
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6617019Z [================                       ] 41% Unzipping... emulator/lib/ca-bundl
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6619373Z [================                       ] 41% Unzipping... emulator/lib/ui_contr
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6621497Z [================                       ] 41% Unzipping... emulator/lib/snapshot
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6622866Z [================                       ] 41% Unzipping... emulator/lib/ice_conf
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6879525Z [================                       ] 41% Unzipping... emulator/lib/libflatb
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6885131Z [================                       ] 41% Unzipping... emulator/lib/emulator
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6887568Z [================                       ] 41% Unzipping... emulator/lib/waterfal
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6890083Z [================                       ] 41% Unzipping... emulator/lib/emulated
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6900247Z [================                       ] 41% Unzipping... emulator/lib/cmake/fl
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.6900749Z [================                       ] 41% Unzipping... emulator/lib/pkgconfi
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.7020573Z [================                       ] 41% Unzipping... emulator/lib/pc-bios/
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.7512810Z [================                       ] 41% Unzipping... emulator/include/flat
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.7567813Z [================                       ] 41% Unzipping... emulator/lib64/libgli
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.7665995Z [================                       ] 41% Unzipping... emulator/lib64/libpro
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.7671729Z [================                       ] 41% Unzipping... emulator/lib64/qt/   
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.7994017Z [================                       ] 41% Unzipping... emulator/lib64/liband
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.8013505Z [================                       ] 41% Unzipping... emulator/lib64/libgfx
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.8566432Z [================                       ] 42% Unzipping... emulator/lib64/libgfx
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.8567115Z [================                       ] 42% Unzipping... emulator/lib64/gles_l
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.8574563Z [================                       ] 42% Unzipping... emulator/lib64/liband
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.8574907Z [================                       ] 42% Unzipping... emulator/lib64/vulkan
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.8575740Z [================                       ] 42% Unzipping... emulator/lib64/gles_s
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.8578214Z [================                       ] 42% Unzipping... emulator/lib64/libemu
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.8677098Z [================                       ] 42% Unzipping... emulator/lib64/libpro
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:36.9632549Z [================                       ] 42% Unzipping... emulator/lib64/liband
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1124713Z [=================                      ] 43% Unzipping... emulator/lib64/liband
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1161372Z [=================                      ] 43% Unzipping... emulator/lib64/libtcm
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1161846Z [=================                      ] 43% Unzipping... emulator/lib64/libima
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1195369Z [=================                      ] 43% Unzipping... emulator/lib64/libc++
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1420219Z [=================                      ] 43% Unzipping... emulator/lib64/liband
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1455545Z [=================                      ] 43% Unzipping... emulator/lib64/libabs
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1456263Z [=================                      ] 43% Unzipping... emulator/lib64/gles_a
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1516651Z [=================                      ] 43% Unzipping... emulator/lib64/libsha
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1566706Z [=================                      ] 43% Unzipping... emulator/lib64/libc++
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1568050Z [=================                      ] 43% Unzipping... emulator/lib64/qt/res
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1568385Z [=================                      ] 43% Unzipping... emulator/lib64/qt/lib
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1568720Z [=================                      ] 43% Unzipping... emulator/lib64/qt/tra
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1570364Z [=================                      ] 43% Unzipping... emulator/lib64/qt/plu
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.1740905Z [=================                      ] 43% Unzipping... emulator/lib64/qt/res
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.3122389Z [=================                      ] 44% Unzipping... emulator/lib64/qt/res
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.3328364Z [=================                      ] 44% Unzipping... emulator/lib64/qt/lib
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.3981895Z [=================                      ] 45% Unzipping... emulator/lib64/qt/lib
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.5548011Z [==================                     ] 45% Unzipping... emulator/lib64/qt/lib
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.7077531Z [==================                     ] 46% Unzipping... emulator/lib64/qt/lib
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:37.8758565Z [==================                     ] 47% Unzipping... emulator/lib64/qt/lib
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:38.0491535Z [===================                    ] 48% Unzipping... emulator/lib64/qt/lib
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:39.5203399Z [===================                    ] 49% Unzipping... emulator/lib64/qt/lib
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:40.1277781Z [===================                    ] 50% Unzipping... emulator/lib64/qt/lib
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:40.5641338Z [====================                   ] 50% Unzipping... emulator/lib64/qt/lib
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:40.8050149Z [====================                   ] 50% Unzipping... emulator/lib64/qt/tra
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:41.7630157Z [====================                   ] 51% Unzipping... emulator/lib64/qt/tra
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:42.0339289Z [====================                   ] 51% Unzipping... emulator/lib64/qt/plu
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:42.4127991Z [====================                   ] 51% Unzipping... emulator/lib64/gles_l
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:42.6921275Z [====================                   ] 51% Unzipping... emulator/lib64/vulkan
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:43.1787324Z [====================                   ] 52% Unzipping... emulator/lib64/vulkan
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:43.4010063Z [=====================                  ] 53% Unzipping... emulator/lib64/vulkan
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:44.7966373Z [=====================                  ] 54% Unzipping... emulator/lib64/vulkan
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:44.9462897Z [=====================                  ] 54% Unzipping... emulator/lib64/gles_s
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:45.1250261Z [=====================                  ] 55% Unzipping... emulator/lib64/gles_s
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:45.5587173Z [=====================                  ] 55% Unzipping... emulator/lib64/gles_a
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:45.5587562Z [=======================================] 100% Unzipping... emulator/lib64/gles_
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:46.2012308Z 
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:46.2254282Z [command]/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager system-images;android-36;google_apis;x86_64
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:46.7771945Z Loading package information...                                                  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:46.8420217Z Loading local repository...                                                     
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:46.8428572Z [                                       ] 3% Loading local repository...        
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:46.8453912Z [                                       ] 3% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.0264781Z [=                                      ] 3% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.1136410Z [=                                      ] 4% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.1406126Z [=                                      ] 5% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.1929791Z [==                                     ] 5% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.2530010Z [==                                     ] 6% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.2996302Z [==                                     ] 7% Fetch remote repository...         
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.3021704Z [==                                     ] 7% Computing updates...               
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.3085271Z [===                                    ] 8% Computing updates...               
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.3198209Z [===                                    ] 10% Computing updates...              
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.6721573Z [===                                    ] 10% Installing Google APIs Intel x86_6
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.9021578Z [===                                    ] 10% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:47.9811237Z [====                                   ] 10% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:48.1448604Z [====                                   ] 11% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:48.3368508Z [====                                   ] 12% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:48.4889792Z [=====                                  ] 13% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:48.6466080Z [=====                                  ] 14% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:48.8134935Z [=====                                  ] 15% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:48.9194167Z [======                                 ] 15% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:49.1322392Z [======                                 ] 16% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:49.3952490Z [======                                 ] 17% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:49.6061453Z [=======                                ] 18% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:49.8072740Z [=======                                ] 19% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:49.8845381Z [=======                                ] 20% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:49.9584737Z [========                               ] 20% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:50.1465983Z [========                               ] 21% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:50.2979638Z [========                               ] 22% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:50.4471781Z [=========                              ] 23% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:50.6349010Z [=========                              ] 24% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:50.7110006Z [=========                              ] 25% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:50.7841141Z [==========                             ] 25% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:50.9706281Z [==========                             ] 26% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:51.1198723Z [==========                             ] 27% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:51.3074214Z [===========                            ] 28% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:51.4551993Z [===========                            ] 29% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:51.5283546Z [===========                            ] 30% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:51.6397733Z [============                           ] 30% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:51.7867598Z [============                           ] 31% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:51.9345020Z [============                           ] 32% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:51.9354038Z [============                           ] 33% Downloading x86_64-36_r07.zip...  
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:51.9656048Z [============                           ] 33% Unzipping...                      
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:51.9656797Z [============                           ] 33% Unzipping... x86_64/NOTICE.txt    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.0825904Z [=============                          ] 33% Unzipping... x86_64/NOTICE.txt    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.2012490Z [=============                          ] 33% Unzipping... x86_64/VerifiedBootPa
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.2012973Z [=============                          ] 33% Unzipping... x86_64/advancedFeatur
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.2020795Z [=============                          ] 33% Unzipping... x86_64/build.prop    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.2021337Z [=============                          ] 33% Unzipping... x86_64/data/empty_dat
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.2021847Z [=============                          ] 33% Unzipping... x86_64/data/local.pro
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.2022269Z [=============                          ] 33% Unzipping... x86_64/data/misc/Gold
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.2024390Z [=============                          ] 33% Unzipping... x86_64/data/misc/emul
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.2037630Z [=============                          ] 33% Unzipping... x86_64/data/misc/mode
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.3121089Z [=============                          ] 33% Unzipping... x86_64/data/misc/pixe
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.4310229Z [=============                          ] 33% Unzipping... x86_64/encryptionkey.
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.6701062Z [=============                          ] 33% Unzipping... x86_64/kernel-ranchu 
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.6701907Z [=============                          ] 33% Unzipping... x86_64/kernel_cmdline
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.7990141Z [=============                          ] 33% Unzipping... x86_64/ramdisk.img   
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:52.7996684Z [=============                          ] 33% Unzipping... x86_64/source.propert
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:53.4017734Z [=============                          ] 33% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:53.8648440Z [=============                          ] 34% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:54.3691560Z [=============                          ] 35% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:54.6673590Z [==============                         ] 35% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:55.4655280Z [==============                         ] 36% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:56.1431359Z [==============                         ] 37% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:56.7658635Z [===============                        ] 38% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:57.3993317Z [===============                        ] 39% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:57.8191829Z [===============                        ] 40% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:58.1575042Z [================                       ] 40% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:58.9751722Z [================                       ] 41% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T09:59:59.6080339Z [================                       ] 42% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:00.3698365Z [=================                      ] 43% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:01.0658201Z [=================                      ] 44% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:01.6004171Z [=================                      ] 45% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:01.9323182Z [==================                     ] 45% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:02.8653221Z [==================                     ] 46% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:03.5831327Z [==================                     ] 47% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:04.5710794Z [===================                    ] 48% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:05.3629920Z [===================                    ] 49% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:05.9443160Z [===================                    ] 50% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:06.3364389Z [====================                   ] 50% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:07.3656732Z [====================                   ] 51% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:08.2142759Z [====================                   ] 52% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:09.2526147Z [=====================                  ] 53% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:10.0805357Z [=====================                  ] 54% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:22.0503317Z [=====================                  ] 55% Unzipping... x86_64/system.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:23.2170344Z [=====================                  ] 55% Unzipping... x86_64/vendor.img    
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:23.2170976Z [=======================================] 100% Unzipping... x86_64/vendor.img   
+silent-ui	Run android-actions/setup-android@v3	2026-10-29T10:00:23.3214759Z 
+silent-ui	Run gradle/actions/setup-gradle@v4	﻿2026-10-29T10:00:23.3757445Z ##[group]Run gradle/actions/setup-gradle@v4
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3757652Z with:
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3757783Z   cache-disabled: false
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3757924Z   cache-read-only: false
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3758067Z   cache-write-only: false
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3758219Z   cache-overwrite-existing: false
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3758396Z   cache-cleanup: on-success
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3758569Z   gradle-home-cache-includes: caches
+silent-ui	Run gradle/actions/setup-gradle@v4	notifications
+silent-ui	Run gradle/actions/setup-gradle@v4	
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3758765Z   add-job-summary: always
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3758925Z   add-job-summary-as-pr-comment: never
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3759096Z   dependency-graph: disabled
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3759282Z   dependency-graph-report-dir: dependency-graph-reports
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3759499Z   dependency-graph-continue-on-failure: true
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3759681Z   build-scan-publish: false
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3759828Z   validate-wrappers: true
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3759975Z   allow-snapshot-wrappers: false
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3760137Z   gradle-home-cache-strict-match: false
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3760356Z   workflow-job-context: null
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3761964Z   github-token: ***
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3762091Z env:
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3762271Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3762557Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3762798Z   ANDROID_HOME: /usr/local/lib/android/sdk
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3762974Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.3763139Z ##[endgroup]
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.6549688Z Merged default JDK locations into /home/runner/.m2/toolchains.xml
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.6552567Z Preparing cache for cleanup.
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.6557409Z ##[group]Restore Gradle state from cache
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:23.8253887Z Cache hit for restore-key: gradle-home-v1|Linux-X64|silent-ui[eb6bdc87d0a76725fb28ff2ce891ca1c]-5bf664434ca303d26069e59287cc0e3c3a55a497
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.0158225Z Received 71303168 of 129713315 (55.0%), 68.0 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.3749222Z Received 129713315 of 129713315 (100.0%), 91.0 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.3751489Z Cache Size: ~124 MB (129713315 B)
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.3815546Z [command]/usr/bin/tar -xf /home/runner/work/_temp/16930a42-2038-4b5a-b4e0-c4c24a937c3b/cache.tzst -P -C /home/runner/work/SleepWell/SleepWell --use-compress-program unzstd
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.6093274Z Cache restored successfully
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.6156978Z Restored cache entry with key gradle-home-v1|Linux-X64|silent-ui[eb6bdc87d0a76725fb28ff2ce891ca1c]-2d3891e199d5015b8010507827661bb315311421 to /home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.setup-gradle in 1958ms
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.8168725Z Cache hit for: gradle-dependencies-v1-665aea723c7a7ad19ae67a1d27bfffea
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.8253645Z Cache hit for: gradle-groovy-dsl-v1-5b306772b3c08e9c5ecc5d35f49ad708
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.8504626Z Cache hit for: gradle-instrumented-jars-v1-1afab69ce5807b6851b8bdc8bccfe323
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.8811564Z Cache hit for: gradle-wrapper-zips-v1-5ae5d3da5e8e0c748d04bcdd9bc97bdb
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.8892345Z Cache hit for: gradle-transforms-v1-eb7db521e285ded2b39f3efa49e07a7e
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.9432740Z Received 135725 of 135725 (100.0%), 2.6 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.9433292Z Cache Size: ~0 MB (135725 B)
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.9445976Z [command]/usr/bin/tar -xf /home/runner/work/_temp/9110bed0-cb28-4436-ab6f-e4c36488305f/cache.tzst -P -C /home/runner/work/SleepWell/SleepWell --use-compress-program unzstd
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.9662632Z Cache restored successfully
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:25.9667345Z Restored cache entry with key gradle-instrumented-jars-v1-1afab69ce5807b6851b8bdc8bccfe323 to /home/runner/.gradle/caches/jars-*/*/ in 349ms
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:26.5075746Z Received 244975 of 244975 (100.0%), 0.6 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:26.5076300Z Cache Size: ~0 MB (244975 B)
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:26.5120545Z [command]/usr/bin/tar -xf /home/runner/work/_temp/26c369c9-f198-428b-8160-5687005a6254/cache.tzst -P -C /home/runner/work/SleepWell/SleepWell --use-compress-program unzstd
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:26.5455575Z Cache restored successfully
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:26.5457085Z Restored cache entry with key gradle-groovy-dsl-v1-5b306772b3c08e9c5ecc5d35f49ad708 to /home/runner/.gradle/caches/*/groovy-dsl/*/ in 928ms
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:27.0107503Z Received 75497472 of 203012338 (37.2%), 71.9 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:27.1134958Z Received 75497472 of 188757705 (40.0%), 72.0 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:27.1489755Z Received 54525952 of 136693460 (39.9%), 52.0 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:27.7476460Z Received 203012338 of 203012338 (100.0%), 111.4 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:27.7477409Z Cache Size: ~194 MB (203012338 B)
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:27.7555421Z [command]/usr/bin/tar -xf /home/runner/work/_temp/c40b66af-0f3b-46dd-ba37-0c3cc6b0fe8d/cache.tzst -P -C /home/runner/work/SleepWell/SleepWell --use-compress-program unzstd
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:27.8465664Z Received 188757705 of 188757705 (100.0%), 103.9 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:27.8466345Z Cache Size: ~180 MB (188757705 B)
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:27.8492554Z [command]/usr/bin/tar -xf /home/runner/work/_temp/9fb91c14-b082-4e77-aa01-97cfe899b9e0/cache.tzst -P -C /home/runner/work/SleepWell/SleepWell --use-compress-program unzstd
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:28.0607768Z Cache restored successfully
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:28.0735314Z Restored cache entry with key gradle-dependencies-v1-665aea723c7a7ad19ae67a1d27bfffea to /home/runner/.gradle/caches/modules-*/files-*/*/*/*/* in 2455ms
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:28.1492670Z Received 130023424 of 136693460 (95.1%), 62.0 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:29.1003785Z Cache restored successfully
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:29.1092792Z Restored cache entry with key gradle-transforms-v1-eb7db521e285ded2b39f3efa49e07a7e to /home/runner/.gradle/caches/transforms-4/*/,/home/runner/.gradle/caches/*/transforms/*/ in 3492ms
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:29.1496724Z Received 130023424 of 136693460 (95.1%), 41.3 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:30.1503119Z Received 130023424 of 136693460 (95.1%), 31.0 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:31.1508156Z Received 134217728 of 136693460 (98.2%), 25.6 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:32.1523124Z Received 134217728 of 136693460 (98.2%), 21.3 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:32.2714026Z Received 136693460 of 136693460 (100.0%), 21.3 MBs/sec
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:32.2714548Z Cache Size: ~130 MB (136693460 B)
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:32.2728980Z [command]/usr/bin/tar -xf /home/runner/work/_temp/3f5679ee-0c3b-4d25-bc51-91b8d0384b6e/cache.tzst -P -C /home/runner/work/SleepWell/SleepWell --use-compress-program unzstd
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:32.4633558Z Cache restored successfully
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:32.4699490Z Restored cache entry with key gradle-wrapper-zips-v1-5ae5d3da5e8e0c748d04bcdd9bc97bdb to /home/runner/.gradle/wrapper/dists/gradle-8.14.3-bin/cv11ve7ro1n3o1j4so8xd9n66 in 6853ms
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:32.4761351Z ##[endgroup]
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:32.5337736Z ##[group]All Gradle Wrapper jars are valid
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:32.5338736Z ✓ Found known Gradle Wrapper JAR files:
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:32.5339352Z   7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172 gradle/wrapper/gradle-wrapper.jar
+silent-ui	Run gradle/actions/setup-gradle@v4	2026-10-29T10:00:32.5340087Z ##[endgroup]
+silent-ui	Build application and allowlisted test APK	﻿2026-10-29T10:00:32.5673206Z ##[group]Run chmod +x gradlew
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5673509Z ^[[36;1mchmod +x gradlew^[[0m
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5673776Z ^[[36;1m./gradlew assembleDebug assembleDebugAndroidTest --console=plain^[[0m
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5694317Z shell: /usr/bin/bash -e {0}
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5694708Z env:
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5694918Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5695238Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5695495Z   ANDROID_HOME: /usr/local/lib/android/sdk
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5695695Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5695946Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5696151Z   GRADLE_USER_HOME: /home/runner/.gradle
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5696344Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5696540Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5696826Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5697192Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5697402Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:32.5697581Z ##[endgroup]
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:33.2561583Z Starting a Gradle Daemon (subsequent builds will be faster)
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:41.0552861Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:41.0564030Z > Configure project :app
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:41.0564646Z WARNING: The option setting 'android.experimental.lint.version=9.4.1' is experimental.
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:42.5576392Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:42.5600745Z > Task :app:preBuild UP-TO-DATE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:42.5601487Z > Task :app:preDebugBuild UP-TO-DATE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:42.5602064Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:42.6564554Z > Task :app:javaPreCompileDebug FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:42.9548525Z > Task :app:generateDebugResValues FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:42.9551579Z > Task :app:checkDebugAarMetadata
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:43.1567230Z > Task :app:mapDebugSourceSetPaths
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:43.2547016Z > Task :app:generateDebugResources
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:44.7558032Z > Task :app:packageDebugResources
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:45.3550669Z > Task :app:mergeDebugResources
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:45.4550676Z > Task :app:createDebugCompatibleScreenManifests
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:45.4551376Z > Task :app:extractDeepLinksDebug FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:45.4551629Z > Task :app:parseDebugLocalResources
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:45.6543652Z > Task :app:processDebugMainManifest
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:45.8565766Z > Task :app:processDebugManifest
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:45.9542930Z > Task :app:mergeDebugShaders
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:45.9544143Z > Task :app:processDebugManifestForPackage
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:46.1566583Z > Task :app:compileDebugShaders NO-SOURCE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:46.1591534Z > Task :app:generateDebugAssets UP-TO-DATE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:46.4562008Z > Task :app:mergeDebugAssets
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:47.0544107Z > Task :app:compressDebugAssets FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:47.0549219Z > Task :app:desugarDebugFileDependencies FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:47.0552586Z > Task :app:processDebugJavaRes NO-SOURCE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:47.2561864Z > Task :app:processDebugResources
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:48.0572973Z > Task :app:mergeDebugJavaResource
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:57.0541204Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:57.0543274Z > Task :app:compileDebugJavaWithJavac
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:57.0552054Z Note: Some input files use or override a deprecated API.
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:00:57.0556977Z Note: Recompile with -Xlint:deprecation for details.
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:12.8541660Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:12.8544133Z > Task :app:dexBuilderDebug
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:13.0584149Z > Task :app:mergeDebugGlobalSynthetics
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:13.1549056Z > Task :app:mergeDebugJniLibFolders
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:13.1557773Z > Task :app:checkDebugDuplicateClasses
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:13.3570809Z > Task :app:mergeExtDexDebug FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:13.3591812Z > Task :app:mergeLibDexDebug FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:13.6542682Z > Task :app:mergeDebugNativeLibs
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:14.0540168Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:14.0550272Z > Task :app:stripDebugDebugSymbols
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:14.0553339Z Unable to strip the following libraries, packaging them as they are: libLiteRt.so, libface_detector_v2_jni.so, libimage_processing_util_jni.so, liblitert_jni.so, libonnxruntime.so, libonnxruntime4j_jni.so, libsurface_util_jni.so, libxeno_native.so. Run with --info option to learn more.
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.2544473Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.2559809Z > Task :app:validateSigningDebug
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.2560718Z > Task :app:writeDebugAppMetadata
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.2561253Z > Task :app:writeDebugSigningConfigVersions
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.5547146Z > Task :app:bundleDebugClassesToCompileJar
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.5552612Z > Task :app:preDebugAndroidTestBuild SKIPPED
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.5553357Z > Task :app:javaPreCompileDebugAndroidTest FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.6564060Z > Task :app:mergeProjectDexDebug
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.6564633Z > Task :app:checkDebugAndroidTestAarMetadata
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.6565119Z > Task :app:generateDebugAndroidTestResValues FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.7572103Z > Task :app:mapDebugAndroidTestSourceSetPaths
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.7601567Z > Task :app:generateDebugAndroidTestResources FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.7631269Z > Task :app:mergeDebugAndroidTestResources FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:15.9551992Z > Task :app:processDebugAndroidTestManifest
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:16.1559573Z > Task :app:processDebugAndroidTestResources FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:19.4540898Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:19.4543462Z Note: Some input files use or override a deprecated API.
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:19.4544054Z > Task :app:compileDebugAndroidTestJavaWithJavac
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:19.4554208Z Note: Recompile with -Xlint:deprecation for details.
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:20.2544807Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:20.2565565Z > Task :app:packageDebug
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:20.2566289Z > Task :app:createDebugApkListingFileRedirect
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:20.2566839Z > Task :app:assembleDebug
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:20.3541639Z > Task :app:mergeDebugAndroidTestShaders
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:20.3542283Z > Task :app:compileDebugAndroidTestShaders NO-SOURCE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:20.3542770Z > Task :app:generateDebugAndroidTestAssets UP-TO-DATE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:20.3543160Z > Task :app:mergeDebugAndroidTestAssets
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:20.4562044Z > Task :app:compressDebugAndroidTestAssets FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:20.4575266Z > Task :app:desugarDebugAndroidTestFileDependencies FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.7578562Z > Task :app:dexBuilderDebugAndroidTest
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.7609186Z > Task :app:processDebugAndroidTestJavaRes NO-SOURCE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.7613205Z > Task :app:mergeDebugAndroidTestGlobalSynthetics
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.8541687Z > Task :app:checkDebugAndroidTestDuplicateClasses
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.8542518Z > Task :app:mergeDebugAndroidTestJavaResource
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.8543082Z > Task :app:mergeExtDexDebugAndroidTest FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.8543643Z > Task :app:mergeLibDexDebugAndroidTest FROM-CACHE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.8544147Z > Task :app:mergeDebugAndroidTestJniLibFolders
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.8544698Z > Task :app:mergeDebugAndroidTestNativeLibs NO-SOURCE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.8545321Z > Task :app:stripDebugAndroidTestDebugSymbols NO-SOURCE
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.8550816Z > Task :app:validateSigningDebugAndroidTest
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:26.8551436Z > Task :app:writeDebugAndroidTestSigningConfigVersions
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.5544348Z > Task :app:mergeProjectDexDebugAndroidTest
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.6546337Z > Task :app:packageDebugAndroidTest
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.6555861Z > Task :app:createDebugAndroidTestApkListingFileRedirect
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.6556568Z > Task :app:assembleDebugAndroidTest
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.6557333Z gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1793268036684.json
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.7291553Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.7304501Z [Incubating] Problems report is available at: file:///home/runner/work/SleepWell/SleepWell/build/reports/problems/problems-report.html
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.7311262Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.7311780Z Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.7312718Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.7313385Z You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.7313960Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.7315201Z For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.7315895Z 
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.7316112Z BUILD SUCCESSFUL in 55s
+silent-ui	Build application and allowlisted test APK	2026-10-29T10:01:27.7316549Z 60 actionable tasks: 44 executed, 16 from cache
+silent-ui	Configure isolated Android renderer	﻿2026-10-29T10:01:28.0566194Z ##[group]Run echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-sleepwell-kvm.rules
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0566799Z ^[[36;1mecho 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-sleepwell-kvm.rules^[[0m
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0567172Z ^[[36;1msudo udevadm control --reload-rules^[[0m
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0567398Z ^[[36;1msudo udevadm trigger --name-match=kvm^[[0m
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0567648Z ^[[36;1mexport ANDROID_AVD_HOME="$RUNNER_TEMP/sleepwell-avds"^[[0m
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0567940Z ^[[36;1mexport ANDROID_USER_HOME="$RUNNER_TEMP/sleepwell-android"^[[0m
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0568247Z ^[[36;1mecho "ANDROID_AVD_HOME=$ANDROID_AVD_HOME" >> "$GITHUB_ENV"^[[0m
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0568540Z ^[[36;1mecho "ANDROID_USER_HOME=$ANDROID_USER_HOME" >> "$GITHUB_ENV"^[[0m
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0568823Z ^[[36;1mmkdir -p "$ANDROID_AVD_HOME" "$ANDROID_USER_HOME"^[[0m
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0569358Z ^[[36;1mecho no | avdmanager create avd --name SleepWellSilent --path "$ANDROID_AVD_HOME/SleepWellSilent.avd" --package 'system-images;android-36;google_apis;x86_64' --device pixel_7 --force^[[0m
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0587853Z shell: /usr/bin/bash -e {0}
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0588032Z env:
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0588242Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0588570Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0588836Z   ANDROID_HOME: /usr/local/lib/android/sdk
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0589045Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0589269Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0589484Z   GRADLE_USER_HOME: /home/runner/.gradle
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0589679Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0589881Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0590172Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0590634Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0590867Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0591052Z ##[endgroup]
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.0690715Z KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.7242766Z Loading local repository...                                                     
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.7244029Z [=========                              ] 25% Loading local repository...       
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.7244724Z [=========                              ] 25% Fetch remote repository...        
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.7245368Z [=======================================] 100% Fetch remote repository...       
+silent-ui	Configure isolated Android renderer	2026-10-29T10:01:28.8916967Z Auto-selecting single ABI x86_64
+silent-ui	Allowlisted UI checks and real Android captures	﻿2026-10-29T10:01:29.1837524Z ##[group]Run options=()
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1837744Z ^[[36;1moptions=()^[[0m
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1837965Z ^[[36;1mif [ "$NATIVE_SOUNDS" = "true" ]; then options+=(--native-sounds); fi^[[0m
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1838275Z ^[[36;1mif [ "$AUDIO_IMPORTS" = "true" ]; then options+=(--audio-imports); fi^[[0m
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1838654Z ^[[36;1mpython3 scripts/ci_silent_ui.py --serial emulator-5554 --scope "${REVIEW_SCOPE:-full}" "${options[@]}"^[[0m
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1856668Z shell: /usr/bin/bash -e {0}
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1856849Z env:
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1857055Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1857370Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1857626Z   ANDROID_HOME: /usr/local/lib/android/sdk
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1857824Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1858184Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1858384Z   GRADLE_USER_HOME: /home/runner/.gradle
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1858616Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1858811Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1859091Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1859393Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1859600Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1859815Z   ANDROID_AVD_HOME: /home/runner/work/_temp/sleepwell-avds
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1860072Z   ANDROID_USER_HOME: /home/runner/work/_temp/sleepwell-android
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1860294Z   REVIEW_SCOPE: routine-audio
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1860736Z   NATIVE_SOUNDS: false
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1860887Z   AUDIO_IMPORTS: false
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:01:29.1861033Z ##[endgroup]
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:03:35.4422356Z ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs: PASS
+silent-ui	Allowlisted UI checks and real Android captures	2026-10-29T10:03:35.6129023Z Focused routine-audio review passed:1 classes/1 methods/26 images. Full app review NOT executed.
+silent-ui	Run actions/upload-artifact@v4	﻿2026-10-29T10:03:37.6985956Z ##[group]Run actions/upload-artifact@v4
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6986167Z with:
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6986314Z   name: silent-android-review
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6986483Z   path: captures/ci/
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6986630Z   retention-days: 7
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6986782Z   if-no-files-found: warn
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6986941Z   compression-level: 6
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6987091Z   overwrite: false
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6987239Z   include-hidden-files: false
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6987395Z env:
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6987590Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6987901Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6988157Z   ANDROID_HOME: /usr/local/lib/android/sdk
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6988352Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6988575Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6988779Z   GRADLE_USER_HOME: /home/runner/.gradle
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6988967Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6989182Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6989463Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6989765Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6989972Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6990188Z   ANDROID_AVD_HOME: /home/runner/work/_temp/sleepwell-avds
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6990620Z   ANDROID_USER_HOME: /home/runner/work/_temp/sleepwell-android
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.6990834Z ##[endgroup]
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.8260257Z (node:3327) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.8260957Z (Use `node --trace-deprecation ...` to show where the warning was created)
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.8364114Z With the provided path, there will be 36 files uploaded
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.8368671Z Artifact name is valid!
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:37.8368946Z Root directory input is valid!
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:38.1799085Z Beginning upload of artifact content to blob storage
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:38.2977818Z (node:3327) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:38.8470662Z Uploaded bytes 3635058
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:38.8964447Z Finished uploading artifact content to blob storage!
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:38.8965137Z SHA256 digest of uploaded artifact zip is 38f6eb8d5d55602e053d321fc1fcae2bd91137c094ad0e9ed649dad6014bdf34
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:38.8965608Z Finalizing artifact upload
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:39.3980976Z Artifact silent-android-review.zip successfully finalized. Artifact ID 12888617305
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:39.3982365Z Artifact silent-android-review has been successfully uploaded! Final size is 3635058 bytes. Artifact ID is 12888617305
+silent-ui	Run actions/upload-artifact@v4	2026-10-29T10:03:39.3985862Z Artifact download URL: https://github.com/omeyerrato/SleepWell/actions/runs/40853867058/artifacts/12888617305
+silent-ui	Post Run gradle/actions/setup-gradle@v4	﻿2026-10-29T10:03:39.4220224Z Post job cleanup.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:39.6315378Z In post-action step
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:39.6323228Z ##[group]Stopping Gradle daemons
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:39.6324018Z Stopping Gradle daemons for /home/runner/.gradle/wrapper/dists/gradle-8.14.3-bin/cv11ve7ro1n3o1j4so8xd9n66/gradle-8.14.3
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:39.6335178Z [command]/home/runner/.gradle/wrapper/dists/gradle-8.14.3-bin/cv11ve7ro1n3o1j4so8xd9n66/gradle-8.14.3/bin/gradle --stop
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:40.1201526Z Stopping Daemon(s)
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:40.1203358Z 1 Daemon stopped
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:40.1319767Z ##[endgroup]
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:40.1350976Z ##[group]Provision Gradle >= 8.14.3
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:43.2448719Z Gradle version 9.8.2 is available at /usr/bin/gradle and >= 8.14.3. Not installing.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:43.2449697Z ##[endgroup]
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:43.2451755Z ##[group]Executing Gradle to clean up caches
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:43.2452259Z Cleaning up caches last used before 1793268023655
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:43.2454632Z [command]/usr/bin/gradle -g /home/runner/.gradle -I init.gradle --info --no-daemon --no-scan --build-cache -DGITHUB_DEPENDENCY_GRAPH_ENABLED=false -DGRADLE_ACTIONS_SKIP_BUILD_RESULT_CAPTURE=true noop
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:43.5345772Z Initialized native services in: /home/runner/.gradle/native
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:43.5361549Z Initialized jansi services in: /home/runner/.gradle/native
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:43.6571854Z The current JVM process isn't compatible with build requirement. The maximum heap size is insufficient.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:43.6572767Z 
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:43.9570662Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.2/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:44.0575108Z Starting process 'Gradle build daemon'. Working directory: /home/runner/.gradle/daemon/9.8.2 Command: /usr/lib/jvm/temurin-21-jdk-amd64/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED --add-opens=java.base/java.time=ALL-UNNAMED -XX:MaxMetaspaceSize=384m -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant -cp /usr/share/gradle-9.8.2/lib/gradle-daemon-main-9.8.2.jar -javaagent:/usr/share/gradle-9.8.2/lib/agents/gradle-instrumentation-agent-9.8.2.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 9.8.2
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:44.0579826Z Successfully started process 'Gradle build daemon'
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:48.2568816Z An attempt to start the daemon took 4.317 secs.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:48.3568749Z The client will now receive all logging from the daemon (pid: 3467). The daemon log file: /home/runner/.gradle/daemon/9.8.2/daemon-3467.out.log
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:48.3569401Z Daemon will be stopped at the end of the build 
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:49.3572240Z Using 4 worker leases.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:49.4571571Z Operational build model parameters: {cachingModelBuilding=false, configurationCache=false, configurationCacheDisabledReason=null, configurationCacheParallelLoad=false, configurationCacheParallelStore=false, configureOnDemand=false, invalidateCoupledProjects=false, isolatedProjects=false, isolatedProjectsDiagnostics=false, isolatedProjectsDangerouslyIgnoreProblems=false, modelAsProjectDependency=false, modelBuilding=false, parallelModelBuilding=false, parallelProjectConfiguration=false, parallelProjectExecution=false, vintage=true}
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:50.1569283Z Received JVM installation metadata from '/usr/lib/jvm/temurin-21-jdk-amd64': {JAVA_HOME=/usr/lib/jvm/temurin-21-jdk-amd64, JAVA_VERSION=21.0.13, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.13+9-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.13+9-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=amd64}
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:50.4567970Z Watching the file system is configured to be enabled if available
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:50.4568471Z Now considering [/home/runner/work/_temp/dummy-cleanup-project] as hierarchies to watch
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:50.4568785Z File system watching is active
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:50.9567494Z Caching disabled for Groovy DSL script compilation (cp_init) because:
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:50.9568030Z   Build cache is disabled
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:50.9568246Z   Not worth caching.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:50.9568683Z Compiling initialization script '/home/runner/work/_temp/dummy-cleanup-project/init.gradle' using SubsetScriptTransformer.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:51.6567745Z Caching disabled for Groovy DSL script compilation (init) because:
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:51.6568185Z   Build cache is disabled
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:51.6568412Z   Not worth caching.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:51.7568563Z Compiling initialization script '/home/runner/work/_temp/dummy-cleanup-project/init.gradle' using BuildScriptTransformer.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.2567842Z gradle/actions: Not capturing build results
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.3568704Z Starting Build
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.4581469Z Settings evaluated using settings file '/home/runner/work/_temp/dummy-cleanup-project/settings.gradle'.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.4583087Z Using local directory build cache for the root build (location = /home/runner/.gradle/caches/build-cache-1, remove unused entries = older than 2026-10-29 10:00:23 UTC).
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.5573983Z Projects loaded. Root project using build file '/home/runner/work/_temp/dummy-cleanup-project/build.gradle'.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.5574961Z Included projects: [root project 'dummy-cleanup-project']
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.7567855Z 
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.7578396Z > Configure project :
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.7582534Z Evaluating root project 'dummy-cleanup-project' using build file '/home/runner/work/_temp/dummy-cleanup-project/build.gradle'.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.7583459Z All projects evaluated.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.7584779Z Task name matched 'noop'
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.7585831Z Selected primary task 'noop' from project :
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.8581877Z Tasks to be executed: [task ':noop']
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.8582569Z Tasks that were excluded: []
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.8591198Z Resolve mutations for :noop (Thread[#51,Execution worker,5,main]) started.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.8591771Z :noop (Thread[#51,Execution worker,5,main]) started.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.8592008Z 
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.8592150Z > Task :noop UP-TO-DATE
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.8592471Z Skipping task ':noop' as it has no actions.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.8592721Z 
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.8592851Z BUILD SUCCESSFUL in 9s
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.8594494Z Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.2/userguide/configuration_cache_enabling.html
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.8595503Z Build cache (/home/runner/.gradle/caches/build-cache-1) removing files not accessed on or after Thu Oct 29 10:00:23 UTC 2026.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9568891Z Build cache (/home/runner/.gradle/caches/build-cache-1) cleanup deleted 15 files/directories.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9570235Z Build cache (/home/runner/.gradle/caches/build-cache-1) cleaned up in 0.028 secs.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9571266Z groovy-dsl removing files not accessed on or after Thu Oct 29 10:00:23 UTC 2026.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9571933Z groovy-dsl cleanup deleted 4 files/directories.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9572489Z groovy-dsl cleaned up in 0.021 secs.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9577082Z jars (/home/runner/.gradle/caches/jars-9) cleanup deleted 0 files/directories.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9577702Z jars (/home/runner/.gradle/caches/jars-9) removing files not accessed on or after Thu Oct 29 10:00:23 UTC 2026.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9578574Z jars (/home/runner/.gradle/caches/jars-9) cleanup deleted 2 files/directories.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9579138Z jars (/home/runner/.gradle/caches/jars-9) cleaned up in 0.008 secs.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9579898Z artifact cache (/home/runner/.gradle/caches/modules-2) cleanup deleted 0 files/directories.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9580997Z artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/resources-2.1] cleanup deleted 0 files/directories.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9582135Z artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/resources-2.1] removing files not accessed on or after Thu Oct 29 10:00:23 UTC 2026.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9582855Z artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/resources-2.1] cleanup deleted 0 files/directories.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9583511Z artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/files-2.1] cleanup deleted 0 files/directories.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9584219Z artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/files-2.1] removing files not accessed on or after Thu Oct 29 10:00:23 UTC 2026.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9980361Z artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/files-2.1] cleanup deleted 0 files/directories.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9986651Z artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/metadata-2.107] cleanup deleted 0 files/directories.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9987816Z artifact cache (/home/runner/.gradle/caches/modules-2) cleanup deleted 0 files/directories.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:52.9988351Z artifact cache (/home/runner/.gradle/caches/modules-2) cleaned up in 0.035 secs.
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:53.0800184Z ##[endgroup]
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:53.0800951Z ##[group]Caching Gradle state
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:53.3305719Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/SleepWell/SleepWell --files-from manifest.txt --use-compress-program zstdmt
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:53.3650870Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/SleepWell/SleepWell --files-from manifest.txt --use-compress-program zstdmt
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:55.0937356Z Sent 131072 of 135131 (97.0%), 0.1 MBs/sec
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:55.0937680Z Sent 131072 of 242569 (54.0%), 0.1 MBs/sec
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:55.2597101Z Sent 135131 of 135131 (100.0%), 0.1 MBs/sec
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:55.3149015Z Sent 242569 of 242569 (100.0%), 0.1 MBs/sec
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:55.4775276Z Saved cache entry with key gradle-instrumented-jars-v1-6976398e3110a5c86b8599dbcb20ef48 from /home/runner/.gradle/caches/jars-*/*/ in 2163ms
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:55.5028263Z Saved cache entry with key gradle-groovy-dsl-v1-9021a94695e350a431e83a9c8aa00eea from /home/runner/.gradle/caches/*/groovy-dsl/*/ in 2167ms
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:55.5932676Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/SleepWell/SleepWell --files-from manifest.txt --use-compress-program zstdmt
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:56.9064006Z Sent 218529 of 134436257 (0.2%), 0.2 MBs/sec
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:57.9064576Z Sent 218529 of 134436257 (0.2%), 0.1 MBs/sec
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:58.9065516Z Sent 67327393 of 134436257 (50.1%), 21.4 MBs/sec
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:59.9078408Z Sent 67327393 of 134436257 (50.1%), 16.0 MBs/sec
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:03:59.9918033Z Sent 134436257 of 134436257 (100.0%), 31.4 MBs/sec
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:04:00.1902227Z Saved cache entry with key gradle-home-v1|Linux-X64|silent-ui[eb6bdc87d0a76725fb28ff2ce891ca1c]-2d3891e199d5015b8010507827661bb315311421 from /home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.setup-gradle in 4603ms
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:04:00.1903602Z ##[endgroup]
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:04:00.1907510Z Generating Job Summary
+silent-ui	Post Run gradle/actions/setup-gradle@v4	2026-10-29T10:04:00.1918457Z Completed post-action step
+silent-ui	Post Run actions/setup-java@v4	﻿2026-10-29T10:04:00.3127928Z Post job cleanup.
+silent-ui	Post Run actions/setup-java@v4	2026-10-29T10:04:00.4345222Z (node:3560) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+silent-ui	Post Run actions/setup-java@v4	2026-10-29T10:04:00.4345803Z (Use `node --trace-deprecation ...` to show where the warning was created)
+silent-ui	Post Run actions/checkout@v4	﻿2026-10-29T10:04:00.4518659Z Post job cleanup.
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.5281372Z [command]/usr/bin/git version
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.5338852Z git version 2.56.0
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.5372697Z Temporarily overriding HOME='/home/runner/work/_temp/2867c387-4969-46f0-b8e2-b867db6b15c5' before making global git config changes
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.5373616Z Adding repository directory to the temporary git global config as a safe directory
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.5377443Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SleepWell/SleepWell
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.5421134Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.5480706Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.5789430Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.5822567Z http.https://github.com/.extraheader
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.5832752Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.5893394Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.6132279Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+silent-ui	Post Run actions/checkout@v4	2026-10-29T10:04:00.6176591Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+silent-ui	Complete job	﻿2026-10-29T10:04:00.6535789Z Cleaning up orphan processes
+silent-ui	Complete job	2026-10-29T10:04:00.6841974Z Terminate orphan process: pid (2916) (adb)
+silent-ui	Complete job	2026-10-29T10:04:00.6891514Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-java@v4, actions/upload-artifact@v4, android-actions/setup-android@v3, gradle/actions/setup-gradle@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

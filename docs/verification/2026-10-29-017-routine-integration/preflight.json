@@ -1,0 +1,113 @@
+{
+  "run": 40853867058,
+  "tested_head": "2d3891e199d5015b8010507827661bb315311421",
+  "production_source": "02aacc6b122cb1e2c50486190ece608f8d5e3e87",
+  "app_tree": "6ebd894db19c224ee83cf39a4e483b570107a98a",
+  "main_tree": "f6180f2b5f395826833bf59d7d3b13e301a7497f",
+  "scope": "routine-audio",
+  "routineSlice": "audio",
+  "method": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+  "expected_methods": 1,
+  "required_originals": [
+    "routine-audio-parent.png",
+    "routine-audio-math.png",
+    "routine-audio-memory-recreated.png",
+    "routine-audio-permission.png",
+    "routine-audio-speech-idle.png",
+    "routine-audio-speech-progress.png",
+    "routine-audio-speech-recreated.png",
+    "routine-audio-laughter-idle.png",
+    "routine-audio-laughter-progress.png",
+    "routine-audio-cleanup-error.png",
+    "routine-audio-cleanup-recreated.png",
+    "routine-audio-loud-baseline.png",
+    "routine-audio-loud-progress.png",
+    "routine-audio-note-idle.png",
+    "routine-audio-note-progress.png",
+    "routine-audio-note-recreated.png",
+    "routine-audio-phrase-idle.png",
+    "routine-audio-phrase-wrong.png",
+    "routine-audio-phrase-recreated.png",
+    "routine-audio-phrase-round2.png",
+    "routine-audio-fallback.png",
+    "routine-audio-motion-return.png",
+    "routine-audio-completed.png",
+    "routine-audio-random.png",
+    "routine-audio-random-recreated.png",
+    "routine-audio-random-completed.png"
+  ],
+  "method_timeout_seconds": 180,
+  "native_sounds": false,
+  "audio_imports": false,
+  "full_app_review": false,
+  "purpose": "Focused parent/audio/motion lifecycle and existing action regression after ComponentActivity Back migration.",
+  "coverage_limits": [
+    "Audio slice invokes actual Cancel/Listen/Retry/Math/Done buttons; it contains no direct onBackPressed or device.pressBack call.",
+    "This run does not execute gesture navigation or prove all nine migrated Activities.",
+    "Injected microphone, score and recognizer ports; no physical microphone/model/offline recognizer accuracy acceptance."
+  ],
+  "reference_boards": [
+    {
+      "path": "design-concepts/2026-10-22-phone-app/04-challenges.png",
+      "sha256": "b0613752e8d3ba3ce4743968d1abb2be3a710b7cf606fb50a877b9e06e48f739"
+    },
+    {
+      "path": "design-concepts/2026-10-22-phone-app/01-everyday.png",
+      "sha256": "e69ff57f5aa69abbb1ff60b791850daf84c2a16bd5d6c7db5ae6f72421f80c95"
+    }
+  ],
+  "pinned_files": [
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "git_blob": "025fff7250c2ade54e642c3cd2c07534d2a01994"
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "git_blob": "05adbfbae95960fc376784ac77bf16feb8eca96d"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ChallengeRoutineFlowTest.java",
+      "git_blob": "75affc7911c9ab92de05b779caf4619f3781bbcf"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/RoutinePracticeFixture.java",
+      "git_blob": "01eaa2ff9f339009cfe290236de8f5c6a269ec6a"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengePracticeActivity.java",
+      "git_blob": "6b6db3e2c4c948a25f9e92f9e5773b8f14b9faaa"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoutineAudioPracticeActivity.java",
+      "git_blob": "c482ad368598820b16f9981caa906cb5bb9cf7ba"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MotionChallengePracticeActivity.java",
+      "git_blob": "313e584aa22a0009972380a7981d78fba868ad92"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PracticeAudioAccess.java",
+      "git_blob": "25489ab3357f2732a3631b59f3db8ae12d892697"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PracticeAudioCapture.java",
+      "git_blob": "e9b6d69e54f8cc9545e0a7e79e68cb77f1cb4419"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PracticeChildTicket.java",
+      "git_blob": "e455fc06a96d9b819f0b1e6e62767336ab4ce859"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengePracticeSession.java",
+      "git_blob": "c66990a448bcfa849ea78a5942709ece5dbe7c64"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengePracticeScreen.java",
+      "git_blob": "2d871dce4d383d5f743f55855b44a72b85784800"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RandomChallenges.java",
+      "git_blob": "9c21fad8c5cbf6b29d5074499e6b35752f8b7605"
+    }
+  ]
+}

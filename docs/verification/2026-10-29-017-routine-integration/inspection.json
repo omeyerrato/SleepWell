@@ -1,0 +1,251 @@
+{
+  "run": 40853867058,
+  "tested_head": "2d3891e199d5015b8010507827661bb315311421",
+  "native_seconds": 32.298,
+  "required_originals": 26,
+  "raw_artifact_files": 36,
+  "reference": "Board04 left/middle and Board01 support; no per-audio-type layout exists in the supplied boards.",
+  "images": [
+    {
+      "file": "originals/routine-audio-parent.png",
+      "sha256": "e10fa57520f5aa840ed914f752bf9590e3ca2de5425536756c73ac6719eccc2e",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Initial Task 1 of 8 Math parent shows 17 + 14, all choices and fixed Cancel; warm landscape/card/progress family matches Board01 support. Platform status glyphs are white on amber.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-math.png",
+      "sha256": "355c794257c4a3cc0fbb198a58d77e6f377c1512e9f47513b20d82797c46b3a1",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Same initial 17 + 14 Math state has complete choices and Check practice answer, with dark platform glyphs now visible; no app-content overlap.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-memory-recreated.png",
+      "sha256": "4f0982a81b3efd31b68250e5c79f080328e83361ffc8e7cdd43f3c393bcfed29",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Task 2 of 8 retains the matched sun pair after recreation; all six equal-column cards, full board and fixed Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-permission.png",
+      "sha256": "d537ed02e5a53ffef3f7cdcc4e2e01b509d617902e5b5a0419dc8a123b4ff840",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Private Speak example shows complete one-line Practice listening title, Allow microphone and visibly dimmed disabled Listen; Math alternative and fixed Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-speech-idle.png",
+      "sha256": "fa8b3484edc63fa9e49d3255fe0a6e85b1c6e81b8ab1601599e9e7bf15cb36b4",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Access return leaves microphone off until explicit Listen; enabled Listen has full opacity, with complete speech/no-recording disclosure and fixed Cancel.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-speech-progress.png",
+      "sha256": "eacb8f56716c1f09ba0d19eb67c692e22f945de949d8f35df4dc3aa048cc7696",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "The real speech rule displays 1 of 2 speech windows from injected input; Stop listening, Math alternative and fixed Cancel remain complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-speech-recreated.png",
+      "sha256": "4c697479ce50a3f21473d8be81f9adbf72b6b691801e8fb21227e27fb07ccc5f",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Recreated speech child states microphone stopped and requires Listen for a new attempt; controls and two distinct status lines fit without overlap.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-laughter-idle.png",
+      "sha256": "761b3cdeab4abdd830b8c667fffb7e3ce6c26bbc54ce6a49a5f434abdca812a9",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Laughter instruction and experimental/unverified-bedroom-accuracy disclosure wrap cleanly; idle status, Listen, Math alternative and Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-laughter-progress.png",
+      "sha256": "ad2df805addeccd40353764f743a886a3924fb26923d96ca7dcdf41daa4d8500",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "The laughter rule displays 1 of 2 laughter windows; experimental disclosure, Stop listening and fixed Cancel remain readable.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-cleanup-error.png",
+      "sha256": "08a0089becda93bb0420ae4f54d0485104c5f8c49f688bd5b8519313c0444f48",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Failed microphone cleanup is explicitly unconfirmed; Retry microphone cleanup, Math alternative and Cancel are visible, while the passing method blocks premature completion.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-cleanup-recreated.png",
+      "sha256": "d70b86a81ac42d7c7597690e962d9bd9402fd9f06f7290d881e62f2a01d0fdb5",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Release microphone remains a complete one-line heading after recreation; unreleased-resource explanation, Retry and Cancel are separate and fully visible.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-loud-baseline.png",
+      "sha256": "8d05ca9650c6e5457de6de8378f9333ff5dd2629e0378bf9f67676335970a055",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Quiet baseline has reached 0 of 2 sound windows; relative-amplitude and comfortable-sound disclosure, Stop, Math alternative and Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-loud-progress.png",
+      "sha256": "a1507847f169abc32c85d91f2be7b0be9cefc1eed5c02b555cc7197918caa57c",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Loud sound shows 1 of 2 sound windows with complete non-calibrated-amplitude disclosure; Stop listening and fixed Cancel are unobscured.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-note-idle.png",
+      "sha256": "e45de57eb731c6fc635e4a63b5759e95d255e6f98f980e11d4464efd4d5c0a4a",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Musical note target C4, ±35 cents and 1.2 seconds are complete; microphone is off until Listen, and Math alternative/Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-note-progress.png",
+      "sha256": "1c401f052ddf6ad399646a4883d3b44c58c7eccb6910c0d1811485cb93a939ea",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Actual pitch estimator reports Target held · 32%; Stop listening, pitch qualification, Math alternative and Cancel remain complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-note-recreated.png",
+      "sha256": "e45de57eb731c6fc635e4a63b5759e95d255e6f98f980e11d4464efd4d5c0a4a",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "C4 target and tolerance survive recreation, with hold reset and microphone off; explicit Listen and fixed Cancel remain complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-phrase-idle.png",
+      "sha256": "17923eb0695e2efcd42f6f469a1e9c02c41ff3182a7dea197dec5a50e34a236c",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Good morning I am awake target and top-final/offline-English disclosure fit; idle status, Listen, Math alternative and Cancel remain readable.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-phrase-wrong.png",
+      "sha256": "ffdb95f55ddb2c5f04c9fc42c943d02adb3d0e8e85f910dbcf37030c06a8e794",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Wrong-final-text feedback and Heard: an unrelated phrase appear without advancement; Listen, Math alternative and fixed Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-phrase-recreated.png",
+      "sha256": "17923eb0695e2efcd42f6f469a1e9c02c41ff3182a7dea197dec5a50e34a236c",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Same first phrase target returns after Cancel/reopen and recreation; microphone remains off until Listen, with full disclosure and Cancel.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-phrase-round2.png",
+      "sha256": "490d1702af942942b86b363472f3bdce24ab8031d31aff065139acb5b487e279",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Today begins with a fresh start wraps cleanly as the second target; full disclosure, Listen, Math alternative and Cancel remain unobscured.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-fallback.png",
+      "sha256": "0adde33b106d5c9982de0444d0c08a44fe01cef38a125d3f3523c1c3458b9b95",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Actual Math replacement at Task 7 of 8, Round 2 of 2 shows 5 + 18, four choices, Check and fixed Cancel; warm parent styling retained.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-motion-return.png",
+      "sha256": "0814ac0005d9537c8aa3b9c10ac8fdbeccfa845037ef60d4a81ef7ead5dc0f7f",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Walk child routed from the audio routine shows 0/5 sensor-off state, Start step check, Math alternative and full Cancel; no automatic sensor start.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-completed.png",
+      "sha256": "cfb18d6951a219d3584cf239dcbb74594b377fd9d89a365297607e3c39b1d9a7",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Parent reports all 8 tasks completed in order; practice-only explanation, Practice again and fixed Done fit on cream.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-random.png",
+      "sha256": "ef53f5082fee558f5f07ffa91d5754cedc0f33a0237ab58e6e062599d1d5064c",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Random parent selects Musical note first with ±35-cent detail; example-selection details, Open practice step and fixed Cancel fit with dark platform glyphs.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-random-recreated.png",
+      "sha256": "ef53f5082fee558f5f07ffa91d5754cedc0f33a0237ab58e6e062599d1d5064c",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Same Musical note selection and two-task progress survive parent recreation; Open practice step, Cancel and dark platform glyphs remain complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-audio-random-completed.png",
+      "sha256": "a97c17adb507f7459268d2bd47705124e7c567cbda68dc182a7ae9664e9a3356",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Parent reports both random tasks complete with the honest two-entry/fixed-preview explanation; Try another example selection and fixed Done fit.",
+      "app_content_clipping_or_overlap_observed": false
+    }
+  ],
+  "acceptance": "Focused parent/audio/motion lifecycle and existing action regression pass; all observed app content fits.",
+  "limits": [
+    "Initial parent PNG has white platform status glyphs on amber; immediate Math and random/recreated frames are dark. Clean SystemUI acceptance is not claimed.",
+    "The audio slice uses actual buttons and lifecycle/recreation checks; no direct onBackPressed or device.pressBack is executed in this slice. No gesture proof or all-nine-Activity acceptance.",
+    "Injected PCM/score/recognizer and step ports exercise real rules, leases and workers; no physical capture, model accuracy, installed recognizer, actual permission/settings or hardware cleanup acceptance.",
+    "One API 36 emulator, 1080x2316 and 420 dpi; no alternate device, font, theme, assistive traversal or complete 36-screen acceptance."
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "run": 40853867058,
+  "artifact_id": 12888617305,
+  "name": "silent-android-review",
+  "zip_bytes": 3635058,
+  "zip_sha256": "38f6eb8d5d55602e053d321fc1fcae2bd91137c094ad0e9ed649dad6014bdf34",
+  "github_digest_matches": true,
+  "extracted_file_count": 36,
+  "every_extracted_file_byte_compared": true,
+  "files": [
+    {
+      "file": "originals/ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs.txt",
+      "bytes": 825,
+      "sha256": "b91b1c7238b083a3c1f4a1646cc81051369f85be2c7f9cde05ae6bc599793f1a"
+    },
+    {
+      "file": "originals/acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "file": "originals/avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    {
+      "file": "originals/emulator.log",
+      "bytes": 7484,
+      "sha256": "d0223d37ad7c9f95ac93ea4814d36d43cb5d8e5e747354296e71450ec0fdaa2f"
+    },
+    {
+      "file": "originals/environment.json",
+      "bytes": 695,
+      "sha256": "b27a5db8078bdd1b4c4cb83872cdfc68267104583137ca9776a5b481d86b4661"
+    },
+    {
+      "file": "originals/focused-review-summary.json",
+      "bytes": 359,
+      "sha256": "1276083edb982f187f53de112e5919d7b41ca9db1dc6b2bc3477018f5159a84e"
+    },
+    {
+      "file": "originals/guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+    },
+    {
+      "file": "originals/guest-logcat.txt",
+      "bytes": 558916,
+      "sha256": "6310ef560d1901ee3c0cc5c6178579c8a5aedaaac2cfd0c4eac14699fd2d946c"
+    },
+    {
+      "file": "originals/guest-windows.txt",
+      "bytes": 40255,
+      "sha256": "d3086a1497a051900256cbe0f3647989cac9ce6e22d30fff683b1516a64606d7"
+    },
+    {
+      "file": "originals/routine-audio-cleanup-error.png",
+      "bytes": 136929,
+      "sha256": "08a0089becda93bb0420ae4f54d0485104c5f8c49f688bd5b8519313c0444f48"
+    },
+    {
+      "file": "originals/routine-audio-cleanup-recreated.png",
+      "bytes": 67051,
+      "sha256": "d70b86a81ac42d7c7597690e962d9bd9402fd9f06f7290d881e62f2a01d0fdb5"
+    },
+    {
+      "file": "originals/routine-audio-completed.png",
+      "bytes": 65878,
+      "sha256": "cfb18d6951a219d3584cf239dcbb74594b377fd9d89a365297607e3c39b1d9a7"
+    },
+    {
+      "file": "originals/routine-audio-fallback.png",
+      "bytes": 260418,
+      "sha256": "0adde33b106d5c9982de0444d0c08a44fe01cef38a125d3f3523c1c3458b9b95"
+    },
+    {
+      "file": "originals/routine-audio-laughter-idle.png",
+      "bytes": 124110,
+      "sha256": "761b3cdeab4abdd830b8c667fffb7e3ce6c26bbc54ce6a49a5f434abdca812a9"
+    },
+    {
+      "file": "originals/routine-audio-loud-baseline.png",
+      "bytes": 142387,
+      "sha256": "8d05ca9650c6e5457de6de8378f9333ff5dd2629e0378bf9f67676335970a055"
+    },
+    {
+      "file": "originals/routine-audio-laughter-progress.png",
+      "bytes": 127595,
+      "sha256": "ad2df805addeccd40353764f743a886a3924fb26923d96ca7dcdf41daa4d8500"
+    },
+    {
+      "file": "originals/routine-audio-loud-progress.png",
+      "bytes": 141665,
+      "sha256": "a1507847f169abc32c85d91f2be7b0be9cefc1eed5c02b555cc7197918caa57c"
+    },
+    {
+      "file": "originals/routine-audio-math.png",
+      "bytes": 253430,
+      "sha256": "355c794257c4a3cc0fbb198a58d77e6f377c1512e9f47513b20d82797c46b3a1"
+    },
+    {
+      "file": "originals/routine-audio-memory-recreated.png",
+      "bytes": 234307,
+      "sha256": "4f0982a81b3efd31b68250e5c79f080328e83361ffc8e7cdd43f3c393bcfed29"
+    },
+    {
+      "file": "originals/routine-audio-motion-return.png",
+      "bytes": 89449,
+      "sha256": "0814ac0005d9537c8aa3b9c10ac8fdbeccfa845037ef60d4a81ef7ead5dc0f7f"
+    },
+    {
+      "file": "originals/routine-audio-note-idle.png",
+      "bytes": 112020,
+      "sha256": "e45de57eb731c6fc635e4a63b5759e95d255e6f98f980e11d4464efd4d5c0a4a"
+    },
+    {
+      "file": "originals/routine-audio-note-progress.png",
+      "bytes": 114342,
+      "sha256": "1c401f052ddf6ad399646a4883d3b44c58c7eccb6910c0d1811485cb93a939ea"
+    },
+    {
+      "file": "originals/routine-audio-note-recreated.png",
+      "bytes": 112020,
+      "sha256": "e45de57eb731c6fc635e4a63b5759e95d255e6f98f980e11d4464efd4d5c0a4a"
+    },
+    {
+      "file": "originals/routine-audio-parent.png",
+      "bytes": 252835,
+      "sha256": "e10fa57520f5aa840ed914f752bf9590e3ca2de5425536756c73ac6719eccc2e"
+    },
+    {
+      "file": "originals/routine-audio-permission.png",
+      "bytes": 114685,
+      "sha256": "d537ed02e5a53ffef3f7cdcc4e2e01b509d617902e5b5a0419dc8a123b4ff840"
+    },
+    {
+      "file": "originals/routine-audio-phrase-recreated.png",
+      "bytes": 130363,
+      "sha256": "17923eb0695e2efcd42f6f469a1e9c02c41ff3182a7dea197dec5a50e34a236c"
+    },
+    {
+      "file": "originals/routine-audio-phrase-idle.png",
+      "bytes": 130363,
+      "sha256": "17923eb0695e2efcd42f6f469a1e9c02c41ff3182a7dea197dec5a50e34a236c"
+    },
+    {
+      "file": "originals/routine-audio-phrase-round2.png",
+      "bytes": 134440,
+      "sha256": "490d1702af942942b86b363472f3bdce24ab8031d31aff065139acb5b487e279"
+    },
+    {
+      "file": "originals/routine-audio-phrase-wrong.png",
+      "bytes": 142561,
+      "sha256": "ffdb95f55ddb2c5f04c9fc42c943d02adb3d0e8e85f910dbcf37030c06a8e794"
+    },
+    {
+      "file": "originals/routine-audio-random-completed.png",
+      "bytes": 89139,
+      "sha256": "a97c17adb507f7459268d2bd47705124e7c567cbda68dc182a7ae9664e9a3356"
+    },
+    {
+      "file": "originals/routine-audio-random-recreated.png",
+      "bytes": 253825,
+      "sha256": "ef53f5082fee558f5f07ffa91d5754cedc0f33a0237ab58e6e062599d1d5064c"
+    },
+    {
+      "file": "originals/routine-audio-random.png",
+      "bytes": 253825,
+      "sha256": "ef53f5082fee558f5f07ffa91d5754cedc0f33a0237ab58e6e062599d1d5064c"
+    },
+    {
+      "file": "originals/routine-audio-speech-idle.png",
+      "bytes": 108457,
+      "sha256": "fa8b3484edc63fa9e49d3255fe0a6e85b1c6e81b8ab1601599e9e7bf15cb36b4"
+    },
+    {
+      "file": "originals/routine-audio-speech-progress.png",
+      "bytes": 110455,
+      "sha256": "eacb8f56716c1f09ba0d19eb67c692e22f945de949d8f35df4dc3aa048cc7696"
+    },
+    {
+      "file": "originals/routine-audio-speech-recreated.png",
+      "bytes": 116350,
+      "sha256": "4c697479ce50a3f21473d8be81f9adbf72b6b691801e8fb21227e27fb07ccc5f"
+    },
+    {
+      "file": "originals/startup-focus.txt",
+      "bytes": 246,
+      "sha256": "08ecf6dab7685f6c11b56e73fdac8a5b6161fa6a999e2cd6043bd694de77224d"
+    }
+  ]
+}
