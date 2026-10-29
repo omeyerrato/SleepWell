@@ -48,6 +48,7 @@ on:
           - room-settings-search
           - feature-search
           - editor-usability-integration
+          - sleep-mixer-reference
           - sensing-travel
           - travel-ui
           - travel-cue-cleanup

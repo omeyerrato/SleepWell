@@ -60,6 +60,7 @@ parser.add_argument("--scope", choices=(
     'room-settings-search',
     'feature-search',
     'editor-usability-integration',
+    'sleep-mixer-reference',
     'sensing-travel',
     'travel-ui',
     'travel-cue-cleanup',
@@ -430,6 +431,8 @@ elif args.scope == "calendar-consent-recovery":
     tests = ["CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft"]
 elif args.scope == "room-settings-search":
     tests = ["SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls"]
+elif args.scope == "sleep-mixer-reference":
+    tests = ["SoundSettingsFlowTest#silentChoicesRecreateAndReopenWithoutPlayback"]
 elif args.scope == "feature-search":
     tests = ["SearchFlowTest#queryResultsRecreationAndSavedRecordOpenUseRealControls"]
 elif args.scope == "editor-usability-integration":
@@ -531,6 +534,7 @@ if args.scope != "full":
         "contactless-status": ['sonar-setup-initial.png', 'sonar-setup-access-denied.png', 'sonar-setup-access-requesting.png', 'sonar-setup-access-returned.png', 'sonar-setup-ready.png', 'sonar-setup-route-blocked.png', 'sonar-setup-route-returned.png', 'sonar-setup-gain-changed.png', 'sonar-setup-retested.png', 'sonar-setup-reopened.png', 'sonar-setup-recreated.png'],
         "tonight-composition": ['arc-upcoming.png', 'arc-help.png', 'arc-start.png', 'arc-middle.png', 'arc-end.png', 'arc-next.png', 'arc-large.png', 'arc-large-action.png', 'arc-weekly.png', 'arc-off.png', 'arc-off-recreated.png', 'arc-weekday-recreated.png', 'arc-empty.png', 'arc-empty-action.png', 'arc-icon-page-1.png', 'arc-icon-page-2.png', 'arc-icon-page-3.png', 'arc-launcher-icons.png'],
         "room-settings-search": ROOM_SETTINGS_SEARCH_FRAMES,
+        "sleep-mixer-reference": ['sounds-settings-rain.png', 'sounds-settings-timer-draft.png', 'sounds-settings-timer-recreated.png', 'sounds-settings-fade-draft.png', 'sounds-settings-fade-recreated.png', 'sounds-settings-ocean.png', 'sounds-settings-recreated.png', 'sounds-settings-reopened.png', 'sounds-settings-custom-timer.png', 'sounds-settings-custom-fade.png', 'sounds-settings-menu.png', 'sounds-settings-sources.png', 'sounds-settings-playback.png', 'sounds-settings-menu-recreated.png'],
         "feature-search": ROOM_SETTINGS_SEARCH_FRAMES + ['search-feature-extra-loud.png', 'search-feature-alarm-choice.png', 'search-feature-chosen-extra-loud.png', 'search-feature-extra-loud-recreated.png', 'search-feature-reopened-extra-loud.png', 'search-feature-new-draft.png', 'search-feature-new-draft-recreated.png', 'search-feature-unsaved-draft.png', 'search-feature-query-restored.png', 'search-feature-report-editing.png', 'search-feature-report-history.png', 'search-feature-auto-detect.png', 'search-feature-protection.png'],
         "editor-usability-integration": ['routine-legacy.png', 'routine-catalog-empty.png', 'routine-catalog-search.png', 'routine-task-about.png', 'routine-task-values.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png', 'search-empty.png', 'search-room.png', 'search-no-results.png', 'search-record.png', 'search-recreated.png', 'search-feature-extra-loud.png', 'search-feature-alarm-choice.png', 'search-feature-chosen-extra-loud.png', 'search-feature-extra-loud-recreated.png', 'search-feature-reopened-extra-loud.png', 'search-feature-new-draft.png', 'search-feature-new-draft-recreated.png', 'search-feature-unsaved-draft.png', 'search-feature-query-restored.png', 'search-feature-report-editing.png', 'search-feature-report-history.png', 'search-feature-auto-detect.png', 'search-feature-protection.png'],
         "chart-phone-motion": ['chart-clock-overnight.png', 'chart-clock-night.png', 'chart-clock-short.png', 'chart-clock-fold.png', 'chart-clock-phone-history.png', 'chart-clock-phone-selected.png', 'chart-clock-phone-paused.png', 'chart-clock-phone-retry.png', 'chart-clock-tracking-main.png', 'chart-clock-tracking-options.png', 'chart-clock-tracking-returned.png', 'chart-clock-tracking-paused.png', 'chart-clock-tracking-recreated.png', 'chart-clock-tracking-session.png'],
