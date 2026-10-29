@@ -1,0 +1,233 @@
+{
+  "run": 40840665476,
+  "tested_head": "47677c4be37297ead851740153065e0614e7c587",
+  "reference": "Board04 left/middle with Board01 support",
+  "native_seconds": 47.033,
+  "required_originals": 24,
+  "raw_artifact_files_byte_compared": 34,
+  "images": [
+    {
+      "file": "attempt-1/routine-camera-parent.png",
+      "sha256": "3a7dc511af179ea752e57f1505c44f12d93480bf81e664d5d9ae500b48478df4",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Actual Math/Memory/QR Bathroom rows, available tasks, Preview routine and fixed Save fit; Board04 left hierarchy retained.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-math.png",
+      "sha256": "5d3c0718a3b015383b26c57ca24d4697d31d6e05954405b715106494b5e5a8f6",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Warm preview shows Task1 of3, complete two-digit question, four choices, Check practice answer and fixed Cancel.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-memory-recreated.png",
+      "sha256": "f0c9460a7f925538568327b9f6b5c4b4a63a43ba6e01ec9ef8259de8fe5d0b82",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Warm Task2 of3 retains one matched sun pair, complete six-card board and fixed Cancel after recreation.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-permission.png",
+      "sha256": "67c5df39a6ae9c605b8e19bb032bf558fe182f85da06e52ff3fb714b5f8aea7b",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Cream QR child has short header, full preview and Math alternative; Allow camera, visibly dimmed disabled Start and Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-qr-idle.png",
+      "sha256": "ad66adedf23e95cfd261b06e4dba5c427fc9343b5a805cb061c9e35aa490515f",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Access checked after recreation; no synthetic camera panel yet, explicit Start and fixed Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-qr-wrong.png",
+      "sha256": "91ca0dd4381be4e29e6cf7a785bbfa61c8041805824d37c89304b5585b5a8193",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Synthetic input label visible; wrong-code notice fits with Math alternative and fixed Stop/Cancel.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-earned-cleanup.png",
+      "sha256": "d173f90725489f62992857dbc9b6e033d0d5e66fd8a880da4ed7d2f8a191c1a2",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Check earned remains releasing, cleanup error is readable; Math alternative visibly disabled and fixed Retry/Cancel complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-earned-recreated.png",
+      "sha256": "d173f90725489f62992857dbc9b6e033d0d5e66fd8a880da4ed7d2f8a191c1a2",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Same earned/releasing state survives recreation; no Start offered, disabled alternative and fixed Retry/Cancel remain readable.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-qr-completed.png",
+      "sha256": "9f4ed5dc5a91a69f987951601e3a89ee86086d75f1dadd491bad88ce868e03e4",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Actual parent completion for all3tasks after release; Practice again and fixed Done fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-picture-idle.png",
+      "sha256": "658cf1a06a7c75013b98cfc6334b249bf559984f82d3f639c4bbba412c57fb54",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Synthetic tiles reference instruction wraps cleanly; explicit Start, Math alternative and fixed Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-picture-progress.png",
+      "sha256": "040b1b857c4a5381772c23d7e5c2a3bfe63533d1b9f70c5a578f2dfdebb0c9df",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Synthetic preview and Hold steady2of3 frames visible; Stop/Cancel and alternative fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-picture-recreated.png",
+      "sha256": "1278b904fa8490331e4536967d44e9d1f7ef4704068f8d1552edb59b06994b5c",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Partial attempt is paused after recreation; explicit new Start, Math alternative and Cancel remain complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-smile-idle.png",
+      "sha256": "77fcb5456fd3abe165053dbb243e59f9598f9723adeb60877337de3d09219fe5",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Expression-estimate instruction, camera-off panel and explicit Start/Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-smile-progress.png",
+      "sha256": "7d1c854de9cada7cabba7da1c4b723cbc423a95c2eb2161fb919ab03745ff704",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Synthetic input label and33percent genuine hold progress fit with fixed Stop/Cancel.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-pose-idle.png",
+      "sha256": "1d38efe3be1d709f205a69843a57f81d6547eb0a78763d349eb46fc446c1fe05",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Upper-body/hands-raised1.2second instruction is complete; Start/Cancel and alternative fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-pose-progress.png",
+      "sha256": "4b76b74730dec2a5eeea49083efa1941cf207c019387510dfb9548a865c5ab41",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Synthetic input label and41percent hold status fit; fixed Stop/Cancel remain complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-light-idle.png",
+      "sha256": "18f4c932c50e80be2998c04bfc638e15640297a32b226a55ef48d90face17ac8",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "75percent relative image-brightness target and1.2second instruction readable; full Start/Cancel.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-light-progress.png",
+      "sha256": "fa3e84df8275ec736c89f72bec1e9cbfa97d1230d0d2d171099a1e20d7aed9b0",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Synthetic input,94percent brightness and41percent hold readable; full Stop/Cancel and alternative.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-object-idle.png",
+      "sha256": "2092f070700721252bc64be6d3a231f144954ea1f18863e63fbc58bf1c1f544e",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Coffee mug and experimental-estimate instruction fit on cream; Start/Cancel remain complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-object-progress.png",
+      "sha256": "91762ad8474f8b48c5855a16447ecd1554b148a8ea7c8f0d37cb36ac6c182268",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Synthetic input,33percent object hold and Math alternative fit; complete fixed Stop/Cancel.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-completed.png",
+      "sha256": "58bbce29079a3a3cc74fd2f72339edf1eae26aff65a67f2069cfcdf8131e430b",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Five remaining camera tasks completed in order; parent completion copy, Practice again and fixed Done fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-random.png",
+      "sha256": "4292fdf8c80bfddfc1a42476fef7c6b325691e289321478a7f98f2bd66bdcaf6",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Warm QR Bathroom parent retains example-details/open-step/cancel actions; platform status icons are white on amber.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-random-recreated.png",
+      "sha256": "6e31bb6e0772edab503fcd15c24c6a506d721a4cdde60af11ae55506d94f72a0",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Same QR Bathroom selection and actual controls retained after recreation; platform status icons now dark.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "attempt-1/routine-camera-random-completed.png",
+      "sha256": "b9c7df4d139118204721d3e725c9efeed469063337baa513e958cd8d2c8d6df6",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "All3selected tasks complete; Speak exclusion and one Math fallback explanation readable above Try another selection and fixed Done.",
+      "app_content_clipping_or_overlap_observed": false
+    }
+  ],
+  "limits": [
+    "Synthetic camera inputs visibly labelled; no physical camera, model accuracy or detector runtime acceptance.",
+    "One random-parent screenshot has white platform status icons on amber; recreated frame has dark icons. Broader SystemUI contrast remains open.",
+    "One API36 emulator at1080x2316,420dpi; no alternate font/theme/device or36-screen acceptance.",
+    "Supporting busy/cancel/fallback/forgery/cleanup invariants are source assertions in the passing method, not additional screenshot claims."
+  ],
+  "acceptance": "Functional pass; UI-qualified for repeated idle/access copy and internal release terminology."
+}

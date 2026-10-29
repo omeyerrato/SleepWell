@@ -1,0 +1,130 @@
+{
+  "base": "cd9e0f0d8195359a3cdaadf3c62d60c0d7a780e5",
+  "scope": "routine-camera",
+  "method": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+  "routineSlice": "camera",
+  "expected_methods": 1,
+  "method_timeout_seconds": 180,
+  "native_sounds": false,
+  "audio_imports": false,
+  "full_app_review": false,
+  "required_originals": [
+    "routine-camera-parent.png",
+    "routine-camera-math.png",
+    "routine-camera-memory-recreated.png",
+    "routine-camera-permission.png",
+    "routine-camera-qr-idle.png",
+    "routine-camera-qr-wrong.png",
+    "routine-camera-earned-cleanup.png",
+    "routine-camera-earned-recreated.png",
+    "routine-camera-qr-completed.png",
+    "routine-camera-picture-idle.png",
+    "routine-camera-picture-progress.png",
+    "routine-camera-picture-recreated.png",
+    "routine-camera-smile-idle.png",
+    "routine-camera-smile-progress.png",
+    "routine-camera-pose-idle.png",
+    "routine-camera-pose-progress.png",
+    "routine-camera-light-idle.png",
+    "routine-camera-light-progress.png",
+    "routine-camera-object-idle.png",
+    "routine-camera-object-progress.png",
+    "routine-camera-completed.png",
+    "routine-camera-random.png",
+    "routine-camera-random-recreated.png",
+    "routine-camera-random-completed.png"
+  ],
+  "prior_maps_defaults_unchanged": true,
+  "manifest_change": "one nonexported private Activity only",
+  "unchanged_backend_and_enrollment_paths": [
+    "QrCodeActivity.java",
+    "MorningTagSetup.java",
+    "QrScanSession.java",
+    "CameraTaskOwner.java",
+    "QrCamera.java",
+    "PictureCamera.java",
+    "SmileCamera.java",
+    "PoseCamera.java",
+    "ObjectCamera.java",
+    "CameraLightCamera.java",
+    "ObjectClassifier.java",
+    "PracticeChildTicket.java",
+    "RandomChallenges.java"
+  ],
+  "source_commit": "a8ef0e17e070a0fbec8c1e3a8c319eb1f846de62",
+  "tested_head": "47677c4be37297ead851740153065e0614e7c587",
+  "production_tree": "0c27b7953d89dda1a7f0c3ad7d2ee6283cdcb77f",
+  "backend_prerequisites": [
+    "768a9ad3423e002183f6f78e19901b9dd74f1ad2",
+    "cd9e0f0d8195359a3cdaadf3c62d60c0d7a780e5",
+    "5162613bafc9431e9f1a07da05cff8c6f25cdfc6"
+  ],
+  "local_backend_proof_cherry_pick": "01fd68cc2ceb1b5cc0964e592c392b169b14df49",
+  "reference_boards": [
+    {
+      "path": "design-concepts/2026-10-22-phone-app/04-challenges.png",
+      "sha256": "b0613752e8d3ba3ce4743968d1abb2be3a710b7cf606fb50a877b9e06e48f739"
+    },
+    {
+      "path": "design-concepts/2026-10-22-phone-app/01-everyday.png",
+      "sha256": "e69ff57f5aa69abbb1ff60b791850daf84c2a16bd5d6c7db5ae6f72421f80c95"
+    }
+  ],
+  "pinned_files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PracticeCameraAccess.java",
+      "git_blob": "cf9f1302f3d052686ddd81d15a0ef6486932331b",
+      "repository_sha256": "4e41ba2d3d3f0d80358073590e4a1a828bf58e242dc544422105f171f867f5bf"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PracticeCameraTasks.java",
+      "git_blob": "5d6fa20ec7a1c7a54d0481675838dd02d6232207",
+      "repository_sha256": "81db439be130249a8d700ae8597ecc785f14aab32b4b406d7bb5622a70d98e00"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoutineCameraPracticeActivity.java",
+      "git_blob": "37b3ba743744163f603ddb91c21b1e8f0f0fdd40",
+      "repository_sha256": "8557a3c69bef25e370d863e4f2eebb2c4451fb1a7a0a7836a5e6869babebb5d4"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengePracticeActivity.java",
+      "git_blob": "73909abd009308138cd33c2bdc90d34bea26c1ea",
+      "repository_sha256": "88814d86881945a2669ba02e737acdb83423d12538a8e893447b2190de4ac72b"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengePracticeScreen.java",
+      "git_blob": "2d871dce4d383d5f743f55855b44a72b85784800",
+      "repository_sha256": "81f38ed42bafc66af828fd94f028b42546f8d5a7271ec131733dfeeb11574b46"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengePracticeSession.java",
+      "git_blob": "c66990a448bcfa849ea78a5942709ece5dbe7c64",
+      "repository_sha256": "42747242bdcd0c159f9efa10c411de2c54be513601b4693a31a107352575dcd6"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "git_blob": "dd6323a6b2775c5c7869a2022aa2f393683b36c9",
+      "repository_sha256": "1a1e6acb6a61d68ac486252fa39bd446e18bf8df7a93b4684833804478bb2827"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/CameraCleanupProof.java",
+      "git_blob": "af0ff5903f6abdd19d7371b87951f0ff4f5eef14",
+      "repository_sha256": "3887ce10623fee14b77de41af5a41ccf35f353e559bb6c2e8ff28711ac6a0ece"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/CameraPracticeFixture.java",
+      "git_blob": "6227fb211b0395cca62e890ee13f8fa09e361488",
+      "repository_sha256": "7d9133b3285be2155e0a61fca601b08cd15391f7875774edc1c8c570762697db"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ChallengeRoutineFlowTest.java",
+      "git_blob": "99f11d674ef000bcbb003d43382e08059e665917",
+      "repository_sha256": "2102dfad9796a6a69d3ae17fb34dcc2064982534fb70266bb51373f0ae6a5e5f"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/RoutinePracticeFixture.java",
+      "git_blob": "dfb6f6486327cffb0710350985ff51853a074bbe",
+      "repository_sha256": "6b2bc5adf788cd3c6ffeafacc6251105a9562b42e4d8bbaf4772cbe2119f4226"
+    }
+  ]
+}

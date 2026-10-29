@@ -1,0 +1,596 @@
+{
+  "run": 40844350768,
+  "tested_head": "f88fe04acf92d4c8e3cd25c3d565c1a2f1e54ab7",
+  "production_tree": "7c73b69ce223d34f77b8fff5ed40cf3be2b83163",
+  "reference": "Board04 left/middle with Board01 support",
+  "reference_files": [
+    {
+      "path": "design-concepts/2026-10-22-phone-app/04-challenges.png",
+      "sha256": "b0613752e8d3ba3ce4743968d1abb2be3a710b7cf606fb50a877b9e06e48f739"
+    },
+    {
+      "path": "design-concepts/2026-10-22-phone-app/01-everyday.png",
+      "sha256": "e69ff57f5aa69abbb1ff60b791850daf84c2a16bd5d6c7db5ae6f72421f80c95"
+    }
+  ],
+  "native_seconds": 53.322,
+  "required_originals": 24,
+  "raw_artifact_files": 34,
+  "method": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+  "method_pass": true,
+  "failures": [],
+  "output_flags": {
+    "native_sounds": false,
+    "audio_imports": false,
+    "import_process_restart": false
+  },
+  "images": [
+    {
+      "file": "originals/routine-camera-parent.png",
+      "sha256": "66d0f549d99eae65dcb1b0dbe4cfdf783bc133100dff3896df16ad4e09549494",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Actual editor retains the three numbered Math, Memory and QR Bathroom rows, available tasks, More task types, Preview routine and fixed Save routine; cream Board04 hierarchy fits.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-math.png",
+      "sha256": "6eb3eb0e17bb175f3fd2f3eb24821516572435d622fe0030cb0c5525f4077be3",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Amber Task 1 of 3 shows 6 + 14, all four choices, Check practice answer and fixed Cancel preview without overlap; platform status glyphs are white on amber.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-memory-recreated.png",
+      "sha256": "e5f13bd5a0d163793a57c945383ca50e5f4b473923bde936313114dd99c8c6c9",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Task 2 of 3 retains the matched sun pair after recreation; all six cards, warm header and fixed Cancel preview are complete, with dark platform glyphs.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-permission.png",
+      "sha256": "0f0df60131bb329c900495228b96140c2e29483b091271db55156aea8b86dc8e",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Cream QR child shows one camera-off sentence, unavailable-example status, privacy copy and Math alternative; Allow camera, visibly disabled Start and Cancel practice step fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-qr-idle.png",
+      "sha256": "d055072d2873a396afc73ed72c8bc5e41d53ca4d7a9c2ed21ac66299c263ba73",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "QR Bathroom idle child has one camera-off sentence and no duplicate access-success status; explicit Start, Math alternative and fixed Cancel practice step fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-qr-wrong.png",
+      "sha256": "aa2b7a9164a5b035bab287a9ca25ebb90bf36fa338c7b0a2fa28beba65de7cfd",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Synthetic input preview is labelled No physical camera; wrong enrolled-code feedback, privacy copy, Math alternative and fixed Stop camera/Cancel are readable.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-earned-cleanup.png",
+      "sha256": "1e0b6ecaff272fbe917d9c232d443db80c5d701b90543533bfbc963e58a7b5b1",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "QR passed result remains finishing after closing fails; plain closing-error copy and Close camera fit, with Math alternative visibly disabled and Cancel complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-earned-recreated.png",
+      "sha256": "1e0b6ecaff272fbe917d9c232d443db80c5d701b90543533bfbc963e58a7b5b1",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "The same passed-but-finishing QR status remains after recreation; no Start appears, and disabled Math, Close camera and Cancel remain complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-qr-completed.png",
+      "sha256": "4d602d9b78dd9a9f1c3e2d8fa008b5523d8c7d22788acd3830863068294c0869",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Actual parent reports all 3 tasks completed in order after release; practice-only explanation, Practice again and fixed Done fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-picture-idle.png",
+      "sha256": "e9398d9f9b3f72a6057a9090462d3c0219ae8ab09765b2cce426f4ff30404886",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Short Picture match header and three-matching-frame Synthetic tiles instruction wrap cleanly; one camera-off sentence, Math alternative and Start/Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-picture-progress.png",
+      "sha256": "d4e8411644d68b0dd3c6eccd2c972fef44188b75bfe4254c676aae775ce7b6a2",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Picture synthetic panel and Hold steady · 2 of 3 frames status are readable; privacy copy, Math alternative and fixed Stop camera/Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-picture-recreated.png",
+      "sha256": "6ac2a4340621e11be0db064f007de4861668c6f70ff0fb7cd7d9b2c9ad732864",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Picture child returns paused after recreation with a new-attempt instruction and no duplicate camera-off sentence; explicit Start, Math alternative and Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-smile-idle.png",
+      "sha256": "d3bf38923987615b36916c86507914528dc6176f4d8ce24b52fe4153555ab0e1",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Smile instruction includes the expression-estimate qualification; one camera-off sentence, privacy copy, Math alternative and explicit Start/Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-smile-progress.png",
+      "sha256": "ffec31131ec627c29dfaf2d2be6a52527fe9a45cf73585b3ab2128ba18acabf1",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Smile synthetic panel and Hold your smile · 33% status fit below the complete instruction; Math alternative and fixed Stop camera/Cancel remain readable.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-pose-idle.png",
+      "sha256": "58421f8511cecc16b94ca8126045c53599c8ba27eb6c0db46bf3a2434673c92d",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Pose instruction fully shows upper body and both hands raised for 1.2 seconds; one camera-off sentence, Math alternative and Start/Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-pose-progress.png",
+      "sha256": "89c4cad5aab1c70f8b159a650c404963c5c224f0cd9bdb66060e3aa22f6a6763",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Pose synthetic panel and Hold both hands up · 41% progress are complete; privacy copy, Math alternative and Stop camera/Cancel remain separate.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-light-idle.png",
+      "sha256": "5d6413fa1b0b67e1f6a42da62106d27414ad63a685d97896435a0c8ea8d185e1",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Camera light instruction fully states 75% image brightness for 1.2 seconds; idle panel, privacy copy, Math alternative and Start/Cancel fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-light-progress.png",
+      "sha256": "ac69edcadd3f0d3c823b78b7416d0414b31eeb807f12f0a49aac777473a270c3",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Camera light synthetic preview and 94% brightness · hold 41% are readable; Math alternative and fixed Stop camera/Cancel are complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-object-idle.png",
+      "sha256": "7814bb04d69a7ec5eb0939e17d768f38c422fc090d7ef6a750ba4e657a353d58",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Object recognition header fits on one line; coffee-mug and experimental-object-estimate instruction wraps cleanly above the single idle sentence and Start/Cancel.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-object-progress.png",
+      "sha256": "04ce710320665bb34189a2e7097f3dc8b1612d8a5e564fbb42fc6ae09304e752",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Object synthetic panel and Hold the selected object steady · 33% fit with privacy copy; Math alternative and fixed Stop camera/Cancel remain complete.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-completed.png",
+      "sha256": "e46b8c21c8fe52acf37f8f765a2f9da51e4e562982e9034bf9e7ed256e8fa49d",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Parent reports all 5 remaining camera tasks completed in order; practice-only explanation, Practice again and fixed Done fit on cream.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-random.png",
+      "sha256": "6347aa79ca9ff4a01467b61c457bc4f8a61c9ef7c048f0bb98a2139836806fa6",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Fresh random parent retains QR Bathroom, example-selection details, explicit Open practice step and fixed Cancel preview; white platform status glyphs remain on amber.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-random-recreated.png",
+      "sha256": "be5b64ee8245b0f0b02281fb03ef58922a74d2591b4e6db754f5e9c821588dc3",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "The same QR Bathroom selection and app controls survive parent recreation; platform status glyphs are now dark on amber.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/routine-camera-random-completed.png",
+      "sha256": "21ccf3329996a489993302d3b1528e090b0ae10851dc29c069e60c66a44c8a5c",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Random completion reports all 3 tasks and explains 2 eligible entries, one Math replacement and Speak exclusion; Try another example selection and fixed Done fit.",
+      "app_content_clipping_or_overlap_observed": false
+    }
+  ],
+  "raw_artifact_inventory": [
+    {
+      "file": "originals/acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "file": "originals/avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    {
+      "file": "originals/ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs.txt",
+      "bytes": 825,
+      "sha256": "e9fe3a1f3840a399d279dee3ccfb77c4afdfc7191977a71442181348682bbc56"
+    },
+    {
+      "file": "originals/emulator.log",
+      "bytes": 7335,
+      "sha256": "9fd200e3a214953cb36c6732d70414dae21094e70bb718fe9701a54eaaa20c4b"
+    },
+    {
+      "file": "originals/environment.json",
+      "bytes": 668,
+      "sha256": "6d047211b095f680cb777a306f8b2b5e4eb6d9c87cc67447377cbe5efee8c416"
+    },
+    {
+      "file": "originals/focused-review-summary.json",
+      "bytes": 360,
+      "sha256": "4a5aaa5b1bf0b51e6d2ec9ca09fa9ad8172626f84e2209eda81c90eae5218318"
+    },
+    {
+      "file": "originals/guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+    },
+    {
+      "file": "originals/guest-logcat.txt",
+      "bytes": 487020,
+      "sha256": "c5d61422d468e8b25ebe4f735fe10e5424b10a3c18a21d668204839ff2ec204f"
+    },
+    {
+      "file": "originals/guest-windows.txt",
+      "bytes": 40211,
+      "sha256": "dbdc7db45cd059865c750d93d480fbc67158222417be4d54aebee758bfb1735c"
+    },
+    {
+      "file": "originals/routine-camera-completed.png",
+      "bytes": 65275,
+      "sha256": "e46b8c21c8fe52acf37f8f765a2f9da51e4e562982e9034bf9e7ed256e8fa49d"
+    },
+    {
+      "file": "originals/routine-camera-earned-cleanup.png",
+      "bytes": 96406,
+      "sha256": "1e0b6ecaff272fbe917d9c232d443db80c5d701b90543533bfbc963e58a7b5b1"
+    },
+    {
+      "file": "originals/routine-camera-earned-recreated.png",
+      "bytes": 96406,
+      "sha256": "1e0b6ecaff272fbe917d9c232d443db80c5d701b90543533bfbc963e58a7b5b1"
+    },
+    {
+      "file": "originals/routine-camera-light-idle.png",
+      "bytes": 92244,
+      "sha256": "5d6413fa1b0b67e1f6a42da62106d27414ad63a685d97896435a0c8ea8d185e1"
+    },
+    {
+      "file": "originals/routine-camera-light-progress.png",
+      "bytes": 97940,
+      "sha256": "ac69edcadd3f0d3c823b78b7416d0414b31eeb807f12f0a49aac777473a270c3"
+    },
+    {
+      "file": "originals/routine-camera-math.png",
+      "bytes": 251290,
+      "sha256": "6eb3eb0e17bb175f3fd2f3eb24821516572435d622fe0030cb0c5525f4077be3"
+    },
+    {
+      "file": "originals/routine-camera-memory-recreated.png",
+      "bytes": 233105,
+      "sha256": "e5f13bd5a0d163793a57c945383ca50e5f4b473923bde936313114dd99c8c6c9"
+    },
+    {
+      "file": "originals/routine-camera-object-idle.png",
+      "bytes": 93682,
+      "sha256": "7814bb04d69a7ec5eb0939e17d768f38c422fc090d7ef6a750ba4e657a353d58"
+    },
+    {
+      "file": "originals/routine-camera-object-progress.png",
+      "bytes": 100195,
+      "sha256": "04ce710320665bb34189a2e7097f3dc8b1612d8a5e564fbb42fc6ae09304e752"
+    },
+    {
+      "file": "originals/routine-camera-parent.png",
+      "bytes": 190774,
+      "sha256": "66d0f549d99eae65dcb1b0dbe4cfdf783bc133100dff3896df16ad4e09549494"
+    },
+    {
+      "file": "originals/routine-camera-permission.png",
+      "bytes": 101038,
+      "sha256": "0f0df60131bb329c900495228b96140c2e29483b091271db55156aea8b86dc8e"
+    },
+    {
+      "file": "originals/routine-camera-picture-idle.png",
+      "bytes": 91182,
+      "sha256": "e9398d9f9b3f72a6057a9090462d3c0219ae8ab09765b2cce426f4ff30404886"
+    },
+    {
+      "file": "originals/routine-camera-picture-progress.png",
+      "bytes": 95950,
+      "sha256": "d4e8411644d68b0dd3c6eccd2c972fef44188b75bfe4254c676aae775ce7b6a2"
+    },
+    {
+      "file": "originals/routine-camera-picture-recreated.png",
+      "bytes": 94029,
+      "sha256": "6ac2a4340621e11be0db064f007de4861668c6f70ff0fb7cd7d9b2c9ad732864"
+    },
+    {
+      "file": "originals/routine-camera-pose-idle.png",
+      "bytes": 89400,
+      "sha256": "58421f8511cecc16b94ca8126045c53599c8ba27eb6c0db46bf3a2434673c92d"
+    },
+    {
+      "file": "originals/routine-camera-pose-progress.png",
+      "bytes": 93039,
+      "sha256": "89c4cad5aab1c70f8b159a650c404963c5c224f0cd9bdb66060e3aa22f6a6763"
+    },
+    {
+      "file": "originals/routine-camera-qr-completed.png",
+      "bytes": 65539,
+      "sha256": "4d602d9b78dd9a9f1c3e2d8fa008b5523d8c7d22788acd3830863068294c0869"
+    },
+    {
+      "file": "originals/routine-camera-qr-idle.png",
+      "bytes": 86850,
+      "sha256": "d055072d2873a396afc73ed72c8bc5e41d53ca4d7a9c2ed21ac66299c263ba73"
+    },
+    {
+      "file": "originals/routine-camera-qr-wrong.png",
+      "bytes": 90387,
+      "sha256": "aa2b7a9164a5b035bab287a9ca25ebb90bf36fa338c7b0a2fa28beba65de7cfd"
+    },
+    {
+      "file": "originals/routine-camera-random-completed.png",
+      "bytes": 111540,
+      "sha256": "21ccf3329996a489993302d3b1528e090b0ae10851dc29c069e60c66a44c8a5c"
+    },
+    {
+      "file": "originals/routine-camera-random-recreated.png",
+      "bytes": 250537,
+      "sha256": "be5b64ee8245b0f0b02281fb03ef58922a74d2591b4e6db754f5e9c821588dc3"
+    },
+    {
+      "file": "originals/routine-camera-random.png",
+      "bytes": 250043,
+      "sha256": "6347aa79ca9ff4a01467b61c457bc4f8a61c9ef7c048f0bb98a2139836806fa6"
+    },
+    {
+      "file": "originals/routine-camera-smile-idle.png",
+      "bytes": 89059,
+      "sha256": "d3bf38923987615b36916c86507914528dc6176f4d8ce24b52fe4153555ab0e1"
+    },
+    {
+      "file": "originals/routine-camera-smile-progress.png",
+      "bytes": 93047,
+      "sha256": "ffec31131ec627c29dfaf2d2be6a52527fe9a45cf73585b3ab2128ba18acabf1"
+    },
+    {
+      "file": "originals/startup-focus.txt",
+      "bytes": 246,
+      "sha256": "01ba168047562f9687669aad618e4b02fb6d63e4641cef500d22ca47881e2142"
+    },
+    {
+      "file": "attempt-1/acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "file": "attempt-1/avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    {
+      "file": "attempt-1/ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs.txt",
+      "bytes": 825,
+      "sha256": "81b48b62fd289e1fefb9e4a0d3fd6b54c697714d7ca91a8e50727de9c16797fb"
+    },
+    {
+      "file": "attempt-1/emulator.log",
+      "bytes": 7545,
+      "sha256": "8653b6b6768906999a60364166aa267b656f66a7cfbf0997ba059de3c882acf2"
+    },
+    {
+      "file": "attempt-1/environment.json",
+      "bytes": 668,
+      "sha256": "19a960cbfb35f893b36fa7c4eec7d5062c9c622c3920279b4b6d47bc378994c0"
+    },
+    {
+      "file": "attempt-1/focused-review-summary.json",
+      "bytes": 360,
+      "sha256": "4a5aaa5b1bf0b51e6d2ec9ca09fa9ad8172626f84e2209eda81c90eae5218318"
+    },
+    {
+      "file": "attempt-1/guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+    },
+    {
+      "file": "attempt-1/guest-logcat.txt",
+      "bytes": 565924,
+      "sha256": "a34a43327953970d3f89261bc58995543a6459b05708612b489a39f08e1a62a7"
+    },
+    {
+      "file": "attempt-1/guest-windows.txt",
+      "bytes": 40338,
+      "sha256": "d4470d99304f195cf6be9986ba888e6b298c7458ff11b2d125f0abe3acc35882"
+    },
+    {
+      "file": "attempt-1/routine-camera-completed.png",
+      "bytes": 64824,
+      "sha256": "58bbce29079a3a3cc74fd2f72339edf1eae26aff65a67f2069cfcdf8131e430b"
+    },
+    {
+      "file": "attempt-1/routine-camera-earned-cleanup.png",
+      "bytes": 109746,
+      "sha256": "d173f90725489f62992857dbc9b6e033d0d5e66fd8a880da4ed7d2f8a191c1a2"
+    },
+    {
+      "file": "attempt-1/routine-camera-earned-recreated.png",
+      "bytes": 109746,
+      "sha256": "d173f90725489f62992857dbc9b6e033d0d5e66fd8a880da4ed7d2f8a191c1a2"
+    },
+    {
+      "file": "attempt-1/routine-camera-light-idle.png",
+      "bytes": 106054,
+      "sha256": "18f4c932c50e80be2998c04bfc638e15640297a32b226a55ef48d90face17ac8"
+    },
+    {
+      "file": "attempt-1/routine-camera-light-progress.png",
+      "bytes": 102884,
+      "sha256": "fa3e84df8275ec736c89f72bec1e9cbfa97d1230d0d2d171099a1e20d7aed9b0"
+    },
+    {
+      "file": "attempt-1/routine-camera-math.png",
+      "bytes": 255868,
+      "sha256": "5d3c0718a3b015383b26c57ca24d4697d31d6e05954405b715106494b5e5a8f6"
+    },
+    {
+      "file": "attempt-1/routine-camera-memory-recreated.png",
+      "bytes": 228272,
+      "sha256": "f0c9460a7f925538568327b9f6b5c4b4a63a43ba6e01ec9ef8259de8fe5d0b82"
+    },
+    {
+      "file": "attempt-1/routine-camera-object-idle.png",
+      "bytes": 107224,
+      "sha256": "2092f070700721252bc64be6d3a231f144954ea1f18863e63fbc58bf1c1f544e"
+    },
+    {
+      "file": "attempt-1/routine-camera-object-progress.png",
+      "bytes": 104962,
+      "sha256": "91762ad8474f8b48c5855a16447ecd1554b148a8ea7c8f0d37cb36ac6c182268"
+    },
+    {
+      "file": "attempt-1/routine-camera-parent.png",
+      "bytes": 190464,
+      "sha256": "3a7dc511af179ea752e57f1505c44f12d93480bf81e664d5d9ae500b48478df4"
+    },
+    {
+      "file": "attempt-1/routine-camera-permission.png",
+      "bytes": 114789,
+      "sha256": "67c5df39a6ae9c605b8e19bb032bf558fe182f85da06e52ff3fb714b5f8aea7b"
+    },
+    {
+      "file": "attempt-1/routine-camera-picture-idle.png",
+      "bytes": 104883,
+      "sha256": "658cf1a06a7c75013b98cfc6334b249bf559984f82d3f639c4bbba412c57fb54"
+    },
+    {
+      "file": "attempt-1/routine-camera-picture-progress.png",
+      "bytes": 100542,
+      "sha256": "040b1b857c4a5381772c23d7e5c2a3bfe63533d1b9f70c5a578f2dfdebb0c9df"
+    },
+    {
+      "file": "attempt-1/routine-camera-picture-recreated.png",
+      "bytes": 106963,
+      "sha256": "1278b904fa8490331e4536967d44e9d1f7ef4704068f8d1552edb59b06994b5c"
+    },
+    {
+      "file": "attempt-1/routine-camera-pose-idle.png",
+      "bytes": 102495,
+      "sha256": "1d38efe3be1d709f205a69843a57f81d6547eb0a78763d349eb46fc446c1fe05"
+    },
+    {
+      "file": "attempt-1/routine-camera-pose-progress.png",
+      "bytes": 97647,
+      "sha256": "4b76b74730dec2a5eeea49083efa1941cf207c019387510dfb9548a865c5ab41"
+    },
+    {
+      "file": "attempt-1/routine-camera-qr-completed.png",
+      "bytes": 65222,
+      "sha256": "9f4ed5dc5a91a69f987951601e3a89ee86086d75f1dadd491bad88ce868e03e4"
+    },
+    {
+      "file": "attempt-1/routine-camera-qr-idle.png",
+      "bytes": 108830,
+      "sha256": "ad66adedf23e95cfd261b06e4dba5c427fc9343b5a805cb061c9e35aa490515f"
+    },
+    {
+      "file": "attempt-1/routine-camera-qr-wrong.png",
+      "bytes": 95723,
+      "sha256": "91ca0dd4381be4e29e6cf7a785bbfa61c8041805824d37c89304b5585b5a8193"
+    },
+    {
+      "file": "attempt-1/routine-camera-random-completed.png",
+      "bytes": 111132,
+      "sha256": "b9c7df4d139118204721d3e725c9efeed469063337baa513e958cd8d2c8d6df6"
+    },
+    {
+      "file": "attempt-1/routine-camera-random-recreated.png",
+      "bytes": 249208,
+      "sha256": "6e31bb6e0772edab503fcd15c24c6a506d721a4cdde60af11ae55506d94f72a0"
+    },
+    {
+      "file": "attempt-1/routine-camera-random.png",
+      "bytes": 248671,
+      "sha256": "4292fdf8c80bfddfc1a42476fef7c6b325691e289321478a7f98f2bd66bdcaf6"
+    },
+    {
+      "file": "attempt-1/routine-camera-smile-idle.png",
+      "bytes": 102284,
+      "sha256": "77fcb5456fd3abe165053dbb243e59f9598f9723adeb60877337de3d09219fe5"
+    },
+    {
+      "file": "attempt-1/routine-camera-smile-progress.png",
+      "bytes": 97694,
+      "sha256": "7d1c854de9cada7cabba7da1c4b723cbc423a95c2eb2161fb919ab03745ff704"
+    },
+    {
+      "file": "attempt-1/startup-focus.txt",
+      "bytes": 246,
+      "sha256": "576b0220ff971341dcac3fc85c4d0944994dade8ff75f4c8a25440d21ccac3fa"
+    }
+  ],
+  "limits": [
+    "Synthetic input panels visibly state No physical camera; injected bytes/samples/scores prove real controller/rule plumbing, not capture, detector/model execution or accuracy.",
+    "Fresh Math and random-parent frames have white platform status glyphs on amber; recreated random has dark glyphs. App content fits, but clean or broad SystemUI acceptance is not claimed.",
+    "One API 36 emulator at 1080x2316 and 420 dpi; no other device, font or theme acceptance and no full 36-screen review.",
+    "Permission frame is the private example state; actual Android permission/settings dialogs, hardware cleanup, microphone behavior and actual alarms are outside this evidence.",
+    "Busy, Cancel, stale-delivery, forgery, fallback and cleanup invariants are assertions in the existing passing method, not extra screenshot claims.",
+    "First 47.033-second pass remains functionally passed and UI-qualified for duplicated idle/access copy and internal release terminology; its original bytes and inspection are retained."
+  ],
+  "acceptance": "Focused functional and app-content presentation pass; SystemUI contrast limitation retained."
+}

@@ -1,0 +1,7 @@
+.gitattributes text eol=lf
+README.md text eol=lf
+SHA256SUMS text eol=lf
+*.json -text -whitespace
+*.txt -text -whitespace
+originals/** -text -whitespace
+attempt-*/** -text -whitespace
