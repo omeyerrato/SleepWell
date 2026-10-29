@@ -115,6 +115,23 @@ final class SearchSettings {
         detail("Report editing",SLEEP,"Reports","Choose a saved night, then Edit report; changes stay in a draft until Save","edit editing report reportediting sleep period awake annotations bedtime wake up tags notes manual history",HistoryActivity.class,"historyPage","records")
     );
     static List<SearchIndex.Entry> entries(){List<SearchIndex.Entry> rows=new ArrayList<>();for(int n=0;n<DESTINATIONS.size();n++){Destination d=DESTINATIONS.get(n);rows.add(new SearchIndex.Entry(SearchIndex.Kind.SETTING,n,d.title,d.path+"\n"+d.description,d.terms,d.category));}return List.copyOf(rows);}
+    static final class Shortcut {
+        final SearchIndex.Entry entry;final String label,icon;
+        Shortcut(SearchIndex.Entry entry,String label,String icon){this.entry=entry;this.label=label;this.icon=icon;}
+    }
+    /** Shortcuts retain the exact search entry ID and its existing alarm-selection contract. */
+    static List<Shortcut> popular(){
+        List<Shortcut> shortcuts=new ArrayList<>();
+        popular(shortcuts,AlarmEditorActivity.class,"extra-loud","Extra loud","sound");
+        popular(shortcuts,AutomaticTrackingActivity.class,"","Automatic tracking","moon");
+        popular(shortcuts,SnoringCuesActivity.class,"","Snoring cues","wave");
+        popular(shortcuts,PlanActivity.class,"","Sleep goal","bed");
+        popular(shortcuts,AlarmEditorActivity.class,"flashlight","Flashlight wake-up","flashlight");
+        return List.copyOf(shortcuts);
+    }
+    private static void popular(List<Shortcut> shortcuts,Class<?> target,String alarmKey,String label,String icon){
+        for(int n=0;n<DESTINATIONS.size();n++){Destination destination=DESTINATIONS.get(n);if(destination.target==target&&destination.page.isEmpty()&&destination.alarmKey.equals(alarmKey)){shortcuts.add(new Shortcut(entry(n),label,icon));return;}}
+    }
     static Intent intent(Activity owner,long id){if(id<0||id>=DESTINATIONS.size())throw new IllegalArgumentException("This setting is no longer available. Search again.");Destination d=DESTINATIONS.get((int)id);Intent intent=RecordUi.intent(owner,d.target);if(!d.alarmKey.isEmpty())throw new IllegalArgumentException("Choose an alarm before opening this setting.");if(d.target==HistoryActivity.class){intent.putExtra("trends",!d.page.equals("records"));return intent;}if(!d.page.isEmpty())intent.putExtra(d.extra,d.page);return intent;}
     static String alarmKey(long id){return id>=0&&id<DESTINATIONS.size()?DESTINATIONS.get((int)id).alarmKey:"";}
     static SearchIndex.Entry entry(long id){if(id<0||id>=DESTINATIONS.size())throw new IllegalArgumentException("Search again for this setting.");return entries().get((int)id);}
