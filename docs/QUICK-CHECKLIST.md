@@ -1,99 +1,58 @@
-# SleepWell quick checklist
+# SleepWell current checklist
 
-Latest published **0.1.6 / 741b3718** improves feature search, challenge selection, automation cards and protection setup. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.6-clearer-settings-20261029-741b3718); [package audit](verification/2026-10-29-016-build/README.md); [combined editor action/persistence proof](verification/2026-10-29-editor-usability-integration/README.md). The phone remains on0.1.4 with original user data preserved; installation is deferred by the user. All36-reference acceptance remains unfinished.
+Updated29October2026. Latest published APK: **0.1.6 /741b3718**. Last verified phone installation: **0.1.4 /08d3911e**. Phone update is deferred by the user. The newer0.1.7 source below is not published or installed.
 
-**0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.6-clearer-settings-20261029-741b3718) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
-Checked means implemented with the stated supporting evidence. It does not mean every screen, device or physical behavior is verified. [Full feature matrix](FEATURE-MATRIX.md), [172 detailed entries](feature-matrix.json), [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
-
-## Published in0.1.6: clearer navigation and settings
-
-These changes are published in0.1.6; they are not installed on the phone.
-
-- [x] Search reaches the chosen alarm and actual Extra loud or Flashlight options, with an explicit existing-alarm/new-draft choice. Query, options and unsaved draft restore; only Save alarm writes. [18-original action/persistence evidence](verification/2026-10-29-feature-findability/README.md).
-- [x] Challenge rows open configuration, direct choices show selection, and the28-task catalog is searchable. Cancel also restores the pinning draft. [18-original settled comparison/action evidence](verification/2026-10-29-challenge-selection/README.md).
-- [x] Automation uses compact event-to-destination cards. Reselecting a destination preserves its details; Test, Delete and Save have distinct behavior, and scheduling failures remain visible. [10-original card evidence](verification/2026-10-29-automation-rule-cards/README.md); external delivery remains unverified.
-- [x] Protection separates saved choices from missing Android access, restores its explanations and supports read-error Retry. [16-original recovery evidence](verification/2026-10-29-protection-recovery/README.md); live alarm enforcement remains unverified.
-- [x] Verify Search and Challenge together after merging their shared alarm editor: two existing methods passed69.905s/33.847s; all36 scoped originals inspected. [Evidence](verification/2026-10-29-editor-usability-integration/README.md). This is not acceptance of all36 design references.
-- [x] Build and publish0.1.6 with the original signing identity, retained assets/libraries and unchanged schema17/backup14; exact source tag and both server asset hashes verified. Phone installation remains deferred.
-- [ ] Finish full-routine interactive preview across all28 task types and random routines. Work continues separately; this feature is not complete.
+Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
 ## Current priorities
 
-Current source work after0.1.6 (29 October, not a newer installed APK):
-
-- [x] Merge Sleep sounds header navigation and fixed Timer/Fade actions with draft, scroll and focus restoration; scoped native configuration flow and14 originals pass. [Evidence](verification/2026-10-29-sleep-mixer-reference/README.md).
-- [x] Implement consistent rounded Report means; the first18-frame flow passes functionally. Its selected-month tooltip overlaps the goal caption, so full visual acceptance is withheld.
-- [ ] Recapture the revised Report tooltip placement; source and native code compile, corrected screenshots remain pending.
-- [ ] Integrate and finish full28-type routine preview. Separate branches prove17 controllers through private/fake ports;11 microphone/camera adapters remain unfinished. This is not physical-device or actual alarm-runtime acceptance.
-- [ ] Correct the discovered Walk completion path that can advance after failed sensor cleanup; a separate fix is assigned.
-- [ ] Resolve or clearly document the initial Android system-bar contrast handoff. Both diagnostic attempts retain a white-on-cream first frame despite correct requested appearance; the attempted production change was rejected as a fix.
-- [ ] Build/publish the next combined update;0.1.6 remains the latest published APK and0.1.4 the last verified phone installation.
-
-- [ ] Match all 36 reference screens, including remaining alarm screens, charts, menus, icons and navigation states.
-- [x] Complete Report calendar/edit verification: actual date selection, editing, Save/reopen and Back-discard; 11 inspected originals. [Evidence](verification/2026-10-27-report-proportions/README.md).
-- [ ] Complete remaining interaction fixes and security review. Named recovery, touch, settings, document and consent journeys pass; broader security/provider behavior remains open.
+- [ ] Match all36 reference screens, especially remaining charts, menus and visual states.
+- [x] Report calendar/edit verification: actual date selection, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
+- [ ] Finish remaining interaction bugs and security review.
 
 ## Implemented
 
 - [x] Best-effort prevent-leave and recognized power-menu handling.
 - [x] Extra-loud toggle and optional audio gain.
 - [x] Gentle volume increase and independent sound/vibration delays.
-- [x] Screen sunrise wake-up.
-- [x] Flashlight wake-up.
-- [x] Snoring/speech analysis, recordings, playback, favorites and retention.
-- [x] Automatic schedule/stillness tracking, recurring starts and optional false-start rejection.
+- [x] Screen sunrise and flashlight wake-up.
+- [x] Snoring/speech estimates, recordings, playback, favorites and retention.
+- [x] Automatic schedule/stillness tracking, recurring starts and false-start rejection.
 - [x] Anti-snoring sound/vibration cues.
-- [x] Travel planning, dated sleep shifts, reminders and wake-alarm drafts.
+- [x] Travel planning, dated sleep shifts, reminders and alarm drafts.
 - [x] Per-alarm settings and custom time/duration selectors.
-- [x] Weekday, odd/even-week and every-N-day repeats, skips and sunrise schedules.
-- [x] Challenge routines, fallbacks and generated printable QR codes.
+- [x] Advanced repeats, skips and sunrise schedules.
+- [x] Challenge routines, fallbacks and printable QR codes.
 - [x] Naps, Power nap, weekly nap schedules and exact-second timers.
-- [x] Real-data history, trends, record editing, notes and goal bank.
+- [x] Real-data history, trends, editing, notes and goal bank.
 - [x] Bedtime guard, reminders and temporary pause.
-- [x] Battery-aware sampling and low-battery reserve stopping.
+- [x] Battery-aware sampling and low-battery stopping.
 - [x] Snooze-aware widgets.
-- [x] Backup/export/restore and integration implementations; external prerequisites remain documented.
-- [x] Shared navigation/control feedback with a saved off switch; new icon and firmer tap preset in 0.1.3. Physical feel remains unchecked.
-- [x] Settings/alarm-menu organization and search; every feature retained.
+- [x] Backup/export/restore and integration code; external prerequisites remain.
+- [x] Haptic feedback with a saved Off switch, generated raster icons and the new flat launcher. Physical feel remains unchecked.
+- [x] Settings organization and search, genuine task-configuration rows, compact automation cards and clearer protection setup.
 - [x] Free, open-source development APK published.
 
-## Published in 0.1.3
+## Newer0.1.7 source — not published or installed
 
-- [x] Full-night live sonar chart with explicit pause/missing gaps and true zero values. [Generated-input/private-store proof](verification/2026-10-28-live-night-settled/README.md).
-- [x] Revised wake-check and shared Math card. [Silent private action/recreation/persistence proof](verification/2026-10-28-wake-challenge-reference/README.md); actual alarm execution remains unverified.
-- [x] Calendar-consent draft recovery and stale-revision protection. [Fake-access/private-state proof](verification/2026-10-28-calendar-consent-recovery/README.md); calendar-provider delivery remains unverified.
-- [x] Room conditions, saved window dimming and portable Appearance profiles. [Private profile JSON/preferences/journal proof](verification/2026-10-28-profile-room-dimming/README.md).
-
-## Published and installed 0.1.4
-
-Frozen source **08d3911e**, version **0.1.4 / code5**: Root build succeeded in **1m19s**. APK SHA256 `3b6c698fbfc1d71a21fa2e9b5420b7cf08ad39632608648e226482d11709a024`; original signer and retained assets/libraries/resources independently checked. [Final package/source audit](verification/2026-10-28-014-final-build/README.md). The source tag and both uploaded asset hashes/sizes are verified. Phone installation and data preservation are verified; see the installation evidence above.
-
-- [x] Travel hierarchy, child restoration, Save/reopen and real default-OFF silent reminder preference/runtime. [Composite 37 originals](verification/2026-10-28-travel-plan-native/README.md): Plan 41.859s / 11 plus Cue 54.505s / 26 are separate passing scopes from two failed full jobs, not one green37-frame run. Private/fake ports only; manual flashlight arming stays separate.
-- [x] Actual TrackingActivity chart lifecycle: ticks, selection/focus, child return, Pause/Resume, recreation and session replacement. [29.722s/14 originals](verification/2026-10-28-phone-motion-activity/README.md); private seeded history and fake commands, no real sensor/service or overnight claim.
-- [x] Room/dimming search route and unsaved-draft Back/recreation. [12.917s/5 originals](verification/2026-10-28-room-settings-search/README.md); fake unavailable access/sensor/audio ports.
-- [x] Direct draft hour/minute controls and compact alarm-list feedback, Save/reopen and larger app text. [41.023s/18 originals](verification/2026-10-28-alarm-clock-interactions/README.md); no alarm scheduling/output. New smart-window footer wording is source-only and uncaptured.
-- [x] Current/stale Math answer ownership guards in shared real widgets. [51.773s/14 originals](verification/2026-10-28-stale-math-owner/README.md); explicit private Practice context, not actual AlarmActivity admission/central advance or physical challenge execution.
-- [x] Unconditional owned Travel-notification cleanup: [39.92s/18 inspected originals](verification/2026-10-28-travel-reminder-cleanup/README.md), including cold-state/error/retry and private preference restoration. This models leftover fake-port state, not a real Android restart/controller.
-- [x] Publish0.1.4 with the original signer, exact source tag and both server asset hashes verified.
-- [x] Install0.1.4 on the S23 with original user data preserved.
-
-## Published in0.1.5 — phone update deferred
-
-- [x] Contactless Headphones/Microphone status and explicit access/settings recovery, real route invalidation and fit. [58.348s / 11 inspected originals](verification/2026-10-28-contactless-settled-glyphs/README.md); generated PCM/private ports, not bedroom hardware.
-- [x] Report handle dragging/cancellation, both-boundary keyboard/accessibility actions and saved bounds. [68.984s / 17 inspected originals](verification/2026-10-28-report-period-gestures/README.md).
-- [x] Tonight fixed Start above the four-tab dock, readable larger text, real first-alarm action and saved Off/weekdays. [52.457s / 14 inspected originals](verification/2026-10-28-tonight-composition/README.md).
-- [x] Automatic tracking core choices/restorable supporting pages, explicit Save/Arm, active-wait guard and status-bar contrast. [83.548s / 28 inspected originals](verification/2026-10-28-automatic-tracking/README.md); synthetic callbacks/private phases, not actual service arming.
-- [x] Generate and integrate73 raster control icons, flat launcher/themed mask and notification art; build and publish0.1.5 with both server hashes verified. Current native method passes50.332s/18 originals, all73 glyphs and native launcher previews inspected. UI04 SystemUI contrast remains open; this is not all18-screen visual acceptance. Earlier other-flow captures predate the rasters.
-
+- [x] Sleep sounds header navigation and fixed Timer/Fade actions, preserving draft/scroll/focus and advanced routes. [14-original configuration proof](verification/2026-10-29-sleep-mixer-reference/README.md); no active-playback or physical-output claim.
+- [x] Integrate17 routine-preview controllers with explicit capture Start, Cancel/Resume, retained progress and one-use child results. [58-original private/fake-port proof](verification/2026-10-29-routine-motion/README.md); this is not full28-type or actual-alarm/hardware acceptance.
+- [x] Report means round consistently. The first18-frame flow passed functionally; its tooltip/goal-caption overlap is retained as a visible failure in the archive.
+- [ ] Integrate the corrected Report recapture evidence. The correction compiles and the fresh18-frame run passes; all18 were inspected, with the full goal caption and selected value visible.
+- [ ] Finish the remaining11 microphone/camera preview adapters. Five audio adapters are being implemented separately; six camera adapters remain.
+- [ ] Verify and integrate the actual Walk completion-after-failed-cleanup correction. Its separate source compiles; the current17-type integration does not claim that fix.
+- [ ] Complete the combined build/release and prepare the next phone update.
 
 ## Still unfinished
 
-- [ ] Match all reference states and finish interaction/security review above.
+- [ ] Reference/interaction/security priorities above.
+- [ ] Initial Android system-bar contrast handoff: first light frame can retain white glyphs despite correct requested appearance. The attempted change failed and was rejected. [Actual diagnostic evidence](verification/2026-10-29-systemui-transitions/README.md).
 - [ ] Reliable additional sound recognition, including laughter/instruments.
 - [ ] Working phone-input sleep-stage/REM and breathing/apnea analysis.
-- [ ] Remaining ambient-playlist/provider-specific functionality and verification.
-- [ ] Optional vendor-service/hardware parity listed in the full feature matrix.
-- [ ] Verify real alarm protection, loudness, ramp, sunrise, flashlight and challenges when output testing is authorized.
+- [ ] Remaining ambient-playlist/provider functionality and verification.
+- [ ] Optional vendor-service/hardware parity listed in the full matrix.
+- [ ] Verify real protection, loudness, ramp, sunrise, flashlight and challenges when output testing is authorized.
 - [ ] Verify overnight tracking, sound accuracy, anti-snoring, battery behavior and external integrations.
-- [x] Install0.1.4 while preserving phone data. Newer0.1.6 is published; its installation is deferred by the user.
+- [ ] Install the newer update when the user is ready, preserving existing phone data.

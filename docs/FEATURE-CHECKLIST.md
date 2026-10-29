@@ -33,6 +33,14 @@ These changes are published in0.1.6; they are not installed on the phone.
 - [x] Build and publish0.1.6 with the original signing identity, retained assets/libraries and unchanged schema17/backup14; exact source tag and both server asset hashes verified. Phone installation remains deferred.
 - [ ] Finish full-routine interactive preview across all28 task types and random routines. Work continues separately; this feature is not complete.
 
+## Integrated0.1.7 source — not published or installed
+
+- [x] Clear Sleep sounds header navigation and fixed Timer/Fade actions with draft/scroll/focus restoration. [14-original configuration proof](verification/2026-10-29-sleep-mixer-reference/README.md).
+- [x] Integrate17 genuine routine-preview controllers, explicit capture Start, Cancel/Resume, retained progress and child cleanup/receipt ownership. [58-original private/fake-port proof](verification/2026-10-29-routine-motion/README.md).
+- [ ] Finish the other11 microphone/camera preview adapters and their real cleanup contracts; full28-type preview remains incomplete.
+- [ ] Complete the separately identified actual Walk cleanup failure fix; it is not covered by the17-type integration.
+- [ ] Finish the combined build/release. The phone remains on0.1.4 and its update remains deferred.
+
 ## Current top priorities
 
 - [ ] Match all36 reference screens. Current Report, Tone/Gentle, Snooze, QR, sleep plan, rhythm/Nap, Settings root and Appearance have bounded comparison/action evidence. Remaining screens, variants and full reference fidelity remain open. [Screen-by-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
