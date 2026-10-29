@@ -31,14 +31,14 @@ final class MorningTagSetup {
     private final Port access;
     private final Runnable refresh;
     private String base="",saved="",captured="",error="";
-    private boolean baseKnown,readFailed,unconfirmed,success,resumed,visible;
+    private boolean baseKnown,readFailed,unconfirmed,success,resumed,visible,settingsError;
     private Availability availability=Availability.UNSUPPORTED;
     private NfcEnrollment reader;
     private long attempt,viewGeneration;
 
     MorningTagSetup(Activity owner,Bundle state,Runnable refresh){
         this.owner=owner;this.access=port;this.refresh=refresh;
-        if(state!=null){base=state.getString("base","");captured=state.getString("captured","");baseKnown=state.getBoolean("baseKnown");unconfirmed=state.getBoolean("unconfirmed");success=state.getBoolean("success");error=state.getString("error","");if(!captured.isEmpty()&&!valid(captured)){captured="";error="The captured tag could not be restored. Read it again.";}}
+        if(state!=null){base=state.getString("base","");captured=state.getString("captured","");baseKnown=state.getBoolean("baseKnown");unconfirmed=state.getBoolean("unconfirmed");success=state.getBoolean("success");error=state.getString("error","");settingsError=state.getBoolean("settingsError");if(!captured.isEmpty()&&!valid(captured)){captured="";error="The captured tag could not be restored. Read it again.";}}
     }
     static String summary(Activity owner,Port access){
         try{String value=access.preferences(owner).getString(KEY,"");return value.isEmpty()?"No bedside tag saved":valid(value)?"Bedside tag saved":"Saved tag needs attention";}
@@ -49,13 +49,13 @@ final class MorningTagSetup {
     void pause(){resumed=false;closeReader();viewGeneration++;}
     void visible(boolean value){if(visible!=value){visible=value;viewGeneration++;if(!value)closeReader();}}
     void close(){visible=false;pause();}
-    Bundle save(){Bundle state=new Bundle();state.putString("base",base);state.putString("captured",captured);state.putBoolean("baseKnown",baseKnown);state.putBoolean("unconfirmed",unconfirmed);state.putBoolean("success",success);state.putString("error",error);return state;}
+    Bundle save(){Bundle state=new Bundle();state.putString("base",base);state.putString("captured",captured);state.putBoolean("baseKnown",baseKnown);state.putBoolean("unconfirmed",unconfirmed);state.putBoolean("success",success);state.putString("error",error);state.putBoolean("settingsError",settingsError);return state;}
     private boolean load(){
         try{
             String current=access.preferences(owner).getString(KEY,"");
             Availability currentAccess=java.util.Objects.requireNonNull(access.availability(owner));
             if(!baseKnown||captured.isEmpty()&&!unconfirmed){if(baseKnown&&!base.equals(current))success=false;base=current;baseKnown=true;}
-            saved=current;availability=currentAccess;readFailed=false;return true;
+            saved=current;availability=currentAccess;readFailed=false;if(settingsError&&currentAccess==Availability.READY){settingsError=false;error="";}return true;
         }catch(RuntimeException unavailable){readFailed=true;return false;}
     }
     private boolean owned(View action,long generation){return generation==viewGeneration&&visible&&resumed&&!owner.isFinishing()&&!owner.isDestroyed()&&owner.hasWindowFocus()&&action.isAttachedToWindow()&&action.isShown()&&action.isEnabled();}
@@ -88,7 +88,7 @@ final class MorningTagSetup {
         action(footer,exitLabel,false,generation,exit);
     }
     private void settings(){
-        closeReader();try{access.settings(owner);}catch(RuntimeException unavailable){error="NFC settings could not open. Your draft and saved tag were kept.";refresh.run();}
+        closeReader();settingsError=false;error="";try{access.settings(owner);}catch(RuntimeException unavailable){settingsError=true;error="NFC settings could not open. Your draft and saved tag were kept.";refresh.run();}
     }
     private void read(){
         if(!load()||availability!=Availability.READY){error="NFC is not ready. Check access and try again.";refresh.run();return;}
