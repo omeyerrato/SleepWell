@@ -1,0 +1,30 @@
+{
+  "scope": "routine-preview",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 38,
+  "failures": [
+    "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+    "routine-preview-counting.png",
+    "routine-preview-flags.png",
+    "routine-preview-mirror.png",
+    "routine-preview-journal-invalid.png",
+    "routine-preview-journal-recreated.png",
+    "routine-preview-completed.png",
+    "routine-preview-search.png",
+    "routine-preview-type-code.png",
+    "routine-preview-jumping.png",
+    "routine-preview-second-completed.png",
+    "routine-preview-random.png",
+    "routine-preview-random-recreated.png",
+    "routine-preview-unsupported.png"
+  ]
+}
