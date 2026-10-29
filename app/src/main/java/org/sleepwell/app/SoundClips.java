@@ -9,6 +9,32 @@ import java.util.*;
 /** Durable identity-checked mutations; failed deletion remains visible and retryable. */
 final class SoundClips {
     static final Object LOCK=new Object();
+    /** An immutable, reviewed selection. Later recordings never enter this operation. */
+    static final class ClearPlan {
+        final List<JSONObject> clips;final boolean keepFavorites,retry;final long admission;
+        ClearPlan(List<JSONObject> clips,boolean keepFavorites,boolean retry,long admission){this.clips=List.copyOf(clips);this.keepFavorites=keepFavorites;this.retry=retry;this.admission=admission;}
+    }
+    static ClearPlan reviewClear(Context context,Store store,boolean keepFavorites){synchronized(LOCK){
+        long admission=BackupRuntime.generation();BackupRuntime.requireIdle(context,admission);
+        List<JSONObject> queued=store.rows("SELECT clip AS id,session,path,time FROM pending_clip_deletes ORDER BY clip");
+        if(!queued.isEmpty())return new ClearPlan(queued,true,true,admission);
+        return new ClearPlan(store.rows("SELECT c.*,EXISTS(SELECT 1 FROM sound_events e WHERE e.clip=c.id AND e.favorite=1) AS starred_event FROM clips c JOIN sessions s ON s.id=c.session WHERE s.end IS NOT NULL"+(keepFavorites?" AND c.favorite=0 AND NOT EXISTS(SELECT 1 FROM sound_events e WHERE e.clip=c.id AND e.favorite=1)":"")+" ORDER BY c.id"),keepFavorites,false,admission);
+    }}
+    static int clearReviewed(Context context,Store store,ClearPlan plan)throws IOException{synchronized(LOCK){
+        BackupRuntime.requireIdle(context,plan.admission);
+        SQLiteDatabase db=store.getWritableDatabase();
+        // Validate the entire selection and commit every intent before the first unlink.
+        // A changed favorite requires a new review, including favorites added to estimates.
+        db.beginTransaction();try{
+            for(JSONObject expected:plan.clips){
+                if(plan.retry){List<JSONObject> queued=store.rows("SELECT clip AS id,session,path,time FROM pending_clip_deletes WHERE clip=?",""+expected.optLong("id"));if(!queued.isEmpty())identity(queued.get(0),expected);}
+                else {List<JSONObject> rows=store.rows("SELECT c.*,EXISTS(SELECT 1 FROM sound_events e WHERE e.clip=c.id AND e.favorite=1) AS starred_event FROM clips c JOIN sessions s ON s.id=c.session WHERE c.id=? AND s.end IS NOT NULL",""+expected.optLong("id"));if(rows.isEmpty()){if(pending(store,expected.optLong("id")))throw new IllegalStateException("The audio selection changed. Review it again.");continue;}JSONObject actual=rows.get(0);identity(actual,expected);if(actual.optInt("favorite")!=expected.optInt("favorite")||actual.optInt("starred_event")!=expected.optInt("starred_event"))throw new IllegalStateException("Favorites changed. Review the audio selection again.");FileSafety.clip(context,actual.optString("path"));stage(store,actual);}
+            }
+            BackupRuntime.requireIdle(context,plan.admission);db.setTransactionSuccessful();
+        }finally{db.endTransaction();}
+        int pending=0;for(JSONObject expected:plan.clips){List<JSONObject> queued=store.rows("SELECT clip AS id,session,path,time FROM pending_clip_deletes WHERE clip=?",""+expected.optLong("id"));if(queued.isEmpty())continue;identity(queued.get(0),expected);try{finish(context,store,expected.optLong("id"));}catch(IOException|RuntimeException failure){pending++;}}
+        return pending;
+    }}
     static JSONObject get(Store store,long session,long id){List<JSONObject> rows=store.rows("SELECT c.* FROM clips c JOIN sessions s ON s.id=c.session WHERE c.id=? AND c.session=? AND s.end IS NOT NULL",""+id,""+session);if(rows.isEmpty())throw new IllegalArgumentException("This recording changed. Reopen sound events.");return rows.get(0);}
     static void identity(JSONObject actual,JSONObject expected){if(actual.optLong("id")!=expected.optLong("id")||actual.optLong("session")!=expected.optLong("session")||actual.optLong("time")!=expected.optLong("time")||!actual.optString("path").equals(expected.optString("path")))throw new IllegalArgumentException("This recording changed. Reopen sound events.");}
     static boolean pending(Store store,long id){return !store.rows("SELECT clip FROM pending_clip_deletes WHERE clip=?",""+id).isEmpty();}
