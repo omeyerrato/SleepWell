@@ -18,7 +18,7 @@ final class CameraTaskOwner {
   Pending(int result,long captured,Intent data){this.result=result;this.captured=captured;this.data=data==null?null:new Intent(data);}
  }
  private static final Map<String,CameraTaskOwner> RETAINED=new HashMap<>();
- private final String token=UUID.randomUUID().toString(),identity;
+ private final String token=UUID.randomUUID().toString();private String identity;
  private WeakReference<Activity> attached;
  private Runnable close;
  private BooleanSupplier released;
@@ -33,6 +33,11 @@ final class CameraTaskOwner {
  }
  void save(Activity activity,Bundle state){if(owned(activity))state.putString("cameraCleanupOwner",token);}
  boolean owned(Activity activity){return attached.get()==activity;}
+ /** Configuration may change only between fully released attempts, before binding its next port. */
+ void configure(Activity activity,String identity){
+  if(!owned(activity)||!clean()||pending!=null)throw new IllegalStateException("Previous camera release or result is still pending");
+  this.identity=identity;
+ }
  void bind(Activity activity,Runnable close,BooleanSupplier released){
   if(!owned(activity)||!clean()||pending!=null)throw new IllegalStateException("Previous camera release or result is still pending");
   this.close=close;this.released=released;closing=false;

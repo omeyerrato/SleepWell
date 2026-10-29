@@ -92,7 +92,7 @@ final class PracticeCameraTasks {
     }
     default->throw new IllegalArgumentException("This camera adapter is not available");
    }
-  }catch(RuntimeException|LinkageError unavailable){close();state=State.ERROR;issue="Camera could not start safely. Retry after cleanup or choose the configured alternative.";}
+  }catch(RuntimeException|LinkageError failure){close();state=State.ERROR;issue="Camera could not start safely. Retry after cleanup or choose the configured alternative.";}
   notifyChanged();
  }
  private void bind(ComponentActivity activity,View preview,Runnable close,BooleanSupplier released){
