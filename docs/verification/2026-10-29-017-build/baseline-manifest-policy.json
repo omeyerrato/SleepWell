@@ -1,0 +1,1775 @@
+{
+  "source": "baseline-manifest-tree.txt",
+  "elements": [
+    {
+      "type": "uses-sdk",
+      "attributes": {
+        "android:minSdkVersion": "(type 0x10)0x1e",
+        "android:targetSdkVersion": "(type 0x10)0x24"
+      }
+    },
+    {
+      "type": "permission",
+      "attributes": {
+        "android:label": "@0x7f0e001c",
+        "android:name": "\"org.sleepwell.app.permission.READ_MANAGED_ALARMS\" (Raw: \"org.sleepwell.app.permission.READ_MANAGED_ALARMS\")",
+        "android:protectionLevel": "(type 0x11)0x2",
+        "android:description": "@0x7f0e001b"
+      }
+    },
+    {
+      "type": "permission",
+      "attributes": {
+        "android:label": "@0x7f0e001e",
+        "android:name": "\"org.sleepwell.app.permission.MANAGE_ALARMS\" (Raw: \"org.sleepwell.app.permission.MANAGE_ALARMS\")",
+        "android:protectionLevel": "(type 0x11)0x2",
+        "android:description": "@0x7f0e001d"
+      }
+    },
+    {
+      "type": "permission",
+      "attributes": {
+        "android:label": "@0x7f0e003e",
+        "android:name": "\"org.sleepwell.app.permission.READ_RECORD_SUMMARIES\" (Raw: \"org.sleepwell.app.permission.READ_RECORD_SUMMARIES\")",
+        "android:protectionLevel": "(type 0x11)0x2",
+        "android:description": "@0x7f0e003d"
+      }
+    },
+    {
+      "type": "permission",
+      "attributes": {
+        "android:label": "@0x7f0e0040",
+        "android:name": "\"org.sleepwell.app.permission.WRITE_RECORD_SUMMARIES\" (Raw: \"org.sleepwell.app.permission.WRITE_RECORD_SUMMARIES\")",
+        "android:protectionLevel": "(type 0x11)0x2",
+        "android:description": "@0x7f0e003f"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.health.READ_SLEEP\" (Raw: \"android.permission.health.READ_SLEEP\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.health.WRITE_SLEEP\" (Raw: \"android.permission.health.WRITE_SLEEP\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.ACCESS_NOTIFICATION_POLICY\" (Raw: \"android.permission.ACCESS_NOTIFICATION_POLICY\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.POST_NOTIFICATIONS\" (Raw: \"android.permission.POST_NOTIFICATIONS\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.INTERNET\" (Raw: \"android.permission.INTERNET\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.ACCESS_WIFI_STATE\" (Raw: \"android.permission.ACCESS_WIFI_STATE\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.CHANGE_WIFI_STATE\" (Raw: \"android.permission.CHANGE_WIFI_STATE\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.BLUETOOTH\" (Raw: \"android.permission.BLUETOOTH\")",
+        "android:maxSdkVersion": "(type 0x10)0x1e"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.BLUETOOTH_ADMIN\" (Raw: \"android.permission.BLUETOOTH_ADMIN\")",
+        "android:maxSdkVersion": "(type 0x10)0x1e"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.ACCESS_COARSE_LOCATION\" (Raw: \"android.permission.ACCESS_COARSE_LOCATION\")",
+        "android:maxSdkVersion": "(type 0x10)0x20"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.ACCESS_FINE_LOCATION\" (Raw: \"android.permission.ACCESS_FINE_LOCATION\")",
+        "android:maxSdkVersion": "(type 0x10)0x20"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.BLUETOOTH_SCAN\" (Raw: \"android.permission.BLUETOOTH_SCAN\")",
+        "android:usesPermissionFlags": "(type 0x11)0x10000"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.BLUETOOTH_CONNECT\" (Raw: \"android.permission.BLUETOOTH_CONNECT\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.BLUETOOTH_ADVERTISE\" (Raw: \"android.permission.BLUETOOTH_ADVERTISE\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.NEARBY_WIFI_DEVICES\" (Raw: \"android.permission.NEARBY_WIFI_DEVICES\")",
+        "android:usesPermissionFlags": "(type 0x11)0x10000"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE\" (Raw: \"android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.SCHEDULE_EXACT_ALARM\" (Raw: \"android.permission.SCHEDULE_EXACT_ALARM\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.USE_FULL_SCREEN_INTENT\" (Raw: \"android.permission.USE_FULL_SCREEN_INTENT\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.RECEIVE_BOOT_COMPLETED\" (Raw: \"android.permission.RECEIVE_BOOT_COMPLETED\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.ACCESS_NETWORK_STATE\" (Raw: \"android.permission.ACCESS_NETWORK_STATE\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.WAKE_LOCK\" (Raw: \"android.permission.WAKE_LOCK\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.VIBRATE\" (Raw: \"android.permission.VIBRATE\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.MODIFY_AUDIO_SETTINGS\" (Raw: \"android.permission.MODIFY_AUDIO_SETTINGS\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.RECORD_AUDIO\" (Raw: \"android.permission.RECORD_AUDIO\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.READ_CALENDAR\" (Raw: \"android.permission.READ_CALENDAR\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.WRITE_CALENDAR\" (Raw: \"android.permission.WRITE_CALENDAR\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.FOREGROUND_SERVICE\" (Raw: \"android.permission.FOREGROUND_SERVICE\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\" (Raw: \"android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.FOREGROUND_SERVICE_MICROPHONE\" (Raw: \"android.permission.FOREGROUND_SERVICE_MICROPHONE\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.FOREGROUND_SERVICE_SPECIAL_USE\" (Raw: \"android.permission.FOREGROUND_SERVICE_SPECIAL_USE\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.NFC\" (Raw: \"android.permission.NFC\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.CAMERA\" (Raw: \"android.permission.CAMERA\")"
+      }
+    },
+    {
+      "type": "uses-feature",
+      "attributes": {
+        "android:name": "\"android.hardware.camera.any\" (Raw: \"android.hardware.camera.any\")",
+        "android:required": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "uses-feature",
+      "attributes": {
+        "android:name": "\"android.hardware.camera\" (Raw: \"android.hardware.camera\")",
+        "android:required": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "uses-feature",
+      "attributes": {
+        "android:name": "\"android.hardware.camera.autofocus\" (Raw: \"android.hardware.camera.autofocus\")",
+        "android:required": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.ACTIVITY_RECOGNITION\" (Raw: \"android.permission.ACTIVITY_RECOGNITION\")"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.PACKAGE_USAGE_STATS\" (Raw: \"android.permission.PACKAGE_USAGE_STATS\")"
+      }
+    },
+    {
+      "type": "uses-feature",
+      "attributes": {
+        "android:name": "\"android.hardware.sensor.stepdetector\" (Raw: \"android.hardware.sensor.stepdetector\")",
+        "android:required": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "uses-feature",
+      "attributes": {
+        "android:name": "\"android.hardware.sensor.stepcounter\" (Raw: \"android.hardware.sensor.stepcounter\")",
+        "android:required": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "uses-feature",
+      "attributes": {
+        "android:name": "\"android.hardware.microphone\" (Raw: \"android.hardware.microphone\")",
+        "android:required": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "uses-feature",
+      "attributes": {
+        "android:name": "\"android.hardware.sensor.accelerometer\" (Raw: \"android.hardware.sensor.accelerometer\")",
+        "android:required": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "uses-feature",
+      "attributes": {
+        "android:name": "\"android.hardware.nfc\" (Raw: \"android.hardware.nfc\")",
+        "android:required": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "uses-feature",
+      "attributes": {
+        "android:name": "\"android.hardware.camera.flash\" (Raw: \"android.hardware.camera.flash\")",
+        "android:required": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"android.permission.FOREGROUND_SERVICE_DATA_SYNC\" (Raw: \"android.permission.FOREGROUND_SERVICE_DATA_SYNC\")"
+      }
+    },
+    {
+      "type": "uses-feature",
+      "attributes": {
+        "android:name": "\"android.hardware.npu\" (Raw: \"android.hardware.npu\")",
+        "android:required": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "permission",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\" (Raw: \"org.sleepwell.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\")",
+        "android:protectionLevel": "(type 0x11)0x2"
+      }
+    },
+    {
+      "type": "uses-permission",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\" (Raw: \"org.sleepwell.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\")"
+      }
+    },
+    {
+      "type": "application",
+      "attributes": {
+        "android:theme": "@0x7f0f0005",
+        "android:label": "\"SleepWell\" (Raw: \"SleepWell\")",
+        "android:icon": "@0x7f0d0000",
+        "android:name": "\"org.sleepwell.app.SleepWellApplication\" (Raw: \"org.sleepwell.app.SleepWellApplication\")",
+        "android:debuggable": "(type 0x12)0xffffffff",
+        "android:allowBackup": "(type 0x12)0x0",
+        "android:supportsRtl": "(type 0x12)0xffffffff",
+        "android:extractNativeLibs": "(type 0x12)0x0",
+        "android:fullBackupContent": "(type 0x12)0x0",
+        "android:roundIcon": "@0x7f0d0001",
+        "android:appComponentFactory": "\"androidx.core.app.CoreComponentFactory\" (Raw: \"androidx.core.app.CoreComponentFactory\")",
+        "android:dataExtractionRules": "@0x7f110001"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AwakeSettingsActivity\" (Raw: \"org.sleepwell.app.AwakeSettingsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AwakeReviewActivity\" (Raw: \"org.sleepwell.app.AwakeReviewActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.ContactlessSetupActivity\" (Raw: \"org.sleepwell.app.ContactlessSetupActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.HomeLaunchActivity\" (Raw: \"org.sleepwell.app.HomeLaunchActivity\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.HomeWidgetSettingsActivity\" (Raw: \"org.sleepwell.app.HomeWidgetSettingsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.HomeWidgetProvider\" (Raw: \"org.sleepwell.app.HomeWidgetProvider\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmAccessActivity\" (Raw: \"org.sleepwell.app.AlarmAccessActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "provider",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmContentProvider\" (Raw: \"org.sleepwell.app.AlarmContentProvider\")",
+        "android:readPermission": "\"org.sleepwell.app.permission.READ_MANAGED_ALARMS\" (Raw: \"org.sleepwell.app.permission.READ_MANAGED_ALARMS\")",
+        "android:writePermission": "\"org.sleepwell.app.permission.MANAGE_ALARMS\" (Raw: \"org.sleepwell.app.permission.MANAGE_ALARMS\")",
+        "android:exported": "(type 0x12)0xffffffff",
+        "android:authorities": "\"org.sleepwell.app.alarms\" (Raw: \"org.sleepwell.app.alarms\")",
+        "android:grantUriPermissions": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmAccessReceiver\" (Raw: \"org.sleepwell.app.AlarmAccessReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.FeedbackSettingsActivity\" (Raw: \"org.sleepwell.app.FeedbackSettingsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecordAccessActivity\" (Raw: \"org.sleepwell.app.RecordAccessActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "provider",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecordContentProvider\" (Raw: \"org.sleepwell.app.RecordContentProvider\")",
+        "android:readPermission": "\"org.sleepwell.app.permission.READ_RECORD_SUMMARIES\" (Raw: \"org.sleepwell.app.permission.READ_RECORD_SUMMARIES\")",
+        "android:writePermission": "\"org.sleepwell.app.permission.WRITE_RECORD_SUMMARIES\" (Raw: \"org.sleepwell.app.permission.WRITE_RECORD_SUMMARIES\")",
+        "android:exported": "(type 0x12)0xffffffff",
+        "android:authorities": "\"org.sleepwell.app.records\" (Raw: \"org.sleepwell.app.records\")",
+        "android:grantUriPermissions": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecordAccessReceiver\" (Raw: \"org.sleepwell.app.RecordAccessReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.MainActivity\" (Raw: \"org.sleepwell.app.MainActivity\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TonightLayoutActivity\" (Raw: \"org.sleepwell.app.TonightLayoutActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SettingsProfileActivity\" (Raw: \"org.sleepwell.app.SettingsProfileActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SleepCsvActivity\" (Raw: \"org.sleepwell.app.SleepCsvActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SleepCsvSourceActivity\" (Raw: \"org.sleepwell.app.SleepCsvSourceActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.IncomingAutomationSettingsActivity\" (Raw: \"org.sleepwell.app.IncomingAutomationSettingsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AudioChallengePreviewActivity\" (Raw: \"org.sleepwell.app.AudioChallengePreviewActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.NarrationVoiceActivity\" (Raw: \"org.sleepwell.app.NarrationVoiceActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.IncomingAutomationActivity\" (Raw: \"org.sleepwell.app.IncomingAutomationActivity\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AutoCalendarActivity\" (Raw: \"org.sleepwell.app.AutoCalendarActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AutoCalendarService\" (Raw: \"org.sleepwell.app.AutoCalendarService\")",
+        "android:permission": "\"android.permission.BIND_JOB_SERVICE\" (Raw: \"android.permission.BIND_JOB_SERVICE\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AutoCalendarReceiver\" (Raw: \"org.sleepwell.app.AutoCalendarReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SmartLightActivity\" (Raw: \"org.sleepwell.app.SmartLightActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AutomationActivity\" (Raw: \"org.sleepwell.app.AutomationActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AutomationJobService\" (Raw: \"org.sleepwell.app.AutomationJobService\")",
+        "android:permission": "\"android.permission.BIND_JOB_SERVICE\" (Raw: \"android.permission.BIND_JOB_SERVICE\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.HealthSleepSourceActivity\" (Raw: \"org.sleepwell.app.HealthSleepSourceActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TrackingFlipActivity\" (Raw: \"org.sleepwell.app.TrackingFlipActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TrackingDelayActivity\" (Raw: \"org.sleepwell.app.TrackingDelayActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TrackingDndActivity\" (Raw: \"org.sleepwell.app.TrackingDndActivity\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TrackingDndReceiver\" (Raw: \"org.sleepwell.app.TrackingDndReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.DiaryImportActivity\" (Raw: \"org.sleepwell.app.DiaryImportActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.DiaryActivity\" (Raw: \"org.sleepwell.app.DiaryActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TypedWakePreviewActivity\" (Raw: \"org.sleepwell.app.TypedWakePreviewActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TagManagementActivity\" (Raw: \"org.sleepwell.app.TagManagementActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.HealthConnectActivity\" (Raw: \"org.sleepwell.app.HealthConnectActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.HealthSleepPrivacyActivity\" (Raw: \"org.sleepwell.app.HealthSleepPrivacyActivity\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "activity-alias",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.HealthSleepPermissionUsage\" (Raw: \"org.sleepwell.app.HealthSleepPermissionUsage\")",
+        "android:permission": "\"android.permission.START_VIEW_PERMISSION_USAGE\" (Raw: \"android.permission.START_VIEW_PERMISSION_USAGE\")",
+        "android:exported": "(type 0x12)0xffffffff",
+        "android:targetActivity": "\"org.sleepwell.app.HealthSleepPrivacyActivity\" (Raw: \"org.sleepwell.app.HealthSleepPrivacyActivity\")"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.CloudAudioActivity\" (Raw: \"org.sleepwell.app.CloudAudioActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.CloudBackupActivity\" (Raw: \"org.sleepwell.app.CloudBackupActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AutoCloudAudioService\" (Raw: \"org.sleepwell.app.AutoCloudAudioService\")",
+        "android:permission": "\"android.permission.BIND_JOB_SERVICE\" (Raw: \"android.permission.BIND_JOB_SERVICE\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AutoCloudAudioReceiver\" (Raw: \"org.sleepwell.app.AutoCloudAudioReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AutoCloudBackupService\" (Raw: \"org.sleepwell.app.AutoCloudBackupService\")",
+        "android:permission": "\"android.permission.BIND_JOB_SERVICE\" (Raw: \"android.permission.BIND_JOB_SERVICE\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AutoCloudBackupReceiver\" (Raw: \"org.sleepwell.app.AutoCloudBackupReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SearchActivity\" (Raw: \"org.sleepwell.app.SearchActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.CalendarEventExportActivity\" (Raw: \"org.sleepwell.app.CalendarEventExportActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "provider",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SleepSummaryFileProvider\" (Raw: \"org.sleepwell.app.SleepSummaryFileProvider\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:authorities": "\"org.sleepwell.app.sleep-summary\" (Raw: \"org.sleepwell.app.sleep-summary\")",
+        "android:grantUriPermissions": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SleepSummaryActivity\" (Raw: \"org.sleepwell.app.SleepSummaryActivity\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmRequestActivity\" (Raw: \"org.sleepwell.app.AlarmRequestActivity\")",
+        "android:permission": "\"com.android.alarm.permission.SET_ALARM\" (Raw: \"com.android.alarm.permission.SET_ALARM\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.BackupActivity\" (Raw: \"org.sleepwell.app.BackupActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmExcludedDatesActivity\" (Raw: \"org.sleepwell.app.AlarmExcludedDatesActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmRepeatActivity\" (Raw: \"org.sleepwell.app.AlarmRepeatActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.NextAlarmOverrideActivity\" (Raw: \"org.sleepwell.app.NextAlarmOverrideActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmEditorActivity\" (Raw: \"org.sleepwell.app.AlarmEditorActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RandomChallengeActivity\" (Raw: \"org.sleepwell.app.RandomChallengeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RandomChallengePreviewActivity\" (Raw: \"org.sleepwell.app.RandomChallengePreviewActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.HueBridgeActivity\" (Raw: \"org.sleepwell.app.HueBridgeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmBedtimeActivity\" (Raw: \"org.sleepwell.app.AlarmBedtimeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.WakeCheckActivity\" (Raw: \"org.sleepwell.app.WakeCheckActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TimerRequestActivity\" (Raw: \"org.sleepwell.app.TimerRequestActivity\")",
+        "android:permission": "\"com.android.alarm.permission.SET_ALARM\" (Raw: \"com.android.alarm.permission.SET_ALARM\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.NapProfilesDocumentsActivity\" (Raw: \"org.sleepwell.app.NapProfilesDocumentsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.NapProfilesActivity\" (Raw: \"org.sleepwell.app.NapProfilesActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.NapActivity\" (Raw: \"org.sleepwell.app.NapActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.NoteChallengeActivity\" (Raw: \"org.sleepwell.app.NoteChallengeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.CameraLightActivity\" (Raw: \"org.sleepwell.app.CameraLightActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.ObjectRecognitionActivity\" (Raw: \"org.sleepwell.app.ObjectRecognitionActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.PoseActivity\" (Raw: \"org.sleepwell.app.PoseActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SmileActivity\" (Raw: \"org.sleepwell.app.SmileActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.PictureMatchActivity\" (Raw: \"org.sleepwell.app.PictureMatchActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.GeneratedMorningQrActivity\" (Raw: \"org.sleepwell.app.GeneratedMorningQrActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.QrCodeActivity\" (Raw: \"org.sleepwell.app.QrCodeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmProtectionActivity\" (Raw: \"org.sleepwell.app.AlarmProtectionActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.UninstallProtectionActivity\" (Raw: \"org.sleepwell.app.UninstallProtectionActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AacExportActivity\" (Raw: \"org.sleepwell.app.AacExportActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.CalendarEventDirectActivity\" (Raw: \"org.sleepwell.app.CalendarEventDirectActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:label": "@0x7f0e0045",
+        "android:name": "\"org.sleepwell.app.SleepWellAdminReceiver\" (Raw: \"org.sleepwell.app.SleepWellAdminReceiver\")",
+        "android:permission": "\"android.permission.BIND_DEVICE_ADMIN\" (Raw: \"android.permission.BIND_DEVICE_ADMIN\")",
+        "android:exported": "(type 0x12)0xffffffff",
+        "android:description": "@0x7f0e0044"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AppearanceActivity\" (Raw: \"org.sleepwell.app.AppearanceActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AutomaticTrackingActivity\" (Raw: \"org.sleepwell.app.AutomaticTrackingActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecurringTrackingActivity\" (Raw: \"org.sleepwell.app.RecurringTrackingActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TrackingActivity\" (Raw: \"org.sleepwell.app.TrackingActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.DreamCueActivity\" (Raw: \"org.sleepwell.app.DreamCueActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.DreamCueHistoryActivity\" (Raw: \"org.sleepwell.app.DreamCueHistoryActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.PairMotionStopReceiver\" (Raw: \"org.sleepwell.app.PairMotionStopReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.PairMotionActivity\" (Raw: \"org.sleepwell.app.PairMotionActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.PairMotionSavedActivity\" (Raw: \"org.sleepwell.app.PairMotionSavedActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.MotionCalibrationActivity\" (Raw: \"org.sleepwell.app.MotionCalibrationActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.MotionSensorActivity\" (Raw: \"org.sleepwell.app.MotionSensorActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RoomConditionsActivity\" (Raw: \"org.sleepwell.app.RoomConditionsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SmartBedtimeActivity\" (Raw: \"org.sleepwell.app.SmartBedtimeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.GoogleSleepSignalReceiver\" (Raw: \"org.sleepwell.app.GoogleSleepSignalReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SmartBedtimeReceiver\" (Raw: \"org.sleepwell.app.SmartBedtimeReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.PlanActivity\" (Raw: \"org.sleepwell.app.PlanActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RhythmGroupsActivity\" (Raw: \"org.sleepwell.app.RhythmGroupsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.EchoSettingsActivity\" (Raw: \"org.sleepwell.app.EchoSettingsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.EchoPeriodsActivity\" (Raw: \"org.sleepwell.app.EchoPeriodsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TripSleepActivity\" (Raw: \"org.sleepwell.app.TripSleepActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TripSleepReceiver\" (Raw: \"org.sleepwell.app.TripSleepReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TripSleepBootReceiver\" (Raw: \"org.sleepwell.app.TripSleepBootReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TravelActivity\" (Raw: \"org.sleepwell.app.TravelActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TravelCueReviewActivity\" (Raw: \"org.sleepwell.app.TravelCueReviewActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.HabitualTimingActivity\" (Raw: \"org.sleepwell.app.HabitualTimingActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SleepRhythmActivity\" (Raw: \"org.sleepwell.app.SleepRhythmActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SRIActivity\" (Raw: \"org.sleepwell.app.SRIActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.MissedNightActivity\" (Raw: \"org.sleepwell.app.MissedNightActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.GuardActivity\" (Raw: \"org.sleepwell.app.GuardActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.BinauralSettingsActivity\" (Raw: \"org.sleepwell.app.BinauralSettingsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.PirSettingsActivity\" (Raw: \"org.sleepwell.app.PirSettingsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.PirReportActivity\" (Raw: \"org.sleepwell.app.PirReportActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.GuidedWindDownActivity\" (Raw: \"org.sleepwell.app.GuidedWindDownActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SleepSoundsActivity\" (Raw: \"org.sleepwell.app.SleepSoundsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.ExternalMediaFadeActivity\" (Raw: \"org.sleepwell.app.ExternalMediaFadeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.GoalBankActivity\" (Raw: \"org.sleepwell.app.GoalBankActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.HistoryActivity\" (Raw: \"org.sleepwell.app.HistoryActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecordAchievementsActivity\" (Raw: \"org.sleepwell.app.RecordAchievementsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecordInsightsActivity\" (Raw: \"org.sleepwell.app.RecordInsightsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecordedNightScoreActivity\" (Raw: \"org.sleepwell.app.RecordedNightScoreActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecordReportActivity\" (Raw: \"org.sleepwell.app.RecordReportActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecordEditorActivity\" (Raw: \"org.sleepwell.app.RecordEditorActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SnoringCuesActivity\" (Raw: \"org.sleepwell.app.SnoringCuesActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SoundLabelActivity\" (Raw: \"org.sleepwell.app.SoundLabelActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SoundEventsActivity\" (Raw: \"org.sleepwell.app.SoundEventsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecordedRecognitionActivity\" (Raw: \"org.sleepwell.app.RecordedRecognitionActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SoundLibrarySettingsActivity\" (Raw: \"org.sleepwell.app.SoundLibrarySettingsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SoundSensitivityActivity\" (Raw: \"org.sleepwell.app.SoundSensitivityActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RelativeAlarmTimeActivity\" (Raw: \"org.sleepwell.app.RelativeAlarmTimeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.GoalAlarmTimeActivity\" (Raw: \"org.sleepwell.app.GoalAlarmTimeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SunriseTimeActivity\" (Raw: \"org.sleepwell.app.SunriseTimeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmDefaultsActivity\" (Raw: \"org.sleepwell.app.AlarmDefaultsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.ChallengePackPreviewActivity\" (Raw: \"org.sleepwell.app.ChallengePackPreviewActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.MoonSearchPreviewActivity\" (Raw: \"org.sleepwell.app.MoonSearchPreviewActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.CalendarRulesActivity\" (Raw: \"org.sleepwell.app.CalendarRulesActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.CalendarSyncJob\" (Raw: \"org.sleepwell.app.CalendarSyncJob\")",
+        "android:permission": "\"android.permission.BIND_JOB_SERVICE\" (Raw: \"android.permission.BIND_JOB_SERVICE\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.ResearchExportActivity\" (Raw: \"org.sleepwell.app.ResearchExportActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.LibraryAudioImportActivity\" (Raw: \"org.sleepwell.app.LibraryAudioImportActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.LibraryAudioExportActivity\" (Raw: \"org.sleepwell.app.LibraryAudioExportActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SoundArchiveActivity\" (Raw: \"org.sleepwell.app.SoundArchiveActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.FavoriteSoundsActivity\" (Raw: \"org.sleepwell.app.FavoriteSoundsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SnoreSoundRouteActivity\" (Raw: \"org.sleepwell.app.SnoreSoundRouteActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecordSignalsActivity\" (Raw: \"org.sleepwell.app.RecordSignalsActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmActivity\" (Raw: \"org.sleepwell.app.AlarmActivity\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:launchMode": "(type 0x10)0x2",
+        "android:showWhenLocked": "(type 0x12)0xffffffff",
+        "android:turnScreenOn": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.FocusActivity\" (Raw: \"org.sleepwell.app.FocusActivity\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:launchMode": "(type 0x10)0x2"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.PhraseChallengeActivity\" (Raw: \"org.sleepwell.app.PhraseChallengeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SpeakChallengeActivity\" (Raw: \"org.sleepwell.app.SpeakChallengeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.NoteCaptureService\" (Raw: \"org.sleepwell.app.NoteCaptureService\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:foregroundServiceType": "(type 0x11)0x80"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SpeakCaptureService\" (Raw: \"org.sleepwell.app.SpeakCaptureService\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:foregroundServiceType": "(type 0x11)0x80"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmService\" (Raw: \"org.sleepwell.app.AlarmService\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:foregroundServiceType": "(type 0x11)0x2"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.SleepSoundService\" (Raw: \"org.sleepwell.app.SleepSoundService\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:foregroundServiceType": "(type 0x11)0x2"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TrackingService\" (Raw: \"org.sleepwell.app.TrackingService\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:foregroundServiceType": "(type 0x11)0x40000090"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.BedtimeGuard\" (Raw: \"org.sleepwell.app.BedtimeGuard\")",
+        "android:permission": "\"android.permission.BIND_ACCESSIBILITY_SERVICE\" (Raw: \"android.permission.BIND_ACCESSIBILITY_SERVICE\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.WakeCheckReceiver\" (Raw: \"org.sleepwell.app.WakeCheckReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.NapReceiver\" (Raw: \"org.sleepwell.app.NapReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.AlarmReceiver\" (Raw: \"org.sleepwell.app.AlarmReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TravelTrackingReminderReceiver\" (Raw: \"org.sleepwell.app.TravelTrackingReminderReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TravelReminderReceiver\" (Raw: \"org.sleepwell.app.TravelReminderReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TravelCueStopReceiver\" (Raw: \"org.sleepwell.app.TravelCueStopReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecurringTrackingReceiver\" (Raw: \"org.sleepwell.app.RecurringTrackingReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RecurringTrackingBootReceiver\" (Raw: \"org.sleepwell.app.RecurringTrackingBootReceiver\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.TravelBootReceiver\" (Raw: \"org.sleepwell.app.TravelBootReceiver\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.BootReceiver\" (Raw: \"org.sleepwell.app.BootReceiver\")",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"androidx.health.platform.client.impl.sdkservice.HealthDataSdkService\" (Raw: \"androidx.health.platform.client.impl.sdkservice.HealthDataSdkService\")",
+        "android:enabled": "(type 0x12)0xffffffff",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"androidx.camera.core.impl.MetadataHolderService\" (Raw: \"androidx.camera.core.impl.MetadataHolderService\")",
+        "android:enabled": "(type 0x12)0x0",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"com.google.mlkit.common.internal.MlKitComponentDiscoveryService\" (Raw: \"com.google.mlkit.common.internal.MlKitComponentDiscoveryService\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:directBootAware": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "provider",
+      "attributes": {
+        "android:name": "\"com.google.mlkit.common.internal.MlKitInitProvider\" (Raw: \"com.google.mlkit.common.internal.MlKitInitProvider\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:authorities": "\"org.sleepwell.app.mlkitinitprovider\" (Raw: \"org.sleepwell.app.mlkitinitprovider\")",
+        "android:initOrder": "(type 0x10)0x63"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"com.google.mlkit.acceleration.internal.MlKitRemoteWorkerService\" (Raw: \"com.google.mlkit.acceleration.internal.MlKitRemoteWorkerService\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:process": "\":mlkit_acceleration_mini_benchmark\" (Raw: \":mlkit_acceleration_mini_benchmark\")"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:theme": "@0x01030010",
+        "android:name": "\"com.google.android.gms.common.api.GoogleApiActivity\" (Raw: \"com.google.android.gms.common.api.GoogleApiActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "provider",
+      "attributes": {
+        "android:name": "\"androidx.startup.InitializationProvider\" (Raw: \"androidx.startup.InitializationProvider\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:authorities": "\"org.sleepwell.app.androidx-startup\" (Raw: \"org.sleepwell.app.androidx-startup\")"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"com.google.android.play.core.assetpacks.AssetPackExtractionService\" (Raw: \"com.google.android.play.core.assetpacks.AssetPackExtractionService\")",
+        "android:enabled": "(type 0x12)0x0",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"com.google.android.play.core.assetpacks.ExtractionForegroundService\" (Raw: \"com.google.android.play.core.assetpacks.ExtractionForegroundService\")",
+        "android:enabled": "(type 0x12)0x0",
+        "android:exported": "(type 0x12)0x0",
+        "android:foregroundServiceType": "(type 0x11)0x1"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"com.google.android.play.core.assetpacks.SessionStateBroadcastReceiver\" (Raw: \"com.google.android.play.core.assetpacks.SessionStateBroadcastReceiver\")",
+        "android:permission": "\"android.permission.INSTALL_PACKAGES\" (Raw: \"android.permission.INSTALL_PACKAGES\")",
+        "android:enabled": "(type 0x12)0xffffffff",
+        "android:exported": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"androidx.work.multiprocess.RemoteWorkManagerService\" (Raw: \"androidx.work.multiprocess.RemoteWorkManagerService\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"androidx.work.impl.background.systemalarm.SystemAlarmService\" (Raw: \"androidx.work.impl.background.systemalarm.SystemAlarmService\")",
+        "android:enabled": "@0x7f040002",
+        "android:exported": "(type 0x12)0x0",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"androidx.work.impl.background.systemjob.SystemJobService\" (Raw: \"androidx.work.impl.background.systemjob.SystemJobService\")",
+        "android:permission": "\"android.permission.BIND_JOB_SERVICE\" (Raw: \"android.permission.BIND_JOB_SERVICE\")",
+        "android:enabled": "@0x7f040004",
+        "android:exported": "(type 0x12)0xffffffff",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"androidx.work.impl.foreground.SystemForegroundService\" (Raw: \"androidx.work.impl.foreground.SystemForegroundService\")",
+        "android:enabled": "@0x7f040003",
+        "android:exported": "(type 0x12)0x0",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver\" (Raw: \"androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver\")",
+        "android:enabled": "(type 0x12)0xffffffff",
+        "android:exported": "(type 0x12)0x0",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy\" (Raw: \"androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy\")",
+        "android:enabled": "(type 0x12)0x0",
+        "android:exported": "(type 0x12)0x0",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy\" (Raw: \"androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy\")",
+        "android:enabled": "(type 0x12)0x0",
+        "android:exported": "(type 0x12)0x0",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy\" (Raw: \"androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy\")",
+        "android:enabled": "(type 0x12)0x0",
+        "android:exported": "(type 0x12)0x0",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy\" (Raw: \"androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy\")",
+        "android:enabled": "(type 0x12)0x0",
+        "android:exported": "(type 0x12)0x0",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"androidx.work.impl.background.systemalarm.RescheduleReceiver\" (Raw: \"androidx.work.impl.background.systemalarm.RescheduleReceiver\")",
+        "android:enabled": "(type 0x12)0x0",
+        "android:exported": "(type 0x12)0x0",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver\" (Raw: \"androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver\")",
+        "android:enabled": "@0x7f040002",
+        "android:exported": "(type 0x12)0x0",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"androidx.work.impl.diagnostics.DiagnosticsReceiver\" (Raw: \"androidx.work.impl.diagnostics.DiagnosticsReceiver\")",
+        "android:permission": "\"android.permission.DUMP\" (Raw: \"android.permission.DUMP\")",
+        "android:enabled": "(type 0x12)0xffffffff",
+        "android:exported": "(type 0x12)0xffffffff",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"androidx.room.MultiInstanceInvalidationService\" (Raw: \"androidx.room.MultiInstanceInvalidationService\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:directBootAware": "(type 0x12)0xffffffff"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"androidx.profileinstaller.ProfileInstallReceiver\" (Raw: \"androidx.profileinstaller.ProfileInstallReceiver\")",
+        "android:permission": "\"android.permission.DUMP\" (Raw: \"android.permission.DUMP\")",
+        "android:enabled": "(type 0x12)0xffffffff",
+        "android:exported": "(type 0x12)0xffffffff",
+        "android:directBootAware": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"com.google.android.datatransport.runtime.backends.TransportBackendDiscovery\" (Raw: \"com.google.android.datatransport.runtime.backends.TransportBackendDiscovery\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "service",
+      "attributes": {
+        "android:name": "\"com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService\" (Raw: \"com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService\")",
+        "android:permission": "\"android.permission.BIND_JOB_SERVICE\" (Raw: \"android.permission.BIND_JOB_SERVICE\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "receiver",
+      "attributes": {
+        "android:name": "\"com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver\" (Raw: \"com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver\")",
+        "android:exported": "(type 0x12)0x0"
+      }
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:theme": "@0x7f0f010b",
+        "android:name": "\"com.google.android.play.core.common.PlayCoreDialogWrapperActivity\" (Raw: \"com.google.android.play.core.common.PlayCoreDialogWrapperActivity\")",
+        "android:exported": "(type 0x12)0x0",
+        "android:stateNotNeeded": "(type 0x12)0xffffffff"
+      }
+    }
+  ],
+  "counts": {
+    "activity": 125,
+    "activity-alias": 1,
+    "application": 1,
+    "permission": 5,
+    "provider": 5,
+    "receiver": 34,
+    "service": 24,
+    "uses-feature": 10,
+    "uses-permission": 36,
+    "uses-sdk": 1
+  }
+}

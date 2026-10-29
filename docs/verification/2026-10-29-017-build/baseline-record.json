@@ -1,0 +1,66 @@
+{
+  "status": "baseline_prepared_candidate_not_supplied",
+  "source": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
+  "apk": "SleepWell-741b3718032ab4dc1d52eb67cf2194d4c59884f9.apk",
+  "bytes": 163250139,
+  "sha256": "3e44d6899aa52ccc567de983b91c70765c5cbdc00562144a4bbdc04125940459",
+  "versionName": "0.1.6",
+  "versionCode": 7,
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "toolchain": "Android SDK build-tools 36.0.0",
+  "refreshed_tool_output_matches_published_archive": {
+    "manifest-tree": true,
+    "badging": true,
+    "signer": true
+  },
+  "zip_counts": {
+    "assets/": 65,
+    "lib/": 8,
+    "res/": 775
+  },
+  "zip_entries": 948,
+  "resources_arsc": {
+    "name": "resources.arsc",
+    "bytes": 446908,
+    "sha256": "1440ca93cf0e7c75201149805017df301678fd25bfae39453016867e7d2910cf",
+    "crc32": "73f1f8c5",
+    "compressed_bytes": 446908,
+    "compression": 0,
+    "local_header_offset": 162676705
+  },
+  "source_trees": {
+    "app": "ed2b45fb19ce648973b9e2a82a2bec0620b00879",
+    "app/src/main": "3f258eab6b1ec342bfb5bc0d32aaf7f4996747d1",
+    "app/src/main/assets": "cbbe10142c6d48ff0c9249f081ea796af8fb51b1",
+    "app/src/main/res": "0f40b3bb0992b7843e11599828021f42eba2e2cf"
+  },
+  "source_contracts": [
+    {
+      "path": "app/build.gradle",
+      "git_blob": "78242c2e6ba8d5b7a401de0a6115bd9bc063998c",
+      "sha256": "efe089456ca398a7d3eac56c029e04e53a1a4369da3ce86e0df300ae47b51d61"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "git_blob": "3796dbc5d07608b67f7b5766d62a23aa812f1096",
+      "sha256": "bfbe56034243efae83a98644fe31e76f8372adea2924ddd6c83607fd50cbc11d"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "git_blob": "8f33543a0898a498075e4b82d70e6dfddd6af77f",
+      "sha256": "17bf74d23a9bbcf3c2897ca6d773fbcda273e24940deeab0cc52297ee2252323"
+    }
+  ],
+  "store_schema": 17,
+  "backup_format": 14,
+  "candidate_expected_versionName": "0.1.7",
+  "candidate_expected_versionCode": 8,
+  "candidate_source": null,
+  "candidate_apk": null,
+  "runtime_or_build_execution": false
+}
