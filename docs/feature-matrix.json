@@ -4462,9 +4462,11 @@
         "MotionSettings.java",
         "MotionProfile.java",
         "TrackingService.java",
-        "SensorProvenance.java"
+        "SensorProvenance.java",
+        "MotionSensorActivity.java",
+        "MotionSignalChart.java"
       ],
-      "validation": "Production assembleDebug90e2583 passed14s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction.",
+      "validation": "Production assembleDebug90e2583 passed14s; build-only evidence. No new tests, lint, screenshots, provider or phone runs per user instruction. UI29 next-source Motion reference CI40862856617 ata46f1b7c PASS22.359s, one existing method/seven individually inspected originals; measured real-data axes/range, generated handset, fully visible calibration/rail/footer, actual Test/Save/recreate/conflict/unavailable/error checks. First failed capture retained. Exact named source blobs match Root integration. Evidence: verification/2026-10-29-motion-reference/. Fake motion ports, not physical sensors/calibration or clean SystemUI/full36 acceptance; not yet in published0.1.7.",
       "status": "partial",
       "notes": "Saved measured calibration uses explicit capture, review and Save/Reset with stale-draft checks. A manual sensitivity change clears custom calibration; opening/recreating the screen never starts capture. Each new night pins its configuration; schema15/backup13 preserve provenance. Real device performance and clinical accuracy remain unverified.",
       "id": "F143",

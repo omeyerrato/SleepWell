@@ -48,6 +48,13 @@ Checked means implemented with the stated supporting evidence. Physical-device a
 - [x] Independent original-signer/package audit passed: retained assets/libraries, compiled manifest and unchanged schema 17 / backup 14. [Evidence](verification/2026-10-29-017-build/README.md).
 - [x] Publish 0.1.7 and verify its exact tag, APK and checksum hashes. Installation remains deferred by the user.
 
+## Next increment — not yet published
+
+- [x] Integrate Motion sensor reference artwork, clearer real-data chart labels and complete calibration/footer layout. [Seven inspected originals](verification/2026-10-29-motion-reference/README.md); fake sensor ports, not hardware acceptance.
+- [x] Reject unsupported external media fade before allocating its newer native listener. Source-only; next combined build pending.
+- [ ] Finish the Privacy reference layout and its actual loading/error/persistence flow.
+- [ ] Build, lint and audit the next combined update.
+
 ## Still unfinished
 
 - [ ] Reference/interaction/security priorities above.
