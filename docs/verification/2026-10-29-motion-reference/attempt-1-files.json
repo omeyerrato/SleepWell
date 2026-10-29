@@ -1,0 +1,73 @@
+{
+  "run_id": 40861054915,
+  "conclusion": "failure",
+  "source": "7cabc29cdd9db920baa96d6229a106dc0b87ce00",
+  "original_artifacts": [
+    {
+      "file": "acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "file": "avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    {
+      "file": "emulator.log",
+      "bytes": 7335,
+      "sha256": "b41c6aad55d8a17e5f361a0802ca749fd6138e3332186268140495fed2534fdd"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 677,
+      "sha256": "a63955c25d164de31afd58bac617491c7320dd0a3c29d89bff6a50a49107d635"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "bytes": 726,
+      "sha256": "63e1633570f0c230a1a5f8886945738ad754f4d71b600c60a6a5c8a1cf4269dc"
+    },
+    {
+      "file": "guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+    },
+    {
+      "file": "guest-logcat.txt",
+      "bytes": 508050,
+      "sha256": "78a2389d14dbabda2a5a9d76a9dd535f57866240105e9a138aa17a5c3b8a39c3"
+    },
+    {
+      "file": "guest-windows.txt",
+      "bytes": 40238,
+      "sha256": "9cf6bbedea5b2b0939a673524b903c27b32316be82a130712cfaa944754a69e5"
+    },
+    {
+      "file": "motion-settings-failure.png",
+      "bytes": 185297,
+      "sha256": "4115eb3c810b90e5aa11840ed310853c32a9f61f6c3b706d1d97e3e3c44d9fb4"
+    },
+    {
+      "file": "motion-settings-failure.xml",
+      "bytes": 37237,
+      "sha256": "59ffd824e87d0e5f577d47c6f4994821c9bee8d8112b243f4ee3d922e5ec1229"
+    },
+    {
+      "file": "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware.txt",
+      "bytes": 2073,
+      "sha256": "561bd1b1de321f017d6aaebf0bfba529e74707cccae524b555ad4ae21b7e9842"
+    },
+    {
+      "file": "preflight.json",
+      "bytes": 1873,
+      "sha256": "faf415cd9fcddce1b13cfb171854dce45f200833c969d37d38844203cc7be89c"
+    },
+    {
+      "file": "startup-focus.txt",
+      "bytes": 246,
+      "sha256": "5856f4c13c4d69c34a5f40f6d3edbd39aec416d1a4c4448df12e454cb166b376"
+    }
+  ],
+  "finding": "NPE on a direct UI action after explanation dialog dismissal; no required seven screenshots captured. Failure screenshot also reveals clipped calibration row; both addressed in a subsequent attempt."
+}

@@ -1,0 +1,115 @@
+[
+  {
+    "file": "originals/acceleration.txt",
+    "bytes": 57,
+    "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+  },
+  {
+    "file": "originals/avds.txt",
+    "bytes": 16,
+    "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+  },
+  {
+    "file": "originals/emulator.log",
+    "bytes": 7484,
+    "sha256": "815504b4d49392047b7349bd6b0050648c16f352e34255c31120527719c61332"
+  },
+  {
+    "file": "originals/environment.json",
+    "bytes": 677,
+    "sha256": "459c3da23270e6b0ba9ce952ed39c8a3e931c5b8e0aca13021895157dd971ed3"
+  },
+  {
+    "file": "originals/focused-review-summary.json",
+    "bytes": 368,
+    "sha256": "8cf22d96fd65433338983f18dab3d944c47082648dc8296fc56ad507dc5b1b78"
+  },
+  {
+    "file": "originals/guest-last-anr.txt",
+    "bytes": 88,
+    "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+  },
+  {
+    "file": "originals/guest-logcat.txt",
+    "bytes": 529975,
+    "sha256": "5268f3312b44a0effac8693c1993e607789bb8dff1b125be6e1876a03c30f24a"
+  },
+  {
+    "file": "originals/guest-windows.txt",
+    "bytes": 40369,
+    "sha256": "0c9372814a6beae4741044c2b50add3bf7d91427603ebe075bd80403263c5dcc"
+  },
+  {
+    "file": "originals/motion-settings-changed.png",
+    "bytes": 182440,
+    "sha256": "ab62df5bbcf2f58370e98365980aa82d395f000ca832365eabf0e29b408e6523",
+    "dimensions": [
+      1080,
+      2316
+    ]
+  },
+  {
+    "file": "originals/motion-settings-conflict.png",
+    "bytes": 177157,
+    "sha256": "6e29094310b25e86c457ff1ed31d28c21cc8e955b5854d3c969c0f259d00fd5c",
+    "dimensions": [
+      1080,
+      2316
+    ]
+  },
+  {
+    "file": "originals/motion-settings-error.png",
+    "bytes": 172552,
+    "sha256": "99d9df93e5a3bcfd4d8d1774f764e0bb77effba697e910f9bd42cec9718dd9c4",
+    "dimensions": [
+      1080,
+      2316
+    ]
+  },
+  {
+    "file": "originals/motion-settings-ready.png",
+    "bytes": 183620,
+    "sha256": "ec30367abc6d71a726a122ea91c77b4718930746b2443253d17a79bd28aa2430",
+    "dimensions": [
+      1080,
+      2316
+    ]
+  },
+  {
+    "file": "originals/motion-settings-recreated.png",
+    "bytes": 175856,
+    "sha256": "2db3896e4907e551a2ca5ff9e0c66defdc0cb4b0082f8356393f3297979f4f1d",
+    "dimensions": [
+      1080,
+      2316
+    ]
+  },
+  {
+    "file": "originals/motion-settings-reopened.png",
+    "bytes": 175873,
+    "sha256": "ab568b641597ccf3b9cad34b63e788287ff4d017ceb43f318bba7e59bbe939df",
+    "dimensions": [
+      1080,
+      2316
+    ]
+  },
+  {
+    "file": "originals/motion-settings-unavailable.png",
+    "bytes": 172172,
+    "sha256": "72294ad83e246211812b67201247c89d38d2a0af89b3196dbd3cd0a8f11168a0",
+    "dimensions": [
+      1080,
+      2316
+    ]
+  },
+  {
+    "file": "originals/MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware.txt",
+    "bytes": 842,
+    "sha256": "4a2b80422f63c87abb6e6879d8a220c346d1aed152b287974a4854a99c946484"
+  },
+  {
+    "file": "originals/startup-focus.txt",
+    "bytes": 246,
+    "sha256": "b83f1fe8e8e7e992047b4d20d38dae03d563dfa9c1e50fc0b5879610f229c0cc"
+  }
+]

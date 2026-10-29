@@ -1,0 +1,46 @@
+{
+  "source": "7cabc29cdd9db920baa96d6229a106dc0b87ce00",
+  "production_source": "dd2813c56df821e03ad09b8b26b8e635828de622",
+  "production_tree": "3c0cb33edc929ff28d01a52891b37bb3751c3698",
+  "scope": "motion-reference",
+  "selector": "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware",
+  "methods": 1,
+  "frames": [
+    "motion-settings-ready.png",
+    "motion-settings-changed.png",
+    "motion-settings-recreated.png",
+    "motion-settings-reopened.png",
+    "motion-settings-conflict.png",
+    "motion-settings-unavailable.png",
+    "motion-settings-error.png"
+  ],
+  "motionSlice": "reference",
+  "timeout_seconds": 180,
+  "native_sounds": false,
+  "audio_imports": false,
+  "room_continuation_executed": false,
+  "production_compile": "PASS2m6s",
+  "androidTest_source_compile": "PASS1m46s",
+  "named_files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MotionSensorActivity.java",
+      "sha256": "b3c5ba0c831e6728d72d053e59e8a05809e08ccd150d33526c88851f27f9d126",
+      "git_blob": "c012868686fd854e5024f3154070d32362981a4d"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MotionSignalChart.java",
+      "sha256": "0a107c776c395c79b3cc30da46f713337327e82d1a7488b50e5fbd2dda6cfe57",
+      "git_blob": "a58d26d961d444565e341e55e4e80f72602707c3"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/motion_sensor_handset.png",
+      "sha256": "6f7ae09ce1c38ac8b0caba5e32b288613589bd94c3625d06ddf6147663c36420",
+      "git_blob": "fc69f4a9fcac1d2527ea2e69a3da6c8df2b44ea2"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/MotionConfigurationFlowTest.java",
+      "sha256": "5a1b68737f612d12bfca1c6d653db76f5963d683a402e3a80d58cebef9a46e88",
+      "git_blob": "13f5a26ef9958f90a7289ab16d20af50c7fdad4d"
+    }
+  ]
+}

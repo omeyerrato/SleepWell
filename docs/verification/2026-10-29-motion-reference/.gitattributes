@@ -1,0 +1,5 @@
+# Original tool and CI artifacts retain exact bytes, including Windows line endings.
+* -text whitespace=cr-at-eol
+*.txt -whitespace
+*.patch -whitespace
+*.log -whitespace
