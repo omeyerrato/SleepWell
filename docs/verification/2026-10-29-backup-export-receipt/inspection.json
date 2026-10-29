@@ -1,0 +1,51 @@
+{
+  "run": 40872218512,
+  "each_original_opened_separately": true,
+  "no_pixel_edits_or_montage_substitution": true,
+  "frames": [
+    {
+      "file": "originals/backup-document-chooser.png",
+      "observation": "Complete app-side choosing state and fixed Cancel selection; private picker port, not a real provider chooser.",
+      "individually_inspected": true
+    },
+    {
+      "file": "originals/backup-document-selection-cancelled.png",
+      "observation": "Complete no-document-selected feedback, supporting routes and three full fixed actions; receipt absence asserted.",
+      "individually_inspected": true
+    },
+    {
+      "file": "originals/backup-document-writing.png",
+      "observation": "Complete saving state, progress and full Cancel operation while private provider opening is held; main Looper heartbeat passed.",
+      "individually_inspected": true
+    },
+    {
+      "file": "originals/backup-document-writing-recreated.png",
+      "observation": "Same complete retained saving state after recreation; single owned operation, no duplicated provider open.",
+      "individually_inspected": true
+    },
+    {
+      "file": "originals/backup-document-cancelled.png",
+      "observation": "Complete partial-destination warning after actual active cancellation; three full footer actions; no receipt written.",
+      "individually_inspected": true
+    },
+    {
+      "file": "originals/backup-document-csv-done.png",
+      "observation": "Distinct complete CSV-saved message, supporting rows and footer; real serialized bytes and CSV-only receipt asserted.",
+      "individually_inspected": true
+    },
+    {
+      "file": "originals/backup-document-json-done.png",
+      "observation": "Distinct complete JSON-saved/exclusions message, supporting rows and footer; confirmed held-close gate and independent JSON timestamp asserted.",
+      "individually_inspected": true
+    },
+    {
+      "file": "originals/backup-document-receipt-warning.png",
+      "observation": "Complete JSON-saved message plus separate receipt-storage warning. All three fixed actions remain visible; phase remains DONE, not ERROR; no misleading retry instruction.",
+      "individually_inspected": true
+    }
+  ],
+  "qualifications": [
+    "Supporting Backup UI only; no final Privacy Last export row or Board12 full-match claim.",
+    "Inherited SystemUI/other devices/font/assistive traversal remain outside this fixed renderer proof."
+  ]
+}
