@@ -1,0 +1,46 @@
+{
+  "accepted_build": {
+    "original_basename": "0.1.7-02aacc6b.log",
+    "original_sha256": "73875d5461eb4e76f870dd09c1a15942162cfb617fac029d8e3463400117fc95",
+    "public_basename": "build-sanitized.txt",
+    "public_sha256": "e4dbfd0ba5950e9030371e3772abc0d1b16eb0c5399dd1a4ede5ff74ceea3722",
+    "replacements": [
+      {
+        "removed": "local workspace prefix",
+        "replacement": "<workspace>",
+        "occurrences": 2
+      }
+    ],
+    "other_bytes_unchanged": true
+  },
+  "prior_failed_build": {
+    "original_basename": "0.1.7-8ba95c95.log",
+    "original_sha256": "cccb7fc894dfb481e200ee4844823ff62a35d299f1ca88e56570acb1e9baf79a",
+    "public_basename": "prior-failed-build-sanitized.txt",
+    "public_sha256": "abd7384fc75349d4bbb2a577a7d09d55eeae7d89d55baa774f3655b99019e240",
+    "replacements": [
+      {
+        "removed": "local workspace prefix",
+        "replacement": "<workspace>",
+        "occurrences": 5
+      },
+      {
+        "removed": "local workspace prefix",
+        "replacement": "<workspace>",
+        "occurrences": 2
+      }
+    ],
+    "other_bytes_unchanged": true
+  },
+  "accepted_source": "02aacc6b122cb1e2c50486190ece608f8d5e3e87",
+  "prior_failed_source": "8ba95c955cb2c755d8358c8c259fe2cc9d0625fc",
+  "build_status": "SUCCESS",
+  "build_duration_from_original_log": "8m4s",
+  "build_tasks": {
+    "total": 45,
+    "executed": 20,
+    "up_to_date": 25
+  },
+  "owner_wall_seconds": 496.281,
+  "auditor_rebuilt_or_timed_build": false
+}

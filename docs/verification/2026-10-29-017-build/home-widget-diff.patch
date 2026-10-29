@@ -1,0 +1,101 @@
+--- 0.1.6 home_widget
++++ 0.1.7 home_widget
+@@ -17,7 +17,7 @@
+         A: android:text(0x0101014f)="SleepWell" (Raw: "SleepWell")
+         A: android:layout_weight(0x01010181)=(type 0x4)0x3f800000
+         A: android:fontFamily(0x010103ac)=@0x7f080000
+-      E: ImageButton (line=5)
++      E: ImageButton (line=6)
+         A: android:id(0x010100d0)=@0x7f0900cf
+         A: android:background(0x010100d4)=@0x0106000d
+         A: android:padding(0x010100d5)=(type 0x5)0xc01
+@@ -26,7 +26,7 @@
+         A: android:src(0x01010119)=@0x7f07007b
+         A: android:tint(0x01010121)=(type 0x1d)0xffe3caff
+         A: android:contentDescription(0x01010273)="Refresh SleepWell widget" (Raw: "Refresh SleepWell widget")
+-      E: ImageButton (line=6)
++      E: ImageButton (line=7)
+         A: android:id(0x010100d0)=@0x7f0900d4
+         A: android:background(0x010100d4)=@0x0106000d
+         A: android:padding(0x010100d5)=(type 0x5)0xc01
+@@ -35,7 +35,7 @@
+         A: android:src(0x01010119)=@0x7f070099
+         A: android:tint(0x01010121)=(type 0x1d)0xffe3caff
+         A: android:contentDescription(0x01010273)="Widget and shortcut settings" (Raw: "Widget and shortcut settings")
+-    E: LinearLayout (line=8)
++    E: LinearLayout (line=9)
+       A: android:gravity(0x010100af)=(type 0x11)0x10
+       A: android:orientation(0x010100c4)=(type 0x10)0x1
+       A: android:id(0x010100d0)=@0x7f0900cb
+@@ -46,7 +46,7 @@
+       A: android:layout_height(0x010100f5)=(type 0x5)0x1
+       A: android:minHeight(0x01010140)=(type 0x5)0x4a01
+       A: android:layout_weight(0x01010181)=(type 0x4)0x3f800000
+-      E: TextView (line=9)
++      E: TextView (line=10)
+         A: android:textSize(0x01010095)=(type 0x5)0xc02
+         A: android:textColor(0x01010098)=(type 0x1d)0xffe3caff
+         A: android:id(0x010100d0)=@0x7f0900cd
+@@ -55,7 +55,7 @@
+         A: android:text(0x0101014f)="Next alarm" (Raw: "Next alarm")
+         A: android:maxLines(0x01010153)=(type 0x10)0x1
+         A: android:fontFamily(0x010103ac)=@0x7f080000
+-      E: TextView (line=10)
++      E: TextView (line=11)
+         A: android:textSize(0x01010095)=(type 0x5)0x1a02
+         A: android:textColor(0x01010098)=(type 0x1d)0xffffffff
+         A: android:ellipsize(0x010100ab)=(type 0x10)0x3
+@@ -65,7 +65,7 @@
+         A: android:text(0x0101014f)="Open SleepWell" (Raw: "Open SleepWell")
+         A: android:maxLines(0x01010153)=(type 0x10)0x1
+         A: android:fontFamily(0x010103ac)=@0x7f080000
+-      E: TextView (line=11)
++      E: TextView (line=12)
+         A: android:textSize(0x01010095)=(type 0x5)0xb02
+         A: android:textColor(0x01010098)=(type 0x1d)0xffe3caff
+         A: android:ellipsize(0x010100ab)=(type 0x10)0x3
+@@ -75,7 +75,7 @@
+         A: android:text(0x0101014f)="Refresh to load saved alarms" (Raw: "Refresh to load saved alarms")
+         A: android:maxLines(0x01010153)=(type 0x10)0x1
+         A: android:fontFamily(0x010103ac)=@0x7f080000
+-    E: LinearLayout (line=13)
++    E: LinearLayout (line=14)
+       A: android:gravity(0x010100af)=(type 0x11)0x10
+       A: android:orientation(0x010100c4)=(type 0x10)0x1
+       A: android:id(0x010100d0)=@0x7f0900d0
+@@ -87,7 +87,7 @@
+       A: android:layout_marginTop(0x010100f8)=(type 0x5)0x801
+       A: android:minHeight(0x01010140)=(type 0x5)0x4601
+       A: android:layout_weight(0x01010181)=(type 0x4)0x3f800000
+-      E: TextView (line=14)
++      E: TextView (line=15)
+         A: android:textSize(0x01010095)=(type 0x5)0xc02
+         A: android:textColor(0x01010098)=(type 0x1d)0xffe3caff
+         A: android:id(0x010100d0)=@0x7f0900d2
+@@ -96,7 +96,7 @@
+         A: android:text(0x0101014f)="Last sleep record" (Raw: "Last sleep record")
+         A: android:maxLines(0x01010153)=(type 0x10)0x1
+         A: android:fontFamily(0x010103ac)=@0x7f080000
+-      E: TextView (line=15)
++      E: TextView (line=16)
+         A: android:textSize(0x01010095)=(type 0x5)0x1602
+         A: android:textColor(0x01010098)=(type 0x1d)0xffffffff
+         A: android:ellipsize(0x010100ab)=(type 0x10)0x3
+@@ -106,7 +106,7 @@
+         A: android:text(0x0101014f)="Open history" (Raw: "Open history")
+         A: android:maxLines(0x01010153)=(type 0x10)0x1
+         A: android:fontFamily(0x010103ac)=@0x7f080000
+-      E: TextView (line=16)
++      E: TextView (line=17)
+         A: android:textSize(0x01010095)=(type 0x5)0xb02
+         A: android:textColor(0x01010098)=(type 0x1d)0xffe3caff
+         A: android:ellipsize(0x010100ab)=(type 0x10)0x3
+@@ -116,7 +116,7 @@
+         A: android:text(0x0101014f)="Refresh to load saved records" (Raw: "Refresh to load saved records")
+         A: android:maxLines(0x01010153)=(type 0x10)0x1
+         A: android:fontFamily(0x010103ac)=@0x7f080000
+-    E: Button (line=18)
++    E: Button (line=19)
+       A: android:textSize(0x01010095)=(type 0x5)0xe02
+       A: android:textColor(0x01010098)=(type 0x1d)0xff261d31
+       A: android:id(0x010100d0)=@0x7f0900ca

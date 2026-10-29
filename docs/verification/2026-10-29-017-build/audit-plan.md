@@ -1,7 +1,9 @@
 # 0.1.7 package audit: baseline preparation
 
-The final 0.1.7 source, APK and build transcript have not been supplied to this
-audit. No frozen candidate or package acceptance is claimed here.
+This plan was recorded during baseline preparation. The supplied final
+`02aacc6b122cb1e2c50486190ece608f8d5e3e87` candidate has now been compared;
+[the final audit](README.md) records the result and limits. The preparatory
+snapshot below remains historical context, not the final source pin.
 
 The baseline is published 0.1.6 source
 `741b3718032ab4dc1d52eb67cf2194d4c59884f9`, version code 7. Its local APK is

@@ -1,0 +1,36 @@
+{
+  "source": "02aacc6b122cb1e2c50486190ece608f8d5e3e87",
+  "report_basename": "lint-results-debug.xml",
+  "report_original_sha256": "7f4c81ba1fe4b0871567cf1f3e3db826adc806022ab3a304c8659c37141154c7",
+  "severity_counts": {
+    "Warning": 357,
+    "Hint": 1
+  },
+  "issue_id_counts": {
+    "ApplySharedPref": 11,
+    "InlinedApi": 3,
+    "UnusedAttribute": 2,
+    "CustomSplashScreen": 1,
+    "SpecifyJobSchedulerIdRange": 1,
+    "UseSwitchCompatOrMaterialCode": 49,
+    "UnsupportedChromeOsCameraSystemFeature": 1,
+    "UseCompatLoadingForDrawables": 6,
+    "CustomX509TrustManager": 1,
+    "DrawAllocation": 55,
+    "ObsoleteSdkInt": 4,
+    "StaticFieldLeak": 5,
+    "IconColors": 4,
+    "MonochromeLauncherIcon": 2,
+    "IconDensities": 4,
+    "ViewConstructor": 22,
+    "ReportShortcutUsage": 1,
+    "ClickableViewAccessibility": 2,
+    "AccessibilityFocus": 2,
+    "SetTextI18n": 168,
+    "HardcodedText": 11,
+    "RtlHardcoded": 3
+  },
+  "errors": 0,
+  "lint_execution_by": "Root combined build, not this audit",
+  "zero_warnings_claimed": false
+}

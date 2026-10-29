@@ -1,0 +1,125 @@
+{
+  "resource_entries": 775,
+  "exact_equal_resource_entries": 774,
+  "changed_resource_entries": [
+    "res/layout/home_widget.xml"
+  ],
+  "resources_arsc_exact_equal": true,
+  "home_widget_complete_tree_equal_ignoring_only_source_line_numbers": true,
+  "home_widget_binary_exact_equal_after_only_XML_node_line_number_words_zeroed": true,
+  "changed_line_number_words": [
+    {
+      "offset": 1340,
+      "baseline": 5,
+      "candidate": 6
+    },
+    {
+      "offset": 1536,
+      "baseline": 5,
+      "candidate": 6
+    },
+    {
+      "offset": 1560,
+      "baseline": 6,
+      "candidate": 7
+    },
+    {
+      "offset": 1756,
+      "baseline": 6,
+      "candidate": 7
+    },
+    {
+      "offset": 1804,
+      "baseline": 8,
+      "candidate": 9
+    },
+    {
+      "offset": 2040,
+      "baseline": 9,
+      "candidate": 10
+    },
+    {
+      "offset": 2236,
+      "baseline": 9,
+      "candidate": 10
+    },
+    {
+      "offset": 2260,
+      "baseline": 10,
+      "candidate": 11
+    },
+    {
+      "offset": 2476,
+      "baseline": 10,
+      "candidate": 11
+    },
+    {
+      "offset": 2500,
+      "baseline": 11,
+      "candidate": 12
+    },
+    {
+      "offset": 2716,
+      "baseline": 11,
+      "candidate": 12
+    },
+    {
+      "offset": 2740,
+      "baseline": 8,
+      "candidate": 9
+    },
+    {
+      "offset": 2764,
+      "baseline": 13,
+      "candidate": 14
+    },
+    {
+      "offset": 3020,
+      "baseline": 14,
+      "candidate": 15
+    },
+    {
+      "offset": 3216,
+      "baseline": 14,
+      "candidate": 15
+    },
+    {
+      "offset": 3240,
+      "baseline": 15,
+      "candidate": 16
+    },
+    {
+      "offset": 3456,
+      "baseline": 15,
+      "candidate": 16
+    },
+    {
+      "offset": 3480,
+      "baseline": 16,
+      "candidate": 17
+    },
+    {
+      "offset": 3696,
+      "baseline": 16,
+      "candidate": 17
+    },
+    {
+      "offset": 3720,
+      "baseline": 13,
+      "candidate": 14
+    },
+    {
+      "offset": 3744,
+      "baseline": 18,
+      "candidate": 19
+    },
+    {
+      "offset": 4000,
+      "baseline": 18,
+      "candidate": 19
+    }
+  ],
+  "tools_ignore_attributes_packaged": false,
+  "all_runtime_widget_attributes_equal": true,
+  "other_resource_XMLs_reresolved": 0
+}

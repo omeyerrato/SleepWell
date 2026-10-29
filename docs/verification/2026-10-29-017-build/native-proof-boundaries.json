@@ -1,0 +1,416 @@
+{
+  "source": "02aacc6b122cb1e2c50486190ece608f8d5e3e87",
+  "camera_tested_source": "f88fe04acf92d4c8e3cd25c3d565c1a2f1e54ab7",
+  "camera_run": 40844350768,
+  "camera_url": "https://github.com/omeyerrato/SleepWell/actions/runs/40844350768",
+  "camera_method_seconds": 53.322,
+  "camera_methods": 1,
+  "camera_originals": 24,
+  "camera_observations": "Synthetic inputs through real validators/controllers and cleanup state machine; not physical camera/model execution",
+  "camera_source_paths": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PracticeCameraAccess.java",
+      "tested": {
+        "git_blob": "cf9f1302f3d052686ddd81d15a0ef6486932331b",
+        "sha256": "4e41ba2d3d3f0d80358073590e4a1a828bf58e242dc544422105f171f867f5bf"
+      },
+      "candidate": {
+        "git_blob": "cf9f1302f3d052686ddd81d15a0ef6486932331b",
+        "sha256": "4e41ba2d3d3f0d80358073590e4a1a828bf58e242dc544422105f171f867f5bf"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PracticeCameraTasks.java",
+      "tested": {
+        "git_blob": "0d59d0a3dff833a1f9507bd92abfefc08ade7959",
+        "sha256": "2fe94f36b2dc6953120df050fef20a8703f7a8a2a9c433f523028563abccb966"
+      },
+      "candidate": {
+        "git_blob": "0d59d0a3dff833a1f9507bd92abfefc08ade7959",
+        "sha256": "2fe94f36b2dc6953120df050fef20a8703f7a8a2a9c433f523028563abccb966"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RoutineCameraPracticeActivity.java",
+      "tested": {
+        "git_blob": "39794a8b4ce295be2faf4e6843403c9718f9a21e",
+        "sha256": "3aabea37a29eaad6751ab40c1ff77b47760ea274008a559ea9428be49dec32a7"
+      },
+      "candidate": {
+        "git_blob": "39794a8b4ce295be2faf4e6843403c9718f9a21e",
+        "sha256": "3aabea37a29eaad6751ab40c1ff77b47760ea274008a559ea9428be49dec32a7"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PracticeChildTicket.java",
+      "tested": {
+        "git_blob": "e455fc06a96d9b819f0b1e6e62767336ab4ce859",
+        "sha256": "fc4719f87c88d7649288e5a0c2b7ef8596ded0f3ed45d4dfed97fc93d5bf0f99"
+      },
+      "candidate": {
+        "git_blob": "e455fc06a96d9b819f0b1e6e62767336ab4ce859",
+        "sha256": "fc4719f87c88d7649288e5a0c2b7ef8596ded0f3ed45d4dfed97fc93d5bf0f99"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CameraCaptureCleanup.java",
+      "tested": {
+        "git_blob": "37f183bf6ee23561741361d3f9b5714124b55ce2",
+        "sha256": "801052c0ba6b3d01e826394cc0b4cbd6097a3410cd65fedaf2cfd4f6b509ffe6"
+      },
+      "candidate": {
+        "git_blob": "37f183bf6ee23561741361d3f9b5714124b55ce2",
+        "sha256": "801052c0ba6b3d01e826394cc0b4cbd6097a3410cd65fedaf2cfd4f6b509ffe6"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CameraCaptureLease.java",
+      "tested": {
+        "git_blob": "54d83f48b79347a2c23f31446c37e3ff0c1ecbba",
+        "sha256": "3e3df005ebee8220068f5e6c5d0d2bdc6e1203fa065abdbe731179689955f17d"
+      },
+      "candidate": {
+        "git_blob": "54d83f48b79347a2c23f31446c37e3ff0c1ecbba",
+        "sha256": "3e3df005ebee8220068f5e6c5d0d2bdc6e1203fa065abdbe731179689955f17d"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CameraTaskPorts.java",
+      "tested": {
+        "git_blob": "1ea075c200bf465e7f02887960123b9113076af4",
+        "sha256": "ed7e4a9548baf7c50f745927c6ed9a5a7bfc29ec02cd8061b31b327ed09dab2b"
+      },
+      "candidate": {
+        "git_blob": "1ea075c200bf465e7f02887960123b9113076af4",
+        "sha256": "ed7e4a9548baf7c50f745927c6ed9a5a7bfc29ec02cd8061b31b327ed09dab2b"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CameraTaskOwner.java",
+      "tested": {
+        "git_blob": "5db523b967573eb1110e163116fc1343ede347ea",
+        "sha256": "3f67b6f05ca874281c8ba0300d885f4c95700de50f8398576bd999e7e3566a6d"
+      },
+      "candidate": {
+        "git_blob": "5db523b967573eb1110e163116fc1343ede347ea",
+        "sha256": "3f67b6f05ca874281c8ba0300d885f4c95700de50f8398576bd999e7e3566a6d"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/QrScanSession.java",
+      "tested": {
+        "git_blob": "407245588ea2fd3a62f31862278dddc92df26516",
+        "sha256": "3a34259eac795854e54b28c9baf2b1af0d398ce213a445a0e88ddcf263f37d3e"
+      },
+      "candidate": {
+        "git_blob": "407245588ea2fd3a62f31862278dddc92df26516",
+        "sha256": "3a34259eac795854e54b28c9baf2b1af0d398ce213a445a0e88ddcf263f37d3e"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/QrCamera.java",
+      "tested": {
+        "git_blob": "12cf1aac9d89bac46e54136578099328d0461c13",
+        "sha256": "0578030825afe04229040f28e4771b4996a34cb98941150e78208d71a2a1e10c"
+      },
+      "candidate": {
+        "git_blob": "12cf1aac9d89bac46e54136578099328d0461c13",
+        "sha256": "0578030825afe04229040f28e4771b4996a34cb98941150e78208d71a2a1e10c"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PictureCamera.java",
+      "tested": {
+        "git_blob": "7332b452a6ca84ffa7a742d6fde0e4590f4341df",
+        "sha256": "990d9faabc93fded932f81bcfd5f3ef8d8d125fcfe257a15fa70d21a916d64b8"
+      },
+      "candidate": {
+        "git_blob": "7332b452a6ca84ffa7a742d6fde0e4590f4341df",
+        "sha256": "990d9faabc93fded932f81bcfd5f3ef8d8d125fcfe257a15fa70d21a916d64b8"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SmileCamera.java",
+      "tested": {
+        "git_blob": "ae38927db32ef2a713925eb0f54b4e25518d4af4",
+        "sha256": "6012832770fde439ec9b13c142a98df4f937d4cb43834c52eddbe9e410f0116f"
+      },
+      "candidate": {
+        "git_blob": "ae38927db32ef2a713925eb0f54b4e25518d4af4",
+        "sha256": "6012832770fde439ec9b13c142a98df4f937d4cb43834c52eddbe9e410f0116f"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PoseCamera.java",
+      "tested": {
+        "git_blob": "95e393ad852013279963dbf3ee6eeb3bf03282b4",
+        "sha256": "f4967304494c17b184129461470e265ef83dc01d5f15817481cf4dcbf89d9a6c"
+      },
+      "candidate": {
+        "git_blob": "95e393ad852013279963dbf3ee6eeb3bf03282b4",
+        "sha256": "f4967304494c17b184129461470e265ef83dc01d5f15817481cf4dcbf89d9a6c"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CameraLightCamera.java",
+      "tested": {
+        "git_blob": "f82bec4a128e19f5cc06756f55ef13f94885cd7e",
+        "sha256": "8560f56f43439c52c47b789b007e9202f281da695ad87f98e78b265734883185"
+      },
+      "candidate": {
+        "git_blob": "f82bec4a128e19f5cc06756f55ef13f94885cd7e",
+        "sha256": "8560f56f43439c52c47b789b007e9202f281da695ad87f98e78b265734883185"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ObjectCamera.java",
+      "tested": {
+        "git_blob": "ef9e6316f346c0a26896ef0970e73a8eb2899abe",
+        "sha256": "032bedbc4f1b836ccba1116367cb252a40a330193b6fa404a10b1fca4512e688"
+      },
+      "candidate": {
+        "git_blob": "ef9e6316f346c0a26896ef0970e73a8eb2899abe",
+        "sha256": "032bedbc4f1b836ccba1116367cb252a40a330193b6fa404a10b1fca4512e688"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ObjectClassifier.java",
+      "tested": {
+        "git_blob": "e88c8cf8ce58b1c74803b73c9c8e7e2280d41f16",
+        "sha256": "1af31a75b0a6f876d37ebfff9072cce29fa31292fb52c9ba8cd01903337db973"
+      },
+      "candidate": {
+        "git_blob": "e88c8cf8ce58b1c74803b73c9c8e7e2280d41f16",
+        "sha256": "1af31a75b0a6f876d37ebfff9072cce29fa31292fb52c9ba8cd01903337db973"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengePracticeActivity.java",
+      "tested": {
+        "git_blob": "73909abd009308138cd33c2bdc90d34bea26c1ea",
+        "sha256": "88814d86881945a2669ba02e737acdb83423d12538a8e893447b2190de4ac72b"
+      },
+      "candidate": {
+        "git_blob": "6b6db3e2c4c948a25f9e92f9e5773b8f14b9faaa",
+        "sha256": "01779e72396b7774c5e0de1ed0335480f2201ff0ee47f8d95d2bb7133c7eaa81"
+      },
+      "exact_equal": false
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengePracticeScreen.java",
+      "tested": {
+        "git_blob": "2d871dce4d383d5f743f55855b44a72b85784800",
+        "sha256": "81f38ed42bafc66af828fd94f028b42546f8d5a7271ec131733dfeeb11574b46"
+      },
+      "candidate": {
+        "git_blob": "2d871dce4d383d5f743f55855b44a72b85784800",
+        "sha256": "81f38ed42bafc66af828fd94f028b42546f8d5a7271ec131733dfeeb11574b46"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ChallengePracticeSession.java",
+      "tested": {
+        "git_blob": "c66990a448bcfa849ea78a5942709ece5dbe7c64",
+        "sha256": "42747242bdcd0c159f9efa10c411de2c54be513601b4693a31a107352575dcd6"
+      },
+      "candidate": {
+        "git_blob": "c66990a448bcfa849ea78a5942709ece5dbe7c64",
+        "sha256": "42747242bdcd0c159f9efa10c411de2c54be513601b4693a31a107352575dcd6"
+      },
+      "exact_equal": true
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "tested": {
+        "git_blob": "dd6323a6b2775c5c7869a2022aa2f393683b36c9",
+        "sha256": "1a1e6acb6a61d68ac486252fa39bd446e18bf8df7a93b4684833804478bb2827"
+      },
+      "candidate": {
+        "git_blob": "7cd1723f74b97069fe3d6782161d85f4e083b48a",
+        "sha256": "c3f7ad1a7c3d124d435c9e779ccc00ac8cdcdbd8d0c84f0d801a1e9748a30ba3"
+      },
+      "exact_equal": false
+    }
+  ],
+  "camera_changed_path_reasons": {
+    "app/src/main/java/org/sleepwell/app/ChallengePracticeActivity.java": "ComponentActivity superclass and lifecycle-bound back dispatcher replace previous platform/legacy back registration; same cancel handler",
+    "app/src/main/AndroidManifest.xml": "Only comment and MissingClass tools:ignore on the existing tools:node=remove marker; compiled policy unchanged"
+  },
+  "source_only_changes_after_earlier_native_proofs": [
+    {
+      "group": "lifecycle_back_dispatcher",
+      "change_commit": "786638cc66b4f0f80e9101654d96e3b5d5248a97",
+      "path": "app/src/main/java/org/sleepwell/app/CalendarEventDirectActivity.java",
+      "candidate": {
+        "git_blob": "7485a031fd81fc85ec1736e03996957ff3b0be5e",
+        "sha256": "729d63e4f04831f9f9bdbde6adc65988bb6407acc91b6fcc753274c238caf23c"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "lifecycle_back_dispatcher",
+      "change_commit": "786638cc66b4f0f80e9101654d96e3b5d5248a97",
+      "path": "app/src/main/java/org/sleepwell/app/ChallengePracticeActivity.java",
+      "candidate": {
+        "git_blob": "6b6db3e2c4c948a25f9e92f9e5773b8f14b9faaa",
+        "sha256": "01779e72396b7774c5e0de1ed0335480f2201ff0ee47f8d95d2bb7133c7eaa81"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "lifecycle_back_dispatcher",
+      "change_commit": "786638cc66b4f0f80e9101654d96e3b5d5248a97",
+      "path": "app/src/main/java/org/sleepwell/app/CloudAudioActivity.java",
+      "candidate": {
+        "git_blob": "47aa02b0b297863969698fef4a3984a7ea9756a2",
+        "sha256": "ee23633fea3b172d947b6742402106ee13a34634e923344184984be06b52fdef"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "lifecycle_back_dispatcher",
+      "change_commit": "786638cc66b4f0f80e9101654d96e3b5d5248a97",
+      "path": "app/src/main/java/org/sleepwell/app/EchoPeriodsActivity.java",
+      "candidate": {
+        "git_blob": "e9ecbde3515a4e8ef4d0479bb8e7274c588d02e4",
+        "sha256": "8328a3625d56f6fd7d1cf232ade44f90edda6b4cac1e3f8e9c6223528222c487"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "lifecycle_back_dispatcher",
+      "change_commit": "786638cc66b4f0f80e9101654d96e3b5d5248a97",
+      "path": "app/src/main/java/org/sleepwell/app/IncomingAutomationActivity.java",
+      "candidate": {
+        "git_blob": "21f2d32fdccb0fed80dfc2fb355ba1acdc358384",
+        "sha256": "4308421f17d90a15f9a745be7c8887cdfdf37b4c9c1f61efb0ceef9062dd6b1f"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "lifecycle_back_dispatcher",
+      "change_commit": "786638cc66b4f0f80e9101654d96e3b5d5248a97",
+      "path": "app/src/main/java/org/sleepwell/app/LibraryAudioImportActivity.java",
+      "candidate": {
+        "git_blob": "4f35062a640f1c9ecda60ddd233bccfd82d49cb1",
+        "sha256": "df8a3556dd9f4aae83e8e8d5dec4b4b2c9d760229a91b0dfdb4396023d2010d2"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "lifecycle_back_dispatcher",
+      "change_commit": "786638cc66b4f0f80e9101654d96e3b5d5248a97",
+      "path": "app/src/main/java/org/sleepwell/app/MotionChallengePracticeActivity.java",
+      "candidate": {
+        "git_blob": "313e584aa22a0009972380a7981d78fba868ad92",
+        "sha256": "9cc40cb32f56f43a280534899f3d8088d629f850c8a6009b83158fdf2c1907d1"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "lifecycle_back_dispatcher",
+      "change_commit": "786638cc66b4f0f80e9101654d96e3b5d5248a97",
+      "path": "app/src/main/java/org/sleepwell/app/RandomChallengeActivity.java",
+      "candidate": {
+        "git_blob": "b443c301a12796704b03c8b0350abd3fb7af0676",
+        "sha256": "3539ab90383db433892f58cdad53f4a516194fc1244426076cc596240bd3607e"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "lifecycle_back_dispatcher",
+      "change_commit": "786638cc66b4f0f80e9101654d96e3b5d5248a97",
+      "path": "app/src/main/java/org/sleepwell/app/RoutineAudioPracticeActivity.java",
+      "candidate": {
+        "git_blob": "c482ad368598820b16f9981caa906cb5bb9cf7ba",
+        "sha256": "41d61448055ed5bc55b6ac769f937585f320a911da432fa30480144a63a2e438"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "native_call_site_guards",
+      "change_commit": "14331ac690e3e5854f0e72e2fa89841bfe0e927a",
+      "path": "app/src/main/java/org/sleepwell/app/ContactlessSetupAccess.java",
+      "candidate": {
+        "git_blob": "810c9e402dd0999c637c3ce20b1f44e3393cca7e",
+        "sha256": "d555d92dd8c4a81aa6ffc15d34e15275384e4f88bf4b6fd62af012721830ea32"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "native_call_site_guards",
+      "change_commit": "14331ac690e3e5854f0e72e2fa89841bfe0e927a",
+      "path": "app/src/main/java/org/sleepwell/app/ExternalMediaFade.java",
+      "candidate": {
+        "git_blob": "49430e67d7f3743d8e27383fa9cbb76880bbe805",
+        "sha256": "6090538694888f145f316d5c82fad6bb0726ba4fba0b94aa6ccd6a924b25aff0"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "native_call_site_guards",
+      "change_commit": "14331ac690e3e5854f0e72e2fa89841bfe0e927a",
+      "path": "app/src/main/java/org/sleepwell/app/GoogleSleepSignal.java",
+      "candidate": {
+        "git_blob": "2a160ba76706e815dc50d848959eb009a194e9f3",
+        "sha256": "7a42ad85ac94bc0a433a957fdf4a63d40a5545cea2c854ea2bad4ac41a7e86cb"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "native_call_site_guards",
+      "change_commit": "14331ac690e3e5854f0e72e2fa89841bfe0e927a",
+      "path": "app/src/main/java/org/sleepwell/app/PhraseRecognizer.java",
+      "candidate": {
+        "git_blob": "0a1ec30c56df74e232543d1527f16891ad5543c6",
+        "sha256": "f36ac004f66cf5a87beaf58fc231de3690c3ebf98a6c6e918ab28b17a5a763e0"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    },
+    {
+      "group": "native_call_site_guards",
+      "change_commit": "14331ac690e3e5854f0e72e2fa89841bfe0e927a",
+      "path": "app/src/main/java/org/sleepwell/app/RoomAudio.java",
+      "candidate": {
+        "git_blob": "e85b7ca3887b43bd5a3595bbce00b290ffa7c854",
+        "sha256": "cb2bb1f4d4a5ffd13981b19c9ed9ecfaa66896891c701bae733131c0d63c9449"
+      },
+      "actual_changed_back_gesture_or_native_api_guard_exercised": false
+    }
+  ],
+  "review": "Bounded read-only source review found no new blocker; the successful assemble/lint is not a runtime replay",
+  "system_ui_qualification": "Camera evidence retains platform status-glyph contrast limits; no full SystemUI or 36-screen acceptance",
+  "auditor_replayed_native_or_reviewed_camera_images": false,
+  "later_audio_run": {
+    "run": 40853867058,
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/40853867058",
+    "source": "2d3891e199d5015b8010507827661bb315311421",
+    "app_tree_exact_candidate": true,
+    "production_tree_exact_candidate": true,
+    "native_seconds": 32.298,
+    "methods": 1,
+    "originals": 26,
+    "terminal_success_reported_by": "Root with exact source/run/status in task handoff",
+    "scope": "Private parent/audio lifecycle and actions with injected inputs after migration; fixture does not press Back or invoke onBackPressed",
+    "actual_back_gesture_acceptance": false,
+    "actual_native_guard_execution_claimed": false,
+    "auditor_reran_or_reviewed_images": false
+  }
+}

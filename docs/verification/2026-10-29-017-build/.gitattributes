@@ -1,1 +1,5 @@
-* -text
+# Preserve exact Windows tool-output bytes; CRLF is an archive line ending.
+* -text whitespace=cr-at-eol
+# Raw transcripts and unified patches intentionally retain their original spaces.
+*.txt -whitespace
+*.patch -whitespace

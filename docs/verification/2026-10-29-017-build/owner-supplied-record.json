@@ -1,0 +1,25 @@
+{
+  "record_source": "Root handoff in this task; independently checked fields are recorded separately in independent-candidate.json",
+  "source": "02aacc6b122cb1e2c50486190ece608f8d5e3e87",
+  "app_tree": "6ebd894db19c224ee83cf39a4e483b570107a98a",
+  "production_tree": "f6180f2b5f395826833bf59d7d3b13e301a7497f",
+  "apk": "SleepWell-02aacc6b122cb1e2c50486190ece608f8d5e3e87.apk",
+  "bytes": 168752618,
+  "sha256": "7aa7e4fb3db0ec298a00459e83443f1342649e00fb3923396d867d2d83383143",
+  "build_log": "0.1.7-02aacc6b.log",
+  "build_tasks": [
+    "assembleDebug",
+    "lintDebug"
+  ],
+  "abi": "arm64-v8a",
+  "build_success": true,
+  "build_log_duration": "8m4s",
+  "tasks": {
+    "total": 45,
+    "executed": 20,
+    "up_to_date": 25
+  },
+  "owner_wall_seconds": 496.281,
+  "source_to_apk_association": "Owner frozen-source/build handoff; this audit did not perform a reproducible build",
+  "publication_or_device_action_authorized_or_performed_by_audit": false
+}

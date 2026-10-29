@@ -1,0 +1,81 @@
+{
+  "baseline_entries": 948,
+  "candidate_entries": 948,
+  "unique_names": true,
+  "all_crc_reads_pass": true,
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "name": "AndroidManifest.xml",
+      "baseline": {
+        "name": "AndroidManifest.xml",
+        "bytes": 73880,
+        "sha256": "9b7608203b001f2ab22726e5dcf85fdfc17e686aa9cdc709ffa2148886b47156",
+        "crc32": "bb3570d7",
+        "compressed_bytes": 12330,
+        "compression": 8,
+        "local_header_offset": 151307302
+      },
+      "candidate": {
+        "name": "AndroidManifest.xml",
+        "bytes": 74684,
+        "sha256": "35477e94ee93c278ea089253789edd8c22fdebf45ecc7a1d99e0a90b41e10fca",
+        "crc32": "386c4e46",
+        "compressed_bytes": 12431,
+        "compression": 8,
+        "local_header_offset": 151536678
+      }
+    },
+    {
+      "name": "classes3.dex",
+      "baseline": {
+        "name": "classes3.dex",
+        "bytes": 5047652,
+        "sha256": "26e445ac68563ff8c9764f2180456967831bae3c8a5fbcd4b40bb6eb6a970372",
+        "crc32": "b292a949",
+        "compressed_bytes": 5047652,
+        "compression": 0,
+        "local_header_offset": 10818060
+      },
+      "candidate": {
+        "name": "classes3.dex",
+        "bytes": 5272956,
+        "sha256": "c3ec4e8cb14c5e0ddf4614e0d132845c4856001ab560cb1a7d2a1a64538a6183",
+        "crc32": "e086af25",
+        "compressed_bytes": 5272956,
+        "compression": 0,
+        "local_header_offset": 163383917
+      }
+    },
+    {
+      "name": "res/layout/home_widget.xml",
+      "baseline": {
+        "name": "res/layout/home_widget.xml",
+        "bytes": 4064,
+        "sha256": "956c1b5ef84b4bea9fa9102543b100ed13a30e12656aa6159a96263c17cbdfa9",
+        "crc32": "3af18ddd",
+        "compressed_bytes": 1119,
+        "compression": 8,
+        "local_header_offset": 162669398
+      },
+      "candidate": {
+        "name": "res/layout/home_widget.xml",
+        "bytes": 4064,
+        "sha256": "20fcf0f1353b2e8943f2a92a5af5ec888311774faef11765c6237caaff40765d",
+        "crc32": "16210b8d",
+        "compressed_bytes": 1122,
+        "compression": 8,
+        "local_header_offset": 10818060
+      }
+    }
+  ],
+  "equal_content_entries": 945,
+  "resource_delta": {
+    "added": [],
+    "removed": [],
+    "changed": [
+      "res/layout/home_widget.xml"
+    ]
+  }
+}

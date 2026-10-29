@@ -1,0 +1,51 @@
+{
+  "source": "Full aapt compiled trees; source-line numbers are not semantic attributes",
+  "added_components": [
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.ChallengePracticeActivity\" (Raw: \"org.sleepwell.app.ChallengePracticeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      },
+      "children": []
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.MotionChallengePracticeActivity\" (Raw: \"org.sleepwell.app.MotionChallengePracticeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      },
+      "children": []
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RoutineAudioPracticeActivity\" (Raw: \"org.sleepwell.app.RoutineAudioPracticeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      },
+      "children": []
+    },
+    {
+      "type": "activity",
+      "attributes": {
+        "android:name": "\"org.sleepwell.app.RoutineCameraPracticeActivity\" (Raw: \"org.sleepwell.app.RoutineCameraPracticeActivity\")",
+        "android:exported": "(type 0x12)0x0"
+      },
+      "children": []
+    }
+  ],
+  "removed_components": [],
+  "existing_components_exact_equal": true,
+  "complete_tree_equal_after_only_version_attributes_and_four_private_activities_removed": true,
+  "WakeUpService_absent": true,
+  "counts": {
+    "activity": 129,
+    "activity-alias": 1,
+    "service": 24,
+    "receiver": 34,
+    "provider": 5,
+    "permission": 5,
+    "uses-permission": 36,
+    "uses-feature": 10
+  }
+}

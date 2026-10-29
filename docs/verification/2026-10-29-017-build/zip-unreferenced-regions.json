@@ -1,0 +1,27 @@
+{
+  "scope": "Physical local ZIP ranges outside all central-directory-referenced entries; no vendor implementation or stale payload bodies decoded",
+  "regions": [
+    {
+      "start": 10819238,
+      "bytes": 5271822,
+      "sha256": "72b5c77c44cd92ab007e36ca4b4e8526baed21406a5204784735877b96007455",
+      "prefix_hex": "504b0304000000000000210821020000000000000000000000000000a5ff",
+      "nonzero_bytes": 809,
+      "zero_name_zero_payload_local_records": 81,
+      "zero_filled_extra_bytes": 5269392
+    },
+    {
+      "start": 162898878,
+      "bytes": 1175,
+      "sha256": "82e2a763e697a0ab062952f13daf91e472a16e22a2d7146465be1343b1ef4834",
+      "prefix_hex": "504b03040000000000002108210200000000000000000000000000007904",
+      "nonzero_bytes": 10,
+      "zero_name_zero_payload_local_records": 1,
+      "zero_filled_extra_bytes": 1145
+    }
+  ],
+  "total_bytes": 5272997,
+  "apk_signature_verified": true,
+  "central_directory_names_unique_and_CRC_reads_pass": true,
+  "regions_fully_explained_by_zero_payload_local_header_records_and_zero_extra_padding": true
+}

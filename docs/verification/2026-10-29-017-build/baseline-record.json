@@ -1,5 +1,5 @@
 {
-  "status": "baseline_prepared_candidate_not_supplied",
+  "status": "baseline_verified_for_completed_candidate_comparison",
   "source": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
   "apk": "SleepWell-741b3718032ab4dc1d52eb67cf2194d4c59884f9.apk",
   "bytes": 163250139,
@@ -58,9 +58,5 @@
   ],
   "store_schema": 17,
   "backup_format": 14,
-  "candidate_expected_versionName": "0.1.7",
-  "candidate_expected_versionCode": 8,
-  "candidate_source": null,
-  "candidate_apk": null,
   "runtime_or_build_execution": false
 }

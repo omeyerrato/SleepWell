@@ -1,0 +1,122 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.experimental.lint.version=9.4.1' is experimental.
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:mergeDebugJavaResource UP-TO-DATE
+> Task :app:processDebugManifestForPackage
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:processDebugResources
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :app:dexBuilderDebug
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeDebugGlobalSynthetics
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:mergeProjectDexDebug
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:generateDebugAndroidTestResValues UP-TO-DATE
+> Task :app:generateDebugAndroidTestLintModel
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :app:generateDebugLintReportModel
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:generateDebugUnitTestLintModel
+> Task :app:lintAnalyzeDebug
+> Task :app:lintAnalyzeDebugAndroidTest
+> Task :app:lintAnalyzeDebugUnitTest
+
+> Task :app:lintReportDebug
+Wrote HTML report to file:///<workspace>/app/build/reports/lint-results-debug.html
+Lint found 19 errors, 357 warnings and 1 hint. First failure:
+<workspace>\app\src\main\java\org\sleepwell\app\GoogleSleepSignal.java:9: Error: Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with checkPermission) or explicitly handle a potential SecurityException [MissingPermission]
+ private GoogleSleepSignal(Context c,Runnable changed){app=c.getApplicationContext();this.changed=changed;callback=pending(app,token);if(!Prefs.of(app).edit().putString("googleSleepSubscription",token).putString("googleSleepStatus",issue).commit())throw new IllegalStateException("Google estimate ownership could not be stored.");current=this;try{ActivityRecognition.getClient(app).requestSleepSegmentUpdates(callback,new SleepSegmentRequest(SleepSegmentRequest.CLASSIFY_EVENTS_ONLY)).addOnSuccessListener(main::post,unused->{if(closed){remove(app,token,callback);return;}registered=true;issue="Waiting for a fresh Google sleep estimate (updates can take 10 min or more).";publish();}).addOnFailureListener(main::post,error->{if(closed){remove(app,token,callback);return;}registered=false;issue="Google sleep registration failed. Cancel and arm again, or turn this option off.";publish();});}catch(RuntimeException failure){closed=true;if(current==this)current=null;remove(app,token,callback);throw failure;}}
+                                                                                                                                                                                                                                                                                                                                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+> Task :app:lintDebug FAILED
+Lint found 19 errors, 357 warnings, 1 hint. First failure:
+
+<workspace>\app\src\main\java\org\sleepwell\app\GoogleSleepSignal.java:9: Error: Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with checkPermission) or explicitly handle a potential SecurityException [MissingPermission]
+ private GoogleSleepSignal(Context c,Runnable changed){app=c.getApplicationContext();this.changed=changed;callback=pending(app,token);if(!Prefs.of(app).edit().putString("googleSleepSubscription",token).putString("googleSleepStatus",issue).commit())throw new IllegalStateException("Google estimate ownership could not be stored.");current=this;try{ActivityRecognition.getClient(app).requestSleepSegmentUpdates(callback,new SleepSegmentRequest(SleepSegmentRequest.CLASSIFY_EVENTS_ONLY)).addOnSuccessListener(main::post,unused->{if(closed){remove(app,token,callback);return;}registered=true;issue="Waiting for a fresh Google sleep estimate (updates can take 10 min or more).";publish();}).addOnFailureListener(main::post,error->{if(closed){remove(app,token,callback);return;}registered=false;issue="Google sleep registration failed. Cancel and arm again, or turn this option off.";publish();});}catch(RuntimeException failure){closed=true;if(current==this)current=null;remove(app,token,callback);throw failure;}}
+                                                                                                                                                                                                                                                                                                                                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The full lint text report is located at:
+  <workspace>\app\build\intermediates\lint_intermediate_text_report\debug\lintReportDebug\lint-results-debug.txt
+
+[Incubating] Problems report is available at: file:///<workspace>/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:lintDebug'.
+> Lint found errors in the project; aborting build.
+  
+  Fix the issues identified by lint, or create a baseline to see only new errors.
+  To create a baseline, run `gradlew updateLintBaseline` after adding the following to the module's build.gradle file:
+  ```
+  android {
+      lint {
+          baseline = file("lint-baseline.xml")
+      }
+  }
+  ```
+  For more details, see https://developer.android.com/studio/write/lint#snapshot
+  
+  Lint found 19 errors, 357 warnings, 1 hint. First failure:
+  
+  <workspace>\app\src\main\java\org\sleepwell\app\GoogleSleepSignal.java:9: Error: Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with checkPermission) or explicitly handle a potential SecurityException [MissingPermission]
+   private GoogleSleepSignal(Context c,Runnable changed){app=c.getApplicationContext();this.changed=changed;callback=pending(app,token);if(!Prefs.of(app).edit().putString("googleSleepSubscription",token).putString("googleSleepStatus",issue).commit())throw new IllegalStateException("Google estimate ownership could not be stored.");current=this;try{ActivityRecognition.getClient(app).requestSleepSegmentUpdates(callback,new SleepSegmentRequest(SleepSegmentRequest.CLASSIFY_EVENTS_ONLY)).addOnSuccessListener(main::post,unused->{if(closed){remove(app,token,callback);return;}registered=true;issue="Waiting for a fresh Google sleep estimate (updates can take 10 min or more).";publish();}).addOnFailureListener(main::post,error->{if(closed){remove(app,token,callback);return;}registered=false;issue="Google sleep registration failed. Cancel and arm again, or turn this option off.";publish();});}catch(RuntimeException failure){closed=true;if(current==this)current=null;remove(app,token,callback);throw failure;}}
+                                                                                                                                                                                                                                                                                                                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+  The full lint text report is located at:
+    <workspace>\app\build\intermediates\lint_intermediate_text_report\debug\lintReportDebug\lint-results-debug.txt
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 9m 57s
+45 actionable tasks: 19 executed, 26 up-to-date
