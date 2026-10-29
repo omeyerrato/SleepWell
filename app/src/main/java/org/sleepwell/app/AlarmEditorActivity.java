@@ -271,7 +271,7 @@ public class AlarmEditorActivity extends Activity {
         if(inspectedTask.equals("Visual search"))Design.button(body,"Preview visual search",false,()->startActivity(RecordUi.intent(this,MoonSearchPreviewActivity.class).putExtra("round",taskRounds-1)));
         Runnable use=()->{ChallengeRoutine.Task chosen=new ChallengeRoutine.Task(inspectedTask,taskRounds,taskSteps,inspectedTask.equals("Math")?taskMath:MathSettings.LEGACY,null,inspectedTask.equals("Dream journal")?taskJournal:JournalRule.DEFAULT);routineDraft=taskIndex<0?routineDraft.add(chosen):routineDraft.replace(taskIndex,chosen);go("challenge");};
         if(description.length()>180){LinearLayout information=Design.item(body,"info","About this task",null,()->go("taskabout"));information.setMinimumHeight(Design.dp(this,48));}
-        ChallengeTaskUi.footer(body,"Use "+inspectedTask,taskIndex<0?"Adds to the routine draft":"Updates task "+(taskIndex+1)+" in this draft",inspectedTask.equals("Math")?mathError:null,use,this::back);
+        ChallengeTaskUi.footer(body,taskIndex<0?"Add "+inspectedTask:"Save task",taskIndex<0?"Adds to the routine draft":"Updates task "+(taskIndex+1)+" in this draft",inspectedTask.equals("Math")?mathError:null,use,this::back);
     }
     private void mathSettings(LinearLayout body){
         Design.text(body,"Complexity",15,600,Design.INK);Design.space(body,8);RecordUi.segments(body,new String[]{"Easy","Medium","Hard"},taskMath.level.ordinal(),n->{taskMath=new MathSettings(MathSettings.Level.values()[n],taskMath.operators,taskMath.typed);mathError="";render();});Design.space(body,8);Design.text(body,taskMath.explanation(),12,400,Design.MUTED);Design.space(body,18);
@@ -367,7 +367,7 @@ public class AlarmEditorActivity extends Activity {
         if(alarm.timingInvalid)Design.text(body,"Saved timing needs review. Choose a duration and timeout before saving.",12,500,0xffa93919);
         Design.fixedAction(body,"Done",()->go("snooze"));
     }
-    private void backupSoundReview(LinearLayout body){if(!alarm.backupSoundInvalid)return;Design.space(body,8);Design.text(body,"Saved backup sound needs review. Ringing uses Pulse at 100% for backup until you replace these settings; your primary alarm is unchanged.",12,500,0xffa93919);menu(body,"info","Reset backup sound","Replace only the unreadable backup sound settings with Pulse at 100%",()->openDialog(()->SleepPicker.choices(this,"Reset backup sound",new String[]{"Use Pulse at 100%"},-1,n->{alarm.setBackupSound(AlarmBackupSound.DEFAULT);render();})));}
+    private void backupSoundReview(LinearLayout body){if(!alarm.backupSoundInvalid)return;Design.space(body,8);Design.text(body,"Saved backup sound needs review. Ringing uses Pulse at 100% for backup until you replace these settings; your primary alarm is unchanged.",12,500,0xffa93919);menu(body,"info","Reset backup sound","Replace only the unreadable backup sound settings with Pulse at 100%",()->openDialog(()->SleepPicker.actions(this,"Reset backup sound",new String[]{"Use Pulse at 100%"},new String[]{"sound"},n->{alarm.setBackupSound(AlarmBackupSound.DEFAULT);render();})));}
     private void backupSoundControls(LinearLayout body){
         // An invalid raw block survives navigation and unrelated edits until explicit repair.
         if(alarm.backupSoundInvalid){PlanActivity.detail(body,"sound","Backup sound",null,"Needs review",null);Design.line(body);PlanActivity.detail(body,"sound","Backup volume",null,"Needs review",null);Design.line(body);return;}
