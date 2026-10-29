@@ -103,6 +103,7 @@ public final class ReportReferenceFlowTest {
         File folder=new File(context.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"report-reference-week-calendar.png")));
     }
     private View named(View view,String description){if(android.text.TextUtils.equals(description,view.getContentDescription()))return view;if(view instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){View found=named(group.getChildAt(n),description);if(found!=null)return found;}return null;}
+    private TrendsChart durationTrend(View view){if(view instanceof TrendsChart chart&&view.getContentDescription()!=null&&view.getContentDescription().toString().startsWith("Recorded duration."))return chart;if(view instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){TrendsChart found=durationTrend(group.getChildAt(n));if(found!=null)return found;}return null;}
     private View textView(View view,String value){if(view instanceof android.widget.TextView&&value.contentEquals(((android.widget.TextView)view).getText()))return view;if(view instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){View found=textView(group.getChildAt(n),value);if(found!=null)return found;}return null;}
     private void completeNotes()throws Exception{
         UiScrollable page=new UiScrollable(new UiSelector().scrollable(true));if(page.exists())assertTrue("Scroll exposes Notes",page.scrollIntoView(new UiSelector().description("Notes or dream")));
@@ -171,6 +172,7 @@ public final class ReportReferenceFlowTest {
             launch(HistoryActivity.class,0);title("Sleep history");assertTrue(device.wait(Until.hasObject(By.descStartsWith("Open record 2000,")),5000));capture("history");
             click("Trends");
             title("Trends");
+            title("7 h 43 min");
             capture("week");
             LocalDate latestDay=LocalDate.now(ZoneId.systemDefault()).minusDays(1),chosenDay=latestDay.getDayOfMonth()>1?latestDay.minusDays(1):latestDay.plusDays(1);
             object("Choose trend date").click();
@@ -199,6 +201,18 @@ public final class ReportReferenceFlowTest {
             click("Year");
             assertTrue("Year selection must render",device.wait(Until.hasObject(By.desc("Year").selected(true)),5000));
             capture("year");
+            HistoryActivity yearlyOwner=(HistoryActivity)focused(HistoryActivity.class);
+            instrumentation.runOnMainSync(()->{
+                View root=yearlyOwner.getWindow().getDecorView();assertTrue(ready(yearlyOwner,root));
+                TrendsChart chart=durationTrend(root);assertNotNull("Owned monthly duration chart",chart);
+                android.graphics.Rect visible=new android.graphics.Rect();assertTrue(chart.getGlobalVisibleRect(visible));assertEquals(chart.getHeight(),visible.height());
+                for(int month=0;month<latestDay.getMonthValue();month++)assertTrue("Navigate actual chart accessibility action",chart.performAccessibilityAction(android.view.accessibility.AccessibilityNodeInfo.ACTION_SCROLL_FORWARD,null));
+                long total=0;int count=0;int[] minutes={462,455,485,430,475,450,483};
+                for(int night=0;night<minutes.length;night++)if(latestDay.minusDays(night).getYear()==latestDay.getYear()&&latestDay.minusDays(night).getMonthValue()==latestDay.getMonthValue()){total+=minutes[night]*60000L;count++;}
+                String expected=latestDay.withDayOfMonth(1)+": "+RecordUi.roundedDuration(total/count);
+                assertEquals("Monthly tooltip and spoken selection use the same rounded mean",expected,chart.getContentDescription().toString());
+            });
+            capture("year-selected");
             click("Week");
             openTrendOptionsAfterWeek();
             click("Sleep rhythm");

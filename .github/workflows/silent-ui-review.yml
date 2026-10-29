@@ -12,6 +12,7 @@ on:
           - tone-wake
           - report
           - report-flow
+          - report-rounding
           - organization
           - organized-settings
           - automation-rules
