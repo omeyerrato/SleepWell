@@ -1,0 +1,17 @@
+{
+  "scope": "system-bars-transition",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "NightArcFlowTest#clockProgressAndExplanationWithoutAnyAlarmDelivery",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 8,
+  "failures": [
+    "NightArcFlowTest#clockProgressAndExplanationWithoutAnyAlarmDelivery"
+  ]
+}

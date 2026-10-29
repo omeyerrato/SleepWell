@@ -1,0 +1,44 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightArcFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NightArcFlowTest:
+INSTRUMENTATION_STATUS: test=clockProgressAndExplanationWithoutAnyAlarmDelivery
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightArcFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Actual requested and rendered bars must contrast; fixed raw diagnostics retained: [alarms-first/original mask=24 status{bright=141480,white=2397,dark=0,black=0,ground=139210,dark_surface=0,sample_surface=fffcf7ef,total=141480,readable=false} navigation{bright=68040,white=2808,dark=0,black=0,ground=65232,dark_surface=0,sample_surface=fffcf7ef,total=68040,readable=false}]
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.NightArcFlowTest.systemBarTransitions(NightArcFlowTest.java:204)
+	at org.sleepwell.app.NightArcFlowTest.clockProgressAndExplanationWithoutAnyAlarmDelivery(NightArcFlowTest.java:227)
+
+INSTRUMENTATION_STATUS: stream=
+Error in clockProgressAndExplanationWithoutAnyAlarmDelivery(org.sleepwell.app.NightArcFlowTest):
+java.lang.AssertionError: Actual requested and rendered bars must contrast; fixed raw diagnostics retained: [alarms-first/original mask=24 status{bright=141480,white=2397,dark=0,black=0,ground=139210,dark_surface=0,sample_surface=fffcf7ef,total=141480,readable=false} navigation{bright=68040,white=2808,dark=0,black=0,ground=65232,dark_surface=0,sample_surface=fffcf7ef,total=68040,readable=false}]
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.NightArcFlowTest.systemBarTransitions(NightArcFlowTest.java:204)
+	at org.sleepwell.app.NightArcFlowTest.clockProgressAndExplanationWithoutAnyAlarmDelivery(NightArcFlowTest.java:227)
+
+INSTRUMENTATION_STATUS: test=clockProgressAndExplanationWithoutAnyAlarmDelivery
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 29.088
+There was 1 failure:
+1) clockProgressAndExplanationWithoutAnyAlarmDelivery(org.sleepwell.app.NightArcFlowTest)
+java.lang.AssertionError: Actual requested and rendered bars must contrast; fixed raw diagnostics retained: [alarms-first/original mask=24 status{bright=141480,white=2397,dark=0,black=0,ground=139210,dark_surface=0,sample_surface=fffcf7ef,total=141480,readable=false} navigation{bright=68040,white=2808,dark=0,black=0,ground=65232,dark_surface=0,sample_surface=fffcf7ef,total=68040,readable=false}]
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.NightArcFlowTest.systemBarTransitions(NightArcFlowTest.java:204)
+	at org.sleepwell.app.NightArcFlowTest.clockProgressAndExplanationWithoutAnyAlarmDelivery(NightArcFlowTest.java:227)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

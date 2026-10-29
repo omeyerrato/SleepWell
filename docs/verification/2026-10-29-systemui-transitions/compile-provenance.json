@@ -1,0 +1,20 @@
+[
+  {
+    "original_private_log_basename": "native-compile.log",
+    "sha256": "8710b84f12c9237f4e875ef3852c08a963d711f408049720fd3bb785ee385b6d",
+    "observed_result": "BUILD SUCCESSFUL",
+    "printed_duration_seconds": 113,
+    "compiled_source_head": "0a5f3fa31d37479a9863fc8108406ea270802643",
+    "scope": "compileDebugAndroidTestJavaWithJavac only; no test executed locally",
+    "raw_log_public": false
+  },
+  {
+    "original_private_log_basename": "combined-policy-compile.log",
+    "sha256": "b751a40d4a643f8797f2db2406e40f18ac1559647da3d4629b446a1a102c3b66",
+    "observed_result": "BUILD SUCCESSFUL",
+    "printed_duration_seconds": 231,
+    "compiled_source_head": "f78593ff256cc377ffd3a2cb83d95361b043a187",
+    "scope": "compileDebugAndroidTestJavaWithJavac only; no test executed locally",
+    "raw_log_public": false
+  }
+]

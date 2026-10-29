@@ -1,0 +1,89 @@
+{
+  "tested_head": "f78593ff256cc377ffd3a2cb83d95361b043a187",
+  "base": "6cd00676356534b58388d7664fa584fa52a38ecc",
+  "native_correction_commit": "025ecef85d4439c05f4ae45f25309917cc4eee4b",
+  "production_experiment": "One public API35+ status/navigation appearance request before background/content handoff; API30-34 compatibility path and existing retry guards preserved.",
+  "production_changed_paths": [
+    "app/src/main/java/org/sleepwell/app/Design.java"
+  ],
+  "result": "REJECTED: first light Alarms original still shows white status and gesture glyphs on cream; later fixed sample correct.",
+  "method_seconds": 29.088,
+  "revert_commit": "07e50c280e46f210f54aae7c5df0011d3008b961",
+  "post_revert_production_tree": "3f258eab6b1ec342bfb5bc0d32aaf7f4996747d1",
+  "base_production_tree": "3f258eab6b1ec342bfb5bc0d32aaf7f4996747d1",
+  "native_blob": "c22379974614b948e9bd59d6c3143b61f1badfea",
+  "script_blob": "95ffc8ae020495f1f54d39c59429c8d8834d77ff",
+  "source_experiment_design_blob": "553cef9a00cd2c4dd7c98a12e824d47f70033a6b",
+  "raw_files": [
+    {
+      "name": "arc-bars-tonight.png",
+      "bytes": 437948,
+      "sha256": "1c45e40f142ce56a19b8d9d0269ff7c3d3c7fc10123bae2a4ace28c609ad942e"
+    },
+    {
+      "name": "arc-bars-help.png",
+      "bytes": 244402,
+      "sha256": "b558bdb2ebeadf95f7186b9e3b2a258f80904d02f5f883abddacf6d1af209701"
+    },
+    {
+      "name": "arc-bars-help-return.png",
+      "bytes": 437948,
+      "sha256": "1c45e40f142ce56a19b8d9d0269ff7c3d3c7fc10123bae2a4ace28c609ad942e"
+    },
+    {
+      "name": "arc-bars-alarms-first.png",
+      "bytes": 104981,
+      "sha256": "99bca13221911b4f4018f89efe2a8f0425ccd3596855320a1271011d0a55919c"
+    },
+    {
+      "name": "arc-bars-alarms-observed.png",
+      "bytes": 105936,
+      "sha256": "4758e5785769f4e0366490d59eb8c42b3f055716435913b18bd8da107171a4b5"
+    },
+    {
+      "name": "arc-bars-tonight-return.png",
+      "bytes": 437948,
+      "sha256": "1c45e40f142ce56a19b8d9d0269ff7c3d3c7fc10123bae2a4ace28c609ad942e"
+    },
+    {
+      "name": "arc-bars-alarms-recreated.png",
+      "bytes": 105936,
+      "sha256": "4758e5785769f4e0366490d59eb8c42b3f055716435913b18bd8da107171a4b5"
+    },
+    {
+      "name": "arc-bars-help-recreated.png",
+      "bytes": 244402,
+      "sha256": "b558bdb2ebeadf95f7186b9e3b2a258f80904d02f5f883abddacf6d1af209701"
+    },
+    {
+      "name": "arc-failure.png",
+      "bytes": 437948,
+      "sha256": "1c45e40f142ce56a19b8d9d0269ff7c3d3c7fc10123bae2a4ace28c609ad942e"
+    },
+    {
+      "name": "arc-failure.xml",
+      "bytes": 40998,
+      "sha256": "b49a84b47aa611519567db2e2a33301bd57a6622cb85b57e05e4c8de5bf161d5"
+    },
+    {
+      "name": "arc-bars-observations.tsv",
+      "bytes": 5022,
+      "sha256": "c1d3ee0822d6a7189246314aa9ce2f17e035cfba5a33f96c0e4a71fed7bf9567"
+    },
+    {
+      "name": "NightArcFlowTest#clockProgressAndExplanationWithoutAnyAlarmDelivery.txt",
+      "bytes": 3115,
+      "sha256": "bef3c4ea663b90a0df0121e30e6d2ed2189af2890c203653898c013b78aebdb7"
+    },
+    {
+      "name": "environment.json",
+      "bytes": 652,
+      "sha256": "849e3aea64dcaaf884ebe811a106eb853507e0fc34529a0c3ebbcb16f2a04789"
+    },
+    {
+      "name": "focused-review-summary.json",
+      "bytes": 421,
+      "sha256": "6c0479e5bf18173c01a52d6766d9d467f24f7b29fae345f8b789577679a5b6da"
+    }
+  ]
+}
