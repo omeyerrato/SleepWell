@@ -1,0 +1,5 @@
+# Preserve original evidence bytes, including native log whitespace.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+failed-40828505805/* -whitespace
+passed-40829678446/* -whitespace
+compile/*.log -whitespace

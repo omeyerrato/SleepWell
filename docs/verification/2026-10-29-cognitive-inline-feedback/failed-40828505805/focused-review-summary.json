@@ -1,0 +1,20 @@
+{
+  "scope": "cognitive-feedback",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 6,
+  "failures": [
+    "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+    "routine-preview-cognitive-retype-wrong.png",
+    "routine-preview-cognitive-retype-recreated.png",
+    "routine-preview-cognitive-retype-corrected.png"
+  ]
+}
