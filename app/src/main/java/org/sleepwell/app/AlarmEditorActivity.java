@@ -225,7 +225,7 @@ public class AlarmEditorActivity extends Activity {
         }else if(inspectedTask.equals("Walk")){
             taskPicker(body,"walk","Target steps",null,taskSteps+" steps",taskSteps,new int[]{5,10,15,20,30,50,75,100},n->n+" steps",n->taskSteps=n);Design.line(body);walkAccess(body);
         }else if(inspectedTask.equals("NFC")){
-            PlanActivity.detail(body,"phone","Bedside NFC tag",MorningTagSetup.summary(this,nfcSetupAccess),"Set up",()->startActivity(QrCodeActivity.nfcSetup(this)));Design.space(body,8);Design.text(body,"Shared by all NFC alarms. Saving a bedside tag does not save this alarm.",13,400,Design.MUTED);
+            LinearLayout setup=PlanActivity.detail(body,"phone","Bedside NFC tag",MorningTagSetup.summary(this,nfcSetupAccess),"Set up",()->{});setup.setOnClickListener(view->{if(!editorResumed||!route.equals("task")||!inspectedTask.equals("NFC")||isFinishing()||isDestroyed()||!view.isAttachedToWindow()||!view.isShown()||!view.hasWindowFocus())return;InteractionFeedback.action(view);startActivity(QrCodeActivity.nfcSetup(this));});Design.space(body,8);Design.text(body,"Shared by all NFC alarms. Saving a bedside tag does not save this alarm.",13,400,Design.MUTED);
         }else if(inspectedTask.equals("Shake")){
             taskPicker(body,"phone","Shakes",null,""+(taskRounds*5),taskRounds,new int[]{1,2,3,4,5,6},n->(n*5)+" shakes",n->taskRounds=n);
         }else{
