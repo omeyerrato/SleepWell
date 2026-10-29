@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated 29 October 2026. Latest published APK: **0.1.10 / 44cb41e7** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
+Updated 30 October 2026. Latest published APK: **0.1.11 / ce2cb571** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.10-clearer-actions-20261029-44cb41e7) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.11-pickers-feedback-20261030-ce2cb571) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -76,7 +76,15 @@ These checks record implemented source and packaging, not new visual or runtime 
 - [x] Use clearer task setup/confirmation labels and warm app-owned confirmations.
 - [x] Produce and publish0.1.10 from `44cb41e7`; APK packaging3m15s. New verification and physical-device actions remain deferred. [Changes](USABILITY-PASS-2026-10-29.md#command-and-discovery-follow-up).
 
-Newer source: Appearance theme rings are merged at `6d56b05b`, ready for the next combined package; they are not in the published0.1.10 APK.
+Appearance theme rings (`6d56b05b`) are included in0.1.11.
+
+## Published in 0.1.11 — pickers and feedback
+
+- [x] Duration presets that edit fields before explicit confirmation; custom durations remain.
+- [x] City-first time-zone selection with country search, current selection and progressive results.
+- [x] Saved Light / Standard / Firm touch feedback, explicit Try feedback and preserved Off/quiet behavior.
+- [x] App-owned Appearance rings and search labels/icons aligned with Settings.
+- [x] Produce and publish0.1.11 (`ce2cb571`), APK packaging2m24s only. New interaction, visual and device acceptance remains deferred.
 
 ## Still unfinished
 

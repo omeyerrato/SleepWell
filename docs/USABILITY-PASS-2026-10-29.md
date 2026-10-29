@@ -27,7 +27,18 @@ Published package source: `44cb41e7`, version **0.1.10 / 11**. [Development APK]
 
 This follow-up also runs APK packaging only. It does not add new verification or acceptance claims.
 
-Newer source: `6d56b05b` replaces Appearance's platform theme radio indicators with app-owned lilac rings. Existing tile selection and saving paths remain. This source is queued for the next combined package and is not included in0.1.10.
+Source `6d56b05b` replaces Appearance's platform theme radio indicators with app-owned lilac rings. Existing tile selection and saving paths remain. It is included in0.1.11, after the frozen0.1.10 package.
+
+## Pickers and feedback — 30 October
+
+Published source **`ce2cb571`**, version **0.1.11 / 12**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.11-pickers-feedback-20261030-ce2cb571). APK packaging2m24s only.
+
+- Duration preset chips edit the same draft fields as typing; selected chips follow valid typed/restored values. Existing Use, Cancel and bounds remain. Exact-timer presets are1/5/10/20/30/90minutes; generic duration presets respect the current minimum/maximum.
+- Travel-zone choices put the city first and pin the current exact zone. Country metadata comes from Android ICU, falling back to the actual zone ID. Search supports cities/countries/regions/IDs, while Show more keeps further choices reachable. Saved zones, trip timing and reminders are unchanged.
+- Feedback strength has saved Light / Standard / Firm choices and an explicit Try feedback button. Standard retains the old behavior. All requests retain Android settings, saved Off, quiet/lifecycle guards and debounce. No physical feel is claimed.
+- Search category labels, icons and breadcrumbs reflect the reorganized Settings hierarchy. Appearance rings are included.
+
+No new tests, lint, visual verification, security review or physical outputs ran. Implementation references and deferred status are recorded in F035/F064/F169 of the feature matrix.
 
 ## Delivery limits
 
