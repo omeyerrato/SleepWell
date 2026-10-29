@@ -1,0 +1,231 @@
+{
+  "run": 40802190314,
+  "head": "bdd09c4170f97becae77a8c7681bae23a071c70a",
+  "functional_conclusion": "pass",
+  "method_seconds": 64.885,
+  "all18_individually_opened": true,
+  "all18_visually_clean": false,
+  "open_visual_issue": "Selected October mean tooltip overlaps part of the8h current-goal caption in report-reference-year-selected.png; tooltip value itself is readable.",
+  "references": [
+    "design-concepts/2026-10-22-phone-app/08-history-and-trends.png",
+    "design-concepts/2026-10-22-phone-app/01-everyday.png / middle"
+  ],
+  "images": [
+    {
+      "file": "originals/report-reference-history.png",
+      "sha256": "d26110df77abacaba2b1b13dced6fd94fa302606765f6e783ab7e1b438890d22",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "All seven private fixture nights and actual raw durations readable;7h42 latest record, one real coverage gap; four-tab navigation is intentional.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-week.png",
+      "sha256": "753642fc77ae1b874b8391897b692f7c1d28f29e26bd99dc938e7a66aadd7235",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Weekly average visibly7h43; individual labels8:03/7:30/7:55/7:10/8:05/7:35/7:42 retained; No dated goal shown honestly.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-week-calendar.png",
+      "sha256": "92401f26d86f244cbd189dded292ee2d345e990d6b3d469a53ab2bde42f61338",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Actual27Oct pending date, month grid and Use/Cancel controls fit.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-week-selected.png",
+      "sha256": "f09d92addaaf60852d18f9a2140256da9dfc9f423ad5e9461da2ab4a22239ff1",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Actual selected25Oct recorded duration7h10 visible in tooltip; average stays7h43; goal caption readable.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-month.png",
+      "sha256": "fc6669c90ec61aecfc4e8ad65091a83c48fc128ea0e973fead48f237a533dab8",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "October average7h43; only seven actual recorded days drawn, unknown earlier days left blank.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-year.png",
+      "sha256": "ec5b741176925b6f7ed9f8b57d584a3faaa415347e4af45c96dbf4b7561a06f1",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Annual average7h43 and only October populated; unknown months blank, not zero or invented history.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-night.png",
+      "sha256": "ae004c9cb2834ab0f0c1b92b321f156491b15ff5624613094f8d5fd53054149f",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Individual recorded time remains7h42; selected actual fixture movement interval0.0708 relative average; Sleep stages Not estimated; analysis-only event counts and Edit/View actions readable.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-editor.png",
+      "sha256": "86978db713f685fcf064e5c5a80a35321059a02df9a7390faad85f1f9df7a16e",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Original10:48PM\u20136:30AM period,7h42 duration, notes, Save/Delete all fit; no display mean rounding applied to the individual record.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-tags-notes.png",
+      "sha256": "2f942dc3872d6312ee93275580d78deb1e28267a90413ba9edac678f12302c1a",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Late meal/Exercise tags and explicit fixture note visible with Save/Delete; both trimmed period bounds retained.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-reopened.png",
+      "sha256": "6853e3af5f5f7d8c2e991a0e27bf38f95fa3cd97a6a231d7836ab03e19f39f22",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "After Save,11:18PM\u20136:00AM plus one10min awake interval gives6h32; tags/note and controls retained.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-chart-gap.png",
+      "sha256": "c8439e40dc921dd0a9febf2c617c7fb712818fc7935d7ef459c1cefdcddfb65c",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Selected1:15AM gap says No readings; recorded duration7h10 and blank pause remain honest.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-period-cancelled.png",
+      "sha256": "4ca27f907ec4bdd2644be9fced0606a91698b477753ee3229fec21ff3118fbd9",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Baseline bounds restored after abandoned gestures/recreation, with Awake1 annotation and7h32 draft duration retained.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-period-drag-start.png",
+      "sha256": "9c676b0b536421d0250eb253a5867662f0307c717ff9e0da715a218b1f55224f",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Intentional start trim to11:18PM, end6:30AM;7h12 draft and clipped outside awake annotation reflected.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-period-drag-end.png",
+      "sha256": "0c4bb009d8aec0ea98a4b65250c5c24ecd76e15628269c21c82693838c9cff8c",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Both trimmed boundaries11:18PM\u20136:00AM and6h42 draft visible.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-period-accessibility.png",
+      "sha256": "a120f8a825044557d584172a59fe1e47726c99515ef322649c4ae01d90d7a654",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Both-boundary keyboard/accessibility actions reversed to11:18PM\u20136:00AM; selected start handle has readable focus ring.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-period-draft-recreated.png",
+      "sha256": "0c4bb009d8aec0ea98a4b65250c5c24ecd76e15628269c21c82693838c9cff8c",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Unsaved completed period11:18PM\u20136:00AM/6h42 retained after recreation.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-period-persisted.png",
+      "sha256": "6853e3af5f5f7d8c2e991a0e27bf38f95fa3cd97a6a231d7836ab03e19f39f22",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "Persisted period, Awake1,6h32 and saved tags/note agree with reopened frame and database assertions.",
+      "visual_limitation": false
+    },
+    {
+      "file": "originals/report-reference-year-selected.png",
+      "sha256": "907303f5abd4f3d01c0554f157111ba7e96532dbcefb54d522ff4db53d94765d",
+      "dimensions": [
+        1080,
+        2316
+      ],
+      "mode": "RGB",
+      "individually_opened": true,
+      "observation": "October tooltip visibly7h43 and actual accessibility value2026-10-01:7h43 matches native assertion. Tooltip covers part of8h current-goal caption; visual limitation remains.",
+      "visual_limitation": true
+    }
+  ]
+}
