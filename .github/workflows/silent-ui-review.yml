@@ -23,6 +23,7 @@ on:
           - routine-motion
           - routine-walk-cleanup
           - routine-audio
+          - cognitive-feedback
           - tonight
           - tonight-composition
           - appearance
