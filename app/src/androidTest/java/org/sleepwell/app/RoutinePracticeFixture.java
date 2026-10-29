@@ -46,9 +46,23 @@ final class RoutinePracticeFixture {
         await(()->top instanceof AlarmEditorActivity&&ready(top));editor=(AlarmEditorActivity)top;click("Challenges");allowedRecordOpens=recordOpens.get();click("Preview routine");await(()->top instanceof ChallengePracticeActivity&&ready(top));practice=(ChallengePracticeActivity)top;
     }
     private void recreate()throws Exception{Activity old=practice;i.runOnMainSync(old::recreate);await(()->top instanceof ChallengePracticeActivity&&top!=old&&old.isDestroyed()&&ready(top));practice=(ChallengePracticeActivity)top;}
+    private void fullBounds(View view,String label,boolean action){
+        assertNotNull(label,view);Rect visible=new Rect();assertTrue(label,view.isAttachedToWindow()&&view.isShown()&&view.getGlobalVisibleRect(visible));
+        assertEquals(label+" width",view.getWidth(),visible.width());assertEquals(label+" height",view.getHeight(),visible.height());
+        if(action)assertTrue(label+" touch target",visible.width()>=Design.dp(c,48)&&visible.height()>=Design.dp(c,48));
+    }
+    private boolean assertCountingBoard(View root){CharSequence description=root.getContentDescription();if(description!=null&&description.toString().startsWith("Counting board. ")){fullBounds(root,"Full Counting board",false);assertEquals(root.getWidth(),root.getHeight());return true;}if(root instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++)if(assertCountingBoard(group.getChildAt(n)))return true;return false;}
+    private void fullProgress(View root){
+        CharSequence description=root.getContentDescription();
+        if(description!=null&&description.toString().startsWith("Challenge ")&&root instanceof LinearLayout dots)for(int n=0;n<dots.getChildCount();n++)fullBounds(dots.getChildAt(n),"Progress dot "+n,false);
+        if(root instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++)fullProgress(group.getChildAt(n));
+    }
     private void capture(String suffix)throws Exception{
         step="Capture routine-preview-"+suffix;ready();CountDownLatch frame=new CountDownLatch(1);Activity expected=top;
-        i.runOnMainSync(()->{View root=expected.getWindow().getDecorView();View action=find(root,suffix.equals("unsupported")?"Return to routine":suffix.equals("completed")||suffix.equals("second-completed")?"Done":"Cancel preview");assertNotNull("Actual exit action",action);while(!action.isClickable()&&action.getParent() instanceof View)action=(View)action.getParent();Rect area=new Rect();assertTrue(action.getGlobalVisibleRect(area));assertEquals("Full exit width",action.getWidth(),area.width());assertEquals("Full exit height",action.getHeight(),area.height());assertTrue(area.width()>=Design.dp(c,48)&&area.height()>=Design.dp(c,48));root.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);root.invalidate();});
+        i.runOnMainSync(()->{View root=expected.getWindow().getDecorView();View action=find(root,suffix.equals("unsupported")?"Return to routine":suffix.equals("completed")||suffix.equals("second-completed")?"Done":"Cancel preview");assertNotNull("Actual exit action",action);while(!action.isClickable()&&action.getParent() instanceof View)action=(View)action.getParent();Rect area=new Rect();assertTrue(action.getGlobalVisibleRect(area));assertEquals("Full exit width",action.getWidth(),area.width());assertEquals("Full exit height",action.getHeight(),area.height());assertTrue(area.width()>=Design.dp(c,48)&&area.height()>=Design.dp(c,48));fullProgress(root);
+            if(suffix.equals("counting")){fullBounds(find(root,"Counting answer"),"Counting answer",true);fullBounds(find(root,"Check count"),"Check count",true);assertTrue("Actual Counting board",assertCountingBoard(root));}
+            if(suffix.equals("flags")){fullBounds(find(root,"Flag to identify"),"Full flag artwork",false);ChallengeRoutine.Position at=session().position();FlagPuzzle puzzle=FlagPuzzle.create(session().run,session().completed(),at.round);for(int option:puzzle.choices)fullBounds(find(root,FlagPuzzle.COUNTRIES.get(option)),"Flag choice",true);}
+            root.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);root.invalidate();});
         assertTrue(frame.await(5,TimeUnit.SECONDS));assertTrue(ready(expected));File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"routine-preview-"+suffix+".png")));
     }
     private void checkMath()throws Exception{MathTask question=main(()->field(screen(),"math"));if(question.settings.typed)enter(main(()->field(screen(),"mathInput")),Integer.toString(question.answer()));else click("Answer "+question.answer());click("Check practice answer");}
