@@ -1,6 +1,6 @@
-# SleepWell feature checklist — 29 October 2026
+# SleepWell feature checklist — 30 October 2026
 
-Latest published **0.1.8 / 0b3cb9ed** improves the Privacy storage/backup layout and Motion sensor artwork/chart/controls. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.8-reference-layouts-20261029-0b3cb9ed); [package audit](verification/2026-10-29-018-build/README.md); [Privacy12 proof](verification/2026-10-29-privacy-reference/README.md); [Motion7 proof](verification/2026-10-29-motion-reference/README.md). The phone remains on 0.1.4; installation is deferred. Audio-only bulk deletion, a durable manual Last export receipt and broader design/security/hardware work remain unfinished.
+Latest published **0.1.12 / 031d44e5** includes the usability-first updates and explicit readiness alarm control. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.12-readiness-20261030-031d44e5); [current source changes and deferred acceptance](USABILITY-PASS-2026-10-29.md). APK packaging only; no new verification, security review or physical output ran. The phone remains on0.1.4; installation is deferred. All36 matching, combined Privacy acceptance, remaining feature parity and device/overnight work remain open.
 
 Condensed version: [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
 Checked means implemented source/build, not full phone/overnight acceptance.

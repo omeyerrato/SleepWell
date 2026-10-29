@@ -87,11 +87,11 @@ unverified. [Scoped evidence](verification/2026-10-26-settings-organization/READ
 | --- | --- |
 | Installed phone build | **0.1.4 / 08d3911e**, installed APK hash and original user-data preservation verified; expected internal API revisions/profile cache only. |
 | Phone availability | Update deferred by user; no phone/ADB action is being taken. Last verified installed build0.1.4. |
-| Published candidate | **0.1.8 / 0b3cb9ed arm64**, APK/lint11m43s; signer/tag/server file hashes verified. Phone0.1.4; update deferred. Schema17/backup14 unchanged. |
-| New feature evidence | Organization 33.114s/14 inspected captures, challenge ordering 40.237s/6 and recording analysis 40.27s/5. Prior Report/menu/Travel evidence remains separate. Per-alarm sensor accuracy, physical output, all 36 screens and overnight acceptance remain open. |
-| Current work policy | Features first; no new unit-test batches or broad campaigns. Essential builds, preservation and bounded changed-flow checks remain applicable. Dedicated reviewer stays stopped. |
+| Published candidate | **0.1.12 / 031d44e5 arm64**, APK packaging1m3s only; new verification deferred. Phone0.1.4; update deferred. |
+| Earlier feature evidence | Organization 33.114s/14 inspected captures, challenge ordering 40.237s/6 and recording analysis 40.27s/5. These do not accept newer source. Per-alarm sensor accuracy, physical output, all36 screens and overnight acceptance remain open. |
+| Current work policy | Usability first. New tests, lint, screenshot verification, security review and a separate bug pass are deferred. APK packaging only; phone/output operations remain deferred. |
 
-[Latest published release and scoped evidence](verification/2026-10-27-reference-menus-build/README.md).
+[Latest published release and source scope](USABILITY-PASS-2026-10-29.md).
 [Prior model/radio/rhythm scope](verification/2026-10-26-radio-rhythm-recognition/README.md).
 
 [Phone update evidence](verification/2026-10-26-phone-2cbfe043/README.md) is separate
