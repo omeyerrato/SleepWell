@@ -134,22 +134,21 @@ public class MainActivity extends Activity {
     }
     private void report(LinearLayout body){String failure=Prefs.text(this,"trackingError","");if(!failure.isEmpty()){Design.text(body,"Recording needs attention: "+failure,13,500,Design.BROWN);Design.space(body,12);}ReportScreen.render(this,body,store,new ReportScreen.Actions(){public void history(){startActivity(RecordUi.intent(MainActivity.this,HistoryActivity.class));}public void tonight(){tab=0;render();}public void detail(long id){showNight(id);}});}
     private void privacy(LinearLayout body){
-        hero(body,"Data & privacy","Stored on this phone. Sharing is optional.");Design.space(body,20);
-        LinearLayout summary=Design.col(this);Design.pad(summary,18,18);summary.setBackground(Design.shape(this,Design.SOFT,20));
-        LinearLayout heading=Design.row(this);Design.Icon icon=new Design.Icon(this,"report",Design.BROWN);LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(Ui.dp(this,30),Ui.dp(this,30));ip.rightMargin=Ui.dp(this,16);heading.addView(icon,ip);LinearLayout label=Design.col(this);Design.text(label,"On this phone",21,600,Design.INK);Design.space(label,5);Design.text(label,"Stored locally on your phone.",13,400,Design.MUTED);heading.addView(label,new LinearLayout.LayoutParams(0,-2,1));summary.addView(heading);Design.space(summary,22);
-        long count=store.rows("SELECT COUNT(*) AS count FROM sessions").get(0).optLong("count"),bytes=0;for(JSONObject clip:store.rows("SELECT path FROM clips"))try{File file=FileSafety.clip(this,clip.optString("path"));if(file.isFile())bytes+=file.length();}catch(IOException ignored){}
-        LinearLayout totals=Design.row(this),records=Design.col(this),audio=Design.col(this);Design.text(records,"Records",13,400,Design.MUTED);Design.space(records,5);Design.text(records,count+(count==1?" record":" records"),27,700,Design.INK);totals.addView(records,new LinearLayout.LayoutParams(0,-2,1));View divider=new View(this);divider.setBackgroundColor(Design.LINE);LinearLayout.LayoutParams dp=new LinearLayout.LayoutParams(Ui.dp(this,1),Ui.dp(this,50));dp.rightMargin=Ui.dp(this,20);totals.addView(divider,dp);Design.text(audio,"Audio",13,400,Design.MUTED);Design.space(audio,5);Design.text(audio,bytes==0?"0 MB":bytes<1024*1024?"<1 MB":(bytes/(1024*1024))+" MB",27,700,Design.INK);totals.addView(audio,new LinearLayout.LayoutParams(0,-2,1));summary.addView(totals);body.addView(summary);
-        Design.space(body,8);PlanActivity.detail(body,"file","Audio retention","Automatically remove older recordings.",audioRetentionLabel(),()->startActivity(RecordUi.intent(this,SoundLibrarySettingsActivity.class)));Design.line(body);Design.space(body,10);
-        Switch keepFavorites=Design.toggle(body,"Keep favorites","Retain starred recordings during cleanup",Prefs.of(this).getBoolean("keepAudioFavorites",true),keep->Prefs.put(this,"keepAudioFavorites",keep));Design.styleSwitch(this,keepFavorites,Design.VIOLET,0xffbcb5b0);Design.space(body,14);
-        PlanActivity.detail(body,"upload","JSON backup","Alarms, records, notes and sound labels",null,null);Design.text(body,"Audio, app settings and goal commitments are excluded. Imported alarms start off.",12,400,Design.MUTED);
-        LinearLayout exports=Design.row(this),exportColumn=Design.col(this),importColumn=Design.col(this);LinearLayout.LayoutParams ep=new LinearLayout.LayoutParams(0,-2,1);ep.rightMargin=Ui.dp(this,4);exports.addView(exportColumn,ep);LinearLayout.LayoutParams imp=new LinearLayout.LayoutParams(0,-2,1);imp.leftMargin=Ui.dp(this,4);exports.addView(importColumn,imp);body.addView(exports);
-        Button export=Design.button(exportColumn,"Export backup",true,()->export(EXPORT_JSON));export.setTextSize(14*Appearance.scale(this));Button restore=Design.button(importColumn,"Import backup",false,()->backup(BackupJob.Kind.IMPORT));restore.setTextSize(14*Appearance.scale(this));
-        Design.space(body,12);Design.item(body,"file","Export records as CSV",null,()->export(EXPORT_CSV));Design.line(body);PlanActivity.detail(body,"cloud","Cloud backup","Save versions in your chosen storage folder",null,()->startActivity(RecordUi.intent(this,CloudBackupActivity.class)));Design.line(body);Design.space(body,16);
-        PlanActivity.detail(body,"upload","Export audio library","Alarms, sleep records and saved WAVs · ZIP",null,()->startActivity(RecordUi.intent(this,LibraryAudioExportActivity.class)));Design.line(body);Design.space(body,12);
-        PlanActivity.detail(body,"download","Restore audio backup","Review a ZIP before replacing local data",null,()->startActivity(RecordUi.intent(this,LibraryAudioImportActivity.class)));Design.line(body);Design.space(body,12);
-        PlanActivity.detail(body,"upload","Export research signals","Review relative movement data · no automatic upload",null,()->startActivity(RecordUi.intent(this,ResearchExportActivity.class)));Design.line(body);Design.space(body,12);
-        PlanActivity.detail(body,"link","Connected app access","Review record and alarm permissions",null,()->openSettingsGroup("connections"));Design.line(body);Design.space(body,12);
-        HistoryEraseUi.add(body,this::stopPreview,this::render);
+        PrivacyScreen.render(this,body,new PrivacyScreen.Actions(){
+            public void back(){MainActivity.this.back();}
+            public void retention(){startActivity(RecordUi.intent(MainActivity.this,SoundLibrarySettingsActivity.class));}
+            public void backup(){startActivity(RecordUi.intent(MainActivity.this,BackupActivity.class));}
+            public void exportBackup(){export(EXPORT_JSON);}
+            public void importBackup(){MainActivity.this.backup(BackupJob.Kind.IMPORT);}
+            public void csv(){export(EXPORT_CSV);}
+            public void cloud(){startActivity(RecordUi.intent(MainActivity.this,CloudBackupActivity.class));}
+            public void exportAudio(){startActivity(RecordUi.intent(MainActivity.this,LibraryAudioExportActivity.class));}
+            public void restoreAudio(){startActivity(RecordUi.intent(MainActivity.this,LibraryAudioImportActivity.class));}
+            public void research(){startActivity(RecordUi.intent(MainActivity.this,ResearchExportActivity.class));}
+            public void connections(){openSettingsGroup("connections");}
+            public void stopPreview(){MainActivity.this.stopPreview();}
+            public void refresh(){render();}
+        });
     }
     private void hero(LinearLayout body,String title,String subtitle){body.addView(Design.iconButton(this,"back","Back",this::back),new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48)));Design.space(body,14);Design.text(body,title,30,700,Design.INK);Design.space(body,8);Design.text(body,subtitle,15,400,Design.MUTED);}
     private void tonight(LinearLayout body) {
