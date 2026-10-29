@@ -89,8 +89,9 @@ final class SleepPicker {
     }
     /** Radio semantics without inheriting a platform theme's color/geometry. */
     static final class Mark extends View {
-        private final Paint paint=new Paint(3);private final boolean selected;
-        Mark(Context c,boolean selected){super(c);this.selected=selected;setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);}
-        @Override protected void onDraw(Canvas canvas){float radius=Math.min(getWidth(),getHeight())*.40f,x=getWidth()/2f,y=getHeight()/2f;paint.setColor(Design.BROWN);paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(Design.dp(getContext(),2));canvas.drawCircle(x,y,radius,paint);if(selected){paint.setStyle(Paint.Style.FILL);canvas.drawCircle(x,y,radius*.57f,paint);}}
+        private final Paint paint=new Paint(3);private final boolean selected;private final int color;
+        Mark(Context c,boolean selected){this(c,selected,Design.BROWN);}
+        Mark(Context c,boolean selected,int color){super(c);this.selected=selected;this.color=color;setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);}
+        @Override protected void onDraw(Canvas canvas){float radius=Math.min(getWidth(),getHeight())*.40f,x=getWidth()/2f,y=getHeight()/2f;paint.setColor(color);paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(Design.dp(getContext(),2));canvas.drawCircle(x,y,radius,paint);if(selected){paint.setStyle(Paint.Style.FILL);canvas.drawCircle(x,y,radius*.57f,paint);}}
     }
 }
