@@ -29,7 +29,16 @@ final class Design {
         GradientDrawable thumb=shape(c,Color.WHITE,30);thumb.setSize(dp(c,24),dp(c,24));thumb.setStroke(dp(c,1),0x11808080);toggle.setThumbDrawable(thumb);toggle.setSplitTrack(false);toggle.setThumbTextPadding(dp(c,2));toggle.setSwitchMinWidth(dp(c,52));toggle.setMinHeight(dp(c,48));toggle.setShowText(false);
     }
     static LinearLayout col(Context c){return Ui.column(c);}
-    private static void applySystemBars(Activity a,boolean dark){androidx.core.view.WindowInsetsControllerCompat controller=androidx.core.view.WindowCompat.getInsetsController(a.getWindow(),a.getWindow().getDecorView());controller.setAppearanceLightStatusBars(!dark);controller.setAppearanceLightNavigationBars(!dark);}
+    private static void applySystemBars(Activity a,boolean dark){
+        if(android.os.Build.VERSION.SDK_INT>=35){
+            // Keep both requested appearances in one Window policy update before a page changes surface.
+            int light=WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
+            a.getWindow().getInsetsController().setSystemBarsAppearance(dark?0:light,light);
+        }else{
+            androidx.core.view.WindowInsetsControllerCompat controller=androidx.core.view.WindowCompat.getInsetsController(a.getWindow(),a.getWindow().getDecorView());
+            controller.setAppearanceLightStatusBars(!dark);controller.setAppearanceLightNavigationBars(!dark);
+        }
+    }
     static void systemBars(Activity a,boolean dark){a.getWindow().getDecorView().setTag(R.id.system_bar_dark_surface,dark);applySystemBars(a,dark);}
     static boolean darkSystemBarSurface(Activity a){View decor=a.getWindow().getDecorView();Object declared=decor.getTag(R.id.system_bar_dark_surface);if(declared instanceof Boolean)return(Boolean)declared;int appearance=a.getWindow().getInsetsController().getSystemBarsAppearance();return(appearance&WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS)==0&&(decor.getSystemUiVisibility()&View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)==0;}
     static void focusedSystemBars(Activity a,boolean dark){View decor=a.getWindow().getDecorView();systemBars(a,dark);Runnable apply=()->{if(!a.isDestroyed()&&a.hasWindowFocus()&&Boolean.valueOf(dark).equals(decor.getTag(R.id.system_bar_dark_surface)))applySystemBars(a,dark);};decor.post(apply);decor.postDelayed(apply,200);}
@@ -55,13 +64,13 @@ final class Design {
     private static LinearLayout page(Activity a,boolean night,Integer destination,java.util.function.IntConsumer navigate,Appearance.Palette palette){
         boolean dark=night&&palette.dark;
         a.getWindow().setDecorFitsSystemWindows(false);
-        // API35+ also derives three-button icon contrast from the Window background,
-        // independently of the content View and requested light/dark appearance.
-        a.getWindow().setBackgroundDrawable(new ColorDrawable(night?palette.bg:CREAM));
         a.getWindow().getDecorView(); // Create decor before querying the controller during onCreate.
         a.getWindow().setNavigationBarContrastEnforced(false);
         a.getWindow().setStatusBarContrastEnforced(false);
         systemBars(a,dark);
+        // API35+ also derives three-button icon contrast from the Window background.
+        // Declare the new foreground policy before handing off either background or content.
+        a.getWindow().setBackgroundDrawable(new ColorDrawable(night?palette.bg:CREAM));
         LinearLayout root=col(a);root.setBackgroundColor(night?palette.bg:CREAM);root.setContentDescription(night&&destination!=null?"Tonight · "+AppearancePolicy.THEMES[palette.phase]:null);
         root.setOnApplyWindowInsetsListener((v,i)->{Insets bars=i.getInsets(WindowInsets.Type.systemBars()|WindowInsets.Type.displayCutout()|WindowInsets.Type.ime());v.setPadding(bars.left,bars.top,bars.right,bars.bottom);return i;});
         ScrollView scroll=new ScrollView(a);scroll.setDefaultFocusHighlightEnabled(false);scroll.setFillViewport(true);scroll.setClipToPadding(false);scroll.setVerticalScrollBarEnabled(false);root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
