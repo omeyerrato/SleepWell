@@ -1,0 +1,107 @@
+{
+  "source": "0b3cb9ed78fcb36d1a899c8c1dc56d0060387c59",
+  "baseline": "02aacc6b122cb1e2c50486190ece608f8d5e3e87",
+  "app_tree": "377209b488d3a738d33790c6b800fc4b3e6749ca",
+  "production_tree": "a6f297d6c9bb9b44315a555abd3585c5cbd59c99",
+  "assets_tree": "cbbe10142c6d48ff0c9249f081ea796af8fb51b1",
+  "resources_tree": "aece0a1ef46d226017725641c70b112d5fee69fd",
+  "changed_app_main_and_version_files": [
+    {
+      "status": "M",
+      "path": "app/build.gradle",
+      "git_blob": "16c70f1a8fad9a4b24de8bfaddf46ffeeb987d87",
+      "sha256": "61b155fc186231a527b5cd84a8983b7f55713b337b4cf3b81a5d4a8b80f658ec"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/ExternalMediaFade.java",
+      "git_blob": "ee665ab9659f85f101bc7cae257bf745c520d949",
+      "sha256": "349c5650dc3929e71ef3419bd50a193ce4cb3e9c75873bda234f3dea6b35563d"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "git_blob": "4ecb84778eb450f95e1ce1c38af27dc5542b5c95",
+      "sha256": "a8f12be5de3f17a6b08ea515280b11a6f02dac936322b09d556d02b925913070"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/MotionSensorActivity.java",
+      "git_blob": "e82a340b7dbf7fd9ba78dfa5d50dbaf6c12a6fc3",
+      "sha256": "b9fd24d50cfd080264371a85c3f2a58fe4c6a928ca117af89821102dbba63484"
+    },
+    {
+      "status": "M",
+      "path": "app/src/main/java/org/sleepwell/app/MotionSignalChart.java",
+      "git_blob": "a58d26d961d444565e341e55e4e80f72602707c3",
+      "sha256": "0a107c776c395c79b3cc30da46f713337327e82d1a7488b50e5fbd2dda6cfe57"
+    },
+    {
+      "status": "A",
+      "path": "app/src/main/java/org/sleepwell/app/PrivacyScreen.java",
+      "git_blob": "0b3f84c6020ac191d4c963c3c3c56b58fb69f7da",
+      "sha256": "a736bade1fd2fbfaa9fa77d2d50cc5242e9d4db82401e66fafc3293bfa9ca07e"
+    },
+    {
+      "status": "A",
+      "path": "app/src/main/java/org/sleepwell/app/PrivacyStorageSummary.java",
+      "git_blob": "abe8d487ccf84b8bd804d693b8411b4c41d93860",
+      "sha256": "e443d7d4fe228bce9b825f08ec697654c8b40aa3ea2e4587a5ec512b1aa170f2"
+    },
+    {
+      "status": "A",
+      "path": "app/src/main/res/drawable-nodpi/motion_sensor_handset.png",
+      "git_blob": "fc69f4a9fcac1d2527ea2e69a3da6c8df2b44ea2",
+      "sha256": "6f7ae09ce1c38ac8b0caba5e32b288613589bd94c3625d06ddf6147663c36420"
+    }
+  ],
+  "unchanged_contracts_and_build_files": [
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "git_blob": "7cd1723f74b97069fe3d6782161d85f4e083b48a",
+      "sha256": "c3f7ad1a7c3d124d435c9e779ccc00ac8cdcdbd8d0c84f0d801a1e9748a30ba3",
+      "exact_017_bytes_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "exact_017_bytes_equal": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "git_blob": "8f33543a0898a498075e4b82d70e6dfddd6af77f",
+      "sha256": "17bf74d23a9bbcf3c2897ca6d773fbcda273e24940deeab0cc52297ee2252323",
+      "exact_017_bytes_equal": true
+    },
+    {
+      "path": "build.gradle",
+      "git_blob": "695c5c33c21a965127721dadcb1979d94c74ffc3",
+      "sha256": "fb639e5e628deb129f5c804ad8cc664b3b56fce1b0ce6880ac02f54515ba59da",
+      "exact_017_bytes_equal": true
+    },
+    {
+      "path": "settings.gradle",
+      "git_blob": "802a318ad312578c999b53ce2a6910a4155a3a4f",
+      "sha256": "4e17dde7a16478541845811e5e4c3ac2ea52661f9f713c24aab4bca37f0724da",
+      "exact_017_bytes_equal": true
+    },
+    {
+      "path": "gradle.properties",
+      "git_blob": "2977b855352a3c91be2f4c82ff2b6f3af7b334ac",
+      "sha256": "8973471a9784cc525961258119dd1167113a76ee2d340f1c75582ce34e86b8ff",
+      "exact_017_bytes_equal": true
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "git_blob": "92510698672a9b5ab10e6c202710095c5c3f6941",
+      "sha256": "7d09e69815e4c5a1c20cab8bc15cccd07922939f16bd6470a7436f709774eae4",
+      "exact_017_bytes_equal": true
+    }
+  ],
+  "app_build_only_versionCode_versionName": true,
+  "store_schema": 17,
+  "backup_format": 14,
+  "source_resource_delta_only_handset_PNG": true,
+  "source_to_DEX_equivalence_proven": false
+}

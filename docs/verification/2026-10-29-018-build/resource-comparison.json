@@ -1,0 +1,63 @@
+{
+  "baseline_resource_entries": 775,
+  "candidate_resource_entries": 776,
+  "old_resource_entries_exact": 772,
+  "changed_existing_resource_XMLs": [
+    {
+      "name": "res/drawable/notification_bg.xml",
+      "baseline_tree_sha256": "7fa96f6419b90e31dd00d6f0ade511beefc58a4f9f4e5279fddca43be4c40537",
+      "candidate_tree_sha256": "978e53e53f8ffd785d303fcd54cd7cc512d95267fbc0c18cfcfbc2a21908cbe9",
+      "resolved_tree_sha256": "f25b1c5ca87337eeaaa5a479e16a2905e582960d01a8e04c5082aef8faee30ec",
+      "full_tree_equal_after_only_resource_IDs_replaced_by_own_names": true
+    },
+    {
+      "name": "res/drawable/notification_bg_low.xml",
+      "baseline_tree_sha256": "7a763769f7a4becd62ed679fdf3a775bf6194d68190961c173dedbff9d878d52",
+      "candidate_tree_sha256": "93805a0ab2d33c77bdba75b01915a557ac6bb2b22904c92015f7052ad651eba4",
+      "resolved_tree_sha256": "fd81d5dc646f611393aa00fc2487c91671034618fe1fac5704695a81f71d8b09",
+      "full_tree_equal_after_only_resource_IDs_replaced_by_own_names": true
+    },
+    {
+      "name": "res/drawable/notification_tile_bg.xml",
+      "baseline_tree_sha256": "84fc9ce51f880f89429e32a2201b8129e97970aec53788bf5cd7f38cbfd3fab8",
+      "candidate_tree_sha256": "865bbaa905a9fa73aac2bdb296731e7841735c91f792c3948cbd2d38b02ac8d6",
+      "resolved_tree_sha256": "d62fdf11c26e8c3cf05d2ff8e9e63612245988eff49b4d7f12bf6c01e2ccedfc",
+      "full_tree_equal_after_only_resource_IDs_replaced_by_own_names": true
+    }
+  ],
+  "compiled_XML_trees_resolved_per_APK": 3,
+  "unchanged_resource_XMLs_reresolved": 0,
+  "resource_table_names_added": [
+    "org.sleepwell.app:drawable/motion_sensor_handset"
+  ],
+  "resource_table_names_removed": [],
+  "resource_table_common_named_entries": 1472,
+  "new_PNG_exact_uncompressed_source_bytes": {
+    "entry": "res/drawable-nodpi-v4/motion_sensor_handset.png",
+    "source_sha256": "6f7ae09ce1c38ac8b0caba5e32b288613589bd94c3625d06ddf6147663c36420",
+    "apk_sha256": "6f7ae09ce1c38ac8b0caba5e32b288613589bd94c3625d06ddf6147663c36420",
+    "bytes": 502933
+  },
+  "resource_table_full_values_diff_after_only_app_IDs_resolved": "resource-table-diff.patch",
+  "resource_table_diff_review_pending": false,
+  "full_resource_table_equal_after_ID_resolution_string_pool_index_normalization_and_only_new_handset_removed": true,
+  "normalization": "App IDs replaced by names from each own table; t=0x03 d string-pool indices replaced only where immediately followed by the preserved actual literal string; remove only new motion spec/value/path and change only drawable entryCount218->217. No other fields normalized.",
+  "resource_table_raw_dumps_gzip_lossless": [
+    {
+      "file": "baseline-resources.txt.gz",
+      "raw_bytes": 1386227,
+      "raw_sha256": "d1d4c8f46d4cced87a49266d0d8dbf16d3c0a8389d9c0c195a74e409d45ab7f6",
+      "gzip_sha256": "a6825833d8efded50d867e2adb7ae8fd16b5b607f698074db0a35da93a17afa6",
+      "string_pool_indices_normalized": 5425,
+      "every_normalized_index_followed_by_preserved_literal_string": true
+    },
+    {
+      "file": "package-resources.txt.gz",
+      "raw_bytes": 1386514,
+      "raw_sha256": "91bf8dfb65014ac79b69221bb14eae0628e8338b92831feb4d837151a28b9035",
+      "gzip_sha256": "6bd6738ca1e44aa4a37ecabcbb201cd90da2d9ab5433a993298e05e323350e8f",
+      "string_pool_indices_normalized": 5426,
+      "every_normalized_index_followed_by_preserved_literal_string": true
+    }
+  ]
+}

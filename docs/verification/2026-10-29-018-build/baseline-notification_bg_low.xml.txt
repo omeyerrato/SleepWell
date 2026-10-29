@@ -1,0 +1,9 @@
+N: android=http://schemas.android.com/apk/res/android
+  E: selector (line=19)
+    A: android:exitFadeDuration(0x0101030d)=@0x010e0001
+    E: item (line=21)
+      A: android:state_pressed(0x010100a7)=(type 0x12)0xffffffff
+      A: android:drawable(0x01010199)=@0x7f0700ca
+    E: item (line=22)
+      A: android:state_pressed(0x010100a7)=(type 0x12)0x0
+      A: android:drawable(0x01010199)=@0x7f0700c9

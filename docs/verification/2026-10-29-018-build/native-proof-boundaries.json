@@ -1,0 +1,131 @@
+{
+  "candidate": "0b3cb9ed78fcb36d1a899c8c1dc56d0060387c59",
+  "composition": "Two disjoint accepted private-fixture flow proofs; no extra broad replay or combined runtime claim",
+  "proofs": [
+    {
+      "flow": "Motion",
+      "tested_source": "a46f1b7cc4cb8737cc5b532a318072ff515ad8d8",
+      "run": 40862856617,
+      "seconds": 22.359,
+      "methods": 1,
+      "actual_original_PNGs": 7,
+      "script_required_PNGs": 7,
+      "archived_all_original_files_hashes_verified": true,
+      "source_pins": [
+        {
+          "path": "app/src/main/java/org/sleepwell/app/MotionSensorActivity.java",
+          "candidate_git_blob": "e82a340b7dbf7fd9ba78dfa5d50dbaf6c12a6fc3",
+          "tested_git_blob": "e82a340b7dbf7fd9ba78dfa5d50dbaf6c12a6fc3",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/MotionSignalChart.java",
+          "candidate_git_blob": "a58d26d961d444565e341e55e4e80f72602707c3",
+          "tested_git_blob": "a58d26d961d444565e341e55e4e80f72602707c3",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/main/res/drawable-nodpi/motion_sensor_handset.png",
+          "candidate_git_blob": "fc69f4a9fcac1d2527ea2e69a3da6c8df2b44ea2",
+          "tested_git_blob": "fc69f4a9fcac1d2527ea2e69a3da6c8df2b44ea2",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/androidTest/java/org/sleepwell/app/MotionConfigurationFlowTest.java",
+          "candidate_git_blob": "2e30f86bb490d8d70e3135e00efaf370f0e8431b",
+          "tested_git_blob": "2e30f86bb490d8d70e3135e00efaf370f0e8431b",
+          "exact_equal": true
+        }
+      ],
+      "archive": "../2026-10-29-motion-reference",
+      "original_archive_files_checked": 17,
+      "native_reexecuted_by_package_auditor": false,
+      "image_review": "Motion individually reviewed by this same agent in its flow task; Privacy individual review supplied by its owner archive/Root, not repeated in package audit."
+    },
+    {
+      "flow": "Privacy",
+      "tested_source": "290fd0c8d04180707e8b46d93fa173aabfc79ab8",
+      "run": 40864908326,
+      "seconds": 75.212,
+      "methods": 1,
+      "actual_original_PNGs": 12,
+      "script_required_PNGs": 5,
+      "archived_all_original_files_hashes_verified": true,
+      "source_pins": [
+        {
+          "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+          "candidate_git_blob": "4ecb84778eb450f95e1ce1c38af27dc5542b5c95",
+          "tested_git_blob": "4ecb84778eb450f95e1ce1c38af27dc5542b5c95",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/PrivacyScreen.java",
+          "candidate_git_blob": "0b3f84c6020ac191d4c963c3c3c56b58fb69f7da",
+          "tested_git_blob": "0b3f84c6020ac191d4c963c3c3c56b58fb69f7da",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/PrivacyStorageSummary.java",
+          "candidate_git_blob": "abe8d487ccf84b8bd804d693b8411b4c41d93860",
+          "tested_git_blob": "abe8d487ccf84b8bd804d693b8411b4c41d93860",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/HistoryErase.java",
+          "candidate_git_blob": "b62bb5631a5c70c9bfa60c0ee2317019991ecbdf",
+          "tested_git_blob": "b62bb5631a5c70c9bfa60c0ee2317019991ecbdf",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/HistoryEraseJobs.java",
+          "candidate_git_blob": "18aa5724fae2ceb2c59539a0abc9c8731e33fc59",
+          "tested_git_blob": "18aa5724fae2ceb2c59539a0abc9c8731e33fc59",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/HistoryEraseUi.java",
+          "candidate_git_blob": "88dfdcb903383b48180366b5d1034b64fa0e265d",
+          "tested_git_blob": "88dfdcb903383b48180366b5d1034b64fa0e265d",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/SoundClips.java",
+          "candidate_git_blob": "a72e8ae8cbc231ba326c8fffd55b248adbe39d49",
+          "tested_git_blob": "a72e8ae8cbc231ba326c8fffd55b248adbe39d49",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/SoundLibrarySettingsActivity.java",
+          "candidate_git_blob": "8f2aa2e59fce9ceb1b898d8f34ef87b2fefcb230",
+          "tested_git_blob": "8f2aa2e59fce9ceb1b898d8f34ef87b2fefcb230",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/BackupJobs.java",
+          "candidate_git_blob": "2ac8afcc013f6b222ddebc7ca8cab311f9cb571c",
+          "tested_git_blob": "2ac8afcc013f6b222ddebc7ca8cab311f9cb571c",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/main/java/org/sleepwell/app/BackupActivity.java",
+          "candidate_git_blob": "831492be6cf436ee23993397ff6dc77a46a8dc17",
+          "tested_git_blob": "831492be6cf436ee23993397ff6dc77a46a8dc17",
+          "exact_equal": true
+        },
+        {
+          "path": "app/src/androidTest/java/org/sleepwell/app/PrivacyHistoryFlowTest.java",
+          "candidate_git_blob": "a6c4ca3bf7271bba2444d0d45b37ada3a6ffb45f",
+          "tested_git_blob": "a6c4ca3bf7271bba2444d0d45b37ada3a6ffb45f",
+          "exact_equal": true
+        }
+      ],
+      "archive": "../2026-10-29-privacy-reference",
+      "original_archive_files_checked": 22,
+      "native_reexecuted_by_package_auditor": false,
+      "image_review": "Motion individually reviewed by this same agent in its flow task; Privacy individual review supplied by its owner archive/Root, not repeated in package audit."
+    }
+  ],
+  "ExternalMediaFade_early_SDK_rejection": "Two added source lines before native listener construction, code/comment. Source-only beyond native proofs; actual API<33 path not executed here.",
+  "prior017_back_dispatcher_native_guard_boundaries": "Inherited archive remains; this audit adds no actual gestures/native guard hardware execution",
+  "all36_physical_overnight_model_security_acceptance": false
+}

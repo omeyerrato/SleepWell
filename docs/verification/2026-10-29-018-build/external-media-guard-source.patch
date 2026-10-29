@@ -1,0 +1,13 @@
+diff --git a/app/src/main/java/org/sleepwell/app/ExternalMediaFade.java b/app/src/main/java/org/sleepwell/app/ExternalMediaFade.java
+index 49430e67..ee665ab9 100644
+--- a/app/src/main/java/org/sleepwell/app/ExternalMediaFade.java
++++ b/app/src/main/java/org/sleepwell/app/ExternalMediaFade.java
+@@ -35,6 +35,8 @@ final class ExternalMediaFade {
+   if(Looper.myLooper()!=Looper.getMainLooper())throw new IllegalStateException("Media fade admission must use the tracking owner.");
+   Run old=current;if(old!=null)old.close("Recording replaced; media fade stopped.");
+   if(!selected.enabled)return;
++  // Reject before constructing Run: its native mode listener exists only on newer Android.
++  if(Build.VERSION.SDK_INT<33){publish(c,"Android 13 or newer is required. No volume was changed.");return;}
+   Run owner=new Run(c,session,identity,selected,live);current=owner;owner.open();
+  }
+  static void end(long session,String identity,String why){Run r=current;if(r!=null&&r.session==session&&r.identity.equals(identity))r.close(why+" Volume was not restored. A new recording is required.");}

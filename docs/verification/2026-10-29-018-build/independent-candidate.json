@@ -1,0 +1,51 @@
+{
+  "status": "bounded_package_checks_pass",
+  "source": "0b3cb9ed78fcb36d1a899c8c1dc56d0060387c59",
+  "apk": "SleepWell-0b3cb9ed78fcb36d1a899c8c1dc56d0060387c59.apk",
+  "bytes": 163999264,
+  "sha256": "247ea0e815d842a10850a779c9428a739d780abaa83f364328b1593fd899f8ae",
+  "app_tree": "377209b488d3a738d33790c6b800fc4b3e6749ca",
+  "production_tree": "a6f297d6c9bb9b44315a555abd3585c5cbd59c99",
+  "versionName": "0.1.8",
+  "versionCode": 9,
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "baseline": {
+    "source": "02aacc6b122cb1e2c50486190ece608f8d5e3e87",
+    "bytes": 168752618,
+    "sha256": "7aa7e4fb3db0ec298a00459e83443f1342649e00fb3923396d867d2d83383143"
+  },
+  "zip_entries": 949,
+  "zip_counts": {
+    "assets/": 65,
+    "lib/": 8,
+    "res/": 776
+  },
+  "zip_delta_counts": {
+    "added": 1,
+    "removed": 0,
+    "changed": 7,
+    "equal_content": 941
+  },
+  "resource_delta": {
+    "added": [
+      "res/drawable-nodpi-v4/motion_sensor_handset.png"
+    ],
+    "removed": [],
+    "changed": [
+      "res/drawable/notification_bg.xml",
+      "res/drawable/notification_bg_low.xml",
+      "res/drawable/notification_tile_bg.xml",
+      "resources.arsc"
+    ]
+  },
+  "unreferenced_gap_bytes": 0,
+  "build_status": "SUCCESS",
+  "lint_errors": 0,
+  "store_schema": 17,
+  "backup_format": 14,
+  "composed_private_fixture_proofs_only": true,
+  "ExternalMediaFade_early_SDK_rejection_source_only": true,
+  "source_to_DEX_equivalence_proven": false,
+  "all36_or_physical_or_security_certification": false,
+  "publication_installation_by_auditor": false
+}

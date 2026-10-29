@@ -1,0 +1,33 @@
+--- 0.1.7 IDs and string-pool indices normalized
+
++++ 0.1.8 IDs and string-pool indices normalized
+
+@@ -2143,7 +2143,7 @@
+
+           (dimension) 12.000000dp
+         resource org.sleepwell.app:dimen/abc_text_size_title_material_toolbar org.sleepwell.app:dimen/abc_text_size_title_material_toolbar: t=0x05 d=0x00000e01 (s=0x0008 r=0x00)
+           (dimension) 14.000000dp
+-    type 6 configCount=13 entryCount=217
++    type 6 configCount=13 entryCount=218
+       spec resource org.sleepwell.app:drawable/abc_ab_share_pack_mtrl_alpha org.sleepwell.app:drawable/abc_ab_share_pack_mtrl_alpha: flags=0x00000100
+       spec resource org.sleepwell.app:drawable/abc_action_bar_item_background_material org.sleepwell.app:drawable/abc_action_bar_item_background_material: flags=0x00000000
+       spec resource org.sleepwell.app:drawable/abc_btn_borderless_material org.sleepwell.app:drawable/abc_btn_borderless_material: flags=0x00000000
+@@ -2342,6 +2342,7 @@
+
+       spec resource org.sleepwell.app:drawable/ic_sleepwell_background org.sleepwell.app:drawable/ic_sleepwell_background: flags=0x00000000
+       spec resource org.sleepwell.app:drawable/ic_sleepwell_monochrome org.sleepwell.app:drawable/ic_sleepwell_monochrome: flags=0x00000000
+       spec resource org.sleepwell.app:drawable/ic_sleepwell_monochrome_raster org.sleepwell.app:drawable/ic_sleepwell_monochrome_raster: flags=0x00000000
++      spec resource org.sleepwell.app:drawable/motion_sensor_handset org.sleepwell.app:drawable/motion_sensor_handset: flags=0x00000000
+       spec resource org.sleepwell.app:drawable/notification_action_background org.sleepwell.app:drawable/notification_action_background: flags=0x00000000
+       spec resource org.sleepwell.app:drawable/notification_bg org.sleepwell.app:drawable/notification_bg: flags=0x00000000
+       spec resource org.sleepwell.app:drawable/notification_bg_low org.sleepwell.app:drawable/notification_bg_low: flags=0x00000000
+@@ -3688,6 +3689,8 @@
+
+           (string8) "res/drawable-nodpi-v4/bedside_tonight.png"
+         resource org.sleepwell.app:drawable/bedside_winddown org.sleepwell.app:drawable/bedside_winddown: t=0x03 d=<string-pool-index> (s=0x0008 r=0x00)
+           (string8) "res/drawable-nodpi-v4/bedside_winddown.png"
++        resource org.sleepwell.app:drawable/motion_sensor_handset org.sleepwell.app:drawable/motion_sensor_handset: t=0x03 d=<string-pool-index> (s=0x0008 r=0x00)
++          (string8) "res/drawable-nodpi-v4/motion_sensor_handset.png"
+         resource org.sleepwell.app:drawable/sonar_bedside org.sleepwell.app:drawable/sonar_bedside: t=0x03 d=<string-pool-index> (s=0x0008 r=0x00)
+           (string8) "res/drawable-nodpi-v4/sonar_bedside.png"
+         resource org.sleepwell.app:drawable/tracking_placement org.sleepwell.app:drawable/tracking_placement: t=0x03 d=<string-pool-index> (s=0x0008 r=0x00)

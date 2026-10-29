@@ -1,0 +1,32 @@
+{
+  "0.1.7": {
+    "compressed_payload_bytes": 163236179,
+    "referenced_local_header_name_extra_bytes": 147740,
+    "data_descriptor_bytes": 0,
+    "unreferenced_gap_bytes": 5272997,
+    "apk_signing_block_bytes": 4096,
+    "central_directory_bytes": 91584,
+    "end_record_bytes": 22,
+    "apk_bytes": 168752618
+  },
+  "0.1.8": {
+    "compressed_payload_bytes": 163752124,
+    "referenced_local_header_name_extra_bytes": 151345,
+    "data_descriptor_bytes": 0,
+    "unreferenced_gap_bytes": 0,
+    "apk_signing_block_bytes": 4096,
+    "central_directory_bytes": 91677,
+    "end_record_bytes": 22,
+    "apk_bytes": 163999264
+  },
+  "delta": {
+    "compressed_payload_bytes": 515945,
+    "referenced_local_header_name_extra_bytes": 3605,
+    "data_descriptor_bytes": 0,
+    "unreferenced_gap_bytes": -5272997,
+    "apk_signing_block_bytes": 0,
+    "central_directory_bytes": 93,
+    "end_record_bytes": 0,
+    "apk_bytes": -4753354
+  }
+}

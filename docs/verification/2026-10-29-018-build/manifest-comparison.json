@@ -1,0 +1,17 @@
+{
+  "complete_compiled_tree_equal_after_only_version_attributes_removed": true,
+  "added_components": [],
+  "removed_components": [],
+  "all_existing_component_trees_exact": true,
+  "WakeUpService_absent": true,
+  "counts": {
+    "activity": 129,
+    "activity-alias": 1,
+    "service": 24,
+    "receiver": 34,
+    "provider": 5,
+    "permission": 5,
+    "uses-permission": 36,
+    "uses-feature": 10
+  }
+}

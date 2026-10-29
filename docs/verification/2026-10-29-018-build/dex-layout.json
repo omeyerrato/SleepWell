@@ -1,0 +1,97 @@
+{
+  "scope": "Sizes, hashes, class-definition counts only; no source-to-DEX behavioral equivalence",
+  "baseline": [
+    {
+      "name": "classes.dex",
+      "bytes": 10656324,
+      "sha256": "43ba88341a46ed73bbe0a1e745566d2b07cc33ad4ddbb84260f7ce905b2e1070",
+      "crc32": "a23a0a02",
+      "compressed_bytes": 10656324,
+      "compression": 0,
+      "local_header_offset": 140
+    },
+    {
+      "name": "classes2.dex",
+      "bytes": 161508,
+      "sha256": "32cb3c3eaef8dfbbd27bf20c9ce8f03681d65cfa85cefd74ac633c382b7f1edf",
+      "crc32": "c2eefdcd",
+      "compressed_bytes": 161508,
+      "compression": 0,
+      "local_header_offset": 10656508
+    },
+    {
+      "name": "classes4.dex",
+      "bytes": 612,
+      "sha256": "c33618d888a1f88fc4904a60b7470ca84ba29cd86d47571d9ff307283d0ea78b",
+      "crc32": "c35b20ca",
+      "compressed_bytes": 612,
+      "compression": 0,
+      "local_header_offset": 16091060
+    },
+    {
+      "name": "classes5.dex",
+      "bytes": 10621576,
+      "sha256": "fc7a45823eca03f707ccba4089b14736d59bbd59239e35c9492fc052a6c104df",
+      "crc32": "4af52a26",
+      "compressed_bytes": 10621576,
+      "compression": 0,
+      "local_header_offset": 16091716
+    },
+    {
+      "name": "classes6.dex",
+      "bytes": 1555064,
+      "sha256": "73af00f3dfc42d11570bdbde18c25f9c2e11c827405bd0ca0e9abbd47805b1a6",
+      "crc32": "6dca8f16",
+      "compressed_bytes": 1555064,
+      "compression": 0,
+      "local_header_offset": 26713336
+    },
+    {
+      "name": "classes3.dex",
+      "bytes": 5272956,
+      "sha256": "c3ec4e8cb14c5e0ddf4614e0d132845c4856001ab560cb1a7d2a1a64538a6183",
+      "crc32": "e086af25",
+      "compressed_bytes": 5272956,
+      "compression": 0,
+      "local_header_offset": 163383917
+    }
+  ],
+  "candidate": [
+    {
+      "name": "classes.dex",
+      "bytes": 10656324,
+      "sha256": "43ba88341a46ed73bbe0a1e745566d2b07cc33ad4ddbb84260f7ce905b2e1070",
+      "class_def_count": 7238
+    },
+    {
+      "name": "classes2.dex",
+      "bytes": 161552,
+      "sha256": "2e0c575bf5f8bf19d3aca9d98497458174c2b74294f63de52af4069d387a53b4",
+      "class_def_count": 227
+    },
+    {
+      "name": "classes3.dex",
+      "bytes": 5285768,
+      "sha256": "8ff4d6c44a19084b2c7cf89e5c22365e43d27b2c5ed17b955d65a17aafddf3a7",
+      "class_def_count": 5746
+    },
+    {
+      "name": "classes4.dex",
+      "bytes": 612,
+      "sha256": "c33618d888a1f88fc4904a60b7470ca84ba29cd86d47571d9ff307283d0ea78b",
+      "class_def_count": 1
+    },
+    {
+      "name": "classes5.dex",
+      "bytes": 10621576,
+      "sha256": "fc7a45823eca03f707ccba4089b14736d59bbd59239e35c9492fc052a6c104df",
+      "class_def_count": 10708
+    },
+    {
+      "name": "classes6.dex",
+      "bytes": 1555064,
+      "sha256": "73af00f3dfc42d11570bdbde18c25f9c2e11c827405bd0ca0e9abbd47805b1a6",
+      "class_def_count": 1113
+    }
+  ]
+}

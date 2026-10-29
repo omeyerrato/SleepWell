@@ -1,0 +1,180 @@
+{
+  "baseline_entries": 948,
+  "candidate_entries": 949,
+  "unique_names": true,
+  "all_crc_reads_pass": true,
+  "added": [
+    {
+      "name": "res/drawable-nodpi-v4/motion_sensor_handset.png",
+      "bytes": 502933,
+      "sha256": "6f7ae09ce1c38ac8b0caba5e32b288613589bd94c3625d06ddf6147663c36420",
+      "crc32": "de45d7a6",
+      "compressed_bytes": 502933,
+      "compression": 0,
+      "local_header_offset": 157003558
+    }
+  ],
+  "removed": [],
+  "changed": [
+    {
+      "name": "AndroidManifest.xml",
+      "baseline": {
+        "name": "AndroidManifest.xml",
+        "bytes": 74684,
+        "sha256": "35477e94ee93c278ea089253789edd8c22fdebf45ecc7a1d99e0a90b41e10fca",
+        "crc32": "386c4e46",
+        "compressed_bytes": 12431,
+        "compression": 8,
+        "local_header_offset": 151536678
+      },
+      "candidate": {
+        "name": "AndroidManifest.xml",
+        "bytes": 74684,
+        "sha256": "26c7c8060f23df7e070b1923d303bdb812351cc835ff3a9715fd915887d85a18",
+        "crc32": "58e0ec94",
+        "compressed_bytes": 12431,
+        "compression": 8,
+        "local_header_offset": 151553062
+      }
+    },
+    {
+      "name": "classes2.dex",
+      "baseline": {
+        "name": "classes2.dex",
+        "bytes": 161508,
+        "sha256": "32cb3c3eaef8dfbbd27bf20c9ce8f03681d65cfa85cefd74ac633c382b7f1edf",
+        "crc32": "c2eefdcd",
+        "compressed_bytes": 161508,
+        "compression": 0,
+        "local_header_offset": 10656508
+      },
+      "candidate": {
+        "name": "classes2.dex",
+        "bytes": 161552,
+        "sha256": "2e0c575bf5f8bf19d3aca9d98497458174c2b74294f63de52af4069d387a53b4",
+        "crc32": "72f00b31",
+        "compressed_bytes": 161552,
+        "compression": 0,
+        "local_header_offset": 10656508
+      }
+    },
+    {
+      "name": "classes3.dex",
+      "baseline": {
+        "name": "classes3.dex",
+        "bytes": 5272956,
+        "sha256": "c3ec4e8cb14c5e0ddf4614e0d132845c4856001ab560cb1a7d2a1a64538a6183",
+        "crc32": "e086af25",
+        "compressed_bytes": 5272956,
+        "compression": 0,
+        "local_header_offset": 163383917
+      },
+      "candidate": {
+        "name": "classes3.dex",
+        "bytes": 5285768,
+        "sha256": "8ff4d6c44a19084b2c7cf89e5c22365e43d27b2c5ed17b955d65a17aafddf3a7",
+        "crc32": "2bb827d3",
+        "compressed_bytes": 5285768,
+        "compression": 0,
+        "local_header_offset": 10818104
+      }
+    },
+    {
+      "name": "res/drawable/notification_bg.xml",
+      "baseline": {
+        "name": "res/drawable/notification_bg.xml",
+        "bytes": 532,
+        "sha256": "d4905f498696c339f57b16257aa436f839cdb6841a8f77cdb39aab6c5983f9e4",
+        "crc32": "a2cd3ec5",
+        "compressed_bytes": 254,
+        "compression": 8,
+        "local_header_offset": 162416874
+      },
+      "candidate": {
+        "name": "res/drawable/notification_bg.xml",
+        "bytes": 532,
+        "sha256": "50fef37215b75a9f99f1a73ec54995d104ebe32813594a9d81cdc97bbcdc8b4b",
+        "crc32": "e5f995a0",
+        "compressed_bytes": 254,
+        "compression": 8,
+        "local_header_offset": 162936270
+      }
+    },
+    {
+      "name": "res/drawable/notification_bg_low.xml",
+      "baseline": {
+        "name": "res/drawable/notification_bg_low.xml",
+        "bytes": 532,
+        "sha256": "e8d5c1f6564f494797d374bf86b4b5adb39ca9dbbc526bb6bfdfac54559698c3",
+        "crc32": "aadb6541",
+        "compressed_bytes": 254,
+        "compression": 8,
+        "local_header_offset": 162417190
+      },
+      "candidate": {
+        "name": "res/drawable/notification_bg_low.xml",
+        "bytes": 532,
+        "sha256": "70c4ff654d7a76b7f18e41c19bea4c0044cb1c25dadf2ae78f5ff1cd6619ff51",
+        "crc32": "b976001f",
+        "compressed_bytes": 254,
+        "compression": 8,
+        "local_header_offset": 162936586
+      }
+    },
+    {
+      "name": "res/drawable/notification_tile_bg.xml",
+      "baseline": {
+        "name": "res/drawable/notification_tile_bg.xml",
+        "bytes": 304,
+        "sha256": "0ce61e4562042203b2fffb4a047ea2686d353ec5023d8c7f26741850e8f27668",
+        "crc32": "0801680f",
+        "compressed_bytes": 174,
+        "compression": 8,
+        "local_header_offset": 162417770
+      },
+      "candidate": {
+        "name": "res/drawable/notification_tile_bg.xml",
+        "bytes": 304,
+        "sha256": "ea2de7b1526f5b0862881927c29934b9a1487dff713f043f7de3a92c22733cf9",
+        "crc32": "a60a3b9b",
+        "compressed_bytes": 174,
+        "compression": 8,
+        "local_header_offset": 162937166
+      }
+    },
+    {
+      "name": "resources.arsc",
+      "baseline": {
+        "name": "resources.arsc",
+        "bytes": 446908,
+        "sha256": "1440ca93cf0e7c75201149805017df301678fd25bfae39453016867e7d2910cf",
+        "crc32": "73f1f8c5",
+        "compressed_bytes": 446908,
+        "compression": 0,
+        "local_header_offset": 162906185
+      },
+      "candidate": {
+        "name": "resources.arsc",
+        "bytes": 447064,
+        "sha256": "63ec80c0a05ab363888c307e65ca91766228b89b9a55f9f6cdb6e8547c7c5c81",
+        "crc32": "650fe57e",
+        "compressed_bytes": 447064,
+        "compression": 0,
+        "local_header_offset": 163425584
+      }
+    }
+  ],
+  "equal_content_entries": 941,
+  "resource_delta": {
+    "added": [
+      "res/drawable-nodpi-v4/motion_sensor_handset.png"
+    ],
+    "removed": [],
+    "changed": [
+      "res/drawable/notification_bg.xml",
+      "res/drawable/notification_bg_low.xml",
+      "res/drawable/notification_tile_bg.xml",
+      "resources.arsc"
+    ]
+  }
+}

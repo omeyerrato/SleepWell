@@ -1,0 +1,24 @@
+{
+  "source": "0b3cb9ed78fcb36d1a899c8c1dc56d0060387c59",
+  "original_basename": "0.1.8-0b3cb9ed.log",
+  "original_sha256": "a9d682f456c6570a2c85e7cb64881d3ec326163b5ec7dbd104b58812f44e1176",
+  "public_basename": "build-sanitized.txt",
+  "public_sha256": "f3df970aff8c40fe6efd16e68ca00535bd264de99a82a659d481f90c8f2419a2",
+  "replacements": [
+    {
+      "removed": "local workspace prefix",
+      "replacement": "<workspace>",
+      "occurrences": 2
+    }
+  ],
+  "other_bytes_unchanged": true,
+  "status": "SUCCESS",
+  "duration_from_original_log": "11m43s",
+  "tasks": {
+    "total": 45,
+    "executed": 24,
+    "up_to_date": 21
+  },
+  "owner_helper_wall_seconds": 720.688,
+  "auditor_rebuilt_or_timed": false
+}
