@@ -45,14 +45,14 @@ public final class TravelActivity extends Activity {
     private void go(String destination){route=destination;render();}
     private void mainPage(){
         body=Design.page(this,false,null,n->{});LinearLayout header=RecordUi.header(body,"Travel mode",this::back);
-        RecordUi.headerAction(header,"more","Schedules & reminders",()->go("planning"));Design.space(body,8);
+        TextView trip=Design.text(this,"Trip plan",13,600,Design.BROWN);trip.setGravity(Gravity.CENTER);trip.setPadding(Design.dp(this,12),0,Design.dp(this,12),0);trip.setMinimumHeight(Design.dp(this,48));trip.setContentDescription("Schedules & reminders");trip.setBackground(Design.touch(this,Design.SOFT,14));trip.setOnClickListener(view->{InteractionFeedback.action(view);go("planning");});header.addView(trip,new LinearLayout.LayoutParams(-2,Design.dp(this,48)));Design.space(body,8);
         Design.text(body,"Target time zone",15,600,Design.INK);Design.space(body,6);
         zoneCard("clock",draft.destination,"Target time zone",()->zoneRoute("destination"));Design.space(body,6);
         zoneCard("home",draft.home,"Home time zone",()->zoneRoute("home"));Design.space(body,6);Design.line(body);
         mainRow("calendar","Departure date",null,draft.departure.format(DateTimeFormatter.ofPattern("d MMM uuuu",Locale.getDefault())),()->{month=YearMonth.from(draft.departure);go("date");});
         Design.line(body);Design.space(body,10);Design.text(body,"Time difference · now",14,600,Design.INK);Design.space(body,6);
         clockRow();Design.space(body,6);Design.line(body);
-        Switch enabled=Design.toggle(body,"Experimental light cues","Chosen windows · manual arming required",cues.enabled,on->{if(on)openCues();else{cues=cues.change(false,cues.reviewed,cues.first,cues.minute,cues.minutes,cues.nights);render();}});
+        Switch enabled=Design.toggle(body,"Experimental light cues","Choose a schedule; arm the light separately.",cues.enabled,on->{if(on)openCues();else{cues=cues.change(false,cues.reviewed,cues.first,cues.minute,cues.minutes,cues.nights);render();}});
         View cueRow=(View)enabled.getParent();Design.pad(cueRow,0,8);cueRow.setBackgroundColor(Color.TRANSPARENT);enabled.setMinimumHeight(Design.dp(this,48));enabled.setMinimumWidth(Design.dp(this,48));Design.line(body);
         mainRow("flashlight","Light source",null,"Phone flashlight",()->go("light"));Design.line(body);
         Switch tracking=Design.toggle(body,"During sleep tracking","Silent reminder at cue start",draft.trackingReminders,on->{draft.trackingReminders=on;render();});View trackingRow=(View)tracking.getParent();Design.pad(trackingRow,0,8);trackingRow.setBackgroundColor(Color.TRANSPARENT);tracking.setMinimumHeight(Design.dp(this,48));tracking.setMinimumWidth(Design.dp(this,48));Design.line(body);
