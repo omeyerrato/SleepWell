@@ -203,19 +203,29 @@ public class AlarmActivity extends Activity implements SensorEventListener {
         TextView count=Design.text(card,Math.max(0,Math.min(target,earned))+" / "+target+" steps",30,700,Design.INK);
         Design.text(card,"Carry your phone. Walk in a safe, clear space.",13,400,Design.MUTED);if(!resumed)return;
         // A failed unregister retains the old handle. Never allocate a replacement over uncertain cleanup.
-        if(walk!=null){Design.text(card,"Step counting could not stop. Use Math fallback to retry.",14,500,Design.MUTED);walkFallback(card,walk,expectedRun,expected);return;}
+        if(walk!=null){walkCleanup(card,walk,expectedRun,expected);walkFallback(card,walk,expectedRun,expected);return;}
         WalkSession.Port source;try{source=WalkPlatform.factory.create(this);}catch(RuntimeException unavailable){Design.text(card,"Step counting is unavailable. Solve math instead.",14,500,Design.MUTED);math(card,expectedRun,expected);return;}
-        WalkSession[] owner={null};
+        WalkSession[] owner={null};boolean[] cleanupShown={false};
         walk=new WalkSession(source,new WalkSession.Effects(){
-            public boolean current(String run,int unit){return resumed&&run.equals(occurrence)&&unit==completed&&AlarmService.current(AlarmActivity.this,run);}
+            public boolean current(String run,int unit){return resumed&&walk==owner[0]&&run.equals(occurrence)&&unit==completed&&AlarmService.current(AlarmActivity.this,run);}
             public void progress(String run,int unit,int value){if(!current(run,unit))return;Prefs.of(AlarmActivity.this).edit().putString("walkRun",run).putInt("walkUnit",unit).putInt("walkEarned",value).apply();count.setText(value+" / "+target+" steps");}
             public void solved(String run,int unit){advance(run,unit);}
-            public void unavailable(String run,int unit,WalkSession.State state){handler.post(()->{if(walk==owner[0]&&current(run,unit))build();});}
+            public void unavailable(String run,int unit,WalkSession.State state){handler.post(()->{if(walk==owner[0]&&current(run,unit)){if(owner[0].cleanupPending()){if(!cleanupShown[0]){cleanupShown[0]=true;walkCleanup(card,owner[0],run,unit);}}else build();}});}
         },expectedRun,expected,target,earned);
         WalkSession session=walk;owner[0]=session;session.resume();if(walk!=session)return;
+        if(session.cleanupPending()){walkCleanup(card,session,expectedRun,expected);walkFallback(card,session,expectedRun,expected);return;}
         String unavailable=switch(session.state()){case PERMISSION->"Physical activity access is off. Solve math instead.";case UNSUPPORTED->"This phone has no supported step sensor. Solve math instead.";case ERROR->"Step counting could not start. Solve math instead.";default->"";};
         if(!unavailable.isEmpty()){Design.space(card,12);Design.text(card,unavailable,14,500,Design.MUTED);math(card,expectedRun,expected);return;}
         walkFallback(card,session,expectedRun,expected);
+    }
+    private void walkCleanup(LinearLayout card,WalkSession session,String expectedRun,int expected){
+        TextView error=Design.text(card,"Step cleanup could not finish. Earned steps are kept; retry before continuing.",14,500,Design.BROWN);
+        error.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
+        Design.button(card,"Retry step cleanup",true,()->{
+            if(!resumed||walk!=session||!card.isAttachedToWindow()||!hasWindowFocus()||!expectedRun.equals(occurrence)||expected!=completed||!AlarmService.current(this,expectedRun))return;
+            if(!session.stopForFallback()){error.setText("Step cleanup is still pending. Retry before continuing.");return;}
+            walk=null;build();
+        });
     }
     private void walkFallback(LinearLayout card,WalkSession session,String expectedRun,int expected){
         TextView error=Design.text(card,"",13,500,0xffa93919);error.setVisibility(View.GONE);error.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
