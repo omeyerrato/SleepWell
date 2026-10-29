@@ -1,0 +1,96 @@
+{
+  "base": "19e49e74e58ff05812229743df441e8942775db1",
+  "source_commit": "eb76690bd920beef2a89bc7a9504b0d156e89567",
+  "tested_head": "290fd0c8d04180707e8b46d93fa173aabfc79ab8",
+  "production_tree": "dda61ece300444ef80e672b36a0d0c9f4a425f08",
+  "branch": "codex/privacy-reference-20261029",
+  "scope": "privacy-recovery",
+  "method": "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+  "expected_methods": 1,
+  "method_timeout_seconds": 180,
+  "native_sounds": false,
+  "audio_imports": false,
+  "full_app_review": false,
+  "existing_script_required_originals": [
+    "privacy-history-ready.png",
+    "privacy-history-error.png",
+    "privacy-history-busy.png",
+    "privacy-history-pending.png",
+    "privacy-history-done.png"
+  ],
+  "new_top_originals": [
+    "privacy-top-ready.png",
+    "privacy-top-favorites.png",
+    "privacy-top-options.png",
+    "privacy-top-backup-contents.png",
+    "privacy-top-storage-error.png",
+    "privacy-top-storage-retried.png",
+    "privacy-top-empty.png"
+  ],
+  "expected_total_original_pngs": 12,
+  "reference": {
+    "path": "design-concepts/2026-10-22-phone-app/12-privacy-and-appearance.png",
+    "sha256": "243a172cba04cf0275f8dc76eea16440e24f3103b4783c088eed65264fa56e70"
+  },
+  "source_pins": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "git_blob": "4ecb84778eb450f95e1ce1c38af27dc5542b5c95"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PrivacyScreen.java",
+      "git_blob": "0b3f84c6020ac191d4c963c3c3c56b58fb69f7da"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PrivacyStorageSummary.java",
+      "git_blob": "abe8d487ccf84b8bd804d693b8411b4c41d93860"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/HistoryErase.java",
+      "git_blob": "b62bb5631a5c70c9bfa60c0ee2317019991ecbdf"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/HistoryEraseJobs.java",
+      "git_blob": "18aa5724fae2ceb2c59539a0abc9c8731e33fc59"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/HistoryEraseUi.java",
+      "git_blob": "88dfdcb903383b48180366b5d1034b64fa0e265d"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundClips.java",
+      "git_blob": "a72e8ae8cbc231ba326c8fffd55b248adbe39d49"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundLibrarySettingsActivity.java",
+      "git_blob": "8f2aa2e59fce9ceb1b898d8f34ef87b2fefcb230"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupJobs.java",
+      "git_blob": "2ac8afcc013f6b222ddebc7ca8cab311f9cb571c"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupActivity.java",
+      "git_blob": "831492be6cf436ee23993397ff6dc77a46a8dc17"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/PrivacyHistoryFlowTest.java",
+      "git_blob": "a6c4ca3bf7271bba2444d0d45b37ada3a6ffb45f"
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "git_blob": "025fff7250c2ade54e642c3cd2c07534d2a01994"
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "git_blob": "05adbfbae95960fc376784ac77bf16feb8eca96d"
+    }
+  ],
+  "boundaries": [
+    "Only MainActivity.privacy and dedicated new production helpers changed.",
+    "HistoryErase/HistoryEraseJobs/HistoryEraseUi/SoundClips/retention and backup engines unchanged.",
+    "Summary factory reads have separate named ownership; original erase worker failure/gate/count checks remain.",
+    "No audio-only clear-all contract exists here; Delete sleep history stays truthful.",
+    "No local device, provider, capture, playback or alarm action."
+  ]
+}

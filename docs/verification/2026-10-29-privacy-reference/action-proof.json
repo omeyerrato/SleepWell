@@ -1,0 +1,53 @@
+{
+  "run": 40864908326,
+  "tested_head": "290fd0c8d04180707e8b46d93fa173aabfc79ab8",
+  "file": "app/src/androidTest/java/org/sleepwell/app/PrivacyHistoryFlowTest.java",
+  "git_blob": "a6c4ca3bf7271bba2444d0d45b37ada3a6ffb45f",
+  "test_methods": 1,
+  "existing_script_required_images": 5,
+  "actual_named_images": 12,
+  "new_top_images": 7,
+  "method_timeout_seconds": 180,
+  "proofs": [
+    {
+      "claim": "full_core_bounds",
+      "source_line": 68,
+      "source": "for(String label:new String[]{\"Privacy options\",\"Audio retention\",\"Keep favorites\",\"Backup\",\"Export backup\",\"Import backup\",\"Cloud backup\",\"Export audio library\"})complete(actual(root,label),label,true);"
+    },
+    {
+      "claim": "actual_12_byte_result",
+      "source_line": 92,
+      "source": "summary(\"1 record\");assertEquals(\"Real file bytes, excluding the unavailable directory\",android.text.format.Formatter.formatShortFileSize(c,12),object(\"Stored audio size\").getText());top(\"ready\");"
+    },
+    {
+      "claim": "favorite_persistence",
+      "source_line": 93,
+      "source": "boolean favorite=Prefs.of(c).getBoolean(\"keepAudioFavorites\",true);object(\"Keep favorites\").click();assertEquals(!favorite,Prefs.of(c).getBoolean(\"keepAudioFavorites\",true));recreate();summary(\"1 record\");assertEquals(\"Actual favorite switch survives recreation\",!favorite,object(\"Keep favorites\").isChecked());top(\"favorites\");"
+    },
+    {
+      "claim": "summary_storage_failure",
+      "source_line": 96,
+      "source": "summaryFailure.set(true);recreate();summary(\"Unavailable\");top(\"storage-error\");assertTrue(object(\"Retry storage summary\").isEnabled());summaryFailure.set(false);object(\"Retry storage summary\").click();summary(\"1 record\");top(\"storage-retried\");"
+    },
+    {
+      "claim": "empty_real_summary",
+      "source_line": 107,
+      "source": "object(\"Retry audio cleanup\");capture(\"pending\");assertTrue(\"Retry describes queued audio only\",device.hasObject(By.text(\"Only removes audio already queued for cleanup.\")));assertFalse(wav.exists());assertTrue(child.isFile());summary(\"0 records\");assertEquals(android.text.format.Formatter.formatShortFileSize(c,0),object(\"Stored audio size\").getText());top(\"empty\");try(Store store=new Store(c,name)){assertTrue(store.rows(\"SELECT id FROM sessions\").isEmpty());assertTrue(store.rows(\"SELECT id FROM clips\").isEmpty());assertEquals(1,store.rows(\"SELECT clip FROM pending_clip_deletes\").size());assertEquals(\"Fixture alarm stays\",store.alarm(730).label);long fresh=store.begin();store.end(fresh,false);}"
+    },
+    {
+      "claim": "cancelled_confirmation",
+      "source_line": 97,
+      "source": "tapCleanup(\"Delete sleep history\");View cancelledDelete=retainConfirmation();keep();i.runOnMainSync(cancelledDelete::performClick);i.waitForIdleSync();await(fixture);assertEquals(\"Dismissed confirmation cannot submit deletion\",HistoryEraseJobs.Kind.INSPECT,HistoryErase.jobs.get(fixture).kind);try(Store store=new Store(c,name)){assertEquals(1,store.rows(\"SELECT id FROM sessions\").size());}assertTrue(wav.exists());capture(\"ready\");"
+    },
+    {
+      "claim": "retained_worker",
+      "source_line": 101,
+      "source": "tapCleanup(\"Delete sleep history\");CountDownLatch hold=new CountDownLatch(1);gate.set(hold);int before=workerOpens.get();positive(\"Delete history\");assertFalse(object(\"Delete sleep history\").isEnabled());recreate();assertFalse(object(\"Delete sleep history\").isEnabled());capture(\"busy\");assertEquals(before+1,workerOpens.get());"
+    },
+    {
+      "claim": "original_data_and_preferences",
+      "source_line": 128,
+      "source": "assertEquals(prefs,Prefs.of(c).getAll());try(Store store=new Store(c)){assertEquals(original,store.backup().toString());}assertEquals(originalFiles,files(c.getFilesDir()));assertFalse(AlarmService.active);assertFalse(TrackingService.running);"
+    }
+  ]
+}

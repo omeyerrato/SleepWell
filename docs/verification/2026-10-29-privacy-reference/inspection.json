@@ -1,0 +1,132 @@
+{
+  "run": 40864908326,
+  "tested_head": "290fd0c8d04180707e8b46d93fa173aabfc79ab8",
+  "source_commit": "eb76690bd920beef2a89bc7a9504b0d156e89567",
+  "native_seconds": 75.212,
+  "existing_script_required_originals": 5,
+  "actual_named_original_pngs": 12,
+  "new_top_originals": 7,
+  "raw_artifact_files": 22,
+  "reference": {
+    "path": "design-concepts/2026-10-22-phone-app/12-privacy-and-appearance.png",
+    "sha256": "243a172cba04cf0275f8dc76eea16440e24f3103b4783c088eed65264fa56e70"
+  },
+  "images": [
+    {
+      "file": "originals/privacy-top-ready.png",
+      "sha256": "be65f404e814b1a008aabe86441eaf80dcdb9d1b4f6af733643013505547c598",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Board12 middle ordering is retained: cream/Inter title, local summary, retention, favorites, paired JSON actions, cloud, audio export and truthful history deletion all fit. Real private SQLite/file result is 1 record and 12 B, with one unavailable recording disclosed.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/privacy-top-favorites.png",
+      "sha256": "113726c47161674267b9a7eedf8e4ff948230c3a1b2056dab39a4a557e4b2eb8",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "The actual Keep favorites switch remains off after recreation; count/audio summary, 7-day retention and all core actions remain complete without overlap.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/privacy-top-storage-error.png",
+      "sha256": "0b01c7361aff6e4fe03f3be6dafa7b0964127d85d359e6320d73fe228082ee51",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "A real summary-factory storage exception renders Unavailable for both totals with a visible Retry icon and honest error sentence; retention, backup pair, cloud/audio and delete rows remain legible.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/privacy-top-storage-retried.png",
+      "sha256": "855eecce5aa1d63c0d175ca89943403891bab0574759adb92a6475344b2a9ebb",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Explicit Retry restores the measured 1-record/12-B totals and unavailable-recording notice; no false zero or hidden error remains.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/privacy-top-options.png",
+      "sha256": "fd9e8a7d431172547f019a4e443a73dd3951fe0cabb012567b690b512a20ddb6",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Actual Privacy options dialog contains Backup contents, CSV, audio restore, research export and connected access plus full Cancel; all five secondary routes fit on cream.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/privacy-top-backup-contents.png",
+      "sha256": "30eb2ff13a771318713321673e22e01986b3bf64a9eac9c8796d51c85e4ad15e",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Actual backup-contents dialog shows JSON/ZIP contents, exclusions and reviewed-restore disclosure with a full Got it action; dark platform glyphs remain readable.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/privacy-top-empty.png",
+      "sha256": "c545741e6e00c4f33479dde330e7d6a24c725b2dadf4249e2e18b7280935dad3",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Actual empty private database displays 0 records and 0 B. The separate queued audio journal remains honestly visible as Retry audio cleanup with its pending-file explanation.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/privacy-history-ready.png",
+      "sha256": "d9acaaa840acb7d153c259bef9cfef862785454ab753c8caeee6bdc91ccc161f",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "The original ready capture now shows the compact full composition as well as the red Delete sleep history action; measured totals and missing-recording notice fit.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/privacy-history-error.png",
+      "sha256": "761abafd48931e63c20c65e9da81dd8a02b95d7070eff04422b0d1d704d0fd81",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Retained destructive-worker storage failure is shown below the truthful Delete sleep history row; actual record/audio totals remain present and the error is not relabelled success.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/privacy-history-busy.png",
+      "sha256": "0500175c43e7d347378e3d4c4f1317db8eaf4c3f18441ec99b7b949b1b3f77d2",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "The original retained erase operation is visibly busy; Delete sleep history is dimmed/disabled and Deleting history is readable with the rest of the composition.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/privacy-history-pending.png",
+      "sha256": "c545741e6e00c4f33479dde330e7d6a24c725b2dadf4249e2e18b7280935dad3",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "Database-first erase yields 0 records/0 B while one file remains queued. Retry audio cleanup explicitly removes only queued audio and its full status is readable.",
+      "app_content_clipping_or_overlap_observed": false
+    },
+    {
+      "file": "originals/privacy-history-done.png",
+      "sha256": "757b93c23c429faf5c590b1af864b29aaeab9563121b20d630946b248314a30a",
+      "width": 1080,
+      "height": 2316,
+      "individually_opened": true,
+      "observation": "After retry, the newly added private record remains as 1 record with 0 B; cleanup-finished/alarms-remain copy, core actions and dark system glyphs fit.",
+      "app_content_clipping_or_overlap_observed": false
+    }
+  ],
+  "acceptance": "Bounded Privacy top/empty/error/options and retained cleanup presentation/private-fixture pass.",
+  "limits": [
+    "Reference Delete recordings is audio-only. Existing Delete sleep history remains whole-history and truthfully labelled; no confirmed clear-all-audio contract was added.",
+    "Reference last-export timestamp is not invented. The Backup row reflects actual process-session job state, and Cloud backup reflects remembered destination metadata.",
+    "Existing raster glyph choices and native button-icon spacing differ from the reference; no full raster match.",
+    "No provider/document/audio export/import, hardware cleanup, physical device, large-font, other-theme or complete 36-screen acceptance.",
+    "Retention days display and route are preserved; this run exercises favorites persistence, not a new retention application or provider write."
+  ]
+}

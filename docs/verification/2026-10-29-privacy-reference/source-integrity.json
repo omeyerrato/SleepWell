@@ -1,0 +1,89 @@
+{
+  "base": "19e49e74e58ff05812229743df441e8942775db1",
+  "tested_head": "290fd0c8d04180707e8b46d93fa173aabfc79ab8",
+  "main_activity_outside_privacy_method_unchanged": true,
+  "workflow_and_script_unchanged": true,
+  "operation_owners_and_shared_ui": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/HistoryErase.java",
+      "git_blob": "b62bb5631a5c70c9bfa60c0ee2317019991ecbdf",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/HistoryEraseJobs.java",
+      "git_blob": "18aa5724fae2ceb2c59539a0abc9c8731e33fc59",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/HistoryEraseUi.java",
+      "git_blob": "88dfdcb903383b48180366b5d1034b64fa0e265d",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/HistoryEraseConfirm.java",
+      "git_blob": "0279a79682d6b2126354764d2e6a717e0c53e664",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundClips.java",
+      "git_blob": "a72e8ae8cbc231ba326c8fffd55b248adbe39d49",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundRetentionJob.java",
+      "git_blob": "caae16a57c2bbe55ca88ca39ccf299630c6e7fa6",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundLibrarySettingsActivity.java",
+      "git_blob": "8f2aa2e59fce9ceb1b898d8f34ef87b2fefcb230",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupJobs.java",
+      "git_blob": "2ac8afcc013f6b222ddebc7ca8cab311f9cb571c",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupJob.java",
+      "git_blob": "a82414bdb3697a8fda67569264725477dd8d32ec",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupActivity.java",
+      "git_blob": "831492be6cf436ee23993397ff6dc77a46a8dc17",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/BackupDocuments.java",
+      "git_blob": "7088129f5bcb768af491a3221b59a394f2f25e44",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/CloudBackupActivity.java",
+      "git_blob": "ec0a47054d87600ed1900579662fef15251ac605",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/LibraryAudioExportActivity.java",
+      "git_blob": "3a49412d5204abce964b75b6ea47d29ff7ad789e",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/LibraryAudioImportActivity.java",
+      "git_blob": "4f35062a640f1c9ecda60ddd233bccfd82d49cb1",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Design.java",
+      "git_blob": "a18de9add587b1be50a9515443ba734817fee912",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Icons.java",
+      "git_blob": "ced6dad9232925260a043630c05142955ac2bf94",
+      "unchanged_from_base": true
+    }
+  ],
+  "source_compile": "Production Java passed in 2m56s, 15 tasks; native Java passed in 2m44s, 25 tasks. The final focus-listener addition is included in the successful CI application and AndroidTest APK builds."
+}
