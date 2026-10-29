@@ -99,10 +99,12 @@ final class RandomChallenges {
         try{return new Prepared(concrete,new JSONObject().put("version",1).put("run",run).put("source",canonical(source)).put("selected",canonical(concrete)).put("notice",selection.notice).toString());}catch(JSONException impossible){throw new IllegalStateException(impossible);}
     }
     static final class Selection {final ChallengeRoutine routine;final String notice;Selection(ChallengeRoutine routine,String notice){this.routine=routine;this.notice=notice;}}
-    static Selection select(Context context,ChallengeRoutine configured){
+    static Selection select(Context context,ChallengeRoutine configured){return select(configured,task->unavailable(context,task));}
+    /** Same sampling/fallback policy, with a read-only per-preview readiness composition. */
+    static Selection select(ChallengeRoutine configured,java.util.function.Function<ChallengeRoutine.Task,String> readiness){
         if(configured.randomCount<1)throw new IllegalArgumentException("Choose a random pool first");
         List<ChallengeRoutine.Task> eligible=new ArrayList<>();List<String> excluded=new ArrayList<>();
-        for(ChallengeRoutine.Task task:configured.tasks){String reason=unavailable(context,task);if(reason.isEmpty())eligible.add(task);else excluded.add(task.type+": "+reason);}
+        for(ChallengeRoutine.Task task:configured.tasks){String reason=readiness.apply(task);if(reason.isEmpty())eligible.add(task);else excluded.add(task.type+": "+reason);}
         List<ChallengeRoutine.Task> selected=new ArrayList<>();String notice;
         try{SecureRandom random=new SecureRandom();while(!eligible.isEmpty()&&selected.size()<configured.randomCount)selected.add(eligible.remove(random.nextInt(eligible.size())));}
         catch(RuntimeException unavailable){selected.clear();excluded.add("Random selection unavailable");}
