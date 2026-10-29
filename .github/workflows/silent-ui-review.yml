@@ -45,6 +45,7 @@ on:
           - contactless-status
           - room-bedtime-live
           - room-bedtime-repair
+          - motion-reference
           - bedtime-navigation
           - label-navigation
           - live-night-timeline
