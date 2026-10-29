@@ -25,6 +25,8 @@ final class RoomAudio implements RoomSoundLevel.Capture {
         check();lease=MicrophoneLease.acquire("room-level");if(lease==null)throw new IllegalStateException("Microphone occupied");check();
         int minimum=AudioRecord.getMinBufferSize(16000,AudioFormat.CHANNEL_IN_MONO,AudioFormat.ENCODING_PCM_16BIT);
         if(minimum<=0||minimum>64000)throw new IllegalStateException("Microphone format unavailable");
+        // Recheck at allocation as access may change after the admission/lease checks.
+        if(app.checkSelfPermission(Manifest.permission.RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)throw new SecurityException("Microphone admission lost");
         input=new AudioRecord.Builder().setAudioSource(MediaRecorder.AudioSource.VOICE_RECOGNITION).setAudioFormat(new AudioFormat.Builder().setSampleRate(16000).setChannelMask(AudioFormat.CHANNEL_IN_MONO).setEncoding(AudioFormat.ENCODING_PCM_16BIT).build()).setBufferSizeInBytes(Math.max(4096,minimum)).setPrivacySensitive(true).build();
         if(input.getState()!=AudioRecord.STATE_INITIALIZED||input.getSampleRate()!=16000)throw new IllegalStateException("Microphone unavailable");
     }

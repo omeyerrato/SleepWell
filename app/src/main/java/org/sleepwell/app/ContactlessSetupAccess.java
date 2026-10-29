@@ -18,7 +18,7 @@ interface ContactlessSetupAccess {
     default Watch watch(Context context,Handler main,Runnable changed){
         AudioManager audio=context.getSystemService(AudioManager.class);if(audio==null)throw new IllegalStateException("Audio devices unavailable");
         // The first added callback contains the already-present devices. It is not a route change.
-        Set<Integer> initial=new HashSet<>();for(AudioDeviceInfo device:audio.getDevices(AudioManager.GET_DEVICES_ALL))initial.add(device.getId());
+        Set<Integer> initial=new HashSet<>();for(AudioDeviceInfo device:audio.getDevices(AudioManager.GET_DEVICES_INPUTS|AudioManager.GET_DEVICES_OUTPUTS))initial.add(device.getId());
         boolean[] first={true},closed={false};
         AudioDeviceCallback callback=new AudioDeviceCallback(){
             @Override public void onAudioDevicesAdded(AudioDeviceInfo[] devices){boolean baseline=first[0];first[0]=false;for(AudioDeviceInfo device:devices)if(!initial.contains(device.getId()))baseline=false;if(!closed[0]&&!baseline)changed.run();}

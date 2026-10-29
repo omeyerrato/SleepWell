@@ -26,7 +26,7 @@ interface PhraseRecognizer {
         public boolean supported(){return Build.VERSION.SDK_INT>=31;}
         public boolean allowed(){return app.checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED&&!TrackingService.running;}
         public String unavailable(boolean preview){
-            if(!supported())return "On-device phrase recognition requires Android 12 or newer. Use Math instead.";
+            if(Build.VERSION.SDK_INT<31)return "On-device phrase recognition requires Android 12 or newer. Use Math instead.";
             try{if(!SpeechRecognizer.isOnDeviceRecognitionAvailable(app))return "No on-device recognizer is installed. Use Math instead.";
                 if(preview&&(AlarmService.active||Prefs.flag(app,"ringing")))return "Close the active alarm before using this preview.";
                 if(TrackingService.running||MicrophoneLease.occupied())return "Finish the existing microphone capture before listening.";
@@ -40,6 +40,7 @@ interface PhraseRecognizer {
         public void beforeListen(){beforeCapture();AudioManager audio=app.getSystemService(AudioManager.class);if(!AlarmAudioSink.captureQuiet()||audio==null||!audio.getActivePlaybackConfigurations().isEmpty())throw new IllegalStateException();}
         public boolean recordingIdle(){try{AudioManager audio=app.getSystemService(AudioManager.class);return audio!=null&&audio.getActiveRecordingConfigurations().isEmpty();}catch(RuntimeException unknown){return false;}}
         public PhraseRecognizer create(RecognitionListener listener){
+            if(Build.VERSION.SDK_INT<31)throw new IllegalStateException("On-device phrase recognition requires Android 12 or newer.");
             SpeechRecognizer recognizer=SpeechRecognizer.createOnDeviceSpeechRecognizer(app);recognizer.setRecognitionListener(listener);
             return new PhraseRecognizer(){
                 public void english(Consumer<Boolean> installed,IntConsumer failure){if(Build.VERSION.SDK_INT<33){installed.accept(true);return;}recognizer.checkRecognitionSupport(PhraseRecognition.request(),app.getMainExecutor(),new RecognitionSupportCallback(){
