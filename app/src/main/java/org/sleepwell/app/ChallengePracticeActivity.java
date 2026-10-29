@@ -58,7 +58,7 @@ public final class ChallengePracticeActivity extends Activity {
         ChallengeRoutine.Position position=session.position();
         String caption="Task "+(position.index+1)+" of "+session.routine.tasks.size()+(position.task.units()>1?" · Round "+(position.round+1)+" of "+position.task.units():"");
         String clock=Design.clock(this,java.time.LocalTime.now().getHour()*60+java.time.LocalTime.now().getMinute());
-        LinearLayout card=WakeChallengeUi.card(this,clock,"Routine preview",caption,position.index,session.routine.tasks.size(),action(this::cancel));
+        LinearLayout card=WakeChallengeUi.card(this,clock,"Routine preview",caption,position.index,session.routine.tasks.size(),action(this::cancel),true);
         Design.text(card,"Practice only · no alarm is running from this preview.",12,400,Design.MUTED);
         if(!session.selectionNotice.isEmpty())Design.button(card,"Example selection details",false,action(()->SleepPicker.message(this,"This preview selection",session.selectionNotice)));
         try{screen=new ChallengePracticeScreen(this,card,session,checkpoints,()->resumed,this::render);}
@@ -66,7 +66,8 @@ public final class ChallengePracticeActivity extends Activity {
             session.invalidate();closeScreen(false);Design.text(card,"This practice task could not open. "+(unavailable.getMessage()==null?"Retry or return to your routine.":unavailable.getMessage()),14,400,Design.MUTED);
             Design.button(card,"Retry this task",true,action(this::render));
         }
-        Design.space(card,16);Design.button(card,"Cancel preview",false,action(this::cancel));
+        LinearLayout footer=RecordUi.footer((LinearLayout)card.getParent());footer.setBackgroundColor(Design.CREAM);
+        Design.button(footer,"Cancel preview",false,action(this::cancel));
     }
 
     private Runnable action(Runnable work){int expected=presentationGeneration;return ()->{if(Looper.myLooper()!=Looper.getMainLooper()||expected!=presentationGeneration||!resumed||returning||isFinishing()||isDestroyed()||!hasWindowFocus()||!getWindow().getDecorView().isAttachedToWindow())return;work.run();};}
