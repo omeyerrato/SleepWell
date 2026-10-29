@@ -87,6 +87,7 @@ final class PracticeChildTicket {
         // A success needs a current visible native child. Cancel may be delivered during teardown.
         if(outcome!=Activity.RESULT_CANCELED&&!ticket.captureOwner(child,resumed))return null;
         if(outcome==SUCCESS&&(attempt<1||ticket.cleanedAttempt!=attempt))return null;
+        if(outcome==SUCCESS&&switch(ticket.task.type){case "QR code","Picture match","Smile","Pose","Object recognition","Camera light"->ticket.earnedAttempt!=attempt;default->false;})return null;
         ticket.published=true;ticket.capturing=false;ticket.outcome=outcome;
         return new Intent().putExtra("practiceNonce",ticket.nonce).putExtra("practiceRun",ticket.run)
                 .putExtra("practiceUnit",ticket.unit).putExtra("practiceTask",ticket.configuration);
