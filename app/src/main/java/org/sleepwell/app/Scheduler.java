@@ -56,10 +56,14 @@ public final class Scheduler {
         long next=plan.nextReminder(System.currentTimeMillis(),ZoneId.systemDefault());
         c.getSystemService(AlarmManager.class).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,next,intent(c,0,BED));Prefs.put(c,"bedReminderAt",next);
     }
-    static void test(Context c,Alarm source) {
+    static long test(Context c,Alarm source) {synchronized(Scheduler.class){
+        if(AlarmService.active||Prefs.flag(c,"ringing")||TrackingService.running||Prefs.flag(c,"tracking"))throw new IllegalStateException("Finish the current alarm or sleep recording before testing.");
+        WakeCheckState check=WakeChecks.open(c).read();if(check!=null&&check.active())throw new IllegalStateException("Finish the active wake-up check before testing.");
+        if(!allowed(c))throw new SecurityException("Allow exact alarms in Alarm readiness first.");
         Alarm a=Alarm.read(source.json()); a.id=-1; a.volume=Math.min(25,a.volume); a.rampSeconds=0; a.awakeCheck=0; a.pin=false;a.backupMinutes=0;a.vibrate=false;a.extraLoud=false;a.sunrise=false;a.flashlight=false;a.soundDelaySeconds=0;a.inputs=AlarmInputs.DEFAULT;a.inputsInvalid=false;a.soundMode=AlarmSoundMode.SINGLE;a.soundModeInvalid=false;a.timing=AlarmTiming.DEFAULT;a.timingInvalid=false;
-        Prefs.put(c,"snoozes_-1",0);Prefs.put(c,"test_alarm",a.json().toString()); at(c,-1,TEST,System.currentTimeMillis()+10000);
-    }
+        if(!Prefs.of(c).edit().putInt("snoozes_-1",0).putString("test_alarm",a.json().toString()).commit())throw new IllegalStateException("Quiet alarm settings could not be saved. Try again.");
+        long deadline=System.currentTimeMillis()+10000;at(c,-1,TEST,deadline);return deadline;
+    }}
     static void fire(Context c,Alarm a,boolean mainAlarm) {fire(c,a,mainAlarm,false);}
     static void fire(Context c,Alarm a,boolean mainAlarm,boolean snoozeContinuation) {
         BackupRuntime.admitted();

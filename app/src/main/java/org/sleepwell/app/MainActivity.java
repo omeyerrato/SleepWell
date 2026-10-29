@@ -245,6 +245,7 @@ public class MainActivity extends Activity {
         hero(body,"Alarm readiness","Check your device settings for reliable alarms.");Design.space(body,18);
         AlarmReadinessUi.rows(this,body,NOTIFY,this::render);
         Design.space(body,18);Design.button(body,"Open battery settings",true,()->{if(body.isAttachedToWindow())AlarmReadinessUi.battery(this);});
+        Design.space(body,10);ReadinessQuietAlarm.entry(this,body);
         Design.space(body,12);Design.item(body,"info","Alarm reliability tips",null,()->SleepPicker.message(this,"Alarm reliability","On Samsung, add SleepWell to Never auto sleeping apps. Allow unrestricted battery use and keep alarm permissions enabled. Force stopping or powering off the phone prevents alarms."));
         String error=Prefs.text(this,"lastError","");if(!error.isEmpty()){Design.space(body,18);Design.text(body,"Last alarm error",16,600,Design.INK);Design.space(body,6);Design.text(body,error,13,400,Design.MUTED);Design.button(body,"Clear diagnostic",false,()->{Prefs.put(this,"lastError","");render();});}
     }
