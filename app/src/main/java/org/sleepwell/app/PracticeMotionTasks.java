@@ -42,8 +42,9 @@ final class PracticeMotionTasks implements AutoCloseable {
     private void walk(LinearLayout card){
         Design.text(card,"Walk "+ticket.task.targetSteps+" steps",23,600,Design.INK);
         Design.text(card,"Only the phone's real step detector or counter is used. Start when you can walk safely.",14,400,Design.MUTED);
+        int earned=Math.max(0,Math.min(ticket.task.targetSteps,prefs.getInt("walkEarned",0)));
         WalkPermission.Status accessStatus=access.walkAccess();
-        TextView status=Design.text(card,accessStatus==WalkPermission.Status.READY?"Step sensor stays off until Start":accessStatus==WalkPermission.Status.UNSUPPORTED?"A real step detector or counter is unavailable. Use Math instead.":"Step access is required. Allow access when ready; checks remain off.",14,500,Design.BROWN);
+        TextView status=Design.text(card,accessStatus==WalkPermission.Status.READY?earned+" / "+ticket.task.targetSteps+" steps · sensor off until Start":accessStatus==WalkPermission.Status.UNSUPPORTED?"A real step detector or counter is unavailable. Use Math instead.":"Step access is required. Allow access when ready; checks remain off.",14,500,Design.BROWN);
         WalkSession.Port delegate=access.walk();
         WalkSession.Port guarded=new WalkSession.Port(){
             public WalkSteps.Mode mode(){return delegate.mode();}public boolean allowed(){return delegate.allowed();}public long now(){return delegate.now();}
@@ -51,7 +52,6 @@ final class PracticeMotionTasks implements AutoCloseable {
             private int beginLease(){return PracticeMotionTasks.this.begin();}
             public void close(){delegate.close();released=true;}
         };
-        int earned=Math.max(0,Math.min(ticket.task.targetSteps,prefs.getInt("walkEarned",0)));
         walk=new WalkSession(guarded,new WalkSession.Effects(){
             public boolean current(String run,int unit){return PracticeMotionTasks.this.current();}
             public void progress(String run,int unit,int value){if(!prefs.edit().putInt("walkEarned",value).commit())throw new IllegalStateException("Practice steps could not be retained");status.setText(value+" / "+ticket.task.targetSteps+" steps");}
