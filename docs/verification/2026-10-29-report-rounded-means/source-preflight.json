@@ -1,0 +1,139 @@
+{
+  "before_rounding": "6cd00676356534b58388d7664fa584fa52a38ecc",
+  "production_commit": "bae73ec43e22fc3b895f534429b70a415bbf17ac",
+  "native_scope_commit": "bdd09c4170f97becae77a8c7681bae23a071c70a",
+  "app_main_tree": "c3db8080e71bbe937abfef333fffdb2dda053efe",
+  "production_tree_same_at_bae_and_bdd": true,
+  "changed_production_paths_only": [
+    "app/src/main/java/org/sleepwell/app/RecordUi.java",
+    "app/src/main/java/org/sleepwell/app/HistoryActivity.java",
+    "app/src/main/java/org/sleepwell/app/TrendsChart.java"
+  ],
+  "pinned_files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+      "sha256": "261b0ec147a70dee273d61f06a3763d958ec3ed49ebe58679f430ce20a0994c6"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/HistoryActivity.java",
+      "sha256": "3097003525c5fdcf369ebb07d753a916ab614d5ea7d987dfcb908e5be0cf0679"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrendsChart.java",
+      "sha256": "7441cfa6f5ddbce02607f656ba1dc20bbdb713e368719726f852ab1eb2030ae2"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/ReportReferenceFlowTest.java",
+      "sha256": "74397534b80eb85d5a284bd1ebb4042dff4f2654d98082699d3d508ab6856980"
+    },
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "sha256": "c2358180866104ee6169a69d30a48966d9296369e203bd145360d1138a826015"
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "sha256": "9685bd049f19444565c52bba632a0a4a4bfac41eec1951e8ee56aae5bc4aa4c6"
+    }
+  ],
+  "unchanged_core_paths": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordTrends.java",
+      "sha256": "8f13700d510b09458b5f5a5f1ea43cba1c97a87d6602c03294b7ebbd68083309",
+      "equal_before_rounding_and_at_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordEntry.java",
+      "sha256": "de5e56e5a0868858efbd95f0bdabca5ceb5809a290c11cafac3cd2b18805b5ba",
+      "equal_before_rounding_and_at_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordDraft.java",
+      "sha256": "77960473513b27a996b01798d4aa7aad47c32c027b0a3e336549ffa18f9fbb52",
+      "equal_before_rounding_and_at_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Records.java",
+      "sha256": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3",
+      "equal_before_rounding_and_at_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29",
+      "equal_before_rounding_and_at_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/PeriodTimeline.java",
+      "sha256": "0add33f3815159af9c30c76adabff73d61cd240b980a90a68280c63a9572a23c",
+      "equal_before_rounding_and_at_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordEditorActivity.java",
+      "sha256": "391fd6b89648ae0f03f17533fe89209f83984d5f3f7d796abda73edf9a590f72",
+      "equal_before_rounding_and_at_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordChart.java",
+      "sha256": "18d48952c78abcc1156a319c8b6c1d19be618131007ac1de6f7af95bb82e1783",
+      "equal_before_rounding_and_at_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordReportActivity.java",
+      "sha256": "446d39ffbf7f24791873e1099e6bf4b7578977caf716e54dc38c3a4166f1d7f0",
+      "equal_before_rounding_and_at_native_head": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordIntervals.java",
+      "sha256": "475bd0de471fc09593c90bda3d79462d0fdc84fec1b1741e0325cb8b3b8c68f2",
+      "equal_before_rounding_and_at_native_head": true
+    }
+  ],
+  "unchanged_fragments": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordUi.java",
+      "fragment": "original duration(long ms) formatter",
+      "sha256": "6fcc612fca0c7017d1e6732ec1d5aea6e115862c369e69ae8746078d2fea0624"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrendsChart.java",
+      "fragment": "point construction, ranges and axis setup before accessibility summary",
+      "sha256": "da727398687eeb2d93255474886d56450f4b4cf60980c53f6a33428bfdfa7275"
+    }
+  ],
+  "fixture_minutes": [
+    462,
+    455,
+    485,
+    430,
+    475,
+    450,
+    483
+  ],
+  "fixture_total_minutes": 3240,
+  "mean_minutes": 462.85714285714283,
+  "displayed_mean": "7 h 43 min",
+  "selected_month_accessibility_content_description": "2026-10-01: 7 h 43 min",
+  "physical_spoken_audio_verified": false,
+  "raw_fingerprint_tables": [
+    "sessions",
+    "epochs",
+    "tracking_pauses",
+    "sound_events",
+    "clips"
+  ],
+  "root_reported_compile": {
+    "duration": "7m20s",
+    "tasks": 25,
+    "executed": 5,
+    "uptodate": 20,
+    "local_build_by_archive_author": false
+  },
+  "native_result": {
+    "run": 40802190314,
+    "passed": true,
+    "seconds": 64.885,
+    "existing_methods": 1,
+    "originals": 18,
+    "full_app_review": false
+  },
+  "all_app_equality_claimed": false
+}
