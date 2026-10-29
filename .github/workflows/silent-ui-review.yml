@@ -46,6 +46,7 @@ on:
           - room-bedtime-live
           - room-bedtime-repair
           - motion-reference
+          - manual-export-receipt
           - bedtime-navigation
           - label-navigation
           - live-night-timeline
