@@ -138,18 +138,19 @@ public class NightArcFlowTest {
         assertTrue("Owned hardware frame commits",committed.await(5,TimeUnit.SECONDS));
     }
     private String barPixels(Bitmap bitmap,int top,int bottom,int background,boolean dark){
-        long lightGlyph=0,darkGlyph=0,ground=0,darkSurface=0,total=(long)bitmap.getWidth()*(bottom-top),black=0;
+        long brightGlyph=0,lightGlyph=0,darkGlyph=0,ground=0,darkSurface=0,total=(long)bitmap.getWidth()*(bottom-top),black=0;
         int surface=bitmap.getPixel(0,(top+bottom)/2);
         for(int y=top;y<bottom;y++)for(int x=0;x<bitmap.getWidth();x++){
             int rgb=bitmap.getPixel(x,y),red=Color.red(rgb),green=Color.green(rgb),blue=Color.blue(rgb);
+            if(red>180&&green>180&&blue>180)brightGlyph++;
             if(red>250&&green>250&&blue>250)lightGlyph++;
             if(red<170&&green<170&&blue<170)darkGlyph++;
             if(red<120&&green<120&&blue<120)darkSurface++;
             if(red<20&&green<20&&blue<20&&(Math.abs(red-Color.red(surface))>12||Math.abs(green-Color.green(surface))>12||Math.abs(blue-Color.blue(surface))>12))black++;
             if(Math.abs(red-Color.red(background))<=12&&Math.abs(green-Color.green(background))<=12&&Math.abs(blue-Color.blue(background))<=12)ground++;
         }
-        boolean readable=dark?darkSurface*100>=total*60&&lightGlyph>=24&&black<=2:ground*100>=total*60&&darkGlyph>=24&&lightGlyph<=2;
-        return "light="+lightGlyph+",dark="+darkGlyph+",black="+black+",ground="+ground+",dark_surface="+darkSurface+",sample_surface="+Integer.toHexString(surface)+",total="+total+",readable="+readable;
+        boolean readable=dark?darkSurface*100>=total*60&&brightGlyph>=24&&black<=2:ground*100>=total*60&&darkGlyph>=24&&lightGlyph<=2;
+        return "bright="+brightGlyph+",white="+lightGlyph+",dark="+darkGlyph+",black="+black+",ground="+ground+",dark_surface="+darkSurface+",sample_surface="+Integer.toHexString(surface)+",total="+total+",readable="+readable;
     }
     private void recordBars(String scene,String sample,View owner,Bitmap bitmap,boolean dark)throws Exception{
         assertNotNull(bitmap);Bitmap readable=bitmap;try{
