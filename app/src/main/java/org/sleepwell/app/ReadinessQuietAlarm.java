@@ -18,7 +18,7 @@ final class ReadinessQuietAlarm {
     static void entry(Activity activity,LinearLayout body){
         Button button=Design.button(body,"Test a quiet alarm",false,()->{if(live(activity)&&body.isAttachedToWindow()&&activity.hasWindowFocus())review(activity,body);});
         button.setText(RecordUi.withIcon(activity,"Test a quiet alarm","play",Design.BROWN));
-        try{long last=Prefs.of(activity).getLong(REQUESTED,0);if(last>0){Design.space(body,4);Design.text(body,"Last requested for "+clock(activity,last)+". Delivery has not been checked here.",12,400,Design.MUTED);}}
+        try{long last=Prefs.of(activity).getLong(REQUESTED,0);if(last>0){Design.space(body,4);Design.text(body,"Last requested for "+clock(activity,last)+".",12,400,Design.MUTED);}}
         catch(RuntimeException unavailable){Design.text(body,"The last test request could not be read.",12,400,Design.MUTED);}
     }
 
@@ -45,7 +45,7 @@ final class ReadinessQuietAlarm {
                 status.setText("Scheduled for "+clock(activity,deadline)+". Check that it rings and the Math screen opens."+(noted?"":" The local request note could not be saved."));status.setVisibility(View.VISIBLE);
             }}catch(RuntimeException failure){status.setText(scheduled[0]?"The quiet test was requested, but its status could not be shown.":"The test request could not be confirmed. "+(failure.getMessage()==null?"Check alarm access before trying again.":failure.getMessage()));status.setVisibility(View.VISIBLE);}
         });
-        confirm[0].setEnabled(blocked.isEmpty());confirm[0].setAlpha(blocked.isEmpty()?1:.45f);close[0]=Design.button(body,"Cancel",false,dialog::dismiss);
+        confirm[0].setEnabled(blocked.isEmpty());confirm[0].setAlpha(blocked.isEmpty()?1:.45f);close[0]=Design.button(body,blocked.isEmpty()?"Cancel":"Back to readiness",false,dialog::dismiss);
         ScrollView scroll=new ScrollView(activity);scroll.setVerticalScrollBarEnabled(false);scroll.addView(body);dialog.setContentView(scroll);
         View.OnAttachStateChangeListener lifetime=new View.OnAttachStateChangeListener(){public void onViewAttachedToWindow(View view){}public void onViewDetachedFromWindow(View view){dialog.dismiss();}};
         owner.addOnAttachStateChangeListener(lifetime);dialog.setOnDismissListener(ignored->owner.removeOnAttachStateChangeListener(lifetime));SleepPicker.show(activity,dialog,600);
@@ -57,10 +57,10 @@ final class ReadinessQuietAlarm {
             if(TrackingService.running||Prefs.flag(context,"tracking"))return "Finish sleep tracking before starting this test.";
             WakeCheckState check=WakeChecks.open(context).read();if(check!=null&&check.active())return "Finish the active wake-up check before testing.";
             long requested=Prefs.of(context).getLong(REQUESTED,0);if(requested>System.currentTimeMillis())return "A quiet test was already requested for "+clock(context,requested)+". Wait for that request first.";
-            if(!Scheduler.allowed(context))return "Allow Exact alarms above, then reopen this review.";
+            if(!Scheduler.allowed(context))return "Allow Exact alarms in Alarm readiness, then reopen this review.";
             NotificationManager notifications=context.getSystemService(NotificationManager.class);
-            if(!notifications.areNotificationsEnabled()||Build.VERSION.SDK_INT>=33&&context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED)return "Allow Notifications above, then reopen this review.";
-            if(Build.VERSION.SDK_INT>=34&&!notifications.canUseFullScreenIntent())return "Allow Full-screen alarms above, then reopen this review.";
+            if(!notifications.areNotificationsEnabled()||Build.VERSION.SDK_INT>=33&&context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED)return "Allow Notifications in Alarm readiness, then reopen this review.";
+            if(Build.VERSION.SDK_INT>=34&&!notifications.canUseFullScreenIntent())return "Allow Full-screen alarms in Alarm readiness, then reopen this review.";
             NotificationChannel channel=notifications.getNotificationChannel(Notifications.ALARM);if(channel!=null&&channel.getImportance()<NotificationManager.IMPORTANCE_HIGH)return "Enable high-priority Wake-up alarms in Android notification settings, then reopen this review.";
             return "";
         }catch(RuntimeException unavailable){return "Quiet alarm settings could not be read. Reopen Alarm readiness before testing.";}
