@@ -1088,7 +1088,7 @@
       ],
       "validation": "GuardFlowTest: draft/recreation/cancel/save/reopen/pause persist with identical personal rows/preferences; GoalModelTest guard-window cases. Accessibility enforcement not exercised.",
       "status": "partial",
-      "notes": "Dark native per-app draft editor saves selected installed packages and schedule; persistent five-minute pause/Resume state. Existing service consumes saved choices and wind-down-to-wake plan. Device access is absent and clearly disclosed; real redirect/call-exclusion tests remain pending.",
+      "notes": "Dark native per-app draft editor saves selected installed packages and schedule; persistent five-minute pause/Resume state. Existing service consumes saved choices and wind-down-to-wake plan. Device access is absent and clearly disclosed; real redirect/call-exclusion tests remain pending. 0.1.13 adds app-name/package search to the guard picker while preserving draft choices across filtering, plus a night-styled interruption screen with an explicit Wind-down route, guard settings and existing Pause/Home actions. New selection/pause/navigation and visual verification are deferred; enforcement behavior is unchanged.",
       "id": "F042",
       "tests": [
         {
