@@ -1,4 +1,4 @@
-# SleepWell feature checklist — 28 October 2026
+# SleepWell feature checklist — 29 October 2026
 
 Latest published **0.1.5 / ef694082** adds the generated flat launcher/control rasters and clearer Contactless, Report, Tonight and Automatic menus. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.5-raster-menus-20261028-ef694082); [build/package audit](verification/2026-10-28-015-build/README.md); [current native scope and UI04 contrast limit](verification/2026-10-28-raster-tonight-native/README.md). The phone remains on0.1.4 with original user data preserved; its next update is deferred by the user until after waking.
 
@@ -20,6 +20,18 @@ exercise actions, cancellation, recreation and persistence. [Exact release scope
 - [x] Automatic tracking core choices/restorable supporting pages, explicit Save/Arm, active-wait guard and status-bar contrast. [83.548s / 28 inspected originals](verification/2026-10-28-automatic-tracking/README.md); synthetic callbacks/private phases, not actual service arming.
 - [x] Generate and integrate73 raster control icons, flat launcher/themed mask and notification art; build and publish0.1.5 with both server hashes verified. Current native method passes50.332s/18 originals, all73 glyphs and native launcher previews inspected. UI04 SystemUI contrast remains open; this is not all18-screen visual acceptance. Earlier other-flow captures predate the rasters.
 
+
+## Next update: clearer navigation and settings
+
+These changes are merged source for0.1.6; they are not installed on the phone.
+
+- [x] Search reaches the chosen alarm and actual Extra loud or Flashlight options, with an explicit existing-alarm/new-draft choice. Query, options and unsaved draft restore; only Save alarm writes. [18-original action/persistence evidence](verification/2026-10-29-feature-findability/README.md).
+- [x] Challenge rows open configuration, direct choices show selection, and the28-task catalog is searchable. Cancel also restores the pinning draft. [18-original settled comparison/action evidence](verification/2026-10-29-challenge-selection/README.md).
+- [x] Automation uses compact event-to-destination cards. Reselecting a destination preserves its details; Test, Delete and Save have distinct behavior, and scheduling failures remain visible. [10-original card evidence](verification/2026-10-29-automation-rule-cards/README.md); external delivery remains unverified.
+- [x] Protection separates saved choices from missing Android access, restores its explanations and supports read-error Retry. [16-original recovery evidence](verification/2026-10-29-protection-recovery/README.md); live alarm enforcement remains unverified.
+- [ ] Complete the combined Search/Challenge navigation check after merging their shared alarm editor. Individual passes do not establish this merge.
+- [ ] Build and publish0.1.6 with the original signing identity and retained-data compatibility.
+- [ ] Finish full-routine interactive preview across all28 task types and random routines. Work continues separately; this feature is not complete.
 
 ## Current top priorities
 

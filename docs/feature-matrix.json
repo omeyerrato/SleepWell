@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-28",
+  "reviewed": "2026-10-29",
   "features": [
     {
       "feature": "Multiple alarms",
@@ -814,7 +814,7 @@
         "AlarmProtectionActivity.java",
         "AlarmService.java"
       ],
-      "validation": "ab01ba5 source review and AlarmProtectionFlowTest 15.794 s pass: independent global switches, recreation, both entry points, exact personal preferences and unchanged fixture alarm rows. CI39954661465 actual captures retained. No active-alarm enforcement test authorized.",
+      "validation": "CI40790536650 at1fdaf354 PASS35.916s/one existing method/16 individually inspected originals. Saved choices versus access-denied status, restored About/disclosure, read-error/Retry and exact blocked Settings/Uninstall routes pass. Evidence: verification/2026-10-29-protection-recovery/. No access-enabled/live alarm enforcement or nonzero dialog scroll restoration claim.",
       "status": "partial",
       "notes": "Global opt-in returns from other apps only while a real positive-id alarm service is active. Calls, Settings, emergency and system dialogs remain available; voluntary screen pinning stays separate. No uninstall trap.",
       "id": "F032",
@@ -839,7 +839,7 @@
         "UninstallProtectionActivity.java",
         "AlarmProtectionActivity.java"
       ],
-      "validation": "PowerMenuGuardTest 11 pure metadata/timing/liveness passes, including unknown window IDs; ab01ba5 source review bounded pass. AlarmProtectionFlowTest 15.794 s configuration-only pass, CI39954661465 with eight actual captures. Samsung menu operation deliberately untested. New admin flow: assembleDebug121dbd5 PASS1m41s only; no activation/removal/device actions.",
+      "validation": "CI40790536650 at1fdaf354 PASS35.916s/16 originals proves configuration and recovery only, including truthful Setup needed with saved choices On. Real power-menu, admin activation/removal, access-enabled guard and hardware behavior remain unverified. Evidence: verification/2026-10-29-protection-recovery/.",
       "status": "partial",
       "notes": "Best-effort global Prevent power off opt-in dismisses exact recognised AOSP/Samsung power-menu classes during a live real alarm. Delayed BACK is fenced by last observed window/focus events, not authoritative current input focus. Forced hardware restart, force-stop, powered-off delivery and unknown OEM menus remain possible; optional Android administrator uninstall friction is now present. No managed-device provisioning or screen-content retrieval. A separate explicit system activation prompt can make normal uninstall require prior administrator deactivation. Actual DPM state, in-app removal and Android security settings remain available. Empty policy metadata requests no lock/wipe/password/camera/owner actions; no disable interception or automatic activation. This does not prevent hardware off/force-stop/suspension or every managed/OEM uninstall route. Device behavior remains unverified.",
       "id": "F033",
@@ -2390,9 +2390,11 @@
         "SearchActivity.java",
         "SearchData.java",
         "SearchIndex.java",
-        "SearchSettings.java"
+        "SearchSettings.java",
+        "SearchAlarmChooser.java",
+        "AlarmEditorSearchUi.java"
       ],
-      "validation": "4b7d017 / CI40147599727: SearchStorageTest 1 and SearchFlowTest 1/all4 originals PASS within30classes/102methods/90originals. Private fixtures/fake providers only; no new combined local count or physical output inferred. Current CI40623526256 at52b6dbb5 passes12.917s/5 originals: actual Room result navigation, unsaved dimming draft recreation/Back with query retained/no Save, unambiguous saved-record identity/report/recreation, exact original preferences restored. Fake unavailable sensor/audio/access ports; no real capture or permission request. Earlier failed15.63s ambiguous fixture and loading capture are preserved separately. Evidence: verification/2026-10-28-room-settings-search/. Frozen 08 named Search/Room/native files and exact Main settings route fragments match; manifest Room component attributes match. Whole Main/manifest/script equality is not claimed; final package audit records scoped exceptions. This does not prove real providers/OS grants or all destinations.",
+      "validation": "CI40784711149 at19f6ac9e PASS44.557s/18 individually inspected originals. Chosen existing alarm/new draft, real Extra loud/Flashlight options, actual options-kind restoration independent of original search result, query recovery and selected history editing pass on private stores. Both prior failures retained. Evidence: verification/2026-10-29-feature-findability/. Shared-editor integration is pending after merge; no scheduling/output/provider or every-destination claim.",
       "status": "partial",
       "notes": "Actual saved-record/settings search opens the selected destination and retains query across recreation; no network or invented results. Room conditions and Screen dimming are now explicit search terms and an allowlisted real destination in Sleep & bedtime; Main retains its existing route and names dimming.",
       "id": "F082",
@@ -3200,9 +3202,12 @@
         "RandomChallengePreviewActivity.java",
         "Scheduler.java",
         "SnoozeDeadline.java",
-        "ChallengeRoutineDrag.java"
+        "ChallengeRoutineDrag.java",
+        "ChallengeRoutineUi.java",
+        "ChallengeTaskUi.java",
+        "ChallengeActionRows.java"
       ],
-      "validation": "CI40467733318 at32f064e2 PASS48.33s/6 inspected captures: reorganized selected routine/settings/catalog, real ordering and Save/reopen. Full-routine preview remains absent.",
+      "validation": "CI40781422567 at5958285a PASS57.409s/18 originals individually inspected against Board04; preceding functional-pass and failed captures retained. Searchable28-task catalog, genuine configuration/direct selection, About/query restoration, reorder, Cancel including pin rollback and Save/reopen pass on private data. Evidence: verification/2026-10-29-challenge-selection/. Shared-editor integration pending; full-routine interactive preview and actual alarm runtime remain unfinished.",
       "status": "partial",
       "notes": "Additive ordered1–8task routine, per-task rounds/targets/graded Math and newly enrolled QR code, step-sensor Walk, Math/Memory/Sequence/Retype/Shake/NFC. Runtime callbacks fence occurrence/unit; legacy scalar behavior remains. QR actual camera/live challenge, silent interactive routine preview and full visual fidelity remain unverified or missing. Separate random routine mode now saves1–8configured distinct pool entries/count, samples eligible entries without replacement and atomically publishes concrete tasks with the occurrence. Snooze/reopen keep the exact choice/source mapping. Missing prerequisites become real Math alternatives to preserve count. All 28 current categories supported; picture/object/code entries require real configured targets, and hardware/permission/capture prerequisites are checked read-only. Child Start/Listen still rechecks model/English readiness. Runtime/restore/ownership/selection acceptance remains unverified. Expanded 8094497 supports all 28 current fixed task types. Picture/Object/QR need exact configured templates; no invented targets. New read-only camera/audio/call/current-capture/on-device-recognizer checks exclude unavailable entries and Math fills missing slots. Existing private explicit previews reused; runtime/recognition still unverified. Fixed-sequence six-dot handles now support actual local drag-to-reorder with bounded edge scrolling and tap Move up/down/Remove fallback. Exact full alarm/routine snapshots, owned attached route and modal/focus checks reject stale/cross-Activity drops; blank/header/cancel/same-card drops do not mutate. Only final Save alarm writes. Random pools retain their existing behavior. See CHALLENGE-ORDERING.md. Latest bounded milestone: verification/2026-10-27-tonight-report-routine/README.md. CI40467733318 at32f064e2 PASS48.33s/6 inspected captures: reorganized selected routine/settings/catalog, real ordering and Save/reopen. Full-routine preview remains absent.",
       "id": "F107",
@@ -4291,7 +4296,7 @@
         "WakeChecks.java",
         "SmartBedtimeRuntime.java"
       ],
-      "validation": "da0f571 CI40141612460 AutomationStorageTest 10 PASS.16 pure transport/policy cases and combined778pure/debug/native/lint PASS. No real recipient/broker/IFTTT request. New lifecycle/incoming integration: assembleDebug86d0d1e PASS1m14s only; no new tests/provider/destination/phone execution.",
+      "validation": "CI40777798244 at0cadd897 PASS33.903s/one existing method/10 individually inspected originals. Compact cards, actual stored enabled state, reselect-preserved credentials/details, draft recreation, Test/Delete/Save and fake scheduling-failure notice pass. Earlier configuration proof and failures retained. Evidence: verification/2026-10-29-automation-rule-cards/ and verification/2026-10-29-automation-rules/. Private injected ports only; actual Keystore, JobScheduler, Tasker/HTTPS/MQTT destinations and process-death delivery remain unverified.",
       "status": "partial",
       "notes": "Opted-in ten-kind actual lifecycle catalog covers existing tracking start/end/alarm dismissal plus committed tracking pause/resume, foreground alarm admission, acknowledged snooze+stop, durable confirmed/missed wake checks and posted wind-down reminders. Targeted Tasker broadcasts, HTTPS POST/TLS MQTT, minimal schema1/type/time/hash/test fields, encrypted credentials, destination revisions and bounded durable retries remain. Same source transition retains stable event_id; source-to-outbox handoff is asynchronous and not crash-atomic, retries are at-least-once and receivers must dedup. No player/stage/REM/apnea events or audible/visible-output proof. Separate default-off version1 incoming START/PAUSE/RESUME/STOP requests now require unlocked foreground review, current-run ownership and one-use service delivery guards; START stages existing setup, not automatic capture. Full provider/destination/runtime acceptance remains unverified. See AUTOMATION-REQUESTS-AND-CALENDAR.md.",
       "id": "F138",

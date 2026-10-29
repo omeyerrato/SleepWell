@@ -6,6 +6,18 @@ Latest published **0.1.5 / ef694082** adds the generated flat launcher/control r
 
 Checked means implemented with the stated supporting evidence. It does not mean every screen, device or physical behavior is verified. [Full feature matrix](FEATURE-MATRIX.md), [172 detailed entries](feature-matrix.json), [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
 
+## Next update: clearer navigation and settings
+
+These changes are merged source for0.1.6; they are not installed on the phone.
+
+- [x] Search reaches the chosen alarm and actual Extra loud or Flashlight options, with an explicit existing-alarm/new-draft choice. Query, options and unsaved draft restore; only Save alarm writes. [18-original action/persistence evidence](verification/2026-10-29-feature-findability/README.md).
+- [x] Challenge rows open configuration, direct choices show selection, and the28-task catalog is searchable. Cancel also restores the pinning draft. [18-original settled comparison/action evidence](verification/2026-10-29-challenge-selection/README.md).
+- [x] Automation uses compact event-to-destination cards. Reselecting a destination preserves its details; Test, Delete and Save have distinct behavior, and scheduling failures remain visible. [10-original card evidence](verification/2026-10-29-automation-rule-cards/README.md); external delivery remains unverified.
+- [x] Protection separates saved choices from missing Android access, restores its explanations and supports read-error Retry. [16-original recovery evidence](verification/2026-10-29-protection-recovery/README.md); live alarm enforcement remains unverified.
+- [ ] Complete the combined Search/Challenge navigation check after merging their shared alarm editor. Individual passes do not establish this merge.
+- [ ] Build and publish0.1.6 with the original signing identity and retained-data compatibility.
+- [ ] Finish full-routine interactive preview across all28 task types and random routines. Work continues separately; this feature is not complete.
+
 ## Current priorities
 
 - [ ] Match all 36 reference screens, including remaining alarm screens, charts, menus, icons and navigation states.
