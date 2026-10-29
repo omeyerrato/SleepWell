@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated 29 October 2026. Latest published APK: **0.1.7 / 02aacc6b**. Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
+Updated 29 October 2026. Latest published APK: **0.1.8 / 0b3cb9ed**. Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.7-routine-preview-20261029-02aacc6b) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.8-reference-layouts-20261029-0b3cb9ed) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -48,13 +48,13 @@ Checked means implemented with the stated supporting evidence. Physical-device a
 - [x] Independent original-signer/package audit passed: retained assets/libraries, compiled manifest and unchanged schema 17 / backup 14. [Evidence](verification/2026-10-29-017-build/README.md).
 - [x] Publish 0.1.7 and verify its exact tag, APK and checksum hashes. Installation remains deferred by the user.
 
-## Next increment — not yet published
+## Published in 0.1.8 — phone update deferred
 
 - [x] Integrate Motion sensor reference artwork, clearer real-data chart labels and complete calibration/footer layout. [Seven inspected originals](verification/2026-10-29-motion-reference/README.md); fake sensor ports, not hardware acceptance.
-- [x] Reject unsupported external media fade before allocating its newer native listener. Source-only; next combined build pending.
+- [x] Reject unsupported external media fade before allocating its newer native listener. Included in the passing build/lint; older-Android runtime remains unverified.
 - [x] Integrate the Privacy storage/backup composition and real loading/error/favorites persistence flow. [12 inspected originals](verification/2026-10-29-privacy-reference/README.md); audio-only bulk deletion and a persistent last-export receipt remain missing.
 - [x] Build and lint next0.1.8 at `0b3cb9ed`: PASS11m43s.
-- [ ] Complete its independent package audit and publish.
+- [x] Independent package/signature audit and publication passed; exact tag and both uploaded hashes verified. [Evidence](verification/2026-10-29-018-build/README.md).
 
 ## Still unfinished
 

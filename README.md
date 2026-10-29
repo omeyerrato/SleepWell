@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-Latest published **0.1.7 / 02aacc6b** adds all 28 routine-preview controllers, Code/NFC enrollment, inline task feedback, Report chart fixes and clearer sleep-sound controls. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.7-routine-preview-20261029-02aacc6b); [package audit](docs/verification/2026-10-29-017-build/README.md); [final private challenge flow](docs/verification/2026-10-29-017-routine-integration/README.md). The phone remains on 0.1.4; installation is deferred. All 36-reference, physical/overnight and broad security acceptance remain unfinished.
+Latest published **0.1.8 / 0b3cb9ed** improves the Privacy storage/backup layout and Motion sensor artwork/chart/controls. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.8-reference-layouts-20261029-0b3cb9ed); [package audit](docs/verification/2026-10-29-018-build/README.md); [Privacy12 proof](docs/verification/2026-10-29-privacy-reference/README.md); [Motion7 proof](docs/verification/2026-10-29-motion-reference/README.md). The phone remains on 0.1.4; installation is deferred. Audio-only bulk deletion, a durable manual Last export receipt and broader design/security/hardware work remain unfinished.
 
 Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped

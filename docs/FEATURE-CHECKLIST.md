@@ -1,6 +1,6 @@
 # SleepWell feature checklist — 29 October 2026
 
-Latest published **0.1.7 / 02aacc6b** adds all 28 routine-preview controllers, Code/NFC enrollment, inline task feedback, Report chart fixes and clearer sleep-sound controls. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.7-routine-preview-20261029-02aacc6b); [package audit](verification/2026-10-29-017-build/README.md); [final private challenge flow](verification/2026-10-29-017-routine-integration/README.md). The phone remains on 0.1.4; installation is deferred. All 36-reference, physical/overnight and broad security acceptance remain unfinished.
+Latest published **0.1.8 / 0b3cb9ed** improves the Privacy storage/backup layout and Motion sensor artwork/chart/controls. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.8-reference-layouts-20261029-0b3cb9ed); [package audit](verification/2026-10-29-018-build/README.md); [Privacy12 proof](verification/2026-10-29-privacy-reference/README.md); [Motion7 proof](verification/2026-10-29-motion-reference/README.md). The phone remains on 0.1.4; installation is deferred. Audio-only bulk deletion, a durable manual Last export receipt and broader design/security/hardware work remain unfinished.
 
 Condensed version: [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
 Checked means implemented source/build, not full phone/overnight acceptance.
@@ -11,6 +11,15 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 exercise actions, cancellation, recreation and persistence. [Exact release scope](verification/2026-10-27-reference-menus-build/README.md).
 
 **0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md). All36 reference states and broader interaction/security acceptance remain open.
+
+## Published in 0.1.8 — phone update deferred
+
+- [x] Integrate Motion sensor reference artwork, clearer real-data chart labels and complete calibration/footer layout. [Seven inspected originals](verification/2026-10-29-motion-reference/README.md); fake sensor ports, not hardware acceptance.
+- [x] Reject unsupported external media fade before allocating its newer native listener. Included in the passing build/lint; older-Android runtime remains unverified.
+- [x] Integrate the Privacy storage/backup composition and real loading/error/favorites persistence flow. [12 inspected originals](verification/2026-10-29-privacy-reference/README.md); audio-only bulk deletion and a persistent last-export receipt remain missing.
+- [x] Build and lint next0.1.8 at `0b3cb9ed`: PASS11m43s.
+- [x] Independent package/signature audit and publication passed; exact tag and both uploaded hashes verified. [Evidence](verification/2026-10-29-018-build/README.md).
+
 
 ## Published in0.1.5 — phone update deferred
 
