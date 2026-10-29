@@ -35,15 +35,18 @@ Checked means implemented with the stated supporting evidence. Physical-device a
 - [x] Settings organization and search, genuine task-configuration rows, compact automation cards and clearer protection setup.
 - [x] Free, open-source development APK published.
 
-## Newer0.1.7 source — not published or installed
+## Integrated 0.1.7 source — not published or installed
 
-- [x] Sleep sounds header navigation and fixed Timer/Fade actions, preserving draft/scroll/focus and advanced routes. [14-original configuration proof](verification/2026-10-29-sleep-mixer-reference/README.md); no active-playback or physical-output claim.
-- [x] Integrate17 routine-preview controllers with explicit capture Start, Cancel/Resume, retained progress and one-use child results. [58-original private/fake-port proof](verification/2026-10-29-routine-motion/README.md); this is not full28-type or actual-alarm/hardware acceptance.
-- [x] Report means round consistently. The first18-frame flow passed functionally; its tooltip/goal-caption overlap is retained as a visible failure in the archive.
-- [x] Correct the Report tooltip/goal-caption overlap: [18 fresh originals](verification/2026-10-29-report-rounded-means/corrected-40822971575/README.md) show both labels clearly, with actions/persistence/raw data preserved.
-- [ ] Finish the remaining11 microphone/camera preview adapters. Five audio adapters are being implemented separately; six camera adapters remain.
-- [ ] Verify and integrate the actual Walk completion-after-failed-cleanup correction. Its separate source compiles; the current17-type integration does not claim that fix.
-- [ ] Complete the combined build/release and prepare the next phone update.
+- [x] Sleep sounds header navigation and fixed Timer/Fade actions, with draft/scroll/focus retained. [14-original proof](verification/2026-10-29-sleep-mixer-reference/README.md).
+- [x] All 28 routine-preview controllers integrated: 11 screen, six motion/NFC, five audio and six camera. [Motion](verification/2026-10-29-routine-motion/README.md), [audio](verification/2026-10-29-routine-audio-visual/README.md), [camera](verification/2026-10-29-routine-camera/README.md). Genuine rules, synthetic inputs; physical/model and actual-alarm acceptance remain open.
+- [x] Walk completion waits for confirmed owned-listener cleanup; failed cleanup retains progress and exposes Retry. [Four-original proof](verification/2026-10-29-routine-audio-walk/README.md).
+- [x] Inline Sequence/Retype error feedback replaces overlapping Toast/native input error. [Six-original proof](verification/2026-10-29-cognitive-inline-feedback/README.md).
+- [x] Code/NFC tabs, dedicated NFC task setup and explicit retained tag enrollment. [22-original proof](verification/2026-10-29-morning-code-enrollment/README.md); no real tag/camera claim.
+- [x] Consistent Report averages and corrected tooltip/goal-caption overlap. [18-original proof](verification/2026-10-29-report-rounded-means/corrected-40822971575/README.md).
+- [x] Source repairs for nine Back-gesture handlers, native permission/API call guards and narrowly documented native-view lint exceptions. Runtime behavior after these last repairs is not yet accepted.
+- [x] Combined arm64 APK and lint pass at `02aacc6b` (8m 4s, 45 tasks). The first candidate's 19-error lint failure remains archived.
+- [ ] Finish the independent package/signature audit; this is separate from build success.
+- [ ] Publish the next update; installation remains deferred by the user.
 
 ## Still unfinished
 

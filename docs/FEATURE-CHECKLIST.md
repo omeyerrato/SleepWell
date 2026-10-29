@@ -31,15 +31,20 @@ These changes are published in0.1.6; they are not installed on the phone.
 - [x] Protection separates saved choices from missing Android access, restores its explanations and supports read-error Retry. [16-original recovery evidence](verification/2026-10-29-protection-recovery/README.md); live alarm enforcement remains unverified.
 - [x] Verify Search and Challenge together after merging their shared alarm editor: two existing methods passed69.905s/33.847s; all36 scoped originals inspected. [Evidence](verification/2026-10-29-editor-usability-integration/README.md). This is not acceptance of all36 design references.
 - [x] Build and publish0.1.6 with the original signing identity, retained assets/libraries and unchanged schema17/backup14; exact source tag and both server asset hashes verified. Phone installation remains deferred.
-- [ ] Finish full-routine interactive preview across all28 task types and random routines. Work continues separately; this feature is not complete.
+- [x] All 28 routine-preview controller types are integrated in newer 0.1.7 source. Physical/model and actual-alarm acceptance remain open; see the current section below.
 
-## Integrated0.1.7 source — not published or installed
+## Integrated 0.1.7 source — not published or installed
 
-- [x] Clear Sleep sounds header navigation and fixed Timer/Fade actions with draft/scroll/focus restoration. [14-original configuration proof](verification/2026-10-29-sleep-mixer-reference/README.md).
-- [x] Integrate17 genuine routine-preview controllers, explicit capture Start, Cancel/Resume, retained progress and child cleanup/receipt ownership. [58-original private/fake-port proof](verification/2026-10-29-routine-motion/README.md).
-- [ ] Finish the other11 microphone/camera preview adapters and their real cleanup contracts; full28-type preview remains incomplete.
-- [ ] Complete the separately identified actual Walk cleanup failure fix; it is not covered by the17-type integration.
-- [ ] Finish the combined build/release. The phone remains on0.1.4 and its update remains deferred.
+- [x] Sleep sounds header navigation and fixed Timer/Fade actions, with draft/scroll/focus retained. [14-original proof](verification/2026-10-29-sleep-mixer-reference/README.md).
+- [x] All 28 routine-preview controllers integrated: 11 screen, six motion/NFC, five audio and six camera. [Motion](verification/2026-10-29-routine-motion/README.md), [audio](verification/2026-10-29-routine-audio-visual/README.md), [camera](verification/2026-10-29-routine-camera/README.md). Genuine rules, synthetic inputs; physical/model and actual-alarm acceptance remain open.
+- [x] Walk completion waits for confirmed owned-listener cleanup; failed cleanup retains progress and exposes Retry. [Four-original proof](verification/2026-10-29-routine-audio-walk/README.md).
+- [x] Inline Sequence/Retype error feedback replaces overlapping Toast/native input error. [Six-original proof](verification/2026-10-29-cognitive-inline-feedback/README.md).
+- [x] Code/NFC tabs, dedicated NFC task setup and explicit retained tag enrollment. [22-original proof](verification/2026-10-29-morning-code-enrollment/README.md); no real tag/camera claim.
+- [x] Consistent Report averages and corrected tooltip/goal-caption overlap. [18-original proof](verification/2026-10-29-report-rounded-means/corrected-40822971575/README.md).
+- [x] Source repairs for nine Back-gesture handlers, native permission/API call guards and narrowly documented native-view lint exceptions. Runtime behavior after these last repairs is not yet accepted.
+- [x] Combined arm64 APK and lint pass at `02aacc6b` (8m 4s, 45 tasks). The first candidate's 19-error lint failure remains archived.
+- [ ] Finish the independent package/signature audit; this is separate from build success.
+- [ ] Publish the next update; installation remains deferred by the user.
 
 ## Current top priorities
 
