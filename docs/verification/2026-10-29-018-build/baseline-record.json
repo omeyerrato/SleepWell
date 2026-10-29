@@ -1,0 +1,123 @@
+{
+  "status": "baseline_prepared_candidate_not_supplied",
+  "prepared_utc": "2026-10-29T11:36:56.054414+00:00",
+  "preparation_base": "d50429b50cd9c9fc42302984405f19141f714224",
+  "baseline_source": "02aacc6b122cb1e2c50486190ece608f8d5e3e87",
+  "baseline_version": "0.1.7",
+  "baseline_version_code": 8,
+  "baseline_apk": "SleepWell-02aacc6b122cb1e2c50486190ece608f8d5e3e87.apk",
+  "baseline_bytes": 168752618,
+  "baseline_sha256_rechecked": "7aa7e4fb3db0ec298a00459e83443f1342649e00fb3923396d867d2d83383143",
+  "original_signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "store_schema": 17,
+  "backup_format": 14,
+  "metadata_reuse": [
+    {
+      "reused_from": "../2026-10-29-017-build/candidate-zip-index.json",
+      "file": "baseline-zip-index.json",
+      "bytes": 300397,
+      "sha256": "b5f178cedb154a3fe6135f34230e7d7aaecb93a15350affde572a998aece7a72",
+      "matched_prior_SHA256SUMS": true,
+      "copied_exact_bytes": true
+    },
+    {
+      "reused_from": "../2026-10-29-017-build/package-manifest-tree.txt",
+      "file": "baseline-manifest-tree.txt",
+      "bytes": 87480,
+      "sha256": "57e00be694e670ab80e20134d3d7dbb85c0300b8af6c4fa95ff8156633e12197",
+      "matched_prior_SHA256SUMS": true,
+      "copied_exact_bytes": true
+    },
+    {
+      "reused_from": "../2026-10-29-017-build/package-home-widget-tree.txt",
+      "file": "baseline-home-widget-tree.txt",
+      "bytes": 7501,
+      "sha256": "a46978c82a902369933025f6c278009d3197b37091676acb3a1514ecf46cb951",
+      "matched_prior_SHA256SUMS": true,
+      "copied_exact_bytes": true
+    },
+    {
+      "reused_from": "../2026-10-29-017-build/package-signer.txt",
+      "file": "baseline-signer.txt",
+      "bytes": 972,
+      "sha256": "7c3bdf3834c96843d183f1513c1402e026757c1dc8f18fec5fe577036f5dc51b",
+      "matched_prior_SHA256SUMS": true,
+      "copied_exact_bytes": true
+    },
+    {
+      "reused_from": "../2026-10-29-017-build/package-badging.txt",
+      "file": "baseline-badging.txt",
+      "bytes": 8556,
+      "sha256": "254d5c974366931db7f9f3659354f9cb96d44b3670a7c8558cfbace9645158c7",
+      "matched_prior_SHA256SUMS": true,
+      "copied_exact_bytes": true
+    },
+    {
+      "reused_from": "../2026-10-29-017-build/independent-candidate.json",
+      "file": "baseline-prior-audit.json",
+      "bytes": 1855,
+      "sha256": "df0daf5f076e6259c5a7e652d7f629e9831921cd125aa569ba73607aecf60090",
+      "matched_prior_SHA256SUMS": true,
+      "copied_exact_bytes": true
+    },
+    {
+      "reused_from": "../2026-10-29-017-build/retained-assets-native.json",
+      "file": "baseline-retained-assets-native.json",
+      "bytes": 25304,
+      "sha256": "cbc767b0217ce2af67a8947606d6dfadffd01f5b08978ab0a60736bbe8c7e5ee",
+      "matched_prior_SHA256SUMS": true,
+      "copied_exact_bytes": true
+    },
+    {
+      "reused_from": "../2026-10-29-017-build/source-boundaries.json",
+      "file": "baseline-source-boundaries.json",
+      "bytes": 20357,
+      "sha256": "bf63f2b88138d132583a9d2d6f7be75376901b9cb06f2112db72ea2530661291",
+      "matched_prior_SHA256SUMS": true,
+      "copied_exact_bytes": true
+    },
+    {
+      "reused_from": "../2026-10-29-017-build/zip-layout.json",
+      "file": "baseline-zip-layout.json",
+      "bytes": 968,
+      "sha256": "169e581702e77b5095560b228d5b3a35d6afecfd33efdc4416858934b35c5948",
+      "matched_prior_SHA256SUMS": true,
+      "copied_exact_bytes": true
+    },
+    {
+      "reused_from": "../2026-10-29-017-build/resource-comparison.json",
+      "file": "baseline-prior-resource-comparison.json",
+      "bytes": 2358,
+      "sha256": "046d93288f6c6b8b218bd90b07fb0d2149c817bc890913236ec08a8b5c9e82ea",
+      "matched_prior_SHA256SUMS": true,
+      "copied_exact_bytes": true
+    }
+  ],
+  "preparation_apk_payload_reads": 0,
+  "preparation_resource_resolutions": 0,
+  "preparation_refreshes_signer_or_compiled_manifest": false,
+  "actual_package_hash_rechecked_only": true,
+  "candidate_source": null,
+  "candidate_apk": null,
+  "candidate_result": null,
+  "expected_version": "0.1.8",
+  "expected_version_code": 9,
+  "expected_source_scope": [
+    "Motion settings/real chart/generated PNG",
+    "Privacy screen/helpers after its separately accepted native scope",
+    "ExternalMediaFade early API rejection; source-only native-guard execution boundary"
+  ],
+  "expected_retained_policy": [
+    "existing permissions/exports/components/provider access declarations",
+    "65 assets",
+    "8 arm64-v8a native libraries",
+    "schema17/backup14"
+  ],
+  "candidate_expected_resource_addition": "res/drawable-nodpi-v4/motion_sensor_handset.png (exact compiled name to verify from candidate, not assumed)",
+  "boundaries": [
+    "No build, tests, CI, device actions or candidate acceptance.",
+    "Prior 017 signer/manifest/CRC observations are reused, not reexecuted.",
+    "One final candidate ZIP payload pass will compare exact contents with this baseline index; resolve only actually changed resource trees if needed.",
+    "All36/physical/security/source-to-DEX equivalence acceptance remains outside package audit."
+  ]
+}

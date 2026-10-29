@@ -1,0 +1,52 @@
+{
+  "status": "bounded_package_checks_pass",
+  "source": "02aacc6b122cb1e2c50486190ece608f8d5e3e87",
+  "apk": "SleepWell-02aacc6b122cb1e2c50486190ece608f8d5e3e87.apk",
+  "bytes": 168752618,
+  "sha256": "7aa7e4fb3db0ec298a00459e83443f1342649e00fb3923396d867d2d83383143",
+  "app_tree": "6ebd894db19c224ee83cf39a4e483b570107a98a",
+  "production_tree": "f6180f2b5f395826833bf59d7d3b13e301a7497f",
+  "versionName": "0.1.7",
+  "versionCode": 8,
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "baseline": {
+    "source": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
+    "apk_sha256": "3e44d6899aa52ccc567de983b91c70765c5cbdc00562144a4bbdc04125940459",
+    "bytes": 163250139
+  },
+  "zip_counts": {
+    "assets/": 65,
+    "lib/": 8,
+    "res/": 775
+  },
+  "zip_entries": 948,
+  "zip_delta_counts": {
+    "added": 0,
+    "removed": 0,
+    "changed": 3,
+    "equal_content": 945
+  },
+  "resource_delta": {
+    "added": [],
+    "removed": [],
+    "changed": [
+      "res/layout/home_widget.xml"
+    ]
+  },
+  "build_status": "SUCCESS",
+  "lint_errors": 0,
+  "store_schema": 17,
+  "backup_format": 14,
+  "source_to_dex_equivalence_proven": false,
+  "publication_or_installation_performed": false,
+  "resource_runtime_equivalence": "774 resources exact; home_widget binary differs only in 22 source-line words; resources.arsc exact",
+  "unreferenced_zero_payload_padding_bytes": 5272997,
+  "camera_tested_paths_exact": 18,
+  "camera_tested_paths_total": 20,
+  "post_native_proof_source_only_back_dispatcher_files": 9,
+  "post_native_proof_source_only_native_guard_files": 5,
+  "all_36_reference_screens_accepted": false,
+  "security_or_physical_execution_certified": false,
+  "later_injected_audio_run_same_production": 40853867058,
+  "actual_back_gestures_accepted": false
+}

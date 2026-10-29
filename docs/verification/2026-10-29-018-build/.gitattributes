@@ -1,0 +1,5 @@
+# Exact copied baseline tool outputs retain their archived bytes.
+* -text whitespace=cr-at-eol
+*.txt -whitespace
+*.log -whitespace
+*.patch -whitespace
