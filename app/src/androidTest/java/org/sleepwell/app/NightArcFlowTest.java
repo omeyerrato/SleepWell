@@ -118,6 +118,90 @@ public class NightArcFlowTest {
         }});
         dismissDiagnostic();
     }
+    // Explicit diagnostic subsection of the existing method; the original 18-frame journey is unchanged.
+    private final List<String> barDiagnostics=new ArrayList<>(),barFailures=new ArrayList<>();
+    private File barFolder(){File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());return folder;}
+    private View barOwner(boolean explanation)throws Exception{
+        long end=SystemClock.elapsedRealtime()+8000;
+        do{View candidate=focused();if(candidate!=null){boolean[] ready={false};
+            i.runOnMainSync(()->{View owner=activity.getWindow().getDecorView();ready[0]=!activity.isDestroyed()&&
+                (explanation?candidate!=owner&&described(candidate,"Close rest window explanation")!=null:candidate==owner);});
+            if(ready[0])return candidate;}
+            SystemClock.sleep(30);
+        }while(SystemClock.elapsedRealtime()<end);
+        throw new AssertionError("Expected focused owned "+(explanation?"rest-window explanation":"Main Activity"));
+    }
+    private void barFrame(View owner)throws Exception{
+        CountDownLatch committed=new CountDownLatch(1);
+        i.runOnMainSync(()->{assertTrue("Same focused owned window",owner.isAttachedToWindow()&&owner.hasWindowFocus());
+            assertTrue(owner.isHardwareAccelerated());owner.getViewTreeObserver().registerFrameCommitCallback(committed::countDown);owner.invalidate();});
+        assertTrue("Owned hardware frame commits",committed.await(5,TimeUnit.SECONDS));
+    }
+    private String barPixels(Bitmap bitmap,int top,int bottom,int background,boolean dark){
+        long lightGlyph=0,darkGlyph=0,ground=0,darkSurface=0,total=(long)bitmap.getWidth()*(bottom-top),black=0;
+        int surface=bitmap.getPixel(0,(top+bottom)/2);
+        for(int y=top;y<bottom;y++)for(int x=0;x<bitmap.getWidth();x++){
+            int rgb=bitmap.getPixel(x,y),red=Color.red(rgb),green=Color.green(rgb),blue=Color.blue(rgb);
+            if(red>250&&green>250&&blue>250)lightGlyph++;
+            if(red<170&&green<170&&blue<170)darkGlyph++;
+            if(red<120&&green<120&&blue<120)darkSurface++;
+            if(red<20&&green<20&&blue<20&&(Math.abs(red-Color.red(surface))>12||Math.abs(green-Color.green(surface))>12||Math.abs(blue-Color.blue(surface))>12))black++;
+            if(Math.abs(red-Color.red(background))<=12&&Math.abs(green-Color.green(background))<=12&&Math.abs(blue-Color.blue(background))<=12)ground++;
+        }
+        boolean readable=dark?darkSurface*100>=total*60&&lightGlyph>=24&&black<=2:ground*100>=total*60&&darkGlyph>=24&&lightGlyph<=2;
+        return "light="+lightGlyph+",dark="+darkGlyph+",black="+black+",ground="+ground+",dark_surface="+darkSurface+",sample_surface="+Integer.toHexString(surface)+",total="+total+",readable="+readable;
+    }
+    private void recordBars(String scene,String sample,View owner,Bitmap bitmap,boolean dark)throws Exception{
+        assertNotNull(bitmap);Bitmap readable=bitmap;try{
+            if(bitmap.getConfig()==Bitmap.Config.HARDWARE)readable=bitmap.copy(Bitmap.Config.ARGB_8888,false);
+            int[] state=new int[5];i.runOnMainSync(()->{assertTrue("Observation keeps the same focused owner",owner.isAttachedToWindow()&&owner.hasWindowFocus());
+                WindowInsets insets=activity.getWindow().getDecorView().getRootWindowInsets();assertNotNull(insets);
+                state[0]=insets.getInsets(WindowInsets.Type.statusBars()).top;state[1]=insets.getInsets(WindowInsets.Type.navigationBars()).bottom;
+                state[2]=owner.getWindowInsetsController().getSystemBarsAppearance();state[3]=owner.getSystemUiVisibility();
+                state[4]=((WindowManager.LayoutParams)owner.getLayoutParams()).flags;});
+            assertTrue(state[0]>0&&state[1]>0&&state[0]+state[1]<readable.getHeight());
+            int background=dark?Appearance.palette(c).bg:Design.CREAM;
+            String status=barPixels(readable,0,state[0],background,dark),navigation=barPixels(readable,readable.getHeight()-state[1],readable.getHeight(),background,dark);
+            int mask=WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS|WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
+            boolean correct=(state[2]&mask)==(dark?0:mask)&&status.endsWith("readable=true")&&navigation.endsWith("readable=true");
+            barDiagnostics.add(scene+"\t"+sample+"\t"+SystemClock.uptimeMillis()+"\t"+state[2]+"\t"+state[3]+"\t"+state[4]+"\t"+state[0]+"\t"+state[1]+"\t"+status+"\t"+navigation+"\t"+correct);
+            java.nio.file.Files.write(new File(barFolder(),"arc-bars-observations.tsv").toPath(),barDiagnostics,java.nio.charset.StandardCharsets.UTF_8);
+            if(!correct)barFailures.add(scene+"/"+sample+" mask="+(state[2]&mask)+" status{"+status+"} navigation{"+navigation+"}");
+        }finally{if(readable!=bitmap&&readable!=null)readable.recycle();}
+    }
+    private void captureBars(String name,boolean dark,boolean explanation)throws Exception{
+        View owner=barOwner(explanation);barFrame(owner);
+        i.runOnMainSync(()->{if(explanation)full(described(owner,"Close rest window explanation"),"Owned explanation close");
+            else if(!dark)full(described(owner,"Add alarm"),"Actual empty Alarms action");else mainActionBounds();});
+        File original=new File(barFolder(),"arc-bars-"+name+".png");assertTrue(device.takeScreenshot(original));
+        Bitmap saved=BitmapFactory.decodeFile(original.getAbsolutePath());try{recordBars(name,"original",owner,saved,dark);}finally{if(saved!=null)saved.recycle();}
+        // A fixed twelve subsequent committed frames, independent of the observed colors. No flags/focus/input is changed.
+        for(int frame=0;frame<12;frame++)barFrame(owner);
+        Bitmap subsequent=i.getUiAutomation().takeScreenshot();try{recordBars(name,"after-12-commits",owner,subsequent,dark);}finally{if(subsequent!=null)subsequent.recycle();}
+    }
+    private void barExplanationTap()throws Exception{
+        String[] description={null};i.runOnMainSync(()->{NightArc view=arc(activity.getWindow().getDecorView());full(view,"Actual rest-window explanation action");description[0]=view.getContentDescription().toString();});click(description[0]);
+    }
+    private void recreateBars(boolean explanation)throws Exception{
+        MainActivity old=activity;Instrumentation.ActivityMonitor monitor=i.addMonitor(MainActivity.class.getName(),null,false);
+        try{i.runOnMainSync(old::recreate);activity=(MainActivity)monitor.waitForActivityWithTimeout(5000);assertNotNull(activity);}finally{i.removeMonitor(monitor);}
+        waitFor(old::isDestroyed);barOwner(explanation);
+    }
+    private void systemBarTransitions(String database)throws Exception{
+        barDiagnostics.add("scene\tsample\tuptime_ms\tappearance\tlegacy_visibility\twindow_flags\tstatus_inset\tnavigation_inset\tstatus_pixels\tnavigation_pixels\tcontrasting");
+        try(Store store=new Store(c,database)){store.deleteAlarm(1);}launch();state("Bedtime in 30 min");captureBars("tonight",true,false);
+        barExplanationTap();captureBars("help",true,true);
+        click("Close rest window explanation");captureBars("help-return",true,false);
+        click("Set first alarm");captureBars("alarms-first",false,false);captureBars("alarms-observed",false,false);
+        device.pressBack();state("Bedtime in 30 min");captureBars("tonight-return",true,false);
+        click("Set first alarm");barOwner(false);recreateBars(false);captureBars("alarms-recreated",false,false);
+        device.pressBack();state("Bedtime in 30 min");barExplanationTap();barOwner(true);recreateBars(true);captureBars("help-recreated",true,true);
+        click("Close rest window explanation");barOwner(false);
+        try(Store store=new Store(c,database)){assertTrue("Navigation never creates an alarm",store.alarms().isEmpty());}
+        assertFalse(Prefs.flag(c,"ringing"));assertFalse(TrackingService.running);assertNull(SleepSoundService.snapshot());
+        System.out.println("SYSTEM_BAR_TRANSITION_OBSERVATIONS "+barDiagnostics.size()+" rows; failures="+barFailures);
+        assertTrue("Actual requested and rendered bars must contrast; fixed raw diagnostics retained: "+barFailures,barFailures.isEmpty());
+    }
     private long local(int day,int hour,int minute){return LocalDate.of(2026,10,day).atTime(hour,minute).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();}
     private void launch(){Instrumentation.ActivityMonitor monitor=i.addMonitor(MainActivity.class.getName(),null,false);try{c.startActivity(new Intent(c,MainActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));activity=(MainActivity)monitor.waitForActivityWithTimeout(5000);assertNotNull(activity);i.waitForIdleSync();device.waitForIdle();}finally{i.removeMonitor(monitor);}}
     private NightArc arc(View view){if(view instanceof NightArc)return (NightArc)view;if(view instanceof ViewGroup)for(int n=0;n<((ViewGroup)view).getChildCount();n++){NightArc found=arc(((ViewGroup)view).getChildAt(n));if(found!=null)return found;}return null;}
@@ -139,6 +223,7 @@ public class NightArcFlowTest {
         List<Activity> owned=new CopyOnWriteArrayList<>();Application app=(Application)c.getApplicationContext();Application.ActivityLifecycleCallbacks lifecycle=new Application.ActivityLifecycleCallbacks(){public void onActivityCreated(Activity a,Bundle b){owned.add(a);assertTrue("Main configuration only; never an Alarm/Tracking owner",a instanceof MainActivity);assertTrue(a.getIntent().getBooleanExtra("visualReview",false));}public void onActivityStarted(Activity a){}public void onActivityResumed(Activity a){}public void onActivityPaused(Activity a){}public void onActivityStopped(Activity a){}public void onActivitySaveInstanceState(Activity a,Bundle b){}public void onActivityDestroyed(Activity a){}};app.registerActivityLifecycleCallbacks(lifecycle);
         try{
             Records.factory=context->new Store(context,database);SleepPlans.factory=context->fixture;TonightScreen.clock=now::get;AlarmSkips.clock=now::get;AlarmScheduling.port=new AlarmScheduling.Port(){public boolean allowed(Context context){return true;}public void schedule(Context context,Alarm alarm){scheduled[0]++;assertNull(alarm.nap);}};try(Store store=new Store(c,database)){Alarm alarm=new Alarm(1);alarm.hour=6;alarm.minute=30;alarm.enabled=false;alarm.days.addAll(Set.of(1,2,3,4,5,6,7));store.save(alarm);}Appearance.save(c,false,0,0,true,false);
+            if("true".equals(InstrumentationRegistry.getArguments().getString("ciSystemBarsTransition"))){systemBarTransitions(database);assertEquals(0,scheduled[0]);assertEquals(saved,fixture.getAll());return;}
             launch();state("Bedtime in 30 min");
             UiObject2 clockAction=device.findObject(By.desc("Alarms & challenges"));assertNotNull(clockAction);assertEquals(android.widget.Button.class.getName(),clockAction.getClassName());
             i.runOnMainSync(()->{NightArc rest=arc(activity.getWindow().getDecorView());assertNotNull(rest);android.view.accessibility.AccessibilityNodeInfo node=rest.createAccessibilityNodeInfo();try{assertEquals(android.widget.Button.class.getName(),node.getClassName().toString());assertTrue(node.isClickable());assertTrue(node.isFocusable());}finally{node.recycle();}View toggle=described(activity.getWindow().getDecorView(),"Tonight alarm enabled");assertTrue("Tonight switch uses gesture-only shared feedback",toggle instanceof InteractionFeedback.Toggle);});capture("upcoming");
