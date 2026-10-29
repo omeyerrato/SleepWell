@@ -20,6 +20,16 @@ These changes are published in0.1.6; they are not installed on the phone.
 
 ## Current priorities
 
+Current source work after0.1.6 (29 October, not a newer installed APK):
+
+- [x] Merge Sleep sounds header navigation and fixed Timer/Fade actions with draft, scroll and focus restoration; scoped native configuration flow and14 originals pass. [Evidence](verification/2026-10-29-sleep-mixer-reference/README.md).
+- [x] Implement consistent rounded Report means; the first18-frame flow passes functionally. Its selected-month tooltip overlaps the goal caption, so full visual acceptance is withheld.
+- [ ] Recapture the revised Report tooltip placement; source and native code compile, corrected screenshots remain pending.
+- [ ] Integrate and finish full28-type routine preview. Separate branches prove17 controllers through private/fake ports;11 microphone/camera adapters remain unfinished. This is not physical-device or actual alarm-runtime acceptance.
+- [ ] Correct the discovered Walk completion path that can advance after failed sensor cleanup; a separate fix is assigned.
+- [ ] Resolve or clearly document the initial Android system-bar contrast handoff. Both diagnostic attempts retain a white-on-cream first frame despite correct requested appearance; the attempted production change was rejected as a fix.
+- [ ] Build/publish the next combined update;0.1.6 remains the latest published APK and0.1.4 the last verified phone installation.
+
 - [ ] Match all 36 reference screens, including remaining alarm screens, charts, menus, icons and navigation states.
 - [x] Complete Report calendar/edit verification: actual date selection, editing, Save/reopen and Back-discard; 11 inspected originals. [Evidence](verification/2026-10-27-report-proportions/README.md).
 - [ ] Complete remaining interaction fixes and security review. Named recovery, touch, settings, document and consent journeys pass; broader security/provider behavior remains open.
