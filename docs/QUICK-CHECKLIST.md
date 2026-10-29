@@ -52,12 +52,14 @@ Checked means implemented with the stated supporting evidence. Physical-device a
 
 - [x] Integrate Motion sensor reference artwork, clearer real-data chart labels and complete calibration/footer layout. [Seven inspected originals](verification/2026-10-29-motion-reference/README.md); fake sensor ports, not hardware acceptance.
 - [x] Reject unsupported external media fade before allocating its newer native listener. Source-only; next combined build pending.
-- [ ] Finish the Privacy reference layout and its actual loading/error/persistence flow.
-- [ ] Build, lint and audit the next combined update.
+- [x] Integrate the Privacy storage/backup composition and real loading/error/favorites persistence flow. [12 inspected originals](verification/2026-10-29-privacy-reference/README.md); audio-only bulk deletion and a persistent last-export receipt remain missing.
+- [x] Build and lint next0.1.8 at `0b3cb9ed`: PASS11m43s.
+- [ ] Complete its independent package audit and publish.
 
 ## Still unfinished
 
 - [ ] Reference/interaction/security priorities above.
+- [ ] Audio-only bulk Delete recordings retaining sleep history, and a persistent manual Last export receipt. Both are next-increment work.
 - [ ] Initial Android system-bar contrast handoff: first light frame can retain white glyphs despite correct requested appearance. The attempted change failed and was rejected. [Actual diagnostic evidence](verification/2026-10-29-systemui-transitions/README.md).
 - [ ] Reliable additional sound recognition, including laughter/instruments.
 - [ ] Working phone-input sleep-stage/REM and breathing/apnea analysis.
