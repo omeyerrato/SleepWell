@@ -25,6 +25,7 @@ on:
           - routine-walk-cleanup
           - routine-audio
           - cognitive-feedback
+          - routine-camera
           - tonight
           - tonight-composition
           - appearance

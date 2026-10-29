@@ -37,6 +37,7 @@ parser.add_argument("--scope", choices=(
     'routine-walk-cleanup',
     'routine-audio',
     'cognitive-feedback',
+    'routine-camera',
     'tonight',
     'tonight-composition',
     'appearance',
@@ -393,6 +394,8 @@ elif args.scope == "routine-walk-cleanup":
 elif args.scope == "cognitive-feedback":
     tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
     metadata["routine_slice"] = "cognitive-feedback"
+elif args.scope == "routine-camera":
+    tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
 elif args.scope == "routine-audio":
     tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
     metadata["routine_slice"] = "audio"
@@ -504,6 +507,8 @@ method_counts.update({"PowerNapNativeTest": 3})
 method_counts["InteractionSecurityNativeTest"] = 2
 for test in tests:
     extra = []
+    if args.scope == "routine-camera":
+        extra += ["-e", "routineSlice", "camera"]
     if args.scope in ("routine-walk-cleanup", "routine-audio", "cognitive-feedback"):
         extra += ["-e", "routineSlice", {"routine-walk-cleanup": "walk-cleanup", "routine-audio": "audio", "cognitive-feedback": "cognitive-feedback"}[args.scope]]
     if test == "SoundImportReopenTest":
@@ -555,6 +560,7 @@ if "SonarSharedClassifierStorageTest" in tests:
 if args.scope != "full":
     focused_frames = {
         "morning-code-enrollment": ['qr-code-permission.png', 'qr-code-invalid.png', 'qr-code-denied.png', 'qr-code-access-error.png', 'qr-code-scanning.png', 'qr-code-camera-error.png', 'qr-code-captured.png', 'qr-code-fallback.png', 'qr-code-fallback-error.png', 'qr-code-recreated.png', 'qr-code-routine.png', 'qr-code-reopened.png', 'qr-code-unavailable.png', 'qr-code-types-recreated.png', 'qr-code-nfc-main.png', 'qr-code-nfc-draft.png', 'qr-code-nfc-draft-recreated.png', 'qr-code-nfc-read-error.png', 'qr-code-nfc-settings-error.png', 'qr-code-nfc-saved.png', 'qr-code-nfc-task-setup.png', 'qr-code-nfc-task-returned.png'],
+        "routine-camera": ['routine-camera-parent.png', 'routine-camera-math.png', 'routine-camera-memory-recreated.png', 'routine-camera-permission.png', 'routine-camera-qr-idle.png', 'routine-camera-qr-wrong.png', 'routine-camera-earned-cleanup.png', 'routine-camera-earned-recreated.png', 'routine-camera-qr-completed.png', 'routine-camera-picture-idle.png', 'routine-camera-picture-progress.png', 'routine-camera-picture-recreated.png', 'routine-camera-smile-idle.png', 'routine-camera-smile-progress.png', 'routine-camera-pose-idle.png', 'routine-camera-pose-progress.png', 'routine-camera-light-idle.png', 'routine-camera-light-progress.png', 'routine-camera-object-idle.png', 'routine-camera-object-progress.png', 'routine-camera-completed.png', 'routine-camera-random.png', 'routine-camera-random-recreated.png', 'routine-camera-random-completed.png'],
         "contactless-status": ['sonar-setup-initial.png', 'sonar-setup-access-denied.png', 'sonar-setup-access-requesting.png', 'sonar-setup-access-returned.png', 'sonar-setup-ready.png', 'sonar-setup-route-blocked.png', 'sonar-setup-route-returned.png', 'sonar-setup-gain-changed.png', 'sonar-setup-retested.png', 'sonar-setup-reopened.png', 'sonar-setup-recreated.png'],
         "tonight-composition": ['arc-upcoming.png', 'arc-help.png', 'arc-start.png', 'arc-middle.png', 'arc-end.png', 'arc-next.png', 'arc-large.png', 'arc-large-action.png', 'arc-weekly.png', 'arc-off.png', 'arc-off-recreated.png', 'arc-weekday-recreated.png', 'arc-empty.png', 'arc-empty-action.png', 'arc-icon-page-1.png', 'arc-icon-page-2.png', 'arc-icon-page-3.png', 'arc-launcher-icons.png'],
         "room-settings-search": ROOM_SETTINGS_SEARCH_FRAMES,

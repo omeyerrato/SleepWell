@@ -153,7 +153,9 @@ final class RoutinePracticeFixture {
     private void randomAndUnsupported()throws Exception{
         launch(ChallengeRoutine.random(List.of(task("Math",1),task("Counting",1),task("Retype",1)),2));String selected=ChallengeRoutineJson.encode(session().routine).toString(),run=session().run;capture("random");recreate();assertEquals(selected,ChallengeRoutineJson.encode(session().routine).toString());assertEquals(run,session().run);capture("random-recreated");
         for(int n=0;n<2;n++){String type=main(()->session().position().task.type);if(type.equals("Math"))checkMath();else if(type.equals("Counting"))counting();else{WakeCognitiveTask.Retype task=(WakeCognitiveTask.Retype)cognitive();enter(task.input,task.phrase);click("Check answer");}}assertTrue(main(()->session().finished()));click("Done");await(()->top==editor&&ready(editor));unchanged();
-        launch(new ChallengeRoutine(List.of(task("Camera light",1))));assertNull(session());text("Return to routine");assertTrue(device.hasObject(By.textContains("Camera light")));capture("unsupported");click("Return to routine");await(()->top==editor&&ready(editor));unchanged();
+        launch(new ChallengeRoutine(List.of(task("Math",1))));i.runOnMainSync(practice::finish);await(practice::isDestroyed);
+        i.runOnMainSync(()->c.startActivity(ChallengePracticeActivity.preview(editor,new ChallengeRoutine(List.of(task("Math",1))),UUID.randomUUID().toString(),null).putExtra("routine","[{\"type\":\"Unavailable private task\",\"rounds\":1}]").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)));
+        await(()->top instanceof ChallengePracticeActivity&&ready(top));practice=(ChallengePracticeActivity)top;assertNull(session());text("Return to routine");assertTrue(device.hasObject(By.textContains("settings could not be read")));capture("unsupported");click("Return to routine");await(()->top==editor&&ready(editor));unchanged();
     }
 
     private final class MotionProof {
