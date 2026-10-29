@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 27 October
 
-Latest published **0.1.5 / ef694082** adds the generated flat launcher/control rasters and clearer Contactless, Report, Tonight and Automatic menus. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.5-raster-menus-20261028-ef694082); [build/package audit](docs/verification/2026-10-28-015-build/README.md); [current native scope and UI04 contrast limit](docs/verification/2026-10-28-raster-tonight-native/README.md). The phone remains on0.1.4 with original user data preserved; its next update is deferred by the user until after waking.
+Latest published **0.1.6 / 741b3718** improves feature search, challenge selection, automation cards and protection setup. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.6-clearer-settings-20261029-741b3718); [package audit](docs/verification/2026-10-29-016-build/README.md); [combined editor action/persistence proof](docs/verification/2026-10-29-editor-usability-integration/README.md). The phone remains on0.1.4 with original user data preserved; installation is deferred by the user. All36-reference acceptance remains unfinished.
 
 Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped

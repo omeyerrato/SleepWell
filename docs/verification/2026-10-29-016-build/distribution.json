@@ -1,0 +1,42 @@
+{
+  "source": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
+  "tag": "v0.1.6-clearer-settings-20261029-741b3718",
+  "tag_commit": "741b3718032ab4dc1d52eb67cf2194d4c59884f9",
+  "release_id": 427348434,
+  "url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.6-clearer-settings-20261029-741b3718",
+  "draft": false,
+  "published": true,
+  "published_at": "2026-10-29T01:05:51Z",
+  "prerelease": true,
+  "assets": [
+    {
+      "name": "SleepWell-0.1.6-741b3718-arm64.apk",
+      "id": 686892549,
+      "size": 163250139,
+      "sha256": "3e44d6899aa52ccc567de983b91c70765c5cbdc00562144a4bbdc04125940459",
+      "state": "uploaded",
+      "server_digest": "sha256:3e44d6899aa52ccc567de983b91c70765c5cbdc00562144a4bbdc04125940459"
+    },
+    {
+      "name": "SleepWell-0.1.6-741b3718-arm64.apk.sha256",
+      "id": 686892554,
+      "size": 101,
+      "sha256": "635accd2845b1c1a0d96aa3182cad67b35f74dd3ededb038af89869afb26a94f",
+      "state": "uploaded",
+      "server_digest": "sha256:635accd2845b1c1a0d96aa3182cad67b35f74dd3ededb038af89869afb26a94f"
+    }
+  ],
+  "versionName": "0.1.6",
+  "versionCode": 7,
+  "phone_installed": false,
+  "phone_update": "Deferred by user",
+  "build": "PASS5m30s",
+  "native_editor_run": 40792566584,
+  "native_editor_seconds": [
+    69.905,
+    33.847
+  ],
+  "native_editor_originals": 36,
+  "all_36_reference_screens_accepted": false,
+  "scope": "Combined Search/Challenge two existing methods pass69.905s/33.847s,36originals individually reviewed,10named paths match frozen741. Independent Automation10/Protection16 scopes; independent package/signature/retention audit passed; manifest onlyversionmetadata drift. No full36reference-screen, physical/output/overnight/provider/security completion claim."
+}

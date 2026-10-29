@@ -1,21 +1,21 @@
 # SleepWell quick checklist
 
-Latest published **0.1.5 / ef694082** adds the generated flat launcher/control rasters and clearer Contactless, Report, Tonight and Automatic menus. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.5-raster-menus-20261028-ef694082); [build/package audit](verification/2026-10-28-015-build/README.md); [current native scope and UI04 contrast limit](verification/2026-10-28-raster-tonight-native/README.md). The phone remains on0.1.4 with original user data preserved; its next update is deferred by the user until after waking.
+Latest published **0.1.6 / 741b3718** improves feature search, challenge selection, automation cards and protection setup. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.6-clearer-settings-20261029-741b3718); [package audit](verification/2026-10-29-016-build/README.md); [combined editor action/persistence proof](verification/2026-10-29-editor-usability-integration/README.md). The phone remains on0.1.4 with original user data preserved; installation is deferred by the user. All36-reference acceptance remains unfinished.
 
 **0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md).
 
 Checked means implemented with the stated supporting evidence. It does not mean every screen, device or physical behavior is verified. [Full feature matrix](FEATURE-MATRIX.md), [172 detailed entries](feature-matrix.json), [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
 
-## Next update: clearer navigation and settings
+## Published in0.1.6: clearer navigation and settings
 
-These changes are merged source for0.1.6; they are not installed on the phone.
+These changes are published in0.1.6; they are not installed on the phone.
 
 - [x] Search reaches the chosen alarm and actual Extra loud or Flashlight options, with an explicit existing-alarm/new-draft choice. Query, options and unsaved draft restore; only Save alarm writes. [18-original action/persistence evidence](verification/2026-10-29-feature-findability/README.md).
 - [x] Challenge rows open configuration, direct choices show selection, and the28-task catalog is searchable. Cancel also restores the pinning draft. [18-original settled comparison/action evidence](verification/2026-10-29-challenge-selection/README.md).
 - [x] Automation uses compact event-to-destination cards. Reselecting a destination preserves its details; Test, Delete and Save have distinct behavior, and scheduling failures remain visible. [10-original card evidence](verification/2026-10-29-automation-rule-cards/README.md); external delivery remains unverified.
 - [x] Protection separates saved choices from missing Android access, restores its explanations and supports read-error Retry. [16-original recovery evidence](verification/2026-10-29-protection-recovery/README.md); live alarm enforcement remains unverified.
-- [ ] Complete the combined Search/Challenge navigation check after merging their shared alarm editor. Individual passes do not establish this merge.
-- [ ] Build and publish0.1.6 with the original signing identity and retained-data compatibility.
+- [x] Verify Search and Challenge together after merging their shared alarm editor: two existing methods passed69.905s/33.847s; all36 scoped originals inspected. [Evidence](verification/2026-10-29-editor-usability-integration/README.md). This is not acceptance of all36 design references.
+- [x] Build and publish0.1.6 with the original signing identity, retained assets/libraries and unchanged schema17/backup14; exact source tag and both server asset hashes verified. Phone installation remains deferred.
 - [ ] Finish full-routine interactive preview across all28 task types and random routines. Work continues separately; this feature is not complete.
 
 ## Current priorities
@@ -86,4 +86,4 @@ Frozen source **08d3911e**, version **0.1.4 / code5**: Root build succeeded in *
 - [ ] Optional vendor-service/hardware parity listed in the full feature matrix.
 - [ ] Verify real alarm protection, loudness, ramp, sunrise, flashlight and challenges when output testing is authorized.
 - [ ] Verify overnight tracking, sound accuracy, anti-snoring, battery behavior and external integrations.
-- [x] Install the latest published0.1.4 update while preserving phone data. 0.1.5 is published; installation is deferred by the user until after waking.
+- [x] Install0.1.4 while preserving phone data. Newer0.1.6 is published; its installation is deferred by the user.
