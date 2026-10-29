@@ -21,6 +21,7 @@ on:
           - challenge-selection
           - tonight
           - tonight-composition
+          - system-bars-transition
           - appearance
           - event-library
           - goal-plan

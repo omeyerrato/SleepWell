@@ -33,6 +33,7 @@ parser.add_argument("--scope", choices=(
     'challenge-selection',
     'tonight',
     'tonight-composition',
+    'system-bars-transition',
     'appearance',
     'event-library',
     'goal-plan',
@@ -379,6 +380,8 @@ elif args.scope == "math-owner":
     tests = ["ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
 elif args.scope == "challenge-routine":
     tests = ["ChallengeRoutineFlowTest"]
+elif args.scope == "system-bars-transition":
+    tests = ["NightArcFlowTest#clockProgressAndExplanationWithoutAnyAlarmDelivery"]
 elif args.scope == "tonight-composition":
     tests = ["NightArcFlowTest#clockProgressAndExplanationWithoutAnyAlarmDelivery"]
 elif args.scope == "tonight":
@@ -479,6 +482,8 @@ method_counts.update({"PowerNapNativeTest": 3})
 method_counts["InteractionSecurityNativeTest"] = 2
 for test in tests:
     extra = []
+    if args.scope == "system-bars-transition":
+        extra = ["-e", "ciSystemBarsTransition", "true"]
     if test == "SoundImportReopenTest":
         if "SoundImportPickerTest" in failures:
             failures.append(test + " skipped: picker prerequisite failed")
@@ -527,6 +532,7 @@ if "SonarSharedClassifierStorageTest" in tests:
         failures.append("Shared PCM replay evidence incomplete: " + str(error))
 if args.scope != "full":
     focused_frames = {
+        "system-bars-transition": ["arc-bars-tonight.png", "arc-bars-help.png", "arc-bars-help-return.png", "arc-bars-alarms-first.png", "arc-bars-alarms-observed.png", "arc-bars-tonight-return.png", "arc-bars-alarms-recreated.png", "arc-bars-help-recreated.png"],
         "contactless-status": ['sonar-setup-initial.png', 'sonar-setup-access-denied.png', 'sonar-setup-access-requesting.png', 'sonar-setup-access-returned.png', 'sonar-setup-ready.png', 'sonar-setup-route-blocked.png', 'sonar-setup-route-returned.png', 'sonar-setup-gain-changed.png', 'sonar-setup-retested.png', 'sonar-setup-reopened.png', 'sonar-setup-recreated.png'],
         "tonight-composition": ['arc-upcoming.png', 'arc-help.png', 'arc-start.png', 'arc-middle.png', 'arc-end.png', 'arc-next.png', 'arc-large.png', 'arc-large-action.png', 'arc-weekly.png', 'arc-off.png', 'arc-off-recreated.png', 'arc-weekday-recreated.png', 'arc-empty.png', 'arc-empty-action.png', 'arc-icon-page-1.png', 'arc-icon-page-2.png', 'arc-icon-page-3.png', 'arc-launcher-icons.png'],
         "room-settings-search": ROOM_SETTINGS_SEARCH_FRAMES,
