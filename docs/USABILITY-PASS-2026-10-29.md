@@ -40,6 +40,12 @@ Published source **`ce2cb571`**, version **0.1.11 / 12**. [Development APK](http
 
 No new tests, lint, visual verification, security review or physical outputs ran. Implementation references and deferred status are recorded in F035/F064/F169 of the feature matrix.
 
+## Readiness control — source in progress
+
+`9822fc65` adds the reference's explicit quiet-alarm review/scheduling control. A fresh one-question Math alarm is scheduled only after confirmation; the requested level is capped at25%, with no boosted sound, vibration, torch or screen sunrise. The review states that completing Math stops it; no automatic-stop claim is made. Permission/busy/error/request-note states are included, and ordinary saved alarm configurations are not edited.
+
+The initial candidate `6cfcc62e` packaged successfully in1m48s but is **not published or executed**. Publication is held while the new quiet alarm's priority yields to a saved alarm that arrives during it. Latest published remains0.1.11.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.
