@@ -97,7 +97,9 @@ public class MainActivity extends Activity {
                 settingsHeading(body,"Schedules & challenges");
                 settingsRow(body,"calendar","Calendar rules","Skipped dates and meeting-aware alarms",()->startActivity(RecordUi.intent(this,CalendarRulesActivity.class)));
                 settingsRow(body,"clock","Naps & timers","Short rests, Power nap and schedules",()->startActivity(RecordUi.intent(this,NapActivity.class)));
-                settingsRow(body,"phone","Bedside NFC tag","Enroll a tag for wake-up challenges",()->openSettingsPage(11));break;
+                settingsRow(body,"phone","Bedside NFC tag","Enroll a tag for wake-up challenges",()->openSettingsPage(11));
+                settingsHeading(body,"Smart wake-up default");
+                Design.toggle(body,"Wait for duration goal","Early waking waits for your duration goal. The fixed alarm still rings on time.",Prefs.flag(this,"smartNeedsGoal"),on->Prefs.put(this,"smartNeedsGoal",on));break;
             case "sleep":
                 settingsHeading(body,"Tracking");
                 settingsRow(body,"moon","Sleep tracking","Sensor setup and current recording",this::tracking);
@@ -243,9 +245,7 @@ public class MainActivity extends Activity {
         hero(body,"Alarm readiness","Check your device settings for reliable alarms.");Design.space(body,18);
         AlarmReadinessUi.rows(this,body,NOTIFY,this::render);
         Design.space(body,18);Design.button(body,"Open battery settings",true,()->{if(body.isAttachedToWindow())AlarmReadinessUi.battery(this);});
-        Design.space(body,14);Design.text(body,"On Samsung, add SleepWell to Never auto sleeping apps. Force stopping or powering off the phone prevents alarms.",12,400,Design.MUTED);
-
-        Design.space(body,12);Design.toggle(body,"Wait for duration goal","Smart wake-up only: early waking waits for your recorded-duration goal. The fixed alarm still rings on time.",Prefs.flag(this,"smartNeedsGoal"),on->Prefs.put(this,"smartNeedsGoal",on));
+        Design.space(body,12);Design.item(body,"info","Alarm reliability tips",null,()->SleepPicker.message(this,"Alarm reliability","On Samsung, add SleepWell to Never auto sleeping apps. Allow unrestricted battery use and keep alarm permissions enabled. Force stopping or powering off the phone prevents alarms."));
         String error=Prefs.text(this,"lastError","");if(!error.isEmpty()){Design.space(body,18);Design.text(body,"Last alarm error",16,600,Design.INK);Design.space(body,6);Design.text(body,error,13,400,Design.MUTED);Design.button(body,"Clear diagnostic",false,()->{Prefs.put(this,"lastError","");render();});}
     }
     private void notificationAccess(){if(Build.VERSION.SDK_INT>=33&&checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED)requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS},NOTIFY);else open(new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE,getPackageName()));}
