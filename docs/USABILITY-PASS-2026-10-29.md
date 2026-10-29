@@ -18,6 +18,19 @@ The APK packaged successfully in3m47s and is [published as a development prerele
 
 ## Delivery limits
 
+## Command and discovery follow-up
+
+Next package source: `44cb41e7`, version **0.1.10 / 11**. This adds:
+
+- Five compact search shortcuts: Extra loud, Automatic tracking, Snoring cues, Sleep goal and Flashlight. They use the existing search entries and retain the alarm chooser for alarm-specific settings.
+- Separate command rows for record/audio tools, playlist reorder/remove, radio station actions, CSV interval details, backup reset and playlist additions. Genuine saved-value selections keep their radio controls.
+- Grouped record-editor tools with scroll restoration. Task setup rows say Set up, and their final actions distinguish adding a new task from saving an existing one.
+- Warm Inter styling for app-owned alarm, record, microphone and guard confirmations, preserving the existing buttons and callbacks.
+
+This follow-up also runs APK packaging only. It does not add new verification or acceptance claims.
+
+## Delivery limits
+
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.
 
 The original unfinished Privacy cleanup follow-up files and its failed combined run are preserved in its worktree. They were not folded into this usability pass. No claim of a successful combined Privacy run is made.
