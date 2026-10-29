@@ -1,0 +1,102 @@
+{
+  "base": "697d123202cf53c62b14b09eab4a6527bb13b1c9",
+  "tested_head": "db13b5dae2630896991b5695e16ed2060a3dc4cd",
+  "source_commits": [
+    "2b87ce0ff4b90142de87d8069b5bdede6199cbb0",
+    "e60209a3ac72e232891e841249c1a13f2929b2fd",
+    "585d8005b5dd73cd23367bad3f5674c4f4e62ed1"
+  ],
+  "production_tree": "7c38b4ff1dfa254cbcf74dc93cd53e2b8b8382bb",
+  "same_production_tree_since_native_start": true,
+  "guard_files": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MorningCode.java",
+      "repository_sha256": "462387592c064b792e1d18b3bc07841c0cdbe63340d5ae9a2e7d8923bf903b24",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MorningCodeJson.java",
+      "repository_sha256": "ef23231227c86152b6a9334c7a6b2fdab3693cefe46a8e970e412dac5fbe00cd",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/MorningBarcode.java",
+      "repository_sha256": "7c02ddfc86d88fe74a484f7702be5dbfbe6a61d94806c68b53296e4f0d9ad5a0",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/QrDecoder.java",
+      "repository_sha256": "ec121a8bfb485dabc5be22959ce583bbbe65ec562aa108a81382111bc7b1727e",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/QrScanSession.java",
+      "repository_sha256": "55d15393abe8ad4261d6c907996a3986175a1526033ab5c8debe4c1e0670d808",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/QrCamera.java",
+      "repository_sha256": "e59e320e3928f1c2890b8395ecc3c36cf3a6a8d43c0993718fb0d241368917d8",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/QrCameraAccess.java",
+      "repository_sha256": "b5512b3e54c4f606d3e52c94f8878a141d5eec2a5663340ce3a5a5a61720cbc3",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/NfcEnrollment.java",
+      "repository_sha256": "de417091bd5c5495035f5335c3c394ba45a2feb75802c64b6eb9f5f5b20b5707",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "repository_sha256": "17bf74d23a9bbcf3c2897ca6d773fbcda273e24940deeab0cc52297ee2252323",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmActivity.java",
+      "repository_sha256": "e0fec60d374a817de4a8c6e9644a311252b6c5e6795d20bb60df6339bfd72eab",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/AlarmService.java",
+      "repository_sha256": "3b53f37fde32c8003d1efb3662a41b085923f40c82afcd7adbc066dcaaf9df64",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingService.java",
+      "repository_sha256": "4edb35f6143e33cf17c98f31c40155910f0b00836095a071f272e390f1df490a",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Prefs.java",
+      "repository_sha256": "551e6bf5e49e337a62ba1cf0793967498568ec5cfd8b61e41ea10405534289f2",
+      "unchanged_from_base": true
+    }
+  ],
+  "existing_native_test_methods": 1,
+  "method_timeout_seconds": 180,
+  "native_sounds": false,
+  "audio_imports": false,
+  "native_fixture_commits": [
+    "52c763d0",
+    "d8f9b441",
+    "05e7369a",
+    "db13b5da"
+  ],
+  "reference_boards": [
+    {
+      "path": "design-concepts/2026-10-22-phone-app/04-challenges.png",
+      "sha256": "b0613752e8d3ba3ce4743968d1abb2be3a710b7cf606fb50a877b9e06e48f739"
+    },
+    {
+      "path": "design-concepts/2026-10-22-phone-app/01-everyday.png",
+      "sha256": "e69ff57f5aa69abbb1ff60b791850daf84c2a16bd5d6c7db5ae6f72421f80c95"
+    },
+    {
+      "path": "design-concepts/2026-10-22-phone-app/12-privacy-and-appearance.png",
+      "sha256": "243a172cba04cf0275f8dc76eea16440e24f3103b4783c088eed65264fa56e70"
+    }
+  ]
+}
