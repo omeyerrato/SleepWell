@@ -12,6 +12,7 @@ final class ChallengePracticeSession {
     final ChallengeRoutine configured,routine;
     private int completed,generation;
     private Bundle draft;
+    private String pending="";
 
     /** A new render invalidates every callback from the previous card, even for the same unit. */
     record Ticket(String run,int unit,int generation,String task){}
@@ -56,7 +57,10 @@ final class ChallengePracticeSession {
                     throw new IllegalArgumentException("Preview selection does not belong to this pool.");
                 int completed=restored.getInt("completed",-1);
                 if(completed<0||completed>selected.units())throw new IllegalArgumentException("Preview progress is unavailable.");
-                return new ChallengePracticeSession(run,snapshot,configured,selected,restored.getString("notice",""),completed,restored.getBundle("draft"));
+                ChallengePracticeSession session=new ChallengePracticeSession(run,snapshot,configured,selected,restored.getString("notice",""),completed,restored.getBundle("draft"));
+                String pending=restored.getString("pending","");
+                if(!pending.isEmpty()){if(!UUID.fromString(pending).toString().equals(pending))throw new IllegalArgumentException("Invalid preview request.");session.pending=pending;}
+                return session;
             }
             ChallengeRoutine selected=configured;String notice="";
             if(configured.randomCount>0){
@@ -93,8 +97,20 @@ final class ChallengePracticeSession {
     Bundle draft(){return draft==null?null:new Bundle(draft);}
     Ticket render(){if(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper())throw new IllegalStateException("Preview rendering belongs to its UI owner");generation++;ChallengeRoutine.Position at=position();return at==null?null:new Ticket(run,completed,generation,taskKey(at.task));}
     void invalidate(){generation++;}
-    boolean owns(Ticket ticket){if(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper())return false;ChallengeRoutine.Position at=position();return ticket!=null&&at!=null&&run.equals(ticket.run())&&completed==ticket.unit()&&generation==ticket.generation()&&taskKey(at.task).equals(ticket.task());}
+    boolean owns(Ticket ticket){if(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper()||!pending.isEmpty())return false;ChallengeRoutine.Position at=position();return ticket!=null&&at!=null&&run.equals(ticket.run())&&completed==ticket.unit()&&generation==ticket.generation()&&taskKey(at.task).equals(ticket.task());}
     boolean checkpoint(Ticket ticket,Bundle state){if(!owns(ticket))return false;draft=boundedDraft(state);return true;}
     boolean advance(Ticket ticket){if(!owns(ticket))return false;int next=routine.advance(completed,ticket.unit());if(next==completed)return false;completed=next;generation++;draft=null;return true;}
-    Bundle save(){Bundle state=new Bundle();state.putInt("version",VERSION);state.putString("run",run);state.putString("snapshot",snapshot);state.putString("selected",ChallengeRoutineJson.encode(routine).toString());state.putString("notice",selectionNotice);state.putInt("completed",completed);if(draft!=null)state.putBundle("draft",new Bundle(draft));return state;}
+    String pending(){return pending;}
+    boolean sameUnit(String run,int unit,String task){return android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&this.run.equals(run)&&completed==unit&&position()!=null&&taskKey(position().task).equals(task);}
+    boolean issueChild(String nonce,int unit,String task){if(!pending.isEmpty()||!sameUnit(run,unit,task))return false;pending=nonce;generation++;return true;}
+    boolean child(String nonce,int unit,String task){return nonce!=null&&nonce.equals(pending)&&sameUnit(run,unit,task);}
+    boolean childReturned(String nonce,int unit,String task,boolean success,boolean fallback){
+        if(!child(nonce,unit,task)||success&&fallback)return false;
+        pending="";generation++;
+        if(success){completed=routine.advance(completed,unit);draft=null;}
+        else if(fallback){draft=new Bundle();draft.putBoolean("practiceFallback",true);}
+        return true;
+    }
+    void abandonChild(){pending="";generation++;}
+    Bundle save(){Bundle state=new Bundle();state.putInt("version",VERSION);state.putString("run",run);state.putString("snapshot",snapshot);state.putString("selected",ChallengeRoutineJson.encode(routine).toString());state.putString("notice",selectionNotice);state.putInt("completed",completed);state.putString("pending",pending);if(draft!=null)state.putBundle("draft",new Bundle(draft));return state;}
 }

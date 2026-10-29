@@ -1,0 +1,110 @@
+package org.sleepwell.app;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.*;
+import java.lang.ref.WeakReference;
+import java.util.*;
+
+/** Private preview receipts. None of these fields or modes authorizes an actual alarm result. */
+final class PracticeChildTicket {
+    static final String MODE="routine-preview";
+    static final int SUCCESS=Activity.RESULT_OK,FALLBACK=Activity.RESULT_FIRST_USER+18;
+    private static final Map<String,Ticket> issued=new LinkedHashMap<>();
+    private static final long LIFETIME=30*60*1000L;
+
+    static final class Ticket {
+        final String nonce,run,snapshot,configuration;
+        final int unit,round;
+        final ChallengeRoutine.Task task;
+        final long deadline;
+        private ChallengePracticeSession parent;
+        private WeakReference<Activity> child=new WeakReference<>(null);
+        private volatile boolean published,consumed,capturing;
+        private volatile int attempt;
+        private int outcome=Activity.RESULT_CANCELED;
+        Ticket(ChallengePracticeSession parent){this.parent=parent;nonce=UUID.randomUUID().toString();run=parent.run;snapshot=parent.snapshot;unit=parent.completed();ChallengeRoutine.Position at=parent.position();task=at.task;round=at.round;configuration=key(task);deadline=SystemClock.elapsedRealtime()+LIFETIME;}
+        private boolean live(){return !consumed&&SystemClock.elapsedRealtime()<=deadline&&issued.get(nonce)==this&&parent.child(nonce,unit,configuration);}
+        boolean captureOwner(Activity owner,boolean resumed){return main()&&resumed&&live()&&!published&&child.get()==owner&&!owner.isDestroyed()&&!owner.isFinishing()&&owner.hasWindowFocus()&&owner.getWindow().getDecorView().isAttachedToWindow();}
+        boolean belongs(String type){return main()&&live()&&task.type.equals(type);}
+        int beginCapture(Activity owner,boolean resumed){requireMain();if(!captureOwner(owner,resumed))return -1;attempt++;capturing=true;return attempt;}
+        /** Workers inspect only a main-thread-issued volatile lease, never Activity Views or parent state. */
+        boolean captureCurrent(int expected){return capturing&&!published&&!consumed&&attempt==expected&&SystemClock.elapsedRealtime()<=deadline;}
+        void suspendCapture(Activity owner){requireMain();if(child.get()==owner){capturing=false;attempt++;}}
+    }
+
+    private static boolean main(){return Looper.myLooper()==Looper.getMainLooper();}
+    private static void requireMain(){if(!main())throw new IllegalStateException("Practice receipts belong to their UI owner.");}
+    private static String key(ChallengeRoutine.Task task){return ChallengeRoutineJson.encode(new ChallengeRoutine(List.of(task))).toString();}
+
+    static Ticket issue(ChallengePracticeSession parent){
+        requireMain();if(parent.position()==null)throw new IllegalArgumentException("This preview is complete.");
+        for(Iterator<Ticket> values=issued.values().iterator();values.hasNext();){Ticket old=values.next();if(old.consumed||SystemClock.elapsedRealtime()>old.deadline){old.consumed=true;old.capturing=false;old.child.clear();values.remove();}}
+        // Never evict or stop somebody else's live capture to make room for a new preview.
+        if(issued.size()>=8)throw new IllegalStateException("Earlier practice requests are still closing. Return and close them first.");
+        Ticket ticket=new Ticket(parent);if(!parent.issueChild(ticket.nonce,ticket.unit,ticket.configuration))throw new IllegalStateException("A preview step is already open.");issued.put(ticket.nonce,ticket);return ticket;
+    }
+
+    static Intent intent(Activity parent,Class<? extends Activity> child,Ticket ticket){
+        requireMain();if(!ticket.live())throw new IllegalArgumentException("Practice request expired.");
+        return RecordUi.intent(parent,child).putExtra("mode",MODE).putExtra("practiceNonce",ticket.nonce)
+                .putExtra("practiceRun",ticket.run).putExtra("practiceUnit",ticket.unit).putExtra("practiceTask",ticket.configuration);
+    }
+
+    static Ticket claim(Activity child,String... supported){
+        requireMain();Intent input=child.getIntent();
+        if(input.getData()!=null||input.getClipData()!=null||input.getSelector()!=null||!MODE.equals(input.getStringExtra("mode")))return null;
+        Ticket ticket=issued.get(input.getStringExtra("practiceNonce"));
+        if(ticket==null||!ticket.live()||ticket.published||!ticket.run.equals(input.getStringExtra("practiceRun"))
+                ||ticket.unit!=input.getIntExtra("practiceUnit",-1)||!ticket.configuration.equals(input.getStringExtra("practiceTask"))
+                ||!Arrays.asList(supported).contains(ticket.task.type))return null;
+        Activity previous=ticket.child.get();
+        if(previous!=null&&previous!=child&&!previous.isDestroyed()&&!previous.isChangingConfigurations())return null;
+        ticket.child=new WeakReference<>(child);return ticket;
+    }
+
+    /** Called only after the matching child has confirmed its own capture cleanup. */
+    static Intent publish(Ticket ticket,Activity child,int outcome,boolean cleanupConfirmed,boolean resumed,int attempt){
+        requireMain();
+        if(ticket==null||!cleanupConfirmed||!ticket.live()||ticket.published||ticket.child.get()!=child
+                ||outcome!=SUCCESS&&outcome!=FALLBACK&&outcome!=Activity.RESULT_CANCELED)return null;
+        // A success needs a current visible native child. Cancel may be delivered during teardown.
+        if(outcome!=Activity.RESULT_CANCELED&&!ticket.captureOwner(child,resumed))return null;
+        if(outcome==SUCCESS&&(attempt<1||ticket.attempt!=attempt))return null;
+        ticket.published=true;ticket.capturing=false;ticket.outcome=outcome;
+        return new Intent().putExtra("practiceNonce",ticket.nonce).putExtra("practiceRun",ticket.run)
+                .putExtra("practiceUnit",ticket.unit).putExtra("practiceTask",ticket.configuration);
+    }
+
+    /** Parent recreation changes the Java owner, never the authorized snapshot or pending unit. */
+    static boolean attach(ChallengePracticeSession parent){
+        requireMain();if(parent.pending().isEmpty())return true;Ticket ticket=issued.get(parent.pending());
+        if(ticket==null||ticket.consumed||SystemClock.elapsedRealtime()>ticket.deadline||!ticket.run.equals(parent.run)
+                ||!ticket.snapshot.equals(parent.snapshot)||!parent.child(ticket.nonce,ticket.unit,ticket.configuration)){
+            parent.abandonChild();return false;
+        }
+        ticket.parent=parent;return true;
+    }
+
+    /** No parent resumed/focus gate: an authenticated child result can precede parent onResume. */
+    static boolean consume(ChallengePracticeSession parent,int result,Intent data){
+        requireMain();if(data==null||data.getData()!=null||data.getClipData()!=null||data.getSelector()!=null)return false;
+        Ticket ticket=issued.get(data.getStringExtra("practiceNonce"));
+        if(ticket==null||!ticket.live()||!ticket.published||ticket.outcome!=result||!ticket.snapshot.equals(parent.snapshot)
+                ||!ticket.run.equals(parent.run)||!ticket.run.equals(data.getStringExtra("practiceRun"))
+                ||ticket.unit!=data.getIntExtra("practiceUnit",-1)||!ticket.configuration.equals(data.getStringExtra("practiceTask"))
+                ||!parent.child(ticket.nonce,ticket.unit,ticket.configuration))return false;
+        ticket.parent=parent;
+        boolean accepted=parent.childReturned(ticket.nonce,ticket.unit,ticket.configuration,result==SUCCESS,result==FALLBACK);
+        if(accepted){ticket.consumed=true;issued.remove(ticket.nonce);ticket.child.clear();}return accepted;
+    }
+
+    static void abandon(ChallengePracticeSession parent){
+        requireMain();Ticket ticket=issued.get(parent.pending());
+        if(ticket!=null&&ticket.run.equals(parent.run)&&ticket.snapshot.equals(parent.snapshot)){
+            ticket.consumed=true;issued.remove(ticket.nonce);ticket.child.clear();
+        }
+        parent.abandonChild();
+    }
+    private PracticeChildTicket(){}
+}

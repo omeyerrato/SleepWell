@@ -34,6 +34,7 @@ final class ChallengePracticeScreen implements AutoCloseable {
         Bundle saved=session.draft();draft=saved==null?new Bundle():saved;
         ChallengeRoutine.Position position=session.position();ChallengeRoutine.Task task=position.task;
         if(!SUPPORTED.contains(task.type))throw new IllegalArgumentException(task.type+" routine preview is not wired yet.");
+        if(draft.getBoolean("practiceFallback")){math(card,task.code==null?MathSettings.LEGACY:task.code.fallback);return;}
         if(mathSelected(position)){math(card,MathSettings.LEGACY);return;}
         switch(task.type){
             case "Math"->math(card,task.math);
