@@ -5,19 +5,48 @@ import android.graphics.*;
 import android.view.View;
 import java.util.*;
 
-/** Actual half-second RMS bins. Blank spans represent missing samples. */
+/** Actual half-second RMS bins. Blank spans represent missing samples, never invented zeroes. */
 @android.annotation.SuppressLint("ViewConstructor")
 final class MotionSignalChart extends View {
-    private final Paint p=new Paint(3);private List<Double> data=List.of();
-    MotionSignalChart(Context c){super(c);setContentDescription("Motion preview: no samples yet");}
-    void data(List<Double> bins){data=new ArrayList<>(bins);int samples=0;for(Double value:bins)if(value!=null)samples++;setContentDescription("Motion preview: "+samples+" measured half-second bins in the last 15 seconds");invalidate();}
-    private float d(float value){return value*getResources().getDisplayMetrics().density;}
-    @Override protected void onDraw(Canvas canvas){float left=d(26),right=getWidth()-d(6),top=d(8),bottom=getHeight()-d(26);p.setTypeface(Design.font(getContext(),400));p.setTextSize(Design.sp(getContext(),11*Appearance.scale(getContext())));p.setColor(Design.MUTED);p.setTextAlign(Paint.Align.RIGHT);canvas.drawText("High",left-d(4),top+d(5),p);canvas.drawText("Low",left-d(4),bottom,p);p.setStrokeWidth(d(.7f));p.setColor(Design.LINE);for(int n=0;n<6;n++){float x=left+(right-left)*n/5;canvas.drawLine(x,top,x,bottom,p);}canvas.drawLine(left,bottom,right,bottom,p);double peak=.24;for(Double value:data)if(value!=null)peak=Math.max(peak,value);float width=(right-left)/30;for(int n=0;n<data.size();n++){Double value=data.get(n);if(value==null)continue;float x=left+n*width,bar=(float)((bottom-top)*Math.min(1,value/peak));p.setColor(Design.VIOLET);canvas.drawRoundRect(x+d(.6f),bottom-Math.max(d(1),bar),x+width-d(.6f),bottom,d(2),d(2),p);}p.setColor(Design.MUTED);p.setTextAlign(Paint.Align.CENTER);float tickWidth=(right-left)/5;
-        boolean completeTicks=tickWidth>=p.measureText("12 s ago")+d(8);
-        for(int n=0;n<=5;n++){
-            if(!completeTicks&&n!=0&&n!=5)continue;
-            String label=n==5?"Now":(15-n*3)+" s ago";
-            float half=p.measureText(label)/2,x=left+(right-left)*n/5;
-            canvas.drawText(label,Math.max(half,Math.min(getWidth()-half,x)),bottom+d(17),p);
-        }}
+    private final Paint paint=new Paint(Paint.ANTI_ALIAS_FLAG);
+    private List<Double> data=List.of();
+    private double scale=.24;
+    MotionSignalChart(Context context){super(context);setContentDescription("Motion preview: no samples yet");}
+    void data(List<Double> bins){
+        data=new ArrayList<>(bins);double maximum=0;int measured=0;
+        for(Double value:data)if(measured(value)){maximum=Math.max(maximum,value);measured++;}
+        // Keep the established minimum range; larger observed values receive a little headroom.
+        scale=.24;
+        if(maximum>=scale){double step=Math.pow(10,Math.floor(Math.log10(maximum))-1);scale=Math.ceil(maximum*1.05/step)*step;}
+        setContentDescription("Motion preview: "+measured+" measured half-second bins in the last 15 seconds. "+rangeLabel()+" relative units. Missing readings stay blank.");invalidate();
+    }
+    String rangeLabel(){return "Scale 0–"+String.format(Locale.getDefault(),scale<10?"%.2f":scale<100?"%.1f":"%.2g",scale);}
+    private static boolean measured(Double value){return value!=null&&Double.isFinite(value)&&value>=0;}
+    private float dp(float value){return value*getResources().getDisplayMetrics().density;}
+    @Override protected void onDraw(Canvas canvas){
+        super.onDraw(canvas);paint.setTypeface(Design.font(getContext(),400));paint.setTextSize(Design.sp(getContext(),11*Appearance.scale(getContext())));
+        Paint.FontMetrics metrics=paint.getFontMetrics();
+        float left=Math.max(dp(27),paint.measureText("High")+dp(5)),right=getWidth()-dp(5);
+        float top=Math.max(dp(7),-metrics.ascent/2),bottom=getHeight()-(metrics.descent-metrics.ascent)-dp(9);
+        if(right<=left||bottom<=top)return;
+        paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(dp(.7f));paint.setColor(Design.LINE);paint.setPathEffect(new DashPathEffect(new float[]{dp(3),dp(3)},0));
+        for(int n=0;n<=5;n++){float x=left+(right-left)*n/5;canvas.drawLine(x,top,x,bottom,paint);}
+        canvas.drawLine(left,top,right,top,paint);paint.setPathEffect(null);canvas.drawLine(left,bottom,right,bottom,paint);
+        paint.setStyle(Paint.Style.FILL);paint.setColor(Design.MUTED);paint.setTextAlign(Paint.Align.RIGHT);
+        canvas.drawText("High",left-dp(5),top-metrics.ascent/2,paint);canvas.drawText("Low",left-dp(5),bottom,paint);
+        float width=(right-left)/30,gap=Math.min(dp(.8f),width/5);paint.setColor(Appearance.contrast(getContext())?0xff7041b4:Design.VIOLET);
+        for(int n=0;n<Math.min(30,data.size());n++){
+            Double value=data.get(n);if(!measured(value)||value==0)continue;
+            float x=left+n*width,height=(float)((bottom-top)*Math.min(1,value/scale));
+            canvas.drawRoundRect(x+gap,bottom-height,x+width-gap,bottom,dp(2),dp(2),paint);
+        }
+        paint.setColor(Design.MUTED);paint.setTextAlign(Paint.Align.CENTER);
+        float labelWidth=paint.measureText("12 s ago")+dp(8);int divisions=(right-left)/5>=labelWidth?5:(right-left)/3>=labelWidth?3:1;
+        float baseline=getHeight()-metrics.descent-dp(1);
+        for(int n=0;n<=divisions;n++){
+            int seconds=15-15*n/divisions;String label=seconds==0?"Now":seconds+" s ago";
+            float half=paint.measureText(label)/2,x=left+(right-left)*n/divisions;
+            canvas.drawText(label,Math.max(half,Math.min(getWidth()-half,x)),baseline,paint);
+        }
+    }
 }
