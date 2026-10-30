@@ -21,14 +21,14 @@ The full 43-flow design contract remains the target. Shared styling does not est
 - Releasing a changed handle opens an owned plan review. Use plan retains the existing revision-checked save/reminder owner. Rotation retains the pending interval; stale saves require reloading. Wake-up alarm changes have a separate review and explicit Save alarm step.
 - Settle in uses actual bundled PCM waveform previews, native volume sliders, the saved timer/fade editor and existing microphone-consent flow. Opening the screen is silent. Waveform height follows the chosen volume; it does not simulate microphone input.
 - Active tracking now uses a subdued clock dial, actual recorded duration, a compact sensor state and the existing measured movement timeline. Future clock time is grey; elapsed clock time is muted amber. Paused time remains excluded by the existing coordinator.
-- Java/test compilation and 24 focused unit tests passed during development. New native gesture/recreation/conflict/consent evidence is pending CI; this is not whole-app acceptance.
+- Java/test compilation, 25 focused unit tests and three native journeys passed at 7d726b2b. All 26 required native frames exist, including an actual pointer-cancel sequence, nonzero excluded paused time, separated consent actions and restored consent/End confirmations. A signed local preview APK is prepared; the user requested APK-only delivery, so the phone was not changed. Full-app acceptance remains open.
 
 ## Flow matrix
 
 | Board | Flow | Current status |
 | --- | --- | --- |
 | 01 | First night | Native design and full interaction review pending |
-| 02 | Plan tonight | Partial native composition; first viewport and linked picker journey verified at 359fd614 |
+| 02 | Plan tonight | Native composition, independent drag/save/cancel/conflict/recreation and explicit linked alarm review verified at 7d726b2b; extended accessibility/device review pending |
 | 03 | Wind down and guard | Native design and full interaction review pending |
 | 04 | Create and manage alarms | Native design and full interaction review pending |
 | 05 | Dates and smart waking | Native design and full interaction review pending |
@@ -44,9 +44,9 @@ The full 43-flow design contract remains the target. Shared styling does not est
 | 15 | Sound challenges | Native design and full interaction review pending |
 | 16 | Notes, camera light and fallback | Native design and full interaction review pending |
 | 17 | Alarm rings to dismissal | Native design and full interaction review pending |
-| 18 | Choose sounds and settle in | Shared controls updated; Settle in composition pending |
+| 18 | Choose sounds and settle in | Native source waveforms and mixer composition verified at 7d726b2b, with silent opening, timer draft recreation and microphone-consent Cancel; playback-output review pending |
 | 19 | Advanced audio sources | Native design and full interaction review pending |
-| 20 | Start, pause and finish tracking | Native design and full interaction review pending |
+| 20 | Start, pause and finish tracking | Native active/paused/resumed/end-confirmation compositions and lifecycle verified at 7d726b2b with synthetic PCM + real coordinator/SQLite; real overnight/device review pending |
 | 21 | Automatic tracking | Native design and full interaction review pending |
 | 22 | Sensors and calibration | Native design and full interaction review pending |
 | 23 | Room, awake and experimental signals | Native design and full interaction review pending |
@@ -75,9 +75,9 @@ The full 43-flow design contract remains the target. Shared styling does not est
 
 ## Next work
 
-1. Continue from the passing 359fd614 native captures. Recheck future-date captions and illustration-off compact cards; verify Tonight scroll restoration and the existing weekday/alarm-control flow after moving optional rows.
-2. Complete Tonight alarm summary, linked dial editing and first-viewport composition while preserving optional sections.
-3. Complete Settle in and active/paused/end tracking compositions using real runtime state and the existing capture owners.
+1. Continue from the passing 7d726b2b native captures. Finish compact/large-text/landscape/TalkBack/reduced-motion review and the existing weekday/alarm-control regression flow. Keep exact capture revisions in verification/README.md.
+2. Extend Tonight editing evidence to interrupted pointer sequences, non-daily/solar/override alarms and accessible exact entry while retaining independent saved-plan and alarm owners.
+3. Review Settle in playback/gain/error states and active/paused/end tracking with physical devices, additional sensors, long recordings and missing-data cases. Preserve the existing capture owners.
 4. Replace stale appearance/theme previews with the Night Dial preview while retaining saved legacy values.
 5. Review alarm editor, challenge catalog and all 28 task surfaces; keep challenge interaction and scheduling logic unchanged.
 6. Complete report/history/chart states and source/missing-data language.
