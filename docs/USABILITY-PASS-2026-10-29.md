@@ -144,6 +144,17 @@ Published source **`d7ef1deb`**, version **0.1.21 / 22**. [Development APK](http
 
 Implementation commits: `9ff0769c`, `2be78f57`. One implementation agent worked in an isolated worktree; the main checkout integrated the API family and recorded the model-source finding. No tests, lint, screenshot verification, security review, device or output operations ran. All36 acceptance stays open.
 
+## Portable feedback and built-in tone API — 0.1.22
+
+Published source **`6087d47e`**, version **0.1.22 / 23**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.22-portable-feedback-20261030-6087d47e). APK packaging only.
+
+- Appearance profile exports use version3 with feedbackEnabled Boolean and feedbackStrength Light0/Standard1/Firm2 alongside existing appearance/dimming choices. Capture uses strict typed saved preferences. Readable review and category/About copy show the actual feedback values.
+- Exact version1/2 schemas remain accepted. Missing legacy feedback fields do not write current choices, and version1 room-dimming absence remains unchanged. New keys participate in staged fingerprints, apply, readback and rollback through the existing typed main-preference path. The recovery envelope and old key-subset handling remain; profile processing requests no haptic output. Older readers reject the new version3 Appearance payload.
+- The ordinary-alarm API adds optional builtin_tone for exact daybreak/pulse/chime configured slots, plus read-only playback_mode for single/silent/playlist/radio context. Changing the slot preserves the playback mode and private data; unsupported/malformed slots return null. Default projections, eligibility, permissions, revisions and receipts remain unchanged.
+- Documentation covers format compatibility, staged behavior and configured-slot semantics. No profile export/import or external API mutation was executed.
+
+Implementation commits: `4f9a4ad7`, `02dce5d2`, `a039c316`. Two implementation agents worked in isolated worktrees; the main checkout integrated both feature flows. No tests, lint, screenshot verification, security review, device or output operations ran. All36 acceptance stays open.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.

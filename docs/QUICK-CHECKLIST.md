@@ -1,6 +1,6 @@
 # SleepWell current checklist
 
-Updated30October2026. Latest published APK: **0.1.21 / d7ef1deb**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.21-alarm-output-api-20261030-d7ef1deb). Last verified phone installation: **0.1.4 /08d3911e**; installation is deferred.
+Updated30October2026. Latest published APK: **0.1.22 / 6087d47e**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.22-portable-feedback-20261030-6087d47e). Last verified phone installation: **0.1.4 /08d3911e**; installation is deferred.
 
 Checked items record implemented source or publication, with historical evidence where linked. They do not establish current all-screen, physical or overnight acceptance. Current phase: usability first; new tests, lint, screenshots, security review and a separate bug pass are deferred.
 
@@ -45,8 +45,8 @@ Checked items record implemented source or publication, with historical evidence
 
 ## Latest usability increment
 
-- [x] Expose configured volume, ramp/delays, screen sunrise, flashlight and extra loud through optional API fields.
-- [x] Implement strict typed parsing, query values and partial patch behavior through the existing mutation path.
-- [x] Document unchanged default projection, admission and authority limits.
-- [x] Record the new staging source lead without claiming a working phone-stage model.
-- [x] Produce and publish0.1.21 (`d7ef1deb`), APK packaging only. New verification and phone actions remain deferred.
+- [x] Transfer feedback On/Off and strength through version3 Appearance profiles and readable review.
+- [x] Keep legacy missing-field semantics and existing staged readback/rollback/recovery behavior.
+- [x] Expose a strict built-in tone slot with read-only playback-mode context through the existing API.
+- [x] Document profile compatibility and tone/mode semantics.
+- [x] Produce and publish0.1.22 (`6087d47e`), APK packaging only. New verification and phone actions remain deferred.
