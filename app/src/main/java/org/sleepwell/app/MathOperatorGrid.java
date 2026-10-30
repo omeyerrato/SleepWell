@@ -61,6 +61,7 @@ final class MathOperatorGrid {
                         rejected.run();
                         return;
                     }
+                    InteractionFeedback.selection(view);
                     changed.accept(next);
                 });
                 LinearLayout.LayoutParams size = new LinearLayout.LayoutParams(0, -2, 1);
