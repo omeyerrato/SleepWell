@@ -31,6 +31,7 @@ final class InteractionFeedback {
     // Standard retains the previous platform click until the user saves another strength.
     static void selection(View source){acknowledge(source);}
     static void action(View source){acknowledge(source);}
+    static void tick(View source){if(!allowed(source))return;long now=SystemClock.uptimeMillis();if(lastFeedback>0&&now-lastFeedback<80)return;try{if(source.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK,0))lastFeedback=now;}catch(RuntimeException unavailable){}}
     private static Activity activity(Context context){for(int n=0;n<12;n++){if(context instanceof Activity)return(Activity)context;if(!(context instanceof ContextWrapper))return null;Context base=((ContextWrapper)context).getBaseContext();if(base==context)return null;context=base;}return null;}
     private static boolean allowed(View source){
         if(source==null||Looper.myLooper()!=Looper.getMainLooper()||!source.isEnabled()||!source.isShown()||!source.isAttachedToWindow()||!source.hasWindowFocus()||!source.isHapticFeedbackEnabled())return false;

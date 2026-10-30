@@ -28,7 +28,7 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleDebug assembleDebugAndroidTest --console=plain --max-workers=2
       - name: Check contrast and existing interval semantics
-        run: ./gradlew testDebugUnitTest --tests org.sleepwell.app.NightDialContrastTest --tests org.sleepwell.app.NightWindowTest --console=plain --max-workers=2
+        run: ./gradlew testDebugUnitTest --tests org.sleepwell.app.NightDialContrastTest --tests org.sleepwell.app.NightWindowTest --tests org.sleepwell.app.NightDialRangeTest --tests org.sleepwell.app.WavPreviewTest --console=plain --max-workers=2
       - name: Create disposable renderer
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-night-dial-kvm.rules
