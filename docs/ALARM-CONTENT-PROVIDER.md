@@ -37,6 +37,15 @@ The default/null projection remains the original 13 columns above, in that order
 | `smart_window_minutes` | Early-wake window, integer 0–60; zero disables smart wake-up |
 | `smart_sensitivity` | -1 follows the tracking profile (including calibration), 0 Low, 1 Medium, 2 High |
 | `smart_respect_goal` | -1 follows the global duration-goal setting, 0 Off, 1 On |
+| `volume_percent` | Configured alarm volume, integer 10–100; extra-loud mode can override the runtime target |
+| `ramp_seconds` | Configured gentle volume-ramp duration, integer 0–1440; zero has no ramp |
+| `sound_delay_seconds` | Configured delay before primary sound starts, integer 0–1440 |
+| `vibration_delay_seconds` | Configured vibration-start delay, integer 0–1440; `vibrate` separately controls whether vibration is enabled |
+| `screen_sunrise` | Integer 0/1 configured screen-brightening choice; unrelated to a solar-time schedule |
+| `flashlight` | Integer 0/1 configured flashlight wake-up choice |
+| `extra_loud` | Integer 0/1 configured extra-loud alarm choice |
+
+An absent output scalar uses the same valid legacy default as SleepWell’s alarm model. A malformed or out-of-range saved output scalar is null; it is not presented as a clamped runtime value. Existing malformed metadata remains subject to the unchanged nonwritable/round-trip rules. These columns report configuration, not current brightness, torch availability, measured loudness or whether an output has run.
 
 An out-of-range configured duration/window is null; invalid saved smart-wake metadata produces null sensitivity/goal values and remains nonwritable. No inherited value is invented for corrupt metadata. Absent valid smart-wake metadata reports -1 for both inherited choices. These are configured choices, not inferred sleep stages, current movement or proof that a duration goal has been met. Explicit projections still reject unknown or duplicate columns.
 
@@ -59,8 +68,16 @@ Supported ContentValues are exactly:
 | `smart_window_minutes` | Optional integer 0–60; 0 disables early waking |
 | `smart_sensitivity` | Optional integer -1 (inherit), 0 (Low), 1 (Medium), 2 (High) |
 | `smart_respect_goal` | Optional integer -1 (inherit), 0 (Off), 1 (On) |
+| `volume_percent` | Optional integer 10–100 |
+| `ramp_seconds` | Optional integer 0–1440 |
+| `sound_delay_seconds`, `vibration_delay_seconds` | Optional integer 0–1440 |
+| `screen_sunrise`, `flashlight`, `extra_loud` | Optional Boolean or Integer 0/1 |
 
 Smart-wake scalars accept only integral ContentValues types (`Integer`, `Long`, `Short`, `Byte`) within their documented bounds; strings, floats, booleans and null are rejected. The window bound follows the existing editor/defaults/backup validity of 0–60 minutes. Patching either sensitivity or goal preserves the other choice through `setSmartWake`; omitting all three preserves the existing smart-wake configuration. Create inherits valid defaults for omitted choices. Invalid existing metadata requires review in SleepWell and cannot be repaired through this API. Setting smart-wake choices never starts tracking: early wake still requires active phone-movement tracking and eligible measured intervals. The duration goal counts active recorded time excluding pauses, not confirmed sleep; the fixed alarm deadline remains scheduled.
+
+Output durations and volume accept only integral ContentValues types (`Integer`, `Long`, `Short`, `Byte`) within their bounds. Output switches accept only Boolean or Integer 0/1, matching `vibrate`; Long, strings, floats and null are rejected for switches. Omitted output values preserve the saved choice on update and inherit valid user defaults on create. Updating an output scalar never repairs malformed saved metadata, changes the sound source or enrollment, grants access, requests permissions, previews an output or rings immediately.
+
+These values use the existing real-alarm output policy: the primary sound waits for `sound_delay_seconds`, then its quadratic gain ramp uses `ramp_seconds`; extra loud chooses the 100% device alarm-volume target while retaining the separately configured volume for when extra loud is off. Actual output still follows the selected sound mode, Android/OEM volume rules and existing optional gain policy. Screen sunrise uses the sound delay as its brightening duration when nonzero, otherwise the ramp duration when nonzero, otherwise two minutes. It does not schedule an alarm at astronomical sunrise. Flashlight output remains subject to existing hardware/runtime availability; this contract neither promises torch access nor controls it now. Vibration waits for its own delay only when `vibrate` is true. Backup sound, backup escalation and all other saved behavior remain unchanged unless already supported fields are supplied.
 
 Unknown/null/coerced field values are rejected. Update is a patch; omitted fields, including `snooze_minutes`, preserve their saved values. Create inherits valid user behavior defaults, including snooze duration when omitted, but starts disabled unless enabled is explicitly supplied. Supplying `snooze_minutes` only changes the configured duration; it does not snooze now, reset snooze counts or total-budget limits, or bypass active/pending ownership guards. Omitted sound, challenge, brightness and other saved behavior remain intact. Invalid defaults require review inside SleepWell. The API cannot enroll challenges or request permissions. Enabling requires existing exact-alarm access and a projected occurrence more than one minute away; no permission/settings prompt opens.
 
@@ -99,6 +116,36 @@ int acknowledgedRows = resolver.update(conditional, patch, null, null);
 
 To change only goal behavior, supply only `smart_respect_goal`; to disable early waking, supply only `smart_window_minutes=0`. Neither patch resets the other smart-wake choices. The same optional scalars may accompany a create with required `hour`/`minute`; omission inherits valid defaults and create remains disabled unless explicitly enabled.
 
+## Optional gentle wake-up example
+
+For an already granted caller, request the configured output family explicitly alongside the current revision and write status:
+
+```java
+String[] outputColumns = {"_id", "revision", "writable", "write_issue",
+    "volume_percent", "ramp_seconds", "sound_delay_seconds",
+    "vibration_delay_seconds", "screen_sunrise", "flashlight", "extra_loud"};
+try (Cursor current = resolver.query(item, outputColumns, null, null, null)) {
+    // Review configured values and retain the exact current revision before editing.
+}
+```
+
+After reviewing a currently writable alarm, the following patch requests 80% configured volume, a two-minute ramp and screen sunrise. It leaves enabled state, delays, vibration, flashlight, extra loud, tone and challenges intact. If extra loud remains enabled, its existing policy still overrides the runtime volume target. An already enabled alarm can ring later under its normal scheduling rules.
+
+```java
+ContentValues outputPatch = new ContentValues();
+outputPatch.put("volume_percent", 80);
+outputPatch.put("ramp_seconds", 120);
+outputPatch.put("screen_sunrise", true);
+Uri outputConditional = item.buildUpon()
+    .appendQueryParameter("request_id", UUID.randomUUID().toString())
+    .appendQueryParameter("if_match", reviewedRevision)
+    .build();
+int outputAcknowledgedRows = resolver.update(outputConditional, outputPatch, null, null);
+// Re-query current values and scheduling status; acknowledgement is not a delivery guarantee.
+```
+
+A create can include the same output fields with required hour/minute; it remains disabled unless explicitly enabled. Neither example should be run without reviewing the selected alarm and its current revision.
+
 ## Commit and failure boundaries
 
 Writes take the existing Scheduler lock, then the private grant lock, and compare exact raw saved content plus ETag again inside a main-database transaction. A separate durable request preparation precedes that transaction. Stored changes preserve SleepWell’s scheduling-unconfirmed marker and then use its existing `AlarmSkips.retry` scheduling/status path after the database commit. Deletion removes the exact row before requesting cancellation of its own pending actions. New IDs avoid current rows, receipt IDs and retained known scheduling/snooze ownership.
@@ -111,6 +158,8 @@ If a process fails between request preparation, alarm commit, scheduling or rece
 
 Data & privacy → **Alarm access** opens the private `AlarmAccessActivity`. `Store.historyReplacing()` and `SleepSummaryFiles.historyChanging()` now call `AlarmAccessGrants.historyChanging(Context)` before production history replacement/erasure transactions (after the shared in-flight history epoch invalidation where applicable). It durably clears authority/revises the grant state before Android cleanup and can throw: abort replacement if it fails. It does not acquire Scheduler or access the main database; call before the replacement database transaction to preserve lock order.
 
-Latest source5266e54b builds production in27s with the original signer; the provider has not been exercised against an external caller. No real alarm/output/provider calls were performed. It is intentionally narrower than full alarm-editor parity. The optional `snooze_minutes` extension has build/source evidence only; no external-client runtime verification was run for it. Sound selection, challenges, light settings and specialized schedules remain outside the write contract, as does vendor API compatibility. The optional smart-wake scalar extension in unreleased a8842ada builds production in19s with the original signer verified. It is outside published c6f2fcaa. No external-caller/runtime, unit/lint/native or device/output verification ran for that extension.
+Latest source5266e54b builds production in27s with the original signer; the provider has not been exercised against an external caller. No real alarm/output/provider calls were performed. It is intentionally narrower than full alarm-editor parity. The optional `snooze_minutes` extension has build/source evidence only; no external-client runtime verification was run for it. Sound-source selection, challenges and specialized schedules remain outside the write contract, as does vendor API compatibility. The optional smart-wake scalar extension in unreleased a8842ada builds production in19s with the original signer verified. It is outside published c6f2fcaa. No external-caller/runtime, unit/lint/native or device/output verification ran for that extension.
+
+The optional configured-output scalar family is source implementation only in this change. No external-caller/runtime, unit/lint/native, device or output verification was performed for it. Existing admission, grant, ETag, idempotency and scheduling boundaries are unchanged.
 
 Primary platform references: [creating a content provider](https://developer.android.com/guide/topics/providers/content-provider-creating), [SigningInfo current signers](https://developer.android.com/reference/android/content/pm/SigningInfo), and [custom permissions](https://developer.android.com/guide/topics/manifest/permission-element).
