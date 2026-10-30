@@ -1,0 +1,91 @@
+{
+  "run": 41035861764,
+  "captured_source": "d68d0e8343d802162680dbff41b35b21c706133c",
+  "files": [
+    {
+      "file": "sounds-settings-custom-fade.png",
+      "bytes": 72299,
+      "sha256": "59812ac448eda40fcb0e1ed72b741ec518785f2a4900a927b47f5d4eb2b771c9"
+    },
+    {
+      "file": "sounds-settings-custom-timer.png",
+      "bytes": 86901,
+      "sha256": "364907861efdca476d7fd4b8ed9357fd86bdb222f934b928d9438d5b6a452a3e"
+    },
+    {
+      "file": "sounds-settings-fade-draft.png",
+      "bytes": 71834,
+      "sha256": "62a01f20eea28cc3314e07a6c98fd8e210ed13f48766f8612654c09f1f03e266"
+    },
+    {
+      "file": "sounds-settings-fade-recreated.png",
+      "bytes": 71834,
+      "sha256": "62a01f20eea28cc3314e07a6c98fd8e210ed13f48766f8612654c09f1f03e266"
+    },
+    {
+      "file": "sounds-settings-menu-recreated.png",
+      "bytes": 86567,
+      "sha256": "eb95523fe4b289d8f3d788f5ecf11b9beea1eb08c566fdb7cb95b9abed99ef1d"
+    },
+    {
+      "file": "sounds-settings-menu.png",
+      "bytes": 86567,
+      "sha256": "eb95523fe4b289d8f3d788f5ecf11b9beea1eb08c566fdb7cb95b9abed99ef1d"
+    },
+    {
+      "file": "sounds-settings-ocean.png",
+      "bytes": 725795,
+      "sha256": "d56f5bc938113a6d3c63ce1b43b83d23c24a4e544a3e96a82eaac44f7bafdbb6"
+    },
+    {
+      "file": "sounds-settings-playback.png",
+      "bytes": 122951,
+      "sha256": "1ffdee56eddb60dfae8619d37040ae369b647f46c38e4c983cde891fb64279c6"
+    },
+    {
+      "file": "sounds-settings-rain.png",
+      "bytes": 739560,
+      "sha256": "2e0f04d2074f680da87243df826b9dc60311099c1ce594582c9f7eccce8149f3"
+    },
+    {
+      "file": "sounds-settings-recreated.png",
+      "bytes": 725795,
+      "sha256": "d56f5bc938113a6d3c63ce1b43b83d23c24a4e544a3e96a82eaac44f7bafdbb6"
+    },
+    {
+      "file": "sounds-settings-reopened.png",
+      "bytes": 725193,
+      "sha256": "1f0789a7abcc2785d24b0d1f4dd54380806b990e2296094810eda08b30d7d8cd"
+    },
+    {
+      "file": "sounds-settings-sources.png",
+      "bytes": 125177,
+      "sha256": "9d0ba0d41a7d6eede2a8c8bf1aaa515a94821cfcc0a7b3d40a8d046a7b406174"
+    },
+    {
+      "file": "sounds-settings-timer-draft.png",
+      "bytes": 85526,
+      "sha256": "6835120297dc107fd4f517660c81e66a8586afd87e9c8860cff0fb663a913645"
+    },
+    {
+      "file": "sounds-settings-timer-recreated.png",
+      "bytes": 85526,
+      "sha256": "6835120297dc107fd4f517660c81e66a8586afd87e9c8860cff0fb663a913645"
+    },
+    {
+      "file": "SoundSettingsFlowTest#silentChoicesRecreateAndReopenWithoutPlayback.txt",
+      "bytes": 774,
+      "sha256": "5d4bf4a59aa95e79811a065917da4b491f277897202de17fa303b22ff12058ac"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 651,
+      "sha256": "0c040b0e2b62cf15b5ad34483c620624a6b539787120f04c8c6be6cf6542f8d4"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "bytes": 343,
+      "sha256": "44fad7079a56a3d3759b4a18a8209808e18476be1a3f5d2a9964d62ff27f0c30"
+    }
+  ]
+}
