@@ -45,8 +45,8 @@ final class ProviderStageChart extends View {
     static int color(int kind) {
         switch (kind) {
             case 1: case 3: case 7: return 0xffffaa25;
-            case 4: return 0xffae89ed;
-            case 5: return 0xff7550b6;
+            case 4: return 0xffb18cf0;
+            case 5: return 0xff7746ca;
             case 6: return 0xff9954d4;
             case 2: return 0xffd2bbee;
             default: return 0xff9c949e;
@@ -78,7 +78,7 @@ final class ProviderStageChart extends View {
         paint.setStyle(Paint.Style.FILL);
         Paint.FontMetrics font = paint.getFontMetrics();
         float lineHeight = font.descent - font.ascent + dp(2);
-        float top = Math.max(dp(32), lineHeight + dp(14)), stripHeight = dp(14), baseline = top + dp(30);
+        float top = Math.max(dp(20), lineHeight + dp(6)), stripHeight = dp(14), baseline = top + dp(25);
         paint.setStrokeWidth(dp(.6f));
         paint.setColor(Design.LINE);
         canvas.drawLine(dp(2), baseline, getWidth() - dp(2), baseline, paint);
@@ -92,7 +92,7 @@ final class ProviderStageChart extends View {
         }
         for (int n = 0; n < stages.size(); n++) {
             HealthSleep.Stage stage = stages.get(n);
-            float y = stage.kind == 5 ? top + dp(12) : top;
+            float y = stage.kind == 5 ? top + dp(10) : top;
             paint.setColor(color(stage.kind));
             canvas.drawRoundRect(x(visibleStart(stage)), y, x(visibleEnd(stage)), y + stripHeight,
                     dp(3), dp(3), paint);
@@ -119,13 +119,13 @@ final class ProviderStageChart extends View {
             paint.setTextAlign(Paint.Align.LEFT);
             CharSequence fitted = android.text.TextUtils.ellipsize(caption, textPaint(),
                     Math.max(0, getWidth() - dp(4)), android.text.TextUtils.TruncateAt.END);
-            canvas.drawText(fitted.toString(), dp(2), top - dp(12), paint);
+            canvas.drawText(fitted.toString(), dp(2), top - dp(8), paint);
         }
         if (hasFocus()) {
             paint.setColor(Design.BROWN);
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(dp(1));
-            canvas.drawRoundRect(dp(1), dp(25), getWidth() - dp(1), baseline + dp(2), dp(5), dp(5), paint);
+            canvas.drawRoundRect(dp(1), top - dp(4), getWidth() - dp(1), baseline + dp(2), dp(5), dp(5), paint);
             paint.setStyle(Paint.Style.FILL);
         }
     }

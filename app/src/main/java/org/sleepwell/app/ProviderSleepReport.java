@@ -45,11 +45,13 @@ final class ProviderSleepReport {
                     && !source.startOffset.equals(source.endOffset);
             ZoneId zone = offsetChange ? ZoneOffset.UTC : recordZone;
             body.addView(new ProviderStageChart(host, source, start, end, zone),
-                    new LinearLayout.LayoutParams(-1, Design.dp(host, 100 * Math.max(1, Design.fontScale(host)))));
+                    new LinearLayout.LayoutParams(-1, Design.dp(host, 74 * Math.max(1, Design.fontScale(host)))));
             HorizontalScrollView scroll = new HorizontalScrollView(host);
             scroll.setHorizontalScrollBarEnabled(false);
             LinearLayout legend = Design.row(host);
-            for (Map.Entry<String, Integer> kind : kinds.entrySet()) {
+            java.util.List<Map.Entry<String, Integer>> orderedKinds = new java.util.ArrayList<>(kinds.entrySet());
+            orderedKinds.sort(java.util.Comparator.comparingInt(kind -> legendOrder(kind.getValue())));
+            for (Map.Entry<String, Integer> kind : orderedKinds) {
                 LinearLayout item = Design.row(host);
                 View mark = new View(host);
                 mark.setBackground(Design.shape(host, ProviderStageChart.color(kind.getValue()), 6));
@@ -57,7 +59,7 @@ final class ProviderSleepReport {
                 swatch.rightMargin = Design.dp(host, 6);
                 item.addView(mark, swatch);
                 item.addView(Design.text(host, kind.getKey(), 12, 400, Design.MUTED));
-                item.setPadding(0, Design.dp(host, 4), Design.dp(host, 16), Design.dp(host, 8));
+                item.setPadding(0, Design.dp(host, 4), Design.dp(host, 16), Design.dp(host, 4));
                 legend.addView(item);
             }
             scroll.addView(legend);
@@ -67,8 +69,10 @@ final class ProviderSleepReport {
         Design.space(body, 4);
         Design.text(body, "Reported by " + source.origin, 12, 400, Design.MUTED);
         if (edited) Design.text(body, "Original source intervals · local edits do not relabel stages", 12, 400, Design.MUTED);
-        Design.space(body, 20);
+        Design.space(body, 12);
     }
+
+    private static int legendOrder(int kind) { return kind == 1 || kind == 3 || kind == 7 ? 0 : kind == 4 ? 1 : kind == 5 ? 2 : kind == 6 ? 3 : kind == 2 ? 4 : 5; }
 
     private ProviderSleepReport() {}
 }
