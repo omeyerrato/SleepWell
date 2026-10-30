@@ -27,6 +27,14 @@ Visual findings from inspecting the actual frames:
 - The test then attempted to find a root-page control during the sheet's exit animation and dereferenced a missing UiObject. [The failure frame](62a6eb21/night-dial-failure.png) shows the actual sheet partway through its exit, not a disappeared root control after completion. The next test explicitly requires the sheet to leave before reopening the field and retains a bounded wait/assertion for that field. Recreation is still unproven until the next run passes.
 - Further findings: the endpoint icon wells must draw after ticks, the sound player's Rain artwork still needs the new tonal image, and invalid-time copy should use the semantic error role. These corrections are in the next revision. The sound player still needs the full Settle in composition; styling alone is not that flow's completion.
 
+## Passing native review: 359fd614
+
+- [GitHub run](https://github.com/omeyerrato/SleepWell/actions/runs/41041383860) passed its app/test-APK builds, focused contrast and interval tests, and native review journey.
+- All eight required frames exist, with no missing frames: Tonight, dial help, Alarms, Settings, Sleep sounds, time, invalid time and restored time. [Result and exact scope](359fd614/review.json).
+- [Tonight](359fd614/night-dial-tonight.png) has the foreground endpoint wells above the ticks and the saved-mix Rain card. [The restored time sheet](359fd614/night-dial-time-restored.png) retains 09:15 after Activity recreation. [Sleep sounds](359fd614/night-dial-sounds.png) uses the new Rain photograph with native controls.
+- The journey asserts cancellation leaves saved plan values unchanged, restores appearance preferences, preserves its disabled alarm, and creates no recording or playback. This is still one normal-size phone configuration, not acceptance of all 43 flows, all 28 challenges, keyboard/TalkBack/large-text behavior, bedside recording or physical haptic feel.
+- The next small compatibility correction retains a visible date caption for alarms beyond the next night and respects the saved illustration-off setting with a compact artwork-free sound card. Its source is locally built; extended native coverage is still pending.
+
 ## Build and unit evidence
 
 `assembleDebug assembleDebugAndroidTest` passed locally at the initial review revision. GitHub's application and test-APK builds also passed for `37155aed`.

@@ -11,7 +11,7 @@ The full 43-flow design contract remains the target. Shared styling does not est
 - Existing haptic authorization and quiet-context guards remain in `InteractionFeedback`.
 - Baseline duplicate TrackingActivity focus override repaired so compilation can proceed.
 - Local Java compilation passed. Unit run: 1,063 tests, 11 failures in AlarmRequestTest, QrScanSessionTest, SonarNightTest, SonarSharedNightTest, TrackingDelayEntryTest and TrackingDelayTest. A separate archive of baseline 669ec8f6 reproduced all 11 named failures in 44 tests; the suite remains non-green.
-- APK and test-APK builds passed locally and in GitHub at 37155aed. The first native review produced four real frames and failed on a focus race in the capture helper; see verification/README.md. Corrections and a new review are pending.
+- APK and test-APK builds passed locally and in GitHub at 37155aed. The native review passed at 359fd614 with eight focused frames, invalid-input/cancel/recreation assertions, no playback/capture, and unchanged saved fixture values; see verification/README.md. This remains narrow evidence, not full app acceptance.
 - Three focused NightDialContrastTest methods passed for text/action/control contrast pairs.
 - Local AVD creation succeeded; boot exited because the host lacks the emulator hypervisor driver. No physical-device installation was attempted.
 
@@ -20,7 +20,7 @@ The full 43-flow design contract remains the target. Shared styling does not est
 | Board | Flow | Current status |
 | --- | --- | --- |
 | 01 | First night | Native design and full interaction review pending |
-| 02 | Plan tonight | Partial native composition; visual review pending |
+| 02 | Plan tonight | Partial native composition; first viewport and linked picker journey verified at 359fd614 |
 | 03 | Wind down and guard | Native design and full interaction review pending |
 | 04 | Create and manage alarms | Native design and full interaction review pending |
 | 05 | Dates and smart waking | Native design and full interaction review pending |
@@ -67,7 +67,7 @@ The full 43-flow design contract remains the target. Shared styling does not est
 
 ## Next work
 
-1. Obtain and inspect the first actual Android captures; fix geometry/readability before broad propagation.
+1. Continue from the passing 359fd614 native captures. Recheck future-date captions and illustration-off compact cards; verify Tonight scroll restoration and the existing weekday/alarm-control flow after moving optional rows.
 2. Complete Tonight alarm summary, linked dial editing and first-viewport composition while preserving optional sections.
 3. Complete Settle in and active/paused/end tracking compositions using real runtime state and the existing capture owners.
 4. Replace stale appearance/theme previews with the Night Dial preview while retaining saved legacy values.
