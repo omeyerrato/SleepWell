@@ -126,6 +126,25 @@ These are resource/domain gaps, not a clinical-certification requirement or a
 claim that no suitable model can exist. No new weights/data were downloaded,
 inference run, recording added or stage graph implemented in this follow-up.
 
+## Additional source lead — 30 October 2026
+
+A new search surfaced [OpenSleep](https://github.com/timmyy123/opensleep) as a
+phone-staging lead. At commit`01da40a532983733056bbe7e9b2fee1da98e8d54`, its
+[original Android analyzer](https://github.com/timmyy123/opensleep/blob/01da40a532983733056bbe7e9b2fee1da98e8d54/android/app/src/main/java/app/opensleep/domain/SleepStageAnalyzer.kt)
+accumulates10-second accelerometer peaks and accepts sonar activity before
+delegating to a hypnogram engine. Its audio-level and audio-event methods are
+ignored. This inspected path does not supply the learned ambient-phone-audio
+checkpoint/input contract sought above. No conclusion about every possible
+method follows from this one source reading.
+
+The source comments identify Sleep as Android reference logic. No third-party
+algorithm code, model or hypnogram was imported into SleepWell. F049 remains
+missing. [Bounded source record](research/2026-10-30-phone-stage-lead.json).
+No prior replay was rerun, weights/data downloaded, inference executed, test
+started, or phone/output action taken. Further work still needs a suitable
+reusable method and actual matching inputs; relabelling recorded movement is
+not a substitute.
+
 ## Work still needed
 
 Obtain a reusable trained phone-input method demonstrating meaningful real-input

@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-30",
+  "scope": "Source-only reading of a newly surfaced lead; no inference or accuracy evaluation",
+  "repository": "https://github.com/timmyy123/opensleep",
+  "commit": "01da40a532983733056bbe7e9b2fee1da98e8d54",
+  "android_tree": "774ada22e28906998b47a88985ea46a5a5d22d01",
+  "source_path": "android/app/src/main/java/app/opensleep/domain/SleepStageAnalyzer.kt",
+  "source_blob": "0037e3a831c3571e20e06259294518f30a6f33c1",
+  "observed_contract": {
+    "accelerometer": "10-second epoch peak magnitude passed to activity and phase detectors",
+    "sonar": "Activity values passed to activity and phase detectors",
+    "audio_level": "Ignored by the inspected analyzer",
+    "audio_events": "Ignored by the inspected analyzer"
+  },
+  "finding": "The inspected analyzer is not a learned ambient-phone-audio staging checkpoint/input contract. This bounded finding is not an exhaustive absence claim.",
+  "sleepwell_algorithm_imported": false,
+  "weights_or_data_downloaded": false,
+  "model_inference_run": false,
+  "tests_or_verification_jobs_run": false,
+  "phone_or_outputs_used": false,
+  "f049_status": "missing"
+}
