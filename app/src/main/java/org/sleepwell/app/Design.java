@@ -53,6 +53,7 @@ final class Design {
     static LinearLayout darkPage(Activity a){return page(a,true,null,n->{},new Appearance.Palette(0,Appearance.contrast(a)));}
     private static LinearLayout page(Activity a,boolean night,Integer destination,java.util.function.IntConsumer navigate,Appearance.Palette palette){
         boolean dark=true;
+        NightDialMotion.configurePage(a);
         a.getWindow().setDecorFitsSystemWindows(false);
         // API35+ also derives three-button icon contrast from the Window background,
         // independently of the content View and requested light/dark appearance.

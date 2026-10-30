@@ -1,6 +1,7 @@
 package org.sleepwell.app;
 
 import android.app.Dialog;
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.Window;
@@ -13,9 +14,14 @@ final class NightDialMotion {
             MENU_OUT=120, SHEET_IN=240, SHEET_OUT=180, DIAL_SETTLE=180;
     static final PathInterpolator EASE_OUT=new PathInterpolator(.22f,1f,.36f,1f);
     static boolean enabled(Context context){return InteractionFeedback.motion(context);}
+    static void configurePage(Activity activity){
+        android.util.TypedValue style=new android.util.TypedValue();
+        int animation=activity.getTheme().resolveAttribute(android.R.attr.windowAnimationStyle,style,true)?style.resourceId:0;
+        activity.getWindow().setWindowAnimations(enabled(activity)?animation:R.style.NightDialStaticAnimation);
+    }
     static void configureSheet(Dialog dialog, Context context){
         Window window=dialog.getWindow();if(window==null)return;
-        window.setWindowAnimations(enabled(context)?R.style.NightDialSheetAnimation:0);
+        window.setWindowAnimations(enabled(context)?R.style.NightDialSheetAnimation:R.style.NightDialStaticAnimation);
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     }
     /** Selection is announced by the control; this only settles newly focused visual emphasis. */

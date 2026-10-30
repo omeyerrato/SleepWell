@@ -36,6 +36,8 @@ Read the root [design contract](../../design.md), then the [selected reference](
 
 No Compose, Kotlin, navigation-library, database or Gradle-plugin migration is required. No dependency versions were changed for the visual work.
 
+Reduced-motion adapters also select an explicit no-motion Window animation style for app-owned pages/sheets and settle native Switch state after `setChecked` returns. The latter is one presentation-only override in `InteractionFeedback.Toggle`; its gesture-only haptic dispatch, debounce, strength selection and quiet-context guards are preserved. Native transition and switch motion still require runtime review at reduced motion and with system animations disabled.
+
 ## Verification boundaries
 
 `NightDialReviewTest` is a deliberately narrow native visual journey: roots, mixer discovery, time validation, cancel and Activity recreation. It runs only with explicit `ciReview=true` on an emulator, uses UUID-named record/plan fixtures, starts no alarm/audio/sensors, and restores appearance preferences. Its workflow uploads actual native frames, instrumentation output, environment metadata and guest diagnostics. A passing result is not full feature, accessibility, motion or overnight reliability acceptance.

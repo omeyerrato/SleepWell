@@ -15,6 +15,7 @@ final class Ui {
     static GradientDrawable shape(int color,int radius) { GradientDrawable g=new GradientDrawable();g.setColor(color);g.setCornerRadius(radius);return g; }
     static LinearLayout column(Context c) { LinearLayout l=new LinearLayout(c);l.setOrientation(LinearLayout.VERTICAL);return l; }
     static LinearLayout page(Activity a,String title,String subtitle) {
+        NightDialMotion.configurePage(a);
         a.getWindow().setStatusBarColor(BG); a.getWindow().setNavigationBarColor(BG);
         a.getWindow().setBackgroundDrawable(new ColorDrawable(BG));a.getWindow().setNavigationBarContrastEnforced(false);Design.systemBars(a,true);
         if(Build.VERSION.SDK_INT>=30) a.getWindow().setDecorFitsSystemWindows(false);

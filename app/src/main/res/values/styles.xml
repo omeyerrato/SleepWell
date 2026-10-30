@@ -18,5 +18,17 @@
         <item name="android:windowEnterAnimation">@anim/night_dial_sheet_enter</item>
         <item name="android:windowExitAnimation">@anim/night_dial_sheet_exit</item>
     </style>
+    <style name="NightDialStaticAnimation" parent="android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+    </style>
     <string name="guard_description">Optional bedtime and alarm guard. SleepWell uses only window package and class names, not screen contents or typed text. It can redirect distracting apps during bedtime and return to a ringing challenge. Optional power-menu protection dismisses recognised shutdown menus only during a real alarm; forced hardware restart remains possible. Settings, calls and emergency screens remain accessible. Enable this only if you want these controls; disable the service here at any time.</string>
 </resources>

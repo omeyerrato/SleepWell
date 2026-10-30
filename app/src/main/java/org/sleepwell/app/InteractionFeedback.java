@@ -55,6 +55,7 @@ final class InteractionFeedback {
     static final class Toggle extends Switch {
         private boolean feedbackDispatch;private int userDispatch;
         Toggle(Context context){super(context);}
+        @Override public void setChecked(boolean checked){super.setChecked(checked);if(!motion(getContext()))jumpDrawablesToCurrentState();}
         @Override public boolean performClick(){userDispatch++;try{return super.performClick();}finally{userDispatch--;}}
         @Override public boolean onTouchEvent(MotionEvent event){userDispatch++;try{return super.onTouchEvent(event);}finally{userDispatch--;}}
         // Native Switch versions may already request haptics. One owned dispatch avoids doubling them.

@@ -19,6 +19,14 @@ Visual findings from inspecting the actual frames:
 5. The dial explanation overrides its primary action with amber. The next revision restores the shared white primary action. Re-verification is pending.
 6. This run covers one phone size and default text only. It provides no evidence yet for enlarged fonts, TalkBack, landscape, all popup states, complete tracking/report/challenge flows or tactile feel on hardware.
 
+## Second native review: 62a6eb21
+
+- [GitHub run](https://github.com/omeyerrato/SleepWell/actions/runs/41039330821).
+- Seven accepted focused-frame captures were produced: Tonight, dial help, Alarms, Settings, Sleep sounds, time picker and invalid time. Activity focus waiting worked at the sound transition.
+- [Tonight](62a6eb21/night-dial-tonight.png) now shows the complete sound card with the dial and compact alarm summary in the first viewport. The optional plan section scrolls below. [Settings](62a6eb21/night-dial-settings.png) now uses neutral unboxed icons. [Invalid time](62a6eb21/night-dial-time-invalid.png) shows an app-owned raised sheet, proper fields and reachable Cancel.
+- The test then attempted to find a root-page control during the sheet's exit animation and dereferenced a missing UiObject. [The failure frame](62a6eb21/night-dial-failure.png) shows the actual sheet partway through its exit, not a disappeared root control after completion. The next test explicitly requires the sheet to leave before reopening the field and retains a bounded wait/assertion for that field. Recreation is still unproven until the next run passes.
+- Further findings: the endpoint icon wells must draw after ticks, the sound player's Rain artwork still needs the new tonal image, and invalid-time copy should use the semantic error role. These corrections are in the next revision. The sound player still needs the full Settle in composition; styling alone is not that flow's completion.
+
 ## Build and unit evidence
 
 `assembleDebug assembleDebugAndroidTest` passed locally at the initial review revision. GitHub's application and test-APK builds also passed for `37155aed`.
