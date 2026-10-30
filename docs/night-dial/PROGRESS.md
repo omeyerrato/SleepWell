@@ -23,6 +23,14 @@ The full 43-flow design contract remains the target. Shared styling does not est
 - Active tracking now uses a subdued clock dial, actual recorded duration, a compact sensor state and the existing measured movement timeline. Future clock time is grey; elapsed clock time is muted amber. Paused time remains excluded by the existing coordinator.
 - Java/test compilation, 25 focused unit tests and three native journeys passed at 7d726b2b. All 26 required native frames exist, including an actual pointer-cancel sequence, nonzero excluded paused time, separated consent actions and restored consent/End confirmations. A signed local preview APK is prepared; the user requested APK-only delivery, so the phone was not changed. Full-app acceptance remains open.
 
+## Report and APK preview pass
+
+- Report opens the latest saved night with a duration-against-goal ring, actual dated interval and source. History rows open read-only reports; Edit is explicit. Signal details select one measured metric and retain its inspected timestamp across recreation. Missing signals stay unavailable.
+- History now has source filters and visible durations/source labels. Trends has a zero duration baseline, visible range navigation, current goal, observed-day coverage and honest empty ranges. Supporting signal destinations stack title and explanation.
+- Unsaved record edits have an owned Back/discard prompt. Restore original times is a reviewed draft that keeps notes, tags and rating by default; only Save changes commits it through the existing owner.
+- Native review fca53502 passed 59 focused unit methods and all five native methods, with all 42 required frames. Initial screenshot defects and intermediate failed test expectations are retained in the verification notes. This remains narrow progress, not full-app acceptance.
+- APK-only preview c1d4a75f is saved locally and in Downloads with the previous preview signer. Its application-source tree matches reviewed fca53502 exactly. No phone installation or ADB interaction occurred this pass. See verification/fca53502/README.md and the adjacent local build receipt for exact scope/checksum.
+
 ## Flow matrix
 
 | Board | Flow | Current status |
@@ -52,9 +60,9 @@ The full 43-flow design contract remains the target. Shared styling does not est
 | 23 | Room, awake and experimental signals | Native design and full interaction review pending |
 | 24 | Sound analysis and recordings | Native design and full interaction review pending |
 | 25 | Gentle cues and dream tools | Native design and full interaction review pending |
-| 26 | Review a recorded night | Native design and full interaction review pending |
-| 27 | History, manual records and import | Native design and full interaction review pending |
-| 28 | Trends, rhythm and context | Native design and full interaction review pending |
+| 26 | Review a recorded night | Night summary, signal selection/scrub/recreation, dirty Back and annotation-preserving restore verified at fca53502; remaining provider, awake, optional-reset and device branches pending |
+| 27 | History, manual records and import | Source filters, visible row durations/provenance and read-only navigation verified at fca53502; calendar, manual-create, import and extended filter flows pending |
+| 28 | Trends, rhythm and context | Actual Week/Month/Year averages, coverage, range navigation, missing range and recreation verified at fca53502; rhythm/context/detail-selection and device branches pending |
 | 29 | Sleep plan, bank and milestones | Native design and full interaction review pending |
 | 30 | Naps and timers | Native design and full interaction review pending |
 | 31 | Travel and calendar schedules | Native design and full interaction review pending |
@@ -75,12 +83,12 @@ The full 43-flow design contract remains the target. Shared styling does not est
 
 ## Next work
 
-1. Continue from the passing 7d726b2b native captures. Finish compact/large-text/landscape/TalkBack/reduced-motion review and the existing weekday/alarm-control regression flow. Keep exact capture revisions in verification/README.md.
+1. Continue from the passing fca53502 native captures (42 required frames, five native methods). Finish compact/large-text/landscape/TalkBack/reduced-motion review and the existing weekday/alarm-control regression flow. Keep exact capture revisions in verification/README.md.
 2. Extend Tonight editing evidence to interrupted pointer sequences, non-daily/solar/override alarms and accessible exact entry while retaining independent saved-plan and alarm owners.
 3. Review Settle in playback/gain/error states and active/paused/end tracking with physical devices, additional sensors, long recordings and missing-data cases. Preserve the existing capture owners.
 4. Replace stale appearance/theme previews with the Night Dial preview while retaining saved legacy values.
 5. Review alarm editor, challenge catalog and all 28 task surfaces; keep challenge interaction and scheduling logic unchanged.
-6. Complete report/history/chart states and source/missing-data language.
+6. Complete report provider/CSV/calendar/manual/filter/awake/optional-reset branches and trend detail selection/rhythm/context, retaining actual source/missing-data language.
 7. Review every remaining settings/editor sheet, confirmation, popup, keyboard and permission-return state against the 43-flow matrix.
 8. Verify compact/large widths, enlarged fonts, landscape, TalkBack focus/order, reduced motion, keyboard navigation, press cancellation, haptic quiet guards and lifecycle cleanup.
 9. Rebase/integrate against the latest feature branch in a separate review step, resolve adapters narrowly, and record precise validation.

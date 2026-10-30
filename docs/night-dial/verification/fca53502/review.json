@@ -1,0 +1,13 @@
+{
+  "commit": "fca53502add481ef0e2d9f1980a8a2b88c05971a",
+  "scope": "roots, picker validation, real dial gestures/save/cancel/conflict/recreation, silent Settle in and consent cancel; synthetic PCM tracking, pause/recreate/resume/end; recorded-night navigation, signal scrub/recreation, source filters, dirty/restore drafts and canonical week/month/year durations",
+  "unit_results": {
+    "tests": 59,
+    "failures": 0,
+    "errors": 0
+  },
+  "full_acceptance": false,
+  "passed": true,
+  "missing_frames": [],
+  "output": "No hardware capture, playback or OS alarms; tracking uses injected PCM; host audio disabled"
+}

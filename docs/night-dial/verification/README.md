@@ -1,5 +1,18 @@
 # Native review evidence
 
+## Latest reviewed preview: fca53502
+
+The [native review](https://github.com/omeyerrato/SleepWell/actions/runs/41069491851), job 124109531703, artifact 12984193075, passed all five native methods in 162.904 seconds. All 42 required native PNGs exist; 59 focused unit methods passed with zero failures/errors. [Raw result](fca53502/review.json), [instrumentation](fca53502/instrumentation.txt), [exact scope and limits](fca53502/README.md). The independent APK workflow also passed; its default broad unit/lint step is skipped, so this is not a global-suite-green claim.
+
+This extends the prior dial/Settle in/tracking review with saved-night navigation, source filtering, actual signal scrub/recreation, protected edit drafts and reviewed original-time restore. The canonical dated night is 462 minutes against a 480-minute goal (18 minutes short). An independent seven-day fixture totals 3,234 minutes, averaging 462 minutes per observed day; missing date ranges show an unknown average and zero coverage, not zero sleep.
+
+Native captures: [Night](fca53502/night-dial-report-night.png), [signal inspection](fca53502/night-dial-report-signal-restored.png), [history source filter](fca53502/night-dial-report-history-imported.png), [week](fca53502/night-dial-report-trends-week.png), [empty range](fca53502/night-dial-report-trends-empty.png), [empty actions](fca53502/night-dial-report-trends-empty-actions.png), [restored dirty prompt](fca53502/night-dial-report-dirty-restored.png), [restore review](fca53502/night-dial-report-restore-review-restored.png), [restored report](fca53502/night-dial-report-restored-night.png).
+
+The signed local APK was built from c1d4a75f; `app/src/main` is `7a7a88147f7074879f0a8e7e6eecf9c39777928f` at both c1d4a75f and fca53502. APK size 327,008,384 bytes, SHA256 `a8ca970f79a92220bef099375ed7457bdc63cc06d572685274e4b360fb7ca5b4`. Signer certificate SHA256 `49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c` matches the previous local preview. The user selected APK-only delivery; the file and receipt are in Downloads and the ignored local delivery directory. No phone installation occurred.
+
+Limits: one normal-size API 35 emulator; all 43 flows, provider/import/calendar/manual branches, optional annotation reset, enlarged text, landscape, TalkBack, physical haptics/playback/sensing, overnight reliability and integration against the latest feature branch remain open. The 11 reproduced inherited failures below remain open. Intermediate failed runs are explained later and [initial visual finding evidence](5eb55a6e-finding/README.md) is preserved. Full app acceptance is false.
+
+
 This folder contains actual Android renderer captures, not generated UI mockups. Fixtures are synthetic and isolated; no personal phone data is included. No full flow is accepted yet.
 
 ## Current passing review: 7d726b2b
@@ -98,3 +111,6 @@ Local emulator boot is unavailable because the Android emulator hypervisor drive
 The [first Report review](https://github.com/omeyerrato/SleepWell/actions/runs/41066938357) built both APKs and passed 59 focused unit methods. Four of five native methods passed, including the complete saved-night/signal/filter/dirty-draft/annotation-preserving restore journey. The Week/Month/Year fixture reached the empty range but failed when its assertion expected an offscreen empty-state heading without scrolling. This run is not a passing review: two final required frames are missing.
 
 Visual inspection also found defects the initial assertions missed: the right-hand history durations and trend goal/coverage columns measured to almost zero width, and supporting signal links laid long titles and subtitles beside each other. Explicit weighted column widths and stacked destination copy correct these. The follow-up test checks actual visible text bounds, scrolls to the empty actions, and captures both the empty chart and its actions. No data assertion was removed and no missing range is treated as zero sleep.
+
+
+The [follow-up at c1d4a75f](https://github.com/omeyerrato/SleepWell/actions/runs/41068333159) passed the full canonical Week/Month/Year/missing-range journey and confirmed readable goal/coverage columns. Its saved-night journey stopped on an incorrect new test label, `8 h`, while the actual native row correctly showed `8 h 0 min`. fca53502 corrects only that exact test expectation; the application-source tree and packaged APK remain unchanged. This intermediate run is also a failed review, not a passing release claim.
