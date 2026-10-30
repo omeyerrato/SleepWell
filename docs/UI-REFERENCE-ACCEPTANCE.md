@@ -51,7 +51,11 @@ These are current cohort results, not36 completed screens. Required main-action/
 | 35 | Data & privacy (12 / middle) | [Settings evidence](verification/2026-10-30-settings-reference/README.md) | f9b7a226 core cohort plus14fb6ff1 /41034030023:8 export originals; real JSON/CSV serialization, saved receipt/reopen through fake document output. Not SAF/provider durability; older combined audio-clear failure remains open. |
 | 36 | Appearance (12 / right) | [Settings evidence](verification/2026-10-30-settings-reference/README.md) | f9b7a226 /41017469167: complete lamp card/actions, new sunrise-bedroom illustration, extra-large-text stacked details, theme/control Save/reopen. Physical lamp and haptic feel remain open. |
 
-## Current Sound events preservation map
+## Earlier source follow-ups
+
+The following implementation notes were written under earlier verification deferrals. Their statements about pending runs or missing source describe those dated increments, not the latest cohort. The current inventory above and its exact source/run evidence take precedence; older failures and limitations remain preserved.
+
+## Sound events preservation map
 
 - Existing stable category IDs, counts, filter persistence, all extended categories and per-night favorites remain. The three visible chips now expose actual radio state and shared user-gesture feedback.
 - Event label + duration is one 48dp correction action, with the existing `Correct label event:<id>` target; user-corrected/original-estimate wording remains unchanged.
