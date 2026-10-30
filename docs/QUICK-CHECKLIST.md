@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated30October2026. Latest published APK: **0.1.23 / 023c5fb7**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.23-ui-reference-20261030-023c5fb7). Last verified phone installation: **0.1.4 /08d3911e**; installation is deferred.
+Updated30October2026. Latest published APK: **0.1.23 / 023c5fb7**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.23-ui-reference-20261030-023c5fb7). Verified phone installation: **0.1.23 /023c5fb7**, updated in place from observed0.1.22. [Evidence](verification/2026-10-30-023-build/phone-installation.md).
 
-Checked items record implemented source or publication, with historical evidence where linked. They do not establish current all-screen, physical or overnight acceptance. Current phase: usability first. On30October the user resumed silent emulator comparisons and main-action checks. Physical-phone actions, alarm/audio execution, security review and a broad test/bug campaign remain deferred.
+Checked items record implemented source or publication, with historical evidence where linked. They do not establish current all-screen, physical or overnight acceptance. Current phase: usability first. On30October the user resumed silent emulator comparisons and main-action checks. The phone update alone was later authorized and completed; app launch, alarm/audio execution, security review and a broad test/bug campaign remain deferred.
 
 ## Implemented
 
@@ -39,7 +39,7 @@ Checked items record implemented source or publication, with historical evidence
 - [ ] Optional vendor/hardware parity listed in the full matrix.
 - [ ] Real alarm protection, loudness, ramp, sunrise, flashlight and challenge validation.
 - [ ] Overnight tracking, sound accuracy, anti-snoring, battery and actual integration validation.
-- [ ] Install the latest update while preserving phone data when requested.
+- [x] Install0.1.23 in place on the S23 Ultra; no uninstall or data clear. App launch/output tests remain deferred.
 
 [Current scope and limits](REMAINING-WORK.md) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Source history](USABILITY-PASS-2026-10-29.md) · [Preserved earlier checklist](history/QUICK-CHECKLIST-2026-10-30-before-consolidation.md).
 
@@ -51,4 +51,4 @@ Checked items record implemented source or publication, with historical evidence
 - [x] Settings/tracking: complete Appearance lamp card and large text, official Health logo, warm automation confirmation and named Options controls.
 - [x] Audio: reference-derived illustrated library, aligned waveforms and complete timestamps.
 - [x] Focused silent native main-action/recreation/persistence checks; original captures and exact source/run scope archived.
-- [x] Build and publish0.1.23 (`023c5fb7`). Phone/output operations remain deferred; all36 acceptance stays open.
+- [x] Build, publish and install0.1.23 (`023c5fb7`) in place. App launch/output tests remain deferred; all36 acceptance stays open.

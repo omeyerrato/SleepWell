@@ -1,6 +1,6 @@
 # Phone feature matrix
 
-Latest published **0.1.23 / 023c5fb7** includes the usability and custom-control feedback source increments. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.23-ui-reference-20261030-023c5fb7); [current source scope](USABILITY-PASS-2026-10-29.md). The APK packages reference-led corrections with source-specific focused silent native evidence; it does not establish all36 acceptance. Focused current-source silent emulator comparisons and main actions resumed on30October; security review and a broad test/bug campaign remain deferred. [Current reference evidence](verification/2026-10-30-reference-resume/README.md) and [Settings evidence](verification/2026-10-30-settings-reference/README.md) retain exact source and limits. Audio-only cleanup and durable manual export-receipt source are integrated; their combined acceptance remains open. The phone remains on0.1.4; installation is deferred. All36 matching, remaining feature parity and physical/overnight acceptance remain open.
+Latest published **0.1.23 / 023c5fb7** includes the usability and custom-control feedback source increments. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.23-ui-reference-20261030-023c5fb7); [current source scope](USABILITY-PASS-2026-10-29.md). The APK packages reference-led corrections with source-specific focused silent native evidence; it does not establish all36 acceptance. Focused current-source silent emulator comparisons and main actions resumed on30October; security review and a broad test/bug campaign remain deferred. [Current reference evidence](verification/2026-10-30-reference-resume/README.md) and [Settings evidence](verification/2026-10-30-settings-reference/README.md) retain exact source and limits. Audio-only cleanup and durable manual export-receipt source are integrated; their combined acceptance remains open. The S23 Ultra was updated in place to0.1.23 without launching the app or testing outputs. All36 matching, remaining feature parity and physical/overnight acceptance remain open.
 
 Historical0.1.8 evidence: [package audit](verification/2026-10-29-018-build/README.md), [Privacy12 proof](verification/2026-10-29-privacy-reference/README.md), [Motion7 proof](verification/2026-10-29-motion-reference/README.md). These results do not accept the newer source.
 
@@ -14,7 +14,7 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
 exercise actions, cancellation, recreation and persistence. [Exact release scope](verification/2026-10-27-reference-menus-build/README.md).
 
-The last verified phone installation is **0.1.4 / 08d3911e**, with original records, user settings and user files preserved. No physical output test ran. All36 reference states and the broader interaction/security review remain open.
+The verified phone installation is **0.1.23 /023c5fb7**, updated in place over observed0.1.22. No uninstall/data clear, app launch or physical output test ran; individual user data was not inspected. [Installation evidence](verification/2026-10-30-023-build/phone-installation.md). All36 reference states and the broader interaction/security review remain open.
 
 ## Current top priorities
 
@@ -22,7 +22,7 @@ The last verified phone installation is **0.1.4 / 08d3911e**, with original reco
 - [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
 - [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness recovery and additional Tracking work are a separate source increment awaiting native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
-The installed phone is170b0e44; its checksum and data preservation are verified. The0.1.4 update is published and awaiting USB reconnection.
+Historical baseline170b0e44 has earlier checksum/data-preservation evidence. The current installed version is0.1.23 /023c5fb7 as recorded above.
 
 **Implemented**: narrower stated behavior exists; validation is separately listed.
 **Partial**: subfeatures still missing. **Missing**: no working implementation.

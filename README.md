@@ -12,7 +12,7 @@ Wearables and watch companions are excluded from this scope.
 
 ## Current development update — 30 October
 
-Latest published **0.1.23 / 023c5fb7** corrects Report spacing/navigation/ribbons, Tonight weekday targets, alarm/task controls, Settings/Appearance and tracking/audio layouts. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.23-ui-reference-20261030-023c5fb7); [current36-screen inventory](docs/UI-REFERENCE-ACCEPTANCE.md). Focused silent native journeys exercised safe main actions, cancellation/recreation and saved state on the exact source revisions recorded with original Android captures. All36 matching, remaining data/font variants, a SystemUI tint transition, full ringing-alarm acceptance and broader feature/device work remain open. Security review and broad/unit-test campaigns are deferred. No phone or real alarm/audio/torch output operation ran; last verified phone installation remains0.1.4, and installation of this update is deferred.
+Latest published **0.1.23 / 023c5fb7** corrects Report spacing/navigation/ribbons, Tonight weekday targets, alarm/task controls, Settings/Appearance and tracking/audio layouts. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.23-ui-reference-20261030-023c5fb7); [current36-screen inventory](docs/UI-REFERENCE-ACCEPTANCE.md). Focused silent native journeys exercised safe main actions, cancellation/recreation and saved state on the exact source revisions recorded with original Android captures. All36 matching, remaining data/font variants, a SystemUI tint transition, full ringing-alarm acceptance and broader feature/device work remain open. Security review and broad/unit-test campaigns are deferred. After the silent review, the user authorized an in-place phone update to0.1.23. Installation succeeded; the app was not launched and no real output tests ran.
 
 Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped
@@ -20,7 +20,7 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
 exercise actions, cancellation, recreation and persistence. [Exact release scope](docs/verification/2026-10-27-reference-menus-build/README.md).
 
-The last verified phone installation is **0.1.4 / 08d3911e**. No physical output test ran. All36 reference states and broader interaction/security acceptance remain open; newer source is not automatically installed on the phone.
+The verified phone installation is **0.1.23 / 023c5fb7**. [In-place installation evidence](docs/verification/2026-10-30-023-build/phone-installation.md). No app launch or physical output test ran; all36 reference states and broader acceptance remain open.
 
 ## Working capabilities
 

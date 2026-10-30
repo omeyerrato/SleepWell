@@ -16,3 +16,5 @@ The later Report fixture-state increment `ed6ccc14733c8357dc43b939149bc5bdb1b3fb
 The phone was untouched: no ADB discovery, install, app launch or real alarm/audio/vibration/torch output. Last verified historical phone installation is0.1.4 /08d3911e; this release is not an installation claim.
 
 The raster illustrations were created with built-in imagegen. Exact prompts and asset paths are retained in [sound artwork](../../SLEEP-SOUND-ART-ASSETS.md) and [sunrise bedroom](../../SUNRISE-BEDROOM-ASSET.md).
+
+Subsequent authorized phone update: [0.1.23 installation evidence](phone-installation.md). This supersedes the earlier installation-deferred state above; the app was not launched and no output test ran.
