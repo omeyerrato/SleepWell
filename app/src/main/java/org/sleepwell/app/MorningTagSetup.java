@@ -76,15 +76,15 @@ final class MorningTagSetup {
         String stored=unconfirmed?"Last Save is unconfirmed":saved.isEmpty()?"No bedside tag saved":valid(saved)?"Bedside tag saved":"Saved tag needs attention";
         PlanActivity.detail(body,"phone","NFC access",stored,availability==Availability.READY?"On":availability==Availability.OFF?"Off":"Unavailable",null);
         if(availability!=Availability.READY)Design.text(body,availability==Availability.OFF?"Turn on NFC to read a tag.":"This phone has no available NFC reader.",12,400,Design.MUTED);Design.space(body,16);
-        LinearLayout panel=Design.col(owner);panel.setGravity(Gravity.CENTER);Design.pad(panel,16,16);panel.setBackground(Design.shape(owner,Design.SOFT,20));
-        panel.addView(new Design.Icon(owner,"phone",Design.BROWN),new LinearLayout.LayoutParams(Design.dp(owner,58),Design.dp(owner,58)));Design.space(panel,12);
+        LinearLayout panel=Design.col(owner);panel.setGravity(Gravity.CENTER);Design.pad(panel,16,16);panel.setBackground(Design.shape(owner,Design.SOFT,20));panel.setMinimumHeight(Design.dp(owner,208));
+        panel.addView(new Design.Icon(owner,"sonar",Design.BROWN),new LinearLayout.LayoutParams(Design.dp(owner,58),Design.dp(owner,58)));Design.space(panel,12);
         Design.text(panel,captured.isEmpty()?"Read a tag away from your bed":"Tag ready to save",14,500,Design.MUTED).setGravity(Gravity.CENTER);
         Button read=action(panel,availability==Availability.OFF?"Open NFC settings":"Read tag",false,generation,availability==Availability.OFF?this::settings:this::read);
-        read.setContentDescription(availability==Availability.OFF?"Open NFC settings":"Read bedside NFC tag");read.setEnabled(availability!=Availability.UNSUPPORTED);
+        read.setContentDescription(availability==Availability.OFF?"Open NFC settings":"Read bedside NFC tag");read.setEnabled(availability!=Availability.UNSUPPORTED);read.setAlpha(read.isEnabled()?1:.45f);
         body.addView(panel,new LinearLayout.LayoutParams(-1,-2));Design.space(body,12);
         if(!captured.isEmpty()||success){TextView status=Design.text(body,!captured.isEmpty()?"Tag captured · not saved yet":"Tag saved for NFC alarms",14,600,0xff154b19);Design.pad(status,12,10);status.setBackground(Design.shape(owner,0xffe3efd4,12));status.setContentDescription("NFC tag draft status");}
         if(!error.isEmpty()){TextView problem=Design.text(footer,error,13,500,0xffa93919);problem.setContentDescription("NFC setup error");problem.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);}
-        Button save=action(footer,"Save bedside tag",true,generation,this::commit);save.setEnabled(valid(captured));
+        Button save=action(footer,"Save bedside tag",true,generation,this::commit);save.setEnabled(valid(captured));save.setAlpha(save.isEnabled()?1:.45f);
         if(exitLabel.equals("Done"))action(footer,exitLabel,false,generation,exit);
     }
     private void settings(){

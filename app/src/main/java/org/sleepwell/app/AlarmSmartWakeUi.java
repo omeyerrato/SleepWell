@@ -40,15 +40,15 @@ final class AlarmSmartWakeUi {
                 replacement.post(()->replacement.scrollTo(0,scroll));
         };
         LinearLayout header=RecordUi.header(body,"Smart wake-up",back);
-        RecordUi.headerAction(header,"more","Smart wake-up options",()->open.accept(()->options(activity,alarm,refresh,open)));
+        RecordUi.menuAction(header,"Smart wake-up options",()->open.accept(()->options(activity,alarm,refresh,open)),false);
         Design.space(body,10);
-        Design.toggle(body,"Smart wake-up","Use movement within your wake window",alarm.smartWindow>0,
+        toggle(activity,body,"sun","Smart wake-up","Use movement within your wake window",alarm.smartWindow>0,true,
                 on->{alarm.smartWindow=on?30:0;refresh.run();});
         Design.space(body,14);
         Design.text(body,"Wake window",16,600,Design.INK);
         Design.space(body,6);
         long deadline=deadline(activity,alarm);
-        TextView range=Design.text(body,"",27,700,Design.INK);
+        TextView range=Design.text(body,"",30,700,Design.INK);
         Design.space(body,6);
         TextView caption=Design.text(body,"",13,400,Design.MUTED);
         WindowTimeline timeline=new WindowTimeline(activity,alarm,deadline);
@@ -92,7 +92,7 @@ final class AlarmSmartWakeUi {
             value.setText(windowLabel(alarm.smartWindow));
             length.setStateDescription(windowLabel(alarm.smartWindow));
             range.setText(alarm.smartWindow<=0?"Off":deadline<=0?"Wake time unavailable":
-                    clock(activity,deadline-alarm.smartWindow*60000L)+" – "+clock(activity,deadline));
+                    windowText(activity,deadline-alarm.smartWindow*60000L,deadline));
             caption.setText(alarm.smartWindow<=0?"Your fixed alarm time stays scheduled.":deadline<=0?
                     "Review this alarm’s schedule to show its next window.":
                     alarm.smartWindow+" min before your alarm at "+clock(activity,deadline));
@@ -120,16 +120,17 @@ final class AlarmSmartWakeUi {
             goal(activity,body,alarm,refresh);
         }
         Design.space(body,12);
-        Design.fixedAction(body,"Save settings",back);
+        trackingNote(activity,body);Design.space(body,8);
+        Design.fixedAction(body,"Use smart wake-up",back);
     }
 
     private static void sensitivity(Activity activity,LinearLayout body,Alarm alarm,Runnable redraw){
-        Design.text(body,"Movement sensitivity",16,600,Design.INK);
+        section(activity,body,"exercise","Movement sensitivity");
         if(alarm.smartWake.sensitivity<0){
             String label;
             try{label="Following tracking · "+MotionSettings.load(activity).label();}
             catch(RuntimeException unreadable){label="Following tracking · profile unavailable. Review motion sensor settings or choose a level.";}
-            Design.space(body,6);Design.text(body,label,12,400,Design.MUTED);
+            Design.space(body,6);TextView inherited=Design.text(body,label,12,400,Design.MUTED);inherited.setPadding(Design.dp(activity,40),0,0,0);
         }
         Design.space(body,10);
         LinearLayout options=Design.row(activity);
@@ -144,7 +145,7 @@ final class AlarmSmartWakeUi {
             button.setOnClickListener(v->{if(!chosen)InteractionFeedback.selection(v);alarm.setSmartWake(new AlarmSmartWake(level,alarm.smartWake.goal));redraw.run();});
             options.addView(button,new LinearLayout.LayoutParams(0,-2,1));
         }
-        body.addView(options);
+        LinearLayout.LayoutParams inset=new LinearLayout.LayoutParams(-1,-2);inset.setMarginStart(Design.dp(activity,40));body.addView(options,inset);
     }
 
     private static void goal(Activity activity,LinearLayout body,Alarm alarm,Runnable redraw){
@@ -153,17 +154,26 @@ final class AlarmSmartWakeUi {
         try{int minutes=SleepPlans.load(activity).goal;if(minutes<20||minutes>810)throw new IllegalArgumentException();target=RecordUi.duration(minutes*60000L)+" recorded before early waking";}
         catch(RuntimeException unreadable){target="Duration goal unavailable · review Sleep goals";}
         if(alarm.smartWake.goal<0&&global==null){
-            Design.text(body,"Respect sleep goal",16,600,Design.INK);Design.space(body,6);
+            section(activity,body,"bed","Respect sleep goal");Design.space(body,6);
             Design.text(body,"Following global goal · unavailable. Choose a value for this alarm or review Sleep goals.",12,400,Design.MUTED);
             Design.space(body,8);
             RecordUi.segments(body,new String[]{"Off","On"},-1,n->{alarm.setSmartWake(new AlarmSmartWake(alarm.smartWake.sensitivity,n));redraw.run();});
         }else{
             boolean effective=alarm.smartWake.requiresGoal(Boolean.TRUE.equals(global));
             String following=alarm.smartWake.goal<0?"Following global goal · "+(effective?"On":"Off")+"\n":"";
-            Design.toggle(body,"Respect sleep goal",following+target,effective,
+            toggle(activity,body,"bed","Respect sleep goal",following+target,effective,false,
                     on->{alarm.setSmartWake(new AlarmSmartWake(alarm.smartWake.sensitivity,on?1:0));redraw.run();});
         }
     }
+
+    private static void section(Activity activity,LinearLayout body,String icon,String title){LinearLayout row=Design.row(activity);LinearLayout.LayoutParams glyph=new LinearLayout.LayoutParams(Design.dp(activity,26),Design.dp(activity,26));glyph.setMarginEnd(Design.dp(activity,14));row.addView(new Design.Icon(activity,icon,Design.BROWN),glyph);row.addView(Design.text(activity,title,16,600,Design.INK),new LinearLayout.LayoutParams(0,-2,1));body.addView(row,new LinearLayout.LayoutParams(-1,-2));}
+    private static void toggle(Activity activity,LinearLayout body,String icon,String title,String caption,boolean checked,boolean card,Consumer<Boolean> change){
+        LinearLayout row=Design.row(activity);Design.pad(row,card?14:0,12);row.setMinimumHeight(Design.dp(activity,72));if(card)row.setBackground(Design.shape(activity,Design.SOFT,16));LinearLayout.LayoutParams glyph=new LinearLayout.LayoutParams(Design.dp(activity,26),Design.dp(activity,26));glyph.setMarginEnd(Design.dp(activity,14));row.addView(new Design.Icon(activity,icon,Design.BROWN),glyph);
+        LinearLayout copy=Design.col(activity);Design.text(copy,title,16,600,Design.INK);Design.space(copy,4);Design.text(copy,caption,12,400,Design.MUTED);LinearLayout.LayoutParams labels=new LinearLayout.LayoutParams(0,-2,1);labels.setMarginEnd(Design.dp(activity,12));row.addView(copy,labels);InteractionFeedback.Toggle control=new InteractionFeedback.Toggle(activity);control.setContentDescription(title);Design.styleSwitch(activity,control,Design.BROWN,0xffbcb5b0);control.setChecked(checked);control.setOnCheckedChangeListener((view,on)->{control.userChanged();change.accept(on);if(!InteractionFeedback.motion(activity))control.jumpDrawablesToCurrentState();});row.addView(control);body.addView(row,new LinearLayout.LayoutParams(-1,-2));
+    }
+    private static void trackingNote(Activity activity,LinearLayout body){LinearLayout note=Design.row(activity);Design.pad(note,14,12);note.setBackground(Design.shape(activity,Design.SOFT,14));LinearLayout.LayoutParams glyph=new LinearLayout.LayoutParams(Design.dp(activity,22),Design.dp(activity,22));glyph.setMarginEnd(Design.dp(activity,12));note.addView(new Design.Icon(activity,"info",Design.BROWN),glyph);note.addView(Design.text(activity,"Requires phone-movement tracking. Uses movement estimates within your wake window.",12,400,Design.MUTED),new LinearLayout.LayoutParams(0,-2,1));body.addView(note);}
+    private static String windowClock(Context context,long start,long end){String first=clock(context,start),last=clock(context,end);int a=first.lastIndexOf(' '),b=last.lastIndexOf(' ');if(a>0&&b>0&&first.substring(a).equals(last.substring(b)))first=first.substring(0,a);return first+" – "+last;}
+    private static CharSequence windowText(Context context,long start,long end){String label=windowClock(context,start,end);android.text.SpannableString text=new android.text.SpannableString(label);int suffix=label.lastIndexOf(' ');if(!android.text.format.DateFormat.is24HourFormat(context)&&suffix>0)text.setSpan(new android.text.style.RelativeSizeSpan(.6f),suffix,label.length(),0);return text;}
 
     private static Dialog options(Activity activity,Alarm alarm,Runnable refresh,Consumer<Supplier<Dialog>> open){
         SleepPicker.StateDialog dialog=new SleepPicker.StateDialog(activity,"actions","Smart wake-up options");
