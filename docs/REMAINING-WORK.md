@@ -7,7 +7,7 @@ Updated30October2026. The full goal remains phone-capable feature parity and all
 ## Remaining priorities
 
 - [ ] Match all36 reference screens and their required states. Current source includes the0.1.9–0.1.22 usability passes; current visual/action acceptance remains open. [Screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
-- [ ] Reaccept the changed Report/calendar/edit surfaces when verification resumes. The27October calendar/day/edit Save/reopen/Back-discard result passed at its own source; it does not accept later presentation changes. [Historical evidence](verification/2026-10-27-report-proportions/README.md).
+- [x] Reaccept the changed Report/calendar/edit flow on the silent emulator. Current source `70bca1ec` / run41017261604 passes in69.636s with18 original captures: calendar, chart selection, trim/cancel/recreate and Save/reopen. [Bounded evidence](verification/2026-10-30-reference-resume/README.md). This does not finish all36/data variants or physical acceptance.
 - [ ] Complete remaining interaction bugs and security review after this usability phase. Existing scoped results remain historical; broad acceptance is open.
 - [ ] Establish reliable additional sound recognition, including laughter and instruments. Existing YAMNet-family laughter and recorded-audio supplementary estimates are experimental. Loud sound is relative microphone RMS; spoken phrase and musical-note tasks are separate features.
 - [ ] Implement usable phone deep/REM estimation with a suitable redistributable model and exact input contract or original licensed training. Existing motion, sound classes and cues are not that algorithm. The rejected Nidra replay remains rejected. Breathing/apnea are separate unfinished work. [Feasibility](PHONE-STAGE-FEASIBILITY.md).
