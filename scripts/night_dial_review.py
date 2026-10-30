@@ -62,15 +62,15 @@ while time.monotonic() < deadline:
     time.sleep(1)
 else:
     raise SystemExit("The native application never established a window.")
-result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app.NightDialReviewTest,org.sleepwell.app.NightDialInteractionTest", "-e", "ciReview", "true", "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", timeout=420, check=False)
+result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app.NightDialReviewTest,org.sleepwell.app.NightDialInteractionTest,org.sleepwell.app.NightDialTrackingReviewTest", "-e", "ciReview", "true", "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", timeout=420, check=False)
 (output / "instrumentation.txt").write_text(result.stdout + result.stderr, encoding="utf-8")
 print(result.stdout)
 if result.stderr:
     print(result.stderr)
 command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", str(output), check=False)
-required = ["tonight", "dial-help", "alarms", "settings", "sounds", "time", "time-invalid", "time-restored", "dial-draft", "dial-review-restored", "dial-saved", "dial-conflict", "settle-in", "settle-timer", "settle-microphone-consent", "settle-sensors"]
+required = ["tonight", "dial-help", "alarms", "settings", "sounds", "time", "time-invalid", "time-restored", "dial-draft", "dial-review-restored", "dial-saved", "dial-conflict", "settle-in", "settle-timer", "settle-microphone-consent", "settle-sensors", "dial-linked-review", "dial-linked-alarm", "tracking-active", "tracking-end-confirmation", "tracking-paused", "tracking-paused-restored", "tracking-resumed"]
 missing = [name for name in required if not (output / f"night-dial-{name}.png").is_file()]
-passed = result.returncode == 0 and "OK (2 tests)" in result.stdout and not missing
-(output / "review.json").write_text(json.dumps({"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "scope": "roots, picker validation, real dial gestures/save/cancel/conflict/recreation, silent Settle in and consent cancel", "full_acceptance": False, "passed": passed, "missing_frames": missing, "output": "No alarms, audio or sensors started; host audio disabled"}, indent=2), encoding="utf-8")
+passed = result.returncode == 0 and "OK (3 tests)" in result.stdout and not missing
+(output / "review.json").write_text(json.dumps({"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "scope": "roots, picker validation, real dial gestures/save/cancel/conflict/recreation, silent Settle in and consent cancel; synthetic PCM tracking, pause/recreate/resume/end", "full_acceptance": False, "passed": passed, "missing_frames": missing, "output": "No alarms, audio or sensors started; host audio disabled"}, indent=2), encoding="utf-8")
 if not passed:
     raise SystemExit("Native design review failed; inspect instrumentation and captured frames.")

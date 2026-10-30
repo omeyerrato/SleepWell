@@ -45,7 +45,7 @@ public final class PlanActivity extends Activity {
         dialAlarm=state==null?getIntent().getStringExtra("dialAlarm"):state.getString("dialAlarm","");if(dialAlarm==null)dialAlarm="";
         if(state!=null){dialStale=state.getBoolean("dialStale");reviewAlarmAfterSave=state.getBoolean("dialReviewAlarm");return;}
         if(draft.revision!=getIntent().getLongExtra("dialRevision",-1)){dialStale=true;saveFailure="Your plan changed while you were adjusting it. Reload the saved plan before editing.";return;}
-        int bed=getIntent().getIntExtra("dialBed",draft.bedtime),wake=getIntent().getIntExtra("dialWake",draft.wake);new NightDialRange(bed,wake);draft.bedtime=bed;draft.wake=wake;draft.goal=Math.floorMod(wake-bed,1440);
+        int bed=getIntent().getIntExtra("dialBed",draft.bedtime),wake=getIntent().getIntExtra("dialWake",draft.wake);try{new NightDialRange(bed,wake);draft.bedtime=bed;draft.wake=wake;draft.goal=Math.floorMod(wake-bed,1440);}catch(IllegalArgumentException invalid){saveFailure="This alarm is outside the supported rest window. Adjust the saved plan below; the alarm stays separate.";}
         if(getIntent().getBooleanExtra("dialNumeric",false)){restoredPicker=new Bundle();restoredPicker.putString("sleepPickerKind","time");restoredPicker.putString("sleepPickerTitle",getIntent().getBooleanExtra("dialSelectWake",false)?"Planned wake-up":"Planned bedtime");}
     }
     private void renderDial(){
