@@ -1,0 +1,184 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReviewTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NightDialReviewTest:
+INSTRUMENTATION_STATUS: test=rootsMixerAndOwnedPickerRemainSilentAndCancelable
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReviewTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=rootsMixerAndOwnedPickerRemainSilentAndCancelable
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialInteractionTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NightDialInteractionTest:
+INSTRUMENTATION_STATUS: test=independentDragReviewSaveCancelRecreationAndSilentSettleIn
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialInteractionTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=independentDragReviewSaveCancelRecreationAndSilentSettleIn
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialTrackingReviewTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NightDialTrackingReviewTest:
+INSTRUMENTATION_STATUS: test=measuredGraphPauseRecreationCancelEndAndExplicitSave
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialTrackingReviewTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=measuredGraphPauseRecreationCancelEndAndExplicitSave
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReportFlowTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NightDialReportFlowTest:
+INSTRUMENTATION_STATUS: test=canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReportFlowTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReportFlowTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReportFlowTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialAlarmFlowTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NightDialAlarmFlowTest:
+INSTRUMENTATION_STATUS: test=nameRepeatAndDirtyBackRestoreWithoutSaving
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialAlarmFlowTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.junit.Assert.assertNotNull(Assert.java:723)
+	at org.sleepwell.app.NightDialAlarmFlowTest.name(NightDialAlarmFlowTest.java:40)
+	at org.sleepwell.app.NightDialAlarmFlowTest.lambda$nameRepeatAndDirtyBackRestoreWithoutSaving$0(NightDialAlarmFlowTest.java:44)
+	at org.sleepwell.app.NightDialAlarmFlowTest.$r8$lambda$laEnXPiseMkLH6nRg2E4ZVT3GZA(Unknown Source:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest$$ExternalSyntheticLambda4.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest.scene(NightDialAlarmFlowTest.java:35)
+	at org.sleepwell.app.NightDialAlarmFlowTest.nameRepeatAndDirtyBackRestoreWithoutSaving(NightDialAlarmFlowTest.java:42)
+
+INSTRUMENTATION_STATUS: stream=
+Error in nameRepeatAndDirtyBackRestoreWithoutSaving(org.sleepwell.app.NightDialAlarmFlowTest):
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.junit.Assert.assertNotNull(Assert.java:723)
+	at org.sleepwell.app.NightDialAlarmFlowTest.name(NightDialAlarmFlowTest.java:40)
+	at org.sleepwell.app.NightDialAlarmFlowTest.lambda$nameRepeatAndDirtyBackRestoreWithoutSaving$0(NightDialAlarmFlowTest.java:44)
+	at org.sleepwell.app.NightDialAlarmFlowTest.$r8$lambda$laEnXPiseMkLH6nRg2E4ZVT3GZA(Unknown Source:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest$$ExternalSyntheticLambda4.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest.scene(NightDialAlarmFlowTest.java:35)
+	at org.sleepwell.app.NightDialAlarmFlowTest.nameRepeatAndDirtyBackRestoreWithoutSaving(NightDialAlarmFlowTest.java:42)
+
+INSTRUMENTATION_STATUS: test=nameRepeatAndDirtyBackRestoreWithoutSaving
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialAlarmFlowTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=routineOrderingGentleAndSnoozeStayInDraftUntilSave
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialAlarmFlowTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: alarm-saved: focused native capture owner
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.NightDialCapture.frame(NightDialCapture.java:18)
+	at org.sleepwell.app.NightDialAlarmFlowTest.capture(NightDialAlarmFlowTest.java:39)
+	at org.sleepwell.app.NightDialAlarmFlowTest.lambda$routineOrderingGentleAndSnoozeStayInDraftUntilSave$4(NightDialAlarmFlowTest.java:47)
+	at org.sleepwell.app.NightDialAlarmFlowTest.$r8$lambda$zsynkJ-VUb9UI3g0QNDI-0XHuNg(Unknown Source:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest$$ExternalSyntheticLambda3.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest.scene(NightDialAlarmFlowTest.java:35)
+	at org.sleepwell.app.NightDialAlarmFlowTest.routineOrderingGentleAndSnoozeStayInDraftUntilSave(NightDialAlarmFlowTest.java:46)
+
+INSTRUMENTATION_STATUS: stream=
+Error in routineOrderingGentleAndSnoozeStayInDraftUntilSave(org.sleepwell.app.NightDialAlarmFlowTest):
+java.lang.AssertionError: alarm-saved: focused native capture owner
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.NightDialCapture.frame(NightDialCapture.java:18)
+	at org.sleepwell.app.NightDialAlarmFlowTest.capture(NightDialAlarmFlowTest.java:39)
+	at org.sleepwell.app.NightDialAlarmFlowTest.lambda$routineOrderingGentleAndSnoozeStayInDraftUntilSave$4(NightDialAlarmFlowTest.java:47)
+	at org.sleepwell.app.NightDialAlarmFlowTest.$r8$lambda$zsynkJ-VUb9UI3g0QNDI-0XHuNg(Unknown Source:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest$$ExternalSyntheticLambda3.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest.scene(NightDialAlarmFlowTest.java:35)
+	at org.sleepwell.app.NightDialAlarmFlowTest.routineOrderingGentleAndSnoozeStayInDraftUntilSave(NightDialAlarmFlowTest.java:46)
+
+INSTRUMENTATION_STATUS: test=routineOrderingGentleAndSnoozeStayInDraftUntilSave
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 220.454
+There were 2 failures:
+1) nameRepeatAndDirtyBackRestoreWithoutSaving(org.sleepwell.app.NightDialAlarmFlowTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.junit.Assert.assertNotNull(Assert.java:723)
+	at org.sleepwell.app.NightDialAlarmFlowTest.name(NightDialAlarmFlowTest.java:40)
+	at org.sleepwell.app.NightDialAlarmFlowTest.lambda$nameRepeatAndDirtyBackRestoreWithoutSaving$0(NightDialAlarmFlowTest.java:44)
+	at org.sleepwell.app.NightDialAlarmFlowTest.$r8$lambda$laEnXPiseMkLH6nRg2E4ZVT3GZA(Unknown Source:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest$$ExternalSyntheticLambda4.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest.scene(NightDialAlarmFlowTest.java:35)
+	at org.sleepwell.app.NightDialAlarmFlowTest.nameRepeatAndDirtyBackRestoreWithoutSaving(NightDialAlarmFlowTest.java:42)
+2) routineOrderingGentleAndSnoozeStayInDraftUntilSave(org.sleepwell.app.NightDialAlarmFlowTest)
+java.lang.AssertionError: alarm-saved: focused native capture owner
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.NightDialCapture.frame(NightDialCapture.java:18)
+	at org.sleepwell.app.NightDialAlarmFlowTest.capture(NightDialAlarmFlowTest.java:39)
+	at org.sleepwell.app.NightDialAlarmFlowTest.lambda$routineOrderingGentleAndSnoozeStayInDraftUntilSave$4(NightDialAlarmFlowTest.java:47)
+	at org.sleepwell.app.NightDialAlarmFlowTest.$r8$lambda$zsynkJ-VUb9UI3g0QNDI-0XHuNg(Unknown Source:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest$$ExternalSyntheticLambda3.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.NightDialAlarmFlowTest.scene(NightDialAlarmFlowTest.java:35)
+	at org.sleepwell.app.NightDialAlarmFlowTest.routineOrderingGentleAndSnoozeStayInDraftUntilSave(NightDialAlarmFlowTest.java:46)
+
+FAILURES!!!
+Tests run: 7,  Failures: 2
+
+
+INSTRUMENTATION_CODE: -1

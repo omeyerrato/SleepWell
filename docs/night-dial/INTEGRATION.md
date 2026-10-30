@@ -68,7 +68,7 @@ The Report dock now opens `RecordReportActivity` with `reportRoot=true`; its exi
 
 Report adapters have passing narrow native evidence at [fca53502](verification/fca53502/README.md): five total native methods, all 42 frames, and 59 focused unit methods. Optional annotation-reset and remaining source/date/import/device branches still require review on an integrated revision. The final evidence commit does not change the reviewed application-source tree.
 
-## Alarm presentation adapters under review
+## Alarm presentation adapters
 
 The alarm-list composition keeps the existing enable/skip/edit owners. It orders enabled alarms by their actual admitted next occurrence, including pending nap deadlines, then alarms needing review and disabled alarms. Each card adds the saved routine and a separate settings target. Calendar preview uses the existing admitted receipt; it does not request calendar reads or change scheduling. Preserve newer MainActivity feature callbacks when integrating this isolated adapter.
 
@@ -76,4 +76,10 @@ The ordinary AlarmEditorActivity now uses the same dirty-draft exit protection a
 
 AlarmRampChart draws the exact requested AlarmWakePolicy envelope over time after the alarm starts, including sound delay. It is not measured speaker output; silent mode draws no sound curve. AlarmSnoozePreview derives the first configured durations from SnoozePolicy and the total budget. Neither view starts output, changes an occurrence or writes a setting. Challenge catalog counts derive from the same filtered rows; ordinal routine rows and their drag/Move up/down operations retain the existing bounded draft owner.
 
-These changes remain under native review. They do not establish acceptance of alarm deletion/duplication, every schedule/source/input/backup/practice branch, all 28 challenge surfaces or device/accessibility/motion variants. Native evidence must be recorded at the final reviewed revision.
+AlarmEditorUi and ChallengeRoutineUi attach explanatory tooltips to the actionable row rather than its nested value/description: a tooltip on the child consumed ordinary edit taps. Preserve the parent's action and focus target when adapting newer feature rows. Inactive weekday letters use readable secondary ink. AlarmRepeatActivity clears an already-shown validation message as soon as the current candidate becomes valid, without rebuilding the text field; existing rule validation/result identity remain authoritative.
+
+The owned discard sheet now protects ordinary alarm editing as well as Settings drafts. Keep the complete original-snapshot comparison and the existing identity-checked Save owner when integrating. SleepPicker's saved name/selection/error state belongs to the sheet; a recreation must not commit that name to the alarm.
+
+[37de8841 native evidence](verification/37de8841/README.md) passed seven total native methods, all 64 frames and 80 focused unit methods. NightDialAlarmFlowTest enters through the real alarm-list parent, checks name/repeat/discard recreation, orders Memory before Math, inspects requested gentle/snooze configuration and verifies one explicit Save reaches a silent scheduling port. Its private stores, unchanged alarm-stream volume and no-output guards must remain. The dial helper only reacquires stale accessibility geometry before preparing an input sequence; it never replays a gesture.
+
+This evidence does not establish acceptance of alarm deletion/duplication, every schedule/source/input/backup/practice branch, all 28 challenge surfaces or device/accessibility/motion variants. The packaged APK's app/src/main tree is aeba57ed9b1cbded14ba535fead391dcd142d997. Later integration needs its own tests and captures. The feature branch has advanced and the draft PR currently has merge conflicts; resolve the narrow adapters rather than replacing Activities wholesale.

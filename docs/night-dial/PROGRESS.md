@@ -31,6 +31,15 @@ The full 43-flow design contract remains the target. Shared styling does not est
 - Native review fca53502 passed 59 focused unit methods and all five native methods, with all 42 required frames. Initial screenshot defects and intermediate failed test expectations are retained in the verification notes. This remains narrow progress, not full-app acceptance.
 - APK-only preview c1d4a75f is saved locally and in Downloads with the previous preview signer. Its application-source tree matches reviewed fca53502 exactly. No phone installation or ADB interaction occurred this pass. See verification/fca53502/README.md and the adjacent local build receipt for exact scope/checksum.
 
+## Alarm draft and configuration preview pass
+
+- Alarm cards now show the saved routine and actual dated next occurrence, ordered by the admitted next occurrence. Name/value taps reach their owning rows. Name drafts, selection and the dirty Back confirmation survive recreation; Discard leaves the stored alarm unchanged.
+- Repeat is directly reachable from the editor. Invalid interval input survives recreation without saving. Correcting it clears the stale error immediately without replacing the field or losing the caret; interval weekdays remain visibly inactive.
+- Gentle wake draws the requested policy, including sound delay and ramp, with explicit time/percent axes. Snooze bars show configured policy durations, including shortening and zero snoozes. These are configuration previews, not measured output.
+- The challenge catalog shows its actual filtered count. The Memory configuration, ordered routine and parent alarm draft retain their existing owners. Only explicit Save alarm commits the reviewed routine/settings and reaches scheduling.
+- Native review 37de8841 passed all seven native methods and 80 focused unit methods; all 64 required frames were preserved and key states visually inspected. The independent APK workflow passed. The previous broad-suite failures remain open and were not rerun in this focused pass.
+- Signed APK-only preview 37de8841 is prepared in Downloads, with receipt/checksum and the same preview signer. No phone installation or physical ADB interaction occurred. See [exact review scope](verification/37de8841/README.md).
+
 ## Flow matrix
 
 | Board | Flow | Current status |
@@ -38,11 +47,11 @@ The full 43-flow design contract remains the target. Shared styling does not est
 | 01 | First night | Native design and full interaction review pending |
 | 02 | Plan tonight | Native composition, independent drag/save/cancel/conflict/recreation and explicit linked alarm review verified at 7d726b2b; extended accessibility/device review pending |
 | 03 | Wind down and guard | Native design and full interaction review pending |
-| 04 | Create and manage alarms | Native design and full interaction review pending |
-| 05 | Dates and smart waking | Native design and full interaction review pending |
-| 06 | Tone and gentle wake | Native design and full interaction review pending |
-| 07 | Snooze, backup, input | Native design and full interaction review pending |
-| 08 | Build a wake routine | Native design and full interaction review pending |
+| 04 | Create and manage alarms | Actual next-occurrence list, name draft/recreation, dirty Back/Keep/Discard and explicit Save verified at 37de8841; create/delete/duplicate/skip and other entry branches pending |
+| 05 | Dates and smart waking | Interval validation/correction, draft recreation and return verified at 37de8841; odd/even, anchor/date/exclusions, solar and other schedule branches pending |
+| 06 | Tone and gentle wake | Requested delay/ramp curve, silent opening and draft recreation verified at 37de8841; source selection, physical output and other gentle-wake branches pending |
+| 07 | Snooze, backup, input | Configured shortening bars, zero-snooze state, recreation and explicit Save verified at 37de8841; caps/choose-each/input/backup/wake-check branches pending |
+| 08 | Build a wake routine | Memory search/configure/add, move-before-Math, draft-only routine Save and explicit parent Save verified at 37de8841; random/practice/all 28 task surfaces pending |
 | 09 | Enroll morning codes | Native design and full interaction review pending |
 | 10 | Screen challenges I | Native design and full interaction review pending |
 | 11 | Screen challenges II | Native design and full interaction review pending |
@@ -83,11 +92,11 @@ The full 43-flow design contract remains the target. Shared styling does not est
 
 ## Next work
 
-1. Continue from the passing fca53502 native captures (42 required frames, five native methods). Finish compact/large-text/landscape/TalkBack/reduced-motion review and the existing weekday/alarm-control regression flow. Keep exact capture revisions in verification/README.md.
+1. Continue from the passing 37de8841 native captures (64 required frames, seven native methods). Review remaining alarm menus, deletion/duplication/skip confirmations and alternate schedule/source/input branches. Keep exact capture revisions in verification/README.md.
 2. Extend Tonight editing evidence to interrupted pointer sequences, non-daily/solar/override alarms and accessible exact entry while retaining independent saved-plan and alarm owners.
 3. Review Settle in playback/gain/error states and active/paused/end tracking with physical devices, additional sensors, long recordings and missing-data cases. Preserve the existing capture owners.
 4. Replace stale appearance/theme previews with the Night Dial preview while retaining saved legacy values.
-5. Review alarm editor, challenge catalog and all 28 task surfaces; keep challenge interaction and scheduling logic unchanged.
+5. Extend the reviewed name/repeat/routine/gentle/snooze branches to random/practice modes and all 28 task surfaces; keep challenge interaction and scheduling logic unchanged.
 6. Complete report provider/CSV/calendar/manual/filter/awake/optional-reset branches and trend detail selection/rhythm/context, retaining actual source/missing-data language.
 7. Review every remaining settings/editor sheet, confirmation, popup, keyboard and permission-return state against the 43-flow matrix.
 8. Verify compact/large widths, enlarged fonts, landscape, TalkBack focus/order, reduced motion, keyboard navigation, press cancellation, haptic quiet guards and lifecycle cleanup.

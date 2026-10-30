@@ -1,6 +1,18 @@
 # Native review evidence
 
-## Latest reviewed preview: fca53502
+## Latest reviewed preview: 37de8841
+
+The [native review](https://github.com/omeyerrato/SleepWell/actions/runs/41083871279), job 124159782214, artifact 12989899796, passed all seven native methods in 193.422 seconds. All 64 required PNGs exist; 80 focused unit methods passed with zero failures/errors. [Raw result](37de8841/review.json), [instrumentation](37de8841/instrumentation.txt), [exact scope and limits](37de8841/README.md). The [independent APK workflow](https://github.com/omeyerrato/SleepWell/actions/runs/41083871221) also passed; its default broad unit/lint step is skipped. This is not a global-suite-green claim.
+
+The review retains the prior dial, mixer, tracking and report journeys and adds alarm-list-to-editor draft flows: name entry, repeat validation/correction, recreated discard confirmation, Memory task selection/order, requested gentle-wake envelope and configured snooze shortening/off. Only explicit Save alarm writes the reviewed settings and reaches the silent scheduling port. Native images were inspected, including corrected inactive weekday contrast and cleared repeat validation. No measured health/output claims are inferred from configuration previews.
+
+Native captures: [alarm list](37de8841/night-dial-alarm-list.png), [name draft](37de8841/night-dial-alarm-name-restored.png), [corrected repeat](37de8841/night-dial-alarm-repeat-interval.png), [discard restored](37de8841/night-dial-alarm-discard-restored.png), [gentle configuration](37de8841/night-dial-alarm-gentle.png), [snooze configuration](37de8841/night-dial-alarm-snooze.png), [dial under pointer](37de8841/night-dial-dial-under-finger.png).
+
+The signed local APK was built from 37de8841 with app/src/main tree `aeba57ed9b1cbded14ba535fead391dcd142d997`. Size: 327,016,400 bytes; SHA256 `54ccd19d88c2769caa7d66b8bfe735be20c0347031bab050ea8e42b7e0a834e3`. Signer certificate SHA256 `49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c` matches the previous local preview. APK and receipt are in Downloads; the user selected APK only. No personal phone installation or physical ADB interaction occurred in this pass.
+
+Limits: one normal-size API 35 renderer; all 43 flows, remaining challenge/schedule/source/import/provider branches, enlarged text, landscape, TalkBack, reduced-motion runtime, physical haptics/playback/sensing, overnight reliability and integration against the latest feature branch remain open. The 11 baseline-reproduced broad-unit failures below were not rerun here. Full app acceptance remains false.
+
+## Earlier reviewed preview: fca53502
 
 The [native review](https://github.com/omeyerrato/SleepWell/actions/runs/41069491851), job 124109531703, artifact 12984193075, passed all five native methods in 162.904 seconds. All 42 required native PNGs exist; 59 focused unit methods passed with zero failures/errors. [Raw result](fca53502/review.json), [instrumentation](fca53502/instrumentation.txt), [exact scope and limits](fca53502/README.md). The independent APK workflow also passed; its default broad unit/lint step is skipped, so this is not a global-suite-green claim.
 
@@ -15,7 +27,7 @@ Limits: one normal-size API 35 emulator; all 43 flows, provider/import/calendar/
 
 This folder contains actual Android renderer captures, not generated UI mockups. Fixtures are synthetic and isolated; no personal phone data is included. No full flow is accepted yet.
 
-## Current passing review: 7d726b2b
+## Earlier passing review: 7d726b2b
 
 [The final run](https://github.com/omeyerrato/SleepWell/actions/runs/41059754092) passed the application/test-APK builds, 25 focused unit methods and all three native journeys. All 26 required screenshots exist. [Result](7d726b2b/review.json), [instrumentation](7d726b2b/instrumentation.txt). The matching signed local preview APK was built successfully and verified with apksigner; the user selected APK-only delivery and no phone update was performed.
 
@@ -114,3 +126,14 @@ Visual inspection also found defects the initial assertions missed: the right-ha
 
 
 The [follow-up at c1d4a75f](https://github.com/omeyerrato/SleepWell/actions/runs/41068333159) passed the full canonical Week/Month/Year/missing-range journey and confirmed readable goal/coverage columns. Its saved-night journey stopped on an incorrect new test label, `8 h`, while the actual native row correctly showed `8 h 0 min`. fca53502 corrects only that exact test expectation; the application-source tree and packaged APK remain unchanged. This intermediate run is also a failed review, not a passing release claim.
+
+
+## Alarm review finding at 7c5f191f
+
+The [first expanded alarm review](https://github.com/omeyerrato/SleepWell/actions/runs/41075386373) passed its build, 80 focused unit methods and the five prior native methods. The new name route exposed a child tooltip consuming taps on the name value. The routine/output/snooze method verified its domain assertions, then attempted its final capture after a standalone editor had returned to Home. Follow-up 57f4cec0 moves tooltips to their actionable rows, exercises a pointer on the name value, retains name/dirty/repeat restoration assertions, returns through the real alarm list, and adds the zero-snooze branch. [Historical result and images](7c5f191f-finding/README.md). This intermediate review is explicitly failed, not a passing alarm acceptance claim.
+
+## Alarm observation and visual correction follow-up
+
+The [57f4cec0 review](https://github.com/omeyerrato/SleepWell/actions/runs/41078614533) passed both alarm journeys, four other native methods and all 80 focused unit methods, but failed while the dial test reused a replaced accessibility node to prepare geometry before pointer injection. The helper now snapshots one fresh rectangle with bounded observation reacquisition; it never retries input. [Historical frames/result](57f4cec0-finding/README.md) also retain unreadable inactive weekdays and a stale repeat error after correction.
+
+[d3a59ff1](https://github.com/omeyerrato/SleepWell/actions/runs/41082082148) passed all seven methods and 64 frames in 207.642 seconds after geometry/readability fixes. A further visual finding led to clearing corrected repeat validation without replacing the field and an explicit native assertion. Final 37de8841 independently passed with that correction; earlier functional green does not approve the stale-error pixels.
