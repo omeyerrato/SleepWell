@@ -2411,11 +2411,12 @@
         "SearchIndex.java",
         "SearchSettings.java",
         "SearchAlarmChooser.java",
-        "AlarmEditorSearchUi.java"
+        "AlarmEditorSearchUi.java",
+        "SearchRecents.java"
       ],
       "validation": "CI40784711149 at19f6ac9e PASS44.557s/18 individually inspected originals. Chosen existing alarm/new draft, real Extra loud/Flashlight options, actual options-kind restoration independent of original search result, query recovery and selected history editing pass on private stores. Both prior failures retained. Evidence: verification/2026-10-29-feature-findability/.  no scheduling/output/provider or every-destination claim. Combined merged-editor CI40792566584 at669cc50f subsequently passed69.905s/33.847s, all36 scoped originals individually inspected; ten named paths match frozen0.1.6 source741b3718. Evidence: verification/2026-10-29-editor-usability-integration/. Published0.1.6; not installed on phone.",
       "status": "partial",
-      "notes": "Actual saved-record/settings search opens the selected destination and retains query across recreation; no network or invented results. Room conditions and Screen dimming are now explicit search terms and an allowlisted real destination in Sleep & bedtime; Main retains its existing route and names dimming.",
+      "notes": "Actual saved-record/settings search opens the selected destination and retains query across recreation; no network or invented results. Room conditions and Screen dimming are now explicit search terms and an allowlisted real destination in Sleep & bedtime; Main retains its existing route and names dimming. 0.1.20 adds persistent recent-settings Quick access in the same maximumfive slots, with default filling and explicit Reset. Only known setting metadata is stored; actual navigation feeds history, with no queries or record/alarm IDs. Ordered off-main writes outlive SearchActivity; persistence failures do not block routes. New interaction/persistence verification remains deferred.",
       "id": "F082",
       "tests": [
         {

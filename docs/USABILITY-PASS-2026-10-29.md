@@ -122,6 +122,17 @@ Published source **`2dfcd82b`**, version **0.1.19 / 20**. [Development APK](http
 
 Implementation commits: `00885a3c`, `0f129ff8`, `e029185b`, `fb12ce63`. Three implementation agents worked in isolated worktrees. No tests, lint, screenshot verification, security review, device or output operations ran. All36 acceptance stays open.
 
+## Recent settings quick access — 0.1.20
+
+Published source **`471007a8`**, version **0.1.20 / 21**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.20-quick-access-20261030-471007a8). APK packaging only.
+
+- Settings search keeps the same maximum five shortcut slots. Known recently opened settings come first; existing popular shortcuts fill unused slots without duplicates. Fresh or cleared history shows the existing defaults.
+- Reset shortcuts is an explicit48dp action shown only with valid history. It clears only shortcut order. Actual setting opens feed the history; queries, record/alarm IDs, rendering and restoration do not.
+- Private bounded setting metadata is serialized off the main thread. Writes retain tap order and outlive SearchActivity shutdown; older completions cannot replace newer choices. Storage failure does not block real navigation. Existing per-alarm chooser and draft routes remain.
+- The current remaining-work list and feature-matrix summary are consolidated. Superseded release-history items and original evidence remain in a dated historical snapshot.
+
+Implementation commits: `0c31fa38`, `524cb00f`. One implementation agent worked in an isolated worktree; the main checkout integrated the feature and consolidated current documentation. No tests, lint, screenshot verification, security review, device or output operations ran. All36 acceptance stays open.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.
