@@ -42,7 +42,7 @@ final class ReportScreen {
         String outcome=analysisInfo.title+(analysisInfo.detail.isEmpty()?"":" · "+analysisInfo.detail);if(edited)outcome="Original recording · "+outcome;
         String audio=snapshot.clipCount>0?snapshot.clipCount+(snapshot.clipCount==1?" saved audio clip":" saved audio clips"):sounds.total>0?(sounds.analysisOnly==sounds.total?"Analysis only · no recordings saved.":"Recordings unavailable."):"No sound clips saved for this night.";
         if(sounds.total>0)body.addView(new ReportAudioRows(a,id,start,end,sounds),new LinearLayout.LayoutParams(-1,-2));
-        else if(manual||!analysisInfo.attention)Design.text(body,manual?"No sound analysis for a manual entry.":analysisInfo.empty(),14,400,Design.MUTED);
+        else if(manual||!analysisInfo.attention)Design.text(body,manual?"No sound analysis for a manual entry.":analysis==null?"No saved sound events.":analysisInfo.empty(),14,400,Design.MUTED);
         // Keep problems visible here. Routine processing counts and provenance live in
         // About this recording, so the main hierarchy stays rows -> View sound events.
         if(!manual&&analysisInfo.attention){Design.space(body,6);TextView state=Design.text(a,(sounds.total==0?"No saved sound events. ":"")+outcome,12,500,Design.BROWN);Design.pad(state,12,9);state.setBackground(Design.shape(a,0xffffead0,12));body.addView(state,new LinearLayout.LayoutParams(-1,-2));}
