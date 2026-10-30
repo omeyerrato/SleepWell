@@ -200,10 +200,11 @@ public final class AutomationActivity extends Activity {
         String message=kind.equals("test")?"This sends a real event to the saved destination and can trigger its actions. Unsaved changes are not used.":kind.equals("unavailable")?"The saved destination could not be opened. Your sleep records are unaffected. Keep this rule or delete it to enter the destination again.":"Queued attempts will be removed. An in-flight request may already have been sent.";
         AlertDialog dialog=new AlertDialog.Builder(this).setTitle(title).setMessage(message).setNegativeButton(kind.equals("unavailable")?"Keep rule":"Cancel",null).setPositiveButton(kind.equals("test")?"Send test":"Delete rule",null).create();ownedDialog=dialog;
         dialog.setOnDismissListener(ignored->{if(ownedDialog==dialog){ownedDialog=null;confirmation="";confirmationId="";}});dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(v->{InteractionFeedback.action(v);dialog.dismiss();});
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v->{
             if(ownedDialog!=dialog||!resumed||isFinishing()||isDestroyed()||request!=null||!dialog.getWindow().getDecorView().hasWindowFocus()||!confirmation.equals(kind)||!confirmationId.equals(id)||confirmationRevision!=revision)return;
             if(!kind.equals("unavailable")&&(draft==null||!draft.id.equals(id)||draft.revision!=revision))return;
-            Port pinned=owner;testOccurrence=kind.equals("test")?UUID.randomUUID().toString():"";String occurrence=testOccurrence;
+            InteractionFeedback.action(v);Port pinned=owner;testOccurrence=kind.equals("test")?UUID.randomUUID().toString():"";String occurrence=testOccurrence;
             dialog.dismiss();
             if(kind.equals("test"))begin("test",app->{try(AutomationStore store=pinned.open(app)){AutomationRule saved=store.rule(id);if(saved==null||!saved.enabled)return "Enable and save this rule before sending a test.";if(saved.revision!=revision)throw new IllegalStateException("Rule changed. Reopen it before sending a test.");store.enqueue(AutomationEvent.occurrence(saved.event,occurrence,System.currentTimeMillis(),true),id);return scheduled(pinned,app,store,"Test event queued.");}});
             else begin("delete",app->{try(AutomationStore store=pinned.open(app)){store.delete(id);return scheduled(pinned,app,store,"Rule deleted.");}});
