@@ -59,9 +59,9 @@ public final class SoundEventsActivity extends Activity {
     }
     private void addRow(LinearLayout body,SoundEventRows.Row row){
         LinearLayout card=Design.col(this);Design.pad(card,8,10);card.setBackground(rowBackground(row));
-        LinearLayout head=Design.row(this);head.setGravity(Gravity.TOP);
+        LinearLayout head=Design.row(this);head.setGravity(Gravity.TOP);int clockColumn=Design.dp(this,80*Math.max(1,Design.fontScale(this)));
         TextView time=Design.text(this,RecordUi.clock(this,row.start,record.zone()).toUpperCase(Locale.getDefault()),13,400,Design.MUTED);
-        time.setPadding(0,Design.dp(this,5),Design.dp(this,8),0);head.addView(time,new LinearLayout.LayoutParams(Design.dp(this,68),-2));
+        time.setPadding(0,Design.dp(this,5),Design.dp(this,8),0);head.addView(time,new LinearLayout.LayoutParams(clockColumn,-2));
         LinearLayout copy=Design.col(this);copy.setMinimumHeight(Design.dp(this,48));copy.setGravity(Gravity.CENTER_VERTICAL);
         Design.text(copy,row.title,15,600,Design.INK);Design.space(copy,4);
         Design.text(copy,row.duration>0?RecordUi.duration(row.duration):"Duration unavailable",13,400,Design.MUTED);
@@ -74,17 +74,17 @@ public final class SoundEventsActivity extends Activity {
         favorite.setSelected(row.favorite);head.addView(favorite,new LinearLayout.LayoutParams(Design.dp(this,48),Design.dp(this,48)));
         head.addView(Design.iconButton(this,"trash","Delete "+row.key,()->confirmDelete(row)),new LinearLayout.LayoutParams(Design.dp(this,48),Design.dp(this,48)));card.addView(head);
         if(row.target==null){
-            TextView noAudio=Design.text(card,row.audioError.isEmpty()?"Audio not recorded":row.audioError,12,400,Design.MUTED);noAudio.setPadding(Design.dp(this,68),Design.dp(this,4),0,0);
+            TextView noAudio=Design.text(card,row.audioError.isEmpty()?"Audio not recorded":row.audioError,12,400,Design.MUTED);noAudio.setPadding(clockColumn,Design.dp(this,4),0,0);
         }else{
             Design.space(card,8);LinearLayout audioPanel=Design.col(this);Design.pad(audioPanel,8,6);card.addView(audioPanel,new LinearLayout.LayoutParams(-1,-2));
             LinearLayout audio=Design.row(this);FrameLayout play=new FrameLayout(this);play.setFocusable(true);SoundEventUi.button(play);
             play.setOnClickListener(v->{InteractionFeedback.action(v);selected=row.key;player.toggle(row.target,positions.getOrDefault(row.key,0L));});audio.addView(play,new LinearLayout.LayoutParams(Design.dp(this,48),Design.dp(this,48)));
             ClipWaveView wave=new ClipWaveView(this,row.peaks,row.category.equals("speech")?0xff9262df:Design.BROWN,row.category.equals("speech")?0xffc3a4f4:0xffcfb69f);
-            LinearLayout.LayoutParams wp=new LinearLayout.LayoutParams(0,Design.dp(this,42),1);wp.leftMargin=Design.dp(this,12);audio.addView(wave,wp);audioPanel.addView(audio);
+            LinearLayout.LayoutParams wp=new LinearLayout.LayoutParams(0,Design.dp(this,42),1);wp.leftMargin=clockColumn-Design.dp(this,56);audio.addView(wave,wp);audioPanel.addView(audio);
             LinearLayout progress=Design.row(this);TextView elapsed=Design.text(this,"0:00",11,400,Design.MUTED),total=Design.text(this,clock(row.target.duration()),11,400,Design.MUTED);progress.addView(elapsed);
             ClipSeekView seek=new ClipSeekView(this,row.target.duration(),position->{selected=row.key;positions.put(row.key,position);if(state!=null&&state.key.equals(row.key))player.seek(position);else{player.stop();selected=row.key;positions.put(row.key,position);for(Binding other:bindings)update(other);}});
             LinearLayout.LayoutParams sp=new LinearLayout.LayoutParams(0,Design.dp(this,48),1);sp.leftMargin=Design.dp(this,6);sp.rightMargin=Design.dp(this,6);progress.addView(seek,sp);progress.addView(total);
-            LinearLayout.LayoutParams pp=new LinearLayout.LayoutParams(-1,-2);pp.leftMargin=Design.dp(this,60);audioPanel.addView(progress,pp);
+            LinearLayout.LayoutParams pp=new LinearLayout.LayoutParams(-1,-2);pp.leftMargin=clockColumn-Design.dp(this,8);audioPanel.addView(progress,pp);
             TextView playbackError=Design.text(audioPanel,"",12,400,Design.BROWN);playbackError.setVisibility(View.GONE);
             Binding binding=new Binding(row,card,audioPanel,play,wave,seek,elapsed,playbackError,progress);bindings.add(binding);update(binding);
         }
