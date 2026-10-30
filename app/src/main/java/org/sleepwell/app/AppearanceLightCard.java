@@ -39,8 +39,9 @@ final class AppearanceLightCard implements AutoCloseable {
     }
     private TextView detail(LinearLayout parent,String title,String value,String description,Runnable action){
         LinearLayout row=Design.row(owner);row.setMinimumHeight(Design.dp(owner,48));row.setBackground(Design.touch(owner,android.graphics.Color.TRANSPARENT,8));
-        TextView label=Design.text(owner,title,12,400,Design.MUTED);row.addView(label,new LinearLayout.LayoutParams(0,-2,1));
-        TextView amount=Design.text(owner,value,12,500,Design.INK);LinearLayout.LayoutParams amountSpace=new LinearLayout.LayoutParams(-2,-2);amountSpace.leftMargin=Design.dp(owner,6);row.addView(amount,amountSpace);
+        TextView label=Design.text(owner,title,12,400,Design.MUTED);TextView amount=Design.text(owner,value,12,500,Design.INK);
+        if(Design.fontScale(owner)>1.15f){LinearLayout values=Design.col(owner);values.addView(label);Design.space(values,2);values.addView(amount);row.addView(values,new LinearLayout.LayoutParams(0,-2,1));}
+        else{row.addView(label,new LinearLayout.LayoutParams(0,-2,1));LinearLayout.LayoutParams amountSpace=new LinearLayout.LayoutParams(-2,-2);amountSpace.leftMargin=Design.dp(owner,6);row.addView(amount,amountSpace);}
         row.addView(new Design.Icon(owner,"chevron",Design.INK),new LinearLayout.LayoutParams(Design.dp(owner,14),Design.dp(owner,24)));
         row.setContentDescription(description);row.setFocusable(true);row.setOnClickListener(v->{InteractionFeedback.action(v);action.run();});parent.addView(row);Design.line(parent);return amount;
     }
