@@ -55,6 +55,7 @@ on:
           - live-night-timeline
           - chart-phone-motion
           - wake-challenge-reference
+          - wake-reference-current
           - calendar-consent-recovery
           - profile-room-dimming
           - room-settings-search

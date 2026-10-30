@@ -67,6 +67,7 @@ parser.add_argument("--scope", choices=(
     'live-night-timeline',
     'chart-phone-motion',
     'wake-challenge-reference',
+    'wake-reference-current',
     'calendar-consent-recovery',
     'profile-room-dimming',
     'room-settings-search',
@@ -91,6 +92,10 @@ if args.scope != "full" and (args.native_sounds or args.audio_imports):
 TONE_FRAMES = ["alarm-tone-" + name + ".png" for name in ("builtins", "playing", "paused", "preview-error", "options", "selected", "import-checking", "recreated", "import-cancelled", "decoder-busy", "decoder-recovered", "import-empty", "import-error", "imported", "reopened", "cancelled")]
 WAKE_SETTING_FRAMES = ["wake-settings-" + name + ".png" for name in ("sound", "loud-curve", "delay-options", "vibration-options", "lights", "recreated", "reopened", "normal-curve", "edited-curve", "immediate")]
 WAKE_CHECK_FRAMES = ["wake-check-" + name + ".png" for name in ("waiting", "prompt", "countdown", "recreated", "confirmed", "reopened", "storage-error", "access-error", "delivery-error", "retry", "expired", "stale", "editor-save-error")]
+
+WAKE_REFERENCE_CURRENT_FRAMES = ["wake-check-"+name+".png" for name in ("waiting","prompt","countdown","recreated","confirmed","reopened","storage-error")]
+WAKE_REFERENCE_CURRENT_FRAMES += ["routine-"+name+".png" for name in ("legacy","catalog-empty","catalog-search","task-about","task-values","ordered","reordered","recreated","removed","reopened")]
+WAKE_REFERENCE_CURRENT_FRAMES += ["challenge-math-"+name+".png" for name in ("initial","selected","wrong","recreated","completed","typed-wrong","typed-recreated","typed-completed")]
 FOCUSED_TESTS = ("AlarmToneAssetsTest", "AlarmToneGrantTest", "AlarmToneFlowTest", "AlarmWakeSettingsTest", "WakeCheckFlowTest")
 ORGANIZED_SETTINGS_FRAMES = ["organized-settings-" + name + ".png" for name in ("sensitivity-categories", "sensitivity-duration", "sensitivity-reopened", "retention-details", "snoring-options", "automatic-conditions", "automatic-permission-recovery", "recurring-conditions", "sounds-sources", "sounds-playback", "timer-recreated", "fade-reopened")]
 ORGANIZED_SETTINGS_FRAMES += ["organized-settings-tracking-"+name+".png" for name in ("main","more","sensitivity","power","power-recreated","recreated","automatic-manual","phone-selected")]
@@ -485,6 +490,10 @@ elif args.scope == "live-night-timeline":
     tests = ["SonarNightFlowTest#visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight"]
 elif args.scope == "chart-phone-motion":
     tests = ["ChartClockFlowTest#alignedClocksElapsedSecondsAndFoldSelectionRenderWithoutEffects"]
+elif args.scope == "wake-reference-current":
+    tests = ["WakeCheckFlowTest#silentPromptCountsDownRecreatesConfirmsAndReopensDurably", "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
+    metadata["routine_slice"] = "reference"
+    metadata["wake_reference_outputs"] = "private disabled alarm configuration; fake check clock/scheduler/re-ring; Math practice card only; no real AlarmActivity or broad practice journeys"
 elif args.scope == "wake-challenge-reference":
     tests = ["WakeCheckFlowTest#silentPromptCountsDownRecreatesConfirmsAndReopensDurably", "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"]
 elif args.scope == "calendar-consent-recovery":
@@ -547,6 +556,8 @@ for test in tests:
         extra += ["-e", "motionSlice", "reference"]
     if args.scope == "routine-camera":
         extra += ["-e", "routineSlice", "camera"]
+    if args.scope == "wake-reference-current" and test.startswith("ChallengeRoutineFlowTest#"):
+        extra += ["-e", "routineSlice", "reference"]
     if args.scope in ("routine-walk-cleanup", "routine-audio", "cognitive-feedback"):
         extra += ["-e", "routineSlice", {"routine-walk-cleanup": "walk-cleanup", "routine-audio": "audio", "cognitive-feedback": "cognitive-feedback"}[args.scope]]
     if test == "SoundImportReopenTest":
@@ -607,6 +618,7 @@ if args.scope != "full":
         "editor-usability-integration": ['routine-legacy.png', 'routine-catalog-empty.png', 'routine-catalog-search.png', 'routine-task-about.png', 'routine-task-values.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png', 'search-empty.png', 'search-room.png', 'search-no-results.png', 'search-record.png', 'search-recreated.png', 'search-feature-extra-loud.png', 'search-feature-alarm-choice.png', 'search-feature-chosen-extra-loud.png', 'search-feature-extra-loud-recreated.png', 'search-feature-reopened-extra-loud.png', 'search-feature-new-draft.png', 'search-feature-new-draft-recreated.png', 'search-feature-unsaved-draft.png', 'search-feature-query-restored.png', 'search-feature-report-editing.png', 'search-feature-report-history.png', 'search-feature-auto-detect.png', 'search-feature-protection.png'],
         "chart-phone-motion": ['chart-clock-overnight.png', 'chart-clock-night.png', 'chart-clock-short.png', 'chart-clock-fold.png', 'chart-clock-phone-history.png', 'chart-clock-phone-selected.png', 'chart-clock-phone-paused.png', 'chart-clock-phone-retry.png', 'chart-clock-tracking-main.png', 'chart-clock-tracking-options.png', 'chart-clock-tracking-returned.png', 'chart-clock-tracking-paused.png', 'chart-clock-tracking-recreated.png', 'chart-clock-tracking-session.png'],
         "live-night-timeline": ["sonar-night-setup.png", "sonar-night-measuring.png", "sonar-night-paused.png", "sonar-night-options.png", "sonar-night-options-recreated.png", "sonar-night-paused-recreated.png", "sonar-night-resumed.png", "sonar-night-missing.png", "sonar-night-stop-confirmation.png", "sonar-night-whole-night.png"],
+        "wake-reference-current": WAKE_REFERENCE_CURRENT_FRAMES,
         "wake-challenge-reference": ["wake-check-waiting.png", "wake-check-prompt.png", "wake-check-countdown.png", "wake-check-recreated.png", "wake-check-confirmed.png", "wake-check-reopened.png", "wake-check-storage-error.png", "routine-legacy.png", "routine-ordered.png", "routine-reordered.png", "routine-recreated.png", "routine-removed.png", "routine-reopened.png", "challenge-math-initial.png", "challenge-math-selected.png", "challenge-math-wrong.png", "challenge-math-recreated.png", "challenge-math-completed.png", "challenge-math-typed-wrong.png", "challenge-math-typed-recreated.png", "challenge-math-typed-completed.png"],
         "calendar-consent-recovery": ["calendar-rules-permission-settings.png", "calendar-rules-permission-granted-draft.png", "calendar-rules-permission-revoked-draft.png", "auto-calendar-draft-recreated.png", "auto-calendar-consent-conflict.png", "auto-calendar-saved-private.png"],
         "profile-room-dimming": ["backup-document-review.png", "backup-document-confirmation.png", "backup-document-review-recreated.png", "backup-document-review-reopened.png", "backup-document-restoring.png", "backup-document-restoring-recreated.png", "backup-document-restored.png", "backup-document-result-reopened.png"],
