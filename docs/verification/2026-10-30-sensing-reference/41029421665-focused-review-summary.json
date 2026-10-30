@@ -1,0 +1,25 @@
+{
+  "scope": "room-bedtime-repair",
+  "full_app_review": false,
+  "expected_classes": 3,
+  "expected_methods": 3,
+  "class_results": [
+    {
+      "class": "OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 45,
+  "failures": []
+}

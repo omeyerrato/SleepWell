@@ -1,0 +1,30 @@
+{
+  "scope": "remaining-reference-current",
+  "full_app_review": false,
+  "expected_classes": 4,
+  "expected_methods": 4,
+  "class_results": [
+    {
+      "class": "SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SnoreCueSettingsNativeTest#savedSettingsSurviveRecreationAndControlFakeCueBehavior",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 29,
+  "failures": []
+}
