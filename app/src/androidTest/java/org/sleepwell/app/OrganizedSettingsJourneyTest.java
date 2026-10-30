@@ -433,7 +433,7 @@ public final class OrganizedSettingsJourneyTest {
             assertEquals("Retention draft did not apply", 7, personal.getInt("audioRetentionDays", 0));
 
             launch(SnoringCuesActivity.class); click("Both"); selected("Both", true); desc("Contactless & output");
-            checked("Contactless vibration cues", false); recreate(); require("Contactless & output"); capture("snoring-options", "Save settings", false);
+            checked("Contactless vibration cues", false); recreate(); require("Cue options"); capture("snoring-options", "Save settings", false);
             back(); selected("Both", true); checked("Respond to snoring estimates", false); finish(); assertEquals(1, personal.getInt("snoreCueMode", -1));
 
             launch(AutomaticTrackingActivity.class); click("At bedtime"); automaticMainFits(); capture("automatic-main", "Save settings", false);
