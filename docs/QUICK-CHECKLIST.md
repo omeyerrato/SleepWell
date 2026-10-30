@@ -1,6 +1,6 @@
 # SleepWell current checklist
 
-Updated30October2026. Latest published APK: **0.1.20 / 471007a8**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.20-quick-access-20261030-471007a8). Last verified phone installation: **0.1.4 /08d3911e**; installation is deferred.
+Updated30October2026. Latest published APK: **0.1.21 / d7ef1deb**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.21-alarm-output-api-20261030-d7ef1deb). Last verified phone installation: **0.1.4 /08d3911e**; installation is deferred.
 
 Checked items record implemented source or publication, with historical evidence where linked. They do not establish current all-screen, physical or overnight acceptance. Current phase: usability first; new tests, lint, screenshots, security review and a separate bug pass are deferred.
 
@@ -45,8 +45,8 @@ Checked items record implemented source or publication, with historical evidence
 
 ## Latest usability increment
 
-- [x] Recent settings fill the existing five-slot Quick access group before default shortcuts.
-- [x] Reset shortcuts restores the defaults; actual setting routes and the alarm chooser remain.
-- [x] Bounded setting metadata persists through ordered off-main writes; storage errors do not block navigation.
-- [x] Current status lists are separated from superseded release history without deleting evidence.
-- [x] Publish0.1.20 (`471007a8`), APK packaging1m27s only. New verification and phone actions remain deferred.
+- [x] Expose configured volume, ramp/delays, screen sunrise, flashlight and extra loud through optional API fields.
+- [x] Implement strict typed parsing, query values and partial patch behavior through the existing mutation path.
+- [x] Document unchanged default projection, admission and authority limits.
+- [x] Record the new staging source lead without claiming a working phone-stage model.
+- [x] Produce and publish0.1.21 (`d7ef1deb`), APK packaging only. New verification and phone actions remain deferred.

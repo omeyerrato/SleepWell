@@ -4,7 +4,7 @@ Reference: `design-concepts/2026-10-22-phone-app/SCREEN-MAP.md`. Each board has 
 
 New source: [0.1.9 usability pass](USABILITY-PASS-2026-10-29.md), `4e47ab35`. The user has deferred new verification/security/bug-fixing work in favor of usability implementation. The historical evidence below does not accept the newly changed layouts; no all36 completion claim is made.
 
-Current package state: **0.1.20 / 471007a8 is published**, with APK packaging only. New verification/review is deferred by the user. The earlier0.1.8 Motion7/Privacy12 results remain historical evidence of that source, not acceptance of the new layouts. No full36, physical/overnight or broad security acceptance. Phone update deferred; last verified installation0.1.4.
+Current package state: **0.1.21 / d7ef1deb is published**, with APK packaging only. New verification/review is deferred by the user. The earlier0.1.8 Motion7/Privacy12 results remain historical evidence of that source, not acceptance of the new layouts. No full36, physical/overnight or broad security acceptance. Phone update deferred; last verified installation0.1.4.
 
 Evidence prefixes below are repository-relative. `CI:` paths are downloaded original Android captures under the root checkout's ignored `.android-local/ci-reviews/<run>/silent-android-review/`; they are not generated mockups. `Pending` means a current-source native comparison and main-action/persistence check is still required. Existing capture locations are identified without pretending they were all visually reviewed in this pass.
 

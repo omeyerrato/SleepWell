@@ -133,6 +133,17 @@ Published source **`471007a8`**, version **0.1.20 / 21**. [Development APK](http
 
 Implementation commits: `0c31fa38`, `524cb00f`. One implementation agent worked in an isolated worktree; the main checkout integrated the feature and consolidated current documentation. No tests, lint, screenshot verification, security review, device or output operations ran. All36 acceptance stays open.
 
+## Configured alarm-output API — 0.1.21
+
+Published source **`d7ef1deb`**, version **0.1.21 / 22**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.21-alarm-output-api-20261030-d7ef1deb). APK packaging only.
+
+- The ordinary-alarm provider adds seven explicit optional query/write scalars: volume_percent10–100; ramp_seconds, sound_delay_seconds and vibration_delay_seconds0–1440; screen_sunrise, flashlight and extra_loud. Boolean writes accept Boolean or Integer0/1; integer fields retain strict integral bounds.
+- The default13-column projection and contract_version1 remain unchanged. Queries report configured values, with null for malformed/out-of-range saved output scalars. Omitted patches preserve existing choices, and create retains valid inherited defaults. Existing admission, grants, ETag, request ledger, ordinary-alarm restrictions and runtime behavior remain.
+- Documentation includes the field contracts and actual query/patch examples. No external write, scheduling call or alarm output was executed.
+- A source-only reading records the OpenSleep motion/sonar lead and its ignored audio handlers. No third-party staging algorithm or model was imported, and F049 remains missing. Earlier rejected model experiments remain unchanged.
+
+Implementation commits: `9ff0769c`, `2be78f57`. One implementation agent worked in an isolated worktree; the main checkout integrated the API family and recorded the model-source finding. No tests, lint, screenshot verification, security review, device or output operations ran. All36 acceptance stays open.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.

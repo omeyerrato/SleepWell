@@ -1,12 +1,12 @@
 # SleepWell current remaining work
 
-Latest published **0.1.20 / 471007a8**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.20-quick-access-20261030-471007a8). APK packaging only; new tests, lint, screenshot verification, security review and a separate bug pass are deferred by the user. The phone remains on0.1.4; installation and all phone/output operations are deferred.
+Latest published **0.1.21 / d7ef1deb**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.21-alarm-output-api-20261030-d7ef1deb). APK packaging only; new tests, lint, screenshot verification, security review and a separate bug pass are deferred by the user. The phone remains on0.1.4; installation and all phone/output operations are deferred.
 
 Updated30October2026. The full goal remains phone-capable feature parity and all36 supplied references. Source changes and successful packaging do not prove that goal complete. [Compact checklist](QUICK-CHECKLIST.md) · [172-feature matrix](FEATURE-MATRIX.md) · [Source increments](USABILITY-PASS-2026-10-29.md).
 
 ## Remaining priorities
 
-- [ ] Match all36 reference screens and their required states. Current source includes the0.1.9–0.1.20 usability passes; current visual/action acceptance remains open. [Screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
+- [ ] Match all36 reference screens and their required states. Current source includes the0.1.9–0.1.21 usability passes; current visual/action acceptance remains open. [Screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
 - [ ] Reaccept the changed Report/calendar/edit surfaces when verification resumes. The27October calendar/day/edit Save/reopen/Back-discard result passed at its own source; it does not accept later presentation changes. [Historical evidence](verification/2026-10-27-report-proportions/README.md).
 - [ ] Complete remaining interaction bugs and security review after this usability phase. Existing scoped results remain historical; broad acceptance is open.
 - [ ] Establish reliable additional sound recognition, including laughter and instruments. Existing YAMNet-family laughter and recorded-audio supplementary estimates are experimental. Loud sound is relative microphone RMS; spoken phrase and musical-note tasks are separate features.
@@ -27,7 +27,7 @@ Updated30October2026. The full goal remains phone-capable feature parity and all
 
 | Item | Current state |
 | --- | --- |
-| Published candidate | **0.1.20 / 471007a8 arm64**, APK packaging only; new verification deferred. |
+| Published candidate | **0.1.21 / d7ef1deb arm64**, APK packaging only; new verification deferred. |
 | Installed phone | **0.1.4 /08d3911e**, historical installation/data-preservation evidence linked above. |
 | Current policy | Usability first. No new tests, lint, screenshots, security review, bug campaign, phone queries or outputs. |
 | Persistent formats | App database17 / portable backup14. Settings-profile transfer is a separate limited whitelist. |
