@@ -4,6 +4,10 @@ Shared native controls acknowledge foreground input with short platform haptics
 and pressed/selected visual states in the existing Changing light palette. This
 does not change callbacks, saving semantics, navigation destinations or layout.
 
+## 30 October custom-control increment
+
+Version0.1.19 adds missing hooks for sound-level changes and cancellation, trim-handle selection, custom alarm controls and uncovered Appearance/Guard/Automation inputs. These use the shared helpers below; no new output policy or preference is introduced. The implementation has APK packaging only. New tests and physical feel acceptance are deferred by the user. [Source scope](USABILITY-PASS-2026-10-29.md#custom-control-feedback--0119).
+
 ## Integration contract
 
 - Preference: `interactionHapticsEnabled`, Boolean, default **true**.
@@ -11,10 +15,12 @@ does not change callbacks, saving semantics, navigation destinations or layout.
 - Save: `InteractionFeedback.setEnabled(Context, boolean)` returns the synchronous
   preference commit result. A settings row must show failure if it returns false.
   Reading/saving this preference does not itself vibrate or preview an effect.
+- Saved strength: `interactionHapticsStrength`, integer Light0 / Standard1 / Firm2,
+  default Standard. The current platform requests are `CLOCK_TICK`, `VIRTUAL_KEY`
+  and `LONG_PRESS` respectively. The device controls the resulting sensation.
 - Explicit user selection and action activation: `InteractionFeedback.selection(View)`
-  and `InteractionFeedback.action(View)` request native `VIRTUAL_KEY` feedback.
-  This crisper platform click replaces the previous soft selection texture and
-  action tick. It means the input was acknowledged, **not** that asynchronous
+  and `InteractionFeedback.action(View)` use that saved strength.
+  It means the input was acknowledged, **not** that asynchronous
   Save, export, permission or network work succeeded. There is no success effect.
 - For a custom quiet screen, add Boolean intent extra `quietInteractionFeedback`.
   Existing `visualReview` also suppresses feedback.
@@ -80,7 +86,7 @@ pressed/selected/off states. Review suppresses haptic output deliberately.
 Actual touch/drag/accessibility behavior, device strength and every custom
 control remain unverified. [Scoped evidence](verification/2026-10-26-settings-organization/README.md).
 
-## 27 October installed update
+## 27 October installed update — historical
 
 Latest published and installed **32f064e2** adds Tonight arc/feedback/help
 restoration and the organized challenge routine. arm64 APK166,649,432bytes,

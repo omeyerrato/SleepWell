@@ -5040,7 +5040,14 @@
         "RecordUi.java",
         "PlanActivity.java",
         "SleepPicker.java",
-        "AlarmEditorActivity.java"
+        "AlarmEditorActivity.java",
+        "SleepSoundsActivity.java",
+        "PeriodTimeline.java",
+        "AppearanceActivity.java",
+        "GuardActivity.java",
+        "AutomationActivity.java",
+        "AlarmToneScreen.java",
+        "MathOperatorGrid.java"
       ],
       "tests": [
         {
@@ -5050,7 +5057,7 @@
       ],
       "validation": "Tonight direct controls and user-only Toggle feedback plus rest-window-help restoration included in installed32f064e2. CI40451121212 verifies quiet actions/restoration, not physical haptic feel.",
       "status": "partial",
-      "notes": "Subtle native View feedback acknowledges actual foreground inputs, with default-on persisted app opt-out and Android touch settings retained. Changed tabs/chips/segments/choices/weekdays, shared buttons/details and genuine Toggle gestures are wired; native pressed/selected feedback remains. No direct vibrator, claimed async-save success or effect from ordinary render/setChecked. Quiet alarm/tracking/capture/review and touch exploration suppress effects. Actual device feel and all custom-control consistency are not accepted yet. See INTERACTION-FEEDBACK.md and UI-ORGANIZATION.md. Mixer library tiles and user playback-switch changes additionally use the shared feedback, with radio semantics on timer/fade drafts; their choices have bounded silent Android persistence evidence; physical feel remains unverified. Additional changed-flow captures and scope: verification/2026-10-27-organized-menus/README.md. Shared switch copy is measured before the native control; labels and descriptions do not overlap it. Latest bounded milestone: verification/2026-10-27-tonight-report-routine/README.md. Tonight direct controls and user-only Toggle feedback plus rest-window-help restoration included in installed32f064e2. CI40451121212 verifies quiet actions/restoration, not physical haptic feel. 0.1.11 source adds saved Light, Standard and Firm native feedback choices with an explicit Try feedback action. Standard preserves existing behavior. Existing saved Off, quiet guards and system settings remain. Actual feel and new interaction/persistence verification are deferred."
+      "notes": "Subtle native View feedback acknowledges actual foreground inputs, with default-on persisted app opt-out and Android touch settings retained. Changed tabs/chips/segments/choices/weekdays, shared buttons/details and genuine Toggle gestures are wired; native pressed/selected feedback remains. No direct vibrator, claimed async-save success or effect from ordinary render/setChecked. Quiet alarm/tracking/capture/review and touch exploration suppress effects. Actual device feel and all custom-control consistency are not accepted yet. See INTERACTION-FEEDBACK.md and UI-ORGANIZATION.md. Mixer library tiles and user playback-switch changes additionally use the shared feedback, with radio semantics on timer/fade drafts; their choices have bounded silent Android persistence evidence; physical feel remains unverified. Additional changed-flow captures and scope: verification/2026-10-27-organized-menus/README.md. Shared switch copy is measured before the native control; labels and descriptions do not overlap it. Latest bounded milestone: verification/2026-10-27-tonight-report-routine/README.md. Tonight direct controls and user-only Toggle feedback plus rest-window-help restoration included in installed32f064e2. CI40451121212 verifies quiet actions/restoration, not physical haptic feel. 0.1.11 source adds saved Light, Standard and Firm native feedback choices with an explicit Try feedback action. Standard preserves existing behavior. Existing saved Off, quiet guards and system settings remain. Actual feel and new interaction/persistence verification are deferred. 0.1.19 adds existing-guarded input feedback to sound-level changes/cancel, trim-handle selection, uncovered Appearance/Guard/Automation controls, custom alarm dropdowns/tone/volume controls and Math operators. Saved Off/Light/Standard/Firm, capture/quiet/lifecycle guards and asynchronous behavior remain. Rendering/restoration is silent. New tests and physical feel acceptance are deferred."
     },
     {
       "id": "F170",

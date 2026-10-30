@@ -111,6 +111,17 @@ Published source **`0825f39c`**, version **0.1.18 / 19**. [Development APK](http
 
 Implementation commits: `0bd655e3`, `265852da`, `e4221efa`, `1a352738`, `0305ec22`. Three implementation agents worked in isolated worktrees. No tests, lint, screenshot verification, security review, device or output operations ran. All36 acceptance stays open.
 
+## Custom control feedback — 0.1.19
+
+Published source **`2dfcd82b`**, version **0.1.19 / 20**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.19-touch-feedback-20261030-2dfcd82b). APK packaging only.
+
+- Sound mix levels acknowledge changed completed drags and discrete user adjustments. Import-cancel controls acknowledge their actual click. Rendering and programmatic level restoration do not request feedback.
+- Record trimming acknowledges a changed active boundary on completed taps or explicit keyboard handle selection. Existing completed-drag feedback and shared quiet guards remain.
+- Appearance, guard schedule/app/picker switches, accessibility setup and custom automation confirmations now use existing guarded input feedback. Restores and programmatic checked changes stay silent.
+- Previously uncovered alarm dropdowns, tone controls, volume sliders and accepted Math-operator choices now use the shared input helpers. Programmatic picker reopening has a local restoration guard. No alarm or task-runtime outputs were changed.
+
+Implementation commits: `00885a3c`, `0f129ff8`, `e029185b`, `fb12ce63`. Three implementation agents worked in isolated worktrees. No tests, lint, screenshot verification, security review, device or output operations ran. All36 acceptance stays open.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.
