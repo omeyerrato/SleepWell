@@ -12,6 +12,7 @@ import java.util.function.Consumer;
 final class NightArc extends View {
     interface Editor {void review(int bedtime,int wake,boolean numeric,boolean wakeSelected);}
     private boolean showClocks=true,showNow=true;void reviewFace(){showClocks=false;showNow=false;requestLayout();invalidate();}
+    void exampleFace(){showNow=false;invalidate();}
     private Editor editor;private NightDialRange range;private int hand=-1,pointerId=-1;private float downX,downY;private boolean moved;private long wall;private float focus;private android.animation.ValueAnimator focusAnimation;
     void editable(Editor editor){if(nap!=null)return;this.editor=editor;setContentDescription(getContentDescription()+" Drag the moon for bedtime or the sun for wake-up. Accessibility actions open exact time entry.");}
     @Override public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info){super.onInitializeAccessibilityNodeInfo(info);if(editor!=null){info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.night_dial_bedtime,"Adjust bedtime"));info.addAction(new AccessibilityNodeInfo.AccessibilityAction(R.id.night_dial_wake,"Adjust wake-up"));}}

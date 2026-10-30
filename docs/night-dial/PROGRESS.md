@@ -51,6 +51,8 @@ The full 43-flow design contract remains the target. Shared styling does not est
 
 ## Flow matrix
 
+Under native review: the optional fresh-launch first-night guide, actual Android readiness cards and restored permission explanations, notification-denial/settings return, optional microphone rationale cancellation, and empty Alarms/Add-from-defaults. These are not in the delivered 6409f7a6 APK and have not yet earned verified status below.
+
 | Board | Flow | Current status |
 | --- | --- | --- |
 | 01 | First night | Native design and full interaction review pending |
