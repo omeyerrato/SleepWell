@@ -1,6 +1,6 @@
 # SleepWell current remaining work
 
-Latest published **0.1.22 / 6087d47e**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.22-portable-feedback-20261030-6087d47e). APK packaging only; new tests, lint, screenshot verification, security review and a separate bug pass are deferred by the user. The phone remains on0.1.4; installation and all phone/output operations are deferred.
+Latest published **0.1.22 / 6087d47e**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.22-portable-feedback-20261030-6087d47e). That published artifact was packaged only. Current-source focused silent emulator comparisons and main-action checks resumed on30October; security review and a broad test/bug campaign remain deferred. The phone remains on0.1.4; installation and all phone/output operations are deferred.
 
 Updated30October2026. The full goal remains phone-capable feature parity and all36 supplied references. Source changes and successful packaging do not prove that goal complete. [Compact checklist](QUICK-CHECKLIST.md) · [172-feature matrix](FEATURE-MATRIX.md) · [Source increments](USABILITY-PASS-2026-10-29.md).
 
@@ -27,9 +27,9 @@ Updated30October2026. The full goal remains phone-capable feature parity and all
 
 | Item | Current state |
 | --- | --- |
-| Published candidate | **0.1.22 / 6087d47e arm64**, APK packaging only; new verification deferred. |
+| Published candidate | **0.1.22 / 6087d47e arm64**, Published artifact packaged only; newer-source silent UI comparisons are in progress. |
 | Installed phone | **0.1.4 /08d3911e**, historical installation/data-preservation evidence linked above. |
-| Current policy | Usability first. No new tests, lint, screenshots, security review, bug campaign, phone queries or outputs. |
+| Current policy | Usability first, with explicitly resumed silent emulator comparisons and main actions. No broad test/security/bug campaign, phone queries or real alarm/audio outputs. |
 | Persistent formats | App database17 / portable backup14. Settings-profile transfer is a separate limited whitelist. |
 
 Do not recreate features solely because an older release note called them missing. The feature matrix links each feature to its actual implementation, historical checks and limits. [Preserved earlier list](history/REMAINING-WORK-2026-10-30-before-consolidation.md) contains the full old release history and evidence; it is not the current checklist.

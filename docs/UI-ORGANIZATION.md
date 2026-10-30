@@ -11,7 +11,7 @@ light/Inter visual language. This is an implementation increment, not36screen ac
 
 ## Current navigation — 30 October
 
-Usability is the current phase. New verification, security review and a separate bug-fixing pass are deferred by the user. The 0.1.9–0.1.22 source passes keep features reachable through these eight root entries:
+Usability is the current phase. The user resumed focused silent emulator comparisons and main actions on30October. Security review and a broad test/bug campaign remain deferred. The 0.1.9–0.1.22 source passes keep features reachable through these eight root entries:
 
 | Root entry | Main job |
 | --- | --- |
