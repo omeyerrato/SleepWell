@@ -42,6 +42,8 @@ The full 43-flow design contract remains the target. Shared styling does not est
 
 ## Flow matrix
 
+The next alarm-management revision is under review: an owned named Skip sheet (including error restoration), off/unsaved Duplicate, named Delete with Cancel/recreation and stale-identity rejection, and Save from the dirty-exit sheet. These changes are not included in the delivered 37de8841 APK and do not gain verified status until their own native review passes.
+
 | Board | Flow | Current status |
 | --- | --- | --- |
 | 01 | First night | Native design and full interaction review pending |
