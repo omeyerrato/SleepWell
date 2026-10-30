@@ -24,6 +24,7 @@ final class AlarmContentStore {
     private static void outputSettings(Map<String,Object> row,String saved,Alarm alarm){
         try{
             JSONObject metadata=new JSONObject(saved);
+            row.put("playback_mode",!alarm.soundModeInvalid&&alarm.soundMode!=null?alarm.soundMode.kind.name().toLowerCase(Locale.ROOT):null);
             Object tone=metadata.opt("tone");
             row.put("builtin_tone",!alarm.soundModeInvalid&&alarm.soundMode!=null&&tone instanceof String source&&AlarmTones.bundled(source)?source:null);
             row.put("volume_percent",configuredNumber(metadata,"volume",alarm.volume,10,100));

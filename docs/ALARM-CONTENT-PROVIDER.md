@@ -33,6 +33,7 @@ The default/null projection remains the original 13 columns above, in that order
 
 | Optional column | Meaning |
 | --- | --- |
+| `playback_mode` | Read-only configured mode: `single`, `silent`, `playlist` or `radio`; null for malformed mode metadata. No tracks, URLs or private sound data are included |
 | `builtin_tone` | Explicitly saved bundled single-tone slot: `daybreak`, `pulse` or `chime`; null for other/missing/unreadable sources or invalid sound-mode metadata |
 | `snooze_minutes` | Snooze duration, integer 1–60; not a pending snooze deadline or remaining allowance |
 | `smart_window_minutes` | Early-wake window, integer 0–60; zero disables smart wake-up |
@@ -77,7 +78,7 @@ Supported ContentValues are exactly:
 
 Smart-wake scalars accept only integral ContentValues types (`Integer`, `Long`, `Short`, `Byte`) within their documented bounds; strings, floats, booleans and null are rejected. The window bound follows the existing editor/defaults/backup validity of 0–60 minutes. Patching either sensitivity or goal preserves the other choice through `setSmartWake`; omitting all three preserves the existing smart-wake configuration. Create inherits valid defaults for omitted choices. Invalid existing metadata requires review in SleepWell and cannot be repaired through this API. Setting smart-wake choices never starts tracking: early wake still requires active phone-movement tracking and eligible measured intervals. The duration goal counts active recorded time excluding pauses, not confirmed sleep; the fixed alarm deadline remains scheduled.
 
-`builtin_tone` exposes only the bundled legacy single-tone slot. The query never returns a custom document URI/name, a system-tone identifier, playlist tracks, a radio URL, speech data or a fallback substituted for an unreadable/missing source. A valid bundled slot can be reported even when a different playback mode is configured; it is not a claim that this tone currently plays.
+`builtin_tone` exposes only the bundled legacy single-tone slot. The query never returns a custom document URI/name, a system-tone identifier, playlist tracks, a radio URL, speech data or a fallback substituted for an unreadable/missing source. A valid bundled slot can be reported even when a different playback mode is configured; it is not a claim that this tone currently plays. Request read-only `playback_mode` alongside this slot to distinguish `single`, `silent`, `playlist` and `radio`. Absent valid legacy mode metadata means `single`; malformed mode metadata reports null. `playback_mode` is not an accepted ContentValues key, so attempts to set it fail as an unknown write field.
 
 Supplying `builtin_tone` mirrors selecting that bundled source in Alarm sound: it replaces only the legacy single-tone source and clears the old display-only document name. It does not switch the existing playback mode, erase playlist tracks/names or radio metadata, change backup sound, or release/acquire persisted URI grants. Silent stays silent; Playlist and Internet radio keep their existing playback policy. Existing references held by other alarms, defaults, playlists and sleep sounds are untouched. Omitting the field preserves all private sound data. Invalid saved metadata remains nonwritable and cannot be repaired through this field. Strings such as `system`, content/file/HTTP URIs, arbitrary names and whitespace/case variants are rejected; nonstrings and null are rejected.
 
@@ -157,13 +158,14 @@ A create can include the same output fields with required hour/minute; it remain
 For a caller already granted management access, query the optional slot with the current write status and revision:
 
 ```java
-String[] toneColumns = {"_id", "revision", "writable", "write_issue", "builtin_tone"};
+String[] toneColumns = {"_id", "revision", "writable", "write_issue",
+    "playback_mode", "builtin_tone"};
 try (Cursor current = resolver.query(item, toneColumns, null, null, null)) {
-    // Review the selected alarm and retain its exact current revision.
+    // Review playback_mode and the selected alarm; retain its exact current revision.
 }
 ```
 
-After reviewing a currently writable alarm, this patch stores Chime in its single-tone slot. It preserves the existing playback mode; callers cannot use this field to turn off Silent or replace Playlist/Internet radio. An already enabled alarm can later ring under the unchanged scheduling and playback rules.
+After reviewing a currently writable alarm, this patch stores Chime in its single-tone slot. It preserves the existing playback mode; callers cannot use this field to turn off Silent or replace Playlist/Internet radio. For example, `playback_mode=silent` with `builtin_tone=chime` still has sound disabled; the stored Chime slot takes effect only when Single sound is selected in SleepWell. An already enabled alarm can later ring under the unchanged scheduling and playback rules.
 
 ```java
 ContentValues tonePatch = new ContentValues();
