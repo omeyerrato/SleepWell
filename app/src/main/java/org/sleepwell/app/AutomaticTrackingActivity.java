@@ -58,7 +58,7 @@ public final class AutomaticTrackingActivity extends Activity {
         runtimePhase=currentPhase();body=Design.page(this,false,null,n->{});body.setPadding(body.getPaddingLeft(),Design.dp(this,8),body.getPaddingRight(),body.getPaddingBottom());currentScroll=(ScrollView)body.getParent();RecordUi.label(this,body);
         String title=switch(page){case "conditions"->"Start conditions";case "sounds"->"Sound recording";case "detection"->"Sleep confirmation";case "options"->"Automatic tracking options";case "source"->"Source schedule";case "access"->"Activity access";default->"Automatic tracking";};
         LinearLayout header=RecordUi.header(body,title,this::back);header.getLayoutParams().height=-2;header.setMinimumHeight(Design.dp(this,52));
-        if(page.equals("home"))RecordUi.menuAction(header,"Automatic tracking options",()->openPage("options"),false);Design.space(body,8);
+        Design.space(body,8);
         if(!page.equals("home"))TrackingOptionsUi.context(body,"Automatic tracking");
         switch(page){case "conditions"->conditionsPage();case "sounds"->soundsPage();case "detection"->detectionPage();case "options"->optionsPage();case "source"->sourcePage();case "access"->accessPage();default->home();}
         LinearLayout footer=RecordUi.footer(body);
@@ -73,7 +73,7 @@ public final class AutomaticTrackingActivity extends Activity {
     }
     private void saveAndClose(){if(save()){setResult(RESULT_OK);finish();}}
     private void home(){
-        Design.text(body,"Choose tonight’s start method.",14,400,Design.MUTED);Design.space(body,8);
+        LinearLayout introduction=Design.row(this);introduction.addView(Design.text(this,"Choose tonight’s start method.",14,400,Design.MUTED),new LinearLayout.LayoutParams(0,-2,1));RecordUi.menuAction(introduction,"Automatic tracking options",()->openPage("options"),false);body.addView(introduction);Design.space(body,8);
         if(!runtimePhase.isEmpty()){String status=switch(runtimePhase){case "ARMED"->"Automatic wait active";case "DELAYED"->"Delayed start active";case "STARTING"->"Tracking is starting";case "ACTIVE"->"Recording is active";case "PAUSED"->"Recording is paused";case "PAUSING"->"Recording is pausing";case "STOPPING"->"Recording is finishing";case "BLOCKED"->"Tracking needs attention";default->"Tracking status unavailable";};menu("info",status,"Review the current session without changing this draft",null,()->startActivity(RecordUi.intent(this,TrackingActivity.class)));}
         option(AutomaticSleep.Mode.MANUAL,"Manual only","Start a recording yourself.",null);
         option(AutomaticSleep.Mode.BEDTIME,"At bedtime","Use your saved bedtime.",Design.clock(this,SleepPlans.load(this).bedtime));
