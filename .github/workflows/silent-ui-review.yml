@@ -40,6 +40,7 @@ on:
           - alarm-reference-current
           - morning-code-enrollment
           - privacy-recovery
+          - privacy-audio-reference
           - setup-readiness
           - readiness-recovery
           - protection-recovery

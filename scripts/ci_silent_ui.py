@@ -52,6 +52,7 @@ parser.add_argument("--scope", choices=(
     'alarm-reference-current',
     'morning-code-enrollment',
     'privacy-recovery',
+    'privacy-audio-reference',
     'setup-readiness',
     'readiness-recovery',
     'protection-recovery',
@@ -455,6 +456,9 @@ elif args.scope == "alarm-reference-current":
     metadata["alarm_reference_outputs"] = "disabled private alarms; fake scheduling/audio/scan ports; no alarm execution"
 elif args.scope == "reference-menus":
     tests = ["AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs", "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory", "AlarmToneFlowTest#toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput", "CloudBackupFlowTest#chooseSaveReopenAndReviewKeepLocalDataWithNoUpload", "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert"]
+elif args.scope == "privacy-audio-reference":
+    tests = ["PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory"]
+    metadata["privacy_audio_slice"] = "recording-only confirmation/favorites/progress/error/reopen; private UUID SQLite and owned synthetic files; no history erase, import, playback or output"
 elif args.scope == "privacy-recovery":
     tests = ["PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory"]
 elif args.scope == "setup-readiness":
@@ -555,6 +559,8 @@ method_counts.update({"PowerNapNativeTest": 3})
 method_counts["InteractionSecurityNativeTest"] = 2
 for test in tests:
     extra = []
+    if args.scope == "privacy-audio-reference":
+        extra += ["-e", "ciAudioClearReference", "true"]
     if args.scope == "motion-reference":
         extra += ["-e", "motionSlice", "reference"]
     if args.scope == "routine-camera":
@@ -641,6 +647,7 @@ if args.scope != "full":
         "sensing-reference": ["sonar-setup-"+name+".png" for name in ("initial", "ready", "gain-changed", "retested", "reopened", "recreated")]+["sonar-night-"+name+".png" for name in ("setup", "measuring", "paused", "paused-recreated", "resumed", "missing", "stop-confirmation")]+["snore-settings-"+name+".png" for name in ("default", "preview", "selected", "recreated", "reopened")],
         "protection-recovery": PROTECTION_RECOVERY_FRAMES,
         "setup-readiness": SETUP_READINESS_FRAMES,
+        "privacy-audio-reference": ["privacy-recordings-"+name+".png" for name in ("confirmation","favorites-included","review-error","removing","removing-recreated","pending","retry","done","reopened")],
         "privacy-recovery": ["privacy-history-"+name+".png" for name in ("ready","error","busy","pending","done")],
         "reference-menus": REFERENCE_MENU_FRAMES,
         "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,
