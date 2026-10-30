@@ -12,6 +12,7 @@ import java.util.*;
 final class PeriodTimeline extends View {
     interface Change {void bounds(long start,long end);}
     private final RecordEntry record;private final RecordDraft draft;private final RecordRibbon.Signal signal;private final Change change;private final Paint p=new Paint(3);private final RectF coverageBounds=new RectF();private long axisStart,axisEnd;private int handle=-1,activePointer=MotionEvent.INVALID_POINTER_ID,keyboardHandle;
+    private int gestureKeyboardHandle;
     private float downX,downY,grabX;private boolean dragging;private long gestureStart,gestureEnd;
     private List<RecordIntervals.Span> gestureAwake=List.of();
     private static final int START_EARLIER=R.id.period_start_earlier,START_LATER=R.id.period_start_later,END_EARLIER=R.id.period_end_earlier,END_LATER=R.id.period_end_later;
@@ -73,7 +74,7 @@ final class PeriodTimeline extends View {
         if(action==MotionEvent.ACTION_DOWN){
             cancelDrag();if(!inputAllowed()||event.getPointerCount()!=1)return false;
             int target=hit(event.getX(),event.getY());if(target<0)return false;
-            handle=target;keyboardHandle=target;activePointer=event.getPointerId(0);downX=event.getX();downY=event.getY();grabX=x(target==0?draft.start:draft.end);
+            gestureKeyboardHandle=keyboardHandle;handle=target;keyboardHandle=target;activePointer=event.getPointerId(0);downX=event.getX();downY=event.getY();grabX=x(target==0?draft.start:draft.end);
             gestureStart=draft.start;gestureEnd=draft.end;gestureAwake=new ArrayList<>(draft.awake);describe();invalidate();return true;
         }
         if(activePointer==MotionEvent.INVALID_POINTER_ID)return false;
@@ -88,8 +89,8 @@ final class PeriodTimeline extends View {
         }
         if(action==MotionEvent.ACTION_UP){
             if(dragging)move(handle,time(grabX+event.getX(index)-downX));
-            boolean changed=draft.start!=gestureStart||draft.end!=gestureEnd;clearGesture();
-            if(changed)InteractionFeedback.selection(this);performClick();return true;
+            boolean changed=draft.start!=gestureStart||draft.end!=gestureEnd,selectedHandleChanged=keyboardHandle!=gestureKeyboardHandle;clearGesture();
+            if(changed||selectedHandleChanged)InteractionFeedback.selection(this);performClick();return true;
         }
         return true;
     }
@@ -99,7 +100,7 @@ final class PeriodTimeline extends View {
     private boolean adjust(int target,int sign,boolean feedback){cancelDrag();keyboardHandle=target;boolean changed=move(target,(target==0?draft.start:draft.end)+sign*step());if(changed&&feedback)InteractionFeedback.selection(this);describe();invalidate();return changed;}
     @Override public boolean onKeyDown(int code,KeyEvent event){
         if(!inputAllowed())return super.onKeyDown(code,event);
-        if(code==KeyEvent.KEYCODE_DPAD_UP||code==KeyEvent.KEYCODE_DPAD_DOWN){cancelDrag();keyboardHandle=code==KeyEvent.KEYCODE_DPAD_UP?0:1;describe();invalidate();return true;}
+        if(code==KeyEvent.KEYCODE_DPAD_UP||code==KeyEvent.KEYCODE_DPAD_DOWN){cancelDrag();int selected=code==KeyEvent.KEYCODE_DPAD_UP?0:1;boolean changed=keyboardHandle!=selected;keyboardHandle=selected;if(changed&&event.getRepeatCount()==0)InteractionFeedback.selection(this);describe();invalidate();return true;}
         if(code==KeyEvent.KEYCODE_DPAD_LEFT||code==KeyEvent.KEYCODE_DPAD_RIGHT){adjust(keyboardHandle,code==KeyEvent.KEYCODE_DPAD_RIGHT?1:-1,event.getRepeatCount()==0);return true;}
         return super.onKeyDown(code,event);
     }
