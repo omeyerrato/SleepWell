@@ -92,3 +92,9 @@ Reproduced failures:
 The three focused `NightDialContrastTest` methods passed: reading/metadata/error ink on all three surfaces; ink on filled actions and disabled controls; essential boundaries/focus. These validate token pairs, not every remaining hardcoded color or every pixel in the app.
 
 Local emulator boot is unavailable because the Android emulator hypervisor driver is missing. No personal installation was used as a fallback. The disposable GitHub renderer successfully booted and produced the four frames above.
+
+## Report review finding at 5eb55a6e
+
+The [first Report review](https://github.com/omeyerrato/SleepWell/actions/runs/41066938357) built both APKs and passed 59 focused unit methods. Four of five native methods passed, including the complete saved-night/signal/filter/dirty-draft/annotation-preserving restore journey. The Week/Month/Year fixture reached the empty range but failed when its assertion expected an offscreen empty-state heading without scrolling. This run is not a passing review: two final required frames are missing.
+
+Visual inspection also found defects the initial assertions missed: the right-hand history durations and trend goal/coverage columns measured to almost zero width, and supporting signal links laid long titles and subtitles beside each other. Explicit weighted column widths and stacked destination copy correct these. The follow-up test checks actual visible text bounds, scrolls to the empty actions, and captures both the empty chart and its actions. No data assertion was removed and no missing range is treated as zero sleep.

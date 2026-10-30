@@ -53,3 +53,15 @@ The host lacks the Android emulator hypervisor driver. Local app compilation/uni
 ## Asset provenance
 
 `app/src/main/res/drawable-nodpi/night_dial_rain.png` is a standalone generated photograph used by native media UI. It was generated with the built-in imagegen tool on 2026-10-30, not extracted from another app or baked into a screen. The final prompt is preserved in [rain asset provenance](RAIN-ASSET.md). Existing Inter and Phosphor licenses remain applicable to their existing assets.
+
+## Report and record presentation adapters
+
+The Report dock now opens `RecordReportActivity` with `reportRoot=true`; its existing single worker reads the latest saved night and builds the report snapshot. `ReportNavigation` replaces peer Night/History/Trends pages instead of accumulating them. Specific history rows open a read-only report; editing requires the labelled Edit action. Merge these routes into the latest feature navigation rather than replacing MainActivity wholesale.
+
+`NightDialReportSummary` compares actual effective duration with the current saved duration goal. It is not a sleep-quality score or a 24-hour clock. The report snapshot reads goal and subjective rating on its existing worker. Imported/user-reported periods keep their provenance; missing goals and sensor values remain unavailable. No sleep stages are inferred from local movement.
+
+`RecordSignalsActivity` shows one selected saved metric at a time. `RecordChart` adds horizontal inspection and restores the selected real timestamp across recreation; vertical scrolling and cancelled pointer gestures preserve prior inspection. Existing aggregation, measured gaps, units and readers remain the data owners. `TrendsChart` uses a zero duration baseline and actual observed-day averages, with a saved-goal reference and visible range navigation. Year bars remain monthly averages of observed days. Missing dates do not become zero-duration nights.
+
+`RecordEditorActivity.requestBack` compares its local draft with its initial snapshot and presents an owned discard prompt. Restore original times is now a reviewed draft operation: original start/end and awake edits are restored only in memory, annotations stay by default, and a separately labelled checkbox can restore original notes/tags/rating. The existing Save changes operation is the only commit owner. `Records.save`, `Records.reset`, SQLite schema and CAS/save-token behavior were not changed. Keep these UI adapters separate from any newer feature-agent changes in the same Activity.
+
+`NightDialReportFlowTest` uses private UUID databases and synthetic dated records. It verifies read-only navigation, source filters, selected signal/time restoration, dirty draft prompt restoration, annotation-preserving restore, and independently computed Week/Month/Year summaries. It starts no hardware capture, playback or OS alarm. Passing evidence must be recorded at its actual source revision before these flows are described as verified.
