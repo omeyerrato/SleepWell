@@ -23,11 +23,11 @@ public final class AppearanceActivity extends Activity {
     @Override public void onSaveInstanceState(Bundle b){super.onSaveInstanceState(b);b.putBoolean("auto",automatic);b.putInt("theme",theme);b.putInt("size",size);b.putBoolean("motion",motion);b.putBoolean("contrast",contrast);if(picker instanceof SleepPicker.StateDialog&&picker.isShowing())b.putBundle("appearancePicker",picker.onSaveInstanceState());b.putBoolean("appearanceOptions",options!=null&&options.isShowing());b.putString("appearanceOptionsPage",optionsPage);}
     private void render(){
         LinearLayout body=Design.page(this,false,null,n->{});Design.pad(body,24,8);body.setLayoutParams(new ScrollView.LayoutParams(-1,-2));
-        LinearLayout navigation=Design.row(this);navigation.addView(Design.iconButton(this,"back","Back",this::finish),new LinearLayout.LayoutParams(Design.dp(this,48),Design.dp(this,48)));navigation.addView(new View(this),new LinearLayout.LayoutParams(0,1,1));navigation.addView(Design.iconButton(this,"more","More appearance options",this::appearanceOptions),new LinearLayout.LayoutParams(Design.dp(this,48),Design.dp(this,48)));body.addView(navigation);
+        LinearLayout navigation=Design.row(this);navigation.addView(Design.iconButton(this,"back","Back",this::finish),new LinearLayout.LayoutParams(Design.dp(this,48),Design.dp(this,48)));navigation.addView(new View(this),new LinearLayout.LayoutParams(0,1,1));RecordUi.menuAction(navigation,"More appearance options",this::appearanceOptions,false);body.addView(navigation);
         Design.text(body,"Appearance",30,700,Design.INK);Design.space(body,4);
         Design.text(body,"Customize how SleepWell looks and feels.",14,400,Design.MUTED);Design.space(body,6);
-        preference(body,"sun","Time of day","Colors follow your local clock.",automatic,on->{automatic=on;updateSelection();});Design.line(body);
-        LinearLayout intro=Design.row(this);intro.setMinimumHeight(Design.dp(this,40));LinearLayout.LayoutParams paletteSpace=new LinearLayout.LayoutParams(Design.dp(this,26),Design.dp(this,26));paletteSpace.rightMargin=Design.dp(this,18);intro.addView(new Design.Icon(this,"palette",Design.INK),paletteSpace);LinearLayout themeCopy=Design.col(this);Design.text(themeCopy,"App theme",15,500,Design.INK);Design.space(themeCopy,4);themeHelp=Design.text(themeCopy,"Preview the look for different times.",11,400,Design.MUTED);intro.addView(themeCopy,new LinearLayout.LayoutParams(0,-2,1));body.addView(intro);Design.space(body,6);
+        preference(body,"sun","Time of day","Switches theme automatically.",automatic,on->{automatic=on;updateSelection();});Design.line(body);
+        LinearLayout intro=Design.row(this);intro.setMinimumHeight(Design.dp(this,44));LinearLayout.LayoutParams paletteSpace=new LinearLayout.LayoutParams(Design.dp(this,26),Design.dp(this,26));paletteSpace.rightMargin=Design.dp(this,18);intro.addView(new Design.Icon(this,"palette",Design.INK),paletteSpace);LinearLayout themeCopy=Design.col(this);Design.text(themeCopy,"App theme",15,500,Design.INK);Design.space(themeCopy,4);themeHelp=Design.text(themeCopy,"",12,400,Design.MUTED);intro.addView(themeCopy,new LinearLayout.LayoutParams(0,-2,1));body.addView(intro);Design.space(body,8);
         choices=new LinearLayout[3];radios=new ThemeMark[3];LinearLayout tiles=Design.row(this);tiles.setGravity(Gravity.TOP);body.addView(tiles);
         for(int n=0;n<3;n++){final int index=n;LinearLayout tile=Design.col(this);tile.setGravity(Gravity.CENTER);choices[n]=tile;
             ThemeScene scene=new ThemeScene(this,n);scene.setBackground(Design.shape(this,Design.SOFT,12));scene.setClipToOutline(true);tile.addView(scene,new LinearLayout.LayoutParams(-1,Design.dp(this,92)));Design.space(tile,4);
@@ -39,38 +39,30 @@ public final class AppearanceActivity extends Activity {
         }
         updateSelection();Design.space(body,6);Design.line(body);
         LinearLayout textSize=Design.row(this);textSize.setMinimumHeight(Design.dp(this,48));textSize.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));textSize.setContentDescription("Text size");textSize.setFocusable(true);textSize.setOnClickListener(v->{InteractionFeedback.action(v);textSize();});
-        TextView aa=Design.text(this,"Aa",18,500,Design.INK);aa.setSingleLine(true);aa.setTextScaleX(.85f);LinearLayout.LayoutParams aaLp=new LinearLayout.LayoutParams(Design.dp(this,26),-2);aaLp.rightMargin=Design.dp(this,18);textSize.addView(aa,aaLp);
-        LinearLayout sizeCopy=Design.col(this);Design.text(sizeCopy,"Text size",15,500,Design.INK);Design.space(sizeCopy,5);Design.text(sizeCopy,"Use a comfortable size.",11,400,Design.MUTED);textSize.addView(sizeCopy,new LinearLayout.LayoutParams(0,-2,1));sizeValue=Design.text(this,AppearancePolicy.SIZES[size],13,400,Design.MUTED);LinearLayout.LayoutParams valueSpace=new LinearLayout.LayoutParams(-2,-2);valueSpace.leftMargin=Design.dp(this,8);valueSpace.rightMargin=Design.dp(this,8);textSize.addView(sizeValue,valueSpace);textSize.addView(new Design.Icon(this,"chevron",Design.INK),new LinearLayout.LayoutParams(Design.dp(this,18),Design.dp(this,24)));body.addView(textSize);Design.line(body);
+        TextView aa=Design.text(this,"Aa",20,500,Design.INK);aa.setSingleLine(true);LinearLayout.LayoutParams aaLp=new LinearLayout.LayoutParams(Design.dp(this,28),-2);aaLp.rightMargin=Design.dp(this,16);textSize.addView(aa,aaLp);
+        LinearLayout sizeCopy=Design.col(this);Design.text(sizeCopy,"Text size",15,500,Design.INK);Design.space(sizeCopy,5);Design.text(sizeCopy,"Use a comfortable size.",12,400,Design.MUTED);textSize.addView(sizeCopy,new LinearLayout.LayoutParams(0,-2,1));sizeValue=Design.text(this,AppearancePolicy.SIZES[size],13,400,Design.MUTED);LinearLayout.LayoutParams valueSpace=new LinearLayout.LayoutParams(-2,-2);valueSpace.leftMargin=Design.dp(this,8);valueSpace.rightMargin=Design.dp(this,8);textSize.addView(sizeValue,valueSpace);textSize.addView(new Design.Icon(this,"chevron",Design.INK),new LinearLayout.LayoutParams(Design.dp(this,18),Design.dp(this,24)));body.addView(textSize);Design.line(body);
         preference(body,"motion","Reduce motion","Remove animated press effects.",motion,on->motion=on);Design.line(body);
         preference(body,"contrast","High-contrast mode","Increase text and control contrast.",contrast,on->contrast=on);Design.line(body);
         Design.space(body,4);lightCard=new AppearanceLightCard(this,body,()->startActivity(RecordUi.intent(this,SmartLightActivity.class)));
-        Design.space(body,8);Design.fixedAction(body,"Save appearance  →",()->{Appearance.save(this,automatic,theme,size,motion,contrast);finish();if(motion)overridePendingTransition(0,0);});
-        fitThemePreviews(body,tiles);
+        Design.space(body,8);LinearLayout footer=RecordUi.footer(body);footer.setPadding(Design.dp(this,24),0,Design.dp(this,24),Design.dp(this,8));Button save=Design.button(footer,"Save appearance",true,()->{Appearance.save(this,automatic,theme,size,motion,contrast);finish();if(motion)overridePendingTransition(0,0);});LinearLayout.LayoutParams saveSize=(LinearLayout.LayoutParams)save.getLayoutParams();saveSize.topMargin=0;save.setLayoutParams(saveSize);android.text.SpannableString caption=new android.text.SpannableString("Save appearance   \ufffc");caption.setSpan(new android.text.style.ImageSpan(RecordUi.glyph(this,"chevron",Design.CREAM,18),android.text.style.ImageSpan.ALIGN_CENTER),caption.length()-1,caption.length(),0);save.setText(caption);save.setContentDescription("Save appearance");
+        sizeThemePreviews(tiles);
     }
-    /** Give decorative previews the remaining viewport; larger text keeps its natural height and scrolls. */
-    private void fitThemePreviews(LinearLayout body,LinearLayout tiles){
-        ScrollView viewport=(ScrollView)body.getParent();
-        body.getViewTreeObserver().addOnPreDrawListener(()->{
-            if(viewport.getHeight()==0||tiles.getChildCount()==0)return true;
-            LinearLayout first=(LinearLayout)tiles.getChildAt(0);View preview=first.getChildAt(0);
-            int fixed=body.getPaddingTop()+body.getPaddingBottom()+tiles.getMeasuredHeight()-preview.getMeasuredHeight();
-            for(int n=0;n<body.getChildCount();n++){View child=body.getChildAt(n);if(child==tiles)continue;LinearLayout.LayoutParams lp=(LinearLayout.LayoutParams)child.getLayoutParams();fixed+=child.getMeasuredHeight()+lp.topMargin+lp.bottomMargin;}
-            int available=viewport.getHeight()-viewport.getPaddingTop()-viewport.getPaddingBottom()-fixed;
-            int height=Math.max(Design.dp(this,64),Math.min(Design.dp(this,100),available));
-            if(preview.getLayoutParams().height==height)return true;
-            for(int n=0;n<tiles.getChildCount();n++){View scene=((LinearLayout)tiles.getChildAt(n)).getChildAt(0);android.view.ViewGroup.LayoutParams lp=scene.getLayoutParams();lp.height=height;scene.setLayoutParams(lp);}
-            return false;
+    /** Preserve the reference thumbnail proportions; longer content scrolls above the fixed Save action. */
+    private void sizeThemePreviews(LinearLayout tiles){
+        tiles.addOnLayoutChangeListener((view,left,top,right,bottom,oldLeft,oldTop,oldRight,oldBottom)->{
+            if(tiles.getChildCount()==0)return;int width=tiles.getChildAt(0).getWidth();if(width==0)return;int height=Math.max(Design.dp(this,80),Math.min(Design.dp(this,120),Math.round(width*.88f)));
+            for(int n=0;n<tiles.getChildCount();n++){View scene=((LinearLayout)tiles.getChildAt(n)).getChildAt(0);android.view.ViewGroup.LayoutParams size=scene.getLayoutParams();if(size.height!=height){size.height=height;scene.setLayoutParams(size);}}
         });
     }
     private Switch autoSwitch;
     private void preference(LinearLayout body,String icon,String title,String description,boolean value,java.util.function.Consumer<Boolean> action){
         LinearLayout row=Design.row(this);row.setMinimumHeight(Design.dp(this,48));Design.Icon glyph=new Design.Icon(this,icon,Design.INK);LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(Design.dp(this,26),Design.dp(this,26));ip.rightMargin=Design.dp(this,18);row.addView(glyph,ip);
-        LinearLayout text=Design.col(this);Design.text(text,title,15,500,Design.INK);Design.space(text,5);Design.text(text,description,11,400,Design.MUTED);row.addView(text,new LinearLayout.LayoutParams(0,-2,1));
+        LinearLayout text=Design.col(this);Design.text(text,title,15,500,Design.INK);Design.space(text,5);Design.text(text,description,12,400,Design.MUTED);row.addView(text,new LinearLayout.LayoutParams(0,-2,1));
         Switch toggle=new InteractionFeedback.Toggle(this);toggle.setContentDescription(title);Design.styleSwitch(this,toggle,Design.VIOLET,0xffc8c2be);toggle.setChecked(value);toggle.setOnCheckedChangeListener((v,on)->{action.accept(on);if(motion)toggle.jumpDrawablesToCurrentState();});row.addView(toggle);body.addView(row);if(title.equals("Time of day"))autoSwitch=toggle;
     }
     private int selectedTheme(){java.time.LocalTime now=java.time.LocalTime.now();return AppearancePolicy.phase(automatic,theme,now.getHour()*60+now.getMinute());}
     private void updateSelection(){if(choices==null)return;for(int n=0;n<3;n++){boolean selected=selectedTheme()==n;choices[n].setSelected(selected);radios[n].setChecked(selected);}
-        themeHelp.setText("Preview the look for different times.");
+        themeHelp.setText(automatic?"Choose a theme to turn Time of day off.":"Your selected theme stays on all day.");
     }
     /** Decorative ring only; the whole theme tile retains its existing radio semantics and action. */
     private static final class ThemeMark extends View {
