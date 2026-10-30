@@ -203,7 +203,7 @@ public final class AutomationActivity extends Activity {
         String kind=confirmation,id=confirmationId;long revision=confirmationRevision;String title=kind.equals("test")?"Send saved rule’s test event?":kind.equals("unavailable")?"Destination unavailable":"Delete rule?";
         String message=kind.equals("test")?"This sends a real event to the saved destination and can trigger its actions. Unsaved changes are not used.":kind.equals("unavailable")?"The saved destination could not be opened. Your sleep records are unaffected. Keep this rule or delete it to enter the destination again.":"Queued attempts will be removed. An in-flight request may already have been sent.";
         AlertDialog dialog=new AlertDialog.Builder(this).setTitle(title).setMessage(message).setNegativeButton(kind.equals("unavailable")?"Keep rule":"Cancel",null).setPositiveButton(kind.equals("test")?"Send test":"Delete rule",null).create();ownedDialog=dialog;
-        dialog.setOnDismissListener(ignored->{if(ownedDialog==dialog){ownedDialog=null;confirmation="";confirmationId="";}});dialog.show();
+        dialog.setOnDismissListener(ignored->{if(ownedDialog==dialog){ownedDialog=null;confirmation="";confirmationId="";}});dialog.show();ReportDialogs.style(dialog);
         dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(v->{InteractionFeedback.action(v);dialog.dismiss();});
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v->{
             if(ownedDialog!=dialog||!resumed||isFinishing()||isDestroyed()||request!=null||!dialog.getWindow().getDecorView().hasWindowFocus()||!confirmation.equals(kind)||!confirmationId.equals(id)||confirmationRevision!=revision)return;
