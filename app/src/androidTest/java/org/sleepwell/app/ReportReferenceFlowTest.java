@@ -258,7 +258,7 @@ public final class ReportReferenceFlowTest {
             object("Notes or dream");completeNotes();
             capture("editor");
             long[] editedPeriod=periodInteractionProof(database,raw);
-            click("Add tag");object("Tag name").setText("Late meal");click("Add");click("Add tag");object("Tag name").setText("Exercise");click("Add");object("Notes or dream").setText("Fixture note saved from the native editor");completeNotes();capture("tags-notes");
+            click("Add tag");object("Tag name").setText("Late meal");click("Add tag");click("Add tag");object("Tag name").setText("Exercise");click("Add tag");object("Notes or dream").setText("Fixture note saved from the native editor");completeNotes();capture("tags-notes");
             object("Add awake period").click();
             title("Awake starts");
             click("Use time");

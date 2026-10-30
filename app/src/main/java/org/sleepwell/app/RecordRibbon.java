@@ -23,7 +23,7 @@ final class RecordRibbon extends View {
             int save=canvas.save();clip.reset();clip.addRoundRect(left,area.top,right,area.bottom,radius,radius,Path.Direction.CW);canvas.clipPath(clip);
             // Discrete measured bins make the coverage ribbon readable at a glance. The
             // colors describe movement only; they are not fabricated sleep-stage bands.
-            for(ChartSeries.Bar measured:movement){long from=Math.max(span.start,measured.from),to=Math.min(span.end,measured.to);if(to<=from)continue;float a=at(from,area,start,end),b=at(to,area,start,end),inset=Math.min(.65f*density,(b-a)/8);paint.setColor(((18+(int)(108*(measured.value/high)))<<24)|0x007542d2);canvas.drawRoundRect(a+inset,area.top,b-inset,area.bottom,Math.min(radius,(b-a)/3),radius,paint);}
+            for(ChartSeries.Bar measured:movement){long from=Math.max(span.start,measured.from),to=Math.min(span.end,measured.to);if(to<=from)continue;float a=at(from,area,start,end),b=at(to,area,start,end);paint.setColor(((18+(int)(108*(measured.value/high)))<<24)|0x007542d2);canvas.drawRect(a,area.top,b,area.bottom,paint);}
             canvas.restoreToCount(save);
         }}
     }
