@@ -1,8 +1,20 @@
 # Native review evidence
 
-Alarm management follow-up: [c210599c](c210599c-finding/README.md) passed nine native methods, 78 frames and 80 focused unit methods. Its native screenshots exposed a trailing gap beneath short sheets. The shared height-cap correction and additional existing scheduling-failure/one-time regression journeys need their own final review. The latest delivered preview remains 37de8841 below.
+## Latest reviewed preview: 6409f7a6
 
-## Latest reviewed preview: 37de8841
+The [native review](https://github.com/omeyerrato/SleepWell/actions/runs/41092841075), job 124190892729, artifact 12994923015, passed all 11 native methods in 274.602 seconds. All 93 required PNGs exist: 78 Night Dial frames and 15 existing skip-regression frames. Eighty focused unit methods passed with zero failures/errors. [Raw result](6409f7a6/review.json), [instrumentation](6409f7a6/instrumentation.txt), [exact scope and limits](6409f7a6/README.md). The [independent APK workflow](https://github.com/omeyerrato/SleepWell/actions/runs/41092841167) passed; its default broad unit/lint step is skipped. Artifact ZIP SHA256: `30dd9a13f20b5ac8b8bfe806b5ab75117a3ecd0ee9c8f48a406e8bd333fa7487`.
+
+New evidence covers named Skip review/cancel/recreation/actual next time/Undo/stale notice, off duplicate draft/recreation/explicit Save, named Delete/cancel/recreation/stale identity, and Save from dirty Back. Existing recurring skip, failed-scheduling/retry/reopen and one-time expiry assertions remain. Native sheet geometry checks and inspected screenshots confirm the short-panel trailing gap is corrected while long lists still scroll.
+
+Selected frames: [Skip restored](6409f7a6/night-dial-alarm-skip-restored.png), [Skip applied](6409f7a6/night-dial-alarm-skip-applied.png), [copy draft](6409f7a6/night-dial-alarm-duplicate-restored.png), [Delete restored](6409f7a6/night-dial-alarm-delete-restored.png), [dirty actions](6409f7a6/night-dial-alarm-unsaved-actions.png), [ramp choices](6409f7a6/night-dial-alarm-ramp-picker.png), [expired one-time](6409f7a6/alarm-skip-expired.png), [scheduling failure](6409f7a6/alarm-skip-schedule-error.png).
+
+The signed local APK was built from 6409f7a6 with app/src/main tree `d281d8f280345e8a6ae767169ed847284a7391a3`. Size: 327,023,844 bytes; SHA256 `08e5ee1cc242726fb23c222dad6b486d2450706c62711fc85425cd0800cc5755`. The signer certificate SHA256 remains `49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c`. APK and receipt are in Downloads, with prior pinned previews preserved. Delivery is APK only; no phone installation or physical ADB interaction occurred.
+
+This is narrow progress: one normal-size API 35 renderer, with the remaining 43-flow states, challenge/schedule/source branches, large text, landscape, TalkBack, reduced-motion runtime, physical haptics/playback/sensing, overnight reliability and latest-feature integration pending. The 11 baseline-reproduced broad-unit failures were not rerun here. Full app acceptance remains false.
+
+Historical finding: [c210599c](c210599c-finding/README.md) passed nine native methods, 78 frames and 80 focused unit methods, but screenshots exposed a trailing gap beneath short sheets. The [7da4cff7 regression expansion](https://github.com/omeyerrato/SleepWell/actions/runs/41090492581) passed 11 methods and 93 frames in 312.988 seconds with the same pre-correction app source. Final 6409f7a6 independently verifies the shared sizing correction. Neither earlier functional pass approves the old gap.
+
+## Earlier reviewed preview: 37de8841
 
 The [native review](https://github.com/omeyerrato/SleepWell/actions/runs/41083871279), job 124159782214, artifact 12989899796, passed all seven native methods in 193.422 seconds. All 64 required PNGs exist; 80 focused unit methods passed with zero failures/errors. [Raw result](37de8841/review.json), [instrumentation](37de8841/instrumentation.txt), [exact scope and limits](37de8841/README.md). The [independent APK workflow](https://github.com/omeyerrato/SleepWell/actions/runs/41083871221) also passed; its default broad unit/lint step is skipped. This is not a global-suite-green claim.
 

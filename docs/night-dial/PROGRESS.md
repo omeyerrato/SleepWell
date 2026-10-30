@@ -40,16 +40,23 @@ The full 43-flow design contract remains the target. Shared styling does not est
 - Native review 37de8841 passed all seven native methods and 80 focused unit methods; all 64 required frames were preserved and key states visually inspected. The independent APK workflow passed. The previous broad-suite failures remain open and were not rerun in this focused pass.
 - Signed APK-only preview 37de8841 is prepared in Downloads, with receipt/checksum and the same preview signer. No phone installation or physical ADB interaction occurred. See [exact review scope](verification/37de8841/README.md).
 
-## Flow matrix
+## Alarm management and sheet geometry pass
 
-The next alarm-management revision is under review: an owned named Skip sheet (including error restoration), off/unsaved Duplicate, named Delete with Cancel/recreation and stale-identity rejection, and Save from the dirty-exit sheet. These changes are not included in the delivered 37de8841 APK and do not gain verified status until their own native review passes.
+- Skip reviews one named, dated occurrence and retains its review/attention sheet across recreation. Keep writes nothing; Apply changes the actual next occurrence; Undo restores it. Existing failed-scheduling Retry and expired one-time behavior are verified too.
+- Duplicate opens an off, unsaved copy and preserves the source editor/draft underneath. It retains base configuration but clears skipped/moved occurrence authority. Only explicit Save creates the copy through the existing guarded owner.
+- Delete names the saved alarm and preserves Cancel/recreation. Confirmation rejects an identity changed elsewhere before invoking the existing cancellation/delete operations. Dirty Back offers Save alarm/Keep editing/Discard; Save uses the existing validation and save owner.
+- Visual review found that fixed dialog heights left a gap beneath short panels. SleepPicker.show now treats height as a cap and measures natural content; long lists retain scrolling. Selected corrected short, long-list, invalid-time and expired-alarm frames were inspected; native short-sheet assertions reject trailing viewport gaps.
+- [6409f7a6](verification/6409f7a6/README.md) passed 80 focused unit methods and all 11 native methods in 274.602 seconds, with all 93 required captures. App/test compilation and the independent APK workflow passed. The 11 inherited broad-unit failures were not rerun here.
+- Signed APK-only preview 6409f7a6 and its receipt are in Downloads, using the previous preview signer. Its app source matches the reviewed tree. No phone installation or physical ADB interaction occurred; the prior pinned APKs remain available.
+
+## Flow matrix
 
 | Board | Flow | Current status |
 | --- | --- | --- |
 | 01 | First night | Native design and full interaction review pending |
 | 02 | Plan tonight | Native composition, independent drag/save/cancel/conflict/recreation and explicit linked alarm review verified at 7d726b2b; extended accessibility/device review pending |
 | 03 | Wind down and guard | Native design and full interaction review pending |
-| 04 | Create and manage alarms | Actual next-occurrence list, name draft/recreation, dirty Back/Keep/Discard and explicit Save verified at 37de8841; create/delete/duplicate/skip and other entry branches pending |
+| 04 | Create and manage alarms | Prior list/name/repeat review plus named Skip/Undo/stale state, off duplicate draft/Save, named Delete/Cancel/recreation/stale identity and dirty Back Save verified at 6409f7a6; Add-from-defaults and other entry/device branches pending |
 | 05 | Dates and smart waking | Interval validation/correction, draft recreation and return verified at 37de8841; odd/even, anchor/date/exclusions, solar and other schedule branches pending |
 | 06 | Tone and gentle wake | Requested delay/ramp curve, silent opening and draft recreation verified at 37de8841; source selection, physical output and other gentle-wake branches pending |
 | 07 | Snooze, backup, input | Configured shortening bars, zero-snooze state, recreation and explicit Save verified at 37de8841; caps/choose-each/input/backup/wake-check branches pending |
@@ -85,8 +92,8 @@ The next alarm-management revision is under review: an owned named Skip sheet (i
 | 37 | Cloud versions, profiles and conflicts | Native design and full interaction review pending |
 | 38 | Imported signals, sharing and access | Native design and full interaction review pending |
 | 39 | Home shortcuts and system handoffs | Native design and full interaction review pending |
-| 40 | Recovery and details across flows | Native design and full interaction review pending |
-| 41 | Tags, confirmation and custom values | Native design and full interaction review pending |
+| 40 | Recovery and details across flows | Skip stale-occurrence notice/recreation, scheduling failure/Retry/reopen, expired one-time state and stale Delete rejection verified at 6409f7a6; remaining cross-flow recovery pending |
+| 41 | Tags, confirmation and custom values | Named Delete/Cancel/recreation and Save/Keep editing/Discard verified at 6409f7a6; prior record restore review retained; taxonomy, custom values and other confirmations pending |
 | 42 | Physical challenge and permission branches | Native design and full interaction review pending |
 | 43 | Empty, search and loading states | Native design and full interaction review pending |
 
@@ -94,7 +101,7 @@ The next alarm-management revision is under review: an owned named Skip sheet (i
 
 ## Next work
 
-1. Continue from the passing 37de8841 native captures (64 required frames, seven native methods). Review remaining alarm menus, deletion/duplication/skip confirmations and alternate schedule/source/input branches. Keep exact capture revisions in verification/README.md.
+1. Continue from the passing 6409f7a6 native captures (93 required frames, 11 native methods). Review Add-from-defaults, empty/new-user states and alternate schedule/source/input branches. Keep exact capture revisions in verification/README.md.
 2. Extend Tonight editing evidence to interrupted pointer sequences, non-daily/solar/override alarms and accessible exact entry while retaining independent saved-plan and alarm owners.
 3. Review Settle in playback/gain/error states and active/paused/end tracking with physical devices, additional sensors, long recordings and missing-data cases. Preserve the existing capture owners.
 4. Replace stale appearance/theme previews with the Night Dial preview while retaining saved legacy values.
