@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated 30 October 2026. Latest published APK: **0.1.15 / a8aa491f** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
+Updated 30 October 2026. Latest published APK: **0.1.16 / 32d207cc** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.15-clearer-flows-20261030-a8aa491f) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.16-reference-controls-20261030-32d207cc) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -126,3 +126,11 @@ Appearance theme rings (`6d56b05b`) are included in0.1.11.
 - [x] Concise advanced tracking settings with longer explanations retained in About.
 - [x] Grouped automation setup, incoming request steps and copyable provider/event details.
 - [x] Produce and publish0.1.15 (`a8aa491f`), APK packaging only. New verification and phone actions remain deferred.
+
+## Published in 0.1.16 — reference controls and charts
+
+- [x] Refine alarm clock/weekdays/core rows and consistent dropdown indicators.
+- [x] Compact Report markers, clearer Trends selection/labels and real provider-stage strips.
+- [x] Restore Appearance preview/artwork proportions and keep Save visible.
+- [x] Clearly name automatic tracking setup and display a saved manual start delay.
+- [x] Produce and publish0.1.16 (`32d207cc`), APK packaging only. New verification and phone actions remain deferred.

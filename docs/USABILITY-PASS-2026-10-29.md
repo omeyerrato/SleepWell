@@ -78,6 +78,17 @@ Published source **`a8aa491f`**, version **0.1.15 / 16**. [Development APK](http
 
 Implementation commits: `6d0b3433`, `6eddf14f`, `97b37481`, `3b4530e4`, `23232c83`. No tests, lint, screenshot verification, security review, phone or output operations ran. All36 acceptance and external-service delivery remain open.
 
+## Reference controls and charts — 0.1.16
+
+Published source **`32d207cc`**, version **0.1.16 / 17**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.16-reference-controls-20261030-32d207cc). APK packaging only.
+
+- Alarm editor: larger Inter clock, circular weekday visuals inside existing touch targets, bounded Name/value columns, aligned core icons/rules and a bell/switch Alarm on card. Dropdowns use consistent pills; Backup sound signals a value picker. Use wake-up/snooze settings returns the existing draft; final Save alarm retains its role.
+- Report charts: compact selected-time capsules with separate actual-value captions. Trends has a selected-date column/guide, dated month/year readouts, clearer weekly labels and a visible goal rule. Real provider-reported stage strips are compact with consistent actual-category legend order. No stages, points or missing samples are invented; data and calculations are unchanged.
+- Appearance: proportioned theme previews replace viewport-squeezed art; Save stays pinned. Options is labelled. The existing bedside artwork uses more of the light card, and its explicit action distinguishes Connect, Configure and Review using locally saved configuration.
+- Tracking setup names its automatic-start destination and shows the actual configured manual delay in its Start action. Wind-down has a labelled Options control. Runtime/scheduling behavior is unchanged.
+
+Implementation commits: `de909c16`, `b8c22e5c`, `c9f539f6`, `72c4d2bc`, `cfad2cc6`. Three implementation agents worked in isolated worktrees. No tests, lint, screenshot verification, security review, phone or output operations ran. All36 visual/action acceptance stays open.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.

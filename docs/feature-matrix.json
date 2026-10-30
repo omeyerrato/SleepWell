@@ -57,11 +57,12 @@
         "Scheduler.java",
         "AlarmService.java",
         "AlarmActivity.java",
-        "AlarmEditorActivity.java"
+        "AlarmEditorActivity.java",
+        "AlarmEditorUi.java"
       ],
       "validation": "Not verified for this feature",
       "status": "implemented",
-      "notes": "Implemented: each alarm persists its own settings. Global reusable defaults pending.",
+      "notes": "Implemented: each alarm persists its own settings. Global reusable defaults pending. 0.1.16 refines primary clock, circular weekdays, core row/value alignment and Alarm on card; dropdown pills and explicit Use wake-up/snooze settings retain the original draft paths. New visual and interaction verification is deferred.",
       "id": "F003",
       "tests": []
     },
@@ -1115,7 +1116,7 @@
       ],
       "validation": "TrackingFlowTest 2 device passes; TrackingClockTest 5 and SessionTimingTest 3 local passes; StorageMigrationTest 4 device passes. Microphone lifecycle and overnight reliability unverified. Report8c9faca source integrates as1df91fe: compact actions/soft affordances, calmer measured ribbons, truthful tracked-only timeline shading with real gaps, Notes/footer geometry. Author debug/native APK plus24 ChartSeriesTest/RecordModelTest cases pass; final native APK/lint0errors87warnings pass39s. New ReportRibbonNativeTest 2 and stronger ReportReferenceFlowTest 1/eight originals await fresh native/strict review; no visual completion inferred. Fresh d43f480/focusedCI40068186520 PASS4classes/5methods/13required originals: ReportRibbonNativeTest 2 PASS1.212s,ReportReferenceFlowTest 1 PASS33.744s. All13 originals individually inspected: report hierarchy/editor geometry pass, hard color-bin stripes and touching chips rejected. b4deeb3 blends only visual colors within contiguous measured spans (unchanged metrics/exact gaps), adds missing-signal Canvas assertions and4dp chip gutters; fresh raster/visual run required. Missing stage estimator remains explicit. Fresh dc30736/focusedCI40072560126 PASS4classes/5methods/all13 required originals, individually reviewed against boards01/08. Ribbon color blending/exact gaps, filter gutters, seven-row history, Week/Month/Year and complete editor Notes/Save/Delete pass this bounded correction. Stage estimator/full app parity remain incomplete. ba1ae61/0dcbb44 use exactpersistedSensorProvenance.SONAR for contactless graph/accessibility labels, preserve actualsamplegaps, and retain sensor/config throughgoalzonecopies. Newprivate saved-sonar navigation originals remain pending.",
       "status": "implemented",
-      "notes": "Native draft setup, actual sensor availability, Start, live status and saved Report. Back cancels setup drafts. Real movement-only journey verified; audio permission/denial and long-session checks still pending.",
+      "notes": "Native draft setup, actual sensor availability, Start, live status and saved Report. Back cancels setup drafts. Real movement-only journey verified; audio permission/denial and long-session checks still pending. 0.1.16 names the automatic setup route explicitly and displays a saved manual start delay in the Start button. Existing start/admission/runtime behavior remains; no recording or new verification ran.",
       "id": "F043",
       "tests": [
         {
@@ -2150,11 +2151,15 @@
         "RecordInsightSettings.java",
         "RecordTrends.java",
         "RhythmStats.java",
-        "TagImpact.java"
+        "TagImpact.java",
+        "RecordChart.java",
+        "TrendsChart.java",
+        "ProviderStageChart.java",
+        "ProviderSleepReport.java"
       ],
       "validation": "ReportReferenceFlowTest PASS55.975s/11 individually inspected originals at2552adfd in CI40538711852; actual range/calendar/day selection, notes/tags/awake editing, Save/reopen/Back-discard and original-data checks. New History right-aligned/padded durations, editor centered icons/carets/pencil and measured chart-axis lane verified. Overall job failed separate QR/Snooze; scoped evidence verification/2026-10-27-report-proportions/. Full36 designs and physical output remain open.",
       "status": "partial",
-      "notes": "Saved7/30/90-day views use actual merged coverage, observed/missing dates, duration distribution, circular recorded main-period start range, original dated-goal targets and sufficiently sampled tag associations. Missing days stay unknown. Descriptive comparisons support reflection; no personalized clinical score, predictive advice, measured sleep onset/stages or chronotype claim. See RECORDED-INSIGHTS.md. Latest bounded milestone: verification/2026-10-27-tonight-report-routine/README.md. Pale measured bars, revised proportions/gridlines and real Trends calendar in32f064e2 source. Latest full Report journey failed; full screen/data-state acceptance remains open. Current calendar/edit verification is complete at514a5800; installed phone32f064e2 predates it. See verification/2026-10-27-report-calendar-complete/README.md.",
+      "notes": "Saved7/30/90-day views use actual merged coverage, observed/missing dates, duration distribution, circular recorded main-period start range, original dated-goal targets and sufficiently sampled tag associations. Missing days stay unknown. Descriptive comparisons support reflection; no personalized clinical score, predictive advice, measured sleep onset/stages or chronotype claim. See RECORDED-INSIGHTS.md. Latest bounded milestone: verification/2026-10-27-tonight-report-routine/README.md. Pale measured bars, revised proportions/gridlines and real Trends calendar in32f064e2 source. Latest full Report journey failed; full screen/data-state acceptance remains open. Current calendar/edit verification is complete at514a5800; installed phone32f064e2 predates it. See verification/2026-10-27-report-calendar-complete/README.md. 0.1.16 refines selected time/value captions, Trends selected-date guide/labels/goal rule and compact real provider-stage strips/legend order. Data, calculations, gaps and provenance remain; new verification is deferred.",
       "id": "F075",
       "tests": [
         {
@@ -4366,11 +4371,12 @@
         "AppearancePolicy.java",
         "Design.java",
         "TonightScreen.java",
-        "NightArc.java"
+        "NightArc.java",
+        "AppearanceLightCard.java"
       ],
       "validation": "AppearancePolicyTest (3 passing); AppearanceFlowTest silent device pass 2026-10-22; narrow visual review in DESIGN-REVIEW.md",
       "status": "implemented",
-      "notes": "Saved local-clock/manual Midnight/Pre-dawn/Dawn themes affect Tonight, dock and system bars. Text size, high-contrast indicators and static press effects are real. This narrower entry excludes smart lights and other personalization features; full screen 36 remains partial.",
+      "notes": "Saved local-clock/manual Midnight/Pre-dawn/Dawn themes affect Tonight, dock and system bars. Text size, high-contrast indicators and static press effects are real. This narrower entry excludes smart lights and other personalization features; full screen 36 remains partial. 0.1.16 restores proportioned theme previews, keeps Save pinned, labels Options and clarifies the bedside light action. Existing draft/persistence/configuration behavior remains; new verification is deferred.",
       "id": "F139",
       "tests": [
         {
@@ -5071,7 +5077,9 @@
         "SleepMixerUi.java",
         "AlarmEditorSearchUi.java",
         "HistoryActivity.java",
-        "IntegrationSetupUi.java"
+        "IntegrationSetupUi.java",
+        "AppearanceActivity.java",
+        "AlarmEditorUi.java"
       ],
       "tests": [
         {
@@ -5081,7 +5089,7 @@
       ],
       "validation": "Published170b0e44 has passing selected17 methods across11 bounded scopes and126 individually inspected original captures. Current Tone/Gentle/QR/Snooze/Goal/Rhythm/Nap/Appearance controls plus Settings root method-equivalence evidence retain all features. Actual selected actions/restoration/persistence pass; no all36, all-menu, physical-output or broad security acceptance. Evidence: verification/2026-10-27-reference-menus-build/.",
       "status": "partial",
-      "notes": "All17old root destinations remain in8named categories. Settings-only search browses8categories and88real catalog destinations with common terms/location breadcrumbs, without reading records; Search everything preserves global saved search. Main back history/group/scroll and search query/scope/category are retained. Alarm specialist schedule/input/backup controls move into actual draft subpages; final Save guards remain and Clear date is an action button. One focused route/draft/save/reopen flow and ten actual capture comparisons pass; no claim that every app menu or36reference screens is finished. See UI-ORGANIZATION.md and SETTINGS-FINDABILITY.md. Tracking setup additionally groups supporting start/battery/while-recording options into parent-aware More/Power pages; these new frames are source/build-only, not accepted screenshots. Additional sound sensitivity/retention/cue and automatic/recurring/mixer settings now use named child pages; choices select and chevrons navigate. Mixer timer/fade drafts retain Use/Cancel and revision guards. Thirteen direct supporting-page search links are added. See SOUND-SETTINGS-ORGANIZATION.md and SLEEP-MIXER-ORGANIZATION.md. Additional changed-flow captures and scope: verification/2026-10-27-organized-menus/README.md. Shared switch copy is measured before the native control; labels and descriptions do not overlap it. Supplementary recording analysis now uses Sources/Saved results/About/Source info/Result details pages, preserving explicit actions and retained job/navigation state. Edit alarm has its own draft-only search over42 named settings/9 browse pages, real parent breadcrumbs and conditional availability. Results open actual setting pages without activating outputs or changing saved state; query, scroll and return context survive Back/recreation. Settings search moved into the48dp header action; compact alarm spacing and an opaque footer expose main rows without clipping at the tested default size. Larger text and all36 designs remain open. Latest bounded milestone: verification/2026-10-27-tonight-report-routine/README.md. Installed32f064e2 organizes challenge mode/pinning and complete catalog under real child menus; same-flow native Back/recreation/persistence pass. Report date-control/calendar/edit flow now passes the later 11-frame journey. 0.1.15 extends menu organization to History/Trends date controls, repeat/override/skipped-date drafts, advanced tracking and integration setup. All feature routes remain; visual and interaction acceptance is deferred."
+      "notes": "All17old root destinations remain in8named categories. Settings-only search browses8categories and88real catalog destinations with common terms/location breadcrumbs, without reading records; Search everything preserves global saved search. Main back history/group/scroll and search query/scope/category are retained. Alarm specialist schedule/input/backup controls move into actual draft subpages; final Save guards remain and Clear date is an action button. One focused route/draft/save/reopen flow and ten actual capture comparisons pass; no claim that every app menu or36reference screens is finished. See UI-ORGANIZATION.md and SETTINGS-FINDABILITY.md. Tracking setup additionally groups supporting start/battery/while-recording options into parent-aware More/Power pages; these new frames are source/build-only, not accepted screenshots. Additional sound sensitivity/retention/cue and automatic/recurring/mixer settings now use named child pages; choices select and chevrons navigate. Mixer timer/fade drafts retain Use/Cancel and revision guards. Thirteen direct supporting-page search links are added. See SOUND-SETTINGS-ORGANIZATION.md and SLEEP-MIXER-ORGANIZATION.md. Additional changed-flow captures and scope: verification/2026-10-27-organized-menus/README.md. Shared switch copy is measured before the native control; labels and descriptions do not overlap it. Supplementary recording analysis now uses Sources/Saved results/About/Source info/Result details pages, preserving explicit actions and retained job/navigation state. Edit alarm has its own draft-only search over42 named settings/9 browse pages, real parent breadcrumbs and conditional availability. Results open actual setting pages without activating outputs or changing saved state; query, scroll and return context survive Back/recreation. Settings search moved into the48dp header action; compact alarm spacing and an opaque footer expose main rows without clipping at the tested default size. Larger text and all36 designs remain open. Latest bounded milestone: verification/2026-10-27-tonight-report-routine/README.md. Installed32f064e2 organizes challenge mode/pinning and complete catalog under real child menus; same-flow native Back/recreation/persistence pass. Report date-control/calendar/edit flow now passes the later 11-frame journey. 0.1.15 extends menu organization to History/Trends date controls, repeat/override/skipped-date drafts, advanced tracking and integration setup. All feature routes remain; visual and interaction acceptance is deferred. 0.1.16 adds labelled Wind-down/Appearance Options and consistent alarm value-picker affordances. Source-only usability increment; all36 acceptance remains open."
     },
     {
       "id": "F171",
