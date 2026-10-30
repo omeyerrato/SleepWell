@@ -85,3 +85,27 @@ The passing run also revealed a visual mismatch in [the recreated test confirmat
 The 35 PNGs, five method transcripts, environment and focused summary were copied unchanged from the run artifact. [Original sizes and SHA-256](original-sha256.json) pin those bytes; folder-local attributes preserve the original text files. No capture was painted, cropped into a replacement screen, or relabelled as another source revision.
 
 The run proves these five journeys on this emulator and supports this six-screen-group comparison. It does not establish all 36 references, every option/state/locale/device, transient SystemUI contrast, physical-phone acceptance, smart-light control, real Health Connect sync, external automation delivery, alarm loudness/protection, sound analysis or overnight behavior. No new CI, build, phone or hardware-output action was dispatched while preparing this archive.
+
+
+## Warm Automation confirmation follow-up
+
+[CI 41020300714](https://github.com/omeyerrato/SleepWell/actions/runs/41020300714) passed the same single Automation journey in **28.656 s**, with all ten required originals, at **`f0de1ef754a5d694e99883bacc47946d5f7ab97b`** after the owned confirmation styling change. The [unaltered summary](warm-automation-41020300714/focused-review-summary.json) still records `full_app_review: false`. The earlier 35 originals and their source identity above are preserved; this follow-up does not silently relabel them.
+
+All ten follow-up PNGs were individually opened in full. The [recreated confirmation](warm-automation-41020300714/automation-rule-test-confirmation-recreated.png) now has a rounded cream surface, warm Inter typography and sentence-case Cancel/Send test actions, both fully visible. This resolves the square white/default dialog mismatch documented above for this captured supporting state. The normal confirmation is opened and asserted before recreation by the same method, but **no separate normal-confirmation PNG exists in this artifact**; visual evidence here is specifically the recreated confirmation.
+
+| Original | Inspected result |
+| --- | --- |
+| [Main rules](warm-automation-41020300714/automation-rules-main.png) | Complete private rule card, event/destination chips, Add rule and three destinations. |
+| [Options](warm-automation-41020300714/automation-rules-options.png) | Named supporting routes and full Done action. |
+| [Webhook destination](warm-automation-41020300714/automation-rules-destination.png) | Actual connection prerequisites and full Add Webhook rule action. |
+| [Destination recreated](warm-automation-41020300714/automation-rule-type-recreated.png) | Visible checked Webhook and full Use destination action. |
+| [Edited draft](warm-automation-41020300714/automation-rule-draft.png) | Actual edited name/URL, masked token, activation selection and full Save. |
+| [Confirmation recreated](warm-automation-41020300714/automation-rule-test-confirmation-recreated.png) | Warm rounded confirmation, readable message and complete Cancel/Send test pair. |
+| [Busy recreated](warm-automation-41020300714/automation-rule-busy-recreated.png) | Queueing state remains visible with full Done action. |
+| [Saved notice](warm-automation-41020300714/automation-rules-saved-notice.png) | Saved rule and truthful scheduling-attention notice remain visible. |
+| [Load error](warm-automation-41020300714/automation-rules-load-error.png) | Actual load failure, retained saved rule and complete Refresh action. |
+| [Reopened editor](warm-automation-41020300714/automation-rule-reopened.png) | Saved name/URL and masked token reopen; remaining activation content is scrollable above pinned Save. |
+
+The [original method transcript](warm-automation-41020300714/AutomationStorageTest%23configReopensWithoutPlaintextCredentialsInRows.txt) covers the same private Off/On, route choices, draft recreation, confirmation cancellation, stale-owner rejection, one explicit accepted test event across recreation, saved field persistence, load/scheduling failure presentation and cancelled edit. It uses private storage and a fake scheduling port: **no real HTTP, MQTT or Tasker delivery, alarm, sound or hardware output is established**. The visible CI fixture banner identifies that context; it is not production page copy.
+
+The ten PNGs, method transcript, environment and focused summary were copied unchanged into `warm-automation-41020300714/`; [byte sizes and SHA-256](warm-automation-41020300714/original-sha256.json) identify those originals. No new CI/device action was dispatched while inspecting and archiving this run. The follow-up supports this Automation styling/state correction only; all other emulator, first-frame SystemUI, real-provider, device and all-36-reference limitations above remain.

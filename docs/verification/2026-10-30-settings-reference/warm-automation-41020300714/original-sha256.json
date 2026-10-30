@@ -1,0 +1,71 @@
+{
+  "run": 41020300714,
+  "captured_source": "f0de1ef754a5d694e99883bacc47946d5f7ab97b",
+  "files": [
+    {
+      "file": "automation-rule-busy-recreated.png",
+      "bytes": 98735,
+      "sha256": "ab767901d3e1ac9e9fc25dfb04e865f596c4086cfc918c4431c46b9325ca0a8a"
+    },
+    {
+      "file": "automation-rule-draft.png",
+      "bytes": 139812,
+      "sha256": "d660b3fcef9d1db159409e1b8a231ad9a4719dd57cc407ada852e8b6d4e08921"
+    },
+    {
+      "file": "automation-rule-reopened.png",
+      "bytes": 132573,
+      "sha256": "478ffdb96f4b7f8efa5cd8960decf4b159f09bf73b1dff8ea8e2e69fe503f34f"
+    },
+    {
+      "file": "automation-rule-test-confirmation-recreated.png",
+      "bytes": 126073,
+      "sha256": "d5d6d951d420dab1526dda10dd77e94bf50b585eb32a2e3358ad7649dd8a8e7e"
+    },
+    {
+      "file": "automation-rule-type-recreated.png",
+      "bytes": 79888,
+      "sha256": "0f6fcf75858ed5f13bd4844bb97462784a3daa387b2ba07b64e0a81e848bf23c"
+    },
+    {
+      "file": "automation-rules-destination.png",
+      "bytes": 135287,
+      "sha256": "54fe15093e443f4e803945524d73249147c0e5104b107593653d981a5b88f02a"
+    },
+    {
+      "file": "automation-rules-load-error.png",
+      "bytes": 206911,
+      "sha256": "26b308186b508d1bcb511d3c6cf28d41856b48888fa5d547f3ba21d24462a8ff"
+    },
+    {
+      "file": "automation-rules-main.png",
+      "bytes": 166540,
+      "sha256": "f9088a4c7b3e65c062af3b35c323f63ffc1ed564508f2d0f3e96ad267dce1169"
+    },
+    {
+      "file": "automation-rules-options.png",
+      "bytes": 98610,
+      "sha256": "95327d761ed8c0f3c1ffc4d36901152b364961c633cf70bb10ac684bc55eb41d"
+    },
+    {
+      "file": "automation-rules-saved-notice.png",
+      "bytes": 183807,
+      "sha256": "7a66bc256f145baa8ac621ff39d93d8a4e1eece2018efa27a9b1ab2c73f53965"
+    },
+    {
+      "file": "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows.txt",
+      "bytes": 776,
+      "sha256": "f078e3aa36996b02c9c0981da1ceb645c280bcd13ea907a1cd025bb2f20cf5c7"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 647,
+      "sha256": "52f4182e48e636a63bd73cef5ef30de74a80f213d67efcfffa3bb67713673ddb"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "bytes": 339,
+      "sha256": "dda06c59ffd74200bd5e1a1eb6f840760d25fe4d8a634f3e8e59a0049b25214c"
+    }
+  ]
+}
