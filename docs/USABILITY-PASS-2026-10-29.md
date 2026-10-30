@@ -100,6 +100,17 @@ Published source **`3d4c8422`**, version **0.1.17 / 18**. [Development APK](http
 
 Implementation commits: `38675541`, `9cf73271`, `46624612`, `b6c32730`, `9ab54593`, `9fb56be0`. Three implementation agents worked in isolated worktrees. No tests, lint, screenshot verification, security review, device or output operations ran. All36 acceptance stays open.
 
+## Alarm, record and connection controls — 0.1.18
+
+Published source **`0825f39c`**, version **0.1.18 / 19**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.18-alarm-record-flows-20261030-0825f39c). APK packaging only.
+
+- Alarm list: labelled Options, larger fitted clock, bounded name/schedule text and a single full-row settings action with full tooltip/state text. The wake-up check has a larger confirmation target. Existing alarm and confirmation callbacks remain.
+- Smart wake-up: clearer window hierarchy, leading section icons, selected sensitivity controls and a concise tracking prerequisite card. QR/NFC setup exposes location editing, fallback selection, genuine captured state and disabled reader/save states. Policies, permissions, enrollment and draft/defaults paths are unchanged.
+- Record editor: labelled Options, aligned date, useful awake count/excluded duration and clear Back to edit actions. Trim guides follow the actual time ticks. Existing notes, data, gestures, calendar, save and discard behavior remain.
+- Health Connect: labelled Options, status for the selected import/export permissions, whole-row direction controls and a visually disabled Connect action. Existing sleep-only consent, review, synchronization and error callbacks remain.
+
+Implementation commits: `0bd655e3`, `265852da`, `e4221efa`, `1a352738`, `0305ec22`. Three implementation agents worked in isolated worktrees. No tests, lint, screenshot verification, security review, device or output operations ran. All36 acceptance stays open.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.

@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated 30 October 2026. Latest published APK: **0.1.17 / 3d4c8422** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
+Updated 30 October 2026. Latest published APK: **0.1.18 / 0825f39c** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.17-bedtime-planning-20261030-3d4c8422) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.18-alarm-record-flows-20261030-0825f39c) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -142,3 +142,11 @@ Appearance theme rings (`6d56b05b`) are included in0.1.11.
 - [x] Clarify Nap/Rhythm primary controls, metric hierarchy and Travel clock/cue information.
 - [x] Improve audio choice readability and Room signal captions.
 - [x] Produce and publish0.1.17 (`3d4c8422`), APK packaging only. New verification and phone actions remain deferred.
+
+## Published in 0.1.18 — alarm, record and connection controls
+
+- [x] Clarify alarm-list settings actions and enlarge wake-up confirmation.
+- [x] Refine Smart wake-up and QR/NFC enrollment controls.
+- [x] Clarify record-edit draft actions, awake summaries and timeline guides.
+- [x] Show Health Connect direction permissions and actionable row states clearly.
+- [x] Produce and publish0.1.18 (`0825f39c`), APK packaging only. New verification and phone actions remain deferred.
