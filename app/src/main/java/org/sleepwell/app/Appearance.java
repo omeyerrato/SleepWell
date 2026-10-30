@@ -22,13 +22,14 @@ final class Appearance {
         final int phase,bg,panel,dock,selected,ink,softInk,accent,buttonInk,line,quiet;
         final boolean dark;
         Palette(int phase,boolean contrast){
-            this.phase=phase;dark=phase!=2;
-            if(phase==2){bg=0xffffd291;panel=0xffffe5bc;dock=0xfff6c88e;selected=0xffffedd2;ink=Design.INK;
-                softInk=contrast?Design.INK:0xff66391d;accent=Design.BROWN;buttonInk=Design.CREAM;line=contrast?0xff845b34:0xffcfaa7b;quiet=contrast?0xff845b34:0xffb69577;
-            }else if(phase==1){bg=0xff483768;panel=0xff5a467a;dock=0xff42315e;selected=0xff715495;ink=0xfffff9ff;
-                softInk=contrast?0xffffffff:0xffe8d7ff;accent=0xffe1c9ff;buttonInk=Design.PLUM;line=contrast?0xffd9c4fc:0xff8a72a3;quiet=contrast?0xffd9c4fc:0xffa68eb7;
-            }else{bg=Design.PLUM;panel=0xff3a3046;dock=0xff332c3e;selected=0xff50415f;ink=Design.CREAM;
-                softInk=contrast?0xfffaf4ff:Design.LILAC;accent=Design.LILAC;buttonInk=Design.PLUM;line=contrast?0xffd9c4fc:0xff62566d;quiet=contrast?0xffd9c4fc:0xff756286;}
+            // Keep saved phase values readable for integration; no phase may illuminate the room.
+            this.phase=phase;dark=true;
+            bg=NightDialTokens.GROUND;panel=NightDialTokens.SURFACE;dock=NightDialTokens.GROUND;
+            selected=NightDialTokens.RAISED;ink=NightDialTokens.TEXT;
+            softInk=contrast?NightDialTokens.TEXT:NightDialTokens.SECONDARY;
+            accent=NightDialTokens.ACCENT;buttonInk=NightDialTokens.ACCENT_INK;
+            line=contrast?NightDialTokens.OUTLINE:NightDialTokens.RULE;
+            quiet=contrast?NightDialTokens.SECONDARY:NightDialTokens.META;
         }
     }
 }

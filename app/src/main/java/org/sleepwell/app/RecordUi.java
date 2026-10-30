@@ -14,7 +14,7 @@ final class RecordUi {
     static android.graphics.drawable.Drawable glyph(Context c,String icon,int color,int size){int px=Design.dp(c,size);android.graphics.Bitmap bitmap=android.graphics.Bitmap.createBitmap(px,px,android.graphics.Bitmap.Config.ARGB_8888);Design.Icon view=new Design.Icon(c,icon,color);view.layout(0,0,px,px);view.draw(new android.graphics.Canvas(bitmap));android.graphics.drawable.BitmapDrawable drawable=new android.graphics.drawable.BitmapDrawable(c.getResources(),bitmap);drawable.setBounds(0,0,px,px);return drawable;}
     static CharSequence withIcon(Context c,String value,String icon,int color){android.text.SpannableString text=new android.text.SpannableString("  "+value);text.setSpan(new android.text.style.ImageSpan(glyph(c,icon,color,18),android.text.style.ImageSpan.ALIGN_BASELINE),0,1,0);return text;}
     static String preciseClock(Context c,long time,ZoneId zone){return Instant.ofEpochMilli(time).atZone(zone).format(DateTimeFormatter.ofPattern(android.text.format.DateFormat.is24HourFormat(c)?"HH:mm:ss":"h:mm:ss a",Locale.getDefault()));}
-    static void lightBars(Activity a){Design.focusedSystemBars(a,false);}
+    static void lightBars(Activity a){Design.focusedSystemBars(a,true);}
     static String date(long time,ZoneId zone){return Instant.ofEpochMilli(time).atZone(zone).format(DateTimeFormatter.ofPattern("EEE d MMM uuuu",Locale.getDefault()));}
     static String duration(long ms){long minutes=Math.max(0,ms/60000);if(ms<60000)return Math.max(0,ms/1000)+" sec";return minutes>=60?minutes/60+" h "+minutes%60+" min":minutes+" min";}
     /** Display means at minute precision; leave stored coverage and chart heights exact. */
