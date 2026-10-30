@@ -1,7 +1,6 @@
 package org.sleepwell.app;
 
 import android.app.Activity;
-import android.graphics.Matrix;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Gravity;
@@ -28,8 +27,7 @@ final class AppearanceLightCard implements AutoCloseable {
         // The controls determine card height; the decorative bitmap fills that height on the uniform pass.
         // Framework Activity and bitmap rendering on API 30+; no AppCompat inflation or tint is used.
         @android.annotation.SuppressLint("AppCompatCustomView")
-        ImageView art=new ImageView(activity){@Override protected void onMeasure(int width,int height){if(View.MeasureSpec.getMode(height)==View.MeasureSpec.UNSPECIFIED)setMeasuredDimension(View.MeasureSpec.getSize(width),0);else super.onMeasure(width,height);}};art.setImageResource(R.drawable.bedside_dawn);art.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);art.setScaleType(ImageView.ScaleType.MATRIX);
-        art.addOnLayoutChangeListener((v,l,t,r,b,ol,ot,or,ob)->{if(art.getDrawable()==null||art.getWidth()==0||art.getHeight()==0)return;float w=art.getDrawable().getIntrinsicWidth(),h=art.getDrawable().getIntrinsicHeight(),scale=Math.max(art.getWidth()/w,art.getHeight()/h);Matrix matrix=new Matrix();matrix.setScale(scale,scale);matrix.postTranslate(Math.max(art.getWidth()-w*scale,Math.min(0,art.getWidth()*.5f-w*.30f*scale)),(art.getHeight()-h*scale)*.5f);art.setImageMatrix(matrix);});
+        ImageView art=new ImageView(activity){@Override protected void onMeasure(int width,int height){if(View.MeasureSpec.getMode(height)==View.MeasureSpec.UNSPECIFIED)setMeasuredDimension(View.MeasureSpec.getSize(width),0);else super.onMeasure(width,height);}};art.setImageResource(R.drawable.sunrise_bedroom_raster);art.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);art.setScaleType(ImageView.ScaleType.CENTER_CROP);
         card.addView(art,new LinearLayout.LayoutParams(0,-1,.42f));
         LinearLayout copy=Design.col(activity);Design.pad(copy,10,4);card.addView(copy,new LinearLayout.LayoutParams(0,-2,.58f));
         name=Design.text(copy,"Bedroom lamp",14,600,Design.INK);status=Design.text(copy,"Loading saved settings…",12,400,Design.MUTED);
