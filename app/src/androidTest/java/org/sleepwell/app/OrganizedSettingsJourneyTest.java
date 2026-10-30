@@ -206,14 +206,14 @@ public final class OrganizedSettingsJourneyTest {
         checked("Record light levels", lightDraft);
         i.runOnMainSync(() -> {
             Rect start = measured(root, "Start tracking  \u2192", false);
-            for (String text : new String[]{"Choose sensor", "Phone placement", "Additional sensors", "On mattress, uncovered", "Manual"}) {
+            for (String text : new String[]{"Choose sensor", "Phone placement", "Additional sensors", "On mattress, uncovered", "Set up"}) {
                 View view = find(root, text, false); assertNotNull(text, view); Rect visible = new Rect();
                 assertTrue(text + " visible in main frame", view.getGlobalVisibleRect(visible));
                 assertEquals(text + " complete width", view.getWidth(), visible.width());
                 assertEquals(text + " complete height", view.getHeight(), visible.height());
                 assertTrue(text + " above Start", screenBounds(view).bottom <= start.top);
             }
-            for (String desc : new String[]{"Phone movement selected", "Contactless sonar", "Record sounds", "Record light levels", "Choose automatic start", "More tracking settings"}) {
+            for (String desc : new String[]{"Phone movement selected", "Contactless sonar", "Record sounds", "Record light levels", "Automatic tracking", "More tracking settings"}) {
                 Rect control = measured(root, desc, true); assertTrue(desc + " above Start", control.bottom <= start.top);
             }
         });
@@ -535,10 +535,10 @@ public final class OrganizedSettingsJourneyTest {
             recreate(); require("Sampling & battery"); capture("tracking-power-recreated", "Done", false);
             back(); require("Tracking settings"); back(); recreate(); trackingMain("recreated", true);
             trackingRadio("Phone movement selected", true); checked("Record sounds", false); checked("Record light levels", true);
-            Activity manualParent = openChild("Choose automatic start", AutomaticTrackingActivity.class);
+            Activity manualParent = openChild("Automatic tracking", AutomaticTrackingActivity.class);
             require("Automatic tracking"); selected("Manual only", true); assertNull("Manual mode has no Arm action", find(activity.getWindow().getDecorView(), "Arm tonight", false));
             capture("tracking-automatic-manual", "Save settings", false); cancelChild(manualParent);
-            require("Manual"); checked("Record light levels", true); assertTrue("Automatic draft cancelled without Save/Arm", automatic.getAll().isEmpty()); finish();
+            require("Set up"); checked("Record light levels", true); assertTrue("Automatic draft cancelled without Save/Arm", automatic.getAll().isEmpty()); finish();
             launch(TrackingActivity.class, new Intent(c, TrackingActivity.class).putExtra("sensor", "sonar"));
             trackingRadio("Contactless sonar selected", true); trackingRadio("Phone movement", false);
             Activity sonarSetup = activity; windows = owned.size(); desc("Phone movement");
