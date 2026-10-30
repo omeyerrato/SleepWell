@@ -1,0 +1,22 @@
+{
+  "commit": "f9b7a226e7113579bfcab89a239f05770d43e490",
+  "emulator": true,
+  "scope": "settings-reference-current",
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no native playback output allowlisted; library uses fake playback",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": false,
+  "startup_focused_samples": 3,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420",
+  "test_classes": [
+    "AppearanceFlowTest#saveReopenRelaunchCancelAndRenderAllThemes",
+    "HealthConnectFlowTest#selectedImportManualSyncReopenSourceAndConflictChoicePersist",
+    "HealthConnectFlowTest#providerAndPermissionPrerequisitesNeverReadSleepOrFakeConnected",
+    "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows",
+    "AlarmProtectionFlowTest#settingsPrivacyAndReadinessWithoutAlarmExecution"
+  ]
+}

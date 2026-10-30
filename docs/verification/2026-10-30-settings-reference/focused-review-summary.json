@@ -1,0 +1,35 @@
+{
+  "scope": "settings-reference-current",
+  "full_app_review": false,
+  "expected_classes": 5,
+  "expected_methods": 5,
+  "class_results": [
+    {
+      "class": "AppearanceFlowTest#saveReopenRelaunchCancelAndRenderAllThemes",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "HealthConnectFlowTest#selectedImportManualSyncReopenSourceAndConflictChoicePersist",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "HealthConnectFlowTest#providerAndPermissionPrerequisitesNeverReadSleepOrFakeConnected",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmProtectionFlowTest#settingsPrivacyAndReadinessWithoutAlarmExecution",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 35,
+  "failures": []
+}

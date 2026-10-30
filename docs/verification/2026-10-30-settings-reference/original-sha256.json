@@ -1,0 +1,216 @@
+{
+  "run": 41017469167,
+  "captured_source": "f9b7a226e7113579bfcab89a239f05770d43e490",
+  "files": [
+    {
+      "file": "appearance-automatic.png",
+      "bytes": 465813,
+      "sha256": "0eb6fb4b8b274de2be4c251c5468fff00f7f997dbf924ff02ba07c366f96d468"
+    },
+    {
+      "file": "appearance-large-contrast-tonight-action.png",
+      "bytes": 223414,
+      "sha256": "853012cf308383120cb95ba318c88a7d9507c8069c6ec6ba20f1473542a97203"
+    },
+    {
+      "file": "appearance-large-contrast-tonight.png",
+      "bytes": 223414,
+      "sha256": "853012cf308383120cb95ba318c88a7d9507c8069c6ec6ba20f1473542a97203"
+    },
+    {
+      "file": "appearance-large-contrast.png",
+      "bytes": 531838,
+      "sha256": "3cfc1eb371ee44a6bff8017387368d7d35d7f8bd52bda65ca4cfa40a16bdb70a"
+    },
+    {
+      "file": "appearance-selected-0.png",
+      "bytes": 465906,
+      "sha256": "1fe690fad48eecd11bcae2e6b57adfe07bfdcae641b62de016f41b48ef4a0ddc"
+    },
+    {
+      "file": "appearance-selected-1.png",
+      "bytes": 465381,
+      "sha256": "9342ceefcec774cc134059fada607003de077ac7a92cd0940a7ff4377f2fb64a"
+    },
+    {
+      "file": "appearance-selected-2.png",
+      "bytes": 465977,
+      "sha256": "10b343d057b1005fcffa36acb372bb70c24a3e0d75e9ba6cd65e367b63e4686c"
+    },
+    {
+      "file": "appearance-tonight-0.png",
+      "bytes": 441332,
+      "sha256": "fc5514d87b0dd5d62106728627a553ab6b28655a1bef7d2d3ab2ceb0c8603946"
+    },
+    {
+      "file": "appearance-tonight-1.png",
+      "bytes": 437784,
+      "sha256": "8e8f2b70bef74a5291157da8ebda1d8d311ea736c4272ba041e72a72c7e9b730"
+    },
+    {
+      "file": "appearance-tonight-2.png",
+      "bytes": 438080,
+      "sha256": "8aa70eb2f79ed51bb26ee940f51c9b73c3e3fbe3a7c60340c4bed812610557bc"
+    },
+    {
+      "file": "automation-rule-busy-recreated.png",
+      "bytes": 98356,
+      "sha256": "91670ff30bc975147da3a1529615d02984f2caed368b232ba1e1ec190d01545a"
+    },
+    {
+      "file": "automation-rule-draft.png",
+      "bytes": 139441,
+      "sha256": "100dde0692651fae6171e057bdd64acb3310eb8f25acae8c21652f6d3399c127"
+    },
+    {
+      "file": "automation-rule-reopened.png",
+      "bytes": 132148,
+      "sha256": "cf2b26df7d11b45d97396a946f6ac1f4364a647ec82cdd5242cec41629f24372"
+    },
+    {
+      "file": "automation-rule-test-confirmation-recreated.png",
+      "bytes": 119176,
+      "sha256": "cc9941e1139be47dfe8b4bd70e0d3d30f354924ea440335576015b246dd2f098"
+    },
+    {
+      "file": "automation-rule-type-recreated.png",
+      "bytes": 79450,
+      "sha256": "e391d961d699d892114f15fe8e252256ffc6de59f013c7f85fa3253ca17a3308"
+    },
+    {
+      "file": "automation-rules-destination.png",
+      "bytes": 134802,
+      "sha256": "6e1d8258d9ecddba3fa07ad2c8778ad0e712e77e5c4cf81bb5cf0f2364a0c666"
+    },
+    {
+      "file": "automation-rules-load-error.png",
+      "bytes": 206535,
+      "sha256": "6e94747a91ce9d6b1ee900d91ea0b2841958ee20a20109b3a8756148510aa431"
+    },
+    {
+      "file": "automation-rules-main.png",
+      "bytes": 165984,
+      "sha256": "acc7ccea1283915d5caf0e3d83c63e3ba9b10133611b4a7b5a15d7ebb4fd2e15"
+    },
+    {
+      "file": "automation-rules-options.png",
+      "bytes": 98019,
+      "sha256": "b6aa95b1874d10b0b6a118983082390d29e2456863ceb5200bfc41dc6a6fa988"
+    },
+    {
+      "file": "automation-rules-saved-notice.png",
+      "bytes": 183407,
+      "sha256": "1a655d6a6bf42d3f258902f2947ca3567cd11e0a528c70019246a970fada30a5"
+    },
+    {
+      "file": "health-connect-configured.png",
+      "bytes": 169432,
+      "sha256": "bd4a66cf18c371d002c7e2c1fe8412a44aba73fb94667009636c3fc05b6bf4a1"
+    },
+    {
+      "file": "health-connect-conflict.png",
+      "bytes": 211626,
+      "sha256": "959f933f695d09b8cf70b7a46538d03af37256ed51c54a8d04c6b4aa395ac847"
+    },
+    {
+      "file": "health-connect-default.png",
+      "bytes": 138671,
+      "sha256": "08b0221db36200e763d5f95fe69366052bbd8af259226049b93881c7d80de950"
+    },
+    {
+      "file": "health-connect-kept.png",
+      "bytes": 77474,
+      "sha256": "62df663e86b0c114ff6e8702c61ebfe8d86d0d9234a4edf025c6e25637528f20"
+    },
+    {
+      "file": "health-connect-permissions.png",
+      "bytes": 177368,
+      "sha256": "4f88d13e40f2b015f653de7dbd8b10bc46afccace4aaa2ffe51f6cda2f124276"
+    },
+    {
+      "file": "health-connect-source.png",
+      "bytes": 190379,
+      "sha256": "06cdee01187dd17b89a00f87c021843f5ac93acb5e999434210181dbfef1b36e"
+    },
+    {
+      "file": "health-connect-synced.png",
+      "bytes": 188429,
+      "sha256": "1be986c43d8de0fae585a09c52f08b53212ffcd0b445cb17c121a968a75a6d22"
+    },
+    {
+      "file": "health-connect-unavailable.png",
+      "bytes": 169756,
+      "sha256": "745737df74ddc6c8e52dca79813bd3cce30db9802f7040972993b69a338b9a3d"
+    },
+    {
+      "file": "protection-privacy-main.png",
+      "bytes": 180473,
+      "sha256": "af65e4370ca76e2db32716f52bc652f6a2478c5425fad63132253f79ff328f75"
+    },
+    {
+      "file": "protection-readiness-rationale-cancel.png",
+      "bytes": 178166,
+      "sha256": "15de9be74c4b06b18155b23fe761b56cd50bba9b9762156a07cde59741b6306e"
+    },
+    {
+      "file": "protection-readiness-rationale.png",
+      "bytes": 133796,
+      "sha256": "a707f65b679d96567287e1703435c8f7483ba3ec3d8a436f4f48e8af9640884b"
+    },
+    {
+      "file": "protection-readiness-returned.png",
+      "bytes": 183906,
+      "sha256": "1bba84ecae6d5e5b46cdd513769dd552a7a66bb87a91627760162ffbc9b88e69"
+    },
+    {
+      "file": "protection-readiness-settings-recovery.png",
+      "bytes": 183906,
+      "sha256": "1bba84ecae6d5e5b46cdd513769dd552a7a66bb87a91627760162ffbc9b88e69"
+    },
+    {
+      "file": "protection-readiness.png",
+      "bytes": 178166,
+      "sha256": "15de9be74c4b06b18155b23fe761b56cd50bba9b9762156a07cde59741b6306e"
+    },
+    {
+      "file": "protection-settings-root.png",
+      "bytes": 261701,
+      "sha256": "7764cff67a4cb9e59d806997b9723ecabbd0643df99cffd2c11d42dc232458aa"
+    },
+    {
+      "file": "AlarmProtectionFlowTest#settingsPrivacyAndReadinessWithoutAlarmExecution.txt",
+      "bytes": 786,
+      "sha256": "628086cfa6dcfb26211ae006ee9d82ca62f1c9799c30b0769fca7a8f500e20d5"
+    },
+    {
+      "file": "AppearanceFlowTest#saveReopenRelaunchCancelAndRenderAllThemes.txt",
+      "bytes": 759,
+      "sha256": "10ce21e63e182608aa06315fbcd07c7c41ee759b2580513c3ec614f916f53e41"
+    },
+    {
+      "file": "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows.txt",
+      "bytes": 776,
+      "sha256": "bac49940edc599315439d500303475c7dbfd3059abff09cd3137dd06c57b2a97"
+    },
+    {
+      "file": "HealthConnectFlowTest#providerAndPermissionPrerequisitesNeverReadSleepOrFakeConnected.txt",
+      "bytes": 809,
+      "sha256": "82cf8e3c44bd1bcc1f6949e146adc8e9bf844f6e2fd485cc280aa4b22de74520"
+    },
+    {
+      "file": "HealthConnectFlowTest#selectedImportManualSyncReopenSourceAndConflictChoicePersist.txt",
+      "bytes": 803,
+      "sha256": "070c1bd85266e7dc09bbb592828e32691793dc4ae5e4887c29303bb1fda0b271"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 989,
+      "sha256": "f12152de52ae2816706f71090431c9cb4dd82ca08cb58bc3b1719f570d520e0d"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "bytes": 977,
+      "sha256": "060de1f1b7034525b32e9f058fa84734346c7ce25d64534e18bc79714fc59663"
+    }
+  ]
+}
