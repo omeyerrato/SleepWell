@@ -1,0 +1,35 @@
+{
+  "scope": "alarm-reference-current",
+  "full_app_review": false,
+  "expected_classes": 5,
+  "expected_methods": 5,
+  "class_results": [
+    {
+      "class": "SettingsOrganizationFlowTest#groupedSettingsSearchAndAlarmDraftPersistWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmToneFlowTest#toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 70,
+  "failures": []
+}

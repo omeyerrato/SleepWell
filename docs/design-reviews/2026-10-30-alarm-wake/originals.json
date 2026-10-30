@@ -1,0 +1,66 @@
+{
+  "source_commit": "371c5b9e9b53655cb7d32d85ae9d6fc6f27fda79",
+  "capture_device": "API36 disposable emulator,1080x2316,420dpi",
+  "originals": [
+    {
+      "file": "organization-alarm-list.png",
+      "workflow_run": "41021582967",
+      "sha256": "38f4788501396ad467c961294c2210b5b17c30c311d8a4946fc65cadf09e6bf1"
+    },
+    {
+      "file": "organization-alarm-editor.png",
+      "workflow_run": "41021582967",
+      "sha256": "40556f109cd2d1cb657520be8780c8921d7daa689c06ffda413ea0c315944d7f"
+    },
+    {
+      "file": "organization-smart-following.png",
+      "workflow_run": "41021582967",
+      "sha256": "bc4275aa02fec57ef40edea1fafaf175202b860faffc1e66450ab2083404666c"
+    },
+    {
+      "file": "alarm-tone-builtins.png",
+      "workflow_run": "41021582967",
+      "sha256": "def46ae3f5f9bf81863a51dfcc11c6b9aedc2c58d1db8cfc3e9dfebb78e88dcb"
+    },
+    {
+      "file": "wake-settings-normal-curve.png",
+      "workflow_run": "41021582967",
+      "sha256": "bfd978ca38e3ad425e0394ce1ae94a9966702d2333852896a42536bac032ae31"
+    },
+    {
+      "file": "advanced-snooze-initial.png",
+      "workflow_run": "41021582967",
+      "sha256": "fdf4256ceb010afeb570661ebbf8fe2acf41b1913dc6d8b2afc15e058961bd05"
+    },
+    {
+      "file": "qr-code-captured.png",
+      "workflow_run": "41021582967",
+      "sha256": "8011899a80f44874cf33759c86fdedf36e2e54da3447bdf19117e705a555b8fd"
+    },
+    {
+      "file": "routine-ordered.png",
+      "workflow_run": "41021600537",
+      "sha256": "e011ffbd2393eb8723df0b91c3eddcdf13aa181c9bbd6c65166a029b1b0efc6d"
+    },
+    {
+      "file": "challenge-math-initial.png",
+      "workflow_run": "41021600537",
+      "sha256": "16a70f9e3a5389048898ad2b1e491f98e223772536bb03a5382535c8989b9555"
+    },
+    {
+      "file": "challenge-math-selected.png",
+      "workflow_run": "41021600537",
+      "sha256": "528d54e96c9d6205721729628f23734afd51b5bb4f20c94082076d5e65a301c9"
+    },
+    {
+      "file": "wake-check-prompt.png",
+      "workflow_run": "41021600537",
+      "sha256": "8d649114ecc84aa4b5cc00983d52e444418ca5e3cb0ed397afa1ad3cac52efa3"
+    },
+    {
+      "file": "wake-check-countdown.png",
+      "workflow_run": "41021600537",
+      "sha256": "7c07a790960e89a0ee3eee68d84b58be2217288435c9718c596fc5352b77ab7f"
+    }
+  ]
+}
