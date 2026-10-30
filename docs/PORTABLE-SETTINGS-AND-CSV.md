@@ -15,7 +15,7 @@ Five optional categories are supported:
 
 | Category | Transferred configuration | Activation and exclusions |
 | --- | --- | --- |
-| Appearance | Changing light automatic/fixed phase, text size, reduce motion, contrast, Room/Wind-down app-window dimming | No permissions or external light credentials; import saves the dimming preference without applying window brightness |
+| Appearance | Changing light automatic/fixed phase, text size, reduce motion, contrast, Room/Wind-down app-window dimming, touch-feedback enabled and Light/Standard/Firm strength | No permissions or external light credentials; import saves preferences without applying window brightness or requesting haptics |
 | Sleep plan | Goal, bedtime, wake time, wind-down, reminder lead/repeat values | Imported bedtime reminder, Smart Bedtime and no-alarm reminder activation stay off |
 | Bundled sounds | Bundled source, gains, timer/fade, rotation and stereo generator values | Sound-with-tracking stays off; local document/playlist references cannot be exported in this category |
 | Narration | Supported rate and pitch presets | No engine/voice identities, download or speech |
@@ -24,20 +24,53 @@ Five optional categories are supported:
 Prepare freezes the selected current values for review. Export uses a newly
 selected Android Files document. Import reads a separately selected document,
 validates all fields and displays the actual incoming configuration before Apply.
-Cancelling selection or review does not apply values. Appearance exports include
-the typed `roomDimming` Boolean and use settings-profile version2, because the
-version1 Appearance schema has exactly five fields. Profiles without that new
-field still export version1. All valid legacy version1 documents remain readable;
-their absent dimming field leaves the current local preference unchanged. Review
-names the imported dimming choice, or explicitly says it remains unchanged.
-Older version1-only readers reject version2; omit Appearance when a version1
-export is needed for an older installation.
+Cancelling selection or review does not apply values. Appearance exports now use
+settings-profile version3 and include these exact new fields:
+
+| Appearance field | Type and meaning |
+| --- | --- |
+| `feedbackEnabled` | JSON Boolean; the saved app touch-feedback switch |
+| `feedbackStrength` | Exact integer: `0` Light, `1` Standard, `2` Firm |
+
+The original five Appearance fields and the version2 `roomDimming` Boolean remain
+required in a version3 Appearance object. A missing half of the feedback pair,
+wrong type or out-of-range/fractional strength rejects the profile. Capture reads
+the actual typed preferences with the app's existing defaults (On/Standard when
+absent); malformed saved values are rejected instead of being normalized away.
+The enabled switch and strength are separate choices, so an Off/Firm profile
+retains both values. Review shows both, including the stored strength while Off.
+
+Legacy behavior is preserved:
+
+| File version | Appearance behavior |
+| --- | --- |
+| 1 | Exactly the original five fields; local Room dimming and both feedback choices stay unchanged |
+| 2 | Adds required `roomDimming`; both local feedback choices stay unchanged |
+| 3 | Includes Room dimming and both typed feedback fields; all are reviewed before Apply |
+
+Version1/2 files cannot smuggle the new feedback fields under an older version.
+Older readers reject version3 instead of silently losing the new choices. An
+export without Appearance retains version1 when all its remaining categories
+fit that schema. No feedback state is transferred when Appearance is omitted.
+The readable review labels absent legacy feedback/dimming fields as Unchanged.
+
+This version3 increment is source implementation only. No new tests, builds,
+lint, document exchange, preference apply/recovery or haptic output were run.
 Unknown categories/fields/types/duplicates, malformed UTF-8/JSON and files
 above64KiB are rejected. No persistent document grant is requested.
 
-The Room preference participates in the supported-settings fingerprint and
-recoverable apply journal, including absent-key rollback and newer-choice
-conflict checks. Permission-request markers such as `roomMicrophoneAsked` remain
+The Room and touch-feedback preferences participate in the supported-settings
+fingerprint and recoverable apply journal, including absent-key rollback and
+newer-choice conflict checks. The two feedback keys are staged through the
+existing preference setters against in-memory storage. The actual main-preference
+commit contains the pair together; acknowledged writes are read back before the
+apply can finish. Import, export and recovery do not call a haptic request API.
+
+The private recovery envelope remains version1. Its typed before/after maps use
+the existing supported-key whitelist, now extended by the Boolean/integer pair.
+Old journals remain readable and restore only their recorded keys. Their absent
+feedback or Room-dimming keys do not reset current choices. New journals retain
+prior key absence and participate in the same conflict guard and rollback path. Permission-request markers such as `roomMicrophoneAsked` remain
 device-local and excluded. The separate records/alarms backup remains format14
 and still excludes app preferences; database schema17 is unchanged. A local data
 restore therefore preserves the existing dimming choice, while moving that
@@ -51,13 +84,15 @@ from a deliberately seeded private recovery journal. It does not open the
 Settings profile Activity or a provider, change window brightness, or simulate a
 real process interruption. Its original eight Backup UI frames remain a separate
 records-replacement scope. Native execution of this extension is pending; source
-compilation alone is not round-trip runtime acceptance.
+compilation alone is not round-trip runtime acceptance. That historical version2
+continuation predates feedback transfer and provides no version3 acceptance.
 
 Apply checks the reviewed local-settings fingerprint and runtime admission,
 blocks active alarms/tracking and active or paused sleep playback, and blocks
 sleep-plan replacement while existing bedtime/guard automation needs attention.
 Existing typed save APIs stage a bounded allowlist in memory. Main preferences,
-narration preferences and Tonight layout each use acknowledged commits. They are
+narration preferences and Tonight layout each use acknowledged commits with
+changed-value readback. They are
 not one Android-wide transaction. A private recovery journal stores prior/planned
 values before writes; interrupted/failed writes expose review and guarded rollback.
 Rollback refuses to overwrite unsupported newer changes and reports unconfirmed
