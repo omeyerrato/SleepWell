@@ -3,6 +3,7 @@ package org.sleepwell.app;
 import android.content.Context;
 import android.graphics.*;
 import android.view.*;
+import android.view.accessibility.AccessibilityNodeInfo;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -14,7 +15,7 @@ final class RhythmChart extends View {
     private double project(double value,double start){return start+((value-start+1440)%1440);}
     static String label(Context c,double minutes){return Design.clock(c,RhythmStats.displayMinute(minutes));}
     private static String axisLabel(Context context,double minutes){String value=label(context,minutes);return android.text.format.DateFormat.is24HourFormat(context)?value:value.replace(":00","");}
-    private String bedtimeCaption(){return selected<0?"Your bedtime":days[selected]+" · "+label(getContext(),values[selected]);}
+    private String bedtimeCaption(){return selected<0?"Your bedtime":label(getContext(),values[selected]);}
     private float dp(float value){return value*getResources().getDisplayMetrics().density;}
     private void textPaint(){paint.setTypeface(Design.font(getContext(),400));paint.setTextSize(Design.sp(getContext(),11*Appearance.scale(getContext())));paint.getFontMetrics(metrics);paint.setStyle(Paint.Style.FILL);paint.setPathEffect(null);}
     private float textHeight(){return metrics.descent-metrics.ascent;}
@@ -30,12 +31,16 @@ final class RhythmChart extends View {
         float legendBaseline=dp(5)-metrics.ascent,legendCenter=legendBaseline+(metrics.ascent+metrics.descent)/2;
         paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(dp(2));paint.setPathEffect(goalDash);paint.setColor(Design.VIOLET);canvas.drawLine(left+dp(2),legendCenter-dp(6),left+dp(2),legendCenter+dp(6),paint);paint.setPathEffect(null);paint.setStyle(Paint.Style.FILL);paint.setColor(Design.MUTED);paint.setTextAlign(Paint.Align.LEFT);canvas.drawText(goalLabel,left+dp(10),legendBaseline,paint);
         float bedtimeX=right-paint.measureText(bedtimeCaption()),bedtimeBaseline=legendBaseline;if(stackedLegend(getWidth())){bedtimeX=left+dp(38);bedtimeBaseline+=textHeight()+dp(12);}float bedtimeCenter=bedtimeBaseline+(metrics.ascent+metrics.descent)/2;paint.setColor(0xffdcccfa);canvas.drawRoundRect(bedtimeX-dp(37),bedtimeCenter-dp(5),bedtimeX-dp(7),bedtimeCenter+dp(5),dp(5),dp(5),paint);paint.setColor(Design.MUTED);canvas.drawText(bedtimeCaption(),bedtimeX,bedtimeBaseline,paint);
-        for(int n=0;n<nights.size();n++){float y=top+height*(n+.5f);paint.setColor(Design.SOFT);canvas.drawRect(left,y-dp(7),right,y+dp(7),paint);paint.setColor(Design.MUTED);paint.setTextAlign(Paint.Align.RIGHT);canvas.drawText(days[n],left-dp(8),y-(metrics.ascent+metrics.descent)/2,paint);}
+        for(int n=0;n<nights.size();n++){float y=top+height*(n+.5f);paint.setColor(n==selected?0xffeaddd1:Design.SOFT);canvas.drawRect(left,y-dp(7),right,y+dp(7),paint);paint.setColor(n==selected?Design.BROWN:Design.MUTED);paint.setTypeface(Design.font(getContext(),n==selected?600:400));paint.setTextAlign(Paint.Align.RIGHT);canvas.drawText(days[n],left-dp(8),y-(metrics.ascent+metrics.descent)/2,paint);paint.setTypeface(Design.font(getContext(),400));}
         // Draw guides first so they do not cut through the actual bedtime markers.
         paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(dp(1));paint.setColor(Design.LINE);for(int n=0;n<3;n++){float xx=x(low+(high-low)*n/2);canvas.drawLine(xx,top-dp(3),xx,bottom,paint);}paint.setColor(Design.VIOLET);paint.setPathEffect(goalDash);canvas.drawLine(x(goal),top-dp(3),x(goal),bottom,paint);paint.setPathEffect(null);paint.setStyle(Paint.Style.FILL);
         canvas.save();canvas.clipRect(left,top,right,bottom);for(int n=0;n<nights.size();n++){float y=top+height*(n+.5f),xx=x(values[n]);paint.setColor(0xffdcccfa);canvas.drawRoundRect(xx-dp(15),y-dp(5),xx+dp(15),y+dp(5),dp(5),dp(5),paint);paint.setColor(n==selected?Design.BROWN:0xff7540e8);canvas.drawCircle(xx,y,dp(4.5f),paint);}canvas.restore();
         paint.setColor(Design.MUTED);paint.setTextAlign(Paint.Align.CENTER);for(int n=0;n<3;n++){float half=paint.measureText(axis[n])/2;centers[n]=Math.max(dp(2)+half,Math.min(getWidth()-dp(2)-half,x(low+(high-low)*n/2)));}boolean middleFits=centers[1]-centers[0]>(paint.measureText(axis[0])+paint.measureText(axis[1]))/2+dp(6)&&centers[2]-centers[1]>(paint.measureText(axis[1])+paint.measureText(axis[2]))/2+dp(6);for(int n=0;n<3;n++)if(n!=1||middleFits)canvas.drawText(axis[n],centers[n],bottom+dp(9)-metrics.ascent,paint);
     }
-    @Override public boolean onTouchEvent(MotionEvent event){if(event.getAction()==MotionEvent.ACTION_UP&&!nights.isEmpty()){textPaint();float top=top(),bottom=bottom();selected=Math.max(0,Math.min(nights.size()-1,(int)((event.getY()-top)/(bottom-top)*nights.size())));RhythmStats.Night night=nights.get(selected);setContentDescription(night.day+", "+label(getContext(),night.bedtime)+", "+night.record.provenance());announceForAccessibility(getContentDescription());InteractionFeedback.selection(this);performClick();requestLayout();invalidate();}return true;}
+    private boolean select(int index){if(index<0||index>=nights.size())return false;selected=index;RhythmStats.Night night=nights.get(selected);setContentDescription(night.day+", "+label(getContext(),night.bedtime)+", "+night.record.provenance());announceForAccessibility(getContentDescription());InteractionFeedback.selection(this);performClick();requestLayout();invalidate();return true;}
+    @Override public boolean onTouchEvent(MotionEvent event){if(event.getAction()==MotionEvent.ACTION_UP&&!nights.isEmpty()){textPaint();float top=top(),bottom=bottom();select(Math.max(0,Math.min(nights.size()-1,(int)((event.getY()-top)/(bottom-top)*nights.size()))));}return true;}
     @Override public boolean performClick(){super.performClick();return true;}
+    @Override public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info){super.onInitializeAccessibilityNodeInfo(info);info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_FORWARD);info.addAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_BACKWARD);}
+    @Override public boolean performAccessibilityAction(int action,android.os.Bundle args){int step=action==AccessibilityNodeInfo.ACTION_SCROLL_FORWARD?1:action==AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD?-1:0;if(step==0)return super.performAccessibilityAction(action,args);return select(selected<0?(step>0?0:nights.size()-1):selected+step);}
+    @Override public boolean onKeyDown(int key,KeyEvent event){int step=key==KeyEvent.KEYCODE_DPAD_DOWN||key==KeyEvent.KEYCODE_DPAD_RIGHT?1:key==KeyEvent.KEYCODE_DPAD_UP||key==KeyEvent.KEYCODE_DPAD_LEFT?-1:0;return step==0?super.onKeyDown(key,event):select(selected<0?(step>0?0:nights.size()-1):selected+step);}
 }
