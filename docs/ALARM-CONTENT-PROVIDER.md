@@ -33,6 +33,7 @@ The default/null projection remains the original 13 columns above, in that order
 
 | Optional column | Meaning |
 | --- | --- |
+| `builtin_tone` | Explicitly saved bundled single-tone slot: `daybreak`, `pulse` or `chime`; null for other/missing/unreadable sources or invalid sound-mode metadata |
 | `snooze_minutes` | Snooze duration, integer 1–60; not a pending snooze deadline or remaining allowance |
 | `smart_window_minutes` | Early-wake window, integer 0–60; zero disables smart wake-up |
 | `smart_sensitivity` | -1 follows the tracking profile (including calibration), 0 Low, 1 Medium, 2 High |
@@ -59,6 +60,7 @@ Supported ContentValues are exactly:
 
 | Field | Accepted value |
 | --- | --- |
+| `builtin_tone` | Optional exact String `daybreak`, `pulse` or `chime`; case-sensitive, no whitespace normalization |
 | `hour` | Integer 0–23 |
 | `minute` | Integer 0–59 |
 | `days_mask` | Integer 0–127 |
@@ -74,6 +76,10 @@ Supported ContentValues are exactly:
 | `screen_sunrise`, `flashlight`, `extra_loud` | Optional Boolean or Integer 0/1 |
 
 Smart-wake scalars accept only integral ContentValues types (`Integer`, `Long`, `Short`, `Byte`) within their documented bounds; strings, floats, booleans and null are rejected. The window bound follows the existing editor/defaults/backup validity of 0–60 minutes. Patching either sensitivity or goal preserves the other choice through `setSmartWake`; omitting all three preserves the existing smart-wake configuration. Create inherits valid defaults for omitted choices. Invalid existing metadata requires review in SleepWell and cannot be repaired through this API. Setting smart-wake choices never starts tracking: early wake still requires active phone-movement tracking and eligible measured intervals. The duration goal counts active recorded time excluding pauses, not confirmed sleep; the fixed alarm deadline remains scheduled.
+
+`builtin_tone` exposes only the bundled legacy single-tone slot. The query never returns a custom document URI/name, a system-tone identifier, playlist tracks, a radio URL, speech data or a fallback substituted for an unreadable/missing source. A valid bundled slot can be reported even when a different playback mode is configured; it is not a claim that this tone currently plays.
+
+Supplying `builtin_tone` mirrors selecting that bundled source in Alarm sound: it replaces only the legacy single-tone source and clears the old display-only document name. It does not switch the existing playback mode, erase playlist tracks/names or radio metadata, change backup sound, or release/acquire persisted URI grants. Silent stays silent; Playlist and Internet radio keep their existing playback policy. Existing references held by other alarms, defaults, playlists and sleep sounds are untouched. Omitting the field preserves all private sound data. Invalid saved metadata remains nonwritable and cannot be repaired through this field. Strings such as `system`, content/file/HTTP URIs, arbitrary names and whitespace/case variants are rejected; nonstrings and null are rejected.
 
 Output durations and volume accept only integral ContentValues types (`Integer`, `Long`, `Short`, `Byte`) within their bounds. Output switches accept only Boolean or Integer 0/1, matching `vibrate`; Long, strings, floats and null are rejected for switches. Omitted output values preserve the saved choice on update and inherit valid user defaults on create. Updating an output scalar never repairs malformed saved metadata, changes the sound source or enrollment, grants access, requests permissions, previews an output or rings immediately.
 
@@ -146,6 +152,32 @@ int outputAcknowledgedRows = resolver.update(outputConditional, outputPatch, nul
 
 A create can include the same output fields with required hour/minute; it remains disabled unless explicitly enabled. Neither example should be run without reviewing the selected alarm and its current revision.
 
+## Optional bundled-tone example
+
+For a caller already granted management access, query the optional slot with the current write status and revision:
+
+```java
+String[] toneColumns = {"_id", "revision", "writable", "write_issue", "builtin_tone"};
+try (Cursor current = resolver.query(item, toneColumns, null, null, null)) {
+    // Review the selected alarm and retain its exact current revision.
+}
+```
+
+After reviewing a currently writable alarm, this patch stores Chime in its single-tone slot. It preserves the existing playback mode; callers cannot use this field to turn off Silent or replace Playlist/Internet radio. An already enabled alarm can later ring under the unchanged scheduling and playback rules.
+
+```java
+ContentValues tonePatch = new ContentValues();
+tonePatch.put("builtin_tone", "chime");
+Uri toneConditional = item.buildUpon()
+    .appendQueryParameter("request_id", UUID.randomUUID().toString())
+    .appendQueryParameter("if_match", reviewedRevision)
+    .build();
+int toneAcknowledgedRows = resolver.update(toneConditional, tonePatch, null, null);
+// Re-query saved configuration and scheduling status; no preview or output was requested.
+```
+
+The same field can accompany a create with required hour/minute. Other valid behavior defaults are inherited and create remains disabled unless enabled is explicitly supplied.
+
 ## Commit and failure boundaries
 
 Writes take the existing Scheduler lock, then the private grant lock, and compare exact raw saved content plus ETag again inside a main-database transaction. A separate durable request preparation precedes that transaction. Stored changes preserve SleepWell’s scheduling-unconfirmed marker and then use its existing `AlarmSkips.retry` scheduling/status path after the database commit. Deletion removes the exact row before requesting cancellation of its own pending actions. New IDs avoid current rows, receipt IDs and retained known scheduling/snooze ownership.
@@ -158,8 +190,8 @@ If a process fails between request preparation, alarm commit, scheduling or rece
 
 Data & privacy → **Alarm access** opens the private `AlarmAccessActivity`. `Store.historyReplacing()` and `SleepSummaryFiles.historyChanging()` now call `AlarmAccessGrants.historyChanging(Context)` before production history replacement/erasure transactions (after the shared in-flight history epoch invalidation where applicable). It durably clears authority/revises the grant state before Android cleanup and can throw: abort replacement if it fails. It does not acquire Scheduler or access the main database; call before the replacement database transaction to preserve lock order.
 
-Latest source5266e54b builds production in27s with the original signer; the provider has not been exercised against an external caller. No real alarm/output/provider calls were performed. It is intentionally narrower than full alarm-editor parity. The optional `snooze_minutes` extension has build/source evidence only; no external-client runtime verification was run for it. Sound-source selection, challenges and specialized schedules remain outside the write contract, as does vendor API compatibility. The optional smart-wake scalar extension in unreleased a8842ada builds production in19s with the original signer verified. It is outside published c6f2fcaa. No external-caller/runtime, unit/lint/native or device/output verification ran for that extension.
+Latest source5266e54b builds production in27s with the original signer; the provider has not been exercised against an external caller. No real alarm/output/provider calls were performed. It is intentionally narrower than full alarm-editor parity. The optional `snooze_minutes` extension has build/source evidence only; no external-client runtime verification was run for it. Custom/system sound-source selection, playback-mode/playlist/radio editing, challenges and specialized schedules remain outside the write contract, as does vendor API compatibility. The optional smart-wake scalar extension in unreleased a8842ada builds production in19s with the original signer verified. It is outside published c6f2fcaa. No external-caller/runtime, unit/lint/native or device/output verification ran for that extension.
 
-The optional configured-output scalar family is source implementation only in this change. No external-caller/runtime, unit/lint/native, device or output verification was performed for it. Existing admission, grant, ETag, idempotency and scheduling boundaries are unchanged.
+The optional configured-output scalar family and bundled-tone slot are source implementation only in these changes. No external-caller/runtime, unit/lint/native, device or output verification was performed for it. Existing admission, grant, ETag, idempotency and scheduling boundaries are unchanged.
 
 Primary platform references: [creating a content provider](https://developer.android.com/guide/topics/providers/content-provider-creating), [SigningInfo current signers](https://developer.android.com/reference/android/content/pm/SigningInfo), and [custom permissions](https://developer.android.com/guide/topics/manifest/permission-element).
