@@ -20,7 +20,8 @@ public final class SearchActivity extends Activity {
     private int generation,searchPosition,choicePosition;
     private long choice=-1;
     private boolean loaded,settingsOnly,opening;
-    private List<SearchIndex.Entry> index=List.of();
+    private List<SearchIndex.Entry> index=List.of(),recentSettings=List.of();
+    private long shortcutRevision;private boolean shortcutResumed,shortcutResetting;private String shortcutNotice="";
     private List<Alarm> alarms=List.of();
     private LinearLayout results,filters;private TextView status;private EditText input;private ScrollView scroll;
     private final Runnable searchLater=this::search;
@@ -32,8 +33,8 @@ public final class SearchActivity extends Activity {
         if(Build.VERSION.SDK_INT>=33)getOnBackInvokedDispatcher().registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,this::back);
         render();
     }
-    @Override protected void onResume(){super.onResume();opening=false;load();}
-    @Override protected void onPause(){rememberPosition();super.onPause();}
+    @Override protected void onResume(){super.onResume();shortcutResumed=true;opening=false;load();}
+    @Override protected void onPause(){shortcutResumed=false;rememberPosition();super.onPause();}
     private boolean choosing(){return choice>=0;}
     private void rememberPosition(){if(scroll!=null&&scroll.isAttachedToWindow()){if(choosing())choicePosition=scroll.getScrollY();else searchPosition=scroll.getScrollY();}}
     private void restorePosition(int position){ScrollView owner=scroll;int request=generation;owner.post(()->{if(!isDestroyed()&&scroll==owner&&request==generation&&owner.isAttachedToWindow())owner.scrollTo(0,position);});}
@@ -41,8 +42,8 @@ public final class SearchActivity extends Activity {
     @android.annotation.SuppressLint("GestureBackNavigation") @Override public void onBackPressed(){back();}
     private void load(){
         opening=false;if(choosing()){loadAlarms();return;}
-        int request=++generation;boolean settings=settingsOnly;loaded=false;status.setText(settings?"Opening settings…":"Opening local search…");
-        reader.execute(()->{try{List<SearchIndex.Entry> snapshot=settings?SearchData.settings():SearchData.read(getApplicationContext());runOnUiThread(()->{if(isDestroyed()||request!=generation||choosing())return;index=snapshot;loaded=true;error="";search();});}catch(RuntimeException failed){runOnUiThread(()->{if(isDestroyed()||request!=generation||choosing())return;error=settings?"Settings search could not open.":"Search could not open your saved data.";status.setText(error);results.removeAllViews();Design.button(results,"Try again",true,this::load);});}});
+        int request=++generation;long shortcutsAtRead=shortcutRevision;boolean settings=settingsOnly;loaded=false;status.setText(settings?"Opening settings…":"Opening local search…");
+        reader.execute(()->{try{List<SearchIndex.Entry> snapshot=settings?SearchData.settings():SearchData.read(getApplicationContext());SearchRecents.Snapshot shortcuts=SearchRecents.load(getApplicationContext(),SearchSettings.entries());runOnUiThread(()->{if(isDestroyed()||request!=generation||choosing())return;index=snapshot;if(shortcutsAtRead==shortcutRevision&&!shortcutResetting){recentSettings=shortcuts.entries;if(shortcutNotice.isEmpty()||!shortcuts.problem.isEmpty())shortcutNotice=shortcuts.problem;}loaded=true;error="";search();});}catch(RuntimeException failed){runOnUiThread(()->{if(isDestroyed()||request!=generation||choosing())return;error=settings?"Settings search could not open.":"Search could not open your saved data.";status.setText(error);results.removeAllViews();Design.button(results,"Try again",true,this::load);});}});
     }
     private void loadAlarms(){
         int request=++generation;long selected=choice;error="";renderChooser(true);
@@ -71,26 +72,37 @@ public final class SearchActivity extends Activity {
         if(!loaded||choosing()||isDestroyed())return;opening=false;int request=++generation;String searched=query,chosenCategory=category;boolean settings=settingsOnly;List<SearchIndex.Entry> source=index;
         reader.execute(()->{List<SearchIndex.Entry> found=settings?SearchIndex.findSettings(source,searched,chosenCategory):SearchIndex.find(source,searched);runOnUiThread(()->{
             if(isDestroyed()||request!=generation||choosing())return;results.removeAllViews();boolean blank=SearchIndex.normalize(searched).isEmpty();
-            if(blank&&settings&&chosenCategory.isEmpty()){status.setText("Jump to a setting or browse a category.");popularSettings();RecordUi.heading(results,"Browse all categories");for(String group:SearchSettings.CATEGORIES){PlanActivity.detail(results,SearchSettings.categoryIcon(group),SearchSettings.categoryLabel(group),null,null,()->{category=group;searchPosition=0;renderFilters();search();});Design.line(results);}restorePosition(searchPosition);return;}
-            if(blank&&!settings){status.setText("Search your alarms, sleep records and settings.");popularSettings();restorePosition(searchPosition);return;}
+            if(blank&&settings&&chosenCategory.isEmpty()){status.setText("Jump to a setting or browse a category.");quickAccess();RecordUi.heading(results,"Browse all categories");for(String group:SearchSettings.CATEGORIES){PlanActivity.detail(results,SearchSettings.categoryIcon(group),SearchSettings.categoryLabel(group),null,null,()->{category=group;searchPosition=0;renderFilters();search();});Design.line(results);}restorePosition(searchPosition);return;}
+            if(blank&&!settings){status.setText("Search your alarms, sleep records and settings.");quickAccess();restorePosition(searchPosition);return;}
             String count=found.size()+(found.size()==100?" results · first 100 shown":found.size()==1?" result":" results");status.setText(found.isEmpty()?settings?"No matching settings · try another term or category":"No matching results":settings?(chosenCategory.isEmpty()?"All settings":SearchSettings.categoryLabel(chosenCategory))+" · "+count:count);
             for(SearchIndex.Entry entry:found){LinearLayout row=PlanActivity.detail(results,entry.kind==SearchIndex.Kind.ALARM?"alarm":entry.kind==SearchIndex.Kind.RECORD?"report":SearchSettings.icon(entry),entry.title,entry.subtitle,null,()->open(entry));row.setMinimumHeight(Design.dp(this,64));row.setContentDescription(entry.title+". "+entry.subtitle.replace('\n',' ')+". Open");Design.line(results);}restorePosition(searchPosition);
         });});
     }
-    private void popularSettings(){
-        Design.text(results,"Popular settings",17,600,Design.INK);Design.space(results,10);List<SearchSettings.Shortcut> shortcuts=SearchSettings.popular();LinearLayout row=null;
+    private void quickAccess(){
+        LinearLayout heading=Design.row(this);heading.addView(Design.text(this,"Quick access",17,600,Design.INK),new LinearLayout.LayoutParams(0,-2,1));if(!recentSettings.isEmpty()){TextView reset=Design.text(this,shortcutResetting?"Resetting…":"Reset shortcuts",13,600,Design.BROWN);reset.setGravity(Gravity.CENTER);reset.setPadding(Design.dp(this,10),0,Design.dp(this,10),0);reset.setMinimumHeight(Design.dp(this,48));reset.setContentDescription("Reset shortcuts");reset.setFocusable(true);reset.setBackground(Design.touch(this,Design.SOFT,12));reset.setEnabled(!shortcutResetting);SoundEventUi.button(reset);reset.setOnClickListener(this::resetShortcuts);heading.addView(reset,new LinearLayout.LayoutParams(-2,Design.dp(this,48)));}results.addView(heading);Design.space(results,10);if(!shortcutNotice.isEmpty()){Design.text(results,shortcutNotice,12,400,Design.BROWN);Design.space(results,8);}List<SearchSettings.Shortcut> shortcuts=SearchRecents.quickAccess(recentSettings,SearchSettings.popular());LinearLayout row=null;
         for(int n=0;n<shortcuts.size();n++){
             if(n%2==0){row=Design.row(this);row.setBaselineAligned(false);LinearLayout.LayoutParams line=new LinearLayout.LayoutParams(-1,-2);line.bottomMargin=Design.dp(this,8);results.addView(row,line);}
-            SearchSettings.Shortcut shortcut=shortcuts.get(n);LinearLayout tile=Design.row(this);Design.pad(tile,12,10);tile.setMinimumHeight(Design.dp(this,58));tile.setBackground(Design.touch(this,Design.SOFT,14));LinearLayout.LayoutParams glyph=new LinearLayout.LayoutParams(Design.dp(this,22),Design.dp(this,22));glyph.rightMargin=Design.dp(this,8);tile.addView(new Design.Icon(this,shortcut.icon,Design.BROWN),glyph);tile.addView(Design.text(this,shortcut.label,13,600,Design.INK),new LinearLayout.LayoutParams(0,-2,1));
+            SearchSettings.Shortcut shortcut=shortcuts.get(n);LinearLayout tile=Design.row(this);Design.pad(tile,12,10);tile.setMinimumHeight(Design.dp(this,58));tile.setBackground(Design.touch(this,Design.SOFT,14));LinearLayout.LayoutParams glyph=new LinearLayout.LayoutParams(Design.dp(this,22),Design.dp(this,22));glyph.rightMargin=Design.dp(this,8);tile.addView(new Design.Icon(this,shortcut.icon,Design.BROWN),glyph);TextView title=Design.text(this,shortcut.label,13,600,Design.INK);title.setMaxLines(2);title.setEllipsize(TextUtils.TruncateAt.END);tile.addView(title,new LinearLayout.LayoutParams(0,-2,1));tile.setTooltipText(shortcut.label);
             tile.setContentDescription(shortcut.label+(SearchSettings.alarmKey(shortcut.entry.id).isEmpty()?"":". Choose an alarm"));tile.setFocusable(true);SoundEventUi.button(tile);tile.setOnClickListener(view->{InteractionFeedback.action(view);open(shortcut.entry);});LinearLayout.LayoutParams size=new LinearLayout.LayoutParams(0,-2,1);if(n%2==1)size.leftMargin=Design.dp(this,8);row.addView(tile,size);
         }
         if(shortcuts.size()%2==1){LinearLayout.LayoutParams space=new LinearLayout.LayoutParams(0,1,1);space.leftMargin=Design.dp(this,8);row.addView(new View(this),space);}
     }
+    private void rememberSetting(SearchIndex.Entry entry){
+        if(entry.kind!=SearchIndex.Kind.SETTING)return;recentSettings=SearchRecents.promote(recentSettings,entry);shortcutNotice="";shortcutResetting=false;long revision=++shortcutRevision;
+        try{SearchRecents.remember(getApplicationContext(),entry,SearchSettings.entries(),result->main.post(()->{if(isDestroyed()||revision!=shortcutRevision)return;if(result.saved)recentSettings=result.snapshot.entries;shortcutNotice=result.snapshot.problem;refreshQuickAccess();}));}
+        catch(RuntimeException unavailable){shortcutNotice="Shortcut order could not be saved. Settings still open normally.";}
+    }
+    private void resetShortcuts(View source){
+        if(isDestroyed()||isFinishing()||!hasWindowFocus()||choosing()||shortcutResetting||recentSettings.isEmpty())return;InteractionFeedback.action(source);shortcutResetting=true;source.setEnabled(false);if(source instanceof TextView)((TextView)source).setText("Resetting…");shortcutNotice="";long revision=++shortcutRevision;
+        try{SearchRecents.reset(getApplicationContext(),SearchSettings.entries(),result->main.post(()->{if(isDestroyed()||revision!=shortcutRevision)return;shortcutResetting=false;if(result.saved)recentSettings=result.snapshot.entries;shortcutNotice=result.snapshot.problem;refreshQuickAccess();}));}
+        catch(RuntimeException unavailable){shortcutResetting=false;shortcutNotice="Shortcuts could not be reset. Try again.";refreshQuickAccess();}
+    }
+    private void refreshQuickAccess(){if(shortcutResumed&&!isFinishing()&&!isDestroyed()&&!choosing()&&loaded&&input!=null&&SearchIndex.normalize(query).isEmpty()&&(!settingsOnly||category.isEmpty()))search();}
     private void open(SearchIndex.Entry entry){
         if(isDestroyed()||isFinishing()||!hasWindowFocus()||opening)return;rememberPosition();
         if(entry.kind==SearchIndex.Kind.SETTING){
-            if(!SearchSettings.alarmKey(entry.id).isEmpty()){main.removeCallbacks(searchLater);AlarmEditorSearchUi.hideKeyboard(this);generation++;choice=entry.id;choicePosition=0;alarms=List.of();defaultsNotice="";loadAlarms();return;}
-            try{startActivity(SearchSettings.intent(this,entry.id));}catch(ActivityNotFoundException|IllegalArgumentException unavailable){status.setText("This setting could not be opened. Refresh the search.");}return;
+            if(!SearchSettings.alarmKey(entry.id).isEmpty()){main.removeCallbacks(searchLater);AlarmEditorSearchUi.hideKeyboard(this);generation++;choice=entry.id;choicePosition=0;alarms=List.of();defaultsNotice="";loadAlarms();rememberSetting(entry);return;}
+            try{startActivity(SearchSettings.intent(this,entry.id));rememberSetting(entry);}catch(ActivityNotFoundException|IllegalArgumentException unavailable){status.setText("This setting could not be opened. Refresh the search.");}return;
         }
         if(entry.kind==SearchIndex.Kind.RECORD){startActivity(RecordUi.intent(this,RecordReportActivity.class).putExtra("record",entry.id));return;}
         openAlarm(entry.id,false);
@@ -115,6 +127,6 @@ public final class SearchActivity extends Activity {
     }
     @Override protected void onSaveInstanceState(Bundle state){rememberPosition();super.onSaveInstanceState(state);state.putString("query",query);state.putBoolean("settingsOnly",settingsOnly);state.putString("category",category);state.putLong("alarmChoice",choice);state.putInt("searchPosition",searchPosition);state.putInt("choicePosition",choicePosition);}
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)RecordUi.lightBars(this);}
-    @Override protected void onDestroy(){generation++;main.removeCallbacksAndMessages(null);reader.shutdownNow();super.onDestroy();}
+    @Override protected void onDestroy(){shortcutResumed=false;shortcutRevision++;generation++;main.removeCallbacksAndMessages(null);reader.shutdownNow();super.onDestroy();}
     boolean awaitReaders(long millis)throws InterruptedException{return reader.awaitTermination(millis,TimeUnit.MILLISECONDS);}
 }
