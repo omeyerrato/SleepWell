@@ -4,6 +4,8 @@ import atexit
 import json
 import os
 import subprocess
+import shutil
+import xml.etree.ElementTree as ET
 import time
 
 if os.environ.get("GITHUB_ACTIONS") != "true":
@@ -11,6 +13,14 @@ if os.environ.get("GITHUB_ACTIONS") != "true":
 root = Path(__file__).resolve().parents[1]
 output = root / "captures/night-dial"
 output.mkdir(parents=True, exist_ok=True)
+unit_results = output / "unit-results"
+unit_results.mkdir(exist_ok=True)
+unit_totals = {"tests": 0, "failures": 0, "errors": 0}
+for report in (root / "app/build/test-results/testDebugUnitTest").glob("TEST-*.xml"):
+    shutil.copy2(report, unit_results / report.name)
+    suite = ET.parse(report).getroot()
+    for key in unit_totals:
+        unit_totals[key] += int(suite.attrib.get(key, 0))
 sdk = Path(os.environ["ANDROID_HOME"])
 adb = [str(sdk / "platform-tools/adb"), "-s", "emulator-5554"]
 log = (output / "emulator.log").open("w")
@@ -62,15 +72,15 @@ while time.monotonic() < deadline:
     time.sleep(1)
 else:
     raise SystemExit("The native application never established a window.")
-result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app.NightDialReviewTest,org.sleepwell.app.NightDialInteractionTest,org.sleepwell.app.NightDialTrackingReviewTest", "-e", "ciReview", "true", "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", timeout=420, check=False)
+result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app.NightDialReviewTest,org.sleepwell.app.NightDialInteractionTest,org.sleepwell.app.NightDialTrackingReviewTest,org.sleepwell.app.NightDialReportFlowTest", "-e", "ciReview", "true", "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", timeout=540, check=False)
 (output / "instrumentation.txt").write_text(result.stdout + result.stderr, encoding="utf-8")
 print(result.stdout)
 if result.stderr:
     print(result.stderr)
 command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", str(output), check=False)
-required = ["tonight", "dial-help", "alarms", "settings", "sounds", "time", "time-invalid", "time-restored", "dial-under-finger", "dial-draft", "dial-review-restored", "dial-saved", "dial-conflict", "settle-in", "settle-timer", "settle-microphone-consent", "settle-consent-restored", "settle-sensors", "dial-linked-review", "dial-linked-alarm", "tracking-active", "tracking-end-confirmation", "tracking-end-restored", "tracking-paused", "tracking-paused-restored", "tracking-resumed"]
+required = ["tonight", "dial-help", "alarms", "settings", "sounds", "time", "time-invalid", "time-restored", "dial-under-finger", "dial-draft", "dial-review-restored", "dial-saved", "dial-conflict", "settle-in", "settle-timer", "settle-microphone-consent", "settle-consent-restored", "settle-sensors", "dial-linked-review", "dial-linked-alarm", "tracking-active", "tracking-end-confirmation", "tracking-end-restored", "tracking-paused", "tracking-paused-restored", "tracking-resumed", "report-night", "report-signal-scrub", "report-signal-restored", "report-history-imported", "report-dirty-back", "report-dirty-restored", "report-restore-review", "report-restore-review-restored", "report-restore-draft", "report-restored-night", "report-trends-week", "report-trends-month", "report-trends-year", "report-trends-empty", "report-trends-restored"]
 missing = [name for name in required if not (output / f"night-dial-{name}.png").is_file()]
-passed = result.returncode == 0 and "OK (3 tests)" in result.stdout and not missing
-(output / "review.json").write_text(json.dumps({"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "scope": "roots, picker validation, real dial gestures/save/cancel/conflict/recreation, silent Settle in and consent cancel; synthetic PCM tracking, pause/recreate/resume/end", "full_acceptance": False, "passed": passed, "missing_frames": missing, "output": "No hardware capture, playback or OS alarms; tracking uses injected PCM; host audio disabled"}, indent=2), encoding="utf-8")
+passed = result.returncode == 0 and "OK (5 tests)" in result.stdout and not missing
+(output / "review.json").write_text(json.dumps({"commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(), "scope": "roots, picker validation, real dial gestures/save/cancel/conflict/recreation, silent Settle in and consent cancel; synthetic PCM tracking, pause/recreate/resume/end; recorded-night navigation, signal scrub/recreation, source filters, dirty/restore drafts and canonical week/month/year durations", "unit_results": unit_totals, "full_acceptance": False, "passed": passed, "missing_frames": missing, "output": "No hardware capture, playback or OS alarms; tracking uses injected PCM; host audio disabled"}, indent=2), encoding="utf-8")
 if not passed:
     raise SystemExit("Native design review failed; inspect instrumentation and captured frames.")

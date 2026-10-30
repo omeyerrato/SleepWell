@@ -19,11 +19,11 @@ final class RecordRibbon extends View {
         boolean measured(){return !movement.isEmpty();}
         private float at(long time,RectF area,long start,long end){return area.left+area.width()*(time-start)/(float)Math.max(1,end-start);}
         void draw(Canvas canvas,RectF area,RecordEntry projected,long start,long end,Paint paint,float density){if(projected==null||end<=start)return;float radius=3*density;paint.setStyle(Paint.Style.FILL);for(RecordIntervals.Span span:projected.coverage()){
-            float left=at(span.start,area,start,end),right=at(span.end,area,start,end);paint.setColor(projected.manual()?0xffd0baf6:0xffd1bcf7);canvas.drawRoundRect(left,area.top,right,area.bottom,radius,radius,paint);
+            float left=at(span.start,area,start,end),right=at(span.end,area,start,end);paint.setColor(projected.manual()?NightDialTokens.OUTLINE:0xff514839);canvas.drawRoundRect(left,area.top,right,area.bottom,radius,radius,paint);
             int save=canvas.save();clip.reset();clip.addRoundRect(left,area.top,right,area.bottom,radius,radius,Path.Direction.CW);canvas.clipPath(clip);
             // Discrete measured bins make the coverage ribbon readable at a glance. The
             // colors describe movement only; they are not fabricated sleep-stage bands.
-            for(ChartSeries.Bar measured:movement){long from=Math.max(span.start,measured.from),to=Math.min(span.end,measured.to);if(to<=from)continue;float a=at(from,area,start,end),b=at(to,area,start,end);paint.setColor(((18+(int)(108*(measured.value/high)))<<24)|0x007542d2);canvas.drawRect(a,area.top,b,area.bottom,paint);}
+            for(ChartSeries.Bar measured:movement){long from=Math.max(span.start,measured.from),to=Math.min(span.end,measured.to);if(to<=from)continue;float a=at(from,area,start,end),b=at(to,area,start,end);paint.setColor(((18+(int)(108*(measured.value/high)))<<24)|0x00f2bf6d);canvas.drawRect(a,area.top,b,area.bottom,paint);}
             canvas.restoreToCount(save);
         }}
     }
