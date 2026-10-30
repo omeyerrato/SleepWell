@@ -11,7 +11,7 @@
 
 GitHub's release asset metadata returned both assets in uploaded state with these byte counts/digests. The initial create timed out while uploading the APK and left a draft containing the checksum only; a retry uploaded the APK to that same draft. `gh release edit ... --draft=false` then exited successfully with the release URL above. No duplicate release was created. This is upload/digest evidence, not an independent signature audit or device installation.
 
-The later Report fixture-state increment `ed6ccc14733c8357dc43b939149bc5bdb1b3fbe7` changes only instrumentation and its capture manifest, following documentation-only commits. Its `app/src/main` Git tree is byte-identical to the frozen package source: `7763931143d8d8ac4400a9afa7443951a459fa52`. Its new captures are pending and cannot be accepted from that identity alone.
+The later Report fixture-state increment `ed6ccc14733c8357dc43b939149bc5bdb1b3fbe7` changes only instrumentation and its capture manifest, following documentation-only commits. Its `app/src/main` Git tree is byte-identical to the frozen package source: `7763931143d8d8ac4400a9afa7443951a459fa52`. Its later20-original run41051564032 passed89.758s; [separate source-bound evidence](../2026-10-30-reference-resume/report-variants-41051564032/README.md) records the inspected layouts and safe actions. Source identity alone is not acceptance.
 
 The phone was untouched: no ADB discovery, install, app launch or real alarm/audio/vibration/torch output. Last verified historical phone installation is0.1.4 /08d3911e; this release is not an installation claim.
 

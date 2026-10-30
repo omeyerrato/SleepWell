@@ -31,7 +31,7 @@ Checked items record implemented source or publication, with historical evidence
 ## Still unfinished
 
 - [ ] Match all36 references, including remaining charts, menus and visual states, with current Android/action/persistence acceptance.
-- [x] Reaccept the changed Report/calendar/edit flow on the silent emulator: current charts, calendar, trim/cancel/recreate and Save/reopen pass at `70bca1ec` / run41017261604. [Bounded evidence](verification/2026-10-30-reference-resume/README.md); remaining all36/data variants stay open.
+- [x] Reaccept the changed Report/calendar/edit flow on the silent emulator: current charts, calendar, trim/cancel/recreate and Save/reopen plus private inline audio/provider-stage variants pass at `ed6ccc14` / run41051564032 (89.758s,20 originals). [Bounded evidence](verification/2026-10-30-reference-resume/README.md); remaining all36/data variants stay open.
 - [ ] Remaining interaction bugs and security review after usability work.
 - [ ] Reliable additional sound recognition, including laughter and instruments.
 - [ ] Phone sleep-stage/REM and breathing/apnea implementation with suitable inputs and models.

@@ -25,7 +25,7 @@ Supporting Timer/Fade use custom checked rows and full Use/Cancel actions. Sound
 
 These two journeys do not measure recognition accuracy, real snoring/speech classification, recorded-night capture, real audio output, notification/background playback, cue delivery, retention expiry, external providers or hardware. The Sound Events banner explicitly labels synthetic WAVs/fake playback; it is fixture copy, not normal production page copy. Snoring cues (board 07 right) are not included in these two selected methods.
 
-**Inline Report gap remains open:** these Event-library waveforms and fake Play actions are in SoundEventsActivity. They do not provide a populated inline RecordReport audio-row capture or an imported provider-stage strip inside Report. Existing Report fixture captures without saved clips/provider stages are not upgraded to populated-state evidence by this archive. No all-36-reference acceptance is claimed.
+**This audio cohort does not cover inline Report:** these Event-library waveforms and fake Play actions are in SoundEventsActivity. They do not provide a populated inline RecordReport audio-row capture or an imported provider-stage strip inside Report. Existing Report fixture captures without saved clips/provider stages are not upgraded to populated-state evidence by this archive. No all-36-reference acceptance is claimed.
 
 ## Individual original inventory
 
@@ -61,3 +61,5 @@ These two journeys do not measure recognition accuracy, real snoring/speech clas
 ## Original bytes
 
 Each run folder contains its unchanged original PNGs, native method transcript, environment and focused summary. The local attributes preserve copied text bytes. Original sizes and SHA-256 are pinned separately for [mixer](mixer-41035861764/original-sha256.json) and [events](events-41034030180/original-sha256.json). No screenshots were painted, transformed or replaced. Earlier failed runs, Settings evidence and the separate first-frame SystemUI limitation remain outside this archive and are not relabelled as passing.
+
+Later Report-specific evidence: [run41051564032](../2026-10-30-reference-resume/report-variants-41051564032/README.md) captures populated inline audio through private synthetic WAV/fake playback and imported-provider stages. It closes those two native fixture-state capture gaps separately; it does not turn this Event-library cohort into Report evidence or establish real audio/stage accuracy.
