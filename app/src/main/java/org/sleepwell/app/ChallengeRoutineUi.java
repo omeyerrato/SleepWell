@@ -17,6 +17,7 @@ final class ChallengeRoutineUi {
         Design.text(body,"Challenges",30,700,Design.INK);Design.space(body,4);
         Design.text(body,"Your routine",16,500,Design.MUTED);Design.space(body,12);
     }
+    static void summary(LinearLayout body,ChallengeRoutine routine){int count=routine.tasks.size();String detail=routine.randomCount>0?routine.randomCount+" tasks chosen from "+count+" configured tasks":count+(count==1?" task":" tasks")+" · completes in this order";Design.text(body,detail,13,400,NightDialTokens.SECONDARY);Design.space(body,16);}
     static void task(LinearLayout body,String type,String detail,boolean allowed,Runnable action){
         android.content.Context context=body.getContext();LinearLayout row=Design.row(context);row.setMinimumHeight(Design.dp(context,64));
         FrameLayout well=new FrameLayout(context);well.setBackground(Design.shape(context,Design.SOFT,24));well.addView(new Design.Icon(context,ChallengeActionRows.icon(type),allowed?Design.BROWN:Design.MUTED),new FrameLayout.LayoutParams(Design.dp(context,28),Design.dp(context,28),Gravity.CENTER));

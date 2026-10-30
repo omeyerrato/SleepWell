@@ -67,3 +67,13 @@ The Report dock now opens `RecordReportActivity` with `reportRoot=true`; its exi
 `NightDialReportFlowTest` uses private UUID databases and synthetic dated records. It verifies read-only navigation, source filters, selected signal/time restoration, dirty draft prompt restoration, annotation-preserving restore, and independently computed Week/Month/Year summaries. It starts no hardware capture, playback or OS alarm. Passing evidence must be recorded at its actual source revision before these flows are described as verified.
 
 Report adapters have passing narrow native evidence at [fca53502](verification/fca53502/README.md): five total native methods, all 42 frames, and 59 focused unit methods. Optional annotation-reset and remaining source/date/import/device branches still require review on an integrated revision. The final evidence commit does not change the reviewed application-source tree.
+
+## Alarm presentation adapters under review
+
+The alarm-list composition keeps the existing enable/skip/edit owners. It orders enabled alarms by their actual admitted next occurrence, including pending nap deadlines, then alarms needing review and disabled alarms. Each card adds the saved routine and a separate settings target. Calendar preview uses the existing admitted receipt; it does not request calendar reads or change scheduling. Preserve newer MainActivity feature callbacks when integrating this isolated adapter.
+
+The ordinary AlarmEditorActivity now uses the same dirty-draft exit protection as the Settings entry. Its owned discard sheet and name draft survive recreation. SleepPicker.name is now a StateDialog that retains typed name/selection/error; opening or cancelling still writes nothing. Repeat rule is directly reachable beside the weekday controls and returns through the existing identity-checked child result. Interval mode retains the feature owner's disabled weekdays.
+
+AlarmRampChart draws the exact requested AlarmWakePolicy envelope over time after the alarm starts, including sound delay. It is not measured speaker output; silent mode draws no sound curve. AlarmSnoozePreview derives the first configured durations from SnoozePolicy and the total budget. Neither view starts output, changes an occurrence or writes a setting. Challenge catalog counts derive from the same filtered rows; ordinal routine rows and their drag/Move up/down operations retain the existing bounded draft owner.
+
+These changes remain under native review. They do not establish acceptance of alarm deletion/duplication, every schedule/source/input/backup/practice branch, all 28 challenge surfaces or device/accessibility/motion variants. Native evidence must be recorded at the final reviewed revision.
