@@ -29,7 +29,7 @@ final class NightDialSoundCard extends FrameLayout {
     private final Runnable refresh=new Runnable(){public void run(){if(!isAttachedToWindow()||getWindowVisibility()!=VISIBLE)return;refreshTransport();handler.postDelayed(this,1000);}};
     NightDialSoundCard(Activity activity,Runnable open){
         super(activity);SoundMix saved;try{saved=SoundPreferences.load(activity);}catch(RuntimeException unavailable){saved=new SoundMix();}mix=saved;
-        setBackground(Design.shape(activity,NightDialTokens.SURFACE,16));setClipToOutline(true);setMinimumHeight(Design.dp(activity,110));
+        setBackground(Design.shape(activity,NightDialTokens.SURFACE,16));setForeground(Design.touch(activity,Color.TRANSPARENT,16));setClipToOutline(true);setMinimumHeight(Design.dp(activity,110));
         image=new ImageView(activity);image.setScaleType(ImageView.ScaleType.CENTER_CROP);image.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);addView(image,new LayoutParams(-1,-1));
         View shade=new View(activity);shade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,new int[]{0x11000000,0xcc000000}));addView(shade,new LayoutParams(-1,-1));
         LinearLayout copy=Design.col(activity);copy.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);Design.text(copy,mix.primary.equals("Rain")?"Rain on glass":mix.label(),16,600,NightDialTokens.TEXT);Design.space(copy,4);detail=Design.text(copy,"Sleep sounds · "+mix.timerMinutes+" min",12,400,NightDialTokens.TEXT);

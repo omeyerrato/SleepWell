@@ -41,10 +41,10 @@ final class Design {
     static android.graphics.drawable.Drawable touch(Context c,int color,int radius){
         return new NightDialSurface(c,color,radius);
     }
-    static android.graphics.drawable.Drawable outline(Context c,int color,int line,int radius){GradientDrawable border=shape(c,Color.TRANSPARENT,radius);border.setStroke(dp(c,1),line);return new LayerDrawable(new Drawable[]{touch(c,color,radius),border});}
+    static android.graphics.drawable.Drawable outline(Context c,int color,int line,int radius){GradientDrawable border=shape(c,Color.TRANSPARENT,radius);border.setStroke(dp(c,1),line==LINE?NightDialTokens.OUTLINE:line);return new LayerDrawable(new Drawable[]{touch(c,color,radius),border});}
     static TextView text(Context c,String value,int sp,int weight,int color){TextView t=new TextView(c);t.setText(value);t.setTextSize(sp*Appearance.scale(c));t.setTypeface(font(c,weight));t.setTextColor(Appearance.color(c,color));t.setIncludeFontPadding(false);t.setFontFeatureSettings("tnum");return t;}
     static TextView text(LinearLayout p,String value,int sp,int weight,int color){TextView t=text(p.getContext(),value,sp,weight,color);p.addView(t,new LinearLayout.LayoutParams(-1,-2));return t;}
-    static String clock(Context c,int minute){return java.time.LocalTime.of(Math.floorMod(minute,1440)/60,Math.floorMod(minute,1440)%60).format(java.time.format.DateTimeFormatter.ofPattern(android.text.format.DateFormat.is24HourFormat(c)?"HH:mm":"h:mm a",java.util.Locale.getDefault())).toUpperCase(java.util.Locale.getDefault());}
+    static String clock(Context c,int minute){return java.time.LocalTime.of(Math.floorMod(minute,1440)/60,Math.floorMod(minute,1440)%60).format(java.time.format.DateTimeFormatter.ofPattern(android.text.format.DateFormat.is24HourFormat(c)?"HH:mm":"h:mm a",java.util.Locale.getDefault()));}
     static CharSequence timeText(String value){android.text.SpannableString span=new android.text.SpannableString(value);int suffix=value.lastIndexOf(' ');if(suffix>=0)span.setSpan(new android.text.style.RelativeSizeSpan(.55f),suffix,value.length(),0);return span;}
     static void pad(View v,int h,int vertical){v.setPadding(dp(v.getContext(),h),dp(v.getContext(),vertical),dp(v.getContext(),h),dp(v.getContext(),vertical));}
     static LinearLayout page(Activity a,boolean night,Integer destination,java.util.function.IntConsumer navigate){

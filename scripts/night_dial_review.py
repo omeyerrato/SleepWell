@@ -64,6 +64,9 @@ else:
     raise SystemExit("The native application never established a window.")
 result = command("shell", "am", "instrument", "-w", "-r", "-e", "class", "org.sleepwell.app.NightDialReviewTest", "-e", "ciReview", "true", "org.sleepwell.app.test/androidx.test.runner.AndroidJUnitRunner", timeout=240, check=False)
 (output / "instrumentation.txt").write_text(result.stdout + result.stderr, encoding="utf-8")
+print(result.stdout)
+if result.stderr:
+    print(result.stderr)
 command("pull", "/sdcard/Android/data/org.sleepwell.app/files/verification/.", str(output), check=False)
 required = ["tonight", "dial-help", "alarms", "settings", "sounds", "time", "time-invalid", "time-restored"]
 missing = [name for name in required if not (output / f"night-dial-{name}.png").is_file()]

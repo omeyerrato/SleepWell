@@ -42,7 +42,7 @@ final class NightDialSurface extends Drawable {
         if(!enabled&&Color.alpha(base)>0)color=NightDialTokens.RAISED;
         paint.setColor(color);paint.setAlpha(Math.round(Color.alpha(color)*alpha/255f));canvas.drawRoundRect(bounds,radius,radius,paint);
         if(emphasis>0){paint.setColor(NightDialTokens.foreground(base)==NightDialTokens.ACTION_INK?Color.BLACK:Color.WHITE);paint.setAlpha(Math.round(24*emphasis*alpha/255f));canvas.drawRoundRect(bounds,radius,radius,paint);}
-        if(focused&&enabled){float stroke=Design.dp(context,2);paint.setStyle(Paint.Style.STROKE);paint.setColor(NightDialTokens.ACCENT);paint.setAlpha(alpha);paint.setStrokeWidth(stroke);bounds.inset(stroke/2,stroke/2);canvas.drawRoundRect(bounds,radius,radius,paint);}
+        if(focused&&enabled){float stroke=Design.dp(context,2);paint.setStyle(Paint.Style.STROKE);paint.setColor(NightDialTokens.foreground(base)==NightDialTokens.ACTION_INK?NightDialTokens.ACTION_INK:NightDialTokens.ACCENT);paint.setAlpha(alpha);paint.setStrokeWidth(stroke);bounds.inset(stroke/2,stroke/2);canvas.drawRoundRect(bounds,radius,radius,paint);}
     }
     @Override public void jumpToCurrentState(){if(animator!=null){animator.cancel();animator=null;}emphasis=enabled&&pressed?1:0;invalidateSelf();}
     @Override public boolean setVisible(boolean visible,boolean restart){boolean changed=super.setVisible(visible,restart);if(!visible)jumpToCurrentState();return changed;}

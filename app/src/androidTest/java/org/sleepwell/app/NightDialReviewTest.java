@@ -21,8 +21,8 @@ public final class NightDialReviewTest {
     private final UiDevice device=UiDevice.getInstance(instrumentation);
     private MainActivity main;
     private void capture(String name)throws Exception {
-        device.waitForIdle();CountDownLatch frame=new CountDownLatch(1);boolean[] owner={false};
-        instrumentation.runOnMainSync(()->{for(View view:android.view.inspector.WindowInspector.getGlobalWindowViews())if(view.hasWindowFocus()&&view.isAttachedToWindow()&&view.isHardwareAccelerated()){owner[0]=true;view.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);view.invalidate();break;}});
+        device.waitForIdle();CountDownLatch frame=new CountDownLatch(1);boolean[] owner={false};long deadline=SystemClock.elapsedRealtime()+5000;
+        while(!owner[0]&&SystemClock.elapsedRealtime()<deadline){instrumentation.runOnMainSync(()->{for(View view:android.view.inspector.WindowInspector.getGlobalWindowViews())if(view.hasWindowFocus()&&view.isAttachedToWindow()&&view.isLaidOut()&&view.isHardwareAccelerated()){owner[0]=true;view.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);view.invalidate();break;}});if(!owner[0])SystemClock.sleep(50);}
         assertTrue("A focused native window must own the capture",owner[0]);assertTrue("A real frame must commit",frame.await(5,TimeUnit.SECONDS));
         File folder=new File(context.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,"night-dial-"+name+".png")));
     }
@@ -49,7 +49,7 @@ public final class NightDialReviewTest {
             PlanActivity editor=null;for(Activity activity:activities)if(activity instanceof PlanActivity&&!activity.isDestroyed())editor=(PlanActivity)activity;assertNotNull(editor);PlanActivity prior=editor;monitor=instrumentation.addMonitor(PlanActivity.class.getName(),null,false);try{instrumentation.runOnMainSync(prior::recreate);assertNotNull(monitor.waitForActivityWithTimeout(5000));}finally{instrumentation.removeMonitor(monitor);}assertTrue(device.wait(Until.hasObject(By.desc("Hour")),5000));assertEquals("09",device.findObject(By.desc("Hour")).getText());assertEquals("15",device.findObject(By.desc("Minute")).getText());capture("time-restored");click("Cancel");device.pressBack();
             assertEquals(savedPlan,plan.getAll());assertFalse(TrackingService.running);assertFalse(AlarmService.active);assertNull(SleepSoundService.snapshot());
             try(Store store=new Store(context,database)){assertFalse(store.alarm(1).enabled);assertEquals(0,store.backup().getJSONArray("sessions").length());}
-        } catch(Exception|AssertionError failure){try{capture("failure");File folder=new File(context.getExternalFilesDir(null),"verification");device.dumpWindowHierarchy(new File(folder,"night-dial-failure.xml"));}catch(Exception ignored){}throw failure;}
+        } catch(Exception|AssertionError failure){try{File folder=new File(context.getExternalFilesDir(null),"verification");folder.mkdirs();device.takeScreenshot(new File(folder,"night-dial-failure.png"));device.dumpWindowHierarchy(new File(folder,"night-dial-failure.xml"));}catch(Exception ignored){}throw failure;}
         finally {
             instrumentation.runOnMainSync(()->activities.forEach(activity->{if(!activity.isDestroyed())activity.finish();}));instrumentation.waitForIdleSync();long end=SystemClock.elapsedRealtime()+5000;while(activities.stream().anyMatch(activity->!activity.isDestroyed())&&SystemClock.elapsedRealtime()<end)SystemClock.sleep(50);
             application.unregisterActivityLifecycleCallbacks(lifecycle);Records.factory=records;SleepPlans.factory=plans;TonightScreen.clock=clock;TimeZone.setDefault(zone);

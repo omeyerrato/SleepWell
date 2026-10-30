@@ -10,8 +10,9 @@ The full 43-flow design contract remains the target. Shared styling does not est
 - 24-hour planned interval dial and a source-specific Rain sound card added to Tonight.
 - Existing haptic authorization and quiet-context guards remain in `InteractionFeedback`.
 - Baseline duplicate TrackingActivity focus override repaired so compilation can proceed.
-- Local Java compilation passed. Unit run: 1,063 tests, 11 failures in AlarmRequestTest, QrScanSessionTest, SonarNightTest, SonarSharedNightTest, TrackingDelayEntryTest and TrackingDelayTest. Baseline comparison is pending; do not claim a green unit suite.
-- Fresh APK/test-APK build and native GitHub review are pending.
+- Local Java compilation passed. Unit run: 1,063 tests, 11 failures in AlarmRequestTest, QrScanSessionTest, SonarNightTest, SonarSharedNightTest, TrackingDelayEntryTest and TrackingDelayTest. A separate archive of baseline 669ec8f6 reproduced all 11 named failures in 44 tests; the suite remains non-green.
+- APK and test-APK builds passed locally and in GitHub at 37155aed. The first native review produced four real frames and failed on a focus race in the capture helper; see verification/README.md. Corrections and a new review are pending.
+- Three focused NightDialContrastTest methods passed for text/action/control contrast pairs.
 - Local AVD creation succeeded; boot exited because the host lacks the emulator hypervisor driver. No physical-device installation was attempted.
 
 ## Flow matrix
@@ -61,6 +62,8 @@ The full 43-flow design contract remains the target. Shared styling does not est
 | 41 | Tags, confirmation and custom values | Native design and full interaction review pending |
 | 42 | Physical challenge and permission branches | Native design and full interaction review pending |
 | 43 | Empty, search and loading states | Native design and full interaction review pending |
+
+- Draft PR: https://github.com/omeyerrato/SleepWell/pull/7
 
 ## Next work
 
