@@ -88,10 +88,20 @@ final class SleepPicker {
         // All app-owned transient choices share a bottom origin, a readable raised surface,
         // and native dimming. No owner listeners are replaced, so draft restoration survives.
         Window owned=dialog.getWindow();owned.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS|WindowManager.LayoutParams.FLAG_DIM_BEHIND);owned.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS|WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);owned.setDimAmount(.6f);owned.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL);NightDialMotion.configureSheet(dialog,a);
-        try{dialog.show();owned.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));int width=Math.min(a.getResources().getDisplayMetrics().widthPixels-Design.dp(a,24),Design.dp(a,480));int available=a.getWindow().getDecorView().getHeight();if(available<=0)available=a.getResources().getDisplayMetrics().heightPixels;owned.setLayout(width,Math.min(Design.dp(a,heightDp*Math.max(1,Design.fontScale(a))),Math.max(Design.dp(a,160),available-Design.dp(a,64))));WindowManager.LayoutParams position=owned.getAttributes();position.y=Design.dp(a,12);owned.setAttributes(position);owned.setNavigationBarContrastEnforced(false);}catch(RuntimeException|Error failure){if(dialog.isShowing())dialog.dismiss();throw failure;}
+        try{
+            int width=Math.min(a.getResources().getDisplayMetrics().widthPixels-Design.dp(a,24),Design.dp(a,480));int available=a.getWindow().getDecorView().getHeight();if(available<=0)available=a.getResources().getDisplayMetrics().heightPixels;int cap=Math.min(Design.dp(a,heightDp*Math.max(1,Design.fontScale(a))),Math.max(Design.dp(a,160),available-Design.dp(a,64)));
+            // The height argument is a maximum, not a blank reservation below a short panel.
+            // Keep the original content/scroll references and all owner callbacks intact.
+            ViewGroup content=dialog.findViewById(android.R.id.content);if(content!=null&&content.getChildCount()==1&&!(content.getChildAt(0) instanceof BoundedPanel)){View child=content.getChildAt(0);content.removeView(child);BoundedPanel panel=new BoundedPanel(a,cap);panel.addView(child,new FrameLayout.LayoutParams(-1,-2));dialog.setContentView(panel);}else if(content!=null&&content.getChildCount()==1&&content.getChildAt(0) instanceof BoundedPanel panel)panel.cap=cap;
+            dialog.show();owned.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));owned.setLayout(width,WindowManager.LayoutParams.WRAP_CONTENT);WindowManager.LayoutParams position=owned.getAttributes();position.y=Design.dp(a,12);owned.setAttributes(position);owned.setNavigationBarContrastEnforced(false);
+        }catch(RuntimeException|Error failure){if(dialog.isShowing())dialog.dismiss();throw failure;}
         Window window=owned;
         View decor=window.getDecorView();Runnable bars=()->{if(dialog.isShowing()&&!a.isDestroyed()&&decor.isAttachedToWindow()){androidx.core.view.WindowInsetsControllerCompat controller=androidx.core.view.WindowCompat.getInsetsController(window,decor);controller.setAppearanceLightStatusBars(!dark);controller.setAppearanceLightNavigationBars(!dark);}};
         bars.run();decor.getViewTreeObserver().addOnWindowFocusChangeListener(focused->{if(focused)decor.post(bars);});
+    }
+    private static final class BoundedPanel extends FrameLayout {
+        int cap;BoundedPanel(Context context,int cap){super(context);this.cap=cap;}
+        @Override protected void onMeasure(int width,int height){int mode=MeasureSpec.getMode(height),limit=mode==MeasureSpec.UNSPECIFIED?cap:Math.min(cap,MeasureSpec.getSize(height));super.onMeasure(width,MeasureSpec.makeMeasureSpec(limit,MeasureSpec.AT_MOST));}
     }
     private static final class Backdrop implements View.OnAttachStateChangeListener,View.OnLayoutChangeListener {
         final View owner,dialog;final ColorDrawable shade=new ColorDrawable(NightDialTokens.SCRIM);boolean closed,attached;

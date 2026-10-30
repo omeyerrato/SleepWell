@@ -1,5 +1,7 @@
 # Native review evidence
 
+Alarm management follow-up: [c210599c](c210599c-finding/README.md) passed nine native methods, 78 frames and 80 focused unit methods. Its native screenshots exposed a trailing gap beneath short sheets. The shared height-cap correction and additional existing scheduling-failure/one-time regression journeys need their own final review. The latest delivered preview remains 37de8841 below.
+
 ## Latest reviewed preview: 37de8841
 
 The [native review](https://github.com/omeyerrato/SleepWell/actions/runs/41083871279), job 124159782214, artifact 12989899796, passed all seven native methods in 193.422 seconds. All 64 required PNGs exist; 80 focused unit methods passed with zero failures/errors. [Raw result](37de8841/review.json), [instrumentation](37de8841/instrumentation.txt), [exact scope and limits](37de8841/README.md). The [independent APK workflow](https://github.com/omeyerrato/SleepWell/actions/runs/41083871221) also passed; its default broad unit/lint step is skipped. This is not a global-suite-green claim.
