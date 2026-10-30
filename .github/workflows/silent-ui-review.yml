@@ -64,6 +64,7 @@ on:
           - sleep-mixer-reference
           - sensing-travel
           - travel-ui
+          - travel-plan-reference
           - travel-cue-cleanup
           - sonar-night
           - sound-categories

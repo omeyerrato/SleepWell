@@ -76,6 +76,7 @@ parser.add_argument("--scope", choices=(
     'sleep-mixer-reference',
     'sensing-travel',
     'travel-ui',
+    'travel-plan-reference',
     'travel-cue-cleanup',
     'sonar-night',
     'sound-categories',
@@ -512,6 +513,8 @@ elif args.scope == "sensing-travel":
     tests = list(SENSING_TESTS)
 elif args.scope == "travel-ui":
     tests = list(TRAVEL_UI_TESTS)
+elif args.scope == "travel-plan-reference":
+    tests = ["TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs"]
 elif args.scope == "travel-cue-cleanup":
     tests = ["TravelCueFlowTest#windowReviewCancelSaveRecreateAndReopenNeverArmAnything"]
 elif args.scope == "sonar-night":
@@ -659,6 +662,7 @@ if args.scope != "full":
         "math-owner": ['routine-legacy.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png'],
         "challenge-routine": ROUTINE_FRAMES,
         "travel-ui": TRAVEL_UI_FRAMES,
+        "travel-plan-reference": [name for name in TRAVEL_UI_FRAMES if not name.startswith("travel-cues-")],
         "travel-cue-cleanup": TRAVEL_CUE_CLEANUP_FRAMES,
         "recorded-analysis": RECORDED_ANALYSIS_FRAMES,
         "organized-settings": ORGANIZED_AUTOMATIC_FRAMES,
