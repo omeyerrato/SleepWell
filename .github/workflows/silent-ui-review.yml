@@ -47,6 +47,7 @@ on:
           - contactless-status
           - room-bedtime-live
           - room-bedtime-repair
+          - remaining-reference-current
           - motion-reference
           - manual-export-receipt
           - bedtime-navigation

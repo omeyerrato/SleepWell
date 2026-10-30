@@ -59,6 +59,7 @@ parser.add_argument("--scope", choices=(
     'contactless-status',
     'room-bedtime-live',
     'room-bedtime-repair',
+    'remaining-reference-current',
     'motion-reference',
     'manual-export-receipt',
     'bedtime-navigation',
@@ -462,6 +463,14 @@ elif args.scope == "sensing-reference":
     tests = ["ContactlessSetupFlowTest#explicitRealDspFakePcmQualificationSaveAndReopenNoAutostart", "SonarNightFlowTest#visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight", "SnoreCueSettingsNativeTest#savedSettingsSurviveRecreationAndControlFakeCueBehavior"]
 elif args.scope == "room-bedtime-live":
     tests = ["OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs", "GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen", "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware", "SonarNightFlowTest#visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight"]
+elif args.scope == "remaining-reference-current":
+    tests = [
+        "SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+        "NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+        "TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+        "SnoreCueSettingsNativeTest#savedSettingsSurviveRecreationAndControlFakeCueBehavior",
+    ]
+    metadata["remaining_reference_outputs"] = "emulator only; private fixtures and fake nap scheduling/audio, travel reminders and snoring preview; no real outputs"
 elif args.scope == "room-bedtime-repair":
     tests = ["OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs", "GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen", "MotionConfigurationFlowTest#fakeSamplesSettingsPersistLifecycleAndUnsupportedErrorsWithoutHardware"]
 elif args.scope == "manual-export-receipt":
@@ -605,6 +614,12 @@ if args.scope != "full":
         "bedtime-navigation": ["guard-"+name+".png" for name in ("draft","saved","options-recreated","paused","wind-down","wind-down-options","wind-down-recreated","wind-down-paused")],
         "manual-export-receipt": ["backup-document-"+name+".png" for name in ("chooser","selection-cancelled","writing","writing-recreated","cancelled","csv-done","json-done","receipt-warning")],
         "motion-reference": ["motion-settings-"+name+".png" for name in ("ready","changed","recreated","reopened","conflict","unavailable","error")],
+        "remaining-reference-current": (
+            ["rhythm-"+name+".png" for name in ("seven-nights","workdays","recreated","reopened","empty")]
+            + ["nap-"+name+".png" for name in ("default","preset","tracking-required","sound","pending","recreated","reopened","cancelled")]
+            + ["travel-"+name+".png" for name in ("plan","zones","date","reminders","reopened","error","disabled","schedules","reminders-recreated","reminders-reopened","disabled-main")]
+            + ["snore-settings-"+name+".png" for name in ("default","preview","selected","recreated","reopened")]
+        ),
         "room-bedtime-repair": [name for name in ROOM_BEDTIME_LIVE_FRAMES if not name.startswith("sonar-night-")],
         "room-bedtime-live": ROOM_BEDTIME_LIVE_FRAMES,
         "readiness-recovery": ["protection-"+name+".png" for name in ("alarms", "editor", "off", "disclosure", "on", "recreated", "global", "power-only", "readiness", "readiness-rationale", "readiness-rationale-cancel", "readiness-settings-recovery", "readiness-returned")],

@@ -481,7 +481,7 @@ public final class OrganizedSettingsJourneyTest {
             recreate(); checked("Only when charging", true); capture("recurring-conditions", "Done", false); click("Done"); selected("After settling down", true);
             checked("Nightly tracking", false); click("Start conditions"); checked("Only when charging", true); back(); finish(); assertTrue(recurring.getAll().isEmpty());
 
-            launch(SleepSoundsActivity.class); click("More sound settings"); click("Sources & playlists"); require("Sources & playlists");
+            launch(SleepSoundsActivity.class); desc("Sound settings"); click("Sources & playlists"); require("Sources & playlists");
             capture("sounds-sources", "Back to sound settings", false); back(); require("Sound settings"); click("Playback & tracking");
             capture("sounds-playback", "Back to sound settings", false); back(); require("Sound settings"); back(); require("Sleep sounds");
             assertTrue("Navigation did not save a source", mix.getAll().isEmpty());

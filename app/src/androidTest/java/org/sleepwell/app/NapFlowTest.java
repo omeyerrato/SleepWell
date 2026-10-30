@@ -51,8 +51,8 @@ public final class NapFlowTest {
  private void captureFailure(Throwable failure){try{File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());java.nio.file.Files.write(new File(folder,"nap-original-failure.txt").toPath(),("Step: "+step+"\n"+failure).getBytes(java.nio.charset.StandardCharsets.UTF_8));ui.takeScreenshot(new File(folder,"nap-original-failure.png"));ui.dumpWindowHierarchy(new File(folder,"nap-original-failure.xml"));}catch(Exception|AssertionError diagnostic){failure.addSuppressed(diagnostic);}}
  @Test public void presetsToneQuietPreviewStartRecreateReopenAndCancelPersist()throws Exception{try(Fixture f=new Fixture()){try{launch(0);assertEquals(0,f.schedules);assertEquals(0,f.opens);
  // The compact entry points must navigate to their real settings without starting a nap.
- desc("Configure power nap");text("Minimum-rest mode");desc("Back");text("Nap");
- desc("Custom timer");text("Timer duration");click("Cancel");text("Nap");assertEquals(0,f.schedules);assertEquals(0,f.opens);
+ desc("Nap options");text("Nap options");click("Power nap");text("Minimum-rest mode");desc("Back");text("Nap");
+ desc("Nap options");text("Nap options");click("Custom timer");text("Timer duration");click("Cancel");text("Nap");assertEquals(0,f.schedules);assertEquals(0,f.opens);
  capture("default");
  desc("30 minute nap");
  capture("preset");
