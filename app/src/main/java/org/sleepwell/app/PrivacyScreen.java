@@ -18,7 +18,7 @@ final class PrivacyScreen {
         final BackupJob backup;final TextView backupStatus;final PrivacyStorageSummary summary;private BackupExportReceipt.Read receipt;private BackupJob.State shown;private boolean attached;private Dialog options;
         Binding(Activity activity,LinearLayout body,Actions actions){
             this.activity=activity;this.body=body;this.actions=actions;Records.Factory records=Records.factory;backup=BackupJobs.get(activity,records);
-            LinearLayout navigation=Design.row(activity);navigation.addView(Design.iconButton(activity,"back","Back",actions::back),new LinearLayout.LayoutParams(Design.dp(activity,48),Design.dp(activity,48)));navigation.addView(new View(activity),new LinearLayout.LayoutParams(0,1,1));navigation.addView(Design.iconButton(activity,"more","Privacy options",this::options),new LinearLayout.LayoutParams(Design.dp(activity,48),Design.dp(activity,48)));body.addView(navigation);
+            LinearLayout navigation=Design.row(activity);navigation.addView(Design.iconButton(activity,"back","Back",actions::back),new LinearLayout.LayoutParams(Design.dp(activity,48),Design.dp(activity,48)));navigation.addView(new View(activity),new LinearLayout.LayoutParams(0,1,1));RecordUi.menuAction(navigation,"Privacy options",this::options,false);body.addView(navigation);
             Design.space(body,10);Design.text(body,"Data & privacy",30,700,Design.INK);Design.space(body,6);Design.text(body,"Your sleep data stays on this phone.",14,400,Design.MUTED);Design.space(body,18);
             summary=new PrivacyStorageSummary(body,records,BackupJobs.receipts(activity,records),read->{receipt=read;showBackupStatus();});Design.space(body,6);
             row(body,"file","Audio retention","Automatically remove older recordings.",retentionLabel(activity),actions::retention);Design.line(body);
@@ -41,7 +41,7 @@ final class PrivacyScreen {
             else if(state.phase==BackupJob.Phase.DONE&&state.receiptStatus==BackupJob.ReceiptStatus.PENDING)text=backupStatus(state)+" · saving export date…";
             else if(state.phase!=BackupJob.Phase.IDLE&&!(state.phase==BackupJob.Phase.DONE&&state.kind==BackupJob.Kind.JSON&&state.receiptStatus==BackupJob.ReceiptStatus.SAVED))text=backupStatus(state);
             else if(receipt==null||state.phase==BackupJob.Phase.DONE&&state.receiptStatus==BackupJob.ReceiptStatus.SAVED&&receipt.status==BackupExportReceipt.Status.NOT_RECORDED)text="Last export: Loading…";
-            else text=switch(receipt.status){case NOT_RECORDED->"Last export: No saved export date";case PENDING->"Last export: Saving date…";case UNAVAILABLE->"Last export date unavailable · reopen to retry";case RECORDED->"Last export: "+receipt.format(java.time.ZoneId.systemDefault(),java.util.Locale.getDefault());};
+            else text=switch(receipt.status){case NOT_RECORDED->"Last export: Not recorded";case PENDING->"Last export: Saving date…";case UNAVAILABLE->"Last export date unavailable · reopen to retry";case RECORDED->"Last export: "+receipt.format(java.time.ZoneId.systemDefault(),java.util.Locale.getDefault());};
             backupStatus.setText(text);
         }
         private void options(){
