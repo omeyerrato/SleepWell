@@ -89,7 +89,7 @@ public class AlarmEditorActivity extends Activity {
         int primaryRows=body.getChildCount();
         AlarmEditorUi.item(body,"sun","Smart wake-up",alarm.smartWakeInvalid?"Review settings":alarm.smartWindow==0?"Off":alarm.smartWindow+" min",()->go("smart"));AlarmEditorUi.divider(body);
         AlarmEditorUi.item(body,"tasks","Challenges",alarm.challenges().summary(),()->go("challenge"));AlarmEditorUi.divider(body);
-        AlarmEditorUi.item(body,"sound","Sound",alarm.soundModeInvalid?"Review sound mode":alarm.soundMode.equals(AlarmSoundMode.SINGLE)?toneName(alarm.tone):alarm.soundMode.title(),()->go("sound"));AlarmEditorUi.divider(body);
+        AlarmEditorUi.item(body,"music","Sound",alarm.soundModeInvalid?"Review sound mode":alarm.soundMode.equals(AlarmSoundMode.SINGLE)?toneName(alarm.tone):alarm.soundMode.title(),()->go("sound"));AlarmEditorUi.divider(body);
         AlarmEditorUi.item(body,"alarm","Snooze",alarm.snoozeMinutes+" min",()->go("snooze"));AlarmEditorUi.divider(body);
         for(int n=primaryRows;n<body.getChildCount();n++)if(body.getChildAt(n) instanceof LinearLayout row)row.setMinimumHeight(Design.dp(this,56));
         Design.space(body,8);
@@ -146,7 +146,7 @@ public class AlarmEditorActivity extends Activity {
         Design.header(body,"Edit defaults",this::back);Design.text(body,"For future alarms only",14,400,Design.MUTED);Design.space(body,16);
         Design.item(body,"sun","Smart wake-up",alarm.smartWakeInvalid?"Review settings":alarm.smartWindow==0?"Off":alarm.smartWindow+" min",()->go("smart"));Design.line(body);
         Design.item(body,"tasks","Challenges",alarm.challenges().summary(),()->go("challenge"));Design.line(body);
-        Design.item(body,"sound","Sound",alarm.soundModeInvalid?"Review sound mode":alarm.soundMode.equals(AlarmSoundMode.SINGLE)?toneName(alarm.tone):alarm.soundMode.title(),()->go("sound"));Design.line(body);
+        Design.item(body,"music","Sound",alarm.soundModeInvalid?"Review sound mode":alarm.soundMode.equals(AlarmSoundMode.SINGLE)?toneName(alarm.tone):alarm.soundMode.title(),()->go("sound"));Design.line(body);
         Design.item(body,"alarm","Snooze & backup",alarm.snoozeMinutes+" min",()->go("snooze"));Design.line(body);
         menu(body,"settings","More defaults","Gentle wake-up, Extra loud and buttons",()->go("options"));
         LinearLayout footer=RecordUi.footer(body);if(!saveError.isEmpty()){Design.text(footer,saveError,13,500,0xffa93919);Design.space(footer,8);}Design.button(footer,"Review defaults",true,this::save);

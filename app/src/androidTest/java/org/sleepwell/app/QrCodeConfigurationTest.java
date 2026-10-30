@@ -47,10 +47,10 @@ public class QrCodeConfigurationTest {
  private void ownedTap(String label)throws Exception{View target=reveal(label);android.graphics.Rect bounds=new android.graphics.Rect();i.runOnMainSync(()->{assertTrue(target.isAttachedToWindow()&&target.hasWindowFocus()&&target.isEnabled());full(target,label);bounds.set(screenBounds(target));assertEquals(target.getWidth(),bounds.width());assertEquals(target.getHeight(),bounds.height());if(label.equals("Configure QR code")){catalogOwner=current;catalogScrollY=scroller(ownedWindow()).getScrollY();View search=find(ownedWindow(),"Search task types");assertTrue(search instanceof android.widget.EditText);catalogQuery=((android.widget.EditText)search).getText().toString();}System.out.println("OWNED_ENROLLMENT_ACTION "+label+" screen="+bounds);});assertTrue("Exactly one real coordinate tap "+label,device.click(bounds.centerX(),bounds.centerY()));}
  private void textOnOwner(String text){awaitAction(()->{View root=ownedWindow();return root!=null&&root.hasWindowFocus()&&find(root,text)!=null;},"owned text "+text);}
  private void codeTypes(List<Camera> cameras,Access access)throws Exception{
-  ownedTap("Code type");ownedTap("Choose Code 39");textOnOwner("Code 39");assertNotNull(object("Barcode location name"));
+  ownedTap("Code type");ownedTap("Choose Code 39");textOnOwner("Code 39 · selected barcode format");assertNotNull(object("Barcode location name"));
   ownedTap("Code type");View selected=reveal("Choose Code 39");int[] position={0};i.runOnMainSync(()->{assertTrue(selected.isSelected());position[0]=scroller(ownedWindow()).getScrollY();});
   recreate("Code type");i.runOnMainSync(()->{assertEquals("Actual owned code-type scroll restored",position[0],scroller(ownedWindow()).getScrollY());assertTrue(find(ownedWindow(),"Choose Code 39").isSelected());});capture("types-recreated");
-  ownedTap("Cancel");textOnOwner("Code 39");ownedTap("Code type");ownedTap("Choose QR code");textOnOwner("QR code");assertNotNull(object("QR location name"));assertTrue(cameras.isEmpty());assertEquals("Code-type navigation requests no camera permission",0,access.requests);
+  ownedTap("Cancel");textOnOwner("Code 39 · selected barcode format");ownedTap("Code type");ownedTap("Choose QR code");textOnOwner("QR code");assertNotNull(object("QR location name"));assertTrue(cameras.isEmpty());assertEquals("Code-type navigation requests no camera permission",0,access.requests);
  }
  private void nfcTabs(List<Camera> cameras)throws Exception{
   int cameraCount=cameras.size();String original=tags.preferences.getString(MorningTagSetup.KEY,"");ownedTap("NFC");textOnOwner("Shared by all NFC alarms");
@@ -78,8 +78,8 @@ public class QrCodeConfigurationTest {
  }
  private void nfcBounds(String scene,View root){
   full(find(root,"Back"),"Actual enrollment Back");
-  if(current instanceof AlarmEditorActivity){full(find(root,"Bedside NFC tag"),"Actual NFC task setup route");full(find(root,"Use NFC"),"Unchanged explicit Use NFC action");return;}
-  if(!current.getIntent().getBooleanExtra("nfcSetupOnly",false)){full(find(root,"Code"),"Code tab");full(find(root,"NFC"),"NFC tab");assertTrue(find(root,"NFC").isSelected());}
+  if(current instanceof AlarmEditorActivity){full(find(root,"Bedside NFC tag"),"Actual NFC task setup route");full(find(root,"Add NFC"),"Explicit Add NFC draft action");return;}
+  if(!current.getIntent().getBooleanExtra("nfcSetupOnly",false)){full(find(root,"QR code"),"QR code tab");full(find(root,"NFC"),"NFC tab");assertTrue(find(root,"NFC").isSelected());}
   if(scene.equals("nfc-read-error")){full(find(root,"Retry tag setup"),"Real tag-read retry");full(find(root,"Back to code"),"Error return to retained code draft");return;}
   View save=find(root,"Save bedside tag");full(save,"Fixed explicit shared-tag Save");View read=find(root,scene.equals("nfc-settings-error")?"Open NFC settings":"Read bedside NFC tag");full(read,"Actual explicit NFC access/read action");
   android.graphics.Rect action=new android.graphics.Rect(),footer=new android.graphics.Rect();assertTrue(read.getGlobalVisibleRect(action));assertTrue(save.getGlobalVisibleRect(footer));assertTrue("Read action never overlaps fixed Save",action.bottom<=footer.top);
@@ -87,7 +87,8 @@ public class QrCodeConfigurationTest {
  }
  private UiObject2 object(String desc)throws Exception {UiObject2 v=device.wait(Until.findObject(By.desc(desc)),2000);if(v==null){UiScrollable scroll=new UiScrollable(new UiSelector().scrollable(true));assertTrue(desc,scroll.exists());scroll.scrollIntoView(new UiSelector().description(desc));v=device.wait(Until.findObject(By.desc(desc)),3000);}assertNotNull(desc,v);return v;}
  private void tap(String description)throws Exception{device.waitForIdle();for(int attempt=0;attempt<3;attempt++){try{object(description).click();device.waitForIdle();return;}catch(StaleObjectException stale){if(attempt==2)throw stale;}}}
- private void click(String text)throws Exception{UiObject2 v=device.wait(Until.findObject(By.text(text)),2000);if(v==null){UiScrollable scroll=new UiScrollable(new UiSelector().scrollable(true));assertTrue(text,scroll.exists());scroll.scrollIntoView(new UiSelector().text(text));v=device.wait(Until.findObject(By.text(text)),3000);}assertNotNull(text,v);v.click();device.waitForIdle();}
+ private void click(String text)throws Exception{ownedTap(text);}
+
  private void title(String text){assertTrue(text,device.wait(Until.hasObject(By.text(text)),5000));}
  private void launch(Alarm alarm)throws Exception{Instrumentation.ActivityMonitor m=i.addMonitor(AlarmEditorActivity.class.getName(),null,false);try{c.startActivity(new Intent(c,AlarmEditorActivity.class).putExtra("alarm",alarm.json().toString()).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));assertNotNull(m.waitForActivityWithTimeout(5000));}finally{i.removeMonitor(m);}title("Edit alarm");}
  private void recreate(String text)throws Exception{Activity old=current;Class<?> type=old.getClass();Activity[] next={null};Instrumentation.ActivityMonitor m=i.addMonitor(type.getName(),null,false);try{i.runOnMainSync(old::recreate);next[0]=m.waitForActivityWithTimeout(5000);assertNotNull(next[0]);}finally{i.removeMonitor(m);}awaitAction(()->{if(current!=next[0]||!old.isDestroyed())return false;if(text.equals("Code type")){Dialog menu=dialog(current,"formatDialog");if(menu==null||!menu.isShowing())return false;}View root=ownedWindow();return root!=null&&root.hasWindowFocus()&&root.isLaidOut()&&find(root,text)!=null;},"actual recreated owner "+text);}
