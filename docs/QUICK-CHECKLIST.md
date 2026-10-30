@@ -2,7 +2,7 @@
 
 Updated30October2026. Latest published APK: **0.1.22 / 6087d47e**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.22-portable-feedback-20261030-6087d47e). Last verified phone installation: **0.1.4 /08d3911e**; installation is deferred.
 
-Checked items record implemented source or publication, with historical evidence where linked. They do not establish current all-screen, physical or overnight acceptance. Current phase: usability first; new tests, lint, screenshots, security review and a separate bug pass are deferred.
+Checked items record implemented source or publication, with historical evidence where linked. They do not establish current all-screen, physical or overnight acceptance. Current phase: usability first. On30October the user resumed silent emulator comparisons and main-action checks. Physical-phone actions, alarm/audio execution, security review and a broad test/bug campaign remain deferred.
 
 ## Implemented
 
@@ -49,4 +49,4 @@ Checked items record implemented source or publication, with historical evidence
 - [x] Keep legacy missing-field semantics and existing staged readback/rollback/recovery behavior.
 - [x] Expose a strict built-in tone slot with read-only playback-mode context through the existing API.
 - [x] Document profile compatibility and tone/mode semantics.
-- [x] Produce and publish0.1.22 (`6087d47e`), APK packaging only. New verification and phone actions remain deferred.
+- [x] Produce and publish0.1.22 (`6087d47e`), APK packaging only. Current-source silent emulator comparisons have now resumed; phone actions remain deferred.
