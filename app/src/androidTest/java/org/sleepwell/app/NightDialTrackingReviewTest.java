@@ -11,9 +11,7 @@ import static org.junit.Assert.*;
 
 /** Native active/paused/end states backed by the existing synthetic PCM + SQLite coordinator. */
 public final class NightDialTrackingReviewTest {
-    private void frame(SonarNightFlowTest journey,String name)throws Exception{
-        journey.ready();journey.d.waitForIdle();CountDownLatch commit=new CountDownLatch(1);journey.i.runOnMainSync(()->{for(View root:android.view.inspector.WindowInspector.getGlobalWindowViews())if(root.isAttachedToWindow()&&root.hasWindowFocus()){root.getViewTreeObserver().registerFrameCommitCallback(commit::countDown);root.invalidate();return;}});assertTrue(commit.await(5,TimeUnit.SECONDS));assertTrue(journey.d.takeScreenshot(new File(journey.folder(),"night-dial-"+name+".png")));
-    }
+    private void frame(SonarNightFlowTest journey,String name)throws Exception{NightDialCapture.frame(journey.i,journey.c,journey.d,name);}
     @Test public void measuredGraphPauseRecreationCancelEndAndExplicitSave()throws Exception{
         SonarNightFlowTest journey=new SonarNightFlowTest();journey.fixture(()->{
             journey.launch();journey.click("Start tracking  →");journey.waitFor(()->journey.night!=null&&journey.night.state().readings.stream().anyMatch(x->x.movement!=null));journey.renderedMeasurements();frame(journey,"tracking-active");

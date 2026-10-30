@@ -39,8 +39,8 @@ final class LiveMovementTimeline extends View {
     @Override public boolean onTouchEvent(android.view.MotionEvent event){if(!failed)return super.onTouchEvent(event);if(event.getAction()==android.view.MotionEvent.ACTION_UP)performClick();return true;}
     @Override protected void onDraw(Canvas canvas){
         super.onDraw(canvas);float d=getResources().getDisplayMetrics().density,left=30*d,right=getWidth()-6*d,top=8*d,bottom=getHeight()-30*d;
-        paint.setTypeface(Design.font(getContext(),400));paint.setTextSize(Design.sp(getContext(),10*Appearance.scale(getContext())));paint.setStyle(Paint.Style.FILL);paint.setTextAlign(Paint.Align.RIGHT);paint.setColor(Design.LILAC);canvas.drawText("High",left-5*d,top+8*d,paint);canvas.drawText("Low",left-5*d,bottom,paint);
-        paint.setColor(0xff51445e);paint.setStrokeWidth(.7f*d);canvas.drawLine(left,bottom,right,bottom,paint);
+        paint.setTypeface(Design.font(getContext(),400));paint.setTextSize(Design.sp(getContext(),10*Appearance.scale(getContext())));paint.setStyle(Paint.Style.FILL);paint.setTextAlign(Paint.Align.RIGHT);paint.setColor(NightDialTokens.SECONDARY);canvas.drawText("High",left-5*d,top+8*d,paint);canvas.drawText("Low",left-5*d,bottom,paint);
+        paint.setColor(NightDialTokens.RULE);paint.setStrokeWidth(.7f*d);canvas.drawLine(left,bottom,right,bottom,paint);
         Data value=data;
         if(value!=null){
             List<ChartTicks.Tick> ticks=new ArrayList<>();ticks.add(new ChartTicks.Tick(value.start,clock(value.start,value),-1));
@@ -48,11 +48,11 @@ final class LiveMovementTimeline extends View {
             ticks.add(new ChartTicks.Tick(value.end,"Now",1));List<ChartTicks.Placed> placed=ChartTicks.layout(ticks,value.start,value.end,left,right,8*d,paint::measureText);
             for(ChartTicks.Placed tick:placed)if(tick.tick.endpoint==0){float x=left+(right-left)*(tick.tick.time-value.start)/(float)(value.end-value.start);canvas.drawLine(x,top,x,bottom,paint);}
             double high=.001;for(Bar bar:value.bars)if(bar.value!=null)high=Math.max(high,bar.value);
-            for(Bar bar:value.bars)if(bar.value!=null){float x=left+(right-left)*(bar.from-value.start)/(float)(value.end-value.start),x2=left+(right-left)*(bar.to-value.start)/(float)(value.end-value.start),width=Math.max(d,(x2-x)*.75f),center=(x+x2)/2,y=bottom-(float)(bar.value/high)*(bottom-top);y=Math.min(y,bottom-1.5f*d);paint.setShader(new LinearGradient(0,y,0,bottom,Design.VIOLET,0xffd6c2fa,Shader.TileMode.CLAMP));canvas.drawRoundRect(center-width/2,y,center+width/2,bottom,3*d,3*d,paint);paint.setShader(null);}
-            paint.setColor(Design.LILAC);paint.setTextAlign(Paint.Align.CENTER);Paint.FontMetrics font=paint.getFontMetrics();float height=font.descent-font.ascent+2*d;
+            for(Bar bar:value.bars)if(bar.value!=null){float x=left+(right-left)*(bar.from-value.start)/(float)(value.end-value.start),x2=left+(right-left)*(bar.to-value.start)/(float)(value.end-value.start),width=Math.max(d,(x2-x)*.75f),center=(x+x2)/2,y=bottom-(float)(bar.value/high)*(bottom-top);y=Math.min(y,bottom-1.5f*d);paint.setColor(0xffc5a367);canvas.drawRoundRect(center-width/2,y,center+width/2,bottom,3*d,3*d,paint);paint.setShader(null);}
+            paint.setColor(NightDialTokens.SECONDARY);paint.setTextAlign(Paint.Align.CENTER);Paint.FontMetrics font=paint.getFontMetrics();float height=font.descent-font.ascent+2*d;
             for(ChartTicks.Placed tick:placed){String[] lines=tick.tick.label.split("\n");for(int n=0;n<lines.length;n++)canvas.drawText(lines[n],(float)tick.center,getHeight()-5*d-(lines.length-1-n)*height,paint);}
         }
-        if(!message.isEmpty()||value!=null&&value.bars.stream().noneMatch(bar->bar.value!=null)){paint.setColor(Design.LILAC);paint.setTextAlign(Paint.Align.CENTER);paint.setTextSize(Design.sp(getContext(),11*Appearance.scale(getContext())));String text=message.isEmpty()?"No measured movement yet":message;canvas.drawText(android.text.TextUtils.ellipsize(text,new android.text.TextPaint(paint),Math.max(1,right-left-8*d),android.text.TextUtils.TruncateAt.END).toString(),(left+right)/2,(top+bottom)/2,paint);}
+        if(!message.isEmpty()||value!=null&&value.bars.stream().noneMatch(bar->bar.value!=null)){paint.setColor(NightDialTokens.SECONDARY);paint.setTextAlign(Paint.Align.CENTER);paint.setTextSize(Design.sp(getContext(),11*Appearance.scale(getContext())));String text=message.isEmpty()?"No measured movement yet":message;canvas.drawText(android.text.TextUtils.ellipsize(text,new android.text.TextPaint(paint),Math.max(1,right-left-8*d),android.text.TextUtils.TruncateAt.END).toString(),(left+right)/2,(top+bottom)/2,paint);}
     }
 
     /** One reader per Activity, with at most one queued replacement snapshot. Never opens the UI Store. */
