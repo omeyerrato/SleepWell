@@ -1,8 +1,10 @@
 # Phone feature matrix
 
-Latest published **0.1.8 / 0b3cb9ed** improves the Privacy storage/backup layout and Motion sensor artwork/chart/controls. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.8-reference-layouts-20261029-0b3cb9ed); [package audit](verification/2026-10-29-018-build/README.md); [Privacy12 proof](verification/2026-10-29-privacy-reference/README.md); [Motion7 proof](verification/2026-10-29-motion-reference/README.md). The phone remains on 0.1.4; installation is deferred. Audio-only bulk deletion, a durable manual Last export receipt and broader design/security/hardware work remain unfinished.
+Latest published **0.1.19 / 2dfcd82b** includes the usability and custom-control feedback source increments. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.19-touch-feedback-20261030-2dfcd82b); [current source scope](USABILITY-PASS-2026-10-29.md). APK packaging only: new verification, security review and a separate bug pass are deferred by the user. Audio-only cleanup and durable manual export-receipt source are integrated; their combined acceptance remains open. The phone remains on0.1.4; installation is deferred. All36 matching, remaining feature parity and physical/overnight acceptance remain open.
 
-Updated 2026-10-29 incrementally against the supplied brief, all 12 previously inspected boards,
+Historical0.1.8 evidence: [package audit](verification/2026-10-29-018-build/README.md), [Privacy12 proof](verification/2026-10-29-privacy-reference/README.md), [Motion7 proof](verification/2026-10-29-motion-reference/README.md). These results do not accept the newer source.
+
+Updated incrementally through2026-10-30 against the supplied brief, all 12 previously inspected boards,
 SCREEN-MAP.md, current code and official Sleep as Android manual. Screen numbers
 are intended reference destinations, not a claim of completed screens.
 
