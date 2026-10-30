@@ -14,6 +14,7 @@ on:
           - report-flow
           - report-rounding
           - organization
+          - settings-reference-current
           - organized-settings
           - automation-rules
           - recorded-analysis

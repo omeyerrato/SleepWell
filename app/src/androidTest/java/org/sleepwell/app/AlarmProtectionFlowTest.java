@@ -74,6 +74,25 @@ public class AlarmProtectionFlowTest {
         Rect bounds=area[0];assertTrue("One native information scroll",device.swipe(bounds.centerX(),bounds.bottom-Design.dp(c,16),bounds.centerX(),bounds.top+Design.dp(c,16),20));awaitReadiness(()->{boolean[] end={false};i.runOnMainSync(()->{ScrollView scroll=(ScrollView)protectionField(owner,"informationScroll");end[0]=scroll.getScrollY()>0&&!scroll.canScrollVertically(1);});return end[0];},"Single information gesture reached the actual end");device.waitForIdle();frame(root);return informationY(owner);
     }
 
+    /** Current reference pages only: no alarm editor, protection toggle, preview or deletion action. */
+    @Test public void settingsPrivacyAndReadinessWithoutAlarmExecution()throws Exception{
+        assertEquals("true",InstrumentationRegistry.getArguments().getString("ciReview"));assertEquals("1",device.executeShellCommand("getprop ro.kernel.qemu").trim());
+        assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"ringing"));assertFalse(Prefs.flag(c,"tracking"));assertFalse(AlarmProtectionActivity.access(c));
+        Map<String,?> personal=new HashMap<>(Prefs.of(c).getAll());List<Activity> owned=new CopyOnWriteArrayList<>();Application app=(Application)c.getApplicationContext();
+        Application.ActivityLifecycleCallbacks lifecycle=new Application.ActivityLifecycleCallbacks(){public void onActivityCreated(Activity a,Bundle b){owned.add(a);assertFalse("No alarm activity may open",a instanceof AlarmActivity);}public void onActivityStarted(Activity a){}public void onActivityResumed(Activity a){}public void onActivityPaused(Activity a){}public void onActivityStopped(Activity a){}public void onActivitySaveInstanceState(Activity a,Bundle b){}public void onActivityDestroyed(Activity a){}};
+        app.registerActivityLifecycleCallbacks(lifecycle);
+        try{
+            i.startActivitySync(new Intent(c,MainActivity.class).putExtra("destination",3).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK));focused("Settings");
+            for(String label:List.of("Alarms","Sleep tracking","Sound analysis","Bedtime guard","Appearance","Reliability","Integrations","Data & privacy"))focused(label);
+            capture("settings-root");tapReadiness("Data & privacy");focused("Audio retention");
+            awaitReadiness(()->{boolean[] ready={false};i.runOnMainSync(()->{View count=find(focused(),"Stored record count");ready[0]=count instanceof TextView&&!"Loading…".contentEquals(((TextView)count).getText());});return ready[0];},"Actual read-only local totals finish");capture("privacy-main");
+            tapReadiness("Back");focused("Settings");readiness(personal);
+            assertEquals("Opening reference pages never changes settings",personal,Prefs.of(c).getAll());assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"ringing"));assertFalse(Prefs.flag(c,"tracking"));
+        }finally{
+            i.runOnMainSync(()->{for(Activity a:owned)if(!a.isDestroyed())a.finish();});i.waitForIdleSync();awaitReadiness(()->owned.stream().allMatch(Activity::isDestroyed),"All reference-page owners finish");app.unregisterActivityLifecycleCallbacks(lifecycle);
+        }
+    }
+
     @Test public void compactListAndGlobalProtectionsPersistWithoutAlarmExecution()throws Exception{
         assertEquals("true",InstrumentationRegistry.getArguments().getString("ciReview"));assertEquals("1",device.executeShellCommand("getprop ro.kernel.qemu").trim());assertFalse(Prefs.flag(c,"ringing"));assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(AlarmProtectionActivity.access(c));
         String suffix=UUID.randomUUID().toString(),database="sleepwell-protection-"+suffix+".db",preferences="sleepwell-protection-"+suffix;

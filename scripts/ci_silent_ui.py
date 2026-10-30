@@ -26,6 +26,7 @@ parser.add_argument("--scope", choices=(
     'report-flow',
     'report-rounding',
     'organization',
+    'settings-reference-current',
     'organized-settings',
     'automation-rules',
     'recorded-analysis',
@@ -385,6 +386,8 @@ elif args.scope == "report":
     tests = list(REPORT_TESTS)
 elif args.scope in ("report-flow", "report-rounding"):
     tests = ["ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects"]
+elif args.scope == "settings-reference-current":
+    tests = ["AppearanceFlowTest#saveReopenRelaunchCancelAndRenderAllThemes", "HealthConnectFlowTest#selectedImportManualSyncReopenSourceAndConflictChoicePersist", "HealthConnectFlowTest#providerAndPermissionPrerequisitesNeverReadSleepOrFakeConnected", "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows", "AlarmProtectionFlowTest#settingsPrivacyAndReadinessWithoutAlarmExecution"]
 elif args.scope == "organization":
     tests = ["SettingsOrganizationFlowTest"]
 elif args.scope == "organized-settings":
@@ -617,6 +620,7 @@ if args.scope != "full":
         "event-library": EVENT_LIBRARY_FRAMES,
         "goal-plan": GOAL_PLAN_FRAMES,
         "interaction-security": INTERACTION_SECURITY_FRAMES,
+        "settings-reference-current": APPEARANCE_FRAMES + ["health-connect-"+name+".png" for name in ("default", "configured", "synced", "source", "conflict", "kept", "unavailable", "permissions")] + AUTOMATION_RULE_FRAMES + ["protection-"+name+".png" for name in ("settings-root", "privacy-main", "readiness", "readiness-rationale", "readiness-rationale-cancel", "readiness-settings-recovery", "readiness-returned")],
         "appearance": APPEARANCE_FRAMES,
         "tonight": TONIGHT_FRAMES,
         "challenge-selection": ['routine-legacy.png', 'routine-catalog-empty.png', 'routine-catalog-search.png', 'routine-task-about.png', 'routine-task-values.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png'],
