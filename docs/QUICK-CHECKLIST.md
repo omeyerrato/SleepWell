@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated 30 October 2026. Latest published APK: **0.1.14 / 701747b3** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
+Updated 30 October 2026. Latest published APK: **0.1.15 / a8aa491f** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.14-defaults-data-20261030-701747b3) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.15-clearer-flows-20261030-a8aa491f) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -118,3 +118,11 @@ Appearance theme rings (`6d56b05b`) are included in0.1.11.
 - [x] Keep Export/Import primary; group other backup tools and use readable settings-profile review cards.
 - [x] Show next-recording scope and missing microphone access in Sound analysis.
 - [x] Produce and publish0.1.14 (`701747b3`), APK packaging1m39s only. New verification and phone actions remain deferred.
+
+## Published in 0.1.15 — clearer flows
+
+- [x] Visible History date filters and Trends range navigation, with useful empty-state actions.
+- [x] Clearer repeat/interval, next-alarm and skipped-date selection/review/use flows.
+- [x] Concise advanced tracking settings with longer explanations retained in About.
+- [x] Grouped automation setup, incoming request steps and copyable provider/event details.
+- [x] Produce and publish0.1.15 (`a8aa491f`), APK packaging only. New verification and phone actions remain deferred.

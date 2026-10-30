@@ -67,6 +67,17 @@ Published source **`701747b3`**, version **0.1.14 / 15**. [Development APK](http
 
 No new tests, lint, screenshot verification, security review, device or output actions ran. This records implementation and packaging, not all36 acceptance.
 
+## Clearer everyday and supporting flows — 0.1.15
+
+Published source **`a8aa491f`**, version **0.1.15 / 16**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.15-clearer-flows-20261030-a8aa491f). APK packaging only.
+
+- History exposes the active date filter, change/clear actions, selection states and useful empty-state routes. Trends adds previous/next week/month/year navigation and a date chooser; empty ranges lead to actual records or manual entry. Data and chart mathematics are unchanged.
+- Repeat has an editable interval stepper and immediate occurrence preview. Next-alarm-only emphasizes date/time, Review and Use. Skipped dates show selection counts and clear Add/Remove actions. Detailed ISO/time-zone/date rules remain under Options; scheduling policies are unchanged.
+- Do Not Disturb, Flip to pause and Start delay keep their choices and current status prominent, with longer explanations in About. Save actions retain their existing jobs and no service is started by these presentation changes.
+- Automation groups rule, connection, optional authentication and activation. Incoming requests and provider access have clearer setup steps and prerequisites, with copyable actual event names/endpoints. Existing consent, grant/revoke, request, persistence and delivery callbacks remain.
+
+Implementation commits: `6d0b3433`, `6eddf14f`, `97b37481`, `3b4530e4`, `23232c83`. No tests, lint, screenshot verification, security review, phone or output operations ran. All36 acceptance and external-service delivery remain open.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.

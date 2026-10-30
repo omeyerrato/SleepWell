@@ -9,7 +9,26 @@ light/Inter visual language. This is an implementation increment, not36screen ac
 - [x] Exercise grouped navigation, settings/global search and actual parent returns.
 - [x] Inspect ten actual Android captures and exercise draft/save/reopen persistence.
 
-## Settings structure
+## Current navigation — 30 October
+
+Usability is the current phase. New verification, security review and a separate bug-fixing pass are deferred by the user. The 0.1.9–0.1.15 source passes keep features reachable through these eight root entries:
+
+| Root entry | Main job |
+| --- | --- |
+| Alarms | Manage alarms, future defaults and supporting alarm tools |
+| Sleep tracking | Tracking setup, automatic tracking and grouped supporting tools |
+| Sound analysis | Recording choices and supporting sound tools |
+| Bedtime guard | Schedule and installed-app choices |
+| Appearance | Theme, feedback, Tonight layout and home-screen tools |
+| Reliability | Alarm readiness and Android access |
+| Integrations | Health Connect, automation, lights and app access |
+| Data & privacy | Storage, recording tools, backup and portable settings |
+
+Report exposes Night / History / Trends. History names active date filters; Trends has previous/next ranges. Alarm settings keep common choices first, with named supporting menus. Command menus use action rows; saved choices use selection controls. More detailed explanations remain in About instead of occupying every main page.
+
+Future-alarm defaults now have their own behavior-only edit/review/save flow. Backup keeps Export and Import primary. Automation and provider setup group their actual connection, consent and activation controls. These are source changes, not new interaction or visual acceptance.
+
+## Earlier grouping — 26 October
 
 The previous17root destinations remain available in8groups, plus settings search.
 Search everything remains available from settings search. An empty settings query shows8categories rather than an undifferentiated list; selecting a category or entering a term reveals matching destinations. The current catalog has88 destinations, including direct links to the named supporting pages below.
