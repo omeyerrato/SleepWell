@@ -11,7 +11,7 @@ light/Inter visual language. This is an implementation increment, not36screen ac
 
 ## Current navigation — 30 October
 
-Usability is the current phase. New verification, security review and a separate bug-fixing pass are deferred by the user. The 0.1.9–0.1.15 source passes keep features reachable through these eight root entries:
+Usability is the current phase. New verification, security review and a separate bug-fixing pass are deferred by the user. The 0.1.9–0.1.17 source passes keep features reachable through these eight root entries:
 
 | Root entry | Main job |
 | --- | --- |
@@ -27,6 +27,8 @@ Usability is the current phase. New verification, security review and a separate
 Report exposes Night / History / Trends. History names active date filters; Trends has previous/next ranges. Alarm settings keep common choices first, with named supporting menus. Command menus use action rows; saved choices use selection controls. More detailed explanations remain in About instead of occupying every main page.
 
 Future-alarm defaults now have their own behavior-only edit/review/save flow. Backup keeps Export and Import primary. Automation and provider setup group their actual connection, consent and activation controls. These are source changes, not new interaction or visual acceptance.
+
+Later source passes make alarm dropdowns and goal pickers explicit, keep Appearance Save visible, expose Nap options, clarify challenge selection and make guard app rows respond across their full area. Detailed scope remains in [the usability history](USABILITY-PASS-2026-10-29.md).
 
 ## Earlier grouping — 26 October
 

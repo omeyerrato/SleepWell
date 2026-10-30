@@ -1,8 +1,8 @@
 # SleepWell current checklist
 
-Updated 30 October 2026. Latest published APK: **0.1.16 / 32d207cc** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
+Updated 30 October 2026. Latest published APK: **0.1.17 / 3d4c8422** (usability development build; new verification deferred). Last verified phone installation: **0.1.4 / 08d3911e**. The phone update is deferred by the user.
 
-[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.16-reference-controls-20261030-32d207cc) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
+[Published APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.17-bedtime-planning-20261030-3d4c8422) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Detailed history and evidence](FEATURE-CHECKLIST.md).
 
 Checked means implemented with the stated supporting evidence. Physical-device and overnight verification remain separate.
 
@@ -134,3 +134,11 @@ Appearance theme rings (`6d56b05b`) are included in0.1.11.
 - [x] Restore Appearance preview/artwork proportions and keep Save visible.
 - [x] Clearly name automatic tracking setup and display a saved manual start delay.
 - [x] Produce and publish0.1.16 (`32d207cc`), APK packaging only. New verification and phone actions remain deferred.
+
+## Published in 0.1.17 — bedtime and planning
+
+- [x] Refine routine/task rows, balanced choices and Math selected states.
+- [x] Make guard app rows fully actionable and goal pickers explicit.
+- [x] Clarify Nap/Rhythm primary controls, metric hierarchy and Travel clock/cue information.
+- [x] Improve audio choice readability and Room signal captions.
+- [x] Produce and publish0.1.17 (`3d4c8422`), APK packaging only. New verification and phone actions remain deferred.

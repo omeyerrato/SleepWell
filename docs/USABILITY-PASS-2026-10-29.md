@@ -89,6 +89,17 @@ Published source **`32d207cc`**, version **0.1.16 / 17**. [Development APK](http
 
 Implementation commits: `de909c16`, `b8c22e5c`, `c9f539f6`, `72c4d2bc`, `cfad2cc6`. Three implementation agents worked in isolated worktrees. No tests, lint, screenshot verification, security review, phone or output operations ran. All36 visual/action acceptance stays open.
 
+## Bedtime, challenges and planning — 0.1.17
+
+Published source **`3d4c8422`**, version **0.1.17 / 18**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.17-bedtime-planning-20261030-3d4c8422). APK packaging only.
+
+- Challenge routine rows and footer spacing follow the reference proportions. Number choices wrap in balanced rows with existing touch targets; Math answer choices expose their actual checked state. All28 tasks, filters, configuration/result routes and defaults mode remain.
+- Guard app rows respond across their full area. Sleep goals has visible duration/time picker marks, actual edit/selection feedback and compact summary/Save layout. Existing installed-app picker/search, drafts, pause and persistence remain.
+- Nap simplifies its primary duration row and exposes labelled Options, retaining exact-timer editing there. Presets have explicit selection semantics. Rhythm improves metric hierarchy, empty-state navigation and dated-row chart selection with keyboard/accessibility actions. Travel aligns its real city/clock comparison and shows the active cue window. Statistics, timers, schedules and cue rules are unchanged.
+- Audio labels and cue choices are more readable; sound-library tiles expose their real selection state. Room conditions uses the existing bulb raster, aligns light status beneath its reading and improves control captions. No audio, sensing or cue logic is changed.
+
+Implementation commits: `38675541`, `9cf73271`, `46624612`, `b6c32730`, `9ab54593`, `9fb56be0`. Three implementation agents worked in isolated worktrees. No tests, lint, screenshot verification, security review, device or output operations ran. All36 acceptance stays open.
+
 ## Delivery limits
 
 The package is a development build. This pass has no new screenshot comparison, interaction/persistence acceptance, lint, test, security or physical-device results. Earlier evidence remains historical and must not be treated as acceptance of changed layouts. All-36 matching stays open. Device/overnight accuracy and external-service prerequisites remain in the full checklist and feature matrix.
