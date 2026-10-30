@@ -1,5 +1,7 @@
 # Native review evidence
 
+First-night follow-up is under review. [df2476bc findings](df2476bc-finding/README.md) retain the failed 14-method run: 80 focused unit methods and 12 native methods passed, including the new welcome/defaults and actual notification-denial/settings-return journeys. The optional microphone denial input and existing Skip model observation require the focused-input/returned-state corrections recorded there. The recording-status fallback icon is also corrected. This is not a new passing preview; the latest delivered APK remains 6409f7a6 below.
+
 ## Latest reviewed preview: 6409f7a6
 
 The [native review](https://github.com/omeyerrato/SleepWell/actions/runs/41092841075), job 124190892729, artifact 12994923015, passed all 11 native methods in 274.602 seconds. All 93 required PNGs exist: 78 Night Dial frames and 15 existing skip-regression frames. Eighty focused unit methods passed with zero failures/errors. [Raw result](6409f7a6/review.json), [instrumentation](6409f7a6/instrumentation.txt), [exact scope and limits](6409f7a6/README.md). The [independent APK workflow](https://github.com/omeyerrato/SleepWell/actions/runs/41092841167) passed; its default broad unit/lint step is skipped. Artifact ZIP SHA256: `30dd9a13f20b5ac8b8bfe806b5ab75117a3ecd0ee9c8f48a406e8bd333fa7487`.

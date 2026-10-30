@@ -17,7 +17,7 @@ final class AlarmReadinessUi {
  static boolean notificationsDenied(Activity activity){return Prefs.flag(activity,NOTIFICATIONS_ASKED)&&!activity.getSystemService(NotificationManager.class).areNotificationsEnabled();}
  static void rows(Activity activity,LinearLayout body,Controller owner,boolean firstNight){
   NotificationManager notifications=activity.getSystemService(NotificationManager.class);
-  Runnable notification=()->owner.permission(Manifest.permission.POST_NOTIFICATIONS,firstNight);
+  Runnable notification=()->{if(firstNight&&notificationsDenied(activity))open(activity,notificationSettings(activity));else owner.permission(Manifest.permission.POST_NOTIFICATIONS,firstNight);};
   if(firstNight)row(activity,body,"bell","Notifications","Alarm alerts, bedtime reminders and recording status",notifications.areNotificationsEnabled(),false,firstNight,notification);
   row(activity,body,"alarm","Exact alarms","Allows alarms to play on time.",Scheduler.allowed(activity),false,firstNight,()->open(activity,Build.VERSION.SDK_INT>=31?new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,packageUri(activity)):appSettings(activity)));
   if(!firstNight)row(activity,body,"bell","Notifications",Build.VERSION.SDK_INT>=33?hint(activity,Manifest.permission.POST_NOTIFICATIONS,NOTIFICATIONS_ASKED,"Lets SleepWell show alerts."):"Lets SleepWell show alerts.",notifications.areNotificationsEnabled(),false,false,notification);
@@ -36,6 +36,9 @@ final class AlarmReadinessUi {
  static void battery(Activity activity){open(activity,new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS));}
  private static void open(Activity activity,Intent intent){
   if(!live(activity)||!activity.hasWindowFocus())return;
+  launchSettings(activity,intent);
+ }
+ private static void launchSettings(Activity activity,Intent intent){
   try{activity.startActivity(intent);}catch(RuntimeException unavailable){try{activity.startActivity(appSettings(activity));}catch(RuntimeException blocked){Ui.toast(activity,"Android could not open this setting. Open SleepWell in Android Settings.");}}
  }
  /** Owns explanation windows across root re-renders and recreation. Restoration never requests access. */
@@ -65,7 +68,7 @@ final class AlarmReadinessUi {
    SleepPicker.StateDialog owned=new SleepPicker.StateDialog(activity,"alarm-readiness",title);dialog=owned;owned.requestWindowFeature(Window.FEATURE_NO_TITLE);
    LinearLayout content=Design.col(activity);Design.pad(content,22,24);content.setBackground(Design.shape(activity,NightDialTokens.RAISED,24));Design.text(content,title,23,600,NightDialTokens.TEXT);Design.space(content,16);
    if(info){Design.text(content,"Review notifications, exact alarms and background access in Android Settings. On Samsung, add SleepWell to Never auto sleeping apps. Force stopping or powering off the phone prevents alarms. A quiet test cannot prove overnight reliability.",15,400,NightDialTokens.SECONDARY);}
-   else if(first){Design.text(content,"SleepWell uses notifications for:",15,400,NightDialTokens.SECONDARY);Design.space(content,14);explanation(content,"moon","Bedtime reminders","A reminder when it is time to wind down.");explanation(content,"alarm","Wake-up alerts","The notification for your morning alarm.");explanation(content,"chart","Recording status","Updates while you record your night.");Design.space(content,8);Design.text(content,"You can continue using the app with notifications off. Microphone access is a separate, optional choice.",13,400,NightDialTokens.SECONDARY);}
+   else if(first){Design.text(content,"SleepWell uses notifications for:",15,400,NightDialTokens.SECONDARY);Design.space(content,14);explanation(content,"moon","Bedtime reminders","A reminder when it is time to wind down.");explanation(content,"alarm","Wake-up alerts","The notification for your morning alarm.");explanation(content,"report","Recording status","Updates while you record your night.");Design.space(content,8);Design.text(content,"You can continue using the app with notifications off. Microphone access is a separate, optional choice.",13,400,NightDialTokens.SECONDARY);}
    else Design.text(content,notifications?"SleepWell uses notifications to show alarm alerts and recording status.":"SleepWell uses the microphone for optional sound events and recordings. Allow access to use those features.",15,400,NightDialTokens.SECONDARY);
    Design.space(content,18);
    if(info)Design.button(content,"Got it",true,owned::dismiss);
@@ -73,7 +76,7 @@ final class AlarmReadinessUi {
     Design.button(content,settings?"Open Android settings":first?"Continue to Android":"Continue",true,()->{
      if(!live(activity)||!owned.isShowing()||owned.getWindow()==null||!owned.getWindow().getDecorView().hasWindowFocus())return;
      // Start the destination before dismissing its focused explanation owner.
-     if(settings){Intent intent=notifications?notificationSettings(activity):appSettings(activity);try{activity.startActivity(intent);}catch(RuntimeException unavailable){Ui.toast(activity,"Android could not open this setting. Open SleepWell in Android Settings.");}}
+     if(settings)launchSettings(activity,notifications?notificationSettings(activity):appSettings(activity));
      else request(activity,requesting,permission,asked,request,refresh);
      owned.dismiss();
     });
@@ -94,7 +97,7 @@ final class AlarmReadinessUi {
  private static void row(Activity activity,LinearLayout body,String icon,String title,String subtitle,boolean allowed,boolean optional,boolean first,Runnable action){
   String state=allowed?"Allowed":optional?"Optional":first?"Not allowed":"Needs attention";
   LinearLayout card=Design.col(activity);Design.pad(card,16,12);card.setBackground(Design.touch(activity,NightDialTokens.SURFACE,16));LinearLayout head=Design.row(activity);Design.Icon glyph=new Design.Icon(activity,icon,NightDialTokens.SECONDARY);LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(Design.dp(activity,24),Design.dp(activity,24));ip.rightMargin=Design.dp(activity,12);head.addView(glyph,ip);head.addView(Design.text(activity,title,16,500,NightDialTokens.TEXT),new LinearLayout.LayoutParams(0,-2,1));TextView status=Design.text(activity,state,12,500,allowed?NightDialTokens.POSITIVE:optional?NightDialTokens.SECONDARY:NightDialTokens.NEGATIVE);status.setMaxWidth(Design.dp(activity,100));status.setGravity(Gravity.END);LinearLayout.LayoutParams sp=new LinearLayout.LayoutParams(-2,-2);sp.leftMargin=Design.dp(activity,12);head.addView(status,sp);card.addView(head);
-  LinearLayout detail=Design.row(activity);TextView copy=Design.text(activity,subtitle,13,400,NightDialTokens.SECONDARY);LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(0,-2,1);cp.rightMargin=Design.dp(activity,12);detail.addView(copy,cp);TextView review=Design.text(activity,"Review",13,500,NightDialTokens.TEXT);review.setMinHeight(Design.dp(activity,48));review.setGravity(Gravity.CENTER);Design.pad(review,16,0);review.setBackground(Design.shape(activity,NightDialTokens.SECONDARY_ACTION,24));detail.addView(review,new LinearLayout.LayoutParams(-2,-2));Design.space(card,4);card.addView(detail);
+  LinearLayout detail=Design.row(activity);TextView copy=Design.text(activity,subtitle,13,400,NightDialTokens.SECONDARY);LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(0,-2,1);cp.rightMargin=Design.dp(activity,12);detail.addView(copy,cp);TextView review=Design.text(activity,first&&title.equals("Notifications")&&notificationsDenied(activity)?"Open settings":"Review",13,500,NightDialTokens.TEXT);review.setMinHeight(Design.dp(activity,48));review.setGravity(Gravity.CENTER);Design.pad(review,16,0);review.setBackground(Design.shape(activity,NightDialTokens.SECONDARY_ACTION,24));detail.addView(review,new LinearLayout.LayoutParams(-2,-2));Design.space(card,4);card.addView(detail);
   card.setContentDescription(title+" · "+state);card.setStateDescription(subtitle+". Review Android access.");card.setFocusable(true);card.setAccessibilityDelegate(new View.AccessibilityDelegate(){@Override public void onInitializeAccessibilityNodeInfo(View host,AccessibilityNodeInfo node){super.onInitializeAccessibilityNodeInfo(host,node);node.setClassName(Button.class.getName());}});card.setOnClickListener(view->{if(card.isAttachedToWindow()&&live(activity)&&activity.hasWindowFocus()){InteractionFeedback.action(view);action.run();}});body.addView(card,new LinearLayout.LayoutParams(-1,-2));Design.space(body,10);
  }
  private AlarmReadinessUi(){}
