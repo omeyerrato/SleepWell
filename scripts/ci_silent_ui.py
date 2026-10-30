@@ -48,6 +48,7 @@ parser.add_argument("--scope", choices=(
     'priority-current',
     'priority-repair',
     'reference-menus',
+    'alarm-reference-current',
     'morning-code-enrollment',
     'privacy-recovery',
     'setup-readiness',
@@ -161,6 +162,14 @@ PRIORITY_REPAIR_FRAMES = [name for name in PRIORITY_CURRENT_FRAMES if name.start
 PRIORITY_REPAIR_FRAMES += [name for name in PRIORITY_MENU_FRAMES if name.startswith("advanced-snooze-")]
 REFERENCE_MENU_FRAMES = [name for name in PRIORITY_CURRENT_FRAMES if name.startswith(("wake-settings-","privacy-history-","qr-code-"))] + TONE_FRAMES
 REFERENCE_MENU_FRAMES += ["cloud-backup-"+name+".png" for name in ("folder-busy","destination","saved","reopened","restore-review")]
+# Configuration-only alarm reference cohort: existing private fixtures and fake outputs.
+ALARM_REFERENCE_CURRENT_FRAMES = PRIORITY_MENU_FRAMES + TONE_FRAMES + WAKE_SETTING_FRAMES
+ALARM_REFERENCE_CURRENT_FRAMES += ["wake-settings-"+name+".png" for name in ("options","options-recreated","preview-loading","preview-playing","preview-recreated","preview-error","preview-complete")]
+ALARM_REFERENCE_CURRENT_FRAMES += ["organization-"+name+".png" for name in (
+    "alarm-list", "alarm-list-large", "alarm-time-stepped", "alarm-time-recreated",
+    "alarm-editor", "alarm-search", "smart-following", "smart-configured",
+    "alarm-schedule", "alarm-options", "controls-recreated", "alarm-backup",
+    "smart-reopened", "alarm-reopened")]
 APPEARANCE_FRAMES = ["appearance-"+name+".png" for name in ("automatic","selected-0","selected-1","selected-2","tonight-0","tonight-1","tonight-2","large-contrast-tonight","large-contrast-tonight-action","large-contrast")]
 TONIGHT_FRAMES = ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 SONAR_REPORT_FRAMES = ["sonar-report-" + name + ".png" for name in ("night", "signals", "zero", "reopened", "legacy-unknown", "analysis-error")]
@@ -425,6 +434,15 @@ elif args.scope == "priority-repair":
     tests = ["AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs", "AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime", "HealthConnectFlowTest", "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory"]
 elif args.scope == "morning-code-enrollment":
     tests = ["QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert"]
+elif args.scope == "alarm-reference-current":
+    tests = [
+        "SettingsOrganizationFlowTest#groupedSettingsSearchAndAlarmDraftPersistWithoutOutputs",
+        "AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs",
+        "AlarmToneFlowTest#toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput",
+        "AdvancedSnoozeFlowTest#longMaximumAndPerPressChoicePersistCancelAndRecreateWithoutRuntime",
+        "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert",
+    ]
+    metadata["alarm_reference_outputs"] = "disabled private alarms; fake scheduling/audio/scan ports; no alarm execution"
 elif args.scope == "reference-menus":
     tests = ["AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs", "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory", "AlarmToneFlowTest#toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput", "CloudBackupFlowTest#chooseSaveReopenAndReviewKeepLocalDataWithNoUpload", "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert"]
 elif args.scope == "privacy-recovery":
@@ -592,6 +610,7 @@ if args.scope != "full":
         "setup-readiness": SETUP_READINESS_FRAMES,
         "privacy-recovery": ["privacy-history-"+name+".png" for name in ("ready","error","busy","pending","done")],
         "reference-menus": REFERENCE_MENU_FRAMES,
+        "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,
         "priority-repair": PRIORITY_REPAIR_FRAMES,
         "priority-current": PRIORITY_CURRENT_FRAMES,
         "priority-menus": PRIORITY_MENU_FRAMES,
