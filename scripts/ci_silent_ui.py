@@ -53,6 +53,7 @@ parser.add_argument("--scope", choices=(
     'morning-code-enrollment',
     'privacy-recovery',
     'privacy-audio-reference',
+    'data-recovery-reference',
     'setup-readiness',
     'readiness-recovery',
     'protection-recovery',
@@ -149,6 +150,17 @@ ROOM_BEDTIME_LIVE_FRAMES += ["motion-settings-"+name+".png" for name in ("ready"
 ROOM_BEDTIME_LIVE_FRAMES += ["room-conditions-"+name+".png" for name in ("default","microphone-access","measuring","recreated","dimming-saved","reopened","microphone-error","unavailable","cleanup-blocked","cleaned")]
 ROOM_BEDTIME_LIVE_FRAMES += ["sonar-night-"+name+".png" for name in ("setup","measuring","paused","options","options-recreated","paused-recreated","resumed","missing","stop-confirmation")]
 RECORDED_ANALYSIS_FRAMES = ["recorded-analysis-" + name + ".png" for name in ("prepared", "result", "details", "import-prepared", "import-result")]
+# Full retained history cleanup and backup replacement, including native confirmation recreation.
+# The recorded-analysis journey is lifecycle evidence on its existing licensed fixture,
+# never the frozen FSD50K evaluation or an accuracy acceptance/threshold selection run.
+DATA_RECOVERY_REFERENCE_FRAMES = ["privacy-top-" + name + ".png" for name in (
+    "ready", "favorites", "options", "backup-contents", "storage-error", "storage-retried", "empty")]
+DATA_RECOVERY_REFERENCE_FRAMES += ["privacy-history-" + name + ".png" for name in (
+    "review", "review-restored", "ready", "review-changed", "error", "busy", "pending", "cleanup-review-restored", "done")]
+DATA_RECOVERY_REFERENCE_FRAMES += ["backup-document-" + name + ".png" for name in (
+    "review", "confirmation", "confirmation-recreated", "review-recreated", "review-reopened",
+    "restoring", "restoring-recreated", "restored", "result-reopened")]
+DATA_RECOVERY_REFERENCE_FRAMES += RECORDED_ANALYSIS_FRAMES
 ROUTINE_FRAMES = ["routine-" + name + ".png" for name in ("legacy", "ordered", "reordered", "recreated", "removed", "reopened")]
 EVENT_LIBRARY_FRAMES = ["library-"+name+".png" for name in ("recordings","playback","favorite-recreated","speech","recording-deleted","options","options-recreated","analysis-details","analysis-details-recreated")]
 GOAL_PLAN_FRAMES = ['goal-plan.png', 'goal-options.png', 'goal-options-recreated.png', 'goal-options-winddown-recreated.png', 'goal-options-updated.png', 'goal-tonight.png', 'goal-saved-plan.png', 'goal-empty-bank.png', 'goal-create.png', 'goal-bank.png', 'goal-reopened-bank.png', 'goal-bank-details.png', 'goal-stopped.png', 'goal-trends.png']
@@ -471,6 +483,14 @@ elif args.scope == "privacy-audio-reference":
     metadata["privacy_audio_slice"] = "recording-only confirmation/favorites/progress/error/reopen; private UUID SQLite and owned synthetic files; no history erase, import, playback or output"
 elif args.scope == "privacy-recovery":
     tests = ["PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory"]
+elif args.scope == "data-recovery-reference":
+    tests = [
+        "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+        "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen",
+        "RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary",
+    ]
+    metadata["data_recovery_slice"] = "full private history erase/retry and backup replacement/recreation; recording-only shortcut disabled; no alarms or audio output"
+    metadata["recorded_analysis_slice"] = "existing licensed lifecycle fixture plus AAC copy; no frozen evaluation inputs or accuracy acceptance"
 elif args.scope == "setup-readiness":
     tests = ["OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs", "AlarmProtectionFlowTest#compactListAndGlobalProtectionsPersistWithoutAlarmExecution"]
 elif args.scope == "readiness-recovery":
@@ -580,6 +600,8 @@ for test in tests:
     extra = []
     if args.scope == "privacy-audio-reference":
         extra += ["-e", "ciAudioClearReference", "true"]
+    if args.scope == "data-recovery-reference" and test.startswith("PrivacyHistoryFlowTest#"):
+        extra += ["-e", "ciAudioClearReference", "false"]
     if args.scope == "motion-reference":
         extra += ["-e", "motionSlice", "reference"]
     if args.scope == "routine-camera":
@@ -670,6 +692,7 @@ if args.scope != "full":
         "setup-readiness": SETUP_READINESS_FRAMES,
         "privacy-audio-reference": ["privacy-recordings-"+name+".png" for name in ("confirmation","favorites-included","review-error","removing","removing-recreated","pending","retry","done","reopened")],
         "privacy-recovery": ["privacy-history-"+name+".png" for name in ("ready","error","busy","pending","done")],
+        "data-recovery-reference": DATA_RECOVERY_REFERENCE_FRAMES,
         "reference-menus": REFERENCE_MENU_FRAMES,
         "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,
         "priority-repair": PRIORITY_REPAIR_FRAMES,

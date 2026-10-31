@@ -41,6 +41,7 @@ on:
           - morning-code-enrollment
           - privacy-recovery
           - privacy-audio-reference
+          - data-recovery-reference
           - setup-readiness
           - readiness-recovery
           - protection-recovery
