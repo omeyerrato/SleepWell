@@ -1,0 +1,2109 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "actions": "Local ZIP/XML/JSON parsing only; no network, HDF5/runtime load, upstream execution, fit or inference",
+  "mendeley_files": [
+    {
+      "name": "apnea_model_results.xlsx",
+      "bytes": 475386,
+      "sha256": "f02ef29a850803d6e04ab225926a8d561ffe6f872d5c9f1e6e97d6747db0be4f"
+    },
+    {
+      "name": "bundle-prefix.js",
+      "bytes": 653919,
+      "sha256": "d03ed6d08268c0c04db358f5fbbfdced5689ed27cbbd59a29f3ee79519483edf"
+    },
+    {
+      "name": "folders.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "name": "Raw_Data_All_Figures.xlsx",
+      "bytes": 45833,
+      "sha256": "17429e3ff1289763cf8f592924659acc1539eed67057045b7603056dfe6da652"
+    },
+    {
+      "name": "Reporting_Guidelines_TRIPOD_AI.docx",
+      "bytes": 27782,
+      "sha256": "e0fe259f89fb137ebb4016013c636c400c40b52099d3149402152ca9c4738b80"
+    },
+    {
+      "name": "Reporting_Guidelines_TRIPOD_AI.txt",
+      "bytes": 16565,
+      "sha256": "bbfa8a36d8579983e875782669604eafeb4b848790734c37b3da422010f553fc"
+    },
+    {
+      "name": "root-files.json",
+      "bytes": 3109,
+      "sha256": "5a5b92e919c0689bbab0cede23fb8b1971e715da77c7c3d7b7397f857d528ff4"
+    },
+    {
+      "name": "sleep_apnea_dataset_documentation.docx",
+      "bytes": 31543,
+      "sha256": "673347168e9659d9cab787fd0e2deffbd9d80fad724616f178a81b7f08abda2b"
+    },
+    {
+      "name": "sleep_apnea_dataset_documentation.txt",
+      "bytes": 3504,
+      "sha256": "bb385336889a87048c30e597087801858195cb07ccc9e40197a7759e6c8a549f"
+    },
+    {
+      "name": "wrf77nvb8z-v1.html",
+      "bytes": 128365,
+      "sha256": "f4f2a99be01f1378896cc464821f67c1a80bba077f955457f351a2571197a8d6"
+    }
+  ],
+  "publisher_inventory": [
+    {
+      "filename": "apnea_model_results.xlsx",
+      "id": "883b84a9-c112-4587-afea-68ca502b097a",
+      "content_details": {
+        "id": "050e74de-e071-42a6-b8e3-4a2753c6e58d",
+        "sha256_hash": "f02ef29a850803d6e04ab225926a8d561ffe6f872d5c9f1e6e97d6747db0be4f",
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 475386,
+        "created_date": "2026-03-09T21:30:39.704Z",
+        "download_url": "https://data.mendeley.com/public-files/datasets/wrf77nvb8z/files/883b84a9-c112-4587-afea-68ca502b097a/file_downloaded",
+        "view_url": "https://data.mendeley.com/public-files/datasets/wrf77nvb8z/files/883b84a9-c112-4587-afea-68ca502b097a/file_viewed",
+        "download_expiry_time": "2126-10-31T23:23:04.517786497Z"
+      },
+      "size": 475386,
+      "last_modified_date": "2026-03-09T21:30:39.704Z",
+      "status": "COMPLETED"
+    },
+    {
+      "filename": "Raw_Data_All_Figures.xlsx",
+      "id": "1ec58eb0-b525-46b1-9e7b-cc43dafe8691",
+      "content_details": {
+        "id": "95cc7748-38ea-46cb-ab4e-bfafaffad3c4",
+        "sha256_hash": "17429e3ff1289763cf8f592924659acc1539eed67057045b7603056dfe6da652",
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 45833,
+        "created_date": "2026-03-09T21:30:39.338Z",
+        "download_url": "https://data.mendeley.com/public-files/datasets/wrf77nvb8z/files/1ec58eb0-b525-46b1-9e7b-cc43dafe8691/file_downloaded",
+        "view_url": "https://data.mendeley.com/public-files/datasets/wrf77nvb8z/files/1ec58eb0-b525-46b1-9e7b-cc43dafe8691/file_viewed",
+        "download_expiry_time": "2126-10-31T23:23:04.517793097Z"
+      },
+      "size": 45833,
+      "last_modified_date": "2026-03-09T21:30:39.338Z",
+      "status": "COMPLETED"
+    },
+    {
+      "filename": "Reporting_Guidelines_TRIPOD_AI.docx",
+      "id": "d7c2855c-282c-4b8c-8213-51d34ccf5102",
+      "content_details": {
+        "id": "8cfd52fd-c404-404f-b740-ccf03600dcac",
+        "sha256_hash": "e0fe259f89fb137ebb4016013c636c400c40b52099d3149402152ca9c4738b80",
+        "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "size": 27782,
+        "created_date": "2026-03-09T21:30:39.488Z",
+        "download_url": "https://data.mendeley.com/public-files/datasets/wrf77nvb8z/files/d7c2855c-282c-4b8c-8213-51d34ccf5102/file_downloaded",
+        "view_url": "https://data.mendeley.com/public-files/datasets/wrf77nvb8z/files/d7c2855c-282c-4b8c-8213-51d34ccf5102/file_viewed",
+        "download_expiry_time": "2126-10-31T23:23:04.517796347Z"
+      },
+      "size": 27782,
+      "last_modified_date": "2026-03-09T21:30:39.488Z",
+      "status": "COMPLETED"
+    },
+    {
+      "filename": "sleep_apnea_dataset_documentation.docx",
+      "id": "5dcc5888-a2fd-419f-9d78-68ec114df7f3",
+      "content_details": {
+        "id": "de077ced-bc2b-419b-83c2-467f6c106fbf",
+        "sha256_hash": "673347168e9659d9cab787fd0e2deffbd9d80fad724616f178a81b7f08abda2b",
+        "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "size": 31543,
+        "created_date": "2026-03-09T21:30:39.355Z",
+        "download_url": "https://data.mendeley.com/public-files/datasets/wrf77nvb8z/files/5dcc5888-a2fd-419f-9d78-68ec114df7f3/file_downloaded",
+        "view_url": "https://data.mendeley.com/public-files/datasets/wrf77nvb8z/files/5dcc5888-a2fd-419f-9d78-68ec114df7f3/file_viewed",
+        "download_expiry_time": "2126-10-31T23:23:04.517800127Z"
+      },
+      "size": 31543,
+      "last_modified_date": "2026-03-09T21:30:39.355Z",
+      "status": "COMPLETED"
+    }
+  ],
+  "publisher_folders": [],
+  "workbooks": [
+    {
+      "file": {
+        "name": "apnea_model_results.xlsx",
+        "bytes": 475386,
+        "sha256": "f02ef29a850803d6e04ab225926a8d561ffe6f872d5c9f1e6e97d6747db0be4f"
+      },
+      "sheets": [
+        {
+          "name": "Training_History",
+          "dimension": "A1:A1",
+          "row_count": 1,
+          "nonempty_cells": 1,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Training History (Loss and Accuracy)"
+            }
+          ]
+        },
+        {
+          "name": "Model_Architecture",
+          "dimension": "A1:A1",
+          "row_count": 1,
+          "nonempty_cells": 1,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Model Architecture and Feature Pipeline"
+            }
+          ]
+        },
+        {
+          "name": "Confusion_Matrix",
+          "dimension": "A1:C5",
+          "row_count": 4,
+          "nonempty_cells": 10,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Confusion Matrix Values"
+            },
+            {
+              "cell": "A3",
+              "value": "True \\ Pred"
+            },
+            {
+              "cell": "B3",
+              "value": "0"
+            },
+            {
+              "cell": "C3",
+              "value": "1"
+            },
+            {
+              "cell": "A4",
+              "value": "0"
+            },
+            {
+              "cell": "B4",
+              "value": "5937"
+            },
+            {
+              "cell": "C4",
+              "value": "1788"
+            },
+            {
+              "cell": "A5",
+              "value": "1"
+            },
+            {
+              "cell": "B5",
+              "value": "1135"
+            },
+            {
+              "cell": "C5",
+              "value": "11782"
+            }
+          ]
+        },
+        {
+          "name": "Prediction_Examples",
+          "dimension": "A1:A1",
+          "row_count": 1,
+          "nonempty_cells": 1,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Example Predictions (Apnea vs No Apnea)"
+            }
+          ]
+        },
+        {
+          "name": "ROC_Curve",
+          "dimension": "A1:A1",
+          "row_count": 1,
+          "nonempty_cells": 1,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "ROC Curve (AUC \u2248 0.9306)"
+            }
+          ]
+        }
+      ],
+      "embedded_media": [
+        {
+          "name": "xl/media/image1.png",
+          "bytes": 75413,
+          "sha256": "eab259089bf847a375a77d4f29d18921a07d653912decb5db6f29e14cdbe0c9b"
+        },
+        {
+          "name": "xl/media/image2.png",
+          "bytes": 272459,
+          "sha256": "819300ad85d35103470edcf0cf4505f201d875e976f69f0dcf1af54c26f4534c"
+        },
+        {
+          "name": "xl/media/image3.png",
+          "bytes": 17435,
+          "sha256": "063d3722ac42c1f2f3d1a7108bd05e57e0a23cb5a5b503b9c2b835b129eadee4"
+        },
+        {
+          "name": "xl/media/image4.jpeg",
+          "bytes": 118088,
+          "sha256": "dd5fda544af3f27d22b3c1f6ffdd616da641994e1e636e6ee09461153d4b4dc3"
+        },
+        {
+          "name": "xl/media/image5.png",
+          "bytes": 35701,
+          "sha256": "2b6caef1a3e3055f8452deab59ee78f5bc7499aa02d71df747c830f2cde83874"
+        }
+      ]
+    },
+    {
+      "file": {
+        "name": "Raw_Data_All_Figures.xlsx",
+        "bytes": 45833,
+        "sha256": "17429e3ff1289763cf8f592924659acc1539eed67057045b7603056dfe6da652"
+      },
+      "sheets": [
+        {
+          "name": "README",
+          "dimension": "A1:D23",
+          "row_count": 20,
+          "nonempty_cells": 52,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Sleep Apnea Detection \u2014 Raw Data Workbook | "
+            },
+            {
+              "cell": "B1",
+              "value": ""
+            },
+            {
+              "cell": "C1",
+              "value": ""
+            },
+            {
+              "cell": "D1",
+              "value": ""
+            },
+            {
+              "cell": "A3",
+              "value": "This workbook contains the raw data underlying each of the 7 figures in the manuscript. Each sheet is self-documented with column headers, source citations, and derivation notes."
+            },
+            {
+              "cell": "B3",
+              "value": ""
+            },
+            {
+              "cell": "C3",
+              "value": ""
+            },
+            {
+              "cell": "D3",
+              "value": ""
+            },
+            {
+              "cell": "A4",
+              "value": "Sheet Name"
+            },
+            {
+              "cell": "B4",
+              "value": "Corresponding Figure"
+            },
+            {
+              "cell": "C4",
+              "value": "Data Type"
+            },
+            {
+              "cell": "D4",
+              "value": "Primary Source"
+            },
+            {
+              "cell": "A5",
+              "value": "Fig1_Subsignal_Stats"
+            },
+            {
+              "cell": "B5",
+              "value": "Figure 1"
+            },
+            {
+              "cell": "C5",
+              "value": "Sub-signal amplitude statistics + feature extraction parameters"
+            },
+            {
+              "cell": "D5",
+              "value": "Section 2.2.3; PSG-Audio Kaggle [30]"
+            },
+            {
+              "cell": "A6",
+              "value": "Fig2_Model_Architecture"
+            },
+            {
+              "cell": "B6",
+              "value": "Figure 2"
+            },
+            {
+              "cell": "C6",
+              "value": "Layer specification, hyperparameters, feature pipeline summary"
+            },
+            {
+              "cell": "D6",
+              "value": "Sections 2.2.3, 2.3, 2.4; Table 2"
+            }
+          ]
+        },
+        {
+          "name": "Fig1_Subsignal_Stats",
+          "dimension": "A1:H23",
+          "row_count": 20,
+          "nonempty_cells": 77,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Figure 1 \u2014 Temporal Variability of Respiratory Sub-signals | Raw Data"
+            },
+            {
+              "cell": "B1",
+              "value": ""
+            },
+            {
+              "cell": "C1",
+              "value": ""
+            },
+            {
+              "cell": "D1",
+              "value": ""
+            },
+            {
+              "cell": "E1",
+              "value": ""
+            },
+            {
+              "cell": "F1",
+              "value": ""
+            },
+            {
+              "cell": "G1",
+              "value": ""
+            },
+            {
+              "cell": "H1",
+              "value": ""
+            },
+            {
+              "cell": "A3",
+              "value": "A. Sub-signal Descriptive Statistics (z-score normalised; sampling rate 16,000 Hz; window = 160,000 samples = 10 s)"
+            },
+            {
+              "cell": "B3",
+              "value": ""
+            },
+            {
+              "cell": "C3",
+              "value": ""
+            },
+            {
+              "cell": "D3",
+              "value": ""
+            },
+            {
+              "cell": "E3",
+              "value": ""
+            },
+            {
+              "cell": "F3",
+              "value": ""
+            },
+            {
+              "cell": "G3",
+              "value": ""
+            },
+            {
+              "cell": "H3",
+              "value": ""
+            },
+            {
+              "cell": "A4",
+              "value": "Sub-signal ID"
+            },
+            {
+              "cell": "B4",
+              "value": "Class Label"
+            },
+            {
+              "cell": "C4",
+              "value": "Min Amplitude"
+            },
+            {
+              "cell": "D4",
+              "value": "Max Amplitude"
+            },
+            {
+              "cell": "E4",
+              "value": "Mean Amplitude"
+            },
+            {
+              "cell": "F4",
+              "value": "Std Deviation"
+            },
+            {
+              "cell": "G4",
+              "value": "RMS Energy"
+            },
+            {
+              "cell": "H4",
+              "value": "Zero-Crossing Rate (mean)"
+            },
+            {
+              "cell": "A5",
+              "value": "Sub-signal 0"
+            },
+            {
+              "cell": "B5",
+              "value": "Apnea"
+            },
+            {
+              "cell": "C5",
+              "value": "-5.0999999999999997E-2"
+            },
+            {
+              "cell": "D5",
+              "value": "5.1999999999999998E-2"
+            },
+            {
+              "cell": "E5",
+              "value": "2.0000000000000001E-4"
+            },
+            {
+              "cell": "F5",
+              "value": "1.8100000000000002E-2"
+            },
+            {
+              "cell": "G5",
+              "value": "1.8100000000000002E-2"
+            },
+            {
+              "cell": "H5",
+              "value": "0.14199999999999999"
+            },
+            {
+              "cell": "A6",
+              "value": "Sub-signal 1"
+            },
+            {
+              "cell": "B6",
+              "value": "Apnea"
+            },
+            {
+              "cell": "C6",
+              "value": "-4.8000000000000001E-2"
+            },
+            {
+              "cell": "D6",
+              "value": "4.5999999999999999E-2"
+            },
+            {
+              "cell": "E6",
+              "value": "-1E-4"
+            },
+            {
+              "cell": "F6",
+              "value": "1.6299999999999999E-2"
+            },
+            {
+              "cell": "G6",
+              "value": "1.6299999999999999E-2"
+            },
+            {
+              "cell": "H6",
+              "value": "0.13800000000000001"
+            }
+          ]
+        },
+        {
+          "name": "Fig2_Model_Architecture",
+          "dimension": "A1:E31",
+          "row_count": 26,
+          "nonempty_cells": 92,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Figure 2 \u2014 Model Architecture and Feature Pipeline | Specification Table"
+            },
+            {
+              "cell": "B1",
+              "value": ""
+            },
+            {
+              "cell": "C1",
+              "value": ""
+            },
+            {
+              "cell": "D1",
+              "value": ""
+            },
+            {
+              "cell": "E1",
+              "value": ""
+            },
+            {
+              "cell": "A3",
+              "value": "A. Neural Network Layer Specification"
+            },
+            {
+              "cell": "B3",
+              "value": ""
+            },
+            {
+              "cell": "C3",
+              "value": ""
+            },
+            {
+              "cell": "D3",
+              "value": ""
+            },
+            {
+              "cell": "E3",
+              "value": ""
+            },
+            {
+              "cell": "A4",
+              "value": "Layer"
+            },
+            {
+              "cell": "B4",
+              "value": "Type"
+            },
+            {
+              "cell": "C4",
+              "value": "Neurons / Units"
+            },
+            {
+              "cell": "D4",
+              "value": "Activation"
+            },
+            {
+              "cell": "E4",
+              "value": "Regularisation"
+            },
+            {
+              "cell": "A5",
+              "value": "Input"
+            },
+            {
+              "cell": "B5",
+              "value": "Dense (input layer)"
+            },
+            {
+              "cell": "C5",
+              "value": "\u2248 280 features"
+            },
+            {
+              "cell": "D5",
+              "value": "\u2014"
+            },
+            {
+              "cell": "E5",
+              "value": "StandardScaler normalisation"
+            },
+            {
+              "cell": "A6",
+              "value": "Layer 1"
+            },
+            {
+              "cell": "B6",
+              "value": "Fully Connected + BN"
+            },
+            {
+              "cell": "C6",
+              "value": "256"
+            },
+            {
+              "cell": "D6",
+              "value": "ReLU"
+            },
+            {
+              "cell": "E6",
+              "value": "Dropout (rate = 0.30)"
+            }
+          ]
+        },
+        {
+          "name": "Fig3_Training_History",
+          "dimension": "A1:J181",
+          "row_count": 179,
+          "nonempty_cells": 915,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Figure 3 \u2014 Training History: Loss and Accuracy per Epoch | Raw Data"
+            },
+            {
+              "cell": "B1",
+              "value": ""
+            },
+            {
+              "cell": "C1",
+              "value": ""
+            },
+            {
+              "cell": "D1",
+              "value": ""
+            },
+            {
+              "cell": "E1",
+              "value": ""
+            },
+            {
+              "cell": "A3",
+              "value": "Reconstructed epoch-level training metrics. Curves follow the convergence pattern described in Section 3.1 and Figure 3. "
+            },
+            {
+              "cell": "B3",
+              "value": ""
+            },
+            {
+              "cell": "C3",
+              "value": ""
+            },
+            {
+              "cell": "D3",
+              "value": ""
+            },
+            {
+              "cell": "E3",
+              "value": ""
+            },
+            {
+              "cell": "A4",
+              "value": "Epoch"
+            },
+            {
+              "cell": "B4",
+              "value": "Train Loss"
+            },
+            {
+              "cell": "C4",
+              "value": "Val Loss"
+            },
+            {
+              "cell": "D4",
+              "value": "Train Accuracy"
+            },
+            {
+              "cell": "E4",
+              "value": "Val Accuracy"
+            },
+            {
+              "cell": "G4",
+              "value": "Key Convergence Landmarks (from Section 3.1)"
+            },
+            {
+              "cell": "H4",
+              "value": ""
+            },
+            {
+              "cell": "I4",
+              "value": ""
+            },
+            {
+              "cell": "J4",
+              "value": ""
+            },
+            {
+              "cell": "A5",
+              "value": "1"
+            },
+            {
+              "cell": "B5",
+              "value": "0.65"
+            },
+            {
+              "cell": "C5",
+              "value": "0.66"
+            },
+            {
+              "cell": "D5",
+              "value": "0.68969999999999998"
+            },
+            {
+              "cell": "E5",
+              "value": "0.68959999999999999"
+            },
+            {
+              "cell": "G5",
+              "value": "Metric"
+            },
+            {
+              "cell": "H5",
+              "value": "Training"
+            },
+            {
+              "cell": "I5",
+              "value": "Validation"
+            },
+            {
+              "cell": "J5",
+              "value": "Notes"
+            },
+            {
+              "cell": "A6",
+              "value": "2"
+            },
+            {
+              "cell": "B6",
+              "value": "0.65"
+            },
+            {
+              "cell": "C6",
+              "value": "0.66"
+            },
+            {
+              "cell": "D6",
+              "value": "0.69289999999999996"
+            },
+            {
+              "cell": "E6",
+              "value": "0.69440000000000002"
+            },
+            {
+              "cell": "G6",
+              "value": "Final epoch"
+            },
+            {
+              "cell": "H6",
+              "value": "175"
+            },
+            {
+              "cell": "I6",
+              "value": "175"
+            },
+            {
+              "cell": "J6",
+              "value": "Early stopping triggered"
+            }
+          ]
+        },
+        {
+          "name": "Fig4_ROC_Curve",
+          "dimension": "A1:I27",
+          "row_count": 25,
+          "nonempty_cells": 121,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Figure 4 \u2014 ROC Curve (AUC = 0.9306) | Threshold-level Data"
+            },
+            {
+              "cell": "B1",
+              "value": ""
+            },
+            {
+              "cell": "C1",
+              "value": ""
+            },
+            {
+              "cell": "D1",
+              "value": ""
+            },
+            {
+              "cell": "E1",
+              "value": ""
+            },
+            {
+              "cell": "A3",
+              "value": "Selected operating points along the ROC curve. Full predicted probability array for all 20,642 test-set sub-signals deposited in Mendeley Data repository (data/test/). AUC computed via trapezoidal rule (sklearn roc_auc_score)."
+            },
+            {
+              "cell": "B3",
+              "value": ""
+            },
+            {
+              "cell": "C3",
+              "value": ""
+            },
+            {
+              "cell": "D3",
+              "value": ""
+            },
+            {
+              "cell": "E3",
+              "value": ""
+            },
+            {
+              "cell": "A4",
+              "value": "Decision Threshold"
+            },
+            {
+              "cell": "B4",
+              "value": "True Positive Rate (Sensitivity)"
+            },
+            {
+              "cell": "C4",
+              "value": "False Positive Rate (1\u2212Specificity)"
+            },
+            {
+              "cell": "D4",
+              "value": "Specificity"
+            },
+            {
+              "cell": "E4",
+              "value": "Notes"
+            },
+            {
+              "cell": "A5",
+              "value": "0"
+            },
+            {
+              "cell": "B5",
+              "value": "1"
+            },
+            {
+              "cell": "C5",
+              "value": "1"
+            },
+            {
+              "cell": "D5",
+              "value": "0"
+            },
+            {
+              "cell": "E5",
+              "value": "All predicted positive (trivial)"
+            },
+            {
+              "cell": "G5",
+              "value": "Overall Performance Summary"
+            },
+            {
+              "cell": "H5",
+              "value": ""
+            },
+            {
+              "cell": "I5",
+              "value": ""
+            },
+            {
+              "cell": "A6",
+              "value": "0.05"
+            },
+            {
+              "cell": "B6",
+              "value": "0.998"
+            },
+            {
+              "cell": "C6",
+              "value": "0.58199999999999996"
+            },
+            {
+              "cell": "D6",
+              "value": "0.41799999999999998"
+            },
+            {
+              "cell": "E6",
+              "value": ""
+            },
+            {
+              "cell": "G6",
+              "value": "Metric"
+            },
+            {
+              "cell": "H6",
+              "value": "Value"
+            }
+          ]
+        },
+        {
+          "name": "Fig5_Confusion_Matrix",
+          "dimension": "A1:F28",
+          "row_count": 23,
+          "nonempty_cells": 92,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Figure 5 \u2014 Confusion Matrix (Held-out Test Set, n = 20,642) | Raw Data"
+            },
+            {
+              "cell": "B1",
+              "value": ""
+            },
+            {
+              "cell": "C1",
+              "value": ""
+            },
+            {
+              "cell": "D1",
+              "value": ""
+            },
+            {
+              "cell": "E1",
+              "value": ""
+            },
+            {
+              "cell": "F1",
+              "value": ""
+            },
+            {
+              "cell": "A3",
+              "value": "Decision threshold = 0.50 (fixed a priori). Rows = true class; Columns = predicted class. Values confirmed from uploaded Excel file (apnea_model_results.xlsx)."
+            },
+            {
+              "cell": "B3",
+              "value": ""
+            },
+            {
+              "cell": "C3",
+              "value": ""
+            },
+            {
+              "cell": "D3",
+              "value": ""
+            },
+            {
+              "cell": "E3",
+              "value": ""
+            },
+            {
+              "cell": "F3",
+              "value": ""
+            },
+            {
+              "cell": "A5",
+              "value": "True Class \\ Predicted"
+            },
+            {
+              "cell": "B5",
+              "value": "Predicted: No Apnea (0)"
+            },
+            {
+              "cell": "C5",
+              "value": "Predicted: Apnea (1)"
+            },
+            {
+              "cell": "D5",
+              "value": "Row Total"
+            },
+            {
+              "cell": "A6",
+              "value": "True: No Apnea (0)"
+            },
+            {
+              "cell": "B6",
+              "value": "5937"
+            },
+            {
+              "cell": "C6",
+              "value": "1788"
+            },
+            {
+              "cell": "D6",
+              "value": "7725"
+            }
+          ]
+        },
+        {
+          "name": "Fig6_Prob_Distributions",
+          "dimension": "A1:I47",
+          "row_count": 46,
+          "nonempty_cells": 379,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Figure 6 \u2014 Predicted Probability Distributions by True Class | Binned Data"
+            },
+            {
+              "cell": "B1",
+              "value": ""
+            },
+            {
+              "cell": "C1",
+              "value": ""
+            },
+            {
+              "cell": "D1",
+              "value": ""
+            },
+            {
+              "cell": "E1",
+              "value": ""
+            },
+            {
+              "cell": "F1",
+              "value": ""
+            },
+            {
+              "cell": "A3",
+              "value": "Histogram bin counts (bin width = 0.025) for model-predicted apnea probabilities, stratified by true class. Decision threshold = 0.50. Full probability array in Mendeley Data (data/test/)."
+            },
+            {
+              "cell": "B3",
+              "value": ""
+            },
+            {
+              "cell": "C3",
+              "value": ""
+            },
+            {
+              "cell": "D3",
+              "value": ""
+            },
+            {
+              "cell": "E3",
+              "value": ""
+            },
+            {
+              "cell": "F3",
+              "value": ""
+            },
+            {
+              "cell": "A4",
+              "value": "Bin Lower"
+            },
+            {
+              "cell": "B4",
+              "value": "Bin Upper"
+            },
+            {
+              "cell": "C4",
+              "value": "Bin Midpoint"
+            },
+            {
+              "cell": "D4",
+              "value": "No Apnea Count"
+            },
+            {
+              "cell": "E4",
+              "value": "Apnea Count"
+            },
+            {
+              "cell": "F4",
+              "value": "Total Count"
+            },
+            {
+              "cell": "G4",
+              "value": "No Apnea %"
+            },
+            {
+              "cell": "H4",
+              "value": "Apnea %"
+            },
+            {
+              "cell": "I4",
+              "value": "Classification Region"
+            },
+            {
+              "cell": "A5",
+              "value": "0"
+            },
+            {
+              "cell": "B5",
+              "value": "2.5000000000000001E-2"
+            },
+            {
+              "cell": "C5",
+              "value": "1.2500000000000001E-2"
+            },
+            {
+              "cell": "D5",
+              "value": "2276"
+            },
+            {
+              "cell": "E5",
+              "value": "15"
+            },
+            {
+              "cell": "F5",
+              "value": "2291"
+            },
+            {
+              "cell": "G5",
+              "value": "0.29462783171521034"
+            },
+            {
+              "cell": "H5",
+              "value": "1.1612603545714949E-3"
+            },
+            {
+              "cell": "I5",
+              "value": "High-confidence No Apnea"
+            },
+            {
+              "cell": "A6",
+              "value": "2.5000000000000001E-2"
+            },
+            {
+              "cell": "B6",
+              "value": "0.05"
+            },
+            {
+              "cell": "C6",
+              "value": "3.7499999999999999E-2"
+            },
+            {
+              "cell": "D6",
+              "value": "788"
+            },
+            {
+              "cell": "E6",
+              "value": "23"
+            },
+            {
+              "cell": "F6",
+              "value": "811"
+            },
+            {
+              "cell": "G6",
+              "value": "0.10200647249190939"
+            },
+            {
+              "cell": "H6",
+              "value": "1.7805992103429589E-3"
+            },
+            {
+              "cell": "I6",
+              "value": "High-confidence No Apnea"
+            }
+          ]
+        },
+        {
+          "name": "Fig7_Prediction_Examples",
+          "dimension": "A1:H174",
+          "row_count": 170,
+          "nonempty_cells": 1322,
+          "first_rows": [
+            {
+              "cell": "A1",
+              "value": "Figure 7 \u2014 Representative Sub-signal Waveform Examples by Classification Outcome | Raw Data"
+            },
+            {
+              "cell": "B1",
+              "value": ""
+            },
+            {
+              "cell": "C1",
+              "value": ""
+            },
+            {
+              "cell": "D1",
+              "value": ""
+            },
+            {
+              "cell": "E1",
+              "value": ""
+            },
+            {
+              "cell": "F1",
+              "value": ""
+            },
+            {
+              "cell": "G1",
+              "value": ""
+            },
+            {
+              "cell": "H1",
+              "value": ""
+            },
+            {
+              "cell": "A3",
+              "value": "Four representative sub-signals (1 per classification outcome) selected from the held-out test set. Each sub-signal: 160,000 samples at 16 kHz (10 s). Values shown are z-score normalised amplitude (dimensionless). 160 evenly spaced samples shown per sub-signal for tractability; full waveforms in Mendeley Data."
+            },
+            {
+              "cell": "B3",
+              "value": ""
+            },
+            {
+              "cell": "C3",
+              "value": ""
+            },
+            {
+              "cell": "D3",
+              "value": ""
+            },
+            {
+              "cell": "E3",
+              "value": ""
+            },
+            {
+              "cell": "F3",
+              "value": ""
+            },
+            {
+              "cell": "G3",
+              "value": ""
+            },
+            {
+              "cell": "H3",
+              "value": ""
+            },
+            {
+              "cell": "A4",
+              "value": "Sample Index (of 160)"
+            },
+            {
+              "cell": "B4",
+              "value": "TP: True Positive\nPred=0.97 / Real=Apnea"
+            },
+            {
+              "cell": "C4",
+              "value": "TN: True Negative\nPred=0.00 / Real=No Apnea"
+            },
+            {
+              "cell": "D4",
+              "value": "FP: False Positive\nPred=0.51 / Real=No Apnea"
+            },
+            {
+              "cell": "E4",
+              "value": "FN: False Negative\nPred=0.11 / Real=Apnea"
+            },
+            {
+              "cell": "F4",
+              "value": "Waveform Region (TP)"
+            },
+            {
+              "cell": "G4",
+              "value": "Waveform Region (TN)"
+            },
+            {
+              "cell": "H4",
+              "value": "Waveform Region (FP/FN)"
+            },
+            {
+              "cell": "A5",
+              "value": "1"
+            },
+            {
+              "cell": "B5",
+              "value": "-0.1303"
+            },
+            {
+              "cell": "C5",
+              "value": "2E-3"
+            },
+            {
+              "cell": "D5",
+              "value": "-8.1799999999999998E-2"
+            },
+            {
+              "cell": "E5",
+              "value": "-8.6699999999999999E-2"
+            },
+            {
+              "cell": "F5",
+              "value": "Active breathing"
+            },
+            {
+              "cell": "G5",
+              "value": "Regular oscillation"
+            },
+            {
+              "cell": "H5",
+              "value": "Normal / partial (FN)"
+            },
+            {
+              "cell": "A6",
+              "value": "2"
+            },
+            {
+              "cell": "B6",
+              "value": "0.53080000000000005"
+            },
+            {
+              "cell": "C6",
+              "value": "0.89500000000000002"
+            },
+            {
+              "cell": "D6",
+              "value": "0.4012"
+            },
+            {
+              "cell": "E6",
+              "value": "0.2215"
+            },
+            {
+              "cell": "F6",
+              "value": "Active breathing"
+            },
+            {
+              "cell": "G6",
+              "value": "Regular oscillation"
+            },
+            {
+              "cell": "H6",
+              "value": "Normal / partial (FN)"
+            }
+          ]
+        }
+      ],
+      "embedded_media": []
+    }
+  ],
+  "github": {
+    "repository": "SebasTS15/Sleep-Apnea-Detection-Model",
+    "commit": "ad979ff72de4cb27a308ed03d56c3729a4396352",
+    "tree_receipt": {
+      "name": "Sleep-Apnea-Detection-Model-tree.json",
+      "bytes": 3152,
+      "sha256": "955a609a86395b3c1d6dfcfa8b2f1dfc2e5d5d8e0890770cd916c9788debb0e8"
+    },
+    "complete_tree": {
+      "sha": "ad979ff72de4cb27a308ed03d56c3729a4396352",
+      "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/trees/ad979ff72de4cb27a308ed03d56c3729a4396352",
+      "tree": [
+        {
+          "path": "LICENSE",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fc0eadd03f3b8bad28788ea9a56cdf3dc2ca5f0c",
+          "size": 1067,
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/blobs/fc0eadd03f3b8bad28788ea9a56cdf3dc2ca5f0c"
+        },
+        {
+          "path": "Model",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ee7b612c6e64b9845761050e9e9519b63bd673f8",
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/trees/ee7b612c6e64b9845761050e9e9519b63bd673f8"
+        },
+        {
+          "path": "Model/Sleep Apnea.ipynb",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3352fc56ed8bad4e0f029441d11d85eba23c1f6a",
+          "size": 290000,
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/blobs/3352fc56ed8bad4e0f029441d11d85eba23c1f6a"
+        },
+        {
+          "path": "Model/model_apnea.keras",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "df6ce773ae289d444c1ac42392717d4b17a165d1",
+          "size": 1090253,
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/blobs/df6ce773ae289d444c1ac42392717d4b17a165d1"
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a00bc6ba72667d04a2c00f05c0da4c9e995cc6ea",
+          "size": 2266,
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/blobs/a00bc6ba72667d04a2c00f05c0da4c9e995cc6ea"
+        },
+        {
+          "path": "Results",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "306ec6368843577beafe6a618b74d3b3458f645a",
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/trees/306ec6368843577beafe6a618b74d3b3458f645a"
+        },
+        {
+          "path": "Results/Accuracy.png",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3c8b5c26fe9dae9b9027dcd0a00cd5dd463673ed",
+          "size": 75413,
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/blobs/3c8b5c26fe9dae9b9027dcd0a00cd5dd463673ed"
+        },
+        {
+          "path": "Results/Confusion Matrix.png",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "002987f337e4ee401f174e7165758f8c7b922d37",
+          "size": 17435,
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/blobs/002987f337e4ee401f174e7165758f8c7b922d37"
+        },
+        {
+          "path": "Results/Histogram.jpeg",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6c090ac2cefdf25107b7ada8aee747ca29fb2cdd",
+          "size": 32069,
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/blobs/6c090ac2cefdf25107b7ada8aee747ca29fb2cdd"
+        },
+        {
+          "path": "Results/Normalized Matrix.png",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1083e9c98cfc0ed8c0d13a94e0d3a2bcc591f3a2",
+          "size": 45778,
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/blobs/1083e9c98cfc0ed8c0d13a94e0d3a2bcc591f3a2"
+        },
+        {
+          "path": "Results/Prediction.png",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9c7c0ed529bc70e2ee54bdaf91477ae9dd802e26",
+          "size": 164092,
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/blobs/9c7c0ed529bc70e2ee54bdaf91477ae9dd802e26"
+        },
+        {
+          "path": "Results/Umbral.png",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b19095d8598ee9d2969e657d8d27e19ed5a8238b",
+          "size": 82419,
+          "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/blobs/b19095d8598ee9d2969e657d8d27e19ed5a8238b"
+        }
+      ],
+      "truncated": false
+    },
+    "notebook_receipt": {
+      "name": "Sleep-Apnea-Detection-Model-Model_Sleep Apnea.ipynb",
+      "bytes": 290000,
+      "sha256": "d6af5877a9df1fc0e2e68803dbf54663385b297fbc9d89d04ffe5eca57f5bb70"
+    },
+    "code_cells": [
+      {
+        "cell": 0,
+        "code_sha256": "e3b2a2abcf284950e08ac65d19713e9ad4b63bd7299a3e9bfbc1e41f8baf423c"
+      },
+      {
+        "cell": 1,
+        "code_sha256": "7f50be57dfa7814ac2b8d6a3dbdd50703e55df2bbf2ec4de4a12412642e5eafa"
+      },
+      {
+        "cell": 2,
+        "code_sha256": "57619d0ff118345e35fa7512b371271400bb9128db1e898f2265e4de738544df"
+      },
+      {
+        "cell": 3,
+        "code_sha256": "f15488de99c49678c395b6bff49df4e5519b193530dc617fcc2f13c3113aa6f6"
+      },
+      {
+        "cell": 4,
+        "code_sha256": "95ab4ab974838e7f9c1b6d7fdd38bd8baf945fa12957918da68d73021deb0622"
+      },
+      {
+        "cell": 5,
+        "code_sha256": "895399ad71021875c2484873dc4ce2b833749e1f00682c8f7261bbdb6e124067"
+      },
+      {
+        "cell": 6,
+        "code_sha256": "66bcf74aa21d81f4ebe28b47a4450fc501d07852f09474eb8a87a136cbadde9c"
+      },
+      {
+        "cell": 7,
+        "code_sha256": "c65474bddfd1bf8920251e050c56f2c506a21bbe0a80dc129f549432d84b5669"
+      },
+      {
+        "cell": 8,
+        "code_sha256": "2bb57825e82c973b436051dc29267f35983dd0bb5c15461fab2efa0747f6bbb2"
+      },
+      {
+        "cell": 9,
+        "code_sha256": "05817f0864a989a6ce7f60380fda5be1935b6a3ed8770ea7ebde36a000313daa"
+      },
+      {
+        "cell": 10,
+        "code_sha256": "52d7ae80708b58c5964e1e7db1c6a8cd15d53fea5e95c514f7b7beec1cf795e6"
+      }
+    ],
+    "license": {
+      "name": "Sleep-Apnea-Detection-Model-LICENSE",
+      "bytes": 1067,
+      "sha256": "1d453d69e0a8e77b7f76e5c105afc9daa1eed8809ae370a4bcf88e1327b33a52"
+    }
+  },
+  "checkpoint": {
+    "name": "model_apnea.keras",
+    "bytes": 1090253,
+    "sha256": "c1938a82248bb3526b2c9ff7a76f5e5d7ceee35cf552706e6587766f0fedf664",
+    "git_blob": "df6ce773ae289d444c1ac42392717d4b17a165d1",
+    "metadata": {
+      "keras_version": "3.10.0",
+      "date_saved": "2025-11-14@19:25:53"
+    },
+    "members": [
+      {
+        "name": "metadata.json",
+        "bytes": 64,
+        "sha256": "3c3016cf7d4f1140f9ac3af65423104ad33e2cb892a49b756a67a254517512fe"
+      },
+      {
+        "name": "config.json",
+        "bytes": 9571,
+        "sha256": "0bebc77c16f8b6c9e3f31248a2f72bdb99183ece53a9960e1a84589371430763"
+      },
+      {
+        "name": "model.weights.h5",
+        "bytes": 1080288,
+        "sha256": "d25531788794515ccac898cbd1443db89b0d30b005054bb311cb9070c0404da0"
+      }
+    ],
+    "config": {
+      "module": "keras",
+      "class_name": "Sequential",
+      "config": {
+        "name": "sequential",
+        "trainable": true,
+        "dtype": {
+          "module": "keras",
+          "class_name": "DTypePolicy",
+          "config": {
+            "name": "float32"
+          },
+          "registered_name": null,
+          "shared_object_id": 134559461117632
+        },
+        "layers": [
+          {
+            "module": "keras.layers",
+            "class_name": "InputLayer",
+            "config": {
+              "batch_shape": [
+                null,
+                160
+              ],
+              "dtype": "float32",
+              "sparse": false,
+              "ragged": false,
+              "name": "input_layer"
+            },
+            "registered_name": null
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "Dense",
+            "config": {
+              "name": "dense",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null
+              },
+              "units": 256,
+              "activation": "relu",
+              "use_bias": true,
+              "kernel_initializer": {
+                "module": "keras.initializers",
+                "class_name": "GlorotUniform",
+                "config": {
+                  "seed": null
+                },
+                "registered_name": null
+              },
+              "bias_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Zeros",
+                "config": {},
+                "registered_name": null
+              },
+              "kernel_regularizer": null,
+              "bias_regularizer": null,
+              "kernel_constraint": null,
+              "bias_constraint": null
+            },
+            "registered_name": null,
+            "build_config": {
+              "input_shape": [
+                null,
+                160
+              ]
+            }
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "BatchNormalization",
+            "config": {
+              "name": "batch_normalization",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null,
+                "shared_object_id": 134559461117632
+              },
+              "axis": -1,
+              "momentum": 0.99,
+              "epsilon": 0.001,
+              "center": true,
+              "scale": true,
+              "beta_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Zeros",
+                "config": {},
+                "registered_name": null
+              },
+              "gamma_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Ones",
+                "config": {},
+                "registered_name": null
+              },
+              "moving_mean_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Zeros",
+                "config": {},
+                "registered_name": null
+              },
+              "moving_variance_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Ones",
+                "config": {},
+                "registered_name": null
+              },
+              "beta_regularizer": null,
+              "gamma_regularizer": null,
+              "beta_constraint": null,
+              "gamma_constraint": null,
+              "synchronized": false
+            },
+            "registered_name": null,
+            "build_config": {
+              "input_shape": [
+                null,
+                256
+              ]
+            }
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "Dropout",
+            "config": {
+              "name": "dropout",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null,
+                "shared_object_id": 134559461117632
+              },
+              "rate": 0.3,
+              "seed": null,
+              "noise_shape": null
+            },
+            "registered_name": null
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "Dense",
+            "config": {
+              "name": "dense_1",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null,
+                "shared_object_id": 134559461117632
+              },
+              "units": 128,
+              "activation": "relu",
+              "use_bias": true,
+              "kernel_initializer": {
+                "module": "keras.initializers",
+                "class_name": "GlorotUniform",
+                "config": {
+                  "seed": null
+                },
+                "registered_name": null
+              },
+              "bias_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Zeros",
+                "config": {},
+                "registered_name": null
+              },
+              "kernel_regularizer": null,
+              "bias_regularizer": null,
+              "kernel_constraint": null,
+              "bias_constraint": null
+            },
+            "registered_name": null,
+            "build_config": {
+              "input_shape": [
+                null,
+                256
+              ]
+            }
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "BatchNormalization",
+            "config": {
+              "name": "batch_normalization_1",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null,
+                "shared_object_id": 134559461117632
+              },
+              "axis": -1,
+              "momentum": 0.99,
+              "epsilon": 0.001,
+              "center": true,
+              "scale": true,
+              "beta_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Zeros",
+                "config": {},
+                "registered_name": null
+              },
+              "gamma_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Ones",
+                "config": {},
+                "registered_name": null
+              },
+              "moving_mean_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Zeros",
+                "config": {},
+                "registered_name": null
+              },
+              "moving_variance_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Ones",
+                "config": {},
+                "registered_name": null
+              },
+              "beta_regularizer": null,
+              "gamma_regularizer": null,
+              "beta_constraint": null,
+              "gamma_constraint": null,
+              "synchronized": false
+            },
+            "registered_name": null,
+            "build_config": {
+              "input_shape": [
+                null,
+                128
+              ]
+            }
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "Dropout",
+            "config": {
+              "name": "dropout_1",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null,
+                "shared_object_id": 134559461117632
+              },
+              "rate": 0.3,
+              "seed": null,
+              "noise_shape": null
+            },
+            "registered_name": null
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "Dense",
+            "config": {
+              "name": "dense_2",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null,
+                "shared_object_id": 134559461117632
+              },
+              "units": 64,
+              "activation": "relu",
+              "use_bias": true,
+              "kernel_initializer": {
+                "module": "keras.initializers",
+                "class_name": "GlorotUniform",
+                "config": {
+                  "seed": null
+                },
+                "registered_name": null
+              },
+              "bias_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Zeros",
+                "config": {},
+                "registered_name": null
+              },
+              "kernel_regularizer": null,
+              "bias_regularizer": null,
+              "kernel_constraint": null,
+              "bias_constraint": null
+            },
+            "registered_name": null,
+            "build_config": {
+              "input_shape": [
+                null,
+                128
+              ]
+            }
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "BatchNormalization",
+            "config": {
+              "name": "batch_normalization_2",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null,
+                "shared_object_id": 134559461117632
+              },
+              "axis": -1,
+              "momentum": 0.99,
+              "epsilon": 0.001,
+              "center": true,
+              "scale": true,
+              "beta_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Zeros",
+                "config": {},
+                "registered_name": null
+              },
+              "gamma_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Ones",
+                "config": {},
+                "registered_name": null
+              },
+              "moving_mean_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Zeros",
+                "config": {},
+                "registered_name": null
+              },
+              "moving_variance_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Ones",
+                "config": {},
+                "registered_name": null
+              },
+              "beta_regularizer": null,
+              "gamma_regularizer": null,
+              "beta_constraint": null,
+              "gamma_constraint": null,
+              "synchronized": false
+            },
+            "registered_name": null,
+            "build_config": {
+              "input_shape": [
+                null,
+                64
+              ]
+            }
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "Dropout",
+            "config": {
+              "name": "dropout_2",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null,
+                "shared_object_id": 134559461117632
+              },
+              "rate": 0.2,
+              "seed": null,
+              "noise_shape": null
+            },
+            "registered_name": null
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "Dense",
+            "config": {
+              "name": "dense_3",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null,
+                "shared_object_id": 134559461117632
+              },
+              "units": 32,
+              "activation": "relu",
+              "use_bias": true,
+              "kernel_initializer": {
+                "module": "keras.initializers",
+                "class_name": "GlorotUniform",
+                "config": {
+                  "seed": null
+                },
+                "registered_name": null
+              },
+              "bias_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Zeros",
+                "config": {},
+                "registered_name": null
+              },
+              "kernel_regularizer": null,
+              "bias_regularizer": null,
+              "kernel_constraint": null,
+              "bias_constraint": null
+            },
+            "registered_name": null,
+            "build_config": {
+              "input_shape": [
+                null,
+                64
+              ]
+            }
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "Dropout",
+            "config": {
+              "name": "dropout_3",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null,
+                "shared_object_id": 134559461117632
+              },
+              "rate": 0.2,
+              "seed": null,
+              "noise_shape": null
+            },
+            "registered_name": null
+          },
+          {
+            "module": "keras.layers",
+            "class_name": "Dense",
+            "config": {
+              "name": "dense_4",
+              "trainable": true,
+              "dtype": {
+                "module": "keras",
+                "class_name": "DTypePolicy",
+                "config": {
+                  "name": "float32"
+                },
+                "registered_name": null,
+                "shared_object_id": 134559461117632
+              },
+              "units": 1,
+              "activation": "sigmoid",
+              "use_bias": true,
+              "kernel_initializer": {
+                "module": "keras.initializers",
+                "class_name": "GlorotUniform",
+                "config": {
+                  "seed": null
+                },
+                "registered_name": null
+              },
+              "bias_initializer": {
+                "module": "keras.initializers",
+                "class_name": "Zeros",
+                "config": {},
+                "registered_name": null
+              },
+              "kernel_regularizer": null,
+              "bias_regularizer": null,
+              "kernel_constraint": null,
+              "bias_constraint": null
+            },
+            "registered_name": null,
+            "build_config": {
+              "input_shape": [
+                null,
+                32
+              ]
+            }
+          }
+        ],
+        "build_input_shape": [
+          null,
+          160
+        ]
+      },
+      "registered_name": null,
+      "build_config": {
+        "input_shape": [
+          null,
+          160
+        ]
+      },
+      "compile_config": {
+        "optimizer": {
+          "module": "keras.optimizers",
+          "class_name": "Adam",
+          "config": {
+            "name": "adam",
+            "learning_rate": 0.0010000000474974513,
+            "weight_decay": null,
+            "clipnorm": null,
+            "global_clipnorm": null,
+            "clipvalue": null,
+            "use_ema": false,
+            "ema_momentum": 0.99,
+            "ema_overwrite_frequency": null,
+            "loss_scale_factor": null,
+            "gradient_accumulation_steps": null,
+            "beta_1": 0.9,
+            "beta_2": 0.999,
+            "epsilon": 1e-07,
+            "amsgrad": false
+          },
+          "registered_name": null
+        },
+        "loss": "binary_crossentropy",
+        "loss_weights": null,
+        "metrics": [
+          "accuracy",
+          {
+            "module": "keras.metrics",
+            "class_name": "AUC",
+            "config": {
+              "name": "auc",
+              "dtype": "float32",
+              "num_thresholds": 200,
+              "curve": "ROC",
+              "summation_method": "interpolation",
+              "multi_label": false,
+              "num_labels": null,
+              "label_weights": null,
+              "from_logits": false
+            },
+            "registered_name": null
+          }
+        ],
+        "weighted_metrics": null,
+        "run_eagerly": false,
+        "steps_per_execution": 1,
+        "jit_compile": true
+      }
+    }
+  }
+}
