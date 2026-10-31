@@ -27,7 +27,47 @@
         "receipt_sha256": "aa2cc23fbb445310b680554d9924963c4c35e365583ec9d64d8900c5057f8a59"
       },
       "decision_change": "A newly identified licensed corpus contains actual bedside-phone audio plus stage labels, rather than wrist/EEG inputs or only event clips. It is a concrete original-training lead, not an available fitted estimator.",
-      "remaining_prerequisite": "Obtain authorized file-level V5 access; inspect actual phone files, full-night stage-code/timestamp mapping and coverage; pin subject-separated train/validation/test identifiers before fitting. Derive an explicit mono input contract rather than duplicate mono into a trained stereo model. Demonstrate useful held-out ambient-input behavior before Android integration."
+      "remaining_prerequisite": "The initial endpoint denial below is superseded as a general access concern by the successful anonymous public-file follow-up. Validate the actual release waveform/label contract and partial coverage, then original training and useful held-out ambient-input behavior are still required before Android integration.",
+      "public_file_followup": {
+        "initial_denial_scope": "The recorded dataset/details endpoint returned70001. That response did not establish a browser or individual-file download restriction. The initial file_inventory_verified=false fields describe the earlier probe, not current access.",
+        "anonymous_access_now_verified": true,
+        "public_frontend_javascript": {
+          "url": "https://www.scidb.cn/_nuxt/c8a1516.js",
+          "bytes": 5962699,
+          "sha256": "1b6f7612b82a224eb610115d095a582b814170101aef5a3475100c5b9247b959"
+        },
+        "file_list": {
+          "url": "https://www.scidb.cn/api/gin-sdb-filetree/public/file/childrenFileListByPath",
+          "method": "POST",
+          "json": {"dataSetId":"7b5f1df9c3d4435baa0ff2dbecf487d9","version":"V5","path":"/V5","lastIndex":0,"pageSize":50},
+          "response_code": 20000,
+          "root_inventory_sha256": "0745eedb80c30ac77f791d932a94a47982d98b4abc064f229f00e30e5780fdd0",
+          "data_directory": "/V5/Data;50 subject folders01-50",
+          "expand": "Use returned folder.path with the same public endpoint; frontend uses lastIndex=0 initially and last returned index+1 for additional pages."
+        },
+        "helper": {
+          "url": "https://china.scidb.cn/download?fileId=2fffe6e291fb415043d44ec364b74daa",
+          "name": "osa_data_eng.py",
+          "bytes": 19379,
+          "md5_verified": "6ce9dfabe650f2fcb8d58eff654e3878",
+          "sha256": "77b6d9537c27bddc0e5a95c13e849d5e0a91f636b381abb86fc11c118031b292",
+          "read_only_not_executed": true,
+          "timebase_lines": [34,49,113,275,276,279],
+          "timebase": "Absolute stage CSV column1 hh:mm:ss.ms; hours below12 add24; subtract the same subject annotation.record_start. Source comment identifies that value as audio alignment. No scaling or guessed shift is supplied.",
+          "input_lines": [118,119],
+          "input": "Phone waveform loaded with librosa.load(sr=None), default mono."
+        },
+        "actual_released_phone_format": "Three bounded4096-byte HTTP206 header ranges establish PCM16 mono8000Hz,16000bytes/second. This differs from the paper's original stereo48k phone recording description. No upsampling was used or high-frequency content invented.",
+        "source_stages_observed": ["W","N1","N2","N3","R","blank terminal row"],
+        "coverage": [
+          {"subject":"01","phone_file_id":"821e4415a7713803a0ae02acf9241042","phone_file_bytes":356126798,"phone_published_md5":"54c8f003a98e905ee9301e0043198a4d","header_sha256":"4c9b09cedf7de33443b16c05a2c7a94b692aa6c31b02b52bbca961c612955989","duration_s":22257.92,"record_start":75454,"csv_epochs":1174,"full_30s_epochs_within_pcm":537,"outside_pcm":636,"blank":1,"in_bounds_source_counts":{"W":47,"N1":69,"N2":315,"N3":63,"R":43},"stage_csv_sha256":"2b558eb9ce1c4ad9976b11aa074ceda2f21985f25a0437c1d997352ba79f7a1e","annotation_sha256":"25bed7efd887dfeb45c968ff53c8737b426e3d8c70ee77dc926d33109b05b934"},
+          {"subject":"02","phone_file_id":"027bba11d71203de0c008ebc631b78ba","phone_file_bytes":340786638,"phone_published_md5":"8cb5070da43dcbd6214fff504b597f4f","header_sha256":"b0a2650b1e4483035e5cfce4a2165eae633b0bdfd27489481b3154f128699c30","duration_s":21299.16,"record_start":76230,"csv_epochs":1262,"full_30s_epochs_within_pcm":678,"outside_pcm":583,"blank":1,"in_bounds_source_counts":{"W":6,"N1":371,"N2":211,"N3":1,"R":89}},
+          {"subject":"03","phone_file_id":"69b38694342f84c4fb834e4863b2f975","phone_file_bytes":356126798,"phone_published_md5":"8f1552890da6e5011ee2e11ac9770cd1","header_sha256":"7aea92e5fd77328fff2ed79358eb15dbf72a87bafcf7e1d6c1be343f5110a1af","duration_s":22257.92,"record_start":77034,"csv_epochs":1203,"full_30s_epochs_within_pcm":627,"outside_pcm":575,"blank":1,"in_bounds_source_counts":{"W":14,"N1":82,"N2":349,"N3":104,"R":78}}
+        ],
+        "limits": "The WAV headers do not embed a start clock. The supplied annotation/helper offset is author provenance, not independent synchronization proof. Full phone files were not downloaded or rehashed. Labels outside actual PCM and blank rows must remain missing; the release cannot be called complete-night coverage.",
+        "protocol": "2026-10-31-phone-stage-pilot-protocol.json; frozen before any fit/inference. TRAIN01-30, validation31-40, untouched test41-50.",
+        "actions": {"account_or_authentication_used":false,"access_bypass":false,"helper_executed":false,"model_fit_or_inference":false,"complete_phone_file_downloaded":false,"phone_or_outputs_used":false}
+      }
     },
     {
       "id": "xu_brown_ma_embc2025",
