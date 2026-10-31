@@ -26,6 +26,6 @@ The full header, duration, intensity and Connect target fit is asserted in the n
 
 ## Remaining scope and visible limitation
 
-The actual `appearance-lamp-config.png` reveals a pre-existing supporting-page defect: “Direct Philips Hue bridge” is squeezed into four short lines next to a subtitle incorrectly rendered as a trailing value. This archive preserves that defect honestly; a separate bounded implementation will correct it. No successful full-36-screen match is claimed.
+The original `appearance-lamp-config.png` preserves the pre-existing squeezed Hue-title defect. **Corrected in the separately archived follow-up [41197756647](readable-bridge-41197756647/README.md)** at source b1983691: the actual title is one readable line with its subtitle below. That same existing method passed in54.815 seconds, and all11 follow-up originals were individually inspected. Original files above remain unchanged for traceability. No successful full-36-screen match is claimed.
 
 No physical device, alarm, audio, haptic, flashlight, network light connection, credential validity or lamp restoration was exercised. The runner reports host audio disabled and no native playback outputs allowlisted. Opening this local configuration page loads saved configuration; it does not contact a lamp. Phone/hardware integration, external prerequisites, other feature gaps and broader design remain open.

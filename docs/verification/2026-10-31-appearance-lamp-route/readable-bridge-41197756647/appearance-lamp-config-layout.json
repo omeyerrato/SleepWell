@@ -1,0 +1,803 @@
+{
+  "class": "DecorView",
+  "x": 0,
+  "y": 0,
+  "width": 1080,
+  "height": 2316,
+  "measuredHeight": 2316,
+  "minimumHeight": 0,
+  "shown": true,
+  "visible": "0 0 1080 2316",
+  "children": [
+    {
+      "class": "FrameLayout",
+      "x": 0,
+      "y": 0,
+      "width": 1080,
+      "height": 2316,
+      "measuredHeight": 2316,
+      "minimumHeight": 0,
+      "shown": true,
+      "visible": "0 0 1080 2316",
+      "children": [
+        {
+          "class": "FrameLayout",
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2316,
+          "measuredHeight": 2316,
+          "minimumHeight": 0,
+          "shown": true,
+          "visible": "0 0 1080 2316",
+          "children": [
+            {
+              "class": "LinearLayout",
+              "x": 0,
+              "y": 0,
+              "width": 1080,
+              "height": 2316,
+              "measuredHeight": 2316,
+              "minimumHeight": 0,
+              "shown": true,
+              "visible": "0 0 1080 2316",
+              "children": [
+                {
+                  "class": "ScrollView",
+                  "x": 0,
+                  "y": 131,
+                  "width": 1080,
+                  "height": 1923,
+                  "measuredHeight": 1923,
+                  "minimumHeight": 0,
+                  "shown": true,
+                  "visible": "0 131 1080 2054",
+                  "children": [
+                    {
+                      "class": "LinearLayout",
+                      "x": 0,
+                      "y": 131,
+                      "width": 1080,
+                      "height": 2547,
+                      "measuredHeight": 2547,
+                      "minimumHeight": 0,
+                      "shown": true,
+                      "visible": "0 131 1080 2054",
+                      "children": [
+                        {
+                          "class": "LinearLayout",
+                          "x": 63,
+                          "y": 173,
+                          "width": 954,
+                          "height": 147,
+                          "measuredHeight": 147,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 173 1017 320",
+                          "children": [
+                            {
+                              "class": "Icon",
+                              "x": 63,
+                              "y": 183,
+                              "width": 126,
+                              "height": 126,
+                              "measuredHeight": 126,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "63 183 189 309",
+                              "description": "Back"
+                            },
+                            {
+                              "class": "TextView",
+                              "x": 189,
+                              "y": 208,
+                              "width": 828,
+                              "height": 76,
+                              "measuredHeight": 76,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "189 208 1017 284",
+                              "text": "Bedroom light",
+                              "textSizePx": 63
+                            }
+                          ]
+                        },
+                        {
+                          "class": "View",
+                          "x": 63,
+                          "y": 320,
+                          "width": 1,
+                          "height": 32,
+                          "measuredHeight": 32,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 320 64 352"
+                        },
+                        {
+                          "class": "LinearLayout",
+                          "x": 63,
+                          "y": 352,
+                          "width": 954,
+                          "height": 168,
+                          "measuredHeight": 168,
+                          "minimumHeight": 168,
+                          "shown": true,
+                          "visible": "63 352 1017 520",
+                          "description": "Direct Philips Hue bridge",
+                          "children": [
+                            {
+                              "class": "Icon",
+                              "x": 63,
+                              "y": 402,
+                              "width": 68,
+                              "height": 68,
+                              "measuredHeight": 68,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "63 402 131 470"
+                            },
+                            {
+                              "class": "LinearLayout",
+                              "x": 173,
+                              "y": 389,
+                              "width": 797,
+                              "height": 93,
+                              "measuredHeight": 93,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "173 389 970 482",
+                              "children": [
+                                {
+                                  "class": "TextView",
+                                  "x": 173,
+                                  "y": 389,
+                                  "width": 797,
+                                  "height": 47,
+                                  "measuredHeight": 47,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "173 389 970 436",
+                                  "text": "Direct Philips Hue bridge",
+                                  "textSizePx": 39.375
+                                },
+                                {
+                                  "class": "View",
+                                  "x": 173,
+                                  "y": 436,
+                                  "width": 1,
+                                  "height": 11,
+                                  "measuredHeight": 11,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "173 436 174 447"
+                                },
+                                {
+                                  "class": "TextView",
+                                  "x": 173,
+                                  "y": 447,
+                                  "width": 797,
+                                  "height": 35,
+                                  "measuredHeight": 35,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "173 447 970 482",
+                                  "text": "Pair one light over your private LAN",
+                                  "textSizePx": 28.875
+                                }
+                              ]
+                            },
+                            {
+                              "class": "Icon",
+                              "x": 970,
+                              "y": 412,
+                              "width": 47,
+                              "height": 47,
+                              "measuredHeight": 47,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "970 412 1017 459"
+                            }
+                          ]
+                        },
+                        {
+                          "class": "View",
+                          "x": 63,
+                          "y": 520,
+                          "width": 954,
+                          "height": 3,
+                          "measuredHeight": 3,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 520 1017 523"
+                        },
+                        {
+                          "class": "TextView",
+                          "x": 63,
+                          "y": 523,
+                          "width": 954,
+                          "height": 60,
+                          "measuredHeight": 60,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 523 1017 583",
+                          "text": "Home Assistant",
+                          "textSizePx": 49.875
+                        },
+                        {
+                          "class": "TextView",
+                          "x": 63,
+                          "y": 583,
+                          "width": 954,
+                          "height": 41,
+                          "measuredHeight": 41,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 583 1017 624",
+                          "text": "Fade in one dimmable lamp when a real alarm starts.",
+                          "textSizePx": 34.125
+                        },
+                        {
+                          "class": "View",
+                          "x": 63,
+                          "y": 624,
+                          "width": 1,
+                          "height": 21,
+                          "measuredHeight": 21,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 624 64 645"
+                        },
+                        {
+                          "class": "TextView",
+                          "x": 63,
+                          "y": 645,
+                          "width": 954,
+                          "height": 41,
+                          "measuredHeight": 41,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 645 1017 686",
+                          "text": "Not configured",
+                          "textSizePx": 34.125
+                        },
+                        {
+                          "class": "View",
+                          "x": 63,
+                          "y": 686,
+                          "width": 1,
+                          "height": 26,
+                          "measuredHeight": 26,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 686 64 712"
+                        },
+                        {
+                          "class": "TextView",
+                          "x": 63,
+                          "y": 712,
+                          "width": 954,
+                          "height": 41,
+                          "measuredHeight": 41,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 712 1017 753",
+                          "text": "Server HTTPS address",
+                          "textSizePx": 34.125
+                        },
+                        {
+                          "class": "EditText",
+                          "x": 63,
+                          "y": 753,
+                          "width": 954,
+                          "height": 126,
+                          "measuredHeight": 126,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 753 1017 879",
+                          "description": "Server HTTPS address",
+                          "text": "",
+                          "textSizePx": 36.75
+                        },
+                        {
+                          "class": "View",
+                          "x": 63,
+                          "y": 879,
+                          "width": 1,
+                          "height": 26,
+                          "measuredHeight": 26,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 879 64 905"
+                        },
+                        {
+                          "class": "TextView",
+                          "x": 63,
+                          "y": 905,
+                          "width": 954,
+                          "height": 41,
+                          "measuredHeight": 41,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 905 1017 946",
+                          "text": "Long-lived access token",
+                          "textSizePx": 34.125
+                        },
+                        {
+                          "class": "EditText",
+                          "x": 63,
+                          "y": 946,
+                          "width": 954,
+                          "height": 126,
+                          "measuredHeight": 126,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 946 1017 1072",
+                          "description": "Long-lived access token",
+                          "text": "",
+                          "textSizePx": 36.75
+                        },
+                        {
+                          "class": "View",
+                          "x": 63,
+                          "y": 1072,
+                          "width": 1,
+                          "height": 26,
+                          "measuredHeight": 26,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 1072 64 1098"
+                        },
+                        {
+                          "class": "TextView",
+                          "x": 63,
+                          "y": 1098,
+                          "width": 954,
+                          "height": 41,
+                          "measuredHeight": 41,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 1098 1017 1139",
+                          "text": "Light entity",
+                          "textSizePx": 34.125
+                        },
+                        {
+                          "class": "EditText",
+                          "x": 63,
+                          "y": 1139,
+                          "width": 954,
+                          "height": 126,
+                          "measuredHeight": 126,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 1139 1017 1265",
+                          "description": "Light entity",
+                          "text": "light.bedroom",
+                          "textSizePx": 36.75
+                        },
+                        {
+                          "class": "View",
+                          "x": 63,
+                          "y": 1265,
+                          "width": 1,
+                          "height": 21,
+                          "measuredHeight": 21,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 1265 64 1286"
+                        },
+                        {
+                          "class": "LinearLayout",
+                          "x": 63,
+                          "y": 1286,
+                          "width": 954,
+                          "height": 168,
+                          "measuredHeight": 168,
+                          "minimumHeight": 168,
+                          "shown": true,
+                          "visible": "63 1286 1017 1454",
+                          "description": "Sunrise duration",
+                          "children": [
+                            {
+                              "class": "Icon",
+                              "x": 63,
+                              "y": 1336,
+                              "width": 68,
+                              "height": 68,
+                              "measuredHeight": 68,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "63 1336 131 1404"
+                            },
+                            {
+                              "class": "LinearLayout",
+                              "x": 173,
+                              "y": 1346,
+                              "width": 683,
+                              "height": 47,
+                              "measuredHeight": 47,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "173 1346 856 1393",
+                              "children": [
+                                {
+                                  "class": "TextView",
+                                  "x": 173,
+                                  "y": 1346,
+                                  "width": 683,
+                                  "height": 47,
+                                  "measuredHeight": 47,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "173 1346 856 1393",
+                                  "text": "Sunrise duration",
+                                  "textSizePx": 39.375
+                                }
+                              ]
+                            },
+                            {
+                              "class": "TextView",
+                              "x": 856,
+                              "y": 1349,
+                              "width": 114,
+                              "height": 41,
+                              "measuredHeight": 41,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "856 1349 970 1390",
+                              "text": "10 min",
+                              "textSizePx": 34.125
+                            },
+                            {
+                              "class": "Icon",
+                              "x": 970,
+                              "y": 1346,
+                              "width": 47,
+                              "height": 47,
+                              "measuredHeight": 47,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "970 1346 1017 1393"
+                            }
+                          ]
+                        },
+                        {
+                          "class": "LinearLayout",
+                          "x": 63,
+                          "y": 1454,
+                          "width": 954,
+                          "height": 168,
+                          "measuredHeight": 168,
+                          "minimumHeight": 168,
+                          "shown": true,
+                          "visible": "63 1454 1017 1622",
+                          "description": "Maximum intensity",
+                          "children": [
+                            {
+                              "class": "Icon",
+                              "x": 63,
+                              "y": 1504,
+                              "width": 68,
+                              "height": 68,
+                              "measuredHeight": 68,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "63 1504 131 1572"
+                            },
+                            {
+                              "class": "LinearLayout",
+                              "x": 173,
+                              "y": 1514,
+                              "width": 719,
+                              "height": 47,
+                              "measuredHeight": 47,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "173 1514 892 1561",
+                              "children": [
+                                {
+                                  "class": "TextView",
+                                  "x": 173,
+                                  "y": 1514,
+                                  "width": 719,
+                                  "height": 47,
+                                  "measuredHeight": 47,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "173 1514 892 1561",
+                                  "text": "Maximum intensity",
+                                  "textSizePx": 39.375
+                                }
+                              ]
+                            },
+                            {
+                              "class": "TextView",
+                              "x": 892,
+                              "y": 1517,
+                              "width": 78,
+                              "height": 41,
+                              "measuredHeight": 41,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "892 1517 970 1558",
+                              "text": "80%",
+                              "textSizePx": 34.125
+                            },
+                            {
+                              "class": "Icon",
+                              "x": 970,
+                              "y": 1514,
+                              "width": 47,
+                              "height": 47,
+                              "measuredHeight": 47,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "970 1514 1017 1561"
+                            }
+                          ]
+                        },
+                        {
+                          "class": "RelativeLayout",
+                          "x": 63,
+                          "y": 1622,
+                          "width": 954,
+                          "height": 190,
+                          "measuredHeight": 190,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 1622 1017 1812",
+                          "children": [
+                            {
+                              "class": "LinearLayout",
+                              "x": 100,
+                              "y": 1665,
+                              "width": 711,
+                              "height": 103,
+                              "measuredHeight": 103,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "100 1665 811 1768",
+                              "children": [
+                                {
+                                  "class": "TextView",
+                                  "x": 100,
+                                  "y": 1665,
+                                  "width": 711,
+                                  "height": 51,
+                                  "measuredHeight": 51,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "100 1665 811 1716",
+                                  "text": "Use with all real alarms",
+                                  "textSizePx": 42
+                                },
+                                {
+                                  "class": "View",
+                                  "x": 100,
+                                  "y": 1716,
+                                  "width": 1,
+                                  "height": 13,
+                                  "measuredHeight": 13,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "100 1716 101 1729"
+                                },
+                                {
+                                  "class": "TextView",
+                                  "x": 100,
+                                  "y": 1729,
+                                  "width": 711,
+                                  "height": 39,
+                                  "measuredHeight": 39,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "100 1729 811 1768",
+                                  "text": "Off until you enable and save.",
+                                  "textSizePx": 31.5
+                                }
+                              ]
+                            },
+                            {
+                              "class": "Toggle",
+                              "x": 843,
+                              "y": 1654,
+                              "width": 137,
+                              "height": 126,
+                              "measuredHeight": 126,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "843 1654 980 1780",
+                              "description": "Use with all real alarms",
+                              "text": "",
+                              "textSizePx": 37
+                            }
+                          ]
+                        },
+                        {
+                          "class": "RelativeLayout",
+                          "x": 63,
+                          "y": 1812,
+                          "width": 954,
+                          "height": 206,
+                          "measuredHeight": 206,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 1812 1017 2018",
+                          "children": [
+                            {
+                              "class": "LinearLayout",
+                              "x": 100,
+                              "y": 1844,
+                              "width": 711,
+                              "height": 142,
+                              "measuredHeight": 142,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "100 1844 811 1986",
+                              "children": [
+                                {
+                                  "class": "TextView",
+                                  "x": 100,
+                                  "y": 1844,
+                                  "width": 711,
+                                  "height": 51,
+                                  "measuredHeight": 51,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "100 1844 811 1895",
+                                  "text": "Restore after alarm stops",
+                                  "textSizePx": 42
+                                },
+                                {
+                                  "class": "View",
+                                  "x": 100,
+                                  "y": 1895,
+                                  "width": 1,
+                                  "height": 13,
+                                  "measuredHeight": 13,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "100 1895 101 1908"
+                                },
+                                {
+                                  "class": "TextView",
+                                  "x": 100,
+                                  "y": 1908,
+                                  "width": 711,
+                                  "height": 78,
+                                  "measuredHeight": 78,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "100 1908 811 1986",
+                                  "text": "Restore the earlier on\/off and brightness when still owned.",
+                                  "textSizePx": 31.5
+                                }
+                              ]
+                            },
+                            {
+                              "class": "Toggle",
+                              "x": 843,
+                              "y": 1852,
+                              "width": 137,
+                              "height": 126,
+                              "measuredHeight": 126,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "843 1852 980 1978",
+                              "description": "Restore after alarm stops",
+                              "text": "",
+                              "textSizePx": 37
+                            }
+                          ]
+                        },
+                        {
+                          "class": "View",
+                          "x": 63,
+                          "y": 2018,
+                          "width": 1,
+                          "height": 21,
+                          "measuredHeight": 21,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 2018 64 2039"
+                        },
+                        {
+                          "class": "TextView",
+                          "x": 63,
+                          "y": 2039,
+                          "width": 954,
+                          "height": 78,
+                          "measuredHeight": 78,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "63 2039 1017 2054",
+                          "text": "Requires your Home Assistant server and a dimmable light. Phone sound, sunrise and flashlight work independently.",
+                          "textSizePx": 31.5
+                        },
+                        {
+                          "class": "Button",
+                          "x": 63,
+                          "y": 2143,
+                          "width": 954,
+                          "height": 147,
+                          "measuredHeight": 147,
+                          "minimumHeight": 147,
+                          "shown": false,
+                          "visible": "63 2012 1017 2159",
+                          "text": "Check connection (read only)",
+                          "textSizePx": 42
+                        },
+                        {
+                          "class": "Button",
+                          "x": 63,
+                          "y": 2316,
+                          "width": 954,
+                          "height": 147,
+                          "measuredHeight": 147,
+                          "minimumHeight": 147,
+                          "shown": false,
+                          "visible": "63 2185 1017 2332",
+                          "text": "Test lamp at up to 5%",
+                          "textSizePx": 42
+                        },
+                        {
+                          "class": "Button",
+                          "x": 63,
+                          "y": 2489,
+                          "width": 954,
+                          "height": 147,
+                          "measuredHeight": 147,
+                          "minimumHeight": 147,
+                          "shown": false,
+                          "visible": "63 2358 1017 2505",
+                          "text": "Stop lamp test",
+                          "textSizePx": 42
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "class": "LinearLayout",
+                  "x": 0,
+                  "y": 2054,
+                  "width": 1080,
+                  "height": 199,
+                  "measuredHeight": 199,
+                  "minimumHeight": 0,
+                  "shown": true,
+                  "visible": "0 2054 1080 2253",
+                  "children": [
+                    {
+                      "class": "Button",
+                      "x": 63,
+                      "y": 2080,
+                      "width": 954,
+                      "height": 147,
+                      "measuredHeight": 147,
+                      "minimumHeight": 147,
+                      "shown": true,
+                      "visible": "63 2080 1017 2227",
+                      "text": "Save bedroom light",
+                      "textSizePx": 42
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "class": "ViewStub",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "measuredHeight": 0,
+          "minimumHeight": 0,
+          "shown": false,
+          "visible": "0 0 0 0"
+        }
+      ]
+    }
+  ]
+}
