@@ -35,6 +35,16 @@ Three implementation agents worked in isolated worktrees. Actual originals/prove
 
 Generated raster assets use built-in imagegen; exact saved paths/prompts are in [Travel assets](TRAVEL-REFERENCE-ASSETS.md) and [wake confirmation asset](WAKE-CHECK-REFERENCE-ASSETS.md).
 
+## Storage summary and lamp navigation —31October,0.1.25
+
+Published app source `b19836918a17d2277c0e75cba618453d4e298b63`, version0.1.25 /26. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.25-summary-and-lamp-20261031-b1983691); [build provenance](verification/2026-10-31-025-build/README.md). The frozen cc4871ee candidate is retained locally; this final package includes the supporting Hue-title layout correction.
+
+Privacy invalidates old asynchronous storage snapshots on cleanup confirmation and retained busy observation, shows Loading/Updating, then reads the settled totals after completion. Actual pending missing-audio warnings remain visible. [Nine unchanged originals](verification/2026-10-31-privacy-audio-reference/current-summary-41193870495/README.md) pass36.286s with real private files and populated retained events. No deletion-worker, receipt or schema change.
+
+Appearance adds a48dp labelled bedroom-lamp header route with chevron and keeps duration/intensity/Connect controls and Save fully available. [Eleven originals](verification/2026-10-31-appearance-lamp-route/README.md) pass67.47s, exercising configuration/Back with unsaved theme retained, three themes, enlargement/contrast, Save/reopen. The route exposed a supporting Hue item that treated explanatory copy as a right-side value; a local full-width title/subtitle correction and its same-method follow-up are documented with the evidence. No shared component redesign or lamp command.
+
+The [primary phone-stage contract audit](research/2026-10-31-phone-stage-contract.md) adds pinned evidence without shipping an ineffective estimator. No new unit-test campaign, security sweep, physical-phone query/installation or real outputs ran. The last verified phone installation remains0.1.23. All36 matching, broader feature parity, phone Deep/REM/breathing and physical/overnight/external acceptance remain open.
+
 ## Main changes
 
 - **Settings:** the eight primary destinations follow the reference hierarchy. Sound analysis and Bedtime guard open directly. Secondary tracking, bedtime, integration and home-screen options have named sections. Recording threshold has its own page. Alarm readiness contains permission/device setup; the smart wake-up default lives under Alarms.

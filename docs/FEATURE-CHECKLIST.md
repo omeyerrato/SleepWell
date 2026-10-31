@@ -1,6 +1,6 @@
 # SleepWell feature checklist — 31 October 2026
 
-Latest published **0.1.24 / dd8c3748** includes the usability-first updates and explicit readiness alarm control. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.24-reference-refinement-20261031-dd8c3748); [current source changes and deferred acceptance](USABILITY-PASS-2026-10-29.md). APK packaging and source-specific focused silent native journeys passed. No broad/unit-test campaign, security review or physical output ran. The S23 Ultra was updated in place to0.1.23 without launching the app or testing outputs. All36 matching, combined Privacy acceptance, remaining feature parity and device/overnight work remain open.
+Latest published **0.1.25 / b1983691** includes the usability-first updates and explicit readiness alarm control. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.25-summary-and-lamp-20261031-b1983691); [current source changes and deferred acceptance](USABILITY-PASS-2026-10-29.md). APK packaging and source-specific focused silent native journeys passed. No broad/unit-test campaign, security review or physical output ran. The S23 Ultra was updated in place to0.1.23 without launching the app or testing outputs. All36 matching, combined Privacy acceptance, remaining feature parity and device/overnight work remain open.
 
 Condensed version: [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
 Checked means implemented source/build, not full phone/overnight acceptance.

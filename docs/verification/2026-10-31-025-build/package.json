@@ -1,0 +1,15 @@
+{
+  "source": "b19836918a17d2277c0e75cba618453d4e298b63",
+  "versionName": "0.1.25",
+  "versionCode": 26,
+  "minSdk": 30,
+  "targetSdk": 36,
+  "abi": "arm64-v8a",
+  "apkBytes": 177873740,
+  "sha256": "ff2c3f50768d3e28d4acbe9fe3286bbfb8960d7b16bc1f3ecc604f3b770763fb",
+  "releaseId": 429901117,
+  "release_url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.25-summary-and-lamp-20261031-b1983691",
+  "packaging_seconds": 188.531,
+  "full_reference_acceptance": false,
+  "phone_installed": false
+}
