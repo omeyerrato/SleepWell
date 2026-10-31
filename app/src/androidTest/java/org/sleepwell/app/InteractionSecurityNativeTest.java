@@ -42,8 +42,26 @@ public final class InteractionSecurityNativeTest {
                 i.runOnMainSync(()->{touch(guard,host,button[0],MotionEvent.ACTION_DOWN,0);touch(guard,host,button[0],MotionEvent.ACTION_UP,0);});i.waitForIdleSync();assertEquals(before+1,clicks.get());
             }
     }
+    private void dialogTouch(Dialog dialog,Button button,int action,int flags){
+        int[] origin=new int[2],target=new int[2];dialog.getWindow().getDecorView().getLocationOnScreen(origin);button.getLocationOnScreen(target);
+        long now=SystemClock.uptimeMillis();MotionEvent.PointerProperties property=new MotionEvent.PointerProperties();property.id=0;property.toolType=MotionEvent.TOOL_TYPE_FINGER;MotionEvent.PointerCoords point=new MotionEvent.PointerCoords();point.x=target[0]-origin[0]+button.getWidth()/2f;point.y=target[1]-origin[1]+button.getHeight()/2f;point.pressure=1;point.size=1;
+        MotionEvent event=MotionEvent.obtain(now,now,action,1,new MotionEvent.PointerProperties[]{property},new MotionEvent.PointerCoords[]{point},0,0,1,1,0,0,InputDevice.SOURCE_TOUCHSCREEN,flags);try{dialog.dispatchTouchEvent(event);}finally{event.recycle();}
+    }
+    private void destructiveDialogs(Activity host)throws Exception{
+        // Real production confirmation factory and window, with an inert callback instead of storage mutation.
+        for(boolean cleanup:new boolean[]{false,true})for(int flag:new int[]{MotionEvent.FLAG_WINDOW_IS_OBSCURED,MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED}){
+            Dialog[] owned={null};Button[] action={null};AtomicInteger confirmations=new AtomicInteger();
+            try{
+                i.runOnMainSync(()->{owned[0]=HistoryEraseConfirm.create(host,cleanup,confirmations::incrementAndGet);assertTrue(owned[0] instanceof SensitiveReviewDialog);owned[0].show();ArrayList<View> found=new ArrayList<>();owned[0].getWindow().getDecorView().findViewsWithText(found,cleanup?"Confirm audio cleanup":"Confirm history deletion",View.FIND_VIEWS_WITH_CONTENT_DESCRIPTION);assertEquals(1,found.size());action[0]=(Button)found.get(0);});
+                await(()->owned[0].isShowing()&&owned[0].getWindow().getDecorView().hasWindowFocus()&&action[0].getWidth()>0);i.waitForIdleSync();
+                i.runOnMainSync(()->{dialogTouch(owned[0],action[0],MotionEvent.ACTION_DOWN,flag);dialogTouch(owned[0],action[0],MotionEvent.ACTION_UP,0);});i.waitForIdleSync();assertEquals("Obscured DOWN followed by clean UP is not consent",0,confirmations.get());assertTrue(owned[0].isShowing());
+                i.runOnMainSync(()->{dialogTouch(owned[0],action[0],MotionEvent.ACTION_DOWN,0);dialogTouch(owned[0],action[0],MotionEvent.ACTION_UP,flag);dialogTouch(owned[0],action[0],MotionEvent.ACTION_UP,0);});i.waitForIdleSync();assertEquals("An overlay appearing during the gesture cancels consent",0,confirmations.get());assertTrue(owned[0].isShowing());
+                i.runOnMainSync(()->{dialogTouch(owned[0],action[0],MotionEvent.ACTION_DOWN,0);dialogTouch(owned[0],action[0],MotionEvent.ACTION_UP,0);});i.waitForIdleSync();assertEquals("A fresh unobscured native gesture still confirms once",1,confirmations.get());assertFalse(owned[0].isShowing());
+            }finally{if(owned[0]!=null)i.runOnMainSync(owned[0]::dismiss);}
+        }
+    }
     @Test public void obscuredNativeGesturesCancelAndRequireAFreshCleanDown()throws Exception{
-        ciOnly();Activity activity=null;try{activity=launch(new Intent(c,HomeLaunchActivity.class).setAction("invalid-fixture-route"));gestures(activity,false);}finally{close(activity);}
+        ciOnly();Activity activity=null;try{activity=launch(new Intent(c,HomeLaunchActivity.class).setAction("invalid-fixture-route"));gestures(activity,false);destructiveDialogs(activity);}finally{close(activity);}
         // Invalid terminal request: no settings opt-in, journal receipt, grant or service dispatch.
         activity=null;try{activity=incomingFixture();gestures(activity,true);}finally{close(activity);}assertFalse(AlarmService.active);assertFalse(TrackingService.running);
     }
