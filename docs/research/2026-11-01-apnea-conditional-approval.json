@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-01",
+  "authority": "Explicit parent /root instruction after review of7daff72c2a2799f20fdae6296a2f33453b6d6016",
+  "one_conditional_offline_fit_authorized": true,
+  "test_only_if_all_gates_pass": true,
+  "proposal_commit": "7daff72c2a2799f20fdae6296a2f33453b6d6016",
+  "protocol_sha256": "12e05a53e76cbbe3d0abdd31fd6e7a1a8cd6833a1e3a76eee6be0d6ea7ac2fba",
+  "train_metadata_source_sha256": "effa4c22766c6b664df9476817b42e6408ff727002141f3ac535705d18220726",
+  "original_feature_source_sha256": "cded615f226bf2e886a3625ac8a19ac65fe479201678c0bc4b77af263d48dbe7",
+  "approved_unit_interpretation": "Seconds as disclosed inference from author seconds timeline, paper seconds anchor and typical numeric range. event_duration field-specific unit is NOT independently proved; no clinical validity is inferred.",
+  "required_workflow": "Record and commit approval/workflow before fit; one fixed binary fit then VAL; TEST only if every unchanged predeclared gate passes. Once-only markers and frozen source/protocol/model hashes. Unknown source/schema/time contract stops rather than falls back.",
+  "required_input_checks": "Already acquired PCM hashes and paired original243-feature hashes; separate new event labels, no stage weights/outcome tuning",
+  "limits": {
+    "max_cpu_threads": 2,
+    "new_network": false,
+    "new_pcm": false,
+    "new_weights": false,
+    "threshold_feature_parameter_changes": false
+  },
+  "not_authorized": [
+    "Clinical/apnea diagnosis",
+    "Android shipping",
+    "Night/event-count/AHI accuracy claims",
+    "Stage changes",
+    "Retuning or failure rescue"
+  ],
+  "positive_research_result_still_requires": "Independent unit/capture-contract and product-integration decision; not automatic feature acceptance",
+  "actions_at_approval": {
+    "fit": false,
+    "validation_test_respiratory_labels_read": false,
+    "inference": false
+  }
+}
