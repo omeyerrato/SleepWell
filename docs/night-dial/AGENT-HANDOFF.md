@@ -56,3 +56,7 @@ The user chose **APK only**. Do not install, clear or reconnect the phone unless
 Full actual gallery: `C:/Users/omeye/Downloads/SleepWell-Night-Dial-c5d558af-review/index.html`.
 
 Numbered feedback pack: `C:/Users/omeye/Downloads/SleepWell-Design-Feedback/`. Numbers 01–16 identify full-resolution originals. Preserve the accepted direction while refining the particular layout/control/flow named by the user.
+
+## Integrated feature delivery —31 October 2026
+
+The feature integration branch `codex/night-dial-integration-20261031` now contains both current feature4a20dc56 and this complete6202a00e checkpoint. Built/reviewed app source is `351b78bf0436412d8edd889d7eb234be0bf4f8b3`; [receipt and current evidence](verification/integrated-351b78bf/README.md). The delivered0.1.26/code27 arm64 APK retains the previous signer.22 native methods and226 original captures pass across three identified runs; units were not run. No phone operation or release publication. Do not substitute the older c5 APK for this merged build or infer full app/physical acceptance.
