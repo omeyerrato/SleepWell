@@ -9,14 +9,19 @@ final class HistoryErase {
     static final HistoryEraseJobs<Records.Factory> jobs=new HistoryEraseJobs<>(worker);
     static HistoryEraseJobs.Job inspect(Context context,Records.Factory factory){return start(context,factory,HistoryEraseJobs.Kind.INSPECT);}
     static HistoryEraseJobs.Job start(Context context,Records.Factory factory,HistoryEraseJobs.Kind kind){
-        Context app=context.getApplicationContext();return jobs.start(factory,kind,()->{boolean audioGate=false;try{
+        return start(context,factory,kind,null);
+    }
+    static HistoryEraseJobs.Job startReviewed(Context context,Records.Factory factory,HistoryEraseJobs.Kind kind,HistoryEraseJobs.Job reviewed){return start(context,factory,kind,reviewed);}
+    private static HistoryEraseJobs.Job start(Context context,Records.Factory factory,HistoryEraseJobs.Kind kind,HistoryEraseJobs.Job reviewed){
+        Context app=context.getApplicationContext();HistoryEraseJobs.Task task=()->{boolean audioGate=false;try{
             if(kind==HistoryEraseJobs.Kind.ERASE&&factory==Records.PRODUCTION){if(TrackingService.running)throw new IllegalStateException("End tracking before deleting history.");audioGate=true;AutoCloudAudio.historyErasing(app);}
             try(Store store=factory.open(app)){
             if(kind==HistoryEraseJobs.Kind.ERASE){if(TrackingService.running)throw new IllegalStateException("End tracking before deleting history.");if(factory==Records.PRODUCTION)SleepSummaryFiles.historyChanging(app);SoundClips.eraseHistory(app,store,()->{if(factory==Records.PRODUCTION)erased(app);});}
             else if(kind==HistoryEraseJobs.Kind.CLEAN)SoundClips.recover(app,store);
             return store.rows("SELECT clip FROM pending_clip_deletes").size();
             }
-        }finally{if(audioGate)AutoCloudAudio.historyEraseFinished();}});
+        }finally{if(audioGate)AutoCloudAudio.historyEraseFinished();}};
+        return reviewed==null?jobs.start(factory,kind,task):jobs.startReviewed(factory,kind,reviewed,task);
     }
     private static void erased(Context app){
         RuntimeException failure=null;

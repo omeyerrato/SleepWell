@@ -12,12 +12,12 @@ final class PrivacyScreen {
         void back();void retention();void backup();void exportBackup();void importBackup();void csv();
         void cloud();void exportAudio();void restoreAudio();void research();void connections();void stopPreview();void refresh();
     }
-    static void render(Activity activity,LinearLayout body,Actions actions){new Binding(activity,body,actions);}
+    static void render(Activity activity,LinearLayout body,Actions actions,HistoryEraseUi.Controller history){new Binding(activity,body,actions,history);}
     private static final class Binding implements View.OnAttachStateChangeListener,ViewTreeObserver.OnWindowFocusChangeListener,Runnable{
-        final Activity activity;final LinearLayout body;final Actions actions;final Handler main=new Handler(Looper.getMainLooper());
+        final Activity activity;final LinearLayout body;final Actions actions;final HistoryEraseUi.Controller history;private HistoryEraseJobs.Job shownHistory;final Handler main=new Handler(Looper.getMainLooper());
         final BackupJob backup;final TextView backupStatus;final PrivacyStorageSummary summary;private BackupExportReceipt.Read receipt;private BackupJob.State shown;private boolean attached;private Dialog options;
-        Binding(Activity activity,LinearLayout body,Actions actions){
-            this.activity=activity;this.body=body;this.actions=actions;Records.Factory records=Records.factory;backup=BackupJobs.get(activity,records);
+        Binding(Activity activity,LinearLayout body,Actions actions,HistoryEraseUi.Controller history){
+            this.activity=activity;this.body=body;this.actions=actions;this.history=history;Records.Factory records=history.factory;backup=BackupJobs.get(activity,records);
             LinearLayout navigation=Design.row(activity);navigation.addView(Design.iconButton(activity,"back","Back",actions::back),new LinearLayout.LayoutParams(Design.dp(activity,48),Design.dp(activity,48)));navigation.addView(new View(activity),new LinearLayout.LayoutParams(0,1,1));RecordUi.menuAction(navigation,"Privacy options",this::options,false);body.addView(navigation);
             Design.space(body,10);Design.text(body,"Data & privacy",30,700,Design.INK);Design.space(body,6);Design.text(body,"Your sleep data stays on this phone.",14,400,Design.MUTED);Design.space(body,18);
             summary=new PrivacyStorageSummary(body,records,BackupJobs.receipts(activity,records),read->{receipt=read;showBackupStatus();});Design.space(body,6);
@@ -28,13 +28,13 @@ final class PrivacyScreen {
             row(body,"cloud","Cloud backup",cloudStatus(activity),null,actions::cloud);
             Button audio=Design.button(body,"Export audio",false,actions::exportAudio);audio.setContentDescription("Export audio library");audio.setMinHeight(Design.dp(activity,48));audio.setMinimumHeight(Design.dp(activity,48));audio.setCompoundDrawablesRelativeWithIntrinsicBounds(Icons.resource("upload"),0,0,0);audio.setCompoundDrawablePadding(Design.dp(activity,8));tintButtonIcon(audio,false);LinearLayout.LayoutParams audioLayout=(LinearLayout.LayoutParams)audio.getLayoutParams();audioLayout.topMargin=0;audio.setLayoutParams(audioLayout);
             Design.space(body,12);Design.line(body);
-            AudioClearUi.add(body,actions::stopPreview,actions::refresh,summary::invalidateStorage);
+            AudioClearUi.add(body,actions::stopPreview,actions::refresh,summary::invalidateStorage);history.callbacks(actions::stopPreview,actions::refresh,summary::invalidateStorage);
             body.addOnAttachStateChangeListener(this);if(body.isAttachedToWindow())onViewAttachedToWindow(body);
         }
-        @Override public void onViewAttachedToWindow(View view){if(attached)return;attached=true;HistoryErase.inspect(activity,Records.factory);body.getViewTreeObserver().addOnWindowFocusChangeListener(this);run();}
-        @Override public void onViewDetachedFromWindow(View view){attached=false;main.removeCallbacks(this);if(body.getViewTreeObserver().isAlive())body.getViewTreeObserver().removeOnWindowFocusChangeListener(this);if(options!=null){options.setOnDismissListener(null);options.dismiss();options=null;}}
+        @Override public void onViewAttachedToWindow(View view){if(attached)return;attached=true;history.attach();body.getViewTreeObserver().addOnWindowFocusChangeListener(this);run();}
+        @Override public void onViewDetachedFromWindow(View view){attached=false;history.detach();main.removeCallbacks(this);if(body.getViewTreeObserver().isAlive())body.getViewTreeObserver().removeOnWindowFocusChangeListener(this);if(options!=null){options.setOnDismissListener(null);options.dismiss();options=null;}}
         @Override public void onWindowFocusChanged(boolean focused){main.removeCallbacks(this);if(focused&&attached){summary.refreshReceipt();run();}}
-        @Override public void run(){main.removeCallbacks(this);if(!attached)return;BackupJob.State state=backup.state();if(shown!=state){shown=state;summary.refreshReceipt();showBackupStatus();}if(activity.hasWindowFocus())main.postDelayed(this,250);}
+        @Override public void run(){main.removeCallbacks(this);if(!attached)return;HistoryEraseJobs.Job erase=HistoryErase.jobs.get(history.factory);if(erase!=shownHistory){shownHistory=erase;if(erase!=null&&!erase.done&&erase.kind!=HistoryEraseJobs.Kind.INSPECT)summary.invalidateStorage();}if(erase!=null&&erase.done&&erase.refreshNeeded){erase.refreshNeeded=false;actions.refresh();return;}BackupJob.State state=backup.state();if(shown!=state){shown=state;summary.refreshReceipt();showBackupStatus();}if(activity.hasWindowFocus())main.postDelayed(this,250);}
         private void showBackupStatus(){
             BackupJob.State state=backup.state();String text;
             if(state.phase==BackupJob.Phase.DONE&&state.receiptStatus==BackupJob.ReceiptStatus.UNAVAILABLE)text=state.receiptWarning;
@@ -49,13 +49,10 @@ final class PrivacyScreen {
             Dialog dialog=new Dialog(activity);options=dialog;dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);LinearLayout content=Design.col(activity);Design.pad(content,22,20);content.setBackground(Design.shape(activity,Design.CREAM,24));Design.text(content,"Privacy options",22,600,Design.INK);Design.space(content,12);
             option(content,"info","Backup contents","See what is included",()->options=SleepPicker.message(activity,"Backup contents","JSON includes alarms, sleep records, notes and sound labels. Audio, app settings and goal commitments are excluded. Imported alarms start off. Export audio saves the WAV recordings separately. Every restore requires review."));Design.line(content);
             RecordUi.heading(content,"More exports");option(content,"file","Export records as CSV","Open in a spreadsheet",actions::csv);option(content,"wave","Export research signals","Detailed recorded sensor data",actions::research);
-            RecordUi.heading(content,"Manage data");option(content,"download","Restore audio backup","Review a saved audio library",actions::restoreAudio);option(content,"link","Connected app access","Manage apps that can read your data",actions::connections);option(content,"trash","Delete sleep history","Review removal of saved nights",()->{options=historyDialog(activity,actions);options.setOnDismissListener(d->{options=null;if(attached)actions.refresh();});});
+            RecordUi.heading(content,"Manage data");option(content,"download","Restore audio backup","Review a saved audio library",actions::restoreAudio);option(content,"link","Connected app access","Manage apps that can read your data",actions::connections);option(content,"trash","Delete sleep history","Review removal of saved nights",history::open);
             Design.button(content,"Done",false,dialog::dismiss);ScrollView scroll=new ScrollView(activity);scroll.addView(content);dialog.setContentView(scroll);SleepPicker.show(activity,dialog,640);
         }
         private void option(LinearLayout content,String icon,String title,String detail,Runnable action){PlanActivity.detail(content,icon,title,detail,null,()->{Dialog prior=options;options=null;if(prior!=null)prior.dismiss();action.run();});}
-    }
-    private static Dialog historyDialog(Activity activity,Actions actions){
-        Dialog dialog=new Dialog(activity);dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);LinearLayout content=Design.col(activity);Design.pad(content,22,22);content.setBackground(Design.shape(activity,Design.CREAM,24));Design.text(content,"Sleep history",22,600,Design.INK);Design.space(content,12);HistoryEraseUi.add(content,actions::stopPreview,()->{});Design.button(content,"Close history options",false,dialog::dismiss);ScrollView scroll=new ScrollView(activity);scroll.addView(content);dialog.setContentView(scroll);dialog.show();dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(Color.TRANSPARENT));dialog.getWindow().setLayout(Math.min(activity.getResources().getDisplayMetrics().widthPixels-Design.dp(activity,32),Design.dp(activity,420)),WindowManager.LayoutParams.WRAP_CONTENT);return dialog;
     }
     private static String backupStatus(BackupJob.State state){
         return switch(state.phase){case IDLE->"Manual JSON · audio and settings excluded";case CHOOSING->"Document selection in progress";case READING->"Reading backup…";case WRITING->"Saving document…";case REVIEW->"Backup ready for review";case RESTORING->"Replacing local data…";case ERROR->"Backup needs attention · open to review";case CANCELLED->"Selection or operation cancelled";case DONE->state.kind==BackupJob.Kind.IMPORT?"Restore finished · review its result":state.kind==BackupJob.Kind.CSV?"CSV export finished this session":"JSON export finished this session";};
