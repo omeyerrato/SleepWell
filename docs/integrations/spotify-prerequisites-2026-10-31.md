@@ -1,0 +1,18 @@
+# Spotify integration prerequisites
+
+Researched 31 October 2026 against SleepWell source `3956a2f9879e3fc52bfefabb55cb5bf0dce3aaf7`. F015 remains **provider-gated**; public HTTPS radio is a separate implemented source. No Spotify connector, credentials, callback, network control or account was added during this research.
+
+## Official contract findings
+
+- Spotify's [Developer Policy](https://developer.spotify.com/policy), section III.1, requires written approval for alarm functionality in an application using its platform. Section III.7 prohibits mixing/overlapping Spotify content with other audio. These are provider conditions, not a claim about general law. We have no approval evidence for SleepWell.
+- [Development mode](https://developer.spotify.com/documentation/web-api/concepts/quota-modes) requires the app owner to have Premium; new clients are limited to five allowlisted users. The [February 2026 migration guide](https://developer.spotify.com/documentation/web-api/tutorials/february-2026-migration-guide) also specifies one new client ID per developer. Existing and extended-quota clients have different conditions; no exception is assumed here.
+- The [Android App Remote setup](https://developer.spotify.com/documentation/android/tutorials/getting-started) requires registration, client ID, redirect, Android package/fingerprint and the Spotify app. A dependency alone does not establish authorization or a usable player.
+- The [Web API playback endpoint](https://developer.spotify.com/documentation/web-api/reference/start-a-users-playback) requires Premium and controls a Spotify client/device; it does not stream decoded audio into SleepWell. Command ordering is not guaranteed across player endpoints. A successful authorization must not be described as successful playback.
+- A mobile public-client transport can use [authorization code with PKCE](https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow): random verifier, S256 challenge, bound one-use state and authorization-code exchange. No embedded client secret. [Redirect requirements](https://developer.spotify.com/documentation/web-api/concepts/redirect_uri) specify HTTPS or literal-loopback HTTP, exact registration and no localhost hostname. An invented custom callback scheme is not assumed supported.
+- [Token refresh](https://developer.spotify.com/documentation/web-api/tutorials/refreshing-tokens) now documents a six-month refresh-token lifetime. Revocation/expiry must lead to explicit reauthorization. Local disconnect must erase owned credentials and cease access; provider authorization removal remains available in Spotify account settings.
+
+## Conditional implementation plan
+
+After the provider approval/scope and registered client are supplied: implement an isolated, explicit foreground authorization/control owner; use a verified owned HTTPS app link or bounded one-use literal-loopback callback; validate state, origin, callback shape and lifetime; encrypt owned tokens outside portable backups; serialize controls and reject late results after disconnect; show actual device/playback/error state. Request only playback scopes needed by the approved operation. Opening setup or choosing a source stays silent.
+
+Do not wire Spotify into alarm scheduling, automatic tracking, mixer overlap, timer/fade or background playback merely because the transport compiles. Each requires its own supported, approved scope and explicit ownership. No implementation or end-to-end acceptance is claimed without those prerequisites. Bundled/local sources and named HTTPS radio remain usable independently.
