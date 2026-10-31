@@ -8,6 +8,9 @@ import android.widget.*;
 
 /** Small, task-specific presentation objects. They hold no state or feature authority. */
 final class NightDialDetails {
+    static LinearLayout fold(LinearLayout parent,String title,boolean expanded,java.util.function.Consumer<Boolean> changed){
+        Context c=parent.getContext();LinearLayout group=Design.col(c),content=Design.col(c);content.setVisibility(expanded?View.VISIBLE:View.GONE);LinearLayout header=Design.row(c);header.setMinimumHeight(Design.dp(c,56));header.addView(Design.text(c,title,15,500,Design.INK),new LinearLayout.LayoutParams(0,-2,1));Design.Icon arrow=new Design.Icon(c,"down",Design.MUTED);arrow.setRotation(expanded?180:0);header.addView(arrow,new LinearLayout.LayoutParams(Design.dp(c,20),Design.dp(c,20)));header.setBackground(Design.touch(c,Color.TRANSPARENT,12));header.setFocusable(true);header.setContentDescription(title);header.setStateDescription(expanded?"Expanded":"Collapsed");header.setOnClickListener(v->{boolean open=content.getVisibility()!=View.VISIBLE;InteractionFeedback.selection(v);content.setVisibility(open?View.VISIBLE:View.GONE);arrow.setRotation(open?180:0);header.setStateDescription(open?"Expanded":"Collapsed");changed.accept(open);});group.addView(header);group.addView(content,new LinearLayout.LayoutParams(-1,-2));parent.addView(group,new LinearLayout.LayoutParams(-1,-2));return content;
+    }
     /** Disclosure leaves the important copy visible, with long supporting explanations on demand. */
     static void disclosure(LinearLayout parent,String title,String value){
         Context c=parent.getContext();LinearLayout panel=Design.col(c);TextView detail=Design.text(c,value,14,400,Design.MUTED);detail.setVisibility(View.GONE);

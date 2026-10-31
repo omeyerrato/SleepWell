@@ -1,0 +1,1287 @@
+{
+  "activity_count": 127,
+  "flow_count": 43,
+  "full_acceptance": false,
+  "meaning": "Route accounting only; see revision-specific native evidence and PROGRESS.md for acceptance.",
+  "flows": [
+    {
+      "board": 1,
+      "flow": "First night",
+      "activities": [
+        "MainActivity"
+      ]
+    },
+    {
+      "board": 2,
+      "flow": "Plan tonight",
+      "activities": [
+        "MainActivity",
+        "PlanActivity",
+        "SmartBedtimeActivity"
+      ]
+    },
+    {
+      "board": 3,
+      "flow": "Wind down and guard",
+      "activities": [
+        "MainActivity",
+        "GuardActivity",
+        "FocusActivity",
+        "GuidedWindDownActivity"
+      ]
+    },
+    {
+      "board": 4,
+      "flow": "Create and manage alarms",
+      "activities": [
+        "MainActivity",
+        "AlarmEditorActivity",
+        "AlarmDefaultsActivity"
+      ]
+    },
+    {
+      "board": 5,
+      "flow": "Dates and smart waking",
+      "activities": [
+        "AlarmRepeatActivity",
+        "AlarmExcludedDatesActivity",
+        "NextAlarmOverrideActivity",
+        "RelativeAlarmTimeActivity",
+        "GoalAlarmTimeActivity",
+        "SunriseTimeActivity",
+        "CalendarRulesActivity"
+      ]
+    },
+    {
+      "board": 6,
+      "flow": "Tone and gentle wake",
+      "activities": [
+        "AlarmEditorActivity"
+      ]
+    },
+    {
+      "board": 7,
+      "flow": "Snooze, backup and input",
+      "activities": [
+        "AlarmEditorActivity",
+        "WakeCheckActivity"
+      ]
+    },
+    {
+      "board": 8,
+      "flow": "Build a wake routine",
+      "activities": [
+        "AlarmEditorActivity",
+        "RandomChallengeActivity",
+        "RandomChallengePreviewActivity",
+        "ChallengePracticeActivity"
+      ]
+    },
+    {
+      "board": 9,
+      "flow": "Enroll morning codes",
+      "activities": [
+        "MainActivity",
+        "QrCodeActivity",
+        "GeneratedMorningQrActivity"
+      ]
+    },
+    {
+      "board": 10,
+      "flow": "Screen challenges I",
+      "activities": [
+        "AlarmActivity",
+        "ChallengePracticeActivity",
+        "RandomChallengePreviewActivity"
+      ]
+    },
+    {
+      "board": 11,
+      "flow": "Screen challenges II",
+      "activities": [
+        "ChallengePackPreviewActivity",
+        "MoonSearchPreviewActivity",
+        "ChallengePracticeActivity",
+        "AlarmActivity"
+      ]
+    },
+    {
+      "board": 12,
+      "flow": "Writing and light tasks",
+      "activities": [
+        "TypedWakePreviewActivity",
+        "ChallengePracticeActivity",
+        "ChallengePackPreviewActivity"
+      ]
+    },
+    {
+      "board": 13,
+      "flow": "Movement challenges",
+      "activities": [
+        "MotionChallengePracticeActivity",
+        "ChallengePackPreviewActivity",
+        "ChallengePracticeActivity",
+        "AlarmActivity"
+      ]
+    },
+    {
+      "board": 14,
+      "flow": "Camera challenges",
+      "activities": [
+        "ObjectRecognitionActivity",
+        "PictureMatchActivity",
+        "PoseActivity",
+        "SmileActivity",
+        "RoutineCameraPracticeActivity"
+      ]
+    },
+    {
+      "board": 15,
+      "flow": "Sound challenges",
+      "activities": [
+        "SpeakChallengeActivity",
+        "PhraseChallengeActivity",
+        "NoteChallengeActivity",
+        "AudioChallengePreviewActivity",
+        "RoutineAudioPracticeActivity"
+      ]
+    },
+    {
+      "board": 16,
+      "flow": "Notes, camera light and fallback",
+      "activities": [
+        "TypedWakePreviewActivity",
+        "CameraLightActivity",
+        "AlarmActivity",
+        "ChallengePracticeActivity"
+      ]
+    },
+    {
+      "board": 17,
+      "flow": "Alarm rings to dismissal",
+      "activities": [
+        "AlarmActivity",
+        "WakeCheckActivity"
+      ]
+    },
+    {
+      "board": 18,
+      "flow": "Choose sounds and settle in",
+      "activities": [
+        "SleepSoundsActivity",
+        "TrackingActivity",
+        "GuidedWindDownActivity",
+        "NarrationVoiceActivity"
+      ]
+    },
+    {
+      "board": 19,
+      "flow": "Advanced audio sources",
+      "activities": [
+        "SleepSoundsActivity",
+        "BinauralSettingsActivity",
+        "ExternalMediaFadeActivity"
+      ]
+    },
+    {
+      "board": 20,
+      "flow": "Start, pause and finish tracking",
+      "activities": [
+        "TrackingActivity"
+      ]
+    },
+    {
+      "board": 21,
+      "flow": "Automatic tracking",
+      "activities": [
+        "AutomaticTrackingActivity",
+        "RecurringTrackingActivity",
+        "TrackingDelayActivity",
+        "TrackingFlipActivity",
+        "TrackingDndActivity"
+      ]
+    },
+    {
+      "board": 22,
+      "flow": "Sensors and calibration",
+      "activities": [
+        "MotionSensorActivity",
+        "MotionCalibrationActivity",
+        "PairMotionActivity",
+        "PairMotionSavedActivity",
+        "ContactlessSetupActivity",
+        "EchoSettingsActivity",
+        "EchoPeriodsActivity"
+      ]
+    },
+    {
+      "board": 23,
+      "flow": "Room, awake and experimental signals",
+      "activities": [
+        "RoomConditionsActivity",
+        "AwakeSettingsActivity",
+        "AwakeReviewActivity",
+        "PirSettingsActivity",
+        "PirReportActivity"
+      ]
+    },
+    {
+      "board": 24,
+      "flow": "Sound analysis and recordings",
+      "activities": [
+        "SoundEventsActivity",
+        "FavoriteSoundsActivity",
+        "SoundLabelActivity",
+        "SoundArchiveActivity",
+        "RecordedRecognitionActivity",
+        "SoundSensitivityActivity",
+        "SoundLibrarySettingsActivity",
+        "SnoreSoundRouteActivity"
+      ]
+    },
+    {
+      "board": 25,
+      "flow": "Gentle cues and dream tools",
+      "activities": [
+        "DreamCueActivity",
+        "DreamCueHistoryActivity",
+        "SnoringCuesActivity"
+      ]
+    },
+    {
+      "board": 26,
+      "flow": "Review a recorded night",
+      "activities": [
+        "RecordReportActivity",
+        "RecordEditorActivity",
+        "RecordSignalsActivity",
+        "RecordInsightsActivity",
+        "RecordedNightScoreActivity",
+        "HealthSleepSourceActivity",
+        "SleepCsvSourceActivity",
+        "AwakeReviewActivity"
+      ]
+    },
+    {
+      "board": 27,
+      "flow": "History, manual records and import",
+      "activities": [
+        "HistoryActivity",
+        "SleepCsvActivity",
+        "DiaryImportActivity",
+        "MissedNightActivity",
+        "RecordEditorActivity",
+        "DiaryActivity"
+      ]
+    },
+    {
+      "board": 28,
+      "flow": "Trends, rhythm and context",
+      "activities": [
+        "RecordReportActivity",
+        "SleepRhythmActivity",
+        "RhythmGroupsActivity",
+        "HabitualTimingActivity",
+        "SRIActivity",
+        "TripSleepActivity",
+        "TagManagementActivity"
+      ]
+    },
+    {
+      "board": 29,
+      "flow": "Sleep plan, bank and milestones",
+      "activities": [
+        "GoalBankActivity",
+        "RecordAchievementsActivity",
+        "PlanActivity"
+      ]
+    },
+    {
+      "board": 30,
+      "flow": "Naps and timers",
+      "activities": [
+        "NapActivity",
+        "NapProfilesActivity",
+        "NapProfilesDocumentsActivity",
+        "TimerRequestActivity"
+      ]
+    },
+    {
+      "board": 31,
+      "flow": "Travel and calendar schedules",
+      "activities": [
+        "TravelActivity",
+        "TravelCueReviewActivity",
+        "CalendarRulesActivity",
+        "AlarmBedtimeActivity",
+        "TripSleepActivity"
+      ]
+    },
+    {
+      "board": 32,
+      "flow": "Find and personalize",
+      "activities": [
+        "AppearanceActivity",
+        "FeedbackSettingsActivity",
+        "TonightLayoutActivity",
+        "SearchActivity"
+      ]
+    },
+    {
+      "board": 33,
+      "flow": "Reliability and alarm protection",
+      "activities": [
+        "MainActivity",
+        "AlarmProtectionActivity",
+        "UninstallProtectionActivity"
+      ]
+    },
+    {
+      "board": 34,
+      "flow": "Health and calendar exchange",
+      "activities": [
+        "HealthConnectActivity",
+        "HealthSleepSourceActivity",
+        "HealthSleepPrivacyActivity",
+        "CalendarEventExportActivity",
+        "CalendarEventDirectActivity",
+        "AutoCalendarActivity"
+      ]
+    },
+    {
+      "board": 35,
+      "flow": "Lights and automation",
+      "activities": [
+        "SmartLightActivity",
+        "HueBridgeActivity",
+        "AutomationActivity",
+        "IncomingAutomationSettingsActivity",
+        "IncomingAutomationActivity"
+      ]
+    },
+    {
+      "board": 36,
+      "flow": "Local data, export and restore",
+      "activities": [
+        "BackupActivity",
+        "ResearchExportActivity",
+        "LibraryAudioImportActivity",
+        "LibraryAudioExportActivity",
+        "AacExportActivity",
+        "SoundArchiveActivity",
+        "DiaryImportActivity"
+      ]
+    },
+    {
+      "board": 37,
+      "flow": "Cloud versions, profiles and conflicts",
+      "activities": [
+        "CloudBackupActivity",
+        "CloudAudioActivity",
+        "SettingsProfileActivity"
+      ]
+    },
+    {
+      "board": 38,
+      "flow": "Imported signals, sharing and access",
+      "activities": [
+        "RecordAccessActivity",
+        "AlarmAccessActivity",
+        "SleepSummaryActivity",
+        "AlarmRequestActivity",
+        "HealthSleepPrivacyActivity"
+      ]
+    },
+    {
+      "board": 39,
+      "flow": "Home shortcuts and system handoffs",
+      "activities": [
+        "HomeLaunchActivity",
+        "HomeWidgetSettingsActivity",
+        "TimerRequestActivity",
+        "AlarmRequestActivity"
+      ]
+    },
+    {
+      "board": 40,
+      "flow": "Recovery and details across flows",
+      "activities": [
+        "MainActivity",
+        "AlarmEditorActivity",
+        "TrackingActivity",
+        "BackupActivity"
+      ]
+    },
+    {
+      "board": 41,
+      "flow": "Tags, confirmation and custom values",
+      "activities": [
+        "TagManagementActivity",
+        "RecordEditorActivity",
+        "DiaryActivity"
+      ]
+    },
+    {
+      "board": 42,
+      "flow": "Physical challenge and permission branches",
+      "activities": [
+        "RoutineCameraPracticeActivity",
+        "RoutineAudioPracticeActivity",
+        "MotionChallengePracticeActivity",
+        "QrCodeActivity",
+        "ObjectRecognitionActivity",
+        "PictureMatchActivity",
+        "PoseActivity",
+        "SmileActivity",
+        "CameraLightActivity",
+        "NoteChallengeActivity",
+        "SpeakChallengeActivity",
+        "PhraseChallengeActivity",
+        "MainActivity"
+      ]
+    },
+    {
+      "board": 43,
+      "flow": "Empty, search and loading states",
+      "activities": [
+        "MainActivity",
+        "SearchActivity",
+        "HistoryActivity",
+        "RecordReportActivity",
+        "DiaryActivity",
+        "SoundEventsActivity",
+        "FavoriteSoundsActivity",
+        "GoalBankActivity"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "activity": "AacExportActivity",
+      "boards": [
+        36
+      ]
+    },
+    {
+      "activity": "AlarmAccessActivity",
+      "boards": [
+        38
+      ]
+    },
+    {
+      "activity": "AlarmActivity",
+      "boards": [
+        10,
+        11,
+        13,
+        16,
+        17
+      ]
+    },
+    {
+      "activity": "AlarmBedtimeActivity",
+      "boards": [
+        31
+      ]
+    },
+    {
+      "activity": "AlarmDefaultsActivity",
+      "boards": [
+        4
+      ]
+    },
+    {
+      "activity": "AlarmEditorActivity",
+      "boards": [
+        4,
+        6,
+        7,
+        8,
+        40
+      ]
+    },
+    {
+      "activity": "AlarmExcludedDatesActivity",
+      "boards": [
+        5
+      ]
+    },
+    {
+      "activity": "AlarmProtectionActivity",
+      "boards": [
+        33
+      ]
+    },
+    {
+      "activity": "AlarmRepeatActivity",
+      "boards": [
+        5
+      ]
+    },
+    {
+      "activity": "AlarmRequestActivity",
+      "boards": [
+        38,
+        39
+      ]
+    },
+    {
+      "activity": "AppearanceActivity",
+      "boards": [
+        32
+      ]
+    },
+    {
+      "activity": "AudioChallengePreviewActivity",
+      "boards": [
+        15
+      ]
+    },
+    {
+      "activity": "AutoCalendarActivity",
+      "boards": [
+        34
+      ]
+    },
+    {
+      "activity": "AutomaticTrackingActivity",
+      "boards": [
+        21
+      ]
+    },
+    {
+      "activity": "AutomationActivity",
+      "boards": [
+        35
+      ]
+    },
+    {
+      "activity": "AwakeReviewActivity",
+      "boards": [
+        23,
+        26
+      ]
+    },
+    {
+      "activity": "AwakeSettingsActivity",
+      "boards": [
+        23
+      ]
+    },
+    {
+      "activity": "BackupActivity",
+      "boards": [
+        36,
+        40
+      ]
+    },
+    {
+      "activity": "BinauralSettingsActivity",
+      "boards": [
+        19
+      ]
+    },
+    {
+      "activity": "CalendarEventDirectActivity",
+      "boards": [
+        34
+      ]
+    },
+    {
+      "activity": "CalendarEventExportActivity",
+      "boards": [
+        34
+      ]
+    },
+    {
+      "activity": "CalendarRulesActivity",
+      "boards": [
+        5,
+        31
+      ]
+    },
+    {
+      "activity": "CameraLightActivity",
+      "boards": [
+        16,
+        42
+      ]
+    },
+    {
+      "activity": "ChallengePackPreviewActivity",
+      "boards": [
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "activity": "ChallengePracticeActivity",
+      "boards": [
+        8,
+        10,
+        11,
+        12,
+        13,
+        16
+      ]
+    },
+    {
+      "activity": "CloudAudioActivity",
+      "boards": [
+        37
+      ]
+    },
+    {
+      "activity": "CloudBackupActivity",
+      "boards": [
+        37
+      ]
+    },
+    {
+      "activity": "ContactlessSetupActivity",
+      "boards": [
+        22
+      ]
+    },
+    {
+      "activity": "DiaryActivity",
+      "boards": [
+        27,
+        41,
+        43
+      ]
+    },
+    {
+      "activity": "DiaryImportActivity",
+      "boards": [
+        27,
+        36
+      ]
+    },
+    {
+      "activity": "DreamCueActivity",
+      "boards": [
+        25
+      ]
+    },
+    {
+      "activity": "DreamCueHistoryActivity",
+      "boards": [
+        25
+      ]
+    },
+    {
+      "activity": "EchoPeriodsActivity",
+      "boards": [
+        22
+      ]
+    },
+    {
+      "activity": "EchoSettingsActivity",
+      "boards": [
+        22
+      ]
+    },
+    {
+      "activity": "ExternalMediaFadeActivity",
+      "boards": [
+        19
+      ]
+    },
+    {
+      "activity": "FavoriteSoundsActivity",
+      "boards": [
+        24,
+        43
+      ]
+    },
+    {
+      "activity": "FeedbackSettingsActivity",
+      "boards": [
+        32
+      ]
+    },
+    {
+      "activity": "FocusActivity",
+      "boards": [
+        3
+      ]
+    },
+    {
+      "activity": "GeneratedMorningQrActivity",
+      "boards": [
+        9
+      ]
+    },
+    {
+      "activity": "GoalAlarmTimeActivity",
+      "boards": [
+        5
+      ]
+    },
+    {
+      "activity": "GoalBankActivity",
+      "boards": [
+        29,
+        43
+      ]
+    },
+    {
+      "activity": "GuardActivity",
+      "boards": [
+        3
+      ]
+    },
+    {
+      "activity": "GuidedWindDownActivity",
+      "boards": [
+        3,
+        18
+      ]
+    },
+    {
+      "activity": "HabitualTimingActivity",
+      "boards": [
+        28
+      ]
+    },
+    {
+      "activity": "HealthConnectActivity",
+      "boards": [
+        34
+      ]
+    },
+    {
+      "activity": "HealthSleepPrivacyActivity",
+      "boards": [
+        34,
+        38
+      ]
+    },
+    {
+      "activity": "HealthSleepSourceActivity",
+      "boards": [
+        26,
+        34
+      ]
+    },
+    {
+      "activity": "HistoryActivity",
+      "boards": [
+        27,
+        43
+      ]
+    },
+    {
+      "activity": "HomeLaunchActivity",
+      "boards": [
+        39
+      ]
+    },
+    {
+      "activity": "HomeWidgetSettingsActivity",
+      "boards": [
+        39
+      ]
+    },
+    {
+      "activity": "HueBridgeActivity",
+      "boards": [
+        35
+      ]
+    },
+    {
+      "activity": "IncomingAutomationActivity",
+      "boards": [
+        35
+      ]
+    },
+    {
+      "activity": "IncomingAutomationSettingsActivity",
+      "boards": [
+        35
+      ]
+    },
+    {
+      "activity": "LibraryAudioExportActivity",
+      "boards": [
+        36
+      ]
+    },
+    {
+      "activity": "LibraryAudioImportActivity",
+      "boards": [
+        36
+      ]
+    },
+    {
+      "activity": "MainActivity",
+      "boards": [
+        1,
+        2,
+        3,
+        4,
+        9,
+        33,
+        40,
+        42,
+        43
+      ]
+    },
+    {
+      "activity": "MissedNightActivity",
+      "boards": [
+        27
+      ]
+    },
+    {
+      "activity": "MoonSearchPreviewActivity",
+      "boards": [
+        11
+      ]
+    },
+    {
+      "activity": "MotionCalibrationActivity",
+      "boards": [
+        22
+      ]
+    },
+    {
+      "activity": "MotionChallengePracticeActivity",
+      "boards": [
+        13,
+        42
+      ]
+    },
+    {
+      "activity": "MotionSensorActivity",
+      "boards": [
+        22
+      ]
+    },
+    {
+      "activity": "NapActivity",
+      "boards": [
+        30
+      ]
+    },
+    {
+      "activity": "NapProfilesActivity",
+      "boards": [
+        30
+      ]
+    },
+    {
+      "activity": "NapProfilesDocumentsActivity",
+      "boards": [
+        30
+      ]
+    },
+    {
+      "activity": "NarrationVoiceActivity",
+      "boards": [
+        18
+      ]
+    },
+    {
+      "activity": "NextAlarmOverrideActivity",
+      "boards": [
+        5
+      ]
+    },
+    {
+      "activity": "NoteChallengeActivity",
+      "boards": [
+        15,
+        42
+      ]
+    },
+    {
+      "activity": "ObjectRecognitionActivity",
+      "boards": [
+        14,
+        42
+      ]
+    },
+    {
+      "activity": "PairMotionActivity",
+      "boards": [
+        22
+      ]
+    },
+    {
+      "activity": "PairMotionSavedActivity",
+      "boards": [
+        22
+      ]
+    },
+    {
+      "activity": "PhraseChallengeActivity",
+      "boards": [
+        15,
+        42
+      ]
+    },
+    {
+      "activity": "PictureMatchActivity",
+      "boards": [
+        14,
+        42
+      ]
+    },
+    {
+      "activity": "PirReportActivity",
+      "boards": [
+        23
+      ]
+    },
+    {
+      "activity": "PirSettingsActivity",
+      "boards": [
+        23
+      ]
+    },
+    {
+      "activity": "PlanActivity",
+      "boards": [
+        2,
+        29
+      ]
+    },
+    {
+      "activity": "PoseActivity",
+      "boards": [
+        14,
+        42
+      ]
+    },
+    {
+      "activity": "QrCodeActivity",
+      "boards": [
+        9,
+        42
+      ]
+    },
+    {
+      "activity": "RandomChallengeActivity",
+      "boards": [
+        8
+      ]
+    },
+    {
+      "activity": "RandomChallengePreviewActivity",
+      "boards": [
+        8,
+        10
+      ]
+    },
+    {
+      "activity": "RecordAccessActivity",
+      "boards": [
+        38
+      ]
+    },
+    {
+      "activity": "RecordAchievementsActivity",
+      "boards": [
+        29
+      ]
+    },
+    {
+      "activity": "RecordEditorActivity",
+      "boards": [
+        26,
+        27,
+        41
+      ]
+    },
+    {
+      "activity": "RecordInsightsActivity",
+      "boards": [
+        26
+      ]
+    },
+    {
+      "activity": "RecordReportActivity",
+      "boards": [
+        26,
+        28,
+        43
+      ]
+    },
+    {
+      "activity": "RecordSignalsActivity",
+      "boards": [
+        26
+      ]
+    },
+    {
+      "activity": "RecordedNightScoreActivity",
+      "boards": [
+        26
+      ]
+    },
+    {
+      "activity": "RecordedRecognitionActivity",
+      "boards": [
+        24
+      ]
+    },
+    {
+      "activity": "RecurringTrackingActivity",
+      "boards": [
+        21
+      ]
+    },
+    {
+      "activity": "RelativeAlarmTimeActivity",
+      "boards": [
+        5
+      ]
+    },
+    {
+      "activity": "ResearchExportActivity",
+      "boards": [
+        36
+      ]
+    },
+    {
+      "activity": "RhythmGroupsActivity",
+      "boards": [
+        28
+      ]
+    },
+    {
+      "activity": "RoomConditionsActivity",
+      "boards": [
+        23
+      ]
+    },
+    {
+      "activity": "RoutineAudioPracticeActivity",
+      "boards": [
+        15,
+        42
+      ]
+    },
+    {
+      "activity": "RoutineCameraPracticeActivity",
+      "boards": [
+        14,
+        42
+      ]
+    },
+    {
+      "activity": "SRIActivity",
+      "boards": [
+        28
+      ]
+    },
+    {
+      "activity": "SearchActivity",
+      "boards": [
+        32,
+        43
+      ]
+    },
+    {
+      "activity": "SettingsProfileActivity",
+      "boards": [
+        37
+      ]
+    },
+    {
+      "activity": "SleepCsvActivity",
+      "boards": [
+        27
+      ]
+    },
+    {
+      "activity": "SleepCsvSourceActivity",
+      "boards": [
+        26
+      ]
+    },
+    {
+      "activity": "SleepRhythmActivity",
+      "boards": [
+        28
+      ]
+    },
+    {
+      "activity": "SleepSoundsActivity",
+      "boards": [
+        18,
+        19
+      ]
+    },
+    {
+      "activity": "SleepSummaryActivity",
+      "boards": [
+        38
+      ]
+    },
+    {
+      "activity": "SmartBedtimeActivity",
+      "boards": [
+        2
+      ]
+    },
+    {
+      "activity": "SmartLightActivity",
+      "boards": [
+        35
+      ]
+    },
+    {
+      "activity": "SmileActivity",
+      "boards": [
+        14,
+        42
+      ]
+    },
+    {
+      "activity": "SnoreSoundRouteActivity",
+      "boards": [
+        24
+      ]
+    },
+    {
+      "activity": "SnoringCuesActivity",
+      "boards": [
+        25
+      ]
+    },
+    {
+      "activity": "SoundArchiveActivity",
+      "boards": [
+        24,
+        36
+      ]
+    },
+    {
+      "activity": "SoundEventsActivity",
+      "boards": [
+        24,
+        43
+      ]
+    },
+    {
+      "activity": "SoundLabelActivity",
+      "boards": [
+        24
+      ]
+    },
+    {
+      "activity": "SoundLibrarySettingsActivity",
+      "boards": [
+        24
+      ]
+    },
+    {
+      "activity": "SoundSensitivityActivity",
+      "boards": [
+        24
+      ]
+    },
+    {
+      "activity": "SpeakChallengeActivity",
+      "boards": [
+        15,
+        42
+      ]
+    },
+    {
+      "activity": "SunriseTimeActivity",
+      "boards": [
+        5
+      ]
+    },
+    {
+      "activity": "TagManagementActivity",
+      "boards": [
+        28,
+        41
+      ]
+    },
+    {
+      "activity": "TimerRequestActivity",
+      "boards": [
+        30,
+        39
+      ]
+    },
+    {
+      "activity": "TonightLayoutActivity",
+      "boards": [
+        32
+      ]
+    },
+    {
+      "activity": "TrackingActivity",
+      "boards": [
+        18,
+        20,
+        40
+      ]
+    },
+    {
+      "activity": "TrackingDelayActivity",
+      "boards": [
+        21
+      ]
+    },
+    {
+      "activity": "TrackingDndActivity",
+      "boards": [
+        21
+      ]
+    },
+    {
+      "activity": "TrackingFlipActivity",
+      "boards": [
+        21
+      ]
+    },
+    {
+      "activity": "TravelActivity",
+      "boards": [
+        31
+      ]
+    },
+    {
+      "activity": "TravelCueReviewActivity",
+      "boards": [
+        31
+      ]
+    },
+    {
+      "activity": "TripSleepActivity",
+      "boards": [
+        28,
+        31
+      ]
+    },
+    {
+      "activity": "TypedWakePreviewActivity",
+      "boards": [
+        12,
+        16
+      ]
+    },
+    {
+      "activity": "UninstallProtectionActivity",
+      "boards": [
+        33
+      ]
+    },
+    {
+      "activity": "WakeCheckActivity",
+      "boards": [
+        7,
+        17
+      ]
+    }
+  ]
+}

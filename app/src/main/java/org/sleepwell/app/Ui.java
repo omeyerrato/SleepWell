@@ -57,8 +57,9 @@ final class Ui {
         s.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() { public void onProgressChanged(SeekBar b,int n,boolean user) { t.setText(title+" · "+(n+min));if(user)onChange.accept(n+min); }public void onStartTrackingTouch(SeekBar b){}public void onStopTrackingTouch(SeekBar b){} });
     }
     static void choice(LinearLayout p,String title,String current,String[] options,Consumer<String> onChange) {
+        String[] selected={current};
         Button button=button(p,title+" · "+current,()->{});
-        button.setOnClickListener(v->{InteractionFeedback.action(v);SleepPicker.choices((Activity)p.getContext(),title,options,java.util.Arrays.asList(options).indexOf(current),w->{onChange.accept(options[w]);button.setText(title+" · "+options[w]);});});
+        button.setOnClickListener(v->{InteractionFeedback.action(v);SleepPicker.choices((Activity)p.getContext(),title,options,java.util.Arrays.asList(options).indexOf(selected[0]),w->{selected[0]=options[w];onChange.accept(options[w]);button.setText(title+" · "+options[w]);});});
     }
     static void toast(Context c,String s) { Toast.makeText(c,s,Toast.LENGTH_LONG).show(); }
 }

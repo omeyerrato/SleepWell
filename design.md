@@ -1858,3 +1858,34 @@ No app source, framework, dependencies, installed build, records, permissions, e
 
 
 
+
+
+## Application-wide implementation refinements: 31 October 2026
+
+These refine the accepted Night Dial direction. They do not replace it with another theme or a framework migration. Every manifest destination is assigned to a flow in [SCREEN-COVERAGE.md](docs/night-dial/SCREEN-COVERAGE.md); the inventory fails on an unassigned new destination. Route accounting and visual implementation are distinct from complete runtime acceptance.
+
+### Cohesion without uniformity
+
+- Tonight is an instrument: the clock dial and its independently draggable endpoints carry the plan. Release reviews a changed plan; cancellation restores it. Exact entry remains available.
+- Naps are tactile: a separate duration wheel sets the local nap draft, with live end time and preset selection. Turning does not start a timer. Pointer cancellation restores the duration; keyboard and accessibility adjustments retain the same control and focus. Explicit Start keeps its existing scheduling owner. Exact timers retain exact seconds and their own editor.
+- Sound is a library and a player: dark photographs, a horizontally browsable shelf, actual bundled PCM texture previews, native volume controls, and the saved timer/fade editors. Photographs never imply live capture. Advanced or imported sources do not borrow unrelated cover art. Opening and choosing stay silent.
+- Wind-down is a reading space: Read and Breathe modes, one step at a time, an amber contour that follows the existing four-second inhale/six-second exhale pace, and optional narration folded behind its own disclosure. Pause, backgrounding and focus loss stop pacing and narration through the existing owners. Reduced motion keeps the contour still; elapsed progress remains accurate.
+- Challenges are workspaces: a black shared shell, true task-position marks, a small dawn motif and the actual puzzle, text field, camera, microphone or movement surface. No peach full-screen transition. National flags retain their identity colors; provider stage colors remain distinguishable tonal marks with labels. Completing a visual animation never completes an alarm.
+- The diary is personal: a small original linen-and-notebook photograph, woven charcoal entry surfaces, date, title and an excerpt. A dirty entry has Keep writing and Discard choices and survives recreation. Save, delete and export retain the private diary owner and separate storage.
+- Backup is a document journey: choose, review, then keep or explicitly replace. It shows what the document contains and what is excluded. No progress is fabricated when a provider does not report bytes. Restore confirmation retains the actual reviewed object and its irreversible boundary.
+- Reports, rhythm, goals and room tools use their real measurements, recorded intervals, coverage, configured targets and missing-data states. The remaining chart palettes use amber and readable neutral tones; labels, source and scale carry meaning.
+- Settings are an index: grouped destinations, short supporting copy and quiet secondary actions. Technical connection details stay in the feature's setup and information views. A settings list is not padded with decorative charts.
+
+### Small surfaces and motion
+
+App-owned dialogs inherit dark text, surfaces and control colors, rounded floating surfaces and the app's motion preference. Shared picker and confirmation adapters retain native callback, validation, dismissal and accessibility authority. Short sheets measure their content up to a cap; long sheets scroll. Native operating-system permission and document-provider surfaces remain owned by Android.
+
+Page navigation uses a short horizontal shift and fade (220 ms opening, 180 ms return), not an entrance on every block of content. Sheets retain 240/180 ms enter/exit motion; press emphasis remains 100 ms. The per-page theme selects a static dialog theme and static activity transitions when motion is reduced or Android animations are disabled. The breathing drawing schedules frames only while its visible, focused, running visual mode is enabled. No animation starts sound, torch, microphone, capture, a network command or alarm scheduling.
+
+Secondary actions use quiet text surfaces with a visible press/focus response, so repeated actions do not form a wall of equal gray buttons. Primary actions stay white. Errors use readable muted red on black, never the old dark red text. Header height grows with text. Shared page content and fixed actions align in a centered maximum-width column on larger windows.
+
+Texture is reserved for places where it belongs: sound photography and diary paper/linen. It is not spread over forms, charts, sensor evidence, dialogs or every card. All labels, controls, selection marks, progress and graphs remain native views and drawing code, separate from imagery.
+
+### Evidence boundaries
+
+Use revision-specific native captures to assess a screen. A successful root render establishes that destination's initial layout, not every permission, output, data conflict, physical-device or overnight branch. The app-wide inventory, the 43-flow matrix, real screen captures and existing feature tests must remain separate evidence. Known inherited test failures must remain visible until independently fixed; visual changes do not turn them green.

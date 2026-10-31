@@ -42,7 +42,7 @@ final class NightDialNapWheel extends View {
         canvas.drawCircle(x+(float)Math.cos(angle)*r,y+(float)Math.sin(angle)*r,10*d,paint);paint.setColor(isEnabled()?NightDialTokens.ACCENT:NightDialTokens.SECONDARY);
         canvas.drawCircle(x+(float)Math.cos(angle)*r,y+(float)Math.sin(angle)*r,7*d,paint);
         paint.setTypeface(Design.font(getContext(),500));paint.setTextAlign(Paint.Align.CENTER);paint.setTextSize(Design.sp(getContext(),48*Appearance.scale(getContext())));paint.setColor(Design.INK);
-        canvas.drawText(Integer.toString(minutes),x,y+6*d,paint);paint.setTextSize(Design.sp(getContext(),14*Appearance.scale(getContext())));paint.setColor(Design.MUTED);canvas.drawText("minutes",x,y+32*d,paint);
+        String value=Integer.toString(minutes);float measured=paint.measureText(value);if(measured>r*1.45f)paint.setTextSize(paint.getTextSize()*r*1.45f/measured);canvas.drawText(value,x,y+6*d,paint);paint.setTextSize(Design.sp(getContext(),14*Appearance.scale(getContext())));paint.setColor(Design.MUTED);canvas.drawText("minutes",x,y+32*d,paint);
         paint.setTextSize(Design.sp(getContext(),12*Appearance.scale(getContext())));canvas.drawText(isEnabled()?"Turn to set your rest":"Saved duration",x,y+r*.91f,paint);
         if(isFocused()){paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(2*d);paint.setColor(NightDialTokens.OUTLINE);canvas.drawRoundRect(d,d,getWidth()-d,getHeight()-d,20*d,20*d,paint);}
     }

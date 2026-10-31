@@ -16,7 +16,7 @@ import java.io.File;
 import java.util.*;
 import static org.junit.Assert.*;
 
-/** Silent visual/settings flow. Original key presence and values are restored in finally. */
+/** Night Dial save/cancel/large-text review, including dark rendering of all retained legacy phase values. */
 @RunWith(AndroidJUnit4.class)
 public class AppearanceFlowTest {
     private Context context;private UiDevice device;private File folder;
@@ -28,7 +28,7 @@ public class AppearanceFlowTest {
     private boolean completeControl(String description){Activity owner=resumed();boolean[] complete={false};InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{View target=described(owner.getWindow().getDecorView(),description);assertNotNull("Owned native action: "+description,target);android.graphics.Rect visible=new android.graphics.Rect();complete[0]=owner.hasWindowFocus()&&target.isAttachedToWindow()&&target.isLaidOut()&&target.getGlobalVisibleRect(visible)&&visible.width()==target.getWidth()&&visible.height()==target.getHeight()&&visible.height()>=Design.dp(context,48);});return complete[0];}
     private void exposeControl(String description){for(int attempt=0;attempt<4;attempt++){if(completeControl(description))return;UiObject2 scroll=device.findObject(By.scrollable(true));assertNotNull("Actual scroll area for "+description,scroll);scroll.scroll(Direction.DOWN,.6f);device.waitForIdle();}assertTrue("Complete native action must clear the dock/footer: "+description,completeControl(description));}
     private void settings(){for(UiObject2 v:device.findObjects(By.desc("Settings")))if(v.getVisibleBounds().centerY()>device.getDisplayHeight()*.7f){v.click();break;}assertTrue(device.wait(Until.hasObject(By.desc("Settings").selected(true)),5000));}
-    private void appearance()throws Exception{settings();clickText("Appearance");clickText("Theme & text");assertTrue("Appearance controls must render",device.wait(Until.hasObject(By.desc("Time of day")),5000));boolean ready=device.wait(Until.hasObject(By.desc("Bedroom lamp summary ready")),5000);if(!ready)capture("pending-lamp");assertTrue("Attached lamp summary must finish its actual saved-settings read",ready);}
+    private void appearance()throws Exception{settings();clickText("Appearance");clickText("Theme & text");assertTrue("Appearance controls must render",device.wait(Until.hasObject(By.text("Night dial")),5000));boolean ready=device.wait(Until.hasObject(By.desc("Bedroom lamp summary ready")),5000);if(!ready)capture("pending-lamp");assertTrue("Attached lamp summary must finish its actual saved-settings read",ready);}
     private void tonight(){if(device.wait(Until.hasObject(By.desc("Tonight").selected(true)),1000))return;UiObject2 target=device.wait(Until.findObject(By.desc("Tonight")),5000);assertNotNull(target);target.click();assertTrue(device.wait(Until.hasObject(By.desc("Tonight").selected(true)),5000));}
     private void save(){UiObject2 save=device.findObject(By.textStartsWith("Save appearance"));assertNotNull(save);save.click();device.waitForIdle();assertTrue(device.wait(Until.hasObject(By.desc("Settings").selected(true)),5000));}
     private Activity resumed(){final Activity[] result={null};InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{for(Activity a:ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED))result[0]=a;});assertNotNull(result[0]);return result[0];}
@@ -44,17 +44,17 @@ public class AppearanceFlowTest {
             Appearance.save(context,true,0,0,false,false);
             relaunch();
             appearance();capture("automatic");UiObject2 save=device.findObject(By.textStartsWith("Save appearance"));assertNotNull(save);for(String action:new String[]{"Configure lamp sunrise duration","Configure lamp maximum intensity","Configure smart bedroom light"}){UiObject2 control=device.findObject(By.desc(action));assertNotNull(action,control);assertTrue("Complete lamp control on the first default frame: "+action,control.getVisibleBounds().height()>=Design.dp(context,48)&&control.getVisibleBounds().bottom<=save.getVisibleBounds().top);}
-            // Back cancels a draft, including a tile's explicit switch to manual mode.
-            device.findObject(By.desc("Dawn theme")).click();assertFalse(device.findObject(By.desc("Time of day")).isChecked());device.pressBack();device.waitForIdle();assertTrue(Appearance.automatic(context));
-            int[] expected={0xff241e30,0xff483768,0xffffd291};float normalSize=0;
+            // Back still cancels appearance drafts. Saved legacy schedule values are retained.
+            clickText("Text size");clickText("Large");device.pressBack();device.waitForIdle();assertEquals(0,Prefs.number(context,Appearance.SIZE,-1));assertTrue(Appearance.automatic(context));
+            int[] expected={NightDialTokens.GROUND,NightDialTokens.GROUND,NightDialTokens.GROUND};float normalSize=0;
             for(int phase=0;phase<3;phase++){
-                appearance();device.findObject(By.desc(AppearancePolicy.THEMES[phase]+" theme")).click();assertTrue(device.findObject(By.desc(AppearancePolicy.THEMES[phase]+" theme")).isSelected());capture("selected-"+phase);save();
-                assertFalse(Appearance.automatic(context));assertEquals(phase,Prefs.number(context,Appearance.THEME,-1));tonight();assertActualRootColor(expected[phase]);capture("tonight-"+phase);if(phase==0)normalSize=actualTitleSize();
-                appearance();assertTrue(device.findObject(By.desc(AppearancePolicy.THEMES[phase]+" theme")).isSelected());device.pressBack();device.waitForIdle();
+                Appearance.save(context,true,phase,0,false,false);appearance();assertNotNull(device.findObject(By.text("Night dial")));capture("selected-"+phase);save();
+                assertTrue(Appearance.automatic(context));assertEquals(phase,Prefs.number(context,Appearance.THEME,-1));tonight();assertActualRootColor(expected[phase]);capture("tonight-"+phase);if(phase==0)normalSize=actualTitleSize();
+                appearance();assertNotNull(device.findObject(By.text("Night dial")));device.pressBack();device.waitForIdle();
             }
             appearance();clickText("Text size");clickText("Extra large");enableToggle("Reduce motion");enableToggle("High-contrast mode");save();
             assertTrue(Prefs.flag(context,Appearance.MOTION));assertTrue(Prefs.flag(context,Appearance.CONTRAST));assertEquals(2,Prefs.number(context,Appearance.SIZE,-1));
-            tonight();assertEquals(normalSize*1.3f,actualTitleSize(),.5f);assertTrue(Appearance.reduced(context));assertTrue(Design.touch(context,Color.WHITE,8) instanceof StateListDrawable);capture("large-contrast-tonight");
+            tonight();assertEquals(normalSize*1.3f,actualTitleSize(),.5f);assertTrue(Appearance.reduced(context));assertTrue(Design.touch(context,Color.WHITE,8) instanceof NightDialSurface);capture("large-contrast-tonight");
             exposeControl("Start sleep tracking");capture("large-contrast-tonight-action");assertTrue(device.hasObject(By.desc("Tonight").selected(true)));
             relaunch();assertTrue(device.wait(Until.hasObject(By.desc("Tonight").selected(true)),5000));assertActualRootColor(expected[2]);appearance();assertTrue(device.findObject(By.desc("Reduce motion")).isChecked());assertTrue(device.findObject(By.desc("High-contrast mode")).isChecked());assertTrue(device.hasObject(By.text("Extra large")));exposeControl("Configure smart bedroom light");capture("large-contrast");
             for(int phase=0;phase<3;phase++){Appearance.Palette p=new Appearance.Palette(phase,true);assertTrue(androidx.core.graphics.ColorUtils.calculateContrast(p.softInk,p.panel)>=4.5);assertTrue(androidx.core.graphics.ColorUtils.calculateContrast(p.buttonInk,p.accent)>=4.5);}

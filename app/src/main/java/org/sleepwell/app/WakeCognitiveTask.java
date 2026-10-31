@@ -57,7 +57,7 @@ abstract class WakeCognitiveTask implements AutoCloseable {
             for(int n=0;n<6;n++){
                 final int index=n;Button button=new Button(card.getContext());buttons[n]=button;
                 button.setStateListAnimator(null);button.setElevation(0);button.setTextSize(25*Appearance.scale(card.getContext()));button.setTextColor(Design.INK);button.setBackground(Design.touch(card.getContext(),Design.SOFT,16));
-                GridLayout.LayoutParams size=new GridLayout.LayoutParams(GridLayout.spec(n/3),GridLayout.spec(n%3,1f));size.width=0;size.height=Ui.dp(card.getContext(),68);size.setGravity(Gravity.FILL_HORIZONTAL);size.setMargins(3,3,3,3);grid.addView(button,size);
+                GridLayout.LayoutParams size=new GridLayout.LayoutParams(GridLayout.spec(n/3),GridLayout.spec(n%3,1f));size.width=0;size.height=Ui.dp(card.getContext(),76*Math.max(1,Design.fontScale(card.getContext())));size.setGravity(Gravity.FILL_HORIZONTAL);int gap=Design.dp(card.getContext(),4);size.setMargins(gap,gap,gap,gap);grid.addView(button,size);
                 refresh(n);button.setOnClickListener(ignored->tap(index));
             }
             // A focus interruption can occur between earning the final pair and owner admission.
@@ -66,10 +66,10 @@ abstract class WakeCognitiveTask implements AutoCloseable {
         }
         private static boolean valid(int[] values){if(values==null||values.length!=6)return false;int[] counts=new int[3];for(int value:values){if(value<0||value>=3)return false;counts[value]++;}return counts[0]==2&&counts[1]==2&&counts[2]==2;}
         private boolean validPairs(int mask){if(mask<0||mask>=64)return false;int[] counts=new int[3];for(int n=0;n<6;n++)if((mask&(1<<n))!=0)counts[order[n]]++;for(int count:counts)if(count!=0&&count!=2)return false;return true;}
-        private void refresh(int n){boolean paired=(matched&(1<<n))!=0,revealed=paired||first==n;buttons[n].setText(revealed?SYMBOLS[order[n]]:"?");buttons[n].setContentDescription(revealed?SYMBOLS[order[n]]:"Hidden memory card");buttons[n].setEnabled(!paired);buttons[n].setSelected(revealed);buttons[n].setTextColor(paired?Design.CREAM:Design.INK);buttons[n].setBackground(paired?Design.shape(card.getContext(),Design.BROWN,16):Design.outline(card.getContext(),Design.SOFT,revealed?Design.BROWN:Design.LINE,16));}
+        private void refresh(int n){boolean paired=(matched&(1<<n))!=0,revealed=paired||first==n;buttons[n].setText(revealed?SYMBOLS[order[n]]:"");buttons[n].setContentDescription(revealed?SYMBOLS[order[n]]:"Hidden memory card");buttons[n].setEnabled(!paired);buttons[n].setSelected(revealed);buttons[n].setTextColor(paired?Design.CREAM:Design.INK);buttons[n].setBackground(paired?Design.shape(card.getContext(),Design.BROWN,12):revealed?Design.outline(card.getContext(),Design.SOFT,Design.BROWN,12):new android.graphics.drawable.LayerDrawable(new android.graphics.drawable.Drawable[]{new NightDialMemoryBack(card.getContext()),Design.touch(card.getContext(),android.graphics.Color.TRANSPARENT,12)}));}
         private void tap(int index){
             if(!live()||waiting||first==index||(matched&(1<<index))!=0)return;
-            buttons[index].setText(SYMBOLS[order[index]]);buttons[index].setContentDescription(SYMBOLS[order[index]]);
+            InteractionFeedback.selection(buttons[index]);NightDialMotion.reveal(buttons[index]);buttons[index].setText(SYMBOLS[order[index]]);buttons[index].setContentDescription(SYMBOLS[order[index]]);
             if(first<0){first=index;refresh(index);return;}
             int previous=first;first=-1;
             if(order[previous]==order[index]){matched|=(1<<previous)|(1<<index);refresh(previous);refresh(index);if(matched==63)finish();}

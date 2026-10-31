@@ -15,6 +15,7 @@ final class NightDialMotion {
     static final PathInterpolator EASE_OUT=new PathInterpolator(.22f,1f,.36f,1f);
     static boolean enabled(Context context){return InteractionFeedback.motion(context);}
     static void configurePage(Activity activity){
+        activity.getTheme().applyStyle(enabled(activity)?R.style.NightDialAnimatedDialogs:R.style.NightDialStaticDialogs,true);
         activity.getWindow().setWindowAnimations(enabled(activity)?R.style.NightDialPageAnimation:R.style.NightDialStaticAnimation);
     }
     static void configureSheet(Dialog dialog, Context context){
@@ -24,5 +25,6 @@ final class NightDialMotion {
     }
     /** Selection is announced by the control; this only settles newly focused visual emphasis. */
     static void cancel(View view){if(view!=null)view.animate().cancel();}
+    static void reveal(View view){view.animate().cancel();if(!enabled(view.getContext())){view.setRotationY(0);return;}view.setRotationY(-18);view.animate().rotationY(0).setDuration(160).setInterpolator(EASE_OUT).start();}
     private NightDialMotion(){}
 }
