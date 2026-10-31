@@ -170,6 +170,11 @@ def fit(cache, plan, protocol_path):
                                source_sha256=data.digest(Path(__file__).read_bytes()),
                                train_windows=len(y),validation_windows=len(vy)))
     classifier.fit(x,y)
+    natural_counts=np.zeros(4,dtype=np.int64)
+    for subject in range(1,31):
+        contract=json.loads((cache/f"{subject:02}/contract.json").read_bytes())
+        for epoch in contract["candidates"]:
+            natural_counts[epoch["label"]]+=1
     trees = []
     for estimator in classifier.estimators_:
         tree = estimator.tree_
@@ -183,7 +188,8 @@ def fit(cache, plan, protocol_path):
                  protocol_sha256=data.digest(protocol_path.read_bytes()),sklearn_version=sklearn.__version__,
                  numpy_version=np.__version__,scipy_version=scipy.__version__,
                  crop_plan_sha256=data.digest((cache/"crop-plan.json").read_bytes()),
-                 train_counts=np.bincount(y,minlength=4).tolist(),train_majority=int(np.bincount(y,minlength=4).argmax()),
+                 train_counts=np.bincount(y,minlength=4).tolist(),train_natural_eligible_counts=natural_counts.tolist(),
+                 train_majority=int(natural_counts.argmax()),
                  train_accepted=accepted,train_missing=missing,trees=trees)
     reference = np.concatenate((x,vx)) if len(vx) else x
     error = float(np.max(np.abs(classifier.predict_proba(reference)-portable_predict(model,reference))))
