@@ -180,7 +180,7 @@ ALARM_REFERENCE_CURRENT_FRAMES += ["organization-"+name+".png" for name in (
     "alarm-editor", "alarm-search", "smart-following", "smart-configured",
     "alarm-schedule", "alarm-options", "controls-recreated", "alarm-backup",
     "smart-reopened", "alarm-reopened")]
-APPEARANCE_FRAMES = ["appearance-"+name+".png" for name in ("automatic","selected-0","selected-1","selected-2","tonight-0","tonight-1","tonight-2","large-contrast-tonight","large-contrast-tonight-action","large-contrast")]
+APPEARANCE_FRAMES = ["appearance-"+name+".png" for name in ("automatic","selected-0","selected-1","selected-2","tonight-0","tonight-1","tonight-2","large-contrast-tonight","large-contrast-tonight-action","large-contrast","lamp-config")]
 TONIGHT_FRAMES = ["arc-" + name + ".png" for name in ("upcoming", "help", "start", "middle", "end", "next", "large", "large-action", "weekly")]
 SONAR_REPORT_FRAMES = ["sonar-report-" + name + ".png" for name in ("night", "signals", "zero", "reopened", "legacy-unknown", "analysis-error")]
 GOAL_FRAMES = ["goal-" + name + ".png" for name in ("plan", "tonight", "saved-plan", "empty-bank", "create", "bank", "reopened-bank", "bank-details", "stopped", "trends")]
