@@ -263,8 +263,15 @@ def main():
         raise ValueError("Use separate prospective train/validation and test phases")
     if hi > 40:
         validation = json.loads((args.cache / "validation.json").read_bytes())
-        model_hash = digest((args.cache / "model.json").read_bytes())
-        if not args.test_after_validation or not validation["prospective_gate_passed"] or validation["model_sha256"] != model_hash:
+        model_bytes = (args.cache / "model.json").read_bytes()
+        model_hash = digest(model_bytes)
+        model = json.loads(model_bytes)
+        protocol = Path(__file__).resolve().parents[1] / "docs/research/2026-10-31-phone-stage-pilot-protocol.json"
+        source = Path(__file__).with_name("phone_stage_acoustic.py")
+        if (not args.test_after_validation or not validation["prospective_gate_passed"]
+                or validation["model_sha256"] != model_hash
+                or model["feature_source_sha256"] != digest(source.read_bytes())
+                or model["protocol_sha256"] != digest(protocol.read_bytes())):
             raise ValueError("Test41-50 remain untouched until the frozen validation gate passes")
         marker = args.cache / "test-opened.json"
         frozen = dict(model_sha256=model_hash, validation_sha256=digest((args.cache / "validation.json").read_bytes()))
