@@ -1,0 +1,278 @@
+{
+  "dev_results_sha256": "5deced38026da96f25f921a73fe8a64c02a507cb662e89a63115cf61e2c09938",
+  "policy": {
+    "laughter": {
+      "model": "original",
+      "threshold": 0.1,
+      "margin": 0.025,
+      "true": [
+        "33876",
+        "343884"
+      ],
+      "false": []
+    },
+    "instrument": {
+      "model": "pann-fallback",
+      "threshold": 0.35,
+      "margin": 0.15,
+      "true": [
+        "117673",
+        "357326",
+        "40440",
+        "251160"
+      ],
+      "false": []
+    }
+  },
+  "candidates": {
+    "laughter": [
+      {
+        "model": "original",
+        "threshold": 0.1,
+        "margin": 0.025,
+        "true": [
+          "33876",
+          "343884"
+        ],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.1,
+        "margin": 0.05,
+        "true": [
+          "343884"
+        ],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.1,
+        "margin": 0.1,
+        "true": [
+          "343884"
+        ],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.15,
+        "margin": 0.025,
+        "true": [
+          "33876",
+          "343884"
+        ],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.15,
+        "margin": 0.05,
+        "true": [
+          "343884"
+        ],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.15,
+        "margin": 0.1,
+        "true": [
+          "343884"
+        ],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.2,
+        "margin": 0.025,
+        "true": [
+          "343884"
+        ],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.2,
+        "margin": 0.05,
+        "true": [
+          "343884"
+        ],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.2,
+        "margin": 0.1,
+        "true": [
+          "343884"
+        ],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.3,
+        "margin": 0.025,
+        "true": [
+          "343884"
+        ],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.3,
+        "margin": 0.05,
+        "true": [
+          "343884"
+        ],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.3,
+        "margin": 0.1,
+        "true": [
+          "343884"
+        ],
+        "false": []
+      }
+    ],
+    "instrument": [
+      {
+        "model": "original",
+        "threshold": 0.35,
+        "margin": 0.15,
+        "true": [],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.35,
+        "margin": 0.25,
+        "true": [],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.45,
+        "margin": 0.15,
+        "true": [],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.45,
+        "margin": 0.25,
+        "true": [],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.55,
+        "margin": 0.15,
+        "true": [],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.55,
+        "margin": 0.25,
+        "true": [],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.65,
+        "margin": 0.15,
+        "true": [],
+        "false": []
+      },
+      {
+        "model": "original",
+        "threshold": 0.65,
+        "margin": 0.25,
+        "true": [],
+        "false": []
+      },
+      {
+        "model": "pann-fallback",
+        "threshold": 0.35,
+        "margin": 0.15,
+        "true": [
+          "117673",
+          "357326",
+          "40440",
+          "251160"
+        ],
+        "false": []
+      },
+      {
+        "model": "pann-fallback",
+        "threshold": 0.35,
+        "margin": 0.25,
+        "true": [
+          "117673",
+          "357326",
+          "40440"
+        ],
+        "false": []
+      },
+      {
+        "model": "pann-fallback",
+        "threshold": 0.45,
+        "margin": 0.15,
+        "true": [
+          "357326",
+          "40440"
+        ],
+        "false": []
+      },
+      {
+        "model": "pann-fallback",
+        "threshold": 0.45,
+        "margin": 0.25,
+        "true": [
+          "357326",
+          "40440"
+        ],
+        "false": []
+      },
+      {
+        "model": "pann-fallback",
+        "threshold": 0.55,
+        "margin": 0.15,
+        "true": [
+          "40440"
+        ],
+        "false": []
+      },
+      {
+        "model": "pann-fallback",
+        "threshold": 0.55,
+        "margin": 0.25,
+        "true": [
+          "40440"
+        ],
+        "false": []
+      },
+      {
+        "model": "pann-fallback",
+        "threshold": 0.65,
+        "margin": 0.15,
+        "true": [
+          "40440"
+        ],
+        "false": []
+      },
+      {
+        "model": "pann-fallback",
+        "threshold": 0.65,
+        "margin": 0.25,
+        "true": [
+          "40440"
+        ],
+        "false": []
+      }
+    ]
+  }
+}

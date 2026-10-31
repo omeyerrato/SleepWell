@@ -1,0 +1,342 @@
+{
+  "selection_sha256": "772de089b2a1b89d1af883b3934a7388bf64ef976364a5ca485b7fcefe4dc566",
+  "network_bytes": 29563956,
+  "sources": [
+    {
+      "id": "366173",
+      "split": "dev",
+      "bytes": 719950,
+      "wav_sha256": "ba33ad909dfc0e2ecc7f70a4ec8169147f46916f5729c1bac35a44cd03bab097",
+      "fetch_seconds": 4.5440975000019534
+    },
+    {
+      "id": "392795",
+      "split": "dev",
+      "bytes": 192354,
+      "wav_sha256": "561d711bd8380cf2fff60ca0d137661b3a0de41b96f6fb866f37985ae3d21c30",
+      "fetch_seconds": 0.8603890000013052
+    },
+    {
+      "id": "33876",
+      "split": "dev",
+      "bytes": 612486,
+      "wav_sha256": "0f22b39a1681996b93b29b69c6f22730a53d6c20399b893c1e2883c54dcab6d5",
+      "fetch_seconds": 1.716304699999455
+    },
+    {
+      "id": "163496",
+      "split": "dev",
+      "bytes": 837710,
+      "wav_sha256": "5f522ac8718aedb6438bc504f014976526d99d95baca45d5290a904bb942de09",
+      "fetch_seconds": 2.2095868999967934
+    },
+    {
+      "id": "343884",
+      "split": "dev",
+      "bytes": 407118,
+      "wav_sha256": "3665ef990ffd96a21af78a321b3e8a6df9bd784da1288bb9dfa77abec0459d57",
+      "fetch_seconds": 1.4382165999995777
+    },
+    {
+      "id": "315934",
+      "split": "dev",
+      "bytes": 413774,
+      "wav_sha256": "259fb75ee9931ec76dcf683b9cbdbc1109a1e9b83f390f0c39b540a6c087389a",
+      "fetch_seconds": 1.2952763000066625
+    },
+    {
+      "id": "67824",
+      "split": "dev",
+      "bytes": 188494,
+      "wav_sha256": "4fe20acbb339e763d86e3615a8f321b10095f4a454d1fa52f048c85c3420d509",
+      "fetch_seconds": 3.1060383999938495
+    },
+    {
+      "id": "166047",
+      "split": "dev",
+      "bytes": 204174,
+      "wav_sha256": "358ee9c33a8d749cdd55c8eaa7686107876e207c70c547180cb3b98d13b1c59e",
+      "fetch_seconds": 4.5648059000013745
+    },
+    {
+      "id": "117673",
+      "split": "dev",
+      "bytes": 704590,
+      "wav_sha256": "29ab5debc35a3d2fb6c2ba0ede0fb130d8afe0ab9663fdd9518f2a76c4f97ae2",
+      "fetch_seconds": 5.509785300004296
+    },
+    {
+      "id": "389599",
+      "split": "dev",
+      "bytes": 792160,
+      "wav_sha256": "3e8642a06611aef287fe0cb62e966753b6d51ef5ad41e6e108d3825da30e21fe",
+      "fetch_seconds": 12.541757699997106
+    },
+    {
+      "id": "357326",
+      "split": "dev",
+      "bytes": 192000,
+      "wav_sha256": "10e2836a443fb93c59f534230037e216b87f809c3bf532d9d43fc5af87cbd49e",
+      "fetch_seconds": 7.2708502999958
+    },
+    {
+      "id": "128836",
+      "split": "dev",
+      "bytes": 194118,
+      "wav_sha256": "9bec557a013c67bc6d1115f55f20c754ff28882f81c2f154648b9c99f5186554",
+      "fetch_seconds": 1.2091632000010577
+    },
+    {
+      "id": "96557",
+      "split": "dev",
+      "bytes": 393230,
+      "wav_sha256": "4410e3850e6932f8ce182848057ea8e136e0910d189f92ecc03a38cd7548650c",
+      "fetch_seconds": 3.235541200003354
+    },
+    {
+      "id": "239782",
+      "split": "dev",
+      "bytes": 551328,
+      "wav_sha256": "96882eb5176a90cccd3c041855c27434c48206ba5f8d5e84961d6f7ae90ab9a2",
+      "fetch_seconds": 2.0589712000000873
+    },
+    {
+      "id": "40440",
+      "split": "dev",
+      "bytes": 321848,
+      "wav_sha256": "1198b55aab0a9124c0daa13cf1875b2ba21b81a3c89e5c83c3e07f158ab88931",
+      "fetch_seconds": 1.3751000999982352
+    },
+    {
+      "id": "251160",
+      "split": "dev",
+      "bytes": 345524,
+      "wav_sha256": "2bed9574dd19ebbb3c96ea376ac503f4871f7a132b8ad380d764b2b3636b03ae",
+      "fetch_seconds": 2.415580399996543
+    },
+    {
+      "id": "400748",
+      "split": "dev",
+      "bytes": 285704,
+      "wav_sha256": "ce071f16b6ee162f196955cc373811fda1328f3a139af40d0a917ab961bb8d14",
+      "fetch_seconds": 2.4129003999987617
+    },
+    {
+      "id": "71707",
+      "split": "dev",
+      "bytes": 534106,
+      "wav_sha256": "e7815edb05cfe48aaa95bc1a81106bae3c0e3611b3c70a631c037a79d88fd05b",
+      "fetch_seconds": 7.411522599999444
+    },
+    {
+      "id": "324769",
+      "split": "dev",
+      "bytes": 317774,
+      "wav_sha256": "3095c91a4c301cf0bc981c98d78ac2c0a40e45504bc1f68db65a0ef8a334b343",
+      "fetch_seconds": 2.5264661999972304
+    },
+    {
+      "id": "155904",
+      "split": "dev",
+      "bytes": 650844,
+      "wav_sha256": "1e642ed8e094f0a4fc29d7e9d7777319ad522db421aa923f2b870e0feb016af5",
+      "fetch_seconds": 2.8174344999933965
+    },
+    {
+      "id": "154427",
+      "split": "dev",
+      "bytes": 734912,
+      "wav_sha256": "bf14252a6c1dad2e924edbf4c883f147a3d90ea5b9a89b9d0e9329f11dc40e0d",
+      "fetch_seconds": 2.775216400004865
+    },
+    {
+      "id": "238250",
+      "split": "dev",
+      "bytes": 604238,
+      "wav_sha256": "e1b5bf39c41f6b9430270ccb2be734ad05e87dae4b0ab36cbb54c008c6e7aacf",
+      "fetch_seconds": 4.395998100000725
+    },
+    {
+      "id": "347681",
+      "split": "dev",
+      "bytes": 661326,
+      "wav_sha256": "d6991f8e82900be57fb2007585efe6445f1481ec9cdfea3d14add1dd2910fa93",
+      "fetch_seconds": 2.303587400005199
+    },
+    {
+      "id": "342114",
+      "split": "dev",
+      "bytes": 596430,
+      "wav_sha256": "3c0d4e3dbdfc24af0dff072bb28df86de6a636ec2706572d5444de1769fdc257",
+      "fetch_seconds": 2.748720899995533
+    },
+    {
+      "id": "253598",
+      "split": "eval",
+      "bytes": 568086,
+      "wav_sha256": "fb7d3a4bfa2f844265e1846a2ddb422bb5783fc12c24f497e3ec877115b4f35f",
+      "fetch_seconds": 3.953033300000243
+    },
+    {
+      "id": "38514",
+      "split": "eval",
+      "bytes": 617550,
+      "wav_sha256": "43244776a2916b6c9a64b4e80f68c4b6472274afaadc88364560044cdc26e817",
+      "fetch_seconds": 6.431252100002894
+    },
+    {
+      "id": "368798",
+      "split": "eval",
+      "bytes": 842190,
+      "wav_sha256": "0214014a3c049f25f4e4f2251f211c891745ec2630848b2614381c2f860fc1bf",
+      "fetch_seconds": 2.4082061000008252
+    },
+    {
+      "id": "1791",
+      "split": "eval",
+      "bytes": 231654,
+      "wav_sha256": "229c79356a02182d2a750b358432f2ce202adb9e77931f6a5c4eb0bddcfd1d22",
+      "fetch_seconds": 1.0460337999975309
+    },
+    {
+      "id": "181599",
+      "split": "eval",
+      "bytes": 767056,
+      "wav_sha256": "39276d5b397c6009a7660e861d396a496b8ee580d6de253b796194ad1d5d059f",
+      "fetch_seconds": 2.0305449000006774
+    },
+    {
+      "id": "427699",
+      "split": "eval",
+      "bytes": 555738,
+      "wav_sha256": "3cd26af9e20aa5f8041b33317776bca52d32f1b3c43cec227f4501a02a227d77",
+      "fetch_seconds": 2.397537100005138
+    },
+    {
+      "id": "266359",
+      "split": "eval",
+      "bytes": 187184,
+      "wav_sha256": "4c9bd0b0fa4e996936f1e522e145e25d43a02ca382f8737cd47b803cdea5c9d6",
+      "fetch_seconds": 2.16133400000399
+    },
+    {
+      "id": "141196",
+      "split": "eval",
+      "bytes": 202598,
+      "wav_sha256": "0e6aff6b7c807a885d8f27bc651acb7c6a3204c389c03cff2d39272c5db81c4a",
+      "fetch_seconds": 2.039247600005183
+    },
+    {
+      "id": "233213",
+      "split": "eval",
+      "bytes": 282702,
+      "wav_sha256": "dc161046a738cd34ca3ab955cb2af4afc4cbacdf053c8d0ecb2e5e62423e7578",
+      "fetch_seconds": 1.1313662999964436
+    },
+    {
+      "id": "434629",
+      "split": "eval",
+      "bytes": 573378,
+      "wav_sha256": "d9b59a4c98b330c21ce6b27d7cdb030b0c84e522ed4e03c0b9208d14dc2a261d",
+      "fetch_seconds": 1.4779213000001619
+    },
+    {
+      "id": "117512",
+      "split": "eval",
+      "bytes": 784452,
+      "wav_sha256": "20bca35712df3ef6e84deddb6921ff7ab937f30deb692b2252f84014096c8eb5",
+      "fetch_seconds": 0.9504616999984137
+    },
+    {
+      "id": "328665",
+      "split": "eval",
+      "bytes": 412494,
+      "wav_sha256": "8d2e48c9cfd267418a72b2c5271d4c406f50a5917f47f8169aa4a3beef279473",
+      "fetch_seconds": 1.3395279000033042
+    },
+    {
+      "id": "348311",
+      "split": "eval",
+      "bytes": 522384,
+      "wav_sha256": "8f2d82beff9c2ab5a7c7958c3b44a51d1b0b389aa341d7aa4d6c503d350b1b7c",
+      "fetch_seconds": 1.6341887000016868
+    },
+    {
+      "id": "339982",
+      "split": "eval",
+      "bytes": 607702,
+      "wav_sha256": "c12ebaaf383aa3c20ca97a0d0ed9cda546774c50f6598f0e4566182d3a99cb0a",
+      "fetch_seconds": 1.4036226000025636
+    },
+    {
+      "id": "351519",
+      "split": "eval",
+      "bytes": 652674,
+      "wav_sha256": "6269ffac98265f08a39d72c501c7570b6d2d687250fdd27ee802f6685c2d6290",
+      "fetch_seconds": 1.7905132999949274
+    },
+    {
+      "id": "325033",
+      "split": "eval",
+      "bytes": 705670,
+      "wav_sha256": "e0ff0106087402b13200d0ef02d02221a441ab42d0c6d5e16d8de12d1df6bcac",
+      "fetch_seconds": 1.2045078000010108
+    },
+    {
+      "id": "30152",
+      "split": "eval",
+      "bytes": 396978,
+      "wav_sha256": "ce5761d4e9e3583070d471efd16d131e341b9475fa13fa00581956e80fb3b71b",
+      "fetch_seconds": 1.3552302999960375
+    },
+    {
+      "id": "377065",
+      "split": "eval",
+      "bytes": 352334,
+      "wav_sha256": "1c103f8edf4c5291709b9cc18c50b1a71c586d812a79db2110b4ef8b32320901",
+      "fetch_seconds": 1.9915103999956045
+    },
+    {
+      "id": "154766",
+      "split": "eval",
+      "bytes": 338884,
+      "wav_sha256": "aad0139f3fcc28d6641a9f41962261e4a2ba0001a01b058a1a88e03d4469e1b4",
+      "fetch_seconds": 2.7227149000027566
+    },
+    {
+      "id": "164341",
+      "split": "eval",
+      "bytes": 601166,
+      "wav_sha256": "3470888a0f93c1121752fe8b85e689ad6cc3bbb358cf7ed341383fbaadb96296",
+      "fetch_seconds": 4.3831790999975055
+    },
+    {
+      "id": "271602",
+      "split": "eval",
+      "bytes": 278508,
+      "wav_sha256": "4bab650bad09f91eafb201d3ed0abef2e73e48cf6ad2f4c97b8cf999376c41a1",
+      "fetch_seconds": 8.741962899999635
+    },
+    {
+      "id": "408621",
+      "split": "eval",
+      "bytes": 421596,
+      "wav_sha256": "7cbd557de885da49c2e37fb13e90276b8899ce775b6b655cc384d31106d70210",
+      "fetch_seconds": 8.82177529999899
+    },
+    {
+      "id": "119029",
+      "split": "eval",
+      "bytes": 673928,
+      "wav_sha256": "625c6eac5bdf3d033b54be7d49a240a47313df6b5d4d323dd7079f5490c88b78",
+      "fetch_seconds": 3.731462499999907
+    },
+    {
+      "id": "62453",
+      "split": "eval",
+      "bytes": 534350,
+      "wav_sha256": "8bc43bf7022905032fc1868518fd0df87ed2e72599a1b5b3d11c8cb49d1d869c",
+      "fetch_seconds": 1.185515299999679
+    }
+  ]
+}

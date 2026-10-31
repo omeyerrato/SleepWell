@@ -58,3 +58,23 @@ only its vocabulary. This study does not establish target-room accuracy,
 interval onset precision, AudioSet training disjointness or automatic overnight
 recognition. Reliable automatic laughter/instrument recognition remains a
 separate unfinished requirement even if this small generic-clip study passes.
+
+## Development-only model-selection amendment
+
+Before any evaluation inference, the first development pass completed on all 24
+sources (31.022 seconds measured DSP/inference wall time). Current laughter
+accepts 2/8 and EfficientAT instruments 0/8; the entire original instrument
+threshold grid also accepts 0/8. Several short clips saturate unrelated
+EfficientAT classes, so reducing that threshold does not address the failure.
+The already-executed PANN instrument-family outputs accept 4/8 at .35/.15 with
+no wrong-family/distractor development acceptances. All raw vectors are retained.
+
+The extended development-only candidate is an explicit PANN instrument fallback:
+preserve every originally qualified EfficientAT decision, otherwise compare the
+PANN instrument family with the same predeclared instrument threshold/margin
+grid. No new model, frontend, family indices or weights. The fallback excludes
+the compatible Music parent from competition exactly as the existing instrument
+policy does. Families without a strict development true-positive gain retain
+their original policy, so the laughter cutoff remains .10/.025. Freeze this
+selected model policy before the first evaluation inference. The original
+evaluation gate above remains unchanged, including no newly accepted negatives.
