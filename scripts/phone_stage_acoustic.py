@@ -9,6 +9,7 @@ for _name in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "NUM
 import argparse
 import hashlib
 import json
+import pickle
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -184,10 +185,14 @@ def fit(cache, plan, protocol_path):
                  crop_plan_sha256=data.digest((cache/"crop-plan.json").read_bytes()),
                  train_counts=np.bincount(y,minlength=4).tolist(),train_majority=int(np.bincount(y,minlength=4).argmax()),
                  train_accepted=accepted,train_missing=missing,trees=trees)
-    error = float(np.max(np.abs(classifier.predict_proba(x)-portable_predict(model,x))))
+    reference = np.concatenate((x,vx)) if len(vx) else x
+    error = float(np.max(np.abs(classifier.predict_proba(reference)-portable_predict(model,reference))))
     if error > 1e-12:
         raise ValueError("Portable tree decoder differs from primary sklearn runtime")
     model["primary_runtime_max_probability_difference"] = error
+    primary = pickle.dumps(classifier, protocol=5)
+    (cache/"primary-fitted-model.pkl").write_bytes(primary)
+    model["primary_fitted_model_sha256"] = data.digest(primary)
     data.save_json(output,model)
     report = assess(model,vx,vy,vaccepted,vmissing)
     report["model_sha256"] = data.digest(output.read_bytes())
@@ -196,22 +201,60 @@ def fit(cache, plan, protocol_path):
     print(json.dumps({key:value for key,value in report.items() if key not in ("probabilities","missing")}),flush=True)
 
 
+def frozen_model(cache, protocol_path):
+    model_bytes=(cache/"model.json").read_bytes()
+    model=json.loads(model_bytes)
+    validation=json.loads((cache/"validation.json").read_bytes())
+    if (not validation["prospective_gate_passed"] or validation["model_sha256"] != data.digest(model_bytes)
+            or model["feature_source_sha256"] != data.digest(Path(__file__).read_bytes())
+            or model["protocol_sha256"] != data.digest(protocol_path.read_bytes())):
+        raise ValueError("Validation gate/model/source/protocol freeze differs; test remains closed")
+    return model
+
+
+def evaluate_test(cache, plan, protocol_path):
+    output=cache/"test.json"
+    if output.exists():
+        raise ValueError("Test was already evaluated; never overwrite or retune")
+    model=frozen_model(cache,protocol_path)
+    x,y,accepted,missing=features(cache,plan["windows"])
+    primary=(cache/"primary-fitted-model.pkl").read_bytes()
+    if data.digest(primary) != model["primary_fitted_model_sha256"]:
+        raise ValueError("Own fitted reference model differs from its frozen digest")
+    reference=pickle.loads(primary)  # Only this pipeline's own, digest-verified fit.
+    error=float(np.max(np.abs(reference.predict_proba(x)-portable_predict(model,x)))) if len(x) else 0
+    if error > 1e-12:
+        raise ValueError("Portable decoder differs from frozen primary runtime on test inputs")
+    report=assess(model,x,y,accepted,missing)
+    report["primary_runtime_max_probability_difference"]=error
+    report["model_sha256"]=data.digest((cache/"model.json").read_bytes())
+    report["test_plan_sha256"]=data.digest((cache/"test-crop-plan.json").read_bytes())
+    report["scope"]="Single frozen held-out test evaluation; no retuning or clinical/Android acceptance claim."
+    data.save_json(output,report)
+    print(json.dumps({key:value for key,value in report.items() if key not in ("probabilities","missing")}),flush=True)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command",choices=("fetch","fit"))
+    parser.add_argument("command",choices=("fetch","fit","fetch-test","evaluate-test"))
     parser.add_argument("--cache",type=Path,required=True)
     parser.add_argument("--protocol",type=Path,default=Path("docs/research/2026-10-31-phone-stage-pilot-protocol.json"))
     args=parser.parse_args()
     configure(args.cache)
-    plan=json.loads((args.cache/"crop-plan.json").read_bytes())
-    if plan["protocol"] != data.PROTOCOL or any(int(row["subject"]) > 40 for row in plan["windows"]):
-        raise ValueError("Unexpected protocol/test access before model freeze")
-    if args.command == "fetch":
+    testing=args.command in ("fetch-test","evaluate-test")
+    if testing:
+        frozen_model(args.cache,args.protocol)
+    plan=json.loads((args.cache/("test-crop-plan.json" if testing else "crop-plan.json")).read_bytes())
+    if plan["protocol"] != data.PROTOCOL or any((int(row["subject"]) > 40) != testing for row in plan["windows"]):
+        raise ValueError("Unexpected protocol/test scope before model freeze")
+    if args.command in ("fetch","fetch-test"):
         with ThreadPoolExecutor(max_workers=2) as workers:
             for receipt in workers.map(lambda row:acquire(args.cache,row),plan["windows"]):
                 print(json.dumps(dict(window=stem(receipt["window"]),bytes=receipt["bytes"],sha256=receipt["sha256"])),flush=True)
-    else:
+    elif args.command == "fit":
         fit(args.cache,plan,args.protocol)
+    else:
+        evaluate_test(args.cache,plan,args.protocol)
 
 
 if __name__ == "__main__":

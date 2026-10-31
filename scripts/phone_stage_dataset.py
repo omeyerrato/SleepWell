@@ -256,10 +256,21 @@ def main():
     parser.add_argument("command", choices=("inventory", "plan"))
     parser.add_argument("--cache", type=Path, required=True)
     parser.add_argument("--subjects", default="01-03")
+    parser.add_argument("--test-after-validation", action="store_true")
     args = parser.parse_args()
     lo, hi = map(int, args.subjects.split("-"))
-    if not 1 <= lo <= hi <= 40:
-        raise ValueError("Test41-50 remain untouched until model/protocol freeze")
+    if not 1 <= lo <= hi <= 50 or (lo <= 40 < hi):
+        raise ValueError("Use separate prospective train/validation and test phases")
+    if hi > 40:
+        validation = json.loads((args.cache / "validation.json").read_bytes())
+        model_hash = digest((args.cache / "model.json").read_bytes())
+        if not args.test_after_validation or not validation["prospective_gate_passed"] or validation["model_sha256"] != model_hash:
+            raise ValueError("Test41-50 remain untouched until the frozen validation gate passes")
+        marker = args.cache / "test-opened.json"
+        frozen = dict(model_sha256=model_hash, validation_sha256=digest((args.cache / "validation.json").read_bytes()))
+        if marker.exists() and json.loads(marker.read_bytes()) != frozen:
+            raise ValueError("Test scope/model changed after opening")
+        save_json(marker, frozen)
     subjects = [f"{n:02}" for n in range(lo, hi+1)]
     args.cache.mkdir(parents=True, exist_ok=True)
     traffic_path = args.cache.parent / "traffic-ledger.json"
@@ -277,10 +288,10 @@ def main():
     else:
         rows = []
         for subject in subjects:
-            split = "train" if int(subject) <= 30 else "validation"
+            split = "train" if int(subject) <= 30 else "validation" if int(subject) <= 40 else "test"
             contract = json.loads((args.cache / subject / "contract.json").read_bytes())
             rows.extend(plan_one(contract, split))
-        save_json(args.cache / "crop-plan.json", dict(protocol=PROTOCOL, windows=rows,
+        save_json(args.cache / ("test-crop-plan.json" if lo > 40 else "crop-plan.json"), dict(protocol=PROTOCOL, windows=rows,
                   planned_pcm_bytes=sum(row["byte_end"]-row["byte_start"]+1 for row in rows)))
         print(json.dumps(dict(windows=len(rows), planned_pcm_bytes=len(rows)*90*16000)), flush=True)
 
