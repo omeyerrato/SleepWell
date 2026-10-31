@@ -58,7 +58,7 @@ final class Ui {
     }
     static void choice(LinearLayout p,String title,String current,String[] options,Consumer<String> onChange) {
         Button button=button(p,title+" · "+current,()->{});
-        button.setOnClickListener(v->new AlertDialog.Builder(p.getContext()).setTitle(title).setItems(options,(d,w)->{onChange.accept(options[w]);button.setText(title+" · "+options[w]);}).show());
+        button.setOnClickListener(v->{InteractionFeedback.action(v);SleepPicker.choices((Activity)p.getContext(),title,options,java.util.Arrays.asList(options).indexOf(current),w->{onChange.accept(options[w]);button.setText(title+" · "+options[w]);});});
     }
     static void toast(Context c,String s) { Toast.makeText(c,s,Toast.LENGTH_LONG).show(); }
 }

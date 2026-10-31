@@ -9,7 +9,7 @@ import android.widget.TextView;
 final class ContactlessSetupUi {
     private ContactlessSetupUi() {}
     static void line(LinearLayout body) {
-        View line = new View(body.getContext()); line.setBackgroundColor(0xff51445e);
+        View line = new View(body.getContext()); line.setBackgroundColor(NightDialTokens.RULE);
         body.addView(line, new LinearLayout.LayoutParams(-1, Design.dp(body.getContext(), 1)));
     }
     static final class AccessRow {
@@ -28,7 +28,7 @@ final class ContactlessSetupUi {
         private final View check;
         ResultCard(LinearLayout body) {
             android.content.Context c = body.getContext(); LinearLayout row = Design.row(c); Design.pad(row, 12, 12);
-            row.setBackground(Design.outline(c, 0xff2c2536, 0xff5e506d, 14));
+            row.setBackground(Design.outline(c, NightDialTokens.SURFACE, NightDialTokens.OUTLINE, 14));
             check = new Design.Icon(c, "check", Design.PLUM);
             check.setBackground(Design.shape(c, 0xffb9e08e, 20)); check.setPadding(Design.dp(c, 5), Design.dp(c, 5), Design.dp(c, 5), Design.dp(c, 5));
             check.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);

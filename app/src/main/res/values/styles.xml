@@ -18,6 +18,12 @@
         <item name="android:windowEnterAnimation">@anim/night_dial_sheet_enter</item>
         <item name="android:windowExitAnimation">@anim/night_dial_sheet_exit</item>
     </style>
+    <style name="NightDialPageAnimation" parent="android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/night_dial_page_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/night_dial_page_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/night_dial_page_return</item>
+        <item name="android:activityCloseExitAnimation">@anim/night_dial_page_back</item>
+    </style>
     <style name="NightDialStaticAnimation" parent="android:style/Animation.Activity">
         <item name="android:windowEnterAnimation">@null</item>
         <item name="android:windowExitAnimation">@null</item>

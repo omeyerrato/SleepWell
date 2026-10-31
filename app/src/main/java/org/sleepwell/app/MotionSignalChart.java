@@ -34,7 +34,7 @@ final class MotionSignalChart extends View {
         canvas.drawLine(left,top,right,top,paint);paint.setPathEffect(null);canvas.drawLine(left,bottom,right,bottom,paint);
         paint.setStyle(Paint.Style.FILL);paint.setColor(Design.MUTED);paint.setTextAlign(Paint.Align.RIGHT);
         canvas.drawText("High",left-dp(5),top-metrics.ascent/2,paint);canvas.drawText("Low",left-dp(5),bottom,paint);
-        float width=(right-left)/30,gap=Math.min(dp(.8f),width/5);paint.setColor(Appearance.contrast(getContext())?0xff7041b4:Design.VIOLET);
+        float width=(right-left)/30,gap=Math.min(dp(.8f),width/5);paint.setColor(Appearance.contrast(getContext())?NightDialTokens.ACCENT:Design.VIOLET);
         for(int n=0;n<Math.min(30,data.size());n++){
             Double value=data.get(n);if(!measured(value)||value==0)continue;
             float x=left+n*width,height=(float)((bottom-top)*Math.min(1,value/scale));

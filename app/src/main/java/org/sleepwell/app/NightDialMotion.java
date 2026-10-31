@@ -15,9 +15,7 @@ final class NightDialMotion {
     static final PathInterpolator EASE_OUT=new PathInterpolator(.22f,1f,.36f,1f);
     static boolean enabled(Context context){return InteractionFeedback.motion(context);}
     static void configurePage(Activity activity){
-        android.util.TypedValue style=new android.util.TypedValue();
-        int animation=activity.getTheme().resolveAttribute(android.R.attr.windowAnimationStyle,style,true)?style.resourceId:0;
-        activity.getWindow().setWindowAnimations(enabled(activity)?animation:R.style.NightDialStaticAnimation);
+        activity.getWindow().setWindowAnimations(enabled(activity)?R.style.NightDialPageAnimation:R.style.NightDialStaticAnimation);
     }
     static void configureSheet(Dialog dialog, Context context){
         Window window=dialog.getWindow();if(window==null)return;

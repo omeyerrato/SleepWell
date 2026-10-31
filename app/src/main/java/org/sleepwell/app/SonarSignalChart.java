@@ -22,7 +22,7 @@ import java.util.*;
         paint.setTypeface(Design.font(getContext(),400));paint.setTextSize(Design.sp(getContext(),10*Appearance.scale(getContext())));
         paint.setColor(Design.LILAC);paint.setTextAlign(Paint.Align.RIGHT);
         canvas.drawText("High",left-dp(5),top+dp(5),paint);canvas.drawText("Low",left-dp(5),bottom,paint);
-        paint.setColor(0xff51445e);paint.setStrokeWidth(dp(.7f));
+        paint.setColor(NightDialTokens.RULE);paint.setStrokeWidth(dp(.7f));
         for(int n=0;n<=3;n++){float x=left+(right-left)*n/3;canvas.drawLine(x,top,x,bottom,paint);}
         canvas.drawLine(left,bottom,right,bottom,paint);
         paint.setTextAlign(Paint.Align.RIGHT);paint.setColor(Design.LILAC);canvas.drawText("Scale 0–2 relative",right,dp(10),paint);
@@ -35,7 +35,7 @@ import java.util.*;
             // A short real interval still needs a visible marker at its actual time.
             float width=Math.max(dp(2),Math.min(dp(12),x2-x-dp(2))),center=(x+x2)/2;
             float height=(float)((bottom-top)*Math.min(1,bar.value/2));
-            float y=bottom-Math.max(dp(1),height);paint.setShader(new LinearGradient(0,y,0,bottom,Design.VIOLET,0xffc9a8f6,Shader.TileMode.CLAMP));
+            float y=bottom-Math.max(dp(1),height);paint.setShader(new LinearGradient(0,y,0,bottom,Design.VIOLET,NightDialTokens.ACCENT,Shader.TileMode.CLAMP));
             canvas.drawRoundRect(center-width/2,y,center+width/2,bottom,dp(3),dp(3),paint);paint.setShader(null);
         }
         paint.setColor(Design.LILAC);paint.setTextAlign(Paint.Align.LEFT);canvas.drawText("15 s ago",left,bottom+dp(18),paint);

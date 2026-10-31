@@ -45,11 +45,11 @@ final class ProviderStageChart extends View {
     static int color(int kind) {
         switch (kind) {
             case 1: case 3: case 7: return 0xffffaa25;
-            case 4: return 0xffb18cf0;
-            case 5: return 0xff7746ca;
-            case 6: return 0xff9954d4;
-            case 2: return 0xffd2bbee;
-            default: return 0xff9c949e;
+            case 4: return 0xffc6b48b;
+            case 5: return 0xff8b7657;
+            case 6: return 0xffa18a61;
+            case 2: return 0xffd9d4c9;
+            default: return NightDialTokens.META;
         }
     }
 

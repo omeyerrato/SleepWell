@@ -19,7 +19,7 @@ public final class NextAlarmOverrideActivity extends Activity {
     catch(RuntimeException invalid){Design.text(card,"Review this occurrence again before using it.",13,500,Design.BROWN);}body.addView(card);
    }
   }else Design.text(body,admission,15,500,Design.BROWN);
-  LinearLayout footer=RecordUi.footer(body);if(!error.isEmpty()){TextView issue=Design.text(footer,error,13,500,0xffa93919);issue.setContentDescription("Next alarm review error");issue.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);Design.space(footer,8);}
+  LinearLayout footer=RecordUi.footer(body);if(!error.isEmpty()){TextView issue=Design.text(footer,error,13,500,NightDialTokens.NEGATIVE);issue.setContentDescription("Next alarm review error");issue.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);Design.space(footer,8);}
   Design.text(footer,"Save alarm applies this change.",12,400,Design.MUTED);Design.space(footer,6);
   if(admission.isEmpty()){Button use=Design.button(footer,"Use next time",true,this::use);RecordUi.enabled(use,reviewed!=null);}
   if(alarm.nextOverride!=null||alarm.nextOverrideInvalid)Design.button(footer,"Undo next-time override",false,this::undo);
