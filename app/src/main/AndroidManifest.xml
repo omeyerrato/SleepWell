@@ -128,6 +128,10 @@
         <receiver android:name=".AutoCloudBackupReceiver" android:exported="false"><intent-filter><action android:name="android.intent.action.BOOT_COMPLETED" /><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /></intent-filter></receiver>
         <activity android:name=".SearchActivity" android:exported="false" />
         <activity android:name=".CalendarEventExportActivity" android:exported="false" />
+        <activity android:name=".ReportShareActivity" android:exported="false" />
+        <provider android:name=".ReportShareFileProvider" android:authorities="${applicationId}.report-share" android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/report_share_paths" />
+        </provider>
         <provider android:name=".SleepSummaryFileProvider" android:authorities="${applicationId}.sleep-summary" android:exported="false" android:grantUriPermissions="true">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/sleep_summary_paths" />
         </provider>

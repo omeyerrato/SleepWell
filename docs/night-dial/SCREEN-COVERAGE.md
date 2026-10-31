@@ -1,6 +1,6 @@
 # Native destination coverage
 
-All 127 manifest Activities are assigned to the 43 flow families. This accounts for routes; it does not establish complete visual, accessibility or hardware acceptance. Native compositions, shared sheets and helper-owned task surfaces are tracked in PROGRESS.md and revision-specific evidence.
+All 128 manifest Activities are assigned to the 43 flow families. This accounts for routes; it does not establish complete visual, accessibility or hardware acceptance. Native compositions, shared sheets and helper-owned task surfaces are tracked in PROGRESS.md and revision-specific evidence.
 
 Regenerate with `python scripts/night_dial_inventory.py`. The command fails when a new manifest destination has no assigned flow.
 
@@ -95,6 +95,7 @@ Regenerate with `python scripts/night_dial_inventory.py`. The command fails when
 | [RecordedRecognitionActivity](../../app/src/main/java/org/sleepwell/app/RecordedRecognitionActivity.java) | 24 |
 | [RecurringTrackingActivity](../../app/src/main/java/org/sleepwell/app/RecurringTrackingActivity.java) | 21 |
 | [RelativeAlarmTimeActivity](../../app/src/main/java/org/sleepwell/app/RelativeAlarmTimeActivity.java) | 05 |
+| [ReportShareActivity](../../app/src/main/java/org/sleepwell/app/ReportShareActivity.java) | 38 |
 | [ResearchExportActivity](../../app/src/main/java/org/sleepwell/app/ResearchExportActivity.java) | 36 |
 | [RhythmGroupsActivity](../../app/src/main/java/org/sleepwell/app/RhythmGroupsActivity.java) | 28 |
 | [RoomConditionsActivity](../../app/src/main/java/org/sleepwell/app/RoomConditionsActivity.java) | 23 |

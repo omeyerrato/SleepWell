@@ -46,7 +46,7 @@ FLOWS = [
     (35, "Lights and automation", "SmartLight HueBridge Automation IncomingAutomationSettings IncomingAutomation"),
     (36, "Local data, export and restore", "Backup ResearchExport LibraryAudioImport LibraryAudioExport AacExport SoundArchive DiaryImport"),
     (37, "Cloud versions, profiles and conflicts", "CloudBackup CloudAudio SettingsProfile"),
-    (38, "Imported signals, sharing and access", "RecordAccess AlarmAccess SleepSummary AlarmRequest HealthSleepPrivacy"),
+    (38, "Imported signals, sharing and access", "RecordAccess AlarmAccess SleepSummary ReportShare AlarmRequest HealthSleepPrivacy"),
     (39, "Home shortcuts and system handoffs", "HomeLaunch HomeWidgetSettings TimerRequest AlarmRequest"),
     (40, "Recovery and details across flows", "Main AlarmEditor Tracking Backup"),
     (41, "Tags, confirmation and custom values", "TagManagement RecordEditor Diary"),

@@ -1,5 +1,5 @@
 {
-  "activity_count": 127,
+  "activity_count": 128,
   "flow_count": 43,
   "full_acceptance": false,
   "meaning": "Route accounting only; see revision-specific native evidence and PROGRESS.md for acceptance.",
@@ -388,6 +388,7 @@
         "RecordAccessActivity",
         "AlarmAccessActivity",
         "SleepSummaryActivity",
+        "ReportShareActivity",
         "AlarmRequestActivity",
         "HealthSleepPrivacyActivity"
       ]
@@ -1038,6 +1039,12 @@
       "activity": "RelativeAlarmTimeActivity",
       "boards": [
         5
+      ]
+    },
+    {
+      "activity": "ReportShareActivity",
+      "boards": [
+        38
       ]
     },
     {
