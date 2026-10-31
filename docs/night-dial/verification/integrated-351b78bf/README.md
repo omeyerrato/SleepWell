@@ -4,6 +4,14 @@ Built and reviewed application source `351b78bf0436412d8edd889d7eb234be0bf4f8b3`
 
 Delivered **0.1.26 /27**, API30+, arm64-v8a: `C:\Users\omeye\Downloads\SleepWell-Night-Dial-integrated-351b78bf.apk`. 184402952 bytes, SHA256 `3e73f519ef5b876cb6cd5ae5625530443a34abf4c7d2d53f6eb4edb5821774a6`. V2 signature verified and certificate matches the previous preview. Exact [receipt](build-receipt.json), [build log](build.txt) and [signature result](signing.txt). Both assembleDebug and assembleDebugAndroidTest passed; no unit suite or security sweep ran. No release publication, phone query, installation or physical output.
 
+Later update, 31 October 2026: this exact original-signer APK was installed in place
+with literal `adb install -r` **Success**. USB disconnected before post-install
+readback; no launch/output, uninstall/data clear or personal-data inspection ran.
+[Separate installation receipt](phone-installation.md). The packaging receipt's
+`phone_installed:false` and APK-only wording above describe the original delivery
+step and are preserved as history. This does not publish0.1.26 or accept every
+Night Dial flow/state. Candidate0.1.27 is a later source increment, not this APK.
+
 ## Current merged native evidence
 
 - [41212354914](https://github.com/omeyerrato/SleepWell/actions/runs/41212354914):20 methods,206 originals, PASS466.176s. Actual dial/save/cancel/stale/linked-alarm, silent Settle in, synthetic recorded tracking/pause/resume/end, Report/History/Trends/annotation-preserving restore, alarm edits/management, first-night permission recovery,45 secondary roots,28 task setup routes and11 actual practice workspaces. Workspaces are rendered, not solved; setup navigation does not prove physical sensing.

@@ -1,6 +1,10 @@
 # SleepWell feature checklist — 31 October 2026
 
-Latest published **0.1.25 / b1983691** includes the usability-first updates and explicit readiness alarm control. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.25-summary-and-lamp-20261031-b1983691); [current source changes and deferred acceptance](USABILITY-PASS-2026-10-29.md). APK packaging and source-specific focused silent native journeys passed. No broad/unit-test campaign, security review or physical output ran. The S23 Ultra was updated in place to0.1.23 without launching the app or testing outputs. All36 matching, combined Privacy acceptance, remaining feature parity and device/overnight work remain open.
+Latest public release remains **0.1.25 / b1983691** ([APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.25-summary-and-lamp-20261031-b1983691)). Delivered and installed in place: **0.1.26 / code 27**, source `351b78bf`, original-signer arm64 Night Dial integration. `adb install -r` returned literal `Success`; USB disconnected before post-install readback. No launch, output, uninstall, data clear or individual personal-data inspection ran. [Installation receipt](night-dial/verification/integrated-351b78bf/phone-installation.md). Candidate **0.1.27** is not yet built, released or installed.
+
+The user's accepted Night Dial design supersedes the original Changing Light /36-screen matching target. [Integrated native evidence](night-dial/verification/integrated-351b78bf/README.md) contains 22 methods/226 original PNGs; full43-flow/all-state, physical and overnight acceptance remain open. Earlier release/reference sections below are historical, not current design authority.
+
+Current source increment, 31 October: full Privacy destructive-review restoration/stale-action protection, Backup replacement-confirmation recreation, and the explicit offline instrument policy await a new build/focused native review. Frozen FSD50K evaluation improves instruments 1/8 → 6/8, with laughter unchanged at3/8 and no new negatives/lost positives; reliable automatic bedroom recognition remains unfinished. [Evidence and limits](FSD50K-RECOGNITION-CALIBRATION.md). Stage-data public access is resolved; an original-model pilot is underway with a **650 MB hard total acquisition cap**, without a model-accuracy claim. [Access record](research/2026-10-31-phone-stage-new-input.json), [frozen protocol](research/2026-10-31-phone-stage-pilot-protocol.json). Phone Deep/REM remains missing. No new broad/unit campaign or security sweep is implied.
 
 Condensed version: [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
 Checked means implemented source/build, not full phone/overnight acceptance.
@@ -10,7 +14,7 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
 exercise actions, cancellation, recreation and persistence. [Exact release scope](verification/2026-10-27-reference-menus-build/README.md).
 
-**0.1.23 /023c5fb7** is installed on the S23 Ultra. The APK checksum matches the published build; in-place replacement succeeded without uninstall/data clear. No app launch or personal-phone output test ran. Individual records/settings/files were not audited during this update. [Installation evidence](verification/2026-10-30-023-build/phone-installation.md). All36 reference states and broader interaction/security acceptance remain open.
+Historical installation: **0.1.23 /023c5fb7** previously replaced observed0.1.22 in place, with matching APK checksum and no uninstall/data clear, app launch or output test. [Earlier installation evidence](verification/2026-10-30-023-build/phone-installation.md). The0.1.26 receipt above supersedes this installed-version record.
 
 ## Published in 0.1.8 — phone update deferred
 
@@ -57,11 +61,11 @@ These changes are published in0.1.6; they are not installed on the phone.
 
 ## Current top priorities
 
-- [ ] Match all36 reference screens. Current Report, Tone/Gentle, Snooze, QR, sleep plan, rhythm/Nap, Settings root and Appearance have bounded comparison/action evidence. Remaining screens, variants and full reference fidelity remain open. [Screen-by-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
+- [ ] Complete accepted Night Dial43-flow/all-state action, recreation and persistence acceptance. The original36 Changing Light matching requirement was explicitly superseded by the user. [Current flow coverage](night-dial/SCREEN-COVERAGE.md); [historical reference evidence](UI-REFERENCE-ACCEPTANCE.md).
 - [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
 - [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness denial/rationale/permanent-denial Settings recovery now passes its real Android journey (35.776s/13 inspected originals). Contactless and Snoring keep their bounded passes. Automatic recovery, clear live Tracking options, Room/Motion and Wind-down/Guard now pass their named native action/recreation/persistence journeys; actual label taps also pass. The full-night sonar timeline, shared Math/wake-check UI and calendar-consent draft recovery now have bounded native evidence in published0.1.3; real alarm admission/provider/overnight behavior remains unverified. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
-**0.1.23 /023c5fb7** is installed on the S23 Ultra. The APK checksum matches the published build; in-place replacement succeeded without uninstall/data clear. No app launch or personal-phone output test ran. Individual records/settings/files were not audited during this update. [Installation evidence](verification/2026-10-30-023-build/phone-installation.md).
+Historical0.1.23 installation evidence remains [preserved](verification/2026-10-30-023-build/phone-installation.md); current0.1.26 installation and its unavailable post-install readback are recorded at the top.
 
 
 ## New priorities

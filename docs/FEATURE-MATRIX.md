@@ -1,6 +1,10 @@
 # Phone feature matrix
 
-Latest published **0.1.25 / b1983691** includes the usability and custom-control feedback source increments. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.25-summary-and-lamp-20261031-b1983691); [current source scope](USABILITY-PASS-2026-10-29.md). The APK packages reference-led corrections with source-specific focused silent native evidence; it does not establish all36 acceptance. Focused current-source silent emulator comparisons and main actions resumed on30October; security review and a broad test/bug campaign remain deferred. [Current reference evidence](verification/2026-10-30-reference-resume/README.md) and [Settings evidence](verification/2026-10-30-settings-reference/README.md) retain exact source and limits. Audio-only cleanup and durable manual export-receipt source are integrated; their combined acceptance remains open. The S23 Ultra was updated in place to0.1.23 without launching the app or testing outputs. All36 matching, remaining feature parity and physical/overnight acceptance remain open.
+Current status, 31 October 2026: latest public release remains **0.1.25 / b1983691** ([APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.25-summary-and-lamp-20261031-b1983691)). Delivered and installed in place: **0.1.26 / code 27**, integrated source `351b78bf`, original-signer arm64 APK. `adb install -r` returned literal `Success`; later USB disconnection prevented post-install readback. No app launch/output, uninstall/data clear or individual personal-data inspection ran. [Installation receipt](night-dial/verification/integrated-351b78bf/phone-installation.md). Candidate **0.1.27** is not yet built, released or installed.
+
+The user's accepted Night Dial design supersedes the original Changing Light /36-screen matching requirement. [Integrated evidence](night-dial/verification/integrated-351b78bf/README.md) has 22 native methods/226 original PNGs. Full43-flow/all-state, remaining feature parity and physical/overnight acceptance remain open. Numbered screen mappings and older visual evidence below retain historical context; they do not reinstate the superseded design target.
+
+Current source increment, 31 October: full Privacy confirmation restoration/stale-action handling, Backup replacement-confirmation recreation and the explicit offline PANN instrument fallback await a new build/focused native review. Frozen FSD50K evaluation improves instruments 1/8 → 6/8, laughter stays3/8, with no new negatives or lost positives; reliable automatic bedroom classes remain unfinished. [Bounded policy evidence](FSD50K-RECOGNITION-CALIBRATION.md). Stage-data public access is resolved and an original-model pilot is underway under a **650 MB hard total acquisition cap**; no stage-model accuracy claim or working phone Deep/REM estimator follows. [Access record](research/2026-10-31-phone-stage-new-input.json), [frozen pilot](research/2026-10-31-phone-stage-pilot-protocol.json). Broad/unit campaigns and security review remain deferred.
 
 Historical0.1.8 evidence: [package audit](verification/2026-10-29-018-build/README.md), [Privacy12 proof](verification/2026-10-29-privacy-reference/README.md), [Motion7 proof](verification/2026-10-29-motion-reference/README.md). These results do not accept the newer source.
 
@@ -14,15 +18,15 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
 exercise actions, cancellation, recreation and persistence. [Exact release scope](verification/2026-10-27-reference-menus-build/README.md).
 
-The verified phone installation is **0.1.23 /023c5fb7**, updated in place over observed0.1.22. No uninstall/data clear, app launch or physical output test ran; individual user data was not inspected. [Installation evidence](verification/2026-10-30-023-build/phone-installation.md). All36 reference states and the broader interaction/security review remain open.
+Historical verified installation **0.1.23 /023c5fb7** replaced observed0.1.22 in place without uninstall/data clear, app launch or output test. [Earlier receipt](verification/2026-10-30-023-build/phone-installation.md). The0.1.26 installation receipt above supersedes this version record.
 
 ## Current top priorities
 
-- [ ] Match all36 reference screens. Current Report, Tone/Gentle, Snooze, QR, sleep plan, rhythm/Nap, Settings root and Appearance have bounded comparison/action evidence. Remaining screens, variants and full reference fidelity remain open. [Screen-by-screen acceptance](UI-REFERENCE-ACCEPTANCE.md).
+- [ ] Complete accepted Night Dial43-flow/all-state action, recreation and persistence acceptance; original36 Changing Light matching was explicitly superseded. [Current flow coverage](night-dial/SCREEN-COVERAGE.md); [historical reference evidence](UI-REFERENCE-ACCEPTANCE.md).
 - [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
 - [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness recovery and additional Tracking work are a separate source increment awaiting native acceptance. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
-Historical baseline170b0e44 has earlier checksum/data-preservation evidence. The current installed version is0.1.23 /023c5fb7 as recorded above.
+Historical baseline170b0e44 has earlier checksum/data-preservation evidence. Current0.1.26 installation and the post-install readback limit are recorded above; older installed-version statements below describe their original periods.
 
 **Implemented**: narrower stated behavior exists; validation is separately listed.
 **Partial**: subfeatures still missing. **Missing**: no working implementation.
@@ -40,8 +44,8 @@ one silent organization flow at test-only successor 957f3380, with ten inspected
 actual captures. Physical haptics, all destinations and all36 reference screens
 remain unverified. [Scoped evidence](verification/2026-10-26-settings-organization/README.md).
 Final packaged source **b5c63ad1** builds production in16s (full runtime MIT notice/credit); functional ancestor **731e9725** built in1m5s with radio mixer, grouped Tracking setup, measured echo-rhythm review and explicit experimental recorded-audio inference. Original signer and packaged model hashes match; new Android flows remain unverified. See FEATURE-CHECKLIST.md.
-Installed phone source remains **2cbfe043**, original data preserved; no subsequent
-phone actions ran. [Phone evidence](verification/2026-10-26-phone-2cbfe043/README.md).
+At that historical point, installed phone source was **2cbfe043**, original data
+preserved; [earlier phone evidence](verification/2026-10-26-phone-2cbfe043/README.md).
 Earlier Report, integration and acoustic evidence remain separately scoped; API
 client/delivery, real audio and overnight acceptance are not established by this
 settings flow. The last full-app native run remains failing; a narrow pass does
