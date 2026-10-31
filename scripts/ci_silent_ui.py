@@ -65,6 +65,7 @@ parser.add_argument("--scope", choices=(
     'manual-export-receipt',
     'bedtime-navigation',
     'label-navigation',
+    'supporting-navigation',
     'live-night-timeline',
     'chart-phone-motion',
     'wake-challenge-reference',
@@ -188,6 +189,12 @@ DATED_GOAL_FRAMES = ["dated-goal-" + name + ".png" for name in ("plan", "history
 REPORT_TESTS = ("RootVisualTest", "ChartClockFlowTest", "ReportRibbonNativeTest", "ReportReferenceFlowTest", "SonarReportFlowTest", "GoalStorageTest", "GoalFlowTest", "DatedGoalBankFlowTest")
 REPORT_FRAMES = ["report-reference-" + name + ".png" for name in ("history", "week", "month", "year", "night", "editor", "tags-notes", "reopened")] + ["root-report.png"] + ["chart-clock-" + name + ".png" for name in ("overnight", "night", "short", "fold")]
 REPORT_FRAMES += SONAR_REPORT_FRAMES
+SUPPORTING_NAVIGATION_FRAMES = SONAR_REPORT_FRAMES + ["sonar-report-supporting-routes.png", "sonar-report-echo-route.png"]
+SUPPORTING_NAVIGATION_FRAMES += ["library-export-" + name + ".png" for name in ("options", "ready", "complete", "recreated", "failed")]
+SUPPORTING_NAVIGATION_FRAMES += ["favorites-" + name + ".png" for name in ("all", "options", "playback", "recreated", "week", "filter-empty", "speech", "playback-error", "unstarred", "reopened", "deleted-audio", "missing-audio", "empty", "error", "retry")]
+SUPPORTING_NAVIGATION_FRAMES += ["alarm-mode-" + name + ".png" for name in ("initial", "silent", "playlist", "configured", "recreated", "reopened", "single")]
+SUPPORTING_NAVIGATION_FRAMES += ["nap-" + name + ".png" for name in ("list", "permission-error", "scheduler-error", "retry")]
+SUPPORTING_NAVIGATION_FRAMES += ["nap-support-" + name + ".png" for name in ("profiles-route", "profile-files-route", "profile-files", "bedtime-route", "bedtime-global", "requests-format-route", "requests-format", "requests-results-route", "requests-results", "pair-route", "pair-saved", "cues-route", "cues-history")]
 REPORT_FRAMES += GOAL_FRAMES + DATED_GOAL_FRAMES
 SHARED_SOUND_TESTS = ("SonarSharedSoundFlowTest", "SonarSharedClassifierStorageTest")
 SHARED_SOUND_FRAMES = ["sonar-shared-opt-in-" + name + ".png" for name in ("default-off", "opt-in-recreated", "analysis-live", "analysis-paused", "stop-confirmation")]
@@ -494,6 +501,15 @@ elif args.scope == "bedtime-navigation":
     tests = ["GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen"]
 elif args.scope == "label-navigation":
     tests = ["AlarmToneFlowTest#toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput", "GuardFlowTest#blockedAppDraftCancelsAndSavedChoicesReopen"]
+elif args.scope == "supporting-navigation":
+    tests = [
+        "SonarReportFlowTest#savedSonarQualityZeroAndMissingIntervalsSurviveRealReportNavigation",
+        "SoundArchiveUiTest#libraryExportRequiresDestinationAndRetainsSuccessOrFailureAcrossRecreation",
+        "FavoriteSoundsFlowTest#globalAlbumFiltersPlaysPersistsAndHandlesSharedDeletedMissingAndUnavailableData",
+        "AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+        "NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+    ]
+    metadata["supporting_navigation"] = "Existing private-data navigation/export/nap journeys only; fake playback, scheduling and document destinations; no physical outputs or real alarm delivery"
 elif args.scope == "live-night-timeline":
     tests = ["SonarNightFlowTest#visibleStartPauseRecreateResumeAndExplicitStopSaveActualNight"]
 elif args.scope == "chart-phone-motion":
@@ -620,6 +636,7 @@ if "SonarSharedClassifierStorageTest" in tests:
         failures.append("Shared PCM replay evidence incomplete: " + str(error))
 if args.scope != "full":
     focused_frames = {
+        "supporting-navigation": SUPPORTING_NAVIGATION_FRAMES,
         "morning-code-enrollment": ['qr-code-permission.png', 'qr-code-invalid.png', 'qr-code-denied.png', 'qr-code-access-error.png', 'qr-code-scanning.png', 'qr-code-camera-error.png', 'qr-code-captured.png', 'qr-code-fallback.png', 'qr-code-fallback-error.png', 'qr-code-recreated.png', 'qr-code-routine.png', 'qr-code-reopened.png', 'qr-code-unavailable.png', 'qr-code-types-recreated.png', 'qr-code-nfc-main.png', 'qr-code-nfc-draft.png', 'qr-code-nfc-draft-recreated.png', 'qr-code-nfc-read-error.png', 'qr-code-nfc-settings-error.png', 'qr-code-nfc-saved.png', 'qr-code-nfc-task-setup.png', 'qr-code-nfc-task-returned.png'],
         "routine-camera": ['routine-camera-parent.png', 'routine-camera-math.png', 'routine-camera-memory-recreated.png', 'routine-camera-permission.png', 'routine-camera-qr-idle.png', 'routine-camera-qr-wrong.png', 'routine-camera-earned-cleanup.png', 'routine-camera-earned-recreated.png', 'routine-camera-qr-completed.png', 'routine-camera-picture-idle.png', 'routine-camera-picture-progress.png', 'routine-camera-picture-recreated.png', 'routine-camera-smile-idle.png', 'routine-camera-smile-progress.png', 'routine-camera-pose-idle.png', 'routine-camera-pose-progress.png', 'routine-camera-light-idle.png', 'routine-camera-light-progress.png', 'routine-camera-object-idle.png', 'routine-camera-object-progress.png', 'routine-camera-completed.png', 'routine-camera-random.png', 'routine-camera-random-recreated.png', 'routine-camera-random-completed.png'],
         "contactless-status": ['sonar-setup-initial.png', 'sonar-setup-access-denied.png', 'sonar-setup-access-requesting.png', 'sonar-setup-access-returned.png', 'sonar-setup-ready.png', 'sonar-setup-route-blocked.png', 'sonar-setup-route-returned.png', 'sonar-setup-gain-changed.png', 'sonar-setup-retested.png', 'sonar-setup-reopened.png', 'sonar-setup-recreated.png'],

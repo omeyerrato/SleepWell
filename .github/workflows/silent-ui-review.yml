@@ -53,6 +53,7 @@ on:
           - manual-export-receipt
           - bedtime-navigation
           - label-navigation
+          - supporting-navigation
           - live-night-timeline
           - chart-phone-motion
           - wake-challenge-reference
