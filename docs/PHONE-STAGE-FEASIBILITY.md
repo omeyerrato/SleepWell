@@ -15,6 +15,8 @@ this documentation update.
 
 ## Nidra: converted faithfully, not accepted for useful staging
 
+31October follow-up: the surviving private artifacts still match their pinned hashes. A newly inspected, pinned author-published hypnogram/confusion artifact also shows almost entirely Light predictions; its displayed accuracy equals the all-Light majority baseline. Endpoint Wake predictions are consistent with the author's zero-padding code, rather than demonstrated wake detection. The precise image-generating weights are not supplied, so this is primary reference evidence, not a new reproduction or an impossibility claim. [Exact source/artifact hashes, matrix arithmetic and remaining input prerequisites](research/2026-10-31-phone-stage-contract.md). No new inference, model/data download or phone capture was performed for that follow-up. F049 remains missing; imported stages are still a separate feature.
+
 Inspected [Nidra at revision 2c4f1707](https://github.com/devangk003/Nidra/tree/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7),
 including its Apache-2.0 licence, NOTICE, preprocessing/training scripts and
 `final_model_weights.h5`. The checkpoint **was downloaded privately**, inspected
