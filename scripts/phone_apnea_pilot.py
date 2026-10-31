@@ -45,7 +45,8 @@ def save(path, value):
 
 def freeze():
     approval = load(APPROVAL)
-    paths = (PROTOCOL, APPROVAL, TRAIN_RECORD, Path(__file__), Path(labels.__file__), Path(acoustic.__file__))
+    paths = (PROTOCOL, APPROVAL, TRAIN_RECORD, Path(__file__), Path(labels.__file__), Path(acoustic.__file__)) + tuple(
+        OLD_RECORDS/name for name in ("train-inputs.json","validation.json","test.json","subject-sources.json","manifest.json"))
     pinned = {path.relative_to(ROOT).as_posix(): sha(path.read_bytes()) for path in paths}
     if (not approval["one_conditional_offline_fit_authorized"] or not approval["test_only_if_all_gates_pass"]
             or approval["protocol_sha256"] != sha(PROTOCOL.read_bytes())
