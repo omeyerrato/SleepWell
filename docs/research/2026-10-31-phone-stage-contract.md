@@ -124,3 +124,11 @@ An alternative is a redistributable trained ambient-phone method with a complete
 working preprocessing/decoder contract, or original training on licensed,
 synchronized ambient recordings and expert labels. None was obtained in this
 audit. No estimator, capture scaffolding or hypnogram is shipped by this change.
+
+## Later independent ambient-phone training result
+
+The new licensed ScienceDB V5 phone corpus was anonymously accessible through its actual public file-tree and individual 206 download routes. The earlier dataset/details denial was endpoint-specific, not a remaining access blocker. An original fixed 243-feature RF was then fitted once under a committed TRAIN01–30/validation31–40/TEST41–50 protocol. This is separate from Nidra.
+
+The single frozen TEST used 100 actual 90s contexts from 10 subjects. It scored 34% correct central 30s targets versus 67% for the natural-TRAIN-majority Light baseline. Its Brier sum (.7240) and NLL (1.3091) were worse than the constant natural-TRAIN-prior baseline (.5003/.9254). There was only one Deep TEST target and two Deep validation targets. The modest predeclared gate passing does not justify useful staging or adequate Deep evidence. This fit is rejected for Android integration; F049 remains Missing. No further fit, retuning or TEST inference is authorized by this result. No clinical-certification gate is added.
+
+[Original probabilities, confusion/calibration, source/input/model hashes, frozen order and 644,877,909-byte total budget accounting](2026-10-31-acoustic-pilot/README.md) preserve the decision. A different fixed method still needs useful behavior on fresh participant-held-out data and a coherent actual PCM/time/gap contract. The rejected original fit is concrete new evidence, not an impossibility claim about all phone-audio methods.

@@ -1,0 +1,974 @@
+{
+  "phase": "test",
+  "classes": [
+    "Wake",
+    "REM",
+    "Light",
+    "Deep"
+  ],
+  "targets": 100,
+  "subjects": [
+    "41",
+    "42",
+    "43",
+    "44",
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50"
+  ],
+  "report_sha256": "09db1d2566cd843975fd2b640cb2135ebaaf0ca2c683678373dc3e094de81e03",
+  "model_sha256": "e1af3712022a27cad50eb36b859b4ed4c230551bac3274b3f2a24c6eea18f878",
+  "model": {
+    "accuracy": 0.34,
+    "macro_f1": 0.2840563691627521,
+    "confusion": [
+      [
+        12,
+        4,
+        7,
+        0
+      ],
+      [
+        3,
+        3,
+        2,
+        1
+      ],
+      [
+        22,
+        19,
+        18,
+        8
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "precision": [
+      0.32432432432432434,
+      0.11538461538461539,
+      0.6666666666666666,
+      0.1
+    ],
+    "recall": [
+      0.5217391304347826,
+      0.3333333333333333,
+      0.26865671641791045,
+      1.0
+    ],
+    "f1": [
+      0.4,
+      0.17142857142857143,
+      0.3829787234042553,
+      0.18181818181818182
+    ],
+    "support": [
+      23,
+      9,
+      67,
+      1
+    ],
+    "multiclass_brier_sum": 0.7240144115293725,
+    "per_class_brier": [
+      0.17970956578958838,
+      0.11239238295274674,
+      0.3814020691784772,
+      0.050510393608560175
+    ],
+    "negative_log_likelihood": 1.3090851944261175,
+    "top_score_reliability": {
+      "equal_width_bins": 10,
+      "expected_calibration_error": 0.06859768295891275,
+      "bins": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "count": 6,
+          "mean_score": 0.2831777029943916,
+          "observed_fraction": 0.3333333333333333
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "count": 61,
+          "mean_score": 0.34343075598906125,
+          "observed_fraction": 0.32786885245901637
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 21,
+          "mean_score": 0.43304043917671736,
+          "observed_fraction": 0.47619047619047616
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 10,
+          "mean_score": 0.5383466479916497,
+          "observed_fraction": 0.1
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "count": 2,
+          "mean_score": 0.6599705706597275,
+          "observed_fraction": 0.5
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        }
+      ]
+    },
+    "per_class_reliability": [
+      {
+        "equal_width_bins": 10,
+        "expected_calibration_error": 0.04070207500926707,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 3,
+            "mean_score": 0.09587412987571091,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 34,
+            "mean_score": 0.1523633466346945,
+            "observed_fraction": 0.14705882352941177
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 30,
+            "mean_score": 0.25014879776337084,
+            "observed_fraction": 0.26666666666666666
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 21,
+            "mean_score": 0.3428812710858975,
+            "observed_fraction": 0.3333333333333333
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 5,
+            "mean_score": 0.43809361771083727,
+            "observed_fraction": 0.4
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 7,
+            "mean_score": 0.530817211037579,
+            "observed_fraction": 0.14285714285714285
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          }
+        ]
+      },
+      {
+        "equal_width_bins": 10,
+        "expected_calibration_error": 0.16520399709568945,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 6,
+            "mean_score": 0.07363048992534678,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 14,
+            "mean_score": 0.1425410273424171,
+            "observed_fraction": 0.07142857142857142
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 50,
+            "mean_score": 0.25101380808258417,
+            "observed_fraction": 0.1
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 26,
+            "mean_score": 0.3392888896538672,
+            "observed_fraction": 0.07692307692307693
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 4,
+            "mean_score": 0.42771021302331724,
+            "observed_fraction": 0.25
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          }
+        ]
+      },
+      {
+        "equal_width_bins": 10,
+        "expected_calibration_error": 0.3906146589771191,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 12,
+            "mean_score": 0.18191937710972708,
+            "observed_fraction": 0.8333333333333334
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 57,
+            "mean_score": 0.2491992048481017,
+            "observed_fraction": 0.631578947368421
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 20,
+            "mean_score": 0.33937628543272613,
+            "observed_fraction": 0.7
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 11,
+            "mean_score": 0.43305647199773084,
+            "observed_fraction": 0.6363636363636364
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          }
+        ]
+      },
+      {
+        "equal_width_bins": 10,
+        "expected_calibration_error": 0.19461930821414009,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 6,
+            "mean_score": 0.08467286236325394,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 57,
+            "mean_score": 0.15574956846019522,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 26,
+            "mean_score": 0.2355183157822615,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 5,
+            "mean_score": 0.3072171601206179,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 1,
+            "mean_score": 0.4289190900885709,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 3,
+            "mean_score": 0.5559153342178144,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 2,
+            "mean_score": 0.6599705706597275,
+            "observed_fraction": 0.5
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          }
+        ]
+      }
+    ]
+  },
+  "natural_training_prior": [
+    0.19023155957675203,
+    0.12348566170832695,
+    0.6114859684097531,
+    0.07479681030516792
+  ],
+  "constant_natural_prior_baseline": {
+    "accuracy": 0.67,
+    "macro_f1": 0.20059880239520958,
+    "confusion": [
+      [
+        0,
+        0,
+        23,
+        0
+      ],
+      [
+        0,
+        0,
+        9,
+        0
+      ],
+      [
+        0,
+        0,
+        67,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    "precision": [
+      0.0,
+      0.0,
+      0.67,
+      0.0
+    ],
+    "recall": [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    "f1": [
+      0.0,
+      0.0,
+      0.8023952095808383,
+      0.0
+    ],
+    "support": [
+      23,
+      9,
+      67,
+      1
+    ],
+    "multiclass_brier_sum": 0.5003253369124103,
+    "per_class_brier": [
+      0.17868152885369717,
+      0.08302128954004445,
+      0.22452389189294414,
+      0.014098626625723922
+    ],
+    "negative_log_likelihood": 0.9254129513864487,
+    "top_score_reliability": {
+      "equal_width_bins": 10,
+      "expected_calibration_error": 0.05851403159024682,
+      "bins": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "count": 100,
+          "mean_score": 0.6114859684097532,
+          "observed_fraction": 0.67
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "mean_score": null,
+          "observed_fraction": null
+        }
+      ]
+    },
+    "per_class_reliability": [
+      {
+        "equal_width_bins": 10,
+        "expected_calibration_error": 0.03976844042324798,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 100,
+            "mean_score": 0.19023155957675203,
+            "observed_fraction": 0.23
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          }
+        ]
+      },
+      {
+        "equal_width_bins": 10,
+        "expected_calibration_error": 0.03348566170832698,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 100,
+            "mean_score": 0.12348566170832698,
+            "observed_fraction": 0.09
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          }
+        ]
+      },
+      {
+        "equal_width_bins": 10,
+        "expected_calibration_error": 0.05851403159024682,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 100,
+            "mean_score": 0.6114859684097532,
+            "observed_fraction": 0.67
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          }
+        ]
+      },
+      {
+        "equal_width_bins": 10,
+        "expected_calibration_error": 0.06479681030516793,
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 100,
+            "mean_score": 0.07479681030516792,
+            "observed_fraction": 0.01
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "count": 0,
+            "mean_score": null,
+            "observed_fraction": null
+          }
+        ]
+      }
+    ]
+  },
+  "per_subject": [
+    {
+      "subject": "41",
+      "targets": 10,
+      "accuracy": 0.7
+    },
+    {
+      "subject": "42",
+      "targets": 10,
+      "accuracy": 0.4
+    },
+    {
+      "subject": "43",
+      "targets": 10,
+      "accuracy": 0.7
+    },
+    {
+      "subject": "44",
+      "targets": 10,
+      "accuracy": 0.3
+    },
+    {
+      "subject": "45",
+      "targets": 10,
+      "accuracy": 0.1
+    },
+    {
+      "subject": "46",
+      "targets": 10,
+      "accuracy": 0.3
+    },
+    {
+      "subject": "47",
+      "targets": 10,
+      "accuracy": 0.3
+    },
+    {
+      "subject": "48",
+      "targets": 10,
+      "accuracy": 0.1
+    },
+    {
+      "subject": "49",
+      "targets": 10,
+      "accuracy": 0.1
+    },
+    {
+      "subject": "50",
+      "targets": 10,
+      "accuracy": 0.4
+    }
+  ],
+  "recalibration_applied": false,
+  "new_inference": false,
+  "new_fit": false,
+  "scope": "Saved sampled30s target probabilities only; not complete-night or clinical accuracy."
+}

@@ -1,0 +1,3256 @@
+[
+  {
+    "subject": "01",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "3f481dd38933450c5cea6344a11fc0a0acd7fce80a010945c949bcf56f319dab",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "36e3c449ed099835e05fa31c188e0faa",
+        "bytes": 24218,
+        "md5": "92933af44f7aa5d48b5b1b12ccb43b76",
+        "sha256": "2b558eb9ce1c4ad9976b11aa074ceda2f21985f25a0437c1d997352ba79f7a1e"
+      },
+      "annotation.json": {
+        "file_id": "296d6652a367e83d7a6b5c6319c96416",
+        "bytes": 15798,
+        "md5": "2ff0521469e10aa660ace085b9e9ca45",
+        "sha256": "25bed7efd887dfeb45c968ff53c8737b426e3d8c70ee77dc926d33109b05b934"
+      }
+    },
+    "phone": {
+      "file_id": "821e4415a7713803a0ae02acf9241042",
+      "published_bytes": 356126798,
+      "published_md5": "54c8f003a98e905ee9301e0043198a4d",
+      "whole_file_digest_verified": false,
+      "header_sha256": "4c9b09cedf7de33443b16c05a2c7a94b692aa6c31b02b52bbca961c612955989",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 356126720,
+      "samples": 178063360,
+      "duration_seconds": 22257.92
+    },
+    "record_start": 75454.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1174,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 637,
+      "eligible_90s_contexts": 536
+    },
+    "original_contract_sha256": "32550cac843a24331a3d02c7ec01d533827dc9a270604a570d226181c23f01eb",
+    "source_receipts": [
+      {
+        "name": "01_annotation.json",
+        "bytes": 15798,
+        "sha256": "25bed7efd887dfeb45c968ff53c8737b426e3d8c70ee77dc926d33109b05b934"
+      },
+      {
+        "name": "01_sleep_stage.csv",
+        "bytes": 24218,
+        "sha256": "2b558eb9ce1c4ad9976b11aa074ceda2f21985f25a0437c1d997352ba79f7a1e"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3719,
+        "sha256": "3f481dd38933450c5cea6344a11fc0a0acd7fce80a010945c949bcf56f319dab"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "4c9b09cedf7de33443b16c05a2c7a94b692aa6c31b02b52bbca961c612955989"
+      }
+    ]
+  },
+  {
+    "subject": "02",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "8473ed9a0cf42ebb9c759fbb61358fadaa80ab752cbe649aade3b22cf5c2300d",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "bf580cdbd555e28465cfd7ca500790bb",
+        "bytes": 26437,
+        "md5": "55a7be525d69c7a70df39177769cdca1",
+        "sha256": "95cd0170cf74ea94654094756bc1b601686b5fd7f51791bd0b99331185f3e8a5"
+      },
+      "annotation.json": {
+        "file_id": "5c27298d7d90a95b4f7562cbf82aafa3",
+        "bytes": 95315,
+        "md5": "283cf317a7b9fda0942289e135690e62",
+        "sha256": "bf6734af043a9fba9eede6c6e5516c85ed2944e3aafa89d57ef4ec21d1ae057a"
+      }
+    },
+    "phone": {
+      "file_id": "027bba11d71203de0c008ebc631b78ba",
+      "published_bytes": 340786638,
+      "published_md5": "8cb5070da43dcbd6214fff504b597f4f",
+      "whole_file_digest_verified": false,
+      "header_sha256": "b0a2650b1e4483035e5cfce4a2165eae633b0bdfd27489481b3154f128699c30",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 340786560,
+      "samples": 170393280,
+      "duration_seconds": 21299.16
+    },
+    "record_start": 76230.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1262,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 584,
+      "eligible_90s_contexts": 677
+    },
+    "original_contract_sha256": "3ed77c32ff450196e893bc43ab472268bf9e9330dcc89a96a52779f495f0d349",
+    "source_receipts": [
+      {
+        "name": "02_annotation.json",
+        "bytes": 95315,
+        "sha256": "bf6734af043a9fba9eede6c6e5516c85ed2944e3aafa89d57ef4ec21d1ae057a"
+      },
+      {
+        "name": "02_sleep_stage.csv",
+        "bytes": 26437,
+        "sha256": "95cd0170cf74ea94654094756bc1b601686b5fd7f51791bd0b99331185f3e8a5"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3718,
+        "sha256": "8473ed9a0cf42ebb9c759fbb61358fadaa80ab752cbe649aade3b22cf5c2300d"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "b0a2650b1e4483035e5cfce4a2165eae633b0bdfd27489481b3154f128699c30"
+      }
+    ]
+  },
+  {
+    "subject": "03",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "c7f68248b7cb73a213daf903356ddc2b162808c670d63e96fa9389d7de814a38",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "bbbc15dfbb916139c76fea86c7797b40",
+        "bytes": 25113,
+        "md5": "cc43c5ccb327e7b242c7a5dbd66dab89",
+        "sha256": "92a3deef911a9aeb2a9decdd2b30d0b2b7b3dac303e6fb742d57f70c807357ad"
+      },
+      "annotation.json": {
+        "file_id": "cc57953d4fd009b9e609ec0ed4a534eb",
+        "bytes": 39237,
+        "md5": "a1a4d36ebbbfe564c30fee472b911c1d",
+        "sha256": "c5bb4587da597adacac57f2fc76ef4ab27ec873fe958f9f466bd5a458e358660"
+      }
+    },
+    "phone": {
+      "file_id": "69b38694342f84c4fb834e4863b2f975",
+      "published_bytes": 356126798,
+      "published_md5": "8f1552890da6e5011ee2e11ac9770cd1",
+      "whole_file_digest_verified": false,
+      "header_sha256": "7aea92e5fd77328fff2ed79358eb15dbf72a87bafcf7e1d6c1be343f5110a1af",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 356126720,
+      "samples": 178063360,
+      "duration_seconds": 22257.92
+    },
+    "record_start": 77034.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1203,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 576,
+      "eligible_90s_contexts": 626
+    },
+    "original_contract_sha256": "04bc0796283c9d9932b3360fdeb865e54b75ffdb57dee4fcd788817c4f12617f",
+    "source_receipts": [
+      {
+        "name": "03_annotation.json",
+        "bytes": 39237,
+        "sha256": "c5bb4587da597adacac57f2fc76ef4ab27ec873fe958f9f466bd5a458e358660"
+      },
+      {
+        "name": "03_sleep_stage.csv",
+        "bytes": 25113,
+        "sha256": "92a3deef911a9aeb2a9decdd2b30d0b2b7b3dac303e6fb742d57f70c807357ad"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3184,
+        "sha256": "c7f68248b7cb73a213daf903356ddc2b162808c670d63e96fa9389d7de814a38"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "7aea92e5fd77328fff2ed79358eb15dbf72a87bafcf7e1d6c1be343f5110a1af"
+      }
+    ]
+  },
+  {
+    "subject": "04",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "9c233744f9661e65a1696714b8c4843c9828cb65b3e98bb96cdd21b06adcb1d5",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "17e30de77690d6640c0ed794cecf7832",
+        "bytes": 21268,
+        "md5": "3bdb621ca2c1a194bdceb418d4be953b",
+        "sha256": "d4032adda6630a2a03a38a124beb6f27cc05ce2b9af83ed49dd595f8dc53578e"
+      },
+      "annotation.json": {
+        "file_id": "7133ce256fc85e84df92a47e62616153",
+        "bytes": 8308,
+        "md5": "b210b35468414c8e792443b2702aceb4",
+        "sha256": "da89142eb4bb26c9b2a7c88b2458617a006d9f5aa2568036a124ffc2afb778fe"
+      }
+    },
+    "phone": {
+      "file_id": "35ddf4e827f9b8d766cebb7247080666",
+      "published_bytes": 340786638,
+      "published_md5": "15af1098b2b3423fa4d9d907e717234e",
+      "whole_file_digest_verified": false,
+      "header_sha256": "d25b08a0b451802a2e06e58ab46d516b09689d3add32c2d5eaadfab7b789030a",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 340786560,
+      "samples": 170393280,
+      "duration_seconds": 21299.16
+    },
+    "record_start": 77661.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1028,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 575,
+      "eligible_90s_contexts": 452
+    },
+    "original_contract_sha256": "d601f0a9523b170da4896c335b3266f20db5a031d897ba3285d53bbc56e2a352",
+    "source_receipts": [
+      {
+        "name": "04_annotation.json",
+        "bytes": 8308,
+        "sha256": "da89142eb4bb26c9b2a7c88b2458617a006d9f5aa2568036a124ffc2afb778fe"
+      },
+      {
+        "name": "04_sleep_stage.csv",
+        "bytes": 21268,
+        "sha256": "d4032adda6630a2a03a38a124beb6f27cc05ce2b9af83ed49dd595f8dc53578e"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3715,
+        "sha256": "9c233744f9661e65a1696714b8c4843c9828cb65b3e98bb96cdd21b06adcb1d5"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "d25b08a0b451802a2e06e58ab46d516b09689d3add32c2d5eaadfab7b789030a"
+      }
+    ]
+  },
+  {
+    "subject": "05",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "27dfc2e5101a81fbc265e8185b989334e31feeab81cfaa8c3810b45336885d2f",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "a7c21718c02fe1e299a57c9b4ed8f7e2",
+        "bytes": 24351,
+        "md5": "f2b0b2210d9dce6c58b69b3dc06f0a09",
+        "sha256": "8dc1260ff9f4f1addc8cc84fe8bf9841073b64de58736e77ee78d046f1d55300"
+      },
+      "annotation.json": {
+        "file_id": "88634e45b1e4398e0aec5f68a6970e43",
+        "bytes": 73681,
+        "md5": "357a96511e6d378d5419b7c138d53919",
+        "sha256": "1f9daf0222ce0ef5209515b7c9ca350b66293545449b4dd44f28c9e28f6830df"
+      }
+    },
+    "phone": {
+      "file_id": "b667bf64a86d004dced1812d55c84e3a",
+      "published_bytes": 356126798,
+      "published_md5": "67fde20ffc35ce6c87931b96e0963ec4",
+      "whole_file_digest_verified": false,
+      "header_sha256": "ad75bce4e4d898b7e6c67afaca02e95b7fb9019b659cb7db55bef2615388beaa",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 356126720,
+      "samples": 178063360,
+      "duration_seconds": 22257.92
+    },
+    "record_start": 74267.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1170,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 628,
+      "eligible_90s_contexts": 541
+    },
+    "original_contract_sha256": "c39c0d22207edf3d045bd9581b71f211c01990e6c2234e389caef5bdce7488c6",
+    "source_receipts": [
+      {
+        "name": "05_annotation.json",
+        "bytes": 73681,
+        "sha256": "1f9daf0222ce0ef5209515b7c9ca350b66293545449b4dd44f28c9e28f6830df"
+      },
+      {
+        "name": "05_sleep_stage.csv",
+        "bytes": 24351,
+        "sha256": "8dc1260ff9f4f1addc8cc84fe8bf9841073b64de58736e77ee78d046f1d55300"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3719,
+        "sha256": "27dfc2e5101a81fbc265e8185b989334e31feeab81cfaa8c3810b45336885d2f"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "ad75bce4e4d898b7e6c67afaca02e95b7fb9019b659cb7db55bef2615388beaa"
+      }
+    ]
+  },
+  {
+    "subject": "06",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "054eda6d235cf04f464f98e212f951caf0f5653c22f503f76f536be789e836d0",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "dbc0f1cf72fd5d6839bbd6f101fe4567",
+        "bytes": 25549,
+        "md5": "e5b465b90c3e62f11218ccbe9acea84c",
+        "sha256": "47ba867e61b9ed2c3f56bd3311684331e6c6f5163302427553c891cd3b7ea864"
+      },
+      "annotation.json": {
+        "file_id": "c63bfb375f3a71cb917c5c1196408f3c",
+        "bytes": 47071,
+        "md5": "3c86178b587c256acbfe1cdf1bc00f54",
+        "sha256": "2290ee26166f54827c1287c2088cd0bd57605d23cfe46cfd2dc0106e7d26e210"
+      }
+    },
+    "phone": {
+      "file_id": "6ed9cd27e291d5965af4f66338985444",
+      "published_bytes": 356126798,
+      "published_md5": "0e4760839798720c08ea531faa4d2e58",
+      "whole_file_digest_verified": false,
+      "header_sha256": "0363c11e0643b93e5c9dc9b7d7e78d2f0ffb56aab739bc66f2acb6efa254520b",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 356126720,
+      "samples": 178063360,
+      "duration_seconds": 22257.92
+    },
+    "record_start": 76711.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1231,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 521,
+      "eligible_90s_contexts": 709
+    },
+    "original_contract_sha256": "c1404e745fa297efbeee255b7ac198b6b1abcfedd6fff31116089b7175030ef9",
+    "source_receipts": [
+      {
+        "name": "06_annotation.json",
+        "bytes": 47071,
+        "sha256": "2290ee26166f54827c1287c2088cd0bd57605d23cfe46cfd2dc0106e7d26e210"
+      },
+      {
+        "name": "06_sleep_stage.csv",
+        "bytes": 25549,
+        "sha256": "47ba867e61b9ed2c3f56bd3311684331e6c6f5163302427553c891cd3b7ea864"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3717,
+        "sha256": "054eda6d235cf04f464f98e212f951caf0f5653c22f503f76f536be789e836d0"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "0363c11e0643b93e5c9dc9b7d7e78d2f0ffb56aab739bc66f2acb6efa254520b"
+      }
+    ]
+  },
+  {
+    "subject": "07",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "e132fc3b202affd4e69d5dc3882bb113a7caceaea878f0209ffcecca5fbb761c",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "4336063ecd9c86c0b38a00e5a13e3208",
+        "bytes": 18868,
+        "md5": "3b858d195c7a5024c2592f11c4959d1b",
+        "sha256": "a036960bd3b089d7d27f38e2accfe437f423ea4e966ba253054b471695489065"
+      },
+      "annotation.json": {
+        "file_id": "49f9255449b87ecc0a68489a5d734811",
+        "bytes": 10598,
+        "md5": "2521ff14c1d216820a514f24f8e0a46a",
+        "sha256": "15de62475deb109c9754ae1900c71bbda7118efdf3c3ca17a5e285e082df2eb8"
+      }
+    },
+    "phone": {
+      "file_id": "5c6a2cfa2c46175ee684accfcccdcad7",
+      "published_bytes": 603991118,
+      "published_md5": "7e0d9255d5d0335b66213afb67f504cb",
+      "whole_file_digest_verified": false,
+      "header_sha256": "678a64e94b502241771338571e618193ef0153f21977e47f1c24b37e373cea03",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 603991040,
+      "samples": 301995520,
+      "duration_seconds": 37749.44
+    },
+    "record_start": 76899.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 910,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 909
+    },
+    "original_contract_sha256": "e14a610230570d1c3f7b85546d10fa73228fcc816d5a67db9451c423643a761f",
+    "source_receipts": [
+      {
+        "name": "07_annotation.json",
+        "bytes": 10598,
+        "sha256": "15de62475deb109c9754ae1900c71bbda7118efdf3c3ca17a5e285e082df2eb8"
+      },
+      {
+        "name": "07_sleep_stage.csv",
+        "bytes": 18868,
+        "sha256": "a036960bd3b089d7d27f38e2accfe437f423ea4e966ba253054b471695489065"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3716,
+        "sha256": "e132fc3b202affd4e69d5dc3882bb113a7caceaea878f0209ffcecca5fbb761c"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "678a64e94b502241771338571e618193ef0153f21977e47f1c24b37e373cea03"
+      }
+    ]
+  },
+  {
+    "subject": "08",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "2829044dcd9c6ce430baaefeb8595298f1ebb6bc9ccf322873962c0c99080e44",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "1b23a4b2d165c8fa2789033c22a66b8a",
+        "bytes": 28083,
+        "md5": "311fe0c6237aeb850f7b910316ab8b73",
+        "sha256": "d4c954bb5f552247cd737f7d17e8aceba9bce8f2a2fa27b574c21090173e9844"
+      },
+      "annotation.json": {
+        "file_id": "2507e5403749c3bc894e29ad14a77a32",
+        "bytes": 56010,
+        "md5": "e603468a0e4fd045f82db2a1fbd14072",
+        "sha256": "ad2474c20551437d9402b5b33c442356404021eb30a6b720cbd544a42be374b3"
+      }
+    },
+    "phone": {
+      "file_id": "2fd2991ab9ef9e7abe2d484004a7b53b",
+      "published_bytes": 662574158,
+      "published_md5": "47ed0dafb96da8f3345fe8278f771fc2",
+      "whole_file_digest_verified": false,
+      "header_sha256": "0e1ce853620a9af3f1049092d806efc5aeb985f85be9c81d8caf5ccc27f1992c",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 662574080,
+      "samples": 331287040,
+      "duration_seconds": 41410.88
+    },
+    "record_start": 72528.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1348,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 10,
+      "eligible_90s_contexts": 1338
+    },
+    "original_contract_sha256": "7bd06c88b84230e7bd9406a4a176d88ccdafabed2d7b9581d6edcbd99b1a3599",
+    "source_receipts": [
+      {
+        "name": "08_annotation.json",
+        "bytes": 56010,
+        "sha256": "ad2474c20551437d9402b5b33c442356404021eb30a6b720cbd544a42be374b3"
+      },
+      {
+        "name": "08_sleep_stage.csv",
+        "bytes": 28083,
+        "sha256": "d4c954bb5f552247cd737f7d17e8aceba9bce8f2a2fa27b574c21090173e9844"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3719,
+        "sha256": "2829044dcd9c6ce430baaefeb8595298f1ebb6bc9ccf322873962c0c99080e44"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "0e1ce853620a9af3f1049092d806efc5aeb985f85be9c81d8caf5ccc27f1992c"
+      }
+    ]
+  },
+  {
+    "subject": "09",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "3b0b3c854abb5f41424ccba12ff2935ce11715722d4549b2f8cb52d37e1c5dad",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "c34541de8e8dbed8f4dc4a34d2442bc3",
+        "bytes": 27337,
+        "md5": "733cff2f7ef633e3305cb69806503820",
+        "sha256": "fd9117d1e5feaef252f94f19a1e4247cd3c393b3d1b8c390db246639b7c65a09"
+      },
+      "annotation.json": {
+        "file_id": "e56f3567e9b6415316c955fd8ddb9e4a",
+        "bytes": 52868,
+        "md5": "2a3f4c2257a841d2128de131ff5fe88b",
+        "sha256": "b602283aa54d300e96c742ba5ed9a8eec0678d4fd87dc1b123f784c4c678cb6b"
+      }
+    },
+    "phone": {
+      "file_id": "9b744f1c8c7a575a5f7f44788c94e0ee",
+      "published_bytes": 625259598,
+      "published_md5": "c71c22a8e1d45648da44b3ef490b49fb",
+      "whole_file_digest_verified": false,
+      "header_sha256": "0de7d4aa379a93a01b0b9d51166a785fdd097ae8f88526a44309024fbe63befc",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 625259520,
+      "samples": 312629760,
+      "duration_seconds": 39078.72
+    },
+    "record_start": 75591.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1305,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 20,
+      "eligible_90s_contexts": 1285
+    },
+    "original_contract_sha256": "01010771cafcdddfaaabb8237386c086ec797ba65c879abb45451f9d066ada21",
+    "source_receipts": [
+      {
+        "name": "09_annotation.json",
+        "bytes": 52868,
+        "sha256": "b602283aa54d300e96c742ba5ed9a8eec0678d4fd87dc1b123f784c4c678cb6b"
+      },
+      {
+        "name": "09_sleep_stage.csv",
+        "bytes": 27337,
+        "sha256": "fd9117d1e5feaef252f94f19a1e4247cd3c393b3d1b8c390db246639b7c65a09"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3718,
+        "sha256": "3b0b3c854abb5f41424ccba12ff2935ce11715722d4549b2f8cb52d37e1c5dad"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "0de7d4aa379a93a01b0b9d51166a785fdd097ae8f88526a44309024fbe63befc"
+      }
+    ]
+  },
+  {
+    "subject": "10",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "3a7c83fb5ccd88de9c4deeb26c6ef9ea695eda909fd19469b00cdc9d5fff7c5d",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "daa85f3ae3245c038f54a572f4ffa62d",
+        "bytes": 23318,
+        "md5": "e1d3524a50deb1b4b2615f98f7bf35cd",
+        "sha256": "a480275995d2356c72a96e7fdf3960a4dcdb7da92f163f3af46e83fe1ef621c5"
+      },
+      "annotation.json": {
+        "file_id": "34e5e93034c8bc26fd52ff0b75f89147",
+        "bytes": 40983,
+        "md5": "51c8e37a18fed151c8bbff0fdeb5f37e",
+        "sha256": "d8c8cbf7573d5f33ddf4e561857aa5ce7409d726bff4dd59a40914fdacaee8f6"
+      }
+    },
+    "phone": {
+      "file_id": "167ac21f1797625862df288deee3b579",
+      "published_bytes": 652492878,
+      "published_md5": "0e9c70899536b6ddf27ba86a9030c393",
+      "whole_file_digest_verified": false,
+      "header_sha256": "9e5d9c03d0a29dcf52f1bc5dfbe0c602ba15917aea8a61c3f63c68250ac716fc",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 652492800,
+      "samples": 326246400,
+      "duration_seconds": 40780.8
+    },
+    "record_start": 77304.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1126,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 1,
+      "eligible_90s_contexts": 1124
+    },
+    "original_contract_sha256": "7428f6d918fe81dd2c6b8afac9540acb8d83ec044eca75b54125d95381ccdf3a",
+    "source_receipts": [
+      {
+        "name": "10_annotation.json",
+        "bytes": 40983,
+        "sha256": "d8c8cbf7573d5f33ddf4e561857aa5ce7409d726bff4dd59a40914fdacaee8f6"
+      },
+      {
+        "name": "10_sleep_stage.csv",
+        "bytes": 23318,
+        "sha256": "a480275995d2356c72a96e7fdf3960a4dcdb7da92f163f3af46e83fe1ef621c5"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3717,
+        "sha256": "3a7c83fb5ccd88de9c4deeb26c6ef9ea695eda909fd19469b00cdc9d5fff7c5d"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "9e5d9c03d0a29dcf52f1bc5dfbe0c602ba15917aea8a61c3f63c68250ac716fc"
+      }
+    ]
+  },
+  {
+    "subject": "11",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "daba4ce3cb7c75b12a804ea3e3a6877c6b6e1676448db1aff020c6ed293bb443",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "775bb11b074bd9d97f985f217ed0f4e4",
+        "bytes": 24804,
+        "md5": "c55dbfcaa2647cf9c4ac63408ef09c5e",
+        "sha256": "dc48c7fbe7c3fbd27a754fd10e491fb282cd1a44c19e2ec8134c959b654ce2a8"
+      },
+      "annotation.json": {
+        "file_id": "1c88b1b93bb20ec5994f918756c1ae2a",
+        "bytes": 35797,
+        "md5": "ec399e503b0a712e443cde7d9552c1a3",
+        "sha256": "79727271e447c5d1aa072747df287ecc9c008899098711840605bb9c2c7c8d25"
+      }
+    },
+    "phone": null,
+    "coverage": {
+      "missing_phone": true,
+      "eligible_90s_contexts": 0
+    },
+    "original_contract_sha256": "7666b009b50df39457ced032c242242052a3d533e5a4a4a2905c5dfdd322f816",
+    "source_receipts": [
+      {
+        "name": "11_annotation.json",
+        "bytes": 35797,
+        "sha256": "79727271e447c5d1aa072747df287ecc9c008899098711840605bb9c2c7c8d25"
+      },
+      {
+        "name": "11_sleep_stage.csv",
+        "bytes": 24804,
+        "sha256": "dc48c7fbe7c3fbd27a754fd10e491fb282cd1a44c19e2ec8134c959b654ce2a8"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3717,
+        "sha256": "daba4ce3cb7c75b12a804ea3e3a6877c6b6e1676448db1aff020c6ed293bb443"
+      }
+    ]
+  },
+  {
+    "subject": "12",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "5fdf5a79ce4bc0c32295b6f4b8b067a1635d445400317e65529c7df8ed48f9b1",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "7cdf197acbd92906a297346c6bde3dcd",
+        "bytes": 23241,
+        "md5": "4f472b2f329f6638e2d53dda33baf8f8",
+        "sha256": "d138d8b95ea83c44f561215bbee411de4398b010d083caa6c9d1bba9b92f98d8"
+      },
+      "annotation.json": {
+        "file_id": "e9bbc61b146072ef76a3bfd2a9fd0345",
+        "bytes": 17119,
+        "md5": "19e8cc2ce8da25645c50ec50da9eda5f",
+        "sha256": "5b2ad3294853bfe584881573b4a326d01630c5a3d08d8a306ebe9540b3ae21a7"
+      }
+    },
+    "phone": {
+      "file_id": "1a29f0f8a685692108222a15e86ea8d5",
+      "published_bytes": 601174350,
+      "published_md5": "e24021683ed8a9e45a8ccdb65fa18023",
+      "whole_file_digest_verified": false,
+      "header_sha256": "19ac6bc0c5d2aaf6d4b1634f43b64cc260f072a97187c0eb190e19fad78ba91e",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 601174272,
+      "samples": 300587136,
+      "duration_seconds": 37573.392
+    },
+    "record_start": 76413.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1117,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 34,
+      "eligible_90s_contexts": 1082
+    },
+    "original_contract_sha256": "35d4e4c4896cf5682fc4632f5e16c8cecfadafa94b3f00c2c01c4c5762536027",
+    "source_receipts": [
+      {
+        "name": "12_annotation.json",
+        "bytes": 17119,
+        "sha256": "5b2ad3294853bfe584881573b4a326d01630c5a3d08d8a306ebe9540b3ae21a7"
+      },
+      {
+        "name": "12_sleep_stage.csv",
+        "bytes": 23241,
+        "sha256": "d138d8b95ea83c44f561215bbee411de4398b010d083caa6c9d1bba9b92f98d8"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 2661,
+        "sha256": "5fdf5a79ce4bc0c32295b6f4b8b067a1635d445400317e65529c7df8ed48f9b1"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "19ac6bc0c5d2aaf6d4b1634f43b64cc260f072a97187c0eb190e19fad78ba91e"
+      }
+    ]
+  },
+  {
+    "subject": "13",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "9f578ff6108ce7c2e4ddef4c155c7de4914d3b9fdfb8d30d1f68228d9284677c",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "a1ade4b6b4694fe48271ad4c27912455",
+        "bytes": 22744,
+        "md5": "4a9f429397d96e6d98ab6ec986d61bc6",
+        "sha256": "f56e5e97e375401c9029a07f2c1aa3deeede5c008709567541497568cc99be05"
+      },
+      "annotation.json": {
+        "file_id": "93435083d16c1eb298e799cabce6ac60",
+        "bytes": 27998,
+        "md5": "d24b854e51345c3ef3094e9fbcb5fd1f",
+        "sha256": "fa5fef157faa76361254045403f8eec8be5d5718b25857cc74bab6530c128106"
+      }
+    },
+    "phone": {
+      "file_id": "ec87ee54fcfb6ac90bb46430a6003467",
+      "published_bytes": 594294222,
+      "published_md5": "385cb9b4827d978be3e7bfea0b1738d9",
+      "whole_file_digest_verified": false,
+      "header_sha256": "34734f1f37389a82bef7e8c14a7b210d353c0a1728f045d7796fa1b4039599e0",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 594294144,
+      "samples": 297147072,
+      "duration_seconds": 37143.384
+    },
+    "record_start": 77696.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1098,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1097
+    },
+    "original_contract_sha256": "fa824a96f5cb6f6a3819169836757297f3f8a21a1f8b1ea3d15d1b8f3568c2a5",
+    "source_receipts": [
+      {
+        "name": "13_annotation.json",
+        "bytes": 27998,
+        "sha256": "fa5fef157faa76361254045403f8eec8be5d5718b25857cc74bab6530c128106"
+      },
+      {
+        "name": "13_sleep_stage.csv",
+        "bytes": 22744,
+        "sha256": "f56e5e97e375401c9029a07f2c1aa3deeede5c008709567541497568cc99be05"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4236,
+        "sha256": "9f578ff6108ce7c2e4ddef4c155c7de4914d3b9fdfb8d30d1f68228d9284677c"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "34734f1f37389a82bef7e8c14a7b210d353c0a1728f045d7796fa1b4039599e0"
+      }
+    ]
+  },
+  {
+    "subject": "14",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "774bf49df0179837f0290e9fa18957ff319e1951c16d9d654eda77bdbbcb7a30",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "b40007e2857fdb11dbc55bac20dfe6e6",
+        "bytes": 26510,
+        "md5": "f3b76ad18dae70c09afa486d1b26dff6",
+        "sha256": "132dee0a39bb4171e1ad95c4de85ef5d21b14312b8871e5a700596a698179a23"
+      },
+      "annotation.json": {
+        "file_id": "0ac92211a25e32c2a56b7729737de03e",
+        "bytes": 39577,
+        "md5": "b8c589b3dc2f89ee0d96e38d0f46989e",
+        "sha256": "85888af65da6515301d05c68741a4e9aac75f918b58a15031a3c0481b250ad09"
+      }
+    },
+    "phone": {
+      "file_id": "1a31b5442af4d9942bac6b3fbd942926",
+      "published_bytes": 646868558,
+      "published_md5": "829d7a74e120e82e5a71a7c1d3b144be",
+      "whole_file_digest_verified": false,
+      "header_sha256": "020f4ba88ff28fb7fa05b6a9d4f8eb4590a5a2c5cb484e3b7618168e0523cc34",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 646868480,
+      "samples": 323434240,
+      "duration_seconds": 40429.28
+    },
+    "record_start": 75429.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1278,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1277
+    },
+    "original_contract_sha256": "cf8d2f53d737b2edefa030e3243d9f39f8e19a59a89ca50111817434128d22d3",
+    "source_receipts": [
+      {
+        "name": "14_annotation.json",
+        "bytes": 39577,
+        "sha256": "85888af65da6515301d05c68741a4e9aac75f918b58a15031a3c0481b250ad09"
+      },
+      {
+        "name": "14_sleep_stage.csv",
+        "bytes": 26510,
+        "sha256": "132dee0a39bb4171e1ad95c4de85ef5d21b14312b8871e5a700596a698179a23"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4239,
+        "sha256": "774bf49df0179837f0290e9fa18957ff319e1951c16d9d654eda77bdbbcb7a30"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "020f4ba88ff28fb7fa05b6a9d4f8eb4590a5a2c5cb484e3b7618168e0523cc34"
+      }
+    ]
+  },
+  {
+    "subject": "15",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "730571fdd3c8ebad8953ad3a5ad59787e0c7ada86214aea1c766a70476ac8919",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "00a49bd7a053a3388bb7b631c975d281",
+        "bytes": 18989,
+        "md5": "cfea6d4d05d720a8048fe120e67f8f24",
+        "sha256": "41264edb5f4b42173d00503f15957f150b127dc0eb550025e7f21c311b46592a"
+      },
+      "annotation.json": {
+        "file_id": "e1d905e706cfc32b39fcfc582e24ff5c",
+        "bytes": 33952,
+        "md5": "8d9e03d9752a80274f8337104ed76c07",
+        "sha256": "fdf61c60c1d207aee67985b2cb4c22819d6f52f9ef6338dd13f019165051a613"
+      }
+    },
+    "phone": {
+      "file_id": "90146b87b7d3f59ac47f6b4f53c7a56b",
+      "published_bytes": 654489678,
+      "published_md5": "911132f7e85b5427fdad50c78e91e587",
+      "whole_file_digest_verified": false,
+      "header_sha256": "37d16a0aae3f89692b578d0bd4d3f275122c4a60ff9f9578a1523bbe8def3f8e",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 654489600,
+      "samples": 327244800,
+      "duration_seconds": 40905.6
+    },
+    "record_start": 77796.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 920,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 919
+    },
+    "original_contract_sha256": "c23f519853193117e80691c2f2e2b209b138e195f7e3667d3d73c2a8e125763d",
+    "source_receipts": [
+      {
+        "name": "15_annotation.json",
+        "bytes": 33952,
+        "sha256": "fdf61c60c1d207aee67985b2cb4c22819d6f52f9ef6338dd13f019165051a613"
+      },
+      {
+        "name": "15_sleep_stage.csv",
+        "bytes": 18989,
+        "sha256": "41264edb5f4b42173d00503f15957f150b127dc0eb550025e7f21c311b46592a"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4237,
+        "sha256": "730571fdd3c8ebad8953ad3a5ad59787e0c7ada86214aea1c766a70476ac8919"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "37d16a0aae3f89692b578d0bd4d3f275122c4a60ff9f9578a1523bbe8def3f8e"
+      }
+    ]
+  },
+  {
+    "subject": "16",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "ffaee95337716f2a754cd7cbed8192fde9cba340e03341c207e9abbd972d552b",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "e9bfdec6ea697f79a48e8a73ecc7282a",
+        "bytes": 25504,
+        "md5": "f3fd934099830d812e766cf62befa5cb",
+        "sha256": "b5376a660c16b53bfb54ba47c1c2fdb6d72982b9b928b087a5f955b7d313809c"
+      },
+      "annotation.json": {
+        "file_id": "f71b268440eb03aca4b9cc3a62b333c9",
+        "bytes": 21354,
+        "md5": "42fbcc69db31ac5cb6e80e264623499b",
+        "sha256": "e29d0d98aba13af67c1d98eb5e13e3fe675d622f6fcab9fe7e07aa430fda2460"
+      }
+    },
+    "phone": {
+      "file_id": "be34fdb089d533d0670f8881120decd8",
+      "published_bytes": 606807630,
+      "published_md5": "9d8d6f05d6c73ad77fe2b94c946709b8",
+      "whole_file_digest_verified": false,
+      "header_sha256": "e7df3fecbdf4f91e6d6a1fa63fe70deb9552aadde6f1eaf66accaa1901dc6475",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 606807552,
+      "samples": 303403776,
+      "duration_seconds": 37925.472
+    },
+    "record_start": 76803.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1221,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 1,
+      "eligible_90s_contexts": 1220
+    },
+    "original_contract_sha256": "cce7a79996a16055007726bf24018aa11628c881f1414bf785a1a429bc097af1",
+    "source_receipts": [
+      {
+        "name": "16_annotation.json",
+        "bytes": 21354,
+        "sha256": "e29d0d98aba13af67c1d98eb5e13e3fe675d622f6fcab9fe7e07aa430fda2460"
+      },
+      {
+        "name": "16_sleep_stage.csv",
+        "bytes": 25504,
+        "sha256": "b5376a660c16b53bfb54ba47c1c2fdb6d72982b9b928b087a5f955b7d313809c"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4238,
+        "sha256": "ffaee95337716f2a754cd7cbed8192fde9cba340e03341c207e9abbd972d552b"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "e7df3fecbdf4f91e6d6a1fa63fe70deb9552aadde6f1eaf66accaa1901dc6475"
+      }
+    ]
+  },
+  {
+    "subject": "17",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "de7543c1f066936ad19b058c266d965bfbc09f7ab75dc79996f227a14a53f97c",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "d3320b1ef669e0c2f53eff59d44d75f0",
+        "bytes": 26199,
+        "md5": "a8fc172a43dc75367fa4ffd321039836",
+        "sha256": "9163833b7008b8ca277c5b805f83134729884bcd79854ad69009958210b93d3a"
+      },
+      "annotation.json": {
+        "file_id": "9dc5ab520d83a601e8b734cc41a29cee",
+        "bytes": 55838,
+        "md5": "5540e4169e6ed6a058410b4a0bb486e9",
+        "sha256": "6a8ad82800c43182759abcb2b89e5cb3e8f25991cf2a7315ef2622522f320d0d"
+      }
+    },
+    "phone": null,
+    "coverage": {
+      "missing_phone": true,
+      "eligible_90s_contexts": 0
+    },
+    "original_contract_sha256": "55f45047f4e90ebd8192e877044ada29842ae36643ac2b2b13333882030bad3e",
+    "source_receipts": [
+      {
+        "name": "17_annotation.json",
+        "bytes": 55838,
+        "sha256": "6a8ad82800c43182759abcb2b89e5cb3e8f25991cf2a7315ef2622522f320d0d"
+      },
+      {
+        "name": "17_sleep_stage.csv",
+        "bytes": 26199,
+        "sha256": "9163833b7008b8ca277c5b805f83134729884bcd79854ad69009958210b93d3a"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3719,
+        "sha256": "de7543c1f066936ad19b058c266d965bfbc09f7ab75dc79996f227a14a53f97c"
+      }
+    ]
+  },
+  {
+    "subject": "18",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "24c14878dcee141560b99d8ee3fb5449e6ac03b78b8c8150a20b8bdafe79a64f",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "ca72899ddd9e00f8c6e9f106796b72d2",
+        "bytes": 28232,
+        "md5": "c18d43a87525b64153649a76ce718caa",
+        "sha256": "62ee08aa7c0d6e617f36e22e93bf27fb92f88715e718b3d1f0912dac0cea00eb"
+      },
+      "annotation.json": {
+        "file_id": "9e9e923e08544b6b5cb81b914ea62f29",
+        "bytes": 27067,
+        "md5": "83d0cec816e73cc11247340614e8cdad",
+        "sha256": "3a31ab4aa59965f1c0b1a3f2b51c3e7a91e98a69d122ae907f0039989f0ccef0"
+      }
+    },
+    "phone": {
+      "file_id": "9a96df7f5c14db9cee3cfd975e512862",
+      "published_bytes": 1003906638,
+      "published_md5": "593bca63faa26e210266648dccf547cb",
+      "whole_file_digest_verified": false,
+      "header_sha256": "130b9a1658aefb98a88d59a7432cf21f3c57986db51a55898cbe97732608f4e4",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 1003906560,
+      "samples": 501953280,
+      "duration_seconds": 62744.16
+    },
+    "record_start": 74334.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1350,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1349
+    },
+    "original_contract_sha256": "2a97cce229b50f9d4b6f68ba3a9adb0093ed97970907bedfefad39871ea15ed9",
+    "source_receipts": [
+      {
+        "name": "18_annotation.json",
+        "bytes": 27067,
+        "sha256": "3a31ab4aa59965f1c0b1a3f2b51c3e7a91e98a69d122ae907f0039989f0ccef0"
+      },
+      {
+        "name": "18_sleep_stage.csv",
+        "bytes": 28232,
+        "sha256": "62ee08aa7c0d6e617f36e22e93bf27fb92f88715e718b3d1f0912dac0cea00eb"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4240,
+        "sha256": "24c14878dcee141560b99d8ee3fb5449e6ac03b78b8c8150a20b8bdafe79a64f"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "130b9a1658aefb98a88d59a7432cf21f3c57986db51a55898cbe97732608f4e4"
+      }
+    ]
+  },
+  {
+    "subject": "19",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "03bb45912fb03cf166c46ad4aa5fe6a4fbcd4d52deb8c68780c7eadbf82b468d",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "f29196e1bb82d41a8db9c26a7a202c28",
+        "bytes": 22910,
+        "md5": "fd2e2fc6dea71f19763f9014750c978d",
+        "sha256": "e36af89602046df4afa47c71976b7ffc3620173803b4d979b3517cdbbe6d5644"
+      },
+      "annotation.json": {
+        "file_id": "350aed57f765203523d1399defe0f1d2",
+        "bytes": 52016,
+        "md5": "cdc93935f403cc08ac34926d71b767b9",
+        "sha256": "f923cb426024b3ff2087982efb3a59e1f39a3e8baa3108cb735cca7dc4bf191b"
+      }
+    },
+    "phone": {
+      "file_id": "7485b1e711f7839d5b5b4ed8731c8538",
+      "published_bytes": 610923598,
+      "published_md5": "6f7b96aba02c92b5caedb16debfad2f9",
+      "whole_file_digest_verified": false,
+      "header_sha256": "6075b8dcd73c3d07f0e922cf1213192097e7e89f05ea5452aa86bd23e9ad940e",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 610923520,
+      "samples": 305461760,
+      "duration_seconds": 38182.72
+    },
+    "record_start": 75943.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1109,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 2,
+      "eligible_90s_contexts": 1106
+    },
+    "original_contract_sha256": "f494b79263d58e30bb092b8f563e38647f57a790c8ede994b80fee522e1693cc",
+    "source_receipts": [
+      {
+        "name": "19_annotation.json",
+        "bytes": 52016,
+        "sha256": "f923cb426024b3ff2087982efb3a59e1f39a3e8baa3108cb735cca7dc4bf191b"
+      },
+      {
+        "name": "19_sleep_stage.csv",
+        "bytes": 22910,
+        "sha256": "e36af89602046df4afa47c71976b7ffc3620173803b4d979b3517cdbbe6d5644"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4760,
+        "sha256": "03bb45912fb03cf166c46ad4aa5fe6a4fbcd4d52deb8c68780c7eadbf82b468d"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "6075b8dcd73c3d07f0e922cf1213192097e7e89f05ea5452aa86bd23e9ad940e"
+      }
+    ]
+  },
+  {
+    "subject": "20",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "2d36f18c6b19e19abf1852baf744beaef8b933e194a605b59aef18a0130506b9",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "c992104181b362fe97ae3d284a7ce587",
+        "bytes": 23350,
+        "md5": "bf7961f3c2f8a3f87706f8127ca3a5a3",
+        "sha256": "e3a6269926e0a03417d90c1865a4fb05e9bdfa31ec11639fcf71124a14a5cc79"
+      },
+      "annotation.json": {
+        "file_id": "457fec93a53f2866c28aea8aef2afb30",
+        "bytes": 84165,
+        "md5": "2d0e8e9daa7cd21c146a8bc0d9f831b4",
+        "sha256": "115060afe2106cb69abd11e5812c18f0059554f09ccc9df7d0258e223da5af90"
+      }
+    },
+    "phone": {
+      "file_id": "f6bb66a33f131ccc19d7a77615b6fadc",
+      "published_bytes": 595672014,
+      "published_md5": "179fc0c69353e437ff7c6abaf242c23b",
+      "whole_file_digest_verified": false,
+      "header_sha256": "7f0fc32ccc002b386057fbe5420357536c0bd122ed86b15d78090b00c9292535",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 595671936,
+      "samples": 297835968,
+      "duration_seconds": 37229.496
+    },
+    "record_start": 76970.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1134,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1133
+    },
+    "original_contract_sha256": "fe47ab8e7f12476ecf553b6f51e0f1c8d0e5e5060c8d667d5d38c959bd643d41",
+    "source_receipts": [
+      {
+        "name": "20_annotation.json",
+        "bytes": 84165,
+        "sha256": "115060afe2106cb69abd11e5812c18f0059554f09ccc9df7d0258e223da5af90"
+      },
+      {
+        "name": "20_sleep_stage.csv",
+        "bytes": 23350,
+        "sha256": "e3a6269926e0a03417d90c1865a4fb05e9bdfa31ec11639fcf71124a14a5cc79"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4236,
+        "sha256": "2d36f18c6b19e19abf1852baf744beaef8b933e194a605b59aef18a0130506b9"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "7f0fc32ccc002b386057fbe5420357536c0bd122ed86b15d78090b00c9292535"
+      }
+    ]
+  },
+  {
+    "subject": "21",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "75c7e5862ba9ed97b117d25a110d28703c8e7536b179c6bc6e735dc625d9bab0",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "b74f4060b9720e0fdbd3ef4b000d6627",
+        "bytes": 29628,
+        "md5": "8fdef60f6cc860850cc49d1acaf5c519",
+        "sha256": "b9646419d7a81b245b8d98486b8b58eb50a9d10195dcfe62f19c57880a8cb99b"
+      },
+      "annotation.json": {
+        "file_id": "0f491faa91b3ebf6548553fe2335ff37",
+        "bytes": 28670,
+        "md5": "18f8808e821ad25274467b9c7ffb1aa1",
+        "sha256": "54fb2bbde97b0ceb0ba20eb8e8f96057d69b6041fbc6343e046c9a92770b5478"
+      }
+    },
+    "phone": {
+      "file_id": "5252f9bd6fed0766da9630457792e55f",
+      "published_bytes": 356126798,
+      "published_md5": "b32235a36c9fcfc2fd5c950e9d92fbd7",
+      "whole_file_digest_verified": false,
+      "header_sha256": "22363b622edfc3710b15770699af9ceafd601c95a7a53ee304dc8e8bec9ed640",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 356126720,
+      "samples": 178063360,
+      "duration_seconds": 22257.92
+    },
+    "record_start": 73847.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1416,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 796,
+      "eligible_90s_contexts": 619
+    },
+    "original_contract_sha256": "eb7b89c6db968201d091d7402ef85e07ed225d3922678753f54081a1fed8e0a4",
+    "source_receipts": [
+      {
+        "name": "21_annotation.json",
+        "bytes": 28670,
+        "sha256": "54fb2bbde97b0ceb0ba20eb8e8f96057d69b6041fbc6343e046c9a92770b5478"
+      },
+      {
+        "name": "21_sleep_stage.csv",
+        "bytes": 29628,
+        "sha256": "b9646419d7a81b245b8d98486b8b58eb50a9d10195dcfe62f19c57880a8cb99b"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 3719,
+        "sha256": "75c7e5862ba9ed97b117d25a110d28703c8e7536b179c6bc6e735dc625d9bab0"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "22363b622edfc3710b15770699af9ceafd601c95a7a53ee304dc8e8bec9ed640"
+      }
+    ]
+  },
+  {
+    "subject": "22",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "93c913949b52666b63e0c7c4e8f980ea5ad3b0506940a30ec7554e916ab5bdc5",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "29f7db919e450b17f1b037c8f376e2b0",
+        "bytes": 27355,
+        "md5": "3514cdf62386c4a95f265a623301e57c",
+        "sha256": "395f1c1eeda58466cf098ca30c2d88f68030542baa0e9bba8e862f7a3d36f9d5"
+      },
+      "annotation.json": {
+        "file_id": "b12394f92fb00eb5081b6fc3e26c5f90",
+        "bytes": 38096,
+        "md5": "b9b4cb01f4e5cd3ea52460d8bd14927d",
+        "sha256": "7827c6cdf57513aa6cab762c187fbddc10cb31a81329a5182dc29922be1c591e"
+      }
+    },
+    "phone": {
+      "file_id": "7db44aec498fc84e43e701d376b1b4d0",
+      "published_bytes": 356126798,
+      "published_md5": "1e7890e6c95f45ada1d498c890d20f49",
+      "whole_file_digest_verified": false,
+      "header_sha256": "f78a1194f3b9a439024b23df43902f76ecbf22e1c70222ed86aa306349eea06d",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 356126720,
+      "samples": 178063360,
+      "duration_seconds": 22257.92
+    },
+    "record_start": 73516.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1308,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 648,
+      "eligible_90s_contexts": 659
+    },
+    "original_contract_sha256": "1c1f2b9fb1a70f7241a32112a19247cd32aee5d56c7440e7ca7ee020db1be3ee",
+    "source_receipts": [
+      {
+        "name": "22_annotation.json",
+        "bytes": 38096,
+        "sha256": "7827c6cdf57513aa6cab762c187fbddc10cb31a81329a5182dc29922be1c591e"
+      },
+      {
+        "name": "22_sleep_stage.csv",
+        "bytes": 27355,
+        "sha256": "395f1c1eeda58466cf098ca30c2d88f68030542baa0e9bba8e862f7a3d36f9d5"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 2661,
+        "sha256": "93c913949b52666b63e0c7c4e8f980ea5ad3b0506940a30ec7554e916ab5bdc5"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "f78a1194f3b9a439024b23df43902f76ecbf22e1c70222ed86aa306349eea06d"
+      }
+    ]
+  },
+  {
+    "subject": "23",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "629aca611abd9d2bfaccb97333451843240cb8a1ec73f1d078675358de3328c5",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "f0d69d37361b6db83b9815d4caaf4dfb",
+        "bytes": 20691,
+        "md5": "57a0025a2e554f5c5dd53222c37749f7",
+        "sha256": "83a9c13aa59f66e24c6456a58db18b6bdd7516d2af2455fd5f25530ed39d7715"
+      },
+      "annotation.json": {
+        "file_id": "fcb60d7ce4bb3eec30156a5a22c7d7d0",
+        "bytes": 52706,
+        "md5": "0171e67f018dab2f88d743adae6cb75e",
+        "sha256": "74721aa7206349d05b236a455577846530c5afaabc23d041fadfffd7a3771647"
+      }
+    },
+    "phone": {
+      "file_id": "8acfcea094de69450fbaa8c1a7bb6230",
+      "published_bytes": 356126798,
+      "published_md5": "c10bbb53fd7dbb8dcab3277f660029ff",
+      "whole_file_digest_verified": false,
+      "header_sha256": "a43ec7a8543d495f6f2d9d98a4a50c1f17a045656ba5c925714ef11d7f0a789a",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 356126720,
+      "samples": 178063360,
+      "duration_seconds": 22257.92
+    },
+    "record_start": 78558.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 998,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 508,
+      "eligible_90s_contexts": 489
+    },
+    "original_contract_sha256": "ab8bf74054be4f0016687de7dd8b6b656274fafc3ed22b8566f6b83dd7d99d5d",
+    "source_receipts": [
+      {
+        "name": "23_annotation.json",
+        "bytes": 52706,
+        "sha256": "74721aa7206349d05b236a455577846530c5afaabc23d041fadfffd7a3771647"
+      },
+      {
+        "name": "23_sleep_stage.csv",
+        "bytes": 20691,
+        "sha256": "83a9c13aa59f66e24c6456a58db18b6bdd7516d2af2455fd5f25530ed39d7715"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 2659,
+        "sha256": "629aca611abd9d2bfaccb97333451843240cb8a1ec73f1d078675358de3328c5"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "a43ec7a8543d495f6f2d9d98a4a50c1f17a045656ba5c925714ef11d7f0a789a"
+      }
+    ]
+  },
+  {
+    "subject": "24",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "2244e0bfd5313b2780d9a333446b24cd9a00c1435f795b2eb17083f36c9d5e64",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "0a9d2a439d52e7e25d3a68df293de069",
+        "bytes": 20357,
+        "md5": "ccce3dcc8ea8b867c996bc531c0110a9",
+        "sha256": "f8f650eee0e0aafb0cd0da03f8cc306ff2863eae5ddd2948def48a914f68fa78"
+      },
+      "annotation.json": {
+        "file_id": "f359d83acdd96a0e08e990e01fe5500b",
+        "bytes": 41845,
+        "md5": "5de14ff0bda8c22e46310a7c29f26766",
+        "sha256": "dc5bc4f0acadce195ac120e193c4219706330f2e4d37737ee9ded00ecd941c75"
+      }
+    },
+    "phone": {
+      "file_id": "a77c9dbbafe47cd67fdc39beebff578d",
+      "published_bytes": 356126798,
+      "published_md5": "eaa7fdf975d2bd4f14dcc803e24f09b4",
+      "whole_file_digest_verified": false,
+      "header_sha256": "4566e70654ee49c899ff289e912ccca96c5bfba29bd370bcbb74077e267cefbe",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 356126720,
+      "samples": 178063360,
+      "duration_seconds": 22257.92
+    },
+    "record_start": 79338.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 987,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 423,
+      "eligible_90s_contexts": 563
+    },
+    "original_contract_sha256": "854d1aeced3c468226e71166accb7b8d57d132f02ec5d061d4064265a086e065",
+    "source_receipts": [
+      {
+        "name": "24_annotation.json",
+        "bytes": 41845,
+        "sha256": "dc5bc4f0acadce195ac120e193c4219706330f2e4d37737ee9ded00ecd941c75"
+      },
+      {
+        "name": "24_sleep_stage.csv",
+        "bytes": 20357,
+        "sha256": "f8f650eee0e0aafb0cd0da03f8cc306ff2863eae5ddd2948def48a914f68fa78"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 2659,
+        "sha256": "2244e0bfd5313b2780d9a333446b24cd9a00c1435f795b2eb17083f36c9d5e64"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "4566e70654ee49c899ff289e912ccca96c5bfba29bd370bcbb74077e267cefbe"
+      }
+    ]
+  },
+  {
+    "subject": "25",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "45846b46b902258ff52ce69c7aa8c2b0669099208db1de65b5c33c0923d75fe0",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "ae77e9d785feb1e9739f7f5c33fa7ec6",
+        "bytes": 27518,
+        "md5": "f233a6b34f6592a8000f182bb4bf03cd",
+        "sha256": "c6732852d82de2684625b299360672bcc9a6043af91d0e27adbb813e90178578"
+      },
+      "annotation.json": {
+        "file_id": "e158607488bfd16d48278e3a6c617f37",
+        "bytes": 36504,
+        "md5": "c30362886d7d49810efcb2c27d8f248d",
+        "sha256": "e92919c2af9740e44bc227c9fe3d37c18807132866a1d65cfc2f2042ac72e2cd"
+      }
+    },
+    "phone": {
+      "file_id": "543f7e2ca4085821aa606e9934c94bad",
+      "published_bytes": 356126798,
+      "published_md5": "1e0f64f6bc92b0477790e97f4c3a733f",
+      "whole_file_digest_verified": false,
+      "header_sha256": "eb5272136cd6608685e6f2438c1aa7d2979c2226c60b45f393c93607946aca60",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 356126720,
+      "samples": 178063360,
+      "duration_seconds": 22257.92
+    },
+    "record_start": 73687.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1324,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 621,
+      "eligible_90s_contexts": 703
+    },
+    "original_contract_sha256": "a0fd42e6688a1505d748d9c4504f1d34c87888cf3d5c21907e679571339870cc",
+    "source_receipts": [
+      {
+        "name": "25_annotation.json",
+        "bytes": 36504,
+        "sha256": "e92919c2af9740e44bc227c9fe3d37c18807132866a1d65cfc2f2042ac72e2cd"
+      },
+      {
+        "name": "25_sleep_stage.csv",
+        "bytes": 27518,
+        "sha256": "c6732852d82de2684625b299360672bcc9a6043af91d0e27adbb813e90178578"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 2661,
+        "sha256": "45846b46b902258ff52ce69c7aa8c2b0669099208db1de65b5c33c0923d75fe0"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "eb5272136cd6608685e6f2438c1aa7d2979c2226c60b45f393c93607946aca60"
+      }
+    ]
+  },
+  {
+    "subject": "26",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "645c8657dcb07517aee4a0efdec63737e40a11b4361339cbe616a03fede7a97d",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "5164f7b92e9bc790893056cd6de7568f",
+        "bytes": 28035,
+        "md5": "3db39ccb4bf5407c570553063ef0ea8e",
+        "sha256": "96cf623595f9709ba1211a6fd565f008967eb5e3f9ac7270735ff67d042f9f9b"
+      },
+      "annotation.json": {
+        "file_id": "41843abf50c6c29c41c07c7cf19be2f0",
+        "bytes": 80139,
+        "md5": "94d0e1682bfe998538342cd20a594356",
+        "sha256": "bd9eceda3fc1043fe37e8d20079db1778e91ed98a59c7059525e49b089ab5c99"
+      }
+    },
+    "phone": {
+      "file_id": "ad183a6b918503f77d8581aa948b7830",
+      "published_bytes": 666163278,
+      "published_md5": "cbe4aee7a3757133bc7593f54f3dff49",
+      "whole_file_digest_verified": false,
+      "header_sha256": "c7368553c2c38711305107b8f8512675f98d919bde1696840c369fb664cc2b9f",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 666163200,
+      "samples": 333081600,
+      "duration_seconds": 41635.2
+    },
+    "record_start": 73934.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1337,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 2,
+      "eligible_90s_contexts": 1335
+    },
+    "original_contract_sha256": "8bddb96bd6cb7ba95b258b9f6925026425d9612f424c302db34bc43b3776ffc3",
+    "source_receipts": [
+      {
+        "name": "26_annotation.json",
+        "bytes": 80139,
+        "sha256": "bd9eceda3fc1043fe37e8d20079db1778e91ed98a59c7059525e49b089ab5c99"
+      },
+      {
+        "name": "26_sleep_stage.csv",
+        "bytes": 28035,
+        "sha256": "96cf623595f9709ba1211a6fd565f008967eb5e3f9ac7270735ff67d042f9f9b"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4239,
+        "sha256": "645c8657dcb07517aee4a0efdec63737e40a11b4361339cbe616a03fede7a97d"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "c7368553c2c38711305107b8f8512675f98d919bde1696840c369fb664cc2b9f"
+      }
+    ]
+  },
+  {
+    "subject": "27",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "82d90fc81a8a4d7709602613c874f0dbeefab4e4994b2ec87940f8a1ee5ee9a9",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "2d736235799beb724e0f92df65802ddc",
+        "bytes": 22577,
+        "md5": "a28bf0a0c64847f9627036d3723c5b8f",
+        "sha256": "12634f47afd67dd140de94cdc4b94738b7dbcfc16f103c063fc02d12d92f4e5b"
+      },
+      "annotation.json": {
+        "file_id": "d80c298102d0688447b6fd032b237998",
+        "bytes": 76654,
+        "md5": "994a6b20b922c65cf04e776d6d4b11fc",
+        "sha256": "88be779b8f1f70a2ffc7f826e9e257856996dc7da84cf0b808de8af9a023361d"
+      }
+    },
+    "phone": {
+      "file_id": "a04495a4d6fb65979f776c41a5ce0b39",
+      "published_bytes": 602132558,
+      "published_md5": "f0079f740c7f63d2f53326bba2a8d466",
+      "whole_file_digest_verified": false,
+      "header_sha256": "b5ab3e0d7800c7f0c1ab7dd4135c76edd3f5e64259354f29691ab10ea0d0f84b",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 602132480,
+      "samples": 301066240,
+      "duration_seconds": 37633.28
+    },
+    "record_start": 76694.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1086,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1085
+    },
+    "original_contract_sha256": "9386f0c2d03e555b3222b4e7ba725db8186d48545716718e991db9249706d67f",
+    "source_receipts": [
+      {
+        "name": "27_annotation.json",
+        "bytes": 76654,
+        "sha256": "88be779b8f1f70a2ffc7f826e9e257856996dc7da84cf0b808de8af9a023361d"
+      },
+      {
+        "name": "27_sleep_stage.csv",
+        "bytes": 22577,
+        "sha256": "12634f47afd67dd140de94cdc4b94738b7dbcfc16f103c063fc02d12d92f4e5b"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4236,
+        "sha256": "82d90fc81a8a4d7709602613c874f0dbeefab4e4994b2ec87940f8a1ee5ee9a9"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "b5ab3e0d7800c7f0c1ab7dd4135c76edd3f5e64259354f29691ab10ea0d0f84b"
+      }
+    ]
+  },
+  {
+    "subject": "28",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "c25fc23b60cc3ec5d6301cd41069b6a36f11031d598954d66932c7cfbbe0d156",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "d117baf3cc9cf47565b04a8475631ad0",
+        "bytes": 21470,
+        "md5": "9b57d5389509d185c845b2450f8c3919",
+        "sha256": "e2539e9356307d4b71ac39a32760f1da7632b0ead8004e65f79110bbf3ad79d9"
+      },
+      "annotation.json": {
+        "file_id": "b49ec7e0c54a6733a965b19350317d40",
+        "bytes": 31317,
+        "md5": "7e6325c2d7abe95fcc3da8584ab082f3",
+        "sha256": "32f7bbac885652fc3896a4904866327fbfec8afd35eda8691ef86da90a9480df"
+      }
+    },
+    "phone": {
+      "file_id": "bed6d3d58e16aebaffa135a7c6376b60",
+      "published_bytes": 589350990,
+      "published_md5": "aaaa7197374c7196075846a44b31d508",
+      "whole_file_digest_verified": false,
+      "header_sha256": "383a17e27292b1a5cbd20a840aa2dd6a718a39cf1b24a7d732165036a8534f15",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 589350912,
+      "samples": 294675456,
+      "duration_seconds": 36834.432
+    },
+    "record_start": 77929.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1038,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 2,
+      "eligible_90s_contexts": 1036
+    },
+    "original_contract_sha256": "481aa267a34fd75d162a6f85cb21ee15c80bd32b295874ba709b4bdef37595a9",
+    "source_receipts": [
+      {
+        "name": "28_annotation.json",
+        "bytes": 31317,
+        "sha256": "32f7bbac885652fc3896a4904866327fbfec8afd35eda8691ef86da90a9480df"
+      },
+      {
+        "name": "28_sleep_stage.csv",
+        "bytes": 21470,
+        "sha256": "e2539e9356307d4b71ac39a32760f1da7632b0ead8004e65f79110bbf3ad79d9"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4236,
+        "sha256": "c25fc23b60cc3ec5d6301cd41069b6a36f11031d598954d66932c7cfbbe0d156"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "383a17e27292b1a5cbd20a840aa2dd6a718a39cf1b24a7d732165036a8534f15"
+      }
+    ]
+  },
+  {
+    "subject": "29",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "7f14b082a5beac8ec95c851a34f995429114ac0b9763b3f56906cd0439dcb75d",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "d4cea44cbefd3b83994ca81a04e1ef02",
+        "bytes": 21172,
+        "md5": "5f108e95ca889cddd1d7d59c94f12716",
+        "sha256": "957e99398fdc9a86ec25227a9156c6b22591ab915034f3cb952163565166f095"
+      },
+      "annotation.json": {
+        "file_id": "dcae28ee6684e63dae0cfb5d3d6e5b19",
+        "bytes": 14746,
+        "md5": "6fb16e56abf5f64fae43e8029c2f92ca",
+        "sha256": "bd1254b49d65735813e63695d05800278381728252ad9db695758e2e78fda3a0"
+      }
+    },
+    "phone": {
+      "file_id": "2753ff01376c1df485693e3bd12cc795",
+      "published_bytes": 582323278,
+      "published_md5": "d47342260852659ba8b36a684db20662",
+      "whole_file_digest_verified": false,
+      "header_sha256": "cd0f95ee0a3c0eeda3d358ae7d9215c1b9f90baefd97370c793a9cafdd7ed6ca",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 582323200,
+      "samples": 291161600,
+      "duration_seconds": 36395.2
+    },
+    "record_start": 77727.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1028,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 1,
+      "eligible_90s_contexts": 1027
+    },
+    "original_contract_sha256": "26abe63c54adf5add4bf7c01091dad83b04d80ffbfac5e7ad5b85543541527e3",
+    "source_receipts": [
+      {
+        "name": "29_annotation.json",
+        "bytes": 14746,
+        "sha256": "bd1254b49d65735813e63695d05800278381728252ad9db695758e2e78fda3a0"
+      },
+      {
+        "name": "29_sleep_stage.csv",
+        "bytes": 21172,
+        "sha256": "957e99398fdc9a86ec25227a9156c6b22591ab915034f3cb952163565166f095"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4236,
+        "sha256": "7f14b082a5beac8ec95c851a34f995429114ac0b9763b3f56906cd0439dcb75d"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "cd0f95ee0a3c0eeda3d358ae7d9215c1b9f90baefd97370c793a9cafdd7ed6ca"
+      }
+    ]
+  },
+  {
+    "subject": "30",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "7b77eee98ab44095da5250f9be3dd83c34391a7d80e7dd02a4d96562da4bec0d",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "c171edd4e7ee1fa1a44f62bc13b1aadf",
+        "bytes": 24511,
+        "md5": "d2bae38d0d78f60cae98fc719521f7ee",
+        "sha256": "2896c6f13ebad65d46813131ce03b904fb9fdab2f30d17ac60e75fda5a3d927d"
+      },
+      "annotation.json": {
+        "file_id": "ae522b469e872fe91f0f552db0ab92a1",
+        "bytes": 69858,
+        "md5": "e45ad50e6a48bd305d108131770df011",
+        "sha256": "30d188ab3f769c8e1b9f2533e070ced8f3b507896215704442c3ddb5dacd2a26"
+      }
+    },
+    "phone": {
+      "file_id": "7896b532f1af2146c9e789cfff170960",
+      "published_bytes": 776606798,
+      "published_md5": "0f8ac7db86b7a8f291ee65e28c6b8715",
+      "whole_file_digest_verified": false,
+      "header_sha256": "c67f1393c06ff8a22ea633ff5e38543647c62364131b659b10c152018fb1cbb3",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 776606720,
+      "samples": 388303360,
+      "duration_seconds": 48537.92
+    },
+    "record_start": 74101.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1188,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1188
+    },
+    "original_contract_sha256": "3a0b19a35d63516593def2c6dcd0762edef5f905d98f58d8335fdec8d3071919",
+    "source_receipts": [
+      {
+        "name": "30_annotation.json",
+        "bytes": 69858,
+        "sha256": "30d188ab3f769c8e1b9f2533e070ced8f3b507896215704442c3ddb5dacd2a26"
+      },
+      {
+        "name": "30_sleep_stage.csv",
+        "bytes": 24511,
+        "sha256": "2896c6f13ebad65d46813131ce03b904fb9fdab2f30d17ac60e75fda5a3d927d"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4237,
+        "sha256": "7b77eee98ab44095da5250f9be3dd83c34391a7d80e7dd02a4d96562da4bec0d"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "c67f1393c06ff8a22ea633ff5e38543647c62364131b659b10c152018fb1cbb3"
+      }
+    ]
+  },
+  {
+    "subject": "31",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "4e9231047f6e1c96b3fcca4540bbc06b8a3ad1fd9dd6f74eb7edeb43f3b37c73",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "0010d3e951e00028599c5e423385fa8d",
+        "bytes": 24822,
+        "md5": "b1e59a23cd964e0e45ec9b352880dce4",
+        "sha256": "c35473bb53a98a18927635108081ce1a4a7320301ef7913388817d4cda9199f8"
+      },
+      "annotation.json": {
+        "file_id": "dc11e0294388c2f848a01f0d166f7c65",
+        "bytes": 23083,
+        "md5": "cc88c8b9d75d7a5201cd4a16f7371bdb",
+        "sha256": "8c436af8bae6bac98df6c0b02821203509e083d1c1b36d5b3d40d26281a2480e"
+      }
+    },
+    "phone": {
+      "file_id": "6ce6d7ae6e033b4e5d4843ff186abe7f",
+      "published_bytes": 735615822,
+      "published_md5": "04de932b1dde98f9ba05120f65a6c640",
+      "whole_file_digest_verified": false,
+      "header_sha256": "9c7cffb9cac3aaa78da8c69798fe32a87d437d9725499cc21fecb3178273fde6",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 735615744,
+      "samples": 367807872,
+      "duration_seconds": 45975.984
+    },
+    "record_start": 76694.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1193,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1193
+    },
+    "original_contract_sha256": "2ea7b193f916cf2171279908939b360c529200ad717d6ae893281a1fd4e55751",
+    "source_receipts": [
+      {
+        "name": "31_annotation.json",
+        "bytes": 23083,
+        "sha256": "8c436af8bae6bac98df6c0b02821203509e083d1c1b36d5b3d40d26281a2480e"
+      },
+      {
+        "name": "31_sleep_stage.csv",
+        "bytes": 24822,
+        "sha256": "c35473bb53a98a18927635108081ce1a4a7320301ef7913388817d4cda9199f8"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4237,
+        "sha256": "4e9231047f6e1c96b3fcca4540bbc06b8a3ad1fd9dd6f74eb7edeb43f3b37c73"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "9c7cffb9cac3aaa78da8c69798fe32a87d437d9725499cc21fecb3178273fde6"
+      }
+    ]
+  },
+  {
+    "subject": "32",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "a9bf2f0fe6b302df319037ac9649a4373965525a9ea4f1b6446719adf63a5400",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "d622880bbf7dc4b422df125a23fe76ba",
+        "bytes": 23212,
+        "md5": "980724af6b751cfad82e5fa8291c0378",
+        "sha256": "165d124b731e6936f0b0c5e2a8e6914f12745214b748cbd209b3bd9cf918e309"
+      },
+      "annotation.json": {
+        "file_id": "d55f7c313d34b8cd080408c7d1395862",
+        "bytes": 17791,
+        "md5": "958c888c5c54d7fdfb4605069e1dc39e",
+        "sha256": "538cca63193bd4862450966428bd0e07eac5b3efadd294659fa4e471da5a935b"
+      }
+    },
+    "phone": {
+      "file_id": "97a523f192f162c02bd9d7a61009f4cc",
+      "published_bytes": 562367694,
+      "published_md5": "44340f60d0654f2cf92c82d0f962b79a",
+      "whole_file_digest_verified": false,
+      "header_sha256": "41dedb56ede3d8ba2da8317282e51f7746c51b2060eb8a97cf04af7eb94a08c1",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 562367616,
+      "samples": 281183808,
+      "duration_seconds": 35147.976
+    },
+    "record_start": 79368.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1113,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1112
+    },
+    "original_contract_sha256": "581ccac84edc5f4f2a004d76bd9cf27dd11aa5c7807c990ee00c528fee6cfcef",
+    "source_receipts": [
+      {
+        "name": "32_annotation.json",
+        "bytes": 17791,
+        "sha256": "538cca63193bd4862450966428bd0e07eac5b3efadd294659fa4e471da5a935b"
+      },
+      {
+        "name": "32_sleep_stage.csv",
+        "bytes": 23212,
+        "sha256": "165d124b731e6936f0b0c5e2a8e6914f12745214b748cbd209b3bd9cf918e309"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4236,
+        "sha256": "a9bf2f0fe6b302df319037ac9649a4373965525a9ea4f1b6446719adf63a5400"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "41dedb56ede3d8ba2da8317282e51f7746c51b2060eb8a97cf04af7eb94a08c1"
+      }
+    ]
+  },
+  {
+    "subject": "33",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "38ecf764f7b40772da18e22e460dccf51f1de3d64ac82c046fd242968bb9c798",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "40075a75c93595794325e0d39742db7c",
+        "bytes": 23128,
+        "md5": "afa35316feb34ec5f1d1821d504f4d43",
+        "sha256": "d7cedd7fa41846a70ff41609274fb16bae667ef75e36f2695a65acfe0c6e6782"
+      },
+      "annotation.json": {
+        "file_id": "ef294012e6522a94260c96736f1c3688",
+        "bytes": 57568,
+        "md5": "8f0ee1f23a787b6b80305c4666ebb99f",
+        "sha256": "e8ad02810486df68fb8c13712bdd675bd05b756603879d1a1b928d419ef8059c"
+      }
+    },
+    "phone": {
+      "file_id": "1bd1014ce573ebbdce7202ad0612782d",
+      "published_bytes": 626723918,
+      "published_md5": "5d116b6081d61ada7567ba8e4da03a20",
+      "whole_file_digest_verified": false,
+      "header_sha256": "ed1f61c9d0677a3fe23c6157e074961b5984b0ab909127fdf47779b76daf7c85",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 626723840,
+      "samples": 313361920,
+      "duration_seconds": 39170.24
+    },
+    "record_start": 75506.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1115,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 1,
+      "eligible_90s_contexts": 1114
+    },
+    "original_contract_sha256": "6f7315f7775abea89c222eec3fda8591ba9565046fe3b4d55b70a5766f45157d",
+    "source_receipts": [
+      {
+        "name": "33_annotation.json",
+        "bytes": 57568,
+        "sha256": "e8ad02810486df68fb8c13712bdd675bd05b756603879d1a1b928d419ef8059c"
+      },
+      {
+        "name": "33_sleep_stage.csv",
+        "bytes": 23128,
+        "sha256": "d7cedd7fa41846a70ff41609274fb16bae667ef75e36f2695a65acfe0c6e6782"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4237,
+        "sha256": "38ecf764f7b40772da18e22e460dccf51f1de3d64ac82c046fd242968bb9c798"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "ed1f61c9d0677a3fe23c6157e074961b5984b0ab909127fdf47779b76daf7c85"
+      }
+    ]
+  },
+  {
+    "subject": "34",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "55c7122efb9e794cb1d67cd258d012e37b5d3d2532f97261c1d185d00d412159",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "9e332e6ed00b03a4cba10c78e598dc5b",
+        "bytes": 27559,
+        "md5": "bf1d7d4d7ccc7b957174ef98ab0ba97c",
+        "sha256": "e8cd819172227cd5376422b496186d4241f900d223d4f0803968e6abbee0ca5c"
+      },
+      "annotation.json": {
+        "file_id": "bea9fbca77e98621a6c50ae1dc7b26cc",
+        "bytes": 46009,
+        "md5": "df3c0c7a0614113c1b18e99efd14a292",
+        "sha256": "d72ec227444b1c6969912ebb5f39d673cc15c05c774501e31ae835616164ea3f"
+      }
+    },
+    "phone": {
+      "file_id": "ce66710498b6e7f5404a692a877efe7a",
+      "published_bytes": 614873678,
+      "published_md5": "2b14f12f76a92aa55ae9860e91b5e1c1",
+      "whole_file_digest_verified": false,
+      "header_sha256": "3fffa542a9473019a8123e3ac8e9b2a47703acd786641cc96d96195418ed402a",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 614873600,
+      "samples": 307436800,
+      "duration_seconds": 38429.6
+    },
+    "record_start": 79789.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1332,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 73,
+      "eligible_90s_contexts": 1258
+    },
+    "original_contract_sha256": "2e0e7672c9d9a51e3a52436e4858506829aced654947e61322ba98b32af9c8f3",
+    "source_receipts": [
+      {
+        "name": "34_annotation.json",
+        "bytes": 46009,
+        "sha256": "d72ec227444b1c6969912ebb5f39d673cc15c05c774501e31ae835616164ea3f"
+      },
+      {
+        "name": "34_sleep_stage.csv",
+        "bytes": 27559,
+        "sha256": "e8cd819172227cd5376422b496186d4241f900d223d4f0803968e6abbee0ca5c"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4237,
+        "sha256": "55c7122efb9e794cb1d67cd258d012e37b5d3d2532f97261c1d185d00d412159"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "3fffa542a9473019a8123e3ac8e9b2a47703acd786641cc96d96195418ed402a"
+      }
+    ]
+  },
+  {
+    "subject": "35",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "24b3ba2525cd7b79cb9644fe3a99a1429f10535bbd6e02c11a9f67ec1521e918",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "6b6a07bf038feb5ed07a41a7cb68d830",
+        "bytes": 26292,
+        "md5": "22a4157d42ddef4a488edc78295edfb7",
+        "sha256": "266c9fa90f3005a69107b98e21ec457421ea8dddd858eec94172aeabb4be6907"
+      },
+      "annotation.json": {
+        "file_id": "b0fbc3e321d9c2c22f5ac60350c65866",
+        "bytes": 76484,
+        "md5": "01df72e95276d47dd8f1af92bddc3e6b",
+        "sha256": "2e8a901454711c4ccc4f01feea1331d4436eebe2b5ffb14c3b6bbd8d2b1db89e"
+      }
+    },
+    "phone": {
+      "file_id": "aab8b93d41188d51b2799181be79412f",
+      "published_bytes": 649480014,
+      "published_md5": "9f65c5ff9567c5cad7abbb09403db09f",
+      "whole_file_digest_verified": false,
+      "header_sha256": "acfa466cb4c33bb4e8032982a871cb886292f682f75b98c2fd2f6a1b00364b10",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 649479936,
+      "samples": 324739968,
+      "duration_seconds": 40592.496
+    },
+    "record_start": 76302.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1267,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1266
+    },
+    "original_contract_sha256": "9ccab3e893ff5aa6202e88fc61737464443d449c80913e5fb7dce505c79ec867",
+    "source_receipts": [
+      {
+        "name": "35_annotation.json",
+        "bytes": 76484,
+        "sha256": "2e8a901454711c4ccc4f01feea1331d4436eebe2b5ffb14c3b6bbd8d2b1db89e"
+      },
+      {
+        "name": "35_sleep_stage.csv",
+        "bytes": 26292,
+        "sha256": "266c9fa90f3005a69107b98e21ec457421ea8dddd858eec94172aeabb4be6907"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4237,
+        "sha256": "24b3ba2525cd7b79cb9644fe3a99a1429f10535bbd6e02c11a9f67ec1521e918"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "acfa466cb4c33bb4e8032982a871cb886292f682f75b98c2fd2f6a1b00364b10"
+      }
+    ]
+  },
+  {
+    "subject": "36",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "6642158a7c674e61c67ea171f80ada3c8fa627708c24b4f4035e821bb6099faa",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "3c5c7a6880f34989cdda3f082821fa40",
+        "bytes": 26481,
+        "md5": "0de491eecbeeaa8a1294ce82b35b041a",
+        "sha256": "60b1b9882b3216b71ff88cf3651151ff250ff0e04696c8aa27d35a3eb74deb19"
+      },
+      "annotation.json": {
+        "file_id": "4b42b1a00130dcd6bcac81cedcfcd232",
+        "bytes": 24645,
+        "md5": "235a2f2cdf193af0afc04f1e1332bbe5",
+        "sha256": "a494b9bfea8b1412b2325615cda359faf447fdd63dfc483a08a54afd3906c17e"
+      }
+    },
+    "phone": {
+      "file_id": "1a8a2fdbf337cf4cb3c54a67b4e4badd",
+      "published_bytes": 619290702,
+      "published_md5": "d7c75fc55eb983adbe88db765087dd47",
+      "whole_file_digest_verified": false,
+      "header_sha256": "141d534ce710a5eadf72c6aa03479a5c9cc44dc71c33bf189c380450a106d96d",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 619290624,
+      "samples": 309645312,
+      "duration_seconds": 38705.664
+    },
+    "record_start": 76015.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1272,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1271
+    },
+    "original_contract_sha256": "753b6eebea2c2b999efcb0439fef94d967e688ddeb933fe08e40735ba6c32329",
+    "source_receipts": [
+      {
+        "name": "36_annotation.json",
+        "bytes": 24645,
+        "sha256": "a494b9bfea8b1412b2325615cda359faf447fdd63dfc483a08a54afd3906c17e"
+      },
+      {
+        "name": "36_sleep_stage.csv",
+        "bytes": 26481,
+        "sha256": "60b1b9882b3216b71ff88cf3651151ff250ff0e04696c8aa27d35a3eb74deb19"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4238,
+        "sha256": "6642158a7c674e61c67ea171f80ada3c8fa627708c24b4f4035e821bb6099faa"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "141d534ce710a5eadf72c6aa03479a5c9cc44dc71c33bf189c380450a106d96d"
+      }
+    ]
+  },
+  {
+    "subject": "37",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "d1619cf3599b07b0f81d25cf14833d63338362d667a5b2055f58093f0ce61638",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "7fe97a7ff4425a3c02a1836ef0727245",
+        "bytes": 25571,
+        "md5": "88d95392c134fda9919c86b507926e10",
+        "sha256": "e40941901559cdd2da72044215fec63828f55fdfbaa1a9005667f1469d85c297"
+      },
+      "annotation.json": {
+        "file_id": "2bc08764ae616f70426a33c5ccd09f22",
+        "bytes": 67936,
+        "md5": "fbf803ed550141fa1c99b9ebd7061ca7",
+        "sha256": "2e8b3b4add185f947d8b47527bc570dca70ef884c85168000e27207cfa46234d"
+      }
+    },
+    "phone": {
+      "file_id": "de982e7610e4e15aa82e9ae1da4e2263",
+      "published_bytes": 674964558,
+      "published_md5": "eba0e2dc7eb5ca8ce9b3dbcd850ac80c",
+      "whole_file_digest_verified": false,
+      "header_sha256": "bdc7feaa3ebd32f6feda8d627fec2c471e8660d8a432a97113990288d610fc70",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 674964480,
+      "samples": 337482240,
+      "duration_seconds": 42185.28
+    },
+    "record_start": 74280.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1233,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1233
+    },
+    "original_contract_sha256": "964b375a7146935006a566fa6677ea408410ba20de13bd422df625f2d1bfae77",
+    "source_receipts": [
+      {
+        "name": "37_annotation.json",
+        "bytes": 67936,
+        "sha256": "2e8b3b4add185f947d8b47527bc570dca70ef884c85168000e27207cfa46234d"
+      },
+      {
+        "name": "37_sleep_stage.csv",
+        "bytes": 25571,
+        "sha256": "e40941901559cdd2da72044215fec63828f55fdfbaa1a9005667f1469d85c297"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4239,
+        "sha256": "d1619cf3599b07b0f81d25cf14833d63338362d667a5b2055f58093f0ce61638"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "bdc7feaa3ebd32f6feda8d627fec2c471e8660d8a432a97113990288d610fc70"
+      }
+    ]
+  },
+  {
+    "subject": "38",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "f5ee462f5d8fdf704496fee1da1a90184151a738d85113f5d0a67392438c0d4e",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "fbabfe504d514d2c28cb88488d8f9b42",
+        "bytes": 24630,
+        "md5": "fcef2e3b129c4763880daddfd242737b",
+        "sha256": "327cf9c04ab21243481d1a03569a869376e53ad74ffbe6d280273da8a86a67b8"
+      },
+      "annotation.json": {
+        "file_id": "655e72bd0df7ce0a760727f8274b3490",
+        "bytes": 64524,
+        "md5": "dcdd9cc0c23054b2fc1b8a6546a7b068",
+        "sha256": "75b3069f7ab56f934cf1ca51ce326f9a17fd3310f4bdd403f4799538ffe6b403"
+      }
+    },
+    "phone": {
+      "file_id": "2298d941dd88299cbdb2324dfa82e0f5",
+      "published_bytes": 888681038,
+      "published_md5": "6088481d4b2ada87fe2c16028f88b54e",
+      "whole_file_digest_verified": false,
+      "header_sha256": "9779dbfc5e10b8cd1695bb89a9d83e6a2ee3463b43d37405243eec594b53dad9",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 888680960,
+      "samples": 444340480,
+      "duration_seconds": 55542.56
+    },
+    "record_start": 76294.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1183,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1183
+    },
+    "original_contract_sha256": "acf27962b9a7e8df33fbcea8e8c972f9cfe58446f20253d0e0f76788ffd3de86",
+    "source_receipts": [
+      {
+        "name": "38_annotation.json",
+        "bytes": 64524,
+        "sha256": "75b3069f7ab56f934cf1ca51ce326f9a17fd3310f4bdd403f4799538ffe6b403"
+      },
+      {
+        "name": "38_sleep_stage.csv",
+        "bytes": 24630,
+        "sha256": "327cf9c04ab21243481d1a03569a869376e53ad74ffbe6d280273da8a86a67b8"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4237,
+        "sha256": "f5ee462f5d8fdf704496fee1da1a90184151a738d85113f5d0a67392438c0d4e"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "9779dbfc5e10b8cd1695bb89a9d83e6a2ee3463b43d37405243eec594b53dad9"
+      }
+    ]
+  },
+  {
+    "subject": "39",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "92feebb0a8c8690cf9f184384ecc274c4cc9721517cbd802e1d6c0b5204ddda6",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "a922cbbfc91dc44174334a82f1611b9f",
+        "bytes": 26926,
+        "md5": "4c583eecab996b52cae8818f0e00bdc7",
+        "sha256": "70fe3087a2bbf3a83d5b1b115bf7d7203d2bf94c3c61144c56927a4b9e5d0994"
+      },
+      "annotation.json": {
+        "file_id": "539b9d78d2a4b655e4dddf1c15b7a084",
+        "bytes": 68468,
+        "md5": "d35f0acd3a57dd1fc153795cc8b7eb34",
+        "sha256": "76baeb605f4e5629695c42f654db579e21a0f1dcc91b2fad6e64ec25052d4b8e"
+      }
+    },
+    "phone": {
+      "file_id": "511e088401df897d049b3680af2a3c1b",
+      "published_bytes": 647843918,
+      "published_md5": "618f9655a158fbff144ef8ff6791c383",
+      "whole_file_digest_verified": false,
+      "header_sha256": "62c683d64405fff6ab15ba884f376fb5e808bcbdf86cc99d11c39cfb9f87a911",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 647843840,
+      "samples": 323921920,
+      "duration_seconds": 40490.24
+    },
+    "record_start": 74098.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1299,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 2,
+      "eligible_90s_contexts": 1297
+    },
+    "original_contract_sha256": "f8482d75981ba28d0c953ca60ef2508295fea3b354e3bfc3dcf314c0cba2abbd",
+    "source_receipts": [
+      {
+        "name": "39_annotation.json",
+        "bytes": 68468,
+        "sha256": "76baeb605f4e5629695c42f654db579e21a0f1dcc91b2fad6e64ec25052d4b8e"
+      },
+      {
+        "name": "39_sleep_stage.csv",
+        "bytes": 26926,
+        "sha256": "70fe3087a2bbf3a83d5b1b115bf7d7203d2bf94c3c61144c56927a4b9e5d0994"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4238,
+        "sha256": "92feebb0a8c8690cf9f184384ecc274c4cc9721517cbd802e1d6c0b5204ddda6"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "62c683d64405fff6ab15ba884f376fb5e808bcbdf86cc99d11c39cfb9f87a911"
+      }
+    ]
+  },
+  {
+    "subject": "40",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "04cd210456d4abbfd30ec5f70de0c8fba2c8b53357d04a538e128c8026d5b950",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "38621b46dfa605f6fab82276898eb957",
+        "bytes": 23277,
+        "md5": "51fe8f72a578178ca944547be4505ab4",
+        "sha256": "0ced16c3bac6c33e6a8384b16385c0546873fa08d51279f922f64f52b7340bed"
+      },
+      "annotation.json": {
+        "file_id": "bdbfa3186b4cb26f0c1476a9a4ac0c12",
+        "bytes": 33587,
+        "md5": "c567f7fc71c92490e7c5adb1133c3c80",
+        "sha256": "8bdf7bd77580cef233544f4d616cab498b1979db9f82aeb111948c516e130338"
+      }
+    },
+    "phone": {
+      "file_id": "7f992c03f95395555dc75e1c0df220af",
+      "published_bytes": 607446222,
+      "published_md5": "e2d07f42a50ce404493df53e2498eeb5",
+      "whole_file_digest_verified": false,
+      "header_sha256": "49b0d5f52fc270354faf5b3e079b7360b00aea5dfa5849bb555ec71e9414238c",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 607446144,
+      "samples": 303723072,
+      "duration_seconds": 37965.384
+    },
+    "record_start": 76672.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1126,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 1,
+      "eligible_90s_contexts": 1125
+    },
+    "original_contract_sha256": "4f7d8eef4496999b04bacdacf75e001443cee38acdaf66d9b70218b48dc2d513",
+    "source_receipts": [
+      {
+        "name": "40_annotation.json",
+        "bytes": 33587,
+        "sha256": "8bdf7bd77580cef233544f4d616cab498b1979db9f82aeb111948c516e130338"
+      },
+      {
+        "name": "40_sleep_stage.csv",
+        "bytes": 23277,
+        "sha256": "0ced16c3bac6c33e6a8384b16385c0546873fa08d51279f922f64f52b7340bed"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4238,
+        "sha256": "04cd210456d4abbfd30ec5f70de0c8fba2c8b53357d04a538e128c8026d5b950"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "49b0d5f52fc270354faf5b3e079b7360b00aea5dfa5849bb555ec71e9414238c"
+      }
+    ]
+  },
+  {
+    "subject": "41",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "bc28c3b6e05181fdb90946291bd4a052850ce154fde0ead825f87effe165920d",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "0c31bc16418201bb1da4a6c619219b0f",
+        "bytes": 18970,
+        "md5": "38f471b4e8e7824407740dfbbfc97157",
+        "sha256": "f7cbf3586050300503df7171b83b67d6d3e49fd0de79a1a74e0bd6f3d2d07b45"
+      },
+      "annotation.json": {
+        "file_id": "43902861add2cb97e2bf45273e65a844",
+        "bytes": 43568,
+        "md5": "a3a21ae589ca242e009f664fbd24f86c",
+        "sha256": "e7b5a4962f479b99cee883552db8bd35d061253dbfc0c7e949387c0da9a5d4b3"
+      }
+    },
+    "phone": {
+      "file_id": "3a669ce223c8b72a606af7a5c4f24af8",
+      "published_bytes": 570369102,
+      "published_md5": "455c747216bcb0c6169176bf8a24d819",
+      "whole_file_digest_verified": false,
+      "header_sha256": "69f3db59c36b5d26fa0c58db2850c872e82a792ea59096082a948c8157e7ca73",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 570369024,
+      "samples": 285184512,
+      "duration_seconds": 35648.064
+    },
+    "record_start": 79413.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 915,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 915
+    },
+    "original_contract_sha256": "b3a10d84e316f12237f9c9b3b422e6e5027205cbbfa7650593a39ec318b29090",
+    "source_receipts": [
+      {
+        "name": "41_annotation.json",
+        "bytes": 43568,
+        "sha256": "e7b5a4962f479b99cee883552db8bd35d061253dbfc0c7e949387c0da9a5d4b3"
+      },
+      {
+        "name": "41_sleep_stage.csv",
+        "bytes": 18970,
+        "sha256": "f7cbf3586050300503df7171b83b67d6d3e49fd0de79a1a74e0bd6f3d2d07b45"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4236,
+        "sha256": "bc28c3b6e05181fdb90946291bd4a052850ce154fde0ead825f87effe165920d"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "69f3db59c36b5d26fa0c58db2850c872e82a792ea59096082a948c8157e7ca73"
+      }
+    ]
+  },
+  {
+    "subject": "42",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "d6fa2c51c01f2148a6369cb302086bf263339564c351ce836a423dec4543a8d5",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "ac99f4df6824e867b7067891059a35d2",
+        "bytes": 33537,
+        "md5": "3235cb818120b5ed19e960f5a8c8e8ff",
+        "sha256": "607efb20aacb3bc25e8494e427c99dda8fb7d0d8fd5dcf0884e6fa175219d4fc"
+      },
+      "annotation.json": {
+        "file_id": "1f8a37ff629d7928bf2d912b55792204",
+        "bytes": 58215,
+        "md5": "0f5660df8deb9048866c8db7a931118b",
+        "sha256": "fd4abc333907723aa7a7b4aa0228b803f30100b97e5f17b902bfe8d4b4d6b2af"
+      }
+    },
+    "phone": {
+      "file_id": "acb064749dbc4dc593ab954e4eee2d54",
+      "published_bytes": 818762318,
+      "published_md5": "9179fff21741ab3cab6676227fd7c4cc",
+      "whole_file_digest_verified": false,
+      "header_sha256": "91fec2a590ad1cfc376373f6356ec45ec8e745d5f5e69e7b4b7286c88dd89562",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 818762240,
+      "samples": 409381120,
+      "duration_seconds": 51172.64
+    },
+    "record_start": 75828.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1618,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 2,
+      "eligible_90s_contexts": 1615
+    },
+    "original_contract_sha256": "651633ce043e93c307354b23c6a5f34591ca1ebdc50c27551c66af0677448bf1",
+    "source_receipts": [
+      {
+        "name": "42_annotation.json",
+        "bytes": 58215,
+        "sha256": "fd4abc333907723aa7a7b4aa0228b803f30100b97e5f17b902bfe8d4b4d6b2af"
+      },
+      {
+        "name": "42_sleep_stage.csv",
+        "bytes": 33537,
+        "sha256": "607efb20aacb3bc25e8494e427c99dda8fb7d0d8fd5dcf0884e6fa175219d4fc"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4237,
+        "sha256": "d6fa2c51c01f2148a6369cb302086bf263339564c351ce836a423dec4543a8d5"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "91fec2a590ad1cfc376373f6356ec45ec8e745d5f5e69e7b4b7286c88dd89562"
+      }
+    ]
+  },
+  {
+    "subject": "43",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "1fc7082c9dbb99cccd092774a05929867f577dd4ad685cdf22a6476a081c958f",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "3cc840b9fc9599e5868f18b90c8abd3b",
+        "bytes": 23563,
+        "md5": "bbe234d7e01c0b97727c936757ba3eaa",
+        "sha256": "7c0e6a4bf0d6227886ff4d418412609e070c54faa9c37ef9836c34c524f7bd8a"
+      },
+      "annotation.json": {
+        "file_id": "384baf4d89cb3689f06ef066816b9d9e",
+        "bytes": 9907,
+        "md5": "f6ea0f938420a7cb2da8d462544cee3d",
+        "sha256": "13e57a17b47d83acaab0477eb5ad90aa9d21eeaee013e1207bf2ce2b18f028ee"
+      }
+    },
+    "phone": {
+      "file_id": "f0ebb7d2ce7b1ff98b467aa48ae828bf",
+      "published_bytes": 608943054,
+      "published_md5": "4e6d2309eceab62da8b9445823f64b28",
+      "whole_file_digest_verified": false,
+      "header_sha256": "ebb032c16092fed65e39dfbaab1931e774f1f91195fdce179a0d387a7f9e2195",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 608942976,
+      "samples": 304471488,
+      "duration_seconds": 38058.936
+    },
+    "record_start": 76835.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1132,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 1,
+      "eligible_90s_contexts": 1131
+    },
+    "original_contract_sha256": "4d1b040952591ef4d2deb16193480b2093d134e10c421175ba21ea065cac9b9f",
+    "source_receipts": [
+      {
+        "name": "43_annotation.json",
+        "bytes": 9907,
+        "sha256": "13e57a17b47d83acaab0477eb5ad90aa9d21eeaee013e1207bf2ce2b18f028ee"
+      },
+      {
+        "name": "43_sleep_stage.csv",
+        "bytes": 23563,
+        "sha256": "7c0e6a4bf0d6227886ff4d418412609e070c54faa9c37ef9836c34c524f7bd8a"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4237,
+        "sha256": "1fc7082c9dbb99cccd092774a05929867f577dd4ad685cdf22a6476a081c958f"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "ebb032c16092fed65e39dfbaab1931e774f1f91195fdce179a0d387a7f9e2195"
+      }
+    ]
+  },
+  {
+    "subject": "44",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "7c5786aba3d6441293f6438c7b36e90fdd0367a33301d930e79c96840d400a66",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "bcabf5e4bb9a41fbac2d152234ea1114",
+        "bytes": 24349,
+        "md5": "a47642bf3625220a8c88ee07bac17e9c",
+        "sha256": "6ab48055cb52a971c3886743a2804852aff76517ce955ff31ea8b4a4a290fa24"
+      },
+      "annotation.json": {
+        "file_id": "813c5d438d2facee66c1bc749f874fd0",
+        "bytes": 38617,
+        "md5": "a90294d98188a7bff3a41cd8bbe3e5db",
+        "sha256": "9388c24259767e08a82892a22c3caa0cc6e69f9c31b053241f73acb328d9967d"
+      }
+    },
+    "phone": {
+      "file_id": "44ffc049d08a855b76b3a78d8517cb80",
+      "published_bytes": 621539918,
+      "published_md5": "15a6f08444eab014bcec76acf861d2bd",
+      "whole_file_digest_verified": false,
+      "header_sha256": "71311f908d9985b5236df57edfea6e4a189413f5c2afd05d7193a2675ac08346",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 621539840,
+      "samples": 310769920,
+      "duration_seconds": 38846.24
+    },
+    "record_start": 77085.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1172,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1172
+    },
+    "original_contract_sha256": "1a9dfb5e9e9a871d9c5993f4bf92f4fc80c05fb393ae2992e5c64903a888243a",
+    "source_receipts": [
+      {
+        "name": "44_annotation.json",
+        "bytes": 38617,
+        "sha256": "9388c24259767e08a82892a22c3caa0cc6e69f9c31b053241f73acb328d9967d"
+      },
+      {
+        "name": "44_sleep_stage.csv",
+        "bytes": 24349,
+        "sha256": "6ab48055cb52a971c3886743a2804852aff76517ce955ff31ea8b4a4a290fa24"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4238,
+        "sha256": "7c5786aba3d6441293f6438c7b36e90fdd0367a33301d930e79c96840d400a66"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "71311f908d9985b5236df57edfea6e4a189413f5c2afd05d7193a2675ac08346"
+      }
+    ]
+  },
+  {
+    "subject": "45",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "9999cf6bb79aecaf0d1d761df83a19e9d402b6bbf62ea6a023ab6496e3b15c45",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "1264794336f5d53d794af25760b753c4",
+        "bytes": 25249,
+        "md5": "fe224584559702339d52251c1db2469a",
+        "sha256": "eed0e4d8e0e8264c53c8d81c2adabf28f0319c221b27fffabb5134d9a11a66e0"
+      },
+      "annotation.json": {
+        "file_id": "b99e566bb89c28551366c222632a8aca",
+        "bytes": 73446,
+        "md5": "688e3f842b74bcae2bff1c48922e37bf",
+        "sha256": "ef8929591edbd0d7ab347515398b3b857660b3842c875d7a502df1bf06ace121"
+      }
+    },
+    "phone": {
+      "file_id": "5a54efc9ed1e93ea254fd924212c90e2",
+      "published_bytes": 645971790,
+      "published_md5": "fe6a3a8afaca9c4b690e2d71afb9568b",
+      "whole_file_digest_verified": false,
+      "header_sha256": "18ec1231411e87da125f35f23e5135e6d7ae9c6ca0365664a576c759f67026d3",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 645971712,
+      "samples": 322985856,
+      "duration_seconds": 40373.232
+    },
+    "record_start": 75471.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1207,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1206
+    },
+    "original_contract_sha256": "1281e3c9286269dca51147bb64e54195c6f91ea4fb8363db2cdb717b86c46470",
+    "source_receipts": [
+      {
+        "name": "45_annotation.json",
+        "bytes": 73446,
+        "sha256": "ef8929591edbd0d7ab347515398b3b857660b3842c875d7a502df1bf06ace121"
+      },
+      {
+        "name": "45_sleep_stage.csv",
+        "bytes": 25249,
+        "sha256": "eed0e4d8e0e8264c53c8d81c2adabf28f0319c221b27fffabb5134d9a11a66e0"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4239,
+        "sha256": "9999cf6bb79aecaf0d1d761df83a19e9d402b6bbf62ea6a023ab6496e3b15c45"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "18ec1231411e87da125f35f23e5135e6d7ae9c6ca0365664a576c759f67026d3"
+      }
+    ]
+  },
+  {
+    "subject": "46",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "c73d610f20cde1d428646a4c6574090dd74195469ebb1196b215dddb4f114e45",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "0e1f0034e3deee6cf241b3ec9a723240",
+        "bytes": 25160,
+        "md5": "8c771ef9cbe6fc61269c3dd456b0d784",
+        "sha256": "f28da471b39fbf2650806cd98109de58689365c279f665a51d91c7249f1197d9"
+      },
+      "annotation.json": {
+        "file_id": "ce4050e4c10dffa88c22eec5792703be",
+        "bytes": 46869,
+        "md5": "c71231422e59f695ccc6d7cc0831ad60",
+        "sha256": "e03b61b76352923392a2b5203866bf2104d429e37c92ee4997931b6d2ec0c3c2"
+      }
+    },
+    "phone": {
+      "file_id": "9bb17f1c467bd5fc29f22fdfc1855181",
+      "published_bytes": 641823054,
+      "published_md5": "715ef7a0676a54d18bc79f58f3a66d99",
+      "whole_file_digest_verified": false,
+      "header_sha256": "4979481f3288724db72c3c2015fc5bd4ca26008a76bb3256842d7e1d5ebbf137",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 641822976,
+      "samples": 320911488,
+      "duration_seconds": 40113.936
+    },
+    "record_start": 74996.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1217,
+      "unknown_stage": 1,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 1216
+    },
+    "original_contract_sha256": "d918bef87415a2c8a3dc6a8a8ac640e37cee363ae0008426ed677b351fe7876f",
+    "source_receipts": [
+      {
+        "name": "46_annotation.json",
+        "bytes": 46869,
+        "sha256": "e03b61b76352923392a2b5203866bf2104d429e37c92ee4997931b6d2ec0c3c2"
+      },
+      {
+        "name": "46_sleep_stage.csv",
+        "bytes": 25160,
+        "sha256": "f28da471b39fbf2650806cd98109de58689365c279f665a51d91c7249f1197d9"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4237,
+        "sha256": "c73d610f20cde1d428646a4c6574090dd74195469ebb1196b215dddb4f114e45"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "4979481f3288724db72c3c2015fc5bd4ca26008a76bb3256842d7e1d5ebbf137"
+      }
+    ]
+  },
+  {
+    "subject": "47",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "f50d60a8292cab375b1335d3246d515d0afe3e364da41f039ce499f575acaafd",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "9a2f193e01b51c623303098aa01217c7",
+        "bytes": 18643,
+        "md5": "f9afa79ff29ebbf4a93402699f348ae2",
+        "sha256": "3dd87054e0346f17150e040c29f3cd854a29213a8f94935b2eaa411edbc3b0a9"
+      },
+      "annotation.json": {
+        "file_id": "5be80a7561b5466218bc80057ea57d2c",
+        "bytes": 39533,
+        "md5": "fc449ca9b9b955d5d82f6a12d53f208a",
+        "sha256": "acc4c5879121942c62d162ad0e3cf3eefe324e313417cf4ec6da29c12c393db0"
+      }
+    },
+    "phone": {
+      "file_id": "79ea75b06fbd97be66970bcdaaca085b",
+      "published_bytes": 582003278,
+      "published_md5": "2a9d6a7cad6525a3f061d6cc06878b73",
+      "whole_file_digest_verified": false,
+      "header_sha256": "602facd3997a4c0a1bd91b4e73fa0c560f0c6bfb5c3302af16756b91cc57696d",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 582003200,
+      "samples": 291001600,
+      "duration_seconds": 36375.2
+    },
+    "record_start": 78999.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 907,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 0,
+      "eligible_90s_contexts": 907
+    },
+    "original_contract_sha256": "4aad873f5b6dd4146b6b2651dfd09cb831352068d6dc597d546b8845b784771b",
+    "source_receipts": [
+      {
+        "name": "47_annotation.json",
+        "bytes": 39533,
+        "sha256": "acc4c5879121942c62d162ad0e3cf3eefe324e313417cf4ec6da29c12c393db0"
+      },
+      {
+        "name": "47_sleep_stage.csv",
+        "bytes": 18643,
+        "sha256": "3dd87054e0346f17150e040c29f3cd854a29213a8f94935b2eaa411edbc3b0a9"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4236,
+        "sha256": "f50d60a8292cab375b1335d3246d515d0afe3e364da41f039ce499f575acaafd"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "602facd3997a4c0a1bd91b4e73fa0c560f0c6bfb5c3302af16756b91cc57696d"
+      }
+    ]
+  },
+  {
+    "subject": "48",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "f9881ed522d82fbf3e6fdfd13ac4464018ee930a4bb961931c33363c69965f89",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "08ef26273f4c8ee08bf1b8843d6b743d",
+        "bytes": 20557,
+        "md5": "cc851a3f6e63fea7a3e0d9f57a0d856b",
+        "sha256": "a31928786d5f1f6e29339bbd38b2aab27524752902effc3b876cbb642ee186d7"
+      },
+      "annotation.json": {
+        "file_id": "4778e8f98d6598204984968a6c5f3a65",
+        "bytes": 66271,
+        "md5": "8d24c7bd1ef87116fa4e69706c064e26",
+        "sha256": "614bd7b09850fe4a2b5dcef6978716c381e66da324a7c9c167641c8a70c0ab20"
+      }
+    },
+    "phone": {
+      "file_id": "3efab9f41006f7baf444f733f2892687",
+      "published_bytes": 568812750,
+      "published_md5": "d851a2c083c6f626d02809cbab7606be",
+      "whole_file_digest_verified": false,
+      "header_sha256": "aeb7b34db5358d79d07c916504356174bf4d772ef881002b91b4fde91c0b5192",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 568812672,
+      "samples": 284406336,
+      "duration_seconds": 35550.792
+    },
+    "record_start": 78965.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 997,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 1,
+      "eligible_90s_contexts": 996
+    },
+    "original_contract_sha256": "66f050a5e5b7d9367714ea276da6a61d6eb4926025d5dc3c20c1ac2817ec9248",
+    "source_receipts": [
+      {
+        "name": "48_annotation.json",
+        "bytes": 66271,
+        "sha256": "614bd7b09850fe4a2b5dcef6978716c381e66da324a7c9c167641c8a70c0ab20"
+      },
+      {
+        "name": "48_sleep_stage.csv",
+        "bytes": 20557,
+        "sha256": "a31928786d5f1f6e29339bbd38b2aab27524752902effc3b876cbb642ee186d7"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 4236,
+        "sha256": "f9881ed522d82fbf3e6fdfd13ac4464018ee930a4bb961931c33363c69965f89"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "aeb7b34db5358d79d07c916504356174bf4d772ef881002b91b4fde91c0b5192"
+      }
+    ]
+  },
+  {
+    "subject": "49",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "9e888bb543520a0640d6a2b1a0d1b75364734fcdad390743a8fb6afad104e2d7",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "a9c93c6322cb710abbb38f0452def430",
+        "bytes": 20161,
+        "md5": "c60a7eec38c3c600126ea14fc5c8085a",
+        "sha256": "dd86fa49b1e0c49b1a081983cd8da95918d0e539bac09537bfbcf4ef47a1a48e"
+      },
+      "annotation.json": {
+        "file_id": "8765baba30d0fe8d9998baf45b1655cb",
+        "bytes": 55091,
+        "md5": "eb1597469a311d5c2038b346546c8ee4",
+        "sha256": "1eec0ba57b5e6d3aaa85b0326f496a8dc88d8a018b44e6db009ec572e6f4ac04"
+      }
+    },
+    "phone": {
+      "file_id": "81037c1f8ec1c3d3739d847f4ae69d85",
+      "published_bytes": 605941838,
+      "published_md5": "b949a89bbe0a4b5ea6091c530bad7033",
+      "whole_file_digest_verified": false,
+      "header_sha256": "035a0852164eaccc2fd72bde093f3f2030947abd129c8e31aed33ad62ece8f0a",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 605941760,
+      "samples": 302970880,
+      "duration_seconds": 37871.36
+    },
+    "record_start": 76473.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 980,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 1,
+      "eligible_90s_contexts": 979
+    },
+    "original_contract_sha256": "925a4e35f6110f235d28125edaeddbc5b6446de79ba6a59c084c1628bd219dbb",
+    "source_receipts": [
+      {
+        "name": "49_annotation.json",
+        "bytes": 55091,
+        "sha256": "1eec0ba57b5e6d3aaa85b0326f496a8dc88d8a018b44e6db009ec572e6f4ac04"
+      },
+      {
+        "name": "49_sleep_stage.csv",
+        "bytes": 20161,
+        "sha256": "dd86fa49b1e0c49b1a081983cd8da95918d0e539bac09537bfbcf4ef47a1a48e"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 6366,
+        "sha256": "9e888bb543520a0640d6a2b1a0d1b75364734fcdad390743a8fb6afad104e2d7"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "035a0852164eaccc2fd72bde093f3f2030947abd129c8e31aed33ad62ece8f0a"
+      }
+    ]
+  },
+  {
+    "subject": "50",
+    "dataset": "7b5f1df9c3d4435baa0ff2dbecf487d9",
+    "version": "V5",
+    "inventory_sha256": "fd5ecb053b3f8443c4c2239a78673346b145fb1cfa2eed0528a660217076c85b",
+    "sidecars": {
+      "sleep_stage.csv": {
+        "file_id": "aa7c76436758a32e8e8c8bd8ca1b3106",
+        "bytes": 22204,
+        "md5": "1852639defe962521fb49989be29e3ae",
+        "sha256": "f22bd9eac262d1a8b7031cebb7917f52ab37c74cbfd69895ec5074c86bb1516d"
+      },
+      "annotation.json": {
+        "file_id": "6d382b74bd227c4673cc06eec5dd09d2",
+        "bytes": 90165,
+        "md5": "dc44afa366ea28f7763f9c5ccf6132d7",
+        "sha256": "b2b8cefc75d48d272f4ccfe0ac12998c63aa514ae07086d79ab4a916d2018690"
+      }
+    },
+    "phone": {
+      "file_id": "01e10c2132676ba0a350f6ddf07c9f63",
+      "published_bytes": 625804878,
+      "published_md5": "a0e04347ca1ece45c644f2988b124fbf",
+      "whole_file_digest_verified": false,
+      "header_sha256": "42718ed49d856d447cb09d397db6f64612bf00444b949eb0aea219c9d9091cca",
+      "format": "pcm_s16le",
+      "channels": 1,
+      "sample_rate": 8000,
+      "byte_rate": 16000,
+      "data_offset": 78,
+      "data_bytes": 625804800,
+      "samples": 312902400,
+      "duration_seconds": 39112.8
+    },
+    "record_start": 75044.0,
+    "timebase": "Author-supplied annotation/helper; not independently measured from WAV",
+    "coverage": {
+      "csv_epochs": 1069,
+      "unknown_stage": 0,
+      "outside_90s_pcm_context": 1,
+      "eligible_90s_contexts": 1068
+    },
+    "original_contract_sha256": "11168de358c494207f544d390bdd00e12393ffebb870462746d8349e79188dd1",
+    "source_receipts": [
+      {
+        "name": "50_annotation.json",
+        "bytes": 90165,
+        "sha256": "b2b8cefc75d48d272f4ccfe0ac12998c63aa514ae07086d79ab4a916d2018690"
+      },
+      {
+        "name": "50_sleep_stage.csv",
+        "bytes": 22204,
+        "sha256": "f22bd9eac262d1a8b7031cebb7917f52ab37c74cbfd69895ec5074c86bb1516d"
+      },
+      {
+        "name": "inventory.json",
+        "bytes": 6366,
+        "sha256": "fd5ecb053b3f8443c4c2239a78673346b145fb1cfa2eed0528a660217076c85b"
+      },
+      {
+        "name": "phone-header.bin",
+        "bytes": 4096,
+        "sha256": "42718ed49d856d447cb09d397db6f64612bf00444b949eb0aea219c9d9091cca"
+      }
+    ]
+  }
+]

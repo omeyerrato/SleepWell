@@ -1,0 +1,161 @@
+{
+  "source_commit": "f78fe7cebcb5c5ee743cde90a428aa141a2edf31",
+  "base_app_commit": "3956a2f9879e3fc52bfefabb55cb5bf0dce3aaf7",
+  "dataset_doi": "10.57760/sciencedb.19070",
+  "dataset_version": "V5",
+  "dataset_licence": "CC-BY-4.0",
+  "attribution": "Tao et al., Scientific Data (2025), DOI10.1038/s41597-025-05583-8; source dataset DOI10.57760/sciencedb.19070",
+  "sources": [
+    {
+      "path": "scripts/phone_stage_dataset.py",
+      "bytes": 14249,
+      "sha256": "c858f2c51566848aed2a8f7834eb9d4e66afb34b6e8fe2987944a7578d10dc46"
+    },
+    {
+      "path": "scripts/phone_stage_acoustic.py",
+      "bytes": 14377,
+      "sha256": "cded615f226bf2e886a3625ac8a19ac65fe479201678c0bc4b77af263d48dbe7"
+    },
+    {
+      "path": "scripts/phone_stage_metrics.py",
+      "bytes": 4782,
+      "sha256": "661e6dd5fb2ba23512fb0c5d691ca20aa831eea0f2f6be8250787c5be416a23d"
+    },
+    {
+      "path": "docs/research/2026-10-31-phone-stage-pilot-protocol.json",
+      "bytes": 4503,
+      "sha256": "2d01c1343b9b06ace48c8dedfd1cbe384287b291a7104b1192af80b8eaeabc03"
+    }
+  ],
+  "private_artifacts": [
+    {
+      "path": ".android-local/research/phone-stage-new-20261031/pilot/model.json",
+      "bytes": 1286509,
+      "sha256": "e1af3712022a27cad50eb36b859b4ed4c230551bac3274b3f2a24c6eea18f878",
+      "retained_private": true,
+      "shipped_in_app": false
+    },
+    {
+      "path": ".android-local/research/phone-stage-new-20261031/pilot/primary-fitted-model.pkl",
+      "bytes": 625212,
+      "sha256": "9bfee223cf50cf470726467ec04fec14313774e4298c968946c8e01c86f87514",
+      "retained_private": true,
+      "shipped_in_app": false
+    }
+  ],
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "sklearn": "1.9.1",
+    "cpu_thread_limit": 2,
+    "network_workers": 2
+  },
+  "fit": {
+    "count": 1,
+    "train_windows": 217,
+    "validation_windows": 100,
+    "test_windows": 100,
+    "train_counts": [
+      56,
+      54,
+      56,
+      51
+    ],
+    "natural_train_counts": [
+      4962,
+      3221,
+      15950,
+      1951
+    ],
+    "primary_portable_max_probability_difference_train_validation": 2.220446049250313e-16,
+    "test_evaluations": 1
+  },
+  "traffic": {
+    "accounted_upper_bound": 644877909,
+    "hard_cap": 650000000,
+    "pcm_ranges": 417,
+    "retained_pcm_bytes": 600480000,
+    "complete_wav_downloaded": false,
+    "baseline_note": "40MB conservative prior-traffic upper bound, not a measured download; failed body requests retain their complete reservation. One bounded TEST resume after timeout; no further network."
+  },
+  "artifacts": [
+    {
+      "name": ".gitattributes",
+      "bytes": 29,
+      "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d"
+    },
+    {
+      "name": "crop-plan.json",
+      "bytes": 102757,
+      "sha256": "d3d134e99a02c6a00c4786530427e9ea61ee4927f001e4c2395ae8a82c9d8992"
+    },
+    {
+      "name": "fit-started.json",
+      "bytes": 238,
+      "sha256": "6bde1082483f0ca958d66d16fa8939a070ea307ac293a1f0a7e68974774f30df"
+    },
+    {
+      "name": "range-receipts.json",
+      "bytes": 212907,
+      "sha256": "671b2d326ff82518e9f00b22a3127b757e3a9aa019e9517fe51af6dea2ae3f0f"
+    },
+    {
+      "name": "README.md",
+      "bytes": 6685,
+      "sha256": "5c83d043949bcfb3d2dc8c4537484246c55d82d5ecc074ec329d8178272e773d"
+    },
+    {
+      "name": "subject-sources.json",
+      "bytes": 116168,
+      "sha256": "4b1cf55c181d01d8fa5c2c537687887ebc5bce9b754c8417ede4c898fd090bc3"
+    },
+    {
+      "name": "test-crop-plan.json",
+      "bytes": 32251,
+      "sha256": "9be66861077679cfa847423b900b59a12633ef18fe2354eea3141e8603b67ac6"
+    },
+    {
+      "name": "test-metrics.json",
+      "bytes": 23278,
+      "sha256": "1bb3d9aac3a00d43abb16542af0693d16eb69eb3f12b5cca6af9723519c1081e"
+    },
+    {
+      "name": "test-opened.json",
+      "bytes": 184,
+      "sha256": "b788487d4e9c89b51484728ebab49130f55e7b2ccd0a3ed81a49703b752208be"
+    },
+    {
+      "name": "test.json",
+      "bytes": 71774,
+      "sha256": "09db1d2566cd843975fd2b640cb2135ebaaf0ca2c683678373dc3e094de81e03"
+    },
+    {
+      "name": "traffic-ledger.json",
+      "bytes": 236,
+      "sha256": "f7dda1be9675cc21fd33b1b502d72c5d7c825803031b0963b8b809eb7255b362"
+    },
+    {
+      "name": "train-inputs.json",
+      "bytes": 120370,
+      "sha256": "5fe6d0898d4cf728672493215f58c8e529147741fc00b23a00c2c432ee4e26cf"
+    },
+    {
+      "name": "validation-metrics.json",
+      "bytes": 23234,
+      "sha256": "d95e8ecdb940e1b8fb707eec315eb7880de7d763f5f9b073a6fe7f029da8b959"
+    },
+    {
+      "name": "validation.json",
+      "bytes": 72211,
+      "sha256": "377aebee155ce6b5e6c30522207c1ede02c0f54aa979abfc32d8b0237931068d"
+    }
+  ],
+  "later_budget_approval": {
+    "source": "Parent relay of explicit user authorization during this study",
+    "hard_total_bytes": 650000000,
+    "initial_protocol_budget_preserved": true,
+    "approval_before_expanded_train_validation_test_acquisition": true
+  },
+  "decision": "Rejected for Android staging; F049 remains Missing"
+}

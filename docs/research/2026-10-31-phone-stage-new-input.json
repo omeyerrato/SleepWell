@@ -90,5 +90,39 @@
     "account_created_or_author_contacted": false,
     "existing_models_or_raw_records_modified": false,
     "clinical_certification_required": false
+  },
+  "original_acoustic_pilot_followup": {
+    "date": "2026-10-31",
+    "record": "2026-10-31-acoustic-pilot/README.md",
+    "manifest": "2026-10-31-acoustic-pilot/manifest.json",
+    "public_dataset_access": "resolved; anonymous public file-tree and bounded 206 downloads succeeded",
+    "fit": "one fixed original 243-feature RF128 fit, TRAIN01-30 (28 supported phone subjects), validation31-40, frozen TEST41-50 once",
+    "actual_sampled_inputs": {
+      "train": 217,
+      "validation": 100,
+      "test": 100,
+      "usable_all_selected": true
+    },
+    "held_out_test": {
+      "accuracy": 0.34,
+      "natural_train_majority_accuracy": 0.67,
+      "macro_f1": 0.2840563691627521,
+      "balanced_accuracy": 0.5309322950465066,
+      "source_counts_Wake_REM_Light_Deep": [
+        23,
+        9,
+        67,
+        1
+      ],
+      "multiclass_brier_sum": 0.7240144115293725,
+      "constant_natural_train_prior_brier_sum": 0.5003253369124103
+    },
+    "decision": "Reject this fitted prototype for Android staging despite the modest predeclared gate passing. Overall and probability errors are worse than the natural-TRAIN baselines; Deep evaluation is inadequate (validation2/test1). F049 remains Missing.",
+    "traffic_accounted_upper_bound_bytes": 644877909,
+    "later_user_authorized_hard_total_cap_bytes": 650000000,
+    "historical_budget_and_access_records_preserved": true,
+    "no_further_fit_network_or_test_retuning": true,
+    "android_predictions_shipped": false,
+    "remaining_gate": "A different frozen trained ambient-phone method must show useful participant-held-out discrimination and probability behavior with adequate class support on fresh evaluation subjects; preserve real capture timing/gaps. No access or clinical-certification gate is asserted."
   }
 }

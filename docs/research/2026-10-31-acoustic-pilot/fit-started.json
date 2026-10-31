@@ -1,0 +1,6 @@
+{
+  "protocol_sha256": "2d01c1343b9b06ace48c8dedfd1cbe384287b291a7104b1192af80b8eaeabc03",
+  "source_sha256": "cded615f226bf2e886a3625ac8a19ac65fe479201678c0bc4b77af263d48dbe7",
+  "train_windows": 217,
+  "validation_windows": 100
+}

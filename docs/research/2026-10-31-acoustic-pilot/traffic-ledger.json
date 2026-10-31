@@ -1,0 +1,6 @@
+{
+  "hard_cap": 650000000,
+  "baseline_upper_bound": 40000000,
+  "reserved_bytes": 604877909,
+  "baseline_note": "Conservative upper bound for all earlier source/metadata/header/preflight traffic; not a measured audio download"
+}
