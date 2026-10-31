@@ -3,7 +3,7 @@
   "reviewed": "2026-10-31",
   "feature": "F049",
   "status": "missing; no demonstrated decoder fix",
-  "scope": "Source-contract audit only, not a model replay or clinical/independent accuracy evaluation",
+  "scope": "Source and surviving private artifact audit; no new model replay or clinical/independent accuracy evaluation",
   "sleepwell_revision": "05f005a1eb3d339d46b74d7bd4b3e6323bf78807",
   "upstream": {
     "repository": "https://github.com/devangk003/Nidra",
@@ -51,12 +51,36 @@
         "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/models/temporal/model_config.json",
         "bytes": 88,
         "sha256": "beb9140a7364e8509f67ebc51567e9b80c99d62d3c5dba6a2e89f03f06325fa7"
+      },
+      {
+        "path": "scripts/test_trained_model.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/test_trained_model.py",
+        "bytes": 23910,
+        "sha256": "9efbb9aa224a1a5c867eff31bd88de5e2baef1e143106a6d9b63ed32b0284f52"
+      },
+      {
+        "path": "scripts/Check_compile_model.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/Check_compile_model.py",
+        "bytes": 9117,
+        "sha256": "47a1e66d79a987617b08b3600cbf32af36421ad802f28f217db712a90bbcfb17"
+      },
+      {
+        "path": "scripts/Step4_fine_tune.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/Step4_fine_tune.py",
+        "bytes": 4621,
+        "sha256": "6f8e22160e970aaeee23152f11bf644552b6b33541e0aa05b18d9e5ad9a15997"
+      },
+      {
+        "path": "README.md",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/README.md",
+        "bytes": 8019,
+        "sha256": "5a508452df3d479ad3d75f92fa569b3b919519d5011eec0e8663171a65b2a584"
       }
     ],
     "checkpoint": {
       "path": "final_model_weights.h5",
       "sha256": "affbc5445f40d31c2109a4118f34f7fee177a4249bf403da0de10d8dfe2be873",
-      "identity_source": "Prior pinned manifest docs/verification/2026-10-26-stage-feasibility/manifest.json; not re-downloaded or re-hashed in this audit"
+      "identity_source": "Existing private checkpoint re-hashed in this follow-up; matches prior pinned manifest"
     }
   },
   "findings": [
@@ -64,18 +88,18 @@
       "id": "upstream_example_temporal_mismatch",
       "source_lines": {
         "scripts/Step1_convert_audio_to_mel_and_label.py": [
-          50,
-          68
+          55,
+          75
         ],
         "scripts/Step2_train_modelCNN_BiLSTM.py": [
-          280,
-          305,
-          490,
-          524
+          293,
+          318,
+          508,
+          542
         ],
         "scripts/Step3_Use_Model.py": [
-          154,
-          164
+          174,
+          182
         ]
       },
       "producer_shape": [
@@ -192,5 +216,191 @@
     "sensors_mic_speaker_or_alarms_used": false,
     "raw_records_modified": false,
     "global_checklists_modified": false
+  },
+  "artifact_followup": {
+    "existing_artifacts_located": true,
+    "existing_artifacts_modified": false,
+    "private_artifacts": [
+      {
+        "name": "final_model_weights.h5",
+        "bytes": 22418608,
+        "sha256": "affbc5445f40d31c2109a4118f34f7fee177a4249bf403da0de10d8dfe2be873"
+      },
+      {
+        "name": "nidra-faithful-full.tflite",
+        "bytes": 21970108,
+        "sha256": "1a3d8d639cebd8b666169a019b935df7cbed71911e18b5f2b09345ebb7c29369"
+      },
+      {
+        "name": "nidra-faithful-encoder.tflite",
+        "bytes": 16022952,
+        "sha256": "06a2b04663c7a765c18dc917a20181bd591f1f03c407d1e295bb5de95a3671c7"
+      },
+      {
+        "name": "nidra-faithful-head.tflite",
+        "bytes": 5958012,
+        "sha256": "4aa9b09c9e0e1a72f3b947cd9c095ebbb192c25e7a8c84789607104d1dab883e"
+      },
+      {
+        "name": "replay_real_audio.py",
+        "bytes": 3982,
+        "sha256": "54d358731825a56229c079d95e9d2a3e45996ebe5f90a01b175a2dbd830c3220"
+      },
+      {
+        "name": "replay_later_audio.py",
+        "bytes": 4098,
+        "sha256": "0862b8392d8ecbcde4b209a283860ad2bc70aca32422c13bd4badc4bdce68180"
+      },
+      {
+        "name": "convert_faithful.py",
+        "bytes": 4972,
+        "sha256": "cf3f2b21973ef273a61464eb571db11ab8c01e7504839a9479c7d6da5b0fac47"
+      },
+      {
+        "name": "real-replay-result.json",
+        "bytes": 4989,
+        "sha256": "28365ecf3496358b1063f27ea91b9c3ba856ede7a24f70697e2058640b02eab2"
+      },
+      {
+        "name": "later-real-replay-result.json",
+        "bytes": 6912,
+        "sha256": "24ff9171cc48e7513b67e6b12208eac8b2d01747b0e71ab74a6f583034978519"
+      },
+      {
+        "name": "psg-audio-original-jsonld.json",
+        "bytes": 6265,
+        "sha256": "7dce5f82292163fd5657b7aaba947afd42004c4261ce717f757444f7fbb86941"
+      },
+      {
+        "name": "psg-mirror-file-metadata.json",
+        "bytes": 94665,
+        "sha256": "b74aefcda98298501f978beaec533b0875f2cd428af0b5930e4a1ef2c071ff22"
+      }
+    ],
+    "repository_tree": {
+      "request": "https://api.github.com/repos/devangk003/Nidra/git/trees/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7?recursive=1",
+      "tree_sha": "2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7",
+      "truncated": false,
+      "data_file_suffixes_checked": [
+        "wav",
+        "edf",
+        "rml",
+        "npy",
+        "npz",
+        "flac",
+        "mp3"
+      ],
+      "matching_files": 0
+    },
+    "published_reference": {
+      "subject": "00000995-100507",
+      "files": [
+        {
+          "path": "exports/hypnogram/00000995-100507_ambient_hypnogram.png",
+          "url": "https://github.com/devangk003/Nidra/blob/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/exports/hypnogram/00000995-100507_ambient_hypnogram.png",
+          "git_blob": "564727f17f10b2818b2dd4351213b2a277b0e249",
+          "bytes": 86324,
+          "sha256": "0bfa3dbd5d7c61579e545b507cb73735855da14e0b46c4021349eb981a7f6f39",
+          "inspection": "Image visually inspected; not generated by this audit"
+        },
+        {
+          "path": "exports/hypnogram/00000995-100507_ambient_confusion.png",
+          "url": "https://github.com/devangk003/Nidra/blob/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/exports/hypnogram/00000995-100507_ambient_confusion.png",
+          "git_blob": "d95ba475ddab97640e32975fe9924e8fa1a25e2f",
+          "bytes": 61508,
+          "sha256": "2e2dc9ef0db8bd70b513b437daae22bfa0b5801d36fcca2114b5e3667d8086c9",
+          "inspection": "Image visually inspected; not generated by this audit"
+        }
+      ],
+      "confusion_matrix_class_order": [
+        "Wake",
+        "REM",
+        "Light",
+        "Deep"
+      ],
+      "confusion_matrix": [
+        [
+          3,
+          0,
+          99,
+          0
+        ],
+        [
+          0,
+          0,
+          134,
+          0
+        ],
+        [
+          3,
+          0,
+          2165,
+          0
+        ],
+        [
+          0,
+          0,
+          91,
+          0
+        ]
+      ],
+      "total_labels": 2495,
+      "predicted_light": 2489,
+      "predicted_wake": 6,
+      "predicted_rem": 0,
+      "predicted_deep": 0,
+      "correct_predictions": 2168,
+      "true_light_labels": 2168,
+      "reported_accuracy": 0.8689,
+      "all_light_baseline": 0.868937875751503,
+      "exact_generating_weight_hash_known": false,
+      "interpretation": "Constant Light interior; displayed accuracy equals all-Light majority baseline. Six endpoint Wake predictions are consistent with source zero padding, not evidence of wake detection.",
+      "test_script_contract": {
+        "path": "scripts/test_trained_model.py",
+        "per_slice_normalization_lines": [
+          430,
+          440
+        ],
+        "zero_padding_lines": [
+          461,
+          467
+        ],
+        "argmax_line": 253,
+        "training_data_evaluation_lines": [
+          519,
+          529
+        ],
+        "graph": "weights=None at lines123-128; differs from primary ImageNet training branch used by faithful conversion"
+      }
+    },
+    "reference_data": {
+      "original_doi": "https://doi.org/10.11922/sciencedb.00345",
+      "licence": "CC-BY-4.0 in existing original dataset metadata",
+      "mirror_revision": "f1e8c79f27d5d2c1716c24dea4252840eda5c406",
+      "mirror_is_licence_authority": false,
+      "plotted_subject_in_cached_edf_inventory": false,
+      "available_prior_replay_subject": "00001016-100507",
+      "prior_subject_edf_parts": [
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B001%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B002%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B003%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B004%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B005%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B006%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B007%5D.edf"
+      ],
+      "full_record_local": false,
+      "original_full_record_clipping_context_local": false,
+      "remaining_data_prerequisite": "Complete ordered ambient Mic recording and expert UserStaging with sample/clock provenance, or exact complete-record unclipped Mel features and global clipping reference; current six excerpts cannot supply that context",
+      "full_record_context_correction_tested": false
+    },
+    "alternative_checkpoint": {
+      "path": "models/temporal_checkpoints/best_model_weights.h5",
+      "git_blob": "f37e2dfa436e1d755529d4fe7196361031cd7127",
+      "bytes": 22418608,
+      "downloaded": false,
+      "discriminative_reference_obtained": false
+    },
+    "conclusion": "No genuinely untried demonstrated decoder fix was found. Full original-record preprocessing remains a coherent untried input correction, but the author example provides no discriminative reference to justify shipping or speculative capture scaffolding."
   }
 }
