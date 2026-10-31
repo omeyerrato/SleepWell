@@ -42,6 +42,7 @@ on:
           - privacy-recovery
           - privacy-audio-reference
           - data-recovery-reference
+          - completion-reference
           - setup-readiness
           - readiness-recovery
           - protection-recovery

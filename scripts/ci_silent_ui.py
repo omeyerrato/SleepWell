@@ -54,6 +54,7 @@ parser.add_argument("--scope", choices=(
     'privacy-recovery',
     'privacy-audio-reference',
     'data-recovery-reference',
+    'completion-reference',
     'setup-readiness',
     'readiness-recovery',
     'protection-recovery',
@@ -161,10 +162,13 @@ DATA_RECOVERY_REFERENCE_FRAMES += ["backup-document-" + name + ".png" for name i
     "review", "confirmation", "confirmation-recreated", "review-recreated", "review-reopened",
     "restoring", "restoring-recreated", "restored", "result-reopened")]
 DATA_RECOVERY_REFERENCE_FRAMES += RECORDED_ANALYSIS_FRAMES
+REPORT_STATE_PLAN = json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial/REPORT-STATE-NATIVE-PLAN.json").read_text(encoding="utf-8"))
+COMPLETION_REFERENCE_FRAMES = DATA_RECOVERY_REFERENCE_FRAMES + [name for method in REPORT_STATE_PLAN["methods"] for name in method["required_originals"]]
 ROUTINE_FRAMES = ["routine-" + name + ".png" for name in ("legacy", "ordered", "reordered", "recreated", "removed", "reopened")]
 EVENT_LIBRARY_FRAMES = ["library-"+name+".png" for name in ("recordings","playback","favorite-recreated","speech","recording-deleted","options","options-recreated","analysis-details","analysis-details-recreated")]
 GOAL_PLAN_FRAMES = ['goal-plan.png', 'goal-options.png', 'goal-options-recreated.png', 'goal-options-winddown-recreated.png', 'goal-options-updated.png', 'goal-tonight.png', 'goal-saved-plan.png', 'goal-empty-bank.png', 'goal-create.png', 'goal-bank.png', 'goal-reopened-bank.png', 'goal-bank-details.png', 'goal-stopped.png', 'goal-trends.png']
 INTERACTION_SECURITY_FRAMES = ["calendar-rules-permission-"+name+".png" for name in ("settings","granted-draft","revoked-draft")]
+COMPLETION_REFERENCE_FRAMES += INTERACTION_SECURITY_FRAMES
 ROOM_SETTINGS_SEARCH_FRAMES = [
     "search-empty.png",
     "search-room.png",
@@ -491,6 +495,15 @@ elif args.scope == "data-recovery-reference":
     ]
     metadata["data_recovery_slice"] = "full private history erase/retry and backup replacement/recreation; recording-only shortcut disabled; no alarms or audio output"
     metadata["recorded_analysis_slice"] = "existing licensed lifecycle fixture plus AAC copy; no frozen evaluation inputs or accuracy acceptance"
+elif args.scope == "completion-reference":
+    tests = [method["method"].removeprefix("org.sleepwell.app.") for method in REPORT_STATE_PLAN["methods"]] + [
+        "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+        "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen",
+        "RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary",
+        "InteractionSecurityNativeTest",
+        "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft",
+    ]
+    metadata["completion_slice"] = "changed Report/calendar, exact source review, data confirmations, obscured-touch and permission-return flows; not full app acceptance"
 elif args.scope == "setup-readiness":
     tests = ["OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs", "AlarmProtectionFlowTest#compactListAndGlobalProtectionsPersistWithoutAlarmExecution"]
 elif args.scope == "readiness-recovery":
@@ -600,7 +613,7 @@ for test in tests:
     extra = []
     if args.scope == "privacy-audio-reference":
         extra += ["-e", "ciAudioClearReference", "true"]
-    if args.scope == "data-recovery-reference" and test.startswith("PrivacyHistoryFlowTest#"):
+    if args.scope in ("data-recovery-reference", "completion-reference") and test.startswith("PrivacyHistoryFlowTest#"):
         extra += ["-e", "ciAudioClearReference", "false"]
     if args.scope == "motion-reference":
         extra += ["-e", "motionSlice", "reference"]
@@ -693,6 +706,7 @@ if args.scope != "full":
         "privacy-audio-reference": ["privacy-recordings-"+name+".png" for name in ("confirmation","favorites-included","review-error","removing","removing-recreated","pending","retry","done","reopened")],
         "privacy-recovery": ["privacy-history-"+name+".png" for name in ("ready","error","busy","pending","done")],
         "data-recovery-reference": DATA_RECOVERY_REFERENCE_FRAMES,
+        "completion-reference": COMPLETION_REFERENCE_FRAMES,
         "reference-menus": REFERENCE_MENU_FRAMES,
         "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,
         "priority-repair": PRIORITY_REPAIR_FRAMES,
