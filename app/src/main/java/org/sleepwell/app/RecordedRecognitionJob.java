@@ -39,11 +39,29 @@ final class RecordedRecognitionJob implements AutoCloseable {
     void selected(Uri uri){if(closed||phase!=Phase.CHOOSING)return;if(uri==null||!"content".equals(uri.getScheme())){choiceCancelled("Choose one document from the file picker.");return;}prepare(uri,0);}
     void retained(){retained(clip);}
     void retained(long chosenClip){if(record<=0||chosenClip<=0||busy())return;prepare(null,chosenClip);}
+    static boolean retainedSource(RecordedRecognitionStore.Entry entry){return entry!=null&&"saved_clip".equals(entry.source.optString("kind"))&&entry.source.optLong("record")>0&&entry.source.optLong("clip")>0;}
+    /** A saved summary never grants new analysis: prepare its exact source for another explicit review. */
+    void prepareSavedSource(RecordedRecognitionStore.Entry selected){if(closed||invalidated||busy()||selected!=result||!retainedSource(selected))return;prepare(null,0,selected.source);}
+    /** Read-only handoff to the existing event/label owner; no estimate is copied into the live ledger. */
+    void reviewSourceEvents(RecordedRecognitionStore.Entry selected,Runnable verified){
+        if(closed||invalidated||busy()||selected!=result||!retainedSource(selected)||verified==null)return;
+        int token=++generation;cancelled=false;phase=Phase.READING;progress="Checking the original saved recording…";message="";notifyNow();
+        worker.execute(()->{RecordedRecognitionInput checked=null;try{
+            allowed();JSONObject s=selected.source;long deadline=SystemClock.elapsedRealtime()+30000;
+            checked=RecordedRecognitionInput.retained(app,factory,s.getLong("record"),s.getLong("clip"),s.getLong("event"),s.getLong("updated"),s,()->live(token)&&!occupied()&&SystemClock.elapsedRealtime()<deadline);
+            RecordedRecognitionInput.check(()->live(token)&&SystemClock.elapsedRealtime()<deadline);allowed();
+            publish(token,()->{phase=Phase.RESULT;progress="";verified.run();});
+        }catch(Exception|LinkageError error){failure(token,error);}finally{if(checked!=null)checked.erase();}});
+    }
     private void prepare(Uri uri,long retainedClip){
+        prepare(uri,retainedClip,null);
+    }
+    private void prepare(Uri uri,long retainedClip,JSONObject expectedSource){
         if(closed||invalidated)return;if(occupied()){phase=Phase.ERROR;message="End tracking or the active alarm first.";notifyNow();return;}int token=++generation;cancelled=false;phase=Phase.READING;message="";progress="Preparing a private audio copy…";result=null;RecordedRecognitionInput prior=input;input=null;notifyNow();
         worker.execute(()->{if(prior!=null)prior.erase();RecordedRecognitionInput copy=null;CancellationSignal request=new CancellationSignal();signal=request;ScheduledFuture<?> timeout=DEADLINES.schedule(()->{if(live(token)){request.cancel();closeStream();}},30,TimeUnit.SECONDS);long deadline=SystemClock.elapsedRealtime()+30000;
             try{allowed();try(RecordedRecognitionStore store=new RecordedRecognitionStore(app)){long expected=store.revision();
-                if(retainedClip>0)copy=RecordedRecognitionInput.retained(app,factory,record,retainedClip,event,updated,null,()->live(token)&&SystemClock.elapsedRealtime()<deadline);
+                if(expectedSource!=null)copy=RecordedRecognitionInput.retained(app,factory,expectedSource.getLong("record"),expectedSource.getLong("clip"),expectedSource.getLong("event"),expectedSource.getLong("updated"),expectedSource,()->live(token)&&SystemClock.elapsedRealtime()<deadline);
+                else if(retainedClip>0)copy=RecordedRecognitionInput.retained(app,factory,record,retainedClip,event,updated,null,()->live(token)&&SystemClock.elapsedRealtime()<deadline);
                 else{android.os.ParcelFileDescriptor descriptor=app.getContentResolver().openFileDescriptor(uri,"r",request);if(descriptor==null)throw new IOException("This document could not be opened.");byte[] bytes;try(InputStream opened=new android.os.ParcelFileDescriptor.AutoCloseInputStream(descriptor)){stream=opened;bytes=RecordedRecognitionInput.copySelected(opened,()->live(token)&&SystemClock.elapsedRealtime()<deadline);}finally{stream=null;}
                     try{copy=RecordedRecognitionInput.selected(bytes,()->live(token)&&SystemClock.elapsedRealtime()<deadline);}finally{Arrays.fill(bytes,(byte)0);}}
                 allowed();RecordedRecognitionInput completed=copy;if(!live(token)){completed.erase();return;}main.post(()->{if(!live(token)){completed.erase();return;}input=completed;revision=expected;phase=Phase.READY;message="Review this copy, then explicitly start analysis.";progress="";notifyNow();});copy=null;

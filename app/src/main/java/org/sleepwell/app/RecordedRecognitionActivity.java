@@ -129,6 +129,17 @@ public final class RecordedRecognitionActivity extends Activity implements Recor
         try{Design.space(body,14);Design.text(body,"Model version",13,600,Design.INK);Design.text(body,entry.result.getString("modelVersion"),12,400,Design.MUTED).setTextIsSelectable(true);Design.space(body,12);Design.text(body,"Analyzed "+RecordUi.duration(entry.result.getLong("analyzedMs"))+" · omitted "+RecordUi.duration(entry.result.getLong("omittedMs")),13,500,Design.INK);Design.space(body,12);windows(body,entry.result,true);}
         catch(JSONException invalid){Design.text(body,"This saved result is unreadable. You can delete the summary and analyze the source again.",14,500,Design.BROWN);}
         navigation(body,"file","Source info","Provenance and file fingerprints",this::sourceInfo);navigation(body,"info","About analysis","Limitations and model credits",()->go(Page.ABOUT));
+        if(RecordedRecognitionJob.retainedSource(entry)){
+            RecordUi.heading(body,"Original recording");
+            RecordUi.enabled(Design.button(body,"Prepare saved source again",true,()->{go(Page.MAIN);job.prepareSavedSource(entry);}),!job.busy());
+            RecordUi.enabled(RecordUi.quietButton(body,"Open source sound events",()->job.reviewSourceEvents(entry,()->{
+                if(!isFinishing()&&!isDestroyed()&&hasWindowFocus()&&page==Page.DETAILS&&job.result==entry)
+                    startActivity(RecordUi.intent(this,SoundEventsActivity.class).putExtra("record",entry.source.optLong("record")));
+            })),!job.busy());
+            Design.text(body,"The saved source is checked again before either action. Opening sound events is silent; tap an event there to review your label. These experimental scores never change that label.",12,400,Design.MUTED);
+        }else{
+            Design.space(body,12);Design.text(body,"To analyze a selected file again, choose it from Sources. Document access and an audio copy are not retained with this summary.",12,400,Design.MUTED);
+        }
         Design.space(body,10);RecordUi.enabled(RecordUi.quietButton(body,"Delete this analysis",()->{go(Page.SAVED);job.delete(entry);}),!job.busy());Design.text(body,"Deletes only this summary. Original audio stays unchanged.",12,400,Design.MUTED);
     }
     private JSONObject currentSource(){if(job.input!=null)try{return job.input.provenance();}catch(JSONException unavailable){return job.input.source;}return job.result!=null?job.result.source:null;}

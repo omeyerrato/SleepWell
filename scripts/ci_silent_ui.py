@@ -149,7 +149,7 @@ ROOM_BEDTIME_LIVE_FRAMES = ORGANIZED_SETTINGS_FRAMES + ["guard-"+name+".png" for
 ROOM_BEDTIME_LIVE_FRAMES += ["motion-settings-"+name+".png" for name in ("ready","changed","recreated","reopened","conflict","unavailable","error")]
 ROOM_BEDTIME_LIVE_FRAMES += ["room-conditions-"+name+".png" for name in ("default","microphone-access","measuring","recreated","dimming-saved","reopened","microphone-error","unavailable","cleanup-blocked","cleaned")]
 ROOM_BEDTIME_LIVE_FRAMES += ["sonar-night-"+name+".png" for name in ("setup","measuring","paused","options","options-recreated","paused-recreated","resumed","missing","stop-confirmation")]
-RECORDED_ANALYSIS_FRAMES = ["recorded-analysis-" + name + ".png" for name in ("prepared", "result", "details", "import-prepared", "import-result")]
+RECORDED_ANALYSIS_FRAMES = ["recorded-analysis-" + name + ".png" for name in ("prepared", "result", "details", "source-prepared-again", "source-events", "import-prepared", "import-result")]
 # Full retained history cleanup and backup replacement, including native confirmation recreation.
 # The recorded-analysis journey is lifecycle evidence on its existing licensed fixture,
 # never the frozen FSD50K evaluation or an accuracy acceptance/threshold selection run.

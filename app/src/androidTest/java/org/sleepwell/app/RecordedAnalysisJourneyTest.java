@@ -134,8 +134,8 @@ public final class RecordedAnalysisJourneyTest {
     }
     private File folder() { File dir = new File(c.getExternalFilesDir(null), "verification"); assertTrue(dir.isDirectory() || dir.mkdirs()); return dir; }
     private void capture(String name, String visible) throws Exception {
-        // Three original saved-WAV frames plus two frames for the genuinely new resolver-import flow.
-        assertTrue("At most five real captures", frames < 5); step = "capture " + name; expose(visible); frame();
+        // Three original saved-WAV, two explicit source-review and two resolver-import frames.
+        assertTrue("At most seven real captures", frames < 7); step = "capture " + name; expose(visible); frame();
         assertTrue(device.takeScreenshot(new File(folder(), "recorded-analysis-" + name + ".png"))); frames++;
     }
     private RecordedRecognitionJob job(Activity a) throws Exception {
@@ -143,6 +143,7 @@ public final class RecordedAnalysisJourneyTest {
         return (RecordedRecognitionJob) field.get(a);
     }
     private void drain(Activity a) throws Exception {
+        if(a instanceof SoundEventsActivity events){i.runOnMainSync(()->assertTrue(a.isDestroyed()));assertTrue("Source event reader and inert playback worker terminate",events.awaitReaders(20000));return;}
         // The platform marks Activity destroyed before its onDestroy callback has finished.
         // Fence that main-thread callback, then require actual shutdown and termination.
         Field field = RecordedRecognitionJob.class.getDeclaredField("worker"); field.setAccessible(true);
@@ -237,7 +238,7 @@ public final class RecordedAnalysisJourneyTest {
         try (Store store = new Store(c, database)) { sourceBefore = List.of(store.rows("SELECT * FROM sessions").toString(), store.rows("SELECT * FROM clips").toString(), store.rows("SELECT * FROM sound_events").toString()); }
         Application app = (Application) c.getApplicationContext();
         Application.ActivityLifecycleCallbacks observer = new Application.ActivityLifecycleCallbacks() {
-            public void onActivityCreated(Activity a, Bundle state) { owned.add(a); assertTrue("Only inert recorded-analysis window", a instanceof RecordedRecognitionActivity);
+            public void onActivityCreated(Activity a, Bundle state) { owned.add(a); assertTrue("Only recorded analysis or its explicitly requested source-event window", a instanceof RecordedRecognitionActivity||a instanceof SoundEventsActivity);
                 assertTrue(a.getIntent().getBooleanExtra("visualReview", false)); }
             public void onActivityStarted(Activity a) {} public void onActivityResumed(Activity a) {} public void onActivityPaused(Activity a) {}
             public void onActivityStopped(Activity a) {} public void onActivitySaveInstanceState(Activity a, Bundle state) {} public void onActivityDestroyed(Activity a) {}
@@ -285,7 +286,7 @@ public final class RecordedAnalysisJourneyTest {
             // Functional execution is independent of accuracy. No candidate label is required to pass.
             require("Sound estimates"); capture("result", "Sound estimates"); click("Result details"); require("Model version"); require(MODEL);
             assertTrue(device.pressBack()); require("Sound estimates"); finish();
-            launch(record, updated); click("Saved results"); require(RecordUi.date(saved.created, java.time.ZoneId.systemDefault())); click(RecordUi.date(saved.created, java.time.ZoneId.systemDefault()));
+            launch(0, -1); click("Saved results"); require(RecordUi.date(saved.created, java.time.ZoneId.systemDefault())); click(RecordUi.date(saved.created, java.time.ZoneId.systemDefault()));
             step = "reopen verified saved result";
             String expectedSavedId = savedId;
             await(8000, () -> { boolean[] done = {false}; i.runOnMainSync(() -> {
@@ -297,11 +298,34 @@ public final class RecordedAnalysisJourneyTest {
             try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) { RecordedRecognitionStore.Entry reopened = store.entries().get(0);
                 assertEquals(savedId, reopened.id); assertEquals(saved.source.toString(), reopened.source.toString()); assertEquals(saved.result.toString(), reopened.result.toString()); }
             click("Result details"); require("Model version"); require(MODEL); capture("details", "Model version");
+            step="explicit source preparation from the global saved-result list, without another inference";
+            click("Prepare saved source again");require("Analyze this copy");
+            RecordedRecognitionInput[] preparedAgain={null};i.runOnMainSync(()->{try{RecordedRecognitionJob current=job(activity);assertEquals(RecordedRecognitionJob.Phase.READY,current.phase);preparedAgain[0]=current.input;assertNotNull(preparedAgain[0]);assertEquals(PCM_SHA,preparedAgain[0].hash);assertEquals(wavHash,preparedAgain[0].wavHash);assertEquals(record,preparedAgain[0].source.optLong("record"));assertEquals(clip,preparedAgain[0].source.optLong("clip"));assertNull(current.result);}catch(Exception failure){throw new AssertionError(failure);}});
+            capture("source-prepared-again","Analyze this copy");click("Discard copy");
+            Field idleWorker=RecordedRecognitionJob.class.getDeclaredField("worker");idleWorker.setAccessible(true);((ExecutorService)idleWorker.get(job(activity))).submit(()->{}).get(8,TimeUnit.SECONDS);
+            for(short sample:preparedAgain[0].pcm)assertEquals("Discard erases the newly prepared private PCM",0,sample);
+            try(RecordedRecognitionStore store=new RecordedRecognitionStore(c)){assertEquals(1,store.entries().size());assertEquals(saved.id,store.entries().get(0).id);assertEquals(saved.result.toString(),store.entries().get(0).result.toString());}
+            click("Saved results");click(RecordUi.date(saved.created,java.time.ZoneId.systemDefault()));require("Sound estimates");click("Result details");
+            step="changed source PCM rejects preparation without replacing the old summary";
+            byte[] changedWave=wave.clone();changedWave[44]^=1;Files.write(audio.toPath(),changedWave);
+            try{click("Prepare saved source again");await(8000,()->{boolean[] rejected={false};i.runOnMainSync(()->{try{RecordedRecognitionJob current=job(activity);rejected[0]=current.phase==RecordedRecognitionJob.Phase.ERROR&&current.message.contains("saved recording or effective period changed");assertNull(current.input);}catch(Exception failure){throw new AssertionError(failure);}});return rejected[0];});}
+            finally{Files.write(audio.toPath(),wave);}
+            try(RecordedRecognitionStore store=new RecordedRecognitionStore(c)){assertEquals(1,store.entries().size());assertEquals(saved.result.toString(),store.entries().get(0).result.toString());}
+            click("Saved results");click(RecordUi.date(saved.created,java.time.ZoneId.systemDefault()));require("Sound estimates");click("Result details");
+            step="explicit read-only source sound-event handoff and Back";
+            Instrumentation.ActivityMonitor eventsMonitor=i.addMonitor(SoundEventsActivity.class.getName(),null,false);SoundEventsActivity events;
+            try{click("Open source sound events");events=(SoundEventsActivity)eventsMonitor.waitForActivityWithTimeout(8000);assertNotNull(events);}finally{i.removeMonitor(eventsMonitor);}
+            assertEquals(record,events.getIntent().getLongExtra("record",0));
+            Field currentRecord=SoundEventsActivity.class.getDeclaredField("record");currentRecord.setAccessible(true);
+            await(8000,()->{boolean[] shown={false};i.runOnMainSync(()->{try{RecordEntry original=(RecordEntry)currentRecord.get(events);shown[0]=events.hasWindowFocus()&&find(events.getWindow().getDecorView(),"Sound events")!=null&&original!=null&&original.id==record;}catch(Exception failure){throw new AssertionError(failure);}});return shown[0];});
+            Field playbackPort=SoundEventsActivity.class.getDeclaredField("port");playbackPort.setAccessible(true);Field sessions=ClipPlayback.class.getDeclaredField("sessions");sessions.setAccessible(true);assertTrue("Opening source events never allocates a playback session",((Set<?>)sessions.get(playbackPort.get(events))).isEmpty());
+            CountDownLatch sourceFrame=new CountDownLatch(1);i.runOnMainSync(()->{View root=events.getWindow().getDecorView();assertTrue(root.hasWindowFocus());root.getViewTreeObserver().registerFrameCommitCallback(sourceFrame::countDown);root.invalidate();});assertTrue(sourceFrame.await(5,TimeUnit.SECONDS));assertTrue(device.takeScreenshot(new File(folder(),"recorded-analysis-source-events.png")));frames++;
+            assertTrue(device.pressBack());await(8000,events::isDestroyed);drain(events);ready();require("Model version");silent();
             click("Delete this analysis"); require("Saved analysis deleted. Original audio is unchanged.");
             try (RecordedRecognitionStore store = new RecordedRecognitionStore(c)) { assertEquals(originalRows, snapshotRows(store)); assertEquals(originalRevision, store.revision()); }
             assertEquals(wavHash, sha(Files.readAllBytes(audio.toPath())));
             try (Store store = new Store(c, database)) { assertEquals(sourceBefore, List.of(store.rows("SELECT * FROM sessions").toString(), store.rows("SELECT * FROM clips").toString(), store.rows("SELECT * FROM sound_events").toString())); }
-            assertEquals("Original three saved-WAV captures remain intact", 3, frames);
+            assertEquals("Three original saved-WAV frames plus source preparation and source-event handoff", 5, frames);
 
             step = "encode unchanged complete fixture through actual AAC MediaCodec";
             AacPcmEncoder.encode(audio, encoded, 0, SAMPLES, () -> true);
@@ -418,11 +442,12 @@ public final class RecordedAnalysisJourneyTest {
                     .put("modelVersion", result.getString("modelVersion")).put("samples", SAMPLES).put("analyzedMs", result.getLong("analyzedMs"))
                     .put("omittedMs", result.getLong("omittedMs")).put("windows", result.getJSONArray("windows")).put("observedUiProgress", seenProgress[0])
                     .put("savedAndReopened", true).put("deleted", true).put("originalAudioUnchanged", true).put("accuracyAcceptanceRequired", false)
+                    .put("savedSourcePreparedWithoutInference",true).put("changedSourceRejected",true).put("sourceEventsOpenedWithoutPlayback",true)
                     .put("importedAudio", new JSONObject().put("selection", "resolver selected content URI; no DocumentsUI assertion")
                             .put("encodedTiming", encodedTiming).put("source", imported.source).put("result", imported.result)
                             .put("savedAndReopened", true).put("deleted", true).put("originalEncodedAudioUnchanged", true));
             try (PrintWriter out = new PrintWriter(new File(folder(), "recorded-analysis-proof.json"), "UTF-8")) { out.println(proof.toString(2)); }
-            assertEquals(5, frames); assertEquals(preferences, Prefs.of(c).getAll()); silent();
+            assertEquals(7, frames); assertEquals(preferences, Prefs.of(c).getAll()); silent();
         } catch (Exception | AssertionError failure) {
             try { device.dumpWindowHierarchy(new File(folder(), "recorded-analysis-failure.xml"));
                 try (PrintWriter out = new PrintWriter(new File(folder(), "recorded-analysis-failure.txt"), "UTF-8")) {

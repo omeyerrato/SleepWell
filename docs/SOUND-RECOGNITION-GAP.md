@@ -1,5 +1,17 @@
 # Recognition gap: current evidence and historical model study
 
+## Live-path audit and source review, 1 November 2026
+
+The integrated native capture/YAMNet, supplemental recorded policy and persisted
+category paths were audited at `9843587f`. Current evidence does not justify
+automatic supplemental-model admission: independently annotated target-room
+interval rejection/recall and sustained live resource/deadline measurements are
+missing. Consumed FSD50K and failed older holdouts were not rerun or retuned.
+Saved retained-source results now have explicit, hash/revision-checked preparation
+and source-event navigation, preserving existing summaries and label authority.
+This supporting behavior does not complete automatic laughter/instruments.
+[Exact audit, behavior and focused verification plan](AUTOMATIC-SOUND-AUDIT-2026-11-01.md).
+
 ## Explicit recorded-analysis update, 31 October 2026
 
 The new source/uploader-separated FSD50K development/evaluation study supports a

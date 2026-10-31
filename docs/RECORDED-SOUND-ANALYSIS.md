@@ -15,6 +15,11 @@ The 31 October frozen evaluation accepted only 3/8 laughter and 6/8 instrument
 sources; this is generic clip evidence, not bedroom accuracy. Uncertain does not
 mean absent. [Frozen study, controls and limits](FSD50K-RECOGNITION-CALIBRATION.md).
 
+On 1 November, saved retained-source details gained explicit preparation and
+source-event review actions, with exact interval/hash revalidation and no
+automatic inference or label mutation. Imported summaries require selecting the
+file again. [Live-path audit, remaining evidence and bounded native plan](AUTOMATIC-SOUND-AUDIT-2026-11-01.md).
+
 ## Worker contract
 
 Create, use and close on the same background worker, inside try-with-resources:

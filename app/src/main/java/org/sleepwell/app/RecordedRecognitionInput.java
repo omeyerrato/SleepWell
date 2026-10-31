@@ -79,8 +79,10 @@ final class RecordedRecognitionInput {
                 if(spans.size()!=1||spans.get(0).start!=selectedStart||spans.get(0).end!=selectedEnd||selectedEnd<=selectedStart)throw new IOException("This recording crosses an excluded or missing period. Select a WAV excerpt instead; gaps are never joined.");
                 String fingerprint=fingerprint(night,clip,event);JSONObject source=new JSONObject().put("kind","saved_clip").put("record",recordId).put("clip",clipId).put("event",eventId).put("updated",night.updated).put("fingerprint",fingerprint).put("fromMs",selectedStart-start).put("durationMs",selectedEnd-selectedStart).put("startWall",selectedStart).put("provenance",night.provenance());
                 RecordedRecognitionInput input;try{input=wav(bytes,source,selectedStart-start,selectedEnd-selectedStart,active);}finally{Arrays.fill(bytes,(byte)0);}
-                if(expected!=null&&(!fingerprint.equals(expected.getString("fingerprint"))||!input.hash.equals(expected.getString("pcmSha256"))||!input.wavHash.equals(expected.getString("wavSha256"))))throw new IOException("The saved recording or effective period changed. Prepare a new analysis.");
-                if(validated!=null)validated.accept(input);db.setTransactionSuccessful();return input;
+                try{
+                    if(expected!=null&&(!fingerprint.equals(expected.getString("fingerprint"))||!input.hash.equals(expected.getString("pcmSha256"))||!input.wavHash.equals(expected.getString("wavSha256"))))throw new IOException("The saved recording or effective period changed. Prepare a new analysis.");
+                    if(validated!=null)validated.accept(input);db.setTransactionSuccessful();return input;
+                }catch(Exception|LinkageError failure){input.erase();throw failure;}
             }finally{db.endTransaction();}
         }}
     }
