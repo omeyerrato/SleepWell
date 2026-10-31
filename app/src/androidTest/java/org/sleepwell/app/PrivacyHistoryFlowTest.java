@@ -78,7 +78,11 @@ public class PrivacyHistoryFlowTest {
     }
     private void nativeWindow(String name)throws Exception{
         View[] owned={null};CountDownLatch committed=new CountDownLatch(1);
-        i.runOnMainSync(()->{for(View root:WindowInspector.getGlobalWindowViews())if(root.isAttachedToWindow()&&root.hasWindowFocus()&&root.getContext().getPackageName().equals(c.getPackageName()))owned[0]=root;assertNotNull("Focused actual native window",owned[0]);owned[0].getViewTreeObserver().registerFrameCommitCallback(committed::countDown);owned[0].invalidate();});
+        // Dismissing a restored confirmation briefly leaves both windows without focus.
+        // Wait for the real native focus transfer; an idle main queue is not a frame.
+        long focusBy=SystemClock.elapsedRealtime()+5000;
+        while(owned[0]==null&&SystemClock.elapsedRealtime()<focusBy){i.runOnMainSync(()->{for(View root:WindowInspector.getGlobalWindowViews())if(root.isAttachedToWindow()&&root.hasWindowFocus()&&root.getContext().getPackageName().equals(c.getPackageName()))owned[0]=root;});if(owned[0]==null)SystemClock.sleep(25);}
+        i.runOnMainSync(()->{assertNotNull("Focused actual native window",owned[0]);assertTrue(owned[0].isAttachedToWindow()&&owned[0].hasWindowFocus());owned[0].getViewTreeObserver().registerFrameCommitCallback(committed::countDown);owned[0].invalidate();});
         assertTrue("Native window frame committed",committed.await(5,TimeUnit.SECONDS));assertTrue(owned[0].hasWindowFocus());File folder=new File(c.getExternalFilesDir(null),"verification");assertTrue(folder.isDirectory()||folder.mkdirs());assertTrue(device.takeScreenshot(new File(folder,name+".png")));
     }
     private void capture(String suffix)throws Exception{nativeWindow("privacy-history-"+suffix);}
