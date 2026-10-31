@@ -1,0 +1,83 @@
+{
+  "version": "sleepwell-respiratory-overlap-proposal-v1",
+  "status": "PROPOSED; parent review and duration-unit resolution required; no fit authorized",
+  "date": "2026-11-01",
+  "dataset": "10.57760/sciencedb.19070 V5, already acquired files only",
+  "endpoint": "Source-annotated respiratory-event overlap in a central30-second target, distinct from stage, normal breathing, event subtype, AHI or diagnosis",
+  "root_review_required_before_fit_or_validation_test_event_label_access": true,
+  "units": {
+    "proposal": "seconds for evnet_start, record_start and event_duration; no rescaling",
+    "primary_evidence": "osa_data_eng.py line304 declares every timestamp uses s; line113 identifies record_start as the audio alignment anchor; lines143-153 load event JSON unchanged",
+    "unresolved": "Cached primary material does not explicitly state event_duration field units. This assumption and short source durations require root review before fitting, not an inferred clinical10s definition.",
+    "helper_sha256": "77b6d9537c27bddc0e5a95c13e849d5e0a91f636b381abb86fc11c118031b292"
+  },
+  "source_taxonomy": {
+    "positive_event_types": ["hypo", "osa"],
+    "handling": "Literal source types only. Do not invent central/mixed subtypes. A target containing either/both types is one binary event-overlap target. Unknown schema/type stops that phase before inference pending a separately reviewed contract.",
+    "unused_fields": ["sleep_stage", "awake_intervals", "AHI", "SpO2", "heart rate", "flow", "demographics"]
+  },
+  "time_and_label": {
+    "alignment": "Event [evnet_start-record_start,evnet_start-record_start+event_duration), half-open in author-aligned audio seconds. No guessed shift, duration adjustment, clock feature or duration rescaling.",
+    "target": "The original stage-pilot start_seconds identifies central target [t,t+30), actual context [t-30,t+60). Same fixed windows; no new sampling or downloads.",
+    "positive": "Class1 iff union of known source event intervals overlaps central target by at least10 seconds",
+    "negative": "Class0 iff known source event union has zero target overlap. This means no annotated event overlap, not verified normal breathing.",
+    "partial_boundary": "Targets with strictly positive overlap below10 seconds are excluded and never replaced",
+    "duplicates_overlaps": "Union intervals before intersection: exact duplicates, overlaps and simultaneous types never double-count time; touching endpoints alone have zero overlap",
+    "short_rows": "Retain source rows shorter than10 without asserting they are clinically valid apnea. The10-second union threshold defines this research target, not a new clinical event.",
+    "missing": "Require complete actual90-second PCM coverage, known target timestamps and valid finite positive event durations. Unknown annotations/input/quality remain missing, never class0. No zero padding or gap stitching.",
+    "scoring_coverage_assumption": "Source event list is the released annotation list for these recorded times; it supplies no explicit per-time unscored mask. Absence is a source-list label with that limitation.",
+    "context_only_event": "An event occurring only in preceding/following30-second context does not change the central target label"
+  },
+  "splits_and_exposure": {
+    "train": "01-30; original217 windows (28 phone subjects;11/17 missing supported phone input)",
+    "validation": "31-40; original100 windows; respiratory labels not yet read",
+    "test": "41-50; original100 windows; respiratory labels not yet read; open only after frozen model and passing validation",
+    "selection": "TRAIN was selected with stage-balanced hash ranking in the earlier study; held-out windows were selected independently of stage labels. All selections are historical, fixed, and cannot be rebalanced/replaced for this endpoint.",
+    "previous_exposure": "Subjects/audio were previously evaluated for a separate rejected stage endpoint. Event labels were not used for that fit. This is a newly frozen event endpoint on a previously exposed corpus, not an entirely untouched dataset.",
+    "prohibited": "No stage outcome, source stage, timing, subject ID, event annotation or physiological sidecar enters the acoustic feature vector. No use of consumed stage TEST results to tune this endpoint. No replacement holdout or threshold/model search."
+  },
+  "features": {
+    "source": "Frozen original phone_stage_acoustic.py243 acoustic features only; do not load the stage RF or reuse its trained tree parameters",
+    "source_sha256": "cded615f226bf2e886a3625ac8a19ac65fe479201678c0bc4b77af263d48dbe7",
+    "contract": "Actual mono PCM16 at8000Hz,90 seconds; three chronological30-second feature blocks. Exact prior FFT/Mel/RMS/spectral/envelope contract unchanged. Existing input/feature hashes support equivalence checks.",
+    "quality": "Original rejection of incomplete/nonfinite contexts or more than10 seconds exact-zero250ms frames in any30-second block; no signal-quality-driven replacement windows",
+    "pretrained_embeddings": "None; no model downloads, installations or new features"
+  },
+  "fixed_binary_model": {
+    "kind": "sklearn RandomForestClassifier",
+    "n_estimators": 128,
+    "max_depth": 8,
+    "min_samples_leaf": 4,
+    "max_features": "sqrt",
+    "class_weight": "balanced_subsample",
+    "random_state": 20261101,
+    "n_jobs": 2,
+    "probabilities": "Mean tree-leaf class proportions, uncalibrated; class1 positive at fixed p>=0.5",
+    "fit_limit": "Exactly one original binary fit after root approval; no refit, threshold fitting, recalibration, search or label-driven sampling",
+    "portable_decoder": "Separate two-class decoder if useful; verify frozen primary-runtime probability agreement within1e-12. Four-class stage decoder is not reused unchanged."
+  },
+  "baselines": {
+    "majority": "Always predict the selected-TRAIN-majority class on identical held-out targets",
+    "selected_training_prior": "Constant probability54/199=0.271356783919598 positive, from conditional TRAIN counts",
+    "natural_training_prior": "Constant probability7250/(7250+16484), from all original eligible TRAIN target times; gray targets excluded",
+    "comparison": "Report both constant priors for Brier/NLL, using TRAIN counts only; do not estimate a prior from held-out truth"
+  },
+  "prospective_gate_proposal": {
+    "scope": "Research usefulness screen, not clinical/Android acceptance. Same criteria apply to validation and any later once-only TEST; no changing them from held-out outcomes.",
+    "coverage": "At least80percent of all selected phase targets have both unambiguous labels and actual usable PCM; report exclusions/missing separately",
+    "support": "At least10 targets and3 participants per class in each held-out phase; TRAIN requires10 participants per class",
+    "discrimination": "AUROC>=0.70; balanced accuracy>=0.60; sensitivity>=0.50 and specificity>=0.70 at fixed0.5 threshold; macro F1>=majority macro F1+0.05",
+    "probability_error": "Brier and negative log likelihood each strictly lower than BOTH fixed TRAIN-prior baselines; no post-hoc calibration to rescue a failure",
+    "failure": "If validation fails or support/coverage/units are unresolved, stop before TEST event labels/predictions; do not tune against this holdout. A later TEST failure/inconclusive result is preserved and not retuned."
+  },
+  "required_reporting": [
+    "Attempted/labeled/usable/excluded targets and subjects by phase; all missing reasons",
+    "Full confusion, per-class precision/recall/F1/support, accuracy, balanced accuracy, macro F1, AUROC and average precision with positive prevalence",
+    "Raw probabilities, Brier, NLL,10-bin reliability/ECE; both constant TRAIN priors and majority on identical targets",
+    "Per-participant support/confusion and the small sampled-target limitation; no complete-night sensitivity or AHI claim",
+    "Exact source/protocol/annotation/window/PCM/feature/model hashes and primary runtime versions",
+    "Original rejected stage decision stays unchanged; no Android inference shipped merely because this research gate passes"
+  ],
+  "resources": "Offline already acquired inputs only, at most2 CPU threads, no new PCM/weights/network, no phone/outputs. No fit or held-out respiratory-label access before root review.",
+  "actions_so_far": {"train_metadata_inspected": true,"features_extracted_for_this_endpoint":false,"fit":false,"validation_test_respiratory_labels_read":false,"outcome_inference":false,"android_changes":false}
+}
