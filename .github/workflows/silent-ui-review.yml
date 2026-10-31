@@ -43,6 +43,7 @@ on:
           - privacy-audio-reference
           - data-recovery-reference
           - completion-reference
+          - local-feature-reference
           - setup-readiness
           - readiness-recovery
           - protection-recovery

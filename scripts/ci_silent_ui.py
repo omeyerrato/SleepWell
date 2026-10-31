@@ -55,6 +55,7 @@ parser.add_argument("--scope", choices=(
     'privacy-audio-reference',
     'data-recovery-reference',
     'completion-reference',
+    'local-feature-reference',
     'setup-readiness',
     'readiness-recovery',
     'protection-recovery',
@@ -162,13 +163,21 @@ DATA_RECOVERY_REFERENCE_FRAMES += ["backup-document-" + name + ".png" for name i
     "review", "confirmation", "confirmation-recreated", "review-recreated", "review-reopened",
     "restoring", "restoring-recreated", "restored", "result-reopened")]
 DATA_RECOVERY_REFERENCE_FRAMES += RECORDED_ANALYSIS_FRAMES
-REPORT_STATE_PLAN = json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial/REPORT-STATE-NATIVE-PLAN.json").read_text(encoding="utf-8"))
+REPORT_STATE_PLAN = json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial/REPORT-IMPORT-SHARE-NATIVE-PLAN-v2.json").read_text(encoding="utf-8"))
+OVERLAP_STATE_PLAN = json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial/MANUAL-OVERLAP-NATIVE-PLAN.json").read_text(encoding="utf-8"))
+LOCAL_PLAN = json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial/LOCAL-PLAN-NATIVE-PLAN.json").read_text(encoding="utf-8"))
+REPORT_STATE_PLAN["methods"] += OVERLAP_STATE_PLAN["methods"]
+LOCAL_FEATURE_FRAMES = [name for method in LOCAL_PLAN["methods"] for name in method["required_originals"]]
+LOCAL_FEATURE_FRAMES += ["tags-" + name + ".png" for name in ("quantity-draft", "quantity-recreated", "editor", "comparison", "with-group", "with-group-recreated", "without-group", "rename", "renamed", "delete-confirm", "deleted")]
+LOCAL_FEATURE_FRAMES += ["alarm-mode-" + name + ".png" for name in ("initial", "silent", "playlist", "configured", "recreated", "reopened", "single", "radio-error", "radio-recreated", "radio-draft")]
+LOCAL_FEATURE_FRAMES += ["night-dial-alarm-" + name + ".png" for name in ("duplicate-draft", "duplicate-restored", "unsaved-actions", "delete-review", "delete-restored", "delete-changed", "delete-result", "dirty-saved", "delete-undo-restored-review", "delete-undone", "delete-undone-recreated", "delete-restored-review-stale", "delete-undo-stale", "delete-undo-expired")]
 COMPLETION_REFERENCE_FRAMES = DATA_RECOVERY_REFERENCE_FRAMES + [name for method in REPORT_STATE_PLAN["methods"] for name in method["required_originals"]]
 ROUTINE_FRAMES = ["routine-" + name + ".png" for name in ("legacy", "ordered", "reordered", "recreated", "removed", "reopened")]
 EVENT_LIBRARY_FRAMES = ["library-"+name+".png" for name in ("recordings","playback","favorite-recreated","speech","recording-deleted","options","options-recreated","analysis-details","analysis-details-recreated")]
 GOAL_PLAN_FRAMES = ['goal-plan.png', 'goal-options.png', 'goal-options-recreated.png', 'goal-options-winddown-recreated.png', 'goal-options-updated.png', 'goal-tonight.png', 'goal-saved-plan.png', 'goal-empty-bank.png', 'goal-create.png', 'goal-bank.png', 'goal-reopened-bank.png', 'goal-bank-details.png', 'goal-stopped.png', 'goal-trends.png']
 INTERACTION_SECURITY_FRAMES = ["calendar-rules-permission-"+name+".png" for name in ("settings","granted-draft","revoked-draft")]
 COMPLETION_REFERENCE_FRAMES += INTERACTION_SECURITY_FRAMES
+COMPLETION_REFERENCE_FRAMES += ["auto-calendar-"+name+".png" for name in ("draft-recreated", "consent-conflict", "saved-private")]
 ROOM_SETTINGS_SEARCH_FRAMES = [
     "search-empty.png",
     "search-room.png",
@@ -504,6 +513,13 @@ elif args.scope == "completion-reference":
         "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft",
     ]
     metadata["completion_slice"] = "changed Report/calendar, exact source review, data confirmations, obscured-touch and permission-return flows; not full app acceptance"
+elif args.scope == "local-feature-reference":
+    tests = [method["method"].removeprefix("org.sleepwell.app.") for method in LOCAL_PLAN["methods"]] + [
+        "TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+        "AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+    ]
+    metadata["local_feature_slice"] = "owned local plan exits, milestone/tag contributors, radio draft and alarm deletion Undo; fixture-only scheduling and no outputs"
 elif args.scope == "setup-readiness":
     tests = ["OrganizedSettingsJourneyTest#organizedMenusPreserveDraftsAndSafeChoicesWithoutOutputs", "AlarmProtectionFlowTest#compactListAndGlobalProtectionsPersistWithoutAlarmExecution"]
 elif args.scope == "readiness-recovery":
@@ -707,6 +723,7 @@ if args.scope != "full":
         "privacy-recovery": ["privacy-history-"+name+".png" for name in ("ready","error","busy","pending","done")],
         "data-recovery-reference": DATA_RECOVERY_REFERENCE_FRAMES,
         "completion-reference": COMPLETION_REFERENCE_FRAMES,
+        "local-feature-reference": LOCAL_FEATURE_FRAMES,
         "reference-menus": REFERENCE_MENU_FRAMES,
         "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,
         "priority-repair": PRIORITY_REPAIR_FRAMES,
