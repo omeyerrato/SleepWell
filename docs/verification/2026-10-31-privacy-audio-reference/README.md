@@ -1,5 +1,15 @@
 # Recording-only cleanup: bounded native action evidence
 
+## Latest settled summary —0.1.25 source
+
+[Run41193870495](https://github.com/omeyerrato/SleepWell/actions/runs/41193870495) at **`cc4871eefa5833266f79d6f1b319d5561c1bf285`** passed **36.286s /one existing native method /nine required originals**. [Current summary evidence](current-summary-41193870495/README.md) contains unchanged captures, log/environment and SHA provenance. Every new original was individually inspected against board12 and its supporting states.
+
+The later Privacy snapshot-invalidation change now shows **Loading… /Updating local storage… during held cleanup and recreation**, leaves the genuine unavailable-recording caption visible while the owned file is still blocked, then captures **one record /zero bytes with no unavailable caption at both completion and reopen**. This closes the transient completion-summary limitation identified in the older run below; the old PNG remains unchanged.
+
+The same private populated-event/favorites/cancellation/error/pending-identity/retry assertions remain. Storage read generations are invalidated at actual mutation entry/observed retained mutation; the existing completion refresh starts a current read. Receipt handling, deletion workers and data rules are unchanged. This is recording-only UI/action evidence, not full history erasure, all36 designs, model accuracy or phone/output acceptance.
+
+## Earlier0.1.24 populated-event attempt —preserved
+
 [Run41186059054](https://github.com/omeyerrato/SleepWell/actions/runs/41186059054) at captured source **`e9077085b8a06a4bdfeddb28fa43d687f8527258`** passed **one selected native method in33.539s, with all nine required original PNGs**. The [summary](current-41186059054/focused-review-summary.json) explicitly says `full_app_review: false`.
 
 `PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory` ran only its explicit `ciAudioClearReference=true` recording-only branch. Despite the existing method name, this scope **does not run or accept the original history-erasure branch**. No new test method, unit-test campaign, provider operation or real output was introduced.
@@ -21,7 +31,7 @@ The fixture owns a UUID-private SQLite database, one synthetic12-byte retained-f
 
 This closes the narrow recording-only confirmation/favorites/error/recreation/retry/reopen evidence gap. It does not establish sound-recognition accuracy, audio playback, retention expiry, process death, the combined history-erasure flow, Android document-provider durability or personal-phone data preservation.
 
-## Current original inventory
+## Earlier original inventory —41186059054
 
 | Original | Actual state and comparison |
 |---|---|
