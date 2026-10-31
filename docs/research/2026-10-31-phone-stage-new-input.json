@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "reviewed": "2026-10-31",
+  "sleepwell_revision": "3956a2f9879e3fc52bfefabb55cb5bf0dce3aaf7",
+  "feature": "F049",
+  "status": "not implemented; new original-training data lead identified",
+  "new_sources": [
+    {
+      "id": "tao_2025_phone_dataset",
+      "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12274427/",
+      "dataset_doi": "10.57760/sciencedb.19070",
+      "dataset_url": "https://www.scidb.cn/en/detail?dataSetId=7b5f1df9c3d4435baa0ff2dbecf487d9",
+      "registered_version": "V5",
+      "registration_url": "https://api.datacite.org/dois/10.57760/sciencedb.19070",
+      "registration_receipt_bytes": 14262,
+      "registration_receipt_sha256": "f4dcea066771910e783f798aaa895eca41d7b78e36cecadcf32db23a2b8d49e6",
+      "registered_data_licence": "CC-BY-4.0",
+      "article_licence_is_separate": true,
+      "published_input": "OPPO Reno8 bedside stereo 48000 Hz phone recordings (MP3), with synchronized PSG-derived sleep-stage CSVs and event annotations; 50 subjects, over 400 hours",
+      "file_inventory_verified": false,
+      "stage_codes_and_per_file_time_alignment_verified": false,
+      "actual_access_probe": {
+        "url": "https://www.scidb.cn/api/sdb-dataset-service/dataset/details/7b5f1df9c3d4435baa0ff2dbecf487d9?version=V5",
+        "method": "GET, anonymous, public web-client endpoint inspected in its own JavaScript",
+        "response": {"code": 70001, "messageEn": "PERMISSION NO ACCESS", "data": null},
+        "receipt_bytes": 89,
+        "receipt_sha256": "aa2cc23fbb445310b680554d9924963c4c35e365583ec9d64d8900c5057f8a59"
+      },
+      "decision_change": "A newly identified licensed corpus contains actual bedside-phone audio plus stage labels, rather than wrist/EEG inputs or only event clips. It is a concrete original-training lead, not an available fitted estimator.",
+      "remaining_prerequisite": "Obtain authorized file-level V5 access; inspect actual phone files, full-night stage-code/timestamp mapping and coverage; pin subject-separated train/validation/test identifiers before fitting. Derive an explicit mono input contract rather than duplicate mono into a trained stereo model. Demonstrate useful held-out ambient-input behavior before Android integration."
+    },
+    {
+      "id": "xu_brown_ma_embc2025",
+      "doi": "10.1109/EMBC58623.2025.11253429",
+      "author_repository": "https://eprints.whiterose.ac.uk/id/eprint/230050/",
+      "accepted_paper": "https://eprints.whiterose.ac.uk/id/eprint/230050/1/EMBC_2025___Sleep_Staging.pdf",
+      "paper_bytes": 1206358,
+      "paper_sha256": "f9e6691c9c0d51686d491857b23a87d46caaf2013c2eb51716a362a4f7588b03",
+      "published_method": "Ambient PSG-Audio downsampled to 16 kHz; local normalization, 50 Hz high-pass and pre-emphasis; frozen HuBERT-Base with trained attention/pooling and two-layer Wake/NREM/REM classifier; 30-second input or 90-second context targeting its center 30 seconds; participant-level split",
+      "task_specific_fitted_weights_obtained": false,
+      "remaining_prerequisite": "A reusable release of the fitted attention/classifier parameters and exact preprocessing, or original training with synchronized licensed ambient audio. Generic HuBERT embeddings are not sleep-stage probabilities. This three-class method cannot separately supply Light and Deep."
+    }
+  ],
+  "actions": {
+    "metadata_and_paper_download_bytes": 1220709,
+    "model_or_dataset_audio_download_bytes": 0,
+    "model_inference_or_training_run": false,
+    "nidra_replay_repeated": false,
+    "phone_or_outputs_used": false,
+    "account_created_or_author_contacted": false,
+    "existing_models_or_raw_records_modified": false,
+    "clinical_certification_required": false
+  }
+}
