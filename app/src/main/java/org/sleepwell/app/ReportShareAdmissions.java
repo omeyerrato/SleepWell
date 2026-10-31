@@ -32,7 +32,7 @@ final class ReportShareAdmissions {
         cachedGeneration=token;
     }
     static boolean metadata(File file){String name=file.getName();return name.equals(INDEX)||name.equals(INDEX+".bak")||name.equals(INDEX+".new");}
-    private static void paths(File root)throws IOException{for(String suffix:new String[]{"",".bak",".new"}){File file=new File(root,INDEX+suffix);if(file.exists()&&(!file.isFile()||!file.getCanonicalFile().equals(file.getAbsoluteFile())||!root.equals(file.getCanonicalFile().getParentFile())))throw new IOException("Private report admission storage is unavailable.");}}
+    private static void paths(File root)throws IOException{for(String suffix:new String[]{"",".bak",".new"}){File file=new File(root,INDEX+suffix);if(!file.getCanonicalFile().equals(file.getAbsoluteFile())||!root.equals(file.getCanonicalFile().getParentFile())||file.exists()&&!file.isFile())throw new IOException("Private report admission storage is unavailable.");}}
     private static long whole(JSONObject row,String key,long maximum)throws JSONException{Object raw=row.get(key);if(!(raw instanceof Number))throw new JSONException("Invalid admission number");double value=((Number)raw).doubleValue();if(!Double.isFinite(value)||value!=Math.rint(value)||value<1||value>maximum)throw new JSONException("Invalid admission number");return((Number)raw).longValue();}
     static Map<String,Entry> read(Context app,File root)throws IOException{
         paths(root);File base=new File(root,INDEX);if(!base.exists()&&!new File(root,INDEX+".bak").exists())return new LinkedHashMap<>();

@@ -74,7 +74,7 @@ final class ReportShareFiles {
     /** Rotate durable admission BEFORE file/grant cleanup; caller aborts history mutation on failure. */
     static boolean historyChanging(Context app){synchronized(LOCK){boolean ok=true;try{ReportShareAdmissions.rotate(app);}catch(IOException|RuntimeException unavailable){ok=false;}
         try{File root=directory(app,false);if(!root.exists())return ok;File[] files=root.listFiles();if(files==null||files.length>MAX_FILES*2)return false;
-            for(File file:files){if(ReportShareAdmissions.metadata(file)){if(!file.exists())continue;if(!safe(root,file)){ok=false;continue;}}else{if(!owned(root,file)){ok=false;continue;}try{revokeUri(app,file);}catch(RuntimeException unavailable){ok=false;}}
+            for(File file:files){if(ReportShareAdmissions.metadata(file)){if(!file.getCanonicalFile().equals(file.getAbsoluteFile())||!root.equals(file.getCanonicalFile().getParentFile())){ok=false;continue;}if(!file.exists())continue;if(!safe(root,file)){ok=false;continue;}}else{if(!owned(root,file)){ok=false;continue;}try{revokeUri(app,file);}catch(RuntimeException unavailable){ok=false;}}
                 if(!file.delete()&&file.exists())ok=false;
             }return ok;
         }catch(IOException|RuntimeException unavailable){return false;}
