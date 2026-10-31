@@ -66,6 +66,16 @@ def inventory():
     return {"activity_count": len(routes), "flow_count": len(flows), "full_acceptance": False, "meaning": "Route accounting only; see revision-specific native evidence and PROGRESS.md for acceptance.", "flows": flows, "routes": routes}
 
 if __name__ == "__main__":
+    # Optional accounting only. Unfinished states never block ordinary inventory generation.
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check-states", action="store_true", help="Check the separate finite acceptance register")
+    args = parser.parse_args()
+    if args.check_states:
+        from night_dial_acceptance import check
+        check()
+        print("Finite state register valid; no inventory, app, test or device execution.")
+        raise SystemExit(0)
     data = inventory()
     out = ROOT / "docs/night-dial/SCREEN-COVERAGE.json"
     out.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")

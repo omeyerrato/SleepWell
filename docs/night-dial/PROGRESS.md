@@ -1,5 +1,7 @@
 # Night Dial implementation progress
 
+The [finite 43-flow / 172-state register](STATE-ACCEPTANCE.md) now separates named local implementation gaps, pinned functional subsets, family-root appearance, bounded external prerequisites and truthful unsupported contracts. Its [JSON](STATE-ACCEPTANCE.json) links exact source owners, methods, revisions and manifest-backed originals, including the pending Report37 cohort at `66c9fd4a`. It is work/evidence accounting, not a design approval gate or a claim of 172 accepted states. Historical progress and receipts below are preserved.
+
 The full 43-flow design contract remains the target. Shared styling does not establish that every state is finished. No flow is accepted until actual native screens and interaction evidence cover its states, popups, cancellation, errors and return paths.
 
 ## Application-wide pass: 31 October 2026
