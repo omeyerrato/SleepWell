@@ -1,0 +1,659 @@
+{
+  "date": "2026-11-01",
+  "source_revision": "9843587fd7b170a329eb2c55a996b4d71d8ea493",
+  "status": "No complete useful trained phone-input breathing/apnea/stage contract obtained; no app integration",
+  "note": "2026-11-01-phone-respiratory-contract.md",
+  "note_sha256": "0bd2134b062e4a54b19ddb991b6719b51404f8421e66d6631787c9b0f78e59ca",
+  "local_source_contract": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarConfig.java",
+      "sha256": "e02168920af311daeab08c6c2dbfbaa611e0b6b60cf52eb28cbc3024e62d3e03",
+      "git_blob": "4cc9c82eded7e2448ffe9cffc84e4684c23ac0b9"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarDsp.java",
+      "sha256": "08706350e391ebd9de936feaaf97431f1f09bb77376bd8bec5373f406b31fc53",
+      "git_blob": "3419a5b92fd9aab07bf09f2e1f9194ccaced9502"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarFrame.java",
+      "sha256": "73624d9af36e09780df5f363a5188517335722bd7a7465bb9904abeeced089b2",
+      "git_blob": "1181f472234f900cd904bf28e9ff12348c641242"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarObservation.java",
+      "sha256": "5bff707a5d5044a71ba0eb8e4064faf8cdf7599fe5016caf1f8a47e913992254",
+      "git_blob": "2386727875d4d801950ddc6734162505766b938f"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarPump.java",
+      "sha256": "4593fb1f1ac04895edb32fe5fa10aa358ec9552ea5b9c19b20e468baf6811a21",
+      "git_blob": "55cebb84e5ea0a8777e7fbf66892fbee6e460bed"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarNight.java",
+      "sha256": "dc0f6ced6cc196e60b3af056eec8c159edc351ab402e01b4373a6c779d35ee74",
+      "git_blob": "76b62643dfab9157d0d4f5a737e68f5b407e9d66"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarNightStore.java",
+      "sha256": "c365827cad7b8910eb595b696bab2ab56fd0734a560c853b5fffa7952d885dbd",
+      "git_blob": "4f4a035458790ab23d8cfa2f0393df736bde60a3"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/EchoPeriodicity.java",
+      "sha256": "9aae64a2ee76ac118ff87c3a9b07ad72cf95430425670f24ec7b5a3bd4b8735a",
+      "git_blob": "ae5a19a7682e09e1413789d520cf68b6264f6d3d"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/EchoPeriods.java",
+      "sha256": "534443d46ccae98f50b0dbefe302b732f6bf3aae129df71fdab724895ab73eb7",
+      "git_blob": "f53b0b1e164e7ad3d28c131b2395d9176226fde0"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/NoiseRecorder.java",
+      "sha256": "5bad0264261c9bea10007d0f1c82ab56a630ed14734329aaef54e6ed248411b6",
+      "git_blob": "376b743c3827daccaa55852c02ab7dac40471502"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ProviderStageChart.java",
+      "sha256": "32f75b42a1ae4c838f6233a01e2e733778f1ed8f28181ae77d64f222f977e653",
+      "git_blob": "f1bb99b969c0c48ebeda7b33b0b3a3032af32f52"
+    }
+  ],
+  "repositories": [
+    {
+      "repository": "somnisense/audio-sleep-cnn-baselines",
+      "commit": "82b565f247d4232a55fcfaf0fed79ce3a42a71c2",
+      "tree": "82b565f247d4232a55fcfaf0fed79ce3a42a71c2",
+      "complete_tree": true,
+      "tree_body_sha256": "cfbc20c779d626f522d8e5809ba03e02fb8448d8ec3620df55a565a989be0c92",
+      "files": [
+        {
+          "path": ".gitignore",
+          "bytes": 1185,
+          "git_blob": "b0c5bc0c7d19b2440809204d7e66b37f85832913"
+        },
+        {
+          "path": "LICENSE",
+          "bytes": 1068,
+          "git_blob": "bb3a5beae0cd6bcce7fdb34627c001dda3c53571"
+        },
+        {
+          "path": "README.md",
+          "bytes": 7264,
+          "git_blob": "dcb05c7d6d71c2c7f84fe4f611e4e85a4cc432d1"
+        },
+        {
+          "path": "code/analyze_results.py",
+          "bytes": 6902,
+          "git_blob": "2fe96ad0176629c528ca3b2de961e0f591dd9249"
+        },
+        {
+          "path": "code/generate_figures.py",
+          "bytes": 8653,
+          "git_blob": "d1967d36f1460e4f2e6662ec795f0d132e8c935d"
+        },
+        {
+          "path": "code/requirements.txt",
+          "bytes": 75,
+          "git_blob": "56b675d3872b79646f8105c8dffa706e460d9aa0"
+        },
+        {
+          "path": "code/run_experiments.py",
+          "bytes": 10962,
+          "git_blob": "e3a49569faaa241dd794dbcf4e305d75026cf37a"
+        }
+      ]
+    },
+    {
+      "repository": "somnisense/ca1d-sleep-apnea",
+      "commit": "f7bd024e44423927ca717daa87a76ea7676cd36d",
+      "tree": "f7bd024e44423927ca717daa87a76ea7676cd36d",
+      "complete_tree": true,
+      "tree_body_sha256": "728ed2275bde60d83949bbfb88b7e26ce873a5609b496fc7019796eff2424037",
+      "files": [
+        {
+          "path": ".gitignore",
+          "bytes": 1144,
+          "git_blob": "db121e9492dbf8a309e69ba0ac9246453193dfb0"
+        },
+        {
+          "path": "LICENSE",
+          "bytes": 1068,
+          "git_blob": "bb3a5beae0cd6bcce7fdb34627c001dda3c53571"
+        },
+        {
+          "path": "README.md",
+          "bytes": 7570,
+          "git_blob": "2974bb965ac47c090053d339e258e3209f10bec5"
+        },
+        {
+          "path": "code/analyze_results.py",
+          "bytes": 9885,
+          "git_blob": "f48957255dd8dc162e875f18544301b5650846c0"
+        },
+        {
+          "path": "code/generate_figures.py",
+          "bytes": 12949,
+          "git_blob": "fa461e5b3d99d42a20d7a08fc2c7fca0e2904dba"
+        },
+        {
+          "path": "code/requirements.txt",
+          "bytes": 75,
+          "git_blob": "56b675d3872b79646f8105c8dffa706e460d9aa0"
+        },
+        {
+          "path": "code/run_experiments.py",
+          "bytes": 15889,
+          "git_blob": "2a153f722cbf4eabdf92c871cb38da4fa402c9a4"
+        }
+      ]
+    },
+    {
+      "repository": "zhuangzx1127/ResSleepNet",
+      "commit": "9fcfda7d7d71efbb1c71486c4a3827e69473a703",
+      "tree": "9fcfda7d7d71efbb1c71486c4a3827e69473a703",
+      "complete_tree": true,
+      "tree_body_sha256": "1832e0228d4ed025569fbfec92013fbd8d2b42e5fd36e34c6932da90ab94df38",
+      "files": [
+        {
+          "path": ".DS_Store",
+          "bytes": 6148,
+          "git_blob": "f6c2d5e606db748dbc16b2e54f5955abf06cbe8e"
+        },
+        {
+          "path": ".gitattributes",
+          "bytes": 58,
+          "git_blob": "3fca32450efe1241426d710728944337c35c93b0"
+        },
+        {
+          "path": "LICENSE",
+          "bytes": 1071,
+          "git_blob": "2eeebeece5cb98d1c5b5b273cb88d4d19cf63d60"
+        },
+        {
+          "path": "README.md",
+          "bytes": 2505,
+          "git_blob": "1e1a51c572e3fe093b7b14c2af18701526668a10"
+        },
+        {
+          "path": "data/20241119-3_respiratory.mat",
+          "bytes": 9444836,
+          "git_blob": "f1c72e001e5216cde55c10a5b8985bc31446a120"
+        },
+        {
+          "path": "data/huaian-sleep-0030.mat",
+          "bytes": 8098486,
+          "git_blob": "982e4d4fe234b0bcf9d7e5ec8566b24cad40aa6f"
+        },
+        {
+          "path": "data/radar-sleep-0089.mat",
+          "bytes": 8073368,
+          "git_blob": "78b13fc11b3e523a9a94a75e9a91ca5046bbb190"
+        },
+        {
+          "path": "data/suzhou-sleep-0001.mat",
+          "bytes": 9027107,
+          "git_blob": "d8e3baa5c262d7049e4523debf5ae83c5ab795c5"
+        },
+        {
+          "path": "figure/20241119.png",
+          "bytes": 408064,
+          "git_blob": "b250393f204f563dd7ba81c4e940ce29b0832cd4"
+        },
+        {
+          "path": "model_respi.py",
+          "bytes": 24583,
+          "git_blob": "5a27f7d93a842390b6092b2dafff463f1ea0c06a"
+        },
+        {
+          "path": "pre_training.py",
+          "bytes": 17354,
+          "git_blob": "55b457312071244b633d776c6883677110806617"
+        },
+        {
+          "path": "pretrained_model/.DS_Store",
+          "bytes": 6148,
+          "git_blob": "7ff316fcf36ce68d209627b71062aa5a22c7c80a"
+        },
+        {
+          "path": "pretrained_model/best_model/best_model.data-00000-of-00001",
+          "bytes": 133,
+          "git_blob": "72490975f0f617f1296b4de48732e8c99875585e"
+        },
+        {
+          "path": "pretrained_model/best_model/best_model.index",
+          "bytes": 20678,
+          "git_blob": "49753561d5afe66415f2a43500fab0e93a0d21a6"
+        },
+        {
+          "path": "pretrained_model/best_model/checkpoint",
+          "bytes": 77,
+          "git_blob": "24151514770e8330ced15514e758966eb1ad39b5"
+        },
+        {
+          "path": "pretrained_model/model_backup.py",
+          "bytes": 24642,
+          "git_blob": "82203dabc3fe685bd5176efd4f4d5adfbd8110fd"
+        },
+        {
+          "path": "requirements.txt",
+          "bytes": 106,
+          "git_blob": "12973f098eb2235326704923504adfaf3b70e5fe"
+        },
+        {
+          "path": "test.py",
+          "bytes": 2873,
+          "git_blob": "b3f707bdf7b71832296572c051848ae8b395b69f"
+        },
+        {
+          "path": "utils.py",
+          "bytes": 15021,
+          "git_blob": "dab258833f897ce8952256678b76b92d1f6fdc53"
+        }
+      ]
+    },
+    {
+      "repository": "SebasTS15/Sleep-Apnea-Detection-Model",
+      "commit": "ad979ff72de4cb27a308ed03d56c3729a4396352",
+      "tree": "ad979ff72de4cb27a308ed03d56c3729a4396352",
+      "complete_tree": true,
+      "tree_body_sha256": "955a609a86395b3c1d6dfcfa8b2f1dfc2e5d5d8e0890770cd916c9788debb0e8",
+      "files": [
+        {
+          "path": "LICENSE",
+          "bytes": 1067,
+          "git_blob": "fc0eadd03f3b8bad28788ea9a56cdf3dc2ca5f0c"
+        },
+        {
+          "path": "Model/Sleep Apnea.ipynb",
+          "bytes": 290000,
+          "git_blob": "3352fc56ed8bad4e0f029441d11d85eba23c1f6a"
+        },
+        {
+          "path": "Model/model_apnea.keras",
+          "bytes": 1090253,
+          "git_blob": "df6ce773ae289d444c1ac42392717d4b17a165d1"
+        },
+        {
+          "path": "README.md",
+          "bytes": 2266,
+          "git_blob": "a00bc6ba72667d04a2c00f05c0da4c9e995cc6ea"
+        },
+        {
+          "path": "Results/Accuracy.png",
+          "bytes": 75413,
+          "git_blob": "3c8b5c26fe9dae9b9027dcd0a00cd5dd463673ed"
+        },
+        {
+          "path": "Results/Confusion Matrix.png",
+          "bytes": 17435,
+          "git_blob": "002987f337e4ee401f174e7165758f8c7b922d37"
+        },
+        {
+          "path": "Results/Histogram.jpeg",
+          "bytes": 32069,
+          "git_blob": "6c090ac2cefdf25107b7ada8aee747ca29fb2cdd"
+        },
+        {
+          "path": "Results/Normalized Matrix.png",
+          "bytes": 45778,
+          "git_blob": "1083e9c98cfc0ed8c0d13a94e0d3a2bcc591f3a2"
+        },
+        {
+          "path": "Results/Prediction.png",
+          "bytes": 164092,
+          "git_blob": "9c7c0ed529bc70e2ee54bdaf91477ae9dd802e26"
+        },
+        {
+          "path": "Results/Umbral.png",
+          "bytes": 82419,
+          "git_blob": "b19095d8598ee9d2969e657d8d27e19ed5a8238b"
+        }
+      ]
+    },
+    {
+      "repository": "sudo-stvk/SleepMapper",
+      "commit": "98c9d6e51b45552c0ebaeba000760100b787afa6",
+      "tree": "98c9d6e51b45552c0ebaeba000760100b787afa6",
+      "complete_tree": true,
+      "tree_body_sha256": "47b821c644bbb3be08007fdf9cb0a3f0f525102b0a3a6e98dd68848b6053f0b8",
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 9292,
+          "git_blob": "b0f690d6c833af9928994c91ec6088e6df64ebe1"
+        },
+        {
+          "path": "sleepmapper/.gitignore",
+          "bytes": 470,
+          "git_blob": "8c64d782e59f007ab5baeded3c0db561dff519b3"
+        },
+        {
+          "path": "sleepmapper/PROJECT_CONTEXT.md",
+          "bytes": 18642,
+          "git_blob": "f33625ae2f37b436885bd56da924f1c49e4a68da"
+        },
+        {
+          "path": "sleepmapper/configs/config.yaml",
+          "bytes": 293,
+          "git_blob": "c397bc22d50bb446d70f2d85a6a15cbb57f32ca6"
+        },
+        {
+          "path": "sleepmapper/eval_multimodal.py",
+          "bytes": 3274,
+          "git_blob": "39662f618d23e3e5356aae80d5f79b9ccf7c6712"
+        },
+        {
+          "path": "sleepmapper/requirements.txt",
+          "bytes": 108,
+          "git_blob": "c2371d5c6617046802d2439f75cc12dd97bcd7c8"
+        },
+        {
+          "path": "sleepmapper/src/__init__.py",
+          "bytes": 0,
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "path": "sleepmapper/src/models/__init__.py",
+          "bytes": 0,
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "path": "sleepmapper/src/models/model_utils.py",
+          "bytes": 2609,
+          "git_blob": "79b1819409a132c305ea060d6de26e364d472f1a"
+        },
+        {
+          "path": "sleepmapper/src/models/multimodal_cnn.py",
+          "bytes": 6801,
+          "git_blob": "9a88c5304dd2b481426504ebcff96b372bd1a119"
+        },
+        {
+          "path": "sleepmapper/src/preprocessing/__init__.py",
+          "bytes": 23,
+          "git_blob": "9fff9dbe4071f51821be036459e84a1c20e76a20"
+        },
+        {
+          "path": "sleepmapper/src/preprocessing/slice_dataset.py",
+          "bytes": 12279,
+          "git_blob": "bef9289385a8f74db102324dc88c8b6906ee0a36"
+        },
+        {
+          "path": "sleepmapper/src/preprocessing/tao_dataset.py",
+          "bytes": 29713,
+          "git_blob": "ec9d1fca3b65e0f95859d983de8f1db7349a0501"
+        },
+        {
+          "path": "sleepmapper/src/training/__init__.py",
+          "bytes": 0,
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+          "path": "sleepmapper/src/training/evaluate_multimodal.py",
+          "bytes": 2937,
+          "git_blob": "c8b0c156c16f026c61b0fae4dca5c940d9122b71"
+        },
+        {
+          "path": "sleepmapper/src/training/train_multimodal.py",
+          "bytes": 14023,
+          "git_blob": "9496113cd936721292dd3c84a0366cbff200d8d1"
+        },
+        {
+          "path": "sleepmapper/src/utils/__init__.py",
+          "bytes": 0,
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        }
+      ]
+    }
+  ],
+  "successful_primary_body_receipts": [
+    {
+      "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/branches/main",
+      "name": "Sleep-Apnea-Detection-Model-head.json",
+      "bytes": 4943,
+      "sha256": "a044b899ded28e39d538ad9d207227f38cc4a2e0b429d33c4a5090ee1388cb16"
+    },
+    {
+      "url": "https://api.github.com/repos/SebasTS15/Sleep-Apnea-Detection-Model/git/trees/ad979ff72de4cb27a308ed03d56c3729a4396352?recursive=1",
+      "name": "Sleep-Apnea-Detection-Model-tree.json",
+      "bytes": 3152,
+      "sha256": "955a609a86395b3c1d6dfcfa8b2f1dfc2e5d5d8e0890770cd916c9788debb0e8"
+    },
+    {
+      "url": "https://api.github.com/repos/zhuangzx1127/ResSleepNet/branches/main",
+      "name": "ResSleepNet-head.json",
+      "bytes": 4877,
+      "sha256": "31685e6a6b2309ec60b41c4b80a3bb31b53310650a97eb4c2c3e0f3cd27d24b6"
+    },
+    {
+      "url": "https://api.github.com/repos/zhuangzx1127/ResSleepNet/git/trees/9fcfda7d7d71efbb1c71486c4a3827e69473a703?recursive=1",
+      "name": "ResSleepNet-tree.json",
+      "bytes": 5600,
+      "sha256": "1832e0228d4ed025569fbfec92013fbd8d2b42e5fd36e34c6932da90ab94df38"
+    },
+    {
+      "url": "https://api.github.com/repos/somnisense/audio-sleep-cnn-baselines/branches/main",
+      "name": "audio-sleep-cnn-baselines-head.json",
+      "bytes": 3971,
+      "sha256": "78b3ce3df64cad0d0ef1d143dedb5e032aaae90ae7af4266af489b044c2ab32a"
+    },
+    {
+      "url": "https://api.github.com/repos/somnisense/audio-sleep-cnn-baselines/git/trees/82b565f247d4232a55fcfaf0fed79ce3a42a71c2?recursive=1",
+      "name": "audio-sleep-cnn-baselines-tree.json",
+      "bytes": 2134,
+      "sha256": "cfbc20c779d626f522d8e5809ba03e02fb8448d8ec3620df55a565a989be0c92"
+    },
+    {
+      "url": "https://api.github.com/repos/somnisense/ca1d-sleep-apnea/branches/main",
+      "name": "ca1d-sleep-apnea-head.json",
+      "bytes": 3881,
+      "sha256": "58d654ed94f8044fcf65c1b95ddd336fd2e3bf2423940e2d269f5aee4dc5afd8"
+    },
+    {
+      "url": "https://api.github.com/repos/somnisense/ca1d-sleep-apnea/git/trees/f7bd024e44423927ca717daa87a76ea7676cd36d?recursive=1",
+      "name": "ca1d-sleep-apnea-tree.json",
+      "bytes": 2054,
+      "sha256": "728ed2275bde60d83949bbfb88b7e26ce873a5609b496fc7019796eff2424037"
+    },
+    {
+      "url": "https://api.github.com/repos/sudo-stvk/SleepMapper/branches/main",
+      "name": "SleepMapper-head.json",
+      "bytes": 4713,
+      "sha256": "b3adb697c4f69fdb89369564e7145af4b06961563b81f4ca96b588ee47c04624"
+    },
+    {
+      "url": "https://api.github.com/repos/sudo-stvk/SleepMapper/git/trees/98c9d6e51b45552c0ebaeba000760100b787afa6?recursive=1",
+      "name": "SleepMapper-tree.json",
+      "bytes": 5922,
+      "sha256": "47b821c644bbb3be08007fdf9cb0a3f0f525102b0a3a6e98dd68848b6053f0b8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sudo-stvk/SleepMapper/98c9d6e51b45552c0ebaeba000760100b787afa6/README.md",
+      "name": "SleepMapper-README.md",
+      "bytes": 9292,
+      "sha256": "fc1d1f9f0b8b5cb005fcdb63d60a7b2f689ceadcc8f2e0f624412e5abc15940f"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sudo-stvk/SleepMapper/98c9d6e51b45552c0ebaeba000760100b787afa6/sleepmapper/src/models/multimodal_cnn.py",
+      "name": "SleepMapper-sleepmapper_src_models_multimodal_cnn.py",
+      "bytes": 6801,
+      "sha256": "19d561d00a7d0faa3f6dd0555952a4fd95dcc406619d0d0fb98a603efa8287cd"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sudo-stvk/SleepMapper/98c9d6e51b45552c0ebaeba000760100b787afa6/sleepmapper/src/preprocessing/tao_dataset.py",
+      "name": "SleepMapper-sleepmapper_src_preprocessing_tao_dataset.py",
+      "bytes": 29713,
+      "sha256": "ba7845eaaad98acc3edfe3fd3bf78649c267d39217f97c8060a56839775c1374"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/somnisense/ca1d-sleep-apnea/f7bd024e44423927ca717daa87a76ea7676cd36d/README.md",
+      "name": "ca1d-sleep-apnea-README.md",
+      "bytes": 7570,
+      "sha256": "5a5df8e68d5d0694b760b68623bc242f73fa92e64f33d9f55f7095d88827a157"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/somnisense/ca1d-sleep-apnea/f7bd024e44423927ca717daa87a76ea7676cd36d/LICENSE",
+      "name": "ca1d-sleep-apnea-LICENSE",
+      "bytes": 1068,
+      "sha256": "987ad9e194878eef94a036fc053ec20535ac73723f969ca6cf5b27c6aaec0a5d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/somnisense/ca1d-sleep-apnea/f7bd024e44423927ca717daa87a76ea7676cd36d/code/run_experiments.py",
+      "name": "ca1d-sleep-apnea-code_run_experiments.py",
+      "bytes": 15889,
+      "sha256": "b6360b7d09f5eafc1aad903c7b61c06070052825052b7518b98709686d52f44d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/somnisense/audio-sleep-cnn-baselines/82b565f247d4232a55fcfaf0fed79ce3a42a71c2/README.md",
+      "name": "audio-sleep-cnn-baselines-README.md",
+      "bytes": 7264,
+      "sha256": "cdc5d7976a058486349710f78a4773df6561fcab7e130cd3825ded0908d8b836"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/somnisense/audio-sleep-cnn-baselines/82b565f247d4232a55fcfaf0fed79ce3a42a71c2/code/run_experiments.py",
+      "name": "audio-sleep-cnn-baselines-code_run_experiments.py",
+      "bytes": 10962,
+      "sha256": "6d7e997afa3ab314b26a41ad4f210f6f25198ac04e3ba005e81984be3fde8487"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/SebasTS15/Sleep-Apnea-Detection-Model/ad979ff72de4cb27a308ed03d56c3729a4396352/README.md",
+      "name": "Sleep-Apnea-Detection-Model-README.md",
+      "bytes": 2266,
+      "sha256": "bc5c4b20a59e2c18f882580d209d808714d1bad443a65d7128e8a9142211e2f8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/SebasTS15/Sleep-Apnea-Detection-Model/ad979ff72de4cb27a308ed03d56c3729a4396352/LICENSE",
+      "name": "Sleep-Apnea-Detection-Model-LICENSE",
+      "bytes": 1067,
+      "sha256": "1d453d69e0a8e77b7f76e5c105afc9daa1eed8809ae370a4bcf88e1327b33a52"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/SebasTS15/Sleep-Apnea-Detection-Model/ad979ff72de4cb27a308ed03d56c3729a4396352/Model/Sleep%20Apnea.ipynb",
+      "name": "Sleep-Apnea-Detection-Model-Model_Sleep Apnea.ipynb",
+      "bytes": 290000,
+      "sha256": "d6af5877a9df1fc0e2e68803dbf54663385b297fbc9d89d04ffe5eca57f5bb70"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/zhuangzx1127/ResSleepNet/9fcfda7d7d71efbb1c71486c4a3827e69473a703/README.md",
+      "name": "ResSleepNet-README.md",
+      "bytes": 2505,
+      "sha256": "148ede4ee6528e63565e39f141f057ebe84f6ecfbd2f4d41eb861abd69a0e867"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/zhuangzx1127/ResSleepNet/9fcfda7d7d71efbb1c71486c4a3827e69473a703/test.py",
+      "name": "ResSleepNet-test.py",
+      "bytes": 2873,
+      "sha256": "193bc9cbaa4fa38100e49579053976bb1d0d9f5ca7c943d3ca8f7a6a32c2fb36"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/zhuangzx1127/ResSleepNet/9fcfda7d7d71efbb1c71486c4a3827e69473a703/utils.py",
+      "name": "ResSleepNet-utils.py",
+      "bytes": 15021,
+      "sha256": "12d389c97c9a545ae522c28ceaaaff08c58cddc6c1b18282466a35983a41aeb3"
+    }
+  ],
+  "local_download_accounting": {
+    "successful_metadata_code_bytes": 443538,
+    "failed_probe_reservation": 30000,
+    "charged_upper_bound": 473538,
+    "cap": 500000,
+    "previous_study_historical_upper_bound": 644877909,
+    "web_search_extraction_transfer_bytes": "Unavailable; not represented as a measured quantity",
+    "model_weights_audio_or_dataset_bodies_downloaded": 0
+  },
+  "failed_probe": {
+    "url": "https://data.mendeley.com/public-api/datasets/wrf77nvb8z/versions/1",
+    "http_status": 404,
+    "body_saved": false,
+    "meaning": "Guessed route not found. No conclusion about dataset permissions or presence of a scaler in the separate Mendeley release."
+  },
+  "sleep_apnea_model": {
+    "weights_listed_but_not_downloaded": {
+      "path": "Model/model_apnea.keras",
+      "published_tree_bytes": 1090253,
+      "git_blob": "df6ce773ae289d444c1ac42392717d4b17a165d1"
+    },
+    "nominal_input_rate": 16000,
+    "nominal_samples": 160000,
+    "features": 160,
+    "feature_components": [
+      "13MFCC mean/std",
+      "64Mel-dB mean/std",
+      "ZCR mean/std",
+      "spectral centroid mean/std",
+      "RMS mean/std"
+    ],
+    "scaler": "External StandardScaler.fit_transform on all X before sample-level train_test_split; no saved scaler in inspected Git tree",
+    "notebook_code_cells": [
+      {
+        "cell": 0,
+        "code_sha256": "e3b2a2abcf284950e08ac65d19713e9ad4b63bd7299a3e9bfbc1e41f8baf423c"
+      },
+      {
+        "cell": 1,
+        "code_sha256": "7f50be57dfa7814ac2b8d6a3dbdd50703e55df2bbf2ec4de4a12412642e5eafa"
+      },
+      {
+        "cell": 2,
+        "code_sha256": "57619d0ff118345e35fa7512b371271400bb9128db1e898f2265e4de738544df"
+      },
+      {
+        "cell": 3,
+        "code_sha256": "f15488de99c49678c395b6bff49df4e5519b193530dc617fcc2f13c3113aa6f6"
+      },
+      {
+        "cell": 4,
+        "code_sha256": "95ab4ab974838e7f9c1b6d7fdd38bd8baf945fa12957918da68d73021deb0622"
+      },
+      {
+        "cell": 5,
+        "code_sha256": "895399ad71021875c2484873dc4ce2b833749e1f00682c8f7261bbdb6e124067"
+      },
+      {
+        "cell": 6,
+        "code_sha256": "66bcf74aa21d81f4ebe28b47a4450fc501d07852f09474eb8a87a136cbadde9c"
+      },
+      {
+        "cell": 7,
+        "code_sha256": "c65474bddfd1bf8920251e050c56f2c506a21bbe0a80dc129f549432d84b5669"
+      },
+      {
+        "cell": 8,
+        "code_sha256": "2bb57825e82c973b436051dc29267f35983dd0bb5c15461fab2efa0747f6bbb2"
+      },
+      {
+        "cell": 9,
+        "code_sha256": "05817f0864a989a6ce7f60380fda5be1935b6a3ed8770ea7ebde36a000313daa"
+      },
+      {
+        "cell": 10,
+        "code_sha256": "52d7ae80708b58c5964e1e7db1c6a8cd15d53fea5e95c514f7b7beec1cf795e6"
+      }
+    ],
+    "unknowns": [
+      "Exact fitted160 mean/scale statistics",
+      "Pinned librosa feature defaults/version for this fit",
+      "Source sample-rate/window and segment event alignment provenance",
+      "Participant-held-out bedside-phone behavior",
+      "Separate Mendeley additional-file inventory"
+    ]
+  },
+  "integration_decision": {
+    "active_echo": "I/Q and projected waveform transient; saved60s summary cannot supply individual breath/event waveform",
+    "source_change_defensible": false,
+    "stage_test_reopened": false,
+    "no_capture_archive_scaffolding": true,
+    "nearest_external_prerequisite": "Original fitted160-element scaler and complete model preprocessing provenance for listed apnea checkpoint; then a fresh frozen participant-held-out phone-input evaluation",
+    "active_sonar_prerequisite": "Compatible trained/evaluated acoustic I/Q-to-respiratory-waveform contract and checkpoint; belt/radar substitution is unsupported",
+    "clinical_certification_is_gate": false
+  },
+  "actions": {
+    "upstream_code_executed_or_imported": false,
+    "new_model_fit_or_inference": false,
+    "phone_or_outputs": false,
+    "build_or_test_campaign": false,
+    "app_source_changed": false
+  }
+}
