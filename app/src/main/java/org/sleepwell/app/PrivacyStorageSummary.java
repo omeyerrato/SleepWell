@@ -49,6 +49,8 @@ final class PrivacyStorageSummary implements View.OnAttachStateChangeListener {
 
     @Override public void onViewAttachedToWindow(View view){if(attached||closed)return;attached=true;load();refreshReceipt();}
     @Override public void onViewDetachedFromWindow(View view){attached=false;closed=true;generation++;receiptGeneration++;main.removeCallbacksAndMessages(null);worker.shutdown();}
+    /** Audio is changing: fence any older snapshot until the completion refresh reads again. */
+    void invalidateStorage(){if(closed)return;generation++;loading=true;retry.setVisibility(View.GONE);records.setText("Loading…");audio.setText("Loading…");status.setText("Updating local storage…");status.setVisibility(View.VISIBLE);}
     void refreshReceipt(){
         if(!attached||closed||receiptLoading)return;receiptLoading=true;int expected=receiptGeneration;BackupExportReceipt.Scope pinned=receipts;Handler dispatcher=main;WeakReference<PrivacyStorageSummary> owner=new WeakReference<>(this);
         worker.execute(()->{BackupExportReceipt.Read read=pinned.read(BackupExportReceipt.Kind.JSON);dispatcher.post(()->{PrivacyStorageSummary target=owner.get();if(target!=null&&target.attached&&!target.closed&&target.receiptGeneration==expected){target.receiptLoading=false;target.receiptChanged.accept(read);}});});

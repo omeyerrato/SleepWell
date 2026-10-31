@@ -28,7 +28,7 @@ final class PrivacyScreen {
             row(body,"cloud","Cloud backup",cloudStatus(activity),null,actions::cloud);
             Button audio=Design.button(body,"Export audio",false,actions::exportAudio);audio.setContentDescription("Export audio library");audio.setMinHeight(Design.dp(activity,48));audio.setMinimumHeight(Design.dp(activity,48));audio.setCompoundDrawablesRelativeWithIntrinsicBounds(Icons.resource("upload"),0,0,0);audio.setCompoundDrawablePadding(Design.dp(activity,8));tintButtonIcon(audio,false);LinearLayout.LayoutParams audioLayout=(LinearLayout.LayoutParams)audio.getLayoutParams();audioLayout.topMargin=0;audio.setLayoutParams(audioLayout);
             Design.space(body,12);Design.line(body);
-            AudioClearUi.add(body,actions::stopPreview,actions::refresh);
+            AudioClearUi.add(body,actions::stopPreview,actions::refresh,summary::invalidateStorage);
             body.addOnAttachStateChangeListener(this);if(body.isAttachedToWindow())onViewAttachedToWindow(body);
         }
         @Override public void onViewAttachedToWindow(View view){if(attached)return;attached=true;HistoryErase.inspect(activity,Records.factory);body.getViewTreeObserver().addOnWindowFocusChangeListener(this);run();}
