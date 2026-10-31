@@ -1,0 +1,136 @@
+{
+  "run": 41193956518,
+  "source_commit": "cc4871eefa5833266f79d6f1b319d5561c1bf285",
+  "native_result": "OK (1 test)",
+  "native_seconds": 67.47,
+  "required_original_images": 11,
+  "all_11_originals_individually_visually_inspected": true,
+  "original_artifact_directory": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41193956518\\silent-android-review",
+  "files": [
+    {
+      "file": "appearance-automatic.png",
+      "bytes": 473566,
+      "sha256": "ecefaa7b35071573e64a8a8d5314b11345a3d90bc4c34150acdc848ff800647b"
+    },
+    {
+      "file": "appearance-lamp-config.png",
+      "bytes": 164405,
+      "sha256": "f9c424e996be28eaa0229afb839c7a9ed55a432514cb6bf96d289ca5c89cfd5d"
+    },
+    {
+      "file": "appearance-large-contrast-tonight-action.png",
+      "bytes": 223204,
+      "sha256": "310fca8b53151994ccaa3ee4a0664a7d259d5b1da41375e88b963204f56ecc7f"
+    },
+    {
+      "file": "appearance-large-contrast-tonight.png",
+      "bytes": 223204,
+      "sha256": "310fca8b53151994ccaa3ee4a0664a7d259d5b1da41375e88b963204f56ecc7f"
+    },
+    {
+      "file": "appearance-large-contrast.png",
+      "bytes": 530021,
+      "sha256": "7878bcfae717a5f4218ae5329380d6d1a81746768ce12867720322daf9124fd6"
+    },
+    {
+      "file": "appearance-selected-0.png",
+      "bytes": 473595,
+      "sha256": "014611acbb42071f47fcd9e3d1ab4e649a8dcdc1a5d18c497351b53e5866160b"
+    },
+    {
+      "file": "appearance-selected-1.png",
+      "bytes": 473231,
+      "sha256": "f430cd65ac38d0e54bd214a65214ad0b969745bed88f38a8aed3f4e610dfc290"
+    },
+    {
+      "file": "appearance-selected-2.png",
+      "bytes": 473579,
+      "sha256": "6138520f7b83244ae47855b32bf613f2433b8ff2b34bc692ba0e27896304bd01"
+    },
+    {
+      "file": "appearance-tonight-0.png",
+      "bytes": 440597,
+      "sha256": "57e9ed07c921973cbf890d172b331378093a1296301cd9f7e893e55ff742a00d"
+    },
+    {
+      "file": "appearance-tonight-1.png",
+      "bytes": 437406,
+      "sha256": "4ff2f089e2b16747a8bf5a906a2006e7e7661462a05e2f4cde46c2a16f03c8e1"
+    },
+    {
+      "file": "appearance-tonight-2.png",
+      "bytes": 437604,
+      "sha256": "15ff09c6482c27356164cc5e002c77fca3a736c025c2d50fddc0682ed69476ff"
+    },
+    {
+      "file": "appearance-automatic-layout.json",
+      "bytes": 55738,
+      "sha256": "32ee0e6005ce35b45087a2d6c91715fa526281e6913055324c51b43958c1cc33"
+    },
+    {
+      "file": "appearance-lamp-config-layout.json",
+      "bytes": 32257,
+      "sha256": "c52abb0eaaad18e8cf432ea76c001ade24f5d0d04680433380af51e6d664c82a"
+    },
+    {
+      "file": "appearance-large-contrast-layout.json",
+      "bytes": 58823,
+      "sha256": "3f439289e6831e08a5353d146518f2d692a4ecd7c0cb589096f9ae4ecf963650"
+    },
+    {
+      "file": "appearance-large-contrast-tonight-action-layout.json",
+      "bytes": 40238,
+      "sha256": "c34dbee025196e1ea89f10e9f28fa0845c139605fbeeed9b5e3591a0c6d5a3e6"
+    },
+    {
+      "file": "appearance-large-contrast-tonight-layout.json",
+      "bytes": 40238,
+      "sha256": "c34dbee025196e1ea89f10e9f28fa0845c139605fbeeed9b5e3591a0c6d5a3e6"
+    },
+    {
+      "file": "appearance-selected-0-layout.json",
+      "bytes": 55736,
+      "sha256": "c76a60f585e51f4420ea4f21eb1c11534ea212cb04ca204fdb6b8e5ec53a1a5f"
+    },
+    {
+      "file": "appearance-selected-1-layout.json",
+      "bytes": 55736,
+      "sha256": "c76a60f585e51f4420ea4f21eb1c11534ea212cb04ca204fdb6b8e5ec53a1a5f"
+    },
+    {
+      "file": "appearance-selected-2-layout.json",
+      "bytes": 55736,
+      "sha256": "c76a60f585e51f4420ea4f21eb1c11534ea212cb04ca204fdb6b8e5ec53a1a5f"
+    },
+    {
+      "file": "appearance-tonight-0-layout.json",
+      "bytes": 38030,
+      "sha256": "1e11d3e165c5e860eae34c29aeb962ef8c3bbf9acd1b48189435325007570b75"
+    },
+    {
+      "file": "appearance-tonight-1-layout.json",
+      "bytes": 38030,
+      "sha256": "41eb96ff3c419de319f2afab0bc6a41c95048349e1979e852e6850f204d62bd2"
+    },
+    {
+      "file": "appearance-tonight-2-layout.json",
+      "bytes": 38026,
+      "sha256": "9058daf3a9ad202818b02d9de72d790107aaf9d14b3342f91f28ec70cddb4af4"
+    },
+    {
+      "file": "AppearanceFlowTest.txt",
+      "bytes": 758,
+      "sha256": "59bbb091730e6b26b715528a79a0e234e9d3249c48dba13cbd8b3be8bfabd4e3"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 591,
+      "sha256": "056f15ec0d7ebc3b1e5309a2921a2a818d18260985be121c20287f53f7e43370"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "bytes": 283,
+      "sha256": "fef7cdeac58f89bfbeef379c278f0f0c93ce593cf77d35ca40b072004e865213"
+    }
+  ]
+}
