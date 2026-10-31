@@ -1,0 +1,147 @@
+{
+  "run": "41104642545",
+  "source": "d3f7422dd498dcce869cd18c51530ee0e44b0c05",
+  "seconds": 57.891,
+  "required_original_images": 20,
+  "all_originals_individually_visually_inspected": true,
+  "files": [
+    {
+      "file": "report-reference-chart-gap.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-chart-gap.png",
+      "sha256": "6056347c9b69b6a05b40b626b03a6432819b43a573d9621c9d256f5f981cfe3e",
+      "bytes": 173051
+    },
+    {
+      "file": "report-reference-editor.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-editor.png",
+      "sha256": "1fd49e410c56c0dafc1e41c09ce99790344c254be784ccff65f473f944faa367",
+      "bytes": 138173
+    },
+    {
+      "file": "report-reference-history.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-history.png",
+      "sha256": "1e178a40c8fa64a182012a0179a48dc079508d85ec789ed883fe14ca40bfb6fd",
+      "bytes": 227559
+    },
+    {
+      "file": "report-reference-inline-audio.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-inline-audio.png",
+      "sha256": "9528ae3f839a0a1693427dee74466c6a8e8eec592a08da1c9f56c83e6956ef93",
+      "bytes": 209235
+    },
+    {
+      "file": "report-reference-month.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-month.png",
+      "sha256": "ebd75bb502bb83d139629a71e0541769713f5028ffd05bced44f4ed80c7d9bcc",
+      "bytes": 173351
+    },
+    {
+      "file": "report-reference-night.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-night.png",
+      "sha256": "8fff21f9a4475a3d700f592e6e35cf9843c6f4bd7fff0ad46e46a1e8166fa94f",
+      "bytes": 173729
+    },
+    {
+      "file": "report-reference-period-accessibility.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-period-accessibility.png",
+      "sha256": "c15951700940deed5879016b10ecda1e61d000d5689d330fe341fe016a0de0a1",
+      "bytes": 137692
+    },
+    {
+      "file": "report-reference-period-cancelled.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-period-cancelled.png",
+      "sha256": "c2082ec0df3fcaa2b18b7811ea2e36cfe2a708e6a22322ec407dce26ac2eee30",
+      "bytes": 142224
+    },
+    {
+      "file": "report-reference-period-draft-recreated.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-period-draft-recreated.png",
+      "sha256": "c911488cacd901f62cf3264f0b0bdb8e27faf8f6594fbadac2f200e820367124",
+      "bytes": 135848
+    },
+    {
+      "file": "report-reference-period-drag-end.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-period-drag-end.png",
+      "sha256": "c911488cacd901f62cf3264f0b0bdb8e27faf8f6594fbadac2f200e820367124",
+      "bytes": 135848
+    },
+    {
+      "file": "report-reference-period-drag-start.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-period-drag-start.png",
+      "sha256": "5ab63cb95957e830f7b527ef8b0f8707d4b8f562e0b1f37133a1cb112db4eac4",
+      "bytes": 136883
+    },
+    {
+      "file": "report-reference-period-persisted.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-period-persisted.png",
+      "sha256": "ef7defa814ff86505f719d0266f070a1dfbe6aa87e4b6d586d82bab85041e110",
+      "bytes": 148050
+    },
+    {
+      "file": "report-reference-provider-stages.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-provider-stages.png",
+      "sha256": "a633bad13086c65e70f82d0bb7824bc4622fc5c2133530e1c1f1c2d2ecc1c617",
+      "bytes": 138392
+    },
+    {
+      "file": "report-reference-reopened.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-reopened.png",
+      "sha256": "ef7defa814ff86505f719d0266f070a1dfbe6aa87e4b6d586d82bab85041e110",
+      "bytes": 148050
+    },
+    {
+      "file": "report-reference-tags-notes.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-tags-notes.png",
+      "sha256": "58e6ccbe5d71b4c61a5936f79de5e9242fc63b5341cc8ffd2469d8914606c5d5",
+      "bytes": 144064
+    },
+    {
+      "file": "report-reference-week-calendar.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-week-calendar.png",
+      "sha256": "c8c33fbc74670c3569e59b4da91b791322756d10dc0313bd8e9c028da11e120e",
+      "bytes": 145157
+    },
+    {
+      "file": "report-reference-week-selected.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-week-selected.png",
+      "sha256": "38b3b9548734ae50e97a7ea54f5424a01b6c89c5aa9e2625f9c5d9d6b26d1420",
+      "bytes": 184823
+    },
+    {
+      "file": "report-reference-week.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-week.png",
+      "sha256": "7916e7e0db7777dd49e8270076e1021ccdd0023acaff5561b2aa5be04890b539",
+      "bytes": 212801
+    },
+    {
+      "file": "report-reference-year-selected.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-year-selected.png",
+      "sha256": "07ffd11c812eba61bffb1db01de78a50107933125640c38340dece83eaf5905f",
+      "bytes": 179509
+    },
+    {
+      "file": "report-reference-year.png",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\report-reference-year.png",
+      "sha256": "a683e7231b562a422701947d9fbe04c245cbe6df3a829680079df690e7e2aa45",
+      "bytes": 173285
+    },
+    {
+      "file": "environment.json",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\environment.json",
+      "sha256": "ed054bd2ba9b75043c055989620407a5ad9d88b26537773ac5745681c018b106",
+      "bytes": 663
+    },
+    {
+      "file": "focused-review-summary.json",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\focused-review-summary.json",
+      "sha256": "bbb595ab6ee62bd620bbb19556b08ea7082253b836639dcefb96283b158710fe",
+      "bytes": 355
+    },
+    {
+      "file": "ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "original": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\ci-reviews\\41104642545\\silent-android-review\\ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects.txt",
+      "sha256": "147d7669c1fc2831e19f88e5c56394c61b304440d752acfa12837c3bf520af26",
+      "bytes": 812
+    }
+  ]
+}
