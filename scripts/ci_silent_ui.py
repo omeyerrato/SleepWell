@@ -69,6 +69,7 @@ parser.add_argument("--scope", choices=(
     'chart-phone-motion',
     'wake-challenge-reference',
     'wake-reference-current',
+    'wake-check-reference',
     'calendar-consent-recovery',
     'profile-room-dimming',
     'room-settings-search',
@@ -392,6 +393,8 @@ if args.scope == "tone-wake":
     tests = list(FOCUSED_TESTS)
 elif args.scope == "report":
     tests = list(REPORT_TESTS)
+elif args.scope == "wake-check-reference":
+    tests = ["WakeCheckFlowTest#silentPromptCountsDownRecreatesConfirmsAndReopensDurably"]
 elif args.scope in ("report-flow", "report-rounding"):
     tests = ["ReportReferenceFlowTest#referenceHistoryTrendsEditAndNightReportPersistWithoutEffects"]
 elif args.scope == "settings-reference-current":
@@ -628,6 +631,7 @@ if args.scope != "full":
         "chart-phone-motion": ['chart-clock-overnight.png', 'chart-clock-night.png', 'chart-clock-short.png', 'chart-clock-fold.png', 'chart-clock-phone-history.png', 'chart-clock-phone-selected.png', 'chart-clock-phone-paused.png', 'chart-clock-phone-retry.png', 'chart-clock-tracking-main.png', 'chart-clock-tracking-options.png', 'chart-clock-tracking-returned.png', 'chart-clock-tracking-paused.png', 'chart-clock-tracking-recreated.png', 'chart-clock-tracking-session.png'],
         "live-night-timeline": ["sonar-night-setup.png", "sonar-night-measuring.png", "sonar-night-paused.png", "sonar-night-options.png", "sonar-night-options-recreated.png", "sonar-night-paused-recreated.png", "sonar-night-resumed.png", "sonar-night-missing.png", "sonar-night-stop-confirmation.png", "sonar-night-whole-night.png"],
         "wake-reference-current": WAKE_REFERENCE_CURRENT_FRAMES,
+        "wake-check-reference": [name for name in WAKE_REFERENCE_CURRENT_FRAMES if name.startswith("wake-check-")],
         "wake-challenge-reference": ["wake-check-waiting.png", "wake-check-prompt.png", "wake-check-countdown.png", "wake-check-recreated.png", "wake-check-confirmed.png", "wake-check-reopened.png", "wake-check-storage-error.png", "routine-legacy.png", "routine-ordered.png", "routine-reordered.png", "routine-recreated.png", "routine-removed.png", "routine-reopened.png", "challenge-math-initial.png", "challenge-math-selected.png", "challenge-math-wrong.png", "challenge-math-recreated.png", "challenge-math-completed.png", "challenge-math-typed-wrong.png", "challenge-math-typed-recreated.png", "challenge-math-typed-completed.png"],
         "calendar-consent-recovery": ["calendar-rules-permission-settings.png", "calendar-rules-permission-granted-draft.png", "calendar-rules-permission-revoked-draft.png", "auto-calendar-draft-recreated.png", "auto-calendar-consent-conflict.png", "auto-calendar-saved-private.png"],
         "profile-room-dimming": ["backup-document-review.png", "backup-document-confirmation.png", "backup-document-review-recreated.png", "backup-document-review-reopened.png", "backup-document-restoring.png", "backup-document-restoring-recreated.png", "backup-document-restored.png", "backup-document-result-reopened.png"],
