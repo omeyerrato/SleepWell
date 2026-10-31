@@ -33,7 +33,7 @@ final class TagComparisonUi {
         List<RecordEntry> rows = new ArrayList<>();
         for (RecordEntry record : state.records) if (included.contains(record.id)) rows.add(record);
         rows.sort(Comparator.comparingLong((RecordEntry record) -> record.edit.start).reversed());
-        Design.text(body, group.count + (group.count == 1 ? " contributing night" : " contributing nights"),
+        Design.text(body, group.count + (group.count == 1 ? " contributing period" : " contributing periods"),
                 14, 500, Design.MUTED);
         if (group.count > 0) {
             Design.space(body, 8);
@@ -49,7 +49,7 @@ final class TagComparisonUi {
                     RecordUi.clock(activity, record.edit.start, zone) + " – " + RecordUi.clock(activity, record.edit.end, zone),
                     RecordUi.duration(record.duration()),
                     () -> activity.startActivity(RecordUi.intent(activity, RecordReportActivity.class).putExtra("record", id)));
-            row.setContentDescription("Open contributing night " + id);
+            row.setContentDescription("Open contributing period " + id);
             Design.line(body);
         }
         Design.space(body, 14);
