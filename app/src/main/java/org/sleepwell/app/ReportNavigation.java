@@ -11,7 +11,7 @@ import android.widget.TextView;
 /** The three everyday report destinations, visible without opening an overflow menu. */
 final class ReportNavigation {
     /** Replace peer report sections; a record's explicit Back still returns to its caller. */
-    static void open(Activity activity,int section){Intent intent=section==0?RecordUi.intent(activity,RecordReportActivity.class).putExtra("reportRoot",true):RecordUi.intent(activity,HistoryActivity.class).putExtra("trends",section==2);activity.startActivity(intent);activity.finish();}
+    static void open(Activity activity,int section){Intent intent=section==0?RecordUi.intent(activity,RecordReportActivity.class).putExtra("reportRoot",true):RecordUi.intent(activity,HistoryActivity.class).putExtra("trends",section==2);android.os.Bundle browse=activity instanceof HistoryActivity history?history.browseState():activity.getIntent().getBundleExtra("reportBrowse");if(browse!=null)intent.putExtra("reportBrowse",browse);activity.startActivity(intent);activity.finish();}
     static void append(Activity activity, LinearLayout body, int selected,
                        Runnable night, Runnable history, Runnable trends) {
         LinearLayout rail = Design.row(activity);

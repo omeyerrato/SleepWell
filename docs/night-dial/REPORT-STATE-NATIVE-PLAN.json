@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "base_commit": "9843587f",
+  "branch": "codex/report-state-usability-20261101",
+  "native_status": "not_run_pending_integration",
+  "verification_commit": null,
+  "native_review_run": null,
+  "units": "not_run",
+  "emulator": "disposable API36 only; host audio disabled",
+  "arguments": {
+    "ciReview": "true"
+  },
+  "methods": [
+    {
+      "method": "org.sleepwell.app.NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations",
+      "required_originals": [
+        "night-dial-report-empty.png",
+        "night-dial-report-history-empty.png",
+        "night-dial-report-trends-first-night.png",
+        "night-dial-report-night.png",
+        "night-dial-report-signal-scrub.png",
+        "night-dial-report-signal-restored.png",
+        "night-dial-report-history-no-results.png",
+        "night-dial-report-history-query-returned.png",
+        "night-dial-report-calendar-empty-date.png",
+        "night-dial-report-manual-save-error-restored.png",
+        "night-dial-report-manual-date-saved.png",
+        "night-dial-report-history-imported.png",
+        "night-dial-report-dirty-back.png",
+        "night-dial-report-dirty-restored.png",
+        "night-dial-report-restore-review.png",
+        "night-dial-report-restore-review-restored.png",
+        "night-dial-report-restore-draft.png",
+        "night-dial-report-restored-night.png",
+        "night-dial-report-refresh-failed.png",
+        "night-dial-report-refresh-retry.png",
+        "night-dial-report-removed.png"
+      ]
+    },
+    {
+      "method": "org.sleepwell.app.NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown",
+      "required_originals": [
+        "night-dial-report-trends-week.png",
+        "night-dial-report-trends-month.png",
+        "night-dial-report-trends-year.png",
+        "night-dial-report-trends-empty.png",
+        "night-dial-report-trends-empty-actions.png",
+        "night-dial-report-trends-empty-restored.png",
+        "night-dial-report-trends-restored.png",
+        "night-dial-report-trends-refresh-failed.png",
+        "night-dial-report-trends-refresh-retry.png"
+      ]
+    },
+    {
+      "method": "org.sleepwell.app.RecordCalendarFlowTest#pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds",
+      "required_originals": [
+        "calendar-history.png",
+        "calendar-history-recreated.png",
+        "calendar-trend.png",
+        "calendar-editor.png",
+        "calendar-editor-recreated.png",
+        "calendar-editor-selected.png",
+        "calendar-reopened.png"
+      ]
+    }
+  ],
+  "required_original_count": 37,
+  "full_acceptance": false,
+  "limits": "No phone, microphone capture, playback, OS alarm, model evaluation or broad/unit campaign. Existing baseline images are historical source 351b78bf run 41212354914. Require source/run/logs, every original PNG and actual visual inspection before acceptance."
+}
