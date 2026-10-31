@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "source_parent_revision": "a1d17d06",
+  "base_revision": "80f06f44",
+  "native_status": "not_run_pending_integration",
+  "units": "not_run",
+  "expected_methods": 2,
+  "required_original_count": 10,
+  "methods": [
+    {
+      "method": "org.sleepwell.app.RecordCalendarFlowTest#manualOverlapReviewSurvivesRecreationAndRejectsChangedCoverage",
+      "required_originals": [
+        "night-dial-manual-overlap-review.png",
+        "night-dial-manual-overlap-review-actions.png",
+        "night-dial-manual-overlap-review-recreated.png",
+        "night-dial-manual-overlap-kept.png",
+        "night-dial-manual-overlap-stale.png",
+        "night-dial-manual-overlap-refreshed.png",
+        "night-dial-manual-overlap-edit-saved.png",
+        "night-dial-manual-overlap-create-review.png",
+        "night-dial-manual-overlap-save-recreated.png",
+        "night-dial-manual-overlap-created.png"
+      ],
+      "covers": [
+        "27C overlap review and source coverage",
+        "same-record exclusion",
+        "union without double counting; pause and awake exclusion",
+        "Keep editing preserves draft without mutation",
+        "review recreation after volatile owner eviction never saves",
+        "changed source rejects stale confirmation; fresh review required",
+        "explicit separate edit preserves other source rows",
+        "confirmed separate creation survives Activity recreation",
+        "durable create token replay precedes overlap re-evaluation"
+      ]
+    },
+    {
+      "method": "org.sleepwell.app.RecordRecreationTest#pendingNewAndExistingSavesReattachAfterActivityRecreation",
+      "required_originals": [],
+      "covers": [
+        "existing zero-overlap save ownership and persistent creation regression"
+      ]
+    }
+  ],
+  "runtime_constraints": [
+    "Emulator only: ciReview=true and ro.kernel.qemu=1 for the new method",
+    "Actual native gestures and focused window frame commits; inspect every original",
+    "No unit campaign, model replay, microphone, playback, alarm delivery or personal device actions"
+  ],
+  "limits": [
+    "Volatile save-owner eviction is an explicit in-process simulation, not a process-kill acceptance claim.",
+    "Existing Report/Import/Share plan remains separate; this plan adds one focused native method and names one save-ownership regression.",
+    "No screenshot or native pass exists for this source until integration runs it."
+  ]
+}
