@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-01",
+  "decision": "Reject this conditional fixed fit after failed validation; no TEST respiratory labels constructed/evaluated; no Android shipping",
+  "workflow_commit": "44804351",
+  "freeze": {
+    "files": {
+      "docs/research/2026-11-01-apnea-protocol-proposal.json": "12e05a53e76cbbe3d0abdd31fd6e7a1a8cd6833a1e3a76eee6be0d6ea7ac2fba",
+      "docs/research/2026-11-01-apnea-conditional-approval.json": "b7f220897b2a41dbc385e9cd8791c3223b832bb91f53f9909fbe0ddc51762a17",
+      "docs/research/2026-11-01-apnea-train-contract.json": "8cbc5c0cdf1102037d27fe879b7086d45d50085b096494bf35bca671b0d478c7",
+      "scripts/phone_apnea_pilot.py": "1cfd23748bb1a8c5d5fbb43a347329206018380609061abc468042e08f3a84ec",
+      "scripts/phone_apnea_train_contract.py": "effa4c22766c6b664df9476817b42e6408ff727002141f3ac535705d18220726",
+      "scripts/phone_stage_acoustic.py": "cded615f226bf2e886a3625ac8a19ac65fe479201678c0bc4b77af263d48dbe7",
+      "docs/research/2026-10-31-acoustic-pilot/train-inputs.json": "5fe6d0898d4cf728672493215f58c8e529147741fc00b23a00c2c432ee4e26cf",
+      "docs/research/2026-10-31-acoustic-pilot/validation.json": "377aebee155ce6b5e6c30522207c1ede02c0f54aa979abfc32d8b0237931068d",
+      "docs/research/2026-10-31-acoustic-pilot/test.json": "09db1d2566cd843975fd2b640cb2135ebaaf0ca2c683678373dc3e094de81e03",
+      "docs/research/2026-10-31-acoustic-pilot/subject-sources.json": "4b1cf55c181d01d8fa5c2c537687887ebc5bce9b754c8417ede4c898fd090bc3",
+      "docs/research/2026-10-31-acoustic-pilot/manifest.json": "1bb9dce9efd43ba82875fd8e6f63a0feccbcabbaabdaec21128d022fa48d99f7"
+    },
+    "source_commit": "44804351ad7fbdd5080698ea148768c808409faa",
+    "units": "Seconds inferred under explicit root conditional approval, not field-specifically independently proved",
+    "task": "source_annotated_respiratory_event_overlap",
+    "clinical_or_android_acceptance": false
+  },
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "sklearn": "1.9.1"
+  },
+  "executions": {
+    "fits": 1,
+    "validation_evaluations": 1,
+    "test_respiratory_labels_constructed": false,
+    "test_evaluations": 0,
+    "new_network": false,
+    "new_audio_or_weights": false,
+    "stage_changed": false,
+    "android_changed": false
+  },
+  "parity": {
+    "train": 2.220446049250313e-16,
+    "validation": 1.1102230246251565e-16
+  },
+  "probabilities": "Uncalibrated mean tree-leaf class proportions for conditional annotated-event overlap, not clinical confidence",
+  "private_artifacts": [
+    {
+      "name": "model.json",
+      "bytes": 618734,
+      "sha256": "534b3ebf651a13ce77fc7bdeb448ba5e86f9628c35ff447a446f9927e9c312d3",
+      "retained_private": true,
+      "shipped_in_app": false
+    },
+    {
+      "name": "own-primary.pkl",
+      "bytes": 352976,
+      "sha256": "8e639bc42c33c3e7a75500dd506bdb2f3801d058b3aa9f4ba6e23c6d8fdfc4cf",
+      "retained_private": true,
+      "shipped_in_app": false
+    }
+  ],
+  "artifacts": [
+    {
+      "name": ".gitattributes",
+      "bytes": 29,
+      "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d"
+    },
+    {
+      "name": "fit-started.json",
+      "bytes": 1664,
+      "sha256": "524ef86e4807034485193c70f1058f3f96ac3fba3b5b83670811d7a2acfd0944"
+    },
+    {
+      "name": "README.md",
+      "bytes": 4903,
+      "sha256": "ace242a75c94eed28bf296f4635f917deb64234b5e6005dce3343390de0ff9e4"
+    },
+    {
+      "name": "train-inputs.json",
+      "bytes": 90963,
+      "sha256": "7e1ebcbad1c9f40431bfe3d97fe70ad592c5a64ba3b80eab859f519c6efcf2cc"
+    },
+    {
+      "name": "validation-started.json",
+      "bytes": 1802,
+      "sha256": "34cc415f7564798354706afeb3dd2f5e14244544008bf91e2d222d1ba31b52d7"
+    },
+    {
+      "name": "validation.json",
+      "bytes": 71808,
+      "sha256": "19513b289d37d098b8d2d6b75f72b9c9e7e2f832a5a4432a34fb641a52e03d0c"
+    }
+  ]
+}
