@@ -1,0 +1,15 @@
+{
+  "source": "dd8c3748cc836acef44bd0338eeb7df792cabe4a",
+  "versionName": "0.1.24",
+  "versionCode": 25,
+  "minSdk": 30,
+  "targetSdk": 36,
+  "abi": "arm64-v8a",
+  "apkBytes": 177585240,
+  "sha256": "ad72af78bdfdcc939499dc404cba9d1e56a0d98e2903c0d0cb675da781f24544",
+  "releaseId": 429839326,
+  "release_url": "https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.24-reference-refinement-20261031-dd8c3748",
+  "packaging_seconds": 213.735,
+  "full_reference_acceptance": false,
+  "phone_installed": false
+}
