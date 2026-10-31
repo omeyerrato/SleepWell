@@ -23,6 +23,15 @@ STAGES = {"W": 0, "R": 1, "N1": 2, "N2": 2, "N3": 3}
 NETWORK_LIMIT = 20_000_000
 network_bytes = 0
 network_lock = threading.Lock()
+traffic_path = None
+traffic = None
+
+
+def traffic_write():
+    if traffic_path is not None:
+        temporary = traffic_path.with_suffix(".tmp")
+        temporary.write_text(json.dumps(traffic, indent=2) + "\n", encoding="utf-8")
+        temporary.replace(traffic_path)
 
 
 def reserve(size):
@@ -30,6 +39,11 @@ def reserve(size):
     with network_lock:
         if network_bytes + size > NETWORK_LIMIT:
             raise ValueError("Metadata/header acquisition budget exhausted; no audio acquired")
+        if traffic is not None:
+            if traffic["baseline_upper_bound"] + traffic["reserved_bytes"] + size > traffic["hard_cap"]:
+                raise ValueError("650MB total study traffic cap reached; no request started")
+            traffic["reserved_bytes"] += size
+            traffic_write()
         network_bytes += size
 
 
@@ -37,6 +51,9 @@ def release(size):
     global network_bytes
     with network_lock:
         network_bytes -= size
+        if traffic is not None:
+            traffic["reserved_bytes"] -= size
+            traffic_write()
 
 
 def digest(data):
@@ -147,17 +164,42 @@ def epochs(csv_bytes, annotation, contract):
 def inventory_one(cache, subject):
     folder = cache / subject
     folder.mkdir(parents=True, exist_ok=True)
-    raw, rows = tree(f"/V5/Data/{subject}")
-    (folder / "inventory.json").write_bytes(raw)
+    completed = folder / "contract.json"
+    if completed.exists():
+        previous = json.loads(completed.read_bytes())
+        if previous["subject"] != subject or previous["dataset"] != DATASET or previous["version"] != VERSION:
+            raise ValueError("Cached subject contract differs")
+        for suffix, receipt in previous["sidecars"].items():
+            if digest((folder / f"{subject}_{suffix}").read_bytes()) != receipt["sha256"]:
+                raise ValueError("Cached source metadata digest differs")
+        if previous["phone"] is not None and digest((folder / "phone-header.bin").read_bytes()) != previous["phone"]["header_sha256"]:
+            raise ValueError("Cached WAV header digest differs")
+        return dict(subject=subject, cached=True, **previous["coverage"])
+    inventory_path = folder / "inventory.json"
+    if inventory_path.exists():
+        raw = inventory_path.read_bytes()
+        rows = json.loads(raw)["data"]
+    else:
+        raw, rows = tree(f"/V5/Data/{subject}")
+        inventory_path.write_bytes(raw)
     named = {row["fileName"]: row for row in rows}
     chosen = {}
     for suffix in ("sleep_stage.csv", "annotation.json"):
         name = f"{subject}_{suffix}"
         row = named[name]
-        data = small_file(row)
-        (folder / name).write_bytes(data)
+        destination = folder / name
+        data = destination.read_bytes() if destination.exists() else b""
+        if len(data) != row["size"] or hashlib.md5(data).hexdigest() != row["md5"]:
+            data = small_file(row)
+            destination.write_bytes(data)
         chosen[suffix] = dict(file_id=row["id"], bytes=len(data), md5=row["md5"], sha256=digest(data))
-    phone = named[f"{subject}_phone.wav"]
+    phone = named.get(f"{subject}_phone.wav")
+    if phone is None:
+        result = dict(subject=subject, dataset=DATASET, version=VERSION,
+                      inventory_sha256=digest(raw), sidecars=chosen, phone=None,
+                      coverage=dict(missing_phone=True, eligible_90s_contexts=0), candidates=[])
+        save_json(folder / "contract.json", result)
+        return dict(subject=subject, **result["coverage"])
     wave_header = header(phone)
     (folder / "phone-header.bin").write_bytes(wave_header)
     contract = wav_contract(wave_header, phone["size"])
@@ -209,6 +251,7 @@ def plan_one(contract, split):
 
 
 def main():
+    global traffic_path, traffic
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("inventory", "plan"))
     parser.add_argument("--cache", type=Path, required=True)
@@ -219,6 +262,13 @@ def main():
         raise ValueError("Test41-50 remain untouched until model/protocol freeze")
     subjects = [f"{n:02}" for n in range(lo, hi+1)]
     args.cache.mkdir(parents=True, exist_ok=True)
+    traffic_path = args.cache.parent / "traffic-ledger.json"
+    if traffic_path.exists():
+        traffic = json.loads(traffic_path.read_bytes())
+    else:
+        traffic = dict(hard_cap=650_000_000, baseline_upper_bound=40_000_000, reserved_bytes=0,
+                       baseline_note="Conservative upper bound for all earlier source/metadata/header/preflight traffic; not a measured audio download")
+        traffic_write()
     if args.command == "inventory":
         with ThreadPoolExecutor(max_workers=2) as workers:
             for summary in workers.map(lambda subject: inventory_one(args.cache, subject), subjects):
