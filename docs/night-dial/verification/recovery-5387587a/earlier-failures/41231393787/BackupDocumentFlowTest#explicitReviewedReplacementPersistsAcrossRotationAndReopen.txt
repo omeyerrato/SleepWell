@@ -1,0 +1,57 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupDocumentFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.BackupDocumentFlowTest:
+INSTRUMENTATION_STATUS: test=explicitReviewedReplacementPersistsAcrossRotationAndReopen
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.BackupDocumentFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: expected:<2> but was:<3>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at org.sleepwell.app.BackupDocumentFlowTest.roomDimmingProfileRoundTrip(BackupDocumentFlowTest.java:62)
+	at org.sleepwell.app.BackupDocumentFlowTest.explicitReviewedReplacementPersistsAcrossRotationAndReopen(BackupDocumentFlowTest.java:95)
+
+INSTRUMENTATION_STATUS: stream=
+Error in explicitReviewedReplacementPersistsAcrossRotationAndReopen(org.sleepwell.app.BackupDocumentFlowTest):
+java.lang.AssertionError: expected:<2> but was:<3>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at org.sleepwell.app.BackupDocumentFlowTest.roomDimmingProfileRoundTrip(BackupDocumentFlowTest.java:62)
+	at org.sleepwell.app.BackupDocumentFlowTest.explicitReviewedReplacementPersistsAcrossRotationAndReopen(BackupDocumentFlowTest.java:95)
+
+INSTRUMENTATION_STATUS: test=explicitReviewedReplacementPersistsAcrossRotationAndReopen
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 13.68
+There was 1 failure:
+1) explicitReviewedReplacementPersistsAcrossRotationAndReopen(org.sleepwell.app.BackupDocumentFlowTest)
+java.lang.AssertionError: expected:<2> but was:<3>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at org.sleepwell.app.BackupDocumentFlowTest.roomDimmingProfileRoundTrip(BackupDocumentFlowTest.java:62)
+	at org.sleepwell.app.BackupDocumentFlowTest.explicitReviewedReplacementPersistsAcrossRotationAndReopen(BackupDocumentFlowTest.java:95)
+	Suppressed: java.lang.AssertionError: No file outside owned fixture changed expected:<{profileInstalled=T42Ijg0EOMVSysqCVc6lbA/x1OsDRvbpxR00cLQQxCg=}> but was:<{profileInstalled=Ityus5F7jT70js93NzgUH1WGdw9rTlZfvJ9mIR3XTb8=}>
+		at org.junit.Assert.fail(Assert.java:89)
+		at org.junit.Assert.failNotEquals(Assert.java:835)
+		at org.junit.Assert.assertEquals(Assert.java:120)
+		at org.sleepwell.app.BackupDocumentFlowTest$Fixture.close(BackupDocumentFlowTest.java:42)
+		at org.sleepwell.app.BackupDocumentFlowTest.explicitReviewedReplacementPersistsAcrossRotationAndReopen(BackupDocumentFlowTest.java:89)
+		... 32 more
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

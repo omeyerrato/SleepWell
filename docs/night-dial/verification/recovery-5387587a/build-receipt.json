@@ -1,0 +1,24 @@
+{
+  "source": "5387587a33408ffa583ec1b383811beef712ba4c",
+  "app_main_tree": "ca3ea36fa3b1efa15f57629c8b6072011600e044",
+  "integrated_checkpoint": "6202a00ee088b1ff7333b45ec3703ab4ea9707e0",
+  "versionName": "0.1.27",
+  "versionCode": 28,
+  "abi": "arm64-v8a",
+  "apk": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\updates\\SleepWell-Night-Dial-integrated-5387587a-arm64.apk",
+  "checksum": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\updates\\SleepWell-Night-Dial-integrated-5387587a-arm64.apk.sha256",
+  "sha256": "5b9dac6b7b49e9a1ccdccd8dca35afd96807c017f37e621c7590dc78ba9208cf",
+  "bytes": 189997079,
+  "log": "C:\\Users\\omeye\\OneDrive\\Documents\\ChatGPT\\SleepWell\\.android-local\\builds\\night-dial-integrated-5387587a.log",
+  "packaging_seconds": 75.109,
+  "tasks": [
+    "assembleDebug",
+    "assembleDebugAndroidTest"
+  ],
+  "native_review_run": null,
+  "unit_tests": "not_run",
+  "full_app_acceptance": false,
+  "phone_installed": false,
+  "delivery": "APK only",
+  "published": false
+}

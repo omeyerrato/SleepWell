@@ -1,0 +1,25 @@
+{
+  "scope": "data-recovery-reference",
+  "full_app_review": false,
+  "expected_classes": 3,
+  "expected_methods": 3,
+  "class_results": [
+    {
+      "class": "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 30,
+  "failures": []
+}

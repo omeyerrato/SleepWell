@@ -1,0 +1,43 @@
+{
+  "scope": "data-recovery-reference",
+  "full_app_review": false,
+  "expected_classes": 3,
+  "expected_methods": 3,
+  "class_results": [
+    {
+      "class": "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 30,
+  "failures": [
+    "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+    "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen",
+    "privacy-top-empty.png",
+    "privacy-history-ready.png",
+    "privacy-history-review-changed.png",
+    "privacy-history-error.png",
+    "privacy-history-busy.png",
+    "privacy-history-pending.png",
+    "privacy-history-cleanup-review-restored.png",
+    "privacy-history-done.png",
+    "backup-document-confirmation-recreated.png",
+    "backup-document-review-recreated.png",
+    "backup-document-review-reopened.png",
+    "backup-document-restoring.png",
+    "backup-document-restoring-recreated.png",
+    "backup-document-restored.png",
+    "backup-document-result-reopened.png"
+  ]
+}

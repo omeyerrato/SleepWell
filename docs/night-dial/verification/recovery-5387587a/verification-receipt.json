@@ -1,0 +1,81 @@
+{
+  "source": "5387587a33408ffa583ec1b383811beef712ba4c",
+  "app_main_tree": "ca3ea36fa3b1efa15f57629c8b6072011600e044",
+  "scope": "data-recovery-reference",
+  "build_receipt": "build-receipt.json",
+  "build_receipt_sha256": "6fc4136a14d258e1ee10fe6122a7d42399082b8d727afe14906c88f1781cc906",
+  "build_receipt_native_review_run_at_packaging": null,
+  "native_run": 41232644704,
+  "native_url": "https://github.com/omeyerrato/SleepWell/actions/runs/41232644704",
+  "methods": [
+    {
+      "method": "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen",
+      "seconds": 12.872,
+      "passed": true,
+      "log": "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen.txt"
+    },
+    {
+      "method": "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+      "seconds": 69.159,
+      "passed": true,
+      "log": "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory.txt"
+    },
+    {
+      "method": "RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary",
+      "seconds": 19.172,
+      "passed": true,
+      "log": "RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary.txt"
+    }
+  ],
+  "required_original_images": 30,
+  "actual_original_images": 30,
+  "archived_original_images": 6,
+  "original_manifest": "original-captures.json",
+  "original_manifest_sha256": "06d06fd2e8b96bb36d598587a39f2ad86396593ce35fc2111470c6df7c347c38",
+  "native_passed": true,
+  "visual_review": {
+    "privacy": {
+      "originals": 16,
+      "reviewer": "root integration agent",
+      "method": "three contact boards made from actual PNGs and individual original keyframes",
+      "finding": "Night Dial tokens; no observed text/action overlap"
+    },
+    "backup_and_recorded": {
+      "originals": 14,
+      "reviewer": "sound recognition / recovery agent",
+      "method": "all originals opened with view_image at original resolution",
+      "finding": "no material clipping, alignment or action issue"
+    },
+    "preview_correction": "Earlier resized-preview overlap report was false. Original-resolution old and current details frames are correctly inset; no causal visual-regression fix is claimed for the stable-viewport change."
+  },
+  "apk_sha256": "5b9dac6b7b49e9a1ccdccd8dca35afd96807c017f37e621c7590dc78ba9208cf",
+  "apk_bytes": 189997079,
+  "apk_abis_verified": [
+    "arm64-v8a"
+  ],
+  "signer_certificate_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "signature_verification": "Root independently confirmed original signer; recorded here as integration evidence, not a new signing run.",
+  "assets_tree_unchanged_from_e17bcc70": "647ec5411f60daf8919fe969ffb3935397020413",
+  "unit_tests": "not_run",
+  "new_test_campaign": false,
+  "security_sweep": false,
+  "physical_outputs": false,
+  "phone_installed": false,
+  "published": false,
+  "full_app_acceptance": false,
+  "earlier_failed_runs": [
+    {
+      "run": 41230319052,
+      "source": "e17bcc70e02520d8b49e6d05528a374712f5d604",
+      "passed": false,
+      "summary": "earlier-failures/41230319052/focused-review-summary.json"
+    },
+    {
+      "run": 41231393787,
+      "source": "c4c9bcda1ad63a5509742eb2c0632d63d7995be2",
+      "passed": false,
+      "summary": "earlier-failures/41231393787/focused-review-summary.json"
+    }
+  ],
+  "earlier_failed_build": "earlier-failures/build-29fbbe00.txt"
+}

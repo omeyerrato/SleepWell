@@ -1,0 +1,87 @@
+{
+  "original_proof_sha256": "29420f7b5e2a0d4f9b9a78023ea14b272c0728cdb03284187567cab4533e6898",
+  "original_import_timing_sha256": "ea2973c30962a145e533e9f595c7fa9cf10f263b0061bc0784e7820325edb367",
+  "raw_files": "Original files remain unchanged in the ignored run artifact directory. This is a separately named compact subset, not a replacement original.",
+  "fixture": "laughter-morning",
+  "pcmSha256": "ddf4f22ae871bc993329571af9660f1daba0b5a6f89ea2d11f77e3e2d222c305",
+  "wavSha256": "0d123625ed503f36852b6ad50b5dfec19bc839dd49f86825f19e8bb605db9d65",
+  "modelVersion": "recorded-experimental-v2-f9dd5647-7bb42270-pann-instrument",
+  "samples": 218720,
+  "analyzedMs": 13670,
+  "omittedMs": 0,
+  "windows": [
+    {
+      "startMs": 0,
+      "durationMs": 10000,
+      "candidate": "uncertain",
+      "instrumentLabel": "Musical instrument",
+      "laughter": {
+        "score": 0.21625056862831116,
+        "competitor": 0.2501484155654907,
+        "qualifies": false,
+        "index": 16
+      },
+      "instrument": {
+        "score": 0.0036126375198364258,
+        "competitor": 0.3519565165042877,
+        "qualifies": false,
+        "index": 138
+      },
+      "laughterModel": "panns-mobilenetv2-f9dd5647",
+      "instrumentModel": "efficientat-mn10-as-7bb42270",
+      "efficientInstrument": {
+        "score": 0.0036126375198364258,
+        "competitor": 0.3519565165042877,
+        "qualifies": false,
+        "index": 138
+      },
+      "pannInstrument": {
+        "score": 0.013664036989212036,
+        "competitor": 0.2501484155654907,
+        "qualifies": false,
+        "index": 138
+      }
+    },
+    {
+      "startMs": 10000,
+      "durationMs": 3670,
+      "candidate": "uncertain",
+      "instrumentLabel": "Drum",
+      "laughter": {
+        "score": 0.13488498330116272,
+        "competitor": 0.21850532293319702,
+        "qualifies": false,
+        "index": 16
+      },
+      "instrument": {
+        "score": 0.012211084365844727,
+        "competitor": 0.2747294306755066,
+        "qualifies": false,
+        "index": 164
+      },
+      "laughterModel": "panns-mobilenetv2-f9dd5647",
+      "instrumentModel": "efficientat-mn10-as-7bb42270",
+      "efficientInstrument": {
+        "score": 0.012211084365844727,
+        "competitor": 0.2747294306755066,
+        "qualifies": false,
+        "index": 164
+      },
+      "pannInstrument": {
+        "score": 0.015157461166381836,
+        "competitor": 0.21850532293319702,
+        "qualifies": false,
+        "index": 138
+      }
+    }
+  ],
+  "savedAndReopened": true,
+  "deleted": true,
+  "originalAudioUnchanged": true,
+  "accuracyAcceptanceRequired": false,
+  "importedAudio": {
+    "savedAndReopened": true,
+    "deleted": true,
+    "originalEncodedAudioUnchanged": true
+  }
+}
