@@ -1,0 +1,46 @@
+{
+  "version": "sleepwell-acoustic-pilot-v1",
+  "frozen_before_any_fit_or_inference": true,
+  "dataset": "10.57760/sciencedb.19070 V5",
+  "seed": 20261031,
+  "splits": {
+    "train": "01-30",
+    "validation": "31-40",
+    "test": "41-50; do not read until classifier and validation decision are frozen"
+  },
+  "class_order": ["Wake", "REM", "Light", "Deep"],
+  "source_stage_map": {"W": "Wake", "R": "REM", "N1": "Light", "N2": "Light", "N3": "Deep"},
+  "timebase": "Author helper str2seconds: absolute hh:mm:ss.ms, hours below 12 add 24; subtract the same subject annotation.record_start. No guessed shift or duration rescaling. Offset provenance is author-supplied, not independently measured.",
+  "window": "90 seconds of actual mono PCM: preceding 30 seconds, central target epoch of 30 seconds, following 30 seconds. Require all samples within published WAV data bounds. Blank/unknown target labels and missing/gapped input remain absent.",
+  "selection": {
+    "rank": "SHA256 of UTF-8 sleepwell-acoustic-pilot-v1/{split}/{subject}/{epoch_number}",
+    "train": "For each subject and mapped class, ascending hash order; accept up to 2 centers, requiring at least 90 seconds between any accepted centers for that subject. Class order is the declared class_order. No selection by acoustic features or classifier score.",
+    "validation": "Per subject, ascending hash order independent of labels; accept up to 10 centers with at least 90 seconds separation. Do not replace selected invalid/silent windows with other windows.",
+    "test": "Same selection as validation, using split=test, after model freeze. No retuning from these results."
+  },
+  "features": {
+    "input": "Actual released mono PCM16 at 8000 Hz only. Other formats require explicit protocol revision before fitting.",
+    "per_30_second_block": [
+      "32 triangular Mel bands, 50-3500 Hz, Hann FFT512, hop160; mean and standard deviation of log10(power + 1e-12)",
+      "RMS of 250ms nonoverlapping frames: percentiles 5/25/50/75/95",
+      "Mean and standard deviation of frame spectral centroid, flatness and zero crossing rate",
+      "Normalized RMS-envelope autocorrelation at 1/2/3/4/5/6 second lags"
+    ],
+    "combine": "Concatenate the three blocks in chronological order. No stage label, subject ID, clock, elapsed-night position, AHI, annotation event, SpO2, HR or EEG is a model feature.",
+    "missing": "Reject a context with nonfinite samples, incomplete samples, or more than 10 seconds of exact-zero 250ms frames in any 30-second block; report missing coverage, without zero padding or stage guesses."
+  },
+  "classifier": {
+    "kind": "sklearn RandomForestClassifier",
+    "n_estimators": 128,
+    "max_depth": 8,
+    "min_samples_leaf": 4,
+    "max_features": "sqrt",
+    "class_weight": "balanced_subsample",
+    "n_jobs": 2,
+    "random_state": 20261031,
+    "search": "One fixed fit; no hyperparameter search or test-driven threshold adjustment. No clock-cycle smoothing or forced stage diversity."
+  },
+  "report": "Publish attempted/accepted/missing windows and subjects, input/feature/model hashes, class counts, raw probabilities, confusion matrix, per-class recall, macro F1, balanced accuracy, and a train-majority baseline on identical validation/test targets. A fitted model alone does not establish useful phone estimates. Do not ship a collapsed or unhelpful model; no clinical-certification gate is added.",
+  "acquisition_budget": "Initial total remains <=100MB until parent authorizes expansion. Requested ceiling for new TRAIN+VAL PCM is489600000bytes plus bounded metadata; TEST is a separate later <=144000000byte acquisition after model freeze. Never download50complete WAVs.",
+  "actions_at_freeze": {"fit": false, "model_inference": false, "test_metadata_or_audio_read": false, "helper_executed": false}
+}
