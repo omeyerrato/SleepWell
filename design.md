@@ -1889,3 +1889,9 @@ Texture is reserved for places where it belongs: sound photography and diary pap
 ### Evidence boundaries
 
 Use revision-specific native captures to assess a screen. A successful root render establishes that destination's initial layout, not every permission, output, data conflict, physical-device or overnight branch. The app-wide inventory, the 43-flow matrix, real screen captures and existing feature tests must remain separate evidence. Known inherited test failures must remain visible until independently fixed; visual changes do not turn them green.
+
+### Task guides and launcher continuity
+
+Wake task setup uses a compact original instruction diagram where the mechanism benefits from explanation: matching cards, ordered sequence, shape counting, moon search, maze, hurdles, footsteps, phone rotation, raised-hands pose, smile, light target and voice/note motifs. The diagrams are labeled Illustrated guide and are not live camera/audio/sensor feedback, a challenge result or a task-completion shortcut. Math retains its actual configured example instead of an extra decorative diagram. QR, picture and object enrollment retain their source-specific setup/camera surfaces. The existing explicit Preview controls open real practice owners.
+
+The launcher widget uses charcoal panels, neutral text and Inter, matching the app. Its settings page shows the same existing saved summary and RemoteViews as the launcher, loaded off the main thread. The preview has no clickable pending-intent actions; Add widget, Refresh and Pin remain explicit. Read failures show unavailable rather than example sleep records. Pinning requires the launcher's own confirmation.

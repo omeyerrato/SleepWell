@@ -1,8 +1,14 @@
 # Native review evidence
 
-First-night follow-up is under review. [df2476bc findings](df2476bc-finding/README.md) retain the failed 14-method run: 80 focused unit methods and 12 native methods passed, including the new welcome/defaults and actual notification-denial/settings-return journeys. The optional microphone denial input and existing Skip model observation require the focused-input/returned-state corrections recorded there. The recording-status fallback icon is also corrected. This is not a new passing preview; the latest delivered APK remains 6409f7a6 below.
+## Current delivered package: c5d558af
 
-## Latest reviewed preview: 6409f7a6
+[Final combined native evidence](c5d558af/README.md): 20 methods, all 206 required frames, 84 focused unit methods. [Run 41196433872](https://github.com/omeyerrato/SleepWell/actions/runs/41196433872) passes in 462.107 seconds. The separate [appearance review](https://github.com/omeyerrato/SleepWell/actions/runs/41195038401) passes its full method and 11 original frames. The current source is integrated with main cc4871ee and all 127 native destinations are assigned across the 43 flow families.
+
+Signed APK 0.1.25/code 26 is in Downloads, with the prior signer and exact [receipt](c5d558af/build-receipt.json). [Actual native preview](c5d558af/native-preview.png). The searchable Downloads gallery includes 217 original frames. No phone installation occurred.
+
+The full local unit suite is still non-green: 1,078 tests, 10 inherited failures. See [exact limits/results](eb4ced67/full-unit-summary.json). All hardware/provider/state acceptance is not inferred from route accounting or emulator captures. Historical previews and failed intermediate reviews below remain pinned and are not substituted for final evidence.
+
+## Historical preview: 6409f7a6
 
 The [native review](https://github.com/omeyerrato/SleepWell/actions/runs/41092841075), job 124190892729, artifact 12994923015, passed all 11 native methods in 274.602 seconds. All 93 required PNGs exist: 78 Night Dial frames and 15 existing skip-regression frames. Eighty focused unit methods passed with zero failures/errors. [Raw result](6409f7a6/review.json), [instrumentation](6409f7a6/instrumentation.txt), [exact scope and limits](6409f7a6/README.md). The [independent APK workflow](https://github.com/omeyerrato/SleepWell/actions/runs/41092841167) passed; its default broad unit/lint step is skipped. Artifact ZIP SHA256: `30dd9a13f20b5ac8b8bfe806b5ab75117a3ecd0ee9c8f48a406e8bd333fa7487`.
 

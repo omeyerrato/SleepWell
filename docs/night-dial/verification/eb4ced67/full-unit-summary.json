@@ -1,0 +1,21 @@
+{
+  "tests": 1078,
+  "failures": 10,
+  "errors": 0,
+  "application_source_revision": "eb4ced67222d6753246ade11e93450f440c63e46",
+  "app_main_tree": "9f8874f0ffbafea53cc460e6e7c52798c0373ab9",
+  "failed_cases": [
+    "org.sleepwell.app.QrScanSessionTest.failedReleaseBlocksCaptureAndRearmUntilOwnedReleaseSucceeds",
+    "org.sleepwell.app.SonarNightTest.realSignalLossPersistsNullRatherThanZeroAndStopRemainsResponsive",
+    "org.sleepwell.app.SonarNightTest.userPauseCannotOverrideDiskFailureStopWhileNativeCloseIsPending",
+    "org.sleepwell.app.SonarNightTest.realPcmNightPauseResumeStopPreservesAnchorQualityAndActiveGap",
+    "org.sleepwell.app.SonarSharedNightTest.offNeverLoadsAnalysisOrChangesTheOneActualCaptureOwner",
+    "org.sleepwell.app.SonarSharedNightTest.pauseWaitsForAnalysisAcknowledgementWithoutBlockingCaptureClose",
+    "org.sleepwell.app.SonarSharedNightTest.oneCaptureFeedsBothRealSignalPathAndSoundFramingThroughPauseResume",
+    "org.sleepwell.app.SonarSharedNightTest.modelFailureIsSavedAndCannotRetryOnResumeWhileSonarStillWorks",
+    "org.sleepwell.app.TrackingDelayEntryTest.sonarConsentDoesNotAcquirePhoneClipOrLightChoices",
+    "org.sleepwell.app.TrackingDelayTest.sonarNeverRequestsClipsOrLight"
+  ],
+  "passing_full_suite": false,
+  "prior_baseline_comparison": "Same ten previously reproduced failing cases remain after the optional AlarmRequest null-unboxing repair. Earlier baseline had eleven."
+}

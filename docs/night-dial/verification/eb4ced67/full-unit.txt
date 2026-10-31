@@ -1,0 +1,86 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.experimental.lint.version=9.4.1' is experimental.
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:compileDebugUnitTestJavaWithJavac UP-TO-DATE
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes NO-SOURCE
+
+> Task :app:testDebugUnitTest
+
+QrScanSessionTest > failedReleaseBlocksCaptureAndRearmUntilOwnedReleaseSucceeds FAILED
+    java.lang.AssertionError at QrScanSessionTest.java:11
+
+SonarNightTest > realSignalLossPersistsNullRatherThanZeroAndStopRemainsResponsive FAILED
+    java.lang.AssertionError at SonarNightTest.java:8
+
+SonarNightTest > userPauseCannotOverrideDiskFailureStopWhileNativeCloseIsPending FAILED
+    java.lang.AssertionError at SonarNightTest.java:33
+
+SonarNightTest > realPcmNightPauseResumeStopPreservesAnchorQualityAndActiveGap FAILED
+    java.lang.AssertionError at SonarNightTest.java:8
+
+SonarSharedNightTest > offNeverLoadsAnalysisOrChangesTheOneActualCaptureOwner FAILED
+    java.lang.AssertionError at SonarSharedNightTest.java:31
+
+SonarSharedNightTest > pauseWaitsForAnalysisAcknowledgementWithoutBlockingCaptureClose FAILED
+    java.lang.AssertionError at SonarSharedNightTest.java:35
+
+SonarSharedNightTest > oneCaptureFeedsBothRealSignalPathAndSoundFramingThroughPauseResume FAILED
+    java.lang.AssertionError at SonarSharedNightTest.java:26
+
+SonarSharedNightTest > modelFailureIsSavedAndCannotRetryOnResumeWhileSonarStillWorks FAILED
+    java.lang.AssertionError at SonarSharedNightTest.java:39
+
+TrackingDelayEntryTest > sonarConsentDoesNotAcquirePhoneClipOrLightChoices FAILED
+    java.lang.AssertionError at TrackingDelayEntryTest.java:10
+
+TrackingDelayTest > sonarNeverRequestsClipsOrLight FAILED
+    java.lang.AssertionError at TrackingDelayTest.java:19
+
+1078 tests completed, 10 failed
+
+> Task :app:testDebugUnitTest FAILED
+
+[Incubating] Problems report is available at: file:///C:/Users/omeye/.codex/worktrees/night-dial-design/SleepWell/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///C:/Users/omeye/.codex/worktrees/night-dial-design/SleepWell/app/build/reports/tests/testDebugUnitTest/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 3m 7s
+20 actionable tasks: 2 executed, 18 up-to-date

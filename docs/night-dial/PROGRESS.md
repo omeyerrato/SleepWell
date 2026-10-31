@@ -4,17 +4,17 @@ The full 43-flow design contract remains the target. Shared styling does not est
 
 ## Application-wide pass: 31 October 2026
 
-The current implementation is `489f914c`, integrated with main `d1b954de`. All **127 manifest Activities are assigned to 43 flow families** in [SCREEN-COVERAGE.md](SCREEN-COVERAGE.md). The native Java View architecture and feature owners remain. This is a route inventory, not a claim that every hardware/provider branch is accepted.
+The delivered implementation is **c5d558af**, with main **cc4871ee** integrated in the isolated design branch. All **127 manifest Activities are assigned to 43 flow families** in [SCREEN-COVERAGE.md](SCREEN-COVERAGE.md). Native Java Views and existing feature owners remain; no framework or dependency migration.
 
-The pass adds distinct native compositions for naps, guided breathing, media, diary and game workspaces; darkens secondary screens and dialogs; adds bounded natural typography/layout, source waveforms, requested-policy graphs, genuine measured charts, tactile surfaces and motion under the existing reduced-motion/haptic guards. All 28 task editors and 11 cognitive workspaces are in the current native review. No decorative fake sleep measurements are introduced.
+Distinct compositions now include the turnable nap dial, Read/Breathe contour, photographic sound shelf with actual PCM gain previews, configured stereo diagram, textured diary, real report charts, task-specific instruction diagrams, embossed Memory cards and a saved-data launcher widget preview. Dark sheets/dialogs, natural text sizing, stacked long descriptions and existing reduced-motion/quiet haptic guards apply across secondary flows.
 
-Local current-source builds of app/test APKs and **84 focused unit methods pass**. The first broad native run at `f16f447d` passed 18/20 methods and preserved 175 actual PNGs. It exposed a genuine diary OS Back gap and an invalid task-editor launch fixture, both corrected in `489f914c`. Visual inspection also led to stacked long settings descriptions, corrected appearance samples, embossed Memory backs, disclosure-led wind-down controls and a configured stereo preview. The new exact-revision review is in progress; no APK from the failed f16 review is delivered.
+[Final native review](verification/c5d558af/README.md) passes **20 methods / 206 required screenshots / 84 focused unit methods**. Independent appearance review passes its full method and 11 screenshots, including the actual lamp-settings return. Nap exact adjustment/cancel/restoration, diary OS Back/dirty restoration/discard, 45 secondary roots, all 28 actual task setups, 11 cognitive workspaces and five enlarged/reduced-motion roots are included. Original screenshots were inspected; earlier failed/partial reviews remain explicitly separate.
 
-A separate existing full feature-regression run at f16 exceeded its 25-minute budget. Its logs contain both obsolete cream/plum visual expectations and unresolved functional/setup assertions; it is **not a passing full regression**. No blanket assertion is made that these are all test-only failures. The broad local unit baseline remains non-green; the AlarmRequest null-unboxing case is now fixed and its four existing tests pass. See revision evidence for exact results rather than adding test counts from different revisions.
+The signed APK **0.1.25/code 26** and source/checksum receipt are in Downloads. The app source tree matches the reviewed c5d558af tree. Delivery is APK only; the phone was not installed or accessed through physical ADB. Prior pinned APKs remain available.
 
-The user requested APK only. No phone installation or physical ADB session occurs in this pass.
+Full local suite: **1,078 tests, 10 inherited failures**, zero errors; the AlarmRequest nullable-minute repair removes its earlier failure and its four existing tests pass. The separate older broad native feature run timed out and contains unresolved assertions alongside obsolete theme expectations. Full regression and overnight/hardware/provider/TalkBack/landscape acceptance remain outside these passing native journeys; route accounting does not imply them.
 
-## Current evidence
+## Historical implementation evidence
 
 - Isolated branch starts at `669ec8f6`; main feature checkout is untouched.
 - Native Java Views retained; no framework/dependency migration.
@@ -113,8 +113,8 @@ The table distinguishes implementation coverage from verified interactions. Exis
 
 - Draft PR: https://github.com/omeyerrato/SleepWell/pull/7
 
-## Delivery gates
+## Delivery record and remaining acceptance
 
-1. Finish the combined exact-revision native run, preserve original PNGs/XML/raw results, and inspect changed screens/popups and large text.
-2. Freeze a signed APK whose application source tree matches that reviewed revision; preserve prior pinned APKs and the signer; provide checksum and receipt.
+1. Combined exact-revision native run, original evidence, changed-screen inspection and enlarged/reduced-motion review completed at c5d558af.
+2. Signed source-matching APK, prior signer, pinned older packages, checksum/receipt and searchable original screenshot gallery delivered in Downloads.
 3. Record unresolved broad regression/device/provider limits explicitly. Do not label a root capture as full state acceptance or a configured graph as a measured signal.
