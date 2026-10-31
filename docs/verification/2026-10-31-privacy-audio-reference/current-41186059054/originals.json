@@ -1,0 +1,79 @@
+{
+  "run": "41186059054",
+  "source": "e9077085b8a06a4bdfeddb28fa43d687f8527258",
+  "result": "PASS33.539s; one explicit recording-only method slice",
+  "files": [
+    {
+      "file": "privacy-recordings-confirmation.png",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/privacy-recordings-confirmation.png",
+      "bytes": 203384,
+      "sha256": "a0b0b06f8eca988477afe6425bc7465bc4b62e37240c7d466dab722cff340ed5"
+    },
+    {
+      "file": "privacy-recordings-favorites-included.png",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/privacy-recordings-favorites-included.png",
+      "bytes": 196679,
+      "sha256": "0a988d722b74966d1505322fabc9e4984f92b6a1ed3506f6f3fc95cbf5261044"
+    },
+    {
+      "file": "privacy-recordings-review-error.png",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/privacy-recordings-review-error.png",
+      "bytes": 184915,
+      "sha256": "a4aeddd53f18d4723c34e7bcc21ba8073c4526d417ec9dd091a5dfa4bde65210"
+    },
+    {
+      "file": "privacy-recordings-removing.png",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/privacy-recordings-removing.png",
+      "bytes": 222844,
+      "sha256": "5464af6e316c3e9c704284e49fb69dcc45a67b6deedba5876ef224ec83fb900e"
+    },
+    {
+      "file": "privacy-recordings-removing-recreated.png",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/privacy-recordings-removing-recreated.png",
+      "bytes": 190856,
+      "sha256": "efd79fe59b687f522e6d73c3fd25c710f2caac5fe6b34e92595188c35b3d960d"
+    },
+    {
+      "file": "privacy-recordings-pending.png",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/privacy-recordings-pending.png",
+      "bytes": 195184,
+      "sha256": "3ba0077770c26c1c62b61fa6b02a1a11aca686c638786031009a979f5a2f3039"
+    },
+    {
+      "file": "privacy-recordings-retry.png",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/privacy-recordings-retry.png",
+      "bytes": 186930,
+      "sha256": "ed476d1c959c3024cf6157e6cca3b039132c329fe9e601fac1bfcf0ec725849f"
+    },
+    {
+      "file": "privacy-recordings-done.png",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/privacy-recordings-done.png",
+      "bytes": 192408,
+      "sha256": "c56b28f2534460b6c9f1d787f415e461062b89e833939378913521a3576a4463"
+    },
+    {
+      "file": "privacy-recordings-reopened.png",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/privacy-recordings-reopened.png",
+      "bytes": 190237,
+      "sha256": "b6fb0b9c7f5339098d56abcfcc575bede1c0c7a8de71cfef6c47f5d4e9f72818"
+    },
+    {
+      "file": "environment.json",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/environment.json",
+      "bytes": 868,
+      "sha256": "e20403c1c3ad91a9dee1d0117382d5ec40664c30c88101d5e6589921bd0f5313"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/focused-review-summary.json",
+      "bytes": 378,
+      "sha256": "fa67ad286538a1e3f2da4b43219b022009f76cb435f64a0f95d47ba7ac1ae466"
+    },
+    {
+      "file": "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory.txt",
+      "source": ".android-local/ci-reviews/41186059054/silent-android-review/PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory.txt",
+      "bytes": 843,
+      "sha256": "7f6dac830fe74277045ef5f57a31668f99c99c13f9dd0d21645afca6306f3431"
+    }
+  ]
+}
