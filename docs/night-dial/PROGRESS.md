@@ -2,6 +2,18 @@
 
 The full 43-flow design contract remains the target. Shared styling does not establish that every state is finished. No flow is accepted until actual native screens and interaction evidence cover its states, popups, cancellation, errors and return paths.
 
+## Application-wide pass: 31 October 2026
+
+The current implementation is `489f914c`, integrated with main `d1b954de`. All **127 manifest Activities are assigned to 43 flow families** in [SCREEN-COVERAGE.md](SCREEN-COVERAGE.md). The native Java View architecture and feature owners remain. This is a route inventory, not a claim that every hardware/provider branch is accepted.
+
+The pass adds distinct native compositions for naps, guided breathing, media, diary and game workspaces; darkens secondary screens and dialogs; adds bounded natural typography/layout, source waveforms, requested-policy graphs, genuine measured charts, tactile surfaces and motion under the existing reduced-motion/haptic guards. All 28 task editors and 11 cognitive workspaces are in the current native review. No decorative fake sleep measurements are introduced.
+
+Local current-source builds of app/test APKs and **84 focused unit methods pass**. The first broad native run at `f16f447d` passed 18/20 methods and preserved 175 actual PNGs. It exposed a genuine diary OS Back gap and an invalid task-editor launch fixture, both corrected in `489f914c`. Visual inspection also led to stacked long settings descriptions, corrected appearance samples, embossed Memory backs, disclosure-led wind-down controls and a configured stereo preview. The new exact-revision review is in progress; no APK from the failed f16 review is delivered.
+
+A separate existing full feature-regression run at f16 exceeded its 25-minute budget. Its logs contain both obsolete cream/plum visual expectations and unresolved functional/setup assertions; it is **not a passing full regression**. No blanket assertion is made that these are all test-only failures. The broad local unit baseline remains non-green; the AlarmRequest null-unboxing case is now fixed and its four existing tests pass. See revision evidence for exact results rather than adding test counts from different revisions.
+
+The user requested APK only. No phone installation or physical ADB session occurs in this pass.
+
 ## Current evidence
 
 - Isolated branch starts at `669ec8f6`; main feature checkout is untouched.
@@ -51,65 +63,58 @@ The full 43-flow design contract remains the target. Shared styling does not est
 
 ## Flow matrix
 
-Under native review: the optional fresh-launch first-night guide, actual Android readiness cards and restored permission explanations, notification-denial/settings return, optional microphone rationale cancellation, and empty Alarms/Add-from-defaults. These are not in the delivered 6409f7a6 APK and have not yet earned verified status below.
+The table distinguishes implementation coverage from verified interactions. Existing historical evidence remains valid only at its pinned revision; current integration uses a fresh combined native review. Shared dark surfaces alone do not prove every state.
 
 | Board | Flow | Current status |
 | --- | --- | --- |
-| 01 | First night | Native design and full interaction review pending |
+| 01 | First night | First-night example dial, optional guide, real readiness cards and owned permission explanations implemented; four native first-night/readiness journeys passed at 0e887d5b and remain in combined review. |
 | 02 | Plan tonight | Native composition, independent drag/save/cancel/conflict/recreation and explicit linked alarm review verified at 7d726b2b; extended accessibility/device review pending |
-| 03 | Wind down and guard | Native design and full interaction review pending |
+| 03 | Wind down and guard | Read/Breathe modes, paced contour, narration disclosure and app-selection checkboxes implemented; wind-down/guard roots captured at f16; live narration, guard enforcement and external app handoffs require device checks. |
 | 04 | Create and manage alarms | Prior list/name/repeat review plus named Skip/Undo/stale state, off duplicate draft/Save, named Delete/Cancel/recreation/stale identity and dirty Back Save verified at 6409f7a6; Add-from-defaults and other entry/device branches pending |
 | 05 | Dates and smart waking | Interval validation/correction, draft recreation and return verified at 37de8841; odd/even, anchor/date/exclusions, solar and other schedule branches pending |
 | 06 | Tone and gentle wake | Requested delay/ramp curve, silent opening and draft recreation verified at 37de8841; source selection, physical output and other gentle-wake branches pending |
 | 07 | Snooze, backup, input | Configured shortening bars, zero-snooze state, recreation and explicit Save verified at 37de8841; caps/choose-each/input/backup/wake-check branches pending |
-| 08 | Build a wake routine | Memory search/configure/add, move-before-Math, draft-only routine Save and explicit parent Save verified at 37de8841; random/practice/all 28 task surfaces pending |
-| 09 | Enroll morning codes | Native design and full interaction review pending |
-| 10 | Screen challenges I | Native design and full interaction review pending |
-| 11 | Screen challenges II | Native design and full interaction review pending |
-| 12 | Writing and light tasks | Native design and full interaction review pending |
-| 13 | Movement challenges | Native design and full interaction review pending |
-| 14 | Camera challenges | Native design and full interaction review pending |
-| 15 | Sound challenges | Native design and full interaction review pending |
-| 16 | Notes, camera light and fallback | Native design and full interaction review pending |
-| 17 | Alarm rings to dismissal | Native design and full interaction review pending |
-| 18 | Choose sounds and settle in | Native source waveforms and mixer composition verified at 7d726b2b, with silent opening, timer draft recreation and microphone-consent Cancel; playback-output review pending |
-| 19 | Advanced audio sources | Native design and full interaction review pending |
-| 20 | Start, pause and finish tracking | Native active/paused/resumed/end-confirmation compositions and lifecycle verified at 7d726b2b with synthetic PCM + real coordinator/SQLite; real overnight/device review pending |
-| 21 | Automatic tracking | Native design and full interaction review pending |
-| 22 | Sensors and calibration | Native design and full interaction review pending |
-| 23 | Room, awake and experimental signals | Native design and full interaction review pending |
-| 24 | Sound analysis and recordings | Native design and full interaction review pending |
-| 25 | Gentle cues and dream tools | Native design and full interaction review pending |
+| 08 | Build a wake routine | Routine ownership retained; all 28 task editor roots and 11 cognitive workspaces included in current review. Prior Memory configuration/reorder/parent Save journey retained. |
+| 09 | Enroll morning codes | Dark QR enrollment, legible 220dp code and common owned sheets implemented; generated barcode/camera/NFC handoffs still require external-device validation. |
+| 10 | Screen challenges I | Shared wake horizon and actual segmented completion; distinct cognitive canvases and controls implemented. Eleven actual workspaces captured at f16; Memory embossed back/reveal refined afterward. |
+| 11 | Screen challenges II | Screen task families share dark workspaces and real completion state; all configuration roots included in current review. Full solving/error/timeout combinations are not all accepted. |
+| 12 | Writing and light tasks | Physical task configuration and quiet practice styling integrated; hardware execution/permission-return tests remain required. |
+| 13 | Movement challenges | Dark physical/sensor task shells, ordered progress and existing output owners retained; camera/light/movement validation requires hardware. |
+| 14 | Camera challenges | Voice and audio task configuration uses dark fields/choices and owned dialogs; actual microphone permission/recognition/output branches require device validation. |
+| 15 | Sound challenges | Audio practice/configuration uses dark native controls and genuine progress; physical playback, microphone and interruption branches require device validation. |
+| 16 | Notes, camera light and fallback | Camera/light challenge shells use Night Dial chrome and controls; preview/enrollment/torch behavior remains with existing feature owners and requires device validation. |
+| 17 | Alarm rings to dismissal | Alarm and wake-check dark compositions retain actual deadline/countdown and segmented task progress; live alarm delivery and overnight interruption reliability remain device tests. |
+| 18 | Choose sounds and settle in | Guided contour, reading/breathing modes and narration disclosure implemented; root captured at f16, updated controls included in current review. |
+| 19 | Advanced audio sources | Photographic sound shelf, actual PCM gain previews and configured stereo traces implemented; source-specific artwork and time/fade sheets retained. Opening stays silent; output requires device checks. |
+| 20 | Start, pause and finish tracking | Media library and source controls use dark typography, native gain and owned choices; favorite/library root capture passed at f16; real picker/import/playback errors remain external branches. |
+| 21 | Automatic tracking | Automatic/recurring start methods use readable radio/checkbox choices and dark schedule rows; roots captured at f16. Live triggers and Android restrictions remain device checks. |
+| 22 | Sensors and calibration | Sonar/contactless settings and signal charts use dark surfaces and labeled source/provenance; physical calibration, acoustic output and long-night review remain device checks. |
+| 23 | Room, awake and experimental signals | Awake/sensitivity settings and measured timelines retain source owners; dark roots captured at f16; actual capture/classification correctness is outside visual acceptance. |
+| 24 | Sound analysis and recordings | Sound event/history/library surfaces use dark source-aware rows and actual provenance; library/favorites roots captured at f16. Import/playback and all archive recovery states remain external regression work. |
+| 25 | Gentle cues and dream tools | Dream/snoring cue controls, history and consent use dark native presentation; both settings roots captured at f16. Output/recording authorization and physical effect remain existing owners. |
 | 26 | Review a recorded night | Night summary, signal selection/scrub/recreation, dirty Back and annotation-preserving restore verified at fca53502; remaining provider, awake, optional-reset and device branches pending |
 | 27 | History, manual records and import | Source filters, visible row durations/provenance and read-only navigation verified at fca53502; calendar, manual-create, import and extended filter flows pending |
 | 28 | Trends, rhythm and context | Actual Week/Month/Year averages, coverage, range navigation, missing range and recreation verified at fca53502; rhythm/context/detail-selection and device branches pending |
-| 29 | Sleep plan, bank and milestones | Native design and full interaction review pending |
-| 30 | Naps and timers | Native design and full interaction review pending |
-| 31 | Travel and calendar schedules | Native design and full interaction review pending |
-| 32 | Find and personalize | Shared appearance tokens only; editor/preview revision pending |
-| 33 | Reliability and alarm protection | Native design and full interaction review pending |
-| 34 | Health and calendar exchange | Native design and full interaction review pending |
-| 35 | Lights and automation | Native design and full interaction review pending |
-| 36 | Local data, export and restore | Native design and full interaction review pending |
-| 37 | Cloud versions, profiles and conflicts | Native design and full interaction review pending |
-| 38 | Imported signals, sharing and access | Native design and full interaction review pending |
-| 39 | Home shortcuts and system handoffs | Native design and full interaction review pending |
+| 29 | Sleep plan, bank and milestones | Plan/bank tactile invitation, actual saved goal and progress charts implemented; goal/bank roots captured at f16. Milestone/date edge cases need broader interaction evidence. |
+| 30 | Naps and timers | Turnable duration wheel, exact accessible adjustment, selected presets and live end time implemented; cancel/recreation/a11y draft assertions passed at f16. In-place focus refinement included in current review. |
+| 31 | Travel and calendar schedules | Actual travel clocks, timezone/plan cards, calendar rule rows and dark sheets integrated; travel/calendar roots captured at f16. Provider, DST and delivery branches remain existing feature checks. |
+| 32 | Find and personalize | Night Dial appearance preview, saved-plan mark, dark lamp artwork, scalable text and motion/contrast controls implemented; legacy theme values retained. Dedicated save/cancel/relaunch review running. |
+| 33 | Reliability and alarm protection | Actual readiness cards, dark protection/feedback settings and named recovery actions implemented; native first-night permission-return evidence retained; protection root captured at f16. OS-dependent enforcement remains device checks. |
+| 34 | Health and calendar exchange | Health/calendar consent and exchange screens use common dark sheets and source-aware copy; Health Connect root captured at f16. Actual providers and destructive/import operations require dedicated integration checks. |
+| 35 | Lights and automation | Lights/automation use existing actual state and configured previews with dark controls; light/Hue/automation roots captured at f16. Hardware/network delivery not asserted. |
+| 36 | Local data, export and restore | Backup has a native step journey; exports/imports retain actual document pickers and confirmation owners with dark sheets. Backup/CSV/research roots captured at f16; real document-provider branches need integration checks. |
+| 37 | Cloud versions, profiles and conflicts | Cloud/profile/version/conflict screens use dark source rows and owned confirmations; cloud/profile roots captured at f16. External accounts/providers and conflict operations require integration checks. |
+| 38 | Imported signals, sharing and access | Read/export/access/automation screens use readable stacked descriptions and dark confirmations; access/incoming automation roots captured at f16. External callers/provider authorization remain feature tests. |
+| 39 | Home shortcuts and system handoffs | Dark home widget and shortcut settings implemented; launcher root capture at f16 exposed an unsettled compositor frame and current capture now verifies final dark pixels. Actual launcher pinning is user-driven and untested on phone. |
 | 40 | Recovery and details across flows | Skip stale-occurrence notice/recreation, scheduling failure/Retry/reopen, expired one-time state and stale Delete rejection verified at 6409f7a6; remaining cross-flow recovery pending |
-| 41 | Tags, confirmation and custom values | Named Delete/Cancel/recreation and Save/Keep editing/Discard verified at 6409f7a6; prior record restore review retained; taxonomy, custom values and other confirmations pending |
-| 42 | Physical challenge and permission branches | Native design and full interaction review pending |
-| 43 | Empty, search and loading states | Native design and full interaction review pending |
+| 41 | Tags, confirmation and custom values | Textured diary/editor and named deletion/dirty Back gate implemented. Real OS Back gap found at f16 and fixed for both legacy and predictive paths. Native draft/restore/cancel review included in current run; tag taxonomy branches need further regression evidence. |
+| 42 | Physical challenge and permission branches | All 28 task configurations assigned and current-review targets; dark permission shells/owned dialogs integrated. Camera, NFC, light, voice and sensor execution require physical validation. |
+| 43 | Empty, search and loading states | Intentional no-data views and clear entry actions retained; no fake metrics. Forty-five roots plus five enlarged/reduced-motion roots captured at f16; new screenshot settling rejects launcher/transition overlays. |
 
 - Draft PR: https://github.com/omeyerrato/SleepWell/pull/7
 
-## Next work
+## Delivery gates
 
-1. Continue from the passing 6409f7a6 native captures (93 required frames, 11 native methods). Review Add-from-defaults, empty/new-user states and alternate schedule/source/input branches. Keep exact capture revisions in verification/README.md.
-2. Extend Tonight editing evidence to interrupted pointer sequences, non-daily/solar/override alarms and accessible exact entry while retaining independent saved-plan and alarm owners.
-3. Review Settle in playback/gain/error states and active/paused/end tracking with physical devices, additional sensors, long recordings and missing-data cases. Preserve the existing capture owners.
-4. Replace stale appearance/theme previews with the Night Dial preview while retaining saved legacy values.
-5. Extend the reviewed name/repeat/routine/gentle/snooze branches to random/practice modes and all 28 task surfaces; keep challenge interaction and scheduling logic unchanged.
-6. Complete report provider/CSV/calendar/manual/filter/awake/optional-reset branches and trend detail selection/rhythm/context, retaining actual source/missing-data language.
-7. Review every remaining settings/editor sheet, confirmation, popup, keyboard and permission-return state against the 43-flow matrix.
-8. Verify compact/large widths, enlarged fonts, landscape, TalkBack focus/order, reduced motion, keyboard navigation, press cancellation, haptic quiet guards and lifecycle cleanup.
-9. Rebase/integrate against the latest feature branch in a separate review step, resolve adapters narrowly, and record precise validation.
-10. Publish the final reviewable PR and handoff with native captures, known limitations and integration instructions. Keep it draft until the whole objective is verified.
+1. Finish the combined exact-revision native run, preserve original PNGs/XML/raw results, and inspect changed screens/popups and large text.
+2. Freeze a signed APK whose application source tree matches that reviewed revision; preserve prior pinned APKs and the signer; provide checksum and receipt.
+3. Record unresolved broad regression/device/provider limits explicitly. Do not label a root capture as full state acceptance or a configured graph as a measured signal.

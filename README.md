@@ -10,9 +10,9 @@ and [strict visual review](docs/DESIGN-REVIEW.md). The first UI pass was rejecte
 the new root compositions are corrective work, not final acceptance of the 36 screens.
 Wearables and watch companions are excluded from this scope.
 
-## Current development update — 30 October
+## Current development update — 31 October
 
-Latest published **0.1.23 / 023c5fb7** corrects Report spacing/navigation/ribbons, Tonight weekday targets, alarm/task controls, Settings/Appearance and tracking/audio layouts. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.23-ui-reference-20261030-023c5fb7); [current36-screen inventory](docs/UI-REFERENCE-ACCEPTANCE.md). Focused silent native journeys exercised safe main actions, cancellation/recreation and saved state on the exact source revisions recorded with original Android captures. All36 matching, remaining data/font variants, a SystemUI tint transition, full ringing-alarm acceptance and broader feature/device work remain open. Security review and broad/unit-test campaigns are deferred. After the silent review, the user authorized an in-place phone update to0.1.23. Installation succeeded; the app was not launched and no real output tests ran.
+Latest published **0.1.24 / dd8c3748** refines Report audio rows, Travel clocks/zone cards, shared wake presentation, wake-check footer/icons and recording-only cleanup controls. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.24-reference-refinement-20261031-dd8c3748); [current36-screen inventory](docs/UI-REFERENCE-ACCEPTANCE.md). Focused silent native journeys exercise actual private data, safe actions, cancellation/recreation and persisted results; exact source/run/capture limits are linked per screen. No production demo records were added. All36 matching, remaining feature parity, real alarm/overnight behavior and broader security acceptance remain open. The verified phone installation remains **0.1.23 /023c5fb7**;0.1.24 has not been installed, and no phone/output operation ran for this increment.
 
 Feature baseline **170b0e44** includes real backup tone/volume, corrected rails,
 Gentle's quiet sample, clearer Tone/QR/Nap/rhythm layouts and the scoped

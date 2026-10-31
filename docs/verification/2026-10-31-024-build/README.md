@@ -1,0 +1,7 @@
+# 0.1.24 development package
+
+[Published APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.24-reference-refinement-20261031-dd8c3748). Frozen source `dd8c3748cc836acef44bd0338eeb7df792cabe4a`, version0.1.24 /25, Android30minimum/36target, arm64-v8a. [Exact package metadata](package.json) and [Gradle log](build.txt).
+
+Final APK packaging passed3m30s. The file is 177585240 bytes, SHA-256 `ad72af78bdfdcc939499dc404cba9d1e56a0d98e2903c0d0cb675da781f24544`. GitHub release429839326 returned both APK/checksum assets uploaded; server APK digest equals the local digest. Publishing the same draft succeeded. This is packaging/upload identity, not a signature audit or phone installation. The earlier unpublished d1b954de artifact/log are retained locally and are not this release.
+
+Current focused native results and actual captured-state limits: [Report/Travel](../2026-10-30-report-travel-refinement/README.md), [shared wake renderer](../2026-10-31-shared-wake-reference/README.md), [corrected wake check](../2026-10-31-shared-wake-reference/corrected-check-41188170028/README.md), [recording-only cleanup](../2026-10-31-privacy-audio-reference/README.md). Passing compilation/screenshots do not establish full feature parity/all36 matching or scientific accuracy. No broad/unit-test campaign, lint/security review, personal-phone action or physical output ran for this increment. Last verified phone installation remains0.1.23.

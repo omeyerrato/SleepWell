@@ -55,7 +55,7 @@ public class AppearanceFlowTest {
             appearance();clickText("Text size");clickText("Extra large");enableToggle("Reduce motion");enableToggle("High-contrast mode");save();
             assertTrue(Prefs.flag(context,Appearance.MOTION));assertTrue(Prefs.flag(context,Appearance.CONTRAST));assertEquals(2,Prefs.number(context,Appearance.SIZE,-1));
             tonight();assertEquals(normalSize*1.3f,actualTitleSize(),.5f);assertTrue(Appearance.reduced(context));assertTrue(Design.touch(context,Color.WHITE,8) instanceof NightDialSurface);capture("large-contrast-tonight");
-            exposeControl("Start sleep tracking");capture("large-contrast-tonight-action");assertTrue(device.hasObject(By.desc("Tonight").selected(true)));
+            exposeControl("Begin night");capture("large-contrast-tonight-action");assertTrue(device.hasObject(By.desc("Tonight").selected(true)));
             relaunch();assertTrue(device.wait(Until.hasObject(By.desc("Tonight").selected(true)),5000));assertActualRootColor(expected[2]);appearance();assertTrue(device.findObject(By.desc("Reduce motion")).isChecked());assertTrue(device.findObject(By.desc("High-contrast mode")).isChecked());assertTrue(device.hasObject(By.text("Extra large")));exposeControl("Configure smart bedroom light");capture("large-contrast");
             for(int phase=0;phase<3;phase++){Appearance.Palette p=new Appearance.Palette(phase,true);assertTrue(androidx.core.graphics.ColorUtils.calculateContrast(p.softInk,p.panel)>=4.5);assertTrue(androidx.core.graphics.ColorUtils.calculateContrast(p.buttonInk,p.accent)>=4.5);}
         }finally{

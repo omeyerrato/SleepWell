@@ -57,6 +57,7 @@ on:
           - chart-phone-motion
           - wake-challenge-reference
           - wake-reference-current
+          - wake-check-reference
           - calendar-consent-recovery
           - profile-room-dimming
           - room-settings-search

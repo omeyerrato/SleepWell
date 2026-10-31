@@ -1,0 +1,406 @@
+{
+  "schema_version": 1,
+  "reviewed": "2026-10-31",
+  "feature": "F049",
+  "status": "missing; no demonstrated decoder fix",
+  "scope": "Source and surviving private artifact audit; no new model replay or clinical/independent accuracy evaluation",
+  "sleepwell_revision": "05f005a1eb3d339d46b74d7bd4b3e6323bf78807",
+  "upstream": {
+    "repository": "https://github.com/devangk003/Nidra",
+    "revision": "2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7",
+    "licence": "Apache-2.0 with NOTICE; re-fetched exact sources, no algorithm or weights redistributed",
+    "files": [
+      {
+        "path": "scripts/PreStep_edf_to_wav.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/PreStep_edf_to_wav.py",
+        "bytes": 2438,
+        "sha256": "96402e1e1d1f0646da0594a2051c3e9f29ae66d1071befcb40ab58adb81caa4d"
+      },
+      {
+        "path": "scripts/Step1_convert_audio_to_mel_and_label.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/Step1_convert_audio_to_mel_and_label.py",
+        "bytes": 6937,
+        "sha256": "933125b0fe752cc8e4c1ade30737add3c410e468850a73512954fa9409706900"
+      },
+      {
+        "path": "scripts/Step2_train_modelCNN_BiLSTM.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/Step2_train_modelCNN_BiLSTM.py",
+        "bytes": 40253,
+        "sha256": "2492fcbfbbe956ec798c36e5e1d1d65fb4d00e1636cc27e1b2bccc5666f9e781"
+      },
+      {
+        "path": "scripts/Step3_Use_Model.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/Step3_Use_Model.py",
+        "bytes": 9018,
+        "sha256": "eace75497016a3cd22da29698b6ff5113fd06f2d9a4108dafe88e06da5e51344"
+      },
+      {
+        "path": "LICENSE.txt",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/LICENSE.txt",
+        "bytes": 11388,
+        "sha256": "48f8376bb077dc54b754aef5ded737c42332ddab417a49437b30a93a658485bb"
+      },
+      {
+        "path": "NOTICE.md",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/NOTICE.md",
+        "bytes": 708,
+        "sha256": "ea62461efe110e85ee0c9d10dd13e646c518623b72a791b5a33bb9385d2ec894"
+      },
+      {
+        "path": "models/temporal/model_config.json",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/models/temporal/model_config.json",
+        "bytes": 88,
+        "sha256": "beb9140a7364e8509f67ebc51567e9b80c99d62d3c5dba6a2e89f03f06325fa7"
+      },
+      {
+        "path": "scripts/test_trained_model.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/test_trained_model.py",
+        "bytes": 23910,
+        "sha256": "9efbb9aa224a1a5c867eff31bd88de5e2baef1e143106a6d9b63ed32b0284f52"
+      },
+      {
+        "path": "scripts/Check_compile_model.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/Check_compile_model.py",
+        "bytes": 9117,
+        "sha256": "47a1e66d79a987617b08b3600cbf32af36421ad802f28f217db712a90bbcfb17"
+      },
+      {
+        "path": "scripts/Step4_fine_tune.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/Step4_fine_tune.py",
+        "bytes": 4621,
+        "sha256": "6f8e22160e970aaeee23152f11bf644552b6b33541e0aa05b18d9e5ad9a15997"
+      },
+      {
+        "path": "README.md",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/README.md",
+        "bytes": 8019,
+        "sha256": "5a508452df3d479ad3d75f92fa569b3b919519d5011eec0e8663171a65b2a584"
+      }
+    ],
+    "checkpoint": {
+      "path": "final_model_weights.h5",
+      "sha256": "affbc5445f40d31c2109a4118f34f7fee177a4249bf403da0de10d8dfe2be873",
+      "identity_source": "Existing private checkpoint re-hashed in this follow-up; matches prior pinned manifest"
+    }
+  },
+  "findings": [
+    {
+      "id": "upstream_example_temporal_mismatch",
+      "source_lines": {
+        "scripts/Step1_convert_audio_to_mel_and_label.py": [
+          55,
+          75
+        ],
+        "scripts/Step2_train_modelCNN_BiLSTM.py": [
+          293,
+          318,
+          508,
+          542
+        ],
+        "scripts/Step3_Use_Model.py": [
+          174,
+          182
+        ]
+      },
+      "producer_shape": [
+        "slice",
+        224,
+        224,
+        3
+      ],
+      "temporal_input_shape": [
+        "batch",
+        7,
+        224,
+        224,
+        3
+      ],
+      "producer_rank": 4,
+      "temporal_input_rank": 5,
+      "missing_operations": [
+        "Seven consecutive slices per context",
+        "Per-slice min-max normalization with 1e-8 denominator"
+      ],
+      "evidence_kind": "Source deduction, not an executed error",
+      "prior_replay_already_applied_missing_operations": true,
+      "demonstrated_fix_for_all_light": false
+    },
+    {
+      "id": "persisted_input_not_a_staging_record",
+      "capture_modality": "Actual transient mono PCM16 at 16000 Hz is available in NoiseRecorder; ambient audio is plausible in principle",
+      "required_nominal_context_seconds": 50.176,
+      "required_slice_advance_seconds": 7.168,
+      "motion_clip_target_samples": 160000,
+      "motion_maximum_read_samples": 1024,
+      "motion_maximum_clip_seconds_exclusive": 10.064,
+      "contactless_clip_samples": 160000,
+      "clip_budget_maximum": 60,
+      "minimum_wait_after_saved_clip_ms": 30000,
+      "stored_epoch_fields": [
+        "movement",
+        "noise",
+        "light",
+        "samples",
+        "start",
+        "time"
+      ],
+      "global_reference": "Whole-record Mel maximum determines 80-dB clipping before slicing; local excerpts cannot assert identical clipping",
+      "consequence": "Saved sparse clips and scalar summaries cannot reconstruct this checkpoint input or its time axis",
+      "future_transient_capture_possible": true
+    }
+  ],
+  "local_source_evidence": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/NoiseRecorder.java",
+      "git_blob": "376b743c3827daccaa55852c02ab7dac40471502",
+      "worktree_sha256": "5bad0264261c9bea10007d0f1c82ab56a630ed14734329aaef54e6ed248411b6"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ClipBudget.java",
+      "git_blob": "04f8db5915c95fdc536b95745972fa57e09351e6",
+      "worktree_sha256": "82cbbfc079539608571b6cc9009ec964fddb9e32b4adb4fc34f6d07920d83663"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SignalWindow.java",
+      "git_blob": "44d85252250622dab7bacbec4f1c835b14a01b64",
+      "worktree_sha256": "01ce06ba56cf2e9f30f61df64e0a712466546e423f516c4dbe2cfcb39e2be007"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "worktree_sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingService.java",
+      "git_blob": "b8a6c8399a5944e98de5f18096aa10943d97d451",
+      "worktree_sha256": "4edb35f6143e33cf17c98f31c40155910f0b00836095a071f272e390f1df490a"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundAnalysisStream.java",
+      "git_blob": "55c84086cb7a956882ce3310b5c784b999b12753",
+      "worktree_sha256": "d3d4f9d9b54f6c0f78b4fc8c50a728251ea3a37b640d9a7d1c666bc2f93ee8ba"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarSoundPipeline.java",
+      "git_blob": "70b669f2fe0ada4dc480f57fe6d94e783621cd6c",
+      "worktree_sha256": "8f76db997626402cf2db12185320f06d37380ad8009c048216b7a35d31f8617e"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarSoundClips.java",
+      "git_blob": "8953cd15c8131a3060df6becb62de644022b336c",
+      "worktree_sha256": "ab9a5b2d74712a95c39b2b659385407b66f09294435d075d342ead1e609839c0"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarClipPolicy.java",
+      "git_blob": "d4d36b02fe0a431eb720337cda38105589eeea34",
+      "worktree_sha256": "bf7f6789fe7936d46d6de2e0b408ff4712c296b384d5e7022e161025380be804"
+    }
+  ],
+  "decision": {
+    "adapter_integrated": false,
+    "reason": "Upstream temporal formatting issue was already corrected in the rejected replay; no new evidence establishes useful stage behavior, and persisted native input lacks the required context",
+    "minimal_candidate_prerequisite": "Reproducible pinned-graph/weight reference inference with complete original-record clipping context and correct center-slice timing, meaningful ambient-input behavior, raw probabilities, hashes and licensed annotation provenance",
+    "subsequent_capture_prerequisite": "New explicit opt-in continuous actual PCM or sufficient unclipped Mel-feature preservation with sample timing and gaps; preserve existing raw records",
+    "alternative": "Redistributable trained ambient-phone checkpoint with a complete working preprocessing/decoder contract, or licensed synchronized ambient signals and expert stage labels for original training",
+    "clinical_certification_required": false,
+    "absence_of_all_suitable_models_claimed": false
+  },
+  "actions": {
+    "primary_source_texts_downloaded": true,
+    "weights_downloaded": false,
+    "datasets_or_recordings_downloaded": false,
+    "model_inference_run": false,
+    "runtime_probe_run": false,
+    "tests_or_builds_run": false,
+    "phone_or_adb_used": false,
+    "sensors_mic_speaker_or_alarms_used": false,
+    "raw_records_modified": false,
+    "global_checklists_modified": false
+  },
+  "artifact_followup": {
+    "existing_artifacts_located": true,
+    "existing_artifacts_modified": false,
+    "private_artifacts": [
+      {
+        "name": "final_model_weights.h5",
+        "bytes": 22418608,
+        "sha256": "affbc5445f40d31c2109a4118f34f7fee177a4249bf403da0de10d8dfe2be873"
+      },
+      {
+        "name": "nidra-faithful-full.tflite",
+        "bytes": 21970108,
+        "sha256": "1a3d8d639cebd8b666169a019b935df7cbed71911e18b5f2b09345ebb7c29369"
+      },
+      {
+        "name": "nidra-faithful-encoder.tflite",
+        "bytes": 16022952,
+        "sha256": "06a2b04663c7a765c18dc917a20181bd591f1f03c407d1e295bb5de95a3671c7"
+      },
+      {
+        "name": "nidra-faithful-head.tflite",
+        "bytes": 5958012,
+        "sha256": "4aa9b09c9e0e1a72f3b947cd9c095ebbb192c25e7a8c84789607104d1dab883e"
+      },
+      {
+        "name": "replay_real_audio.py",
+        "bytes": 3982,
+        "sha256": "54d358731825a56229c079d95e9d2a3e45996ebe5f90a01b175a2dbd830c3220"
+      },
+      {
+        "name": "replay_later_audio.py",
+        "bytes": 4098,
+        "sha256": "0862b8392d8ecbcde4b209a283860ad2bc70aca32422c13bd4badc4bdce68180"
+      },
+      {
+        "name": "convert_faithful.py",
+        "bytes": 4972,
+        "sha256": "cf3f2b21973ef273a61464eb571db11ab8c01e7504839a9479c7d6da5b0fac47"
+      },
+      {
+        "name": "real-replay-result.json",
+        "bytes": 4989,
+        "sha256": "28365ecf3496358b1063f27ea91b9c3ba856ede7a24f70697e2058640b02eab2"
+      },
+      {
+        "name": "later-real-replay-result.json",
+        "bytes": 6912,
+        "sha256": "24ff9171cc48e7513b67e6b12208eac8b2d01747b0e71ab74a6f583034978519"
+      },
+      {
+        "name": "psg-audio-original-jsonld.json",
+        "bytes": 6265,
+        "sha256": "7dce5f82292163fd5657b7aaba947afd42004c4261ce717f757444f7fbb86941"
+      },
+      {
+        "name": "psg-mirror-file-metadata.json",
+        "bytes": 94665,
+        "sha256": "b74aefcda98298501f978beaec533b0875f2cd428af0b5930e4a1ef2c071ff22"
+      }
+    ],
+    "repository_tree": {
+      "request": "https://api.github.com/repos/devangk003/Nidra/git/trees/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7?recursive=1",
+      "tree_sha": "2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7",
+      "truncated": false,
+      "data_file_suffixes_checked": [
+        "wav",
+        "edf",
+        "rml",
+        "npy",
+        "npz",
+        "flac",
+        "mp3"
+      ],
+      "matching_files": 0
+    },
+    "published_reference": {
+      "subject": "00000995-100507",
+      "files": [
+        {
+          "path": "exports/hypnogram/00000995-100507_ambient_hypnogram.png",
+          "url": "https://github.com/devangk003/Nidra/blob/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/exports/hypnogram/00000995-100507_ambient_hypnogram.png",
+          "git_blob": "564727f17f10b2818b2dd4351213b2a277b0e249",
+          "bytes": 86324,
+          "sha256": "0bfa3dbd5d7c61579e545b507cb73735855da14e0b46c4021349eb981a7f6f39",
+          "inspection": "Image visually inspected; not generated by this audit"
+        },
+        {
+          "path": "exports/hypnogram/00000995-100507_ambient_confusion.png",
+          "url": "https://github.com/devangk003/Nidra/blob/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/exports/hypnogram/00000995-100507_ambient_confusion.png",
+          "git_blob": "d95ba475ddab97640e32975fe9924e8fa1a25e2f",
+          "bytes": 61508,
+          "sha256": "2e2dc9ef0db8bd70b513b437daae22bfa0b5801d36fcca2114b5e3667d8086c9",
+          "inspection": "Image visually inspected; not generated by this audit"
+        }
+      ],
+      "confusion_matrix_class_order": [
+        "Wake",
+        "REM",
+        "Light",
+        "Deep"
+      ],
+      "confusion_matrix": [
+        [
+          3,
+          0,
+          99,
+          0
+        ],
+        [
+          0,
+          0,
+          134,
+          0
+        ],
+        [
+          3,
+          0,
+          2165,
+          0
+        ],
+        [
+          0,
+          0,
+          91,
+          0
+        ]
+      ],
+      "total_labels": 2495,
+      "predicted_light": 2489,
+      "predicted_wake": 6,
+      "predicted_rem": 0,
+      "predicted_deep": 0,
+      "correct_predictions": 2168,
+      "true_light_labels": 2168,
+      "reported_accuracy": 0.8689,
+      "all_light_baseline": 0.868937875751503,
+      "exact_generating_weight_hash_known": false,
+      "interpretation": "Constant Light interior; displayed accuracy equals all-Light majority baseline. Six endpoint Wake predictions are consistent with source zero padding, not evidence of wake detection.",
+      "test_script_contract": {
+        "path": "scripts/test_trained_model.py",
+        "per_slice_normalization_lines": [
+          430,
+          440
+        ],
+        "zero_padding_lines": [
+          461,
+          467
+        ],
+        "argmax_line": 253,
+        "training_data_evaluation_lines": [
+          519,
+          529
+        ],
+        "graph": "weights=None at lines123-128; differs from primary ImageNet training branch used by faithful conversion"
+      }
+    },
+    "reference_data": {
+      "original_doi": "https://doi.org/10.11922/sciencedb.00345",
+      "licence": "CC-BY-4.0 in existing original dataset metadata",
+      "mirror_revision": "f1e8c79f27d5d2c1716c24dea4252840eda5c406",
+      "mirror_is_licence_authority": false,
+      "plotted_subject_in_cached_edf_inventory": false,
+      "available_prior_replay_subject": "00001016-100507",
+      "prior_subject_edf_parts": [
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B001%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B002%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B003%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B004%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B005%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B006%5D.edf",
+        "V3/APNEA_EDF/00001016-100507/00001016-100507%5B007%5D.edf"
+      ],
+      "full_record_local": false,
+      "original_full_record_clipping_context_local": false,
+      "remaining_data_prerequisite": "Complete ordered ambient Mic recording and expert UserStaging with sample/clock provenance, or exact complete-record unclipped Mel features and global clipping reference; current six excerpts cannot supply that context",
+      "full_record_context_correction_tested": false
+    },
+    "alternative_checkpoint": {
+      "path": "models/temporal_checkpoints/best_model_weights.h5",
+      "git_blob": "f37e2dfa436e1d755529d4fe7196361031cd7127",
+      "bytes": 22418608,
+      "downloaded": false,
+      "discriminative_reference_obtained": false
+    },
+    "conclusion": "No genuinely untried demonstrated decoder fix was found. Full original-record preprocessing remains a coherent untried input correction, but the author example provides no discriminative reference to justify shipping or speculative capture scaffolding."
+  }
+}

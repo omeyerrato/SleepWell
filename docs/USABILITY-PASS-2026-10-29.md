@@ -21,6 +21,20 @@ Three implementation agents worked in separate worktrees. [Current36-screen inve
 
 Raster artwork was made with built-in imagegen; exact prompts are in [sound artwork](SLEEP-SOUND-ART-ASSETS.md) and [sunrise bedroom](SUNRISE-BEDROOM-ASSET.md).
 
+## Reference refinement release —31October,0.1.24
+
+Published frozen app source **`dd8c3748cc836acef44bd0338eeb7df792cabe4a`**, version **0.1.24 /25**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.24-reference-refinement-20261031-dd8c3748). Final `assembleDebug` passed3m30s; uploaded APK SHA-256 `ad72af78bdfdcc939499dc404cba9d1e56a0d98e2903c0d0cb675da781f24544`. The earlier unpublished d1b954de candidate remains retained separately; it precedes the final wake-check correction.
+
+- Report `d5fa9506`: short category titles/count captions; current20-original journey passes57.891s atd3f7422d /41104642545.
+- Travel `37958b60`, `1c4c1d0a`, `0e997269`, `d3f7422d`: reference raster landmark/connector, sampled decoding, zone cards and real live-clock/DST hierarchy;11-original journey passes45.164s.
+- Shared wake renderer `fb9e702e`: truthful safe-practice progress and top-rounded/square-bottom cream sheet. Actual AlarmActivity authority is unchanged.25 originals atd1b954de cover safe routine/Math and fake-clock wake check.
+- Privacy `1b68529a`, `d1b954de`: matching favorites switch, concise actual deletion scope and progress that respects reduced motion. Corrected same-method fixture `e9077085` passes33.539s with9 originals and3 populated retained sound events; expected deleted-audio references detach. First failed pending-clip assertion is preserved rather than called an app repair.
+- Wake check `4f571946`, `dd8c3748`: full inset-safe amber footer,10dp caption spacing and sharp state icons;7 current originals pass30.05s. No engine/nonce/scheduling/confirmation callback was changed.
+
+Three implementation agents worked in isolated worktrees. Actual originals/provenance are linked from the [current inventory](UI-REFERENCE-ACCEPTANCE.md). Source-specific earlier Report/Travel/Privacy/shared-renderer cohorts remain bounded to their unchanged production paths; no fresh whole-app acceptance is claimed. No new unit-test campaign, lint/security review, personal-phone query/installation or real output operation ran. The phone remains on verified0.1.23. All36 matching, phone Deep/REM/breathing, representative sound accuracy, physical overnight behavior and external-service acceptance remain open.
+
+Generated raster assets use built-in imagegen; exact saved paths/prompts are in [Travel assets](TRAVEL-REFERENCE-ASSETS.md) and [wake confirmation asset](WAKE-CHECK-REFERENCE-ASSETS.md).
+
 ## Main changes
 
 - **Settings:** the eight primary destinations follow the reference hierarchy. Sound analysis and Bedtime guard open directly. Secondary tracking, bedtime, integration and home-screen options have named sections. Recording threshold has its own page. Alarm readiness contains permission/device setup; the smart wake-up default lives under Alarms.

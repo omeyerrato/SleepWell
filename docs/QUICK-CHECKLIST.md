@@ -1,6 +1,6 @@
 # SleepWell current checklist
 
-Updated30October2026. Latest published APK: **0.1.23 / 023c5fb7**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.23-ui-reference-20261030-023c5fb7). Verified phone installation: **0.1.23 /023c5fb7**, updated in place from observed0.1.22. [Evidence](verification/2026-10-30-023-build/phone-installation.md).
+Updated31October2026. Latest published APK: **0.1.24 / dd8c3748**. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.24-reference-refinement-20261031-dd8c3748). Verified phone installation: **0.1.23 /023c5fb7**, updated in place from observed0.1.22. [Evidence](verification/2026-10-30-023-build/phone-installation.md).
 
 Checked items record implemented source or publication, with historical evidence where linked. They do not establish current all-screen, physical or overnight acceptance. Current phase: usability first. On30October the user resumed silent emulator comparisons and main-action checks. The phone update alone was later authorized and completed; app launch, alarm/audio execution, security review and a broad test/bug campaign remain deferred.
 
@@ -24,14 +24,14 @@ Checked items record implemented source or publication, with historical evidence
 - [x] Backup/export/restore and integration code; external prerequisites remain.
 - [x] Recording-only cleanup and manual export receipts; combined acceptance remains open.
 - [x] Saved Off/Light/Standard/Firm feedback and custom input hooks; physical feel unchecked.
-- [x] Generated raster icons and flat launcher; current phone installation predates these updates.
+- [x] Generated raster icons and flat launcher are included in installed0.1.23; the0.1.24 raster refinements await installation.
 - [x] Organized Settings, real task configuration, labelled menus and recent-settings Quick access.
 - [x] Free, open-source development APK published.
 
 ## Still unfinished
 
 - [ ] Match all36 references, including remaining charts, menus and visual states, with current Android/action/persistence acceptance.
-- [x] Reaccept the changed Report/calendar/edit flow on the silent emulator: current charts, calendar, trim/cancel/recreate and Save/reopen plus private inline audio/provider-stage variants pass at `ed6ccc14` / run41051564032 (89.758s,20 originals). [Bounded evidence](verification/2026-10-30-reference-resume/README.md); remaining all36/data variants stay open.
+- [x] Reaccept the changed Report/calendar/edit flow on the silent emulator: current charts, calendar, trim/cancel/recreate and Save/reopen plus private inline audio/provider-stage variants pass at `d3f7422d` / run41104642545 (57.891s,20 originals). [Bounded evidence](verification/2026-10-30-reference-resume/README.md); remaining all36/data variants stay open.
 - [ ] Remaining interaction bugs and security review after usability work.
 - [ ] Reliable additional sound recognition, including laughter and instruments.
 - [ ] Phone sleep-stage/REM and breathing/apnea implementation with suitable inputs and models.
@@ -39,16 +39,15 @@ Checked items record implemented source or publication, with historical evidence
 - [ ] Optional vendor/hardware parity listed in the full matrix.
 - [ ] Real alarm protection, loudness, ramp, sunrise, flashlight and challenge validation.
 - [ ] Overnight tracking, sound accuracy, anti-snoring, battery and actual integration validation.
-- [x] Install0.1.23 in place on the S23 Ultra; no uninstall or data clear. App launch/output tests remain deferred.
+- [ ] Install latest0.1.24 when requested. Verified0.1.23 remains installed; no app launch/output test ran.
 
 [Current scope and limits](REMAINING-WORK.md) · [172-feature matrix](FEATURE-MATRIX.md) · [36-screen acceptance](UI-REFERENCE-ACCEPTANCE.md) · [Source history](USABILITY-PASS-2026-10-29.md) · [Preserved earlier checklist](history/QUICK-CHECKLIST-2026-10-30-before-consolidation.md).
 
-## Latest usability increment —0.1.23
+## Latest usability increment —0.1.24
 
-- [x] Report: recover chart/history space, remove duplicate navigation rail, preserve real coverage gaps and correct editor/goal spacing.
-- [x] Tonight: full weekday circles and48dp targets, moving clock-plan arc and saved Off/day selections.
-- [x] Alarm settings: readable task setup labels, consistent glyphs, corrected Smart spacing and brown thumb.
-- [x] Settings/tracking: complete Appearance lamp card and large text, official Health logo, warm automation confirmation and named Options controls.
-- [x] Audio: reference-derived illustrated library, aligned waveforms and complete timestamps.
-- [x] Focused silent native main-action/recreation/persistence checks; original captures and exact source/run scope archived.
-- [x] Build, publish and install0.1.23 (`023c5fb7`) in place. App launch/output tests remain deferred; all36 acceptance stays open.
+- [x] Report: single-line categories and truthful estimate counts;20 current captures plus calendar/edit/Save/reopen pass. [Evidence](verification/2026-10-30-report-travel-refinement/README.md).
+- [x] Travel: reference landmark/connector and clock proportions; actual zones/DST/drafts/Save/reopen pass in11 captures. [Evidence](verification/2026-10-30-report-travel-refinement/README.md).
+- [x] Shared wake renderer: truthful safe-practice progress, landscape and top-rounded cream sheet; real alarm admission remains separate. [Evidence](verification/2026-10-31-shared-wake-reference/README.md).
+- [x] Wake-up check: full-width amber footer,10dp caption gap and sharp state icons;7 corrected captures and confirmation/reopen pass. [Evidence](verification/2026-10-31-shared-wake-reference/corrected-check-41188170028/README.md).
+- [x] Recording-only cleanup: favorites switch, progress/error/cancel/retry/reopen;3 populated sound events and nights/notes/alarms preserved with correct deleted-audio link removal. [Evidence](verification/2026-10-31-privacy-audio-reference/README.md).
+- [x] Build and publish0.1.24 (`dd8c3748`). App/portable schemas unchanged; all36 and real-device/overnight acceptance stay open.
