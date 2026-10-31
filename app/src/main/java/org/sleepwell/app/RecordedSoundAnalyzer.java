@@ -22,11 +22,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.BooleanSupplier;
+import org.sleepwell.app.RecordedSoundPolicy.Estimate;
 
 /** Explicit, offline supplementary estimates for recorded audio, never a live alarm/cue authority. */
 final class RecordedSoundAnalyzer implements AutoCloseable {
     static final int SAMPLE_RATE = 16000, MAX_SAMPLES = 1_920_000;
-    static final String MODEL_VERSION = "recorded-experimental-v1-f9dd5647-7bb42270";
+    static final String MODEL_VERSION = "recorded-experimental-v2-f9dd5647-7bb42270-pann-instrument";
     private static final int WINDOW = 160000, MIN_TAIL = 32000, CLASSES = 527;
     private static final AtomicBoolean LEASE = new AtomicBoolean();
     private final Thread owner = Thread.currentThread();
@@ -86,13 +87,9 @@ final class RecordedSoundAnalyzer implements AutoCloseable {
             float[] ps = infer(pann, pm, new long[]{1, 1, pm.length / 64, 64}, cancelled);
             float[] em = frontend.efficient(samples, cancelled);
             float[] es = infer(efficient, em, new long[]{1, 1, 128, em.length / 128}, cancelled);
-            Estimate laugh = estimate(ps, false), instrument = estimate(es, true);
-            int topInstrument = 138;
-            for (int i = 139; i < CLASSES; i++)
-                if (instrumentIndex(i) && es[i] > es[topInstrument]) topInstrument = i;
-            String candidate = laugh.qualifies ? "laughter" : instrument.qualifies ? "instrument" : "uncertain";
+            RecordedSoundPolicy.Decision decision = RecordedSoundPolicy.decide(ps, es);
             RecordedSoundFrontend.check(cancelled);
-            windows.add(new Window(start / 16L, count / 16L, laugh, instrument, candidate, labels[topInstrument]));
+            windows.add(new Window(start / 16L, count / 16L, decision, labels[decision.instrument.index]));
             processed += count;
             progress.update(windows.size(), total);
         }
@@ -115,21 +112,6 @@ final class RecordedSoundAnalyzer implements AutoCloseable {
                 throw new IllegalStateException("Invalid sound estimate");
             return scores;
         }
-    }
-
-    private static boolean instrumentIndex(int i) {
-        return (i >= 138 && i <= 199) || (i >= 208 && i <= 215);
-    }
-    private static Estimate estimate(float[] scores, boolean instruments) {
-        double score = 0, competitor = 0;
-        for (int i = 0; i < scores.length; i++) {
-            boolean member = instruments ? instrumentIndex(i) : i >= 16 && i <= 21;
-            if (member) score = Math.max(score, scores[i]);
-            else if (!instruments || i != 137) competitor = Math.max(competitor, scores[i]);
-        }
-        return new Estimate(score, competitor, instruments
-                ? score >= .65 && score - competitor >= .15
-                : score >= .10 && score - competitor >= .025);
     }
 
     private static float[] floats(AssetManager assets, String name, int length, String sha) throws Exception {
@@ -169,21 +151,23 @@ final class RecordedSoundAnalyzer implements AutoCloseable {
         // OrtEnvironment is process-owned; closing it here would invalidate another ONNX feature.
     }
 
-    static final class Estimate {
-        final double score, competitor; final boolean qualifies;
-        Estimate(double score, double competitor, boolean qualifies) { this.score = score; this.competitor = competitor; this.qualifies = qualifies; }
-        JSONObject json() throws JSONException { return new JSONObject().put("score", score).put("competitor", competitor).put("qualifies", qualifies); }
+    private static JSONObject estimateJson(Estimate estimate) throws JSONException {
+        return new JSONObject().put("score", estimate.score).put("competitor", estimate.competitor)
+                .put("qualifies", estimate.qualifies).put("index", estimate.index);
     }
     static final class Window {
-        final long startMs, durationMs; final Estimate laughter, instrument;
-        final String candidate, instrumentLabel;
-        Window(long startMs, long durationMs, Estimate laughter, Estimate instrument, String candidate, String instrumentLabel) {
-            this.startMs = startMs; this.durationMs = durationMs; this.laughter = laughter; this.instrument = instrument;
-            this.candidate = candidate; this.instrumentLabel = instrumentLabel;
+        final long startMs, durationMs; final Estimate laughter, instrument, efficientInstrument, pannInstrument;
+        final String candidate, instrumentLabel, instrumentModel;
+        Window(long startMs, long durationMs, RecordedSoundPolicy.Decision decision, String instrumentLabel) {
+            this.startMs = startMs; this.durationMs = durationMs; laughter = decision.laughter; instrument = decision.instrument;
+            efficientInstrument = decision.efficientInstrument; pannInstrument = decision.pannInstrument;
+            candidate = decision.candidate; instrumentModel = decision.instrumentModel; this.instrumentLabel = instrumentLabel;
         }
         JSONObject json() throws JSONException {
             return new JSONObject().put("startMs", startMs).put("durationMs", durationMs).put("candidate", candidate)
-                    .put("instrumentLabel", instrumentLabel).put("laughter", laughter.json()).put("instrument", instrument.json());
+                    .put("instrumentLabel", instrumentLabel).put("laughter", estimateJson(laughter)).put("instrument", estimateJson(instrument))
+                    .put("laughterModel", RecordedSoundPolicy.PANN).put("instrumentModel", instrumentModel)
+                    .put("efficientInstrument", estimateJson(efficientInstrument)).put("pannInstrument", estimateJson(pannInstrument));
         }
     }
     static final class Result {
@@ -194,7 +178,7 @@ final class RecordedSoundAnalyzer implements AutoCloseable {
         }
         JSONObject json() throws JSONException {
             JSONArray rows = new JSONArray(); for (Window window : windows) rows.put(window.json());
-            return new JSONObject().put("schema", 1).put("modelVersion", modelVersion).put("analyzedMs", analyzedMs)
+            return new JSONObject().put("schema", 1).put("modelVersion", modelVersion).put("policyVersion", RecordedSoundPolicy.VERSION).put("analyzedMs", analyzedMs)
                     .put("omittedMs", omittedMs).put("windows", rows);
         }
     }

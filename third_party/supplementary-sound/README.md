@@ -4,6 +4,18 @@ These bundled models power **explicit experimental analysis of recorded audio**.
 They do not replace the automatic YAMNet sleep ledger. Scores are uncalibrated
 model outputs, not probabilities, diagnoses or proof that a sound was absent.
 
+31 October 2026 policy update: explicit recorded analysis retains the original
+EfficientAT instrument gate and uses the already bundled PANN instrument-family
+scores only if that gate rejects (.35 score/.15 unrelated margin). Laughter stays
+at .10/.025. No weights, family map, frontend or automatic YAMNet rules changed.
+The separate frozen FSD50K evaluation improved instrument sources from 1/8 to 6/8;
+laughter stayed 3/8, with no newly accepted negatives or lost positives. Ten retained
+controls produced no candidates over 33 windows. [Protocol and limitations](../../docs/FSD50K-RECOGNITION-CALIBRATION.md),
+with source attribution/hashes in `fsd50k-study/selection.json` and
+`download-receipt.json`. The old failed holdout below remains historical and was
+not rerun. New result versions identify this policy and the selected model;
+existing summaries are not rewritten. Reliable automatic recognition is unfinished.
+
 ## Attribution and licences
 
 **PANNs MobileNetV2**, Qiuqiang Kong and the PANNs contributors, from

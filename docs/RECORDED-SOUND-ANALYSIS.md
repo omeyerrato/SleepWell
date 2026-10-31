@@ -2,15 +2,18 @@
 
 `RecordedSoundAnalyzer` is a real CPU inference engine for explicit analysis of
 a retained or imported recording. It uses bundled PANNs laughter and EfficientAT
-instrument classifiers with their distinct frontends. No server, account, model
+instrument classifiers with their distinct frontends, plus a development-selected
+PANN instrument fallback when EfficientAT does not qualify. No server, account, model
 download, microphone access, playback, alarm or automatic cue is involved.
 
 Production YAMNet, its0.65 laughter cutoff and accepted snoring/speech/cough/cry
 rules are unchanged. This feature does not mutate sleep sound events, user
 corrections or automation events. Its persisted results belong to a separate
 experimental analysis record. It cannot grant alarm dismissal or infer sleep
-stages. **Reliable automatic laughter/instrument recognition remains unfinished**:
-the frozen new holdout missed2/4 positive sources. Uncertain does not mean absent.
+stages. **Reliable automatic laughter/instrument recognition remains unfinished**.
+The 31 October frozen evaluation accepted only 3/8 laughter and 6/8 instrument
+sources; this is generic clip evidence, not bedroom accuracy. Uncertain does not
+mean absent. [Frozen study, controls and limits](FSD50K-RECOGNITION-CALIBRATION.md).
 
 ## Worker contract
 
@@ -59,7 +62,8 @@ window. `Result` exposes immutable `windows`, `analyzedMs`, `omittedMs`,
 `modelVersion`; `json()` returns schema1:
 
 ```json
-{"schema":1,"modelVersion":"recorded-experimental-v1-f9dd5647-7bb42270",
+{"schema":1,"modelVersion":"recorded-experimental-v2-f9dd5647-7bb42270-pann-instrument",
+ "policyVersion":"fsd50k-dev-v2-pann-instrument-035-015",
  "analyzedMs":10000,"omittedMs":1000,"windows":[
   {"startMs":0,"durationMs":10000,"candidate":"uncertain",
    "instrumentLabel":"Piano","laughter":{"score":0.05,"competitor":0.2,"qualifies":false},
@@ -71,16 +75,26 @@ The example shows schema only, not a fabricated production result. Scores are
 uncalibrated model outputs, not percentages of likelihood. `instrumentLabel`
 is the strongest family label even when uncertain. Laughter qualifies only if
 its PANN family maximum>=.10 and margin>=.025 over unrelated classes. Instrument
-qualifies only if EfficientAT family maximum>=.65 and margin>=.15, ignoring the
-compatible Music parent. Candidate order is qualifying laughter, then qualifying
-instrument, otherwise uncertain. It is a coarse window, not a pinpointed onset.
-Both raw family estimates and their strongest competitors remain available.
+qualifies if EfficientAT family maximum>=.65 and margin>=.15, or, only when that
+gate rejects, PANN instrument maximum>=.35 and margin>=.15. Both instrument gates
+ignore the compatible Music parent. Candidate order is qualifying laughter, then
+qualifying instrument, otherwise uncertain. It is a coarse window, not a pinpointed
+onset. The selected instrument estimate/label comes from the identified model.
+Accepted EfficientAT estimates and labels remain unchanged.
+
+Schema 1 keeps its original required fields. New results additionally retain
+`laughterModel`, `instrumentModel`, both `efficientInstrument` and `pannInstrument`
+estimates (score, competitor, gate and strongest class index), and `policyVersion`.
+The example above elides those per-window audit fields. Existing saved v1 results
+remain intact with their original model version; storage is not migrated or
+reinterpreted. Result details show the selected model and both raw estimates for
+new results, and continue displaying older summaries without the added fields.
 
 Sources, licences, hashes, export recipe and all failures are retained in
 `third_party/supplementary-sound/`. The two classifier exports and Java frontend
 were checked on unchanged real vectors; no new unit-test batch, personal-phone, microphone, alarm or sound output was used. A later bounded host-muted Android flow executes the real models as documented below.
 
-Latest source5266e54b builds production in27s with the original signer. Native saved-clip CPU analysis/save/reopen/delete passes13.826s with three inspected captures; both windows remain Uncertain. [Exact scope and original outputs](verification/2026-10-27-recording-analysis/README.md). Imported providers, physical capture/output/overnight behavior and recognition accuracy remain open. No new unit/lint/broad campaign or personal-phone action.
+Historical source5266e54b built production in27s with the original signer. Native saved-clip CPU analysis/save/reopen/delete passed13.826s with three inspected captures; both windows remained Uncertain under that policy. [Exact scope and original outputs](verification/2026-10-27-recording-analysis/README.md). This is not native execution evidence for the 31 October policy. Physical capture/output/overnight behavior and recognition accuracy remain open. No new unit/lint/broad campaign or personal-phone action in the policy update.
 
 ## Selected decoded-audio resampling contract
 

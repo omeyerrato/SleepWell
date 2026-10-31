@@ -103,7 +103,12 @@ public final class RecordedRecognitionActivity extends Activity implements Recor
         for(int n=0;n<windows.length();n++){JSONObject window=windows.getJSONObject(n);String candidate=window.getString("candidate"),label=candidate.equals("laughter")?"Laughter candidate":candidate.equals("instrument")?"Instrument candidate":"Uncertain";
             LinearLayout card=Design.col(this);Design.pad(card,14,12);card.setBackground(Design.shape(this,Design.SOFT,14));Design.text(card,clock(window.getLong("startMs"))+"–"+clock(window.getLong("startMs")+window.getLong("durationMs")),12,500,Design.MUTED);Design.space(card,4);Design.text(card,label,16,600,Design.INK);
             if(candidate.equals("instrument")&&!window.optString("instrumentLabel").isEmpty())Design.text(card,window.getString("instrumentLabel")+" · experimental class",13,400,Design.MUTED);
-            if(technical){estimate(card,"Laughter",window.getJSONObject("laughter"));estimate(card,"Instrument",window.getJSONObject("instrument"));}
+            if(technical){estimate(card,"Laughter",window.getJSONObject("laughter"));estimate(card,"Instrument",window.getJSONObject("instrument"));
+                if(window.has("instrumentModel")){
+                    Design.text(card,window.getString("instrumentModel").equals(RecordedSoundPolicy.PANN)?"Instrument estimate uses PANNs fallback":"Instrument estimate uses EfficientAT",12,400,Design.MUTED);
+                    estimate(card,"EfficientAT instrument",window.getJSONObject("efficientInstrument"));estimate(card,"PANNs instrument",window.getJSONObject("pannInstrument"));
+                }
+            }
             body.addView(card);Design.space(body,8);
         }
     }
@@ -124,7 +129,7 @@ public final class RecordedRecognitionActivity extends Activity implements Recor
         Design.text(body,"The selected audio is copied into private memory only. No audio is saved by this tool and no document access is retained. Its provider may need a connection to supply the file; analysis stays on this phone. Unfinished copies are discarded after process loss.",14,400,Design.MUTED);
     }
     private void about(LinearLayout body){
-        Design.text(body,"Experimental, offline estimates",21,600,Design.INK);Design.space(body,10);Design.text(body,"This tool looks for laughter and instrument candidates in audio you explicitly select. It can miss or confuse sounds: an independent holdout missed two of four positive examples. Uncertain results never prove a sound was absent.",14,400,Design.MUTED);Design.space(body,12);
+        Design.text(body,"Experimental, offline estimates",21,600,Design.INK);Design.space(body,10);Design.text(body,"This tool looks for laughter and instrument candidates in audio you explicitly select. It can miss or confuse sounds, including laughter and instruments in independent recorded-clip evaluations. Uncertain results never prove a sound was absent.",14,400,Design.MUTED);Design.space(body,12);
         Design.text(body,"Actual audio is analyzed in separate 10-second windows, including a final tail of at least two seconds. Shorter tails are omitted. These are coarse estimates, not exact event boundaries, identity checks, medical conclusions or alarm challenge proofs.",14,400,Design.MUTED);Design.space(body,12);
         Design.text(body,"Bundled models run on this phone without downloads or audio uploads. Original snoring, speech events and your corrected labels are unchanged. Native model work may finish its current step before cancellation discards the private copy; incomplete results are not saved.",14,400,Design.MUTED);Design.space(body,12);
         navigation(body,"file","Audio requirements","Format, privacy and source checks",this::sourceInfo);navigation(body,"info","Model credits and licenses","Attribution, changes and full licenses",()->go(Page.LICENSES));

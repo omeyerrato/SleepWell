@@ -49,7 +49,7 @@ import static org.junit.Assert.*;
 public final class RecordedAnalysisJourneyTest {
     private static final String ESTIMATES = "recorded-sound-estimates-v1.db";
     private static final String PCM_SHA = "ddf4f22ae871bc993329571af9660f1daba0b5a6f89ea2d11f77e3e2d222c305";
-    private static final String MODEL = "recorded-experimental-v1-f9dd5647-7bb42270";
+    private static final String MODEL = "recorded-experimental-v2-f9dd5647-7bb42270-pann-instrument";
     private static final int SAMPLES = 218720, DURATION = 13670;
     private final Instrumentation i = InstrumentationRegistry.getInstrumentation();
     private final Context c = i.getTargetContext();

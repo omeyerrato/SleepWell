@@ -1,5 +1,9 @@
 # Supplementary audio-tagging operating point
 
+Historical policy and failed holdout retained unchanged. The 31 October separately
+frozen study supports a new explicit offline PANN instrument fallback; this old
+holdout was not rerun or retuned. See [new protocol and results](FSD50K-RECOGNITION-CALIBRATION.md).
+
 Declared before new holdout audio download/inference. Existing retained fixture
 results are calibration evidence, not a new untouched holdout. Production mobile
 YAMNet remains unchanged, including laughter0.65 and accepted snore/speech rules.

@@ -1,5 +1,20 @@
 # Recognition gap: current evidence and historical model study
 
+## Explicit recorded-analysis update, 31 October 2026
+
+The new source/uploader-separated FSD50K development/evaluation study supports a
+bounded **offline instrument fallback**, using the already bundled PANN model only
+when the original EfficientAT gate rejects. Frozen evaluation instrument sources
+improve from 1/8 to 6/8, laughter stays 3/8, with no lost positives or new
+distractor/wrong-family acceptances. Ten retained snore/speech/cry/cough controls
+also produce no candidates in 33 actual windows. The original failed holdout below
+was not rerun or tuned. See [protocol, results and limits](FSD50K-RECOGNITION-CALIBRATION.md).
+
+Automatic YAMNet, capture, grouping and cue authority remain unchanged. This small
+generic-clip result does not supply the independently interval-annotated target-room
+data described below. Reliable automatic laughter/instrument recognition remains
+unfinished. Older sections retain the evidence and policy that existed at their dates.
+
 ## Current source investigation, 27 October 2026
 
 Inspected `5fe17124`, the frozen supplementary manifests/full scores, pinned

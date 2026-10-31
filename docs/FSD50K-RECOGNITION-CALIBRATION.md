@@ -78,3 +78,74 @@ policy does. Families without a strict development true-positive gain retain
 their original policy, so the laughter cutoff remains .10/.025. Freeze this
 selected model policy before the first evaluation inference. The original
 evaluation gate above remains unchanged, including no newly accepted negatives.
+
+## Frozen evaluation and shipping result
+
+Selection/protocol commit: `ecb8fc8f`. Development-only model-selection amendment
+and frozen policy: `67491a79`, before the first evaluation inference. Exactly 48
+original WAVs from 48 uploaders were fetched; the initial metadata/index/audio
+network total was 29,563,956 bytes. Neither existing model was downloaded again,
+re-exported or trained. The unchanged Java DSP and bundled CPU models each ran
+once on the 24 evaluation sources. No evaluation scores selected a setting.
+
+| Source-level outcome | Development baseline → selected | Frozen evaluation baseline → selected |
+| --- | ---: | ---: |
+| Laughter, eight positives per split | 2 → 2 | 3 → 3 |
+| Instruments, eight positives per split | 0 → 4 | 1 → 6 |
+| Newly accepted distractor or wrong-family sources | 0 | 0 |
+| Lost correctly accepted positives | 0 | 0 |
+
+The five additional evaluation instrument sources are Freesound IDs `233213`,
+`328665`, `348311`, `351519`, `434629`; the retained EfficientAT positive is
+`339982`. Five laughter and two instrument evaluation positives remain missed.
+The predeclared shipping gate passes for this bounded offline policy only.
+
+The shipping Java `RecordedSoundPolicy` was compiled directly with the existing
+JDK and checked against **cached** development and evaluation vectors: all 48
+actual window decisions match the frozen policy, and every qualified EfficientAT
+estimate is preserved. This check did not rerun either split's model inference.
+Ten retained negative controls (two snoring, three speech, two cough, two infant
+cry, one adult cry) ran through the unchanged Java frontend and bundled ONNX
+Runtime 1.23.2 CPU models over 33 actual windows. They accepted no laughter or
+instrument candidates and no new fallback instrument windows. These old control
+examples were not a tuning set; the original failed laughter/instrument holdout
+was neither rerun nor tuned. Automatic YAMNet/capture/cue code is unchanged, so
+these control checks concern supplementary false candidates, not a fresh
+validation of automatic overnight event sensitivity.
+
+The production change is limited to explicit recorded analysis: preserve the
+original EfficientAT .65/.15 decision first, otherwise admit PANN instruments at
+.35/.15; laughter remains .10/.025 and keeps priority. The instrument label and
+score identify the selected model. New schema-1 results add policy/model identity
+and both original instrument estimates; old stored results remain intact under
+their original version. There is no additional model inference, asset or frontend
+change at runtime. The existing native journey's expected version was updated,
+but that journey, Gradle, CI and device execution were not run in this source slice.
+
+### Auditable retained outputs
+
+`third_party/supplementary-sound/fsd50k-study/` retains:
+
+- `selection.json`: all human labels/ratings, author, source, licence and archive entry identities.
+- `download-receipt.json`: original WAV SHA256 values and bounded network accounting.
+- `frozen-policy.json`: complete development-only grid and selected settings.
+- `result-summary.json`: source acceptance IDs, misses, exact raw-result hashes,
+  shipping-policy/DSP/model hashes, control attribution and PCM hashes.
+- `source-windows.csv` and `control-windows.csv`: every actual analyzed window's
+  family/competitor scores, gate outcome and timing, including uncertain results.
+
+Complete 527-score vectors, original WAV/PCM, exact converted origins and control
+scores remain locally in ignored `.android-local/recognition-fsd50k/` (controls
+under `policy-verification/`), pinned by the tracked receipts. They are not bundled
+in the APK. `study.py` prevents a second evaluation run; `verify_policy.py` checks
+shipping Java decisions against existing vectors and runs only retained controls.
+Its resume option skips already completed controls and requires unchanged policy
+and DSP hashes. No personal-phone, microphone, playback, alarm, audio upload,
+new unit-test campaign or security sweep was used.
+
+This result does **not** establish reliable automatic bedroom recognition,
+training disjointness, calibrated probabilities, interval accuracy or mobile
+performance. Human FSD50K clip labels are not native target-room interval truth;
+48 generic clips with seven missed evaluation positives cannot close F171's
+automatic-recognition requirement. The old failed holdout and all previous model
+and source attribution remain available.

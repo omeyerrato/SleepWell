@@ -1,0 +1,264 @@
+{
+  "frozen_policy_sha256": "75ecbd77a8de2913a0834a092400e995d33bdc5d42851f209ebb6b1f17765ddd",
+  "splits": {
+    "dev": {
+      "laughter": {
+        "positives": 8,
+        "baseline_true": [
+          "33876",
+          "343884"
+        ],
+        "candidate_true": [
+          "33876",
+          "343884"
+        ],
+        "baseline_false": [],
+        "candidate_false": [],
+        "new_false": [],
+        "lost_true": []
+      },
+      "instrument": {
+        "positives": 8,
+        "baseline_true": [],
+        "candidate_true": [
+          "117673",
+          "251160",
+          "357326",
+          "40440"
+        ],
+        "baseline_false": [],
+        "candidate_false": [],
+        "new_false": [],
+        "lost_true": []
+      },
+      "processing_wall_seconds": 31.02152090000891
+    },
+    "eval": {
+      "laughter": {
+        "positives": 8,
+        "baseline_true": [
+          "141196",
+          "253598",
+          "38514"
+        ],
+        "candidate_true": [
+          "141196",
+          "253598",
+          "38514"
+        ],
+        "baseline_false": [],
+        "candidate_false": [],
+        "new_false": [],
+        "lost_true": []
+      },
+      "instrument": {
+        "positives": 8,
+        "baseline_true": [
+          "339982"
+        ],
+        "candidate_true": [
+          "233213",
+          "328665",
+          "339982",
+          "348311",
+          "351519",
+          "434629"
+        ],
+        "baseline_false": [],
+        "candidate_false": [],
+        "new_false": [],
+        "lost_true": []
+      },
+      "processing_wall_seconds": 21.574128700012807
+    }
+  },
+  "selection_sha256": "772de089b2a1b89d1af883b3934a7388bf64ef976364a5ca485b7fcefe4dc566",
+  "download_receipt_sha256": "91f37a970a1b0418ed85f81810a430d73c506190eec3d370cf9f5a9a714da50f",
+  "network_bytes": 29563956,
+  "policy_verification_sha256": "03308ca5570a97c2c5ab7dcbe7ca501902a3d8b5a36f1513ad2223223b52a694",
+  "shipping_policy_sha256": "e498863f2fa70854968f5b2b5c8f4cfc5c0bcc3d7c8b71ec0021b7cae21a0337",
+  "models": {
+    "panns-laughter.onnx": "f9dd56478e434e067cef505489d0ae4483d80d357e2c35bc3d94ba432eb08f3f",
+    "efficientat-instruments.onnx": "7bb4227052d796a1ef35f0a5b703fdd724cd200fc7e6f85087289222e6c5b5c8"
+  },
+  "frontend": {
+    "RecordedSoundFrontend.java": "34fb1f9ec443b2af0fd1e1b9b2db7a5be0cccaec49ede1999e440f9cbe8cb3fc",
+    "RecordedPcmResampler.java": "05fb50dc1acfbed2e9857deea589f22cdf8b638be05da06e488340663ea283f2"
+  },
+  "cached_splits": {
+    "dev": {
+      "results_sha256": "5deced38026da96f25f921a73fe8a64c02a507cb662e89a63115cf61e2c09938",
+      "sources": 24,
+      "windows_matched": 24,
+      "new_inference": false
+    },
+    "eval": {
+      "results_sha256": "b25d7766811c457885cdac8fd6e1871de7d1ace73af304a3bd47485ae4ad110a",
+      "sources": 24,
+      "windows_matched": 24,
+      "new_inference": false
+    }
+  },
+  "controls": [
+    {
+      "samples": 552000,
+      "omitted_tail_samples": 0,
+      "processing_seconds": 2.391608500001894,
+      "scores_sha256": "ffd1e18c91c9126ab0948020920ee70dd343491a02200a71d41f0c50e507598b",
+      "new_instrument_windows": 0,
+      "name": "snoring-sorts",
+      "role": "snoring",
+      "page": "https://freesound.org/people/SortsApostata/sounds/233600/",
+      "author": "SortsApostata",
+      "license": "CC0-1.0",
+      "pcm_sha256": "c7e95aed4687352e5dbd27148f521584e7224f7df7f1dddbb5875332dadce5a1",
+      "windows": 4,
+      "laughter_acceptances": 0,
+      "instrument_acceptances": 0
+    },
+    {
+      "samples": 565440,
+      "omitted_tail_samples": 0,
+      "processing_seconds": 2.6307849000004353,
+      "scores_sha256": "11a83a09948af7fb06e3576408151661aa043ab65d754da8d2154db0f19fedbf",
+      "new_instrument_windows": 0,
+      "name": "snoring-pencil",
+      "role": "snoring",
+      "page": "https://freesound.org/people/pencilgame1/sounds/103522/",
+      "author": "pencilgame1",
+      "license": "CC0-1.0",
+      "pcm_sha256": "d53e9312fe9abd9ec6174d864b660ac38dc0edc792698087a99b774084ca68a1",
+      "windows": 4,
+      "laughter_acceptances": 0,
+      "instrument_acceptances": 0
+    },
+    {
+      "samples": 301117,
+      "omitted_tail_samples": 0,
+      "processing_seconds": 1.8521483000004082,
+      "scores_sha256": "deb264f61aee65fa53dabc0702555491ec828dc9db10e6b98b3b7cd2c9c35e7c",
+      "new_instrument_windows": 0,
+      "name": "speech-crowd",
+      "role": "speech",
+      "page": "https://freesound.org/people/ZyryTSounds/sounds/222993/",
+      "author": "ZyryTSounds",
+      "license": "CC0-1.0",
+      "pcm_sha256": "ab425449b6f6b6af3986b992f3d14455461bcc63ad3a3eabf61554d4bf124d13",
+      "windows": 2,
+      "laughter_acceptances": 0,
+      "instrument_acceptances": 0
+    },
+    {
+      "samples": 93962,
+      "omitted_tail_samples": 0,
+      "processing_seconds": 1.2337122999961139,
+      "scores_sha256": "e9b5f9e75f09068ea8fb787e30c8014bfe4d6d77848451a3bcdc6778a57bfa76",
+      "new_instrument_windows": 0,
+      "name": "speech-countdown",
+      "role": "speech",
+      "page": "https://freesound.org/people/toam/sounds/202750/",
+      "author": "toam (original voice recordings credited to cognito perceptu)",
+      "license": "CC0-1.0",
+      "pcm_sha256": "4a62ee7002290bce1555a3995c87fd6d0138343e54f767c418efd356e2765880",
+      "windows": 1,
+      "laughter_acceptances": 0,
+      "instrument_acceptances": 0
+    },
+    {
+      "samples": 73748,
+      "omitted_tail_samples": 0,
+      "processing_seconds": 1.2260673999990104,
+      "scores_sha256": "5ad0390eacef73393eaeacba59225581e176f2134c9f7027b53f4afa6195cabd",
+      "new_instrument_windows": 0,
+      "name": "cough-fabrizio",
+      "role": "cough",
+      "page": "https://freesound.org/people/Fabrizio84/sounds/457972/",
+      "author": "Fabrizio84",
+      "license": "CC0-1.0",
+      "pcm_sha256": "11874d436a1440c8aa09e8eb4f952dc75ccd92f92095c7561eb2da49abed084e",
+      "windows": 1,
+      "laughter_acceptances": 0,
+      "instrument_acceptances": 0
+    },
+    {
+      "samples": 436145,
+      "omitted_tail_samples": 0,
+      "processing_seconds": 2.36074589999771,
+      "scores_sha256": "41a2553a023600a3abc70b698d66c5add4b1f24af8ca8365462c297790ff66e9",
+      "new_instrument_windows": 0,
+      "name": "cough-crowd",
+      "role": "cough",
+      "page": "https://freesound.org/people/freesound/sounds/25301/",
+      "author": "freesound (Caixaforum audience recording)",
+      "license": "CC0-1.0",
+      "pcm_sha256": "e4babc47bc2435d773e633b2d64cc018a5ac064f1542c349a83bf4fd2268901c",
+      "windows": 3,
+      "laughter_acceptances": 0,
+      "instrument_acceptances": 0
+    },
+    {
+      "samples": 480000,
+      "omitted_tail_samples": 0,
+      "processing_seconds": 2.403132999999798,
+      "scores_sha256": "f0212e913b2013a8de49e9a76550374ff681cfb1fb12f547b1201a3d4a58b7c4",
+      "new_instrument_windows": 0,
+      "name": "babycry-bonehead",
+      "role": "baby_cry",
+      "page": "https://freesound.org/people/bonehead/sounds/66637/",
+      "author": "bonehead",
+      "license": "CC0-1.0",
+      "pcm_sha256": "c2b06fb8d0c6a5ee6fe22b6345b24b9eaf6da2b14cc4d7c480fa4294210bdfa7",
+      "windows": 3,
+      "laughter_acceptances": 0,
+      "instrument_acceptances": 0
+    },
+    {
+      "samples": 1166500,
+      "omitted_tail_samples": 0,
+      "processing_seconds": 4.041137200001685,
+      "scores_sha256": "f47aee01244747ed2fd3371b4bef9629ef018503a748b2245bdfa7302403842d",
+      "new_instrument_windows": 0,
+      "name": "babycry-ciccarelli",
+      "role": "baby_cry",
+      "page": "https://freesound.org/people/ciccarelli/sounds/185575/",
+      "author": "ciccarelli",
+      "license": "CC0-1.0",
+      "pcm_sha256": "cc2fac3d0921e3248e6e0eb7ab491a33510fddfeae9c9135142b84713af98859",
+      "windows": 8,
+      "laughter_acceptances": 0,
+      "instrument_acceptances": 0
+    },
+    {
+      "samples": 566400,
+      "omitted_tail_samples": 0,
+      "processing_seconds": 2.495391099997505,
+      "scores_sha256": "9ac073243d3a3be8169d8bb23c50014a5a600e30b2831b79ff01cbf78dfb7c43",
+      "new_instrument_windows": 0,
+      "name": "speech-balloon",
+      "role": "speech",
+      "page": "https://freesound.org/people/balloonhead/sounds/410537/",
+      "author": "balloonhead",
+      "license": "CC0-1.0",
+      "pcm_sha256": "6c31bfa246d0355c9d4d7af24dc7b5d1411aa6caa1474605958c1166cafcd30c",
+      "windows": 4,
+      "laughter_acceptances": 0,
+      "instrument_acceptances": 0
+    },
+    {
+      "samples": 424647,
+      "omitted_tail_samples": 0,
+      "processing_seconds": 2.2288329000002705,
+      "scores_sha256": "ecaa5f5faf39967c5173e1618f7adb396d36b660e9359bb11a353eaf29c61c9c",
+      "new_instrument_windows": 0,
+      "name": "crying-alucard",
+      "role": "adult_cry",
+      "page": "https://freesound.org/people/AlucardsBride/sounds/172738/",
+      "author": "AlucardsBride",
+      "license": "CC0-1.0",
+      "pcm_sha256": "e65835a571cae08554c8cf3027a587274d8981249c362f028ac006a3c75dcb02",
+      "windows": 3,
+      "laughter_acceptances": 0,
+      "instrument_acceptances": 0
+    }
+  ]
+}
