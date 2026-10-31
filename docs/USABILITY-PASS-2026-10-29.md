@@ -1,10 +1,25 @@
 # Usability implementation pass — 29 October
 
-Current instruction: make the app usable first. New tests, lint, screenshot verification, security review and a separate bug-fixing pass are deferred by the user. This document records source changes, not visual acceptance of all 36 references.
+Current instruction: make the app usable first. On30October the user resumed focused silent emulator comparisons and safe main-action checks. Security review, a broad/unit-test campaign, unrelated bug sweeps and phone/output operations remain deferred. This document records source increments and their source-specific bounded evidence, not acceptance of all36 references. Earlier dated entries below retain the authorization that applied at the time.
 
 Three implementation agents worked in separate worktrees. The main checkout integrated their changes with the shared Settings and tracking navigation work. Package source: `4e47ab35`, version **0.1.9 / 10**. Packaging runs `:app:assembleDebug` only. The phone remains untouched.
 
 The APK packaged successfully in3m47s and is [published as a development prerelease](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.9-usability-20261029-4e47ab35). No new acceptance or review jobs ran.
+
+## Reference-led correction release —30October,0.1.23
+
+Published frozen app source **`023c5fb752be96070cbab28c0386d131c83c70b4`**, version **0.1.23 /24**. [Development APK](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.23-ui-reference-20261030-023c5fb7). `:app:assembleDebug` passed in7m7s; APK SHA-256 `7d498517640b5fa0d088effe3a4cef9aa960e515d7a99ed94e36ad007ccd13c6`. This is packaging plus source-specific focused silent native evidence, not all36 acceptance.
+
+- Report `13630bfc`, `eeb0f88c`, `421b857a`: remove the redundant rail, preserve measured ribbon continuity/gaps, recover chart/history space and correct Tags/goal units. The renewed calendar/chart/trim/cancel/recreate/Save/reopen flow passes69.636s with18 originals at70bca1ec /41017261604. The later test-only ed6ccc14 /41051564032 passes89.758s with20 originals, adding actual inline synthetic-WAV/fake playback and imported-provider stages/source persistence on identical app code.
+- Tonight `6143f568`: measure the weekday gutter before layout; seven full circles/48dp targets fit.18 originals exercise actual Off/day persistence and moving clock-plan progress; initial SystemUI tint transition remains open.
+- Alarms `5462134a`, `d2ca3576`, `f3aa37f7`: readable Set up actions, consistent sound/repeat glyphs, recovered Smart content space and selected brown thumb. Existing organization/configuration and shared safe Math/wake-check cohorts pass with fake outputs. Full ringing AlarmActivity is unaccepted.
+- Settings `6dd63393`, `f9b7a226`, `f0de1ef7`, `fd090f41`: full lamp controls/large text, official Health Connect branding, warm automation confirmation, pinned readiness actions and new sunrise-bedroom art. Current settings and private manual-export journeys pass; combined privacy cleanup/real provider durability remains open.
+- Tracking `371c5b9e`, `14fb6ff1`: full-width Automatic heading/named Options, existing correct lifecycle callback retained after duplicate callback was removed. Current bounded setup/Room/bedtime/sonar/live coordinator journeys pass with fake ports; no physical sensor or overnight run.
+- Audio `70bca1ec`, `a20902af`, `d68d0e83`: soft controls, full event timestamps and aligned waveform/progress, flat illustrated Rain/Ocean/Fireplace/Wind assets. Mixer14 and events9 originals are individually compared; settings/recreation and synthetic-WAV/fake-playback persistence pass.
+
+Three implementation agents worked in separate worktrees. [Current36-screen inventory](UI-REFERENCE-ACCEPTANCE.md) links exact run/source/originals and remaining visual states. No broad/unit-test campaign, security review or phone/real alarm/audio/vibration/torch output ran. No claim of phone installation, sound-model accuracy, new phone Deep/REM algorithm, real provider exchange or full feature parity.
+
+Raster artwork was made with built-in imagegen; exact prompts are in [sound artwork](SLEEP-SOUND-ART-ASSETS.md) and [sunrise bedroom](SUNRISE-BEDROOM-ASSET.md).
 
 ## Main changes
 

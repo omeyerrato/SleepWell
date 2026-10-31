@@ -1,0 +1,66 @@
+{
+  "run": 41034030180,
+  "captured_source": "14fb6ff11045dba8562285abd4ef8eb67167ee99",
+  "files": [
+    {
+      "file": "library-analysis-details-recreated.png",
+      "bytes": 160650,
+      "sha256": "d5b9a1edbbf3cccc76a3c108ba72024289adf23bf2907fa0f5960c140b6efc5f"
+    },
+    {
+      "file": "library-analysis-details.png",
+      "bytes": 160738,
+      "sha256": "049ca62013f31ebc51ea216bf84ec8de5a535a2460f27153e40f41fd5697394f"
+    },
+    {
+      "file": "library-favorite-recreated.png",
+      "bytes": 190860,
+      "sha256": "7b85733724bfd3f8d8ca52be4ae0f9418a6bde41515de2e4d65a86bb817aae53"
+    },
+    {
+      "file": "library-options-recreated.png",
+      "bytes": 161295,
+      "sha256": "c0ebd32b0128bbed0022b574d5bc49446bb1d13c4a0a13f0dd07b43b61778a9c"
+    },
+    {
+      "file": "library-options.png",
+      "bytes": 161295,
+      "sha256": "c0ebd32b0128bbed0022b574d5bc49446bb1d13c4a0a13f0dd07b43b61778a9c"
+    },
+    {
+      "file": "library-playback.png",
+      "bytes": 192823,
+      "sha256": "cdc7a8a06b841a17cbc388e6fcf13f239dbaadafbd6d57fde8eed85947dc8013"
+    },
+    {
+      "file": "library-recording-deleted.png",
+      "bytes": 176807,
+      "sha256": "49e58be1e88e59d59f0ec851ac9d177d3a8d66ffd0395027404c28492f2eb6a3"
+    },
+    {
+      "file": "library-recordings.png",
+      "bytes": 189368,
+      "sha256": "5339244b3eece0fb14cf7f4a07225f127bda94ad0c645398e9488a8a9675737d"
+    },
+    {
+      "file": "library-speech.png",
+      "bytes": 103201,
+      "sha256": "20701d230877adb57d3a5b0b72eb83be01878a3eb4671c2ee649a494018478ea"
+    },
+    {
+      "file": "SoundLibraryUiTest#recordedIntervalsFavoritesAndDeletionPersistWithFakePlaybackOnly.txt",
+      "bytes": 803,
+      "sha256": "82981fdc3af22adca06406430a319be41a6ab57f92ecb2a1e2654e84b55f931c"
+    },
+    {
+      "file": "environment.json",
+      "bytes": 658,
+      "sha256": "407437b37406fc120df604bffaa2fcbf58b744efe0b349d5a1f6d9a4d1459815"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "bytes": 350,
+      "sha256": "4646d6b478a92066d27d58eb525eb1baad6daf04a339fd57e5f5c6e555d5536d"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # SleepWell feature checklist — 30 October 2026
 
-Latest published **0.1.22 / 6087d47e** includes the usability-first updates and explicit readiness alarm control. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.22-portable-feedback-20261030-6087d47e); [current source changes and deferred acceptance](USABILITY-PASS-2026-10-29.md). APK packaging only; no new verification, security review or physical output ran. The phone remains on0.1.4; installation is deferred. All36 matching, combined Privacy acceptance, remaining feature parity and device/overnight work remain open.
+Latest published **0.1.23 / 023c5fb7** includes the usability-first updates and explicit readiness alarm control. [APK and checksum](https://github.com/omeyerrato/SleepWell/releases/tag/v0.1.23-ui-reference-20261030-023c5fb7); [current source changes and deferred acceptance](USABILITY-PASS-2026-10-29.md). APK packaging and source-specific focused silent native journeys passed. No broad/unit-test campaign, security review or physical output ran. The S23 Ultra was updated in place to0.1.23 without launching the app or testing outputs. All36 matching, combined Privacy acceptance, remaining feature parity and device/overnight work remain open.
 
 Condensed version: [QUICK-CHECKLIST.md](QUICK-CHECKLIST.md).
 Checked means implemented source/build, not full phone/overnight acceptance.
@@ -10,7 +10,7 @@ Health/Privacy/document/Cloud repairs. Original-signer arm64 build passed in
 1m22s; remote tag and both uploaded hashes are verified. Selected native flows
 exercise actions, cancellation, recreation and persistence. [Exact release scope](verification/2026-10-27-reference-menus-build/README.md).
 
-**0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md). All36 reference states and broader interaction/security acceptance remain open.
+**0.1.23 /023c5fb7** is installed on the S23 Ultra. The APK checksum matches the published build; in-place replacement succeeded without uninstall/data clear. No app launch or personal-phone output test ran. Individual records/settings/files were not audited during this update. [Installation evidence](verification/2026-10-30-023-build/phone-installation.md). All36 reference states and broader interaction/security acceptance remain open.
 
 ## Published in 0.1.8 — phone update deferred
 
@@ -61,7 +61,7 @@ These changes are published in0.1.6; they are not installed on the phone.
 - [x] Complete Report calendar/edit verification. Current selected Report method passes55.975s/11 inspected originals, including real calendar/day changes, notes/tags/awake edits, Save/reopen and Back-discard. [Evidence](verification/2026-10-27-report-proportions/README.md).
 - [ ] Remaining interaction bugs and security review. Concrete shortcut/touch/calendar/QR/NFC/Health/Privacy/document/Cloud fixes are merged; their selected native scopes pass. Readiness denial/rationale/permanent-denial Settings recovery now passes its real Android journey (35.776s/13 inspected originals). Contactless and Snoring keep their bounded passes. Automatic recovery, clear live Tracking options, Room/Motion and Wind-down/Guard now pass their named native action/recreation/persistence journeys; actual label taps also pass. The full-night sonar timeline, shared Math/wake-check UI and calendar-consent draft recovery now have bounded native evidence in published0.1.3; real alarm admission/provider/overnight behavior remains unverified. Broader interaction, provider, hostile-overlay and full security acceptance remain open.
 
-**0.1.4 / 08d3911e** is installed on the S23 Ultra. The installed APK checksum and original user records/settings/files are verified. No personal-phone outputs ran. [Installation evidence](verification/2026-10-28-014-final-build/phone-installation.md).
+**0.1.23 /023c5fb7** is installed on the S23 Ultra. The APK checksum matches the published build; in-place replacement succeeded without uninstall/data clear. No app launch or personal-phone output test ran. Individual records/settings/files were not audited during this update. [Installation evidence](verification/2026-10-30-023-build/phone-installation.md).
 
 
 ## New priorities

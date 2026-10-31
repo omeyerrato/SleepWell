@@ -1,0 +1,32 @@
+{
+  "workflow_run": "41039108244",
+  "source_commit": "090be37da587f8b1756158f0bb0bf9e138df0c22",
+  "thumb_source_commit": "f3aa37f7",
+  "scope": "organization",
+  "files": [
+    {
+      "file": "organization-smart-following.png",
+      "sha256": "960f91ca3f93f7010a9996f353b3dc6e545a38d27bf0f816331c554411121643"
+    },
+    {
+      "file": "organization-smart-configured.png",
+      "sha256": "3a2287b65bb976a23f91eb1f307c7b98e7a4bed15ec3fc80a37a3ecaf83d0e07"
+    },
+    {
+      "file": "organization-smart-reopened.png",
+      "sha256": "3a2287b65bb976a23f91eb1f307c7b98e7a4bed15ec3fc80a37a3ecaf83d0e07"
+    },
+    {
+      "file": "focused-review-summary.json",
+      "sha256": "8f279b40fd6dfc3151a9b59f0111bb404dc432a05d84c57816b106d023769a7b"
+    },
+    {
+      "file": "environment.json",
+      "sha256": "cf941183655f6636570eac1b69352e34670358a2b3ecd38da13d8dc2ff5a5fee"
+    },
+    {
+      "file": "SettingsOrganizationFlowTest.txt",
+      "sha256": "e507b954999d6c75b5898c5b69325ba825c48a817baec82b915f1442fcb9080e"
+    }
+  ]
+}

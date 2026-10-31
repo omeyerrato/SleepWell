@@ -40,6 +40,7 @@ on:
           - alarm-reference-current
           - morning-code-enrollment
           - privacy-recovery
+          - privacy-audio-reference
           - setup-readiness
           - readiness-recovery
           - protection-recovery
@@ -64,6 +65,7 @@ on:
           - sleep-mixer-reference
           - sensing-travel
           - travel-ui
+          - travel-plan-reference
           - travel-cue-cleanup
           - sonar-night
           - sound-categories

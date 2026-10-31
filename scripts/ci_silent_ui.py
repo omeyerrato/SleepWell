@@ -52,6 +52,7 @@ parser.add_argument("--scope", choices=(
     'alarm-reference-current',
     'morning-code-enrollment',
     'privacy-recovery',
+    'privacy-audio-reference',
     'setup-readiness',
     'readiness-recovery',
     'protection-recovery',
@@ -76,6 +77,7 @@ parser.add_argument("--scope", choices=(
     'sleep-mixer-reference',
     'sensing-travel',
     'travel-ui',
+    'travel-plan-reference',
     'travel-cue-cleanup',
     'sonar-night',
     'sound-categories',
@@ -454,6 +456,9 @@ elif args.scope == "alarm-reference-current":
     metadata["alarm_reference_outputs"] = "disabled private alarms; fake scheduling/audio/scan ports; no alarm execution"
 elif args.scope == "reference-menus":
     tests = ["AlarmWakeSettingsTest#actualDraftRecreationSaveReopenAndCancelWithoutOutputs", "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory", "AlarmToneFlowTest#toneSelectionQuietPreviewImportCancelRecreateAndSavePersistWithoutOutput", "CloudBackupFlowTest#chooseSaveReopenAndReviewKeepLocalDataWithNoUpload", "QrCodeConfigurationTest#enrollmentPermissionFallbackRecreationPersistenceAndStrictRestoreRemainInert"]
+elif args.scope == "privacy-audio-reference":
+    tests = ["PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory"]
+    metadata["privacy_audio_slice"] = "recording-only confirmation/favorites/progress/error/reopen; private UUID SQLite and owned synthetic files; no history erase, import, playback or output"
 elif args.scope == "privacy-recovery":
     tests = ["PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory"]
 elif args.scope == "setup-readiness":
@@ -512,6 +517,8 @@ elif args.scope == "sensing-travel":
     tests = list(SENSING_TESTS)
 elif args.scope == "travel-ui":
     tests = list(TRAVEL_UI_TESTS)
+elif args.scope == "travel-plan-reference":
+    tests = ["TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs"]
 elif args.scope == "travel-cue-cleanup":
     tests = ["TravelCueFlowTest#windowReviewCancelSaveRecreateAndReopenNeverArmAnything"]
 elif args.scope == "sonar-night":
@@ -552,6 +559,8 @@ method_counts.update({"PowerNapNativeTest": 3})
 method_counts["InteractionSecurityNativeTest"] = 2
 for test in tests:
     extra = []
+    if args.scope == "privacy-audio-reference":
+        extra += ["-e", "ciAudioClearReference", "true"]
     if args.scope == "motion-reference":
         extra += ["-e", "motionSlice", "reference"]
     if args.scope == "routine-camera":
@@ -638,6 +647,7 @@ if args.scope != "full":
         "sensing-reference": ["sonar-setup-"+name+".png" for name in ("initial", "ready", "gain-changed", "retested", "reopened", "recreated")]+["sonar-night-"+name+".png" for name in ("setup", "measuring", "paused", "paused-recreated", "resumed", "missing", "stop-confirmation")]+["snore-settings-"+name+".png" for name in ("default", "preview", "selected", "recreated", "reopened")],
         "protection-recovery": PROTECTION_RECOVERY_FRAMES,
         "setup-readiness": SETUP_READINESS_FRAMES,
+        "privacy-audio-reference": ["privacy-recordings-"+name+".png" for name in ("confirmation","favorites-included","review-error","removing","removing-recreated","pending","retry","done","reopened")],
         "privacy-recovery": ["privacy-history-"+name+".png" for name in ("ready","error","busy","pending","done")],
         "reference-menus": REFERENCE_MENU_FRAMES,
         "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,
@@ -659,13 +669,14 @@ if args.scope != "full":
         "math-owner": ['routine-legacy.png', 'routine-ordered.png', 'routine-reordered.png', 'routine-recreated.png', 'routine-removed.png', 'routine-reopened.png', 'challenge-math-initial.png', 'challenge-math-selected.png', 'challenge-math-wrong.png', 'challenge-math-recreated.png', 'challenge-math-completed.png', 'challenge-math-typed-wrong.png', 'challenge-math-typed-recreated.png', 'challenge-math-typed-completed.png'],
         "challenge-routine": ROUTINE_FRAMES,
         "travel-ui": TRAVEL_UI_FRAMES,
+        "travel-plan-reference": [name for name in TRAVEL_UI_FRAMES if not name.startswith("travel-cues-")],
         "travel-cue-cleanup": TRAVEL_CUE_CLEANUP_FRAMES,
         "recorded-analysis": RECORDED_ANALYSIS_FRAMES,
         "organized-settings": ORGANIZED_AUTOMATIC_FRAMES,
         "automation-rules": AUTOMATION_RULE_FRAMES,
         "organization": ['organization-alarm-list.png', 'organization-alarm-list-large.png', 'organization-alarm-time-stepped.png', 'organization-alarm-time-recreated.png', 'organization-settings-root.png', 'organization-settings-sleep.png', 'organization-feedback-off.png', 'organization-search-flashlight.png', 'organization-alarm-editor.png', 'organization-alarm-search.png', 'organization-smart-following.png', 'organization-smart-configured.png', 'organization-alarm-schedule.png', 'organization-alarm-options.png', 'organization-controls-recreated.png', 'organization-alarm-backup.png', 'organization-smart-reopened.png', 'organization-alarm-reopened.png'],
         "report-flow": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap", "period-cancelled", "period-drag-start", "period-drag-end", "period-accessibility", "period-draft-recreated", "period-persisted")],
-        "report-rounding": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap", "period-cancelled", "period-drag-start", "period-drag-end", "period-accessibility", "period-draft-recreated", "period-persisted")] + ["report-reference-year-selected.png"],
+        "report-rounding": ["report-reference-" + name + ".png" for name in ("history", "week", "week-calendar", "week-selected", "month", "year", "night", "editor", "tags-notes", "reopened", "chart-gap", "period-cancelled", "period-drag-start", "period-drag-end", "period-accessibility", "period-draft-recreated", "period-persisted")] + ["report-reference-year-selected.png", "report-reference-inline-audio.png", "report-reference-provider-stages.png"],
         "nap-features": NAP_FEATURE_FRAMES,
         "feature-increment": FEATURE_INCREMENT_FRAMES,
         "phone-features": PHONE_FEATURE_FRAMES,

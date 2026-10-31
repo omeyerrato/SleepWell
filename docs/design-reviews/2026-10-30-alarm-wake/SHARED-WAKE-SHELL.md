@@ -1,0 +1,9 @@
+# Shared wake-screen presentation
+
+`WakeChallengeUi.card` is the production presentation renderer used by `AlarmActivity.build`: civil-time header, title, caption, real task-progress bars, decorative amber landscape and cream task sheet. It owns no alarm admission, occurrence, completion, service or output authority. The ringing activity continues to supply its own clock, current task and routine size through its unchanged call.
+
+The existing `RandomChallengePreviewActivity` Math route uses that same renderer, and now supplies its actual one-task selection as `Task 1 of 1`, with one progress bar. `Task preview`, `Math practice`, `Check practice answer` and the no-current-alarm note keep the practice context explicit. It does not display a fabricated three-task routine or claim that any alarm is ringing. The practice note sits below the Math action. The shared sheet now has rounded top corners and square bottom corners, matching board 01/right.
+
+The existing `WakeMathPracticeFixture` capture path identifies the actual shared renderer parts through inert view tags. At each existing Math capture it requires the clock, one-task progress and full 112dp landscape to remain visible, along with the full-width sheet and explicit practice context. Existing native input, state, recreation, ownership and no-output gates remain intact; no test method or real alarm launch was added.
+
+This source change has not been rendered or executed by the implementation agent. Earlier PNGs in this directory predate the one-task preview/progress and sheet-corner update. A later silent emulator capture can establish the shared presentation's appearance, but cannot establish real `AlarmActivity` admission, full-screen delivery, ringing, snooze/completion, pinning, sunrise brightness, sound, vibration or flashlight behavior. Those remain separate real-runtime acceptance items.
