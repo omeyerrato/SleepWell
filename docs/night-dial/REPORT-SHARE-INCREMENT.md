@@ -58,3 +58,11 @@ The earlier Report37 plan and failed41249512029 run remain separate history.
 Diff/manifest/inventory/scope consistency checks run locally; build and native
 execution are integration-owned and pending. No model evaluation, download,
 personal phone, microphone, playback or alarm action ran here.
+
+Native cohort amendment after `b7bfc9f9`: the same Share assertions and seven
+originals now belong to their own meaningful native method,
+`NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser`,
+with an isolated one-record fixture. This keeps the long Report/editing journey
+bounded. The [amended pending plan](REPORT-IMPORT-SHARE-NATIVE-PLAN-v2.json) has
+four methods and the same46 originals; the earlier source-specific plan above
+is retained. No assertion, actual chooser step or original capture was removed.
