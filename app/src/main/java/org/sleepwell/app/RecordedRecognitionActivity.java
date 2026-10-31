@@ -18,6 +18,8 @@ public final class RecordedRecognitionActivity extends Activity implements Recor
     private Page page=Page.MAIN,sourceParent=Page.MAIN;
     private Bundle positions=new Bundle();
     private ScrollView scroll;
+    private LinearLayout pageBody;
+    private int renderRevision;
 
     static Intent clip(Activity owner,long record,long clip,long event,long updated){return RecordUi.intent(owner,RecordedRecognitionActivity.class).putExtra("record",record).putExtra("clip",clip).putExtra("event",event).putExtra("updated",updated);}
     private static Page restored(String value){try{return Page.valueOf(value);}catch(IllegalArgumentException|NullPointerException invalid){return Page.MAIN;}}
@@ -39,13 +41,21 @@ public final class RecordedRecognitionActivity extends Activity implements Recor
     private String title(){switch(page){case SOURCES:return "Sources";case SAVED:return "Saved results";case ABOUT:return "About analysis";case SOURCE:return "Source info";case DETAILS:return "Result details";case LICENSES:return "Model credits";case NOTICE:return "Model notice";default:return "Recording analysis";}}
     private boolean working(){return job.phase==RecordedRecognitionJob.Phase.READING||job.phase==RecordedRecognitionJob.Phase.ANALYZING;}
     @Override public void changed(){
-        if(isDestroyed())return;remember();LinearLayout body=Design.page(this,false,null,n->{});scroll=(ScrollView)body.getParent();ScrollView rendered=scroll;int top=positions.getInt(page.name(),0);
+        if(isDestroyed())return;remember();int revision=++renderRevision;
+        if(pageBody==null){
+            pageBody=Design.page(this,false,null,n->{});
+            // Seed the first frame from this window's live insets; the shell listener keeps later changes current.
+            android.view.WindowInsets insets=getWindow().getDecorView().getRootWindowInsets();
+            if(insets!=null)((android.view.View)pageBody.getParent().getParent()).dispatchApplyWindowInsets(insets);
+        }else pageBody.removeAllViews();
+        // Refresh content without replacing the inset-owning viewport beneath focus/rectangle scrolling.
+        LinearLayout body=pageBody;scroll=(ScrollView)body.getParent();ScrollView rendered=scroll;int top=positions.getInt(page.name(),0);
         RecordUi.label(this,body);RecordUi.header(body,title(),this::back);Design.space(body,12);
         if(page==Page.MAIN){Design.text(body,"Offline · experimental",13,600,Design.BROWN);Design.space(body,6);Design.text(body,"Sound estimates can miss or confuse sounds. Uncertain does not mean absent.",13,400,Design.MUTED);Design.space(body,16);}
         if(working()){Design.text(body,job.progress,15,600,Design.INK);RecordUi.quietButton(body,"Cancel analysis",job::cancel);Design.space(body,12);}
         message(body);
         switch(page){case SOURCES:sources(body);break;case SAVED:saved(body);break;case ABOUT:about(body);break;case SOURCE:sourceDetails(body);break;case DETAILS:details(body);break;case LICENSES:licenses(body);break;case NOTICE:notice(body);break;default:main(body);}
-        Design.space(body,20);rendered.post(()->{if(scroll==rendered)rendered.scrollTo(0,top);});
+        Design.space(body,20);rendered.post(()->{if(scroll==rendered&&renderRevision==revision)rendered.scrollTo(0,top);});
     }
     private void message(LinearLayout body){
         String text=job.message;
