@@ -1,0 +1,1619 @@
+{
+  "schema": 1,
+  "selection_seed": "sleepwell-fsd50k-study-v1",
+  "status": "no inference performed",
+  "dataset": "https://zenodo.org/records/4060432",
+  "limitations": [
+    "Official human clip labels, not interval onset labels",
+    "Development labels may be incomplete; evaluation labels are exhaustive over FSD50K vocabulary",
+    "AudioSet-training overlap and bedroom/device accuracy are unknown",
+    "One distinct uploader per selected clip; excluded all prior classifier-fixture uploaders"
+  ],
+  "max_download_bytes": 100000000,
+  "clips": [
+    {
+      "split": "dev",
+      "role": "laughter",
+      "id": "366173",
+      "uploader": "Nanakisan",
+      "title": "Evil laugh 08 - Gen 4.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 86006496,
+        "compressed": 604494,
+        "bytes": 719950,
+        "disk": 3,
+        "offset": 1458606134
+      },
+      "source": "https://freesound.org/people/Nanakisan/sounds/366173/"
+    },
+    {
+      "split": "dev",
+      "role": "laughter",
+      "id": "392795",
+      "uploader": "Envywolf",
+      "title": "RisaMujer.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 3424480407,
+        "compressed": 46464,
+        "bytes": 192354,
+        "disk": 3,
+        "offset": 63736968
+      },
+      "source": "https://freesound.org/people/Envywolf/sounds/392795/"
+    },
+    {
+      "split": "dev",
+      "role": "laughter",
+      "id": "33876",
+      "uploader": "Charliefarley",
+      "title": "klaugh.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 489275825,
+        "compressed": 580437,
+        "bytes": 612486,
+        "disk": 0,
+        "offset": 1711518663
+      },
+      "source": "https://freesound.org/people/Charliefarley/sounds/33876/"
+    },
+    {
+      "split": "dev",
+      "role": "laughter",
+      "id": "163496",
+      "uploader": "eli123",
+      "title": "Bad Laugh",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1506170661,
+        "compressed": 671125,
+        "bytes": 837710,
+        "disk": 2,
+        "offset": 729311366
+      },
+      "source": "https://freesound.org/people/eli123/sounds/163496/"
+    },
+    {
+      "split": "dev",
+      "role": "laughter",
+      "id": "343884",
+      "uploader": "Reitanna",
+      "title": "all da laughs.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1657755416,
+        "compressed": 375026,
+        "bytes": 407118,
+        "disk": 5,
+        "offset": 555331564
+      },
+      "source": "https://freesound.org/people/Reitanna/sounds/343884/"
+    },
+    {
+      "split": "dev",
+      "role": "laughter",
+      "id": "315934",
+      "uploader": "benjaminharveydesign",
+      "title": "evil laugh 4.aiff",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 2984200269,
+        "compressed": 320090,
+        "bytes": 413774,
+        "disk": 4,
+        "offset": 119623504
+      },
+      "source": "https://freesound.org/people/benjaminharveydesign/sounds/315934/"
+    },
+    {
+      "split": "dev",
+      "role": "laughter",
+      "id": "67824",
+      "uploader": "ewrandom",
+      "title": "1000000006.aif",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 3084466382,
+        "compressed": 168948,
+        "bytes": 188494,
+        "disk": 5,
+        "offset": 515392618
+      },
+      "source": "https://freesound.org/people/ewrandom/sounds/67824/"
+    },
+    {
+      "split": "dev",
+      "role": "laughter",
+      "id": "166047",
+      "uploader": "Zabuhailo",
+      "title": "group laugh1.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1166591856,
+        "compressed": 143912,
+        "bytes": 204174,
+        "disk": 1,
+        "offset": 1290735761
+      },
+      "source": "https://freesound.org/people/Zabuhailo/sounds/166047/"
+    },
+    {
+      "split": "dev",
+      "role": "instrument",
+      "id": "117673",
+      "uploader": "Kyster",
+      "title": "A open string.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Guitar",
+        "Plucked_string_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/0342h",
+        "/m/0fx80y",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/0342h": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 541236430,
+        "compressed": 438448,
+        "bytes": 704590,
+        "disk": 1,
+        "offset": 2908663528
+      },
+      "source": "https://freesound.org/people/Kyster/sounds/117673/"
+    },
+    {
+      "split": "dev",
+      "role": "instrument",
+      "id": "389599",
+      "uploader": "gnuoctathorpe",
+      "title": "23-14strAm.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Bowed_string_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/0l14_3",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/0l14_3": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 2889441023,
+        "compressed": 728238,
+        "bytes": 792160,
+        "disk": 0,
+        "offset": 746049156
+      },
+      "source": "https://freesound.org/people/gnuoctathorpe/sounds/389599/"
+    },
+    {
+      "split": "dev",
+      "role": "instrument",
+      "id": "357326",
+      "uploader": "MTG",
+      "title": "Trumpet - B3 - bad-richness",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Trumpet",
+        "Brass_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/07gql",
+        "/m/01kcd",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/07gql": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 3026242723,
+        "compressed": 102025,
+        "bytes": 192000,
+        "disk": 5,
+        "offset": 507182654
+      },
+      "source": "https://freesound.org/people/MTG/sounds/357326/"
+    },
+    {
+      "split": "dev",
+      "role": "instrument",
+      "id": "128836",
+      "uploader": "mtcband",
+      "title": "Chord 20",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Electric_guitar",
+        "Strum",
+        "Guitar",
+        "Plucked_string_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/02sgy",
+        "/m/07s0s5r",
+        "/m/0342h",
+        "/m/0fx80y",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/02sgy": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 171528054,
+        "compressed": 143639,
+        "bytes": 194118,
+        "disk": 3,
+        "offset": 105469740
+      },
+      "source": "https://freesound.org/people/mtcband/sounds/128836/"
+    },
+    {
+      "split": "dev",
+      "role": "instrument",
+      "id": "96557",
+      "uploader": "gunnbladez",
+      "title": "Live_BazzKlug Guitar 01.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Bass_guitar",
+        "Guitar",
+        "Plucked_string_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/018vs",
+        "/m/0342h",
+        "/m/0fx80y",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/018vs": [
+          1.0,
+          1.0,
+          0.5
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 2375724832,
+        "compressed": 369082,
+        "bytes": 393230,
+        "disk": 1,
+        "offset": 2261767742
+      },
+      "source": "https://freesound.org/people/gunnbladez/sounds/96557/"
+    },
+    {
+      "split": "dev",
+      "role": "instrument",
+      "id": "239782",
+      "uploader": "quartertone",
+      "title": "BsGr(N5f,4s)[23]~v05.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Bass_guitar",
+        "Guitar",
+        "Plucked_string_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/018vs",
+        "/m/0342h",
+        "/m/0fx80y",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/018vs": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 2003348973,
+        "compressed": 486493,
+        "bytes": 551328,
+        "disk": 4,
+        "offset": 1478017123
+      },
+      "source": "https://freesound.org/people/quartertone/sounds/239782/"
+    },
+    {
+      "split": "dev",
+      "role": "instrument",
+      "id": "40440",
+      "uploader": "hubertmichel",
+      "title": "Guitare3 38.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Electric_guitar",
+        "Guitar",
+        "Plucked_string_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/02sgy",
+        "/m/0342h",
+        "/m/0fx80y",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/02sgy": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 2866844085,
+        "compressed": 241239,
+        "bytes": 321848,
+        "disk": 0,
+        "offset": 2285010544
+      },
+      "source": "https://freesound.org/people/hubertmichel/sounds/40440/"
+    },
+    {
+      "split": "dev",
+      "role": "instrument",
+      "id": "251160",
+      "uploader": "Project16",
+      "title": "B2(v5).flac",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Acoustic_guitar",
+        "Guitar",
+        "Plucked_string_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/042v_gx",
+        "/m/0342h",
+        "/m/0fx80y",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/042v_gx": [
+          1.0,
+          1.0
+        ],
+        "/m/0342h": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 3556955467,
+        "compressed": 245106,
+        "bytes": 345524,
+        "disk": 5,
+        "offset": 1270976047
+      },
+      "source": "https://freesound.org/people/Project16/sounds/251160/"
+    },
+    {
+      "split": "dev",
+      "role": "speech",
+      "id": "400748",
+      "uploader": "Fynixx",
+      "title": "Stars birthright",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Speech",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/09x0r",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/09x0r": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1629482491,
+        "compressed": 212797,
+        "bytes": 285704,
+        "disk": 5,
+        "offset": 1631307367
+      },
+      "source": "https://freesound.org/people/Fynixx/sounds/400748/"
+    },
+    {
+      "split": "dev",
+      "role": "speech",
+      "id": "71707",
+      "uploader": "dobroide",
+      "title": "20090419.que.tal.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Speech",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/09x0r",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/09x0r": [
+          1.0,
+          1.0,
+          0.5
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 705513530,
+        "compressed": 444678,
+        "bytes": 534106,
+        "disk": 5,
+        "offset": 678443119
+      },
+      "source": "https://freesound.org/people/dobroide/sounds/71707/"
+    },
+    {
+      "split": "dev",
+      "role": "cough",
+      "id": "324769",
+      "uploader": "FatimaSalas94",
+      "title": "Cough.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Cough",
+        "Respiratory_sounds"
+      ],
+      "mids": [
+        "/m/01b_21",
+        "/m/09hlz4"
+      ],
+      "verified_ratings": {
+        "/m/01b_21": [
+          1.0,
+          1.0,
+          0.5
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 3235561896,
+        "compressed": 172790,
+        "bytes": 317774,
+        "disk": 2,
+        "offset": 3117042194
+      },
+      "source": "https://freesound.org/people/FatimaSalas94/sounds/324769/"
+    },
+    {
+      "split": "dev",
+      "role": "cough",
+      "id": "155904",
+      "uploader": "tiptoe84",
+      "title": "Cough2.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Cough",
+        "Respiratory_sounds"
+      ],
+      "mids": [
+        "/m/01b_21",
+        "/m/09hlz4"
+      ],
+      "verified_ratings": {
+        "/m/01b_21": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 3145863496,
+        "compressed": 329769,
+        "bytes": 650844,
+        "disk": 5,
+        "offset": 482828004
+      },
+      "source": "https://freesound.org/people/tiptoe84/sounds/155904/"
+    },
+    {
+      "split": "dev",
+      "role": "cry",
+      "id": "154427",
+      "uploader": "ecfike",
+      "title": "Crying 3.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Crying_and_sobbing",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/0463cq4",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/0463cq4": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 4078352179,
+        "compressed": 625951,
+        "bytes": 734912,
+        "disk": 4,
+        "offset": 243034662
+      },
+      "source": "https://freesound.org/people/ecfike/sounds/154427/"
+    },
+    {
+      "split": "dev",
+      "role": "cry",
+      "id": "238250",
+      "uploader": "LittleFinny",
+      "title": "women cry.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Crying_and_sobbing",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/0463cq4",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/0463cq4": [
+          1.0,
+          1.0,
+          0.5
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1459954283,
+        "compressed": 439211,
+        "bytes": 604238,
+        "disk": 4,
+        "offset": 3080621153
+      },
+      "source": "https://freesound.org/people/LittleFinny/sounds/238250/"
+    },
+    {
+      "split": "dev",
+      "role": "environment",
+      "id": "347681",
+      "uploader": "Atkom",
+      "title": "flush.mp3",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Toilet_flush",
+        "Domestic_sounds_and_home_sounds"
+      ],
+      "mids": [
+        "/m/01jt3m",
+        "/t/dd00071"
+      ],
+      "verified_ratings": {
+        "/m/01jt3m": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 4101070405,
+        "compressed": 417761,
+        "bytes": 661326,
+        "disk": 2,
+        "offset": 2203823364
+      },
+      "source": "https://freesound.org/people/Atkom/sounds/347681/"
+    },
+    {
+      "split": "dev",
+      "role": "environment",
+      "id": "342114",
+      "uploader": "shettynikhil03",
+      "title": "Passing car.WAV",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Car_passing_by",
+        "Engine",
+        "Car",
+        "Motor_vehicle_(road)",
+        "Vehicle"
+      ],
+      "mids": [
+        "/t/dd00134",
+        "/m/02mk9",
+        "/m/0k4j",
+        "/m/012f08",
+        "/m/07yv9"
+      ],
+      "verified_ratings": {
+        "/t/dd00134": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 2132901281,
+        "compressed": 445274,
+        "bytes": 596430,
+        "disk": 0,
+        "offset": 2974048321
+      },
+      "source": "https://freesound.org/people/shettynikhil03/sounds/342114/"
+    },
+    {
+      "split": "eval",
+      "role": "laughter",
+      "id": "253598",
+      "uploader": "Mafon2",
+      "title": "LMAO 4 bursts",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Giggle",
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/07r660_",
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 2929646407,
+        "compressed": 427585,
+        "bytes": 568086,
+        "disk": 1,
+        "offset": 2593355578
+      },
+      "source": "https://freesound.org/people/Mafon2/sounds/253598/"
+    },
+    {
+      "split": "eval",
+      "role": "laughter",
+      "id": "38514",
+      "uploader": "josemaria",
+      "title": "Carcajada.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 3365039745,
+        "compressed": 297116,
+        "bytes": 617550,
+        "disk": 0,
+        "offset": 2017031324
+      },
+      "source": "https://freesound.org/people/josemaria/sounds/38514/"
+    },
+    {
+      "split": "eval",
+      "role": "laughter",
+      "id": "368798",
+      "uploader": "Kinoton",
+      "title": "Evil Laugh, Male 3x",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1239003381,
+        "compressed": 560233,
+        "bytes": 842190,
+        "disk": 1,
+        "offset": 2203664021
+      },
+      "source": "https://freesound.org/people/Kinoton/sounds/368798/"
+    },
+    {
+      "split": "eval",
+      "role": "laughter",
+      "id": "1791",
+      "uploader": "nicStage",
+      "title": "stevenClayLaughLoop.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 3096381970,
+        "compressed": 191016,
+        "bytes": 231654,
+        "disk": 1,
+        "offset": 94460624
+      },
+      "source": "https://freesound.org/people/nicStage/sounds/1791/"
+    },
+    {
+      "split": "eval",
+      "role": "laughter",
+      "id": "181599",
+      "uploader": "JulieBaka",
+      "title": "Laugh.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Giggle",
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/07r660_",
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 2933939151,
+        "compressed": 599766,
+        "bytes": 767056,
+        "disk": 0,
+        "offset": 857271017
+      },
+      "source": "https://freesound.org/people/JulieBaka/sounds/181599/"
+    },
+    {
+      "split": "eval",
+      "role": "laughter",
+      "id": "427699",
+      "uploader": "efsdcnveoi",
+      "title": "18-Risa1.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 3499256473,
+        "compressed": 401963,
+        "bytes": 555738,
+        "disk": 0,
+        "offset": 308265206
+      },
+      "source": "https://freesound.org/people/efsdcnveoi/sounds/427699/"
+    },
+    {
+      "split": "eval",
+      "role": "laughter",
+      "id": "266359",
+      "uploader": "ddarkerthanblackk",
+      "title": "witch_laugh.flac",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Giggle",
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/07r660_",
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 954412391,
+        "compressed": 159801,
+        "bytes": 187184,
+        "disk": 1,
+        "offset": 664566350
+      },
+      "source": "https://freesound.org/people/ddarkerthanblackk/sounds/266359/"
+    },
+    {
+      "split": "eval",
+      "role": "laughter",
+      "id": "141196",
+      "uploader": "EagleClaw",
+      "title": "Evil Laugh",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Laughter",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/01j3sz",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/01j3sz": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1617484041,
+        "compressed": 190262,
+        "bytes": 202598,
+        "disk": 1,
+        "offset": 1981919026
+      },
+      "source": "https://freesound.org/people/EagleClaw/sounds/141196/"
+    },
+    {
+      "split": "eval",
+      "role": "instrument",
+      "id": "233213",
+      "uploader": "smuz",
+      "title": "harp4.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Harmonica",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/03qjg",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/03qjg": [
+          1.0,
+          1.0,
+          0.5
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 143760070,
+        "compressed": 244206,
+        "bytes": 282702,
+        "disk": 0,
+        "offset": 1597876378
+      },
+      "source": "https://freesound.org/people/smuz/sounds/233213/"
+    },
+    {
+      "split": "eval",
+      "role": "instrument",
+      "id": "434629",
+      "uploader": "Tedski",
+      "title": "damn_dominant.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Electric_guitar",
+        "Guitar",
+        "Plucked_string_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/02sgy",
+        "/m/0342h",
+        "/m/0fx80y",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/02sgy": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "/m/0342h": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 2432864982,
+        "compressed": 499388,
+        "bytes": 573378,
+        "disk": 1,
+        "offset": 1135952769
+      },
+      "source": "https://freesound.org/people/Tedski/sounds/434629/"
+    },
+    {
+      "split": "eval",
+      "role": "instrument",
+      "id": "117512",
+      "uploader": "ZeSoundResearchInc.",
+      "title": "Vinyl Needle Skip.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Scratching_(performance_technique)",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/01hgjl",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/01hgjl": [
+          1.0,
+          1.0,
+          0.5
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 3625017844,
+        "compressed": 206686,
+        "bytes": 784452,
+        "disk": 1,
+        "offset": 1633663708
+      },
+      "source": "https://freesound.org/people/ZeSoundResearchInc./sounds/117512/"
+    },
+    {
+      "split": "eval",
+      "role": "instrument",
+      "id": "328665",
+      "uploader": "bzamecnik",
+      "title": "blues_lick_hps_001_harmonic",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Electric_guitar",
+        "Guitar",
+        "Plucked_string_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/02sgy",
+        "/m/0342h",
+        "/m/0fx80y",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/02sgy": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 2325455638,
+        "compressed": 373011,
+        "bytes": 412494,
+        "disk": 0,
+        "offset": 1674281490
+      },
+      "source": "https://freesound.org/people/bzamecnik/sounds/328665/"
+    },
+    {
+      "split": "eval",
+      "role": "instrument",
+      "id": "348311",
+      "uploader": "redafs",
+      "title": "Harmonica Blues Riffs",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Harmonica",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/03qjg",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/03qjg": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 4276064613,
+        "compressed": 483355,
+        "bytes": 522384,
+        "disk": 1,
+        "offset": 1070979501
+      },
+      "source": "https://freesound.org/people/redafs/sounds/348311/"
+    },
+    {
+      "split": "eval",
+      "role": "instrument",
+      "id": "339982",
+      "uploader": "FullMetalJedi",
+      "title": "Jazz01-140bpm.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Acoustic_guitar",
+        "Guitar",
+        "Plucked_string_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/042v_gx",
+        "/m/0342h",
+        "/m/0fx80y",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/042v_gx": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1133883124,
+        "compressed": 584354,
+        "bytes": 607702,
+        "disk": 0,
+        "offset": 3154168214
+      },
+      "source": "https://freesound.org/people/FullMetalJedi/sounds/339982/"
+    },
+    {
+      "split": "eval",
+      "role": "instrument",
+      "id": "351519",
+      "uploader": "madnessxd",
+      "title": "Polka Bassline 130BPM",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Bass_guitar",
+        "Guitar",
+        "Plucked_string_instrument",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/018vs",
+        "/m/0342h",
+        "/m/0fx80y",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/018vs": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 3538922866,
+        "compressed": 620574,
+        "bytes": 652674,
+        "disk": 0,
+        "offset": 1853315617
+      },
+      "source": "https://freesound.org/people/madnessxd/sounds/351519/"
+    },
+    {
+      "split": "eval",
+      "role": "instrument",
+      "id": "325033",
+      "uploader": "kilo one nine",
+      "title": "TOY_GLOCK-15.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Glockenspiel",
+        "Mallet_percussion",
+        "Percussion",
+        "Musical_instrument",
+        "Music"
+      ],
+      "mids": [
+        "/m/0dwtp",
+        "/m/0j45pbj",
+        "/m/0l14md",
+        "/m/04szw",
+        "/m/04rlf"
+      ],
+      "verified_ratings": {
+        "/m/0dwtp": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1183454848,
+        "compressed": 133162,
+        "bytes": 705670,
+        "disk": 1,
+        "offset": 2418568273
+      },
+      "source": "https://freesound.org/people/kilo one nine/sounds/325033/"
+    },
+    {
+      "split": "eval",
+      "role": "speech",
+      "id": "30152",
+      "uploader": "UncleSigmund",
+      "title": "I_can't_ get_ this_ top....wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Female_speech_and_woman_speaking",
+        "Speech",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/02zsn",
+        "/m/09x0r",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/09x0r": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1726197454,
+        "compressed": 292345,
+        "bytes": 396978,
+        "disk": 0,
+        "offset": 1557384767
+      },
+      "source": "https://freesound.org/people/UncleSigmund/sounds/30152/"
+    },
+    {
+      "split": "eval",
+      "role": "speech",
+      "id": "377065",
+      "uploader": "anjds",
+      "title": "speech-female_hprModel_residual.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Female_speech_and_woman_speaking",
+        "Speech_synthesizer",
+        "Speech",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/02zsn",
+        "/m/0brhx",
+        "/m/09x0r",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/09x0r": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1519984707,
+        "compressed": 249482,
+        "bytes": 352334,
+        "disk": 0,
+        "offset": 1025661356
+      },
+      "source": "https://freesound.org/people/anjds/sounds/377065/"
+    },
+    {
+      "split": "eval",
+      "role": "cough",
+      "id": "154766",
+      "uploader": "jpkweli",
+      "title": "Man Coughing.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Cough",
+        "Respiratory_sounds"
+      ],
+      "mids": [
+        "/m/01b_21",
+        "/m/09hlz4"
+      ],
+      "verified_ratings": {
+        "/m/01b_21": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 866770040,
+        "compressed": 134121,
+        "bytes": 338884,
+        "disk": 1,
+        "offset": 76170016
+      },
+      "source": "https://freesound.org/people/jpkweli/sounds/154766/"
+    },
+    {
+      "split": "eval",
+      "role": "cough",
+      "id": "164341",
+      "uploader": "HarryPeeks",
+      "title": "Cough Cough Sniff Sniff",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Cough",
+        "Respiratory_sounds"
+      ],
+      "mids": [
+        "/m/01b_21",
+        "/m/09hlz4"
+      ],
+      "verified_ratings": {
+        "/m/01b_21": [
+          1.0,
+          1.0,
+          0.5
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1859363409,
+        "compressed": 416226,
+        "bytes": 601166,
+        "disk": 1,
+        "offset": 486371771
+      },
+      "source": "https://freesound.org/people/HarryPeeks/sounds/164341/"
+    },
+    {
+      "split": "eval",
+      "role": "cry",
+      "id": "271602",
+      "uploader": "montblanccandies",
+      "title": "namida2.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Crying_and_sobbing",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/0463cq4",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/0463cq4": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 2116437179,
+        "compressed": 158759,
+        "bytes": 278508,
+        "disk": 0,
+        "offset": 2399845224
+      },
+      "source": "https://freesound.org/people/montblanccandies/sounds/271602/"
+    },
+    {
+      "split": "eval",
+      "role": "cry",
+      "id": "408621",
+      "uploader": "poderarcano",
+      "title": "16. Llorar.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Crying_and_sobbing",
+        "Human_voice"
+      ],
+      "mids": [
+        "/m/0463cq4",
+        "/m/09l8g"
+      ],
+      "verified_ratings": {
+        "/m/0463cq4": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 357034634,
+        "compressed": 283650,
+        "bytes": 421596,
+        "disk": 1,
+        "offset": 2554500425
+      },
+      "source": "https://freesound.org/people/poderarcano/sounds/408621/"
+    },
+    {
+      "split": "eval",
+      "role": "environment",
+      "id": "119029",
+      "uploader": "joedeshon",
+      "title": "polite_applause_09.wav",
+      "license": "http://creativecommons.org/licenses/by/3.0/",
+      "labels": [
+        "Applause",
+        "Human_group_actions"
+      ],
+      "mids": [
+        "/m/028ght",
+        "/t/dd00012"
+      ],
+      "verified_ratings": {
+        "/m/028ght": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 956882092,
+        "compressed": 577130,
+        "bytes": 673928,
+        "disk": 1,
+        "offset": 825161976
+      },
+      "source": "https://freesound.org/people/joedeshon/sounds/119029/"
+    },
+    {
+      "split": "eval",
+      "role": "environment",
+      "id": "62453",
+      "uploader": "bsumusictech",
+      "title": "closet.wav",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "labels": [
+        "Sliding_door",
+        "Door",
+        "Domestic_sounds_and_home_sounds"
+      ],
+      "mids": [
+        "/m/02y_763",
+        "/m/02dgv",
+        "/t/dd00071"
+      ],
+      "verified_ratings": {
+        "/m/02y_763": [
+          1.0,
+          1.0
+        ]
+      },
+      "entry": {
+        "method": 8,
+        "crc32": 1098184254,
+        "compressed": 364895,
+        "bytes": 534350,
+        "disk": 1,
+        "offset": 120586633
+      },
+      "source": "https://freesound.org/people/bsumusictech/sounds/62453/"
+    }
+  ]
+}
