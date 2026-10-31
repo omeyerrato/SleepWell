@@ -28,6 +28,16 @@ restarts an alarm or relative timer.
 - Controls from a detached/destroyed/unfocused old window cannot invoke Undo,
   Dismiss or Review. The visible receipt can be dismissed without restoration.
   Expiry and stale-state failures explain that the alarm remains deleted.
+- After a successful restore, the receipt pins the exact inserted document and
+  its own mutation revision. Any later Store/provider/backup mutation retires the
+  restored receipt as well. A retained Review control rechecks the exact live
+  receipt, restored state, epoch, database/factory, admission and saved document
+  before returning an editor target; it cannot become a lookup of a reused ID.
+  No receipt monitor or database transaction is held while launching the editor.
+- The post-commit result is published as RESTORED only if its own insert revision
+  is still current. A mutation between commit and publication produces an
+  explicitly retired result, rather than making a changed/new row look like the
+  restored alarm. Consumed receipts are never reactivated.
 
 The receipt is a process-local recovery convenience, not a disk backup or a
 permission to resurrect a previous run. No app/portable schema, permission,
@@ -66,6 +76,8 @@ assertions. Its private-database/silent-scheduler scene now additionally checks:
    unrelated alarm, removes retired fields, and performs no scheduling.
 4. A captured previous control cannot cause a duplicate restoration.
 5. The restored-result state survives recreation.
+   Deleting/reusing that restored ID then clicking a retained old Review control
+   must not open an editor or change the replacement alarm.
 6. Creating and deleting a different row under the reused ID invalidates the old
    receipt and leaves the row absent.
 7. Advancing the injected monotonic clock expires a fresh receipt; the late native
@@ -76,6 +88,7 @@ New required original PNG names are:
 - `night-dial-alarm-delete-undo-restored-review.png`
 - `night-dial-alarm-delete-undone.png`
 - `night-dial-alarm-delete-undone-recreated.png`
+- `night-dial-alarm-delete-restored-review-stale.png`
 - `night-dial-alarm-delete-undo-stale.png`
 - `night-dial-alarm-delete-undo-expired.png`
 

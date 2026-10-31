@@ -22,7 +22,7 @@ final class AlarmDeletionUndo {
     static final class Receipt {
         final String nonce=UUID.randomUUID().toString(),database,document,label;
         final Records.Factory records;final int id;final long mutation,admission,created,expires;
-        State state=State.AVAILABLE;String issue="";
+        State state=State.AVAILABLE;String issue="",restoredDocument="";long restoredMutation=-1;boolean wasRestored;
         Receipt(String database,String document,Alarm alarm,Records.Factory records,long mutation,long admission){
             this.database=database;this.document=document;this.records=records;id=alarm.id;label=alarm.label;
             this.mutation=mutation;this.admission=admission;created=clock.getAsLong();expires=Math.addExact(created,LIFETIME);
@@ -31,7 +31,7 @@ final class AlarmDeletionUndo {
     /** Called inside the same write transaction, before each actual alarm-table mutation. */
     static synchronized void changing(){
         revision=revision==Long.MAX_VALUE?Long.MAX_VALUE:revision+1;
-        if(latest!=null&&latest.state==State.AVAILABLE){latest.state=State.UNAVAILABLE;latest.issue="Alarms changed. This deletion can no longer be undone.";}
+        if(latest!=null&&(latest.state==State.AVAILABLE||latest.state==State.RESTORED)){boolean restored=latest.state==State.RESTORED;latest.state=State.UNAVAILABLE;latest.issue=restored?"The restored alarm changed. Open it from the list.":"Alarms changed. This deletion can no longer be undone.";}
     }
     private static String database(Store store){try{return new File(store.getWritableDatabase().getPath()).getCanonicalPath();}catch(java.io.IOException invalid){throw new IllegalStateException("Alarm storage identity is unavailable.");}}
     private static String raw(SQLiteDatabase db,int id){try(Cursor cursor=db.rawQuery("SELECT data FROM alarms WHERE id=?",new String[]{Integer.toString(id)})){return cursor.moveToFirst()?cursor.getString(0):null;}}
@@ -65,30 +65,45 @@ final class AlarmDeletionUndo {
         if(!available(context,receipt))throw new IllegalStateException(receipt!=null&&!receipt.issue.isEmpty()?receipt.issue:"This Undo is no longer available.");
         try(Store store=receipt.records.open(context)){
             SQLiteDatabase db=store.getWritableDatabase();if(!database(store).equals(receipt.database)){synchronized(AlarmDeletionUndo.class){receipt.state=State.UNAVAILABLE;receipt.issue="Alarm storage changed. This Undo is no longer available.";}throw new IllegalStateException(receipt.issue);}
-            Alarm restored;db.beginTransaction();try{synchronized(AlarmDeletionUndo.class){
+            Alarm restored;long insertedRevision;String insertedDocument;db.beginTransaction();try{synchronized(AlarmDeletionUndo.class){
                 if(!available(context,receipt))throw new IllegalStateException("This Undo is no longer available.");
                 if(raw(db,receipt.id)!=null){receipt.state=State.UNAVAILABLE;receipt.issue="This alarm identity is in use. Nothing was overwritten.";throw new IllegalStateException(receipt.issue);}
                 // Consume before mutation. A stale view cannot replay it, even if the write fails.
                 receipt.state=State.UNAVAILABLE;receipt.issue="Restoration could not complete. Add the alarm again if needed.";
                 JSONObject settings=new JSONObject(receipt.document);for(String key:new String[]{"nap","weeklyNapOwner","skip","nextOverride","scheduleError"})settings.remove(key);settings.put("enabled",false);
-                restored=Alarm.read(settings);ContentValues row=new ContentValues();row.put("id",restored.id);row.put("data",restored.json().toString());changing();db.insertOrThrow("alarms",null,row);db.setTransactionSuccessful();
+                restored=Alarm.read(settings);insertedDocument=restored.json().toString();ContentValues row=new ContentValues();row.put("id",restored.id);row.put("data",insertedDocument);changing();insertedRevision=revision;db.insertOrThrow("alarms",null,row);db.setTransactionSuccessful();
             }}finally{db.endTransaction();}
-            synchronized(AlarmDeletionUndo.class){receipt.state=State.RESTORED;receipt.issue="Restored off; review before enabling.";}
+            synchronized(AlarmDeletionUndo.class){receipt.wasRestored=true;long now=clock.getAsLong();if(latest==receipt&&revision==insertedRevision&&Records.factory==receipt.records&&admission(context,receipt)&&now>=receipt.created&&now<receipt.expires){receipt.restoredMutation=insertedRevision;receipt.restoredDocument=insertedDocument;receipt.state=State.RESTORED;receipt.issue="Restored off; review before enabling.";}else{receipt.state=State.UNAVAILABLE;receipt.issue="The restored alarm changed. Open it from the list.";}}
             store.surfaceChanged();return restored;
         }catch(org.json.JSONException invalid){throw new IllegalStateException("The deleted alarm settings could not be restored.",invalid);}
     }}
+    /** Resolve only the exact restored row. Never turn a retained Review view into an ID lookup. */
+    private static Alarm reviewed(Context context,Store store,Receipt receipt){
+        String identity=database(store);SQLiteDatabase db=store.getReadableDatabase();
+        db.beginTransactionNonExclusive();try{
+            String document=raw(db,receipt.id);long now=clock.getAsLong();
+            synchronized(AlarmDeletionUndo.class){
+                if(latest!=receipt||receipt.state!=State.RESTORED)return null;
+                if(Records.factory!=receipt.records||!receipt.database.equals(identity)||receipt.restoredMutation!=revision||!receipt.restoredDocument.equals(document)||!admission(context,receipt)){
+                    receipt.state=State.UNAVAILABLE;receipt.issue="The restored alarm changed. Open it from the list.";return null;
+                }
+                if(now<receipt.created||now>=receipt.expires){receipt.state=State.UNAVAILABLE;receipt.issue="This restoration receipt expired. Open the alarm from the list.";return null;}
+                try{return Alarm.read(new JSONObject(document));}catch(org.json.JSONException invalid){receipt.state=State.UNAVAILABLE;receipt.issue="The restored alarm could not be reviewed. Open alarms again.";return null;}
+            }
+        }finally{db.endTransaction();}
+    }
     static synchronized void forget(Records.Factory records){if(latest!=null&&latest.records==records)latest=null;}
     static void add(LinearLayout body,Store store,Runnable refresh,Consumer<Alarm> edit){
         Activity activity=(Activity)body.getContext();Receipt receipt;
         synchronized(AlarmDeletionUndo.class){receipt=latest;}
         if(receipt==null||receipt.records!=Records.factory||!receipt.database.equals(database(store)))return;
-        available(activity,receipt);
+        available(activity,receipt);if(receipt.state==State.RESTORED)reviewed(activity,store,receipt);
         LinearLayout card=Design.col(activity);Design.pad(card,16,14);card.setBackground(Design.shape(activity,NightDialTokens.RAISED,16));
-        Design.text(card,receipt.state==State.RESTORED?"Restored "+receipt.label:"Deleted "+receipt.label,17,600,NightDialTokens.TEXT);
+        Design.text(card,receipt.state==State.RESTORED?"Restored "+receipt.label:receipt.wasRestored?"Restoration changed: "+receipt.label:"Deleted "+receipt.label,17,600,NightDialTokens.TEXT);
         Design.space(card,6);Design.text(card,receipt.state==State.AVAILABLE?"Undo restores this alarm off for review. Active timers and moved or skipped occurrences are not resumed.":receipt.issue,13,400,NightDialTokens.SECONDARY);
         LinearLayout actions=Design.row(activity);card.addView(actions);LinearLayout primary=Design.col(activity);actions.addView(primary,new LinearLayout.LayoutParams(0,-2,1));
         if(receipt.state==State.AVAILABLE)Design.button(primary,"Undo",true,()->{if(!card.isAttachedToWindow()||!card.hasWindowFocus()||activity.isFinishing()||activity.isDestroyed())return;try{restore(activity,receipt);}catch(RuntimeException unavailable){Ui.toast(activity,unavailable.getMessage()==null?"This Undo is no longer available.":unavailable.getMessage());}refresh.run();}).setContentDescription("Undo delete for "+receipt.label);
-        else if(receipt.state==State.RESTORED)Design.button(primary,"Review alarm",true,()->{if(!card.isAttachedToWindow()||!card.hasWindowFocus()||activity.isFinishing()||activity.isDestroyed())return;Alarm current=store.alarm(receipt.id);if(current!=null)edit.accept(current);else refresh.run();}).setContentDescription("Review restored "+receipt.label);
+        else if(receipt.state==State.RESTORED)Design.button(primary,"Review alarm",true,()->{if(!card.isAttachedToWindow()||!card.hasWindowFocus()||activity.isFinishing()||activity.isDestroyed())return;Alarm current=reviewed(activity,store,receipt);if(current!=null)edit.accept(current);else refresh.run();}).setContentDescription("Review restored "+receipt.label);
         LinearLayout secondary=Design.col(activity);actions.addView(secondary,new LinearLayout.LayoutParams(0,-2,1));Design.button(secondary,"Dismiss",false,()->{if(!card.isAttachedToWindow()||!card.hasWindowFocus()||activity.isFinishing()||activity.isDestroyed())return;synchronized(AlarmDeletionUndo.class){if(latest==receipt)latest=null;}refresh.run();}).setContentDescription("Dismiss deletion for "+receipt.label);
         body.addView(card);Design.space(body,16);
         if(receipt.state==State.AVAILABLE){Runnable expired=()->{synchronized(AlarmDeletionUndo.class){if(latest!=receipt)return;}refresh.run();};card.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener(){public void onViewAttachedToWindow(View view){view.postDelayed(expired,Math.max(1,receipt.expires-clock.getAsLong()+1));}public void onViewDetachedFromWindow(View view){view.removeCallbacks(expired);}});if(card.isAttachedToWindow())card.postDelayed(expired,Math.max(1,receipt.expires-clock.getAsLong()+1));}
