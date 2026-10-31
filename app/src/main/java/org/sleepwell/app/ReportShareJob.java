@@ -44,14 +44,15 @@ final class ReportShareJob {
             try(Store store=records.open(app)){fresh=ReportShareData.read(store,record,before.notes,()->live(ticket,expected)&&SystemClock.elapsedRealtime()<deadline);}
             if(!fresh.fingerprint.equals(before.snapshot.data.fingerprint)||!java.util.Arrays.equals(fresh.bytes,before.snapshot.data.bytes))throw new IOException("This record changed after preview. Prepare it again before sharing.");
             before.snapshot.verify(()->live(ticket,expected)&&SystemClock.elapsedRealtime()<deadline);
+            ReportShareFiles.prepareAdmission(app,before.snapshot,()->live(ticket,expected)&&SystemClock.elapsedRealtime()<deadline);
             main.post(()->{if(live(ticket,expected))publish(new State(Phase.VERIFIED,before.notes,before.snapshot,""));else checkHistory();});
         }catch(Exception failure){String text=notice(failure);main.post(()->{if(live(ticket,expected))publish(new State(Phase.ERROR,before.notes,before.snapshot,text));else checkHistory();});}});
     }
     /** Called only by the visible owner following the explicit Share button. No grants are issued here. */
     Uri admit(State reviewed){checkHistory();if(closed||reviewed!=state||reviewed.phase!=Phase.VERIFIED||reviewed.snapshot==null)throw new IllegalStateException("Review the current preview before sharing.");return ReportShareFiles.admit(app,reviewed.snapshot);}
     void chooserOpened(State reviewed){if(closed||reviewed!=state||reviewed.phase!=Phase.VERIFIED)return;reviewed.snapshot.shared=true;publish(new State(Phase.READY,reviewed.notes,reviewed.snapshot,"Sharing options opened. Returning here does not confirm delivery."));}
-    void chooserFailed(State reviewed){if(reviewed.snapshot!=null)ReportShareFiles.revoke(app,reviewed.snapshot);if(!closed)publish(new State(Phase.ERROR,reviewed.notes,null,"Android sharing could not be opened. Nothing was sent. Prepare the preview again."));}
-    void cancelShare(){checkHistory();if(closed||state.phase!=Phase.VERIFYING&&state.phase!=Phase.VERIFIED)return;generation++;publish(new State(Phase.READY,state.notes,state.snapshot,"Sharing paused when this screen lost focus. Review, then tap Share again."));}
+    void chooserFailed(State reviewed){if(!closed&&reviewed.snapshot!=null)worker.execute(()->{try{ReportShareFiles.revoke(app,reviewed.snapshot);}catch(RuntimeException unavailable){/* Error stays explicit; durable expiry/history invalidation still fence reads. */}});if(!closed)publish(new State(Phase.ERROR,reviewed.notes,null,"Android sharing could not be opened. Nothing was sent. Prepare the preview again."));}
+    void cancelShare(){checkHistory();if(closed||state.phase!=Phase.VERIFYING&&state.phase!=Phase.VERIFIED)return;ReportShareFiles.Snapshot pending=state.snapshot;generation++;worker.execute(()->ReportShareFiles.cancelPrepared(app,pending));publish(new State(Phase.READY,state.notes,state.snapshot,"Sharing paused when this screen lost focus. Review, then tap Share again."));}
     void close(){if(closed)return;closed=true;generation++;observer.clear();worker.execute(()->{if(owned!=null){owned.discard();owned=null;}});worker.shutdown();}
     void awaitClosed(long millis)throws InterruptedException{if(!worker.awaitTermination(millis,TimeUnit.MILLISECONDS))throw new IllegalStateException("Private report reader still active.");}
 }
