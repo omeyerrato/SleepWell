@@ -42,7 +42,7 @@ public final class MissedNightActivity extends Activity {
             String copy=switch(status){case "denied"->"Usage Access lets SleepWell read screen on and off times. Nothing is saved until you review it.";case "empty"->"Android did not return screen events for this night. A missing event is not a sleep estimate.";case "incomplete"->"Both a screen-off and a later screen-on event are needed. Missing endpoints are not guessed.";case "covered"->"The complete inactive periods overlap existing sleep records. Your history has not changed.";case "error"->"Check phone activity access and try again.";default->"Reading screen events on this phone.";};
             Design.text(body,title,23,600,Design.INK);Design.space(body,12);Design.text(body,copy,14,400,Design.MUTED);
         }
-        LinearLayout footer=RecordUi.footer(body);TextView problem=Design.text(footer,error,12,500,0xffa93919);problem.setContentDescription("Missing night error");problem.setVisibility(error.isEmpty()?View.GONE:View.VISIBLE);problem.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
+        LinearLayout footer=RecordUi.footer(body);TextView problem=Design.text(footer,error,12,500,NightDialTokens.NEGATIVE);problem.setContentDescription("Missing night error");problem.setVisibility(error.isEmpty()?View.GONE:View.VISIBLE);problem.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
         if(status.equals("denied"))Design.button(footer,"Open Usage Access",true,this::access);
         else if(status.equals("saved"))Design.button(footer,"Done",true,this::finish);
         else if(draft!=null){Design.button(footer,saveToken==null?"Save reviewed night":"Saving…",true,this::save);Design.button(footer,"Check again",false,this::check);}

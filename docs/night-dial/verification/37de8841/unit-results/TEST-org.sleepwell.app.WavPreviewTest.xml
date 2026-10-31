@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.WavPreviewTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-30T15:49:23.359Z" hostname="runnervm48cm3" time="0.005">
+  <properties/>
+  <testcase name="stereoChannelsShareTheirActualFrameBin" classname="org.sleepwell.app.WavPreviewTest" time="0.001"/>
+  <testcase name="realSamplePeaksIncludeNegativeFullScaleAndTrueSilence" classname="org.sleepwell.app.WavPreviewTest" time="0.0"/>
+  <testcase name="damagedChunksAndPartialFramesAreNotDrawnAsAudio" classname="org.sleepwell.app.WavPreviewTest" time="0.0"/>
+  <testcase name="stalledSourceFailsRatherThanSpinning" classname="org.sleepwell.app.WavPreviewTest" time="0.0"/>
+  <testcase name="previewUsesRealMiddleExcerptRatherThanWholeLoopOrInventedPeaks" classname="org.sleepwell.app.WavPreviewTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

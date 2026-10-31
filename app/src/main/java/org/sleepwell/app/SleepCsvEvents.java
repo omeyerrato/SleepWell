@@ -6,11 +6,11 @@ import java.util.regex.*;
 /** Read-only interpretation of explicit vendor event fields, never inferred phone sleep stages. */
 final class SleepCsvEvents {
     enum Lane {
-        LIGHT("LIGHT", "LIGHT_START", "LIGHT_END", 0xffad89f4),
-        DEEP("DEEP", "DEEP_START", "DEEP_END", 0xff6543aa),
-        REM("REM", "REM_START", "REM_END", 0xffc9adf9),
+        LIGHT("LIGHT", "LIGHT_START", "LIGHT_END", 0xffc6b48b),
+        DEEP("DEEP", "DEEP_START", "DEEP_END", 0xff8b7657),
+        REM("REM", "REM_START", "REM_END", 0xffd9d4c9),
         PAUSE("PAUSED", "TRACKING_PAUSED", "TRACKING_RESUMED", 0xffc89458),
-        BROKEN("BROKEN", "BROKEN_START", "BROKEN_END", 0xff8f8986);
+        BROKEN("BROKEN", "BROKEN_START", "BROKEN_END", NightDialTokens.META);
         final String label,start,end;final int color;
         Lane(String label,String start,String end,int color){this.label=label;this.start=start;this.end=end;this.color=color;}
     }

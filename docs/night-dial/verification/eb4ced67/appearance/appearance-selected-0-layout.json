@@ -1,0 +1,960 @@
+{
+  "class": "DecorView",
+  "x": 0,
+  "y": 0,
+  "width": 1080,
+  "height": 2316,
+  "measuredHeight": 2316,
+  "minimumHeight": 0,
+  "shown": true,
+  "visible": "0 0 1080 2316",
+  "children": [
+    {
+      "class": "FrameLayout",
+      "x": 0,
+      "y": 0,
+      "width": 1080,
+      "height": 2316,
+      "measuredHeight": 2316,
+      "minimumHeight": 0,
+      "shown": true,
+      "visible": "0 0 1080 2316",
+      "children": [
+        {
+          "class": "FrameLayout",
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2316,
+          "measuredHeight": 2316,
+          "minimumHeight": 0,
+          "shown": true,
+          "visible": "0 0 1080 2316",
+          "children": [
+            {
+              "class": "LinearLayout",
+              "x": 0,
+              "y": 0,
+              "width": 1080,
+              "height": 2316,
+              "measuredHeight": 2316,
+              "minimumHeight": 0,
+              "shown": true,
+              "visible": "0 0 1080 2316",
+              "children": [
+                {
+                  "class": "ScrollView",
+                  "x": 0,
+                  "y": 131,
+                  "width": 1080,
+                  "height": 1948,
+                  "measuredHeight": 1948,
+                  "minimumHeight": 0,
+                  "shown": true,
+                  "visible": "0 131 1080 2079",
+                  "children": [
+                    {
+                      "class": "LinearLayout",
+                      "x": 0,
+                      "y": 131,
+                      "width": 1080,
+                      "height": 1948,
+                      "measuredHeight": 1948,
+                      "minimumHeight": 0,
+                      "shown": true,
+                      "visible": "0 131 1080 2079",
+                      "children": [
+                        {
+                          "class": "LinearLayout",
+                          "x": 53,
+                          "y": 131,
+                          "width": 974,
+                          "height": 126,
+                          "measuredHeight": 126,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 131 1027 257",
+                          "children": [
+                            {
+                              "class": "Icon",
+                              "x": 53,
+                              "y": 131,
+                              "width": 126,
+                              "height": 126,
+                              "measuredHeight": 126,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "53 131 179 257",
+                              "description": "Back"
+                            },
+                            {
+                              "class": "View",
+                              "x": 179,
+                              "y": 193,
+                              "width": 625,
+                              "height": 1,
+                              "measuredHeight": 1,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "179 193 804 194"
+                            },
+                            {
+                              "class": "LinearLayout",
+                              "x": 804,
+                              "y": 131,
+                              "width": 223,
+                              "height": 126,
+                              "measuredHeight": 126,
+                              "minimumHeight": 126,
+                              "shown": true,
+                              "visible": "804 131 1027 257",
+                              "description": "More appearance options",
+                              "children": [
+                                {
+                                  "class": "TextView",
+                                  "x": 825,
+                                  "y": 173,
+                                  "width": 129,
+                                  "height": 41,
+                                  "measuredHeight": 41,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "825 173 954 214",
+                                  "text": "Options",
+                                  "textSizePx": 34.125
+                                },
+                                {
+                                  "class": "Icon",
+                                  "x": 967,
+                                  "y": 174,
+                                  "width": 39,
+                                  "height": 39,
+                                  "measuredHeight": 39,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "967 174 1006 213"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "class": "TextView",
+                          "x": 53,
+                          "y": 257,
+                          "width": 974,
+                          "height": 89,
+                          "measuredHeight": 89,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 257 1027 346",
+                          "text": "Appearance",
+                          "textSizePx": 73.5
+                        },
+                        {
+                          "class": "View",
+                          "x": 53,
+                          "y": 346,
+                          "width": 1,
+                          "height": 11,
+                          "measuredHeight": 11,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 346 54 357"
+                        },
+                        {
+                          "class": "TextView",
+                          "x": 53,
+                          "y": 357,
+                          "width": 974,
+                          "height": 45,
+                          "measuredHeight": 45,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 357 1027 402",
+                          "text": "Customize how SleepWell looks and feels.",
+                          "textSizePx": 36.75
+                        },
+                        {
+                          "class": "View",
+                          "x": 53,
+                          "y": 402,
+                          "width": 1,
+                          "height": 16,
+                          "measuredHeight": 16,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 402 54 418"
+                        },
+                        {
+                          "class": "LinearLayout",
+                          "x": 53,
+                          "y": 418,
+                          "width": 974,
+                          "height": 421,
+                          "measuredHeight": 421,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 418 1027 839",
+                          "children": [
+                            {
+                              "class": "NightDialPlanMark",
+                              "x": 85,
+                              "y": 450,
+                              "width": 315,
+                              "height": 357,
+                              "measuredHeight": 357,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "85 450 400 807"
+                            },
+                            {
+                              "class": "LinearLayout",
+                              "x": 400,
+                              "y": 541,
+                              "width": 595,
+                              "height": 175,
+                              "measuredHeight": 175,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "400 541 995 716",
+                              "children": [
+                                {
+                                  "class": "TextView",
+                                  "x": 400,
+                                  "y": 541,
+                                  "width": 595,
+                                  "height": 64,
+                                  "measuredHeight": 64,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "400 541 995 605",
+                                  "text": "Night dial",
+                                  "textSizePx": 52.5
+                                },
+                                {
+                                  "class": "View",
+                                  "x": 400,
+                                  "y": 605,
+                                  "width": 1,
+                                  "height": 21,
+                                  "measuredHeight": 21,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "400 605 401 626"
+                                },
+                                {
+                                  "class": "TextView",
+                                  "x": 400,
+                                  "y": 626,
+                                  "width": 595,
+                                  "height": 90,
+                                  "measuredHeight": 90,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "400 626 995 716",
+                                  "text": "Black at every hour. Warm amber where it matters.",
+                                  "textSizePx": 36.75
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "class": "View",
+                          "x": 53,
+                          "y": 839,
+                          "width": 1,
+                          "height": 47,
+                          "measuredHeight": 47,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 839 54 886"
+                        },
+                        {
+                          "class": "TextView",
+                          "x": 53,
+                          "y": 886,
+                          "width": 974,
+                          "height": 51,
+                          "measuredHeight": 51,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 886 1027 937",
+                          "text": "Make it comfortable",
+                          "textSizePx": 42
+                        },
+                        {
+                          "class": "View",
+                          "x": 53,
+                          "y": 937,
+                          "width": 1,
+                          "height": 16,
+                          "measuredHeight": 16,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 937 54 953"
+                        },
+                        {
+                          "class": "LinearLayout",
+                          "x": 53,
+                          "y": 953,
+                          "width": 974,
+                          "height": 126,
+                          "measuredHeight": 126,
+                          "minimumHeight": 126,
+                          "shown": true,
+                          "visible": "53 953 1027 1079",
+                          "description": "Text size",
+                          "children": [
+                            {
+                              "class": "TextView",
+                              "x": 53,
+                              "y": 984,
+                              "width": 74,
+                              "height": 64,
+                              "measuredHeight": 64,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "53 984 127 1048",
+                              "text": "Aa",
+                              "textSizePx": 52.5
+                            },
+                            {
+                              "class": "LinearLayout",
+                              "x": 169,
+                              "y": 966,
+                              "width": 653,
+                              "height": 99,
+                              "measuredHeight": 99,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "169 966 822 1065",
+                              "children": [
+                                {
+                                  "class": "TextView",
+                                  "x": 169,
+                                  "y": 966,
+                                  "width": 653,
+                                  "height": 47,
+                                  "measuredHeight": 47,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "169 966 822 1013",
+                                  "text": "Text size",
+                                  "textSizePx": 39.375
+                                },
+                                {
+                                  "class": "View",
+                                  "x": 169,
+                                  "y": 1013,
+                                  "width": 1,
+                                  "height": 13,
+                                  "measuredHeight": 13,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "169 1013 170 1026"
+                                },
+                                {
+                                  "class": "TextView",
+                                  "x": 169,
+                                  "y": 1026,
+                                  "width": 653,
+                                  "height": 39,
+                                  "measuredHeight": 39,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "169 1026 822 1065",
+                                  "text": "Use a comfortable size.",
+                                  "textSizePx": 31.5
+                                }
+                              ]
+                            },
+                            {
+                              "class": "TextView",
+                              "x": 843,
+                              "y": 995,
+                              "width": 116,
+                              "height": 41,
+                              "measuredHeight": 41,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "843 995 959 1036",
+                              "text": "Default",
+                              "textSizePx": 34.125
+                            },
+                            {
+                              "class": "Icon",
+                              "x": 980,
+                              "y": 984,
+                              "width": 47,
+                              "height": 63,
+                              "measuredHeight": 63,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "980 984 1027 1047"
+                            }
+                          ]
+                        },
+                        {
+                          "class": "View",
+                          "x": 53,
+                          "y": 1079,
+                          "width": 974,
+                          "height": 3,
+                          "measuredHeight": 3,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 1079 1027 1082"
+                        },
+                        {
+                          "class": "LinearLayout",
+                          "x": 53,
+                          "y": 1082,
+                          "width": 974,
+                          "height": 126,
+                          "measuredHeight": 126,
+                          "minimumHeight": 126,
+                          "shown": true,
+                          "visible": "53 1082 1027 1208",
+                          "children": [
+                            {
+                              "class": "Icon",
+                              "x": 53,
+                              "y": 1111,
+                              "width": 68,
+                              "height": 68,
+                              "measuredHeight": 68,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "53 1111 121 1179"
+                            },
+                            {
+                              "class": "LinearLayout",
+                              "x": 168,
+                              "y": 1095,
+                              "width": 722,
+                              "height": 99,
+                              "measuredHeight": 99,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "168 1095 890 1194",
+                              "children": [
+                                {
+                                  "class": "TextView",
+                                  "x": 168,
+                                  "y": 1095,
+                                  "width": 722,
+                                  "height": 47,
+                                  "measuredHeight": 47,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "168 1095 890 1142",
+                                  "text": "Reduce motion",
+                                  "textSizePx": 39.375
+                                },
+                                {
+                                  "class": "View",
+                                  "x": 168,
+                                  "y": 1142,
+                                  "width": 1,
+                                  "height": 13,
+                                  "measuredHeight": 13,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "168 1142 169 1155"
+                                },
+                                {
+                                  "class": "TextView",
+                                  "x": 168,
+                                  "y": 1155,
+                                  "width": 722,
+                                  "height": 39,
+                                  "measuredHeight": 39,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "168 1155 890 1194",
+                                  "text": "Keep controls and breathing cues still.",
+                                  "textSizePx": 31.5
+                                }
+                              ]
+                            },
+                            {
+                              "class": "Toggle",
+                              "x": 890,
+                              "y": 1082,
+                              "width": 137,
+                              "height": 126,
+                              "measuredHeight": 126,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "890 1082 1027 1208",
+                              "description": "Reduce motion",
+                              "text": "",
+                              "textSizePx": 37
+                            }
+                          ]
+                        },
+                        {
+                          "class": "View",
+                          "x": 53,
+                          "y": 1208,
+                          "width": 974,
+                          "height": 3,
+                          "measuredHeight": 3,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 1208 1027 1211"
+                        },
+                        {
+                          "class": "LinearLayout",
+                          "x": 53,
+                          "y": 1211,
+                          "width": 974,
+                          "height": 126,
+                          "measuredHeight": 126,
+                          "minimumHeight": 126,
+                          "shown": true,
+                          "visible": "53 1211 1027 1337",
+                          "children": [
+                            {
+                              "class": "Icon",
+                              "x": 53,
+                              "y": 1240,
+                              "width": 68,
+                              "height": 68,
+                              "measuredHeight": 68,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "53 1240 121 1308"
+                            },
+                            {
+                              "class": "LinearLayout",
+                              "x": 168,
+                              "y": 1224,
+                              "width": 722,
+                              "height": 99,
+                              "measuredHeight": 99,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "168 1224 890 1323",
+                              "children": [
+                                {
+                                  "class": "TextView",
+                                  "x": 168,
+                                  "y": 1224,
+                                  "width": 722,
+                                  "height": 47,
+                                  "measuredHeight": 47,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "168 1224 890 1271",
+                                  "text": "High-contrast mode",
+                                  "textSizePx": 39.375
+                                },
+                                {
+                                  "class": "View",
+                                  "x": 168,
+                                  "y": 1271,
+                                  "width": 1,
+                                  "height": 13,
+                                  "measuredHeight": 13,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "168 1271 169 1284"
+                                },
+                                {
+                                  "class": "TextView",
+                                  "x": 168,
+                                  "y": 1284,
+                                  "width": 722,
+                                  "height": 39,
+                                  "measuredHeight": 39,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "168 1284 890 1323",
+                                  "text": "Increase text and control contrast.",
+                                  "textSizePx": 31.5
+                                }
+                              ]
+                            },
+                            {
+                              "class": "Toggle",
+                              "x": 890,
+                              "y": 1211,
+                              "width": 137,
+                              "height": 126,
+                              "measuredHeight": 126,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "890 1211 1027 1337",
+                              "description": "High-contrast mode",
+                              "text": "",
+                              "textSizePx": 37
+                            }
+                          ]
+                        },
+                        {
+                          "class": "View",
+                          "x": 53,
+                          "y": 1337,
+                          "width": 974,
+                          "height": 3,
+                          "measuredHeight": 3,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 1337 1027 1340"
+                        },
+                        {
+                          "class": "View",
+                          "x": 53,
+                          "y": 1340,
+                          "width": 1,
+                          "height": 11,
+                          "measuredHeight": 11,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 1340 54 1351"
+                        },
+                        {
+                          "class": "LinearLayout",
+                          "x": 53,
+                          "y": 1351,
+                          "width": 974,
+                          "height": 80,
+                          "measuredHeight": 80,
+                          "minimumHeight": 79,
+                          "shown": true,
+                          "visible": "53 1351 1027 1431",
+                          "children": [
+                            {
+                              "class": "Icon",
+                              "x": 53,
+                              "y": 1357,
+                              "width": 68,
+                              "height": 68,
+                              "measuredHeight": 68,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "53 1357 121 1425"
+                            },
+                            {
+                              "class": "LinearLayout",
+                              "x": 168,
+                              "y": 1351,
+                              "width": 859,
+                              "height": 80,
+                              "measuredHeight": 80,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "168 1351 1027 1431",
+                              "children": [
+                                {
+                                  "class": "TextView",
+                                  "x": 168,
+                                  "y": 1351,
+                                  "width": 859,
+                                  "height": 45,
+                                  "measuredHeight": 45,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "168 1351 1027 1396",
+                                  "text": "Smart lights",
+                                  "textSizePx": 36.75
+                                },
+                                {
+                                  "class": "TextView",
+                                  "x": 168,
+                                  "y": 1396,
+                                  "width": 859,
+                                  "height": 35,
+                                  "measuredHeight": 35,
+                                  "minimumHeight": 0,
+                                  "shown": true,
+                                  "visible": "168 1396 1027 1431",
+                                  "text": "Fade in your bedroom light with the alarm.",
+                                  "textSizePx": 28.875
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "class": "LinearLayout",
+                          "x": 53,
+                          "y": 1431,
+                          "width": 974,
+                          "height": 515,
+                          "measuredHeight": 515,
+                          "minimumHeight": 483,
+                          "shown": true,
+                          "visible": "53 1431 1027 1946",
+                          "description": "Bedroom lamp summary ready",
+                          "children": [
+                            {
+                              "class": "",
+                              "x": 53,
+                              "y": 1431,
+                              "width": 409,
+                              "height": 515,
+                              "measuredHeight": 515,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "53 1431 462 1946"
+                            },
+                            {
+                              "class": "LinearLayout",
+                              "x": 462,
+                              "y": 1431,
+                              "width": 564,
+                              "height": 515,
+                              "measuredHeight": 515,
+                              "minimumHeight": 0,
+                              "shown": true,
+                              "visible": "462 1431 1026 1946",
+                              "children": [
+                                {
+                                  "class": "LinearLayout",
+                                  "x": 488,
+                                  "y": 1431,
+                                  "width": 512,
+                                  "height": 126,
+                                  "measuredHeight": 126,
+                                  "minimumHeight": 126,
+                                  "shown": true,
+                                  "visible": "488 1431 1000 1557",
+                                  "description": "Configure bedroom lamp",
+                                  "children": [
+                                    {
+                                      "class": "LinearLayout",
+                                      "x": 488,
+                                      "y": 1452,
+                                      "width": 475,
+                                      "height": 84,
+                                      "measuredHeight": 84,
+                                      "minimumHeight": 0,
+                                      "shown": true,
+                                      "visible": "488 1452 963 1536",
+                                      "children": [
+                                        {
+                                          "class": "TextView",
+                                          "x": 488,
+                                          "y": 1452,
+                                          "width": 475,
+                                          "height": 45,
+                                          "measuredHeight": 45,
+                                          "minimumHeight": 0,
+                                          "shown": true,
+                                          "visible": "488 1452 963 1497",
+                                          "text": "Bedroom lamp",
+                                          "textSizePx": 36.75
+                                        },
+                                        {
+                                          "class": "TextView",
+                                          "x": 488,
+                                          "y": 1497,
+                                          "width": 475,
+                                          "height": 39,
+                                          "measuredHeight": 39,
+                                          "minimumHeight": 0,
+                                          "shown": true,
+                                          "visible": "488 1497 963 1536",
+                                          "text": "Not connected",
+                                          "textSizePx": 31.5
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "class": "Icon",
+                                      "x": 963,
+                                      "y": 1462,
+                                      "width": 37,
+                                      "height": 63,
+                                      "measuredHeight": 63,
+                                      "minimumHeight": 0,
+                                      "shown": true,
+                                      "visible": "963 1462 1000 1525"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "class": "DetailRow",
+                                  "x": 488,
+                                  "y": 1557,
+                                  "width": 512,
+                                  "height": 126,
+                                  "measuredHeight": 126,
+                                  "minimumHeight": 126,
+                                  "shown": true,
+                                  "visible": "488 1557 1000 1683",
+                                  "description": "Configure lamp sunrise duration",
+                                  "children": [
+                                    {
+                                      "class": "TextView",
+                                      "x": 488,
+                                      "y": 1600,
+                                      "width": 356,
+                                      "height": 39,
+                                      "measuredHeight": 39,
+                                      "minimumHeight": 0,
+                                      "shown": true,
+                                      "visible": "488 1600 844 1639",
+                                      "text": "Sunrise duration",
+                                      "textSizePx": 31.5
+                                    },
+                                    {
+                                      "class": "TextView",
+                                      "x": 860,
+                                      "y": 1600,
+                                      "width": 103,
+                                      "height": 39,
+                                      "measuredHeight": 39,
+                                      "minimumHeight": 0,
+                                      "shown": true,
+                                      "visible": "860 1600 963 1639",
+                                      "text": "10 min",
+                                      "textSizePx": 31.5
+                                    },
+                                    {
+                                      "class": "Icon",
+                                      "x": 963,
+                                      "y": 1588,
+                                      "width": 37,
+                                      "height": 63,
+                                      "measuredHeight": 63,
+                                      "minimumHeight": 0,
+                                      "shown": true,
+                                      "visible": "963 1588 1000 1651"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "class": "DetailRow",
+                                  "x": 488,
+                                  "y": 1683,
+                                  "width": 512,
+                                  "height": 126,
+                                  "measuredHeight": 126,
+                                  "minimumHeight": 126,
+                                  "shown": true,
+                                  "visible": "488 1683 1000 1809",
+                                  "description": "Configure lamp maximum intensity",
+                                  "children": [
+                                    {
+                                      "class": "TextView",
+                                      "x": 488,
+                                      "y": 1726,
+                                      "width": 388,
+                                      "height": 39,
+                                      "measuredHeight": 39,
+                                      "minimumHeight": 0,
+                                      "shown": true,
+                                      "visible": "488 1726 876 1765",
+                                      "text": "Maximum intensity",
+                                      "textSizePx": 31.5
+                                    },
+                                    {
+                                      "class": "TextView",
+                                      "x": 892,
+                                      "y": 1726,
+                                      "width": 71,
+                                      "height": 39,
+                                      "measuredHeight": 39,
+                                      "minimumHeight": 0,
+                                      "shown": true,
+                                      "visible": "892 1726 963 1765",
+                                      "text": "80%",
+                                      "textSizePx": 31.5
+                                    },
+                                    {
+                                      "class": "Icon",
+                                      "x": 963,
+                                      "y": 1714,
+                                      "width": 37,
+                                      "height": 63,
+                                      "measuredHeight": 63,
+                                      "minimumHeight": 0,
+                                      "shown": true,
+                                      "visible": "963 1714 1000 1777"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "class": "Button",
+                                  "x": 488,
+                                  "y": 1809,
+                                  "width": 512,
+                                  "height": 126,
+                                  "measuredHeight": 126,
+                                  "minimumHeight": 126,
+                                  "shown": true,
+                                  "visible": "488 1809 1000 1935",
+                                  "description": "Configure smart bedroom light",
+                                  "text": "  Connect light",
+                                  "textSizePx": 34.125
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "class": "View",
+                          "x": 53,
+                          "y": 1946,
+                          "width": 1,
+                          "height": 21,
+                          "measuredHeight": 21,
+                          "minimumHeight": 0,
+                          "shown": true,
+                          "visible": "53 1946 54 1967"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "class": "LinearLayout",
+                  "x": 0,
+                  "y": 2079,
+                  "width": 1080,
+                  "height": 174,
+                  "measuredHeight": 174,
+                  "minimumHeight": 0,
+                  "shown": true,
+                  "visible": "0 2079 1080 2253",
+                  "children": [
+                    {
+                      "class": "Button",
+                      "x": 63,
+                      "y": 2095,
+                      "width": 954,
+                      "height": 137,
+                      "measuredHeight": 137,
+                      "minimumHeight": 137,
+                      "shown": true,
+                      "visible": "63 2095 1017 2232",
+                      "description": "Save appearance",
+                      "text": "Save appearance   ￼",
+                      "textSizePx": 42
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "class": "ViewStub",
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "measuredHeight": 0,
+          "minimumHeight": 0,
+          "shown": false,
+          "visible": "0 0 0 0"
+        }
+      ]
+    }
+  ]
+}

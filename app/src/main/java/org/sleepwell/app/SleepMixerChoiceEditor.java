@@ -10,7 +10,7 @@ import java.util.*;
 
 /** One silent draft. Row taps select; only Use changes the current mix and timer. */
 final class SleepMixerChoiceEditor {
-    private static final int INK=0xfff7efff,MUTED=0xffd0bce9,PANEL=0xff4b3e60;
+    private static final int INK=NightDialTokens.TEXT,MUTED=NightDialTokens.SECONDARY,PANEL=NightDialTokens.RAISED;
     private final Activity activity;private final Runnable finished;private final SharedPreferences preferences;
     private SoundMix previous;private String kind,error="";private long revision;private int value;
     private ScrollView scroll;private int scrollY;private String focusedControl="";private boolean accessibilityFocus;private final Map<String,View> focusTargets=new LinkedHashMap<>();

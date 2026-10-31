@@ -1,12 +1,68 @@
 <resources>
-    <style name="AppTheme" parent="android:style/Theme.Material.Light.NoActionBar">
-        <item name="android:fontFamily">sans</item>
-        <item name="android:colorAccent">#572A15</item>
+    <style name="AppTheme" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">@font/inter_widget</item>
+        <item name="android:colorAccent">#F2BF6D</item>
+        <item name="android:colorControlNormal">#B8B8B3</item>
+        <item name="android:colorControlActivated">#F2BF6D</item>
+        <item name="android:colorButtonNormal">#2A2A2A</item>
+        <item name="android:textColorPrimary">#F3F3EF</item>
+        <item name="android:textColorSecondary">#B8B8B3</item>
+        <item name="android:colorBackground">#080808</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar">false</item>
         <item name="android:windowActionModeOverlay">true</item>
-        <item name="android:windowBackground">#FCF7EF</item>
+        <item name="android:windowBackground">#080808</item>
+        <item name="android:windowSplashScreenBackground">#080808</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:dialogTheme">@style/NightDialDialogTheme</item>
+        <item name="android:alertDialogTheme">@style/NightDialDialogTheme</item>
+    </style>
+    <style name="NightDialDialogTheme" parent="android:style/Theme.Material.Dialog.NoActionBar">
+        <item name="android:fontFamily">@font/inter_widget</item>
+        <item name="android:colorAccent">#F2BF6D</item>
+        <item name="android:colorControlActivated">#F2BF6D</item>
+        <item name="android:textColorPrimary">#F3F3EF</item>
+        <item name="android:textColorSecondary">#B8B8B3</item>
+        <item name="android:colorBackground">#242424</item>
+        <item name="android:windowBackground">@drawable/night_dial_dialog_background</item>
+        <item name="android:windowAnimationStyle">@style/NightDialStaticAnimation</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+    <style name="NightDialAnimatedDialogTheme" parent="NightDialDialogTheme">
+        <item name="android:windowAnimationStyle">@style/NightDialSheetAnimation</item>
+    </style>
+    <style name="NightDialAnimatedDialogs">
+        <item name="android:dialogTheme">@style/NightDialAnimatedDialogTheme</item>
+        <item name="android:alertDialogTheme">@style/NightDialAnimatedDialogTheme</item>
+    </style>
+    <style name="NightDialStaticDialogs">
+        <item name="android:dialogTheme">@style/NightDialDialogTheme</item>
+        <item name="android:alertDialogTheme">@style/NightDialDialogTheme</item>
+    </style>
+    <style name="NightDialSheetAnimation">
+        <item name="android:windowEnterAnimation">@anim/night_dial_sheet_enter</item>
+        <item name="android:windowExitAnimation">@anim/night_dial_sheet_exit</item>
+    </style>
+    <style name="NightDialPageAnimation" parent="android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/night_dial_page_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/night_dial_page_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/night_dial_page_return</item>
+        <item name="android:activityCloseExitAnimation">@anim/night_dial_page_back</item>
+    </style>
+    <style name="NightDialStaticAnimation" parent="android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
     </style>
     <string name="guard_description">Optional bedtime and alarm guard. SleepWell uses only window package and class names, not screen contents or typed text. It can redirect distracting apps during bedtime and return to a ringing challenge. Optional power-menu protection dismisses recognised shutdown menus only during a real alarm; forced hardware restart remains possible. Settings, calls and emergency screens remain accessible. Enable this only if you want these controls; disable the service here at any time.</string>
 </resources>

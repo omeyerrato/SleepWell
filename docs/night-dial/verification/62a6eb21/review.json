@@ -1,0 +1,10 @@
+{
+  "commit": "62a6eb21c4a8d1aece078f17d2d18dde34b5a2b4",
+  "scope": "roots, mixer discovery, time-picker validation/cancel/recreation only",
+  "full_acceptance": false,
+  "passed": false,
+  "missing_frames": [
+    "time-restored"
+  ],
+  "output": "No alarms, audio or sensors started; host audio disabled"
+}

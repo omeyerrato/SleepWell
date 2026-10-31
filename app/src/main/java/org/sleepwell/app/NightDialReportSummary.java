@@ -1,0 +1,32 @@
+package org.sleepwell.app;
+
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.*;
+import android.view.*;
+import android.widget.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
+/** Duration against the saved goal, never a sleep-quality or recovery score. */
+final class NightDialReportSummary {
+    static void append(Activity activity,LinearLayout body,ReportScreen.Snapshot snapshot,String durationKind,Runnable edit){
+        org.json.JSONObject session=snapshot.session;long start=session.optLong("start"),end=session.optLong("end");ZoneId zone;try{zone=ZoneId.of(session.optString("zone",""));}catch(DateTimeException invalid){zone=ZoneId.systemDefault();}
+        String source=session.optString("provenance",session.optString("source").equals("manual")?"User-reported period":"Phone recording");Design.text(body,source,13,400,NightDialTokens.SECONDARY);Design.space(body,8);
+        LinearLayout dated=Design.row(activity);TextView date=Design.text(activity,RecordUi.date(end,zone),14,400,NightDialTokens.SECONDARY);dated.addView(date,new LinearLayout.LayoutParams(0,-2,1));View editButton=Design.iconButton(activity,"edit","Edit sleep",edit);dated.addView(editButton,new LinearLayout.LayoutParams(Design.dp(activity,48),Design.dp(activity,48)));body.addView(dated);
+        body.addView(new GoalFace(activity,snapshot.recordedMillis,snapshot.goalMinutes,durationKind),new LinearLayout.LayoutParams(-1,-2));
+        String interval=RecordUi.clock(activity,start,zone)+" – "+RecordUi.clock(activity,end,zone);ZonedDateTime first=Instant.ofEpochMilli(start).atZone(zone),last=Instant.ofEpochMilli(end).atZone(zone);if(!first.toLocalDate().equals(last.toLocalDate()))interval=first.format(DateTimeFormatter.ofPattern("d MMM",Locale.getDefault()))+" "+RecordUi.clock(activity,start,zone)+" → "+last.format(DateTimeFormatter.ofPattern("d MMM",Locale.getDefault()))+" "+RecordUi.clock(activity,end,zone);
+        TextView times=Design.text(body,interval,14,400,NightDialTokens.SECONDARY);times.setGravity(Gravity.CENTER);times.setContentDescription("Recorded interval "+RecordUi.date(start,zone)+" "+RecordUi.clock(activity,start,zone)+" to "+RecordUi.date(end,zone)+" "+RecordUi.clock(activity,end,zone)+", "+zone.getId());Design.space(body,12);
+        LinearLayout goal=Design.row(activity);Design.pad(goal,14,10);goal.setMinimumHeight(Design.dp(activity,56));goal.setBackground(Design.touch(activity,NightDialTokens.SURFACE,16));goal.addView(new Design.Icon(activity,"moon",NightDialTokens.SECONDARY),new LinearLayout.LayoutParams(Design.dp(activity,24),Design.dp(activity,24)));LinearLayout copy=Design.col(activity);String target=snapshot.goalMinutes>0?PlanActivity.duration(snapshot.goalMinutes)+" goal":"Duration goal unavailable";Design.text(copy,target,13,400,NightDialTokens.SECONDARY);Design.space(copy,4);String relation=snapshot.goalMinutes>0?relation(activity,snapshot.recordedMillis,snapshot.goalMinutes*60000L):"Open your sleep plan to review";Design.text(copy,relation,15,500,snapshot.goalMinutes>0?NightDialTokens.ACCENT:NightDialTokens.SECONDARY);LinearLayout.LayoutParams labels=new LinearLayout.LayoutParams(0,-2,1);labels.leftMargin=Design.dp(activity,12);goal.addView(copy,labels);goal.addView(new Design.Icon(activity,"chevron",NightDialTokens.SECONDARY),new LinearLayout.LayoutParams(Design.dp(activity,18),Design.dp(activity,18)));goal.setContentDescription(target+", "+relation+". Review sleep plan");goal.setFocusable(true);SoundEventUi.button(goal);goal.setOnClickListener(v->{InteractionFeedback.action(v);activity.startActivity(RecordUi.intent(activity,PlanActivity.class));});body.addView(goal);Design.space(body,12);
+    }
+    private static String relation(Context context,long actual,long target){long difference=actual-target;return difference==0?"Goal met":RecordUi.duration(Math.abs(difference))+(difference<0?" short":" over goal");}
+    private static final class GoalFace extends View {
+        private final Paint paint=new Paint(Paint.ANTI_ALIAS_FLAG);private final long actual;private final int goal;private final String kind;
+        GoalFace(Context context,long actual,int goal,String kind){super(context);this.actual=Math.max(0,actual);this.goal=goal;this.kind=kind;setFocusable(true);setContentDescription(RecordUi.duration(this.actual)+" "+kind+(goal>0?", "+PlanActivity.duration(goal)+" duration goal, "+relation(context,this.actual,goal*60000L):", saved duration goal unavailable")+". This ring compares duration with a goal, not sleep quality.");}
+        @Override public CharSequence getAccessibilityClassName(){return ImageView.class.getName();}
+        @Override protected void onMeasure(int widthSpec,int heightSpec){int width=resolveSize(Design.dp(getContext(),340),widthSpec);setMeasuredDimension(width,resolveSize(Math.round(width*.69f),heightSpec));}
+        @Override protected void onDraw(Canvas canvas){super.onDraw(canvas);float scale=getWidth()/360f;if(scale<=0)return;canvas.save();canvas.scale(scale,scale);float cx=180,cy=123,r=101;paint.setStyle(Paint.Style.STROKE);paint.setStrokeCap(Paint.Cap.ROUND);paint.setStrokeWidth(5);paint.setColor(NightDialTokens.RULE);RectF ring=new RectF(cx-r,cy-r,cx+r,cy+r);canvas.drawOval(ring,paint);if(goal>0&&actual>0){paint.setColor(NightDialTokens.ACCENT);canvas.drawArc(ring,-90,(float)(360*Math.min(1d,actual/(goal*60000d))),false,paint);}paint.setStrokeWidth(.8f);paint.setColor(NightDialTokens.RULE);for(int n=0;n<60;n++){double a=Math.toRadians(n*6-90);float outer=n%5==0?114:111;canvas.drawLine(cx+108*(float)Math.cos(a),cy+108*(float)Math.sin(a),cx+outer*(float)Math.cos(a),cy+outer*(float)Math.sin(a),paint);}paint.setStyle(Paint.Style.FILL);paint.setTypeface(Design.font(getContext(),500));paint.setColor(NightDialTokens.TEXT);paint.setTextAlign(Paint.Align.CENTER);long seconds=actual/1000,minutes=seconds/60;String duration=minutes>=60?minutes/60+"h"+(minutes%60==0?"":" "+minutes%60+"m"):minutes>0?minutes+"m":seconds+"s";float size=Design.sp(getContext(),34*Appearance.scale(getContext()))/scale;paint.setTextSize(size);if(paint.measureText(duration)>158)paint.setTextSize(size*158/paint.measureText(duration));canvas.drawText(duration,cx,cy+2,paint);paint.setTypeface(Design.font(getContext(),400));paint.setTextSize(Design.sp(getContext(),13*Appearance.scale(getContext()))/scale);paint.setColor(NightDialTokens.SECONDARY);canvas.drawText(kind,cx,cy+27,paint);canvas.restore();}
+    }
+    private NightDialReportSummary(){}
+}

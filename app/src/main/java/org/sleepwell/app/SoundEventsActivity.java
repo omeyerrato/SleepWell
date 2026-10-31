@@ -54,7 +54,7 @@ public final class SoundEventsActivity extends Activity {
     }
     private void restoreDialog(){if(restoredModal.isEmpty()||!loaded||!error.isEmpty()||!hasWindowFocus()||isFinishing()||isDestroyed())return;String saved=restoredModal;restoredModal="";if(saved.equals("categories"))categories();else if(saved.equals("options"))menu();else if(saved.equals("analysis"))analysisDetails();}
     private Drawable rowBackground(SoundEventRows.Row row){
-        LayerDrawable layers=new LayerDrawable(new Drawable[]{Design.shape(this,Color.TRANSPARENT,16),Design.shape(this,row.category.equals("speech")?0xffad82ef:0xffaa6538,2)});
+        LayerDrawable layers=new LayerDrawable(new Drawable[]{Design.shape(this,Color.TRANSPARENT,16),Design.shape(this,row.category.equals("speech")?NightDialTokens.ACCENT:0xffaa6538,2)});
         layers.setLayerSize(1,Design.dp(this,2),Design.dp(this,36));layers.setLayerGravity(1,Gravity.LEFT|Gravity.TOP);layers.setLayerInset(1,0,Design.dp(this,12),0,0);return layers;
     }
     private void addRow(LinearLayout body,SoundEventRows.Row row){
@@ -79,7 +79,7 @@ public final class SoundEventsActivity extends Activity {
             Design.space(card,8);LinearLayout audioPanel=Design.col(this);Design.pad(audioPanel,8,6);card.addView(audioPanel,new LinearLayout.LayoutParams(-1,-2));
             LinearLayout audio=Design.row(this);FrameLayout play=new FrameLayout(this);play.setFocusable(true);SoundEventUi.button(play);
             play.setOnClickListener(v->{InteractionFeedback.action(v);selected=row.key;player.toggle(row.target,positions.getOrDefault(row.key,0L));});audio.addView(play,new LinearLayout.LayoutParams(Design.dp(this,48),Design.dp(this,48)));
-            ClipWaveView wave=new ClipWaveView(this,row.peaks,row.category.equals("speech")?0xff9262df:Design.BROWN,row.category.equals("speech")?0xffc3a4f4:0xffcfb69f);
+            ClipWaveView wave=new ClipWaveView(this,row.peaks,row.category.equals("speech")?NightDialTokens.ACCENT:Design.BROWN,row.category.equals("speech")?NightDialTokens.ACCENT:0xffcfb69f);
             LinearLayout.LayoutParams wp=new LinearLayout.LayoutParams(0,Design.dp(this,42),1);wp.leftMargin=clockColumn-Design.dp(this,56);audio.addView(wave,wp);audioPanel.addView(audio);
             LinearLayout progress=Design.row(this);TextView elapsed=Design.text(this,"0:00",11,400,Design.MUTED),total=Design.text(this,clock(row.target.duration()),11,400,Design.MUTED);progress.addView(elapsed);
             ClipSeekView seek=new ClipSeekView(this,row.target.duration(),position->{selected=row.key;positions.put(row.key,position);if(state!=null&&state.key.equals(row.key))player.seek(position);else{player.stop();selected=row.key;positions.put(row.key,position);for(Binding other:bindings)update(other);}});

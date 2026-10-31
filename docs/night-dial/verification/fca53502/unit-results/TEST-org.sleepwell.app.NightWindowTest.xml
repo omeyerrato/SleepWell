@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.NightWindowTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-30T14:13:18.018Z" hostname="runnervm48cm3" time="0.009">
+  <properties/>
+  <testcase name="springGapCannotTurnAnImpossibleShortWindowIntoAnotherDay" classname="org.sleepwell.app.NightWindowTest" time="0.002"/>
+  <testcase name="springGapUsesSevenActualHoursAndResolvedWake" classname="org.sleepwell.app.NightWindowTest" time="0.001"/>
+  <testcase name="initialAlarmRenderAndExistingViewAgreeAtTheExactWakeBoundary" classname="org.sleepwell.app.NightWindowTest" time="0.001"/>
+  <testcase name="invalidAndExpiredExplicitWindowsAreNeverRenderedAsProgress" classname="org.sleepwell.app.NightWindowTest" time="0.001"/>
+  <testcase name="upcomingPlanHasNoInventedProgress" classname="org.sleepwell.app.NightWindowTest" time="0.001"/>
+  <testcase name="daytimeRestWindowWorks" classname="org.sleepwell.app.NightWindowTest" time="0.0"/>
+  <testcase name="autumnFoldUsesNineActualHoursWithoutMovingBackward" classname="org.sleepwell.app.NightWindowTest" time="0.001"/>
+  <testcase name="afterWakeShowsNextPlanRatherThanStaleFullBar" classname="org.sleepwell.app.NightWindowTest" time="0.0"/>
+  <testcase name="startMidpointAndEndUseElapsedClockTime" classname="org.sleepwell.app.NightWindowTest" time="0.001"/>
+  <testcase name="weeklyAlarmAnchorsOneNightImmediatelyBeforeItsOccurrence" classname="org.sleepwell.app.NightWindowTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

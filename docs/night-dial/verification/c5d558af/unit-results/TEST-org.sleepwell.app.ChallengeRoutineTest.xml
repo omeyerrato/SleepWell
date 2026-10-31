@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.sleepwell.app.ChallengeRoutineTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-31T11:22:45.954Z" hostname="runnervm48cm3" time="0.01">
+  <properties/>
+  <testcase name="mixedTasksOnlyFinishAfterEveryStepAndRound" classname="org.sleepwell.app.ChallengeRoutineTest" time="0.002"/>
+  <testcase name="duplicateOrStaleSuccessDoesNotSkipARound" classname="org.sleepwell.app.ChallengeRoutineTest" time="0.0"/>
+  <testcase name="reopeningPersistedCountRestoresTaskAndRound" classname="org.sleepwell.app.ChallengeRoutineTest" time="0.001"/>
+  <testcase name="editingOneStepDoesNotChangeOtherSteps" classname="org.sleepwell.app.ChallengeRoutineTest" time="0.0"/>
+  <testcase name="emptyAndOversizedAndUnsupportedConfigurationAreRejected" classname="org.sleepwell.app.ChallengeRoutineTest" time="0.002"/>
+  <testcase name="legacyPhysicalTasksKeepTheirOriginalSingleUnitAndTarget" classname="org.sleepwell.app.ChallengeRoutineTest" time="0.0"/>
+  <testcase name="shakeAndNfcSuccessCannotDismissFollowingTasks" classname="org.sleepwell.app.ChallengeRoutineTest" time="0.001"/>
+  <testcase name="invalidLegacyTypeKeepsExistingMathFallback" classname="org.sleepwell.app.ChallengeRoutineTest" time="0.001"/>
+  <testcase name="legacyRepeatedQuestionTasksKeepEveryRound" classname="org.sleepwell.app.ChallengeRoutineTest" time="0.001"/>
+  <testcase name="reorderAndRemoveAreImmutableAndKeepConfiguration" classname="org.sleepwell.app.ChallengeRoutineTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

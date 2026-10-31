@@ -28,7 +28,7 @@ public final class RecurringTrackingActivity extends Activity {
         String title=switch(page){case "conditions"->"Nightly conditions";case "reliability"->"Start reliability";case "limits"->"Recording limits";default->"Repeat nightly";};
         RecordUi.header(body,title,this::back);Design.space(body,12);if(!page.equals("home"))TrackingOptionsUi.context(body,"Repeat nightly");
         switch(page){case "conditions"->conditionsPage(body);case "reliability"->reliabilityPage(body);case "limits"->limitsPage(body);default->home(body);}
-        LinearLayout footer=RecordUi.footer(body);error=Design.text(footer,"",13,500,0xffa93919);error.setVisibility(View.GONE);if(!errorCopy.isEmpty())show(errorCopy);
+        LinearLayout footer=RecordUi.footer(body);error=Design.text(footer,"",13,500,NightDialTokens.NEGATIVE);error.setVisibility(View.GONE);if(!errorCopy.isEmpty())show(errorCopy);
         if(!page.equals("home")){Design.text(footer,"Changes apply after Save nightly settings.",12,400,Design.MUTED);Design.button(footer,"Done",true,this::back);}
         else{
             Design.space(footer,8);LinearLayout actions=Design.row(this),cancel=Design.col(this),save=Design.col(this);LinearLayout.LayoutParams cancelSpace=new LinearLayout.LayoutParams(0,-2,1);cancelSpace.rightMargin=Design.dp(this,8);actions.addView(cancel,cancelSpace);actions.addView(save,new LinearLayout.LayoutParams(0,-2,2.6f));footer.addView(actions);Design.button(cancel,"Cancel",false,this::finish);Design.button(save,"Save nightly settings",true,this::save).setTextSize(14*Appearance.scale(this));

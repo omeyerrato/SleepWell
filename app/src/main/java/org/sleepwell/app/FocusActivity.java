@@ -21,16 +21,16 @@ public class FocusActivity extends Activity {
         LinearLayout header=Design.row(this);
         LinearLayout.LayoutParams shield=new LinearLayout.LayoutParams(Design.dp(this,25),Design.dp(this,25));shield.rightMargin=Design.dp(this,12);
         header.addView(new Design.Icon(this,"shield",Design.LILAC),shield);
-        header.addView(Design.text(this,"Bedtime guard",20,600,Design.CREAM));header.setMinimumHeight(Design.dp(this,48));body.addView(header);
-        Design.space(body,24);Design.text(body,"It's time to rest",30,600,Design.CREAM);Design.space(body,10);
+        header.addView(Design.text(this,"Bedtime guard",20,600,NightDialTokens.TEXT));header.setMinimumHeight(Design.dp(this,48));body.addView(header);
+        Design.space(body,24);Design.text(body,"It's time to rest",30,600,NightDialTokens.TEXT);Design.space(body,10);
         status=Design.text(body,"",15,400,Design.LILAC);Design.space(body,24);
         ImageView scene=new ImageView(this);scene.setImageResource(R.drawable.bedside_tonight);scene.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        scene.setImportantForAccessibility(ImageView.IMPORTANT_FOR_ACCESSIBILITY_NO);scene.setBackground(Design.shape(this,0xff342b40,22));scene.setClipToOutline(true);
+        scene.setImportantForAccessibility(ImageView.IMPORTANT_FOR_ACCESSIBILITY_NO);scene.setBackground(Design.shape(this,NightDialTokens.SURFACE,22));scene.setClipToOutline(true);android.graphics.ColorMatrix tonality=new android.graphics.ColorMatrix();tonality.setSaturation(0);scene.setColorFilter(new android.graphics.ColorMatrixColorFilter(tonality));
         body.addView(scene,new LinearLayout.LayoutParams(-1,Design.dp(this,174)));Design.space(body,18);
         LinearLayout settings=Design.row(this);settings.setMinimumHeight(Design.dp(this,56));
         LinearLayout.LayoutParams icon=new LinearLayout.LayoutParams(Design.dp(this,24),Design.dp(this,24));icon.rightMargin=Design.dp(this,14);
         settings.addView(new Design.Icon(this,"settings-outline",Design.LILAC),icon);
-        settings.addView(Design.text(this,"Bedtime guard settings",15,500,Design.CREAM),new LinearLayout.LayoutParams(0,-2,1));
+        settings.addView(Design.text(this,"Bedtime guard settings",15,500,NightDialTokens.TEXT),new LinearLayout.LayoutParams(0,-2,1));
         settings.addView(new Design.Icon(this,"chevron",Design.LILAC),new LinearLayout.LayoutParams(Design.dp(this,20),Design.dp(this,20)));
         settings.setContentDescription("Bedtime guard settings");settings.setFocusable(true);settings.setBackground(Design.touch(this,android.graphics.Color.TRANSPARENT,12));
         settings.setOnClickListener(view->{InteractionFeedback.action(view);startActivity(RecordUi.intent(this,GuardActivity.class));});body.addView(settings);
@@ -46,7 +46,7 @@ public class FocusActivity extends Activity {
 
     private Button nightButton(LinearLayout parent,String title,boolean primary,Runnable action){
         Button button=Design.button(parent,title,false,action);button.setTextColor(primary?Design.PLUM:Design.LILAC);
-        button.setBackground(primary?Design.touch(this,Design.LILAC,18):Design.outline(this,0xff342b40,0xff62566d,18));return button;
+        button.setBackground(primary?Design.touch(this,Design.LILAC,18):Design.outline(this,NightDialTokens.SURFACE,NightDialTokens.OUTLINE,18));return button;
     }
 
     @Override protected void onResume(){

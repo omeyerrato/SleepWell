@@ -9,11 +9,12 @@ import android.view.*;
 import android.widget.*;
 import java.util.function.Consumer;
 
-/** Native view tokens taken from the supplied Changing light boards. */
+/** Native view adapters for the accepted Night Dial design. Legacy names retain call-site compatibility. */
 final class Design {
-    static final int CREAM=0xfffcf7ef, INK=0xff381707, BROWN=0xff572a15,
-        SOFT=0xfff2e7dc, MUTED=0xff666568, LINE=0xffe6d9ce,
-        PLUM=0xff241e30, LILAC=0xffd9c4fc, VIOLET=0xffac83ed;
+    static final int CREAM=NightDialTokens.GROUND, INK=NightDialTokens.TEXT,
+        BROWN=NightDialTokens.ACCENT, SOFT=NightDialTokens.SURFACE,
+        MUTED=NightDialTokens.SECONDARY, LINE=NightDialTokens.RULE,
+        PLUM=NightDialTokens.GROUND, LILAC=NightDialTokens.ACCENT, VIOLET=NightDialTokens.ACCENT;
     private static final java.util.Map<Integer,Typeface> FONTS=new java.util.HashMap<>();
     static Typeface font(Context c,int weight) {
         return FONTS.computeIfAbsent(weight,w->new Typeface.Builder(c.getAssets(),"fonts/Inter.ttf")
@@ -23,7 +24,7 @@ final class Design {
     static float sp(Context c,float value){return android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_SP,value,c.getResources().getDisplayMetrics());}
     static float fontScale(Context c){return c.getResources().getConfiguration().fontScale*Appearance.scale(c);}
     static void styleSwitch(Context c,Switch toggle,int active,int inactive){
-        if(Appearance.contrast(c)){active=BROWN;inactive=0xff77706b;}
+        active=NightDialTokens.ACCENT;inactive=Appearance.contrast(c)?NightDialTokens.OUTLINE:0xff414141;
         toggle.setTrackTintList(null);toggle.setThumbTintList(null);StateListDrawable track=new StateListDrawable();GradientDrawable on=shape(c,active,30),off=shape(c,inactive,30);
         on.setSize(dp(c,52),dp(c,28));off.setSize(dp(c,52),dp(c,28));track.addState(new int[]{android.R.attr.state_checked},on);track.addState(new int[]{},off);toggle.setTrackDrawable(track);track.setState(toggle.getDrawableState());
         GradientDrawable thumb=shape(c,Color.WHITE,30);thumb.setSize(dp(c,24),dp(c,24));thumb.setStroke(dp(c,1),0x11808080);toggle.setThumbDrawable(thumb);toggle.setSplitTrack(false);toggle.setThumbTextPadding(dp(c,2));toggle.setSwitchMinWidth(dp(c,52));toggle.setMinHeight(dp(c,48));toggle.setShowText(false);
@@ -36,16 +37,14 @@ final class Design {
     static LinearLayout row(Context c){LinearLayout r=new LinearLayout(c);r.setGravity(Gravity.CENTER_VERTICAL);return r;}
     static void space(LinearLayout p,int height){p.addView(new View(p.getContext()),new LinearLayout.LayoutParams(1,dp(p.getContext(),height)));}
     static void line(LinearLayout p){View v=new View(p.getContext());v.setBackgroundColor(LINE);p.addView(v,new LinearLayout.LayoutParams(-1,dp(p.getContext(),1)));}
-    static GradientDrawable shape(Context c,int color,int radius){GradientDrawable shape=Ui.shape(color,dp(c,radius));if(Appearance.contrast(c)&&color==SOFT)shape.setStroke(dp(c,1),BROWN);return shape;}
+    static GradientDrawable shape(Context c,int color,int radius){GradientDrawable shape=Ui.shape(color,dp(c,radius));if(Appearance.contrast(c)&&color==SOFT)shape.setStroke(dp(c,1),NightDialTokens.OUTLINE);return shape;}
     static android.graphics.drawable.Drawable touch(Context c,int color,int radius){
-        if(InteractionFeedback.motion(c))return new RippleDrawable(ColorStateList.valueOf(0x224a2615),shape(c,color,radius),null);
-        StateListDrawable states=new StateListDrawable();states.addState(new int[]{android.R.attr.state_pressed},shape(c,ColorUtilsOverlay(color),radius));states.addState(new int[]{},shape(c,color,radius));return states;
+        return new NightDialSurface(c,color,radius);
     }
-    private static int ColorUtilsOverlay(int color){return androidx.core.graphics.ColorUtils.compositeColors(0x334a2615,color);}
-    static android.graphics.drawable.Drawable outline(Context c,int color,int line,int radius){GradientDrawable background=shape(c,color,radius);background.setStroke(dp(c,1),line);if(InteractionFeedback.motion(c))return new RippleDrawable(ColorStateList.valueOf(0x22d9c4fc),background,null);StateListDrawable states=new StateListDrawable();GradientDrawable pressed=shape(c,ColorUtilsOverlay(color),radius);pressed.setStroke(dp(c,1),line);states.addState(new int[]{android.R.attr.state_pressed},pressed);states.addState(new int[]{},background);return states;}
+    static android.graphics.drawable.Drawable outline(Context c,int color,int line,int radius){GradientDrawable border=shape(c,Color.TRANSPARENT,radius);border.setStroke(dp(c,1),line==LINE?NightDialTokens.OUTLINE:line);return new LayerDrawable(new Drawable[]{touch(c,color,radius),border});}
     static TextView text(Context c,String value,int sp,int weight,int color){TextView t=new TextView(c);t.setText(value);t.setTextSize(sp*Appearance.scale(c));t.setTypeface(font(c,weight));t.setTextColor(Appearance.color(c,color));t.setIncludeFontPadding(false);t.setFontFeatureSettings("tnum");return t;}
     static TextView text(LinearLayout p,String value,int sp,int weight,int color){TextView t=text(p.getContext(),value,sp,weight,color);p.addView(t,new LinearLayout.LayoutParams(-1,-2));return t;}
-    static String clock(Context c,int minute){return java.time.LocalTime.of(Math.floorMod(minute,1440)/60,Math.floorMod(minute,1440)%60).format(java.time.format.DateTimeFormatter.ofPattern(android.text.format.DateFormat.is24HourFormat(c)?"HH:mm":"h:mm a",java.util.Locale.getDefault())).toUpperCase(java.util.Locale.getDefault());}
+    static String clock(Context c,int minute){return java.time.LocalTime.of(Math.floorMod(minute,1440)/60,Math.floorMod(minute,1440)%60).format(java.time.format.DateTimeFormatter.ofPattern(android.text.format.DateFormat.is24HourFormat(c)?"HH:mm":"h:mm a",java.util.Locale.getDefault()));}
     static CharSequence timeText(String value){android.text.SpannableString span=new android.text.SpannableString(value);int suffix=value.lastIndexOf(' ');if(suffix>=0)span.setSpan(new android.text.style.RelativeSizeSpan(.55f),suffix,value.length(),0);return span;}
     static void pad(View v,int h,int vertical){v.setPadding(dp(v.getContext(),h),dp(v.getContext(),vertical),dp(v.getContext(),h),dp(v.getContext(),vertical));}
     static LinearLayout page(Activity a,boolean night,Integer destination,java.util.function.IntConsumer navigate){
@@ -53,7 +52,8 @@ final class Design {
     }
     static LinearLayout darkPage(Activity a){return page(a,true,null,n->{},new Appearance.Palette(0,Appearance.contrast(a)));}
     private static LinearLayout page(Activity a,boolean night,Integer destination,java.util.function.IntConsumer navigate,Appearance.Palette palette){
-        boolean dark=night&&palette.dark;
+        boolean dark=true;
+        NightDialMotion.configurePage(a);
         a.getWindow().setDecorFitsSystemWindows(false);
         // API35+ also derives three-button icon contrast from the Window background,
         // independently of the content View and requested light/dark appearance.
@@ -65,46 +65,49 @@ final class Design {
         LinearLayout root=col(a);root.setBackgroundColor(night?palette.bg:CREAM);root.setContentDescription(night&&destination!=null?"Tonight · "+AppearancePolicy.THEMES[palette.phase]:null);
         root.setOnApplyWindowInsetsListener((v,i)->{Insets bars=i.getInsets(WindowInsets.Type.systemBars()|WindowInsets.Type.displayCutout()|WindowInsets.Type.ime());v.setPadding(bars.left,bars.top,bars.right,bars.bottom);return i;});
         ScrollView scroll=new ScrollView(a);scroll.setDefaultFocusHighlightEnabled(false);scroll.setFillViewport(true);scroll.setClipToPadding(false);scroll.setVerticalScrollBarEnabled(false);root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
-        LinearLayout body=col(a);pad(body,24,16);scroll.addView(body,new ScrollView.LayoutParams(-1,-1));
-        if(destination!=null){LinearLayout dock=row(a);dock.setPadding(dp(a,8),dp(a,6),dp(a,8),dp(a,6));dock.setBackground(shape(a,night?palette.dock:SOFT,40));
+        LinearLayout body=col(a);pad(body,NightDialTokens.MARGIN,16);scroll.addView(body,new ScrollView.LayoutParams(-1,-1));
+        scroll.addOnLayoutChangeListener((v,left,top,right,bottom,ol,ot,or,ob)->{int width=right-left;int margin=Math.max(dp(a,width<dp(a,360)?16:20),(width-dp(a,720))/2);if(body.getPaddingLeft()!=margin)body.setPadding(margin,body.getPaddingTop(),margin,body.getPaddingBottom());});
+        if(destination!=null){LinearLayout dock=row(a);dock.setPadding(dp(a,8),0,dp(a,8),0);dock.setBackgroundColor(NightDialTokens.GROUND);
             String[] names={"Tonight","Alarms","Report","Settings"},icons={"moon","alarm","report","settings"};
-            for(int n=0;n<names.length;n++){final int index=n;LinearLayout item=col(a);item.setGravity(Gravity.CENTER);item.setBackground(touch(a,destination==n?(night?palette.selected:CREAM):Color.TRANSPARENT,32));
-                int color=Appearance.color(a,night?palette.softInk:(destination==n?INK:MUTED));Icon icon=new Icon(a,icons[n],color);item.addView(icon,new LinearLayout.LayoutParams(dp(a,26),dp(a,26)));space(item,4);TextView label=text(a,names[n],13,destination==n?600:400,color);label.setGravity(Gravity.CENTER);item.addView(label);
-                if(Appearance.contrast(a)&&destination==n){GradientDrawable selection=shape(a,night?palette.selected:CREAM,32);selection.setStroke(dp(a,2),night?palette.softInk:BROWN);item.setBackground(selection);}
+            for(int n=0;n<names.length;n++){final int index=n;LinearLayout item=col(a);item.setGravity(Gravity.CENTER);item.setBackground(touch(a,Color.TRANSPARENT,12));
+                int color=Appearance.color(a,destination==n?NightDialTokens.ACCENT:NightDialTokens.SECONDARY);Icon icon=new Icon(a,icons[n],color);item.addView(icon,new LinearLayout.LayoutParams(dp(a,24),dp(a,24)));space(item,4);TextView label=text(a,names[n],12,destination==n?600:400,color);label.setGravity(Gravity.CENTER);item.addView(label);
                 item.setContentDescription(names[n]);item.setSelected(destination==n);item.setOnClickListener(v->{if(destination!=index)InteractionFeedback.selection(v);navigate.accept(index);});dock.addView(item,new LinearLayout.LayoutParams(0,dp(a,62*Math.max(1,fontScale(a))),1));}
-            GradientDrawable dockSurface=shape(a,night?palette.dock:SOFT,40);if(night)dockSurface.setStroke(dp(a,1),palette.line);dock.setBackground(dockSurface);
             // Sum the already rounded child and padding pixels so fractional densities never clip a tab.
             int dockHeight=dock.getPaddingTop()+dock.getPaddingBottom()+dp(a,62*Math.max(1,fontScale(a)));
-            LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,dockHeight);lp.setMargins(dp(a,12),dp(a,8),dp(a,12),dp(a,8));root.addView(dock,lp);
+            LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,dockHeight);root.addView(dock,lp);
         }
         a.setContentView(root);root.requestApplyInsets();root.post(()->{ViewGroup content=a.findViewById(android.R.id.content);if(!a.isDestroyed()&&root.isAttachedToWindow()&&content.getChildCount()>0&&content.getChildAt(0)==root)systemBars(a,dark);});return body;
     }
-    static void header(LinearLayout p,String title,Runnable back){LinearLayout r=row(p.getContext());if(back!=null)r.addView(iconButton(p.getContext(),"back","Back",back),new LinearLayout.LayoutParams(dp(p.getContext(),48),dp(p.getContext(),48)));
-        TextView t=text(p.getContext(),title,back==null?30:24,700,INK);r.addView(t,new LinearLayout.LayoutParams(0,-2,1));p.addView(r,new LinearLayout.LayoutParams(-1,dp(p.getContext(),56)));space(p,12);}
+    static void header(LinearLayout p,String title,Runnable back){LinearLayout r=row(p.getContext());r.setMinimumHeight(dp(p.getContext(),56));if(back!=null)r.addView(iconButton(p.getContext(),"back","Back",back),new LinearLayout.LayoutParams(dp(p.getContext(),48),dp(p.getContext(),48)));
+        TextView t=text(p.getContext(),title,back==null?30:24,600,INK);t.setAccessibilityHeading(true);r.addView(t,new LinearLayout.LayoutParams(0,-2,1));p.addView(r,new LinearLayout.LayoutParams(-1,-2));space(p,12);}
     static View iconButton(Context c,String icon,String label,Runnable click){Icon v=new Icon(c,icon,INK);v.setPadding(dp(c,11),dp(c,11),dp(c,11),dp(c,11));v.setContentDescription(label);v.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_YES);v.setBackground(touch(c,Color.TRANSPARENT,24));v.setOnClickListener(w->{InteractionFeedback.action(w);click.run();});return v;}
-    static Button button(LinearLayout p,String title,boolean primary,Runnable click){Context c=p.getContext();Button b=new Button(c);b.setStateListAnimator(null);b.setElevation(0);b.setText(title);b.setAllCaps(false);b.setTextSize(16*Appearance.scale(c));b.setTypeface(font(c,600));b.setTextColor(primary?CREAM:INK);b.setMinHeight(dp(c,56));b.setMinimumHeight(dp(c,56));b.setBackground(touch(c,primary?BROWN:SOFT,16));b.setOnClickListener(v->{InteractionFeedback.action(v);click.run();});
+    static Button button(LinearLayout p,String title,boolean primary,Runnable click){Context c=p.getContext();Button b=new Button(c);b.setStateListAnimator(null);b.setElevation(0);b.setText(title);b.setAllCaps(false);b.setSingleLine(false);b.setMaxLines(3);b.setEllipsize(null);b.setTextSize(16*Appearance.scale(c));b.setTypeface(font(c,600));b.setTextColor(new ColorStateList(new int[][]{new int[]{-android.R.attr.state_enabled},new int[]{}},new int[]{NightDialTokens.META,primary?NightDialTokens.ACTION_INK:INK}));b.setMinHeight(dp(c,52));b.setMinimumHeight(dp(c,52));b.setPadding(dp(c,20),dp(c,12),dp(c,20),dp(c,12));b.setBackground(touch(c,primary?NightDialTokens.ACTION:NightDialTokens.SECONDARY_ACTION,primary?100:16));b.setOnClickListener(v->{InteractionFeedback.action(v);click.run();});
+        if(!primary)b.setBackground(touch(c,Color.TRANSPARENT,16));
         LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,-2);lp.topMargin=dp(c,10);p.addView(b,lp);return b;}
-    static void fixedAction(LinearLayout body,String title,Runnable click){LinearLayout root=(LinearLayout)body.getParent().getParent();LinearLayout footer=col(body.getContext());footer.setPadding(dp(body.getContext(),24),0,dp(body.getContext(),24),dp(body.getContext(),12));button(footer,title,true,click);root.addView(footer,new LinearLayout.LayoutParams(-1,-2));}
+    static void fixedAction(LinearLayout body,String title,Runnable click){LinearLayout root=(LinearLayout)body.getParent().getParent();LinearLayout footer=col(body.getContext());footer.setPadding(dp(body.getContext(),24),0,dp(body.getContext(),24),dp(body.getContext(),12));button(footer,title,true,click);root.addView(footer,new LinearLayout.LayoutParams(-1,-2));alignFooter(footer);}
+    static void alignFooter(View footer){footer.addOnLayoutChangeListener((v,l,t,r,b,ol,ot,or,ob)->{int margin=Math.max(dp(v.getContext(),r-l<dp(v.getContext(),360)?16:20),(r-l-dp(v.getContext(),720))/2);if(v.getPaddingLeft()!=margin)v.setPadding(margin,v.getPaddingTop(),margin,v.getPaddingBottom());});}
     static LinearLayout item(LinearLayout p,String icon,String title,String value,Runnable click){Context c=p.getContext();LinearLayout r=row(c);r.setMinimumHeight(dp(c,66));
         if(icon!=null){Icon i=new Icon(c,icon,INK);LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(dp(c,26),dp(c,26));ip.rightMargin=dp(c,18);r.addView(i,ip);}
-        TextView name=text(c,title,16,500,INK);r.addView(name,new LinearLayout.LayoutParams(0,-2,1));
-        if(value!=null){TextView val=text(c,value,14,400,MUTED);val.setGravity(Gravity.END);r.addView(val);}
+        TextView name=text(c,title,16,500,INK);
+        if(value!=null&&(value.length()>18||value.contains("\n")||fontScale(c)>1.25f)){LinearLayout labels=col(c);labels.addView(name,new LinearLayout.LayoutParams(-1,-2));space(labels,5);TextView val=text(c,value,14,400,MUTED);labels.addView(val,new LinearLayout.LayoutParams(-1,-2));LinearLayout.LayoutParams copy=new LinearLayout.LayoutParams(0,-2,1);copy.topMargin=dp(c,10);copy.bottomMargin=dp(c,10);r.addView(labels,copy);r.setTooltipText(title+": "+value);}
+        else{r.addView(name,new LinearLayout.LayoutParams(0,-2,1));if(value!=null){TextView val=text(c,value,14,400,MUTED);val.setGravity(Gravity.END);val.setMaxWidth(dp(c,140));val.setMaxLines(2);val.setEllipsize(android.text.TextUtils.TruncateAt.END);r.setTooltipText(title+": "+value);r.addView(val);}}
         if(click!=null){Icon chevron=new Icon(c,"chevron",INK);LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(dp(c,22),dp(c,22));cp.leftMargin=dp(c,8);r.addView(chevron,cp);r.setBackground(touch(c,Color.TRANSPARENT,8));r.setOnClickListener(v->{InteractionFeedback.action(v);click.run();});}
         p.addView(r,new LinearLayout.LayoutParams(-1,-2));return r;
     }
-    static Switch toggle(LinearLayout p,String title,String subtitle,boolean checked,Consumer<Boolean> change){Context c=p.getContext();RelativeLayout r=new RelativeLayout(c);pad(r,14,12);r.setBackground(shape(c,SOFT,16));
-        InteractionFeedback.Toggle s=new InteractionFeedback.Toggle(c);s.setId(View.generateViewId());s.setContentDescription(title);styleSwitch(c,s,BROWN,0xffbcb5b0);s.setChecked(checked);s.setOnCheckedChangeListener((b,on)->{s.userChanged();change.accept(on);if(!InteractionFeedback.motion(c))s.jumpDrawablesToCurrentState();});
+    static Switch toggle(LinearLayout p,String title,String subtitle,boolean checked,Consumer<Boolean> change){Context c=p.getContext();RelativeLayout r=new RelativeLayout(c);pad(r,16,12);r.setMinimumHeight(dp(c,64));r.setBackground(touch(c,SOFT,16));
+        InteractionFeedback.Toggle s=new InteractionFeedback.Toggle(c);s.setId(View.generateViewId());s.setContentDescription(title+(subtitle==null?"":". "+subtitle));styleSwitch(c,s,BROWN,0xff414141);s.setChecked(checked);s.setOnCheckedChangeListener((b,on)->{s.userChanged();change.accept(on);if(!InteractionFeedback.motion(c))s.jumpDrawablesToCurrentState();});r.setOnClickListener(v->{if(s.isEnabled())s.performClick();});r.setFocusable(false);r.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
         RelativeLayout.LayoutParams control=new RelativeLayout.LayoutParams(-2,-2);control.addRule(RelativeLayout.ALIGN_PARENT_END);control.addRule(RelativeLayout.CENTER_VERTICAL);
-        LinearLayout copy=col(c);text(copy,title,16,600,INK);if(subtitle!=null){space(copy,5);text(copy,subtitle,12,400,MUTED);}
+        LinearLayout copy=col(c);copy.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);text(copy,title,16,600,INK);if(subtitle!=null){space(copy,5);text(copy,subtitle,14,400,MUTED);}
         // Measure copy between the leading edge and the actual switch, never beneath its touch area.
         RelativeLayout.LayoutParams labels=new RelativeLayout.LayoutParams(-1,-2);labels.addRule(RelativeLayout.ALIGN_PARENT_START);labels.addRule(RelativeLayout.START_OF,s.getId());labels.addRule(RelativeLayout.CENTER_VERTICAL);labels.setMarginEnd(dp(c,12));r.addView(copy,labels);r.addView(s,control);
         p.addView(r,new LinearLayout.LayoutParams(-1,-2));return s;
     }
     /** Generated density raster glyphs; native tint retains themed and selected colors. */
     static class Icon extends View {
-        private final Drawable glyph;
-        Icon(Context c,String name,int color){super(c);glyph=c.getDrawable(Icons.resource(name)).mutate();glyph.setTint(color);setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);}
-        void tint(int color){glyph.setTint(color);invalidate();}
+        private Drawable glyph;private int color;private String name;
+        Icon(Context c,String name,int color){super(c);this.color=color;glyphName(name);setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);}
+        void glyphName(String value){if(value.equals(name))return;name=value;glyph=getContext().getDrawable(Icons.resource(value)).mutate();glyph.setTint(color);invalidate();}
+        void tint(int color){this.color=color;glyph.setTint(color);invalidate();}
         @Override protected void onDraw(Canvas canvas){
             super.onDraw(canvas);int width=getWidth()-getPaddingLeft()-getPaddingRight(),height=getHeight()-getPaddingTop()-getPaddingBottom();int size=Math.min(width,height);if(size<=0)return;
             int left=getPaddingLeft()+(width-size)/2,top=getPaddingTop()+(height-size)/2;glyph.setBounds(left,top,left+size,top+size);glyph.draw(canvas);

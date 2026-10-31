@@ -18,12 +18,12 @@ final class SearchAlarmChooser {
         Design.space(body,16);
         if(loading){Design.text(body,"Opening saved alarms…",14,400,Design.MUTED);return;}
         if(!error.isEmpty()){
-            Design.text(body,error,14,500,0xffa93919);
+            Design.text(body,error,14,500,NightDialTokens.NEGATIVE);
             Design.button(body,"Try again",false,reload);return;
         }
         Design.button(body,"New alarm",false,create);
         Design.text(body,"New alarms use your saved defaults.",12,400,Design.MUTED);
-        if(!defaultsNotice.isEmpty()){Design.space(body,6);Design.text(body,defaultsNotice,12,500,0xffa93919);}
+        if(!defaultsNotice.isEmpty()){Design.space(body,6);Design.text(body,defaultsNotice,12,500,NightDialTokens.NEGATIVE);}
         Design.space(body,20);
         Design.text(body,alarms.isEmpty()?"No saved alarms":"Saved alarms",14,600,Design.INK);
         if(alarms.isEmpty()){Design.space(body,8);Design.text(body,"Create a draft above to set "+feature.title.toLowerCase(java.util.Locale.ROOT)+".",14,400,Design.MUTED);return;}

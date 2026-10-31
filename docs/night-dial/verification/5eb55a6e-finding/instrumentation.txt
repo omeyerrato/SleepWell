@@ -1,0 +1,118 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReviewTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NightDialReviewTest:
+INSTRUMENTATION_STATUS: test=rootsMixerAndOwnedPickerRemainSilentAndCancelable
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReviewTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=rootsMixerAndOwnedPickerRemainSilentAndCancelable
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialInteractionTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NightDialInteractionTest:
+INSTRUMENTATION_STATUS: test=independentDragReviewSaveCancelRecreationAndSilentSettleIn
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialInteractionTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=independentDragReviewSaveCancelRecreationAndSilentSettleIn
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialTrackingReviewTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NightDialTrackingReviewTest:
+INSTRUMENTATION_STATUS: test=measuredGraphPauseRecreationCancelEndAndExplicitSave
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialTrackingReviewTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=measuredGraphPauseRecreationCancelEndAndExplicitSave
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReportFlowTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.NightDialReportFlowTest:
+INSTRUMENTATION_STATUS: test=canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReportFlowTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: No nights in this range
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.NightDialReportFlowTest.text(NightDialReportFlowTest.java:32)
+	at org.sleepwell.app.NightDialReportFlowTest.lambda$canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown$4(NightDialReportFlowTest.java:52)
+	at org.sleepwell.app.NightDialReportFlowTest.$r8$lambda$UXDPu1VcjWfjpaX1z9uR7ELgXdo(Unknown Source:0)
+	at org.sleepwell.app.NightDialReportFlowTest$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.NightDialReportFlowTest.scene(NightDialReportFlowTest.java:31)
+	at org.sleepwell.app.NightDialReportFlowTest.canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown(NightDialReportFlowTest.java:50)
+
+INSTRUMENTATION_STATUS: stream=
+Error in canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown(org.sleepwell.app.NightDialReportFlowTest):
+java.lang.AssertionError: No nights in this range
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.NightDialReportFlowTest.text(NightDialReportFlowTest.java:32)
+	at org.sleepwell.app.NightDialReportFlowTest.lambda$canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown$4(NightDialReportFlowTest.java:52)
+	at org.sleepwell.app.NightDialReportFlowTest.$r8$lambda$UXDPu1VcjWfjpaX1z9uR7ELgXdo(Unknown Source:0)
+	at org.sleepwell.app.NightDialReportFlowTest$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.NightDialReportFlowTest.scene(NightDialReportFlowTest.java:31)
+	at org.sleepwell.app.NightDialReportFlowTest.canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown(NightDialReportFlowTest.java:50)
+
+INSTRUMENTATION_STATUS: test=canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReportFlowTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.NightDialReportFlowTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 127.925
+There was 1 failure:
+1) canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown(org.sleepwell.app.NightDialReportFlowTest)
+java.lang.AssertionError: No nights in this range
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at org.sleepwell.app.NightDialReportFlowTest.text(NightDialReportFlowTest.java:32)
+	at org.sleepwell.app.NightDialReportFlowTest.lambda$canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown$4(NightDialReportFlowTest.java:52)
+	at org.sleepwell.app.NightDialReportFlowTest.$r8$lambda$UXDPu1VcjWfjpaX1z9uR7ELgXdo(Unknown Source:0)
+	at org.sleepwell.app.NightDialReportFlowTest$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at org.sleepwell.app.NightDialReportFlowTest.scene(NightDialReportFlowTest.java:31)
+	at org.sleepwell.app.NightDialReportFlowTest.canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown(NightDialReportFlowTest.java:50)
+
+FAILURES!!!
+Tests run: 5,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

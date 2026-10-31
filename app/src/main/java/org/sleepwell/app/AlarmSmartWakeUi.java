@@ -77,7 +77,7 @@ final class AlarmSmartWakeUi {
         slider.setProgress(Math.max(0,selected));
         slider.setEnabled(selected>=0);
         if(selected<0&&alarm.smartWindow>0)slider.setVisibility(View.GONE);
-        AlarmSliders.style(slider,0xffe6d4c5,Design.BROWN,Design.BROWN,Design.BROWN);
+        AlarmSliders.style(slider,NightDialTokens.RULE,Design.BROWN,Design.BROWN,Design.BROWN);
         slider.setContentDescription("Smart wake-up window length");
         body.addView(slider,new LinearLayout.LayoutParams(-1,Design.dp(activity,48)));
         LinearLayout ticks=Design.row(activity);
