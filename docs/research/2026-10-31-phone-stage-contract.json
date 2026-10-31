@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "reviewed": "2026-10-31",
+  "feature": "F049",
+  "status": "missing; no demonstrated decoder fix",
+  "scope": "Source-contract audit only, not a model replay or clinical/independent accuracy evaluation",
+  "sleepwell_revision": "05f005a1eb3d339d46b74d7bd4b3e6323bf78807",
+  "upstream": {
+    "repository": "https://github.com/devangk003/Nidra",
+    "revision": "2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7",
+    "licence": "Apache-2.0 with NOTICE; re-fetched exact sources, no algorithm or weights redistributed",
+    "files": [
+      {
+        "path": "scripts/PreStep_edf_to_wav.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/PreStep_edf_to_wav.py",
+        "bytes": 2438,
+        "sha256": "96402e1e1d1f0646da0594a2051c3e9f29ae66d1071befcb40ab58adb81caa4d"
+      },
+      {
+        "path": "scripts/Step1_convert_audio_to_mel_and_label.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/Step1_convert_audio_to_mel_and_label.py",
+        "bytes": 6937,
+        "sha256": "933125b0fe752cc8e4c1ade30737add3c410e468850a73512954fa9409706900"
+      },
+      {
+        "path": "scripts/Step2_train_modelCNN_BiLSTM.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/Step2_train_modelCNN_BiLSTM.py",
+        "bytes": 40253,
+        "sha256": "2492fcbfbbe956ec798c36e5e1d1d65fb4d00e1636cc27e1b2bccc5666f9e781"
+      },
+      {
+        "path": "scripts/Step3_Use_Model.py",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/scripts/Step3_Use_Model.py",
+        "bytes": 9018,
+        "sha256": "eace75497016a3cd22da29698b6ff5113fd06f2d9a4108dafe88e06da5e51344"
+      },
+      {
+        "path": "LICENSE.txt",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/LICENSE.txt",
+        "bytes": 11388,
+        "sha256": "48f8376bb077dc54b754aef5ded737c42332ddab417a49437b30a93a658485bb"
+      },
+      {
+        "path": "NOTICE.md",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/NOTICE.md",
+        "bytes": 708,
+        "sha256": "ea62461efe110e85ee0c9d10dd13e646c518623b72a791b5a33bb9385d2ec894"
+      },
+      {
+        "path": "models/temporal/model_config.json",
+        "url": "https://raw.githubusercontent.com/devangk003/Nidra/2c4f17077f5e2a9c9f3cb1a0f50b3952f57253c7/models/temporal/model_config.json",
+        "bytes": 88,
+        "sha256": "beb9140a7364e8509f67ebc51567e9b80c99d62d3c5dba6a2e89f03f06325fa7"
+      }
+    ],
+    "checkpoint": {
+      "path": "final_model_weights.h5",
+      "sha256": "affbc5445f40d31c2109a4118f34f7fee177a4249bf403da0de10d8dfe2be873",
+      "identity_source": "Prior pinned manifest docs/verification/2026-10-26-stage-feasibility/manifest.json; not re-downloaded or re-hashed in this audit"
+    }
+  },
+  "findings": [
+    {
+      "id": "upstream_example_temporal_mismatch",
+      "source_lines": {
+        "scripts/Step1_convert_audio_to_mel_and_label.py": [
+          50,
+          68
+        ],
+        "scripts/Step2_train_modelCNN_BiLSTM.py": [
+          280,
+          305,
+          490,
+          524
+        ],
+        "scripts/Step3_Use_Model.py": [
+          154,
+          164
+        ]
+      },
+      "producer_shape": [
+        "slice",
+        224,
+        224,
+        3
+      ],
+      "temporal_input_shape": [
+        "batch",
+        7,
+        224,
+        224,
+        3
+      ],
+      "producer_rank": 4,
+      "temporal_input_rank": 5,
+      "missing_operations": [
+        "Seven consecutive slices per context",
+        "Per-slice min-max normalization with 1e-8 denominator"
+      ],
+      "evidence_kind": "Source deduction, not an executed error",
+      "prior_replay_already_applied_missing_operations": true,
+      "demonstrated_fix_for_all_light": false
+    },
+    {
+      "id": "persisted_input_not_a_staging_record",
+      "capture_modality": "Actual transient mono PCM16 at 16000 Hz is available in NoiseRecorder; ambient audio is plausible in principle",
+      "required_nominal_context_seconds": 50.176,
+      "required_slice_advance_seconds": 7.168,
+      "motion_clip_target_samples": 160000,
+      "motion_maximum_read_samples": 1024,
+      "motion_maximum_clip_seconds_exclusive": 10.064,
+      "contactless_clip_samples": 160000,
+      "clip_budget_maximum": 60,
+      "minimum_wait_after_saved_clip_ms": 30000,
+      "stored_epoch_fields": [
+        "movement",
+        "noise",
+        "light",
+        "samples",
+        "start",
+        "time"
+      ],
+      "global_reference": "Whole-record Mel maximum determines 80-dB clipping before slicing; local excerpts cannot assert identical clipping",
+      "consequence": "Saved sparse clips and scalar summaries cannot reconstruct this checkpoint input or its time axis",
+      "future_transient_capture_possible": true
+    }
+  ],
+  "local_source_evidence": [
+    {
+      "path": "app/src/main/java/org/sleepwell/app/NoiseRecorder.java",
+      "git_blob": "376b743c3827daccaa55852c02ab7dac40471502",
+      "worktree_sha256": "5bad0264261c9bea10007d0f1c82ab56a630ed14734329aaef54e6ed248411b6"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ClipBudget.java",
+      "git_blob": "04f8db5915c95fdc536b95745972fa57e09351e6",
+      "worktree_sha256": "82cbbfc079539608571b6cc9009ec964fddb9e32b4adb4fc34f6d07920d83663"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SignalWindow.java",
+      "git_blob": "44d85252250622dab7bacbec4f1c835b14a01b64",
+      "worktree_sha256": "01ce06ba56cf2e9f30f61df64e0a712466546e423f516c4dbe2cfcb39e2be007"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob": "5b13cd79fb1b50ca04da7ef0cecc331e675435df",
+      "worktree_sha256": "6d31a8b7f61a76ba526044cebbc21fbc35109ac21209055e71f1a2494d49bc29"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingService.java",
+      "git_blob": "b8a6c8399a5944e98de5f18096aa10943d97d451",
+      "worktree_sha256": "4edb35f6143e33cf17c98f31c40155910f0b00836095a071f272e390f1df490a"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SoundAnalysisStream.java",
+      "git_blob": "55c84086cb7a956882ce3310b5c784b999b12753",
+      "worktree_sha256": "d3d4f9d9b54f6c0f78b4fc8c50a728251ea3a37b640d9a7d1c666bc2f93ee8ba"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarSoundPipeline.java",
+      "git_blob": "70b669f2fe0ada4dc480f57fe6d94e783621cd6c",
+      "worktree_sha256": "8f76db997626402cf2db12185320f06d37380ad8009c048216b7a35d31f8617e"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarSoundClips.java",
+      "git_blob": "8953cd15c8131a3060df6becb62de644022b336c",
+      "worktree_sha256": "ab9a5b2d74712a95c39b2b659385407b66f09294435d075d342ead1e609839c0"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/SonarClipPolicy.java",
+      "git_blob": "d4d36b02fe0a431eb720337cda38105589eeea34",
+      "worktree_sha256": "bf7f6789fe7936d46d6de2e0b408ff4712c296b384d5e7022e161025380be804"
+    }
+  ],
+  "decision": {
+    "adapter_integrated": false,
+    "reason": "Upstream temporal formatting issue was already corrected in the rejected replay; no new evidence establishes useful stage behavior, and persisted native input lacks the required context",
+    "minimal_candidate_prerequisite": "Reproducible pinned-graph/weight reference inference with complete original-record clipping context and correct center-slice timing, meaningful ambient-input behavior, raw probabilities, hashes and licensed annotation provenance",
+    "subsequent_capture_prerequisite": "New explicit opt-in continuous actual PCM or sufficient unclipped Mel-feature preservation with sample timing and gaps; preserve existing raw records",
+    "alternative": "Redistributable trained ambient-phone checkpoint with a complete working preprocessing/decoder contract, or licensed synchronized ambient signals and expert stage labels for original training",
+    "clinical_certification_required": false,
+    "absence_of_all_suitable_models_claimed": false
+  },
+  "actions": {
+    "primary_source_texts_downloaded": true,
+    "weights_downloaded": false,
+    "datasets_or_recordings_downloaded": false,
+    "model_inference_run": false,
+    "runtime_probe_run": false,
+    "tests_or_builds_run": false,
+    "phone_or_adb_used": false,
+    "sensors_mic_speaker_or_alarms_used": false,
+    "raw_records_modified": false,
+    "global_checklists_modified": false
+  }
+}
