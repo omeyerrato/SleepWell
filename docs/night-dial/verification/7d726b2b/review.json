@@ -1,0 +1,8 @@
+{
+  "commit": "7d726b2b3d12d7a3c9c8eeb11700a3610a5927d1",
+  "scope": "roots, picker validation, real dial gestures/save/cancel/conflict/recreation, silent Settle in and consent cancel; synthetic PCM tracking, pause/recreate/resume/end",
+  "full_acceptance": false,
+  "passed": true,
+  "missing_frames": [],
+  "output": "No hardware capture, playback or OS alarms; tracking uses injected PCM; host audio disabled"
+}

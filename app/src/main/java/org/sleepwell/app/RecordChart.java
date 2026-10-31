@@ -13,6 +13,8 @@ class RecordChart extends View {
     private final java.time.ZoneId zone;private final String metric;private final long start;private long end;private final boolean night;private final android.text.TextPaint paint=new android.text.TextPaint(3);
     private List<ChartSeries.Bar> bars=Collections.emptyList();private int selected=-1;private Long inspectedAt;private double high=.001;private String measurementLabel;private int actualReadings;private final Path column=new Path();
     private boolean compactLabels;
+    private float touchX,touchY;private boolean scrubbing;private Long previousInspection;
+    private void inspect(float x){float ratio=Math.max(0,Math.min(1,(x-plotLeft())/Math.max(1,plotRight()-plotLeft())));inspectedAt=start+(long)((end-start)*ratio);selectInspectedTime();describeSelection();invalidate();}
     private Runnable liveReload,liveRetry;private String liveMessage;private PhoneMotionChartReader.Data liveData;
     RecordChart(Context c,List<JSONObject> epochs,String metric,long start,long end){
         this(c,epochs,metric,start,end,false);
@@ -34,20 +36,21 @@ class RecordChart extends View {
     int liveColumns(){return Math.max(1,Math.min(500,(int)((plotRight()-plotLeft())/(6*density()))));}
     PhoneMotionChartReader.Data renderedLiveData(){return liveData;}
     Long inspectedTime(){return inspectedAt;}
+    void restoreInspection(long time){inspectedAt=Math.max(start,Math.min(end,time));selectInspectedTime();describeSelection();invalidate();}
     boolean startsAt(long time){return start==time;}
     void liveData(PhoneMotionChartReader.Data data){if(data.start!=start)return;liveData=data;liveMessage=null;liveRetry=null;end=data.end;bars=data.bars;high=data.high;actualReadings=data.readings;describeSeries();selectInspectedTime();if(inspectedAt!=null)describeSelection();invalidate();}
     void liveMessage(String message,Runnable retry){liveData=null;liveMessage=message;liveRetry=retry;bars=Collections.emptyList();selected=-1;setContentDescription(message);invalidate();}
     RecordChart measurement(String label){measurementLabel=label;describeSeries();return this;}
     RecordChart compactLabels(){compactLabels=true;return this;}
     private String metricName(){return measurementLabel==null?metric:measurementLabel;}
-    private void describeSeries(){setContentDescription(metricName()+" chart. "+actualReadings+" actual readings. Missing intervals are blank. Dense bars average contiguous readings. Tap a time or use the forward and backward actions to inspect a value.");}
+    private void describeSeries(){setContentDescription(metricName()+" chart. "+label(start)+" to "+label(end)+". "+actualReadings+" actual readings. Missing intervals are blank. Dense bars average contiguous readings. Tap a time or use the forward and backward actions to inspect a value.");}
     static String clock(long time){return java.time.Instant.ofEpochMilli(time).atZone(java.time.ZoneId.systemDefault()).format(java.time.format.DateTimeFormatter.ofPattern("h:mm a",Locale.getDefault()));}
     private boolean clock24(){return android.text.format.DateFormat.is24HourFormat(getContext());}
     private String label(long time){return ChartTicks.tooltip(time,start,end,zone,clock24(),Locale.getDefault());}
     private String axisTime(long time){return ChartTicks.tooltip(time,start,end,zone,clock24(),Locale.getDefault());}
     private float density(){return getResources().getDisplayMetrics().density;}
     private float textSize(){return Design.sp(getContext(),10*Appearance.scale(getContext()));}
-    private int ink(){return night?Design.LILAC:Appearance.color(getContext(),Design.MUTED);}
+    private int ink(){return NightDialTokens.SECONDARY;}
     private float plotLeft(){return Math.max(28*density(),textSize()*2.8f);}
     private float plotRight(){return getWidth()-8*density();}
     private float x(long time){return plotLeft()+(plotRight()-plotLeft())*(time-start)/(end-start);}
@@ -64,12 +67,11 @@ class RecordChart extends View {
         List<ChartTicks.Tick> candidates=ChartTicks.candidates(start,end,zone,clock24(),Locale.getDefault(),5);List<ChartTicks.Placed> ticks=ChartTicks.layout(candidates,start,end,left,right,8*d,paint::measureText);int lines=1;for(ChartTicks.Placed tick:ticks)lines=Math.max(lines,tick.tick.label.split("\n").length);
         Paint.FontMetrics font=paint.getFontMetrics();float lineHeight=font.descent-font.ascent+2*d,capsule=compactLabels?Math.max(24*d,lineHeight+8*d):Math.max(36*d,2*lineHeight+8*d),top=capsule+4*d,bottom=h-Math.max(28*d,lineHeight*lines+10*d);
         paint.setColor(ink());canvas.drawText("High",0,top+5*d,paint);canvas.drawText("Low",0,bottom,paint);
-        paint.setColor(night?0xff62566d:Appearance.contrast(getContext())?0xffa29185:0xffeee6dc);paint.setStrokeWidth(d*.7f);canvas.drawLine(left,bottom,right,bottom,paint);for(ChartTicks.Placed tick:ticks)if(tick.tick.endpoint==0){float grid=x(tick.tick.time);canvas.drawLine(grid,top,grid,bottom,paint);}
+        paint.setColor(NightDialTokens.RULE);paint.setStrokeWidth(d*.7f);canvas.drawLine(left,bottom,right,bottom,paint);for(ChartTicks.Placed tick:ticks)if(tick.tick.endpoint==0){float grid=x(tick.tick.time);canvas.drawLine(grid,top,grid,bottom,paint);}
         for(int n=0;n<bars.size();n++){
             ChartSeries.Bar bar=bars.get(n);float center=x(bar.from+(bar.to-bar.from)/2),width=Math.max(d,Math.min(14*d,(x(bar.to)-x(bar.from))*.8f));center=Math.min(right-width/2,Math.max(left+width/2,center));
             float y=(float)(bottom-(bottom-top)*(bar.value/high));y=Math.min(y,bottom-2*d); // Divide before multiplying: even a finite extreme reading must stay drawable.
-            int color=n==selected?0xffaa7352:Appearance.contrast(getContext())?(night?Design.LILAC:0xff6b3dc4):Design.VIOLET;
-            if(!Appearance.contrast(getContext()))paint.setShader(new LinearGradient(0,y,0,bottom,color,n==selected?0xffd3ad94:0xffd6c2fa,Shader.TileMode.CLAMP));else paint.setColor(n==selected?Design.BROWN:color);
+            paint.setColor(n==selected?NightDialTokens.TEXT:night?0xffc5a367:NightDialTokens.ACCENT);
             column.reset();column.addRoundRect(new RectF(center-width/2,y,center+width/2,bottom),new float[]{3*d,3*d,3*d,3*d,0,0,0,0},Path.Direction.CW);canvas.drawPath(column,paint);paint.setShader(null);
         }
         if(inspectedAt!=null&&liveMessage==null){
@@ -81,15 +83,18 @@ class RecordChart extends View {
             float half=Math.min((labelRight-labelLeft)/2,(compactLabels?paint.measureText(timeLabel):Math.max(paint.measureText(timeLabel),paint.measureText(value)))/2+10*d),tx=Math.max(labelLeft+half,Math.min(labelRight-half,center));
             paint.setColor(Design.BROWN);paint.setStrokeWidth(d*.7f);
             if(selected>=0){ChartSeries.Bar bar=bars.get(selected);float point=x(bar.from+(bar.to-bar.from)/2),y=(float)(bottom-(bottom-top)*(bar.value/high));y=Math.min(y,bottom-2*d);canvas.drawLine(point,capsule,point,y,paint);canvas.drawCircle(point,y,3*d,paint);}
-            canvas.drawRoundRect(tx-half,0,tx+half,capsule,8*d,8*d,paint);paint.setTextAlign(Paint.Align.CENTER);paint.setColor(Design.CREAM);float first=compactLabels?capsule/2-(font.ascent+font.descent)/2:(capsule-2*lineHeight)/2-font.ascent;canvas.drawText(timeLabel,tx,first,paint);if(!compactLabels)canvas.drawText(value,tx,first+lineHeight,paint);else{paint.setColor(Design.BROWN);paint.setTextAlign(valueOnLeft?Paint.Align.LEFT:Paint.Align.RIGHT);canvas.drawText(value,valueOnLeft?0:w,first,paint);}
+            canvas.drawRoundRect(tx-half,0,tx+half,capsule,8*d,8*d,paint);paint.setTextAlign(Paint.Align.CENTER);paint.setColor(NightDialTokens.ACTION_INK);float first=compactLabels?capsule/2-(font.ascent+font.descent)/2:(capsule-2*lineHeight)/2-font.ascent;canvas.drawText(timeLabel,tx,first,paint);if(!compactLabels)canvas.drawText(value,tx,first+lineHeight,paint);else{paint.setColor(Design.BROWN);paint.setTextAlign(valueOnLeft?Paint.Align.LEFT:Paint.Align.RIGHT);canvas.drawText(value,valueOnLeft?0:w,first,paint);}
         }
         if(bars.isEmpty()){paint.setColor(ink());paint.setTextAlign(Paint.Align.CENTER);if(liveMessage==null)canvas.drawText("No readings for this signal",w/2,(top+bottom)/2,paint);else{String[] words=liveMessage.split(" ");String line="";List<String> linesText=new ArrayList<>();for(String word:words){String next=line.isEmpty()?word:line+" "+word;if(!line.isEmpty()&&paint.measureText(next)>Math.max(1,right-left)){linesText.add(line);line=word;}else line=next;}if(!line.isEmpty())linesText.add(line);for(int n=0;n<linesText.size();n++)canvas.drawText(linesText.get(n),(left+right)/2,(top+bottom)/2+(n-(linesText.size()-1)/2f)*lineHeight,paint);}}
         paint.setColor(ink());paint.setTextAlign(Paint.Align.CENTER);for(ChartTicks.Placed tick:ticks){String[] labels=tick.tick.label.split("\n");for(int n=0;n<labels.length;n++)canvas.drawText(labels[n],(float)tick.center,h-7*d-(labels.length-1-n)*lineHeight,paint);}
-        if(hasFocus()){paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(1.5f*d);paint.setColor(night?Design.LILAC:0xff8952e4);canvas.drawRoundRect(left-2*d,top-2*d,right+2*d,bottom+2*d,5*d,5*d,paint);paint.setStyle(Paint.Style.FILL);}
+        if(hasFocus()){paint.setStyle(Paint.Style.STROKE);paint.setStrokeWidth(1.5f*d);paint.setColor(NightDialTokens.OUTLINE);canvas.drawRoundRect(left-2*d,top-2*d,right+2*d,bottom+2*d,5*d,5*d,paint);paint.setStyle(Paint.Style.FILL);}
     }
     @Override public boolean onTouchEvent(MotionEvent event){
         if(liveMessage!=null){if(event.getAction()==MotionEvent.ACTION_UP)performClick();return true;}
-        if(event.getAction()==MotionEvent.ACTION_UP){float ratio=Math.max(0,Math.min(1,(event.getX()-plotLeft())/Math.max(1,plotRight()-plotLeft())));inspectedAt=start+(long)((end-start)*ratio);selectInspectedTime();InteractionFeedback.selection(this);performClick();invalidate();return true;}return true;
+        if(event.getActionMasked()==MotionEvent.ACTION_DOWN){touchX=event.getX();touchY=event.getY();scrubbing=false;previousInspection=inspectedAt;return true;}
+        if(event.getActionMasked()==MotionEvent.ACTION_MOVE){float dx=Math.abs(event.getX()-touchX),dy=Math.abs(event.getY()-touchY);if(!scrubbing&&dx>android.view.ViewConfiguration.get(getContext()).getScaledTouchSlop()&&dx>dy){scrubbing=true;if(getParent()!=null)getParent().requestDisallowInterceptTouchEvent(true);}if(scrubbing){int before=selected;inspect(event.getX());if(before!=selected)InteractionFeedback.tick(this);}return true;}
+        if(event.getActionMasked()==MotionEvent.ACTION_CANCEL){inspectedAt=previousInspection;selectInspectedTime();if(inspectedAt==null)describeSeries();else describeSelection();scrubbing=false;if(getParent()!=null)getParent().requestDisallowInterceptTouchEvent(false);invalidate();return true;}
+        if(event.getActionMasked()==MotionEvent.ACTION_UP){inspect(event.getX());if(!scrubbing)InteractionFeedback.selection(this);scrubbing=false;if(getParent()!=null)getParent().requestDisallowInterceptTouchEvent(false);performClick();return true;}return true;
     }
     private void describeSelection(){if(inspectedAt==null)return;if(selected<0){setContentDescription(metricName()+" at "+label(inspectedAt)+": no readings for this interval.");return;}ChartSeries.Bar bar=bars.get(selected);setContentDescription(metricName()+" at "+label(bar.to)+": "+valueLabel(bar)+(bar.readings>1?" average of "+bar.readings+" readings from "+label(bar.from):" measured reading"));}
     @Override public boolean performClick(){super.performClick();if(liveMessage!=null){if(liveRetry!=null)liveRetry.run();return true;}if(inspectedAt==null&&!bars.isEmpty()){selected=0;inspectedAt=bars.get(0).from+(bars.get(0).to-bars.get(0).from)/2;}describeSelection();return true;}

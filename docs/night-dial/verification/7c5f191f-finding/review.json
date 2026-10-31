@@ -1,0 +1,23 @@
+{
+  "commit": "7c5f191fb7ab79c904fd90c23a867d9001797f4d",
+  "scope": "roots, picker validation, real dial gestures/save/cancel/conflict/recreation, silent Settle in and consent cancel; synthetic PCM tracking, pause/recreate/resume/end; recorded-night navigation, signal scrub/recreation, source filters, dirty/restore drafts and canonical week/month/year durations; alarm names/repeat/dirty gate recreation, routine search/config/order, requested output curve and snooze policy drafts with explicit save",
+  "unit_results": {
+    "tests": 80,
+    "failures": 0,
+    "errors": 0
+  },
+  "full_acceptance": false,
+  "passed": false,
+  "missing_frames": [
+    "alarm-name-draft",
+    "alarm-name-restored",
+    "alarm-repeat-invalid",
+    "alarm-repeat-restored",
+    "alarm-repeat-interval",
+    "alarm-repeat-parent",
+    "alarm-discard",
+    "alarm-discard-restored",
+    "alarm-saved"
+  ],
+  "output": "No hardware capture, playback or OS alarms; tracking uses injected PCM; host audio disabled"
+}

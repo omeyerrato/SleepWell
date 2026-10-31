@@ -62,7 +62,7 @@ public final class AutomaticTrackingActivity extends Activity {
         if(!page.equals("home"))TrackingOptionsUi.context(body,"Automatic tracking");
         switch(page){case "conditions"->conditionsPage();case "sounds"->soundsPage();case "detection"->detectionPage();case "options"->optionsPage();case "source"->sourcePage();case "access"->accessPage();default->home();}
         LinearLayout footer=RecordUi.footer(body);
-        error=Design.text(footer,errorCopy.isEmpty()?conditionsError:errorCopy,13,500,0xffa93919);error.setVisibility(error.getText().length()==0?View.GONE:View.VISIBLE);
+        error=Design.text(footer,errorCopy.isEmpty()?conditionsError:errorCopy,13,500,NightDialTokens.NEGATIVE);error.setVisibility(error.getText().length()==0?View.GONE:View.VISIBLE);
         if(permissionRecovery!=0&&permissionMissing(permissionRecovery))Design.button(footer,"Open app settings",false,this::openPermissionSettings);
         if(page.equals("home")){
             Design.text(footer,runtimePhase.equals("ARMED")?"Tonight is already armed. Save applies next time.":!runtimePhase.isEmpty()?"Manage your current session in Tracking.":"Save for later, or arm these settings for tonight.",12,400,Design.MUTED);

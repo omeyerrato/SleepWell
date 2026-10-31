@@ -45,7 +45,7 @@ final class EchoRhythmChart extends View {
             EchoRhythm.Minute minute=minutes.get(n);Double value=value(minute);if(value==null)continue;readings++;
             float y=(float)(bottom-(bottom-top)*(value-minimum)/(maximum-minimum));
             float a=x(minute.start),b=x(minute.end),width=Math.max(dp(.6f),Math.min(dp(12),(b-a)*.72f)),center=(a+b)/2;
-            paint.setColor(n==selected?Design.BROWN:Appearance.contrast(getContext())?0xff6b3dc4:Design.VIOLET);
+            paint.setColor(n==selected?Design.BROWN:Appearance.contrast(getContext())?NightDialTokens.ACCENT:Design.VIOLET);
             float y1=Math.min(y,zero),y2=Math.max(y,zero);
             if(changes&&value==0)canvas.drawCircle(center,zero,dp(1.3f),paint);
             else{if(y2-y1<dp(2))y1=y2-dp(2);canvas.drawRoundRect(center-width/2,y1,center+width/2,y2,dp(2),dp(2),paint);}

@@ -35,7 +35,7 @@ final class PrivacyStorageSummary implements View.OnAttachStateChangeListener {
         card.setContentDescription("Local storage summary");
         LinearLayout heading=Design.row(context);
         Design.Icon glyph=new Design.Icon(context,"report",Design.BROWN);glyph.setPadding(Design.dp(context,8),Design.dp(context,8),Design.dp(context,8),Design.dp(context,8));
-        glyph.setBackground(Design.shape(context,0xffeee0d3,12));
+        glyph.setBackground(Design.shape(context,NightDialTokens.RULE,12));
         LinearLayout.LayoutParams icon=new LinearLayout.LayoutParams(Design.dp(context,40),Design.dp(context,40));icon.rightMargin=Design.dp(context,14);heading.addView(glyph,icon);
         LinearLayout copy=Design.col(context);Design.text(copy,"On this phone",19,600,Design.INK);Design.space(copy,3);Design.text(copy,"Stored locally on your phone.",12,400,Design.MUTED);heading.addView(copy,new LinearLayout.LayoutParams(0,-2,1));
         retry=Design.iconButton(context,"undo","Retry storage summary",this::load);retry.setVisibility(View.GONE);heading.addView(retry,new LinearLayout.LayoutParams(Design.dp(context,48),Design.dp(context,48)));card.addView(heading);

@@ -82,8 +82,8 @@ final class MorningTagSetup {
         Button read=action(panel,availability==Availability.OFF?"Open NFC settings":"Read tag",false,generation,availability==Availability.OFF?this::settings:this::read);
         read.setContentDescription(availability==Availability.OFF?"Open NFC settings":"Read bedside NFC tag");read.setEnabled(availability!=Availability.UNSUPPORTED);read.setAlpha(read.isEnabled()?1:.45f);
         body.addView(panel,new LinearLayout.LayoutParams(-1,-2));Design.space(body,12);
-        if(!captured.isEmpty()||success){TextView status=Design.text(body,!captured.isEmpty()?"Tag captured · not saved yet":"Tag saved for NFC alarms",14,600,0xff154b19);Design.pad(status,12,10);status.setBackground(Design.shape(owner,0xffe3efd4,12));status.setContentDescription("NFC tag draft status");}
-        if(!error.isEmpty()){TextView problem=Design.text(footer,error,13,500,0xffa93919);problem.setContentDescription("NFC setup error");problem.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);}
+        if(!captured.isEmpty()||success){TextView status=Design.text(body,!captured.isEmpty()?"Tag captured · not saved yet":"Tag saved for NFC alarms",14,600,NightDialTokens.POSITIVE);Design.pad(status,12,10);status.setBackground(Design.shape(owner,NightDialTokens.POSITIVE_SURFACE,12));status.setContentDescription("NFC tag draft status");}
+        if(!error.isEmpty()){TextView problem=Design.text(footer,error,13,500,NightDialTokens.NEGATIVE);problem.setContentDescription("NFC setup error");problem.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);}
         Button save=action(footer,"Save bedside tag",true,generation,this::commit);save.setEnabled(valid(captured));save.setAlpha(save.isEnabled()?1:.45f);
         if(exitLabel.equals("Done"))action(footer,exitLabel,false,generation,exit);
     }

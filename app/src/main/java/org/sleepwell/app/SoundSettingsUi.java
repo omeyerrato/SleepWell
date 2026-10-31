@@ -43,7 +43,7 @@ final class SoundSettingsUi {
         body.addView(row, new LinearLayout.LayoutParams(-1, -2)); return row;
     }
     static TextView status(LinearLayout body, String message, boolean error) {
-        TextView text = Design.text(body, message, 13, 500, error ? 0xffa93919 : Design.BROWN);
+        TextView text = Design.text(body, message, 13, 500, error ? NightDialTokens.NEGATIVE : Design.BROWN);
         text.setVisibility(message.isEmpty() ? View.GONE : View.VISIBLE);
         text.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE); return text;
     }

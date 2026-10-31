@@ -13,7 +13,7 @@ final class HistoryEraseUi {
         private final Runnable stopPreview,refresh;private final Handler handler=new Handler(Looper.getMainLooper());
         private boolean confirming,attached;private Dialog dialog;
         Binding(LinearLayout body,Runnable stopPreview,Runnable refresh){this.body=body;this.stopPreview=stopPreview;this.refresh=refresh;factory=Records.factory;
-            row=PlanActivity.detail(body,"trash","Delete sleep history","Permanently removes records, notes and audio.",null,this::confirm);((Design.Icon)row.getChildAt(0)).tint(0xffd22b20);LinearLayout copy=(LinearLayout)row.getChildAt(1);((TextView)copy.getChildAt(0)).setTextColor(0xffd22b20);row.setContentDescription("Delete sleep history");
+            row=PlanActivity.detail(body,"trash","Delete sleep history","Permanently removes records, notes and audio.",null,this::confirm);((Design.Icon)row.getChildAt(0)).tint(NightDialTokens.NEGATIVE);LinearLayout copy=(LinearLayout)row.getChildAt(1);((TextView)copy.getChildAt(0)).setTextColor(NightDialTokens.NEGATIVE);row.setContentDescription("Delete sleep history");
             status=Design.text(body,"",12,400,Design.MUTED);status.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);status.setVisibility(View.GONE);row.addOnAttachStateChangeListener(this);if(row.isAttachedToWindow())onViewAttachedToWindow(row);
         }
         @Override public void onViewAttachedToWindow(View view){if(attached)return;attached=true;HistoryErase.inspect(body.getContext(),factory);run();}

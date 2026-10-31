@@ -1,0 +1,15 @@
+package org.sleepwell.app;
+
+import android.content.Context;
+import android.graphics.*;
+import android.view.View;
+import java.util.*;
+
+/** First configured snoozes, derived from the existing policy and total budget. No occurrence is created. */
+@android.annotation.SuppressLint("ViewConstructor")
+final class AlarmSnoozePreview extends View {
+    private final List<Integer> minutes=new ArrayList<>();private final boolean choose,off;private final int count;private final String caption;private final Paint paint=new Paint(Paint.ANTI_ALIAS_FLAG);
+    AlarmSnoozePreview(Context context,Alarm alarm){super(context);choose=alarm.inputs.chooseSnooze;count=Math.max(0,alarm.snoozeLimit);off=count==0;long remaining=alarm.snoozeTotalMinutes==0?Long.MAX_VALUE:alarm.snoozeTotalMinutes*60000L;for(int n=0;n<Math.min(3,count);n++){int value=SnoozePolicy.minutes(alarm.snoozeMinutes,alarm.shortenSnoozes,n,remaining);if(value<=0)break;minutes.add(value);if(remaining!=Long.MAX_VALUE)remaining-=value*60000L;}caption=off?"No snooze action":choose?"Maximum delays · choose each time":"First configured snoozes";setFocusable(true);StringBuilder spoken=new StringBuilder(caption);for(int n=0;n<minutes.size();n++)spoken.append(". Snooze ").append(n+1).append(": ").append(minutes.get(n)).append(" minutes");spoken.append(". Maximum ").append(count).append(" snoozes. ").append(alarm.snoozeTotalMinutes==0?"No total time cap.":alarm.snoozeTotalMinutes+" minute total cap.");setContentDescription(spoken);}
+    @Override protected void onMeasure(int widthSpec,int heightSpec){setMeasuredDimension(resolveSize(Design.dp(getContext(),340),widthSpec),resolveSize(Design.dp(getContext(),off?68:144*Math.max(1,Design.fontScale(getContext()))),heightSpec));}
+    @Override protected void onDraw(Canvas canvas){super.onDraw(canvas);float d=getResources().getDisplayMetrics().density,pad=14*d;paint.setColor(NightDialTokens.SURFACE);canvas.drawRoundRect(0,8*d,getWidth(),getHeight()-4*d,16*d,16*d,paint);paint.setTypeface(Design.font(getContext(),400));paint.setTextSize(Design.sp(getContext(),11*Appearance.scale(getContext())));paint.setColor(NightDialTokens.SECONDARY);paint.setTextAlign(Paint.Align.LEFT);Paint.FontMetrics fm=paint.getFontMetrics();float line=fm.descent-fm.ascent;String title=caption;while(paint.measureText(title)>getWidth()-pad*2&&title.length()>1)title=title.substring(0,title.length()-1);canvas.drawText(title,pad,20*d-fm.ascent,paint);if(off)return;float y=28*d+line,max=minutes.stream().mapToInt(Integer::intValue).max().orElse(1),labelWidth=paint.measureText("1 · 60 min")+12*d,left=pad+labelWidth,right=getWidth()-pad;for(int n=0;n<minutes.size();n++){int value=minutes.get(n);float baseline=y-fm.ascent;paint.setColor(NightDialTokens.TEXT);canvas.drawText((n+1)+" · "+value+" min",pad,baseline,paint);float middle=y+line/2;paint.setColor(NightDialTokens.RULE);canvas.drawRoundRect(left,middle-4*d,right,middle+4*d,4*d,4*d,paint);paint.setColor(n==0?NightDialTokens.ACCENT:NightDialTokens.SECONDARY);canvas.drawRoundRect(left,middle-4*d,left+(right-left)*value/max,middle+4*d,4*d,4*d,paint);y+=line+10*d;}}
+}

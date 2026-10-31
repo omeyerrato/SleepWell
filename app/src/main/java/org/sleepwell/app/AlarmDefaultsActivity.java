@@ -45,7 +45,7 @@ public final class AlarmDefaultsActivity extends Activity implements AlarmDefaul
         LinearLayout footer=RecordUi.footer(body);
         String message=!editError.isEmpty()?editError:job!=null&&!job.error.isEmpty()?job.error:job!=null&&job.saved?(job.reset?"Factory defaults restored.":"Saved for new alarms."):!readError.isEmpty()?readError:draftChanged?"Review these changes, then save them for future alarms.":"";
         boolean problem=!editError.isEmpty()||job!=null&&!job.error.isEmpty()||!readError.isEmpty();
-        TextView status=Design.text(footer,message,13,500,problem?0xffa93919:Design.BROWN);status.setContentDescription("Alarm defaults status");status.setVisibility(message.isEmpty()?View.GONE:View.VISIBLE);status.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
+        TextView status=Design.text(footer,message,13,500,problem?NightDialTokens.NEGATIVE:Design.BROWN);status.setContentDescription("Alarm defaults status");status.setVisibility(message.isEmpty()?View.GONE:View.VISIBLE);status.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
         View save=Design.button(footer,busy?"Saving…":"Save new alarm defaults",true,()->{editError="";job.start(selected);});RecordUi.enabled(save,!busy&&job!=null);
     }
     private void editDefaults(){
