@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "base_commit": "66c9fd4a",
+  "branch": "codex/night-dial-plan-flows-20261101",
+  "source_commits": [
+    {
+      "commit": "b4b17275c42f63c117ed6cd36138b1d8e082c1da",
+      "integrated_as": "9b728f33",
+      "scope": "Local plan/goal/nap/travel dirty exits and nap schedule date retention"
+    },
+    {
+      "commit": "8be9e7d232b644aff435df45e77c81d9012c8775",
+      "integrated_as": "0ea60d9b",
+      "scope": "Milestone contribution review from actual eligible saved evidence"
+    }
+  ],
+  "native_status": "not_run_pending_integration",
+  "verification_commit": null,
+  "native_review_run": null,
+  "units": "not_run",
+  "emulator": "disposable API36 only; host audio disabled",
+  "arguments": {
+    "ciReview": "true"
+  },
+  "methods": [
+    {
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "required_originals": [
+        "goal-plan.png",
+        "goal-options.png",
+        "goal-options-recreated.png",
+        "goal-options-winddown-recreated.png",
+        "goal-options-updated.png",
+        "goal-plan-exit.png",
+        "goal-plan-exit-recreated.png",
+        "goal-tonight.png",
+        "goal-saved-plan.png",
+        "goal-empty-bank.png",
+        "goal-draft-exit.png",
+        "goal-draft-exit-recreated.png",
+        "goal-create.png",
+        "goal-bank.png",
+        "goal-reopened-bank.png",
+        "goal-bank-details.png",
+        "goal-stopped.png",
+        "goal-trends.png"
+      ]
+    },
+    {
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "required_originals": [
+        "nap-draft-exit.png",
+        "nap-draft-exit-recreated.png",
+        "nap-default.png",
+        "nap-preset.png",
+        "nap-tracking-required.png",
+        "nap-sound.png",
+        "nap-pending.png",
+        "nap-recreated.png",
+        "nap-reopened.png",
+        "nap-cancelled.png"
+      ]
+    },
+    {
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "required_originals": [
+        "nap-schedule.png",
+        "nap-schedule-draft-return.png",
+        "nap-schedule-error.png",
+        "nap-scheduled.png",
+        "nap-list.png",
+        "nap-permission-error.png",
+        "nap-scheduler-error.png",
+        "nap-retry.png",
+        "nap-support-profiles-route.png",
+        "nap-support-profile-files-route.png",
+        "nap-support-profile-files.png",
+        "nap-support-bedtime-route.png",
+        "nap-support-bedtime-global.png",
+        "nap-support-requests-format-route.png",
+        "nap-support-requests-format.png",
+        "nap-support-requests-results-route.png",
+        "nap-support-requests-results.png",
+        "nap-support-pair-route.png",
+        "nap-support-pair-saved.png",
+        "nap-support-cues-route.png",
+        "nap-support-cues-history.png"
+      ]
+    },
+    {
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "required_originals": [
+        "travel-draft-exit.png",
+        "travel-draft-exit-recreated.png",
+        "travel-zones.png",
+        "travel-date.png",
+        "travel-plan.png",
+        "travel-schedules.png",
+        "travel-reminders.png",
+        "travel-reminders-recreated.png",
+        "travel-reopened.png",
+        "travel-reminders-reopened.png",
+        "travel-error.png",
+        "travel-disabled.png",
+        "travel-disabled-main.png"
+      ]
+    },
+    {
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "required_originals": [
+        "record-achievements-empty.png",
+        "record-achievements-milestone-empty.png",
+        "record-achievements-first.png",
+        "record-achievements-recreated.png",
+        "record-achievements-milestone-basis.png",
+        "record-achievements-milestone-period.png",
+        "record-achievements-milestone-return.png",
+        "record-achievements-milestone-recreated.png",
+        "record-achievements-milestone-progress.png",
+        "record-achievements-search.png",
+        "record-achievements-edited.png",
+        "record-achievements-error.png",
+        "record-achievements-milestone-error-recreated.png",
+        "record-achievements-milestone-first-of-eight.png",
+        "record-achievements-milestone-seven-basis.png",
+        "record-achievements-milestone-thirty-progress.png"
+      ]
+    }
+  ],
+  "required_original_count": 78,
+  "source_test_files": [
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/GoalFlowTest.java",
+      "sha256": "b94813b647de60582376c3fbcc37c272a5d5fdac335863c6674662e3ae4e8c79"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/NapFlowTest.java",
+      "sha256": "8db1c8af7c640ed6e153b3d53bcc218caad02b1b630fad1b3634f568a66f3cb2"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/TravelPlanFlowTest.java",
+      "sha256": "24bb4d6d46ee63728c156a451f75f6801a7e8e5ae023420901b9a338f3c9ea00"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/RecordAchievementsFlowTest.java",
+      "sha256": "c34755b7f3bea11f00821f833c2deed022748a1ad3e2edf49e8bd53988a8c604"
+    }
+  ],
+  "scope": {
+    "GoalFlowTest": "Real local drafts, Keep/Discard and recreated reviews, explicit plan save/goal start/stop; private plan preferences and record DB; reminder delivery replaced by counter. Real production preferences/database unchanged.",
+    "NapFlowTest": "Two existing methods only, not the third portable-metadata method. Real draft selection/Back/recreation, typed schedule date, timer persistence/cancel/retry and view-only supporting child/help navigation; private DB/clock and injected schedule/fire/audio ports (no real audio or alarms); untouched sentinel/private backup and production preference checks.",
+    "TravelPlanFlowTest": "Real zone/date/reminder drafts, Keep/Discard/recreated/stale review controls, explicit save, receiver duplicate/rearm/failure/retry and disable; private preferences/clock and injected schedule/cancel/show port. Production preferences unchanged.",
+    "RecordAchievementsFlowTest": "Real private saved-record reader, min-three-hour/non-nap/unique measured contribution basis, linked record/report return, first/seven/thirty basis, recreation/error/retry; actual edit/search assertions retained. Fixture records are not user measurements."
+  },
+  "capture_contract": "Every listed original is emitted by an unconditional capture call reached by the selected existing method on success, including its supportingNavigation helper. Captures use the actual focused native window/frame and UiDevice.takeScreenshot. Failure-only PNG/XML diagnostics are excluded from required success originals. No screenshot replay, synthesized image or new test method. ciReview=true is passed for this cohort; Nap/Travel/Achievements explicitly assert it, Goal retains its existing isolated-state preflight.",
+  "full_acceptance": false,
+  "limits": "Focused families 29-31 local-flow and 29D milestone cohort only; not acceptance of all 43 Night Dial families. No phone, capture, playback, OS alarm, model evaluation or broad/unit campaign. Requires exact merged verification source, successful five-method instrumentation logs, all original PNGs and visual inspection. Historical source 351b78bf/run 41212354914 images are comparison only."
+}
