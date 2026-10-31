@@ -195,6 +195,7 @@ public class MainActivity extends Activity {
         View add=Design.iconButton(this,"plus","Add alarm",()->editAlarm(newAlarm()));
         add.setBackground(Design.touch(this,Design.SOFT,28));head.addView(add,new LinearLayout.LayoutParams(Ui.dp(this,48),Ui.dp(this,48)));Design.space(body,16);
         List<Alarm> alarms=store.alarms();
+        AlarmDeletionUndo.add(body,store,this::render,this::editAlarm);
         if(alarms.isEmpty()){
             Design.space(body,28);Design.Icon empty=new Design.Icon(this,"alarm",NightDialTokens.META);LinearLayout.LayoutParams illustration=new LinearLayout.LayoutParams(Ui.dp(this,88),Ui.dp(this,88));illustration.gravity=Gravity.CENTER_HORIZONTAL;body.addView(empty,illustration);Design.space(body,24);Design.text(body,"No alarms yet",25,500,NightDialTokens.TEXT);Design.space(body,12);
             Design.text(body,"Choose a time, sound and wake routine. Your choices stay in a draft until you save.",15,400,NightDialTokens.SECONDARY);Design.space(body,32);

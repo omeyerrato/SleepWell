@@ -65,7 +65,7 @@ final class Backup {
         if(format>=9)for(int n=0;n<root.getJSONArray("echo_periods").length();n++){JSONObject e=root.getJSONArray("echo_periods").getJSONObject(n);long id=e.getLong("session");if(unfinished.contains(id))endpoints.put(id,Math.max(endpoints.get(id),e.getLong("end")));}
         if(format>=11)for(int n=0;n<root.getJSONArray("pir_samples").length();n++){JSONObject e=root.getJSONArray("pir_samples").getJSONObject(n);long id=e.getLong("session");if(unfinished.contains(id))endpoints.put(id,Math.max(endpoints.get(id),e.getLong("time")));}
         db.beginTransaction();try {
-            guard.run();AwakeStore.erase(db);HealthSleepTables.restored(db);db.delete("portable_clip_favorites",null,null);
+            guard.run();AlarmDeletionUndo.changing();AwakeStore.erase(db);HealthSleepTables.restored(db);db.delete("portable_clip_favorites",null,null);
             for(JSONObject clip:store.rows("SELECT * FROM clips")){guard.run();SoundClips.stage(store,clip);}db.delete("sound_events",null,null);db.delete("record_create_requests",null,null);db.delete("alarms",null,null);db.delete("epochs",null,null);db.delete("tracking_pauses",null,null);db.delete("record_edits",null,null);db.delete("sessions",null,null);db.delete("clips",null,null);
             JSONArray alarms=root.getJSONArray("alarms");for(int i=0;i<alarms.length();i++){guard.run();JSONObject portable=new JSONObject(alarms.getJSONObject(i).toString());portable.remove("weeklyNapOwner");Alarm a=Alarm.read(portable);NextAlarmOverride imported=a.nextOverride;a.enabled=false;AlarmSkips.clear(a);a.setNextOverride(imported);Naps.restored(a);if(a.tone.startsWith("content:"))a.tone="daybreak";store.save(a);}
             for(int i=0;i<sessions.length();i++){
