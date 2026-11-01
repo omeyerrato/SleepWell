@@ -1,0 +1,722 @@
+{
+  "schema": 1,
+  "reviewer": "interaction_security_finish",
+  "review_date": "2026-11-01",
+  "source_commit": "10e8d74ccc399c218b4a9502a5a167482fae3fe6",
+  "app_main_tree": "c77d550d0aca5f12b6660b846e580a98517c9128",
+  "run_url": "https://github.com/omeyerrato/SleepWell/actions/runs/41273653327",
+  "artifact": {
+    "id": 13070936214,
+    "zip_bytes": 39166612,
+    "zip_sha256": "3573b4185106946a4ac810554021fcbdf45d4982b58ba7dbcabe7e1a9af9ac57",
+    "download_verification_owner": "sound_recognition_finish; single download, all340 ZIP members checked",
+    "shared_originals_path": "C:\\Users\\omeye\\.codex\\worktrees\\integration-setup-usability\\SleepWell\\.android-local\\ci-reviews\\41273653327\\original"
+  },
+  "actual_native_result": {
+    "methods": 21,
+    "seconds": 541.544,
+    "result": "OK (21 tests)",
+    "unit_results": {
+      "status": "not_run",
+      "tests": 0,
+      "failures": 0,
+      "errors": 0
+    },
+    "missing_required_frames": [],
+    "workflow_result": "failure",
+    "raw_review_passed": false,
+    "reason": "Runner still expected literal OK (20 tests); preserve raw failure. Root owns runner-only repair; this review does not relabel the workflow."
+  },
+  "scope": {
+    "prefix": "night-dial-breadth-",
+    "excluded_prefixes": [
+      "night-dial-breadth-Task-",
+      "night-dial-breadth-Workspace-"
+    ],
+    "required_in_this_scope": 55,
+    "actual_inspected": 57,
+    "extra_frames": [
+      "night-dial-breadth-VoiceSettingsUnavailable.png",
+      "night-dial-breadth-VoiceSettingsUnavailableRestored.png"
+    ],
+    "comparison": [
+      "design.md (normative shared controls, typography, insets, feature states and written flow corrections)",
+      "docs/night-dial/AGENT-HANDOFF.md",
+      "design-concepts/2026-10-29-night-dial-flow-library/accepted-reference.png",
+      "NightDial prototype boards03,25,28,29,30,31,32-v2,33,34,35,36 (secondary compositions; normative written corrections take precedence)"
+    ]
+  },
+  "inspection": {
+    "method": "Each assigned original opened individually with view_image; display fitted1080x2316 originals to955x2048. No screenshot replay, synthesis, compositing or alteration.",
+    "checks": [
+      "dark chrome and accepted palette",
+      "text hierarchy/alignment/legibility",
+      "visible choices and selected states",
+      "visible fixed actions and system inset separation",
+      "honest empty/unavailable/error states",
+      "five extra-large text/reduced-motion settings captures",
+      "nap canceled/restored draft, diary draft/discard, voice handoff failure/recreation"
+    ]
+  },
+  "result": "pass_visible_states_with_minor_findings",
+  "blocking_visual_findings": [],
+  "minor_findings": [
+    {
+      "id": "breadth-copy-01",
+      "priority": "P3",
+      "frames": [
+        "night-dial-breadth-AlarmAccess.png",
+        "night-dial-breadth-RecordAccess.png"
+      ],
+      "finding": "Managed apps repeats the identical No apps are allowed empty-state sentence twice.",
+      "effect": "Redundant copy; no control or primary action is obscured.",
+      "disposition": "Recorded, not patched or rerun in this review."
+    },
+    {
+      "id": "breadth-primary-01",
+      "priority": "P3",
+      "frames": [
+        "night-dial-breadth-Guard.png"
+      ],
+      "finding": "Save blocked apps uses an amber primary fill while the accepted shared primary-action contract specifies white.",
+      "effect": "Visual consistency only; label and action are legible.",
+      "disposition": "Recorded, not patched or rerun in this review."
+    }
+  ],
+  "limitations": [
+    "This is57 captured secondary visible states, not all172 prototype states, all36 older boards, allfeatures or complete-app acceptance. Core141 and Task/Workspace39 are independently reviewed by their assigned owners.",
+    "Root-only long-page screenshots do not verify lower scrolled content; partial text at a real viewport boundary alone is not classified as inaccessible. Applies especially ExternalMediaFade, HabitualTiming, ResearchExport, largeBackup, RecordAccess, SRI and the lower sound library.",
+    "Static reduced-motion captures show settings/layout, not animation timing. No physical output, hardware/provider response, TalkBack, compact/landscape or overnight behavior is accepted by this review.",
+    "Native assertion success and this visual review are separate from the workflow failure caused by stale method counting. Raw evidence remains unchanged."
+  ],
+  "full_acceptance": false,
+  "frames": [
+    {
+      "file": "night-dial-breadth-AlarmAccess.png",
+      "sha256": "9c627ffab1c81fb6125c20952b29f2ea402792ad870f6e7dfcb28938e2b5414f",
+      "bytes": 189441,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_with_minor_finding",
+      "note": "Legible private-access scope, package field and bottom commands; duplicated 'No apps are allowed.' empty-state copy (minor visual/copy defect).",
+      "paired_xml_sha256": "026f6fffc5c2a0b991407c87f87b40ad4ce2bcf4645ffaa92a728910de4e230e"
+    },
+    {
+      "file": "night-dial-breadth-AlarmProtection.png",
+      "sha256": "2527b3f4866972e76e24eb97b4794edb21d3df29599e9aa61c17ab122e3aa29a",
+      "bytes": 140353,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Off/access-missing status, separate controls and bottom access setup/Done are legible and unobscured.",
+      "paired_xml_sha256": "53244b08053f2db06fb9970be1b0bc104f35585b554231bc8c61022a097d3e3b"
+    },
+    {
+      "file": "night-dial-breadth-Appearance.png",
+      "sha256": "94350942272a462fd30ee2995a671ab947c5716f610986d6c89cc8ab0a6c1636",
+      "bytes": 345623,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Night-dial preview, wrapped settings/light card and fixed Save share accepted palette; no clipped control.",
+      "paired_xml_sha256": "d6cde1afc797c85d97ec77b468ba25fd5cea89306987f45c4e346c6f7a54b364"
+    },
+    {
+      "file": "night-dial-breadth-AutomaticTracking.png",
+      "sha256": "b9eb605b6d3a071f231deba24a33bfabf997cf6c94e6c14ba31946bfd23ace8e",
+      "bytes": 207383,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Choice radio hierarchy, actual manual/source status, options and saved/arm distinction readable; footer separate.",
+      "paired_xml_sha256": "a3cb407d79b96de09fd4202aaa940a71bf54cf6fa18fc4e39b2bb1a2827deb9c"
+    },
+    {
+      "file": "night-dial-breadth-Automation.png",
+      "sha256": "742458103eed3c3285d7dd7731ad037dcad3f66d80416b063cd08065345dd2ad",
+      "bytes": 128035,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Honest empty rules state and Add rule, destination rows with clear chevrons; no fabricated connection.",
+      "paired_xml_sha256": "c377f6d9b4c3c77fe352733983d9bd2050bd1adfbb8e7e4673423cd1fe0fb14c"
+    },
+    {
+      "file": "night-dial-breadth-AwakeSettings.png",
+      "sha256": "ba117b0324a50887c6f56246274b71aeff04e35341e0e22c3b9bae51ed504c3c",
+      "bytes": 148929,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Master off with retained child choices, explicit heuristic scope; readable controls and separate Save.",
+      "paired_xml_sha256": "a48395c9b3dbe3a0006af4b3c3b40096c8aa89de6f59b96384c39f4431ea3ca7"
+    },
+    {
+      "file": "night-dial-breadth-Backup.png",
+      "sha256": "642d1ccc0072c62d5368f7f88289148a43efa245f3d503f801c4d02a45fc6606",
+      "bytes": 235845,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Stepped document/review/export hierarchy; derived exclusions collapsed, separate CSV/profile tools, distinct export/import actions.",
+      "paired_xml_sha256": "f00841d8fdb27e3c7e3e83fbfcfbf6b7d0b7099ea0bc5a2824f158710820f37a"
+    },
+    {
+      "file": "night-dial-breadth-BinauralSettings.png",
+      "sha256": "44e09b6d8eb80fa840fc69e9ea91ac1ac87a8e10716b4a8149f470cbf2a8045d",
+      "bytes": 168355,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Configured two-channel waveform and Hz labels fit; separate sliders and manual-play consequence, Use/Cancel clear.",
+      "paired_xml_sha256": "c2dcdcb9aa75e1af7c4bfadd6aa7800264504cb686afcac36835aa796a4256c3"
+    },
+    {
+      "file": "night-dial-breadth-CalendarRules.png",
+      "sha256": "4c76db4d8a851a06db058d3f99ad6bfbefe0ee99f7ef693cc49564befa433779",
+      "bytes": 154591,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Denied access status remains visible, future export separate from alarm-rule settings; fixed Save clear.",
+      "paired_xml_sha256": "b838648594b29f260d5c391df57cec36856b7bb90eee5b555adf5cbe82a811ca"
+    },
+    {
+      "file": "night-dial-breadth-CloudBackup.png",
+      "sha256": "d11df32ae3ff157fe725206046e8924744f5fbecb70b72b309c9d336b24530b5",
+      "bytes": 192524,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "No destination/versions and disabled Save with Choose destination are truthful; body wraps fully.",
+      "paired_xml_sha256": "bd89722da7a17b48bf82999653e678819b6ea8bd9bea198858133a44cbf9f0e6"
+    },
+    {
+      "file": "night-dial-breadth-Diary.png",
+      "sha256": "44df29b70ea631501d0abce4c102c7adbf5cab41afc4dbbb56ed13cdfafd7faa",
+      "bytes": 497795,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Actual journal photo, clear private diary empty state and Write/import/export actions; no placeholder diary entry.",
+      "paired_xml_sha256": "d9d1fe396c7a04c8d10bedb6f8be2e33c35f9cce9ae19637aa0f6d5c9de36170"
+    },
+    {
+      "file": "night-dial-breadth-DiaryDiscard.png",
+      "sha256": "533bd2162198c6626131e25a335d611a57e651339b8d74e5409674a210b7118f",
+      "bytes": 91016,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Draft visible under correctly dimmed bottom sheet; Keep writing/Discard and unsaved consequence fit above system inset.",
+      "paired_xml_sha256": "0b9b1503fd1d5c7c12023cce512b2e86b98b7648d187739c0313dfdc647088c7"
+    },
+    {
+      "file": "night-dial-breadth-DiaryDiscarded.png",
+      "sha256": "01e5a8a56907eff0f37f2c9ffe71fa8a37d057baa48c9f2c7ee461fb2c3bb901",
+      "bytes": 498361,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Returns to honest empty journal with photo and original actions; no phantom saved entry.",
+      "paired_xml_sha256": "f7c7957e6ad4992ab62774aecbdb8c271feafd0067f73af407f58899b854271f"
+    },
+    {
+      "file": "night-dial-breadth-DiaryDraft.png",
+      "sha256": "c662e02ddadb29109382acd8d85fa47b693191e75167df12ec450bce567ecb68",
+      "bytes": 70679,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Restored actual draft text on woven writing surface; Save and private-diary exclusion remain readable.",
+      "paired_xml_sha256": "2dc13f79e482da86bff33b69daf3d415a952b26275b99452a08a5270693f3e84"
+    },
+    {
+      "file": "night-dial-breadth-DreamCue.png",
+      "sha256": "17bb5953ffadcaba0b3612b5dc857cbc45f93271cc7b532189219c95b7d43526",
+      "bytes": 205620,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Timed/non-REM scope, requested timing and disabled Arm prerequisite readable; Save separate from Arm.",
+      "paired_xml_sha256": "5f39ba89bc686779d2fa0d943643158a6157db2168adf84bd28b8be57d8221c9"
+    },
+    {
+      "file": "night-dial-breadth-ExternalMediaFade.png",
+      "sha256": "35a1d3cb168f6cfc5f12cd6f5314dd1713b2fbba610ef16b389d3b2f3e55c002",
+      "bytes": 233178,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Long explanatory page uses scroll content and fixed Save/reload/Cancel footer. Current-recording heading partially visible at scroll boundary, not evidence of an inaccessible control; lower content unverified by this root-only capture.",
+      "paired_xml_sha256": "44fdf46f1fd556cac71f5aafc8239dea595bd660b471802b09677df1a716eb33"
+    },
+    {
+      "file": "night-dial-breadth-FavoriteSounds.png",
+      "sha256": "3346935dc740b600b1064bcb79e936b6e64bcee87742dddd7c398b09901d7fc9",
+      "bytes": 70070,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Empty favorites with real zero counts, selected All tab, filter/date/menu actions and clear next-step copy.",
+      "paired_xml_sha256": "de7038ecb255ef9efedf73c0c24add3c010a62761d6454fadb96c72a0a1461ce"
+    },
+    {
+      "file": "night-dial-breadth-FeedbackSettings.png",
+      "sha256": "712b951c723979c5636228b9953fc23f080659914634eb355afcd416a5e59117",
+      "bytes": 95036,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "On switch and selected Standard strength are distinct; manual Try feedback and quiet-use limits readable.",
+      "paired_xml_sha256": "7d64f49f14bd66c344568a2a78cdd06953e8528e72b954c40a9a9bce9053abb0"
+    },
+    {
+      "file": "night-dial-breadth-GoalBank.png",
+      "sha256": "1b1eabda1f20b37fcc1822e879ae06e9be1c26d26ba8f333ce699f975ba5c479",
+      "bytes": 112396,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Honest no-goal state, woven material and one clear Set first goal action; no invented balances/coverage.",
+      "paired_xml_sha256": "ffd19eb3d54d7a57b12bc48bc2203298ca687abe37bddf2f90178f4ac4b73b52"
+    },
+    {
+      "file": "night-dial-breadth-Guard.png",
+      "sha256": "d6064cff2cffe450190a553c3a098150d266344723a915983efd660e95712e67",
+      "bytes": 161846,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_with_minor_finding",
+      "note": "Schedule and actual app rows, access prerequisite and phone availability fit; Save blocked apps is amber rather than normative white primary action (minor visual inconsistency).",
+      "paired_xml_sha256": "a0ea32f4766524feb54deb400f05ccfac1abb58663969627037ff83073108575"
+    },
+    {
+      "file": "night-dial-breadth-GuidedWindDown.png",
+      "sha256": "2e9b6ec63b2fd5cdc1385ee6269ac573f7537f07301b2bdf698fc50459dd140b",
+      "bytes": 196372,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Distinct contour practice composition, Read selected, ready/timer state and Start/disabled End clearly separated.",
+      "paired_xml_sha256": "f141da03e5b4297c363edb1a60e951d884fe777066b12f54d93d3fc5e486a68d"
+    },
+    {
+      "file": "night-dial-breadth-HabitualTiming.png",
+      "sha256": "6e834d1b6904379543bbdf22674930b8e501b7fc877fc909f47056686494f83d",
+      "bytes": 202961,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Unreported self-report fields retain clear action chevrons and fixed Save/Cancel; final row is partially below scroll viewport, lower content not certified by root-only capture.",
+      "paired_xml_sha256": "a408f0e5f5174e3143483ce0a8d75e319f751a7b431dfaee9190182f564c8f20"
+    },
+    {
+      "file": "night-dial-breadth-HealthConnect.png",
+      "sha256": "42aa648e721b2e3ab3510d11818d10546f9935327d443a1ec96b9c2b55b5db60",
+      "bytes": 158242,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Actual Unavailable status and explanatory card; read/write controls and Check again remain readable without fictional connection.",
+      "paired_xml_sha256": "9dfef1de57f4fe848c2c2a469e0f318324b3e5d06315dbecab06cf654821a5d0"
+    },
+    {
+      "file": "night-dial-breadth-HomeWidgetSettings.png",
+      "sha256": "0213e27060e94beb1c330e0f3ac0af5b31c24565d07528a236330cc7daa90616",
+      "bytes": 152436,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Preview shows actual empty saved-data widget, separately labelled preview; pin/refresh shortcuts distinguish from starting outputs.",
+      "paired_xml_sha256": "b62b60ce2b132cd1458be5ba3efbd0bb10f992365325a10f0e7e443041469898"
+    },
+    {
+      "file": "night-dial-breadth-HueBridge.png",
+      "sha256": "befd5647a28f5b6beaccbcc4196926e3c43a8f958427cd890ad3564479afc124",
+      "bytes": 185641,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Long private-LAN setup prerequisites and fingerprint fields wrap; fixed Save/reload/disconnect/Cancel clear. Root capture alone does not certify lower scrolled inputs or physical bridge behavior.",
+      "paired_xml_sha256": "9a6f5693a3ecffef1cd048235915ffc6fa5ef703ea2918871d43bdb936fdc813"
+    },
+    {
+      "file": "night-dial-breadth-IncomingAutomationSettings.png",
+      "sha256": "a0db753ffd07dee45f3113727e0da87634c61a3f9a0eccce3df109a1c64aaf2e",
+      "bytes": 195427,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Expanded two-line toolbar fits; off consent, review steps and Request format route are legible, fixed Save/Cancel unobscured.",
+      "paired_xml_sha256": "33d08e2ef80e504acf23f72700feacbc12984acbee1742c6faefd393e208d4b9"
+    },
+    {
+      "file": "night-dial-breadth-Large-Appearance.png",
+      "sha256": "a4af2f34a58b747048348d48b8b77b7e266a6c9a4629b8e0466b1776a1529ba5",
+      "bytes": 391601,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Extra-large type and Reduce motion selected; lamp values stack before chevrons; save and text remain unclipped.",
+      "paired_xml_sha256": "ca13a20d1366f22db573fc164b0aef47fc5b01bde2b31cf318b608ed910f74c1"
+    },
+    {
+      "file": "night-dial-breadth-Large-AutomaticTracking.png",
+      "sha256": "633d68b1c6e5d3561f6128495f44966ae44bedb74fec4d1b9c8a093a41749d41",
+      "bytes": 258274,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Extra-large explanations wrap without colliding with radio/value/chevrons; fixed Save remains fully visible.",
+      "paired_xml_sha256": "f6c997fa42ef509b3aedcc1c59cba6b0905f1cd9a40cad674a42b76ec9e7f592"
+    },
+    {
+      "file": "night-dial-breadth-Large-Backup.png",
+      "sha256": "7b2a0c01a8f6b9fc4dffce63c6a6a27879aa78f9542f315e1e054d5cbdc7f8a3",
+      "bytes": 200128,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Large text wraps naturally, content scrolls while export/import footer stays visible; lower tools outside viewport are not claimed as separately reviewed.",
+      "paired_xml_sha256": "62aef013a4e376197706f33a1cc39ea86329a9c68ca8e5b2adbdb14ac0babaa9"
+    },
+    {
+      "file": "night-dial-breadth-Large-GuidedWindDown.png",
+      "sha256": "5e6c106dd5aa383c36ded30926be170112a2dab3e7325b85fc07817fa0f7bcc7",
+      "bytes": 219407,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Large practice instruction fully wraps; Read choice, contour, ready state and Start/End have clear space.",
+      "paired_xml_sha256": "ea3172c332ea0f71891e073181451a23988ac142d44a991a780329616458f733"
+    },
+    {
+      "file": "night-dial-breadth-Large-Nap.png",
+      "sha256": "21e51e7e5dc210dd1992ed3a629f15a67196093180c00563c4ca375a402b146b",
+      "bytes": 165957,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Extra-large duration and selected preset stay legible; lower settings scroll, Start/Multiple naps/Add entry footer fully visible.",
+      "paired_xml_sha256": "1c3b25d2fe573410bf2e64171cd3165b0e91c0352bd9bf46ee1fbe105bca4a28"
+    },
+    {
+      "file": "night-dial-breadth-Nap.png",
+      "sha256": "5589f93c1d8ef3d1a9a64c1cf2f724c9198ef8d930c418100ed68daaab54b765",
+      "bytes": 152227,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Duration dial has minutes, selected20 preset and actual end time; sound preview and Start footer do not collide.",
+      "paired_xml_sha256": "277075943ce41761ae411b4935d70da3fcc8e74f2b657cb098679d3f5f7ef2bc"
+    },
+    {
+      "file": "night-dial-breadth-NapCancelled.png",
+      "sha256": "3142270614251da7d4f2c64a77acbf95986bcc8d5f2b2e16c0d7e0e791a4e164",
+      "bytes": 153529,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Canceled gesture returns20minute draft with20 preset selected and updated end time; composition remains stable.",
+      "paired_xml_sha256": "aa1e3afb500485cad65534fd89d234ff0ae1b99f877ee3db474924e57ab02614"
+    },
+    {
+      "file": "night-dial-breadth-NapProfiles.png",
+      "sha256": "a2701ab701d256780a548b198d3a6771c0fc22d3e5498ee13d4e7dd23231ca24",
+      "bytes": 142599,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Honest empty profiles/applications, separate definition import/export and clear Create action; no fake timers.",
+      "paired_xml_sha256": "5f1671ebc3aefed7ca4a7f96d8f4942671626424ef9b3e49bd2b141693de92df"
+    },
+    {
+      "file": "night-dial-breadth-NapRestored.png",
+      "sha256": "5e3dc1eab727dce07c81c5efb75283cfa93e3edd48878f7df5a1db5f05475702",
+      "bytes": 149736,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Restored35minute custom duration has no falsely selected preset; actual end-time and all visible sound/footer controls fit.",
+      "paired_xml_sha256": "c05210fa2bf2b48fccbafc22a458433e49afa9447b78199a50ef04c81ff0825d"
+    },
+    {
+      "file": "night-dial-breadth-NarrationVoice.png",
+      "sha256": "0c4ddc92a7b755c627d3f7695026eb2310e0869af9c309adbe9b81cf16f464e4",
+      "bytes": 264789,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Actual requested engine and offline-only choice are distinguishable; Refresh/system route, explanation and Save/Cancel legible.",
+      "paired_xml_sha256": "ec293169f61035715e7f8a869554256fc4bf4026457b81f34ebe20a2e7b634f3"
+    },
+    {
+      "file": "night-dial-breadth-RecordAccess.png",
+      "sha256": "5293bd8255d398ba1b8427dda93d23a34bfd6deb903fd93a5c23d10d11f31c5c",
+      "bytes": 187788,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_with_minor_finding",
+      "note": "Sharing scope and exact package verification readable; duplicates 'No apps are allowed.' empty state, same minor copy defect as AlarmAccess. Lower preview at scroll boundary not separately accepted.",
+      "paired_xml_sha256": "554d9373e14d29e8f0599b832b551ef8d8bb7873c7b1eb4c6dcbb11119179d93"
+    },
+    {
+      "file": "night-dial-breadth-RecurringTracking.png",
+      "sha256": "76aadb5fac621c3de0c8b1d6cfdeeed6e54f4f90c4edec68be902ae3d95bcd19",
+      "bytes": 197888,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Nightly off, selected scheduled method and Needs attention reliability are explicit; Save/Cancel fit without claiming armed.",
+      "paired_xml_sha256": "efd2fdb37b0c6eec431c047ed0123cf9f6dad2197edc83cc8805775b1b3b5ba5"
+    },
+    {
+      "file": "night-dial-breadth-ResearchExport.png",
+      "sha256": "f42979de9159b0ce53bc0abc688aa6eb84ba19905eccf21e66e18c18b6fe7feb",
+      "bytes": 206042,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Empty actual0nights/epochs, real stagedmetadata size and disabled Save; long warning continues below root viewport and requires scrolling, which this capture does not certify.",
+      "paired_xml_sha256": "253cd952d2a8912f9e8b2dec8b10b663ee48814be034b5aeb3c3942071b347a0"
+    },
+    {
+      "file": "night-dial-breadth-Search.png",
+      "sha256": "0eec967c372158381669a2ff2f1356b3d59fdf0054a60d8c87c908d1d57d0bd2",
+      "bytes": 113717,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Explicit Everything/Settings scope, empty query and five real feature shortcuts; no placeholder search results.",
+      "paired_xml_sha256": "a30dd4c445f53bd64cf26df45f60b1fd915e838eb2e7ee991d3c65c761b3c0e0"
+    },
+    {
+      "file": "night-dial-breadth-SettingsProfile.png",
+      "sha256": "42403b92544270bf7c81207d3759ebff46913133c5f2c0d6697626d33537c3c2",
+      "bytes": 110094,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Selected export categories and separate Prepare/Import align with accepted white primary/amber choices.",
+      "paired_xml_sha256": "923d371fdad3da52f304d2ed4cc96614432dd5e76b7a7afea9af232f81a422e1"
+    },
+    {
+      "file": "night-dial-breadth-SleepCsv.png",
+      "sha256": "e45ed7c883a380579b8875e311d02c820ee19a4e8e0bf748a91ab36277594c1b",
+      "bytes": 105113,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Specific CSV-format choice and import limits are readable; Choose file/Close accessible, no fake import success.",
+      "paired_xml_sha256": "c8afdc85cf7973324f703c49e402ebeff4321373061dc8ebc39768d571567e27"
+    },
+    {
+      "file": "night-dial-breadth-SleepRhythm.png",
+      "sha256": "93bb2a192cfc9f60e3ea0db6e6c78c41124347505b7b375858a4bb5af985f2bb",
+      "bytes": 189809,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Unknown values and0/30coverage truthful; no fabricated bedtime graph. Workday and evidence actions clear.",
+      "paired_xml_sha256": "57d2f9a21f26eb4524d04e074a21f1fc7e4a015cfe9a76a233864a96004e0e59"
+    },
+    {
+      "file": "night-dial-breadth-SleepSounds.png",
+      "sha256": "f2af51ed41215d38f466665117908fb0bfd182aca7326b0b1159d7f0c67dd275",
+      "bytes": 1064688,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Actual rain photo, source waveforms, selected Rain, manual Play/disabled Stop and timer/fade fit; lower library items require scrolling.",
+      "paired_xml_sha256": "976f70cd8a8097c7d7d4e77ad79f91a60421fb0d49228acc544c6218d9c714af"
+    },
+    {
+      "file": "night-dial-breadth-SmartBedtime.png",
+      "sha256": "92254075edcb3b0f32eb87ed55a945c85648aca03a08600497bd634acaebd3ae",
+      "bytes": 235618,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Off/fallback and missing alarm/access/coverage remain explicit; calculated rows and fixed Save/Refresh legible.",
+      "paired_xml_sha256": "5376a48f0212aaddaa637cccb05151569d026aa8e899a1a51ded949c38f11ae4"
+    },
+    {
+      "file": "night-dial-breadth-SmartLight.png",
+      "sha256": "03675dc0546867f5090d3b4c3f304a9db2ca19fd92258a792c9465ac1c28e345",
+      "bytes": 177966,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Not configured connection form, separate Hue route and output options readable; Save stays above inset.",
+      "paired_xml_sha256": "b27f1b5b27aedaac8aa07b08ec6dc435677a65f1eed180ccc0639e18482fff0b"
+    },
+    {
+      "file": "night-dial-breadth-SnoringCues.png",
+      "sha256": "be484ac205b0c77d36bff36922864e2eb072f1df5a2548d51837295c1f0a5bf2",
+      "bytes": 207900,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Off response with preserved vibration/low/one-repeat/medium choices, mic prerequisite and bounded manual Preview are clear.",
+      "paired_xml_sha256": "bc5b9cbd22b44d315c8af5f987505a1732317f228ae4d597af8871fd7640b151"
+    },
+    {
+      "file": "night-dial-breadth-SoundLibrarySettings.png",
+      "sha256": "6ede0e5e9ed3e817e0298229f46c216025981e9ac95f677c1f3045c10d3474b1",
+      "bytes": 99436,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "7day retention, favorite preservation and permanent cleanup consequence readable; Save/apply clear.",
+      "paired_xml_sha256": "09798aa9eb4da09ee29bde006f5aa61524ad5d584394b409c18c72f2906ba452"
+    },
+    {
+      "file": "night-dial-breadth-SoundSensitivity.png",
+      "sha256": "58b218e205b01e0492ed0a9d5eff9c6c0b489d49b48b97bd51fa754c90c15689",
+      "bytes": 111912,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Grouped destination affordances, real six-category count, experimental Additional sounds route and draft reset/save clear.",
+      "paired_xml_sha256": "bcc49cf5ce4825c410e7d7cc83ab90cc70f9939d4d43a151ebccfc606c6ecce4"
+    },
+    {
+      "file": "night-dial-breadth-SRI.png",
+      "sha256": "39189f9be4dceba865ee74f484ec04923f87f95ab7277c92e1588c9e1b4518d2",
+      "bytes": 191558,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Unknown index and observed comparison coverage0, explicit review requirement and actual dated rows; no invented regularity score.",
+      "paired_xml_sha256": "b9999992598b25eea01f7a3c88142467c3b368572c2e34e5d703f81d853c9ea6"
+    },
+    {
+      "file": "night-dial-breadth-TagManagement.png",
+      "sha256": "a36bac10468c155517590da9239ad44f90756833d0a6595c86b1a280eeca344b",
+      "bytes": 51287,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Honest empty tags and next-step instruction; no fabricated impacts or editable phantom tag.",
+      "paired_xml_sha256": "fadd7beaff77019d7cbc109d9cd583f89c4feb6eb5daccaac3e2bd9c91c15032"
+    },
+    {
+      "file": "night-dial-breadth-TrackingDelay.png",
+      "sha256": "d3c11c7ea4cf12ccca7f7020d5e8479aa07856ec150a009656c7bcd6012c4d27",
+      "bytes": 102434,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Selected Off, distinct manual timing summary and fixed Save clear; no armed or countdown state fabricated.",
+      "paired_xml_sha256": "e040c44860e645d1bbbec42d0d9c73a89b784c845bc8e5da2543c096ec672a5d"
+    },
+    {
+      "file": "night-dial-breadth-TrackingDnd.png",
+      "sha256": "e711cfd0c2b22effe338a782d9bdabe638c08321c85adbc4cf7c7dee72bd5904",
+      "bytes": 157433,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Both missing Android capabilities named separately, actual Not active status and Save readable.",
+      "paired_xml_sha256": "2a3c9cab9d80a7f26c67e6d0fcbc3d866eb996f4f62ea130b583565b531c52c3"
+    },
+    {
+      "file": "night-dial-breadth-TrackingFlip.png",
+      "sha256": "cc35b197cf2e9175e9e836f7478af0f8f2dd2eb4386b94151e64735359e35803",
+      "bytes": 136567,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Off next-recording setting, pause/resume gesture instructions and manual preview-not-tested status clear.",
+      "paired_xml_sha256": "1ca8a4666795863bb11efa9f96afad7c3c31f9e3b3952eee8e1dbfb577440f9b"
+    },
+    {
+      "file": "night-dial-breadth-Travel.png",
+      "sha256": "4988886ee37ac1386753592e4340e469856927766f4a6c0a6c3ce6cb1f31f1cc",
+      "bytes": 216636,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Actual Riyadh/London local clocks and3hour difference align; dated departure, source/experimental choices and fixed Save fit.",
+      "paired_xml_sha256": "d9db0b37882a14b5a2dde699ce3dae8b01f0d51fe4aa131c32833d03c51081f8"
+    },
+    {
+      "file": "night-dial-breadth-VoiceSettingsUnavailable.png",
+      "sha256": "6250528e53c2e7b9aa87c0aa2bf28d317d8f13bdcb94ce18784dc8c4ba51e309",
+      "bytes": 300701,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Actual failed Android settings handoff remains inline in amber with a concrete manual recovery path; Save/Cancel unobscured.",
+      "paired_xml_sha256": "0f9e70784d8b7b4ef7fbe9b8b59fe9919ace434d76d45adea3cb011d599617a1"
+    },
+    {
+      "file": "night-dial-breadth-VoiceSettingsUnavailableRestored.png",
+      "sha256": "2faa8d1efa1e24d01f051b484e6577fa11b5f1742a228bcfe159f560245d7112",
+      "bytes": 301013,
+      "width": 1080,
+      "height": 2316,
+      "visually_opened_individually": true,
+      "result": "pass_visible_state",
+      "note": "Failure message survives recreation, base voice query guidance resets honestly and controls remain in place.",
+      "paired_xml_sha256": "950ec19b2009853cb7185a83add6665db517ea173b23791356cefa21dbb906cc"
+    }
+  ]
+}
