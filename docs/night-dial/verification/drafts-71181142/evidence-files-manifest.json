@@ -1,0 +1,89 @@
+{
+  "run_id": 41262365058,
+  "exact_copies": [
+    {
+      "archive_path": "environment.json",
+      "artifact_name": "environment.json",
+      "bytes": 1033,
+      "sha256": "35eaafa9811d291df61f501f264ef8e18fce76dace0c9c4712bc00e5791646aa",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "focused-review-summary.json",
+      "artifact_name": "focused-review-summary.json",
+      "bytes": 874,
+      "sha256": "45c60218dde2b631b1368ad439022ee36684deeb26aab556024eb977e151080e",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs.txt",
+      "artifact_name": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs.txt",
+      "bytes": 825,
+      "sha256": "6999b08dfabccc385571404ec68b6b2e8dab6ea60886007973dd864dec0d8895",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/RandomChallengeDraftFlowTest#dirtyBackKeepDiscardAndUseReturnOnlyParentDraftWithoutOutputs.txt",
+      "artifact_name": "RandomChallengeDraftFlowTest#dirtyBackKeepDiscardAndUseReturnOnlyParentDraftWithoutOutputs.txt",
+      "bytes": 827,
+      "sha256": "cf1d31f35c7f513c8f1cbcda9e51c0765d6c13c11816d979afadf5c58273100c",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/WakeCheckFlowTest#settingsPracticePreviewAcknowledgesAndReturnsUnchangedDraftWithoutOpeningCheck.txt",
+      "artifact_name": "WakeCheckFlowTest#settingsPracticePreviewAcknowledgesAndReturnsUnchangedDraftWithoutOpeningCheck.txt",
+      "bytes": 828,
+      "sha256": "a23fb3fe2a85c27ce2ed859bc3fc168462e49509a6a161a5bbaa56700acc50ad",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "random-pool-draft-proof.json",
+      "artifact_name": "random-pool-draft-proof.json",
+      "bytes": 566,
+      "sha256": "54b50a00bee5a2b33a4e4e98197c6c21b4d7a17824a1cc087133678f027c6f66",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/random-pool-review-recreated.png",
+      "artifact_name": "random-pool-review-recreated.png",
+      "bytes": 150490,
+      "sha256": "e7cb86f35a8b6e392e80a2860dbd0ea248361dbd4aa4015c5054b7592214749c",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/routine-preview-emergency-open.png",
+      "artifact_name": "routine-preview-emergency-open.png",
+      "bytes": 158368,
+      "sha256": "791e7fb658bed7dc8443022aac2c3aa86a7b2f9f49ee4d9689ebd7e1b571c4fd",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/routine-preview-tilt-focus-blocked.png",
+      "artifact_name": "routine-preview-tilt-focus-blocked.png",
+      "bytes": 105020,
+      "sha256": "eefff6ae67a886f7ec43044d3528735d3692642fa080ce6319c97663082a94b0",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/wake-check-practice-ready.png",
+      "artifact_name": "wake-check-practice-ready.png",
+      "bytes": 122723,
+      "sha256": "4a1c88a0d608f4513d4197135d82f3b267b31953733f65e0065ed94bf90f8067",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "routine-preview-emergency-proof.json",
+      "artifact_name": "routine-preview-emergency-proof.json",
+      "bytes": 691,
+      "sha256": "a7843a3d2f301e4fdec1345144f9e80bcb6144de6319e66ffbd8fb25deb2555b",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "wake-check-practice-proof.json",
+      "artifact_name": "wake-check-practice-proof.json",
+      "bytes": 282,
+      "sha256": "07576db2edb3cb3da450b2ec35d8211c0d65440e1a1509a7e63c5a4f04c8a8f3",
+      "exact_byte_copy": true
+    }
+  ]
+}

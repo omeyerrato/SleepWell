@@ -1,0 +1,36 @@
+{
+  "native_methods": 3,
+  "invocations": 3,
+  "results": [
+    {
+      "invocation": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+      "methods": [
+        "orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 825,
+      "sha256": "6999b08dfabccc385571404ec68b6b2e8dab6ea60886007973dd864dec0d8895"
+    },
+    {
+      "invocation": "WakeCheckFlowTest#settingsPracticePreviewAcknowledgesAndReturnsUnchangedDraftWithoutOpeningCheck",
+      "methods": [
+        "settingsPracticePreviewAcknowledgesAndReturnsUnchangedDraftWithoutOpeningCheck"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 828,
+      "sha256": "a23fb3fe2a85c27ce2ed859bc3fc168462e49509a6a161a5bbaa56700acc50ad"
+    },
+    {
+      "invocation": "RandomChallengeDraftFlowTest#dirtyBackKeepDiscardAndUseReturnOnlyParentDraftWithoutOutputs",
+      "methods": [
+        "dirtyBackKeepDiscardAndUseReturnOnlyParentDraftWithoutOutputs"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 827,
+      "sha256": "cf1d31f35c7f513c8f1cbcda9e51c0765d6c13c11816d979afadf5c58273100c"
+    }
+  ]
+}

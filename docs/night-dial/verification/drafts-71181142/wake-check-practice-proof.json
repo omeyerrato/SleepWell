@@ -1,0 +1,10 @@
+{
+  "real_check_engine_opens": 0,
+  "runtime_clock_opens": 0,
+  "alarm_schedule_calls": 0,
+  "real_check_state_absent": true,
+  "draft_preserved_on_return_and_recreation": true,
+  "off_stays_off": true,
+  "private_acknowledgement_recreated": true,
+  "actual_alarm_started": false
+}

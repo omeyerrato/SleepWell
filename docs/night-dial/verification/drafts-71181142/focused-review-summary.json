@@ -1,0 +1,30 @@
+{
+  "scope": "draft-challenge-reference",
+  "full_app_review": false,
+  "expected_classes": 3,
+  "expected_methods": 3,
+  "class_results": [
+    {
+      "class": "ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "WakeCheckFlowTest#settingsPracticePreviewAcknowledgesAndReturnsUnchangedDraftWithoutOpeningCheck",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "RandomChallengeDraftFlowTest#dirtyBackKeepDiscardAndUseReturnOnlyParentDraftWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 23,
+  "required_evidence_files": [
+    "routine-preview-emergency-proof.json",
+    "wake-check-practice-proof.json",
+    "random-pool-draft-proof.json"
+  ],
+  "failures": []
+}

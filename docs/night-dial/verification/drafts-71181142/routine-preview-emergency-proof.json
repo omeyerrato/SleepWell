@@ -1,0 +1,16 @@
+{
+  "tilt_focus_loss_stops_input_and_preserves_checkpoint": true,
+  "tilt_return_requires_explicit_calibration": true,
+  "scope": "private configured-QR routine practice and tilt modal; dialer launch injected",
+  "real_dialer_executed": false,
+  "actual_alarm_started": false,
+  "blank_action_dial_only": true,
+  "changed_default_dialer_rejected": true,
+  "changed_recipient_keeps_same_reviewed_sheet": true,
+  "owned_dialog_targets_use_actual_screen_coordinates": true,
+  "current_unit_preserved_by_options": true,
+  "configured_math_reused": true,
+  "fallback_requires_real_answer": true,
+  "practice_issues_no_leave_lease": true,
+  "leave_lease_exact_run_unit_package_and_expiry": true
+}

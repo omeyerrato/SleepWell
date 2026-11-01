@@ -1,0 +1,16 @@
+{
+  "scope": "08D actual private parent editor and Random tasks child",
+  "dirty_nested_back_keeps_pool": true,
+  "dirty_outer_back_review": true,
+  "review_and_draft_survive_recreation": true,
+  "retired_discard_cannot_finish_current_owner": true,
+  "keep_editing_retains_draft": true,
+  "discard_keeps_parent_unchanged": true,
+  "clean_back_has_no_review": true,
+  "use_returns_parent_draft_only": true,
+  "parent_draft_survives_recreation": true,
+  "library_unchanged": true,
+  "scheduling_calls": 0,
+  "actual_alarm_started": false,
+  "outputs_started": false
+}
