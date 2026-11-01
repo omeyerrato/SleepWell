@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-01",
+  "authority": "Explicit parent /root message after synthetic-only decoder reproduction; one final deterministic real cached-feature replay authorized",
+  "one_final_cached_replay_authorized": true,
+  "supersedes_only": "The no-third-attempt clause in mechanical-retry.json for ONE exact arithmetic replay, not scientific search",
+  "correction_commit": "0f4ddceefeb1ef9e1225cf81ae1e049a75239cf3",
+  "scientific_protocol_sha256": "744bb5c794bca7f4a768df673f4643ef421ad9d7b0bc58e734f7cdfc0962797b",
+  "synthetic_proof_sha256": "6c83e23caba969ef2a17b2821ac637e7180db3fabfdab34bab5e2640aec26d40",
+  "train_npz_bytes": 383390,
+  "train_npz_sha256": "6e02fe3c1d270a5d4b8ecffcc7273d9db603b3ff008de4aea8c7f8b50544873d",
+  "train_metadata_bytes": 111541,
+  "train_metadata_sha256": "8b8bd0d2b15be930f926633c12baa2f78c6187910dcdb1da97d8398e4fd13523",
+  "prior_attempt_source": "6e666bf6",
+  "prior_failure": "One completed real TRAIN head fit; portable float64/1D arithmetic disagreed with fitted float32/2D sklearn. Parameters were not persisted before assertion. VAL/TEST unopened.",
+  "change": "Exact fitted coefficient/intercept dtype, 2D transpose and in-place expit; persist fitted model before parity/convergence assertions. No tolerance relaxation.",
+  "cache_policy": "Hash/size/shape/feature/label verified already-frozen TRAIN NPZ only. No TRAIN extraction or source cache modification.",
+  "unchanged": "Same C0.1, l2, lbfgs, max_iter1000, no class weights, random_state20261101, TRAIN-only two scalers, same pretrained weights, participants/windows/labels/frontends/threshold0.5 and all scientific gates.",
+  "execution_order": [
+    "Commit exception and complete workflow",
+    "Repeat fixed synthetic primary NN parity under new exact freeze",
+    "ONE actual cached TRAIN head fit with immutable fitted artifact before assertions",
+    "ONE same fixed VAL",
+    "ONE RESPTEST only if every original VAL gate passes; otherwise no TEST"
+  ],
+  "stop": "No retry, refit, retune, substitute, package install, network or next attempt after any new error or failed VAL gate.",
+  "prior_receipts_preserved": true,
+  "read_or_fit_at_freeze": false,
+  "VAL_TEST_outcomes_at_freeze": false
+}

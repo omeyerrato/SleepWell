@@ -150,7 +150,7 @@ def metrics(y, probabilities):
 
 
 def freeze():
-    paths=(Path(__file__),Path(labels.__file__),Path(acoustic.__file__),Path(acoustic.data.__file__),DOC/'protocol.json',DOC/'approval.json',DOC/'mechanical-retry.json',TRAIN_RECORD,DOC/'original-label-protocol.json')+tuple(
+    paths=(Path(__file__),Path(labels.__file__),Path(acoustic.__file__),Path(acoustic.data.__file__),DOC/'protocol.json',DOC/'approval.json',DOC/'mechanical-retry.json',DOC/'mechanical-head-replay.json',DOC/'head-synthetic-parity.json',TRAIN_RECORD,DOC/'original-label-protocol.json')+tuple(
         OLD_RECORDS/name for name in ('train-inputs.json','validation.json','test.json','subject-sources.json','manifest.json'))
     hashes={p.relative_to(ROOT).as_posix():sha(p.read_bytes()) for p in paths}
     for p in paths:
@@ -163,6 +163,11 @@ def freeze():
         raise ValueError('Pinned frontend/runtime versions differ')
     if approval['protocol_sha256']!=sha((DOC/'protocol.json').read_bytes()) or not approval['one_fixed_candidate_authorized']:
         raise ValueError('Missing exact conditional approval')
+    exception=load(DOC/'mechanical-head-replay.json');synthetic=load(DOC/'head-synthetic-parity.json')
+    if (not exception['one_final_cached_replay_authorized'] or exception['scientific_protocol_sha256']!=sha((DOC/'protocol.json').read_bytes())
+            or exception['synthetic_proof_sha256']!=sha((DOC/'head-synthetic-parity.json').read_bytes())
+            or not synthetic['passed'] or synthetic['corrected_max_error']>1e-12 or synthetic['subject_data_read'] or synthetic['outcomes_read']):
+        raise ValueError('Missing frozen mechanical exception/synthetic proof')
     return dict(files=hashes,source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT).decode().strip(),
         candidate=2,validation_previously_inspected=True,test_respiratory_labels_closed_until_val_pass=True,
         unit_assumption='Source event_duration seconds under root conditional inference; field-specific unit not independently proved')
@@ -325,9 +330,33 @@ def head_parity(output,model,embedding_matrix,classifier,head_input):
     return difference
 
 
-def fit(cache,output,checkpoint):
+def cached_training(path,output):
+    exception=load(DOC/'mechanical-head-replay.json')
+    metadata=path.with_suffix('.json')
+    if path.stat().st_size!=exception['train_npz_bytes'] or metadata.stat().st_size!=exception['train_metadata_bytes']:
+        raise ValueError('Frozen TRAIN cache size differs')
+    raw=path.read_bytes();receipt_raw=metadata.read_bytes()
+    if sha(raw)!=exception['train_npz_sha256'] or sha(receipt_raw)!=exception['train_metadata_sha256']:
+        raise ValueError('Frozen TRAIN cache hash differs')
+    receipt=json.loads(receipt_raw)
+    with np.load(io.BytesIO(raw),allow_pickle=False) as arrays:
+        if set(arrays.files)!={'features','labels'}:raise ValueError('Unexpected cached arrays')
+        x=arrays['features'];y=arrays['labels']
+    if x.shape!=(199,3,160) or x.dtype!=np.dtype('float32') or not np.isfinite(x).all() or y.shape!=(199,) or y.dtype.kind not in ('i','u') or not np.isin(y,[0,1]).all():
+        raise ValueError('Frozen TRAIN array contract differs')
+    if (receipt['npz_sha256']!=sha(raw) or receipt['shape']!=list(x.shape)
+            or receipt['features_sha256']!=sha(x.astype('<f4').tobytes()) or receipt['labels_sha256']!=sha(y.astype('<i8').tobytes())):
+        raise ValueError('Frozen TRAIN feature/label receipt differs')
+    save(output/'cached-train-receipt.json',dict(npz_sha256=sha(raw),metadata_sha256=sha(receipt_raw),
+        source_freeze=receipt['freeze'],shape=list(x.shape),features_sha256=receipt['features_sha256'],
+        labels_sha256=receipt['labels_sha256'],extraction_run=False,source_cache_modified=False))
+    return x,y,receipt['targets'],receipt['coverage']
+
+
+def fit(cache,output,checkpoint,cached_train=None):
     stamp=require_parity(output);save(output/'fit-started.json',stamp);deadline=time.monotonic()+900;tensors=weights(checkpoint)
-    x,y,targets,coverage=phase_data(cache,'train',deadline)
+    if cached_train is None:raise ValueError('Final mechanical exception requires the frozen TRAIN cache; no re-extraction')
+    x,y,targets,coverage=cached_training(cached_train,output)
     reference={(r['subject'],r['epoch']):r for r in load(TRAIN_RECORD)['targets']}
     for target in targets:
         old=reference[(target['subject'],target['epoch'])]
@@ -409,10 +438,11 @@ def failure_receipt(output,error):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('command',choices=['parity','fit','validation','test']);parser.add_argument('--cache',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--checkpoint',type=Path,required=True)
+    parser.add_argument('--cached-train',type=Path)
     args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=True)
     try:
         if args.command=='parity':parity(args.output,args.checkpoint)
-        elif args.command=='fit':fit(args.cache,args.output,args.checkpoint)
+        elif args.command=='fit':fit(args.cache,args.output,args.checkpoint,args.cached_train)
         else:evaluate(args.cache,args.output,args.checkpoint,args.command)
     except Exception as error:
         save(args.output/(args.command+'-error.json'),failure_receipt(args.output,error))
