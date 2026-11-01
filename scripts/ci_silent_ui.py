@@ -176,7 +176,7 @@ RHYTHM_PLAN = completion_plan("RHYTHM-EVIDENCE-SCROLL-NATIVE-PLAN.json")
 EMERGENCY_PLAN = completion_plan("CHALLENGE-EMERGENCY-FOCUS-NATIVE-PLAN.json")
 PRACTICE_PLAN = completion_plan("WAKE-CHECK-PRACTICE-NATIVE-PLAN.json")
 RANDOM_PLAN = completion_plan("RANDOM-POOL-DRAFT-NATIVE-PLAN.json")
-TRIP_ADMISSION_PLAN = completion_plan("TRAVEL-OCCURRENCE-RETIRED-OWNER-NATIVE-PLAN.json")
+TRIP_ADMISSION_PLAN = completion_plan("TRAVEL-OCCURRENCE-PLAN-REFRESH-NATIVE-PLAN.json")
 ALTERNATIVE_METHODS = [dict(method, required_originals=TRIP_ADMISSION_PLAN["required_originals"]) if method["method"] == TRIP_ADMISSION_PLAN["method"] else method for method in ALTERNATIVES_PLAN["methods"]] + RHYTHM_PLAN["methods"]
 ALTERNATIVE_RECEIPTS = [TRIP_ADMISSION_PLAN["required_proof"], RHYTHM_PLAN["required_proof"]]
 ALTERNATIVE_FRAMES = [name for method in ALTERNATIVE_METHODS for name in method["required_originals"]]
