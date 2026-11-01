@@ -28,7 +28,8 @@ public final class AutomationActivity extends Activity {
     private static final Set<String> PAGES=Set.of("home","options","delivery","destination","editor","event","transport","rule-options","event-details");
     private final Handler handler=new Handler(Looper.getMainLooper());
     private final ArrayDeque<String> history=new ArrayDeque<>();
-    private Port owner;private AutomationRule draft;
+    private Port owner;private AutomationRule draft;private SavedIdentity savedIdentity;
+    private record SavedIdentity(String id,long revision,String name,String destination){boolean matches(String value,long version){return id.equals(value)&&revision==version;}}
     private List<AutomationStore.Row> rows=List.of();private boolean rowsLoaded,loading,resumed,secretRestorationFailed;
     private long readGeneration,navigation;private String page="home",failure="",loadFailure="",status="",request,operationKind="",confirmation="",confirmationId="",testOccurrence="";private long confirmationRevision;
     private AutomationRule.Transport destinationType=AutomationRule.Transport.INTENT;
@@ -44,6 +45,7 @@ public final class AutomationActivity extends Activity {
             ArrayList<String> saved=state.getStringArrayList("history");if(saved!=null)for(String prior:saved)if(PAGES.contains(prior))history.addLast(prior);
             failure=state.getString("failure","");request=state.getString("request");operationKind=state.getString("operationKind","");
             confirmation=state.getString("confirmation","");confirmationId=state.getString("confirmationId","");confirmationRevision=state.getLong("confirmationRevision");testOccurrence=state.getString("testOccurrence","");
+            if(state.containsKey("savedRuleId"))savedIdentity=new SavedIdentity(state.getString("savedRuleId",""),state.getLong("savedRuleRevision"),state.getString("savedRuleName",""),state.getString("savedRuleDestination",""));
             try{destinationType=AutomationRule.Transport.valueOf(state.getString("destinationType","INTENT"));}catch(IllegalArgumentException ignored){}
             if(state.containsKey("id"))try{
                 String credential="",cipher=state.getString("secret","");secretRestorationFailed=state.getBoolean("secretRestorationFailed");
@@ -146,7 +148,7 @@ public final class AutomationActivity extends Activity {
         }
         LinearLayout next=IntegrationSetupUi.section(body,"Then create your rule");IntegrationSetupUi.detail(next,"Choose a sleep event, enter the destination and save. New rules start Off. Saving does not confirm delivery.");IntegrationSetupUi.detail(next,"For a saved, enabled rule, Rule options offers a separate confirmed test event. That event can trigger the destination’s actions.");
     }
-    private void newDraft(AutomationRule.Transport type){if(!available()||loading)return;remember();navigation++;draft=new AutomationRule(UUID.randomUUID().toString(),"",AutomationEvent.Kind.TRACKING_STARTED,type,false,0,type==AutomationRule.Transport.INTENT?"net.dinglisch.android.taskerm":"","","","");secretRestorationFailed=false;failure="";history.clear();page="editor";clearFields();render();}
+    private void newDraft(AutomationRule.Transport type){if(!available()||loading)return;remember();navigation++;savedIdentity=null;draft=new AutomationRule(UUID.randomUUID().toString(),"",AutomationEvent.Kind.TRACKING_STARTED,type,false,0,type==AutomationRule.Transport.INTENT?"net.dinglisch.android.taskerm":"","","","");secretRestorationFailed=false;failure="";history.clear();page="editor";clearFields();render();}
     private void editor(LinearLayout body){
         RecordUi.heading(body,"Rule");name=field(body,"Rule name",draft.name,false);name.setHint("For example, dim the bedroom light");menu(body,"moon","When",eventLabel(draft.event),null,()->open("event"));
         RecordUi.heading(body,"Connection");menu(body,"link","Destination type",transportLabel(draft.transport),null,()->open("transport"));
@@ -176,7 +178,7 @@ public final class AutomationActivity extends Activity {
     }
     private void load(AutomationStore.Row row){
         if(!available()||loading)return;long ticket=++navigation;loading=true;render();Port pinned=owner;Context app=getApplicationContext();
-        Automations.io.execute(()->{AutomationRule found=null;try(AutomationStore store=pinned.open(app)){found=store.rule(row.id);}catch(Exception ignored){}AutomationRule result=found;handler.post(()->{if(isDestroyed()||isFinishing()||ticket!=navigation||!page.equals("home"))return;loading=false;if(result==null){render();confirm("unavailable",row.id,row.revision);return;}draft=result;secretRestorationFailed=false;failure="";history.clear();page="editor";clearFields();render();});});
+        Automations.io.execute(()->{AutomationRule found=null;try(AutomationStore store=pinned.open(app)){found=store.rule(row.id);}catch(Exception ignored){}AutomationRule result=found;handler.post(()->{if(isDestroyed()||isFinishing()||ticket!=navigation||!page.equals("home"))return;loading=false;if(result==null){savedIdentity=new SavedIdentity(row.id,row.revision,row.name,"Saved "+row.transport.toLowerCase(java.util.Locale.ROOT)+" destination unavailable");render();confirm("unavailable",row.id,row.revision);return;}savedIdentity=new SavedIdentity(result.id,result.revision,result.name,destinationIdentity(result));draft=result;secretRestorationFailed=false;failure="";history.clear();page="editor";clearFields();render();});});
     }
     private void save(){
         if(!available())return;fields();if(secretRestorationFailed){failure="Re-enter or explicitly clear the credential before saving this draft.";render();return;}
@@ -194,24 +196,27 @@ public final class AutomationActivity extends Activity {
         PlanOperations.forget(token);request=null;String kind=operationKind;operationKind="";
         if(operation.error!=null){failure=operation.error;render();return;}
         failure=operation.notice==null?"":operation.notice;
-        if(kind.equals("save")||kind.equals("delete")||kind.equals("enable")){draft=null;clearFields();history.clear();page="home";navigation++;refreshRows();}else render();
+        if(kind.equals("save")||kind.equals("delete")||kind.equals("enable")){draft=null;savedIdentity=null;clearFields();history.clear();page="home";navigation++;refreshRows();}else render();
     }
     private final Runnable poll=this::observe;
     private void confirm(String kind,String id,long revision){if(!available())return;fields();confirmation=kind;confirmationId=id;confirmationRevision=revision;showConfirmation();}
+    private static String destinationIdentity(AutomationRule rule){if(rule.transport==AutomationRule.Transport.INTENT)return transportLabel(rule.transport)+" · "+rule.destination;java.net.URI endpoint=java.net.URI.create(rule.destination);return transportLabel(rule.transport)+" · "+endpoint.getScheme()+"://"+endpoint.getHost()+(endpoint.getPort()<0?"":":"+endpoint.getPort());}
     private void showConfirmation(){
         if(confirmation.isEmpty()||ownedDialog!=null||!available())return;
-        String kind=confirmation,id=confirmationId;long revision=confirmationRevision;String title=kind.equals("test")?"Send saved rule’s test event?":kind.equals("unavailable")?"Destination unavailable":"Delete rule?";
+        String kind=confirmation,id=confirmationId;long revision=confirmationRevision;SavedIdentity reviewed=savedIdentity;if(!kind.equals("test")&&(reviewed==null||!reviewed.matches(id,revision))){confirmation="";confirmationId="";failure="Reopen the saved rule before deleting it.";render();return;}String title=kind.equals("test")?"Send saved rule’s test event?":"Delete “"+reviewed.name+"”?";
         String message=kind.equals("test")?"This sends a real event to the saved destination and can trigger its actions. Unsaved changes are not used.":kind.equals("unavailable")?"The saved destination could not be opened. Your sleep records are unaffected. Keep this rule or delete it to enter the destination again.":"Queued attempts will be removed. An in-flight request may already have been sent.";
+        if(!kind.equals("test"))message=reviewed.destination+"\n\n"+message;
         AlertDialog dialog=new AlertDialog.Builder(this).setTitle(title).setMessage(message).setNegativeButton(kind.equals("unavailable")?"Keep rule":"Cancel",null).setPositiveButton(kind.equals("test")?"Send test":"Delete rule",null).create();ownedDialog=dialog;
         dialog.setOnDismissListener(ignored->{if(ownedDialog==dialog){ownedDialog=null;confirmation="";confirmationId="";}});dialog.show();ReportDialogs.style(dialog);
         dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(v->{InteractionFeedback.action(v);dialog.dismiss();});
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v->{
             if(ownedDialog!=dialog||!resumed||isFinishing()||isDestroyed()||request!=null||!dialog.getWindow().getDecorView().hasWindowFocus()||!confirmation.equals(kind)||!confirmationId.equals(id)||confirmationRevision!=revision)return;
             if(!kind.equals("unavailable")&&(draft==null||!draft.id.equals(id)||draft.revision!=revision))return;
+            if(!kind.equals("test")&&savedIdentity!=reviewed)return;
             InteractionFeedback.action(v);Port pinned=owner;testOccurrence=kind.equals("test")?UUID.randomUUID().toString():"";String occurrence=testOccurrence;
             dialog.dismiss();
             if(kind.equals("test"))begin("test",app->{try(AutomationStore store=pinned.open(app)){AutomationRule saved=store.rule(id);if(saved==null||!saved.enabled)return "Enable and save this rule before sending a test.";if(saved.revision!=revision)throw new IllegalStateException("Rule changed. Reopen it before sending a test.");store.enqueue(AutomationEvent.occurrence(saved.event,occurrence,System.currentTimeMillis(),true),id);return scheduled(pinned,app,store,"Test event queued.");}});
-            else begin("delete",app->{try(AutomationStore store=pinned.open(app)){store.delete(id);return scheduled(pinned,app,store,"Rule deleted.");}});
+            else begin("delete",app->{try(AutomationStore store=pinned.open(app)){store.delete(id,revision);return scheduled(pinned,app,store,"Rule deleted.");}});
         });
     }
     @Override protected void onResume(){super.onResume();resumed=true;observe();if(page.equals("home")&&request==null)refreshRows();showConfirmation();}
@@ -219,6 +224,7 @@ public final class AutomationActivity extends Activity {
     @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){RecordUi.lightBars(this);showConfirmation();}}
     @Override public void onSaveInstanceState(Bundle state){
         fields();remember();super.onSaveInstanceState(state);state.putString("page",page);state.putBundle("positions",positions);state.putStringArrayList("history",new ArrayList<>(history));state.putString("failure",failure);state.putString("request",request);state.putString("operationKind",operationKind);state.putString("destinationType",destinationType.name());state.putString("confirmation",confirmation);state.putString("confirmationId",confirmationId);state.putLong("confirmationRevision",confirmationRevision);state.putString("testOccurrence",testOccurrence);
+        if(savedIdentity!=null){state.putString("savedRuleId",savedIdentity.id);state.putLong("savedRuleRevision",savedIdentity.revision);state.putString("savedRuleName",savedIdentity.name);state.putString("savedRuleDestination",savedIdentity.destination);}
         if(draft!=null){state.putString("id",draft.id);state.putString("name",draft.name);state.putString("event",draft.event.name());state.putString("transport",draft.transport.name());state.putBoolean("enabled",draft.enabled);state.putLong("revision",draft.revision);state.putString("destination",draft.destination);state.putString("topic",draft.topic);state.putString("username",draft.username);state.putBoolean("secretRestorationFailed",secretRestorationFailed);try{if(!draft.secret.isEmpty())state.putString("secret",owner.vault().seal(draft.secret));}catch(Exception unavailable){state.putBoolean("secretRestorationFailed",true);}}
     }
     @Override protected void onDestroy(){readGeneration++;navigation++;handler.removeCallbacksAndMessages(null);if(ownedDialog!=null){ownedDialog.setOnDismissListener(null);ownedDialog.dismiss();ownedDialog=null;}super.onDestroy();}
