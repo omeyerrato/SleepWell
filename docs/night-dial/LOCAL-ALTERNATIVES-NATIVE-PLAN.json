@@ -1,0 +1,162 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "base_commit": "8ffe1c1c0d618dce41ebcd82927776d78dc1327c",
+  "implementation_commits": [
+    "d0a8792da8d1449bba9e679ab086c49ebab2c48c",
+    "c8ad4ac65ca4629b6606d4bc7c6d643505cac848",
+    "2ffe5e14bff8bfa6ca90186a4467e8351839ccf0",
+    "ecc4fa39deea1f32739314a349b0ff980cb768b3",
+    "71ec591e",
+    "b3c3082394edfb14a795b9d094e52680635344a1",
+    "2db7bbce5992fe2cf808257a9b9d14127251abb4"
+  ],
+  "native_status": "not_run_pending_integration",
+  "verification_commit": null,
+  "native_review_run": null,
+  "units": "not_run",
+  "arguments": {
+    "ciReview": "true"
+  },
+  "emulator": "Disposable emulator only; no real capture/playback/alarms/provider exchange. Existing methods retain their preflights and cleanup.",
+  "methods": [
+    {
+      "method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "states": [
+        "19C"
+      ],
+      "required_originals": [
+        "night-dial-breadth-Nap.png",
+        "night-dial-breadth-GuidedWindDown.png",
+        "night-dial-breadth-Diary.png",
+        "night-dial-breadth-Appearance.png",
+        "night-dial-breadth-Guard.png",
+        "night-dial-breadth-AutomaticTracking.png",
+        "night-dial-breadth-RecurringTracking.png",
+        "night-dial-breadth-SleepRhythm.png",
+        "night-dial-breadth-GoalBank.png",
+        "night-dial-breadth-Travel.png",
+        "night-dial-breadth-CalendarRules.png",
+        "night-dial-breadth-SmartBedtime.png",
+        "night-dial-breadth-SmartLight.png",
+        "night-dial-breadth-HueBridge.png",
+        "night-dial-breadth-Automation.png",
+        "night-dial-breadth-HealthConnect.png",
+        "night-dial-breadth-Backup.png",
+        "night-dial-breadth-CloudBackup.png",
+        "night-dial-breadth-SettingsProfile.png",
+        "night-dial-breadth-Search.png",
+        "night-dial-breadth-SoundLibrarySettings.png",
+        "night-dial-breadth-FavoriteSounds.png",
+        "night-dial-breadth-SleepSounds.png",
+        "night-dial-breadth-DreamCue.png",
+        "night-dial-breadth-SnoringCues.png",
+        "night-dial-breadth-TagManagement.png",
+        "night-dial-breadth-HomeWidgetSettings.png",
+        "night-dial-breadth-AlarmProtection.png",
+        "night-dial-breadth-FeedbackSettings.png",
+        "night-dial-breadth-AwakeSettings.png",
+        "night-dial-breadth-SoundSensitivity.png",
+        "night-dial-breadth-TrackingDelay.png",
+        "night-dial-breadth-TrackingFlip.png",
+        "night-dial-breadth-TrackingDnd.png",
+        "night-dial-breadth-ExternalMediaFade.png",
+        "night-dial-breadth-BinauralSettings.png",
+        "night-dial-breadth-SleepCsv.png",
+        "night-dial-breadth-ResearchExport.png",
+        "night-dial-breadth-RecordAccess.png",
+        "night-dial-breadth-AlarmAccess.png",
+        "night-dial-breadth-IncomingAutomationSettings.png",
+        "night-dial-breadth-NarrationVoice.png",
+        "night-dial-breadth-SRI.png",
+        "night-dial-breadth-NapProfiles.png",
+        "night-dial-breadth-HabitualTiming.png",
+        "night-dial-breadth-VoiceSettingsUnavailable.png",
+        "night-dial-breadth-VoiceSettingsUnavailableRestored.png"
+      ],
+      "scope_and_fakes": "45 existing destination renders plus actual unavailable Android voice-settings action, error recreation and Cancel. VoiceSettings port throws; no real Android settings/voice inventory installation/preview is certified."
+    },
+    {
+      "method": "org.sleepwell.app.CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight",
+      "states": [
+        "34D"
+      ],
+      "required_originals": [
+        "calendar-event-default.png",
+        "calendar-event-recreated.png",
+        "calendar-event-unavailable.png",
+        "calendar-event-manual-export-review.png",
+        "calendar-event-manual-export-review-restored.png",
+        "calendar-event-manual-export-overview.png",
+        "calendar-event-manual-export-returned.png",
+        "calendar-event-opened.png"
+      ],
+      "scope_and_fakes": "Actual manual-export review/Cancel/recreation, actual BackupActivity CSV overview and Back with note choice retained. Calendar launcher injected; no picker/export/provider writes. All-record scope is disclosed; selected retained-original CSV branch is source-only."
+    },
+    {
+      "method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+      "states": [
+        "22C"
+      ],
+      "required_originals": [
+        "sonar-setup-testing.png",
+        "sonar-setup-cancelled.png",
+        "sonar-setup-cancel-recreated.png",
+        "sonar-setup-charging-error.png",
+        "sonar-setup-unsupported.png",
+        "sonar-setup-permission.png",
+        "sonar-setup-movement-denied.png",
+        "sonar-setup-movement-before-stop.png",
+        "sonar-setup-movement-returned.png",
+        "sonar-setup-movement-stopped-returned.png",
+        "sonar-setup-movement-restored.png"
+      ],
+      "scope_and_fakes": "Existing prerequisite/cancel/recreation plus actual Tracking sensor selection after denied microphone and confirmed fake-probe release. Private Tracking/Sonar state and injected PCM/capabilities; no native capture, physical signal or outputs."
+    },
+    {
+      "method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "states": [
+        "31C"
+      ],
+      "required_originals": [
+        "trip-occurrence-plan.png",
+        "trip-occurrence-choices.png",
+        "trip-occurrence-choices-restored.png",
+        "trip-occurrence-kept.png",
+        "trip-occurrence-proposal.png",
+        "trip-occurrence-reviewed.png",
+        "trip-occurrence-reviewed-restored.png",
+        "trip-occurrence-cancelled.png",
+        "trip-occurrence-draft.png",
+        "trip-occurrence-draft-restored.png",
+        "trip-occurrence-stale-plan.png",
+        "trip-occurrence-stale-alarm.png",
+        "trip-occurrence-ready-to-save.png",
+        "trip-occurrence-saved.png",
+        "trip-occurrence-no-eligible.png"
+      ],
+      "scope_and_fakes": "One explicitly authorized new focused native method: current System time pinned before creating tomorrow in current zone; private SQLite and private Trip/TripSleep/Calendar prefs, actual local activities/actions, fake scheduling and inert WakeChecks. Review/Use edits draft only; explicit Save commits override before fake schedule; Keep/Cancel/recreation/retired Use/stale plan/stale alarm/ordinary recurrence asserted. No real alarm scheduling/delivery."
+    }
+  ],
+  "required_original_count": 81,
+  "new_required_original_count": 26,
+  "full_acceptance": false,
+  "source_sha256": {
+    "app/src/main/java/org/sleepwell/app/NarrationVoiceActivity.java": "857ce8b304d5fe15d554fb4b54bda9bf844b5b1e1c0354ee99fa36957ac0dfff",
+    "app/src/main/java/org/sleepwell/app/CalendarEventExportActivity.java": "2a49cca153d8ae10b70c763238630a8a41393e0c4dabfb9b569f57293405095c",
+    "app/src/main/java/org/sleepwell/app/ContactlessSetupActivity.java": "4e63ec58080a11a1664f4b651ae5719f8d4e87bd4f1f085ad13c6fd505cd24ec",
+    "app/src/main/java/org/sleepwell/app/TrackingActivity.java": "b789500be6473b9fc7b5cb33eee4223a8288281901c0d7a4c49ff6c6c9f105c5",
+    "app/src/main/java/org/sleepwell/app/SonarRuntime.java": "ecb35d961f487337fa5662e2644f865bb8b4e8e430f60e218ca5020432dc90d2",
+    "app/src/main/java/org/sleepwell/app/TripSleepActivity.java": "2f0c092957807a0f85e480c03bef749738caabd1780769c136dff6c47e040051",
+    "app/src/main/java/org/sleepwell/app/TripSleepStore.java": "51df4c9826b731732da849269b569d8f7c64578dc75964f6947c28077dc7b730",
+    "app/src/main/java/org/sleepwell/app/TripAlarmShift.java": "bb80f8862d8ac2f8b810f9f512f18ead302d45cd70ba7cb2e3d7bb569fc603ad",
+    "app/src/main/java/org/sleepwell/app/NextAlarmOverrideActivity.java": "44e58c7a4c04fcec0d295b941bd01591d4d3fb6019141a4356b14bdfb9965f73",
+    "app/src/main/java/org/sleepwell/app/AlarmEditorActivity.java": "b6aa4f5269a2aeced162641f3c77e4b2254bedb8f0c7bf46c92d78a9fc79bca2",
+    "app/src/main/java/org/sleepwell/app/AlarmSkips.java": "9d96c0429985b1f6c60c4247b985d7145467b1a1ee19e6ec4aa0276cd8587391",
+    "app/src/androidTest/java/org/sleepwell/app/NightDialBreadthTest.java": "d6469bb42f9938ed71ab58eadcf515acb410b9f10427c4c862cb1eb6027af1bd",
+    "app/src/androidTest/java/org/sleepwell/app/CalendarEventExportFlowTest.java": "976c9d651d533b93a19687129421c0d5f8011529b9d55a0b3e25e1df5a942178",
+    "app/src/androidTest/java/org/sleepwell/app/ContactlessSetupFlowTest.java": "2a03ca4fb4f179be5e9526761897c48f3d397a0dc8f6489afec59f43e8c540c2",
+    "app/src/androidTest/java/org/sleepwell/app/TripOccurrenceFlowTest.java": "88e5d45d41a08bbf9e0b15e232104a7dfdd7d94cc147df64662966ad30acabdf"
+  },
+  "limits": "Plan/source only. No native result, physical success, original screenshots or all-43-state acceptance is claimed. Root owns compilation, dispatch, result/artifact checks and actual image inspection. The three existing extended methods stay intact; the single new Trip method is specifically authorized, not a unit campaign."
+}

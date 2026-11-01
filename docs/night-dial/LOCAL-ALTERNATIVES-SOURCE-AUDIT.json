@@ -1,0 +1,392 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "source_commit": "2db7bbce5992fe2cf808257a9b9d14127251abb4",
+  "historical_registry": {
+    "path": "docs/night-dial/STATE-ACCEPTANCE.json",
+    "sha256": "32ebc8ef92c35f75bc457814cca8589d61f63890545d36bef0683bb83107b38f",
+    "implementation_revision": "66c9fd4a30f12b158f79a6953a5f5b9224cf61e8",
+    "unchanged": true
+  },
+  "finite_scope": {
+    "external_physical_prerequisite": 63,
+    "unsupported_model_or_contract": 3,
+    "unique_registry_owners": 34
+  },
+  "scope": "Finite source review of local admission, cancellation/cleanup, retry, permission-return and supported alternatives. No external action execution or new acceptance classification. Related model and physical claims are not manufactured.",
+  "owner_inventory": [
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/GuardActivity.java",
+      "states": [
+        "03C"
+      ],
+      "owner_blob": "c4366778c4e01343093f1012160234fdb8d3e59d",
+      "sha256": "1165820c02860011146a920f08739e9d250caf220398096582557b27f35a5930",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/QrCodeActivity.java",
+      "states": [
+        "09B",
+        "09C",
+        "09D"
+      ],
+      "owner_blob": "73f2901091f551b4130f401812cc9cbb7daab3fd",
+      "sha256": "3a65f58ce7434a89bbca5b94ef035f0e4db954aa225a3f95e8842166107d91e4",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/ChallengePracticeActivity.java",
+      "states": [
+        "11D",
+        "12D",
+        "16A",
+        "16B",
+        "16D"
+      ],
+      "owner_blob": "6b6db3e2c4c948a25f9e92f9e5773b8f14b9faaa",
+      "sha256": "01779e72396b7774c5e0de1ed0335480f2201ff0ee47f8d95d2bb7133c7eaa81",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/MotionChallengePracticeActivity.java",
+      "states": [
+        "13A",
+        "13B",
+        "13C",
+        "13D"
+      ],
+      "owner_blob": "313e584aa22a0009972380a7981d78fba868ad92",
+      "sha256": "9cc40cb32f56f43a280534899f3d8088d629f850c8a6009b83158fdf2c1907d1",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/RoutineCameraPracticeActivity.java",
+      "states": [
+        "14A",
+        "14B",
+        "14C",
+        "14D",
+        "42C"
+      ],
+      "owner_blob": "39794a8b4ce295be2faf4e6843403c9718f9a21e",
+      "sha256": "3aabea37a29eaad6751ab40c1ff77b47760ea274008a559ea9428be49dec32a7",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/RoutineAudioPracticeActivity.java",
+      "states": [
+        "15A",
+        "15B",
+        "15C",
+        "15D",
+        "42D"
+      ],
+      "owner_blob": "c482ad368598820b16f9981caa906cb5bb9cf7ba",
+      "sha256": "41d61448055ed5bc55b6ac769f937585f320a911da432fa30480144a63a2e438",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/AlarmActivity.java",
+      "states": [
+        "17A",
+        "17B",
+        "17C",
+        "17D",
+        "42A",
+        "42B"
+      ],
+      "owner_blob": "43e474d3077c8284582afd869f49c08734d76082",
+      "sha256": "36fe80a69c990ec3b289d9f05322afa45507441750402aca8f225112f7fbed20",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/TrackingActivity.java",
+      "states": [
+        "18A",
+        "18D",
+        "21D"
+      ],
+      "owner_blob": "31645b7f0e0a11e2fa13ce2a90c4959270b0aac3",
+      "sha256": "b789500be6473b9fc7b5cb33eee4223a8288281901c0d7a4c49ff6c6c9f105c5",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/SleepSoundsActivity.java",
+      "states": [
+        "19A",
+        "19B"
+      ],
+      "owner_blob": "0b831a91ca14d78ea256990d483b40cbf89f2234",
+      "sha256": "e4988e7a96ea83c4490d6b1c27da988e806c8563cd7516f441e546670bbc057a",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/NarrationVoiceActivity.java",
+      "states": [
+        "19C"
+      ],
+      "owner_blob": "fe585475ff1ee0f0c1503df1ac230a9acb54449c",
+      "sha256": "857ce8b304d5fe15d554fb4b54bda9bf844b5b1e1c0354ee99fa36957ac0dfff",
+      "local_review_disposition": "implemented_alternative_pending_native",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/ExternalMediaFadeActivity.java",
+      "states": [
+        "19D"
+      ],
+      "owner_blob": "fb58973bfbdb85895a808235555020e51b1631b1",
+      "sha256": "f8d5a856ef1758cb7daba53fd59febf14ebd2ba7e526e26813e428ca9fd5c579",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/AutomaticTrackingActivity.java",
+      "states": [
+        "21B"
+      ],
+      "owner_blob": "6824a57d4c556c91456acaf0b2779f82481062ae",
+      "sha256": "8fa322613aba87beeb9334a83fd4bed1334a04968d6794cef59eba55de7e1c98",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/MotionCalibrationActivity.java",
+      "states": [
+        "22B",
+        "43C"
+      ],
+      "owner_blob": "e2b4da30f17a172c42a46a29d2da02e8aff98213",
+      "sha256": "7c834d71be434076b0bc1135b042df63133e828544bdeb20a27bc20667d6b22a",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/ContactlessSetupActivity.java",
+      "states": [
+        "22C"
+      ],
+      "owner_blob": "f5717f42923a1d21f07051a8bf52d24c6710e86b",
+      "sha256": "4e63ec58080a11a1664f4b651ae5719f8d4e87bd4f1f085ad13c6fd505cd24ec",
+      "local_review_disposition": "implemented_alternative_pending_native",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/PairMotionActivity.java",
+      "states": [
+        "22D"
+      ],
+      "owner_blob": "4c469998b9563eef0b01ecff6d7b74f2db39cd6d",
+      "sha256": "7f7931ef7805c5411d985fdcf697ad739f879226496134dfbed6947b19020a28",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/RoomConditionsActivity.java",
+      "states": [
+        "23A",
+        "23C"
+      ],
+      "owner_blob": "b479b897a64f5087fc6ad8deb03241fba8bcb222",
+      "sha256": "42125ffb4d2396164151661e0cf7726793569dd99318c2d7d23694f4330a6e10",
+      "local_review_disposition": "unsupported_truthful_no_fabricated_experiment",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "states": [
+        "24A",
+        "33A"
+      ],
+      "owner_blob": "4fd4af6e090fbe2c378670d009c1e9f66a8ad87b",
+      "sha256": "55c4f82cd0768ebe0441e2d8aae86d82f13ae9c73624b2839662d620d39980d6",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/SoundEventsActivity.java",
+      "states": [
+        "24C"
+      ],
+      "owner_blob": "4f0ec3552184dc56c305c4f2fa69df982f9e966b",
+      "sha256": "6d13ba0ac6e5461691c58b4dc679e53bda69ca5aedc9e4bfb9a8b68f3f6f9024",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/SnoringCuesActivity.java",
+      "states": [
+        "25B"
+      ],
+      "owner_blob": "cd386b5d0b24b2cb15926ad6d1c8964eaae22750",
+      "sha256": "3e179fe44b36e2510f89616d092f52c7e486e69d4eb1d6f37a60a1d8e3baa5b1",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/DreamCueActivity.java",
+      "states": [
+        "25C"
+      ],
+      "owner_blob": "4ad58e424e667a04ab8964219d555f06dc4c4714",
+      "sha256": "82c9e2367363edbcc5f3025fe99f5be217d42263965da78fdf67750a00cd327c",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/SleepRhythmActivity.java",
+      "states": [
+        "28D"
+      ],
+      "owner_blob": "deae49c2017d83b38e2a2ca4e3471c0462165430",
+      "sha256": "eca31a7d1544a6331034e0ec87e1a0d661592afc10eaf1d87a6f58f7493d5ca6",
+      "local_review_disposition": "contributor_route_owned_by_sound_agent",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/CalendarRulesActivity.java",
+      "states": [
+        "31D"
+      ],
+      "owner_blob": "eb6dfdd234837b46623366e9067e1f252da43f7d",
+      "sha256": "2a36759dc37ff0ddade3afbc3f4f841d1a891544f4c2612e47200a6560682798",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/AlarmProtectionActivity.java",
+      "states": [
+        "33B",
+        "33D"
+      ],
+      "owner_blob": "4f6daddc46d3e8e834a9d377c91956470d09f2f1",
+      "sha256": "7fa59b8270f5b71d25914a2eb1234f3cc854b798720d614861098ab551681d91",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/UninstallProtectionActivity.java",
+      "states": [
+        "33C"
+      ],
+      "owner_blob": "cd00075b8c7665ee89fabee845fe38ef1c58cd06",
+      "sha256": "d02ba1597541a66623cdd09ad78e20e52fc8aa3020a95ed4ca107e4624115c1f",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/HealthConnectActivity.java",
+      "states": [
+        "34B",
+        "34C"
+      ],
+      "owner_blob": "791d64fa8e0aa5a342e3255ab5d9d6cedd0811c8",
+      "sha256": "5464ead847996ff017663f7fc21eb6b9575a0482f6753d0a0f5ff7c521255bf8",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/CalendarEventExportActivity.java",
+      "states": [
+        "34D"
+      ],
+      "owner_blob": "b34833550f78812d0e9bdcc25279aba557dfba09",
+      "sha256": "2a49cca153d8ae10b70c763238630a8a41393e0c4dabfb9b569f57293405095c",
+      "local_review_disposition": "implemented_alternative_pending_native",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/SmartLightActivity.java",
+      "states": [
+        "35A"
+      ],
+      "owner_blob": "668e33062e43ce00a7aa71067011c9f838b67241",
+      "sha256": "b201c69e9031131cb5371dfe306f98b6b2d7e1ea3eee9f6e3c4d40a9400fc07a",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/IncomingAutomationSettingsActivity.java",
+      "states": [
+        "35D"
+      ],
+      "owner_blob": "142be6171ddce089f45199141be940ad8ae85997",
+      "sha256": "ebf74a392beb40e3059158d47a23d9e8949f976374de9050b8fb8a0d1db7303e",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/BackupActivity.java",
+      "states": [
+        "36B"
+      ],
+      "owner_blob": "afec20915509b66944ab528e63c8dbca7c7fdefa",
+      "sha256": "5d12659b90646f1b95c3d6b5cfe951557f68ea720914c9c9864162fa83493fc6",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/CloudBackupActivity.java",
+      "states": [
+        "37A",
+        "37B",
+        "37C"
+      ],
+      "owner_blob": "f8fedae8422180b2499efb5748fef0bbb15c19cd",
+      "sha256": "3e63df198b03a12090553041f1fcafd36fbdcaab10100990eba3db4c5b0db9f5",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/IncomingAutomationActivity.java",
+      "states": [
+        "38C"
+      ],
+      "owner_blob": "21f2d32fdccb0fed80dfc2fb355ba1acdc358384",
+      "sha256": "4308421f17d90a15f9a745be7c8887cdfdf37b4c9c1f61efb0ceef9062dd6b1f",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/HomeWidgetSettingsActivity.java",
+      "states": [
+        "39A"
+      ],
+      "owner_blob": "efd5df5dd1cb1067776645e26088d6fab94facfc",
+      "sha256": "f472ca358ef10d122aad7a072ac36bfb05c07834e1234be35c0dabf41d9c46b6",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/HomeLaunchActivity.java",
+      "states": [
+        "39B"
+      ],
+      "owner_blob": "02ac75db2bb28e21d3724b093ed757d12b9ebe09",
+      "sha256": "aeea54bb43a5acd3fcd01266fa1febb744d0c4134e8d5622c3c42af3d4212208",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    },
+    {
+      "owner": "app/src/main/java/org/sleepwell/app/AlarmRequestActivity.java",
+      "states": [
+        "39C"
+      ],
+      "owner_blob": "5212c5af4b4e7377cb838983ea2926f473e0e4d6",
+      "sha256": "2f0c109c6d35011f5b97ce870e8741b9658489b922f1ce7b0bb4365ab07b5f7c",
+      "local_review_disposition": "source_controls_reviewed_external_action_not_executed",
+      "state_action_acceptance": false
+    }
+  ],
+  "full_acceptance": false
+}
