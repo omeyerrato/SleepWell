@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "native_status": "not_run_pending_root_build_and_selected_cohort",
+  "frozen_protocol_commit": "8d46ac5a6545028b132ca9ccbb79d3e726e578da",
+  "base_source": "cddd51e5c7e79d220728bd76ce4028cfb4a7a860",
+  "implementation_dependencies": [
+    "7205295adf923aaf5b6acf173032d918e3a58d64",
+    "c245e3f204052493e48c5753389ed5a355ed8af4",
+    "fca18977f95a4ec7f6d8cc652324d6765b18ceba"
+  ],
+  "methods": [
+    {
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "required_originals": [
+        "additional-settings-default.png",
+        "additional-settings-draft-restored.png",
+        "additional-settings-dirty-restored.png",
+        "additional-settings-saved.png",
+        "additional-report-entry.png",
+        "additional-record-results.png",
+        "additional-record-restored.png",
+        "additional-record-about.png",
+        "additional-record-unavailable.png"
+      ],
+      "required_proof": [
+        "additional-sounds-flow-proof.json"
+      ],
+      "assertion_scope": "Actual defaultOff, draft/Cancel/dirtyKeep/Discard/recreation/Save/reopen; admitted private PCM through real bundled automatic worker into SQLite; original records/corrected base events/epochs/alarms/prefs exact; off applies to future nights; portable14 excludes derived marker; actual Report route/read-only results/About/recreation and deleted-source retry fails closed."
+    },
+    {
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#singleThreadPerformanceAndBoundedQueueRetireLateWork",
+      "required_originals": [],
+      "required_proof": [
+        "additional-sounds-performance-before-fences.json",
+        "additional-sounds-operational-proof.json"
+      ],
+      "assertion_scope": "Actual CPU1 model cold constructor+one warmup+20 fixed real10s inferences; measured sampled PSS/used heap deltas and320sample accept maximum; one running+one queued, overrun coverage/model close before finish, pause/finish late completion, partial gap, identicalraw IDreuse, erase, actual Records.factory replacement. Concurrency ModelFactory returns a previously computed real result only for deterministic scheduling; not represented as a new inference. Actual cached real-window append/read before status must expose10000ms analyzed; older0 status cannot regress committed coverage."
+    },
+    {
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "required_originals": [
+        "interrupted-recovery-tonight.png",
+        "interrupted-recovery-review.png",
+        "interrupted-recovery-review-restored.png",
+        "interrupted-recovery-retained-report.png",
+        "interrupted-recovery-retained-report-restored.png",
+        "interrupted-recovery-manual-setup.png",
+        "interrupted-recovery-manual-returned.png",
+        "interrupted-recovery-reopened.png",
+        "interrupted-recovery-kept-token-retired.png",
+        "interrupted-recovery-discard-review.png",
+        "interrupted-recovery-discard-restored.png",
+        "interrupted-recovery-stale-discard-rejected.png",
+        "interrupted-recovery-stale-review.png",
+        "interrupted-recovery-discard-final.png",
+        "interrupted-recovery-discarded.png"
+      ],
+      "required_proof": [
+        "interrupted-recovery-schema19-proof.json"
+      ],
+      "assertion_scope": "Existing recovery lifecycle remains. Constructed17\u219219 raw preservation, constructed18\u219219 exact receipt/raw preservation, old nights not retroactively opted in. Missing-microphone additional owner enrolls while session open before recovery; retained read-only Report suppresses actual requested additional-result route. Existing named discard/reused ID/history erase assertions retained."
+    }
+  ],
+  "required_original_count": 24,
+  "required_proof_count": 4,
+  "fixture": {
+    "asset": "app/src/androidTest/assets/classifier-fixtures/laughter-morning.pcm",
+    "whole_pcm_sha256": "ddf4f22ae871bc993329571af9660f1daba0b5a6f89ea2d11f77e3e2d222c305",
+    "benchmark_prefix_pcm_sha256": "90c591e65049066b0fed71b6cba2ff4761c496cc4eaad03d25259c9e6464e291",
+    "accuracy_claim": false
+  },
+  "units": "not_run_no_new_unit_campaign",
+  "outputs": "No capture, playback, alarm/service start, actual provider writes, uploads, new model/audio downloads or phone actions. Direct already-admitted PCM injection only.",
+  "limits": [
+    "Source-only until root builds and runs the exact selected methods. No passing runtime, performance or visual result exists yet.",
+    "DefaultOff and future-only policy do not establish reliable bedroom sound quality. Candidate scores remain uncalibrated; no stage/apnea inference.",
+    "Migration uses constructed prior schemas by removing exactly additive objects, not independent old-user DBs.",
+    "Sampled100ms PSS/heap maxima may miss transient allocations; native memory is covered by measured process PSS, not by Java heap alone.",
+    "Lifecycle fixture has one completed real10s window. Multi-page results/restored-no-local copy and provider/error injection are not accepted by these captures."
+  ],
+  "source_files": [
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/AdditionalSoundsNativeFlowTest.java",
+      "working_bytes_sha256": "e7da89f005edc0da574e29134ef68e5cfd0834b229fba2b778fcac4830a3b57d",
+      "git_blob_if_staged": "b2f08da3370a2521b6c07acfa987f27412af796b",
+      "staged_content_sha256": "e7da89f005edc0da574e29134ef68e5cfd0834b229fba2b778fcac4830a3b57d"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/InterruptedRecoveryFlowTest.java",
+      "working_bytes_sha256": "767c42d7f52a13ee1a2f63f25d510da0096186a00e1bfcf59bc6c4bd1275913a",
+      "git_blob_if_staged": "72184f4eb4890c50eff887607edec0b1c4b6012a",
+      "staged_content_sha256": "767c42d7f52a13ee1a2f63f25d510da0096186a00e1bfcf59bc6c4bd1275913a"
+    }
+  ]
+}
