@@ -156,7 +156,8 @@ final class AdditionalSoundNight {
                             else {
                                 runningWindows=1;if(analyzer==null)analyzer=models.open();
                                 long before=SystemClock.elapsedRealtime();
-                                RecordedSoundAnalyzer.Result result=analyzer.analyze(block.pcm,()->!live(block));
+                                Block acceptedBlock=block;
+                                RecordedSoundAnalyzer.Result result=analyzer.analyze(block.pcm,()->!live(acceptedBlock));
                                 long elapsed=SystemClock.elapsedRealtime()-before;
                                 if(elapsed>=10000){unavailable("Additional inference took longer than its capture window. Further estimates stopped to protect recording.");}
                                 else if(live(block)&&result.windows.size()==1&&result.analyzedMs==10000&&block.segment.revision.compareAndSet(block.revision,block.revision)) {
