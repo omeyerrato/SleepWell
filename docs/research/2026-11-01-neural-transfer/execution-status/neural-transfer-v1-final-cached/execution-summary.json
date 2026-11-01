@@ -1,0 +1,133 @@
+{
+  "status": "STOPPED_VAL_FAILED_NO_TEST",
+  "source_commit": "a65be6e511a118459deea6aeed93ddcdc4cb9f8d",
+  "mechanical_correction_commit": "0f4ddceefeb1ef9e1225cf81ae1e049a75239cf3",
+  "actual_cached_fit_count_this_exception": 1,
+  "training_feature_extraction_repeated": false,
+  "validation_runs_this_exception": 1,
+  "respiratory_test_invoked": false,
+  "respiratory_test_outcomes_read": false,
+  "new_network_bytes": 0,
+  "packages_installed": false,
+  "original_cached_train_npz_sha256": "6e02fe3c1d270a5d4b8ecffcc7273d9db603b3ff008de4aea8c7f8b50544873d",
+  "model_sha256": "c18caa20633ff1ad11d883ae4f5e229fbef91f7022f841f2e2feb245af0560ef",
+  "primary_portable_max_difference": 0.0,
+  "coverage": 0.88,
+  "class_support": [
+    64,
+    24
+  ],
+  "class_participants": [
+    10,
+    9
+  ],
+  "confusion": [
+    [
+      63,
+      1
+    ],
+    [
+      24,
+      0
+    ]
+  ],
+  "metrics": {
+    "accuracy": 0.7159090909090909,
+    "balanced_accuracy": 0.4921875,
+    "sensitivity": 0.0,
+    "specificity": 0.984375,
+    "macro_f1": 0.41721854304635764,
+    "auroc": 0.6126302083333334,
+    "average_precision": 0.3584149217077943,
+    "binary_brier": 0.1978692640772162,
+    "negative_log_likelihood": 0.5843777060508728
+  },
+  "gates": {
+    "coverage": true,
+    "target_support": true,
+    "participant_support": true,
+    "auroc": false,
+    "balanced_accuracy": false,
+    "sensitivity": false,
+    "specificity": true,
+    "macro_f1": false,
+    "brier": true,
+    "nll": true
+  },
+  "all_gates_passed": false,
+  "conclusion": "Reject candidate2 for deployment. No apnea diagnosis, sleep-stage or validated breathing claim. No further retry/refit/tuning authorized.",
+  "limitations": [
+    "Previously inspected validation cohort, not untouched validation",
+    "Sampled source-annotated overlap, not full-night/AHI or clinical diagnosis",
+    "Event-duration seconds interpretation remains conditional, not independently field-verified",
+    "Synthetic and actual decoder agreement establishes arithmetic fidelity, not predictive validity"
+  ],
+  "private_artifacts_retained_at": ".android-local/research/neural-transfer-v1-final-cached",
+  "artifacts": {
+    "cached-train-receipt.json": {
+      "bytes": 2629,
+      "sha256": "299d9306cfe8f393b0644b47eb0bae494c6206602bb592497df6b807d61fa92a",
+      "archived": true
+    },
+    "fit-started.json": {
+      "bytes": 2397,
+      "sha256": "eb7cd4a398964b4f812f8123723289ae51da580a9bcd4e7eba0c8e3a285d3be0",
+      "archived": true
+    },
+    "head-parity.json": {
+      "bytes": 273,
+      "sha256": "3ae27fca6add06f70a15d659bec392030106ac729500a55f33aca66712b76c30",
+      "archived": true
+    },
+    "model-fitted.json": {
+      "bytes": 122441,
+      "sha256": "25d53350594a69045f106586f7a1747d04c4463fdfa88e70ca7054c14efb6182",
+      "archived": false
+    },
+    "model.json": {
+      "bytes": 122582,
+      "sha256": "c18caa20633ff1ad11d883ae4f5e229fbef91f7022f841f2e2feb245af0560ef",
+      "archived": false
+    },
+    "parity-started.json": {
+      "bytes": 2397,
+      "sha256": "eb7cd4a398964b4f812f8123723289ae51da580a9bcd4e7eba0c8e3a285d3be0",
+      "archived": true
+    },
+    "parity.json": {
+      "bytes": 3271,
+      "sha256": "8917ff0432f9b0936b2520c55df386aed9e675994714b44575df832f7b2f9c3b",
+      "archived": true
+    },
+    "train-features.json": {
+      "bytes": 111832,
+      "sha256": "707086ceedf22ab74f11ba55d353b162f8bd80de3d0d8d31e9796050cca5f1ef",
+      "archived": true
+    },
+    "train-features.npz": {
+      "bytes": 383390,
+      "sha256": "6e02fe3c1d270a5d4b8ecffcc7273d9db603b3ff008de4aea8c7f8b50544873d",
+      "archived": false
+    },
+    "validation-features.json": {
+      "bytes": 51544,
+      "sha256": "269f1e58b8c42d9a086549a70161c4d7ca1d46016e2603df3519c42385ea61b6",
+      "archived": true
+    },
+    "validation-features.npz": {
+      "bytes": 169826,
+      "sha256": "79434a837f58fd2e008e9ffc7dc25f2d22e136c232ea49a75d089c2531afcd2e",
+      "archived": false
+    },
+    "validation-started.json": {
+      "bytes": 2547,
+      "sha256": "6e274898c7cf62cf4245bba35a47f866d9c5dbe9a838cf6e95223ebc936c398c",
+      "archived": true
+    },
+    "validation.json": {
+      "bytes": 80516,
+      "sha256": "6e8dc7c0ab875f3ace994e5c9d6abdf8d3e568c618b75cecca8fbd9a5d9eeffd",
+      "archived": true
+    }
+  }
+}
