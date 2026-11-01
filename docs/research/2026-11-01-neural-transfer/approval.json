@@ -2,7 +2,7 @@
   "date": "2026-11-01",
   "authority": "Explicit parent /root specific approval in current task before allcandidate2 outcomes",
   "one_fixed_candidate_authorized": true,
-  "protocol_sha256": "a014c7567fa63c1c1232956882f93968078673c55e28ef44c1eaa451e81e3ff4",
+  "protocol_sha256": "744bb5c794bca7f4a768df673f4643ef421ad9d7b0bc58e734f7cdfc0962797b",
   "supersedes": "Earlier feasibilityproposal originalsigmoidmean; NOT run. Revisedprimarypipeline nowfixed pretrained32+TRAINlogistichead, not chooseafterVAL",
   "required": "Commit fullworkflowbeforefeatures; primary Kerasparityfirst; one fit/VAL; RESPTESTonceONLYifALLgatespass; no Androidshipping",
   "conditional_units": "event_durationseconds acceptedasinference; notfield-specificallyproved",
