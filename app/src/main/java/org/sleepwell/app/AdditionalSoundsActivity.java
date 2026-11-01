@@ -81,6 +81,7 @@ public final class AdditionalSoundsActivity extends androidx.activity.ComponentA
         RecordUi.enabled(save, initialized && job.loaded && !job.busy);
         RecordUi.enabled(Design.button(footer, "Cancel", false, action(epoch, this::finish)), !job.busy);
     }
+    private static String windowCount(int count) { return count + (count == 1 ? " window" : " windows"); }
     private void recording(LinearLayout body, int epoch) {
         Design.text(body, "Experimental estimates", 21, 600, Design.INK); Design.space(body, 8);
         Design.text(body, "Read-only · original capture. These coarse windows can miss or confuse sounds. They do not change sound events, labels or cues.", 14, 400, Design.MUTED); Design.space(body, 14);
@@ -100,8 +101,8 @@ public final class AdditionalSoundsActivity extends androidx.activity.ComponentA
             fact(body, "Not analyzed", RecordUi.duration(result.skippedMs));
             Design.space(body, 8); Design.text(body, "Coverage is from the original microphone capture, including any intervals outside a later edited period. Pauses, short tails and resource limits can leave gaps.", 12, 400, Design.MUTED);
             RecordUi.heading(body, "Candidate windows");
-            fact(body, "Laughter", result.laughterCount + " windows"); fact(body, "Instruments", result.instrumentCount + " windows");
-            fact(body, "Uncertain", Math.max(0, result.windowCount - result.laughterCount - result.instrumentCount) + " windows");
+            fact(body, "Laughter", windowCount(result.laughterCount)); fact(body, "Instruments", windowCount(result.instrumentCount));
+            fact(body, "Uncertain", windowCount(Math.max(0, result.windowCount - result.laughterCount - result.instrumentCount)));
             Design.space(body, 8); Design.text(body, "Counts describe analyzed windows, not separate events. Zero candidates never proves absence.", 12, 400, Design.MUTED);
             RecordUi.heading(body, "Analyzed windows");
             if (result.windowCount == 0) Design.text(body, "No completed window is saved. Results are unknown; review coverage and the status above.", 14, 400, Design.MUTED);

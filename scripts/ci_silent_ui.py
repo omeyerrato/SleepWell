@@ -61,6 +61,7 @@ parser.add_argument("--scope", choices=(
     'recovery-rules-reference',
     'contactless-fallback-reference',
     'additional-sounds-reference',
+    'additional-sounds-ui-reference',
     'setup-readiness',
     'readiness-recovery',
     'protection-recovery',
@@ -536,8 +537,9 @@ elif args.scope == "completion-reference":
 elif args.scope == "local-alternatives-reference":
     tests = [method["method"].removeprefix("org.sleepwell.app.") for method in ALTERNATIVE_METHODS]
     metadata["local_alternatives_slice"] = "Actual local fallback, rhythm evidence and reviewed travel draft flows; private state and injected physical/service ports"
-elif args.scope == "additional-sounds-reference":
-    tests = [method["method"].removeprefix("org.sleepwell.app.") for method in ADDITIONAL_SOUNDS_PLAN["methods"]]
+elif args.scope in ("additional-sounds-reference", "additional-sounds-ui-reference"):
+    selected = ADDITIONAL_SOUNDS_PLAN["methods"] if args.scope == "additional-sounds-reference" else [method for method in ADDITIONAL_SOUNDS_PLAN["methods"] if method["required_originals"]]
+    tests = [method["method"].removeprefix("org.sleepwell.app.") for method in selected]
     metadata["additional_sounds_slice"] = "Default-off settings and real admitted private PCM through bundled inference; fixed one-thread performance gates, bounded-queue retirement, and constructed17/18-to19 preservation. No accuracy, overnight or physical-device acceptance."
 elif args.scope == "contactless-fallback-reference":
     tests = ["ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"]
@@ -765,6 +767,7 @@ if args.scope != "full":
         "draft-challenge-reference": DRAFT_FRAMES,
         "contactless-fallback-reference": [name for method in ALTERNATIVES_PLAN["methods"] if "ContactlessSetupFlowTest#" in method["method"] for name in method["required_originals"]],
         "additional-sounds-reference": [name for method in ADDITIONAL_SOUNDS_PLAN["methods"] for name in method["required_originals"]],
+        "additional-sounds-ui-reference": [name for method in ADDITIONAL_SOUNDS_PLAN["methods"] for name in method["required_originals"]],
         "recovery-rules-reference": ["interrupted-recovery-" + name + ".png" for name in ("tonight", "review", "review-restored", "retained-report", "retained-report-restored", "manual-setup", "manual-returned", "reopened", "kept-token-retired", "discard-review", "discard-restored", "stale-discard-rejected", "stale-review", "discard-final", "discarded")] + AUTOMATION_RULE_FRAMES,
         "reference-menus": REFERENCE_MENU_FRAMES,
         "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,
@@ -805,8 +808,8 @@ if args.scope != "full":
         "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES,
     }[args.scope]
     receipts = DRAFT_RECEIPTS if args.scope == "draft-challenge-reference" else ALTERNATIVE_RECEIPTS if args.scope == "local-alternatives-reference" else []
-    if args.scope == "additional-sounds-reference":
-        receipts = [name for method in ADDITIONAL_SOUNDS_PLAN["methods"] for name in method["required_proof"]]
+    if args.scope in ("additional-sounds-reference", "additional-sounds-ui-reference"):
+        receipts = [name for method in ADDITIONAL_SOUNDS_PLAN["methods"] if args.scope == "additional-sounds-reference" or method["required_originals"] for name in method["required_proof"]]
     failures += [name for name in focused_frames + receipts if not (output / name).is_file()]
     summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "required_evidence_files": receipts, "failures": failures}
     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")

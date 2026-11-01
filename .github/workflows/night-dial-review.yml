@@ -38,6 +38,25 @@ jobs:
       - name: Check contrast and existing interval semantics
         if: ${{ inputs.run_units == true }}
         run: ./gradlew testDebugUnitTest --tests org.sleepwell.app.AlarmRequestTest --tests org.sleepwell.app.NightDialContrastTest --tests org.sleepwell.app.NightWindowTest --tests org.sleepwell.app.NightDialRangeTest --tests org.sleepwell.app.WavPreviewTest --tests org.sleepwell.app.RecordModelTest --tests org.sleepwell.app.ChartSeriesTest --tests org.sleepwell.app.ChartTicksTest --tests org.sleepwell.app.AlarmWakePolicyTest --tests org.sleepwell.app.SnoozePolicyTest --tests org.sleepwell.app.ChallengeRoutineTest --console=plain --max-workers=2
+      - name: Reserve disk space on the disposable hosted runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$RUNNER_ENVIRONMENT" = "github-hosted"
+          test "$RUNNER_OS" = "Linux"
+          available=$(df -B1 --output=avail "$RUNNER_TEMP" | tail -n 1 | tr -d ' ')
+          if (( available < 12 * 1024 * 1024 * 1024 )); then
+            for unused in /usr/share/dotnet /opt/hostedtoolcache/CodeQL; do
+              if [[ -d "$unused" && ! -L "$unused" ]]; then
+                sudo rm -rf -- "$unused"
+              fi
+            done
+          fi
+          available=$(df -B1 --output=avail "$RUNNER_TEMP" | tail -n 1 | tr -d ' ')
+          if (( available < 9 * 1024 * 1024 * 1024 )); then
+            echo '::error::Insufficient disposable renderer space; no UI result is claimed.'
+            exit 1
+          fi
       - name: Create disposable renderer
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-night-dial-kvm.rules

@@ -49,6 +49,7 @@ on:
           - recovery-rules-reference
           - contactless-fallback-reference
           - additional-sounds-reference
+          - additional-sounds-ui-reference
           - setup-readiness
           - readiness-recovery
           - protection-recovery
