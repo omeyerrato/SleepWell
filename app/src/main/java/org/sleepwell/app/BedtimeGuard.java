@@ -23,6 +23,7 @@ public class BedtimeGuard extends AccessibilityService {
         if(android.os.SystemClock.elapsedRealtime()-lastRedirect<1500) return;
         Set<String> blocked=Prefs.of(this).getStringSet("blocked",Set.of());
         if(AlarmProtections.realAlarm(this) && AlarmProtections.enabled(this,AlarmProtections.LEAVING)) {
+            if(AlarmDialerHandoff.allows(this,pkg))return;
             lastRedirect=android.os.SystemClock.elapsedRealtime();
             returnToAlarm();return;
         }

@@ -4,6 +4,7 @@ import androidx.activity.ComponentActivity;
 import androidx.activity.OnBackPressedCallback;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.*;
 import android.widget.LinearLayout;
@@ -18,7 +19,7 @@ public final class ChallengePracticeActivity extends ComponentActivity {
     private ChallengePracticeScreen screen;
     private String request,raw,issue="";
     private boolean resumed,returning;
-    private int presentationGeneration;
+    private int presentationGeneration;private Dialog emergencyOptions;private Bundle restoreEmergencyOptions;
 
     static Intent preview(Activity owner,ChallengeRoutine routine,String request,Bundle restored){
         Intent intent=RecordUi.intent(owner,ChallengePracticeActivity.class).putExtra("request",request)
@@ -27,7 +28,7 @@ public final class ChallengePracticeActivity extends ComponentActivity {
     }
 
     @Override public void onCreate(Bundle saved){
-        super.onCreate(saved);RecordUi.review(this);setResult(RESULT_CANCELED);
+        super.onCreate(saved);restoreEmergencyOptions=saved==null?null:saved.getBundle("emergencyOptions");RecordUi.review(this);setResult(RESULT_CANCELED);
         try{
             Intent input=getIntent();
             if(input.getData()!=null||input.getClipData()!=null||input.getSelector()!=null)throw new IllegalArgumentException("Unsupported preview input.");
@@ -64,7 +65,7 @@ public final class ChallengePracticeActivity extends ComponentActivity {
         ChallengeRoutine.Position position=session.position();
         String caption="Task "+(position.index+1)+" of "+session.routine.tasks.size()+(position.task.units()>1?" · Round "+(position.round+1)+" of "+position.task.units():"");
         String clock=Design.clock(this,java.time.LocalTime.now().getHour()*60+java.time.LocalTime.now().getMinute());
-        LinearLayout card=WakeChallengeUi.card(this,clock,"Routine preview",caption,position.index,session.routine.tasks.size(),action(this::cancel),true);
+        LinearLayout card=WakeChallengeUi.card(this,clock,"Routine preview",caption,position.index,session.routine.tasks.size(),action(this::cancel),true,action(()->showEmergency(null)));
         Design.text(card,"Practice only · no alarm is running from this preview.",12,400,Design.MUTED);
         if(!issue.isEmpty())Design.text(card,issue,13,500,Design.BROWN);
         if(!session.selectionNotice.isEmpty())Design.button(card,"Example selection details",false,action(()->SleepPicker.message(this,"This preview selection",session.selectionNotice)));
@@ -77,6 +78,8 @@ public final class ChallengePracticeActivity extends ComponentActivity {
         Design.button(footer,"Cancel preview",false,action(this::cancel));
     }
 
+    private void restoreEmergency(){if(resumed&&hasWindowFocus()&&restoreEmergencyOptions!=null){Bundle restore=restoreEmergencyOptions;restoreEmergencyOptions=null;showEmergency(restore);}}
+    private void showEmergency(Bundle restore){if(!resumed||!hasWindowFocus()||returning||isFinishing()||isDestroyed()||session==null||session.finished()||!session.pending().isEmpty()||emergencyOptions!=null&&emergencyOptions.isShowing())return;String run=session.run;int unit=session.completed(),rendered=presentationGeneration;boolean configured=session.position().task.type.equals("QR code")&&session.position().task.code!=null;emergencyOptions=ChallengeEmergencyOptions.show(this,true,run,unit,()->resumed&&!returning&&!isFinishing()&&!isDestroyed()&&session!=null&&run.equals(session.run)&&unit==session.completed()&&rendered==presentationGeneration&&session.pending().isEmpty(),configured?()->{if(session.configuredMath(run,unit)){closeScreen(false);}}:null,restore);Dialog shown=emergencyOptions;shown.setOnDismissListener(ignored->{if(emergencyOptions==shown)emergencyOptions=null;});}
     private void openChild(){
         if(session==null||!session.pending().isEmpty()||!MotionChallengePracticeActivity.TYPES.contains(session.position().task.type)&&!RoutineAudioPracticeActivity.TYPES.contains(session.position().task.type)&&!RoutineCameraPracticeActivity.TYPES.contains(session.position().task.type))return;
         closeScreen(true);
@@ -121,9 +124,9 @@ public final class ChallengePracticeActivity extends ComponentActivity {
         finish();
     }
     private void cancel(){if(Looper.myLooper()==Looper.getMainLooper()&&resumed&&hasWindowFocus())returned(RESULT_CANCELED);}
-    @Override protected void onResume(){super.onResume();resumed=true;if(hasWindowFocus()&&screen==null)render();}
-    @Override protected void onPause(){closeScreen(true);if(session!=null)session.invalidate();resumed=false;super.onPause();}
-    @Override protected void onSaveInstanceState(Bundle saved){super.onSaveInstanceState(saved);Bundle state=state();if(state!=null)saved.putBundle("practiceState",state);}
-    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){RecordUi.lightBars(this);if(resumed&&screen==null)render();}else{closeScreen(true);if(session!=null)session.invalidate();}}
-    @Override protected void onDestroy(){closeScreen(false);if(session!=null){if(isFinishing())try{PracticeChildTicket.abandon(session);}catch(RuntimeException closing){}session.invalidate();}super.onDestroy();}
+    @Override protected void onResume(){super.onResume();resumed=true;if(hasWindowFocus()&&screen==null)render();getWindow().getDecorView().post(this::restoreEmergency);}
+    @Override protected void onPause(){closeScreen(true);if(session!=null)session.invalidate();resumed=false;if(emergencyOptions!=null&&emergencyOptions.isShowing()){restoreEmergencyOptions=emergencyOptions.onSaveInstanceState();emergencyOptions.dismiss();}super.onPause();}
+    @Override protected void onSaveInstanceState(Bundle saved){super.onSaveInstanceState(saved);if(emergencyOptions!=null&&emergencyOptions.isShowing())saved.putBundle("emergencyOptions",emergencyOptions.onSaveInstanceState());else if(restoreEmergencyOptions!=null)saved.putBundle("emergencyOptions",restoreEmergencyOptions);Bundle state=state();if(state!=null)saved.putBundle("practiceState",state);}
+    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){RecordUi.lightBars(this);if(resumed&&screen==null)render();restoreEmergency();}else{closeScreen(true);if(session!=null)session.invalidate();}}
+    @Override protected void onDestroy(){if(emergencyOptions!=null)emergencyOptions.dismiss();closeScreen(false);if(session!=null){if(isFinishing())try{PracticeChildTicket.abandon(session);}catch(RuntimeException closing){}session.invalidate();}super.onDestroy();}
 }

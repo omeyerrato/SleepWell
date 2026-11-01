@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "source_parent_revision": "8eb33432b98fc9b1905257a91d81faab8c6e8713",
+  "state": "16C",
+  "native_status": "not_run_pending_integration",
+  "unit_campaign": "not_run",
+  "method": "org.sleepwell.app.ChallengeRoutineFlowTest#orderedTasksConfigureReorderCancelRecreateAndPersistWithoutOutputs",
+  "instrumentation_arguments": {
+    "ciReview": "true",
+    "routineSlice": "emergency"
+  },
+  "expected_methods": 1,
+  "required_original_count": 6,
+  "required_originals": [
+    "routine-preview-emergency-open.png",
+    "routine-preview-emergency-recreated.png",
+    "routine-preview-emergency-changed.png",
+    "routine-preview-emergency-returned.png",
+    "routine-preview-emergency-math.png",
+    "routine-preview-emergency-math-recreated.png"
+  ],
+  "required_proof": "routine-preview-emergency-proof.json",
+  "assertions": [
+    "Owned actual Practice options open/return/recreate preserve current run and unit",
+    "Changed default dialer is rejected before the injected handoff",
+    "Locally constructed explicit ACTION_DIAL has no number/data, extras, flags, selector or ClipData",
+    "No actual dialer activity is launched; native port captures the handoff only",
+    "Practice creates no active-alarm leave exception; lease matching boundaries reject another run/unit/package, backward clock and expiry",
+    "Configured QR Math settings are reused; choosing fallback does not complete a round",
+    "Exact fallback Math question survives Activity recreation; actual correct input is still required to advance",
+    "A normal Math task has no invented separately configured alternative",
+    "Saved alarm/records/preferences/diary/scheduling remain unchanged; no active service or occupied microphone lease"
+  ],
+  "limits": [
+    "Real active-alarm runtime, accessibility guard handoff and Android screen-pinning interaction are not executed by this output-free Practice slice",
+    "No actual call/dialer, phone, alarm, audio, model, build or hosted cohort action ran during implementation",
+    "The same named method runs only the bounded emergency slice when routineSlice=emergency; do not accidentally request its full existing campaign"
+  ]
+}

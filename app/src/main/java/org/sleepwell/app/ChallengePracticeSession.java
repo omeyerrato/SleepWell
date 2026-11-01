@@ -120,6 +120,7 @@ final class ChallengePracticeSession {
         else if(fallback){draft=new Bundle();draft.putBoolean("practiceFallback",true);}
         return true;
     }
+    boolean configuredMath(String expectedRun,int unit){if(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper()||!run.equals(expectedRun)||completed!=unit||!pending.isEmpty())return false;ChallengeRoutine.Position at=position();if(at==null||!at.task.type.equals("QR code")||at.task.code==null)return false;draft=new Bundle();draft.putBoolean("practiceFallback",true);generation++;return true;}
     void abandonChild(){pending="";generation++;}
     Bundle save(){Bundle state=new Bundle();state.putInt("version",VERSION);state.putString("run",run);state.putString("snapshot",snapshot);state.putString("selected",ChallengeRoutineJson.encode(routine).toString());state.putString("notice",selectionNotice);state.putInt("completed",completed);state.putString("pending",pending);if(draft!=null)state.putBundle("draft",new Bundle(draft));return state;}
 }
