@@ -56,6 +56,8 @@ parser.add_argument("--scope", choices=(
     'data-recovery-reference',
     'completion-reference',
     'local-feature-reference',
+    'local-alternatives-reference',
+    'draft-challenge-reference',
     'setup-readiness',
     'readiness-recovery',
     'protection-recovery',
@@ -166,6 +168,18 @@ DATA_RECOVERY_REFERENCE_FRAMES += RECORDED_ANALYSIS_FRAMES
 REPORT_STATE_PLAN = json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial/REPORT-IMPORT-SHARE-NATIVE-PLAN-v2.json").read_text(encoding="utf-8"))
 OVERLAP_STATE_PLAN = json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial/MANUAL-OVERLAP-NATIVE-PLAN.json").read_text(encoding="utf-8"))
 LOCAL_PLAN = json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial/LOCAL-PLAN-NATIVE-PLAN.json").read_text(encoding="utf-8"))
+def completion_plan(name):
+    return json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial" / name).read_text(encoding="utf-8"))
+ALTERNATIVES_PLAN = completion_plan("LOCAL-ALTERNATIVES-NATIVE-PLAN.json")
+RHYTHM_PLAN = completion_plan("RHYTHM-SELECTED-NIGHT-NATIVE-PLAN.json")
+EMERGENCY_PLAN = completion_plan("CHALLENGE-EMERGENCY-FOCUS-NATIVE-PLAN.json")
+PRACTICE_PLAN = completion_plan("WAKE-CHECK-PRACTICE-NATIVE-PLAN.json")
+RANDOM_PLAN = completion_plan("RANDOM-POOL-DRAFT-NATIVE-PLAN.json")
+ALTERNATIVE_METHODS = ALTERNATIVES_PLAN["methods"] + RHYTHM_PLAN["methods"]
+ALTERNATIVE_FRAMES = [name for method in ALTERNATIVE_METHODS for name in method["required_originals"]]
+DRAFT_METHODS = [EMERGENCY_PLAN["method"], PRACTICE_PLAN["method"], RANDOM_PLAN["native_method"]]
+DRAFT_FRAMES = EMERGENCY_PLAN["required_originals"] + PRACTICE_PLAN["required_originals"] + RANDOM_PLAN["required_screenshots"]
+DRAFT_RECEIPTS = [EMERGENCY_PLAN["required_proof"], PRACTICE_PLAN["required_proof"], RANDOM_PLAN["required_receipt"]]
 REPORT_STATE_PLAN["methods"] += OVERLAP_STATE_PLAN["methods"]
 LOCAL_FEATURE_FRAMES = [name for method in LOCAL_PLAN["methods"] for name in method["required_originals"]]
 LOCAL_FEATURE_FRAMES += ["tags-" + name + ".png" for name in ("quantity-draft", "quantity-recreated", "editor", "comparison", "with-group", "with-group-recreated", "without-group", "rename", "renamed", "delete-confirm", "deleted")]
@@ -513,6 +527,12 @@ elif args.scope == "completion-reference":
         "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft",
     ]
     metadata["completion_slice"] = "changed Report/calendar, exact source review, data confirmations, obscured-touch and permission-return flows; not full app acceptance"
+elif args.scope == "local-alternatives-reference":
+    tests = [method["method"].removeprefix("org.sleepwell.app.") for method in ALTERNATIVE_METHODS]
+    metadata["local_alternatives_slice"] = "Actual local fallback, rhythm evidence and reviewed travel draft flows; private state and injected physical/service ports"
+elif args.scope == "draft-challenge-reference":
+    tests = [method.removeprefix("org.sleepwell.app.") for method in DRAFT_METHODS]
+    metadata["draft_challenge_slice"] = "Practice-only emergency options, inert Wake-check preview and random-pool draft review; no real alarm or dialer execution"
 elif args.scope == "local-feature-reference":
     tests = [method["method"].removeprefix("org.sleepwell.app.") for method in LOCAL_PLAN["methods"]] + [
         "TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
@@ -633,6 +653,8 @@ for test in tests:
         extra += ["-e", "ciAudioClearReference", "false"]
     if args.scope == "motion-reference":
         extra += ["-e", "motionSlice", "reference"]
+    if args.scope == "draft-challenge-reference" and test.startswith("ChallengeRoutineFlowTest#"):
+        extra += ["-e", "routineSlice", "emergency"]
     if args.scope == "routine-camera":
         extra += ["-e", "routineSlice", "camera"]
     if args.scope == "wake-reference-current" and test.startswith("ChallengeRoutineFlowTest#"):
@@ -724,6 +746,8 @@ if args.scope != "full":
         "data-recovery-reference": DATA_RECOVERY_REFERENCE_FRAMES,
         "completion-reference": COMPLETION_REFERENCE_FRAMES,
         "local-feature-reference": LOCAL_FEATURE_FRAMES,
+        "local-alternatives-reference": ALTERNATIVE_FRAMES,
+        "draft-challenge-reference": DRAFT_FRAMES,
         "reference-menus": REFERENCE_MENU_FRAMES,
         "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,
         "priority-repair": PRIORITY_REPAIR_FRAMES,
@@ -762,8 +786,9 @@ if args.scope != "full":
         "sensing-travel": SENSING_FRAMES,
         "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES,
     }[args.scope]
-    failures += [name for name in focused_frames if not (output / name).is_file()]
-    summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "failures": failures}
+    receipts = DRAFT_RECEIPTS if args.scope == "draft-challenge-reference" else []
+    failures += [name for name in focused_frames + receipts if not (output / name).is_file()]
+    summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "required_evidence_files": receipts, "failures": failures}
     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     if failures:
         raise SystemExit("Focused " + args.scope + " review incomplete (full review not run): " + ", ".join(failures))

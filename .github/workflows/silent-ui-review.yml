@@ -44,6 +44,8 @@ on:
           - data-recovery-reference
           - completion-reference
           - local-feature-reference
+          - local-alternatives-reference
+          - draft-challenge-reference
           - setup-readiness
           - readiness-recovery
           - protection-recovery
