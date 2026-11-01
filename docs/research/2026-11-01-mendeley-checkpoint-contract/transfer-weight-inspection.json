@@ -1,0 +1,265 @@
+{
+  "action": "Data-only read/shape/hash/finite checks; no feature extraction, normalization fit, model inference or TensorFlow/Keras import",
+  "checkpoint_sha256": "c1938a82248bb3526b2c9ff7a76f5e5d7ceee35cf552706e6587766f0fedf664",
+  "array_count": 22,
+  "total_float32_elements": 86273,
+  "total_array_bytes": 345092,
+  "arrays": [
+    {
+      "path": "layers/dense/vars/0",
+      "shape": [
+        160,
+        256
+      ],
+      "dtype": "float32",
+      "elements": 40960,
+      "sha256_little_endian": "6e43256adcd907eeecab7cd92021a55eb57690e7b71fc44c9f1a6b256bb65900",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/dense/vars/1",
+      "shape": [
+        256
+      ],
+      "dtype": "float32",
+      "elements": 256,
+      "sha256_little_endian": "37d2109065cb0cec58ba4fa7c03af9c9f138650afb05c45ba50f4b1c0a4c84e4",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/dense_1/vars/0",
+      "shape": [
+        256,
+        128
+      ],
+      "dtype": "float32",
+      "elements": 32768,
+      "sha256_little_endian": "29198697356baae1285ee6e73cea24b33933a48274347457b60e96d5684ff353",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/dense_1/vars/1",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_little_endian": "f433cb08c6887017e6de087e09e3b80c9ebd45d9230fdf58e2cf3fdd8addccaa",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/dense_2/vars/0",
+      "shape": [
+        128,
+        64
+      ],
+      "dtype": "float32",
+      "elements": 8192,
+      "sha256_little_endian": "7663ab4d8158b744e4f97a7335052e50e3baecaa73188c5edeef95afd158fa28",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/dense_2/vars/1",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "elements": 64,
+      "sha256_little_endian": "77838747d2e97dc7d274b7b2993a0eb15f40b9c1227900882e8580a68aed3f7e",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/dense_3/vars/0",
+      "shape": [
+        64,
+        32
+      ],
+      "dtype": "float32",
+      "elements": 2048,
+      "sha256_little_endian": "0e9d3926bc01108b904ee05953d1dacadae2e679d8031411951ffdee0888920c",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/dense_3/vars/1",
+      "shape": [
+        32
+      ],
+      "dtype": "float32",
+      "elements": 32,
+      "sha256_little_endian": "25bf44076bb9aa04cf960d3fb7e63e1587660dc966f811d7569303baa8ace15e",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/dense_4/vars/0",
+      "shape": [
+        32,
+        1
+      ],
+      "dtype": "float32",
+      "elements": 32,
+      "sha256_little_endian": "93198bc7a403357a769d5fd2e5263701f9a35089ff612fbd72877593b4b01e38",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/dense_4/vars/1",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "elements": 1,
+      "sha256_little_endian": "7464a5bafbbc3a0e337274ecf733bdec30b007854a753191c9931883bb86ee8b",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/batch_normalization/vars/0",
+      "shape": [
+        256
+      ],
+      "dtype": "float32",
+      "elements": 256,
+      "sha256_little_endian": "2c8efd31d40419423abfdf3289243b6e3fc8a244972c661b82a3c8e417800848",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/batch_normalization/vars/1",
+      "shape": [
+        256
+      ],
+      "dtype": "float32",
+      "elements": 256,
+      "sha256_little_endian": "6acb1421bb9b3db35b52bd9a7a6d8301ecc573f8638143693a9d0856bcd81970",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/batch_normalization/vars/2",
+      "shape": [
+        256
+      ],
+      "dtype": "float32",
+      "elements": 256,
+      "sha256_little_endian": "5df8baa343240aea367c67820e3b8547c239f9ee3ffc33193ee9c8262929f2a3",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/batch_normalization/vars/3",
+      "shape": [
+        256
+      ],
+      "dtype": "float32",
+      "elements": 256,
+      "sha256_little_endian": "909a208d0776712c6ce72784e53acc51584212f46ede5f76ec6f23ea16fa168a",
+      "all_finite": true,
+      "nonnegative": true
+    },
+    {
+      "path": "layers/batch_normalization_1/vars/0",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_little_endian": "3aaeffb0b961f65489f9226a2b0476e2f337c2e4bfc0cbbb2ac4e7107d887ccc",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/batch_normalization_1/vars/1",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_little_endian": "d2f3f99608b79e795bc93bf4c9f0265f47401ad5040d75bb7a1cebe20d46cbfd",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/batch_normalization_1/vars/2",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_little_endian": "584434b0a0633c90721ec512e561b9a473edb70dc5c82ebfee6b3ad7c733ba98",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/batch_normalization_1/vars/3",
+      "shape": [
+        128
+      ],
+      "dtype": "float32",
+      "elements": 128,
+      "sha256_little_endian": "645054e209478141599477b300cc80ee1e7030e8af4df656b1819cefee5eaa0f",
+      "all_finite": true,
+      "nonnegative": true
+    },
+    {
+      "path": "layers/batch_normalization_2/vars/0",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "elements": 64,
+      "sha256_little_endian": "f0d93b681a018b771baeb460b1a199a555cb97c89a3dadc0730478a31e683c50",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/batch_normalization_2/vars/1",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "elements": 64,
+      "sha256_little_endian": "21479170a4f6c7c57e558b718ee58f2e070d4b9c202e45210a6a5835d6507f8f",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/batch_normalization_2/vars/2",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "elements": 64,
+      "sha256_little_endian": "eb1bf276029f3b176982ed08d75c0e50dfed29829499bc7fedb050ab5a956e7d",
+      "all_finite": true,
+      "nonnegative": null
+    },
+    {
+      "path": "layers/batch_normalization_2/vars/3",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "elements": 64,
+      "sha256_little_endian": "c08ee4f5459f25d812828099a49c01b9a3aadfe2fe667605f0b8251944c3300e",
+      "all_finite": true,
+      "nonnegative": true
+    }
+  ],
+  "installed_frontend_signatures": {
+    "mfcc": "(*, y: Optional[numpy.ndarray] = None, sr: float = 22050, S: Optional[numpy.ndarray] = None, n_mfcc: int = 20, dct_type: int = 2, norm: Optional[str] = 'ortho', lifter: float = 0, **kwargs: Any) -> numpy.ndarray",
+    "melspectrogram": "(*, y: Optional[numpy.ndarray] = None, sr: float = 22050, S: Optional[numpy.ndarray] = None, n_fft: int = 2048, hop_length: int = 512, win_length: Optional[int] = None, window: Union[str, Tuple[Any, ...], float, Callable[[int], numpy.ndarray], collections.abc.Buffer, numpy._typing._array_like._SupportsArray[numpy.dtype[Any]], numpy._typing._nested_sequence._NestedSequence[numpy._typing._array_like._SupportsArray[numpy.dtype[Any]]], bool, int, complex, bytes, numpy._typing._nested_sequence._NestedSequence[Union[bool, int, float, complex, str, bytes]]] = 'hann', center: bool = True, pad_mode: Union[Literal['constant', 'edge', 'linear_ramp', 'reflect', 'symmetric', 'empty'], Callable[..., Any]] = 'constant', power: float = 2.0, **kwargs: Any) -> numpy.ndarray",
+    "power_to_db": "(S: '_ScalarOrSequence[_ComplexLike_co]', *, ref: 'Union[float, Callable]' = 1.0, amin: 'float' = 1e-10, top_db: 'Optional[float]' = 80.0) -> 'Union[np.floating[Any], np.ndarray]'",
+    "zero_crossing_rate": "(y: numpy.ndarray, *, frame_length: int = 2048, hop_length: int = 512, center: bool = True, **kwargs: Any) -> numpy.ndarray",
+    "spectral_centroid": "(*, y: Optional[numpy.ndarray] = None, sr: float = 22050, S: Optional[numpy.ndarray] = None, n_fft: int = 2048, hop_length: int = 512, freq: Optional[numpy.ndarray] = None, win_length: Optional[int] = None, window: Union[str, Tuple[Any, ...], float, Callable[[int], numpy.ndarray], collections.abc.Buffer, numpy._typing._array_like._SupportsArray[numpy.dtype[Any]], numpy._typing._nested_sequence._NestedSequence[numpy._typing._array_like._SupportsArray[numpy.dtype[Any]]], bool, int, complex, bytes, numpy._typing._nested_sequence._NestedSequence[Union[bool, int, float, complex, str, bytes]]] = 'hann', center: bool = True, pad_mode: Union[Literal['constant', 'edge', 'linear_ramp', 'reflect', 'symmetric', 'empty'], Callable[..., Any]] = 'constant') -> numpy.ndarray",
+    "rms": "(*, y: Optional[numpy.ndarray] = None, S: Optional[numpy.ndarray] = None, frame_length: int = 2048, hop_length: int = 512, center: bool = True, pad_mode: Union[Literal['constant', 'edge', 'linear_ramp', 'maximum', 'mean', 'median', 'minimum', 'reflect', 'symmetric', 'wrap', 'empty'], Callable[..., Any]] = 'constant', dtype: Union[numpy.dtype[Any], NoneType, type[Any], numpy._typing._dtype_like._SupportsDType[numpy.dtype[Any]], str, tuple[Any, int], tuple[Any, Union[SupportsIndex, collections.abc.Sequence[SupportsIndex]]], list[Any], numpy._typing._dtype_like._DTypeDict, tuple[Any, Any]] = <class 'numpy.float32'>) -> numpy.ndarray",
+    "resample_poly": "(x, up, down, axis=0, window=('kaiser', 5.0), padtype='constant', cval=None)"
+  }
+}
