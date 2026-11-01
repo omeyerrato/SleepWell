@@ -1,0 +1,117 @@
+{
+  "native_methods": 12,
+  "invocations": 11,
+  "results": [
+    {
+      "invocation": "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations",
+      "methods": [
+        "latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 816,
+      "sha256": "5ff09e7d1bd9dbe78d675c74748a08f003e87823280cc84a08b396021b1d1015"
+    },
+    {
+      "invocation": "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser",
+      "methods": [
+        "privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 822,
+      "sha256": "8b8f28c51dfbce0d783ce42668910a3dff5dee97b39976ba0db21c463cac6d0f"
+    },
+    {
+      "invocation": "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown",
+      "methods": [
+        "canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 806,
+      "sha256": "d000c1f84579fa9ff52b60a08c594b167598b733166d9dde928741bd4b708bd7"
+    },
+    {
+      "invocation": "RecordCalendarFlowTest#pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds",
+      "methods": [
+        "pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 827,
+      "sha256": "b974463cc5412093d548d15923655284322554b460a16179b99898864463e445"
+    },
+    {
+      "invocation": "RecordCalendarFlowTest#manualOverlapReviewSurvivesRecreationAndRejectsChangedCoverage",
+      "methods": [
+        "manualOverlapReviewSurvivesRecreationAndRejectsChangedCoverage"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 811,
+      "sha256": "7d4a9954cf50fcdd7ff3aecea8f0859845dc28dd5c336bf52da98185cb77bc7b"
+    },
+    {
+      "invocation": "RecordRecreationTest#pendingNewAndExistingSavesReattachAfterActivityRecreation",
+      "methods": [
+        "pendingNewAndExistingSavesReattachAfterActivityRecreation"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 795,
+      "sha256": "c272bb46ff706ea878803c72c9b40e39a1b3c224110bf5ca30c9739c020ece67"
+    },
+    {
+      "invocation": "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+      "methods": [
+        "confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 843,
+      "sha256": "a9a6ce38dfc7aa6e97402e498c92601f61428450fb31c2c823350d98d555b998"
+    },
+    {
+      "invocation": "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen",
+      "methods": [
+        "explicitReviewedReplacementPersistsAcrossRotationAndReopen"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 803,
+      "sha256": "6e8d2e5f1efbb5de64f7e9976d8512c2c62c0ea475c5b811dcf5d321a833c67e"
+    },
+    {
+      "invocation": "RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary",
+      "methods": [
+        "savedClipRunsBundledModelsPersistsAndDeletesSummary"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 804,
+      "sha256": "d7f8a7f2bca3205fbbbf7ed8c4b965645bc962a77728d50178780210c45a510c"
+    },
+    {
+      "invocation": "InteractionSecurityNativeTest",
+      "methods": [
+        "delayedShortcutDraftCannotRouteAfterCancelOrWhilePaused",
+        "obscuredNativeGesturesCancelAndRequireAFreshCleanDown"
+      ],
+      "count": 2,
+      "passed": true,
+      "bytes": 1497,
+      "sha256": "f4213e4837b8be9ee275f1a658b5e442c05f98193a1e8e74b0def78ce1fbf514"
+    },
+    {
+      "invocation": "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft",
+      "methods": [
+        "permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft"
+      ],
+      "count": 1,
+      "passed": true,
+      "bytes": 808,
+      "sha256": "7369a9b1267e855673fc74e3e78fa1c80ecfa52526c7b47a7c1a63575a2e9f9d"
+    }
+  ]
+}

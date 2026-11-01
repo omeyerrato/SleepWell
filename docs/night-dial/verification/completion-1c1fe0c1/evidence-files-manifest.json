@@ -1,0 +1,173 @@
+{
+  "run_id": 41260541247,
+  "exact_copies": [
+    {
+      "archive_path": "environment.json",
+      "artifact_name": "environment.json",
+      "bytes": 1711,
+      "sha256": "b092c7cf2f8d8eb0899e2d8e6212424ea26498edb2b9fbf3620fd689df30f5fd",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "focused-review-summary.json",
+      "artifact_name": "focused-review-summary.json",
+      "bytes": 2019,
+      "sha256": "4be65cf4db6be2605a71208f4b52e9993aaf86cd6f44b9e78c50f32801042e66",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen.txt",
+      "artifact_name": "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen.txt",
+      "bytes": 803,
+      "sha256": "6e8d2e5f1efbb5de64f7e9976d8512c2c62c0ea475c5b811dcf5d321a833c67e",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft.txt",
+      "artifact_name": "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft.txt",
+      "bytes": 808,
+      "sha256": "7369a9b1267e855673fc74e3e78fa1c80ecfa52526c7b47a7c1a63575a2e9f9d",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/InteractionSecurityNativeTest.txt",
+      "artifact_name": "InteractionSecurityNativeTest.txt",
+      "bytes": 1497,
+      "sha256": "f4213e4837b8be9ee275f1a658b5e442c05f98193a1e8e74b0def78ce1fbf514",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown.txt",
+      "artifact_name": "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown.txt",
+      "bytes": 806,
+      "sha256": "d000c1f84579fa9ff52b60a08c594b167598b733166d9dde928741bd4b708bd7",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations.txt",
+      "artifact_name": "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations.txt",
+      "bytes": 816,
+      "sha256": "5ff09e7d1bd9dbe78d675c74748a08f003e87823280cc84a08b396021b1d1015",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser.txt",
+      "artifact_name": "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser.txt",
+      "bytes": 822,
+      "sha256": "8b8f28c51dfbce0d783ce42668910a3dff5dee97b39976ba0db21c463cac6d0f",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory.txt",
+      "artifact_name": "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory.txt",
+      "bytes": 843,
+      "sha256": "a9a6ce38dfc7aa6e97402e498c92601f61428450fb31c2c823350d98d555b998",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/RecordCalendarFlowTest#manualOverlapReviewSurvivesRecreationAndRejectsChangedCoverage.txt",
+      "artifact_name": "RecordCalendarFlowTest#manualOverlapReviewSurvivesRecreationAndRejectsChangedCoverage.txt",
+      "bytes": 811,
+      "sha256": "7d4a9954cf50fcdd7ff3aecea8f0859845dc28dd5c336bf52da98185cb77bc7b",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/RecordCalendarFlowTest#pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds.txt",
+      "artifact_name": "RecordCalendarFlowTest#pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds.txt",
+      "bytes": 827,
+      "sha256": "b974463cc5412093d548d15923655284322554b460a16179b99898864463e445",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary.txt",
+      "artifact_name": "RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary.txt",
+      "bytes": 804,
+      "sha256": "d7f8a7f2bca3205fbbbf7ed8c4b965645bc962a77728d50178780210c45a510c",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "method-logs/RecordRecreationTest#pendingNewAndExistingSavesReattachAfterActivityRecreation.txt",
+      "artifact_name": "RecordRecreationTest#pendingNewAndExistingSavesReattachAfterActivityRecreation.txt",
+      "bytes": 795,
+      "sha256": "c272bb46ff706ea878803c72c9b40e39a1b3c224110bf5ca30c9739c020ece67",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "night-dial-report-share-proof.json",
+      "artifact_name": "night-dial-report-share-proof.json",
+      "bytes": 755,
+      "sha256": "0a4689f55f9d60e385df095480eb5b97d9bd1439df14db49ec66d0bc9576c258",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "recorded-analysis-import-timing.json",
+      "artifact_name": "recorded-analysis-import-timing.json",
+      "bytes": 16332,
+      "sha256": "62a98e0e1e42e14c6c6bd48d22d39e8d763cd128720bd50a032155703f903528",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "recorded-analysis-proof.json",
+      "artifact_name": "recorded-analysis-proof.json",
+      "bytes": 26634,
+      "sha256": "70a9edaa2764f6d97e5e212ff2adea6908698b9f015d8b968b279a473450ae97",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/backup-document-confirmation-recreated.png",
+      "artifact_name": "backup-document-confirmation-recreated.png",
+      "bytes": 149124,
+      "sha256": "9a60df34b9a890c0c90c40d70c70291c11ff32a5d7a91f574ca8db1c5abd3955",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/calendar-rules-permission-revoked-draft.png",
+      "artifact_name": "calendar-rules-permission-revoked-draft.png",
+      "bytes": 179228,
+      "sha256": "5680e90705d62021407bc22eab7408b4da2c4110e3a4e3be7dccbf0f8fc6906e",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/night-dial-manual-overlap-review.png",
+      "artifact_name": "night-dial-manual-overlap-review.png",
+      "bytes": 202363,
+      "sha256": "f678bd0f330bdc5d693c552446b175c13f40786844bf9096318552f495e5ae77",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/night-dial-report-night.png",
+      "artifact_name": "night-dial-report-night.png",
+      "bytes": 182002,
+      "sha256": "21375c3f4323186cc5548b3a8cb5ac472b9498e74a17d43c3d7a8340b26e83f2",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/night-dial-report-share-preview.png",
+      "artifact_name": "night-dial-report-share-preview.png",
+      "bytes": 216991,
+      "sha256": "4109942df19b40ecf004d3427a9ad324fd0d1f1ac25c1835675519214b7ba567",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/night-dial-report-trends-week.png",
+      "artifact_name": "night-dial-report-trends-week.png",
+      "bytes": 204828,
+      "sha256": "fbf03c923a69dbb6d02249195d9f2f4ed1a58d13cc6209de9dbe26d6c7bf4993",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/privacy-history-pending.png",
+      "artifact_name": "privacy-history-pending.png",
+      "bytes": 180689,
+      "sha256": "4d47659b717ddd63458f26f498d4dcf2b2e40fbe9da2860aae1a6090aaa762f4",
+      "exact_byte_copy": true
+    },
+    {
+      "archive_path": "representative-originals/recorded-analysis-result.png",
+      "artifact_name": "recorded-analysis-result.png",
+      "bytes": 190678,
+      "sha256": "5bebe4659e320336c369cfee59af3dbe70519ba031959b91dc4311a99782b509",
+      "exact_byte_copy": true
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "run_id": 41260541247,
+  "run_url": "https://github.com/omeyerrato/SleepWell/actions/runs/41260541247",
+  "workflow": ".github/workflows/silent-ui-review.yml",
+  "name": "Silent Android review (completion-reference)",
+  "source_commit": "1c1fe0c16ce35abbf8f64dcb17b29064530e711c",
+  "branch": "codex/night-dial-integration-20261031",
+  "event": "workflow_dispatch",
+  "run_attempt": 1,
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-01T01:18:28Z",
+  "updated_at": "2026-11-01T01:29:00Z",
+  "run_started_at": "2026-11-01T01:18:28Z",
+  "artifact_id": 13065760428,
+  "artifact_name": "silent-android-review",
+  "artifact_bytes": 16028146,
+  "artifact_zip_sha256": "6f63aeb60106315c565e77f0ecff1867254ef1d9dc3eab3b9223f54ae5ba2148",
+  "artifact_expires_at": "2026-11-08T01:28:56Z",
+  "downloaded_via": "GitHub connector download_workflow_artifact; exact binary ZIP hash verified locally",
+  "new_execution_performed_for_archive": false
+}

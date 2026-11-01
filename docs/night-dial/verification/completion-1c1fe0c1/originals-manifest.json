@@ -1,0 +1,855 @@
+{
+  "source_commit": "1c1fe0c16ce35abbf8f64dcb17b29064530e711c",
+  "run_id": 41260541247,
+  "artifact_id": 13065760428,
+  "artifact_zip_sha256": "6f63aeb60106315c565e77f0ecff1867254ef1d9dc3eab3b9223f54ae5ba2148",
+  "original_count": 94,
+  "all_originals": [
+    {
+      "index": 1,
+      "name": "auto-calendar-consent-conflict.png",
+      "bytes": 283801,
+      "sha256": "bbfc6016aca357417e9123e20ba676b665ecece285351b7392fe0578a7e95758",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 2,
+      "name": "auto-calendar-draft-recreated.png",
+      "bytes": 264317,
+      "sha256": "9de34d40e89718a8761e5a97a33a40085cc517056f1cf1e636dc614d6d7be02a",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 3,
+      "name": "auto-calendar-saved-private.png",
+      "bytes": 264317,
+      "sha256": "9de34d40e89718a8761e5a97a33a40085cc517056f1cf1e636dc614d6d7be02a",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 4,
+      "name": "backup-document-confirmation-recreated.png",
+      "bytes": 149124,
+      "sha256": "9a60df34b9a890c0c90c40d70c70291c11ff32a5d7a91f574ca8db1c5abd3955",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": true
+    },
+    {
+      "index": 5,
+      "name": "backup-document-confirmation.png",
+      "bytes": 149124,
+      "sha256": "9a60df34b9a890c0c90c40d70c70291c11ff32a5d7a91f574ca8db1c5abd3955",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 6,
+      "name": "backup-document-restored.png",
+      "bytes": 188148,
+      "sha256": "50144011d9ec74b974b4006f4771c4898912f6a149c14f626c207ce93f0071c6",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 7,
+      "name": "backup-document-restoring-recreated.png",
+      "bytes": 169388,
+      "sha256": "edd3b698f30571a8b56ec911f72e63b80300a384eebe61d013869f433bcad143",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 8,
+      "name": "backup-document-restoring.png",
+      "bytes": 169388,
+      "sha256": "edd3b698f30571a8b56ec911f72e63b80300a384eebe61d013869f433bcad143",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 9,
+      "name": "backup-document-result-reopened.png",
+      "bytes": 188148,
+      "sha256": "50144011d9ec74b974b4006f4771c4898912f6a149c14f626c207ce93f0071c6",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 10,
+      "name": "backup-document-review-recreated.png",
+      "bytes": 179379,
+      "sha256": "9ef817c4ebc389cbbcfcdfdd02d950f905063a2f858b0291f915c998acb2b81d",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 11,
+      "name": "backup-document-review-reopened.png",
+      "bytes": 179379,
+      "sha256": "9ef817c4ebc389cbbcfcdfdd02d950f905063a2f858b0291f915c998acb2b81d",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 12,
+      "name": "backup-document-review.png",
+      "bytes": 179379,
+      "sha256": "9ef817c4ebc389cbbcfcdfdd02d950f905063a2f858b0291f915c998acb2b81d",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 13,
+      "name": "calendar-editor-recreated.png",
+      "bytes": 133006,
+      "sha256": "f9ffd2b82137f5c76c2a97c2b39edf40982c0f5724422eb50b23aeeb53f35798",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 14,
+      "name": "calendar-editor-selected.png",
+      "bytes": 125998,
+      "sha256": "c9aaf1f480ae94a9b60b2e780eb8284a93538b847c6cc73d95718f32bd70e22c",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 15,
+      "name": "calendar-editor.png",
+      "bytes": 133006,
+      "sha256": "f9ffd2b82137f5c76c2a97c2b39edf40982c0f5724422eb50b23aeeb53f35798",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 16,
+      "name": "calendar-history-recreated.png",
+      "bytes": 133233,
+      "sha256": "3517c4435344f032a9111b58a598fe88d88d0aec4c77bf3bdfea529fc782ddbb",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 17,
+      "name": "calendar-history.png",
+      "bytes": 133233,
+      "sha256": "3517c4435344f032a9111b58a598fe88d88d0aec4c77bf3bdfea529fc782ddbb",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 18,
+      "name": "calendar-reopened.png",
+      "bytes": 126944,
+      "sha256": "1e965272fb4867d77ed8f39e8c9665a74e135495d07b54df22aafbb274849d3d",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 19,
+      "name": "calendar-rules-permission-granted-draft.png",
+      "bytes": 171181,
+      "sha256": "bfb5620be11c9d5e92f935057f8efd2e378c5d82a69c2313606c75833aec9160",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 20,
+      "name": "calendar-rules-permission-revoked-draft.png",
+      "bytes": 179228,
+      "sha256": "5680e90705d62021407bc22eab7408b4da2c4110e3a4e3be7dccbf0f8fc6906e",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": true
+    },
+    {
+      "index": 21,
+      "name": "calendar-rules-permission-settings.png",
+      "bytes": 233160,
+      "sha256": "70c6d7d18a70840a9ddb68d262f01ab4afe351188567b4e99546f8afbd9bf273",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 22,
+      "name": "calendar-trend.png",
+      "bytes": 151403,
+      "sha256": "d631af1fca7b041a8674c2291a726f68219a2786fe7aa7685458c4e4d21910d9",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 23,
+      "name": "night-dial-manual-overlap-create-review.png",
+      "bytes": 215747,
+      "sha256": "95eb8a3b200d95588d5ebc0e451e5d1d24e670521141e5e30ce6a0e1b97e91d7",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 24,
+      "name": "night-dial-manual-overlap-created.png",
+      "bytes": 171382,
+      "sha256": "57b4760d0a81dd69193d5376aa08e073a33fb4d70f621dbbc81efae2e03201a0",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 25,
+      "name": "night-dial-manual-overlap-edit-saved.png",
+      "bytes": 194814,
+      "sha256": "a2a66e6145abf9e1686969ed76a176b23af4490fb029662ab1bbfe328f390a5c",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 26,
+      "name": "night-dial-manual-overlap-kept.png",
+      "bytes": 174778,
+      "sha256": "a846c85763c2b13a0eff6a2f4e6c50b5bdaa1afc4dd550fcb895ad2e0211f874",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 27,
+      "name": "night-dial-manual-overlap-refreshed.png",
+      "bytes": 224364,
+      "sha256": "1a69bdb848f652af8a1a2a9884732913cae4bb0a32fc5ace3f6f8318d2f89f50",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 28,
+      "name": "night-dial-manual-overlap-review-actions.png",
+      "bytes": 202363,
+      "sha256": "f678bd0f330bdc5d693c552446b175c13f40786844bf9096318552f495e5ae77",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 29,
+      "name": "night-dial-manual-overlap-review-recreated.png",
+      "bytes": 202363,
+      "sha256": "f678bd0f330bdc5d693c552446b175c13f40786844bf9096318552f495e5ae77",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 30,
+      "name": "night-dial-manual-overlap-review.png",
+      "bytes": 202363,
+      "sha256": "f678bd0f330bdc5d693c552446b175c13f40786844bf9096318552f495e5ae77",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": true
+    },
+    {
+      "index": 31,
+      "name": "night-dial-manual-overlap-save-recreated.png",
+      "bytes": 161238,
+      "sha256": "16a8bf04b7a76d4bfc711194c95457e426d75ca5e93dab078a187526ecb3a46b",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 32,
+      "name": "night-dial-manual-overlap-stale.png",
+      "bytes": 174573,
+      "sha256": "21a688c8ecfb4631e75f841e0c96dfa857aaf091b8c2f46af1fcb85b2241d862",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 33,
+      "name": "night-dial-report-calendar-empty-date.png",
+      "bytes": 185273,
+      "sha256": "ada50dd503c923f7f64ed6a9dc4f497645a0f4841db2eb35ca133e5d133ba9f8",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 34,
+      "name": "night-dial-report-dirty-back.png",
+      "bytes": 142481,
+      "sha256": "5c40c21d91b729870d180f702f8e63e72828f4972ba61ed1e08b77b7557e0360",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 35,
+      "name": "night-dial-report-dirty-restored.png",
+      "bytes": 142481,
+      "sha256": "5c40c21d91b729870d180f702f8e63e72828f4972ba61ed1e08b77b7557e0360",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 36,
+      "name": "night-dial-report-empty.png",
+      "bytes": 157851,
+      "sha256": "8c47ca8329243e062a4f19768cef8904ca5d7dafd8582eff6012b373dd565218",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 37,
+      "name": "night-dial-report-history-empty.png",
+      "bytes": 145726,
+      "sha256": "2dd17faf83e2cb6481070d953c6e0e52fee9352ae48978a77ded807964e30558",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 38,
+      "name": "night-dial-report-history-import-restored.png",
+      "bytes": 109608,
+      "sha256": "f7db670151ae65a57bea737425b3c3cc079e8009750717ce40ace3e63253d9d0",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 39,
+      "name": "night-dial-report-history-import.png",
+      "bytes": 109608,
+      "sha256": "f7db670151ae65a57bea737425b3c3cc079e8009750717ce40ace3e63253d9d0",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 40,
+      "name": "night-dial-report-history-imported.png",
+      "bytes": 148975,
+      "sha256": "fc67e893a88aae711b2b1fb541d713c0f66d09eecb3ab5d51f808e117c701cef",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 41,
+      "name": "night-dial-report-history-no-results.png",
+      "bytes": 166196,
+      "sha256": "6dbcae7d67b03ba5ee88623b73cdb79d696f97cca75fe2acc5449fc3ab87ea60",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 42,
+      "name": "night-dial-report-history-query-returned.png",
+      "bytes": 166196,
+      "sha256": "6dbcae7d67b03ba5ee88623b73cdb79d696f97cca75fe2acc5449fc3ab87ea60",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 43,
+      "name": "night-dial-report-manual-date-saved.png",
+      "bytes": 192735,
+      "sha256": "62419fb503338659af404b87827ac12851cadea4a5ca15bd6528081457fd3847",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 44,
+      "name": "night-dial-report-manual-save-error-restored.png",
+      "bytes": 199478,
+      "sha256": "388ede7ebc2ce008eba22c4122a9972ea207db113692112df8c59a7b9bf954bf",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 45,
+      "name": "night-dial-report-night.png",
+      "bytes": 182002,
+      "sha256": "21375c3f4323186cc5548b3a8cb5ac472b9498e74a17d43c3d7a8340b26e83f2",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": true
+    },
+    {
+      "index": 46,
+      "name": "night-dial-report-refresh-failed.png",
+      "bytes": 185298,
+      "sha256": "c6b6983e7cc759bde14b5d9413596edb6d5749df97b8ef808d7f0dbec4208c55",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 47,
+      "name": "night-dial-report-refresh-retry.png",
+      "bytes": 185034,
+      "sha256": "4018dced92b26f53a0df48adc79a3f97986a1758bdd191c534aa64d2cc6aaf78",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 48,
+      "name": "night-dial-report-removed.png",
+      "bytes": 47726,
+      "sha256": "e1b7aace04188c246d9df3dc22d0703e52ff5c0bb38fd487db190063112e71d0",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 49,
+      "name": "night-dial-report-restore-draft.png",
+      "bytes": 144576,
+      "sha256": "5ba1b605a6403504c8c7de1d2517bd3186e5cff8a8dfaee1b42a59cc06a1a363",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 50,
+      "name": "night-dial-report-restore-review-restored.png",
+      "bytes": 157830,
+      "sha256": "c1cb2af370816bca519ecf103091fbcc14bc7340659c5ecc2d1f730ccc99cc54",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 51,
+      "name": "night-dial-report-restore-review.png",
+      "bytes": 157830,
+      "sha256": "c1cb2af370816bca519ecf103091fbcc14bc7340659c5ecc2d1f730ccc99cc54",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 52,
+      "name": "night-dial-report-restored-night.png",
+      "bytes": 185034,
+      "sha256": "4018dced92b26f53a0df48adc79a3f97986a1758bdd191c534aa64d2cc6aaf78",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 53,
+      "name": "night-dial-report-share-actions.png",
+      "bytes": 217000,
+      "sha256": "5fd5dcc2d1d5f2cc53cc6461fc25b2c7c7c205d3a8a55369c87aa23e8ec1c8c4",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 54,
+      "name": "night-dial-report-share-changed.png",
+      "bytes": 212745,
+      "sha256": "30a61f6a82ac0beb4c45ce412e891c451cb1ed39cc8ab8ebc62d55c8f423631c",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 55,
+      "name": "night-dial-report-share-chooser.png",
+      "bytes": 190395,
+      "sha256": "0f6eca8f06d7096185506e33a6e5937951821f3f4e8a137ca2ced18d760d34b1",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 56,
+      "name": "night-dial-report-share-notes.png",
+      "bytes": 217063,
+      "sha256": "edd719651475acefb12cc9c2d17e7e7288acfddc14ead747522e56e7dfe6d150",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 57,
+      "name": "night-dial-report-share-preview.png",
+      "bytes": 216991,
+      "sha256": "4109942df19b40ecf004d3427a9ad324fd0d1f1ac25c1835675519214b7ba567",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": true
+    },
+    {
+      "index": 58,
+      "name": "night-dial-report-share-restored.png",
+      "bytes": 217063,
+      "sha256": "eccb92fefc2c0ca621d151da3babc4a49a8ed32e4a78a0fb46111d2da49ee9d5",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 59,
+      "name": "night-dial-report-share-returned.png",
+      "bytes": 221121,
+      "sha256": "69d44f32d95374b77238ec113c51f2ff4dfa82b26da9cc082f9db897f1c66d49",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 60,
+      "name": "night-dial-report-signal-restored.png",
+      "bytes": 204012,
+      "sha256": "bc89520ab89b51dc62e191df54f10e66a2cd0e37e6056fba5107d5c5fbcfd8fc",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 61,
+      "name": "night-dial-report-signal-scrub.png",
+      "bytes": 165794,
+      "sha256": "6f8c0169f5f94f4c3d2cbdb10c654e359be1928dc6b60acd71a2d64aa4c2ebe5",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 62,
+      "name": "night-dial-report-trends-empty-actions.png",
+      "bytes": 189291,
+      "sha256": "5001a9f0fb6a85e214718e5471c40985cdf9aa5a088f24841a88ca5b86e1d42a",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 63,
+      "name": "night-dial-report-trends-empty-restored.png",
+      "bytes": 189291,
+      "sha256": "5001a9f0fb6a85e214718e5471c40985cdf9aa5a088f24841a88ca5b86e1d42a",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 64,
+      "name": "night-dial-report-trends-empty.png",
+      "bytes": 188689,
+      "sha256": "1ab0a4d949a943cec57367087c8bbcd790d5e54c4e0cfaabc552e9b4b59fb3af",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 65,
+      "name": "night-dial-report-trends-first-night.png",
+      "bytes": 189628,
+      "sha256": "c81da38a86f066b863dd4875cb82c384e404ae6cb44b873d3d95ba21bac06fb6",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 66,
+      "name": "night-dial-report-trends-month.png",
+      "bytes": 181689,
+      "sha256": "d4a1d2c4717542a8935f1ede6c59987abcf302795ce233667a712022671c0f63",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 67,
+      "name": "night-dial-report-trends-refresh-failed.png",
+      "bytes": 207581,
+      "sha256": "0e63c0b64333fd22361e0fc57a4b705e3b94ad4a558bc0fdcf188b4591520509",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 68,
+      "name": "night-dial-report-trends-refresh-retry.png",
+      "bytes": 204838,
+      "sha256": "a92d865edb4bf4d5d08a51023529fdb68049283bd3ca8ded6d7740449bd6a1d0",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 69,
+      "name": "night-dial-report-trends-restored.png",
+      "bytes": 204838,
+      "sha256": "a92d865edb4bf4d5d08a51023529fdb68049283bd3ca8ded6d7740449bd6a1d0",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 70,
+      "name": "night-dial-report-trends-week.png",
+      "bytes": 204828,
+      "sha256": "fbf03c923a69dbb6d02249195d9f2f4ed1a58d13cc6209de9dbe26d6c7bf4993",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": true
+    },
+    {
+      "index": 71,
+      "name": "night-dial-report-trends-year.png",
+      "bytes": 182115,
+      "sha256": "f48f69f346892de67e30b603348306310905beb1f7b47072867385c504df3945",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 72,
+      "name": "privacy-history-busy.png",
+      "bytes": 180149,
+      "sha256": "48ef9ba1d77022960931db9746705cbd0f0ef63473c5a517ec8fc92579c0c669",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 73,
+      "name": "privacy-history-cleanup-review-restored.png",
+      "bytes": 158383,
+      "sha256": "e8def60a81c4da67bbfc33d6c3b02befc46253c5eee527aa4ad94512c2490ae4",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 74,
+      "name": "privacy-history-done.png",
+      "bytes": 177137,
+      "sha256": "36670e04d0c70b84a939d4a789e1c041e367964b076f4bd3ade49f9f2e901ae6",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 75,
+      "name": "privacy-history-error.png",
+      "bytes": 183585,
+      "sha256": "6bf33360416312ccb5fabfcee9719d26596b15f179a8800fda30af014ad48b8c",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 76,
+      "name": "privacy-history-pending.png",
+      "bytes": 180689,
+      "sha256": "4d47659b717ddd63458f26f498d4dcf2b2e40fbe9da2860aae1a6090aaa762f4",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": true
+    },
+    {
+      "index": 77,
+      "name": "privacy-history-ready.png",
+      "bytes": 174165,
+      "sha256": "ca1476c937c2d73883216f1b76c79080f3e3b48ed7461b15a15acce85c71c805",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 78,
+      "name": "privacy-history-review-changed.png",
+      "bytes": 176852,
+      "sha256": "9b8a7e2d9b721262325955503cf772ceb2b983a24c765c4fa53a6d26a1155e73",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 79,
+      "name": "privacy-history-review-restored.png",
+      "bytes": 169280,
+      "sha256": "847eb669cfcb25e106342becd0c0d04cd9d1008e15c0ba2cb8acffbb6ca88a51",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 80,
+      "name": "privacy-history-review.png",
+      "bytes": 169280,
+      "sha256": "847eb669cfcb25e106342becd0c0d04cd9d1008e15c0ba2cb8acffbb6ca88a51",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 81,
+      "name": "privacy-top-backup-contents.png",
+      "bytes": 188353,
+      "sha256": "474e24b8fa91711d580b21e11601923e15192cfb8335469fc2fc5de526cac0a2",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 82,
+      "name": "privacy-top-empty.png",
+      "bytes": 177846,
+      "sha256": "661ea3ec6023e685c19aa56a177efd0d4a23ba6c7769a06856a44276b10058ea",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 83,
+      "name": "privacy-top-favorites.png",
+      "bytes": 210620,
+      "sha256": "f615d2dd54612c2c961bb3e4f4bb2c3fad9c7b4bc895988fa6461bd6179bac0c",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 84,
+      "name": "privacy-top-options.png",
+      "bytes": 179911,
+      "sha256": "f49715efb33933589ce6187c7580deeb3125c93ca4facc1364b0f0138371ef08",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 85,
+      "name": "privacy-top-ready.png",
+      "bytes": 211174,
+      "sha256": "d0853e10a0cefa990aed34fa14e7e4dc4d1d81674e720dcb5750fd1539c12880",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 86,
+      "name": "privacy-top-storage-error.png",
+      "bytes": 218896,
+      "sha256": "770ee0b622d3b8b9280dc58bf6c90b9e0378e0bf1fa6de37f01249e488383402",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 87,
+      "name": "privacy-top-storage-retried.png",
+      "bytes": 182033,
+      "sha256": "55eb082fa819c74a939fced32c5be8fc44d07bcb9ee0af89539e02300ca1f806",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 88,
+      "name": "recorded-analysis-details.png",
+      "bytes": 307599,
+      "sha256": "8a277e36848f1767d21e16c9e9ee2e2cf28ddeb80511fb5ef3b2a385dc4d8f8a",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 89,
+      "name": "recorded-analysis-import-prepared.png",
+      "bytes": 180323,
+      "sha256": "66a29f56638d820e57a2a0fff766a1802f9b5d810891c22b18071967cd309bd4",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 90,
+      "name": "recorded-analysis-import-result.png",
+      "bytes": 198333,
+      "sha256": "695a7894f48dbfc1e40d4a06a6370b7f897ca6c360d0a48d44a2c357c941538b",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 91,
+      "name": "recorded-analysis-prepared.png",
+      "bytes": 173197,
+      "sha256": "6ddc81c018abd72800d8d696c8956e708fb4fcd3501213a88927fe27650af563",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 92,
+      "name": "recorded-analysis-result.png",
+      "bytes": 190678,
+      "sha256": "5bebe4659e320336c369cfee59af3dbe70519ba031959b91dc4311a99782b509",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": true
+    },
+    {
+      "index": 93,
+      "name": "recorded-analysis-source-events.png",
+      "bytes": 97081,
+      "sha256": "ecef18296b8763ecf8b08f2c5c241e2cbce051a2fd591abd808a77ca92277634",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    },
+    {
+      "index": 94,
+      "name": "recorded-analysis-source-prepared-again.png",
+      "bytes": 173333,
+      "sha256": "a0bc9801213ff171ae89527cc27c09d91cfd776754244b6d1c6ac999d5b50239",
+      "width": 1080,
+      "height": 2316,
+      "byte_copy_in_repo": false
+    }
+  ]
+}
