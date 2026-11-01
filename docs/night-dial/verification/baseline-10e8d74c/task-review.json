@@ -1,0 +1,855 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-01",
+  "run": {
+    "id": 41273653327,
+    "url": "https://github.com/omeyerrato/SleepWell/actions/runs/41273653327",
+    "source": "10e8d74ccc399c218b4a9502a5a167482fae3fe6",
+    "app_main_tree": "c77d550d0aca5f12b6660b846e580a98517c9128",
+    "workflow_conclusion": "failure",
+    "native_tests": 21,
+    "native_result": "OK (21 tests)",
+    "native_seconds": 541.544,
+    "unit_status": "not_run",
+    "raw_review_passed": false,
+    "missing_required_frames": [],
+    "qualification": "Native instrumentation passed. The workflow and unchanged raw review.json failed because the runner expected the stale literal OK (20 tests). This record does not replace that result."
+  },
+  "artifact": {
+    "id": 13070936214,
+    "download_owner": "sound_recognition_finish",
+    "archive_bytes": 39166612,
+    "archive_sha256": "3573b4185106946a4ac810554021fcbdf45d4982b58ba7dbcabe7e1a9af9ac57",
+    "shared_original_directory": "C:/Users/omeye/.codex/worktrees/integration-setup-usability/SleepWell/.android-local/ci-reviews/41273653327/original",
+    "zip_members_verified_by_download_owner": 340
+  },
+  "scope": {
+    "configuration_originals": 28,
+    "workspace_originals": 11,
+    "individually_opened_originals": 39,
+    "review_method": "Each original PNG opened individually with view_image; SHA-256, byte size and native dimensions measured separately. XML inspected for the two findings. No contact sheet substituted for individual originals.",
+    "criteria": [
+      "NightDial dark/amber/Inter composition and task-specific object",
+      "Clear configuration versus interactive practice labels",
+      "Text wrapping, spacing, icons, visible controls, footer and focus state",
+      "Truthful illustrated/camera-off/practice state"
+    ],
+    "excluded": [
+      "Full 172-state acceptance",
+      "Camera, microphone, motion, NFC or sensor operation",
+      "Real occurrence authority, alarms or outputs",
+      "Keyboard/IME state, rotation, wrong-input transitions or accessibility gestures not present in these frames",
+      "Uncaptured scrolled content"
+    ]
+  },
+  "design": {
+    "normative": "design.md",
+    "clauses": [
+      "Routine builder and catalog — board 08",
+      "Challenge interfaces — boards 10–16",
+      "All 28 wake challenges / Common task contract",
+      "Sequence and Visual search task rows"
+    ],
+    "accepted_source": "c5d558af529cd0928763be2756cb7b013b856748",
+    "accepted_individual_comparators": [
+      "docs/night-dial/verification/c5d558af/night-dial-breadth-Task-Memory.png",
+      "docs/night-dial/verification/c5d558af/night-dial-breadth-Workspace-Memory.png"
+    ],
+    "preserved_direction": "Black surfaces, amber selection, white action hierarchy, labelled instruction diagrams and real practice objects."
+  },
+  "writers": [
+    {
+      "method": "org.sleepwell.app.NightDialBreadthTest#allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialBreadthTest.java",
+      "lines": [
+        80,
+        84
+      ],
+      "count": 28,
+      "proof": "Real alarm-draft catalog routes to each task setup, actual focused Activity capture, Back to catalog and scene.unchanged after each. No configuration is saved and no hardware check starts."
+    },
+    {
+      "method": "org.sleepwell.app.NightDialBreadthTest#cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialBreadthTest.java",
+      "lines": [
+        86,
+        93
+      ],
+      "count": 11,
+      "proof": "Real ChallengePracticeActivity per single-task routine and real native task rendering; private scene unchanged. These captures do not prove task completion."
+    }
+  ],
+  "result": {
+    "status": "reviewed_with_concrete_defects",
+    "findings_count": 2,
+    "other_originals": "No concrete visible clipping, overlap or target-obscuring layout defect found in the other 37 captured viewports.",
+    "full_acceptance": false,
+    "app_edits_during_review": false
+  },
+  "findings": [
+    {
+      "id": "task-visual-search-face-contrast",
+      "severity": "high",
+      "file": "night-dial-breadth-Workspace-Visual-search.png",
+      "issue": "The sleeping target at row 1, column 2 appears as a featureless white disk, as do three awake white disks. The closed-eye clue cannot be visually distinguished.",
+      "xml_target": {
+        "description": "Sleeping moon, row 1, column 2",
+        "bounds": [
+          382,
+          719,
+          697,
+          887
+        ],
+        "enabled": true,
+        "clickable": true
+      },
+      "original_pixel_evidence": {
+        "roi": [
+          514,
+          785,
+          565,
+          826
+        ],
+        "pixel_count": 2091,
+        "unique_colors": 1,
+        "color": "#F3F3EF",
+        "comparison_awake_roi": [
+          838,
+          785,
+          889,
+          826
+        ],
+        "comparison_same_uniform_color": true,
+        "grey_awake_roi": [
+          190,
+          785,
+          241,
+          826
+        ],
+        "grey_fill": "#B8B8B3",
+        "visible_feature_color": "#F3F3EF"
+      },
+      "source": {
+        "file": "app/src/main/java/org/sleepwell/app/MoonSearchView.java",
+        "line": 18,
+        "blob": "bf89530d3569466bfb0dc9bbda3ad33c7d914224",
+        "cause": "Odd variants use NightDialTokens.TEXT for the disk; features use Design.INK, which aliases the identical TEXT value.",
+        "inherited": true,
+        "accepted_c5_blob_identical": true
+      },
+      "bounded_fix": "Use contrasting dark feature ink on both light disk fills; preserve board, target, variant, content descriptions and callback identities."
+    },
+    {
+      "id": "task-sequence-watch-admission",
+      "severity": "medium",
+      "file": "night-dial-breadth-Workspace-Sequence.png",
+      "issue": "Revealed sequence 422 and four enabled/clickable digit keys coexist without an explicit Watch/Your turn state. Source admits taps during reveal and rerolls the round after wrong input.",
+      "xml": {
+        "revealed": "422",
+        "prompt_bounds": [
+          53,
+          653,
+          1027,
+          807
+        ],
+        "keys": [
+          {
+            "text": "1",
+            "bounds": [
+              53,
+              807,
+              296,
+              954
+            ]
+          },
+          {
+            "text": "2",
+            "bounds": [
+              296,
+              807,
+              539,
+              954
+            ]
+          },
+          {
+            "text": "3",
+            "bounds": [
+              539,
+              807,
+              783,
+              954
+            ]
+          },
+          {
+            "text": "4",
+            "bounds": [
+              783,
+              807,
+              1027,
+              954
+            ]
+          }
+        ],
+        "all_enabled": true,
+        "all_clickable": true
+      },
+      "source": {
+        "file": "app/src/main/java/org/sleepwell/app/WakeCognitiveTask.java",
+        "lines": [
+          96,
+          102,
+          107,
+          108
+        ],
+        "blob": "c0a7c0787657e2e29536dc741dbfb9817bd391ca",
+        "cause": "reveal sets only text/deadline; tap checks only live(), not revealUntil. Wrong input calls fresh() and generates another expected sequence.",
+        "inherited": true,
+        "accepted_c5_blob_identical": true
+      },
+      "bounded_fix": "Explicit Watch/Your turn phase, disable and reject input during demonstration, retain the same expected sequence on wrong-input replay. Preserve round/run state and lifecycle admission.",
+      "qualification": "Enabled controls and missing explicit phase are visible/XML evidence; accepted-during-reveal and wrong-answer reroll are source evidence, not a newly executed interaction."
+    }
+  ],
+  "receipts": [
+    {
+      "file": "review.json",
+      "bytes": 1438,
+      "sha256": "bb7b3c1f39eb971be41b86fab5caa0889b66286e6127a4cbaec68bce466c8c4b"
+    },
+    {
+      "file": "instrumentation.txt",
+      "bytes": 14589,
+      "sha256": "820ed18f96d8a661e50d3792d951a203255e929f60c096fe29af550ed1e12fe2"
+    }
+  ],
+  "originals": [
+    {
+      "file": "night-dial-breadth-Task-Camera-light.png",
+      "bytes": 124666,
+      "sha256": "b4e527565c4baf0b0687eaf1247c47d8bf3238a808c2c162b0f96b3cc2f87d97",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Camera-light.xml",
+        "bytes": 25131,
+        "sha256": "dd208454ee38e09a1913721d5417bdd5cad33157337e1568b3feb5245a14b2a2"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Readable title, illustration explicitly marked Illustrated guide, relative image brightness distinguished from lux, preview separate from white Add action; no visible overlap.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Counting.png",
+      "bytes": 90043,
+      "sha256": "fdf1d7fe53e6d66b9db4f1a47ade47f13f8eddae80bb894161c109d91122c9f8",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Counting.xml",
+        "bytes": 25670,
+        "sha256": "848a7e0351c0b46786b68947a408f60c6de3926f1b71d9ffb3bd39a00a8c5c26"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Counting guide is explicitly illustrative; rounds selected in amber, separate preview and fixed Cancel/Add footer; no visible clipping.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Dream-journal.png",
+      "bytes": 104371,
+      "sha256": "754a9c6529269e7c9c7305ed92f13cf49f2cf542891811a7558e298e59b4f133",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Dream-journal.xml",
+        "bytes": 25069,
+        "sha256": "94ec125f746f55af0ed204963553483e0b21ec4fe231158508b18940946a8539"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Private-entry explanation and actual minimum/word requirements wrap cleanly; illustrated guide separated from entry-minimum control and preview; footer clear.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Flags.png",
+      "bytes": 78976,
+      "sha256": "60b35ca125aa22c2b1026b85e17157eda347d9eabb11fdc842d3cf1b253029c2",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Flags.xml",
+        "bytes": 25679,
+        "sha256": "10be089387542b6068461de1745dd1e59cc1e9afe5f5c8f6e433a7a6d5a8ad4f"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Setup uses a neutral illustrated flag rather than a false country sample; rounds, preview and Add footer aligned.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Jumping.png",
+      "bytes": 86512,
+      "sha256": "40c339cf91bb76b4c02ce9a98e5e60d6cad32b01de457895b07c316d75e6b57a",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Jumping.xml",
+        "bytes": 25738,
+        "sha256": "a2637d0e08b969c2ee4197848dd5b606239475029e3f4cd1c1b405184be483bc"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Explicit tap-to-jump orb instructions match the displayed hurdle guide; rounds and preview separated from Add; no physical-motion evidence claimed.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Laughter.png",
+      "bytes": 121306,
+      "sha256": "347624e51b2cb1aee1e8907141d117adb3884933bc6759ec077f8447818f84a2",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Laughter.xml",
+        "bytes": 25156,
+        "sha256": "6be51d0c338a1a123eeb72d29edbe4843117218365d157b7f42434653f208c91"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Experimental on-device estimate, unverified accuracy, bounded 15-second listening and explicit permission language are visible; illustration clearly labelled; no clipping.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Light.png",
+      "bytes": 114884,
+      "sha256": "3bc70f2dfca33e23c4b7950bd65ebaf1e65a51ce75349c32db9fafa36897f53a",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Light.xml",
+        "bytes": 25147,
+        "sha256": "a3f4e8e66450c4fe2cb7168ab2b26287801ef5b7364c8226e2467b4960606042"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "100 lx is clearly a selected target, not an invented measured reading; freshness/hold policy and Math fallback readable; guide and preview separated.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Loud-sound.png",
+      "bytes": 104811,
+      "sha256": "5c569dd4af13b68b62f779e3eac1b6d28ea9bad5cae0abcf296bd75a66708bbe",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Loud-sound.xml",
+        "bytes": 26667,
+        "sha256": "362a1a6e7dd8571bac832675be8dedac282dc99fb4b8e08aea2f3cf39e8c80b2"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Explicit 15-second listening limit, permission-only-on-choice copy and Math alternative visible; illustrated waveform not labelled measured input; About route and footer clear.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Math.png",
+      "bytes": 128183,
+      "sha256": "4b64d88e0d2fce3b6b99ac072ed50da13d9cb0accad9b12f162ae6692ff6104e",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Math.xml",
+        "bytes": 43191,
+        "sha256": "7c51fc066cd4c72248e67a3e32fa137fb48526e913feed904754be0eb85e186b"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Actual complexity/operator/answer-method/round controls align cleanly with selected amber states; example equation clearly identified; no decorative guide or overlapping footer.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Memory.png",
+      "bytes": 78085,
+      "sha256": "1e5098f69c586e62a16d41c7fa5d44a2d44eb5c56e81dfed6f0547a523c83d06",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Memory.xml",
+        "bytes": 25226,
+        "sha256": "a11a2611e39e802a2df95968be0a4a759ee59d012fe5baadd1af2c2d17645e19"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Matches accepted c5 Memory configuration composition: illustrated pair grid, rounds and clean fixed Cancel/Add footer; no visible overlap.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Mirror-text.png",
+      "bytes": 77462,
+      "sha256": "5e4691090761ae8bc87f0dbd614005b08c8d99e83a9478cf2d54db2b16fac1fe",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Mirror-text.xml",
+        "bytes": 25677,
+        "sha256": "89a74cd4cdcb5c32d4daee11495b580570fff04519e169f4782419d5c21be293"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Mirrored illustrative word and ordinary-language instruction clearly distinguished; rounds, preview and Add footer readable.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Musical-note.png",
+      "bytes": 107687,
+      "sha256": "38e27e7129648b8dc50e6382c7fedbd03f32637cfeba2387e05f5eb79fb22144",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Musical-note.xml",
+        "bytes": 26664,
+        "sha256": "ba03a5ca56781044cba5c9e7f7ee3f42a555c2e4e2e640757290f123cb1d7972"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Selected pitch tolerance separated from readable target/listening policy; guide labelled, no false live-pitch gauge; About and Add actions aligned.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-NFC.png",
+      "bytes": 87643,
+      "sha256": "ea46e348b7c3e5a8c98066ef61c67c5a1fd329dc3a67e37833a8c5fbf64c051d",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-NFC.xml",
+        "bytes": 25319,
+        "sha256": "5a7cf1282fcc6e3ddb2a9fa524b58834587dd515ff3a0c45568bc5d80ab0bbc7"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "No bedside tag saved is explicit, Set up is a separate route, shared-tag save scope is disclosed; illustrated guide and footer do not imply active reading.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Object-recognition.png",
+      "bytes": 145651,
+      "sha256": "4561181123654ff4fcb8ed7ca644a7cc4f6cdf8a7ff2c893a8ee777f155d9662",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Object-recognition.xml",
+        "bytes": 24489,
+        "sha256": "081c362b531e2246e7a3a8a4f6ae418114eb53a9b764642ccc2d890d5cffcb75"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Named coffee-mug target, paused rear-camera area and explicit Allow camera action are visible; model-estimate limitations wrap without obscuring Use target footer; no live-image claim.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Picture-match.png",
+      "bytes": 89841,
+      "sha256": "b1fb3839014b14cbb2d84c2635730eb3a450f204a758b4637ad22429706f9204",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Picture-match.xml",
+        "bytes": 21386,
+        "sha256": "f3afa5c207c37566b7eedce3c1fb7ac1499a852504aa2fdad5ec40f7ebf047ae"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Reference-name field, empty camera surface, off-until-start status and explicit Allow camera action are readable; long title and Save reference footer fit.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Pose.png",
+      "bytes": 116642,
+      "sha256": "d71bf871bf5aa16c085643127a972bdd0b4d1d7361af8843b96b288a2a04c590",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Pose.xml",
+        "bytes": 25138,
+        "sha256": "acd47ee9a91f0287c850f97d40b201a23496de4b82049f831ae47c03c6939f91"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Single supported hands-raised pose and 1.2-second hold shown with labelled guide; description and model limits wrap cleanly; preview/Add distinct.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-QR-code.png",
+      "bytes": 146540,
+      "sha256": "21f5b877c405cc52948b931f0a112d81000e95ab52859ee63edc7c4aa642aa45",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-QR-code.xml",
+        "bytes": 33680,
+        "sha256": "1e45f3f5580bb2ad291534e9aef77ce20dc7da3a011303e651d4d85b8ab1eec3"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Native QR/NFC selector, location, printable-code action, explicit camera permission, Math fallback and Save code footer fit without overlap; camera-off message visible.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Retype.png",
+      "bytes": 75033,
+      "sha256": "daf85f5449f073a0efe4fa696bf93d4e52174ab0a800a5c128285af64819d45f",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Retype.xml",
+        "bytes": 25239,
+        "sha256": "cf86adde7123553925439cc06e16eea36b6af4181a77f7102f03ba051a140d1f"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Target phrase is explicitly an illustrated guide; rounds selected in amber and fixed Cancel/Add controls match accepted setup hierarchy.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Sequence.png",
+      "bytes": 72560,
+      "sha256": "5004f204a9e1f82988ac3b7a00dcf381b43495f86d620b0bd24e45821f018cb6",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Sequence.xml",
+        "bytes": 25246,
+        "sha256": "537f26afee169544cbf3009acaca397441093987d96ff75bf09bfecb1a4d470f"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Three-digit sample is explicitly illustrative; watch/repeat instruction, rounds and fixed Add footer clear.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Shake.png",
+      "bytes": 69344,
+      "sha256": "8755cac50be29d8a61f79a7e96921d17051131ef3b0d18bdd3a7ecbafb67a82e",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Shake.xml",
+        "bytes": 25255,
+        "sha256": "305aa9971a3b6bb05ffc01f77285dd59522df093e72af7c9476fdd416adf4232"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Illustrated phone and selected five-shake target are distinct from live movement counts; labels and footer fit.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Smile.png",
+      "bytes": 120067,
+      "sha256": "4da0ef716360692598e395194981b4b76c0e92e039a9292460682e6c22d38b25",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Smile.xml",
+        "bytes": 25113,
+        "sha256": "15549354136ef27a7923b278b467de5b15f00248e19ae0090ec23ba40d8d0e2b"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Single sustained-smile rule and exact hold explanation readable; illustrated face not presented as live portrait; privacy/model limits and preview visible.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Speak.png",
+      "bytes": 117339,
+      "sha256": "8bbbc4ebdaec7b2cba1fbb96e0347fe9ffdac35a7ac56baab06739ed44982c17",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Speak.xml",
+        "bytes": 25125,
+        "sha256": "9fb91ab15b1885f1641084dc2cf7539dbfd6fdb466efecc867595612d95f1737"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Speech-activity versus word/identity distinction visible; bounded listening and explicit admission copy wraps without overlap; labelled waveform/preview/Add separation clear.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Spin-around.png",
+      "bytes": 133609,
+      "sha256": "ea0876eaad1b15781dd4e54eac6625df6af30eadbf8569b1803126f01d973ca8",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Spin-around.xml",
+        "bytes": 25154,
+        "sha256": "01e5139383e3f42273716955526873cddde9d00db9a475697ac1f9b03e7bc9a0"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "One continuous turn and two-finger hold, reset policy and Math alternative all visible; no synthetic angle/progress gauge; footer clear.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Spoken-phrase.png",
+      "bytes": 119480,
+      "sha256": "9f84ee58a0670c933f7fd1753cb1c22b29b6fb6220b6a9e3f05a0bc66e9837d0",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Spoken-phrase.xml",
+        "bytes": 26683,
+        "sha256": "1d6384e77b149135c2d72e6ed8b71bb1244c87eaf359abfe6cb9e4195a5f14e2"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Phrase rounds, explicit bounded listening and no automatic model download disclosed; guide, preview, About and Add actions distinct.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Tilt-maze.png",
+      "bytes": 81650,
+      "sha256": "23499aba217cb1b5467d0aa950dff8a1953d3027d89ebfa6f6f85fcbe98c0264",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Tilt-maze.xml",
+        "bytes": 25734,
+        "sha256": "489cf0f45201c24ede7d30ce14a7691a714a420724974fd03fd778155a5b601f"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Gentle calibration instructions and Math fallback visible; illustrated maze separate from rounds/preview, footer unobscured.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Type-code.png",
+      "bytes": 96819,
+      "sha256": "e896973c5d355ee3796540baa47a5f534a9fd8875f2822d566f8b00f0780f275",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Type-code.xml",
+        "bytes": 24562,
+        "sha256": "c929194b2a4da5cf7e58a78e29eaaa1a5c7fcbb35ef6c4abe83b1805030d3afa"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Angled code explicitly labelled illustrative; Easy selected difficulty, preview and Add target fit.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Visual-search.png",
+      "bytes": 97078,
+      "sha256": "2f93b26b15cfc7304c355455edd6a661ed8b4abeff7ae7d096645e5be1539169",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Visual-search.xml",
+        "bytes": 25708,
+        "sha256": "f9db9ac1df344f74c75ae8aba56d999d6693d87149c66874153013555a48319f"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Labelled moon-grid guide, stable target instruction, rounds and preview fit without clipping.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Walk.png",
+      "bytes": 109978,
+      "sha256": "858fe6221ac8221ebfe4e35de98d77871019a56eb83dbe62b559829c9af40648",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Task-Walk.xml",
+        "bytes": 28343,
+        "sha256": "ef32c1385f786a128c583d360e3a61b1dec9f35627257b02beb4e885ceafd27d"
+      },
+      "writer": "allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "individually_opened": true,
+      "visual_note": "Ten-step target distinguished from unavailable physical-activity/step-sensor state; Math replacement explained without fake step progress; footer clear.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Counting.png",
+      "bytes": 95139,
+      "sha256": "7b816f506a4d5c561166db6f64798698252b726475a4b9db72b5d192374aeec3",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Workspace-Counting.xml",
+        "bytes": 24487,
+        "sha256": "d5dd1fcf5dac33e1718c734f27830a66aa69611ec41698d106e440f0b5d4bed9"
+      },
+      "writer": "cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "individually_opened": true,
+      "visual_note": "Practice-only header and emergency overflow visible; complete unobscured 4x4 shape board (six circles), numeric-entry field and Check count above Cancel; source purple puzzle shapes retained.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Dream-journal.png",
+      "bytes": 112475,
+      "sha256": "97f1fb2d7552cbcc786991471540a2844f77f3e4c0b953f8180e74be1dd8090f",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Workspace-Dream-journal.xml",
+        "bytes": 24685,
+        "sha256": "910335b99307363694f4e7a3dc77ea28c3303156f37e336f689b15476d9498e0"
+      },
+      "writer": "cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "individually_opened": true,
+      "visual_note": "Practice/non-saved entry status and exact requirements visible; editor/check action separated with natural wrapping; no root tabs or overlap.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Flags.png",
+      "bytes": 74684,
+      "sha256": "869bab7ade700d34648b53f85cb776f64ae1eb14312db74b045c6e31812b7cd2",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Workspace-Flags.xml",
+        "bytes": 25730,
+        "sha256": "b701f088e67784015a02484cbea53f9260297c45cd8a1940bb7359b056abda60"
+      },
+      "writer": "cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "individually_opened": true,
+      "visual_note": "Actual Italian tricolor preserved with Italy among four clear country choices; practice, emergency and Cancel present; no palette substitution of flag colors.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Jumping.png",
+      "bytes": 105887,
+      "sha256": "837c25b3c42c46b126a7cf7db5d827733ecc3b4efe09e92d7afa72c1e2d3e767",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Workspace-Jumping.xml",
+        "bytes": 24608,
+        "sha256": "5bfc739760d048dc348961fea4bbcfc672fec45bc02ab13eed321872f062c5b5"
+      },
+      "writer": "cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "individually_opened": true,
+      "visual_note": "Real tap-game board starts at zero of three hurdles with explicit Start game, inactive Jump and Math alternative; no physical exercise/capture inference; controls do not overlap.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Math.png",
+      "bytes": 105967,
+      "sha256": "da0428855a03dfff5b9d3004aceea76922f0280a680d26f9c0a7bed9330948ea",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Workspace-Math.xml",
+        "bytes": 26606,
+        "sha256": "56f1d09f38f0a44692b7700bd9abe536883389819c665c95e8d729405323b9cc"
+      },
+      "writer": "cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "individually_opened": true,
+      "visual_note": "Dominant actual equation 9+13 with 22 among four answer choices; unselected prompt and Check practice answer clear; practice/emergency/Cancel visible.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Memory.png",
+      "bytes": 72725,
+      "sha256": "4fca1dd8d3d792a216b95791e7bbe3666d4792e4e992f478d4ba569b1e492f20",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Workspace-Memory.xml",
+        "bytes": 24575,
+        "sha256": "222ecc01a2ef8899c030142b9607aad810adb8c728e10e76c535496ba6dc0daa"
+      },
+      "writer": "cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "individually_opened": true,
+      "visual_note": "Six embossed facedown cards match accepted c5 composition; matching instruction, practice banner, emergency overflow and Cancel visible; no illustration masquerading as board.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Mirror-text.png",
+      "bytes": 96096,
+      "sha256": "1825d0c9e7b038533ff898d5fde5d20468cd2ff27824a964f48aeb9ca0026ae5",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Workspace-Mirror-text.xml",
+        "bytes": 24171,
+        "sha256": "1ac3ec69b155db7c1bf1bccba9c37db54df6f08304be50aa356dcaa4e3d5112c"
+      },
+      "writer": "cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "individually_opened": true,
+      "visual_note": "Mirrored prompt wraps into two lines without clipping; ordinary entry hint explicitly requests normal phrase, Check action and Cancel distinct; no IME visible in this capture.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Retype.png",
+      "bytes": 88301,
+      "sha256": "365e2de1e2b7c86a143eb6cd27d368b2c0359a90aa26c210b4047cb4013ce7ca",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Workspace-Retype.xml",
+        "bytes": 23650,
+        "sha256": "77e369081c55a17265eaebfbbba9e0dbb58e9bf34d8a53d4f6674a50f9e405b8"
+      },
+      "writer": "cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "individually_opened": true,
+      "visual_note": "Complete MORNING 2550 target, labelled ordinary input and Check answer visible; no clipping, keyboard not displayed.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Sequence.png",
+      "bytes": 78228,
+      "sha256": "57916077201e462eb0cadccd09813ac162ba2bec20bfd2528cc11285789cf4d5",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Workspace-Sequence.xml",
+        "bytes": 24475,
+        "sha256": "e45908c4fe3331eb24654bdac8a3123b52ef1d9d0a88cc0e81b08d81b2a1149a"
+      },
+      "writer": "cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "individually_opened": true,
+      "visual_note": "DEFECT: revealed 422 and enabled digit keys coexist without explicit Watch/Your turn state. Source accepts taps during reveal and generates a fresh sequence on wrong input; see finding task-sequence-watch-admission.",
+      "finding_ids": [
+        "task-sequence-watch-admission"
+      ]
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Type-code.png",
+      "bytes": 97975,
+      "sha256": "200824fa2c56ca2780b080ed4cf308b54197ce11ec4d5cf1d133f590e84436d9",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Workspace-Type-code.xml",
+        "bytes": 24917,
+        "sha256": "949c683c682f1e2b9d634e6d50545a6940978e8530558f60f4ebc42f304270bd"
+      },
+      "writer": "cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "individually_opened": true,
+      "visual_note": "Five-character real code is fully visible, with case-insensitive instruction, entry, Check and Math alternative; no overlap; no keyboard in this capture.",
+      "finding_ids": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Visual-search.png",
+      "bytes": 103186,
+      "sha256": "e118281e9e54c9bc77285c777915c40abf7ce02dd8968047debf43a31a0c6214",
+      "width": 1080,
+      "height": 2316,
+      "xml": {
+        "file": "night-dial-breadth-Workspace-Visual-search.xml",
+        "bytes": 33639,
+        "sha256": "27f995e7db9da87742ae1c063ad819f2c73d01ca1383ac9d3d4d559e8018f9c0"
+      },
+      "writer": "cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "individually_opened": true,
+      "visual_note": "DEFECT: four TEXT-filled moons have same-color eyes/mouth and appear blank; grey variants show faces. Source draws facial features with Design.INK (TEXT) on TEXT fill; a white sleeping target has no visible closed-eye clue. See finding task-visual-search-face-contrast.",
+      "finding_ids": [
+        "task-visual-search-face-contrast"
+      ]
+    }
+  ]
+}
