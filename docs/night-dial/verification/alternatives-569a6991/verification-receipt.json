@@ -1,0 +1,145 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "scope": "local-alternatives-reference",
+  "source_revision": "569a6991a7063b289d0f2011dc46189e2650359e",
+  "app_main_git_tree": "57441705e7c1bee7e96d82ded25d59058faa2ac2",
+  "run_id": 41266940619,
+  "attempt": 2,
+  "run_url": "https://github.com/omeyerrato/SleepWell/actions/runs/41266940619/attempts/2",
+  "artifact_id": 13067898375,
+  "artifact_name": "silent-android-review",
+  "zip_name": "attempt-2-original.zip",
+  "zip_bytes": 21869234,
+  "zip_sha256": "63b28a3659b4158544b45ad4fae5d5bb9f7341996cd5648f6df22c25ed292609",
+  "zip_members_verified_against_extraction": 163,
+  "overall_cohort_passed": false,
+  "passed_methods": 4,
+  "failed_methods": 1,
+  "required_originals": 98,
+  "required_present": 94,
+  "passing_method_required_originals": 87,
+  "actual_original_png_files": 96,
+  "extra_failure_diagnostic_pngs": 2,
+  "missing_contactless_originals": [
+    "sonar-setup-movement-before-stop.png",
+    "sonar-setup-movement-restored.png",
+    "sonar-setup-movement-returned.png",
+    "sonar-setup-movement-stopped-returned.png"
+  ],
+  "contactless_failure": {
+    "assertion": "expected:<{}> but was:<{trackingPaused=false, tracking=false}>",
+    "location": "ContactlessSetupFlowTest.fixture line14, method line147",
+    "status": "FAILED; four later movement frames absent; no Contactless completion claimed"
+  },
+  "attempt_1": {
+    "status": "Infrastructure failure before native evidence",
+    "diagnostic": "Not enough space to create userdata partition; available3553.90MB, required7372.80MB",
+    "artifact_selection": "gh run download --name selected the older three-file artifact. This receipt uses the explicit attempt-2 artifact ID and verified ZIP, not those three files."
+  },
+  "separate_followup": {
+    "run_id": 41268504688,
+    "source_prefix": "4422",
+    "scope": "Contactless-only follow-up owned by root; no result incorporated into this archive"
+  },
+  "source_plan_metadata": "Historical plans with native_review_run:null / pending statuses are unchanged. This separate receipt records the observed native results.",
+  "units": "not_run",
+  "new_runtime_actions_during_archiving": false,
+  "full_app_review": false,
+  "physical_outputs": false,
+  "copy_policy": "Original environment, summary, five complete per-method logs, two proof receipts, raw Contactless failure and representative PNGs are copied byte-for-byte. All96 PNGs are hashed/dimensioned; the ZIP remains the full artifact source.",
+  "original_copied_files": {
+    "environment.json": {
+      "bytes": 1199,
+      "sha256": "ea64e29f4333510f0691f5a90ffee467fbec7a374d94117e81dc539ee5e56460"
+    },
+    "focused-review-summary.json": {
+      "bytes": 1412,
+      "sha256": "40a634ec5cc2485a18d6bbf2600bf1b248df773e637998b3bb54a87656a6f2b6"
+    },
+    "trip-occurrence-admission-proof.json": {
+      "bytes": 798,
+      "sha256": "14f34f387ff35b99e14f1143ebfd754d455de0efff8d4f64a8bfcebaabd05b33"
+    },
+    "rhythm-evidence-proof.json": {
+      "bytes": 494,
+      "sha256": "1afea9e46878ba8f48dff210091297f91ac0242f8feec337a6ad5d7a46031957"
+    },
+    "NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners.txt": {
+      "bytes": 791,
+      "sha256": "895aa0b20b334aca29ef82c4bcaf43442715c089d614ba0ba7c4f224f2a05104"
+    },
+    "CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight.txt": {
+      "bytes": 841,
+      "sha256": "e3ed47029e016cef8c303a2b473857343cfac8e8f252fcb808368893953c4074"
+    },
+    "ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio.txt": {
+      "bytes": 2632,
+      "sha256": "af36d7451c07f42efc328509930e28316af5db78597fb3ae86c1675eff06b045"
+    },
+    "TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm.txt": {
+      "bytes": 813,
+      "sha256": "989c5fcfe6338a155893e2414270a9051b43c81f5996b51341243ae7c201bc14"
+    },
+    "SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs.txt": {
+      "bytes": 802,
+      "sha256": "eb7b4faf5fe97c479c080052d12d11f0fb08c6190cdda6cf8faf8179f8271a0c"
+    },
+    "originals/trip-occurrence-reviewed-restored.png": {
+      "bytes": 186139,
+      "sha256": "71587402fda3ddbbff27eed06a811626186181ee54ec25773acce1dc7d610faa"
+    },
+    "originals/trip-occurrence-post-commit-plan-changed.png": {
+      "bytes": 221663,
+      "sha256": "170c2fa2e658a447035e1b3e5d89b950200f19d5110be3003b57ba46d5403ebb"
+    },
+    "originals/trip-occurrence-no-eligible.png": {
+      "bytes": 236016,
+      "sha256": "4065c094b65796787abb896f0da160873f98a69c91109b9d50cbfe8d7f5b7f8c"
+    },
+    "originals/rhythm-evidence-returned.png": {
+      "bytes": 328990,
+      "sha256": "acebe1ff86d5bf99fe71a2aae743e9018fd0fad678e142deca51ea868f0216fa"
+    },
+    "originals/rhythm-evidence-older-page.png": {
+      "bytes": 215582,
+      "sha256": "f4eb013913ed645a1926115a1b6f23c4ad9b42f0f61cf073d1c95512f1ef1649"
+    },
+    "originals/rhythm-empty.png": {
+      "bytes": 188778,
+      "sha256": "c52af996f331dc06d4a9ff4973904c258daeb2b82155223c980d37eab92c21c3"
+    },
+    "originals/night-dial-breadth-VoiceSettingsUnavailableRestored.png": {
+      "bytes": 301097,
+      "sha256": "2d9a63ec6e56751575f12b7facf931eff2bca3383612ec4bd7c2e0eb1243e694"
+    },
+    "originals/calendar-event-manual-export-review-restored.png": {
+      "bytes": 174089,
+      "sha256": "b77f3cd7976cadf8db0f748f00bd4c7aa4a9c109a55b73ebb1b86c43b23f4ec2"
+    },
+    "contactless-failure/sonar-setup-cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio-failure.txt": {
+      "bytes": 4886,
+      "sha256": "41798ebe6a57c050c28db96816f5330e0fc89eefafce18b9a0607592a43a03f0"
+    },
+    "contactless-failure/sonar-setup-cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio-failure.xml": {
+      "bytes": 28124,
+      "sha256": "7b195c306e8e216087af4a31c415c8db1fd41ad56fd898edf70b3b7c0a188bbf"
+    },
+    "contactless-failure/sonar-setup-cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio-failure.png": {
+      "bytes": 1226453,
+      "sha256": "ac73214ada9aaaddafe4e71b8e0ca589a2c20c8419547cc26b482855a841857f"
+    },
+    "attempt-1-infrastructure/acceleration.txt": {
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    "attempt-1-infrastructure/avds.txt": {
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    "attempt-1-infrastructure/emulator.log": {
+      "bytes": 1409,
+      "sha256": "f9834f49f49ff67d34da402d35f8bfbcadc274bfba55a5bd9301de2fd157c6b0"
+    }
+  }
+}

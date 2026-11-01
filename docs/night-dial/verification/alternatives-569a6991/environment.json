@@ -1,0 +1,23 @@
+{
+  "commit": "569a6991a7063b289d0f2011dc46189e2650359e",
+  "emulator": true,
+  "scope": "local-alternatives-reference",
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no native playback output allowlisted; library uses fake playback",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": true,
+  "startup_focused_samples": 3,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420",
+  "local_alternatives_slice": "Actual local fallback, rhythm evidence and reviewed travel draft flows; private state and injected physical/service ports",
+  "test_classes": [
+    "NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+    "CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight",
+    "ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+    "TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+    "SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs"
+  ]
+}

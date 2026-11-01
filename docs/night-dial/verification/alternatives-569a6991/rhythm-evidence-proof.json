@@ -1,0 +1,15 @@
+{
+  "eligible_history_nights": 21,
+  "latest_plotted_nights": 7,
+  "chart_source_record": 15,
+  "reviewed_source_record": 2,
+  "older_page_source_record": 1,
+  "genuine_scrolled_return_and_recreation": true,
+  "workday_save_return_scroll_px": 620,
+  "workday_cancel_return_scroll_px": 620,
+  "older_page_recreated_and_newer_returned": true,
+  "source_snapshot_unchanged_by_review": true,
+  "chronotype_remains_unknown": true,
+  "empty_has_no_source_action": true,
+  "physical_outputs": false
+}

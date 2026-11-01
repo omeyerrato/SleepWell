@@ -1,0 +1,294 @@
+{
+  "date": "2026-11-01",
+  "source_revision": "569a6991a7063b289d0f2011dc46189e2650359e",
+  "method": "Actual PNG files opened using view_image with original detail. Some returned displays are resized previews; byte-identical repeats are mapped by SHA-256 rather than treated as separate visual evidence. No generated mockups or filename-only review.",
+  "distinct_originals_opened": 33,
+  "original_files_covered_by_hash_equivalence": 43,
+  "material_clipping_or_action_overlap_found": false,
+  "findings": {
+    "Trip_17": "Review/Use/Keep actions fit; restored review retains source, replacement and following occurrence. Stale alarm/plan messages, post-commit changed-plan rejection and fresh no-eligible outcome are readable. Scrolled header/content clipping is viewport scrolling, not a status-bar overlap.",
+    "Rhythm_15": "Selected observed night and exact-source Reports are readable. Contributor list supports a genuinely scrolled return, older page and empty state. Workday edit and saved return fit; 21/30 remains insufficient/unknown, with no invented chronotype.",
+    "Voice_3": "Offline inventory and actual injected unavailable-settings error remain readable after recreation. Save/Cancel remain separate. This is no audible voice-quality or real settings-launch acceptance.",
+    "Calendar_8": "Note choice is off initially and retained after opt-in/recreation/return. Missing-calendar error and opened-draft status remain visible above the primary action. All-record CSV review discloses its scope separately from the calendar note choice; actual Backup overview and Back retain the draft. Calendar final save is external/injected, not certified here."
+  },
+  "limits": [
+    "Only the three voice originals within the 47-frame Breadth method were personally inspected for this archive; the other 44 Breadth frames are hashed and supported by their native method pass.",
+    "No complete 43-flow/172-state visual acceptance, device-matrix acceptance, physical calendar save, real alarm delivery, native audio capture or playback is claimed."
+  ],
+  "reviewed_hash_groups": [
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-cancelled.png",
+      "byte_identical_originals": [
+        "trip-occurrence-cancelled.png",
+        "trip-occurrence-kept.png"
+      ],
+      "sha256": "4a3b6464074241169e3d8812e219af7a2051f8bf8fa98c845afebfcba5523965"
+    },
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-choices.png",
+      "byte_identical_originals": [
+        "trip-occurrence-choices-restored.png",
+        "trip-occurrence-choices.png",
+        "trip-occurrence-linked-excluded.png"
+      ],
+      "sha256": "cf15c71ed78b60fe645030bb3ca20cfe63468a475998b7ab59bc540eda2863b0"
+    },
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-draft-restored.png",
+      "byte_identical_originals": [
+        "trip-occurrence-draft-restored.png",
+        "trip-occurrence-draft.png"
+      ],
+      "sha256": "77b904cedf46f1b4390e8ac510bc4366d3b07a35f592636405c871473061bdaa"
+    },
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-no-eligible.png",
+      "byte_identical_originals": [
+        "trip-occurrence-no-eligible.png"
+      ],
+      "sha256": "4065c094b65796787abb896f0da160873f98a69c91109b9d50cbfe8d7f5b7f8c"
+    },
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-plan.png",
+      "byte_identical_originals": [
+        "trip-occurrence-plan.png"
+      ],
+      "sha256": "5a06b9163833c23ae61835f1798521edafc1d0efd7a32d22b0dbd147d1e35518"
+    },
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-post-commit-plan-changed.png",
+      "byte_identical_originals": [
+        "trip-occurrence-post-commit-plan-changed.png"
+      ],
+      "sha256": "170c2fa2e658a447035e1b3e5d89b950200f19d5110be3003b57ba46d5403ebb"
+    },
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-proposal.png",
+      "byte_identical_originals": [
+        "trip-occurrence-proposal.png"
+      ],
+      "sha256": "edc0566a98c9488fcefc2d2127589aa7fec00dfe02d191b93b29abadfeb1ed5c"
+    },
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-ready-to-save.png",
+      "byte_identical_originals": [
+        "trip-occurrence-ready-to-save.png"
+      ],
+      "sha256": "36ffbf4262b05a4c09ec18de65c42c99c03fdfb24004d6f4e471aae9f685d133"
+    },
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-reviewed-restored.png",
+      "byte_identical_originals": [
+        "trip-occurrence-reviewed-restored.png",
+        "trip-occurrence-reviewed.png"
+      ],
+      "sha256": "71587402fda3ddbbff27eed06a811626186181ee54ec25773acce1dc7d610faa"
+    },
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-saved.png",
+      "byte_identical_originals": [
+        "trip-occurrence-saved.png"
+      ],
+      "sha256": "aa53e1a7aa208e51a06177c3ca748887fce380b22edeb57edb07698030a0d7f5"
+    },
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-stale-alarm.png",
+      "byte_identical_originals": [
+        "trip-occurrence-stale-alarm.png"
+      ],
+      "sha256": "77e97d0bf23faa941090c1a30d27ffacd064a5fbb0aee2d5d65d61c8e18f9546"
+    },
+    {
+      "family": "trip-occurrence-",
+      "opened_original": "trip-occurrence-stale-plan.png",
+      "byte_identical_originals": [
+        "trip-occurrence-stale-plan.png"
+      ],
+      "sha256": "006d3b7bbed3e5d0d6767051d90be08e7beca606c62da0d984a907a21cd0b835"
+    },
+    {
+      "family": "rhythm-",
+      "opened_original": "rhythm-day-report.png",
+      "byte_identical_originals": [
+        "rhythm-day-report.png"
+      ],
+      "sha256": "141a502f2f111aadf1582ee294b757bd4030a40d2dcbfc6862f73d2b76be4093"
+    },
+    {
+      "family": "rhythm-",
+      "opened_original": "rhythm-day-selected.png",
+      "byte_identical_originals": [
+        "rhythm-day-restored.png",
+        "rhythm-day-returned.png",
+        "rhythm-day-selected.png"
+      ],
+      "sha256": "fdb65555740c4631ba24dcbe084b01568b28f296b9aa228c35089fd563cf0648"
+    },
+    {
+      "family": "rhythm-",
+      "opened_original": "rhythm-empty.png",
+      "byte_identical_originals": [
+        "rhythm-empty.png"
+      ],
+      "sha256": "c52af996f331dc06d4a9ff4973904c258daeb2b82155223c980d37eab92c21c3"
+    },
+    {
+      "family": "rhythm-",
+      "opened_original": "rhythm-evidence-empty.png",
+      "byte_identical_originals": [
+        "rhythm-evidence-empty.png"
+      ],
+      "sha256": "8f32ad090444dfea81b63fc69a52d69d6b60452241c374dd87fe315df6174a20"
+    },
+    {
+      "family": "rhythm-",
+      "opened_original": "rhythm-evidence-older-page.png",
+      "byte_identical_originals": [
+        "rhythm-evidence-older-page.png"
+      ],
+      "sha256": "f4eb013913ed645a1926115a1b6f23c4ad9b42f0f61cf073d1c95512f1ef1649"
+    },
+    {
+      "family": "rhythm-",
+      "opened_original": "rhythm-evidence-returned.png",
+      "byte_identical_originals": [
+        "rhythm-evidence-recreated.png",
+        "rhythm-evidence-returned.png"
+      ],
+      "sha256": "acebe1ff86d5bf99fe71a2aae743e9018fd0fad678e142deca51ea868f0216fa"
+    },
+    {
+      "family": "rhythm-",
+      "opened_original": "rhythm-evidence-report.png",
+      "byte_identical_originals": [
+        "rhythm-evidence-report.png"
+      ],
+      "sha256": "87db8649e90fe969ab4de48dae1c6f4d58db779fbf8611bc64aa49efa9de4b51"
+    },
+    {
+      "family": "rhythm-",
+      "opened_original": "rhythm-evidence.png",
+      "byte_identical_originals": [
+        "rhythm-evidence.png"
+      ],
+      "sha256": "3aac773c85a1aea45a77ef8eaaa82882f31cd7ab7e26185834d5d2ef7bfcf4af"
+    },
+    {
+      "family": "rhythm-",
+      "opened_original": "rhythm-workdays.png",
+      "byte_identical_originals": [
+        "rhythm-recreated.png",
+        "rhythm-workdays.png"
+      ],
+      "sha256": "6507c45305402ece9f128ba34de326989eff931d10b35a41a4be4308119089b6"
+    },
+    {
+      "family": "rhythm-",
+      "opened_original": "rhythm-reopened.png",
+      "byte_identical_originals": [
+        "rhythm-reopened.png"
+      ],
+      "sha256": "550fc35fcfc1869da883b81f135f6e278e1a39fd7a5dcc92d573705b5ae74b85"
+    },
+    {
+      "family": "rhythm-",
+      "opened_original": "rhythm-seven-nights.png",
+      "byte_identical_originals": [
+        "rhythm-seven-nights.png"
+      ],
+      "sha256": "8f6be071a4147e115d17705e784304763865f045ddf3f09c016485a50bbdd264"
+    },
+    {
+      "family": "calendar-event-",
+      "opened_original": "calendar-event-default.png",
+      "byte_identical_originals": [
+        "calendar-event-default.png"
+      ],
+      "sha256": "7456c9e813517951c4a55da804af68e1c065664c29b6ee86ca53e0c73c82a4a3"
+    },
+    {
+      "family": "calendar-event-",
+      "opened_original": "calendar-event-manual-export-overview.png",
+      "byte_identical_originals": [
+        "calendar-event-manual-export-overview.png"
+      ],
+      "sha256": "935d69fbf9e5b693493e79d7d82c78e4f185abc0635d967d60100e71525c1f54"
+    },
+    {
+      "family": "calendar-event-",
+      "opened_original": "calendar-event-manual-export-returned.png",
+      "byte_identical_originals": [
+        "calendar-event-manual-export-returned.png"
+      ],
+      "sha256": "7ec6e491c3c41846e1a71f05ceff2e2a2a6a0aca98974146d1dba9433f3a721a"
+    },
+    {
+      "family": "calendar-event-",
+      "opened_original": "calendar-event-manual-export-review-restored.png",
+      "byte_identical_originals": [
+        "calendar-event-manual-export-review-restored.png",
+        "calendar-event-manual-export-review.png"
+      ],
+      "sha256": "b77f3cd7976cadf8db0f748f00bd4c7aa4a9c109a55b73ebb1b86c43b23f4ec2"
+    },
+    {
+      "family": "calendar-event-",
+      "opened_original": "calendar-event-opened.png",
+      "byte_identical_originals": [
+        "calendar-event-opened.png"
+      ],
+      "sha256": "cda544827b7403f3fadae7b67d6940858188ac1de27c24cdab740a93572ee008"
+    },
+    {
+      "family": "calendar-event-",
+      "opened_original": "calendar-event-recreated.png",
+      "byte_identical_originals": [
+        "calendar-event-recreated.png"
+      ],
+      "sha256": "21bc72c5ee6cce0b45e764954c19d7ed2e64ecda0af626d04192ed5d1e5e4a0d"
+    },
+    {
+      "family": "calendar-event-",
+      "opened_original": "calendar-event-unavailable.png",
+      "byte_identical_originals": [
+        "calendar-event-unavailable.png"
+      ],
+      "sha256": "b87dd59565f0aa7cb48220107d79640053059dcdbd2df44235af3d71da5b7602"
+    },
+    {
+      "family": "voice-settings",
+      "opened_original": "night-dial-breadth-NarrationVoice.png",
+      "byte_identical_originals": [
+        "night-dial-breadth-NarrationVoice.png"
+      ],
+      "sha256": "35f0147d4524efc69b7890bfdccf348b0a2f4b7a1c793b30fa2bdadc4f74e259"
+    },
+    {
+      "family": "voice-settings",
+      "opened_original": "night-dial-breadth-VoiceSettingsUnavailable.png",
+      "byte_identical_originals": [
+        "night-dial-breadth-VoiceSettingsUnavailable.png"
+      ],
+      "sha256": "fa79efca31a258a14cb865dc9b63ac8eecae2eb1e5686c32df54ac74e6746541"
+    },
+    {
+      "family": "voice-settings",
+      "opened_original": "night-dial-breadth-VoiceSettingsUnavailableRestored.png",
+      "byte_identical_originals": [
+        "night-dial-breadth-VoiceSettingsUnavailableRestored.png"
+      ],
+      "sha256": "2d9a63ec6e56751575f12b7facf931eff2bca3383612ec4bd7c2e0eb1243e694"
+    }
+  ]
+}

@@ -1,0 +1,977 @@
+{
+  "source_revision": "569a6991a7063b289d0f2011dc46189e2650359e",
+  "artifact_id": 13067898375,
+  "artifact_attempt": 2,
+  "required_originals": 98,
+  "required_present": 94,
+  "actual_png_files": 96,
+  "diagnostic_extra_pngs": 2,
+  "missing_required_originals": [
+    "sonar-setup-movement-before-stop.png",
+    "sonar-setup-movement-restored.png",
+    "sonar-setup-movement-returned.png",
+    "sonar-setup-movement-stopped-returned.png"
+  ],
+  "captures": [
+    {
+      "name": "calendar-event-default.png",
+      "bytes": 135009,
+      "sha256": "7456c9e813517951c4a55da804af68e1c065664c29b6ee86ca53e0c73c82a4a3",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "calendar-event-manual-export-overview.png",
+      "bytes": 195258,
+      "sha256": "935d69fbf9e5b693493e79d7d82c78e4f185abc0635d967d60100e71525c1f54",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "calendar-event-manual-export-returned.png",
+      "bytes": 140652,
+      "sha256": "7ec6e491c3c41846e1a71f05ceff2e2a2a6a0aca98974146d1dba9433f3a721a",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "calendar-event-manual-export-review-restored.png",
+      "bytes": 174089,
+      "sha256": "b77f3cd7976cadf8db0f748f00bd4c7aa4a9c109a55b73ebb1b86c43b23f4ec2",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight",
+      "kind": "required_original",
+      "archived_original": "originals/calendar-event-manual-export-review-restored.png"
+    },
+    {
+      "name": "calendar-event-manual-export-review.png",
+      "bytes": 174089,
+      "sha256": "b77f3cd7976cadf8db0f748f00bd4c7aa4a9c109a55b73ebb1b86c43b23f4ec2",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "calendar-event-opened.png",
+      "bytes": 153950,
+      "sha256": "cda544827b7403f3fadae7b67d6940858188ac1de27c24cdab740a93572ee008",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "calendar-event-recreated.png",
+      "bytes": 140617,
+      "sha256": "21bc72c5ee6cce0b45e764954c19d7ed2e64ecda0af626d04192ed5d1e5e4a0d",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "calendar-event-unavailable.png",
+      "bytes": 148395,
+      "sha256": "b87dd59565f0aa7cb48220107d79640053059dcdbd2df44235af3d71da5b7602",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-AlarmAccess.png",
+      "bytes": 189404,
+      "sha256": "1529a67c732bf5a4bc76c6d034157f92af7da6dd15ed59134b5e7dec90047a72",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-AlarmProtection.png",
+      "bytes": 140686,
+      "sha256": "b99ae4f461cf586efc9dfd85230516df213bb264b2a646d4cc813487fc93686e",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-Appearance.png",
+      "bytes": 345480,
+      "sha256": "82346e4188ce7c860fbb0e637beb5b2acbc0908558e9433d32ff574a38f70111",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-AutomaticTracking.png",
+      "bytes": 207856,
+      "sha256": "5596fe31bb80722b364e945e0c229cc3b1901239f991541bf41251c3694e3594",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-Automation.png",
+      "bytes": 127871,
+      "sha256": "2c35d926e82066388357bc344f0762d0dbe488a3ffef19f200c945173773a253",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-AwakeSettings.png",
+      "bytes": 149035,
+      "sha256": "50eab771c63c303750ba13787fd6b157d3a3899579ad4e16521c577d16bde706",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-Backup.png",
+      "bytes": 195215,
+      "sha256": "05cbad180bcf23719297ac3d6535c0c9cce4154d59d9bff89734745328d2cdad",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-BinauralSettings.png",
+      "bytes": 168207,
+      "sha256": "97b89ff2e289f3b4d95c6ec03fddc722839e041e5370e0c1b172cf8d48ec65c9",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-CalendarRules.png",
+      "bytes": 189893,
+      "sha256": "56ba4349741fa703ef5eb385f95a1453dab046b96cfd22dd86b29a8d270703af",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-CloudBackup.png",
+      "bytes": 192651,
+      "sha256": "9bafa3d9997c671e58b19c27e885e86333a44f752da0c7eeaa44ce6b51b11025",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-Diary.png",
+      "bytes": 498095,
+      "sha256": "dc29e91a42b9d611da853f6a55f13f2b14aa8f4d9a6111cba35f4777f0fee235",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-DreamCue.png",
+      "bytes": 205747,
+      "sha256": "a32c38566d264f3d6f209a5288ae3374294381f3381a9501a61839d597ebe76a",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-ExternalMediaFade.png",
+      "bytes": 229752,
+      "sha256": "ed555980d1b150054d88e6639bfce025a4cc65383c24dd4f1b6f3948f9869afb",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-FavoriteSounds.png",
+      "bytes": 70647,
+      "sha256": "42727bc6d5d2689aa0a0d0daba2616bb64fca4ffe2c7b00f8a1573414f54e61b",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-FeedbackSettings.png",
+      "bytes": 95162,
+      "sha256": "a9f6053323ce92f5af91f141af55337404898bdcfd9bdbbc2ae93dc40b6c5569",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-GoalBank.png",
+      "bytes": 112447,
+      "sha256": "44b00f7dffd87392ed099d5ddd3623e9490a2ff53b7a131602a921e3a7ffca23",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-Guard.png",
+      "bytes": 161794,
+      "sha256": "623191bb8422d64309f7ba7b6b1ab38424740482805d78e52db26d5529e710e5",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-GuidedWindDown.png",
+      "bytes": 196683,
+      "sha256": "e763670c0713ce979887621985bca99f31da59056a7aec12277af4f9779c9319",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-HabitualTiming.png",
+      "bytes": 190205,
+      "sha256": "a339378deeb267217a80c4bcc3912153a19eb4ce660f18be6b1beb0a0adfb3d8",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-HealthConnect.png",
+      "bytes": 158458,
+      "sha256": "2079a80e42809a7c0499ebd79e7dcfcbb163f15210d94cb7426701555a967e8d",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-HomeWidgetSettings.png",
+      "bytes": 146943,
+      "sha256": "21efc8eacc093f599b28df9a85504df585f9e871917baa7d0b9ad420a96d312f",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-HueBridge.png",
+      "bytes": 181312,
+      "sha256": "a3d02531146564b8b0569d98ced67eab9c32ccf0141da80ad352123b70a3dd4a",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-IncomingAutomationSettings.png",
+      "bytes": 195239,
+      "sha256": "61e452b70cd6477ce1aee0fb4f835f5bb5661fcf1bf996c6d6d7fbf47fd7b9e2",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-Nap.png",
+      "bytes": 151934,
+      "sha256": "0f5441ec64690008c367b97b9e9b7e565e5aadd04dd4efed3a3a3f02eb87f447",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-NapProfiles.png",
+      "bytes": 142740,
+      "sha256": "6b4e7fb75ba14756b9594fac013c834b3b672bb414196b0c9ba0302ff2c60589",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-NarrationVoice.png",
+      "bytes": 265864,
+      "sha256": "35f0147d4524efc69b7890bfdccf348b0a2f4b7a1c793b30fa2bdadc4f74e259",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-RecordAccess.png",
+      "bytes": 186036,
+      "sha256": "2841380eae2450e9e4bf5c939fdd4145695302848a18cdb17717e8b392024a78",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-RecurringTracking.png",
+      "bytes": 184277,
+      "sha256": "b8a3d3e128ab59d9af39967a877c1023c350b2e6c1b9560c1ebc4304d477d656",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-ResearchExport.png",
+      "bytes": 193270,
+      "sha256": "de80a9ce21b0aaa16d7355143fd8bfb10b8392a1ff7b95d550bd613cb4e2ea8e",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-Search.png",
+      "bytes": 114032,
+      "sha256": "77f94c80aa4b220df2fe7a1000223906f38f95cd8cd8c580fca53c8daf8a13be",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-SettingsProfile.png",
+      "bytes": 110511,
+      "sha256": "bdf69359151af6559d4021241083c10267e719db3cfa927dc8b03d2edf8ae8ed",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-SleepCsv.png",
+      "bytes": 105350,
+      "sha256": "37a95718c0414992037fba3f2aafe1a2bc8a9f2b4c4ef92a7f18cf07d6af61f8",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-SleepRhythm.png",
+      "bytes": 190184,
+      "sha256": "107a11747a47d8b5eca24d773ddcb38aa0b6c20066716c3e13fefe46d689cbe4",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-SleepSounds.png",
+      "bytes": 948448,
+      "sha256": "dd23884207a6c366651832871c0dc2f4bf90da5e99f9fa03eccbc0c83bb00e26",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-SmartBedtime.png",
+      "bytes": 272162,
+      "sha256": "0988a190b26c992838451d905cdb08dad75bf65b9ae07f80a000257c9b4d9353",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-SmartLight.png",
+      "bytes": 162266,
+      "sha256": "e9d217e7b3814a0f6c069ebbb51586b0b912e98d65a1f16ab62b3e4746f2c7e5",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-SnoringCues.png",
+      "bytes": 208594,
+      "sha256": "34761c772276f45723cdcf5cd2ebe0661e87d2414d8edc9bce746631d4c33aca",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-SoundLibrarySettings.png",
+      "bytes": 99757,
+      "sha256": "4678e34a2b5600cd4f447af7f4040d6ed7f718afd3c3fc12e2ca5d3a5fa863ec",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-SoundSensitivity.png",
+      "bytes": 95117,
+      "sha256": "e3fb6633b39724d7f65bff2163804fdfd59b8215da2232c4a35e02ffd4f3792e",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-SRI.png",
+      "bytes": 184062,
+      "sha256": "76059ce868b2fa2eec0925bc5cc3d0d05ba26188772d2320f9d1b452c939265d",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-TagManagement.png",
+      "bytes": 51690,
+      "sha256": "0a028ac92fa91d35f2a4ff69497ab9e5bc44e4bec5511a3dcef5417a2d886465",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-TrackingDelay.png",
+      "bytes": 102544,
+      "sha256": "8728000246e664947d79e7b929a0731c9e091ae3403aa6e40ee42ac1def68c6f",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-TrackingDnd.png",
+      "bytes": 157512,
+      "sha256": "f41e848ea9bff643d80449a421c28ff275d0a1852a177f1f63d829b38dffbf28",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-TrackingFlip.png",
+      "bytes": 136970,
+      "sha256": "de25065b220c97e249b9a898743ce47aac617f32dacc55228295126202f3a71a",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-Travel.png",
+      "bytes": 218377,
+      "sha256": "312955f902e4a302960d3ffc961b0a7c55fda3875a818b1c4e3a56555bb1a451",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-VoiceSettingsUnavailable.png",
+      "bytes": 301012,
+      "sha256": "fa79efca31a258a14cb865dc9b63ac8eecae2eb1e5686c32df54ac74e6746541",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "night-dial-breadth-VoiceSettingsUnavailableRestored.png",
+      "bytes": 301097,
+      "sha256": "2d9a63ec6e56751575f12b7facf931eff2bca3383612ec4bd7c2e0eb1243e694",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "kind": "required_original",
+      "archived_original": "originals/night-dial-breadth-VoiceSettingsUnavailableRestored.png"
+    },
+    {
+      "name": "rhythm-day-report.png",
+      "bytes": 177842,
+      "sha256": "141a502f2f111aadf1582ee294b757bd4030a40d2dcbfc6862f73d2b76be4093",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "rhythm-day-restored.png",
+      "bytes": 199560,
+      "sha256": "fdb65555740c4631ba24dcbe084b01568b28f296b9aa228c35089fd563cf0648",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "rhythm-day-returned.png",
+      "bytes": 199560,
+      "sha256": "fdb65555740c4631ba24dcbe084b01568b28f296b9aa228c35089fd563cf0648",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "rhythm-day-selected.png",
+      "bytes": 199560,
+      "sha256": "fdb65555740c4631ba24dcbe084b01568b28f296b9aa228c35089fd563cf0648",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "rhythm-empty.png",
+      "bytes": 188778,
+      "sha256": "c52af996f331dc06d4a9ff4973904c258daeb2b82155223c980d37eab92c21c3",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": "originals/rhythm-empty.png"
+    },
+    {
+      "name": "rhythm-evidence-empty.png",
+      "bytes": 151907,
+      "sha256": "8f32ad090444dfea81b63fc69a52d69d6b60452241c374dd87fe315df6174a20",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "rhythm-evidence-older-page.png",
+      "bytes": 215582,
+      "sha256": "f4eb013913ed645a1926115a1b6f23c4ad9b42f0f61cf073d1c95512f1ef1649",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": "originals/rhythm-evidence-older-page.png"
+    },
+    {
+      "name": "rhythm-evidence-recreated.png",
+      "bytes": 328990,
+      "sha256": "acebe1ff86d5bf99fe71a2aae743e9018fd0fad678e142deca51ea868f0216fa",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "rhythm-evidence-report.png",
+      "bytes": 173562,
+      "sha256": "87db8649e90fe969ab4de48dae1c6f4d58db779fbf8611bc64aa49efa9de4b51",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "rhythm-evidence-returned.png",
+      "bytes": 328990,
+      "sha256": "acebe1ff86d5bf99fe71a2aae743e9018fd0fad678e142deca51ea868f0216fa",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": "originals/rhythm-evidence-returned.png"
+    },
+    {
+      "name": "rhythm-evidence.png",
+      "bytes": 351742,
+      "sha256": "3aac773c85a1aea45a77ef8eaaa82882f31cd7ab7e26185834d5d2ef7bfcf4af",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "rhythm-recreated.png",
+      "bytes": 128534,
+      "sha256": "6507c45305402ece9f128ba34de326989eff931d10b35a41a4be4308119089b6",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "rhythm-reopened.png",
+      "bytes": 198199,
+      "sha256": "550fc35fcfc1869da883b81f135f6e278e1a39fd7a5dcc92d573705b5ae74b85",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "rhythm-seven-nights.png",
+      "bytes": 193874,
+      "sha256": "8f6be071a4147e115d17705e784304763865f045ddf3f09c016485a50bbdd264",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "rhythm-workdays.png",
+      "bytes": 128534,
+      "sha256": "6507c45305402ece9f128ba34de326989eff931d10b35a41a4be4308119089b6",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "sonar-setup-cancel-recreated.png",
+      "bytes": 505842,
+      "sha256": "de18c8bc3b92130b43ea23ed1e0b95d9df6c9bbfb893fce6cf22358d3bd083c4",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "sonar-setup-cancelled.png",
+      "bytes": 504493,
+      "sha256": "840372e37119f79b3f5dbc0e41e9ac78410b3182a70aadfc8758b03299a67c0c",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "sonar-setup-cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio-failure.png",
+      "bytes": 1226453,
+      "sha256": "ac73214ada9aaaddafe4e71b8e0ca589a2c20c8419547cc26b482855a841857f",
+      "width": 1080,
+      "height": 2316,
+      "required_method": null,
+      "kind": "failure_diagnostic",
+      "archived_original": "contactless-failure/sonar-setup-cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio-failure.png"
+    },
+    {
+      "name": "sonar-setup-charging-error.png",
+      "bytes": 505771,
+      "sha256": "8c347d8cc126879c9005998794a55009cdb40a2d7d02eda97f9db06e84ecc8e9",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "sonar-setup-failure.png",
+      "bytes": 1226453,
+      "sha256": "ac73214ada9aaaddafe4e71b8e0ca589a2c20c8419547cc26b482855a841857f",
+      "width": 1080,
+      "height": 2316,
+      "required_method": null,
+      "kind": "failure_diagnostic",
+      "archived_original": null
+    },
+    {
+      "name": "sonar-setup-movement-denied.png",
+      "bytes": 505232,
+      "sha256": "1543c355787ff898af41d8a81398c3fd4fb9acec1f1ffce33d92ed44b47fd956",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "sonar-setup-permission.png",
+      "bytes": 505232,
+      "sha256": "1543c355787ff898af41d8a81398c3fd4fb9acec1f1ffce33d92ed44b47fd956",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "sonar-setup-testing.png",
+      "bytes": 503721,
+      "sha256": "328ad2fd3a371e79db3dbae6112ed394753587d1363dcdbd68a47147e5296ad5",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "sonar-setup-unsupported.png",
+      "bytes": 508241,
+      "sha256": "f009fae6d37ccd09e81f5d9c727257d0d0e28460eff68fa02e70259bd1f6428a",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-cancelled.png",
+      "bytes": 195742,
+      "sha256": "4a3b6464074241169e3d8812e219af7a2051f8bf8fa98c845afebfcba5523965",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-choices-restored.png",
+      "bytes": 180650,
+      "sha256": "cf15c71ed78b60fe645030bb3ca20cfe63468a475998b7ab59bc540eda2863b0",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-choices.png",
+      "bytes": 180650,
+      "sha256": "cf15c71ed78b60fe645030bb3ca20cfe63468a475998b7ab59bc540eda2863b0",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-draft-restored.png",
+      "bytes": 148972,
+      "sha256": "77b904cedf46f1b4390e8ac510bc4366d3b07a35f592636405c871473061bdaa",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-draft.png",
+      "bytes": 148972,
+      "sha256": "77b904cedf46f1b4390e8ac510bc4366d3b07a35f592636405c871473061bdaa",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-kept.png",
+      "bytes": 195742,
+      "sha256": "4a3b6464074241169e3d8812e219af7a2051f8bf8fa98c845afebfcba5523965",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-linked-excluded.png",
+      "bytes": 180650,
+      "sha256": "cf15c71ed78b60fe645030bb3ca20cfe63468a475998b7ab59bc540eda2863b0",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-no-eligible.png",
+      "bytes": 236016,
+      "sha256": "4065c094b65796787abb896f0da160873f98a69c91109b9d50cbfe8d7f5b7f8c",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": "originals/trip-occurrence-no-eligible.png"
+    },
+    {
+      "name": "trip-occurrence-plan.png",
+      "bytes": 194976,
+      "sha256": "5a06b9163833c23ae61835f1798521edafc1d0efd7a32d22b0dbd147d1e35518",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-post-commit-plan-changed.png",
+      "bytes": 221663,
+      "sha256": "170c2fa2e658a447035e1b3e5d89b950200f19d5110be3003b57ba46d5403ebb",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": "originals/trip-occurrence-post-commit-plan-changed.png"
+    },
+    {
+      "name": "trip-occurrence-proposal.png",
+      "bytes": 140264,
+      "sha256": "edc0566a98c9488fcefc2d2127589aa7fec00dfe02d191b93b29abadfeb1ed5c",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-ready-to-save.png",
+      "bytes": 148982,
+      "sha256": "36ffbf4262b05a4c09ec18de65c42c99c03fdfb24004d6f4e471aae9f685d133",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-reviewed-restored.png",
+      "bytes": 186139,
+      "sha256": "71587402fda3ddbbff27eed06a811626186181ee54ec25773acce1dc7d610faa",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": "originals/trip-occurrence-reviewed-restored.png"
+    },
+    {
+      "name": "trip-occurrence-reviewed.png",
+      "bytes": 186139,
+      "sha256": "71587402fda3ddbbff27eed06a811626186181ee54ec25773acce1dc7d610faa",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-saved.png",
+      "bytes": 195471,
+      "sha256": "aa53e1a7aa208e51a06177c3ca748887fce380b22edeb57edb07698030a0d7f5",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-stale-alarm.png",
+      "bytes": 216575,
+      "sha256": "77e97d0bf23faa941090c1a30d27ffacd064a5fbb0aee2d5d65d61c8e18f9546",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    },
+    {
+      "name": "trip-occurrence-stale-plan.png",
+      "bytes": 150341,
+      "sha256": "006d3b7bbed3e5d0d6767051d90be08e7beca606c62da0d984a907a21cd0b835",
+      "width": 1080,
+      "height": 2316,
+      "required_method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "kind": "required_original",
+      "archived_original": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "scope": "local-alternatives-reference",
+  "full_app_review": false,
+  "expected_classes": 5,
+  "expected_methods": 5,
+  "class_results": [
+    {
+      "class": "NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "CalendarEventExportFlowTest#reviewNoteChoiceRecreationMissingCalendarAndRetryDoNotModifySavedNight",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 98,
+  "required_evidence_files": [
+    "trip-occurrence-admission-proof.json",
+    "rhythm-evidence-proof.json"
+  ],
+  "failures": [
+    "ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+    "sonar-setup-movement-before-stop.png",
+    "sonar-setup-movement-returned.png",
+    "sonar-setup-movement-stopped-returned.png",
+    "sonar-setup-movement-restored.png"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "retired_activity_positive_cannot_finish_recreated_review": true,
+  "detached_current_render_review_and_use_rejected": true,
+  "retired_callbacks_never_transfer_parent_result": true,
+  "owned_dialog_targets_use_actual_screen_coordinates": true,
+  "linked_valid_and_invalid_excluded": true,
+  "linked_profile_json_unchanged": true,
+  "explicit_stale_plan_rejected_before_save": true,
+  "scheduler_and_trip_locks_held_at_sqlite_write": true,
+  "competing_plan_writer_blocked_before_alarm_commit": true,
+  "competing_plan_writer_entered_after_committed_override": true,
+  "post_commit_stale_plan_rejected_before_listing": true,
+  "fresh_owner_reloaded_saved_plan_before_no_eligible_review": true,
+  "ordinary_recurrence_preserved": true,
+  "scheduling_port_calls": 1,
+  "physical_outputs": false
+}
