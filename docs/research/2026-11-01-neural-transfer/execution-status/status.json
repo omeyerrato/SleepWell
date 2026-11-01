@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-01",
+  "status": "STOPPED_MECHANICAL_PARITY_ERROR_NOT_MODEL_VAL_FAILURE",
+  "initial_attempt": "Pre-headfit portable StandardScaler arithmetic differed; noheadfit/VAL/TEST. Rootauthorizedexactretry recorded separately.",
+  "retry": "SyntheticNNparityandrawscalerparitypassed; original199x3TRAIN features persisted. Exactlyonefixedlogisticheadfit occurred, followedbyTRAINprimaryportableprobabilityparityerror>1e-12. Headcoefficients were notwrittenbeforeexception, so realfit cannotberesumedwithoutnewexplicitmechanicalreplayauthorization.",
+  "new160_cache": {
+    "private_path": ".android-local/research/phone-contract-20261101/neural-transfer-v1-retry1/train-features.npz",
+    "bytes": 383390,
+    "sha256": "6e02fe3c1d270a5d4b8ecffcc7273d9db603b3ff008de4aea8c7f8b50544873d"
+  },
+  "validation_or_respiratory_test_opened": false,
+  "scientific_gate_result": null,
+  "retuned": false,
+  "third_attempt_authorized_at_this_record": false,
+  "no_network_or_android_changes": true,
+  "files": [
+    {
+      "path": "neural-transfer-v1/parity-started.json",
+      "bytes": 1972,
+      "sha256": "d5c9c6b02c3914fb4959ad93dd8f89373f42f23b277766c70ae5d832ec3b1137"
+    },
+    {
+      "path": "neural-transfer-v1/parity.json",
+      "bytes": 2840,
+      "sha256": "535ada52be1a8ad9a1a47f9bc261cb29667920335673a31902225e8dec3dceef"
+    },
+    {
+      "path": "neural-transfer-v1/fit-started.json",
+      "bytes": 1972,
+      "sha256": "d5c9c6b02c3914fb4959ad93dd8f89373f42f23b277766c70ae5d832ec3b1137"
+    },
+    {
+      "path": "neural-transfer-v1/fit-error.json",
+      "bytes": 131,
+      "sha256": "a53a0e54a2bef56e8cc1b14c6fb0fe6cf3ff6c8f797d486e644680c79eed0026"
+    },
+    {
+      "path": "neural-transfer-v1-retry1/parity-started.json",
+      "bytes": 2110,
+      "sha256": "1e7468facbe97820bd7d5e808fcdf641ac7340206a10dd6c350fd9a42f60be43"
+    },
+    {
+      "path": "neural-transfer-v1-retry1/parity.json",
+      "bytes": 2980,
+      "sha256": "6654def7a033c2edea910f71b2e54b0a867f0ba203b9a4161662cf4f8eaa0b69"
+    },
+    {
+      "path": "neural-transfer-v1-retry1/fit-started.json",
+      "bytes": 2110,
+      "sha256": "1e7468facbe97820bd7d5e808fcdf641ac7340206a10dd6c350fd9a42f60be43"
+    },
+    {
+      "path": "neural-transfer-v1-retry1/fit-error.json",
+      "bytes": 149,
+      "sha256": "11dfbdea3c3e0bea5981064a60e0a8773e7154ff680d22578381ae7b50b33da5"
+    },
+    {
+      "path": "neural-transfer-v1-retry1/train-features.json",
+      "bytes": 111541,
+      "sha256": "8b8bd0d2b15be930f926633c12baa2f78c6187910dcdb1da97d8398e4fd13523"
+    }
+  ]
+}

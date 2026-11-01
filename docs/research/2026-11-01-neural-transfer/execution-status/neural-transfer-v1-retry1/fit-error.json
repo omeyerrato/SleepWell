@@ -1,0 +1,5 @@
+{
+  "type": "ValueError",
+  "message": "Primary logistic portable probability mismatch",
+  "action": "Stopped; no fallback/retry/refit authorized"
+}

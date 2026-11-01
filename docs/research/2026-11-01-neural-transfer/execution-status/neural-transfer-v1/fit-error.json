@@ -1,0 +1,5 @@
+{
+  "type": "ValueError",
+  "message": "Raw scaler portable mismatch",
+  "action": "Stopped; no fallback/retry/refit authorized"
+}

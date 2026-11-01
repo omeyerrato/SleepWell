@@ -1,0 +1,49 @@
+{
+  "freeze": {
+    "files": {
+      "scripts/phone_neural_transfer.py": "81204d5d57268ac05c6f992c6238ce0cdf0a217feae3a809b226a6f634ae68f3",
+      "scripts/phone_apnea_train_contract.py": "effa4c22766c6b664df9476817b42e6408ff727002141f3ac535705d18220726",
+      "scripts/phone_stage_acoustic.py": "cded615f226bf2e886a3625ac8a19ac65fe479201678c0bc4b77af263d48dbe7",
+      "scripts/phone_stage_dataset.py": "c858f2c51566848aed2a8f7834eb9d4e66afb34b6e8fe2987944a7578d10dc46",
+      "docs/research/2026-11-01-neural-transfer/protocol.json": "744bb5c794bca7f4a768df673f4643ef421ad9d7b0bc58e734f7cdfc0962797b",
+      "docs/research/2026-11-01-neural-transfer/approval.json": "2c3cbd096bd3b02fe70bf5bfa55bd84d49c3753a487eeb9bf72c864495a84314",
+      "docs/research/2026-11-01-neural-transfer/original-train-contract.json": "8cbc5c0cdf1102037d27fe879b7086d45d50085b096494bf35bca671b0d478c7",
+      "docs/research/2026-11-01-neural-transfer/original-label-protocol.json": "12e05a53e76cbbe3d0abdd31fd6e7a1a8cd6833a1e3a76eee6be0d6ea7ac2fba",
+      "docs/research/2026-10-31-acoustic-pilot/train-inputs.json": "5fe6d0898d4cf728672493215f58c8e529147741fc00b23a00c2c432ee4e26cf",
+      "docs/research/2026-10-31-acoustic-pilot/validation.json": "377aebee155ce6b5e6c30522207c1ede02c0f54aa979abfc32d8b0237931068d",
+      "docs/research/2026-10-31-acoustic-pilot/test.json": "09db1d2566cd843975fd2b640cb2135ebaaf0ca2c683678373dc3e094de81e03",
+      "docs/research/2026-10-31-acoustic-pilot/subject-sources.json": "4b1cf55c181d01d8fa5c2c537687887ebc5bce9b754c8417ede4c898fd090bc3",
+      "docs/research/2026-10-31-acoustic-pilot/manifest.json": "1bb9dce9efd43ba82875fd8e6f63a0feccbcabbaabdaec21128d022fa48d99f7"
+    },
+    "source_commit": "1affa0dd52fbc465180d38c3840a69d0cffe7561",
+    "candidate": 2,
+    "validation_previously_inspected": true,
+    "test_respiratory_labels_closed_until_val_pass": true,
+    "unit_assumption": "Source event_duration seconds under root conditional inference; field-specific unit not independently proved"
+  },
+  "checkpoint_sha256": "c1938a82248bb3526b2c9ff7a76f5e5d7ceee35cf552706e6587766f0fedf664",
+  "synthetic_sha256": "5686d3b620619c9425c9e583111a791bb172309b0430aaad7da07ffe9b2e473d",
+  "seed": 20261101,
+  "shape": [
+    64,
+    160
+  ],
+  "embedding_absolute_max_error": 7.62939453125e-06,
+  "original_sigmoid_absolute_max_error": 7.152557373046875e-07,
+  "tolerance_embedding": 0.0001,
+  "tolerance_sigmoid": 1e-05,
+  "passed": true,
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "sklearn": "1.9.1",
+    "librosa": "0.10.2.post1",
+    "h5py": "3.11.0",
+    "tensorflow": "2.16.1",
+    "keras": "3.15.1"
+  },
+  "original_sigmoid_used_for_target": false,
+  "subject_data_read": false,
+  "outcomes_read": false
+}
