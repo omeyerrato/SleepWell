@@ -1,0 +1,16 @@
+{
+  "scope": "contactless-fallback-reference",
+  "full_app_review": false,
+  "expected_classes": 1,
+  "expected_methods": 1,
+  "class_results": [
+    {
+      "class": "ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 11,
+  "required_evidence_files": [],
+  "failures": []
+}

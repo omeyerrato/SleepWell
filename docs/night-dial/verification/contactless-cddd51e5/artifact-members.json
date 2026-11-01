@@ -1,0 +1,139 @@
+{
+  "artifact_id": 13069415132,
+  "zip_sha256": "32f57ffd7ee563179338f511617a28f02324dc30d61bcb01b3f4374322ebaa6e",
+  "all_members_verified_against_extraction": true,
+  "members": [
+    {
+      "name": "ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio.txt",
+      "bytes": 802,
+      "sha256": "ed8e4e85e354439bdffd560369462fdbbef7191239efdedfa356d88009121416",
+      "copied_to_archive": "ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio.txt"
+    },
+    {
+      "name": "acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49",
+      "copied_to_archive": null
+    },
+    {
+      "name": "avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668",
+      "copied_to_archive": null
+    },
+    {
+      "name": "emulator.log",
+      "bytes": 7545,
+      "sha256": "27d8e6f4058d1a59a585198e34aa12ddfc5f8b25eab94127e862169e58ec89c4",
+      "copied_to_archive": null
+    },
+    {
+      "name": "environment.json",
+      "bytes": 871,
+      "sha256": "471f637fc3b5f6db15166f8854423ec98c72c8c89ddaca8b3a49fe72d6c540ee",
+      "copied_to_archive": "environment.json"
+    },
+    {
+      "name": "focused-review-summary.json",
+      "bytes": 398,
+      "sha256": "e43685f9721fa07e333f30ac64ae298240016df9802bd267b2d24fd180b76400",
+      "copied_to_archive": "focused-review-summary.json"
+    },
+    {
+      "name": "guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1",
+      "copied_to_archive": null
+    },
+    {
+      "name": "guest-logcat.txt",
+      "bytes": 478056,
+      "sha256": "0db4b4118ad66185777f41297f0375a731cbcc83a56f3cb3f4fd9d7bbcfa5168",
+      "copied_to_archive": null
+    },
+    {
+      "name": "guest-windows.txt",
+      "bytes": 40328,
+      "sha256": "3f6387045855b0c424253cfe94f3960654fab9d031405e721fb78d2dea756d50",
+      "copied_to_archive": null
+    },
+    {
+      "name": "sonar-setup-cancel-recreated.png",
+      "bytes": 504871,
+      "sha256": "8765619e632922563528f7f03a4d49682260f31336f144b7398aab77ff4878c0",
+      "copied_to_archive": "originals/sonar-setup-cancel-recreated.png"
+    },
+    {
+      "name": "sonar-setup-cancelled.png",
+      "bytes": 504102,
+      "sha256": "1e0909dbac357354c0681e394ffe501b835acb0657cc77dd5550dcb7f412909e",
+      "copied_to_archive": "originals/sonar-setup-cancelled.png"
+    },
+    {
+      "name": "sonar-setup-charging-error.png",
+      "bytes": 504796,
+      "sha256": "6671eb187936d866954d7d16cdbb5438e1e33d73a31798e5573f9ceac778df59",
+      "copied_to_archive": "originals/sonar-setup-charging-error.png"
+    },
+    {
+      "name": "sonar-setup-glyphs-cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio.txt",
+      "bytes": 6071,
+      "sha256": "872f0874d31a90f5e26ed99779bb270d412b077c0d64bd6eb105273ca98ffbb8",
+      "copied_to_archive": "sonar-setup-glyphs-cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio.txt"
+    },
+    {
+      "name": "sonar-setup-movement-before-stop.png",
+      "bytes": 502741,
+      "sha256": "8273cba9425085c61b2018bae5a793b20fc33353f7f48bfaed2dc6aabd69f655",
+      "copied_to_archive": "originals/sonar-setup-movement-before-stop.png"
+    },
+    {
+      "name": "sonar-setup-movement-denied.png",
+      "bytes": 504232,
+      "sha256": "60fa21e3a08bfb9d110a56a42048c7cc5e6a2628491cdaa9d826ea2847a7d6a6",
+      "copied_to_archive": "originals/sonar-setup-movement-denied.png"
+    },
+    {
+      "name": "sonar-setup-movement-restored.png",
+      "bytes": 465177,
+      "sha256": "c3837ced8c8fb310484654c4571b0b584a14f303a3483c6715edcf032599f013",
+      "copied_to_archive": "originals/sonar-setup-movement-restored.png"
+    },
+    {
+      "name": "sonar-setup-movement-returned.png",
+      "bytes": 465234,
+      "sha256": "92c7dab7c46750afbc77f16f19a2c2ef33dda4e08e455e18bd6e54d7adc1262c",
+      "copied_to_archive": "originals/sonar-setup-movement-returned.png"
+    },
+    {
+      "name": "sonar-setup-movement-stopped-returned.png",
+      "bytes": 465177,
+      "sha256": "c3837ced8c8fb310484654c4571b0b584a14f303a3483c6715edcf032599f013",
+      "copied_to_archive": "originals/sonar-setup-movement-stopped-returned.png"
+    },
+    {
+      "name": "sonar-setup-permission.png",
+      "bytes": 504232,
+      "sha256": "60fa21e3a08bfb9d110a56a42048c7cc5e6a2628491cdaa9d826ea2847a7d6a6",
+      "copied_to_archive": "originals/sonar-setup-permission.png"
+    },
+    {
+      "name": "sonar-setup-testing.png",
+      "bytes": 502741,
+      "sha256": "8273cba9425085c61b2018bae5a793b20fc33353f7f48bfaed2dc6aabd69f655",
+      "copied_to_archive": "originals/sonar-setup-testing.png"
+    },
+    {
+      "name": "sonar-setup-unsupported.png",
+      "bytes": 507227,
+      "sha256": "2cec9dd30ae0133a11ff16b003611fde1acc2dd8423c84137fca978cbdcaccaa",
+      "copied_to_archive": "originals/sonar-setup-unsupported.png"
+    },
+    {
+      "name": "startup-focus.txt",
+      "bytes": 246,
+      "sha256": "46bf67848fdb084b192a121691f897c6cf262efa599b3fcf9543cb9f43110934",
+      "copied_to_archive": "startup-focus.txt"
+    }
+  ]
+}

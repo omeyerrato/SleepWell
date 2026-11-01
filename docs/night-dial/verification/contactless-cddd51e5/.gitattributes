@@ -1,0 +1,4 @@
+# Preserve original CI/API evidence bytes and CRLF line endings.
+* -text whitespace=cr-at-eol
+# The original glyph sampler intentionally emits a space after its last region.
+sonar-setup-glyphs-*.txt -whitespace

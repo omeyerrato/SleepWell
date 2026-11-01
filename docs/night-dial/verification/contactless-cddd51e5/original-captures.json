@@ -1,0 +1,120 @@
+{
+  "source_revision": "cddd51e5c7e79d220728bd76ce4028cfb4a7a860",
+  "method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+  "required_original_count": 11,
+  "required_originals": [
+    "sonar-setup-testing.png",
+    "sonar-setup-cancelled.png",
+    "sonar-setup-cancel-recreated.png",
+    "sonar-setup-charging-error.png",
+    "sonar-setup-unsupported.png",
+    "sonar-setup-permission.png",
+    "sonar-setup-movement-denied.png",
+    "sonar-setup-movement-before-stop.png",
+    "sonar-setup-movement-returned.png",
+    "sonar-setup-movement-stopped-returned.png",
+    "sonar-setup-movement-restored.png"
+  ],
+  "missing_originals": [],
+  "captures": [
+    {
+      "name": "sonar-setup-cancel-recreated.png",
+      "archived_original": "originals/sonar-setup-cancel-recreated.png",
+      "bytes": 504871,
+      "sha256": "8765619e632922563528f7f03a4d49682260f31336f144b7398aab77ff4878c0",
+      "width": 1080,
+      "height": 2316,
+      "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"
+    },
+    {
+      "name": "sonar-setup-cancelled.png",
+      "archived_original": "originals/sonar-setup-cancelled.png",
+      "bytes": 504102,
+      "sha256": "1e0909dbac357354c0681e394ffe501b835acb0657cc77dd5550dcb7f412909e",
+      "width": 1080,
+      "height": 2316,
+      "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"
+    },
+    {
+      "name": "sonar-setup-charging-error.png",
+      "archived_original": "originals/sonar-setup-charging-error.png",
+      "bytes": 504796,
+      "sha256": "6671eb187936d866954d7d16cdbb5438e1e33d73a31798e5573f9ceac778df59",
+      "width": 1080,
+      "height": 2316,
+      "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"
+    },
+    {
+      "name": "sonar-setup-movement-before-stop.png",
+      "archived_original": "originals/sonar-setup-movement-before-stop.png",
+      "bytes": 502741,
+      "sha256": "8273cba9425085c61b2018bae5a793b20fc33353f7f48bfaed2dc6aabd69f655",
+      "width": 1080,
+      "height": 2316,
+      "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"
+    },
+    {
+      "name": "sonar-setup-movement-denied.png",
+      "archived_original": "originals/sonar-setup-movement-denied.png",
+      "bytes": 504232,
+      "sha256": "60fa21e3a08bfb9d110a56a42048c7cc5e6a2628491cdaa9d826ea2847a7d6a6",
+      "width": 1080,
+      "height": 2316,
+      "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"
+    },
+    {
+      "name": "sonar-setup-movement-restored.png",
+      "archived_original": "originals/sonar-setup-movement-restored.png",
+      "bytes": 465177,
+      "sha256": "c3837ced8c8fb310484654c4571b0b584a14f303a3483c6715edcf032599f013",
+      "width": 1080,
+      "height": 2316,
+      "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"
+    },
+    {
+      "name": "sonar-setup-movement-returned.png",
+      "archived_original": "originals/sonar-setup-movement-returned.png",
+      "bytes": 465234,
+      "sha256": "92c7dab7c46750afbc77f16f19a2c2ef33dda4e08e455e18bd6e54d7adc1262c",
+      "width": 1080,
+      "height": 2316,
+      "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"
+    },
+    {
+      "name": "sonar-setup-movement-stopped-returned.png",
+      "archived_original": "originals/sonar-setup-movement-stopped-returned.png",
+      "bytes": 465177,
+      "sha256": "c3837ced8c8fb310484654c4571b0b584a14f303a3483c6715edcf032599f013",
+      "width": 1080,
+      "height": 2316,
+      "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"
+    },
+    {
+      "name": "sonar-setup-permission.png",
+      "archived_original": "originals/sonar-setup-permission.png",
+      "bytes": 504232,
+      "sha256": "60fa21e3a08bfb9d110a56a42048c7cc5e6a2628491cdaa9d826ea2847a7d6a6",
+      "width": 1080,
+      "height": 2316,
+      "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"
+    },
+    {
+      "name": "sonar-setup-testing.png",
+      "archived_original": "originals/sonar-setup-testing.png",
+      "bytes": 502741,
+      "sha256": "8273cba9425085c61b2018bae5a793b20fc33353f7f48bfaed2dc6aabd69f655",
+      "width": 1080,
+      "height": 2316,
+      "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"
+    },
+    {
+      "name": "sonar-setup-unsupported.png",
+      "archived_original": "originals/sonar-setup-unsupported.png",
+      "bytes": 507227,
+      "sha256": "2cec9dd30ae0133a11ff16b003611fde1acc2dd8423c84137fca978cbdcaccaa",
+      "width": 1080,
+      "height": 2316,
+      "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"
+    }
+  ]
+}

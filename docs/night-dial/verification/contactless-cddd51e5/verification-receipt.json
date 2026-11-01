@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "scope": "contactless-fallback-reference",
+  "run_id": 41269852276,
+  "attempt": 1,
+  "run_url": "https://github.com/omeyerrato/SleepWell/actions/runs/41269852276",
+  "artifact_id": 13069415132,
+  "artifact_name": "silent-android-review",
+  "artifact_api_digest": "sha256:32f57ffd7ee563179338f511617a28f02324dc30d61bcb01b3f4374322ebaa6e",
+  "zip_bytes": 5398491,
+  "zip_sha256": "32f57ffd7ee563179338f511617a28f02324dc30d61bcb01b3f4374322ebaa6e",
+  "download_count": 1,
+  "artifact_selection": "Explicit artifact ID; no artifact-name selection and no retry download",
+  "source_revision": "cddd51e5c7e79d220728bd76ce4028cfb4a7a860",
+  "app_main_git_tree": "acf04b71f56dba84f287e9d66eb780657bd8d97f",
+  "store_schema_version": 18,
+  "actual_method": "org.sleepwell.app.ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio",
+  "expected_methods": 1,
+  "passed_methods": 1,
+  "failed_methods": 0,
+  "instrumentation_seconds": 29.66,
+  "cohort_passed": true,
+  "required_originals": 11,
+  "actual_originals": 11,
+  "missing_originals": [],
+  "raw_proof_files": [
+    "ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio.txt",
+    "sonar-setup-glyphs-cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio.txt",
+    "startup-focus.txt"
+  ],
+  "dedicated_json_proof_required": false,
+  "original_summary_required_evidence_files": [],
+  "source_test": {
+    "path": "app/src/androidTest/java/org/sleepwell/app/ContactlessSetupFlowTest.java",
+    "sha256": "c1b8e133076ffd015c0b32af8d9494af4c43695f6ca93180d948709088f4757e",
+    "proof_anchors": [
+      "capture lines61–84: complete visible fixed targets, current owner/insets and semantic glyph regions on two samples, then saved-PNG glyph assertions",
+      "method lines148–183: test cancellation/recreation and charging/support/permission prerequisite rejection",
+      "method lines184–197: actual parent/child movement fallback, runtime lease release before return, selection recreation, no sessions/alarms, zero command starts/cancels and exact preference equality",
+      "fixture line14: all private owners/watchers closed, original global preferences unchanged and no live alarm/tracking owner"
+    ]
+  },
+  "semantic_topbar_proof": {
+    "setup_frames": 8,
+    "stable_compositor_samples_per_frame": 2,
+    "clock_wifi_mobile_battery_visible_notification_checked_separately": true,
+    "saved_pngs_rechecked": true,
+    "owner_appearance": 0,
+    "legacy_ui": 0,
+    "limits": "The three Tracking parent movement frames use selected-draft/frame-commit assertions, not this eight-frame glyph sampler; all11 originals were visually inspected."
+  },
+  "visual_review": {
+    "tool": "view_image original detail; returned previews may be resized",
+    "actual_originals_opened": 11,
+    "no_material_text_or_fixed_action_overlap_found": true,
+    "observations": [
+      "White readable status glyphs/navigation handle and dark Night Dial shell; setup Back/Options and the fixed Use/Test/Stop footer remain distinct.",
+      "Charging, unsupported-device and denied-microphone messages are readable; Use sonar remains disabled for these unqualified states.",
+      "Use phone movement is lower in the scrollable body and partly outside the initial captured viewport. The actual native action explicitly scrolls it into view before tapping; this receipt does not claim that all scrollable body actions fit initially.",
+      "Movement fallback returns to the actual Sensors & placement draft with Phone movement selected and Record sounds off; that selected draft remains after probe stop and recreation. The visible Start tracking button is not invoked."
+    ]
+  },
+  "preserved_prior_failures": [
+    {
+      "run_id": 41266940619,
+      "attempt": 1,
+      "status": "infrastructure disk-space failure; separate older artifact"
+    },
+    {
+      "run_id": 41266940619,
+      "attempt": 2,
+      "status": "four other methods passed; Contactless failed on idle preference write with four movement frames missing",
+      "archive": "../alternatives-569a6991/README.md"
+    },
+    {
+      "run_ids": [
+        41262356510,
+        41265653342
+      ],
+      "status": "Earlier Contactless failures remain earlier failures; this receipt does not rewrite their artifacts or summaries."
+    }
+  ],
+  "limits": [
+    "One focused native method on disposable API36 x86_64 emulator/private fixtures, not physical sonar qualification or microphone capture.",
+    "Fake capability/audio probe/tracking commands; method assertions and fixture cleanup establish no physical outputs, no actual tracking/alarm starts and unchanged original preferences.",
+    "Source is DB18 at cddd51e5, not the later DB19 supplementary sound implementation. No supplementary-model or reliable recognition claim.",
+    "This archive performs file/hash checks and visual inspection only; no new build, emulator/native/CI run, unit campaign, phone action, audio/alarm output or model study.",
+    "Full-app, all43-flow/172-state, overnight and physical-device acceptance are not implied."
+  ],
+  "copied_originals": {
+    "environment.json": {
+      "bytes": 871,
+      "sha256": "471f637fc3b5f6db15166f8854423ec98c72c8c89ddaca8b3a49fe72d6c540ee"
+    },
+    "focused-review-summary.json": {
+      "bytes": 398,
+      "sha256": "e43685f9721fa07e333f30ac64ae298240016df9802bd267b2d24fd180b76400"
+    },
+    "ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio.txt": {
+      "bytes": 802,
+      "sha256": "ed8e4e85e354439bdffd560369462fdbbef7191239efdedfa356d88009121416"
+    },
+    "sonar-setup-glyphs-cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio.txt": {
+      "bytes": 6071,
+      "sha256": "872f0874d31a90f5e26ed99779bb270d412b077c0d64bd6eb105273ca98ffbb8"
+    },
+    "startup-focus.txt": {
+      "bytes": 246,
+      "sha256": "46bf67848fdb084b192a121691f897c6cf262efa599b3fcf9543cb9f43110934"
+    },
+    "artifact-api.json": {
+      "bytes": 723,
+      "sha256": "24e8e8af407def623f98e4f27b5c52b172ccc0ae166cc16f205deef1162924e0"
+    },
+    "run-api.json": {
+      "bytes": 12508,
+      "sha256": "49b42133d434b4be252283644e43fab8e653d00159a5888f9ea293fa71dbd200"
+    },
+    "originals/sonar-setup-cancel-recreated.png": {
+      "bytes": 504871,
+      "sha256": "8765619e632922563528f7f03a4d49682260f31336f144b7398aab77ff4878c0"
+    },
+    "originals/sonar-setup-cancelled.png": {
+      "bytes": 504102,
+      "sha256": "1e0909dbac357354c0681e394ffe501b835acb0657cc77dd5550dcb7f412909e"
+    },
+    "originals/sonar-setup-charging-error.png": {
+      "bytes": 504796,
+      "sha256": "6671eb187936d866954d7d16cdbb5438e1e33d73a31798e5573f9ceac778df59"
+    },
+    "originals/sonar-setup-movement-before-stop.png": {
+      "bytes": 502741,
+      "sha256": "8273cba9425085c61b2018bae5a793b20fc33353f7f48bfaed2dc6aabd69f655"
+    },
+    "originals/sonar-setup-movement-denied.png": {
+      "bytes": 504232,
+      "sha256": "60fa21e3a08bfb9d110a56a42048c7cc5e6a2628491cdaa9d826ea2847a7d6a6"
+    },
+    "originals/sonar-setup-movement-restored.png": {
+      "bytes": 465177,
+      "sha256": "c3837ced8c8fb310484654c4571b0b584a14f303a3483c6715edcf032599f013"
+    },
+    "originals/sonar-setup-movement-returned.png": {
+      "bytes": 465234,
+      "sha256": "92c7dab7c46750afbc77f16f19a2c2ef33dda4e08e455e18bd6e54d7adc1262c"
+    },
+    "originals/sonar-setup-movement-stopped-returned.png": {
+      "bytes": 465177,
+      "sha256": "c3837ced8c8fb310484654c4571b0b584a14f303a3483c6715edcf032599f013"
+    },
+    "originals/sonar-setup-permission.png": {
+      "bytes": 504232,
+      "sha256": "60fa21e3a08bfb9d110a56a42048c7cc5e6a2628491cdaa9d826ea2847a7d6a6"
+    },
+    "originals/sonar-setup-testing.png": {
+      "bytes": 502741,
+      "sha256": "8273cba9425085c61b2018bae5a793b20fc33353f7f48bfaed2dc6aabd69f655"
+    },
+    "originals/sonar-setup-unsupported.png": {
+      "bytes": 507227,
+      "sha256": "2cec9dd30ae0133a11ff16b003611fde1acc2dd8423c84137fca978cbdcaccaa"
+    }
+  }
+}
