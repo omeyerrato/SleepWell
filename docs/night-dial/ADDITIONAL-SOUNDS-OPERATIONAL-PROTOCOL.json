@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "frozen_before_outcomes": true,
+  "status": "native_methods_in_preparation_not_run",
+  "scope": "Operational performance and private lifecycle only; no accuracy acceptance or threshold selection",
+  "fixture": {
+    "asset": "app/src/androidTest/assets/classifier-fixtures/laughter-morning.pcm",
+    "whole_bytes": 437440,
+    "whole_pcm_sha256": "ddf4f22ae871bc993329571af9660f1daba0b5a6f89ea2d11f77e3e2d222c305",
+    "benchmark_prefix_samples": 160000,
+    "benchmark_prefix_pcm_sha256": "90c591e65049066b0fed71b6cba2ff4761c496cc4eaad03d25259c9e6464e291",
+    "format": "16000 Hz mono signed PCM16 little endian",
+    "restriction": "Existing licensed lifecycle fixture only; no frozen FSD50K accuracy holdout and no live recording"
+  },
+  "benchmark": {
+    "model": "Existing bundled RecordedSoundAnalyzer PANNs plus EfficientAT, fixed frontend and policy",
+    "runtime": "Actual native ONNX Runtime; intra-op 1, inter-op 1, sequential",
+    "cold_model_loads": 1,
+    "preload_before_cold_measurement": false,
+    "unmeasured_warmup_windows": 1,
+    "measured_windows": 20,
+    "input_per_repetition": "Identical pinned first ten seconds of the existing fixture; performance only",
+    "p95_definition": "Nearest-rank ceil(0.95*N), the 19th sorted duration for N=20",
+    "memory": "Baseline before model construction; sampled process PSS and used Java heap while model is live, maximum positive deltas; sample cadence and count recorded, not a guaranteed transient-allocation peak",
+    "append": "Time each real AdditionalSoundNight.accept call with an actual 320-sample/20ms admitted PCM frame while inference is blocked; report all maxima, no trimmed outliers",
+    "result_policy": "Write complete benchmark and fence receipt before gate assertions. A failed gate remains failure; no retry, retuning, omitted slow repetition or fake-native replacement without root review."
+  },
+  "gates": {
+    "cold_load_max_ms_inclusive": 10000,
+    "warm_window_p95_max_ms_inclusive": 2000,
+    "warm_window_max_ms_exclusive": 10000,
+    "extra_pss_max_bytes_inclusive": 157286400,
+    "extra_used_java_heap_max_bytes_inclusive": 157286400,
+    "append_max_ms_inclusive": 20,
+    "maximum_running_windows": 1,
+    "maximum_queued_windows": 1
+  },
+  "concurrency_fixture": {
+    "purpose": "Deterministic scheduling fences, distinct from actual bundled inference measurements",
+    "behavior": "Latch-controlled ModelFactory may return a previously computed real fixture result to expose queued/running cancellation and late-write boundaries; never presented as a new neural inference or accuracy result",
+    "required": ["overrun reports skipped coverage", "pause retires pending work", "gap does not bridge partial PCM", "finish does not wait for inference", "late result cannot mutate deleted/reused identity", "all-history erase retires local estimates", "source/factory identity change retires owner"]
+  },
+  "authority": {
+    "settings": "Default Off; explicit Save only changes the additionalSoundAnalysis key for future nights",
+    "input": "Already-admitted PCM only; no new microphone owner or output",
+    "storage": "Store19 additional_sound_nights/windows and session-delete trigger, separate from base sound_events",
+    "portable": "Backup format14; settings and derived estimates intentionally excluded, old base payload unchanged",
+    "report": "Actual read-only Additional sounds route with exact token/rawStart and recreation; no cue, automation or challenge authority"
+  },
+  "planned_methods": [
+    "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+    "org.sleepwell.app.AdditionalSoundsNativeFlowTest#singleThreadPerformanceAndBoundedQueueRetireLateWork"
+  ],
+  "existing_migration_method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+  "migration_scope": "Constructed17→19 removes all18/19 additive objects, preserves raw session/epoch/alarm rows; separate18→19 preserves old records plus the exact interrupted receipt. No broad migration/unit campaign."
+}
