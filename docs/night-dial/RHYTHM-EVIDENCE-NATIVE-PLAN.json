@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "source_parent_revision": "091d8e95",
+  "contract": "design.md28D: Tip opens underlying observed nights; insufficient history stays unknown; preserve actual invoking parent",
+  "native_status": "not_run_pending_integration",
+  "unit_campaign": "not_run",
+  "methods": [
+    {
+      "method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "required_originals": [
+        "rhythm-seven-nights.png",
+        "rhythm-day-selected.png",
+        "rhythm-day-report.png",
+        "rhythm-day-returned.png",
+        "rhythm-day-restored.png",
+        "rhythm-workdays.png",
+        "rhythm-recreated.png",
+        "rhythm-reopened.png",
+        "rhythm-empty.png",
+        "rhythm-evidence.png",
+        "rhythm-evidence-report.png",
+        "rhythm-evidence-returned.png",
+        "rhythm-evidence-recreated.png",
+        "rhythm-evidence-empty.png"
+      ],
+      "new_originals": [
+        "rhythm-evidence.png",
+        "rhythm-evidence-report.png",
+        "rhythm-evidence-returned.png",
+        "rhythm-evidence-recreated.png",
+        "rhythm-evidence-empty.png"
+      ]
+    }
+  ],
+  "expected_methods": 1,
+  "required_original_count": 14,
+  "assertions": [
+    "Focused chart receives an actual D-pad selection; selected date maps to the source record id",
+    "Explicit Open selected night launches the read-only Report for that exact id",
+    "Opening/reviewing the saved night leaves the isolated database snapshot unchanged",
+    "A real scrolled viewport and selected source/date persist on Report return and Activity recreation",
+    "Existing seven-night, saved workdays, recreation, Cancel/reopen, empty, preferences and no-output checks remain",
+    "Observed timing list shows actual eligible count/provenance and explicit unknown chronotype, without assigning an owl/lark category",
+    "Actual older contributor requires a real list scroll and opens Report with that immutable source record id",
+    "Contributor list position/route survive Report return and Activity recreation; Back returns to the invoking Rhythm view",
+    "Database source snapshot remains unchanged after both point and contributor review",
+    "Empty history has no invented source action and explicitly has no eligible timing observations"
+  ],
+  "scope_limits": [
+    "No new native run, build, phone, capture, alarm or audio output performed during implementation",
+    "One source record for each observed day; missing/future rows remain excluded by unchanged RhythmStats",
+    "State register at66c9 remains historical and is not relabeled accepted by this source-only increment"
+  ],
+  "supersedes_plan": "RHYTHM-SELECTED-NIGHT-NATIVE-PLAN.json"
+}
