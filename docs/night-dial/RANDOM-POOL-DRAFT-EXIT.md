@@ -28,3 +28,20 @@ This worktree ran no Android build, native method, unit campaign or phone output
 The [native plan](RANDOM-POOL-DRAFT-NATIVE-PLAN.json) remains pending root's
 consolidated build and silent emulator execution. Screenshots alone do not pass
 the functional assertions.
+
+## First native run and coordinate correction
+
+Run `41260557207` at integrated source `1c1fe0c1` failed after five captured
+frames, while awaiting the parent after Discard. The original discard screenshot
+shows the correctly named bottom sheet; the failure screenshot/XML shows the
+still-edited child with Hard Math and count 2. This is not a passing journey.
+
+The fixture incorrectly passed `getGlobalVisibleRect`'s root-coordinate rectangle
+directly to `UiDevice.click`, which needs screen coordinates. A dialog's window
+origin makes those different. The same helper also missed the requested count 1.
+It now derives the actual hit rectangle using `getLocationOnScreen`, retaining
+all focused-window, full-visibility, committed-frame, minimum-target and
+single-dispatch checks. The selected count is asserted immediately, and the
+post-Discard wait names its actual expected transition. No production behavior
+or guard changed. The original nine screenshot names remain; a consolidated
+rerun is required before claiming this flow passes.
