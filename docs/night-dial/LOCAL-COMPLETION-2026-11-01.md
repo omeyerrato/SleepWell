@@ -28,7 +28,20 @@ This is the current implementation ledger. Source, an Android journey, visual in
 
 The first passing local/completion cohorts use database17 and portableBackup14. The later recovery increment uses database18; its dedicated journey checks17→18 preservation. Ordinary timer metadata stays v1/v2; paused/resumed timers use optional nested v3. PortableBackup14 is unchanged. Earlier failed native logs and images are retained. No unit campaign or physical output test ran.
 
-These bounded cohorts now contain30 distinct passing native methods and358 required originals, across separately identified revisions/scopes. That count is not a single all-app run or acceptance of every172 state. In-progress0.1.29 adds default-off automatic supplementary sound candidates and database19; those newer changes need their own integrated native and migration results before delivery.
+These bounded cohorts contain30 distinct passing native methods and358 required originals, across separately identified revisions/scopes. That count is not a single all-app run or acceptance of every172 state.
+
+## Additional sound-analysis increment —0.1.29
+
+| Feature/screen | Real implementation | Evidence/status |
+| --- | --- | --- |
+| Additional sounds settings24 | Default-off future-night opt-in; Save/Cancel/dirty Back/recreation; no implicit microphone, cue or base-category changes | [Current two-method UI journey](verification/additional-ui-10e8d74c/README.md),24 required originals, both methods pass |
+| Automatic additional analysis24 | Existing admitted motion/contactless PCM; bundled fixed models; bounded worker and queue; separate read-only ten-second candidates | [Actual model/queue evidence](verification/additional-cee13e91/README.md);13,670ms PCM produced10,000ms analyzed plus3,670ms not analyzed and one uncertain window. This is not accuracy evidence. |
+| Additional results from Report26 | Exact recording/token/start; worker-only read, refresh, recreation, About and deleted-source error; no route from restricted recovery Report | Current UI journey above; pagination and restored-no-local visual states remain source-only |
+| Data preservation36/40 | Additive database19; constructed17→19 raw records/epochs/alarms and18→19 interrupted receipts preserved; portableBackup14 unchanged and excludes device-local derived data/consent | Current recovery journey above and its raw schema19 proof; no real-user database or phone data inspected |
+
+The frozen operational gates passed before any policy retuning: cold load3,763.35ms;20 measured one-thread windows after one warmup, nearest-rank warm p95=1,854.10ms and max2,344.20ms; sampled extra process PSS132,006,912bytes and used Java heap53,698,688bytes; capture append maximum0.260216ms. The original licensed fixture is reused for lifecycle/performance only. No held-out recognition set was replayed. Actual Android overnight battery/quality remains open. [Protocol and exact outcomes](verification/additional-cee13e91/README.md).
+
+The broader current Night Dial run41273653327 executed all21 selected native methods successfully and captured all206 required originals,237 PNGs including extras. The workflow itself failed solely because its old summary expected20 methods; its original failed receipt is preserved. Current visual review is separate and ongoing. No unit methods ran, and no physical capture/output occurred.
 
 ## Finite audit boundaries
 

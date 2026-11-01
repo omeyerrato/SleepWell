@@ -27,7 +27,9 @@ Checked here means source plus a completed bounded Android journey. Physical exe
 - [x] Voice settings unavailable/return flow and explicit Calendar CSV alternative.
 - [x] Contactless fallback releases its probe and preserves recording settings;11 focused originals and actual actions pass atcddd51e5.
 - [x] Rhythm source evidence, page/scroll return and Travel one-occurrence review pass at569a6991; exact source/competing-writer and retired-owner checks remain enforced.
-- [ ] Integrate and exercise the new default-off automatic additional-sound analysis, including real model resource use and database19 preservation. Experimental candidate estimates do not satisfy reliable recognition.
+- [x] Default-off automatic additional-sound analysis, real bundled inference, bounded queue/late-result retirement, read-only Report results and database19 preservation. Fixed emulator resource gates pass; candidate estimates remain experimental and do not satisfy reliable recognition.
+- [ ] Finish the current237-original integrated Night Dial visual review. All21 selected native methods and206 required originals passed; the workflow's stale20-method summary failure is retained separately.
+- [ ] Install the latest0.1.29 APK when an authorized phone is available. ADB currently has no connected device; last actual installation remains0.1.26.
 
 [Exact current implementation and evidence ledger](night-dial/LOCAL-COMPLETION-2026-11-01.md). Current artifact delivery/install status is recorded there separately.
 
