@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "source_parent_revision": "76170c4120e943d169b02da990a76dbd1dcb8053",
+  "contract": "design.md Flow28B: Coverageinsufficient stays unknown; daypoint26A; Chronotype28D",
+  "native_status": "not_run_pending_integration",
+  "unit_campaign": "not_run",
+  "methods": [
+    {
+      "method": "org.sleepwell.app.SleepRhythmFlowTest#actualSevenNightsWorkdaysPersistRecreateAndEmptyWithoutOutputs",
+      "required_originals": [
+        "rhythm-seven-nights.png",
+        "rhythm-day-selected.png",
+        "rhythm-day-report.png",
+        "rhythm-day-returned.png",
+        "rhythm-day-restored.png",
+        "rhythm-workdays.png",
+        "rhythm-recreated.png",
+        "rhythm-reopened.png",
+        "rhythm-empty.png"
+      ],
+      "new_originals": [
+        "rhythm-day-selected.png",
+        "rhythm-day-report.png",
+        "rhythm-day-returned.png",
+        "rhythm-day-restored.png"
+      ]
+    }
+  ],
+  "expected_methods": 1,
+  "required_original_count": 9,
+  "assertions": [
+    "Focused chart receives an actual D-pad selection; selected date maps to the source record id",
+    "Explicit Open selected night launches the read-only Report for that exact id",
+    "Opening/reviewing the saved night leaves the isolated database snapshot unchanged",
+    "A real scrolled viewport and selected source/date persist on Report return and Activity recreation",
+    "Existing seven-night, saved workdays, recreation, Cancel/reopen, empty, preferences and no-output checks remain"
+  ],
+  "scope_limits": [
+    "No new native run, build, phone, capture, alarm or audio output performed during implementation",
+    "One source record for each observed day; missing/future rows remain excluded by unchanged RhythmStats",
+    "State register at66c9 remains historical and is not relabeled accepted by this source-only increment"
+  ]
+}
