@@ -1,0 +1,2 @@
+# Keep original CI/API evidence bytes intact.
+* -text whitespace=cr-at-eol

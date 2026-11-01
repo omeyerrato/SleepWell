@@ -1,0 +1,196 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "source": "1c3ee4f64120083ff3695e734c98e1e0a3e3ade4",
+  "run_id": 41276781848,
+  "review_method": "Individual actual original PNGs opened at original resolution; accepted native Night Dial reference and shared controls, without cream reference authority. Source/XML explain native state but do not substitute for visual review.",
+  "original_count": 47,
+  "reviewed_originals": [
+    "night-dial-breadth-Guard.png",
+    "night-dial-breadth-AlarmAccess.png",
+    "night-dial-breadth-RecordAccess.png",
+    "night-dial-breadth-Nap.png",
+    "night-dial-breadth-GuidedWindDown.png",
+    "night-dial-breadth-Diary.png",
+    "night-dial-breadth-Appearance.png",
+    "night-dial-breadth-AutomaticTracking.png",
+    "night-dial-breadth-RecurringTracking.png",
+    "night-dial-breadth-SleepRhythm.png",
+    "night-dial-breadth-GoalBank.png",
+    "night-dial-breadth-Travel.png",
+    "night-dial-breadth-CalendarRules.png",
+    "night-dial-breadth-SmartBedtime.png",
+    "night-dial-breadth-SmartLight.png",
+    "night-dial-breadth-HueBridge.png",
+    "night-dial-breadth-Automation.png",
+    "night-dial-breadth-HealthConnect.png",
+    "night-dial-breadth-Backup.png",
+    "night-dial-breadth-CloudBackup.png",
+    "night-dial-breadth-SettingsProfile.png",
+    "night-dial-breadth-Search.png",
+    "night-dial-breadth-SoundLibrarySettings.png",
+    "night-dial-breadth-FavoriteSounds.png",
+    "night-dial-breadth-SleepSounds.png",
+    "night-dial-breadth-DreamCue.png",
+    "night-dial-breadth-SnoringCues.png",
+    "night-dial-breadth-TagManagement.png",
+    "night-dial-breadth-HomeWidgetSettings.png",
+    "night-dial-breadth-AlarmProtection.png",
+    "night-dial-breadth-FeedbackSettings.png",
+    "night-dial-breadth-AwakeSettings.png",
+    "night-dial-breadth-SoundSensitivity.png",
+    "night-dial-breadth-TrackingDelay.png",
+    "night-dial-breadth-TrackingFlip.png",
+    "night-dial-breadth-TrackingDnd.png",
+    "night-dial-breadth-ExternalMediaFade.png",
+    "night-dial-breadth-BinauralSettings.png",
+    "night-dial-breadth-SleepCsv.png",
+    "night-dial-breadth-ResearchExport.png",
+    "night-dial-breadth-IncomingAutomationSettings.png",
+    "night-dial-breadth-NarrationVoice.png",
+    "night-dial-breadth-SRI.png",
+    "night-dial-breadth-NapProfiles.png",
+    "night-dial-breadth-HabitualTiming.png",
+    "night-dial-breadth-VoiceSettingsUnavailable.png",
+    "night-dial-breadth-VoiceSettingsUnavailableRestored.png"
+  ],
+  "conclusion": "No material visual blocker found in these 47 captured secondary states.",
+  "groups": [
+    {
+      "frames": [
+        "night-dial-breadth-Guard.png",
+        "night-dial-breadth-AlarmAccess.png",
+        "night-dial-breadth-RecordAccess.png"
+      ],
+      "finding": "Guard Save blocked apps now uses white shared primary action with dark ink. Access empty roots each show one No apps are allowed under Managed apps; package verification and Refresh/Revoke/Close fit. RecordAccess lower read-only preview content continues below scroll viewport, fixed actions unobscured."
+    },
+    {
+      "frames": [
+        "night-dial-breadth-Nap.png",
+        "night-dial-breadth-GuidedWindDown.png",
+        "night-dial-breadth-Diary.png",
+        "night-dial-breadth-Appearance.png"
+      ],
+      "finding": "Nap duration/end-time draft, Guided ready practice, empty Diary actions and Appearance selections use accepted native hierarchy. Fixed actions fully visible; lower sound content is scroll continuation, no claimed output."
+    },
+    {
+      "frames": [
+        "night-dial-breadth-AutomaticTracking.png",
+        "night-dial-breadth-RecurringTracking.png",
+        "night-dial-breadth-SleepRhythm.png",
+        "night-dial-breadth-GoalBank.png"
+      ],
+      "finding": "Automatic/recurring tracking show selected method and explicit Save; recurring reliability warning remains visible. Rhythm missing history uses dashes/counts, Goal bank says missing days unknown. All displayed actions/text align without material clipping."
+    },
+    {
+      "frames": [
+        "night-dial-breadth-Travel.png",
+        "night-dial-breadth-CalendarRules.png",
+        "night-dial-breadth-SmartBedtime.png",
+        "night-dial-breadth-SmartLight.png"
+      ],
+      "finding": "Travel shows real zone offset/current clocks and off cues; calendar denied status preserves choices and ordinary-time fallback. Smart Bedtime missing history/eligible reminder truth explicit. Smart light unconfigured and Off until Save clear. Fixed actions fit; lower details continue in scroll viewport."
+    },
+    {
+      "frames": [
+        "night-dial-breadth-HueBridge.png",
+        "night-dial-breadth-Automation.png",
+        "night-dial-breadth-HealthConnect.png",
+        "night-dial-breadth-Backup.png"
+      ],
+      "finding": "Hue pairing fields/unconfigured state, empty automation Add, Health Connect Unavailable and Backup reviewed document steps are readable; fixed actions remain separated. External services not asserted connected. Hue lower consent continues in scroll region rather than hidden entire control claim."
+    },
+    {
+      "frames": [
+        "night-dial-breadth-CloudBackup.png",
+        "night-dial-breadth-SettingsProfile.png",
+        "night-dial-breadth-Search.png",
+        "night-dial-breadth-SoundLibrarySettings.png"
+      ],
+      "finding": "Cloud destination absent and Save disabled truthfully; profile export scope/selected categories readable. Search scope and quick access fit. Retention warns deletion and offers explicit Save/apply; no material overlap."
+    },
+    {
+      "frames": [
+        "night-dial-breadth-FavoriteSounds.png",
+        "night-dial-breadth-SleepSounds.png",
+        "night-dial-breadth-DreamCue.png",
+        "night-dial-breadth-SnoringCues.png"
+      ],
+      "finding": "Favorites explicitly empty; Sleep sounds stopped at zero with selected mixer. Timed cues distinguish Save from inactive Arm and disclaim REM detection. Snoring cues Off with microphone prerequisite; selection and Save fit."
+    },
+    {
+      "frames": [
+        "night-dial-breadth-TagManagement.png",
+        "night-dial-breadth-HomeWidgetSettings.png",
+        "night-dial-breadth-AlarmProtection.png",
+        "night-dial-breadth-FeedbackSettings.png"
+      ],
+      "finding": "Empty Tags guides saved records; widget preview labels saved data/no alarm/no records, no false active state. Protection Off/access status and setup boundaries readable. Touch feedback selection and explicit Try remain legible; no overlap."
+    },
+    {
+      "frames": [
+        "night-dial-breadth-AwakeSettings.png",
+        "night-dial-breadth-SoundSensitivity.png",
+        "night-dial-breadth-TrackingDelay.png",
+        "night-dial-breadth-TrackingFlip.png"
+      ],
+      "finding": "Awake estimates distinguish the disabled master and future-recording heuristic options; Sound sensitivity shows 6 of 6/~2 sec and one Experimental Additional sounds route; Start delay is Off; Flip gesture is Off with Not tested preview. Save actions and labels remain legible."
+    },
+    {
+      "frames": [
+        "night-dial-breadth-TrackingDnd.png",
+        "night-dial-breadth-ExternalMediaFade.png",
+        "night-dial-breadth-BinauralSettings.png",
+        "night-dial-breadth-SleepCsv.png"
+      ],
+      "finding": "DND shows required Android access and inactive status; external-media fade is Off and its actual device-stream restrictions and Save/Reload/Cancel remain visible; binaural tones are explicitly manual Play with channel labels; CSV import distinguishes additive reviewed periods and limits. No obscured action or material clipping."
+    },
+    {
+      "frames": [
+        "night-dial-breadth-ResearchExport.png",
+        "night-dial-breadth-IncomingAutomationSettings.png",
+        "night-dial-breadth-NarrationVoice.png",
+        "night-dial-breadth-SRI.png"
+      ],
+      "finding": "Research export shows actual zero nights/epochs and disables Save; its disclosure continues in the scroll viewport above fixed actions. Incoming requests is Off and requires foreground confirmation. Narration separates requested engine from real installed-voice refresh and starts no speech. SRI is unknown with 0 confirmed/comparable days rather than a fabricated score. Native typography, surfaces, and actions fit."
+    },
+    {
+      "frames": [
+        "night-dial-breadth-NapProfiles.png",
+        "night-dial-breadth-HabitualTiming.png",
+        "night-dial-breadth-VoiceSettingsUnavailable.png",
+        "night-dial-breadth-VoiceSettingsUnavailableRestored.png"
+      ],
+      "finding": "Nap profiles truthfully separates empty definitions, batches and weekly applications; habitual timing marks every unknown input Not reported. Both voice-unavailable originals clearly retain the Android settings failure and manual Settings/Refresh recovery guidance after recreation. Query state resets from stopped to choose/refresh instructions without claiming a successful query or playing speech. Save and Cancel remain visible."
+    }
+  ],
+  "changed_originals": [
+    {
+      "file": "night-dial-breadth-Guard.png",
+      "observation": "Save blocked apps uses the shared white action with dark ink; the complete primary/footer is visible. Disabled pause remains a separate secondary action.",
+      "source_commit": "b99219c"
+    },
+    {
+      "file": "night-dial-breadth-AlarmAccess.png",
+      "observation": "Managed apps has one No apps are allowed status. Verify, Refresh, Revoke all and Close remain legible.",
+      "source_commit": "683c2aa1"
+    },
+    {
+      "file": "night-dial-breadth-RecordAccess.png",
+      "observation": "Managed apps has one No apps are allowed status. The fixed actions are fully visible; the lower preview disclosure continues in the scrolling viewport.",
+      "source_commit": "683c2aa1"
+    }
+  ],
+  "voice_handoff": {
+    "frames": [
+      "night-dial-breadth-VoiceSettingsUnavailable.png",
+      "night-dial-breadth-VoiceSettingsUnavailableRestored.png"
+    ],
+    "observation": "The actual injected unavailable Android pane is reported explicitly before and after recreation, including manual Settings/Refresh guidance. No successful engine/voice selection, playback or download is claimed. Native assertions preserve saved preferences and require exactly one handoff request."
+  },
+  "limits": [
+    "Forty-five destination roots and two unavailable-voice states; this is not all feature actions, all devices, or all 172 design states.",
+    "Some long pages show scroll continuation above fixed actions. No source-only acceptance is inferred for content outside a captured viewport.",
+    "No physical challenge, alarm/audio output, external service connectivity, model accuracy or overnight quality is accepted by this review."
+  ]
+}

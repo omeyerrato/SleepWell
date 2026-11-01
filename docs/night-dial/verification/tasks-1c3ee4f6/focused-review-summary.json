@@ -1,0 +1,21 @@
+{
+  "scope": "task-visual-repair",
+  "full_app_review": false,
+  "expected_classes": 2,
+  "expected_methods": 2,
+  "class_results": [
+    {
+      "class": "NightDialBreadthTest#cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 64,
+  "required_evidence_files": [],
+  "failures": []
+}
