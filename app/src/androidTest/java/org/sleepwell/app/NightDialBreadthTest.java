@@ -88,7 +88,23 @@ public final class NightDialBreadthTest {
             for(String type:List.of("Math","Memory","Sequence","Retype","Counting","Flags","Mirror text","Dream journal","Visual search","Jumping","Type code")){
                 ChallengeRoutine routine=new ChallengeRoutine(List.of(new ChallengeRoutine.Task(type,1)));
                 Intent intent=new Intent(c,ChallengePracticeActivity.class).putExtra("request",UUID.randomUUID().toString()).putExtra("routine",ChallengeRoutineJson.encode(routine).toString());
-                Activity activity=scene.launch(ChallengePracticeActivity.class,intent);capture(activity,"Workspace-"+type.replace(' ','-'));scene.unchanged();
+                Activity activity=scene.launch(ChallengePracticeActivity.class,intent);
+                if(type.equals("Sequence")){
+                    tap("Show sequence again");UiObject2 sequencePrompt=device.wait(Until.findObject(By.text(java.util.regex.Pattern.compile("[1-4]{3}"))),5000);assertNotNull(sequencePrompt);String expected=sequencePrompt.getText();
+                    final Activity first=activity;i.runOnMainSync(()->{View root=first.getWindow().getDecorView();assertEquals("Watch",((TextView)root.findViewWithTag("sequence-phase")).getText().toString());for(int digit=1;digit<=4;digit++){View key=named(root,"Sequence digit "+digit);assertNotNull(key);assertFalse(key.isEnabled());key.performClick();}assertEquals("Disabled input cannot replace the demonstrated sequence",expected,((TextView)root.findViewWithTag("sequence-prompt")).getText().toString());});
+                    capture(activity,"Workspace-Sequence");text("Your turn");
+                    for(int digit=1;digit<=4;digit++)assertTrue(text(Integer.toString(digit)).isEnabled());
+                    device.findObject(By.desc("Sequence digit "+(expected.charAt(0)=='1'?2:1))).click();
+                    text("That did not match. Watch the same sequence, then try again.");assertNotNull(device.findObject(By.text(expected)));capture(activity,"Workspace-Sequence-retry");
+                    activity=scene.recreate(activity);tap("Show sequence again");assertNotNull("Rotation and explicit replay retain the actual round",device.findObject(By.text(expected)));capture(activity,"Workspace-Sequence-restored");text("Your turn");capture(activity,"Workspace-Sequence-your-turn");
+                    for(char digit:expected.toCharArray())device.findObject(By.desc("Sequence digit "+digit)).click();
+                    text("Routine preview completed");capture(activity,"Workspace-Sequence-complete");
+                }else if(type.equals("Visual search")){
+                    final Activity search=activity;i.runOnMainSync(()->{List<MoonSearchView.Face> faces=new ArrayList<>();collect(search.getWindow().getDecorView(),MoonSearchView.Face.class,faces);assertEquals(9,faces.size());assertEquals(1,faces.stream().filter(face->face.asleep).count());for(MoonSearchView.Face face:faces){android.graphics.Bitmap pixels=android.graphics.Bitmap.createBitmap(face.getWidth(),face.getHeight(),android.graphics.Bitmap.Config.ARGB_8888);try{face.draw(new android.graphics.Canvas(pixels));int size=Math.min(face.getWidth(),face.getHeight()),cx=face.getWidth()/2,cy=face.getHeight()/2,dark=0;for(int y=cy-size/5;y<cy+size/5;y++)for(int x=cx-size/5;x<cx+size/5;x++)if(pixels.getPixel(x,y)==NightDialTokens.ACTION_INK)dark++;assertTrue("Visible dark eyes/mouth on actual moon variant "+face.variant,dark>0);}finally{pixels.recycle();}}});
+                    capture(activity,"Workspace-Visual-search");UiObject2 wrong=device.findObject(By.descStartsWith("Awake moon,"));assertNotNull(wrong);wrong.click();text("That moon is awake. Keep looking.");
+                    UiObject2 target=device.findObject(By.descStartsWith("Sleeping moon,"));assertNotNull(target);String identity=target.getContentDescription();activity=scene.recreate(activity);target=device.wait(Until.findObject(By.desc(identity)),5000);assertNotNull("Rotation retains the actual sleeping target",target);capture(activity,"Workspace-Visual-search-restored");target.click();text("Routine preview completed");capture(activity,"Workspace-Visual-search-complete");
+                }else capture(activity,"Workspace-"+type.replace(' ','-'));
+                scene.unchanged();
             }
         }
     }
@@ -101,4 +117,6 @@ public final class NightDialBreadthTest {
         }
     }
     static <T extends View>T find(View root,Class<T> type){if(type.isInstance(root))return type.cast(root);if(root instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){T found=find(group.getChildAt(n),type);if(found!=null)return found;}return null;}
+    static View named(View root,String description){if(description.equals(root.getContentDescription()))return root;if(root instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){View found=named(group.getChildAt(n),description);if(found!=null)return found;}return null;}
+    static <T extends View>void collect(View root,Class<T> type,List<T> result){if(type.isInstance(root))result.add(type.cast(root));if(root instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++)collect(group.getChildAt(n),type,result);}
 }
