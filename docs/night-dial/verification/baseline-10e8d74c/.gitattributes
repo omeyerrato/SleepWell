@@ -1,0 +1,6 @@
+# Preserve original CI/API bytes exactly.
+* -text whitespace=cr-at-eol
+logcat.txt -whitespace
+windows.txt -whitespace
+instrumentation.txt -whitespace
+emulator.log -whitespace

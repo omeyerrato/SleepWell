@@ -1,0 +1,692 @@
+{
+  "source_revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6",
+  "app_main_tree": "c77d550d0aca5f12b6660b846e580a98517c9128",
+  "run": 41273653327,
+  "attempt": 1,
+  "workflow_conclusion": "failure",
+  "raw_review_passed": false,
+  "derived_native_result": "PASS",
+  "native_methods": 21,
+  "seconds": 541.544,
+  "units": "not_run",
+  "full_172_state_acceptance": false,
+  "environment_evidence": {
+    "original_environment_json": "No standalone environment JSON was present; review.json and emulator.log are copied unchanged.",
+    "system_image": "android-35/google_apis/x86_64 (original emulator.log)",
+    "emulator": "37.2.13.0 build16740729",
+    "host_audio": "disabled via -no-audio in tested runner",
+    "time_zone": "Asia/Riyadh in tested runner"
+  },
+  "runner_failure": {
+    "cause": "Tested runner requires literal OK (20 tests), while all 21 selected native tests succeeded.",
+    "source": "scripts/night_dial_review.py",
+    "line": 102,
+    "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6",
+    "actual_line": "passed = result.returncode == 0 and \"OK (20 tests)\" in result.stdout and not missing",
+    "original_summary_preserved": true,
+    "bookkeeping_rerun": false
+  },
+  "native_method_results": [
+    {
+      "method": "NightDialReviewTest#rootsMixerAndOwnedPickerRemainSilentAndCancelable",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialReviewTest.java",
+      "line": 31,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialInteractionTest.java",
+      "line": 32,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialTrackingReviewTest#measuredGraphPauseRecreationCancelEndAndExplicitSave",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialTrackingReviewTest.java",
+      "line": 15,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialReportFlowTest.java",
+      "line": 79,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialReportFlowTest.java",
+      "line": 52,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialReportFlowTest.java",
+      "line": 67,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialAlarmFlowTest.java",
+      "line": 57,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialAlarmFlowTest.java",
+      "line": 61,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialAlarmFlowTest#skipReviewsRestoreAndKeepTheActualOccurrenceOwner",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialAlarmFlowTest.java",
+      "line": 64,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialAlarmFlowTest.java",
+      "line": 69,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "AlarmSkipFlowTest#oneTimeSkipStaysDisabledAfterItsSelectedTimePasses",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/AlarmSkipFlowTest.java",
+      "line": 42,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/AlarmSkipFlowTest.java",
+      "line": 30,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialFirstNightTest#optionalMicrophoneRationaleRestoresWithoutStartingCapture",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialFirstNightTest.java",
+      "line": 72,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialFirstNightTest#firstSetupExplainsRestoresAndReturnsFromRealNotificationDenial",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialFirstNightTest.java",
+      "line": 69,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialFirstNightTest#welcomeExploreAndAddFromDefaultsKeepExplicitSaveAuthority",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialFirstNightTest.java",
+      "line": 65,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialBreadthTest#secondaryDestinationsRenderWithDarkChromeAndQuietOwners",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialBreadthTest.java",
+      "line": 59,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialBreadthTest#diaryKeepsDirtyDraftAcrossBackAndRecreationUntilExplicitDiscard",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialBreadthTest.java",
+      "line": 75,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialBreadthTest#largeTextAndReducedMotionKeepKeyDestinationsReachable",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialBreadthTest.java",
+      "line": 95,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialBreadthTest#cognitiveWorkspacesUseTheirRealNativeTasksWithoutAlarmOutput",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialBreadthTest.java",
+      "line": 86,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialBreadthTest#napWheelCancellationExactAccessibilityAndRecreationStayDraftOnly",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialBreadthTest.java",
+      "line": 67,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    },
+    {
+      "method": "NightDialBreadthTest#allTaskConfigurationRoutesAreReachableWithoutStartingChecks",
+      "status": "PASS",
+      "instrumentation_status_code": 0,
+      "source": "app/src/androidTest/java/org/sleepwell/app/NightDialBreadthTest.java",
+      "line": 80,
+      "revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6"
+    }
+  ],
+  "design_authority": {
+    "contract": "design.md at 10e8d74ccc399c218b4a9502a5a167482fae3fe6",
+    "contract_sha256": "d4350d5b5e71b5561d3b65386f9aa09a3ddc10d8a352ad76c2ace094ce539f85",
+    "selected_reference": "design-concepts/2026-10-29-night-dial-flow-library/accepted-reference.png",
+    "selected_reference_sha256": "40174cbd954abf5c19f03b02c6708249d8254080c59c5a07b57a1311c0e44be3",
+    "comparison": "Each core original opened individually with view_image; native hierarchy, true-black/charcoal surfaces, amber roles, white preparation CTA, dim live tracking controls, clear chart units/provenance and explicit actions compared against accepted Night Dial reference and normative contract. No old cream reference used.",
+    "pixel_equality_claim": false
+  },
+  "core_visual_originals_reviewed": [
+    "alarm-skip-confirmation.png",
+    "alarm-skip-default.png",
+    "alarm-skip-error-reopened.png",
+    "alarm-skip-expired.png",
+    "alarm-skip-one-time-confirmation.png",
+    "alarm-skip-one-time-skipped.png",
+    "alarm-skip-recreated.png",
+    "alarm-skip-reopened.png",
+    "alarm-skip-retry.png",
+    "alarm-skip-schedule-error.png",
+    "alarm-skip-skipped.png",
+    "alarm-skip-undo-error-reopened.png",
+    "alarm-skip-undo-error.png",
+    "alarm-skip-undo-retry.png",
+    "alarm-skip-undo.png",
+    "night-dial-alarm-delete-changed.png",
+    "night-dial-alarm-delete-restored-review-stale.png",
+    "night-dial-alarm-delete-restored.png",
+    "night-dial-alarm-delete-result.png",
+    "night-dial-alarm-delete-review.png",
+    "night-dial-alarm-delete-undo-expired.png",
+    "night-dial-alarm-delete-undo-restored-review.png",
+    "night-dial-alarm-delete-undo-stale.png",
+    "night-dial-alarm-delete-undone-recreated.png",
+    "night-dial-alarm-delete-undone.png",
+    "night-dial-alarm-dirty-saved.png",
+    "night-dial-alarm-discard-restored.png",
+    "night-dial-alarm-discard.png",
+    "night-dial-alarm-duplicate-draft.png",
+    "night-dial-alarm-duplicate-restored.png",
+    "night-dial-alarm-editor.png",
+    "night-dial-alarm-gentle-restored.png",
+    "night-dial-alarm-gentle.png",
+    "night-dial-alarm-list.png",
+    "night-dial-alarm-name-draft.png",
+    "night-dial-alarm-name-open.png",
+    "night-dial-alarm-name-restored.png",
+    "night-dial-alarm-ramp-picker.png",
+    "night-dial-alarm-repeat-interval.png",
+    "night-dial-alarm-repeat-invalid.png",
+    "night-dial-alarm-repeat-parent.png",
+    "night-dial-alarm-repeat-restored.png",
+    "night-dial-alarm-routine-ordered.png",
+    "night-dial-alarm-routine.png",
+    "night-dial-alarm-saved.png",
+    "night-dial-alarm-skip-applied.png",
+    "night-dial-alarm-skip-changed-restored.png",
+    "night-dial-alarm-skip-changed.png",
+    "night-dial-alarm-skip-restored.png",
+    "night-dial-alarm-skip-review.png",
+    "night-dial-alarm-skip-undone.png",
+    "night-dial-alarm-snooze-off.png",
+    "night-dial-alarm-snooze-restored.png",
+    "night-dial-alarm-snooze.png",
+    "night-dial-alarm-task-config.png",
+    "night-dial-alarm-task-search.png",
+    "night-dial-alarm-unsaved-actions.png",
+    "night-dial-alarms.png",
+    "night-dial-dial-conflict.png",
+    "night-dial-dial-draft.png",
+    "night-dial-dial-help.png",
+    "night-dial-dial-linked-alarm.png",
+    "night-dial-dial-linked-review.png",
+    "night-dial-dial-review-restored.png",
+    "night-dial-dial-saved.png",
+    "night-dial-dial-under-finger.png",
+    "night-dial-first-denied-restored.png",
+    "night-dial-first-empty-alarms.png",
+    "night-dial-first-existing-user.png",
+    "night-dial-first-guide-from-settings.png",
+    "night-dial-first-guide-parent-return.png",
+    "night-dial-first-microphone-explanation.png",
+    "night-dial-first-microphone-restored.png",
+    "night-dial-first-new-from-defaults.png",
+    "night-dial-first-notifications-denied.png",
+    "night-dial-first-notifications-explanation.png",
+    "night-dial-first-notifications-restored.png",
+    "night-dial-first-notifications-returned.png",
+    "night-dial-first-readiness.png",
+    "night-dial-first-regular-readiness.png",
+    "night-dial-first-returning.png",
+    "night-dial-first-saved-off.png",
+    "night-dial-first-welcome-back.png",
+    "night-dial-first-welcome-restored.png",
+    "night-dial-first-welcome.png",
+    "night-dial-report-calendar-empty-date.png",
+    "night-dial-report-dirty-back.png",
+    "night-dial-report-dirty-restored.png",
+    "night-dial-report-empty.png",
+    "night-dial-report-history-empty.png",
+    "night-dial-report-history-import-restored.png",
+    "night-dial-report-history-import.png",
+    "night-dial-report-history-imported.png",
+    "night-dial-report-history-no-results.png",
+    "night-dial-report-history-query-returned.png",
+    "night-dial-report-manual-date-saved.png",
+    "night-dial-report-manual-save-error-restored.png",
+    "night-dial-report-night.png",
+    "night-dial-report-refresh-failed.png",
+    "night-dial-report-refresh-retry.png",
+    "night-dial-report-removed.png",
+    "night-dial-report-restore-draft.png",
+    "night-dial-report-restore-review-restored.png",
+    "night-dial-report-restore-review.png",
+    "night-dial-report-restored-night.png",
+    "night-dial-report-share-actions.png",
+    "night-dial-report-share-changed.png",
+    "night-dial-report-share-chooser.png",
+    "night-dial-report-share-notes.png",
+    "night-dial-report-share-preview.png",
+    "night-dial-report-share-restored.png",
+    "night-dial-report-share-returned.png",
+    "night-dial-report-signal-restored.png",
+    "night-dial-report-signal-scrub.png",
+    "night-dial-report-trends-empty-actions.png",
+    "night-dial-report-trends-empty-restored.png",
+    "night-dial-report-trends-empty.png",
+    "night-dial-report-trends-first-night.png",
+    "night-dial-report-trends-month.png",
+    "night-dial-report-trends-refresh-failed.png",
+    "night-dial-report-trends-refresh-retry.png",
+    "night-dial-report-trends-restored.png",
+    "night-dial-report-trends-week.png",
+    "night-dial-report-trends-year.png",
+    "night-dial-settings.png",
+    "night-dial-settle-consent-restored.png",
+    "night-dial-settle-in.png",
+    "night-dial-settle-microphone-consent.png",
+    "night-dial-settle-sensors.png",
+    "night-dial-settle-timer.png",
+    "night-dial-sounds.png",
+    "night-dial-time-invalid.png",
+    "night-dial-time-restored.png",
+    "night-dial-time.png",
+    "night-dial-tonight.png",
+    "night-dial-tracking-active.png",
+    "night-dial-tracking-end-confirmation.png",
+    "night-dial-tracking-end-restored.png",
+    "night-dial-tracking-paused-restored.png",
+    "night-dial-tracking-paused.png",
+    "night-dial-tracking-resumed.png"
+  ],
+  "findings": [
+    {
+      "frames": [
+        "alarm-skip-confirmation.png",
+        "alarm-skip-default.png",
+        "alarm-skip-error-reopened.png",
+        "alarm-skip-expired.png"
+      ],
+      "finding": "Recurring skip review names exact date/time and Keep/Skip actions. Saved scheduling-error retry and expired one-time state remain readable; no overlap."
+    },
+    {
+      "frames": [
+        "alarm-skip-one-time-confirmation.png",
+        "alarm-skip-one-time-skipped.png",
+        "alarm-skip-recreated.png",
+        "alarm-skip-reopened.png"
+      ],
+      "finding": "One-time confirmation explains off/Undo consequence; recreated and reopened recurring skipped occurrence remains distinct from next occurrence. Cards and actions fit."
+    },
+    {
+      "frames": [
+        "alarm-skip-retry.png",
+        "alarm-skip-schedule-error.png",
+        "alarm-skip-skipped.png",
+        "alarm-skip-undo-error-reopened.png"
+      ],
+      "finding": "Retry removes scheduling error while preserving skipped occurrence; Undo scheduling-error disclosure remains inline with explicit Retry. No overlap."
+    },
+    {
+      "frames": [
+        "alarm-skip-undo-error.png",
+        "alarm-skip-undo-retry.png",
+        "alarm-skip-undo.png",
+        "night-dial-alarm-delete-changed.png"
+      ],
+      "finding": "Undo/error retry states keep current schedule separate. Changed-delete rejection is visible below Save without obscuring it; off draft and recurrence remain clear."
+    },
+    {
+      "frames": [
+        "night-dial-alarm-delete-restored-review-stale.png",
+        "night-dial-alarm-delete-restored.png",
+        "night-dial-alarm-delete-result.png",
+        "night-dial-alarm-delete-review.png"
+      ],
+      "finding": "Named delete sheets retain name/time/consequence and separate Cancel/Delete. Undo/result changed-identity disclosures distinguish restored alarm from reused ID; actions unobscured."
+    },
+    {
+      "frames": [
+        "night-dial-alarm-delete-undo-expired.png",
+        "night-dial-alarm-delete-undo-restored-review.png",
+        "night-dial-alarm-delete-undo-stale.png",
+        "night-dial-alarm-delete-undone-recreated.png"
+      ],
+      "finding": "Undo expiry/stale states retain clear top status/Dismiss; transient Android toasts obscure parts of bottom Add/nav in expiry and stale originals, so those bottom targets are not clean visual evidence. Restored-off review action and recreated off alarm remain distinct."
+    },
+    {
+      "frames": [
+        "night-dial-alarm-delete-undone.png",
+        "night-dial-alarm-dirty-saved.png",
+        "night-dial-alarm-discard-restored.png",
+        "night-dial-alarm-discard.png",
+        "night-dial-alarm-duplicate-draft.png",
+        "night-dial-alarm-duplicate-restored.png"
+      ],
+      "finding": "Restored alarm remains off with explicit Review action; saved name visible. Dirty-save sheet actions fit fully. Duplicate is labelled unsaved and off; recreation retains draft and Save."
+    },
+    {
+      "frames": [
+        "night-dial-alarm-editor.png",
+        "night-dial-alarm-gentle-restored.png",
+        "night-dial-alarm-gentle.png",
+        "night-dial-alarm-list.png"
+      ],
+      "finding": "Alarm editor retains strong functional clock, clear recurrence and Save. Gentle wake chart labels requested volume/time; restored selections and explicit Use remain legible. Alarm list times/status/actions align without clipping."
+    },
+    {
+      "frames": [
+        "night-dial-alarm-name-draft.png",
+        "night-dial-alarm-name-open.png",
+        "night-dial-alarm-name-restored.png",
+        "night-dial-alarm-ramp-picker.png"
+      ],
+      "finding": "Name draft/restored value and Use/Cancel fit. Underlying editor remains same recurrence. Volume ramp radio sheet has clear selection, scroll affordance and Cancel above navigation."
+    },
+    {
+      "frames": [
+        "night-dial-alarm-repeat-interval.png",
+        "night-dial-alarm-repeat-invalid.png",
+        "night-dial-alarm-repeat-parent.png",
+        "night-dial-alarm-repeat-restored.png"
+      ],
+      "finding": "Interval draft and invalid/restored interval show bounds, start date/time zone and explicit use/cancel; error fits above footer without covering controls. Parent shows inactive weekdays and actual interval rather than false weekly recurrence."
+    },
+    {
+      "frames": [
+        "night-dial-alarm-routine-ordered.png",
+        "night-dial-alarm-routine.png",
+        "night-dial-alarm-saved.png",
+        "night-dial-alarm-skip-applied.png"
+      ],
+      "finding": "Routine sequence/count and handles visible, saved summary changes to 2 tasks. Skip-applied separates skipped occurrence from next occurrence. Main footer and navigation unobscured."
+    },
+    {
+      "frames": [
+        "night-dial-alarm-skip-changed-restored.png",
+        "night-dial-alarm-skip-changed.png",
+        "night-dial-alarm-skip-restored.png",
+        "night-dial-alarm-skip-review.png"
+      ],
+      "finding": "Changed-alarm modal explicitly requires reopen, restored review names the actual date/time and explains single occurrence. Got it / Skip / Keep fit above gesture bar."
+    },
+    {
+      "frames": [
+        "night-dial-alarm-skip-undone.png",
+        "night-dial-alarm-snooze-off.png",
+        "night-dial-alarm-snooze-restored.png",
+        "night-dial-alarm-snooze.png"
+      ],
+      "finding": "Skip undone restores original next occurrence. Snooze chart labels first configured durations; None renders No snooze action. Restored longer content continues below scroll viewport; fixed Use footer is clear, so this frame alone does not show lower Wake-up-check subtitle/preview."
+    },
+    {
+      "frames": [
+        "night-dial-alarm-task-config.png",
+        "night-dial-alarm-task-search.png",
+        "night-dial-alarm-unsaved-actions.png",
+        "night-dial-alarms.png"
+      ],
+      "finding": "Memory guide explicitly illustrated; rounds and Add/Cancel fit. Search shows actual matching count, scrollable filter rail. Unsaved sheet has three distinct actions. Off alarm root truthfully says Alarm off."
+    },
+    {
+      "frames": [
+        "night-dial-dial-conflict.png",
+        "night-dial-dial-draft.png",
+        "night-dial-dial-help.png",
+        "night-dial-dial-linked-alarm.png"
+      ],
+      "finding": "Dial explicitly labels planned duration, moon/sun and exact times; conflict inline with Reload. Help distinguishes plan from measured sleep. Linked-alarm transfer says Save alarm required. Controls and error fit."
+    },
+    {
+      "frames": [
+        "night-dial-dial-linked-review.png",
+        "night-dial-dial-review-restored.png",
+        "night-dial-dial-saved.png",
+        "night-dial-dial-under-finger.png"
+      ],
+      "finding": "Linked-plan review offers explicit alarm review vs plan-only, each distinct. Restored and saved 9h dial consistent with times. Under-finger status says Release to review rather than saved; no chart/action overlap."
+    },
+    {
+      "frames": [
+        "night-dial-first-denied-restored.png",
+        "night-dial-first-empty-alarms.png",
+        "night-dial-first-existing-user.png",
+        "night-dial-first-guide-from-settings.png"
+      ],
+      "finding": "Permission status cards differentiate denied/allowed and preserve nonblocking Use app. Empty alarm state gives draft explanation and Add. Existing-user Tonight retains off status; lower plan content is scroll continuation. Guide labels Example night and offers Explore."
+    },
+    {
+      "frames": [
+        "night-dial-first-guide-parent-return.png",
+        "night-dial-first-microphone-explanation.png",
+        "night-dial-first-microphone-restored.png",
+        "night-dial-first-new-from-defaults.png"
+      ],
+      "finding": "Readiness return preserves statuses and optional microphone. Rationale/restored sheet offers Continue and Not now with full text. New defaults are visibly an off draft until Save; no material overlap in active actions."
+    },
+    {
+      "frames": [
+        "night-dial-first-notifications-denied.png",
+        "night-dial-first-notifications-explanation.png",
+        "night-dial-first-notifications-restored.png",
+        "night-dial-first-notifications-returned.png"
+      ],
+      "finding": "Notification rationale/restored text readable and explicitly optional separate microphone; denial/return truthfully Not allowed and nonblocking action. No modal action clipping."
+    },
+    {
+      "frames": [
+        "night-dial-first-readiness.png",
+        "night-dial-first-regular-readiness.png",
+        "night-dial-first-returning.png",
+        "night-dial-first-saved-off.png"
+      ],
+      "finding": "Initial vs regular readiness have correct Continue/Done and missing-access status. Returning Tonight shows no alarms; explicit saved-off result retains named one-time routine without suggesting delivery active."
+    },
+    {
+      "frames": [
+        "night-dial-first-welcome-back.png",
+        "night-dial-first-welcome-restored.png",
+        "night-dial-first-welcome.png",
+        "night-dial-report-calendar-empty-date.png"
+      ],
+      "finding": "Welcome/back/recreated keep Example night and explicit setup/explore hierarchy. Selected empty calendar date says duration unknown, offers add period on that date and reset filters; no invented zero or clipped action."
+    },
+    {
+      "frames": [
+        "night-dial-report-dirty-back.png",
+        "night-dial-report-dirty-restored.png",
+        "night-dial-report-empty.png",
+        "night-dial-report-history-empty.png"
+      ],
+      "finding": "Report dirty sheet names unsaved annotations and provides Keep/Discard fully. Empty Night and History distinguish no records with Start/Add/import routes rather than false measured values; root navigation remains clear."
+    },
+    {
+      "frames": [
+        "night-dial-report-history-import-restored.png",
+        "night-dial-report-history-import.png",
+        "night-dial-report-history-imported.png",
+        "night-dial-report-history-no-results.png"
+      ],
+      "finding": "CSV route/restored page preserves bounded reviewed-period disclosure and Choose/Close. Imported row visibly labelled Imported edited. No-results search retains query and Reset; no action or text overlap."
+    },
+    {
+      "frames": [
+        "night-dial-report-history-query-returned.png",
+        "night-dial-report-manual-date-saved.png",
+        "night-dial-report-manual-save-error-restored.png",
+        "night-dial-report-night.png"
+      ],
+      "finding": "Search query retained on return. Manual saved report correctly says User-reported/reported period and no sensor or sound analysis. Capture limitation: preceding injected save-failure Android toast persists over lower content in manual-date-saved and over upper edge of Save footer in manual-save-error-restored; inline error and saved report state are otherwise clear. Night graph labelled movement High/Low/time, duration recorded, no invented stages."
+    },
+    {
+      "frames": [
+        "night-dial-report-refresh-failed.png",
+        "night-dial-report-refresh-retry.png",
+        "night-dial-report-removed.png",
+        "night-dial-report-restore-draft.png"
+      ],
+      "finding": "Refresh failure explicitly shows last saved data/check time and Retry; retry removes failure. Removed record has no stale metrics. Restore draft keeps notes/tag/rating and clear Save/Delete separation; all shown actions fit."
+    },
+    {
+      "frames": [
+        "night-dial-report-restore-review-restored.png",
+        "night-dial-report-restore-review.png",
+        "night-dial-report-restored-night.png",
+        "night-dial-report-share-actions.png"
+      ],
+      "finding": "Restore review/restored lists actual old/new timestamps and awake edit removal, annotations opt-in off; use applies only draft. Restored report preserves 4/5 rating. Share preview has notes off, exact fields/bytes, full Share/Cancel unobscured."
+    },
+    {
+      "frames": [
+        "night-dial-report-share-changed.png",
+        "night-dial-report-share-chooser.png",
+        "night-dial-report-share-notes.png",
+        "night-dial-report-share-preview.png"
+      ],
+      "finding": "Changed share preview disables Share and exposes Prepare again above Cancel. Explicit chooser visibly Android-owned for one txt; notes opt-in alters real preview/bytecount. Notes-on initial viewport has lower expiry-copy continuation; primary/footer readable. Notes-off preview fully fits."
+    },
+    {
+      "frames": [
+        "night-dial-report-share-restored.png",
+        "night-dial-report-share-returned.png",
+        "night-dial-report-signal-restored.png",
+        "night-dial-report-signal-scrub.png"
+      ],
+      "finding": "Share recreation preserves opted notes; chooser return explicitly does not confirm delivery. Noise scrub/restored tooltip stays within graph, relative units/time and missing-reading blanks explicit; unavailable historical analysis status distinct from no detections."
+    },
+    {
+      "frames": [
+        "night-dial-report-trends-empty-actions.png",
+        "night-dial-report-trends-empty-restored.png",
+        "night-dial-report-trends-empty.png",
+        "night-dial-report-trends-first-night.png"
+      ],
+      "finding": "Empty Trends uses dash average and 0 of 7 recorded days, not zero sleep. Read details disabled truthfully. Scrolled empty actions and recreated scroll retain Show latest/Add and native nav; top chart clipping is expected scroll position."
+    },
+    {
+      "frames": [
+        "night-dial-report-trends-month.png",
+        "night-dial-report-trends-refresh-failed.png",
+        "night-dial-report-trends-refresh-retry.png",
+        "night-dial-report-trends-restored.png"
+      ],
+      "finding": "Month graph leaves missing dates blank and reports 7/31; week graph 7/7 average matches labels. Refresh error/check timestamp above chart and Retry clear; restored selection/range retained. No chart labels collide."
+    },
+    {
+      "frames": [
+        "night-dial-report-trends-week.png",
+        "night-dial-report-trends-year.png",
+        "night-dial-settings.png",
+        "night-dial-settle-consent-restored.png"
+      ],
+      "finding": "Week and year distinguish daily vs monthly average and observed-day denominator; no false fill for missing months. Settings grouped native rows/edges fit. Settle microphone choice fully explains estimates and separates Analyze+clips / Analysis only / Cancel."
+    },
+    {
+      "frames": [
+        "night-dial-settle-in.png",
+        "night-dial-settle-microphone-consent.png",
+        "night-dial-settle-sensors.png",
+        "night-dial-settle-timer.png"
+      ],
+      "finding": "Settle page separates playback from starting tracking, microphone Off and movement independent. Sensor page selected movement/contactless prerequisite distinct, placement image/instructions fit. Timer selection names actual duration and playing-time semantics; Use/Cancel clear."
+    },
+    {
+      "frames": [
+        "night-dial-sounds.png",
+        "night-dial-time-invalid.png",
+        "night-dial-time-restored.png",
+        "night-dial-time.png"
+      ],
+      "finding": "Sounds mixer has actual selected Rain/percentages, zero playback progress and disabled Stop. Time sheet invalid hour gives range error; restored 09:15 retained, Use/Cancel clearly separated. Sound library lower crop is scroll continuation."
+    },
+    {
+      "frames": [
+        "night-dial-tonight.png",
+        "night-dial-tracking-active.png",
+        "night-dial-tracking-end-confirmation.png",
+        "night-dial-tracking-end-restored.png"
+      ],
+      "finding": "Tonight clock retains off-alarm and planned wording. Tracking distinguishes current recorded seconds, wake plan, measured contactless movement (fixture, not physical validation) and sound Off. End sheet/restored says paused time excluded and offers explicit End/review vs Keep; no modal clipping."
+    },
+    {
+      "frames": [
+        "night-dial-tracking-paused-restored.png",
+        "night-dial-tracking-paused.png",
+        "night-dial-tracking-resumed.png"
+      ],
+      "finding": "Paused/restored state says sensors/microphone stopped, recorded seconds frozen and Resume action. Resumed graph leaves pause gap blank, sound Off remains explicit. No action clipping."
+    }
+  ],
+  "material_persistent_visual_blockers": [],
+  "capture_limitations": [
+    {
+      "frames": [
+        "night-dial-alarm-delete-undo-expired.png",
+        "night-dial-alarm-delete-undo-stale.png"
+      ],
+      "limitation": "Transient Android error toast overlaps parts of bottom Add alarm/navigation. Top status and Dismiss are clear; these frames do not establish unobscured bottom targets."
+    },
+    {
+      "frames": [
+        "night-dial-report-manual-save-error-restored.png",
+        "night-dial-report-manual-date-saved.png"
+      ],
+      "limitation": "Preceding injected manual-save-failure toast remains visible, partly above Save/footer in error-restored and over lower report content after successful save. Later saved report and native DB assertion establish saved state; stale toast is not current save failure."
+    }
+  ],
+  "proof_limits": [
+    "Tracking uses injected PCM and isolated SQLite fixtures, not bedroom or physical contactless accuracy.",
+    "Report share proves actual system chooser and read-only scoped bytes; no recipient selected or delivery claimed. Memory-reset admission proof is in-process, not force-stop.",
+    "Core review is 141 originals, not every screen/state or device configuration. Breadth and Task/Workspace have separate reviewers.",
+    "No new unit tests, benchmark/model evaluation, hardware capture, playback, OS alarms or phone actions were run for this archive.",
+    "Supplementary sound performance is prior frozen cee evidence; this baseline does not retest accuracy or performance."
+  ]
+}

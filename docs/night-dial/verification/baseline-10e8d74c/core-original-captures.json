@@ -1,0 +1,2818 @@
+{
+  "source_revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6",
+  "artifact_id": 13070936214,
+  "zip_sha256": "3573b4185106946a4ac810554021fcbdf45d4982b58ba7dbcabe7e1a9af9ac57",
+  "actual_png_count": 237,
+  "required_png_minimum": 206,
+  "all_required_present": true,
+  "scope": "All PNG hashes; only core visual conclusions owned by this receipt. Breadth reviews are separate.",
+  "core_count": 141,
+  "required_core_count": 112,
+  "extra_core_count": 29,
+  "captures": [
+    {
+      "file": "alarm-skip-confirmation.png",
+      "bytes": 172122,
+      "sha256": "d3da1f54d0809864d5e5cb7a37567fe402eab83037aed7f24f61e68abc321d23",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "alarm-skip-default.png",
+      "bytes": 170744,
+      "sha256": "8908d070353a877c7242a5b6a7b8573d9e9dd2794984c8226a4692505e716334",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "alarm-skip-error-reopened.png",
+      "bytes": 184447,
+      "sha256": "8416505807744709cc7f132b85d5a8f6d275e950650ecac242c96207024b41f4",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "alarm-skip-expired.png",
+      "bytes": 166793,
+      "sha256": "9f5ea2e107e8729b4ec6b9d4715ef64c722d03db43d9b51a5237ec972634f855",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#oneTimeSkipStaysDisabledAfterItsSelectedTimePasses"
+      ]
+    },
+    {
+      "file": "alarm-skip-one-time-confirmation.png",
+      "bytes": 162689,
+      "sha256": "68943c133ca1d4bfad8a370a6bd03a1a4c3371cd336b8cf82237e99269437fef",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#oneTimeSkipStaysDisabledAfterItsSelectedTimePasses"
+      ]
+    },
+    {
+      "file": "alarm-skip-one-time-skipped.png",
+      "bytes": 152558,
+      "sha256": "b7fa96afc1b4f936793581a243c7e3b42bca99da8be4813bb4cf1b153b1cf07b",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#oneTimeSkipStaysDisabledAfterItsSelectedTimePasses"
+      ]
+    },
+    {
+      "file": "alarm-skip-recreated.png",
+      "bytes": 160848,
+      "sha256": "58ad60d4508b570f6ca50ce60abaaac1dca382415fc434f4e028cf5954fb8099",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "alarm-skip-reopened.png",
+      "bytes": 160848,
+      "sha256": "58ad60d4508b570f6ca50ce60abaaac1dca382415fc434f4e028cf5954fb8099",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "alarm-skip-retry.png",
+      "bytes": 175212,
+      "sha256": "7ad2668c01ad9a64a51d300d129fa7f430ccc05f27f2748e24677af364524b3b",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "alarm-skip-schedule-error.png",
+      "bytes": 185097,
+      "sha256": "a5976eae5e224927ef6ea5b8c9cfa28e4d6c772850f5367b51b88543a1a06a52",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "alarm-skip-skipped.png",
+      "bytes": 160848,
+      "sha256": "58ad60d4508b570f6ca50ce60abaaac1dca382415fc434f4e028cf5954fb8099",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "alarm-skip-undo-error-reopened.png",
+      "bytes": 202997,
+      "sha256": "99099738d762d5bf803923bb5c0e8d927de88295cad22bcf433f0b25468370d6",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "alarm-skip-undo-error.png",
+      "bytes": 202997,
+      "sha256": "99099738d762d5bf803923bb5c0e8d927de88295cad22bcf433f0b25468370d6",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "alarm-skip-undo-retry.png",
+      "bytes": 170002,
+      "sha256": "bbfeca49ce0d3ad527e3917144ed5af4bbe3472936dc60189ef652afdd252b99",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "alarm-skip-undo.png",
+      "bytes": 170880,
+      "sha256": "14ea2827950240e61391b2cde20a04eb9238d4668d3df4de3619395059f1d368",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "AlarmSkipFlowTest#recurringSkipUndoAndFailedSchedulingPersistAcrossRealMainRecreation"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-delete-changed.png",
+      "bytes": 157130,
+      "sha256": "6d57a827536757a5ffce8c9d52caad47c863b0d68d62d588e2ab54d7735f9052",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-delete-restored-review-stale.png",
+      "bytes": 174272,
+      "sha256": "3cc249cc5aa26c98ba72e88ca921b6dea034f5572d75bf5b7f3e4c006b376ecf",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-delete-restored.png",
+      "bytes": 165283,
+      "sha256": "a42985d9392894a8b3d0e23977578835828e9a845febbcd500b23e18da110334",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-delete-result.png",
+      "bytes": 148220,
+      "sha256": "d98c7d5a557ffbb3d41980177db554787ef1e8ef803b6befd1e983dd8227d448",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-delete-review.png",
+      "bytes": 177211,
+      "sha256": "3d6b7192192079e4e825935a9bf4365e30d6b137099ab3455f4b013e84377bb4",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-delete-undo-expired.png",
+      "bytes": 141985,
+      "sha256": "e30c835ff9c88a0704e5e3946d416b03222c63315b48d4bc9adb147747c62a70",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-delete-undo-restored-review.png",
+      "bytes": 148220,
+      "sha256": "d98c7d5a557ffbb3d41980177db554787ef1e8ef803b6befd1e983dd8227d448",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-delete-undo-stale.png",
+      "bytes": 149376,
+      "sha256": "381b978c9d60bddfee0729f757456bcdc02b6fe01d29df968f5ad3f5fb9adef4",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-delete-undone-recreated.png",
+      "bytes": 180892,
+      "sha256": "13d69760ef552bc0c810b7815c6687c9941470d1fd96465fdd4709c62b174833",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-delete-undone.png",
+      "bytes": 180892,
+      "sha256": "13d69760ef552bc0c810b7815c6687c9941470d1fd96465fdd4709c62b174833",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-dirty-saved.png",
+      "bytes": 116152,
+      "sha256": "b692b7c9b9bf14f682defa91fce0a2b3e60564430947543980e3042168b4d875",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-discard-restored.png",
+      "bytes": 135135,
+      "sha256": "7abe3c197dd23330d09042cd1819655929b220efeee1e2a4fbba24749d5b4696",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-discard.png",
+      "bytes": 135135,
+      "sha256": "7abe3c197dd23330d09042cd1819655929b220efeee1e2a4fbba24749d5b4696",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-duplicate-draft.png",
+      "bytes": 159265,
+      "sha256": "8b0c30009fb95666192cbf900137a5049bed86bae9e2db7c5b39056b8fdb4d4e",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-duplicate-restored.png",
+      "bytes": 159265,
+      "sha256": "8b0c30009fb95666192cbf900137a5049bed86bae9e2db7c5b39056b8fdb4d4e",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-editor.png",
+      "bytes": 146493,
+      "sha256": "a242ce378d1552dc1400e03c3609e4d0d7fcccbcc6405146b54fbf7aab0ceb47",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-gentle-restored.png",
+      "bytes": 181770,
+      "sha256": "2a0fe25b850358029060399d8d79b292eb176ae6a722b20aada47ea488a20480",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-gentle.png",
+      "bytes": 181770,
+      "sha256": "2a0fe25b850358029060399d8d79b292eb176ae6a722b20aada47ea488a20480",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-list.png",
+      "bytes": 180325,
+      "sha256": "e2fdf78e57d41d6e8cee64dcbce60767b66c8153eb90469b3ed246d241054952",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-name-draft.png",
+      "bytes": 114869,
+      "sha256": "a84966de80447abc84ce8ccefcea23469e1ef331778a663e3197a86c65492383",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-name-open.png",
+      "bytes": 166364,
+      "sha256": "59267a5b015befc255cff3cd1cb4237ab597c258d9d9364494d44afc61ff56f0",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-name-restored.png",
+      "bytes": 114869,
+      "sha256": "a84966de80447abc84ce8ccefcea23469e1ef331778a663e3197a86c65492383",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-ramp-picker.png",
+      "bytes": 110821,
+      "sha256": "f10e7513d096dc9403732fdd5c7062b374284f685ef1bf40651191bdec6513d1",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-repeat-interval.png",
+      "bytes": 126771,
+      "sha256": "3ab946e2385adddec6894ca2f8c86204ac533e219a6ffa9b2dd5251fad4a862d",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-repeat-invalid.png",
+      "bytes": 136890,
+      "sha256": "2e76f7a635b671aada55b8e20e495892b82421651ee914f9a7c96dacacfc6e6c",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-repeat-parent.png",
+      "bytes": 161305,
+      "sha256": "0ee22aeed2fe880ce6e84eb236d7daf33944ce6591dfc3a152381557c731d429",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-repeat-restored.png",
+      "bytes": 136890,
+      "sha256": "2e76f7a635b671aada55b8e20e495892b82421651ee914f9a7c96dacacfc6e6c",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#nameRepeatAndDirtyBackRestoreWithoutSaving"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-routine-ordered.png",
+      "bytes": 180348,
+      "sha256": "41a7920adebcfecfebebb410492e2afc1e06b22b2b0a160e8c73562d58fa2905",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-routine.png",
+      "bytes": 163446,
+      "sha256": "a344198c5dd2e4de88dff87fed569c318de5a73beaa5b71c7246c231a3e15f4c",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-saved.png",
+      "bytes": 120625,
+      "sha256": "7c3519f63adeba9abcd0d29cfbc92990e8cb85e2db4097f0fc051260170c8c98",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-skip-applied.png",
+      "bytes": 114691,
+      "sha256": "abb3bc00f7235e692a5143530af51d42c769e74c91df860558b843dbceeb4019",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#skipReviewsRestoreAndKeepTheActualOccurrenceOwner"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-skip-changed-restored.png",
+      "bytes": 109900,
+      "sha256": "bd84b162edb5b86ed60c27d681b1affe23a29c7700cfadd22792780d73dbacb0",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#skipReviewsRestoreAndKeepTheActualOccurrenceOwner"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-skip-changed.png",
+      "bytes": 109900,
+      "sha256": "bd84b162edb5b86ed60c27d681b1affe23a29c7700cfadd22792780d73dbacb0",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#skipReviewsRestoreAndKeepTheActualOccurrenceOwner"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-skip-restored.png",
+      "bytes": 128946,
+      "sha256": "a2df2bb5ef6e4de7bf0bc4fd4b07f41559738e58b550cdd5049957fc9cb5d635",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#skipReviewsRestoreAndKeepTheActualOccurrenceOwner"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-skip-review.png",
+      "bytes": 128946,
+      "sha256": "a2df2bb5ef6e4de7bf0bc4fd4b07f41559738e58b550cdd5049957fc9cb5d635",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#skipReviewsRestoreAndKeepTheActualOccurrenceOwner"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-skip-undone.png",
+      "bytes": 120843,
+      "sha256": "eed453b0bd62cd7af081b7d87268ddea24e84f49c92dd988eefd240afa0065c5",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#skipReviewsRestoreAndKeepTheActualOccurrenceOwner"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-snooze-off.png",
+      "bytes": 215093,
+      "sha256": "a89fe2988d843d62bcf733ac4c8621927936eda202bd191844663fb5b51cab4b",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-snooze-restored.png",
+      "bytes": 205586,
+      "sha256": "442794c881416f1837e89a33a0be5651575bcb5effde41d11151e882b46f6e7a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-snooze.png",
+      "bytes": 205586,
+      "sha256": "442794c881416f1837e89a33a0be5651575bcb5effde41d11151e882b46f6e7a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-task-config.png",
+      "bytes": 77931,
+      "sha256": "99fd68d7d7831c95abbbed5255d2d089cc2006a176b88b03938c4026db3a9b3b",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-task-search.png",
+      "bytes": 74615,
+      "sha256": "c8cea0d7f26922dc06c6ebd685bf726d58a06f9b5cf63416afafc6c006c23dd3",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#routineOrderingGentleAndSnoozeStayInDraftUntilSave"
+      ]
+    },
+    {
+      "file": "night-dial-alarm-unsaved-actions.png",
+      "bytes": 123955,
+      "sha256": "938036b4b21a7d8f0aa78b7fde65e49af3b95b0ae0bf5d0a9e7dfc269f8cac7f",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+      ]
+    },
+    {
+      "file": "night-dial-alarms.png",
+      "bytes": 103930,
+      "sha256": "df597e6a5ac293f81197d7bd025cc18d9708bd63ff776a7357574846a943be08",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReviewTest#rootsMixerAndOwnedPickerRemainSilentAndCancelable"
+      ]
+    },
+    {
+      "file": "night-dial-breadth-AlarmAccess.png",
+      "bytes": 189441,
+      "sha256": "9c627ffab1c81fb6125c20952b29f2ea402792ad870f6e7dfcb28938e2b5414f",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-AlarmProtection.png",
+      "bytes": 140353,
+      "sha256": "2527b3f4866972e76e24eb97b4794edb21d3df29599e9aa61c17ab122e3aa29a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Appearance.png",
+      "bytes": 345623,
+      "sha256": "94350942272a462fd30ee2995a671ab947c5716f610986d6c89cc8ab0a6c1636",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-AutomaticTracking.png",
+      "bytes": 207383,
+      "sha256": "b9eb605b6d3a071f231deba24a33bfabf997cf6c94e6c14ba31946bfd23ace8e",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Automation.png",
+      "bytes": 128035,
+      "sha256": "742458103eed3c3285d7dd7731ad037dcad3f66d80416b063cd08065345dd2ad",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-AwakeSettings.png",
+      "bytes": 148929,
+      "sha256": "ba117b0324a50887c6f56246274b71aeff04e35341e0e22c3b9bae51ed504c3c",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Backup.png",
+      "bytes": 235845,
+      "sha256": "642d1ccc0072c62d5368f7f88289148a43efa245f3d503f801c4d02a45fc6606",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-BinauralSettings.png",
+      "bytes": 168355,
+      "sha256": "44e09b6d8eb80fa840fc69e9ea91ac1ac87a8e10716b4a8149f470cbf2a8045d",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-CalendarRules.png",
+      "bytes": 154591,
+      "sha256": "4c76db4d8a851a06db058d3f99ad6bfbefe0ee99f7ef693cc49564befa433779",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-CloudBackup.png",
+      "bytes": 192524,
+      "sha256": "d11df32ae3ff157fe725206046e8924744f5fbecb70b72b309c9d336b24530b5",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Diary.png",
+      "bytes": 497795,
+      "sha256": "44df29b70ea631501d0abce4c102c7adbf5cab41afc4dbbb56ed13cdfafd7faa",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-DiaryDiscard.png",
+      "bytes": 91016,
+      "sha256": "533bd2162198c6626131e25a335d611a57e651339b8d74e5409674a210b7118f",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-DiaryDiscarded.png",
+      "bytes": 498361,
+      "sha256": "01e5a8a56907eff0f37f2c9ffe71fa8a37d057baa48c9f2c7ee461fb2c3bb901",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-DiaryDraft.png",
+      "bytes": 70679,
+      "sha256": "c662e02ddadb29109382acd8d85fa47b693191e75167df12ec450bce567ecb68",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-DreamCue.png",
+      "bytes": 205620,
+      "sha256": "17bb5953ffadcaba0b3612b5dc857cbc45f93271cc7b532189219c95b7d43526",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-ExternalMediaFade.png",
+      "bytes": 233178,
+      "sha256": "35a1d3cb168f6cfc5f12cd6f5314dd1713b2fbba610ef16b389d3b2f3e55c002",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-FavoriteSounds.png",
+      "bytes": 70070,
+      "sha256": "3346935dc740b600b1064bcb79e936b6e64bcee87742dddd7c398b09901d7fc9",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-FeedbackSettings.png",
+      "bytes": 95036,
+      "sha256": "712b951c723979c5636228b9953fc23f080659914634eb355afcd416a5e59117",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-GoalBank.png",
+      "bytes": 112396,
+      "sha256": "1b1eabda1f20b37fcc1822e879ae06e9be1c26d26ba8f333ce699f975ba5c479",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Guard.png",
+      "bytes": 161846,
+      "sha256": "d6064cff2cffe450190a553c3a098150d266344723a915983efd660e95712e67",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-GuidedWindDown.png",
+      "bytes": 196372,
+      "sha256": "2e9b6ec63b2fd5cdc1385ee6269ac573f7537f07301b2bdf698fc50459dd140b",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-HabitualTiming.png",
+      "bytes": 202961,
+      "sha256": "6e834d1b6904379543bbdf22674930b8e501b7fc877fc909f47056686494f83d",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-HealthConnect.png",
+      "bytes": 158242,
+      "sha256": "42aa648e721b2e3ab3510d11818d10546f9935327d443a1ec96b9c2b55b5db60",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-HomeWidgetSettings.png",
+      "bytes": 152436,
+      "sha256": "0213e27060e94beb1c330e0f3ac0af5b31c24565d07528a236330cc7daa90616",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-HueBridge.png",
+      "bytes": 185641,
+      "sha256": "befd5647a28f5b6beaccbcc4196926e3c43a8f958427cd890ad3564479afc124",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-IncomingAutomationSettings.png",
+      "bytes": 195427,
+      "sha256": "a0db753ffd07dee45f3113727e0da87634c61a3f9a0eccce3df109a1c64aaf2e",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Large-Appearance.png",
+      "bytes": 391601,
+      "sha256": "a4af2f34a58b747048348d48b8b77b7e266a6c9a4629b8e0466b1776a1529ba5",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Large-AutomaticTracking.png",
+      "bytes": 258274,
+      "sha256": "633d68b1c6e5d3561f6128495f44966ae44bedb74fec4d1b9c8a093a41749d41",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Large-Backup.png",
+      "bytes": 200128,
+      "sha256": "7b2a0c01a8f6b9fc4dffce63c6a6a27879aa78f9542f315e1e054d5cbdc7f8a3",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Large-GuidedWindDown.png",
+      "bytes": 219407,
+      "sha256": "5e6c106dd5aa383c36ded30926be170112a2dab3e7325b85fc07817fa0f7bcc7",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Large-Nap.png",
+      "bytes": 165957,
+      "sha256": "21e51e7e5dc210dd1992ed3a629f15a67196093180c00563c4ca375a402b146b",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Nap.png",
+      "bytes": 152227,
+      "sha256": "5589f93c1d8ef3d1a9a64c1cf2f724c9198ef8d930c418100ed68daaab54b765",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-NapCancelled.png",
+      "bytes": 153529,
+      "sha256": "3142270614251da7d4f2c64a77acbf95986bcc8d5f2b2e16c0d7e0e791a4e164",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-NapProfiles.png",
+      "bytes": 142599,
+      "sha256": "a2701ab701d256780a548b198d3a6771c0fc22d3e5498ee13d4e7dd23231ca24",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-NapRestored.png",
+      "bytes": 149736,
+      "sha256": "5e3dc1eab727dce07c81c5efb75283cfa93e3edd48878f7df5a1db5f05475702",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-NarrationVoice.png",
+      "bytes": 264789,
+      "sha256": "0c4ddc92a7b755c627d3f7695026eb2310e0869af9c309adbe9b81cf16f464e4",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-RecordAccess.png",
+      "bytes": 187788,
+      "sha256": "5293bd8255d398ba1b8427dda93d23a34bfd6deb903fd93a5c23d10d11f31c5c",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-RecurringTracking.png",
+      "bytes": 197888,
+      "sha256": "76aadb5fac621c3de0c8b1d6cfdeeed6e54f4f90c4edec68be902ae3d95bcd19",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-ResearchExport.png",
+      "bytes": 206042,
+      "sha256": "f42979de9159b0ce53bc0abc688aa6eb84ba19905eccf21e66e18c18b6fe7feb",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Search.png",
+      "bytes": 113717,
+      "sha256": "0eec967c372158381669a2ff2f1356b3d59fdf0054a60d8c87c908d1d57d0bd2",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-SettingsProfile.png",
+      "bytes": 110094,
+      "sha256": "42403b92544270bf7c81207d3759ebff46913133c5f2c0d6697626d33537c3c2",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-SleepCsv.png",
+      "bytes": 105113,
+      "sha256": "e45ed7c883a380579b8875e311d02c820ee19a4e8e0bf748a91ab36277594c1b",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-SleepRhythm.png",
+      "bytes": 189809,
+      "sha256": "93bb2a192cfc9f60e3ea0db6e6c78c41124347505b7b375858a4bb5af985f2bb",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-SleepSounds.png",
+      "bytes": 1064688,
+      "sha256": "f2af51ed41215d38f466665117908fb0bfd182aca7326b0b1159d7f0c67dd275",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-SmartBedtime.png",
+      "bytes": 235618,
+      "sha256": "92254075edcb3b0f32eb87ed55a945c85648aca03a08600497bd634acaebd3ae",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-SmartLight.png",
+      "bytes": 177966,
+      "sha256": "03675dc0546867f5090d3b4c3f304a9db2ca19fd92258a792c9465ac1c28e345",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-SnoringCues.png",
+      "bytes": 207900,
+      "sha256": "be484ac205b0c77d36bff36922864e2eb072f1df5a2548d51837295c1f0a5bf2",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-SoundLibrarySettings.png",
+      "bytes": 99436,
+      "sha256": "6ede0e5e9ed3e817e0298229f46c216025981e9ac95f677c1f3045c10d3474b1",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-SoundSensitivity.png",
+      "bytes": 111912,
+      "sha256": "58b218e205b01e0492ed0a9d5eff9c6c0b489d49b48b97bd51fa754c90c15689",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-SRI.png",
+      "bytes": 191558,
+      "sha256": "39189f9be4dceba865ee74f484ec04923f87f95ab7277c92e1588c9e1b4518d2",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-TagManagement.png",
+      "bytes": 51287,
+      "sha256": "a36bac10468c155517590da9239ad44f90756833d0a6595c86b1a280eeca344b",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Camera-light.png",
+      "bytes": 124666,
+      "sha256": "b4e527565c4baf0b0687eaf1247c47d8bf3238a808c2c162b0f96b3cc2f87d97",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Counting.png",
+      "bytes": 90043,
+      "sha256": "fdf1d7fe53e6d66b9db4f1a47ade47f13f8eddae80bb894161c109d91122c9f8",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Dream-journal.png",
+      "bytes": 104371,
+      "sha256": "754a9c6529269e7c9c7305ed92f13cf49f2cf542891811a7558e298e59b4f133",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Flags.png",
+      "bytes": 78976,
+      "sha256": "60b35ca125aa22c2b1026b85e17157eda347d9eabb11fdc842d3cf1b253029c2",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Jumping.png",
+      "bytes": 86512,
+      "sha256": "40c339cf91bb76b4c02ce9a98e5e60d6cad32b01de457895b07c316d75e6b57a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Laughter.png",
+      "bytes": 121306,
+      "sha256": "347624e51b2cb1aee1e8907141d117adb3884933bc6759ec077f8447818f84a2",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Light.png",
+      "bytes": 114884,
+      "sha256": "3bc70f2dfca33e23c4b7950bd65ebaf1e65a51ce75349c32db9fafa36897f53a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Loud-sound.png",
+      "bytes": 104811,
+      "sha256": "5c569dd4af13b68b62f779e3eac1b6d28ea9bad5cae0abcf296bd75a66708bbe",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Math.png",
+      "bytes": 128183,
+      "sha256": "4b64d88e0d2fce3b6b99ac072ed50da13d9cb0accad9b12f162ae6692ff6104e",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Memory.png",
+      "bytes": 78085,
+      "sha256": "1e5098f69c586e62a16d41c7fa5d44a2d44eb5c56e81dfed6f0547a523c83d06",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Mirror-text.png",
+      "bytes": 77462,
+      "sha256": "5e4691090761ae8bc87f0dbd614005b08c8d99e83a9478cf2d54db2b16fac1fe",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Musical-note.png",
+      "bytes": 107687,
+      "sha256": "38e27e7129648b8dc50e6382c7fedbd03f32637cfeba2387e05f5eb79fb22144",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-NFC.png",
+      "bytes": 87643,
+      "sha256": "ea46e348b7c3e5a8c98066ef61c67c5a1fd329dc3a67e37833a8c5fbf64c051d",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Object-recognition.png",
+      "bytes": 145651,
+      "sha256": "4561181123654ff4fcb8ed7ca644a7cc4f6cdf8a7ff2c893a8ee777f155d9662",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Picture-match.png",
+      "bytes": 89841,
+      "sha256": "b1fb3839014b14cbb2d84c2635730eb3a450f204a758b4637ad22429706f9204",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Pose.png",
+      "bytes": 116642,
+      "sha256": "d71bf871bf5aa16c085643127a972bdd0b4d1d7361af8843b96b288a2a04c590",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-QR-code.png",
+      "bytes": 146540,
+      "sha256": "21f5b877c405cc52948b931f0a112d81000e95ab52859ee63edc7c4aa642aa45",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Retype.png",
+      "bytes": 75033,
+      "sha256": "daf85f5449f073a0efe4fa696bf93d4e52174ab0a800a5c128285af64819d45f",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Sequence.png",
+      "bytes": 72560,
+      "sha256": "5004f204a9e1f82988ac3b7a00dcf381b43495f86d620b0bd24e45821f018cb6",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Shake.png",
+      "bytes": 69344,
+      "sha256": "8755cac50be29d8a61f79a7e96921d17051131ef3b0d18bdd3a7ecbafb67a82e",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Smile.png",
+      "bytes": 120067,
+      "sha256": "4da0ef716360692598e395194981b4b76c0e92e039a9292460682e6c22d38b25",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Speak.png",
+      "bytes": 117339,
+      "sha256": "8bbbc4ebdaec7b2cba1fbb96e0347fe9ffdac35a7ac56baab06739ed44982c17",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Spin-around.png",
+      "bytes": 133609,
+      "sha256": "ea0876eaad1b15781dd4e54eac6625df6af30eadbf8569b1803126f01d973ca8",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Spoken-phrase.png",
+      "bytes": 119480,
+      "sha256": "9f84ee58a0670c933f7fd1753cb1c22b29b6fb6220b6a9e3f05a0bc66e9837d0",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Tilt-maze.png",
+      "bytes": 81650,
+      "sha256": "23499aba217cb1b5467d0aa950dff8a1953d3027d89ebfa6f6f85fcbe98c0264",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Type-code.png",
+      "bytes": 96819,
+      "sha256": "e896973c5d355ee3796540baa47a5f534a9fd8875f2822d566f8b00f0780f275",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Visual-search.png",
+      "bytes": 97078,
+      "sha256": "2f93b26b15cfc7304c355455edd6a661ed8b4abeff7ae7d096645e5be1539169",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Task-Walk.png",
+      "bytes": 109978,
+      "sha256": "858fe6221ac8221ebfe4e35de98d77871019a56eb83dbe62b559829c9af40648",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-TrackingDelay.png",
+      "bytes": 102434,
+      "sha256": "d3c11c7ea4cf12ccca7f7020d5e8479aa07856ec150a009656c7bcd6012c4d27",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-TrackingDnd.png",
+      "bytes": 157433,
+      "sha256": "e711cfd0c2b22effe338a782d9bdabe638c08321c85adbc4cf7c7dee72bd5904",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-TrackingFlip.png",
+      "bytes": 136567,
+      "sha256": "cc35b197cf2e9175e9e836f7478af0f8f2dd2eb4386b94151e64735359e35803",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Travel.png",
+      "bytes": 216636,
+      "sha256": "4988886ee37ac1386753592e4340e469856927766f4a6c0a6c3ce6cb1f31f1cc",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-VoiceSettingsUnavailable.png",
+      "bytes": 300701,
+      "sha256": "6250528e53c2e7b9aa87c0aa2bf28d317d8f13bdcb94ce18784dc8c4ba51e309",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-VoiceSettingsUnavailableRestored.png",
+      "bytes": 301013,
+      "sha256": "2faa8d1efa1e24d01f051b484e6577fa11b5f1742a228bcfe159f560245d7112",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "breadth",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Counting.png",
+      "bytes": 95139,
+      "sha256": "7b816f506a4d5c561166db6f64798698252b726475a4b9db72b5d192374aeec3",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Dream-journal.png",
+      "bytes": 112475,
+      "sha256": "97f1fb2d7552cbcc786991471540a2844f77f3e4c0b953f8180e74be1dd8090f",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Flags.png",
+      "bytes": 74684,
+      "sha256": "869bab7ade700d34648b53f85cb776f64ae1eb14312db74b045c6e31812b7cd2",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Jumping.png",
+      "bytes": 105887,
+      "sha256": "837c25b3c42c46b126a7cf7db5d827733ecc3b4efe09e92d7afa72c1e2d3e767",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Math.png",
+      "bytes": 105967,
+      "sha256": "da0428855a03dfff5b9d3004aceea76922f0280a680d26f9c0a7bed9330948ea",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Memory.png",
+      "bytes": 72725,
+      "sha256": "4fca1dd8d3d792a216b95791e7bbe3666d4792e4e992f478d4ba569b1e492f20",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Mirror-text.png",
+      "bytes": 96096,
+      "sha256": "1825d0c9e7b038533ff898d5fde5d20468cd2ff27824a964f48aeb9ca0026ae5",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Retype.png",
+      "bytes": 88301,
+      "sha256": "365e2de1e2b7c86a143eb6cd27d368b2c0359a90aa26c210b4047cb4013ce7ca",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Sequence.png",
+      "bytes": 78228,
+      "sha256": "57916077201e462eb0cadccd09813ac162ba2bec20bfd2528cc11285789cf4d5",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Type-code.png",
+      "bytes": 97975,
+      "sha256": "200824fa2c56ca2780b080ed4cf308b54197ce11ec4d5cf1d133f590e84436d9",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-breadth-Workspace-Visual-search.png",
+      "bytes": 103186,
+      "sha256": "e118281e9e54c9bc77285c777915c40abf7ce02dd8968047debf43a31a0c6214",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "task/workspace",
+      "actual_methods": []
+    },
+    {
+      "file": "night-dial-dial-conflict.png",
+      "bytes": 155980,
+      "sha256": "60f51b5183cb2eb4fc773ea90542a036978799392a1bf55ca71429d0c910df60",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-dial-draft.png",
+      "bytes": 129036,
+      "sha256": "d70980672d1dc4be0b6ff56db8fb89a8fd42c141ed6631d3819bfb85114f5fd7",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-dial-help.png",
+      "bytes": 176436,
+      "sha256": "3777ec4a14e66692be0620f422912af4796f4f911c75500c1a81a259246d6fc3",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReviewTest#rootsMixerAndOwnedPickerRemainSilentAndCancelable"
+      ]
+    },
+    {
+      "file": "night-dial-dial-linked-alarm.png",
+      "bytes": 160378,
+      "sha256": "66722d55c0d8b2c6a1fb16c9d49761cb3fbdaca9f3fb97bc48fdca8b59718112",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-dial-linked-review.png",
+      "bytes": 163366,
+      "sha256": "2613f34780d96cc0c722f961cd0db7be15ae16f0bd0cfb0793390d69acd3a345",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-dial-review-restored.png",
+      "bytes": 127868,
+      "sha256": "620820611317a4e1cb83239eb45de45d01ced2a8413a11d46fd3a801c94c2721",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-dial-saved.png",
+      "bytes": 500661,
+      "sha256": "fbcdc3eda45d1b8b6512241cb7651e790198d31ad0201ec96cadd6c776df8335",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-dial-under-finger.png",
+      "bytes": 519030,
+      "sha256": "5677d5ae709217d4a9528d3d6ec0eac65af1946fe6caedbbecafeb6b4a26b2f1",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-first-denied-restored.png",
+      "bytes": 170037,
+      "sha256": "1eb61b21a9525574e36b5d6a4f99e9dc3cdee0d067b688e83d380ac4c54d41e3",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#firstSetupExplainsRestoresAndReturnsFromRealNotificationDenial"
+      ]
+    },
+    {
+      "file": "night-dial-first-empty-alarms.png",
+      "bytes": 120906,
+      "sha256": "bf1edc58a7dfe4a47fcc9059cd75610281c353ae4d48bfa1c02fa7843b789099",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#welcomeExploreAndAddFromDefaultsKeepExplicitSaveAuthority"
+      ]
+    },
+    {
+      "file": "night-dial-first-existing-user.png",
+      "bytes": 511459,
+      "sha256": "4ce6f80ef52ebfb2fc50fda2ae3a84193dc26d0bac1a4f2122db4a3f6ab55fa1",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#welcomeExploreAndAddFromDefaultsKeepExplicitSaveAuthority"
+      ]
+    },
+    {
+      "file": "night-dial-first-guide-from-settings.png",
+      "bytes": 157399,
+      "sha256": "5efd8f5977ec0933133380ce0c49cf2ebb820b61689692b78b105280d7653a94",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#optionalMicrophoneRationaleRestoresWithoutStartingCapture"
+      ]
+    },
+    {
+      "file": "night-dial-first-guide-parent-return.png",
+      "bytes": 218007,
+      "sha256": "c7ac09909e5b0f23b4b6dce81c9dbb306d2c234d97a0ec5c03e082a95f2358a9",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#optionalMicrophoneRationaleRestoresWithoutStartingCapture"
+      ]
+    },
+    {
+      "file": "night-dial-first-microphone-explanation.png",
+      "bytes": 163340,
+      "sha256": "4c71c2a1cf03ed1f2c35ef761973051d33713a05e4670a40786136238adae341",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#optionalMicrophoneRationaleRestoresWithoutStartingCapture"
+      ]
+    },
+    {
+      "file": "night-dial-first-microphone-restored.png",
+      "bytes": 178931,
+      "sha256": "ba4ae2071de4a64289ee8ada11c2f63a0b6fcacc7258512366bcb87f007caf9d",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#optionalMicrophoneRationaleRestoresWithoutStartingCapture"
+      ]
+    },
+    {
+      "file": "night-dial-first-new-from-defaults.png",
+      "bytes": 146500,
+      "sha256": "65223ba0da4e0ae34d7c7b7acedac84169b53cc117b3f26387330dac3f4fc1cc",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#welcomeExploreAndAddFromDefaultsKeepExplicitSaveAuthority"
+      ]
+    },
+    {
+      "file": "night-dial-first-notifications-denied.png",
+      "bytes": 170037,
+      "sha256": "1eb61b21a9525574e36b5d6a4f99e9dc3cdee0d067b688e83d380ac4c54d41e3",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#firstSetupExplainsRestoresAndReturnsFromRealNotificationDenial"
+      ]
+    },
+    {
+      "file": "night-dial-first-notifications-explanation.png",
+      "bytes": 173817,
+      "sha256": "bcd00bd9be3b284d2ca2ee5622b2a03c82a61eed1f1bf81f097521b01dbf74de",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#firstSetupExplainsRestoresAndReturnsFromRealNotificationDenial"
+      ]
+    },
+    {
+      "file": "night-dial-first-notifications-restored.png",
+      "bytes": 173817,
+      "sha256": "bcd00bd9be3b284d2ca2ee5622b2a03c82a61eed1f1bf81f097521b01dbf74de",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#firstSetupExplainsRestoresAndReturnsFromRealNotificationDenial"
+      ]
+    },
+    {
+      "file": "night-dial-first-notifications-returned.png",
+      "bytes": 170037,
+      "sha256": "1eb61b21a9525574e36b5d6a4f99e9dc3cdee0d067b688e83d380ac4c54d41e3",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#firstSetupExplainsRestoresAndReturnsFromRealNotificationDenial"
+      ]
+    },
+    {
+      "file": "night-dial-first-readiness.png",
+      "bytes": 166036,
+      "sha256": "a7a155252d837524d4ab6576020f76a171050f1ec2cc5808543cffbd93119419",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#firstSetupExplainsRestoresAndReturnsFromRealNotificationDenial"
+      ]
+    },
+    {
+      "file": "night-dial-first-regular-readiness.png",
+      "bytes": 218007,
+      "sha256": "c7ac09909e5b0f23b4b6dce81c9dbb306d2c234d97a0ec5c03e082a95f2358a9",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#optionalMicrophoneRationaleRestoresWithoutStartingCapture"
+      ]
+    },
+    {
+      "file": "night-dial-first-returning.png",
+      "bytes": 505210,
+      "sha256": "20d5c7c9cef8a2d05ec9dcaa3b5c6ad1227955fa390051380c89973dca694413",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#welcomeExploreAndAddFromDefaultsKeepExplicitSaveAuthority"
+      ]
+    },
+    {
+      "file": "night-dial-first-saved-off.png",
+      "bytes": 102376,
+      "sha256": "37f27b86cb81941f1129a5bb23354344de803bfecf09cb1b393d07e29f5090b2",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#welcomeExploreAndAddFromDefaultsKeepExplicitSaveAuthority"
+      ]
+    },
+    {
+      "file": "night-dial-first-welcome-back.png",
+      "bytes": 157399,
+      "sha256": "5efd8f5977ec0933133380ce0c49cf2ebb820b61689692b78b105280d7653a94",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#welcomeExploreAndAddFromDefaultsKeepExplicitSaveAuthority"
+      ]
+    },
+    {
+      "file": "night-dial-first-welcome-restored.png",
+      "bytes": 157399,
+      "sha256": "5efd8f5977ec0933133380ce0c49cf2ebb820b61689692b78b105280d7653a94",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#welcomeExploreAndAddFromDefaultsKeepExplicitSaveAuthority"
+      ]
+    },
+    {
+      "file": "night-dial-first-welcome.png",
+      "bytes": 157399,
+      "sha256": "5efd8f5977ec0933133380ce0c49cf2ebb820b61689692b78b105280d7653a94",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialFirstNightTest#welcomeExploreAndAddFromDefaultsKeepExplicitSaveAuthority"
+      ]
+    },
+    {
+      "file": "night-dial-report-calendar-empty-date.png",
+      "bytes": 186909,
+      "sha256": "2241bac4922f7e8da758909bb5aadf699eee738a730505638f2ec20d890a47e9",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-dirty-back.png",
+      "bytes": 143512,
+      "sha256": "6d973d6a679dfdefbf93d7c7b9c9035353ddb5ad1f44aedfca83b82ec25ddf5a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-dirty-restored.png",
+      "bytes": 143512,
+      "sha256": "6d973d6a679dfdefbf93d7c7b9c9035353ddb5ad1f44aedfca83b82ec25ddf5a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-empty.png",
+      "bytes": 157740,
+      "sha256": "07a3bc19c3ba1151cf695d9243f02c77d9731aceab40f04eb28cd5d60ae79919",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-history-empty.png",
+      "bytes": 145570,
+      "sha256": "30638ab96aa0b0cbbea705ccc31bb3103178b82c83c2a3bc92f366d15da58411",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-history-import-restored.png",
+      "bytes": 110044,
+      "sha256": "175f3ab8ab3332bab0d566b6c26c1c8ba471f7df49ed8f4b78bab3aa9184f400",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-history-import.png",
+      "bytes": 110044,
+      "sha256": "175f3ab8ab3332bab0d566b6c26c1c8ba471f7df49ed8f4b78bab3aa9184f400",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-history-imported.png",
+      "bytes": 149212,
+      "sha256": "d2f6653d393198f9860dfea21297328c5f28135da725f489234c3a125ffdecff",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-history-no-results.png",
+      "bytes": 166477,
+      "sha256": "4641e6cbc23e3c985ba42917161f5b44d860fd21bdb419af7d4fa52896327749",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-history-query-returned.png",
+      "bytes": 166477,
+      "sha256": "4641e6cbc23e3c985ba42917161f5b44d860fd21bdb419af7d4fa52896327749",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-manual-date-saved.png",
+      "bytes": 208043,
+      "sha256": "969d2adce8541c7780507194bc4332951d63ba1758e92de8ef5b840d99979fff",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-manual-save-error-restored.png",
+      "bytes": 199527,
+      "sha256": "77fd22d4c4aacb903680b8e0d05a36ce57315fd096f4bdd3e88c9179aaa35e05",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-night.png",
+      "bytes": 182721,
+      "sha256": "e2f4dcaca007f88e044ca7cab24f3117878b1da771b05012f8ac1460f0f06c3a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-refresh-failed.png",
+      "bytes": 190617,
+      "sha256": "a95de6f9ab3065fc76af6a635e886d30abbdcd934d331289ba84e104ee2dea9a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-refresh-retry.png",
+      "bytes": 188423,
+      "sha256": "8654cd582d9f646f59bfb81988e67e353c7a52a8299b54c6c2630f360237c65d",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-removed.png",
+      "bytes": 47666,
+      "sha256": "09df5ce580b988ababf5976d43f740f67aad532c08b9f7e840d8b5747c9219b1",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-restore-draft.png",
+      "bytes": 178997,
+      "sha256": "c8d71e72e95ffab4d405ce67e3b30ffa638f39f2dd1376efa195b7927c1e3bae",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-restore-review-restored.png",
+      "bytes": 167738,
+      "sha256": "20314c9aa62369663a6c5764265259e720eb004bb47ecd887ad9aa1c5497c6f7",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-restore-review.png",
+      "bytes": 167738,
+      "sha256": "20314c9aa62369663a6c5764265259e720eb004bb47ecd887ad9aa1c5497c6f7",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-restored-night.png",
+      "bytes": 188423,
+      "sha256": "8654cd582d9f646f59bfb81988e67e353c7a52a8299b54c6c2630f360237c65d",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-share-actions.png",
+      "bytes": 216415,
+      "sha256": "8c406f03fbd02e03845c8c7f09fdba5341740122d01abe9c9bbf732a5dca0a20",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser"
+      ]
+    },
+    {
+      "file": "night-dial-report-share-changed.png",
+      "bytes": 389949,
+      "sha256": "37f74df549e9047160b892a8f72c67b3187272ac8fd0e896aa9546812f1ecd38",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser"
+      ]
+    },
+    {
+      "file": "night-dial-report-share-chooser.png",
+      "bytes": 197454,
+      "sha256": "a4f31963b5a3472f48d9a677bfdea4ded9dcf132fb32ae719b613b77545c370d",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser"
+      ]
+    },
+    {
+      "file": "night-dial-report-share-notes.png",
+      "bytes": 228502,
+      "sha256": "a081ee22b71038d6239b0f991d07737c40054ec05a796477abdcd566ac58d023",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser"
+      ]
+    },
+    {
+      "file": "night-dial-report-share-preview.png",
+      "bytes": 216474,
+      "sha256": "f3ce4dec9ef0db692a9ea5528e2a3fa000928142810f90c54e7545ba91ebb01d",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser"
+      ]
+    },
+    {
+      "file": "night-dial-report-share-restored.png",
+      "bytes": 228495,
+      "sha256": "d8ffa064adfc545f75fcdd3534a5d4ee19b839b987caa8321dee1302a81b9323",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser"
+      ]
+    },
+    {
+      "file": "night-dial-report-share-returned.png",
+      "bytes": 227515,
+      "sha256": "3db3cf4c7eb2f113c616fee3846b3a300f4ad84f4aaf27c51472f715921e64c0",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser"
+      ]
+    },
+    {
+      "file": "night-dial-report-signal-restored.png",
+      "bytes": 210580,
+      "sha256": "d62d028423927c23bbe09afd9e554fcc6773f0b2b07a22b9d2b757eeadda3217",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-signal-scrub.png",
+      "bytes": 171995,
+      "sha256": "9bf28dff618837ecdd88e9488a647683a69ac5589b99d1ea1ce045846b3bfd0e",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-trends-empty-actions.png",
+      "bytes": 158566,
+      "sha256": "63ea4dc605ff83b7b200bd26652012f9bbceadfffd2527bbe1d00548750a6092",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown"
+      ]
+    },
+    {
+      "file": "night-dial-report-trends-empty-restored.png",
+      "bytes": 189789,
+      "sha256": "ee50137522d2163839ffe26a14749b67ca60fa655ab134a75eac757fcce3a3bd",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown"
+      ]
+    },
+    {
+      "file": "night-dial-report-trends-empty.png",
+      "bytes": 197153,
+      "sha256": "ccee502672bbb82eb8713a06f9c3196d5b371e64e227bdfb7fbd189961f6a3c3",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown"
+      ]
+    },
+    {
+      "file": "night-dial-report-trends-first-night.png",
+      "bytes": 197580,
+      "sha256": "8ef93a60ed56fa11b0706a953ec3f82a2a0d6296c4f991103ce295b2067d3e1d",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations"
+      ]
+    },
+    {
+      "file": "night-dial-report-trends-month.png",
+      "bytes": 189960,
+      "sha256": "f81d19ec6f3e7daeb1cfb94d7fb0d527b1f724b1366e233553e8c1d90149b343",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown"
+      ]
+    },
+    {
+      "file": "night-dial-report-trends-refresh-failed.png",
+      "bytes": 210818,
+      "sha256": "35399b388520db6147e8a6671e54bdba7e16d95e405e1b7d7f65a826c0ead7de",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown"
+      ]
+    },
+    {
+      "file": "night-dial-report-trends-refresh-retry.png",
+      "bytes": 213019,
+      "sha256": "0dfe49da0335ef47dfa70f88aac3c71f704528e50f670948775c80f1afa5167a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": false,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown"
+      ]
+    },
+    {
+      "file": "night-dial-report-trends-restored.png",
+      "bytes": 213019,
+      "sha256": "0dfe49da0335ef47dfa70f88aac3c71f704528e50f670948775c80f1afa5167a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown"
+      ]
+    },
+    {
+      "file": "night-dial-report-trends-week.png",
+      "bytes": 213438,
+      "sha256": "3e34053e7c611872b9b3e7ce272ead9af82501a9090e6cea03bfa86c21865006",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown"
+      ]
+    },
+    {
+      "file": "night-dial-report-trends-year.png",
+      "bytes": 190700,
+      "sha256": "321547162bdd6ed667046ba8df8e38f6771f0cb17803467b85df42399e843f5b",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown"
+      ]
+    },
+    {
+      "file": "night-dial-settings.png",
+      "bytes": 218881,
+      "sha256": "16f6d05c5d0d1f17015d53ba2a6c31f2858a593da9a398fc9ddf4cdbbc4f89b0",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReviewTest#rootsMixerAndOwnedPickerRemainSilentAndCancelable"
+      ]
+    },
+    {
+      "file": "night-dial-settle-consent-restored.png",
+      "bytes": 143988,
+      "sha256": "0de4d241c571fae25fc234a46b7aa7eca1e053ef8e61fdc867acc57aa119c105",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-settle-in.png",
+      "bytes": 168108,
+      "sha256": "9c234daa907761680ad625bb8aede04754b25fd260eddd85f34e11cc52df2918",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-settle-microphone-consent.png",
+      "bytes": 143988,
+      "sha256": "0de4d241c571fae25fc234a46b7aa7eca1e053ef8e61fdc867acc57aa119c105",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-settle-sensors.png",
+      "bytes": 465969,
+      "sha256": "d38e5377735dc6538c0f952f4a53e7efd8f7eeb5377a6e656e7fba5897a8946a",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-settle-timer.png",
+      "bytes": 84009,
+      "sha256": "31df4d136b5fe37d78c714c6102f54f800eba32bb9c699e0138b4f6ad590cab6",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialInteractionTest#independentDragReviewSaveCancelRecreationAndSilentSettleIn"
+      ]
+    },
+    {
+      "file": "night-dial-sounds.png",
+      "bytes": 978121,
+      "sha256": "ec34d00bff2d004e23f70165b575b5ccea5dffa68a60f464a21fcae2efcf4ed6",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReviewTest#rootsMixerAndOwnedPickerRemainSilentAndCancelable"
+      ]
+    },
+    {
+      "file": "night-dial-time-invalid.png",
+      "bytes": 139876,
+      "sha256": "c555a148eac90ac2b08af29634e31c8254b9e27b87eb7eeee1a931f4ef1805ce",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReviewTest#rootsMixerAndOwnedPickerRemainSilentAndCancelable"
+      ]
+    },
+    {
+      "file": "night-dial-time-restored.png",
+      "bytes": 132955,
+      "sha256": "e2a9f5b3328f30f1eddd7b7895f00d340378eb2144c023ebf4dcdc48ebc0d68d",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReviewTest#rootsMixerAndOwnedPickerRemainSilentAndCancelable"
+      ]
+    },
+    {
+      "file": "night-dial-time.png",
+      "bytes": 141017,
+      "sha256": "67a52a50e63801c7843b34eec1787e921de9b82580547e881833eb4653081e92",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReviewTest#rootsMixerAndOwnedPickerRemainSilentAndCancelable"
+      ]
+    },
+    {
+      "file": "night-dial-tonight.png",
+      "bytes": 528923,
+      "sha256": "8ae0946985b2077cad1f36d2caf220308f4494ecd344206a3d67d61762a398e4",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialReviewTest#rootsMixerAndOwnedPickerRemainSilentAndCancelable"
+      ]
+    },
+    {
+      "file": "night-dial-tracking-active.png",
+      "bytes": 155415,
+      "sha256": "d2d399cad6fd021dd74db5d1e47bad5b327749455522a7b94a8d7abacea824e5",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialTrackingReviewTest#measuredGraphPauseRecreationCancelEndAndExplicitSave"
+      ]
+    },
+    {
+      "file": "night-dial-tracking-end-confirmation.png",
+      "bytes": 156335,
+      "sha256": "b1aa17d573cbde02e7dcf562e06c8c6b1e9340405c3947800441b18835e2d26b",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialTrackingReviewTest#measuredGraphPauseRecreationCancelEndAndExplicitSave"
+      ]
+    },
+    {
+      "file": "night-dial-tracking-end-restored.png",
+      "bytes": 155135,
+      "sha256": "cd4a0881ed0bc9dd0ed16451dfa986d94c4dee198cd8b6bbf19becb7bae13b42",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialTrackingReviewTest#measuredGraphPauseRecreationCancelEndAndExplicitSave"
+      ]
+    },
+    {
+      "file": "night-dial-tracking-paused-restored.png",
+      "bytes": 154952,
+      "sha256": "3c993778c01e0ace862812ae11bdd17d4777ae3bf60c777ca0910e9bc9f67c54",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialTrackingReviewTest#measuredGraphPauseRecreationCancelEndAndExplicitSave"
+      ]
+    },
+    {
+      "file": "night-dial-tracking-paused.png",
+      "bytes": 154952,
+      "sha256": "3c993778c01e0ace862812ae11bdd17d4777ae3bf60c777ca0910e9bc9f67c54",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialTrackingReviewTest#measuredGraphPauseRecreationCancelEndAndExplicitSave"
+      ]
+    },
+    {
+      "file": "night-dial-tracking-resumed.png",
+      "bytes": 162994,
+      "sha256": "3bf47609ef410fe9fc9e104e34a74c037d8ff92c4e4f41dc449064e871855382",
+      "width": 1080,
+      "height": 2316,
+      "required_at_tested_revision": true,
+      "visual_review_owner": "core",
+      "actual_methods": [
+        "NightDialTrackingReviewTest#measuredGraphPauseRecreationCancelEndAndExplicitSave"
+      ]
+    }
+  ],
+  "copied_original_files": [
+    {
+      "archive_file": "review.json",
+      "original_file": "review.json",
+      "sha256": "bb7b3c1f39eb971be41b86fab5caa0889b66286e6127a4cbaec68bce466c8c4b",
+      "bytes": 1438
+    },
+    {
+      "archive_file": "instrumentation.txt",
+      "original_file": "instrumentation.txt",
+      "sha256": "820ed18f96d8a661e50d3792d951a203255e929f60c096fe29af550ed1e12fe2",
+      "bytes": 14589
+    },
+    {
+      "archive_file": "emulator.log",
+      "original_file": "emulator.log",
+      "sha256": "76ed30ae250a5bb1d8ccca564f6d44979fb13066b009fdd9b6576954e03e6f55",
+      "bytes": 7286
+    },
+    {
+      "archive_file": "logcat.txt",
+      "original_file": "logcat.txt",
+      "sha256": "58a7f2e928ed291bcd388ba10707ed84e234a007a6da75e670c4ece88e69818f",
+      "bytes": 430057
+    },
+    {
+      "archive_file": "windows.txt",
+      "original_file": "windows.txt",
+      "sha256": "dac2b8b45e7489289cad1048d4f9976c98d9b8e6c8b0e45f5a9c1193f2d33aeb",
+      "bytes": 52623
+    },
+    {
+      "archive_file": "night-dial-report-share-proof.json",
+      "original_file": "night-dial-report-share-proof.json",
+      "sha256": "0a4689f55f9d60e385df095480eb5b97d9bd1439df14db49ec66d0bc9576c258",
+      "bytes": 755
+    },
+    {
+      "archive_file": "artifact-api.json",
+      "original_file": "../artifact-api.json",
+      "sha256": "154f5f93c72e2060b8f26251bc921e1926a23e7983677285f22460cc30e8995e",
+      "bytes": 727
+    },
+    {
+      "archive_file": "run-api.json",
+      "original_file": "../run-api.json",
+      "sha256": "77c6137e8989f3fe845ee853342ebb9818f04dd75eb30798ca4cdc1cfb620559",
+      "bytes": 12460
+    },
+    {
+      "archive_file": "core-originals/night-dial-tonight.png",
+      "original_file": "night-dial-tonight.png",
+      "sha256": "8ae0946985b2077cad1f36d2caf220308f4494ecd344206a3d67d61762a398e4",
+      "bytes": 528923
+    },
+    {
+      "archive_file": "core-originals/night-dial-settle-in.png",
+      "original_file": "night-dial-settle-in.png",
+      "sha256": "9c234daa907761680ad625bb8aede04754b25fd260eddd85f34e11cc52df2918",
+      "bytes": 168108
+    },
+    {
+      "archive_file": "core-originals/night-dial-tracking-paused-restored.png",
+      "original_file": "night-dial-tracking-paused-restored.png",
+      "sha256": "3c993778c01e0ace862812ae11bdd17d4777ae3bf60c777ca0910e9bc9f67c54",
+      "bytes": 154952
+    },
+    {
+      "archive_file": "core-originals/night-dial-tracking-resumed.png",
+      "original_file": "night-dial-tracking-resumed.png",
+      "sha256": "3bf47609ef410fe9fc9e104e34a74c037d8ff92c4e4f41dc449064e871855382",
+      "bytes": 162994
+    },
+    {
+      "archive_file": "core-originals/night-dial-alarm-repeat-invalid.png",
+      "original_file": "night-dial-alarm-repeat-invalid.png",
+      "sha256": "2e76f7a635b671aada55b8e20e495892b82421651ee914f9a7c96dacacfc6e6c",
+      "bytes": 136890
+    },
+    {
+      "archive_file": "core-originals/night-dial-alarm-delete-undone-recreated.png",
+      "original_file": "night-dial-alarm-delete-undone-recreated.png",
+      "sha256": "13d69760ef552bc0c810b7815c6687c9941470d1fd96465fdd4709c62b174833",
+      "bytes": 180892
+    },
+    {
+      "archive_file": "core-originals/night-dial-alarm-delete-undo-expired.png",
+      "original_file": "night-dial-alarm-delete-undo-expired.png",
+      "sha256": "e30c835ff9c88a0704e5e3946d416b03222c63315b48d4bc9adb147747c62a70",
+      "bytes": 141985
+    },
+    {
+      "archive_file": "core-originals/night-dial-alarm-delete-undo-stale.png",
+      "original_file": "night-dial-alarm-delete-undo-stale.png",
+      "sha256": "381b978c9d60bddfee0729f757456bcdc02b6fe01d29df968f5ad3f5fb9adef4",
+      "bytes": 149376
+    },
+    {
+      "archive_file": "core-originals/night-dial-first-notifications-restored.png",
+      "original_file": "night-dial-first-notifications-restored.png",
+      "sha256": "bcd00bd9be3b284d2ca2ee5622b2a03c82a61eed1f1bf81f097521b01dbf74de",
+      "bytes": 173817
+    },
+    {
+      "archive_file": "core-originals/night-dial-report-night.png",
+      "original_file": "night-dial-report-night.png",
+      "sha256": "e2f4dcaca007f88e044ca7cab24f3117878b1da771b05012f8ac1460f0f06c3a",
+      "bytes": 182721
+    },
+    {
+      "archive_file": "core-originals/night-dial-report-trends-empty-restored.png",
+      "original_file": "night-dial-report-trends-empty-restored.png",
+      "sha256": "ee50137522d2163839ffe26a14749b67ca60fa655ab134a75eac757fcce3a3bd",
+      "bytes": 189789
+    },
+    {
+      "archive_file": "core-originals/night-dial-report-trends-week.png",
+      "original_file": "night-dial-report-trends-week.png",
+      "sha256": "3e34053e7c611872b9b3e7ce272ead9af82501a9090e6cea03bfa86c21865006",
+      "bytes": 213438
+    },
+    {
+      "archive_file": "core-originals/night-dial-report-restore-review-restored.png",
+      "original_file": "night-dial-report-restore-review-restored.png",
+      "sha256": "20314c9aa62369663a6c5764265259e720eb004bb47ecd887ad9aa1c5497c6f7",
+      "bytes": 167738
+    },
+    {
+      "archive_file": "core-originals/night-dial-report-share-actions.png",
+      "original_file": "night-dial-report-share-actions.png",
+      "sha256": "8c406f03fbd02e03845c8c7f09fdba5341740122d01abe9c9bbf732a5dca0a20",
+      "bytes": 216415
+    },
+    {
+      "archive_file": "core-originals/night-dial-report-share-chooser.png",
+      "original_file": "night-dial-report-share-chooser.png",
+      "sha256": "a4f31963b5a3472f48d9a677bfdea4ded9dcf132fb32ae719b613b77545c370d",
+      "bytes": 197454
+    },
+    {
+      "archive_file": "core-originals/night-dial-report-manual-save-error-restored.png",
+      "original_file": "night-dial-report-manual-save-error-restored.png",
+      "sha256": "77fd22d4c4aacb903680b8e0d05a36ce57315fd096f4bdd3e88c9179aaa35e05",
+      "bytes": 199527
+    },
+    {
+      "archive_file": "core-originals/night-dial-report-manual-date-saved.png",
+      "original_file": "night-dial-report-manual-date-saved.png",
+      "sha256": "969d2adce8541c7780507194bc4332951d63ba1758e92de8ef5b840d99979fff",
+      "bytes": 208043
+    }
+  ]
+}
