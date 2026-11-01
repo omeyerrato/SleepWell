@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-01",
+  "authority": "Two explicit parent /root approvals after exact source cause disclosure, before headfit/VAL outcomes",
+  "exception": "ONE mechanical arithmetic retry and deterministic re-extraction of exactsame199x3TRAIN inputs because initialfeaturearray was onlyinmemory. No third attempt authorized.",
+  "prior_attempt_source": "1affa0dd52fbc465180d38c3840a69d0cffe7561",
+  "prior_workflow_sha256": "81204d5d57268ac05c6f992c6238ce0cdf0a217feae3a809b226a6f634ae68f3",
+  "prior_error": "Raw scaler portable mismatch before logisticfit; installedStandardScaler1.9 castsmean/scale toXdtypebefore arithmetic, oldportable castafter.",
+  "source_correction": "Cast storedmean andscale tofloat32 before subtract/divide for bothscalers; no scientificcontract/threshold/regularization/sample/frontend change.",
+  "new_cache": "Persist exact597x160TRAINfeatures+labels+input/newfeaturehashreceipts before any normalization. ExistingPCM/243feature/NNweights unchanged. No network.",
+  "parity": "Repeat primaryKeras/NumPysyntheticparity oncorrectedsource, strictStandardScaler parity before headfit/outcomes, unchangedNN/headtolerances.",
+  "head_fit_prior_attempt": false,
+  "VAL_TEST_outcomes_prior_attempt": false,
+  "prior_files": {
+    "parity-started.json": "d5c9c6b02c3914fb4959ad93dd8f89373f42f23b277766c70ae5d832ec3b1137",
+    "parity.json": "535ada52be1a8ad9a1a47f9bc261cb29667920335673a31902225e8dec3dceef",
+    "fit-started.json": "d5c9c6b02c3914fb4959ad93dd8f89373f42f23b277766c70ae5d832ec3b1137",
+    "fit-error.json": "a53a0e54a2bef56e8cc1b14c6fb0fe6cf3ff6c8f797d486e644680c79eed0026"
+  }
+}

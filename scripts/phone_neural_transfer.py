@@ -150,7 +150,7 @@ def metrics(y, probabilities):
 
 
 def freeze():
-    paths=(Path(__file__),Path(labels.__file__),Path(acoustic.__file__),Path(acoustic.data.__file__),DOC/'protocol.json',DOC/'approval.json',TRAIN_RECORD,DOC/'original-label-protocol.json')+tuple(
+    paths=(Path(__file__),Path(labels.__file__),Path(acoustic.__file__),Path(acoustic.data.__file__),DOC/'protocol.json',DOC/'approval.json',DOC/'mechanical-retry.json',TRAIN_RECORD,DOC/'original-label-protocol.json')+tuple(
         OLD_RECORDS/name for name in ('train-inputs.json','validation.json','test.json','subject-sources.json','manifest.json'))
     hashes={p.relative_to(ROOT).as_posix():sha(p.read_bytes()) for p in paths}
     for p in paths:
@@ -283,8 +283,8 @@ def phase_data(cache,phase,deadline):
 
 
 def normalized(value,mean,scale):
-    # Match StandardScaler.transform: double accumulation stats, float32 transform output.
-    result=np.asarray(value,dtype=np.float32).copy();result-=np.asarray(mean);result/=np.asarray(scale)
+    # sklearn1.9 casts fitted statistics to X.dtype BEFORE both arithmetic steps.
+    result=np.asarray(value,dtype=np.float32).copy();result-=np.asarray(mean,dtype=result.dtype);result/=np.asarray(scale,dtype=result.dtype)
     if not np.isfinite(result).all():raise ValueError('Invalid normalized input')
     return result
 
@@ -308,6 +308,7 @@ def fit(cache,output,checkpoint):
         old=reference[(target['subject'],target['epoch'])]
         if target['event_union_overlap_seconds']!=old['event_union_overlap_seconds'] or target['annotation_sha256']!=old['source_annotation_sha256']:raise ValueError('Original TRAIN label source differs')
     if np.bincount(y,minlength=2).tolist()!=[145,54] or coverage['quality_missing']:raise ValueError('Fixed TRAIN coverage/support differs; stop')
+    persist_features(output,'train',x,y,targets,coverage,stamp)
     first=StandardScaler().fit(x.reshape(-1,160));z=first.transform(x.reshape(-1,160))
     first_difference=float(np.max(np.abs(z-normalized(x.reshape(-1,160),first.mean_,first.scale_))))
     if first_difference>1e-6:raise ValueError('Raw scaler portable mismatch')
@@ -330,6 +331,13 @@ def fit(cache,output,checkpoint):
     print(json.dumps(dict(phase='fit',targets=len(y),support=model['train_counts'],iterations=model['n_iter'],primary_portable_max_difference=difference,model_sha256=sha((output/'model.json').read_bytes()))),flush=True)
 
 
+def persist_features(output,phase,x,y,targets,coverage,stamp):
+    path=output/(phase+'-features.npz')
+    with path.open('xb') as stream:np.savez(stream,features=x,labels=y)
+    save(output/(phase+'-features.json'),dict(freeze=stamp,npz_sha256=sha(path.read_bytes()),shape=list(x.shape),
+        features_sha256=sha(x.astype('<f4').tobytes()),labels_sha256=sha(y.astype('<i8').tobytes()),targets=targets,coverage=coverage))
+
+
 def evaluate(cache,output,checkpoint,phase):
     stamp=require_parity(output);raw=(output/'model.json').read_bytes();model=json.loads(raw)
     if model['freeze']['files']!=stamp['files'] or model['checkpoint_sha256']!=WEIGHT_SHA:raise ValueError('Fit/source contract changed')
@@ -338,6 +346,7 @@ def evaluate(cache,output,checkpoint,phase):
         if not validation['all_gates_passed'] or validation['model_sha256']!=sha(raw):raise ValueError('VAL failed; respiratory TEST labels remain unopened')
     save(output/(phase+'-started.json'),dict(freeze=stamp,model_sha256=sha(raw)));deadline=time.monotonic()+900
     x,y,targets,coverage=phase_data(cache,phase,deadline);embeddings=embedding(x,weights(checkpoint),model['raw_mean'],model['raw_scale'])
+    persist_features(output,phase,x,y,targets,coverage,stamp)
     probabilities=head_probability(model,embeddings)
     primary=LogisticRegression(C=.1,penalty='l2',solver='lbfgs',max_iter=1000,class_weight=None,random_state=20261101)
     primary.coef_=np.asarray([model['coefficient']]);primary.intercept_=np.asarray([model['intercept']]);primary.classes_=np.asarray([0,1]);primary.n_features_in_=32
