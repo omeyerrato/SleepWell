@@ -4,18 +4,24 @@ import java.util.UUID;
 
 /** A relative timer, not a recurring local-clock alarm. No sensor or sleep-stage inference. */
 final class NapPlan {
- enum Phase {PENDING,CLAIMED,FINISHED,CANCELLED}
+ enum Phase {PENDING,PAUSED,CLAIMED,FINISHED,CANCELLED}
  interface Clock {long wall();long elapsed();long boot();String device();}
- final String nonce,device,error;final long startWall,startElapsed,boot;final int minutes,minimumRestMinutes,exactSeconds;final boolean deleteAfter;final Phase phase;
+ final long anchorWall,anchorElapsed,anchorRemaining;final String nonce,device,error;final long startWall,startElapsed,boot;final int minutes,minimumRestMinutes,exactSeconds;final boolean deleteAfter;final Phase phase;
  NapPlan(String nonce,String device,long startWall,long startElapsed,long boot,int minutes,boolean deleteAfter,Phase phase,String error){
   this(nonce,device,startWall,startElapsed,boot,minutes,deleteAfter,phase,error,0);
  }
  NapPlan(String nonce,String device,long startWall,long startElapsed,long boot,int minutes,boolean deleteAfter,Phase phase,String error,int minimumRestMinutes){this(nonce,device,startWall,startElapsed,boot,minutes,deleteAfter,phase,error,minimumRestMinutes,0);}
  NapPlan(String nonce,String device,long startWall,long startElapsed,long boot,int minutes,boolean deleteAfter,Phase phase,String error,int minimumRestMinutes,int exactSeconds){
+  this(nonce,device,startWall,startElapsed,boot,minutes,deleteAfter,phase,error,minimumRestMinutes,exactSeconds,0,0,0);
+ }
+ NapPlan(String nonce,String device,long startWall,long startElapsed,long boot,int minutes,boolean deleteAfter,Phase phase,String error,int minimumRestMinutes,int exactSeconds,long anchorWall,long anchorElapsed,long anchorRemaining){
   if(exactSeconds<0||exactSeconds>86400||exactSeconds>0&&(minimumRestMinutes!=0||minutes!=(exactSeconds+59)/60))throw new IllegalArgumentException("Choose an exact timer of 1 second to 24 hours.");
   if(minimumRestMinutes<0||minimumRestMinutes>0&&(minimumRestMinutes>=minutes||minutes-minimumRestMinutes>60))throw new IllegalArgumentException("Choose minimum rest and a wake interval of 1–60 minutes.");
   if(!UUID.fromString(nonce).toString().equals(nonce)||device.isEmpty()||device.length()>80||startWall<=0||startElapsed<0||boot<0||minutes<1||minutes>(exactSeconds>0?1440:600)||phase==null||error==null||error.length()>500)throw new IllegalArgumentException("Invalid nap timer");
   long duration=exactSeconds>0?exactSeconds*1000L:minutes*60000L;Math.addExact(startWall,duration);Math.addExact(startElapsed,duration);
+  if(anchorWall<0||anchorElapsed<0||anchorRemaining<0||anchorWall==0&&(anchorElapsed!=0||anchorRemaining!=0||phase==Phase.PAUSED)||anchorWall>0&&(anchorRemaining<1||anchorRemaining>366L*86400000+duration))throw new IllegalArgumentException("Invalid paused timer clock.");
+  if(anchorWall>0){Math.addExact(anchorWall,anchorRemaining);Math.addExact(anchorElapsed,anchorRemaining);}
+  this.anchorWall=anchorWall;this.anchorElapsed=anchorElapsed;this.anchorRemaining=anchorRemaining;
   this.nonce=nonce;this.device=device;this.startWall=startWall;this.startElapsed=startElapsed;this.boot=boot;this.minutes=minutes;this.minimumRestMinutes=minimumRestMinutes;this.exactSeconds=exactSeconds;this.deleteAfter=deleteAfter;this.phase=phase;this.error=error;
  }
  static NapPlan create(Clock c,int minutes,long delay,boolean delete){if(delay<0||delay>366L*86400000)throw new IllegalArgumentException("Choose a nap start within the next year.");return new NapPlan(UUID.randomUUID().toString(),c.device(),Math.addExact(c.wall(),delay),Math.addExact(c.elapsed(),delay),c.boot(),minutes,delete,Phase.PENDING,"");}
@@ -27,11 +33,14 @@ final class NapPlan {
  int wakeInterval(){return power()?minutes-minimumRestMinutes:0;}
  long minimumRemaining(Clock c){return Math.addExact(startsIn(c),minimumRestMinutes*60000L);}
  boolean smartInterval(Clock c){return exactSeconds==0&&startsIn(c)<=0&&remaining(c)>0&&(!power()||minimumRemaining(c)<=0);}
- long deadlineWall(){return startWall+durationMillis();}
+ long deadlineWall(){return anchorWall>0?anchorWall+anchorRemaining:startWall+durationMillis();}
  boolean sameBoot(Clock c){return boot==c.boot()&&device.equals(c.device());}
- long remaining(Clock c){return (sameBoot(c)?startElapsed+durationMillis()-c.elapsed():deadlineWall()-c.wall());}
- long startsIn(Clock c){return sameBoot(c)?startElapsed-c.elapsed():startWall-c.wall();}
+ long remaining(Clock c){if(phase==Phase.PAUSED)return anchorRemaining;if(anchorWall>0)return sameBoot(c)?anchorRemaining-(c.elapsed()-anchorElapsed):deadlineWall()-c.wall();return (sameBoot(c)?startElapsed+durationMillis()-c.elapsed():deadlineWall()-c.wall());}
+ long startsIn(Clock c){return anchorWall>0?remaining(c)-durationMillis():sameBoot(c)?startElapsed-c.elapsed():startWall-c.wall();}
  long projectedDeadline(Clock c){return Math.addExact(c.wall(),remaining(c));}
- NapPlan state(Phase p,String issue){return new NapPlan(nonce,device,startWall,startElapsed,boot,minutes,deleteAfter,p,issue,minimumRestMinutes,exactSeconds);}
+ NapPlan state(Phase p,String issue){return new NapPlan(nonce,device,startWall,startElapsed,boot,minutes,deleteAfter,p,issue,minimumRestMinutes,exactSeconds,anchorWall,anchorElapsed,anchorRemaining);}
+ NapPlan paused(Clock c){long left=remaining(c);if(phase!=Phase.PENDING||left<=0)throw new IllegalStateException("Only a pending timer can be paused before it ends.");return anchored(c,Phase.PAUSED,left);}
+ NapPlan resumed(Clock c){if(phase!=Phase.PAUSED)throw new IllegalStateException("This timer is not paused.");return anchored(c,Phase.PENDING,anchorRemaining);}
+ private NapPlan anchored(Clock c,Phase next,long left){return new NapPlan(nonce,c.device(),startWall,startElapsed,c.boot(),minutes,deleteAfter,next,"",minimumRestMinutes,exactSeconds,c.wall(),c.elapsed(),left);}
  boolean smartReady(Clock c,int window,double movement,int active,int samples){return exactSeconds==0&&phase==Phase.PENDING&&smartInterval(c)&&window>0&&remaining(c)>0&&remaining(c)<=Math.min(window,minutes)*60000L&&Double.isFinite(movement)&&movement>=.12&&active>=2&&samples>=20;}
 }

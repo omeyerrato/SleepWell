@@ -59,6 +59,11 @@
         "nap-pending.png",
         "nap-recreated.png",
         "nap-reopened.png",
+        "nap-paused.png",
+        "nap-paused-restored.png",
+        "nap-resume-denied.png",
+        "nap-resumed.png",
+        "nap-resumed-restored.png",
         "nap-cancelled.png"
       ]
     },
@@ -128,7 +133,7 @@
       ]
     }
   ],
-  "required_original_count": 78,
+  "required_original_count": 83,
   "source_test_files": [
     {
       "path": "app/src/androidTest/java/org/sleepwell/app/GoalFlowTest.java",
