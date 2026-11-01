@@ -1,0 +1,83 @@
+{
+  "purpose": "Performance and lifecycle only; no recognition accuracy acceptance",
+  "fixturePcmSha256": "ddf4f22ae871bc993329571af9660f1daba0b5a6f89ea2d11f77e3e2d222c305",
+  "tenSecondPrefixPcmSha256": "90c591e65049066b0fed71b6cba2ff4761c496cc4eaad03d25259c9e6464e291",
+  "model": "recorded-experimental-v2-f9dd5647-7bb42270-pann-instrument",
+  "policy": "fsd50k-dev-v2-pann-instrument-035-015",
+  "runtime": "Actual native ONNX Runtime; intraOp1\/interOp1\/sequential",
+  "coldModelLoadMs": 3763.348105,
+  "unmeasuredWarmupWindows": 1,
+  "measuredTenSecondWindows": 20,
+  "warmWindowMs": [
+    2344.195539,
+    539.775728,
+    867.339622,
+    579.734547,
+    1050.291306,
+    1619.903461,
+    769.930853,
+    1854.09857,
+    1565.540179,
+    894.401654,
+    837.684293,
+    943.597133,
+    1339.757962,
+    652.218964,
+    340.562633,
+    281.848295,
+    293.481883,
+    328.62855,
+    335.133768,
+    291.549524
+  ],
+  "p95NearestRank": 19,
+  "p95Ms": 1854.09857,
+  "maximumMs": 2344.195539,
+  "memorySampleCadenceMs": 100,
+  "memorySamples": 179,
+  "baselinePssBytes": 67686400,
+  "peakSampledPssBytes": 199693312,
+  "extraPssBytes": 132006912,
+  "baselineUsedJavaHeapBytes": 7262592,
+  "peakSampledUsedJavaHeapBytes": 60961280,
+  "extraUsedJavaHeapBytes": 53698688,
+  "append320SampleMaximumMs": 0.260216,
+  "deterministicSchedulingOnlyFences": [
+    {
+      "case": "append_and_read_before_status_preserve_committed_coverage",
+      "passed": true
+    },
+    {
+      "case": "overrun",
+      "capturedMs": 30000,
+      "skippedMs": 30000,
+      "windows": 0,
+      "runningLimit": 1,
+      "queueLimit": 1
+    },
+    {
+      "case": "pause_rejects_late_result",
+      "passed": true
+    },
+    {
+      "case": "partial_gap_does_not_bridge",
+      "passed": true
+    },
+    {
+      "case": "identical_raw_id_reuse_rejects_late_write",
+      "passed": true
+    },
+    {
+      "case": "erase_rejects_late_write",
+      "passed": true
+    },
+    {
+      "case": "source_factory_identity_retires_late_write",
+      "passed": true
+    }
+  ],
+  "gatesPassed": true,
+  "retuned": false,
+  "audioOutput": false,
+  "capture": false
+}

@@ -1,0 +1,207 @@
+{
+  "artifact_id": 13069234470,
+  "zip_sha256": "8612fda7a669e7ea11fb0d8f8de4d12f0c2081506f6c40f61b7f51489bc2f3f7",
+  "every_zip_member_verified_against_extraction": true,
+  "members": [
+    {
+      "name": "AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture.txt",
+      "bytes": 829,
+      "sha256": "1ad0bd029cf678cbe07ef91765d99e7b78a6ac55281c118886d592687b98963c"
+    },
+    {
+      "name": "AdditionalSoundsNativeFlowTest#singleThreadPerformanceAndBoundedQueueRetireLateWork.txt",
+      "bytes": 815,
+      "sha256": "f156831587e0b588244f1a6d647f34bc45f05a9ebd1458813bd6ab4c1af31aee"
+    },
+    {
+      "name": "InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity.txt",
+      "bytes": 838,
+      "sha256": "a04a5f75ca2c2d1aa4911b55242bc77eaa29472d17a12162c3bf361395405717"
+    },
+    {
+      "name": "acceleration.txt",
+      "bytes": 57,
+      "sha256": "4484bdd6d5e16c817d4dfc5cda05334055c86428c861c1d22e8cf67ce42fee49"
+    },
+    {
+      "name": "additional-record-about.png",
+      "bytes": 411414,
+      "sha256": "8b345ccf7957f9a4e81615c4e0471e352c90eb9181d2a0b8d0689c91d847ea17"
+    },
+    {
+      "name": "additional-record-restored.png",
+      "bytes": 203625,
+      "sha256": "b0395062525affd689d2a8cbda2b5b40d941ce5e0fd7af6cf674fd01d5d34980"
+    },
+    {
+      "name": "additional-record-results.png",
+      "bytes": 203625,
+      "sha256": "b0395062525affd689d2a8cbda2b5b40d941ce5e0fd7af6cf674fd01d5d34980"
+    },
+    {
+      "name": "additional-record-unavailable.png",
+      "bytes": 92071,
+      "sha256": "e3c2624fe04961d5acea7d608de98d6b371668e50667fa206b8f976dfa8cd655"
+    },
+    {
+      "name": "additional-report-entry.png",
+      "bytes": 157364,
+      "sha256": "4831d577c536af0b0ee0bb6d62ff5aad1575870fdf07fc01aa37fdd96e67016d"
+    },
+    {
+      "name": "additional-settings-default.png",
+      "bytes": 170662,
+      "sha256": "c7e6629e67d8cae708d5a76adb09e1c372bfc6bb767006a9931d5f659c892fc0"
+    },
+    {
+      "name": "additional-settings-dirty-restored.png",
+      "bytes": 143966,
+      "sha256": "07f634c41328f4c836bd803499b723fed3f074569ccca8ec700de7ef6847a7b0"
+    },
+    {
+      "name": "additional-settings-draft-restored.png",
+      "bytes": 171118,
+      "sha256": "c573b0433f442e28505c4c8596675a6ab4433dfb0d351ec58979231f6e5dbaf0"
+    },
+    {
+      "name": "additional-settings-saved.png",
+      "bytes": 182646,
+      "sha256": "5dc039ed235a166d146b13f5f322d0d87d5820dc8c04d961eb9eb995a5ab2ff5"
+    },
+    {
+      "name": "additional-sounds-flow-proof.json",
+      "bytes": 1660,
+      "sha256": "f9c8354357dbe41e1fa851f4924306d41df689506389385c0f7cedb59905cc28"
+    },
+    {
+      "name": "additional-sounds-operational-proof.json",
+      "bytes": 2132,
+      "sha256": "26ea718774fb9d9ca30dd9eba7baa6dbd199e9cbf165b416d3a9b34d8c0dcbb1"
+    },
+    {
+      "name": "additional-sounds-performance-before-fences.json",
+      "bytes": 1095,
+      "sha256": "8d1e342ec6c547af778fa0235a1d788773ad114c8ec8ece334505fbea24b70e3"
+    },
+    {
+      "name": "avds.txt",
+      "bytes": 16,
+      "sha256": "f16a26a5bd7197845e8fd956d72581d31face85a22081d6609fe44a6f5d98668"
+    },
+    {
+      "name": "emulator.log",
+      "bytes": 7335,
+      "sha256": "fd733ea497986a73e9d7f930e9541235a81fad5bfa6625636104daf1ee3ae10d"
+    },
+    {
+      "name": "environment.json",
+      "bytes": 1140,
+      "sha256": "5d57208ccabc3e1ab9221bd31f29e88724ebcd099f9fa2058d8e63402737d3f1"
+    },
+    {
+      "name": "focused-review-summary.json",
+      "bytes": 943,
+      "sha256": "68999cff58eff412dfe573530a3fa4aa3e93b9205c39df04e096098c878d8ef5"
+    },
+    {
+      "name": "guest-last-anr.txt",
+      "bytes": 88,
+      "sha256": "42cf4931006fd0ff42d3522af31f9346431b409aa22a793ecc16b5aedeed28a1"
+    },
+    {
+      "name": "guest-logcat.txt",
+      "bytes": 600501,
+      "sha256": "66b2d4f79a261ca6d87a9e3639546c2290ddbc1be8081dd18a5da183207edb29"
+    },
+    {
+      "name": "guest-windows.txt",
+      "bytes": 42515,
+      "sha256": "77b29c6dba309c3e6d1715095f892e015ced0bbb7f53265c90e112f3528fe0f3"
+    },
+    {
+      "name": "interrupted-recovery-discard-final.png",
+      "bytes": 159589,
+      "sha256": "1e231f40a45b0e2261c8664943eeaf93f82e24c1055f233d654936eba5865915"
+    },
+    {
+      "name": "interrupted-recovery-discard-restored.png",
+      "bytes": 139946,
+      "sha256": "cb16ce0da17436cd159b106495b2b28f4cbbaeef17fe952cfbe78b17d791d296"
+    },
+    {
+      "name": "interrupted-recovery-discard-review.png",
+      "bytes": 139946,
+      "sha256": "cb16ce0da17436cd159b106495b2b28f4cbbaeef17fe952cfbe78b17d791d296"
+    },
+    {
+      "name": "interrupted-recovery-discarded.png",
+      "bytes": 76960,
+      "sha256": "f90af48551bd6c74c11f1020aaaef4c7d4187b65198b3971a93dc397c39dc7ab"
+    },
+    {
+      "name": "interrupted-recovery-kept-token-retired.png",
+      "bytes": 51874,
+      "sha256": "db2e4a4ef772229fb1486d34cc62451fba50e1f4e4df2282e9d9407a689d674a"
+    },
+    {
+      "name": "interrupted-recovery-manual-returned.png",
+      "bytes": 179876,
+      "sha256": "d7aa98a062ff11d2f34c4621b3cad63725226ee4ccdb3ea204e57c69a53e57f9"
+    },
+    {
+      "name": "interrupted-recovery-manual-setup.png",
+      "bytes": 166339,
+      "sha256": "b58a9cf457288d370b6cab0fee44084dbab5cefe8da99c7a38681feafa670225"
+    },
+    {
+      "name": "interrupted-recovery-reopened.png",
+      "bytes": 179876,
+      "sha256": "d7aa98a062ff11d2f34c4621b3cad63725226ee4ccdb3ea204e57c69a53e57f9"
+    },
+    {
+      "name": "interrupted-recovery-retained-report.png",
+      "bytes": 152148,
+      "sha256": "564f93bbe75e20f0c4f4356edffb1cabb0040a2bb309dfd70b4985a59d28e2fc"
+    },
+    {
+      "name": "interrupted-recovery-retained-report-restored.png",
+      "bytes": 152148,
+      "sha256": "564f93bbe75e20f0c4f4356edffb1cabb0040a2bb309dfd70b4985a59d28e2fc"
+    },
+    {
+      "name": "interrupted-recovery-review-restored.png",
+      "bytes": 179876,
+      "sha256": "d7aa98a062ff11d2f34c4621b3cad63725226ee4ccdb3ea204e57c69a53e57f9"
+    },
+    {
+      "name": "interrupted-recovery-review.png",
+      "bytes": 179876,
+      "sha256": "d7aa98a062ff11d2f34c4621b3cad63725226ee4ccdb3ea204e57c69a53e57f9"
+    },
+    {
+      "name": "interrupted-recovery-schema19-proof.json",
+      "bytes": 472,
+      "sha256": "a0facedc25c7635fc7d25c2da96d872a6a6057c138c0c6f58b37579c93f70a00"
+    },
+    {
+      "name": "interrupted-recovery-stale-discard-rejected.png",
+      "bytes": 110921,
+      "sha256": "b0ce1da972a9ff9856f4fd80ad8029bf8ff9c6f7212b782b87e1662f05751984"
+    },
+    {
+      "name": "interrupted-recovery-stale-review.png",
+      "bytes": 76960,
+      "sha256": "f90af48551bd6c74c11f1020aaaef4c7d4187b65198b3971a93dc397c39dc7ab"
+    },
+    {
+      "name": "interrupted-recovery-tonight.png",
+      "bytes": 332834,
+      "sha256": "755a67ce457f00c5d90dff0b49ee501ea1b2046b85392fc763421777c693c474"
+    },
+    {
+      "name": "startup-focus.txt",
+      "bytes": 246,
+      "sha256": "0314a4dfb3446849f4ab3698bc2ad04ba2f5bb631e612e104e4f52419d29913d"
+    }
+  ]
+}

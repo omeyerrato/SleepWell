@@ -1,0 +1,44 @@
+{
+  "source_revision": "cee13e91afa301ca5cc9a11ac189fef7adcde28d",
+  "actual_originals_opened": 24,
+  "additional_originals": 9,
+  "interrupted_recovery_originals": 15,
+  "method": "Each actual file opened through view_image at original detail; returned displays may be resized and identical frames may display as deltas. SHA groups preserve original identity. No contact board or mockup substitutes for these originals.",
+  "reference": "Accepted Night Dial design.md/shared tokens: dark ground/surface, white actions, amber selection, restrained semantic red, existing native controls, natural wrapping and scroll/insets.",
+  "material_application_layout_or_fixed_action_overlap_found": false,
+  "all_captures_unobscured": false,
+  "new_feature_observations": [
+    "Default-off and recreated on-draft switch, separate Save/Cancel, inline saved status and recreated dirty review all fit. White topbar glyphs and navigation handle are readable.",
+    "Actual Report row names experimental original-capture results. Its scrolled viewport has no false status-bar overlap.",
+    "Results/restoration show13sec captured,10sec analyzed,3sec not analyzed,0 laughter,0 instruments and1 uncertain window. RecordUi.duration floors the raw13670/10000/3670ms proof to whole seconds. Zero candidates is explicitly not absence.",
+    "The dated10sec uncertain row and separate Refresh results action fit. About is reached by scrolling; it is not claimed visible in the same initial results viewport.",
+    "About shows source/model/policy as technical provenance, with long model identifiers wrapping rather than overlapping. The whole About content extends beyond this captured viewport.",
+    "Deleted-source error is readable in semantic red with a separate Try again action."
+  ],
+  "recovery_observations": [
+    "Retained review dates/interval, Keep/new-night/review actions and recreated named-discard sheet remain readable with the accepted shell.",
+    "Retained Report is read-only; actual native assertion additionally proves no Additional sounds route for its requested historical receipt. Its lower text extends beyond the viewport normally.",
+    "Manual setup keeps Microphone off and Start tracking separate; this action is not invoked. Stale token/ID rejection remains explicit and does not select replacement data."
+  ],
+  "nonblocking_findings": [
+    {
+      "capture": "additional-record-results.png",
+      "finding": "Cosmetic singular grammar: Uncertain · 1 windows. Same text in restored original.",
+      "source_change_in_this_archive": false
+    },
+    {
+      "capture": "interrupted-recovery-discard-final.png",
+      "finding": "Transient Android toast from the preceding stale-delete rejection covers parts of the Delete/Keep dialog actions in this exact capture. Native action assertions passed; this is not clean unobscured visual evidence for those two targets, nor proof that the underlying layout overlaps.",
+      "archived_original": "originals/interrupted-recovery-discard-final.png",
+      "source_change_or_rerun_in_this_archive": false
+    }
+  ],
+  "other_transient_toast_captures": [
+    "interrupted-recovery-stale-review.png",
+    "interrupted-recovery-discarded.png"
+  ],
+  "limits": [
+    "No full43-flow/172-state or device-matrix acceptance.",
+    "Multi-page results/restored-no-local absence and preference/provider error injection are source-only, not accepted by this one-window lifecycle fixture."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "source_revision": "cee13e91afa301ca5cc9a11ac189fef7adcde28d",
+  "pinned_plan": "docs/night-dial/ADDITIONAL-SOUNDS-NATIVE-PLAN.json",
+  "plan_sha256": "43079226463bd73e32d0291917f32908852d623de7049d61690c68a08d7565d4",
+  "methods": [
+    {
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "passed": true,
+      "instrumentation_seconds": 27.466,
+      "original_log": "AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture.txt",
+      "required_originals": [
+        "additional-settings-default.png",
+        "additional-settings-draft-restored.png",
+        "additional-settings-dirty-restored.png",
+        "additional-settings-saved.png",
+        "additional-report-entry.png",
+        "additional-record-results.png",
+        "additional-record-restored.png",
+        "additional-record-about.png",
+        "additional-record-unavailable.png"
+      ],
+      "required_proof": [
+        "additional-sounds-flow-proof.json"
+      ],
+      "assertion_scope": "Actual defaultOff, draft/Cancel/dirtyKeep/Discard/recreation/Save/reopen; admitted private PCM through real bundled automatic worker into SQLite; original records/corrected base events/epochs/alarms/prefs exact; off applies to future nights; portable14 excludes derived marker; actual Report route/read-only results/About/recreation and deleted-source retry fails closed."
+    },
+    {
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#singleThreadPerformanceAndBoundedQueueRetireLateWork",
+      "passed": true,
+      "instrumentation_seconds": 24.338,
+      "original_log": "AdditionalSoundsNativeFlowTest#singleThreadPerformanceAndBoundedQueueRetireLateWork.txt",
+      "required_originals": [],
+      "required_proof": [
+        "additional-sounds-performance-before-fences.json",
+        "additional-sounds-operational-proof.json"
+      ],
+      "assertion_scope": "Actual CPU1 model cold constructor+one warmup+20 fixed real10s inferences; measured sampled PSS/used heap deltas and320sample accept maximum; one running+one queued, overrun coverage/model close before finish, pause/finish late completion, partial gap, identicalraw IDreuse, erase, actual Records.factory replacement. Concurrency ModelFactory returns a previously computed real result only for deterministic scheduling; not represented as a new inference. Actual cached real-window append/read before status must expose10000ms analyzed; older0 status cannot regress committed coverage."
+    },
+    {
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "passed": true,
+      "instrumentation_seconds": 14.453,
+      "original_log": "InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity.txt",
+      "required_originals": [
+        "interrupted-recovery-tonight.png",
+        "interrupted-recovery-review.png",
+        "interrupted-recovery-review-restored.png",
+        "interrupted-recovery-retained-report.png",
+        "interrupted-recovery-retained-report-restored.png",
+        "interrupted-recovery-manual-setup.png",
+        "interrupted-recovery-manual-returned.png",
+        "interrupted-recovery-reopened.png",
+        "interrupted-recovery-kept-token-retired.png",
+        "interrupted-recovery-discard-review.png",
+        "interrupted-recovery-discard-restored.png",
+        "interrupted-recovery-stale-discard-rejected.png",
+        "interrupted-recovery-stale-review.png",
+        "interrupted-recovery-discard-final.png",
+        "interrupted-recovery-discarded.png"
+      ],
+      "required_proof": [
+        "interrupted-recovery-schema19-proof.json"
+      ],
+      "assertion_scope": "Existing recovery lifecycle remains. Constructed17→19 raw preservation, constructed18→19 exact receipt/raw preservation, old nights not retroactively opted in. Missing-microphone additional owner enrolls while session open before recovery; retained read-only Report suppresses actual requested additional-result route. Existing named discard/reused ID/history erase assertions retained."
+    }
+  ]
+}

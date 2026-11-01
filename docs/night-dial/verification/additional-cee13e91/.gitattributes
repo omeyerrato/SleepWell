@@ -1,0 +1,2 @@
+# Preserve original CI/API bytes covered by verification-receipt.json.
+* -text whitespace=cr-at-eol
