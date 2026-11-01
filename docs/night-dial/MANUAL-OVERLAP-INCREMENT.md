@@ -48,3 +48,5 @@ Local checks cover the diff and plan/capture consistency only. No build, native
 run, unit campaign, model evaluation or personal-device action ran here. Night
 visual/state acceptance for this increment remains pending the integration run
 and actual inspection of all ten originals. No full-app completion box is set.
+
+Run 41256960941 exposed a fixture race after Keep editing: the sheet disappeared before the editor Notes accessibility node returned. The original NPE is retained. The journey now waits for and requires that actual node before asserting its exact preserved note; no save or stale-source assertion was weakened. Rerun pending.
