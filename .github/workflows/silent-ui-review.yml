@@ -110,6 +110,29 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew assembleDebug assembleDebugAndroidTest --console=plain
+      - name: Reserve disk space on the disposable hosted runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          # These two preinstalled toolchains are unused by this Java/Android/Python job.
+          # Refuse local/self-hosted cleanup; no workspace, Android SDK or user data is removed.
+          test "$RUNNER_ENVIRONMENT" = "github-hosted"
+          test "$RUNNER_OS" = "Linux"
+          available=$(df -B1 --output=avail "$RUNNER_TEMP" | tail -n 1 | tr -d ' ')
+          echo "Free bytes before renderer preparation: $available"
+          if (( available < 12 * 1024 * 1024 * 1024 )); then
+            for unused in /usr/share/dotnet /opt/hostedtoolcache/CodeQL; do
+              if [[ -d "$unused" && ! -L "$unused" ]]; then
+                sudo rm -rf -- "$unused"
+              fi
+            done
+          fi
+          available=$(df -B1 --output=avail "$RUNNER_TEMP" | tail -n 1 | tr -d ' ')
+          echo "Free bytes after renderer preparation: $available"
+          if (( available < 9 * 1024 * 1024 * 1024 )); then
+            echo '::error::Disposable runner lacks safe space for the Android userdata image; no UI result is claimed.'
+            exit 1
+          fi
       - name: Configure isolated Android renderer
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-sleepwell-kvm.rules
