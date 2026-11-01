@@ -171,6 +171,12 @@ final class AdditionalSoundNight {
                     catch(Exception|LinkageError|OutOfMemoryError failure){unavailable("The experimental analyzer is unavailable or could not save a result. Base sound analysis continues.");}
                     finally{runningWindows=0;Arrays.fill(block.pcm,(short)0);}
                 }
+                // Release failed optional models on their worker after native inference returns.
+                // Coverage/status can continue without retaining the shared inference lease.
+                if(disabled&&analyzer!=null) {
+                    Model retired=analyzer;analyzer=null;
+                    try{retired.close();}catch(Exception|LinkageError cleanup){phase="error";issue="Additional model cleanup could not be confirmed. Base recording is unaffected.";}
+                }
                 long seen=captured.get();String state=phase;
                 if(finished&&!java.util.Set.of("error","unavailable","interrupted").contains(state))state=analyzed>0?"complete":"insufficient";
                 if(seen!=savedCaptured||analyzed!=savedAnalyzed||!state.equals(savedState)||!issue.equals(savedIssue)) {

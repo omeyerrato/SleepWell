@@ -33,6 +33,11 @@ analyzed coverage. Base capture continues. A ten-second-or-longer inference also
 disables further supplementary work. No p95 or Android RAM acceptance is claimed
 from this guard or from source inspection.
 
+Once inference is disabled, that same worker immediately closes and releases both
+models and their shared lease after any native call returns. It continues only
+bounded coverage/status accounting until the recording ends. Failure of the
+already-admitted contactless PCM pipeline likewise disables extra inference.
+
 Each night pins its storage factory identity, canonical database path, process
 history epoch, raw session start, and random durable receipt token. Each capture
 segment has its own nonce and atomic revision. Gap, pause, stop and capture failure

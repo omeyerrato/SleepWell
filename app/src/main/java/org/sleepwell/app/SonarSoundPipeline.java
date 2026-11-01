@@ -29,6 +29,6 @@ final class SonarSoundPipeline implements AutoCloseable {
     }
     /** Flush only existing full groups; partial classifier/FIR history is discarded across real gaps. */
     void gap(){owned();if(additional!=null)additional.gap(additionalSegment);try{if(stream!=null){SoundAnalysisStream previous=stream;stream=null;previous.close();}}catch(RuntimeException|LinkageError failure){fail("storage");}finally{clips.gap();filter=null;expected=-1;}}
-    void fail(String reason){if(issue.isEmpty())issue=reason;}
+    void fail(String reason){if(issue.isEmpty())issue=reason;if(additional!=null)additional.unavailable("The admitted contactless sound-analysis pipeline stopped. Additional analysis cannot continue without its PCM source.");}
     @Override public void close(){owned();if(closed)return;closed=true;if(additional!=null)additional.endSegment(additionalSegment);try{gap();}catch(RuntimeException failure){fail("storage");}finally{if(model!=null){try{model.close();}catch(RuntimeException|LinkageError failure){fail("cleanup");}finally{model=null;}}}}
 }
