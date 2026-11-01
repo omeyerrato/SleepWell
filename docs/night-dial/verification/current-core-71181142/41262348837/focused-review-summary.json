@@ -1,0 +1,66 @@
+{
+  "scope": "completion-reference",
+  "full_app_review": false,
+  "expected_classes": 11,
+  "expected_methods": 12,
+  "class_results": [
+    {
+      "class": "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "RecordCalendarFlowTest#pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "RecordCalendarFlowTest#manualOverlapReviewSurvivesRecreationAndRejectsChangedCoverage",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "RecordRecreationTest#pendingNewAndExistingSavesReattachAfterActivityRecreation",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "InteractionSecurityNativeTest",
+      "expected_methods": 2,
+      "passed": true
+    },
+    {
+      "class": "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 94,
+  "required_evidence_files": [],
+  "failures": []
+}

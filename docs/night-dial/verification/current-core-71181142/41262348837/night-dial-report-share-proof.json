@@ -1,0 +1,19 @@
+{
+  "scope": "one owned synthetic recorded period",
+  "one_current_share_and_cancel_after_every_state": true,
+  "preview_viewport_remained_visible": true,
+  "notes_default_off": true,
+  "notes_opt_in_recreated": true,
+  "provider_admission_closed_before_share": true,
+  "changed_record_rejected": true,
+  "actual_system_chooser_opened": true,
+  "recipient_selected": false,
+  "shared_file_read_only": true,
+  "durable_admission_reloaded": true,
+  "retired_generation_rejects_reappearing_cache": true,
+  "restart_scope": "in-process memory reset; not process force-stop",
+  "shared_bytes_sha256": "162b082650b814d6c14815a832570b2c516168c1a41fe6e65fc9cd6102c29beb",
+  "shared_bytes": 412,
+  "delivery_confirmed": false,
+  "owned_share_file_removed": true
+}

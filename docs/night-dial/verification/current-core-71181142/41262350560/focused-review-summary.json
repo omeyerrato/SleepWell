@@ -1,0 +1,51 @@
+{
+  "scope": "local-feature-reference",
+  "full_app_review": false,
+  "expected_classes": 8,
+  "expected_methods": 8,
+  "class_results": [
+    {
+      "class": "GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+      "expected_methods": 1,
+      "passed": true
+    },
+    {
+      "class": "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "expected_methods": 1,
+      "passed": true
+    }
+  ],
+  "required_original_images": 118,
+  "required_evidence_files": [],
+  "failures": []
+}

@@ -1,0 +1,29 @@
+{
+  "commit": "71181142772adb551904519382bb0828408cac36",
+  "emulator": true,
+  "scope": "completion-reference",
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no native playback output allowlisted; library uses fake playback",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": true,
+  "startup_focused_samples": 3,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420",
+  "completion_slice": "changed Report/calendar, exact source review, data confirmations, obscured-touch and permission-return flows; not full app acceptance",
+  "test_classes": [
+    "NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations",
+    "NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser",
+    "NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown",
+    "RecordCalendarFlowTest#pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds",
+    "RecordCalendarFlowTest#manualOverlapReviewSurvivesRecreationAndRejectsChangedCoverage",
+    "RecordRecreationTest#pendingNewAndExistingSavesReattachAfterActivityRecreation",
+    "PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory",
+    "BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen",
+    "RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary",
+    "InteractionSecurityNativeTest",
+    "CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft"
+  ]
+}

@@ -1,0 +1,355 @@
+{
+  "schema": 1,
+  "source_commit": "71181142772adb551904519382bb0828408cac36",
+  "app_main_tree": "c96213193398a7b3defc1f34edef5fa5ef25fc9d",
+  "database_schema": 18,
+  "portable_backup_format": 14,
+  "runs": [
+    {
+      "run_id": 41262350560,
+      "run_url": "https://github.com/omeyerrato/SleepWell/actions/runs/41262350560",
+      "artifact_id": 13065728545,
+      "artifact_name": "silent-android-review",
+      "zip_bytes": 16402577,
+      "zip_sha256": "9ce426a250b7910335fe83040fc5548e3e8e428e4d5cc9d59835230f8b3fc247",
+      "scope": "local-feature-reference",
+      "expected_classes": 8,
+      "native_methods": 8,
+      "original_pngs": 118,
+      "result": "PASS",
+      "full_app_review": false
+    },
+    {
+      "run_id": 41262348837,
+      "run_url": "https://github.com/omeyerrato/SleepWell/actions/runs/41262348837",
+      "artifact_id": 13065847897,
+      "artifact_name": "silent-android-review",
+      "zip_bytes": 16032548,
+      "zip_sha256": "2736ecd8dd403b7505da23b29020654eff46e20e25919f18e3060af5f3000440",
+      "scope": "completion-reference",
+      "expected_classes": 11,
+      "native_methods": 12,
+      "original_pngs": 94,
+      "result": "PASS",
+      "full_app_review": false
+    }
+  ],
+  "source_files": [
+    {
+      "file": "scripts/ci_silent_ui.py",
+      "git_blob": "08307af51db1d8fc14cc51f7365662442ecb0470",
+      "bytes": 97893,
+      "sha256": "a77763ed6300c09f8cb668df6fe6de58820000a9ddb57b6b34339f128410cbc2"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob": "22ddfdb6ab3fb1a01f6b2c4fc4cb8f8a138c0287",
+      "bytes": 23737,
+      "sha256": "43a9bb38017e86906555d91d67c4a7fb71c47536ca7928691c4ff47e6cd475b5"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "git_blob": "6ff773afc4f27b446273b44b742eb510f03c6c28",
+      "bytes": 13256,
+      "sha256": "ff3f97692686aa346b85c0fcdc04037f996539120a95c4848882c20045d4d194"
+    },
+    {
+      "file": "docs/night-dial/LOCAL-PLAN-NATIVE-PLAN.json",
+      "git_blob": "720ddbfd27c00df4219075d6ae4f774f2e3ee124",
+      "bytes": 7675,
+      "sha256": "9490ded86dd6346ed652b305cbd29a4c743a6f4c5b88cc5aef94aac48789d7d4"
+    },
+    {
+      "file": "docs/night-dial/REPORT-IMPORT-SHARE-NATIVE-PLAN-v2.json",
+      "git_blob": "e8d7f48c8da9adff2467af6e24ff34589246a6a9",
+      "bytes": 3367,
+      "sha256": "064df941c737a4de06f677dc09d27ddb9af258dd4c86cecc9a20cc95788ce2fd"
+    },
+    {
+      "file": "docs/night-dial/MANUAL-OVERLAP-NATIVE-PLAN.json",
+      "git_blob": "89ea1173c9af97b2cb8a15553106c20a6cf3e83a",
+      "bytes": 2432,
+      "sha256": "3c43193badecf0923ebfa7810ec66902fea4af0aed8af3af5463d69a62411e18"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/AlarmSoundModeFlowTest.java",
+      "git_blob": "7d8779ba000fdf6fab868112e4a7349d6fe36f8c",
+      "bytes": 15036,
+      "sha256": "1daf6758853a44a5cad09494c64dc36cd7335103e375075684acb6f97771489b"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/BackupDocumentFlowTest.java",
+      "git_blob": "82679c6669fe71faa494644851a0e97173bc1e94",
+      "bytes": 32556,
+      "sha256": "6a2590ec90ec0161358ca0da3133f59106637d84ef231cabdc5211cb0b206203"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/CalendarRulesFlowTest.java",
+      "git_blob": "d567b387404382ecbd675c826160f7b2fc1d7c34",
+      "bytes": 24406,
+      "sha256": "9c1784659b012e79ffe31f70a37fee38ab3022b694911dd6227f270135d41fbf"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/GoalFlowTest.java",
+      "git_blob": "a10f47916fcce3b57be42db25089cb80c326b73d",
+      "bytes": 17366,
+      "sha256": "b94813b647de60582376c3fbcc37c272a5d5fdac335863c6674662e3ae4e8c79"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/InteractionSecurityNativeTest.java",
+      "git_blob": "1243567c9ea8996b876df4fdf5866189e909fbc2",
+      "bytes": 11233,
+      "sha256": "6763417000f5d1a9c69af430e53aef352a3d618cdf15056c864f98e9e21e8d98"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/NapFlowTest.java",
+      "git_blob": "1eb95364d8380bdd9acbaf3095cb2f0641c6f7f8",
+      "bytes": 33622,
+      "sha256": "45c52f1c316a0a2c79dc554a8b2376436ef22f56d7ed76f71832f4d7bcae6a55"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/NightDialAlarmFlowTest.java",
+      "git_blob": "9ca253743c41ad089e062423b3180c5704bc4d7b",
+      "bytes": 24854,
+      "sha256": "a4e0355623635656bf2e1f5a38d96e21d472b35330d12f34af3b512f3a85a799"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/NightDialReportFlowTest.java",
+      "git_blob": "9a5b7d4e7a3eec0ebc5ac40a7554350d7139cb2d",
+      "bytes": 30563,
+      "sha256": "586590fa61c2143ccbdc430ecb55bd3f7fc0f3655ba13da92073c7818afe2da0"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/PrivacyHistoryFlowTest.java",
+      "git_blob": "875e371396ba796bb90c38f501229a8db9b75037",
+      "bytes": 38514,
+      "sha256": "c35028d42d19a6b471ec6798eb13fcb51427b2d64d247a127e19e7aea2813fbe"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/RecordAchievementsFlowTest.java",
+      "git_blob": "fef0404ddae957261576a0b40ee273da75cdf020",
+      "bytes": 10818,
+      "sha256": "7895ca2b43f7b987add804270d9fa909dc7b977e242ba0fcede9d17ee285a972"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/RecordCalendarFlowTest.java",
+      "git_blob": "bef411fa6420cf5c4579afeb7a2e6f53908dd8df",
+      "bytes": 29316,
+      "sha256": "a99b1c28b6b18af7825c2a1d526ed30910b3467ed479bc304019204ece091356"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/RecordRecreationTest.java",
+      "git_blob": "0ce85b30f8546ab24f7a4bfebe64988b36085e6e",
+      "bytes": 6792,
+      "sha256": "1a2e778d8c463daeea9d1320e21ddfdf52c51b8f8849069c50262206191f582b"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/RecordedAnalysisJourneyTest.java",
+      "git_blob": "b3e361ff6e212765faed18e29705477e936557a9",
+      "bytes": 45420,
+      "sha256": "31ad37776a89ad6b0354415fe3dc4d4f3df741fcd04e1f016f515e37ba05155f"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/TagManagementFlowTest.java",
+      "git_blob": "e82e79cd2cc3fafc525033185dc7ef7b648d8595",
+      "bytes": 11491,
+      "sha256": "f073ef6c608541fa86e6604c926d3c7dbba3ec7cf8540cc27bd20518c67a6459"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/TravelPlanFlowTest.java",
+      "git_blob": "929ea221473f27a38aeed0868b5967f9065674e5",
+      "bytes": 16064,
+      "sha256": "d997d689640ca0496ba6ab4503ceb65bd2fd9c462c3d96eb19318795f51bb2a9"
+    },
+    {
+      "file": ".github/workflows/silent-ui-review.yml",
+      "git_blob": "39d65ca693d6ed9e9d349d3e203b2526e1537558",
+      "bytes": 5128,
+      "sha256": "521d442f07d1def21dd8303b63553d309869fd80b65025d9744b6303cc588b90"
+    }
+  ],
+  "copied_original_files": [
+    {
+      "file": "41262350560/environment.json",
+      "bytes": 1457,
+      "sha256": "af8dc8d80ff8c73a4bfba944ec89cd4cee51dd2b36d2bea85e2d8e85fb005942"
+    },
+    {
+      "file": "41262350560/focused-review-summary.json",
+      "bytes": 1546,
+      "sha256": "5d34d22f03ce7f8679be5bc43ba27149996851858c330055bc280256ae5f28c0"
+    },
+    {
+      "file": "41262350560/GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery.txt",
+      "bytes": 779,
+      "sha256": "7613c6fed483942c2805cc4a3f14e71180d571c8b81968a36f34fc4a10780745"
+    },
+    {
+      "file": "41262350560/NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist.txt",
+      "bytes": 770,
+      "sha256": "6c42dc5e442570eec2795baec68c817e95e9b1c322b414d6a6fbe0473ab6a772"
+    },
+    {
+      "file": "41262350560/NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery.txt",
+      "bytes": 774,
+      "sha256": "9438ae76a5fa77f98c7edb052e4d990181373052b508efaaf978bfe75469c5bf"
+    },
+    {
+      "file": "41262350560/TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs.txt",
+      "bytes": 823,
+      "sha256": "9ec0183402a8fe2cd1903063ed98db5a1bd14ce485454757fe1536042681932e"
+    },
+    {
+      "file": "41262350560/RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate.txt",
+      "bytes": 843,
+      "sha256": "d72a56556e789d324b358d1bd67944e8f79d6d8b8e122afca04e37af446cfa3a"
+    },
+    {
+      "file": "41262350560/TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist.txt",
+      "bytes": 782,
+      "sha256": "c99b7589d33b33ebb808ca8ca553396e5151b0f573bacf51c47fd64c493fa930"
+    },
+    {
+      "file": "41262350560/AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs.txt",
+      "bytes": 841,
+      "sha256": "af0a41579b5f860e07237aa0406ca0848a8be1e74cb893109e3dd6aa59335699"
+    },
+    {
+      "file": "41262350560/NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm.txt",
+      "bytes": 803,
+      "sha256": "efeb8a4c4e125638ddd226c5d6f59cbbffd215fe9cf8860ad8441496dc1393db"
+    },
+    {
+      "file": "41262350560/nap-paused-restored.png",
+      "bytes": 139508,
+      "sha256": "c90fdfb2e4a0fe15a6571a8b2fa94de4ed986b53d1b1c9aaffaa9a1d611cf240"
+    },
+    {
+      "file": "41262350560/record-achievements-milestone-basis.png",
+      "bytes": 150675,
+      "sha256": "1d887519720f048128806a25be871d4ae89ad9aaf9dccd48c57309eb9a7e19bc"
+    },
+    {
+      "file": "41262350560/night-dial-alarm-delete-restored-review-stale.png",
+      "bytes": 173717,
+      "sha256": "c4dc7d04beedbce22ab486d8f204030441f4cccfc7bfe1f6b49440081122352d"
+    },
+    {
+      "file": "41262348837/environment.json",
+      "bytes": 1710,
+      "sha256": "96f87346a6e0d5cc32e9d324218c63186ce6be0462ddbfdf8e144fdb33d60dbe"
+    },
+    {
+      "file": "41262348837/focused-review-summary.json",
+      "bytes": 2019,
+      "sha256": "4be65cf4db6be2605a71208f4b52e9993aaf86cd6f44b9e78c50f32801042e66"
+    },
+    {
+      "file": "41262348837/NightDialReportFlowTest#latestReadOnlySignalsDraftGateAndReviewedRestoreKeepAnnotations.txt",
+      "bytes": 816,
+      "sha256": "2248a6b34eaef6483a200e2018afc937cb2a22ebfda3a44f25b5473f5eeb704e"
+    },
+    {
+      "file": "41262348837/NightDialReportFlowTest#privateReportShareKeepsNotesOptInAndOpensOnlyExplicitSystemChooser.txt",
+      "bytes": 822,
+      "sha256": "5efa0efc15fbbdf293ce603dd7cfd59c14412f2bc66fd4ad3bff549f7f9f1c4e"
+    },
+    {
+      "file": "41262348837/NightDialReportFlowTest#canonicalWeekUsesObservedDaysAndMissingRangesRemainUnknown.txt",
+      "bytes": 805,
+      "sha256": "edbddd4553144cda356a606e5112b9d7065a285cefc4633bd08c388e4c7b6f39"
+    },
+    {
+      "file": "41262348837/RecordCalendarFlowTest#pendingCalendarsRecreateCancelAndCommitWithoutChangingOffsetsOrSeconds.txt",
+      "bytes": 827,
+      "sha256": "f1641431e2d49db1c6d1cee27b32c2b37a0057accb148af8ec76eff2746435ff"
+    },
+    {
+      "file": "41262348837/RecordCalendarFlowTest#manualOverlapReviewSurvivesRecreationAndRejectsChangedCoverage.txt",
+      "bytes": 811,
+      "sha256": "a132ea64cbe92ff6eac8c95a42fb232021086bcbfa23afd9ffafdc12db12534c"
+    },
+    {
+      "file": "41262348837/RecordRecreationTest#pendingNewAndExistingSavesReattachAfterActivityRecreation.txt",
+      "bytes": 795,
+      "sha256": "a7a7c86e7e6d3c531358e221a7a6675e2fd3bde0a81a7abe4e31302f23963f81"
+    },
+    {
+      "file": "41262348837/PrivacyHistoryFlowTest#confirmedEraseIsRetainedDbFirstAndPendingAudioRetriesWithoutDeletingNewHistory.txt",
+      "bytes": 843,
+      "sha256": "a32d79f1fbd469fdc26ac13bf7d77c3a64ac39af11da17110df7c34fbe7baa6d"
+    },
+    {
+      "file": "41262348837/BackupDocumentFlowTest#explicitReviewedReplacementPersistsAcrossRotationAndReopen.txt",
+      "bytes": 803,
+      "sha256": "c70e6ddfe655227e6b040ee2d191f79552cd0e59e334c31d5f699238ab3f6955"
+    },
+    {
+      "file": "41262348837/RecordedAnalysisJourneyTest#savedClipRunsBundledModelsPersistsAndDeletesSummary.txt",
+      "bytes": 804,
+      "sha256": "8e4159999e5617e5829d621cc4b5b06f9607fdb4e71ba4198de4695dbd355382"
+    },
+    {
+      "file": "41262348837/InteractionSecurityNativeTest.txt",
+      "bytes": 1497,
+      "sha256": "ce5eed45d17a59653635051c548090d9a38bd30e5c46dd361e93c8648dc455cb"
+    },
+    {
+      "file": "41262348837/CalendarRulesFlowTest#permissionDenialSettingsReturnAndRevocationKeepTheUnsavedDraft.txt",
+      "bytes": 808,
+      "sha256": "55390cb9d02477172818ee679daf9c0aefd97b9d98e4db4be47637ffa4180a70"
+    },
+    {
+      "file": "41262348837/backup-document-confirmation-recreated.png",
+      "bytes": 149353,
+      "sha256": "66570aa6625764e2213b89d40c76995d3c895d8d690bbe04c8340d60c66aba98"
+    },
+    {
+      "file": "41262348837/privacy-history-done.png",
+      "bytes": 177306,
+      "sha256": "0b1eb1f9372f4aeb5f01eb2e6325cc0bab3db9c56f2abd31c96408084665f64f"
+    },
+    {
+      "file": "41262348837/night-dial-manual-overlap-review-recreated.png",
+      "bytes": 201800,
+      "sha256": "f880dd811247899e8b9a46dd22f1ecee2b7b95f148f0466a87f7a09baefd60aa"
+    },
+    {
+      "file": "41262348837/night-dial-report-share-chooser.png",
+      "bytes": 188861,
+      "sha256": "cbf241a6ec45c818ce732b757f37032951157e2f434ff8a58f4c0743ff8b483d"
+    },
+    {
+      "file": "41262348837/recorded-analysis-details.png",
+      "bytes": 307417,
+      "sha256": "a8d550d0e7c6a707b534e139c688bbb5f5cebdf542650b6ff26c4b0e0f428fe6"
+    },
+    {
+      "file": "41262348837/night-dial-report-share-proof.json",
+      "bytes": 755,
+      "sha256": "0a4689f55f9d60e385df095480eb5b97d9bd1439df14db49ec66d0bc9576c258"
+    },
+    {
+      "file": "41262348837/night-dial-report-share-chooser.xml",
+      "bytes": 36160,
+      "sha256": "d3abfcddccdc4f1b6302c1fc109468dd245470dd6b6435798625f52888f9551d"
+    },
+    {
+      "file": "41262348837/recorded-analysis-proof.json",
+      "bytes": 26634,
+      "sha256": "3fbc274b412cd2cb382599ed12efc737a42b19d3ff51539f41c60fb41bab51dd"
+    },
+    {
+      "file": "41262348837/recorded-analysis-import-timing.json",
+      "bytes": 16332,
+      "sha256": "5dc48964e56f2c29281d0fac9598eedf36930889f186bca6b95936a2d3dd625c"
+    }
+  ],
+  "archive_only": true,
+  "new_native_or_unit_runs": false,
+  "limits": [
+    "Selected emulator cohorts only; not all NightDial states or full-app acceptance.",
+    "InterruptedRecoveryFlowTest and the separate recovery/rules cohort are not covered by these runs.",
+    "No physical device, audible output, provider delivery or scientific accuracy validation."
+  ]
+}
