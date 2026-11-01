@@ -33,7 +33,7 @@ final class ContactlessSetupUi {
             check.setBackground(Design.shape(c, 0xffb9e08e, 20)); check.setPadding(Design.dp(c, 5), Design.dp(c, 5), Design.dp(c, 5), Design.dp(c, 5));
             check.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
             LinearLayout.LayoutParams icon = new LinearLayout.LayoutParams(Design.dp(c, 30), Design.dp(c, 30)); icon.rightMargin = Design.dp(c, 12); row.addView(check, icon);
-            LinearLayout words = Design.col(c); title = Design.text(words, "", 15, 600, Design.CREAM); Design.space(words, 4);
+            LinearLayout words = Design.col(c); title = Design.text(words, "", 15, 600, NightDialTokens.TEXT); Design.space(words, 4);
             detail = Design.text(words, "", 12, 400, Design.LILAC); detail.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
             row.addView(words, new LinearLayout.LayoutParams(0, -2, 1)); body.addView(row, new LinearLayout.LayoutParams(-1, -2));
         }
