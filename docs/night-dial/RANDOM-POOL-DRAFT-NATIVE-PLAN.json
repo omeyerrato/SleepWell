@@ -1,0 +1,33 @@
+{
+  "status": "AUTHORED_NOT_RUN",
+  "flow": "08D",
+  "native_method": "org.sleepwell.app.RandomChallengeDraftFlowTest#dirtyBackKeepDiscardAndUseReturnOnlyParentDraftWithoutOutputs",
+  "arguments": {"ciReview": "true"},
+  "scope": "One focused actual parent-editor and random-child journey; emulator only",
+  "outputs": "Both private alarms disabled; visualReview propagated; scheduling must remain zero; no alarm, sound, sensor, torch, dialer or model operation",
+  "assertions": [
+    "Real task edit and nested Back retain pool without exit review",
+    "Dirty outer Back opens named Discard/Keep review",
+    "Rotation restores review, edited task and baseline",
+    "Retained retired Discard view cannot affect recreated owner",
+    "Keep editing retains draft; Cancel then Discard returns unchanged parent",
+    "Clean Back returns directly without review",
+    "Count edit and explicit Use return only the original request-bound parent draft",
+    "Returned parent draft survives parent recreation",
+    "Private SQLite backup and preferences unchanged; zero scheduling; no runtime services"
+  ],
+  "required_screenshots": [
+    "random-pool-edited.png",
+    "random-pool-dirty-back.png",
+    "random-pool-review-recreated.png",
+    "random-pool-kept.png",
+    "random-pool-discard.png",
+    "random-pool-discarded-parent.png",
+    "random-pool-configured.png",
+    "random-pool-returned-parent.png",
+    "random-pool-parent-recreated.png"
+  ],
+  "required_receipt": "random-pool-draft-proof.json",
+  "on_failure": ["random-pool-failure.txt", "random-pool-failure.xml", "random-pool-failure.png"],
+  "physical_acceptance": "Not claimed"
+}
