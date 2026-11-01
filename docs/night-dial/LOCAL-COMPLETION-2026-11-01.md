@@ -41,7 +41,13 @@ These bounded cohorts contain30 distinct passing native methods and358 required 
 
 The frozen operational gates passed before any policy retuning: cold load3,763.35ms;20 measured one-thread windows after one warmup, nearest-rank warm p95=1,854.10ms and max2,344.20ms; sampled extra process PSS132,006,912bytes and used Java heap53,698,688bytes; capture append maximum0.260216ms. The original licensed fixture is reused for lifecycle/performance only. No held-out recognition set was replayed. Actual Android overnight battery/quality remains open. [Protocol and exact outcomes](verification/additional-cee13e91/README.md).
 
-The broader current Night Dial run41273653327 executed all21 selected native methods successfully and captured all206 required originals,237 PNGs including extras. The workflow itself failed solely because its old summary expected20 methods; its original failed receipt is preserved. Current visual review is separate and ongoing. No unit methods ran, and no physical capture/output occurred.
+The broader Night Dial run41273653327 executed all21 selected native methods successfully and captured all206 required originals,237 PNGs including extras. The workflow itself failed solely because its old summary expected20 methods; its original failed receipt is preserved. Three agents individually reviewed all237 actual originals: [core141](verification/baseline-10e8d74c/core-README.md), [task39](verification/baseline-10e8d74c/task-review.json) and [secondary57](verification/baseline-10e8d74c/breadth-review.json). Two inherited task blockers and two minor settings inconsistencies were found and corrected. Transient-toast capture limitations remain recorded rather than attributed to underlying layout.
+
+Current run41276781848 at1c3ee4f6 passes two selected native methods and64 required originals. The [actual corrected task review](verification/tasks-1c3ee4f6/task-followup-review.json) confirms visible moon features, unchanged target after wrong/recreation, Sequence Watch with disabled inputs, Your turn with enabled inputs, same-round retry/recreation and real practice completion. The settings originals show a shared white Guard primary action and one empty app-access message. All64 originals were individually reviewed within their bounded scopes. No unit methods or physical output tests ran. Full172-state/physical acceptance remains separate.
+
+## Current delivery
+
+**0.1.29/code30 is delivered and installed in place**, source1c3ee4f6, app mainc30bd120909facc1f01f230c501d60bec724dd23. Both APK builds and lint pass; independent signer/hash/ABI audit and actual phone version readback are recorded in the [current package receipt](verification/package-1c3ee4f6/README.md). No app launch, data clear, alarm, sound, vibration, flashlight or overnight test occurred. No new public release was published.
 
 ## Finite audit boundaries
 
@@ -53,6 +59,6 @@ The broader current Night Dial run41273653327 executed all21 selected native met
 - Reliable automatic laughter/instrument recognition remains unproved. Explicit saved-clip supplementary estimates, a small fixed instrument evaluation and real bedroom automatic recognition are separate scopes.
 - Actual external provider/account/vendor prerequisites and optional hardware parity remain open; an alternative route does not implement the absent service.
 - Real alarm protection/loudness/ramp/sunrise/flashlight/challenges and overnight tracking/audio/battery/integrations remain physically unvalidated. The user's no-output phone constraint persists.
-- The current phone is absent from ADB. Last recorded in-place installation is0.1.26; later local candidates are not phone installations.
+- Phone installation is complete for0.1.29. Actual app rendering, hardware behavior and overnight acceptance were not inspected on the phone during the silent update.
 
 No checkbox or build in this ledger claims the complete original parity goal achieved.
