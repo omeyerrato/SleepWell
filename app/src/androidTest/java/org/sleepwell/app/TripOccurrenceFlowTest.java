@@ -1,0 +1,117 @@
+package org.sleepwell.app;
+
+import android.app.*;
+import android.content.*;
+import android.graphics.Rect;
+import android.os.*;
+import android.view.*;
+import android.view.inspector.WindowInspector;
+import android.widget.*;
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.uiautomator.UiDevice;
+import org.junit.Test;
+import java.io.*;
+import java.time.*;
+import java.util.*;
+import java.util.concurrent.*;
+import static org.junit.Assert.*;
+
+/** Real Trip -> occurrence review -> alarm draft -> SQLite Save. Only scheduling is injected. */
+public final class TripOccurrenceFlowTest {
+    private final Instrumentation i=InstrumentationRegistry.getInstrumentation();
+    private final Context c=i.getTargetContext();
+    private final UiDevice device=UiDevice.getInstance(i);
+    private final List<Activity> owned=new CopyOnWriteArrayList<>();
+    private String step="setup";
+
+    private void await(java.util.function.BooleanSupplier condition)throws Exception{
+        long until=SystemClock.elapsedRealtime()+8000;
+        while(!condition.getAsBoolean()&&SystemClock.elapsedRealtime()<until)SystemClock.sleep(25);
+        assertTrue(step,condition.getAsBoolean());
+    }
+    private View focused(){
+        for(View root:WindowInspector.getGlobalWindowViews())
+            if(root.isAttachedToWindow()&&root.hasWindowFocus()&&root.getContext().getPackageName().equals(c.getPackageName()))return root;
+        return null;
+    }
+    private View find(View root,String label){
+        if(root==null)return null;
+        if(label.contentEquals(root.getContentDescription()==null?"":root.getContentDescription())||root instanceof TextView text&&label.contentEquals(text.getText()))return root;
+        if(root instanceof ViewGroup group)for(int n=0;n<group.getChildCount();n++){View found=find(group.getChildAt(n),label);if(found!=null)return found;}
+        return null;
+    }
+    private boolean shown(String label){boolean[] yes={false};i.runOnMainSync(()->yes[0]=find(focused(),label)!=null);return yes[0];}
+    private <T extends Activity>T live(Class<T> type){for(int n=owned.size()-1;n>=0;n--){Activity owner=owned.get(n);if(type.isInstance(owner)&&!owner.isDestroyed()&&!owner.isFinishing())return type.cast(owner);}return null;}
+    private View reveal(String label)throws Exception{
+        step="visible "+label;await(()->shown(label));View[] root={null};
+        await(()->{boolean[] yes={false};i.runOnMainSync(()->{root[0]=focused();View target=find(root[0],label);if(target==null)return;target.requestRectangleOnScreen(new Rect(0,0,target.getWidth(),target.getHeight()),true);Rect visible=new Rect();yes[0]=target.isEnabled()&&target.getGlobalVisibleRect(visible)&&visible.width()==target.getWidth()&&visible.height()==target.getHeight();});return yes[0];});
+        frame(root[0]);return root[0];
+    }
+    private void frame(View root)throws Exception{CountDownLatch committed=new CountDownLatch(1);i.runOnMainSync(()->{assertSame(step,root,focused());assertTrue(root.isHardwareAccelerated());root.getViewTreeObserver().registerFrameCommitCallback(committed::countDown);root.invalidate();});assertTrue(step,committed.await(5,TimeUnit.SECONDS));}
+    private void click(String label)throws Exception{
+        View root=reveal(label);Rect[] bounds={null};i.runOnMainSync(()->{assertSame(root,focused());View target=find(root,label);while(target!=null&&!target.isClickable())target=target.getParent() instanceof View parent?parent:null;assertNotNull(label,target);Rect visible=new Rect();assertTrue(target.getGlobalVisibleRect(visible));assertEquals(target.getWidth(),visible.width());assertEquals(target.getHeight(),visible.height());assertTrue(label,target.isEnabled());assertTrue(label,target.getHeight()>=Design.dp(c,48));bounds[0]=visible;});
+        assertTrue(step,device.click(bounds[0].centerX(),bounds[0].centerY()));
+    }
+    private File folder(){File dir=new File(c.getExternalFilesDir(null),"verification");assertTrue(dir.isDirectory()||dir.mkdirs());return dir;}
+    private void capture(String name,String label)throws Exception{View root=reveal(label);frame(root);assertTrue(device.takeScreenshot(new File(folder(),"trip-occurrence-"+name+".png")));}
+    private <T extends Activity>T recreate(Class<T> type,String label)throws Exception{
+        T previous=live(type);assertNotNull(previous);Instrumentation.ActivityMonitor monitor=i.addMonitor(type.getName(),null,false);
+        try{i.runOnMainSync(previous::recreate);T next=type.cast(monitor.waitForActivityWithTimeout(8000));assertNotNull(next);await(previous::isDestroyed);await(()->shown(label));return next;}finally{i.removeMonitor(monitor);}
+    }
+    private void enterReview(String alarmLabel)throws Exception{click("Apply once to an existing alarm");click(alarmLabel);await(()->shown("Then returns to recurrence"));}
+    private void useReviewed()throws Exception{click("Review next time");await(()->shown("Reviewed change"));click("Use next time");await(()->shown("Save alarm"));}
+
+    @Test public void savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm()throws Exception{
+        assertEquals("true",InstrumentationRegistry.getArguments().getString("ciReview"));
+        assertEquals("1",device.executeShellCommand("getprop ro.kernel.qemu").trim());
+        assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"ringing"));assertFalse(Prefs.flag(c,"tracking"));
+        String name="trip-occurrence-"+UUID.randomUUID(),database=name+".db";
+        SharedPreferences travel=c.getSharedPreferences(name+"-travel",0),sleep=c.getSharedPreferences(name+"-sleep",0),calendar=c.getSharedPreferences(name+"-calendar",0);
+        Records.Factory oldRecords=Records.factory;TravelPlans.Factory oldTravel=TravelPlans.factory;
+        java.util.function.Function<Context,SharedPreferences> oldSleep=TripSleepStore.factory,oldCalendar=CalendarSettings.factory;
+        AlarmScheduling.Port oldSchedule=AlarmScheduling.port;WakeChecks.Factory oldWake=WakeChecks.factory;
+        Map<String,?> personal=new HashMap<>(Prefs.of(c).getAll());List<Alarm> scheduled=new CopyOnWriteArrayList<>();
+        Application app=(Application)c.getApplicationContext();
+        Application.ActivityLifecycleCallbacks life=new Application.ActivityLifecycleCallbacks(){public void onActivityCreated(Activity a,Bundle b){owned.add(a);assertTrue("Only local trip and its actual alarm review/editor",a instanceof TripSleepActivity||a instanceof NextAlarmOverrideActivity||a instanceof AlarmEditorActivity);}public void onActivityStarted(Activity a){}public void onActivityResumed(Activity a){}public void onActivityPaused(Activity a){}public void onActivityStopped(Activity a){}public void onActivitySaveInstanceState(Activity a,Bundle b){}public void onActivityDestroyed(Activity a){}};
+        app.registerActivityLifecycleCallbacks(life);
+        try(Store store=new Store(c,database)){
+            Records.factory=context->new Store(context,database);TravelPlans.factory=context->travel;TripSleepStore.factory=context->sleep;CalendarSettings.factory=context->calendar;
+            WakeChecks.factory=new AlarmToneFlowTest.InertWakeChecks();
+            AlarmScheduling.port=new AlarmScheduling.Port(){public boolean allowed(Context context){return true;}public void schedule(Context context,Alarm request){try(Store read=new Store(context,database)){assertNotNull("Override committed before scheduling port",read.alarm(request.id).nextOverride);assertEquals(read.alarm(request.id).json().toString(),request.json().toString());scheduled.add(Alarm.read(request.json()));}}};
+            long pinnedNow=System.currentTimeMillis();ZoneId zone=ZoneId.systemDefault();LocalDate tomorrow=Instant.ofEpochMilli(pinnedNow).atZone(zone).toLocalDate().plusDays(1);
+            TravelPlan trip=new TravelPlan(zone.getId(),tomorrow);trip.destination=zone.getId().equals("Europe/London")?"Asia/Riyadh":"Europe/London";TravelPlans.repository(c).save(trip,pinnedNow);
+            TripSleepPlan plan=TripSleepPlan.initial(trip,new SleepPlan());plan.days=1;plan.bed=22*60;plan.wake=7*60;plan.earlier=true;plan.reminders=false;new TripSleepStore(c).save(plan,trip);
+            Alarm original=new Alarm(740001);while(personal.containsKey("lastOccurrence_"+original.id)||personal.containsKey("deadline_"+original.id))original.id++;
+            original.label="Travel recurring fixture";original.enabled=true;original.hour=7;original.minute=0;original.days.add(tomorrow.getDayOfWeek().getValue());store.save(original);
+            String baseline=original.json().toString();Map<String,?> tripBefore=new HashMap<>(travel.getAll()),sleepBefore=new HashMap<>(sleep.getAll());
+            assertEquals(0,Prefs.of(c).getLong("lastOccurrence_"+original.id,0));
+            long source=NextAlarmOverrides.source(c,original,pinnedNow,zone),following=original.nextOrdinary(source,zone);
+            assertTrue(source>pinnedNow+60000);assertTrue(plan.nights().get(0).wake>pinnedNow+60000);
+            Instrumentation.ActivityMonitor monitor=i.addMonitor(TripSleepActivity.class.getName(),null,false);
+            try{c.startActivity(new Intent(c,TripSleepActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));assertNotNull(monitor.waitForActivityWithTimeout(8000));}finally{i.removeMonitor(monitor);}
+            capture("plan","Create wake-up alarm draft");click("Apply once to an existing alarm");capture("choices",original.label);
+            recreate(TripSleepActivity.class,original.label);capture("choices-restored",original.label);click("Keep current alarms");await(()->shown("Apply once to an existing alarm"));
+            assertEquals(baseline,store.alarm(original.id).json().toString());assertEquals(sleepBefore,sleep.getAll());assertTrue(scheduled.isEmpty());capture("kept","Apply once to an existing alarm");
+            enterReview(original.label);capture("proposal","Review next time");click("Review next time");capture("reviewed","Use next time");
+            View[] retiredUse={null};i.runOnMainSync(()->retiredUse[0]=find(focused(),"Use next time"));assertNotNull(retiredUse[0]);
+            recreate(NextAlarmOverrideActivity.class,"Reviewed change");i.runOnMainSync(()->retiredUse[0].performClick());capture("reviewed-restored","Use next time");
+            assertEquals(baseline,store.alarm(original.id).json().toString());assertTrue(scheduled.isEmpty());click("Keep current alarm");await(()->live(AlarmEditorActivity.class)==null&&shown("Apply once to an existing alarm"));capture("cancelled","Apply once to an existing alarm");
+            enterReview(original.label);useReviewed();capture("draft","Save alarm");assertEquals(baseline,store.alarm(original.id).json().toString());assertTrue(scheduled.isEmpty());
+            recreate(AlarmEditorActivity.class,"Save alarm");capture("draft-restored","Save alarm");assertEquals(baseline,store.alarm(original.id).json().toString());
+            TripSleepPlan changed=new TripSleepStore(c).load();changed.step=15;new TripSleepStore(c).save(changed,trip);
+            click("Save alarm");String stale="The saved trip or sleep plan changed. Review it before applying a shift.";await(()->shown(stale));capture("stale-plan",stale);
+            assertEquals(baseline,store.alarm(original.id).json().toString());assertTrue(scheduled.isEmpty());assertTrue(device.pressBack());await(()->shown("Save alarm changes?"));click("Discard");await(()->live(AlarmEditorActivity.class)==null&&shown("Apply once to an existing alarm"));
+            TripSleepActivity old=live(TripSleepActivity.class);i.runOnMainSync(old::finish);await(old::isDestroyed);
+            Instrumentation.ActivityMonitor fresh=i.addMonitor(TripSleepActivity.class.getName(),null,false);try{c.startActivity(new Intent(c,TripSleepActivity.class).putExtra("visualReview",true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));assertNotNull(fresh.waitForActivityWithTimeout(8000));}finally{i.removeMonitor(fresh);}
+            click("Apply once to an existing alarm");await(()->shown(original.label));Alarm external=Alarm.read(original.json());external.label="Changed outside travel";store.save(external);click(original.label);
+            String alarmChanged="The saved alarm changed. Reopen its travel occurrence.";await(()->shown(alarmChanged));capture("stale-alarm",alarmChanged);assertNull(live(AlarmEditorActivity.class));assertTrue(scheduled.isEmpty());assertEquals(external.json().toString(),store.alarm(original.id).json().toString());store.save(original);
+            Map<String,?> reviewedPlan=new HashMap<>(sleep.getAll());long target=new TripSleepStore(c).load().nights().get(0).wake;
+            enterReview(original.label);useReviewed();capture("ready-to-save","Save alarm");click("Save alarm");await(()->live(AlarmEditorActivity.class)==null&&scheduled.size()==1&&shown("Apply once to an existing alarm"));
+            Alarm saved=store.alarm(original.id);assertNotNull(saved.nextOverride);assertEquals(target,saved.nextOverride.at(zone));assertEquals(source,saved.nextOverride.sourceAt(saved,zone));assertEquals(NextAlarmOverride.baseKey(original),NextAlarmOverride.baseKey(saved));
+            assertEquals(following,saved.next(target,zone));assertFalse(saved.occurs(source,zone));assertTrue(saved.occurs(following,zone));Alarm recurrence=Alarm.read(saved.json());recurrence.setNextOverride(null);assertEquals("All ordinary alarm configuration stays saved",baseline,recurrence.json().toString());
+            assertEquals(target,scheduled.get(0).nextOverride.at(zone));assertEquals(reviewedPlan,sleep.getAll());assertEquals(tripBefore,travel.getAll());assertTrue(store.rows("SELECT id FROM sessions").isEmpty());capture("saved","Apply once to an existing alarm");
+            click("Apply once to an existing alarm");String noEligible="No eligible recurring occurrence can take this wake time. Use an enabled saved recurring alarm with no skip or next-time override; the target must be before its following occurrence. You can still create a dated alarm draft.";await(()->shown(noEligible));capture("no-eligible",noEligible);assertTrue(shown("Create wake-up alarm draft"));assertEquals(1,scheduled.size());assertEquals(personal,Prefs.of(c).getAll());
+        }catch(Exception|AssertionError failure){try{device.takeScreenshot(new File(folder(),"trip-occurrence-failure.png"));device.dumpWindowHierarchy(new File(folder(),"trip-occurrence-failure.xml"));try(Writer writer=new FileWriter(new File(folder(),"trip-occurrence-failure.txt"))){writer.write(step+"\n"+failure);}}catch(Exception diagnostic){failure.addSuppressed(diagnostic);}throw failure;}
+        finally{try{i.runOnMainSync(()->{for(Activity owner:owned)if(!owner.isDestroyed())owner.finish();});await(()->owned.stream().allMatch(Activity::isDestroyed));for(Activity owner:owned)if(owner instanceof TripSleepActivity tripOwner)assertTrue(tripOwner.awaitReaders(8000));assertEquals(personal,Prefs.of(c).getAll());assertFalse(AlarmService.active);assertFalse(TrackingService.running);}finally{app.unregisterActivityLifecycleCallbacks(life);Records.factory=oldRecords;TravelPlans.factory=oldTravel;TripSleepStore.factory=oldSleep;CalendarSettings.factory=oldCalendar;AlarmScheduling.port=oldSchedule;WakeChecks.factory=oldWake;if(owned.stream().allMatch(Activity::isDestroyed)){assertTrue(c.deleteDatabase(database));for(String suffix:new String[]{"-travel","-sleep","-calendar"})assertTrue(c.deleteSharedPreferences(name+suffix));}}}
+    }
+}
