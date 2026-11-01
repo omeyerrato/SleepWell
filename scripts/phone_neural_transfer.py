@@ -296,8 +296,33 @@ def embedding(matrix,tensors,mean,scale):
 
 def head_probability(model,embedding_matrix):
     x=normalized(embedding_matrix,model['embedding_mean'],model['embedding_scale'])
-    logit=x@np.asarray(model['coefficient'],dtype=np.float64).reshape(32)+float(model['intercept'])
-    p=expit(logit);return np.column_stack((1-p,p))
+    coefficient,intercept=head_arrays(model)
+    # sklearn's binary decision_function uses the fitted 2D matrix and dtype,
+    # then applies expit in place. Upcasting or a 1D dot changes rounding.
+    logit=(x@coefficient.T+intercept).reshape(-1)
+    p=expit(logit,out=logit);return np.stack((1-p,p),axis=1)
+
+
+def head_arrays(model):
+    if model['coefficient_dtype'] not in ('float32','float64') or model['intercept_dtype'] not in ('float32','float64'):
+        raise ValueError('Unknown fitted logistic arithmetic dtype')
+    coefficient=np.asarray([model['coefficient']],dtype=model['coefficient_dtype'])
+    intercept=np.asarray([model['intercept']],dtype=model['intercept_dtype'])
+    if coefficient.shape!=(1,32) or intercept.shape!=(1,) or not np.isfinite(coefficient).all() or not np.isfinite(intercept).all():
+        raise ValueError('Invalid fitted binary logistic parameters')
+    return coefficient,intercept
+
+
+def head_parity(output,model,embedding_matrix,classifier,head_input):
+    primary=classifier.predict_proba(head_input)
+    difference=float(np.max(np.abs(primary-head_probability(model,embedding_matrix))))
+    passed=np.isfinite(difference) and difference<=1e-12
+    save(output/'head-parity.json',dict(model_fitted_sha256=model['model_fitted_sha256'],
+        primary_probability_dtype=str(primary.dtype),
+        coefficient_dtype=model['coefficient_dtype'],intercept_dtype=model['intercept_dtype'],
+        absolute_max_error=difference,tolerance=1e-12,passed=bool(passed)))
+    if not passed:raise ValueError('Primary logistic portable probability mismatch')
+    return difference
 
 
 def fit(cache,output,checkpoint):
@@ -316,16 +341,19 @@ def fit(cache,output,checkpoint):
     second=StandardScaler().fit(embeddings);head_input=second.transform(embeddings)
     classifier=LogisticRegression(C=.1,penalty='l2',solver='lbfgs',max_iter=1000,class_weight=None,random_state=20261101)
     classifier.fit(head_input,y)
-    if classifier.n_iter_[0]>=1000:raise ValueError('Fixed logistic fit did not converge; no new parameters')
     model=dict(freeze=stamp,checkpoint_sha256=WEIGHT_SHA,raw_mean=first.mean_.tolist(),raw_scale=first.scale_.tolist(),
         embedding_mean=second.mean_.tolist(),embedding_scale=second.scale_.tolist(),coefficient=classifier.coef_[0].tolist(),intercept=float(classifier.intercept_[0]),
+        coefficient_dtype=str(classifier.coef_.dtype),intercept_dtype=str(classifier.intercept_.dtype),
         n_iter=classifier.n_iter_.tolist(),classes=['no_annotated_overlap','event_overlap'],train_counts=[145,54],train_targets=targets,train_coverage=coverage,
         train_selected_prior=54/199,train_natural_prior=7250/23734,raw_scaler_vectors=len(z),embedding_scaler_vectors=len(embeddings),
         embeddings_sha256=sha(embeddings.astype('<f4').tobytes()),raw_vectors_sha256=sha(x.astype('<f4').tobytes()),
         probability_provenance='Uncalibrated TRAIN logistic head on frozen pretrained32 representations; conditional source-overlap score, not apnea diagnosis',
         first_scaler_portable_max_difference=first_difference)
-    difference=float(np.max(np.abs(classifier.predict_proba(head_input)-head_probability(model,embeddings))))
-    if difference>1e-12:raise ValueError('Primary logistic portable probability mismatch')
+    # A completed fit must survive later diagnostic failures without another fit.
+    save(output/'model-fitted.json',model)
+    model['model_fitted_sha256']=sha((output/'model-fitted.json').read_bytes())
+    if classifier.n_iter_[0]>=1000:raise ValueError('Fixed logistic fit did not converge; no new parameters')
+    difference=head_parity(output,model,embeddings,classifier,head_input)
     model['train_primary_portable_max_difference']=difference
     save(output/'model.json',model)
     print(json.dumps(dict(phase='fit',targets=len(y),support=model['train_counts'],iterations=model['n_iter'],primary_portable_max_difference=difference,model_sha256=sha((output/'model.json').read_bytes()))),flush=True)
@@ -349,7 +377,7 @@ def evaluate(cache,output,checkpoint,phase):
     persist_features(output,phase,x,y,targets,coverage,stamp)
     probabilities=head_probability(model,embeddings)
     primary=LogisticRegression(C=.1,penalty='l2',solver='lbfgs',max_iter=1000,class_weight=None,random_state=20261101)
-    primary.coef_=np.asarray([model['coefficient']]);primary.intercept_=np.asarray([model['intercept']]);primary.classes_=np.asarray([0,1]);primary.n_features_in_=32
+    primary.coef_,primary.intercept_=head_arrays(model);primary.classes_=np.asarray([0,1]);primary.n_features_in_=32
     difference=float(np.max(np.abs(primary.predict_proba(normalized(embeddings,model['embedding_mean'],model['embedding_scale']))-probabilities)))
     if difference>1e-12:raise ValueError('Held-out portable head differs')
     result=metrics(y,probabilities);baselines={}
@@ -372,6 +400,13 @@ def evaluate(cache,output,checkpoint,phase):
     save(output/(phase+'.json'),report);print(json.dumps(dict(phase=phase,metrics=result,gates=gates,all_gates_passed=report['all_gates_passed'])),flush=True)
 
 
+def failure_receipt(output,error):
+    receipts={name:dict(bytes=(output/name).stat().st_size,sha256=sha((output/name).read_bytes()))
+        for name in ('model-fitted.json','head-parity.json') if (output/name).is_file()}
+    return dict(type=type(error).__name__,message=str(error),persisted_fit_receipts=receipts,
+        action='Stopped; no fallback/retry/refit authorized')
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('command',choices=['parity','fit','validation','test']);parser.add_argument('--cache',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--checkpoint',type=Path,required=True)
     args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=True)
@@ -380,7 +415,7 @@ def main():
         elif args.command=='fit':fit(args.cache,args.output,args.checkpoint)
         else:evaluate(args.cache,args.output,args.checkpoint,args.command)
     except Exception as error:
-        save(args.output/(args.command+'-error.json'),dict(type=type(error).__name__,message=str(error),action='Stopped; no fallback/retry/refit authorized'))
+        save(args.output/(args.command+'-error.json'),failure_receipt(args.output,error))
         raise
 
 

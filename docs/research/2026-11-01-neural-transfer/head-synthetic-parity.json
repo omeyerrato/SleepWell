@@ -1,0 +1,44 @@
+{
+  "synthetic_only": true,
+  "subject_data_read": false,
+  "outcomes_read": false,
+  "checkpoint_read": false,
+  "study_cache_read": false,
+  "seed": 20261101,
+  "shape": [
+    199,
+    32
+  ],
+  "input_sha256": "4a03fb6450f9c69328d2b979051e327a316e5e9d9c78fb34ea9b51c352504a0d",
+  "synthetic_label_sha256": "bec4d0cf65d0935fa1a2a3f70c5046d0fe5e2221aa88951fc56e3ca24e5f8088",
+  "coefficient_dtype": "float32",
+  "intercept_dtype": "float32",
+  "primary_probability_dtype": "float32",
+  "legacy_max_error": 7.489182485276302e-08,
+  "corrected_max_error": 0.0,
+  "batch_max_errors": {
+    "1": 0.0,
+    "7": 0.0,
+    "64": 0.0,
+    "199": 0.0
+  },
+  "restored_primary_max_error": 0.0,
+  "scaler_max_error": 0.0,
+  "tolerance": 1e-12,
+  "fitted_artifact_sha256": "c826b53f7b3dff6b9b0bdf92ac1db864297e1507cd48e9ed3f94dd67379ae992",
+  "failed_parity_receipt_verified": true,
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "sklearn": "1.9.1"
+  },
+  "installed_primary_source_sha256": {
+    "LogisticRegression.predict_proba": "f36e2938948ce4f3b6c3f407fcb6f20561da6d0e8588367e4860fd7014f3627a",
+    "LinearClassifierMixin.decision_function": "851b08f59af10aab8254185da738e923fef6f060c8dc7742895d8e317c53e992",
+    "LinearClassifierMixin._predict_proba_lr": "435be12ed860030fcd816b91b17ef466bb51e14ed974127bc4d2c263f58ce93b"
+  },
+  "workflow_sha256": "55e31eb2a0d22f8da380fc1ea4a7eee5aaf34cde8b97f3286495590c0abe3aa4",
+  "synthetic_check_sha256": "12309927e8b5f42c0bf5f08e00e5025440221678422bb21cff8333a3ac9679a3",
+  "passed": true
+}
