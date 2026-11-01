@@ -47,6 +47,7 @@ on:
           - local-alternatives-reference
           - draft-challenge-reference
           - recovery-rules-reference
+          - contactless-fallback-reference
           - setup-readiness
           - readiness-recovery
           - protection-recovery

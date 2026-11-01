@@ -15,3 +15,9 @@ The per-glyph classifier now excludes pixels matching the semantic Night Dial gr
 ## Error-state layout buffer
 
 The later41265653342 original passed the light-glyph test and the initial/cancel/recreation/charging states, then a longer prerequisite message clipped one physical pixel from the Microphone target (125 visible of126). The target must keep its complete48dp area. The placement artwork now uses150dp rather than170dp, reserving20dp for real result wrapping while retaining the artwork, full signal chart, status rows, scrolling movement alternative and fixed Test/Use controls. The strict full-height/48dp assertions remain unchanged. This is a measured layout correction, pending its rerun.
+
+## Movement setup must not create recording-state preferences
+
+Run41266940619 attempt2 completed the prerequisite/layout/permission frames, then the strict fixture cleanup observed `{trackingPaused:false, tracking:false}` where no such keys existed before the screen-only fallback. Tracking setup’s existing no-runtime recovery branch unconditionally wrote both false values. It now clears genuinely active/stale flags only when either is true. Actual interrupted-session recovery is still called; a real stale active flag is still cleared. Merely opening an idle setup does not create or rewrite recording flags. The exact preference snapshot assertion, no-output counters and probe-release checks remain.
+
+The remaining check uses its one existing named method in the contactless-fallback-reference scope. The other four alternative methods passed attempt2 (source569a6991); no partial Contactless result is relabeled a PASS.

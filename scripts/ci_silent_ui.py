@@ -59,6 +59,7 @@ parser.add_argument("--scope", choices=(
     'local-alternatives-reference',
     'draft-challenge-reference',
     'recovery-rules-reference',
+    'contactless-fallback-reference',
     'setup-readiness',
     'readiness-recovery',
     'protection-recovery',
@@ -533,6 +534,9 @@ elif args.scope == "completion-reference":
 elif args.scope == "local-alternatives-reference":
     tests = [method["method"].removeprefix("org.sleepwell.app.") for method in ALTERNATIVE_METHODS]
     metadata["local_alternatives_slice"] = "Actual local fallback, rhythm evidence and reviewed travel draft flows; private state and injected physical/service ports"
+elif args.scope == "contactless-fallback-reference":
+    tests = ["ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"]
+    metadata["contactless_fallback_slice"] = "Exact existing prerequisite/cancel/rotation/movement fallback journey; private DB/preferences and fake audio/probe/commands, real native pages; no physical capture"
 elif args.scope == "recovery-rules-reference":
     tests = ["InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity", "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows"]
     metadata["recovery_rules_slice"] = "Real 17-to-18 preservation, interrupted record review/read-only/Keep/manual setup/named discard, and revision-owned automation deletion; private fixtures without outputs"
@@ -754,6 +758,7 @@ if args.scope != "full":
         "local-feature-reference": LOCAL_FEATURE_FRAMES,
         "local-alternatives-reference": ALTERNATIVE_FRAMES,
         "draft-challenge-reference": DRAFT_FRAMES,
+        "contactless-fallback-reference": [name for method in ALTERNATIVES_PLAN["methods"] if "ContactlessSetupFlowTest#" in method["method"] for name in method["required_originals"]],
         "recovery-rules-reference": ["interrupted-recovery-" + name + ".png" for name in ("tonight", "review", "review-restored", "retained-report", "retained-report-restored", "manual-setup", "manual-returned", "reopened", "kept-token-retired", "discard-review", "discard-restored", "stale-discard-rejected", "stale-review", "discard-final", "discarded")] + AUTOMATION_RULE_FRAMES,
         "reference-menus": REFERENCE_MENU_FRAMES,
         "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,
