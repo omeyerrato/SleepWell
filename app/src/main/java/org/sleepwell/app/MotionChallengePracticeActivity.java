@@ -62,7 +62,7 @@ public final class MotionChallengePracticeActivity extends ComponentActivity {
     }
     @Override protected void onResume(){super.onResume();resumed=true;if(hasWindowFocus())render();}
     @Override protected void onPause(){if(ticket!=null)ticket.suspendCapture(this);closeTask();resumed=false;super.onPause();}
-    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){RecordUi.lightBars(this);if(resumed&&task==null)render();}else{if(ticket!=null)ticket.suspendCapture(this);closeTask();}}
+    @Override public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused){RecordUi.lightBars(this);if(resumed&&task==null)render();}else{if(task!=null&&ticket!=null)task.focusLost(ticket.checkpointOwner(this,resumed));if(ticket!=null)ticket.suspendCapture(this);closeTask();}}
     @Override protected void onSaveInstanceState(Bundle saved){remember();super.onSaveInstanceState(saved);}
     @Override protected void onDestroy(){if(ticket!=null)ticket.suspendCapture(this);closeTask();super.onDestroy();}
 }

@@ -26,6 +26,7 @@ final class PracticeMotionTasks implements AutoCloseable {
             default->throw new IllegalArgumentException("This motion adapter is unfinished.");
         }
     }
+    void focusLost(boolean checkpointOwned){if(tilt!=null&&!closed)tilt.pause(checkpointOwned);}
     boolean current(){if(Looper.myLooper()!=Looper.getMainLooper()||closed||!visible.getAsBoolean())return false;try{return !access.busy();}catch(RuntimeException failure){return false;}}
     private int begin(){if(!current())return -1;attempt=ticket.beginCapture(owner,true);return attempt;}
     private boolean listening(int lease){return current()&&ticket.captureCurrent(lease);}

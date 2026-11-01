@@ -31,6 +31,8 @@ final class PracticeChildTicket {
         Ticket(ChallengePracticeSession parent){this.parent=parent;nonce=UUID.randomUUID().toString();run=parent.run;snapshot=parent.snapshot;unit=parent.completed();ChallengeRoutine.Position at=parent.position();task=at.task;round=at.round;configuration=key(task);deadline=SystemClock.elapsedRealtime()+LIFETIME;Bundle draft=parent.draft();checkpoint=draft==null?null:draft.getBundle("motionCheckpoint");}
         private boolean live(){return !consumed&&SystemClock.elapsedRealtime()<=deadline&&issued.get(nonce)==this&&parent.child(nonce,unit,configuration);}
         boolean captureOwner(Activity owner,boolean resumed){return main()&&resumed&&live()&&!published&&child.get()==owner&&!owner.isDestroyed()&&!owner.isFinishing()&&owner.hasWindowFocus()&&owner.getWindow().getDecorView().isAttachedToWindow();}
+        /** Retains already admitted state on focus loss; never admits input or a result. */
+        boolean checkpointOwner(Activity owner,boolean resumed){return main()&&resumed&&live()&&!published&&child.get()==owner&&!owner.isDestroyed()&&!owner.isFinishing()&&owner.getWindow().getDecorView().isAttachedToWindow();}
         boolean cleanupOwner(Activity owner,boolean resumed){return main()&&resumed&&child.get()==owner&&!published&&!owner.isDestroyed()&&!owner.isFinishing()&&owner.hasWindowFocus()&&owner.getWindow().getDecorView().isAttachedToWindow();}
         boolean belongs(String type){return main()&&live()&&task.type.equals(type);}
         int beginCapture(Activity owner,boolean resumed){requireMain();if(!captureOwner(owner,resumed)||earnedAttempt>=0||capture!=null&&capture!=this)return -1;capture=this;attempt++;cleanedAttempt=-1;capturing=true;return attempt;}
