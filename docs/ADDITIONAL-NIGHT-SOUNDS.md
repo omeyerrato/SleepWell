@@ -75,6 +75,14 @@ waiting/partial windows; after termination it is captured but not analyzed.
 An unfinished receipt on an ended night is reported as interrupted. No receipt
 means not requested or unavailable after portable restore, never zero detections.
 
+Each result transaction also advances analyzed coverage, its minimum captured
+coverage, and the corresponding skipped difference atomically with the window.
+Later offered-sample status updates preserve those committed totals. Reads derive
+analyzed duration from the actual retained windows, so interruption between result
+commit and a later status checkpoint cannot display a saved candidate with zero
+analyzed duration. The last larger offered-sample total is retained; uncheckpointed
+samples lost in process death are not invented.
+
 Window diagnostics retain inference wall milliseconds and Java used heap sampled
 after inference. That heap value is neither native memory nor the model's added
 RAM. Actual Android one-thread p95 latency and process-memory measurements must

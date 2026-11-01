@@ -32,8 +32,10 @@ final class AdditionalSoundStore {
             String stored=row.optString("state");boolean lost=ended&&Set.of("pending","active","paused").contains(stored);
             state=lost?"interrupted":stored;issue=lost?"Additional analysis did not acknowledge completion; only saved windows are available.":row.optString("issue");
             source=row.optString("source");modelVersion=row.optString("model");policyVersion=row.optString("policy");
-            capturedMs=row.optLong("captured_samples")/16;analyzedMs=row.optLong("analyzed_samples")/16;skippedMs=row.optLong("skipped_samples")/16;
-            windowCount=row.optInt("windows");laughterCount=row.optInt("laughter");instrumentCount=row.optInt("instruments");
+            // Actual committed windows remain evidence even if the process died before a later
+            // capture-total checkpoint. Never display a candidate with zero analyzed coverage.
+            analyzedMs=row.optLong("saved_duration_ms");capturedMs=Math.max(row.optLong("captured_samples")/16,analyzedMs);skippedMs=capturedMs-analyzedMs;
+            windowCount=row.optInt("saved_windows");laughterCount=row.optInt("laughter");instrumentCount=row.optInt("instruments");
             maxInferenceMs=row.optLong("max_inference_ms");maxJavaHeapBytes=row.optLong("max_java_heap_bytes");
         }
     }
@@ -51,7 +53,7 @@ final class AdditionalSoundStore {
         }
     }
     static Snapshot read(Store store,long session) {
-        List<JSONObject> rows=store.rows("SELECT a.*,s.end FROM additional_sound_nights a JOIN sessions s ON s.id=a.session AND s.start=a.raw_start WHERE a.session=?",""+session);
+        List<JSONObject> rows=store.rows("SELECT a.*,s.end,(SELECT COUNT(*) FROM additional_sound_windows w WHERE w.session=a.session AND w.token=a.token) AS saved_windows,(SELECT COALESCE(SUM(w.duration_ms),0) FROM additional_sound_windows w WHERE w.session=a.session AND w.token=a.token) AS saved_duration_ms FROM additional_sound_nights a JOIN sessions s ON s.id=a.session AND s.start=a.raw_start WHERE a.session=?",""+session);
         return rows.isEmpty()?new Snapshot(session):new Snapshot(rows.get(0),!rows.get(0).isNull("end"));
     }
     /** Pinned receipt is required; an old page can never retarget a reused record ID. */
@@ -71,17 +73,20 @@ final class AdditionalSoundStore {
             db.insertOrThrow("additional_sound_nights",null,v);db.setTransactionSuccessful();
         }finally{db.endTransaction();}
     }
-    private static void require(Store store,long session,long start,String token) {
-        if(store.rows("SELECT a.session FROM additional_sound_nights a JOIN sessions s ON s.id=a.session AND s.start=a.raw_start WHERE a.session=? AND a.raw_start=? AND a.token=?",""+session,""+start,token).size()!=1)throw new IllegalStateException("Additional sound recording was deleted or replaced.");
+    private static JSONObject require(Store store,long session,long start,String token) {
+        List<JSONObject> rows=store.rows("SELECT a.* FROM additional_sound_nights a JOIN sessions s ON s.id=a.session AND s.start=a.raw_start WHERE a.session=? AND a.raw_start=? AND a.token=?",""+session,""+start,token);
+        if(rows.size()!=1)throw new IllegalStateException("Additional sound recording was deleted or replaced.");return rows.get(0);
     }
     static void status(Store store,long session,long start,String token,String state,String issue,long captured,long analyzed,long skipped) {
-        if(!STATES.contains(state)||captured<0||analyzed<0||skipped<0||analyzed+skipped>captured)throw new IllegalArgumentException("Invalid additional sound coverage.");
-        SQLiteDatabase db=store.getWritableDatabase();db.beginTransaction();try{require(store,session,start,token);ContentValues v=new ContentValues();v.put("state",state);v.put("issue",issue);v.put("captured_samples",captured);v.put("analyzed_samples",analyzed);v.put("skipped_samples",skipped);db.update("additional_sound_nights",v,"session=? AND token=?",new String[]{""+session,token});db.setTransactionSuccessful();}finally{db.endTransaction();}
+        if(!STATES.contains(state)||captured<0||analyzed<0||skipped<0||skipped>captured||analyzed>captured-skipped)throw new IllegalArgumentException("Invalid additional sound coverage.");
+        SQLiteDatabase db=store.getWritableDatabase();db.beginTransaction();try{JSONObject prior=require(store,session,start,token);long committed=prior.optLong("windows")*AdditionalSoundNight.WINDOW_SAMPLES;if(analyzed>committed)throw new IllegalArgumentException("Coverage requires committed sound windows.");long seen=Math.max(Math.max(captured,prior.optLong("captured_samples")),committed);ContentValues v=new ContentValues();v.put("state",state);v.put("issue",issue);v.put("captured_samples",seen);v.put("analyzed_samples",committed);v.put("skipped_samples",seen-committed);db.update("additional_sound_nights",v,"session=? AND token=?",new String[]{""+session,token});db.setTransactionSuccessful();}finally{db.endTransaction();}
     }
     static void append(Store store,long session,long start,String token,long sequence,String segment,long at,RecordedSoundAnalyzer.Window window,long inferenceMs,long heap) throws Exception {
         if(sequence<1||sequence>MAX_WINDOWS||at<start||window.durationMs!=10000||inferenceMs<0||heap<0)throw new IllegalArgumentException("Invalid additional sound window.");
         SQLiteDatabase db=store.getWritableDatabase();db.beginTransaction();try{require(store,session,start,token);ContentValues v=new ContentValues();v.put("session",session);v.put("token",token);v.put("sequence",sequence);v.put("segment",segment);v.put("time",at);v.put("duration_ms",window.durationMs);v.put("payload",window.json().toString());v.put("inference_ms",inferenceMs);v.put("java_heap_bytes",heap);db.insertOrThrow("additional_sound_windows",null,v);
-            db.execSQL("UPDATE additional_sound_nights SET windows=windows+1,laughter=laughter+?,instruments=instruments+?,max_inference_ms=MAX(max_inference_ms,?),max_java_heap_bytes=MAX(max_java_heap_bytes,?) WHERE session=? AND token=?",new Object[]{window.candidate.equals("laughter")?1:0,window.candidate.equals("instrument")?1:0,inferenceMs,heap,session,token});db.setTransactionSuccessful();
+            // SQLite evaluates every RHS against the old row. Coverage and its actual window
+            // therefore commit together; preserve the last larger offered-sample checkpoint.
+            db.execSQL("UPDATE additional_sound_nights SET analyzed_samples=(windows+1)*160000,captured_samples=MAX(captured_samples,(windows+1)*160000),skipped_samples=MAX(captured_samples,(windows+1)*160000)-(windows+1)*160000,windows=windows+1,laughter=laughter+?,instruments=instruments+?,max_inference_ms=MAX(max_inference_ms,?),max_java_heap_bytes=MAX(max_java_heap_bytes,?) WHERE session=? AND token=?",new Object[]{window.candidate.equals("laughter")?1:0,window.candidate.equals("instrument")?1:0,inferenceMs,heap,session,token});db.setTransactionSuccessful();
         }finally{db.endTransaction();}
     }
     private AdditionalSoundStore() {}
