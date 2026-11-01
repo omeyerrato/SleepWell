@@ -19,3 +19,7 @@ Additional actual capture names are `tags-with-group.png`,
 
 Native execution and visual acceptance of this increment are pending integration.
 This does not accept all tag quantities, devices or statistical associations.
+
+## Actual native run correction — 1 November
+
+Run 41254733103 failed before quantity input: the existing fixture waited for the retired inline `Set tag quantity` control. The original failure PNG shows the implemented editor’s `Details` action, with accessibility name `Tag details and quantities`. The journey now enters that actual sheet and selects `Set quantity for Coffee`, then reopens the same sheet for `Manage saved tags`. Quantity persistence, exact contributing IDs, immutable record fingerprint, recreation, rename and delete assertions remain. This is a fixture route correction; it is not evidence of a passing rerun or a production layout fix.
