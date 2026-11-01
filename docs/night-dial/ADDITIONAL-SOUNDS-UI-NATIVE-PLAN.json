@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "source_parent_revision": "cddd51e5",
+  "native_status": "not_run_pending_backend_integration_and_root_verification",
+  "reliable_automatic_sound_quality_complete": false,
+  "scope": "Default-off experimental automatic supplementary sound estimates; UI and read-only provenance only",
+  "dependencies": [
+    "AdditionalSoundSettings and AdditionalSoundStore APIs owned by interaction_security_finish",
+    "Store19/capture/bundled-model integration owned by interaction_security_finish",
+    "Focused licensed-fixture native/performance method and runner ownership assigned to phone_stage_contract_progress/root"
+  ],
+  "ui_paths": [
+    "Settings > Sound analysis > Sound sensitivity > Additional sounds",
+    "Search settings > Additional sounds",
+    "Saved night > Your night > Additional sounds (only a real per-night requested receipt; never retained recovery read-only Report)",
+    "Additional sounds > About additional sounds"
+  ],
+  "controls": {
+    "draft_toggle_accessibility_label": "Experimental additional sound estimates",
+    "save": "Save additional sounds",
+    "cancel": "Cancel",
+    "dirty_back": [
+      "Discard changes",
+      "Keep editing"
+    ],
+    "pages": [
+      "Earlier windows",
+      "Later windows"
+    ],
+    "refresh": "Refresh results",
+    "retry": "Try again"
+  },
+  "api_wrappers": {
+    "AdditionalSoundsActivity.forRecord(Activity, AdditionalSoundStore.Snapshot)": "Private destination intent with requested result session/token/rawStart; refuses absent result identity",
+    "AdditionalSoundsActivity.awaitWorkers(long)": "Native fixture cleanup/barrier for the retained UI worker; call off the UI thread, then drain main-thread work before inspecting views",
+    "AdditionalSoundsJob": "Retains only application context/worker and pinned Records.Factory; no model/capture/playback/permission owner"
+  },
+  "meaningful_native_assertions": [
+    "Default missing preference is off. Toggle edits draft only; Cancel and dirty Back/Keep editing do not persist. Draft and dirty review survive recreation.",
+    "Actual Save changes only AdditionalSoundSettings.KEY; noiseEnabled, consent/permission state, snoring cues and unrelated preferences stay exact. Saved opt-in is future-night/device-local only.",
+    "Use the actual Report loader and attached Additional sounds row for a licensed-fixture recording with a real persisted AdditionalSoundStore receipt. Exact source token and rawStart must reach the private read-only view.",
+    "Real captured/analyzed/not-analyzed coverage, completed-window counts and candidate/uncertain counts match the persisted receipt. Zero candidates and zero windows explicitly remain unknown, never absence.",
+    "A page has at most20 actual10-second windows with original dates/times. Later/Earlier and recreation retain page and genuine scroll; About/Back preserves the invoking page/scroll.",
+    "Technical model/policy/source/segment/resource/estimate payload is under About; the main view uses candidate wording and does not expose scores as confidence percentages.",
+    "A retained result route whose local derived row is absent after restore displays truthful not-requested-or-not-restored copy; it never substitutes current global opt-in for that historical result.",
+    "Changed token/rawStart or Records.Factory, missing record and read errors fail closed before any page can retarget. Record return/resume rechecks persisted identity and clears old content while loading.",
+    "The actual40A retained read-only Report has no Additional sounds route and performs no new additional-results query. No raw-ID shortcut is added to its action scope.",
+    "Opening settings, Report, results, pages and About is silent. Base sound_events, corrected labels, saved audio, cue/automation authority and record JSON remain unchanged.",
+    "Portable backup14/settings profile exclude the opt-in and derived data; Backup exclusions explain this truthfully. Existing offline recorded-analysis job authority is unchanged."
+  ],
+  "capture_contract": "Native author confirmed these9 actual-frame names and two methods; source/test plan only, no run or capture exists from this UI implementation task. Lifecycle fixture uses one real10-second licensed window; it does not certify multi-page results or restored-absence visual states.",
+  "verification_performed_here": [
+    "Read current Night Dial design/handoff and existing settings, Report, backup and search authority",
+    "Read backend owner's actual API sources without editing them",
+    "Reviewed lifetime/render-epoch guards, worker-only preference/DB reads and explicit Save-only mutation",
+    "git diff --check"
+  ],
+  "not_run_here": [
+    "build",
+    "native run",
+    "hosted CI",
+    "unit campaign",
+    "phone actions",
+    "capture",
+    "alarm/audio outputs",
+    "model evaluation or heldout replay",
+    "downloads"
+  ],
+  "limits": "Source implementation pending integrated build/native/actual visual review. This feature exposes explicit default-off experimental candidates only. It does not close reliable automatic bedroom recognition, model-quality, full-app, overnight, physical-device or complete43-flow acceptance. No accepted heldout result is retuned or replayed.",
+  "native_methods": [
+    "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+    "org.sleepwell.app.AdditionalSoundsNativeFlowTest#singleThreadPerformanceAndBoundedQueueRetireLateWork"
+  ],
+  "native_recovery_regression": "Existing InterruptedRecoveryFlowTest method/15-frame cohort owned by root/native author adds retained read-only route-absence assertion.",
+  "required_ui_captures": [
+    "additional-settings-default.png",
+    "additional-settings-draft-restored.png",
+    "additional-settings-dirty-restored.png",
+    "additional-settings-saved.png",
+    "additional-report-entry.png",
+    "additional-record-results.png",
+    "additional-record-restored.png",
+    "additional-record-about.png",
+    "additional-record-unavailable.png"
+  ],
+  "additional_source_behaviors_pending_specific_native_evidence": [
+    "20-window pagination and page2 recreation",
+    "No-local/not-requested-or-restored-absence copy",
+    "Preference read/save error retry"
+  ]
+}

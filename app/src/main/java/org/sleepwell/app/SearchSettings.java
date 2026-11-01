@@ -116,7 +116,8 @@ final class SearchSettings {
         direct("Room conditions",SLEEP,"Room conditions","Live light, optional sound level and screen dimming","room conditions ambient light lux brightness sound level rms microphone screen dimming dim wind down bedtime",RoomConditionsActivity.class),
         alarm("Flashlight wake-up","Alarm sound › Gentle wake-up › Flashlight wake-up","flashlight torch flashing flash wake up wakeup light","flashlight"),
         alarm("Alarm sound","Alarm sound","ringtone tone playlist radio import music audio volume sound","sound"),
-        detail("Report editing",SLEEP,"Reports","Choose a saved night, then Edit report; changes stay in a draft until Save","edit editing report reportediting sleep period awake annotations bedtime wake up tags notes manual history",HistoryActivity.class,"historyPage","records")
+        detail("Report editing",SLEEP,"Reports","Choose a saved night, then Edit report; changes stay in a draft until Save","edit editing report reportediting sleep period awake annotations bedtime wake up tags notes manual history",HistoryActivity.class,"historyPage","records"),
+        direct("Additional sounds",SOUND,"Sound sensitivity › Additional sounds","Device-local opt-in for experimental future-night laughter and instrument estimates","automatic supplementary additional laughter laugh instruments experimental microphone future nights",AdditionalSoundsActivity.class)
     );
     static List<SearchIndex.Entry> entries(){List<SearchIndex.Entry> rows=new ArrayList<>();for(int n=0;n<DESTINATIONS.size();n++){Destination d=DESTINATIONS.get(n);rows.add(new SearchIndex.Entry(SearchIndex.Kind.SETTING,n,d.title,d.path+"\n"+d.description,d.terms,d.category));}return List.copyOf(rows);}
     static final class Shortcut {

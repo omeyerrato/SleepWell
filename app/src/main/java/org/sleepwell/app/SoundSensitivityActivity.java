@@ -83,6 +83,7 @@ public final class SoundSensitivityActivity extends androidx.activity.ComponentA
             Design.text(body, "Choose what to keep from the next night.", 14, 400, Design.MUTED); Design.space(body, 12);
             SoundSettingsUi.navigation(body, "wave", "Detected categories", draft.selectedCount() + " of 6 selected", () -> go("categories")); Design.line(body);
             SoundSettingsUi.navigation(body, "clock", "Event duration", durationSummary(), () -> go("durations")); Design.line(body);
+            RecordUi.enabled(SoundSettingsUi.navigation(body, "wave", "Additional sounds", "Experimental laughter & instrument estimates", () -> startActivity(RecordUi.intent(this, AdditionalSoundsActivity.class))), !busy); Design.line(body);
             Design.space(body, 14);
             View reset = Design.button(body, "Restore defaults", false, () -> { draft = SoundSensitivity.DEFAULT; selectionError = ""; render(); });
             reset.setContentDescription("Restore sound sensitivity defaults"); RecordUi.enabled(reset, !busy);
