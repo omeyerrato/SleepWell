@@ -1,5 +1,5 @@
 {
-  "activity_count": 128,
+  "activity_count": 130,
   "flow_count": 43,
   "full_acceptance": false,
   "meaning": "Route accounting only; see revision-specific native evidence and PROGRESS.md for acceptance.",
@@ -64,7 +64,8 @@
       "flow": "Snooze, backup and input",
       "activities": [
         "AlarmEditorActivity",
-        "WakeCheckActivity"
+        "WakeCheckActivity",
+        "WakeCheckPracticeActivity"
       ]
     },
     {
@@ -180,7 +181,8 @@
       "activities": [
         "SleepSoundsActivity",
         "BinauralSettingsActivity",
-        "ExternalMediaFadeActivity"
+        "ExternalMediaFadeActivity",
+        "NarrationVoiceActivity"
       ]
     },
     {
@@ -314,7 +316,8 @@
         "TravelCueReviewActivity",
         "CalendarRulesActivity",
         "AlarmBedtimeActivity",
-        "TripSleepActivity"
+        "TripSleepActivity",
+        "NextAlarmOverrideActivity"
       ]
     },
     {
@@ -410,7 +413,8 @@
         "MainActivity",
         "AlarmEditorActivity",
         "TrackingActivity",
-        "BackupActivity"
+        "BackupActivity",
+        "InterruptedRecordActivity"
       ]
     },
     {
@@ -805,6 +809,12 @@
       ]
     },
     {
+      "activity": "InterruptedRecordActivity",
+      "boards": [
+        40
+      ]
+    },
+    {
       "activity": "LibraryAudioExportActivity",
       "boards": [
         36
@@ -882,13 +892,15 @@
     {
       "activity": "NarrationVoiceActivity",
       "boards": [
-        18
+        18,
+        19
       ]
     },
     {
       "activity": "NextAlarmOverrideActivity",
       "boards": [
-        5
+        5,
+        31
       ]
     },
     {
@@ -1288,6 +1300,12 @@
       "boards": [
         7,
         17
+      ]
+    },
+    {
+      "activity": "WakeCheckPracticeActivity",
+      "boards": [
+        7
       ]
     }
   ]

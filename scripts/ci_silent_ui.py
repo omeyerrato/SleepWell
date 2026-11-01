@@ -58,6 +58,7 @@ parser.add_argument("--scope", choices=(
     'local-feature-reference',
     'local-alternatives-reference',
     'draft-challenge-reference',
+    'recovery-rules-reference',
     'setup-readiness',
     'readiness-recovery',
     'protection-recovery',
@@ -171,11 +172,13 @@ LOCAL_PLAN = json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial/
 def completion_plan(name):
     return json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial" / name).read_text(encoding="utf-8"))
 ALTERNATIVES_PLAN = completion_plan("LOCAL-ALTERNATIVES-NATIVE-PLAN.json")
-RHYTHM_PLAN = completion_plan("RHYTHM-EVIDENCE-NATIVE-PLAN.json")
+RHYTHM_PLAN = completion_plan("RHYTHM-EVIDENCE-SCROLL-NATIVE-PLAN.json")
 EMERGENCY_PLAN = completion_plan("CHALLENGE-EMERGENCY-FOCUS-NATIVE-PLAN.json")
 PRACTICE_PLAN = completion_plan("WAKE-CHECK-PRACTICE-NATIVE-PLAN.json")
 RANDOM_PLAN = completion_plan("RANDOM-POOL-DRAFT-NATIVE-PLAN.json")
-ALTERNATIVE_METHODS = ALTERNATIVES_PLAN["methods"] + RHYTHM_PLAN["methods"]
+TRIP_ADMISSION_PLAN = completion_plan("TRAVEL-OCCURRENCE-ADMISSION-NATIVE-PLAN.json")
+ALTERNATIVE_METHODS = [dict(method, required_originals=TRIP_ADMISSION_PLAN["required_originals"]) if method["method"] == TRIP_ADMISSION_PLAN["method"] else method for method in ALTERNATIVES_PLAN["methods"]] + RHYTHM_PLAN["methods"]
+ALTERNATIVE_RECEIPTS = [TRIP_ADMISSION_PLAN["required_proof"], RHYTHM_PLAN["required_proof"]]
 ALTERNATIVE_FRAMES = [name for method in ALTERNATIVE_METHODS for name in method["required_originals"]]
 DRAFT_METHODS = [EMERGENCY_PLAN["method"], PRACTICE_PLAN["method"], RANDOM_PLAN["native_method"]]
 DRAFT_FRAMES = EMERGENCY_PLAN["required_originals"] + PRACTICE_PLAN["required_originals"] + RANDOM_PLAN["required_screenshots"]
@@ -530,6 +533,9 @@ elif args.scope == "completion-reference":
 elif args.scope == "local-alternatives-reference":
     tests = [method["method"].removeprefix("org.sleepwell.app.") for method in ALTERNATIVE_METHODS]
     metadata["local_alternatives_slice"] = "Actual local fallback, rhythm evidence and reviewed travel draft flows; private state and injected physical/service ports"
+elif args.scope == "recovery-rules-reference":
+    tests = ["InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity", "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows"]
+    metadata["recovery_rules_slice"] = "Real 17-to-18 preservation, interrupted record review/read-only/Keep/manual setup/named discard, and revision-owned automation deletion; private fixtures without outputs"
 elif args.scope == "draft-challenge-reference":
     tests = [method.removeprefix("org.sleepwell.app.") for method in DRAFT_METHODS]
     metadata["draft_challenge_slice"] = "Practice-only emergency options, inert Wake-check preview and random-pool draft review; no real alarm or dialer execution"
@@ -748,6 +754,7 @@ if args.scope != "full":
         "local-feature-reference": LOCAL_FEATURE_FRAMES,
         "local-alternatives-reference": ALTERNATIVE_FRAMES,
         "draft-challenge-reference": DRAFT_FRAMES,
+        "recovery-rules-reference": ["interrupted-recovery-" + name + ".png" for name in ("tonight", "review", "review-restored", "retained-report", "retained-report-restored", "manual-setup", "manual-returned", "reopened", "kept-token-retired", "discard-review", "discard-restored", "stale-discard-rejected", "stale-review", "discard-final", "discarded")] + AUTOMATION_RULE_FRAMES,
         "reference-menus": REFERENCE_MENU_FRAMES,
         "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,
         "priority-repair": PRIORITY_REPAIR_FRAMES,
@@ -786,7 +793,7 @@ if args.scope != "full":
         "sensing-travel": SENSING_FRAMES,
         "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES,
     }[args.scope]
-    receipts = DRAFT_RECEIPTS if args.scope == "draft-challenge-reference" else []
+    receipts = DRAFT_RECEIPTS if args.scope == "draft-challenge-reference" else ALTERNATIVE_RECEIPTS if args.scope == "local-alternatives-reference" else []
     failures += [name for name in focused_frames + receipts if not (output / name).is_file()]
     summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "required_evidence_files": receipts, "failures": failures}
     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")

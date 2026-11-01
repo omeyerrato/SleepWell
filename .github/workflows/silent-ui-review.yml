@@ -46,6 +46,7 @@ on:
           - local-feature-reference
           - local-alternatives-reference
           - draft-challenge-reference
+          - recovery-rules-reference
           - setup-readiness
           - readiness-recovery
           - protection-recovery

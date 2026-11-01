@@ -1,6 +1,6 @@
 # Native destination coverage
 
-All 128 manifest Activities are assigned to the 43 flow families. This accounts for routes; it does not establish complete visual, accessibility or hardware acceptance. Native compositions, shared sheets and helper-owned task surfaces are tracked in PROGRESS.md and revision-specific evidence.
+All 130 manifest Activities are assigned to the 43 flow families. This accounts for routes; it does not establish complete visual, accessibility or hardware acceptance. Native compositions, shared sheets and helper-owned task surfaces are tracked in PROGRESS.md and revision-specific evidence.
 
 Regenerate with `python scripts/night_dial_inventory.py`. The command fails when a new manifest destination has no assigned flow.
 
@@ -59,6 +59,7 @@ Regenerate with `python scripts/night_dial_inventory.py`. The command fails when
 | [HueBridgeActivity](../../app/src/main/java/org/sleepwell/app/HueBridgeActivity.java) | 35 |
 | [IncomingAutomationActivity](../../app/src/main/java/org/sleepwell/app/IncomingAutomationActivity.java) | 35 |
 | [IncomingAutomationSettingsActivity](../../app/src/main/java/org/sleepwell/app/IncomingAutomationSettingsActivity.java) | 35 |
+| [InterruptedRecordActivity](../../app/src/main/java/org/sleepwell/app/InterruptedRecordActivity.java) | 40 |
 | [LibraryAudioExportActivity](../../app/src/main/java/org/sleepwell/app/LibraryAudioExportActivity.java) | 36 |
 | [LibraryAudioImportActivity](../../app/src/main/java/org/sleepwell/app/LibraryAudioImportActivity.java) | 36 |
 | [MainActivity](../../app/src/main/java/org/sleepwell/app/MainActivity.java) | 01, 02, 03, 04, 09, 33, 40, 42, 43 |
@@ -70,8 +71,8 @@ Regenerate with `python scripts/night_dial_inventory.py`. The command fails when
 | [NapActivity](../../app/src/main/java/org/sleepwell/app/NapActivity.java) | 30 |
 | [NapProfilesActivity](../../app/src/main/java/org/sleepwell/app/NapProfilesActivity.java) | 30 |
 | [NapProfilesDocumentsActivity](../../app/src/main/java/org/sleepwell/app/NapProfilesDocumentsActivity.java) | 30 |
-| [NarrationVoiceActivity](../../app/src/main/java/org/sleepwell/app/NarrationVoiceActivity.java) | 18 |
-| [NextAlarmOverrideActivity](../../app/src/main/java/org/sleepwell/app/NextAlarmOverrideActivity.java) | 05 |
+| [NarrationVoiceActivity](../../app/src/main/java/org/sleepwell/app/NarrationVoiceActivity.java) | 18, 19 |
+| [NextAlarmOverrideActivity](../../app/src/main/java/org/sleepwell/app/NextAlarmOverrideActivity.java) | 05, 31 |
 | [NoteChallengeActivity](../../app/src/main/java/org/sleepwell/app/NoteChallengeActivity.java) | 15, 42 |
 | [ObjectRecognitionActivity](../../app/src/main/java/org/sleepwell/app/ObjectRecognitionActivity.java) | 14, 42 |
 | [PairMotionActivity](../../app/src/main/java/org/sleepwell/app/PairMotionActivity.java) | 22 |
@@ -134,3 +135,4 @@ Regenerate with `python scripts/night_dial_inventory.py`. The command fails when
 | [TypedWakePreviewActivity](../../app/src/main/java/org/sleepwell/app/TypedWakePreviewActivity.java) | 12, 16 |
 | [UninstallProtectionActivity](../../app/src/main/java/org/sleepwell/app/UninstallProtectionActivity.java) | 33 |
 | [WakeCheckActivity](../../app/src/main/java/org/sleepwell/app/WakeCheckActivity.java) | 07, 17 |
+| [WakeCheckPracticeActivity](../../app/src/main/java/org/sleepwell/app/WakeCheckPracticeActivity.java) | 07 |
