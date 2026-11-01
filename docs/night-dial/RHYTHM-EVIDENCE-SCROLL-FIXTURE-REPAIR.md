@@ -65,3 +65,25 @@ remain. All15 original names and the proof receipt remain required.
 No production code changed. This failure remains failed until the consolidated
 rerun passes; no separate build, CI dispatch, native run or phone action was
 performed for this correction.
+
+## Workday return readiness
+
+Run `41265653342` at `e481138a` passed the contributor return, evidence recreation
+and Older/Newer checks, then failed after Save workdays. The native test still
+required a visible `Bedtime range` node at that return. Its original failure
+PNG/XML instead shows the correctly returned, nonzero Rhythm viewport: selected
+night, Social jetlag, 21-of-30 unknown-chronotype state, and the updated workday
+summary. The range/header are above it. This failure was not a Back injection
+acknowledgement failure.
+
+Save and the analogous later Cancel/reopen return now use the same loaded,
+resumed, exact focused-owner/native-tree readiness and committed-frame check as
+recreation. Neither transition seeks the range/header or moves the viewport.
+Each workday entry now records its real nonzero Rhythm scroll and requires that
+exact position on return. The actual saved mask62, preference key set, calculated
+Social jetlag, Cancel preserving the saved mask, unchanged dataset and empty-state
+assertions remain; the proof additionally records both real scroll positions.
+
+All15 original filenames and the same proof remain required. This is a fixture
+correction with no production source change or additional local run. The latest
+failure remains historical until the complete consolidated journey passes.
