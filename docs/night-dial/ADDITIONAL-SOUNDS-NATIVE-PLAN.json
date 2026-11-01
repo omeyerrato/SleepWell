@@ -82,9 +82,9 @@
   "source_files": [
     {
       "file": "app/src/androidTest/java/org/sleepwell/app/AdditionalSoundsNativeFlowTest.java",
-      "working_bytes_sha256": "e7da89f005edc0da574e29134ef68e5cfd0834b229fba2b778fcac4830a3b57d",
-      "git_blob_if_staged": "b2f08da3370a2521b6c07acfa987f27412af796b",
-      "staged_content_sha256": "e7da89f005edc0da574e29134ef68e5cfd0834b229fba2b778fcac4830a3b57d"
+      "working_bytes_sha256": "ee5a28d16df16db201ac530e80fca0f4b670903f7e2cada83b403195184381c8",
+      "git_blob_if_staged": "6cecf7e5dcd460c22c359a4e93f1f289a80ec5cd",
+      "staged_content_sha256": "ee5a28d16df16db201ac530e80fca0f4b670903f7e2cada83b403195184381c8"
     },
     {
       "file": "app/src/androidTest/java/org/sleepwell/app/InterruptedRecoveryFlowTest.java",
