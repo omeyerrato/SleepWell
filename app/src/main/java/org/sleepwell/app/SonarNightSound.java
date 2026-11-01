@@ -4,7 +4,7 @@ import java.util.concurrent.*;
 
 /** Per-night immutable consent and ordered sound persistence. No microphone, files or cue output. */
 final class SonarNightSound {
-    interface Port {void event(long at,long duration,String category,double score)throws Exception;void status(SoundAnalysisStatus status)throws Exception;default void clip(SonarSoundClips.Clip clip)throws Exception{throw new IllegalStateException("Contactless clip persistence unavailable");}}
+    interface Port {default AdditionalSoundNight additional(){return null;}void event(long at,long duration,String category,double score)throws Exception;void status(SoundAnalysisStatus status)throws Exception;default void clip(SonarSoundClips.Clip clip)throws Exception{throw new IllegalStateException("Contactless clip persistence unavailable");}}
     private static final class Event {final long at,duration;final String category;final double score;Event(long at,int windows,String category,double score){this.at=at;duration=windows*975L;this.category=category;this.score=score;}}
     static final class Segment {
         final ArrayBlockingQueue<SonarSoundClips.Clip> clips;final ArrayBlockingQueue<Event> events;final long start,base;final SonarSoundWorker worker;
@@ -20,8 +20,8 @@ final class SonarNightSound {
     Segment begin(long start,long wallAnchor,long elapsedAnchorNanos,Executor storage){
         if(!requested)return null;if(!issue.isEmpty()){if(saved.isEmpty())try{port.status(state());saved="error:0:"+issue;}catch(Exception failure){throw new IllegalStateException("Could not save unavailable sound status",failure);}return null;}
         if(current!=null&&!current.closed)throw new IllegalStateException("Previous sound worker has not acknowledged cleanup");
-        ArrayBlockingQueue<Event> events=new ArrayBlockingQueue<>(64);ArrayBlockingQueue<SonarSoundClips.Clip> recordings=new ArrayBlockingQueue<>(2);
-        SonarSoundWorker worker=new SonarSoundWorker(factory,(at,n,category,score)->{if(!events.offer(new Event(at,n,category,score)))throw new IllegalStateException("Sound persistence could not keep up");},wallAnchor,elapsedAnchorNanos,storage,sensitivity,clipPolicy,clip->{if(!recordings.offer(clip))throw new IllegalStateException("Recording persistence could not keep up");});
+        AdditionalSoundNight additional=port.additional();AdditionalSoundNight.Segment additionalSegment=additional==null?null:additional.beginSegment();ArrayBlockingQueue<Event> events=new ArrayBlockingQueue<>(64);ArrayBlockingQueue<SonarSoundClips.Clip> recordings=new ArrayBlockingQueue<>(2);
+        SonarSoundWorker worker=new SonarSoundWorker(factory,(at,n,category,score)->{if(!events.offer(new Event(at,n,category,score)))throw new IllegalStateException("Sound persistence could not keep up");},wallAnchor,elapsedAnchorNanos,storage,sensitivity,clipPolicy,clip->{if(!recordings.offer(clip))throw new IllegalStateException("Recording persistence could not keep up");},additional,additionalSegment);
         Segment next=new Segment(start,completed,worker,events,recordings);
         current=next;return next;
     }

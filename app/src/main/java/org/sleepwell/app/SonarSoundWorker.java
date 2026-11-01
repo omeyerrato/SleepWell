@@ -14,9 +14,10 @@ final class SonarSoundWorker {
     private final Thread thread;private volatile boolean stopping,done;private volatile long cutoff=Long.MAX_VALUE,frames;private volatile Result result;private Consumer<Result> finished;
     SonarSoundWorker(SoundAnalysisStream.Factory factory,SoundAnalysis.Group.Sink events,long wall,long elapsedNanos,Executor completion){this(factory,events,wall,elapsedNanos,completion,SoundSensitivity.DEFAULT);}
     SonarSoundWorker(SoundAnalysisStream.Factory factory,SoundAnalysis.Group.Sink events,long wall,long elapsedNanos,Executor completion,SoundSensitivity sensitivity){this(factory,events,wall,elapsedNanos,completion,sensitivity,SonarClipPolicy.OFF,clip->{});}
-    SonarSoundWorker(SoundAnalysisStream.Factory factory,SoundAnalysis.Group.Sink events,long wall,long elapsedNanos,Executor completion,SoundSensitivity sensitivity,SonarClipPolicy policy,Consumer<SonarSoundClips.Clip> recordings){
+    SonarSoundWorker(SoundAnalysisStream.Factory factory,SoundAnalysis.Group.Sink events,long wall,long elapsedNanos,Executor completion,SoundSensitivity sensitivity,SonarClipPolicy policy,Consumer<SonarSoundClips.Clip> recordings){this(factory,events,wall,elapsedNanos,completion,sensitivity,policy,recordings,null,null);}
+    SonarSoundWorker(SoundAnalysisStream.Factory factory,SoundAnalysis.Group.Sink events,long wall,long elapsedNanos,Executor completion,SoundSensitivity sensitivity,SonarClipPolicy policy,Consumer<SonarSoundClips.Clip> recordings,AdditionalSoundNight additional,AdditionalSoundNight.Segment additionalSegment){
         if(completion==null||sensitivity==null)throw new IllegalArgumentException("Missing analysis completion owner or grouping policy");this.completion=completion;
-        thread=new Thread(()->run(factory,events,wall,elapsedNanos,sensitivity,policy,recordings),"SleepWell-sonar-analysis");thread.start();
+        thread=new Thread(()->run(factory,events,wall,elapsedNanos,sensitivity,policy,recordings,additional,additionalSegment),"SleepWell-sonar-analysis");thread.start();
     }
     /** Actual AudioRecord block is copied before return; the capture buffer may immediately be reused. */
     synchronized boolean offer(short[] pcm,int count,long firstNanos,boolean valid){
@@ -34,10 +35,10 @@ final class SonarSoundWorker {
         if(this.finished!=null)throw new IllegalStateException("Analysis finish already requested");this.finished=finished;cutoff=cutoffNanos;stopping=true;
         if(done){Result value=result;completion.execute(()->finished.accept(value));}
     }
-    private void run(SoundAnalysisStream.Factory factory,SoundAnalysis.Group.Sink events,long wall,long elapsedNanos,SoundSensitivity sensitivity,SonarClipPolicy policy,Consumer<SonarSoundClips.Clip> recordings){
+    private void run(SoundAnalysisStream.Factory factory,SoundAnalysis.Group.Sink events,long wall,long elapsedNanos,SoundSensitivity sensitivity,SonarClipPolicy policy,Consumer<SonarSoundClips.Clip> recordings,AdditionalSoundNight additional,AdditionalSoundNight.Segment additionalSegment){
         SonarSoundPipeline pipeline=null;
         try{
-            pipeline=new SonarSoundPipeline(factory,events,wall,elapsedNanos,sensitivity,policy,recordings);
+            pipeline=new SonarSoundPipeline(factory,events,wall,elapsedNanos,sensitivity,policy,recordings,additional,additionalSegment);
             while(true){if(!failure.get().isEmpty()){pipeline.fail(failure.get());break;}Block block;
                 try{block=queue.poll(100,TimeUnit.MILLISECONDS);}catch(InterruptedException interrupted){continue;}
                 if(block==null){if(stopping)break;continue;}
