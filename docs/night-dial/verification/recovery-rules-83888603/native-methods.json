@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "source_commit": "83888603122154abc9c1323d6ea6e65c611167af",
+  "run_id": 41265280017,
+  "scope": "recovery-rules-reference",
+  "methods": [
+    {
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "result": "PASS",
+      "run_id": 41265280017,
+      "log": "InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity.txt",
+      "log_sha256": "28a85a316a2e50b98ce5368fc74a5f75e60b665c3577a4ba5a6f97ea72f1aa16",
+      "log_bytes": 838,
+      "seconds": 21.427,
+      "required_originals": [
+        "interrupted-recovery-tonight.png",
+        "interrupted-recovery-review.png",
+        "interrupted-recovery-review-restored.png",
+        "interrupted-recovery-retained-report.png",
+        "interrupted-recovery-retained-report-restored.png",
+        "interrupted-recovery-manual-setup.png",
+        "interrupted-recovery-manual-returned.png",
+        "interrupted-recovery-reopened.png",
+        "interrupted-recovery-kept-token-retired.png",
+        "interrupted-recovery-discard-review.png",
+        "interrupted-recovery-discard-restored.png",
+        "interrupted-recovery-stale-discard-rejected.png",
+        "interrupted-recovery-stale-review.png",
+        "interrupted-recovery-discard-final.png",
+        "interrupted-recovery-discarded.png"
+      ],
+      "source_test": "app/src/androidTest/java/org/sleepwell/app/InterruptedRecoveryFlowTest.java"
+    },
+    {
+      "method": "org.sleepwell.app.AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows",
+      "result": "PASS",
+      "run_id": 41265280017,
+      "log": "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows.txt",
+      "log_sha256": "e812e9924e13d864b2b2e3dd1b5321a8d5bc0ed737c7a950e8f972aef2bf5ba7",
+      "log_bytes": 776,
+      "seconds": 31.227,
+      "required_originals": [
+        "automation-rules-main.png",
+        "automation-rules-options.png",
+        "automation-rules-destination.png",
+        "automation-rule-type-recreated.png",
+        "automation-rule-draft.png",
+        "automation-rule-test-confirmation-recreated.png",
+        "automation-rule-busy-recreated.png",
+        "automation-rules-saved-notice.png",
+        "automation-rules-load-error.png",
+        "automation-rule-reopened.png"
+      ],
+      "source_test": "app/src/androidTest/java/org/sleepwell/app/AutomationStorageTest.java"
+    }
+  ],
+  "native_method_count": 2,
+  "required_original_images": 25,
+  "new_native_run_for_archive": false
+}

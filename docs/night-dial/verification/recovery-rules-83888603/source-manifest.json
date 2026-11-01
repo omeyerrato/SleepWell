@@ -1,0 +1,239 @@
+{
+  "schema": 1,
+  "source_commit": "83888603122154abc9c1323d6ea6e65c611167af",
+  "app_main_tree": "c96213193398a7b3defc1f34edef5fa5ef25fc9d",
+  "database_version": 18,
+  "portable_backup_format": 14,
+  "run_id": 41265280017,
+  "run_url": "https://github.com/omeyerrato/SleepWell/actions/runs/41265280017",
+  "artifact_id": 13067152870,
+  "artifact_name": "silent-android-review",
+  "artifact_zip_bytes": 3389299,
+  "artifact_zip_sha256": "6b4de155160b197ed1989bcfca189beb8f503acc0e76a673f87126e12cfce9a5",
+  "source_files": [
+    {
+      "file": "scripts/ci_silent_ui.py",
+      "git_blob": "08307af51db1d8fc14cc51f7365662442ecb0470",
+      "bytes": 97893,
+      "sha256": "a77763ed6300c09f8cb668df6fe6de58820000a9ddb57b6b34339f128410cbc2"
+    },
+    {
+      "file": ".github/workflows/silent-ui-review.yml",
+      "git_blob": "39d65ca693d6ed9e9d349d3e203b2526e1537558",
+      "bytes": 5128,
+      "sha256": "521d442f07d1def21dd8303b63553d309869fd80b65025d9744b6303cc588b90"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob": "22ddfdb6ab3fb1a01f6b2c4fc4cb8f8a138c0287",
+      "bytes": 23737,
+      "sha256": "43a9bb38017e86906555d91d67c4a7fb71c47536ca7928691c4ff47e6cd475b5"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "git_blob": "6ff773afc4f27b446273b44b742eb510f03c6c28",
+      "bytes": 13256,
+      "sha256": "ff3f97692686aa346b85c0fcdc04037f996539120a95c4848882c20045d4d194"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/InterruptedRecords.java",
+      "git_blob": "665663dc9e95ba0fff900c0fdf6db3899cbe3af2",
+      "bytes": 5690,
+      "sha256": "3db37a736d78183c943a69704e73d6bca40ac46a4f09a6411c0e78b35448a24f"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/InterruptedRecordActivity.java",
+      "git_blob": "9cdce521e82e8f5da10c6a7bad7e50522873a5cf",
+      "bytes": 6385,
+      "sha256": "e01aa431444b2611737b05a0eab0e52ae414b7d4937ffc9ce55c75f5d8c6d487"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/MainActivity.java",
+      "git_blob": "4fd4af6e090fbe2c378670d009c1e9f66a8ad87b",
+      "bytes": 57577,
+      "sha256": "55c4f82cd0768ebe0441e2d8aae86d82f13ae9c73624b2839662d620d39980d6"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/RecordReportActivity.java",
+      "git_blob": "2d845ae74de561923e39e479d25e761f3c0c77b0",
+      "bytes": 7728,
+      "sha256": "8ee5335d9082e721fd06109317d48fedb73a50ebfb9c012069363141f69acb55"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/ReportScreen.java",
+      "git_blob": "1503b894e8af75f719eb6c1c77391e62d1beac79",
+      "bytes": 17625,
+      "sha256": "021eb3e834b62420ff4200f9f2226e774259987579f971d8022947b665d4dccd"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/RecordEditorActivity.java",
+      "git_blob": "f1ed5160d3cd0b5dddafe3462f4060aec7ae3c9d",
+      "bytes": 47433,
+      "sha256": "5c46e8f69edf7d78b9ee4f535653edb53ce2ff085d6a7ccd238d80bb1c7ebb62"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/Records.java",
+      "git_blob": "25368746615d6dc554f0afa239b1586cc20f8bfc",
+      "bytes": 12986,
+      "sha256": "f5ce83129c98ea5e5683e4133579cc7c743afdc5be102732fad1d482ba6a3ca3"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/TrackingActivity.java",
+      "git_blob": "e606ca83cbf42f1d1533bab522855d8676f07d5a",
+      "bytes": 66585,
+      "sha256": "ecff55ff97b0cf9f99e148e9a8bfedcebc1672120036500dc649675fa8566f04"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/AutomationStore.java",
+      "git_blob": "2ea26cd26f3e32b8b3f5fd1e5366a67802435d8e",
+      "bytes": 8482,
+      "sha256": "c8b3e512354e497b12ab0c3789af8bdea6f5c2749e7ac5bab0b41fff4afb6001"
+    },
+    {
+      "file": "app/src/main/java/org/sleepwell/app/AutomationActivity.java",
+      "git_blob": "eca9a18d5ac4de2f8b21f2fde968b51469e11546",
+      "bytes": 40333,
+      "sha256": "1c598e471423dc3512db25c0e01cca8bcef65e34cb2016c9a8b3d1c2d02accc7"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/InterruptedRecoveryFlowTest.java",
+      "git_blob": "e3a1d3efc78966f6660afdae2ea0ecbc8ed2d6d9",
+      "bytes": 19443,
+      "sha256": "692709aaabe95ca7a632a7859dc3ddf67863b455762a986bc7f6a0106af970ee"
+    },
+    {
+      "file": "app/src/androidTest/java/org/sleepwell/app/AutomationStorageTest.java",
+      "git_blob": "690ae598c5e0ccfd11645727d6a8a50cad5fa1c2",
+      "bytes": 28757,
+      "sha256": "ada697b305ce81a4cce9ae9fb7854fb0a637157b9e35308bf7237f4a1aaad255"
+    }
+  ],
+  "copied_original_files": [
+    {
+      "file": "environment.json",
+      "bytes": 958,
+      "sha256": "db36d3eb5b6fb0c9635e798615c75433fc1aa53c1c547e5e8d28f3627ec77dee",
+      "run_id": 41265280017
+    },
+    {
+      "file": "focused-review-summary.json",
+      "bytes": 558,
+      "sha256": "5e796a8161e468b5d96f02652a38efa07e632472c00dbec8d2248a0959e2e226",
+      "run_id": 41265280017
+    },
+    {
+      "file": "InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity.txt",
+      "bytes": 838,
+      "sha256": "28a85a316a2e50b98ce5368fc74a5f75e60b665c3577a4ba5a6f97ea72f1aa16",
+      "run_id": 41265280017
+    },
+    {
+      "file": "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows.txt",
+      "bytes": 776,
+      "sha256": "e812e9924e13d864b2b2e3dd1b5321a8d5bc0ed737c7a950e8f972aef2bf5ba7",
+      "run_id": 41265280017
+    },
+    {
+      "file": "interrupted-recovery-review-restored.png",
+      "bytes": 180291,
+      "sha256": "b4ae9536f92102858e4f82d6b32598d1a497d56448ade24dd72ee5d9764c213a",
+      "run_id": 41265280017
+    },
+    {
+      "file": "interrupted-recovery-retained-report-restored.png",
+      "bytes": 154044,
+      "sha256": "a4d3ff88a46e15c79fdb2dc5008440aad3a3872b1b431620facd295439121ccb",
+      "run_id": 41265280017
+    },
+    {
+      "file": "interrupted-recovery-manual-setup.png",
+      "bytes": 167247,
+      "sha256": "e4e2bc52186c7f8cd203233e9bdadee326962c7695d161b588cdf72511f6760e",
+      "run_id": 41265280017
+    },
+    {
+      "file": "interrupted-recovery-discard-restored.png",
+      "bytes": 137575,
+      "sha256": "8686176a0141af11f14e754fe461aa3e44acff190c88d1385a9fcb84f1a719b6",
+      "run_id": 41265280017
+    },
+    {
+      "file": "interrupted-recovery-stale-discard-rejected.png",
+      "bytes": 109697,
+      "sha256": "1ccf5194d639b5b0668fb67e3db9265f7a8b74ac309f674d801089b2914673bc",
+      "run_id": 41265280017
+    },
+    {
+      "file": "interrupted-recovery-discarded.png",
+      "bytes": 52911,
+      "sha256": "0b679826b51b3687402a63392f55cec9ad11ca06e623b0ff15f32b525569618a",
+      "run_id": 41265280017
+    },
+    {
+      "file": "automation-rule-busy-recreated.png",
+      "bytes": 95188,
+      "sha256": "80c70f4bb1838c1170edd5548d203c15d00c88122801b64dfa78776befec4ad5",
+      "run_id": 41265280017
+    },
+    {
+      "file": "earlier-failures/41262371127/environment.json",
+      "bytes": 958,
+      "sha256": "3b08530cfe45292783ea6215c749ffc8d21de728e7fb543ed6d00164bf128fd1",
+      "run_id": 41262371127
+    },
+    {
+      "file": "earlier-failures/41262371127/focused-review-summary.json",
+      "bytes": 1218,
+      "sha256": "7b12fb1934fb4ce448ccc97665442b8a605db2cac14681315ba04cccc5ddb244",
+      "run_id": 41262371127
+    },
+    {
+      "file": "earlier-failures/41262371127/InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity.txt",
+      "bytes": 2324,
+      "sha256": "477efd13ad6d1a5d6de84161179335a7b16d5c9fdc99caff320164e8389d8493",
+      "run_id": 41262371127
+    },
+    {
+      "file": "earlier-failures/41262371127/AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows.txt",
+      "bytes": 5406,
+      "sha256": "1bbde4b24883fea808a7387c09bd55e7ebb0258773aac9a630ecb59c6a7ca761",
+      "run_id": 41262371127
+    }
+  ],
+  "earlier_failure": {
+    "run_id": 41262371127,
+    "run_url": "https://github.com/omeyerrato/SleepWell/actions/runs/41262371127",
+    "source_commit": "71181142772adb551904519382bb0828408cac36",
+    "app_main_tree": "c96213193398a7b3defc1f34edef5fa5ef25fc9d",
+    "result": "FAIL both selected methods",
+    "original_failure_pngs_in_ignored_cache": [
+      {
+        "original": "interrupted-recovery-failure.png",
+        "sha256": "1ec6aa4940b9716d62306d394bc7846e6a6ae18d156f0d4acd4c596682828d18",
+        "bytes": 52609,
+        "width": 1080,
+        "height": 2316,
+        "committed_original": false
+      },
+      {
+        "original": "automation-rules-failure.png",
+        "sha256": "232d737df89d91ea1c771117df1ef400abea4512ed6c88fd6efdc2ed7264a210",
+        "bytes": 166921,
+        "width": 1080,
+        "height": 2316,
+        "committed_original": false
+      }
+    ],
+    "later_fixture_corrections": [
+      "378219c5: native screen coordinates for interrupted-recovery dialog clicks",
+      "9d707ddd: await actual described activation Switch in automation journey"
+    ]
+  },
+  "limits": [
+    "Selected disposable-emulator cohort only, not whole-app acceptance.",
+    "The v17 migration fixture is made by removing exactly the additive v18 table/trigger and setting version17; it is not an independently supplied old-user database.",
+    "Fake vault and scheduler; no real credential security or remote delivery claim.",
+    "Successful record deletion leaves the parent recovery owner in unavailable/empty state, not an automatic Tonight redirect.",
+    "No process force-stop, physical sensing, playback, alarm delivery, provider writes or new test/build runs for this archive."
+  ]
+}

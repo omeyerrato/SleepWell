@@ -1,0 +1,44 @@
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.InterruptedRecoveryFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+org.sleepwell.app.InterruptedRecoveryFlowTest:
+INSTRUMENTATION_STATUS: test=unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=org.sleepwell.app.InterruptedRecoveryFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: visible Delete record
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.InterruptedRecoveryFlowTest.await(InterruptedRecoveryFlowTest.java:30)
+	at org.sleepwell.app.InterruptedRecoveryFlowTest.unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity(InterruptedRecoveryFlowTest.java:98)
+
+INSTRUMENTATION_STATUS: stream=
+Error in unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity(org.sleepwell.app.InterruptedRecoveryFlowTest):
+java.lang.AssertionError: visible Delete record
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.InterruptedRecoveryFlowTest.await(InterruptedRecoveryFlowTest.java:30)
+	at org.sleepwell.app.InterruptedRecoveryFlowTest.unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity(InterruptedRecoveryFlowTest.java:98)
+
+INSTRUMENTATION_STATUS: test=unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 27.683
+There was 1 failure:
+1) unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity(org.sleepwell.app.InterruptedRecoveryFlowTest)
+java.lang.AssertionError: visible Delete record
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.sleepwell.app.InterruptedRecoveryFlowTest.await(InterruptedRecoveryFlowTest.java:30)
+	at org.sleepwell.app.InterruptedRecoveryFlowTest.unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity(InterruptedRecoveryFlowTest.java:98)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

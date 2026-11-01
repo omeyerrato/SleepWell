@@ -1,0 +1,20 @@
+{
+  "commit": "71181142772adb551904519382bb0828408cac36",
+  "emulator": true,
+  "scope": "recovery-rules-reference",
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no native playback output allowlisted; library uses fake playback",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": false,
+  "startup_focused_samples": 3,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420",
+  "recovery_rules_slice": "Real 17-to-18 preservation, interrupted record review/read-only/Keep/manual setup/named discard, and revision-owned automation deletion; private fixtures without outputs",
+  "test_classes": [
+    "InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+    "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows"
+  ]
+}

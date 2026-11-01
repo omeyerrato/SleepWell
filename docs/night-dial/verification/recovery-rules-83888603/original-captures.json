@@ -1,0 +1,236 @@
+{
+  "schema": 1,
+  "source_commit": "83888603122154abc9c1323d6ea6e65c611167af",
+  "run_id": 41265280017,
+  "required_original_images": 25,
+  "actual_original_images": 25,
+  "contact_overview_inspected": 25,
+  "individually_inspected_and_committed": 7,
+  "captures": [
+    {
+      "original": "interrupted-recovery-tonight.png",
+      "bytes": 333700,
+      "sha256": "a5fab90aa2b6a3702d40f203b5e29770d895c85609b65772ea9904a0db1417b4",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "interrupted-recovery-review.png",
+      "bytes": 180291,
+      "sha256": "b4ae9536f92102858e4f82d6b32598d1a497d56448ade24dd72ee5d9764c213a",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "interrupted-recovery-review-restored.png",
+      "bytes": 180291,
+      "sha256": "b4ae9536f92102858e4f82d6b32598d1a497d56448ade24dd72ee5d9764c213a",
+      "width": 1080,
+      "height": 2316,
+      "review": "individual original and contact overview",
+      "committed_original": "interrupted-recovery-review-restored.png"
+    },
+    {
+      "original": "interrupted-recovery-retained-report.png",
+      "bytes": 154044,
+      "sha256": "a4d3ff88a46e15c79fdb2dc5008440aad3a3872b1b431620facd295439121ccb",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "interrupted-recovery-retained-report-restored.png",
+      "bytes": 154044,
+      "sha256": "a4d3ff88a46e15c79fdb2dc5008440aad3a3872b1b431620facd295439121ccb",
+      "width": 1080,
+      "height": 2316,
+      "review": "individual original and contact overview",
+      "committed_original": "interrupted-recovery-retained-report-restored.png"
+    },
+    {
+      "original": "interrupted-recovery-manual-setup.png",
+      "bytes": 167247,
+      "sha256": "e4e2bc52186c7f8cd203233e9bdadee326962c7695d161b588cdf72511f6760e",
+      "width": 1080,
+      "height": 2316,
+      "review": "individual original and contact overview",
+      "committed_original": "interrupted-recovery-manual-setup.png"
+    },
+    {
+      "original": "interrupted-recovery-manual-returned.png",
+      "bytes": 180291,
+      "sha256": "b4ae9536f92102858e4f82d6b32598d1a497d56448ade24dd72ee5d9764c213a",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "interrupted-recovery-reopened.png",
+      "bytes": 180291,
+      "sha256": "b4ae9536f92102858e4f82d6b32598d1a497d56448ade24dd72ee5d9764c213a",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "interrupted-recovery-kept-token-retired.png",
+      "bytes": 52911,
+      "sha256": "0b679826b51b3687402a63392f55cec9ad11ca06e623b0ff15f32b525569618a",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "interrupted-recovery-discard-review.png",
+      "bytes": 137575,
+      "sha256": "8686176a0141af11f14e754fe461aa3e44acff190c88d1385a9fcb84f1a719b6",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "interrupted-recovery-discard-restored.png",
+      "bytes": 137575,
+      "sha256": "8686176a0141af11f14e754fe461aa3e44acff190c88d1385a9fcb84f1a719b6",
+      "width": 1080,
+      "height": 2316,
+      "review": "individual original and contact overview",
+      "committed_original": "interrupted-recovery-discard-restored.png"
+    },
+    {
+      "original": "interrupted-recovery-stale-discard-rejected.png",
+      "bytes": 109697,
+      "sha256": "1ccf5194d639b5b0668fb67e3db9265f7a8b74ac309f674d801089b2914673bc",
+      "width": 1080,
+      "height": 2316,
+      "review": "individual original and contact overview",
+      "committed_original": "interrupted-recovery-stale-discard-rejected.png"
+    },
+    {
+      "original": "interrupted-recovery-stale-review.png",
+      "bytes": 78121,
+      "sha256": "304dd5563c041ce05844599eba910d7809a044c7b6cdc380b96e64ed9fb2f950",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "interrupted-recovery-discard-final.png",
+      "bytes": 160043,
+      "sha256": "d7a080b259a827ea06fe23acf9bd052332d51affa15bcf498ac0e398b2443374",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "interrupted-recovery-discarded.png",
+      "bytes": 52911,
+      "sha256": "0b679826b51b3687402a63392f55cec9ad11ca06e623b0ff15f32b525569618a",
+      "width": 1080,
+      "height": 2316,
+      "review": "individual original and contact overview",
+      "committed_original": "interrupted-recovery-discarded.png"
+    },
+    {
+      "original": "automation-rules-main.png",
+      "bytes": 160507,
+      "sha256": "fdb9e6997c2d0e2ab005fdf156c4e225999935f13542abe1169a5573da053ecc",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "automation-rules-options.png",
+      "bytes": 99031,
+      "sha256": "6e353406d811dc1fc79902104aafb7cd7ae009ef004b0376dde4b46502e3ed6c",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "automation-rules-destination.png",
+      "bytes": 134081,
+      "sha256": "1340838d11d0564608850cdf4b8abaa038004a3fad083e6d4d65770448fdf9f8",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "automation-rule-type-recreated.png",
+      "bytes": 80715,
+      "sha256": "9099af7171e96ec68810ed582d477b81dd23c945c9fc38cf86b1ccad99070c08",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "automation-rule-draft.png",
+      "bytes": 141561,
+      "sha256": "0446fe313554b274c63d80c54823fd18bef81efb0ab8bc02caa592f1c171da41",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "automation-rule-test-confirmation-recreated.png",
+      "bytes": 123495,
+      "sha256": "98b92a4cc620a744b4b31f18e2ab8da945d8c048eb646ecdcf31a98ebef6d57c",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "automation-rule-busy-recreated.png",
+      "bytes": 95188,
+      "sha256": "80c70f4bb1838c1170edd5548d203c15d00c88122801b64dfa78776befec4ad5",
+      "width": 1080,
+      "height": 2316,
+      "review": "individual original and contact overview",
+      "committed_original": "automation-rule-busy-recreated.png"
+    },
+    {
+      "original": "automation-rules-saved-notice.png",
+      "bytes": 178125,
+      "sha256": "c2885997a2f04f1c83f296ab12b3ca4c6d7c8af8d9b0a8350d07559b59a0cf24",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "automation-rules-load-error.png",
+      "bytes": 199013,
+      "sha256": "68d917e099023a227ac128cf22dbd4bb106a5b80b9a59e5fdfa6c48122240496",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    },
+    {
+      "original": "automation-rule-reopened.png",
+      "bytes": 133801,
+      "sha256": "20a9c0185f558c33076f1bf69eb30182cd138016f023876b58d9e1ae54b9f0a0",
+      "width": 1080,
+      "height": 2316,
+      "review": "contact overview only",
+      "committed_original": null
+    }
+  ]
+}

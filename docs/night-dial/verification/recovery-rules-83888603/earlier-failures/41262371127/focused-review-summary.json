@@ -1,0 +1,35 @@
+{
+  "scope": "recovery-rules-reference",
+  "full_app_review": false,
+  "expected_classes": 2,
+  "expected_methods": 2,
+  "class_results": [
+    {
+      "class": "InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "expected_methods": 1,
+      "passed": false
+    },
+    {
+      "class": "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows",
+      "expected_methods": 1,
+      "passed": false
+    }
+  ],
+  "required_original_images": 25,
+  "required_evidence_files": [],
+  "failures": [
+    "InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+    "AutomationStorageTest#configReopensWithoutPlaintextCredentialsInRows",
+    "interrupted-recovery-stale-discard-rejected.png",
+    "interrupted-recovery-stale-review.png",
+    "interrupted-recovery-discard-final.png",
+    "interrupted-recovery-discarded.png",
+    "automation-rule-type-recreated.png",
+    "automation-rule-draft.png",
+    "automation-rule-test-confirmation-recreated.png",
+    "automation-rule-busy-recreated.png",
+    "automation-rules-saved-notice.png",
+    "automation-rules-load-error.png",
+    "automation-rule-reopened.png"
+  ]
+}
