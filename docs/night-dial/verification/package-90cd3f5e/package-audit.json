@@ -1,0 +1,64 @@
+{
+  "sha256": "3e2ff869a264848c4304da51e29a2f2fc96280b208a921e1d9289b57c169eda7",
+  "bytes": 190494519,
+  "abis": [
+    "arm64-v8a"
+  ],
+  "previous_signer_matches": true,
+  "versionName": "0.1.29",
+  "versionCode": 30,
+  "minSdk": 30,
+  "targetSdk": 36,
+  "bundled_models": [
+    {
+      "name": "assets/mlkit_pose/pose_landmark_detector_lite_f16_inf.tflite",
+      "bytes": 2813968,
+      "sha256": "774adb54eb742c8a7f8fe39b19d0d1ae42cd776015bbdf3e57bde14c5fd8b773"
+    },
+    {
+      "name": "assets/mlkit_pose/pose_person_detector_f16.tflite",
+      "bytes": 2962288,
+      "sha256": "a63c614bef30d35947f13be361820b1e4e3bec9cfeebf4d11216a18373108e85"
+    },
+    {
+      "name": "assets/models_bundled/fssd_25_8bit_gray_v2.tflite",
+      "bytes": 231816,
+      "sha256": "57dc1f2a3b9c0c5d949f21e86767d2bf319f10b09281c04005d82fef7c972fbd"
+    },
+    {
+      "name": "assets/models_bundled/fssd_25_8bit_v2.tflite",
+      "bytes": 232096,
+      "sha256": "d8abae91b0e0af52573c38cbb0a39e34905d4a36cfe54ad59a2fe98351c7f3b4"
+    },
+    {
+      "name": "assets/models_bundled/fssd_medium_8bit_gray_v5.tflite",
+      "bytes": 613080,
+      "sha256": "f0590874fd3a006cb7853796a5217bc8f1b712dc904ae7a680957ff284619372"
+    },
+    {
+      "name": "assets/models_bundled/fssd_medium_8bit_v5.tflite",
+      "bytes": 613352,
+      "sha256": "ae2fa78e29441438e16104b815522660afb139ebf683e51672cadf88d6089ff8"
+    },
+    {
+      "name": "assets/object_efficientnet_lite0.tflite",
+      "bytes": 5434493,
+      "sha256": "aa03e4017f54fd5c743bd397b0a3e136fab0942f9c7cd715064a31ca3e4fc996"
+    },
+    {
+      "name": "assets/recorded-sound/efficientat-instruments.onnx",
+      "bytes": 19516171,
+      "sha256": "7bb4227052d796a1ef35f0a5b703fdd724cd200fc7e6f85087289222e6c5b5c8"
+    },
+    {
+      "name": "assets/recorded-sound/panns-laughter.onnx",
+      "bytes": 16372202,
+      "sha256": "f9dd56478e434e067cef505489d0ae4483d80d357e2c35bc3d94ba432eb08f3f"
+    },
+    {
+      "name": "assets/yamnet.tflite",
+      "bytes": 4126810,
+      "sha256": "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de"
+    }
+  ]
+}
