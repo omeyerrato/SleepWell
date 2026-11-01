@@ -8,6 +8,8 @@ import android.widget.*;
 
 /** Alarm-only layout primitives; callers retain draft values and all navigation/save actions. */
 final class AlarmEditorUi {
+    // The app uses the platform Material theme and owns tint/typeface; no AppCompat widget theme.
+    @android.annotation.SuppressLint("AppCompatCustomView")
     static Button weekday(Context context,String label,String name,boolean selected,boolean enabled,Runnable choose){
         Button button=new Button(context){@Override protected void onSizeChanged(int width,int height,int oldWidth,int oldHeight){super.onSizeChanged(width,height,oldWidth,oldHeight);int diameter=Math.max(0,Math.min(width,height)-Design.dp(context,4)),horizontal=(width-diameter)/2,vertical=(height-diameter)/2;setBackground(new InsetDrawable(Design.touch(context,selected?Design.BROWN:Design.SOFT,24),horizontal,vertical,horizontal,vertical));}};
         button.setStateListAnimator(null);button.setElevation(0);button.setAllCaps(false);button.setText(label);button.setTextSize(16*Appearance.scale(context));button.setTypeface(Design.font(context,600));button.setIncludeFontPadding(false);button.setPadding(0,0,0,0);button.setMinWidth(0);button.setMinimumWidth(0);button.setMinHeight(0);button.setMinimumHeight(0);button.setTextColor(Appearance.color(context,!enabled?NightDialTokens.SECONDARY:selected?NightDialTokens.ACTION_INK:NightDialTokens.SECONDARY));button.setSelected(selected);button.setContentDescription(name);button.setEnabled(enabled);button.setAlpha(enabled?1:.8f);

@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import java.util.concurrent.*;
 
 /** Bounded decorative image reader: black placeholder, worker decode, no retained Activity. */
+// Platform Material theme; image decoding/tint are owned here, with no AppCompat resource loading.
+@android.annotation.SuppressLint("AppCompatCustomView")
 final class NightDialArt extends ImageView {
     private static final ExecutorService READER=Executors.newSingleThreadExecutor(r->new Thread(r,"night-dial-art"));
     private static final Handler MAIN=new Handler(Looper.getMainLooper());
