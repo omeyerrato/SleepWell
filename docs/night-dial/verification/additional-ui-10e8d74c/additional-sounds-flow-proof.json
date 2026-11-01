@@ -1,0 +1,55 @@
+{
+  "fixture": "laughter-morning; existing licensed lifecycle fixture",
+  "pcmSha256": "ddf4f22ae871bc993329571af9660f1daba0b5a6f89ea2d11f77e3e2d222c305",
+  "model": "recorded-experimental-v2-f9dd5647-7bb42270-pann-instrument",
+  "policy": "fsd50k-dev-v2-pann-instrument-035-015",
+  "actualBundledInference": true,
+  "capturedMs": 13670,
+  "analyzedMs": 10000,
+  "skippedMs": 3670,
+  "windows": [
+    {
+      "startMs": 0,
+      "durationMs": 10000,
+      "candidate": "uncertain",
+      "instrumentLabel": "Musical instrument",
+      "laughter": {
+        "score": 0.21625056862831116,
+        "competitor": 0.2501484155654907,
+        "qualifies": false,
+        "index": 16
+      },
+      "instrument": {
+        "score": 0.0036126375198364258,
+        "competitor": 0.3519565165042877,
+        "qualifies": false,
+        "index": 138
+      },
+      "laughterModel": "panns-mobilenetv2-f9dd5647",
+      "instrumentModel": "efficientat-mn10-as-7bb42270",
+      "efficientInstrument": {
+        "score": 0.0036126375198364258,
+        "competitor": 0.3519565165042877,
+        "qualifies": false,
+        "index": 138
+      },
+      "pannInstrument": {
+        "score": 0.013664036989212036,
+        "competitor": 0.2501484155654907,
+        "qualifies": false,
+        "index": 138
+      }
+    }
+  ],
+  "defaultOff": true,
+  "draftRecreatedWithoutSave": true,
+  "explicitSaveAndReopen": true,
+  "futureNightOnly": true,
+  "baseRowsUnchangedBeforeExplicitDelete": true,
+  "portable14Excluded": true,
+  "readonlyActualReportRoute": true,
+  "deletedSourceUnavailable": true,
+  "recordingStarted": false,
+  "audioOutput": false,
+  "accuracyAcceptance": false
+}

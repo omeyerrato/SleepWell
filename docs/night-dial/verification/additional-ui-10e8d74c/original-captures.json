@@ -1,0 +1,247 @@
+{
+  "source_revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6",
+  "required_originals": 24,
+  "missing_originals": [],
+  "captures": [
+    {
+      "name": "additional-record-about.png",
+      "bytes": 411849,
+      "sha256": "f082ab41376d61f4dea9cffe990a18936c23630c0e51a1a902f1cd1bda34ac08",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "visually_opened": true,
+      "archived_original": "originals/additional-record-about.png"
+    },
+    {
+      "name": "additional-record-restored.png",
+      "bytes": 203356,
+      "sha256": "2c658a30e542c13ea8a4082936a939d735ab2167b45a11bc36a3a69a74fb43dc",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "visually_opened": true,
+      "archived_original": "originals/additional-record-restored.png"
+    },
+    {
+      "name": "additional-record-results.png",
+      "bytes": 203356,
+      "sha256": "2c658a30e542c13ea8a4082936a939d735ab2167b45a11bc36a3a69a74fb43dc",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "visually_opened": true,
+      "archived_original": "originals/additional-record-results.png"
+    },
+    {
+      "name": "additional-record-unavailable.png",
+      "bytes": 92972,
+      "sha256": "4096045fa8539292c134c7134eb33ef1fc60c8d638233dc292c42a2e1ae25536",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "visually_opened": true,
+      "archived_original": "originals/additional-record-unavailable.png"
+    },
+    {
+      "name": "additional-report-entry.png",
+      "bytes": 158154,
+      "sha256": "0f6d6efbf2390ad7919fc6519462476a1c551e5f53cda9133e2e83fa22dc3390",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "visually_opened": true,
+      "archived_original": "originals/additional-report-entry.png"
+    },
+    {
+      "name": "additional-settings-default.png",
+      "bytes": 170777,
+      "sha256": "00f5bbd7ef18620dc0237efd0d0d5fa8f8711826c58a010535c1488cdc401c27",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "visually_opened": true,
+      "archived_original": "originals/additional-settings-default.png"
+    },
+    {
+      "name": "additional-settings-dirty-restored.png",
+      "bytes": 168744,
+      "sha256": "18a116150058467879a8f9c37bff8d574648b8411a12116251832a4e69ebed06",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "visually_opened": true,
+      "archived_original": "originals/additional-settings-dirty-restored.png"
+    },
+    {
+      "name": "additional-settings-draft-restored.png",
+      "bytes": 171241,
+      "sha256": "1404041753ec33d262b49fdcb8cf177c9f6f66fa0c31f76086cd73e209c55865",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "visually_opened": true,
+      "archived_original": "originals/additional-settings-draft-restored.png"
+    },
+    {
+      "name": "additional-settings-saved.png",
+      "bytes": 182770,
+      "sha256": "7ae7213dcbf1f3e9223f3804f0b49254bf1d4ef58387af15bc69ac5ce5f77bd7",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "visually_opened": true,
+      "archived_original": "originals/additional-settings-saved.png"
+    },
+    {
+      "name": "interrupted-recovery-discard-final.png",
+      "bytes": 140136,
+      "sha256": "4db3e838286008d84198a795bd1bac3092b2218709a8badaa0659ad5efd37e7c",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": "originals/interrupted-recovery-discard-final.png"
+    },
+    {
+      "name": "interrupted-recovery-discard-restored.png",
+      "bytes": 139557,
+      "sha256": "e8796fc116434aeda4cf9dfc7408405eca068fd02a37ccc2b092faff3db658bc",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-discard-review.png",
+      "bytes": 139557,
+      "sha256": "e8796fc116434aeda4cf9dfc7408405eca068fd02a37ccc2b092faff3db658bc",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-discarded.png",
+      "bytes": 52792,
+      "sha256": "98c1243622bee77a8150afe4e3ddb1f951c6410b7fa4c9be6985ef56d239e0ec",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-kept-token-retired.png",
+      "bytes": 52875,
+      "sha256": "94bc948abdc9d96b172a4d8292ce1e86fd4870dbab9a7427e9402c07feae76a8",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-manual-returned.png",
+      "bytes": 182396,
+      "sha256": "2fd85c325ba3870e8bea6fa43ec516746894410b6ded25ea4ca2f36f9c1c2bff",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-manual-setup.png",
+      "bytes": 167203,
+      "sha256": "408bbafde045411ea391c04a6384ec5ba79218b3bb1cefe1555aa84817802d65",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-reopened.png",
+      "bytes": 182396,
+      "sha256": "2fd85c325ba3870e8bea6fa43ec516746894410b6ded25ea4ca2f36f9c1c2bff",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-retained-report-restored.png",
+      "bytes": 154897,
+      "sha256": "bbf35ff1277033b4a6f7dcc6ef813d896408fe82a44499cc198bc9e2a7ec99ae",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": "originals/interrupted-recovery-retained-report-restored.png"
+    },
+    {
+      "name": "interrupted-recovery-retained-report.png",
+      "bytes": 154897,
+      "sha256": "bbf35ff1277033b4a6f7dcc6ef813d896408fe82a44499cc198bc9e2a7ec99ae",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-review-restored.png",
+      "bytes": 182396,
+      "sha256": "2fd85c325ba3870e8bea6fa43ec516746894410b6ded25ea4ca2f36f9c1c2bff",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-review.png",
+      "bytes": 182396,
+      "sha256": "2fd85c325ba3870e8bea6fa43ec516746894410b6ded25ea4ca2f36f9c1c2bff",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-stale-discard-rejected.png",
+      "bytes": 111096,
+      "sha256": "c4dcd6802d7f97530f932d76cac0204ee75a796952c28609346a0074d6932adc",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-stale-review.png",
+      "bytes": 78083,
+      "sha256": "5cf382241d93d8f2c1c4e03251a5a3519e65046d37cd9577a9091d47900a5861",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    },
+    {
+      "name": "interrupted-recovery-tonight.png",
+      "bytes": 333458,
+      "sha256": "cfecdd210a71346a8b912109803fa0e912d36d5e82236111417497551bd6d8fe",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "visually_opened": true,
+      "archived_original": null
+    }
+  ]
+}

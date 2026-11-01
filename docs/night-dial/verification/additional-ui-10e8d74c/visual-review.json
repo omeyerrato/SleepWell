@@ -1,0 +1,36 @@
+{
+  "source_revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6",
+  "actual_originals_opened": 24,
+  "new_feature_originals": 9,
+  "interrupted_recovery_originals": 15,
+  "tool": "view_image original detail on each actual file; returned previews may be resized or show identical-image deltas",
+  "reference": "Accepted native Night Dial design.md/shared tokens, natural text wrapping, scroll/insets, real counts, zero versus missing, aligned edges and unobscured actions. No web redesign assumptions.",
+  "material_text_or_fixed_action_overlap_found": false,
+  "singular_copy_fixed": {
+    "frames": [
+      "additional-record-results.png",
+      "additional-record-restored.png"
+    ],
+    "actual_text": "Uncertain · 1 window"
+  },
+  "final_discard_toast_outcome": {
+    "frame": "interrupted-recovery-discard-final.png",
+    "toast_over_actions": false,
+    "delete_and_keep_fully_readable": true,
+    "earlier_obscured_original_preserved": "../additional-cee13e91/originals/interrupted-recovery-discard-final.png",
+    "meaning": "Current original confirms the test capture occurs after the preceding toast clears; it does not rewrite earlier evidence or claim the underlying application layout changed."
+  },
+  "remaining_toast_observation": "Stale-review still includes the preceding Android toast low on an otherwise empty page, away from Check again; do not claim all24 captures are toast-free.",
+  "observations": [
+    "Default-off/unsaved recreated switch, dirty-review sheet and saved inline status remain separate and readable.",
+    "Actual Report route states experimental/original-capture scope; results/restoration show13sec captured,10sec analyzed,3sec not analyzed and exactly one uncertain window, matching raw13670/10000/3670ms with normal whole-second display precision.",
+    "About provenance remains technical and scrollable; long model text wraps. No false status-bar overlap or guarantee that all scrollable content fits at once.",
+    "Deleted-source retry stays explicit; retained recovery Report suppresses additional-result navigation. Review/Keep/manual setup/stale rejection and named discard remain visible with accepted native controls."
+  ],
+  "not_exercised": [
+    "Multi-page results/page2 recreation",
+    "Restored-no-local absence copy",
+    "Preference/provider error injection"
+  ],
+  "full172_state_acceptance": false
+}

@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "run_id": 41273655854,
+  "attempt": 1,
+  "run_url": "https://github.com/omeyerrato/SleepWell/actions/runs/41273655854",
+  "scope": "additional-sounds-ui-reference",
+  "source_revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6",
+  "app_main_git_tree": "c77d550d0aca5f12b6660b846e580a98517c9128",
+  "database_schema_version": 19,
+  "portable_backup_format": 14,
+  "artifact_id": 13069609262,
+  "artifact_name": "silent-android-review",
+  "artifact_api_digest": "sha256:8b3eb0236f5b198c2cca3f29439cbf67593b90da5ab901358cdbc8a254e9fdf7",
+  "zip_sha256": "8b3eb0236f5b198c2cca3f29439cbf67593b90da5ab901358cdbc8a254e9fdf7",
+  "zip_bytes": 3821785,
+  "download_count": 1,
+  "verified_members": 37,
+  "passed_methods": 2,
+  "failed_methods": 0,
+  "required_originals": 24,
+  "missing_originals": [],
+  "required_proofs": [
+    "additional-sounds-flow-proof.json",
+    "interrupted-recovery-schema19-proof.json"
+  ],
+  "benchmark_rerun": false,
+  "benchmark_authority": "Earlier actual frozen benchmark remains separately archived at additional-cee13e91; this2-method UI scope contains no performance method or proof.",
+  "actual_lifecycle_result": {
+    "captured_ms": 13670,
+    "analyzed_ms": 10000,
+    "skipped_ms": 3670,
+    "windows": 1,
+    "candidate": "uncertain",
+    "accuracy_acceptance": false
+  },
+  "old_evidence_unchanged": true,
+  "historical_plan_metadata_unchanged": true,
+  "copied_original_files": {
+    "environment.json": {
+      "bytes": 1053,
+      "sha256": "38f665c4307b0a8b21881ad1d169a5d5e2a97211f4455196f7b642c10d336e77"
+    },
+    "focused-review-summary.json": {
+      "bytes": 677,
+      "sha256": "d95bd01372397901f80c7ffcf865ed7623a64804aba2557beda9b540ebdcd2a5"
+    },
+    "startup-focus.txt": {
+      "bytes": 246,
+      "sha256": "367b18a651db4b5195f42db66260693966926473f434e174d0d81713a1d89815"
+    },
+    "additional-sounds-flow-proof.json": {
+      "bytes": 1660,
+      "sha256": "f9c8354357dbe41e1fa851f4924306d41df689506389385c0f7cedb59905cc28"
+    },
+    "interrupted-recovery-schema19-proof.json": {
+      "bytes": 472,
+      "sha256": "a0facedc25c7635fc7d25c2da96d872a6a6057c138c0c6f58b37579c93f70a00"
+    },
+    "artifact-api.json": {
+      "bytes": 723,
+      "sha256": "ac3a6209f18bf573cbab4cd49c111a1f1864b792e3891b117170ebd4337aa0b4"
+    },
+    "run-api.json": {
+      "bytes": 12520,
+      "sha256": "19829dfd3bf20de30d0d085d83248e5b0cc074d9f908209fb5a1aedb26270be5"
+    },
+    "AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture.txt": {
+      "bytes": 829,
+      "sha256": "aa97d8d8cf9670c33eb60e4bfd08a6f1ecedb7cc953e4ae63b10f3ec855dae3d"
+    },
+    "InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity.txt": {
+      "bytes": 838,
+      "sha256": "c54fa78f1b36e072215f0eec27e4c6b5ad14402462e826a4f04f091ae2620cac"
+    },
+    "originals/additional-record-about.png": {
+      "bytes": 411849,
+      "sha256": "f082ab41376d61f4dea9cffe990a18936c23630c0e51a1a902f1cd1bda34ac08"
+    },
+    "originals/additional-record-restored.png": {
+      "bytes": 203356,
+      "sha256": "2c658a30e542c13ea8a4082936a939d735ab2167b45a11bc36a3a69a74fb43dc"
+    },
+    "originals/additional-record-results.png": {
+      "bytes": 203356,
+      "sha256": "2c658a30e542c13ea8a4082936a939d735ab2167b45a11bc36a3a69a74fb43dc"
+    },
+    "originals/additional-record-unavailable.png": {
+      "bytes": 92972,
+      "sha256": "4096045fa8539292c134c7134eb33ef1fc60c8d638233dc292c42a2e1ae25536"
+    },
+    "originals/additional-report-entry.png": {
+      "bytes": 158154,
+      "sha256": "0f6d6efbf2390ad7919fc6519462476a1c551e5f53cda9133e2e83fa22dc3390"
+    },
+    "originals/additional-settings-default.png": {
+      "bytes": 170777,
+      "sha256": "00f5bbd7ef18620dc0237efd0d0d5fa8f8711826c58a010535c1488cdc401c27"
+    },
+    "originals/additional-settings-dirty-restored.png": {
+      "bytes": 168744,
+      "sha256": "18a116150058467879a8f9c37bff8d574648b8411a12116251832a4e69ebed06"
+    },
+    "originals/additional-settings-draft-restored.png": {
+      "bytes": 171241,
+      "sha256": "1404041753ec33d262b49fdcb8cf177c9f6f66fa0c31f76086cd73e209c55865"
+    },
+    "originals/additional-settings-saved.png": {
+      "bytes": 182770,
+      "sha256": "7ae7213dcbf1f3e9223f3804f0b49254bf1d4ef58387af15bc69ac5ce5f77bd7"
+    },
+    "originals/interrupted-recovery-discard-final.png": {
+      "bytes": 140136,
+      "sha256": "4db3e838286008d84198a795bd1bac3092b2218709a8badaa0659ad5efd37e7c"
+    },
+    "originals/interrupted-recovery-retained-report-restored.png": {
+      "bytes": 154897,
+      "sha256": "bbf35ff1277033b4a6f7dcc6ef813d896408fe82a44499cc198bc9e2a7ec99ae"
+    }
+  },
+  "archive_actions": "One explicit-ID artifact download, member/hash/dimension checks and24 actual original visual inspections only",
+  "no_new_runtime_actions": [
+    "build",
+    "CI rerun",
+    "unit campaign",
+    "emulator/phone execution",
+    "capture/playback/alarm output",
+    "model study/heldout replay"
+  ],
+  "limits": [
+    "Default-off operational experimental estimates; reliable recognition remains unfinished.",
+    "Constructed prior schemas prove bounded migration behavior, not independently supplied old-user DBs.",
+    "Source-only pagination/restored absence/error injection remain unexercised.",
+    "No full-app/all43-flow/172-state, overnight or physical-device acceptance."
+  ]
+}

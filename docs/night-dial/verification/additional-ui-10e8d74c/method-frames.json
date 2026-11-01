@@ -1,0 +1,52 @@
+{
+  "source_revision": "10e8d74ccc399c218b4a9502a5a167482fae3fe6",
+  "methods": [
+    {
+      "method": "org.sleepwell.app.AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture",
+      "passed": true,
+      "seconds": 21.854,
+      "log": "AdditionalSoundsNativeFlowTest#settingsAutomaticPcmAndReadOnlyResultsPersistWithoutCapture.txt",
+      "required_originals": [
+        "additional-settings-default.png",
+        "additional-settings-draft-restored.png",
+        "additional-settings-dirty-restored.png",
+        "additional-settings-saved.png",
+        "additional-report-entry.png",
+        "additional-record-results.png",
+        "additional-record-restored.png",
+        "additional-record-about.png",
+        "additional-record-unavailable.png"
+      ],
+      "required_proof": [
+        "additional-sounds-flow-proof.json"
+      ]
+    },
+    {
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "passed": true,
+      "seconds": 19.402,
+      "log": "InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity.txt",
+      "required_originals": [
+        "interrupted-recovery-tonight.png",
+        "interrupted-recovery-review.png",
+        "interrupted-recovery-review-restored.png",
+        "interrupted-recovery-retained-report.png",
+        "interrupted-recovery-retained-report-restored.png",
+        "interrupted-recovery-manual-setup.png",
+        "interrupted-recovery-manual-returned.png",
+        "interrupted-recovery-reopened.png",
+        "interrupted-recovery-kept-token-retired.png",
+        "interrupted-recovery-discard-review.png",
+        "interrupted-recovery-discard-restored.png",
+        "interrupted-recovery-stale-discard-rejected.png",
+        "interrupted-recovery-stale-review.png",
+        "interrupted-recovery-discard-final.png",
+        "interrupted-recovery-discarded.png"
+      ],
+      "required_proof": [
+        "interrupted-recovery-schema19-proof.json"
+      ]
+    }
+  ],
+  "benchmark_method_selected": false
+}

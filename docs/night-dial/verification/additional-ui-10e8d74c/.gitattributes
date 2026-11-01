@@ -1,0 +1,2 @@
+# Preserve original CI/API bytes exactly.
+* -text whitespace=cr-at-eol

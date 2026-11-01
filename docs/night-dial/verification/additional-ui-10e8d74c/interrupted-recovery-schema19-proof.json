@@ -1,0 +1,11 @@
+{
+  "constructed17To19RawSessionsEpochsAlarmsPreserved": true,
+  "constructed18To19RawSessionsEpochsAlarmsPreserved": true,
+  "exact18RecoveryReceiptPreserved": true,
+  "olderNightsNotRetroactivelyRequested": true,
+  "portableBackupFormat": 14,
+  "localDatabaseVersion": 19,
+  "retainedReportReadOnly": true,
+  "recordingStarted": false,
+  "fixtureLimit": "Constructed prior schemas by removing exactly additive objects; not an independently supplied old-user database"
+}
