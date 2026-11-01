@@ -1,0 +1,95 @@
+{
+  "version": "sleepwell-neural-transfer-v1",
+  "candidate": 2,
+  "status": "APPROVED_FIXED_BEFORE_EXECUTION",
+  "date": "2026-11-01",
+  "endpoint": "Original conditional source-annotated hypo/osa union overlap>=10s in central30s, zero negative, 0<overlap<10 excluded; units seconds conditional inference NOT independently proved",
+  "original_label_protocol": "original-label-protocol.json",
+  "train_metadata": "original-train-contract.json",
+  "exposure": "VAL31-40 previously inspected after candidate1 RF failure; candidate2 newfixed method, no untouchedVALclaim. RESPTEST41-50 unopened. Original stageTEST remains consumed and is not repeated.",
+  "splits": {
+    "train": "01-30 fixed217windows; eligible199 (145zero54event),28phoneparticipants;11/17missingphone",
+    "validation": "31-40 fixed100windows; no replacement",
+    "test": "41-50fixed100; only after ALL VALgatespass"
+  },
+  "audio": "ONLY existing acquired90s monoPCM16/8k signedlittleendian bodies and exactrange/old243featurehash verification. Central3actual10s chunks at offsets30/40/50s. Divide32768, float32, scipy1.13.1resample_poly2/1 Kaiser5 padconstant/cval0. Cannot restore>4k source bandlimit. No newdownloads/padding/stitching.",
+  "frontend": {
+    "library": "librosa0.10.2.post1",
+    "feature_order": "MFCC13means+13std,64Mel-dBmeans+64std,ZCRmean/std,centroidmean/std,RMSmean/std;float32",
+    "MFCC": "librosa.feature.mfcc(sr16000,n_mfcc13), defaults128Mel/ref1,DCT2ortho,lifter0",
+    "Mel": "melspectrogram(sr16000,n_mels64) thenpower_to_db(refnp.max)",
+    "other_defaults": "Pinned installeddefaultsFFT2048/hop512/Hann/centerpadding, per family; populationstd; no source-waveformzscore",
+    "missing": "Original243qualityrules retained; any newfamilyerror/nonfinite/wrongshape targetunavailable, no zero-familyfallback"
+  },
+  "first_normalizer": "sklearnStandardScaler fit eligibleTRAIN199x3x160 only, no labels to stats, no clip; zero variance scale1; freeze mean/scale",
+  "checkpoint": {
+    "sha256": "c1938a82248bb3526b2c9ff7a76f5e5d7ceee35cf552706e6587766f0fedf664",
+    "git_commit": "ad979ff72de4cb27a308ed03d56c3729a4396352",
+    "architecture": "Dense256ReLU/BN/Dropout.3,Dense128ReLU/BN/Dropout.3,Dense64ReLU/BN/Dropout.2,Dense32ReLU/Dropout.2; BNafterReLU epsilon.001",
+    "frozen": true,
+    "embedding": "penultimate32ReLU;meanof3chunkembeddings percentral30s; originalsigmoidheadNOTtargetmodel"
+  },
+  "second_normalizer": "StandardScaler fit199TRAINmean32embeddings only",
+  "domain_head": {
+    "class": "LogisticRegression",
+    "C": 0.1,
+    "penalty": "l2",
+    "solver": "lbfgs",
+    "max_iter": 1000,
+    "class_weight": null,
+    "random_state": 20261101,
+    "positive_threshold": 0.5,
+    "fit_count": 1,
+    "nonconvergence": "stop; no parameterschange"
+  },
+  "parity_before_any_features_or_outcomes": {
+    "runtime": "Trusted local Keras.safe_mode=True compile=False; whitelist layerclasses/modules/config, HDF5numericshapes/finite/data-only; no upstream/custom code",
+    "inputs": "seed20261101 normal(0,1),64x160float32 normalizedsynthetic; no subjectdata",
+    "outputs": "NumPyvsKeras penultimate32 ANDoriginalsigmoid (syntheticonly)",
+    "embedding_max_abs_tolerance": 0.0001,
+    "sigmoid_max_abs_tolerance": 1e-05,
+    "incompatible_runtime": "recordexacterror STOP no install/download/fallback",
+    "head_portable_probability_tolerance": 1e-12
+  },
+  "gates": {
+    "coverage": 0.8,
+    "minimum_targets_per_class": 10,
+    "minimum_participants_per_class": 3,
+    "auroc": 0.7,
+    "balanced_accuracy": 0.6,
+    "sensitivity": 0.5,
+    "specificity": 0.7,
+    "macro_f1_over_majority": 0.05,
+    "brier": "strictlybetterthanBOTHfrozenTRAINpriors",
+    "nll": "strictlybetterthanBOTHfrozenTRAINpriors",
+    "priors": [
+      0.271356783919598,
+      0.3054689475014747
+    ]
+  },
+  "report": "Full classsupport/confusion/AUROC/AP/accuracy/balacc/macroF1/Brier/NLL/bothpriors/majority/10binreliability/perparticipant/rawprobabilities/input+feature+embedding+modelhashes; uncalibratedconditionalresearchscore, no night/AHI/diagnosis",
+  "prohibited": "No weightfinetune/modelsearch/calibration/thresholdoptimization/NNheadalternative/outcome-drivenrescue; no SpO2/stage/clock/demographics/sourceID inputs; no reusedstageoutcometuning; no Androidshipping",
+  "resources": {
+    "new_network_bytes": 0,
+    "threads_per_library_max": 2,
+    "tf_interop_threads": 1,
+    "wall_seconds_per_phase": 900,
+    "retry_after_error": false,
+    "new_pcm_or_weights": false
+  },
+  "execution_order": [
+    "Commitamendment+approval+completeworkflow",
+    "Once-onlysyntheticparity",
+    "Once-onlyTRAINfeatureextraction+twoTRAINscalers+oneheadfit",
+    "Once-onlyVAL",
+    "TESTonlyifeveryVALgatepassesotherwiseSTOP"
+  ],
+  "actions_at_freeze": {
+    "feature_extraction": false,
+    "normalizer_fit": false,
+    "domain_head_fit": false,
+    "synthetic_forward": false,
+    "candidate_outcomes": false,
+    "respiratory_test_targets": false
+  }
+}
