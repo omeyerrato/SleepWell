@@ -35,3 +35,14 @@ increment. The named text is asserted in the actual native dialog.
 No build, emulator method, unit campaign or physical output ran in this worktree.
 Root owns the consolidated build/lint and this existing silent native method;
 source changes and authored assertions are not a passing runtime claim.
+
+The first merged `recovery-rules-reference` run, `41262371127` at `71181142`,
+failed before reaching the deletion assertions. Its original screenshot/XML shows
+the new-rule editor, with Activation below the viewport. The fixture looked up
+the obsolete exact switch description `Enabled` and dereferenced null; the shared
+control now includes its subtitle in the accessible description. The fixture
+targets the full current description, reveals and awaits the actual owned native
+switch, and checks its complete 48dp bounds and unchecked default after a rendered
+frame. Production behavior, named review, revision/queue protection and all ten
+capture names are unchanged. This failed run remains failed; the repair requires
+a consolidated native rerun.
