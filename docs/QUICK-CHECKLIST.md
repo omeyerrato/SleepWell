@@ -10,6 +10,25 @@ Current source increment, 31 October: full Privacy confirmation restoration/stal
 
 Checked items record implemented source or publication, with historical evidence where linked. They do not establish current all-screen, physical or overnight acceptance. Current phase: usability first. On30October the user resumed silent emulator comparisons and main-action checks. The phone update alone was later authorized and completed; app launch, alarm/audio execution, security review and a broad test/bug campaign remain deferred.
 
+## Current pass — functioning local flows
+
+Checked here means source plus a completed bounded Android journey. Physical execution and the remaining model/service items below are separate.
+
+- [x] History import and selected-date return; manual overlap review with stale-source rejection.
+- [x] Exact tag and milestone contributors, linked Reports, recreation and immutable original records.
+- [x] Selected-night Share with optional notes, private durable grants and explicit chooser.
+- [x] Deleted-alarm Undo restoring OFF for review; stale/reused identities rejected.
+- [x] Plan/Goal/Nap/Travel dirty exits and retained radio drafts.
+- [x] Pause/resume the same saved nap, including denied resume, simulated reboot and clock changes.
+- [x] Challenge Emergency options and Tilt focus checkpoint; Practice ports only, no actual phone dialer/alarm execution.
+- [x] Inert Wake-check Practice and request-bound random-pool Keep/Discard/Use.
+- [x] Interrupted-night review/Keep/manual setup/named discard, with17→18 preservation and stale-ID rejection.
+- [x] Saved-name automation deletion with revision/queue protection.
+- [x] Voice settings unavailable/return flow and explicit Calendar CSV alternative.
+- [ ] Finish current Contactless fallback/layout, Rhythm evidence/scroll and Travel one-occurrence rerun. These are implemented; earlier partial method runs are not marked complete.
+
+[Exact current implementation and evidence ledger](night-dial/LOCAL-COMPLETION-2026-11-01.md). Current artifact delivery/install status is recorded there separately.
+
 ## Implemented
 
 - [x] Best-effort prevent-leave and recognized power-menu handling.

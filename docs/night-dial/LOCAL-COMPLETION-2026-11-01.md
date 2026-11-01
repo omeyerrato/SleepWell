@@ -6,9 +6,9 @@ This is the current implementation ledger. Source, an Android journey, visual in
 
 | Contract/action | Implementation | Android result |
 | --- | --- | --- |
-| History Import and scope return27A | History → existing CSV import owner; no automatic import | completion run41260541247 at1c1fe0c1 |
+| History Import and scope return27A | History → existing CSV import owner; no automatic import | [current completion scope](verification/current-core-71181142/README.md) (41262348837 at71181142) |
 | Manual overlap review27C | Effective shared coverage, Keep editing / Save separate, stale-source and exactly-once admission | same passing scope |
-| Tag contributors28C | Actual immutable With/Without groups and exact-ID Reports | local run41260544579 at1c1fe0c1 |
+| Tag contributors28C | Actual immutable With/Without groups and exact-ID Reports | [current local scope](verification/current-core-71181142/README.md) (41262350560 at71181142) |
 | Milestone contributors29D | Exact unique measured contributions, first/seven/thirty qualifying basis | same passing scope |
 | Private Report Share38B | Notes opt-in, reviewed bounded text, explicit chooser, durable read-only grants | completion scope above; earlier footer accumulation fixed |
 | Deleted alarm Undo41C | One-use30s exact-identity receipt; restores OFF for review, no scheduling | local scope above |
@@ -16,15 +16,15 @@ This is the current implementation ledger. Source, an Android journey, visual in
 | Pause/resume same nap30C | Frozen remaining milliseconds, durable anchors, same identity/configuration; permission-denied resume, reboot and clock changes | local scope above |
 | Rhythm day → exact saved night28B | Selected actual source, explicit Open; return/recreation viewport | final merged rerun pending |
 | Timing evidence28D | Actual eligible source periods, bounded pages, exact-ID read-only Reports; unknown chronotype remains unknown | pending |
-| No installed voice19C | Android TTS settings, unavailable pane/error/recreation, Refresh/Cancel | pending |
+| No installed voice19C | Android TTS settings, unavailable pane/error/recreation, Refresh/Cancel | named breadth method passes41262356510; overall alternative cohort fails three other methods |
 | Sonar → movement22C | Explicit selection only after confirmed own probe release; no recording starts | pending; footer/access layout repaired after actual failed frame |
-| Calendar manual alternative34D | Retained original CSV where available or explicitly scoped all-record export review; no automatic export | pending |
+| Calendar manual alternative34D | Retained original CSV where available or explicitly scoped all-record export review; no automatic export | named Calendar method passes41262356510; complete alternative rerun pending |
 | Travel one-occurrence31C | Saved plan → ordinary recurring alarm → existing next-time review → ordinary Save; shared lock and linked Nap exclusion | pending |
-| Challenge Emergency options16C | Blank dialer handoff, actual configured QR Math alternative, Return; no alarm-stop bypass | pending; sensor focus/checkpoint guard included |
-| Wake-check Practice07D | Private labeled inert preview, acknowledgement, settings draft unchanged | named method passed41260557207 at1c1fe0c1; overall three-method cohort failed two other methods |
-| Random pool dirty exit08D | Keep editing / Discard through recreation; Use only returns parent draft | pending |
-| Named automation delete35B | Actual saved name/safe destination and revision-CAS removal, queued events preserved on stale review | pending |
-| Interrupted-record handoff40A | Additive database18 receipt, retained partial-night review, read-only Report, Keep, manual setup, named discard | pending |
+| Challenge Emergency options16C | Blank dialer handoff, actual configured QR Math alternative, Return; no alarm-stop bypass | [current Practice scope passes](verification/drafts-71181142/README.md); actual alarm/dialer still untested |
+| Wake-check Practice07D | Private labeled inert preview, acknowledgement, settings draft unchanged | [all three practice/draft methods pass41262365058 at71181142](verification/drafts-71181142/README.md) |
+| Random pool dirty exit08D | Keep editing / Discard through recreation; Use only returns parent draft | [current bounded draft scope passes](verification/drafts-71181142/README.md) |
+| Named automation delete35B | Actual saved name/safe destination and revision-CAS removal, queued events preserved on stale review | [current2-method scope passes](verification/recovery-rules-83888603/README.md) |
+| Interrupted-record handoff40A | Additive database18 receipt, retained partial-night review, read-only Report, Keep, manual setup, named discard | [current2-method scope passes](verification/recovery-rules-83888603/README.md) |
 
 The first passing local/completion cohorts use database17 and portableBackup14. The later recovery increment uses database18; its dedicated journey checks17→18 preservation. Ordinary timer metadata stays v1/v2; paused/resumed timers use optional nested v3. PortableBackup14 is unchanged. Earlier failed native logs and images are retained. No unit campaign or physical output test ran.
 
