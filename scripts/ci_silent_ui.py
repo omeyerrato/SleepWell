@@ -171,7 +171,7 @@ LOCAL_PLAN = json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial/
 def completion_plan(name):
     return json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial" / name).read_text(encoding="utf-8"))
 ALTERNATIVES_PLAN = completion_plan("LOCAL-ALTERNATIVES-NATIVE-PLAN.json")
-RHYTHM_PLAN = completion_plan("RHYTHM-SELECTED-NIGHT-NATIVE-PLAN.json")
+RHYTHM_PLAN = completion_plan("RHYTHM-EVIDENCE-NATIVE-PLAN.json")
 EMERGENCY_PLAN = completion_plan("CHALLENGE-EMERGENCY-FOCUS-NATIVE-PLAN.json")
 PRACTICE_PLAN = completion_plan("WAKE-CHECK-PRACTICE-NATIVE-PLAN.json")
 RANDOM_PLAN = completion_plan("RANDOM-POOL-DRAFT-NATIVE-PLAN.json")
