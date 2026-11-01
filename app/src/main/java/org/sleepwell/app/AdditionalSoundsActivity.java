@@ -64,16 +64,15 @@ public final class AdditionalSoundsActivity extends androidx.activity.ComponentA
     }
     private void settings(LinearLayout body, int epoch) {
         Design.text(body, "Experimental estimates", 21, 600, Design.INK); Design.space(body, 10);
-        Design.text(body, "Look for possible laughter and instrument sounds during future nights. These estimates can miss or confuse sounds; uncertain results never mean a sound was absent.", 14, 400, Design.MUTED); Design.space(body, 14);
+        Design.text(body, "Laughter and instrument candidates can be wrong or missed.", 14, 400, Design.MUTED); Design.space(body, 14);
         android.widget.Switch toggle = Design.toggle(body, "Experimental estimates", "Off by default · this phone only", draft, enabled -> {
             if (!live(epoch) || job.busy || !initialized) return;
             draft = enabled; message = "";
         });
         toggle.setContentDescription("Experimental additional sound estimates"); RecordUi.enabled(toggle, initialized && !job.busy);
         Design.space(body, 18);
-        Design.text(body, "Requires your existing Sound analysis choice and microphone access. Contactless nights also need their existing microphone analysis opt-in. Saving here never enables those choices or asks for permission.", 14, 400, Design.MUTED); Design.space(body, 12);
-        Design.text(body, "Starts with a future recording, using its existing microphone stream. No extra microphone owner, audio upload or saved audio copy is created. Turning this off applies to future nights; past nights are not reanalyzed.", 14, 400, Design.MUTED); Design.space(body, 12);
-        Design.text(body, "Results and this opt-in stay on this device. They are excluded from portable backups and settings profiles. Existing sound events, your labels and snoring cues keep their own settings.", 14, 400, Design.MUTED); Design.space(body, 14);
+        Design.text(body, "Needs Sound analysis and microphone access already enabled.", 14, 400, Design.MUTED); Design.space(body, 12);
+        Design.text(body, "Future nights on this phone only. Coverage can be incomplete; uncertain results never prove absence.", 14, 400, Design.MUTED); Design.space(body, 14);
         SoundSettingsUi.navigation(body, "info", "About additional sounds", "Limits and local analysis", action(epoch, () -> goAbout(true)));
         LinearLayout footer = RecordUi.footer(body);
         SoundSettingsUi.status(footer, job.busy ? "Saving or loading…" : !job.error.isEmpty() ? job.error : message, !job.error.isEmpty());
@@ -130,6 +129,9 @@ public final class AdditionalSoundsActivity extends androidx.activity.ComponentA
         Design.text(body, "Experimental and device-local", 21, 600, Design.INK); Design.space(body, 10);
         Design.text(body, "Existing bundled models estimate laughter and instrument candidates in separate 10-second microphone windows. Scores are uncalibrated model outputs, not confidence percentages. Resource limits and interrupted capture can leave unanalyzed audio. No sleep-stage, medical, identity or reliable bedroom-recognition claim is made.", 14, 400, Design.MUTED); Design.space(body, 12);
         Design.text(body, "Original sound analysis and saved-recording analysis keep their own authority. These derived results never relabel your events, play audio, trigger cues or satisfy alarm challenges. No new weights are downloaded and no audio is uploaded. Portable backups and settings profiles exclude these results and this opt-in.", 14, 400, Design.MUTED);
+        RecordUi.heading(body, "Your choices");
+        Design.text(body, "Saving changes only this opt-in. Sound analysis and microphone access must already be enabled; contactless nights also need their existing microphone analysis choice. Saving here enables none of those choices and requests no permission.", 14, 400, Design.MUTED); Design.space(body, 12);
+        Design.text(body, "Changes apply to future recordings. Past nights are not reanalyzed, and turning this off does not change an active night or erase saved results. Analysis uses the recording’s existing microphone stream; no separate audio copy is saved for these estimates. Your sound labels and snoring-cue settings stay unchanged.", 14, 400, Design.MUTED);
         if (job.snapshot != null && job.snapshot.requested) {
             AdditionalSoundStore.Snapshot value = job.snapshot; RecordUi.heading(body, "This recording");
             fact(body, "Source", value.source.equals(AdditionalSoundStore.SOURCE_SONAR) ? "Filtered contactless microphone" : value.source.equals(AdditionalSoundStore.SOURCE_MOTION) ? "Phone microphone" : "Unknown recorded source");
