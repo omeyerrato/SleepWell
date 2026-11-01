@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "source_parent_revision": "1c1fe0c1",
+  "state": "31C",
+  "native_status": "not_run_pending_integration",
+  "unit_campaign": "not_run",
+  "method": "org.sleepwell.app.TripOccurrenceFlowTest#savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm",
+  "instrumentation_arguments": {
+    "ciReview": "true"
+  },
+  "expected_methods": 1,
+  "required_original_count": 16,
+  "required_originals": [
+    "trip-occurrence-plan.png",
+    "trip-occurrence-choices.png",
+    "trip-occurrence-linked-excluded.png",
+    "trip-occurrence-choices-restored.png",
+    "trip-occurrence-kept.png",
+    "trip-occurrence-proposal.png",
+    "trip-occurrence-reviewed.png",
+    "trip-occurrence-reviewed-restored.png",
+    "trip-occurrence-cancelled.png",
+    "trip-occurrence-draft.png",
+    "trip-occurrence-draft-restored.png",
+    "trip-occurrence-stale-plan.png",
+    "trip-occurrence-stale-alarm.png",
+    "trip-occurrence-ready-to-save.png",
+    "trip-occurrence-saved.png",
+    "trip-occurrence-no-eligible.png"
+  ],
+  "new_originals": [
+    "trip-occurrence-linked-excluded.png"
+  ],
+  "required_proof": "trip-occurrence-admission-proof.json",
+  "assertions": [
+    "Actual Trip selector excludes valid and malformed weekly Nap ownership, with independent prepare/check/checkDraft rejection",
+    "Full JSON of both linked profile alarm fixtures remains unchanged after ordinary travel Save",
+    "Actual reviewed occurrence and alarm draft survive recreation, with no scheduling before explicit ordinary Save alarm",
+    "A changed sleep plan is explicitly rejected; saved alarm and scheduling remain unchanged",
+    "At final actual SQLite Store.save the current thread owns Scheduler and the shared travel lock",
+    "A private competing plan writer reaches that monitor after final admission and is observed BLOCKED before alarm persistence",
+    "That writer enters only after the committed override is visible, then deliberately changes the plan with a new revision",
+    "Ordinary alarm configuration/recurrence remain exact after removing only the new next-time override",
+    "The existing stale-alarm, Keep current, source/target/following occurrence and output-free fixture checks are retained"
+  ],
+  "limits": [
+    "The race uses only existing Records.Factory/Store.save and private trip preferences; no production test switch, clock mutation, external service or output",
+    "The post-commit writer is an explicit later change, not a stale proposal accepted at the save boundary",
+    "No build, emulator, hosted cohort, unit campaign, phone, alarm or audio action ran during implementation",
+    "Full native/state-specific visual acceptance remains pending root integration and scoped run"
+  ]
+}
