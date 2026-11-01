@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "source_parent_revision": "ce5ffeb0",
+  "state": "07D",
+  "native_status": "not_run_pending_integration",
+  "unit_campaign": "not_run",
+  "method": "org.sleepwell.app.WakeCheckFlowTest#settingsPracticePreviewAcknowledgesAndReturnsUnchangedDraftWithoutOpeningCheck",
+  "instrumentation_arguments": {
+    "ciReview": "true"
+  },
+  "expected_methods": 1,
+  "required_original_count": 6,
+  "required_originals": [
+    "wake-check-practice-ready.png",
+    "wake-check-practice-recreated.png",
+    "wake-check-practice-acknowledged.png",
+    "wake-check-practice-returned.png",
+    "wake-check-practice-settings-recreated.png",
+    "wake-check-practice-off.png"
+  ],
+  "required_proof": "wake-check-practice-proof.json",
+  "assertions": [
+    "Actual Snooze delay picker creates an unsaved seven-minute draft before the actual Preview action",
+    "Private Practice owner is visibly labeled; its two-minute example has no running clock",
+    "Practice window and acknowledged state survive recreation",
+    "Returning and recreating the settings owner preserve the complete unsaved alarm JSON and Snooze route",
+    "Off remains Off after an explicit Practice acknowledgement and return",
+    "Real check factory and clock factory are never opened; any attempt fails the method",
+    "No real check state, alarm schedule, notification, cancellation or re-ring occurs",
+    "Saved alarm, unrelated alarm, retained records and global preferences remain unchanged",
+    "Actual fixed Practice actions are fully visible with at least 48dp targets and a usable inset-safe reading viewport"
+  ],
+  "limits": [
+    "This new meaningful native method extends the existing WakeCheckFlowTest fixture; existing actual-check runtime methods are not rerun by this scope",
+    "No build, native run, hosted cohort, phone, alarm, audio, real permission change or model evaluation ran during implementation",
+    "Static source implementation is not state-specific visual acceptance"
+  ]
+}
