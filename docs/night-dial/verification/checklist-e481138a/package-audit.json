@@ -1,0 +1,14 @@
+{
+  "apk_sha256": "c6d57a9d2d80b0506706b65264d96ac330bdbd7be2a57ee5c4f65a8bf5231785",
+  "bytes": 190208831,
+  "source": "e481138ac069f1dc38ca3ae34f569a36237c7426",
+  "app_main_tree": "b0a99ca1b42564ac06866837111b6159b83b785a",
+  "signer_sha256": "49eeeb7f74344335321800e3f78b9bb9ab25c5fff059332c458133dca0da0e1c",
+  "abi": "arm64-v8a",
+  "source_current_match": true,
+  "unit_tests": "not_run",
+  "delivered": false,
+  "phone_installed": false,
+  "published": false,
+  "full_acceptance": false
+}
