@@ -64,7 +64,7 @@ public final class TripOccurrenceFlowTest {
     @Test public void savedTripOccurrenceReviewKeepStaleAndSavePreserveRecurringAlarm()throws Exception{
         assertEquals("true",InstrumentationRegistry.getArguments().getString("ciReview"));
         assertEquals("1",device.executeShellCommand("getprop ro.kernel.qemu").trim());
-        assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"ringing"));assertFalse(Prefs.flag(c,"tracking"));
+        assertFalse(AlarmService.active);assertFalse(TrackingService.running);assertFalse(Prefs.flag(c,"ringing"));assertFalse(Prefs.flag(c,"tracking"));assertEquals("No pending legacy wake check",0,Prefs.number(c,"checkPending",0));
         String name="trip-occurrence-"+UUID.randomUUID(),database=name+".db";
         SharedPreferences travel=c.getSharedPreferences(name+"-travel",0),sleep=c.getSharedPreferences(name+"-sleep",0),calendar=c.getSharedPreferences(name+"-calendar",0);
         Records.Factory oldRecords=Records.factory;TravelPlans.Factory oldTravel=TravelPlans.factory;
