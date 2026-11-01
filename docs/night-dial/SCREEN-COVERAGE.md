@@ -1,12 +1,13 @@
 # Native destination coverage
 
-All 130 manifest Activities are assigned to the 43 flow families. This accounts for routes; it does not establish complete visual, accessibility or hardware acceptance. Native compositions, shared sheets and helper-owned task surfaces are tracked in PROGRESS.md and revision-specific evidence.
+All 131 manifest Activities are assigned to the 43 flow families. This accounts for routes; it does not establish complete visual, accessibility or hardware acceptance. Native compositions, shared sheets and helper-owned task surfaces are tracked in PROGRESS.md and revision-specific evidence.
 
 Regenerate with `python scripts/night_dial_inventory.py`. The command fails when a new manifest destination has no assigned flow.
 
 | Native destination | Flow boards |
 | --- | --- |
 | [AacExportActivity](../../app/src/main/java/org/sleepwell/app/AacExportActivity.java) | 36 |
+| [AdditionalSoundsActivity](../../app/src/main/java/org/sleepwell/app/AdditionalSoundsActivity.java) | 24 |
 | [AlarmAccessActivity](../../app/src/main/java/org/sleepwell/app/AlarmAccessActivity.java) | 38 |
 | [AlarmActivity](../../app/src/main/java/org/sleepwell/app/AlarmActivity.java) | 10, 11, 13, 16, 17 |
 | [AlarmBedtimeActivity](../../app/src/main/java/org/sleepwell/app/AlarmBedtimeActivity.java) | 31 |

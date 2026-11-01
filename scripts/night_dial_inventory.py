@@ -32,7 +32,7 @@ FLOWS = [
     (21, "Automatic tracking", "AutomaticTracking RecurringTracking TrackingDelay TrackingFlip TrackingDnd"),
     (22, "Sensors and calibration", "MotionSensor MotionCalibration PairMotion PairMotionSaved ContactlessSetup EchoSettings EchoPeriods"),
     (23, "Room, awake and experimental signals", "RoomConditions AwakeSettings AwakeReview PirSettings PirReport"),
-    (24, "Sound analysis and recordings", "SoundEvents FavoriteSounds SoundLabel SoundArchive RecordedRecognition SoundSensitivity SoundLibrarySettings SnoreSoundRoute"),
+    (24, "Sound analysis and recordings", "SoundEvents FavoriteSounds SoundLabel SoundArchive RecordedRecognition SoundSensitivity SoundLibrarySettings SnoreSoundRoute AdditionalSounds"),
     (25, "Gentle cues and dream tools", "DreamCue DreamCueHistory SnoringCues"),
     (26, "Review a recorded night", "RecordReport RecordEditor RecordSignals RecordInsights RecordedNightScore HealthSleepSource SleepCsvSource AwakeReview"),
     (27, "History, manual records and import", "History SleepCsv DiaryImport MissedNight RecordEditor Diary"),

@@ -1,5 +1,5 @@
 {
-  "activity_count": 130,
+  "activity_count": 131,
   "flow_count": 43,
   "full_acceptance": false,
   "meaning": "Route accounting only; see revision-specific native evidence and PROGRESS.md for acceptance.",
@@ -238,7 +238,8 @@
         "RecordedRecognitionActivity",
         "SoundSensitivityActivity",
         "SoundLibrarySettingsActivity",
-        "SnoreSoundRouteActivity"
+        "SnoreSoundRouteActivity",
+        "AdditionalSoundsActivity"
       ]
     },
     {
@@ -465,6 +466,12 @@
       "activity": "AacExportActivity",
       "boards": [
         36
+      ]
+    },
+    {
+      "activity": "AdditionalSoundsActivity",
+      "boards": [
+        24
       ]
     },
     {
