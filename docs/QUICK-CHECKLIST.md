@@ -25,7 +25,9 @@ Checked here means source plus a completed bounded Android journey. Physical exe
 - [x] Interrupted-night review/Keep/manual setup/named discard, with17→18 preservation and stale-ID rejection.
 - [x] Saved-name automation deletion with revision/queue protection.
 - [x] Voice settings unavailable/return flow and explicit Calendar CSV alternative.
-- [ ] Finish current Contactless fallback/layout, Rhythm evidence/scroll and Travel one-occurrence rerun. These are implemented; earlier partial method runs are not marked complete.
+- [x] Contactless fallback releases its probe and preserves recording settings;11 focused originals and actual actions pass atcddd51e5.
+- [x] Rhythm source evidence, page/scroll return and Travel one-occurrence review pass at569a6991; exact source/competing-writer and retired-owner checks remain enforced.
+- [ ] Integrate and exercise the new default-off automatic additional-sound analysis, including real model resource use and database19 preservation. Experimental candidate estimates do not satisfy reliable recognition.
 
 [Exact current implementation and evidence ledger](night-dial/LOCAL-COMPLETION-2026-11-01.md). Current artifact delivery/install status is recorded there separately.
 

@@ -14,12 +14,12 @@ This is the current implementation ledger. Source, an Android journey, visual in
 | Deleted alarm Undo41C | One-use30s exact-identity receipt; restores OFF for review, no scheduling | local scope above |
 | Draft ownership/return | Plan/Goal/Nap/Travel Keep/Discard; radio draft and source-aware saved sound review | both scopes above |
 | Pause/resume same nap30C | Frozen remaining milliseconds, durable anchors, same identity/configuration; permission-denied resume, reboot and clock changes | local scope above |
-| Rhythm day → exact saved night28B | Selected actual source, explicit Open; return/recreation viewport | final merged rerun pending |
-| Timing evidence28D | Actual eligible source periods, bounded pages, exact-ID read-only Reports; unknown chronotype remains unknown | pending |
-| No installed voice19C | Android TTS settings, unavailable pane/error/recreation, Refresh/Cancel | named breadth method passes41262356510; overall alternative cohort fails three other methods |
-| Sonar → movement22C | Explicit selection only after confirmed own probe release; no recording starts | pending; footer/access layout repaired after actual failed frame |
-| Calendar manual alternative34D | Retained original CSV where available or explicitly scoped all-record export review; no automatic export | named Calendar method passes41262356510; complete alternative rerun pending |
-| Travel one-occurrence31C | Saved plan → ordinary recurring alarm → existing next-time review → ordinary Save; shared lock and linked Nap exclusion | pending |
+| Rhythm day → exact saved night28B | Selected actual source, explicit Open; return/recreation viewport | [passing Rhythm method at569a6991](verification/alternatives-569a6991/README.md) |
+| Timing evidence28D | Actual eligible source periods, bounded pages, exact-ID read-only Reports; unknown chronotype remains unknown | same passing method; actual21-night fixture and paged source evidence |
+| No installed voice19C | Android TTS settings, unavailable pane/error/recreation, Refresh/Cancel | [passing breadth method at569a6991](verification/alternatives-569a6991/README.md) |
+| Sonar → movement22C | Explicit selection only after confirmed own probe release; no recording starts | [passing focused method atcddd51e5](verification/contactless-cddd51e5/README.md),11 originals; exact unchanged recording preferences |
+| Calendar manual alternative34D | Retained original CSV where available or explicitly scoped all-record export review; no automatic export | [passing Calendar method at569a6991](verification/alternatives-569a6991/README.md) |
+| Travel one-occurrence31C | Saved plan → ordinary recurring alarm → existing next-time review → ordinary Save; shared lock and linked Nap exclusion | [passing Travel method at569a6991](verification/alternatives-569a6991/README.md),17 originals, competing-writer and retired-owner checks |
 | Challenge Emergency options16C | Blank dialer handoff, actual configured QR Math alternative, Return; no alarm-stop bypass | [current Practice scope passes](verification/drafts-71181142/README.md); actual alarm/dialer still untested |
 | Wake-check Practice07D | Private labeled inert preview, acknowledgement, settings draft unchanged | [all three practice/draft methods pass41262365058 at71181142](verification/drafts-71181142/README.md) |
 | Random pool dirty exit08D | Keep editing / Discard through recreation; Use only returns parent draft | [current bounded draft scope passes](verification/drafts-71181142/README.md) |
@@ -27,6 +27,8 @@ This is the current implementation ledger. Source, an Android journey, visual in
 | Interrupted-record handoff40A | Additive database18 receipt, retained partial-night review, read-only Report, Keep, manual setup, named discard | [current2-method scope passes](verification/recovery-rules-83888603/README.md) |
 
 The first passing local/completion cohorts use database17 and portableBackup14. The later recovery increment uses database18; its dedicated journey checks17→18 preservation. Ordinary timer metadata stays v1/v2; paused/resumed timers use optional nested v3. PortableBackup14 is unchanged. Earlier failed native logs and images are retained. No unit campaign or physical output test ran.
+
+These bounded cohorts now contain30 distinct passing native methods and358 required originals, across separately identified revisions/scopes. That count is not a single all-app run or acceptance of every172 state. In-progress0.1.29 adds default-off automatic supplementary sound candidates and database19; those newer changes need their own integrated native and migration results before delivery.
 
 ## Finite audit boundaries
 
