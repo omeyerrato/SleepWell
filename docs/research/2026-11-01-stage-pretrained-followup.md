@@ -1,0 +1,28 @@
+# New pretrained bedside-audio stage leads: bounded result
+
+No newly inspected release supplies the complete reusable phone-PCM → Wake/Light/Deep/REM contract. **F049 remains missing.** This is a finite search result, not a claim that sound-based staging is impossible or that every public model has been inspected. Earlier Nidra, original acoustic staging, and respiratory candidate 1/2 decisions are unchanged. Their consumed evaluations were not reopened.
+
+## Strongest new audio lead
+
+[SleepFormer, “Sound-Based Sleep Staging by Exploiting Real-World Unlabeled Data”](https://www.asleep.ai/publications/pub-5) is genuine ambient/home-audio research rather than EEG renamed as sound. The author page links the [ICLR 2023 workshop paper](https://openreview.net/pdf?id=mIRztWMsVJ) and reports home and PSG-Audio evaluation. This pass did **not** establish a public task checkpoint, exact fitted normalization/inference frontend, or the complete participant-split identity contract. OpenReview's live page presented browser verification; no bypass was attempted. Its indexed text and the author's ordinary publication page were readable. Reported paper results are not a substitute for the missing released artifacts.
+
+The author's current public software resolves an otherwise misleading lead:
+
+- [Asleep Android SDK](https://github.com/asleep-ai/asleep-sdk-android) requires an API key. Its [NOTICE](https://github.com/asleep-ai/asleep-sdk-android/blob/main/NOTICE) restricts unauthorized use, modification and redistribution. Public README or third-party runtime licences do not make the SDK's fitted model freely redistributable. No SDK binary was obtained or decompiled.
+- MIT [pysleep@0337e4ba](https://github.com/asleep-ai/pysleep/tree/0337e4ba19dc48f71ac43737bc9e7a3c336c97ef) calculates statistics from supplied scored stage epochs. Its complete 33-entry tree has no checkpoint with a conventional model-file suffix. It does not infer stages from PCM.
+
+The actionable external prerequisite is an explicitly redistributable **fitted audio-stage checkpoint including its trained task head**, with exact PCM/channel/sample-rate assumptions, preprocessing and any fitted statistics, temporal context, class order including Deep and REM, missing/gap policy, epoch/time/edge-output mapping, and participant-separated reference provenance. No contact, account or paid API action was taken. A compatible openly licensed release would change this decision; another SDK wrapper would not satisfy the absent offline-model contract.
+
+## Other new source checks
+
+| Lead | Actual primary contract and disposition |
+| --- | --- |
+| [PSG-MAE@babb9652 frontend](https://github.com/yfw-scut/PSG-MAE/blob/babb9652db490cdc2d6416e9dd84cb752776398b/psg_audio_preprocessing.ipynb) | Despite “PSG audio” in the notebook/dataset name, source selects two EEG channels, EOG, chin EMG and pressure-cannula flow, normalizes each channel and packs five channels × 30 seconds × 100 Hz. No Mic channel is selected. Complete inspected tree: 23 entries, no conventional checkpoint suffix. Changing microphone PCM into a 100-Hz vector cannot supply those trained physiological modalities. |
+| [DreamBreeze@cc6964cf stage estimator](https://github.com/divyamohan1993/dreambreeze/blob/cc6964cffef45fddfee45fd65c84126119520178/src/lib/ai/sleep-stage-estimator.ts) | Actual source uses accelerometer-movement thresholds, burst/context rules and fixed confidence values. It supplies no learned bedside-audio stage contract or patient-separated trained-model reference. Its claimed four labels do not justify importing it as an estimator. No code imported or run. |
+| [Sheffield HuBERT audio study](https://eprints.whiterose.ac.uk/id/eprint/230050/1/EMBC_2025___Sleep_Staging.pdf) | Ambient audio; 16-kHz preprocessing; 30/90-second context; participant split 153 train / 38 evaluation. The trained output is explicitly **Wake/NREM/REM**, not Deep versus Light. The paper's generic frozen HuBERT backbone does not include its task-specific trained head. No public fitted head was established in the inspected paper. Even such a three-class head would not supply Deep. |
+| [wav2sleep](https://github.com/joncarter1/wav2sleep) | MIT project with public pretrained four-class cardio-respiratory weights, but trained inputs are ECG, PPG, abdominal/thoracic respiration; the newer five-class release uses EOG. “wav” does not mean microphone audio. No validated acoustic-to-those-waveforms adapter was found here. |
+| [SleepFMStager model card](https://huggingface.co/braindecode/SleepFMStager) | Real released five-class checkpoint, but a polysomnography model with upstream CC-BY-NC-4.0 weights. Neither ambient-phone training/input compatibility nor unrestricted redistribution is supplied by the card. Its availability cannot resolve the phone-only contract. |
+
+The [machine-readable note](2026-11-01-stage-pretrained-followup.json) pins inspected repository revisions and decisive source blobs. Full-tree absence statements are limited to the inspected revisions and conventional checkpoint suffixes; they do not assert that every external storage link or private release is absent. The source papers/model cards are evidence of their own reported experiments, not independently replayed performance.
+
+Only public metadata and small source text were read. No model/audio/dataset download, package installation, upstream-code execution, training, fit, inference, Android prediction, phone action or new test was performed. Search/connector wire transfer is not measured and is not presented as a new exact traffic ledger. This pass does not modify historical acquisition totals or justify new traffic against the consumed study budget.

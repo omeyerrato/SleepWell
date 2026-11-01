@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "status": "no_usable_new_pretrained_phone_stage_contract_found",
+  "scope": "metadata_and_source_only",
+  "product_feature": "F049 remains missing",
+  "new_model_audio_downloads": 0,
+  "new_fits": 0,
+  "new_inference": 0,
+  "consumed_stage_and_respiratory_evaluations_reopened": false,
+  "repository_checks": [
+    {
+      "repository": "yfw-scut/PSG-MAE",
+      "commit": "babb9652db490cdc2d6416e9dd84cb752776398b",
+      "tree_truncated": false,
+      "tree_entries": 23,
+      "weight_paths": [],
+      "inspected_frontend": {
+        "path": "psg_audio_preprocessing.ipynb",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c1572479f64012e566bb808843e364aa112ec498",
+        "size": 5780,
+        "url": "https://api.github.com/repos/yfw-scut/PSG-MAE/git/blobs/c1572479f64012e566bb808843e364aa112ec498"
+      },
+      "conclusion": "The PSG-Audio dataset is used for EEG C3/C4, EOG, chin EMG and pressure-cannula channels at100Hz, not microphone PCM."
+    },
+    {
+      "repository": "divyamohan1993/dreambreeze",
+      "commit": "cc6964cffef45fddfee45fd65c84126119520178",
+      "tree_truncated": false,
+      "tree_entries": 215,
+      "inspected_frontend": {
+        "path": "src/lib/ai/sleep-stage-estimator.ts",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "55f6010889439aaa9d910beacb77add7f5eda0fb",
+        "size": 8668,
+        "url": "https://api.github.com/repos/divyamohan1993/dreambreeze/git/blobs/55f6010889439aaa9d910beacb77add7f5eda0fb"
+      },
+      "conclusion": "Literal actigraphy thresholds plus context rules and fixed confidence values, not a pretrained acoustic-stage model."
+    },
+    {
+      "repository": "asleep-ai/pysleep",
+      "commit": "0337e4ba19dc48f71ac43737bc9e7a3c336c97ef",
+      "tree_truncated": false,
+      "tree_entries": 33,
+      "weight_paths": [],
+      "conclusion": "Metrics calculated from already-scored epoch labels, not waveform-to-stage inference."
+    }
+  ],
+  "strongest_audio_lead": {
+    "name": "SleepFormer / Sound-Based Sleep Staging by Exploiting Real-World Unlabeled Data",
+    "publication": "https://www.asleep.ai/publications/pub-5",
+    "paper": "https://openreview.net/pdf?id=mIRztWMsVJ",
+    "author_sdk": "https://github.com/asleep-ai/asleep-sdk-android",
+    "notice": "https://github.com/asleep-ai/asleep-sdk-android/blob/main/NOTICE",
+    "prerequisite": "Publicly redistributable fitted audio-to-stage weights including the task head and exact frontend/normalization/window/output-edge contract; the inspected SDK is restricted and API-key based, not an authorized open offline model release.",
+    "limits": "Paper existence and reported home/PSG-Audio evaluation do not establish a public checkpoint. Full participant-split IDs and exact inference preprocessing were not established here. No API request, account creation, SDK binary download or decompile performed."
+  },
+  "network_accounting": "Connector/search text transfer has no measured wire-byte accounting. Only metadata/code was read; this pass downloaded no model, audio or dataset files. It does not amend prior study ledgers.",
+  "sources": [
+    "https://www.asleep.ai/publications/pub-5",
+    "https://openreview.net/pdf?id=mIRztWMsVJ",
+    "https://github.com/asleep-ai/asleep-sdk-android/blob/main/NOTICE",
+    "https://github.com/asleep-ai/asleep-sdk-android",
+    "https://github.com/asleep-ai/pysleep/tree/0337e4ba19dc48f71ac43737bc9e7a3c336c97ef",
+    "https://github.com/yfw-scut/PSG-MAE/blob/babb9652db490cdc2d6416e9dd84cb752776398b/psg_audio_preprocessing.ipynb",
+    "https://github.com/divyamohan1993/dreambreeze/blob/cc6964cffef45fddfee45fd65c84126119520178/src/lib/ai/sleep-stage-estimator.ts",
+    "https://eprints.whiterose.ac.uk/id/eprint/230050/1/EMBC_2025___Sleep_Staging.pdf",
+    "https://github.com/joncarter1/wav2sleep",
+    "https://huggingface.co/braindecode/SleepFMStager"
+  ]
+}
