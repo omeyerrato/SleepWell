@@ -1,0 +1,66 @@
+{
+  "source_commit": "1c1fe0c16ce35abbf8f64dcb17b29064530e711c",
+  "run_id": 41260544579,
+  "inspection_scope": {
+    "contact_sheets": 118,
+    "individual_originals": 15
+  },
+  "findings": [
+    {
+      "file": "travel-error.png",
+      "sha256": "6db702285cf2c5734f91a157d08e9758da4f232a3251696affb77e9826bd5167",
+      "bytes": 193670,
+      "width": 1080,
+      "height": 2316,
+      "finding": "Tight caption/error spacing; intersecting text or native View bounds NOT proved. Initial resized-preview overlap wording is corrected.",
+      "caption": "Silent reminder at cue start",
+      "error": "Reminders need attention: Scheduling is unavailable.",
+      "pixel_evidence": {
+        "coordinate_space": "unscaled original PNG, origin top-left",
+        "caption_gray_ink_y_in_roi": [
+          1832,
+          1856
+        ],
+        "caption_roi": [
+          160,
+          1820,
+          800,
+          1863
+        ],
+        "error_red_ink_bounds": [
+          66,
+          1863,
+          846,
+          1894
+        ],
+        "caption_last_ink_y": 1855,
+        "error_first_ink_y": 1863,
+        "empty_pixel_rows_between": 7,
+        "gray_threshold": "130<=R<=210 and max(R,G,B)-min(R,G,B)<=8 inside caption ROI",
+        "red_threshold": "R>150 and R>1.35*G and R>1.15*B",
+        "native_view_bounds_available": false,
+        "artifact_xml_files": []
+      },
+      "source_anchors": {
+        "path": "app/src/main/java/org/sleepwell/app/TravelActivity.java",
+        "tracking_caption_line": 60,
+        "footer_lines": [
+          117,
+          124
+        ],
+        "footer_top_padding_dp": 0,
+        "error_accessibility_label": "Travel settings error"
+      },
+      "disposition": "No source overlap repair justified by these pixels alone. Optional bounded spacing change would add top inset to this footer/error area, then inspect actual original return/error frames. No source change during archive."
+    }
+  ],
+  "other_representative_observations": [
+    "Restored dirty plan/goal/travel dialogs retain their actual draft choices and full main actions.",
+    "Nap paused, denied resume and resumed states show explicit Pause/Resume/Cancel controls; deadline values are fixture clock evidence, not real delivered alarms.",
+    "Milestone basis shows overlapping periods contributing 4 h and 30 min once; the oldest-of-eight frame opens the actual first contributing day. This is recording coverage, not confirmed sleep.",
+    "Tag group originals show contributing saved periods and their exclusion rule. The recreated group image honestly retains an Updating saved records status; it is not described as a completed refresh.",
+    "Radio invalid-input state retains literal fixture URL and error after recreation; no network stream was played.",
+    "Alarm restoration-changed and recreated-restored receipt states preserve explicit review and off/restored status; no real alarm fired."
+  ],
+  "full_visual_acceptance": false
+}

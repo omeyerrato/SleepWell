@@ -1,0 +1,26 @@
+{
+  "commit": "1c1fe0c16ce35abbf8f64dcb17b29064530e711c",
+  "emulator": true,
+  "scope": "local-feature-reference",
+  "audio_imports": false,
+  "import_process_restart": false,
+  "audio": "host output disabled; no native playback output allowlisted; library uses fake playback",
+  "serial": "emulator-5554",
+  "system_broadcast_idle": false,
+  "startup_focused_samples": 3,
+  "ro.build.version.sdk": "36",
+  "ro.product.model": "sdk_gphone64_x86_64",
+  "size": "Physical size: 1080x2400\nOverride size: 1080x2316",
+  "density": "Physical density: 420",
+  "local_feature_slice": "owned local plan exits, milestone/tag contributors, radio draft and alarm deletion Undo; fixture-only scheduling and no outputs",
+  "test_classes": [
+    "GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+    "NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+    "NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+    "TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+    "RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+    "TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+    "AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+    "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm"
+  ]
+}

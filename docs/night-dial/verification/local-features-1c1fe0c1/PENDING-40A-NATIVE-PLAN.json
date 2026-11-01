@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "state": "40A",
+  "base_commit": "30f55a86c63b4ed375f645dc771301a8428f4ff3",
+  "implementation_commit": "be25725eff614cebcfe7f0cd25ab65ab066548a1",
+  "authored_commit": "327f8de1f72e742a6397fd87bb99dfa5bfbff607",
+  "native_status": "not_run_pending_integration",
+  "verification_commit": null,
+  "native_review_run": null,
+  "units": "not_run",
+  "database_version": 18,
+  "portable_backup_format": 14,
+  "arguments": {
+    "ciReview": "true"
+  },
+  "emulator": "Disposable emulator only; existing no-running-service/microphone/player/recurring preflights. Actual private SQLite and private plan/delay preferences; all recording/scheduling commands inert or fail if invoked.",
+  "methods": [
+    {
+      "method": "org.sleepwell.app.InterruptedRecoveryFlowTest#unfinishedRecoveryReviewKeepSetupAndNamedDiscardRejectReusedIdentity",
+      "required_originals": [
+        "interrupted-recovery-tonight.png",
+        "interrupted-recovery-review.png",
+        "interrupted-recovery-review-restored.png",
+        "interrupted-recovery-retained-report.png",
+        "interrupted-recovery-retained-report-restored.png",
+        "interrupted-recovery-manual-setup.png",
+        "interrupted-recovery-manual-returned.png",
+        "interrupted-recovery-reopened.png",
+        "interrupted-recovery-kept-token-retired.png",
+        "interrupted-recovery-discard-review.png",
+        "interrupted-recovery-discard-restored.png",
+        "interrupted-recovery-stale-discard-rejected.png",
+        "interrupted-recovery-stale-review.png",
+        "interrupted-recovery-discard-final.png",
+        "interrupted-recovery-discarded.png"
+      ],
+      "required_evidence_files": [],
+      "proof_writer": {
+        "success": "Only the 15 explicit capture(name,label) PNG branches; no success JSON/proof file is emitted by this method. State/preservation/transaction assertions are in the native method and its selected-method instrumentation log.",
+        "failure_only": [
+          "interrupted-recovery-failure.png",
+          "interrupted-recovery-failure.xml",
+          "interrupted-recovery-failure.txt"
+        ]
+      }
+    }
+  ],
+  "required_original_count": 15,
+  "required_evidence_files": [],
+  "full_acceptance": false,
+  "assertion_scope": [
+    "Exact existing v17 schema fixture adds only receipt table/DELETE trigger in18; raw sessions/epochs/alarms unchanged before recovery; portable format14 unchanged.",
+    "Actual unfinished private Store record -> Main recovery -> receipt; end remains last committed checkpoint, missing tail unfilled.",
+    "Actual Tonight entry -> retained review -> rotate/reopen -> read-only original report and recreation; no Edit/menu/signals/playback escape.",
+    "Start a new night -> actual Settle in setup -> Back; no Start, service command, capture or alarm scheduling.",
+    "Keep acknowledges receipt only; raw record/epochs unchanged; old receipt token cannot reopen another record.",
+    "Named existing Editor discard confirmation survives recreation; retired positive inactive; identical deleted/reused raw ID rejected by retired receipt; final actual Records.delete removes only selected record/epochs.",
+    "Existing all-history Store erase invalidates every receipt while alarms remain; no custom eraser.",
+    "Owned workers close before private store cleanup; no unrelated preferences changed; only existing idle tracking flags restored to original presence in fixture teardown."
+  ],
+  "limits": "Pending plan, not executed proof. Historical run41260544579 at1c1fe0c1/DB17 cannot validate40A/be25725e/DB18. No phone, output, model work, provider write or unit campaign.",
+  "source_manifest": [
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "git_blob": "7b7d335334a1b60ccf93aa485fed4188ce244b4c",
+      "sha256": "50e110c1a72884d784dc41d9cd179468e9c5ae3ecd162b57ea0197eac3033960",
+      "bytes": 28779
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/InterruptedRecoveryFlowTest.java",
+      "git_blob": "298d88d734d6de76f011c66eaa91dde2ef634f80",
+      "sha256": "68f9f8b317b836381efd42b1a07826d54f08f5802ad610bf719ec6379a33782c",
+      "bytes": 19228
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/InterruptedRecords.java",
+      "git_blob": "665663dc9e95ba0fff900c0fdf6db3899cbe3af2",
+      "sha256": "3db37a736d78183c943a69704e73d6bca40ac46a4f09a6411c0e78b35448a24f",
+      "bytes": 5690
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/InterruptedRecordActivity.java",
+      "git_blob": "9cdce521e82e8f5da10c6a7bad7e50522873a5cf",
+      "sha256": "e01aa431444b2611737b05a0eab0e52ae414b7d4937ffc9ce55c75f5d8c6d487",
+      "bytes": 6385
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob": "22ddfdb6ab3fb1a01f6b2c4fc4cb8f8a138c0287",
+      "sha256": "43a9bb38017e86906555d91d67c4a7fb71c47536ca7928691c4ff47e6cd475b5",
+      "bytes": 23737
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TonightScreen.java",
+      "git_blob": "58dc117bff58070a4c10e473f99fd8d727d58729",
+      "sha256": "e3c4099aeef69ab7733f1bfc8146dfbea4d4e2760854278cc55ea12487a4a0fb",
+      "bytes": 20525
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TrackingActivity.java",
+      "git_blob": "e606ca83cbf42f1d1533bab522855d8676f07d5a",
+      "sha256": "ecff55ff97b0cf9f99e148e9a8bfedcebc1672120036500dc649675fa8566f04",
+      "bytes": 66585
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordReportActivity.java",
+      "git_blob": "2d845ae74de561923e39e479d25e761f3c0c77b0",
+      "sha256": "8ee5335d9082e721fd06109317d48fedb73a50ebfb9c012069363141f69acb55",
+      "bytes": 7728
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/RecordEditorActivity.java",
+      "git_blob": "f1ed5160d3cd0b5dddafe3462f4060aec7ae3c9d",
+      "sha256": "5c46e8f69edf7d78b9ee4f535653edb53ce2ff085d6a7ccd238d80bb1c7ebb62",
+      "bytes": 47433
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/ReportScreen.java",
+      "git_blob": "1503b894e8af75f719eb6c1c77391e62d1beac79",
+      "sha256": "021eb3e834b62420ff4200f9f2226e774259987579f971d8022947b665d4dccd",
+      "bytes": 17625
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/NightDialReportSummary.java",
+      "git_blob": "cb0d27589e9bd213002c1b3ada92f0b54ba4e89b",
+      "sha256": "37fff4e5e85502e15be970f7f618e75b9ea9681db7b3596400991f8e29f464ce",
+      "bytes": 6593
+    }
+  ],
+  "pinned_source_execution": "not_run_at_pinned_be25725e",
+  "related_later_cohort": {
+    "run_id": 41262371127,
+    "source_prefix": "71181142",
+    "cohort_status": "failure_reported_by_root",
+    "status_at_this_archive": "Artifacts/method outcome not yet inspected or archived here. Not a passing40A receipt; diagnosis is separate authorized follow-up."
+  }
+}

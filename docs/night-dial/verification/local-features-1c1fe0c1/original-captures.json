@@ -1,0 +1,1211 @@
+{
+  "source_commit": "1c1fe0c16ce35abbf8f64dcb17b29064530e711c",
+  "run_id": 41260544579,
+  "scope": "local-feature-reference",
+  "original_count": 118,
+  "required_missing": [],
+  "extra_originals": [],
+  "all_images_decoded": true,
+  "individual_originals_inspected": [
+    "goal-plan-exit-recreated.png",
+    "goal-draft-exit-recreated.png",
+    "nap-paused-restored.png",
+    "nap-resume-denied.png",
+    "nap-resumed-restored.png",
+    "nap-support-requests-results.png",
+    "travel-draft-exit-recreated.png",
+    "travel-error.png",
+    "record-achievements-milestone-basis.png",
+    "record-achievements-milestone-first-of-eight.png",
+    "tags-with-group-recreated.png",
+    "tags-without-group.png",
+    "alarm-mode-radio-recreated.png",
+    "night-dial-alarm-delete-restored-review-stale.png",
+    "night-dial-alarm-delete-undone-recreated.png"
+  ],
+  "contact_sheet_original_count": 118,
+  "derived_inspection_aids_committed": false,
+  "full_visual_acceptance": false,
+  "originals": [
+    {
+      "file": "alarm-mode-configured.png",
+      "bytes": 127879,
+      "sha256": "36d22f0d9b4a1c693f96e7f56440d02e7220728aa350ff2c523bddbd42537f36",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "alarm-mode-initial.png",
+      "bytes": 64179,
+      "sha256": "a89f601a51a6d308cd508fa438a937112d362200d77e2560f70ad145c8044bbe",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "alarm-mode-playlist.png",
+      "bytes": 130719,
+      "sha256": "a2f374854127fbd759a671bf28de8ab9f78f27fe892f99a193adfbba99394ed0",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "alarm-mode-radio-draft.png",
+      "bytes": 112357,
+      "sha256": "9d654202010e22cee00ed8f95331c177c00fb6c48a65c8eec1b25f44cd673a7d",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "alarm-mode-radio-error.png",
+      "bytes": 142510,
+      "sha256": "7a9691a2287a392d7320abb3743c7d07b633e74fa01c9fc447a22f75adfa1a59",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "alarm-mode-radio-recreated.png",
+      "bytes": 148115,
+      "sha256": "b09bcab76c7c13be59d1103385fa5136693bd523ac4e24725fb8f19a08936397",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "alarm-mode-recreated.png",
+      "bytes": 148492,
+      "sha256": "7034c23c36281e883a20ff839d45c7aab0795111974678e752c7b8df50c2f1c3",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "alarm-mode-reopened.png",
+      "bytes": 127879,
+      "sha256": "36d22f0d9b4a1c693f96e7f56440d02e7220728aa350ff2c523bddbd42537f36",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "alarm-mode-silent.png",
+      "bytes": 71830,
+      "sha256": "14bbd4ee9d4f3565fb9b6ef5428abbeb8b5a78582b552ba13801ddae5c416cfe",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "alarm-mode-single.png",
+      "bytes": 64170,
+      "sha256": "1f6c9875a9be82a57d8f6f9a9ca3f2251f554e140ad46b2e4f3b68a4e15c2f73",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-bank-details.png",
+      "bytes": 126393,
+      "sha256": "8333a03f1bcad60fefda09fa3460a287111f2a4da05bd6f07633cd25d5b11d82",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-bank.png",
+      "bytes": 132786,
+      "sha256": "2b0f2303c6163fbb6e37754d1993ed8e2dd74afc6e0e95728ddaf14add412422",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-create.png",
+      "bytes": 181707,
+      "sha256": "27da7ff71872632b4113094236b236cec352f7c6c6c3f7519ec2416e69a5905d",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-draft-exit-recreated.png",
+      "bytes": 145781,
+      "sha256": "37a4d216fc148398ab76deb99d4a32fef2f59f8b2190f6195194f34885159553",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "goal-draft-exit.png",
+      "bytes": 145781,
+      "sha256": "37a4d216fc148398ab76deb99d4a32fef2f59f8b2190f6195194f34885159553",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-empty-bank.png",
+      "bytes": 118590,
+      "sha256": "4983c860992fbd3437be86e2d37ec96ccfbd42b94a45ebdf704fe92ff47e857a",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-options-recreated.png",
+      "bytes": 149392,
+      "sha256": "348822b11629083d1cf2cc90ea3f9439afb1b3fcd717752a74412b7093b4d8b3",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-options-updated.png",
+      "bytes": 149491,
+      "sha256": "605cb36984c8631de5c32b43efabba33db877cbc5973fc4451ba43425ce2c6cb",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-options-winddown-recreated.png",
+      "bytes": 135461,
+      "sha256": "a7518985bf4d3e670f5617d8be1344541ca704c5cfeb22b4adc36dedab346864",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-options.png",
+      "bytes": 149392,
+      "sha256": "348822b11629083d1cf2cc90ea3f9439afb1b3fcd717752a74412b7093b4d8b3",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-plan-exit-recreated.png",
+      "bytes": 143292,
+      "sha256": "b596202f14dacab8f5caf6d51daf6fcb93a2172294b5b7ad681f9a93fa5853eb",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "goal-plan-exit.png",
+      "bytes": 143359,
+      "sha256": "e771046af2593e5d4f46d1a68240d8ce9e89a0a85b6d901b86e60c43bfc506c8",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-plan.png",
+      "bytes": 156325,
+      "sha256": "cb0376270c8d8bec739ae6ecec56e5b84241ac2d2251abb4ab0ff300a81b95eb",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-reopened-bank.png",
+      "bytes": 132786,
+      "sha256": "2b0f2303c6163fbb6e37754d1993ed8e2dd74afc6e0e95728ddaf14add412422",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-saved-plan.png",
+      "bytes": 173712,
+      "sha256": "1a6ad67ec95832e19660924bfb9eafe679d47a4165151ac5a64ec5f8189d8296",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-stopped.png",
+      "bytes": 131534,
+      "sha256": "3cfd3e10ed9b2033be8d73af794819357b19fdd3fc821c4c78a209f57a3733c6",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-tonight.png",
+      "bytes": 515576,
+      "sha256": "196abc3a8a892e39fbaff6fb4dde19cf197d8635c28d41f58e83bd9cf15aeaab",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "goal-trends.png",
+      "bytes": 209508,
+      "sha256": "f9e80d467c011538cb57e0564ba7dfe6eb2fc92677911a8e895acc76e60e0d65",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-cancelled.png",
+      "bytes": 149540,
+      "sha256": "cca450b6c251e090d16dfabb9f63645fc1b9b6ef3356e70420369f9cfec32b4b",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-default.png",
+      "bytes": 151935,
+      "sha256": "c343a5fa9ac7683a6c2852cbf583c01c0ac5ea2d5b3c17bdd0b5e9d10e6e7ba3",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-draft-exit-recreated.png",
+      "bytes": 136789,
+      "sha256": "bcb7465bd4512ae5c32bee4e3b7d3276cf4a4482af6b558c1b482d7d97aeb296",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-draft-exit.png",
+      "bytes": 136538,
+      "sha256": "124e210050f881253b61bbe3135e3f87d20c108ca6563737366054012eacdb49",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-list.png",
+      "bytes": 68272,
+      "sha256": "bd75a913575c206509a6cdf9fa17fadf777749813e5d5d7c5c118ea9fb024c84",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-paused-restored.png",
+      "bytes": 139585,
+      "sha256": "04444fc060ac509299d196bb286de4afa274386a28b47ed41db6677f52a1216f",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "nap-paused.png",
+      "bytes": 139619,
+      "sha256": "964442557bf1082ddc8b117414dba62e1bc7df51700b9e7c5ea0c8603cc74543",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-pending.png",
+      "bytes": 139188,
+      "sha256": "345d475df055eac75db4e378784b431f54efaeed3ac110233bd1bf17506388e8",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-permission-error.png",
+      "bytes": 159373,
+      "sha256": "6abf45463d974ba66a788b73080ea5ef5be676d5ccc2e4d7bd2c3bdcf50d3230",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-preset.png",
+      "bytes": 151516,
+      "sha256": "0589ae9462555e51f3acb5d5f29f15f5d90ec9c0d8bf9b80d1faba7035cdb49b",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-recreated.png",
+      "bytes": 139226,
+      "sha256": "69b89b4d060a70c438e960f18fc9bcadadad6a5f4b710b58b08baaedde926821",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-reopened.png",
+      "bytes": 139226,
+      "sha256": "69b89b4d060a70c438e960f18fc9bcadadad6a5f4b710b58b08baaedde926821",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-resume-denied.png",
+      "bytes": 146643,
+      "sha256": "6f02ca8a58b0e947366f6dbed24c3bf5e7c15cff62128802b77c4aada3b2a712",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "nap-resumed-restored.png",
+      "bytes": 141238,
+      "sha256": "393919a612081ba3937cae615fa7552bf066c8a3c199d13167c16f7ae41e31ad",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "nap-resumed.png",
+      "bytes": 139662,
+      "sha256": "644368d3df8666c34a5163fb11fb4ff5e1cca6a185dddf85be84b929342c46e2",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-retry.png",
+      "bytes": 142259,
+      "sha256": "e156594b9a0046089d0a20ca3bdd2d78e4631aed15d0c2e8a377692d8483b6d3",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-schedule-draft-return.png",
+      "bytes": 97273,
+      "sha256": "9622e4b5b7b36f6cdaaecb6c473918e993551c715664f48b0838598ebc647a5f",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-schedule-error.png",
+      "bytes": 106342,
+      "sha256": "767a1f282e4ccc1711cf1ff2d4cee1611b78d7d11b669e0736cb861df7c1e8bd",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-schedule.png",
+      "bytes": 99002,
+      "sha256": "5e9c313fe8e235c6fe44f7e76decc9e4cb835708c64038dac7c25caca690c0ab",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-scheduled.png",
+      "bytes": 140943,
+      "sha256": "978b6cefc582a319d1bbc74de32460ad12c2c42d6a6b02f44cdc8baf3d4c2c14",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-scheduler-error.png",
+      "bytes": 152025,
+      "sha256": "3d131bc3eaa270d5529bf7ab04781d3299c176a714ea3615f56641184271e822",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-sound.png",
+      "bytes": 154610,
+      "sha256": "0a79bbf87bc0561da963c583dc0acacf26ca1eec723291fb9b6f05761755447f",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-bedtime-global.png",
+      "bytes": 216522,
+      "sha256": "0c16fd9e13acf5d9429fdfde50e41951533bb1d72366d5dd6e448f374b271636",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-bedtime-route.png",
+      "bytes": 250384,
+      "sha256": "47b6053f8999f554bcc147e2e098bc724af4abbe75153a50b840be5b1dee4e54",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-cues-history.png",
+      "bytes": 81530,
+      "sha256": "7e2d34cd9ec4ec15be435490dbf33557c21058f9dc7027626b5e8447ccbd642c",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-cues-route.png",
+      "bytes": 211930,
+      "sha256": "f2c2237d0e5bb2d93f86c0dcccc1d37ecbfe480b594320af0d8b8af7039b94a7",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-pair-route.png",
+      "bytes": 190232,
+      "sha256": "982f95250d9e7987139007647b934345767e5386866856518c8c591db3974267",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-pair-saved.png",
+      "bytes": 77969,
+      "sha256": "87a40c74e152813a14dde96e573e125c636d75561867b6c4c9126b604ac0dc84",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-profile-files-route.png",
+      "bytes": 148546,
+      "sha256": "eae28b26439875b67eedacf2544fda0725e09efa8c5d249d8fb76f56bc361bcb",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-profile-files.png",
+      "bytes": 131762,
+      "sha256": "07b60302e3a04fcb1a005d4caa8b72a11fbfc2a922fe5fbcc038f99142eaf644",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-profiles-route.png",
+      "bytes": 89910,
+      "sha256": "60ab3343cf06636eb4f4493dc841cef61af58f2450480e8f701fd6c5b074588a",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-requests-format-route.png",
+      "bytes": 250387,
+      "sha256": "85ba4d5ed62c76ad54571fe52f6dafffa71e874a620fdc3494eabd583407302b",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-requests-format.png",
+      "bytes": 223942,
+      "sha256": "062864dd7498fc45de3e3385adf8e3c1087d717c838ca01fa9c244a839c7e164",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-requests-results-route.png",
+      "bytes": 253018,
+      "sha256": "b36ed6c249640ed052580af0bafe63985272eaffc1fadb5d02594ee19fdd541e",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "nap-support-requests-results.png",
+      "bytes": 210363,
+      "sha256": "732c3117a04d48523b62921b721a080cf4cc0e739ee95d17b940e630810b8e76",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "nap-tracking-required.png",
+      "bytes": 157160,
+      "sha256": "9e0b058904bb18ab14d57c50a6a88b1dca3a3784977e2c22079ec281d8bb09b7",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-delete-changed.png",
+      "bytes": 148261,
+      "sha256": "a28e005c432d7a9067593ed3721278db8af386236527734f90af36a1a229204b",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-delete-restored-review-stale.png",
+      "bytes": 173543,
+      "sha256": "0e72aefe8f05cfa672f2d5a41c8828cff34eb28b500e00f19b17540372b653da",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "night-dial-alarm-delete-restored.png",
+      "bytes": 164903,
+      "sha256": "f8cc6a2fa113ce7763d7c3b354b44f60cdd93dc48e25d253330a09f2ba5b9617",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-delete-result.png",
+      "bytes": 148071,
+      "sha256": "b35dbe1f0cd656591541bd13557b3969849c1d23e6d66162de7846493339d741",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-delete-review.png",
+      "bytes": 164903,
+      "sha256": "f8cc6a2fa113ce7763d7c3b354b44f60cdd93dc48e25d253330a09f2ba5b9617",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-delete-undo-expired.png",
+      "bytes": 141781,
+      "sha256": "1e5a2b663e99bd4c1880f68d27f0379f6cc65ce5cda2db0878569c04cc3bc424",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-delete-undo-restored-review.png",
+      "bytes": 148071,
+      "sha256": "b35dbe1f0cd656591541bd13557b3969849c1d23e6d66162de7846493339d741",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-delete-undo-stale.png",
+      "bytes": 149343,
+      "sha256": "4d1325b6ea4ca1487ddc6159ff92f907649bd6810fa576682ed5826d510d1a04",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-delete-undone-recreated.png",
+      "bytes": 179935,
+      "sha256": "154aeb43a905bfdfbfbfe753a21e6ff636e51196001d17eb3ce04dbd55c8f81d",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "night-dial-alarm-delete-undone.png",
+      "bytes": 203111,
+      "sha256": "f233eae87b567a8726c8ec60ecb824999031f19513ac0117c145b2a5d2e75cc1",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-dirty-saved.png",
+      "bytes": 116274,
+      "sha256": "585e76352176aa9d39e57322ba65f1aa855cda8f43a289a731e3e2c53bd1939c",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-duplicate-draft.png",
+      "bytes": 152188,
+      "sha256": "43f6fdfa3ec69a7233f1234f1e36d28abf772c413a158b15431b76f0f61ad8ae",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-duplicate-restored.png",
+      "bytes": 152188,
+      "sha256": "43f6fdfa3ec69a7233f1234f1e36d28abf772c413a158b15431b76f0f61ad8ae",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "night-dial-alarm-unsaved-actions.png",
+      "bytes": 123733,
+      "sha256": "510073659d0aa0d0341e2f6b609647f9fb2f6f1ca2ee5e36f4d51d225097621b",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-edited.png",
+      "bytes": 182150,
+      "sha256": "445c8a429e0e9f0c6593bb2de18f0aff0ad7745bbd6226c49a8abed70c73fd6d",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-empty.png",
+      "bytes": 182150,
+      "sha256": "445c8a429e0e9f0c6593bb2de18f0aff0ad7745bbd6226c49a8abed70c73fd6d",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-error.png",
+      "bytes": 53489,
+      "sha256": "0a7e951212f443166cf6be4a74745efc6cb7cce279001d19eafdfa6919b01629",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-first.png",
+      "bytes": 181595,
+      "sha256": "1e3a8ae5e2d99d0a7a719fec4170a21380ba5bc8bce56aad434d1baca8f6aec8",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-milestone-basis.png",
+      "bytes": 151075,
+      "sha256": "6690d877f1f247f482282e0f376b521db10d29e838456ead73452b6f4fe0afc1",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "record-achievements-milestone-empty.png",
+      "bytes": 121092,
+      "sha256": "673f45df39e92ce397b4669561e000841880bcfe88442dd327a2c7919ae5b6ef",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-milestone-error-recreated.png",
+      "bytes": 53489,
+      "sha256": "0a7e951212f443166cf6be4a74745efc6cb7cce279001d19eafdfa6919b01629",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-milestone-first-of-eight.png",
+      "bytes": 134498,
+      "sha256": "414bc0bd9c8168a4e9758be5aa28283abda65bc6a8c88a5e525817fae81c9430",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "record-achievements-milestone-period.png",
+      "bytes": 159210,
+      "sha256": "ec8b78c6ed7d775fe226bfcde60886726ec25ade165ef3ffed21c043542f2637",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-milestone-progress.png",
+      "bytes": 153978,
+      "sha256": "e71f025d8d495d0fb4a50948364fb075a9ae1784da853ac5cc304829e438c79b",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-milestone-recreated.png",
+      "bytes": 151075,
+      "sha256": "6690d877f1f247f482282e0f376b521db10d29e838456ead73452b6f4fe0afc1",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-milestone-return.png",
+      "bytes": 151075,
+      "sha256": "6690d877f1f247f482282e0f376b521db10d29e838456ead73452b6f4fe0afc1",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-milestone-seven-basis.png",
+      "bytes": 300975,
+      "sha256": "b47023a0fc275a77efa5f15837d1fca7cfc71b1981eed07d2c298876177a90f7",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-milestone-thirty-progress.png",
+      "bytes": 303574,
+      "sha256": "5d00543d9bce3acca391e5c579f64b39c44a4a3cfce5aa36c39579be1d33a44f",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-recreated.png",
+      "bytes": 181595,
+      "sha256": "1e3a8ae5e2d99d0a7a719fec4170a21380ba5bc8bce56aad434d1baca8f6aec8",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "record-achievements-search.png",
+      "bytes": 162000,
+      "sha256": "fcab4ac0ddd0906a2c404fdb929531f441bd88b0c2f2eff59f30b3187919502e",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "tags-comparison.png",
+      "bytes": 174121,
+      "sha256": "20d35acfc6c9ae1ffd7e310440f5588ad816b352b628b536884aed36306563a3",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "tags-delete-confirm.png",
+      "bytes": 144699,
+      "sha256": "b4bbc24f3085a108c2d438fe8867d6af3d8fae885f026ae40affbae9d3f43077",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "tags-deleted.png",
+      "bytes": 75948,
+      "sha256": "e733eca48c8cfc9d39b7b39dee215d0e4f11a8d7119ab7d4b8f9c1011b191daf",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "tags-editor.png",
+      "bytes": 145515,
+      "sha256": "890d5532392efb9e95caab6dfbaa7d936f9180d529b9245676ea93853cb18274",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "tags-quantity-draft.png",
+      "bytes": 121661,
+      "sha256": "9478197f35917f3ecce229c2183a4680199f23566a8c614a2af7453f9debf651",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "tags-quantity-recreated.png",
+      "bytes": 121661,
+      "sha256": "9478197f35917f3ecce229c2183a4680199f23566a8c614a2af7453f9debf651",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "tags-rename.png",
+      "bytes": 116874,
+      "sha256": "15c9a409cce7ff5e73e914c0387b138d70ac10f041205f44056662c909f68ca4",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "tags-renamed.png",
+      "bytes": 183321,
+      "sha256": "315938318fa40a85e6a4844aa6bb69f234a37c256d146c8e0ccc85aa2e46b264",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "tags-with-group-recreated.png",
+      "bytes": 110217,
+      "sha256": "261d2429fea82bcab3b8add957cbf1e811d376bc490f733ba21af016247bf202",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "tags-with-group.png",
+      "bytes": 102813,
+      "sha256": "f0532b1a6a4579e2940d27102bf9a9929f32d0e31b79e30a74cfd5b7328fddc6",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "tags-without-group.png",
+      "bytes": 104702,
+      "sha256": "732d38ab2293a27f862e19dea18541717f3f8cd103cce45956df1bfcd82e9a5f",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "travel-date.png",
+      "bytes": 80594,
+      "sha256": "4a658ad64166edad97521ab05071d5fbd66d83af2227741fad9bb4f86e5f30ee",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "travel-disabled-main.png",
+      "bytes": 225573,
+      "sha256": "50ead0be7ef0437e613b6aa2fb23eaa7e446590e4927bab7ea25adeff7c06e72",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "travel-disabled.png",
+      "bytes": 126544,
+      "sha256": "5ab0fec148f52b468e9d2dd369f31852f28a1abbd013c226674d4be3b74ed46e",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "travel-draft-exit-recreated.png",
+      "bytes": 164407,
+      "sha256": "928d41c65b53bf2f8154dd2add79f2203c699a14cf3c8fa457cd105ca4c64666",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "travel-draft-exit.png",
+      "bytes": 164972,
+      "sha256": "3aead0899c81969f5cb3a3be29875ba0249b7ae7e558cc9ff9e1b2887d095ee6",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "travel-error.png",
+      "bytes": 193670,
+      "sha256": "6db702285cf2c5734f91a157d08e9758da4f232a3251696affb77e9826bd5167",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": true,
+      "visual_inspection": "individual_original_and_contact_sheet"
+    },
+    {
+      "file": "travel-plan.png",
+      "bytes": 225573,
+      "sha256": "50ead0be7ef0437e613b6aa2fb23eaa7e446590e4927bab7ea25adeff7c06e72",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "travel-reminders-recreated.png",
+      "bytes": 107221,
+      "sha256": "5ccdf7612ac10415ee7910d8f4a16ec5f5b66cecbb0dde8645eaf816e29f241b",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "travel-reminders-reopened.png",
+      "bytes": 126664,
+      "sha256": "19e9ac30165f9fe95b04d33034c426d5bf11ee1893c0561c33bde331f61b7e0b",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "travel-reminders.png",
+      "bytes": 107221,
+      "sha256": "5ccdf7612ac10415ee7910d8f4a16ec5f5b66cecbb0dde8645eaf816e29f241b",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "travel-reopened.png",
+      "bytes": 225573,
+      "sha256": "50ead0be7ef0437e613b6aa2fb23eaa7e446590e4927bab7ea25adeff7c06e72",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "travel-schedules.png",
+      "bytes": 90233,
+      "sha256": "d88dafacb1f03913723fb58f10832b11ecb6bec1e47cd93a1a56ad885b68a668",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    },
+    {
+      "file": "travel-zones.png",
+      "bytes": 44579,
+      "sha256": "dbc834dc86db34e3184946c91b52765ce068025a9be8a05434c998e886936ba0",
+      "width": 1080,
+      "height": 2316,
+      "method": "org.sleepwell.app.TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs",
+      "copied_unchanged": false,
+      "visual_inspection": "contact_sheet_only"
+    }
+  ]
+}

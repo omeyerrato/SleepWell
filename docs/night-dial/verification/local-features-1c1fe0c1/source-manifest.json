@@ -1,0 +1,223 @@
+{
+  "source_commit": "1c1fe0c16ce35abbf8f64dcb17b29064530e711c",
+  "app_main_tree": "e614821acb169042c63088bda7de6825791056ec",
+  "test_tree": "883a12e15ef2a0a0f25a26d493aa930532ee5aa9",
+  "database_version": 17,
+  "portable_backup_format": 14,
+  "artifact": {
+    "id": 13065531255,
+    "name": "silent-android-review",
+    "zip_bytes": 16502191,
+    "zip_sha256": "6a29ed5200a8e78d0f633a3df026dc2853926f6caf310540f7e90160dd7510ca",
+    "digest_matches_github": true,
+    "run_url": "https://github.com/omeyerrato/SleepWell/actions/runs/41260544579",
+    "conclusion": "success"
+  },
+  "sources": [
+    {
+      "path": "scripts/ci_silent_ui.py",
+      "git_blob": "65e1efd4985a0030c86661d211b2082048582802",
+      "bytes": 96618,
+      "sha256": "8abb3e23ba36c103332c6396b4d3666e10a95cea49ef7e7faf83554d75ce5307"
+    },
+    {
+      "path": ".github/workflows/silent-ui-review.yml",
+      "git_blob": "87e58ff554a1fd81a3063494ef736430c7cd02cd",
+      "bytes": 5091,
+      "sha256": "91c300caee3423f01215f9d561d50be3e88972b890a9dcb1f63aa9ddfe16a218"
+    },
+    {
+      "path": "docs/night-dial/LOCAL-PLAN-NATIVE-PLAN.json",
+      "git_blob": "720ddbfd27c00df4219075d6ae4f774f2e3ee124",
+      "bytes": 7675,
+      "sha256": "9490ded86dd6346ed652b305cbd29a4c743a6f4c5b88cc5aef94aac48789d7d4"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Store.java",
+      "git_blob": "4db12edc0b8704efca580f2feba81b55b233a09c",
+      "bytes": 23629,
+      "sha256": "f65beaafc1e3d12933cafa7912b331bf62fa2b0e55dae02917040bc42a4dbdf9"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/Backup.java",
+      "git_blob": "6ff773afc4f27b446273b44b742eb510f03c6c28",
+      "bytes": 13256,
+      "sha256": "ff3f97692686aa346b85c0fcdc04037f996539120a95c4848882c20045d4d194"
+    },
+    {
+      "path": "app/src/main/java/org/sleepwell/app/TravelActivity.java",
+      "git_blob": "a649b9fe45fd2bc6dd24c648146185832d1e037a",
+      "bytes": 40828,
+      "sha256": "1e0fdc0fd660636b5bb067dac5e96222bcfd5aba50462ec06d53522a544d4ec9"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/GoalFlowTest.java",
+      "git_blob": "a10f47916fcce3b57be42db25089cb80c326b73d",
+      "bytes": 17366,
+      "sha256": "b94813b647de60582376c3fbcc37c272a5d5fdac335863c6674662e3ae4e8c79"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/NapFlowTest.java",
+      "git_blob": "1eb95364d8380bdd9acbaf3095cb2f0641c6f7f8",
+      "bytes": 33622,
+      "sha256": "45c52f1c316a0a2c79dc554a8b2376436ef22f56d7ed76f71832f4d7bcae6a55"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/TravelPlanFlowTest.java",
+      "git_blob": "929ea221473f27a38aeed0868b5967f9065674e5",
+      "bytes": 16064,
+      "sha256": "d997d689640ca0496ba6ab4503ceb65bd2fd9c462c3d96eb19318795f51bb2a9"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/RecordAchievementsFlowTest.java",
+      "git_blob": "fef0404ddae957261576a0b40ee273da75cdf020",
+      "bytes": 10818,
+      "sha256": "7895ca2b43f7b987add804270d9fa909dc7b977e242ba0fcede9d17ee285a972"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/TagManagementFlowTest.java",
+      "git_blob": "e82e79cd2cc3fafc525033185dc7ef7b648d8595",
+      "bytes": 11491,
+      "sha256": "f073ef6c608541fa86e6604c926d3c7dbba3ec7cf8540cc27bd20518c67a6459"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/AlarmSoundModeFlowTest.java",
+      "git_blob": "7d8779ba000fdf6fab868112e4a7349d6fe36f8c",
+      "bytes": 15036,
+      "sha256": "1daf6758853a44a5cad09494c64dc36cd7335103e375075684acb6f97771489b"
+    },
+    {
+      "path": "app/src/androidTest/java/org/sleepwell/app/NightDialAlarmFlowTest.java",
+      "git_blob": "9ca253743c41ad089e062423b3180c5704bc4d7b",
+      "bytes": 24854,
+      "sha256": "a4e0355623635656bf2e1f5a38d96e21d472b35330d12f34af3b512f3a85a799"
+    }
+  ],
+  "copied_evidence": [
+    {
+      "path": "alarm-mode-radio-recreated.png",
+      "bytes": 148115,
+      "sha256": "b09bcab76c7c13be59d1103385fa5136693bd523ac4e24725fb8f19a08936397"
+    },
+    {
+      "path": "AlarmSoundModeFlowTest#silentAndPlaylistChoicesCancelRecreateSaveReopenAndReturnSingleWithoutOutputs.txt",
+      "bytes": 841,
+      "sha256": "d066bea00d87229faaa5d5404b9f417f6f87e943bc1e7b9aaf432d0f0ef29cc8"
+    },
+    {
+      "path": "environment.json",
+      "bytes": 1458,
+      "sha256": "ad13770762d80f335c5599301d548296e25931e25a8c64e61a0b10d05594ddd7"
+    },
+    {
+      "path": "focused-review-summary.json",
+      "bytes": 1546,
+      "sha256": "5d34d22f03ce7f8679be5bc43ba27149996851858c330055bc280256ae5f28c0"
+    },
+    {
+      "path": "goal-draft-exit-recreated.png",
+      "bytes": 145781,
+      "sha256": "37a4d216fc148398ab76deb99d4a32fef2f59f8b2190f6195194f34885159553"
+    },
+    {
+      "path": "goal-plan-exit-recreated.png",
+      "bytes": 143292,
+      "sha256": "b596202f14dacab8f5caf6d51daf6fcb93a2172294b5b7ad681f9a93fa5853eb"
+    },
+    {
+      "path": "GoalFlowTest#draftSaveCommitmentAndEffectiveProgressPersistWithoutDelivery.txt",
+      "bytes": 779,
+      "sha256": "f5044e254099f81a1418a5fc8ada1eca489eabe531694a37bef4b43fffd704d8"
+    },
+    {
+      "path": "nap-paused-restored.png",
+      "bytes": 139585,
+      "sha256": "04444fc060ac509299d196bb286de4afa274386a28b47ed41db6677f52a1216f"
+    },
+    {
+      "path": "nap-resume-denied.png",
+      "bytes": 146643,
+      "sha256": "6f02ca8a58b0e947366f6dbed24c3bf5e7c15cff62128802b77c4aada3b2a712"
+    },
+    {
+      "path": "nap-resumed-restored.png",
+      "bytes": 141238,
+      "sha256": "393919a612081ba3937cae615fa7552bf066c8a3c199d13167c16f7ae41e31ad"
+    },
+    {
+      "path": "nap-support-requests-results.png",
+      "bytes": 210363,
+      "sha256": "732c3117a04d48523b62921b721a080cf4cc0e739ee95d17b940e630810b8e76"
+    },
+    {
+      "path": "NapFlowTest#presetsToneQuietPreviewStartRecreateReopenAndCancelPersist.txt",
+      "bytes": 769,
+      "sha256": "1fc492d08403380a1b924978b66e4984c8831f9f4cb45c9f3dfb993410f71575"
+    },
+    {
+      "path": "NapFlowTest#scheduleListAndErrorRetryUseSavedDeadlineWithoutRealDelivery.txt",
+      "bytes": 774,
+      "sha256": "a16a6dcd7d66cee1b62efa1d58e87077267e4ddfb53c6ab7ce6d2d064323604c"
+    },
+    {
+      "path": "night-dial-alarm-delete-restored-review-stale.png",
+      "bytes": 173543,
+      "sha256": "0e72aefe8f05cfa672f2d5a41c8828cff34eb28b500e00f19b17540372b653da"
+    },
+    {
+      "path": "night-dial-alarm-delete-undone-recreated.png",
+      "bytes": 179935,
+      "sha256": "154aeb43a905bfdfbfbfe753a21e6ff636e51196001d17eb3ce04dbd55c8f81d"
+    },
+    {
+      "path": "NightDialAlarmFlowTest#duplicateIsAnOffDraftAndDeleteRequiresTheNamedCurrentAlarm.txt",
+      "bytes": 803,
+      "sha256": "09a1324e97a8b8f0e5627a6f416586c517cc7458f3b20b486ea6dabf3d0e26a4"
+    },
+    {
+      "path": "record-achievements-milestone-basis.png",
+      "bytes": 151075,
+      "sha256": "6690d877f1f247f482282e0f376b521db10d29e838456ead73452b6f4fe0afc1"
+    },
+    {
+      "path": "record-achievements-milestone-first-of-eight.png",
+      "bytes": 134498,
+      "sha256": "414bc0bd9c8168a4e9758be5aa28283abda65bc6a8c88a5e525817fae81c9430"
+    },
+    {
+      "path": "RecordAchievementsFlowTest#reportActionPrivateSavedEvidenceEditSearchRecreationAndReopenRecalculate.txt",
+      "bytes": 843,
+      "sha256": "7643f0528ddb8885e1a9e60746e5aa4edb547f102336ad1a3760329b87425ce8"
+    },
+    {
+      "path": "TagManagementFlowTest#quantityDraftSaveRenameDeleteAndComparisonPersist.txt",
+      "bytes": 782,
+      "sha256": "d79dee2efe103410c750b36e8c057628d1813f3512aa34c09dd7c026f27846c1"
+    },
+    {
+      "path": "tags-with-group-recreated.png",
+      "bytes": 110217,
+      "sha256": "261d2429fea82bcab3b8add957cbf1e811d376bc490f733ba21af016247bf202"
+    },
+    {
+      "path": "tags-without-group.png",
+      "bytes": 104702,
+      "sha256": "732d38ab2293a27f862e19dea18541717f3f8cd103cce45956df1bfcd82e9a5f"
+    },
+    {
+      "path": "travel-draft-exit-recreated.png",
+      "bytes": 164407,
+      "sha256": "928d41c65b53bf2f8154dd2add79f2203c699a14cf3c8fa457cd105ca4c64666"
+    },
+    {
+      "path": "travel-error.png",
+      "bytes": 193670,
+      "sha256": "6db702285cf2c5734f91a157d08e9758da4f232a3251696affb77e9826bd5167"
+    },
+    {
+      "path": "TravelPlanFlowTest#savedZonesDstRemindersDeliveryCancelAndFailureAreRealExceptInjectedOutputs.txt",
+      "bytes": 823,
+      "sha256": "a1dcae83d2a155d5474d9d9e30275f0e0a46c791167fac5456f4a3dc13cb001f"
+    }
+  ]
+}
