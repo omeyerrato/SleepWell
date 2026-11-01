@@ -48,6 +48,7 @@ on:
           - draft-challenge-reference
           - recovery-rules-reference
           - contactless-fallback-reference
+          - additional-sounds-reference
           - setup-readiness
           - readiness-recovery
           - protection-recovery

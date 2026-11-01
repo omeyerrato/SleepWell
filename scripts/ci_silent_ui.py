@@ -60,6 +60,7 @@ parser.add_argument("--scope", choices=(
     'draft-challenge-reference',
     'recovery-rules-reference',
     'contactless-fallback-reference',
+    'additional-sounds-reference',
     'setup-readiness',
     'readiness-recovery',
     'protection-recovery',
@@ -173,6 +174,7 @@ LOCAL_PLAN = json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial/
 def completion_plan(name):
     return json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial" / name).read_text(encoding="utf-8"))
 ALTERNATIVES_PLAN = completion_plan("LOCAL-ALTERNATIVES-NATIVE-PLAN.json")
+ADDITIONAL_SOUNDS_PLAN = completion_plan("ADDITIONAL-SOUNDS-NATIVE-PLAN.json")
 RHYTHM_PLAN = completion_plan("RHYTHM-EVIDENCE-SCROLL-NATIVE-PLAN.json")
 EMERGENCY_PLAN = completion_plan("CHALLENGE-EMERGENCY-FOCUS-NATIVE-PLAN.json")
 PRACTICE_PLAN = completion_plan("WAKE-CHECK-PRACTICE-NATIVE-PLAN.json")
@@ -534,6 +536,9 @@ elif args.scope == "completion-reference":
 elif args.scope == "local-alternatives-reference":
     tests = [method["method"].removeprefix("org.sleepwell.app.") for method in ALTERNATIVE_METHODS]
     metadata["local_alternatives_slice"] = "Actual local fallback, rhythm evidence and reviewed travel draft flows; private state and injected physical/service ports"
+elif args.scope == "additional-sounds-reference":
+    tests = [method["method"].removeprefix("org.sleepwell.app.") for method in ADDITIONAL_SOUNDS_PLAN["methods"]]
+    metadata["additional_sounds_slice"] = "Default-off settings and real admitted private PCM through bundled inference; fixed one-thread performance gates, bounded-queue retirement, and constructed17/18-to19 preservation. No accuracy, overnight or physical-device acceptance."
 elif args.scope == "contactless-fallback-reference":
     tests = ["ContactlessSetupFlowTest#cancelRotationAndPrerequisiteErrorsNeverOpenNativeAudio"]
     metadata["contactless_fallback_slice"] = "Exact existing prerequisite/cancel/rotation/movement fallback journey; private DB/preferences and fake audio/probe/commands, real native pages; no physical capture"
@@ -759,6 +764,7 @@ if args.scope != "full":
         "local-alternatives-reference": ALTERNATIVE_FRAMES,
         "draft-challenge-reference": DRAFT_FRAMES,
         "contactless-fallback-reference": [name for method in ALTERNATIVES_PLAN["methods"] if "ContactlessSetupFlowTest#" in method["method"] for name in method["required_originals"]],
+        "additional-sounds-reference": [name for method in ADDITIONAL_SOUNDS_PLAN["methods"] for name in method["required_originals"]],
         "recovery-rules-reference": ["interrupted-recovery-" + name + ".png" for name in ("tonight", "review", "review-restored", "retained-report", "retained-report-restored", "manual-setup", "manual-returned", "reopened", "kept-token-retired", "discard-review", "discard-restored", "stale-discard-rejected", "stale-review", "discard-final", "discarded")] + AUTOMATION_RULE_FRAMES,
         "reference-menus": REFERENCE_MENU_FRAMES,
         "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,
@@ -799,6 +805,8 @@ if args.scope != "full":
         "tone-wake": TONE_FRAMES + WAKE_SETTING_FRAMES + WAKE_CHECK_FRAMES,
     }[args.scope]
     receipts = DRAFT_RECEIPTS if args.scope == "draft-challenge-reference" else ALTERNATIVE_RECEIPTS if args.scope == "local-alternatives-reference" else []
+    if args.scope == "additional-sounds-reference":
+        receipts = [name for method in ADDITIONAL_SOUNDS_PLAN["methods"] for name in method["required_proof"]]
     failures += [name for name in focused_frames + receipts if not (output / name).is_file()]
     summary = {"scope": args.scope, "full_app_review": False, "expected_classes": len(tests), "expected_methods": sum(method_counts.get(test, 1) for test in tests), "class_results": class_results, "required_original_images": len(focused_frames), "required_evidence_files": receipts, "failures": failures}
     (output / "focused-review-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
