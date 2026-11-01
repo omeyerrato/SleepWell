@@ -43,3 +43,25 @@ Diff and exact15 capture-plan names checked locally. No build, emulator, hosted
 CI, native execution, phone, alarm, audio output, unit campaign or model study ran
 here. Root owns the scoped rerun and actual original-PNG inspection. The failed
 run and historical acceptance register remain unchanged.
+
+## Current recreated-owner readiness failure
+
+Run `41262356510` at `71181142` reached the real older contributor, opened its
+exact Report and returned to the saved nonzero evidence position. It then failed
+inside `recreate("Timing evidence")`. The actual failure PNG/XML shows the
+correctly restored contributor list, including the visible Older observed nights
+button; the title is above that viewport. The helper required that offscreen title
+to be visible to UiAutomator. This is a fixture readiness error, not evidence that
+the app lost its route or scroll.
+
+Recreation readiness now requires destruction of the old owner, the distinct new
+owner's attached, laid out, hardware-accelerated focused decor, completed loaded
+and resumed state, the expected presentation in its actual view tree, and a
+committed frame. It does not scroll, request a rectangle, replace a gesture or
+reset the viewport to expose the title. The existing exact nonzero scroll,
+immutable source-ID, Older/Newer page, unchanged library and no-output assertions
+remain. All15 original names and the proof receipt remain required.
+
+No production code changed. This failure remains failed until the consolidated
+rerun passes; no separate build, CI dispatch, native run or phone action was
+performed for this correction.
