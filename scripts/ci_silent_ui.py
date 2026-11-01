@@ -62,6 +62,7 @@ parser.add_argument("--scope", choices=(
     'contactless-fallback-reference',
     'additional-sounds-reference',
     'additional-sounds-ui-reference',
+    'task-visual-repair',
     'setup-readiness',
     'readiness-recovery',
     'protection-recovery',
@@ -176,6 +177,7 @@ def completion_plan(name):
     return json.loads((Path(__file__).resolve().parents[1] / "docs/night-dial" / name).read_text(encoding="utf-8"))
 ALTERNATIVES_PLAN = completion_plan("LOCAL-ALTERNATIVES-NATIVE-PLAN.json")
 ADDITIONAL_SOUNDS_PLAN = completion_plan("ADDITIONAL-SOUNDS-NATIVE-PLAN.json")
+TASK_REPAIR_PLAN = completion_plan("TASK-VISUAL-REPAIR-NATIVE-PLAN.json")
 RHYTHM_PLAN = completion_plan("RHYTHM-EVIDENCE-SCROLL-NATIVE-PLAN.json")
 EMERGENCY_PLAN = completion_plan("CHALLENGE-EMERGENCY-FOCUS-NATIVE-PLAN.json")
 PRACTICE_PLAN = completion_plan("WAKE-CHECK-PRACTICE-NATIVE-PLAN.json")
@@ -537,6 +539,9 @@ elif args.scope == "completion-reference":
 elif args.scope == "local-alternatives-reference":
     tests = [method["method"].removeprefix("org.sleepwell.app.") for method in ALTERNATIVE_METHODS]
     metadata["local_alternatives_slice"] = "Actual local fallback, rhythm evidence and reviewed travel draft flows; private state and injected physical/service ports"
+elif args.scope == "task-visual-repair":
+    tests = [method["method"] for method in TASK_REPAIR_PLAN["methods"]]
+    metadata["task_visual_repair_slice"] = TASK_REPAIR_PLAN["scope"]
 elif args.scope in ("additional-sounds-reference", "additional-sounds-ui-reference"):
     selected = ADDITIONAL_SOUNDS_PLAN["methods"] if args.scope == "additional-sounds-reference" else [method for method in ADDITIONAL_SOUNDS_PLAN["methods"] if method["required_originals"]]
     tests = [method["method"].removeprefix("org.sleepwell.app.") for method in selected]
@@ -768,6 +773,7 @@ if args.scope != "full":
         "contactless-fallback-reference": [name for method in ALTERNATIVES_PLAN["methods"] if "ContactlessSetupFlowTest#" in method["method"] for name in method["required_originals"]],
         "additional-sounds-reference": [name for method in ADDITIONAL_SOUNDS_PLAN["methods"] for name in method["required_originals"]],
         "additional-sounds-ui-reference": [name for method in ADDITIONAL_SOUNDS_PLAN["methods"] for name in method["required_originals"]],
+        "task-visual-repair": [name for method in TASK_REPAIR_PLAN["methods"] for name in method["required_originals"]],
         "recovery-rules-reference": ["interrupted-recovery-" + name + ".png" for name in ("tonight", "review", "review-restored", "retained-report", "retained-report-restored", "manual-setup", "manual-returned", "reopened", "kept-token-retired", "discard-review", "discard-restored", "stale-discard-rejected", "stale-review", "discard-final", "discarded")] + AUTOMATION_RULE_FRAMES,
         "reference-menus": REFERENCE_MENU_FRAMES,
         "alarm-reference-current": ALARM_REFERENCE_CURRENT_FRAMES,

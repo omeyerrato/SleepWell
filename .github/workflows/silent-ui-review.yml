@@ -50,6 +50,7 @@ on:
           - contactless-fallback-reference
           - additional-sounds-reference
           - additional-sounds-ui-reference
+          - task-visual-repair
           - setup-readiness
           - readiness-recovery
           - protection-recovery
